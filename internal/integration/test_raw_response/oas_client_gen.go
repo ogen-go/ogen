@@ -95,7 +95,7 @@ func (c *Client) sendGetMixedData(ctx context.Context) (res GetMixedDataRes, err
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getMixedData"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/mixed-data"),
+		semconv.URLTemplateKey.String("/mixed-data"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -165,7 +165,7 @@ func (c *Client) sendGetNormalData(ctx context.Context) (res *GetNormalDataOK, e
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getNormalData"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/normal-data"),
+		semconv.URLTemplateKey.String("/normal-data"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -236,7 +236,7 @@ func (c *Client) sendGetRawData(ctx context.Context) (res GetRawDataRes, err err
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getRawData"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/raw-data"),
+		semconv.URLTemplateKey.String("/raw-data"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 

@@ -95,7 +95,7 @@ func (c *Client) sendProbeLiveness(ctx context.Context) (res string, err error) 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("probeLiveness"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/healthz"),
+		semconv.URLTemplateKey.String("/healthz"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 

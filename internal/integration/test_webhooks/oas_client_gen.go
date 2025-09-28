@@ -92,7 +92,7 @@ func (c *Client) sendPublishEvent(ctx context.Context, request OptEvent) (res *E
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("publishEvent"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/event"),
+		semconv.URLTemplateKey.String("/event"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 

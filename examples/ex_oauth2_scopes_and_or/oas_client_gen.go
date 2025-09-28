@@ -94,7 +94,7 @@ func (c *Client) sendTesttest(ctx context.Context, request *TesttestReq) (res Te
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("testtest"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/testtest"),
+		semconv.URLTemplateKey.String("/testtest"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 

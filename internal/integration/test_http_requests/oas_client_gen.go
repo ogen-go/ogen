@@ -107,7 +107,7 @@ func (c *Client) sendAllRequestBodies(ctx context.Context, request AllRequestBod
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("allRequestBodies"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/allRequestBodies"),
+		semconv.URLTemplateKey.String("/allRequestBodies"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -181,7 +181,7 @@ func (c *Client) sendAllRequestBodiesOptional(ctx context.Context, request AllRe
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("allRequestBodiesOptional"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/allRequestBodiesOptional"),
+		semconv.URLTemplateKey.String("/allRequestBodiesOptional"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -255,7 +255,7 @@ func (c *Client) sendBase64Request(ctx context.Context, request Base64RequestReq
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("base64Request"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/base64Request"),
+		semconv.URLTemplateKey.String("/base64Request"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -329,7 +329,7 @@ func (c *Client) sendMaskContentType(ctx context.Context, request *MaskContentTy
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("maskContentType"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/maskContentType"),
+		semconv.URLTemplateKey.String("/maskContentType"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -403,7 +403,7 @@ func (c *Client) sendMaskContentTypeOptional(ctx context.Context, request *MaskC
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("maskContentTypeOptional"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/maskContentTypeOptional"),
+		semconv.URLTemplateKey.String("/maskContentTypeOptional"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -477,7 +477,7 @@ func (c *Client) sendStreamJSON(ctx context.Context, request []float64) (res flo
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("streamJSON"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/streamJSON"),
+		semconv.URLTemplateKey.String("/streamJSON"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 

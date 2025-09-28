@@ -260,7 +260,7 @@ func (c *Client) sendCreateSnapshot(ctx context.Context, request *SnapshotCreate
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createSnapshot"),
 		semconv.HTTPRequestMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/snapshot/create"),
+		semconv.URLTemplateKey.String("/snapshot/create"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -336,7 +336,7 @@ func (c *Client) sendCreateSyncAction(ctx context.Context, request *InstanceActi
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createSyncAction"),
 		semconv.HTTPRequestMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/actions"),
+		semconv.URLTemplateKey.String("/actions"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -412,7 +412,7 @@ func (c *Client) sendDescribeBalloonConfig(ctx context.Context) (res DescribeBal
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("describeBalloonConfig"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/balloon"),
+		semconv.URLTemplateKey.String("/balloon"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -485,7 +485,7 @@ func (c *Client) sendDescribeBalloonStats(ctx context.Context) (res DescribeBall
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("describeBalloonStats"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/balloon/statistics"),
+		semconv.URLTemplateKey.String("/balloon/statistics"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -558,7 +558,7 @@ func (c *Client) sendDescribeInstance(ctx context.Context) (res *InstanceInfo, e
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("describeInstance"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/"),
+		semconv.URLTemplateKey.String("/"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -631,7 +631,7 @@ func (c *Client) sendGetExportVmConfig(ctx context.Context) (res *FullVmConfigur
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getExportVmConfig"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/vm/config"),
+		semconv.URLTemplateKey.String("/vm/config"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -706,7 +706,7 @@ func (c *Client) sendGetMachineConfiguration(ctx context.Context) (res *MachineC
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getMachineConfiguration"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/machine-config"),
+		semconv.URLTemplateKey.String("/machine-config"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -780,7 +780,7 @@ func (c *Client) sendLoadSnapshot(ctx context.Context, request *SnapshotLoadPara
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("loadSnapshot"),
 		semconv.HTTPRequestMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/snapshot/load"),
+		semconv.URLTemplateKey.String("/snapshot/load"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -855,7 +855,7 @@ func (c *Client) MmdsConfigPut(ctx context.Context, request *MmdsConfig) (MmdsCo
 func (c *Client) sendMmdsConfigPut(ctx context.Context, request *MmdsConfig) (res MmdsConfigPutRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPRequestMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/mmds/config"),
+		semconv.URLTemplateKey.String("/mmds/config"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -930,7 +930,7 @@ func (c *Client) MmdsGet(ctx context.Context) (MmdsGetRes, error) {
 func (c *Client) sendMmdsGet(ctx context.Context) (res MmdsGetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/mmds"),
+		semconv.URLTemplateKey.String("/mmds"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -1002,7 +1002,7 @@ func (c *Client) MmdsPatch(ctx context.Context, request *MmdsPatchReq) (MmdsPatc
 func (c *Client) sendMmdsPatch(ctx context.Context, request *MmdsPatchReq) (res MmdsPatchRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPRequestMethodKey.String("PATCH"),
-		semconv.HTTPRouteKey.String("/mmds"),
+		semconv.URLTemplateKey.String("/mmds"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -1077,7 +1077,7 @@ func (c *Client) MmdsPut(ctx context.Context, request *MmdsPutReq) (MmdsPutRes, 
 func (c *Client) sendMmdsPut(ctx context.Context, request *MmdsPutReq) (res MmdsPutRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPRequestMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/mmds"),
+		semconv.URLTemplateKey.String("/mmds"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -1154,7 +1154,7 @@ func (c *Client) sendPatchBalloon(ctx context.Context, request *BalloonUpdate) (
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("patchBalloon"),
 		semconv.HTTPRequestMethodKey.String("PATCH"),
-		semconv.HTTPRouteKey.String("/balloon"),
+		semconv.URLTemplateKey.String("/balloon"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -1231,7 +1231,7 @@ func (c *Client) sendPatchBalloonStatsInterval(ctx context.Context, request *Bal
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("patchBalloonStatsInterval"),
 		semconv.HTTPRequestMethodKey.String("PATCH"),
-		semconv.HTTPRouteKey.String("/balloon/statistics"),
+		semconv.URLTemplateKey.String("/balloon/statistics"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -1308,7 +1308,7 @@ func (c *Client) sendPatchGuestDriveByID(ctx context.Context, request *PartialDr
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("patchGuestDriveByID"),
 		semconv.HTTPRequestMethodKey.String("PATCH"),
-		semconv.HTTPRouteKey.String("/drives/{drive_id}"),
+		semconv.URLTemplateKey.String("/drives/{drive_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -1402,7 +1402,7 @@ func (c *Client) sendPatchGuestNetworkInterfaceByID(ctx context.Context, request
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("patchGuestNetworkInterfaceByID"),
 		semconv.HTTPRequestMethodKey.String("PATCH"),
-		semconv.HTTPRouteKey.String("/network-interfaces/{iface_id}"),
+		semconv.URLTemplateKey.String("/network-interfaces/{iface_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -1497,7 +1497,7 @@ func (c *Client) sendPatchMachineConfiguration(ctx context.Context, request OptM
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("patchMachineConfiguration"),
 		semconv.HTTPRequestMethodKey.String("PATCH"),
-		semconv.HTTPRouteKey.String("/machine-config"),
+		semconv.URLTemplateKey.String("/machine-config"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -1573,7 +1573,7 @@ func (c *Client) sendPatchVm(ctx context.Context, request *VM) (res PatchVmRes, 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("patchVm"),
 		semconv.HTTPRequestMethodKey.String("PATCH"),
-		semconv.HTTPRouteKey.String("/vm"),
+		semconv.URLTemplateKey.String("/vm"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -1650,7 +1650,7 @@ func (c *Client) sendPutBalloon(ctx context.Context, request *Balloon) (res PutB
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("putBalloon"),
 		semconv.HTTPRequestMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/balloon"),
+		semconv.URLTemplateKey.String("/balloon"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -1727,7 +1727,7 @@ func (c *Client) sendPutGuestBootSource(ctx context.Context, request *BootSource
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("putGuestBootSource"),
 		semconv.HTTPRequestMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/boot-source"),
+		semconv.URLTemplateKey.String("/boot-source"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -1804,7 +1804,7 @@ func (c *Client) sendPutGuestDriveByID(ctx context.Context, request *Drive, para
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("putGuestDriveByID"),
 		semconv.HTTPRequestMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/drives/{drive_id}"),
+		semconv.URLTemplateKey.String("/drives/{drive_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -1898,7 +1898,7 @@ func (c *Client) sendPutGuestNetworkInterfaceByID(ctx context.Context, request *
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("putGuestNetworkInterfaceByID"),
 		semconv.HTTPRequestMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/network-interfaces/{iface_id}"),
+		semconv.URLTemplateKey.String("/network-interfaces/{iface_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -1993,7 +1993,7 @@ func (c *Client) sendPutGuestVsock(ctx context.Context, request *Vsock) (res Put
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("putGuestVsock"),
 		semconv.HTTPRequestMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/vsock"),
+		semconv.URLTemplateKey.String("/vsock"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -2069,7 +2069,7 @@ func (c *Client) sendPutLogger(ctx context.Context, request *Logger) (res PutLog
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("putLogger"),
 		semconv.HTTPRequestMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/logger"),
+		semconv.URLTemplateKey.String("/logger"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -2148,7 +2148,7 @@ func (c *Client) sendPutMachineConfiguration(ctx context.Context, request OptMac
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("putMachineConfiguration"),
 		semconv.HTTPRequestMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/machine-config"),
+		semconv.URLTemplateKey.String("/machine-config"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -2224,7 +2224,7 @@ func (c *Client) sendPutMetrics(ctx context.Context, request *Metrics) (res PutM
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("putMetrics"),
 		semconv.HTTPRequestMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/metrics"),
+		semconv.URLTemplateKey.String("/metrics"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 

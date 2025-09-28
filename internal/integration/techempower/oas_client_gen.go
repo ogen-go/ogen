@@ -134,7 +134,7 @@ func (c *Client) sendCaching(ctx context.Context, params CachingParams) (res Wor
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("Caching"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/cached-worlds"),
+		semconv.URLTemplateKey.String("/cached-worlds"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -226,7 +226,7 @@ func (c *Client) sendDB(ctx context.Context) (res *WorldObject, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("DB"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/db"),
+		semconv.URLTemplateKey.String("/db"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -301,7 +301,7 @@ func (c *Client) sendJSON(ctx context.Context) (res *HelloWorld, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("json"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/json"),
+		semconv.URLTemplateKey.String("/json"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -377,7 +377,7 @@ func (c *Client) sendQueries(ctx context.Context, params QueriesParams) (res Wor
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("Queries"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/queries"),
+		semconv.URLTemplateKey.String("/queries"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -470,7 +470,7 @@ func (c *Client) sendUpdates(ctx context.Context, params UpdatesParams) (res Wor
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("Updates"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/updates"),
+		semconv.URLTemplateKey.String("/updates"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 

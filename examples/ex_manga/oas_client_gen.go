@@ -122,7 +122,7 @@ func (c *Client) sendGetBook(ctx context.Context, params GetBookParams) (res Get
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getBook"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/gallery/{book_id}"),
+		semconv.URLTemplateKey.String("/api/gallery/{book_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -213,7 +213,7 @@ func (c *Client) sendGetPageCoverImage(ctx context.Context, params GetPageCoverI
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getPageCoverImage"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/galleries/{media_id}/cover.{format}"),
+		semconv.URLTemplateKey.String("/galleries/{media_id}/cover.{format}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -323,7 +323,7 @@ func (c *Client) sendGetPageImage(ctx context.Context, params GetPageImageParams
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getPageImage"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/galleries/{media_id}/{page}.{format}"),
+		semconv.URLTemplateKey.String("/galleries/{media_id}/{page}.{format}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -452,7 +452,7 @@ func (c *Client) sendGetPageThumbnailImage(ctx context.Context, params GetPageTh
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getPageThumbnailImage"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/galleries/{media_id}/{page}t.{format}"),
+		semconv.URLTemplateKey.String("/galleries/{media_id}/{page}t.{format}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -581,7 +581,7 @@ func (c *Client) sendSearch(ctx context.Context, params SearchParams) (res Searc
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("search"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/galleries/search"),
+		semconv.URLTemplateKey.String("/api/galleries/search"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -689,7 +689,7 @@ func (c *Client) sendSearchByTagID(ctx context.Context, params SearchByTagIDPara
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("searchByTagID"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/galleries/tagged"),
+		semconv.URLTemplateKey.String("/api/galleries/tagged"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 

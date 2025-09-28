@@ -7838,7 +7838,7 @@ func (c *Client) sendActionsAddRepoAccessToSelfHostedRunnerGroupInOrg(ctx contex
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/add-repo-access-to-self-hosted-runner-group-in-org"),
 		semconv.HTTPRequestMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/actions/runner-groups/{runner_group_id}/repositories/{repository_id}"),
+		semconv.URLTemplateKey.String("/orgs/{org}/actions/runner-groups/{runner_group_id}/repositories/{repository_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -7971,7 +7971,7 @@ func (c *Client) sendActionsAddSelectedRepoToOrgSecret(ctx context.Context, para
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/add-selected-repo-to-org-secret"),
 		semconv.HTTPRequestMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/actions/secrets/{secret_name}/repositories/{repository_id}"),
+		semconv.URLTemplateKey.String("/orgs/{org}/actions/secrets/{secret_name}/repositories/{repository_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -8105,7 +8105,7 @@ func (c *Client) sendActionsAddSelfHostedRunnerToGroupForOrg(ctx context.Context
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/add-self-hosted-runner-to-group-for-org"),
 		semconv.HTTPRequestMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/actions/runner-groups/{runner_group_id}/runners/{runner_id}"),
+		semconv.URLTemplateKey.String("/orgs/{org}/actions/runner-groups/{runner_group_id}/runners/{runner_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -8238,7 +8238,7 @@ func (c *Client) sendActionsApproveWorkflowRun(ctx context.Context, params Actio
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/approve-workflow-run"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/runs/{run_id}/approve"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/actions/runs/{run_id}/approve"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -8370,7 +8370,7 @@ func (c *Client) sendActionsCancelWorkflowRun(ctx context.Context, params Action
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/cancel-workflow-run"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/runs/{run_id}/cancel"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/actions/runs/{run_id}/cancel"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -8553,7 +8553,7 @@ func (c *Client) sendActionsCreateOrUpdateEnvironmentSecret(ctx context.Context,
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/create-or-update-environment-secret"),
 		semconv.HTTPRequestMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}"),
+		semconv.URLTemplateKey.String("/repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -8738,7 +8738,7 @@ func (c *Client) sendActionsCreateOrUpdateOrgSecret(ctx context.Context, request
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/create-or-update-org-secret"),
 		semconv.HTTPRequestMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/actions/secrets/{secret_name}"),
+		semconv.URLTemplateKey.String("/orgs/{org}/actions/secrets/{secret_name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -8904,7 +8904,7 @@ func (c *Client) sendActionsCreateOrUpdateRepoSecret(ctx context.Context, reques
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/create-or-update-repo-secret"),
 		semconv.HTTPRequestMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/secrets/{secret_name}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/actions/secrets/{secret_name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -9043,7 +9043,7 @@ func (c *Client) sendActionsCreateRegistrationTokenForOrg(ctx context.Context, p
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/create-registration-token-for-org"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/actions/runners/registration-token"),
+		semconv.URLTemplateKey.String("/orgs/{org}/actions/runners/registration-token"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -9143,7 +9143,7 @@ func (c *Client) sendActionsCreateRegistrationTokenForRepo(ctx context.Context, 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/create-registration-token-for-repo"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/runners/registration-token"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/actions/runners/registration-token"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -9263,7 +9263,7 @@ func (c *Client) sendActionsCreateRemoveTokenForOrg(ctx context.Context, params 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/create-remove-token-for-org"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/actions/runners/remove-token"),
+		semconv.URLTemplateKey.String("/orgs/{org}/actions/runners/remove-token"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -9363,7 +9363,7 @@ func (c *Client) sendActionsCreateRemoveTokenForRepo(ctx context.Context, params
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/create-remove-token-for-repo"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/runners/remove-token"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/actions/runners/remove-token"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -9478,7 +9478,7 @@ func (c *Client) sendActionsCreateSelfHostedRunnerGroupForOrg(ctx context.Contex
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/create-self-hosted-runner-group-for-org"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/actions/runner-groups"),
+		semconv.URLTemplateKey.String("/orgs/{org}/actions/runner-groups"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -9575,7 +9575,7 @@ func (c *Client) sendActionsDeleteArtifact(ctx context.Context, params ActionsDe
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/delete-artifact"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/artifacts/{artifact_id}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/actions/artifacts/{artifact_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -9706,7 +9706,7 @@ func (c *Client) sendActionsDeleteEnvironmentSecret(ctx context.Context, params 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/delete-environment-secret"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}"),
+		semconv.URLTemplateKey.String("/repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -9837,7 +9837,7 @@ func (c *Client) sendActionsDeleteOrgSecret(ctx context.Context, params ActionsD
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/delete-org-secret"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/actions/secrets/{secret_name}"),
+		semconv.URLTemplateKey.String("/orgs/{org}/actions/secrets/{secret_name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -9949,7 +9949,7 @@ func (c *Client) sendActionsDeleteRepoSecret(ctx context.Context, params Actions
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/delete-repo-secret"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/secrets/{secret_name}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/actions/secrets/{secret_name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -10080,7 +10080,7 @@ func (c *Client) sendActionsDeleteSelfHostedRunnerFromOrg(ctx context.Context, p
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/delete-self-hosted-runner-from-org"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/actions/runners/{runner_id}"),
+		semconv.URLTemplateKey.String("/orgs/{org}/actions/runners/{runner_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -10193,7 +10193,7 @@ func (c *Client) sendActionsDeleteSelfHostedRunnerFromRepo(ctx context.Context, 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/delete-self-hosted-runner-from-repo"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/runners/{runner_id}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/actions/runners/{runner_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -10326,7 +10326,7 @@ func (c *Client) sendActionsDeleteSelfHostedRunnerGroupFromOrg(ctx context.Conte
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/delete-self-hosted-runner-group-from-org"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/actions/runner-groups/{runner_group_id}"),
+		semconv.URLTemplateKey.String("/orgs/{org}/actions/runner-groups/{runner_group_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -10440,7 +10440,7 @@ func (c *Client) sendActionsDeleteWorkflowRun(ctx context.Context, params Action
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/delete-workflow-run"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/runs/{run_id}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/actions/runs/{run_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -10571,7 +10571,7 @@ func (c *Client) sendActionsDeleteWorkflowRunLogs(ctx context.Context, params Ac
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/delete-workflow-run-logs"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/runs/{run_id}/logs"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/actions/runs/{run_id}/logs"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -10706,7 +10706,7 @@ func (c *Client) sendActionsDisableSelectedRepositoryGithubActionsOrganization(c
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/disable-selected-repository-github-actions-organization"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/actions/permissions/repositories/{repository_id}"),
+		semconv.URLTemplateKey.String("/orgs/{org}/actions/permissions/repositories/{repository_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -10822,7 +10822,7 @@ func (c *Client) sendActionsDownloadArtifact(ctx context.Context, params Actions
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/download-artifact"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/artifacts/{artifact_id}/{archive_format}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/actions/artifacts/{artifact_id}/{archive_format}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -10978,7 +10978,7 @@ func (c *Client) sendActionsDownloadJobLogsForWorkflowRun(ctx context.Context, p
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/download-job-logs-for-workflow-run"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/jobs/{job_id}/logs"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/actions/jobs/{job_id}/logs"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -11114,7 +11114,7 @@ func (c *Client) sendActionsDownloadWorkflowRunLogs(ctx context.Context, params 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/download-workflow-run-logs"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/runs/{run_id}/logs"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/actions/runs/{run_id}/logs"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -11249,7 +11249,7 @@ func (c *Client) sendActionsEnableSelectedRepositoryGithubActionsOrganization(ct
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/enable-selected-repository-github-actions-organization"),
 		semconv.HTTPRequestMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/actions/permissions/repositories/{repository_id}"),
+		semconv.URLTemplateKey.String("/orgs/{org}/actions/permissions/repositories/{repository_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -11364,7 +11364,7 @@ func (c *Client) sendActionsGetAllowedActionsOrganization(ctx context.Context, p
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/get-allowed-actions-organization"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/actions/permissions/selected-actions"),
+		semconv.URLTemplateKey.String("/orgs/{org}/actions/permissions/selected-actions"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -11461,7 +11461,7 @@ func (c *Client) sendActionsGetAllowedActionsRepository(ctx context.Context, par
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/get-allowed-actions-repository"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/permissions/selected-actions"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/actions/permissions/selected-actions"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -11574,7 +11574,7 @@ func (c *Client) sendActionsGetArtifact(ctx context.Context, params ActionsGetAr
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/get-artifact"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/artifacts/{artifact_id}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/actions/artifacts/{artifact_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -11706,7 +11706,7 @@ func (c *Client) sendActionsGetEnvironmentPublicKey(ctx context.Context, params 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/get-environment-public-key"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repositories/{repository_id}/environments/{environment_name}/secrets/public-key"),
+		semconv.URLTemplateKey.String("/repositories/{repository_id}/environments/{environment_name}/secrets/public-key"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -11819,7 +11819,7 @@ func (c *Client) sendActionsGetEnvironmentSecret(ctx context.Context, params Act
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/get-environment-secret"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}"),
+		semconv.URLTemplateKey.String("/repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -11950,7 +11950,7 @@ func (c *Client) sendActionsGetGithubActionsPermissionsOrganization(ctx context.
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/get-github-actions-permissions-organization"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/actions/permissions"),
+		semconv.URLTemplateKey.String("/orgs/{org}/actions/permissions"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -12045,7 +12045,7 @@ func (c *Client) sendActionsGetGithubActionsPermissionsRepository(ctx context.Co
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/get-github-actions-permissions-repository"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/permissions"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/actions/permissions"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -12158,7 +12158,7 @@ func (c *Client) sendActionsGetJobForWorkflowRun(ctx context.Context, params Act
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/get-job-for-workflow-run"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/jobs/{job_id}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/actions/jobs/{job_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -12290,7 +12290,7 @@ func (c *Client) sendActionsGetOrgPublicKey(ctx context.Context, params ActionsG
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/get-org-public-key"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/actions/secrets/public-key"),
+		semconv.URLTemplateKey.String("/orgs/{org}/actions/secrets/public-key"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -12384,7 +12384,7 @@ func (c *Client) sendActionsGetOrgSecret(ctx context.Context, params ActionsGetO
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/get-org-secret"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/actions/secrets/{secret_name}"),
+		semconv.URLTemplateKey.String("/orgs/{org}/actions/secrets/{secret_name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -12497,7 +12497,7 @@ func (c *Client) sendActionsGetRepoPublicKey(ctx context.Context, params Actions
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/get-repo-public-key"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/secrets/public-key"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/actions/secrets/public-key"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -12610,7 +12610,7 @@ func (c *Client) sendActionsGetRepoSecret(ctx context.Context, params ActionsGet
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/get-repo-secret"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/secrets/{secret_name}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/actions/secrets/{secret_name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -12741,7 +12741,7 @@ func (c *Client) sendActionsGetReviewsForRun(ctx context.Context, params Actions
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/get-reviews-for-run"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/runs/{run_id}/approvals"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/actions/runs/{run_id}/approvals"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -12872,7 +12872,7 @@ func (c *Client) sendActionsGetSelfHostedRunnerForOrg(ctx context.Context, param
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/get-self-hosted-runner-for-org"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/actions/runners/{runner_id}"),
+		semconv.URLTemplateKey.String("/orgs/{org}/actions/runners/{runner_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -12984,7 +12984,7 @@ func (c *Client) sendActionsGetSelfHostedRunnerForRepo(ctx context.Context, para
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/get-self-hosted-runner-for-repo"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/runners/{runner_id}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/actions/runners/{runner_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -13117,7 +13117,7 @@ func (c *Client) sendActionsGetSelfHostedRunnerGroupForOrg(ctx context.Context, 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/get-self-hosted-runner-group-for-org"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/actions/runner-groups/{runner_group_id}"),
+		semconv.URLTemplateKey.String("/orgs/{org}/actions/runner-groups/{runner_group_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -13229,7 +13229,7 @@ func (c *Client) sendActionsGetWorkflowRun(ctx context.Context, params ActionsGe
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/get-workflow-run"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/runs/{run_id}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/actions/runs/{run_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -13367,7 +13367,7 @@ func (c *Client) sendActionsGetWorkflowRunUsage(ctx context.Context, params Acti
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/get-workflow-run-usage"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/runs/{run_id}/timing"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/actions/runs/{run_id}/timing"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -13499,7 +13499,7 @@ func (c *Client) sendActionsListArtifactsForRepo(ctx context.Context, params Act
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/list-artifacts-for-repo"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/artifacts"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/actions/artifacts"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -13650,7 +13650,7 @@ func (c *Client) sendActionsListEnvironmentSecrets(ctx context.Context, params A
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/list-environment-secrets"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repositories/{repository_id}/environments/{environment_name}/secrets"),
+		semconv.URLTemplateKey.String("/repositories/{repository_id}/environments/{environment_name}/secrets"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -13803,7 +13803,7 @@ func (c *Client) sendActionsListJobsForWorkflowRun(ctx context.Context, params A
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/list-jobs-for-workflow-run"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/runs/{run_id}/jobs"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/actions/runs/{run_id}/jobs"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -13990,7 +13990,7 @@ func (c *Client) sendActionsListOrgSecrets(ctx context.Context, params ActionsLi
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/list-org-secrets"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/actions/secrets"),
+		semconv.URLTemplateKey.String("/orgs/{org}/actions/secrets"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -14124,7 +14124,7 @@ func (c *Client) sendActionsListRepoAccessToSelfHostedRunnerGroupInOrg(ctx conte
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/list-repo-access-to-self-hosted-runner-group-in-org"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/actions/runner-groups/{runner_group_id}/repositories"),
+		semconv.URLTemplateKey.String("/orgs/{org}/actions/runner-groups/{runner_group_id}/repositories"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -14275,7 +14275,7 @@ func (c *Client) sendActionsListRepoSecrets(ctx context.Context, params ActionsL
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/list-repo-secrets"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/secrets"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/actions/secrets"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -14426,7 +14426,7 @@ func (c *Client) sendActionsListRepoWorkflows(ctx context.Context, params Action
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/list-repo-workflows"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/workflows"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/actions/workflows"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -14576,7 +14576,7 @@ func (c *Client) sendActionsListRunnerApplicationsForOrg(ctx context.Context, pa
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/list-runner-applications-for-org"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/actions/runners/downloads"),
+		semconv.URLTemplateKey.String("/orgs/{org}/actions/runners/downloads"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -14669,7 +14669,7 @@ func (c *Client) sendActionsListRunnerApplicationsForRepo(ctx context.Context, p
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/list-runner-applications-for-repo"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/runners/downloads"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/actions/runners/downloads"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -14783,7 +14783,7 @@ func (c *Client) sendActionsListSelectedReposForOrgSecret(ctx context.Context, p
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/list-selected-repos-for-org-secret"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/actions/secrets/{secret_name}/repositories"),
+		semconv.URLTemplateKey.String("/orgs/{org}/actions/secrets/{secret_name}/repositories"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -14937,7 +14937,7 @@ func (c *Client) sendActionsListSelectedRepositoriesEnabledGithubActionsOrganiza
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/list-selected-repositories-enabled-github-actions-organization"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/actions/permissions/repositories"),
+		semconv.URLTemplateKey.String("/orgs/{org}/actions/permissions/repositories"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -15071,7 +15071,7 @@ func (c *Client) sendActionsListSelfHostedRunnerGroupsForOrg(ctx context.Context
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/list-self-hosted-runner-groups-for-org"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/actions/runner-groups"),
+		semconv.URLTemplateKey.String("/orgs/{org}/actions/runner-groups"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -15202,7 +15202,7 @@ func (c *Client) sendActionsListSelfHostedRunnersForOrg(ctx context.Context, par
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/list-self-hosted-runners-for-org"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/actions/runners"),
+		semconv.URLTemplateKey.String("/orgs/{org}/actions/runners"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -15333,7 +15333,7 @@ func (c *Client) sendActionsListSelfHostedRunnersForRepo(ctx context.Context, pa
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/list-self-hosted-runners-for-repo"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/runners"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/actions/runners"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -15486,7 +15486,7 @@ func (c *Client) sendActionsListSelfHostedRunnersInGroupForOrg(ctx context.Conte
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/list-self-hosted-runners-in-group-for-org"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/actions/runner-groups/{runner_group_id}/runners"),
+		semconv.URLTemplateKey.String("/orgs/{org}/actions/runner-groups/{runner_group_id}/runners"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -15637,7 +15637,7 @@ func (c *Client) sendActionsListWorkflowRunArtifacts(ctx context.Context, params
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/list-workflow-run-artifacts"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/runs/{run_id}/artifacts"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/actions/runs/{run_id}/artifacts"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -15810,7 +15810,7 @@ func (c *Client) sendActionsListWorkflowRunsForRepo(ctx context.Context, params 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/list-workflow-runs-for-repo"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/runs"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/actions/runs"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -16051,7 +16051,7 @@ func (c *Client) sendActionsReRunWorkflow(ctx context.Context, params ActionsReR
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/re-run-workflow"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/runs/{run_id}/rerun"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/actions/runs/{run_id}/rerun"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -16188,7 +16188,7 @@ func (c *Client) sendActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg(ctx con
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/remove-repo-access-to-self-hosted-runner-group-in-org"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/actions/runner-groups/{runner_group_id}/repositories/{repository_id}"),
+		semconv.URLTemplateKey.String("/orgs/{org}/actions/runner-groups/{runner_group_id}/repositories/{repository_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -16321,7 +16321,7 @@ func (c *Client) sendActionsRemoveSelectedRepoFromOrgSecret(ctx context.Context,
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/remove-selected-repo-from-org-secret"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/actions/secrets/{secret_name}/repositories/{repository_id}"),
+		semconv.URLTemplateKey.String("/orgs/{org}/actions/secrets/{secret_name}/repositories/{repository_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -16455,7 +16455,7 @@ func (c *Client) sendActionsRemoveSelfHostedRunnerFromGroupForOrg(ctx context.Co
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/remove-self-hosted-runner-from-group-for-org"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/actions/runner-groups/{runner_group_id}/runners/{runner_id}"),
+		semconv.URLTemplateKey.String("/orgs/{org}/actions/runner-groups/{runner_group_id}/runners/{runner_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -16586,7 +16586,7 @@ func (c *Client) sendActionsRetryWorkflow(ctx context.Context, params ActionsRet
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/retry-workflow"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/runs/{run_id}/retry"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/actions/runs/{run_id}/retry"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -16717,7 +16717,7 @@ func (c *Client) sendActionsReviewPendingDeploymentsForRun(ctx context.Context, 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/review-pending-deployments-for-run"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/runs/{run_id}/pending_deployments"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/actions/runs/{run_id}/pending_deployments"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -16860,7 +16860,7 @@ func (c *Client) sendActionsSetAllowedActionsOrganization(ctx context.Context, r
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/set-allowed-actions-organization"),
 		semconv.HTTPRequestMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/actions/permissions/selected-actions"),
+		semconv.URLTemplateKey.String("/orgs/{org}/actions/permissions/selected-actions"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -16964,7 +16964,7 @@ func (c *Client) sendActionsSetAllowedActionsRepository(ctx context.Context, req
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/set-allowed-actions-repository"),
 		semconv.HTTPRequestMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/permissions/selected-actions"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/actions/permissions/selected-actions"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -17083,7 +17083,7 @@ func (c *Client) sendActionsSetGithubActionsPermissionsOrganization(ctx context.
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/set-github-actions-permissions-organization"),
 		semconv.HTTPRequestMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/actions/permissions"),
+		semconv.URLTemplateKey.String("/orgs/{org}/actions/permissions"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -17184,7 +17184,7 @@ func (c *Client) sendActionsSetGithubActionsPermissionsRepository(ctx context.Co
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/set-github-actions-permissions-repository"),
 		semconv.HTTPRequestMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/permissions"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/actions/permissions"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -17303,7 +17303,7 @@ func (c *Client) sendActionsSetRepoAccessToSelfHostedRunnerGroupInOrg(ctx contex
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/set-repo-access-to-self-hosted-runner-group-in-org"),
 		semconv.HTTPRequestMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/actions/runner-groups/{runner_group_id}/repositories"),
+		semconv.URLTemplateKey.String("/orgs/{org}/actions/runner-groups/{runner_group_id}/repositories"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -17421,7 +17421,7 @@ func (c *Client) sendActionsSetSelectedReposForOrgSecret(ctx context.Context, re
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/set-selected-repos-for-org-secret"),
 		semconv.HTTPRequestMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/actions/secrets/{secret_name}/repositories"),
+		semconv.URLTemplateKey.String("/orgs/{org}/actions/secrets/{secret_name}/repositories"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -17540,7 +17540,7 @@ func (c *Client) sendActionsSetSelectedRepositoriesEnabledGithubActionsOrganizat
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/set-selected-repositories-enabled-github-actions-organization"),
 		semconv.HTTPRequestMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/actions/permissions/repositories"),
+		semconv.URLTemplateKey.String("/orgs/{org}/actions/permissions/repositories"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -17639,7 +17639,7 @@ func (c *Client) sendActionsSetSelfHostedRunnersInGroupForOrg(ctx context.Contex
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/set-self-hosted-runners-in-group-for-org"),
 		semconv.HTTPRequestMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/actions/runner-groups/{runner_group_id}/runners"),
+		semconv.URLTemplateKey.String("/orgs/{org}/actions/runner-groups/{runner_group_id}/runners"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -17757,7 +17757,7 @@ func (c *Client) sendActionsUpdateSelfHostedRunnerGroupForOrg(ctx context.Contex
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/update-self-hosted-runner-group-for-org"),
 		semconv.HTTPRequestMethodKey.String("PATCH"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/actions/runner-groups/{runner_group_id}"),
+		semconv.URLTemplateKey.String("/orgs/{org}/actions/runner-groups/{runner_group_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -17870,7 +17870,7 @@ func (c *Client) sendActivityCheckRepoIsStarredByAuthenticatedUser(ctx context.C
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/check-repo-is-starred-by-authenticated-user"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/user/starred/{owner}/{repo}"),
+		semconv.URLTemplateKey.String("/user/starred/{owner}/{repo}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -17982,7 +17982,7 @@ func (c *Client) sendActivityDeleteRepoSubscription(ctx context.Context, params 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/delete-repo-subscription"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/subscription"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/subscription"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -18097,7 +18097,7 @@ func (c *Client) sendActivityDeleteThreadSubscription(ctx context.Context, param
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/delete-thread-subscription"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/notifications/threads/{thread_id}/subscription"),
+		semconv.URLTemplateKey.String("/notifications/threads/{thread_id}/subscription"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -18203,7 +18203,7 @@ func (c *Client) sendActivityGetFeeds(ctx context.Context) (res *Feed, err error
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/get-feeds"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/feeds"),
+		semconv.URLTemplateKey.String("/feeds"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -18276,7 +18276,7 @@ func (c *Client) sendActivityGetRepoSubscription(ctx context.Context, params Act
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/get-repo-subscription"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/subscription"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/subscription"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -18387,7 +18387,7 @@ func (c *Client) sendActivityGetThread(ctx context.Context, params ActivityGetTh
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/get-thread"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/notifications/threads/{thread_id}"),
+		semconv.URLTemplateKey.String("/notifications/threads/{thread_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -18481,7 +18481,7 @@ func (c *Client) sendActivityGetThreadSubscriptionForAuthenticatedUser(ctx conte
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/get-thread-subscription-for-authenticated-user"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/notifications/threads/{thread_id}/subscription"),
+		semconv.URLTemplateKey.String("/notifications/threads/{thread_id}/subscription"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -18574,7 +18574,7 @@ func (c *Client) sendActivityListEventsForAuthenticatedUser(ctx context.Context,
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/list-events-for-authenticated-user"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/users/{username}/events"),
+		semconv.URLTemplateKey.String("/users/{username}/events"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -18704,7 +18704,7 @@ func (c *Client) sendActivityListNotificationsForAuthenticatedUser(ctx context.C
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/list-notifications-for-authenticated-user"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/notifications"),
+		semconv.URLTemplateKey.String("/notifications"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -18883,7 +18883,7 @@ func (c *Client) sendActivityListOrgEventsForAuthenticatedUser(ctx context.Conte
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/list-org-events-for-authenticated-user"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/users/{username}/events/orgs/{org}"),
+		semconv.URLTemplateKey.String("/users/{username}/events/orgs/{org}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -19032,7 +19032,7 @@ func (c *Client) sendActivityListPublicEvents(ctx context.Context, params Activi
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/list-public-events"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/events"),
+		semconv.URLTemplateKey.String("/events"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -19143,7 +19143,7 @@ func (c *Client) sendActivityListPublicEventsForRepoNetwork(ctx context.Context,
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/list-public-events-for-repo-network"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/networks/{owner}/{repo}/events"),
+		semconv.URLTemplateKey.String("/networks/{owner}/{repo}/events"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -19292,7 +19292,7 @@ func (c *Client) sendActivityListPublicEventsForUser(ctx context.Context, params
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/list-public-events-for-user"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/users/{username}/events/public"),
+		semconv.URLTemplateKey.String("/users/{username}/events/public"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -19422,7 +19422,7 @@ func (c *Client) sendActivityListPublicOrgEvents(ctx context.Context, params Act
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/list-public-org-events"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/events"),
+		semconv.URLTemplateKey.String("/orgs/{org}/events"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -19554,7 +19554,7 @@ func (c *Client) sendActivityListReceivedEventsForUser(ctx context.Context, para
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/list-received-events-for-user"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/users/{username}/received_events"),
+		semconv.URLTemplateKey.String("/users/{username}/received_events"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -19684,7 +19684,7 @@ func (c *Client) sendActivityListReceivedPublicEventsForUser(ctx context.Context
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/list-received-public-events-for-user"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/users/{username}/received_events/public"),
+		semconv.URLTemplateKey.String("/users/{username}/received_events/public"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -19814,7 +19814,7 @@ func (c *Client) sendActivityListRepoEvents(ctx context.Context, params Activity
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/list-repo-events"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/events"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/events"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -19963,7 +19963,7 @@ func (c *Client) sendActivityListRepoNotificationsForAuthenticatedUser(ctx conte
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/list-repo-notifications-for-authenticated-user"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/notifications"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/notifications"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -20182,7 +20182,7 @@ func (c *Client) sendActivityListReposStarredByAuthenticatedUser(ctx context.Con
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/list-repos-starred-by-authenticated-user"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/user/starred"),
+		semconv.URLTemplateKey.String("/user/starred"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -20327,7 +20327,7 @@ func (c *Client) sendActivityListReposWatchedByUser(ctx context.Context, params 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/list-repos-watched-by-user"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/users/{username}/subscriptions"),
+		semconv.URLTemplateKey.String("/users/{username}/subscriptions"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -20457,7 +20457,7 @@ func (c *Client) sendActivityListWatchedReposForAuthenticatedUser(ctx context.Co
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/list-watched-repos-for-authenticated-user"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/user/subscriptions"),
+		semconv.URLTemplateKey.String("/user/subscriptions"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -20568,7 +20568,7 @@ func (c *Client) sendActivityListWatchersForRepo(ctx context.Context, params Act
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/list-watchers-for-repo"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/subscribers"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/subscribers"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -20723,7 +20723,7 @@ func (c *Client) sendActivityMarkNotificationsAsRead(ctx context.Context, reques
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/mark-notifications-as-read"),
 		semconv.HTTPRequestMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/notifications"),
+		semconv.URLTemplateKey.String("/notifications"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -20805,7 +20805,7 @@ func (c *Client) sendActivityMarkRepoNotificationsAsRead(ctx context.Context, re
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/mark-repo-notifications-as-read"),
 		semconv.HTTPRequestMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/notifications"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/notifications"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -20919,7 +20919,7 @@ func (c *Client) sendActivityMarkThreadAsRead(ctx context.Context, params Activi
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/mark-thread-as-read"),
 		semconv.HTTPRequestMethodKey.String("PATCH"),
-		semconv.HTTPRouteKey.String("/notifications/threads/{thread_id}"),
+		semconv.URLTemplateKey.String("/notifications/threads/{thread_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -21013,7 +21013,7 @@ func (c *Client) sendActivitySetRepoSubscription(ctx context.Context, request Op
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/set-repo-subscription"),
 		semconv.HTTPRequestMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/subscription"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/subscription"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -21134,7 +21134,7 @@ func (c *Client) sendActivitySetThreadSubscription(ctx context.Context, request 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/set-thread-subscription"),
 		semconv.HTTPRequestMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/notifications/threads/{thread_id}/subscription"),
+		semconv.URLTemplateKey.String("/notifications/threads/{thread_id}/subscription"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -21231,7 +21231,7 @@ func (c *Client) sendActivityStarRepoForAuthenticatedUser(ctx context.Context, p
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/star-repo-for-authenticated-user"),
 		semconv.HTTPRequestMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/user/starred/{owner}/{repo}"),
+		semconv.URLTemplateKey.String("/user/starred/{owner}/{repo}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -21341,7 +21341,7 @@ func (c *Client) sendActivityUnstarRepoForAuthenticatedUser(ctx context.Context,
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/unstar-repo-for-authenticated-user"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/user/starred/{owner}/{repo}"),
+		semconv.URLTemplateKey.String("/user/starred/{owner}/{repo}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -21456,7 +21456,7 @@ func (c *Client) sendAppsAddRepoToInstallation(ctx context.Context, params AppsA
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/add-repo-to-installation"),
 		semconv.HTTPRequestMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/user/installations/{installation_id}/repositories/{repository_id}"),
+		semconv.URLTemplateKey.String("/user/installations/{installation_id}/repositories/{repository_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -21571,7 +21571,7 @@ func (c *Client) sendAppsCheckToken(ctx context.Context, request *AppsCheckToken
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/check-token"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/applications/{client_id}/token"),
+		semconv.URLTemplateKey.String("/applications/{client_id}/token"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -21675,7 +21675,7 @@ func (c *Client) sendAppsCreateContentAttachment(ctx context.Context, request *A
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/create-content-attachment"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/content_references/{content_reference_id}/attachments"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/content_references/{content_reference_id}/attachments"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -21811,7 +21811,7 @@ func (c *Client) sendAppsCreateFromManifest(ctx context.Context, request *AppsCr
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/create-from-manifest"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/app-manifests/{code}/conversions"),
+		semconv.URLTemplateKey.String("/app-manifests/{code}/conversions"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -21915,7 +21915,7 @@ func (c *Client) sendAppsCreateInstallationAccessToken(ctx context.Context, requ
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/create-installation-access-token"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/app/installations/{installation_id}/access_tokens"),
+		semconv.URLTemplateKey.String("/app/installations/{installation_id}/access_tokens"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -22019,7 +22019,7 @@ func (c *Client) sendAppsDeleteAuthorization(ctx context.Context, request *AppsD
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/delete-authorization"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/applications/{client_id}/grant"),
+		semconv.URLTemplateKey.String("/applications/{client_id}/grant"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -22119,7 +22119,7 @@ func (c *Client) sendAppsDeleteInstallation(ctx context.Context, params AppsDele
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/delete-installation"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/app/installations/{installation_id}"),
+		semconv.URLTemplateKey.String("/app/installations/{installation_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -22213,7 +22213,7 @@ func (c *Client) sendAppsDeleteToken(ctx context.Context, request *AppsDeleteTok
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/delete-token"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/applications/{client_id}/token"),
+		semconv.URLTemplateKey.String("/applications/{client_id}/token"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -22315,7 +22315,7 @@ func (c *Client) sendAppsGetAuthenticated(ctx context.Context) (res *Integration
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/get-authenticated"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/app"),
+		semconv.URLTemplateKey.String("/app"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -22395,7 +22395,7 @@ func (c *Client) sendAppsGetBySlug(ctx context.Context, params AppsGetBySlugPara
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/get-by-slug"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apps/{app_slug}"),
+		semconv.URLTemplateKey.String("/apps/{app_slug}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -22493,7 +22493,7 @@ func (c *Client) sendAppsGetSubscriptionPlanForAccount(ctx context.Context, para
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/get-subscription-plan-for-account"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/marketplace_listing/accounts/{account_id}"),
+		semconv.URLTemplateKey.String("/marketplace_listing/accounts/{account_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -22591,7 +22591,7 @@ func (c *Client) sendAppsGetSubscriptionPlanForAccountStubbed(ctx context.Contex
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/get-subscription-plan-for-account-stubbed"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/marketplace_listing/stubbed/accounts/{account_id}"),
+		semconv.URLTemplateKey.String("/marketplace_listing/stubbed/accounts/{account_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -22686,7 +22686,7 @@ func (c *Client) sendAppsGetWebhookConfigForApp(ctx context.Context) (res *Webho
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/get-webhook-config-for-app"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/app/hook/config"),
+		semconv.URLTemplateKey.String("/app/hook/config"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -22762,7 +22762,7 @@ func (c *Client) sendAppsGetWebhookDelivery(ctx context.Context, params AppsGetW
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/get-webhook-delivery"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/app/hook/deliveries/{delivery_id}"),
+		semconv.URLTemplateKey.String("/app/hook/deliveries/{delivery_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -22861,7 +22861,7 @@ func (c *Client) sendAppsListAccountsForPlan(ctx context.Context, params AppsLis
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/list-accounts-for-plan"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/marketplace_listing/plans/{plan_id}/accounts"),
+		semconv.URLTemplateKey.String("/marketplace_listing/plans/{plan_id}/accounts"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -23033,7 +23033,7 @@ func (c *Client) sendAppsListAccountsForPlanStubbed(ctx context.Context, params 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/list-accounts-for-plan-stubbed"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/marketplace_listing/stubbed/plans/{plan_id}/accounts"),
+		semconv.URLTemplateKey.String("/marketplace_listing/stubbed/plans/{plan_id}/accounts"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -23203,7 +23203,7 @@ func (c *Client) sendAppsListInstallationReposForAuthenticatedUser(ctx context.C
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/list-installation-repos-for-authenticated-user"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/user/installations/{installation_id}/repositories"),
+		semconv.URLTemplateKey.String("/user/installations/{installation_id}/repositories"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -23338,7 +23338,7 @@ func (c *Client) sendAppsListPlans(ctx context.Context, params AppsListPlansPara
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/list-plans"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/marketplace_listing/plans"),
+		semconv.URLTemplateKey.String("/marketplace_listing/plans"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -23454,7 +23454,7 @@ func (c *Client) sendAppsListPlansStubbed(ctx context.Context, params AppsListPl
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/list-plans-stubbed"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/marketplace_listing/stubbed/plans"),
+		semconv.URLTemplateKey.String("/marketplace_listing/stubbed/plans"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -23568,7 +23568,7 @@ func (c *Client) sendAppsListReposAccessibleToInstallation(ctx context.Context, 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/list-repos-accessible-to-installation"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/installation/repositories"),
+		semconv.URLTemplateKey.String("/installation/repositories"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -23681,7 +23681,7 @@ func (c *Client) sendAppsListSubscriptionsForAuthenticatedUser(ctx context.Conte
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/list-subscriptions-for-authenticated-user"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/user/marketplace_purchases"),
+		semconv.URLTemplateKey.String("/user/marketplace_purchases"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -23794,7 +23794,7 @@ func (c *Client) sendAppsListSubscriptionsForAuthenticatedUserStubbed(ctx contex
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/list-subscriptions-for-authenticated-user-stubbed"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/user/marketplace_purchases/stubbed"),
+		semconv.URLTemplateKey.String("/user/marketplace_purchases/stubbed"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -23908,7 +23908,7 @@ func (c *Client) sendAppsListWebhookDeliveries(ctx context.Context, params AppsL
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/list-webhook-deliveries"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/app/hook/deliveries"),
+		semconv.URLTemplateKey.String("/app/hook/deliveries"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -24022,7 +24022,7 @@ func (c *Client) sendAppsRedeliverWebhookDelivery(ctx context.Context, params Ap
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/redeliver-webhook-delivery"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/app/hook/deliveries/{delivery_id}/attempts"),
+		semconv.URLTemplateKey.String("/app/hook/deliveries/{delivery_id}/attempts"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -24119,7 +24119,7 @@ func (c *Client) sendAppsRemoveRepoFromInstallation(ctx context.Context, params 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/remove-repo-from-installation"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/user/installations/{installation_id}/repositories/{repository_id}"),
+		semconv.URLTemplateKey.String("/user/installations/{installation_id}/repositories/{repository_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -24234,7 +24234,7 @@ func (c *Client) sendAppsResetToken(ctx context.Context, request *AppsResetToken
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/reset-token"),
 		semconv.HTTPRequestMethodKey.String("PATCH"),
-		semconv.HTTPRouteKey.String("/applications/{client_id}/token"),
+		semconv.URLTemplateKey.String("/applications/{client_id}/token"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -24338,7 +24338,7 @@ func (c *Client) sendAppsRevokeInstallationAccessToken(ctx context.Context) (res
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/revoke-installation-access-token"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/installation/token"),
+		semconv.URLTemplateKey.String("/installation/token"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -24416,7 +24416,7 @@ func (c *Client) sendAppsScopeToken(ctx context.Context, request *AppsScopeToken
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/scope-token"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/applications/{client_id}/token/scoped"),
+		semconv.URLTemplateKey.String("/applications/{client_id}/token/scoped"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -24516,7 +24516,7 @@ func (c *Client) sendAppsSuspendInstallation(ctx context.Context, params AppsSus
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/suspend-installation"),
 		semconv.HTTPRequestMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/app/installations/{installation_id}/suspended"),
+		semconv.URLTemplateKey.String("/app/installations/{installation_id}/suspended"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -24611,7 +24611,7 @@ func (c *Client) sendAppsUnsuspendInstallation(ctx context.Context, params AppsU
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/unsuspend-installation"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/app/installations/{installation_id}/suspended"),
+		semconv.URLTemplateKey.String("/app/installations/{installation_id}/suspended"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -24707,7 +24707,7 @@ func (c *Client) sendAppsUpdateWebhookConfigForApp(ctx context.Context, request 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/update-webhook-config-for-app"),
 		semconv.HTTPRequestMethodKey.String("PATCH"),
-		semconv.HTTPRouteKey.String("/app/hook/config"),
+		semconv.URLTemplateKey.String("/app/hook/config"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -24790,7 +24790,7 @@ func (c *Client) sendBillingGetGithubActionsBillingGhe(ctx context.Context, para
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("billing/get-github-actions-billing-ghe"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/settings/billing/actions"),
+		semconv.URLTemplateKey.String("/enterprises/{enterprise}/settings/billing/actions"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -24889,7 +24889,7 @@ func (c *Client) sendBillingGetGithubActionsBillingOrg(ctx context.Context, para
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("billing/get-github-actions-billing-org"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/settings/billing/actions"),
+		semconv.URLTemplateKey.String("/orgs/{org}/settings/billing/actions"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -24988,7 +24988,7 @@ func (c *Client) sendBillingGetGithubActionsBillingUser(ctx context.Context, par
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("billing/get-github-actions-billing-user"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/users/{username}/settings/billing/actions"),
+		semconv.URLTemplateKey.String("/users/{username}/settings/billing/actions"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -25084,7 +25084,7 @@ func (c *Client) sendBillingGetGithubPackagesBillingGhe(ctx context.Context, par
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("billing/get-github-packages-billing-ghe"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/settings/billing/packages"),
+		semconv.URLTemplateKey.String("/enterprises/{enterprise}/settings/billing/packages"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -25180,7 +25180,7 @@ func (c *Client) sendBillingGetGithubPackagesBillingOrg(ctx context.Context, par
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("billing/get-github-packages-billing-org"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/settings/billing/packages"),
+		semconv.URLTemplateKey.String("/orgs/{org}/settings/billing/packages"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -25276,7 +25276,7 @@ func (c *Client) sendBillingGetGithubPackagesBillingUser(ctx context.Context, pa
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("billing/get-github-packages-billing-user"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/users/{username}/settings/billing/packages"),
+		semconv.URLTemplateKey.String("/users/{username}/settings/billing/packages"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -25372,7 +25372,7 @@ func (c *Client) sendBillingGetSharedStorageBillingGhe(ctx context.Context, para
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("billing/get-shared-storage-billing-ghe"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/settings/billing/shared-storage"),
+		semconv.URLTemplateKey.String("/enterprises/{enterprise}/settings/billing/shared-storage"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -25468,7 +25468,7 @@ func (c *Client) sendBillingGetSharedStorageBillingOrg(ctx context.Context, para
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("billing/get-shared-storage-billing-org"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/settings/billing/shared-storage"),
+		semconv.URLTemplateKey.String("/orgs/{org}/settings/billing/shared-storage"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -25564,7 +25564,7 @@ func (c *Client) sendBillingGetSharedStorageBillingUser(ctx context.Context, par
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("billing/get-shared-storage-billing-user"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/users/{username}/settings/billing/shared-storage"),
+		semconv.URLTemplateKey.String("/users/{username}/settings/billing/shared-storage"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -25664,7 +25664,7 @@ func (c *Client) sendChecksCreateSuite(ctx context.Context, request *ChecksCreat
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("checks/create-suite"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/check-suites"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/check-suites"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -25783,7 +25783,7 @@ func (c *Client) sendChecksGet(ctx context.Context, params ChecksGetParams) (res
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("checks/get"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/check-runs/{check_run_id}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/check-runs/{check_run_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -25917,7 +25917,7 @@ func (c *Client) sendChecksGetSuite(ctx context.Context, params ChecksGetSuitePa
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("checks/get-suite"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/check-suites/{check_suite_id}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/check-suites/{check_suite_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -26049,7 +26049,7 @@ func (c *Client) sendChecksListAnnotations(ctx context.Context, params ChecksLis
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("checks/list-annotations"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/check-runs/{check_run_id}/annotations"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/check-runs/{check_run_id}/annotations"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -26223,7 +26223,7 @@ func (c *Client) sendChecksListForRef(ctx context.Context, params ChecksListForR
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("checks/list-for-ref"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/commits/{ref}/check-runs"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/commits/{ref}/check-runs"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -26464,7 +26464,7 @@ func (c *Client) sendChecksListForSuite(ctx context.Context, params ChecksListFo
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("checks/list-for-suite"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/check-suites/{check_suite_id}/check-runs"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/check-suites/{check_suite_id}/check-runs"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -26689,7 +26689,7 @@ func (c *Client) sendChecksListSuitesForRef(ctx context.Context, params ChecksLi
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("checks/list-suites-for-ref"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/commits/{ref}/check-suites"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/commits/{ref}/check-suites"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -26896,7 +26896,7 @@ func (c *Client) sendChecksRerequestSuite(ctx context.Context, params ChecksRere
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("checks/rerequest-suite"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/check-suites/{check_suite_id}/rerequest"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/check-suites/{check_suite_id}/rerequest"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -27030,7 +27030,7 @@ func (c *Client) sendChecksSetSuitesPreferences(ctx context.Context, request *Ch
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("checks/set-suites-preferences"),
 		semconv.HTTPRequestMethodKey.String("PATCH"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/check-suites/preferences"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/check-suites/preferences"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -27202,7 +27202,7 @@ func (c *Client) sendCodeScanningDeleteAnalysis(ctx context.Context, params Code
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("code-scanning/delete-analysis"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/code-scanning/analyses/{analysis_id}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/code-scanning/analyses/{analysis_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -27358,7 +27358,7 @@ func (c *Client) sendCodeScanningGetAlert(ctx context.Context, params CodeScanni
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("code-scanning/get-alert"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -27508,7 +27508,7 @@ func (c *Client) sendCodeScanningGetAnalysis(ctx context.Context, params CodeSca
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("code-scanning/get-analysis"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/code-scanning/analyses/{analysis_id}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/code-scanning/analyses/{analysis_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -27642,7 +27642,7 @@ func (c *Client) sendCodeScanningGetSarif(ctx context.Context, params CodeScanni
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("code-scanning/get-sarif"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/code-scanning/sarifs/{sarif_id}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/code-scanning/sarifs/{sarif_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -27773,7 +27773,7 @@ func (c *Client) sendCodeScanningListAlertInstances(ctx context.Context, params 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("code-scanning/list-alert-instances"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}/instances"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}/instances"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -27971,7 +27971,7 @@ func (c *Client) sendCodeScanningListAlertsForRepo(ctx context.Context, params C
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("code-scanning/list-alerts-for-repo"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/code-scanning/alerts"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/code-scanning/alerts"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -28211,7 +28211,7 @@ func (c *Client) sendCodeScanningListRecentAnalyses(ctx context.Context, params 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("code-scanning/list-recent-analyses"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/code-scanning/analyses"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/code-scanning/analyses"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -28442,7 +28442,7 @@ func (c *Client) sendCodeScanningUpdateAlert(ctx context.Context, request *CodeS
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("code-scanning/update-alert"),
 		semconv.HTTPRequestMethodKey.String("PATCH"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -28603,7 +28603,7 @@ func (c *Client) sendCodeScanningUploadSarif(ctx context.Context, request *CodeS
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("code-scanning/upload-sarif"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/code-scanning/sarifs"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/code-scanning/sarifs"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -28717,7 +28717,7 @@ func (c *Client) sendCodesOfConductGetAllCodesOfConduct(ctx context.Context) (re
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("codes-of-conduct/get-all-codes-of-conduct"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/codes_of_conduct"),
+		semconv.URLTemplateKey.String("/codes_of_conduct"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -28790,7 +28790,7 @@ func (c *Client) sendCodesOfConductGetConductCode(ctx context.Context, params Co
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("codes-of-conduct/get-conduct-code"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/codes_of_conduct/{key}"),
+		semconv.URLTemplateKey.String("/codes_of_conduct/{key}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -28881,7 +28881,7 @@ func (c *Client) sendEmojisGet(ctx context.Context) (res EmojisGetRes, err error
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("emojis/get"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/emojis"),
+		semconv.URLTemplateKey.String("/emojis"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -28958,7 +28958,7 @@ func (c *Client) sendEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpr
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/add-org-access-to-self-hosted-runner-group-in-enterprise"),
 		semconv.HTTPRequestMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations/{org_id}"),
+		semconv.URLTemplateKey.String("/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations/{org_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -29089,7 +29089,7 @@ func (c *Client) sendEnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise(ctx 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/add-self-hosted-runner-to-group-for-enterprise"),
 		semconv.HTTPRequestMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners/{runner_id}"),
+		semconv.URLTemplateKey.String("/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners/{runner_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -29225,7 +29225,7 @@ func (c *Client) sendEnterpriseAdminCreateRegistrationTokenForEnterprise(ctx con
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/create-registration-token-for-enterprise"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/runners/registration-token"),
+		semconv.URLTemplateKey.String("/enterprises/{enterprise}/actions/runners/registration-token"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -29326,7 +29326,7 @@ func (c *Client) sendEnterpriseAdminCreateRemoveTokenForEnterprise(ctx context.C
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/create-remove-token-for-enterprise"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/runners/remove-token"),
+		semconv.URLTemplateKey.String("/enterprises/{enterprise}/actions/runners/remove-token"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -29419,7 +29419,7 @@ func (c *Client) sendEnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise(ctx
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/create-self-hosted-runner-group-for-enterprise"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/runner-groups"),
+		semconv.URLTemplateKey.String("/enterprises/{enterprise}/actions/runner-groups"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -29515,7 +29515,7 @@ func (c *Client) sendEnterpriseAdminDeleteScimGroupFromEnterprise(ctx context.Co
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/delete-scim-group-from-enterprise"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}"),
+		semconv.URLTemplateKey.String("/scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -29627,7 +29627,7 @@ func (c *Client) sendEnterpriseAdminDeleteSelfHostedRunnerFromEnterprise(ctx con
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/delete-self-hosted-runner-from-enterprise"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/runners/{runner_id}"),
+		semconv.URLTemplateKey.String("/enterprises/{enterprise}/actions/runners/{runner_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -29738,7 +29738,7 @@ func (c *Client) sendEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise(ct
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/delete-self-hosted-runner-group-from-enterprise"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}"),
+		semconv.URLTemplateKey.String("/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -29849,7 +29849,7 @@ func (c *Client) sendEnterpriseAdminDeleteUserFromEnterprise(ctx context.Context
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/delete-user-from-enterprise"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/scim/v2/enterprises/{enterprise}/Users/{scim_user_id}"),
+		semconv.URLTemplateKey.String("/scim/v2/enterprises/{enterprise}/Users/{scim_user_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -29963,7 +29963,7 @@ func (c *Client) sendEnterpriseAdminDisableSelectedOrganizationGithubActionsEnte
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/disable-selected-organization-github-actions-enterprise"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/permissions/organizations/{org_id}"),
+		semconv.URLTemplateKey.String("/enterprises/{enterprise}/actions/permissions/organizations/{org_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -30077,7 +30077,7 @@ func (c *Client) sendEnterpriseAdminEnableSelectedOrganizationGithubActionsEnter
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/enable-selected-organization-github-actions-enterprise"),
 		semconv.HTTPRequestMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/permissions/organizations/{org_id}"),
+		semconv.URLTemplateKey.String("/enterprises/{enterprise}/actions/permissions/organizations/{org_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -30191,7 +30191,7 @@ func (c *Client) sendEnterpriseAdminGetAllowedActionsEnterprise(ctx context.Cont
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/get-allowed-actions-enterprise"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/permissions/selected-actions"),
+		semconv.URLTemplateKey.String("/enterprises/{enterprise}/actions/permissions/selected-actions"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -30284,7 +30284,7 @@ func (c *Client) sendEnterpriseAdminGetAuditLog(ctx context.Context, params Ente
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/get-audit-log"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/audit-log"),
+		semconv.URLTemplateKey.String("/enterprises/{enterprise}/audit-log"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -30500,7 +30500,7 @@ func (c *Client) sendEnterpriseAdminGetGithubActionsPermissionsEnterprise(ctx co
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/get-github-actions-permissions-enterprise"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/permissions"),
+		semconv.URLTemplateKey.String("/enterprises/{enterprise}/actions/permissions"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -30593,7 +30593,7 @@ func (c *Client) sendEnterpriseAdminGetProvisioningInformationForEnterpriseGroup
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/get-provisioning-information-for-enterprise-group"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}"),
+		semconv.URLTemplateKey.String("/scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -30725,7 +30725,7 @@ func (c *Client) sendEnterpriseAdminGetProvisioningInformationForEnterpriseUser(
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/get-provisioning-information-for-enterprise-user"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/scim/v2/enterprises/{enterprise}/Users/{scim_user_id}"),
+		semconv.URLTemplateKey.String("/scim/v2/enterprises/{enterprise}/Users/{scim_user_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -30836,7 +30836,7 @@ func (c *Client) sendEnterpriseAdminGetSelfHostedRunnerForEnterprise(ctx context
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/get-self-hosted-runner-for-enterprise"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/runners/{runner_id}"),
+		semconv.URLTemplateKey.String("/enterprises/{enterprise}/actions/runners/{runner_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -30947,7 +30947,7 @@ func (c *Client) sendEnterpriseAdminGetSelfHostedRunnerGroupForEnterprise(ctx co
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/get-self-hosted-runner-group-for-enterprise"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}"),
+		semconv.URLTemplateKey.String("/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -31058,7 +31058,7 @@ func (c *Client) sendEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterp
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/list-org-access-to-self-hosted-runner-group-in-enterprise"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations"),
+		semconv.URLTemplateKey.String("/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -31208,7 +31208,7 @@ func (c *Client) sendEnterpriseAdminListProvisionedGroupsEnterprise(ctx context.
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/list-provisioned-groups-enterprise"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/scim/v2/enterprises/{enterprise}/Groups"),
+		semconv.URLTemplateKey.String("/scim/v2/enterprises/{enterprise}/Groups"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -31398,7 +31398,7 @@ func (c *Client) sendEnterpriseAdminListProvisionedIdentitiesEnterprise(ctx cont
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/list-provisioned-identities-enterprise"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/scim/v2/enterprises/{enterprise}/Users"),
+		semconv.URLTemplateKey.String("/scim/v2/enterprises/{enterprise}/Users"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -31546,7 +31546,7 @@ func (c *Client) sendEnterpriseAdminListRunnerApplicationsForEnterprise(ctx cont
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/list-runner-applications-for-enterprise"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/runners/downloads"),
+		semconv.URLTemplateKey.String("/enterprises/{enterprise}/actions/runners/downloads"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -31642,7 +31642,7 @@ func (c *Client) sendEnterpriseAdminListSelectedOrganizationsEnabledGithubAction
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/list-selected-organizations-enabled-github-actions-enterprise"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/permissions/organizations"),
+		semconv.URLTemplateKey.String("/enterprises/{enterprise}/actions/permissions/organizations"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -31773,7 +31773,7 @@ func (c *Client) sendEnterpriseAdminListSelfHostedRunnerGroupsForEnterprise(ctx 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/list-self-hosted-runner-groups-for-enterprise"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/runner-groups"),
+		semconv.URLTemplateKey.String("/enterprises/{enterprise}/actions/runner-groups"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -31904,7 +31904,7 @@ func (c *Client) sendEnterpriseAdminListSelfHostedRunnersForEnterprise(ctx conte
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/list-self-hosted-runners-for-enterprise"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/runners"),
+		semconv.URLTemplateKey.String("/enterprises/{enterprise}/actions/runners"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -32035,7 +32035,7 @@ func (c *Client) sendEnterpriseAdminListSelfHostedRunnersInGroupForEnterprise(ct
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/list-self-hosted-runners-in-group-for-enterprise"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners"),
+		semconv.URLTemplateKey.String("/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -32188,7 +32188,7 @@ func (c *Client) sendEnterpriseAdminProvisionAndInviteEnterpriseGroup(ctx contex
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/provision-and-invite-enterprise-group"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/scim/v2/enterprises/{enterprise}/Groups"),
+		semconv.URLTemplateKey.String("/scim/v2/enterprises/{enterprise}/Groups"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -32289,7 +32289,7 @@ func (c *Client) sendEnterpriseAdminProvisionAndInviteEnterpriseUser(ctx context
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/provision-and-invite-enterprise-user"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/scim/v2/enterprises/{enterprise}/Users"),
+		semconv.URLTemplateKey.String("/scim/v2/enterprises/{enterprise}/Users"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -32388,7 +32388,7 @@ func (c *Client) sendEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnte
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/remove-org-access-to-self-hosted-runner-group-in-enterprise"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations/{org_id}"),
+		semconv.URLTemplateKey.String("/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations/{org_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -32519,7 +32519,7 @@ func (c *Client) sendEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/remove-self-hosted-runner-from-group-for-enterprise"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners/{runner_id}"),
+		semconv.URLTemplateKey.String("/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners/{runner_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -32652,7 +32652,7 @@ func (c *Client) sendEnterpriseAdminSetAllowedActionsEnterprise(ctx context.Cont
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/set-allowed-actions-enterprise"),
 		semconv.HTTPRequestMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/permissions/selected-actions"),
+		semconv.URLTemplateKey.String("/enterprises/{enterprise}/actions/permissions/selected-actions"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -32748,7 +32748,7 @@ func (c *Client) sendEnterpriseAdminSetGithubActionsPermissionsEnterprise(ctx co
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/set-github-actions-permissions-enterprise"),
 		semconv.HTTPRequestMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/permissions"),
+		semconv.URLTemplateKey.String("/enterprises/{enterprise}/actions/permissions"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -32849,7 +32849,7 @@ func (c *Client) sendEnterpriseAdminSetInformationForProvisionedEnterpriseGroup(
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/set-information-for-provisioned-enterprise-group"),
 		semconv.HTTPRequestMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}"),
+		semconv.URLTemplateKey.String("/scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -32971,7 +32971,7 @@ func (c *Client) sendEnterpriseAdminSetInformationForProvisionedEnterpriseUser(c
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/set-information-for-provisioned-enterprise-user"),
 		semconv.HTTPRequestMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/scim/v2/enterprises/{enterprise}/Users/{scim_user_id}"),
+		semconv.URLTemplateKey.String("/scim/v2/enterprises/{enterprise}/Users/{scim_user_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -33086,7 +33086,7 @@ func (c *Client) sendEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpr
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/set-org-access-to-self-hosted-runner-group-in-enterprise"),
 		semconv.HTTPRequestMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations"),
+		semconv.URLTemplateKey.String("/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -33204,7 +33204,7 @@ func (c *Client) sendEnterpriseAdminSetSelectedOrganizationsEnabledGithubActions
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/set-selected-organizations-enabled-github-actions-enterprise"),
 		semconv.HTTPRequestMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/permissions/organizations"),
+		semconv.URLTemplateKey.String("/enterprises/{enterprise}/actions/permissions/organizations"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -33300,7 +33300,7 @@ func (c *Client) sendEnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise(ctx
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/set-self-hosted-runners-in-group-for-enterprise"),
 		semconv.HTTPRequestMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners"),
+		semconv.URLTemplateKey.String("/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -33419,7 +33419,7 @@ func (c *Client) sendEnterpriseAdminUpdateAttributeForEnterpriseGroup(ctx contex
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/update-attribute-for-enterprise-group"),
 		semconv.HTTPRequestMethodKey.String("PATCH"),
-		semconv.HTTPRouteKey.String("/scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}"),
+		semconv.URLTemplateKey.String("/scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -33554,7 +33554,7 @@ func (c *Client) sendEnterpriseAdminUpdateAttributeForEnterpriseUser(ctx context
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/update-attribute-for-enterprise-user"),
 		semconv.HTTPRequestMethodKey.String("PATCH"),
-		semconv.HTTPRouteKey.String("/scim/v2/enterprises/{enterprise}/Users/{scim_user_id}"),
+		semconv.URLTemplateKey.String("/scim/v2/enterprises/{enterprise}/Users/{scim_user_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -33668,7 +33668,7 @@ func (c *Client) sendEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise(ctx
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/update-self-hosted-runner-group-for-enterprise"),
 		semconv.HTTPRequestMethodKey.String("PATCH"),
-		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}"),
+		semconv.URLTemplateKey.String("/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -33781,7 +33781,7 @@ func (c *Client) sendGistsCheckIsStarred(ctx context.Context, params GistsCheckI
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/check-is-starred"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/gists/{gist_id}/star"),
+		semconv.URLTemplateKey.String("/gists/{gist_id}/star"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -33875,7 +33875,7 @@ func (c *Client) sendGistsCreate(ctx context.Context, request *GistsCreateReq) (
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/create"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/gists"),
+		semconv.URLTemplateKey.String("/gists"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -33951,7 +33951,7 @@ func (c *Client) sendGistsCreateComment(ctx context.Context, request *GistsCreat
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/create-comment"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/gists/{gist_id}/comments"),
+		semconv.URLTemplateKey.String("/gists/{gist_id}/comments"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -34046,7 +34046,7 @@ func (c *Client) sendGistsDelete(ctx context.Context, params GistsDeleteParams) 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/delete"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/gists/{gist_id}"),
+		semconv.URLTemplateKey.String("/gists/{gist_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -34137,7 +34137,7 @@ func (c *Client) sendGistsDeleteComment(ctx context.Context, params GistsDeleteC
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/delete-comment"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/gists/{gist_id}/comments/{comment_id}"),
+		semconv.URLTemplateKey.String("/gists/{gist_id}/comments/{comment_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -34247,7 +34247,7 @@ func (c *Client) sendGistsFork(ctx context.Context, params GistsForkParams) (res
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/fork"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/gists/{gist_id}/forks"),
+		semconv.URLTemplateKey.String("/gists/{gist_id}/forks"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -34339,7 +34339,7 @@ func (c *Client) sendGistsGet(ctx context.Context, params GistsGetParams) (res G
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/get"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/gists/{gist_id}"),
+		semconv.URLTemplateKey.String("/gists/{gist_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -34430,7 +34430,7 @@ func (c *Client) sendGistsGetComment(ctx context.Context, params GistsGetComment
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/get-comment"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/gists/{gist_id}/comments/{comment_id}"),
+		semconv.URLTemplateKey.String("/gists/{gist_id}/comments/{comment_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -34540,7 +34540,7 @@ func (c *Client) sendGistsGetRevision(ctx context.Context, params GistsGetRevisi
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/get-revision"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/gists/{gist_id}/{sha}"),
+		semconv.URLTemplateKey.String("/gists/{gist_id}/{sha}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -34651,7 +34651,7 @@ func (c *Client) sendGistsList(ctx context.Context, params GistsListParams) (res
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/list"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/gists"),
+		semconv.URLTemplateKey.String("/gists"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -34779,7 +34779,7 @@ func (c *Client) sendGistsListComments(ctx context.Context, params GistsListComm
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/list-comments"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/gists/{gist_id}/comments"),
+		semconv.URLTemplateKey.String("/gists/{gist_id}/comments"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -34909,7 +34909,7 @@ func (c *Client) sendGistsListCommits(ctx context.Context, params GistsListCommi
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/list-commits"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/gists/{gist_id}/commits"),
+		semconv.URLTemplateKey.String("/gists/{gist_id}/commits"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -35039,7 +35039,7 @@ func (c *Client) sendGistsListForUser(ctx context.Context, params GistsListForUs
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/list-for-user"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/users/{username}/gists"),
+		semconv.URLTemplateKey.String("/users/{username}/gists"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -35186,7 +35186,7 @@ func (c *Client) sendGistsListForks(ctx context.Context, params GistsListForksPa
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/list-forks"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/gists/{gist_id}/forks"),
+		semconv.URLTemplateKey.String("/gists/{gist_id}/forks"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -35319,7 +35319,7 @@ func (c *Client) sendGistsListPublic(ctx context.Context, params GistsListPublic
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/list-public"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/gists/public"),
+		semconv.URLTemplateKey.String("/gists/public"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -35447,7 +35447,7 @@ func (c *Client) sendGistsListStarred(ctx context.Context, params GistsListStarr
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/list-starred"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/gists/starred"),
+		semconv.URLTemplateKey.String("/gists/starred"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -35577,7 +35577,7 @@ func (c *Client) sendGistsStar(ctx context.Context, params GistsStarParams) (res
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/star"),
 		semconv.HTTPRequestMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/gists/{gist_id}/star"),
+		semconv.URLTemplateKey.String("/gists/{gist_id}/star"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -35669,7 +35669,7 @@ func (c *Client) sendGistsUnstar(ctx context.Context, params GistsUnstarParams) 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/unstar"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/gists/{gist_id}/star"),
+		semconv.URLTemplateKey.String("/gists/{gist_id}/star"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -35761,7 +35761,7 @@ func (c *Client) sendGistsUpdateComment(ctx context.Context, request *GistsUpdat
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gists/update-comment"),
 		semconv.HTTPRequestMethodKey.String("PATCH"),
-		semconv.HTTPRouteKey.String("/gists/{gist_id}/comments/{comment_id}"),
+		semconv.URLTemplateKey.String("/gists/{gist_id}/comments/{comment_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -35874,7 +35874,7 @@ func (c *Client) sendGitCreateBlob(ctx context.Context, request *GitCreateBlobRe
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("git/create-blob"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/git/blobs"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/git/blobs"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -36021,7 +36021,7 @@ func (c *Client) sendGitCreateCommit(ctx context.Context, request *GitCreateComm
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("git/create-commit"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/git/commits"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/git/commits"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -36137,7 +36137,7 @@ func (c *Client) sendGitCreateRef(ctx context.Context, request *GitCreateRefReq,
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("git/create-ref"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/git/refs"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/git/refs"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -36287,7 +36287,7 @@ func (c *Client) sendGitCreateTag(ctx context.Context, request *GitCreateTagReq,
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("git/create-tag"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/git/tags"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/git/tags"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -36407,7 +36407,7 @@ func (c *Client) sendGitCreateTree(ctx context.Context, request *GitCreateTreeRe
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("git/create-tree"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/git/trees"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/git/trees"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -36521,7 +36521,7 @@ func (c *Client) sendGitDeleteRef(ctx context.Context, params GitDeleteRefParams
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("git/delete-ref"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/git/refs/{ref}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/git/refs/{ref}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -36651,7 +36651,7 @@ func (c *Client) sendGitGetBlob(ctx context.Context, params GitGetBlobParams) (r
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("git/get-blob"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/git/blobs/{file_sha}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/git/blobs/{file_sha}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -36813,7 +36813,7 @@ func (c *Client) sendGitGetCommit(ctx context.Context, params GitGetCommitParams
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("git/get-commit"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/git/commits/{commit_sha}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/git/commits/{commit_sha}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -36949,7 +36949,7 @@ func (c *Client) sendGitGetRef(ctx context.Context, params GitGetRefParams) (res
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("git/get-ref"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/git/ref/{ref}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/git/ref/{ref}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -37109,7 +37109,7 @@ func (c *Client) sendGitGetTag(ctx context.Context, params GitGetTagParams) (res
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("git/get-tag"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/git/tags/{tag_sha}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/git/tags/{tag_sha}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -37241,7 +37241,7 @@ func (c *Client) sendGitGetTree(ctx context.Context, params GitGetTreeParams) (r
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("git/get-tree"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/git/trees/{tree_sha}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/git/trees/{tree_sha}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -37405,7 +37405,7 @@ func (c *Client) sendGitListMatchingRefs(ctx context.Context, params GitListMatc
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("git/list-matching-refs"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/git/matching-refs/{ref}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/git/matching-refs/{ref}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -37572,7 +37572,7 @@ func (c *Client) sendGitUpdateRef(ctx context.Context, request *GitUpdateRefReq,
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("git/update-ref"),
 		semconv.HTTPRequestMethodKey.String("PATCH"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/git/refs/{ref}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/git/refs/{ref}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -37705,7 +37705,7 @@ func (c *Client) sendGitignoreGetAllTemplates(ctx context.Context) (res Gitignor
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gitignore/get-all-templates"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/gitignore/templates"),
+		semconv.URLTemplateKey.String("/gitignore/templates"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -37780,7 +37780,7 @@ func (c *Client) sendGitignoreGetTemplate(ctx context.Context, params GitignoreG
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("gitignore/get-template"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/gitignore/templates/{name}"),
+		semconv.URLTemplateKey.String("/gitignore/templates/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -37871,7 +37871,7 @@ func (c *Client) sendInteractionsRemoveRestrictionsForAuthenticatedUser(ctx cont
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("interactions/remove-restrictions-for-authenticated-user"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/user/interaction-limits"),
+		semconv.URLTemplateKey.String("/user/interaction-limits"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -37945,7 +37945,7 @@ func (c *Client) sendInteractionsRemoveRestrictionsForOrg(ctx context.Context, p
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("interactions/remove-restrictions-for-org"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/interaction-limits"),
+		semconv.URLTemplateKey.String("/orgs/{org}/interaction-limits"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -38040,7 +38040,7 @@ func (c *Client) sendInteractionsRemoveRestrictionsForRepo(ctx context.Context, 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("interactions/remove-restrictions-for-repo"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/interaction-limits"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/interaction-limits"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -38153,7 +38153,7 @@ func (c *Client) sendInteractionsSetRestrictionsForAuthenticatedUser(ctx context
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("interactions/set-restrictions-for-authenticated-user"),
 		semconv.HTTPRequestMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/user/interaction-limits"),
+		semconv.URLTemplateKey.String("/user/interaction-limits"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -38232,7 +38232,7 @@ func (c *Client) sendInteractionsSetRestrictionsForOrg(ctx context.Context, requ
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("interactions/set-restrictions-for-org"),
 		semconv.HTTPRequestMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/interaction-limits"),
+		semconv.URLTemplateKey.String("/orgs/{org}/interaction-limits"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -38330,7 +38330,7 @@ func (c *Client) sendInteractionsSetRestrictionsForRepo(ctx context.Context, req
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("interactions/set-restrictions-for-repo"),
 		semconv.HTTPRequestMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/interaction-limits"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/interaction-limits"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -38444,7 +38444,7 @@ func (c *Client) sendIssuesAddAssignees(ctx context.Context, request OptIssuesAd
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/add-assignees"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/{issue_number}/assignees"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/issues/{issue_number}/assignees"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -38580,7 +38580,7 @@ func (c *Client) sendIssuesCheckUserCanBeAssigned(ctx context.Context, params Is
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/check-user-can-be-assigned"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/assignees/{assignee}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/assignees/{assignee}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -38718,7 +38718,7 @@ func (c *Client) sendIssuesCreate(ctx context.Context, request *IssuesCreateReq,
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/create"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/issues"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -38838,7 +38838,7 @@ func (c *Client) sendIssuesCreateComment(ctx context.Context, request *IssuesCre
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/create-comment"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/{issue_number}/comments"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/issues/{issue_number}/comments"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -38971,7 +38971,7 @@ func (c *Client) sendIssuesCreateLabel(ctx context.Context, request *IssuesCreat
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/create-label"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/labels"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/labels"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -39085,7 +39085,7 @@ func (c *Client) sendIssuesCreateMilestone(ctx context.Context, request *IssuesC
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/create-milestone"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/milestones"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/milestones"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -39199,7 +39199,7 @@ func (c *Client) sendIssuesDeleteComment(ctx context.Context, params IssuesDelet
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/delete-comment"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/comments/{comment_id}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/issues/comments/{comment_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -39328,7 +39328,7 @@ func (c *Client) sendIssuesDeleteLabel(ctx context.Context, params IssuesDeleteL
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/delete-label"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/labels/{name}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/labels/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -39457,7 +39457,7 @@ func (c *Client) sendIssuesDeleteMilestone(ctx context.Context, params IssuesDel
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/delete-milestone"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/milestones/{milestone_number}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/milestones/{milestone_number}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -39604,7 +39604,7 @@ func (c *Client) sendIssuesGet(ctx context.Context, params IssuesGetParams) (res
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/get"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/{issue_number}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/issues/{issue_number}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -39733,7 +39733,7 @@ func (c *Client) sendIssuesGetComment(ctx context.Context, params IssuesGetComme
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/get-comment"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/comments/{comment_id}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/issues/comments/{comment_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -39862,7 +39862,7 @@ func (c *Client) sendIssuesGetEvent(ctx context.Context, params IssuesGetEventPa
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/get-event"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/events/{event_id}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/issues/events/{event_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -39991,7 +39991,7 @@ func (c *Client) sendIssuesGetLabel(ctx context.Context, params IssuesGetLabelPa
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/get-label"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/labels/{name}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/labels/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -40120,7 +40120,7 @@ func (c *Client) sendIssuesGetMilestone(ctx context.Context, params IssuesGetMil
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/get-milestone"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/milestones/{milestone_number}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/milestones/{milestone_number}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -40261,7 +40261,7 @@ func (c *Client) sendIssuesList(ctx context.Context, params IssuesListParams) (r
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/list"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/issues"),
+		semconv.URLTemplateKey.String("/issues"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -40543,7 +40543,7 @@ func (c *Client) sendIssuesListAssignees(ctx context.Context, params IssuesListA
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/list-assignees"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/assignees"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/assignees"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -40692,7 +40692,7 @@ func (c *Client) sendIssuesListComments(ctx context.Context, params IssuesListCo
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/list-comments"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/{issue_number}/comments"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/issues/{issue_number}/comments"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -40877,7 +40877,7 @@ func (c *Client) sendIssuesListCommentsForRepo(ctx context.Context, params Issue
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/list-comments-for-repo"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/comments"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/issues/comments"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -41077,7 +41077,7 @@ func (c *Client) sendIssuesListEventsForRepo(ctx context.Context, params IssuesL
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/list-events-for-repo"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/events"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/issues/events"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -41234,7 +41234,7 @@ func (c *Client) sendIssuesListForAuthenticatedUser(ctx context.Context, params 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/list-for-authenticated-user"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/user/issues"),
+		semconv.URLTemplateKey.String("/user/issues"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -41455,7 +41455,7 @@ func (c *Client) sendIssuesListForOrg(ctx context.Context, params IssuesListForO
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/list-for-org"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/issues"),
+		semconv.URLTemplateKey.String("/orgs/{org}/issues"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -41695,7 +41695,7 @@ func (c *Client) sendIssuesListForRepo(ctx context.Context, params IssuesListFor
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/list-for-repo"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/issues"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -41997,7 +41997,7 @@ func (c *Client) sendIssuesListLabelsForMilestone(ctx context.Context, params Is
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/list-labels-for-milestone"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/milestones/{milestone_number}/labels"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/milestones/{milestone_number}/labels"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -42165,7 +42165,7 @@ func (c *Client) sendIssuesListLabelsForRepo(ctx context.Context, params IssuesL
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/list-labels-for-repo"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/labels"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/labels"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -42314,7 +42314,7 @@ func (c *Client) sendIssuesListLabelsOnIssue(ctx context.Context, params IssuesL
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/list-labels-on-issue"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/{issue_number}/labels"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/issues/{issue_number}/labels"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -42482,7 +42482,7 @@ func (c *Client) sendIssuesListMilestones(ctx context.Context, params IssuesList
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/list-milestones"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/milestones"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/milestones"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -42685,7 +42685,7 @@ func (c *Client) sendIssuesLock(ctx context.Context, request OptNilIssuesLockReq
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/lock"),
 		semconv.HTTPRequestMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/{issue_number}/lock"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/issues/{issue_number}/lock"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -42818,7 +42818,7 @@ func (c *Client) sendIssuesRemoveAllLabels(ctx context.Context, params IssuesRem
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/remove-all-labels"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/{issue_number}/labels"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/issues/{issue_number}/labels"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -42948,7 +42948,7 @@ func (c *Client) sendIssuesRemoveAssignees(ctx context.Context, request OptIssue
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/remove-assignees"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/{issue_number}/assignees"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/issues/{issue_number}/assignees"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -43082,7 +43082,7 @@ func (c *Client) sendIssuesRemoveLabel(ctx context.Context, params IssuesRemoveL
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/remove-label"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/{issue_number}/labels/{name}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/issues/{issue_number}/labels/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -43230,7 +43230,7 @@ func (c *Client) sendIssuesUnlock(ctx context.Context, params IssuesUnlockParams
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/unlock"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/{issue_number}/lock"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/issues/{issue_number}/lock"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -43360,7 +43360,7 @@ func (c *Client) sendIssuesUpdate(ctx context.Context, request OptIssuesUpdateRe
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/update"),
 		semconv.HTTPRequestMethodKey.String("PATCH"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/{issue_number}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/issues/{issue_number}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -43492,7 +43492,7 @@ func (c *Client) sendIssuesUpdateComment(ctx context.Context, request *IssuesUpd
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/update-comment"),
 		semconv.HTTPRequestMethodKey.String("PATCH"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/comments/{comment_id}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/issues/comments/{comment_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -43624,7 +43624,7 @@ func (c *Client) sendIssuesUpdateLabel(ctx context.Context, request OptIssuesUpd
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/update-label"),
 		semconv.HTTPRequestMethodKey.String("PATCH"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/labels/{name}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/labels/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -43756,7 +43756,7 @@ func (c *Client) sendIssuesUpdateMilestone(ctx context.Context, request OptIssue
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/update-milestone"),
 		semconv.HTTPRequestMethodKey.String("PATCH"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/milestones/{milestone_number}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/milestones/{milestone_number}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -43888,7 +43888,7 @@ func (c *Client) sendLicensesGet(ctx context.Context, params LicensesGetParams) 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("licenses/get"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/licenses/{license}"),
+		semconv.URLTemplateKey.String("/licenses/{license}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -43979,7 +43979,7 @@ func (c *Client) sendLicensesGetAllCommonlyUsed(ctx context.Context, params Lice
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("licenses/get-all-commonly-used"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/licenses"),
+		semconv.URLTemplateKey.String("/licenses"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -44111,7 +44111,7 @@ func (c *Client) sendLicensesGetForRepo(ctx context.Context, params LicensesGetF
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("licenses/get-for-repo"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/license"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/license"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -44222,7 +44222,7 @@ func (c *Client) sendMarkdownRender(ctx context.Context, request *MarkdownRender
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("markdown/render"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/markdown"),
+		semconv.URLTemplateKey.String("/markdown"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -44301,7 +44301,7 @@ func (c *Client) sendMarkdownRenderRaw(ctx context.Context, request MarkdownRend
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("markdown/render-raw"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/markdown/raw"),
+		semconv.URLTemplateKey.String("/markdown/raw"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -44381,7 +44381,7 @@ func (c *Client) sendMetaGet(ctx context.Context) (res MetaGetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("meta/get"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/meta"),
+		semconv.URLTemplateKey.String("/meta"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -44454,7 +44454,7 @@ func (c *Client) sendMetaGetOctocat(ctx context.Context, params MetaGetOctocatPa
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("meta/get-octocat"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/octocat"),
+		semconv.URLTemplateKey.String("/octocat"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -44548,7 +44548,7 @@ func (c *Client) sendMetaGetZen(ctx context.Context) (res MetaGetZenOK, err erro
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("meta/get-zen"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/zen"),
+		semconv.URLTemplateKey.String("/zen"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -44621,7 +44621,7 @@ func (c *Client) sendMetaRoot(ctx context.Context) (res *MetaRootOK, err error) 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("meta/root"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/"),
+		semconv.URLTemplateKey.String("/"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -44694,7 +44694,7 @@ func (c *Client) sendMigrationsCancelImport(ctx context.Context, params Migratio
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/cancel-import"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/import"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/import"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -44809,7 +44809,7 @@ func (c *Client) sendMigrationsDeleteArchiveForAuthenticatedUser(ctx context.Con
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/delete-archive-for-authenticated-user"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/user/migrations/{migration_id}/archive"),
+		semconv.URLTemplateKey.String("/user/migrations/{migration_id}/archive"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -44902,7 +44902,7 @@ func (c *Client) sendMigrationsDeleteArchiveForOrg(ctx context.Context, params M
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/delete-archive-for-org"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/migrations/{migration_id}/archive"),
+		semconv.URLTemplateKey.String("/orgs/{org}/migrations/{migration_id}/archive"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -45013,7 +45013,7 @@ func (c *Client) sendMigrationsDownloadArchiveForOrg(ctx context.Context, params
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/download-archive-for-org"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/migrations/{migration_id}/archive"),
+		semconv.URLTemplateKey.String("/orgs/{org}/migrations/{migration_id}/archive"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -45144,7 +45144,7 @@ func (c *Client) sendMigrationsGetArchiveForAuthenticatedUser(ctx context.Contex
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/get-archive-for-authenticated-user"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/user/migrations/{migration_id}/archive"),
+		semconv.URLTemplateKey.String("/user/migrations/{migration_id}/archive"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -45243,7 +45243,7 @@ func (c *Client) sendMigrationsGetCommitAuthors(ctx context.Context, params Migr
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/get-commit-authors"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/import/authors"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/import/authors"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -45427,7 +45427,7 @@ func (c *Client) sendMigrationsGetImportStatus(ctx context.Context, params Migra
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/get-import-status"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/import"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/import"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -45538,7 +45538,7 @@ func (c *Client) sendMigrationsGetLargeFiles(ctx context.Context, params Migrati
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/get-large-files"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/import/large_files"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/import/large_files"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -45656,7 +45656,7 @@ func (c *Client) sendMigrationsGetStatusForAuthenticatedUser(ctx context.Context
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/get-status-for-authenticated-user"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/user/migrations/{migration_id}"),
+		semconv.URLTemplateKey.String("/user/migrations/{migration_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -45782,7 +45782,7 @@ func (c *Client) sendMigrationsGetStatusForOrg(ctx context.Context, params Migra
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/get-status-for-org"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/migrations/{migration_id}"),
+		semconv.URLTemplateKey.String("/orgs/{org}/migrations/{migration_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -45922,7 +45922,7 @@ func (c *Client) sendMigrationsListForAuthenticatedUser(ctx context.Context, par
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/list-for-authenticated-user"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/user/migrations"),
+		semconv.URLTemplateKey.String("/user/migrations"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -46033,7 +46033,7 @@ func (c *Client) sendMigrationsListForOrg(ctx context.Context, params Migrations
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/list-for-org"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/migrations"),
+		semconv.URLTemplateKey.String("/orgs/{org}/migrations"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -46189,7 +46189,7 @@ func (c *Client) sendMigrationsListReposForOrg(ctx context.Context, params Migra
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/list-repos-for-org"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/migrations/{migration_id}/repositories"),
+		semconv.URLTemplateKey.String("/orgs/{org}/migrations/{migration_id}/repositories"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -46338,7 +46338,7 @@ func (c *Client) sendMigrationsListReposForUser(ctx context.Context, params Migr
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/list-repos-for-user"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/user/migrations/{migration_id}/repositories"),
+		semconv.URLTemplateKey.String("/user/migrations/{migration_id}/repositories"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -46469,7 +46469,7 @@ func (c *Client) sendMigrationsMapCommitAuthor(ctx context.Context, request OptM
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/map-commit-author"),
 		semconv.HTTPRequestMethodKey.String("PATCH"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/import/authors/{author_id}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/import/authors/{author_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -46604,7 +46604,7 @@ func (c *Client) sendMigrationsSetLfsPreference(ctx context.Context, request *Mi
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/set-lfs-preference"),
 		semconv.HTTPRequestMethodKey.String("PATCH"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/import/lfs"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/import/lfs"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -46718,7 +46718,7 @@ func (c *Client) sendMigrationsStartForAuthenticatedUser(ctx context.Context, re
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/start-for-authenticated-user"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/user/migrations"),
+		semconv.URLTemplateKey.String("/user/migrations"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -46794,7 +46794,7 @@ func (c *Client) sendMigrationsStartForOrg(ctx context.Context, request *Migrati
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/start-for-org"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/migrations"),
+		semconv.URLTemplateKey.String("/orgs/{org}/migrations"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -46889,7 +46889,7 @@ func (c *Client) sendMigrationsStartImport(ctx context.Context, request *Migrati
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/start-import"),
 		semconv.HTTPRequestMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/import"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/import"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -47007,7 +47007,7 @@ func (c *Client) sendMigrationsUnlockRepoForAuthenticatedUser(ctx context.Contex
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/unlock-repo-for-authenticated-user"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/user/migrations/{migration_id}/repos/{repo_name}/lock"),
+		semconv.URLTemplateKey.String("/user/migrations/{migration_id}/repos/{repo_name}/lock"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -47120,7 +47120,7 @@ func (c *Client) sendMigrationsUnlockRepoForOrg(ctx context.Context, params Migr
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/unlock-repo-for-org"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/migrations/{migration_id}/repos/{repo_name}/lock"),
+		semconv.URLTemplateKey.String("/orgs/{org}/migrations/{migration_id}/repos/{repo_name}/lock"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -47252,7 +47252,7 @@ func (c *Client) sendMigrationsUpdateImport(ctx context.Context, request OptNilM
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/update-import"),
 		semconv.HTTPRequestMethodKey.String("PATCH"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/import"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/import"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -47395,7 +47395,7 @@ func (c *Client) sendOAuthAuthorizationsCreateAuthorization(ctx context.Context,
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("oauth-authorizations/create-authorization"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/authorizations"),
+		semconv.URLTemplateKey.String("/authorizations"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -47480,7 +47480,7 @@ func (c *Client) sendOAuthAuthorizationsDeleteAuthorization(ctx context.Context,
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("oauth-authorizations/delete-authorization"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/authorizations/{authorization_id}"),
+		semconv.URLTemplateKey.String("/authorizations/{authorization_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -47583,7 +47583,7 @@ func (c *Client) sendOAuthAuthorizationsDeleteGrant(ctx context.Context, params 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("oauth-authorizations/delete-grant"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/applications/grants/{grant_id}"),
+		semconv.URLTemplateKey.String("/applications/grants/{grant_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -47683,7 +47683,7 @@ func (c *Client) sendOAuthAuthorizationsGetAuthorization(ctx context.Context, pa
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("oauth-authorizations/get-authorization"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/authorizations/{authorization_id}"),
+		semconv.URLTemplateKey.String("/authorizations/{authorization_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -47783,7 +47783,7 @@ func (c *Client) sendOAuthAuthorizationsGetGrant(ctx context.Context, params OAu
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("oauth-authorizations/get-grant"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/applications/grants/{grant_id}"),
+		semconv.URLTemplateKey.String("/applications/grants/{grant_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -47902,7 +47902,7 @@ func (c *Client) sendOAuthAuthorizationsGetOrCreateAuthorizationForApp(ctx conte
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("oauth-authorizations/get-or-create-authorization-for-app"),
 		semconv.HTTPRequestMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/authorizations/clients/{client_id}"),
+		semconv.URLTemplateKey.String("/authorizations/clients/{client_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -48019,7 +48019,7 @@ func (c *Client) sendOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerp
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("oauth-authorizations/get-or-create-authorization-for-app-and-fingerprint"),
 		semconv.HTTPRequestMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/authorizations/clients/{client_id}/{fingerprint}"),
+		semconv.URLTemplateKey.String("/authorizations/clients/{client_id}/{fingerprint}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -48141,7 +48141,7 @@ func (c *Client) sendOAuthAuthorizationsListAuthorizations(ctx context.Context, 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("oauth-authorizations/list-authorizations"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/authorizations"),
+		semconv.URLTemplateKey.String("/authorizations"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -48289,7 +48289,7 @@ func (c *Client) sendOAuthAuthorizationsListGrants(ctx context.Context, params O
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("oauth-authorizations/list-grants"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/applications/grants"),
+		semconv.URLTemplateKey.String("/applications/grants"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -48430,7 +48430,7 @@ func (c *Client) sendOAuthAuthorizationsUpdateAuthorization(ctx context.Context,
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("oauth-authorizations/update-authorization"),
 		semconv.HTTPRequestMethodKey.String("PATCH"),
-		semconv.HTTPRouteKey.String("/authorizations/{authorization_id}"),
+		semconv.URLTemplateKey.String("/authorizations/{authorization_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -48524,7 +48524,7 @@ func (c *Client) sendOrgsBlockUser(ctx context.Context, params OrgsBlockUserPara
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/block-user"),
 		semconv.HTTPRequestMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/blocks/{username}"),
+		semconv.URLTemplateKey.String("/orgs/{org}/blocks/{username}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -48637,7 +48637,7 @@ func (c *Client) sendOrgsCancelInvitation(ctx context.Context, params OrgsCancel
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/cancel-invitation"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/invitations/{invitation_id}"),
+		semconv.URLTemplateKey.String("/orgs/{org}/invitations/{invitation_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -48747,7 +48747,7 @@ func (c *Client) sendOrgsCheckBlockedUser(ctx context.Context, params OrgsCheckB
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/check-blocked-user"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/blocks/{username}"),
+		semconv.URLTemplateKey.String("/orgs/{org}/blocks/{username}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -48857,7 +48857,7 @@ func (c *Client) sendOrgsCheckMembershipForUser(ctx context.Context, params Orgs
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/check-membership-for-user"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/members/{username}"),
+		semconv.URLTemplateKey.String("/orgs/{org}/members/{username}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -48967,7 +48967,7 @@ func (c *Client) sendOrgsCheckPublicMembershipForUser(ctx context.Context, param
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/check-public-membership-for-user"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/public_members/{username}"),
+		semconv.URLTemplateKey.String("/orgs/{org}/public_members/{username}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -49081,7 +49081,7 @@ func (c *Client) sendOrgsConvertMemberToOutsideCollaborator(ctx context.Context,
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/convert-member-to-outside-collaborator"),
 		semconv.HTTPRequestMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/outside_collaborators/{username}"),
+		semconv.URLTemplateKey.String("/orgs/{org}/outside_collaborators/{username}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -49199,7 +49199,7 @@ func (c *Client) sendOrgsCreateInvitation(ctx context.Context, request OptOrgsCr
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/create-invitation"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/invitations"),
+		semconv.URLTemplateKey.String("/orgs/{org}/invitations"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -49294,7 +49294,7 @@ func (c *Client) sendOrgsCreateWebhook(ctx context.Context, request *OrgsCreateW
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/create-webhook"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/hooks"),
+		semconv.URLTemplateKey.String("/orgs/{org}/hooks"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -49389,7 +49389,7 @@ func (c *Client) sendOrgsDeleteWebhook(ctx context.Context, params OrgsDeleteWeb
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/delete-webhook"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/hooks/{hook_id}"),
+		semconv.URLTemplateKey.String("/orgs/{org}/hooks/{hook_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -49507,7 +49507,7 @@ func (c *Client) sendOrgsGet(ctx context.Context, params OrgsGetParams) (res Org
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/get"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/orgs/{org}"),
+		semconv.URLTemplateKey.String("/orgs/{org}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -49603,7 +49603,7 @@ func (c *Client) sendOrgsGetAuditLog(ctx context.Context, params OrgsGetAuditLog
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/get-audit-log"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/audit-log"),
+		semconv.URLTemplateKey.String("/orgs/{org}/audit-log"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -49818,7 +49818,7 @@ func (c *Client) sendOrgsGetMembershipForAuthenticatedUser(ctx context.Context, 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/get-membership-for-authenticated-user"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/user/memberships/orgs/{org}"),
+		semconv.URLTemplateKey.String("/user/memberships/orgs/{org}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -49911,7 +49911,7 @@ func (c *Client) sendOrgsGetMembershipForUser(ctx context.Context, params OrgsGe
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/get-membership-for-user"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/memberships/{username}"),
+		semconv.URLTemplateKey.String("/orgs/{org}/memberships/{username}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -50023,7 +50023,7 @@ func (c *Client) sendOrgsGetWebhook(ctx context.Context, params OrgsGetWebhookPa
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/get-webhook"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/hooks/{hook_id}"),
+		semconv.URLTemplateKey.String("/orgs/{org}/hooks/{hook_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -50137,7 +50137,7 @@ func (c *Client) sendOrgsGetWebhookConfigForOrg(ctx context.Context, params Orgs
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/get-webhook-config-for-org"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/hooks/{hook_id}/config"),
+		semconv.URLTemplateKey.String("/orgs/{org}/hooks/{hook_id}/config"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -50248,7 +50248,7 @@ func (c *Client) sendOrgsGetWebhookDelivery(ctx context.Context, params OrgsGetW
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/get-webhook-delivery"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/hooks/{hook_id}/deliveries/{delivery_id}"),
+		semconv.URLTemplateKey.String("/orgs/{org}/hooks/{hook_id}/deliveries/{delivery_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -50380,7 +50380,7 @@ func (c *Client) sendOrgsList(ctx context.Context, params OrgsListParams) (res O
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/list"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/organizations"),
+		semconv.URLTemplateKey.String("/organizations"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -50491,7 +50491,7 @@ func (c *Client) sendOrgsListBlockedUsers(ctx context.Context, params OrgsListBl
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/list-blocked-users"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/blocks"),
+		semconv.URLTemplateKey.String("/orgs/{org}/blocks"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -50584,7 +50584,7 @@ func (c *Client) sendOrgsListFailedInvitations(ctx context.Context, params OrgsL
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/list-failed-invitations"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/failed_invitations"),
+		semconv.URLTemplateKey.String("/orgs/{org}/failed_invitations"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -50719,7 +50719,7 @@ func (c *Client) sendOrgsListForAuthenticatedUser(ctx context.Context, params Or
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/list-for-authenticated-user"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/user/orgs"),
+		semconv.URLTemplateKey.String("/user/orgs"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -50835,7 +50835,7 @@ func (c *Client) sendOrgsListForUser(ctx context.Context, params OrgsListForUser
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/list-for-user"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/users/{username}/orgs"),
+		semconv.URLTemplateKey.String("/users/{username}/orgs"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -50966,7 +50966,7 @@ func (c *Client) sendOrgsListInvitationTeams(ctx context.Context, params OrgsLis
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/list-invitation-teams"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/invitations/{invitation_id}/teams"),
+		semconv.URLTemplateKey.String("/orgs/{org}/invitations/{invitation_id}/teams"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -51116,7 +51116,7 @@ func (c *Client) sendOrgsListMembers(ctx context.Context, params OrgsListMembers
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/list-members"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/members"),
+		semconv.URLTemplateKey.String("/orgs/{org}/members"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -51280,7 +51280,7 @@ func (c *Client) sendOrgsListMembershipsForAuthenticatedUser(ctx context.Context
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/list-memberships-for-authenticated-user"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/user/memberships/orgs"),
+		semconv.URLTemplateKey.String("/user/memberships/orgs"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -51408,7 +51408,7 @@ func (c *Client) sendOrgsListOutsideCollaborators(ctx context.Context, params Or
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/list-outside-collaborators"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/outside_collaborators"),
+		semconv.URLTemplateKey.String("/orgs/{org}/outside_collaborators"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -51558,7 +51558,7 @@ func (c *Client) sendOrgsListPendingInvitations(ctx context.Context, params Orgs
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/list-pending-invitations"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/invitations"),
+		semconv.URLTemplateKey.String("/orgs/{org}/invitations"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -51688,7 +51688,7 @@ func (c *Client) sendOrgsListPublicMembers(ctx context.Context, params OrgsListP
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/list-public-members"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/public_members"),
+		semconv.URLTemplateKey.String("/orgs/{org}/public_members"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -51825,7 +51825,7 @@ func (c *Client) sendOrgsListSamlSSOAuthorizations(ctx context.Context, params O
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/list-saml-sso-authorizations"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/credential-authorizations"),
+		semconv.URLTemplateKey.String("/orgs/{org}/credential-authorizations"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -51917,7 +51917,7 @@ func (c *Client) sendOrgsListWebhookDeliveries(ctx context.Context, params OrgsL
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/list-webhook-deliveries"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/hooks/{hook_id}/deliveries"),
+		semconv.URLTemplateKey.String("/orgs/{org}/hooks/{hook_id}/deliveries"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -52066,7 +52066,7 @@ func (c *Client) sendOrgsListWebhooks(ctx context.Context, params OrgsListWebhoo
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/list-webhooks"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/hooks"),
+		semconv.URLTemplateKey.String("/orgs/{org}/hooks"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -52197,7 +52197,7 @@ func (c *Client) sendOrgsPingWebhook(ctx context.Context, params OrgsPingWebhook
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/ping-webhook"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/hooks/{hook_id}/pings"),
+		semconv.URLTemplateKey.String("/orgs/{org}/hooks/{hook_id}/pings"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -52308,7 +52308,7 @@ func (c *Client) sendOrgsRedeliverWebhookDelivery(ctx context.Context, params Or
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/redeliver-webhook-delivery"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/hooks/{hook_id}/deliveries/{delivery_id}/attempts"),
+		semconv.URLTemplateKey.String("/orgs/{org}/hooks/{hook_id}/deliveries/{delivery_id}/attempts"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -52439,7 +52439,7 @@ func (c *Client) sendOrgsRemoveMember(ctx context.Context, params OrgsRemoveMemb
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/remove-member"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/members/{username}"),
+		semconv.URLTemplateKey.String("/orgs/{org}/members/{username}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -52553,7 +52553,7 @@ func (c *Client) sendOrgsRemoveMembershipForUser(ctx context.Context, params Org
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/remove-membership-for-user"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/memberships/{username}"),
+		semconv.URLTemplateKey.String("/orgs/{org}/memberships/{username}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -52663,7 +52663,7 @@ func (c *Client) sendOrgsRemoveOutsideCollaborator(ctx context.Context, params O
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/remove-outside-collaborator"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/outside_collaborators/{username}"),
+		semconv.URLTemplateKey.String("/orgs/{org}/outside_collaborators/{username}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -52773,7 +52773,7 @@ func (c *Client) sendOrgsRemovePublicMembershipForAuthenticatedUser(ctx context.
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/remove-public-membership-for-authenticated-user"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/public_members/{username}"),
+		semconv.URLTemplateKey.String("/orgs/{org}/public_members/{username}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -52889,7 +52889,7 @@ func (c *Client) sendOrgsRemoveSamlSSOAuthorization(ctx context.Context, params 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/remove-saml-sso-authorization"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/credential-authorizations/{credential_id}"),
+		semconv.URLTemplateKey.String("/orgs/{org}/credential-authorizations/{credential_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -53012,7 +53012,7 @@ func (c *Client) sendOrgsSetMembershipForUser(ctx context.Context, request OptOr
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/set-membership-for-user"),
 		semconv.HTTPRequestMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/memberships/{username}"),
+		semconv.URLTemplateKey.String("/orgs/{org}/memberships/{username}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -53129,7 +53129,7 @@ func (c *Client) sendOrgsSetPublicMembershipForAuthenticatedUser(ctx context.Con
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/set-public-membership-for-authenticated-user"),
 		semconv.HTTPRequestMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/public_members/{username}"),
+		semconv.URLTemplateKey.String("/orgs/{org}/public_members/{username}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -53239,7 +53239,7 @@ func (c *Client) sendOrgsUnblockUser(ctx context.Context, params OrgsUnblockUser
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/unblock-user"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/blocks/{username}"),
+		semconv.URLTemplateKey.String("/orgs/{org}/blocks/{username}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -53349,7 +53349,7 @@ func (c *Client) sendOrgsUpdateMembershipForAuthenticatedUser(ctx context.Contex
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/update-membership-for-authenticated-user"),
 		semconv.HTTPRequestMethodKey.String("PATCH"),
-		semconv.HTTPRouteKey.String("/user/memberships/orgs/{org}"),
+		semconv.URLTemplateKey.String("/user/memberships/orgs/{org}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -53447,7 +53447,7 @@ func (c *Client) sendOrgsUpdateWebhook(ctx context.Context, request OptOrgsUpdat
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/update-webhook"),
 		semconv.HTTPRequestMethodKey.String("PATCH"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/hooks/{hook_id}"),
+		semconv.URLTemplateKey.String("/orgs/{org}/hooks/{hook_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -53564,7 +53564,7 @@ func (c *Client) sendOrgsUpdateWebhookConfigForOrg(ctx context.Context, request 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("orgs/update-webhook-config-for-org"),
 		semconv.HTTPRequestMethodKey.String("PATCH"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/hooks/{hook_id}/config"),
+		semconv.URLTemplateKey.String("/orgs/{org}/hooks/{hook_id}/config"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -53683,7 +53683,7 @@ func (c *Client) sendPackagesDeletePackageForAuthenticatedUser(ctx context.Conte
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/delete-package-for-authenticated-user"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/user/packages/{package_type}/{package_name}"),
+		semconv.URLTemplateKey.String("/user/packages/{package_type}/{package_name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -53800,7 +53800,7 @@ func (c *Client) sendPackagesDeletePackageForOrg(ctx context.Context, params Pac
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/delete-package-for-org"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/packages/{package_type}/{package_name}"),
+		semconv.URLTemplateKey.String("/orgs/{org}/packages/{package_type}/{package_name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -53936,7 +53936,7 @@ func (c *Client) sendPackagesDeletePackageForUser(ctx context.Context, params Pa
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/delete-package-for-user"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/users/{username}/packages/{package_type}/{package_name}"),
+		semconv.URLTemplateKey.String("/users/{username}/packages/{package_type}/{package_name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -54070,7 +54070,7 @@ func (c *Client) sendPackagesDeletePackageVersionForAuthenticatedUser(ctx contex
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/delete-package-version-for-authenticated-user"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/user/packages/{package_type}/{package_name}/versions/{package_version_id}"),
+		semconv.URLTemplateKey.String("/user/packages/{package_type}/{package_name}/versions/{package_version_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -54206,7 +54206,7 @@ func (c *Client) sendPackagesDeletePackageVersionForOrg(ctx context.Context, par
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/delete-package-version-for-org"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}"),
+		semconv.URLTemplateKey.String("/orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -54361,7 +54361,7 @@ func (c *Client) sendPackagesDeletePackageVersionForUser(ctx context.Context, pa
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/delete-package-version-for-user"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}"),
+		semconv.URLTemplateKey.String("/users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -54511,7 +54511,7 @@ func (c *Client) sendPackagesGetAllPackageVersionsForPackageOwnedByAuthenticated
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/get-all-package-versions-for-package-owned-by-authenticated-user"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/user/packages/{package_type}/{package_name}/versions"),
+		semconv.URLTemplateKey.String("/user/packages/{package_type}/{package_name}/versions"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -54679,7 +54679,7 @@ func (c *Client) sendPackagesGetAllPackageVersionsForPackageOwnedByOrg(ctx conte
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/get-all-package-versions-for-package-owned-by-org"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/packages/{package_type}/{package_name}/versions"),
+		semconv.URLTemplateKey.String("/orgs/{org}/packages/{package_type}/{package_name}/versions"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -54866,7 +54866,7 @@ func (c *Client) sendPackagesGetAllPackageVersionsForPackageOwnedByUser(ctx cont
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/get-all-package-versions-for-package-owned-by-user"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/users/{username}/packages/{package_type}/{package_name}/versions"),
+		semconv.URLTemplateKey.String("/users/{username}/packages/{package_type}/{package_name}/versions"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -54998,7 +54998,7 @@ func (c *Client) sendPackagesGetPackageForAuthenticatedUser(ctx context.Context,
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/get-package-for-authenticated-user"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/user/packages/{package_type}/{package_name}"),
+		semconv.URLTemplateKey.String("/user/packages/{package_type}/{package_name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -55110,7 +55110,7 @@ func (c *Client) sendPackagesGetPackageForOrganization(ctx context.Context, para
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/get-package-for-organization"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/packages/{package_type}/{package_name}"),
+		semconv.URLTemplateKey.String("/orgs/{org}/packages/{package_type}/{package_name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -55241,7 +55241,7 @@ func (c *Client) sendPackagesGetPackageForUser(ctx context.Context, params Packa
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/get-package-for-user"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/users/{username}/packages/{package_type}/{package_name}"),
+		semconv.URLTemplateKey.String("/users/{username}/packages/{package_type}/{package_name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -55372,7 +55372,7 @@ func (c *Client) sendPackagesGetPackageVersionForAuthenticatedUser(ctx context.C
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/get-package-version-for-authenticated-user"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/user/packages/{package_type}/{package_name}/versions/{package_version_id}"),
+		semconv.URLTemplateKey.String("/user/packages/{package_type}/{package_name}/versions/{package_version_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -55503,7 +55503,7 @@ func (c *Client) sendPackagesGetPackageVersionForOrganization(ctx context.Contex
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/get-package-version-for-organization"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}"),
+		semconv.URLTemplateKey.String("/orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -55654,7 +55654,7 @@ func (c *Client) sendPackagesGetPackageVersionForUser(ctx context.Context, param
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/get-package-version-for-user"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}"),
+		semconv.URLTemplateKey.String("/users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -55804,7 +55804,7 @@ func (c *Client) sendPackagesListPackagesForAuthenticatedUser(ctx context.Contex
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/list-packages-for-authenticated-user"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/user/packages"),
+		semconv.URLTemplateKey.String("/user/packages"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -55914,7 +55914,7 @@ func (c *Client) sendPackagesListPackagesForOrganization(ctx context.Context, pa
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/list-packages-for-organization"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/packages"),
+		semconv.URLTemplateKey.String("/orgs/{org}/packages"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -56043,7 +56043,7 @@ func (c *Client) sendPackagesListPackagesForUser(ctx context.Context, params Pac
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/list-packages-for-user"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/users/{username}/packages"),
+		semconv.URLTemplateKey.String("/users/{username}/packages"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -56179,7 +56179,7 @@ func (c *Client) sendPackagesRestorePackageForAuthenticatedUser(ctx context.Cont
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/restore-package-for-authenticated-user"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/user/packages/{package_type}/{package_name}/restore"),
+		semconv.URLTemplateKey.String("/user/packages/{package_type}/{package_name}/restore"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -56322,7 +56322,7 @@ func (c *Client) sendPackagesRestorePackageForOrg(ctx context.Context, params Pa
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/restore-package-for-org"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/packages/{package_type}/{package_name}/restore"),
+		semconv.URLTemplateKey.String("/orgs/{org}/packages/{package_type}/{package_name}/restore"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -56484,7 +56484,7 @@ func (c *Client) sendPackagesRestorePackageForUser(ctx context.Context, params P
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/restore-package-for-user"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/users/{username}/packages/{package_type}/{package_name}/restore"),
+		semconv.URLTemplateKey.String("/users/{username}/packages/{package_type}/{package_name}/restore"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -56644,7 +56644,7 @@ func (c *Client) sendPackagesRestorePackageVersionForAuthenticatedUser(ctx conte
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/restore-package-version-for-authenticated-user"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/user/packages/{package_type}/{package_name}/versions/{package_version_id}/restore"),
+		semconv.URLTemplateKey.String("/user/packages/{package_type}/{package_name}/versions/{package_version_id}/restore"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -56785,7 +56785,7 @@ func (c *Client) sendPackagesRestorePackageVersionForOrg(ctx context.Context, pa
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/restore-package-version-for-org"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}/restore"),
+		semconv.URLTemplateKey.String("/orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}/restore"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -56945,7 +56945,7 @@ func (c *Client) sendPackagesRestorePackageVersionForUser(ctx context.Context, p
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("packages/restore-package-version-for-user"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}/restore"),
+		semconv.URLTemplateKey.String("/users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}/restore"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -57095,7 +57095,7 @@ func (c *Client) sendProjectsAddCollaborator(ctx context.Context, request OptNil
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/add-collaborator"),
 		semconv.HTTPRequestMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/projects/{project_id}/collaborators/{username}"),
+		semconv.URLTemplateKey.String("/projects/{project_id}/collaborators/{username}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -57208,7 +57208,7 @@ func (c *Client) sendProjectsCreateColumn(ctx context.Context, request *Projects
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/create-column"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/projects/{project_id}/columns"),
+		semconv.URLTemplateKey.String("/projects/{project_id}/columns"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -57303,7 +57303,7 @@ func (c *Client) sendProjectsCreateForAuthenticatedUser(ctx context.Context, req
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/create-for-authenticated-user"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/user/projects"),
+		semconv.URLTemplateKey.String("/user/projects"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -57381,7 +57381,7 @@ func (c *Client) sendProjectsCreateForOrg(ctx context.Context, request *Projects
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/create-for-org"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/projects"),
+		semconv.URLTemplateKey.String("/orgs/{org}/projects"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -57478,7 +57478,7 @@ func (c *Client) sendProjectsCreateForRepo(ctx context.Context, request *Project
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/create-for-repo"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/projects"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/projects"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -57592,7 +57592,7 @@ func (c *Client) sendProjectsDelete(ctx context.Context, params ProjectsDeletePa
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/delete"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/projects/{project_id}"),
+		semconv.URLTemplateKey.String("/projects/{project_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -57683,7 +57683,7 @@ func (c *Client) sendProjectsDeleteCard(ctx context.Context, params ProjectsDele
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/delete-card"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/projects/columns/cards/{card_id}"),
+		semconv.URLTemplateKey.String("/projects/columns/cards/{card_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -57774,7 +57774,7 @@ func (c *Client) sendProjectsDeleteColumn(ctx context.Context, params ProjectsDe
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/delete-column"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/projects/columns/{column_id}"),
+		semconv.URLTemplateKey.String("/projects/columns/{column_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -57867,7 +57867,7 @@ func (c *Client) sendProjectsGet(ctx context.Context, params ProjectsGetParams) 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/get"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/projects/{project_id}"),
+		semconv.URLTemplateKey.String("/projects/{project_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -57958,7 +57958,7 @@ func (c *Client) sendProjectsGetCard(ctx context.Context, params ProjectsGetCard
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/get-card"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/projects/columns/cards/{card_id}"),
+		semconv.URLTemplateKey.String("/projects/columns/cards/{card_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -58049,7 +58049,7 @@ func (c *Client) sendProjectsGetColumn(ctx context.Context, params ProjectsGetCo
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/get-column"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/projects/columns/{column_id}"),
+		semconv.URLTemplateKey.String("/projects/columns/{column_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -58142,7 +58142,7 @@ func (c *Client) sendProjectsGetPermissionForUser(ctx context.Context, params Pr
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/get-permission-for-user"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/projects/{project_id}/collaborators/{username}/permission"),
+		semconv.URLTemplateKey.String("/projects/{project_id}/collaborators/{username}/permission"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -58253,7 +58253,7 @@ func (c *Client) sendProjectsListCards(ctx context.Context, params ProjectsListC
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/list-cards"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/projects/columns/{column_id}/cards"),
+		semconv.URLTemplateKey.String("/projects/columns/{column_id}/cards"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -58404,7 +58404,7 @@ func (c *Client) sendProjectsListCollaborators(ctx context.Context, params Proje
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/list-collaborators"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/projects/{project_id}/collaborators"),
+		semconv.URLTemplateKey.String("/projects/{project_id}/collaborators"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -58551,7 +58551,7 @@ func (c *Client) sendProjectsListColumns(ctx context.Context, params ProjectsLis
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/list-columns"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/projects/{project_id}/columns"),
+		semconv.URLTemplateKey.String("/projects/{project_id}/columns"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -58683,7 +58683,7 @@ func (c *Client) sendProjectsListForOrg(ctx context.Context, params ProjectsList
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/list-for-org"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/projects"),
+		semconv.URLTemplateKey.String("/orgs/{org}/projects"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -58832,7 +58832,7 @@ func (c *Client) sendProjectsListForRepo(ctx context.Context, params ProjectsLis
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/list-for-repo"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/projects"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/projects"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -58998,7 +58998,7 @@ func (c *Client) sendProjectsListForUser(ctx context.Context, params ProjectsLis
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/list-for-user"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/users/{username}/projects"),
+		semconv.URLTemplateKey.String("/users/{username}/projects"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -59145,7 +59145,7 @@ func (c *Client) sendProjectsMoveCard(ctx context.Context, request *ProjectsMove
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/move-card"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/projects/columns/cards/{card_id}/moves"),
+		semconv.URLTemplateKey.String("/projects/columns/cards/{card_id}/moves"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -59240,7 +59240,7 @@ func (c *Client) sendProjectsMoveColumn(ctx context.Context, request *ProjectsMo
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/move-column"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/projects/columns/{column_id}/moves"),
+		semconv.URLTemplateKey.String("/projects/columns/{column_id}/moves"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -59336,7 +59336,7 @@ func (c *Client) sendProjectsRemoveCollaborator(ctx context.Context, params Proj
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/remove-collaborator"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/projects/{project_id}/collaborators/{username}"),
+		semconv.URLTemplateKey.String("/projects/{project_id}/collaborators/{username}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -59448,7 +59448,7 @@ func (c *Client) sendProjectsUpdate(ctx context.Context, request OptProjectsUpda
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/update"),
 		semconv.HTTPRequestMethodKey.String("PATCH"),
-		semconv.HTTPRouteKey.String("/projects/{project_id}"),
+		semconv.URLTemplateKey.String("/projects/{project_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -59542,7 +59542,7 @@ func (c *Client) sendProjectsUpdateCard(ctx context.Context, request OptProjects
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/update-card"),
 		semconv.HTTPRequestMethodKey.String("PATCH"),
-		semconv.HTTPRouteKey.String("/projects/columns/cards/{card_id}"),
+		semconv.URLTemplateKey.String("/projects/columns/cards/{card_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -59636,7 +59636,7 @@ func (c *Client) sendProjectsUpdateColumn(ctx context.Context, request *Projects
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/update-column"),
 		semconv.HTTPRequestMethodKey.String("PATCH"),
-		semconv.HTTPRouteKey.String("/projects/columns/{column_id}"),
+		semconv.URLTemplateKey.String("/projects/columns/{column_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -59730,7 +59730,7 @@ func (c *Client) sendPullsCheckIfMerged(ctx context.Context, params PullsCheckIf
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/check-if-merged"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/merge"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/merge"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -59875,7 +59875,7 @@ func (c *Client) sendPullsCreate(ctx context.Context, request *PullsCreateReq, p
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/create"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/pulls"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -59998,7 +59998,7 @@ func (c *Client) sendPullsCreateReplyForReviewComment(ctx context.Context, reque
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/create-reply-for-review-comment"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/comments/{comment_id}/replies"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/comments/{comment_id}/replies"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -60168,7 +60168,7 @@ func (c *Client) sendPullsCreateReview(ctx context.Context, request OptPullsCrea
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/create-review"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/reviews"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/reviews"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -60320,7 +60320,7 @@ func (c *Client) sendPullsCreateReviewComment(ctx context.Context, request *Pull
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/create-review-comment"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/comments"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/comments"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -60453,7 +60453,7 @@ func (c *Client) sendPullsDeletePendingReview(ctx context.Context, params PullsD
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/delete-pending-review"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -60601,7 +60601,7 @@ func (c *Client) sendPullsDeleteReviewComment(ctx context.Context, params PullsD
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/delete-review-comment"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/comments/{comment_id}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/pulls/comments/{comment_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -60732,7 +60732,7 @@ func (c *Client) sendPullsDismissReview(ctx context.Context, request *PullsDismi
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/dismiss-review"),
 		semconv.HTTPRequestMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/dismissals"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/dismissals"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -60917,7 +60917,7 @@ func (c *Client) sendPullsGet(ctx context.Context, params PullsGetParams) (res P
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/get"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/pulls/{pull_number}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -61046,7 +61046,7 @@ func (c *Client) sendPullsGetReview(ctx context.Context, params PullsGetReviewPa
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/get-review"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -61194,7 +61194,7 @@ func (c *Client) sendPullsGetReviewComment(ctx context.Context, params PullsGetR
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/get-review-comment"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/comments/{comment_id}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/pulls/comments/{comment_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -61327,7 +61327,7 @@ func (c *Client) sendPullsList(ctx context.Context, params PullsListParams) (res
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/list"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/pulls"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -61561,7 +61561,7 @@ func (c *Client) sendPullsListCommentsForReview(ctx context.Context, params Pull
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/list-comments-for-review"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/comments"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/comments"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -61750,7 +61750,7 @@ func (c *Client) sendPullsListCommits(ctx context.Context, params PullsListCommi
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/list-commits"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/commits"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/commits"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -61919,7 +61919,7 @@ func (c *Client) sendPullsListFiles(ctx context.Context, params PullsListFilesPa
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/list-files"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/files"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/files"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -62087,7 +62087,7 @@ func (c *Client) sendPullsListRequestedReviewers(ctx context.Context, params Pul
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/list-requested-reviewers"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -62256,7 +62256,7 @@ func (c *Client) sendPullsListReviewComments(ctx context.Context, params PullsLi
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/list-review-comments"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/comments"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/comments"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -62476,7 +62476,7 @@ func (c *Client) sendPullsListReviewCommentsForRepo(ctx context.Context, params 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/list-review-comments-for-repo"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/comments"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/pulls/comments"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -62676,7 +62676,7 @@ func (c *Client) sendPullsListReviews(ctx context.Context, params PullsListRevie
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/list-reviews"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/reviews"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/reviews"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -62850,7 +62850,7 @@ func (c *Client) sendPullsMerge(ctx context.Context, request OptNilPullsMergeReq
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/merge"),
 		semconv.HTTPRequestMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/merge"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/merge"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -62983,7 +62983,7 @@ func (c *Client) sendPullsRemoveRequestedReviewers(ctx context.Context, request 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/remove-requested-reviewers"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -63116,7 +63116,7 @@ func (c *Client) sendPullsSubmitReview(ctx context.Context, request *PullsSubmit
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/submit-review"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/events"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/events"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -63275,7 +63275,7 @@ func (c *Client) sendPullsUpdate(ctx context.Context, request OptPullsUpdateReq,
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/update"),
 		semconv.HTTPRequestMethodKey.String("PATCH"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/pulls/{pull_number}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -63408,7 +63408,7 @@ func (c *Client) sendPullsUpdateBranch(ctx context.Context, request OptNilPullsU
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/update-branch"),
 		semconv.HTTPRequestMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/update-branch"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/update-branch"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -63541,7 +63541,7 @@ func (c *Client) sendPullsUpdateReview(ctx context.Context, request *PullsUpdate
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/update-review"),
 		semconv.HTTPRequestMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -63692,7 +63692,7 @@ func (c *Client) sendPullsUpdateReviewComment(ctx context.Context, request *Pull
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/update-review-comment"),
 		semconv.HTTPRequestMethodKey.String("PATCH"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/comments/{comment_id}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/pulls/comments/{comment_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -63827,7 +63827,7 @@ func (c *Client) sendRateLimitGet(ctx context.Context) (res RateLimitGetRes, err
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("rate-limit/get"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/rate_limit"),
+		semconv.URLTemplateKey.String("/rate_limit"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -63902,7 +63902,7 @@ func (c *Client) sendReactionsCreateForCommitComment(ctx context.Context, reques
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/create-for-commit-comment"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/comments/{comment_id}/reactions"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/comments/{comment_id}/reactions"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -64036,7 +64036,7 @@ func (c *Client) sendReactionsCreateForIssue(ctx context.Context, request *React
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/create-for-issue"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/{issue_number}/reactions"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/issues/{issue_number}/reactions"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -64171,7 +64171,7 @@ func (c *Client) sendReactionsCreateForIssueComment(ctx context.Context, request
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/create-for-issue-comment"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/comments/{comment_id}/reactions"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/issues/comments/{comment_id}/reactions"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -64306,7 +64306,7 @@ func (c *Client) sendReactionsCreateForPullRequestReviewComment(ctx context.Cont
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/create-for-pull-request-review-comment"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -64440,7 +64440,7 @@ func (c *Client) sendReactionsCreateForRelease(ctx context.Context, request *Rea
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/create-for-release"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/releases/{release_id}/reactions"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/releases/{release_id}/reactions"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -64579,7 +64579,7 @@ func (c *Client) sendReactionsCreateForTeamDiscussionCommentInOrg(ctx context.Co
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/create-for-team-discussion-comment-in-org"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions"),
+		semconv.URLTemplateKey.String("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -64741,7 +64741,7 @@ func (c *Client) sendReactionsCreateForTeamDiscussionCommentLegacy(ctx context.C
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/create-for-team-discussion-comment-legacy"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions"),
+		semconv.URLTemplateKey.String("/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -64881,7 +64881,7 @@ func (c *Client) sendReactionsCreateForTeamDiscussionInOrg(ctx context.Context, 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/create-for-team-discussion-in-org"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions"),
+		semconv.URLTemplateKey.String("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -65025,7 +65025,7 @@ func (c *Client) sendReactionsCreateForTeamDiscussionLegacy(ctx context.Context,
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/create-for-team-discussion-legacy"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/teams/{team_id}/discussions/{discussion_number}/reactions"),
+		semconv.URLTemplateKey.String("/teams/{team_id}/discussions/{discussion_number}/reactions"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -65141,7 +65141,7 @@ func (c *Client) sendReactionsDeleteForCommitComment(ctx context.Context, params
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/delete-for-commit-comment"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/comments/{comment_id}/reactions/{reaction_id}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/comments/{comment_id}/reactions/{reaction_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -65291,7 +65291,7 @@ func (c *Client) sendReactionsDeleteForIssue(ctx context.Context, params Reactio
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/delete-for-issue"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/{issue_number}/reactions/{reaction_id}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/issues/{issue_number}/reactions/{reaction_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -65441,7 +65441,7 @@ func (c *Client) sendReactionsDeleteForIssueComment(ctx context.Context, params 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/delete-for-issue-comment"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/comments/{comment_id}/reactions/{reaction_id}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/issues/comments/{comment_id}/reactions/{reaction_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -65592,7 +65592,7 @@ func (c *Client) sendReactionsDeleteForPullRequestComment(ctx context.Context, p
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/delete-for-pull-request-comment"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions/{reaction_id}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions/{reaction_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -65747,7 +65747,7 @@ func (c *Client) sendReactionsDeleteForTeamDiscussion(ctx context.Context, param
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/delete-for-team-discussion"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions/{reaction_id}"),
+		semconv.URLTemplateKey.String("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions/{reaction_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -65900,7 +65900,7 @@ func (c *Client) sendReactionsDeleteForTeamDiscussionComment(ctx context.Context
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/delete-for-team-discussion-comment"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions/{reaction_id}"),
+		semconv.URLTemplateKey.String("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions/{reaction_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -66076,7 +66076,7 @@ func (c *Client) sendReactionsDeleteLegacy(ctx context.Context, params Reactions
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/delete-legacy"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/reactions/{reaction_id}"),
+		semconv.URLTemplateKey.String("/reactions/{reaction_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -66167,7 +66167,7 @@ func (c *Client) sendReactionsListForCommitComment(ctx context.Context, params R
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/list-for-commit-comment"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/comments/{comment_id}/reactions"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/comments/{comment_id}/reactions"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -66352,7 +66352,7 @@ func (c *Client) sendReactionsListForIssue(ctx context.Context, params Reactions
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/list-for-issue"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/{issue_number}/reactions"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/issues/{issue_number}/reactions"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -66537,7 +66537,7 @@ func (c *Client) sendReactionsListForIssueComment(ctx context.Context, params Re
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/list-for-issue-comment"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/comments/{comment_id}/reactions"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/issues/comments/{comment_id}/reactions"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -66723,7 +66723,7 @@ func (c *Client) sendReactionsListForPullRequestReviewComment(ctx context.Contex
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/list-for-pull-request-review-comment"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -66912,7 +66912,7 @@ func (c *Client) sendReactionsListForTeamDiscussionCommentInOrg(ctx context.Cont
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/list-for-team-discussion-comment-in-org"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions"),
+		semconv.URLTemplateKey.String("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -67124,7 +67124,7 @@ func (c *Client) sendReactionsListForTeamDiscussionCommentLegacy(ctx context.Con
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/list-for-team-discussion-comment-legacy"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions"),
+		semconv.URLTemplateKey.String("/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -67313,7 +67313,7 @@ func (c *Client) sendReactionsListForTeamDiscussionInOrg(ctx context.Context, pa
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/list-for-team-discussion-in-org"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions"),
+		semconv.URLTemplateKey.String("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -67506,7 +67506,7 @@ func (c *Client) sendReactionsListForTeamDiscussionLegacy(ctx context.Context, p
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("reactions/list-for-team-discussion-legacy"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/teams/{team_id}/discussions/{discussion_number}/reactions"),
+		semconv.URLTemplateKey.String("/teams/{team_id}/discussions/{discussion_number}/reactions"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -67672,7 +67672,7 @@ func (c *Client) sendReposAcceptInvitation(ctx context.Context, params ReposAcce
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/accept-invitation"),
 		semconv.HTTPRequestMethodKey.String("PATCH"),
-		semconv.HTTPRouteKey.String("/user/repository_invitations/{invitation_id}"),
+		semconv.URLTemplateKey.String("/user/repository_invitations/{invitation_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -67777,7 +67777,7 @@ func (c *Client) sendReposAddAppAccessRestrictions(ctx context.Context, request 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/add-app-access-restrictions"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -67929,7 +67929,7 @@ func (c *Client) sendReposAddCollaborator(ctx context.Context, request OptReposA
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/add-collaborator"),
 		semconv.HTTPRequestMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/collaborators/{username}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/collaborators/{username}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -68065,7 +68065,7 @@ func (c *Client) sendReposAddStatusCheckContexts(ctx context.Context, request Op
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/add-status-check-contexts"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -68212,7 +68212,7 @@ func (c *Client) sendReposAddTeamAccessRestrictions(ctx context.Context, request
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/add-team-access-restrictions"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -68358,7 +68358,7 @@ func (c *Client) sendReposAddUserAccessRestrictions(ctx context.Context, request
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/add-user-access-restrictions"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -68495,7 +68495,7 @@ func (c *Client) sendReposCheckCollaborator(ctx context.Context, params ReposChe
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/check-collaborator"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/collaborators/{username}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/collaborators/{username}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -68627,7 +68627,7 @@ func (c *Client) sendReposCheckVulnerabilityAlerts(ctx context.Context, params R
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/check-vulnerability-alerts"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/vulnerability-alerts"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/vulnerability-alerts"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -68792,7 +68792,7 @@ func (c *Client) sendReposCompareCommits(ctx context.Context, params ReposCompar
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/compare-commits"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/compare/{basehead}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/compare/{basehead}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -68959,7 +68959,7 @@ func (c *Client) sendReposCreateAutolink(ctx context.Context, request *ReposCrea
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/create-autolink"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/autolinks"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/autolinks"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -69080,7 +69080,7 @@ func (c *Client) sendReposCreateCommitComment(ctx context.Context, request *Repo
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/create-commit-comment"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/commits/{commit_sha}/comments"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/commits/{commit_sha}/comments"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -69219,7 +69219,7 @@ func (c *Client) sendReposCreateCommitSignatureProtection(ctx context.Context, p
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/create-commit-signature-protection"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/required_signatures"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/required_signatures"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -69351,7 +69351,7 @@ func (c *Client) sendReposCreateCommitStatus(ctx context.Context, request *Repos
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/create-commit-status"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/statuses/{sha}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/statuses/{sha}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -69483,7 +69483,7 @@ func (c *Client) sendReposCreateDeployKey(ctx context.Context, request *ReposCre
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/create-deploy-key"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/keys"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/keys"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -69652,7 +69652,7 @@ func (c *Client) sendReposCreateDeployment(ctx context.Context, request *ReposCr
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/create-deployment"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/deployments"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/deployments"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -69768,7 +69768,7 @@ func (c *Client) sendReposCreateDeploymentStatus(ctx context.Context, request *R
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/create-deployment-status"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/deployments/{deployment_id}/statuses"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/deployments/{deployment_id}/statuses"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -69920,7 +69920,7 @@ func (c *Client) sendReposCreateDispatchEvent(ctx context.Context, request *Repo
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/create-dispatch-event"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/dispatches"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/dispatches"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -70040,7 +70040,7 @@ func (c *Client) sendReposCreateForAuthenticatedUser(ctx context.Context, reques
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/create-for-authenticated-user"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/user/repos"),
+		semconv.URLTemplateKey.String("/user/repos"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -70119,7 +70119,7 @@ func (c *Client) sendReposCreateFork(ctx context.Context, request OptNilReposCre
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/create-fork"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/forks"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/forks"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -70240,7 +70240,7 @@ func (c *Client) sendReposCreateInOrg(ctx context.Context, request *ReposCreateI
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/create-in-org"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/repos"),
+		semconv.URLTemplateKey.String("/orgs/{org}/repos"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -70335,7 +70335,7 @@ func (c *Client) sendReposCreateOrUpdateFileContents(ctx context.Context, reques
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/create-or-update-file-contents"),
 		semconv.HTTPRequestMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/contents/{path}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/contents/{path}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -70468,7 +70468,7 @@ func (c *Client) sendReposCreatePagesSite(ctx context.Context, request NilReposC
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/create-pages-site"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pages"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/pages"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -70589,7 +70589,7 @@ func (c *Client) sendReposCreateRelease(ctx context.Context, request *ReposCreat
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/create-release"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/releases"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/releases"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -70714,7 +70714,7 @@ func (c *Client) sendReposCreateUsingTemplate(ctx context.Context, request *Repo
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/create-using-template"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/repos/{template_owner}/{template_repo}/generate"),
+		semconv.URLTemplateKey.String("/repos/{template_owner}/{template_repo}/generate"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -70830,7 +70830,7 @@ func (c *Client) sendReposCreateWebhook(ctx context.Context, request OptNilRepos
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/create-webhook"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/hooks"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/hooks"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -70944,7 +70944,7 @@ func (c *Client) sendReposDeclineInvitation(ctx context.Context, params ReposDec
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/decline-invitation"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/user/repository_invitations/{invitation_id}"),
+		semconv.URLTemplateKey.String("/user/repository_invitations/{invitation_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -71038,7 +71038,7 @@ func (c *Client) sendReposDelete(ctx context.Context, params ReposDeleteParams) 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -71153,7 +71153,7 @@ func (c *Client) sendReposDeleteAccessRestrictions(ctx context.Context, params R
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete-access-restrictions"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -71289,7 +71289,7 @@ func (c *Client) sendReposDeleteAdminBranchProtection(ctx context.Context, param
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete-admin-branch-protection"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -71419,7 +71419,7 @@ func (c *Client) sendReposDeleteAnEnvironment(ctx context.Context, params ReposD
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete-an-environment"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/environments/{environment_name}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/environments/{environment_name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -71549,7 +71549,7 @@ func (c *Client) sendReposDeleteAutolink(ctx context.Context, params ReposDelete
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete-autolink"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/autolinks/{autolink_id}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/autolinks/{autolink_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -71682,7 +71682,7 @@ func (c *Client) sendReposDeleteBranchProtection(ctx context.Context, params Rep
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete-branch-protection"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/branches/{branch}/protection"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -71812,7 +71812,7 @@ func (c *Client) sendReposDeleteCommitComment(ctx context.Context, params ReposD
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete-commit-comment"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/comments/{comment_id}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/comments/{comment_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -71948,7 +71948,7 @@ func (c *Client) sendReposDeleteCommitSignatureProtection(ctx context.Context, p
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete-commit-signature-protection"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/required_signatures"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/required_signatures"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -72079,7 +72079,7 @@ func (c *Client) sendReposDeleteDeployKey(ctx context.Context, params ReposDelet
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete-deploy-key"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/keys/{key_id}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/keys/{key_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -72216,7 +72216,7 @@ func (c *Client) sendReposDeleteDeployment(ctx context.Context, params ReposDele
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete-deployment"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/deployments/{deployment_id}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/deployments/{deployment_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -72352,7 +72352,7 @@ func (c *Client) sendReposDeleteFile(ctx context.Context, request *ReposDeleteFi
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete-file"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/contents/{path}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/contents/{path}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -72484,7 +72484,7 @@ func (c *Client) sendReposDeleteInvitation(ctx context.Context, params ReposDele
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete-invitation"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/invitations/{invitation_id}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/invitations/{invitation_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -72613,7 +72613,7 @@ func (c *Client) sendReposDeletePagesSite(ctx context.Context, params ReposDelet
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete-pages-site"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pages"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/pages"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -72728,7 +72728,7 @@ func (c *Client) sendReposDeletePullRequestReviewProtection(ctx context.Context,
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete-pull-request-review-protection"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -72858,7 +72858,7 @@ func (c *Client) sendReposDeleteRelease(ctx context.Context, params ReposDeleteR
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete-release"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/releases/{release_id}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/releases/{release_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -72987,7 +72987,7 @@ func (c *Client) sendReposDeleteReleaseAsset(ctx context.Context, params ReposDe
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete-release-asset"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/releases/assets/{asset_id}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/releases/assets/{asset_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -73116,7 +73116,7 @@ func (c *Client) sendReposDeleteWebhook(ctx context.Context, params ReposDeleteW
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete-webhook"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/hooks/{hook_id}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/hooks/{hook_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -73247,7 +73247,7 @@ func (c *Client) sendReposDisableAutomatedSecurityFixes(ctx context.Context, par
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/disable-automated-security-fixes"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/automated-security-fixes"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/automated-security-fixes"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -73358,7 +73358,7 @@ func (c *Client) sendReposDisableLfsForRepo(ctx context.Context, params ReposDis
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/disable-lfs-for-repo"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/lfs"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/lfs"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -73472,7 +73472,7 @@ func (c *Client) sendReposDisableVulnerabilityAlerts(ctx context.Context, params
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/disable-vulnerability-alerts"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/vulnerability-alerts"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/vulnerability-alerts"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -73588,7 +73588,7 @@ func (c *Client) sendReposDownloadTarballArchive(ctx context.Context, params Rep
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/download-tarball-archive"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/tarball/{ref}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/tarball/{ref}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -73722,7 +73722,7 @@ func (c *Client) sendReposDownloadZipballArchive(ctx context.Context, params Rep
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/download-zipball-archive"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/zipball/{ref}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/zipball/{ref}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -73853,7 +73853,7 @@ func (c *Client) sendReposEnableAutomatedSecurityFixes(ctx context.Context, para
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/enable-automated-security-fixes"),
 		semconv.HTTPRequestMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/automated-security-fixes"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/automated-security-fixes"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -73964,7 +73964,7 @@ func (c *Client) sendReposEnableLfsForRepo(ctx context.Context, params ReposEnab
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/enable-lfs-for-repo"),
 		semconv.HTTPRequestMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/lfs"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/lfs"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -74078,7 +74078,7 @@ func (c *Client) sendReposEnableVulnerabilityAlerts(ctx context.Context, params 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/enable-vulnerability-alerts"),
 		semconv.HTTPRequestMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/vulnerability-alerts"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/vulnerability-alerts"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -74190,7 +74190,7 @@ func (c *Client) sendReposGet(ctx context.Context, params ReposGetParams) (res R
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -74307,7 +74307,7 @@ func (c *Client) sendReposGetAccessRestrictions(ctx context.Context, params Repo
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-access-restrictions"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -74441,7 +74441,7 @@ func (c *Client) sendReposGetAdminBranchProtection(ctx context.Context, params R
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-admin-branch-protection"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -74575,7 +74575,7 @@ func (c *Client) sendReposGetAllStatusCheckContexts(ctx context.Context, params 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-all-status-check-contexts"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -74705,7 +74705,7 @@ func (c *Client) sendReposGetAllTopics(ctx context.Context, params ReposGetAllTo
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-all-topics"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/topics"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/topics"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -74861,7 +74861,7 @@ func (c *Client) sendReposGetAppsWithAccessToProtectedBranch(ctx context.Context
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-apps-with-access-to-protected-branch"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -74992,7 +74992,7 @@ func (c *Client) sendReposGetAutolink(ctx context.Context, params ReposGetAutoli
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-autolink"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/autolinks/{autolink_id}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/autolinks/{autolink_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -75121,7 +75121,7 @@ func (c *Client) sendReposGetBranch(ctx context.Context, params ReposGetBranchPa
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-branch"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/branches/{branch}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -75254,7 +75254,7 @@ func (c *Client) sendReposGetBranchProtection(ctx context.Context, params ReposG
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-branch-protection"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/branches/{branch}/protection"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -75385,7 +75385,7 @@ func (c *Client) sendReposGetClones(ctx context.Context, params ReposGetClonesPa
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-clones"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/traffic/clones"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/traffic/clones"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -75517,7 +75517,7 @@ func (c *Client) sendReposGetCodeFrequencyStats(ctx context.Context, params Repo
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-code-frequency-stats"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/stats/code_frequency"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/stats/code_frequency"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -75629,7 +75629,7 @@ func (c *Client) sendReposGetCollaboratorPermissionLevel(ctx context.Context, pa
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-collaborator-permission-level"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/collaborators/{username}/permission"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/collaborators/{username}/permission"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -75767,7 +75767,7 @@ func (c *Client) sendReposGetCombinedStatusForRef(ctx context.Context, params Re
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-combined-status-for-ref"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/commits/{ref}/status"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/commits/{ref}/status"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -75981,7 +75981,7 @@ func (c *Client) sendReposGetCommit(ctx context.Context, params ReposGetCommitPa
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-commit"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/commits/{ref}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/commits/{ref}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -76149,7 +76149,7 @@ func (c *Client) sendReposGetCommitActivityStats(ctx context.Context, params Rep
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-commit-activity-stats"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/stats/commit_activity"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/stats/commit_activity"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -76260,7 +76260,7 @@ func (c *Client) sendReposGetCommitComment(ctx context.Context, params ReposGetC
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-commit-comment"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/comments/{comment_id}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/comments/{comment_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -76398,7 +76398,7 @@ func (c *Client) sendReposGetCommitSignatureProtection(ctx context.Context, para
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-commit-signature-protection"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/required_signatures"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/required_signatures"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -76537,7 +76537,7 @@ func (c *Client) sendReposGetCommunityProfileMetrics(ctx context.Context, params
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-community-profile-metrics"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/community/profile"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/community/profile"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -76653,7 +76653,7 @@ func (c *Client) sendReposGetContributorsStats(ctx context.Context, params Repos
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-contributors-stats"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/stats/contributors"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/stats/contributors"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -76764,7 +76764,7 @@ func (c *Client) sendReposGetDeployKey(ctx context.Context, params ReposGetDeplo
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-deploy-key"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/keys/{key_id}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/keys/{key_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -76893,7 +76893,7 @@ func (c *Client) sendReposGetDeployment(ctx context.Context, params ReposGetDepl
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-deployment"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/deployments/{deployment_id}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/deployments/{deployment_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -77022,7 +77022,7 @@ func (c *Client) sendReposGetDeploymentStatus(ctx context.Context, params ReposG
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-deployment-status"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/deployments/{deployment_id}/statuses/{status_id}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/deployments/{deployment_id}/statuses/{status_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -77170,7 +77170,7 @@ func (c *Client) sendReposGetLatestPagesBuild(ctx context.Context, params ReposG
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-latest-pages-build"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pages/builds/latest"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/pages/builds/latest"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -77284,7 +77284,7 @@ func (c *Client) sendReposGetLatestRelease(ctx context.Context, params ReposGetL
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-latest-release"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/releases/latest"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/releases/latest"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -77395,7 +77395,7 @@ func (c *Client) sendReposGetPages(ctx context.Context, params ReposGetPagesPara
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-pages"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pages"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/pages"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -77506,7 +77506,7 @@ func (c *Client) sendReposGetPagesBuild(ctx context.Context, params ReposGetPage
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-pages-build"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pages/builds/{build_id}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/pages/builds/{build_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -77641,7 +77641,7 @@ func (c *Client) sendReposGetPagesHealthCheck(ctx context.Context, params ReposG
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-pages-health-check"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pages/health"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/pages/health"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -77755,7 +77755,7 @@ func (c *Client) sendReposGetParticipationStats(ctx context.Context, params Repo
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-participation-stats"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/stats/participation"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/stats/participation"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -77870,7 +77870,7 @@ func (c *Client) sendReposGetPullRequestReviewProtection(ctx context.Context, pa
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-pull-request-review-protection"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -78005,7 +78005,7 @@ func (c *Client) sendReposGetPunchCardStats(ctx context.Context, params ReposGet
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-punch-card-stats"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/stats/punch_card"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/stats/punch_card"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -78118,7 +78118,7 @@ func (c *Client) sendReposGetReadme(ctx context.Context, params ReposGetReadmePa
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-readme"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/readme"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/readme"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -78252,7 +78252,7 @@ func (c *Client) sendReposGetReadmeInDirectory(ctx context.Context, params Repos
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-readme-in-directory"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/readme/{dir}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/readme/{dir}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -78404,7 +78404,7 @@ func (c *Client) sendReposGetRelease(ctx context.Context, params ReposGetRelease
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-release"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/releases/{release_id}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/releases/{release_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -78536,7 +78536,7 @@ func (c *Client) sendReposGetReleaseAsset(ctx context.Context, params ReposGetRe
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-release-asset"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/releases/assets/{asset_id}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/releases/assets/{asset_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -78665,7 +78665,7 @@ func (c *Client) sendReposGetReleaseByTag(ctx context.Context, params ReposGetRe
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-release-by-tag"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/releases/tags/{tag}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/releases/tags/{tag}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -78798,7 +78798,7 @@ func (c *Client) sendReposGetStatusChecksProtection(ctx context.Context, params 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-status-checks-protection"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -78933,7 +78933,7 @@ func (c *Client) sendReposGetTeamsWithAccessToProtectedBranch(ctx context.Contex
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-teams-with-access-to-protected-branch"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -79063,7 +79063,7 @@ func (c *Client) sendReposGetTopPaths(ctx context.Context, params ReposGetTopPat
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-top-paths"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/traffic/popular/paths"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/traffic/popular/paths"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -79174,7 +79174,7 @@ func (c *Client) sendReposGetTopReferrers(ctx context.Context, params ReposGetTo
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-top-referrers"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/traffic/popular/referrers"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/traffic/popular/referrers"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -79290,7 +79290,7 @@ func (c *Client) sendReposGetUsersWithAccessToProtectedBranch(ctx context.Contex
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-users-with-access-to-protected-branch"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -79421,7 +79421,7 @@ func (c *Client) sendReposGetViews(ctx context.Context, params ReposGetViewsPara
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-views"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/traffic/views"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/traffic/views"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -79555,7 +79555,7 @@ func (c *Client) sendReposGetWebhook(ctx context.Context, params ReposGetWebhook
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-webhook"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/hooks/{hook_id}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/hooks/{hook_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -79688,7 +79688,7 @@ func (c *Client) sendReposGetWebhookConfigForRepo(ctx context.Context, params Re
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-webhook-config-for-repo"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/hooks/{hook_id}/config"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/hooks/{hook_id}/config"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -79818,7 +79818,7 @@ func (c *Client) sendReposGetWebhookDelivery(ctx context.Context, params ReposGe
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/get-webhook-delivery"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/hooks/{hook_id}/deliveries/{delivery_id}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/hooks/{hook_id}/deliveries/{delivery_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -79967,7 +79967,7 @@ func (c *Client) sendReposListAutolinks(ctx context.Context, params ReposListAut
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-autolinks"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/autolinks"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/autolinks"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -80099,7 +80099,7 @@ func (c *Client) sendReposListBranches(ctx context.Context, params ReposListBran
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-branches"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/branches"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -80270,7 +80270,7 @@ func (c *Client) sendReposListBranchesForHeadCommit(ctx context.Context, params 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-branches-for-head-commit"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/commits/{commit_sha}/branches-where-head"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/commits/{commit_sha}/branches-where-head"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -80404,7 +80404,7 @@ func (c *Client) sendReposListCollaborators(ctx context.Context, params ReposLis
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-collaborators"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/collaborators"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/collaborators"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -80570,7 +80570,7 @@ func (c *Client) sendReposListCommentsForCommit(ctx context.Context, params Repo
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-comments-for-commit"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/commits/{commit_sha}/comments"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/commits/{commit_sha}/comments"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -80741,7 +80741,7 @@ func (c *Client) sendReposListCommitCommentsForRepo(ctx context.Context, params 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-commit-comments-for-repo"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/comments"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/comments"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -80893,7 +80893,7 @@ func (c *Client) sendReposListCommitStatusesForRef(ctx context.Context, params R
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-commit-statuses-for-ref"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/commits/{ref}/statuses"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/commits/{ref}/statuses"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -81092,7 +81092,7 @@ func (c *Client) sendReposListCommits(ctx context.Context, params ReposListCommi
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-commits"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/commits"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/commits"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -81332,7 +81332,7 @@ func (c *Client) sendReposListContributors(ctx context.Context, params ReposList
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-contributors"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/contributors"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/contributors"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -81498,7 +81498,7 @@ func (c *Client) sendReposListDeployKeys(ctx context.Context, params ReposListDe
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-deploy-keys"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/keys"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/keys"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -81647,7 +81647,7 @@ func (c *Client) sendReposListDeploymentStatuses(ctx context.Context, params Rep
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-deployment-statuses"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/deployments/{deployment_id}/statuses"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/deployments/{deployment_id}/statuses"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -81815,7 +81815,7 @@ func (c *Client) sendReposListDeployments(ctx context.Context, params ReposListD
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-deployments"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/deployments"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/deployments"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -82035,7 +82035,7 @@ func (c *Client) sendReposListForAuthenticatedUser(ctx context.Context, params R
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-for-authenticated-user"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/user/repos"),
+		semconv.URLTemplateKey.String("/user/repos"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -82265,7 +82265,7 @@ func (c *Client) sendReposListForOrg(ctx context.Context, params ReposListForOrg
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-for-org"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/repos"),
+		semconv.URLTemplateKey.String("/orgs/{org}/repos"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -82447,7 +82447,7 @@ func (c *Client) sendReposListForUser(ctx context.Context, params ReposListForUs
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-for-user"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/users/{username}/repos"),
+		semconv.URLTemplateKey.String("/users/{username}/repos"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -82628,7 +82628,7 @@ func (c *Client) sendReposListForks(ctx context.Context, params ReposListForksPa
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-forks"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/forks"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/forks"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -82795,7 +82795,7 @@ func (c *Client) sendReposListInvitations(ctx context.Context, params ReposListI
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-invitations"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/invitations"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/invitations"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -82945,7 +82945,7 @@ func (c *Client) sendReposListInvitationsForAuthenticatedUser(ctx context.Contex
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-invitations-for-authenticated-user"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/user/repository_invitations"),
+		semconv.URLTemplateKey.String("/user/repository_invitations"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -83057,7 +83057,7 @@ func (c *Client) sendReposListLanguages(ctx context.Context, params ReposListLan
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-languages"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/languages"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/languages"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -83168,7 +83168,7 @@ func (c *Client) sendReposListPagesBuilds(ctx context.Context, params ReposListP
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-pages-builds"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pages/builds"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/pages/builds"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -83323,7 +83323,7 @@ func (c *Client) sendReposListPublic(ctx context.Context, params ReposListPublic
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-public"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repositories"),
+		semconv.URLTemplateKey.String("/repositories"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -83422,7 +83422,7 @@ func (c *Client) sendReposListPullRequestsAssociatedWithCommit(ctx context.Conte
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-pull-requests-associated-with-commit"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/commits/{commit_sha}/pulls"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/commits/{commit_sha}/pulls"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -83590,7 +83590,7 @@ func (c *Client) sendReposListReleaseAssets(ctx context.Context, params ReposLis
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-release-assets"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/releases/{release_id}/assets"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/releases/{release_id}/assets"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -83762,7 +83762,7 @@ func (c *Client) sendReposListReleases(ctx context.Context, params ReposListRele
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-releases"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/releases"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/releases"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -83911,7 +83911,7 @@ func (c *Client) sendReposListTags(ctx context.Context, params ReposListTagsPara
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-tags"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/tags"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/tags"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -84060,7 +84060,7 @@ func (c *Client) sendReposListTeams(ctx context.Context, params ReposListTeamsPa
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-teams"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/teams"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/teams"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -84209,7 +84209,7 @@ func (c *Client) sendReposListWebhookDeliveries(ctx context.Context, params Repo
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-webhook-deliveries"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/hooks/{hook_id}/deliveries"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/hooks/{hook_id}/deliveries"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -84377,7 +84377,7 @@ func (c *Client) sendReposListWebhooks(ctx context.Context, params ReposListWebh
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/list-webhooks"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/hooks"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/hooks"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -84526,7 +84526,7 @@ func (c *Client) sendReposMerge(ctx context.Context, request *ReposMergeReq, par
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/merge"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/merges"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/merges"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -84641,7 +84641,7 @@ func (c *Client) sendReposMergeUpstream(ctx context.Context, request *ReposMerge
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/merge-upstream"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/merge-upstream"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/merge-upstream"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -84756,7 +84756,7 @@ func (c *Client) sendReposPingWebhook(ctx context.Context, params ReposPingWebho
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/ping-webhook"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/hooks/{hook_id}/pings"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/hooks/{hook_id}/pings"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -84886,7 +84886,7 @@ func (c *Client) sendReposRedeliverWebhookDelivery(ctx context.Context, params R
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/redeliver-webhook-delivery"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/hooks/{hook_id}/deliveries/{delivery_id}/attempts"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/hooks/{hook_id}/deliveries/{delivery_id}/attempts"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -85049,7 +85049,7 @@ func (c *Client) sendReposRemoveAppAccessRestrictions(ctx context.Context, reque
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/remove-app-access-restrictions"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -85182,7 +85182,7 @@ func (c *Client) sendReposRemoveCollaborator(ctx context.Context, params ReposRe
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/remove-collaborator"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/collaborators/{username}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/collaborators/{username}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -85315,7 +85315,7 @@ func (c *Client) sendReposRemoveStatusCheckContexts(ctx context.Context, request
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/remove-status-check-contexts"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -85452,7 +85452,7 @@ func (c *Client) sendReposRemoveStatusCheckProtection(ctx context.Context, param
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/remove-status-check-protection"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -85596,7 +85596,7 @@ func (c *Client) sendReposRemoveTeamAccessRestrictions(ctx context.Context, requ
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/remove-team-access-restrictions"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -85742,7 +85742,7 @@ func (c *Client) sendReposRemoveUserAccessRestrictions(ctx context.Context, requ
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/remove-user-access-restrictions"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -85887,7 +85887,7 @@ func (c *Client) sendReposRenameBranch(ctx context.Context, request OptReposRena
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/rename-branch"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/rename"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/branches/{branch}/rename"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -86020,7 +86020,7 @@ func (c *Client) sendReposReplaceAllTopics(ctx context.Context, request *ReposRe
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/replace-all-topics"),
 		semconv.HTTPRequestMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/topics"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/topics"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -86139,7 +86139,7 @@ func (c *Client) sendReposRequestPagesBuild(ctx context.Context, params ReposReq
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/request-pages-build"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pages/builds"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/pages/builds"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -86256,7 +86256,7 @@ func (c *Client) sendReposSetAdminBranchProtection(ctx context.Context, params R
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/set-admin-branch-protection"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -86402,7 +86402,7 @@ func (c *Client) sendReposSetAppAccessRestrictions(ctx context.Context, request 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/set-app-access-restrictions"),
 		semconv.HTTPRequestMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -86539,7 +86539,7 @@ func (c *Client) sendReposSetStatusCheckContexts(ctx context.Context, request Op
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/set-status-check-contexts"),
 		semconv.HTTPRequestMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -86687,7 +86687,7 @@ func (c *Client) sendReposSetTeamAccessRestrictions(ctx context.Context, request
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/set-team-access-restrictions"),
 		semconv.HTTPRequestMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -86834,7 +86834,7 @@ func (c *Client) sendReposSetUserAccessRestrictions(ctx context.Context, request
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/set-user-access-restrictions"),
 		semconv.HTTPRequestMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -86970,7 +86970,7 @@ func (c *Client) sendReposTestPushWebhook(ctx context.Context, params ReposTestP
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/test-push-webhook"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/hooks/{hook_id}/tests"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/hooks/{hook_id}/tests"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -87104,7 +87104,7 @@ func (c *Client) sendReposTransfer(ctx context.Context, request *ReposTransferRe
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/transfer"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/transfer"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/transfer"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -87219,7 +87219,7 @@ func (c *Client) sendReposUpdate(ctx context.Context, request OptReposUpdateReq,
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/update"),
 		semconv.HTTPRequestMethodKey.String("PATCH"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -87339,7 +87339,7 @@ func (c *Client) sendReposUpdateBranchProtection(ctx context.Context, request *R
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/update-branch-protection"),
 		semconv.HTTPRequestMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/branches/{branch}/protection"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -87472,7 +87472,7 @@ func (c *Client) sendReposUpdateCommitComment(ctx context.Context, request *Repo
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/update-commit-comment"),
 		semconv.HTTPRequestMethodKey.String("PATCH"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/comments/{comment_id}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/comments/{comment_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -87604,7 +87604,7 @@ func (c *Client) sendReposUpdateInvitation(ctx context.Context, request OptRepos
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/update-invitation"),
 		semconv.HTTPRequestMethodKey.String("PATCH"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/invitations/{invitation_id}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/invitations/{invitation_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -87743,7 +87743,7 @@ func (c *Client) sendReposUpdatePullRequestReviewProtection(ctx context.Context,
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/update-pull-request-review-protection"),
 		semconv.HTTPRequestMethodKey.String("PATCH"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -87876,7 +87876,7 @@ func (c *Client) sendReposUpdateRelease(ctx context.Context, request OptReposUpd
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/update-release"),
 		semconv.HTTPRequestMethodKey.String("PATCH"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/releases/{release_id}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/releases/{release_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -88008,7 +88008,7 @@ func (c *Client) sendReposUpdateReleaseAsset(ctx context.Context, request OptRep
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/update-release-asset"),
 		semconv.HTTPRequestMethodKey.String("PATCH"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/releases/assets/{asset_id}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/releases/assets/{asset_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -88146,7 +88146,7 @@ func (c *Client) sendReposUpdateStatusCheckProtection(ctx context.Context, reque
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/update-status-check-protection"),
 		semconv.HTTPRequestMethodKey.String("PATCH"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -88282,7 +88282,7 @@ func (c *Client) sendReposUpdateWebhook(ctx context.Context, request OptReposUpd
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/update-webhook"),
 		semconv.HTTPRequestMethodKey.String("PATCH"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/hooks/{hook_id}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/hooks/{hook_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -88418,7 +88418,7 @@ func (c *Client) sendReposUpdateWebhookConfigForRepo(ctx context.Context, reques
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/update-webhook-config-for-repo"),
 		semconv.HTTPRequestMethodKey.String("PATCH"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/hooks/{hook_id}/config"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/hooks/{hook_id}/config"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -88576,7 +88576,7 @@ func (c *Client) sendReposUploadReleaseAsset(ctx context.Context, request *Repos
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/upload-release-asset"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/releases/{release_id}/assets"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/releases/{release_id}/assets"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -88744,7 +88744,7 @@ func (c *Client) sendScimDeleteUserFromOrg(ctx context.Context, params ScimDelet
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("scim/delete-user-from-org"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/scim/v2/organizations/{org}/Users/{scim_user_id}"),
+		semconv.URLTemplateKey.String("/scim/v2/organizations/{org}/Users/{scim_user_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -88873,7 +88873,7 @@ func (c *Client) sendSearchCode(ctx context.Context, params SearchCodeParams) (r
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("search/code"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/search/code"),
+		semconv.URLTemplateKey.String("/search/code"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -89042,7 +89042,7 @@ func (c *Client) sendSearchCommits(ctx context.Context, params SearchCommitsPara
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("search/commits"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/search/commits"),
+		semconv.URLTemplateKey.String("/search/commits"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -89223,7 +89223,7 @@ func (c *Client) sendSearchIssuesAndPullRequests(ctx context.Context, params Sea
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("search/issues-and-pull-requests"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/search/issues"),
+		semconv.URLTemplateKey.String("/search/issues"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -89391,7 +89391,7 @@ func (c *Client) sendSearchLabels(ctx context.Context, params SearchLabelsParams
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("search/labels"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/search/labels"),
+		semconv.URLTemplateKey.String("/search/labels"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -89579,7 +89579,7 @@ func (c *Client) sendSearchRepos(ctx context.Context, params SearchReposParams) 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("search/repos"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/search/repositories"),
+		semconv.URLTemplateKey.String("/search/repositories"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -89751,7 +89751,7 @@ func (c *Client) sendSearchTopics(ctx context.Context, params SearchTopicsParams
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("search/topics"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/search/topics"),
+		semconv.URLTemplateKey.String("/search/topics"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -89887,7 +89887,7 @@ func (c *Client) sendSearchUsers(ctx context.Context, params SearchUsersParams) 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("search/users"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/search/users"),
+		semconv.URLTemplateKey.String("/search/users"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -90049,7 +90049,7 @@ func (c *Client) sendSecretScanningGetAlert(ctx context.Context, params SecretSc
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("secret-scanning/get-alert"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -90185,7 +90185,7 @@ func (c *Client) sendSecretScanningListAlertsForOrg(ctx context.Context, params 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("secret-scanning/list-alerts-for-org"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/secret-scanning/alerts"),
+		semconv.URLTemplateKey.String("/orgs/{org}/secret-scanning/alerts"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -90352,7 +90352,7 @@ func (c *Client) sendSecretScanningListAlertsForRepo(ctx context.Context, params
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("secret-scanning/list-alerts-for-repo"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/secret-scanning/alerts"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/secret-scanning/alerts"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -90538,7 +90538,7 @@ func (c *Client) sendSecretScanningUpdateAlert(ctx context.Context, request *Sec
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("secret-scanning/update-alert"),
 		semconv.HTTPRequestMethodKey.String("PATCH"),
-		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -90694,7 +90694,7 @@ func (c *Client) sendTeamsAddMemberLegacy(ctx context.Context, params TeamsAddMe
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/add-member-legacy"),
 		semconv.HTTPRequestMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/teams/{team_id}/members/{username}"),
+		semconv.URLTemplateKey.String("/teams/{team_id}/members/{username}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -90825,7 +90825,7 @@ func (c *Client) sendTeamsAddOrUpdateMembershipForUserInOrg(ctx context.Context,
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/add-or-update-membership-for-user-in-org"),
 		semconv.HTTPRequestMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/memberships/{username}"),
+		semconv.URLTemplateKey.String("/orgs/{org}/teams/{team_slug}/memberships/{username}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -90983,7 +90983,7 @@ func (c *Client) sendTeamsAddOrUpdateMembershipForUserLegacy(ctx context.Context
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/add-or-update-membership-for-user-legacy"),
 		semconv.HTTPRequestMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/teams/{team_id}/memberships/{username}"),
+		semconv.URLTemplateKey.String("/teams/{team_id}/memberships/{username}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -91100,7 +91100,7 @@ func (c *Client) sendTeamsAddOrUpdateProjectPermissionsInOrg(ctx context.Context
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/add-or-update-project-permissions-in-org"),
 		semconv.HTTPRequestMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/projects/{project_id}"),
+		semconv.URLTemplateKey.String("/orgs/{org}/teams/{team_slug}/projects/{project_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -91240,7 +91240,7 @@ func (c *Client) sendTeamsAddOrUpdateProjectPermissionsLegacy(ctx context.Contex
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/add-or-update-project-permissions-legacy"),
 		semconv.HTTPRequestMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/teams/{team_id}/projects/{project_id}"),
+		semconv.URLTemplateKey.String("/teams/{team_id}/projects/{project_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -91364,7 +91364,7 @@ func (c *Client) sendTeamsAddOrUpdateRepoPermissionsInOrg(ctx context.Context, r
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/add-or-update-repo-permissions-in-org"),
 		semconv.HTTPRequestMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}"),
+		semconv.URLTemplateKey.String("/orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -91528,7 +91528,7 @@ func (c *Client) sendTeamsAddOrUpdateRepoPermissionsLegacy(ctx context.Context, 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/add-or-update-repo-permissions-legacy"),
 		semconv.HTTPRequestMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/teams/{team_id}/repos/{owner}/{repo}"),
+		semconv.URLTemplateKey.String("/teams/{team_id}/repos/{owner}/{repo}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -91663,7 +91663,7 @@ func (c *Client) sendTeamsCheckPermissionsForProjectInOrg(ctx context.Context, p
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/check-permissions-for-project-in-org"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/projects/{project_id}"),
+		semconv.URLTemplateKey.String("/orgs/{org}/teams/{team_slug}/projects/{project_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -91799,7 +91799,7 @@ func (c *Client) sendTeamsCheckPermissionsForProjectLegacy(ctx context.Context, 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/check-permissions-for-project-legacy"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/teams/{team_id}/projects/{project_id}"),
+		semconv.URLTemplateKey.String("/teams/{team_id}/projects/{project_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -91917,7 +91917,7 @@ func (c *Client) sendTeamsCheckPermissionsForRepoInOrg(ctx context.Context, para
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/check-permissions-for-repo-in-org"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}"),
+		semconv.URLTemplateKey.String("/orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -92074,7 +92074,7 @@ func (c *Client) sendTeamsCheckPermissionsForRepoLegacy(ctx context.Context, par
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/check-permissions-for-repo-legacy"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/teams/{team_id}/repos/{owner}/{repo}"),
+		semconv.URLTemplateKey.String("/teams/{team_id}/repos/{owner}/{repo}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -92210,7 +92210,7 @@ func (c *Client) sendTeamsCreate(ctx context.Context, request *TeamsCreateReq, p
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/create"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/teams"),
+		semconv.URLTemplateKey.String("/orgs/{org}/teams"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -92315,7 +92315,7 @@ func (c *Client) sendTeamsCreateDiscussionCommentInOrg(ctx context.Context, requ
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/create-discussion-comment-in-org"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments"),
+		semconv.URLTemplateKey.String("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -92461,7 +92461,7 @@ func (c *Client) sendTeamsCreateDiscussionCommentLegacy(ctx context.Context, req
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/create-discussion-comment-legacy"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/teams/{team_id}/discussions/{discussion_number}/comments"),
+		semconv.URLTemplateKey.String("/teams/{team_id}/discussions/{discussion_number}/comments"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -92585,7 +92585,7 @@ func (c *Client) sendTeamsCreateDiscussionInOrg(ctx context.Context, request *Te
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/create-discussion-in-org"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/discussions"),
+		semconv.URLTemplateKey.String("/orgs/{org}/teams/{team_slug}/discussions"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -92712,7 +92712,7 @@ func (c *Client) sendTeamsCreateDiscussionLegacy(ctx context.Context, request *T
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/create-discussion-legacy"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/teams/{team_id}/discussions"),
+		semconv.URLTemplateKey.String("/teams/{team_id}/discussions"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -92814,7 +92814,7 @@ func (c *Client) sendTeamsCreateOrUpdateIdpGroupConnectionsInOrg(ctx context.Con
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/create-or-update-idp-group-connections-in-org"),
 		semconv.HTTPRequestMethodKey.String("PATCH"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/team-sync/group-mappings"),
+		semconv.URLTemplateKey.String("/orgs/{org}/teams/{team_slug}/team-sync/group-mappings"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -92939,7 +92939,7 @@ func (c *Client) sendTeamsCreateOrUpdateIdpGroupConnectionsLegacy(ctx context.Co
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/create-or-update-idp-group-connections-legacy"),
 		semconv.HTTPRequestMethodKey.String("PATCH"),
-		semconv.HTTPRouteKey.String("/teams/{team_id}/team-sync/group-mappings"),
+		semconv.URLTemplateKey.String("/teams/{team_id}/team-sync/group-mappings"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -93037,7 +93037,7 @@ func (c *Client) sendTeamsDeleteDiscussionCommentInOrg(ctx context.Context, para
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/delete-discussion-comment-in-org"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}"),
+		semconv.URLTemplateKey.String("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -93191,7 +93191,7 @@ func (c *Client) sendTeamsDeleteDiscussionCommentLegacy(ctx context.Context, par
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/delete-discussion-comment-legacy"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}"),
+		semconv.URLTemplateKey.String("/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -93323,7 +93323,7 @@ func (c *Client) sendTeamsDeleteDiscussionInOrg(ctx context.Context, params Team
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/delete-discussion-in-org"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}"),
+		semconv.URLTemplateKey.String("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -93458,7 +93458,7 @@ func (c *Client) sendTeamsDeleteDiscussionLegacy(ctx context.Context, params Tea
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/delete-discussion-legacy"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/teams/{team_id}/discussions/{discussion_number}"),
+		semconv.URLTemplateKey.String("/teams/{team_id}/discussions/{discussion_number}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -93572,7 +93572,7 @@ func (c *Client) sendTeamsDeleteInOrg(ctx context.Context, params TeamsDeleteInO
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/delete-in-org"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}"),
+		semconv.URLTemplateKey.String("/orgs/{org}/teams/{team_slug}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -93689,7 +93689,7 @@ func (c *Client) sendTeamsDeleteLegacy(ctx context.Context, params TeamsDeleteLe
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/delete-legacy"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/teams/{team_id}"),
+		semconv.URLTemplateKey.String("/teams/{team_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -93782,7 +93782,7 @@ func (c *Client) sendTeamsGetByName(ctx context.Context, params TeamsGetByNamePa
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/get-by-name"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}"),
+		semconv.URLTemplateKey.String("/orgs/{org}/teams/{team_slug}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -93895,7 +93895,7 @@ func (c *Client) sendTeamsGetDiscussionCommentInOrg(ctx context.Context, params 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/get-discussion-comment-in-org"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}"),
+		semconv.URLTemplateKey.String("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -94049,7 +94049,7 @@ func (c *Client) sendTeamsGetDiscussionCommentLegacy(ctx context.Context, params
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/get-discussion-comment-legacy"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}"),
+		semconv.URLTemplateKey.String("/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -94181,7 +94181,7 @@ func (c *Client) sendTeamsGetDiscussionInOrg(ctx context.Context, params TeamsGe
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/get-discussion-in-org"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}"),
+		semconv.URLTemplateKey.String("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -94316,7 +94316,7 @@ func (c *Client) sendTeamsGetDiscussionLegacy(ctx context.Context, params TeamsG
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/get-discussion-legacy"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/teams/{team_id}/discussions/{discussion_number}"),
+		semconv.URLTemplateKey.String("/teams/{team_id}/discussions/{discussion_number}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -94430,7 +94430,7 @@ func (c *Client) sendTeamsGetLegacy(ctx context.Context, params TeamsGetLegacyPa
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/get-legacy"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/teams/{team_id}"),
+		semconv.URLTemplateKey.String("/teams/{team_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -94527,7 +94527,7 @@ func (c *Client) sendTeamsGetMemberLegacy(ctx context.Context, params TeamsGetMe
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/get-member-legacy"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/teams/{team_id}/members/{username}"),
+		semconv.URLTemplateKey.String("/teams/{team_id}/members/{username}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -94644,7 +94644,7 @@ func (c *Client) sendTeamsGetMembershipForUserInOrg(ctx context.Context, params 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/get-membership-for-user-in-org"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/memberships/{username}"),
+		semconv.URLTemplateKey.String("/orgs/{org}/teams/{team_slug}/memberships/{username}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -94783,7 +94783,7 @@ func (c *Client) sendTeamsGetMembershipForUserLegacy(ctx context.Context, params
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/get-membership-for-user-legacy"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/teams/{team_id}/memberships/{username}"),
+		semconv.URLTemplateKey.String("/teams/{team_id}/memberships/{username}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -94893,7 +94893,7 @@ func (c *Client) sendTeamsList(ctx context.Context, params TeamsListParams) (res
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/teams"),
+		semconv.URLTemplateKey.String("/orgs/{org}/teams"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -95025,7 +95025,7 @@ func (c *Client) sendTeamsListChildInOrg(ctx context.Context, params TeamsListCh
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list-child-in-org"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/teams"),
+		semconv.URLTemplateKey.String("/orgs/{org}/teams/{team_slug}/teams"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -95178,7 +95178,7 @@ func (c *Client) sendTeamsListChildLegacy(ctx context.Context, params TeamsListC
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list-child-legacy"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/teams/{team_id}/teams"),
+		semconv.URLTemplateKey.String("/teams/{team_id}/teams"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -95311,7 +95311,7 @@ func (c *Client) sendTeamsListDiscussionCommentsInOrg(ctx context.Context, param
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list-discussion-comments-in-org"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments"),
+		semconv.URLTemplateKey.String("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -95502,7 +95502,7 @@ func (c *Client) sendTeamsListDiscussionCommentsLegacy(ctx context.Context, para
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list-discussion-comments-legacy"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/teams/{team_id}/discussions/{discussion_number}/comments"),
+		semconv.URLTemplateKey.String("/teams/{team_id}/discussions/{discussion_number}/comments"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -95671,7 +95671,7 @@ func (c *Client) sendTeamsListDiscussionsInOrg(ctx context.Context, params Teams
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list-discussions-in-org"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/discussions"),
+		semconv.URLTemplateKey.String("/orgs/{org}/teams/{team_slug}/discussions"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -95860,7 +95860,7 @@ func (c *Client) sendTeamsListDiscussionsLegacy(ctx context.Context, params Team
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list-discussions-legacy"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/teams/{team_id}/discussions"),
+		semconv.URLTemplateKey.String("/teams/{team_id}/discussions"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -96010,7 +96010,7 @@ func (c *Client) sendTeamsListForAuthenticatedUser(ctx context.Context, params T
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list-for-authenticated-user"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/user/teams"),
+		semconv.URLTemplateKey.String("/user/teams"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -96129,7 +96129,7 @@ func (c *Client) sendTeamsListIdpGroupsForLegacy(ctx context.Context, params Tea
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list-idp-groups-for-legacy"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/teams/{team_id}/team-sync/group-mappings"),
+		semconv.URLTemplateKey.String("/teams/{team_id}/team-sync/group-mappings"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -96227,7 +96227,7 @@ func (c *Client) sendTeamsListIdpGroupsForOrg(ctx context.Context, params TeamsL
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list-idp-groups-for-org"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/team-sync/groups"),
+		semconv.URLTemplateKey.String("/orgs/{org}/team-sync/groups"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -96362,7 +96362,7 @@ func (c *Client) sendTeamsListIdpGroupsInOrg(ctx context.Context, params TeamsLi
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list-idp-groups-in-org"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/team-sync/group-mappings"),
+		semconv.URLTemplateKey.String("/orgs/{org}/teams/{team_slug}/team-sync/group-mappings"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -96474,7 +96474,7 @@ func (c *Client) sendTeamsListMembersInOrg(ctx context.Context, params TeamsList
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list-members-in-org"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/members"),
+		semconv.URLTemplateKey.String("/orgs/{org}/teams/{team_slug}/members"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -96645,7 +96645,7 @@ func (c *Client) sendTeamsListMembersLegacy(ctx context.Context, params TeamsLis
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list-members-legacy"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/teams/{team_id}/members"),
+		semconv.URLTemplateKey.String("/teams/{team_id}/members"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -96797,7 +96797,7 @@ func (c *Client) sendTeamsListPendingInvitationsInOrg(ctx context.Context, param
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list-pending-invitations-in-org"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/invitations"),
+		semconv.URLTemplateKey.String("/orgs/{org}/teams/{team_slug}/invitations"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -96954,7 +96954,7 @@ func (c *Client) sendTeamsListPendingInvitationsLegacy(ctx context.Context, para
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list-pending-invitations-legacy"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/teams/{team_id}/invitations"),
+		semconv.URLTemplateKey.String("/teams/{team_id}/invitations"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -97086,7 +97086,7 @@ func (c *Client) sendTeamsListProjectsInOrg(ctx context.Context, params TeamsLis
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list-projects-in-org"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/projects"),
+		semconv.URLTemplateKey.String("/orgs/{org}/teams/{team_slug}/projects"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -97240,7 +97240,7 @@ func (c *Client) sendTeamsListProjectsLegacy(ctx context.Context, params TeamsLi
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list-projects-legacy"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/teams/{team_id}/projects"),
+		semconv.URLTemplateKey.String("/teams/{team_id}/projects"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -97372,7 +97372,7 @@ func (c *Client) sendTeamsListReposInOrg(ctx context.Context, params TeamsListRe
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list-repos-in-org"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/repos"),
+		semconv.URLTemplateKey.String("/orgs/{org}/teams/{team_slug}/repos"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -97525,7 +97525,7 @@ func (c *Client) sendTeamsListReposLegacy(ctx context.Context, params TeamsListR
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/list-repos-legacy"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/teams/{team_id}/repos"),
+		semconv.URLTemplateKey.String("/teams/{team_id}/repos"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -97675,7 +97675,7 @@ func (c *Client) sendTeamsRemoveMemberLegacy(ctx context.Context, params TeamsRe
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/remove-member-legacy"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/teams/{team_id}/members/{username}"),
+		semconv.URLTemplateKey.String("/teams/{team_id}/members/{username}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -97799,7 +97799,7 @@ func (c *Client) sendTeamsRemoveMembershipForUserInOrg(ctx context.Context, para
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/remove-membership-for-user-in-org"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/memberships/{username}"),
+		semconv.URLTemplateKey.String("/orgs/{org}/teams/{team_slug}/memberships/{username}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -97945,7 +97945,7 @@ func (c *Client) sendTeamsRemoveMembershipForUserLegacy(ctx context.Context, par
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/remove-membership-for-user-legacy"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/teams/{team_id}/memberships/{username}"),
+		semconv.URLTemplateKey.String("/teams/{team_id}/memberships/{username}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -98060,7 +98060,7 @@ func (c *Client) sendTeamsRemoveProjectInOrg(ctx context.Context, params TeamsRe
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/remove-project-in-org"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/projects/{project_id}"),
+		semconv.URLTemplateKey.String("/orgs/{org}/teams/{team_slug}/projects/{project_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -98197,7 +98197,7 @@ func (c *Client) sendTeamsRemoveProjectLegacy(ctx context.Context, params TeamsR
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/remove-project-legacy"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/teams/{team_id}/projects/{project_id}"),
+		semconv.URLTemplateKey.String("/teams/{team_id}/projects/{project_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -98312,7 +98312,7 @@ func (c *Client) sendTeamsRemoveRepoInOrg(ctx context.Context, params TeamsRemov
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/remove-repo-in-org"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}"),
+		semconv.URLTemplateKey.String("/orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -98468,7 +98468,7 @@ func (c *Client) sendTeamsRemoveRepoLegacy(ctx context.Context, params TeamsRemo
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/remove-repo-legacy"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/teams/{team_id}/repos/{owner}/{repo}"),
+		semconv.URLTemplateKey.String("/teams/{team_id}/repos/{owner}/{repo}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -98600,7 +98600,7 @@ func (c *Client) sendTeamsUpdateDiscussionCommentInOrg(ctx context.Context, requ
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/update-discussion-comment-in-org"),
 		semconv.HTTPRequestMethodKey.String("PATCH"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}"),
+		semconv.URLTemplateKey.String("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -98757,7 +98757,7 @@ func (c *Client) sendTeamsUpdateDiscussionCommentLegacy(ctx context.Context, req
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/update-discussion-comment-legacy"),
 		semconv.HTTPRequestMethodKey.String("PATCH"),
-		semconv.HTTPRouteKey.String("/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}"),
+		semconv.URLTemplateKey.String("/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -98893,7 +98893,7 @@ func (c *Client) sendTeamsUpdateDiscussionInOrg(ctx context.Context, request Opt
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/update-discussion-in-org"),
 		semconv.HTTPRequestMethodKey.String("PATCH"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}"),
+		semconv.URLTemplateKey.String("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -99032,7 +99032,7 @@ func (c *Client) sendTeamsUpdateDiscussionLegacy(ctx context.Context, request Op
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/update-discussion-legacy"),
 		semconv.HTTPRequestMethodKey.String("PATCH"),
-		semconv.HTTPRouteKey.String("/teams/{team_id}/discussions/{discussion_number}"),
+		semconv.URLTemplateKey.String("/teams/{team_id}/discussions/{discussion_number}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -99147,7 +99147,7 @@ func (c *Client) sendTeamsUpdateInOrg(ctx context.Context, request OptTeamsUpdat
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/update-in-org"),
 		semconv.HTTPRequestMethodKey.String("PATCH"),
-		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}"),
+		semconv.URLTemplateKey.String("/orgs/{org}/teams/{team_slug}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -99266,7 +99266,7 @@ func (c *Client) sendTeamsUpdateLegacy(ctx context.Context, request *TeamsUpdate
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/update-legacy"),
 		semconv.HTTPRequestMethodKey.String("PATCH"),
-		semconv.HTTPRouteKey.String("/teams/{team_id}"),
+		semconv.URLTemplateKey.String("/teams/{team_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -99360,7 +99360,7 @@ func (c *Client) sendUsersAddEmailForAuthenticated(ctx context.Context, request 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/add-email-for-authenticated"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/user/emails"),
+		semconv.URLTemplateKey.String("/user/emails"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -99436,7 +99436,7 @@ func (c *Client) sendUsersBlock(ctx context.Context, params UsersBlockParams) (r
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/block"),
 		semconv.HTTPRequestMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/user/blocks/{username}"),
+		semconv.URLTemplateKey.String("/user/blocks/{username}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -99527,7 +99527,7 @@ func (c *Client) sendUsersCheckBlocked(ctx context.Context, params UsersCheckBlo
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/check-blocked"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/user/blocks/{username}"),
+		semconv.URLTemplateKey.String("/user/blocks/{username}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -99618,7 +99618,7 @@ func (c *Client) sendUsersCheckFollowingForUser(ctx context.Context, params User
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/check-following-for-user"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/users/{username}/following/{target_user}"),
+		semconv.URLTemplateKey.String("/users/{username}/following/{target_user}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -99728,7 +99728,7 @@ func (c *Client) sendUsersCheckPersonIsFollowedByAuthenticated(ctx context.Conte
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/check-person-is-followed-by-authenticated"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/user/following/{username}"),
+		semconv.URLTemplateKey.String("/user/following/{username}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -99821,7 +99821,7 @@ func (c *Client) sendUsersCreateGpgKeyForAuthenticated(ctx context.Context, requ
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/create-gpg-key-for-authenticated"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/user/gpg_keys"),
+		semconv.URLTemplateKey.String("/user/gpg_keys"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -99899,7 +99899,7 @@ func (c *Client) sendUsersCreatePublicSSHKeyForAuthenticated(ctx context.Context
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/create-public-ssh-key-for-authenticated"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/user/keys"),
+		semconv.URLTemplateKey.String("/user/keys"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -99975,7 +99975,7 @@ func (c *Client) sendUsersDeleteEmailForAuthenticated(ctx context.Context, reque
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/delete-email-for-authenticated"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/user/emails"),
+		semconv.URLTemplateKey.String("/user/emails"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -100053,7 +100053,7 @@ func (c *Client) sendUsersDeleteGpgKeyForAuthenticated(ctx context.Context, para
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/delete-gpg-key-for-authenticated"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/user/gpg_keys/{gpg_key_id}"),
+		semconv.URLTemplateKey.String("/user/gpg_keys/{gpg_key_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -100146,7 +100146,7 @@ func (c *Client) sendUsersDeletePublicSSHKeyForAuthenticated(ctx context.Context
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/delete-public-ssh-key-for-authenticated"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/user/keys/{key_id}"),
+		semconv.URLTemplateKey.String("/user/keys/{key_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -100241,7 +100241,7 @@ func (c *Client) sendUsersFollow(ctx context.Context, params UsersFollowParams) 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/follow"),
 		semconv.HTTPRequestMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/user/following/{username}"),
+		semconv.URLTemplateKey.String("/user/following/{username}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -100335,7 +100335,7 @@ func (c *Client) sendUsersGetAuthenticated(ctx context.Context) (res UsersGetAut
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/get-authenticated"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/user"),
+		semconv.URLTemplateKey.String("/user"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -100422,7 +100422,7 @@ func (c *Client) sendUsersGetByUsername(ctx context.Context, params UsersGetByUs
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/get-by-username"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/users/{username}"),
+		semconv.URLTemplateKey.String("/users/{username}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -100522,7 +100522,7 @@ func (c *Client) sendUsersGetContextForUser(ctx context.Context, params UsersGet
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/get-context-for-user"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/users/{username}/hovercard"),
+		semconv.URLTemplateKey.String("/users/{username}/hovercard"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -100654,7 +100654,7 @@ func (c *Client) sendUsersGetGpgKeyForAuthenticated(ctx context.Context, params 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/get-gpg-key-for-authenticated"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/user/gpg_keys/{gpg_key_id}"),
+		semconv.URLTemplateKey.String("/user/gpg_keys/{gpg_key_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -100747,7 +100747,7 @@ func (c *Client) sendUsersGetPublicSSHKeyForAuthenticated(ctx context.Context, p
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/get-public-ssh-key-for-authenticated"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/user/keys/{key_id}"),
+		semconv.URLTemplateKey.String("/user/keys/{key_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -100842,7 +100842,7 @@ func (c *Client) sendUsersList(ctx context.Context, params UsersListParams) (res
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/list"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/users"),
+		semconv.URLTemplateKey.String("/users"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -100953,7 +100953,7 @@ func (c *Client) sendUsersListBlockedByAuthenticated(ctx context.Context) (res U
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/list-blocked-by-authenticated"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/user/blocks"),
+		semconv.URLTemplateKey.String("/user/blocks"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -101027,7 +101027,7 @@ func (c *Client) sendUsersListEmailsForAuthenticated(ctx context.Context, params
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/list-emails-for-authenticated"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/user/emails"),
+		semconv.URLTemplateKey.String("/user/emails"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -101138,7 +101138,7 @@ func (c *Client) sendUsersListFollowedByAuthenticated(ctx context.Context, param
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/list-followed-by-authenticated"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/user/following"),
+		semconv.URLTemplateKey.String("/user/following"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -101249,7 +101249,7 @@ func (c *Client) sendUsersListFollowersForAuthenticatedUser(ctx context.Context,
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/list-followers-for-authenticated-user"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/user/followers"),
+		semconv.URLTemplateKey.String("/user/followers"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -101360,7 +101360,7 @@ func (c *Client) sendUsersListFollowersForUser(ctx context.Context, params Users
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/list-followers-for-user"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/users/{username}/followers"),
+		semconv.URLTemplateKey.String("/users/{username}/followers"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -101490,7 +101490,7 @@ func (c *Client) sendUsersListFollowingForUser(ctx context.Context, params Users
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/list-following-for-user"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/users/{username}/following"),
+		semconv.URLTemplateKey.String("/users/{username}/following"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -101622,7 +101622,7 @@ func (c *Client) sendUsersListGpgKeysForAuthenticated(ctx context.Context, param
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/list-gpg-keys-for-authenticated"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/user/gpg_keys"),
+		semconv.URLTemplateKey.String("/user/gpg_keys"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -101733,7 +101733,7 @@ func (c *Client) sendUsersListGpgKeysForUser(ctx context.Context, params UsersLi
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/list-gpg-keys-for-user"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/users/{username}/gpg_keys"),
+		semconv.URLTemplateKey.String("/users/{username}/gpg_keys"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -101866,7 +101866,7 @@ func (c *Client) sendUsersListPublicEmailsForAuthenticated(ctx context.Context, 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/list-public-emails-for-authenticated"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/user/public_emails"),
+		semconv.URLTemplateKey.String("/user/public_emails"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -101977,7 +101977,7 @@ func (c *Client) sendUsersListPublicKeysForUser(ctx context.Context, params User
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/list-public-keys-for-user"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/users/{username}/keys"),
+		semconv.URLTemplateKey.String("/users/{username}/keys"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -102109,7 +102109,7 @@ func (c *Client) sendUsersListPublicSSHKeysForAuthenticated(ctx context.Context,
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/list-public-ssh-keys-for-authenticated"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/user/keys"),
+		semconv.URLTemplateKey.String("/user/keys"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -102220,7 +102220,7 @@ func (c *Client) sendUsersSetPrimaryEmailVisibilityForAuthenticated(ctx context.
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/set-primary-email-visibility-for-authenticated"),
 		semconv.HTTPRequestMethodKey.String("PATCH"),
-		semconv.HTTPRouteKey.String("/user/email/visibility"),
+		semconv.URLTemplateKey.String("/user/email/visibility"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -102296,7 +102296,7 @@ func (c *Client) sendUsersUnblock(ctx context.Context, params UsersUnblockParams
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/unblock"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/user/blocks/{username}"),
+		semconv.URLTemplateKey.String("/user/blocks/{username}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -102388,7 +102388,7 @@ func (c *Client) sendUsersUnfollow(ctx context.Context, params UsersUnfollowPara
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/unfollow"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/user/following/{username}"),
+		semconv.URLTemplateKey.String("/user/following/{username}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -102481,7 +102481,7 @@ func (c *Client) sendUsersUpdateAuthenticated(ctx context.Context, request OptUs
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/update-authenticated"),
 		semconv.HTTPRequestMethodKey.String("PATCH"),
-		semconv.HTTPRouteKey.String("/user"),
+		semconv.URLTemplateKey.String("/user"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 

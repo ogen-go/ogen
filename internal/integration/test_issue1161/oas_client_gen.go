@@ -94,7 +94,7 @@ func (c *Client) FooBarBazGet(ctx context.Context) (string, error) {
 func (c *Client) sendFooBarBazGet(ctx context.Context) (res string, err error) {
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/foo/bar/baz"),
+		semconv.URLTemplateKey.String("/foo/bar/baz"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -164,7 +164,7 @@ func (c *Client) FooBarQuxGet(ctx context.Context) (string, error) {
 func (c *Client) sendFooBarQuxGet(ctx context.Context) (res string, err error) {
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/foo/bar/qux"),
+		semconv.URLTemplateKey.String("/foo/bar/qux"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -234,7 +234,7 @@ func (c *Client) FooParamXyzGet(ctx context.Context, params FooParamXyzGetParams
 func (c *Client) sendFooParamXyzGet(ctx context.Context, params FooParamXyzGetParams) (res string, err error) {
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/foo/{param}/xyz"),
+		semconv.URLTemplateKey.String("/foo/{param}/xyz"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 

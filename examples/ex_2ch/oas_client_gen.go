@@ -186,7 +186,7 @@ func (c *Client) APICaptcha2chcaptchaIDGet(ctx context.Context, params APICaptch
 func (c *Client) sendAPICaptcha2chcaptchaIDGet(ctx context.Context, params APICaptcha2chcaptchaIDGetParams) (res *Captcha, err error) {
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/captcha/2chcaptcha/id"),
+		semconv.URLTemplateKey.String("/api/captcha/2chcaptcha/id"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -296,7 +296,7 @@ func (c *Client) APICaptcha2chcaptchaShowGet(ctx context.Context, params APICapt
 func (c *Client) sendAPICaptcha2chcaptchaShowGet(ctx context.Context, params APICaptcha2chcaptchaShowGetParams) (res APICaptcha2chcaptchaShowGetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/captcha/2chcaptcha/show"),
+		semconv.URLTemplateKey.String("/api/captcha/2chcaptcha/show"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -390,7 +390,7 @@ func (c *Client) APICaptchaAppIDPublicKeyGet(ctx context.Context, params APICapt
 func (c *Client) sendAPICaptchaAppIDPublicKeyGet(ctx context.Context, params APICaptchaAppIDPublicKeyGetParams) (res *Captcha, err error) {
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/captcha/app/id/{public_key}"),
+		semconv.URLTemplateKey.String("/api/captcha/app/id/{public_key}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -518,7 +518,7 @@ func (c *Client) APICaptchaInvisibleRecaptchaIDGet(ctx context.Context, params A
 func (c *Client) sendAPICaptchaInvisibleRecaptchaIDGet(ctx context.Context, params APICaptchaInvisibleRecaptchaIDGetParams) (res *Captcha, err error) {
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/captcha/invisible_recaptcha/id"),
+		semconv.URLTemplateKey.String("/api/captcha/invisible_recaptcha/id"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -628,7 +628,7 @@ func (c *Client) APICaptchaInvisibleRecaptchaMobileGet(ctx context.Context) erro
 func (c *Client) sendAPICaptchaInvisibleRecaptchaMobileGet(ctx context.Context) (res *APICaptchaInvisibleRecaptchaMobileGetOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/captcha/invisible_recaptcha/mobile"),
+		semconv.URLTemplateKey.String("/api/captcha/invisible_recaptcha/mobile"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -700,7 +700,7 @@ func (c *Client) APICaptchaRecaptchaIDGet(ctx context.Context, params APICaptcha
 func (c *Client) sendAPICaptchaRecaptchaIDGet(ctx context.Context, params APICaptchaRecaptchaIDGetParams) (res *Captcha, err error) {
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/captcha/recaptcha/id"),
+		semconv.URLTemplateKey.String("/api/captcha/recaptcha/id"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -810,7 +810,7 @@ func (c *Client) APICaptchaRecaptchaMobileGet(ctx context.Context) error {
 func (c *Client) sendAPICaptchaRecaptchaMobileGet(ctx context.Context) (res *APICaptchaRecaptchaMobileGetOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/captcha/recaptcha/mobile"),
+		semconv.URLTemplateKey.String("/api/captcha/recaptcha/mobile"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -882,7 +882,7 @@ func (c *Client) APIDislikeGet(ctx context.Context, params APIDislikeGetParams) 
 func (c *Client) sendAPIDislikeGet(ctx context.Context, params APIDislikeGetParams) (res *Like, err error) {
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/dislike"),
+		semconv.URLTemplateKey.String("/api/dislike"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -986,7 +986,7 @@ func (c *Client) APILikeGet(ctx context.Context, params APILikeGetParams) (*Like
 func (c *Client) sendAPILikeGet(ctx context.Context, params APILikeGetParams) (res *Like, err error) {
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/like"),
+		semconv.URLTemplateKey.String("/api/like"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -1092,7 +1092,7 @@ func (c *Client) APIMobileV2AfterBoardThreadNumGet(ctx context.Context, params A
 func (c *Client) sendAPIMobileV2AfterBoardThreadNumGet(ctx context.Context, params APIMobileV2AfterBoardThreadNumGetParams) (res *MobileThreadPostsAfter, err error) {
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/mobile/v2/after/{board}/{thread}/{num}"),
+		semconv.URLTemplateKey.String("/api/mobile/v2/after/{board}/{thread}/{num}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -1220,7 +1220,7 @@ func (c *Client) APIMobileV2BoardsGet(ctx context.Context) (Boards, error) {
 func (c *Client) sendAPIMobileV2BoardsGet(ctx context.Context) (res Boards, err error) {
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/mobile/v2/boards"),
+		semconv.URLTemplateKey.String("/api/mobile/v2/boards"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -1292,7 +1292,7 @@ func (c *Client) APIMobileV2InfoBoardThreadGet(ctx context.Context, params APIMo
 func (c *Client) sendAPIMobileV2InfoBoardThreadGet(ctx context.Context, params APIMobileV2InfoBoardThreadGetParams) (res *MobileThreadLastInfo, err error) {
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/mobile/v2/info/{board}/{thread}"),
+		semconv.URLTemplateKey.String("/api/mobile/v2/info/{board}/{thread}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -1401,7 +1401,7 @@ func (c *Client) APIMobileV2PostBoardNumGet(ctx context.Context, params APIMobil
 func (c *Client) sendAPIMobileV2PostBoardNumGet(ctx context.Context, params APIMobileV2PostBoardNumGetParams) (res *MobilePost, err error) {
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/mobile/v2/post/{board}/{num}"),
+		semconv.URLTemplateKey.String("/api/mobile/v2/post/{board}/{num}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -1510,7 +1510,7 @@ func (c *Client) UserPassloginPost(ctx context.Context, request OptUserPasslogin
 func (c *Client) sendUserPassloginPost(ctx context.Context, request OptUserPassloginPostReq, params UserPassloginPostParams) (res *Passcode, err error) {
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/user/passlogin"),
+		semconv.URLTemplateKey.String("/user/passlogin"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -1603,7 +1603,7 @@ func (c *Client) UserPostingPost(ctx context.Context, request OptUserPostingPost
 func (c *Client) sendUserPostingPost(ctx context.Context, request OptUserPostingPostReq) (res UserPostingPostOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/user/posting"),
+		semconv.URLTemplateKey.String("/user/posting"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -1678,7 +1678,7 @@ func (c *Client) UserReportPost(ctx context.Context, request OptUserReportPostRe
 func (c *Client) sendUserReportPost(ctx context.Context, request OptUserReportPostReq) (res *Report, err error) {
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/user/report"),
+		semconv.URLTemplateKey.String("/user/report"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 

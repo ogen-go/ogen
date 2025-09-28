@@ -91,7 +91,7 @@ func (c *Client) sendCreateUser(ctx context.Context, request *User) (res *User, 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createUser"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/user"),
+		semconv.URLTemplateKey.String("/user"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 

@@ -108,7 +108,7 @@ func (c *Client) sendCreatePets(ctx context.Context) (res *CreatePetsCreated, er
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createPets"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/pets"),
+		semconv.URLTemplateKey.String("/pets"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -181,7 +181,7 @@ func (c *Client) sendListPets(ctx context.Context, params ListPetsParams) (res *
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listPets"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/pets"),
+		semconv.URLTemplateKey.String("/pets"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -275,7 +275,7 @@ func (c *Client) sendShowPetById(ctx context.Context, params ShowPetByIdParams) 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("showPetById"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/pets/{petId}"),
+		semconv.URLTemplateKey.String("/pets/{petId}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 

@@ -119,7 +119,7 @@ func (c *Client) sendOnlyForm(ctx context.Context, request *OnlyFormReq) (res *O
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("onlyForm"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/onlyForm"),
+		semconv.URLTemplateKey.String("/onlyForm"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -193,7 +193,7 @@ func (c *Client) sendOnlyMultipartFile(ctx context.Context, request *OnlyMultipa
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("onlyMultipartFile"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/onlyMultipartFile"),
+		semconv.URLTemplateKey.String("/onlyMultipartFile"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -267,7 +267,7 @@ func (c *Client) sendOnlyMultipartForm(ctx context.Context, request *OnlyMultipa
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("onlyMultipartForm"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/onlyMultipartForm"),
+		semconv.URLTemplateKey.String("/onlyMultipartForm"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -341,7 +341,7 @@ func (c *Client) sendTestFormURLEncoded(ctx context.Context, request *TestForm) 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("testFormURLEncoded"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/testFormURLEncoded"),
+		semconv.URLTemplateKey.String("/testFormURLEncoded"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -415,7 +415,7 @@ func (c *Client) sendTestMultipart(ctx context.Context, request *TestFormMultipa
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("testMultipart"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/testMultipart"),
+		semconv.URLTemplateKey.String("/testMultipart"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -489,7 +489,7 @@ func (c *Client) sendTestMultipartUpload(ctx context.Context, request *TestMulti
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("testMultipartUpload"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/testMultipartUpload"),
+		semconv.URLTemplateKey.String("/testMultipartUpload"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -563,7 +563,7 @@ func (c *Client) sendTestReuseFormOptionalSchema(ctx context.Context, request Op
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("testReuseFormOptionalSchema"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/testReuseFormOptionalSchema"),
+		semconv.URLTemplateKey.String("/testReuseFormOptionalSchema"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -637,7 +637,7 @@ func (c *Client) sendTestReuseFormSchema(ctx context.Context, request *SharedReq
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("testReuseFormSchema"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/testReuseFormSchema"),
+		semconv.URLTemplateKey.String("/testReuseFormSchema"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -711,7 +711,7 @@ func (c *Client) sendTestShareFormSchema(ctx context.Context, request TestShareF
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("testShareFormSchema"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/testShareFormSchema"),
+		semconv.URLTemplateKey.String("/testShareFormSchema"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 

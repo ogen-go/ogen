@@ -85,7 +85,7 @@ func (c *Client) FooGet(ctx context.Context) (string, error) {
 func (c *Client) sendFooGet(ctx context.Context) (res string, err error) {
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/foo"),
+		semconv.URLTemplateKey.String("/foo"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
