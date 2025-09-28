@@ -430,7 +430,7 @@ func TestClientMetrics(t *testing.T) {
 								Attributes: attribute.NewSet(
 									attribute.String("oas.operation", "petNameByID"),
 									attribute.String("http.request.method", "GET"),
-									attribute.String("http.route", "/pet/name/{id}"),
+									attribute.String("url.template", "/pet/name/{id}"),
 								),
 							},
 						},
@@ -448,7 +448,7 @@ func TestClientMetrics(t *testing.T) {
 								Attributes: attribute.NewSet(
 									attribute.String("oas.operation", "petNameByID"),
 									attribute.String("http.request.method", "GET"),
-									attribute.String("http.route", "/pet/name/{id}"),
+									attribute.String("url.template", "/pet/name/{id}"),
 								),
 							},
 						},
@@ -477,7 +477,7 @@ func TestClientMetrics(t *testing.T) {
 								Attributes: attribute.NewSet(
 									attribute.String("oas.operation", "petGetByName"),
 									attribute.String("http.request.method", "GET"),
-									attribute.String("http.route", "/pet/{name}"),
+									attribute.String("url.template", "/pet/{name}"),
 								),
 							},
 						},
@@ -495,7 +495,7 @@ func TestClientMetrics(t *testing.T) {
 								Attributes: attribute.NewSet(
 									attribute.String("oas.operation", "petGetByName"),
 									attribute.String("http.request.method", "GET"),
-									attribute.String("http.route", "/pet/{name}"),
+									attribute.String("url.template", "/pet/{name}"),
 								),
 							},
 						},
@@ -512,7 +512,7 @@ func TestClientMetrics(t *testing.T) {
 								Attributes: attribute.NewSet(
 									attribute.String("oas.operation", "petGetByName"),
 									attribute.String("http.request.method", "GET"),
-									attribute.String("http.route", "/pet/{name}"),
+									attribute.String("url.template", "/pet/{name}"),
 								),
 							},
 						},
