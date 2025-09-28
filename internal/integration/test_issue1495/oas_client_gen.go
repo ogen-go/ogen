@@ -87,7 +87,7 @@ func (c *Client) sendTest(ctx context.Context) (res *TestOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/test"),
+		semconv.URLTemplateKey.String("/test"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 

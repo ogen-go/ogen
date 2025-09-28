@@ -102,7 +102,7 @@ func (c *Client) sendCustomSecurity(ctx context.Context) (res *CustomSecurityOK,
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("customSecurity"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/customSecurity"),
+		semconv.URLTemplateKey.String("/customSecurity"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -206,7 +206,7 @@ func (c *Client) sendDisjointSecurity(ctx context.Context) (res *DisjointSecurit
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("disjointSecurity"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/disjointSecurity"),
+		semconv.URLTemplateKey.String("/disjointSecurity"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -344,7 +344,7 @@ func (c *Client) sendIntersectSecurity(ctx context.Context) (res *IntersectSecur
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("intersectSecurity"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/intersectSecurity"),
+		semconv.URLTemplateKey.String("/intersectSecurity"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -471,7 +471,7 @@ func (c *Client) sendOptionalSecurity(ctx context.Context) (res *OptionalSecurit
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("optionalSecurity"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/optionalSecurity"),
+		semconv.URLTemplateKey.String("/optionalSecurity"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 

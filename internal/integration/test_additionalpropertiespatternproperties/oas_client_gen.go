@@ -87,7 +87,7 @@ func (c *Client) sendAlive(ctx context.Context, params AliveParams) (res *AliveO
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("alive"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/alive"),
+		semconv.URLTemplateKey.String("/api/alive"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 

@@ -213,7 +213,7 @@ func (c *Client) MarketBondsGet(ctx context.Context) (MarketBondsGetRes, error) 
 func (c *Client) sendMarketBondsGet(ctx context.Context) (res MarketBondsGetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/market/bonds"),
+		semconv.URLTemplateKey.String("/market/bonds"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -318,7 +318,7 @@ func (c *Client) MarketCandlesGet(ctx context.Context, params MarketCandlesGetPa
 func (c *Client) sendMarketCandlesGet(ctx context.Context, params MarketCandlesGetParams) (res MarketCandlesGetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/market/candles"),
+		semconv.URLTemplateKey.String("/market/candles"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -483,7 +483,7 @@ func (c *Client) MarketCurrenciesGet(ctx context.Context) (MarketCurrenciesGetRe
 func (c *Client) sendMarketCurrenciesGet(ctx context.Context) (res MarketCurrenciesGetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/market/currencies"),
+		semconv.URLTemplateKey.String("/market/currencies"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -588,7 +588,7 @@ func (c *Client) MarketEtfsGet(ctx context.Context) (MarketEtfsGetRes, error) {
 func (c *Client) sendMarketEtfsGet(ctx context.Context) (res MarketEtfsGetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/market/etfs"),
+		semconv.URLTemplateKey.String("/market/etfs"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -693,7 +693,7 @@ func (c *Client) MarketOrderbookGet(ctx context.Context, params MarketOrderbookG
 func (c *Client) sendMarketOrderbookGet(ctx context.Context, params MarketOrderbookGetParams) (res MarketOrderbookGetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/market/orderbook"),
+		semconv.URLTemplateKey.String("/market/orderbook"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -830,7 +830,7 @@ func (c *Client) MarketSearchByFigiGet(ctx context.Context, params MarketSearchB
 func (c *Client) sendMarketSearchByFigiGet(ctx context.Context, params MarketSearchByFigiGetParams) (res MarketSearchByFigiGetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/market/search/by-figi"),
+		semconv.URLTemplateKey.String("/market/search/by-figi"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -953,7 +953,7 @@ func (c *Client) MarketSearchByTickerGet(ctx context.Context, params MarketSearc
 func (c *Client) sendMarketSearchByTickerGet(ctx context.Context, params MarketSearchByTickerGetParams) (res MarketSearchByTickerGetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/market/search/by-ticker"),
+		semconv.URLTemplateKey.String("/market/search/by-ticker"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -1076,7 +1076,7 @@ func (c *Client) MarketStocksGet(ctx context.Context) (MarketStocksGetRes, error
 func (c *Client) sendMarketStocksGet(ctx context.Context) (res MarketStocksGetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/market/stocks"),
+		semconv.URLTemplateKey.String("/market/stocks"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -1181,7 +1181,7 @@ func (c *Client) OperationsGet(ctx context.Context, params OperationsGetParams) 
 func (c *Client) sendOperationsGet(ctx context.Context, params OperationsGetParams) (res OperationsGetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/operations"),
+		semconv.URLTemplateKey.String("/operations"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -1352,7 +1352,7 @@ func (c *Client) OrdersCancelPost(ctx context.Context, params OrdersCancelPostPa
 func (c *Client) sendOrdersCancelPost(ctx context.Context, params OrdersCancelPostParams) (res OrdersCancelPostRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/orders/cancel"),
+		semconv.URLTemplateKey.String("/orders/cancel"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -1492,7 +1492,7 @@ func (c *Client) OrdersGet(ctx context.Context, params OrdersGetParams) (OrdersG
 func (c *Client) sendOrdersGet(ctx context.Context, params OrdersGetParams) (res OrdersGetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/orders"),
+		semconv.URLTemplateKey.String("/orders"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -1618,7 +1618,7 @@ func (c *Client) OrdersLimitOrderPost(ctx context.Context, request *LimitOrderRe
 func (c *Client) sendOrdersLimitOrderPost(ctx context.Context, request *LimitOrderRequest, params OrdersLimitOrderPostParams) (res OrdersLimitOrderPostRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/orders/limit-order"),
+		semconv.URLTemplateKey.String("/orders/limit-order"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -1761,7 +1761,7 @@ func (c *Client) OrdersMarketOrderPost(ctx context.Context, request *MarketOrder
 func (c *Client) sendOrdersMarketOrderPost(ctx context.Context, request *MarketOrderRequest, params OrdersMarketOrderPostParams) (res OrdersMarketOrderPostRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/orders/market-order"),
+		semconv.URLTemplateKey.String("/orders/market-order"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -1904,7 +1904,7 @@ func (c *Client) PortfolioCurrenciesGet(ctx context.Context, params PortfolioCur
 func (c *Client) sendPortfolioCurrenciesGet(ctx context.Context, params PortfolioCurrenciesGetParams) (res PortfolioCurrenciesGetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/portfolio/currencies"),
+		semconv.URLTemplateKey.String("/portfolio/currencies"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -2030,7 +2030,7 @@ func (c *Client) PortfolioGet(ctx context.Context, params PortfolioGetParams) (P
 func (c *Client) sendPortfolioGet(ctx context.Context, params PortfolioGetParams) (res PortfolioGetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/portfolio"),
+		semconv.URLTemplateKey.String("/portfolio"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -2156,7 +2156,7 @@ func (c *Client) SandboxClearPost(ctx context.Context, params SandboxClearPostPa
 func (c *Client) sendSandboxClearPost(ctx context.Context, params SandboxClearPostParams) (res SandboxClearPostRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/sandbox/clear"),
+		semconv.URLTemplateKey.String("/sandbox/clear"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -2282,7 +2282,7 @@ func (c *Client) SandboxCurrenciesBalancePost(ctx context.Context, request *Sand
 func (c *Client) sendSandboxCurrenciesBalancePost(ctx context.Context, request *SandboxSetCurrencyBalanceRequest, params SandboxCurrenciesBalancePostParams) (res SandboxCurrenciesBalancePostRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/sandbox/currencies/balance"),
+		semconv.URLTemplateKey.String("/sandbox/currencies/balance"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -2411,7 +2411,7 @@ func (c *Client) SandboxPositionsBalancePost(ctx context.Context, request *Sandb
 func (c *Client) sendSandboxPositionsBalancePost(ctx context.Context, request *SandboxSetPositionBalanceRequest, params SandboxPositionsBalancePostParams) (res SandboxPositionsBalancePostRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/sandbox/positions/balance"),
+		semconv.URLTemplateKey.String("/sandbox/positions/balance"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -2540,7 +2540,7 @@ func (c *Client) SandboxRegisterPost(ctx context.Context, request OptSandboxRegi
 func (c *Client) sendSandboxRegisterPost(ctx context.Context, request OptSandboxRegisterRequest) (res SandboxRegisterPostRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/sandbox/register"),
+		semconv.URLTemplateKey.String("/sandbox/register"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -2648,7 +2648,7 @@ func (c *Client) SandboxRemovePost(ctx context.Context, params SandboxRemovePost
 func (c *Client) sendSandboxRemovePost(ctx context.Context, params SandboxRemovePostParams) (res SandboxRemovePostRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/sandbox/remove"),
+		semconv.URLTemplateKey.String("/sandbox/remove"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -2774,7 +2774,7 @@ func (c *Client) UserAccountsGet(ctx context.Context) (UserAccountsGetRes, error
 func (c *Client) sendUserAccountsGet(ctx context.Context) (res UserAccountsGetRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/user/accounts"),
+		semconv.URLTemplateKey.String("/user/accounts"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 

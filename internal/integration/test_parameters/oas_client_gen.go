@@ -134,7 +134,7 @@ func (c *Client) ComplicatedParameterNameGet(ctx context.Context, params Complic
 func (c *Client) sendComplicatedParameterNameGet(ctx context.Context, params ComplicatedParameterNameGetParams) (res *ComplicatedParameterNameGetOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/complicatedParameterName"),
+		semconv.URLTemplateKey.String("/complicatedParameterName"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -279,7 +279,7 @@ func (c *Client) sendContentParameters(ctx context.Context, params ContentParame
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("contentParameters"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/contentParameters/{path}"),
+		semconv.URLTemplateKey.String("/contentParameters/{path}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -434,7 +434,7 @@ func (c *Client) sendCookieParameter(ctx context.Context, params CookieParameter
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("cookieParameter"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/cookieParameter"),
+		semconv.URLTemplateKey.String("/cookieParameter"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -523,7 +523,7 @@ func (c *Client) sendHeaderParameter(ctx context.Context, params HeaderParameter
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("headerParameter"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/headerParameter"),
+		semconv.URLTemplateKey.String("/headerParameter"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -608,7 +608,7 @@ func (c *Client) sendObjectCookieParameter(ctx context.Context, params ObjectCoo
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("objectCookieParameter"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/objectCookieParameter"),
+		semconv.URLTemplateKey.String("/objectCookieParameter"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -695,7 +695,7 @@ func (c *Client) sendObjectQueryParameter(ctx context.Context, params ObjectQuer
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("objectQueryParameter"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/objectQueryParameter"),
+		semconv.URLTemplateKey.String("/objectQueryParameter"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -804,7 +804,7 @@ func (c *Client) sendOptionalArrayParameter(ctx context.Context, params Optional
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("optionalArrayParameter"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/optionalArrayParameter"),
+		semconv.URLTemplateKey.String("/optionalArrayParameter"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -933,7 +933,7 @@ func (c *Client) sendPathParameter(ctx context.Context, params PathParameterPara
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pathParameter"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/pathParameter/{value}"),
+		semconv.URLTemplateKey.String("/pathParameter/{value}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -1024,7 +1024,7 @@ func (c *Client) sendSameName(ctx context.Context, params SameNameParams) (res *
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sameName"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/same_name/{param}"),
+		semconv.URLTemplateKey.String("/same_name/{param}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -1133,7 +1133,7 @@ func (c *Client) sendSimilarNames(ctx context.Context, params SimilarNamesParams
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("similarNames"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/similarNames"),
+		semconv.URLTemplateKey.String("/similarNames"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 

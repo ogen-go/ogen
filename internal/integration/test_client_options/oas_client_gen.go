@@ -128,7 +128,7 @@ func (c *Client) sendFoo(ctx context.Context, params FooParams, requestOptions .
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("Foo"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/foo"),
+		semconv.URLTemplateKey.String("/foo"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 

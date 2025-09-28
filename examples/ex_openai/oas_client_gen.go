@@ -290,7 +290,7 @@ func (c *Client) sendCancelFineTune(ctx context.Context, params CancelFineTunePa
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("cancelFineTune"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/fine-tunes/{fine_tune_id}/cancel"),
+		semconv.URLTemplateKey.String("/fine-tunes/{fine_tune_id}/cancel"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -387,7 +387,7 @@ func (c *Client) sendCreateAnswer(ctx context.Context, request *CreateAnswerRequ
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createAnswer"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/answers"),
+		semconv.URLTemplateKey.String("/answers"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -463,7 +463,7 @@ func (c *Client) sendCreateChatCompletion(ctx context.Context, request *CreateCh
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createChatCompletion"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/chat/completions"),
+		semconv.URLTemplateKey.String("/chat/completions"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -547,7 +547,7 @@ func (c *Client) sendCreateClassification(ctx context.Context, request *CreateCl
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createClassification"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/classifications"),
+		semconv.URLTemplateKey.String("/classifications"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -623,7 +623,7 @@ func (c *Client) sendCreateCompletion(ctx context.Context, request *CreateComple
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createCompletion"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/completions"),
+		semconv.URLTemplateKey.String("/completions"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -699,7 +699,7 @@ func (c *Client) sendCreateEdit(ctx context.Context, request *CreateEditRequest)
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createEdit"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/edits"),
+		semconv.URLTemplateKey.String("/edits"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -775,7 +775,7 @@ func (c *Client) sendCreateEmbedding(ctx context.Context, request *CreateEmbeddi
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createEmbedding"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/embeddings"),
+		semconv.URLTemplateKey.String("/embeddings"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -853,7 +853,7 @@ func (c *Client) sendCreateFile(ctx context.Context, request *CreateFileRequestM
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createFile"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/files"),
+		semconv.URLTemplateKey.String("/files"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -932,7 +932,7 @@ func (c *Client) sendCreateFineTune(ctx context.Context, request *CreateFineTune
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createFineTune"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/fine-tunes"),
+		semconv.URLTemplateKey.String("/fine-tunes"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -1008,7 +1008,7 @@ func (c *Client) sendCreateImage(ctx context.Context, request *CreateImageReques
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createImage"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/images/generations"),
+		semconv.URLTemplateKey.String("/images/generations"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -1084,7 +1084,7 @@ func (c *Client) sendCreateImageEdit(ctx context.Context, request *CreateImageEd
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createImageEdit"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/images/edits"),
+		semconv.URLTemplateKey.String("/images/edits"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -1160,7 +1160,7 @@ func (c *Client) sendCreateImageVariation(ctx context.Context, request *CreateIm
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createImageVariation"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/images/variations"),
+		semconv.URLTemplateKey.String("/images/variations"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -1236,7 +1236,7 @@ func (c *Client) sendCreateModeration(ctx context.Context, request *CreateModera
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createModeration"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/moderations"),
+		semconv.URLTemplateKey.String("/moderations"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -1321,7 +1321,7 @@ func (c *Client) sendCreateSearch(ctx context.Context, request *CreateSearchRequ
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createSearch"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/engines/{engine_id}/search"),
+		semconv.URLTemplateKey.String("/engines/{engine_id}/search"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -1416,7 +1416,7 @@ func (c *Client) sendCreateTranscription(ctx context.Context, request *CreateTra
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createTranscription"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/audio/transcriptions"),
+		semconv.URLTemplateKey.String("/audio/transcriptions"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -1492,7 +1492,7 @@ func (c *Client) sendCreateTranslation(ctx context.Context, request *CreateTrans
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createTranslation"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/audio/translations"),
+		semconv.URLTemplateKey.String("/audio/translations"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -1568,7 +1568,7 @@ func (c *Client) sendDeleteFile(ctx context.Context, params DeleteFileParams) (r
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("deleteFile"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/files/{file_id}"),
+		semconv.URLTemplateKey.String("/files/{file_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -1659,7 +1659,7 @@ func (c *Client) sendDeleteModel(ctx context.Context, params DeleteModelParams) 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("deleteModel"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/models/{model}"),
+		semconv.URLTemplateKey.String("/models/{model}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -1750,7 +1750,7 @@ func (c *Client) sendDownloadFile(ctx context.Context, params DownloadFileParams
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("downloadFile"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/files/{file_id}/content"),
+		semconv.URLTemplateKey.String("/files/{file_id}/content"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -1845,7 +1845,7 @@ func (c *Client) sendListEngines(ctx context.Context) (res *ListEnginesResponse,
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listEngines"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/engines"),
+		semconv.URLTemplateKey.String("/engines"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -1918,7 +1918,7 @@ func (c *Client) sendListFiles(ctx context.Context) (res *ListFilesResponse, err
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listFiles"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/files"),
+		semconv.URLTemplateKey.String("/files"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -1991,7 +1991,7 @@ func (c *Client) sendListFineTuneEvents(ctx context.Context, params ListFineTune
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listFineTuneEvents"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/fine-tunes/{fine_tune_id}/events"),
+		semconv.URLTemplateKey.String("/fine-tunes/{fine_tune_id}/events"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -2104,7 +2104,7 @@ func (c *Client) sendListFineTunes(ctx context.Context) (res *ListFineTunesRespo
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listFineTunes"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/fine-tunes"),
+		semconv.URLTemplateKey.String("/fine-tunes"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -2178,7 +2178,7 @@ func (c *Client) sendListModels(ctx context.Context) (res *ListModelsResponse, e
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listModels"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/models"),
+		semconv.URLTemplateKey.String("/models"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -2254,7 +2254,7 @@ func (c *Client) sendRetrieveEngine(ctx context.Context, params RetrieveEnginePa
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("retrieveEngine"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/engines/{engine_id}"),
+		semconv.URLTemplateKey.String("/engines/{engine_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -2345,7 +2345,7 @@ func (c *Client) sendRetrieveFile(ctx context.Context, params RetrieveFileParams
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("retrieveFile"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/files/{file_id}"),
+		semconv.URLTemplateKey.String("/files/{file_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -2437,7 +2437,7 @@ func (c *Client) sendRetrieveFineTune(ctx context.Context, params RetrieveFineTu
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("retrieveFineTune"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/fine-tunes/{fine_tune_id}"),
+		semconv.URLTemplateKey.String("/fine-tunes/{fine_tune_id}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -2529,7 +2529,7 @@ func (c *Client) sendRetrieveModel(ctx context.Context, params RetrieveModelPara
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("retrieveModel"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/models/{model}"),
+		semconv.URLTemplateKey.String("/models/{model}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 

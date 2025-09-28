@@ -3026,7 +3026,7 @@ func (c *Client) sendConnectCoreV1DeleteNamespacedPodProxy(ctx context.Context, 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1DeleteNamespacedPodProxy"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/proxy"),
+		semconv.URLTemplateKey.String("/api/v1/namespaces/{namespace}/pods/{name}/proxy"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -3191,7 +3191,7 @@ func (c *Client) sendConnectCoreV1DeleteNamespacedPodProxyWithPath(ctx context.C
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1DeleteNamespacedPodProxyWithPath"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}"),
+		semconv.URLTemplateKey.String("/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -3374,7 +3374,7 @@ func (c *Client) sendConnectCoreV1DeleteNamespacedServiceProxy(ctx context.Conte
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1DeleteNamespacedServiceProxy"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/services/{name}/proxy"),
+		semconv.URLTemplateKey.String("/api/v1/namespaces/{namespace}/services/{name}/proxy"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -3539,7 +3539,7 @@ func (c *Client) sendConnectCoreV1DeleteNamespacedServiceProxyWithPath(ctx conte
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1DeleteNamespacedServiceProxyWithPath"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}"),
+		semconv.URLTemplateKey.String("/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -3722,7 +3722,7 @@ func (c *Client) sendConnectCoreV1DeleteNodeProxy(ctx context.Context, params Co
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1DeleteNodeProxy"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/api/v1/nodes/{name}/proxy"),
+		semconv.URLTemplateKey.String("/api/v1/nodes/{name}/proxy"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -3868,7 +3868,7 @@ func (c *Client) sendConnectCoreV1DeleteNodeProxyWithPath(ctx context.Context, p
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1DeleteNodeProxyWithPath"),
 		semconv.HTTPRequestMethodKey.String("DELETE"),
-		semconv.HTTPRouteKey.String("/api/v1/nodes/{name}/proxy/{path}"),
+		semconv.URLTemplateKey.String("/api/v1/nodes/{name}/proxy/{path}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -4032,7 +4032,7 @@ func (c *Client) sendConnectCoreV1GetNamespacedPodAttach(ctx context.Context, pa
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1GetNamespacedPodAttach"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/attach"),
+		semconv.URLTemplateKey.String("/api/v1/namespaces/{namespace}/pods/{name}/attach"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -4265,7 +4265,7 @@ func (c *Client) sendConnectCoreV1GetNamespacedPodExec(ctx context.Context, para
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1GetNamespacedPodExec"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/exec"),
+		semconv.URLTemplateKey.String("/api/v1/namespaces/{namespace}/pods/{name}/exec"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -4515,7 +4515,7 @@ func (c *Client) sendConnectCoreV1GetNamespacedPodPortforward(ctx context.Contex
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1GetNamespacedPodPortforward"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/portforward"),
+		semconv.URLTemplateKey.String("/api/v1/namespaces/{namespace}/pods/{name}/portforward"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -4680,7 +4680,7 @@ func (c *Client) sendConnectCoreV1GetNamespacedPodProxy(ctx context.Context, par
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1GetNamespacedPodProxy"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/proxy"),
+		semconv.URLTemplateKey.String("/api/v1/namespaces/{namespace}/pods/{name}/proxy"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -4845,7 +4845,7 @@ func (c *Client) sendConnectCoreV1GetNamespacedPodProxyWithPath(ctx context.Cont
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1GetNamespacedPodProxyWithPath"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}"),
+		semconv.URLTemplateKey.String("/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -5028,7 +5028,7 @@ func (c *Client) sendConnectCoreV1GetNamespacedServiceProxy(ctx context.Context,
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1GetNamespacedServiceProxy"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/services/{name}/proxy"),
+		semconv.URLTemplateKey.String("/api/v1/namespaces/{namespace}/services/{name}/proxy"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -5193,7 +5193,7 @@ func (c *Client) sendConnectCoreV1GetNamespacedServiceProxyWithPath(ctx context.
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1GetNamespacedServiceProxyWithPath"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}"),
+		semconv.URLTemplateKey.String("/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -5376,7 +5376,7 @@ func (c *Client) sendConnectCoreV1GetNodeProxy(ctx context.Context, params Conne
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1GetNodeProxy"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/nodes/{name}/proxy"),
+		semconv.URLTemplateKey.String("/api/v1/nodes/{name}/proxy"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -5522,7 +5522,7 @@ func (c *Client) sendConnectCoreV1GetNodeProxyWithPath(ctx context.Context, para
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1GetNodeProxyWithPath"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/nodes/{name}/proxy/{path}"),
+		semconv.URLTemplateKey.String("/api/v1/nodes/{name}/proxy/{path}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -5686,7 +5686,7 @@ func (c *Client) sendConnectCoreV1HeadNamespacedPodProxy(ctx context.Context, pa
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1HeadNamespacedPodProxy"),
 		semconv.HTTPRequestMethodKey.String("HEAD"),
-		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/proxy"),
+		semconv.URLTemplateKey.String("/api/v1/namespaces/{namespace}/pods/{name}/proxy"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -5851,7 +5851,7 @@ func (c *Client) sendConnectCoreV1HeadNamespacedPodProxyWithPath(ctx context.Con
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1HeadNamespacedPodProxyWithPath"),
 		semconv.HTTPRequestMethodKey.String("HEAD"),
-		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}"),
+		semconv.URLTemplateKey.String("/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -6034,7 +6034,7 @@ func (c *Client) sendConnectCoreV1HeadNamespacedServiceProxy(ctx context.Context
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1HeadNamespacedServiceProxy"),
 		semconv.HTTPRequestMethodKey.String("HEAD"),
-		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/services/{name}/proxy"),
+		semconv.URLTemplateKey.String("/api/v1/namespaces/{namespace}/services/{name}/proxy"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -6199,7 +6199,7 @@ func (c *Client) sendConnectCoreV1HeadNamespacedServiceProxyWithPath(ctx context
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1HeadNamespacedServiceProxyWithPath"),
 		semconv.HTTPRequestMethodKey.String("HEAD"),
-		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}"),
+		semconv.URLTemplateKey.String("/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -6382,7 +6382,7 @@ func (c *Client) sendConnectCoreV1HeadNodeProxy(ctx context.Context, params Conn
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1HeadNodeProxy"),
 		semconv.HTTPRequestMethodKey.String("HEAD"),
-		semconv.HTTPRouteKey.String("/api/v1/nodes/{name}/proxy"),
+		semconv.URLTemplateKey.String("/api/v1/nodes/{name}/proxy"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -6528,7 +6528,7 @@ func (c *Client) sendConnectCoreV1HeadNodeProxyWithPath(ctx context.Context, par
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1HeadNodeProxyWithPath"),
 		semconv.HTTPRequestMethodKey.String("HEAD"),
-		semconv.HTTPRouteKey.String("/api/v1/nodes/{name}/proxy/{path}"),
+		semconv.URLTemplateKey.String("/api/v1/nodes/{name}/proxy/{path}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -6692,7 +6692,7 @@ func (c *Client) sendConnectCoreV1OptionsNamespacedPodProxy(ctx context.Context,
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1OptionsNamespacedPodProxy"),
 		semconv.HTTPRequestMethodKey.String("OPTIONS"),
-		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/proxy"),
+		semconv.URLTemplateKey.String("/api/v1/namespaces/{namespace}/pods/{name}/proxy"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -6857,7 +6857,7 @@ func (c *Client) sendConnectCoreV1OptionsNamespacedPodProxyWithPath(ctx context.
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1OptionsNamespacedPodProxyWithPath"),
 		semconv.HTTPRequestMethodKey.String("OPTIONS"),
-		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}"),
+		semconv.URLTemplateKey.String("/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -7040,7 +7040,7 @@ func (c *Client) sendConnectCoreV1OptionsNamespacedServiceProxy(ctx context.Cont
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1OptionsNamespacedServiceProxy"),
 		semconv.HTTPRequestMethodKey.String("OPTIONS"),
-		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/services/{name}/proxy"),
+		semconv.URLTemplateKey.String("/api/v1/namespaces/{namespace}/services/{name}/proxy"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -7205,7 +7205,7 @@ func (c *Client) sendConnectCoreV1OptionsNamespacedServiceProxyWithPath(ctx cont
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1OptionsNamespacedServiceProxyWithPath"),
 		semconv.HTTPRequestMethodKey.String("OPTIONS"),
-		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}"),
+		semconv.URLTemplateKey.String("/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -7388,7 +7388,7 @@ func (c *Client) sendConnectCoreV1OptionsNodeProxy(ctx context.Context, params C
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1OptionsNodeProxy"),
 		semconv.HTTPRequestMethodKey.String("OPTIONS"),
-		semconv.HTTPRouteKey.String("/api/v1/nodes/{name}/proxy"),
+		semconv.URLTemplateKey.String("/api/v1/nodes/{name}/proxy"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -7534,7 +7534,7 @@ func (c *Client) sendConnectCoreV1OptionsNodeProxyWithPath(ctx context.Context, 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1OptionsNodeProxyWithPath"),
 		semconv.HTTPRequestMethodKey.String("OPTIONS"),
-		semconv.HTTPRouteKey.String("/api/v1/nodes/{name}/proxy/{path}"),
+		semconv.URLTemplateKey.String("/api/v1/nodes/{name}/proxy/{path}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -7698,7 +7698,7 @@ func (c *Client) sendConnectCoreV1PatchNamespacedPodProxy(ctx context.Context, p
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1PatchNamespacedPodProxy"),
 		semconv.HTTPRequestMethodKey.String("PATCH"),
-		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/proxy"),
+		semconv.URLTemplateKey.String("/api/v1/namespaces/{namespace}/pods/{name}/proxy"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -7863,7 +7863,7 @@ func (c *Client) sendConnectCoreV1PatchNamespacedPodProxyWithPath(ctx context.Co
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1PatchNamespacedPodProxyWithPath"),
 		semconv.HTTPRequestMethodKey.String("PATCH"),
-		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}"),
+		semconv.URLTemplateKey.String("/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -8046,7 +8046,7 @@ func (c *Client) sendConnectCoreV1PatchNamespacedServiceProxy(ctx context.Contex
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1PatchNamespacedServiceProxy"),
 		semconv.HTTPRequestMethodKey.String("PATCH"),
-		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/services/{name}/proxy"),
+		semconv.URLTemplateKey.String("/api/v1/namespaces/{namespace}/services/{name}/proxy"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -8211,7 +8211,7 @@ func (c *Client) sendConnectCoreV1PatchNamespacedServiceProxyWithPath(ctx contex
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1PatchNamespacedServiceProxyWithPath"),
 		semconv.HTTPRequestMethodKey.String("PATCH"),
-		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}"),
+		semconv.URLTemplateKey.String("/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -8394,7 +8394,7 @@ func (c *Client) sendConnectCoreV1PatchNodeProxy(ctx context.Context, params Con
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1PatchNodeProxy"),
 		semconv.HTTPRequestMethodKey.String("PATCH"),
-		semconv.HTTPRouteKey.String("/api/v1/nodes/{name}/proxy"),
+		semconv.URLTemplateKey.String("/api/v1/nodes/{name}/proxy"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -8540,7 +8540,7 @@ func (c *Client) sendConnectCoreV1PatchNodeProxyWithPath(ctx context.Context, pa
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1PatchNodeProxyWithPath"),
 		semconv.HTTPRequestMethodKey.String("PATCH"),
-		semconv.HTTPRouteKey.String("/api/v1/nodes/{name}/proxy/{path}"),
+		semconv.URLTemplateKey.String("/api/v1/nodes/{name}/proxy/{path}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -8704,7 +8704,7 @@ func (c *Client) sendConnectCoreV1PostNamespacedPodAttach(ctx context.Context, p
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1PostNamespacedPodAttach"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/attach"),
+		semconv.URLTemplateKey.String("/api/v1/namespaces/{namespace}/pods/{name}/attach"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -8937,7 +8937,7 @@ func (c *Client) sendConnectCoreV1PostNamespacedPodExec(ctx context.Context, par
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1PostNamespacedPodExec"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/exec"),
+		semconv.URLTemplateKey.String("/api/v1/namespaces/{namespace}/pods/{name}/exec"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -9187,7 +9187,7 @@ func (c *Client) sendConnectCoreV1PostNamespacedPodPortforward(ctx context.Conte
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1PostNamespacedPodPortforward"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/portforward"),
+		semconv.URLTemplateKey.String("/api/v1/namespaces/{namespace}/pods/{name}/portforward"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -9352,7 +9352,7 @@ func (c *Client) sendConnectCoreV1PostNamespacedPodProxy(ctx context.Context, pa
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1PostNamespacedPodProxy"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/proxy"),
+		semconv.URLTemplateKey.String("/api/v1/namespaces/{namespace}/pods/{name}/proxy"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -9517,7 +9517,7 @@ func (c *Client) sendConnectCoreV1PostNamespacedPodProxyWithPath(ctx context.Con
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1PostNamespacedPodProxyWithPath"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}"),
+		semconv.URLTemplateKey.String("/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -9700,7 +9700,7 @@ func (c *Client) sendConnectCoreV1PostNamespacedServiceProxy(ctx context.Context
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1PostNamespacedServiceProxy"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/services/{name}/proxy"),
+		semconv.URLTemplateKey.String("/api/v1/namespaces/{namespace}/services/{name}/proxy"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -9865,7 +9865,7 @@ func (c *Client) sendConnectCoreV1PostNamespacedServiceProxyWithPath(ctx context
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1PostNamespacedServiceProxyWithPath"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}"),
+		semconv.URLTemplateKey.String("/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -10048,7 +10048,7 @@ func (c *Client) sendConnectCoreV1PostNodeProxy(ctx context.Context, params Conn
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1PostNodeProxy"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/api/v1/nodes/{name}/proxy"),
+		semconv.URLTemplateKey.String("/api/v1/nodes/{name}/proxy"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -10194,7 +10194,7 @@ func (c *Client) sendConnectCoreV1PostNodeProxyWithPath(ctx context.Context, par
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1PostNodeProxyWithPath"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/api/v1/nodes/{name}/proxy/{path}"),
+		semconv.URLTemplateKey.String("/api/v1/nodes/{name}/proxy/{path}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -10358,7 +10358,7 @@ func (c *Client) sendConnectCoreV1PutNamespacedPodProxy(ctx context.Context, par
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1PutNamespacedPodProxy"),
 		semconv.HTTPRequestMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/proxy"),
+		semconv.URLTemplateKey.String("/api/v1/namespaces/{namespace}/pods/{name}/proxy"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -10523,7 +10523,7 @@ func (c *Client) sendConnectCoreV1PutNamespacedPodProxyWithPath(ctx context.Cont
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1PutNamespacedPodProxyWithPath"),
 		semconv.HTTPRequestMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}"),
+		semconv.URLTemplateKey.String("/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -10706,7 +10706,7 @@ func (c *Client) sendConnectCoreV1PutNamespacedServiceProxy(ctx context.Context,
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1PutNamespacedServiceProxy"),
 		semconv.HTTPRequestMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/services/{name}/proxy"),
+		semconv.URLTemplateKey.String("/api/v1/namespaces/{namespace}/services/{name}/proxy"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -10871,7 +10871,7 @@ func (c *Client) sendConnectCoreV1PutNamespacedServiceProxyWithPath(ctx context.
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1PutNamespacedServiceProxyWithPath"),
 		semconv.HTTPRequestMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}"),
+		semconv.URLTemplateKey.String("/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -11054,7 +11054,7 @@ func (c *Client) sendConnectCoreV1PutNodeProxy(ctx context.Context, params Conne
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1PutNodeProxy"),
 		semconv.HTTPRequestMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/api/v1/nodes/{name}/proxy"),
+		semconv.URLTemplateKey.String("/api/v1/nodes/{name}/proxy"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -11200,7 +11200,7 @@ func (c *Client) sendConnectCoreV1PutNodeProxyWithPath(ctx context.Context, para
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("connectCoreV1PutNodeProxyWithPath"),
 		semconv.HTTPRequestMethodKey.String("PUT"),
-		semconv.HTTPRouteKey.String("/api/v1/nodes/{name}/proxy/{path}"),
+		semconv.URLTemplateKey.String("/api/v1/nodes/{name}/proxy/{path}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -11364,7 +11364,7 @@ func (c *Client) sendGetAPIVersions(ctx context.Context) (res GetAPIVersionsRes,
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getAPIVersions"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/"),
+		semconv.URLTemplateKey.String("/apis/"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -11470,7 +11470,7 @@ func (c *Client) sendGetAdmissionregistrationAPIGroup(ctx context.Context) (res 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getAdmissionregistrationAPIGroup"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/admissionregistration.k8s.io/"),
+		semconv.URLTemplateKey.String("/apis/admissionregistration.k8s.io/"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -11576,7 +11576,7 @@ func (c *Client) sendGetAdmissionregistrationV1APIResources(ctx context.Context)
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getAdmissionregistrationV1APIResources"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/admissionregistration.k8s.io/v1/"),
+		semconv.URLTemplateKey.String("/apis/admissionregistration.k8s.io/v1/"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -11682,7 +11682,7 @@ func (c *Client) sendGetApiextensionsAPIGroup(ctx context.Context) (res GetApiex
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getApiextensionsAPIGroup"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/apiextensions.k8s.io/"),
+		semconv.URLTemplateKey.String("/apis/apiextensions.k8s.io/"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -11788,7 +11788,7 @@ func (c *Client) sendGetApiextensionsV1APIResources(ctx context.Context) (res Ge
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getApiextensionsV1APIResources"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/apiextensions.k8s.io/v1/"),
+		semconv.URLTemplateKey.String("/apis/apiextensions.k8s.io/v1/"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -11894,7 +11894,7 @@ func (c *Client) sendGetApiregistrationAPIGroup(ctx context.Context) (res GetApi
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getApiregistrationAPIGroup"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/apiregistration.k8s.io/"),
+		semconv.URLTemplateKey.String("/apis/apiregistration.k8s.io/"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -12000,7 +12000,7 @@ func (c *Client) sendGetApiregistrationV1APIResources(ctx context.Context) (res 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getApiregistrationV1APIResources"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/apiregistration.k8s.io/v1/"),
+		semconv.URLTemplateKey.String("/apis/apiregistration.k8s.io/v1/"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -12106,7 +12106,7 @@ func (c *Client) sendGetAppsAPIGroup(ctx context.Context) (res GetAppsAPIGroupRe
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getAppsAPIGroup"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/apps/"),
+		semconv.URLTemplateKey.String("/apis/apps/"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -12212,7 +12212,7 @@ func (c *Client) sendGetAppsV1APIResources(ctx context.Context) (res GetAppsV1AP
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getAppsV1APIResources"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/apps/v1/"),
+		semconv.URLTemplateKey.String("/apis/apps/v1/"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -12318,7 +12318,7 @@ func (c *Client) sendGetAuthenticationAPIGroup(ctx context.Context) (res GetAuth
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getAuthenticationAPIGroup"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/authentication.k8s.io/"),
+		semconv.URLTemplateKey.String("/apis/authentication.k8s.io/"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -12424,7 +12424,7 @@ func (c *Client) sendGetAuthenticationV1APIResources(ctx context.Context) (res G
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getAuthenticationV1APIResources"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/authentication.k8s.io/v1/"),
+		semconv.URLTemplateKey.String("/apis/authentication.k8s.io/v1/"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -12530,7 +12530,7 @@ func (c *Client) sendGetAuthorizationAPIGroup(ctx context.Context) (res GetAutho
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getAuthorizationAPIGroup"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/authorization.k8s.io/"),
+		semconv.URLTemplateKey.String("/apis/authorization.k8s.io/"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -12636,7 +12636,7 @@ func (c *Client) sendGetAuthorizationV1APIResources(ctx context.Context) (res Ge
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getAuthorizationV1APIResources"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/authorization.k8s.io/v1/"),
+		semconv.URLTemplateKey.String("/apis/authorization.k8s.io/v1/"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -12742,7 +12742,7 @@ func (c *Client) sendGetAutoscalingAPIGroup(ctx context.Context) (res GetAutosca
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getAutoscalingAPIGroup"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/autoscaling/"),
+		semconv.URLTemplateKey.String("/apis/autoscaling/"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -12848,7 +12848,7 @@ func (c *Client) sendGetAutoscalingV1APIResources(ctx context.Context) (res GetA
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getAutoscalingV1APIResources"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/autoscaling/v1/"),
+		semconv.URLTemplateKey.String("/apis/autoscaling/v1/"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -12954,7 +12954,7 @@ func (c *Client) sendGetAutoscalingV2beta1APIResources(ctx context.Context) (res
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getAutoscalingV2beta1APIResources"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/autoscaling/v2beta1/"),
+		semconv.URLTemplateKey.String("/apis/autoscaling/v2beta1/"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -13060,7 +13060,7 @@ func (c *Client) sendGetAutoscalingV2beta2APIResources(ctx context.Context) (res
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getAutoscalingV2beta2APIResources"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/autoscaling/v2beta2/"),
+		semconv.URLTemplateKey.String("/apis/autoscaling/v2beta2/"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -13166,7 +13166,7 @@ func (c *Client) sendGetBatchAPIGroup(ctx context.Context) (res GetBatchAPIGroup
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getBatchAPIGroup"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/batch/"),
+		semconv.URLTemplateKey.String("/apis/batch/"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -13272,7 +13272,7 @@ func (c *Client) sendGetBatchV1APIResources(ctx context.Context) (res GetBatchV1
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getBatchV1APIResources"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/batch/v1/"),
+		semconv.URLTemplateKey.String("/apis/batch/v1/"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -13378,7 +13378,7 @@ func (c *Client) sendGetBatchV1beta1APIResources(ctx context.Context) (res GetBa
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getBatchV1beta1APIResources"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/batch/v1beta1/"),
+		semconv.URLTemplateKey.String("/apis/batch/v1beta1/"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -13484,7 +13484,7 @@ func (c *Client) sendGetCertificatesAPIGroup(ctx context.Context) (res GetCertif
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getCertificatesAPIGroup"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/certificates.k8s.io/"),
+		semconv.URLTemplateKey.String("/apis/certificates.k8s.io/"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -13590,7 +13590,7 @@ func (c *Client) sendGetCertificatesV1APIResources(ctx context.Context) (res Get
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getCertificatesV1APIResources"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/certificates.k8s.io/v1/"),
+		semconv.URLTemplateKey.String("/apis/certificates.k8s.io/v1/"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -13696,7 +13696,7 @@ func (c *Client) sendGetCodeVersion(ctx context.Context) (res GetCodeVersionRes,
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getCodeVersion"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/version/"),
+		semconv.URLTemplateKey.String("/version/"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -13802,7 +13802,7 @@ func (c *Client) sendGetCoordinationAPIGroup(ctx context.Context) (res GetCoordi
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getCoordinationAPIGroup"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/coordination.k8s.io/"),
+		semconv.URLTemplateKey.String("/apis/coordination.k8s.io/"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -13908,7 +13908,7 @@ func (c *Client) sendGetCoordinationV1APIResources(ctx context.Context) (res Get
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getCoordinationV1APIResources"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/coordination.k8s.io/v1/"),
+		semconv.URLTemplateKey.String("/apis/coordination.k8s.io/v1/"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -14014,7 +14014,7 @@ func (c *Client) sendGetCoreAPIVersions(ctx context.Context) (res GetCoreAPIVers
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getCoreAPIVersions"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/"),
+		semconv.URLTemplateKey.String("/api/"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -14120,7 +14120,7 @@ func (c *Client) sendGetCoreV1APIResources(ctx context.Context) (res GetCoreV1AP
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getCoreV1APIResources"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/"),
+		semconv.URLTemplateKey.String("/api/v1/"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -14226,7 +14226,7 @@ func (c *Client) sendGetDiscoveryAPIGroup(ctx context.Context) (res GetDiscovery
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getDiscoveryAPIGroup"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/discovery.k8s.io/"),
+		semconv.URLTemplateKey.String("/apis/discovery.k8s.io/"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -14332,7 +14332,7 @@ func (c *Client) sendGetDiscoveryV1APIResources(ctx context.Context) (res GetDis
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getDiscoveryV1APIResources"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/discovery.k8s.io/v1/"),
+		semconv.URLTemplateKey.String("/apis/discovery.k8s.io/v1/"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -14438,7 +14438,7 @@ func (c *Client) sendGetDiscoveryV1beta1APIResources(ctx context.Context) (res G
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getDiscoveryV1beta1APIResources"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/discovery.k8s.io/v1beta1/"),
+		semconv.URLTemplateKey.String("/apis/discovery.k8s.io/v1beta1/"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -14544,7 +14544,7 @@ func (c *Client) sendGetEventsAPIGroup(ctx context.Context) (res GetEventsAPIGro
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getEventsAPIGroup"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/events.k8s.io/"),
+		semconv.URLTemplateKey.String("/apis/events.k8s.io/"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -14650,7 +14650,7 @@ func (c *Client) sendGetEventsV1APIResources(ctx context.Context) (res GetEvents
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getEventsV1APIResources"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/events.k8s.io/v1/"),
+		semconv.URLTemplateKey.String("/apis/events.k8s.io/v1/"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -14756,7 +14756,7 @@ func (c *Client) sendGetEventsV1beta1APIResources(ctx context.Context) (res GetE
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getEventsV1beta1APIResources"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/events.k8s.io/v1beta1/"),
+		semconv.URLTemplateKey.String("/apis/events.k8s.io/v1beta1/"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -14862,7 +14862,7 @@ func (c *Client) sendGetFlowcontrolApiserverAPIGroup(ctx context.Context) (res G
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getFlowcontrolApiserverAPIGroup"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/"),
+		semconv.URLTemplateKey.String("/apis/flowcontrol.apiserver.k8s.io/"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -14968,7 +14968,7 @@ func (c *Client) sendGetFlowcontrolApiserverV1beta1APIResources(ctx context.Cont
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getFlowcontrolApiserverV1beta1APIResources"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta1/"),
+		semconv.URLTemplateKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta1/"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -15074,7 +15074,7 @@ func (c *Client) sendGetFlowcontrolApiserverV1beta2APIResources(ctx context.Cont
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getFlowcontrolApiserverV1beta2APIResources"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta2/"),
+		semconv.URLTemplateKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta2/"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -15180,7 +15180,7 @@ func (c *Client) sendGetInternalApiserverAPIGroup(ctx context.Context) (res GetI
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getInternalApiserverAPIGroup"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/internal.apiserver.k8s.io/"),
+		semconv.URLTemplateKey.String("/apis/internal.apiserver.k8s.io/"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -15286,7 +15286,7 @@ func (c *Client) sendGetInternalApiserverV1alpha1APIResources(ctx context.Contex
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getInternalApiserverV1alpha1APIResources"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/internal.apiserver.k8s.io/v1alpha1/"),
+		semconv.URLTemplateKey.String("/apis/internal.apiserver.k8s.io/v1alpha1/"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -15392,7 +15392,7 @@ func (c *Client) sendGetNetworkingAPIGroup(ctx context.Context) (res GetNetworki
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getNetworkingAPIGroup"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/"),
+		semconv.URLTemplateKey.String("/apis/networking.k8s.io/"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -15498,7 +15498,7 @@ func (c *Client) sendGetNetworkingV1APIResources(ctx context.Context) (res GetNe
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getNetworkingV1APIResources"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/"),
+		semconv.URLTemplateKey.String("/apis/networking.k8s.io/v1/"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -15604,7 +15604,7 @@ func (c *Client) sendGetNodeAPIGroup(ctx context.Context) (res GetNodeAPIGroupRe
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getNodeAPIGroup"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/node.k8s.io/"),
+		semconv.URLTemplateKey.String("/apis/node.k8s.io/"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -15710,7 +15710,7 @@ func (c *Client) sendGetNodeV1APIResources(ctx context.Context) (res GetNodeV1AP
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getNodeV1APIResources"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/node.k8s.io/v1/"),
+		semconv.URLTemplateKey.String("/apis/node.k8s.io/v1/"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -15816,7 +15816,7 @@ func (c *Client) sendGetNodeV1alpha1APIResources(ctx context.Context) (res GetNo
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getNodeV1alpha1APIResources"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/node.k8s.io/v1alpha1/"),
+		semconv.URLTemplateKey.String("/apis/node.k8s.io/v1alpha1/"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -15922,7 +15922,7 @@ func (c *Client) sendGetNodeV1beta1APIResources(ctx context.Context) (res GetNod
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getNodeV1beta1APIResources"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/node.k8s.io/v1beta1/"),
+		semconv.URLTemplateKey.String("/apis/node.k8s.io/v1beta1/"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -16028,7 +16028,7 @@ func (c *Client) sendGetPolicyAPIGroup(ctx context.Context) (res GetPolicyAPIGro
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getPolicyAPIGroup"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/policy/"),
+		semconv.URLTemplateKey.String("/apis/policy/"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -16134,7 +16134,7 @@ func (c *Client) sendGetPolicyV1APIResources(ctx context.Context) (res GetPolicy
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getPolicyV1APIResources"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/policy/v1/"),
+		semconv.URLTemplateKey.String("/apis/policy/v1/"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -16240,7 +16240,7 @@ func (c *Client) sendGetPolicyV1beta1APIResources(ctx context.Context) (res GetP
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getPolicyV1beta1APIResources"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/policy/v1beta1/"),
+		semconv.URLTemplateKey.String("/apis/policy/v1beta1/"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -16346,7 +16346,7 @@ func (c *Client) sendGetRbacAuthorizationAPIGroup(ctx context.Context) (res GetR
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getRbacAuthorizationAPIGroup"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/"),
+		semconv.URLTemplateKey.String("/apis/rbac.authorization.k8s.io/"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -16452,7 +16452,7 @@ func (c *Client) sendGetRbacAuthorizationV1APIResources(ctx context.Context) (re
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getRbacAuthorizationV1APIResources"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/"),
+		semconv.URLTemplateKey.String("/apis/rbac.authorization.k8s.io/v1/"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -16558,7 +16558,7 @@ func (c *Client) sendGetSchedulingAPIGroup(ctx context.Context) (res GetScheduli
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getSchedulingAPIGroup"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/scheduling.k8s.io/"),
+		semconv.URLTemplateKey.String("/apis/scheduling.k8s.io/"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -16664,7 +16664,7 @@ func (c *Client) sendGetSchedulingV1APIResources(ctx context.Context) (res GetSc
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getSchedulingV1APIResources"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/scheduling.k8s.io/v1/"),
+		semconv.URLTemplateKey.String("/apis/scheduling.k8s.io/v1/"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -16770,7 +16770,7 @@ func (c *Client) sendGetServiceAccountIssuerOpenIDConfiguration(ctx context.Cont
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getServiceAccountIssuerOpenIDConfiguration"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/.well-known/openid-configuration/"),
+		semconv.URLTemplateKey.String("/.well-known/openid-configuration/"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -16876,7 +16876,7 @@ func (c *Client) sendGetServiceAccountIssuerOpenIDKeyset(ctx context.Context) (r
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getServiceAccountIssuerOpenIDKeyset"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/openid/v1/jwks/"),
+		semconv.URLTemplateKey.String("/openid/v1/jwks/"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -16982,7 +16982,7 @@ func (c *Client) sendGetStorageAPIGroup(ctx context.Context) (res GetStorageAPIG
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getStorageAPIGroup"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/"),
+		semconv.URLTemplateKey.String("/apis/storage.k8s.io/"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -17088,7 +17088,7 @@ func (c *Client) sendGetStorageV1APIResources(ctx context.Context) (res GetStora
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getStorageV1APIResources"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/"),
+		semconv.URLTemplateKey.String("/apis/storage.k8s.io/v1/"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -17194,7 +17194,7 @@ func (c *Client) sendGetStorageV1alpha1APIResources(ctx context.Context) (res Ge
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getStorageV1alpha1APIResources"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1alpha1/"),
+		semconv.URLTemplateKey.String("/apis/storage.k8s.io/v1alpha1/"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -17300,7 +17300,7 @@ func (c *Client) sendGetStorageV1beta1APIResources(ctx context.Context) (res Get
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getStorageV1beta1APIResources"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1beta1/"),
+		semconv.URLTemplateKey.String("/apis/storage.k8s.io/v1beta1/"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -17406,7 +17406,7 @@ func (c *Client) sendListAdmissionregistrationV1MutatingWebhookConfiguration(ctx
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listAdmissionregistrationV1MutatingWebhookConfiguration"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations"),
+		semconv.URLTemplateKey.String("/apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -17686,7 +17686,7 @@ func (c *Client) sendListAdmissionregistrationV1ValidatingWebhookConfiguration(c
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listAdmissionregistrationV1ValidatingWebhookConfiguration"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/admissionregistration.k8s.io/v1/validatingwebhookconfigurations"),
+		semconv.URLTemplateKey.String("/apis/admissionregistration.k8s.io/v1/validatingwebhookconfigurations"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -17966,7 +17966,7 @@ func (c *Client) sendListApiextensionsV1CustomResourceDefinition(ctx context.Con
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listApiextensionsV1CustomResourceDefinition"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/apiextensions.k8s.io/v1/customresourcedefinitions"),
+		semconv.URLTemplateKey.String("/apis/apiextensions.k8s.io/v1/customresourcedefinitions"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -18246,7 +18246,7 @@ func (c *Client) sendListApiregistrationV1APIService(ctx context.Context, params
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listApiregistrationV1APIService"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/apiregistration.k8s.io/v1/apiservices"),
+		semconv.URLTemplateKey.String("/apis/apiregistration.k8s.io/v1/apiservices"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -18526,7 +18526,7 @@ func (c *Client) sendListAppsV1ControllerRevisionForAllNamespaces(ctx context.Co
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listAppsV1ControllerRevisionForAllNamespaces"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/apps/v1/controllerrevisions"),
+		semconv.URLTemplateKey.String("/apis/apps/v1/controllerrevisions"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -18806,7 +18806,7 @@ func (c *Client) sendListAppsV1DaemonSetForAllNamespaces(ctx context.Context, pa
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listAppsV1DaemonSetForAllNamespaces"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/apps/v1/daemonsets"),
+		semconv.URLTemplateKey.String("/apis/apps/v1/daemonsets"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -19086,7 +19086,7 @@ func (c *Client) sendListAppsV1DeploymentForAllNamespaces(ctx context.Context, p
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listAppsV1DeploymentForAllNamespaces"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/apps/v1/deployments"),
+		semconv.URLTemplateKey.String("/apis/apps/v1/deployments"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -19366,7 +19366,7 @@ func (c *Client) sendListAppsV1NamespacedControllerRevision(ctx context.Context,
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listAppsV1NamespacedControllerRevision"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/controllerrevisions"),
+		semconv.URLTemplateKey.String("/apis/apps/v1/namespaces/{namespace}/controllerrevisions"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -19665,7 +19665,7 @@ func (c *Client) sendListAppsV1NamespacedDaemonSet(ctx context.Context, params L
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listAppsV1NamespacedDaemonSet"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/daemonsets"),
+		semconv.URLTemplateKey.String("/apis/apps/v1/namespaces/{namespace}/daemonsets"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -19964,7 +19964,7 @@ func (c *Client) sendListAppsV1NamespacedDeployment(ctx context.Context, params 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listAppsV1NamespacedDeployment"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/deployments"),
+		semconv.URLTemplateKey.String("/apis/apps/v1/namespaces/{namespace}/deployments"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -20263,7 +20263,7 @@ func (c *Client) sendListAppsV1NamespacedReplicaSet(ctx context.Context, params 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listAppsV1NamespacedReplicaSet"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/replicasets"),
+		semconv.URLTemplateKey.String("/apis/apps/v1/namespaces/{namespace}/replicasets"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -20562,7 +20562,7 @@ func (c *Client) sendListAppsV1NamespacedStatefulSet(ctx context.Context, params
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listAppsV1NamespacedStatefulSet"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/statefulsets"),
+		semconv.URLTemplateKey.String("/apis/apps/v1/namespaces/{namespace}/statefulsets"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -20861,7 +20861,7 @@ func (c *Client) sendListAppsV1ReplicaSetForAllNamespaces(ctx context.Context, p
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listAppsV1ReplicaSetForAllNamespaces"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/apps/v1/replicasets"),
+		semconv.URLTemplateKey.String("/apis/apps/v1/replicasets"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -21141,7 +21141,7 @@ func (c *Client) sendListAppsV1StatefulSetForAllNamespaces(ctx context.Context, 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listAppsV1StatefulSetForAllNamespaces"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/apps/v1/statefulsets"),
+		semconv.URLTemplateKey.String("/apis/apps/v1/statefulsets"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -21421,7 +21421,7 @@ func (c *Client) sendListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces(ct
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listAutoscalingV1HorizontalPodAutoscalerForAllNamespaces"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/autoscaling/v1/horizontalpodautoscalers"),
+		semconv.URLTemplateKey.String("/apis/autoscaling/v1/horizontalpodautoscalers"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -21701,7 +21701,7 @@ func (c *Client) sendListAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx cont
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listAutoscalingV1NamespacedHorizontalPodAutoscaler"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers"),
+		semconv.URLTemplateKey.String("/apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -22000,7 +22000,7 @@ func (c *Client) sendListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespac
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/autoscaling/v2beta1/horizontalpodautoscalers"),
+		semconv.URLTemplateKey.String("/apis/autoscaling/v2beta1/horizontalpodautoscalers"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -22280,7 +22280,7 @@ func (c *Client) sendListAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listAutoscalingV2beta1NamespacedHorizontalPodAutoscaler"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers"),
+		semconv.URLTemplateKey.String("/apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -22579,7 +22579,7 @@ func (c *Client) sendListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespac
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/autoscaling/v2beta2/horizontalpodautoscalers"),
+		semconv.URLTemplateKey.String("/apis/autoscaling/v2beta2/horizontalpodautoscalers"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -22859,7 +22859,7 @@ func (c *Client) sendListAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listAutoscalingV2beta2NamespacedHorizontalPodAutoscaler"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/autoscaling/v2beta2/namespaces/{namespace}/horizontalpodautoscalers"),
+		semconv.URLTemplateKey.String("/apis/autoscaling/v2beta2/namespaces/{namespace}/horizontalpodautoscalers"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -23158,7 +23158,7 @@ func (c *Client) sendListBatchV1CronJobForAllNamespaces(ctx context.Context, par
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listBatchV1CronJobForAllNamespaces"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/batch/v1/cronjobs"),
+		semconv.URLTemplateKey.String("/apis/batch/v1/cronjobs"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -23438,7 +23438,7 @@ func (c *Client) sendListBatchV1JobForAllNamespaces(ctx context.Context, params 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listBatchV1JobForAllNamespaces"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/batch/v1/jobs"),
+		semconv.URLTemplateKey.String("/apis/batch/v1/jobs"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -23718,7 +23718,7 @@ func (c *Client) sendListBatchV1NamespacedCronJob(ctx context.Context, params Li
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listBatchV1NamespacedCronJob"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/batch/v1/namespaces/{namespace}/cronjobs"),
+		semconv.URLTemplateKey.String("/apis/batch/v1/namespaces/{namespace}/cronjobs"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -24017,7 +24017,7 @@ func (c *Client) sendListBatchV1NamespacedJob(ctx context.Context, params ListBa
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listBatchV1NamespacedJob"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/batch/v1/namespaces/{namespace}/jobs"),
+		semconv.URLTemplateKey.String("/apis/batch/v1/namespaces/{namespace}/jobs"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -24316,7 +24316,7 @@ func (c *Client) sendListBatchV1beta1CronJobForAllNamespaces(ctx context.Context
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listBatchV1beta1CronJobForAllNamespaces"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/batch/v1beta1/cronjobs"),
+		semconv.URLTemplateKey.String("/apis/batch/v1beta1/cronjobs"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -24596,7 +24596,7 @@ func (c *Client) sendListBatchV1beta1NamespacedCronJob(ctx context.Context, para
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listBatchV1beta1NamespacedCronJob"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/batch/v1beta1/namespaces/{namespace}/cronjobs"),
+		semconv.URLTemplateKey.String("/apis/batch/v1beta1/namespaces/{namespace}/cronjobs"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -24895,7 +24895,7 @@ func (c *Client) sendListCertificatesV1CertificateSigningRequest(ctx context.Con
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCertificatesV1CertificateSigningRequest"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/certificates.k8s.io/v1/certificatesigningrequests"),
+		semconv.URLTemplateKey.String("/apis/certificates.k8s.io/v1/certificatesigningrequests"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -25175,7 +25175,7 @@ func (c *Client) sendListCoordinationV1LeaseForAllNamespaces(ctx context.Context
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoordinationV1LeaseForAllNamespaces"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/coordination.k8s.io/v1/leases"),
+		semconv.URLTemplateKey.String("/apis/coordination.k8s.io/v1/leases"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -25455,7 +25455,7 @@ func (c *Client) sendListCoordinationV1NamespacedLease(ctx context.Context, para
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoordinationV1NamespacedLease"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/coordination.k8s.io/v1/namespaces/{namespace}/leases"),
+		semconv.URLTemplateKey.String("/apis/coordination.k8s.io/v1/namespaces/{namespace}/leases"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -25754,7 +25754,7 @@ func (c *Client) sendListCoreV1ComponentStatus(ctx context.Context, params ListC
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1ComponentStatus"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/componentstatuses"),
+		semconv.URLTemplateKey.String("/api/v1/componentstatuses"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -26034,7 +26034,7 @@ func (c *Client) sendListCoreV1ConfigMapForAllNamespaces(ctx context.Context, pa
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1ConfigMapForAllNamespaces"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/configmaps"),
+		semconv.URLTemplateKey.String("/api/v1/configmaps"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -26314,7 +26314,7 @@ func (c *Client) sendListCoreV1EndpointsForAllNamespaces(ctx context.Context, pa
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1EndpointsForAllNamespaces"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/endpoints"),
+		semconv.URLTemplateKey.String("/api/v1/endpoints"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -26594,7 +26594,7 @@ func (c *Client) sendListCoreV1EventForAllNamespaces(ctx context.Context, params
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1EventForAllNamespaces"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/events"),
+		semconv.URLTemplateKey.String("/api/v1/events"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -26874,7 +26874,7 @@ func (c *Client) sendListCoreV1LimitRangeForAllNamespaces(ctx context.Context, p
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1LimitRangeForAllNamespaces"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/limitranges"),
+		semconv.URLTemplateKey.String("/api/v1/limitranges"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -27154,7 +27154,7 @@ func (c *Client) sendListCoreV1Namespace(ctx context.Context, params ListCoreV1N
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1Namespace"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/namespaces"),
+		semconv.URLTemplateKey.String("/api/v1/namespaces"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -27434,7 +27434,7 @@ func (c *Client) sendListCoreV1NamespacedConfigMap(ctx context.Context, params L
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1NamespacedConfigMap"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/configmaps"),
+		semconv.URLTemplateKey.String("/api/v1/namespaces/{namespace}/configmaps"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -27733,7 +27733,7 @@ func (c *Client) sendListCoreV1NamespacedEndpoints(ctx context.Context, params L
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1NamespacedEndpoints"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/endpoints"),
+		semconv.URLTemplateKey.String("/api/v1/namespaces/{namespace}/endpoints"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -28032,7 +28032,7 @@ func (c *Client) sendListCoreV1NamespacedEvent(ctx context.Context, params ListC
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1NamespacedEvent"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/events"),
+		semconv.URLTemplateKey.String("/api/v1/namespaces/{namespace}/events"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -28331,7 +28331,7 @@ func (c *Client) sendListCoreV1NamespacedLimitRange(ctx context.Context, params 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1NamespacedLimitRange"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/limitranges"),
+		semconv.URLTemplateKey.String("/api/v1/namespaces/{namespace}/limitranges"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -28630,7 +28630,7 @@ func (c *Client) sendListCoreV1NamespacedPersistentVolumeClaim(ctx context.Conte
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1NamespacedPersistentVolumeClaim"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/persistentvolumeclaims"),
+		semconv.URLTemplateKey.String("/api/v1/namespaces/{namespace}/persistentvolumeclaims"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -28929,7 +28929,7 @@ func (c *Client) sendListCoreV1NamespacedPod(ctx context.Context, params ListCor
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1NamespacedPod"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods"),
+		semconv.URLTemplateKey.String("/api/v1/namespaces/{namespace}/pods"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -29228,7 +29228,7 @@ func (c *Client) sendListCoreV1NamespacedPodTemplate(ctx context.Context, params
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1NamespacedPodTemplate"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/podtemplates"),
+		semconv.URLTemplateKey.String("/api/v1/namespaces/{namespace}/podtemplates"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -29527,7 +29527,7 @@ func (c *Client) sendListCoreV1NamespacedReplicationController(ctx context.Conte
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1NamespacedReplicationController"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/replicationcontrollers"),
+		semconv.URLTemplateKey.String("/api/v1/namespaces/{namespace}/replicationcontrollers"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -29826,7 +29826,7 @@ func (c *Client) sendListCoreV1NamespacedResourceQuota(ctx context.Context, para
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1NamespacedResourceQuota"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/resourcequotas"),
+		semconv.URLTemplateKey.String("/api/v1/namespaces/{namespace}/resourcequotas"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -30125,7 +30125,7 @@ func (c *Client) sendListCoreV1NamespacedSecret(ctx context.Context, params List
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1NamespacedSecret"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/secrets"),
+		semconv.URLTemplateKey.String("/api/v1/namespaces/{namespace}/secrets"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -30424,7 +30424,7 @@ func (c *Client) sendListCoreV1NamespacedService(ctx context.Context, params Lis
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1NamespacedService"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/services"),
+		semconv.URLTemplateKey.String("/api/v1/namespaces/{namespace}/services"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -30723,7 +30723,7 @@ func (c *Client) sendListCoreV1NamespacedServiceAccount(ctx context.Context, par
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1NamespacedServiceAccount"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/serviceaccounts"),
+		semconv.URLTemplateKey.String("/api/v1/namespaces/{namespace}/serviceaccounts"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -31022,7 +31022,7 @@ func (c *Client) sendListCoreV1Node(ctx context.Context, params ListCoreV1NodePa
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1Node"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/nodes"),
+		semconv.URLTemplateKey.String("/api/v1/nodes"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -31302,7 +31302,7 @@ func (c *Client) sendListCoreV1PersistentVolume(ctx context.Context, params List
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1PersistentVolume"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/persistentvolumes"),
+		semconv.URLTemplateKey.String("/api/v1/persistentvolumes"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -31582,7 +31582,7 @@ func (c *Client) sendListCoreV1PersistentVolumeClaimForAllNamespaces(ctx context
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1PersistentVolumeClaimForAllNamespaces"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/persistentvolumeclaims"),
+		semconv.URLTemplateKey.String("/api/v1/persistentvolumeclaims"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -31862,7 +31862,7 @@ func (c *Client) sendListCoreV1PodForAllNamespaces(ctx context.Context, params L
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1PodForAllNamespaces"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/pods"),
+		semconv.URLTemplateKey.String("/api/v1/pods"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -32142,7 +32142,7 @@ func (c *Client) sendListCoreV1PodTemplateForAllNamespaces(ctx context.Context, 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1PodTemplateForAllNamespaces"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/podtemplates"),
+		semconv.URLTemplateKey.String("/api/v1/podtemplates"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -32422,7 +32422,7 @@ func (c *Client) sendListCoreV1ReplicationControllerForAllNamespaces(ctx context
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1ReplicationControllerForAllNamespaces"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/replicationcontrollers"),
+		semconv.URLTemplateKey.String("/api/v1/replicationcontrollers"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -32702,7 +32702,7 @@ func (c *Client) sendListCoreV1ResourceQuotaForAllNamespaces(ctx context.Context
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1ResourceQuotaForAllNamespaces"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/resourcequotas"),
+		semconv.URLTemplateKey.String("/api/v1/resourcequotas"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -32982,7 +32982,7 @@ func (c *Client) sendListCoreV1SecretForAllNamespaces(ctx context.Context, param
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1SecretForAllNamespaces"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/secrets"),
+		semconv.URLTemplateKey.String("/api/v1/secrets"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -33262,7 +33262,7 @@ func (c *Client) sendListCoreV1ServiceAccountForAllNamespaces(ctx context.Contex
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1ServiceAccountForAllNamespaces"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/serviceaccounts"),
+		semconv.URLTemplateKey.String("/api/v1/serviceaccounts"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -33542,7 +33542,7 @@ func (c *Client) sendListCoreV1ServiceForAllNamespaces(ctx context.Context, para
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listCoreV1ServiceForAllNamespaces"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/services"),
+		semconv.URLTemplateKey.String("/api/v1/services"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -33822,7 +33822,7 @@ func (c *Client) sendListDiscoveryV1EndpointSliceForAllNamespaces(ctx context.Co
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listDiscoveryV1EndpointSliceForAllNamespaces"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/discovery.k8s.io/v1/endpointslices"),
+		semconv.URLTemplateKey.String("/apis/discovery.k8s.io/v1/endpointslices"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -34102,7 +34102,7 @@ func (c *Client) sendListDiscoveryV1NamespacedEndpointSlice(ctx context.Context,
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listDiscoveryV1NamespacedEndpointSlice"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/discovery.k8s.io/v1/namespaces/{namespace}/endpointslices"),
+		semconv.URLTemplateKey.String("/apis/discovery.k8s.io/v1/namespaces/{namespace}/endpointslices"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -34401,7 +34401,7 @@ func (c *Client) sendListDiscoveryV1beta1EndpointSliceForAllNamespaces(ctx conte
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listDiscoveryV1beta1EndpointSliceForAllNamespaces"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/discovery.k8s.io/v1beta1/endpointslices"),
+		semconv.URLTemplateKey.String("/apis/discovery.k8s.io/v1beta1/endpointslices"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -34681,7 +34681,7 @@ func (c *Client) sendListDiscoveryV1beta1NamespacedEndpointSlice(ctx context.Con
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listDiscoveryV1beta1NamespacedEndpointSlice"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/discovery.k8s.io/v1beta1/namespaces/{namespace}/endpointslices"),
+		semconv.URLTemplateKey.String("/apis/discovery.k8s.io/v1beta1/namespaces/{namespace}/endpointslices"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -34980,7 +34980,7 @@ func (c *Client) sendListEventsV1EventForAllNamespaces(ctx context.Context, para
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listEventsV1EventForAllNamespaces"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/events.k8s.io/v1/events"),
+		semconv.URLTemplateKey.String("/apis/events.k8s.io/v1/events"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -35260,7 +35260,7 @@ func (c *Client) sendListEventsV1NamespacedEvent(ctx context.Context, params Lis
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listEventsV1NamespacedEvent"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/events.k8s.io/v1/namespaces/{namespace}/events"),
+		semconv.URLTemplateKey.String("/apis/events.k8s.io/v1/namespaces/{namespace}/events"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -35559,7 +35559,7 @@ func (c *Client) sendListEventsV1beta1EventForAllNamespaces(ctx context.Context,
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listEventsV1beta1EventForAllNamespaces"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/events.k8s.io/v1beta1/events"),
+		semconv.URLTemplateKey.String("/apis/events.k8s.io/v1beta1/events"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -35839,7 +35839,7 @@ func (c *Client) sendListEventsV1beta1NamespacedEvent(ctx context.Context, param
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listEventsV1beta1NamespacedEvent"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/events.k8s.io/v1beta1/namespaces/{namespace}/events"),
+		semconv.URLTemplateKey.String("/apis/events.k8s.io/v1beta1/namespaces/{namespace}/events"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -36138,7 +36138,7 @@ func (c *Client) sendListFlowcontrolApiserverV1beta1FlowSchema(ctx context.Conte
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listFlowcontrolApiserverV1beta1FlowSchema"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas"),
+		semconv.URLTemplateKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -36418,7 +36418,7 @@ func (c *Client) sendListFlowcontrolApiserverV1beta1PriorityLevelConfiguration(c
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listFlowcontrolApiserverV1beta1PriorityLevelConfiguration"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations"),
+		semconv.URLTemplateKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -36698,7 +36698,7 @@ func (c *Client) sendListFlowcontrolApiserverV1beta2FlowSchema(ctx context.Conte
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listFlowcontrolApiserverV1beta2FlowSchema"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas"),
+		semconv.URLTemplateKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -36978,7 +36978,7 @@ func (c *Client) sendListFlowcontrolApiserverV1beta2PriorityLevelConfiguration(c
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listFlowcontrolApiserverV1beta2PriorityLevelConfiguration"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations"),
+		semconv.URLTemplateKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -37258,7 +37258,7 @@ func (c *Client) sendListInternalApiserverV1alpha1StorageVersion(ctx context.Con
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listInternalApiserverV1alpha1StorageVersion"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/internal.apiserver.k8s.io/v1alpha1/storageversions"),
+		semconv.URLTemplateKey.String("/apis/internal.apiserver.k8s.io/v1alpha1/storageversions"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -37538,7 +37538,7 @@ func (c *Client) sendListNetworkingV1IngressClass(ctx context.Context, params Li
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listNetworkingV1IngressClass"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/ingressclasses"),
+		semconv.URLTemplateKey.String("/apis/networking.k8s.io/v1/ingressclasses"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -37818,7 +37818,7 @@ func (c *Client) sendListNetworkingV1IngressForAllNamespaces(ctx context.Context
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listNetworkingV1IngressForAllNamespaces"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/ingresses"),
+		semconv.URLTemplateKey.String("/apis/networking.k8s.io/v1/ingresses"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -38098,7 +38098,7 @@ func (c *Client) sendListNetworkingV1NamespacedIngress(ctx context.Context, para
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listNetworkingV1NamespacedIngress"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses"),
+		semconv.URLTemplateKey.String("/apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -38397,7 +38397,7 @@ func (c *Client) sendListNetworkingV1NamespacedNetworkPolicy(ctx context.Context
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listNetworkingV1NamespacedNetworkPolicy"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/namespaces/{namespace}/networkpolicies"),
+		semconv.URLTemplateKey.String("/apis/networking.k8s.io/v1/namespaces/{namespace}/networkpolicies"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -38696,7 +38696,7 @@ func (c *Client) sendListNetworkingV1NetworkPolicyForAllNamespaces(ctx context.C
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listNetworkingV1NetworkPolicyForAllNamespaces"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/networkpolicies"),
+		semconv.URLTemplateKey.String("/apis/networking.k8s.io/v1/networkpolicies"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -38976,7 +38976,7 @@ func (c *Client) sendListNodeV1RuntimeClass(ctx context.Context, params ListNode
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listNodeV1RuntimeClass"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/node.k8s.io/v1/runtimeclasses"),
+		semconv.URLTemplateKey.String("/apis/node.k8s.io/v1/runtimeclasses"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -39256,7 +39256,7 @@ func (c *Client) sendListNodeV1alpha1RuntimeClass(ctx context.Context, params Li
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listNodeV1alpha1RuntimeClass"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/node.k8s.io/v1alpha1/runtimeclasses"),
+		semconv.URLTemplateKey.String("/apis/node.k8s.io/v1alpha1/runtimeclasses"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -39536,7 +39536,7 @@ func (c *Client) sendListNodeV1beta1RuntimeClass(ctx context.Context, params Lis
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listNodeV1beta1RuntimeClass"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/node.k8s.io/v1beta1/runtimeclasses"),
+		semconv.URLTemplateKey.String("/apis/node.k8s.io/v1beta1/runtimeclasses"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -39816,7 +39816,7 @@ func (c *Client) sendListPolicyV1NamespacedPodDisruptionBudget(ctx context.Conte
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listPolicyV1NamespacedPodDisruptionBudget"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets"),
+		semconv.URLTemplateKey.String("/apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -40115,7 +40115,7 @@ func (c *Client) sendListPolicyV1PodDisruptionBudgetForAllNamespaces(ctx context
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listPolicyV1PodDisruptionBudgetForAllNamespaces"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/policy/v1/poddisruptionbudgets"),
+		semconv.URLTemplateKey.String("/apis/policy/v1/poddisruptionbudgets"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -40395,7 +40395,7 @@ func (c *Client) sendListPolicyV1beta1NamespacedPodDisruptionBudget(ctx context.
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listPolicyV1beta1NamespacedPodDisruptionBudget"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets"),
+		semconv.URLTemplateKey.String("/apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -40694,7 +40694,7 @@ func (c *Client) sendListPolicyV1beta1PodDisruptionBudgetForAllNamespaces(ctx co
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listPolicyV1beta1PodDisruptionBudgetForAllNamespaces"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/policy/v1beta1/poddisruptionbudgets"),
+		semconv.URLTemplateKey.String("/apis/policy/v1beta1/poddisruptionbudgets"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -40974,7 +40974,7 @@ func (c *Client) sendListPolicyV1beta1PodSecurityPolicy(ctx context.Context, par
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listPolicyV1beta1PodSecurityPolicy"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/policy/v1beta1/podsecuritypolicies"),
+		semconv.URLTemplateKey.String("/apis/policy/v1beta1/podsecuritypolicies"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -41254,7 +41254,7 @@ func (c *Client) sendListRbacAuthorizationV1ClusterRole(ctx context.Context, par
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listRbacAuthorizationV1ClusterRole"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/clusterroles"),
+		semconv.URLTemplateKey.String("/apis/rbac.authorization.k8s.io/v1/clusterroles"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -41534,7 +41534,7 @@ func (c *Client) sendListRbacAuthorizationV1ClusterRoleBinding(ctx context.Conte
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listRbacAuthorizationV1ClusterRoleBinding"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/clusterrolebindings"),
+		semconv.URLTemplateKey.String("/apis/rbac.authorization.k8s.io/v1/clusterrolebindings"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -41814,7 +41814,7 @@ func (c *Client) sendListRbacAuthorizationV1NamespacedRole(ctx context.Context, 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listRbacAuthorizationV1NamespacedRole"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/roles"),
+		semconv.URLTemplateKey.String("/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/roles"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -42113,7 +42113,7 @@ func (c *Client) sendListRbacAuthorizationV1NamespacedRoleBinding(ctx context.Co
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listRbacAuthorizationV1NamespacedRoleBinding"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/rolebindings"),
+		semconv.URLTemplateKey.String("/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/rolebindings"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -42412,7 +42412,7 @@ func (c *Client) sendListRbacAuthorizationV1RoleBindingForAllNamespaces(ctx cont
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listRbacAuthorizationV1RoleBindingForAllNamespaces"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/rolebindings"),
+		semconv.URLTemplateKey.String("/apis/rbac.authorization.k8s.io/v1/rolebindings"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -42692,7 +42692,7 @@ func (c *Client) sendListRbacAuthorizationV1RoleForAllNamespaces(ctx context.Con
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listRbacAuthorizationV1RoleForAllNamespaces"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/roles"),
+		semconv.URLTemplateKey.String("/apis/rbac.authorization.k8s.io/v1/roles"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -42972,7 +42972,7 @@ func (c *Client) sendListSchedulingV1PriorityClass(ctx context.Context, params L
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listSchedulingV1PriorityClass"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/scheduling.k8s.io/v1/priorityclasses"),
+		semconv.URLTemplateKey.String("/apis/scheduling.k8s.io/v1/priorityclasses"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -43252,7 +43252,7 @@ func (c *Client) sendListStorageV1CSIDriver(ctx context.Context, params ListStor
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listStorageV1CSIDriver"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/csidrivers"),
+		semconv.URLTemplateKey.String("/apis/storage.k8s.io/v1/csidrivers"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -43532,7 +43532,7 @@ func (c *Client) sendListStorageV1CSINode(ctx context.Context, params ListStorag
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listStorageV1CSINode"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/csinodes"),
+		semconv.URLTemplateKey.String("/apis/storage.k8s.io/v1/csinodes"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -43812,7 +43812,7 @@ func (c *Client) sendListStorageV1StorageClass(ctx context.Context, params ListS
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listStorageV1StorageClass"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/storageclasses"),
+		semconv.URLTemplateKey.String("/apis/storage.k8s.io/v1/storageclasses"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -44092,7 +44092,7 @@ func (c *Client) sendListStorageV1VolumeAttachment(ctx context.Context, params L
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listStorageV1VolumeAttachment"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/volumeattachments"),
+		semconv.URLTemplateKey.String("/apis/storage.k8s.io/v1/volumeattachments"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -44372,7 +44372,7 @@ func (c *Client) sendListStorageV1alpha1CSIStorageCapacityForAllNamespaces(ctx c
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listStorageV1alpha1CSIStorageCapacityForAllNamespaces"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1alpha1/csistoragecapacities"),
+		semconv.URLTemplateKey.String("/apis/storage.k8s.io/v1alpha1/csistoragecapacities"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -44652,7 +44652,7 @@ func (c *Client) sendListStorageV1alpha1NamespacedCSIStorageCapacity(ctx context
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listStorageV1alpha1NamespacedCSIStorageCapacity"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1alpha1/namespaces/{namespace}/csistoragecapacities"),
+		semconv.URLTemplateKey.String("/apis/storage.k8s.io/v1alpha1/namespaces/{namespace}/csistoragecapacities"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -44951,7 +44951,7 @@ func (c *Client) sendListStorageV1beta1CSIStorageCapacityForAllNamespaces(ctx co
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listStorageV1beta1CSIStorageCapacityForAllNamespaces"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1beta1/csistoragecapacities"),
+		semconv.URLTemplateKey.String("/apis/storage.k8s.io/v1beta1/csistoragecapacities"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -45231,7 +45231,7 @@ func (c *Client) sendListStorageV1beta1NamespacedCSIStorageCapacity(ctx context.
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listStorageV1beta1NamespacedCSIStorageCapacity"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1beta1/namespaces/{namespace}/csistoragecapacities"),
+		semconv.URLTemplateKey.String("/apis/storage.k8s.io/v1beta1/namespaces/{namespace}/csistoragecapacities"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -45528,7 +45528,7 @@ func (c *Client) sendLogFileHandler(ctx context.Context, params LogFileHandlerPa
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("logFileHandler"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/logs/{logpath}"),
+		semconv.URLTemplateKey.String("/logs/{logpath}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -45650,7 +45650,7 @@ func (c *Client) sendLogFileListHandler(ctx context.Context) (res *LogFileListHa
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("logFileListHandler"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/logs/"),
+		semconv.URLTemplateKey.String("/logs/"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -45756,7 +45756,7 @@ func (c *Client) sendPatchCoreV1NamespacedConfigMap(ctx context.Context, request
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("patchCoreV1NamespacedConfigMap"),
 		semconv.HTTPRequestMethodKey.String("PATCH"),
-		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/configmaps/{name}"),
+		semconv.URLTemplateKey.String("/api/v1/namespaces/{namespace}/configmaps/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -45974,7 +45974,7 @@ func (c *Client) sendReadAdmissionregistrationV1MutatingWebhookConfiguration(ctx
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readAdmissionregistrationV1MutatingWebhookConfiguration"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations/{name}"),
+		semconv.URLTemplateKey.String("/apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -46119,7 +46119,7 @@ func (c *Client) sendReadAdmissionregistrationV1ValidatingWebhookConfiguration(c
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readAdmissionregistrationV1ValidatingWebhookConfiguration"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/admissionregistration.k8s.io/v1/validatingwebhookconfigurations/{name}"),
+		semconv.URLTemplateKey.String("/apis/admissionregistration.k8s.io/v1/validatingwebhookconfigurations/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -46264,7 +46264,7 @@ func (c *Client) sendReadApiextensionsV1CustomResourceDefinition(ctx context.Con
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readApiextensionsV1CustomResourceDefinition"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/apiextensions.k8s.io/v1/customresourcedefinitions/{name}"),
+		semconv.URLTemplateKey.String("/apis/apiextensions.k8s.io/v1/customresourcedefinitions/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -46409,7 +46409,7 @@ func (c *Client) sendReadApiextensionsV1CustomResourceDefinitionStatus(ctx conte
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readApiextensionsV1CustomResourceDefinitionStatus"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/apiextensions.k8s.io/v1/customresourcedefinitions/{name}/status"),
+		semconv.URLTemplateKey.String("/apis/apiextensions.k8s.io/v1/customresourcedefinitions/{name}/status"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -46555,7 +46555,7 @@ func (c *Client) sendReadApiregistrationV1APIService(ctx context.Context, params
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readApiregistrationV1APIService"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/apiregistration.k8s.io/v1/apiservices/{name}"),
+		semconv.URLTemplateKey.String("/apis/apiregistration.k8s.io/v1/apiservices/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -46700,7 +46700,7 @@ func (c *Client) sendReadApiregistrationV1APIServiceStatus(ctx context.Context, 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readApiregistrationV1APIServiceStatus"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/apiregistration.k8s.io/v1/apiservices/{name}/status"),
+		semconv.URLTemplateKey.String("/apis/apiregistration.k8s.io/v1/apiservices/{name}/status"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -46846,7 +46846,7 @@ func (c *Client) sendReadAppsV1NamespacedControllerRevision(ctx context.Context,
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readAppsV1NamespacedControllerRevision"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/controllerrevisions/{name}"),
+		semconv.URLTemplateKey.String("/apis/apps/v1/namespaces/{namespace}/controllerrevisions/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -47010,7 +47010,7 @@ func (c *Client) sendReadAppsV1NamespacedDaemonSet(ctx context.Context, params R
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readAppsV1NamespacedDaemonSet"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/daemonsets/{name}"),
+		semconv.URLTemplateKey.String("/apis/apps/v1/namespaces/{namespace}/daemonsets/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -47174,7 +47174,7 @@ func (c *Client) sendReadAppsV1NamespacedDaemonSetStatus(ctx context.Context, pa
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readAppsV1NamespacedDaemonSetStatus"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/daemonsets/{name}/status"),
+		semconv.URLTemplateKey.String("/apis/apps/v1/namespaces/{namespace}/daemonsets/{name}/status"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -47339,7 +47339,7 @@ func (c *Client) sendReadAppsV1NamespacedDeployment(ctx context.Context, params 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readAppsV1NamespacedDeployment"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/deployments/{name}"),
+		semconv.URLTemplateKey.String("/apis/apps/v1/namespaces/{namespace}/deployments/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -47503,7 +47503,7 @@ func (c *Client) sendReadAppsV1NamespacedDeploymentScale(ctx context.Context, pa
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readAppsV1NamespacedDeploymentScale"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/deployments/{name}/scale"),
+		semconv.URLTemplateKey.String("/apis/apps/v1/namespaces/{namespace}/deployments/{name}/scale"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -47668,7 +47668,7 @@ func (c *Client) sendReadAppsV1NamespacedDeploymentStatus(ctx context.Context, p
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readAppsV1NamespacedDeploymentStatus"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/deployments/{name}/status"),
+		semconv.URLTemplateKey.String("/apis/apps/v1/namespaces/{namespace}/deployments/{name}/status"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -47833,7 +47833,7 @@ func (c *Client) sendReadAppsV1NamespacedReplicaSet(ctx context.Context, params 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readAppsV1NamespacedReplicaSet"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/replicasets/{name}"),
+		semconv.URLTemplateKey.String("/apis/apps/v1/namespaces/{namespace}/replicasets/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -47997,7 +47997,7 @@ func (c *Client) sendReadAppsV1NamespacedReplicaSetScale(ctx context.Context, pa
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readAppsV1NamespacedReplicaSetScale"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/replicasets/{name}/scale"),
+		semconv.URLTemplateKey.String("/apis/apps/v1/namespaces/{namespace}/replicasets/{name}/scale"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -48162,7 +48162,7 @@ func (c *Client) sendReadAppsV1NamespacedReplicaSetStatus(ctx context.Context, p
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readAppsV1NamespacedReplicaSetStatus"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/replicasets/{name}/status"),
+		semconv.URLTemplateKey.String("/apis/apps/v1/namespaces/{namespace}/replicasets/{name}/status"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -48327,7 +48327,7 @@ func (c *Client) sendReadAppsV1NamespacedStatefulSet(ctx context.Context, params
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readAppsV1NamespacedStatefulSet"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/statefulsets/{name}"),
+		semconv.URLTemplateKey.String("/apis/apps/v1/namespaces/{namespace}/statefulsets/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -48491,7 +48491,7 @@ func (c *Client) sendReadAppsV1NamespacedStatefulSetScale(ctx context.Context, p
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readAppsV1NamespacedStatefulSetScale"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/statefulsets/{name}/scale"),
+		semconv.URLTemplateKey.String("/apis/apps/v1/namespaces/{namespace}/statefulsets/{name}/scale"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -48656,7 +48656,7 @@ func (c *Client) sendReadAppsV1NamespacedStatefulSetStatus(ctx context.Context, 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readAppsV1NamespacedStatefulSetStatus"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/statefulsets/{name}/status"),
+		semconv.URLTemplateKey.String("/apis/apps/v1/namespaces/{namespace}/statefulsets/{name}/status"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -48821,7 +48821,7 @@ func (c *Client) sendReadAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx cont
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readAutoscalingV1NamespacedHorizontalPodAutoscaler"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}"),
+		semconv.URLTemplateKey.String("/apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -48985,7 +48985,7 @@ func (c *Client) sendReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatus(ct
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readAutoscalingV1NamespacedHorizontalPodAutoscalerStatus"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}/status"),
+		semconv.URLTemplateKey.String("/apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}/status"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -49150,7 +49150,7 @@ func (c *Client) sendReadAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readAutoscalingV2beta1NamespacedHorizontalPodAutoscaler"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers/{name}"),
+		semconv.URLTemplateKey.String("/apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -49314,7 +49314,7 @@ func (c *Client) sendReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStat
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers/{name}/status"),
+		semconv.URLTemplateKey.String("/apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers/{name}/status"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -49479,7 +49479,7 @@ func (c *Client) sendReadAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readAutoscalingV2beta2NamespacedHorizontalPodAutoscaler"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/autoscaling/v2beta2/namespaces/{namespace}/horizontalpodautoscalers/{name}"),
+		semconv.URLTemplateKey.String("/apis/autoscaling/v2beta2/namespaces/{namespace}/horizontalpodautoscalers/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -49643,7 +49643,7 @@ func (c *Client) sendReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStat
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/autoscaling/v2beta2/namespaces/{namespace}/horizontalpodautoscalers/{name}/status"),
+		semconv.URLTemplateKey.String("/apis/autoscaling/v2beta2/namespaces/{namespace}/horizontalpodautoscalers/{name}/status"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -49808,7 +49808,7 @@ func (c *Client) sendReadBatchV1NamespacedCronJob(ctx context.Context, params Re
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readBatchV1NamespacedCronJob"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/batch/v1/namespaces/{namespace}/cronjobs/{name}"),
+		semconv.URLTemplateKey.String("/apis/batch/v1/namespaces/{namespace}/cronjobs/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -49972,7 +49972,7 @@ func (c *Client) sendReadBatchV1NamespacedCronJobStatus(ctx context.Context, par
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readBatchV1NamespacedCronJobStatus"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/batch/v1/namespaces/{namespace}/cronjobs/{name}/status"),
+		semconv.URLTemplateKey.String("/apis/batch/v1/namespaces/{namespace}/cronjobs/{name}/status"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -50137,7 +50137,7 @@ func (c *Client) sendReadBatchV1NamespacedJob(ctx context.Context, params ReadBa
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readBatchV1NamespacedJob"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/batch/v1/namespaces/{namespace}/jobs/{name}"),
+		semconv.URLTemplateKey.String("/apis/batch/v1/namespaces/{namespace}/jobs/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -50301,7 +50301,7 @@ func (c *Client) sendReadBatchV1NamespacedJobStatus(ctx context.Context, params 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readBatchV1NamespacedJobStatus"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/batch/v1/namespaces/{namespace}/jobs/{name}/status"),
+		semconv.URLTemplateKey.String("/apis/batch/v1/namespaces/{namespace}/jobs/{name}/status"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -50466,7 +50466,7 @@ func (c *Client) sendReadBatchV1beta1NamespacedCronJob(ctx context.Context, para
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readBatchV1beta1NamespacedCronJob"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/batch/v1beta1/namespaces/{namespace}/cronjobs/{name}"),
+		semconv.URLTemplateKey.String("/apis/batch/v1beta1/namespaces/{namespace}/cronjobs/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -50630,7 +50630,7 @@ func (c *Client) sendReadBatchV1beta1NamespacedCronJobStatus(ctx context.Context
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readBatchV1beta1NamespacedCronJobStatus"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/batch/v1beta1/namespaces/{namespace}/cronjobs/{name}/status"),
+		semconv.URLTemplateKey.String("/apis/batch/v1beta1/namespaces/{namespace}/cronjobs/{name}/status"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -50795,7 +50795,7 @@ func (c *Client) sendReadCertificatesV1CertificateSigningRequest(ctx context.Con
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCertificatesV1CertificateSigningRequest"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/certificates.k8s.io/v1/certificatesigningrequests/{name}"),
+		semconv.URLTemplateKey.String("/apis/certificates.k8s.io/v1/certificatesigningrequests/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -50940,7 +50940,7 @@ func (c *Client) sendReadCertificatesV1CertificateSigningRequestApproval(ctx con
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCertificatesV1CertificateSigningRequestApproval"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/certificates.k8s.io/v1/certificatesigningrequests/{name}/approval"),
+		semconv.URLTemplateKey.String("/apis/certificates.k8s.io/v1/certificatesigningrequests/{name}/approval"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -51086,7 +51086,7 @@ func (c *Client) sendReadCertificatesV1CertificateSigningRequestStatus(ctx conte
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCertificatesV1CertificateSigningRequestStatus"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/certificates.k8s.io/v1/certificatesigningrequests/{name}/status"),
+		semconv.URLTemplateKey.String("/apis/certificates.k8s.io/v1/certificatesigningrequests/{name}/status"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -51232,7 +51232,7 @@ func (c *Client) sendReadCoordinationV1NamespacedLease(ctx context.Context, para
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoordinationV1NamespacedLease"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/coordination.k8s.io/v1/namespaces/{namespace}/leases/{name}"),
+		semconv.URLTemplateKey.String("/apis/coordination.k8s.io/v1/namespaces/{namespace}/leases/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -51396,7 +51396,7 @@ func (c *Client) sendReadCoreV1ComponentStatus(ctx context.Context, params ReadC
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1ComponentStatus"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/componentstatuses/{name}"),
+		semconv.URLTemplateKey.String("/api/v1/componentstatuses/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -51541,7 +51541,7 @@ func (c *Client) sendReadCoreV1Namespace(ctx context.Context, params ReadCoreV1N
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1Namespace"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/namespaces/{name}"),
+		semconv.URLTemplateKey.String("/api/v1/namespaces/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -51686,7 +51686,7 @@ func (c *Client) sendReadCoreV1NamespaceStatus(ctx context.Context, params ReadC
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1NamespaceStatus"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/namespaces/{name}/status"),
+		semconv.URLTemplateKey.String("/api/v1/namespaces/{name}/status"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -51832,7 +51832,7 @@ func (c *Client) sendReadCoreV1NamespacedConfigMap(ctx context.Context, params R
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1NamespacedConfigMap"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/configmaps/{name}"),
+		semconv.URLTemplateKey.String("/api/v1/namespaces/{namespace}/configmaps/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -51996,7 +51996,7 @@ func (c *Client) sendReadCoreV1NamespacedEndpoints(ctx context.Context, params R
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1NamespacedEndpoints"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/endpoints/{name}"),
+		semconv.URLTemplateKey.String("/api/v1/namespaces/{namespace}/endpoints/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -52160,7 +52160,7 @@ func (c *Client) sendReadCoreV1NamespacedEvent(ctx context.Context, params ReadC
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1NamespacedEvent"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/events/{name}"),
+		semconv.URLTemplateKey.String("/api/v1/namespaces/{namespace}/events/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -52324,7 +52324,7 @@ func (c *Client) sendReadCoreV1NamespacedLimitRange(ctx context.Context, params 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1NamespacedLimitRange"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/limitranges/{name}"),
+		semconv.URLTemplateKey.String("/api/v1/namespaces/{namespace}/limitranges/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -52488,7 +52488,7 @@ func (c *Client) sendReadCoreV1NamespacedPersistentVolumeClaim(ctx context.Conte
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1NamespacedPersistentVolumeClaim"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}"),
+		semconv.URLTemplateKey.String("/api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -52652,7 +52652,7 @@ func (c *Client) sendReadCoreV1NamespacedPersistentVolumeClaimStatus(ctx context
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1NamespacedPersistentVolumeClaimStatus"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}/status"),
+		semconv.URLTemplateKey.String("/api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}/status"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -52817,7 +52817,7 @@ func (c *Client) sendReadCoreV1NamespacedPod(ctx context.Context, params ReadCor
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1NamespacedPod"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}"),
+		semconv.URLTemplateKey.String("/api/v1/namespaces/{namespace}/pods/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -52981,7 +52981,7 @@ func (c *Client) sendReadCoreV1NamespacedPodEphemeralcontainers(ctx context.Cont
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1NamespacedPodEphemeralcontainers"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/ephemeralcontainers"),
+		semconv.URLTemplateKey.String("/api/v1/namespaces/{namespace}/pods/{name}/ephemeralcontainers"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -53146,7 +53146,7 @@ func (c *Client) sendReadCoreV1NamespacedPodLog(ctx context.Context, params Read
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1NamespacedPodLog"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/log"),
+		semconv.URLTemplateKey.String("/api/v1/namespaces/{namespace}/pods/{name}/log"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -53447,7 +53447,7 @@ func (c *Client) sendReadCoreV1NamespacedPodStatus(ctx context.Context, params R
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1NamespacedPodStatus"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/status"),
+		semconv.URLTemplateKey.String("/api/v1/namespaces/{namespace}/pods/{name}/status"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -53612,7 +53612,7 @@ func (c *Client) sendReadCoreV1NamespacedPodTemplate(ctx context.Context, params
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1NamespacedPodTemplate"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/podtemplates/{name}"),
+		semconv.URLTemplateKey.String("/api/v1/namespaces/{namespace}/podtemplates/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -53776,7 +53776,7 @@ func (c *Client) sendReadCoreV1NamespacedReplicationController(ctx context.Conte
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1NamespacedReplicationController"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/replicationcontrollers/{name}"),
+		semconv.URLTemplateKey.String("/api/v1/namespaces/{namespace}/replicationcontrollers/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -53940,7 +53940,7 @@ func (c *Client) sendReadCoreV1NamespacedReplicationControllerScale(ctx context.
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1NamespacedReplicationControllerScale"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/replicationcontrollers/{name}/scale"),
+		semconv.URLTemplateKey.String("/api/v1/namespaces/{namespace}/replicationcontrollers/{name}/scale"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -54105,7 +54105,7 @@ func (c *Client) sendReadCoreV1NamespacedReplicationControllerStatus(ctx context
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1NamespacedReplicationControllerStatus"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/replicationcontrollers/{name}/status"),
+		semconv.URLTemplateKey.String("/api/v1/namespaces/{namespace}/replicationcontrollers/{name}/status"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -54270,7 +54270,7 @@ func (c *Client) sendReadCoreV1NamespacedResourceQuota(ctx context.Context, para
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1NamespacedResourceQuota"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/resourcequotas/{name}"),
+		semconv.URLTemplateKey.String("/api/v1/namespaces/{namespace}/resourcequotas/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -54434,7 +54434,7 @@ func (c *Client) sendReadCoreV1NamespacedResourceQuotaStatus(ctx context.Context
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1NamespacedResourceQuotaStatus"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/resourcequotas/{name}/status"),
+		semconv.URLTemplateKey.String("/api/v1/namespaces/{namespace}/resourcequotas/{name}/status"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -54599,7 +54599,7 @@ func (c *Client) sendReadCoreV1NamespacedSecret(ctx context.Context, params Read
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1NamespacedSecret"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/secrets/{name}"),
+		semconv.URLTemplateKey.String("/api/v1/namespaces/{namespace}/secrets/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -54763,7 +54763,7 @@ func (c *Client) sendReadCoreV1NamespacedService(ctx context.Context, params Rea
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1NamespacedService"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/services/{name}"),
+		semconv.URLTemplateKey.String("/api/v1/namespaces/{namespace}/services/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -54927,7 +54927,7 @@ func (c *Client) sendReadCoreV1NamespacedServiceAccount(ctx context.Context, par
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1NamespacedServiceAccount"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/serviceaccounts/{name}"),
+		semconv.URLTemplateKey.String("/api/v1/namespaces/{namespace}/serviceaccounts/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -55091,7 +55091,7 @@ func (c *Client) sendReadCoreV1NamespacedServiceStatus(ctx context.Context, para
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1NamespacedServiceStatus"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/services/{name}/status"),
+		semconv.URLTemplateKey.String("/api/v1/namespaces/{namespace}/services/{name}/status"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -55256,7 +55256,7 @@ func (c *Client) sendReadCoreV1Node(ctx context.Context, params ReadCoreV1NodePa
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1Node"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/nodes/{name}"),
+		semconv.URLTemplateKey.String("/api/v1/nodes/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -55401,7 +55401,7 @@ func (c *Client) sendReadCoreV1NodeStatus(ctx context.Context, params ReadCoreV1
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1NodeStatus"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/nodes/{name}/status"),
+		semconv.URLTemplateKey.String("/api/v1/nodes/{name}/status"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -55547,7 +55547,7 @@ func (c *Client) sendReadCoreV1PersistentVolume(ctx context.Context, params Read
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1PersistentVolume"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/persistentvolumes/{name}"),
+		semconv.URLTemplateKey.String("/api/v1/persistentvolumes/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -55692,7 +55692,7 @@ func (c *Client) sendReadCoreV1PersistentVolumeStatus(ctx context.Context, param
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readCoreV1PersistentVolumeStatus"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/persistentvolumes/{name}/status"),
+		semconv.URLTemplateKey.String("/api/v1/persistentvolumes/{name}/status"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -55838,7 +55838,7 @@ func (c *Client) sendReadDiscoveryV1NamespacedEndpointSlice(ctx context.Context,
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readDiscoveryV1NamespacedEndpointSlice"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/discovery.k8s.io/v1/namespaces/{namespace}/endpointslices/{name}"),
+		semconv.URLTemplateKey.String("/apis/discovery.k8s.io/v1/namespaces/{namespace}/endpointslices/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -56002,7 +56002,7 @@ func (c *Client) sendReadDiscoveryV1beta1NamespacedEndpointSlice(ctx context.Con
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readDiscoveryV1beta1NamespacedEndpointSlice"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/discovery.k8s.io/v1beta1/namespaces/{namespace}/endpointslices/{name}"),
+		semconv.URLTemplateKey.String("/apis/discovery.k8s.io/v1beta1/namespaces/{namespace}/endpointslices/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -56166,7 +56166,7 @@ func (c *Client) sendReadEventsV1NamespacedEvent(ctx context.Context, params Rea
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readEventsV1NamespacedEvent"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/events.k8s.io/v1/namespaces/{namespace}/events/{name}"),
+		semconv.URLTemplateKey.String("/apis/events.k8s.io/v1/namespaces/{namespace}/events/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -56330,7 +56330,7 @@ func (c *Client) sendReadEventsV1beta1NamespacedEvent(ctx context.Context, param
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readEventsV1beta1NamespacedEvent"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/events.k8s.io/v1beta1/namespaces/{namespace}/events/{name}"),
+		semconv.URLTemplateKey.String("/apis/events.k8s.io/v1beta1/namespaces/{namespace}/events/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -56494,7 +56494,7 @@ func (c *Client) sendReadFlowcontrolApiserverV1beta1FlowSchema(ctx context.Conte
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readFlowcontrolApiserverV1beta1FlowSchema"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas/{name}"),
+		semconv.URLTemplateKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -56639,7 +56639,7 @@ func (c *Client) sendReadFlowcontrolApiserverV1beta1FlowSchemaStatus(ctx context
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readFlowcontrolApiserverV1beta1FlowSchemaStatus"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas/{name}/status"),
+		semconv.URLTemplateKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas/{name}/status"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -56785,7 +56785,7 @@ func (c *Client) sendReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration(c
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readFlowcontrolApiserverV1beta1PriorityLevelConfiguration"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations/{name}"),
+		semconv.URLTemplateKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -56930,7 +56930,7 @@ func (c *Client) sendReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationSt
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations/{name}/status"),
+		semconv.URLTemplateKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations/{name}/status"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -57076,7 +57076,7 @@ func (c *Client) sendReadFlowcontrolApiserverV1beta2FlowSchema(ctx context.Conte
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readFlowcontrolApiserverV1beta2FlowSchema"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas/{name}"),
+		semconv.URLTemplateKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -57221,7 +57221,7 @@ func (c *Client) sendReadFlowcontrolApiserverV1beta2FlowSchemaStatus(ctx context
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readFlowcontrolApiserverV1beta2FlowSchemaStatus"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas/{name}/status"),
+		semconv.URLTemplateKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas/{name}/status"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -57367,7 +57367,7 @@ func (c *Client) sendReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration(c
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readFlowcontrolApiserverV1beta2PriorityLevelConfiguration"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations/{name}"),
+		semconv.URLTemplateKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -57512,7 +57512,7 @@ func (c *Client) sendReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationSt
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations/{name}/status"),
+		semconv.URLTemplateKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations/{name}/status"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -57658,7 +57658,7 @@ func (c *Client) sendReadInternalApiserverV1alpha1StorageVersion(ctx context.Con
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readInternalApiserverV1alpha1StorageVersion"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/internal.apiserver.k8s.io/v1alpha1/storageversions/{name}"),
+		semconv.URLTemplateKey.String("/apis/internal.apiserver.k8s.io/v1alpha1/storageversions/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -57803,7 +57803,7 @@ func (c *Client) sendReadInternalApiserverV1alpha1StorageVersionStatus(ctx conte
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readInternalApiserverV1alpha1StorageVersionStatus"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/internal.apiserver.k8s.io/v1alpha1/storageversions/{name}/status"),
+		semconv.URLTemplateKey.String("/apis/internal.apiserver.k8s.io/v1alpha1/storageversions/{name}/status"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -57949,7 +57949,7 @@ func (c *Client) sendReadNetworkingV1IngressClass(ctx context.Context, params Re
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readNetworkingV1IngressClass"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/ingressclasses/{name}"),
+		semconv.URLTemplateKey.String("/apis/networking.k8s.io/v1/ingressclasses/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -58094,7 +58094,7 @@ func (c *Client) sendReadNetworkingV1NamespacedIngress(ctx context.Context, para
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readNetworkingV1NamespacedIngress"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses/{name}"),
+		semconv.URLTemplateKey.String("/apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -58258,7 +58258,7 @@ func (c *Client) sendReadNetworkingV1NamespacedIngressStatus(ctx context.Context
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readNetworkingV1NamespacedIngressStatus"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses/{name}/status"),
+		semconv.URLTemplateKey.String("/apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses/{name}/status"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -58423,7 +58423,7 @@ func (c *Client) sendReadNetworkingV1NamespacedNetworkPolicy(ctx context.Context
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readNetworkingV1NamespacedNetworkPolicy"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/namespaces/{namespace}/networkpolicies/{name}"),
+		semconv.URLTemplateKey.String("/apis/networking.k8s.io/v1/namespaces/{namespace}/networkpolicies/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -58587,7 +58587,7 @@ func (c *Client) sendReadNodeV1RuntimeClass(ctx context.Context, params ReadNode
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readNodeV1RuntimeClass"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/node.k8s.io/v1/runtimeclasses/{name}"),
+		semconv.URLTemplateKey.String("/apis/node.k8s.io/v1/runtimeclasses/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -58732,7 +58732,7 @@ func (c *Client) sendReadNodeV1alpha1RuntimeClass(ctx context.Context, params Re
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readNodeV1alpha1RuntimeClass"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/node.k8s.io/v1alpha1/runtimeclasses/{name}"),
+		semconv.URLTemplateKey.String("/apis/node.k8s.io/v1alpha1/runtimeclasses/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -58877,7 +58877,7 @@ func (c *Client) sendReadNodeV1beta1RuntimeClass(ctx context.Context, params Rea
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readNodeV1beta1RuntimeClass"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/node.k8s.io/v1beta1/runtimeclasses/{name}"),
+		semconv.URLTemplateKey.String("/apis/node.k8s.io/v1beta1/runtimeclasses/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -59022,7 +59022,7 @@ func (c *Client) sendReadPolicyV1NamespacedPodDisruptionBudget(ctx context.Conte
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readPolicyV1NamespacedPodDisruptionBudget"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets/{name}"),
+		semconv.URLTemplateKey.String("/apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -59186,7 +59186,7 @@ func (c *Client) sendReadPolicyV1NamespacedPodDisruptionBudgetStatus(ctx context
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readPolicyV1NamespacedPodDisruptionBudgetStatus"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets/{name}/status"),
+		semconv.URLTemplateKey.String("/apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets/{name}/status"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -59351,7 +59351,7 @@ func (c *Client) sendReadPolicyV1beta1NamespacedPodDisruptionBudget(ctx context.
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readPolicyV1beta1NamespacedPodDisruptionBudget"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets/{name}"),
+		semconv.URLTemplateKey.String("/apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -59515,7 +59515,7 @@ func (c *Client) sendReadPolicyV1beta1NamespacedPodDisruptionBudgetStatus(ctx co
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readPolicyV1beta1NamespacedPodDisruptionBudgetStatus"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets/{name}/status"),
+		semconv.URLTemplateKey.String("/apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets/{name}/status"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -59680,7 +59680,7 @@ func (c *Client) sendReadPolicyV1beta1PodSecurityPolicy(ctx context.Context, par
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readPolicyV1beta1PodSecurityPolicy"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/policy/v1beta1/podsecuritypolicies/{name}"),
+		semconv.URLTemplateKey.String("/apis/policy/v1beta1/podsecuritypolicies/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -59825,7 +59825,7 @@ func (c *Client) sendReadRbacAuthorizationV1ClusterRole(ctx context.Context, par
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readRbacAuthorizationV1ClusterRole"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/clusterroles/{name}"),
+		semconv.URLTemplateKey.String("/apis/rbac.authorization.k8s.io/v1/clusterroles/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -59970,7 +59970,7 @@ func (c *Client) sendReadRbacAuthorizationV1ClusterRoleBinding(ctx context.Conte
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readRbacAuthorizationV1ClusterRoleBinding"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/clusterrolebindings/{name}"),
+		semconv.URLTemplateKey.String("/apis/rbac.authorization.k8s.io/v1/clusterrolebindings/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -60115,7 +60115,7 @@ func (c *Client) sendReadRbacAuthorizationV1NamespacedRole(ctx context.Context, 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readRbacAuthorizationV1NamespacedRole"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/roles/{name}"),
+		semconv.URLTemplateKey.String("/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/roles/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -60279,7 +60279,7 @@ func (c *Client) sendReadRbacAuthorizationV1NamespacedRoleBinding(ctx context.Co
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readRbacAuthorizationV1NamespacedRoleBinding"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/rolebindings/{name}"),
+		semconv.URLTemplateKey.String("/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/rolebindings/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -60443,7 +60443,7 @@ func (c *Client) sendReadSchedulingV1PriorityClass(ctx context.Context, params R
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readSchedulingV1PriorityClass"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/scheduling.k8s.io/v1/priorityclasses/{name}"),
+		semconv.URLTemplateKey.String("/apis/scheduling.k8s.io/v1/priorityclasses/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -60588,7 +60588,7 @@ func (c *Client) sendReadStorageV1CSIDriver(ctx context.Context, params ReadStor
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readStorageV1CSIDriver"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/csidrivers/{name}"),
+		semconv.URLTemplateKey.String("/apis/storage.k8s.io/v1/csidrivers/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -60733,7 +60733,7 @@ func (c *Client) sendReadStorageV1CSINode(ctx context.Context, params ReadStorag
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readStorageV1CSINode"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/csinodes/{name}"),
+		semconv.URLTemplateKey.String("/apis/storage.k8s.io/v1/csinodes/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -60878,7 +60878,7 @@ func (c *Client) sendReadStorageV1StorageClass(ctx context.Context, params ReadS
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readStorageV1StorageClass"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/storageclasses/{name}"),
+		semconv.URLTemplateKey.String("/apis/storage.k8s.io/v1/storageclasses/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -61023,7 +61023,7 @@ func (c *Client) sendReadStorageV1VolumeAttachment(ctx context.Context, params R
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readStorageV1VolumeAttachment"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/volumeattachments/{name}"),
+		semconv.URLTemplateKey.String("/apis/storage.k8s.io/v1/volumeattachments/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -61168,7 +61168,7 @@ func (c *Client) sendReadStorageV1VolumeAttachmentStatus(ctx context.Context, pa
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readStorageV1VolumeAttachmentStatus"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/volumeattachments/{name}/status"),
+		semconv.URLTemplateKey.String("/apis/storage.k8s.io/v1/volumeattachments/{name}/status"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -61314,7 +61314,7 @@ func (c *Client) sendReadStorageV1alpha1NamespacedCSIStorageCapacity(ctx context
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readStorageV1alpha1NamespacedCSIStorageCapacity"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1alpha1/namespaces/{namespace}/csistoragecapacities/{name}"),
+		semconv.URLTemplateKey.String("/apis/storage.k8s.io/v1alpha1/namespaces/{namespace}/csistoragecapacities/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -61478,7 +61478,7 @@ func (c *Client) sendReadStorageV1beta1NamespacedCSIStorageCapacity(ctx context.
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readStorageV1beta1NamespacedCSIStorageCapacity"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1beta1/namespaces/{namespace}/csistoragecapacities/{name}"),
+		semconv.URLTemplateKey.String("/apis/storage.k8s.io/v1beta1/namespaces/{namespace}/csistoragecapacities/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -61644,7 +61644,7 @@ func (c *Client) sendWatchAdmissionregistrationV1MutatingWebhookConfiguration(ct
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAdmissionregistrationV1MutatingWebhookConfiguration"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/admissionregistration.k8s.io/v1/watch/mutatingwebhookconfigurations/{name}"),
+		semconv.URLTemplateKey.String("/apis/admissionregistration.k8s.io/v1/watch/mutatingwebhookconfigurations/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -61943,7 +61943,7 @@ func (c *Client) sendWatchAdmissionregistrationV1MutatingWebhookConfigurationLis
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAdmissionregistrationV1MutatingWebhookConfigurationList"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/admissionregistration.k8s.io/v1/watch/mutatingwebhookconfigurations"),
+		semconv.URLTemplateKey.String("/apis/admissionregistration.k8s.io/v1/watch/mutatingwebhookconfigurations"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -62225,7 +62225,7 @@ func (c *Client) sendWatchAdmissionregistrationV1ValidatingWebhookConfiguration(
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAdmissionregistrationV1ValidatingWebhookConfiguration"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/admissionregistration.k8s.io/v1/watch/validatingwebhookconfigurations/{name}"),
+		semconv.URLTemplateKey.String("/apis/admissionregistration.k8s.io/v1/watch/validatingwebhookconfigurations/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -62524,7 +62524,7 @@ func (c *Client) sendWatchAdmissionregistrationV1ValidatingWebhookConfigurationL
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAdmissionregistrationV1ValidatingWebhookConfigurationList"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/admissionregistration.k8s.io/v1/watch/validatingwebhookconfigurations"),
+		semconv.URLTemplateKey.String("/apis/admissionregistration.k8s.io/v1/watch/validatingwebhookconfigurations"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -62805,7 +62805,7 @@ func (c *Client) sendWatchApiextensionsV1CustomResourceDefinition(ctx context.Co
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchApiextensionsV1CustomResourceDefinition"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/apiextensions.k8s.io/v1/watch/customresourcedefinitions/{name}"),
+		semconv.URLTemplateKey.String("/apis/apiextensions.k8s.io/v1/watch/customresourcedefinitions/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -63104,7 +63104,7 @@ func (c *Client) sendWatchApiextensionsV1CustomResourceDefinitionList(ctx contex
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchApiextensionsV1CustomResourceDefinitionList"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/apiextensions.k8s.io/v1/watch/customresourcedefinitions"),
+		semconv.URLTemplateKey.String("/apis/apiextensions.k8s.io/v1/watch/customresourcedefinitions"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -63385,7 +63385,7 @@ func (c *Client) sendWatchApiregistrationV1APIService(ctx context.Context, param
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchApiregistrationV1APIService"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/apiregistration.k8s.io/v1/watch/apiservices/{name}"),
+		semconv.URLTemplateKey.String("/apis/apiregistration.k8s.io/v1/watch/apiservices/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -63684,7 +63684,7 @@ func (c *Client) sendWatchApiregistrationV1APIServiceList(ctx context.Context, p
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchApiregistrationV1APIServiceList"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/apiregistration.k8s.io/v1/watch/apiservices"),
+		semconv.URLTemplateKey.String("/apis/apiregistration.k8s.io/v1/watch/apiservices"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -63965,7 +63965,7 @@ func (c *Client) sendWatchAppsV1ControllerRevisionListForAllNamespaces(ctx conte
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAppsV1ControllerRevisionListForAllNamespaces"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/apps/v1/watch/controllerrevisions"),
+		semconv.URLTemplateKey.String("/apis/apps/v1/watch/controllerrevisions"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -64246,7 +64246,7 @@ func (c *Client) sendWatchAppsV1DaemonSetListForAllNamespaces(ctx context.Contex
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAppsV1DaemonSetListForAllNamespaces"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/apps/v1/watch/daemonsets"),
+		semconv.URLTemplateKey.String("/apis/apps/v1/watch/daemonsets"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -64527,7 +64527,7 @@ func (c *Client) sendWatchAppsV1DeploymentListForAllNamespaces(ctx context.Conte
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAppsV1DeploymentListForAllNamespaces"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/apps/v1/watch/deployments"),
+		semconv.URLTemplateKey.String("/apis/apps/v1/watch/deployments"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -64808,7 +64808,7 @@ func (c *Client) sendWatchAppsV1NamespacedControllerRevision(ctx context.Context
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAppsV1NamespacedControllerRevision"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/apps/v1/watch/namespaces/{namespace}/controllerrevisions/{name}"),
+		semconv.URLTemplateKey.String("/apis/apps/v1/watch/namespaces/{namespace}/controllerrevisions/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -65126,7 +65126,7 @@ func (c *Client) sendWatchAppsV1NamespacedControllerRevisionList(ctx context.Con
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAppsV1NamespacedControllerRevisionList"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/apps/v1/watch/namespaces/{namespace}/controllerrevisions"),
+		semconv.URLTemplateKey.String("/apis/apps/v1/watch/namespaces/{namespace}/controllerrevisions"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -65426,7 +65426,7 @@ func (c *Client) sendWatchAppsV1NamespacedDaemonSet(ctx context.Context, params 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAppsV1NamespacedDaemonSet"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/apps/v1/watch/namespaces/{namespace}/daemonsets/{name}"),
+		semconv.URLTemplateKey.String("/apis/apps/v1/watch/namespaces/{namespace}/daemonsets/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -65744,7 +65744,7 @@ func (c *Client) sendWatchAppsV1NamespacedDaemonSetList(ctx context.Context, par
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAppsV1NamespacedDaemonSetList"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/apps/v1/watch/namespaces/{namespace}/daemonsets"),
+		semconv.URLTemplateKey.String("/apis/apps/v1/watch/namespaces/{namespace}/daemonsets"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -66044,7 +66044,7 @@ func (c *Client) sendWatchAppsV1NamespacedDeployment(ctx context.Context, params
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAppsV1NamespacedDeployment"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/apps/v1/watch/namespaces/{namespace}/deployments/{name}"),
+		semconv.URLTemplateKey.String("/apis/apps/v1/watch/namespaces/{namespace}/deployments/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -66362,7 +66362,7 @@ func (c *Client) sendWatchAppsV1NamespacedDeploymentList(ctx context.Context, pa
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAppsV1NamespacedDeploymentList"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/apps/v1/watch/namespaces/{namespace}/deployments"),
+		semconv.URLTemplateKey.String("/apis/apps/v1/watch/namespaces/{namespace}/deployments"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -66662,7 +66662,7 @@ func (c *Client) sendWatchAppsV1NamespacedReplicaSet(ctx context.Context, params
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAppsV1NamespacedReplicaSet"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/apps/v1/watch/namespaces/{namespace}/replicasets/{name}"),
+		semconv.URLTemplateKey.String("/apis/apps/v1/watch/namespaces/{namespace}/replicasets/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -66980,7 +66980,7 @@ func (c *Client) sendWatchAppsV1NamespacedReplicaSetList(ctx context.Context, pa
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAppsV1NamespacedReplicaSetList"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/apps/v1/watch/namespaces/{namespace}/replicasets"),
+		semconv.URLTemplateKey.String("/apis/apps/v1/watch/namespaces/{namespace}/replicasets"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -67280,7 +67280,7 @@ func (c *Client) sendWatchAppsV1NamespacedStatefulSet(ctx context.Context, param
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAppsV1NamespacedStatefulSet"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/apps/v1/watch/namespaces/{namespace}/statefulsets/{name}"),
+		semconv.URLTemplateKey.String("/apis/apps/v1/watch/namespaces/{namespace}/statefulsets/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -67598,7 +67598,7 @@ func (c *Client) sendWatchAppsV1NamespacedStatefulSetList(ctx context.Context, p
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAppsV1NamespacedStatefulSetList"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/apps/v1/watch/namespaces/{namespace}/statefulsets"),
+		semconv.URLTemplateKey.String("/apis/apps/v1/watch/namespaces/{namespace}/statefulsets"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -67898,7 +67898,7 @@ func (c *Client) sendWatchAppsV1ReplicaSetListForAllNamespaces(ctx context.Conte
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAppsV1ReplicaSetListForAllNamespaces"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/apps/v1/watch/replicasets"),
+		semconv.URLTemplateKey.String("/apis/apps/v1/watch/replicasets"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -68179,7 +68179,7 @@ func (c *Client) sendWatchAppsV1StatefulSetListForAllNamespaces(ctx context.Cont
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAppsV1StatefulSetListForAllNamespaces"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/apps/v1/watch/statefulsets"),
+		semconv.URLTemplateKey.String("/apis/apps/v1/watch/statefulsets"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -68460,7 +68460,7 @@ func (c *Client) sendWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespac
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/autoscaling/v1/watch/horizontalpodautoscalers"),
+		semconv.URLTemplateKey.String("/apis/autoscaling/v1/watch/horizontalpodautoscalers"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -68741,7 +68741,7 @@ func (c *Client) sendWatchAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx con
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAutoscalingV1NamespacedHorizontalPodAutoscaler"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/autoscaling/v1/watch/namespaces/{namespace}/horizontalpodautoscalers/{name}"),
+		semconv.URLTemplateKey.String("/apis/autoscaling/v1/watch/namespaces/{namespace}/horizontalpodautoscalers/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -69059,7 +69059,7 @@ func (c *Client) sendWatchAutoscalingV1NamespacedHorizontalPodAutoscalerList(ctx
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAutoscalingV1NamespacedHorizontalPodAutoscalerList"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/autoscaling/v1/watch/namespaces/{namespace}/horizontalpodautoscalers"),
+		semconv.URLTemplateKey.String("/apis/autoscaling/v1/watch/namespaces/{namespace}/horizontalpodautoscalers"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -69359,7 +69359,7 @@ func (c *Client) sendWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNam
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/autoscaling/v2beta1/watch/horizontalpodautoscalers"),
+		semconv.URLTemplateKey.String("/apis/autoscaling/v2beta1/watch/horizontalpodautoscalers"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -69640,7 +69640,7 @@ func (c *Client) sendWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ct
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/autoscaling/v2beta1/watch/namespaces/{namespace}/horizontalpodautoscalers/{name}"),
+		semconv.URLTemplateKey.String("/apis/autoscaling/v2beta1/watch/namespaces/{namespace}/horizontalpodautoscalers/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -69958,7 +69958,7 @@ func (c *Client) sendWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerLis
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/autoscaling/v2beta1/watch/namespaces/{namespace}/horizontalpodautoscalers"),
+		semconv.URLTemplateKey.String("/apis/autoscaling/v2beta1/watch/namespaces/{namespace}/horizontalpodautoscalers"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -70258,7 +70258,7 @@ func (c *Client) sendWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNam
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/autoscaling/v2beta2/watch/horizontalpodautoscalers"),
+		semconv.URLTemplateKey.String("/apis/autoscaling/v2beta2/watch/horizontalpodautoscalers"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -70539,7 +70539,7 @@ func (c *Client) sendWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ct
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/autoscaling/v2beta2/watch/namespaces/{namespace}/horizontalpodautoscalers/{name}"),
+		semconv.URLTemplateKey.String("/apis/autoscaling/v2beta2/watch/namespaces/{namespace}/horizontalpodautoscalers/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -70857,7 +70857,7 @@ func (c *Client) sendWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerLis
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/autoscaling/v2beta2/watch/namespaces/{namespace}/horizontalpodautoscalers"),
+		semconv.URLTemplateKey.String("/apis/autoscaling/v2beta2/watch/namespaces/{namespace}/horizontalpodautoscalers"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -71157,7 +71157,7 @@ func (c *Client) sendWatchBatchV1CronJobListForAllNamespaces(ctx context.Context
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchBatchV1CronJobListForAllNamespaces"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/batch/v1/watch/cronjobs"),
+		semconv.URLTemplateKey.String("/apis/batch/v1/watch/cronjobs"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -71438,7 +71438,7 @@ func (c *Client) sendWatchBatchV1JobListForAllNamespaces(ctx context.Context, pa
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchBatchV1JobListForAllNamespaces"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/batch/v1/watch/jobs"),
+		semconv.URLTemplateKey.String("/apis/batch/v1/watch/jobs"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -71719,7 +71719,7 @@ func (c *Client) sendWatchBatchV1NamespacedCronJob(ctx context.Context, params W
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchBatchV1NamespacedCronJob"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/batch/v1/watch/namespaces/{namespace}/cronjobs/{name}"),
+		semconv.URLTemplateKey.String("/apis/batch/v1/watch/namespaces/{namespace}/cronjobs/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -72037,7 +72037,7 @@ func (c *Client) sendWatchBatchV1NamespacedCronJobList(ctx context.Context, para
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchBatchV1NamespacedCronJobList"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/batch/v1/watch/namespaces/{namespace}/cronjobs"),
+		semconv.URLTemplateKey.String("/apis/batch/v1/watch/namespaces/{namespace}/cronjobs"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -72337,7 +72337,7 @@ func (c *Client) sendWatchBatchV1NamespacedJob(ctx context.Context, params Watch
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchBatchV1NamespacedJob"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/batch/v1/watch/namespaces/{namespace}/jobs/{name}"),
+		semconv.URLTemplateKey.String("/apis/batch/v1/watch/namespaces/{namespace}/jobs/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -72655,7 +72655,7 @@ func (c *Client) sendWatchBatchV1NamespacedJobList(ctx context.Context, params W
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchBatchV1NamespacedJobList"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/batch/v1/watch/namespaces/{namespace}/jobs"),
+		semconv.URLTemplateKey.String("/apis/batch/v1/watch/namespaces/{namespace}/jobs"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -72955,7 +72955,7 @@ func (c *Client) sendWatchBatchV1beta1CronJobListForAllNamespaces(ctx context.Co
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchBatchV1beta1CronJobListForAllNamespaces"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/batch/v1beta1/watch/cronjobs"),
+		semconv.URLTemplateKey.String("/apis/batch/v1beta1/watch/cronjobs"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -73236,7 +73236,7 @@ func (c *Client) sendWatchBatchV1beta1NamespacedCronJob(ctx context.Context, par
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchBatchV1beta1NamespacedCronJob"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/batch/v1beta1/watch/namespaces/{namespace}/cronjobs/{name}"),
+		semconv.URLTemplateKey.String("/apis/batch/v1beta1/watch/namespaces/{namespace}/cronjobs/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -73554,7 +73554,7 @@ func (c *Client) sendWatchBatchV1beta1NamespacedCronJobList(ctx context.Context,
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchBatchV1beta1NamespacedCronJobList"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/batch/v1beta1/watch/namespaces/{namespace}/cronjobs"),
+		semconv.URLTemplateKey.String("/apis/batch/v1beta1/watch/namespaces/{namespace}/cronjobs"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -73855,7 +73855,7 @@ func (c *Client) sendWatchCertificatesV1CertificateSigningRequest(ctx context.Co
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCertificatesV1CertificateSigningRequest"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/certificates.k8s.io/v1/watch/certificatesigningrequests/{name}"),
+		semconv.URLTemplateKey.String("/apis/certificates.k8s.io/v1/watch/certificatesigningrequests/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -74154,7 +74154,7 @@ func (c *Client) sendWatchCertificatesV1CertificateSigningRequestList(ctx contex
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCertificatesV1CertificateSigningRequestList"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/certificates.k8s.io/v1/watch/certificatesigningrequests"),
+		semconv.URLTemplateKey.String("/apis/certificates.k8s.io/v1/watch/certificatesigningrequests"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -74435,7 +74435,7 @@ func (c *Client) sendWatchCoordinationV1LeaseListForAllNamespaces(ctx context.Co
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoordinationV1LeaseListForAllNamespaces"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/coordination.k8s.io/v1/watch/leases"),
+		semconv.URLTemplateKey.String("/apis/coordination.k8s.io/v1/watch/leases"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -74716,7 +74716,7 @@ func (c *Client) sendWatchCoordinationV1NamespacedLease(ctx context.Context, par
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoordinationV1NamespacedLease"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/coordination.k8s.io/v1/watch/namespaces/{namespace}/leases/{name}"),
+		semconv.URLTemplateKey.String("/apis/coordination.k8s.io/v1/watch/namespaces/{namespace}/leases/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -75034,7 +75034,7 @@ func (c *Client) sendWatchCoordinationV1NamespacedLeaseList(ctx context.Context,
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoordinationV1NamespacedLeaseList"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/coordination.k8s.io/v1/watch/namespaces/{namespace}/leases"),
+		semconv.URLTemplateKey.String("/apis/coordination.k8s.io/v1/watch/namespaces/{namespace}/leases"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -75334,7 +75334,7 @@ func (c *Client) sendWatchCoreV1ConfigMapListForAllNamespaces(ctx context.Contex
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1ConfigMapListForAllNamespaces"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/watch/configmaps"),
+		semconv.URLTemplateKey.String("/api/v1/watch/configmaps"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -75615,7 +75615,7 @@ func (c *Client) sendWatchCoreV1EndpointsListForAllNamespaces(ctx context.Contex
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1EndpointsListForAllNamespaces"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/watch/endpoints"),
+		semconv.URLTemplateKey.String("/api/v1/watch/endpoints"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -75896,7 +75896,7 @@ func (c *Client) sendWatchCoreV1EventListForAllNamespaces(ctx context.Context, p
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1EventListForAllNamespaces"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/watch/events"),
+		semconv.URLTemplateKey.String("/api/v1/watch/events"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -76177,7 +76177,7 @@ func (c *Client) sendWatchCoreV1LimitRangeListForAllNamespaces(ctx context.Conte
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1LimitRangeListForAllNamespaces"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/watch/limitranges"),
+		semconv.URLTemplateKey.String("/api/v1/watch/limitranges"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -76458,7 +76458,7 @@ func (c *Client) sendWatchCoreV1Namespace(ctx context.Context, params WatchCoreV
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1Namespace"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{name}"),
+		semconv.URLTemplateKey.String("/api/v1/watch/namespaces/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -76757,7 +76757,7 @@ func (c *Client) sendWatchCoreV1NamespaceList(ctx context.Context, params WatchC
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespaceList"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces"),
+		semconv.URLTemplateKey.String("/api/v1/watch/namespaces"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -77038,7 +77038,7 @@ func (c *Client) sendWatchCoreV1NamespacedConfigMap(ctx context.Context, params 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedConfigMap"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/configmaps/{name}"),
+		semconv.URLTemplateKey.String("/api/v1/watch/namespaces/{namespace}/configmaps/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -77356,7 +77356,7 @@ func (c *Client) sendWatchCoreV1NamespacedConfigMapList(ctx context.Context, par
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedConfigMapList"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/configmaps"),
+		semconv.URLTemplateKey.String("/api/v1/watch/namespaces/{namespace}/configmaps"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -77656,7 +77656,7 @@ func (c *Client) sendWatchCoreV1NamespacedEndpoints(ctx context.Context, params 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedEndpoints"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/endpoints/{name}"),
+		semconv.URLTemplateKey.String("/api/v1/watch/namespaces/{namespace}/endpoints/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -77974,7 +77974,7 @@ func (c *Client) sendWatchCoreV1NamespacedEndpointsList(ctx context.Context, par
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedEndpointsList"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/endpoints"),
+		semconv.URLTemplateKey.String("/api/v1/watch/namespaces/{namespace}/endpoints"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -78274,7 +78274,7 @@ func (c *Client) sendWatchCoreV1NamespacedEvent(ctx context.Context, params Watc
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedEvent"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/events/{name}"),
+		semconv.URLTemplateKey.String("/api/v1/watch/namespaces/{namespace}/events/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -78592,7 +78592,7 @@ func (c *Client) sendWatchCoreV1NamespacedEventList(ctx context.Context, params 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedEventList"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/events"),
+		semconv.URLTemplateKey.String("/api/v1/watch/namespaces/{namespace}/events"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -78892,7 +78892,7 @@ func (c *Client) sendWatchCoreV1NamespacedLimitRange(ctx context.Context, params
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedLimitRange"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/limitranges/{name}"),
+		semconv.URLTemplateKey.String("/api/v1/watch/namespaces/{namespace}/limitranges/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -79210,7 +79210,7 @@ func (c *Client) sendWatchCoreV1NamespacedLimitRangeList(ctx context.Context, pa
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedLimitRangeList"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/limitranges"),
+		semconv.URLTemplateKey.String("/api/v1/watch/namespaces/{namespace}/limitranges"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -79510,7 +79510,7 @@ func (c *Client) sendWatchCoreV1NamespacedPersistentVolumeClaim(ctx context.Cont
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedPersistentVolumeClaim"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/persistentvolumeclaims/{name}"),
+		semconv.URLTemplateKey.String("/api/v1/watch/namespaces/{namespace}/persistentvolumeclaims/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -79828,7 +79828,7 @@ func (c *Client) sendWatchCoreV1NamespacedPersistentVolumeClaimList(ctx context.
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedPersistentVolumeClaimList"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/persistentvolumeclaims"),
+		semconv.URLTemplateKey.String("/api/v1/watch/namespaces/{namespace}/persistentvolumeclaims"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -80128,7 +80128,7 @@ func (c *Client) sendWatchCoreV1NamespacedPod(ctx context.Context, params WatchC
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedPod"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/pods/{name}"),
+		semconv.URLTemplateKey.String("/api/v1/watch/namespaces/{namespace}/pods/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -80446,7 +80446,7 @@ func (c *Client) sendWatchCoreV1NamespacedPodList(ctx context.Context, params Wa
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedPodList"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/pods"),
+		semconv.URLTemplateKey.String("/api/v1/watch/namespaces/{namespace}/pods"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -80746,7 +80746,7 @@ func (c *Client) sendWatchCoreV1NamespacedPodTemplate(ctx context.Context, param
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedPodTemplate"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/podtemplates/{name}"),
+		semconv.URLTemplateKey.String("/api/v1/watch/namespaces/{namespace}/podtemplates/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -81064,7 +81064,7 @@ func (c *Client) sendWatchCoreV1NamespacedPodTemplateList(ctx context.Context, p
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedPodTemplateList"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/podtemplates"),
+		semconv.URLTemplateKey.String("/api/v1/watch/namespaces/{namespace}/podtemplates"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -81364,7 +81364,7 @@ func (c *Client) sendWatchCoreV1NamespacedReplicationController(ctx context.Cont
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedReplicationController"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/replicationcontrollers/{name}"),
+		semconv.URLTemplateKey.String("/api/v1/watch/namespaces/{namespace}/replicationcontrollers/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -81682,7 +81682,7 @@ func (c *Client) sendWatchCoreV1NamespacedReplicationControllerList(ctx context.
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedReplicationControllerList"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/replicationcontrollers"),
+		semconv.URLTemplateKey.String("/api/v1/watch/namespaces/{namespace}/replicationcontrollers"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -81982,7 +81982,7 @@ func (c *Client) sendWatchCoreV1NamespacedResourceQuota(ctx context.Context, par
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedResourceQuota"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/resourcequotas/{name}"),
+		semconv.URLTemplateKey.String("/api/v1/watch/namespaces/{namespace}/resourcequotas/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -82300,7 +82300,7 @@ func (c *Client) sendWatchCoreV1NamespacedResourceQuotaList(ctx context.Context,
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedResourceQuotaList"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/resourcequotas"),
+		semconv.URLTemplateKey.String("/api/v1/watch/namespaces/{namespace}/resourcequotas"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -82600,7 +82600,7 @@ func (c *Client) sendWatchCoreV1NamespacedSecret(ctx context.Context, params Wat
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedSecret"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/secrets/{name}"),
+		semconv.URLTemplateKey.String("/api/v1/watch/namespaces/{namespace}/secrets/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -82918,7 +82918,7 @@ func (c *Client) sendWatchCoreV1NamespacedSecretList(ctx context.Context, params
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedSecretList"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/secrets"),
+		semconv.URLTemplateKey.String("/api/v1/watch/namespaces/{namespace}/secrets"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -83218,7 +83218,7 @@ func (c *Client) sendWatchCoreV1NamespacedService(ctx context.Context, params Wa
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedService"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/services/{name}"),
+		semconv.URLTemplateKey.String("/api/v1/watch/namespaces/{namespace}/services/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -83536,7 +83536,7 @@ func (c *Client) sendWatchCoreV1NamespacedServiceAccount(ctx context.Context, pa
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedServiceAccount"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/serviceaccounts/{name}"),
+		semconv.URLTemplateKey.String("/api/v1/watch/namespaces/{namespace}/serviceaccounts/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -83854,7 +83854,7 @@ func (c *Client) sendWatchCoreV1NamespacedServiceAccountList(ctx context.Context
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedServiceAccountList"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/serviceaccounts"),
+		semconv.URLTemplateKey.String("/api/v1/watch/namespaces/{namespace}/serviceaccounts"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -84154,7 +84154,7 @@ func (c *Client) sendWatchCoreV1NamespacedServiceList(ctx context.Context, param
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NamespacedServiceList"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/services"),
+		semconv.URLTemplateKey.String("/api/v1/watch/namespaces/{namespace}/services"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -84454,7 +84454,7 @@ func (c *Client) sendWatchCoreV1Node(ctx context.Context, params WatchCoreV1Node
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1Node"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/watch/nodes/{name}"),
+		semconv.URLTemplateKey.String("/api/v1/watch/nodes/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -84753,7 +84753,7 @@ func (c *Client) sendWatchCoreV1NodeList(ctx context.Context, params WatchCoreV1
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1NodeList"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/watch/nodes"),
+		semconv.URLTemplateKey.String("/api/v1/watch/nodes"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -85034,7 +85034,7 @@ func (c *Client) sendWatchCoreV1PersistentVolume(ctx context.Context, params Wat
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1PersistentVolume"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/watch/persistentvolumes/{name}"),
+		semconv.URLTemplateKey.String("/api/v1/watch/persistentvolumes/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -85333,7 +85333,7 @@ func (c *Client) sendWatchCoreV1PersistentVolumeClaimListForAllNamespaces(ctx co
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1PersistentVolumeClaimListForAllNamespaces"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/watch/persistentvolumeclaims"),
+		semconv.URLTemplateKey.String("/api/v1/watch/persistentvolumeclaims"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -85614,7 +85614,7 @@ func (c *Client) sendWatchCoreV1PersistentVolumeList(ctx context.Context, params
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1PersistentVolumeList"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/watch/persistentvolumes"),
+		semconv.URLTemplateKey.String("/api/v1/watch/persistentvolumes"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -85895,7 +85895,7 @@ func (c *Client) sendWatchCoreV1PodListForAllNamespaces(ctx context.Context, par
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1PodListForAllNamespaces"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/watch/pods"),
+		semconv.URLTemplateKey.String("/api/v1/watch/pods"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -86176,7 +86176,7 @@ func (c *Client) sendWatchCoreV1PodTemplateListForAllNamespaces(ctx context.Cont
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1PodTemplateListForAllNamespaces"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/watch/podtemplates"),
+		semconv.URLTemplateKey.String("/api/v1/watch/podtemplates"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -86457,7 +86457,7 @@ func (c *Client) sendWatchCoreV1ReplicationControllerListForAllNamespaces(ctx co
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1ReplicationControllerListForAllNamespaces"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/watch/replicationcontrollers"),
+		semconv.URLTemplateKey.String("/api/v1/watch/replicationcontrollers"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -86738,7 +86738,7 @@ func (c *Client) sendWatchCoreV1ResourceQuotaListForAllNamespaces(ctx context.Co
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1ResourceQuotaListForAllNamespaces"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/watch/resourcequotas"),
+		semconv.URLTemplateKey.String("/api/v1/watch/resourcequotas"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -87019,7 +87019,7 @@ func (c *Client) sendWatchCoreV1SecretListForAllNamespaces(ctx context.Context, 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1SecretListForAllNamespaces"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/watch/secrets"),
+		semconv.URLTemplateKey.String("/api/v1/watch/secrets"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -87300,7 +87300,7 @@ func (c *Client) sendWatchCoreV1ServiceAccountListForAllNamespaces(ctx context.C
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1ServiceAccountListForAllNamespaces"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/watch/serviceaccounts"),
+		semconv.URLTemplateKey.String("/api/v1/watch/serviceaccounts"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -87581,7 +87581,7 @@ func (c *Client) sendWatchCoreV1ServiceListForAllNamespaces(ctx context.Context,
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchCoreV1ServiceListForAllNamespaces"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/api/v1/watch/services"),
+		semconv.URLTemplateKey.String("/api/v1/watch/services"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -87862,7 +87862,7 @@ func (c *Client) sendWatchDiscoveryV1EndpointSliceListForAllNamespaces(ctx conte
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchDiscoveryV1EndpointSliceListForAllNamespaces"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/discovery.k8s.io/v1/watch/endpointslices"),
+		semconv.URLTemplateKey.String("/apis/discovery.k8s.io/v1/watch/endpointslices"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -88143,7 +88143,7 @@ func (c *Client) sendWatchDiscoveryV1NamespacedEndpointSlice(ctx context.Context
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchDiscoveryV1NamespacedEndpointSlice"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/discovery.k8s.io/v1/watch/namespaces/{namespace}/endpointslices/{name}"),
+		semconv.URLTemplateKey.String("/apis/discovery.k8s.io/v1/watch/namespaces/{namespace}/endpointslices/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -88461,7 +88461,7 @@ func (c *Client) sendWatchDiscoveryV1NamespacedEndpointSliceList(ctx context.Con
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchDiscoveryV1NamespacedEndpointSliceList"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/discovery.k8s.io/v1/watch/namespaces/{namespace}/endpointslices"),
+		semconv.URLTemplateKey.String("/apis/discovery.k8s.io/v1/watch/namespaces/{namespace}/endpointslices"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -88761,7 +88761,7 @@ func (c *Client) sendWatchDiscoveryV1beta1EndpointSliceListForAllNamespaces(ctx 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchDiscoveryV1beta1EndpointSliceListForAllNamespaces"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/discovery.k8s.io/v1beta1/watch/endpointslices"),
+		semconv.URLTemplateKey.String("/apis/discovery.k8s.io/v1beta1/watch/endpointslices"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -89042,7 +89042,7 @@ func (c *Client) sendWatchDiscoveryV1beta1NamespacedEndpointSlice(ctx context.Co
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchDiscoveryV1beta1NamespacedEndpointSlice"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/discovery.k8s.io/v1beta1/watch/namespaces/{namespace}/endpointslices/{name}"),
+		semconv.URLTemplateKey.String("/apis/discovery.k8s.io/v1beta1/watch/namespaces/{namespace}/endpointslices/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -89360,7 +89360,7 @@ func (c *Client) sendWatchDiscoveryV1beta1NamespacedEndpointSliceList(ctx contex
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchDiscoveryV1beta1NamespacedEndpointSliceList"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/discovery.k8s.io/v1beta1/watch/namespaces/{namespace}/endpointslices"),
+		semconv.URLTemplateKey.String("/apis/discovery.k8s.io/v1beta1/watch/namespaces/{namespace}/endpointslices"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -89660,7 +89660,7 @@ func (c *Client) sendWatchEventsV1EventListForAllNamespaces(ctx context.Context,
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchEventsV1EventListForAllNamespaces"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/events.k8s.io/v1/watch/events"),
+		semconv.URLTemplateKey.String("/apis/events.k8s.io/v1/watch/events"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -89941,7 +89941,7 @@ func (c *Client) sendWatchEventsV1NamespacedEvent(ctx context.Context, params Wa
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchEventsV1NamespacedEvent"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/events.k8s.io/v1/watch/namespaces/{namespace}/events/{name}"),
+		semconv.URLTemplateKey.String("/apis/events.k8s.io/v1/watch/namespaces/{namespace}/events/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -90259,7 +90259,7 @@ func (c *Client) sendWatchEventsV1NamespacedEventList(ctx context.Context, param
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchEventsV1NamespacedEventList"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/events.k8s.io/v1/watch/namespaces/{namespace}/events"),
+		semconv.URLTemplateKey.String("/apis/events.k8s.io/v1/watch/namespaces/{namespace}/events"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -90559,7 +90559,7 @@ func (c *Client) sendWatchEventsV1beta1EventListForAllNamespaces(ctx context.Con
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchEventsV1beta1EventListForAllNamespaces"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/events.k8s.io/v1beta1/watch/events"),
+		semconv.URLTemplateKey.String("/apis/events.k8s.io/v1beta1/watch/events"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -90840,7 +90840,7 @@ func (c *Client) sendWatchEventsV1beta1NamespacedEvent(ctx context.Context, para
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchEventsV1beta1NamespacedEvent"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/events.k8s.io/v1beta1/watch/namespaces/{namespace}/events/{name}"),
+		semconv.URLTemplateKey.String("/apis/events.k8s.io/v1beta1/watch/namespaces/{namespace}/events/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -91158,7 +91158,7 @@ func (c *Client) sendWatchEventsV1beta1NamespacedEventList(ctx context.Context, 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchEventsV1beta1NamespacedEventList"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/events.k8s.io/v1beta1/watch/namespaces/{namespace}/events"),
+		semconv.URLTemplateKey.String("/apis/events.k8s.io/v1beta1/watch/namespaces/{namespace}/events"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -91458,7 +91458,7 @@ func (c *Client) sendWatchFlowcontrolApiserverV1beta1FlowSchema(ctx context.Cont
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchFlowcontrolApiserverV1beta1FlowSchema"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/flowschemas/{name}"),
+		semconv.URLTemplateKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/flowschemas/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -91757,7 +91757,7 @@ func (c *Client) sendWatchFlowcontrolApiserverV1beta1FlowSchemaList(ctx context.
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchFlowcontrolApiserverV1beta1FlowSchemaList"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/flowschemas"),
+		semconv.URLTemplateKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/flowschemas"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -92039,7 +92039,7 @@ func (c *Client) sendWatchFlowcontrolApiserverV1beta1PriorityLevelConfiguration(
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchFlowcontrolApiserverV1beta1PriorityLevelConfiguration"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/prioritylevelconfigurations/{name}"),
+		semconv.URLTemplateKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/prioritylevelconfigurations/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -92338,7 +92338,7 @@ func (c *Client) sendWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationL
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/prioritylevelconfigurations"),
+		semconv.URLTemplateKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/prioritylevelconfigurations"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -92619,7 +92619,7 @@ func (c *Client) sendWatchFlowcontrolApiserverV1beta2FlowSchema(ctx context.Cont
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchFlowcontrolApiserverV1beta2FlowSchema"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/flowschemas/{name}"),
+		semconv.URLTemplateKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/flowschemas/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -92918,7 +92918,7 @@ func (c *Client) sendWatchFlowcontrolApiserverV1beta2FlowSchemaList(ctx context.
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchFlowcontrolApiserverV1beta2FlowSchemaList"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/flowschemas"),
+		semconv.URLTemplateKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/flowschemas"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -93200,7 +93200,7 @@ func (c *Client) sendWatchFlowcontrolApiserverV1beta2PriorityLevelConfiguration(
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchFlowcontrolApiserverV1beta2PriorityLevelConfiguration"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/prioritylevelconfigurations/{name}"),
+		semconv.URLTemplateKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/prioritylevelconfigurations/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -93499,7 +93499,7 @@ func (c *Client) sendWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationL
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/prioritylevelconfigurations"),
+		semconv.URLTemplateKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/prioritylevelconfigurations"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -93780,7 +93780,7 @@ func (c *Client) sendWatchInternalApiserverV1alpha1StorageVersion(ctx context.Co
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchInternalApiserverV1alpha1StorageVersion"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/internal.apiserver.k8s.io/v1alpha1/watch/storageversions/{name}"),
+		semconv.URLTemplateKey.String("/apis/internal.apiserver.k8s.io/v1alpha1/watch/storageversions/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -94079,7 +94079,7 @@ func (c *Client) sendWatchInternalApiserverV1alpha1StorageVersionList(ctx contex
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchInternalApiserverV1alpha1StorageVersionList"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/internal.apiserver.k8s.io/v1alpha1/watch/storageversions"),
+		semconv.URLTemplateKey.String("/apis/internal.apiserver.k8s.io/v1alpha1/watch/storageversions"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -94360,7 +94360,7 @@ func (c *Client) sendWatchNetworkingV1IngressClass(ctx context.Context, params W
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchNetworkingV1IngressClass"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/watch/ingressclasses/{name}"),
+		semconv.URLTemplateKey.String("/apis/networking.k8s.io/v1/watch/ingressclasses/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -94659,7 +94659,7 @@ func (c *Client) sendWatchNetworkingV1IngressClassList(ctx context.Context, para
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchNetworkingV1IngressClassList"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/watch/ingressclasses"),
+		semconv.URLTemplateKey.String("/apis/networking.k8s.io/v1/watch/ingressclasses"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -94940,7 +94940,7 @@ func (c *Client) sendWatchNetworkingV1IngressListForAllNamespaces(ctx context.Co
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchNetworkingV1IngressListForAllNamespaces"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/watch/ingresses"),
+		semconv.URLTemplateKey.String("/apis/networking.k8s.io/v1/watch/ingresses"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -95221,7 +95221,7 @@ func (c *Client) sendWatchNetworkingV1NamespacedIngress(ctx context.Context, par
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchNetworkingV1NamespacedIngress"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/watch/namespaces/{namespace}/ingresses/{name}"),
+		semconv.URLTemplateKey.String("/apis/networking.k8s.io/v1/watch/namespaces/{namespace}/ingresses/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -95539,7 +95539,7 @@ func (c *Client) sendWatchNetworkingV1NamespacedIngressList(ctx context.Context,
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchNetworkingV1NamespacedIngressList"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/watch/namespaces/{namespace}/ingresses"),
+		semconv.URLTemplateKey.String("/apis/networking.k8s.io/v1/watch/namespaces/{namespace}/ingresses"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -95839,7 +95839,7 @@ func (c *Client) sendWatchNetworkingV1NamespacedNetworkPolicy(ctx context.Contex
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchNetworkingV1NamespacedNetworkPolicy"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/watch/namespaces/{namespace}/networkpolicies/{name}"),
+		semconv.URLTemplateKey.String("/apis/networking.k8s.io/v1/watch/namespaces/{namespace}/networkpolicies/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -96157,7 +96157,7 @@ func (c *Client) sendWatchNetworkingV1NamespacedNetworkPolicyList(ctx context.Co
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchNetworkingV1NamespacedNetworkPolicyList"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/watch/namespaces/{namespace}/networkpolicies"),
+		semconv.URLTemplateKey.String("/apis/networking.k8s.io/v1/watch/namespaces/{namespace}/networkpolicies"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -96457,7 +96457,7 @@ func (c *Client) sendWatchNetworkingV1NetworkPolicyListForAllNamespaces(ctx cont
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchNetworkingV1NetworkPolicyListForAllNamespaces"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/watch/networkpolicies"),
+		semconv.URLTemplateKey.String("/apis/networking.k8s.io/v1/watch/networkpolicies"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -96738,7 +96738,7 @@ func (c *Client) sendWatchNodeV1RuntimeClass(ctx context.Context, params WatchNo
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchNodeV1RuntimeClass"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/node.k8s.io/v1/watch/runtimeclasses/{name}"),
+		semconv.URLTemplateKey.String("/apis/node.k8s.io/v1/watch/runtimeclasses/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -97037,7 +97037,7 @@ func (c *Client) sendWatchNodeV1RuntimeClassList(ctx context.Context, params Wat
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchNodeV1RuntimeClassList"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/node.k8s.io/v1/watch/runtimeclasses"),
+		semconv.URLTemplateKey.String("/apis/node.k8s.io/v1/watch/runtimeclasses"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -97318,7 +97318,7 @@ func (c *Client) sendWatchNodeV1alpha1RuntimeClass(ctx context.Context, params W
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchNodeV1alpha1RuntimeClass"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/node.k8s.io/v1alpha1/watch/runtimeclasses/{name}"),
+		semconv.URLTemplateKey.String("/apis/node.k8s.io/v1alpha1/watch/runtimeclasses/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -97617,7 +97617,7 @@ func (c *Client) sendWatchNodeV1alpha1RuntimeClassList(ctx context.Context, para
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchNodeV1alpha1RuntimeClassList"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/node.k8s.io/v1alpha1/watch/runtimeclasses"),
+		semconv.URLTemplateKey.String("/apis/node.k8s.io/v1alpha1/watch/runtimeclasses"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -97898,7 +97898,7 @@ func (c *Client) sendWatchNodeV1beta1RuntimeClass(ctx context.Context, params Wa
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchNodeV1beta1RuntimeClass"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/node.k8s.io/v1beta1/watch/runtimeclasses/{name}"),
+		semconv.URLTemplateKey.String("/apis/node.k8s.io/v1beta1/watch/runtimeclasses/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -98197,7 +98197,7 @@ func (c *Client) sendWatchNodeV1beta1RuntimeClassList(ctx context.Context, param
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchNodeV1beta1RuntimeClassList"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/node.k8s.io/v1beta1/watch/runtimeclasses"),
+		semconv.URLTemplateKey.String("/apis/node.k8s.io/v1beta1/watch/runtimeclasses"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -98478,7 +98478,7 @@ func (c *Client) sendWatchPolicyV1NamespacedPodDisruptionBudget(ctx context.Cont
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchPolicyV1NamespacedPodDisruptionBudget"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/policy/v1/watch/namespaces/{namespace}/poddisruptionbudgets/{name}"),
+		semconv.URLTemplateKey.String("/apis/policy/v1/watch/namespaces/{namespace}/poddisruptionbudgets/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -98796,7 +98796,7 @@ func (c *Client) sendWatchPolicyV1NamespacedPodDisruptionBudgetList(ctx context.
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchPolicyV1NamespacedPodDisruptionBudgetList"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/policy/v1/watch/namespaces/{namespace}/poddisruptionbudgets"),
+		semconv.URLTemplateKey.String("/apis/policy/v1/watch/namespaces/{namespace}/poddisruptionbudgets"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -99096,7 +99096,7 @@ func (c *Client) sendWatchPolicyV1PodDisruptionBudgetListForAllNamespaces(ctx co
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchPolicyV1PodDisruptionBudgetListForAllNamespaces"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/policy/v1/watch/poddisruptionbudgets"),
+		semconv.URLTemplateKey.String("/apis/policy/v1/watch/poddisruptionbudgets"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -99377,7 +99377,7 @@ func (c *Client) sendWatchPolicyV1beta1NamespacedPodDisruptionBudget(ctx context
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchPolicyV1beta1NamespacedPodDisruptionBudget"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/policy/v1beta1/watch/namespaces/{namespace}/poddisruptionbudgets/{name}"),
+		semconv.URLTemplateKey.String("/apis/policy/v1beta1/watch/namespaces/{namespace}/poddisruptionbudgets/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -99695,7 +99695,7 @@ func (c *Client) sendWatchPolicyV1beta1NamespacedPodDisruptionBudgetList(ctx con
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchPolicyV1beta1NamespacedPodDisruptionBudgetList"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/policy/v1beta1/watch/namespaces/{namespace}/poddisruptionbudgets"),
+		semconv.URLTemplateKey.String("/apis/policy/v1beta1/watch/namespaces/{namespace}/poddisruptionbudgets"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -99995,7 +99995,7 @@ func (c *Client) sendWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces(c
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/policy/v1beta1/watch/poddisruptionbudgets"),
+		semconv.URLTemplateKey.String("/apis/policy/v1beta1/watch/poddisruptionbudgets"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -100276,7 +100276,7 @@ func (c *Client) sendWatchPolicyV1beta1PodSecurityPolicy(ctx context.Context, pa
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchPolicyV1beta1PodSecurityPolicy"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/policy/v1beta1/watch/podsecuritypolicies/{name}"),
+		semconv.URLTemplateKey.String("/apis/policy/v1beta1/watch/podsecuritypolicies/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -100575,7 +100575,7 @@ func (c *Client) sendWatchPolicyV1beta1PodSecurityPolicyList(ctx context.Context
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchPolicyV1beta1PodSecurityPolicyList"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/policy/v1beta1/watch/podsecuritypolicies"),
+		semconv.URLTemplateKey.String("/apis/policy/v1beta1/watch/podsecuritypolicies"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -100856,7 +100856,7 @@ func (c *Client) sendWatchRbacAuthorizationV1ClusterRole(ctx context.Context, pa
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchRbacAuthorizationV1ClusterRole"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/watch/clusterroles/{name}"),
+		semconv.URLTemplateKey.String("/apis/rbac.authorization.k8s.io/v1/watch/clusterroles/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -101155,7 +101155,7 @@ func (c *Client) sendWatchRbacAuthorizationV1ClusterRoleBinding(ctx context.Cont
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchRbacAuthorizationV1ClusterRoleBinding"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/watch/clusterrolebindings/{name}"),
+		semconv.URLTemplateKey.String("/apis/rbac.authorization.k8s.io/v1/watch/clusterrolebindings/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -101454,7 +101454,7 @@ func (c *Client) sendWatchRbacAuthorizationV1ClusterRoleBindingList(ctx context.
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchRbacAuthorizationV1ClusterRoleBindingList"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/watch/clusterrolebindings"),
+		semconv.URLTemplateKey.String("/apis/rbac.authorization.k8s.io/v1/watch/clusterrolebindings"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -101735,7 +101735,7 @@ func (c *Client) sendWatchRbacAuthorizationV1ClusterRoleList(ctx context.Context
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchRbacAuthorizationV1ClusterRoleList"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/watch/clusterroles"),
+		semconv.URLTemplateKey.String("/apis/rbac.authorization.k8s.io/v1/watch/clusterroles"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -102016,7 +102016,7 @@ func (c *Client) sendWatchRbacAuthorizationV1NamespacedRole(ctx context.Context,
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchRbacAuthorizationV1NamespacedRole"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/roles/{name}"),
+		semconv.URLTemplateKey.String("/apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/roles/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -102334,7 +102334,7 @@ func (c *Client) sendWatchRbacAuthorizationV1NamespacedRoleBinding(ctx context.C
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchRbacAuthorizationV1NamespacedRoleBinding"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/rolebindings/{name}"),
+		semconv.URLTemplateKey.String("/apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/rolebindings/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -102652,7 +102652,7 @@ func (c *Client) sendWatchRbacAuthorizationV1NamespacedRoleBindingList(ctx conte
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchRbacAuthorizationV1NamespacedRoleBindingList"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/rolebindings"),
+		semconv.URLTemplateKey.String("/apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/rolebindings"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -102952,7 +102952,7 @@ func (c *Client) sendWatchRbacAuthorizationV1NamespacedRoleList(ctx context.Cont
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchRbacAuthorizationV1NamespacedRoleList"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/roles"),
+		semconv.URLTemplateKey.String("/apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/roles"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -103252,7 +103252,7 @@ func (c *Client) sendWatchRbacAuthorizationV1RoleBindingListForAllNamespaces(ctx
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchRbacAuthorizationV1RoleBindingListForAllNamespaces"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/watch/rolebindings"),
+		semconv.URLTemplateKey.String("/apis/rbac.authorization.k8s.io/v1/watch/rolebindings"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -103533,7 +103533,7 @@ func (c *Client) sendWatchRbacAuthorizationV1RoleListForAllNamespaces(ctx contex
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchRbacAuthorizationV1RoleListForAllNamespaces"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/watch/roles"),
+		semconv.URLTemplateKey.String("/apis/rbac.authorization.k8s.io/v1/watch/roles"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -103814,7 +103814,7 @@ func (c *Client) sendWatchSchedulingV1PriorityClass(ctx context.Context, params 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchSchedulingV1PriorityClass"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/scheduling.k8s.io/v1/watch/priorityclasses/{name}"),
+		semconv.URLTemplateKey.String("/apis/scheduling.k8s.io/v1/watch/priorityclasses/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -104113,7 +104113,7 @@ func (c *Client) sendWatchSchedulingV1PriorityClassList(ctx context.Context, par
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchSchedulingV1PriorityClassList"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/scheduling.k8s.io/v1/watch/priorityclasses"),
+		semconv.URLTemplateKey.String("/apis/scheduling.k8s.io/v1/watch/priorityclasses"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -104394,7 +104394,7 @@ func (c *Client) sendWatchStorageV1CSIDriver(ctx context.Context, params WatchSt
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchStorageV1CSIDriver"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/watch/csidrivers/{name}"),
+		semconv.URLTemplateKey.String("/apis/storage.k8s.io/v1/watch/csidrivers/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -104693,7 +104693,7 @@ func (c *Client) sendWatchStorageV1CSIDriverList(ctx context.Context, params Wat
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchStorageV1CSIDriverList"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/watch/csidrivers"),
+		semconv.URLTemplateKey.String("/apis/storage.k8s.io/v1/watch/csidrivers"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -104974,7 +104974,7 @@ func (c *Client) sendWatchStorageV1CSINode(ctx context.Context, params WatchStor
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchStorageV1CSINode"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/watch/csinodes/{name}"),
+		semconv.URLTemplateKey.String("/apis/storage.k8s.io/v1/watch/csinodes/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -105273,7 +105273,7 @@ func (c *Client) sendWatchStorageV1CSINodeList(ctx context.Context, params Watch
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchStorageV1CSINodeList"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/watch/csinodes"),
+		semconv.URLTemplateKey.String("/apis/storage.k8s.io/v1/watch/csinodes"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -105554,7 +105554,7 @@ func (c *Client) sendWatchStorageV1StorageClass(ctx context.Context, params Watc
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchStorageV1StorageClass"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/watch/storageclasses/{name}"),
+		semconv.URLTemplateKey.String("/apis/storage.k8s.io/v1/watch/storageclasses/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -105853,7 +105853,7 @@ func (c *Client) sendWatchStorageV1StorageClassList(ctx context.Context, params 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchStorageV1StorageClassList"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/watch/storageclasses"),
+		semconv.URLTemplateKey.String("/apis/storage.k8s.io/v1/watch/storageclasses"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -106134,7 +106134,7 @@ func (c *Client) sendWatchStorageV1VolumeAttachment(ctx context.Context, params 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchStorageV1VolumeAttachment"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/watch/volumeattachments/{name}"),
+		semconv.URLTemplateKey.String("/apis/storage.k8s.io/v1/watch/volumeattachments/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -106433,7 +106433,7 @@ func (c *Client) sendWatchStorageV1VolumeAttachmentList(ctx context.Context, par
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchStorageV1VolumeAttachmentList"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/watch/volumeattachments"),
+		semconv.URLTemplateKey.String("/apis/storage.k8s.io/v1/watch/volumeattachments"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -106714,7 +106714,7 @@ func (c *Client) sendWatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces(
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchStorageV1alpha1CSIStorageCapacityListForAllNamespaces"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1alpha1/watch/csistoragecapacities"),
+		semconv.URLTemplateKey.String("/apis/storage.k8s.io/v1alpha1/watch/csistoragecapacities"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -106995,7 +106995,7 @@ func (c *Client) sendWatchStorageV1alpha1NamespacedCSIStorageCapacity(ctx contex
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchStorageV1alpha1NamespacedCSIStorageCapacity"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1alpha1/watch/namespaces/{namespace}/csistoragecapacities/{name}"),
+		semconv.URLTemplateKey.String("/apis/storage.k8s.io/v1alpha1/watch/namespaces/{namespace}/csistoragecapacities/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -107313,7 +107313,7 @@ func (c *Client) sendWatchStorageV1alpha1NamespacedCSIStorageCapacityList(ctx co
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchStorageV1alpha1NamespacedCSIStorageCapacityList"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1alpha1/watch/namespaces/{namespace}/csistoragecapacities"),
+		semconv.URLTemplateKey.String("/apis/storage.k8s.io/v1alpha1/watch/namespaces/{namespace}/csistoragecapacities"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -107613,7 +107613,7 @@ func (c *Client) sendWatchStorageV1beta1CSIStorageCapacityListForAllNamespaces(c
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchStorageV1beta1CSIStorageCapacityListForAllNamespaces"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1beta1/watch/csistoragecapacities"),
+		semconv.URLTemplateKey.String("/apis/storage.k8s.io/v1beta1/watch/csistoragecapacities"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -107894,7 +107894,7 @@ func (c *Client) sendWatchStorageV1beta1NamespacedCSIStorageCapacity(ctx context
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchStorageV1beta1NamespacedCSIStorageCapacity"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1beta1/watch/namespaces/{namespace}/csistoragecapacities/{name}"),
+		semconv.URLTemplateKey.String("/apis/storage.k8s.io/v1beta1/watch/namespaces/{namespace}/csistoragecapacities/{name}"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -108212,7 +108212,7 @@ func (c *Client) sendWatchStorageV1beta1NamespacedCSIStorageCapacityList(ctx con
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("watchStorageV1beta1NamespacedCSIStorageCapacityList"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1beta1/watch/namespaces/{namespace}/csistoragecapacities"),
+		semconv.URLTemplateKey.String("/apis/storage.k8s.io/v1beta1/watch/namespaces/{namespace}/csistoragecapacities"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 

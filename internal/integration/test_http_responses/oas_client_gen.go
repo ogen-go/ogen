@@ -149,7 +149,7 @@ func (c *Client) sendAnyContentTypeBinaryStringSchema(ctx context.Context) (res 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("anyContentTypeBinaryStringSchema"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/anyContentTypeBinaryStringSchema"),
+		semconv.URLTemplateKey.String("/anyContentTypeBinaryStringSchema"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -220,7 +220,7 @@ func (c *Client) sendAnyContentTypeBinaryStringSchemaDefault(ctx context.Context
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("anyContentTypeBinaryStringSchemaDefault"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/anyContentTypeBinaryStringSchemaDefault"),
+		semconv.URLTemplateKey.String("/anyContentTypeBinaryStringSchemaDefault"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -291,7 +291,7 @@ func (c *Client) sendCombined(ctx context.Context, params CombinedParams) (res C
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("combined"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/combined"),
+		semconv.URLTemplateKey.String("/combined"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -380,7 +380,7 @@ func (c *Client) sendHeaders200(ctx context.Context) (res *Headers200OK, err err
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("headers200"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/headers200"),
+		semconv.URLTemplateKey.String("/headers200"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -451,7 +451,7 @@ func (c *Client) sendHeadersCombined(ctx context.Context, params HeadersCombined
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("headersCombined"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/headersCombined"),
+		semconv.URLTemplateKey.String("/headersCombined"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -540,7 +540,7 @@ func (c *Client) sendHeadersDefault(ctx context.Context) (res *HeadersDefaultDef
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("headersDefault"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/headersDefault"),
+		semconv.URLTemplateKey.String("/headersDefault"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -611,7 +611,7 @@ func (c *Client) sendHeadersJSON(ctx context.Context) (res *HeadersJSONOK, err e
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("headersJSON"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/headersJSON"),
+		semconv.URLTemplateKey.String("/headersJSON"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -682,7 +682,7 @@ func (c *Client) sendHeadersPattern(ctx context.Context) (res *HeadersPattern4XX
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("headersPattern"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/headersPattern"),
+		semconv.URLTemplateKey.String("/headersPattern"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -756,7 +756,7 @@ func (c *Client) sendIntersectPatternCode(ctx context.Context, params IntersectP
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("intersectPatternCode"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/intersectPatternCode"),
+		semconv.URLTemplateKey.String("/intersectPatternCode"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -845,7 +845,7 @@ func (c *Client) sendMultipleGenericResponses(ctx context.Context) (res Multiple
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("multipleGenericResponses"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/multipleGenericResponses"),
+		semconv.URLTemplateKey.String("/multipleGenericResponses"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -916,7 +916,7 @@ func (c *Client) sendOctetStreamBinaryStringSchema(ctx context.Context) (res Oct
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("octetStreamBinaryStringSchema"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/octetStreamBinaryStringSchema"),
+		semconv.URLTemplateKey.String("/octetStreamBinaryStringSchema"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -987,7 +987,7 @@ func (c *Client) sendOctetStreamEmptySchema(ctx context.Context) (res OctetStrea
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("octetStreamEmptySchema"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/octetStreamEmptySchema"),
+		semconv.URLTemplateKey.String("/octetStreamEmptySchema"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -1060,7 +1060,7 @@ func (c *Client) sendOptionalHeaders(ctx context.Context) (res *OptionalHeadersO
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("optionalHeaders"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/optionalHeaders"),
+		semconv.URLTemplateKey.String("/optionalHeaders"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -1131,7 +1131,7 @@ func (c *Client) sendStreamJSON(ctx context.Context, params StreamJSONParams) (r
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("streamJSON"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/streamJSON"),
+		semconv.URLTemplateKey.String("/streamJSON"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -1220,7 +1220,7 @@ func (c *Client) sendTextPlainBinaryStringSchema(ctx context.Context) (res TextP
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("textPlainBinaryStringSchema"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/textPlainBinaryStringSchema"),
+		semconv.URLTemplateKey.String("/textPlainBinaryStringSchema"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 

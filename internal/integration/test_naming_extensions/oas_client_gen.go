@@ -85,7 +85,7 @@ func (c *Client) HealthzGet(ctx context.Context) (*Person, error) {
 func (c *Client) sendHealthzGet(ctx context.Context) (res *Person, err error) {
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/healthz"),
+		semconv.URLTemplateKey.String("/healthz"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 

@@ -162,7 +162,7 @@ func (c *Client) sendNullableStrings(ctx context.Context, request NilString) (re
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("nullableStrings"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/nullableStrings"),
+		semconv.URLTemplateKey.String("/nullableStrings"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -247,7 +247,7 @@ func (c *Client) sendObjectsWithConflictingArrayProperty(ctx context.Context, re
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("objectsWithConflictingArrayProperty"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/objectsWithConflictingArrayProperty"),
+		semconv.URLTemplateKey.String("/objectsWithConflictingArrayProperty"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -332,7 +332,7 @@ func (c *Client) sendObjectsWithConflictingProperties(ctx context.Context, reque
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("objectsWithConflictingProperties"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/objectsWithConflictingProperties"),
+		semconv.URLTemplateKey.String("/objectsWithConflictingProperties"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -433,7 +433,7 @@ func (c *Client) sendReferencedAllOfNullable(ctx context.Context, request Refere
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("referencedAllOfNullable"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/referencedAllOfNullable"),
+		semconv.URLTemplateKey.String("/referencedAllOfNullable"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -532,7 +532,7 @@ func (c *Client) sendReferencedAllof(ctx context.Context, request ReferencedAllo
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("referencedAllof"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/referencedAllof"),
+		semconv.URLTemplateKey.String("/referencedAllof"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -633,7 +633,7 @@ func (c *Client) sendReferencedAllofOptional(ctx context.Context, request Refere
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("referencedAllofOptional"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/referencedAllofOptional"),
+		semconv.URLTemplateKey.String("/referencedAllofOptional"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -727,7 +727,7 @@ func (c *Client) sendSimpleInteger(ctx context.Context, request int) (res *Simpl
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("simpleInteger"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/simpleInteger"),
+		semconv.URLTemplateKey.String("/simpleInteger"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -803,7 +803,7 @@ func (c *Client) sendSimpleObjects(ctx context.Context, request *SimpleObjectsRe
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("simpleObjects"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/simpleObjects"),
+		semconv.URLTemplateKey.String("/simpleObjects"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -901,7 +901,7 @@ func (c *Client) sendStringsNotype(ctx context.Context, request NilString) (res 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("stringsNotype"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/stringsNotype"),
+		semconv.URLTemplateKey.String("/stringsNotype"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 

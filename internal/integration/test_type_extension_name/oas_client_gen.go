@@ -92,7 +92,7 @@ func (c *Client) sendOptional(ctx context.Context, params OptionalParams) (res *
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("optional"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/optional"),
+		semconv.URLTemplateKey.String("/optional"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -201,7 +201,7 @@ func (c *Client) sendRequired(ctx context.Context, params RequiredParams) (res *
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("required"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/required"),
+		semconv.URLTemplateKey.String("/required"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 

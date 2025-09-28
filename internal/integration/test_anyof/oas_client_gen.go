@@ -95,7 +95,7 @@ func (c *Client) sendIntegerNumber(ctx context.Context) (res *IntegerNumber, err
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("integerNumber"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/integerNumber"),
+		semconv.URLTemplateKey.String("/integerNumber"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -166,7 +166,7 @@ func (c *Client) sendJaegerAnyOf(ctx context.Context) (res *JaegerAnyOf, err err
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("jaegerAnyOf"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/jaegerAnyOf"),
+		semconv.URLTemplateKey.String("/jaegerAnyOf"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -237,7 +237,7 @@ func (c *Client) sendOneUUID(ctx context.Context) (res *OneUUID, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("oneUUID"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/oneUUID"),
+		semconv.URLTemplateKey.String("/oneUUID"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 

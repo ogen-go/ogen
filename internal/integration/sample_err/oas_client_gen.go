@@ -101,7 +101,7 @@ func (c *Client) sendDataCreate(ctx context.Context, request OptData) (res *Data
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("dataCreate"),
 		semconv.HTTPRequestMethodKey.String("POST"),
-		semconv.HTTPRouteKey.String("/data"),
+		semconv.URLTemplateKey.String("/data"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -177,7 +177,7 @@ func (c *Client) sendDataGet(ctx context.Context) (res *Data, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("dataGet"),
 		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.HTTPRouteKey.String("/data"),
+		semconv.URLTemplateKey.String("/data"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
