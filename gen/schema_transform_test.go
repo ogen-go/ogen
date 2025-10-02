@@ -29,6 +29,31 @@ func TestSingleOneOf(t *testing.T) {
 		a.Equal(ir.KindPrimitive, result.Kind)
 		a.Equal(ir.String, result.Primitive)
 	})
+
+	t.Run("single oneOf with discriminator doesn't unwrap", func(t *testing.T) {
+		a := require.New(t)
+		s := createTestSchemaGen(nil)
+
+		objectSchema := createObjectSchema(
+			createProperty("type", createPrimitiveSchema(jsonschema.String), true),
+			createProperty("value", createPrimitiveSchema(jsonschema.String), true),
+		)
+
+		schema := &jsonschema.Schema{
+			Type:  jsonschema.Empty,
+			OneOf: []*jsonschema.Schema{objectSchema},
+			Discriminator: &jsonschema.Discriminator{
+				PropertyName: "type",
+				Mapping: map[string]*jsonschema.Schema{
+					"example": objectSchema,
+				},
+			},
+		}
+		result, err := s.generate("Unchanged", schema, false)
+		a.NoError(err)
+		a.NotNil(result)
+		assertSumType(t, result, 1)
+	})
 }
 
 func TestNullableOneOf_BasicPrimitives(t *testing.T) {
