@@ -22,7 +22,7 @@ func transformSchema(schema *jsonschema.Schema) *jsonschema.Schema {
 //
 // if such pattern is detected, this function will return the inner schema.
 func transformSingleOneOf(schema *jsonschema.Schema) *jsonschema.Schema {
-	if len(schema.OneOf) == 1 {
+	if schema.Discriminator == nil && len(schema.OneOf) == 1 {
 		return schema.OneOf[0]
 	}
 	return schema
