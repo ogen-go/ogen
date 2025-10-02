@@ -22,6 +22,24 @@
           }
         }
       }
+    },
+    "/test-oneof-single-discriminator": {
+      "get": {
+        "operationId": "testOneOfSingleDiscriminator",
+        "description": "Test oneOf with single reference and discriminator",
+        "responses": {
+          "200": {
+            "description": "Success response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ObjC"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -42,6 +60,21 @@
             "$ref": "#/components/schemas/ObjA"
           }
         ]
+      },
+      "ObjC": {
+        "type": "object",
+        "readOnly": true,
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/ObjA"
+          }
+        ],
+        "discriminator": {
+          "propertyName": "type",
+          "mapping": {
+            "a": "#/components/schemas/ObjA"
+          }
+        }
       }
     }
   }
