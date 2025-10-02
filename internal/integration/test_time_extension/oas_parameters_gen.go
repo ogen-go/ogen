@@ -15,10 +15,10 @@ import (
 
 // OptionalParams is parameters of optional operation.
 type OptionalParams struct {
-	Date     OptDate
-	Time     OptTime
-	DateTime OptDateTime
-	Alias    OptAlias
+	Date     OptDate     `json:",omitempty,omitzero"`
+	Time     OptTime     `json:",omitempty,omitzero"`
+	DateTime OptDateTime `json:",omitempty,omitzero"`
+	Alias    OptAlias    `json:",omitempty,omitzero"`
 }
 
 func unpackOptionalParams(packed middleware.Parameters) (params OptionalParams) {

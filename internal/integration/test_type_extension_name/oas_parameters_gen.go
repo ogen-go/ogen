@@ -17,8 +17,8 @@ import (
 
 // OptionalParams is parameters of optional operation.
 type OptionalParams struct {
-	Foo OptDecimal
-	Bar OptDecimal2
+	Foo OptDecimal  `json:",omitempty,omitzero"`
+	Bar OptDecimal2 `json:",omitempty,omitzero"`
 }
 
 func unpackOptionalParams(packed middleware.Parameters) (params OptionalParams) {

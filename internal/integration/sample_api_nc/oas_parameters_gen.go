@@ -375,7 +375,7 @@ func decodeDataGetFormatParams(args [5]string, argsEscaped bool, r *http.Request
 
 // DefaultTestParams is parameters of defaultTest operation.
 type DefaultTestParams struct {
-	Default OptInt32
+	Default OptInt32 `json:",omitempty,omitzero"`
 }
 
 func unpackDefaultTestParams(packed middleware.Parameters) (params DefaultTestParams) {
@@ -616,9 +616,9 @@ type PetGetParams struct {
 	// ID of pet.
 	PetID int64
 	// Tags of pets.
-	XTags []uuid.UUID
+	XTags []uuid.UUID `json:",omitempty"`
 	// Pet scopes.
-	XScope []string
+	XScope []string `json:",omitempty"`
 	// Token.
 	Token string
 }
