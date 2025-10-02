@@ -156,31 +156,6 @@ func (op Parameter) GoDoc() []string {
 	return prettyDoc(s.Description, notice)
 }
 
-// GoStructTag returns a Go struct tag for this parameter (if relevant).
-// Currently only returns emoempty of arrays, maps and nullable Type.GenericVariant,
-// and omitzero for parameters with optional Type.GenericVariant
-func (op Parameter) GoStructTag() string {
-	if op.Type == nil {
-		return ""
-	}
-	switch op.Type.Kind {
-	case KindArray, KindMap:
-		return `json:",omitempty"`
-	default:
-		return op.goStructTag()
-	}
-}
-
-func (op Parameter) goStructTag() string {
-	variant := op.Type.GenericVariant
-	if variant.OnlyNullable() {
-		return `json:",omitempty"`
-	} else if variant.Optional {
-		return `json:",omitempty,omitzero"`
-	}
-	return ""
-}
-
 // Default returns default value of this field, if it is set.
 func (op Parameter) Default() Default {
 	var schema *jsonschema.Schema
