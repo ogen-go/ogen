@@ -13,9 +13,10 @@ import (
 	"time"
 
 	"github.com/go-faster/errors"
-	api "github.com/ogen-go/ogen/internal/integration/test_parameters"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
+
+	api "github.com/ogen-go/ogen/internal/integration/test_parameters"
 )
 
 type testParameters struct{}
