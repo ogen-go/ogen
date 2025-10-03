@@ -5,6 +5,82 @@
     "version": "0.1.0"
   },
   "paths": {
+    "/optionalParameters": {
+      "get": {
+        "operationId": "optionalParameters",
+        "parameters": [
+          {
+            "name": "integer",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "string",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "boolean",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "object",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "key": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          {
+            "name": "timestamp",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "array",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OptionalQueryParametersResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/optionalArrayParameter": {
       "get": {
         "operationId": "optionalArrayParameter",
@@ -393,6 +469,39 @@
   },
   "components": {
     "schemas": {
+      "OptionalQueryParametersResponse": {
+        "type": "object",
+        "required": [],
+        "properties": {
+          "integer": {
+            "type": "integer"
+          },
+          "string": {
+            "type": "string"
+          },
+          "boolean": {
+            "type": "boolean"
+          },
+          "object": {
+            "type": "object",
+            "properties": {
+              "key": {
+                "type": "string"
+              }
+            }
+          },
+          "timestamp": {
+              "type": "string",
+              "format": "date-time"
+          },
+          "array": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
       "Value": {
         "type": "object",
         "required": [

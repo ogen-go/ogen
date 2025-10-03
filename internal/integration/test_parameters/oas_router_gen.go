@@ -232,24 +232,58 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 					}
 
-				case 'p': // Prefix: "ptionalArrayParameter"
+				case 'p': // Prefix: "ptional"
 
-					if l := len("ptionalArrayParameter"); len(elem) >= l && elem[0:l] == "ptionalArrayParameter" {
+					if l := len("ptional"); len(elem) >= l && elem[0:l] == "ptional" {
 						elem = elem[l:]
 					} else {
 						break
 					}
 
 					if len(elem) == 0 {
-						// Leaf node.
-						switch r.Method {
-						case "GET":
-							s.handleOptionalArrayParameterRequest([0]string{}, elemIsEscaped, w, r)
-						default:
-							s.notAllowed(w, r, "GET")
+						break
+					}
+					switch elem[0] {
+					case 'A': // Prefix: "ArrayParameter"
+
+						if l := len("ArrayParameter"); len(elem) >= l && elem[0:l] == "ArrayParameter" {
+							elem = elem[l:]
+						} else {
+							break
 						}
 
-						return
+						if len(elem) == 0 {
+							// Leaf node.
+							switch r.Method {
+							case "GET":
+								s.handleOptionalArrayParameterRequest([0]string{}, elemIsEscaped, w, r)
+							default:
+								s.notAllowed(w, r, "GET")
+							}
+
+							return
+						}
+
+					case 'P': // Prefix: "Parameters"
+
+						if l := len("Parameters"); len(elem) >= l && elem[0:l] == "Parameters" {
+							elem = elem[l:]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							// Leaf node.
+							switch r.Method {
+							case "GET":
+								s.handleOptionalParametersRequest([0]string{}, elemIsEscaped, w, r)
+							default:
+								s.notAllowed(w, r, "GET")
+							}
+
+							return
+						}
+
 					}
 
 				}
@@ -637,28 +671,66 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 
 					}
 
-				case 'p': // Prefix: "ptionalArrayParameter"
+				case 'p': // Prefix: "ptional"
 
-					if l := len("ptionalArrayParameter"); len(elem) >= l && elem[0:l] == "ptionalArrayParameter" {
+					if l := len("ptional"); len(elem) >= l && elem[0:l] == "ptional" {
 						elem = elem[l:]
 					} else {
 						break
 					}
 
 					if len(elem) == 0 {
-						// Leaf node.
-						switch method {
-						case "GET":
-							r.name = OptionalArrayParameterOperation
-							r.summary = ""
-							r.operationID = "optionalArrayParameter"
-							r.pathPattern = "/optionalArrayParameter"
-							r.args = args
-							r.count = 0
-							return r, true
-						default:
-							return
+						break
+					}
+					switch elem[0] {
+					case 'A': // Prefix: "ArrayParameter"
+
+						if l := len("ArrayParameter"); len(elem) >= l && elem[0:l] == "ArrayParameter" {
+							elem = elem[l:]
+						} else {
+							break
 						}
+
+						if len(elem) == 0 {
+							// Leaf node.
+							switch method {
+							case "GET":
+								r.name = OptionalArrayParameterOperation
+								r.summary = ""
+								r.operationID = "optionalArrayParameter"
+								r.pathPattern = "/optionalArrayParameter"
+								r.args = args
+								r.count = 0
+								return r, true
+							default:
+								return
+							}
+						}
+
+					case 'P': // Prefix: "Parameters"
+
+						if l := len("Parameters"); len(elem) >= l && elem[0:l] == "Parameters" {
+							elem = elem[l:]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							// Leaf node.
+							switch method {
+							case "GET":
+								r.name = OptionalParametersOperation
+								r.summary = ""
+								r.operationID = "optionalParameters"
+								r.pathPattern = "/optionalParameters"
+								r.args = args
+								r.count = 0
+								return r, true
+							default:
+								return
+							}
+						}
+
 					}
 
 				}

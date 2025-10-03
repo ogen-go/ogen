@@ -17,20 +17,20 @@ import (
 
 // OptionalParams is parameters of optional operation.
 type OptionalParams struct {
-	OgenString   OptStringOgen
-	OgenNumber   OptNumberOgen
-	JsonString   OptStringJSON
-	JsonNumber   OptNumberJSON
-	TextString   OptText
-	TextNumber   OptText
-	BinaryByte   OptBinary
-	BinaryBase64 OptBinary
-	String       OptString
-	Number       OptNumber
-	Alias        OptAlias
-	Pointer      OptPointer
-	AliasPointer OptAliasPointer
-	Array        []testtypes.StringJSON
+	OgenString   OptStringOgen          `json:",omitempty,omitzero"`
+	OgenNumber   OptNumberOgen          `json:",omitempty,omitzero"`
+	JsonString   OptStringJSON          `json:",omitempty,omitzero"`
+	JsonNumber   OptNumberJSON          `json:",omitempty,omitzero"`
+	TextString   OptText                `json:",omitempty,omitzero"`
+	TextNumber   OptText                `json:",omitempty,omitzero"`
+	BinaryByte   OptBinary              `json:",omitempty,omitzero"`
+	BinaryBase64 OptBinary              `json:",omitempty,omitzero"`
+	String       OptString              `json:",omitempty,omitzero"`
+	Number       OptNumber              `json:",omitempty,omitzero"`
+	Alias        OptAlias               `json:",omitempty,omitzero"`
+	Pointer      OptPointer             `json:",omitempty,omitzero"`
+	AliasPointer OptAliasPointer        `json:",omitempty,omitzero"`
+	Array        []testtypes.StringJSON `json:",omitempty"`
 }
 
 func unpackOptionalParams(packed middleware.Parameters) (params OptionalParams) {
@@ -838,7 +838,7 @@ type RequiredParams struct {
 	Alias        Alias
 	Pointer      testtypes.NumberOgen
 	AliasPointer AliasPointer
-	Array        []testtypes.StringJSON
+	Array        []testtypes.StringJSON `json:",omitempty"`
 }
 
 func unpackRequiredParams(packed middleware.Parameters) (params RequiredParams) {

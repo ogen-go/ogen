@@ -357,7 +357,7 @@ type ListFineTuneEventsParams struct {
 	// `data: [DONE]` message when the job is finished (succeeded, cancelled,
 	// or failed).
 	// If set to false, only events generated so far will be returned.
-	Stream OptBool
+	Stream OptBool `json:",omitempty,omitzero"`
 }
 
 func unpackListFineTuneEventsParams(packed middleware.Parameters) (params ListFineTuneEventsParams) {

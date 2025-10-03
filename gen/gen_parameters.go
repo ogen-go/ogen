@@ -180,6 +180,7 @@ func (g *Generator) generateParameter(ctx *genctx, opName string, p *openapi.Par
 	}
 
 	var tag ir.Tag
+	tag.JSON = defaultParameterJSONTag(t)
 	if p.Schema != nil {
 		tag.ExtraTags = p.Schema.ExtraTags
 	}
@@ -190,6 +191,27 @@ func (g *Generator) generateParameter(ctx *genctx, opName string, p *openapi.Par
 		Spec: p,
 		Tag:  tag,
 	}, nil
+}
+
+// defaultParameterJSONTag returns a default JSON Go struct tag for the given parameter type.
+// Currently, returns omitempty for arrays, maps and nullable Type.GenericVariant,
+// and omitzero for parameters with optional Type.GenericVariant
+func defaultParameterJSONTag(t *ir.Type) string {
+	if t == nil {
+		return ""
+	}
+	switch t.Kind {
+	case ir.KindArray, ir.KindMap:
+		return ",omitempty"
+	default:
+		variant := t.GenericVariant
+		if variant.OnlyNullable() {
+			return ",omitempty"
+		} else if variant.Optional {
+			return ",omitempty,omitzero"
+		}
+		return ""
+	}
 }
 
 func isParamAllowed(t *ir.Type, root bool, visited map[*ir.Type]struct{}) error {
