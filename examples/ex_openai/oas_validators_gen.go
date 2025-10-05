@@ -94,6 +94,7 @@ func (s *CreateAnswerRequest) Validate() error {
 			MaxLength:    0,
 			MaxLengthSet: false,
 			Email:        false,
+			Byte:         false,
 			Hostname:     false,
 			Regex:        nil,
 		}).Validate(string(s.Question)); err != nil {
@@ -141,6 +142,7 @@ func (s *CreateAnswerRequest) Validate() error {
 							MaxLength:    0,
 							MaxLengthSet: false,
 							Email:        false,
+							Byte:         false,
 							Hostname:     false,
 							Regex:        nil,
 						}).Validate(string(elem)); err != nil {
@@ -643,6 +645,7 @@ func (s *CreateClassificationRequest) Validate() error {
 			MaxLength:    0,
 			MaxLengthSet: false,
 			Email:        false,
+			Byte:         false,
 			Hostname:     false,
 			Regex:        nil,
 		}).Validate(string(s.Query)); err != nil {
@@ -692,6 +695,7 @@ func (s *CreateClassificationRequest) Validate() error {
 									MaxLength:    0,
 									MaxLengthSet: false,
 									Email:        false,
+									Byte:         false,
 									Hostname:     false,
 									Regex:        nil,
 								}).Validate(string(elem)); err != nil {
@@ -1647,6 +1651,7 @@ func (s *CreateFineTuneRequest) Validate() error {
 					MaxLength:    40,
 					MaxLengthSet: true,
 					Email:        false,
+					Byte:         false,
 					Hostname:     false,
 					Regex:        nil,
 				}).Validate(string(value)); err != nil {
@@ -2169,6 +2174,7 @@ func (s *CreateSearchRequest) Validate() error {
 			MaxLength:    0,
 			MaxLengthSet: false,
 			Email:        false,
+			Byte:         false,
 			Hostname:     false,
 			Regex:        nil,
 		}).Validate(string(s.Query)); err != nil {
