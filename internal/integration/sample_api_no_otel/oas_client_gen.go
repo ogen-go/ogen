@@ -141,6 +141,10 @@ type Invoker interface {
 	//
 	// GET /stringIntMap
 	StringIntMapGet(ctx context.Context) (*StringIntMap, error)
+	// TestDecimalValidation invokes testDecimalValidation operation.
+	//
+	// POST /testDecimalValidation
+	TestDecimalValidation(ctx context.Context, request *TestDecimalValidation) error
 	// TestFloatValidation invokes testFloatValidation operation.
 	//
 	// POST /testFloatValidation
@@ -1432,6 +1436,43 @@ func (c *Client) sendStringIntMapGet(ctx context.Context) (res *StringIntMap, er
 	defer resp.Body.Close()
 
 	result, err := decodeStringIntMapGetResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestDecimalValidation invokes testDecimalValidation operation.
+//
+// POST /testDecimalValidation
+func (c *Client) TestDecimalValidation(ctx context.Context, request *TestDecimalValidation) error {
+	_, err := c.sendTestDecimalValidation(ctx, request)
+	return err
+}
+
+func (c *Client) sendTestDecimalValidation(ctx context.Context, request *TestDecimalValidation) (res *TestDecimalValidationOK, err error) {
+
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/testDecimalValidation"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestDecimalValidationRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestDecimalValidationResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}

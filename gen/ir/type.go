@@ -324,6 +324,8 @@ func (t *Type) NamePostfix() string {
 			return typePrefix("UnixMicro")
 		case "unix-milli":
 			return typePrefix("UnixMilli")
+		case "decimal":
+			return typePrefix("Decimal")
 		default:
 			return t.Primitive.String()
 		}

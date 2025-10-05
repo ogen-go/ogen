@@ -168,11 +168,12 @@ func TypeFormatMapping() map[jsonschema.SchemaType]map[string]ir.PrimitiveType {
 			"unix-milli":   ir.Time,
 		},
 		jsonschema.Number: {
-			"float":  ir.Float32,
-			"double": ir.Float64,
-			"int32":  ir.Int32,
-			"int64":  ir.Int64,
-			"":       ir.Float64,
+			"float":   ir.Float32,
+			"double":  ir.Float64,
+			"int32":   ir.Int32,
+			"int64":   ir.Int64,
+			"decimal": ir.Decimal,
+			"":        ir.Float64,
 		},
 		jsonschema.String: {
 			"byte":      ir.ByteSlice,
@@ -214,6 +215,7 @@ func TypeFormatMapping() map[jsonschema.SchemaType]map[string]ir.PrimitiveType {
 			// See https://github.com/ogen-go/ogen/issues/957.
 			"float32": ir.Float32,
 			"float64": ir.Float64,
+			"decimal": ir.Decimal,
 		},
 		jsonschema.Boolean: {
 			"": ir.Bool,

@@ -38,5 +38,6 @@ const (
 	IP        PrimitiveType = "netip.Addr"
 	URL       PrimitiveType = "url.URL"
 	File      PrimitiveType = "ht.MultipartFile"
+	Decimal   PrimitiveType = "decimal.Decimal"
 	Custom    PrimitiveType = "<custom>"
 )

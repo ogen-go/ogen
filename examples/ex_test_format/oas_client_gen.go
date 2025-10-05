@@ -17,6 +17,7 @@ import (
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/otelogen"
 	"github.com/ogen-go/ogen/uri"
+	"github.com/shopspring/decimal"
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/metric"
@@ -467,6 +468,30 @@ type Invoker interface {
 	//
 	// POST /test_request_number_array_array
 	TestRequestNumberArrayArray(ctx context.Context, request [][]float64) (*Error, error)
+	// TestRequestNumberDecimal invokes test_request_number_decimal operation.
+	//
+	// POST /test_request_number_decimal
+	TestRequestNumberDecimal(ctx context.Context, request OptDecimal) (*Error, error)
+	// TestRequestNumberDecimalArray invokes test_request_number_decimal_array operation.
+	//
+	// POST /test_request_number_decimal_array
+	TestRequestNumberDecimalArray(ctx context.Context, request []decimal.Decimal) (*Error, error)
+	// TestRequestNumberDecimalArrayArray invokes test_request_number_decimal_array_array operation.
+	//
+	// POST /test_request_number_decimal_array_array
+	TestRequestNumberDecimalArrayArray(ctx context.Context, request [][]decimal.Decimal) (*Error, error)
+	// TestRequestNumberDecimalNullable invokes test_request_number_decimal_nullable operation.
+	//
+	// POST /test_request_number_decimal_nullable
+	TestRequestNumberDecimalNullable(ctx context.Context, request OptNilDecimal) (*Error, error)
+	// TestRequestNumberDecimalNullableArray invokes test_request_number_decimal_nullable_array operation.
+	//
+	// POST /test_request_number_decimal_nullable_array
+	TestRequestNumberDecimalNullableArray(ctx context.Context, request []NilDecimal) (*Error, error)
+	// TestRequestNumberDecimalNullableArrayArray invokes test_request_number_decimal_nullable_array_array operation.
+	//
+	// POST /test_request_number_decimal_nullable_array_array
+	TestRequestNumberDecimalNullableArrayArray(ctx context.Context, request [][]NilDecimal) (*Error, error)
 	// TestRequestNumberDouble invokes test_request_number_double operation.
 	//
 	// POST /test_request_number_double
@@ -1007,6 +1032,30 @@ type Invoker interface {
 	//
 	// POST /test_request_required_number_array_array
 	TestRequestRequiredNumberArrayArray(ctx context.Context, request [][]float64) (*Error, error)
+	// TestRequestRequiredNumberDecimal invokes test_request_required_number_decimal operation.
+	//
+	// POST /test_request_required_number_decimal
+	TestRequestRequiredNumberDecimal(ctx context.Context, request decimal.Decimal) (*Error, error)
+	// TestRequestRequiredNumberDecimalArray invokes test_request_required_number_decimal_array operation.
+	//
+	// POST /test_request_required_number_decimal_array
+	TestRequestRequiredNumberDecimalArray(ctx context.Context, request []decimal.Decimal) (*Error, error)
+	// TestRequestRequiredNumberDecimalArrayArray invokes test_request_required_number_decimal_array_array operation.
+	//
+	// POST /test_request_required_number_decimal_array_array
+	TestRequestRequiredNumberDecimalArrayArray(ctx context.Context, request [][]decimal.Decimal) (*Error, error)
+	// TestRequestRequiredNumberDecimalNullable invokes test_request_required_number_decimal_nullable operation.
+	//
+	// POST /test_request_required_number_decimal_nullable
+	TestRequestRequiredNumberDecimalNullable(ctx context.Context, request NilDecimal) (*Error, error)
+	// TestRequestRequiredNumberDecimalNullableArray invokes test_request_required_number_decimal_nullable_array operation.
+	//
+	// POST /test_request_required_number_decimal_nullable_array
+	TestRequestRequiredNumberDecimalNullableArray(ctx context.Context, request []NilDecimal) (*Error, error)
+	// TestRequestRequiredNumberDecimalNullableArrayArray invokes test_request_required_number_decimal_nullable_array_array operation.
+	//
+	// POST /test_request_required_number_decimal_nullable_array_array
+	TestRequestRequiredNumberDecimalNullableArrayArray(ctx context.Context, request [][]NilDecimal) (*Error, error)
 	// TestRequestRequiredNumberDouble invokes test_request_required_number_double operation.
 	//
 	// POST /test_request_required_number_double
@@ -1247,6 +1296,30 @@ type Invoker interface {
 	//
 	// POST /test_request_required_string_date-time_nullable_array_array
 	TestRequestRequiredStringDateTimeNullableArrayArray(ctx context.Context, request [][]NilDateTime) (*Error, error)
+	// TestRequestRequiredStringDecimal invokes test_request_required_string_decimal operation.
+	//
+	// POST /test_request_required_string_decimal
+	TestRequestRequiredStringDecimal(ctx context.Context, request decimal.Decimal) (*Error, error)
+	// TestRequestRequiredStringDecimalArray invokes test_request_required_string_decimal_array operation.
+	//
+	// POST /test_request_required_string_decimal_array
+	TestRequestRequiredStringDecimalArray(ctx context.Context, request []decimal.Decimal) (*Error, error)
+	// TestRequestRequiredStringDecimalArrayArray invokes test_request_required_string_decimal_array_array operation.
+	//
+	// POST /test_request_required_string_decimal_array_array
+	TestRequestRequiredStringDecimalArrayArray(ctx context.Context, request [][]decimal.Decimal) (*Error, error)
+	// TestRequestRequiredStringDecimalNullable invokes test_request_required_string_decimal_nullable operation.
+	//
+	// POST /test_request_required_string_decimal_nullable
+	TestRequestRequiredStringDecimalNullable(ctx context.Context, request NilStringDecimal) (*Error, error)
+	// TestRequestRequiredStringDecimalNullableArray invokes test_request_required_string_decimal_nullable_array operation.
+	//
+	// POST /test_request_required_string_decimal_nullable_array
+	TestRequestRequiredStringDecimalNullableArray(ctx context.Context, request []NilStringDecimal) (*Error, error)
+	// TestRequestRequiredStringDecimalNullableArrayArray invokes test_request_required_string_decimal_nullable_array_array operation.
+	//
+	// POST /test_request_required_string_decimal_nullable_array_array
+	TestRequestRequiredStringDecimalNullableArrayArray(ctx context.Context, request [][]NilStringDecimal) (*Error, error)
 	// TestRequestRequiredStringDuration invokes test_request_required_string_duration operation.
 	//
 	// POST /test_request_required_string_duration
@@ -2063,6 +2136,30 @@ type Invoker interface {
 	//
 	// POST /test_request_string_date-time_nullable_array_array
 	TestRequestStringDateTimeNullableArrayArray(ctx context.Context, request [][]NilDateTime) (*Error, error)
+	// TestRequestStringDecimal invokes test_request_string_decimal operation.
+	//
+	// POST /test_request_string_decimal
+	TestRequestStringDecimal(ctx context.Context, request OptStringDecimal) (*Error, error)
+	// TestRequestStringDecimalArray invokes test_request_string_decimal_array operation.
+	//
+	// POST /test_request_string_decimal_array
+	TestRequestStringDecimalArray(ctx context.Context, request []decimal.Decimal) (*Error, error)
+	// TestRequestStringDecimalArrayArray invokes test_request_string_decimal_array_array operation.
+	//
+	// POST /test_request_string_decimal_array_array
+	TestRequestStringDecimalArrayArray(ctx context.Context, request [][]decimal.Decimal) (*Error, error)
+	// TestRequestStringDecimalNullable invokes test_request_string_decimal_nullable operation.
+	//
+	// POST /test_request_string_decimal_nullable
+	TestRequestStringDecimalNullable(ctx context.Context, request OptNilStringDecimal) (*Error, error)
+	// TestRequestStringDecimalNullableArray invokes test_request_string_decimal_nullable_array operation.
+	//
+	// POST /test_request_string_decimal_nullable_array
+	TestRequestStringDecimalNullableArray(ctx context.Context, request []NilStringDecimal) (*Error, error)
+	// TestRequestStringDecimalNullableArrayArray invokes test_request_string_decimal_nullable_array_array operation.
+	//
+	// POST /test_request_string_decimal_nullable_array_array
+	TestRequestStringDecimalNullableArrayArray(ctx context.Context, request [][]NilStringDecimal) (*Error, error)
 	// TestRequestStringDuration invokes test_request_string_duration operation.
 	//
 	// POST /test_request_string_duration
@@ -3179,6 +3276,30 @@ type Invoker interface {
 	//
 	// POST /test_response_number_array_array
 	TestResponseNumberArrayArray(ctx context.Context, request string) ([][]float64, error)
+	// TestResponseNumberDecimal invokes test_response_number_decimal operation.
+	//
+	// POST /test_response_number_decimal
+	TestResponseNumberDecimal(ctx context.Context, request string) (decimal.Decimal, error)
+	// TestResponseNumberDecimalArray invokes test_response_number_decimal_array operation.
+	//
+	// POST /test_response_number_decimal_array
+	TestResponseNumberDecimalArray(ctx context.Context, request string) ([]decimal.Decimal, error)
+	// TestResponseNumberDecimalArrayArray invokes test_response_number_decimal_array_array operation.
+	//
+	// POST /test_response_number_decimal_array_array
+	TestResponseNumberDecimalArrayArray(ctx context.Context, request string) ([][]decimal.Decimal, error)
+	// TestResponseNumberDecimalNullable invokes test_response_number_decimal_nullable operation.
+	//
+	// POST /test_response_number_decimal_nullable
+	TestResponseNumberDecimalNullable(ctx context.Context, request string) (NilDecimal, error)
+	// TestResponseNumberDecimalNullableArray invokes test_response_number_decimal_nullable_array operation.
+	//
+	// POST /test_response_number_decimal_nullable_array
+	TestResponseNumberDecimalNullableArray(ctx context.Context, request string) ([]NilDecimal, error)
+	// TestResponseNumberDecimalNullableArrayArray invokes test_response_number_decimal_nullable_array_array operation.
+	//
+	// POST /test_response_number_decimal_nullable_array_array
+	TestResponseNumberDecimalNullableArrayArray(ctx context.Context, request string) ([][]NilDecimal, error)
 	// TestResponseNumberDouble invokes test_response_number_double operation.
 	//
 	// POST /test_response_number_double
@@ -3419,6 +3540,30 @@ type Invoker interface {
 	//
 	// POST /test_response_string_date-time_nullable_array_array
 	TestResponseStringDateTimeNullableArrayArray(ctx context.Context, request string) ([][]NilDateTime, error)
+	// TestResponseStringDecimal invokes test_response_string_decimal operation.
+	//
+	// POST /test_response_string_decimal
+	TestResponseStringDecimal(ctx context.Context, request string) (decimal.Decimal, error)
+	// TestResponseStringDecimalArray invokes test_response_string_decimal_array operation.
+	//
+	// POST /test_response_string_decimal_array
+	TestResponseStringDecimalArray(ctx context.Context, request string) ([]decimal.Decimal, error)
+	// TestResponseStringDecimalArrayArray invokes test_response_string_decimal_array_array operation.
+	//
+	// POST /test_response_string_decimal_array_array
+	TestResponseStringDecimalArrayArray(ctx context.Context, request string) ([][]decimal.Decimal, error)
+	// TestResponseStringDecimalNullable invokes test_response_string_decimal_nullable operation.
+	//
+	// POST /test_response_string_decimal_nullable
+	TestResponseStringDecimalNullable(ctx context.Context, request string) (NilStringDecimal, error)
+	// TestResponseStringDecimalNullableArray invokes test_response_string_decimal_nullable_array operation.
+	//
+	// POST /test_response_string_decimal_nullable_array
+	TestResponseStringDecimalNullableArray(ctx context.Context, request string) ([]NilStringDecimal, error)
+	// TestResponseStringDecimalNullableArrayArray invokes test_response_string_decimal_nullable_array_array operation.
+	//
+	// POST /test_response_string_decimal_nullable_array_array
+	TestResponseStringDecimalNullableArrayArray(ctx context.Context, request string) ([][]NilStringDecimal, error)
 	// TestResponseStringDuration invokes test_response_string_duration operation.
 	//
 	// POST /test_response_string_duration
@@ -4829,6 +4974,43 @@ func (c *Client) sendTestQueryParameter(ctx context.Context, request string, par
 		}
 	}
 	{
+		// Encode "number_decimal" parameter.
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "number_decimal",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+			return e.EncodeValue(conv.DecimalToString(params.NumberDecimal))
+		}); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+	}
+	{
+		// Encode "number_decimal_array" parameter.
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "number_decimal_array",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+			return e.EncodeArray(func(e uri.Encoder) error {
+				for i, item := range params.NumberDecimalArray {
+					if err := func() error {
+						return e.EncodeValue(conv.DecimalToString(item))
+					}(); err != nil {
+						return errors.Wrapf(err, "[%d]", i)
+					}
+				}
+				return nil
+			})
+		}); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+	}
+	{
 		// Encode "number_double" parameter.
 		cfg := uri.QueryParameterEncodingConfig{
 			Name:    "number_double",
@@ -5188,6 +5370,43 @@ func (c *Client) sendTestQueryParameter(ctx context.Context, request string, par
 				for i, item := range params.StringDateArray {
 					if err := func() error {
 						return e.EncodeValue(conv.DateToString(item))
+					}(); err != nil {
+						return errors.Wrapf(err, "[%d]", i)
+					}
+				}
+				return nil
+			})
+		}); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+	}
+	{
+		// Encode "string_decimal" parameter.
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "string_decimal",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+			return e.EncodeValue(conv.StringDecimalToString(params.StringDecimal))
+		}); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+	}
+	{
+		// Encode "string_decimal_array" parameter.
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "string_decimal_array",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+			return e.EncodeArray(func(e uri.Encoder) error {
+				for i, item := range params.StringDecimalArray {
+					if err := func() error {
+						return e.EncodeValue(conv.StringDecimalToString(item))
 					}(); err != nil {
 						return errors.Wrapf(err, "[%d]", i)
 					}
@@ -14246,6 +14465,450 @@ func (c *Client) sendTestRequestNumberArrayArray(ctx context.Context, request []
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestNumberArrayArrayResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestNumberDecimal invokes test_request_number_decimal operation.
+//
+// POST /test_request_number_decimal
+func (c *Client) TestRequestNumberDecimal(ctx context.Context, request OptDecimal) (*Error, error) {
+	res, err := c.sendTestRequestNumberDecimal(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestRequestNumberDecimal(ctx context.Context, request OptDecimal) (res *Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_number_decimal"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/test_request_number_decimal"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestNumberDecimalOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_request_number_decimal"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestRequestNumberDecimalRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestNumberDecimalResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestNumberDecimalArray invokes test_request_number_decimal_array operation.
+//
+// POST /test_request_number_decimal_array
+func (c *Client) TestRequestNumberDecimalArray(ctx context.Context, request []decimal.Decimal) (*Error, error) {
+	res, err := c.sendTestRequestNumberDecimalArray(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestRequestNumberDecimalArray(ctx context.Context, request []decimal.Decimal) (res *Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_number_decimal_array"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/test_request_number_decimal_array"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestNumberDecimalArrayOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_request_number_decimal_array"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestRequestNumberDecimalArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestNumberDecimalArrayResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestNumberDecimalArrayArray invokes test_request_number_decimal_array_array operation.
+//
+// POST /test_request_number_decimal_array_array
+func (c *Client) TestRequestNumberDecimalArrayArray(ctx context.Context, request [][]decimal.Decimal) (*Error, error) {
+	res, err := c.sendTestRequestNumberDecimalArrayArray(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestRequestNumberDecimalArrayArray(ctx context.Context, request [][]decimal.Decimal) (res *Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_number_decimal_array_array"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/test_request_number_decimal_array_array"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestNumberDecimalArrayArrayOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_request_number_decimal_array_array"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestRequestNumberDecimalArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestNumberDecimalArrayArrayResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestNumberDecimalNullable invokes test_request_number_decimal_nullable operation.
+//
+// POST /test_request_number_decimal_nullable
+func (c *Client) TestRequestNumberDecimalNullable(ctx context.Context, request OptNilDecimal) (*Error, error) {
+	res, err := c.sendTestRequestNumberDecimalNullable(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestRequestNumberDecimalNullable(ctx context.Context, request OptNilDecimal) (res *Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_number_decimal_nullable"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/test_request_number_decimal_nullable"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestNumberDecimalNullableOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_request_number_decimal_nullable"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestRequestNumberDecimalNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestNumberDecimalNullableResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestNumberDecimalNullableArray invokes test_request_number_decimal_nullable_array operation.
+//
+// POST /test_request_number_decimal_nullable_array
+func (c *Client) TestRequestNumberDecimalNullableArray(ctx context.Context, request []NilDecimal) (*Error, error) {
+	res, err := c.sendTestRequestNumberDecimalNullableArray(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestRequestNumberDecimalNullableArray(ctx context.Context, request []NilDecimal) (res *Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_number_decimal_nullable_array"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/test_request_number_decimal_nullable_array"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestNumberDecimalNullableArrayOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_request_number_decimal_nullable_array"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestRequestNumberDecimalNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestNumberDecimalNullableArrayResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestNumberDecimalNullableArrayArray invokes test_request_number_decimal_nullable_array_array operation.
+//
+// POST /test_request_number_decimal_nullable_array_array
+func (c *Client) TestRequestNumberDecimalNullableArrayArray(ctx context.Context, request [][]NilDecimal) (*Error, error) {
+	res, err := c.sendTestRequestNumberDecimalNullableArrayArray(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestRequestNumberDecimalNullableArrayArray(ctx context.Context, request [][]NilDecimal) (res *Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_number_decimal_nullable_array_array"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/test_request_number_decimal_nullable_array_array"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestNumberDecimalNullableArrayArrayOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_request_number_decimal_nullable_array_array"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestRequestNumberDecimalNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestNumberDecimalNullableArrayArrayResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -24243,6 +24906,450 @@ func (c *Client) sendTestRequestRequiredNumberArrayArray(ctx context.Context, re
 	return result, nil
 }
 
+// TestRequestRequiredNumberDecimal invokes test_request_required_number_decimal operation.
+//
+// POST /test_request_required_number_decimal
+func (c *Client) TestRequestRequiredNumberDecimal(ctx context.Context, request decimal.Decimal) (*Error, error) {
+	res, err := c.sendTestRequestRequiredNumberDecimal(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestRequestRequiredNumberDecimal(ctx context.Context, request decimal.Decimal) (res *Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_number_decimal"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/test_request_required_number_decimal"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredNumberDecimalOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_request_required_number_decimal"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestRequestRequiredNumberDecimalRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestRequiredNumberDecimalResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredNumberDecimalArray invokes test_request_required_number_decimal_array operation.
+//
+// POST /test_request_required_number_decimal_array
+func (c *Client) TestRequestRequiredNumberDecimalArray(ctx context.Context, request []decimal.Decimal) (*Error, error) {
+	res, err := c.sendTestRequestRequiredNumberDecimalArray(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestRequestRequiredNumberDecimalArray(ctx context.Context, request []decimal.Decimal) (res *Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_number_decimal_array"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/test_request_required_number_decimal_array"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredNumberDecimalArrayOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_request_required_number_decimal_array"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestRequestRequiredNumberDecimalArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestRequiredNumberDecimalArrayResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredNumberDecimalArrayArray invokes test_request_required_number_decimal_array_array operation.
+//
+// POST /test_request_required_number_decimal_array_array
+func (c *Client) TestRequestRequiredNumberDecimalArrayArray(ctx context.Context, request [][]decimal.Decimal) (*Error, error) {
+	res, err := c.sendTestRequestRequiredNumberDecimalArrayArray(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestRequestRequiredNumberDecimalArrayArray(ctx context.Context, request [][]decimal.Decimal) (res *Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_number_decimal_array_array"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/test_request_required_number_decimal_array_array"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredNumberDecimalArrayArrayOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_request_required_number_decimal_array_array"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestRequestRequiredNumberDecimalArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestRequiredNumberDecimalArrayArrayResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredNumberDecimalNullable invokes test_request_required_number_decimal_nullable operation.
+//
+// POST /test_request_required_number_decimal_nullable
+func (c *Client) TestRequestRequiredNumberDecimalNullable(ctx context.Context, request NilDecimal) (*Error, error) {
+	res, err := c.sendTestRequestRequiredNumberDecimalNullable(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestRequestRequiredNumberDecimalNullable(ctx context.Context, request NilDecimal) (res *Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_number_decimal_nullable"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/test_request_required_number_decimal_nullable"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredNumberDecimalNullableOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_request_required_number_decimal_nullable"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestRequestRequiredNumberDecimalNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestRequiredNumberDecimalNullableResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredNumberDecimalNullableArray invokes test_request_required_number_decimal_nullable_array operation.
+//
+// POST /test_request_required_number_decimal_nullable_array
+func (c *Client) TestRequestRequiredNumberDecimalNullableArray(ctx context.Context, request []NilDecimal) (*Error, error) {
+	res, err := c.sendTestRequestRequiredNumberDecimalNullableArray(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestRequestRequiredNumberDecimalNullableArray(ctx context.Context, request []NilDecimal) (res *Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_number_decimal_nullable_array"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/test_request_required_number_decimal_nullable_array"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredNumberDecimalNullableArrayOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_request_required_number_decimal_nullable_array"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestRequestRequiredNumberDecimalNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestRequiredNumberDecimalNullableArrayResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredNumberDecimalNullableArrayArray invokes test_request_required_number_decimal_nullable_array_array operation.
+//
+// POST /test_request_required_number_decimal_nullable_array_array
+func (c *Client) TestRequestRequiredNumberDecimalNullableArrayArray(ctx context.Context, request [][]NilDecimal) (*Error, error) {
+	res, err := c.sendTestRequestRequiredNumberDecimalNullableArrayArray(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestRequestRequiredNumberDecimalNullableArrayArray(ctx context.Context, request [][]NilDecimal) (res *Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_number_decimal_nullable_array_array"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/test_request_required_number_decimal_nullable_array_array"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredNumberDecimalNullableArrayArrayOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_request_required_number_decimal_nullable_array_array"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestRequestRequiredNumberDecimalNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestRequiredNumberDecimalNullableArrayArrayResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
 // TestRequestRequiredNumberDouble invokes test_request_required_number_double operation.
 //
 // POST /test_request_required_number_double
@@ -28676,6 +29783,450 @@ func (c *Client) sendTestRequestRequiredStringDateTimeNullableArrayArray(ctx con
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringDateTimeNullableArrayArrayResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredStringDecimal invokes test_request_required_string_decimal operation.
+//
+// POST /test_request_required_string_decimal
+func (c *Client) TestRequestRequiredStringDecimal(ctx context.Context, request decimal.Decimal) (*Error, error) {
+	res, err := c.sendTestRequestRequiredStringDecimal(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestRequestRequiredStringDecimal(ctx context.Context, request decimal.Decimal) (res *Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_decimal"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/test_request_required_string_decimal"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringDecimalOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_request_required_string_decimal"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestRequestRequiredStringDecimalRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestRequiredStringDecimalResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredStringDecimalArray invokes test_request_required_string_decimal_array operation.
+//
+// POST /test_request_required_string_decimal_array
+func (c *Client) TestRequestRequiredStringDecimalArray(ctx context.Context, request []decimal.Decimal) (*Error, error) {
+	res, err := c.sendTestRequestRequiredStringDecimalArray(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestRequestRequiredStringDecimalArray(ctx context.Context, request []decimal.Decimal) (res *Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_decimal_array"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/test_request_required_string_decimal_array"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringDecimalArrayOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_request_required_string_decimal_array"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestRequestRequiredStringDecimalArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestRequiredStringDecimalArrayResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredStringDecimalArrayArray invokes test_request_required_string_decimal_array_array operation.
+//
+// POST /test_request_required_string_decimal_array_array
+func (c *Client) TestRequestRequiredStringDecimalArrayArray(ctx context.Context, request [][]decimal.Decimal) (*Error, error) {
+	res, err := c.sendTestRequestRequiredStringDecimalArrayArray(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestRequestRequiredStringDecimalArrayArray(ctx context.Context, request [][]decimal.Decimal) (res *Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_decimal_array_array"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/test_request_required_string_decimal_array_array"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringDecimalArrayArrayOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_request_required_string_decimal_array_array"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestRequestRequiredStringDecimalArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestRequiredStringDecimalArrayArrayResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredStringDecimalNullable invokes test_request_required_string_decimal_nullable operation.
+//
+// POST /test_request_required_string_decimal_nullable
+func (c *Client) TestRequestRequiredStringDecimalNullable(ctx context.Context, request NilStringDecimal) (*Error, error) {
+	res, err := c.sendTestRequestRequiredStringDecimalNullable(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestRequestRequiredStringDecimalNullable(ctx context.Context, request NilStringDecimal) (res *Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_decimal_nullable"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/test_request_required_string_decimal_nullable"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringDecimalNullableOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_request_required_string_decimal_nullable"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestRequestRequiredStringDecimalNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestRequiredStringDecimalNullableResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredStringDecimalNullableArray invokes test_request_required_string_decimal_nullable_array operation.
+//
+// POST /test_request_required_string_decimal_nullable_array
+func (c *Client) TestRequestRequiredStringDecimalNullableArray(ctx context.Context, request []NilStringDecimal) (*Error, error) {
+	res, err := c.sendTestRequestRequiredStringDecimalNullableArray(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestRequestRequiredStringDecimalNullableArray(ctx context.Context, request []NilStringDecimal) (res *Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_decimal_nullable_array"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/test_request_required_string_decimal_nullable_array"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringDecimalNullableArrayOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_request_required_string_decimal_nullable_array"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestRequestRequiredStringDecimalNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestRequiredStringDecimalNullableArrayResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredStringDecimalNullableArrayArray invokes test_request_required_string_decimal_nullable_array_array operation.
+//
+// POST /test_request_required_string_decimal_nullable_array_array
+func (c *Client) TestRequestRequiredStringDecimalNullableArrayArray(ctx context.Context, request [][]NilStringDecimal) (*Error, error) {
+	res, err := c.sendTestRequestRequiredStringDecimalNullableArrayArray(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestRequestRequiredStringDecimalNullableArrayArray(ctx context.Context, request [][]NilStringDecimal) (res *Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_decimal_nullable_array_array"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/test_request_required_string_decimal_nullable_array_array"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringDecimalNullableArrayArrayOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_request_required_string_decimal_nullable_array_array"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestRequestRequiredStringDecimalNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestRequiredStringDecimalNullableArrayArrayResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -43772,6 +45323,450 @@ func (c *Client) sendTestRequestStringDateTimeNullableArrayArray(ctx context.Con
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringDateTimeNullableArrayArrayResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestStringDecimal invokes test_request_string_decimal operation.
+//
+// POST /test_request_string_decimal
+func (c *Client) TestRequestStringDecimal(ctx context.Context, request OptStringDecimal) (*Error, error) {
+	res, err := c.sendTestRequestStringDecimal(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestRequestStringDecimal(ctx context.Context, request OptStringDecimal) (res *Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_decimal"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/test_request_string_decimal"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringDecimalOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_request_string_decimal"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestRequestStringDecimalRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestStringDecimalResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestStringDecimalArray invokes test_request_string_decimal_array operation.
+//
+// POST /test_request_string_decimal_array
+func (c *Client) TestRequestStringDecimalArray(ctx context.Context, request []decimal.Decimal) (*Error, error) {
+	res, err := c.sendTestRequestStringDecimalArray(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestRequestStringDecimalArray(ctx context.Context, request []decimal.Decimal) (res *Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_decimal_array"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/test_request_string_decimal_array"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringDecimalArrayOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_request_string_decimal_array"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestRequestStringDecimalArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestStringDecimalArrayResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestStringDecimalArrayArray invokes test_request_string_decimal_array_array operation.
+//
+// POST /test_request_string_decimal_array_array
+func (c *Client) TestRequestStringDecimalArrayArray(ctx context.Context, request [][]decimal.Decimal) (*Error, error) {
+	res, err := c.sendTestRequestStringDecimalArrayArray(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestRequestStringDecimalArrayArray(ctx context.Context, request [][]decimal.Decimal) (res *Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_decimal_array_array"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/test_request_string_decimal_array_array"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringDecimalArrayArrayOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_request_string_decimal_array_array"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestRequestStringDecimalArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestStringDecimalArrayArrayResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestStringDecimalNullable invokes test_request_string_decimal_nullable operation.
+//
+// POST /test_request_string_decimal_nullable
+func (c *Client) TestRequestStringDecimalNullable(ctx context.Context, request OptNilStringDecimal) (*Error, error) {
+	res, err := c.sendTestRequestStringDecimalNullable(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestRequestStringDecimalNullable(ctx context.Context, request OptNilStringDecimal) (res *Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_decimal_nullable"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/test_request_string_decimal_nullable"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringDecimalNullableOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_request_string_decimal_nullable"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestRequestStringDecimalNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestStringDecimalNullableResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestStringDecimalNullableArray invokes test_request_string_decimal_nullable_array operation.
+//
+// POST /test_request_string_decimal_nullable_array
+func (c *Client) TestRequestStringDecimalNullableArray(ctx context.Context, request []NilStringDecimal) (*Error, error) {
+	res, err := c.sendTestRequestStringDecimalNullableArray(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestRequestStringDecimalNullableArray(ctx context.Context, request []NilStringDecimal) (res *Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_decimal_nullable_array"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/test_request_string_decimal_nullable_array"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringDecimalNullableArrayOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_request_string_decimal_nullable_array"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestRequestStringDecimalNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestStringDecimalNullableArrayResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestStringDecimalNullableArrayArray invokes test_request_string_decimal_nullable_array_array operation.
+//
+// POST /test_request_string_decimal_nullable_array_array
+func (c *Client) TestRequestStringDecimalNullableArrayArray(ctx context.Context, request [][]NilStringDecimal) (*Error, error) {
+	res, err := c.sendTestRequestStringDecimalNullableArrayArray(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestRequestStringDecimalNullableArrayArray(ctx context.Context, request [][]NilStringDecimal) (res *Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_decimal_nullable_array_array"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/test_request_string_decimal_nullable_array_array"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringDecimalNullableArrayArrayOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_request_string_decimal_nullable_array_array"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestRequestStringDecimalNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestStringDecimalNullableArrayArrayResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -64425,6 +66420,450 @@ func (c *Client) sendTestResponseNumberArrayArray(ctx context.Context, request s
 	return result, nil
 }
 
+// TestResponseNumberDecimal invokes test_response_number_decimal operation.
+//
+// POST /test_response_number_decimal
+func (c *Client) TestResponseNumberDecimal(ctx context.Context, request string) (decimal.Decimal, error) {
+	res, err := c.sendTestResponseNumberDecimal(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestResponseNumberDecimal(ctx context.Context, request string) (res decimal.Decimal, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_number_decimal"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/test_response_number_decimal"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseNumberDecimalOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_response_number_decimal"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestResponseNumberDecimalRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestResponseNumberDecimalResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseNumberDecimalArray invokes test_response_number_decimal_array operation.
+//
+// POST /test_response_number_decimal_array
+func (c *Client) TestResponseNumberDecimalArray(ctx context.Context, request string) ([]decimal.Decimal, error) {
+	res, err := c.sendTestResponseNumberDecimalArray(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestResponseNumberDecimalArray(ctx context.Context, request string) (res []decimal.Decimal, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_number_decimal_array"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/test_response_number_decimal_array"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseNumberDecimalArrayOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_response_number_decimal_array"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestResponseNumberDecimalArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestResponseNumberDecimalArrayResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseNumberDecimalArrayArray invokes test_response_number_decimal_array_array operation.
+//
+// POST /test_response_number_decimal_array_array
+func (c *Client) TestResponseNumberDecimalArrayArray(ctx context.Context, request string) ([][]decimal.Decimal, error) {
+	res, err := c.sendTestResponseNumberDecimalArrayArray(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestResponseNumberDecimalArrayArray(ctx context.Context, request string) (res [][]decimal.Decimal, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_number_decimal_array_array"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/test_response_number_decimal_array_array"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseNumberDecimalArrayArrayOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_response_number_decimal_array_array"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestResponseNumberDecimalArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestResponseNumberDecimalArrayArrayResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseNumberDecimalNullable invokes test_response_number_decimal_nullable operation.
+//
+// POST /test_response_number_decimal_nullable
+func (c *Client) TestResponseNumberDecimalNullable(ctx context.Context, request string) (NilDecimal, error) {
+	res, err := c.sendTestResponseNumberDecimalNullable(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestResponseNumberDecimalNullable(ctx context.Context, request string) (res NilDecimal, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_number_decimal_nullable"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/test_response_number_decimal_nullable"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseNumberDecimalNullableOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_response_number_decimal_nullable"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestResponseNumberDecimalNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestResponseNumberDecimalNullableResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseNumberDecimalNullableArray invokes test_response_number_decimal_nullable_array operation.
+//
+// POST /test_response_number_decimal_nullable_array
+func (c *Client) TestResponseNumberDecimalNullableArray(ctx context.Context, request string) ([]NilDecimal, error) {
+	res, err := c.sendTestResponseNumberDecimalNullableArray(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestResponseNumberDecimalNullableArray(ctx context.Context, request string) (res []NilDecimal, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_number_decimal_nullable_array"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/test_response_number_decimal_nullable_array"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseNumberDecimalNullableArrayOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_response_number_decimal_nullable_array"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestResponseNumberDecimalNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestResponseNumberDecimalNullableArrayResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseNumberDecimalNullableArrayArray invokes test_response_number_decimal_nullable_array_array operation.
+//
+// POST /test_response_number_decimal_nullable_array_array
+func (c *Client) TestResponseNumberDecimalNullableArrayArray(ctx context.Context, request string) ([][]NilDecimal, error) {
+	res, err := c.sendTestResponseNumberDecimalNullableArrayArray(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestResponseNumberDecimalNullableArrayArray(ctx context.Context, request string) (res [][]NilDecimal, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_number_decimal_nullable_array_array"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/test_response_number_decimal_nullable_array_array"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseNumberDecimalNullableArrayArrayOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_response_number_decimal_nullable_array_array"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestResponseNumberDecimalNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestResponseNumberDecimalNullableArrayArrayResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
 // TestResponseNumberDouble invokes test_response_number_double operation.
 //
 // POST /test_response_number_double
@@ -68858,6 +71297,450 @@ func (c *Client) sendTestResponseStringDateTimeNullableArrayArray(ctx context.Co
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringDateTimeNullableArrayArrayResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseStringDecimal invokes test_response_string_decimal operation.
+//
+// POST /test_response_string_decimal
+func (c *Client) TestResponseStringDecimal(ctx context.Context, request string) (decimal.Decimal, error) {
+	res, err := c.sendTestResponseStringDecimal(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestResponseStringDecimal(ctx context.Context, request string) (res decimal.Decimal, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_decimal"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/test_response_string_decimal"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringDecimalOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_response_string_decimal"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestResponseStringDecimalRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestResponseStringDecimalResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseStringDecimalArray invokes test_response_string_decimal_array operation.
+//
+// POST /test_response_string_decimal_array
+func (c *Client) TestResponseStringDecimalArray(ctx context.Context, request string) ([]decimal.Decimal, error) {
+	res, err := c.sendTestResponseStringDecimalArray(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestResponseStringDecimalArray(ctx context.Context, request string) (res []decimal.Decimal, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_decimal_array"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/test_response_string_decimal_array"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringDecimalArrayOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_response_string_decimal_array"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestResponseStringDecimalArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestResponseStringDecimalArrayResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseStringDecimalArrayArray invokes test_response_string_decimal_array_array operation.
+//
+// POST /test_response_string_decimal_array_array
+func (c *Client) TestResponseStringDecimalArrayArray(ctx context.Context, request string) ([][]decimal.Decimal, error) {
+	res, err := c.sendTestResponseStringDecimalArrayArray(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestResponseStringDecimalArrayArray(ctx context.Context, request string) (res [][]decimal.Decimal, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_decimal_array_array"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/test_response_string_decimal_array_array"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringDecimalArrayArrayOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_response_string_decimal_array_array"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestResponseStringDecimalArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestResponseStringDecimalArrayArrayResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseStringDecimalNullable invokes test_response_string_decimal_nullable operation.
+//
+// POST /test_response_string_decimal_nullable
+func (c *Client) TestResponseStringDecimalNullable(ctx context.Context, request string) (NilStringDecimal, error) {
+	res, err := c.sendTestResponseStringDecimalNullable(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestResponseStringDecimalNullable(ctx context.Context, request string) (res NilStringDecimal, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_decimal_nullable"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/test_response_string_decimal_nullable"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringDecimalNullableOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_response_string_decimal_nullable"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestResponseStringDecimalNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestResponseStringDecimalNullableResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseStringDecimalNullableArray invokes test_response_string_decimal_nullable_array operation.
+//
+// POST /test_response_string_decimal_nullable_array
+func (c *Client) TestResponseStringDecimalNullableArray(ctx context.Context, request string) ([]NilStringDecimal, error) {
+	res, err := c.sendTestResponseStringDecimalNullableArray(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestResponseStringDecimalNullableArray(ctx context.Context, request string) (res []NilStringDecimal, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_decimal_nullable_array"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/test_response_string_decimal_nullable_array"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringDecimalNullableArrayOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_response_string_decimal_nullable_array"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestResponseStringDecimalNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestResponseStringDecimalNullableArrayResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseStringDecimalNullableArrayArray invokes test_response_string_decimal_nullable_array_array operation.
+//
+// POST /test_response_string_decimal_nullable_array_array
+func (c *Client) TestResponseStringDecimalNullableArrayArray(ctx context.Context, request string) ([][]NilStringDecimal, error) {
+	res, err := c.sendTestResponseStringDecimalNullableArrayArray(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestResponseStringDecimalNullableArrayArray(ctx context.Context, request string) (res [][]NilStringDecimal, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_decimal_nullable_array_array"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/test_response_string_decimal_nullable_array_array"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringDecimalNullableArrayArrayOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_response_string_decimal_nullable_array_array"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestResponseStringDecimalNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestResponseStringDecimalNullableArrayArrayResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}

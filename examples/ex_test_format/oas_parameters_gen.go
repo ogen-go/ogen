@@ -17,6 +17,7 @@ import (
 	"github.com/ogen-go/ogen/ogenerrors"
 	"github.com/ogen-go/ogen/uri"
 	"github.com/ogen-go/ogen/validate"
+	"github.com/shopspring/decimal"
 )
 
 // TestQueryParameterParams is parameters of test_query_parameter operation.
@@ -55,6 +56,8 @@ type TestQueryParameterParams struct {
 	IntegerUnixArray        []time.Time `json:",omitempty"`
 	Number                  float64
 	NumberArray             []float64 `json:",omitempty"`
+	NumberDecimal           decimal.Decimal
+	NumberDecimalArray      []decimal.Decimal `json:",omitempty"`
 	NumberDouble            float64
 	NumberDoubleArray       []float64 `json:",omitempty"`
 	NumberFloat             float32
@@ -75,6 +78,8 @@ type TestQueryParameterParams struct {
 	StringDateTime          time.Time
 	StringDateTimeArray     []time.Time `json:",omitempty"`
 	StringDateArray         []time.Time `json:",omitempty"`
+	StringDecimal           decimal.Decimal
+	StringDecimalArray      []decimal.Decimal `json:",omitempty"`
 	StringDuration          time.Duration
 	StringDurationArray     []time.Duration `json:",omitempty"`
 	StringEmail             string
@@ -374,6 +379,20 @@ func unpackTestQueryParameterParams(packed middleware.Parameters) (params TestQu
 	}
 	{
 		key := middleware.ParameterKey{
+			Name: "number_decimal",
+			In:   "query",
+		}
+		params.NumberDecimal = packed[key].(decimal.Decimal)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "number_decimal_array",
+			In:   "query",
+		}
+		params.NumberDecimalArray = packed[key].([]decimal.Decimal)
+	}
+	{
+		key := middleware.ParameterKey{
 			Name: "number_double",
 			In:   "query",
 		}
@@ -511,6 +530,20 @@ func unpackTestQueryParameterParams(packed middleware.Parameters) (params TestQu
 			In:   "query",
 		}
 		params.StringDateArray = packed[key].([]time.Time)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "string_decimal",
+			In:   "query",
+		}
+		params.StringDecimal = packed[key].(decimal.Decimal)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "string_decimal_array",
+			In:   "query",
+		}
+		params.StringDecimalArray = packed[key].([]decimal.Decimal)
 	}
 	{
 		key := middleware.ParameterKey{
@@ -2447,6 +2480,95 @@ func decodeTestQueryParameterParams(args [0]string, argsEscaped bool, r *http.Re
 			Err:  err,
 		}
 	}
+	// Decode query: number_decimal.
+	if err := func() error {
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "number_decimal",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToDecimal(val)
+				if err != nil {
+					return err
+				}
+
+				params.NumberDecimal = c
+				return nil
+			}); err != nil {
+				return err
+			}
+		} else {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "number_decimal",
+			In:   "query",
+			Err:  err,
+		}
+	}
+	// Decode query: number_decimal_array.
+	if err := func() error {
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "number_decimal_array",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				return d.DecodeArray(func(d uri.Decoder) error {
+					var paramsDotNumberDecimalArrayVal decimal.Decimal
+					if err := func() error {
+						val, err := d.DecodeValue()
+						if err != nil {
+							return err
+						}
+
+						c, err := conv.ToDecimal(val)
+						if err != nil {
+							return err
+						}
+
+						paramsDotNumberDecimalArrayVal = c
+						return nil
+					}(); err != nil {
+						return err
+					}
+					params.NumberDecimalArray = append(params.NumberDecimalArray, paramsDotNumberDecimalArrayVal)
+					return nil
+				})
+			}); err != nil {
+				return err
+			}
+			if err := func() error {
+				if params.NumberDecimalArray == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		} else {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "number_decimal_array",
+			In:   "query",
+			Err:  err,
+		}
+	}
 	// Decode query: number_double.
 	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
@@ -3383,6 +3505,95 @@ func decodeTestQueryParameterParams(args [0]string, argsEscaped bool, r *http.Re
 	}(); err != nil {
 		return params, &ogenerrors.DecodeParamError{
 			Name: "string_date_array",
+			In:   "query",
+			Err:  err,
+		}
+	}
+	// Decode query: string_decimal.
+	if err := func() error {
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "string_decimal",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToStringDecimal(val)
+				if err != nil {
+					return err
+				}
+
+				params.StringDecimal = c
+				return nil
+			}); err != nil {
+				return err
+			}
+		} else {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "string_decimal",
+			In:   "query",
+			Err:  err,
+		}
+	}
+	// Decode query: string_decimal_array.
+	if err := func() error {
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "string_decimal_array",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				return d.DecodeArray(func(d uri.Decoder) error {
+					var paramsDotStringDecimalArrayVal decimal.Decimal
+					if err := func() error {
+						val, err := d.DecodeValue()
+						if err != nil {
+							return err
+						}
+
+						c, err := conv.ToStringDecimal(val)
+						if err != nil {
+							return err
+						}
+
+						paramsDotStringDecimalArrayVal = c
+						return nil
+					}(); err != nil {
+						return err
+					}
+					params.StringDecimalArray = append(params.StringDecimalArray, paramsDotStringDecimalArrayVal)
+					return nil
+				})
+			}); err != nil {
+				return err
+			}
+			if err := func() error {
+				if params.StringDecimalArray == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		} else {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "string_decimal_array",
 			In:   "query",
 			Err:  err,
 		}

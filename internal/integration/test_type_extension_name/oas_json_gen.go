@@ -8,22 +8,22 @@ import (
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
-	decimal2 "github.com/ogen-go/ogen/_testdata/testtypes/bar/decimal"
-	"github.com/ogen-go/ogen/_testdata/testtypes/foo/decimal"
+	decimal3 "github.com/ogen-go/ogen/_testdata/testtypes/bar/decimal"
+	decimal2 "github.com/ogen-go/ogen/_testdata/testtypes/foo/decimal"
 	"github.com/ogen-go/ogen/json"
 	"github.com/ogen-go/ogen/validate"
 )
 
-// Encode encodes decimal.Decimal as json.
-func (o OptDecimal) Encode(e *jx.Encoder, format func(*jx.Encoder, decimal.Decimal)) {
+// Encode encodes decimal2.Decimal as json.
+func (o OptDecimal) Encode(e *jx.Encoder, format func(*jx.Encoder, decimal2.Decimal)) {
 	if !o.Set {
 		return
 	}
 	format(e, o.Value)
 }
 
-// Decode decodes decimal.Decimal from json.
-func (o *OptDecimal) Decode(d *jx.Decoder, format func(*jx.Decoder) (decimal.Decimal, error)) error {
+// Decode decodes decimal2.Decimal from json.
+func (o *OptDecimal) Decode(d *jx.Decoder, format func(*jx.Decoder) (decimal2.Decimal, error)) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptDecimal to nil")
 	}
@@ -46,19 +46,19 @@ func (s OptDecimal) MarshalJSON() ([]byte, error) {
 // UnmarshalJSON implements stdjson.Unmarshaler.
 func (s *OptDecimal) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
-	return s.Decode(d, json.DecodeExternal[decimal.Decimal])
+	return s.Decode(d, json.DecodeExternal[decimal2.Decimal])
 }
 
-// Encode encodes decimal2.Decimal as json.
-func (o OptDecimal2) Encode(e *jx.Encoder, format func(*jx.Encoder, decimal2.Decimal)) {
+// Encode encodes decimal3.Decimal as json.
+func (o OptDecimal2) Encode(e *jx.Encoder, format func(*jx.Encoder, decimal3.Decimal)) {
 	if !o.Set {
 		return
 	}
 	format(e, o.Value)
 }
 
-// Decode decodes decimal2.Decimal from json.
-func (o *OptDecimal2) Decode(d *jx.Decoder, format func(*jx.Decoder) (decimal2.Decimal, error)) error {
+// Decode decodes decimal3.Decimal from json.
+func (o *OptDecimal2) Decode(d *jx.Decoder, format func(*jx.Decoder) (decimal3.Decimal, error)) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptDecimal2 to nil")
 	}
@@ -81,7 +81,7 @@ func (s OptDecimal2) MarshalJSON() ([]byte, error) {
 // UnmarshalJSON implements stdjson.Unmarshaler.
 func (s *OptDecimal2) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
-	return s.Decode(d, json.DecodeExternal[decimal2.Decimal])
+	return s.Decode(d, json.DecodeExternal[decimal3.Decimal])
 }
 
 // Encode implements json.Marshaler.
@@ -124,7 +124,7 @@ func (s *OptionalOK) Decode(d *jx.Decoder) error {
 		case "foo":
 			if err := func() error {
 				s.Foo.Reset()
-				if err := s.Foo.Decode(d, json.DecodeExternal[decimal.Decimal]); err != nil {
+				if err := s.Foo.Decode(d, json.DecodeExternal[decimal2.Decimal]); err != nil {
 					return err
 				}
 				return nil
@@ -134,7 +134,7 @@ func (s *OptionalOK) Decode(d *jx.Decoder) error {
 		case "bar":
 			if err := func() error {
 				s.Bar.Reset()
-				if err := s.Bar.Decode(d, json.DecodeExternal[decimal2.Decimal]); err != nil {
+				if err := s.Bar.Decode(d, json.DecodeExternal[decimal3.Decimal]); err != nil {
 					return err
 				}
 				return nil
@@ -201,7 +201,7 @@ func (s *RequiredOK) Decode(d *jx.Decoder) error {
 		case "foo":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				v, err := json.DecodeExternal[decimal.Decimal](d)
+				v, err := json.DecodeExternal[decimal2.Decimal](d)
 				s.Foo = v
 				if err != nil {
 					return err
@@ -213,7 +213,7 @@ func (s *RequiredOK) Decode(d *jx.Decoder) error {
 		case "bar":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				v, err := json.DecodeExternal[decimal2.Decimal](d)
+				v, err := json.DecodeExternal[decimal3.Decimal](d)
 				s.Bar = v
 				if err != nil {
 					return err

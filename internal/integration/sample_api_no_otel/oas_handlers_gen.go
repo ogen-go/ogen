@@ -1955,6 +1955,88 @@ func (s *Server) handleStringIntMapGetRequest(args [0]string, argsEscaped bool, 
 	}
 }
 
+// handleTestDecimalValidationRequest handles testDecimalValidation operation.
+//
+// POST /testDecimalValidation
+func (s *Server) handleTestDecimalValidationRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	statusWriter := &codeRecorder{ResponseWriter: w}
+	w = statusWriter
+	ctx := r.Context()
+
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: TestDecimalValidationOperation,
+			ID:   "testDecimalValidation",
+		}
+	)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeTestDecimalValidationRequest(r)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		defer recordError("DecodeRequest", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
+
+	var response *TestDecimalValidationOK
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:          ctx,
+			OperationName:    TestDecimalValidationOperation,
+			OperationSummary: "",
+			OperationID:      "testDecimalValidation",
+			Body:             request,
+			RawBody:          rawBody,
+			Params:           middleware.Parameters{},
+			Raw:              r,
+		}
+
+		type (
+			Request  = *TestDecimalValidation
+			Params   = struct{}
+			Response = *TestDecimalValidationOK
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				err = s.h.TestDecimalValidation(ctx, request)
+				return response, err
+			},
+		)
+	} else {
+		err = s.h.TestDecimalValidation(ctx, request)
+	}
+	if err != nil {
+		defer recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeTestDecimalValidationResponse(response, w); err != nil {
+		defer recordError("EncodeResponse", err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
+		return
+	}
+}
+
 // handleTestFloatValidationRequest handles testFloatValidation operation.
 //
 // POST /testFloatValidation

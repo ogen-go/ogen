@@ -205,6 +205,13 @@ func (UnimplementedHandler) StringIntMapGet(ctx context.Context) (r *StringIntMa
 	return r, ht.ErrNotImplemented
 }
 
+// TestDecimalValidation implements testDecimalValidation operation.
+//
+// POST /testDecimalValidation
+func (UnimplementedHandler) TestDecimalValidation(ctx context.Context, req *TestDecimalValidation) error {
+	return ht.ErrNotImplemented
+}
+
 // TestFloatValidation implements testFloatValidation operation.
 //
 // POST /testFloatValidation

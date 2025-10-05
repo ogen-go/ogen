@@ -1134,6 +1134,15 @@ func decodeStringIntMapGetResponse(resp *http.Response) (res *StringIntMap, _ er
 	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
+func decodeTestDecimalValidationResponse(resp *http.Response) (res *TestDecimalValidationOK, _ error) {
+	switch resp.StatusCode {
+	case 200:
+		// Code 200.
+		return &TestDecimalValidationOK{}, nil
+	}
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
+}
+
 func decodeTestFloatValidationResponse(resp *http.Response) (res *TestFloatValidationOK, _ error) {
 	switch resp.StatusCode {
 	case 200:
