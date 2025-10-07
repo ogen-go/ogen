@@ -41,7 +41,10 @@ func sortResponseInfos(result []ResponseInfo) {
 		if l.StatusCode != r.StatusCode {
 			return l.StatusCode - r.StatusCode
 		}
-		return strings.Compare(l.ContentType.String(), r.ContentType.String())
+		if cmp := strings.Compare(l.ContentType.String(), r.ContentType.String()); cmp != 0 {
+			return cmp
+		}
+		return strings.Compare(l.Type.Name, r.Type.Name)
 	})
 }
 
