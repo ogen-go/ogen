@@ -445,6 +445,39 @@ func TestNullableOneOf_NonNullablePatterns(t *testing.T) {
 	})
 }
 
+func TestNullableAnyOf_BasicPrimitives(t *testing.T) {
+	primitiveTests := []struct {
+		name         string
+		schemaType   jsonschema.SchemaType
+		format       string
+		expectedType ir.PrimitiveType
+	}{
+		{"string", jsonschema.String, "", ir.String},
+		{"integer", jsonschema.Integer, "", ir.Int},
+		{"int32", jsonschema.Integer, "int32", ir.Int32},
+		{"int64", jsonschema.Integer, "int64", ir.Int64},
+		{"number", jsonschema.Number, "", ir.Float64},
+		{"float", jsonschema.Number, "float", ir.Float32},
+		{"double", jsonschema.Number, "double", ir.Float64},
+		{"boolean", jsonschema.Boolean, "", ir.Bool},
+	}
+
+	for _, tc := range primitiveTests {
+		t.Run(tc.name, func(t *testing.T) {
+			a := require.New(t)
+			s := createTestSchemaGen(nil)
+
+			schema := createNullableAnyOf(createPrimitiveSchema(tc.schemaType, tc.format))
+			result, err := s.generate("Nullable"+tc.name, schema, false)
+
+			a.NoError(err)
+			a.NotNil(result)
+			assertNullablePrimitive(t, result, tc.expectedType)
+			assertNotSum(t, result)
+		})
+	}
+}
+
 func createTestSchemaGen(resolver func(ref jsonschema.Ref) (*ir.Type, bool)) *schemaGen {
 	if resolver == nil {
 		resolver = func(ref jsonschema.Ref) (*ir.Type, bool) { return nil, false }
@@ -453,6 +486,16 @@ func createTestSchemaGen(resolver func(ref jsonschema.Ref) (*ir.Type, bool)) *sc
 	s := newSchemaGen(resolver)
 	s.log = zap.New(core)
 	return s
+}
+
+func createNullableAnyOf(typeSchema *jsonschema.Schema) *jsonschema.Schema {
+	return &jsonschema.Schema{
+		Type: jsonschema.Empty,
+		AnyOf: []*jsonschema.Schema{
+			typeSchema,
+			{Type: jsonschema.Null},
+		},
+	}
 }
 
 func createNullableOneOf(typeSchema *jsonschema.Schema) *jsonschema.Schema {
