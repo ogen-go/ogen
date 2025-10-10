@@ -7,9 +7,10 @@ import (
 )
 
 type BasicAuth struct {
-	Username string
-	Password string
-	Roles    []string
+	Username      string
+	Password      string
+	Roles         []string
+	DisjointRoles []string
 }
 
 // GetUsername returns the value of Username.
@@ -27,6 +28,11 @@ func (s *BasicAuth) GetRoles() []string {
 	return s.Roles
 }
 
+// GetDisjointRoles returns the value of DisjointRoles.
+func (s *BasicAuth) GetDisjointRoles() []string {
+	return s.DisjointRoles
+}
+
 // SetUsername sets the value of Username.
 func (s *BasicAuth) SetUsername(val string) {
 	s.Username = val
@@ -42,9 +48,15 @@ func (s *BasicAuth) SetRoles(val []string) {
 	s.Roles = val
 }
 
+// SetDisjointRoles sets the value of DisjointRoles.
+func (s *BasicAuth) SetDisjointRoles(val []string) {
+	s.DisjointRoles = val
+}
+
 type BearerToken struct {
-	Token string
-	Roles []string
+	Token         string
+	Roles         []string
+	DisjointRoles []string
 }
 
 // GetToken returns the value of Token.
@@ -57,6 +69,11 @@ func (s *BearerToken) GetRoles() []string {
 	return s.Roles
 }
 
+// GetDisjointRoles returns the value of DisjointRoles.
+func (s *BearerToken) GetDisjointRoles() []string {
+	return s.DisjointRoles
+}
+
 // SetToken sets the value of Token.
 func (s *BearerToken) SetToken(val string) {
 	s.Token = val
@@ -67,9 +84,15 @@ func (s *BearerToken) SetRoles(val []string) {
 	s.Roles = val
 }
 
+// SetDisjointRoles sets the value of DisjointRoles.
+func (s *BearerToken) SetDisjointRoles(val []string) {
+	s.DisjointRoles = val
+}
+
 type CookieKey struct {
-	APIKey string
-	Roles  []string
+	APIKey        string
+	Roles         []string
+	DisjointRoles []string
 }
 
 // GetAPIKey returns the value of APIKey.
@@ -82,6 +105,11 @@ func (s *CookieKey) GetRoles() []string {
 	return s.Roles
 }
 
+// GetDisjointRoles returns the value of DisjointRoles.
+func (s *CookieKey) GetDisjointRoles() []string {
+	return s.DisjointRoles
+}
+
 // SetAPIKey sets the value of APIKey.
 func (s *CookieKey) SetAPIKey(val string) {
 	s.APIKey = val
@@ -90,6 +118,11 @@ func (s *CookieKey) SetAPIKey(val string) {
 // SetRoles sets the value of Roles.
 func (s *CookieKey) SetRoles(val []string) {
 	s.Roles = val
+}
+
+// SetDisjointRoles sets the value of DisjointRoles.
+func (s *CookieKey) SetDisjointRoles(val []string) {
+	s.DisjointRoles = val
 }
 
 type Custom struct {
@@ -124,8 +157,9 @@ type CustomSecurityOK struct{}
 type DisjointSecurityOK struct{}
 
 type HeaderKey struct {
-	APIKey string
-	Roles  []string
+	APIKey        string
+	Roles         []string
+	DisjointRoles []string
 }
 
 // GetAPIKey returns the value of APIKey.
@@ -138,6 +172,11 @@ func (s *HeaderKey) GetRoles() []string {
 	return s.Roles
 }
 
+// GetDisjointRoles returns the value of DisjointRoles.
+func (s *HeaderKey) GetDisjointRoles() []string {
+	return s.DisjointRoles
+}
+
 // SetAPIKey sets the value of APIKey.
 func (s *HeaderKey) SetAPIKey(val string) {
 	s.APIKey = val
@@ -148,6 +187,11 @@ func (s *HeaderKey) SetRoles(val []string) {
 	s.Roles = val
 }
 
+// SetDisjointRoles sets the value of DisjointRoles.
+func (s *HeaderKey) SetDisjointRoles(val []string) {
+	s.DisjointRoles = val
+}
+
 // IntersectSecurityOK is response for IntersectSecurity operation.
 type IntersectSecurityOK struct{}
 
@@ -155,8 +199,9 @@ type IntersectSecurityOK struct{}
 type OptionalSecurityOK struct{}
 
 type QueryKey struct {
-	APIKey string
-	Roles  []string
+	APIKey        string
+	Roles         []string
+	DisjointRoles []string
 }
 
 // GetAPIKey returns the value of APIKey.
@@ -169,6 +214,11 @@ func (s *QueryKey) GetRoles() []string {
 	return s.Roles
 }
 
+// GetDisjointRoles returns the value of DisjointRoles.
+func (s *QueryKey) GetDisjointRoles() []string {
+	return s.DisjointRoles
+}
+
 // SetAPIKey sets the value of APIKey.
 func (s *QueryKey) SetAPIKey(val string) {
 	s.APIKey = val
@@ -177,4 +227,9 @@ func (s *QueryKey) SetAPIKey(val string) {
 // SetRoles sets the value of Roles.
 func (s *QueryKey) SetRoles(val []string) {
 	s.Roles = val
+}
+
+// SetDisjointRoles sets the value of DisjointRoles.
+func (s *QueryKey) SetDisjointRoles(val []string) {
+	s.DisjointRoles = val
 }

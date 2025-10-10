@@ -135,7 +135,8 @@ func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) handle{{ $op.Name }}Req
 		{{- range $idx, $s := $securities }}
 		{{- $securityName := $s.Type.Name }}
 		{
-			sctx, ok, err := s.security{{ $securityName }}(ctx, {{ $op.Name }}Operation, r)
+			roles := {{ index $s.Scopes $op.Name | printf "%#v" }}
+			sctx, ok, err := s.security{{ $securityName }}(ctx, {{ $op.Name }}Operation, r, roles)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,

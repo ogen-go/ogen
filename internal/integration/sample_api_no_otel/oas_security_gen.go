@@ -36,7 +36,7 @@ var operationRolesAPIKey = map[string][]string{
 	SecurityTestOperation: []string{},
 }
 
-func (s *Server) securityAPIKey(ctx context.Context, operationName OperationName, req *http.Request) (context.Context, bool, error) {
+func (s *Server) securityAPIKey(ctx context.Context, operationName OperationName, req *http.Request, roles []string) (context.Context, bool, error) {
 	var t APIKey
 	const parameterName = "Api_key"
 	value := req.Header.Get(parameterName)
@@ -45,6 +45,7 @@ func (s *Server) securityAPIKey(ctx context.Context, operationName OperationName
 	}
 	t.APIKey = value
 	t.Roles = operationRolesAPIKey[operationName]
+	t.DisjointRoles = roles
 	rctx, err := s.sec.HandleAPIKey(ctx, operationName, t)
 	if errors.Is(err, ogenerrors.ErrSkipServerSecurity) {
 		return nil, false, nil
