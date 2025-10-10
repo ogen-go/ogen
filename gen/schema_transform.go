@@ -45,7 +45,7 @@ func transformSingleOneOf(schema *jsonschema.Schema) *jsonschema.Schema {
 // if such pattern is detected, this function will return a Nulllable version of the inner schema.
 func transformNullableUnionType(schema *jsonschema.Schema) *jsonschema.Schema {
 	if schema == nil {
-		return schema
+		return nil
 	}
 
 	var schemas []*jsonschema.Schema
