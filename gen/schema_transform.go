@@ -9,7 +9,7 @@ func transformSchema(schema *jsonschema.Schema) *jsonschema.Schema {
 		return nil
 	}
 	schema = transformSingleOneOf(schema)
-	schema = transformNullableOneOf(schema)
+	schema = transformNullableUnionType(schema)
 	return schema
 }
 
@@ -28,7 +28,7 @@ func transformSingleOneOf(schema *jsonschema.Schema) *jsonschema.Schema {
 	return schema
 }
 
-// transformNullableOneOf detects and handles nullable oneOf patterns.
+// transformNullableUnionType detects and handles nullable oneOf/anyOf patterns.
 //
 // nullable oneOf pattern is:
 //
@@ -36,14 +36,31 @@ func transformSingleOneOf(schema *jsonschema.Schema) *jsonschema.Schema {
 //	  - type: "null"
 //	  - <schema>
 //
+// or
+//
+//	anyOf:
+//	  - type: "null"
+//	  - <schema>
+//
 // if such pattern is detected, this function will return a Nulllable version of the inner schema.
-func transformNullableOneOf(schema *jsonschema.Schema) *jsonschema.Schema {
-	if schema == nil || len(schema.OneOf) != 2 {
+func transformNullableUnionType(schema *jsonschema.Schema) *jsonschema.Schema {
+	if schema == nil {
+		return nil
+	}
+
+	var schemas []*jsonschema.Schema
+
+	switch {
+	case len(schema.AnyOf) == 2:
+		schemas = schema.AnyOf
+	case len(schema.OneOf) == 2:
+		schemas = schema.OneOf
+	default:
 		return schema
 	}
 
 	var nullSchema, nonNullSchema *jsonschema.Schema
-	for _, s := range schema.OneOf {
+	for _, s := range schemas {
 		if s != nil {
 			if s.Type == jsonschema.Null {
 				nullSchema = s
