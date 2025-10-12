@@ -140,6 +140,7 @@ func encode{{ $op.Name }}Response(response {{ $op.Responses.GoType }}, w http.Re
 		{{- end }}
 		{{ template "respond/return" $}}
 	{{- else if $type.IsStream }}
+		defer {{ $var }}.Close()
 		{{- if $type.IsBase64Stream }}
 		writer := base64.NewEncoder(base64.StdEncoding, w)
 		defer writer.Close()
