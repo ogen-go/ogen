@@ -137,11 +137,6 @@ func (g *Generator) makeIR(api *openapi.API) error {
 		return errors.Wrap(err, "collect equality specs")
 	}
 
-	// Debug: log how many equality specs were collected
-	if len(g.equalitySpecs) > 0 {
-		g.log.Info("Collected equality specs", zap.Int("count", len(g.equalitySpecs)))
-	}
-
 	return nil
 }
 
