@@ -27,6 +27,8 @@ func (g *Generator) collectFromType(t *ir.Type) {
 			spec := g.createEqualityMethodSpec(t.Item)
 			if spec != nil {
 				g.equalitySpecs = append(g.equalitySpecs, spec)
+				// Also collect specs for all nested types within this item
+				g.collectNestedTypes(t.Item)
 			}
 		}
 	}
@@ -42,6 +44,52 @@ func (g *Generator) collectFromType(t *ir.Type) {
 	if t.Kind == ir.KindSum {
 		for _, variant := range t.SumOf {
 			g.collectFromType(variant)
+		}
+	}
+}
+
+// collectNestedTypes recursively collects all nested types that need Equal/Hash methods
+func (g *Generator) collectNestedTypes(t *ir.Type) {
+	if t == nil {
+		return
+	}
+
+	// Skip if already collected
+	for _, existing := range g.equalitySpecs {
+		if existing.TypeName == t.Name {
+			return
+		}
+	}
+
+	switch t.Kind {
+	case ir.KindStruct:
+		// Check if it's an Optional/Nullable wrapper - look inside
+		name := t.Name
+		if len(name) > 3 && (name[:3] == "Opt" || name[:3] == "Nil") {
+			for _, field := range t.Fields {
+				if field.Name == "Value" {
+					g.collectNestedTypes(field.Type)
+					return
+				}
+			}
+		}
+
+		// Regular struct - create spec and recurse into fields
+		spec := g.createEqualityMethodSpec(t)
+		if spec != nil {
+			g.equalitySpecs = append(g.equalitySpecs, spec)
+		}
+
+		// Recurse into all fields
+		for _, field := range t.Fields {
+			if isNestedObject(field.Type) {
+				g.collectNestedTypes(field.Type)
+			}
+		}
+
+	case ir.KindAlias:
+		if t.AliasTo != nil {
+			g.collectNestedTypes(t.AliasTo)
 		}
 	}
 }
@@ -138,6 +186,18 @@ func isNestedObject(t *ir.Type) bool {
 
 	switch t.Kind {
 	case ir.KindStruct:
+		// Check if this is an Optional/Nullable wrapper
+		name := t.Name
+		if len(name) > 3 && (name[:3] == "Opt" || name[:3] == "Nil") {
+			// Look for a Value field that is a nested object
+			for _, field := range t.Fields {
+				if field.Name == "Value" {
+					return isNestedObject(field.Type)
+				}
+			}
+			return false
+		}
+		// Regular struct - it's a nested object
 		return true
 	case ir.KindAlias:
 		if t.AliasTo != nil {

@@ -86,9 +86,21 @@ func (g *Generator) writeFieldComparison(b *strings.Builder, field ir.FieldEqual
 		fmt.Fprintf(b, "\t\treturn false\n")
 		fmt.Fprintf(b, "\t}\n")
 		fmt.Fprintf(b, "\tif a.%s.Set {\n", field.FieldName)
-		fmt.Fprintf(b, "\t\tif a.%s.Value != b.%s.Value {\n", field.FieldName, field.FieldName)
-		fmt.Fprintf(b, "\t\t\treturn false\n")
-		fmt.Fprintf(b, "\t\t}\n")
+		if field.IsNested {
+			// Optional wrapper around nested object - call Equal()
+			if hasDepth {
+				fmt.Fprintf(b, "\t\tif !a.%s.Value.Equal(b.%s.Value, depth+1) {\n", field.FieldName, field.FieldName)
+			} else {
+				fmt.Fprintf(b, "\t\tif !a.%s.Value.Equal(b.%s.Value) {\n", field.FieldName, field.FieldName)
+			}
+			fmt.Fprintf(b, "\t\t\treturn false\n")
+			fmt.Fprintf(b, "\t\t}\n")
+		} else {
+			// Optional wrapper around primitive - use !=
+			fmt.Fprintf(b, "\t\tif a.%s.Value != b.%s.Value {\n", field.FieldName, field.FieldName)
+			fmt.Fprintf(b, "\t\t\treturn false\n")
+			fmt.Fprintf(b, "\t\t}\n")
+		}
 		fmt.Fprintf(b, "\t}\n")
 
 	case ir.FieldTypeNullable:
@@ -98,9 +110,21 @@ func (g *Generator) writeFieldComparison(b *strings.Builder, field ir.FieldEqual
 		fmt.Fprintf(b, "\t\treturn false\n")
 		fmt.Fprintf(b, "\t}\n")
 		fmt.Fprintf(b, "\tif !a.%s.Null {\n", field.FieldName)
-		fmt.Fprintf(b, "\t\tif a.%s.Value != b.%s.Value {\n", field.FieldName, field.FieldName)
-		fmt.Fprintf(b, "\t\t\treturn false\n")
-		fmt.Fprintf(b, "\t\t}\n")
+		if field.IsNested {
+			// Nullable wrapper around nested object - call Equal()
+			if hasDepth {
+				fmt.Fprintf(b, "\t\tif !a.%s.Value.Equal(b.%s.Value, depth+1) {\n", field.FieldName, field.FieldName)
+			} else {
+				fmt.Fprintf(b, "\t\tif !a.%s.Value.Equal(b.%s.Value) {\n", field.FieldName, field.FieldName)
+			}
+			fmt.Fprintf(b, "\t\t\treturn false\n")
+			fmt.Fprintf(b, "\t\t}\n")
+		} else {
+			// Nullable wrapper around primitive - use !=
+			fmt.Fprintf(b, "\t\tif a.%s.Value != b.%s.Value {\n", field.FieldName, field.FieldName)
+			fmt.Fprintf(b, "\t\t\treturn false\n")
+			fmt.Fprintf(b, "\t\t}\n")
+		}
 		fmt.Fprintf(b, "\t}\n")
 
 	case ir.FieldTypePointer:
@@ -210,7 +234,14 @@ func (g *Generator) writeFieldHash(b *strings.Builder, field ir.FieldHashSpec) {
 		fmt.Fprintf(b, "\t// Hash optional field: %s\n", field.FieldName)
 		fmt.Fprintf(b, "\tif a.%s.Set {\n", field.FieldName)
 		fmt.Fprintf(b, "\t\th.Write([]byte{1})\n")
-		fmt.Fprintf(b, "\t\th.Write([]byte(fmt.Sprintf(\"%%v\", a.%s.Value)))\n", field.FieldName)
+		if field.IsNested {
+			// Optional wrapper around nested object - call Hash()
+			fmt.Fprintf(b, "\t\tnestedHash%s := a.%s.Value.Hash()\n", field.FieldName, field.FieldName)
+			fmt.Fprintf(b, "\t\tbinary.Write(h, binary.LittleEndian, nestedHash%s)\n", field.FieldName)
+		} else {
+			// Optional wrapper around primitive - format value
+			fmt.Fprintf(b, "\t\th.Write([]byte(fmt.Sprintf(\"%%v\", a.%s.Value)))\n", field.FieldName)
+		}
 		fmt.Fprintf(b, "\t} else {\n")
 		fmt.Fprintf(b, "\t\th.Write([]byte{0})\n")
 		fmt.Fprintf(b, "\t}\n")
@@ -222,7 +253,14 @@ func (g *Generator) writeFieldHash(b *strings.Builder, field ir.FieldHashSpec) {
 		fmt.Fprintf(b, "\t\th.Write([]byte{0})\n")
 		fmt.Fprintf(b, "\t} else {\n")
 		fmt.Fprintf(b, "\t\th.Write([]byte{1})\n")
-		fmt.Fprintf(b, "\t\th.Write([]byte(fmt.Sprintf(\"%%v\", a.%s.Value)))\n", field.FieldName)
+		if field.IsNested {
+			// Nullable wrapper around nested object - call Hash()
+			fmt.Fprintf(b, "\t\tnestedHash%s := a.%s.Value.Hash()\n", field.FieldName, field.FieldName)
+			fmt.Fprintf(b, "\t\tbinary.Write(h, binary.LittleEndian, nestedHash%s)\n", field.FieldName)
+		} else {
+			// Nullable wrapper around primitive - format value
+			fmt.Fprintf(b, "\t\th.Write([]byte(fmt.Sprintf(\"%%v\", a.%s.Value)))\n", field.FieldName)
+		}
 		fmt.Fprintf(b, "\t}\n")
 
 	case ir.FieldTypePointer:
