@@ -358,6 +358,10 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 		grp.Go(func() error {
 			return g.generateEqualityMethodsWithFS(fs, pkgName)
 		})
+		// Generate validateUnique[TypeName]() functions for runtime validation
+		grp.Go(func() error {
+			return g.generateUniqueValidators(fs, pkgName)
+		})
 	}
 
 	return grp.Wait()

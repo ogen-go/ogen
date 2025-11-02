@@ -59,9 +59,15 @@
 			return errors.Wrap(err, "array")
 		}
 		{{- if $v.UniqueItems }}
+			{{- if $t.Item.IsStruct }}
+		if err := validateUnique{{ $t.Item.Name }}({{ $.Var }}); err != nil {
+			return errors.Wrap(err, "array")
+		}
+			{{- else }}
 		if err := validate.UniqueItems({{ $.Var }}); err != nil {
 			return errors.Wrap(err, "array")
 		}
+			{{- end }}
 		{{- end }}
 	{{- end }}
 
