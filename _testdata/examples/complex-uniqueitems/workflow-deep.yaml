@@ -1,0 +1,121 @@
+openapi: 3.0.3
+info:
+  title: Workflow Deep Nesting API (7-Level Test)
+  version: 1.0.0
+  description: |
+    Deep nesting test schema for complex uniqueItems validation.
+    Tests 7-level nesting based on JIRA's workflow structure.
+    Validates depth tracking and depth limit enforcement.
+
+paths:
+  /workflow/transitions:
+    post:
+      operationId: createWorkflowTransitions
+      summary: Create workflow transitions
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - transitions
+              properties:
+                transitions:
+                  type: array
+                  uniqueItems: true
+                  items:
+                    $ref: '#/components/schemas/WorkflowTransition'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  created:
+                    type: integer
+
+components:
+  schemas:
+    WorkflowTransition:
+      type: object
+      description: Level 1 - Workflow transition definition
+      required:
+        - id
+        - name
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        fromStatusId:
+          type: string
+        toStatusId:
+          type: string
+        conditions:
+          $ref: '#/components/schemas/ConditionGroup'
+
+    ConditionGroup:
+      type: object
+      description: Level 2 - Group of conditions
+      properties:
+        operator:
+          type: string
+          enum: [AND, OR]
+        condition:
+          $ref: '#/components/schemas/Condition'
+
+    Condition:
+      type: object
+      description: Level 3 - Individual condition
+      properties:
+        type:
+          type: string
+        negated:
+          type: boolean
+        configuration:
+          $ref: '#/components/schemas/RuleConfiguration'
+
+    RuleConfiguration:
+      type: object
+      description: Level 4 - Rule configuration
+      properties:
+        ruleKey:
+          type: string
+        parameterGroup:
+          $ref: '#/components/schemas/ParameterGroup'
+
+    ParameterGroup:
+      type: object
+      description: Level 5 - Group of parameters
+      properties:
+        groupName:
+          type: string
+        parameter:
+          $ref: '#/components/schemas/Parameter'
+
+    Parameter:
+      type: object
+      description: Level 6 - Individual parameter
+      properties:
+        key:
+          type: string
+        value:
+          $ref: '#/components/schemas/ParameterValue'
+
+    ParameterValue:
+      type: object
+      description: Level 7 - Parameter value (deepest level)
+      properties:
+        stringValue:
+          type: string
+        numberValue:
+          type: number
+        booleanValue:
+          type: boolean
+        metadata:
+          type: object
+          additionalProperties:
+            type: string
