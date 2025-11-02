@@ -1,0 +1,169 @@
+openapi: 3.0.3
+info:
+  title: JIRA API v3 Subset - Workflow Operations
+  version: 3.0.0
+  description: |
+    Minimal subset of JIRA API v3 focusing on operations that use
+    complex uniqueItems validation (previously blocked in ogen).
+
+    This demonstrates real-world schema patterns from Atlassian JIRA
+    that required complex object equality checking.
+
+servers:
+  - url: https://your-domain.atlassian.net/rest/api/3
+
+paths:
+  /workflow/transitions/rules:
+    put:
+      operationId: updateWorkflowTransitionRules
+      summary: Update workflow transition rules
+      description: |
+        Updates workflow transition rules. This operation was previously blocked
+        because it uses uniqueItems on an array of complex WorkflowTransitionRule objects.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WorkflowTransitionRules'
+      responses:
+        '200':
+          description: Returned if the request is successful.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkflowTransitionRulesUpdate'
+        '400':
+          description: Bad request
+
+  /workflowscheme/{id}/workflow:
+    put:
+      operationId: updateWorkflowMapping
+      summary: Set workflow scheme mappings
+      description: |
+        Sets workflow mappings for a workflow scheme. Uses uniqueItems
+        on array of IssueTypesWorkflowMapping objects.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WorkflowSchemeAssociations'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkflowScheme'
+        '400':
+          description: Bad request
+
+components:
+  schemas:
+    WorkflowTransitionRules:
+      type: object
+      required:
+        - workflowId
+        - postFunctions
+        - conditions
+        - validators
+      properties:
+        workflowId:
+          type: string
+        postFunctions:
+          type: array
+          uniqueItems: true
+          items:
+            $ref: '#/components/schemas/WorkflowTransitionRule'
+        conditions:
+          type: array
+          uniqueItems: true
+          items:
+            $ref: '#/components/schemas/WorkflowTransitionRule'
+        validators:
+          type: array
+          uniqueItems: true
+          items:
+            $ref: '#/components/schemas/WorkflowTransitionRule'
+
+    WorkflowTransitionRule:
+      type: object
+      required:
+        - ruleKey
+      properties:
+        ruleKey:
+          type: string
+          description: The key of the rule
+        configuration:
+          type: object
+          additionalProperties:
+            type: string
+          description: Rule configuration parameters
+        id:
+          type: string
+          description: The ID of the transition rule
+
+    WorkflowTransitionRulesUpdate:
+      type: object
+      properties:
+        workflows:
+          type: array
+          items:
+            $ref: '#/components/schemas/WorkflowTransitionRules'
+
+    WorkflowSchemeAssociations:
+      type: object
+      required:
+        - issueTypeMappings
+      properties:
+        issueTypeMappings:
+          type: array
+          uniqueItems: true
+          items:
+            $ref: '#/components/schemas/IssueTypesWorkflowMapping'
+        defaultWorkflowId:
+          type: string
+
+    IssueTypesWorkflowMapping:
+      type: object
+      required:
+        - workflowId
+      properties:
+        workflowId:
+          type: string
+          description: The ID of the workflow
+        issueTypes:
+          type: array
+          items:
+            type: string
+          description: The list of issue type IDs
+        updateDraftIfNeeded:
+          type: boolean
+          description: Whether to update draft
+
+    WorkflowScheme:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        description:
+          type: string
+        defaultWorkflow:
+          type: string
+        issueTypeMappings:
+          type: object
+          additionalProperties:
+            type: string
+        draft:
+          type: boolean
+        self:
+          type: string
