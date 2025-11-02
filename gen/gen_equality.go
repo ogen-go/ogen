@@ -95,6 +95,9 @@ func (g *Generator) writeFieldComparison(b *strings.Builder, field ir.FieldEqual
 			}
 			fmt.Fprintf(b, "\t\t\treturn false\n")
 			fmt.Fprintf(b, "\t\t}\n")
+		} else if field.IsMap {
+			// Optional wrapper around map - need custom comparison
+			g.writeMapComparison(b, fmt.Sprintf("a.%s.Value", field.FieldName), fmt.Sprintf("b.%s.Value", field.FieldName), "\t\t")
 		} else {
 			// Optional wrapper around primitive - use !=
 			fmt.Fprintf(b, "\t\tif a.%s.Value != b.%s.Value {\n", field.FieldName, field.FieldName)
@@ -329,4 +332,16 @@ func snakeCase(s string) string {
 		result.WriteRune(r)
 	}
 	return strings.ToLower(result.String())
+}
+
+// writeMapComparison generates map comparison code
+func (g *Generator) writeMapComparison(b *strings.Builder, aMap, bMap, indent string) {
+	fmt.Fprintf(b, "%sif len(%s) != len(%s) {\n", indent, aMap, bMap)
+	fmt.Fprintf(b, "%s\treturn false\n", indent)
+	fmt.Fprintf(b, "%s}\n", indent)
+	fmt.Fprintf(b, "%sfor k, v := range %s {\n", indent, aMap)
+	fmt.Fprintf(b, "%s\tif bv, ok := %s[k]; !ok || v != bv {\n", indent, bMap)
+	fmt.Fprintf(b, "%s\t\treturn false\n", indent)
+	fmt.Fprintf(b, "%s\t}\n", indent)
+	fmt.Fprintf(b, "%s}\n", indent)
 }

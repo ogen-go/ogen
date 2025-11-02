@@ -29,6 +29,9 @@ type FieldEqualitySpec struct {
 
 	// IsNested indicates if this field is a nested object requiring recursive Equal() call
 	IsNested bool
+
+	// IsMap indicates if the field (or wrapped value for Optional/Nullable) is a map type
+	IsMap bool
 }
 
 // FieldTypeCategory classifies fields for equality comparison.

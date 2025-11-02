@@ -8,14 +8,15 @@ import (
 // for complex uniqueItems validation.
 func (g *Generator) collectEqualitySpecs() error {
 	// Iterate through all types to find arrays with complex uniqueItems
+	visited := make(map[string]bool)
 	for _, t := range g.tstorage.types {
-		g.collectFromType(t)
+		g.collectFromType(t, visited)
 	}
 	return nil
 }
 
 // collectFromType recursively checks a type and its fields for uniqueItems arrays
-func (g *Generator) collectFromType(t *ir.Type) {
+func (g *Generator) collectFromType(t *ir.Type, visited map[string]bool) {
 	if t == nil {
 		return
 	}
@@ -27,69 +28,98 @@ func (g *Generator) collectFromType(t *ir.Type) {
 			spec := g.createEqualityMethodSpec(t.Item)
 			if spec != nil {
 				g.equalitySpecs = append(g.equalitySpecs, spec)
-				// Also collect specs for all nested types within this item
-				g.collectNestedTypes(t.Item)
 			}
+			// Collect specs for all nested types within this item
+			g.collectNestedTypes(t.Item, visited)
 		}
 	}
 
 	// Recursively check fields of structs
 	if t.Kind == ir.KindStruct {
 		for _, field := range t.Fields {
-			g.collectFromType(field.Type)
+			g.collectFromType(field.Type, visited)
 		}
 	}
 
 	// Check sum type variants
 	if t.Kind == ir.KindSum {
 		for _, variant := range t.SumOf {
-			g.collectFromType(variant)
+			g.collectFromType(variant, visited)
 		}
 	}
 }
 
 // collectNestedTypes recursively collects all nested types that need Equal/Hash methods
-func (g *Generator) collectNestedTypes(t *ir.Type) {
+func (g *Generator) collectNestedTypes(t *ir.Type, visited map[string]bool) {
 	if t == nil {
 		return
 	}
 
-	// Skip if already collected
-	for _, existing := range g.equalitySpecs {
-		if existing.TypeName == t.Name {
-			return
-		}
+	// Prevent infinite recursion on circular dependencies
+	if t.Name != "" && visited[t.Name] {
+		return
 	}
 
 	switch t.Kind {
+	case ir.KindGeneric:
+		// Generic types like OptT, NilT - unwrap to the underlying type
+		if t.GenericOf != nil {
+			g.collectNestedTypes(t.GenericOf, visited)
+		}
+		return
+
 	case ir.KindStruct:
-		// Check if it's an Optional/Nullable wrapper - look inside
+		// Check if it's an Optional/Nullable wrapper - unwrap and recurse
 		name := t.Name
 		if len(name) > 3 && (name[:3] == "Opt" || name[:3] == "Nil") {
 			for _, field := range t.Fields {
 				if field.Name == "Value" {
-					g.collectNestedTypes(field.Type)
+					// Recursively process the wrapped type (don't mark wrapper as visited)
+					g.collectNestedTypes(field.Type, visited)
 					return
 				}
 			}
+			return
 		}
 
-		// Regular struct - create spec and recurse into fields
-		spec := g.createEqualityMethodSpec(t)
-		if spec != nil {
-			g.equalitySpecs = append(g.equalitySpecs, spec)
+		// Mark as visited to prevent infinite recursion
+		if t.Name != "" {
+			visited[t.Name] = true
 		}
 
-		// Recurse into all fields
-		for _, field := range t.Fields {
-			if isNestedObject(field.Type) {
-				g.collectNestedTypes(field.Type)
+		// Check if already collected
+		alreadyExists := false
+		for _, existing := range g.equalitySpecs {
+			if existing.TypeName == t.Name {
+				alreadyExists = true
+				break
 			}
+		}
+
+		// Regular struct - create spec if not already exists
+		if !alreadyExists {
+			spec := g.createEqualityMethodSpec(t)
+			if spec != nil {
+				g.equalitySpecs = append(g.equalitySpecs, spec)
+				// Debug: log collection
+			}
+		}
+
+		// Recurse into all fields to find more nested types
+		// Debug: log field traversal
+		for _, field := range t.Fields {
+			g.collectNestedTypes(field.Type, visited)
+		}
+
+	case ir.KindArray:
+		// Arrays might contain nested objects
+		if t.Item != nil {
+			g.collectNestedTypes(t.Item, visited)
 		}
 
 	case ir.KindAlias:
 		if t.AliasTo != nil {
-			g.collectNestedTypes(t.AliasTo)
+			g.collectNestedTypes(t.AliasTo, visited)
 		}
 	}
 }
@@ -142,11 +172,21 @@ func (g *Generator) createEqualityMethodSpec(t *ir.Type) *ir.EqualityMethodSpec 
 	// Populate fields for struct types
 	if t.Kind == ir.KindStruct {
 		for _, field := range t.Fields {
+			// Unwrap to get the actual type for GoType
+			unwrapped := unwrapOptional(field.Type)
+			goType := field.Type.Go()
+			isMap := false
+			if unwrapped != nil && unwrapped != field.Type {
+				goType = unwrapped.Go() // Use unwrapped type for better type detection
+				isMap = unwrapped.Kind == ir.KindMap
+			}
+
 			fieldSpec := ir.FieldEqualitySpec{
 				FieldName: field.Name,
 				FieldType: categorizeFieldType(field.Type),
-				GoType:    field.Type.Go(),
+				GoType:    goType,
 				IsNested:  isNestedObject(field.Type),
+				IsMap:     isMap,
 			}
 			spec.Fields = append(spec.Fields, fieldSpec)
 		}
@@ -156,26 +196,39 @@ func (g *Generator) createEqualityMethodSpec(t *ir.Type) *ir.EqualityMethodSpec 
 }
 
 // hasNestedObjects checks if a type contains nested objects requiring depth tracking
+// For simplicity and consistency, all struct types that will have Equal() methods
+// should have depth tracking. This ensures uniform Equal() signatures.
 func hasNestedObjects(t *ir.Type) bool {
 	if t == nil {
 		return false
 	}
 
-	if t.Kind != ir.KindStruct {
-		return false
+	// All struct types get depth tracking for consistent Equal() signatures
+	// This simplifies code generation and calling conventions
+	return t.Kind == ir.KindStruct
+}
+
+// unwrapOptional unwraps Generic optional/nullable types to get the underlying type
+func unwrapOptional(t *ir.Type) *ir.Type {
+	if t == nil {
+		return nil
 	}
 
-	for _, field := range t.Fields {
-		if isNestedObject(field.Type) {
-			return true
-		}
-		// Check for arrays or maps of nested objects
-		if field.Type.Kind == ir.KindArray && isNestedObject(field.Type.Item) {
-			return true
+	// Unwrap generic types (OptT, NilT)
+	if t.Kind == ir.KindGeneric && t.GenericOf != nil {
+		return t.GenericOf
+	}
+
+	// Unwrap struct-based optional wrappers
+	if t.Kind == ir.KindStruct && len(t.Name) > 3 && (t.Name[:3] == "Opt" || t.Name[:3] == "Nil") {
+		for _, field := range t.Fields {
+			if field.Name == "Value" {
+				return field.Type
+			}
 		}
 	}
 
-	return false
+	return t
 }
 
 // isNestedObject checks if a type is a nested object (struct)
@@ -185,6 +238,12 @@ func isNestedObject(t *ir.Type) bool {
 	}
 
 	switch t.Kind {
+	case ir.KindGeneric:
+		// Generic types like OptT, NilT - check if they wrap a nested object
+		if t.GenericOf != nil {
+			return isNestedObject(t.GenericOf)
+		}
+		return false
 	case ir.KindStruct:
 		// Check if this is an Optional/Nullable wrapper
 		name := t.Name
@@ -226,6 +285,21 @@ func categorizeFieldType(t *ir.Type) ir.FieldTypeCategory {
 		default:
 			return ir.FieldTypePrimitive
 		}
+
+	case ir.KindGeneric:
+		// Generic types like OptT, NilT - check by name
+		name := t.Name
+		if len(name) > 3 && name[:3] == "Opt" {
+			return ir.FieldTypeOptional
+		}
+		if len(name) > 3 && name[:3] == "Nil" {
+			return ir.FieldTypeNullable
+		}
+		// Other generic types - check the underlying type
+		if t.GenericOf != nil {
+			return categorizeFieldType(t.GenericOf)
+		}
+		return ir.FieldTypePrimitive
 
 	case ir.KindStruct:
 		// Check if this is an optional/nullable wrapper type
