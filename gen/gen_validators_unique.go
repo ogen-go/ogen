@@ -44,12 +44,24 @@ func (g *Generator) writeValidateUnique(b *strings.Builder, spec *ir.EqualityMet
 	typeName := spec.TypeName
 
 	fmt.Fprintf(b, "// validateUnique%s checks for duplicate items in a slice using hash-based detection.\n", typeName)
-	fmt.Fprintf(b, "func validateUnique%s(items []%s) error {\n", typeName, typeName)
+	fmt.Fprintf(b, "func validateUnique%s(items []%s) (err error) {\n", typeName, typeName)
 
 	// Early return for empty or single-element arrays
 	fmt.Fprintf(b, "\tif len(items) <= 1 {\n")
 	fmt.Fprintf(b, "\t\treturn nil\n")
 	fmt.Fprintf(b, "\t}\n\n")
+
+	// Depth limit error recovery - use named return value
+	fmt.Fprintf(b, "\t// Recover from depth limit panics during Equal() calls\n")
+	fmt.Fprintf(b, "\tdefer func() {\n")
+	fmt.Fprintf(b, "\t\tif r := recover(); r != nil {\n")
+	fmt.Fprintf(b, "\t\t\tif e, ok := r.(*validate.DepthLimitError); ok {\n")
+	fmt.Fprintf(b, "\t\t\t\terr = e\n")
+	fmt.Fprintf(b, "\t\t\t} else {\n")
+	fmt.Fprintf(b, "\t\t\t\tpanic(r) // Re-panic if not a depth limit error\n")
+	fmt.Fprintf(b, "\t\t\t}\n")
+	fmt.Fprintf(b, "\t\t}\n")
+	fmt.Fprintf(b, "\t}()\n\n")
 
 	// Hash bucket structure: map[uint64][]entry
 	fmt.Fprintf(b, "\t// Hash bucket structure for O(n) duplicate detection\n")
@@ -58,19 +70,6 @@ func (g *Generator) writeValidateUnique(b *strings.Builder, spec *ir.EqualityMet
 	fmt.Fprintf(b, "\t\tindex int\n")
 	fmt.Fprintf(b, "\t}\n")
 	fmt.Fprintf(b, "\tbuckets := make(map[uint64][]entry, len(items))\n\n")
-
-	// Depth limit error recovery
-	fmt.Fprintf(b, "\t// Recover from depth limit panics during Equal() calls\n")
-	fmt.Fprintf(b, "\tvar depthErr error\n")
-	fmt.Fprintf(b, "\tdefer func() {\n")
-	fmt.Fprintf(b, "\t\tif r := recover(); r != nil {\n")
-	fmt.Fprintf(b, "\t\t\tif e, ok := r.(*validate.DepthLimitError); ok {\n")
-	fmt.Fprintf(b, "\t\t\t\tdepthErr = e\n")
-	fmt.Fprintf(b, "\t\t\t} else {\n")
-	fmt.Fprintf(b, "\t\t\t\tpanic(r) // Re-panic if not a depth limit error\n")
-	fmt.Fprintf(b, "\t\t\t}\n")
-	fmt.Fprintf(b, "\t\t}\n")
-	fmt.Fprintf(b, "\t}()\n\n")
 
 	// Hash-based duplicate detection loop
 	fmt.Fprintf(b, "\t// Check each item for duplicates\n")
@@ -96,11 +95,6 @@ func (g *Generator) writeValidateUnique(b *strings.Builder, spec *ir.EqualityMet
 
 	fmt.Fprintf(b, "\t\t// No duplicate found, add to bucket\n")
 	fmt.Fprintf(b, "\t\tbuckets[hash] = append(bucket, entry{item: item, index: i})\n")
-	fmt.Fprintf(b, "\t}\n\n")
-
-	// Check for depth errors
-	fmt.Fprintf(b, "\tif depthErr != nil {\n")
-	fmt.Fprintf(b, "\t\treturn depthErr\n")
 	fmt.Fprintf(b, "\t}\n\n")
 
 	fmt.Fprintf(b, "\treturn nil\n")

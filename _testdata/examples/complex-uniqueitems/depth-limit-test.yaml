@@ -1,0 +1,127 @@
+openapi: 3.0.3
+info:
+  title: Depth Limit Test API
+  version: 1.0.0
+  description: |
+    Tests depth limit enforcement for uniqueItems validation.
+    Creates 12 levels of nesting to trigger DepthLimitError (limit is 10).
+
+paths:
+  /test/items:
+    post:
+      operationId: createItems
+      summary: Create deeply nested items
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - items
+              properties:
+                items:
+                  type: array
+                  uniqueItems: true
+                  items:
+                    $ref: '#/components/schemas/Level1'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  created:
+                    type: integer
+
+components:
+  schemas:
+    Level1:
+      type: object
+      description: Level 1 of 12
+      required:
+        - id
+      properties:
+        id:
+          type: string
+        nested:
+          $ref: '#/components/schemas/Level2'
+
+    Level2:
+      type: object
+      description: Level 2 of 12
+      properties:
+        nested:
+          $ref: '#/components/schemas/Level3'
+
+    Level3:
+      type: object
+      description: Level 3 of 12
+      properties:
+        nested:
+          $ref: '#/components/schemas/Level4'
+
+    Level4:
+      type: object
+      description: Level 4 of 12
+      properties:
+        nested:
+          $ref: '#/components/schemas/Level5'
+
+    Level5:
+      type: object
+      description: Level 5 of 12
+      properties:
+        nested:
+          $ref: '#/components/schemas/Level6'
+
+    Level6:
+      type: object
+      description: Level 6 of 12
+      properties:
+        nested:
+          $ref: '#/components/schemas/Level7'
+
+    Level7:
+      type: object
+      description: Level 7 of 12
+      properties:
+        nested:
+          $ref: '#/components/schemas/Level8'
+
+    Level8:
+      type: object
+      description: Level 8 of 12
+      properties:
+        nested:
+          $ref: '#/components/schemas/Level9'
+
+    Level9:
+      type: object
+      description: Level 9 of 12
+      properties:
+        nested:
+          $ref: '#/components/schemas/Level10'
+
+    Level10:
+      type: object
+      description: Level 10 of 12
+      properties:
+        nested:
+          $ref: '#/components/schemas/Level11'
+
+    Level11:
+      type: object
+      description: Level 11 of 12
+      properties:
+        nested:
+          $ref: '#/components/schemas/Level12'
+
+    Level12:
+      type: object
+      description: Level 12 of 12 (deepest level)
+      properties:
+        value:
+          type: string

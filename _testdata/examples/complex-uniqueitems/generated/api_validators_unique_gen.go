@@ -7,10 +7,21 @@ import (
 )
 
 // validateUniqueWorkflowStatus checks for duplicate items in a slice using hash-based detection.
-func validateUniqueWorkflowStatus(items []WorkflowStatus) error {
+func validateUniqueWorkflowStatus(items []WorkflowStatus) (err error) {
 	if len(items) <= 1 {
 		return nil
 	}
+
+	// Recover from depth limit panics during Equal() calls
+	defer func() {
+		if r := recover(); r != nil {
+			if e, ok := r.(*validate.DepthLimitError); ok {
+				err = e
+			} else {
+				panic(r) // Re-panic if not a depth limit error
+			}
+		}
+	}()
 
 	// Hash bucket structure for O(n) duplicate detection
 	type entry struct {
@@ -19,18 +30,6 @@ func validateUniqueWorkflowStatus(items []WorkflowStatus) error {
 	}
 	buckets := make(map[uint64][]entry, len(items))
 
-	// Recover from depth limit panics during Equal() calls
-	var depthErr error
-	defer func() {
-		if r := recover(); r != nil {
-			if e, ok := r.(*validate.DepthLimitError); ok {
-				depthErr = e
-			} else {
-				panic(r) // Re-panic if not a depth limit error
-			}
-		}
-	}()
-
 	// Check each item for duplicates
 	for i, item := range items {
 		hash := item.Hash()
@@ -49,18 +48,25 @@ func validateUniqueWorkflowStatus(items []WorkflowStatus) error {
 		buckets[hash] = append(bucket, entry{item: item, index: i})
 	}
 
-	if depthErr != nil {
-		return depthErr
-	}
-
 	return nil
 }
 
 // validateUniqueStatusProperties checks for duplicate items in a slice using hash-based detection.
-func validateUniqueStatusProperties(items []StatusProperties) error {
+func validateUniqueStatusProperties(items []StatusProperties) (err error) {
 	if len(items) <= 1 {
 		return nil
 	}
+
+	// Recover from depth limit panics during Equal() calls
+	defer func() {
+		if r := recover(); r != nil {
+			if e, ok := r.(*validate.DepthLimitError); ok {
+				err = e
+			} else {
+				panic(r) // Re-panic if not a depth limit error
+			}
+		}
+	}()
 
 	// Hash bucket structure for O(n) duplicate detection
 	type entry struct {
@@ -69,18 +75,6 @@ func validateUniqueStatusProperties(items []StatusProperties) error {
 	}
 	buckets := make(map[uint64][]entry, len(items))
 
-	// Recover from depth limit panics during Equal() calls
-	var depthErr error
-	defer func() {
-		if r := recover(); r != nil {
-			if e, ok := r.(*validate.DepthLimitError); ok {
-				depthErr = e
-			} else {
-				panic(r) // Re-panic if not a depth limit error
-			}
-		}
-	}()
-
 	// Check each item for duplicates
 	for i, item := range items {
 		hash := item.Hash()
@@ -97,10 +91,6 @@ func validateUniqueStatusProperties(items []StatusProperties) error {
 
 		// No duplicate found, add to bucket
 		buckets[hash] = append(bucket, entry{item: item, index: i})
-	}
-
-	if depthErr != nil {
-		return depthErr
 	}
 
 	return nil
