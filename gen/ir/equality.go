@@ -32,6 +32,9 @@ type FieldEqualitySpec struct {
 
 	// IsMap indicates if the field (or wrapped value for Optional/Nullable) is a map type
 	IsMap bool
+
+	// IsArrayOfStructs indicates if this is an array field where elements are structs
+	IsArrayOfStructs bool
 }
 
 // FieldTypeCategory classifies fields for equality comparison.

@@ -149,7 +149,17 @@ func (g *Generator) writeFieldComparison(b *strings.Builder, field ir.FieldEqual
 		fmt.Fprintf(b, "\t\treturn false\n")
 		fmt.Fprintf(b, "\t}\n")
 		fmt.Fprintf(b, "\tfor i := range a.%s {\n", field.FieldName)
-		fmt.Fprintf(b, "\t\tif a.%s[i] != b.%s[i] {\n", field.FieldName, field.FieldName)
+		// Check if array elements are structs that need Equal() calls
+		if field.IsArrayOfStructs {
+			if hasDepth {
+				fmt.Fprintf(b, "\t\tif !a.%s[i].Equal(b.%s[i], depth+1) {\n", field.FieldName, field.FieldName)
+			} else {
+				fmt.Fprintf(b, "\t\tif !a.%s[i].Equal(b.%s[i]) {\n", field.FieldName, field.FieldName)
+			}
+		} else {
+			// Primitive elements can use !=
+			fmt.Fprintf(b, "\t\tif a.%s[i] != b.%s[i] {\n", field.FieldName, field.FieldName)
+		}
 		fmt.Fprintf(b, "\t\t\treturn false\n")
 		fmt.Fprintf(b, "\t\t}\n")
 		fmt.Fprintf(b, "\t}\n")

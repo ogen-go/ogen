@@ -176,17 +176,28 @@ func (g *Generator) createEqualityMethodSpec(t *ir.Type) *ir.EqualityMethodSpec 
 			unwrapped := unwrapOptional(field.Type)
 			goType := field.Type.Go()
 			isMap := false
+			isArrayOfStructs := false
+
 			if unwrapped != nil && unwrapped != field.Type {
 				goType = unwrapped.Go() // Use unwrapped type for better type detection
 				isMap = unwrapped.Kind == ir.KindMap
 			}
 
+			// Check if this is an array of structs
+			if field.Type.Kind == ir.KindArray && field.Type.Item != nil {
+				itemType := unwrapOptional(field.Type.Item)
+				if itemType != nil && itemType.Kind == ir.KindStruct {
+					isArrayOfStructs = true
+				}
+			}
+
 			fieldSpec := ir.FieldEqualitySpec{
-				FieldName: field.Name,
-				FieldType: categorizeFieldType(field.Type),
-				GoType:    goType,
-				IsNested:  isNestedObject(field.Type),
-				IsMap:     isMap,
+				FieldName:        field.Name,
+				FieldType:        categorizeFieldType(field.Type),
+				GoType:           goType,
+				IsNested:         isNestedObject(field.Type),
+				IsMap:            isMap,
+				IsArrayOfStructs: isArrayOfStructs,
 			}
 			spec.Fields = append(spec.Fields, fieldSpec)
 		}
