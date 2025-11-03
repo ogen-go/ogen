@@ -77,18 +77,3 @@ type FieldHashSpec struct {
 	// IsNested indicates if this field has a Hash() method
 	IsNested bool
 }
-
-// ValidationFunctionSpec describes a generated validation function.
-type ValidationFunctionSpec struct {
-	// FunctionName is the generated function name (e.g., "validateUniqueWorkflowStatus")
-	FunctionName string
-
-	// ItemTypeName is the array element type name
-	ItemTypeName string
-
-	// UsesDepthLimit indicates if depth tracking is needed
-	UsesDepthLimit bool
-
-	// MaxDepth is the configured maximum depth (default: 10)
-	MaxDepth int
-}
