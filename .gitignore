@@ -20,3 +20,4 @@ coverage.txt
 *.swp
 .DS_Store
 Thumbs.db
+ogen

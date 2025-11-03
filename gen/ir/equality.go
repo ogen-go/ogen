@@ -33,8 +33,17 @@ type FieldEqualitySpec struct {
 	// IsMap indicates if the field (or wrapped value for Optional/Nullable) is a map type
 	IsMap bool
 
+	// IsArray indicates if the field (or wrapped value for Optional/Nullable) is an array type
+	IsArray bool
+
 	// IsArrayOfStructs indicates if this is an array field where elements are structs
 	IsArrayOfStructs bool
+
+	// IsArrayOfNullable indicates if this is an array field where elements are nullable wrappers (NilT)
+	IsArrayOfNullable bool
+
+	// IsByteSlice indicates if this field is a byte slice ([]byte / jx.Raw)
+	IsByteSlice bool
 }
 
 // FieldTypeCategory classifies fields for equality comparison.

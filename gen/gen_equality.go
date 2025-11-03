@@ -74,10 +74,18 @@ func (g *Generator) generateEqualMethod(spec *ir.EqualityMethodSpec, pkgName str
 func (g *Generator) writeFieldComparison(b *strings.Builder, field ir.FieldEqualitySpec, hasDepth bool) {
 	switch field.FieldType {
 	case ir.FieldTypePrimitive:
-		// Simple equality check
-		fmt.Fprintf(b, "\tif a.%s != b.%s {\n", field.FieldName, field.FieldName)
-		fmt.Fprintf(b, "\t\treturn false\n")
-		fmt.Fprintf(b, "\t}\n")
+		// Byte slices need bytes.Equal()
+		if field.IsByteSlice {
+			fmt.Fprintf(b, "\t// Compare byte slice field: %s\n", field.FieldName)
+			fmt.Fprintf(b, "\tif !bytes.Equal(a.%s, b.%s) {\n", field.FieldName, field.FieldName)
+			fmt.Fprintf(b, "\t\treturn false\n")
+			fmt.Fprintf(b, "\t}\n")
+		} else {
+			// Simple equality check
+			fmt.Fprintf(b, "\tif a.%s != b.%s {\n", field.FieldName, field.FieldName)
+			fmt.Fprintf(b, "\t\treturn false\n")
+			fmt.Fprintf(b, "\t}\n")
+		}
 
 	case ir.FieldTypeOptional:
 		// Optional field comparison (OptT types)
@@ -98,6 +106,9 @@ func (g *Generator) writeFieldComparison(b *strings.Builder, field ir.FieldEqual
 		} else if field.IsMap {
 			// Optional wrapper around map - need custom comparison
 			g.writeMapComparison(b, fmt.Sprintf("a.%s.Value", field.FieldName), fmt.Sprintf("b.%s.Value", field.FieldName), "\t\t")
+		} else if field.IsArray {
+			// Optional wrapper around array - need iteration
+			g.writeArrayComparisonWithNullable(b, fmt.Sprintf("a.%s.Value", field.FieldName), fmt.Sprintf("b.%s.Value", field.FieldName), "\t\t", field.IsArrayOfStructs, field.IsArrayOfNullable, hasDepth)
 		} else {
 			// Optional wrapper around primitive - use !=
 			fmt.Fprintf(b, "\t\tif a.%s.Value != b.%s.Value {\n", field.FieldName, field.FieldName)
@@ -122,6 +133,12 @@ func (g *Generator) writeFieldComparison(b *strings.Builder, field ir.FieldEqual
 			}
 			fmt.Fprintf(b, "\t\t\treturn false\n")
 			fmt.Fprintf(b, "\t\t}\n")
+		} else if field.IsMap {
+			// Nullable wrapper around map - need custom comparison
+			g.writeMapComparison(b, fmt.Sprintf("a.%s.Value", field.FieldName), fmt.Sprintf("b.%s.Value", field.FieldName), "\t\t")
+		} else if field.IsArray {
+			// Nullable wrapper around array - need iteration
+			g.writeArrayComparisonWithNullable(b, fmt.Sprintf("a.%s.Value", field.FieldName), fmt.Sprintf("b.%s.Value", field.FieldName), "\t\t", field.IsArrayOfStructs, field.IsArrayOfNullable, hasDepth)
 		} else {
 			// Nullable wrapper around primitive - use !=
 			fmt.Fprintf(b, "\t\tif a.%s.Value != b.%s.Value {\n", field.FieldName, field.FieldName)
@@ -149,19 +166,43 @@ func (g *Generator) writeFieldComparison(b *strings.Builder, field ir.FieldEqual
 		fmt.Fprintf(b, "\t\treturn false\n")
 		fmt.Fprintf(b, "\t}\n")
 		fmt.Fprintf(b, "\tfor i := range a.%s {\n", field.FieldName)
-		// Check if array elements are structs that need Equal() calls
-		if field.IsArrayOfStructs {
+		// Check if array elements are nullable wrappers
+		if field.IsArrayOfNullable {
+			// Nullable wrapper elements - compare Null flag then Value
+			fmt.Fprintf(b, "\t\tif a.%s[i].Null != b.%s[i].Null {\n", field.FieldName, field.FieldName)
+			fmt.Fprintf(b, "\t\t\treturn false\n")
+			fmt.Fprintf(b, "\t\t}\n")
+			fmt.Fprintf(b, "\t\tif !a.%s[i].Null {\n", field.FieldName)
+			// Check if the wrapped value is a struct (needs Equal()) or primitive (use !=)
+			if field.IsArrayOfStructs {
+				// Value is a struct - call Equal()
+				if hasDepth {
+					fmt.Fprintf(b, "\t\t\tif !a.%s[i].Value.Equal(b.%s[i].Value, depth+1) {\n", field.FieldName, field.FieldName)
+				} else {
+					fmt.Fprintf(b, "\t\t\tif !a.%s[i].Value.Equal(b.%s[i].Value) {\n", field.FieldName, field.FieldName)
+				}
+			} else {
+				// Value is a primitive - use !=
+				fmt.Fprintf(b, "\t\t\tif a.%s[i].Value != b.%s[i].Value {\n", field.FieldName, field.FieldName)
+			}
+			fmt.Fprintf(b, "\t\t\t\treturn false\n")
+			fmt.Fprintf(b, "\t\t\t}\n")
+			fmt.Fprintf(b, "\t\t}\n")
+		} else if field.IsArrayOfStructs {
+			// Struct elements - call Equal()
 			if hasDepth {
 				fmt.Fprintf(b, "\t\tif !a.%s[i].Equal(b.%s[i], depth+1) {\n", field.FieldName, field.FieldName)
 			} else {
 				fmt.Fprintf(b, "\t\tif !a.%s[i].Equal(b.%s[i]) {\n", field.FieldName, field.FieldName)
 			}
+			fmt.Fprintf(b, "\t\t\treturn false\n")
+			fmt.Fprintf(b, "\t\t}\n")
 		} else {
 			// Primitive elements can use !=
 			fmt.Fprintf(b, "\t\tif a.%s[i] != b.%s[i] {\n", field.FieldName, field.FieldName)
+			fmt.Fprintf(b, "\t\t\treturn false\n")
+			fmt.Fprintf(b, "\t\t}\n")
 		}
-		fmt.Fprintf(b, "\t\t\treturn false\n")
-		fmt.Fprintf(b, "\t\t}\n")
 		fmt.Fprintf(b, "\t}\n")
 
 	case ir.FieldTypeMap:
@@ -353,5 +394,55 @@ func (g *Generator) writeMapComparison(b *strings.Builder, aMap, bMap, indent st
 	fmt.Fprintf(b, "%s\tif bv, ok := %s[k]; !ok || v != bv {\n", indent, bMap)
 	fmt.Fprintf(b, "%s\t\treturn false\n", indent)
 	fmt.Fprintf(b, "%s\t}\n", indent)
+	fmt.Fprintf(b, "%s}\n", indent)
+}
+
+// writeArrayComparison generates array comparison code
+func (g *Generator) writeArrayComparison(b *strings.Builder, aArray, bArray, indent string, isArrayOfStructs, hasDepth bool) {
+	g.writeArrayComparisonWithNullable(b, aArray, bArray, indent, isArrayOfStructs, false, hasDepth)
+}
+
+// writeArrayComparisonWithNullable generates array comparison code with nullable support
+func (g *Generator) writeArrayComparisonWithNullable(b *strings.Builder, aArray, bArray, indent string, isArrayOfStructs, isArrayOfNullable, hasDepth bool) {
+	fmt.Fprintf(b, "%sif len(%s) != len(%s) {\n", indent, aArray, bArray)
+	fmt.Fprintf(b, "%s\treturn false\n", indent)
+	fmt.Fprintf(b, "%s}\n", indent)
+	fmt.Fprintf(b, "%sfor i := range %s {\n", indent, aArray)
+	if isArrayOfNullable {
+		// Nullable wrapper elements - compare Null flag then Value
+		fmt.Fprintf(b, "%s\tif %s[i].Null != %s[i].Null {\n", indent, aArray, bArray)
+		fmt.Fprintf(b, "%s\t\treturn false\n", indent)
+		fmt.Fprintf(b, "%s\t}\n", indent)
+		fmt.Fprintf(b, "%s\tif !%s[i].Null {\n", indent, aArray)
+		// Check if the wrapped value is a struct (needs Equal()) or primitive (use !=)
+		if isArrayOfStructs {
+			// Value is a struct - call Equal()
+			if hasDepth {
+				fmt.Fprintf(b, "%s\t\tif !%s[i].Value.Equal(%s[i].Value, depth+1) {\n", indent, aArray, bArray)
+			} else {
+				fmt.Fprintf(b, "%s\t\tif !%s[i].Value.Equal(%s[i].Value) {\n", indent, aArray, bArray)
+			}
+		} else {
+			// Value is a primitive - use !=
+			fmt.Fprintf(b, "%s\t\tif %s[i].Value != %s[i].Value {\n", indent, aArray, bArray)
+		}
+		fmt.Fprintf(b, "%s\t\t\treturn false\n", indent)
+		fmt.Fprintf(b, "%s\t\t}\n", indent)
+		fmt.Fprintf(b, "%s\t}\n", indent)
+	} else if isArrayOfStructs {
+		// Array elements are structs - call Equal()
+		if hasDepth {
+			fmt.Fprintf(b, "%s\tif !%s[i].Equal(%s[i], depth+1) {\n", indent, aArray, bArray)
+		} else {
+			fmt.Fprintf(b, "%s\tif !%s[i].Equal(%s[i]) {\n", indent, aArray, bArray)
+		}
+		fmt.Fprintf(b, "%s\t\treturn false\n", indent)
+		fmt.Fprintf(b, "%s\t}\n", indent)
+	} else {
+		// Primitive elements can use !=
+		fmt.Fprintf(b, "%s\tif %s[i] != %s[i] {\n", indent, aArray, bArray)
+		fmt.Fprintf(b, "%s\t\treturn false\n", indent)
+		fmt.Fprintf(b, "%s\t}\n", indent)
+	}
 	fmt.Fprintf(b, "%s}\n", indent)
 }

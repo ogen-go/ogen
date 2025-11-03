@@ -176,28 +176,84 @@ func (g *Generator) createEqualityMethodSpec(t *ir.Type) *ir.EqualityMethodSpec 
 			unwrapped := unwrapOptional(field.Type)
 			goType := field.Type.Go()
 			isMap := false
+			isArray := false
 			isArrayOfStructs := false
+			isByteSlice := false
 
 			if unwrapped != nil && unwrapped != field.Type {
 				goType = unwrapped.Go() // Use unwrapped type for better type detection
 				isMap = unwrapped.Kind == ir.KindMap
+				isArray = unwrapped.Kind == ir.KindArray
 			}
 
-			// Check if this is an array of structs
-			if field.Type.Kind == ir.KindArray && field.Type.Item != nil {
-				itemType := unwrapOptional(field.Type.Item)
-				if itemType != nil && itemType.Kind == ir.KindStruct {
-					isArrayOfStructs = true
+			// Check if this is a byte slice (either direct or wrapped)
+			if field.Type.Kind == ir.KindPrimitive && field.Type.Primitive == ir.ByteSlice {
+				isByteSlice = true
+			}
+			if unwrapped != nil && unwrapped.Kind == ir.KindPrimitive && unwrapped.Primitive == ir.ByteSlice {
+				isByteSlice = true
+			}
+			// Also check by GoType string for jx.Raw or []byte
+			if goType == "jx.Raw" || goType == "[]byte" {
+				isByteSlice = true
+			}
+
+			// Check if this is an array (either direct or wrapped in Optional/Nullable)
+			if field.Type.Kind == ir.KindArray {
+				isArray = true
+			}
+
+			// Check if this is an array of structs or nullable wrappers (either direct or wrapped)
+			isArrayOfNullable := false
+			arrayType := field.Type
+			if arrayType.Kind == ir.KindArray && arrayType.Item != nil {
+				// Check if item is a nullable wrapper (can be Generic or Struct)
+				itemName := arrayType.Item.Name
+				if len(itemName) > 3 && itemName[:3] == "Nil" &&
+					(arrayType.Item.Kind == ir.KindStruct || arrayType.Item.Kind == ir.KindGeneric) {
+					isArrayOfNullable = true
+					// Also check if the VALUE inside the nullable wrapper is a struct
+					innerType := unwrapOptional(arrayType.Item)
+					if innerType != nil && innerType.Kind == ir.KindStruct {
+						isArrayOfStructs = true
+					}
+				} else {
+					// Direct struct array (not wrapped in nullable)
+					itemType := unwrapOptional(arrayType.Item)
+					if itemType != nil && itemType.Kind == ir.KindStruct {
+						isArrayOfStructs = true
+					}
+				}
+			} else if unwrapped != nil && unwrapped.Kind == ir.KindArray && unwrapped.Item != nil {
+				// Check wrapped array (OptT[[]Struct] or NilT[[]Struct])
+				itemName := unwrapped.Item.Name
+				if len(itemName) > 3 && itemName[:3] == "Nil" &&
+					(unwrapped.Item.Kind == ir.KindStruct || unwrapped.Item.Kind == ir.KindGeneric) {
+					isArrayOfNullable = true
+					// Also check if the VALUE inside the nullable wrapper is a struct
+					innerType := unwrapOptional(unwrapped.Item)
+					if innerType != nil && innerType.Kind == ir.KindStruct {
+						isArrayOfStructs = true
+					}
+				} else {
+					// Direct struct array (not wrapped in nullable)
+					itemType := unwrapOptional(unwrapped.Item)
+					if itemType != nil && itemType.Kind == ir.KindStruct {
+						isArrayOfStructs = true
+					}
 				}
 			}
 
 			fieldSpec := ir.FieldEqualitySpec{
-				FieldName:        field.Name,
-				FieldType:        categorizeFieldType(field.Type),
-				GoType:           goType,
-				IsNested:         isNestedObject(field.Type),
-				IsMap:            isMap,
-				IsArrayOfStructs: isArrayOfStructs,
+				FieldName:         field.Name,
+				FieldType:         categorizeFieldType(field.Type),
+				GoType:            goType,
+				IsNested:          isNestedObject(field.Type),
+				IsMap:             isMap,
+				IsArray:           isArray,
+				IsArrayOfStructs:  isArrayOfStructs,
+				IsArrayOfNullable: isArrayOfNullable,
+				IsByteSlice:       isByteSlice,
 			}
 			spec.Fields = append(spec.Fields, fieldSpec)
 		}
