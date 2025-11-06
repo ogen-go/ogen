@@ -4,15 +4,20 @@ import (
 	"github.com/ogen-go/ogen/gen/ir"
 )
 
+const (
+	prefixOpt   = "Opt"
+	prefixNil   = "Nil"
+	fieldValue  = "Value"
+)
+
 // collectEqualitySpecs identifies types that require Equal() and Hash() methods
 // for complex uniqueItems validation.
-func (g *Generator) collectEqualitySpecs() error {
+func (g *Generator) collectEqualitySpecs() {
 	// Iterate through all types to find arrays with complex uniqueItems
 	visited := make(map[string]bool)
 	for _, t := range g.tstorage.types {
 		g.collectFromType(t, visited)
 	}
-	return nil
 }
 
 // collectFromType recursively checks a type and its fields for uniqueItems arrays
@@ -71,9 +76,9 @@ func (g *Generator) collectNestedTypes(t *ir.Type, visited map[string]bool) {
 	case ir.KindStruct:
 		// Check if it's an Optional/Nullable wrapper - unwrap and recurse
 		name := t.Name
-		if len(name) > 3 && (name[:3] == "Opt" || name[:3] == "Nil") {
+		if len(name) > 3 && (name[:3] == prefixOpt || name[:3] == prefixNil) {
 			for _, field := range t.Fields {
-				if field.Name == "Value" {
+				if field.Name == fieldValue {
 					// Recursively process the wrapped type (don't mark wrapper as visited)
 					g.collectNestedTypes(field.Type, visited)
 					return
@@ -287,9 +292,9 @@ func unwrapOptional(t *ir.Type) *ir.Type {
 	}
 
 	// Unwrap struct-based optional wrappers
-	if t.Kind == ir.KindStruct && len(t.Name) > 3 && (t.Name[:3] == "Opt" || t.Name[:3] == "Nil") {
+	if t.Kind == ir.KindStruct && len(t.Name) > 3 && (t.Name[:3] == prefixOpt || t.Name[:3] == prefixNil) {
 		for _, field := range t.Fields {
-			if field.Name == "Value" {
+			if field.Name == fieldValue {
 				return field.Type
 			}
 		}
@@ -314,10 +319,10 @@ func isNestedObject(t *ir.Type) bool {
 	case ir.KindStruct:
 		// Check if this is an Optional/Nullable wrapper
 		name := t.Name
-		if len(name) > 3 && (name[:3] == "Opt" || name[:3] == "Nil") {
+		if len(name) > 3 && (name[:3] == prefixOpt || name[:3] == prefixNil) {
 			// Look for a Value field that is a nested object
 			for _, field := range t.Fields {
-				if field.Name == "Value" {
+				if field.Name == fieldValue {
 					return isNestedObject(field.Type)
 				}
 			}
@@ -356,10 +361,10 @@ func categorizeFieldType(t *ir.Type) ir.FieldTypeCategory {
 	case ir.KindGeneric:
 		// Generic types like OptT, NilT - check by name
 		name := t.Name
-		if len(name) > 3 && name[:3] == "Opt" {
+		if len(name) > 3 && name[:3] == prefixOpt {
 			return ir.FieldTypeOptional
 		}
-		if len(name) > 3 && name[:3] == "Nil" {
+		if len(name) > 3 && name[:3] == prefixNil {
 			return ir.FieldTypeNullable
 		}
 		// Other generic types - check the underlying type
@@ -371,10 +376,10 @@ func categorizeFieldType(t *ir.Type) ir.FieldTypeCategory {
 	case ir.KindStruct:
 		// Check if this is an optional/nullable wrapper type
 		name := t.Name
-		if len(name) > 3 && name[:3] == "Opt" {
+		if len(name) > 3 && name[:3] == prefixOpt {
 			return ir.FieldTypeOptional
 		}
-		if len(name) > 3 && name[:3] == "Nil" {
+		if len(name) > 3 && name[:3] == prefixNil {
 			return ir.FieldTypeNullable
 		}
 		// Regular nested object

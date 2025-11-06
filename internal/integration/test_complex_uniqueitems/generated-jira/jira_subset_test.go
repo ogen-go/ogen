@@ -65,20 +65,20 @@ func TestWorkflowTransitionRules_JIRAPattern(t *testing.T) {
 func TestIssueTypesWorkflowMapping_JIRAPattern(t *testing.T) {
 	// Test pattern from JIRA: issue type to workflow mappings with uniqueItems
 	mapping1 := IssueTypesWorkflowMapping{
-		WorkflowId: "workflow-software-simplified",
-		IssueTypes: []string{"10001", "10002"}, // Bug, Task
+		WorkflowId:          "workflow-software-simplified",
+		IssueTypes:          []string{"10001", "10002"}, // Bug, Task
 		UpdateDraftIfNeeded: NewOptBool(true),
 	}
 
 	mapping2 := IssueTypesWorkflowMapping{
-		WorkflowId: "workflow-classic",
-		IssueTypes: []string{"10003"}, // Story
+		WorkflowId:          "workflow-classic",
+		IssueTypes:          []string{"10003"}, // Story
 		UpdateDraftIfNeeded: NewOptBool(false),
 	}
 
 	mapping3 := IssueTypesWorkflowMapping{
-		WorkflowId: "workflow-software-simplified",
-		IssueTypes: []string{"10004", "10005"}, // Epic, Subtask
+		WorkflowId:          "workflow-software-simplified",
+		IssueTypes:          []string{"10004", "10005"}, // Epic, Subtask
 		UpdateDraftIfNeeded: NewOptBool(true),
 	}
 
@@ -172,7 +172,7 @@ func TestWorkflowSchemeAssociations_CompleteJIRARequest(t *testing.T) {
 	}
 
 	associations := WorkflowSchemeAssociations{
-		IssueTypeMappings:   []IssueTypesWorkflowMapping{mapping1, mapping2},
+		IssueTypeMappings: []IssueTypesWorkflowMapping{mapping1, mapping2},
 		DefaultWorkflowId: NewOptString("workflow-default"),
 	}
 
@@ -184,7 +184,7 @@ func TestWorkflowSchemeAssociations_CompleteJIRARequest(t *testing.T) {
 
 	// Test with duplicate mappings
 	associationsWithDup := WorkflowSchemeAssociations{
-		IssueTypeMappings:   []IssueTypesWorkflowMapping{mapping1, mapping1}, // Duplicate
+		IssueTypeMappings: []IssueTypesWorkflowMapping{mapping1, mapping1}, // Duplicate
 		DefaultWorkflowId: NewOptString("workflow-default"),
 	}
 

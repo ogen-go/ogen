@@ -27,9 +27,7 @@ func (g *Generator) generateUniqueValidators(fs FileSystem, pkgName string) erro
 
 	// Generate function for each type
 	for _, spec := range g.equalitySpecs {
-		if err := writeValidateUnique(&b, spec); err != nil {
-			return errors.Wrapf(err, "generate validateUnique for %s", spec.TypeName)
-		}
+		writeValidateUnique(&b, spec)
 	}
 
 	filename := fmt.Sprintf("%s_validators_unique_gen.go", snakeCase(pkgName))
@@ -37,7 +35,7 @@ func (g *Generator) generateUniqueValidators(fs FileSystem, pkgName string) erro
 }
 
 // writeValidateUnique generates a single validateUnique[TypeName]() function
-func writeValidateUnique(b *strings.Builder, spec *ir.EqualityMethodSpec) error {
+func writeValidateUnique(b *strings.Builder, spec *ir.EqualityMethodSpec) {
 	typeName := spec.TypeName
 
 	fmt.Fprintf(b, "// validateUnique%s checks for duplicate items using hash-based detection.\n", typeName)
@@ -86,6 +84,4 @@ func writeValidateUnique(b *strings.Builder, spec *ir.EqualityMethodSpec) error 
 	fmt.Fprintf(b, "\t}\n\n")
 	fmt.Fprintf(b, "\treturn nil\n")
 	fmt.Fprintf(b, "}\n\n")
-
-	return nil
 }

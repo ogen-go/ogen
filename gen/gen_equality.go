@@ -11,13 +11,6 @@ import (
 	"github.com/ogen-go/ogen/gen/ir"
 )
 
-// generateEqualityMethods generates Equal() and Hash() methods for all types
-// that require them for complex uniqueItems validation.
-// This is kept for backward compatibility but typically generateEqualityMethodsWithFS should be used.
-func (g *Generator) generateEqualityMethods() error {
-	return g.generateEqualityMethodsWithFS(nil, "api")
-}
-
 // generateEqualityMethodsWithFS generates Equal() and Hash() methods using a FileSystem
 func (g *Generator) generateEqualityMethodsWithFS(fs FileSystem, pkgName string) error {
 	for _, spec := range g.equalitySpecs {
@@ -94,7 +87,8 @@ func (g *Generator) writeFieldComparison(b *strings.Builder, field ir.FieldEqual
 		fmt.Fprintf(b, "\t\treturn false\n")
 		fmt.Fprintf(b, "\t}\n")
 		fmt.Fprintf(b, "\tif a.%s.Set {\n", field.FieldName)
-		if field.IsNested {
+		switch {
+		case field.IsNested:
 			// Optional wrapper around nested object - call Equal()
 			if hasDepth {
 				fmt.Fprintf(b, "\t\tif !a.%s.Value.Equal(b.%s.Value, depth+1) {\n", field.FieldName, field.FieldName)
@@ -103,13 +97,16 @@ func (g *Generator) writeFieldComparison(b *strings.Builder, field ir.FieldEqual
 			}
 			fmt.Fprintf(b, "\t\t\treturn false\n")
 			fmt.Fprintf(b, "\t\t}\n")
-		} else if field.IsMap {
+		case field.IsMap:
 			// Optional wrapper around map - need custom comparison
 			g.writeMapComparison(b, fmt.Sprintf("a.%s.Value", field.FieldName), fmt.Sprintf("b.%s.Value", field.FieldName), "\t\t")
-		} else if field.IsArray {
+		case field.IsArray:
 			// Optional wrapper around array - need iteration
-			g.writeArrayComparisonWithNullable(b, fmt.Sprintf("a.%s.Value", field.FieldName), fmt.Sprintf("b.%s.Value", field.FieldName), "\t\t", field.IsArrayOfStructs, field.IsArrayOfNullable, hasDepth)
-		} else {
+			aArray := fmt.Sprintf("a.%s.Value", field.FieldName)
+			bArray := fmt.Sprintf("b.%s.Value", field.FieldName)
+			g.writeArrayComparisonWithNullable(b, aArray, bArray, "\t\t",
+				field.IsArrayOfStructs, field.IsArrayOfNullable, hasDepth)
+		default:
 			// Optional wrapper around primitive - use !=
 			fmt.Fprintf(b, "\t\tif a.%s.Value != b.%s.Value {\n", field.FieldName, field.FieldName)
 			fmt.Fprintf(b, "\t\t\treturn false\n")
@@ -124,7 +121,8 @@ func (g *Generator) writeFieldComparison(b *strings.Builder, field ir.FieldEqual
 		fmt.Fprintf(b, "\t\treturn false\n")
 		fmt.Fprintf(b, "\t}\n")
 		fmt.Fprintf(b, "\tif !a.%s.Null {\n", field.FieldName)
-		if field.IsNested {
+		switch {
+		case field.IsNested:
 			// Nullable wrapper around nested object - call Equal()
 			if hasDepth {
 				fmt.Fprintf(b, "\t\tif !a.%s.Value.Equal(b.%s.Value, depth+1) {\n", field.FieldName, field.FieldName)
@@ -133,13 +131,16 @@ func (g *Generator) writeFieldComparison(b *strings.Builder, field ir.FieldEqual
 			}
 			fmt.Fprintf(b, "\t\t\treturn false\n")
 			fmt.Fprintf(b, "\t\t}\n")
-		} else if field.IsMap {
+		case field.IsMap:
 			// Nullable wrapper around map - need custom comparison
 			g.writeMapComparison(b, fmt.Sprintf("a.%s.Value", field.FieldName), fmt.Sprintf("b.%s.Value", field.FieldName), "\t\t")
-		} else if field.IsArray {
+		case field.IsArray:
 			// Nullable wrapper around array - need iteration
-			g.writeArrayComparisonWithNullable(b, fmt.Sprintf("a.%s.Value", field.FieldName), fmt.Sprintf("b.%s.Value", field.FieldName), "\t\t", field.IsArrayOfStructs, field.IsArrayOfNullable, hasDepth)
-		} else {
+			aArray := fmt.Sprintf("a.%s.Value", field.FieldName)
+			bArray := fmt.Sprintf("b.%s.Value", field.FieldName)
+			g.writeArrayComparisonWithNullable(b, aArray, bArray, "\t\t",
+				field.IsArrayOfStructs, field.IsArrayOfNullable, hasDepth)
+		default:
 			// Nullable wrapper around primitive - use !=
 			fmt.Fprintf(b, "\t\tif a.%s.Value != b.%s.Value {\n", field.FieldName, field.FieldName)
 			fmt.Fprintf(b, "\t\t\treturn false\n")
@@ -167,7 +168,8 @@ func (g *Generator) writeFieldComparison(b *strings.Builder, field ir.FieldEqual
 		fmt.Fprintf(b, "\t}\n")
 		fmt.Fprintf(b, "\tfor i := range a.%s {\n", field.FieldName)
 		// Check if array elements are nullable wrappers
-		if field.IsArrayOfNullable {
+		switch {
+		case field.IsArrayOfNullable:
 			// Nullable wrapper elements - compare Null flag then Value
 			fmt.Fprintf(b, "\t\tif a.%s[i].Null != b.%s[i].Null {\n", field.FieldName, field.FieldName)
 			fmt.Fprintf(b, "\t\t\treturn false\n")
@@ -188,7 +190,7 @@ func (g *Generator) writeFieldComparison(b *strings.Builder, field ir.FieldEqual
 			fmt.Fprintf(b, "\t\t\t\treturn false\n")
 			fmt.Fprintf(b, "\t\t\t}\n")
 			fmt.Fprintf(b, "\t\t}\n")
-		} else if field.IsArrayOfStructs {
+		case field.IsArrayOfStructs:
 			// Struct elements - call Equal()
 			if hasDepth {
 				fmt.Fprintf(b, "\t\tif !a.%s[i].Equal(b.%s[i], depth+1) {\n", field.FieldName, field.FieldName)
@@ -197,7 +199,7 @@ func (g *Generator) writeFieldComparison(b *strings.Builder, field ir.FieldEqual
 			}
 			fmt.Fprintf(b, "\t\t\treturn false\n")
 			fmt.Fprintf(b, "\t\t}\n")
-		} else {
+		default:
 			// Primitive elements can use !=
 			fmt.Fprintf(b, "\t\tif a.%s[i] != b.%s[i] {\n", field.FieldName, field.FieldName)
 			fmt.Fprintf(b, "\t\t\treturn false\n")
@@ -403,7 +405,10 @@ func (g *Generator) writeArrayComparison(b *strings.Builder, aArray, bArray, ind
 }
 
 // writeArrayComparisonWithNullable generates array comparison code with nullable support
-func (g *Generator) writeArrayComparisonWithNullable(b *strings.Builder, aArray, bArray, indent string, isArrayOfStructs, isArrayOfNullable, hasDepth bool) {
+func (g *Generator) writeArrayComparisonWithNullable(
+	b *strings.Builder, aArray, bArray, indent string,
+	isArrayOfStructs, isArrayOfNullable, hasDepth bool,
+) {
 	fmt.Fprintf(b, "%sif len(%s) != len(%s) {\n", indent, aArray, bArray)
 	fmt.Fprintf(b, "%s\treturn false\n", indent)
 	fmt.Fprintf(b, "%s}\n", indent)

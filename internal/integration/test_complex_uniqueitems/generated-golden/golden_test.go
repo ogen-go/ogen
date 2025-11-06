@@ -1,6 +1,7 @@
 package api
 
 import (
+	"bytes"
 	"os"
 	"path/filepath"
 	"testing"
@@ -23,7 +24,7 @@ func TestGoldenItem_EqualGeneration(t *testing.T) {
 		t.Fatalf("Failed to read golden file: %v", err)
 	}
 
-	if string(generated) != string(golden) {
+	if !bytes.Equal(generated, golden) {
 		t.Errorf("Generated Equal() code does not match golden file.\n"+
 			"If this change is intentional, update the golden file:\n"+
 			"  cp %s %s", generatedFile, goldenFile)
@@ -44,7 +45,7 @@ func TestGoldenItem_HashGeneration(t *testing.T) {
 		t.Fatalf("Failed to read golden file: %v", err)
 	}
 
-	if string(generated) != string(golden) {
+	if !bytes.Equal(generated, golden) {
 		t.Errorf("Generated Hash() code does not match golden file.\n"+
 			"If this change is intentional, update the golden file:\n"+
 			"  cp %s %s", generatedFile, goldenFile)
@@ -65,7 +66,7 @@ func TestMetadata_EqualGeneration(t *testing.T) {
 		t.Fatalf("Failed to read golden file: %v", err)
 	}
 
-	if string(generated) != string(golden) {
+	if !bytes.Equal(generated, golden) {
 		t.Errorf("Generated Equal() code does not match golden file.\n"+
 			"If this change is intentional, update the golden file:\n"+
 			"  cp %s %s", generatedFile, goldenFile)
@@ -86,7 +87,7 @@ func TestMetadata_HashGeneration(t *testing.T) {
 		t.Fatalf("Failed to read golden file: %v", err)
 	}
 
-	if string(generated) != string(golden) {
+	if !bytes.Equal(generated, golden) {
 		t.Errorf("Generated Hash() code does not match golden file.\n"+
 			"If this change is intentional, update the golden file:\n"+
 			"  cp %s %s", generatedFile, goldenFile)
