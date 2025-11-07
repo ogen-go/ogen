@@ -4,8 +4,6 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/go-faster/errors"
-
 	"github.com/ogen-go/ogen/gen/ir"
 )
 

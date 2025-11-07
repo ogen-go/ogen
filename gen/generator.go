@@ -133,9 +133,7 @@ func (g *Generator) makeIR(api *openapi.API) error {
 	}
 
 	// Collect types that need Equal() and Hash() methods for complex uniqueItems validation
-	if err := g.collectEqualitySpecs(); err != nil {
-		return errors.Wrap(err, "collect equality specs")
-	}
+	g.collectEqualitySpecs()
 
 	return nil
 }
