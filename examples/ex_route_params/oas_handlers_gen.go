@@ -123,6 +123,7 @@ func (s *Server) handleDataGetRequest(args [2]string, argsEscaped bool, w http.R
 			OperationName:    DataGetOperation,
 			OperationSummary: "",
 			OperationID:      "dataGet",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -254,6 +255,7 @@ func (s *Server) handleDataGetAnyRequest(args [0]string, argsEscaped bool, w htt
 			OperationName:    DataGetAnyOperation,
 			OperationSummary: "",
 			OperationID:      "dataGetAny",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -390,6 +392,7 @@ func (s *Server) handleDataGetIDRequest(args [1]string, argsEscaped bool, w http
 			OperationName:    DataGetIDOperation,
 			OperationSummary: "",
 			OperationID:      "dataGetID",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{

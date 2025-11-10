@@ -173,6 +173,7 @@ func (s *Server) handleTesttestRequest(args [0]string, argsEscaped bool, w http.
 			OperationName:    TesttestOperation,
 			OperationSummary: "",
 			OperationID:      "testtest",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},

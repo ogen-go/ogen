@@ -109,6 +109,7 @@ func (s *Server) handleCreatePetsRequest(args [0]string, argsEscaped bool, w htt
 			OperationName:    CreatePetsOperation,
 			OperationSummary: "Create a pet",
 			OperationID:      "createPets",
+			OperationGroup:   "PetStore",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -256,6 +257,7 @@ func (s *Server) handleListPetsRequest(args [0]string, argsEscaped bool, w http.
 			OperationName:    ListPetsOperation,
 			OperationSummary: "List all pets",
 			OperationID:      "listPets",
+			OperationGroup:   "PetStore",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -408,6 +410,7 @@ func (s *Server) handleShowPetByIdRequest(args [1]string, argsEscaped bool, w ht
 			OperationName:    ShowPetByIdOperation,
 			OperationSummary: "Info for a specific pet",
 			OperationID:      "showPetById",
+			OperationGroup:   "PetStore",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{

@@ -167,6 +167,7 @@ func (s *Server) handleConnectCoreV1DeleteNamespacedPodProxyRequest(args [2]stri
 			OperationName:    ConnectCoreV1DeleteNamespacedPodProxyOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1DeleteNamespacedPodProxy",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -360,6 +361,7 @@ func (s *Server) handleConnectCoreV1DeleteNamespacedPodProxyWithPathRequest(args
 			OperationName:    ConnectCoreV1DeleteNamespacedPodProxyWithPathOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1DeleteNamespacedPodProxyWithPath",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -557,6 +559,7 @@ func (s *Server) handleConnectCoreV1DeleteNamespacedServiceProxyRequest(args [2]
 			OperationName:    ConnectCoreV1DeleteNamespacedServiceProxyOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1DeleteNamespacedServiceProxy",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -750,6 +753,7 @@ func (s *Server) handleConnectCoreV1DeleteNamespacedServiceProxyWithPathRequest(
 			OperationName:    ConnectCoreV1DeleteNamespacedServiceProxyWithPathOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1DeleteNamespacedServiceProxyWithPath",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -947,6 +951,7 @@ func (s *Server) handleConnectCoreV1DeleteNodeProxyRequest(args [1]string, argsE
 			OperationName:    ConnectCoreV1DeleteNodeProxyOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1DeleteNodeProxy",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -1136,6 +1141,7 @@ func (s *Server) handleConnectCoreV1DeleteNodeProxyWithPathRequest(args [2]strin
 			OperationName:    ConnectCoreV1DeleteNodeProxyWithPathOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1DeleteNodeProxyWithPath",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -1329,6 +1335,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedPodAttachRequest(args [2]string
 			OperationName:    ConnectCoreV1GetNamespacedPodAttachOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1GetNamespacedPodAttach",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -1538,6 +1545,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedPodExecRequest(args [2]string, 
 			OperationName:    ConnectCoreV1GetNamespacedPodExecOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1GetNamespacedPodExec",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -1751,6 +1759,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedPodPortforwardRequest(args [2]s
 			OperationName:    ConnectCoreV1GetNamespacedPodPortforwardOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1GetNamespacedPodPortforward",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -1944,6 +1953,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedPodProxyRequest(args [2]string,
 			OperationName:    ConnectCoreV1GetNamespacedPodProxyOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1GetNamespacedPodProxy",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -2137,6 +2147,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedPodProxyWithPathRequest(args [3
 			OperationName:    ConnectCoreV1GetNamespacedPodProxyWithPathOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1GetNamespacedPodProxyWithPath",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -2334,6 +2345,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedServiceProxyRequest(args [2]str
 			OperationName:    ConnectCoreV1GetNamespacedServiceProxyOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1GetNamespacedServiceProxy",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -2527,6 +2539,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedServiceProxyWithPathRequest(arg
 			OperationName:    ConnectCoreV1GetNamespacedServiceProxyWithPathOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1GetNamespacedServiceProxyWithPath",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -2724,6 +2737,7 @@ func (s *Server) handleConnectCoreV1GetNodeProxyRequest(args [1]string, argsEsca
 			OperationName:    ConnectCoreV1GetNodeProxyOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1GetNodeProxy",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -2913,6 +2927,7 @@ func (s *Server) handleConnectCoreV1GetNodeProxyWithPathRequest(args [2]string, 
 			OperationName:    ConnectCoreV1GetNodeProxyWithPathOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1GetNodeProxyWithPath",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -3106,6 +3121,7 @@ func (s *Server) handleConnectCoreV1HeadNamespacedPodProxyRequest(args [2]string
 			OperationName:    ConnectCoreV1HeadNamespacedPodProxyOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1HeadNamespacedPodProxy",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -3299,6 +3315,7 @@ func (s *Server) handleConnectCoreV1HeadNamespacedPodProxyWithPathRequest(args [
 			OperationName:    ConnectCoreV1HeadNamespacedPodProxyWithPathOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1HeadNamespacedPodProxyWithPath",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -3496,6 +3513,7 @@ func (s *Server) handleConnectCoreV1HeadNamespacedServiceProxyRequest(args [2]st
 			OperationName:    ConnectCoreV1HeadNamespacedServiceProxyOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1HeadNamespacedServiceProxy",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -3689,6 +3707,7 @@ func (s *Server) handleConnectCoreV1HeadNamespacedServiceProxyWithPathRequest(ar
 			OperationName:    ConnectCoreV1HeadNamespacedServiceProxyWithPathOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1HeadNamespacedServiceProxyWithPath",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -3886,6 +3905,7 @@ func (s *Server) handleConnectCoreV1HeadNodeProxyRequest(args [1]string, argsEsc
 			OperationName:    ConnectCoreV1HeadNodeProxyOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1HeadNodeProxy",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -4075,6 +4095,7 @@ func (s *Server) handleConnectCoreV1HeadNodeProxyWithPathRequest(args [2]string,
 			OperationName:    ConnectCoreV1HeadNodeProxyWithPathOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1HeadNodeProxyWithPath",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -4268,6 +4289,7 @@ func (s *Server) handleConnectCoreV1OptionsNamespacedPodProxyRequest(args [2]str
 			OperationName:    ConnectCoreV1OptionsNamespacedPodProxyOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1OptionsNamespacedPodProxy",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -4461,6 +4483,7 @@ func (s *Server) handleConnectCoreV1OptionsNamespacedPodProxyWithPathRequest(arg
 			OperationName:    ConnectCoreV1OptionsNamespacedPodProxyWithPathOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1OptionsNamespacedPodProxyWithPath",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -4658,6 +4681,7 @@ func (s *Server) handleConnectCoreV1OptionsNamespacedServiceProxyRequest(args [2
 			OperationName:    ConnectCoreV1OptionsNamespacedServiceProxyOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1OptionsNamespacedServiceProxy",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -4851,6 +4875,7 @@ func (s *Server) handleConnectCoreV1OptionsNamespacedServiceProxyWithPathRequest
 			OperationName:    ConnectCoreV1OptionsNamespacedServiceProxyWithPathOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1OptionsNamespacedServiceProxyWithPath",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -5048,6 +5073,7 @@ func (s *Server) handleConnectCoreV1OptionsNodeProxyRequest(args [1]string, args
 			OperationName:    ConnectCoreV1OptionsNodeProxyOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1OptionsNodeProxy",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -5237,6 +5263,7 @@ func (s *Server) handleConnectCoreV1OptionsNodeProxyWithPathRequest(args [2]stri
 			OperationName:    ConnectCoreV1OptionsNodeProxyWithPathOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1OptionsNodeProxyWithPath",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -5430,6 +5457,7 @@ func (s *Server) handleConnectCoreV1PatchNamespacedPodProxyRequest(args [2]strin
 			OperationName:    ConnectCoreV1PatchNamespacedPodProxyOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1PatchNamespacedPodProxy",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -5623,6 +5651,7 @@ func (s *Server) handleConnectCoreV1PatchNamespacedPodProxyWithPathRequest(args 
 			OperationName:    ConnectCoreV1PatchNamespacedPodProxyWithPathOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1PatchNamespacedPodProxyWithPath",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -5820,6 +5849,7 @@ func (s *Server) handleConnectCoreV1PatchNamespacedServiceProxyRequest(args [2]s
 			OperationName:    ConnectCoreV1PatchNamespacedServiceProxyOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1PatchNamespacedServiceProxy",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -6013,6 +6043,7 @@ func (s *Server) handleConnectCoreV1PatchNamespacedServiceProxyWithPathRequest(a
 			OperationName:    ConnectCoreV1PatchNamespacedServiceProxyWithPathOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1PatchNamespacedServiceProxyWithPath",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -6210,6 +6241,7 @@ func (s *Server) handleConnectCoreV1PatchNodeProxyRequest(args [1]string, argsEs
 			OperationName:    ConnectCoreV1PatchNodeProxyOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1PatchNodeProxy",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -6399,6 +6431,7 @@ func (s *Server) handleConnectCoreV1PatchNodeProxyWithPathRequest(args [2]string
 			OperationName:    ConnectCoreV1PatchNodeProxyWithPathOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1PatchNodeProxyWithPath",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -6592,6 +6625,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedPodAttachRequest(args [2]strin
 			OperationName:    ConnectCoreV1PostNamespacedPodAttachOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1PostNamespacedPodAttach",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -6801,6 +6835,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedPodExecRequest(args [2]string,
 			OperationName:    ConnectCoreV1PostNamespacedPodExecOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1PostNamespacedPodExec",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -7014,6 +7049,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedPodPortforwardRequest(args [2]
 			OperationName:    ConnectCoreV1PostNamespacedPodPortforwardOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1PostNamespacedPodPortforward",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -7207,6 +7243,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedPodProxyRequest(args [2]string
 			OperationName:    ConnectCoreV1PostNamespacedPodProxyOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1PostNamespacedPodProxy",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -7400,6 +7437,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedPodProxyWithPathRequest(args [
 			OperationName:    ConnectCoreV1PostNamespacedPodProxyWithPathOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1PostNamespacedPodProxyWithPath",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -7597,6 +7635,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedServiceProxyRequest(args [2]st
 			OperationName:    ConnectCoreV1PostNamespacedServiceProxyOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1PostNamespacedServiceProxy",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -7790,6 +7829,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedServiceProxyWithPathRequest(ar
 			OperationName:    ConnectCoreV1PostNamespacedServiceProxyWithPathOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1PostNamespacedServiceProxyWithPath",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -7987,6 +8027,7 @@ func (s *Server) handleConnectCoreV1PostNodeProxyRequest(args [1]string, argsEsc
 			OperationName:    ConnectCoreV1PostNodeProxyOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1PostNodeProxy",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -8176,6 +8217,7 @@ func (s *Server) handleConnectCoreV1PostNodeProxyWithPathRequest(args [2]string,
 			OperationName:    ConnectCoreV1PostNodeProxyWithPathOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1PostNodeProxyWithPath",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -8369,6 +8411,7 @@ func (s *Server) handleConnectCoreV1PutNamespacedPodProxyRequest(args [2]string,
 			OperationName:    ConnectCoreV1PutNamespacedPodProxyOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1PutNamespacedPodProxy",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -8562,6 +8605,7 @@ func (s *Server) handleConnectCoreV1PutNamespacedPodProxyWithPathRequest(args [3
 			OperationName:    ConnectCoreV1PutNamespacedPodProxyWithPathOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1PutNamespacedPodProxyWithPath",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -8759,6 +8803,7 @@ func (s *Server) handleConnectCoreV1PutNamespacedServiceProxyRequest(args [2]str
 			OperationName:    ConnectCoreV1PutNamespacedServiceProxyOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1PutNamespacedServiceProxy",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -8952,6 +8997,7 @@ func (s *Server) handleConnectCoreV1PutNamespacedServiceProxyWithPathRequest(arg
 			OperationName:    ConnectCoreV1PutNamespacedServiceProxyWithPathOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1PutNamespacedServiceProxyWithPath",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -9149,6 +9195,7 @@ func (s *Server) handleConnectCoreV1PutNodeProxyRequest(args [1]string, argsEsca
 			OperationName:    ConnectCoreV1PutNodeProxyOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1PutNodeProxy",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -9338,6 +9385,7 @@ func (s *Server) handleConnectCoreV1PutNodeProxyWithPathRequest(args [2]string, 
 			OperationName:    ConnectCoreV1PutNodeProxyWithPathOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1PutNodeProxyWithPath",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -9521,6 +9569,7 @@ func (s *Server) handleGetAPIVersionsRequest(args [0]string, argsEscaped bool, w
 			OperationName:    GetAPIVersionsOperation,
 			OperationSummary: "",
 			OperationID:      "getAPIVersions",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -9691,6 +9740,7 @@ func (s *Server) handleGetAdmissionregistrationAPIGroupRequest(args [0]string, a
 			OperationName:    GetAdmissionregistrationAPIGroupOperation,
 			OperationSummary: "",
 			OperationID:      "getAdmissionregistrationAPIGroup",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -9861,6 +9911,7 @@ func (s *Server) handleGetAdmissionregistrationV1APIResourcesRequest(args [0]str
 			OperationName:    GetAdmissionregistrationV1APIResourcesOperation,
 			OperationSummary: "",
 			OperationID:      "getAdmissionregistrationV1APIResources",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -10031,6 +10082,7 @@ func (s *Server) handleGetApiextensionsAPIGroupRequest(args [0]string, argsEscap
 			OperationName:    GetApiextensionsAPIGroupOperation,
 			OperationSummary: "",
 			OperationID:      "getApiextensionsAPIGroup",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -10201,6 +10253,7 @@ func (s *Server) handleGetApiextensionsV1APIResourcesRequest(args [0]string, arg
 			OperationName:    GetApiextensionsV1APIResourcesOperation,
 			OperationSummary: "",
 			OperationID:      "getApiextensionsV1APIResources",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -10371,6 +10424,7 @@ func (s *Server) handleGetApiregistrationAPIGroupRequest(args [0]string, argsEsc
 			OperationName:    GetApiregistrationAPIGroupOperation,
 			OperationSummary: "",
 			OperationID:      "getApiregistrationAPIGroup",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -10541,6 +10595,7 @@ func (s *Server) handleGetApiregistrationV1APIResourcesRequest(args [0]string, a
 			OperationName:    GetApiregistrationV1APIResourcesOperation,
 			OperationSummary: "",
 			OperationID:      "getApiregistrationV1APIResources",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -10711,6 +10766,7 @@ func (s *Server) handleGetAppsAPIGroupRequest(args [0]string, argsEscaped bool, 
 			OperationName:    GetAppsAPIGroupOperation,
 			OperationSummary: "",
 			OperationID:      "getAppsAPIGroup",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -10881,6 +10937,7 @@ func (s *Server) handleGetAppsV1APIResourcesRequest(args [0]string, argsEscaped 
 			OperationName:    GetAppsV1APIResourcesOperation,
 			OperationSummary: "",
 			OperationID:      "getAppsV1APIResources",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -11051,6 +11108,7 @@ func (s *Server) handleGetAuthenticationAPIGroupRequest(args [0]string, argsEsca
 			OperationName:    GetAuthenticationAPIGroupOperation,
 			OperationSummary: "",
 			OperationID:      "getAuthenticationAPIGroup",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -11221,6 +11279,7 @@ func (s *Server) handleGetAuthenticationV1APIResourcesRequest(args [0]string, ar
 			OperationName:    GetAuthenticationV1APIResourcesOperation,
 			OperationSummary: "",
 			OperationID:      "getAuthenticationV1APIResources",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -11391,6 +11450,7 @@ func (s *Server) handleGetAuthorizationAPIGroupRequest(args [0]string, argsEscap
 			OperationName:    GetAuthorizationAPIGroupOperation,
 			OperationSummary: "",
 			OperationID:      "getAuthorizationAPIGroup",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -11561,6 +11621,7 @@ func (s *Server) handleGetAuthorizationV1APIResourcesRequest(args [0]string, arg
 			OperationName:    GetAuthorizationV1APIResourcesOperation,
 			OperationSummary: "",
 			OperationID:      "getAuthorizationV1APIResources",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -11731,6 +11792,7 @@ func (s *Server) handleGetAutoscalingAPIGroupRequest(args [0]string, argsEscaped
 			OperationName:    GetAutoscalingAPIGroupOperation,
 			OperationSummary: "",
 			OperationID:      "getAutoscalingAPIGroup",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -11901,6 +11963,7 @@ func (s *Server) handleGetAutoscalingV1APIResourcesRequest(args [0]string, argsE
 			OperationName:    GetAutoscalingV1APIResourcesOperation,
 			OperationSummary: "",
 			OperationID:      "getAutoscalingV1APIResources",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -12071,6 +12134,7 @@ func (s *Server) handleGetAutoscalingV2beta1APIResourcesRequest(args [0]string, 
 			OperationName:    GetAutoscalingV2beta1APIResourcesOperation,
 			OperationSummary: "",
 			OperationID:      "getAutoscalingV2beta1APIResources",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -12241,6 +12305,7 @@ func (s *Server) handleGetAutoscalingV2beta2APIResourcesRequest(args [0]string, 
 			OperationName:    GetAutoscalingV2beta2APIResourcesOperation,
 			OperationSummary: "",
 			OperationID:      "getAutoscalingV2beta2APIResources",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -12411,6 +12476,7 @@ func (s *Server) handleGetBatchAPIGroupRequest(args [0]string, argsEscaped bool,
 			OperationName:    GetBatchAPIGroupOperation,
 			OperationSummary: "",
 			OperationID:      "getBatchAPIGroup",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -12581,6 +12647,7 @@ func (s *Server) handleGetBatchV1APIResourcesRequest(args [0]string, argsEscaped
 			OperationName:    GetBatchV1APIResourcesOperation,
 			OperationSummary: "",
 			OperationID:      "getBatchV1APIResources",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -12751,6 +12818,7 @@ func (s *Server) handleGetBatchV1beta1APIResourcesRequest(args [0]string, argsEs
 			OperationName:    GetBatchV1beta1APIResourcesOperation,
 			OperationSummary: "",
 			OperationID:      "getBatchV1beta1APIResources",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -12921,6 +12989,7 @@ func (s *Server) handleGetCertificatesAPIGroupRequest(args [0]string, argsEscape
 			OperationName:    GetCertificatesAPIGroupOperation,
 			OperationSummary: "",
 			OperationID:      "getCertificatesAPIGroup",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -13091,6 +13160,7 @@ func (s *Server) handleGetCertificatesV1APIResourcesRequest(args [0]string, args
 			OperationName:    GetCertificatesV1APIResourcesOperation,
 			OperationSummary: "",
 			OperationID:      "getCertificatesV1APIResources",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -13261,6 +13331,7 @@ func (s *Server) handleGetCodeVersionRequest(args [0]string, argsEscaped bool, w
 			OperationName:    GetCodeVersionOperation,
 			OperationSummary: "",
 			OperationID:      "getCodeVersion",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -13431,6 +13502,7 @@ func (s *Server) handleGetCoordinationAPIGroupRequest(args [0]string, argsEscape
 			OperationName:    GetCoordinationAPIGroupOperation,
 			OperationSummary: "",
 			OperationID:      "getCoordinationAPIGroup",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -13601,6 +13673,7 @@ func (s *Server) handleGetCoordinationV1APIResourcesRequest(args [0]string, args
 			OperationName:    GetCoordinationV1APIResourcesOperation,
 			OperationSummary: "",
 			OperationID:      "getCoordinationV1APIResources",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -13771,6 +13844,7 @@ func (s *Server) handleGetCoreAPIVersionsRequest(args [0]string, argsEscaped boo
 			OperationName:    GetCoreAPIVersionsOperation,
 			OperationSummary: "",
 			OperationID:      "getCoreAPIVersions",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -13941,6 +14015,7 @@ func (s *Server) handleGetCoreV1APIResourcesRequest(args [0]string, argsEscaped 
 			OperationName:    GetCoreV1APIResourcesOperation,
 			OperationSummary: "",
 			OperationID:      "getCoreV1APIResources",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -14111,6 +14186,7 @@ func (s *Server) handleGetDiscoveryAPIGroupRequest(args [0]string, argsEscaped b
 			OperationName:    GetDiscoveryAPIGroupOperation,
 			OperationSummary: "",
 			OperationID:      "getDiscoveryAPIGroup",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -14281,6 +14357,7 @@ func (s *Server) handleGetDiscoveryV1APIResourcesRequest(args [0]string, argsEsc
 			OperationName:    GetDiscoveryV1APIResourcesOperation,
 			OperationSummary: "",
 			OperationID:      "getDiscoveryV1APIResources",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -14451,6 +14528,7 @@ func (s *Server) handleGetDiscoveryV1beta1APIResourcesRequest(args [0]string, ar
 			OperationName:    GetDiscoveryV1beta1APIResourcesOperation,
 			OperationSummary: "",
 			OperationID:      "getDiscoveryV1beta1APIResources",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -14621,6 +14699,7 @@ func (s *Server) handleGetEventsAPIGroupRequest(args [0]string, argsEscaped bool
 			OperationName:    GetEventsAPIGroupOperation,
 			OperationSummary: "",
 			OperationID:      "getEventsAPIGroup",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -14791,6 +14870,7 @@ func (s *Server) handleGetEventsV1APIResourcesRequest(args [0]string, argsEscape
 			OperationName:    GetEventsV1APIResourcesOperation,
 			OperationSummary: "",
 			OperationID:      "getEventsV1APIResources",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -14961,6 +15041,7 @@ func (s *Server) handleGetEventsV1beta1APIResourcesRequest(args [0]string, argsE
 			OperationName:    GetEventsV1beta1APIResourcesOperation,
 			OperationSummary: "",
 			OperationID:      "getEventsV1beta1APIResources",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -15131,6 +15212,7 @@ func (s *Server) handleGetFlowcontrolApiserverAPIGroupRequest(args [0]string, ar
 			OperationName:    GetFlowcontrolApiserverAPIGroupOperation,
 			OperationSummary: "",
 			OperationID:      "getFlowcontrolApiserverAPIGroup",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -15301,6 +15383,7 @@ func (s *Server) handleGetFlowcontrolApiserverV1beta1APIResourcesRequest(args [0
 			OperationName:    GetFlowcontrolApiserverV1beta1APIResourcesOperation,
 			OperationSummary: "",
 			OperationID:      "getFlowcontrolApiserverV1beta1APIResources",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -15471,6 +15554,7 @@ func (s *Server) handleGetFlowcontrolApiserverV1beta2APIResourcesRequest(args [0
 			OperationName:    GetFlowcontrolApiserverV1beta2APIResourcesOperation,
 			OperationSummary: "",
 			OperationID:      "getFlowcontrolApiserverV1beta2APIResources",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -15641,6 +15725,7 @@ func (s *Server) handleGetInternalApiserverAPIGroupRequest(args [0]string, argsE
 			OperationName:    GetInternalApiserverAPIGroupOperation,
 			OperationSummary: "",
 			OperationID:      "getInternalApiserverAPIGroup",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -15811,6 +15896,7 @@ func (s *Server) handleGetInternalApiserverV1alpha1APIResourcesRequest(args [0]s
 			OperationName:    GetInternalApiserverV1alpha1APIResourcesOperation,
 			OperationSummary: "",
 			OperationID:      "getInternalApiserverV1alpha1APIResources",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -15981,6 +16067,7 @@ func (s *Server) handleGetNetworkingAPIGroupRequest(args [0]string, argsEscaped 
 			OperationName:    GetNetworkingAPIGroupOperation,
 			OperationSummary: "",
 			OperationID:      "getNetworkingAPIGroup",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -16151,6 +16238,7 @@ func (s *Server) handleGetNetworkingV1APIResourcesRequest(args [0]string, argsEs
 			OperationName:    GetNetworkingV1APIResourcesOperation,
 			OperationSummary: "",
 			OperationID:      "getNetworkingV1APIResources",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -16321,6 +16409,7 @@ func (s *Server) handleGetNodeAPIGroupRequest(args [0]string, argsEscaped bool, 
 			OperationName:    GetNodeAPIGroupOperation,
 			OperationSummary: "",
 			OperationID:      "getNodeAPIGroup",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -16491,6 +16580,7 @@ func (s *Server) handleGetNodeV1APIResourcesRequest(args [0]string, argsEscaped 
 			OperationName:    GetNodeV1APIResourcesOperation,
 			OperationSummary: "",
 			OperationID:      "getNodeV1APIResources",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -16661,6 +16751,7 @@ func (s *Server) handleGetNodeV1alpha1APIResourcesRequest(args [0]string, argsEs
 			OperationName:    GetNodeV1alpha1APIResourcesOperation,
 			OperationSummary: "",
 			OperationID:      "getNodeV1alpha1APIResources",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -16831,6 +16922,7 @@ func (s *Server) handleGetNodeV1beta1APIResourcesRequest(args [0]string, argsEsc
 			OperationName:    GetNodeV1beta1APIResourcesOperation,
 			OperationSummary: "",
 			OperationID:      "getNodeV1beta1APIResources",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -17001,6 +17093,7 @@ func (s *Server) handleGetPolicyAPIGroupRequest(args [0]string, argsEscaped bool
 			OperationName:    GetPolicyAPIGroupOperation,
 			OperationSummary: "",
 			OperationID:      "getPolicyAPIGroup",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -17171,6 +17264,7 @@ func (s *Server) handleGetPolicyV1APIResourcesRequest(args [0]string, argsEscape
 			OperationName:    GetPolicyV1APIResourcesOperation,
 			OperationSummary: "",
 			OperationID:      "getPolicyV1APIResources",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -17341,6 +17435,7 @@ func (s *Server) handleGetPolicyV1beta1APIResourcesRequest(args [0]string, argsE
 			OperationName:    GetPolicyV1beta1APIResourcesOperation,
 			OperationSummary: "",
 			OperationID:      "getPolicyV1beta1APIResources",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -17511,6 +17606,7 @@ func (s *Server) handleGetRbacAuthorizationAPIGroupRequest(args [0]string, argsE
 			OperationName:    GetRbacAuthorizationAPIGroupOperation,
 			OperationSummary: "",
 			OperationID:      "getRbacAuthorizationAPIGroup",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -17681,6 +17777,7 @@ func (s *Server) handleGetRbacAuthorizationV1APIResourcesRequest(args [0]string,
 			OperationName:    GetRbacAuthorizationV1APIResourcesOperation,
 			OperationSummary: "",
 			OperationID:      "getRbacAuthorizationV1APIResources",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -17851,6 +17948,7 @@ func (s *Server) handleGetSchedulingAPIGroupRequest(args [0]string, argsEscaped 
 			OperationName:    GetSchedulingAPIGroupOperation,
 			OperationSummary: "",
 			OperationID:      "getSchedulingAPIGroup",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -18021,6 +18119,7 @@ func (s *Server) handleGetSchedulingV1APIResourcesRequest(args [0]string, argsEs
 			OperationName:    GetSchedulingV1APIResourcesOperation,
 			OperationSummary: "",
 			OperationID:      "getSchedulingV1APIResources",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -18191,6 +18290,7 @@ func (s *Server) handleGetServiceAccountIssuerOpenIDConfigurationRequest(args [0
 			OperationName:    GetServiceAccountIssuerOpenIDConfigurationOperation,
 			OperationSummary: "",
 			OperationID:      "getServiceAccountIssuerOpenIDConfiguration",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -18361,6 +18461,7 @@ func (s *Server) handleGetServiceAccountIssuerOpenIDKeysetRequest(args [0]string
 			OperationName:    GetServiceAccountIssuerOpenIDKeysetOperation,
 			OperationSummary: "",
 			OperationID:      "getServiceAccountIssuerOpenIDKeyset",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -18531,6 +18632,7 @@ func (s *Server) handleGetStorageAPIGroupRequest(args [0]string, argsEscaped boo
 			OperationName:    GetStorageAPIGroupOperation,
 			OperationSummary: "",
 			OperationID:      "getStorageAPIGroup",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -18701,6 +18803,7 @@ func (s *Server) handleGetStorageV1APIResourcesRequest(args [0]string, argsEscap
 			OperationName:    GetStorageV1APIResourcesOperation,
 			OperationSummary: "",
 			OperationID:      "getStorageV1APIResources",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -18871,6 +18974,7 @@ func (s *Server) handleGetStorageV1alpha1APIResourcesRequest(args [0]string, arg
 			OperationName:    GetStorageV1alpha1APIResourcesOperation,
 			OperationSummary: "",
 			OperationID:      "getStorageV1alpha1APIResources",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -19041,6 +19145,7 @@ func (s *Server) handleGetStorageV1beta1APIResourcesRequest(args [0]string, args
 			OperationName:    GetStorageV1beta1APIResourcesOperation,
 			OperationSummary: "",
 			OperationID:      "getStorageV1beta1APIResources",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -19221,6 +19326,7 @@ func (s *Server) handleListAdmissionregistrationV1MutatingWebhookConfigurationRe
 			OperationName:    ListAdmissionregistrationV1MutatingWebhookConfigurationOperation,
 			OperationSummary: "",
 			OperationID:      "listAdmissionregistrationV1MutatingWebhookConfiguration",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -19442,6 +19548,7 @@ func (s *Server) handleListAdmissionregistrationV1ValidatingWebhookConfiguration
 			OperationName:    ListAdmissionregistrationV1ValidatingWebhookConfigurationOperation,
 			OperationSummary: "",
 			OperationID:      "listAdmissionregistrationV1ValidatingWebhookConfiguration",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -19663,6 +19770,7 @@ func (s *Server) handleListApiextensionsV1CustomResourceDefinitionRequest(args [
 			OperationName:    ListApiextensionsV1CustomResourceDefinitionOperation,
 			OperationSummary: "",
 			OperationID:      "listApiextensionsV1CustomResourceDefinition",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -19884,6 +19992,7 @@ func (s *Server) handleListApiregistrationV1APIServiceRequest(args [0]string, ar
 			OperationName:    ListApiregistrationV1APIServiceOperation,
 			OperationSummary: "",
 			OperationID:      "listApiregistrationV1APIService",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -20105,6 +20214,7 @@ func (s *Server) handleListAppsV1ControllerRevisionForAllNamespacesRequest(args 
 			OperationName:    ListAppsV1ControllerRevisionForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "listAppsV1ControllerRevisionForAllNamespaces",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -20326,6 +20436,7 @@ func (s *Server) handleListAppsV1DaemonSetForAllNamespacesRequest(args [0]string
 			OperationName:    ListAppsV1DaemonSetForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "listAppsV1DaemonSetForAllNamespaces",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -20547,6 +20658,7 @@ func (s *Server) handleListAppsV1DeploymentForAllNamespacesRequest(args [0]strin
 			OperationName:    ListAppsV1DeploymentForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "listAppsV1DeploymentForAllNamespaces",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -20768,6 +20880,7 @@ func (s *Server) handleListAppsV1NamespacedControllerRevisionRequest(args [1]str
 			OperationName:    ListAppsV1NamespacedControllerRevisionOperation,
 			OperationSummary: "",
 			OperationID:      "listAppsV1NamespacedControllerRevision",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -20993,6 +21106,7 @@ func (s *Server) handleListAppsV1NamespacedDaemonSetRequest(args [1]string, args
 			OperationName:    ListAppsV1NamespacedDaemonSetOperation,
 			OperationSummary: "",
 			OperationID:      "listAppsV1NamespacedDaemonSet",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -21218,6 +21332,7 @@ func (s *Server) handleListAppsV1NamespacedDeploymentRequest(args [1]string, arg
 			OperationName:    ListAppsV1NamespacedDeploymentOperation,
 			OperationSummary: "",
 			OperationID:      "listAppsV1NamespacedDeployment",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -21443,6 +21558,7 @@ func (s *Server) handleListAppsV1NamespacedReplicaSetRequest(args [1]string, arg
 			OperationName:    ListAppsV1NamespacedReplicaSetOperation,
 			OperationSummary: "",
 			OperationID:      "listAppsV1NamespacedReplicaSet",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -21668,6 +21784,7 @@ func (s *Server) handleListAppsV1NamespacedStatefulSetRequest(args [1]string, ar
 			OperationName:    ListAppsV1NamespacedStatefulSetOperation,
 			OperationSummary: "",
 			OperationID:      "listAppsV1NamespacedStatefulSet",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -21893,6 +22010,7 @@ func (s *Server) handleListAppsV1ReplicaSetForAllNamespacesRequest(args [0]strin
 			OperationName:    ListAppsV1ReplicaSetForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "listAppsV1ReplicaSetForAllNamespaces",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -22114,6 +22232,7 @@ func (s *Server) handleListAppsV1StatefulSetForAllNamespacesRequest(args [0]stri
 			OperationName:    ListAppsV1StatefulSetForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "listAppsV1StatefulSetForAllNamespaces",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -22335,6 +22454,7 @@ func (s *Server) handleListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesR
 			OperationName:    ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "listAutoscalingV1HorizontalPodAutoscalerForAllNamespaces",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -22556,6 +22676,7 @@ func (s *Server) handleListAutoscalingV1NamespacedHorizontalPodAutoscalerRequest
 			OperationName:    ListAutoscalingV1NamespacedHorizontalPodAutoscalerOperation,
 			OperationSummary: "",
 			OperationID:      "listAutoscalingV1NamespacedHorizontalPodAutoscaler",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -22781,6 +22902,7 @@ func (s *Server) handleListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamesp
 			OperationName:    ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "listAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -23002,6 +23124,7 @@ func (s *Server) handleListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRe
 			OperationName:    ListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerOperation,
 			OperationSummary: "",
 			OperationID:      "listAutoscalingV2beta1NamespacedHorizontalPodAutoscaler",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -23227,6 +23350,7 @@ func (s *Server) handleListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamesp
 			OperationName:    ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "listAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -23448,6 +23572,7 @@ func (s *Server) handleListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRe
 			OperationName:    ListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerOperation,
 			OperationSummary: "",
 			OperationID:      "listAutoscalingV2beta2NamespacedHorizontalPodAutoscaler",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -23673,6 +23798,7 @@ func (s *Server) handleListBatchV1CronJobForAllNamespacesRequest(args [0]string,
 			OperationName:    ListBatchV1CronJobForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "listBatchV1CronJobForAllNamespaces",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -23894,6 +24020,7 @@ func (s *Server) handleListBatchV1JobForAllNamespacesRequest(args [0]string, arg
 			OperationName:    ListBatchV1JobForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "listBatchV1JobForAllNamespaces",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -24115,6 +24242,7 @@ func (s *Server) handleListBatchV1NamespacedCronJobRequest(args [1]string, argsE
 			OperationName:    ListBatchV1NamespacedCronJobOperation,
 			OperationSummary: "",
 			OperationID:      "listBatchV1NamespacedCronJob",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -24340,6 +24468,7 @@ func (s *Server) handleListBatchV1NamespacedJobRequest(args [1]string, argsEscap
 			OperationName:    ListBatchV1NamespacedJobOperation,
 			OperationSummary: "",
 			OperationID:      "listBatchV1NamespacedJob",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -24565,6 +24694,7 @@ func (s *Server) handleListBatchV1beta1CronJobForAllNamespacesRequest(args [0]st
 			OperationName:    ListBatchV1beta1CronJobForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "listBatchV1beta1CronJobForAllNamespaces",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -24786,6 +24916,7 @@ func (s *Server) handleListBatchV1beta1NamespacedCronJobRequest(args [1]string, 
 			OperationName:    ListBatchV1beta1NamespacedCronJobOperation,
 			OperationSummary: "",
 			OperationID:      "listBatchV1beta1NamespacedCronJob",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -25011,6 +25142,7 @@ func (s *Server) handleListCertificatesV1CertificateSigningRequestRequest(args [
 			OperationName:    ListCertificatesV1CertificateSigningRequestOperation,
 			OperationSummary: "",
 			OperationID:      "listCertificatesV1CertificateSigningRequest",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -25232,6 +25364,7 @@ func (s *Server) handleListCoordinationV1LeaseForAllNamespacesRequest(args [0]st
 			OperationName:    ListCoordinationV1LeaseForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "listCoordinationV1LeaseForAllNamespaces",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -25453,6 +25586,7 @@ func (s *Server) handleListCoordinationV1NamespacedLeaseRequest(args [1]string, 
 			OperationName:    ListCoordinationV1NamespacedLeaseOperation,
 			OperationSummary: "",
 			OperationID:      "listCoordinationV1NamespacedLease",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -25678,6 +25812,7 @@ func (s *Server) handleListCoreV1ComponentStatusRequest(args [0]string, argsEsca
 			OperationName:    ListCoreV1ComponentStatusOperation,
 			OperationSummary: "",
 			OperationID:      "listCoreV1ComponentStatus",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -25899,6 +26034,7 @@ func (s *Server) handleListCoreV1ConfigMapForAllNamespacesRequest(args [0]string
 			OperationName:    ListCoreV1ConfigMapForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "listCoreV1ConfigMapForAllNamespaces",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -26120,6 +26256,7 @@ func (s *Server) handleListCoreV1EndpointsForAllNamespacesRequest(args [0]string
 			OperationName:    ListCoreV1EndpointsForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "listCoreV1EndpointsForAllNamespaces",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -26341,6 +26478,7 @@ func (s *Server) handleListCoreV1EventForAllNamespacesRequest(args [0]string, ar
 			OperationName:    ListCoreV1EventForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "listCoreV1EventForAllNamespaces",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -26562,6 +26700,7 @@ func (s *Server) handleListCoreV1LimitRangeForAllNamespacesRequest(args [0]strin
 			OperationName:    ListCoreV1LimitRangeForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "listCoreV1LimitRangeForAllNamespaces",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -26783,6 +26922,7 @@ func (s *Server) handleListCoreV1NamespaceRequest(args [0]string, argsEscaped bo
 			OperationName:    ListCoreV1NamespaceOperation,
 			OperationSummary: "",
 			OperationID:      "listCoreV1Namespace",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -27004,6 +27144,7 @@ func (s *Server) handleListCoreV1NamespacedConfigMapRequest(args [1]string, args
 			OperationName:    ListCoreV1NamespacedConfigMapOperation,
 			OperationSummary: "",
 			OperationID:      "listCoreV1NamespacedConfigMap",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -27229,6 +27370,7 @@ func (s *Server) handleListCoreV1NamespacedEndpointsRequest(args [1]string, args
 			OperationName:    ListCoreV1NamespacedEndpointsOperation,
 			OperationSummary: "",
 			OperationID:      "listCoreV1NamespacedEndpoints",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -27454,6 +27596,7 @@ func (s *Server) handleListCoreV1NamespacedEventRequest(args [1]string, argsEsca
 			OperationName:    ListCoreV1NamespacedEventOperation,
 			OperationSummary: "",
 			OperationID:      "listCoreV1NamespacedEvent",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -27679,6 +27822,7 @@ func (s *Server) handleListCoreV1NamespacedLimitRangeRequest(args [1]string, arg
 			OperationName:    ListCoreV1NamespacedLimitRangeOperation,
 			OperationSummary: "",
 			OperationID:      "listCoreV1NamespacedLimitRange",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -27904,6 +28048,7 @@ func (s *Server) handleListCoreV1NamespacedPersistentVolumeClaimRequest(args [1]
 			OperationName:    ListCoreV1NamespacedPersistentVolumeClaimOperation,
 			OperationSummary: "",
 			OperationID:      "listCoreV1NamespacedPersistentVolumeClaim",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -28129,6 +28274,7 @@ func (s *Server) handleListCoreV1NamespacedPodRequest(args [1]string, argsEscape
 			OperationName:    ListCoreV1NamespacedPodOperation,
 			OperationSummary: "",
 			OperationID:      "listCoreV1NamespacedPod",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -28354,6 +28500,7 @@ func (s *Server) handleListCoreV1NamespacedPodTemplateRequest(args [1]string, ar
 			OperationName:    ListCoreV1NamespacedPodTemplateOperation,
 			OperationSummary: "",
 			OperationID:      "listCoreV1NamespacedPodTemplate",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -28579,6 +28726,7 @@ func (s *Server) handleListCoreV1NamespacedReplicationControllerRequest(args [1]
 			OperationName:    ListCoreV1NamespacedReplicationControllerOperation,
 			OperationSummary: "",
 			OperationID:      "listCoreV1NamespacedReplicationController",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -28804,6 +28952,7 @@ func (s *Server) handleListCoreV1NamespacedResourceQuotaRequest(args [1]string, 
 			OperationName:    ListCoreV1NamespacedResourceQuotaOperation,
 			OperationSummary: "",
 			OperationID:      "listCoreV1NamespacedResourceQuota",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -29029,6 +29178,7 @@ func (s *Server) handleListCoreV1NamespacedSecretRequest(args [1]string, argsEsc
 			OperationName:    ListCoreV1NamespacedSecretOperation,
 			OperationSummary: "",
 			OperationID:      "listCoreV1NamespacedSecret",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -29254,6 +29404,7 @@ func (s *Server) handleListCoreV1NamespacedServiceRequest(args [1]string, argsEs
 			OperationName:    ListCoreV1NamespacedServiceOperation,
 			OperationSummary: "",
 			OperationID:      "listCoreV1NamespacedService",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -29479,6 +29630,7 @@ func (s *Server) handleListCoreV1NamespacedServiceAccountRequest(args [1]string,
 			OperationName:    ListCoreV1NamespacedServiceAccountOperation,
 			OperationSummary: "",
 			OperationID:      "listCoreV1NamespacedServiceAccount",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -29704,6 +29856,7 @@ func (s *Server) handleListCoreV1NodeRequest(args [0]string, argsEscaped bool, w
 			OperationName:    ListCoreV1NodeOperation,
 			OperationSummary: "",
 			OperationID:      "listCoreV1Node",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -29925,6 +30078,7 @@ func (s *Server) handleListCoreV1PersistentVolumeRequest(args [0]string, argsEsc
 			OperationName:    ListCoreV1PersistentVolumeOperation,
 			OperationSummary: "",
 			OperationID:      "listCoreV1PersistentVolume",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -30146,6 +30300,7 @@ func (s *Server) handleListCoreV1PersistentVolumeClaimForAllNamespacesRequest(ar
 			OperationName:    ListCoreV1PersistentVolumeClaimForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "listCoreV1PersistentVolumeClaimForAllNamespaces",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -30367,6 +30522,7 @@ func (s *Server) handleListCoreV1PodForAllNamespacesRequest(args [0]string, args
 			OperationName:    ListCoreV1PodForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "listCoreV1PodForAllNamespaces",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -30588,6 +30744,7 @@ func (s *Server) handleListCoreV1PodTemplateForAllNamespacesRequest(args [0]stri
 			OperationName:    ListCoreV1PodTemplateForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "listCoreV1PodTemplateForAllNamespaces",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -30809,6 +30966,7 @@ func (s *Server) handleListCoreV1ReplicationControllerForAllNamespacesRequest(ar
 			OperationName:    ListCoreV1ReplicationControllerForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "listCoreV1ReplicationControllerForAllNamespaces",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -31030,6 +31188,7 @@ func (s *Server) handleListCoreV1ResourceQuotaForAllNamespacesRequest(args [0]st
 			OperationName:    ListCoreV1ResourceQuotaForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "listCoreV1ResourceQuotaForAllNamespaces",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -31251,6 +31410,7 @@ func (s *Server) handleListCoreV1SecretForAllNamespacesRequest(args [0]string, a
 			OperationName:    ListCoreV1SecretForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "listCoreV1SecretForAllNamespaces",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -31472,6 +31632,7 @@ func (s *Server) handleListCoreV1ServiceAccountForAllNamespacesRequest(args [0]s
 			OperationName:    ListCoreV1ServiceAccountForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "listCoreV1ServiceAccountForAllNamespaces",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -31693,6 +31854,7 @@ func (s *Server) handleListCoreV1ServiceForAllNamespacesRequest(args [0]string, 
 			OperationName:    ListCoreV1ServiceForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "listCoreV1ServiceForAllNamespaces",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -31914,6 +32076,7 @@ func (s *Server) handleListDiscoveryV1EndpointSliceForAllNamespacesRequest(args 
 			OperationName:    ListDiscoveryV1EndpointSliceForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "listDiscoveryV1EndpointSliceForAllNamespaces",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -32135,6 +32298,7 @@ func (s *Server) handleListDiscoveryV1NamespacedEndpointSliceRequest(args [1]str
 			OperationName:    ListDiscoveryV1NamespacedEndpointSliceOperation,
 			OperationSummary: "",
 			OperationID:      "listDiscoveryV1NamespacedEndpointSlice",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -32360,6 +32524,7 @@ func (s *Server) handleListDiscoveryV1beta1EndpointSliceForAllNamespacesRequest(
 			OperationName:    ListDiscoveryV1beta1EndpointSliceForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "listDiscoveryV1beta1EndpointSliceForAllNamespaces",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -32581,6 +32746,7 @@ func (s *Server) handleListDiscoveryV1beta1NamespacedEndpointSliceRequest(args [
 			OperationName:    ListDiscoveryV1beta1NamespacedEndpointSliceOperation,
 			OperationSummary: "",
 			OperationID:      "listDiscoveryV1beta1NamespacedEndpointSlice",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -32806,6 +32972,7 @@ func (s *Server) handleListEventsV1EventForAllNamespacesRequest(args [0]string, 
 			OperationName:    ListEventsV1EventForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "listEventsV1EventForAllNamespaces",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -33027,6 +33194,7 @@ func (s *Server) handleListEventsV1NamespacedEventRequest(args [1]string, argsEs
 			OperationName:    ListEventsV1NamespacedEventOperation,
 			OperationSummary: "",
 			OperationID:      "listEventsV1NamespacedEvent",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -33252,6 +33420,7 @@ func (s *Server) handleListEventsV1beta1EventForAllNamespacesRequest(args [0]str
 			OperationName:    ListEventsV1beta1EventForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "listEventsV1beta1EventForAllNamespaces",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -33473,6 +33642,7 @@ func (s *Server) handleListEventsV1beta1NamespacedEventRequest(args [1]string, a
 			OperationName:    ListEventsV1beta1NamespacedEventOperation,
 			OperationSummary: "",
 			OperationID:      "listEventsV1beta1NamespacedEvent",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -33698,6 +33868,7 @@ func (s *Server) handleListFlowcontrolApiserverV1beta1FlowSchemaRequest(args [0]
 			OperationName:    ListFlowcontrolApiserverV1beta1FlowSchemaOperation,
 			OperationSummary: "",
 			OperationID:      "listFlowcontrolApiserverV1beta1FlowSchema",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -33919,6 +34090,7 @@ func (s *Server) handleListFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 			OperationName:    ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationOperation,
 			OperationSummary: "",
 			OperationID:      "listFlowcontrolApiserverV1beta1PriorityLevelConfiguration",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -34140,6 +34312,7 @@ func (s *Server) handleListFlowcontrolApiserverV1beta2FlowSchemaRequest(args [0]
 			OperationName:    ListFlowcontrolApiserverV1beta2FlowSchemaOperation,
 			OperationSummary: "",
 			OperationID:      "listFlowcontrolApiserverV1beta2FlowSchema",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -34361,6 +34534,7 @@ func (s *Server) handleListFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 			OperationName:    ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationOperation,
 			OperationSummary: "",
 			OperationID:      "listFlowcontrolApiserverV1beta2PriorityLevelConfiguration",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -34582,6 +34756,7 @@ func (s *Server) handleListInternalApiserverV1alpha1StorageVersionRequest(args [
 			OperationName:    ListInternalApiserverV1alpha1StorageVersionOperation,
 			OperationSummary: "",
 			OperationID:      "listInternalApiserverV1alpha1StorageVersion",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -34803,6 +34978,7 @@ func (s *Server) handleListNetworkingV1IngressClassRequest(args [0]string, argsE
 			OperationName:    ListNetworkingV1IngressClassOperation,
 			OperationSummary: "",
 			OperationID:      "listNetworkingV1IngressClass",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -35024,6 +35200,7 @@ func (s *Server) handleListNetworkingV1IngressForAllNamespacesRequest(args [0]st
 			OperationName:    ListNetworkingV1IngressForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "listNetworkingV1IngressForAllNamespaces",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -35245,6 +35422,7 @@ func (s *Server) handleListNetworkingV1NamespacedIngressRequest(args [1]string, 
 			OperationName:    ListNetworkingV1NamespacedIngressOperation,
 			OperationSummary: "",
 			OperationID:      "listNetworkingV1NamespacedIngress",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -35470,6 +35648,7 @@ func (s *Server) handleListNetworkingV1NamespacedNetworkPolicyRequest(args [1]st
 			OperationName:    ListNetworkingV1NamespacedNetworkPolicyOperation,
 			OperationSummary: "",
 			OperationID:      "listNetworkingV1NamespacedNetworkPolicy",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -35695,6 +35874,7 @@ func (s *Server) handleListNetworkingV1NetworkPolicyForAllNamespacesRequest(args
 			OperationName:    ListNetworkingV1NetworkPolicyForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "listNetworkingV1NetworkPolicyForAllNamespaces",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -35916,6 +36096,7 @@ func (s *Server) handleListNodeV1RuntimeClassRequest(args [0]string, argsEscaped
 			OperationName:    ListNodeV1RuntimeClassOperation,
 			OperationSummary: "",
 			OperationID:      "listNodeV1RuntimeClass",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -36137,6 +36318,7 @@ func (s *Server) handleListNodeV1alpha1RuntimeClassRequest(args [0]string, argsE
 			OperationName:    ListNodeV1alpha1RuntimeClassOperation,
 			OperationSummary: "",
 			OperationID:      "listNodeV1alpha1RuntimeClass",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -36358,6 +36540,7 @@ func (s *Server) handleListNodeV1beta1RuntimeClassRequest(args [0]string, argsEs
 			OperationName:    ListNodeV1beta1RuntimeClassOperation,
 			OperationSummary: "",
 			OperationID:      "listNodeV1beta1RuntimeClass",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -36579,6 +36762,7 @@ func (s *Server) handleListPolicyV1NamespacedPodDisruptionBudgetRequest(args [1]
 			OperationName:    ListPolicyV1NamespacedPodDisruptionBudgetOperation,
 			OperationSummary: "",
 			OperationID:      "listPolicyV1NamespacedPodDisruptionBudget",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -36804,6 +36988,7 @@ func (s *Server) handleListPolicyV1PodDisruptionBudgetForAllNamespacesRequest(ar
 			OperationName:    ListPolicyV1PodDisruptionBudgetForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "listPolicyV1PodDisruptionBudgetForAllNamespaces",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -37025,6 +37210,7 @@ func (s *Server) handleListPolicyV1beta1NamespacedPodDisruptionBudgetRequest(arg
 			OperationName:    ListPolicyV1beta1NamespacedPodDisruptionBudgetOperation,
 			OperationSummary: "",
 			OperationID:      "listPolicyV1beta1NamespacedPodDisruptionBudget",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -37250,6 +37436,7 @@ func (s *Server) handleListPolicyV1beta1PodDisruptionBudgetForAllNamespacesReque
 			OperationName:    ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "listPolicyV1beta1PodDisruptionBudgetForAllNamespaces",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -37471,6 +37658,7 @@ func (s *Server) handleListPolicyV1beta1PodSecurityPolicyRequest(args [0]string,
 			OperationName:    ListPolicyV1beta1PodSecurityPolicyOperation,
 			OperationSummary: "",
 			OperationID:      "listPolicyV1beta1PodSecurityPolicy",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -37692,6 +37880,7 @@ func (s *Server) handleListRbacAuthorizationV1ClusterRoleRequest(args [0]string,
 			OperationName:    ListRbacAuthorizationV1ClusterRoleOperation,
 			OperationSummary: "",
 			OperationID:      "listRbacAuthorizationV1ClusterRole",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -37913,6 +38102,7 @@ func (s *Server) handleListRbacAuthorizationV1ClusterRoleBindingRequest(args [0]
 			OperationName:    ListRbacAuthorizationV1ClusterRoleBindingOperation,
 			OperationSummary: "",
 			OperationID:      "listRbacAuthorizationV1ClusterRoleBinding",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -38134,6 +38324,7 @@ func (s *Server) handleListRbacAuthorizationV1NamespacedRoleRequest(args [1]stri
 			OperationName:    ListRbacAuthorizationV1NamespacedRoleOperation,
 			OperationSummary: "",
 			OperationID:      "listRbacAuthorizationV1NamespacedRole",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -38359,6 +38550,7 @@ func (s *Server) handleListRbacAuthorizationV1NamespacedRoleBindingRequest(args 
 			OperationName:    ListRbacAuthorizationV1NamespacedRoleBindingOperation,
 			OperationSummary: "",
 			OperationID:      "listRbacAuthorizationV1NamespacedRoleBinding",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -38584,6 +38776,7 @@ func (s *Server) handleListRbacAuthorizationV1RoleBindingForAllNamespacesRequest
 			OperationName:    ListRbacAuthorizationV1RoleBindingForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "listRbacAuthorizationV1RoleBindingForAllNamespaces",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -38805,6 +38998,7 @@ func (s *Server) handleListRbacAuthorizationV1RoleForAllNamespacesRequest(args [
 			OperationName:    ListRbacAuthorizationV1RoleForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "listRbacAuthorizationV1RoleForAllNamespaces",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -39026,6 +39220,7 @@ func (s *Server) handleListSchedulingV1PriorityClassRequest(args [0]string, args
 			OperationName:    ListSchedulingV1PriorityClassOperation,
 			OperationSummary: "",
 			OperationID:      "listSchedulingV1PriorityClass",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -39247,6 +39442,7 @@ func (s *Server) handleListStorageV1CSIDriverRequest(args [0]string, argsEscaped
 			OperationName:    ListStorageV1CSIDriverOperation,
 			OperationSummary: "",
 			OperationID:      "listStorageV1CSIDriver",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -39468,6 +39664,7 @@ func (s *Server) handleListStorageV1CSINodeRequest(args [0]string, argsEscaped b
 			OperationName:    ListStorageV1CSINodeOperation,
 			OperationSummary: "",
 			OperationID:      "listStorageV1CSINode",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -39689,6 +39886,7 @@ func (s *Server) handleListStorageV1StorageClassRequest(args [0]string, argsEsca
 			OperationName:    ListStorageV1StorageClassOperation,
 			OperationSummary: "",
 			OperationID:      "listStorageV1StorageClass",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -39910,6 +40108,7 @@ func (s *Server) handleListStorageV1VolumeAttachmentRequest(args [0]string, args
 			OperationName:    ListStorageV1VolumeAttachmentOperation,
 			OperationSummary: "",
 			OperationID:      "listStorageV1VolumeAttachment",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -40131,6 +40330,7 @@ func (s *Server) handleListStorageV1alpha1CSIStorageCapacityForAllNamespacesRequ
 			OperationName:    ListStorageV1alpha1CSIStorageCapacityForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "listStorageV1alpha1CSIStorageCapacityForAllNamespaces",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -40352,6 +40552,7 @@ func (s *Server) handleListStorageV1alpha1NamespacedCSIStorageCapacityRequest(ar
 			OperationName:    ListStorageV1alpha1NamespacedCSIStorageCapacityOperation,
 			OperationSummary: "",
 			OperationID:      "listStorageV1alpha1NamespacedCSIStorageCapacity",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -40577,6 +40778,7 @@ func (s *Server) handleListStorageV1beta1CSIStorageCapacityForAllNamespacesReque
 			OperationName:    ListStorageV1beta1CSIStorageCapacityForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "listStorageV1beta1CSIStorageCapacityForAllNamespaces",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -40798,6 +41000,7 @@ func (s *Server) handleListStorageV1beta1NamespacedCSIStorageCapacityRequest(arg
 			OperationName:    ListStorageV1beta1NamespacedCSIStorageCapacityOperation,
 			OperationSummary: "",
 			OperationID:      "listStorageV1beta1NamespacedCSIStorageCapacity",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -41021,6 +41224,7 @@ func (s *Server) handleLogFileHandlerRequest(args [1]string, argsEscaped bool, w
 			OperationName:    LogFileHandlerOperation,
 			OperationSummary: "",
 			OperationID:      "logFileHandler",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -41194,6 +41398,7 @@ func (s *Server) handleLogFileListHandlerRequest(args [0]string, argsEscaped boo
 			OperationName:    LogFileListHandlerOperation,
 			OperationSummary: "",
 			OperationID:      "logFileListHandler",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -41389,6 +41594,7 @@ func (s *Server) handlePatchCoreV1NamespacedConfigMapRequest(args [2]string, arg
 			OperationName:    PatchCoreV1NamespacedConfigMapOperation,
 			OperationSummary: "",
 			OperationID:      "patchCoreV1NamespacedConfigMap",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -41594,6 +41800,7 @@ func (s *Server) handleReadAdmissionregistrationV1MutatingWebhookConfigurationRe
 			OperationName:    ReadAdmissionregistrationV1MutatingWebhookConfigurationOperation,
 			OperationSummary: "",
 			OperationID:      "readAdmissionregistrationV1MutatingWebhookConfiguration",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -41783,6 +41990,7 @@ func (s *Server) handleReadAdmissionregistrationV1ValidatingWebhookConfiguration
 			OperationName:    ReadAdmissionregistrationV1ValidatingWebhookConfigurationOperation,
 			OperationSummary: "",
 			OperationID:      "readAdmissionregistrationV1ValidatingWebhookConfiguration",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -41972,6 +42180,7 @@ func (s *Server) handleReadApiextensionsV1CustomResourceDefinitionRequest(args [
 			OperationName:    ReadApiextensionsV1CustomResourceDefinitionOperation,
 			OperationSummary: "",
 			OperationID:      "readApiextensionsV1CustomResourceDefinition",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -42161,6 +42370,7 @@ func (s *Server) handleReadApiextensionsV1CustomResourceDefinitionStatusRequest(
 			OperationName:    ReadApiextensionsV1CustomResourceDefinitionStatusOperation,
 			OperationSummary: "",
 			OperationID:      "readApiextensionsV1CustomResourceDefinitionStatus",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -42350,6 +42560,7 @@ func (s *Server) handleReadApiregistrationV1APIServiceRequest(args [1]string, ar
 			OperationName:    ReadApiregistrationV1APIServiceOperation,
 			OperationSummary: "",
 			OperationID:      "readApiregistrationV1APIService",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -42539,6 +42750,7 @@ func (s *Server) handleReadApiregistrationV1APIServiceStatusRequest(args [1]stri
 			OperationName:    ReadApiregistrationV1APIServiceStatusOperation,
 			OperationSummary: "",
 			OperationID:      "readApiregistrationV1APIServiceStatus",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -42728,6 +42940,7 @@ func (s *Server) handleReadAppsV1NamespacedControllerRevisionRequest(args [2]str
 			OperationName:    ReadAppsV1NamespacedControllerRevisionOperation,
 			OperationSummary: "",
 			OperationID:      "readAppsV1NamespacedControllerRevision",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -42921,6 +43134,7 @@ func (s *Server) handleReadAppsV1NamespacedDaemonSetRequest(args [2]string, args
 			OperationName:    ReadAppsV1NamespacedDaemonSetOperation,
 			OperationSummary: "",
 			OperationID:      "readAppsV1NamespacedDaemonSet",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -43114,6 +43328,7 @@ func (s *Server) handleReadAppsV1NamespacedDaemonSetStatusRequest(args [2]string
 			OperationName:    ReadAppsV1NamespacedDaemonSetStatusOperation,
 			OperationSummary: "",
 			OperationID:      "readAppsV1NamespacedDaemonSetStatus",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -43307,6 +43522,7 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentRequest(args [2]string, arg
 			OperationName:    ReadAppsV1NamespacedDeploymentOperation,
 			OperationSummary: "",
 			OperationID:      "readAppsV1NamespacedDeployment",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -43500,6 +43716,7 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentScaleRequest(args [2]string
 			OperationName:    ReadAppsV1NamespacedDeploymentScaleOperation,
 			OperationSummary: "",
 			OperationID:      "readAppsV1NamespacedDeploymentScale",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -43693,6 +43910,7 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentStatusRequest(args [2]strin
 			OperationName:    ReadAppsV1NamespacedDeploymentStatusOperation,
 			OperationSummary: "",
 			OperationID:      "readAppsV1NamespacedDeploymentStatus",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -43886,6 +44104,7 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetRequest(args [2]string, arg
 			OperationName:    ReadAppsV1NamespacedReplicaSetOperation,
 			OperationSummary: "",
 			OperationID:      "readAppsV1NamespacedReplicaSet",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -44079,6 +44298,7 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetScaleRequest(args [2]string
 			OperationName:    ReadAppsV1NamespacedReplicaSetScaleOperation,
 			OperationSummary: "",
 			OperationID:      "readAppsV1NamespacedReplicaSetScale",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -44272,6 +44492,7 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetStatusRequest(args [2]strin
 			OperationName:    ReadAppsV1NamespacedReplicaSetStatusOperation,
 			OperationSummary: "",
 			OperationID:      "readAppsV1NamespacedReplicaSetStatus",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -44465,6 +44686,7 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetRequest(args [2]string, ar
 			OperationName:    ReadAppsV1NamespacedStatefulSetOperation,
 			OperationSummary: "",
 			OperationID:      "readAppsV1NamespacedStatefulSet",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -44658,6 +44880,7 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetScaleRequest(args [2]strin
 			OperationName:    ReadAppsV1NamespacedStatefulSetScaleOperation,
 			OperationSummary: "",
 			OperationID:      "readAppsV1NamespacedStatefulSetScale",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -44851,6 +45074,7 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetStatusRequest(args [2]stri
 			OperationName:    ReadAppsV1NamespacedStatefulSetStatusOperation,
 			OperationSummary: "",
 			OperationID:      "readAppsV1NamespacedStatefulSetStatus",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -45044,6 +45268,7 @@ func (s *Server) handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerRequest
 			OperationName:    ReadAutoscalingV1NamespacedHorizontalPodAutoscalerOperation,
 			OperationSummary: "",
 			OperationID:      "readAutoscalingV1NamespacedHorizontalPodAutoscaler",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -45237,6 +45462,7 @@ func (s *Server) handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusR
 			OperationName:    ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusOperation,
 			OperationSummary: "",
 			OperationID:      "readAutoscalingV1NamespacedHorizontalPodAutoscalerStatus",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -45430,6 +45656,7 @@ func (s *Server) handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRe
 			OperationName:    ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerOperation,
 			OperationSummary: "",
 			OperationID:      "readAutoscalingV2beta1NamespacedHorizontalPodAutoscaler",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -45623,6 +45850,7 @@ func (s *Server) handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerSt
 			OperationName:    ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusOperation,
 			OperationSummary: "",
 			OperationID:      "readAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -45816,6 +46044,7 @@ func (s *Server) handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRe
 			OperationName:    ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerOperation,
 			OperationSummary: "",
 			OperationID:      "readAutoscalingV2beta2NamespacedHorizontalPodAutoscaler",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -46009,6 +46238,7 @@ func (s *Server) handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerSt
 			OperationName:    ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusOperation,
 			OperationSummary: "",
 			OperationID:      "readAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -46202,6 +46432,7 @@ func (s *Server) handleReadBatchV1NamespacedCronJobRequest(args [2]string, argsE
 			OperationName:    ReadBatchV1NamespacedCronJobOperation,
 			OperationSummary: "",
 			OperationID:      "readBatchV1NamespacedCronJob",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -46395,6 +46626,7 @@ func (s *Server) handleReadBatchV1NamespacedCronJobStatusRequest(args [2]string,
 			OperationName:    ReadBatchV1NamespacedCronJobStatusOperation,
 			OperationSummary: "",
 			OperationID:      "readBatchV1NamespacedCronJobStatus",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -46588,6 +46820,7 @@ func (s *Server) handleReadBatchV1NamespacedJobRequest(args [2]string, argsEscap
 			OperationName:    ReadBatchV1NamespacedJobOperation,
 			OperationSummary: "",
 			OperationID:      "readBatchV1NamespacedJob",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -46781,6 +47014,7 @@ func (s *Server) handleReadBatchV1NamespacedJobStatusRequest(args [2]string, arg
 			OperationName:    ReadBatchV1NamespacedJobStatusOperation,
 			OperationSummary: "",
 			OperationID:      "readBatchV1NamespacedJobStatus",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -46974,6 +47208,7 @@ func (s *Server) handleReadBatchV1beta1NamespacedCronJobRequest(args [2]string, 
 			OperationName:    ReadBatchV1beta1NamespacedCronJobOperation,
 			OperationSummary: "",
 			OperationID:      "readBatchV1beta1NamespacedCronJob",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -47167,6 +47402,7 @@ func (s *Server) handleReadBatchV1beta1NamespacedCronJobStatusRequest(args [2]st
 			OperationName:    ReadBatchV1beta1NamespacedCronJobStatusOperation,
 			OperationSummary: "",
 			OperationID:      "readBatchV1beta1NamespacedCronJobStatus",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -47360,6 +47596,7 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestRequest(args [
 			OperationName:    ReadCertificatesV1CertificateSigningRequestOperation,
 			OperationSummary: "",
 			OperationID:      "readCertificatesV1CertificateSigningRequest",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -47549,6 +47786,7 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestApprovalReques
 			OperationName:    ReadCertificatesV1CertificateSigningRequestApprovalOperation,
 			OperationSummary: "",
 			OperationID:      "readCertificatesV1CertificateSigningRequestApproval",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -47738,6 +47976,7 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestStatusRequest(
 			OperationName:    ReadCertificatesV1CertificateSigningRequestStatusOperation,
 			OperationSummary: "",
 			OperationID:      "readCertificatesV1CertificateSigningRequestStatus",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -47927,6 +48166,7 @@ func (s *Server) handleReadCoordinationV1NamespacedLeaseRequest(args [2]string, 
 			OperationName:    ReadCoordinationV1NamespacedLeaseOperation,
 			OperationSummary: "",
 			OperationID:      "readCoordinationV1NamespacedLease",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -48120,6 +48360,7 @@ func (s *Server) handleReadCoreV1ComponentStatusRequest(args [1]string, argsEsca
 			OperationName:    ReadCoreV1ComponentStatusOperation,
 			OperationSummary: "",
 			OperationID:      "readCoreV1ComponentStatus",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -48309,6 +48550,7 @@ func (s *Server) handleReadCoreV1NamespaceRequest(args [1]string, argsEscaped bo
 			OperationName:    ReadCoreV1NamespaceOperation,
 			OperationSummary: "",
 			OperationID:      "readCoreV1Namespace",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -48498,6 +48740,7 @@ func (s *Server) handleReadCoreV1NamespaceStatusRequest(args [1]string, argsEsca
 			OperationName:    ReadCoreV1NamespaceStatusOperation,
 			OperationSummary: "",
 			OperationID:      "readCoreV1NamespaceStatus",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -48687,6 +48930,7 @@ func (s *Server) handleReadCoreV1NamespacedConfigMapRequest(args [2]string, args
 			OperationName:    ReadCoreV1NamespacedConfigMapOperation,
 			OperationSummary: "",
 			OperationID:      "readCoreV1NamespacedConfigMap",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -48880,6 +49124,7 @@ func (s *Server) handleReadCoreV1NamespacedEndpointsRequest(args [2]string, args
 			OperationName:    ReadCoreV1NamespacedEndpointsOperation,
 			OperationSummary: "",
 			OperationID:      "readCoreV1NamespacedEndpoints",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -49073,6 +49318,7 @@ func (s *Server) handleReadCoreV1NamespacedEventRequest(args [2]string, argsEsca
 			OperationName:    ReadCoreV1NamespacedEventOperation,
 			OperationSummary: "",
 			OperationID:      "readCoreV1NamespacedEvent",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -49266,6 +49512,7 @@ func (s *Server) handleReadCoreV1NamespacedLimitRangeRequest(args [2]string, arg
 			OperationName:    ReadCoreV1NamespacedLimitRangeOperation,
 			OperationSummary: "",
 			OperationID:      "readCoreV1NamespacedLimitRange",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -49459,6 +49706,7 @@ func (s *Server) handleReadCoreV1NamespacedPersistentVolumeClaimRequest(args [2]
 			OperationName:    ReadCoreV1NamespacedPersistentVolumeClaimOperation,
 			OperationSummary: "",
 			OperationID:      "readCoreV1NamespacedPersistentVolumeClaim",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -49652,6 +49900,7 @@ func (s *Server) handleReadCoreV1NamespacedPersistentVolumeClaimStatusRequest(ar
 			OperationName:    ReadCoreV1NamespacedPersistentVolumeClaimStatusOperation,
 			OperationSummary: "",
 			OperationID:      "readCoreV1NamespacedPersistentVolumeClaimStatus",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -49845,6 +50094,7 @@ func (s *Server) handleReadCoreV1NamespacedPodRequest(args [2]string, argsEscape
 			OperationName:    ReadCoreV1NamespacedPodOperation,
 			OperationSummary: "",
 			OperationID:      "readCoreV1NamespacedPod",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -50038,6 +50288,7 @@ func (s *Server) handleReadCoreV1NamespacedPodEphemeralcontainersRequest(args [2
 			OperationName:    ReadCoreV1NamespacedPodEphemeralcontainersOperation,
 			OperationSummary: "",
 			OperationID:      "readCoreV1NamespacedPodEphemeralcontainers",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -50231,6 +50482,7 @@ func (s *Server) handleReadCoreV1NamespacedPodLogRequest(args [2]string, argsEsc
 			OperationName:    ReadCoreV1NamespacedPodLogOperation,
 			OperationSummary: "",
 			OperationID:      "readCoreV1NamespacedPodLog",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -50456,6 +50708,7 @@ func (s *Server) handleReadCoreV1NamespacedPodStatusRequest(args [2]string, args
 			OperationName:    ReadCoreV1NamespacedPodStatusOperation,
 			OperationSummary: "",
 			OperationID:      "readCoreV1NamespacedPodStatus",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -50649,6 +50902,7 @@ func (s *Server) handleReadCoreV1NamespacedPodTemplateRequest(args [2]string, ar
 			OperationName:    ReadCoreV1NamespacedPodTemplateOperation,
 			OperationSummary: "",
 			OperationID:      "readCoreV1NamespacedPodTemplate",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -50842,6 +51096,7 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerRequest(args [2]
 			OperationName:    ReadCoreV1NamespacedReplicationControllerOperation,
 			OperationSummary: "",
 			OperationID:      "readCoreV1NamespacedReplicationController",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -51035,6 +51290,7 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerScaleRequest(arg
 			OperationName:    ReadCoreV1NamespacedReplicationControllerScaleOperation,
 			OperationSummary: "",
 			OperationID:      "readCoreV1NamespacedReplicationControllerScale",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -51228,6 +51484,7 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerStatusRequest(ar
 			OperationName:    ReadCoreV1NamespacedReplicationControllerStatusOperation,
 			OperationSummary: "",
 			OperationID:      "readCoreV1NamespacedReplicationControllerStatus",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -51421,6 +51678,7 @@ func (s *Server) handleReadCoreV1NamespacedResourceQuotaRequest(args [2]string, 
 			OperationName:    ReadCoreV1NamespacedResourceQuotaOperation,
 			OperationSummary: "",
 			OperationID:      "readCoreV1NamespacedResourceQuota",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -51614,6 +51872,7 @@ func (s *Server) handleReadCoreV1NamespacedResourceQuotaStatusRequest(args [2]st
 			OperationName:    ReadCoreV1NamespacedResourceQuotaStatusOperation,
 			OperationSummary: "",
 			OperationID:      "readCoreV1NamespacedResourceQuotaStatus",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -51807,6 +52066,7 @@ func (s *Server) handleReadCoreV1NamespacedSecretRequest(args [2]string, argsEsc
 			OperationName:    ReadCoreV1NamespacedSecretOperation,
 			OperationSummary: "",
 			OperationID:      "readCoreV1NamespacedSecret",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -52000,6 +52260,7 @@ func (s *Server) handleReadCoreV1NamespacedServiceRequest(args [2]string, argsEs
 			OperationName:    ReadCoreV1NamespacedServiceOperation,
 			OperationSummary: "",
 			OperationID:      "readCoreV1NamespacedService",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -52193,6 +52454,7 @@ func (s *Server) handleReadCoreV1NamespacedServiceAccountRequest(args [2]string,
 			OperationName:    ReadCoreV1NamespacedServiceAccountOperation,
 			OperationSummary: "",
 			OperationID:      "readCoreV1NamespacedServiceAccount",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -52386,6 +52648,7 @@ func (s *Server) handleReadCoreV1NamespacedServiceStatusRequest(args [2]string, 
 			OperationName:    ReadCoreV1NamespacedServiceStatusOperation,
 			OperationSummary: "",
 			OperationID:      "readCoreV1NamespacedServiceStatus",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -52579,6 +52842,7 @@ func (s *Server) handleReadCoreV1NodeRequest(args [1]string, argsEscaped bool, w
 			OperationName:    ReadCoreV1NodeOperation,
 			OperationSummary: "",
 			OperationID:      "readCoreV1Node",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -52768,6 +53032,7 @@ func (s *Server) handleReadCoreV1NodeStatusRequest(args [1]string, argsEscaped b
 			OperationName:    ReadCoreV1NodeStatusOperation,
 			OperationSummary: "",
 			OperationID:      "readCoreV1NodeStatus",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -52957,6 +53222,7 @@ func (s *Server) handleReadCoreV1PersistentVolumeRequest(args [1]string, argsEsc
 			OperationName:    ReadCoreV1PersistentVolumeOperation,
 			OperationSummary: "",
 			OperationID:      "readCoreV1PersistentVolume",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -53146,6 +53412,7 @@ func (s *Server) handleReadCoreV1PersistentVolumeStatusRequest(args [1]string, a
 			OperationName:    ReadCoreV1PersistentVolumeStatusOperation,
 			OperationSummary: "",
 			OperationID:      "readCoreV1PersistentVolumeStatus",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -53335,6 +53602,7 @@ func (s *Server) handleReadDiscoveryV1NamespacedEndpointSliceRequest(args [2]str
 			OperationName:    ReadDiscoveryV1NamespacedEndpointSliceOperation,
 			OperationSummary: "",
 			OperationID:      "readDiscoveryV1NamespacedEndpointSlice",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -53528,6 +53796,7 @@ func (s *Server) handleReadDiscoveryV1beta1NamespacedEndpointSliceRequest(args [
 			OperationName:    ReadDiscoveryV1beta1NamespacedEndpointSliceOperation,
 			OperationSummary: "",
 			OperationID:      "readDiscoveryV1beta1NamespacedEndpointSlice",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -53721,6 +53990,7 @@ func (s *Server) handleReadEventsV1NamespacedEventRequest(args [2]string, argsEs
 			OperationName:    ReadEventsV1NamespacedEventOperation,
 			OperationSummary: "",
 			OperationID:      "readEventsV1NamespacedEvent",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -53914,6 +54184,7 @@ func (s *Server) handleReadEventsV1beta1NamespacedEventRequest(args [2]string, a
 			OperationName:    ReadEventsV1beta1NamespacedEventOperation,
 			OperationSummary: "",
 			OperationID:      "readEventsV1beta1NamespacedEvent",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -54107,6 +54378,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1FlowSchemaRequest(args [1]
 			OperationName:    ReadFlowcontrolApiserverV1beta1FlowSchemaOperation,
 			OperationSummary: "",
 			OperationID:      "readFlowcontrolApiserverV1beta1FlowSchema",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -54296,6 +54568,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1FlowSchemaStatusRequest(ar
 			OperationName:    ReadFlowcontrolApiserverV1beta1FlowSchemaStatusOperation,
 			OperationSummary: "",
 			OperationID:      "readFlowcontrolApiserverV1beta1FlowSchemaStatus",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -54485,6 +54758,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 			OperationName:    ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationOperation,
 			OperationSummary: "",
 			OperationID:      "readFlowcontrolApiserverV1beta1PriorityLevelConfiguration",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -54674,6 +54948,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 			OperationName:    ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusOperation,
 			OperationSummary: "",
 			OperationID:      "readFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -54863,6 +55138,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2FlowSchemaRequest(args [1]
 			OperationName:    ReadFlowcontrolApiserverV1beta2FlowSchemaOperation,
 			OperationSummary: "",
 			OperationID:      "readFlowcontrolApiserverV1beta2FlowSchema",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -55052,6 +55328,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2FlowSchemaStatusRequest(ar
 			OperationName:    ReadFlowcontrolApiserverV1beta2FlowSchemaStatusOperation,
 			OperationSummary: "",
 			OperationID:      "readFlowcontrolApiserverV1beta2FlowSchemaStatus",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -55241,6 +55518,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 			OperationName:    ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationOperation,
 			OperationSummary: "",
 			OperationID:      "readFlowcontrolApiserverV1beta2PriorityLevelConfiguration",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -55430,6 +55708,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 			OperationName:    ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusOperation,
 			OperationSummary: "",
 			OperationID:      "readFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -55619,6 +55898,7 @@ func (s *Server) handleReadInternalApiserverV1alpha1StorageVersionRequest(args [
 			OperationName:    ReadInternalApiserverV1alpha1StorageVersionOperation,
 			OperationSummary: "",
 			OperationID:      "readInternalApiserverV1alpha1StorageVersion",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -55808,6 +56088,7 @@ func (s *Server) handleReadInternalApiserverV1alpha1StorageVersionStatusRequest(
 			OperationName:    ReadInternalApiserverV1alpha1StorageVersionStatusOperation,
 			OperationSummary: "",
 			OperationID:      "readInternalApiserverV1alpha1StorageVersionStatus",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -55997,6 +56278,7 @@ func (s *Server) handleReadNetworkingV1IngressClassRequest(args [1]string, argsE
 			OperationName:    ReadNetworkingV1IngressClassOperation,
 			OperationSummary: "",
 			OperationID:      "readNetworkingV1IngressClass",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -56186,6 +56468,7 @@ func (s *Server) handleReadNetworkingV1NamespacedIngressRequest(args [2]string, 
 			OperationName:    ReadNetworkingV1NamespacedIngressOperation,
 			OperationSummary: "",
 			OperationID:      "readNetworkingV1NamespacedIngress",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -56379,6 +56662,7 @@ func (s *Server) handleReadNetworkingV1NamespacedIngressStatusRequest(args [2]st
 			OperationName:    ReadNetworkingV1NamespacedIngressStatusOperation,
 			OperationSummary: "",
 			OperationID:      "readNetworkingV1NamespacedIngressStatus",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -56572,6 +56856,7 @@ func (s *Server) handleReadNetworkingV1NamespacedNetworkPolicyRequest(args [2]st
 			OperationName:    ReadNetworkingV1NamespacedNetworkPolicyOperation,
 			OperationSummary: "",
 			OperationID:      "readNetworkingV1NamespacedNetworkPolicy",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -56765,6 +57050,7 @@ func (s *Server) handleReadNodeV1RuntimeClassRequest(args [1]string, argsEscaped
 			OperationName:    ReadNodeV1RuntimeClassOperation,
 			OperationSummary: "",
 			OperationID:      "readNodeV1RuntimeClass",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -56954,6 +57240,7 @@ func (s *Server) handleReadNodeV1alpha1RuntimeClassRequest(args [1]string, argsE
 			OperationName:    ReadNodeV1alpha1RuntimeClassOperation,
 			OperationSummary: "",
 			OperationID:      "readNodeV1alpha1RuntimeClass",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -57143,6 +57430,7 @@ func (s *Server) handleReadNodeV1beta1RuntimeClassRequest(args [1]string, argsEs
 			OperationName:    ReadNodeV1beta1RuntimeClassOperation,
 			OperationSummary: "",
 			OperationID:      "readNodeV1beta1RuntimeClass",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -57332,6 +57620,7 @@ func (s *Server) handleReadPolicyV1NamespacedPodDisruptionBudgetRequest(args [2]
 			OperationName:    ReadPolicyV1NamespacedPodDisruptionBudgetOperation,
 			OperationSummary: "",
 			OperationID:      "readPolicyV1NamespacedPodDisruptionBudget",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -57525,6 +57814,7 @@ func (s *Server) handleReadPolicyV1NamespacedPodDisruptionBudgetStatusRequest(ar
 			OperationName:    ReadPolicyV1NamespacedPodDisruptionBudgetStatusOperation,
 			OperationSummary: "",
 			OperationID:      "readPolicyV1NamespacedPodDisruptionBudgetStatus",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -57718,6 +58008,7 @@ func (s *Server) handleReadPolicyV1beta1NamespacedPodDisruptionBudgetRequest(arg
 			OperationName:    ReadPolicyV1beta1NamespacedPodDisruptionBudgetOperation,
 			OperationSummary: "",
 			OperationID:      "readPolicyV1beta1NamespacedPodDisruptionBudget",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -57911,6 +58202,7 @@ func (s *Server) handleReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusReque
 			OperationName:    ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusOperation,
 			OperationSummary: "",
 			OperationID:      "readPolicyV1beta1NamespacedPodDisruptionBudgetStatus",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -58104,6 +58396,7 @@ func (s *Server) handleReadPolicyV1beta1PodSecurityPolicyRequest(args [1]string,
 			OperationName:    ReadPolicyV1beta1PodSecurityPolicyOperation,
 			OperationSummary: "",
 			OperationID:      "readPolicyV1beta1PodSecurityPolicy",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -58293,6 +58586,7 @@ func (s *Server) handleReadRbacAuthorizationV1ClusterRoleRequest(args [1]string,
 			OperationName:    ReadRbacAuthorizationV1ClusterRoleOperation,
 			OperationSummary: "",
 			OperationID:      "readRbacAuthorizationV1ClusterRole",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -58482,6 +58776,7 @@ func (s *Server) handleReadRbacAuthorizationV1ClusterRoleBindingRequest(args [1]
 			OperationName:    ReadRbacAuthorizationV1ClusterRoleBindingOperation,
 			OperationSummary: "",
 			OperationID:      "readRbacAuthorizationV1ClusterRoleBinding",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -58671,6 +58966,7 @@ func (s *Server) handleReadRbacAuthorizationV1NamespacedRoleRequest(args [2]stri
 			OperationName:    ReadRbacAuthorizationV1NamespacedRoleOperation,
 			OperationSummary: "",
 			OperationID:      "readRbacAuthorizationV1NamespacedRole",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -58864,6 +59160,7 @@ func (s *Server) handleReadRbacAuthorizationV1NamespacedRoleBindingRequest(args 
 			OperationName:    ReadRbacAuthorizationV1NamespacedRoleBindingOperation,
 			OperationSummary: "",
 			OperationID:      "readRbacAuthorizationV1NamespacedRoleBinding",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -59057,6 +59354,7 @@ func (s *Server) handleReadSchedulingV1PriorityClassRequest(args [1]string, args
 			OperationName:    ReadSchedulingV1PriorityClassOperation,
 			OperationSummary: "",
 			OperationID:      "readSchedulingV1PriorityClass",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -59246,6 +59544,7 @@ func (s *Server) handleReadStorageV1CSIDriverRequest(args [1]string, argsEscaped
 			OperationName:    ReadStorageV1CSIDriverOperation,
 			OperationSummary: "",
 			OperationID:      "readStorageV1CSIDriver",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -59435,6 +59734,7 @@ func (s *Server) handleReadStorageV1CSINodeRequest(args [1]string, argsEscaped b
 			OperationName:    ReadStorageV1CSINodeOperation,
 			OperationSummary: "",
 			OperationID:      "readStorageV1CSINode",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -59624,6 +59924,7 @@ func (s *Server) handleReadStorageV1StorageClassRequest(args [1]string, argsEsca
 			OperationName:    ReadStorageV1StorageClassOperation,
 			OperationSummary: "",
 			OperationID:      "readStorageV1StorageClass",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -59813,6 +60114,7 @@ func (s *Server) handleReadStorageV1VolumeAttachmentRequest(args [1]string, args
 			OperationName:    ReadStorageV1VolumeAttachmentOperation,
 			OperationSummary: "",
 			OperationID:      "readStorageV1VolumeAttachment",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -60002,6 +60304,7 @@ func (s *Server) handleReadStorageV1VolumeAttachmentStatusRequest(args [1]string
 			OperationName:    ReadStorageV1VolumeAttachmentStatusOperation,
 			OperationSummary: "",
 			OperationID:      "readStorageV1VolumeAttachmentStatus",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -60191,6 +60494,7 @@ func (s *Server) handleReadStorageV1alpha1NamespacedCSIStorageCapacityRequest(ar
 			OperationName:    ReadStorageV1alpha1NamespacedCSIStorageCapacityOperation,
 			OperationSummary: "",
 			OperationID:      "readStorageV1alpha1NamespacedCSIStorageCapacity",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -60384,6 +60688,7 @@ func (s *Server) handleReadStorageV1beta1NamespacedCSIStorageCapacityRequest(arg
 			OperationName:    ReadStorageV1beta1NamespacedCSIStorageCapacityOperation,
 			OperationSummary: "",
 			OperationID:      "readStorageV1beta1NamespacedCSIStorageCapacity",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -60579,6 +60884,7 @@ func (s *Server) handleWatchAdmissionregistrationV1MutatingWebhookConfigurationR
 			OperationName:    WatchAdmissionregistrationV1MutatingWebhookConfigurationOperation,
 			OperationSummary: "",
 			OperationID:      "watchAdmissionregistrationV1MutatingWebhookConfiguration",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -60805,6 +61111,7 @@ func (s *Server) handleWatchAdmissionregistrationV1MutatingWebhookConfigurationL
 			OperationName:    WatchAdmissionregistrationV1MutatingWebhookConfigurationListOperation,
 			OperationSummary: "",
 			OperationID:      "watchAdmissionregistrationV1MutatingWebhookConfigurationList",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -61028,6 +61335,7 @@ func (s *Server) handleWatchAdmissionregistrationV1ValidatingWebhookConfiguratio
 			OperationName:    WatchAdmissionregistrationV1ValidatingWebhookConfigurationOperation,
 			OperationSummary: "",
 			OperationID:      "watchAdmissionregistrationV1ValidatingWebhookConfiguration",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -61254,6 +61562,7 @@ func (s *Server) handleWatchAdmissionregistrationV1ValidatingWebhookConfiguratio
 			OperationName:    WatchAdmissionregistrationV1ValidatingWebhookConfigurationListOperation,
 			OperationSummary: "",
 			OperationID:      "watchAdmissionregistrationV1ValidatingWebhookConfigurationList",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -61476,6 +61785,7 @@ func (s *Server) handleWatchApiextensionsV1CustomResourceDefinitionRequest(args 
 			OperationName:    WatchApiextensionsV1CustomResourceDefinitionOperation,
 			OperationSummary: "",
 			OperationID:      "watchApiextensionsV1CustomResourceDefinition",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -61702,6 +62012,7 @@ func (s *Server) handleWatchApiextensionsV1CustomResourceDefinitionListRequest(a
 			OperationName:    WatchApiextensionsV1CustomResourceDefinitionListOperation,
 			OperationSummary: "",
 			OperationID:      "watchApiextensionsV1CustomResourceDefinitionList",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -61924,6 +62235,7 @@ func (s *Server) handleWatchApiregistrationV1APIServiceRequest(args [1]string, a
 			OperationName:    WatchApiregistrationV1APIServiceOperation,
 			OperationSummary: "",
 			OperationID:      "watchApiregistrationV1APIService",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -62150,6 +62462,7 @@ func (s *Server) handleWatchApiregistrationV1APIServiceListRequest(args [0]strin
 			OperationName:    WatchApiregistrationV1APIServiceListOperation,
 			OperationSummary: "",
 			OperationID:      "watchApiregistrationV1APIServiceList",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -62372,6 +62685,7 @@ func (s *Server) handleWatchAppsV1ControllerRevisionListForAllNamespacesRequest(
 			OperationName:    WatchAppsV1ControllerRevisionListForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "watchAppsV1ControllerRevisionListForAllNamespaces",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -62594,6 +62908,7 @@ func (s *Server) handleWatchAppsV1DaemonSetListForAllNamespacesRequest(args [0]s
 			OperationName:    WatchAppsV1DaemonSetListForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "watchAppsV1DaemonSetListForAllNamespaces",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -62816,6 +63131,7 @@ func (s *Server) handleWatchAppsV1DeploymentListForAllNamespacesRequest(args [0]
 			OperationName:    WatchAppsV1DeploymentListForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "watchAppsV1DeploymentListForAllNamespaces",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -63038,6 +63354,7 @@ func (s *Server) handleWatchAppsV1NamespacedControllerRevisionRequest(args [2]st
 			OperationName:    WatchAppsV1NamespacedControllerRevisionOperation,
 			OperationSummary: "",
 			OperationID:      "watchAppsV1NamespacedControllerRevision",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -63268,6 +63585,7 @@ func (s *Server) handleWatchAppsV1NamespacedControllerRevisionListRequest(args [
 			OperationName:    WatchAppsV1NamespacedControllerRevisionListOperation,
 			OperationSummary: "",
 			OperationID:      "watchAppsV1NamespacedControllerRevisionList",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -63494,6 +63812,7 @@ func (s *Server) handleWatchAppsV1NamespacedDaemonSetRequest(args [2]string, arg
 			OperationName:    WatchAppsV1NamespacedDaemonSetOperation,
 			OperationSummary: "",
 			OperationID:      "watchAppsV1NamespacedDaemonSet",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -63724,6 +64043,7 @@ func (s *Server) handleWatchAppsV1NamespacedDaemonSetListRequest(args [1]string,
 			OperationName:    WatchAppsV1NamespacedDaemonSetListOperation,
 			OperationSummary: "",
 			OperationID:      "watchAppsV1NamespacedDaemonSetList",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -63950,6 +64270,7 @@ func (s *Server) handleWatchAppsV1NamespacedDeploymentRequest(args [2]string, ar
 			OperationName:    WatchAppsV1NamespacedDeploymentOperation,
 			OperationSummary: "",
 			OperationID:      "watchAppsV1NamespacedDeployment",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -64180,6 +64501,7 @@ func (s *Server) handleWatchAppsV1NamespacedDeploymentListRequest(args [1]string
 			OperationName:    WatchAppsV1NamespacedDeploymentListOperation,
 			OperationSummary: "",
 			OperationID:      "watchAppsV1NamespacedDeploymentList",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -64406,6 +64728,7 @@ func (s *Server) handleWatchAppsV1NamespacedReplicaSetRequest(args [2]string, ar
 			OperationName:    WatchAppsV1NamespacedReplicaSetOperation,
 			OperationSummary: "",
 			OperationID:      "watchAppsV1NamespacedReplicaSet",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -64636,6 +64959,7 @@ func (s *Server) handleWatchAppsV1NamespacedReplicaSetListRequest(args [1]string
 			OperationName:    WatchAppsV1NamespacedReplicaSetListOperation,
 			OperationSummary: "",
 			OperationID:      "watchAppsV1NamespacedReplicaSetList",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -64862,6 +65186,7 @@ func (s *Server) handleWatchAppsV1NamespacedStatefulSetRequest(args [2]string, a
 			OperationName:    WatchAppsV1NamespacedStatefulSetOperation,
 			OperationSummary: "",
 			OperationID:      "watchAppsV1NamespacedStatefulSet",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -65092,6 +65417,7 @@ func (s *Server) handleWatchAppsV1NamespacedStatefulSetListRequest(args [1]strin
 			OperationName:    WatchAppsV1NamespacedStatefulSetListOperation,
 			OperationSummary: "",
 			OperationID:      "watchAppsV1NamespacedStatefulSetList",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -65318,6 +65644,7 @@ func (s *Server) handleWatchAppsV1ReplicaSetListForAllNamespacesRequest(args [0]
 			OperationName:    WatchAppsV1ReplicaSetListForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "watchAppsV1ReplicaSetListForAllNamespaces",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -65540,6 +65867,7 @@ func (s *Server) handleWatchAppsV1StatefulSetListForAllNamespacesRequest(args [0
 			OperationName:    WatchAppsV1StatefulSetListForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "watchAppsV1StatefulSetListForAllNamespaces",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -65762,6 +66090,7 @@ func (s *Server) handleWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamesp
 			OperationName:    WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "watchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -65984,6 +66313,7 @@ func (s *Server) handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerReques
 			OperationName:    WatchAutoscalingV1NamespacedHorizontalPodAutoscalerOperation,
 			OperationSummary: "",
 			OperationID:      "watchAutoscalingV1NamespacedHorizontalPodAutoscaler",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -66214,6 +66544,7 @@ func (s *Server) handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListRe
 			OperationName:    WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListOperation,
 			OperationSummary: "",
 			OperationID:      "watchAutoscalingV1NamespacedHorizontalPodAutoscalerList",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -66440,6 +66771,7 @@ func (s *Server) handleWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllN
 			OperationName:    WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "watchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -66662,6 +66994,7 @@ func (s *Server) handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerR
 			OperationName:    WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerOperation,
 			OperationSummary: "",
 			OperationID:      "watchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -66892,6 +67225,7 @@ func (s *Server) handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerL
 			OperationName:    WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListOperation,
 			OperationSummary: "",
 			OperationID:      "watchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -67118,6 +67452,7 @@ func (s *Server) handleWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllN
 			OperationName:    WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "watchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -67340,6 +67675,7 @@ func (s *Server) handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerR
 			OperationName:    WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerOperation,
 			OperationSummary: "",
 			OperationID:      "watchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -67570,6 +67906,7 @@ func (s *Server) handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerL
 			OperationName:    WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListOperation,
 			OperationSummary: "",
 			OperationID:      "watchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -67796,6 +68133,7 @@ func (s *Server) handleWatchBatchV1CronJobListForAllNamespacesRequest(args [0]st
 			OperationName:    WatchBatchV1CronJobListForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "watchBatchV1CronJobListForAllNamespaces",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -68018,6 +68356,7 @@ func (s *Server) handleWatchBatchV1JobListForAllNamespacesRequest(args [0]string
 			OperationName:    WatchBatchV1JobListForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "watchBatchV1JobListForAllNamespaces",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -68240,6 +68579,7 @@ func (s *Server) handleWatchBatchV1NamespacedCronJobRequest(args [2]string, args
 			OperationName:    WatchBatchV1NamespacedCronJobOperation,
 			OperationSummary: "",
 			OperationID:      "watchBatchV1NamespacedCronJob",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -68470,6 +68810,7 @@ func (s *Server) handleWatchBatchV1NamespacedCronJobListRequest(args [1]string, 
 			OperationName:    WatchBatchV1NamespacedCronJobListOperation,
 			OperationSummary: "",
 			OperationID:      "watchBatchV1NamespacedCronJobList",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -68696,6 +69037,7 @@ func (s *Server) handleWatchBatchV1NamespacedJobRequest(args [2]string, argsEsca
 			OperationName:    WatchBatchV1NamespacedJobOperation,
 			OperationSummary: "",
 			OperationID:      "watchBatchV1NamespacedJob",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -68926,6 +69268,7 @@ func (s *Server) handleWatchBatchV1NamespacedJobListRequest(args [1]string, args
 			OperationName:    WatchBatchV1NamespacedJobListOperation,
 			OperationSummary: "",
 			OperationID:      "watchBatchV1NamespacedJobList",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -69152,6 +69495,7 @@ func (s *Server) handleWatchBatchV1beta1CronJobListForAllNamespacesRequest(args 
 			OperationName:    WatchBatchV1beta1CronJobListForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "watchBatchV1beta1CronJobListForAllNamespaces",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -69374,6 +69718,7 @@ func (s *Server) handleWatchBatchV1beta1NamespacedCronJobRequest(args [2]string,
 			OperationName:    WatchBatchV1beta1NamespacedCronJobOperation,
 			OperationSummary: "",
 			OperationID:      "watchBatchV1beta1NamespacedCronJob",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -69604,6 +69949,7 @@ func (s *Server) handleWatchBatchV1beta1NamespacedCronJobListRequest(args [1]str
 			OperationName:    WatchBatchV1beta1NamespacedCronJobListOperation,
 			OperationSummary: "",
 			OperationID:      "watchBatchV1beta1NamespacedCronJobList",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -69831,6 +70177,7 @@ func (s *Server) handleWatchCertificatesV1CertificateSigningRequestRequest(args 
 			OperationName:    WatchCertificatesV1CertificateSigningRequestOperation,
 			OperationSummary: "",
 			OperationID:      "watchCertificatesV1CertificateSigningRequest",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -70057,6 +70404,7 @@ func (s *Server) handleWatchCertificatesV1CertificateSigningRequestListRequest(a
 			OperationName:    WatchCertificatesV1CertificateSigningRequestListOperation,
 			OperationSummary: "",
 			OperationID:      "watchCertificatesV1CertificateSigningRequestList",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -70279,6 +70627,7 @@ func (s *Server) handleWatchCoordinationV1LeaseListForAllNamespacesRequest(args 
 			OperationName:    WatchCoordinationV1LeaseListForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "watchCoordinationV1LeaseListForAllNamespaces",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -70501,6 +70850,7 @@ func (s *Server) handleWatchCoordinationV1NamespacedLeaseRequest(args [2]string,
 			OperationName:    WatchCoordinationV1NamespacedLeaseOperation,
 			OperationSummary: "",
 			OperationID:      "watchCoordinationV1NamespacedLease",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -70731,6 +71081,7 @@ func (s *Server) handleWatchCoordinationV1NamespacedLeaseListRequest(args [1]str
 			OperationName:    WatchCoordinationV1NamespacedLeaseListOperation,
 			OperationSummary: "",
 			OperationID:      "watchCoordinationV1NamespacedLeaseList",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -70957,6 +71308,7 @@ func (s *Server) handleWatchCoreV1ConfigMapListForAllNamespacesRequest(args [0]s
 			OperationName:    WatchCoreV1ConfigMapListForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "watchCoreV1ConfigMapListForAllNamespaces",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -71179,6 +71531,7 @@ func (s *Server) handleWatchCoreV1EndpointsListForAllNamespacesRequest(args [0]s
 			OperationName:    WatchCoreV1EndpointsListForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "watchCoreV1EndpointsListForAllNamespaces",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -71401,6 +71754,7 @@ func (s *Server) handleWatchCoreV1EventListForAllNamespacesRequest(args [0]strin
 			OperationName:    WatchCoreV1EventListForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "watchCoreV1EventListForAllNamespaces",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -71623,6 +71977,7 @@ func (s *Server) handleWatchCoreV1LimitRangeListForAllNamespacesRequest(args [0]
 			OperationName:    WatchCoreV1LimitRangeListForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "watchCoreV1LimitRangeListForAllNamespaces",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -71845,6 +72200,7 @@ func (s *Server) handleWatchCoreV1NamespaceRequest(args [1]string, argsEscaped b
 			OperationName:    WatchCoreV1NamespaceOperation,
 			OperationSummary: "",
 			OperationID:      "watchCoreV1Namespace",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -72071,6 +72427,7 @@ func (s *Server) handleWatchCoreV1NamespaceListRequest(args [0]string, argsEscap
 			OperationName:    WatchCoreV1NamespaceListOperation,
 			OperationSummary: "",
 			OperationID:      "watchCoreV1NamespaceList",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -72293,6 +72650,7 @@ func (s *Server) handleWatchCoreV1NamespacedConfigMapRequest(args [2]string, arg
 			OperationName:    WatchCoreV1NamespacedConfigMapOperation,
 			OperationSummary: "",
 			OperationID:      "watchCoreV1NamespacedConfigMap",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -72523,6 +72881,7 @@ func (s *Server) handleWatchCoreV1NamespacedConfigMapListRequest(args [1]string,
 			OperationName:    WatchCoreV1NamespacedConfigMapListOperation,
 			OperationSummary: "",
 			OperationID:      "watchCoreV1NamespacedConfigMapList",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -72749,6 +73108,7 @@ func (s *Server) handleWatchCoreV1NamespacedEndpointsRequest(args [2]string, arg
 			OperationName:    WatchCoreV1NamespacedEndpointsOperation,
 			OperationSummary: "",
 			OperationID:      "watchCoreV1NamespacedEndpoints",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -72979,6 +73339,7 @@ func (s *Server) handleWatchCoreV1NamespacedEndpointsListRequest(args [1]string,
 			OperationName:    WatchCoreV1NamespacedEndpointsListOperation,
 			OperationSummary: "",
 			OperationID:      "watchCoreV1NamespacedEndpointsList",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -73205,6 +73566,7 @@ func (s *Server) handleWatchCoreV1NamespacedEventRequest(args [2]string, argsEsc
 			OperationName:    WatchCoreV1NamespacedEventOperation,
 			OperationSummary: "",
 			OperationID:      "watchCoreV1NamespacedEvent",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -73435,6 +73797,7 @@ func (s *Server) handleWatchCoreV1NamespacedEventListRequest(args [1]string, arg
 			OperationName:    WatchCoreV1NamespacedEventListOperation,
 			OperationSummary: "",
 			OperationID:      "watchCoreV1NamespacedEventList",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -73661,6 +74024,7 @@ func (s *Server) handleWatchCoreV1NamespacedLimitRangeRequest(args [2]string, ar
 			OperationName:    WatchCoreV1NamespacedLimitRangeOperation,
 			OperationSummary: "",
 			OperationID:      "watchCoreV1NamespacedLimitRange",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -73891,6 +74255,7 @@ func (s *Server) handleWatchCoreV1NamespacedLimitRangeListRequest(args [1]string
 			OperationName:    WatchCoreV1NamespacedLimitRangeListOperation,
 			OperationSummary: "",
 			OperationID:      "watchCoreV1NamespacedLimitRangeList",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -74117,6 +74482,7 @@ func (s *Server) handleWatchCoreV1NamespacedPersistentVolumeClaimRequest(args [2
 			OperationName:    WatchCoreV1NamespacedPersistentVolumeClaimOperation,
 			OperationSummary: "",
 			OperationID:      "watchCoreV1NamespacedPersistentVolumeClaim",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -74347,6 +74713,7 @@ func (s *Server) handleWatchCoreV1NamespacedPersistentVolumeClaimListRequest(arg
 			OperationName:    WatchCoreV1NamespacedPersistentVolumeClaimListOperation,
 			OperationSummary: "",
 			OperationID:      "watchCoreV1NamespacedPersistentVolumeClaimList",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -74573,6 +74940,7 @@ func (s *Server) handleWatchCoreV1NamespacedPodRequest(args [2]string, argsEscap
 			OperationName:    WatchCoreV1NamespacedPodOperation,
 			OperationSummary: "",
 			OperationID:      "watchCoreV1NamespacedPod",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -74803,6 +75171,7 @@ func (s *Server) handleWatchCoreV1NamespacedPodListRequest(args [1]string, argsE
 			OperationName:    WatchCoreV1NamespacedPodListOperation,
 			OperationSummary: "",
 			OperationID:      "watchCoreV1NamespacedPodList",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -75029,6 +75398,7 @@ func (s *Server) handleWatchCoreV1NamespacedPodTemplateRequest(args [2]string, a
 			OperationName:    WatchCoreV1NamespacedPodTemplateOperation,
 			OperationSummary: "",
 			OperationID:      "watchCoreV1NamespacedPodTemplate",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -75259,6 +75629,7 @@ func (s *Server) handleWatchCoreV1NamespacedPodTemplateListRequest(args [1]strin
 			OperationName:    WatchCoreV1NamespacedPodTemplateListOperation,
 			OperationSummary: "",
 			OperationID:      "watchCoreV1NamespacedPodTemplateList",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -75485,6 +75856,7 @@ func (s *Server) handleWatchCoreV1NamespacedReplicationControllerRequest(args [2
 			OperationName:    WatchCoreV1NamespacedReplicationControllerOperation,
 			OperationSummary: "",
 			OperationID:      "watchCoreV1NamespacedReplicationController",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -75715,6 +76087,7 @@ func (s *Server) handleWatchCoreV1NamespacedReplicationControllerListRequest(arg
 			OperationName:    WatchCoreV1NamespacedReplicationControllerListOperation,
 			OperationSummary: "",
 			OperationID:      "watchCoreV1NamespacedReplicationControllerList",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -75941,6 +76314,7 @@ func (s *Server) handleWatchCoreV1NamespacedResourceQuotaRequest(args [2]string,
 			OperationName:    WatchCoreV1NamespacedResourceQuotaOperation,
 			OperationSummary: "",
 			OperationID:      "watchCoreV1NamespacedResourceQuota",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -76171,6 +76545,7 @@ func (s *Server) handleWatchCoreV1NamespacedResourceQuotaListRequest(args [1]str
 			OperationName:    WatchCoreV1NamespacedResourceQuotaListOperation,
 			OperationSummary: "",
 			OperationID:      "watchCoreV1NamespacedResourceQuotaList",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -76397,6 +76772,7 @@ func (s *Server) handleWatchCoreV1NamespacedSecretRequest(args [2]string, argsEs
 			OperationName:    WatchCoreV1NamespacedSecretOperation,
 			OperationSummary: "",
 			OperationID:      "watchCoreV1NamespacedSecret",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -76627,6 +77003,7 @@ func (s *Server) handleWatchCoreV1NamespacedSecretListRequest(args [1]string, ar
 			OperationName:    WatchCoreV1NamespacedSecretListOperation,
 			OperationSummary: "",
 			OperationID:      "watchCoreV1NamespacedSecretList",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -76853,6 +77230,7 @@ func (s *Server) handleWatchCoreV1NamespacedServiceRequest(args [2]string, argsE
 			OperationName:    WatchCoreV1NamespacedServiceOperation,
 			OperationSummary: "",
 			OperationID:      "watchCoreV1NamespacedService",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -77083,6 +77461,7 @@ func (s *Server) handleWatchCoreV1NamespacedServiceAccountRequest(args [2]string
 			OperationName:    WatchCoreV1NamespacedServiceAccountOperation,
 			OperationSummary: "",
 			OperationID:      "watchCoreV1NamespacedServiceAccount",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -77313,6 +77692,7 @@ func (s *Server) handleWatchCoreV1NamespacedServiceAccountListRequest(args [1]st
 			OperationName:    WatchCoreV1NamespacedServiceAccountListOperation,
 			OperationSummary: "",
 			OperationID:      "watchCoreV1NamespacedServiceAccountList",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -77539,6 +77919,7 @@ func (s *Server) handleWatchCoreV1NamespacedServiceListRequest(args [1]string, a
 			OperationName:    WatchCoreV1NamespacedServiceListOperation,
 			OperationSummary: "",
 			OperationID:      "watchCoreV1NamespacedServiceList",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -77765,6 +78146,7 @@ func (s *Server) handleWatchCoreV1NodeRequest(args [1]string, argsEscaped bool, 
 			OperationName:    WatchCoreV1NodeOperation,
 			OperationSummary: "",
 			OperationID:      "watchCoreV1Node",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -77991,6 +78373,7 @@ func (s *Server) handleWatchCoreV1NodeListRequest(args [0]string, argsEscaped bo
 			OperationName:    WatchCoreV1NodeListOperation,
 			OperationSummary: "",
 			OperationID:      "watchCoreV1NodeList",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -78213,6 +78596,7 @@ func (s *Server) handleWatchCoreV1PersistentVolumeRequest(args [1]string, argsEs
 			OperationName:    WatchCoreV1PersistentVolumeOperation,
 			OperationSummary: "",
 			OperationID:      "watchCoreV1PersistentVolume",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -78439,6 +78823,7 @@ func (s *Server) handleWatchCoreV1PersistentVolumeClaimListForAllNamespacesReque
 			OperationName:    WatchCoreV1PersistentVolumeClaimListForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "watchCoreV1PersistentVolumeClaimListForAllNamespaces",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -78661,6 +79046,7 @@ func (s *Server) handleWatchCoreV1PersistentVolumeListRequest(args [0]string, ar
 			OperationName:    WatchCoreV1PersistentVolumeListOperation,
 			OperationSummary: "",
 			OperationID:      "watchCoreV1PersistentVolumeList",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -78883,6 +79269,7 @@ func (s *Server) handleWatchCoreV1PodListForAllNamespacesRequest(args [0]string,
 			OperationName:    WatchCoreV1PodListForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "watchCoreV1PodListForAllNamespaces",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -79105,6 +79492,7 @@ func (s *Server) handleWatchCoreV1PodTemplateListForAllNamespacesRequest(args [0
 			OperationName:    WatchCoreV1PodTemplateListForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "watchCoreV1PodTemplateListForAllNamespaces",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -79327,6 +79715,7 @@ func (s *Server) handleWatchCoreV1ReplicationControllerListForAllNamespacesReque
 			OperationName:    WatchCoreV1ReplicationControllerListForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "watchCoreV1ReplicationControllerListForAllNamespaces",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -79549,6 +79938,7 @@ func (s *Server) handleWatchCoreV1ResourceQuotaListForAllNamespacesRequest(args 
 			OperationName:    WatchCoreV1ResourceQuotaListForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "watchCoreV1ResourceQuotaListForAllNamespaces",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -79771,6 +80161,7 @@ func (s *Server) handleWatchCoreV1SecretListForAllNamespacesRequest(args [0]stri
 			OperationName:    WatchCoreV1SecretListForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "watchCoreV1SecretListForAllNamespaces",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -79993,6 +80384,7 @@ func (s *Server) handleWatchCoreV1ServiceAccountListForAllNamespacesRequest(args
 			OperationName:    WatchCoreV1ServiceAccountListForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "watchCoreV1ServiceAccountListForAllNamespaces",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -80215,6 +80607,7 @@ func (s *Server) handleWatchCoreV1ServiceListForAllNamespacesRequest(args [0]str
 			OperationName:    WatchCoreV1ServiceListForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "watchCoreV1ServiceListForAllNamespaces",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -80437,6 +80830,7 @@ func (s *Server) handleWatchDiscoveryV1EndpointSliceListForAllNamespacesRequest(
 			OperationName:    WatchDiscoveryV1EndpointSliceListForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "watchDiscoveryV1EndpointSliceListForAllNamespaces",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -80659,6 +81053,7 @@ func (s *Server) handleWatchDiscoveryV1NamespacedEndpointSliceRequest(args [2]st
 			OperationName:    WatchDiscoveryV1NamespacedEndpointSliceOperation,
 			OperationSummary: "",
 			OperationID:      "watchDiscoveryV1NamespacedEndpointSlice",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -80889,6 +81284,7 @@ func (s *Server) handleWatchDiscoveryV1NamespacedEndpointSliceListRequest(args [
 			OperationName:    WatchDiscoveryV1NamespacedEndpointSliceListOperation,
 			OperationSummary: "",
 			OperationID:      "watchDiscoveryV1NamespacedEndpointSliceList",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -81115,6 +81511,7 @@ func (s *Server) handleWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesReq
 			OperationName:    WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "watchDiscoveryV1beta1EndpointSliceListForAllNamespaces",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -81337,6 +81734,7 @@ func (s *Server) handleWatchDiscoveryV1beta1NamespacedEndpointSliceRequest(args 
 			OperationName:    WatchDiscoveryV1beta1NamespacedEndpointSliceOperation,
 			OperationSummary: "",
 			OperationID:      "watchDiscoveryV1beta1NamespacedEndpointSlice",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -81567,6 +81965,7 @@ func (s *Server) handleWatchDiscoveryV1beta1NamespacedEndpointSliceListRequest(a
 			OperationName:    WatchDiscoveryV1beta1NamespacedEndpointSliceListOperation,
 			OperationSummary: "",
 			OperationID:      "watchDiscoveryV1beta1NamespacedEndpointSliceList",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -81793,6 +82192,7 @@ func (s *Server) handleWatchEventsV1EventListForAllNamespacesRequest(args [0]str
 			OperationName:    WatchEventsV1EventListForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "watchEventsV1EventListForAllNamespaces",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -82015,6 +82415,7 @@ func (s *Server) handleWatchEventsV1NamespacedEventRequest(args [2]string, argsE
 			OperationName:    WatchEventsV1NamespacedEventOperation,
 			OperationSummary: "",
 			OperationID:      "watchEventsV1NamespacedEvent",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -82245,6 +82646,7 @@ func (s *Server) handleWatchEventsV1NamespacedEventListRequest(args [1]string, a
 			OperationName:    WatchEventsV1NamespacedEventListOperation,
 			OperationSummary: "",
 			OperationID:      "watchEventsV1NamespacedEventList",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -82471,6 +82873,7 @@ func (s *Server) handleWatchEventsV1beta1EventListForAllNamespacesRequest(args [
 			OperationName:    WatchEventsV1beta1EventListForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "watchEventsV1beta1EventListForAllNamespaces",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -82693,6 +83096,7 @@ func (s *Server) handleWatchEventsV1beta1NamespacedEventRequest(args [2]string, 
 			OperationName:    WatchEventsV1beta1NamespacedEventOperation,
 			OperationSummary: "",
 			OperationID:      "watchEventsV1beta1NamespacedEvent",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -82923,6 +83327,7 @@ func (s *Server) handleWatchEventsV1beta1NamespacedEventListRequest(args [1]stri
 			OperationName:    WatchEventsV1beta1NamespacedEventListOperation,
 			OperationSummary: "",
 			OperationID:      "watchEventsV1beta1NamespacedEventList",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -83149,6 +83554,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1FlowSchemaRequest(args [1
 			OperationName:    WatchFlowcontrolApiserverV1beta1FlowSchemaOperation,
 			OperationSummary: "",
 			OperationID:      "watchFlowcontrolApiserverV1beta1FlowSchema",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -83375,6 +83781,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1FlowSchemaListRequest(arg
 			OperationName:    WatchFlowcontrolApiserverV1beta1FlowSchemaListOperation,
 			OperationSummary: "",
 			OperationID:      "watchFlowcontrolApiserverV1beta1FlowSchemaList",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -83598,6 +84005,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfiguratio
 			OperationName:    WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationOperation,
 			OperationSummary: "",
 			OperationID:      "watchFlowcontrolApiserverV1beta1PriorityLevelConfiguration",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -83824,6 +84232,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfiguratio
 			OperationName:    WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListOperation,
 			OperationSummary: "",
 			OperationID:      "watchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -84046,6 +84455,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2FlowSchemaRequest(args [1
 			OperationName:    WatchFlowcontrolApiserverV1beta2FlowSchemaOperation,
 			OperationSummary: "",
 			OperationID:      "watchFlowcontrolApiserverV1beta2FlowSchema",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -84272,6 +84682,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2FlowSchemaListRequest(arg
 			OperationName:    WatchFlowcontrolApiserverV1beta2FlowSchemaListOperation,
 			OperationSummary: "",
 			OperationID:      "watchFlowcontrolApiserverV1beta2FlowSchemaList",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -84495,6 +84906,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfiguratio
 			OperationName:    WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationOperation,
 			OperationSummary: "",
 			OperationID:      "watchFlowcontrolApiserverV1beta2PriorityLevelConfiguration",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -84721,6 +85133,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfiguratio
 			OperationName:    WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListOperation,
 			OperationSummary: "",
 			OperationID:      "watchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -84943,6 +85356,7 @@ func (s *Server) handleWatchInternalApiserverV1alpha1StorageVersionRequest(args 
 			OperationName:    WatchInternalApiserverV1alpha1StorageVersionOperation,
 			OperationSummary: "",
 			OperationID:      "watchInternalApiserverV1alpha1StorageVersion",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -85169,6 +85583,7 @@ func (s *Server) handleWatchInternalApiserverV1alpha1StorageVersionListRequest(a
 			OperationName:    WatchInternalApiserverV1alpha1StorageVersionListOperation,
 			OperationSummary: "",
 			OperationID:      "watchInternalApiserverV1alpha1StorageVersionList",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -85391,6 +85806,7 @@ func (s *Server) handleWatchNetworkingV1IngressClassRequest(args [1]string, args
 			OperationName:    WatchNetworkingV1IngressClassOperation,
 			OperationSummary: "",
 			OperationID:      "watchNetworkingV1IngressClass",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -85617,6 +86033,7 @@ func (s *Server) handleWatchNetworkingV1IngressClassListRequest(args [0]string, 
 			OperationName:    WatchNetworkingV1IngressClassListOperation,
 			OperationSummary: "",
 			OperationID:      "watchNetworkingV1IngressClassList",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -85839,6 +86256,7 @@ func (s *Server) handleWatchNetworkingV1IngressListForAllNamespacesRequest(args 
 			OperationName:    WatchNetworkingV1IngressListForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "watchNetworkingV1IngressListForAllNamespaces",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -86061,6 +86479,7 @@ func (s *Server) handleWatchNetworkingV1NamespacedIngressRequest(args [2]string,
 			OperationName:    WatchNetworkingV1NamespacedIngressOperation,
 			OperationSummary: "",
 			OperationID:      "watchNetworkingV1NamespacedIngress",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -86291,6 +86710,7 @@ func (s *Server) handleWatchNetworkingV1NamespacedIngressListRequest(args [1]str
 			OperationName:    WatchNetworkingV1NamespacedIngressListOperation,
 			OperationSummary: "",
 			OperationID:      "watchNetworkingV1NamespacedIngressList",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -86517,6 +86937,7 @@ func (s *Server) handleWatchNetworkingV1NamespacedNetworkPolicyRequest(args [2]s
 			OperationName:    WatchNetworkingV1NamespacedNetworkPolicyOperation,
 			OperationSummary: "",
 			OperationID:      "watchNetworkingV1NamespacedNetworkPolicy",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -86747,6 +87168,7 @@ func (s *Server) handleWatchNetworkingV1NamespacedNetworkPolicyListRequest(args 
 			OperationName:    WatchNetworkingV1NamespacedNetworkPolicyListOperation,
 			OperationSummary: "",
 			OperationID:      "watchNetworkingV1NamespacedNetworkPolicyList",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -86973,6 +87395,7 @@ func (s *Server) handleWatchNetworkingV1NetworkPolicyListForAllNamespacesRequest
 			OperationName:    WatchNetworkingV1NetworkPolicyListForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "watchNetworkingV1NetworkPolicyListForAllNamespaces",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -87195,6 +87618,7 @@ func (s *Server) handleWatchNodeV1RuntimeClassRequest(args [1]string, argsEscape
 			OperationName:    WatchNodeV1RuntimeClassOperation,
 			OperationSummary: "",
 			OperationID:      "watchNodeV1RuntimeClass",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -87421,6 +87845,7 @@ func (s *Server) handleWatchNodeV1RuntimeClassListRequest(args [0]string, argsEs
 			OperationName:    WatchNodeV1RuntimeClassListOperation,
 			OperationSummary: "",
 			OperationID:      "watchNodeV1RuntimeClassList",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -87643,6 +88068,7 @@ func (s *Server) handleWatchNodeV1alpha1RuntimeClassRequest(args [1]string, args
 			OperationName:    WatchNodeV1alpha1RuntimeClassOperation,
 			OperationSummary: "",
 			OperationID:      "watchNodeV1alpha1RuntimeClass",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -87869,6 +88295,7 @@ func (s *Server) handleWatchNodeV1alpha1RuntimeClassListRequest(args [0]string, 
 			OperationName:    WatchNodeV1alpha1RuntimeClassListOperation,
 			OperationSummary: "",
 			OperationID:      "watchNodeV1alpha1RuntimeClassList",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -88091,6 +88518,7 @@ func (s *Server) handleWatchNodeV1beta1RuntimeClassRequest(args [1]string, argsE
 			OperationName:    WatchNodeV1beta1RuntimeClassOperation,
 			OperationSummary: "",
 			OperationID:      "watchNodeV1beta1RuntimeClass",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -88317,6 +88745,7 @@ func (s *Server) handleWatchNodeV1beta1RuntimeClassListRequest(args [0]string, a
 			OperationName:    WatchNodeV1beta1RuntimeClassListOperation,
 			OperationSummary: "",
 			OperationID:      "watchNodeV1beta1RuntimeClassList",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -88539,6 +88968,7 @@ func (s *Server) handleWatchPolicyV1NamespacedPodDisruptionBudgetRequest(args [2
 			OperationName:    WatchPolicyV1NamespacedPodDisruptionBudgetOperation,
 			OperationSummary: "",
 			OperationID:      "watchPolicyV1NamespacedPodDisruptionBudget",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -88769,6 +89199,7 @@ func (s *Server) handleWatchPolicyV1NamespacedPodDisruptionBudgetListRequest(arg
 			OperationName:    WatchPolicyV1NamespacedPodDisruptionBudgetListOperation,
 			OperationSummary: "",
 			OperationID:      "watchPolicyV1NamespacedPodDisruptionBudgetList",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -88995,6 +89426,7 @@ func (s *Server) handleWatchPolicyV1PodDisruptionBudgetListForAllNamespacesReque
 			OperationName:    WatchPolicyV1PodDisruptionBudgetListForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "watchPolicyV1PodDisruptionBudgetListForAllNamespaces",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -89217,6 +89649,7 @@ func (s *Server) handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetRequest(ar
 			OperationName:    WatchPolicyV1beta1NamespacedPodDisruptionBudgetOperation,
 			OperationSummary: "",
 			OperationID:      "watchPolicyV1beta1NamespacedPodDisruptionBudget",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -89447,6 +89880,7 @@ func (s *Server) handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetListReques
 			OperationName:    WatchPolicyV1beta1NamespacedPodDisruptionBudgetListOperation,
 			OperationSummary: "",
 			OperationID:      "watchPolicyV1beta1NamespacedPodDisruptionBudgetList",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -89673,6 +90107,7 @@ func (s *Server) handleWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces
 			OperationName:    WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "watchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -89895,6 +90330,7 @@ func (s *Server) handleWatchPolicyV1beta1PodSecurityPolicyRequest(args [1]string
 			OperationName:    WatchPolicyV1beta1PodSecurityPolicyOperation,
 			OperationSummary: "",
 			OperationID:      "watchPolicyV1beta1PodSecurityPolicy",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -90121,6 +90557,7 @@ func (s *Server) handleWatchPolicyV1beta1PodSecurityPolicyListRequest(args [0]st
 			OperationName:    WatchPolicyV1beta1PodSecurityPolicyListOperation,
 			OperationSummary: "",
 			OperationID:      "watchPolicyV1beta1PodSecurityPolicyList",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -90343,6 +90780,7 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleRequest(args [1]string
 			OperationName:    WatchRbacAuthorizationV1ClusterRoleOperation,
 			OperationSummary: "",
 			OperationID:      "watchRbacAuthorizationV1ClusterRole",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -90569,6 +91007,7 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleBindingRequest(args [1
 			OperationName:    WatchRbacAuthorizationV1ClusterRoleBindingOperation,
 			OperationSummary: "",
 			OperationID:      "watchRbacAuthorizationV1ClusterRoleBinding",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -90795,6 +91234,7 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleBindingListRequest(arg
 			OperationName:    WatchRbacAuthorizationV1ClusterRoleBindingListOperation,
 			OperationSummary: "",
 			OperationID:      "watchRbacAuthorizationV1ClusterRoleBindingList",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -91017,6 +91457,7 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleListRequest(args [0]st
 			OperationName:    WatchRbacAuthorizationV1ClusterRoleListOperation,
 			OperationSummary: "",
 			OperationID:      "watchRbacAuthorizationV1ClusterRoleList",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -91239,6 +91680,7 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleRequest(args [2]str
 			OperationName:    WatchRbacAuthorizationV1NamespacedRoleOperation,
 			OperationSummary: "",
 			OperationID:      "watchRbacAuthorizationV1NamespacedRole",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -91469,6 +91911,7 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleBindingRequest(args
 			OperationName:    WatchRbacAuthorizationV1NamespacedRoleBindingOperation,
 			OperationSummary: "",
 			OperationID:      "watchRbacAuthorizationV1NamespacedRoleBinding",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -91699,6 +92142,7 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleBindingListRequest(
 			OperationName:    WatchRbacAuthorizationV1NamespacedRoleBindingListOperation,
 			OperationSummary: "",
 			OperationID:      "watchRbacAuthorizationV1NamespacedRoleBindingList",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -91925,6 +92369,7 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleListRequest(args [1
 			OperationName:    WatchRbacAuthorizationV1NamespacedRoleListOperation,
 			OperationSummary: "",
 			OperationID:      "watchRbacAuthorizationV1NamespacedRoleList",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -92151,6 +92596,7 @@ func (s *Server) handleWatchRbacAuthorizationV1RoleBindingListForAllNamespacesRe
 			OperationName:    WatchRbacAuthorizationV1RoleBindingListForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "watchRbacAuthorizationV1RoleBindingListForAllNamespaces",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -92373,6 +92819,7 @@ func (s *Server) handleWatchRbacAuthorizationV1RoleListForAllNamespacesRequest(a
 			OperationName:    WatchRbacAuthorizationV1RoleListForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "watchRbacAuthorizationV1RoleListForAllNamespaces",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -92595,6 +93042,7 @@ func (s *Server) handleWatchSchedulingV1PriorityClassRequest(args [1]string, arg
 			OperationName:    WatchSchedulingV1PriorityClassOperation,
 			OperationSummary: "",
 			OperationID:      "watchSchedulingV1PriorityClass",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -92821,6 +93269,7 @@ func (s *Server) handleWatchSchedulingV1PriorityClassListRequest(args [0]string,
 			OperationName:    WatchSchedulingV1PriorityClassListOperation,
 			OperationSummary: "",
 			OperationID:      "watchSchedulingV1PriorityClassList",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -93043,6 +93492,7 @@ func (s *Server) handleWatchStorageV1CSIDriverRequest(args [1]string, argsEscape
 			OperationName:    WatchStorageV1CSIDriverOperation,
 			OperationSummary: "",
 			OperationID:      "watchStorageV1CSIDriver",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -93269,6 +93719,7 @@ func (s *Server) handleWatchStorageV1CSIDriverListRequest(args [0]string, argsEs
 			OperationName:    WatchStorageV1CSIDriverListOperation,
 			OperationSummary: "",
 			OperationID:      "watchStorageV1CSIDriverList",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -93491,6 +93942,7 @@ func (s *Server) handleWatchStorageV1CSINodeRequest(args [1]string, argsEscaped 
 			OperationName:    WatchStorageV1CSINodeOperation,
 			OperationSummary: "",
 			OperationID:      "watchStorageV1CSINode",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -93717,6 +94169,7 @@ func (s *Server) handleWatchStorageV1CSINodeListRequest(args [0]string, argsEsca
 			OperationName:    WatchStorageV1CSINodeListOperation,
 			OperationSummary: "",
 			OperationID:      "watchStorageV1CSINodeList",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -93939,6 +94392,7 @@ func (s *Server) handleWatchStorageV1StorageClassRequest(args [1]string, argsEsc
 			OperationName:    WatchStorageV1StorageClassOperation,
 			OperationSummary: "",
 			OperationID:      "watchStorageV1StorageClass",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -94165,6 +94619,7 @@ func (s *Server) handleWatchStorageV1StorageClassListRequest(args [0]string, arg
 			OperationName:    WatchStorageV1StorageClassListOperation,
 			OperationSummary: "",
 			OperationID:      "watchStorageV1StorageClassList",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -94387,6 +94842,7 @@ func (s *Server) handleWatchStorageV1VolumeAttachmentRequest(args [1]string, arg
 			OperationName:    WatchStorageV1VolumeAttachmentOperation,
 			OperationSummary: "",
 			OperationID:      "watchStorageV1VolumeAttachment",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -94613,6 +95069,7 @@ func (s *Server) handleWatchStorageV1VolumeAttachmentListRequest(args [0]string,
 			OperationName:    WatchStorageV1VolumeAttachmentListOperation,
 			OperationSummary: "",
 			OperationID:      "watchStorageV1VolumeAttachmentList",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -94835,6 +95292,7 @@ func (s *Server) handleWatchStorageV1alpha1CSIStorageCapacityListForAllNamespace
 			OperationName:    WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "watchStorageV1alpha1CSIStorageCapacityListForAllNamespaces",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -95057,6 +95515,7 @@ func (s *Server) handleWatchStorageV1alpha1NamespacedCSIStorageCapacityRequest(a
 			OperationName:    WatchStorageV1alpha1NamespacedCSIStorageCapacityOperation,
 			OperationSummary: "",
 			OperationID:      "watchStorageV1alpha1NamespacedCSIStorageCapacity",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -95287,6 +95746,7 @@ func (s *Server) handleWatchStorageV1alpha1NamespacedCSIStorageCapacityListReque
 			OperationName:    WatchStorageV1alpha1NamespacedCSIStorageCapacityListOperation,
 			OperationSummary: "",
 			OperationID:      "watchStorageV1alpha1NamespacedCSIStorageCapacityList",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -95513,6 +95973,7 @@ func (s *Server) handleWatchStorageV1beta1CSIStorageCapacityListForAllNamespaces
 			OperationName:    WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "watchStorageV1beta1CSIStorageCapacityListForAllNamespaces",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -95735,6 +96196,7 @@ func (s *Server) handleWatchStorageV1beta1NamespacedCSIStorageCapacityRequest(ar
 			OperationName:    WatchStorageV1beta1NamespacedCSIStorageCapacityOperation,
 			OperationSummary: "",
 			OperationID:      "watchStorageV1beta1NamespacedCSIStorageCapacity",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -95965,6 +96427,7 @@ func (s *Server) handleWatchStorageV1beta1NamespacedCSIStorageCapacityListReques
 			OperationName:    WatchStorageV1beta1NamespacedCSIStorageCapacityListOperation,
 			OperationSummary: "",
 			OperationID:      "watchStorageV1beta1NamespacedCSIStorageCapacityList",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{

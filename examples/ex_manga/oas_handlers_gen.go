@@ -123,6 +123,7 @@ func (s *Server) handleGetBookRequest(args [1]string, argsEscaped bool, w http.R
 			OperationName:    GetBookOperation,
 			OperationSummary: "Gets metadata of book",
 			OperationID:      "getBook",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -264,6 +265,7 @@ func (s *Server) handleGetPageCoverImageRequest(args [2]string, argsEscaped bool
 			OperationName:    GetPageCoverImageOperation,
 			OperationSummary: "Gets page cover",
 			OperationID:      "getPageCoverImage",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -409,6 +411,7 @@ func (s *Server) handleGetPageImageRequest(args [3]string, argsEscaped bool, w h
 			OperationName:    GetPageImageOperation,
 			OperationSummary: "Gets page",
 			OperationID:      "getPageImage",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -558,6 +561,7 @@ func (s *Server) handleGetPageThumbnailImageRequest(args [3]string, argsEscaped 
 			OperationName:    GetPageThumbnailImageOperation,
 			OperationSummary: "Gets page thumbnail",
 			OperationID:      "getPageThumbnailImage",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -707,6 +711,7 @@ func (s *Server) handleSearchRequest(args [0]string, argsEscaped bool, w http.Re
 			OperationName:    SearchOperation,
 			OperationSummary: "Search for comics",
 			OperationID:      "search",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -852,6 +857,7 @@ func (s *Server) handleSearchByTagIDRequest(args [0]string, argsEscaped bool, w 
 			OperationName:    SearchByTagIDOperation,
 			OperationSummary: "Search for comics by tag ID",
 			OperationID:      "searchByTagID",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
