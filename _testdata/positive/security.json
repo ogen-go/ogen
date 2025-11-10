@@ -41,6 +41,24 @@
         }
       }
     },
+    "/disjointSecurityRoles": {
+      "get": {
+        "operationId": "disjointSecurityRoles",
+        "security": [
+          {
+            "basicAuth": ["resource.read"]
+          },
+          {
+            "basicAuth": ["resource.write"]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/intersectSecurity": {
       "get": {
         "operationId": "intersectSecurity",

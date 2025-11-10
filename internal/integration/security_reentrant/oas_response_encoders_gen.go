@@ -23,6 +23,13 @@ func encodeDisjointSecurityResponse(response *DisjointSecurityOK, w http.Respons
 	return nil
 }
 
+func encodeDisjointSecurityRolesResponse(response *DisjointSecurityRolesOK, w http.ResponseWriter, span trace.Span) error {
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+
+	return nil
+}
+
 func encodeIntersectSecurityResponse(response *IntersectSecurityOK, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))

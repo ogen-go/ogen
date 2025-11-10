@@ -16,6 +16,10 @@ type Handler interface {
 	//
 	// GET /disjointSecurity
 	DisjointSecurity(ctx context.Context) error
+	// DisjointSecurityRoles implements disjointSecurityRoles operation.
+	//
+	// GET /disjointSecurityRoles
+	DisjointSecurityRoles(ctx context.Context) error
 	// IntersectSecurity implements intersectSecurity operation.
 	//
 	// GET /intersectSecurity

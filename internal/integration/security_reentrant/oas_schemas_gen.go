@@ -156,6 +156,9 @@ type CustomSecurityOK struct{}
 // DisjointSecurityOK is response for DisjointSecurity operation.
 type DisjointSecurityOK struct{}
 
+// DisjointSecurityRolesOK is response for DisjointSecurityRoles operation.
+type DisjointSecurityRolesOK struct{}
+
 type HeaderKey struct {
 	APIKey        string
 	Roles         []string

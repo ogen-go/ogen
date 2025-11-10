@@ -27,6 +27,13 @@ func (UnimplementedHandler) DisjointSecurity(ctx context.Context) error {
 	return ht.ErrNotImplemented
 }
 
+// DisjointSecurityRoles implements disjointSecurityRoles operation.
+//
+// GET /disjointSecurityRoles
+func (UnimplementedHandler) DisjointSecurityRoles(ctx context.Context) error {
+	return ht.ErrNotImplemented
+}
+
 // IntersectSecurity implements intersectSecurity operation.
 //
 // GET /intersectSecurity

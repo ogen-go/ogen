@@ -26,6 +26,15 @@ func decodeDisjointSecurityResponse(resp *http.Response) (res *DisjointSecurityO
 	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
+func decodeDisjointSecurityRolesResponse(resp *http.Response) (res *DisjointSecurityRolesOK, _ error) {
+	switch resp.StatusCode {
+	case 200:
+		// Code 200.
+		return &DisjointSecurityRolesOK{}, nil
+	}
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
+}
+
 func decodeIntersectSecurityResponse(resp *http.Response) (res *IntersectSecurityOK, _ error) {
 	switch resp.StatusCode {
 	case 200:

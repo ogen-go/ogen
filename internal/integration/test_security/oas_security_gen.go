@@ -43,7 +43,11 @@ func findAuthorization(h http.Header, prefix string) (string, bool) {
 }
 
 var operationRolesBasicAuth = map[string][]string{
-	DisjointSecurityOperation:  []string{},
+	DisjointSecurityOperation: []string{},
+	DisjointSecurityRolesOperation: []string{
+		"resource.read",
+		"resource.write",
+	},
 	IntersectSecurityOperation: []string{},
 }
 

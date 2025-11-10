@@ -89,7 +89,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 
 				if len(elem) == 0 {
-					// Leaf node.
 					switch r.Method {
 					case "GET":
 						s.handleDisjointSecurityRequest([0]string{}, elemIsEscaped, w, r)
@@ -98,6 +97,28 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					return
+				}
+				switch elem[0] {
+				case 'R': // Prefix: "Roles"
+
+					if l := len("Roles"); len(elem) >= l && elem[0:l] == "Roles" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						// Leaf node.
+						switch r.Method {
+						case "GET":
+							s.handleDisjointSecurityRolesRequest([0]string{}, elemIsEscaped, w, r)
+						default:
+							s.notAllowed(w, r, "GET")
+						}
+
+						return
+					}
+
 				}
 
 			case 'i': // Prefix: "intersectSecurity"
@@ -267,7 +288,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
-					// Leaf node.
 					switch method {
 					case "GET":
 						r.name = DisjointSecurityOperation
@@ -280,6 +300,32 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					default:
 						return
 					}
+				}
+				switch elem[0] {
+				case 'R': // Prefix: "Roles"
+
+					if l := len("Roles"); len(elem) >= l && elem[0:l] == "Roles" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						// Leaf node.
+						switch method {
+						case "GET":
+							r.name = DisjointSecurityRolesOperation
+							r.summary = ""
+							r.operationID = "disjointSecurityRoles"
+							r.pathPattern = "/disjointSecurityRoles"
+							r.args = args
+							r.count = 0
+							return r, true
+						default:
+							return
+						}
+					}
+
 				}
 
 			case 'i': // Prefix: "intersectSecurity"

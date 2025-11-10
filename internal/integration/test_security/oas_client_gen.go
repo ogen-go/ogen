@@ -35,6 +35,10 @@ type Invoker interface {
 	//
 	// GET /disjointSecurity
 	DisjointSecurity(ctx context.Context) error
+	// DisjointSecurityRoles invokes disjointSecurityRoles operation.
+	//
+	// GET /disjointSecurityRoles
+	DisjointSecurityRoles(ctx context.Context) error
 	// IntersectSecurity invokes intersectSecurity operation.
 	//
 	// GET /intersectSecurity
@@ -325,6 +329,111 @@ func (c *Client) sendDisjointSecurity(ctx context.Context) (res *DisjointSecurit
 
 	stage = "DecodeResponse"
 	result, err := decodeDisjointSecurityResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// DisjointSecurityRoles invokes disjointSecurityRoles operation.
+//
+// GET /disjointSecurityRoles
+func (c *Client) DisjointSecurityRoles(ctx context.Context) error {
+	_, err := c.sendDisjointSecurityRoles(ctx)
+	return err
+}
+
+func (c *Client) sendDisjointSecurityRoles(ctx context.Context) (res *DisjointSecurityRolesOK, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("disjointSecurityRoles"),
+		semconv.HTTPRequestMethodKey.String("GET"),
+		semconv.URLTemplateKey.String("/disjointSecurityRoles"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, DisjointSecurityRolesOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/disjointSecurityRoles"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "GET", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:BasicAuth"
+			switch err := c.securityBasicAuth(ctx, DisjointSecurityRolesOperation, r); {
+			case err == nil: // if NO error
+				satisfied[0] |= 1 << 0
+			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"BasicAuth\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, ogenerrors.ErrSecurityRequirementIsNotSatisfied
+		}
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeDisjointSecurityRolesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
