@@ -8,6 +8,7 @@ import (
 
 	"github.com/ogen-go/ogen/gen/ir"
 	"github.com/ogen-go/ogen/internal/xslices"
+	"github.com/ogen-go/ogen/jsonschema"
 	"github.com/ogen-go/ogen/openapi"
 )
 
@@ -45,6 +46,54 @@ func (g *Generator) generateOperation(ctx *genctx, webhookName string, spec *ope
 	op.Params, err = g.generateParameters(ctx, op.Name, spec.Parameters)
 	if err != nil {
 		return nil, errors.Wrap(err, "parameters")
+	}
+
+	// If there is no manual specification of the Accept parameter
+	if _, ok := xslices.FindFunc(op.Params, func(param *ir.Parameter) bool { return param.Spec.In.Header() && param.Spec.Name == "Accept" }); !ok {
+		supportsMultipleMediaTypes := false
+		// And at least one operation defines multiple media types
+		for _, statusCode := range spec.Responses.StatusCode {
+			if len(statusCode.Content) > 1 {
+				supportsMultipleMediaTypes = true
+				break
+			}
+		}
+		if supportsMultipleMediaTypes {
+			mediaTypes := map[string]any{}
+			for _, statusCode := range spec.Responses.StatusCode {
+				for mediaType := range statusCode.Content {
+					mediaTypes[mediaType] = nil
+				}
+			}
+
+			mediaTypeType, ok := ctx.global.types["AcceptHeader"]
+			if !ok {
+				mediaTypeType = &ir.Type{
+					Doc:  "Auto-generated parameter for the Accept header",
+					Kind: ir.KindStruct,
+					Name: "ht.AcceptHeader",
+				}
+			}
+
+			acceptParam := &ir.Parameter{
+				Name: "Accept",
+				Type: mediaTypeType,
+				Spec: &openapi.Parameter{
+					Name:        "Accept",
+					Description: "Auto-generated parameter for the Accept header",
+					Schema: &jsonschema.Schema{
+						Type: jsonschema.String,
+					},
+					In: openapi.LocationHeader,
+				},
+			}
+
+			// acceptParam, err := g.generateParameter(ctx, op.Name)
+			// if err != nil {
+			// 	return nil, errors.Wrap(err, "parameters")
+			// }
+			op.Params = append(op.Params, acceptParam)
+		}
 	}
 
 	// Convert []openapi.PathPart to []*ir.PathPart
