@@ -123,13 +123,17 @@ func TestRequests(t *testing.T) {
 	t.Run("AllRequestBodies", func(t *testing.T) {
 		reqs := []api.AllRequestBodiesReq{
 			&api.AllRequestBodiesApplicationJSON{
-				Name: testData,
+				SimpleObject: api.SimpleObject{
+					Name: testData,
+				},
 			},
 			&api.AllRequestBodiesReqApplicationOctetStream{
 				Data: strings.NewReader(testData),
 			},
 			&api.AllRequestBodiesApplicationXWwwFormUrlencoded{
-				Name: testData,
+				SimpleObject: api.SimpleObject{
+					Name: testData,
+				},
 			},
 			&api.SimpleObjectMultipart{
 				Name: testData,
@@ -152,13 +156,17 @@ func TestRequests(t *testing.T) {
 	t.Run("AllRequestBodiesOptional", func(t *testing.T) {
 		reqs := []api.AllRequestBodiesOptionalReq{
 			&api.AllRequestBodiesOptionalApplicationJSON{
-				Name: testData,
+				SimpleObject: api.SimpleObject{
+					Name: testData,
+				},
 			},
 			&api.AllRequestBodiesOptionalReqApplicationOctetStream{
 				Data: strings.NewReader(testData),
 			},
 			&api.AllRequestBodiesOptionalApplicationXWwwFormUrlencoded{
-				Name: testData,
+				SimpleObject: api.SimpleObject{
+					Name: testData,
+				},
 			},
 			&api.SimpleObjectMultipart{
 				Name: testData,
