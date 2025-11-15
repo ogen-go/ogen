@@ -167,6 +167,7 @@ func decodeDataGetFormatParams(args [5]string, argsEscaped bool, r *http.Request
 					MaxLength:    0,
 					MaxLengthSet: false,
 					Email:        false,
+					Byte:         false,
 					Hostname:     false,
 					Regex:        nil,
 				}).Validate(string(params.Foo)); err != nil {
@@ -228,6 +229,7 @@ func decodeDataGetFormatParams(args [5]string, argsEscaped bool, r *http.Request
 					MaxLength:    0,
 					MaxLengthSet: false,
 					Email:        false,
+					Byte:         false,
 					Hostname:     false,
 					Regex:        nil,
 				}).Validate(string(params.Bar)); err != nil {
@@ -289,6 +291,7 @@ func decodeDataGetFormatParams(args [5]string, argsEscaped bool, r *http.Request
 					MaxLength:    0,
 					MaxLengthSet: false,
 					Email:        false,
+					Byte:         false,
 					Hostname:     false,
 					Regex:        nil,
 				}).Validate(string(params.Baz)); err != nil {
@@ -350,6 +353,7 @@ func decodeDataGetFormatParams(args [5]string, argsEscaped bool, r *http.Request
 					MaxLength:    0,
 					MaxLengthSet: false,
 					Email:        false,
+					Byte:         false,
 					Hostname:     false,
 					Regex:        nil,
 				}).Validate(string(params.Kek)); err != nil {
