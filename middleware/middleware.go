@@ -54,6 +54,8 @@ type Request struct {
 	OperationSummary string
 	// OperationID is the spec operation ID, if any.
 	OperationID string
+	// OperationGroup is the x-ogen-operation-group value
+	OperationGroup string
 	// Body is the operation request body. May be nil, if the operation has not body.
 	Body any
 	// RawBody is the operation request raw body. May be nil or empty, if the operation has no body.

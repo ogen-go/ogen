@@ -174,6 +174,7 @@ func (s *Server) handleAddPetRequest(args [0]string, argsEscaped bool, w http.Re
 			OperationName:    AddPetOperation,
 			OperationSummary: "",
 			OperationID:      "addPet",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -367,6 +368,7 @@ func (s *Server) handleDeletePetRequest(args [1]string, argsEscaped bool, w http
 			OperationName:    DeletePetOperation,
 			OperationSummary: "",
 			OperationID:      "deletePet",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -565,6 +567,7 @@ func (s *Server) handleFindPetByIDRequest(args [1]string, argsEscaped bool, w ht
 			OperationName:    FindPetByIDOperation,
 			OperationSummary: "",
 			OperationID:      "find pet by id",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -781,6 +784,7 @@ func (s *Server) handleFindPetsRequest(args [0]string, argsEscaped bool, w http.
 			OperationName:    FindPetsOperation,
 			OperationSummary: "",
 			OperationID:      "findPets",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{

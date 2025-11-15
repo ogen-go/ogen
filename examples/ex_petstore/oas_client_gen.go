@@ -27,6 +27,13 @@ func trimTrailingSlashes(u *url.URL) {
 
 // Invoker invokes operations described by OpenAPI v3 specification.
 type Invoker interface {
+	PetStoreInvoker
+}
+
+// PetStoreInvoker invokes operations described by OpenAPI v3 specification.
+//
+// x-gen-operation-group: PetStore
+type PetStoreInvoker interface {
 	// CreatePets invokes createPets operation.
 	//
 	// Create a pet.

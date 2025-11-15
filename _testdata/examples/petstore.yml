@@ -9,6 +9,7 @@ servers:
 paths:
   /pets:
     get:
+      x-ogen-operation-group: PetStore
       summary: List all pets
       operationId: listPets
       tags:
@@ -42,6 +43,7 @@ paths:
     post:
       summary: Create a pet
       operationId: createPets
+      x-ogen-operation-group: PetStore
       tags:
         - pets
       responses:
@@ -57,6 +59,7 @@ paths:
     get:
       summary: Info for a specific pet
       operationId: showPetById
+      x-ogen-operation-group: PetStore
       tags:
         - pets
       parameters:

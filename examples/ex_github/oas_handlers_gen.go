@@ -131,6 +131,7 @@ func (s *Server) handleActionsAddRepoAccessToSelfHostedRunnerGroupInOrgRequest(a
 			OperationName:    ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgOperation,
 			OperationSummary: "Add repository access to a self-hosted runner group in an organization",
 			OperationID:      "actions/add-repo-access-to-self-hosted-runner-group-in-org",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -284,6 +285,7 @@ func (s *Server) handleActionsAddSelectedRepoToOrgSecretRequest(args [3]string, 
 			OperationName:    ActionsAddSelectedRepoToOrgSecretOperation,
 			OperationSummary: "Add selected repository to an organization secret",
 			OperationID:      "actions/add-selected-repo-to-org-secret",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -438,6 +440,7 @@ func (s *Server) handleActionsAddSelfHostedRunnerToGroupForOrgRequest(args [3]st
 			OperationName:    ActionsAddSelfHostedRunnerToGroupForOrgOperation,
 			OperationSummary: "Add a self-hosted runner to a group for an organization",
 			OperationID:      "actions/add-self-hosted-runner-to-group-for-org",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -591,6 +594,7 @@ func (s *Server) handleActionsApproveWorkflowRunRequest(args [3]string, argsEsca
 			OperationName:    ActionsApproveWorkflowRunOperation,
 			OperationSummary: "Approve a workflow run for a fork pull request",
 			OperationID:      "actions/approve-workflow-run",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -742,6 +746,7 @@ func (s *Server) handleActionsCancelWorkflowRunRequest(args [3]string, argsEscap
 			OperationName:    ActionsCancelWorkflowRunOperation,
 			OperationSummary: "Cancel a workflow run",
 			OperationID:      "actions/cancel-workflow-run",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -959,6 +964,7 @@ func (s *Server) handleActionsCreateOrUpdateEnvironmentSecretRequest(args [3]str
 			OperationName:    ActionsCreateOrUpdateEnvironmentSecretOperation,
 			OperationSummary: "Create or update an environment secret",
 			OperationID:      "actions/create-or-update-environment-secret",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -1176,6 +1182,7 @@ func (s *Server) handleActionsCreateOrUpdateOrgSecretRequest(args [2]string, arg
 			OperationName:    ActionsCreateOrUpdateOrgSecretOperation,
 			OperationSummary: "Create or update an organization secret",
 			OperationID:      "actions/create-or-update-org-secret",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -1389,6 +1396,7 @@ func (s *Server) handleActionsCreateOrUpdateRepoSecretRequest(args [3]string, ar
 			OperationName:    ActionsCreateOrUpdateRepoSecretOperation,
 			OperationSummary: "Create or update a repository secret",
 			OperationID:      "actions/create-or-update-repo-secret",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -1545,6 +1553,7 @@ func (s *Server) handleActionsCreateRegistrationTokenForOrgRequest(args [1]strin
 			OperationName:    ActionsCreateRegistrationTokenForOrgOperation,
 			OperationSummary: "Create a registration token for an organization",
 			OperationID:      "actions/create-registration-token-for-org",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -1694,6 +1703,7 @@ func (s *Server) handleActionsCreateRegistrationTokenForRepoRequest(args [2]stri
 			OperationName:    ActionsCreateRegistrationTokenForRepoOperation,
 			OperationSummary: "Create a registration token for a repository",
 			OperationID:      "actions/create-registration-token-for-repo",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -1848,6 +1858,7 @@ func (s *Server) handleActionsCreateRemoveTokenForOrgRequest(args [1]string, arg
 			OperationName:    ActionsCreateRemoveTokenForOrgOperation,
 			OperationSummary: "Create a remove token for an organization",
 			OperationID:      "actions/create-remove-token-for-org",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -1997,6 +2008,7 @@ func (s *Server) handleActionsCreateRemoveTokenForRepoRequest(args [2]string, ar
 			OperationName:    ActionsCreateRemoveTokenForRepoOperation,
 			OperationSummary: "Create a remove token for a repository",
 			OperationID:      "actions/create-remove-token-for-repo",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -2161,6 +2173,7 @@ func (s *Server) handleActionsCreateSelfHostedRunnerGroupForOrgRequest(args [1]s
 			OperationName:    ActionsCreateSelfHostedRunnerGroupForOrgOperation,
 			OperationSummary: "Create a self-hosted runner group for an organization",
 			OperationID:      "actions/create-self-hosted-runner-group-for-org",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -2304,6 +2317,7 @@ func (s *Server) handleActionsDeleteArtifactRequest(args [3]string, argsEscaped 
 			OperationName:    ActionsDeleteArtifactOperation,
 			OperationSummary: "Delete an artifact",
 			OperationID:      "actions/delete-artifact",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -2455,6 +2469,7 @@ func (s *Server) handleActionsDeleteEnvironmentSecretRequest(args [3]string, arg
 			OperationName:    ActionsDeleteEnvironmentSecretOperation,
 			OperationSummary: "Delete an environment secret",
 			OperationID:      "actions/delete-environment-secret",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -2606,6 +2621,7 @@ func (s *Server) handleActionsDeleteOrgSecretRequest(args [2]string, argsEscaped
 			OperationName:    ActionsDeleteOrgSecretOperation,
 			OperationSummary: "Delete an organization secret",
 			OperationID:      "actions/delete-org-secret",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -2753,6 +2769,7 @@ func (s *Server) handleActionsDeleteRepoSecretRequest(args [3]string, argsEscape
 			OperationName:    ActionsDeleteRepoSecretOperation,
 			OperationSummary: "Delete a repository secret",
 			OperationID:      "actions/delete-repo-secret",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -2904,6 +2921,7 @@ func (s *Server) handleActionsDeleteSelfHostedRunnerFromOrgRequest(args [2]strin
 			OperationName:    ActionsDeleteSelfHostedRunnerFromOrgOperation,
 			OperationSummary: "Delete a self-hosted runner from an organization",
 			OperationID:      "actions/delete-self-hosted-runner-from-org",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -3052,6 +3070,7 @@ func (s *Server) handleActionsDeleteSelfHostedRunnerFromRepoRequest(args [3]stri
 			OperationName:    ActionsDeleteSelfHostedRunnerFromRepoOperation,
 			OperationSummary: "Delete a self-hosted runner from a repository",
 			OperationID:      "actions/delete-self-hosted-runner-from-repo",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -3205,6 +3224,7 @@ func (s *Server) handleActionsDeleteSelfHostedRunnerGroupFromOrgRequest(args [2]
 			OperationName:    ActionsDeleteSelfHostedRunnerGroupFromOrgOperation,
 			OperationSummary: "Delete a self-hosted runner group from an organization",
 			OperationID:      "actions/delete-self-hosted-runner-group-from-org",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -3354,6 +3374,7 @@ func (s *Server) handleActionsDeleteWorkflowRunRequest(args [3]string, argsEscap
 			OperationName:    ActionsDeleteWorkflowRunOperation,
 			OperationSummary: "Delete a workflow run",
 			OperationID:      "actions/delete-workflow-run",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -3505,6 +3526,7 @@ func (s *Server) handleActionsDeleteWorkflowRunLogsRequest(args [3]string, argsE
 			OperationName:    ActionsDeleteWorkflowRunLogsOperation,
 			OperationSummary: "Delete workflow run logs",
 			OperationID:      "actions/delete-workflow-run-logs",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -3659,6 +3681,7 @@ func (s *Server) handleActionsDisableSelectedRepositoryGithubActionsOrganization
 			OperationName:    ActionsDisableSelectedRepositoryGithubActionsOrganizationOperation,
 			OperationSummary: "Disable a selected repository for GitHub Actions in an organization",
 			OperationID:      "actions/disable-selected-repository-github-actions-organization",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -3810,6 +3833,7 @@ func (s *Server) handleActionsDownloadArtifactRequest(args [4]string, argsEscape
 			OperationName:    ActionsDownloadArtifactOperation,
 			OperationSummary: "Download an artifact",
 			OperationID:      "actions/download-artifact",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -3971,6 +3995,7 @@ func (s *Server) handleActionsDownloadJobLogsForWorkflowRunRequest(args [3]strin
 			OperationName:    ActionsDownloadJobLogsForWorkflowRunOperation,
 			OperationSummary: "Download job logs for a workflow run",
 			OperationID:      "actions/download-job-logs-for-workflow-run",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -4126,6 +4151,7 @@ func (s *Server) handleActionsDownloadWorkflowRunLogsRequest(args [3]string, arg
 			OperationName:    ActionsDownloadWorkflowRunLogsOperation,
 			OperationSummary: "Download workflow run logs",
 			OperationID:      "actions/download-workflow-run-logs",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -4280,6 +4306,7 @@ func (s *Server) handleActionsEnableSelectedRepositoryGithubActionsOrganizationR
 			OperationName:    ActionsEnableSelectedRepositoryGithubActionsOrganizationOperation,
 			OperationSummary: "Enable a selected repository for GitHub Actions in an organization",
 			OperationID:      "actions/enable-selected-repository-github-actions-organization",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -4430,6 +4457,7 @@ func (s *Server) handleActionsGetAllowedActionsOrganizationRequest(args [1]strin
 			OperationName:    ActionsGetAllowedActionsOrganizationOperation,
 			OperationSummary: "Get allowed actions for an organization",
 			OperationID:      "actions/get-allowed-actions-organization",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -4576,6 +4604,7 @@ func (s *Server) handleActionsGetAllowedActionsRepositoryRequest(args [2]string,
 			OperationName:    ActionsGetAllowedActionsRepositoryOperation,
 			OperationSummary: "Get allowed actions for a repository",
 			OperationID:      "actions/get-allowed-actions-repository",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -4723,6 +4752,7 @@ func (s *Server) handleActionsGetArtifactRequest(args [3]string, argsEscaped boo
 			OperationName:    ActionsGetArtifactOperation,
 			OperationSummary: "Get an artifact",
 			OperationID:      "actions/get-artifact",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -4875,6 +4905,7 @@ func (s *Server) handleActionsGetEnvironmentPublicKeyRequest(args [2]string, arg
 			OperationName:    ActionsGetEnvironmentPublicKeyOperation,
 			OperationSummary: "Get an environment public key",
 			OperationID:      "actions/get-environment-public-key",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -5022,6 +5053,7 @@ func (s *Server) handleActionsGetEnvironmentSecretRequest(args [3]string, argsEs
 			OperationName:    ActionsGetEnvironmentSecretOperation,
 			OperationSummary: "Get an environment secret",
 			OperationID:      "actions/get-environment-secret",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -5173,6 +5205,7 @@ func (s *Server) handleActionsGetGithubActionsPermissionsOrganizationRequest(arg
 			OperationName:    ActionsGetGithubActionsPermissionsOrganizationOperation,
 			OperationSummary: "Get GitHub Actions permissions for an organization",
 			OperationID:      "actions/get-github-actions-permissions-organization",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -5317,6 +5350,7 @@ func (s *Server) handleActionsGetGithubActionsPermissionsRepositoryRequest(args 
 			OperationName:    ActionsGetGithubActionsPermissionsRepositoryOperation,
 			OperationSummary: "Get GitHub Actions permissions for a repository",
 			OperationID:      "actions/get-github-actions-permissions-repository",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -5464,6 +5498,7 @@ func (s *Server) handleActionsGetJobForWorkflowRunRequest(args [3]string, argsEs
 			OperationName:    ActionsGetJobForWorkflowRunOperation,
 			OperationSummary: "Get a job for a workflow run",
 			OperationID:      "actions/get-job-for-workflow-run",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -5616,6 +5651,7 @@ func (s *Server) handleActionsGetOrgPublicKeyRequest(args [1]string, argsEscaped
 			OperationName:    ActionsGetOrgPublicKeyOperation,
 			OperationSummary: "Get an organization public key",
 			OperationID:      "actions/get-org-public-key",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -5759,6 +5795,7 @@ func (s *Server) handleActionsGetOrgSecretRequest(args [2]string, argsEscaped bo
 			OperationName:    ActionsGetOrgSecretOperation,
 			OperationSummary: "Get an organization secret",
 			OperationID:      "actions/get-org-secret",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -5907,6 +5944,7 @@ func (s *Server) handleActionsGetRepoPublicKeyRequest(args [2]string, argsEscape
 			OperationName:    ActionsGetRepoPublicKeyOperation,
 			OperationSummary: "Get a repository public key",
 			OperationID:      "actions/get-repo-public-key",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -6054,6 +6092,7 @@ func (s *Server) handleActionsGetRepoSecretRequest(args [3]string, argsEscaped b
 			OperationName:    ActionsGetRepoSecretOperation,
 			OperationSummary: "Get a repository secret",
 			OperationID:      "actions/get-repo-secret",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -6205,6 +6244,7 @@ func (s *Server) handleActionsGetReviewsForRunRequest(args [3]string, argsEscape
 			OperationName:    ActionsGetReviewsForRunOperation,
 			OperationSummary: "Get the review history for a workflow run",
 			OperationID:      "actions/get-reviews-for-run",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -6355,6 +6395,7 @@ func (s *Server) handleActionsGetSelfHostedRunnerForOrgRequest(args [2]string, a
 			OperationName:    ActionsGetSelfHostedRunnerForOrgOperation,
 			OperationSummary: "Get a self-hosted runner for an organization",
 			OperationID:      "actions/get-self-hosted-runner-for-org",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -6502,6 +6543,7 @@ func (s *Server) handleActionsGetSelfHostedRunnerForRepoRequest(args [3]string, 
 			OperationName:    ActionsGetSelfHostedRunnerForRepoOperation,
 			OperationSummary: "Get a self-hosted runner for a repository",
 			OperationID:      "actions/get-self-hosted-runner-for-repo",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -6655,6 +6697,7 @@ func (s *Server) handleActionsGetSelfHostedRunnerGroupForOrgRequest(args [2]stri
 			OperationName:    ActionsGetSelfHostedRunnerGroupForOrgOperation,
 			OperationSummary: "Get a self-hosted runner group for an organization",
 			OperationID:      "actions/get-self-hosted-runner-group-for-org",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -6802,6 +6845,7 @@ func (s *Server) handleActionsGetWorkflowRunRequest(args [3]string, argsEscaped 
 			OperationName:    ActionsGetWorkflowRunOperation,
 			OperationSummary: "Get a workflow run",
 			OperationID:      "actions/get-workflow-run",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -6960,6 +7004,7 @@ func (s *Server) handleActionsGetWorkflowRunUsageRequest(args [3]string, argsEsc
 			OperationName:    ActionsGetWorkflowRunUsageOperation,
 			OperationSummary: "Get workflow run usage",
 			OperationID:      "actions/get-workflow-run-usage",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -7111,6 +7156,7 @@ func (s *Server) handleActionsListArtifactsForRepoRequest(args [2]string, argsEs
 			OperationName:    ActionsListArtifactsForRepoOperation,
 			OperationSummary: "List artifacts for a repository",
 			OperationID:      "actions/list-artifacts-for-repo",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -7266,6 +7312,7 @@ func (s *Server) handleActionsListEnvironmentSecretsRequest(args [2]string, args
 			OperationName:    ActionsListEnvironmentSecretsOperation,
 			OperationSummary: "List environment secrets",
 			OperationID:      "actions/list-environment-secrets",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -7423,6 +7470,7 @@ func (s *Server) handleActionsListJobsForWorkflowRunRequest(args [3]string, args
 			OperationName:    ActionsListJobsForWorkflowRunOperation,
 			OperationSummary: "List jobs for a workflow run",
 			OperationID:      "actions/list-jobs-for-workflow-run",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -7586,6 +7634,7 @@ func (s *Server) handleActionsListOrgSecretsRequest(args [1]string, argsEscaped 
 			OperationName:    ActionsListOrgSecretsOperation,
 			OperationSummary: "List organization secrets",
 			OperationID:      "actions/list-org-secrets",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -7739,6 +7788,7 @@ func (s *Server) handleActionsListRepoAccessToSelfHostedRunnerGroupInOrgRequest(
 			OperationName:    ActionsListRepoAccessToSelfHostedRunnerGroupInOrgOperation,
 			OperationSummary: "List repository access to a self-hosted runner group in an organization",
 			OperationID:      "actions/list-repo-access-to-self-hosted-runner-group-in-org",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -7894,6 +7944,7 @@ func (s *Server) handleActionsListRepoSecretsRequest(args [2]string, argsEscaped
 			OperationName:    ActionsListRepoSecretsOperation,
 			OperationSummary: "List repository secrets",
 			OperationID:      "actions/list-repo-secrets",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -8049,6 +8100,7 @@ func (s *Server) handleActionsListRepoWorkflowsRequest(args [2]string, argsEscap
 			OperationName:    ActionsListRepoWorkflowsOperation,
 			OperationSummary: "List repository workflows",
 			OperationID:      "actions/list-repo-workflows",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -8203,6 +8255,7 @@ func (s *Server) handleActionsListRunnerApplicationsForOrgRequest(args [1]string
 			OperationName:    ActionsListRunnerApplicationsForOrgOperation,
 			OperationSummary: "List runner applications for an organization",
 			OperationID:      "actions/list-runner-applications-for-org",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -8345,6 +8398,7 @@ func (s *Server) handleActionsListRunnerApplicationsForRepoRequest(args [2]strin
 			OperationName:    ActionsListRunnerApplicationsForRepoOperation,
 			OperationSummary: "List runner applications for a repository",
 			OperationID:      "actions/list-runner-applications-for-repo",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -8493,6 +8547,7 @@ func (s *Server) handleActionsListSelectedReposForOrgSecretRequest(args [2]strin
 			OperationName:    ActionsListSelectedReposForOrgSecretOperation,
 			OperationSummary: "List selected repositories for an organization secret",
 			OperationID:      "actions/list-selected-repos-for-org-secret",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -8651,6 +8706,7 @@ func (s *Server) handleActionsListSelectedRepositoriesEnabledGithubActionsOrgani
 			OperationName:    ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOperation,
 			OperationSummary: "List selected repositories enabled for GitHub Actions in an organization",
 			OperationID:      "actions/list-selected-repositories-enabled-github-actions-organization",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -8804,6 +8860,7 @@ func (s *Server) handleActionsListSelfHostedRunnerGroupsForOrgRequest(args [1]st
 			OperationName:    ActionsListSelfHostedRunnerGroupsForOrgOperation,
 			OperationSummary: "List self-hosted runner groups for an organization",
 			OperationID:      "actions/list-self-hosted-runner-groups-for-org",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -8954,6 +9011,7 @@ func (s *Server) handleActionsListSelfHostedRunnersForOrgRequest(args [1]string,
 			OperationName:    ActionsListSelfHostedRunnersForOrgOperation,
 			OperationSummary: "List self-hosted runners for an organization",
 			OperationID:      "actions/list-self-hosted-runners-for-org",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -9104,6 +9162,7 @@ func (s *Server) handleActionsListSelfHostedRunnersForRepoRequest(args [2]string
 			OperationName:    ActionsListSelfHostedRunnersForRepoOperation,
 			OperationSummary: "List self-hosted runners for a repository",
 			OperationID:      "actions/list-self-hosted-runners-for-repo",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -9261,6 +9320,7 @@ func (s *Server) handleActionsListSelfHostedRunnersInGroupForOrgRequest(args [2]
 			OperationName:    ActionsListSelfHostedRunnersInGroupForOrgOperation,
 			OperationSummary: "List self-hosted runners in a group for an organization",
 			OperationID:      "actions/list-self-hosted-runners-in-group-for-org",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -9416,6 +9476,7 @@ func (s *Server) handleActionsListWorkflowRunArtifactsRequest(args [3]string, ar
 			OperationName:    ActionsListWorkflowRunArtifactsOperation,
 			OperationSummary: "List workflow run artifacts",
 			OperationID:      "actions/list-workflow-run-artifacts",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -9578,6 +9639,7 @@ func (s *Server) handleActionsListWorkflowRunsForRepoRequest(args [2]string, arg
 			OperationName:    ActionsListWorkflowRunsForRepoOperation,
 			OperationSummary: "List workflow runs for a repository",
 			OperationID:      "actions/list-workflow-runs-for-repo",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -9758,6 +9820,7 @@ func (s *Server) handleActionsReRunWorkflowRequest(args [3]string, argsEscaped b
 			OperationName:    ActionsReRunWorkflowOperation,
 			OperationSummary: "Re-run a workflow",
 			OperationID:      "actions/re-run-workflow",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -9914,6 +9977,7 @@ func (s *Server) handleActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgReques
 			OperationName:    ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgOperation,
 			OperationSummary: "Remove repository access to a self-hosted runner group in an organization",
 			OperationID:      "actions/remove-repo-access-to-self-hosted-runner-group-in-org",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -10067,6 +10131,7 @@ func (s *Server) handleActionsRemoveSelectedRepoFromOrgSecretRequest(args [3]str
 			OperationName:    ActionsRemoveSelectedRepoFromOrgSecretOperation,
 			OperationSummary: "Remove selected repository from an organization secret",
 			OperationID:      "actions/remove-selected-repo-from-org-secret",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -10221,6 +10286,7 @@ func (s *Server) handleActionsRemoveSelfHostedRunnerFromGroupForOrgRequest(args 
 			OperationName:    ActionsRemoveSelfHostedRunnerFromGroupForOrgOperation,
 			OperationSummary: "Remove a self-hosted runner from a group for an organization",
 			OperationID:      "actions/remove-self-hosted-runner-from-group-for-org",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -10372,6 +10438,7 @@ func (s *Server) handleActionsRetryWorkflowRequest(args [3]string, argsEscaped b
 			OperationName:    ActionsRetryWorkflowOperation,
 			OperationSummary: "Retry a workflow",
 			OperationID:      "actions/retry-workflow",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -10537,6 +10604,7 @@ func (s *Server) handleActionsReviewPendingDeploymentsForRunRequest(args [3]stri
 			OperationName:    ActionsReviewPendingDeploymentsForRunOperation,
 			OperationSummary: "Review pending deployments for a workflow run",
 			OperationID:      "actions/review-pending-deployments-for-run",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -10711,6 +10779,7 @@ func (s *Server) handleActionsSetAllowedActionsOrganizationRequest(args [1]strin
 			OperationName:    ActionsSetAllowedActionsOrganizationOperation,
 			OperationSummary: "Set allowed actions for an organization",
 			OperationID:      "actions/set-allowed-actions-organization",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -10876,6 +10945,7 @@ func (s *Server) handleActionsSetAllowedActionsRepositoryRequest(args [2]string,
 			OperationName:    ActionsSetAllowedActionsRepositoryOperation,
 			OperationSummary: "Set allowed actions for a repository",
 			OperationID:      "actions/set-allowed-actions-repository",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -11041,6 +11111,7 @@ func (s *Server) handleActionsSetGithubActionsPermissionsOrganizationRequest(arg
 			OperationName:    ActionsSetGithubActionsPermissionsOrganizationOperation,
 			OperationSummary: "Set GitHub Actions permissions for an organization",
 			OperationID:      "actions/set-github-actions-permissions-organization",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -11203,6 +11274,7 @@ func (s *Server) handleActionsSetGithubActionsPermissionsRepositoryRequest(args 
 			OperationName:    ActionsSetGithubActionsPermissionsRepositoryOperation,
 			OperationSummary: "Set GitHub Actions permissions for a repository",
 			OperationID:      "actions/set-github-actions-permissions-repository",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -11368,6 +11440,7 @@ func (s *Server) handleActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(a
 			OperationName:    ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgOperation,
 			OperationSummary: "Set repository access for a self-hosted runner group in an organization",
 			OperationID:      "actions/set-repo-access-to-self-hosted-runner-group-in-org",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -11532,6 +11605,7 @@ func (s *Server) handleActionsSetSelectedReposForOrgSecretRequest(args [2]string
 			OperationName:    ActionsSetSelectedReposForOrgSecretOperation,
 			OperationSummary: "Set selected repositories for an organization secret",
 			OperationID:      "actions/set-selected-repos-for-org-secret",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -11697,6 +11771,7 @@ func (s *Server) handleActionsSetSelectedRepositoriesEnabledGithubActionsOrganiz
 			OperationName:    ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationOperation,
 			OperationSummary: "Set selected repositories enabled for GitHub Actions in an organization",
 			OperationID:      "actions/set-selected-repositories-enabled-github-actions-organization",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -11857,6 +11932,7 @@ func (s *Server) handleActionsSetSelfHostedRunnersInGroupForOrgRequest(args [2]s
 			OperationName:    ActionsSetSelfHostedRunnersInGroupForOrgOperation,
 			OperationSummary: "Set self-hosted runners in a group for an organization",
 			OperationID:      "actions/set-self-hosted-runners-in-group-for-org",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -12021,6 +12097,7 @@ func (s *Server) handleActionsUpdateSelfHostedRunnerGroupForOrgRequest(args [2]s
 			OperationName:    ActionsUpdateSelfHostedRunnerGroupForOrgOperation,
 			OperationSummary: "Update a self-hosted runner group for an organization",
 			OperationID:      "actions/update-self-hosted-runner-group-for-org",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -12166,6 +12243,7 @@ func (s *Server) handleActivityCheckRepoIsStarredByAuthenticatedUserRequest(args
 			OperationName:    ActivityCheckRepoIsStarredByAuthenticatedUserOperation,
 			OperationSummary: "Check if a repository is starred by the authenticated user",
 			OperationID:      "activity/check-repo-is-starred-by-authenticated-user",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -12313,6 +12391,7 @@ func (s *Server) handleActivityDeleteRepoSubscriptionRequest(args [2]string, arg
 			OperationName:    ActivityDeleteRepoSubscriptionOperation,
 			OperationSummary: "Delete a repository subscription",
 			OperationID:      "activity/delete-repo-subscription",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -12462,6 +12541,7 @@ func (s *Server) handleActivityDeleteThreadSubscriptionRequest(args [1]string, a
 			OperationName:    ActivityDeleteThreadSubscriptionOperation,
 			OperationSummary: "Delete a thread subscription",
 			OperationID:      "activity/delete-thread-subscription",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -12603,6 +12683,7 @@ func (s *Server) handleActivityGetFeedsRequest(args [0]string, argsEscaped bool,
 			OperationName:    ActivityGetFeedsOperation,
 			OperationSummary: "Get feeds",
 			OperationID:      "activity/get-feeds",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -12739,6 +12820,7 @@ func (s *Server) handleActivityGetRepoSubscriptionRequest(args [2]string, argsEs
 			OperationName:    ActivityGetRepoSubscriptionOperation,
 			OperationSummary: "Get a repository subscription",
 			OperationID:      "activity/get-repo-subscription",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -12884,6 +12966,7 @@ func (s *Server) handleActivityGetThreadRequest(args [1]string, argsEscaped bool
 			OperationName:    ActivityGetThreadOperation,
 			OperationSummary: "Get a thread",
 			OperationID:      "activity/get-thread",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -13028,6 +13111,7 @@ func (s *Server) handleActivityGetThreadSubscriptionForAuthenticatedUserRequest(
 			OperationName:    ActivityGetThreadSubscriptionForAuthenticatedUserOperation,
 			OperationSummary: "Get a thread subscription for the authenticated user",
 			OperationID:      "activity/get-thread-subscription-for-authenticated-user",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -13170,6 +13254,7 @@ func (s *Server) handleActivityListEventsForAuthenticatedUserRequest(args [1]str
 			OperationName:    ActivityListEventsForAuthenticatedUserOperation,
 			OperationSummary: "List events for the authenticated user",
 			OperationID:      "activity/list-events-for-authenticated-user",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -13319,6 +13404,7 @@ func (s *Server) handleActivityListNotificationsForAuthenticatedUserRequest(args
 			OperationName:    ActivityListNotificationsForAuthenticatedUserOperation,
 			OperationSummary: "List notifications for the authenticated user",
 			OperationID:      "activity/list-notifications-for-authenticated-user",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -13480,6 +13566,7 @@ func (s *Server) handleActivityListOrgEventsForAuthenticatedUserRequest(args [2]
 			OperationName:    ActivityListOrgEventsForAuthenticatedUserOperation,
 			OperationSummary: "List organization events for the authenticated user",
 			OperationID:      "activity/list-org-events-for-authenticated-user",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -13634,6 +13721,7 @@ func (s *Server) handleActivityListPublicEventsRequest(args [0]string, argsEscap
 			OperationName:    ActivityListPublicEventsOperation,
 			OperationSummary: "List public events",
 			OperationID:      "activity/list-public-events",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -13779,6 +13867,7 @@ func (s *Server) handleActivityListPublicEventsForRepoNetworkRequest(args [2]str
 			OperationName:    ActivityListPublicEventsForRepoNetworkOperation,
 			OperationSummary: "List public events for a network of repositories",
 			OperationID:      "activity/list-public-events-for-repo-network",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -13932,6 +14021,7 @@ func (s *Server) handleActivityListPublicEventsForUserRequest(args [1]string, ar
 			OperationName:    ActivityListPublicEventsForUserOperation,
 			OperationSummary: "List public events for a user",
 			OperationID:      "activity/list-public-events-for-user",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -14081,6 +14171,7 @@ func (s *Server) handleActivityListPublicOrgEventsRequest(args [1]string, argsEs
 			OperationName:    ActivityListPublicOrgEventsOperation,
 			OperationSummary: "List public organization events",
 			OperationID:      "activity/list-public-org-events",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -14232,6 +14323,7 @@ func (s *Server) handleActivityListReceivedEventsForUserRequest(args [1]string, 
 			OperationName:    ActivityListReceivedEventsForUserOperation,
 			OperationSummary: "List events received by the authenticated user",
 			OperationID:      "activity/list-received-events-for-user",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -14381,6 +14473,7 @@ func (s *Server) handleActivityListReceivedPublicEventsForUserRequest(args [1]st
 			OperationName:    ActivityListReceivedPublicEventsForUserOperation,
 			OperationSummary: "List public events received by a user",
 			OperationID:      "activity/list-received-public-events-for-user",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -14530,6 +14623,7 @@ func (s *Server) handleActivityListRepoEventsRequest(args [2]string, argsEscaped
 			OperationName:    ActivityListRepoEventsOperation,
 			OperationSummary: "List repository events",
 			OperationID:      "activity/list-repo-events",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -14683,6 +14777,7 @@ func (s *Server) handleActivityListRepoNotificationsForAuthenticatedUserRequest(
 			OperationName:    ActivityListRepoNotificationsForAuthenticatedUserOperation,
 			OperationSummary: "List repository notifications for the authenticated user",
 			OperationID:      "activity/list-repo-notifications-for-authenticated-user",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -14854,6 +14949,7 @@ func (s *Server) handleActivityListReposStarredByAuthenticatedUserRequest(args [
 			OperationName:    ActivityListReposStarredByAuthenticatedUserOperation,
 			OperationSummary: "List repositories starred by the authenticated user",
 			OperationID:      "activity/list-repos-starred-by-authenticated-user",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -15007,6 +15103,7 @@ func (s *Server) handleActivityListReposWatchedByUserRequest(args [1]string, arg
 			OperationName:    ActivityListReposWatchedByUserOperation,
 			OperationSummary: "List repositories watched by a user",
 			OperationID:      "activity/list-repos-watched-by-user",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -15156,6 +15253,7 @@ func (s *Server) handleActivityListWatchedReposForAuthenticatedUserRequest(args 
 			OperationName:    ActivityListWatchedReposForAuthenticatedUserOperation,
 			OperationSummary: "List repositories watched by the authenticated user",
 			OperationID:      "activity/list-watched-repos-for-authenticated-user",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -15301,6 +15399,7 @@ func (s *Server) handleActivityListWatchersForRepoRequest(args [2]string, argsEs
 			OperationName:    ActivityListWatchersForRepoOperation,
 			OperationSummary: "List watchers",
 			OperationID:      "activity/list-watchers-for-repo",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -15465,6 +15564,7 @@ func (s *Server) handleActivityMarkNotificationsAsReadRequest(args [0]string, ar
 			OperationName:    ActivityMarkNotificationsAsReadOperation,
 			OperationSummary: "Mark notifications as read",
 			OperationID:      "activity/mark-notifications-as-read",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -15622,6 +15722,7 @@ func (s *Server) handleActivityMarkRepoNotificationsAsReadRequest(args [2]string
 			OperationName:    ActivityMarkRepoNotificationsAsReadOperation,
 			OperationSummary: "Mark repository notifications as read",
 			OperationID:      "activity/mark-repo-notifications-as-read",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -15767,6 +15868,7 @@ func (s *Server) handleActivityMarkThreadAsReadRequest(args [1]string, argsEscap
 			OperationName:    ActivityMarkThreadAsReadOperation,
 			OperationSummary: "Mark a thread as read",
 			OperationID:      "activity/mark-thread-as-read",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -15926,6 +16028,7 @@ func (s *Server) handleActivitySetRepoSubscriptionRequest(args [2]string, argsEs
 			OperationName:    ActivitySetRepoSubscriptionOperation,
 			OperationSummary: "Set a repository subscription",
 			OperationID:      "activity/set-repo-subscription",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -16093,6 +16196,7 @@ func (s *Server) handleActivitySetThreadSubscriptionRequest(args [1]string, args
 			OperationName:    ActivitySetThreadSubscriptionOperation,
 			OperationSummary: "Set a thread subscription",
 			OperationID:      "activity/set-thread-subscription",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -16236,6 +16340,7 @@ func (s *Server) handleActivityStarRepoForAuthenticatedUserRequest(args [2]strin
 			OperationName:    ActivityStarRepoForAuthenticatedUserOperation,
 			OperationSummary: "Star a repository for the authenticated user",
 			OperationID:      "activity/star-repo-for-authenticated-user",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -16381,6 +16486,7 @@ func (s *Server) handleActivityUnstarRepoForAuthenticatedUserRequest(args [2]str
 			OperationName:    ActivityUnstarRepoForAuthenticatedUserOperation,
 			OperationSummary: "Unstar a repository for the authenticated user",
 			OperationID:      "activity/unstar-repo-for-authenticated-user",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -16531,6 +16637,7 @@ func (s *Server) handleAppsAddRepoToInstallationRequest(args [2]string, argsEsca
 			OperationName:    AppsAddRepoToInstallationOperation,
 			OperationSummary: "Add a repository to an app installation",
 			OperationID:      "apps/add-repo-to-installation",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -16696,6 +16803,7 @@ func (s *Server) handleAppsCheckTokenRequest(args [1]string, argsEscaped bool, w
 			OperationName:    AppsCheckTokenOperation,
 			OperationSummary: "Check a token",
 			OperationID:      "apps/check-token",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -16861,6 +16969,7 @@ func (s *Server) handleAppsCreateContentAttachmentRequest(args [3]string, argsEs
 			OperationName:    AppsCreateContentAttachmentOperation,
 			OperationSummary: "Create a content attachment",
 			OperationID:      "apps/create-content-attachment",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -17028,6 +17137,7 @@ func (s *Server) handleAppsCreateFromManifestRequest(args [1]string, argsEscaped
 			OperationName:    AppsCreateFromManifestOperation,
 			OperationSummary: "Create a GitHub App from a manifest",
 			OperationID:      "apps/create-from-manifest",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -17193,6 +17303,7 @@ func (s *Server) handleAppsCreateInstallationAccessTokenRequest(args [1]string, 
 			OperationName:    AppsCreateInstallationAccessTokenOperation,
 			OperationSummary: "Create an installation access token for an app",
 			OperationID:      "apps/create-installation-access-token",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -17358,6 +17469,7 @@ func (s *Server) handleAppsDeleteAuthorizationRequest(args [1]string, argsEscape
 			OperationName:    AppsDeleteAuthorizationOperation,
 			OperationSummary: "Delete an app authorization",
 			OperationID:      "apps/delete-authorization",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -17504,6 +17616,7 @@ func (s *Server) handleAppsDeleteInstallationRequest(args [1]string, argsEscaped
 			OperationName:    AppsDeleteInstallationOperation,
 			OperationSummary: "Delete an installation for the authenticated app",
 			OperationID:      "apps/delete-installation",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -17663,6 +17776,7 @@ func (s *Server) handleAppsDeleteTokenRequest(args [1]string, argsEscaped bool, 
 			OperationName:    AppsDeleteTokenOperation,
 			OperationSummary: "Delete an app token",
 			OperationID:      "apps/delete-token",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -17797,6 +17911,7 @@ func (s *Server) handleAppsGetAuthenticatedRequest(args [0]string, argsEscaped b
 			OperationName:    AppsGetAuthenticatedOperation,
 			OperationSummary: "Get the authenticated app",
 			OperationID:      "apps/get-authenticated",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -17940,6 +18055,7 @@ func (s *Server) handleAppsGetBySlugRequest(args [1]string, argsEscaped bool, w 
 			OperationName:    AppsGetBySlugOperation,
 			OperationSummary: "Get an app",
 			OperationID:      "apps/get-by-slug",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -18088,6 +18204,7 @@ func (s *Server) handleAppsGetSubscriptionPlanForAccountRequest(args [1]string, 
 			OperationName:    AppsGetSubscriptionPlanForAccountOperation,
 			OperationSummary: "Get a subscription plan for an account",
 			OperationID:      "apps/get-subscription-plan-for-account",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -18236,6 +18353,7 @@ func (s *Server) handleAppsGetSubscriptionPlanForAccountStubbedRequest(args [1]s
 			OperationName:    AppsGetSubscriptionPlanForAccountStubbedOperation,
 			OperationSummary: "Get a subscription plan for an account (stubbed)",
 			OperationID:      "apps/get-subscription-plan-for-account-stubbed",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -18367,6 +18485,7 @@ func (s *Server) handleAppsGetWebhookConfigForAppRequest(args [0]string, argsEsc
 			OperationName:    AppsGetWebhookConfigForAppOperation,
 			OperationSummary: "Get a webhook configuration for an app",
 			OperationID:      "apps/get-webhook-config-for-app",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -18506,6 +18625,7 @@ func (s *Server) handleAppsGetWebhookDeliveryRequest(args [1]string, argsEscaped
 			OperationName:    AppsGetWebhookDeliveryOperation,
 			OperationSummary: "Get a delivery for an app webhook",
 			OperationID:      "apps/get-webhook-delivery",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -18655,6 +18775,7 @@ func (s *Server) handleAppsListAccountsForPlanRequest(args [1]string, argsEscape
 			OperationName:    AppsListAccountsForPlanOperation,
 			OperationSummary: "List accounts for a plan",
 			OperationID:      "apps/list-accounts-for-plan",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -18820,6 +18941,7 @@ func (s *Server) handleAppsListAccountsForPlanStubbedRequest(args [1]string, arg
 			OperationName:    AppsListAccountsForPlanStubbedOperation,
 			OperationSummary: "List accounts for a plan (stubbed)",
 			OperationID:      "apps/list-accounts-for-plan-stubbed",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -18983,6 +19105,7 @@ func (s *Server) handleAppsListInstallationReposForAuthenticatedUserRequest(args
 			OperationName:    AppsListInstallationReposForAuthenticatedUserOperation,
 			OperationSummary: "List repositories accessible to the user access token",
 			OperationID:      "apps/list-installation-repos-for-authenticated-user",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -19137,6 +19260,7 @@ func (s *Server) handleAppsListPlansRequest(args [0]string, argsEscaped bool, w 
 			OperationName:    AppsListPlansOperation,
 			OperationSummary: "List plans",
 			OperationID:      "apps/list-plans",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -19287,6 +19411,7 @@ func (s *Server) handleAppsListPlansStubbedRequest(args [0]string, argsEscaped b
 			OperationName:    AppsListPlansStubbedOperation,
 			OperationSummary: "List plans (stubbed)",
 			OperationID:      "apps/list-plans-stubbed",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -19435,6 +19560,7 @@ func (s *Server) handleAppsListReposAccessibleToInstallationRequest(args [0]stri
 			OperationName:    AppsListReposAccessibleToInstallationOperation,
 			OperationSummary: "List repositories accessible to the app installation",
 			OperationID:      "apps/list-repos-accessible-to-installation",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -19582,6 +19708,7 @@ func (s *Server) handleAppsListSubscriptionsForAuthenticatedUserRequest(args [0]
 			OperationName:    AppsListSubscriptionsForAuthenticatedUserOperation,
 			OperationSummary: "List subscriptions for the authenticated user",
 			OperationID:      "apps/list-subscriptions-for-authenticated-user",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -19729,6 +19856,7 @@ func (s *Server) handleAppsListSubscriptionsForAuthenticatedUserStubbedRequest(a
 			OperationName:    AppsListSubscriptionsForAuthenticatedUserStubbedOperation,
 			OperationSummary: "List subscriptions for the authenticated user (stubbed)",
 			OperationID:      "apps/list-subscriptions-for-authenticated-user-stubbed",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -19877,6 +20005,7 @@ func (s *Server) handleAppsListWebhookDeliveriesRequest(args [0]string, argsEsca
 			OperationName:    AppsListWebhookDeliveriesOperation,
 			OperationSummary: "List deliveries for an app webhook",
 			OperationID:      "apps/list-webhook-deliveries",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -20025,6 +20154,7 @@ func (s *Server) handleAppsRedeliverWebhookDeliveryRequest(args [1]string, argsE
 			OperationName:    AppsRedeliverWebhookDeliveryOperation,
 			OperationSummary: "Redeliver a delivery for an app webhook",
 			OperationID:      "apps/redeliver-webhook-delivery",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -20171,6 +20301,7 @@ func (s *Server) handleAppsRemoveRepoFromInstallationRequest(args [2]string, arg
 			OperationName:    AppsRemoveRepoFromInstallationOperation,
 			OperationSummary: "Remove a repository from an app installation",
 			OperationID:      "apps/remove-repo-from-installation",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -20336,6 +20467,7 @@ func (s *Server) handleAppsResetTokenRequest(args [1]string, argsEscaped bool, w
 			OperationName:    AppsResetTokenOperation,
 			OperationSummary: "Reset a token",
 			OperationID:      "apps/reset-token",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -20472,6 +20604,7 @@ func (s *Server) handleAppsRevokeInstallationAccessTokenRequest(args [0]string, 
 			OperationName:    AppsRevokeInstallationAccessTokenOperation,
 			OperationSummary: "Revoke an installation access token",
 			OperationID:      "apps/revoke-installation-access-token",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -20628,6 +20761,7 @@ func (s *Server) handleAppsScopeTokenRequest(args [1]string, argsEscaped bool, w
 			OperationName:    AppsScopeTokenOperation,
 			OperationSummary: "Create a scoped access token",
 			OperationID:      "apps/scope-token",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -20774,6 +20908,7 @@ func (s *Server) handleAppsSuspendInstallationRequest(args [1]string, argsEscape
 			OperationName:    AppsSuspendInstallationOperation,
 			OperationSummary: "Suspend an app installation",
 			OperationID:      "apps/suspend-installation",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -20918,6 +21053,7 @@ func (s *Server) handleAppsUnsuspendInstallationRequest(args [1]string, argsEsca
 			OperationName:    AppsUnsuspendInstallationOperation,
 			OperationSummary: "Unsuspend an app installation",
 			OperationID:      "apps/unsuspend-installation",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -21068,6 +21204,7 @@ func (s *Server) handleAppsUpdateWebhookConfigForAppRequest(args [0]string, args
 			OperationName:    AppsUpdateWebhookConfigForAppOperation,
 			OperationSummary: "Update a webhook configuration for an app",
 			OperationID:      "apps/update-webhook-config-for-app",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -21211,6 +21348,7 @@ func (s *Server) handleBillingGetGithubActionsBillingGheRequest(args [1]string, 
 			OperationName:    BillingGetGithubActionsBillingGheOperation,
 			OperationSummary: "Get GitHub Actions billing for an enterprise",
 			OperationID:      "billing/get-github-actions-billing-ghe",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -21359,6 +21497,7 @@ func (s *Server) handleBillingGetGithubActionsBillingOrgRequest(args [1]string, 
 			OperationName:    BillingGetGithubActionsBillingOrgOperation,
 			OperationSummary: "Get GitHub Actions billing for an organization",
 			OperationID:      "billing/get-github-actions-billing-org",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -21507,6 +21646,7 @@ func (s *Server) handleBillingGetGithubActionsBillingUserRequest(args [1]string,
 			OperationName:    BillingGetGithubActionsBillingUserOperation,
 			OperationSummary: "Get GitHub Actions billing for a user",
 			OperationID:      "billing/get-github-actions-billing-user",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -21652,6 +21792,7 @@ func (s *Server) handleBillingGetGithubPackagesBillingGheRequest(args [1]string,
 			OperationName:    BillingGetGithubPackagesBillingGheOperation,
 			OperationSummary: "Get GitHub Packages billing for an enterprise",
 			OperationID:      "billing/get-github-packages-billing-ghe",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -21797,6 +21938,7 @@ func (s *Server) handleBillingGetGithubPackagesBillingOrgRequest(args [1]string,
 			OperationName:    BillingGetGithubPackagesBillingOrgOperation,
 			OperationSummary: "Get GitHub Packages billing for an organization",
 			OperationID:      "billing/get-github-packages-billing-org",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -21942,6 +22084,7 @@ func (s *Server) handleBillingGetGithubPackagesBillingUserRequest(args [1]string
 			OperationName:    BillingGetGithubPackagesBillingUserOperation,
 			OperationSummary: "Get GitHub Packages billing for a user",
 			OperationID:      "billing/get-github-packages-billing-user",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -22087,6 +22230,7 @@ func (s *Server) handleBillingGetSharedStorageBillingGheRequest(args [1]string, 
 			OperationName:    BillingGetSharedStorageBillingGheOperation,
 			OperationSummary: "Get shared storage billing for an enterprise",
 			OperationID:      "billing/get-shared-storage-billing-ghe",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -22232,6 +22376,7 @@ func (s *Server) handleBillingGetSharedStorageBillingOrgRequest(args [1]string, 
 			OperationName:    BillingGetSharedStorageBillingOrgOperation,
 			OperationSummary: "Get shared storage billing for an organization",
 			OperationID:      "billing/get-shared-storage-billing-org",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -22377,6 +22522,7 @@ func (s *Server) handleBillingGetSharedStorageBillingUserRequest(args [1]string,
 			OperationName:    BillingGetSharedStorageBillingUserOperation,
 			OperationSummary: "Get shared storage billing for a user",
 			OperationID:      "billing/get-shared-storage-billing-user",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -22541,6 +22687,7 @@ func (s *Server) handleChecksCreateSuiteRequest(args [2]string, argsEscaped bool
 			OperationName:    ChecksCreateSuiteOperation,
 			OperationSummary: "Create a check suite",
 			OperationID:      "checks/create-suite",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -22691,6 +22838,7 @@ func (s *Server) handleChecksGetRequest(args [3]string, argsEscaped bool, w http
 			OperationName:    ChecksGetOperation,
 			OperationSummary: "Get a check run",
 			OperationID:      "checks/get",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -22845,6 +22993,7 @@ func (s *Server) handleChecksGetSuiteRequest(args [3]string, argsEscaped bool, w
 			OperationName:    ChecksGetSuiteOperation,
 			OperationSummary: "Get a check suite",
 			OperationID:      "checks/get-suite",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -22997,6 +23146,7 @@ func (s *Server) handleChecksListAnnotationsRequest(args [3]string, argsEscaped 
 			OperationName:    ChecksListAnnotationsOperation,
 			OperationSummary: "List check run annotations",
 			OperationID:      "checks/list-annotations",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -23160,6 +23310,7 @@ func (s *Server) handleChecksListForRefRequest(args [3]string, argsEscaped bool,
 			OperationName:    ChecksListForRefOperation,
 			OperationSummary: "List check runs for a Git reference",
 			OperationID:      "checks/list-for-ref",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -23338,6 +23489,7 @@ func (s *Server) handleChecksListForSuiteRequest(args [3]string, argsEscaped boo
 			OperationName:    ChecksListForSuiteOperation,
 			OperationSummary: "List check runs in a check suite",
 			OperationID:      "checks/list-for-suite",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -23513,6 +23665,7 @@ func (s *Server) handleChecksListSuitesForRefRequest(args [3]string, argsEscaped
 			OperationName:    ChecksListSuitesForRefOperation,
 			OperationSummary: "List check suites for a Git reference",
 			OperationID:      "checks/list-suites-for-ref",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -23683,6 +23836,7 @@ func (s *Server) handleChecksRerequestSuiteRequest(args [3]string, argsEscaped b
 			OperationName:    ChecksRerequestSuiteOperation,
 			OperationSummary: "Rerequest a check suite",
 			OperationID:      "checks/rerequest-suite",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -23851,6 +24005,7 @@ func (s *Server) handleChecksSetSuitesPreferencesRequest(args [2]string, argsEsc
 			OperationName:    ChecksSetSuitesPreferencesOperation,
 			OperationSummary: "Update repository preferences for check suites",
 			OperationID:      "checks/set-suites-preferences",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -24054,6 +24209,7 @@ func (s *Server) handleCodeScanningDeleteAnalysisRequest(args [3]string, argsEsc
 			OperationName:    CodeScanningDeleteAnalysisOperation,
 			OperationSummary: "Delete a code scanning analysis from a repository",
 			OperationID:      "code-scanning/delete-analysis",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -24213,6 +24369,7 @@ func (s *Server) handleCodeScanningGetAlertRequest(args [3]string, argsEscaped b
 			OperationName:    CodeScanningGetAlertOperation,
 			OperationSummary: "Get a code scanning alert",
 			OperationID:      "code-scanning/get-alert",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -24380,6 +24537,7 @@ func (s *Server) handleCodeScanningGetAnalysisRequest(args [3]string, argsEscape
 			OperationName:    CodeScanningGetAnalysisOperation,
 			OperationSummary: "Get a code scanning analysis for a repository",
 			OperationID:      "code-scanning/get-analysis",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -24534,6 +24692,7 @@ func (s *Server) handleCodeScanningGetSarifRequest(args [3]string, argsEscaped b
 			OperationName:    CodeScanningGetSarifOperation,
 			OperationSummary: "Get information about a SARIF upload",
 			OperationID:      "code-scanning/get-sarif",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -24685,6 +24844,7 @@ func (s *Server) handleCodeScanningListAlertInstancesRequest(args [3]string, arg
 			OperationName:    CodeScanningListAlertInstancesOperation,
 			OperationSummary: "List instances of a code scanning alert",
 			OperationID:      "code-scanning/list-alert-instances",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -24853,6 +25013,7 @@ func (s *Server) handleCodeScanningListAlertsForRepoRequest(args [2]string, args
 			OperationName:    CodeScanningListAlertsForRepoOperation,
 			OperationSummary: "List code scanning alerts for a repository",
 			OperationID:      "code-scanning/list-alerts-for-repo",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -25036,6 +25197,7 @@ func (s *Server) handleCodeScanningListRecentAnalysesRequest(args [2]string, arg
 			OperationName:    CodeScanningListRecentAnalysesOperation,
 			OperationSummary: "List code scanning analyses for a repository",
 			OperationID:      "code-scanning/list-recent-analyses",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -25222,6 +25384,7 @@ func (s *Server) handleCodeScanningUpdateAlertRequest(args [3]string, argsEscape
 			OperationName:    CodeScanningUpdateAlertOperation,
 			OperationSummary: "Update a code scanning alert",
 			OperationID:      "code-scanning/update-alert",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -25412,6 +25575,7 @@ func (s *Server) handleCodeScanningUploadSarifRequest(args [2]string, argsEscape
 			OperationName:    CodeScanningUploadSarifOperation,
 			OperationSummary: "Upload an analysis as SARIF data",
 			OperationID:      "code-scanning/upload-sarif",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -25543,6 +25707,7 @@ func (s *Server) handleCodesOfConductGetAllCodesOfConductRequest(args [0]string,
 			OperationName:    CodesOfConductGetAllCodesOfConductOperation,
 			OperationSummary: "Get all codes of conduct",
 			OperationID:      "codes-of-conduct/get-all-codes-of-conduct",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -25679,6 +25844,7 @@ func (s *Server) handleCodesOfConductGetConductCodeRequest(args [1]string, argsE
 			OperationName:    CodesOfConductGetConductCodeOperation,
 			OperationSummary: "Get a code of conduct",
 			OperationID:      "codes-of-conduct/get-conduct-code",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -25806,6 +25972,7 @@ func (s *Server) handleEmojisGetRequest(args [0]string, argsEscaped bool, w http
 			OperationName:    EmojisGetOperation,
 			OperationSummary: "Get emojis",
 			OperationID:      "emojis/get",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -25946,6 +26113,7 @@ func (s *Server) handleEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnter
 			OperationName:    EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseOperation,
 			OperationSummary: "Add organization access to a self-hosted runner group in an enterprise",
 			OperationID:      "enterprise-admin/add-org-access-to-self-hosted-runner-group-in-enterprise",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -26097,6 +26265,7 @@ func (s *Server) handleEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseReq
 			OperationName:    EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseOperation,
 			OperationSummary: "Add a self-hosted runner to a group for an enterprise",
 			OperationID:      "enterprise-admin/add-self-hosted-runner-to-group-for-enterprise",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -26253,6 +26422,7 @@ func (s *Server) handleEnterpriseAdminCreateRegistrationTokenForEnterpriseReques
 			OperationName:    EnterpriseAdminCreateRegistrationTokenForEnterpriseOperation,
 			OperationSummary: "Create a registration token for an enterprise",
 			OperationID:      "enterprise-admin/create-registration-token-for-enterprise",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -26403,6 +26573,7 @@ func (s *Server) handleEnterpriseAdminCreateRemoveTokenForEnterpriseRequest(args
 			OperationName:    EnterpriseAdminCreateRemoveTokenForEnterpriseOperation,
 			OperationSummary: "Create a remove token for an enterprise",
 			OperationID:      "enterprise-admin/create-remove-token-for-enterprise",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -26560,6 +26731,7 @@ func (s *Server) handleEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRe
 			OperationName:    EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseOperation,
 			OperationSummary: "Create a self-hosted runner group for an enterprise",
 			OperationID:      "enterprise-admin/create-self-hosted-runner-group-for-enterprise",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -26702,6 +26874,7 @@ func (s *Server) handleEnterpriseAdminDeleteScimGroupFromEnterpriseRequest(args 
 			OperationName:    EnterpriseAdminDeleteScimGroupFromEnterpriseOperation,
 			OperationSummary: "Delete a SCIM group from an enterprise",
 			OperationID:      "enterprise-admin/delete-scim-group-from-enterprise",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -26849,6 +27022,7 @@ func (s *Server) handleEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseReques
 			OperationName:    EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseOperation,
 			OperationSummary: "Delete a self-hosted runner from an enterprise",
 			OperationID:      "enterprise-admin/delete-self-hosted-runner-from-enterprise",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -26995,6 +27169,7 @@ func (s *Server) handleEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseR
 			OperationName:    EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseOperation,
 			OperationSummary: "Delete a self-hosted runner group from an enterprise",
 			OperationID:      "enterprise-admin/delete-self-hosted-runner-group-from-enterprise",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -27141,6 +27316,7 @@ func (s *Server) handleEnterpriseAdminDeleteUserFromEnterpriseRequest(args [2]st
 			OperationName:    EnterpriseAdminDeleteUserFromEnterpriseOperation,
 			OperationSummary: "Delete a SCIM user from an enterprise",
 			OperationID:      "enterprise-admin/delete-user-from-enterprise",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -27290,6 +27466,7 @@ func (s *Server) handleEnterpriseAdminDisableSelectedOrganizationGithubActionsEn
 			OperationName:    EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseOperation,
 			OperationSummary: "Disable a selected organization for GitHub Actions in an enterprise",
 			OperationID:      "enterprise-admin/disable-selected-organization-github-actions-enterprise",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -27439,6 +27616,7 @@ func (s *Server) handleEnterpriseAdminEnableSelectedOrganizationGithubActionsEnt
 			OperationName:    EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseOperation,
 			OperationSummary: "Enable a selected organization for GitHub Actions in an enterprise",
 			OperationID:      "enterprise-admin/enable-selected-organization-github-actions-enterprise",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -27588,6 +27766,7 @@ func (s *Server) handleEnterpriseAdminGetAllowedActionsEnterpriseRequest(args [1
 			OperationName:    EnterpriseAdminGetAllowedActionsEnterpriseOperation,
 			OperationSummary: "Get allowed actions for an enterprise",
 			OperationID:      "enterprise-admin/get-allowed-actions-enterprise",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -27730,6 +27909,7 @@ func (s *Server) handleEnterpriseAdminGetAuditLogRequest(args [1]string, argsEsc
 			OperationName:    EnterpriseAdminGetAuditLogOperation,
 			OperationSummary: "Get the audit log for an enterprise",
 			OperationID:      "enterprise-admin/get-audit-log",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -27900,6 +28080,7 @@ func (s *Server) handleEnterpriseAdminGetGithubActionsPermissionsEnterpriseReque
 			OperationName:    EnterpriseAdminGetGithubActionsPermissionsEnterpriseOperation,
 			OperationSummary: "Get GitHub Actions permissions for an enterprise",
 			OperationID:      "enterprise-admin/get-github-actions-permissions-enterprise",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -28042,6 +28223,7 @@ func (s *Server) handleEnterpriseAdminGetProvisioningInformationForEnterpriseGro
 			OperationName:    EnterpriseAdminGetProvisioningInformationForEnterpriseGroupOperation,
 			OperationSummary: "Get SCIM provisioning information for an enterprise group",
 			OperationID:      "enterprise-admin/get-provisioning-information-for-enterprise-group",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -28192,6 +28374,7 @@ func (s *Server) handleEnterpriseAdminGetProvisioningInformationForEnterpriseUse
 			OperationName:    EnterpriseAdminGetProvisioningInformationForEnterpriseUserOperation,
 			OperationSummary: "Get SCIM provisioning information for an enterprise user",
 			OperationID:      "enterprise-admin/get-provisioning-information-for-enterprise-user",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -28338,6 +28521,7 @@ func (s *Server) handleEnterpriseAdminGetSelfHostedRunnerForEnterpriseRequest(ar
 			OperationName:    EnterpriseAdminGetSelfHostedRunnerForEnterpriseOperation,
 			OperationSummary: "Get a self-hosted runner for an enterprise",
 			OperationID:      "enterprise-admin/get-self-hosted-runner-for-enterprise",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -28484,6 +28668,7 @@ func (s *Server) handleEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseReque
 			OperationName:    EnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseOperation,
 			OperationSummary: "Get a self-hosted runner group for an enterprise",
 			OperationID:      "enterprise-admin/get-self-hosted-runner-group-for-enterprise",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -28630,6 +28815,7 @@ func (s *Server) handleEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnte
 			OperationName:    EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOperation,
 			OperationSummary: "List organization access to a self-hosted runner group in an enterprise",
 			OperationID:      "enterprise-admin/list-org-access-to-self-hosted-runner-group-in-enterprise",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -28784,6 +28970,7 @@ func (s *Server) handleEnterpriseAdminListProvisionedGroupsEnterpriseRequest(arg
 			OperationName:    EnterpriseAdminListProvisionedGroupsEnterpriseOperation,
 			OperationSummary: "List provisioned SCIM groups for an enterprise",
 			OperationID:      "enterprise-admin/list-provisioned-groups-enterprise",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -28967,6 +29154,7 @@ func (s *Server) handleEnterpriseAdminListProvisionedIdentitiesEnterpriseRequest
 			OperationName:    EnterpriseAdminListProvisionedIdentitiesEnterpriseOperation,
 			OperationSummary: "List SCIM provisioned identities for an enterprise",
 			OperationID:      "enterprise-admin/list-provisioned-identities-enterprise",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -29121,6 +29309,7 @@ func (s *Server) handleEnterpriseAdminListRunnerApplicationsForEnterpriseRequest
 			OperationName:    EnterpriseAdminListRunnerApplicationsForEnterpriseOperation,
 			OperationSummary: "List runner applications for an enterprise",
 			OperationID:      "enterprise-admin/list-runner-applications-for-enterprise",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -29266,6 +29455,7 @@ func (s *Server) handleEnterpriseAdminListSelectedOrganizationsEnabledGithubActi
 			OperationName:    EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseOperation,
 			OperationSummary: "List selected organizations enabled for GitHub Actions in an enterprise",
 			OperationID:      "enterprise-admin/list-selected-organizations-enabled-github-actions-enterprise",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -29416,6 +29606,7 @@ func (s *Server) handleEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseReq
 			OperationName:    EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOperation,
 			OperationSummary: "List self-hosted runner groups for an enterprise",
 			OperationID:      "enterprise-admin/list-self-hosted-runner-groups-for-enterprise",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -29566,6 +29757,7 @@ func (s *Server) handleEnterpriseAdminListSelfHostedRunnersForEnterpriseRequest(
 			OperationName:    EnterpriseAdminListSelfHostedRunnersForEnterpriseOperation,
 			OperationSummary: "List self-hosted runners for an enterprise",
 			OperationID:      "enterprise-admin/list-self-hosted-runners-for-enterprise",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -29716,6 +29908,7 @@ func (s *Server) handleEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseR
 			OperationName:    EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOperation,
 			OperationSummary: "List self-hosted runners in a group for an enterprise",
 			OperationID:      "enterprise-admin/list-self-hosted-runners-in-group-for-enterprise",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -29888,6 +30081,7 @@ func (s *Server) handleEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(a
 			OperationName:    EnterpriseAdminProvisionAndInviteEnterpriseGroupOperation,
 			OperationSummary: "Provision a SCIM enterprise group and invite users",
 			OperationID:      "enterprise-admin/provision-and-invite-enterprise-group",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -30050,6 +30244,7 @@ func (s *Server) handleEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(ar
 			OperationName:    EnterpriseAdminProvisionAndInviteEnterpriseUserOperation,
 			OperationSummary: "Provision and invite a SCIM enterprise user",
 			OperationID:      "enterprise-admin/provision-and-invite-enterprise-user",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -30195,6 +30390,7 @@ func (s *Server) handleEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEn
 			OperationName:    EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseOperation,
 			OperationSummary: "Remove organization access to a self-hosted runner group in an enterprise",
 			OperationID:      "enterprise-admin/remove-org-access-to-self-hosted-runner-group-in-enterprise",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -30346,6 +30542,7 @@ func (s *Server) handleEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpri
 			OperationName:    EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseOperation,
 			OperationSummary: "Remove a self-hosted runner from a group for an enterprise",
 			OperationID:      "enterprise-admin/remove-self-hosted-runner-from-group-for-enterprise",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -30514,6 +30711,7 @@ func (s *Server) handleEnterpriseAdminSetAllowedActionsEnterpriseRequest(args [1
 			OperationName:    EnterpriseAdminSetAllowedActionsEnterpriseOperation,
 			OperationSummary: "Set allowed actions for an enterprise",
 			OperationID:      "enterprise-admin/set-allowed-actions-enterprise",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -30671,6 +30869,7 @@ func (s *Server) handleEnterpriseAdminSetGithubActionsPermissionsEnterpriseReque
 			OperationName:    EnterpriseAdminSetGithubActionsPermissionsEnterpriseOperation,
 			OperationSummary: "Set GitHub Actions permissions for an enterprise",
 			OperationID:      "enterprise-admin/set-github-actions-permissions-enterprise",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -30833,6 +31032,7 @@ func (s *Server) handleEnterpriseAdminSetInformationForProvisionedEnterpriseGrou
 			OperationName:    EnterpriseAdminSetInformationForProvisionedEnterpriseGroupOperation,
 			OperationSummary: "Set SCIM information for a provisioned enterprise group",
 			OperationID:      "enterprise-admin/set-information-for-provisioned-enterprise-group",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -31002,6 +31202,7 @@ func (s *Server) handleEnterpriseAdminSetInformationForProvisionedEnterpriseUser
 			OperationName:    EnterpriseAdminSetInformationForProvisionedEnterpriseUserOperation,
 			OperationSummary: "Set SCIM information for a provisioned enterprise user",
 			OperationID:      "enterprise-admin/set-information-for-provisioned-enterprise-user",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -31164,6 +31365,7 @@ func (s *Server) handleEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnter
 			OperationName:    EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseOperation,
 			OperationSummary: "Set organization access for a self-hosted runner group in an enterprise",
 			OperationID:      "enterprise-admin/set-org-access-to-self-hosted-runner-group-in-enterprise",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -31328,6 +31530,7 @@ func (s *Server) handleEnterpriseAdminSetSelectedOrganizationsEnabledGithubActio
 			OperationName:    EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseOperation,
 			OperationSummary: "Set selected organizations enabled for GitHub Actions in an enterprise",
 			OperationID:      "enterprise-admin/set-selected-organizations-enabled-github-actions-enterprise",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -31485,6 +31688,7 @@ func (s *Server) handleEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRe
 			OperationName:    EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseOperation,
 			OperationSummary: "Set self-hosted runners in a group for an enterprise",
 			OperationID:      "enterprise-admin/set-self-hosted-runners-in-group-for-enterprise",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -31650,6 +31854,7 @@ func (s *Server) handleEnterpriseAdminUpdateAttributeForEnterpriseGroupRequest(a
 			OperationName:    EnterpriseAdminUpdateAttributeForEnterpriseGroupOperation,
 			OperationSummary: "Update an attribute for a SCIM enterprise group",
 			OperationID:      "enterprise-admin/update-attribute-for-enterprise-group",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -31832,6 +32037,7 @@ func (s *Server) handleEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(ar
 			OperationName:    EnterpriseAdminUpdateAttributeForEnterpriseUserOperation,
 			OperationSummary: "Update an attribute for a SCIM enterprise user",
 			OperationID:      "enterprise-admin/update-attribute-for-enterprise-user",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -31993,6 +32199,7 @@ func (s *Server) handleEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRe
 			OperationName:    EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseOperation,
 			OperationSummary: "Update a self-hosted runner group for an enterprise",
 			OperationID:      "enterprise-admin/update-self-hosted-runner-group-for-enterprise",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -32138,6 +32345,7 @@ func (s *Server) handleGistsCheckIsStarredRequest(args [1]string, argsEscaped bo
 			OperationName:    GistsCheckIsStarredOperation,
 			OperationSummary: "Check if a gist is starred",
 			OperationID:      "gists/check-is-starred",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -32286,6 +32494,7 @@ func (s *Server) handleGistsCreateRequest(args [0]string, argsEscaped bool, w ht
 			OperationName:    GistsCreateOperation,
 			OperationSummary: "Create a gist",
 			OperationID:      "gists/create",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -32437,6 +32646,7 @@ func (s *Server) handleGistsCreateCommentRequest(args [1]string, argsEscaped boo
 			OperationName:    GistsCreateCommentOperation,
 			OperationSummary: "Create a gist comment",
 			OperationID:      "gists/create-comment",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -32578,6 +32788,7 @@ func (s *Server) handleGistsDeleteRequest(args [1]string, argsEscaped bool, w ht
 			OperationName:    GistsDeleteOperation,
 			OperationSummary: "Delete a gist",
 			OperationID:      "gists/delete",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -32719,6 +32930,7 @@ func (s *Server) handleGistsDeleteCommentRequest(args [2]string, argsEscaped boo
 			OperationName:    GistsDeleteCommentOperation,
 			OperationSummary: "Delete a gist comment",
 			OperationID:      "gists/delete-comment",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -32864,6 +33076,7 @@ func (s *Server) handleGistsForkRequest(args [1]string, argsEscaped bool, w http
 			OperationName:    GistsForkOperation,
 			OperationSummary: "Fork a gist",
 			OperationID:      "gists/fork",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -33005,6 +33218,7 @@ func (s *Server) handleGistsGetRequest(args [1]string, argsEscaped bool, w http.
 			OperationName:    GistsGetOperation,
 			OperationSummary: "Get a gist",
 			OperationID:      "gists/get",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -33146,6 +33360,7 @@ func (s *Server) handleGistsGetCommentRequest(args [2]string, argsEscaped bool, 
 			OperationName:    GistsGetCommentOperation,
 			OperationSummary: "Get a gist comment",
 			OperationID:      "gists/get-comment",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -33291,6 +33506,7 @@ func (s *Server) handleGistsGetRevisionRequest(args [2]string, argsEscaped bool,
 			OperationName:    GistsGetRevisionOperation,
 			OperationSummary: "Get a gist revision",
 			OperationID:      "gists/get-revision",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -33437,6 +33653,7 @@ func (s *Server) handleGistsListRequest(args [0]string, argsEscaped bool, w http
 			OperationName:    GistsListOperation,
 			OperationSummary: "List gists for the authenticated user",
 			OperationID:      "gists/list",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -33586,6 +33803,7 @@ func (s *Server) handleGistsListCommentsRequest(args [1]string, argsEscaped bool
 			OperationName:    GistsListCommentsOperation,
 			OperationSummary: "List gist comments",
 			OperationID:      "gists/list-comments",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -33735,6 +33953,7 @@ func (s *Server) handleGistsListCommitsRequest(args [1]string, argsEscaped bool,
 			OperationName:    GistsListCommitsOperation,
 			OperationSummary: "List gist commits",
 			OperationID:      "gists/list-commits",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -33884,6 +34103,7 @@ func (s *Server) handleGistsListForUserRequest(args [1]string, argsEscaped bool,
 			OperationName:    GistsListForUserOperation,
 			OperationSummary: "List gists for a user",
 			OperationID:      "gists/list-for-user",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -34037,6 +34257,7 @@ func (s *Server) handleGistsListForksRequest(args [1]string, argsEscaped bool, w
 			OperationName:    GistsListForksOperation,
 			OperationSummary: "List gist forks",
 			OperationID:      "gists/list-forks",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -34189,6 +34410,7 @@ func (s *Server) handleGistsListPublicRequest(args [0]string, argsEscaped bool, 
 			OperationName:    GistsListPublicOperation,
 			OperationSummary: "List public gists",
 			OperationID:      "gists/list-public",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -34338,6 +34560,7 @@ func (s *Server) handleGistsListStarredRequest(args [0]string, argsEscaped bool,
 			OperationName:    GistsListStarredOperation,
 			OperationSummary: "List starred gists",
 			OperationID:      "gists/list-starred",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -34489,6 +34712,7 @@ func (s *Server) handleGistsStarRequest(args [1]string, argsEscaped bool, w http
 			OperationName:    GistsStarOperation,
 			OperationSummary: "Star a gist",
 			OperationID:      "gists/star",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -34630,6 +34854,7 @@ func (s *Server) handleGistsUnstarRequest(args [1]string, argsEscaped bool, w ht
 			OperationName:    GistsUnstarOperation,
 			OperationSummary: "Unstar a gist",
 			OperationID:      "gists/unstar",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -34786,6 +35011,7 @@ func (s *Server) handleGistsUpdateCommentRequest(args [2]string, argsEscaped boo
 			OperationName:    GistsUpdateCommentOperation,
 			OperationSummary: "Update a gist comment",
 			OperationID:      "gists/update-comment",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -34946,6 +35172,7 @@ func (s *Server) handleGitCreateBlobRequest(args [2]string, argsEscaped bool, w 
 			OperationName:    GitCreateBlobOperation,
 			OperationSummary: "Create a blob",
 			OperationID:      "git/create-blob",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -35139,6 +35366,7 @@ func (s *Server) handleGitCreateCommitRequest(args [2]string, argsEscaped bool, 
 			OperationName:    GitCreateCommitOperation,
 			OperationSummary: "Create a commit",
 			OperationID:      "git/create-commit",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -35301,6 +35529,7 @@ func (s *Server) handleGitCreateRefRequest(args [2]string, argsEscaped bool, w h
 			OperationName:    GitCreateRefOperation,
 			OperationSummary: "Create a reference",
 			OperationID:      "git/create-ref",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -35497,6 +35726,7 @@ func (s *Server) handleGitCreateTagRequest(args [2]string, argsEscaped bool, w h
 			OperationName:    GitCreateTagOperation,
 			OperationSummary: "Create a tag object",
 			OperationID:      "git/create-tag",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -35663,6 +35893,7 @@ func (s *Server) handleGitCreateTreeRequest(args [2]string, argsEscaped bool, w 
 			OperationName:    GitCreateTreeOperation,
 			OperationSummary: "Create a tree",
 			OperationID:      "git/create-tree",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -35808,6 +36039,7 @@ func (s *Server) handleGitDeleteRefRequest(args [3]string, argsEscaped bool, w h
 			OperationName:    GitDeleteRefOperation,
 			OperationSummary: "Delete a reference",
 			OperationID:      "git/delete-ref",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -35958,6 +36190,7 @@ func (s *Server) handleGitGetBlobRequest(args [3]string, argsEscaped bool, w htt
 			OperationName:    GitGetBlobOperation,
 			OperationSummary: "Get a blob",
 			OperationID:      "git/get-blob",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -36140,6 +36373,7 @@ func (s *Server) handleGitGetCommitRequest(args [3]string, argsEscaped bool, w h
 			OperationName:    GitGetCommitOperation,
 			OperationSummary: "Get a commit",
 			OperationID:      "git/get-commit",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -36296,6 +36530,7 @@ func (s *Server) handleGitGetRefRequest(args [3]string, argsEscaped bool, w http
 			OperationName:    GitGetRefOperation,
 			OperationSummary: "Get a reference",
 			OperationID:      "git/get-ref",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -36476,6 +36711,7 @@ func (s *Server) handleGitGetTagRequest(args [3]string, argsEscaped bool, w http
 			OperationName:    GitGetTagOperation,
 			OperationSummary: "Get a tag",
 			OperationID:      "git/get-tag",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -36628,6 +36864,7 @@ func (s *Server) handleGitGetTreeRequest(args [3]string, argsEscaped bool, w htt
 			OperationName:    GitGetTreeOperation,
 			OperationSummary: "Get a tree",
 			OperationID:      "git/get-tree",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -36795,6 +37032,7 @@ func (s *Server) handleGitListMatchingRefsRequest(args [3]string, argsEscaped bo
 			OperationName:    GitListMatchingRefsOperation,
 			OperationSummary: "List matching references",
 			OperationID:      "git/list-matching-refs",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -36967,6 +37205,7 @@ func (s *Server) handleGitUpdateRefRequest(args [3]string, argsEscaped bool, w h
 			OperationName:    GitUpdateRefOperation,
 			OperationSummary: "Update a reference",
 			OperationID:      "git/update-ref",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -37103,6 +37342,7 @@ func (s *Server) handleGitignoreGetAllTemplatesRequest(args [0]string, argsEscap
 			OperationName:    GitignoreGetAllTemplatesOperation,
 			OperationSummary: "Get all gitignore templates",
 			OperationID:      "gitignore/get-all-templates",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -37241,6 +37481,7 @@ func (s *Server) handleGitignoreGetTemplateRequest(args [1]string, argsEscaped b
 			OperationName:    GitignoreGetTemplateOperation,
 			OperationSummary: "Get a gitignore template",
 			OperationID:      "gitignore/get-template",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -37368,6 +37609,7 @@ func (s *Server) handleInteractionsRemoveRestrictionsForAuthenticatedUserRequest
 			OperationName:    InteractionsRemoveRestrictionsForAuthenticatedUserOperation,
 			OperationSummary: "Remove interaction restrictions from your public repositories",
 			OperationID:      "interactions/remove-restrictions-for-authenticated-user",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -37505,6 +37747,7 @@ func (s *Server) handleInteractionsRemoveRestrictionsForOrgRequest(args [1]strin
 			OperationName:    InteractionsRemoveRestrictionsForOrgOperation,
 			OperationSummary: "Remove interaction restrictions for an organization",
 			OperationID:      "interactions/remove-restrictions-for-org",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -37649,6 +37892,7 @@ func (s *Server) handleInteractionsRemoveRestrictionsForRepoRequest(args [2]stri
 			OperationName:    InteractionsRemoveRestrictionsForRepoOperation,
 			OperationSummary: "Remove interaction restrictions for a repository",
 			OperationID:      "interactions/remove-restrictions-for-repo",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -37801,6 +38045,7 @@ func (s *Server) handleInteractionsSetRestrictionsForAuthenticatedUserRequest(ar
 			OperationName:    InteractionsSetRestrictionsForAuthenticatedUserOperation,
 			OperationSummary: "Set interaction restrictions for your public repositories",
 			OperationID:      "interactions/set-restrictions-for-authenticated-user",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -37955,6 +38200,7 @@ func (s *Server) handleInteractionsSetRestrictionsForOrgRequest(args [1]string, 
 			OperationName:    InteractionsSetRestrictionsForOrgOperation,
 			OperationSummary: "Set interaction restrictions for an organization",
 			OperationID:      "interactions/set-restrictions-for-org",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -38114,6 +38360,7 @@ func (s *Server) handleInteractionsSetRestrictionsForRepoRequest(args [2]string,
 			OperationName:    InteractionsSetRestrictionsForRepoOperation,
 			OperationSummary: "Set interaction restrictions for a repository",
 			OperationID:      "interactions/set-restrictions-for-repo",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -38274,6 +38521,7 @@ func (s *Server) handleIssuesAddAssigneesRequest(args [3]string, argsEscaped boo
 			OperationName:    IssuesAddAssigneesOperation,
 			OperationSummary: "Add assignees to an issue",
 			OperationID:      "issues/add-assignees",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -38426,6 +38674,7 @@ func (s *Server) handleIssuesCheckUserCanBeAssignedRequest(args [3]string, argsE
 			OperationName:    IssuesCheckUserCanBeAssignedOperation,
 			OperationSummary: "Check if a user can be assigned",
 			OperationID:      "issues/check-user-can-be-assigned",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -38599,6 +38848,7 @@ func (s *Server) handleIssuesCreateRequest(args [2]string, argsEscaped bool, w h
 			OperationName:    IssuesCreateOperation,
 			OperationSummary: "Create an issue",
 			OperationID:      "issues/create",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -38765,6 +39015,7 @@ func (s *Server) handleIssuesCreateCommentRequest(args [3]string, argsEscaped bo
 			OperationName:    IssuesCreateCommentOperation,
 			OperationSummary: "Create an issue comment",
 			OperationID:      "issues/create-comment",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -38929,6 +39180,7 @@ func (s *Server) handleIssuesCreateLabelRequest(args [2]string, argsEscaped bool
 			OperationName:    IssuesCreateLabelOperation,
 			OperationSummary: "Create a label",
 			OperationID:      "issues/create-label",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -39089,6 +39341,7 @@ func (s *Server) handleIssuesCreateMilestoneRequest(args [2]string, argsEscaped 
 			OperationName:    IssuesCreateMilestoneOperation,
 			OperationSummary: "Create a milestone",
 			OperationID:      "issues/create-milestone",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -39234,6 +39487,7 @@ func (s *Server) handleIssuesDeleteCommentRequest(args [3]string, argsEscaped bo
 			OperationName:    IssuesDeleteCommentOperation,
 			OperationSummary: "Delete an issue comment",
 			OperationID:      "issues/delete-comment",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -39383,6 +39637,7 @@ func (s *Server) handleIssuesDeleteLabelRequest(args [3]string, argsEscaped bool
 			OperationName:    IssuesDeleteLabelOperation,
 			OperationSummary: "Delete a label",
 			OperationID:      "issues/delete-label",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -39532,6 +39787,7 @@ func (s *Server) handleIssuesDeleteMilestoneRequest(args [3]string, argsEscaped 
 			OperationName:    IssuesDeleteMilestoneOperation,
 			OperationSummary: "Delete a milestone",
 			OperationID:      "issues/delete-milestone",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -39699,6 +39955,7 @@ func (s *Server) handleIssuesGetRequest(args [3]string, argsEscaped bool, w http
 			OperationName:    IssuesGetOperation,
 			OperationSummary: "Get an issue",
 			OperationID:      "issues/get",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -39848,6 +40105,7 @@ func (s *Server) handleIssuesGetCommentRequest(args [3]string, argsEscaped bool,
 			OperationName:    IssuesGetCommentOperation,
 			OperationSummary: "Get an issue comment",
 			OperationID:      "issues/get-comment",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -39997,6 +40255,7 @@ func (s *Server) handleIssuesGetEventRequest(args [3]string, argsEscaped bool, w
 			OperationName:    IssuesGetEventOperation,
 			OperationSummary: "Get an issue event",
 			OperationID:      "issues/get-event",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -40146,6 +40405,7 @@ func (s *Server) handleIssuesGetLabelRequest(args [3]string, argsEscaped bool, w
 			OperationName:    IssuesGetLabelOperation,
 			OperationSummary: "Get a label",
 			OperationID:      "issues/get-label",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -40295,6 +40555,7 @@ func (s *Server) handleIssuesGetMilestoneRequest(args [3]string, argsEscaped boo
 			OperationName:    IssuesGetMilestoneOperation,
 			OperationSummary: "Get a milestone",
 			OperationID:      "issues/get-milestone",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -40456,6 +40717,7 @@ func (s *Server) handleIssuesListRequest(args [0]string, argsEscaped bool, w htt
 			OperationName:    IssuesListOperation,
 			OperationSummary: "List issues assigned to the authenticated user",
 			OperationID:      "issues/list",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -40642,6 +40904,7 @@ func (s *Server) handleIssuesListAssigneesRequest(args [2]string, argsEscaped bo
 			OperationName:    IssuesListAssigneesOperation,
 			OperationSummary: "List assignees",
 			OperationID:      "issues/list-assignees",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -40795,6 +41058,7 @@ func (s *Server) handleIssuesListCommentsRequest(args [3]string, argsEscaped boo
 			OperationName:    IssuesListCommentsOperation,
 			OperationSummary: "List issue comments",
 			OperationID:      "issues/list-comments",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -40956,6 +41220,7 @@ func (s *Server) handleIssuesListCommentsForRepoRequest(args [2]string, argsEsca
 			OperationName:    IssuesListCommentsForRepoOperation,
 			OperationSummary: "List issue comments for a repository",
 			OperationID:      "issues/list-comments-for-repo",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -41121,6 +41386,7 @@ func (s *Server) handleIssuesListEventsForRepoRequest(args [2]string, argsEscape
 			OperationName:    IssuesListEventsForRepoOperation,
 			OperationSummary: "List issue events for a repository",
 			OperationID:      "issues/list-events-for-repo",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -41282,6 +41548,7 @@ func (s *Server) handleIssuesListForAuthenticatedUserRequest(args [0]string, arg
 			OperationName:    IssuesListForAuthenticatedUserOperation,
 			OperationSummary: "List user account issues assigned to the authenticated user",
 			OperationID:      "issues/list-for-authenticated-user",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -41459,6 +41726,7 @@ func (s *Server) handleIssuesListForOrgRequest(args [1]string, argsEscaped bool,
 			OperationName:    IssuesListForOrgOperation,
 			OperationSummary: "List organization issues assigned to the authenticated user",
 			OperationID:      "issues/list-for-org",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -41640,6 +41908,7 @@ func (s *Server) handleIssuesListForRepoRequest(args [2]string, argsEscaped bool
 			OperationName:    IssuesListForRepoOperation,
 			OperationSummary: "List repository issues",
 			OperationID:      "issues/list-for-repo",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -41829,6 +42098,7 @@ func (s *Server) handleIssuesListLabelsForMilestoneRequest(args [3]string, argsE
 			OperationName:    IssuesListLabelsForMilestoneOperation,
 			OperationSummary: "List labels for issues in a milestone",
 			OperationID:      "issues/list-labels-for-milestone",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -41986,6 +42256,7 @@ func (s *Server) handleIssuesListLabelsForRepoRequest(args [2]string, argsEscape
 			OperationName:    IssuesListLabelsForRepoOperation,
 			OperationSummary: "List labels for a repository",
 			OperationID:      "issues/list-labels-for-repo",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -42139,6 +42410,7 @@ func (s *Server) handleIssuesListLabelsOnIssueRequest(args [3]string, argsEscape
 			OperationName:    IssuesListLabelsOnIssueOperation,
 			OperationSummary: "List labels for an issue",
 			OperationID:      "issues/list-labels-on-issue",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -42296,6 +42568,7 @@ func (s *Server) handleIssuesListMilestonesRequest(args [2]string, argsEscaped b
 			OperationName:    IssuesListMilestonesOperation,
 			OperationSummary: "List milestones",
 			OperationID:      "issues/list-milestones",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -42479,6 +42752,7 @@ func (s *Server) handleIssuesLockRequest(args [3]string, argsEscaped bool, w htt
 			OperationName:    IssuesLockOperation,
 			OperationSummary: "Lock an issue",
 			OperationID:      "issues/lock",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -42628,6 +42902,7 @@ func (s *Server) handleIssuesRemoveAllLabelsRequest(args [3]string, argsEscaped 
 			OperationName:    IssuesRemoveAllLabelsOperation,
 			OperationSummary: "Remove all labels from an issue",
 			OperationID:      "issues/remove-all-labels",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -42792,6 +43067,7 @@ func (s *Server) handleIssuesRemoveAssigneesRequest(args [3]string, argsEscaped 
 			OperationName:    IssuesRemoveAssigneesOperation,
 			OperationSummary: "Remove assignees from an issue",
 			OperationID:      "issues/remove-assignees",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -42942,6 +43218,7 @@ func (s *Server) handleIssuesRemoveLabelRequest(args [4]string, argsEscaped bool
 			OperationName:    IssuesRemoveLabelOperation,
 			OperationSummary: "Remove a label from an issue",
 			OperationID:      "issues/remove-label",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -43095,6 +43372,7 @@ func (s *Server) handleIssuesUnlockRequest(args [3]string, argsEscaped bool, w h
 			OperationName:    IssuesUnlockOperation,
 			OperationSummary: "Unlock an issue",
 			OperationID:      "issues/unlock",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -43259,6 +43537,7 @@ func (s *Server) handleIssuesUpdateRequest(args [3]string, argsEscaped bool, w h
 			OperationName:    IssuesUpdateOperation,
 			OperationSummary: "Update an issue",
 			OperationID:      "issues/update",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -43423,6 +43702,7 @@ func (s *Server) handleIssuesUpdateCommentRequest(args [3]string, argsEscaped bo
 			OperationName:    IssuesUpdateCommentOperation,
 			OperationSummary: "Update an issue comment",
 			OperationID:      "issues/update-comment",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -43587,6 +43867,7 @@ func (s *Server) handleIssuesUpdateLabelRequest(args [3]string, argsEscaped bool
 			OperationName:    IssuesUpdateLabelOperation,
 			OperationSummary: "Update a label",
 			OperationID:      "issues/update-label",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -43751,6 +44032,7 @@ func (s *Server) handleIssuesUpdateMilestoneRequest(args [3]string, argsEscaped 
 			OperationName:    IssuesUpdateMilestoneOperation,
 			OperationSummary: "Update a milestone",
 			OperationID:      "issues/update-milestone",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -43900,6 +44182,7 @@ func (s *Server) handleLicensesGetRequest(args [1]string, argsEscaped bool, w ht
 			OperationName:    LicensesGetOperation,
 			OperationSummary: "Get a license",
 			OperationID:      "licenses/get",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -44041,6 +44324,7 @@ func (s *Server) handleLicensesGetAllCommonlyUsedRequest(args [0]string, argsEsc
 			OperationName:    LicensesGetAllCommonlyUsedOperation,
 			OperationSummary: "Get all commonly used licenses",
 			OperationID:      "licenses/get-all-commonly-used",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -44194,6 +44478,7 @@ func (s *Server) handleLicensesGetForRepoRequest(args [2]string, argsEscaped boo
 			OperationName:    LicensesGetForRepoOperation,
 			OperationSummary: "Get the license for a repository",
 			OperationID:      "licenses/get-for-repo",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -44344,6 +44629,7 @@ func (s *Server) handleMarkdownRenderRequest(args [0]string, argsEscaped bool, w
 			OperationName:    MarkdownRenderOperation,
 			OperationSummary: "Render a Markdown document",
 			OperationID:      "markdown/render",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -44488,6 +44774,7 @@ func (s *Server) handleMarkdownRenderRawRequest(args [0]string, argsEscaped bool
 			OperationName:    MarkdownRenderRawOperation,
 			OperationSummary: "Render a Markdown document in raw mode",
 			OperationID:      "markdown/render-raw",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -44614,6 +44901,7 @@ func (s *Server) handleMetaGetRequest(args [0]string, argsEscaped bool, w http.R
 			OperationName:    MetaGetOperation,
 			OperationSummary: "Get GitHub meta information",
 			OperationID:      "meta/get",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -44750,6 +45038,7 @@ func (s *Server) handleMetaGetOctocatRequest(args [0]string, argsEscaped bool, w
 			OperationName:    MetaGetOctocatOperation,
 			OperationSummary: "Get Octocat",
 			OperationID:      "meta/get-octocat",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -44877,6 +45166,7 @@ func (s *Server) handleMetaGetZenRequest(args [0]string, argsEscaped bool, w htt
 			OperationName:    MetaGetZenOperation,
 			OperationSummary: "Get the Zen of GitHub",
 			OperationID:      "meta/get-zen",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -44999,6 +45289,7 @@ func (s *Server) handleMetaRootRequest(args [0]string, argsEscaped bool, w http.
 			OperationName:    MetaRootOperation,
 			OperationSummary: "GitHub API Root",
 			OperationID:      "meta/root",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -45135,6 +45426,7 @@ func (s *Server) handleMigrationsCancelImportRequest(args [2]string, argsEscaped
 			OperationName:    MigrationsCancelImportOperation,
 			OperationSummary: "Cancel an import",
 			OperationID:      "migrations/cancel-import",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -45284,6 +45576,7 @@ func (s *Server) handleMigrationsDeleteArchiveForAuthenticatedUserRequest(args [
 			OperationName:    MigrationsDeleteArchiveForAuthenticatedUserOperation,
 			OperationSummary: "Delete a user migration archive",
 			OperationID:      "migrations/delete-archive-for-authenticated-user",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -45426,6 +45719,7 @@ func (s *Server) handleMigrationsDeleteArchiveForOrgRequest(args [2]string, args
 			OperationName:    MigrationsDeleteArchiveForOrgOperation,
 			OperationSummary: "Delete an organization migration archive",
 			OperationID:      "migrations/delete-archive-for-org",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -45571,6 +45865,7 @@ func (s *Server) handleMigrationsDownloadArchiveForOrgRequest(args [2]string, ar
 			OperationName:    MigrationsDownloadArchiveForOrgOperation,
 			OperationSummary: "Download an organization migration archive",
 			OperationID:      "migrations/download-archive-for-org",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -45736,6 +46031,7 @@ func (s *Server) handleMigrationsGetArchiveForAuthenticatedUserRequest(args [1]s
 			OperationName:    MigrationsGetArchiveForAuthenticatedUserOperation,
 			OperationSummary: "Download a user migration archive",
 			OperationID:      "migrations/get-archive-for-authenticated-user",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -45884,6 +46180,7 @@ func (s *Server) handleMigrationsGetCommitAuthorsRequest(args [2]string, argsEsc
 			OperationName:    MigrationsGetCommitAuthorsOperation,
 			OperationSummary: "Get commit authors",
 			OperationID:      "migrations/get-commit-authors",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -46085,6 +46382,7 @@ func (s *Server) handleMigrationsGetImportStatusRequest(args [2]string, argsEsca
 			OperationName:    MigrationsGetImportStatusOperation,
 			OperationSummary: "Get an import status",
 			OperationID:      "migrations/get-import-status",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -46230,6 +46528,7 @@ func (s *Server) handleMigrationsGetLargeFilesRequest(args [2]string, argsEscape
 			OperationName:    MigrationsGetLargeFilesOperation,
 			OperationSummary: "Get large files",
 			OperationID:      "migrations/get-large-files",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -46382,6 +46681,7 @@ func (s *Server) handleMigrationsGetStatusForAuthenticatedUserRequest(args [1]st
 			OperationName:    MigrationsGetStatusForAuthenticatedUserOperation,
 			OperationSummary: "Get a user migration status",
 			OperationID:      "migrations/get-status-for-authenticated-user",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -46532,6 +46832,7 @@ func (s *Server) handleMigrationsGetStatusForOrgRequest(args [2]string, argsEsca
 			OperationName:    MigrationsGetStatusForOrgOperation,
 			OperationSummary: "Get an organization migration status",
 			OperationID:      "migrations/get-status-for-org",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -46681,6 +46982,7 @@ func (s *Server) handleMigrationsListForAuthenticatedUserRequest(args [0]string,
 			OperationName:    MigrationsListForAuthenticatedUserOperation,
 			OperationSummary: "List user migrations",
 			OperationID:      "migrations/list-for-authenticated-user",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -46826,6 +47128,7 @@ func (s *Server) handleMigrationsListForOrgRequest(args [1]string, argsEscaped b
 			OperationName:    MigrationsListForOrgOperation,
 			OperationSummary: "List organization migrations",
 			OperationID:      "migrations/list-for-org",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -46979,6 +47282,7 @@ func (s *Server) handleMigrationsListReposForOrgRequest(args [2]string, argsEsca
 			OperationName:    MigrationsListReposForOrgOperation,
 			OperationSummary: "List repositories in an organization migration",
 			OperationID:      "migrations/list-repos-for-org",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -47132,6 +47436,7 @@ func (s *Server) handleMigrationsListReposForUserRequest(args [1]string, argsEsc
 			OperationName:    MigrationsListReposForUserOperation,
 			OperationSummary: "List repositories for a user migration",
 			OperationID:      "migrations/list-repos-for-user",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -47297,6 +47602,7 @@ func (s *Server) handleMigrationsMapCommitAuthorRequest(args [3]string, argsEsca
 			OperationName:    MigrationsMapCommitAuthorOperation,
 			OperationSummary: "Map a commit author",
 			OperationID:      "migrations/map-commit-author",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -47464,6 +47770,7 @@ func (s *Server) handleMigrationsSetLfsPreferenceRequest(args [2]string, argsEsc
 			OperationName:    MigrationsSetLfsPreferenceOperation,
 			OperationSummary: "Update Git LFS preference",
 			OperationID:      "migrations/set-lfs-preference",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -47614,6 +47921,7 @@ func (s *Server) handleMigrationsStartForAuthenticatedUserRequest(args [0]string
 			OperationName:    MigrationsStartForAuthenticatedUserOperation,
 			OperationSummary: "Start a user migration",
 			OperationID:      "migrations/start-for-authenticated-user",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -47765,6 +48073,7 @@ func (s *Server) handleMigrationsStartForOrgRequest(args [1]string, argsEscaped 
 			OperationName:    MigrationsStartForOrgOperation,
 			OperationSummary: "Start an organization migration",
 			OperationID:      "migrations/start-for-org",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -47921,6 +48230,7 @@ func (s *Server) handleMigrationsStartImportRequest(args [2]string, argsEscaped 
 			OperationName:    MigrationsStartImportOperation,
 			OperationSummary: "Start an import",
 			OperationID:      "migrations/start-import",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -48070,6 +48380,7 @@ func (s *Server) handleMigrationsUnlockRepoForAuthenticatedUserRequest(args [2]s
 			OperationName:    MigrationsUnlockRepoForAuthenticatedUserOperation,
 			OperationSummary: "Unlock a user repository",
 			OperationID:      "migrations/unlock-repo-for-authenticated-user",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -48217,6 +48528,7 @@ func (s *Server) handleMigrationsUnlockRepoForOrgRequest(args [3]string, argsEsc
 			OperationName:    MigrationsUnlockRepoForOrgOperation,
 			OperationSummary: "Unlock an organization repository",
 			OperationID:      "migrations/unlock-repo-for-org",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -48383,6 +48695,7 @@ func (s *Server) handleMigrationsUpdateImportRequest(args [2]string, argsEscaped
 			OperationName:    MigrationsUpdateImportOperation,
 			OperationSummary: "Update an import",
 			OperationID:      "migrations/update-import",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -48562,6 +48875,7 @@ func (s *Server) handleOAuthAuthorizationsCreateAuthorizationRequest(args [0]str
 			OperationName:    OAuthAuthorizationsCreateAuthorizationOperation,
 			OperationSummary: "Create a new authorization",
 			OperationID:      "oauth-authorizations/create-authorization",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -48707,6 +49021,7 @@ func (s *Server) handleOAuthAuthorizationsDeleteAuthorizationRequest(args [1]str
 			OperationName:    OAuthAuthorizationsDeleteAuthorizationOperation,
 			OperationSummary: "Delete an authorization",
 			OperationID:      "oauth-authorizations/delete-authorization",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -48860,6 +49175,7 @@ func (s *Server) handleOAuthAuthorizationsDeleteGrantRequest(args [1]string, arg
 			OperationName:    OAuthAuthorizationsDeleteGrantOperation,
 			OperationSummary: "Delete a grant",
 			OperationID:      "oauth-authorizations/delete-grant",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -49010,6 +49326,7 @@ func (s *Server) handleOAuthAuthorizationsGetAuthorizationRequest(args [1]string
 			OperationName:    OAuthAuthorizationsGetAuthorizationOperation,
 			OperationSummary: "Get a single authorization",
 			OperationID:      "oauth-authorizations/get-authorization",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -49160,6 +49477,7 @@ func (s *Server) handleOAuthAuthorizationsGetGrantRequest(args [1]string, argsEs
 			OperationName:    OAuthAuthorizationsGetGrantOperation,
 			OperationSummary: "Get a single grant",
 			OperationID:      "oauth-authorizations/get-grant",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -49344,6 +49662,7 @@ func (s *Server) handleOAuthAuthorizationsGetOrCreateAuthorizationForAppRequest(
 			OperationName:    OAuthAuthorizationsGetOrCreateAuthorizationForAppOperation,
 			OperationSummary: "Get-or-create an authorization for a specific app",
 			OperationID:      "oauth-authorizations/get-or-create-authorization-for-app",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -49523,6 +49842,7 @@ func (s *Server) handleOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFinge
 			OperationName:    OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintOperation,
 			OperationSummary: "Get-or-create an authorization for a specific app and fingerprint",
 			OperationID:      "oauth-authorizations/get-or-create-authorization-for-app-and-fingerprint",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -49677,6 +49997,7 @@ func (s *Server) handleOAuthAuthorizationsListAuthorizationsRequest(args [0]stri
 			OperationName:    OAuthAuthorizationsListAuthorizationsOperation,
 			OperationSummary: "List your authorizations",
 			OperationID:      "oauth-authorizations/list-authorizations",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -49846,6 +50167,7 @@ func (s *Server) handleOAuthAuthorizationsListGrantsRequest(args [0]string, args
 			OperationName:    OAuthAuthorizationsListGrantsOperation,
 			OperationSummary: "List your grants",
 			OperationID:      "oauth-authorizations/list-grants",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -50023,6 +50345,7 @@ func (s *Server) handleOAuthAuthorizationsUpdateAuthorizationRequest(args [1]str
 			OperationName:    OAuthAuthorizationsUpdateAuthorizationOperation,
 			OperationSummary: "Update an existing authorization",
 			OperationID:      "oauth-authorizations/update-authorization",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -50164,6 +50487,7 @@ func (s *Server) handleOrgsBlockUserRequest(args [2]string, argsEscaped bool, w 
 			OperationName:    OrgsBlockUserOperation,
 			OperationSummary: "Block a user from an organization",
 			OperationID:      "orgs/block-user",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -50312,6 +50636,7 @@ func (s *Server) handleOrgsCancelInvitationRequest(args [2]string, argsEscaped b
 			OperationName:    OrgsCancelInvitationOperation,
 			OperationSummary: "Cancel an organization invitation",
 			OperationID:      "orgs/cancel-invitation",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -50457,6 +50782,7 @@ func (s *Server) handleOrgsCheckBlockedUserRequest(args [2]string, argsEscaped b
 			OperationName:    OrgsCheckBlockedUserOperation,
 			OperationSummary: "Check if a user is blocked by an organization",
 			OperationID:      "orgs/check-blocked-user",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -50602,6 +50928,7 @@ func (s *Server) handleOrgsCheckMembershipForUserRequest(args [2]string, argsEsc
 			OperationName:    OrgsCheckMembershipForUserOperation,
 			OperationSummary: "Check organization membership for a user",
 			OperationID:      "orgs/check-membership-for-user",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -50747,6 +51074,7 @@ func (s *Server) handleOrgsCheckPublicMembershipForUserRequest(args [2]string, a
 			OperationName:    OrgsCheckPublicMembershipForUserOperation,
 			OperationSummary: "Check public organization membership for a user",
 			OperationID:      "orgs/check-public-membership-for-user",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -50896,6 +51224,7 @@ func (s *Server) handleOrgsConvertMemberToOutsideCollaboratorRequest(args [2]str
 			OperationName:    OrgsConvertMemberToOutsideCollaboratorOperation,
 			OperationSummary: "Convert an organization member to outside collaborator",
 			OperationID:      "orgs/convert-member-to-outside-collaborator",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -51064,6 +51393,7 @@ func (s *Server) handleOrgsCreateInvitationRequest(args [1]string, argsEscaped b
 			OperationName:    OrgsCreateInvitationOperation,
 			OperationSummary: "Create an organization invitation",
 			OperationID:      "orgs/create-invitation",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -51220,6 +51550,7 @@ func (s *Server) handleOrgsCreateWebhookRequest(args [1]string, argsEscaped bool
 			OperationName:    OrgsCreateWebhookOperation,
 			OperationSummary: "Create an organization webhook",
 			OperationID:      "orgs/create-webhook",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -51361,6 +51692,7 @@ func (s *Server) handleOrgsDeleteWebhookRequest(args [2]string, argsEscaped bool
 			OperationName:    OrgsDeleteWebhookOperation,
 			OperationSummary: "Delete an organization webhook",
 			OperationID:      "orgs/delete-webhook",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -51514,6 +51846,7 @@ func (s *Server) handleOrgsGetRequest(args [1]string, argsEscaped bool, w http.R
 			OperationName:    OrgsGetOperation,
 			OperationSummary: "Get an organization",
 			OperationID:      "orgs/get",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -51660,6 +51993,7 @@ func (s *Server) handleOrgsGetAuditLogRequest(args [1]string, argsEscaped bool, 
 			OperationName:    OrgsGetAuditLogOperation,
 			OperationSummary: "Get the audit log for an organization",
 			OperationID:      "orgs/get-audit-log",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -51829,6 +52163,7 @@ func (s *Server) handleOrgsGetMembershipForAuthenticatedUserRequest(args [1]stri
 			OperationName:    OrgsGetMembershipForAuthenticatedUserOperation,
 			OperationSummary: "Get an organization membership for the authenticated user",
 			OperationID:      "orgs/get-membership-for-authenticated-user",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -51972,6 +52307,7 @@ func (s *Server) handleOrgsGetMembershipForUserRequest(args [2]string, argsEscap
 			OperationName:    OrgsGetMembershipForUserOperation,
 			OperationSummary: "Get organization membership for a user",
 			OperationID:      "orgs/get-membership-for-user",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -52119,6 +52455,7 @@ func (s *Server) handleOrgsGetWebhookRequest(args [2]string, argsEscaped bool, w
 			OperationName:    OrgsGetWebhookOperation,
 			OperationSummary: "Get an organization webhook",
 			OperationID:      "orgs/get-webhook",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -52268,6 +52605,7 @@ func (s *Server) handleOrgsGetWebhookConfigForOrgRequest(args [2]string, argsEsc
 			OperationName:    OrgsGetWebhookConfigForOrgOperation,
 			OperationSummary: "Get a webhook configuration for an organization",
 			OperationID:      "orgs/get-webhook-config-for-org",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -52413,6 +52751,7 @@ func (s *Server) handleOrgsGetWebhookDeliveryRequest(args [3]string, argsEscaped
 			OperationName:    OrgsGetWebhookDeliveryOperation,
 			OperationSummary: "Get a webhook delivery for an organization webhook",
 			OperationID:      "orgs/get-webhook-delivery",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -52565,6 +52904,7 @@ func (s *Server) handleOrgsListRequest(args [0]string, argsEscaped bool, w http.
 			OperationName:    OrgsListOperation,
 			OperationSummary: "List organizations",
 			OperationID:      "orgs/list",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -52710,6 +53050,7 @@ func (s *Server) handleOrgsListBlockedUsersRequest(args [1]string, argsEscaped b
 			OperationName:    OrgsListBlockedUsersOperation,
 			OperationSummary: "List users blocked by an organization",
 			OperationID:      "orgs/list-blocked-users",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -52852,6 +53193,7 @@ func (s *Server) handleOrgsListFailedInvitationsRequest(args [1]string, argsEsca
 			OperationName:    OrgsListFailedInvitationsOperation,
 			OperationSummary: "List failed organization invitations",
 			OperationID:      "orgs/list-failed-invitations",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -53006,6 +53348,7 @@ func (s *Server) handleOrgsListForAuthenticatedUserRequest(args [0]string, argsE
 			OperationName:    OrgsListForAuthenticatedUserOperation,
 			OperationSummary: "List organizations for the authenticated user",
 			OperationID:      "orgs/list-for-authenticated-user",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -53156,6 +53499,7 @@ func (s *Server) handleOrgsListForUserRequest(args [1]string, argsEscaped bool, 
 			OperationName:    OrgsListForUserOperation,
 			OperationSummary: "List organizations for a user",
 			OperationID:      "orgs/list-for-user",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -53306,6 +53650,7 @@ func (s *Server) handleOrgsListInvitationTeamsRequest(args [2]string, argsEscape
 			OperationName:    OrgsListInvitationTeamsOperation,
 			OperationSummary: "List organization invitation teams",
 			OperationID:      "orgs/list-invitation-teams",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -53460,6 +53805,7 @@ func (s *Server) handleOrgsListMembersRequest(args [1]string, argsEscaped bool, 
 			OperationName:    OrgsListMembersOperation,
 			OperationSummary: "List organization members",
 			OperationID:      "orgs/list-members",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -53617,6 +53963,7 @@ func (s *Server) handleOrgsListMembershipsForAuthenticatedUserRequest(args [0]st
 			OperationName:    OrgsListMembershipsForAuthenticatedUserOperation,
 			OperationSummary: "List organization memberships for the authenticated user",
 			OperationID:      "orgs/list-memberships-for-authenticated-user",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -53766,6 +54113,7 @@ func (s *Server) handleOrgsListOutsideCollaboratorsRequest(args [1]string, argsE
 			OperationName:    OrgsListOutsideCollaboratorsOperation,
 			OperationSummary: "List outside collaborators for an organization",
 			OperationID:      "orgs/list-outside-collaborators",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -53922,6 +54270,7 @@ func (s *Server) handleOrgsListPendingInvitationsRequest(args [1]string, argsEsc
 			OperationName:    OrgsListPendingInvitationsOperation,
 			OperationSummary: "List pending organization invitations",
 			OperationID:      "orgs/list-pending-invitations",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -54071,6 +54420,7 @@ func (s *Server) handleOrgsListPublicMembersRequest(args [1]string, argsEscaped 
 			OperationName:    OrgsListPublicMembersOperation,
 			OperationSummary: "List public organization members",
 			OperationID:      "orgs/list-public-members",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -54227,6 +54577,7 @@ func (s *Server) handleOrgsListSamlSSOAuthorizationsRequest(args [1]string, args
 			OperationName:    OrgsListSamlSSOAuthorizationsOperation,
 			OperationSummary: "List SAML SSO authorizations for an organization",
 			OperationID:      "orgs/list-saml-sso-authorizations",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -54368,6 +54719,7 @@ func (s *Server) handleOrgsListWebhookDeliveriesRequest(args [2]string, argsEsca
 			OperationName:    OrgsListWebhookDeliveriesOperation,
 			OperationSummary: "List deliveries for an organization webhook",
 			OperationID:      "orgs/list-webhook-deliveries",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -54521,6 +54873,7 @@ func (s *Server) handleOrgsListWebhooksRequest(args [1]string, argsEscaped bool,
 			OperationName:    OrgsListWebhooksOperation,
 			OperationSummary: "List organization webhooks",
 			OperationID:      "orgs/list-webhooks",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -54671,6 +55024,7 @@ func (s *Server) handleOrgsPingWebhookRequest(args [2]string, argsEscaped bool, 
 			OperationName:    OrgsPingWebhookOperation,
 			OperationSummary: "Ping an organization webhook",
 			OperationID:      "orgs/ping-webhook",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -54816,6 +55170,7 @@ func (s *Server) handleOrgsRedeliverWebhookDeliveryRequest(args [3]string, argsE
 			OperationName:    OrgsRedeliverWebhookDeliveryOperation,
 			OperationSummary: "Redeliver a delivery for an organization webhook",
 			OperationID:      "orgs/redeliver-webhook-delivery",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -54966,6 +55321,7 @@ func (s *Server) handleOrgsRemoveMemberRequest(args [2]string, argsEscaped bool,
 			OperationName:    OrgsRemoveMemberOperation,
 			OperationSummary: "Remove an organization member",
 			OperationID:      "orgs/remove-member",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -55115,6 +55471,7 @@ func (s *Server) handleOrgsRemoveMembershipForUserRequest(args [2]string, argsEs
 			OperationName:    OrgsRemoveMembershipForUserOperation,
 			OperationSummary: "Remove organization membership for a user",
 			OperationID:      "orgs/remove-membership-for-user",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -55260,6 +55617,7 @@ func (s *Server) handleOrgsRemoveOutsideCollaboratorRequest(args [2]string, args
 			OperationName:    OrgsRemoveOutsideCollaboratorOperation,
 			OperationSummary: "Remove outside collaborator from an organization",
 			OperationID:      "orgs/remove-outside-collaborator",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -55405,6 +55763,7 @@ func (s *Server) handleOrgsRemovePublicMembershipForAuthenticatedUserRequest(arg
 			OperationName:    OrgsRemovePublicMembershipForAuthenticatedUserOperation,
 			OperationSummary: "Remove public organization membership for the authenticated user",
 			OperationID:      "orgs/remove-public-membership-for-authenticated-user",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -55556,6 +55915,7 @@ func (s *Server) handleOrgsRemoveSamlSSOAuthorizationRequest(args [2]string, arg
 			OperationName:    OrgsRemoveSamlSSOAuthorizationOperation,
 			OperationSummary: "Remove a SAML SSO authorization for an organization",
 			OperationID:      "orgs/remove-saml-sso-authorization",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -55729,6 +56089,7 @@ func (s *Server) handleOrgsSetMembershipForUserRequest(args [2]string, argsEscap
 			OperationName:    OrgsSetMembershipForUserOperation,
 			OperationSummary: "Set organization membership for a user",
 			OperationID:      "orgs/set-membership-for-user",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -55878,6 +56239,7 @@ func (s *Server) handleOrgsSetPublicMembershipForAuthenticatedUserRequest(args [
 			OperationName:    OrgsSetPublicMembershipForAuthenticatedUserOperation,
 			OperationSummary: "Set public organization membership for the authenticated user",
 			OperationID:      "orgs/set-public-membership-for-authenticated-user",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -56023,6 +56385,7 @@ func (s *Server) handleOrgsUnblockUserRequest(args [2]string, argsEscaped bool, 
 			OperationName:    OrgsUnblockUserOperation,
 			OperationSummary: "Unblock a user from an organization",
 			OperationID:      "orgs/unblock-user",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -56183,6 +56546,7 @@ func (s *Server) handleOrgsUpdateMembershipForAuthenticatedUserRequest(args [1]s
 			OperationName:    OrgsUpdateMembershipForAuthenticatedUserOperation,
 			OperationSummary: "Update an organization membership for the authenticated user",
 			OperationID:      "orgs/update-membership-for-authenticated-user",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -56343,6 +56707,7 @@ func (s *Server) handleOrgsUpdateWebhookRequest(args [2]string, argsEscaped bool
 			OperationName:    OrgsUpdateWebhookOperation,
 			OperationSummary: "Update an organization webhook",
 			OperationID:      "orgs/update-webhook",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -56507,6 +56872,7 @@ func (s *Server) handleOrgsUpdateWebhookConfigForOrgRequest(args [2]string, args
 			OperationName:    OrgsUpdateWebhookConfigForOrgOperation,
 			OperationSummary: "Update a webhook configuration for an organization",
 			OperationID:      "orgs/update-webhook-config-for-org",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -56657,6 +57023,7 @@ func (s *Server) handlePackagesDeletePackageForAuthenticatedUserRequest(args [2]
 			OperationName:    PackagesDeletePackageForAuthenticatedUserOperation,
 			OperationSummary: "Delete a package for the authenticated user",
 			OperationID:      "packages/delete-package-for-authenticated-user",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -56809,6 +57176,7 @@ func (s *Server) handlePackagesDeletePackageForOrgRequest(args [3]string, argsEs
 			OperationName:    PackagesDeletePackageForOrgOperation,
 			OperationSummary: "Delete a package for an organization",
 			OperationID:      "packages/delete-package-for-org",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -56965,6 +57333,7 @@ func (s *Server) handlePackagesDeletePackageForUserRequest(args [3]string, argsE
 			OperationName:    PackagesDeletePackageForUserOperation,
 			OperationSummary: "Delete a package for a user",
 			OperationID:      "packages/delete-package-for-user",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -57119,6 +57488,7 @@ func (s *Server) handlePackagesDeletePackageVersionForAuthenticatedUserRequest(a
 			OperationName:    PackagesDeletePackageVersionForAuthenticatedUserOperation,
 			OperationSummary: "Delete a package version for the authenticated user",
 			OperationID:      "packages/delete-package-version-for-authenticated-user",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -57275,6 +57645,7 @@ func (s *Server) handlePackagesDeletePackageVersionForOrgRequest(args [4]string,
 			OperationName:    PackagesDeletePackageVersionForOrgOperation,
 			OperationSummary: "Delete package version for an organization",
 			OperationID:      "packages/delete-package-version-for-org",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -57435,6 +57806,7 @@ func (s *Server) handlePackagesDeletePackageVersionForUserRequest(args [4]string
 			OperationName:    PackagesDeletePackageVersionForUserOperation,
 			OperationSummary: "Delete package version for a user",
 			OperationID:      "packages/delete-package-version-for-user",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -57590,6 +57962,7 @@ func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByAuthenticat
 			OperationName:    PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserOperation,
 			OperationSummary: "Get all package versions for a package owned by the authenticated user",
 			OperationID:      "packages/get-all-package-versions-for-package-owned-by-authenticated-user",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -57749,6 +58122,7 @@ func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByOrgRequest(
 			OperationName:    PackagesGetAllPackageVersionsForPackageOwnedByOrgOperation,
 			OperationSummary: "Get all package versions for a package owned by an organization",
 			OperationID:      "packages/get-all-package-versions-for-package-owned-by-org",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -57912,6 +58286,7 @@ func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByUserRequest
 			OperationName:    PackagesGetAllPackageVersionsForPackageOwnedByUserOperation,
 			OperationSummary: "Get all package versions for a package owned by a user",
 			OperationID:      "packages/get-all-package-versions-for-package-owned-by-user",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -58063,6 +58438,7 @@ func (s *Server) handlePackagesGetPackageForAuthenticatedUserRequest(args [2]str
 			OperationName:    PackagesGetPackageForAuthenticatedUserOperation,
 			OperationSummary: "Get a package for the authenticated user",
 			OperationID:      "packages/get-package-for-authenticated-user",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -58210,6 +58586,7 @@ func (s *Server) handlePackagesGetPackageForOrganizationRequest(args [3]string, 
 			OperationName:    PackagesGetPackageForOrganizationOperation,
 			OperationSummary: "Get a package for an organization",
 			OperationID:      "packages/get-package-for-organization",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -58361,6 +58738,7 @@ func (s *Server) handlePackagesGetPackageForUserRequest(args [3]string, argsEsca
 			OperationName:    PackagesGetPackageForUserOperation,
 			OperationSummary: "Get a package for a user",
 			OperationID:      "packages/get-package-for-user",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -58512,6 +58890,7 @@ func (s *Server) handlePackagesGetPackageVersionForAuthenticatedUserRequest(args
 			OperationName:    PackagesGetPackageVersionForAuthenticatedUserOperation,
 			OperationSummary: "Get a package version for the authenticated user",
 			OperationID:      "packages/get-package-version-for-authenticated-user",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -58663,6 +59042,7 @@ func (s *Server) handlePackagesGetPackageVersionForOrganizationRequest(args [4]s
 			OperationName:    PackagesGetPackageVersionForOrganizationOperation,
 			OperationSummary: "Get a package version for an organization",
 			OperationID:      "packages/get-package-version-for-organization",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -58819,6 +59199,7 @@ func (s *Server) handlePackagesGetPackageVersionForUserRequest(args [4]string, a
 			OperationName:    PackagesGetPackageVersionForUserOperation,
 			OperationSummary: "Get a package version for a user",
 			OperationID:      "packages/get-package-version-for-user",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -58974,6 +59355,7 @@ func (s *Server) handlePackagesListPackagesForAuthenticatedUserRequest(args [0]s
 			OperationName:    PackagesListPackagesForAuthenticatedUserOperation,
 			OperationSummary: "List packages for the authenticated user's namespace",
 			OperationID:      "packages/list-packages-for-authenticated-user",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -59121,6 +59503,7 @@ func (s *Server) handlePackagesListPackagesForOrganizationRequest(args [1]string
 			OperationName:    PackagesListPackagesForOrganizationOperation,
 			OperationSummary: "List packages for an organization",
 			OperationID:      "packages/list-packages-for-organization",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -59272,6 +59655,7 @@ func (s *Server) handlePackagesListPackagesForUserRequest(args [1]string, argsEs
 			OperationName:    PackagesListPackagesForUserOperation,
 			OperationSummary: "List packages for a user",
 			OperationID:      "packages/list-packages-for-user",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -59430,6 +59814,7 @@ func (s *Server) handlePackagesRestorePackageForAuthenticatedUserRequest(args [2
 			OperationName:    PackagesRestorePackageForAuthenticatedUserOperation,
 			OperationSummary: "Restore a package for the authenticated user",
 			OperationID:      "packages/restore-package-for-authenticated-user",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -59590,6 +59975,7 @@ func (s *Server) handlePackagesRestorePackageForOrgRequest(args [3]string, argsE
 			OperationName:    PackagesRestorePackageForOrgOperation,
 			OperationSummary: "Restore a package for an organization",
 			OperationID:      "packages/restore-package-for-org",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -59754,6 +60140,7 @@ func (s *Server) handlePackagesRestorePackageForUserRequest(args [3]string, args
 			OperationName:    PackagesRestorePackageForUserOperation,
 			OperationSummary: "Restore a package for a user",
 			OperationID:      "packages/restore-package-for-user",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -59916,6 +60303,7 @@ func (s *Server) handlePackagesRestorePackageVersionForAuthenticatedUserRequest(
 			OperationName:    PackagesRestorePackageVersionForAuthenticatedUserOperation,
 			OperationSummary: "Restore a package version for the authenticated user",
 			OperationID:      "packages/restore-package-version-for-authenticated-user",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -60076,6 +60464,7 @@ func (s *Server) handlePackagesRestorePackageVersionForOrgRequest(args [4]string
 			OperationName:    PackagesRestorePackageVersionForOrgOperation,
 			OperationSummary: "Restore package version for an organization",
 			OperationID:      "packages/restore-package-version-for-org",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -60240,6 +60629,7 @@ func (s *Server) handlePackagesRestorePackageVersionForUserRequest(args [4]strin
 			OperationName:    PackagesRestorePackageVersionForUserOperation,
 			OperationSummary: "Restore package version for a user",
 			OperationID:      "packages/restore-package-version-for-user",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -60409,6 +60799,7 @@ func (s *Server) handleProjectsAddCollaboratorRequest(args [2]string, argsEscape
 			OperationName:    ProjectsAddCollaboratorOperation,
 			OperationSummary: "Add project collaborator",
 			OperationID:      "projects/add-collaborator",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -60569,6 +60960,7 @@ func (s *Server) handleProjectsCreateColumnRequest(args [1]string, argsEscaped b
 			OperationName:    ProjectsCreateColumnOperation,
 			OperationSummary: "Create a project column",
 			OperationID:      "projects/create-column",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -60715,6 +61107,7 @@ func (s *Server) handleProjectsCreateForAuthenticatedUserRequest(args [0]string,
 			OperationName:    ProjectsCreateForAuthenticatedUserOperation,
 			OperationSummary: "Create a user project",
 			OperationID:      "projects/create-for-authenticated-user",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -60868,6 +61261,7 @@ func (s *Server) handleProjectsCreateForOrgRequest(args [1]string, argsEscaped b
 			OperationName:    ProjectsCreateForOrgOperation,
 			OperationSummary: "Create an organization project",
 			OperationID:      "projects/create-for-org",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -61026,6 +61420,7 @@ func (s *Server) handleProjectsCreateForRepoRequest(args [2]string, argsEscaped 
 			OperationName:    ProjectsCreateForRepoOperation,
 			OperationSummary: "Create a repository project",
 			OperationID:      "projects/create-for-repo",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -61171,6 +61566,7 @@ func (s *Server) handleProjectsDeleteRequest(args [1]string, argsEscaped bool, w
 			OperationName:    ProjectsDeleteOperation,
 			OperationSummary: "Delete a project",
 			OperationID:      "projects/delete",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -61312,6 +61708,7 @@ func (s *Server) handleProjectsDeleteCardRequest(args [1]string, argsEscaped boo
 			OperationName:    ProjectsDeleteCardOperation,
 			OperationSummary: "Delete a project card",
 			OperationID:      "projects/delete-card",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -61453,6 +61850,7 @@ func (s *Server) handleProjectsDeleteColumnRequest(args [1]string, argsEscaped b
 			OperationName:    ProjectsDeleteColumnOperation,
 			OperationSummary: "Delete a project column",
 			OperationID:      "projects/delete-column",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -61596,6 +61994,7 @@ func (s *Server) handleProjectsGetRequest(args [1]string, argsEscaped bool, w ht
 			OperationName:    ProjectsGetOperation,
 			OperationSummary: "Get a project",
 			OperationID:      "projects/get",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -61737,6 +62136,7 @@ func (s *Server) handleProjectsGetCardRequest(args [1]string, argsEscaped bool, 
 			OperationName:    ProjectsGetCardOperation,
 			OperationSummary: "Get a project card",
 			OperationID:      "projects/get-card",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -61878,6 +62278,7 @@ func (s *Server) handleProjectsGetColumnRequest(args [1]string, argsEscaped bool
 			OperationName:    ProjectsGetColumnOperation,
 			OperationSummary: "Get a project column",
 			OperationID:      "projects/get-column",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -62021,6 +62422,7 @@ func (s *Server) handleProjectsGetPermissionForUserRequest(args [2]string, argsE
 			OperationName:    ProjectsGetPermissionForUserOperation,
 			OperationSummary: "Get project permission for a user",
 			OperationID:      "projects/get-permission-for-user",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -62166,6 +62568,7 @@ func (s *Server) handleProjectsListCardsRequest(args [1]string, argsEscaped bool
 			OperationName:    ProjectsListCardsOperation,
 			OperationSummary: "List project cards",
 			OperationID:      "projects/list-cards",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -62323,6 +62726,7 @@ func (s *Server) handleProjectsListCollaboratorsRequest(args [1]string, argsEsca
 			OperationName:    ProjectsListCollaboratorsOperation,
 			OperationSummary: "List project collaborators",
 			OperationID:      "projects/list-collaborators",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -62476,6 +62880,7 @@ func (s *Server) handleProjectsListColumnsRequest(args [1]string, argsEscaped bo
 			OperationName:    ProjectsListColumnsOperation,
 			OperationSummary: "List project columns",
 			OperationID:      "projects/list-columns",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -62627,6 +63032,7 @@ func (s *Server) handleProjectsListForOrgRequest(args [1]string, argsEscaped boo
 			OperationName:    ProjectsListForOrgOperation,
 			OperationSummary: "List organization projects",
 			OperationID:      "projects/list-for-org",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -62782,6 +63188,7 @@ func (s *Server) handleProjectsListForRepoRequest(args [2]string, argsEscaped bo
 			OperationName:    ProjectsListForRepoOperation,
 			OperationSummary: "List repository projects",
 			OperationID:      "projects/list-for-repo",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -62939,6 +63346,7 @@ func (s *Server) handleProjectsListForUserRequest(args [1]string, argsEscaped bo
 			OperationName:    ProjectsListForUserOperation,
 			OperationSummary: "List user projects",
 			OperationID:      "projects/list-for-user",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -63107,6 +63515,7 @@ func (s *Server) handleProjectsMoveCardRequest(args [1]string, argsEscaped bool,
 			OperationName:    ProjectsMoveCardOperation,
 			OperationSummary: "Move a project card",
 			OperationID:      "projects/move-card",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -63263,6 +63672,7 @@ func (s *Server) handleProjectsMoveColumnRequest(args [1]string, argsEscaped boo
 			OperationName:    ProjectsMoveColumnOperation,
 			OperationSummary: "Move a project column",
 			OperationID:      "projects/move-column",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -63405,6 +63815,7 @@ func (s *Server) handleProjectsRemoveCollaboratorRequest(args [2]string, argsEsc
 			OperationName:    ProjectsRemoveCollaboratorOperation,
 			OperationSummary: "Remove user as a collaborator",
 			OperationID:      "projects/remove-collaborator",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -63567,6 +63978,7 @@ func (s *Server) handleProjectsUpdateRequest(args [1]string, argsEscaped bool, w
 			OperationName:    ProjectsUpdateOperation,
 			OperationSummary: "Update a project",
 			OperationID:      "projects/update",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -63723,6 +64135,7 @@ func (s *Server) handleProjectsUpdateCardRequest(args [1]string, argsEscaped boo
 			OperationName:    ProjectsUpdateCardOperation,
 			OperationSummary: "Update an existing project card",
 			OperationID:      "projects/update-card",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -63879,6 +64292,7 @@ func (s *Server) handleProjectsUpdateColumnRequest(args [1]string, argsEscaped b
 			OperationName:    ProjectsUpdateColumnOperation,
 			OperationSummary: "Update an existing project column",
 			OperationID:      "projects/update-column",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -64020,6 +64434,7 @@ func (s *Server) handlePullsCheckIfMergedRequest(args [3]string, argsEscaped boo
 			OperationName:    PullsCheckIfMergedOperation,
 			OperationSummary: "Check if a pull request has been merged",
 			OperationID:      "pulls/check-if-merged",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -64199,6 +64614,7 @@ func (s *Server) handlePullsCreateRequest(args [2]string, argsEscaped bool, w ht
 			OperationName:    PullsCreateOperation,
 			OperationSummary: "Create a pull request",
 			OperationID:      "pulls/create",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -64368,6 +64784,7 @@ func (s *Server) handlePullsCreateReplyForReviewCommentRequest(args [4]string, a
 			OperationName:    PullsCreateReplyForReviewCommentOperation,
 			OperationSummary: "Create a reply for a review comment",
 			OperationID:      "pulls/create-reply-for-review-comment",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -64554,6 +64971,7 @@ func (s *Server) handlePullsCreateReviewRequest(args [3]string, argsEscaped bool
 			OperationName:    PullsCreateReviewOperation,
 			OperationSummary: "Create a review for a pull request",
 			OperationID:      "pulls/create-review",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -64737,6 +65155,7 @@ func (s *Server) handlePullsCreateReviewCommentRequest(args [3]string, argsEscap
 			OperationName:    PullsCreateReviewCommentOperation,
 			OperationSummary: "Create a review comment for a pull request",
 			OperationID:      "pulls/create-review-comment",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -64886,6 +65305,7 @@ func (s *Server) handlePullsDeletePendingReviewRequest(args [4]string, argsEscap
 			OperationName:    PullsDeletePendingReviewOperation,
 			OperationSummary: "Delete a pending review for a pull request",
 			OperationID:      "pulls/delete-pending-review",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -65039,6 +65459,7 @@ func (s *Server) handlePullsDeleteReviewCommentRequest(args [3]string, argsEscap
 			OperationName:    PullsDeleteReviewCommentOperation,
 			OperationSummary: "Delete a review comment for a pull request",
 			OperationID:      "pulls/delete-review-comment",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -65205,6 +65626,7 @@ func (s *Server) handlePullsDismissReviewRequest(args [4]string, argsEscaped boo
 			OperationName:    PullsDismissReviewOperation,
 			OperationSummary: "Dismiss a review for a pull request",
 			OperationID:      "pulls/dismiss-review",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -65391,6 +65813,7 @@ func (s *Server) handlePullsGetRequest(args [3]string, argsEscaped bool, w http.
 			OperationName:    PullsGetOperation,
 			OperationSummary: "Get a pull request",
 			OperationID:      "pulls/get",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -65540,6 +65963,7 @@ func (s *Server) handlePullsGetReviewRequest(args [4]string, argsEscaped bool, w
 			OperationName:    PullsGetReviewOperation,
 			OperationSummary: "Get a review for a pull request",
 			OperationID:      "pulls/get-review",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -65693,6 +66117,7 @@ func (s *Server) handlePullsGetReviewCommentRequest(args [3]string, argsEscaped 
 			OperationName:    PullsGetReviewCommentOperation,
 			OperationSummary: "Get a review comment for a pull request",
 			OperationID:      "pulls/get-review-comment",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -65846,6 +66271,7 @@ func (s *Server) handlePullsListRequest(args [2]string, argsEscaped bool, w http
 			OperationName:    PullsListOperation,
 			OperationSummary: "List pull requests",
 			OperationID:      "pulls/list",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -66019,6 +66445,7 @@ func (s *Server) handlePullsListCommentsForReviewRequest(args [4]string, argsEsc
 			OperationName:    PullsListCommentsForReviewOperation,
 			OperationSummary: "List comments for a pull request review",
 			OperationID:      "pulls/list-comments-for-review",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -66182,6 +66609,7 @@ func (s *Server) handlePullsListCommitsRequest(args [3]string, argsEscaped bool,
 			OperationName:    PullsListCommitsOperation,
 			OperationSummary: "List commits on a pull request",
 			OperationID:      "pulls/list-commits",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -66340,6 +66768,7 @@ func (s *Server) handlePullsListFilesRequest(args [3]string, argsEscaped bool, w
 			OperationName:    PullsListFilesOperation,
 			OperationSummary: "List pull requests files",
 			OperationID:      "pulls/list-files",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -66497,6 +66926,7 @@ func (s *Server) handlePullsListRequestedReviewersRequest(args [3]string, argsEs
 			OperationName:    PullsListRequestedReviewersOperation,
 			OperationSummary: "List requested reviewers for a pull request",
 			OperationID:      "pulls/list-requested-reviewers",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -66655,6 +67085,7 @@ func (s *Server) handlePullsListReviewCommentsRequest(args [3]string, argsEscape
 			OperationName:    PullsListReviewCommentsOperation,
 			OperationSummary: "List review comments on a pull request",
 			OperationID:      "pulls/list-review-comments",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -66825,6 +67256,7 @@ func (s *Server) handlePullsListReviewCommentsForRepoRequest(args [2]string, arg
 			OperationName:    PullsListReviewCommentsForRepoOperation,
 			OperationSummary: "List review comments in a repository",
 			OperationID:      "pulls/list-review-comments-for-repo",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -66990,6 +67422,7 @@ func (s *Server) handlePullsListReviewsRequest(args [3]string, argsEscaped bool,
 			OperationName:    PullsListReviewsOperation,
 			OperationSummary: "List reviews for a pull request",
 			OperationID:      "pulls/list-reviews",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -67168,6 +67601,7 @@ func (s *Server) handlePullsMergeRequest(args [3]string, argsEscaped bool, w htt
 			OperationName:    PullsMergeOperation,
 			OperationSummary: "Merge a pull request",
 			OperationID:      "pulls/merge",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -67332,6 +67766,7 @@ func (s *Server) handlePullsRemoveRequestedReviewersRequest(args [3]string, args
 			OperationName:    PullsRemoveRequestedReviewersOperation,
 			OperationSummary: "Remove requested reviewers from a pull request",
 			OperationID:      "pulls/remove-requested-reviewers",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -67496,6 +67931,7 @@ func (s *Server) handlePullsSubmitReviewRequest(args [4]string, argsEscaped bool
 			OperationName:    PullsSubmitReviewOperation,
 			OperationSummary: "Submit a review for a pull request",
 			OperationID:      "pulls/submit-review",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -67671,6 +68107,7 @@ func (s *Server) handlePullsUpdateRequest(args [3]string, argsEscaped bool, w ht
 			OperationName:    PullsUpdateOperation,
 			OperationSummary: "Update a pull request",
 			OperationID:      "pulls/update",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -67836,6 +68273,7 @@ func (s *Server) handlePullsUpdateBranchRequest(args [3]string, argsEscaped bool
 			OperationName:    PullsUpdateBranchOperation,
 			OperationSummary: "Update a pull request branch",
 			OperationID:      "pulls/update-branch",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -68000,6 +68438,7 @@ func (s *Server) handlePullsUpdateReviewRequest(args [4]string, argsEscaped bool
 			OperationName:    PullsUpdateReviewOperation,
 			OperationSummary: "Update a review for a pull request",
 			OperationID:      "pulls/update-review",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -68168,6 +68607,7 @@ func (s *Server) handlePullsUpdateReviewCommentRequest(args [3]string, argsEscap
 			OperationName:    PullsUpdateReviewCommentOperation,
 			OperationSummary: "Update a review comment for a pull request",
 			OperationID:      "pulls/update-review-comment",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -68306,6 +68746,7 @@ func (s *Server) handleRateLimitGetRequest(args [0]string, argsEscaped bool, w h
 			OperationName:    RateLimitGetOperation,
 			OperationSummary: "Get rate limit status for the authenticated user",
 			OperationID:      "rate-limit/get",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -68459,6 +68900,7 @@ func (s *Server) handleReactionsCreateForCommitCommentRequest(args [3]string, ar
 			OperationName:    ReactionsCreateForCommitCommentOperation,
 			OperationSummary: "Create reaction for a commit comment",
 			OperationID:      "reactions/create-for-commit-comment",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -68624,6 +69066,7 @@ func (s *Server) handleReactionsCreateForIssueRequest(args [3]string, argsEscape
 			OperationName:    ReactionsCreateForIssueOperation,
 			OperationSummary: "Create reaction for an issue",
 			OperationID:      "reactions/create-for-issue",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -68790,6 +69233,7 @@ func (s *Server) handleReactionsCreateForIssueCommentRequest(args [3]string, arg
 			OperationName:    ReactionsCreateForIssueCommentOperation,
 			OperationSummary: "Create reaction for an issue comment",
 			OperationID:      "reactions/create-for-issue-comment",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -68956,6 +69400,7 @@ func (s *Server) handleReactionsCreateForPullRequestReviewCommentRequest(args [3
 			OperationName:    ReactionsCreateForPullRequestReviewCommentOperation,
 			OperationSummary: "Create reaction for a pull request review comment",
 			OperationID:      "reactions/create-for-pull-request-review-comment",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -69121,6 +69566,7 @@ func (s *Server) handleReactionsCreateForReleaseRequest(args [3]string, argsEsca
 			OperationName:    ReactionsCreateForReleaseOperation,
 			OperationSummary: "Create reaction for a release",
 			OperationID:      "reactions/create-for-release",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -69291,6 +69737,7 @@ func (s *Server) handleReactionsCreateForTeamDiscussionCommentInOrgRequest(args 
 			OperationName:    ReactionsCreateForTeamDiscussionCommentInOrgOperation,
 			OperationSummary: "Create reaction for a team discussion comment",
 			OperationID:      "reactions/create-for-team-discussion-comment-in-org",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -69469,6 +69916,7 @@ func (s *Server) handleReactionsCreateForTeamDiscussionCommentLegacyRequest(args
 			OperationName:    ReactionsCreateForTeamDiscussionCommentLegacyOperation,
 			OperationSummary: "Create reaction for a team discussion comment (Legacy)",
 			OperationID:      "reactions/create-for-team-discussion-comment-legacy",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -69640,6 +70088,7 @@ func (s *Server) handleReactionsCreateForTeamDiscussionInOrgRequest(args [3]stri
 			OperationName:    ReactionsCreateForTeamDiscussionInOrgOperation,
 			OperationSummary: "Create reaction for a team discussion",
 			OperationID:      "reactions/create-for-team-discussion-in-org",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -69815,6 +70264,7 @@ func (s *Server) handleReactionsCreateForTeamDiscussionLegacyRequest(args [2]str
 			OperationName:    ReactionsCreateForTeamDiscussionLegacyOperation,
 			OperationSummary: "Create reaction for a team discussion (Legacy)",
 			OperationID:      "reactions/create-for-team-discussion-legacy",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -69962,6 +70412,7 @@ func (s *Server) handleReactionsDeleteForCommitCommentRequest(args [4]string, ar
 			OperationName:    ReactionsDeleteForCommitCommentOperation,
 			OperationSummary: "Delete a commit comment reaction",
 			OperationID:      "reactions/delete-for-commit-comment",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -70117,6 +70568,7 @@ func (s *Server) handleReactionsDeleteForIssueRequest(args [4]string, argsEscape
 			OperationName:    ReactionsDeleteForIssueOperation,
 			OperationSummary: "Delete an issue reaction",
 			OperationID:      "reactions/delete-for-issue",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -70272,6 +70724,7 @@ func (s *Server) handleReactionsDeleteForIssueCommentRequest(args [4]string, arg
 			OperationName:    ReactionsDeleteForIssueCommentOperation,
 			OperationSummary: "Delete an issue comment reaction",
 			OperationID:      "reactions/delete-for-issue-comment",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -70428,6 +70881,7 @@ func (s *Server) handleReactionsDeleteForPullRequestCommentRequest(args [4]strin
 			OperationName:    ReactionsDeleteForPullRequestCommentOperation,
 			OperationSummary: "Delete a pull request comment reaction",
 			OperationID:      "reactions/delete-for-pull-request-comment",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -70588,6 +71042,7 @@ func (s *Server) handleReactionsDeleteForTeamDiscussionRequest(args [4]string, a
 			OperationName:    ReactionsDeleteForTeamDiscussionOperation,
 			OperationSummary: "Delete team discussion reaction",
 			OperationID:      "reactions/delete-for-team-discussion",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -70746,6 +71201,7 @@ func (s *Server) handleReactionsDeleteForTeamDiscussionCommentRequest(args [5]st
 			OperationName:    ReactionsDeleteForTeamDiscussionCommentOperation,
 			OperationSummary: "Delete team discussion comment reaction",
 			OperationID:      "reactions/delete-for-team-discussion-comment",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -70912,6 +71368,7 @@ func (s *Server) handleReactionsDeleteLegacyRequest(args [1]string, argsEscaped 
 			OperationName:    ReactionsDeleteLegacyOperation,
 			OperationSummary: "Delete a reaction (Legacy)",
 			OperationID:      "reactions/delete-legacy",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -71053,6 +71510,7 @@ func (s *Server) handleReactionsListForCommitCommentRequest(args [3]string, args
 			OperationName:    ReactionsListForCommitCommentOperation,
 			OperationSummary: "List reactions for a commit comment",
 			OperationID:      "reactions/list-for-commit-comment",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -71214,6 +71672,7 @@ func (s *Server) handleReactionsListForIssueRequest(args [3]string, argsEscaped 
 			OperationName:    ReactionsListForIssueOperation,
 			OperationSummary: "List reactions for an issue",
 			OperationID:      "reactions/list-for-issue",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -71375,6 +71834,7 @@ func (s *Server) handleReactionsListForIssueCommentRequest(args [3]string, argsE
 			OperationName:    ReactionsListForIssueCommentOperation,
 			OperationSummary: "List reactions for an issue comment",
 			OperationID:      "reactions/list-for-issue-comment",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -71537,6 +71997,7 @@ func (s *Server) handleReactionsListForPullRequestReviewCommentRequest(args [3]s
 			OperationName:    ReactionsListForPullRequestReviewCommentOperation,
 			OperationSummary: "List reactions for a pull request review comment",
 			OperationID:      "reactions/list-for-pull-request-review-comment",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -71702,6 +72163,7 @@ func (s *Server) handleReactionsListForTeamDiscussionCommentInOrgRequest(args [4
 			OperationName:    ReactionsListForTeamDiscussionCommentInOrgOperation,
 			OperationSummary: "List reactions for a team discussion comment",
 			OperationID:      "reactions/list-for-team-discussion-comment-in-org",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -71875,6 +72337,7 @@ func (s *Server) handleReactionsListForTeamDiscussionCommentLegacyRequest(args [
 			OperationName:    ReactionsListForTeamDiscussionCommentLegacyOperation,
 			OperationSummary: "List reactions for a team discussion comment (Legacy)",
 			OperationID:      "reactions/list-for-team-discussion-comment-legacy",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -72040,6 +72503,7 @@ func (s *Server) handleReactionsListForTeamDiscussionInOrgRequest(args [3]string
 			OperationName:    ReactionsListForTeamDiscussionInOrgOperation,
 			OperationSummary: "List reactions for a team discussion",
 			OperationID:      "reactions/list-for-team-discussion-in-org",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -72209,6 +72673,7 @@ func (s *Server) handleReactionsListForTeamDiscussionLegacyRequest(args [2]strin
 			OperationName:    ReactionsListForTeamDiscussionLegacyOperation,
 			OperationSummary: "List reactions for a team discussion (Legacy)",
 			OperationID:      "reactions/list-for-team-discussion-legacy",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -72366,6 +72831,7 @@ func (s *Server) handleReposAcceptInvitationRequest(args [1]string, argsEscaped 
 			OperationName:    ReposAcceptInvitationOperation,
 			OperationSummary: "Accept a repository invitation",
 			OperationID:      "repos/accept-invitation",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -72536,6 +73002,7 @@ func (s *Server) handleReposAddAppAccessRestrictionsRequest(args [3]string, args
 			OperationName:    ReposAddAppAccessRestrictionsOperation,
 			OperationSummary: "Add app access restrictions",
 			OperationID:      "repos/add-app-access-restrictions",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -72719,6 +73186,7 @@ func (s *Server) handleReposAddCollaboratorRequest(args [3]string, argsEscaped b
 			OperationName:    ReposAddCollaboratorOperation,
 			OperationSummary: "Add a repository collaborator",
 			OperationID:      "repos/add-collaborator",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -72887,6 +73355,7 @@ func (s *Server) handleReposAddStatusCheckContextsRequest(args [3]string, argsEs
 			OperationName:    ReposAddStatusCheckContextsOperation,
 			OperationSummary: "Add status check contexts",
 			OperationID:      "repos/add-status-check-contexts",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -73065,6 +73534,7 @@ func (s *Server) handleReposAddTeamAccessRestrictionsRequest(args [3]string, arg
 			OperationName:    ReposAddTeamAccessRestrictionsOperation,
 			OperationSummary: "Add team access restrictions",
 			OperationID:      "repos/add-team-access-restrictions",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -73242,6 +73712,7 @@ func (s *Server) handleReposAddUserAccessRestrictionsRequest(args [3]string, arg
 			OperationName:    ReposAddUserAccessRestrictionsOperation,
 			OperationSummary: "Add user access restrictions",
 			OperationID:      "repos/add-user-access-restrictions",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -73395,6 +73866,7 @@ func (s *Server) handleReposCheckCollaboratorRequest(args [3]string, argsEscaped
 			OperationName:    ReposCheckCollaboratorOperation,
 			OperationSummary: "Check if a user is a repository collaborator",
 			OperationID:      "repos/check-collaborator",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -73547,6 +74019,7 @@ func (s *Server) handleReposCheckVulnerabilityAlertsRequest(args [2]string, args
 			OperationName:    ReposCheckVulnerabilityAlertsOperation,
 			OperationSummary: "Check if vulnerability alerts are enabled for a repository",
 			OperationID:      "repos/check-vulnerability-alerts",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -73746,6 +74219,7 @@ func (s *Server) handleReposCompareCommitsRequest(args [3]string, argsEscaped bo
 			OperationName:    ReposCompareCommitsOperation,
 			OperationSummary: "Compare two commits",
 			OperationID:      "repos/compare-commits",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -73918,6 +74392,7 @@ func (s *Server) handleReposCreateAutolinkRequest(args [2]string, argsEscaped bo
 			OperationName:    ReposCreateAutolinkOperation,
 			OperationSummary: "Create an autolink reference for a repository",
 			OperationID:      "repos/create-autolink",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -74085,6 +74560,7 @@ func (s *Server) handleReposCreateCommitCommentRequest(args [3]string, argsEscap
 			OperationName:    ReposCreateCommitCommentOperation,
 			OperationSummary: "Create a commit comment",
 			OperationID:      "repos/create-commit-comment",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -74240,6 +74716,7 @@ func (s *Server) handleReposCreateCommitSignatureProtectionRequest(args [3]strin
 			OperationName:    ReposCreateCommitSignatureProtectionOperation,
 			OperationSummary: "Create commit signature protection",
 			OperationID:      "repos/create-commit-signature-protection",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -74406,6 +74883,7 @@ func (s *Server) handleReposCreateCommitStatusRequest(args [3]string, argsEscape
 			OperationName:    ReposCreateCommitStatusOperation,
 			OperationSummary: "Create a commit status",
 			OperationID:      "repos/create-commit-status",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -74570,6 +75048,7 @@ func (s *Server) handleReposCreateDeployKeyRequest(args [2]string, argsEscaped b
 			OperationName:    ReposCreateDeployKeyOperation,
 			OperationSummary: "Create a deploy key",
 			OperationID:      "repos/create-deploy-key",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -74785,6 +75264,7 @@ func (s *Server) handleReposCreateDeploymentRequest(args [2]string, argsEscaped 
 			OperationName:    ReposCreateDeploymentOperation,
 			OperationSummary: "Create a deployment",
 			OperationID:      "repos/create-deployment",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -74947,6 +75427,7 @@ func (s *Server) handleReposCreateDeploymentStatusRequest(args [3]string, argsEs
 			OperationName:    ReposCreateDeploymentStatusOperation,
 			OperationSummary: "Create a deployment status",
 			OperationID:      "repos/create-deployment-status",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -75130,6 +75611,7 @@ func (s *Server) handleReposCreateDispatchEventRequest(args [2]string, argsEscap
 			OperationName:    ReposCreateDispatchEventOperation,
 			OperationSummary: "Create a repository dispatch event",
 			OperationID:      "repos/create-dispatch-event",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -75286,6 +75768,7 @@ func (s *Server) handleReposCreateForAuthenticatedUserRequest(args [0]string, ar
 			OperationName:    ReposCreateForAuthenticatedUserOperation,
 			OperationSummary: "Create a repository for the authenticated user",
 			OperationID:      "repos/create-for-authenticated-user",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -75440,6 +75923,7 @@ func (s *Server) handleReposCreateForkRequest(args [2]string, argsEscaped bool, 
 			OperationName:    ReposCreateForkOperation,
 			OperationSummary: "Create a fork",
 			OperationID:      "repos/create-fork",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -75607,6 +76091,7 @@ func (s *Server) handleReposCreateInOrgRequest(args [1]string, argsEscaped bool,
 			OperationName:    ReposCreateInOrgOperation,
 			OperationSummary: "Create an organization repository",
 			OperationID:      "repos/create-in-org",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -75763,6 +76248,7 @@ func (s *Server) handleReposCreateOrUpdateFileContentsRequest(args [3]string, ar
 			OperationName:    ReposCreateOrUpdateFileContentsOperation,
 			OperationSummary: "Create or update file contents",
 			OperationID:      "repos/create-or-update-file-contents",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -75928,6 +76414,7 @@ func (s *Server) handleReposCreatePagesSiteRequest(args [2]string, argsEscaped b
 			OperationName:    ReposCreatePagesSiteOperation,
 			OperationSummary: "Create a GitHub Pages site",
 			OperationID:      "repos/create-pages-site",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -76095,6 +76582,7 @@ func (s *Server) handleReposCreateReleaseRequest(args [2]string, argsEscaped boo
 			OperationName:    ReposCreateReleaseOperation,
 			OperationSummary: "Create a release",
 			OperationID:      "repos/create-release",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -76266,6 +76754,7 @@ func (s *Server) handleReposCreateUsingTemplateRequest(args [2]string, argsEscap
 			OperationName:    ReposCreateUsingTemplateOperation,
 			OperationSummary: "Create a repository using a template",
 			OperationID:      "repos/create-using-template",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -76428,6 +76917,7 @@ func (s *Server) handleReposCreateWebhookRequest(args [2]string, argsEscaped boo
 			OperationName:    ReposCreateWebhookOperation,
 			OperationSummary: "Create a repository webhook",
 			OperationID:      "repos/create-webhook",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -76573,6 +77063,7 @@ func (s *Server) handleReposDeclineInvitationRequest(args [1]string, argsEscaped
 			OperationName:    ReposDeclineInvitationOperation,
 			OperationSummary: "Decline a repository invitation",
 			OperationID:      "repos/decline-invitation",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -76717,6 +77208,7 @@ func (s *Server) handleReposDeleteRequest(args [2]string, argsEscaped bool, w ht
 			OperationName:    ReposDeleteOperation,
 			OperationSummary: "Delete a repository",
 			OperationID:      "repos/delete",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -76867,6 +77359,7 @@ func (s *Server) handleReposDeleteAccessRestrictionsRequest(args [3]string, args
 			OperationName:    ReposDeleteAccessRestrictionsOperation,
 			OperationSummary: "Delete access restrictions",
 			OperationID:      "repos/delete-access-restrictions",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -77022,6 +77515,7 @@ func (s *Server) handleReposDeleteAdminBranchProtectionRequest(args [3]string, a
 			OperationName:    ReposDeleteAdminBranchProtectionOperation,
 			OperationSummary: "Delete admin branch protection",
 			OperationID:      "repos/delete-admin-branch-protection",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -77171,6 +77665,7 @@ func (s *Server) handleReposDeleteAnEnvironmentRequest(args [3]string, argsEscap
 			OperationName:    ReposDeleteAnEnvironmentOperation,
 			OperationSummary: "Delete an environment",
 			OperationID:      "repos/delete-an-environment",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -77321,6 +77816,7 @@ func (s *Server) handleReposDeleteAutolinkRequest(args [3]string, argsEscaped bo
 			OperationName:    ReposDeleteAutolinkOperation,
 			OperationSummary: "Delete an autolink reference from a repository",
 			OperationID:      "repos/delete-autolink",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -77474,6 +77970,7 @@ func (s *Server) handleReposDeleteBranchProtectionRequest(args [3]string, argsEs
 			OperationName:    ReposDeleteBranchProtectionOperation,
 			OperationSummary: "Delete branch protection",
 			OperationID:      "repos/delete-branch-protection",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -77623,6 +78120,7 @@ func (s *Server) handleReposDeleteCommitCommentRequest(args [3]string, argsEscap
 			OperationName:    ReposDeleteCommitCommentOperation,
 			OperationSummary: "Delete a commit comment",
 			OperationID:      "repos/delete-commit-comment",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -77779,6 +78277,7 @@ func (s *Server) handleReposDeleteCommitSignatureProtectionRequest(args [3]strin
 			OperationName:    ReposDeleteCommitSignatureProtectionOperation,
 			OperationSummary: "Delete commit signature protection",
 			OperationID:      "repos/delete-commit-signature-protection",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -77929,6 +78428,7 @@ func (s *Server) handleReposDeleteDeployKeyRequest(args [3]string, argsEscaped b
 			OperationName:    ReposDeleteDeployKeyOperation,
 			OperationSummary: "Delete a deploy key",
 			OperationID:      "repos/delete-deploy-key",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -78086,6 +78586,7 @@ func (s *Server) handleReposDeleteDeploymentRequest(args [3]string, argsEscaped 
 			OperationName:    ReposDeleteDeploymentOperation,
 			OperationSummary: "Delete a deployment",
 			OperationID:      "repos/delete-deployment",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -78257,6 +78758,7 @@ func (s *Server) handleReposDeleteFileRequest(args [3]string, argsEscaped bool, 
 			OperationName:    ReposDeleteFileOperation,
 			OperationSummary: "Delete a file",
 			OperationID:      "repos/delete-file",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -78406,6 +78908,7 @@ func (s *Server) handleReposDeleteInvitationRequest(args [3]string, argsEscaped 
 			OperationName:    ReposDeleteInvitationOperation,
 			OperationSummary: "Delete a repository invitation",
 			OperationID:      "repos/delete-invitation",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -78555,6 +79058,7 @@ func (s *Server) handleReposDeletePagesSiteRequest(args [2]string, argsEscaped b
 			OperationName:    ReposDeletePagesSiteOperation,
 			OperationSummary: "Delete a GitHub Pages site",
 			OperationID:      "repos/delete-pages-site",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -78704,6 +79208,7 @@ func (s *Server) handleReposDeletePullRequestReviewProtectionRequest(args [3]str
 			OperationName:    ReposDeletePullRequestReviewProtectionOperation,
 			OperationSummary: "Delete pull request review protection",
 			OperationID:      "repos/delete-pull-request-review-protection",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -78853,6 +79358,7 @@ func (s *Server) handleReposDeleteReleaseRequest(args [3]string, argsEscaped boo
 			OperationName:    ReposDeleteReleaseOperation,
 			OperationSummary: "Delete a release",
 			OperationID:      "repos/delete-release",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -79002,6 +79508,7 @@ func (s *Server) handleReposDeleteReleaseAssetRequest(args [3]string, argsEscape
 			OperationName:    ReposDeleteReleaseAssetOperation,
 			OperationSummary: "Delete a release asset",
 			OperationID:      "repos/delete-release-asset",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -79151,6 +79658,7 @@ func (s *Server) handleReposDeleteWebhookRequest(args [3]string, argsEscaped boo
 			OperationName:    ReposDeleteWebhookOperation,
 			OperationSummary: "Delete a repository webhook",
 			OperationID:      "repos/delete-webhook",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -79302,6 +79810,7 @@ func (s *Server) handleReposDisableAutomatedSecurityFixesRequest(args [2]string,
 			OperationName:    ReposDisableAutomatedSecurityFixesOperation,
 			OperationSummary: "Disable automated security fixes",
 			OperationID:      "repos/disable-automated-security-fixes",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -79447,6 +79956,7 @@ func (s *Server) handleReposDisableLfsForRepoRequest(args [2]string, argsEscaped
 			OperationName:    ReposDisableLfsForRepoOperation,
 			OperationSummary: "Disable Git LFS for a repository",
 			OperationID:      "repos/disable-lfs-for-repo",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -79595,6 +80105,7 @@ func (s *Server) handleReposDisableVulnerabilityAlertsRequest(args [2]string, ar
 			OperationName:    ReposDisableVulnerabilityAlertsOperation,
 			OperationSummary: "Disable vulnerability alerts",
 			OperationID:      "repos/disable-vulnerability-alerts",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -79745,6 +80256,7 @@ func (s *Server) handleReposDownloadTarballArchiveRequest(args [3]string, argsEs
 			OperationName:    ReposDownloadTarballArchiveOperation,
 			OperationSummary: "Download a repository archive (tar)",
 			OperationID:      "repos/download-tarball-archive",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -79899,6 +80411,7 @@ func (s *Server) handleReposDownloadZipballArchiveRequest(args [3]string, argsEs
 			OperationName:    ReposDownloadZipballArchiveOperation,
 			OperationSummary: "Download a repository archive (zip)",
 			OperationID:      "repos/download-zipball-archive",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -80050,6 +80563,7 @@ func (s *Server) handleReposEnableAutomatedSecurityFixesRequest(args [2]string, 
 			OperationName:    ReposEnableAutomatedSecurityFixesOperation,
 			OperationSummary: "Enable automated security fixes",
 			OperationID:      "repos/enable-automated-security-fixes",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -80195,6 +80709,7 @@ func (s *Server) handleReposEnableLfsForRepoRequest(args [2]string, argsEscaped 
 			OperationName:    ReposEnableLfsForRepoOperation,
 			OperationSummary: "Enable Git LFS for a repository",
 			OperationID:      "repos/enable-lfs-for-repo",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -80343,6 +80858,7 @@ func (s *Server) handleReposEnableVulnerabilityAlertsRequest(args [2]string, arg
 			OperationName:    ReposEnableVulnerabilityAlertsOperation,
 			OperationSummary: "Enable vulnerability alerts",
 			OperationID:      "repos/enable-vulnerability-alerts",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -80489,6 +81005,7 @@ func (s *Server) handleReposGetRequest(args [2]string, argsEscaped bool, w http.
 			OperationName:    ReposGetOperation,
 			OperationSummary: "Get a repository",
 			OperationID:      "repos/get",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -80641,6 +81158,7 @@ func (s *Server) handleReposGetAccessRestrictionsRequest(args [3]string, argsEsc
 			OperationName:    ReposGetAccessRestrictionsOperation,
 			OperationSummary: "Get access restrictions",
 			OperationID:      "repos/get-access-restrictions",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -80794,6 +81312,7 @@ func (s *Server) handleReposGetAdminBranchProtectionRequest(args [3]string, args
 			OperationName:    ReposGetAdminBranchProtectionOperation,
 			OperationSummary: "Get admin branch protection",
 			OperationID:      "repos/get-admin-branch-protection",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -80947,6 +81466,7 @@ func (s *Server) handleReposGetAllStatusCheckContextsRequest(args [3]string, arg
 			OperationName:    ReposGetAllStatusCheckContextsOperation,
 			OperationSummary: "Get all status check contexts",
 			OperationID:      "repos/get-all-status-check-contexts",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -81096,6 +81616,7 @@ func (s *Server) handleReposGetAllTopicsRequest(args [2]string, argsEscaped bool
 			OperationName:    ReposGetAllTopicsOperation,
 			OperationSummary: "Get all repository topics",
 			OperationID:      "repos/get-all-topics",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -81256,6 +81777,7 @@ func (s *Server) handleReposGetAppsWithAccessToProtectedBranchRequest(args [3]st
 			OperationName:    ReposGetAppsWithAccessToProtectedBranchOperation,
 			OperationSummary: "Get apps with access to the protected branch",
 			OperationID:      "repos/get-apps-with-access-to-protected-branch",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -81406,6 +81928,7 @@ func (s *Server) handleReposGetAutolinkRequest(args [3]string, argsEscaped bool,
 			OperationName:    ReposGetAutolinkOperation,
 			OperationSummary: "Get an autolink reference of a repository",
 			OperationID:      "repos/get-autolink",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -81555,6 +82078,7 @@ func (s *Server) handleReposGetBranchRequest(args [3]string, argsEscaped bool, w
 			OperationName:    ReposGetBranchOperation,
 			OperationSummary: "Get a branch",
 			OperationID:      "repos/get-branch",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -81708,6 +82232,7 @@ func (s *Server) handleReposGetBranchProtectionRequest(args [3]string, argsEscap
 			OperationName:    ReposGetBranchProtectionOperation,
 			OperationSummary: "Get branch protection",
 			OperationID:      "repos/get-branch-protection",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -81858,6 +82383,7 @@ func (s *Server) handleReposGetClonesRequest(args [2]string, argsEscaped bool, w
 			OperationName:    ReposGetClonesOperation,
 			OperationSummary: "Get repository clones",
 			OperationID:      "repos/get-clones",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -82007,6 +82533,7 @@ func (s *Server) handleReposGetCodeFrequencyStatsRequest(args [2]string, argsEsc
 			OperationName:    ReposGetCodeFrequencyStatsOperation,
 			OperationSummary: "Get the weekly commit activity",
 			OperationID:      "repos/get-code-frequency-stats",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -82153,6 +82680,7 @@ func (s *Server) handleReposGetCollaboratorPermissionLevelRequest(args [3]string
 			OperationName:    ReposGetCollaboratorPermissionLevelOperation,
 			OperationSummary: "Get repository permissions for a user",
 			OperationID:      "repos/get-collaborator-permission-level",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -82310,6 +82838,7 @@ func (s *Server) handleReposGetCombinedStatusForRefRequest(args [3]string, argsE
 			OperationName:    ReposGetCombinedStatusForRefOperation,
 			OperationSummary: "Get the combined status for a specific reference",
 			OperationID:      "repos/get-combined-status-for-ref",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -82513,6 +83042,7 @@ func (s *Server) handleReposGetCommitRequest(args [3]string, argsEscaped bool, w
 			OperationName:    ReposGetCommitOperation,
 			OperationSummary: "Get a commit",
 			OperationID:      "repos/get-commit",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -82671,6 +83201,7 @@ func (s *Server) handleReposGetCommitActivityStatsRequest(args [2]string, argsEs
 			OperationName:    ReposGetCommitActivityStatsOperation,
 			OperationSummary: "Get the last year of commit activity",
 			OperationID:      "repos/get-commit-activity-stats",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -82816,6 +83347,7 @@ func (s *Server) handleReposGetCommitCommentRequest(args [3]string, argsEscaped 
 			OperationName:    ReposGetCommitCommentOperation,
 			OperationSummary: "Get a commit comment",
 			OperationID:      "repos/get-commit-comment",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -82974,6 +83506,7 @@ func (s *Server) handleReposGetCommitSignatureProtectionRequest(args [3]string, 
 			OperationName:    ReposGetCommitSignatureProtectionOperation,
 			OperationSummary: "Get commit signature protection",
 			OperationID:      "repos/get-commit-signature-protection",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -83132,6 +83665,7 @@ func (s *Server) handleReposGetCommunityProfileMetricsRequest(args [2]string, ar
 			OperationName:    ReposGetCommunityProfileMetricsOperation,
 			OperationSummary: "Get community profile metrics",
 			OperationID:      "repos/get-community-profile-metrics",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -83282,6 +83816,7 @@ func (s *Server) handleReposGetContributorsStatsRequest(args [2]string, argsEsca
 			OperationName:    ReposGetContributorsStatsOperation,
 			OperationSummary: "Get all contributor commit activity",
 			OperationID:      "repos/get-contributors-stats",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -83427,6 +83962,7 @@ func (s *Server) handleReposGetDeployKeyRequest(args [3]string, argsEscaped bool
 			OperationName:    ReposGetDeployKeyOperation,
 			OperationSummary: "Get a deploy key",
 			OperationID:      "repos/get-deploy-key",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -83576,6 +84112,7 @@ func (s *Server) handleReposGetDeploymentRequest(args [3]string, argsEscaped boo
 			OperationName:    ReposGetDeploymentOperation,
 			OperationSummary: "Get a deployment",
 			OperationID:      "repos/get-deployment",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -83725,6 +84262,7 @@ func (s *Server) handleReposGetDeploymentStatusRequest(args [4]string, argsEscap
 			OperationName:    ReposGetDeploymentStatusOperation,
 			OperationSummary: "Get a deployment status",
 			OperationID:      "repos/get-deployment-status",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -83878,6 +84416,7 @@ func (s *Server) handleReposGetLatestPagesBuildRequest(args [2]string, argsEscap
 			OperationName:    ReposGetLatestPagesBuildOperation,
 			OperationSummary: "Get latest Pages build",
 			OperationID:      "repos/get-latest-pages-build",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -84026,6 +84565,7 @@ func (s *Server) handleReposGetLatestReleaseRequest(args [2]string, argsEscaped 
 			OperationName:    ReposGetLatestReleaseOperation,
 			OperationSummary: "Get the latest release",
 			OperationID:      "repos/get-latest-release",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -84171,6 +84711,7 @@ func (s *Server) handleReposGetPagesRequest(args [2]string, argsEscaped bool, w 
 			OperationName:    ReposGetPagesOperation,
 			OperationSummary: "Get a GitHub Pages site",
 			OperationID:      "repos/get-pages",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -84316,6 +84857,7 @@ func (s *Server) handleReposGetPagesBuildRequest(args [3]string, argsEscaped boo
 			OperationName:    ReposGetPagesBuildOperation,
 			OperationSummary: "Get GitHub Pages build",
 			OperationID:      "repos/get-pages-build",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -84471,6 +85013,7 @@ func (s *Server) handleReposGetPagesHealthCheckRequest(args [2]string, argsEscap
 			OperationName:    ReposGetPagesHealthCheckOperation,
 			OperationSummary: "Get a DNS health check for GitHub Pages",
 			OperationID:      "repos/get-pages-health-check",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -84619,6 +85162,7 @@ func (s *Server) handleReposGetParticipationStatsRequest(args [2]string, argsEsc
 			OperationName:    ReposGetParticipationStatsOperation,
 			OperationSummary: "Get the weekly commit count",
 			OperationID:      "repos/get-participation-stats",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -84768,6 +85312,7 @@ func (s *Server) handleReposGetPullRequestReviewProtectionRequest(args [3]string
 			OperationName:    ReposGetPullRequestReviewProtectionOperation,
 			OperationSummary: "Get pull request review protection",
 			OperationID:      "repos/get-pull-request-review-protection",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -84922,6 +85467,7 @@ func (s *Server) handleReposGetPunchCardStatsRequest(args [2]string, argsEscaped
 			OperationName:    ReposGetPunchCardStatsOperation,
 			OperationSummary: "Get the hourly commit count for each day",
 			OperationID:      "repos/get-punch-card-stats",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -85069,6 +85615,7 @@ func (s *Server) handleReposGetReadmeRequest(args [2]string, argsEscaped bool, w
 			OperationName:    ReposGetReadmeOperation,
 			OperationSummary: "Get a repository README",
 			OperationID:      "repos/get-readme",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -85220,6 +85767,7 @@ func (s *Server) handleReposGetReadmeInDirectoryRequest(args [3]string, argsEsca
 			OperationName:    ReposGetReadmeInDirectoryOperation,
 			OperationSummary: "Get a repository README for a directory",
 			OperationID:      "repos/get-readme-in-directory",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -85375,6 +85923,7 @@ func (s *Server) handleReposGetReleaseRequest(args [3]string, argsEscaped bool, 
 			OperationName:    ReposGetReleaseOperation,
 			OperationSummary: "Get a release",
 			OperationID:      "repos/get-release",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -85527,6 +86076,7 @@ func (s *Server) handleReposGetReleaseAssetRequest(args [3]string, argsEscaped b
 			OperationName:    ReposGetReleaseAssetOperation,
 			OperationSummary: "Get a release asset",
 			OperationID:      "repos/get-release-asset",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -85676,6 +86226,7 @@ func (s *Server) handleReposGetReleaseByTagRequest(args [3]string, argsEscaped b
 			OperationName:    ReposGetReleaseByTagOperation,
 			OperationSummary: "Get a release by tag name",
 			OperationID:      "repos/get-release-by-tag",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -85829,6 +86380,7 @@ func (s *Server) handleReposGetStatusChecksProtectionRequest(args [3]string, arg
 			OperationName:    ReposGetStatusChecksProtectionOperation,
 			OperationSummary: "Get status checks protection",
 			OperationID:      "repos/get-status-checks-protection",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -85983,6 +86535,7 @@ func (s *Server) handleReposGetTeamsWithAccessToProtectedBranchRequest(args [3]s
 			OperationName:    ReposGetTeamsWithAccessToProtectedBranchOperation,
 			OperationSummary: "Get teams with access to the protected branch",
 			OperationID:      "repos/get-teams-with-access-to-protected-branch",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -86132,6 +86685,7 @@ func (s *Server) handleReposGetTopPathsRequest(args [2]string, argsEscaped bool,
 			OperationName:    ReposGetTopPathsOperation,
 			OperationSummary: "Get top referral paths",
 			OperationID:      "repos/get-top-paths",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -86277,6 +86831,7 @@ func (s *Server) handleReposGetTopReferrersRequest(args [2]string, argsEscaped b
 			OperationName:    ReposGetTopReferrersOperation,
 			OperationSummary: "Get top referral sources",
 			OperationID:      "repos/get-top-referrers",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -86427,6 +86982,7 @@ func (s *Server) handleReposGetUsersWithAccessToProtectedBranchRequest(args [3]s
 			OperationName:    ReposGetUsersWithAccessToProtectedBranchOperation,
 			OperationSummary: "Get users with access to the protected branch",
 			OperationID:      "repos/get-users-with-access-to-protected-branch",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -86577,6 +87133,7 @@ func (s *Server) handleReposGetViewsRequest(args [2]string, argsEscaped bool, w 
 			OperationName:    ReposGetViewsOperation,
 			OperationSummary: "Get page views",
 			OperationID:      "repos/get-views",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -86728,6 +87285,7 @@ func (s *Server) handleReposGetWebhookRequest(args [3]string, argsEscaped bool, 
 			OperationName:    ReposGetWebhookOperation,
 			OperationSummary: "Get a repository webhook",
 			OperationID:      "repos/get-webhook",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -86881,6 +87439,7 @@ func (s *Server) handleReposGetWebhookConfigForRepoRequest(args [3]string, argsE
 			OperationName:    ReposGetWebhookConfigForRepoOperation,
 			OperationSummary: "Get a webhook configuration for a repository",
 			OperationID:      "repos/get-webhook-config-for-repo",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -87030,6 +87589,7 @@ func (s *Server) handleReposGetWebhookDeliveryRequest(args [4]string, argsEscape
 			OperationName:    ReposGetWebhookDeliveryOperation,
 			OperationSummary: "Get a delivery for a repository webhook",
 			OperationID:      "repos/get-webhook-delivery",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -87184,6 +87744,7 @@ func (s *Server) handleReposListAutolinksRequest(args [2]string, argsEscaped boo
 			OperationName:    ReposListAutolinksOperation,
 			OperationSummary: "List all autolinks of a repository",
 			OperationID:      "repos/list-autolinks",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -87333,6 +87894,7 @@ func (s *Server) handleReposListBranchesRequest(args [2]string, argsEscaped bool
 			OperationName:    ReposListBranchesOperation,
 			OperationSummary: "List branches",
 			OperationID:      "repos/list-branches",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -87495,6 +88057,7 @@ func (s *Server) handleReposListBranchesForHeadCommitRequest(args [3]string, arg
 			OperationName:    ReposListBranchesForHeadCommitOperation,
 			OperationSummary: "List branches for HEAD commit",
 			OperationID:      "repos/list-branches-for-head-commit",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -87648,6 +88211,7 @@ func (s *Server) handleReposListCollaboratorsRequest(args [2]string, argsEscaped
 			OperationName:    ReposListCollaboratorsOperation,
 			OperationSummary: "List repository collaborators",
 			OperationID:      "repos/list-collaborators",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -87805,6 +88369,7 @@ func (s *Server) handleReposListCommentsForCommitRequest(args [3]string, argsEsc
 			OperationName:    ReposListCommentsForCommitOperation,
 			OperationSummary: "List commit comments",
 			OperationID:      "repos/list-comments-for-commit",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -87965,6 +88530,7 @@ func (s *Server) handleReposListCommitCommentsForRepoRequest(args [2]string, arg
 			OperationName:    ReposListCommitCommentsForRepoOperation,
 			OperationSummary: "List commit comments for a repository",
 			OperationID:      "repos/list-commit-comments-for-repo",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -88121,6 +88687,7 @@ func (s *Server) handleReposListCommitStatusesForRefRequest(args [3]string, args
 			OperationName:    ReposListCommitStatusesForRefOperation,
 			OperationSummary: "List commit statuses for a reference",
 			OperationID:      "repos/list-commit-statuses-for-ref",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -88309,6 +88876,7 @@ func (s *Server) handleReposListCommitsRequest(args [2]string, argsEscaped bool,
 			OperationName:    ReposListCommitsOperation,
 			OperationSummary: "List commits",
 			OperationID:      "repos/list-commits",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -88488,6 +89056,7 @@ func (s *Server) handleReposListContributorsRequest(args [2]string, argsEscaped 
 			OperationName:    ReposListContributorsOperation,
 			OperationSummary: "List repository contributors",
 			OperationID:      "repos/list-contributors",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -88645,6 +89214,7 @@ func (s *Server) handleReposListDeployKeysRequest(args [2]string, argsEscaped bo
 			OperationName:    ReposListDeployKeysOperation,
 			OperationSummary: "List deploy keys",
 			OperationID:      "repos/list-deploy-keys",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -88798,6 +89368,7 @@ func (s *Server) handleReposListDeploymentStatusesRequest(args [3]string, argsEs
 			OperationName:    ReposListDeploymentStatusesOperation,
 			OperationSummary: "List deployment statuses",
 			OperationID:      "repos/list-deployment-statuses",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -88955,6 +89526,7 @@ func (s *Server) handleReposListDeploymentsRequest(args [2]string, argsEscaped b
 			OperationName:    ReposListDeploymentsOperation,
 			OperationSummary: "List deployments",
 			OperationID:      "repos/list-deployments",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -89127,6 +89699,7 @@ func (s *Server) handleReposListForAuthenticatedUserRequest(args [0]string, args
 			OperationName:    ReposListForAuthenticatedUserOperation,
 			OperationSummary: "List repositories for the authenticated user",
 			OperationID:      "repos/list-for-authenticated-user",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -89300,6 +89873,7 @@ func (s *Server) handleReposListForOrgRequest(args [1]string, argsEscaped bool, 
 			OperationName:    ReposListForOrgOperation,
 			OperationSummary: "List organization repositories",
 			OperationID:      "repos/list-for-org",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -89462,6 +90036,7 @@ func (s *Server) handleReposListForUserRequest(args [1]string, argsEscaped bool,
 			OperationName:    ReposListForUserOperation,
 			OperationSummary: "List repositories for a user",
 			OperationID:      "repos/list-for-user",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -89623,6 +90198,7 @@ func (s *Server) handleReposListForksRequest(args [2]string, argsEscaped bool, w
 			OperationName:    ReposListForksOperation,
 			OperationSummary: "List forks",
 			OperationID:      "repos/list-forks",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -89781,6 +90357,7 @@ func (s *Server) handleReposListInvitationsRequest(args [2]string, argsEscaped b
 			OperationName:    ReposListInvitationsOperation,
 			OperationSummary: "List repository invitations",
 			OperationID:      "repos/list-invitations",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -89935,6 +90512,7 @@ func (s *Server) handleReposListInvitationsForAuthenticatedUserRequest(args [0]s
 			OperationName:    ReposListInvitationsForAuthenticatedUserOperation,
 			OperationSummary: "List repository invitations for the authenticated user",
 			OperationID:      "repos/list-invitations-for-authenticated-user",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -90081,6 +90659,7 @@ func (s *Server) handleReposListLanguagesRequest(args [2]string, argsEscaped boo
 			OperationName:    ReposListLanguagesOperation,
 			OperationSummary: "List repository languages",
 			OperationID:      "repos/list-languages",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -90226,6 +90805,7 @@ func (s *Server) handleReposListPagesBuildsRequest(args [2]string, argsEscaped b
 			OperationName:    ReposListPagesBuildsOperation,
 			OperationSummary: "List GitHub Pages builds",
 			OperationID:      "repos/list-pages-builds",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -90385,6 +90965,7 @@ func (s *Server) handleReposListPublicRequest(args [0]string, argsEscaped bool, 
 			OperationName:    ReposListPublicOperation,
 			OperationSummary: "List public repositories",
 			OperationID:      "repos/list-public",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -90531,6 +91112,7 @@ func (s *Server) handleReposListPullRequestsAssociatedWithCommitRequest(args [3]
 			OperationName:    ReposListPullRequestsAssociatedWithCommitOperation,
 			OperationSummary: "List pull requests associated with a commit",
 			OperationID:      "repos/list-pull-requests-associated-with-commit",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -90688,6 +91270,7 @@ func (s *Server) handleReposListReleaseAssetsRequest(args [3]string, argsEscaped
 			OperationName:    ReposListReleaseAssetsOperation,
 			OperationSummary: "List release assets",
 			OperationID:      "repos/list-release-assets",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -90849,6 +91432,7 @@ func (s *Server) handleReposListReleasesRequest(args [2]string, argsEscaped bool
 			OperationName:    ReposListReleasesOperation,
 			OperationSummary: "List releases",
 			OperationID:      "repos/list-releases",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -91002,6 +91586,7 @@ func (s *Server) handleReposListTagsRequest(args [2]string, argsEscaped bool, w 
 			OperationName:    ReposListTagsOperation,
 			OperationSummary: "List repository tags",
 			OperationID:      "repos/list-tags",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -91155,6 +91740,7 @@ func (s *Server) handleReposListTeamsRequest(args [2]string, argsEscaped bool, w
 			OperationName:    ReposListTeamsOperation,
 			OperationSummary: "List repository teams",
 			OperationID:      "repos/list-teams",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -91308,6 +91894,7 @@ func (s *Server) handleReposListWebhookDeliveriesRequest(args [3]string, argsEsc
 			OperationName:    ReposListWebhookDeliveriesOperation,
 			OperationSummary: "List deliveries for a repository webhook",
 			OperationID:      "repos/list-webhook-deliveries",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -91465,6 +92052,7 @@ func (s *Server) handleReposListWebhooksRequest(args [2]string, argsEscaped bool
 			OperationName:    ReposListWebhooksOperation,
 			OperationSummary: "List repository webhooks",
 			OperationID:      "repos/list-webhooks",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -91633,6 +92221,7 @@ func (s *Server) handleReposMergeRequest(args [2]string, argsEscaped bool, w htt
 			OperationName:    ReposMergeOperation,
 			OperationSummary: "Merge a branch",
 			OperationID:      "repos/merge",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -91794,6 +92383,7 @@ func (s *Server) handleReposMergeUpstreamRequest(args [2]string, argsEscaped boo
 			OperationName:    ReposMergeUpstreamOperation,
 			OperationSummary: "Sync a fork branch with the upstream repository",
 			OperationID:      "repos/merge-upstream",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -91940,6 +92530,7 @@ func (s *Server) handleReposPingWebhookRequest(args [3]string, argsEscaped bool,
 			OperationName:    ReposPingWebhookOperation,
 			OperationSummary: "Ping a repository webhook",
 			OperationID:      "repos/ping-webhook",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -92089,6 +92680,7 @@ func (s *Server) handleReposRedeliverWebhookDeliveryRequest(args [4]string, args
 			OperationName:    ReposRedeliverWebhookDeliveryOperation,
 			OperationSummary: "Redeliver a delivery for a repository webhook",
 			OperationID:      "repos/redeliver-webhook-delivery",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -92271,6 +92863,7 @@ func (s *Server) handleReposRemoveAppAccessRestrictionsRequest(args [3]string, a
 			OperationName:    ReposRemoveAppAccessRestrictionsOperation,
 			OperationSummary: "Remove app access restrictions",
 			OperationID:      "repos/remove-app-access-restrictions",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -92420,6 +93013,7 @@ func (s *Server) handleReposRemoveCollaboratorRequest(args [3]string, argsEscape
 			OperationName:    ReposRemoveCollaboratorOperation,
 			OperationSummary: "Remove a repository collaborator",
 			OperationID:      "repos/remove-collaborator",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -92588,6 +93182,7 @@ func (s *Server) handleReposRemoveStatusCheckContextsRequest(args [3]string, arg
 			OperationName:    ReposRemoveStatusCheckContextsOperation,
 			OperationSummary: "Remove status check contexts",
 			OperationID:      "repos/remove-status-check-contexts",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -92741,6 +93336,7 @@ func (s *Server) handleReposRemoveStatusCheckProtectionRequest(args [3]string, a
 			OperationName:    ReposRemoveStatusCheckProtectionOperation,
 			OperationSummary: "Remove status check protection",
 			OperationID:      "repos/remove-status-check-protection",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -92919,6 +93515,7 @@ func (s *Server) handleReposRemoveTeamAccessRestrictionsRequest(args [3]string, 
 			OperationName:    ReposRemoveTeamAccessRestrictionsOperation,
 			OperationSummary: "Remove team access restrictions",
 			OperationID:      "repos/remove-team-access-restrictions",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -93096,6 +93693,7 @@ func (s *Server) handleReposRemoveUserAccessRestrictionsRequest(args [3]string, 
 			OperationName:    ReposRemoveUserAccessRestrictionsOperation,
 			OperationSummary: "Remove user access restrictions",
 			OperationID:      "repos/remove-user-access-restrictions",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -93272,6 +93870,7 @@ func (s *Server) handleReposRenameBranchRequest(args [3]string, argsEscaped bool
 			OperationName:    ReposRenameBranchOperation,
 			OperationSummary: "Rename a branch",
 			OperationID:      "repos/rename-branch",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -93436,6 +94035,7 @@ func (s *Server) handleReposReplaceAllTopicsRequest(args [2]string, argsEscaped 
 			OperationName:    ReposReplaceAllTopicsOperation,
 			OperationSummary: "Replace all repository topics",
 			OperationID:      "repos/replace-all-topics",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -93586,6 +94186,7 @@ func (s *Server) handleReposRequestPagesBuildRequest(args [2]string, argsEscaped
 			OperationName:    ReposRequestPagesBuildOperation,
 			OperationSummary: "Request a GitHub Pages build",
 			OperationID:      "repos/request-pages-build",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -93737,6 +94338,7 @@ func (s *Server) handleReposSetAdminBranchProtectionRequest(args [3]string, args
 			OperationName:    ReposSetAdminBranchProtectionOperation,
 			OperationSummary: "Set admin branch protection",
 			OperationID:      "repos/set-admin-branch-protection",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -93917,6 +94519,7 @@ func (s *Server) handleReposSetAppAccessRestrictionsRequest(args [3]string, args
 			OperationName:    ReposSetAppAccessRestrictionsOperation,
 			OperationSummary: "Set app access restrictions",
 			OperationID:      "repos/set-app-access-restrictions",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -94085,6 +94688,7 @@ func (s *Server) handleReposSetStatusCheckContextsRequest(args [3]string, argsEs
 			OperationName:    ReposSetStatusCheckContextsOperation,
 			OperationSummary: "Set status check contexts",
 			OperationID:      "repos/set-status-check-contexts",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -94264,6 +94868,7 @@ func (s *Server) handleReposSetTeamAccessRestrictionsRequest(args [3]string, arg
 			OperationName:    ReposSetTeamAccessRestrictionsOperation,
 			OperationSummary: "Set team access restrictions",
 			OperationID:      "repos/set-team-access-restrictions",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -94442,6 +95047,7 @@ func (s *Server) handleReposSetUserAccessRestrictionsRequest(args [3]string, arg
 			OperationName:    ReposSetUserAccessRestrictionsOperation,
 			OperationSummary: "Set user access restrictions",
 			OperationID:      "repos/set-user-access-restrictions",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -94594,6 +95200,7 @@ func (s *Server) handleReposTestPushWebhookRequest(args [3]string, argsEscaped b
 			OperationName:    ReposTestPushWebhookOperation,
 			OperationSummary: "Test the push repository webhook",
 			OperationID:      "repos/test-push-webhook",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -94762,6 +95369,7 @@ func (s *Server) handleReposTransferRequest(args [2]string, argsEscaped bool, w 
 			OperationName:    ReposTransferOperation,
 			OperationSummary: "Transfer a repository",
 			OperationID:      "repos/transfer",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -94923,6 +95531,7 @@ func (s *Server) handleReposUpdateRequest(args [2]string, argsEscaped bool, w ht
 			OperationName:    ReposUpdateOperation,
 			OperationSummary: "Update a repository",
 			OperationID:      "repos/update",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -95090,6 +95699,7 @@ func (s *Server) handleReposUpdateBranchProtectionRequest(args [3]string, argsEs
 			OperationName:    ReposUpdateBranchProtectionOperation,
 			OperationSummary: "Update branch protection",
 			OperationID:      "repos/update-branch-protection",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -95254,6 +95864,7 @@ func (s *Server) handleReposUpdateCommitCommentRequest(args [3]string, argsEscap
 			OperationName:    ReposUpdateCommitCommentOperation,
 			OperationSummary: "Update a commit comment",
 			OperationID:      "repos/update-commit-comment",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -95418,6 +96029,7 @@ func (s *Server) handleReposUpdateInvitationRequest(args [3]string, argsEscaped 
 			OperationName:    ReposUpdateInvitationOperation,
 			OperationSummary: "Update a repository invitation",
 			OperationID:      "repos/update-invitation",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -95589,6 +96201,7 @@ func (s *Server) handleReposUpdatePullRequestReviewProtectionRequest(args [3]str
 			OperationName:    ReposUpdatePullRequestReviewProtectionOperation,
 			OperationSummary: "Update pull request review protection",
 			OperationID:      "repos/update-pull-request-review-protection",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -95753,6 +96366,7 @@ func (s *Server) handleReposUpdateReleaseRequest(args [3]string, argsEscaped boo
 			OperationName:    ReposUpdateReleaseOperation,
 			OperationSummary: "Update a release",
 			OperationID:      "repos/update-release",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -95917,6 +96531,7 @@ func (s *Server) handleReposUpdateReleaseAssetRequest(args [3]string, argsEscape
 			OperationName:    ReposUpdateReleaseAssetOperation,
 			OperationSummary: "Update a release asset",
 			OperationID:      "repos/update-release-asset",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -96087,6 +96702,7 @@ func (s *Server) handleReposUpdateStatusCheckProtectionRequest(args [3]string, a
 			OperationName:    ReposUpdateStatusCheckProtectionOperation,
 			OperationSummary: "Update status check protection",
 			OperationID:      "repos/update-status-check-protection",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -96254,6 +96870,7 @@ func (s *Server) handleReposUpdateWebhookRequest(args [3]string, argsEscaped boo
 			OperationName:    ReposUpdateWebhookOperation,
 			OperationSummary: "Update a repository webhook",
 			OperationID:      "repos/update-webhook",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -96422,6 +97039,7 @@ func (s *Server) handleReposUpdateWebhookConfigForRepoRequest(args [3]string, ar
 			OperationName:    ReposUpdateWebhookConfigForRepoOperation,
 			OperationSummary: "Update a webhook configuration for a repository",
 			OperationID:      "repos/update-webhook-config-for-repo",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -96611,6 +97229,7 @@ func (s *Server) handleReposUploadReleaseAssetRequest(args [3]string, argsEscape
 			OperationName:    ReposUploadReleaseAssetOperation,
 			OperationSummary: "Upload a release asset",
 			OperationID:      "repos/upload-release-asset",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -96768,6 +97387,7 @@ func (s *Server) handleScimDeleteUserFromOrgRequest(args [2]string, argsEscaped 
 			OperationName:    ScimDeleteUserFromOrgOperation,
 			OperationSummary: "Delete a SCIM user from an organization",
 			OperationID:      "scim/delete-user-from-org",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -96932,6 +97552,7 @@ func (s *Server) handleSearchCodeRequest(args [0]string, argsEscaped bool, w htt
 			OperationName:    SearchCodeOperation,
 			OperationSummary: "Search code",
 			OperationID:      "search/code",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -97099,6 +97720,7 @@ func (s *Server) handleSearchCommitsRequest(args [0]string, argsEscaped bool, w 
 			OperationName:    SearchCommitsOperation,
 			OperationSummary: "Search commits",
 			OperationID:      "search/commits",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -97278,6 +97900,7 @@ func (s *Server) handleSearchIssuesAndPullRequestsRequest(args [0]string, argsEs
 			OperationName:    SearchIssuesAndPullRequestsOperation,
 			OperationSummary: "Search issues and pull requests",
 			OperationID:      "search/issues-and-pull-requests",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -97444,6 +98067,7 @@ func (s *Server) handleSearchLabelsRequest(args [0]string, argsEscaped bool, w h
 			OperationName:    SearchLabelsOperation,
 			OperationSummary: "Search labels",
 			OperationID:      "search/labels",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -97620,6 +98244,7 @@ func (s *Server) handleSearchReposRequest(args [0]string, argsEscaped bool, w ht
 			OperationName:    SearchReposOperation,
 			OperationSummary: "Search repositories",
 			OperationID:      "search/repos",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -97790,6 +98415,7 @@ func (s *Server) handleSearchTopicsRequest(args [0]string, argsEscaped bool, w h
 			OperationName:    SearchTopicsOperation,
 			OperationSummary: "Search topics",
 			OperationID:      "search/topics",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -97950,6 +98576,7 @@ func (s *Server) handleSearchUsersRequest(args [0]string, argsEscaped bool, w ht
 			OperationName:    SearchUsersOperation,
 			OperationSummary: "Search users",
 			OperationID:      "search/users",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -98110,6 +98737,7 @@ func (s *Server) handleSecretScanningGetAlertRequest(args [3]string, argsEscaped
 			OperationName:    SecretScanningGetAlertOperation,
 			OperationSummary: "Get a secret scanning alert",
 			OperationID:      "secret-scanning/get-alert",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -98263,6 +98891,7 @@ func (s *Server) handleSecretScanningListAlertsForOrgRequest(args [1]string, arg
 			OperationName:    SecretScanningListAlertsForOrgOperation,
 			OperationSummary: "List secret scanning alerts by organization",
 			OperationID:      "secret-scanning/list-alerts-for-org",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -98423,6 +99052,7 @@ func (s *Server) handleSecretScanningListAlertsForRepoRequest(args [2]string, ar
 			OperationName:    SecretScanningListAlertsForRepoOperation,
 			OperationSummary: "List secret scanning alerts for a repository",
 			OperationID:      "secret-scanning/list-alerts-for-repo",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -98602,6 +99232,7 @@ func (s *Server) handleSecretScanningUpdateAlertRequest(args [3]string, argsEsca
 			OperationName:    SecretScanningUpdateAlertOperation,
 			OperationSummary: "Update a secret scanning alert",
 			OperationID:      "secret-scanning/update-alert",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -98772,6 +99403,7 @@ func (s *Server) handleTeamsAddMemberLegacyRequest(args [2]string, argsEscaped b
 			OperationName:    TeamsAddMemberLegacyOperation,
 			OperationSummary: "Add team member (Legacy)",
 			OperationID:      "teams/add-member-legacy",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -98953,6 +99585,7 @@ func (s *Server) handleTeamsAddOrUpdateMembershipForUserInOrgRequest(args [3]str
 			OperationName:    TeamsAddOrUpdateMembershipForUserInOrgOperation,
 			OperationSummary: "Add or update team membership for a user",
 			OperationID:      "teams/add-or-update-membership-for-user-in-org",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -99143,6 +99776,7 @@ func (s *Server) handleTeamsAddOrUpdateMembershipForUserLegacyRequest(args [2]st
 			OperationName:    TeamsAddOrUpdateMembershipForUserLegacyOperation,
 			OperationSummary: "Add or update team membership for a user (Legacy)",
 			OperationID:      "teams/add-or-update-membership-for-user-legacy",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -99307,6 +99941,7 @@ func (s *Server) handleTeamsAddOrUpdateProjectPermissionsInOrgRequest(args [3]st
 			OperationName:    TeamsAddOrUpdateProjectPermissionsInOrgOperation,
 			OperationSummary: "Add or update team project permissions",
 			OperationID:      "teams/add-or-update-project-permissions-in-org",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -99479,6 +100114,7 @@ func (s *Server) handleTeamsAddOrUpdateProjectPermissionsLegacyRequest(args [2]s
 			OperationName:    TeamsAddOrUpdateProjectPermissionsLegacyOperation,
 			OperationSummary: "Add or update team project permissions (Legacy)",
 			OperationID:      "teams/add-or-update-project-permissions-legacy",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -99650,6 +100286,7 @@ func (s *Server) handleTeamsAddOrUpdateRepoPermissionsInOrgRequest(args [4]strin
 			OperationName:    TeamsAddOrUpdateRepoPermissionsInOrgOperation,
 			OperationSummary: "Add or update team repository permissions",
 			OperationID:      "teams/add-or-update-repo-permissions-in-org",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -99831,6 +100468,7 @@ func (s *Server) handleTeamsAddOrUpdateRepoPermissionsLegacyRequest(args [3]stri
 			OperationName:    TeamsAddOrUpdateRepoPermissionsLegacyOperation,
 			OperationSummary: "Add or update team repository permissions (Legacy)",
 			OperationID:      "teams/add-or-update-repo-permissions-legacy",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -99983,6 +100621,7 @@ func (s *Server) handleTeamsCheckPermissionsForProjectInOrgRequest(args [3]strin
 			OperationName:    TeamsCheckPermissionsForProjectInOrgOperation,
 			OperationSummary: "Check team permissions for a project",
 			OperationID:      "teams/check-permissions-for-project-in-org",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -100139,6 +100778,7 @@ func (s *Server) handleTeamsCheckPermissionsForProjectLegacyRequest(args [2]stri
 			OperationName:    TeamsCheckPermissionsForProjectLegacyOperation,
 			OperationSummary: "Check team permissions for a project (Legacy)",
 			OperationID:      "teams/check-permissions-for-project-legacy",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -100292,6 +100932,7 @@ func (s *Server) handleTeamsCheckPermissionsForRepoInOrgRequest(args [4]string, 
 			OperationName:    TeamsCheckPermissionsForRepoInOrgOperation,
 			OperationSummary: "Check team permissions for a repository",
 			OperationID:      "teams/check-permissions-for-repo-in-org",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -100454,6 +101095,7 @@ func (s *Server) handleTeamsCheckPermissionsForRepoLegacyRequest(args [3]string,
 			OperationName:    TeamsCheckPermissionsForRepoLegacyOperation,
 			OperationSummary: "Check team permissions for a repository (Legacy)",
 			OperationID:      "teams/check-permissions-for-repo-legacy",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -100625,6 +101267,7 @@ func (s *Server) handleTeamsCreateRequest(args [1]string, argsEscaped bool, w ht
 			OperationName:    TeamsCreateOperation,
 			OperationSummary: "Create a team",
 			OperationID:      "teams/create",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -100791,6 +101434,7 @@ func (s *Server) handleTeamsCreateDiscussionCommentInOrgRequest(args [3]string, 
 			OperationName:    TeamsCreateDiscussionCommentInOrgOperation,
 			OperationSummary: "Create a discussion comment",
 			OperationID:      "teams/create-discussion-comment-in-org",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -100968,6 +101612,7 @@ func (s *Server) handleTeamsCreateDiscussionCommentLegacyRequest(args [2]string,
 			OperationName:    TeamsCreateDiscussionCommentLegacyOperation,
 			OperationSummary: "Create a discussion comment (Legacy)",
 			OperationID:      "teams/create-discussion-comment-legacy",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -101138,6 +101783,7 @@ func (s *Server) handleTeamsCreateDiscussionInOrgRequest(args [2]string, argsEsc
 			OperationName:    TeamsCreateDiscussionInOrgOperation,
 			OperationSummary: "Create a discussion",
 			OperationID:      "teams/create-discussion-in-org",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -101311,6 +101957,7 @@ func (s *Server) handleTeamsCreateDiscussionLegacyRequest(args [1]string, argsEs
 			OperationName:    TeamsCreateDiscussionLegacyOperation,
 			OperationSummary: "Create a discussion (Legacy)",
 			OperationID:      "teams/create-discussion-legacy",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -101474,6 +102121,7 @@ func (s *Server) handleTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(args [
 			OperationName:    TeamsCreateOrUpdateIdpGroupConnectionsInOrgOperation,
 			OperationSummary: "Create or update IdP group connections",
 			OperationID:      "teams/create-or-update-idp-group-connections-in-org",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -101645,6 +102293,7 @@ func (s *Server) handleTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequest(args 
 			OperationName:    TeamsCreateOrUpdateIdpGroupConnectionsLegacyOperation,
 			OperationSummary: "Create or update IdP group connections (Legacy)",
 			OperationID:      "teams/create-or-update-idp-group-connections-legacy",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -101789,6 +102438,7 @@ func (s *Server) handleTeamsDeleteDiscussionCommentInOrgRequest(args [4]string, 
 			OperationName:    TeamsDeleteDiscussionCommentInOrgOperation,
 			OperationSummary: "Delete a discussion comment",
 			OperationID:      "teams/delete-discussion-comment-in-org",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -101948,6 +102598,7 @@ func (s *Server) handleTeamsDeleteDiscussionCommentLegacyRequest(args [3]string,
 			OperationName:    TeamsDeleteDiscussionCommentLegacyOperation,
 			OperationSummary: "Delete a discussion comment (Legacy)",
 			OperationID:      "teams/delete-discussion-comment-legacy",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -102100,6 +102751,7 @@ func (s *Server) handleTeamsDeleteDiscussionInOrgRequest(args [3]string, argsEsc
 			OperationName:    TeamsDeleteDiscussionInOrgOperation,
 			OperationSummary: "Delete a discussion",
 			OperationID:      "teams/delete-discussion-in-org",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -102255,6 +102907,7 @@ func (s *Server) handleTeamsDeleteDiscussionLegacyRequest(args [2]string, argsEs
 			OperationName:    TeamsDeleteDiscussionLegacyOperation,
 			OperationSummary: "Delete a discussion (Legacy)",
 			OperationID:      "teams/delete-discussion-legacy",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -102404,6 +103057,7 @@ func (s *Server) handleTeamsDeleteInOrgRequest(args [2]string, argsEscaped bool,
 			OperationName:    TeamsDeleteInOrgOperation,
 			OperationSummary: "Delete a team",
 			OperationID:      "teams/delete-in-org",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -102556,6 +103210,7 @@ func (s *Server) handleTeamsDeleteLegacyRequest(args [1]string, argsEscaped bool
 			OperationName:    TeamsDeleteLegacyOperation,
 			OperationSummary: "Delete a team (Legacy)",
 			OperationID:      "teams/delete-legacy",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -102699,6 +103354,7 @@ func (s *Server) handleTeamsGetByNameRequest(args [2]string, argsEscaped bool, w
 			OperationName:    TeamsGetByNameOperation,
 			OperationSummary: "Get a team by name",
 			OperationID:      "teams/get-by-name",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -102847,6 +103503,7 @@ func (s *Server) handleTeamsGetDiscussionCommentInOrgRequest(args [4]string, arg
 			OperationName:    TeamsGetDiscussionCommentInOrgOperation,
 			OperationSummary: "Get a discussion comment",
 			OperationID:      "teams/get-discussion-comment-in-org",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -103006,6 +103663,7 @@ func (s *Server) handleTeamsGetDiscussionCommentLegacyRequest(args [3]string, ar
 			OperationName:    TeamsGetDiscussionCommentLegacyOperation,
 			OperationSummary: "Get a discussion comment (Legacy)",
 			OperationID:      "teams/get-discussion-comment-legacy",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -103158,6 +103816,7 @@ func (s *Server) handleTeamsGetDiscussionInOrgRequest(args [3]string, argsEscape
 			OperationName:    TeamsGetDiscussionInOrgOperation,
 			OperationSummary: "Get a discussion",
 			OperationID:      "teams/get-discussion-in-org",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -103313,6 +103972,7 @@ func (s *Server) handleTeamsGetDiscussionLegacyRequest(args [2]string, argsEscap
 			OperationName:    TeamsGetDiscussionLegacyOperation,
 			OperationSummary: "Get a discussion (Legacy)",
 			OperationID:      "teams/get-discussion-legacy",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -103462,6 +104122,7 @@ func (s *Server) handleTeamsGetLegacyRequest(args [1]string, argsEscaped bool, w
 			OperationName:    TeamsGetLegacyOperation,
 			OperationSummary: "Get a team (Legacy)",
 			OperationID:      "teams/get-legacy",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -103609,6 +104270,7 @@ func (s *Server) handleTeamsGetMemberLegacyRequest(args [2]string, argsEscaped b
 			OperationName:    TeamsGetMemberLegacyOperation,
 			OperationSummary: "Get team member (Legacy)",
 			OperationID:      "teams/get-member-legacy",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -103761,6 +104423,7 @@ func (s *Server) handleTeamsGetMembershipForUserInOrgRequest(args [3]string, arg
 			OperationName:    TeamsGetMembershipForUserInOrgOperation,
 			OperationSummary: "Get team membership for a user",
 			OperationID:      "teams/get-membership-for-user-in-org",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -103920,6 +104583,7 @@ func (s *Server) handleTeamsGetMembershipForUserLegacyRequest(args [2]string, ar
 			OperationName:    TeamsGetMembershipForUserLegacyOperation,
 			OperationSummary: "Get team membership for a user (Legacy)",
 			OperationID:      "teams/get-membership-for-user-legacy",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -104065,6 +104729,7 @@ func (s *Server) handleTeamsListRequest(args [1]string, argsEscaped bool, w http
 			OperationName:    TeamsListOperation,
 			OperationSummary: "List teams",
 			OperationID:      "teams/list",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -104216,6 +104881,7 @@ func (s *Server) handleTeamsListChildInOrgRequest(args [2]string, argsEscaped bo
 			OperationName:    TeamsListChildInOrgOperation,
 			OperationSummary: "List child teams",
 			OperationID:      "teams/list-child-in-org",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -104373,6 +105039,7 @@ func (s *Server) handleTeamsListChildLegacyRequest(args [1]string, argsEscaped b
 			OperationName:    TeamsListChildLegacyOperation,
 			OperationSummary: "List child teams (Legacy)",
 			OperationID:      "teams/list-child-legacy",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -104525,6 +105192,7 @@ func (s *Server) handleTeamsListDiscussionCommentsInOrgRequest(args [3]string, a
 			OperationName:    TeamsListDiscussionCommentsInOrgOperation,
 			OperationSummary: "List discussion comments",
 			OperationID:      "teams/list-discussion-comments-in-org",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -104692,6 +105360,7 @@ func (s *Server) handleTeamsListDiscussionCommentsLegacyRequest(args [2]string, 
 			OperationName:    TeamsListDiscussionCommentsLegacyOperation,
 			OperationSummary: "List discussion comments (Legacy)",
 			OperationID:      "teams/list-discussion-comments-legacy",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -104852,6 +105521,7 @@ func (s *Server) handleTeamsListDiscussionsInOrgRequest(args [2]string, argsEsca
 			OperationName:    TeamsListDiscussionsInOrgOperation,
 			OperationSummary: "List discussions",
 			OperationID:      "teams/list-discussions-in-org",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -105019,6 +105689,7 @@ func (s *Server) handleTeamsListDiscussionsLegacyRequest(args [1]string, argsEsc
 			OperationName:    TeamsListDiscussionsLegacyOperation,
 			OperationSummary: "List discussions (Legacy)",
 			OperationID:      "teams/list-discussions-legacy",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -105175,6 +105846,7 @@ func (s *Server) handleTeamsListForAuthenticatedUserRequest(args [0]string, args
 			OperationName:    TeamsListForAuthenticatedUserOperation,
 			OperationSummary: "List teams for the authenticated user",
 			OperationID:      "teams/list-for-authenticated-user",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -105328,6 +106000,7 @@ func (s *Server) handleTeamsListIdpGroupsForLegacyRequest(args [1]string, argsEs
 			OperationName:    TeamsListIdpGroupsForLegacyOperation,
 			OperationSummary: "List IdP groups for a team (Legacy)",
 			OperationID:      "teams/list-idp-groups-for-legacy",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -105475,6 +106148,7 @@ func (s *Server) handleTeamsListIdpGroupsForOrgRequest(args [1]string, argsEscap
 			OperationName:    TeamsListIdpGroupsForOrgOperation,
 			OperationSummary: "List IdP groups for an organization",
 			OperationID:      "teams/list-idp-groups-for-org",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -105629,6 +106303,7 @@ func (s *Server) handleTeamsListIdpGroupsInOrgRequest(args [2]string, argsEscape
 			OperationName:    TeamsListIdpGroupsInOrgOperation,
 			OperationSummary: "List IdP groups for a team",
 			OperationID:      "teams/list-idp-groups-in-org",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -105775,6 +106450,7 @@ func (s *Server) handleTeamsListMembersInOrgRequest(args [2]string, argsEscaped 
 			OperationName:    TeamsListMembersInOrgOperation,
 			OperationSummary: "List team members",
 			OperationID:      "teams/list-members-in-org",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -105937,6 +106613,7 @@ func (s *Server) handleTeamsListMembersLegacyRequest(args [1]string, argsEscaped
 			OperationName:    TeamsListMembersLegacyOperation,
 			OperationSummary: "List team members (Legacy)",
 			OperationID:      "teams/list-members-legacy",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -106095,6 +106772,7 @@ func (s *Server) handleTeamsListPendingInvitationsInOrgRequest(args [2]string, a
 			OperationName:    TeamsListPendingInvitationsInOrgOperation,
 			OperationSummary: "List pending team invitations",
 			OperationID:      "teams/list-pending-invitations-in-org",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -106256,6 +106934,7 @@ func (s *Server) handleTeamsListPendingInvitationsLegacyRequest(args [1]string, 
 			OperationName:    TeamsListPendingInvitationsLegacyOperation,
 			OperationSummary: "List pending team invitations (Legacy)",
 			OperationID:      "teams/list-pending-invitations-legacy",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -106407,6 +107086,7 @@ func (s *Server) handleTeamsListProjectsInOrgRequest(args [2]string, argsEscaped
 			OperationName:    TeamsListProjectsInOrgOperation,
 			OperationSummary: "List team projects",
 			OperationID:      "teams/list-projects-in-org",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -106565,6 +107245,7 @@ func (s *Server) handleTeamsListProjectsLegacyRequest(args [1]string, argsEscape
 			OperationName:    TeamsListProjectsLegacyOperation,
 			OperationSummary: "List team projects (Legacy)",
 			OperationID:      "teams/list-projects-legacy",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -106716,6 +107397,7 @@ func (s *Server) handleTeamsListReposInOrgRequest(args [2]string, argsEscaped bo
 			OperationName:    TeamsListReposInOrgOperation,
 			OperationSummary: "List team repositories",
 			OperationID:      "teams/list-repos-in-org",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -106873,6 +107555,7 @@ func (s *Server) handleTeamsListReposLegacyRequest(args [1]string, argsEscaped b
 			OperationName:    TeamsListReposLegacyOperation,
 			OperationSummary: "List team repositories (Legacy)",
 			OperationID:      "teams/list-repos-legacy",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -107042,6 +107725,7 @@ func (s *Server) handleTeamsRemoveMemberLegacyRequest(args [2]string, argsEscape
 			OperationName:    TeamsRemoveMemberLegacyOperation,
 			OperationSummary: "Remove team member (Legacy)",
 			OperationID:      "teams/remove-member-legacy",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -107201,6 +107885,7 @@ func (s *Server) handleTeamsRemoveMembershipForUserInOrgRequest(args [3]string, 
 			OperationName:    TeamsRemoveMembershipForUserInOrgOperation,
 			OperationSummary: "Remove team membership for a user",
 			OperationID:      "teams/remove-membership-for-user-in-org",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -107367,6 +108052,7 @@ func (s *Server) handleTeamsRemoveMembershipForUserLegacyRequest(args [2]string,
 			OperationName:    TeamsRemoveMembershipForUserLegacyOperation,
 			OperationSummary: "Remove team membership for a user (Legacy)",
 			OperationID:      "teams/remove-membership-for-user-legacy",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -107517,6 +108203,7 @@ func (s *Server) handleTeamsRemoveProjectInOrgRequest(args [3]string, argsEscape
 			OperationName:    TeamsRemoveProjectInOrgOperation,
 			OperationSummary: "Remove a project from a team",
 			OperationID:      "teams/remove-project-in-org",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -107674,6 +108361,7 @@ func (s *Server) handleTeamsRemoveProjectLegacyRequest(args [2]string, argsEscap
 			OperationName:    TeamsRemoveProjectLegacyOperation,
 			OperationSummary: "Remove a project from a team (Legacy)",
 			OperationID:      "teams/remove-project-legacy",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -107824,6 +108512,7 @@ func (s *Server) handleTeamsRemoveRepoInOrgRequest(args [4]string, argsEscaped b
 			OperationName:    TeamsRemoveRepoInOrgOperation,
 			OperationSummary: "Remove a repository from a team",
 			OperationID:      "teams/remove-repo-in-org",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -107985,6 +108674,7 @@ func (s *Server) handleTeamsRemoveRepoLegacyRequest(args [3]string, argsEscaped 
 			OperationName:    TeamsRemoveRepoLegacyOperation,
 			OperationSummary: "Remove a repository from a team (Legacy)",
 			OperationID:      "teams/remove-repo-legacy",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -108152,6 +108842,7 @@ func (s *Server) handleTeamsUpdateDiscussionCommentInOrgRequest(args [4]string, 
 			OperationName:    TeamsUpdateDiscussionCommentInOrgOperation,
 			OperationSummary: "Update a discussion comment",
 			OperationID:      "teams/update-discussion-comment-in-org",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -108326,6 +109017,7 @@ func (s *Server) handleTeamsUpdateDiscussionCommentLegacyRequest(args [3]string,
 			OperationName:    TeamsUpdateDiscussionCommentLegacyOperation,
 			OperationSummary: "Update a discussion comment (Legacy)",
 			OperationID:      "teams/update-discussion-comment-legacy",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -108494,6 +109186,7 @@ func (s *Server) handleTeamsUpdateDiscussionInOrgRequest(args [3]string, argsEsc
 			OperationName:    TeamsUpdateDiscussionInOrgOperation,
 			OperationSummary: "Update a discussion",
 			OperationID:      "teams/update-discussion-in-org",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -108665,6 +109358,7 @@ func (s *Server) handleTeamsUpdateDiscussionLegacyRequest(args [2]string, argsEs
 			OperationName:    TeamsUpdateDiscussionLegacyOperation,
 			OperationSummary: "Update a discussion (Legacy)",
 			OperationID:      "teams/update-discussion-legacy",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -108827,6 +109521,7 @@ func (s *Server) handleTeamsUpdateInOrgRequest(args [2]string, argsEscaped bool,
 			OperationName:    TeamsUpdateInOrgOperation,
 			OperationSummary: "Update a team",
 			OperationID:      "teams/update-in-org",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -108993,6 +109688,7 @@ func (s *Server) handleTeamsUpdateLegacyRequest(args [1]string, argsEscaped bool
 			OperationName:    TeamsUpdateLegacyOperation,
 			OperationSummary: "Update a team (Legacy)",
 			OperationID:      "teams/update-legacy",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -109139,6 +109835,7 @@ func (s *Server) handleUsersAddEmailForAuthenticatedRequest(args [0]string, args
 			OperationName:    UsersAddEmailForAuthenticatedOperation,
 			OperationSummary: "Add an email address for the authenticated user",
 			OperationID:      "users/add-email-for-authenticated",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -109275,6 +109972,7 @@ func (s *Server) handleUsersBlockRequest(args [1]string, argsEscaped bool, w htt
 			OperationName:    UsersBlockOperation,
 			OperationSummary: "Block a user",
 			OperationID:      "users/block",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -109416,6 +110114,7 @@ func (s *Server) handleUsersCheckBlockedRequest(args [1]string, argsEscaped bool
 			OperationName:    UsersCheckBlockedOperation,
 			OperationSummary: "Check if a user is blocked by the authenticated user",
 			OperationID:      "users/check-blocked",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -109557,6 +110256,7 @@ func (s *Server) handleUsersCheckFollowingForUserRequest(args [2]string, argsEsc
 			OperationName:    UsersCheckFollowingForUserOperation,
 			OperationSummary: "Check if a user follows another user",
 			OperationID:      "users/check-following-for-user",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -109702,6 +110402,7 @@ func (s *Server) handleUsersCheckPersonIsFollowedByAuthenticatedRequest(args [1]
 			OperationName:    UsersCheckPersonIsFollowedByAuthenticatedOperation,
 			OperationSummary: "Check if a person is followed by the authenticated user",
 			OperationID:      "users/check-person-is-followed-by-authenticated",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -109850,6 +110551,7 @@ func (s *Server) handleUsersCreateGpgKeyForAuthenticatedRequest(args [0]string, 
 			OperationName:    UsersCreateGpgKeyForAuthenticatedOperation,
 			OperationSummary: "Create a GPG key for the authenticated user",
 			OperationID:      "users/create-gpg-key-for-authenticated",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -109993,6 +110695,7 @@ func (s *Server) handleUsersCreatePublicSSHKeyForAuthenticatedRequest(args [0]st
 			OperationName:    UsersCreatePublicSSHKeyForAuthenticatedOperation,
 			OperationSummary: "Create a public SSH key for the authenticated user",
 			OperationID:      "users/create-public-ssh-key-for-authenticated",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -110134,6 +110837,7 @@ func (s *Server) handleUsersDeleteEmailForAuthenticatedRequest(args [0]string, a
 			OperationName:    UsersDeleteEmailForAuthenticatedOperation,
 			OperationSummary: "Delete an email address for the authenticated user",
 			OperationID:      "users/delete-email-for-authenticated",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -110272,6 +110976,7 @@ func (s *Server) handleUsersDeleteGpgKeyForAuthenticatedRequest(args [1]string, 
 			OperationName:    UsersDeleteGpgKeyForAuthenticatedOperation,
 			OperationSummary: "Delete a GPG key for the authenticated user",
 			OperationID:      "users/delete-gpg-key-for-authenticated",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -110415,6 +111120,7 @@ func (s *Server) handleUsersDeletePublicSSHKeyForAuthenticatedRequest(args [1]st
 			OperationName:    UsersDeletePublicSSHKeyForAuthenticatedOperation,
 			OperationSummary: "Delete a public SSH key for the authenticated user",
 			OperationID:      "users/delete-public-ssh-key-for-authenticated",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -110560,6 +111266,7 @@ func (s *Server) handleUsersFollowRequest(args [1]string, argsEscaped bool, w ht
 			OperationName:    UsersFollowOperation,
 			OperationSummary: "Follow a user",
 			OperationID:      "users/follow",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -110690,6 +111397,7 @@ func (s *Server) handleUsersGetAuthenticatedRequest(args [0]string, argsEscaped 
 			OperationName:    UsersGetAuthenticatedOperation,
 			OperationSummary: "Get the authenticated user",
 			OperationID:      "users/get-authenticated",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -110840,6 +111548,7 @@ func (s *Server) handleUsersGetByUsernameRequest(args [1]string, argsEscaped boo
 			OperationName:    UsersGetByUsernameOperation,
 			OperationSummary: "Get a user",
 			OperationID:      "users/get-by-username",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -110990,6 +111699,7 @@ func (s *Server) handleUsersGetContextForUserRequest(args [1]string, argsEscaped
 			OperationName:    UsersGetContextForUserOperation,
 			OperationSummary: "Get contextual information for a user",
 			OperationID:      "users/get-context-for-user",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -111141,6 +111851,7 @@ func (s *Server) handleUsersGetGpgKeyForAuthenticatedRequest(args [1]string, arg
 			OperationName:    UsersGetGpgKeyForAuthenticatedOperation,
 			OperationSummary: "Get a GPG key for the authenticated user",
 			OperationID:      "users/get-gpg-key-for-authenticated",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -111284,6 +111995,7 @@ func (s *Server) handleUsersGetPublicSSHKeyForAuthenticatedRequest(args [1]strin
 			OperationName:    UsersGetPublicSSHKeyForAuthenticatedOperation,
 			OperationSummary: "Get a public SSH key for the authenticated user",
 			OperationID:      "users/get-public-ssh-key-for-authenticated",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -111429,6 +112141,7 @@ func (s *Server) handleUsersListRequest(args [0]string, argsEscaped bool, w http
 			OperationName:    UsersListOperation,
 			OperationSummary: "List users",
 			OperationID:      "users/list",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -111560,6 +112273,7 @@ func (s *Server) handleUsersListBlockedByAuthenticatedRequest(args [0]string, ar
 			OperationName:    UsersListBlockedByAuthenticatedOperation,
 			OperationSummary: "List users blocked by the authenticated user",
 			OperationID:      "users/list-blocked-by-authenticated",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -111697,6 +112411,7 @@ func (s *Server) handleUsersListEmailsForAuthenticatedRequest(args [0]string, ar
 			OperationName:    UsersListEmailsForAuthenticatedOperation,
 			OperationSummary: "List email addresses for the authenticated user",
 			OperationID:      "users/list-emails-for-authenticated",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -111842,6 +112557,7 @@ func (s *Server) handleUsersListFollowedByAuthenticatedRequest(args [0]string, a
 			OperationName:    UsersListFollowedByAuthenticatedOperation,
 			OperationSummary: "List the people the authenticated user follows",
 			OperationID:      "users/list-followed-by-authenticated",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -111987,6 +112703,7 @@ func (s *Server) handleUsersListFollowersForAuthenticatedUserRequest(args [0]str
 			OperationName:    UsersListFollowersForAuthenticatedUserOperation,
 			OperationSummary: "List followers of the authenticated user",
 			OperationID:      "users/list-followers-for-authenticated-user",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -112132,6 +112849,7 @@ func (s *Server) handleUsersListFollowersForUserRequest(args [1]string, argsEsca
 			OperationName:    UsersListFollowersForUserOperation,
 			OperationSummary: "List followers of a user",
 			OperationID:      "users/list-followers-for-user",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -112281,6 +112999,7 @@ func (s *Server) handleUsersListFollowingForUserRequest(args [1]string, argsEsca
 			OperationName:    UsersListFollowingForUserOperation,
 			OperationSummary: "List the people a user follows",
 			OperationID:      "users/list-following-for-user",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -112432,6 +113151,7 @@ func (s *Server) handleUsersListGpgKeysForAuthenticatedRequest(args [0]string, a
 			OperationName:    UsersListGpgKeysForAuthenticatedOperation,
 			OperationSummary: "List GPG keys for the authenticated user",
 			OperationID:      "users/list-gpg-keys-for-authenticated",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -112577,6 +113297,7 @@ func (s *Server) handleUsersListGpgKeysForUserRequest(args [1]string, argsEscape
 			OperationName:    UsersListGpgKeysForUserOperation,
 			OperationSummary: "List GPG keys for a user",
 			OperationID:      "users/list-gpg-keys-for-user",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -112729,6 +113450,7 @@ func (s *Server) handleUsersListPublicEmailsForAuthenticatedRequest(args [0]stri
 			OperationName:    UsersListPublicEmailsForAuthenticatedOperation,
 			OperationSummary: "List public email addresses for the authenticated user",
 			OperationID:      "users/list-public-emails-for-authenticated",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -112874,6 +113596,7 @@ func (s *Server) handleUsersListPublicKeysForUserRequest(args [1]string, argsEsc
 			OperationName:    UsersListPublicKeysForUserOperation,
 			OperationSummary: "List public keys for a user",
 			OperationID:      "users/list-public-keys-for-user",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -113025,6 +113748,7 @@ func (s *Server) handleUsersListPublicSSHKeysForAuthenticatedRequest(args [0]str
 			OperationName:    UsersListPublicSSHKeysForAuthenticatedOperation,
 			OperationSummary: "List public SSH keys for the authenticated user",
 			OperationID:      "users/list-public-ssh-keys-for-authenticated",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -113175,6 +113899,7 @@ func (s *Server) handleUsersSetPrimaryEmailVisibilityForAuthenticatedRequest(arg
 			OperationName:    UsersSetPrimaryEmailVisibilityForAuthenticatedOperation,
 			OperationSummary: "Set primary email visibility for the authenticated user",
 			OperationID:      "users/set-primary-email-visibility-for-authenticated",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -113311,6 +114036,7 @@ func (s *Server) handleUsersUnblockRequest(args [1]string, argsEscaped bool, w h
 			OperationName:    UsersUnblockOperation,
 			OperationSummary: "Unblock a user",
 			OperationID:      "users/unblock",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -113453,6 +114179,7 @@ func (s *Server) handleUsersUnfollowRequest(args [1]string, argsEscaped bool, w 
 			OperationName:    UsersUnfollowOperation,
 			OperationSummary: "Unfollow a user",
 			OperationID:      "users/unfollow",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -113601,6 +114328,7 @@ func (s *Server) handleUsersUpdateAuthenticatedRequest(args [0]string, argsEscap
 			OperationName:    UsersUpdateAuthenticatedOperation,
 			OperationSummary: "Update the authenticated user",
 			OperationID:      "users/update-authenticated",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},

@@ -128,6 +128,7 @@ func (s *Server) handleCreatePetRequest(args [0]string, argsEscaped bool, w http
 			OperationName:    CreatePetOperation,
 			OperationSummary: "Create a new Pet",
 			OperationID:      "createPet",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
@@ -279,6 +280,7 @@ func (s *Server) handleCreatePetCategoriesRequest(args [1]string, argsEscaped bo
 			OperationName:    CreatePetCategoriesOperation,
 			OperationSummary: "Create a new Category and attach it to the Pet",
 			OperationID:      "createPetCategories",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -435,6 +437,7 @@ func (s *Server) handleCreatePetFriendsRequest(args [1]string, argsEscaped bool,
 			OperationName:    CreatePetFriendsOperation,
 			OperationSummary: "Create a new Pet and attach it to the Pet",
 			OperationID:      "createPetFriends",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -591,6 +594,7 @@ func (s *Server) handleCreatePetOwnerRequest(args [1]string, argsEscaped bool, w
 			OperationName:    CreatePetOwnerOperation,
 			OperationSummary: "Create a new User and attach it to the Pet",
 			OperationID:      "createPetOwner",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -732,6 +736,7 @@ func (s *Server) handleDeletePetRequest(args [1]string, argsEscaped bool, w http
 			OperationName:    DeletePetOperation,
 			OperationSummary: "Deletes a Pet by ID",
 			OperationID:      "deletePet",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -873,6 +878,7 @@ func (s *Server) handleDeletePetOwnerRequest(args [1]string, argsEscaped bool, w
 			OperationName:    DeletePetOwnerOperation,
 			OperationSummary: "Delete the attached Owner",
 			OperationID:      "deletePetOwner",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -1014,6 +1020,7 @@ func (s *Server) handleListPetRequest(args [0]string, argsEscaped bool, w http.R
 			OperationName:    ListPetOperation,
 			OperationSummary: "List Pets",
 			OperationID:      "listPet",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -1159,6 +1166,7 @@ func (s *Server) handleListPetCategoriesRequest(args [1]string, argsEscaped bool
 			OperationName:    ListPetCategoriesOperation,
 			OperationSummary: "List attached Categories",
 			OperationID:      "listPetCategories",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -1308,6 +1316,7 @@ func (s *Server) handleListPetFriendsRequest(args [1]string, argsEscaped bool, w
 			OperationName:    ListPetFriendsOperation,
 			OperationSummary: "List attached Friends",
 			OperationID:      "listPetFriends",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -1457,6 +1466,7 @@ func (s *Server) handleReadPetRequest(args [1]string, argsEscaped bool, w http.R
 			OperationName:    ReadPetOperation,
 			OperationSummary: "Find a Pet by ID",
 			OperationID:      "readPet",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -1598,6 +1608,7 @@ func (s *Server) handleReadPetOwnerRequest(args [1]string, argsEscaped bool, w h
 			OperationName:    ReadPetOwnerOperation,
 			OperationSummary: "Find the attached User",
 			OperationID:      "readPetOwner",
+			OperationGroup:   "",
 			Body:             nil,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
@@ -1754,6 +1765,7 @@ func (s *Server) handleUpdatePetRequest(args [1]string, argsEscaped bool, w http
 			OperationName:    UpdatePetOperation,
 			OperationSummary: "Updates a Pet",
 			OperationID:      "updatePet",
+			OperationGroup:   "",
 			Body:             request,
 			RawBody:          rawBody,
 			Params: middleware.Parameters{
