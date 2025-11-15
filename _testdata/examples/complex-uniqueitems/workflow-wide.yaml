@@ -1,0 +1,134 @@
+openapi: 3.0.3
+info:
+  title: Workflow Wide Object API (13-Field Test)
+  version: 1.0.0
+  description: |
+    Wide object test schema for complex uniqueItems validation.
+    Tests 13-field object based on JIRA's WorkflowTransitions structure.
+    Validates all field type categories in a single type.
+
+paths:
+  /workflow/transitions/bulk:
+    post:
+      operationId: createBulkWorkflowTransitions
+      summary: Create bulk workflow transitions
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - transitions
+              properties:
+                transitions:
+                  type: array
+                  uniqueItems: true
+                  items:
+                    $ref: '#/components/schemas/WorkflowTransition'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  created:
+                    type: integer
+
+components:
+  schemas:
+    WorkflowTransition:
+      type: object
+      description: |
+        Wide object with 13 fields testing all field type categories:
+        - 6 primitive fields
+        - 4 array fields
+        - 2 nested object fields
+        - 1 map field
+      required:
+        - id
+        - name
+      properties:
+        # Primitive fields (6)
+        id:
+          type: string
+          description: Field 1 - Primitive string (required)
+        name:
+          type: string
+          description: Field 2 - Primitive string (required)
+        type:
+          type: string
+          description: Field 3 - Primitive string (optional)
+        enabled:
+          type: boolean
+          description: Field 4 - Primitive boolean (optional)
+        priority:
+          type: integer
+          description: Field 5 - Primitive integer (optional)
+        description:
+          type: string
+          description: Field 6 - Primitive string (optional)
+
+        # Array fields (4)
+        validators:
+          type: array
+          description: Field 7 - Array of strings
+          items:
+            type: string
+        actions:
+          type: array
+          description: Field 8 - Array of objects
+          items:
+            $ref: '#/components/schemas/TransitionAction'
+        screens:
+          type: array
+          description: Field 9 - Array of integers
+          items:
+            type: integer
+        postFunctions:
+          type: array
+          description: Field 10 - Array of strings
+          items:
+            type: string
+
+        # Nested object fields (2)
+        fromStatus:
+          $ref: '#/components/schemas/StatusReference'
+          description: Field 11 - Nested object
+        toStatus:
+          $ref: '#/components/schemas/StatusReference'
+          description: Field 12 - Nested object
+
+        # Map field (1)
+        properties:
+          type: object
+          description: Field 13 - Map (additionalProperties)
+          additionalProperties:
+            type: string
+
+    TransitionAction:
+      type: object
+      description: Action to execute during transition
+      properties:
+        actionId:
+          type: string
+        parameters:
+          type: object
+          additionalProperties:
+            type: string
+
+    StatusReference:
+      type: object
+      description: Reference to a workflow status
+      required:
+        - id
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        category:
+          type: string
+          enum: [TODO, IN_PROGRESS, DONE]

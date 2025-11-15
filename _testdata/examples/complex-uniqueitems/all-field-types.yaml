@@ -1,0 +1,188 @@
+openapi: 3.0.3
+info:
+  title: All Field Types Integration Test
+  version: 1.0.0
+  description: |
+    Comprehensive integration test for uniqueItems validation.
+    Tests all field type categories in combination:
+    - Primitive types (string, number, integer, boolean)
+    - Optional fields
+    - Nullable fields
+    - Arrays
+    - Maps (additionalProperties)
+    - Nested objects
+    - Enums
+
+paths:
+  /integration/test:
+    post:
+      operationId: createIntegrationItems
+      summary: Create items with all field types
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - items
+              properties:
+                items:
+                  type: array
+                  uniqueItems: true
+                  items:
+                    $ref: '#/components/schemas/ComprehensiveItem'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  created:
+                    type: integer
+
+components:
+  schemas:
+    ComprehensiveItem:
+      type: object
+      description: Item with all field type categories
+      required:
+        - id
+        - name
+        - priority
+        - active
+      properties:
+        # Primitive fields (required)
+        id:
+          type: string
+          description: Unique identifier
+        name:
+          type: string
+          description: Item name
+        priority:
+          type: integer
+          description: Priority level
+        active:
+          type: boolean
+          description: Active status
+
+        # Optional primitive fields
+        description:
+          type: string
+          description: Optional description
+        score:
+          type: number
+          description: Optional score
+
+        # Nullable field
+        externalId:
+          type: string
+          nullable: true
+          description: External system ID (nullable)
+
+        # Enum field
+        status:
+          type: string
+          enum: [draft, published, archived]
+          description: Item status
+
+        # Optional enum
+        category:
+          type: string
+          enum: [feature, bug, task]
+          description: Optional category
+
+        # Array of primitives
+        tags:
+          type: array
+          items:
+            type: string
+          description: List of tags
+
+        # Optional array
+        labels:
+          type: array
+          items:
+            type: string
+          description: Optional labels
+
+        # Map (additionalProperties)
+        metadata:
+          type: object
+          additionalProperties:
+            type: string
+          description: Key-value metadata
+
+        # Optional map
+        customFields:
+          type: object
+          additionalProperties:
+            type: string
+          description: Optional custom fields
+
+        # Nested object
+        owner:
+          $ref: '#/components/schemas/User'
+          description: Item owner
+
+        # Optional nested object
+        assignee:
+          $ref: '#/components/schemas/User'
+          description: Optional assignee
+
+        # Array of nested objects
+        watchers:
+          type: array
+          items:
+            $ref: '#/components/schemas/User'
+          description: List of watchers
+
+        # Complex nested structure
+        configuration:
+          $ref: '#/components/schemas/Configuration'
+          description: Item configuration
+
+    User:
+      type: object
+      description: User information
+      required:
+        - username
+      properties:
+        username:
+          type: string
+        email:
+          type: string
+        fullName:
+          type: string
+        verified:
+          type: boolean
+
+    Configuration:
+      type: object
+      description: Complex configuration with nested objects and maps
+      properties:
+        version:
+          type: string
+        settings:
+          type: object
+          additionalProperties:
+            type: string
+        features:
+          type: array
+          items:
+            $ref: '#/components/schemas/Feature'
+
+    Feature:
+      type: object
+      description: Feature flag
+      properties:
+        name:
+          type: string
+        enabled:
+          type: boolean
+        parameters:
+          type: object
+          additionalProperties:
+            type: string
