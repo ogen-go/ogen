@@ -22,6 +22,10 @@ func (c *codeRecorder) WriteHeader(status int) {
 	c.ResponseWriter.WriteHeader(status)
 }
 
+func (c *codeRecorder) Unwrap() http.ResponseWriter {
+	return c.ResponseWriter
+}
+
 func recordError(string, error) {}
 
 // handleDataGetFormatRequest handles dataGetFormat operation.
