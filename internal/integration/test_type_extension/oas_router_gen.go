@@ -109,12 +109,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 // Route is route object.
 type Route struct {
-	name        string
-	summary     string
-	operationID string
-	pathPattern string
-	count       int
-	args        [0]string
+	name           string
+	summary        string
+	operationID    string
+	operationGroup string
+	pathPattern    string
+	count          int
+	args           [0]string
 }
 
 // Name returns ogen operation name.
@@ -132,6 +133,11 @@ func (r Route) Summary() string {
 // OperationID returns OpenAPI operationId.
 func (r Route) OperationID() string {
 	return r.operationID
+}
+
+// OperationGroup returns the x-ogen-operation-group value.
+func (r Route) OperationGroup() string {
+	return r.operationGroup
 }
 
 // PathPattern returns OpenAPI path.
@@ -209,6 +215,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						r.name = OptionalOperation
 						r.summary = ""
 						r.operationID = "optional"
+						r.operationGroup = ""
 						r.pathPattern = "/optional"
 						r.args = args
 						r.count = 0
@@ -233,6 +240,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						r.name = RequiredOperation
 						r.summary = ""
 						r.operationID = "required"
+						r.operationGroup = ""
 						r.pathPattern = "/required"
 						r.args = args
 						r.count = 0

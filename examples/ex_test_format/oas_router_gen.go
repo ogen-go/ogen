@@ -24967,12 +24967,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 // Route is route object.
 type Route struct {
-	name        string
-	summary     string
-	operationID string
-	pathPattern string
-	count       int
-	args        [0]string
+	name           string
+	summary        string
+	operationID    string
+	operationGroup string
+	pathPattern    string
+	count          int
+	args           [0]string
 }
 
 // Name returns ogen operation name.
@@ -24990,6 +24991,11 @@ func (r Route) Summary() string {
 // OperationID returns OpenAPI operationId.
 func (r Route) OperationID() string {
 	return r.operationID
+}
+
+// OperationGroup returns the x-ogen-operation-group value.
+func (r Route) OperationGroup() string {
+	return r.operationGroup
 }
 
 // PathPattern returns OpenAPI path.
@@ -25067,6 +25073,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						r.name = TestQueryParameterOperation
 						r.summary = ""
 						r.operationID = "test_query_parameter"
+						r.operationGroup = ""
 						r.pathPattern = "/test_query_parameter"
 						r.args = args
 						r.count = 0
@@ -25115,6 +25122,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.name = TestRequestAnyOperation
 								r.summary = ""
 								r.operationID = "test_request_Any"
+								r.operationGroup = ""
 								r.pathPattern = "/test_request_Any"
 								r.args = args
 								r.count = 0
@@ -25139,6 +25147,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.name = TestRequestEmptyStructOperation
 								r.summary = ""
 								r.operationID = "test_request_EmptyStruct"
+								r.operationGroup = ""
 								r.pathPattern = "/test_request_EmptyStruct"
 								r.args = args
 								r.count = 0
@@ -25163,6 +25172,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.name = TestRequestFormatTestOperation
 								r.summary = ""
 								r.operationID = "test_request_FormatTest"
+								r.operationGroup = ""
 								r.pathPattern = "/test_request_FormatTest"
 								r.args = args
 								r.count = 0
@@ -25186,6 +25196,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.name = TestRequestBooleanOperation
 								r.summary = ""
 								r.operationID = "test_request_boolean"
+								r.operationGroup = ""
 								r.pathPattern = "/test_request_boolean"
 								r.args = args
 								r.count = 0
@@ -25221,6 +25232,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										r.name = TestRequestBooleanArrayOperation
 										r.summary = ""
 										r.operationID = "test_request_boolean_array"
+										r.operationGroup = ""
 										r.pathPattern = "/test_request_boolean_array"
 										r.args = args
 										r.count = 0
@@ -25245,6 +25257,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = TestRequestBooleanArrayArrayOperation
 											r.summary = ""
 											r.operationID = "test_request_boolean_array_array"
+											r.operationGroup = ""
 											r.pathPattern = "/test_request_boolean_array_array"
 											r.args = args
 											r.count = 0
@@ -25270,6 +25283,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										r.name = TestRequestBooleanNullableOperation
 										r.summary = ""
 										r.operationID = "test_request_boolean_nullable"
+										r.operationGroup = ""
 										r.pathPattern = "/test_request_boolean_nullable"
 										r.args = args
 										r.count = 0
@@ -25293,6 +25307,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = TestRequestBooleanNullableArrayOperation
 											r.summary = ""
 											r.operationID = "test_request_boolean_nullable_array"
+											r.operationGroup = ""
 											r.pathPattern = "/test_request_boolean_nullable_array"
 											r.args = args
 											r.count = 0
@@ -25317,6 +25332,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestRequestBooleanNullableArrayArrayOperation
 												r.summary = ""
 												r.operationID = "test_request_boolean_nullable_array_array"
+												r.operationGroup = ""
 												r.pathPattern = "/test_request_boolean_nullable_array_array"
 												r.args = args
 												r.count = 0
@@ -25348,6 +25364,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.name = TestRequestIntegerOperation
 								r.summary = ""
 								r.operationID = "test_request_integer"
+								r.operationGroup = ""
 								r.pathPattern = "/test_request_integer"
 								r.args = args
 								r.count = 0
@@ -25383,6 +25400,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										r.name = TestRequestIntegerArrayOperation
 										r.summary = ""
 										r.operationID = "test_request_integer_array"
+										r.operationGroup = ""
 										r.pathPattern = "/test_request_integer_array"
 										r.args = args
 										r.count = 0
@@ -25407,6 +25425,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = TestRequestIntegerArrayArrayOperation
 											r.summary = ""
 											r.operationID = "test_request_integer_array_array"
+											r.operationGroup = ""
 											r.pathPattern = "/test_request_integer_array_array"
 											r.args = args
 											r.count = 0
@@ -25444,6 +25463,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = TestRequestIntegerInt16Operation
 											r.summary = ""
 											r.operationID = "test_request_integer_int16"
+											r.operationGroup = ""
 											r.pathPattern = "/test_request_integer_int16"
 											r.args = args
 											r.count = 0
@@ -25479,6 +25499,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestIntegerInt16ArrayOperation
 													r.summary = ""
 													r.operationID = "test_request_integer_int16_array"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_integer_int16_array"
 													r.args = args
 													r.count = 0
@@ -25503,6 +25524,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestIntegerInt16ArrayArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_integer_int16_array_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_integer_int16_array_array"
 														r.args = args
 														r.count = 0
@@ -25528,6 +25550,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestIntegerInt16NullableOperation
 													r.summary = ""
 													r.operationID = "test_request_integer_int16_nullable"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_integer_int16_nullable"
 													r.args = args
 													r.count = 0
@@ -25551,6 +25574,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestIntegerInt16NullableArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_integer_int16_nullable_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_integer_int16_nullable_array"
 														r.args = args
 														r.count = 0
@@ -25575,6 +25599,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestIntegerInt16NullableArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_integer_int16_nullable_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_integer_int16_nullable_array_array"
 															r.args = args
 															r.count = 0
@@ -25606,6 +25631,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = TestRequestIntegerInt32Operation
 											r.summary = ""
 											r.operationID = "test_request_integer_int32"
+											r.operationGroup = ""
 											r.pathPattern = "/test_request_integer_int32"
 											r.args = args
 											r.count = 0
@@ -25641,6 +25667,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestIntegerInt32ArrayOperation
 													r.summary = ""
 													r.operationID = "test_request_integer_int32_array"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_integer_int32_array"
 													r.args = args
 													r.count = 0
@@ -25665,6 +25692,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestIntegerInt32ArrayArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_integer_int32_array_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_integer_int32_array_array"
 														r.args = args
 														r.count = 0
@@ -25690,6 +25718,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestIntegerInt32NullableOperation
 													r.summary = ""
 													r.operationID = "test_request_integer_int32_nullable"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_integer_int32_nullable"
 													r.args = args
 													r.count = 0
@@ -25713,6 +25742,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestIntegerInt32NullableArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_integer_int32_nullable_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_integer_int32_nullable_array"
 														r.args = args
 														r.count = 0
@@ -25737,6 +25767,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestIntegerInt32NullableArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_integer_int32_nullable_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_integer_int32_nullable_array_array"
 															r.args = args
 															r.count = 0
@@ -25768,6 +25799,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = TestRequestIntegerInt64Operation
 											r.summary = ""
 											r.operationID = "test_request_integer_int64"
+											r.operationGroup = ""
 											r.pathPattern = "/test_request_integer_int64"
 											r.args = args
 											r.count = 0
@@ -25803,6 +25835,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestIntegerInt64ArrayOperation
 													r.summary = ""
 													r.operationID = "test_request_integer_int64_array"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_integer_int64_array"
 													r.args = args
 													r.count = 0
@@ -25827,6 +25860,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestIntegerInt64ArrayArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_integer_int64_array_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_integer_int64_array_array"
 														r.args = args
 														r.count = 0
@@ -25852,6 +25886,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestIntegerInt64NullableOperation
 													r.summary = ""
 													r.operationID = "test_request_integer_int64_nullable"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_integer_int64_nullable"
 													r.args = args
 													r.count = 0
@@ -25875,6 +25910,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestIntegerInt64NullableArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_integer_int64_nullable_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_integer_int64_nullable_array"
 														r.args = args
 														r.count = 0
@@ -25899,6 +25935,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestIntegerInt64NullableArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_integer_int64_nullable_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_integer_int64_nullable_array_array"
 															r.args = args
 															r.count = 0
@@ -25930,6 +25967,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = TestRequestIntegerInt8Operation
 											r.summary = ""
 											r.operationID = "test_request_integer_int8"
+											r.operationGroup = ""
 											r.pathPattern = "/test_request_integer_int8"
 											r.args = args
 											r.count = 0
@@ -25965,6 +26003,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestIntegerInt8ArrayOperation
 													r.summary = ""
 													r.operationID = "test_request_integer_int8_array"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_integer_int8_array"
 													r.args = args
 													r.count = 0
@@ -25989,6 +26028,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestIntegerInt8ArrayArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_integer_int8_array_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_integer_int8_array_array"
 														r.args = args
 														r.count = 0
@@ -26014,6 +26054,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestIntegerInt8NullableOperation
 													r.summary = ""
 													r.operationID = "test_request_integer_int8_nullable"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_integer_int8_nullable"
 													r.args = args
 													r.count = 0
@@ -26037,6 +26078,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestIntegerInt8NullableArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_integer_int8_nullable_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_integer_int8_nullable_array"
 														r.args = args
 														r.count = 0
@@ -26061,6 +26103,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestIntegerInt8NullableArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_integer_int8_nullable_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_integer_int8_nullable_array_array"
 															r.args = args
 															r.count = 0
@@ -26094,6 +26137,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										r.name = TestRequestIntegerNullableOperation
 										r.summary = ""
 										r.operationID = "test_request_integer_nullable"
+										r.operationGroup = ""
 										r.pathPattern = "/test_request_integer_nullable"
 										r.args = args
 										r.count = 0
@@ -26117,6 +26161,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = TestRequestIntegerNullableArrayOperation
 											r.summary = ""
 											r.operationID = "test_request_integer_nullable_array"
+											r.operationGroup = ""
 											r.pathPattern = "/test_request_integer_nullable_array"
 											r.args = args
 											r.count = 0
@@ -26141,6 +26186,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestRequestIntegerNullableArrayArrayOperation
 												r.summary = ""
 												r.operationID = "test_request_integer_nullable_array_array"
+												r.operationGroup = ""
 												r.pathPattern = "/test_request_integer_nullable_array_array"
 												r.args = args
 												r.count = 0
@@ -26180,6 +26226,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = TestRequestIntegerUintOperation
 											r.summary = ""
 											r.operationID = "test_request_integer_uint"
+											r.operationGroup = ""
 											r.pathPattern = "/test_request_integer_uint"
 											r.args = args
 											r.count = 0
@@ -26203,6 +26250,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestRequestIntegerUint16Operation
 												r.summary = ""
 												r.operationID = "test_request_integer_uint16"
+												r.operationGroup = ""
 												r.pathPattern = "/test_request_integer_uint16"
 												r.args = args
 												r.count = 0
@@ -26238,6 +26286,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestIntegerUint16ArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_integer_uint16_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_integer_uint16_array"
 														r.args = args
 														r.count = 0
@@ -26262,6 +26311,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestIntegerUint16ArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_integer_uint16_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_integer_uint16_array_array"
 															r.args = args
 															r.count = 0
@@ -26287,6 +26337,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestIntegerUint16NullableOperation
 														r.summary = ""
 														r.operationID = "test_request_integer_uint16_nullable"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_integer_uint16_nullable"
 														r.args = args
 														r.count = 0
@@ -26310,6 +26361,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestIntegerUint16NullableArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_integer_uint16_nullable_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_integer_uint16_nullable_array"
 															r.args = args
 															r.count = 0
@@ -26334,6 +26386,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestIntegerUint16NullableArrayArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_integer_uint16_nullable_array_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_integer_uint16_nullable_array_array"
 																r.args = args
 																r.count = 0
@@ -26365,6 +26418,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestRequestIntegerUint32Operation
 												r.summary = ""
 												r.operationID = "test_request_integer_uint32"
+												r.operationGroup = ""
 												r.pathPattern = "/test_request_integer_uint32"
 												r.args = args
 												r.count = 0
@@ -26400,6 +26454,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestIntegerUint32ArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_integer_uint32_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_integer_uint32_array"
 														r.args = args
 														r.count = 0
@@ -26424,6 +26479,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestIntegerUint32ArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_integer_uint32_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_integer_uint32_array_array"
 															r.args = args
 															r.count = 0
@@ -26449,6 +26505,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestIntegerUint32NullableOperation
 														r.summary = ""
 														r.operationID = "test_request_integer_uint32_nullable"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_integer_uint32_nullable"
 														r.args = args
 														r.count = 0
@@ -26472,6 +26529,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestIntegerUint32NullableArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_integer_uint32_nullable_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_integer_uint32_nullable_array"
 															r.args = args
 															r.count = 0
@@ -26496,6 +26554,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestIntegerUint32NullableArrayArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_integer_uint32_nullable_array_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_integer_uint32_nullable_array_array"
 																r.args = args
 																r.count = 0
@@ -26527,6 +26586,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestRequestIntegerUint64Operation
 												r.summary = ""
 												r.operationID = "test_request_integer_uint64"
+												r.operationGroup = ""
 												r.pathPattern = "/test_request_integer_uint64"
 												r.args = args
 												r.count = 0
@@ -26562,6 +26622,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestIntegerUint64ArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_integer_uint64_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_integer_uint64_array"
 														r.args = args
 														r.count = 0
@@ -26586,6 +26647,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestIntegerUint64ArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_integer_uint64_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_integer_uint64_array_array"
 															r.args = args
 															r.count = 0
@@ -26611,6 +26673,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestIntegerUint64NullableOperation
 														r.summary = ""
 														r.operationID = "test_request_integer_uint64_nullable"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_integer_uint64_nullable"
 														r.args = args
 														r.count = 0
@@ -26634,6 +26697,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestIntegerUint64NullableArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_integer_uint64_nullable_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_integer_uint64_nullable_array"
 															r.args = args
 															r.count = 0
@@ -26658,6 +26722,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestIntegerUint64NullableArrayArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_integer_uint64_nullable_array_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_integer_uint64_nullable_array_array"
 																r.args = args
 																r.count = 0
@@ -26689,6 +26754,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestRequestIntegerUint8Operation
 												r.summary = ""
 												r.operationID = "test_request_integer_uint8"
+												r.operationGroup = ""
 												r.pathPattern = "/test_request_integer_uint8"
 												r.args = args
 												r.count = 0
@@ -26724,6 +26790,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestIntegerUint8ArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_integer_uint8_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_integer_uint8_array"
 														r.args = args
 														r.count = 0
@@ -26748,6 +26815,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestIntegerUint8ArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_integer_uint8_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_integer_uint8_array_array"
 															r.args = args
 															r.count = 0
@@ -26773,6 +26841,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestIntegerUint8NullableOperation
 														r.summary = ""
 														r.operationID = "test_request_integer_uint8_nullable"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_integer_uint8_nullable"
 														r.args = args
 														r.count = 0
@@ -26796,6 +26865,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestIntegerUint8NullableArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_integer_uint8_nullable_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_integer_uint8_nullable_array"
 															r.args = args
 															r.count = 0
@@ -26820,6 +26890,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestIntegerUint8NullableArrayArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_integer_uint8_nullable_array_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_integer_uint8_nullable_array_array"
 																r.args = args
 																r.count = 0
@@ -26863,6 +26934,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestIntegerUintArrayOperation
 													r.summary = ""
 													r.operationID = "test_request_integer_uint_array"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_integer_uint_array"
 													r.args = args
 													r.count = 0
@@ -26887,6 +26959,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestIntegerUintArrayArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_integer_uint_array_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_integer_uint_array_array"
 														r.args = args
 														r.count = 0
@@ -26912,6 +26985,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestIntegerUintNullableOperation
 													r.summary = ""
 													r.operationID = "test_request_integer_uint_nullable"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_integer_uint_nullable"
 													r.args = args
 													r.count = 0
@@ -26935,6 +27009,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestIntegerUintNullableArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_integer_uint_nullable_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_integer_uint_nullable_array"
 														r.args = args
 														r.count = 0
@@ -26959,6 +27034,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestIntegerUintNullableArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_integer_uint_nullable_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_integer_uint_nullable_array_array"
 															r.args = args
 															r.count = 0
@@ -26990,6 +27066,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = TestRequestIntegerUnixOperation
 											r.summary = ""
 											r.operationID = "test_request_integer_unix"
+											r.operationGroup = ""
 											r.pathPattern = "/test_request_integer_unix"
 											r.args = args
 											r.count = 0
@@ -27037,6 +27114,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestIntegerUnixMicroOperation
 														r.summary = ""
 														r.operationID = "test_request_integer_unix-micro"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_integer_unix-micro"
 														r.args = args
 														r.count = 0
@@ -27072,6 +27150,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestIntegerUnixMicroArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_integer_unix-micro_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_integer_unix-micro_array"
 																r.args = args
 																r.count = 0
@@ -27096,6 +27175,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = TestRequestIntegerUnixMicroArrayArrayOperation
 																	r.summary = ""
 																	r.operationID = "test_request_integer_unix-micro_array_array"
+																	r.operationGroup = ""
 																	r.pathPattern = "/test_request_integer_unix-micro_array_array"
 																	r.args = args
 																	r.count = 0
@@ -27121,6 +27201,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestIntegerUnixMicroNullableOperation
 																r.summary = ""
 																r.operationID = "test_request_integer_unix-micro_nullable"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_integer_unix-micro_nullable"
 																r.args = args
 																r.count = 0
@@ -27144,6 +27225,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = TestRequestIntegerUnixMicroNullableArrayOperation
 																	r.summary = ""
 																	r.operationID = "test_request_integer_unix-micro_nullable_array"
+																	r.operationGroup = ""
 																	r.pathPattern = "/test_request_integer_unix-micro_nullable_array"
 																	r.args = args
 																	r.count = 0
@@ -27168,6 +27250,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																		r.name = TestRequestIntegerUnixMicroNullableArrayArrayOperation
 																		r.summary = ""
 																		r.operationID = "test_request_integer_unix-micro_nullable_array_array"
+																		r.operationGroup = ""
 																		r.pathPattern = "/test_request_integer_unix-micro_nullable_array_array"
 																		r.args = args
 																		r.count = 0
@@ -27199,6 +27282,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestIntegerUnixMilliOperation
 														r.summary = ""
 														r.operationID = "test_request_integer_unix-milli"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_integer_unix-milli"
 														r.args = args
 														r.count = 0
@@ -27234,6 +27318,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestIntegerUnixMilliArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_integer_unix-milli_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_integer_unix-milli_array"
 																r.args = args
 																r.count = 0
@@ -27258,6 +27343,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = TestRequestIntegerUnixMilliArrayArrayOperation
 																	r.summary = ""
 																	r.operationID = "test_request_integer_unix-milli_array_array"
+																	r.operationGroup = ""
 																	r.pathPattern = "/test_request_integer_unix-milli_array_array"
 																	r.args = args
 																	r.count = 0
@@ -27283,6 +27369,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestIntegerUnixMilliNullableOperation
 																r.summary = ""
 																r.operationID = "test_request_integer_unix-milli_nullable"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_integer_unix-milli_nullable"
 																r.args = args
 																r.count = 0
@@ -27306,6 +27393,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = TestRequestIntegerUnixMilliNullableArrayOperation
 																	r.summary = ""
 																	r.operationID = "test_request_integer_unix-milli_nullable_array"
+																	r.operationGroup = ""
 																	r.pathPattern = "/test_request_integer_unix-milli_nullable_array"
 																	r.args = args
 																	r.count = 0
@@ -27330,6 +27418,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																		r.name = TestRequestIntegerUnixMilliNullableArrayArrayOperation
 																		r.summary = ""
 																		r.operationID = "test_request_integer_unix-milli_nullable_array_array"
+																		r.operationGroup = ""
 																		r.pathPattern = "/test_request_integer_unix-milli_nullable_array_array"
 																		r.args = args
 																		r.count = 0
@@ -27363,6 +27452,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestIntegerUnixNanoOperation
 													r.summary = ""
 													r.operationID = "test_request_integer_unix-nano"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_integer_unix-nano"
 													r.args = args
 													r.count = 0
@@ -27398,6 +27488,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestIntegerUnixNanoArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_integer_unix-nano_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_integer_unix-nano_array"
 															r.args = args
 															r.count = 0
@@ -27422,6 +27513,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestIntegerUnixNanoArrayArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_integer_unix-nano_array_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_integer_unix-nano_array_array"
 																r.args = args
 																r.count = 0
@@ -27447,6 +27539,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestIntegerUnixNanoNullableOperation
 															r.summary = ""
 															r.operationID = "test_request_integer_unix-nano_nullable"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_integer_unix-nano_nullable"
 															r.args = args
 															r.count = 0
@@ -27470,6 +27563,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestIntegerUnixNanoNullableArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_integer_unix-nano_nullable_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_integer_unix-nano_nullable_array"
 																r.args = args
 																r.count = 0
@@ -27494,6 +27588,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = TestRequestIntegerUnixNanoNullableArrayArrayOperation
 																	r.summary = ""
 																	r.operationID = "test_request_integer_unix-nano_nullable_array_array"
+																	r.operationGroup = ""
 																	r.pathPattern = "/test_request_integer_unix-nano_nullable_array_array"
 																	r.args = args
 																	r.count = 0
@@ -27525,6 +27620,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestIntegerUnixSecondsOperation
 													r.summary = ""
 													r.operationID = "test_request_integer_unix-seconds"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_integer_unix-seconds"
 													r.args = args
 													r.count = 0
@@ -27560,6 +27656,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestIntegerUnixSecondsArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_integer_unix-seconds_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_integer_unix-seconds_array"
 															r.args = args
 															r.count = 0
@@ -27584,6 +27681,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestIntegerUnixSecondsArrayArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_integer_unix-seconds_array_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_integer_unix-seconds_array_array"
 																r.args = args
 																r.count = 0
@@ -27609,6 +27707,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestIntegerUnixSecondsNullableOperation
 															r.summary = ""
 															r.operationID = "test_request_integer_unix-seconds_nullable"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_integer_unix-seconds_nullable"
 															r.args = args
 															r.count = 0
@@ -27632,6 +27731,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestIntegerUnixSecondsNullableArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_integer_unix-seconds_nullable_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_integer_unix-seconds_nullable_array"
 																r.args = args
 																r.count = 0
@@ -27656,6 +27756,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = TestRequestIntegerUnixSecondsNullableArrayArrayOperation
 																	r.summary = ""
 																	r.operationID = "test_request_integer_unix-seconds_nullable_array_array"
+																	r.operationGroup = ""
 																	r.pathPattern = "/test_request_integer_unix-seconds_nullable_array_array"
 																	r.args = args
 																	r.count = 0
@@ -27701,6 +27802,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestIntegerUnixArrayOperation
 													r.summary = ""
 													r.operationID = "test_request_integer_unix_array"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_integer_unix_array"
 													r.args = args
 													r.count = 0
@@ -27725,6 +27827,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestIntegerUnixArrayArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_integer_unix_array_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_integer_unix_array_array"
 														r.args = args
 														r.count = 0
@@ -27750,6 +27853,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestIntegerUnixNullableOperation
 													r.summary = ""
 													r.operationID = "test_request_integer_unix_nullable"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_integer_unix_nullable"
 													r.args = args
 													r.count = 0
@@ -27773,6 +27877,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestIntegerUnixNullableArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_integer_unix_nullable_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_integer_unix_nullable_array"
 														r.args = args
 														r.count = 0
@@ -27797,6 +27902,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestIntegerUnixNullableArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_integer_unix_nullable_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_integer_unix_nullable_array_array"
 															r.args = args
 															r.count = 0
@@ -27846,6 +27952,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									r.name = TestRequestNullOperation
 									r.summary = ""
 									r.operationID = "test_request_null"
+									r.operationGroup = ""
 									r.pathPattern = "/test_request_null"
 									r.args = args
 									r.count = 0
@@ -27881,6 +27988,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = TestRequestNullArrayOperation
 											r.summary = ""
 											r.operationID = "test_request_null_array"
+											r.operationGroup = ""
 											r.pathPattern = "/test_request_null_array"
 											r.args = args
 											r.count = 0
@@ -27905,6 +28013,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestRequestNullArrayArrayOperation
 												r.summary = ""
 												r.operationID = "test_request_null_array_array"
+												r.operationGroup = ""
 												r.pathPattern = "/test_request_null_array_array"
 												r.args = args
 												r.count = 0
@@ -27930,6 +28039,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = TestRequestNullNullableOperation
 											r.summary = ""
 											r.operationID = "test_request_null_nullable"
+											r.operationGroup = ""
 											r.pathPattern = "/test_request_null_nullable"
 											r.args = args
 											r.count = 0
@@ -27953,6 +28063,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestRequestNullNullableArrayOperation
 												r.summary = ""
 												r.operationID = "test_request_null_nullable_array"
+												r.operationGroup = ""
 												r.pathPattern = "/test_request_null_nullable_array"
 												r.args = args
 												r.count = 0
@@ -27977,6 +28088,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestNullNullableArrayArrayOperation
 													r.summary = ""
 													r.operationID = "test_request_null_nullable_array_array"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_null_nullable_array_array"
 													r.args = args
 													r.count = 0
@@ -28008,6 +28120,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									r.name = TestRequestNumberOperation
 									r.summary = ""
 									r.operationID = "test_request_number"
+									r.operationGroup = ""
 									r.pathPattern = "/test_request_number"
 									r.args = args
 									r.count = 0
@@ -28043,6 +28156,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = TestRequestNumberArrayOperation
 											r.summary = ""
 											r.operationID = "test_request_number_array"
+											r.operationGroup = ""
 											r.pathPattern = "/test_request_number_array"
 											r.args = args
 											r.count = 0
@@ -28067,6 +28181,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestRequestNumberArrayArrayOperation
 												r.summary = ""
 												r.operationID = "test_request_number_array_array"
+												r.operationGroup = ""
 												r.pathPattern = "/test_request_number_array_array"
 												r.args = args
 												r.count = 0
@@ -28104,6 +28219,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestRequestNumberDecimalOperation
 												r.summary = ""
 												r.operationID = "test_request_number_decimal"
+												r.operationGroup = ""
 												r.pathPattern = "/test_request_number_decimal"
 												r.args = args
 												r.count = 0
@@ -28139,6 +28255,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestNumberDecimalArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_number_decimal_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_number_decimal_array"
 														r.args = args
 														r.count = 0
@@ -28163,6 +28280,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestNumberDecimalArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_number_decimal_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_number_decimal_array_array"
 															r.args = args
 															r.count = 0
@@ -28188,6 +28306,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestNumberDecimalNullableOperation
 														r.summary = ""
 														r.operationID = "test_request_number_decimal_nullable"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_number_decimal_nullable"
 														r.args = args
 														r.count = 0
@@ -28211,6 +28330,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestNumberDecimalNullableArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_number_decimal_nullable_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_number_decimal_nullable_array"
 															r.args = args
 															r.count = 0
@@ -28235,6 +28355,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestNumberDecimalNullableArrayArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_number_decimal_nullable_array_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_number_decimal_nullable_array_array"
 																r.args = args
 																r.count = 0
@@ -28266,6 +28387,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestRequestNumberDoubleOperation
 												r.summary = ""
 												r.operationID = "test_request_number_double"
+												r.operationGroup = ""
 												r.pathPattern = "/test_request_number_double"
 												r.args = args
 												r.count = 0
@@ -28301,6 +28423,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestNumberDoubleArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_number_double_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_number_double_array"
 														r.args = args
 														r.count = 0
@@ -28325,6 +28448,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestNumberDoubleArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_number_double_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_number_double_array_array"
 															r.args = args
 															r.count = 0
@@ -28350,6 +28474,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestNumberDoubleNullableOperation
 														r.summary = ""
 														r.operationID = "test_request_number_double_nullable"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_number_double_nullable"
 														r.args = args
 														r.count = 0
@@ -28373,6 +28498,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestNumberDoubleNullableArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_number_double_nullable_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_number_double_nullable_array"
 															r.args = args
 															r.count = 0
@@ -28397,6 +28523,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestNumberDoubleNullableArrayArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_number_double_nullable_array_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_number_double_nullable_array_array"
 																r.args = args
 																r.count = 0
@@ -28430,6 +28557,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = TestRequestNumberFloatOperation
 											r.summary = ""
 											r.operationID = "test_request_number_float"
+											r.operationGroup = ""
 											r.pathPattern = "/test_request_number_float"
 											r.args = args
 											r.count = 0
@@ -28465,6 +28593,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestNumberFloatArrayOperation
 													r.summary = ""
 													r.operationID = "test_request_number_float_array"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_number_float_array"
 													r.args = args
 													r.count = 0
@@ -28489,6 +28618,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestNumberFloatArrayArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_number_float_array_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_number_float_array_array"
 														r.args = args
 														r.count = 0
@@ -28514,6 +28644,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestNumberFloatNullableOperation
 													r.summary = ""
 													r.operationID = "test_request_number_float_nullable"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_number_float_nullable"
 													r.args = args
 													r.count = 0
@@ -28537,6 +28668,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestNumberFloatNullableArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_number_float_nullable_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_number_float_nullable_array"
 														r.args = args
 														r.count = 0
@@ -28561,6 +28693,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestNumberFloatNullableArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_number_float_nullable_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_number_float_nullable_array_array"
 															r.args = args
 															r.count = 0
@@ -28604,6 +28737,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestRequestNumberInt32Operation
 												r.summary = ""
 												r.operationID = "test_request_number_int32"
+												r.operationGroup = ""
 												r.pathPattern = "/test_request_number_int32"
 												r.args = args
 												r.count = 0
@@ -28639,6 +28773,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestNumberInt32ArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_number_int32_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_number_int32_array"
 														r.args = args
 														r.count = 0
@@ -28663,6 +28798,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestNumberInt32ArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_number_int32_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_number_int32_array_array"
 															r.args = args
 															r.count = 0
@@ -28688,6 +28824,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestNumberInt32NullableOperation
 														r.summary = ""
 														r.operationID = "test_request_number_int32_nullable"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_number_int32_nullable"
 														r.args = args
 														r.count = 0
@@ -28711,6 +28848,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestNumberInt32NullableArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_number_int32_nullable_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_number_int32_nullable_array"
 															r.args = args
 															r.count = 0
@@ -28735,6 +28873,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestNumberInt32NullableArrayArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_number_int32_nullable_array_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_number_int32_nullable_array_array"
 																r.args = args
 																r.count = 0
@@ -28766,6 +28905,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestRequestNumberInt64Operation
 												r.summary = ""
 												r.operationID = "test_request_number_int64"
+												r.operationGroup = ""
 												r.pathPattern = "/test_request_number_int64"
 												r.args = args
 												r.count = 0
@@ -28801,6 +28941,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestNumberInt64ArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_number_int64_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_number_int64_array"
 														r.args = args
 														r.count = 0
@@ -28825,6 +28966,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestNumberInt64ArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_number_int64_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_number_int64_array_array"
 															r.args = args
 															r.count = 0
@@ -28850,6 +28992,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestNumberInt64NullableOperation
 														r.summary = ""
 														r.operationID = "test_request_number_int64_nullable"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_number_int64_nullable"
 														r.args = args
 														r.count = 0
@@ -28873,6 +29016,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestNumberInt64NullableArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_number_int64_nullable_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_number_int64_nullable_array"
 															r.args = args
 															r.count = 0
@@ -28897,6 +29041,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestNumberInt64NullableArrayArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_number_int64_nullable_array_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_number_int64_nullable_array_array"
 																r.args = args
 																r.count = 0
@@ -28930,6 +29075,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = TestRequestNumberNullableOperation
 											r.summary = ""
 											r.operationID = "test_request_number_nullable"
+											r.operationGroup = ""
 											r.pathPattern = "/test_request_number_nullable"
 											r.args = args
 											r.count = 0
@@ -28953,6 +29099,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestRequestNumberNullableArrayOperation
 												r.summary = ""
 												r.operationID = "test_request_number_nullable_array"
+												r.operationGroup = ""
 												r.pathPattern = "/test_request_number_nullable_array"
 												r.args = args
 												r.count = 0
@@ -28977,6 +29124,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestNumberNullableArrayArrayOperation
 													r.summary = ""
 													r.operationID = "test_request_number_nullable_array_array"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_number_nullable_array_array"
 													r.args = args
 													r.count = 0
@@ -29023,6 +29171,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									r.name = TestRequestRequiredAnyOperation
 									r.summary = ""
 									r.operationID = "test_request_required_Any"
+									r.operationGroup = ""
 									r.pathPattern = "/test_request_required_Any"
 									r.args = args
 									r.count = 0
@@ -29047,6 +29196,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									r.name = TestRequestRequiredEmptyStructOperation
 									r.summary = ""
 									r.operationID = "test_request_required_EmptyStruct"
+									r.operationGroup = ""
 									r.pathPattern = "/test_request_required_EmptyStruct"
 									r.args = args
 									r.count = 0
@@ -29071,6 +29221,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									r.name = TestRequestRequiredFormatTestOperation
 									r.summary = ""
 									r.operationID = "test_request_required_FormatTest"
+									r.operationGroup = ""
 									r.pathPattern = "/test_request_required_FormatTest"
 									r.args = args
 									r.count = 0
@@ -29094,6 +29245,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									r.name = TestRequestRequiredBooleanOperation
 									r.summary = ""
 									r.operationID = "test_request_required_boolean"
+									r.operationGroup = ""
 									r.pathPattern = "/test_request_required_boolean"
 									r.args = args
 									r.count = 0
@@ -29129,6 +29281,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = TestRequestRequiredBooleanArrayOperation
 											r.summary = ""
 											r.operationID = "test_request_required_boolean_array"
+											r.operationGroup = ""
 											r.pathPattern = "/test_request_required_boolean_array"
 											r.args = args
 											r.count = 0
@@ -29153,6 +29306,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestRequestRequiredBooleanArrayArrayOperation
 												r.summary = ""
 												r.operationID = "test_request_required_boolean_array_array"
+												r.operationGroup = ""
 												r.pathPattern = "/test_request_required_boolean_array_array"
 												r.args = args
 												r.count = 0
@@ -29178,6 +29332,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = TestRequestRequiredBooleanNullableOperation
 											r.summary = ""
 											r.operationID = "test_request_required_boolean_nullable"
+											r.operationGroup = ""
 											r.pathPattern = "/test_request_required_boolean_nullable"
 											r.args = args
 											r.count = 0
@@ -29201,6 +29356,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestRequestRequiredBooleanNullableArrayOperation
 												r.summary = ""
 												r.operationID = "test_request_required_boolean_nullable_array"
+												r.operationGroup = ""
 												r.pathPattern = "/test_request_required_boolean_nullable_array"
 												r.args = args
 												r.count = 0
@@ -29225,6 +29381,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestRequiredBooleanNullableArrayArrayOperation
 													r.summary = ""
 													r.operationID = "test_request_required_boolean_nullable_array_array"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_required_boolean_nullable_array_array"
 													r.args = args
 													r.count = 0
@@ -29256,6 +29413,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									r.name = TestRequestRequiredIntegerOperation
 									r.summary = ""
 									r.operationID = "test_request_required_integer"
+									r.operationGroup = ""
 									r.pathPattern = "/test_request_required_integer"
 									r.args = args
 									r.count = 0
@@ -29291,6 +29449,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = TestRequestRequiredIntegerArrayOperation
 											r.summary = ""
 											r.operationID = "test_request_required_integer_array"
+											r.operationGroup = ""
 											r.pathPattern = "/test_request_required_integer_array"
 											r.args = args
 											r.count = 0
@@ -29315,6 +29474,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestRequestRequiredIntegerArrayArrayOperation
 												r.summary = ""
 												r.operationID = "test_request_required_integer_array_array"
+												r.operationGroup = ""
 												r.pathPattern = "/test_request_required_integer_array_array"
 												r.args = args
 												r.count = 0
@@ -29352,6 +29512,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestRequestRequiredIntegerInt16Operation
 												r.summary = ""
 												r.operationID = "test_request_required_integer_int16"
+												r.operationGroup = ""
 												r.pathPattern = "/test_request_required_integer_int16"
 												r.args = args
 												r.count = 0
@@ -29387,6 +29548,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestRequiredIntegerInt16ArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_required_integer_int16_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_required_integer_int16_array"
 														r.args = args
 														r.count = 0
@@ -29411,6 +29573,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestRequiredIntegerInt16ArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_required_integer_int16_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_required_integer_int16_array_array"
 															r.args = args
 															r.count = 0
@@ -29436,6 +29599,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestRequiredIntegerInt16NullableOperation
 														r.summary = ""
 														r.operationID = "test_request_required_integer_int16_nullable"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_required_integer_int16_nullable"
 														r.args = args
 														r.count = 0
@@ -29459,6 +29623,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestRequiredIntegerInt16NullableArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_required_integer_int16_nullable_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_required_integer_int16_nullable_array"
 															r.args = args
 															r.count = 0
@@ -29483,6 +29648,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestRequiredIntegerInt16NullableArrayArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_required_integer_int16_nullable_array_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_required_integer_int16_nullable_array_array"
 																r.args = args
 																r.count = 0
@@ -29514,6 +29680,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestRequestRequiredIntegerInt32Operation
 												r.summary = ""
 												r.operationID = "test_request_required_integer_int32"
+												r.operationGroup = ""
 												r.pathPattern = "/test_request_required_integer_int32"
 												r.args = args
 												r.count = 0
@@ -29549,6 +29716,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestRequiredIntegerInt32ArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_required_integer_int32_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_required_integer_int32_array"
 														r.args = args
 														r.count = 0
@@ -29573,6 +29741,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestRequiredIntegerInt32ArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_required_integer_int32_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_required_integer_int32_array_array"
 															r.args = args
 															r.count = 0
@@ -29598,6 +29767,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestRequiredIntegerInt32NullableOperation
 														r.summary = ""
 														r.operationID = "test_request_required_integer_int32_nullable"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_required_integer_int32_nullable"
 														r.args = args
 														r.count = 0
@@ -29621,6 +29791,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestRequiredIntegerInt32NullableArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_required_integer_int32_nullable_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_required_integer_int32_nullable_array"
 															r.args = args
 															r.count = 0
@@ -29645,6 +29816,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestRequiredIntegerInt32NullableArrayArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_required_integer_int32_nullable_array_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_required_integer_int32_nullable_array_array"
 																r.args = args
 																r.count = 0
@@ -29676,6 +29848,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestRequestRequiredIntegerInt64Operation
 												r.summary = ""
 												r.operationID = "test_request_required_integer_int64"
+												r.operationGroup = ""
 												r.pathPattern = "/test_request_required_integer_int64"
 												r.args = args
 												r.count = 0
@@ -29711,6 +29884,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestRequiredIntegerInt64ArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_required_integer_int64_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_required_integer_int64_array"
 														r.args = args
 														r.count = 0
@@ -29735,6 +29909,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestRequiredIntegerInt64ArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_required_integer_int64_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_required_integer_int64_array_array"
 															r.args = args
 															r.count = 0
@@ -29760,6 +29935,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestRequiredIntegerInt64NullableOperation
 														r.summary = ""
 														r.operationID = "test_request_required_integer_int64_nullable"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_required_integer_int64_nullable"
 														r.args = args
 														r.count = 0
@@ -29783,6 +29959,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestRequiredIntegerInt64NullableArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_required_integer_int64_nullable_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_required_integer_int64_nullable_array"
 															r.args = args
 															r.count = 0
@@ -29807,6 +29984,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestRequiredIntegerInt64NullableArrayArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_required_integer_int64_nullable_array_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_required_integer_int64_nullable_array_array"
 																r.args = args
 																r.count = 0
@@ -29838,6 +30016,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestRequestRequiredIntegerInt8Operation
 												r.summary = ""
 												r.operationID = "test_request_required_integer_int8"
+												r.operationGroup = ""
 												r.pathPattern = "/test_request_required_integer_int8"
 												r.args = args
 												r.count = 0
@@ -29873,6 +30052,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestRequiredIntegerInt8ArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_required_integer_int8_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_required_integer_int8_array"
 														r.args = args
 														r.count = 0
@@ -29897,6 +30077,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestRequiredIntegerInt8ArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_required_integer_int8_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_required_integer_int8_array_array"
 															r.args = args
 															r.count = 0
@@ -29922,6 +30103,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestRequiredIntegerInt8NullableOperation
 														r.summary = ""
 														r.operationID = "test_request_required_integer_int8_nullable"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_required_integer_int8_nullable"
 														r.args = args
 														r.count = 0
@@ -29945,6 +30127,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestRequiredIntegerInt8NullableArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_required_integer_int8_nullable_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_required_integer_int8_nullable_array"
 															r.args = args
 															r.count = 0
@@ -29969,6 +30152,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestRequiredIntegerInt8NullableArrayArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_required_integer_int8_nullable_array_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_required_integer_int8_nullable_array_array"
 																r.args = args
 																r.count = 0
@@ -30002,6 +30186,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = TestRequestRequiredIntegerNullableOperation
 											r.summary = ""
 											r.operationID = "test_request_required_integer_nullable"
+											r.operationGroup = ""
 											r.pathPattern = "/test_request_required_integer_nullable"
 											r.args = args
 											r.count = 0
@@ -30025,6 +30210,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestRequestRequiredIntegerNullableArrayOperation
 												r.summary = ""
 												r.operationID = "test_request_required_integer_nullable_array"
+												r.operationGroup = ""
 												r.pathPattern = "/test_request_required_integer_nullable_array"
 												r.args = args
 												r.count = 0
@@ -30049,6 +30235,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestRequiredIntegerNullableArrayArrayOperation
 													r.summary = ""
 													r.operationID = "test_request_required_integer_nullable_array_array"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_required_integer_nullable_array_array"
 													r.args = args
 													r.count = 0
@@ -30088,6 +30275,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestRequestRequiredIntegerUintOperation
 												r.summary = ""
 												r.operationID = "test_request_required_integer_uint"
+												r.operationGroup = ""
 												r.pathPattern = "/test_request_required_integer_uint"
 												r.args = args
 												r.count = 0
@@ -30111,6 +30299,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestRequiredIntegerUint16Operation
 													r.summary = ""
 													r.operationID = "test_request_required_integer_uint16"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_required_integer_uint16"
 													r.args = args
 													r.count = 0
@@ -30146,6 +30335,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestRequiredIntegerUint16ArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_required_integer_uint16_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_required_integer_uint16_array"
 															r.args = args
 															r.count = 0
@@ -30170,6 +30360,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestRequiredIntegerUint16ArrayArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_required_integer_uint16_array_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_required_integer_uint16_array_array"
 																r.args = args
 																r.count = 0
@@ -30195,6 +30386,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestRequiredIntegerUint16NullableOperation
 															r.summary = ""
 															r.operationID = "test_request_required_integer_uint16_nullable"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_required_integer_uint16_nullable"
 															r.args = args
 															r.count = 0
@@ -30218,6 +30410,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestRequiredIntegerUint16NullableArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_required_integer_uint16_nullable_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_required_integer_uint16_nullable_array"
 																r.args = args
 																r.count = 0
@@ -30242,6 +30435,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = TestRequestRequiredIntegerUint16NullableArrayArrayOperation
 																	r.summary = ""
 																	r.operationID = "test_request_required_integer_uint16_nullable_array_array"
+																	r.operationGroup = ""
 																	r.pathPattern = "/test_request_required_integer_uint16_nullable_array_array"
 																	r.args = args
 																	r.count = 0
@@ -30273,6 +30467,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestRequiredIntegerUint32Operation
 													r.summary = ""
 													r.operationID = "test_request_required_integer_uint32"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_required_integer_uint32"
 													r.args = args
 													r.count = 0
@@ -30308,6 +30503,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestRequiredIntegerUint32ArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_required_integer_uint32_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_required_integer_uint32_array"
 															r.args = args
 															r.count = 0
@@ -30332,6 +30528,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestRequiredIntegerUint32ArrayArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_required_integer_uint32_array_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_required_integer_uint32_array_array"
 																r.args = args
 																r.count = 0
@@ -30357,6 +30554,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestRequiredIntegerUint32NullableOperation
 															r.summary = ""
 															r.operationID = "test_request_required_integer_uint32_nullable"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_required_integer_uint32_nullable"
 															r.args = args
 															r.count = 0
@@ -30380,6 +30578,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestRequiredIntegerUint32NullableArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_required_integer_uint32_nullable_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_required_integer_uint32_nullable_array"
 																r.args = args
 																r.count = 0
@@ -30404,6 +30603,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = TestRequestRequiredIntegerUint32NullableArrayArrayOperation
 																	r.summary = ""
 																	r.operationID = "test_request_required_integer_uint32_nullable_array_array"
+																	r.operationGroup = ""
 																	r.pathPattern = "/test_request_required_integer_uint32_nullable_array_array"
 																	r.args = args
 																	r.count = 0
@@ -30435,6 +30635,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestRequiredIntegerUint64Operation
 													r.summary = ""
 													r.operationID = "test_request_required_integer_uint64"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_required_integer_uint64"
 													r.args = args
 													r.count = 0
@@ -30470,6 +30671,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestRequiredIntegerUint64ArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_required_integer_uint64_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_required_integer_uint64_array"
 															r.args = args
 															r.count = 0
@@ -30494,6 +30696,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestRequiredIntegerUint64ArrayArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_required_integer_uint64_array_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_required_integer_uint64_array_array"
 																r.args = args
 																r.count = 0
@@ -30519,6 +30722,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestRequiredIntegerUint64NullableOperation
 															r.summary = ""
 															r.operationID = "test_request_required_integer_uint64_nullable"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_required_integer_uint64_nullable"
 															r.args = args
 															r.count = 0
@@ -30542,6 +30746,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestRequiredIntegerUint64NullableArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_required_integer_uint64_nullable_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_required_integer_uint64_nullable_array"
 																r.args = args
 																r.count = 0
@@ -30566,6 +30771,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = TestRequestRequiredIntegerUint64NullableArrayArrayOperation
 																	r.summary = ""
 																	r.operationID = "test_request_required_integer_uint64_nullable_array_array"
+																	r.operationGroup = ""
 																	r.pathPattern = "/test_request_required_integer_uint64_nullable_array_array"
 																	r.args = args
 																	r.count = 0
@@ -30597,6 +30803,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestRequiredIntegerUint8Operation
 													r.summary = ""
 													r.operationID = "test_request_required_integer_uint8"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_required_integer_uint8"
 													r.args = args
 													r.count = 0
@@ -30632,6 +30839,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestRequiredIntegerUint8ArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_required_integer_uint8_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_required_integer_uint8_array"
 															r.args = args
 															r.count = 0
@@ -30656,6 +30864,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestRequiredIntegerUint8ArrayArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_required_integer_uint8_array_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_required_integer_uint8_array_array"
 																r.args = args
 																r.count = 0
@@ -30681,6 +30890,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestRequiredIntegerUint8NullableOperation
 															r.summary = ""
 															r.operationID = "test_request_required_integer_uint8_nullable"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_required_integer_uint8_nullable"
 															r.args = args
 															r.count = 0
@@ -30704,6 +30914,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestRequiredIntegerUint8NullableArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_required_integer_uint8_nullable_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_required_integer_uint8_nullable_array"
 																r.args = args
 																r.count = 0
@@ -30728,6 +30939,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = TestRequestRequiredIntegerUint8NullableArrayArrayOperation
 																	r.summary = ""
 																	r.operationID = "test_request_required_integer_uint8_nullable_array_array"
+																	r.operationGroup = ""
 																	r.pathPattern = "/test_request_required_integer_uint8_nullable_array_array"
 																	r.args = args
 																	r.count = 0
@@ -30771,6 +30983,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestRequiredIntegerUintArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_required_integer_uint_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_required_integer_uint_array"
 														r.args = args
 														r.count = 0
@@ -30795,6 +31008,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestRequiredIntegerUintArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_required_integer_uint_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_required_integer_uint_array_array"
 															r.args = args
 															r.count = 0
@@ -30820,6 +31034,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestRequiredIntegerUintNullableOperation
 														r.summary = ""
 														r.operationID = "test_request_required_integer_uint_nullable"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_required_integer_uint_nullable"
 														r.args = args
 														r.count = 0
@@ -30843,6 +31058,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestRequiredIntegerUintNullableArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_required_integer_uint_nullable_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_required_integer_uint_nullable_array"
 															r.args = args
 															r.count = 0
@@ -30867,6 +31083,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestRequiredIntegerUintNullableArrayArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_required_integer_uint_nullable_array_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_required_integer_uint_nullable_array_array"
 																r.args = args
 																r.count = 0
@@ -30898,6 +31115,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestRequestRequiredIntegerUnixOperation
 												r.summary = ""
 												r.operationID = "test_request_required_integer_unix"
+												r.operationGroup = ""
 												r.pathPattern = "/test_request_required_integer_unix"
 												r.args = args
 												r.count = 0
@@ -30945,6 +31163,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestRequiredIntegerUnixMicroOperation
 															r.summary = ""
 															r.operationID = "test_request_required_integer_unix-micro"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_required_integer_unix-micro"
 															r.args = args
 															r.count = 0
@@ -30980,6 +31199,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = TestRequestRequiredIntegerUnixMicroArrayOperation
 																	r.summary = ""
 																	r.operationID = "test_request_required_integer_unix-micro_array"
+																	r.operationGroup = ""
 																	r.pathPattern = "/test_request_required_integer_unix-micro_array"
 																	r.args = args
 																	r.count = 0
@@ -31004,6 +31224,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																		r.name = TestRequestRequiredIntegerUnixMicroArrayArrayOperation
 																		r.summary = ""
 																		r.operationID = "test_request_required_integer_unix-micro_array_array"
+																		r.operationGroup = ""
 																		r.pathPattern = "/test_request_required_integer_unix-micro_array_array"
 																		r.args = args
 																		r.count = 0
@@ -31029,6 +31250,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = TestRequestRequiredIntegerUnixMicroNullableOperation
 																	r.summary = ""
 																	r.operationID = "test_request_required_integer_unix-micro_nullable"
+																	r.operationGroup = ""
 																	r.pathPattern = "/test_request_required_integer_unix-micro_nullable"
 																	r.args = args
 																	r.count = 0
@@ -31052,6 +31274,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																		r.name = TestRequestRequiredIntegerUnixMicroNullableArrayOperation
 																		r.summary = ""
 																		r.operationID = "test_request_required_integer_unix-micro_nullable_array"
+																		r.operationGroup = ""
 																		r.pathPattern = "/test_request_required_integer_unix-micro_nullable_array"
 																		r.args = args
 																		r.count = 0
@@ -31076,6 +31299,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																			r.name = TestRequestRequiredIntegerUnixMicroNullableArrayArrayOperation
 																			r.summary = ""
 																			r.operationID = "test_request_required_integer_unix-micro_nullable_array_array"
+																			r.operationGroup = ""
 																			r.pathPattern = "/test_request_required_integer_unix-micro_nullable_array_array"
 																			r.args = args
 																			r.count = 0
@@ -31107,6 +31331,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestRequiredIntegerUnixMilliOperation
 															r.summary = ""
 															r.operationID = "test_request_required_integer_unix-milli"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_required_integer_unix-milli"
 															r.args = args
 															r.count = 0
@@ -31142,6 +31367,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = TestRequestRequiredIntegerUnixMilliArrayOperation
 																	r.summary = ""
 																	r.operationID = "test_request_required_integer_unix-milli_array"
+																	r.operationGroup = ""
 																	r.pathPattern = "/test_request_required_integer_unix-milli_array"
 																	r.args = args
 																	r.count = 0
@@ -31166,6 +31392,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																		r.name = TestRequestRequiredIntegerUnixMilliArrayArrayOperation
 																		r.summary = ""
 																		r.operationID = "test_request_required_integer_unix-milli_array_array"
+																		r.operationGroup = ""
 																		r.pathPattern = "/test_request_required_integer_unix-milli_array_array"
 																		r.args = args
 																		r.count = 0
@@ -31191,6 +31418,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = TestRequestRequiredIntegerUnixMilliNullableOperation
 																	r.summary = ""
 																	r.operationID = "test_request_required_integer_unix-milli_nullable"
+																	r.operationGroup = ""
 																	r.pathPattern = "/test_request_required_integer_unix-milli_nullable"
 																	r.args = args
 																	r.count = 0
@@ -31214,6 +31442,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																		r.name = TestRequestRequiredIntegerUnixMilliNullableArrayOperation
 																		r.summary = ""
 																		r.operationID = "test_request_required_integer_unix-milli_nullable_array"
+																		r.operationGroup = ""
 																		r.pathPattern = "/test_request_required_integer_unix-milli_nullable_array"
 																		r.args = args
 																		r.count = 0
@@ -31238,6 +31467,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																			r.name = TestRequestRequiredIntegerUnixMilliNullableArrayArrayOperation
 																			r.summary = ""
 																			r.operationID = "test_request_required_integer_unix-milli_nullable_array_array"
+																			r.operationGroup = ""
 																			r.pathPattern = "/test_request_required_integer_unix-milli_nullable_array_array"
 																			r.args = args
 																			r.count = 0
@@ -31271,6 +31501,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestRequiredIntegerUnixNanoOperation
 														r.summary = ""
 														r.operationID = "test_request_required_integer_unix-nano"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_required_integer_unix-nano"
 														r.args = args
 														r.count = 0
@@ -31306,6 +31537,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestRequiredIntegerUnixNanoArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_required_integer_unix-nano_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_required_integer_unix-nano_array"
 																r.args = args
 																r.count = 0
@@ -31330,6 +31562,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = TestRequestRequiredIntegerUnixNanoArrayArrayOperation
 																	r.summary = ""
 																	r.operationID = "test_request_required_integer_unix-nano_array_array"
+																	r.operationGroup = ""
 																	r.pathPattern = "/test_request_required_integer_unix-nano_array_array"
 																	r.args = args
 																	r.count = 0
@@ -31355,6 +31588,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestRequiredIntegerUnixNanoNullableOperation
 																r.summary = ""
 																r.operationID = "test_request_required_integer_unix-nano_nullable"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_required_integer_unix-nano_nullable"
 																r.args = args
 																r.count = 0
@@ -31378,6 +31612,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = TestRequestRequiredIntegerUnixNanoNullableArrayOperation
 																	r.summary = ""
 																	r.operationID = "test_request_required_integer_unix-nano_nullable_array"
+																	r.operationGroup = ""
 																	r.pathPattern = "/test_request_required_integer_unix-nano_nullable_array"
 																	r.args = args
 																	r.count = 0
@@ -31402,6 +31637,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																		r.name = TestRequestRequiredIntegerUnixNanoNullableArrayArrayOperation
 																		r.summary = ""
 																		r.operationID = "test_request_required_integer_unix-nano_nullable_array_array"
+																		r.operationGroup = ""
 																		r.pathPattern = "/test_request_required_integer_unix-nano_nullable_array_array"
 																		r.args = args
 																		r.count = 0
@@ -31433,6 +31669,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestRequiredIntegerUnixSecondsOperation
 														r.summary = ""
 														r.operationID = "test_request_required_integer_unix-seconds"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_required_integer_unix-seconds"
 														r.args = args
 														r.count = 0
@@ -31468,6 +31705,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestRequiredIntegerUnixSecondsArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_required_integer_unix-seconds_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_required_integer_unix-seconds_array"
 																r.args = args
 																r.count = 0
@@ -31492,6 +31730,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = TestRequestRequiredIntegerUnixSecondsArrayArrayOperation
 																	r.summary = ""
 																	r.operationID = "test_request_required_integer_unix-seconds_array_array"
+																	r.operationGroup = ""
 																	r.pathPattern = "/test_request_required_integer_unix-seconds_array_array"
 																	r.args = args
 																	r.count = 0
@@ -31517,6 +31756,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestRequiredIntegerUnixSecondsNullableOperation
 																r.summary = ""
 																r.operationID = "test_request_required_integer_unix-seconds_nullable"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_required_integer_unix-seconds_nullable"
 																r.args = args
 																r.count = 0
@@ -31540,6 +31780,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = TestRequestRequiredIntegerUnixSecondsNullableArrayOperation
 																	r.summary = ""
 																	r.operationID = "test_request_required_integer_unix-seconds_nullable_array"
+																	r.operationGroup = ""
 																	r.pathPattern = "/test_request_required_integer_unix-seconds_nullable_array"
 																	r.args = args
 																	r.count = 0
@@ -31564,6 +31805,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																		r.name = TestRequestRequiredIntegerUnixSecondsNullableArrayArrayOperation
 																		r.summary = ""
 																		r.operationID = "test_request_required_integer_unix-seconds_nullable_array_array"
+																		r.operationGroup = ""
 																		r.pathPattern = "/test_request_required_integer_unix-seconds_nullable_array_array"
 																		r.args = args
 																		r.count = 0
@@ -31609,6 +31851,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestRequiredIntegerUnixArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_required_integer_unix_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_required_integer_unix_array"
 														r.args = args
 														r.count = 0
@@ -31633,6 +31876,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestRequiredIntegerUnixArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_required_integer_unix_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_required_integer_unix_array_array"
 															r.args = args
 															r.count = 0
@@ -31658,6 +31902,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestRequiredIntegerUnixNullableOperation
 														r.summary = ""
 														r.operationID = "test_request_required_integer_unix_nullable"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_required_integer_unix_nullable"
 														r.args = args
 														r.count = 0
@@ -31681,6 +31926,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestRequiredIntegerUnixNullableArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_required_integer_unix_nullable_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_required_integer_unix_nullable_array"
 															r.args = args
 															r.count = 0
@@ -31705,6 +31951,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestRequiredIntegerUnixNullableArrayArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_required_integer_unix_nullable_array_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_required_integer_unix_nullable_array_array"
 																r.args = args
 																r.count = 0
@@ -31754,6 +32001,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										r.name = TestRequestRequiredNullOperation
 										r.summary = ""
 										r.operationID = "test_request_required_null"
+										r.operationGroup = ""
 										r.pathPattern = "/test_request_required_null"
 										r.args = args
 										r.count = 0
@@ -31789,6 +32037,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestRequestRequiredNullArrayOperation
 												r.summary = ""
 												r.operationID = "test_request_required_null_array"
+												r.operationGroup = ""
 												r.pathPattern = "/test_request_required_null_array"
 												r.args = args
 												r.count = 0
@@ -31813,6 +32062,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestRequiredNullArrayArrayOperation
 													r.summary = ""
 													r.operationID = "test_request_required_null_array_array"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_required_null_array_array"
 													r.args = args
 													r.count = 0
@@ -31838,6 +32088,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestRequestRequiredNullNullableOperation
 												r.summary = ""
 												r.operationID = "test_request_required_null_nullable"
+												r.operationGroup = ""
 												r.pathPattern = "/test_request_required_null_nullable"
 												r.args = args
 												r.count = 0
@@ -31861,6 +32112,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestRequiredNullNullableArrayOperation
 													r.summary = ""
 													r.operationID = "test_request_required_null_nullable_array"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_required_null_nullable_array"
 													r.args = args
 													r.count = 0
@@ -31885,6 +32137,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestRequiredNullNullableArrayArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_required_null_nullable_array_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_required_null_nullable_array_array"
 														r.args = args
 														r.count = 0
@@ -31916,6 +32169,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										r.name = TestRequestRequiredNumberOperation
 										r.summary = ""
 										r.operationID = "test_request_required_number"
+										r.operationGroup = ""
 										r.pathPattern = "/test_request_required_number"
 										r.args = args
 										r.count = 0
@@ -31951,6 +32205,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestRequestRequiredNumberArrayOperation
 												r.summary = ""
 												r.operationID = "test_request_required_number_array"
+												r.operationGroup = ""
 												r.pathPattern = "/test_request_required_number_array"
 												r.args = args
 												r.count = 0
@@ -31975,6 +32230,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestRequiredNumberArrayArrayOperation
 													r.summary = ""
 													r.operationID = "test_request_required_number_array_array"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_required_number_array_array"
 													r.args = args
 													r.count = 0
@@ -32012,6 +32268,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestRequiredNumberDecimalOperation
 													r.summary = ""
 													r.operationID = "test_request_required_number_decimal"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_required_number_decimal"
 													r.args = args
 													r.count = 0
@@ -32047,6 +32304,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestRequiredNumberDecimalArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_required_number_decimal_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_required_number_decimal_array"
 															r.args = args
 															r.count = 0
@@ -32071,6 +32329,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestRequiredNumberDecimalArrayArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_required_number_decimal_array_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_required_number_decimal_array_array"
 																r.args = args
 																r.count = 0
@@ -32096,6 +32355,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestRequiredNumberDecimalNullableOperation
 															r.summary = ""
 															r.operationID = "test_request_required_number_decimal_nullable"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_required_number_decimal_nullable"
 															r.args = args
 															r.count = 0
@@ -32119,6 +32379,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestRequiredNumberDecimalNullableArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_required_number_decimal_nullable_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_required_number_decimal_nullable_array"
 																r.args = args
 																r.count = 0
@@ -32143,6 +32404,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = TestRequestRequiredNumberDecimalNullableArrayArrayOperation
 																	r.summary = ""
 																	r.operationID = "test_request_required_number_decimal_nullable_array_array"
+																	r.operationGroup = ""
 																	r.pathPattern = "/test_request_required_number_decimal_nullable_array_array"
 																	r.args = args
 																	r.count = 0
@@ -32174,6 +32436,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestRequiredNumberDoubleOperation
 													r.summary = ""
 													r.operationID = "test_request_required_number_double"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_required_number_double"
 													r.args = args
 													r.count = 0
@@ -32209,6 +32472,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestRequiredNumberDoubleArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_required_number_double_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_required_number_double_array"
 															r.args = args
 															r.count = 0
@@ -32233,6 +32497,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestRequiredNumberDoubleArrayArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_required_number_double_array_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_required_number_double_array_array"
 																r.args = args
 																r.count = 0
@@ -32258,6 +32523,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestRequiredNumberDoubleNullableOperation
 															r.summary = ""
 															r.operationID = "test_request_required_number_double_nullable"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_required_number_double_nullable"
 															r.args = args
 															r.count = 0
@@ -32281,6 +32547,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestRequiredNumberDoubleNullableArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_required_number_double_nullable_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_required_number_double_nullable_array"
 																r.args = args
 																r.count = 0
@@ -32305,6 +32572,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = TestRequestRequiredNumberDoubleNullableArrayArrayOperation
 																	r.summary = ""
 																	r.operationID = "test_request_required_number_double_nullable_array_array"
+																	r.operationGroup = ""
 																	r.pathPattern = "/test_request_required_number_double_nullable_array_array"
 																	r.args = args
 																	r.count = 0
@@ -32338,6 +32606,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestRequestRequiredNumberFloatOperation
 												r.summary = ""
 												r.operationID = "test_request_required_number_float"
+												r.operationGroup = ""
 												r.pathPattern = "/test_request_required_number_float"
 												r.args = args
 												r.count = 0
@@ -32373,6 +32642,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestRequiredNumberFloatArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_required_number_float_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_required_number_float_array"
 														r.args = args
 														r.count = 0
@@ -32397,6 +32667,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestRequiredNumberFloatArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_required_number_float_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_required_number_float_array_array"
 															r.args = args
 															r.count = 0
@@ -32422,6 +32693,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestRequiredNumberFloatNullableOperation
 														r.summary = ""
 														r.operationID = "test_request_required_number_float_nullable"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_required_number_float_nullable"
 														r.args = args
 														r.count = 0
@@ -32445,6 +32717,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestRequiredNumberFloatNullableArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_required_number_float_nullable_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_required_number_float_nullable_array"
 															r.args = args
 															r.count = 0
@@ -32469,6 +32742,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestRequiredNumberFloatNullableArrayArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_required_number_float_nullable_array_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_required_number_float_nullable_array_array"
 																r.args = args
 																r.count = 0
@@ -32512,6 +32786,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestRequiredNumberInt32Operation
 													r.summary = ""
 													r.operationID = "test_request_required_number_int32"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_required_number_int32"
 													r.args = args
 													r.count = 0
@@ -32547,6 +32822,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestRequiredNumberInt32ArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_required_number_int32_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_required_number_int32_array"
 															r.args = args
 															r.count = 0
@@ -32571,6 +32847,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestRequiredNumberInt32ArrayArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_required_number_int32_array_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_required_number_int32_array_array"
 																r.args = args
 																r.count = 0
@@ -32596,6 +32873,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestRequiredNumberInt32NullableOperation
 															r.summary = ""
 															r.operationID = "test_request_required_number_int32_nullable"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_required_number_int32_nullable"
 															r.args = args
 															r.count = 0
@@ -32619,6 +32897,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestRequiredNumberInt32NullableArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_required_number_int32_nullable_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_required_number_int32_nullable_array"
 																r.args = args
 																r.count = 0
@@ -32643,6 +32922,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = TestRequestRequiredNumberInt32NullableArrayArrayOperation
 																	r.summary = ""
 																	r.operationID = "test_request_required_number_int32_nullable_array_array"
+																	r.operationGroup = ""
 																	r.pathPattern = "/test_request_required_number_int32_nullable_array_array"
 																	r.args = args
 																	r.count = 0
@@ -32674,6 +32954,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestRequiredNumberInt64Operation
 													r.summary = ""
 													r.operationID = "test_request_required_number_int64"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_required_number_int64"
 													r.args = args
 													r.count = 0
@@ -32709,6 +32990,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestRequiredNumberInt64ArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_required_number_int64_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_required_number_int64_array"
 															r.args = args
 															r.count = 0
@@ -32733,6 +33015,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestRequiredNumberInt64ArrayArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_required_number_int64_array_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_required_number_int64_array_array"
 																r.args = args
 																r.count = 0
@@ -32758,6 +33041,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestRequiredNumberInt64NullableOperation
 															r.summary = ""
 															r.operationID = "test_request_required_number_int64_nullable"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_required_number_int64_nullable"
 															r.args = args
 															r.count = 0
@@ -32781,6 +33065,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestRequiredNumberInt64NullableArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_required_number_int64_nullable_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_required_number_int64_nullable_array"
 																r.args = args
 																r.count = 0
@@ -32805,6 +33090,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = TestRequestRequiredNumberInt64NullableArrayArrayOperation
 																	r.summary = ""
 																	r.operationID = "test_request_required_number_int64_nullable_array_array"
+																	r.operationGroup = ""
 																	r.pathPattern = "/test_request_required_number_int64_nullable_array_array"
 																	r.args = args
 																	r.count = 0
@@ -32838,6 +33124,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestRequestRequiredNumberNullableOperation
 												r.summary = ""
 												r.operationID = "test_request_required_number_nullable"
+												r.operationGroup = ""
 												r.pathPattern = "/test_request_required_number_nullable"
 												r.args = args
 												r.count = 0
@@ -32861,6 +33148,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestRequiredNumberNullableArrayOperation
 													r.summary = ""
 													r.operationID = "test_request_required_number_nullable_array"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_required_number_nullable_array"
 													r.args = args
 													r.count = 0
@@ -32885,6 +33173,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestRequiredNumberNullableArrayArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_required_number_nullable_array_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_required_number_nullable_array_array"
 														r.args = args
 														r.count = 0
@@ -32918,6 +33207,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									r.name = TestRequestRequiredStringOperation
 									r.summary = ""
 									r.operationID = "test_request_required_string"
+									r.operationGroup = ""
 									r.pathPattern = "/test_request_required_string"
 									r.args = args
 									r.count = 0
@@ -32953,6 +33243,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = TestRequestRequiredStringArrayOperation
 											r.summary = ""
 											r.operationID = "test_request_required_string_array"
+											r.operationGroup = ""
 											r.pathPattern = "/test_request_required_string_array"
 											r.args = args
 											r.count = 0
@@ -32977,6 +33268,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestRequestRequiredStringArrayArrayOperation
 												r.summary = ""
 												r.operationID = "test_request_required_string_array_array"
+												r.operationGroup = ""
 												r.pathPattern = "/test_request_required_string_array_array"
 												r.args = args
 												r.count = 0
@@ -33014,6 +33306,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestRequestRequiredStringBase64Operation
 												r.summary = ""
 												r.operationID = "test_request_required_string_base64"
+												r.operationGroup = ""
 												r.pathPattern = "/test_request_required_string_base64"
 												r.args = args
 												r.count = 0
@@ -33049,6 +33342,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestRequiredStringBase64ArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_required_string_base64_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_required_string_base64_array"
 														r.args = args
 														r.count = 0
@@ -33073,6 +33367,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestRequiredStringBase64ArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_required_string_base64_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_required_string_base64_array_array"
 															r.args = args
 															r.count = 0
@@ -33098,6 +33393,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestRequiredStringBase64NullableOperation
 														r.summary = ""
 														r.operationID = "test_request_required_string_base64_nullable"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_required_string_base64_nullable"
 														r.args = args
 														r.count = 0
@@ -33121,6 +33417,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestRequiredStringBase64NullableArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_required_string_base64_nullable_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_required_string_base64_nullable_array"
 															r.args = args
 															r.count = 0
@@ -33145,6 +33442,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestRequiredStringBase64NullableArrayArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_required_string_base64_nullable_array_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_required_string_base64_nullable_array_array"
 																r.args = args
 																r.count = 0
@@ -33176,6 +33474,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestRequestRequiredStringBinaryOperation
 												r.summary = ""
 												r.operationID = "test_request_required_string_binary"
+												r.operationGroup = ""
 												r.pathPattern = "/test_request_required_string_binary"
 												r.args = args
 												r.count = 0
@@ -33211,6 +33510,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestRequiredStringBinaryArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_required_string_binary_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_required_string_binary_array"
 														r.args = args
 														r.count = 0
@@ -33235,6 +33535,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestRequiredStringBinaryArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_required_string_binary_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_required_string_binary_array_array"
 															r.args = args
 															r.count = 0
@@ -33260,6 +33561,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestRequiredStringBinaryNullableOperation
 														r.summary = ""
 														r.operationID = "test_request_required_string_binary_nullable"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_required_string_binary_nullable"
 														r.args = args
 														r.count = 0
@@ -33283,6 +33585,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestRequiredStringBinaryNullableArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_required_string_binary_nullable_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_required_string_binary_nullable_array"
 															r.args = args
 															r.count = 0
@@ -33307,6 +33610,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestRequiredStringBinaryNullableArrayArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_required_string_binary_nullable_array_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_required_string_binary_nullable_array_array"
 																r.args = args
 																r.count = 0
@@ -33338,6 +33642,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestRequestRequiredStringByteOperation
 												r.summary = ""
 												r.operationID = "test_request_required_string_byte"
+												r.operationGroup = ""
 												r.pathPattern = "/test_request_required_string_byte"
 												r.args = args
 												r.count = 0
@@ -33373,6 +33678,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestRequiredStringByteArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_required_string_byte_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_required_string_byte_array"
 														r.args = args
 														r.count = 0
@@ -33397,6 +33703,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestRequiredStringByteArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_required_string_byte_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_required_string_byte_array_array"
 															r.args = args
 															r.count = 0
@@ -33422,6 +33729,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestRequiredStringByteNullableOperation
 														r.summary = ""
 														r.operationID = "test_request_required_string_byte_nullable"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_required_string_byte_nullable"
 														r.args = args
 														r.count = 0
@@ -33445,6 +33753,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestRequiredStringByteNullableArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_required_string_byte_nullable_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_required_string_byte_nullable_array"
 															r.args = args
 															r.count = 0
@@ -33469,6 +33778,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestRequiredStringByteNullableArrayArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_required_string_byte_nullable_array_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_required_string_byte_nullable_array_array"
 																r.args = args
 																r.count = 0
@@ -33514,6 +33824,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestRequestRequiredStringDateOperation
 												r.summary = ""
 												r.operationID = "test_request_required_string_date"
+												r.operationGroup = ""
 												r.pathPattern = "/test_request_required_string_date"
 												r.args = args
 												r.count = 0
@@ -33537,6 +33848,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestRequiredStringDateTimeOperation
 													r.summary = ""
 													r.operationID = "test_request_required_string_date-time"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_required_string_date-time"
 													r.args = args
 													r.count = 0
@@ -33572,6 +33884,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestRequiredStringDateTimeArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_required_string_date-time_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_required_string_date-time_array"
 															r.args = args
 															r.count = 0
@@ -33596,6 +33909,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestRequiredStringDateTimeArrayArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_required_string_date-time_array_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_required_string_date-time_array_array"
 																r.args = args
 																r.count = 0
@@ -33621,6 +33935,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestRequiredStringDateTimeNullableOperation
 															r.summary = ""
 															r.operationID = "test_request_required_string_date-time_nullable"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_required_string_date-time_nullable"
 															r.args = args
 															r.count = 0
@@ -33644,6 +33959,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestRequiredStringDateTimeNullableArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_required_string_date-time_nullable_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_required_string_date-time_nullable_array"
 																r.args = args
 																r.count = 0
@@ -33668,6 +33984,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = TestRequestRequiredStringDateTimeNullableArrayArrayOperation
 																	r.summary = ""
 																	r.operationID = "test_request_required_string_date-time_nullable_array_array"
+																	r.operationGroup = ""
 																	r.pathPattern = "/test_request_required_string_date-time_nullable_array_array"
 																	r.args = args
 																	r.count = 0
@@ -33711,6 +34028,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestRequiredStringDateArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_required_string_date_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_required_string_date_array"
 														r.args = args
 														r.count = 0
@@ -33735,6 +34053,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestRequiredStringDateArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_required_string_date_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_required_string_date_array_array"
 															r.args = args
 															r.count = 0
@@ -33760,6 +34079,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestRequiredStringDateNullableOperation
 														r.summary = ""
 														r.operationID = "test_request_required_string_date_nullable"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_required_string_date_nullable"
 														r.args = args
 														r.count = 0
@@ -33783,6 +34103,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestRequiredStringDateNullableArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_required_string_date_nullable_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_required_string_date_nullable_array"
 															r.args = args
 															r.count = 0
@@ -33807,6 +34128,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestRequiredStringDateNullableArrayArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_required_string_date_nullable_array_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_required_string_date_nullable_array_array"
 																r.args = args
 																r.count = 0
@@ -33838,6 +34160,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestRequestRequiredStringDecimalOperation
 												r.summary = ""
 												r.operationID = "test_request_required_string_decimal"
+												r.operationGroup = ""
 												r.pathPattern = "/test_request_required_string_decimal"
 												r.args = args
 												r.count = 0
@@ -33873,6 +34196,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestRequiredStringDecimalArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_required_string_decimal_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_required_string_decimal_array"
 														r.args = args
 														r.count = 0
@@ -33897,6 +34221,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestRequiredStringDecimalArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_required_string_decimal_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_required_string_decimal_array_array"
 															r.args = args
 															r.count = 0
@@ -33922,6 +34247,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestRequiredStringDecimalNullableOperation
 														r.summary = ""
 														r.operationID = "test_request_required_string_decimal_nullable"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_required_string_decimal_nullable"
 														r.args = args
 														r.count = 0
@@ -33945,6 +34271,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestRequiredStringDecimalNullableArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_required_string_decimal_nullable_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_required_string_decimal_nullable_array"
 															r.args = args
 															r.count = 0
@@ -33969,6 +34296,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestRequiredStringDecimalNullableArrayArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_required_string_decimal_nullable_array_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_required_string_decimal_nullable_array_array"
 																r.args = args
 																r.count = 0
@@ -34000,6 +34328,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestRequestRequiredStringDurationOperation
 												r.summary = ""
 												r.operationID = "test_request_required_string_duration"
+												r.operationGroup = ""
 												r.pathPattern = "/test_request_required_string_duration"
 												r.args = args
 												r.count = 0
@@ -34035,6 +34364,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestRequiredStringDurationArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_required_string_duration_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_required_string_duration_array"
 														r.args = args
 														r.count = 0
@@ -34059,6 +34389,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestRequiredStringDurationArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_required_string_duration_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_required_string_duration_array_array"
 															r.args = args
 															r.count = 0
@@ -34084,6 +34415,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestRequiredStringDurationNullableOperation
 														r.summary = ""
 														r.operationID = "test_request_required_string_duration_nullable"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_required_string_duration_nullable"
 														r.args = args
 														r.count = 0
@@ -34107,6 +34439,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestRequiredStringDurationNullableArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_required_string_duration_nullable_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_required_string_duration_nullable_array"
 															r.args = args
 															r.count = 0
@@ -34131,6 +34464,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestRequiredStringDurationNullableArrayArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_required_string_duration_nullable_array_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_required_string_duration_nullable_array_array"
 																r.args = args
 																r.count = 0
@@ -34164,6 +34498,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = TestRequestRequiredStringEmailOperation
 											r.summary = ""
 											r.operationID = "test_request_required_string_email"
+											r.operationGroup = ""
 											r.pathPattern = "/test_request_required_string_email"
 											r.args = args
 											r.count = 0
@@ -34199,6 +34534,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestRequiredStringEmailArrayOperation
 													r.summary = ""
 													r.operationID = "test_request_required_string_email_array"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_required_string_email_array"
 													r.args = args
 													r.count = 0
@@ -34223,6 +34559,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestRequiredStringEmailArrayArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_required_string_email_array_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_required_string_email_array_array"
 														r.args = args
 														r.count = 0
@@ -34248,6 +34585,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestRequiredStringEmailNullableOperation
 													r.summary = ""
 													r.operationID = "test_request_required_string_email_nullable"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_required_string_email_nullable"
 													r.args = args
 													r.count = 0
@@ -34271,6 +34609,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestRequiredStringEmailNullableArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_required_string_email_nullable_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_required_string_email_nullable_array"
 														r.args = args
 														r.count = 0
@@ -34295,6 +34634,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestRequiredStringEmailNullableArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_required_string_email_nullable_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_required_string_email_nullable_array_array"
 															r.args = args
 															r.count = 0
@@ -34338,6 +34678,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestRequestRequiredStringFloat32Operation
 												r.summary = ""
 												r.operationID = "test_request_required_string_float32"
+												r.operationGroup = ""
 												r.pathPattern = "/test_request_required_string_float32"
 												r.args = args
 												r.count = 0
@@ -34373,6 +34714,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestRequiredStringFloat32ArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_required_string_float32_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_required_string_float32_array"
 														r.args = args
 														r.count = 0
@@ -34397,6 +34739,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestRequiredStringFloat32ArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_required_string_float32_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_required_string_float32_array_array"
 															r.args = args
 															r.count = 0
@@ -34422,6 +34765,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestRequiredStringFloat32NullableOperation
 														r.summary = ""
 														r.operationID = "test_request_required_string_float32_nullable"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_required_string_float32_nullable"
 														r.args = args
 														r.count = 0
@@ -34445,6 +34789,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestRequiredStringFloat32NullableArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_required_string_float32_nullable_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_required_string_float32_nullable_array"
 															r.args = args
 															r.count = 0
@@ -34469,6 +34814,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestRequiredStringFloat32NullableArrayArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_required_string_float32_nullable_array_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_required_string_float32_nullable_array_array"
 																r.args = args
 																r.count = 0
@@ -34500,6 +34846,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestRequestRequiredStringFloat64Operation
 												r.summary = ""
 												r.operationID = "test_request_required_string_float64"
+												r.operationGroup = ""
 												r.pathPattern = "/test_request_required_string_float64"
 												r.args = args
 												r.count = 0
@@ -34535,6 +34882,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestRequiredStringFloat64ArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_required_string_float64_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_required_string_float64_array"
 														r.args = args
 														r.count = 0
@@ -34559,6 +34907,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestRequiredStringFloat64ArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_required_string_float64_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_required_string_float64_array_array"
 															r.args = args
 															r.count = 0
@@ -34584,6 +34933,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestRequiredStringFloat64NullableOperation
 														r.summary = ""
 														r.operationID = "test_request_required_string_float64_nullable"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_required_string_float64_nullable"
 														r.args = args
 														r.count = 0
@@ -34607,6 +34957,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestRequiredStringFloat64NullableArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_required_string_float64_nullable_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_required_string_float64_nullable_array"
 															r.args = args
 															r.count = 0
@@ -34631,6 +34982,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestRequiredStringFloat64NullableArrayArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_required_string_float64_nullable_array_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_required_string_float64_nullable_array_array"
 																r.args = args
 																r.count = 0
@@ -34664,6 +35016,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = TestRequestRequiredStringHostnameOperation
 											r.summary = ""
 											r.operationID = "test_request_required_string_hostname"
+											r.operationGroup = ""
 											r.pathPattern = "/test_request_required_string_hostname"
 											r.args = args
 											r.count = 0
@@ -34699,6 +35052,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestRequiredStringHostnameArrayOperation
 													r.summary = ""
 													r.operationID = "test_request_required_string_hostname_array"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_required_string_hostname_array"
 													r.args = args
 													r.count = 0
@@ -34723,6 +35077,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestRequiredStringHostnameArrayArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_required_string_hostname_array_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_required_string_hostname_array_array"
 														r.args = args
 														r.count = 0
@@ -34748,6 +35103,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestRequiredStringHostnameNullableOperation
 													r.summary = ""
 													r.operationID = "test_request_required_string_hostname_nullable"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_required_string_hostname_nullable"
 													r.args = args
 													r.count = 0
@@ -34771,6 +35127,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestRequiredStringHostnameNullableArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_required_string_hostname_nullable_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_required_string_hostname_nullable_array"
 														r.args = args
 														r.count = 0
@@ -34795,6 +35152,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestRequiredStringHostnameNullableArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_required_string_hostname_nullable_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_required_string_hostname_nullable_array_array"
 															r.args = args
 															r.count = 0
@@ -34838,6 +35196,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestRequestRequiredStringIntOperation
 												r.summary = ""
 												r.operationID = "test_request_required_string_int"
+												r.operationGroup = ""
 												r.pathPattern = "/test_request_required_string_int"
 												r.args = args
 												r.count = 0
@@ -34861,6 +35220,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestRequiredStringInt16Operation
 													r.summary = ""
 													r.operationID = "test_request_required_string_int16"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_required_string_int16"
 													r.args = args
 													r.count = 0
@@ -34896,6 +35256,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestRequiredStringInt16ArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_required_string_int16_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_required_string_int16_array"
 															r.args = args
 															r.count = 0
@@ -34920,6 +35281,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestRequiredStringInt16ArrayArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_required_string_int16_array_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_required_string_int16_array_array"
 																r.args = args
 																r.count = 0
@@ -34945,6 +35307,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestRequiredStringInt16NullableOperation
 															r.summary = ""
 															r.operationID = "test_request_required_string_int16_nullable"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_required_string_int16_nullable"
 															r.args = args
 															r.count = 0
@@ -34968,6 +35331,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestRequiredStringInt16NullableArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_required_string_int16_nullable_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_required_string_int16_nullable_array"
 																r.args = args
 																r.count = 0
@@ -34992,6 +35356,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = TestRequestRequiredStringInt16NullableArrayArrayOperation
 																	r.summary = ""
 																	r.operationID = "test_request_required_string_int16_nullable_array_array"
+																	r.operationGroup = ""
 																	r.pathPattern = "/test_request_required_string_int16_nullable_array_array"
 																	r.args = args
 																	r.count = 0
@@ -35023,6 +35388,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestRequiredStringInt32Operation
 													r.summary = ""
 													r.operationID = "test_request_required_string_int32"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_required_string_int32"
 													r.args = args
 													r.count = 0
@@ -35058,6 +35424,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestRequiredStringInt32ArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_required_string_int32_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_required_string_int32_array"
 															r.args = args
 															r.count = 0
@@ -35082,6 +35449,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestRequiredStringInt32ArrayArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_required_string_int32_array_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_required_string_int32_array_array"
 																r.args = args
 																r.count = 0
@@ -35107,6 +35475,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestRequiredStringInt32NullableOperation
 															r.summary = ""
 															r.operationID = "test_request_required_string_int32_nullable"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_required_string_int32_nullable"
 															r.args = args
 															r.count = 0
@@ -35130,6 +35499,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestRequiredStringInt32NullableArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_required_string_int32_nullable_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_required_string_int32_nullable_array"
 																r.args = args
 																r.count = 0
@@ -35154,6 +35524,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = TestRequestRequiredStringInt32NullableArrayArrayOperation
 																	r.summary = ""
 																	r.operationID = "test_request_required_string_int32_nullable_array_array"
+																	r.operationGroup = ""
 																	r.pathPattern = "/test_request_required_string_int32_nullable_array_array"
 																	r.args = args
 																	r.count = 0
@@ -35185,6 +35556,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestRequiredStringInt64Operation
 													r.summary = ""
 													r.operationID = "test_request_required_string_int64"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_required_string_int64"
 													r.args = args
 													r.count = 0
@@ -35220,6 +35592,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestRequiredStringInt64ArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_required_string_int64_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_required_string_int64_array"
 															r.args = args
 															r.count = 0
@@ -35244,6 +35617,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestRequiredStringInt64ArrayArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_required_string_int64_array_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_required_string_int64_array_array"
 																r.args = args
 																r.count = 0
@@ -35269,6 +35643,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestRequiredStringInt64NullableOperation
 															r.summary = ""
 															r.operationID = "test_request_required_string_int64_nullable"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_required_string_int64_nullable"
 															r.args = args
 															r.count = 0
@@ -35292,6 +35667,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestRequiredStringInt64NullableArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_required_string_int64_nullable_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_required_string_int64_nullable_array"
 																r.args = args
 																r.count = 0
@@ -35316,6 +35692,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = TestRequestRequiredStringInt64NullableArrayArrayOperation
 																	r.summary = ""
 																	r.operationID = "test_request_required_string_int64_nullable_array_array"
+																	r.operationGroup = ""
 																	r.pathPattern = "/test_request_required_string_int64_nullable_array_array"
 																	r.args = args
 																	r.count = 0
@@ -35347,6 +35724,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestRequiredStringInt8Operation
 													r.summary = ""
 													r.operationID = "test_request_required_string_int8"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_required_string_int8"
 													r.args = args
 													r.count = 0
@@ -35382,6 +35760,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestRequiredStringInt8ArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_required_string_int8_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_required_string_int8_array"
 															r.args = args
 															r.count = 0
@@ -35406,6 +35785,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestRequiredStringInt8ArrayArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_required_string_int8_array_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_required_string_int8_array_array"
 																r.args = args
 																r.count = 0
@@ -35431,6 +35811,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestRequiredStringInt8NullableOperation
 															r.summary = ""
 															r.operationID = "test_request_required_string_int8_nullable"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_required_string_int8_nullable"
 															r.args = args
 															r.count = 0
@@ -35454,6 +35835,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestRequiredStringInt8NullableArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_required_string_int8_nullable_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_required_string_int8_nullable_array"
 																r.args = args
 																r.count = 0
@@ -35478,6 +35860,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = TestRequestRequiredStringInt8NullableArrayArrayOperation
 																	r.summary = ""
 																	r.operationID = "test_request_required_string_int8_nullable_array_array"
+																	r.operationGroup = ""
 																	r.pathPattern = "/test_request_required_string_int8_nullable_array_array"
 																	r.args = args
 																	r.count = 0
@@ -35521,6 +35904,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestRequiredStringIntArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_required_string_int_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_required_string_int_array"
 														r.args = args
 														r.count = 0
@@ -35545,6 +35929,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestRequiredStringIntArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_required_string_int_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_required_string_int_array_array"
 															r.args = args
 															r.count = 0
@@ -35570,6 +35955,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestRequiredStringIntNullableOperation
 														r.summary = ""
 														r.operationID = "test_request_required_string_int_nullable"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_required_string_int_nullable"
 														r.args = args
 														r.count = 0
@@ -35593,6 +35979,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestRequiredStringIntNullableArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_required_string_int_nullable_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_required_string_int_nullable_array"
 															r.args = args
 															r.count = 0
@@ -35617,6 +36004,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestRequiredStringIntNullableArrayArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_required_string_int_nullable_array_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_required_string_int_nullable_array_array"
 																r.args = args
 																r.count = 0
@@ -35648,6 +36036,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestRequestRequiredStringIPOperation
 												r.summary = ""
 												r.operationID = "test_request_required_string_ip"
+												r.operationGroup = ""
 												r.pathPattern = "/test_request_required_string_ip"
 												r.args = args
 												r.count = 0
@@ -35683,6 +36072,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestRequiredStringIPArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_required_string_ip_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_required_string_ip_array"
 														r.args = args
 														r.count = 0
@@ -35707,6 +36097,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestRequiredStringIPArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_required_string_ip_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_required_string_ip_array_array"
 															r.args = args
 															r.count = 0
@@ -35732,6 +36123,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestRequiredStringIPNullableOperation
 														r.summary = ""
 														r.operationID = "test_request_required_string_ip_nullable"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_required_string_ip_nullable"
 														r.args = args
 														r.count = 0
@@ -35755,6 +36147,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestRequiredStringIPNullableArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_required_string_ip_nullable_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_required_string_ip_nullable_array"
 															r.args = args
 															r.count = 0
@@ -35779,6 +36172,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestRequiredStringIPNullableArrayArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_required_string_ip_nullable_array_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_required_string_ip_nullable_array_array"
 																r.args = args
 																r.count = 0
@@ -35820,6 +36214,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestRequiredStringIpv4Operation
 														r.summary = ""
 														r.operationID = "test_request_required_string_ipv4"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_required_string_ipv4"
 														r.args = args
 														r.count = 0
@@ -35855,6 +36250,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestRequiredStringIpv4ArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_required_string_ipv4_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_required_string_ipv4_array"
 																r.args = args
 																r.count = 0
@@ -35879,6 +36275,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = TestRequestRequiredStringIpv4ArrayArrayOperation
 																	r.summary = ""
 																	r.operationID = "test_request_required_string_ipv4_array_array"
+																	r.operationGroup = ""
 																	r.pathPattern = "/test_request_required_string_ipv4_array_array"
 																	r.args = args
 																	r.count = 0
@@ -35904,6 +36301,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestRequiredStringIpv4NullableOperation
 																r.summary = ""
 																r.operationID = "test_request_required_string_ipv4_nullable"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_required_string_ipv4_nullable"
 																r.args = args
 																r.count = 0
@@ -35927,6 +36325,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = TestRequestRequiredStringIpv4NullableArrayOperation
 																	r.summary = ""
 																	r.operationID = "test_request_required_string_ipv4_nullable_array"
+																	r.operationGroup = ""
 																	r.pathPattern = "/test_request_required_string_ipv4_nullable_array"
 																	r.args = args
 																	r.count = 0
@@ -35951,6 +36350,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																		r.name = TestRequestRequiredStringIpv4NullableArrayArrayOperation
 																		r.summary = ""
 																		r.operationID = "test_request_required_string_ipv4_nullable_array_array"
+																		r.operationGroup = ""
 																		r.pathPattern = "/test_request_required_string_ipv4_nullable_array_array"
 																		r.args = args
 																		r.count = 0
@@ -35982,6 +36382,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestRequiredStringIpv6Operation
 														r.summary = ""
 														r.operationID = "test_request_required_string_ipv6"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_required_string_ipv6"
 														r.args = args
 														r.count = 0
@@ -36017,6 +36418,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestRequiredStringIpv6ArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_required_string_ipv6_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_required_string_ipv6_array"
 																r.args = args
 																r.count = 0
@@ -36041,6 +36443,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = TestRequestRequiredStringIpv6ArrayArrayOperation
 																	r.summary = ""
 																	r.operationID = "test_request_required_string_ipv6_array_array"
+																	r.operationGroup = ""
 																	r.pathPattern = "/test_request_required_string_ipv6_array_array"
 																	r.args = args
 																	r.count = 0
@@ -36066,6 +36469,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestRequiredStringIpv6NullableOperation
 																r.summary = ""
 																r.operationID = "test_request_required_string_ipv6_nullable"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_required_string_ipv6_nullable"
 																r.args = args
 																r.count = 0
@@ -36089,6 +36493,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = TestRequestRequiredStringIpv6NullableArrayOperation
 																	r.summary = ""
 																	r.operationID = "test_request_required_string_ipv6_nullable_array"
+																	r.operationGroup = ""
 																	r.pathPattern = "/test_request_required_string_ipv6_nullable_array"
 																	r.args = args
 																	r.count = 0
@@ -36113,6 +36518,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																		r.name = TestRequestRequiredStringIpv6NullableArrayArrayOperation
 																		r.summary = ""
 																		r.operationID = "test_request_required_string_ipv6_nullable_array_array"
+																		r.operationGroup = ""
 																		r.pathPattern = "/test_request_required_string_ipv6_nullable_array_array"
 																		r.args = args
 																		r.count = 0
@@ -36150,6 +36556,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = TestRequestRequiredStringMACOperation
 											r.summary = ""
 											r.operationID = "test_request_required_string_mac"
+											r.operationGroup = ""
 											r.pathPattern = "/test_request_required_string_mac"
 											r.args = args
 											r.count = 0
@@ -36185,6 +36592,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestRequiredStringMACArrayOperation
 													r.summary = ""
 													r.operationID = "test_request_required_string_mac_array"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_required_string_mac_array"
 													r.args = args
 													r.count = 0
@@ -36209,6 +36617,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestRequiredStringMACArrayArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_required_string_mac_array_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_required_string_mac_array_array"
 														r.args = args
 														r.count = 0
@@ -36234,6 +36643,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestRequiredStringMACNullableOperation
 													r.summary = ""
 													r.operationID = "test_request_required_string_mac_nullable"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_required_string_mac_nullable"
 													r.args = args
 													r.count = 0
@@ -36257,6 +36667,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestRequiredStringMACNullableArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_required_string_mac_nullable_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_required_string_mac_nullable_array"
 														r.args = args
 														r.count = 0
@@ -36281,6 +36692,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestRequiredStringMACNullableArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_required_string_mac_nullable_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_required_string_mac_nullable_array_array"
 															r.args = args
 															r.count = 0
@@ -36312,6 +36724,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = TestRequestRequiredStringNullableOperation
 											r.summary = ""
 											r.operationID = "test_request_required_string_nullable"
+											r.operationGroup = ""
 											r.pathPattern = "/test_request_required_string_nullable"
 											r.args = args
 											r.count = 0
@@ -36335,6 +36748,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestRequestRequiredStringNullableArrayOperation
 												r.summary = ""
 												r.operationID = "test_request_required_string_nullable_array"
+												r.operationGroup = ""
 												r.pathPattern = "/test_request_required_string_nullable_array"
 												r.args = args
 												r.count = 0
@@ -36359,6 +36773,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestRequiredStringNullableArrayArrayOperation
 													r.summary = ""
 													r.operationID = "test_request_required_string_nullable_array_array"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_required_string_nullable_array_array"
 													r.args = args
 													r.count = 0
@@ -36386,6 +36801,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = TestRequestRequiredStringPasswordOperation
 											r.summary = ""
 											r.operationID = "test_request_required_string_password"
+											r.operationGroup = ""
 											r.pathPattern = "/test_request_required_string_password"
 											r.args = args
 											r.count = 0
@@ -36421,6 +36837,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestRequiredStringPasswordArrayOperation
 													r.summary = ""
 													r.operationID = "test_request_required_string_password_array"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_required_string_password_array"
 													r.args = args
 													r.count = 0
@@ -36445,6 +36862,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestRequiredStringPasswordArrayArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_required_string_password_array_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_required_string_password_array_array"
 														r.args = args
 														r.count = 0
@@ -36470,6 +36888,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestRequiredStringPasswordNullableOperation
 													r.summary = ""
 													r.operationID = "test_request_required_string_password_nullable"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_required_string_password_nullable"
 													r.args = args
 													r.count = 0
@@ -36493,6 +36912,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestRequiredStringPasswordNullableArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_required_string_password_nullable_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_required_string_password_nullable_array"
 														r.args = args
 														r.count = 0
@@ -36517,6 +36937,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestRequiredStringPasswordNullableArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_required_string_password_nullable_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_required_string_password_nullable_array_array"
 															r.args = args
 															r.count = 0
@@ -36548,6 +36969,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = TestRequestRequiredStringTimeOperation
 											r.summary = ""
 											r.operationID = "test_request_required_string_time"
+											r.operationGroup = ""
 											r.pathPattern = "/test_request_required_string_time"
 											r.args = args
 											r.count = 0
@@ -36583,6 +37005,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestRequiredStringTimeArrayOperation
 													r.summary = ""
 													r.operationID = "test_request_required_string_time_array"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_required_string_time_array"
 													r.args = args
 													r.count = 0
@@ -36607,6 +37030,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestRequiredStringTimeArrayArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_required_string_time_array_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_required_string_time_array_array"
 														r.args = args
 														r.count = 0
@@ -36632,6 +37056,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestRequiredStringTimeNullableOperation
 													r.summary = ""
 													r.operationID = "test_request_required_string_time_nullable"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_required_string_time_nullable"
 													r.args = args
 													r.count = 0
@@ -36655,6 +37080,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestRequiredStringTimeNullableArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_required_string_time_nullable_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_required_string_time_nullable_array"
 														r.args = args
 														r.count = 0
@@ -36679,6 +37105,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestRequiredStringTimeNullableArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_required_string_time_nullable_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_required_string_time_nullable_array_array"
 															r.args = args
 															r.count = 0
@@ -36722,6 +37149,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestRequestRequiredStringUintOperation
 												r.summary = ""
 												r.operationID = "test_request_required_string_uint"
+												r.operationGroup = ""
 												r.pathPattern = "/test_request_required_string_uint"
 												r.args = args
 												r.count = 0
@@ -36745,6 +37173,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestRequiredStringUint16Operation
 													r.summary = ""
 													r.operationID = "test_request_required_string_uint16"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_required_string_uint16"
 													r.args = args
 													r.count = 0
@@ -36780,6 +37209,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestRequiredStringUint16ArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_required_string_uint16_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_required_string_uint16_array"
 															r.args = args
 															r.count = 0
@@ -36804,6 +37234,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestRequiredStringUint16ArrayArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_required_string_uint16_array_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_required_string_uint16_array_array"
 																r.args = args
 																r.count = 0
@@ -36829,6 +37260,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestRequiredStringUint16NullableOperation
 															r.summary = ""
 															r.operationID = "test_request_required_string_uint16_nullable"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_required_string_uint16_nullable"
 															r.args = args
 															r.count = 0
@@ -36852,6 +37284,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestRequiredStringUint16NullableArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_required_string_uint16_nullable_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_required_string_uint16_nullable_array"
 																r.args = args
 																r.count = 0
@@ -36876,6 +37309,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = TestRequestRequiredStringUint16NullableArrayArrayOperation
 																	r.summary = ""
 																	r.operationID = "test_request_required_string_uint16_nullable_array_array"
+																	r.operationGroup = ""
 																	r.pathPattern = "/test_request_required_string_uint16_nullable_array_array"
 																	r.args = args
 																	r.count = 0
@@ -36907,6 +37341,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestRequiredStringUint32Operation
 													r.summary = ""
 													r.operationID = "test_request_required_string_uint32"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_required_string_uint32"
 													r.args = args
 													r.count = 0
@@ -36942,6 +37377,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestRequiredStringUint32ArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_required_string_uint32_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_required_string_uint32_array"
 															r.args = args
 															r.count = 0
@@ -36966,6 +37402,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestRequiredStringUint32ArrayArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_required_string_uint32_array_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_required_string_uint32_array_array"
 																r.args = args
 																r.count = 0
@@ -36991,6 +37428,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestRequiredStringUint32NullableOperation
 															r.summary = ""
 															r.operationID = "test_request_required_string_uint32_nullable"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_required_string_uint32_nullable"
 															r.args = args
 															r.count = 0
@@ -37014,6 +37452,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestRequiredStringUint32NullableArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_required_string_uint32_nullable_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_required_string_uint32_nullable_array"
 																r.args = args
 																r.count = 0
@@ -37038,6 +37477,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = TestRequestRequiredStringUint32NullableArrayArrayOperation
 																	r.summary = ""
 																	r.operationID = "test_request_required_string_uint32_nullable_array_array"
+																	r.operationGroup = ""
 																	r.pathPattern = "/test_request_required_string_uint32_nullable_array_array"
 																	r.args = args
 																	r.count = 0
@@ -37069,6 +37509,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestRequiredStringUint64Operation
 													r.summary = ""
 													r.operationID = "test_request_required_string_uint64"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_required_string_uint64"
 													r.args = args
 													r.count = 0
@@ -37104,6 +37545,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestRequiredStringUint64ArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_required_string_uint64_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_required_string_uint64_array"
 															r.args = args
 															r.count = 0
@@ -37128,6 +37570,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestRequiredStringUint64ArrayArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_required_string_uint64_array_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_required_string_uint64_array_array"
 																r.args = args
 																r.count = 0
@@ -37153,6 +37596,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestRequiredStringUint64NullableOperation
 															r.summary = ""
 															r.operationID = "test_request_required_string_uint64_nullable"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_required_string_uint64_nullable"
 															r.args = args
 															r.count = 0
@@ -37176,6 +37620,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestRequiredStringUint64NullableArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_required_string_uint64_nullable_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_required_string_uint64_nullable_array"
 																r.args = args
 																r.count = 0
@@ -37200,6 +37645,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = TestRequestRequiredStringUint64NullableArrayArrayOperation
 																	r.summary = ""
 																	r.operationID = "test_request_required_string_uint64_nullable_array_array"
+																	r.operationGroup = ""
 																	r.pathPattern = "/test_request_required_string_uint64_nullable_array_array"
 																	r.args = args
 																	r.count = 0
@@ -37231,6 +37677,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestRequiredStringUint8Operation
 													r.summary = ""
 													r.operationID = "test_request_required_string_uint8"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_required_string_uint8"
 													r.args = args
 													r.count = 0
@@ -37266,6 +37713,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestRequiredStringUint8ArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_required_string_uint8_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_required_string_uint8_array"
 															r.args = args
 															r.count = 0
@@ -37290,6 +37738,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestRequiredStringUint8ArrayArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_required_string_uint8_array_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_required_string_uint8_array_array"
 																r.args = args
 																r.count = 0
@@ -37315,6 +37764,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestRequiredStringUint8NullableOperation
 															r.summary = ""
 															r.operationID = "test_request_required_string_uint8_nullable"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_required_string_uint8_nullable"
 															r.args = args
 															r.count = 0
@@ -37338,6 +37788,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestRequiredStringUint8NullableArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_required_string_uint8_nullable_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_required_string_uint8_nullable_array"
 																r.args = args
 																r.count = 0
@@ -37362,6 +37813,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = TestRequestRequiredStringUint8NullableArrayArrayOperation
 																	r.summary = ""
 																	r.operationID = "test_request_required_string_uint8_nullable_array_array"
+																	r.operationGroup = ""
 																	r.pathPattern = "/test_request_required_string_uint8_nullable_array_array"
 																	r.args = args
 																	r.count = 0
@@ -37405,6 +37857,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestRequiredStringUintArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_required_string_uint_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_required_string_uint_array"
 														r.args = args
 														r.count = 0
@@ -37429,6 +37882,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestRequiredStringUintArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_required_string_uint_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_required_string_uint_array_array"
 															r.args = args
 															r.count = 0
@@ -37454,6 +37908,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestRequiredStringUintNullableOperation
 														r.summary = ""
 														r.operationID = "test_request_required_string_uint_nullable"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_required_string_uint_nullable"
 														r.args = args
 														r.count = 0
@@ -37477,6 +37932,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestRequiredStringUintNullableArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_required_string_uint_nullable_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_required_string_uint_nullable_array"
 															r.args = args
 															r.count = 0
@@ -37501,6 +37957,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestRequiredStringUintNullableArrayArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_required_string_uint_nullable_array_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_required_string_uint_nullable_array_array"
 																r.args = args
 																r.count = 0
@@ -37532,6 +37989,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestRequestRequiredStringUnixOperation
 												r.summary = ""
 												r.operationID = "test_request_required_string_unix"
+												r.operationGroup = ""
 												r.pathPattern = "/test_request_required_string_unix"
 												r.args = args
 												r.count = 0
@@ -37579,6 +38037,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestRequiredStringUnixMicroOperation
 															r.summary = ""
 															r.operationID = "test_request_required_string_unix-micro"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_required_string_unix-micro"
 															r.args = args
 															r.count = 0
@@ -37614,6 +38073,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = TestRequestRequiredStringUnixMicroArrayOperation
 																	r.summary = ""
 																	r.operationID = "test_request_required_string_unix-micro_array"
+																	r.operationGroup = ""
 																	r.pathPattern = "/test_request_required_string_unix-micro_array"
 																	r.args = args
 																	r.count = 0
@@ -37638,6 +38098,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																		r.name = TestRequestRequiredStringUnixMicroArrayArrayOperation
 																		r.summary = ""
 																		r.operationID = "test_request_required_string_unix-micro_array_array"
+																		r.operationGroup = ""
 																		r.pathPattern = "/test_request_required_string_unix-micro_array_array"
 																		r.args = args
 																		r.count = 0
@@ -37663,6 +38124,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = TestRequestRequiredStringUnixMicroNullableOperation
 																	r.summary = ""
 																	r.operationID = "test_request_required_string_unix-micro_nullable"
+																	r.operationGroup = ""
 																	r.pathPattern = "/test_request_required_string_unix-micro_nullable"
 																	r.args = args
 																	r.count = 0
@@ -37686,6 +38148,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																		r.name = TestRequestRequiredStringUnixMicroNullableArrayOperation
 																		r.summary = ""
 																		r.operationID = "test_request_required_string_unix-micro_nullable_array"
+																		r.operationGroup = ""
 																		r.pathPattern = "/test_request_required_string_unix-micro_nullable_array"
 																		r.args = args
 																		r.count = 0
@@ -37710,6 +38173,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																			r.name = TestRequestRequiredStringUnixMicroNullableArrayArrayOperation
 																			r.summary = ""
 																			r.operationID = "test_request_required_string_unix-micro_nullable_array_array"
+																			r.operationGroup = ""
 																			r.pathPattern = "/test_request_required_string_unix-micro_nullable_array_array"
 																			r.args = args
 																			r.count = 0
@@ -37741,6 +38205,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestRequiredStringUnixMilliOperation
 															r.summary = ""
 															r.operationID = "test_request_required_string_unix-milli"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_required_string_unix-milli"
 															r.args = args
 															r.count = 0
@@ -37776,6 +38241,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = TestRequestRequiredStringUnixMilliArrayOperation
 																	r.summary = ""
 																	r.operationID = "test_request_required_string_unix-milli_array"
+																	r.operationGroup = ""
 																	r.pathPattern = "/test_request_required_string_unix-milli_array"
 																	r.args = args
 																	r.count = 0
@@ -37800,6 +38266,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																		r.name = TestRequestRequiredStringUnixMilliArrayArrayOperation
 																		r.summary = ""
 																		r.operationID = "test_request_required_string_unix-milli_array_array"
+																		r.operationGroup = ""
 																		r.pathPattern = "/test_request_required_string_unix-milli_array_array"
 																		r.args = args
 																		r.count = 0
@@ -37825,6 +38292,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = TestRequestRequiredStringUnixMilliNullableOperation
 																	r.summary = ""
 																	r.operationID = "test_request_required_string_unix-milli_nullable"
+																	r.operationGroup = ""
 																	r.pathPattern = "/test_request_required_string_unix-milli_nullable"
 																	r.args = args
 																	r.count = 0
@@ -37848,6 +38316,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																		r.name = TestRequestRequiredStringUnixMilliNullableArrayOperation
 																		r.summary = ""
 																		r.operationID = "test_request_required_string_unix-milli_nullable_array"
+																		r.operationGroup = ""
 																		r.pathPattern = "/test_request_required_string_unix-milli_nullable_array"
 																		r.args = args
 																		r.count = 0
@@ -37872,6 +38341,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																			r.name = TestRequestRequiredStringUnixMilliNullableArrayArrayOperation
 																			r.summary = ""
 																			r.operationID = "test_request_required_string_unix-milli_nullable_array_array"
+																			r.operationGroup = ""
 																			r.pathPattern = "/test_request_required_string_unix-milli_nullable_array_array"
 																			r.args = args
 																			r.count = 0
@@ -37905,6 +38375,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestRequiredStringUnixNanoOperation
 														r.summary = ""
 														r.operationID = "test_request_required_string_unix-nano"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_required_string_unix-nano"
 														r.args = args
 														r.count = 0
@@ -37940,6 +38411,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestRequiredStringUnixNanoArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_required_string_unix-nano_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_required_string_unix-nano_array"
 																r.args = args
 																r.count = 0
@@ -37964,6 +38436,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = TestRequestRequiredStringUnixNanoArrayArrayOperation
 																	r.summary = ""
 																	r.operationID = "test_request_required_string_unix-nano_array_array"
+																	r.operationGroup = ""
 																	r.pathPattern = "/test_request_required_string_unix-nano_array_array"
 																	r.args = args
 																	r.count = 0
@@ -37989,6 +38462,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestRequiredStringUnixNanoNullableOperation
 																r.summary = ""
 																r.operationID = "test_request_required_string_unix-nano_nullable"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_required_string_unix-nano_nullable"
 																r.args = args
 																r.count = 0
@@ -38012,6 +38486,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = TestRequestRequiredStringUnixNanoNullableArrayOperation
 																	r.summary = ""
 																	r.operationID = "test_request_required_string_unix-nano_nullable_array"
+																	r.operationGroup = ""
 																	r.pathPattern = "/test_request_required_string_unix-nano_nullable_array"
 																	r.args = args
 																	r.count = 0
@@ -38036,6 +38511,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																		r.name = TestRequestRequiredStringUnixNanoNullableArrayArrayOperation
 																		r.summary = ""
 																		r.operationID = "test_request_required_string_unix-nano_nullable_array_array"
+																		r.operationGroup = ""
 																		r.pathPattern = "/test_request_required_string_unix-nano_nullable_array_array"
 																		r.args = args
 																		r.count = 0
@@ -38067,6 +38543,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestRequiredStringUnixSecondsOperation
 														r.summary = ""
 														r.operationID = "test_request_required_string_unix-seconds"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_required_string_unix-seconds"
 														r.args = args
 														r.count = 0
@@ -38102,6 +38579,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestRequiredStringUnixSecondsArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_required_string_unix-seconds_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_required_string_unix-seconds_array"
 																r.args = args
 																r.count = 0
@@ -38126,6 +38604,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = TestRequestRequiredStringUnixSecondsArrayArrayOperation
 																	r.summary = ""
 																	r.operationID = "test_request_required_string_unix-seconds_array_array"
+																	r.operationGroup = ""
 																	r.pathPattern = "/test_request_required_string_unix-seconds_array_array"
 																	r.args = args
 																	r.count = 0
@@ -38151,6 +38630,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestRequiredStringUnixSecondsNullableOperation
 																r.summary = ""
 																r.operationID = "test_request_required_string_unix-seconds_nullable"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_required_string_unix-seconds_nullable"
 																r.args = args
 																r.count = 0
@@ -38174,6 +38654,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = TestRequestRequiredStringUnixSecondsNullableArrayOperation
 																	r.summary = ""
 																	r.operationID = "test_request_required_string_unix-seconds_nullable_array"
+																	r.operationGroup = ""
 																	r.pathPattern = "/test_request_required_string_unix-seconds_nullable_array"
 																	r.args = args
 																	r.count = 0
@@ -38198,6 +38679,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																		r.name = TestRequestRequiredStringUnixSecondsNullableArrayArrayOperation
 																		r.summary = ""
 																		r.operationID = "test_request_required_string_unix-seconds_nullable_array_array"
+																		r.operationGroup = ""
 																		r.pathPattern = "/test_request_required_string_unix-seconds_nullable_array_array"
 																		r.args = args
 																		r.count = 0
@@ -38243,6 +38725,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestRequiredStringUnixArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_required_string_unix_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_required_string_unix_array"
 														r.args = args
 														r.count = 0
@@ -38267,6 +38750,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestRequiredStringUnixArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_required_string_unix_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_required_string_unix_array_array"
 															r.args = args
 															r.count = 0
@@ -38292,6 +38776,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestRequiredStringUnixNullableOperation
 														r.summary = ""
 														r.operationID = "test_request_required_string_unix_nullable"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_required_string_unix_nullable"
 														r.args = args
 														r.count = 0
@@ -38315,6 +38800,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestRequiredStringUnixNullableArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_required_string_unix_nullable_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_required_string_unix_nullable_array"
 															r.args = args
 															r.count = 0
@@ -38339,6 +38825,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestRequiredStringUnixNullableArrayArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_required_string_unix_nullable_array_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_required_string_unix_nullable_array_array"
 																r.args = args
 																r.count = 0
@@ -38370,6 +38857,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestRequestRequiredStringURIOperation
 												r.summary = ""
 												r.operationID = "test_request_required_string_uri"
+												r.operationGroup = ""
 												r.pathPattern = "/test_request_required_string_uri"
 												r.args = args
 												r.count = 0
@@ -38405,6 +38893,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestRequiredStringURIArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_required_string_uri_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_required_string_uri_array"
 														r.args = args
 														r.count = 0
@@ -38429,6 +38918,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestRequiredStringURIArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_required_string_uri_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_required_string_uri_array_array"
 															r.args = args
 															r.count = 0
@@ -38454,6 +38944,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestRequiredStringURINullableOperation
 														r.summary = ""
 														r.operationID = "test_request_required_string_uri_nullable"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_required_string_uri_nullable"
 														r.args = args
 														r.count = 0
@@ -38477,6 +38968,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestRequiredStringURINullableArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_required_string_uri_nullable_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_required_string_uri_nullable_array"
 															r.args = args
 															r.count = 0
@@ -38501,6 +38993,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestRequiredStringURINullableArrayArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_required_string_uri_nullable_array_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_required_string_uri_nullable_array_array"
 																r.args = args
 																r.count = 0
@@ -38532,6 +39025,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestRequestRequiredStringUUIDOperation
 												r.summary = ""
 												r.operationID = "test_request_required_string_uuid"
+												r.operationGroup = ""
 												r.pathPattern = "/test_request_required_string_uuid"
 												r.args = args
 												r.count = 0
@@ -38567,6 +39061,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestRequiredStringUUIDArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_required_string_uuid_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_required_string_uuid_array"
 														r.args = args
 														r.count = 0
@@ -38591,6 +39086,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestRequiredStringUUIDArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_required_string_uuid_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_required_string_uuid_array_array"
 															r.args = args
 															r.count = 0
@@ -38616,6 +39112,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestRequiredStringUUIDNullableOperation
 														r.summary = ""
 														r.operationID = "test_request_required_string_uuid_nullable"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_required_string_uuid_nullable"
 														r.args = args
 														r.count = 0
@@ -38639,6 +39136,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestRequiredStringUUIDNullableArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_required_string_uuid_nullable_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_required_string_uuid_nullable_array"
 															r.args = args
 															r.count = 0
@@ -38663,6 +39161,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestRequiredStringUUIDNullableArrayArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_required_string_uuid_nullable_array_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_required_string_uuid_nullable_array_array"
 																r.args = args
 																r.count = 0
@@ -38702,6 +39201,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.name = TestRequestStringOperation
 								r.summary = ""
 								r.operationID = "test_request_string"
+								r.operationGroup = ""
 								r.pathPattern = "/test_request_string"
 								r.args = args
 								r.count = 0
@@ -38737,6 +39237,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										r.name = TestRequestStringArrayOperation
 										r.summary = ""
 										r.operationID = "test_request_string_array"
+										r.operationGroup = ""
 										r.pathPattern = "/test_request_string_array"
 										r.args = args
 										r.count = 0
@@ -38761,6 +39262,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = TestRequestStringArrayArrayOperation
 											r.summary = ""
 											r.operationID = "test_request_string_array_array"
+											r.operationGroup = ""
 											r.pathPattern = "/test_request_string_array_array"
 											r.args = args
 											r.count = 0
@@ -38798,6 +39300,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = TestRequestStringBase64Operation
 											r.summary = ""
 											r.operationID = "test_request_string_base64"
+											r.operationGroup = ""
 											r.pathPattern = "/test_request_string_base64"
 											r.args = args
 											r.count = 0
@@ -38833,6 +39336,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestStringBase64ArrayOperation
 													r.summary = ""
 													r.operationID = "test_request_string_base64_array"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_string_base64_array"
 													r.args = args
 													r.count = 0
@@ -38857,6 +39361,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestStringBase64ArrayArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_string_base64_array_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_string_base64_array_array"
 														r.args = args
 														r.count = 0
@@ -38882,6 +39387,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestStringBase64NullableOperation
 													r.summary = ""
 													r.operationID = "test_request_string_base64_nullable"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_string_base64_nullable"
 													r.args = args
 													r.count = 0
@@ -38905,6 +39411,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestStringBase64NullableArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_string_base64_nullable_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_string_base64_nullable_array"
 														r.args = args
 														r.count = 0
@@ -38929,6 +39436,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestStringBase64NullableArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_string_base64_nullable_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_string_base64_nullable_array_array"
 															r.args = args
 															r.count = 0
@@ -38960,6 +39468,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = TestRequestStringBinaryOperation
 											r.summary = ""
 											r.operationID = "test_request_string_binary"
+											r.operationGroup = ""
 											r.pathPattern = "/test_request_string_binary"
 											r.args = args
 											r.count = 0
@@ -38995,6 +39504,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestStringBinaryArrayOperation
 													r.summary = ""
 													r.operationID = "test_request_string_binary_array"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_string_binary_array"
 													r.args = args
 													r.count = 0
@@ -39019,6 +39529,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestStringBinaryArrayArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_string_binary_array_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_string_binary_array_array"
 														r.args = args
 														r.count = 0
@@ -39044,6 +39555,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestStringBinaryNullableOperation
 													r.summary = ""
 													r.operationID = "test_request_string_binary_nullable"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_string_binary_nullable"
 													r.args = args
 													r.count = 0
@@ -39067,6 +39579,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestStringBinaryNullableArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_string_binary_nullable_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_string_binary_nullable_array"
 														r.args = args
 														r.count = 0
@@ -39091,6 +39604,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestStringBinaryNullableArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_string_binary_nullable_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_string_binary_nullable_array_array"
 															r.args = args
 															r.count = 0
@@ -39122,6 +39636,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = TestRequestStringByteOperation
 											r.summary = ""
 											r.operationID = "test_request_string_byte"
+											r.operationGroup = ""
 											r.pathPattern = "/test_request_string_byte"
 											r.args = args
 											r.count = 0
@@ -39157,6 +39672,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestStringByteArrayOperation
 													r.summary = ""
 													r.operationID = "test_request_string_byte_array"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_string_byte_array"
 													r.args = args
 													r.count = 0
@@ -39181,6 +39697,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestStringByteArrayArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_string_byte_array_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_string_byte_array_array"
 														r.args = args
 														r.count = 0
@@ -39206,6 +39723,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestStringByteNullableOperation
 													r.summary = ""
 													r.operationID = "test_request_string_byte_nullable"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_string_byte_nullable"
 													r.args = args
 													r.count = 0
@@ -39229,6 +39747,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestStringByteNullableArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_string_byte_nullable_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_string_byte_nullable_array"
 														r.args = args
 														r.count = 0
@@ -39253,6 +39772,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestStringByteNullableArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_string_byte_nullable_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_string_byte_nullable_array_array"
 															r.args = args
 															r.count = 0
@@ -39298,6 +39818,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = TestRequestStringDateOperation
 											r.summary = ""
 											r.operationID = "test_request_string_date"
+											r.operationGroup = ""
 											r.pathPattern = "/test_request_string_date"
 											r.args = args
 											r.count = 0
@@ -39321,6 +39842,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestRequestStringDateTimeOperation
 												r.summary = ""
 												r.operationID = "test_request_string_date-time"
+												r.operationGroup = ""
 												r.pathPattern = "/test_request_string_date-time"
 												r.args = args
 												r.count = 0
@@ -39356,6 +39878,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestStringDateTimeArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_string_date-time_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_string_date-time_array"
 														r.args = args
 														r.count = 0
@@ -39380,6 +39903,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestStringDateTimeArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_string_date-time_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_string_date-time_array_array"
 															r.args = args
 															r.count = 0
@@ -39405,6 +39929,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestStringDateTimeNullableOperation
 														r.summary = ""
 														r.operationID = "test_request_string_date-time_nullable"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_string_date-time_nullable"
 														r.args = args
 														r.count = 0
@@ -39428,6 +39953,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestStringDateTimeNullableArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_string_date-time_nullable_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_string_date-time_nullable_array"
 															r.args = args
 															r.count = 0
@@ -39452,6 +39978,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestStringDateTimeNullableArrayArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_string_date-time_nullable_array_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_string_date-time_nullable_array_array"
 																r.args = args
 																r.count = 0
@@ -39495,6 +40022,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestStringDateArrayOperation
 													r.summary = ""
 													r.operationID = "test_request_string_date_array"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_string_date_array"
 													r.args = args
 													r.count = 0
@@ -39519,6 +40047,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestStringDateArrayArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_string_date_array_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_string_date_array_array"
 														r.args = args
 														r.count = 0
@@ -39544,6 +40073,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestStringDateNullableOperation
 													r.summary = ""
 													r.operationID = "test_request_string_date_nullable"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_string_date_nullable"
 													r.args = args
 													r.count = 0
@@ -39567,6 +40097,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestStringDateNullableArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_string_date_nullable_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_string_date_nullable_array"
 														r.args = args
 														r.count = 0
@@ -39591,6 +40122,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestStringDateNullableArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_string_date_nullable_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_string_date_nullable_array_array"
 															r.args = args
 															r.count = 0
@@ -39622,6 +40154,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = TestRequestStringDecimalOperation
 											r.summary = ""
 											r.operationID = "test_request_string_decimal"
+											r.operationGroup = ""
 											r.pathPattern = "/test_request_string_decimal"
 											r.args = args
 											r.count = 0
@@ -39657,6 +40190,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestStringDecimalArrayOperation
 													r.summary = ""
 													r.operationID = "test_request_string_decimal_array"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_string_decimal_array"
 													r.args = args
 													r.count = 0
@@ -39681,6 +40215,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestStringDecimalArrayArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_string_decimal_array_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_string_decimal_array_array"
 														r.args = args
 														r.count = 0
@@ -39706,6 +40241,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestStringDecimalNullableOperation
 													r.summary = ""
 													r.operationID = "test_request_string_decimal_nullable"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_string_decimal_nullable"
 													r.args = args
 													r.count = 0
@@ -39729,6 +40265,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestStringDecimalNullableArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_string_decimal_nullable_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_string_decimal_nullable_array"
 														r.args = args
 														r.count = 0
@@ -39753,6 +40290,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestStringDecimalNullableArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_string_decimal_nullable_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_string_decimal_nullable_array_array"
 															r.args = args
 															r.count = 0
@@ -39784,6 +40322,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = TestRequestStringDurationOperation
 											r.summary = ""
 											r.operationID = "test_request_string_duration"
+											r.operationGroup = ""
 											r.pathPattern = "/test_request_string_duration"
 											r.args = args
 											r.count = 0
@@ -39819,6 +40358,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestStringDurationArrayOperation
 													r.summary = ""
 													r.operationID = "test_request_string_duration_array"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_string_duration_array"
 													r.args = args
 													r.count = 0
@@ -39843,6 +40383,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestStringDurationArrayArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_string_duration_array_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_string_duration_array_array"
 														r.args = args
 														r.count = 0
@@ -39868,6 +40409,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestStringDurationNullableOperation
 													r.summary = ""
 													r.operationID = "test_request_string_duration_nullable"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_string_duration_nullable"
 													r.args = args
 													r.count = 0
@@ -39891,6 +40433,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestStringDurationNullableArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_string_duration_nullable_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_string_duration_nullable_array"
 														r.args = args
 														r.count = 0
@@ -39915,6 +40458,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestStringDurationNullableArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_string_duration_nullable_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_string_duration_nullable_array_array"
 															r.args = args
 															r.count = 0
@@ -39948,6 +40492,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										r.name = TestRequestStringEmailOperation
 										r.summary = ""
 										r.operationID = "test_request_string_email"
+										r.operationGroup = ""
 										r.pathPattern = "/test_request_string_email"
 										r.args = args
 										r.count = 0
@@ -39983,6 +40528,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestRequestStringEmailArrayOperation
 												r.summary = ""
 												r.operationID = "test_request_string_email_array"
+												r.operationGroup = ""
 												r.pathPattern = "/test_request_string_email_array"
 												r.args = args
 												r.count = 0
@@ -40007,6 +40553,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestStringEmailArrayArrayOperation
 													r.summary = ""
 													r.operationID = "test_request_string_email_array_array"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_string_email_array_array"
 													r.args = args
 													r.count = 0
@@ -40032,6 +40579,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestRequestStringEmailNullableOperation
 												r.summary = ""
 												r.operationID = "test_request_string_email_nullable"
+												r.operationGroup = ""
 												r.pathPattern = "/test_request_string_email_nullable"
 												r.args = args
 												r.count = 0
@@ -40055,6 +40603,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestStringEmailNullableArrayOperation
 													r.summary = ""
 													r.operationID = "test_request_string_email_nullable_array"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_string_email_nullable_array"
 													r.args = args
 													r.count = 0
@@ -40079,6 +40628,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestStringEmailNullableArrayArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_string_email_nullable_array_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_string_email_nullable_array_array"
 														r.args = args
 														r.count = 0
@@ -40122,6 +40672,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = TestRequestStringFloat32Operation
 											r.summary = ""
 											r.operationID = "test_request_string_float32"
+											r.operationGroup = ""
 											r.pathPattern = "/test_request_string_float32"
 											r.args = args
 											r.count = 0
@@ -40157,6 +40708,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestStringFloat32ArrayOperation
 													r.summary = ""
 													r.operationID = "test_request_string_float32_array"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_string_float32_array"
 													r.args = args
 													r.count = 0
@@ -40181,6 +40733,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestStringFloat32ArrayArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_string_float32_array_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_string_float32_array_array"
 														r.args = args
 														r.count = 0
@@ -40206,6 +40759,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestStringFloat32NullableOperation
 													r.summary = ""
 													r.operationID = "test_request_string_float32_nullable"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_string_float32_nullable"
 													r.args = args
 													r.count = 0
@@ -40229,6 +40783,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestStringFloat32NullableArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_string_float32_nullable_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_string_float32_nullable_array"
 														r.args = args
 														r.count = 0
@@ -40253,6 +40808,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestStringFloat32NullableArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_string_float32_nullable_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_string_float32_nullable_array_array"
 															r.args = args
 															r.count = 0
@@ -40284,6 +40840,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = TestRequestStringFloat64Operation
 											r.summary = ""
 											r.operationID = "test_request_string_float64"
+											r.operationGroup = ""
 											r.pathPattern = "/test_request_string_float64"
 											r.args = args
 											r.count = 0
@@ -40319,6 +40876,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestStringFloat64ArrayOperation
 													r.summary = ""
 													r.operationID = "test_request_string_float64_array"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_string_float64_array"
 													r.args = args
 													r.count = 0
@@ -40343,6 +40901,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestStringFloat64ArrayArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_string_float64_array_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_string_float64_array_array"
 														r.args = args
 														r.count = 0
@@ -40368,6 +40927,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestStringFloat64NullableOperation
 													r.summary = ""
 													r.operationID = "test_request_string_float64_nullable"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_string_float64_nullable"
 													r.args = args
 													r.count = 0
@@ -40391,6 +40951,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestStringFloat64NullableArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_string_float64_nullable_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_string_float64_nullable_array"
 														r.args = args
 														r.count = 0
@@ -40415,6 +40976,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestStringFloat64NullableArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_string_float64_nullable_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_string_float64_nullable_array_array"
 															r.args = args
 															r.count = 0
@@ -40448,6 +41010,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										r.name = TestRequestStringHostnameOperation
 										r.summary = ""
 										r.operationID = "test_request_string_hostname"
+										r.operationGroup = ""
 										r.pathPattern = "/test_request_string_hostname"
 										r.args = args
 										r.count = 0
@@ -40483,6 +41046,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestRequestStringHostnameArrayOperation
 												r.summary = ""
 												r.operationID = "test_request_string_hostname_array"
+												r.operationGroup = ""
 												r.pathPattern = "/test_request_string_hostname_array"
 												r.args = args
 												r.count = 0
@@ -40507,6 +41071,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestStringHostnameArrayArrayOperation
 													r.summary = ""
 													r.operationID = "test_request_string_hostname_array_array"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_string_hostname_array_array"
 													r.args = args
 													r.count = 0
@@ -40532,6 +41097,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestRequestStringHostnameNullableOperation
 												r.summary = ""
 												r.operationID = "test_request_string_hostname_nullable"
+												r.operationGroup = ""
 												r.pathPattern = "/test_request_string_hostname_nullable"
 												r.args = args
 												r.count = 0
@@ -40555,6 +41121,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestStringHostnameNullableArrayOperation
 													r.summary = ""
 													r.operationID = "test_request_string_hostname_nullable_array"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_string_hostname_nullable_array"
 													r.args = args
 													r.count = 0
@@ -40579,6 +41146,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestStringHostnameNullableArrayArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_string_hostname_nullable_array_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_string_hostname_nullable_array_array"
 														r.args = args
 														r.count = 0
@@ -40622,6 +41190,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = TestRequestStringIntOperation
 											r.summary = ""
 											r.operationID = "test_request_string_int"
+											r.operationGroup = ""
 											r.pathPattern = "/test_request_string_int"
 											r.args = args
 											r.count = 0
@@ -40645,6 +41214,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestRequestStringInt16Operation
 												r.summary = ""
 												r.operationID = "test_request_string_int16"
+												r.operationGroup = ""
 												r.pathPattern = "/test_request_string_int16"
 												r.args = args
 												r.count = 0
@@ -40680,6 +41250,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestStringInt16ArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_string_int16_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_string_int16_array"
 														r.args = args
 														r.count = 0
@@ -40704,6 +41275,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestStringInt16ArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_string_int16_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_string_int16_array_array"
 															r.args = args
 															r.count = 0
@@ -40729,6 +41301,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestStringInt16NullableOperation
 														r.summary = ""
 														r.operationID = "test_request_string_int16_nullable"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_string_int16_nullable"
 														r.args = args
 														r.count = 0
@@ -40752,6 +41325,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestStringInt16NullableArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_string_int16_nullable_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_string_int16_nullable_array"
 															r.args = args
 															r.count = 0
@@ -40776,6 +41350,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestStringInt16NullableArrayArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_string_int16_nullable_array_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_string_int16_nullable_array_array"
 																r.args = args
 																r.count = 0
@@ -40807,6 +41382,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestRequestStringInt32Operation
 												r.summary = ""
 												r.operationID = "test_request_string_int32"
+												r.operationGroup = ""
 												r.pathPattern = "/test_request_string_int32"
 												r.args = args
 												r.count = 0
@@ -40842,6 +41418,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestStringInt32ArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_string_int32_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_string_int32_array"
 														r.args = args
 														r.count = 0
@@ -40866,6 +41443,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestStringInt32ArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_string_int32_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_string_int32_array_array"
 															r.args = args
 															r.count = 0
@@ -40891,6 +41469,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestStringInt32NullableOperation
 														r.summary = ""
 														r.operationID = "test_request_string_int32_nullable"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_string_int32_nullable"
 														r.args = args
 														r.count = 0
@@ -40914,6 +41493,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestStringInt32NullableArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_string_int32_nullable_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_string_int32_nullable_array"
 															r.args = args
 															r.count = 0
@@ -40938,6 +41518,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestStringInt32NullableArrayArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_string_int32_nullable_array_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_string_int32_nullable_array_array"
 																r.args = args
 																r.count = 0
@@ -40969,6 +41550,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestRequestStringInt64Operation
 												r.summary = ""
 												r.operationID = "test_request_string_int64"
+												r.operationGroup = ""
 												r.pathPattern = "/test_request_string_int64"
 												r.args = args
 												r.count = 0
@@ -41004,6 +41586,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestStringInt64ArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_string_int64_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_string_int64_array"
 														r.args = args
 														r.count = 0
@@ -41028,6 +41611,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestStringInt64ArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_string_int64_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_string_int64_array_array"
 															r.args = args
 															r.count = 0
@@ -41053,6 +41637,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestStringInt64NullableOperation
 														r.summary = ""
 														r.operationID = "test_request_string_int64_nullable"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_string_int64_nullable"
 														r.args = args
 														r.count = 0
@@ -41076,6 +41661,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestStringInt64NullableArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_string_int64_nullable_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_string_int64_nullable_array"
 															r.args = args
 															r.count = 0
@@ -41100,6 +41686,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestStringInt64NullableArrayArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_string_int64_nullable_array_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_string_int64_nullable_array_array"
 																r.args = args
 																r.count = 0
@@ -41131,6 +41718,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestRequestStringInt8Operation
 												r.summary = ""
 												r.operationID = "test_request_string_int8"
+												r.operationGroup = ""
 												r.pathPattern = "/test_request_string_int8"
 												r.args = args
 												r.count = 0
@@ -41166,6 +41754,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestStringInt8ArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_string_int8_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_string_int8_array"
 														r.args = args
 														r.count = 0
@@ -41190,6 +41779,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestStringInt8ArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_string_int8_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_string_int8_array_array"
 															r.args = args
 															r.count = 0
@@ -41215,6 +41805,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestStringInt8NullableOperation
 														r.summary = ""
 														r.operationID = "test_request_string_int8_nullable"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_string_int8_nullable"
 														r.args = args
 														r.count = 0
@@ -41238,6 +41829,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestStringInt8NullableArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_string_int8_nullable_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_string_int8_nullable_array"
 															r.args = args
 															r.count = 0
@@ -41262,6 +41854,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestStringInt8NullableArrayArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_string_int8_nullable_array_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_string_int8_nullable_array_array"
 																r.args = args
 																r.count = 0
@@ -41305,6 +41898,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestStringIntArrayOperation
 													r.summary = ""
 													r.operationID = "test_request_string_int_array"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_string_int_array"
 													r.args = args
 													r.count = 0
@@ -41329,6 +41923,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestStringIntArrayArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_string_int_array_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_string_int_array_array"
 														r.args = args
 														r.count = 0
@@ -41354,6 +41949,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestStringIntNullableOperation
 													r.summary = ""
 													r.operationID = "test_request_string_int_nullable"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_string_int_nullable"
 													r.args = args
 													r.count = 0
@@ -41377,6 +41973,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestStringIntNullableArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_string_int_nullable_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_string_int_nullable_array"
 														r.args = args
 														r.count = 0
@@ -41401,6 +41998,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestStringIntNullableArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_string_int_nullable_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_string_int_nullable_array_array"
 															r.args = args
 															r.count = 0
@@ -41432,6 +42030,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = TestRequestStringIPOperation
 											r.summary = ""
 											r.operationID = "test_request_string_ip"
+											r.operationGroup = ""
 											r.pathPattern = "/test_request_string_ip"
 											r.args = args
 											r.count = 0
@@ -41467,6 +42066,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestStringIPArrayOperation
 													r.summary = ""
 													r.operationID = "test_request_string_ip_array"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_string_ip_array"
 													r.args = args
 													r.count = 0
@@ -41491,6 +42091,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestStringIPArrayArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_string_ip_array_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_string_ip_array_array"
 														r.args = args
 														r.count = 0
@@ -41516,6 +42117,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestStringIPNullableOperation
 													r.summary = ""
 													r.operationID = "test_request_string_ip_nullable"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_string_ip_nullable"
 													r.args = args
 													r.count = 0
@@ -41539,6 +42141,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestStringIPNullableArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_string_ip_nullable_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_string_ip_nullable_array"
 														r.args = args
 														r.count = 0
@@ -41563,6 +42166,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestStringIPNullableArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_string_ip_nullable_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_string_ip_nullable_array_array"
 															r.args = args
 															r.count = 0
@@ -41604,6 +42208,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestStringIpv4Operation
 													r.summary = ""
 													r.operationID = "test_request_string_ipv4"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_string_ipv4"
 													r.args = args
 													r.count = 0
@@ -41639,6 +42244,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestStringIpv4ArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_string_ipv4_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_string_ipv4_array"
 															r.args = args
 															r.count = 0
@@ -41663,6 +42269,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestStringIpv4ArrayArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_string_ipv4_array_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_string_ipv4_array_array"
 																r.args = args
 																r.count = 0
@@ -41688,6 +42295,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestStringIpv4NullableOperation
 															r.summary = ""
 															r.operationID = "test_request_string_ipv4_nullable"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_string_ipv4_nullable"
 															r.args = args
 															r.count = 0
@@ -41711,6 +42319,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestStringIpv4NullableArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_string_ipv4_nullable_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_string_ipv4_nullable_array"
 																r.args = args
 																r.count = 0
@@ -41735,6 +42344,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = TestRequestStringIpv4NullableArrayArrayOperation
 																	r.summary = ""
 																	r.operationID = "test_request_string_ipv4_nullable_array_array"
+																	r.operationGroup = ""
 																	r.pathPattern = "/test_request_string_ipv4_nullable_array_array"
 																	r.args = args
 																	r.count = 0
@@ -41766,6 +42376,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestStringIpv6Operation
 													r.summary = ""
 													r.operationID = "test_request_string_ipv6"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_string_ipv6"
 													r.args = args
 													r.count = 0
@@ -41801,6 +42412,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestStringIpv6ArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_string_ipv6_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_string_ipv6_array"
 															r.args = args
 															r.count = 0
@@ -41825,6 +42437,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestStringIpv6ArrayArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_string_ipv6_array_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_string_ipv6_array_array"
 																r.args = args
 																r.count = 0
@@ -41850,6 +42463,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestStringIpv6NullableOperation
 															r.summary = ""
 															r.operationID = "test_request_string_ipv6_nullable"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_string_ipv6_nullable"
 															r.args = args
 															r.count = 0
@@ -41873,6 +42487,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestStringIpv6NullableArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_string_ipv6_nullable_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_string_ipv6_nullable_array"
 																r.args = args
 																r.count = 0
@@ -41897,6 +42512,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = TestRequestStringIpv6NullableArrayArrayOperation
 																	r.summary = ""
 																	r.operationID = "test_request_string_ipv6_nullable_array_array"
+																	r.operationGroup = ""
 																	r.pathPattern = "/test_request_string_ipv6_nullable_array_array"
 																	r.args = args
 																	r.count = 0
@@ -41934,6 +42550,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										r.name = TestRequestStringMACOperation
 										r.summary = ""
 										r.operationID = "test_request_string_mac"
+										r.operationGroup = ""
 										r.pathPattern = "/test_request_string_mac"
 										r.args = args
 										r.count = 0
@@ -41969,6 +42586,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestRequestStringMACArrayOperation
 												r.summary = ""
 												r.operationID = "test_request_string_mac_array"
+												r.operationGroup = ""
 												r.pathPattern = "/test_request_string_mac_array"
 												r.args = args
 												r.count = 0
@@ -41993,6 +42611,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestStringMACArrayArrayOperation
 													r.summary = ""
 													r.operationID = "test_request_string_mac_array_array"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_string_mac_array_array"
 													r.args = args
 													r.count = 0
@@ -42018,6 +42637,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestRequestStringMACNullableOperation
 												r.summary = ""
 												r.operationID = "test_request_string_mac_nullable"
+												r.operationGroup = ""
 												r.pathPattern = "/test_request_string_mac_nullable"
 												r.args = args
 												r.count = 0
@@ -42041,6 +42661,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestStringMACNullableArrayOperation
 													r.summary = ""
 													r.operationID = "test_request_string_mac_nullable_array"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_string_mac_nullable_array"
 													r.args = args
 													r.count = 0
@@ -42065,6 +42686,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestStringMACNullableArrayArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_string_mac_nullable_array_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_string_mac_nullable_array_array"
 														r.args = args
 														r.count = 0
@@ -42096,6 +42718,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										r.name = TestRequestStringNullableOperation
 										r.summary = ""
 										r.operationID = "test_request_string_nullable"
+										r.operationGroup = ""
 										r.pathPattern = "/test_request_string_nullable"
 										r.args = args
 										r.count = 0
@@ -42119,6 +42742,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = TestRequestStringNullableArrayOperation
 											r.summary = ""
 											r.operationID = "test_request_string_nullable_array"
+											r.operationGroup = ""
 											r.pathPattern = "/test_request_string_nullable_array"
 											r.args = args
 											r.count = 0
@@ -42143,6 +42767,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestRequestStringNullableArrayArrayOperation
 												r.summary = ""
 												r.operationID = "test_request_string_nullable_array_array"
+												r.operationGroup = ""
 												r.pathPattern = "/test_request_string_nullable_array_array"
 												r.args = args
 												r.count = 0
@@ -42170,6 +42795,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										r.name = TestRequestStringPasswordOperation
 										r.summary = ""
 										r.operationID = "test_request_string_password"
+										r.operationGroup = ""
 										r.pathPattern = "/test_request_string_password"
 										r.args = args
 										r.count = 0
@@ -42205,6 +42831,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestRequestStringPasswordArrayOperation
 												r.summary = ""
 												r.operationID = "test_request_string_password_array"
+												r.operationGroup = ""
 												r.pathPattern = "/test_request_string_password_array"
 												r.args = args
 												r.count = 0
@@ -42229,6 +42856,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestStringPasswordArrayArrayOperation
 													r.summary = ""
 													r.operationID = "test_request_string_password_array_array"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_string_password_array_array"
 													r.args = args
 													r.count = 0
@@ -42254,6 +42882,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestRequestStringPasswordNullableOperation
 												r.summary = ""
 												r.operationID = "test_request_string_password_nullable"
+												r.operationGroup = ""
 												r.pathPattern = "/test_request_string_password_nullable"
 												r.args = args
 												r.count = 0
@@ -42277,6 +42906,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestStringPasswordNullableArrayOperation
 													r.summary = ""
 													r.operationID = "test_request_string_password_nullable_array"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_string_password_nullable_array"
 													r.args = args
 													r.count = 0
@@ -42301,6 +42931,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestStringPasswordNullableArrayArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_string_password_nullable_array_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_string_password_nullable_array_array"
 														r.args = args
 														r.count = 0
@@ -42332,6 +42963,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										r.name = TestRequestStringTimeOperation
 										r.summary = ""
 										r.operationID = "test_request_string_time"
+										r.operationGroup = ""
 										r.pathPattern = "/test_request_string_time"
 										r.args = args
 										r.count = 0
@@ -42367,6 +42999,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestRequestStringTimeArrayOperation
 												r.summary = ""
 												r.operationID = "test_request_string_time_array"
+												r.operationGroup = ""
 												r.pathPattern = "/test_request_string_time_array"
 												r.args = args
 												r.count = 0
@@ -42391,6 +43024,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestStringTimeArrayArrayOperation
 													r.summary = ""
 													r.operationID = "test_request_string_time_array_array"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_string_time_array_array"
 													r.args = args
 													r.count = 0
@@ -42416,6 +43050,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestRequestStringTimeNullableOperation
 												r.summary = ""
 												r.operationID = "test_request_string_time_nullable"
+												r.operationGroup = ""
 												r.pathPattern = "/test_request_string_time_nullable"
 												r.args = args
 												r.count = 0
@@ -42439,6 +43074,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestStringTimeNullableArrayOperation
 													r.summary = ""
 													r.operationID = "test_request_string_time_nullable_array"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_string_time_nullable_array"
 													r.args = args
 													r.count = 0
@@ -42463,6 +43099,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestStringTimeNullableArrayArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_string_time_nullable_array_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_string_time_nullable_array_array"
 														r.args = args
 														r.count = 0
@@ -42506,6 +43143,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = TestRequestStringUintOperation
 											r.summary = ""
 											r.operationID = "test_request_string_uint"
+											r.operationGroup = ""
 											r.pathPattern = "/test_request_string_uint"
 											r.args = args
 											r.count = 0
@@ -42529,6 +43167,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestRequestStringUint16Operation
 												r.summary = ""
 												r.operationID = "test_request_string_uint16"
+												r.operationGroup = ""
 												r.pathPattern = "/test_request_string_uint16"
 												r.args = args
 												r.count = 0
@@ -42564,6 +43203,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestStringUint16ArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_string_uint16_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_string_uint16_array"
 														r.args = args
 														r.count = 0
@@ -42588,6 +43228,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestStringUint16ArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_string_uint16_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_string_uint16_array_array"
 															r.args = args
 															r.count = 0
@@ -42613,6 +43254,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestStringUint16NullableOperation
 														r.summary = ""
 														r.operationID = "test_request_string_uint16_nullable"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_string_uint16_nullable"
 														r.args = args
 														r.count = 0
@@ -42636,6 +43278,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestStringUint16NullableArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_string_uint16_nullable_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_string_uint16_nullable_array"
 															r.args = args
 															r.count = 0
@@ -42660,6 +43303,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestStringUint16NullableArrayArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_string_uint16_nullable_array_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_string_uint16_nullable_array_array"
 																r.args = args
 																r.count = 0
@@ -42691,6 +43335,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestRequestStringUint32Operation
 												r.summary = ""
 												r.operationID = "test_request_string_uint32"
+												r.operationGroup = ""
 												r.pathPattern = "/test_request_string_uint32"
 												r.args = args
 												r.count = 0
@@ -42726,6 +43371,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestStringUint32ArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_string_uint32_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_string_uint32_array"
 														r.args = args
 														r.count = 0
@@ -42750,6 +43396,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestStringUint32ArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_string_uint32_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_string_uint32_array_array"
 															r.args = args
 															r.count = 0
@@ -42775,6 +43422,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestStringUint32NullableOperation
 														r.summary = ""
 														r.operationID = "test_request_string_uint32_nullable"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_string_uint32_nullable"
 														r.args = args
 														r.count = 0
@@ -42798,6 +43446,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestStringUint32NullableArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_string_uint32_nullable_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_string_uint32_nullable_array"
 															r.args = args
 															r.count = 0
@@ -42822,6 +43471,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestStringUint32NullableArrayArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_string_uint32_nullable_array_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_string_uint32_nullable_array_array"
 																r.args = args
 																r.count = 0
@@ -42853,6 +43503,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestRequestStringUint64Operation
 												r.summary = ""
 												r.operationID = "test_request_string_uint64"
+												r.operationGroup = ""
 												r.pathPattern = "/test_request_string_uint64"
 												r.args = args
 												r.count = 0
@@ -42888,6 +43539,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestStringUint64ArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_string_uint64_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_string_uint64_array"
 														r.args = args
 														r.count = 0
@@ -42912,6 +43564,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestStringUint64ArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_string_uint64_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_string_uint64_array_array"
 															r.args = args
 															r.count = 0
@@ -42937,6 +43590,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestStringUint64NullableOperation
 														r.summary = ""
 														r.operationID = "test_request_string_uint64_nullable"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_string_uint64_nullable"
 														r.args = args
 														r.count = 0
@@ -42960,6 +43614,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestStringUint64NullableArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_string_uint64_nullable_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_string_uint64_nullable_array"
 															r.args = args
 															r.count = 0
@@ -42984,6 +43639,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestStringUint64NullableArrayArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_string_uint64_nullable_array_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_string_uint64_nullable_array_array"
 																r.args = args
 																r.count = 0
@@ -43015,6 +43671,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestRequestStringUint8Operation
 												r.summary = ""
 												r.operationID = "test_request_string_uint8"
+												r.operationGroup = ""
 												r.pathPattern = "/test_request_string_uint8"
 												r.args = args
 												r.count = 0
@@ -43050,6 +43707,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestStringUint8ArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_string_uint8_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_string_uint8_array"
 														r.args = args
 														r.count = 0
@@ -43074,6 +43732,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestStringUint8ArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_string_uint8_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_string_uint8_array_array"
 															r.args = args
 															r.count = 0
@@ -43099,6 +43758,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestStringUint8NullableOperation
 														r.summary = ""
 														r.operationID = "test_request_string_uint8_nullable"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_string_uint8_nullable"
 														r.args = args
 														r.count = 0
@@ -43122,6 +43782,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestStringUint8NullableArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_string_uint8_nullable_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_string_uint8_nullable_array"
 															r.args = args
 															r.count = 0
@@ -43146,6 +43807,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestStringUint8NullableArrayArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_string_uint8_nullable_array_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_string_uint8_nullable_array_array"
 																r.args = args
 																r.count = 0
@@ -43189,6 +43851,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestStringUintArrayOperation
 													r.summary = ""
 													r.operationID = "test_request_string_uint_array"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_string_uint_array"
 													r.args = args
 													r.count = 0
@@ -43213,6 +43876,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestStringUintArrayArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_string_uint_array_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_string_uint_array_array"
 														r.args = args
 														r.count = 0
@@ -43238,6 +43902,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestStringUintNullableOperation
 													r.summary = ""
 													r.operationID = "test_request_string_uint_nullable"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_string_uint_nullable"
 													r.args = args
 													r.count = 0
@@ -43261,6 +43926,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestStringUintNullableArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_string_uint_nullable_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_string_uint_nullable_array"
 														r.args = args
 														r.count = 0
@@ -43285,6 +43951,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestStringUintNullableArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_string_uint_nullable_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_string_uint_nullable_array_array"
 															r.args = args
 															r.count = 0
@@ -43316,6 +43983,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = TestRequestStringUnixOperation
 											r.summary = ""
 											r.operationID = "test_request_string_unix"
+											r.operationGroup = ""
 											r.pathPattern = "/test_request_string_unix"
 											r.args = args
 											r.count = 0
@@ -43363,6 +44031,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestStringUnixMicroOperation
 														r.summary = ""
 														r.operationID = "test_request_string_unix-micro"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_string_unix-micro"
 														r.args = args
 														r.count = 0
@@ -43398,6 +44067,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestStringUnixMicroArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_string_unix-micro_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_string_unix-micro_array"
 																r.args = args
 																r.count = 0
@@ -43422,6 +44092,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = TestRequestStringUnixMicroArrayArrayOperation
 																	r.summary = ""
 																	r.operationID = "test_request_string_unix-micro_array_array"
+																	r.operationGroup = ""
 																	r.pathPattern = "/test_request_string_unix-micro_array_array"
 																	r.args = args
 																	r.count = 0
@@ -43447,6 +44118,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestStringUnixMicroNullableOperation
 																r.summary = ""
 																r.operationID = "test_request_string_unix-micro_nullable"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_string_unix-micro_nullable"
 																r.args = args
 																r.count = 0
@@ -43470,6 +44142,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = TestRequestStringUnixMicroNullableArrayOperation
 																	r.summary = ""
 																	r.operationID = "test_request_string_unix-micro_nullable_array"
+																	r.operationGroup = ""
 																	r.pathPattern = "/test_request_string_unix-micro_nullable_array"
 																	r.args = args
 																	r.count = 0
@@ -43494,6 +44167,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																		r.name = TestRequestStringUnixMicroNullableArrayArrayOperation
 																		r.summary = ""
 																		r.operationID = "test_request_string_unix-micro_nullable_array_array"
+																		r.operationGroup = ""
 																		r.pathPattern = "/test_request_string_unix-micro_nullable_array_array"
 																		r.args = args
 																		r.count = 0
@@ -43525,6 +44199,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestStringUnixMilliOperation
 														r.summary = ""
 														r.operationID = "test_request_string_unix-milli"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_string_unix-milli"
 														r.args = args
 														r.count = 0
@@ -43560,6 +44235,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestStringUnixMilliArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_string_unix-milli_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_string_unix-milli_array"
 																r.args = args
 																r.count = 0
@@ -43584,6 +44260,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = TestRequestStringUnixMilliArrayArrayOperation
 																	r.summary = ""
 																	r.operationID = "test_request_string_unix-milli_array_array"
+																	r.operationGroup = ""
 																	r.pathPattern = "/test_request_string_unix-milli_array_array"
 																	r.args = args
 																	r.count = 0
@@ -43609,6 +44286,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestStringUnixMilliNullableOperation
 																r.summary = ""
 																r.operationID = "test_request_string_unix-milli_nullable"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_string_unix-milli_nullable"
 																r.args = args
 																r.count = 0
@@ -43632,6 +44310,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = TestRequestStringUnixMilliNullableArrayOperation
 																	r.summary = ""
 																	r.operationID = "test_request_string_unix-milli_nullable_array"
+																	r.operationGroup = ""
 																	r.pathPattern = "/test_request_string_unix-milli_nullable_array"
 																	r.args = args
 																	r.count = 0
@@ -43656,6 +44335,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																		r.name = TestRequestStringUnixMilliNullableArrayArrayOperation
 																		r.summary = ""
 																		r.operationID = "test_request_string_unix-milli_nullable_array_array"
+																		r.operationGroup = ""
 																		r.pathPattern = "/test_request_string_unix-milli_nullable_array_array"
 																		r.args = args
 																		r.count = 0
@@ -43689,6 +44369,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestStringUnixNanoOperation
 													r.summary = ""
 													r.operationID = "test_request_string_unix-nano"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_string_unix-nano"
 													r.args = args
 													r.count = 0
@@ -43724,6 +44405,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestStringUnixNanoArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_string_unix-nano_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_string_unix-nano_array"
 															r.args = args
 															r.count = 0
@@ -43748,6 +44430,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestStringUnixNanoArrayArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_string_unix-nano_array_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_string_unix-nano_array_array"
 																r.args = args
 																r.count = 0
@@ -43773,6 +44456,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestStringUnixNanoNullableOperation
 															r.summary = ""
 															r.operationID = "test_request_string_unix-nano_nullable"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_string_unix-nano_nullable"
 															r.args = args
 															r.count = 0
@@ -43796,6 +44480,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestStringUnixNanoNullableArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_string_unix-nano_nullable_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_string_unix-nano_nullable_array"
 																r.args = args
 																r.count = 0
@@ -43820,6 +44505,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = TestRequestStringUnixNanoNullableArrayArrayOperation
 																	r.summary = ""
 																	r.operationID = "test_request_string_unix-nano_nullable_array_array"
+																	r.operationGroup = ""
 																	r.pathPattern = "/test_request_string_unix-nano_nullable_array_array"
 																	r.args = args
 																	r.count = 0
@@ -43851,6 +44537,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestStringUnixSecondsOperation
 													r.summary = ""
 													r.operationID = "test_request_string_unix-seconds"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_string_unix-seconds"
 													r.args = args
 													r.count = 0
@@ -43886,6 +44573,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestStringUnixSecondsArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_string_unix-seconds_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_string_unix-seconds_array"
 															r.args = args
 															r.count = 0
@@ -43910,6 +44598,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestStringUnixSecondsArrayArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_string_unix-seconds_array_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_string_unix-seconds_array_array"
 																r.args = args
 																r.count = 0
@@ -43935,6 +44624,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestStringUnixSecondsNullableOperation
 															r.summary = ""
 															r.operationID = "test_request_string_unix-seconds_nullable"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_string_unix-seconds_nullable"
 															r.args = args
 															r.count = 0
@@ -43958,6 +44648,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestRequestStringUnixSecondsNullableArrayOperation
 																r.summary = ""
 																r.operationID = "test_request_string_unix-seconds_nullable_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_request_string_unix-seconds_nullable_array"
 																r.args = args
 																r.count = 0
@@ -43982,6 +44673,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = TestRequestStringUnixSecondsNullableArrayArrayOperation
 																	r.summary = ""
 																	r.operationID = "test_request_string_unix-seconds_nullable_array_array"
+																	r.operationGroup = ""
 																	r.pathPattern = "/test_request_string_unix-seconds_nullable_array_array"
 																	r.args = args
 																	r.count = 0
@@ -44027,6 +44719,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestStringUnixArrayOperation
 													r.summary = ""
 													r.operationID = "test_request_string_unix_array"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_string_unix_array"
 													r.args = args
 													r.count = 0
@@ -44051,6 +44744,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestStringUnixArrayArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_string_unix_array_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_string_unix_array_array"
 														r.args = args
 														r.count = 0
@@ -44076,6 +44770,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestStringUnixNullableOperation
 													r.summary = ""
 													r.operationID = "test_request_string_unix_nullable"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_string_unix_nullable"
 													r.args = args
 													r.count = 0
@@ -44099,6 +44794,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestStringUnixNullableArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_string_unix_nullable_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_string_unix_nullable_array"
 														r.args = args
 														r.count = 0
@@ -44123,6 +44819,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestStringUnixNullableArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_string_unix_nullable_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_string_unix_nullable_array_array"
 															r.args = args
 															r.count = 0
@@ -44154,6 +44851,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = TestRequestStringURIOperation
 											r.summary = ""
 											r.operationID = "test_request_string_uri"
+											r.operationGroup = ""
 											r.pathPattern = "/test_request_string_uri"
 											r.args = args
 											r.count = 0
@@ -44189,6 +44887,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestStringURIArrayOperation
 													r.summary = ""
 													r.operationID = "test_request_string_uri_array"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_string_uri_array"
 													r.args = args
 													r.count = 0
@@ -44213,6 +44912,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestStringURIArrayArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_string_uri_array_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_string_uri_array_array"
 														r.args = args
 														r.count = 0
@@ -44238,6 +44938,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestStringURINullableOperation
 													r.summary = ""
 													r.operationID = "test_request_string_uri_nullable"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_string_uri_nullable"
 													r.args = args
 													r.count = 0
@@ -44261,6 +44962,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestStringURINullableArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_string_uri_nullable_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_string_uri_nullable_array"
 														r.args = args
 														r.count = 0
@@ -44285,6 +44987,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestStringURINullableArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_string_uri_nullable_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_string_uri_nullable_array_array"
 															r.args = args
 															r.count = 0
@@ -44316,6 +45019,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = TestRequestStringUUIDOperation
 											r.summary = ""
 											r.operationID = "test_request_string_uuid"
+											r.operationGroup = ""
 											r.pathPattern = "/test_request_string_uuid"
 											r.args = args
 											r.count = 0
@@ -44351,6 +45055,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestStringUUIDArrayOperation
 													r.summary = ""
 													r.operationID = "test_request_string_uuid_array"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_string_uuid_array"
 													r.args = args
 													r.count = 0
@@ -44375,6 +45080,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestStringUUIDArrayArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_string_uuid_array_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_string_uuid_array_array"
 														r.args = args
 														r.count = 0
@@ -44400,6 +45106,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestRequestStringUUIDNullableOperation
 													r.summary = ""
 													r.operationID = "test_request_string_uuid_nullable"
+													r.operationGroup = ""
 													r.pathPattern = "/test_request_string_uuid_nullable"
 													r.args = args
 													r.count = 0
@@ -44423,6 +45130,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestRequestStringUUIDNullableArrayOperation
 														r.summary = ""
 														r.operationID = "test_request_string_uuid_nullable_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_request_string_uuid_nullable_array"
 														r.args = args
 														r.count = 0
@@ -44447,6 +45155,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestRequestStringUUIDNullableArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_request_string_uuid_nullable_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_request_string_uuid_nullable_array_array"
 															r.args = args
 															r.count = 0
@@ -44499,6 +45208,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.name = TestResponseAnyOperation
 								r.summary = ""
 								r.operationID = "test_response_Any"
+								r.operationGroup = ""
 								r.pathPattern = "/test_response_Any"
 								r.args = args
 								r.count = 0
@@ -44523,6 +45233,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.name = TestResponseEmptyStructOperation
 								r.summary = ""
 								r.operationID = "test_response_EmptyStruct"
+								r.operationGroup = ""
 								r.pathPattern = "/test_response_EmptyStruct"
 								r.args = args
 								r.count = 0
@@ -44547,6 +45258,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.name = TestResponseFormatTestOperation
 								r.summary = ""
 								r.operationID = "test_response_FormatTest"
+								r.operationGroup = ""
 								r.pathPattern = "/test_response_FormatTest"
 								r.args = args
 								r.count = 0
@@ -44570,6 +45282,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.name = TestResponseBooleanOperation
 								r.summary = ""
 								r.operationID = "test_response_boolean"
+								r.operationGroup = ""
 								r.pathPattern = "/test_response_boolean"
 								r.args = args
 								r.count = 0
@@ -44605,6 +45318,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										r.name = TestResponseBooleanArrayOperation
 										r.summary = ""
 										r.operationID = "test_response_boolean_array"
+										r.operationGroup = ""
 										r.pathPattern = "/test_response_boolean_array"
 										r.args = args
 										r.count = 0
@@ -44629,6 +45343,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = TestResponseBooleanArrayArrayOperation
 											r.summary = ""
 											r.operationID = "test_response_boolean_array_array"
+											r.operationGroup = ""
 											r.pathPattern = "/test_response_boolean_array_array"
 											r.args = args
 											r.count = 0
@@ -44654,6 +45369,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										r.name = TestResponseBooleanNullableOperation
 										r.summary = ""
 										r.operationID = "test_response_boolean_nullable"
+										r.operationGroup = ""
 										r.pathPattern = "/test_response_boolean_nullable"
 										r.args = args
 										r.count = 0
@@ -44677,6 +45393,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = TestResponseBooleanNullableArrayOperation
 											r.summary = ""
 											r.operationID = "test_response_boolean_nullable_array"
+											r.operationGroup = ""
 											r.pathPattern = "/test_response_boolean_nullable_array"
 											r.args = args
 											r.count = 0
@@ -44701,6 +45418,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestResponseBooleanNullableArrayArrayOperation
 												r.summary = ""
 												r.operationID = "test_response_boolean_nullable_array_array"
+												r.operationGroup = ""
 												r.pathPattern = "/test_response_boolean_nullable_array_array"
 												r.args = args
 												r.count = 0
@@ -44732,6 +45450,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.name = TestResponseIntegerOperation
 								r.summary = ""
 								r.operationID = "test_response_integer"
+								r.operationGroup = ""
 								r.pathPattern = "/test_response_integer"
 								r.args = args
 								r.count = 0
@@ -44767,6 +45486,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										r.name = TestResponseIntegerArrayOperation
 										r.summary = ""
 										r.operationID = "test_response_integer_array"
+										r.operationGroup = ""
 										r.pathPattern = "/test_response_integer_array"
 										r.args = args
 										r.count = 0
@@ -44791,6 +45511,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = TestResponseIntegerArrayArrayOperation
 											r.summary = ""
 											r.operationID = "test_response_integer_array_array"
+											r.operationGroup = ""
 											r.pathPattern = "/test_response_integer_array_array"
 											r.args = args
 											r.count = 0
@@ -44828,6 +45549,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = TestResponseIntegerInt16Operation
 											r.summary = ""
 											r.operationID = "test_response_integer_int16"
+											r.operationGroup = ""
 											r.pathPattern = "/test_response_integer_int16"
 											r.args = args
 											r.count = 0
@@ -44863,6 +45585,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestResponseIntegerInt16ArrayOperation
 													r.summary = ""
 													r.operationID = "test_response_integer_int16_array"
+													r.operationGroup = ""
 													r.pathPattern = "/test_response_integer_int16_array"
 													r.args = args
 													r.count = 0
@@ -44887,6 +45610,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestResponseIntegerInt16ArrayArrayOperation
 														r.summary = ""
 														r.operationID = "test_response_integer_int16_array_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_response_integer_int16_array_array"
 														r.args = args
 														r.count = 0
@@ -44912,6 +45636,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestResponseIntegerInt16NullableOperation
 													r.summary = ""
 													r.operationID = "test_response_integer_int16_nullable"
+													r.operationGroup = ""
 													r.pathPattern = "/test_response_integer_int16_nullable"
 													r.args = args
 													r.count = 0
@@ -44935,6 +45660,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestResponseIntegerInt16NullableArrayOperation
 														r.summary = ""
 														r.operationID = "test_response_integer_int16_nullable_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_response_integer_int16_nullable_array"
 														r.args = args
 														r.count = 0
@@ -44959,6 +45685,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestResponseIntegerInt16NullableArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_response_integer_int16_nullable_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_response_integer_int16_nullable_array_array"
 															r.args = args
 															r.count = 0
@@ -44990,6 +45717,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = TestResponseIntegerInt32Operation
 											r.summary = ""
 											r.operationID = "test_response_integer_int32"
+											r.operationGroup = ""
 											r.pathPattern = "/test_response_integer_int32"
 											r.args = args
 											r.count = 0
@@ -45025,6 +45753,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestResponseIntegerInt32ArrayOperation
 													r.summary = ""
 													r.operationID = "test_response_integer_int32_array"
+													r.operationGroup = ""
 													r.pathPattern = "/test_response_integer_int32_array"
 													r.args = args
 													r.count = 0
@@ -45049,6 +45778,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestResponseIntegerInt32ArrayArrayOperation
 														r.summary = ""
 														r.operationID = "test_response_integer_int32_array_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_response_integer_int32_array_array"
 														r.args = args
 														r.count = 0
@@ -45074,6 +45804,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestResponseIntegerInt32NullableOperation
 													r.summary = ""
 													r.operationID = "test_response_integer_int32_nullable"
+													r.operationGroup = ""
 													r.pathPattern = "/test_response_integer_int32_nullable"
 													r.args = args
 													r.count = 0
@@ -45097,6 +45828,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestResponseIntegerInt32NullableArrayOperation
 														r.summary = ""
 														r.operationID = "test_response_integer_int32_nullable_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_response_integer_int32_nullable_array"
 														r.args = args
 														r.count = 0
@@ -45121,6 +45853,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestResponseIntegerInt32NullableArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_response_integer_int32_nullable_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_response_integer_int32_nullable_array_array"
 															r.args = args
 															r.count = 0
@@ -45152,6 +45885,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = TestResponseIntegerInt64Operation
 											r.summary = ""
 											r.operationID = "test_response_integer_int64"
+											r.operationGroup = ""
 											r.pathPattern = "/test_response_integer_int64"
 											r.args = args
 											r.count = 0
@@ -45187,6 +45921,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestResponseIntegerInt64ArrayOperation
 													r.summary = ""
 													r.operationID = "test_response_integer_int64_array"
+													r.operationGroup = ""
 													r.pathPattern = "/test_response_integer_int64_array"
 													r.args = args
 													r.count = 0
@@ -45211,6 +45946,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestResponseIntegerInt64ArrayArrayOperation
 														r.summary = ""
 														r.operationID = "test_response_integer_int64_array_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_response_integer_int64_array_array"
 														r.args = args
 														r.count = 0
@@ -45236,6 +45972,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestResponseIntegerInt64NullableOperation
 													r.summary = ""
 													r.operationID = "test_response_integer_int64_nullable"
+													r.operationGroup = ""
 													r.pathPattern = "/test_response_integer_int64_nullable"
 													r.args = args
 													r.count = 0
@@ -45259,6 +45996,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestResponseIntegerInt64NullableArrayOperation
 														r.summary = ""
 														r.operationID = "test_response_integer_int64_nullable_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_response_integer_int64_nullable_array"
 														r.args = args
 														r.count = 0
@@ -45283,6 +46021,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestResponseIntegerInt64NullableArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_response_integer_int64_nullable_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_response_integer_int64_nullable_array_array"
 															r.args = args
 															r.count = 0
@@ -45314,6 +46053,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = TestResponseIntegerInt8Operation
 											r.summary = ""
 											r.operationID = "test_response_integer_int8"
+											r.operationGroup = ""
 											r.pathPattern = "/test_response_integer_int8"
 											r.args = args
 											r.count = 0
@@ -45349,6 +46089,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestResponseIntegerInt8ArrayOperation
 													r.summary = ""
 													r.operationID = "test_response_integer_int8_array"
+													r.operationGroup = ""
 													r.pathPattern = "/test_response_integer_int8_array"
 													r.args = args
 													r.count = 0
@@ -45373,6 +46114,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestResponseIntegerInt8ArrayArrayOperation
 														r.summary = ""
 														r.operationID = "test_response_integer_int8_array_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_response_integer_int8_array_array"
 														r.args = args
 														r.count = 0
@@ -45398,6 +46140,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestResponseIntegerInt8NullableOperation
 													r.summary = ""
 													r.operationID = "test_response_integer_int8_nullable"
+													r.operationGroup = ""
 													r.pathPattern = "/test_response_integer_int8_nullable"
 													r.args = args
 													r.count = 0
@@ -45421,6 +46164,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestResponseIntegerInt8NullableArrayOperation
 														r.summary = ""
 														r.operationID = "test_response_integer_int8_nullable_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_response_integer_int8_nullable_array"
 														r.args = args
 														r.count = 0
@@ -45445,6 +46189,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestResponseIntegerInt8NullableArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_response_integer_int8_nullable_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_response_integer_int8_nullable_array_array"
 															r.args = args
 															r.count = 0
@@ -45478,6 +46223,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										r.name = TestResponseIntegerNullableOperation
 										r.summary = ""
 										r.operationID = "test_response_integer_nullable"
+										r.operationGroup = ""
 										r.pathPattern = "/test_response_integer_nullable"
 										r.args = args
 										r.count = 0
@@ -45501,6 +46247,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = TestResponseIntegerNullableArrayOperation
 											r.summary = ""
 											r.operationID = "test_response_integer_nullable_array"
+											r.operationGroup = ""
 											r.pathPattern = "/test_response_integer_nullable_array"
 											r.args = args
 											r.count = 0
@@ -45525,6 +46272,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestResponseIntegerNullableArrayArrayOperation
 												r.summary = ""
 												r.operationID = "test_response_integer_nullable_array_array"
+												r.operationGroup = ""
 												r.pathPattern = "/test_response_integer_nullable_array_array"
 												r.args = args
 												r.count = 0
@@ -45564,6 +46312,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = TestResponseIntegerUintOperation
 											r.summary = ""
 											r.operationID = "test_response_integer_uint"
+											r.operationGroup = ""
 											r.pathPattern = "/test_response_integer_uint"
 											r.args = args
 											r.count = 0
@@ -45587,6 +46336,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestResponseIntegerUint16Operation
 												r.summary = ""
 												r.operationID = "test_response_integer_uint16"
+												r.operationGroup = ""
 												r.pathPattern = "/test_response_integer_uint16"
 												r.args = args
 												r.count = 0
@@ -45622,6 +46372,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestResponseIntegerUint16ArrayOperation
 														r.summary = ""
 														r.operationID = "test_response_integer_uint16_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_response_integer_uint16_array"
 														r.args = args
 														r.count = 0
@@ -45646,6 +46397,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestResponseIntegerUint16ArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_response_integer_uint16_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_response_integer_uint16_array_array"
 															r.args = args
 															r.count = 0
@@ -45671,6 +46423,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestResponseIntegerUint16NullableOperation
 														r.summary = ""
 														r.operationID = "test_response_integer_uint16_nullable"
+														r.operationGroup = ""
 														r.pathPattern = "/test_response_integer_uint16_nullable"
 														r.args = args
 														r.count = 0
@@ -45694,6 +46447,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestResponseIntegerUint16NullableArrayOperation
 															r.summary = ""
 															r.operationID = "test_response_integer_uint16_nullable_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_response_integer_uint16_nullable_array"
 															r.args = args
 															r.count = 0
@@ -45718,6 +46472,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestResponseIntegerUint16NullableArrayArrayOperation
 																r.summary = ""
 																r.operationID = "test_response_integer_uint16_nullable_array_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_response_integer_uint16_nullable_array_array"
 																r.args = args
 																r.count = 0
@@ -45749,6 +46504,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestResponseIntegerUint32Operation
 												r.summary = ""
 												r.operationID = "test_response_integer_uint32"
+												r.operationGroup = ""
 												r.pathPattern = "/test_response_integer_uint32"
 												r.args = args
 												r.count = 0
@@ -45784,6 +46540,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestResponseIntegerUint32ArrayOperation
 														r.summary = ""
 														r.operationID = "test_response_integer_uint32_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_response_integer_uint32_array"
 														r.args = args
 														r.count = 0
@@ -45808,6 +46565,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestResponseIntegerUint32ArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_response_integer_uint32_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_response_integer_uint32_array_array"
 															r.args = args
 															r.count = 0
@@ -45833,6 +46591,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestResponseIntegerUint32NullableOperation
 														r.summary = ""
 														r.operationID = "test_response_integer_uint32_nullable"
+														r.operationGroup = ""
 														r.pathPattern = "/test_response_integer_uint32_nullable"
 														r.args = args
 														r.count = 0
@@ -45856,6 +46615,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestResponseIntegerUint32NullableArrayOperation
 															r.summary = ""
 															r.operationID = "test_response_integer_uint32_nullable_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_response_integer_uint32_nullable_array"
 															r.args = args
 															r.count = 0
@@ -45880,6 +46640,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestResponseIntegerUint32NullableArrayArrayOperation
 																r.summary = ""
 																r.operationID = "test_response_integer_uint32_nullable_array_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_response_integer_uint32_nullable_array_array"
 																r.args = args
 																r.count = 0
@@ -45911,6 +46672,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestResponseIntegerUint64Operation
 												r.summary = ""
 												r.operationID = "test_response_integer_uint64"
+												r.operationGroup = ""
 												r.pathPattern = "/test_response_integer_uint64"
 												r.args = args
 												r.count = 0
@@ -45946,6 +46708,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestResponseIntegerUint64ArrayOperation
 														r.summary = ""
 														r.operationID = "test_response_integer_uint64_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_response_integer_uint64_array"
 														r.args = args
 														r.count = 0
@@ -45970,6 +46733,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestResponseIntegerUint64ArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_response_integer_uint64_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_response_integer_uint64_array_array"
 															r.args = args
 															r.count = 0
@@ -45995,6 +46759,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestResponseIntegerUint64NullableOperation
 														r.summary = ""
 														r.operationID = "test_response_integer_uint64_nullable"
+														r.operationGroup = ""
 														r.pathPattern = "/test_response_integer_uint64_nullable"
 														r.args = args
 														r.count = 0
@@ -46018,6 +46783,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestResponseIntegerUint64NullableArrayOperation
 															r.summary = ""
 															r.operationID = "test_response_integer_uint64_nullable_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_response_integer_uint64_nullable_array"
 															r.args = args
 															r.count = 0
@@ -46042,6 +46808,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestResponseIntegerUint64NullableArrayArrayOperation
 																r.summary = ""
 																r.operationID = "test_response_integer_uint64_nullable_array_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_response_integer_uint64_nullable_array_array"
 																r.args = args
 																r.count = 0
@@ -46073,6 +46840,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestResponseIntegerUint8Operation
 												r.summary = ""
 												r.operationID = "test_response_integer_uint8"
+												r.operationGroup = ""
 												r.pathPattern = "/test_response_integer_uint8"
 												r.args = args
 												r.count = 0
@@ -46108,6 +46876,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestResponseIntegerUint8ArrayOperation
 														r.summary = ""
 														r.operationID = "test_response_integer_uint8_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_response_integer_uint8_array"
 														r.args = args
 														r.count = 0
@@ -46132,6 +46901,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestResponseIntegerUint8ArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_response_integer_uint8_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_response_integer_uint8_array_array"
 															r.args = args
 															r.count = 0
@@ -46157,6 +46927,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestResponseIntegerUint8NullableOperation
 														r.summary = ""
 														r.operationID = "test_response_integer_uint8_nullable"
+														r.operationGroup = ""
 														r.pathPattern = "/test_response_integer_uint8_nullable"
 														r.args = args
 														r.count = 0
@@ -46180,6 +46951,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestResponseIntegerUint8NullableArrayOperation
 															r.summary = ""
 															r.operationID = "test_response_integer_uint8_nullable_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_response_integer_uint8_nullable_array"
 															r.args = args
 															r.count = 0
@@ -46204,6 +46976,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestResponseIntegerUint8NullableArrayArrayOperation
 																r.summary = ""
 																r.operationID = "test_response_integer_uint8_nullable_array_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_response_integer_uint8_nullable_array_array"
 																r.args = args
 																r.count = 0
@@ -46247,6 +47020,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestResponseIntegerUintArrayOperation
 													r.summary = ""
 													r.operationID = "test_response_integer_uint_array"
+													r.operationGroup = ""
 													r.pathPattern = "/test_response_integer_uint_array"
 													r.args = args
 													r.count = 0
@@ -46271,6 +47045,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestResponseIntegerUintArrayArrayOperation
 														r.summary = ""
 														r.operationID = "test_response_integer_uint_array_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_response_integer_uint_array_array"
 														r.args = args
 														r.count = 0
@@ -46296,6 +47071,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestResponseIntegerUintNullableOperation
 													r.summary = ""
 													r.operationID = "test_response_integer_uint_nullable"
+													r.operationGroup = ""
 													r.pathPattern = "/test_response_integer_uint_nullable"
 													r.args = args
 													r.count = 0
@@ -46319,6 +47095,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestResponseIntegerUintNullableArrayOperation
 														r.summary = ""
 														r.operationID = "test_response_integer_uint_nullable_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_response_integer_uint_nullable_array"
 														r.args = args
 														r.count = 0
@@ -46343,6 +47120,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestResponseIntegerUintNullableArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_response_integer_uint_nullable_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_response_integer_uint_nullable_array_array"
 															r.args = args
 															r.count = 0
@@ -46374,6 +47152,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = TestResponseIntegerUnixOperation
 											r.summary = ""
 											r.operationID = "test_response_integer_unix"
+											r.operationGroup = ""
 											r.pathPattern = "/test_response_integer_unix"
 											r.args = args
 											r.count = 0
@@ -46421,6 +47200,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestResponseIntegerUnixMicroOperation
 														r.summary = ""
 														r.operationID = "test_response_integer_unix-micro"
+														r.operationGroup = ""
 														r.pathPattern = "/test_response_integer_unix-micro"
 														r.args = args
 														r.count = 0
@@ -46456,6 +47236,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestResponseIntegerUnixMicroArrayOperation
 																r.summary = ""
 																r.operationID = "test_response_integer_unix-micro_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_response_integer_unix-micro_array"
 																r.args = args
 																r.count = 0
@@ -46480,6 +47261,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = TestResponseIntegerUnixMicroArrayArrayOperation
 																	r.summary = ""
 																	r.operationID = "test_response_integer_unix-micro_array_array"
+																	r.operationGroup = ""
 																	r.pathPattern = "/test_response_integer_unix-micro_array_array"
 																	r.args = args
 																	r.count = 0
@@ -46505,6 +47287,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestResponseIntegerUnixMicroNullableOperation
 																r.summary = ""
 																r.operationID = "test_response_integer_unix-micro_nullable"
+																r.operationGroup = ""
 																r.pathPattern = "/test_response_integer_unix-micro_nullable"
 																r.args = args
 																r.count = 0
@@ -46528,6 +47311,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = TestResponseIntegerUnixMicroNullableArrayOperation
 																	r.summary = ""
 																	r.operationID = "test_response_integer_unix-micro_nullable_array"
+																	r.operationGroup = ""
 																	r.pathPattern = "/test_response_integer_unix-micro_nullable_array"
 																	r.args = args
 																	r.count = 0
@@ -46552,6 +47336,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																		r.name = TestResponseIntegerUnixMicroNullableArrayArrayOperation
 																		r.summary = ""
 																		r.operationID = "test_response_integer_unix-micro_nullable_array_array"
+																		r.operationGroup = ""
 																		r.pathPattern = "/test_response_integer_unix-micro_nullable_array_array"
 																		r.args = args
 																		r.count = 0
@@ -46583,6 +47368,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestResponseIntegerUnixMilliOperation
 														r.summary = ""
 														r.operationID = "test_response_integer_unix-milli"
+														r.operationGroup = ""
 														r.pathPattern = "/test_response_integer_unix-milli"
 														r.args = args
 														r.count = 0
@@ -46618,6 +47404,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestResponseIntegerUnixMilliArrayOperation
 																r.summary = ""
 																r.operationID = "test_response_integer_unix-milli_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_response_integer_unix-milli_array"
 																r.args = args
 																r.count = 0
@@ -46642,6 +47429,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = TestResponseIntegerUnixMilliArrayArrayOperation
 																	r.summary = ""
 																	r.operationID = "test_response_integer_unix-milli_array_array"
+																	r.operationGroup = ""
 																	r.pathPattern = "/test_response_integer_unix-milli_array_array"
 																	r.args = args
 																	r.count = 0
@@ -46667,6 +47455,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestResponseIntegerUnixMilliNullableOperation
 																r.summary = ""
 																r.operationID = "test_response_integer_unix-milli_nullable"
+																r.operationGroup = ""
 																r.pathPattern = "/test_response_integer_unix-milli_nullable"
 																r.args = args
 																r.count = 0
@@ -46690,6 +47479,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = TestResponseIntegerUnixMilliNullableArrayOperation
 																	r.summary = ""
 																	r.operationID = "test_response_integer_unix-milli_nullable_array"
+																	r.operationGroup = ""
 																	r.pathPattern = "/test_response_integer_unix-milli_nullable_array"
 																	r.args = args
 																	r.count = 0
@@ -46714,6 +47504,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																		r.name = TestResponseIntegerUnixMilliNullableArrayArrayOperation
 																		r.summary = ""
 																		r.operationID = "test_response_integer_unix-milli_nullable_array_array"
+																		r.operationGroup = ""
 																		r.pathPattern = "/test_response_integer_unix-milli_nullable_array_array"
 																		r.args = args
 																		r.count = 0
@@ -46747,6 +47538,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestResponseIntegerUnixNanoOperation
 													r.summary = ""
 													r.operationID = "test_response_integer_unix-nano"
+													r.operationGroup = ""
 													r.pathPattern = "/test_response_integer_unix-nano"
 													r.args = args
 													r.count = 0
@@ -46782,6 +47574,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestResponseIntegerUnixNanoArrayOperation
 															r.summary = ""
 															r.operationID = "test_response_integer_unix-nano_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_response_integer_unix-nano_array"
 															r.args = args
 															r.count = 0
@@ -46806,6 +47599,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestResponseIntegerUnixNanoArrayArrayOperation
 																r.summary = ""
 																r.operationID = "test_response_integer_unix-nano_array_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_response_integer_unix-nano_array_array"
 																r.args = args
 																r.count = 0
@@ -46831,6 +47625,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestResponseIntegerUnixNanoNullableOperation
 															r.summary = ""
 															r.operationID = "test_response_integer_unix-nano_nullable"
+															r.operationGroup = ""
 															r.pathPattern = "/test_response_integer_unix-nano_nullable"
 															r.args = args
 															r.count = 0
@@ -46854,6 +47649,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestResponseIntegerUnixNanoNullableArrayOperation
 																r.summary = ""
 																r.operationID = "test_response_integer_unix-nano_nullable_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_response_integer_unix-nano_nullable_array"
 																r.args = args
 																r.count = 0
@@ -46878,6 +47674,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = TestResponseIntegerUnixNanoNullableArrayArrayOperation
 																	r.summary = ""
 																	r.operationID = "test_response_integer_unix-nano_nullable_array_array"
+																	r.operationGroup = ""
 																	r.pathPattern = "/test_response_integer_unix-nano_nullable_array_array"
 																	r.args = args
 																	r.count = 0
@@ -46909,6 +47706,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestResponseIntegerUnixSecondsOperation
 													r.summary = ""
 													r.operationID = "test_response_integer_unix-seconds"
+													r.operationGroup = ""
 													r.pathPattern = "/test_response_integer_unix-seconds"
 													r.args = args
 													r.count = 0
@@ -46944,6 +47742,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestResponseIntegerUnixSecondsArrayOperation
 															r.summary = ""
 															r.operationID = "test_response_integer_unix-seconds_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_response_integer_unix-seconds_array"
 															r.args = args
 															r.count = 0
@@ -46968,6 +47767,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestResponseIntegerUnixSecondsArrayArrayOperation
 																r.summary = ""
 																r.operationID = "test_response_integer_unix-seconds_array_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_response_integer_unix-seconds_array_array"
 																r.args = args
 																r.count = 0
@@ -46993,6 +47793,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestResponseIntegerUnixSecondsNullableOperation
 															r.summary = ""
 															r.operationID = "test_response_integer_unix-seconds_nullable"
+															r.operationGroup = ""
 															r.pathPattern = "/test_response_integer_unix-seconds_nullable"
 															r.args = args
 															r.count = 0
@@ -47016,6 +47817,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestResponseIntegerUnixSecondsNullableArrayOperation
 																r.summary = ""
 																r.operationID = "test_response_integer_unix-seconds_nullable_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_response_integer_unix-seconds_nullable_array"
 																r.args = args
 																r.count = 0
@@ -47040,6 +47842,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = TestResponseIntegerUnixSecondsNullableArrayArrayOperation
 																	r.summary = ""
 																	r.operationID = "test_response_integer_unix-seconds_nullable_array_array"
+																	r.operationGroup = ""
 																	r.pathPattern = "/test_response_integer_unix-seconds_nullable_array_array"
 																	r.args = args
 																	r.count = 0
@@ -47085,6 +47888,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestResponseIntegerUnixArrayOperation
 													r.summary = ""
 													r.operationID = "test_response_integer_unix_array"
+													r.operationGroup = ""
 													r.pathPattern = "/test_response_integer_unix_array"
 													r.args = args
 													r.count = 0
@@ -47109,6 +47913,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestResponseIntegerUnixArrayArrayOperation
 														r.summary = ""
 														r.operationID = "test_response_integer_unix_array_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_response_integer_unix_array_array"
 														r.args = args
 														r.count = 0
@@ -47134,6 +47939,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestResponseIntegerUnixNullableOperation
 													r.summary = ""
 													r.operationID = "test_response_integer_unix_nullable"
+													r.operationGroup = ""
 													r.pathPattern = "/test_response_integer_unix_nullable"
 													r.args = args
 													r.count = 0
@@ -47157,6 +47963,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestResponseIntegerUnixNullableArrayOperation
 														r.summary = ""
 														r.operationID = "test_response_integer_unix_nullable_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_response_integer_unix_nullable_array"
 														r.args = args
 														r.count = 0
@@ -47181,6 +47988,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestResponseIntegerUnixNullableArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_response_integer_unix_nullable_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_response_integer_unix_nullable_array_array"
 															r.args = args
 															r.count = 0
@@ -47230,6 +48038,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									r.name = TestResponseNullOperation
 									r.summary = ""
 									r.operationID = "test_response_null"
+									r.operationGroup = ""
 									r.pathPattern = "/test_response_null"
 									r.args = args
 									r.count = 0
@@ -47265,6 +48074,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = TestResponseNullArrayOperation
 											r.summary = ""
 											r.operationID = "test_response_null_array"
+											r.operationGroup = ""
 											r.pathPattern = "/test_response_null_array"
 											r.args = args
 											r.count = 0
@@ -47289,6 +48099,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestResponseNullArrayArrayOperation
 												r.summary = ""
 												r.operationID = "test_response_null_array_array"
+												r.operationGroup = ""
 												r.pathPattern = "/test_response_null_array_array"
 												r.args = args
 												r.count = 0
@@ -47314,6 +48125,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = TestResponseNullNullableOperation
 											r.summary = ""
 											r.operationID = "test_response_null_nullable"
+											r.operationGroup = ""
 											r.pathPattern = "/test_response_null_nullable"
 											r.args = args
 											r.count = 0
@@ -47337,6 +48149,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestResponseNullNullableArrayOperation
 												r.summary = ""
 												r.operationID = "test_response_null_nullable_array"
+												r.operationGroup = ""
 												r.pathPattern = "/test_response_null_nullable_array"
 												r.args = args
 												r.count = 0
@@ -47361,6 +48174,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestResponseNullNullableArrayArrayOperation
 													r.summary = ""
 													r.operationID = "test_response_null_nullable_array_array"
+													r.operationGroup = ""
 													r.pathPattern = "/test_response_null_nullable_array_array"
 													r.args = args
 													r.count = 0
@@ -47392,6 +48206,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									r.name = TestResponseNumberOperation
 									r.summary = ""
 									r.operationID = "test_response_number"
+									r.operationGroup = ""
 									r.pathPattern = "/test_response_number"
 									r.args = args
 									r.count = 0
@@ -47427,6 +48242,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = TestResponseNumberArrayOperation
 											r.summary = ""
 											r.operationID = "test_response_number_array"
+											r.operationGroup = ""
 											r.pathPattern = "/test_response_number_array"
 											r.args = args
 											r.count = 0
@@ -47451,6 +48267,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestResponseNumberArrayArrayOperation
 												r.summary = ""
 												r.operationID = "test_response_number_array_array"
+												r.operationGroup = ""
 												r.pathPattern = "/test_response_number_array_array"
 												r.args = args
 												r.count = 0
@@ -47488,6 +48305,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestResponseNumberDecimalOperation
 												r.summary = ""
 												r.operationID = "test_response_number_decimal"
+												r.operationGroup = ""
 												r.pathPattern = "/test_response_number_decimal"
 												r.args = args
 												r.count = 0
@@ -47523,6 +48341,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestResponseNumberDecimalArrayOperation
 														r.summary = ""
 														r.operationID = "test_response_number_decimal_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_response_number_decimal_array"
 														r.args = args
 														r.count = 0
@@ -47547,6 +48366,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestResponseNumberDecimalArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_response_number_decimal_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_response_number_decimal_array_array"
 															r.args = args
 															r.count = 0
@@ -47572,6 +48392,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestResponseNumberDecimalNullableOperation
 														r.summary = ""
 														r.operationID = "test_response_number_decimal_nullable"
+														r.operationGroup = ""
 														r.pathPattern = "/test_response_number_decimal_nullable"
 														r.args = args
 														r.count = 0
@@ -47595,6 +48416,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestResponseNumberDecimalNullableArrayOperation
 															r.summary = ""
 															r.operationID = "test_response_number_decimal_nullable_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_response_number_decimal_nullable_array"
 															r.args = args
 															r.count = 0
@@ -47619,6 +48441,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestResponseNumberDecimalNullableArrayArrayOperation
 																r.summary = ""
 																r.operationID = "test_response_number_decimal_nullable_array_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_response_number_decimal_nullable_array_array"
 																r.args = args
 																r.count = 0
@@ -47650,6 +48473,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestResponseNumberDoubleOperation
 												r.summary = ""
 												r.operationID = "test_response_number_double"
+												r.operationGroup = ""
 												r.pathPattern = "/test_response_number_double"
 												r.args = args
 												r.count = 0
@@ -47685,6 +48509,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestResponseNumberDoubleArrayOperation
 														r.summary = ""
 														r.operationID = "test_response_number_double_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_response_number_double_array"
 														r.args = args
 														r.count = 0
@@ -47709,6 +48534,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestResponseNumberDoubleArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_response_number_double_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_response_number_double_array_array"
 															r.args = args
 															r.count = 0
@@ -47734,6 +48560,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestResponseNumberDoubleNullableOperation
 														r.summary = ""
 														r.operationID = "test_response_number_double_nullable"
+														r.operationGroup = ""
 														r.pathPattern = "/test_response_number_double_nullable"
 														r.args = args
 														r.count = 0
@@ -47757,6 +48584,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestResponseNumberDoubleNullableArrayOperation
 															r.summary = ""
 															r.operationID = "test_response_number_double_nullable_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_response_number_double_nullable_array"
 															r.args = args
 															r.count = 0
@@ -47781,6 +48609,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestResponseNumberDoubleNullableArrayArrayOperation
 																r.summary = ""
 																r.operationID = "test_response_number_double_nullable_array_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_response_number_double_nullable_array_array"
 																r.args = args
 																r.count = 0
@@ -47814,6 +48643,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = TestResponseNumberFloatOperation
 											r.summary = ""
 											r.operationID = "test_response_number_float"
+											r.operationGroup = ""
 											r.pathPattern = "/test_response_number_float"
 											r.args = args
 											r.count = 0
@@ -47849,6 +48679,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestResponseNumberFloatArrayOperation
 													r.summary = ""
 													r.operationID = "test_response_number_float_array"
+													r.operationGroup = ""
 													r.pathPattern = "/test_response_number_float_array"
 													r.args = args
 													r.count = 0
@@ -47873,6 +48704,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestResponseNumberFloatArrayArrayOperation
 														r.summary = ""
 														r.operationID = "test_response_number_float_array_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_response_number_float_array_array"
 														r.args = args
 														r.count = 0
@@ -47898,6 +48730,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestResponseNumberFloatNullableOperation
 													r.summary = ""
 													r.operationID = "test_response_number_float_nullable"
+													r.operationGroup = ""
 													r.pathPattern = "/test_response_number_float_nullable"
 													r.args = args
 													r.count = 0
@@ -47921,6 +48754,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestResponseNumberFloatNullableArrayOperation
 														r.summary = ""
 														r.operationID = "test_response_number_float_nullable_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_response_number_float_nullable_array"
 														r.args = args
 														r.count = 0
@@ -47945,6 +48779,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestResponseNumberFloatNullableArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_response_number_float_nullable_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_response_number_float_nullable_array_array"
 															r.args = args
 															r.count = 0
@@ -47988,6 +48823,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestResponseNumberInt32Operation
 												r.summary = ""
 												r.operationID = "test_response_number_int32"
+												r.operationGroup = ""
 												r.pathPattern = "/test_response_number_int32"
 												r.args = args
 												r.count = 0
@@ -48023,6 +48859,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestResponseNumberInt32ArrayOperation
 														r.summary = ""
 														r.operationID = "test_response_number_int32_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_response_number_int32_array"
 														r.args = args
 														r.count = 0
@@ -48047,6 +48884,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestResponseNumberInt32ArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_response_number_int32_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_response_number_int32_array_array"
 															r.args = args
 															r.count = 0
@@ -48072,6 +48910,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestResponseNumberInt32NullableOperation
 														r.summary = ""
 														r.operationID = "test_response_number_int32_nullable"
+														r.operationGroup = ""
 														r.pathPattern = "/test_response_number_int32_nullable"
 														r.args = args
 														r.count = 0
@@ -48095,6 +48934,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestResponseNumberInt32NullableArrayOperation
 															r.summary = ""
 															r.operationID = "test_response_number_int32_nullable_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_response_number_int32_nullable_array"
 															r.args = args
 															r.count = 0
@@ -48119,6 +48959,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestResponseNumberInt32NullableArrayArrayOperation
 																r.summary = ""
 																r.operationID = "test_response_number_int32_nullable_array_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_response_number_int32_nullable_array_array"
 																r.args = args
 																r.count = 0
@@ -48150,6 +48991,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestResponseNumberInt64Operation
 												r.summary = ""
 												r.operationID = "test_response_number_int64"
+												r.operationGroup = ""
 												r.pathPattern = "/test_response_number_int64"
 												r.args = args
 												r.count = 0
@@ -48185,6 +49027,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestResponseNumberInt64ArrayOperation
 														r.summary = ""
 														r.operationID = "test_response_number_int64_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_response_number_int64_array"
 														r.args = args
 														r.count = 0
@@ -48209,6 +49052,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestResponseNumberInt64ArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_response_number_int64_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_response_number_int64_array_array"
 															r.args = args
 															r.count = 0
@@ -48234,6 +49078,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestResponseNumberInt64NullableOperation
 														r.summary = ""
 														r.operationID = "test_response_number_int64_nullable"
+														r.operationGroup = ""
 														r.pathPattern = "/test_response_number_int64_nullable"
 														r.args = args
 														r.count = 0
@@ -48257,6 +49102,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestResponseNumberInt64NullableArrayOperation
 															r.summary = ""
 															r.operationID = "test_response_number_int64_nullable_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_response_number_int64_nullable_array"
 															r.args = args
 															r.count = 0
@@ -48281,6 +49127,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestResponseNumberInt64NullableArrayArrayOperation
 																r.summary = ""
 																r.operationID = "test_response_number_int64_nullable_array_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_response_number_int64_nullable_array_array"
 																r.args = args
 																r.count = 0
@@ -48314,6 +49161,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = TestResponseNumberNullableOperation
 											r.summary = ""
 											r.operationID = "test_response_number_nullable"
+											r.operationGroup = ""
 											r.pathPattern = "/test_response_number_nullable"
 											r.args = args
 											r.count = 0
@@ -48337,6 +49185,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestResponseNumberNullableArrayOperation
 												r.summary = ""
 												r.operationID = "test_response_number_nullable_array"
+												r.operationGroup = ""
 												r.pathPattern = "/test_response_number_nullable_array"
 												r.args = args
 												r.count = 0
@@ -48361,6 +49210,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestResponseNumberNullableArrayArrayOperation
 													r.summary = ""
 													r.operationID = "test_response_number_nullable_array_array"
+													r.operationGroup = ""
 													r.pathPattern = "/test_response_number_nullable_array_array"
 													r.args = args
 													r.count = 0
@@ -48394,6 +49244,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.name = TestResponseStringOperation
 								r.summary = ""
 								r.operationID = "test_response_string"
+								r.operationGroup = ""
 								r.pathPattern = "/test_response_string"
 								r.args = args
 								r.count = 0
@@ -48429,6 +49280,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										r.name = TestResponseStringArrayOperation
 										r.summary = ""
 										r.operationID = "test_response_string_array"
+										r.operationGroup = ""
 										r.pathPattern = "/test_response_string_array"
 										r.args = args
 										r.count = 0
@@ -48453,6 +49305,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = TestResponseStringArrayArrayOperation
 											r.summary = ""
 											r.operationID = "test_response_string_array_array"
+											r.operationGroup = ""
 											r.pathPattern = "/test_response_string_array_array"
 											r.args = args
 											r.count = 0
@@ -48490,6 +49343,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = TestResponseStringBase64Operation
 											r.summary = ""
 											r.operationID = "test_response_string_base64"
+											r.operationGroup = ""
 											r.pathPattern = "/test_response_string_base64"
 											r.args = args
 											r.count = 0
@@ -48525,6 +49379,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestResponseStringBase64ArrayOperation
 													r.summary = ""
 													r.operationID = "test_response_string_base64_array"
+													r.operationGroup = ""
 													r.pathPattern = "/test_response_string_base64_array"
 													r.args = args
 													r.count = 0
@@ -48549,6 +49404,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestResponseStringBase64ArrayArrayOperation
 														r.summary = ""
 														r.operationID = "test_response_string_base64_array_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_response_string_base64_array_array"
 														r.args = args
 														r.count = 0
@@ -48574,6 +49430,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestResponseStringBase64NullableOperation
 													r.summary = ""
 													r.operationID = "test_response_string_base64_nullable"
+													r.operationGroup = ""
 													r.pathPattern = "/test_response_string_base64_nullable"
 													r.args = args
 													r.count = 0
@@ -48597,6 +49454,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestResponseStringBase64NullableArrayOperation
 														r.summary = ""
 														r.operationID = "test_response_string_base64_nullable_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_response_string_base64_nullable_array"
 														r.args = args
 														r.count = 0
@@ -48621,6 +49479,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestResponseStringBase64NullableArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_response_string_base64_nullable_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_response_string_base64_nullable_array_array"
 															r.args = args
 															r.count = 0
@@ -48652,6 +49511,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = TestResponseStringBinaryOperation
 											r.summary = ""
 											r.operationID = "test_response_string_binary"
+											r.operationGroup = ""
 											r.pathPattern = "/test_response_string_binary"
 											r.args = args
 											r.count = 0
@@ -48687,6 +49547,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestResponseStringBinaryArrayOperation
 													r.summary = ""
 													r.operationID = "test_response_string_binary_array"
+													r.operationGroup = ""
 													r.pathPattern = "/test_response_string_binary_array"
 													r.args = args
 													r.count = 0
@@ -48711,6 +49572,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestResponseStringBinaryArrayArrayOperation
 														r.summary = ""
 														r.operationID = "test_response_string_binary_array_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_response_string_binary_array_array"
 														r.args = args
 														r.count = 0
@@ -48736,6 +49598,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestResponseStringBinaryNullableOperation
 													r.summary = ""
 													r.operationID = "test_response_string_binary_nullable"
+													r.operationGroup = ""
 													r.pathPattern = "/test_response_string_binary_nullable"
 													r.args = args
 													r.count = 0
@@ -48759,6 +49622,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestResponseStringBinaryNullableArrayOperation
 														r.summary = ""
 														r.operationID = "test_response_string_binary_nullable_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_response_string_binary_nullable_array"
 														r.args = args
 														r.count = 0
@@ -48783,6 +49647,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestResponseStringBinaryNullableArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_response_string_binary_nullable_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_response_string_binary_nullable_array_array"
 															r.args = args
 															r.count = 0
@@ -48814,6 +49679,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = TestResponseStringByteOperation
 											r.summary = ""
 											r.operationID = "test_response_string_byte"
+											r.operationGroup = ""
 											r.pathPattern = "/test_response_string_byte"
 											r.args = args
 											r.count = 0
@@ -48849,6 +49715,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestResponseStringByteArrayOperation
 													r.summary = ""
 													r.operationID = "test_response_string_byte_array"
+													r.operationGroup = ""
 													r.pathPattern = "/test_response_string_byte_array"
 													r.args = args
 													r.count = 0
@@ -48873,6 +49740,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestResponseStringByteArrayArrayOperation
 														r.summary = ""
 														r.operationID = "test_response_string_byte_array_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_response_string_byte_array_array"
 														r.args = args
 														r.count = 0
@@ -48898,6 +49766,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestResponseStringByteNullableOperation
 													r.summary = ""
 													r.operationID = "test_response_string_byte_nullable"
+													r.operationGroup = ""
 													r.pathPattern = "/test_response_string_byte_nullable"
 													r.args = args
 													r.count = 0
@@ -48921,6 +49790,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestResponseStringByteNullableArrayOperation
 														r.summary = ""
 														r.operationID = "test_response_string_byte_nullable_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_response_string_byte_nullable_array"
 														r.args = args
 														r.count = 0
@@ -48945,6 +49815,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestResponseStringByteNullableArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_response_string_byte_nullable_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_response_string_byte_nullable_array_array"
 															r.args = args
 															r.count = 0
@@ -48990,6 +49861,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = TestResponseStringDateOperation
 											r.summary = ""
 											r.operationID = "test_response_string_date"
+											r.operationGroup = ""
 											r.pathPattern = "/test_response_string_date"
 											r.args = args
 											r.count = 0
@@ -49013,6 +49885,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestResponseStringDateTimeOperation
 												r.summary = ""
 												r.operationID = "test_response_string_date-time"
+												r.operationGroup = ""
 												r.pathPattern = "/test_response_string_date-time"
 												r.args = args
 												r.count = 0
@@ -49048,6 +49921,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestResponseStringDateTimeArrayOperation
 														r.summary = ""
 														r.operationID = "test_response_string_date-time_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_response_string_date-time_array"
 														r.args = args
 														r.count = 0
@@ -49072,6 +49946,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestResponseStringDateTimeArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_response_string_date-time_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_response_string_date-time_array_array"
 															r.args = args
 															r.count = 0
@@ -49097,6 +49972,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestResponseStringDateTimeNullableOperation
 														r.summary = ""
 														r.operationID = "test_response_string_date-time_nullable"
+														r.operationGroup = ""
 														r.pathPattern = "/test_response_string_date-time_nullable"
 														r.args = args
 														r.count = 0
@@ -49120,6 +49996,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestResponseStringDateTimeNullableArrayOperation
 															r.summary = ""
 															r.operationID = "test_response_string_date-time_nullable_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_response_string_date-time_nullable_array"
 															r.args = args
 															r.count = 0
@@ -49144,6 +50021,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestResponseStringDateTimeNullableArrayArrayOperation
 																r.summary = ""
 																r.operationID = "test_response_string_date-time_nullable_array_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_response_string_date-time_nullable_array_array"
 																r.args = args
 																r.count = 0
@@ -49187,6 +50065,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestResponseStringDateArrayOperation
 													r.summary = ""
 													r.operationID = "test_response_string_date_array"
+													r.operationGroup = ""
 													r.pathPattern = "/test_response_string_date_array"
 													r.args = args
 													r.count = 0
@@ -49211,6 +50090,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestResponseStringDateArrayArrayOperation
 														r.summary = ""
 														r.operationID = "test_response_string_date_array_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_response_string_date_array_array"
 														r.args = args
 														r.count = 0
@@ -49236,6 +50116,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestResponseStringDateNullableOperation
 													r.summary = ""
 													r.operationID = "test_response_string_date_nullable"
+													r.operationGroup = ""
 													r.pathPattern = "/test_response_string_date_nullable"
 													r.args = args
 													r.count = 0
@@ -49259,6 +50140,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestResponseStringDateNullableArrayOperation
 														r.summary = ""
 														r.operationID = "test_response_string_date_nullable_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_response_string_date_nullable_array"
 														r.args = args
 														r.count = 0
@@ -49283,6 +50165,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestResponseStringDateNullableArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_response_string_date_nullable_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_response_string_date_nullable_array_array"
 															r.args = args
 															r.count = 0
@@ -49314,6 +50197,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = TestResponseStringDecimalOperation
 											r.summary = ""
 											r.operationID = "test_response_string_decimal"
+											r.operationGroup = ""
 											r.pathPattern = "/test_response_string_decimal"
 											r.args = args
 											r.count = 0
@@ -49349,6 +50233,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestResponseStringDecimalArrayOperation
 													r.summary = ""
 													r.operationID = "test_response_string_decimal_array"
+													r.operationGroup = ""
 													r.pathPattern = "/test_response_string_decimal_array"
 													r.args = args
 													r.count = 0
@@ -49373,6 +50258,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestResponseStringDecimalArrayArrayOperation
 														r.summary = ""
 														r.operationID = "test_response_string_decimal_array_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_response_string_decimal_array_array"
 														r.args = args
 														r.count = 0
@@ -49398,6 +50284,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestResponseStringDecimalNullableOperation
 													r.summary = ""
 													r.operationID = "test_response_string_decimal_nullable"
+													r.operationGroup = ""
 													r.pathPattern = "/test_response_string_decimal_nullable"
 													r.args = args
 													r.count = 0
@@ -49421,6 +50308,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestResponseStringDecimalNullableArrayOperation
 														r.summary = ""
 														r.operationID = "test_response_string_decimal_nullable_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_response_string_decimal_nullable_array"
 														r.args = args
 														r.count = 0
@@ -49445,6 +50333,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestResponseStringDecimalNullableArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_response_string_decimal_nullable_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_response_string_decimal_nullable_array_array"
 															r.args = args
 															r.count = 0
@@ -49476,6 +50365,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = TestResponseStringDurationOperation
 											r.summary = ""
 											r.operationID = "test_response_string_duration"
+											r.operationGroup = ""
 											r.pathPattern = "/test_response_string_duration"
 											r.args = args
 											r.count = 0
@@ -49511,6 +50401,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestResponseStringDurationArrayOperation
 													r.summary = ""
 													r.operationID = "test_response_string_duration_array"
+													r.operationGroup = ""
 													r.pathPattern = "/test_response_string_duration_array"
 													r.args = args
 													r.count = 0
@@ -49535,6 +50426,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestResponseStringDurationArrayArrayOperation
 														r.summary = ""
 														r.operationID = "test_response_string_duration_array_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_response_string_duration_array_array"
 														r.args = args
 														r.count = 0
@@ -49560,6 +50452,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestResponseStringDurationNullableOperation
 													r.summary = ""
 													r.operationID = "test_response_string_duration_nullable"
+													r.operationGroup = ""
 													r.pathPattern = "/test_response_string_duration_nullable"
 													r.args = args
 													r.count = 0
@@ -49583,6 +50476,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestResponseStringDurationNullableArrayOperation
 														r.summary = ""
 														r.operationID = "test_response_string_duration_nullable_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_response_string_duration_nullable_array"
 														r.args = args
 														r.count = 0
@@ -49607,6 +50501,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestResponseStringDurationNullableArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_response_string_duration_nullable_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_response_string_duration_nullable_array_array"
 															r.args = args
 															r.count = 0
@@ -49640,6 +50535,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										r.name = TestResponseStringEmailOperation
 										r.summary = ""
 										r.operationID = "test_response_string_email"
+										r.operationGroup = ""
 										r.pathPattern = "/test_response_string_email"
 										r.args = args
 										r.count = 0
@@ -49675,6 +50571,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestResponseStringEmailArrayOperation
 												r.summary = ""
 												r.operationID = "test_response_string_email_array"
+												r.operationGroup = ""
 												r.pathPattern = "/test_response_string_email_array"
 												r.args = args
 												r.count = 0
@@ -49699,6 +50596,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestResponseStringEmailArrayArrayOperation
 													r.summary = ""
 													r.operationID = "test_response_string_email_array_array"
+													r.operationGroup = ""
 													r.pathPattern = "/test_response_string_email_array_array"
 													r.args = args
 													r.count = 0
@@ -49724,6 +50622,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestResponseStringEmailNullableOperation
 												r.summary = ""
 												r.operationID = "test_response_string_email_nullable"
+												r.operationGroup = ""
 												r.pathPattern = "/test_response_string_email_nullable"
 												r.args = args
 												r.count = 0
@@ -49747,6 +50646,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestResponseStringEmailNullableArrayOperation
 													r.summary = ""
 													r.operationID = "test_response_string_email_nullable_array"
+													r.operationGroup = ""
 													r.pathPattern = "/test_response_string_email_nullable_array"
 													r.args = args
 													r.count = 0
@@ -49771,6 +50671,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestResponseStringEmailNullableArrayArrayOperation
 														r.summary = ""
 														r.operationID = "test_response_string_email_nullable_array_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_response_string_email_nullable_array_array"
 														r.args = args
 														r.count = 0
@@ -49814,6 +50715,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = TestResponseStringFloat32Operation
 											r.summary = ""
 											r.operationID = "test_response_string_float32"
+											r.operationGroup = ""
 											r.pathPattern = "/test_response_string_float32"
 											r.args = args
 											r.count = 0
@@ -49849,6 +50751,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestResponseStringFloat32ArrayOperation
 													r.summary = ""
 													r.operationID = "test_response_string_float32_array"
+													r.operationGroup = ""
 													r.pathPattern = "/test_response_string_float32_array"
 													r.args = args
 													r.count = 0
@@ -49873,6 +50776,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestResponseStringFloat32ArrayArrayOperation
 														r.summary = ""
 														r.operationID = "test_response_string_float32_array_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_response_string_float32_array_array"
 														r.args = args
 														r.count = 0
@@ -49898,6 +50802,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestResponseStringFloat32NullableOperation
 													r.summary = ""
 													r.operationID = "test_response_string_float32_nullable"
+													r.operationGroup = ""
 													r.pathPattern = "/test_response_string_float32_nullable"
 													r.args = args
 													r.count = 0
@@ -49921,6 +50826,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestResponseStringFloat32NullableArrayOperation
 														r.summary = ""
 														r.operationID = "test_response_string_float32_nullable_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_response_string_float32_nullable_array"
 														r.args = args
 														r.count = 0
@@ -49945,6 +50851,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestResponseStringFloat32NullableArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_response_string_float32_nullable_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_response_string_float32_nullable_array_array"
 															r.args = args
 															r.count = 0
@@ -49976,6 +50883,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = TestResponseStringFloat64Operation
 											r.summary = ""
 											r.operationID = "test_response_string_float64"
+											r.operationGroup = ""
 											r.pathPattern = "/test_response_string_float64"
 											r.args = args
 											r.count = 0
@@ -50011,6 +50919,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestResponseStringFloat64ArrayOperation
 													r.summary = ""
 													r.operationID = "test_response_string_float64_array"
+													r.operationGroup = ""
 													r.pathPattern = "/test_response_string_float64_array"
 													r.args = args
 													r.count = 0
@@ -50035,6 +50944,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestResponseStringFloat64ArrayArrayOperation
 														r.summary = ""
 														r.operationID = "test_response_string_float64_array_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_response_string_float64_array_array"
 														r.args = args
 														r.count = 0
@@ -50060,6 +50970,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestResponseStringFloat64NullableOperation
 													r.summary = ""
 													r.operationID = "test_response_string_float64_nullable"
+													r.operationGroup = ""
 													r.pathPattern = "/test_response_string_float64_nullable"
 													r.args = args
 													r.count = 0
@@ -50083,6 +50994,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestResponseStringFloat64NullableArrayOperation
 														r.summary = ""
 														r.operationID = "test_response_string_float64_nullable_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_response_string_float64_nullable_array"
 														r.args = args
 														r.count = 0
@@ -50107,6 +51019,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestResponseStringFloat64NullableArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_response_string_float64_nullable_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_response_string_float64_nullable_array_array"
 															r.args = args
 															r.count = 0
@@ -50140,6 +51053,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										r.name = TestResponseStringHostnameOperation
 										r.summary = ""
 										r.operationID = "test_response_string_hostname"
+										r.operationGroup = ""
 										r.pathPattern = "/test_response_string_hostname"
 										r.args = args
 										r.count = 0
@@ -50175,6 +51089,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestResponseStringHostnameArrayOperation
 												r.summary = ""
 												r.operationID = "test_response_string_hostname_array"
+												r.operationGroup = ""
 												r.pathPattern = "/test_response_string_hostname_array"
 												r.args = args
 												r.count = 0
@@ -50199,6 +51114,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestResponseStringHostnameArrayArrayOperation
 													r.summary = ""
 													r.operationID = "test_response_string_hostname_array_array"
+													r.operationGroup = ""
 													r.pathPattern = "/test_response_string_hostname_array_array"
 													r.args = args
 													r.count = 0
@@ -50224,6 +51140,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestResponseStringHostnameNullableOperation
 												r.summary = ""
 												r.operationID = "test_response_string_hostname_nullable"
+												r.operationGroup = ""
 												r.pathPattern = "/test_response_string_hostname_nullable"
 												r.args = args
 												r.count = 0
@@ -50247,6 +51164,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestResponseStringHostnameNullableArrayOperation
 													r.summary = ""
 													r.operationID = "test_response_string_hostname_nullable_array"
+													r.operationGroup = ""
 													r.pathPattern = "/test_response_string_hostname_nullable_array"
 													r.args = args
 													r.count = 0
@@ -50271,6 +51189,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestResponseStringHostnameNullableArrayArrayOperation
 														r.summary = ""
 														r.operationID = "test_response_string_hostname_nullable_array_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_response_string_hostname_nullable_array_array"
 														r.args = args
 														r.count = 0
@@ -50314,6 +51233,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = TestResponseStringIntOperation
 											r.summary = ""
 											r.operationID = "test_response_string_int"
+											r.operationGroup = ""
 											r.pathPattern = "/test_response_string_int"
 											r.args = args
 											r.count = 0
@@ -50337,6 +51257,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestResponseStringInt16Operation
 												r.summary = ""
 												r.operationID = "test_response_string_int16"
+												r.operationGroup = ""
 												r.pathPattern = "/test_response_string_int16"
 												r.args = args
 												r.count = 0
@@ -50372,6 +51293,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestResponseStringInt16ArrayOperation
 														r.summary = ""
 														r.operationID = "test_response_string_int16_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_response_string_int16_array"
 														r.args = args
 														r.count = 0
@@ -50396,6 +51318,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestResponseStringInt16ArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_response_string_int16_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_response_string_int16_array_array"
 															r.args = args
 															r.count = 0
@@ -50421,6 +51344,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestResponseStringInt16NullableOperation
 														r.summary = ""
 														r.operationID = "test_response_string_int16_nullable"
+														r.operationGroup = ""
 														r.pathPattern = "/test_response_string_int16_nullable"
 														r.args = args
 														r.count = 0
@@ -50444,6 +51368,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestResponseStringInt16NullableArrayOperation
 															r.summary = ""
 															r.operationID = "test_response_string_int16_nullable_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_response_string_int16_nullable_array"
 															r.args = args
 															r.count = 0
@@ -50468,6 +51393,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestResponseStringInt16NullableArrayArrayOperation
 																r.summary = ""
 																r.operationID = "test_response_string_int16_nullable_array_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_response_string_int16_nullable_array_array"
 																r.args = args
 																r.count = 0
@@ -50499,6 +51425,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestResponseStringInt32Operation
 												r.summary = ""
 												r.operationID = "test_response_string_int32"
+												r.operationGroup = ""
 												r.pathPattern = "/test_response_string_int32"
 												r.args = args
 												r.count = 0
@@ -50534,6 +51461,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestResponseStringInt32ArrayOperation
 														r.summary = ""
 														r.operationID = "test_response_string_int32_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_response_string_int32_array"
 														r.args = args
 														r.count = 0
@@ -50558,6 +51486,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestResponseStringInt32ArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_response_string_int32_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_response_string_int32_array_array"
 															r.args = args
 															r.count = 0
@@ -50583,6 +51512,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestResponseStringInt32NullableOperation
 														r.summary = ""
 														r.operationID = "test_response_string_int32_nullable"
+														r.operationGroup = ""
 														r.pathPattern = "/test_response_string_int32_nullable"
 														r.args = args
 														r.count = 0
@@ -50606,6 +51536,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestResponseStringInt32NullableArrayOperation
 															r.summary = ""
 															r.operationID = "test_response_string_int32_nullable_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_response_string_int32_nullable_array"
 															r.args = args
 															r.count = 0
@@ -50630,6 +51561,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestResponseStringInt32NullableArrayArrayOperation
 																r.summary = ""
 																r.operationID = "test_response_string_int32_nullable_array_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_response_string_int32_nullable_array_array"
 																r.args = args
 																r.count = 0
@@ -50661,6 +51593,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestResponseStringInt64Operation
 												r.summary = ""
 												r.operationID = "test_response_string_int64"
+												r.operationGroup = ""
 												r.pathPattern = "/test_response_string_int64"
 												r.args = args
 												r.count = 0
@@ -50696,6 +51629,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestResponseStringInt64ArrayOperation
 														r.summary = ""
 														r.operationID = "test_response_string_int64_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_response_string_int64_array"
 														r.args = args
 														r.count = 0
@@ -50720,6 +51654,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestResponseStringInt64ArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_response_string_int64_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_response_string_int64_array_array"
 															r.args = args
 															r.count = 0
@@ -50745,6 +51680,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestResponseStringInt64NullableOperation
 														r.summary = ""
 														r.operationID = "test_response_string_int64_nullable"
+														r.operationGroup = ""
 														r.pathPattern = "/test_response_string_int64_nullable"
 														r.args = args
 														r.count = 0
@@ -50768,6 +51704,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestResponseStringInt64NullableArrayOperation
 															r.summary = ""
 															r.operationID = "test_response_string_int64_nullable_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_response_string_int64_nullable_array"
 															r.args = args
 															r.count = 0
@@ -50792,6 +51729,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestResponseStringInt64NullableArrayArrayOperation
 																r.summary = ""
 																r.operationID = "test_response_string_int64_nullable_array_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_response_string_int64_nullable_array_array"
 																r.args = args
 																r.count = 0
@@ -50823,6 +51761,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestResponseStringInt8Operation
 												r.summary = ""
 												r.operationID = "test_response_string_int8"
+												r.operationGroup = ""
 												r.pathPattern = "/test_response_string_int8"
 												r.args = args
 												r.count = 0
@@ -50858,6 +51797,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestResponseStringInt8ArrayOperation
 														r.summary = ""
 														r.operationID = "test_response_string_int8_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_response_string_int8_array"
 														r.args = args
 														r.count = 0
@@ -50882,6 +51822,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestResponseStringInt8ArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_response_string_int8_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_response_string_int8_array_array"
 															r.args = args
 															r.count = 0
@@ -50907,6 +51848,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestResponseStringInt8NullableOperation
 														r.summary = ""
 														r.operationID = "test_response_string_int8_nullable"
+														r.operationGroup = ""
 														r.pathPattern = "/test_response_string_int8_nullable"
 														r.args = args
 														r.count = 0
@@ -50930,6 +51872,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestResponseStringInt8NullableArrayOperation
 															r.summary = ""
 															r.operationID = "test_response_string_int8_nullable_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_response_string_int8_nullable_array"
 															r.args = args
 															r.count = 0
@@ -50954,6 +51897,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestResponseStringInt8NullableArrayArrayOperation
 																r.summary = ""
 																r.operationID = "test_response_string_int8_nullable_array_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_response_string_int8_nullable_array_array"
 																r.args = args
 																r.count = 0
@@ -50997,6 +51941,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestResponseStringIntArrayOperation
 													r.summary = ""
 													r.operationID = "test_response_string_int_array"
+													r.operationGroup = ""
 													r.pathPattern = "/test_response_string_int_array"
 													r.args = args
 													r.count = 0
@@ -51021,6 +51966,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestResponseStringIntArrayArrayOperation
 														r.summary = ""
 														r.operationID = "test_response_string_int_array_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_response_string_int_array_array"
 														r.args = args
 														r.count = 0
@@ -51046,6 +51992,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestResponseStringIntNullableOperation
 													r.summary = ""
 													r.operationID = "test_response_string_int_nullable"
+													r.operationGroup = ""
 													r.pathPattern = "/test_response_string_int_nullable"
 													r.args = args
 													r.count = 0
@@ -51069,6 +52016,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestResponseStringIntNullableArrayOperation
 														r.summary = ""
 														r.operationID = "test_response_string_int_nullable_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_response_string_int_nullable_array"
 														r.args = args
 														r.count = 0
@@ -51093,6 +52041,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestResponseStringIntNullableArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_response_string_int_nullable_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_response_string_int_nullable_array_array"
 															r.args = args
 															r.count = 0
@@ -51124,6 +52073,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = TestResponseStringIPOperation
 											r.summary = ""
 											r.operationID = "test_response_string_ip"
+											r.operationGroup = ""
 											r.pathPattern = "/test_response_string_ip"
 											r.args = args
 											r.count = 0
@@ -51159,6 +52109,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestResponseStringIPArrayOperation
 													r.summary = ""
 													r.operationID = "test_response_string_ip_array"
+													r.operationGroup = ""
 													r.pathPattern = "/test_response_string_ip_array"
 													r.args = args
 													r.count = 0
@@ -51183,6 +52134,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestResponseStringIPArrayArrayOperation
 														r.summary = ""
 														r.operationID = "test_response_string_ip_array_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_response_string_ip_array_array"
 														r.args = args
 														r.count = 0
@@ -51208,6 +52160,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestResponseStringIPNullableOperation
 													r.summary = ""
 													r.operationID = "test_response_string_ip_nullable"
+													r.operationGroup = ""
 													r.pathPattern = "/test_response_string_ip_nullable"
 													r.args = args
 													r.count = 0
@@ -51231,6 +52184,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestResponseStringIPNullableArrayOperation
 														r.summary = ""
 														r.operationID = "test_response_string_ip_nullable_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_response_string_ip_nullable_array"
 														r.args = args
 														r.count = 0
@@ -51255,6 +52209,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestResponseStringIPNullableArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_response_string_ip_nullable_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_response_string_ip_nullable_array_array"
 															r.args = args
 															r.count = 0
@@ -51296,6 +52251,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestResponseStringIpv4Operation
 													r.summary = ""
 													r.operationID = "test_response_string_ipv4"
+													r.operationGroup = ""
 													r.pathPattern = "/test_response_string_ipv4"
 													r.args = args
 													r.count = 0
@@ -51331,6 +52287,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestResponseStringIpv4ArrayOperation
 															r.summary = ""
 															r.operationID = "test_response_string_ipv4_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_response_string_ipv4_array"
 															r.args = args
 															r.count = 0
@@ -51355,6 +52312,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestResponseStringIpv4ArrayArrayOperation
 																r.summary = ""
 																r.operationID = "test_response_string_ipv4_array_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_response_string_ipv4_array_array"
 																r.args = args
 																r.count = 0
@@ -51380,6 +52338,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestResponseStringIpv4NullableOperation
 															r.summary = ""
 															r.operationID = "test_response_string_ipv4_nullable"
+															r.operationGroup = ""
 															r.pathPattern = "/test_response_string_ipv4_nullable"
 															r.args = args
 															r.count = 0
@@ -51403,6 +52362,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestResponseStringIpv4NullableArrayOperation
 																r.summary = ""
 																r.operationID = "test_response_string_ipv4_nullable_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_response_string_ipv4_nullable_array"
 																r.args = args
 																r.count = 0
@@ -51427,6 +52387,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = TestResponseStringIpv4NullableArrayArrayOperation
 																	r.summary = ""
 																	r.operationID = "test_response_string_ipv4_nullable_array_array"
+																	r.operationGroup = ""
 																	r.pathPattern = "/test_response_string_ipv4_nullable_array_array"
 																	r.args = args
 																	r.count = 0
@@ -51458,6 +52419,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestResponseStringIpv6Operation
 													r.summary = ""
 													r.operationID = "test_response_string_ipv6"
+													r.operationGroup = ""
 													r.pathPattern = "/test_response_string_ipv6"
 													r.args = args
 													r.count = 0
@@ -51493,6 +52455,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestResponseStringIpv6ArrayOperation
 															r.summary = ""
 															r.operationID = "test_response_string_ipv6_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_response_string_ipv6_array"
 															r.args = args
 															r.count = 0
@@ -51517,6 +52480,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestResponseStringIpv6ArrayArrayOperation
 																r.summary = ""
 																r.operationID = "test_response_string_ipv6_array_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_response_string_ipv6_array_array"
 																r.args = args
 																r.count = 0
@@ -51542,6 +52506,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestResponseStringIpv6NullableOperation
 															r.summary = ""
 															r.operationID = "test_response_string_ipv6_nullable"
+															r.operationGroup = ""
 															r.pathPattern = "/test_response_string_ipv6_nullable"
 															r.args = args
 															r.count = 0
@@ -51565,6 +52530,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestResponseStringIpv6NullableArrayOperation
 																r.summary = ""
 																r.operationID = "test_response_string_ipv6_nullable_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_response_string_ipv6_nullable_array"
 																r.args = args
 																r.count = 0
@@ -51589,6 +52555,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = TestResponseStringIpv6NullableArrayArrayOperation
 																	r.summary = ""
 																	r.operationID = "test_response_string_ipv6_nullable_array_array"
+																	r.operationGroup = ""
 																	r.pathPattern = "/test_response_string_ipv6_nullable_array_array"
 																	r.args = args
 																	r.count = 0
@@ -51626,6 +52593,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										r.name = TestResponseStringMACOperation
 										r.summary = ""
 										r.operationID = "test_response_string_mac"
+										r.operationGroup = ""
 										r.pathPattern = "/test_response_string_mac"
 										r.args = args
 										r.count = 0
@@ -51661,6 +52629,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestResponseStringMACArrayOperation
 												r.summary = ""
 												r.operationID = "test_response_string_mac_array"
+												r.operationGroup = ""
 												r.pathPattern = "/test_response_string_mac_array"
 												r.args = args
 												r.count = 0
@@ -51685,6 +52654,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestResponseStringMACArrayArrayOperation
 													r.summary = ""
 													r.operationID = "test_response_string_mac_array_array"
+													r.operationGroup = ""
 													r.pathPattern = "/test_response_string_mac_array_array"
 													r.args = args
 													r.count = 0
@@ -51710,6 +52680,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestResponseStringMACNullableOperation
 												r.summary = ""
 												r.operationID = "test_response_string_mac_nullable"
+												r.operationGroup = ""
 												r.pathPattern = "/test_response_string_mac_nullable"
 												r.args = args
 												r.count = 0
@@ -51733,6 +52704,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestResponseStringMACNullableArrayOperation
 													r.summary = ""
 													r.operationID = "test_response_string_mac_nullable_array"
+													r.operationGroup = ""
 													r.pathPattern = "/test_response_string_mac_nullable_array"
 													r.args = args
 													r.count = 0
@@ -51757,6 +52729,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestResponseStringMACNullableArrayArrayOperation
 														r.summary = ""
 														r.operationID = "test_response_string_mac_nullable_array_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_response_string_mac_nullable_array_array"
 														r.args = args
 														r.count = 0
@@ -51788,6 +52761,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										r.name = TestResponseStringNullableOperation
 										r.summary = ""
 										r.operationID = "test_response_string_nullable"
+										r.operationGroup = ""
 										r.pathPattern = "/test_response_string_nullable"
 										r.args = args
 										r.count = 0
@@ -51811,6 +52785,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = TestResponseStringNullableArrayOperation
 											r.summary = ""
 											r.operationID = "test_response_string_nullable_array"
+											r.operationGroup = ""
 											r.pathPattern = "/test_response_string_nullable_array"
 											r.args = args
 											r.count = 0
@@ -51835,6 +52810,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestResponseStringNullableArrayArrayOperation
 												r.summary = ""
 												r.operationID = "test_response_string_nullable_array_array"
+												r.operationGroup = ""
 												r.pathPattern = "/test_response_string_nullable_array_array"
 												r.args = args
 												r.count = 0
@@ -51862,6 +52838,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										r.name = TestResponseStringPasswordOperation
 										r.summary = ""
 										r.operationID = "test_response_string_password"
+										r.operationGroup = ""
 										r.pathPattern = "/test_response_string_password"
 										r.args = args
 										r.count = 0
@@ -51897,6 +52874,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestResponseStringPasswordArrayOperation
 												r.summary = ""
 												r.operationID = "test_response_string_password_array"
+												r.operationGroup = ""
 												r.pathPattern = "/test_response_string_password_array"
 												r.args = args
 												r.count = 0
@@ -51921,6 +52899,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestResponseStringPasswordArrayArrayOperation
 													r.summary = ""
 													r.operationID = "test_response_string_password_array_array"
+													r.operationGroup = ""
 													r.pathPattern = "/test_response_string_password_array_array"
 													r.args = args
 													r.count = 0
@@ -51946,6 +52925,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestResponseStringPasswordNullableOperation
 												r.summary = ""
 												r.operationID = "test_response_string_password_nullable"
+												r.operationGroup = ""
 												r.pathPattern = "/test_response_string_password_nullable"
 												r.args = args
 												r.count = 0
@@ -51969,6 +52949,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestResponseStringPasswordNullableArrayOperation
 													r.summary = ""
 													r.operationID = "test_response_string_password_nullable_array"
+													r.operationGroup = ""
 													r.pathPattern = "/test_response_string_password_nullable_array"
 													r.args = args
 													r.count = 0
@@ -51993,6 +52974,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestResponseStringPasswordNullableArrayArrayOperation
 														r.summary = ""
 														r.operationID = "test_response_string_password_nullable_array_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_response_string_password_nullable_array_array"
 														r.args = args
 														r.count = 0
@@ -52024,6 +53006,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										r.name = TestResponseStringTimeOperation
 										r.summary = ""
 										r.operationID = "test_response_string_time"
+										r.operationGroup = ""
 										r.pathPattern = "/test_response_string_time"
 										r.args = args
 										r.count = 0
@@ -52059,6 +53042,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestResponseStringTimeArrayOperation
 												r.summary = ""
 												r.operationID = "test_response_string_time_array"
+												r.operationGroup = ""
 												r.pathPattern = "/test_response_string_time_array"
 												r.args = args
 												r.count = 0
@@ -52083,6 +53067,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestResponseStringTimeArrayArrayOperation
 													r.summary = ""
 													r.operationID = "test_response_string_time_array_array"
+													r.operationGroup = ""
 													r.pathPattern = "/test_response_string_time_array_array"
 													r.args = args
 													r.count = 0
@@ -52108,6 +53093,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestResponseStringTimeNullableOperation
 												r.summary = ""
 												r.operationID = "test_response_string_time_nullable"
+												r.operationGroup = ""
 												r.pathPattern = "/test_response_string_time_nullable"
 												r.args = args
 												r.count = 0
@@ -52131,6 +53117,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestResponseStringTimeNullableArrayOperation
 													r.summary = ""
 													r.operationID = "test_response_string_time_nullable_array"
+													r.operationGroup = ""
 													r.pathPattern = "/test_response_string_time_nullable_array"
 													r.args = args
 													r.count = 0
@@ -52155,6 +53142,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestResponseStringTimeNullableArrayArrayOperation
 														r.summary = ""
 														r.operationID = "test_response_string_time_nullable_array_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_response_string_time_nullable_array_array"
 														r.args = args
 														r.count = 0
@@ -52198,6 +53186,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = TestResponseStringUintOperation
 											r.summary = ""
 											r.operationID = "test_response_string_uint"
+											r.operationGroup = ""
 											r.pathPattern = "/test_response_string_uint"
 											r.args = args
 											r.count = 0
@@ -52221,6 +53210,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestResponseStringUint16Operation
 												r.summary = ""
 												r.operationID = "test_response_string_uint16"
+												r.operationGroup = ""
 												r.pathPattern = "/test_response_string_uint16"
 												r.args = args
 												r.count = 0
@@ -52256,6 +53246,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestResponseStringUint16ArrayOperation
 														r.summary = ""
 														r.operationID = "test_response_string_uint16_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_response_string_uint16_array"
 														r.args = args
 														r.count = 0
@@ -52280,6 +53271,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestResponseStringUint16ArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_response_string_uint16_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_response_string_uint16_array_array"
 															r.args = args
 															r.count = 0
@@ -52305,6 +53297,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestResponseStringUint16NullableOperation
 														r.summary = ""
 														r.operationID = "test_response_string_uint16_nullable"
+														r.operationGroup = ""
 														r.pathPattern = "/test_response_string_uint16_nullable"
 														r.args = args
 														r.count = 0
@@ -52328,6 +53321,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestResponseStringUint16NullableArrayOperation
 															r.summary = ""
 															r.operationID = "test_response_string_uint16_nullable_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_response_string_uint16_nullable_array"
 															r.args = args
 															r.count = 0
@@ -52352,6 +53346,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestResponseStringUint16NullableArrayArrayOperation
 																r.summary = ""
 																r.operationID = "test_response_string_uint16_nullable_array_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_response_string_uint16_nullable_array_array"
 																r.args = args
 																r.count = 0
@@ -52383,6 +53378,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestResponseStringUint32Operation
 												r.summary = ""
 												r.operationID = "test_response_string_uint32"
+												r.operationGroup = ""
 												r.pathPattern = "/test_response_string_uint32"
 												r.args = args
 												r.count = 0
@@ -52418,6 +53414,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestResponseStringUint32ArrayOperation
 														r.summary = ""
 														r.operationID = "test_response_string_uint32_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_response_string_uint32_array"
 														r.args = args
 														r.count = 0
@@ -52442,6 +53439,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestResponseStringUint32ArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_response_string_uint32_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_response_string_uint32_array_array"
 															r.args = args
 															r.count = 0
@@ -52467,6 +53465,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestResponseStringUint32NullableOperation
 														r.summary = ""
 														r.operationID = "test_response_string_uint32_nullable"
+														r.operationGroup = ""
 														r.pathPattern = "/test_response_string_uint32_nullable"
 														r.args = args
 														r.count = 0
@@ -52490,6 +53489,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestResponseStringUint32NullableArrayOperation
 															r.summary = ""
 															r.operationID = "test_response_string_uint32_nullable_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_response_string_uint32_nullable_array"
 															r.args = args
 															r.count = 0
@@ -52514,6 +53514,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestResponseStringUint32NullableArrayArrayOperation
 																r.summary = ""
 																r.operationID = "test_response_string_uint32_nullable_array_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_response_string_uint32_nullable_array_array"
 																r.args = args
 																r.count = 0
@@ -52545,6 +53546,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestResponseStringUint64Operation
 												r.summary = ""
 												r.operationID = "test_response_string_uint64"
+												r.operationGroup = ""
 												r.pathPattern = "/test_response_string_uint64"
 												r.args = args
 												r.count = 0
@@ -52580,6 +53582,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestResponseStringUint64ArrayOperation
 														r.summary = ""
 														r.operationID = "test_response_string_uint64_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_response_string_uint64_array"
 														r.args = args
 														r.count = 0
@@ -52604,6 +53607,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestResponseStringUint64ArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_response_string_uint64_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_response_string_uint64_array_array"
 															r.args = args
 															r.count = 0
@@ -52629,6 +53633,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestResponseStringUint64NullableOperation
 														r.summary = ""
 														r.operationID = "test_response_string_uint64_nullable"
+														r.operationGroup = ""
 														r.pathPattern = "/test_response_string_uint64_nullable"
 														r.args = args
 														r.count = 0
@@ -52652,6 +53657,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestResponseStringUint64NullableArrayOperation
 															r.summary = ""
 															r.operationID = "test_response_string_uint64_nullable_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_response_string_uint64_nullable_array"
 															r.args = args
 															r.count = 0
@@ -52676,6 +53682,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestResponseStringUint64NullableArrayArrayOperation
 																r.summary = ""
 																r.operationID = "test_response_string_uint64_nullable_array_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_response_string_uint64_nullable_array_array"
 																r.args = args
 																r.count = 0
@@ -52707,6 +53714,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = TestResponseStringUint8Operation
 												r.summary = ""
 												r.operationID = "test_response_string_uint8"
+												r.operationGroup = ""
 												r.pathPattern = "/test_response_string_uint8"
 												r.args = args
 												r.count = 0
@@ -52742,6 +53750,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestResponseStringUint8ArrayOperation
 														r.summary = ""
 														r.operationID = "test_response_string_uint8_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_response_string_uint8_array"
 														r.args = args
 														r.count = 0
@@ -52766,6 +53775,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestResponseStringUint8ArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_response_string_uint8_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_response_string_uint8_array_array"
 															r.args = args
 															r.count = 0
@@ -52791,6 +53801,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestResponseStringUint8NullableOperation
 														r.summary = ""
 														r.operationID = "test_response_string_uint8_nullable"
+														r.operationGroup = ""
 														r.pathPattern = "/test_response_string_uint8_nullable"
 														r.args = args
 														r.count = 0
@@ -52814,6 +53825,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestResponseStringUint8NullableArrayOperation
 															r.summary = ""
 															r.operationID = "test_response_string_uint8_nullable_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_response_string_uint8_nullable_array"
 															r.args = args
 															r.count = 0
@@ -52838,6 +53850,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestResponseStringUint8NullableArrayArrayOperation
 																r.summary = ""
 																r.operationID = "test_response_string_uint8_nullable_array_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_response_string_uint8_nullable_array_array"
 																r.args = args
 																r.count = 0
@@ -52881,6 +53894,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestResponseStringUintArrayOperation
 													r.summary = ""
 													r.operationID = "test_response_string_uint_array"
+													r.operationGroup = ""
 													r.pathPattern = "/test_response_string_uint_array"
 													r.args = args
 													r.count = 0
@@ -52905,6 +53919,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestResponseStringUintArrayArrayOperation
 														r.summary = ""
 														r.operationID = "test_response_string_uint_array_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_response_string_uint_array_array"
 														r.args = args
 														r.count = 0
@@ -52930,6 +53945,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestResponseStringUintNullableOperation
 													r.summary = ""
 													r.operationID = "test_response_string_uint_nullable"
+													r.operationGroup = ""
 													r.pathPattern = "/test_response_string_uint_nullable"
 													r.args = args
 													r.count = 0
@@ -52953,6 +53969,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestResponseStringUintNullableArrayOperation
 														r.summary = ""
 														r.operationID = "test_response_string_uint_nullable_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_response_string_uint_nullable_array"
 														r.args = args
 														r.count = 0
@@ -52977,6 +53994,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestResponseStringUintNullableArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_response_string_uint_nullable_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_response_string_uint_nullable_array_array"
 															r.args = args
 															r.count = 0
@@ -53008,6 +54026,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = TestResponseStringUnixOperation
 											r.summary = ""
 											r.operationID = "test_response_string_unix"
+											r.operationGroup = ""
 											r.pathPattern = "/test_response_string_unix"
 											r.args = args
 											r.count = 0
@@ -53055,6 +54074,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestResponseStringUnixMicroOperation
 														r.summary = ""
 														r.operationID = "test_response_string_unix-micro"
+														r.operationGroup = ""
 														r.pathPattern = "/test_response_string_unix-micro"
 														r.args = args
 														r.count = 0
@@ -53090,6 +54110,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestResponseStringUnixMicroArrayOperation
 																r.summary = ""
 																r.operationID = "test_response_string_unix-micro_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_response_string_unix-micro_array"
 																r.args = args
 																r.count = 0
@@ -53114,6 +54135,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = TestResponseStringUnixMicroArrayArrayOperation
 																	r.summary = ""
 																	r.operationID = "test_response_string_unix-micro_array_array"
+																	r.operationGroup = ""
 																	r.pathPattern = "/test_response_string_unix-micro_array_array"
 																	r.args = args
 																	r.count = 0
@@ -53139,6 +54161,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestResponseStringUnixMicroNullableOperation
 																r.summary = ""
 																r.operationID = "test_response_string_unix-micro_nullable"
+																r.operationGroup = ""
 																r.pathPattern = "/test_response_string_unix-micro_nullable"
 																r.args = args
 																r.count = 0
@@ -53162,6 +54185,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = TestResponseStringUnixMicroNullableArrayOperation
 																	r.summary = ""
 																	r.operationID = "test_response_string_unix-micro_nullable_array"
+																	r.operationGroup = ""
 																	r.pathPattern = "/test_response_string_unix-micro_nullable_array"
 																	r.args = args
 																	r.count = 0
@@ -53186,6 +54210,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																		r.name = TestResponseStringUnixMicroNullableArrayArrayOperation
 																		r.summary = ""
 																		r.operationID = "test_response_string_unix-micro_nullable_array_array"
+																		r.operationGroup = ""
 																		r.pathPattern = "/test_response_string_unix-micro_nullable_array_array"
 																		r.args = args
 																		r.count = 0
@@ -53217,6 +54242,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestResponseStringUnixMilliOperation
 														r.summary = ""
 														r.operationID = "test_response_string_unix-milli"
+														r.operationGroup = ""
 														r.pathPattern = "/test_response_string_unix-milli"
 														r.args = args
 														r.count = 0
@@ -53252,6 +54278,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestResponseStringUnixMilliArrayOperation
 																r.summary = ""
 																r.operationID = "test_response_string_unix-milli_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_response_string_unix-milli_array"
 																r.args = args
 																r.count = 0
@@ -53276,6 +54303,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = TestResponseStringUnixMilliArrayArrayOperation
 																	r.summary = ""
 																	r.operationID = "test_response_string_unix-milli_array_array"
+																	r.operationGroup = ""
 																	r.pathPattern = "/test_response_string_unix-milli_array_array"
 																	r.args = args
 																	r.count = 0
@@ -53301,6 +54329,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestResponseStringUnixMilliNullableOperation
 																r.summary = ""
 																r.operationID = "test_response_string_unix-milli_nullable"
+																r.operationGroup = ""
 																r.pathPattern = "/test_response_string_unix-milli_nullable"
 																r.args = args
 																r.count = 0
@@ -53324,6 +54353,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = TestResponseStringUnixMilliNullableArrayOperation
 																	r.summary = ""
 																	r.operationID = "test_response_string_unix-milli_nullable_array"
+																	r.operationGroup = ""
 																	r.pathPattern = "/test_response_string_unix-milli_nullable_array"
 																	r.args = args
 																	r.count = 0
@@ -53348,6 +54378,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																		r.name = TestResponseStringUnixMilliNullableArrayArrayOperation
 																		r.summary = ""
 																		r.operationID = "test_response_string_unix-milli_nullable_array_array"
+																		r.operationGroup = ""
 																		r.pathPattern = "/test_response_string_unix-milli_nullable_array_array"
 																		r.args = args
 																		r.count = 0
@@ -53381,6 +54412,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestResponseStringUnixNanoOperation
 													r.summary = ""
 													r.operationID = "test_response_string_unix-nano"
+													r.operationGroup = ""
 													r.pathPattern = "/test_response_string_unix-nano"
 													r.args = args
 													r.count = 0
@@ -53416,6 +54448,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestResponseStringUnixNanoArrayOperation
 															r.summary = ""
 															r.operationID = "test_response_string_unix-nano_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_response_string_unix-nano_array"
 															r.args = args
 															r.count = 0
@@ -53440,6 +54473,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestResponseStringUnixNanoArrayArrayOperation
 																r.summary = ""
 																r.operationID = "test_response_string_unix-nano_array_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_response_string_unix-nano_array_array"
 																r.args = args
 																r.count = 0
@@ -53465,6 +54499,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestResponseStringUnixNanoNullableOperation
 															r.summary = ""
 															r.operationID = "test_response_string_unix-nano_nullable"
+															r.operationGroup = ""
 															r.pathPattern = "/test_response_string_unix-nano_nullable"
 															r.args = args
 															r.count = 0
@@ -53488,6 +54523,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestResponseStringUnixNanoNullableArrayOperation
 																r.summary = ""
 																r.operationID = "test_response_string_unix-nano_nullable_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_response_string_unix-nano_nullable_array"
 																r.args = args
 																r.count = 0
@@ -53512,6 +54548,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = TestResponseStringUnixNanoNullableArrayArrayOperation
 																	r.summary = ""
 																	r.operationID = "test_response_string_unix-nano_nullable_array_array"
+																	r.operationGroup = ""
 																	r.pathPattern = "/test_response_string_unix-nano_nullable_array_array"
 																	r.args = args
 																	r.count = 0
@@ -53543,6 +54580,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestResponseStringUnixSecondsOperation
 													r.summary = ""
 													r.operationID = "test_response_string_unix-seconds"
+													r.operationGroup = ""
 													r.pathPattern = "/test_response_string_unix-seconds"
 													r.args = args
 													r.count = 0
@@ -53578,6 +54616,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestResponseStringUnixSecondsArrayOperation
 															r.summary = ""
 															r.operationID = "test_response_string_unix-seconds_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_response_string_unix-seconds_array"
 															r.args = args
 															r.count = 0
@@ -53602,6 +54641,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestResponseStringUnixSecondsArrayArrayOperation
 																r.summary = ""
 																r.operationID = "test_response_string_unix-seconds_array_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_response_string_unix-seconds_array_array"
 																r.args = args
 																r.count = 0
@@ -53627,6 +54667,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestResponseStringUnixSecondsNullableOperation
 															r.summary = ""
 															r.operationID = "test_response_string_unix-seconds_nullable"
+															r.operationGroup = ""
 															r.pathPattern = "/test_response_string_unix-seconds_nullable"
 															r.args = args
 															r.count = 0
@@ -53650,6 +54691,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = TestResponseStringUnixSecondsNullableArrayOperation
 																r.summary = ""
 																r.operationID = "test_response_string_unix-seconds_nullable_array"
+																r.operationGroup = ""
 																r.pathPattern = "/test_response_string_unix-seconds_nullable_array"
 																r.args = args
 																r.count = 0
@@ -53674,6 +54716,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = TestResponseStringUnixSecondsNullableArrayArrayOperation
 																	r.summary = ""
 																	r.operationID = "test_response_string_unix-seconds_nullable_array_array"
+																	r.operationGroup = ""
 																	r.pathPattern = "/test_response_string_unix-seconds_nullable_array_array"
 																	r.args = args
 																	r.count = 0
@@ -53719,6 +54762,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestResponseStringUnixArrayOperation
 													r.summary = ""
 													r.operationID = "test_response_string_unix_array"
+													r.operationGroup = ""
 													r.pathPattern = "/test_response_string_unix_array"
 													r.args = args
 													r.count = 0
@@ -53743,6 +54787,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestResponseStringUnixArrayArrayOperation
 														r.summary = ""
 														r.operationID = "test_response_string_unix_array_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_response_string_unix_array_array"
 														r.args = args
 														r.count = 0
@@ -53768,6 +54813,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestResponseStringUnixNullableOperation
 													r.summary = ""
 													r.operationID = "test_response_string_unix_nullable"
+													r.operationGroup = ""
 													r.pathPattern = "/test_response_string_unix_nullable"
 													r.args = args
 													r.count = 0
@@ -53791,6 +54837,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestResponseStringUnixNullableArrayOperation
 														r.summary = ""
 														r.operationID = "test_response_string_unix_nullable_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_response_string_unix_nullable_array"
 														r.args = args
 														r.count = 0
@@ -53815,6 +54862,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestResponseStringUnixNullableArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_response_string_unix_nullable_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_response_string_unix_nullable_array_array"
 															r.args = args
 															r.count = 0
@@ -53846,6 +54894,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = TestResponseStringURIOperation
 											r.summary = ""
 											r.operationID = "test_response_string_uri"
+											r.operationGroup = ""
 											r.pathPattern = "/test_response_string_uri"
 											r.args = args
 											r.count = 0
@@ -53881,6 +54930,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestResponseStringURIArrayOperation
 													r.summary = ""
 													r.operationID = "test_response_string_uri_array"
+													r.operationGroup = ""
 													r.pathPattern = "/test_response_string_uri_array"
 													r.args = args
 													r.count = 0
@@ -53905,6 +54955,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestResponseStringURIArrayArrayOperation
 														r.summary = ""
 														r.operationID = "test_response_string_uri_array_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_response_string_uri_array_array"
 														r.args = args
 														r.count = 0
@@ -53930,6 +54981,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestResponseStringURINullableOperation
 													r.summary = ""
 													r.operationID = "test_response_string_uri_nullable"
+													r.operationGroup = ""
 													r.pathPattern = "/test_response_string_uri_nullable"
 													r.args = args
 													r.count = 0
@@ -53953,6 +55005,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestResponseStringURINullableArrayOperation
 														r.summary = ""
 														r.operationID = "test_response_string_uri_nullable_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_response_string_uri_nullable_array"
 														r.args = args
 														r.count = 0
@@ -53977,6 +55030,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestResponseStringURINullableArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_response_string_uri_nullable_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_response_string_uri_nullable_array_array"
 															r.args = args
 															r.count = 0
@@ -54008,6 +55062,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = TestResponseStringUUIDOperation
 											r.summary = ""
 											r.operationID = "test_response_string_uuid"
+											r.operationGroup = ""
 											r.pathPattern = "/test_response_string_uuid"
 											r.args = args
 											r.count = 0
@@ -54043,6 +55098,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestResponseStringUUIDArrayOperation
 													r.summary = ""
 													r.operationID = "test_response_string_uuid_array"
+													r.operationGroup = ""
 													r.pathPattern = "/test_response_string_uuid_array"
 													r.args = args
 													r.count = 0
@@ -54067,6 +55123,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestResponseStringUUIDArrayArrayOperation
 														r.summary = ""
 														r.operationID = "test_response_string_uuid_array_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_response_string_uuid_array_array"
 														r.args = args
 														r.count = 0
@@ -54092,6 +55149,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = TestResponseStringUUIDNullableOperation
 													r.summary = ""
 													r.operationID = "test_response_string_uuid_nullable"
+													r.operationGroup = ""
 													r.pathPattern = "/test_response_string_uuid_nullable"
 													r.args = args
 													r.count = 0
@@ -54115,6 +55173,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = TestResponseStringUUIDNullableArrayOperation
 														r.summary = ""
 														r.operationID = "test_response_string_uuid_nullable_array"
+														r.operationGroup = ""
 														r.pathPattern = "/test_response_string_uuid_nullable_array"
 														r.args = args
 														r.count = 0
@@ -54139,6 +55198,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = TestResponseStringUUIDNullableArrayArrayOperation
 															r.summary = ""
 															r.operationID = "test_response_string_uuid_nullable_array_array"
+															r.operationGroup = ""
 															r.pathPattern = "/test_response_string_uuid_nullable_array_array"
 															r.args = args
 															r.count = 0

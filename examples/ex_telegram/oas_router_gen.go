@@ -2216,12 +2216,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 // Route is route object.
 type Route struct {
-	name        string
-	summary     string
-	operationID string
-	pathPattern string
-	count       int
-	args        [0]string
+	name           string
+	summary        string
+	operationID    string
+	operationGroup string
+	pathPattern    string
+	count          int
+	args           [0]string
 }
 
 // Name returns ogen operation name.
@@ -2239,6 +2240,11 @@ func (r Route) Summary() string {
 // OperationID returns OpenAPI operationId.
 func (r Route) OperationID() string {
 	return r.operationID
+}
+
+// OperationGroup returns the x-ogen-operation-group value.
+func (r Route) OperationGroup() string {
+	return r.operationGroup
 }
 
 // PathPattern returns OpenAPI path.
@@ -2328,6 +2334,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							r.name = AddStickerToSetOperation
 							r.summary = ""
 							r.operationID = "addStickerToSet"
+							r.operationGroup = ""
 							r.pathPattern = "/addStickerToSet"
 							r.args = args
 							r.count = 0
@@ -2364,6 +2371,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.name = AnswerCallbackQueryOperation
 								r.summary = ""
 								r.operationID = "answerCallbackQuery"
+								r.operationGroup = ""
 								r.pathPattern = "/answerCallbackQuery"
 								r.args = args
 								r.count = 0
@@ -2388,6 +2396,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.name = AnswerInlineQueryOperation
 								r.summary = ""
 								r.operationID = "answerInlineQuery"
+								r.operationGroup = ""
 								r.pathPattern = "/answerInlineQuery"
 								r.args = args
 								r.count = 0
@@ -2412,6 +2421,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.name = AnswerPreCheckoutQueryOperation
 								r.summary = ""
 								r.operationID = "answerPreCheckoutQuery"
+								r.operationGroup = ""
 								r.pathPattern = "/answerPreCheckoutQuery"
 								r.args = args
 								r.count = 0
@@ -2436,6 +2446,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.name = AnswerShippingQueryOperation
 								r.summary = ""
 								r.operationID = "answerShippingQuery"
+								r.operationGroup = ""
 								r.pathPattern = "/answerShippingQuery"
 								r.args = args
 								r.count = 0
@@ -2462,6 +2473,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							r.name = ApproveChatJoinRequestOperation
 							r.summary = ""
 							r.operationID = "approveChatJoinRequest"
+							r.operationGroup = ""
 							r.pathPattern = "/approveChatJoinRequest"
 							r.args = args
 							r.count = 0
@@ -2500,6 +2512,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							r.name = BanChatMemberOperation
 							r.summary = ""
 							r.operationID = "banChatMember"
+							r.operationGroup = ""
 							r.pathPattern = "/banChatMember"
 							r.args = args
 							r.count = 0
@@ -2524,6 +2537,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							r.name = BanChatSenderChatOperation
 							r.summary = ""
 							r.operationID = "banChatSenderChat"
+							r.operationGroup = ""
 							r.pathPattern = "/banChatSenderChat"
 							r.args = args
 							r.count = 0
@@ -2562,6 +2576,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							r.name = CloseOperation
 							r.summary = ""
 							r.operationID = "close"
+							r.operationGroup = ""
 							r.pathPattern = "/close"
 							r.args = args
 							r.count = 0
@@ -2586,6 +2601,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							r.name = CopyMessageOperation
 							r.summary = ""
 							r.operationID = "copyMessage"
+							r.operationGroup = ""
 							r.pathPattern = "/copyMessage"
 							r.args = args
 							r.count = 0
@@ -2622,6 +2638,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.name = CreateChatInviteLinkOperation
 								r.summary = ""
 								r.operationID = "createChatInviteLink"
+								r.operationGroup = ""
 								r.pathPattern = "/createChatInviteLink"
 								r.args = args
 								r.count = 0
@@ -2646,6 +2663,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.name = CreateNewStickerSetOperation
 								r.summary = ""
 								r.operationID = "createNewStickerSet"
+								r.operationGroup = ""
 								r.pathPattern = "/createNewStickerSet"
 								r.args = args
 								r.count = 0
@@ -2686,6 +2704,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							r.name = DeclineChatJoinRequestOperation
 							r.summary = ""
 							r.operationID = "declineChatJoinRequest"
+							r.operationGroup = ""
 							r.pathPattern = "/declineChatJoinRequest"
 							r.args = args
 							r.count = 0
@@ -2734,6 +2753,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									r.name = DeleteChatPhotoOperation
 									r.summary = ""
 									r.operationID = "deleteChatPhoto"
+									r.operationGroup = ""
 									r.pathPattern = "/deleteChatPhoto"
 									r.args = args
 									r.count = 0
@@ -2758,6 +2778,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									r.name = DeleteChatStickerSetOperation
 									r.summary = ""
 									r.operationID = "deleteChatStickerSet"
+									r.operationGroup = ""
 									r.pathPattern = "/deleteChatStickerSet"
 									r.args = args
 									r.count = 0
@@ -2796,6 +2817,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									r.name = DeleteMessageOperation
 									r.summary = ""
 									r.operationID = "deleteMessage"
+									r.operationGroup = ""
 									r.pathPattern = "/deleteMessage"
 									r.args = args
 									r.count = 0
@@ -2820,6 +2842,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									r.name = DeleteMyCommandsOperation
 									r.summary = ""
 									r.operationID = "deleteMyCommands"
+									r.operationGroup = ""
 									r.pathPattern = "/deleteMyCommands"
 									r.args = args
 									r.count = 0
@@ -2846,6 +2869,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.name = DeleteStickerFromSetOperation
 								r.summary = ""
 								r.operationID = "deleteStickerFromSet"
+								r.operationGroup = ""
 								r.pathPattern = "/deleteStickerFromSet"
 								r.args = args
 								r.count = 0
@@ -2870,6 +2894,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.name = DeleteWebhookOperation
 								r.summary = ""
 								r.operationID = "deleteWebhook"
+								r.operationGroup = ""
 								r.pathPattern = "/deleteWebhook"
 								r.args = args
 								r.count = 0
@@ -2922,6 +2947,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.name = EditChatInviteLinkOperation
 								r.summary = ""
 								r.operationID = "editChatInviteLink"
+								r.operationGroup = ""
 								r.pathPattern = "/editChatInviteLink"
 								r.args = args
 								r.count = 0
@@ -2958,6 +2984,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									r.name = EditMessageCaptionOperation
 									r.summary = ""
 									r.operationID = "editMessageCaption"
+									r.operationGroup = ""
 									r.pathPattern = "/editMessageCaption"
 									r.args = args
 									r.count = 0
@@ -2982,6 +3009,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									r.name = EditMessageLiveLocationOperation
 									r.summary = ""
 									r.operationID = "editMessageLiveLocation"
+									r.operationGroup = ""
 									r.pathPattern = "/editMessageLiveLocation"
 									r.args = args
 									r.count = 0
@@ -3006,6 +3034,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									r.name = EditMessageMediaOperation
 									r.summary = ""
 									r.operationID = "editMessageMedia"
+									r.operationGroup = ""
 									r.pathPattern = "/editMessageMedia"
 									r.args = args
 									r.count = 0
@@ -3030,6 +3059,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									r.name = EditMessageReplyMarkupOperation
 									r.summary = ""
 									r.operationID = "editMessageReplyMarkup"
+									r.operationGroup = ""
 									r.pathPattern = "/editMessageReplyMarkup"
 									r.args = args
 									r.count = 0
@@ -3054,6 +3084,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									r.name = EditMessageTextOperation
 									r.summary = ""
 									r.operationID = "editMessageText"
+									r.operationGroup = ""
 									r.pathPattern = "/editMessageText"
 									r.args = args
 									r.count = 0
@@ -3082,6 +3113,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							r.name = ExportChatInviteLinkOperation
 							r.summary = ""
 							r.operationID = "exportChatInviteLink"
+							r.operationGroup = ""
 							r.pathPattern = "/exportChatInviteLink"
 							r.args = args
 							r.count = 0
@@ -3108,6 +3140,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						r.name = ForwardMessageOperation
 						r.summary = ""
 						r.operationID = "forwardMessage"
+						r.operationGroup = ""
 						r.pathPattern = "/forwardMessage"
 						r.args = args
 						r.count = 0
@@ -3143,6 +3176,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							r.name = GetChatOperation
 							r.summary = ""
 							r.operationID = "getChat"
+							r.operationGroup = ""
 							r.pathPattern = "/getChat"
 							r.args = args
 							r.count = 0
@@ -3167,6 +3201,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.name = GetChatAdministratorsOperation
 								r.summary = ""
 								r.operationID = "getChatAdministrators"
+								r.operationGroup = ""
 								r.pathPattern = "/getChatAdministrators"
 								r.args = args
 								r.count = 0
@@ -3190,6 +3225,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.name = GetChatMemberOperation
 								r.summary = ""
 								r.operationID = "getChatMember"
+								r.operationGroup = ""
 								r.pathPattern = "/getChatMember"
 								r.args = args
 								r.count = 0
@@ -3214,6 +3250,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									r.name = GetChatMemberCountOperation
 									r.summary = ""
 									r.operationID = "getChatMemberCount"
+									r.operationGroup = ""
 									r.pathPattern = "/getChatMemberCount"
 									r.args = args
 									r.count = 0
@@ -3242,6 +3279,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							r.name = GetFileOperation
 							r.summary = ""
 							r.operationID = "getFile"
+							r.operationGroup = ""
 							r.pathPattern = "/getFile"
 							r.args = args
 							r.count = 0
@@ -3266,6 +3304,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							r.name = GetGameHighScoresOperation
 							r.summary = ""
 							r.operationID = "getGameHighScores"
+							r.operationGroup = ""
 							r.pathPattern = "/getGameHighScores"
 							r.args = args
 							r.count = 0
@@ -3302,6 +3341,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.name = GetMeOperation
 								r.summary = ""
 								r.operationID = "getMe"
+								r.operationGroup = ""
 								r.pathPattern = "/getMe"
 								r.args = args
 								r.count = 0
@@ -3326,6 +3366,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.name = GetMyCommandsOperation
 								r.summary = ""
 								r.operationID = "getMyCommands"
+								r.operationGroup = ""
 								r.pathPattern = "/getMyCommands"
 								r.args = args
 								r.count = 0
@@ -3352,6 +3393,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							r.name = GetStickerSetOperation
 							r.summary = ""
 							r.operationID = "getStickerSet"
+							r.operationGroup = ""
 							r.pathPattern = "/getStickerSet"
 							r.args = args
 							r.count = 0
@@ -3388,6 +3430,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.name = GetUpdatesOperation
 								r.summary = ""
 								r.operationID = "getUpdates"
+								r.operationGroup = ""
 								r.pathPattern = "/getUpdates"
 								r.args = args
 								r.count = 0
@@ -3412,6 +3455,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.name = GetUserProfilePhotosOperation
 								r.summary = ""
 								r.operationID = "getUserProfilePhotos"
+								r.operationGroup = ""
 								r.pathPattern = "/getUserProfilePhotos"
 								r.args = args
 								r.count = 0
@@ -3438,6 +3482,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							r.name = GetWebhookInfoOperation
 							r.summary = ""
 							r.operationID = "getWebhookInfo"
+							r.operationGroup = ""
 							r.pathPattern = "/getWebhookInfo"
 							r.args = args
 							r.count = 0
@@ -3476,6 +3521,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							r.name = LeaveChatOperation
 							r.summary = ""
 							r.operationID = "leaveChat"
+							r.operationGroup = ""
 							r.pathPattern = "/leaveChat"
 							r.args = args
 							r.count = 0
@@ -3500,6 +3546,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							r.name = LogOutOperation
 							r.summary = ""
 							r.operationID = "logOut"
+							r.operationGroup = ""
 							r.pathPattern = "/logOut"
 							r.args = args
 							r.count = 0
@@ -3538,6 +3585,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							r.name = PinChatMessageOperation
 							r.summary = ""
 							r.operationID = "pinChatMessage"
+							r.operationGroup = ""
 							r.pathPattern = "/pinChatMessage"
 							r.args = args
 							r.count = 0
@@ -3562,6 +3610,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							r.name = PromoteChatMemberOperation
 							r.summary = ""
 							r.operationID = "promoteChatMember"
+							r.operationGroup = ""
 							r.pathPattern = "/promoteChatMember"
 							r.args = args
 							r.count = 0
@@ -3600,6 +3649,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							r.name = RestrictChatMemberOperation
 							r.summary = ""
 							r.operationID = "restrictChatMember"
+							r.operationGroup = ""
 							r.pathPattern = "/restrictChatMember"
 							r.args = args
 							r.count = 0
@@ -3624,6 +3674,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							r.name = RevokeChatInviteLinkOperation
 							r.summary = ""
 							r.operationID = "revokeChatInviteLink"
+							r.operationGroup = ""
 							r.pathPattern = "/revokeChatInviteLink"
 							r.args = args
 							r.count = 0
@@ -3698,6 +3749,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										r.name = SendAnimationOperation
 										r.summary = ""
 										r.operationID = "sendAnimation"
+										r.operationGroup = ""
 										r.pathPattern = "/sendAnimation"
 										r.args = args
 										r.count = 0
@@ -3722,6 +3774,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										r.name = SendAudioOperation
 										r.summary = ""
 										r.operationID = "sendAudio"
+										r.operationGroup = ""
 										r.pathPattern = "/sendAudio"
 										r.args = args
 										r.count = 0
@@ -3760,6 +3813,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										r.name = SendChatActionOperation
 										r.summary = ""
 										r.operationID = "sendChatAction"
+										r.operationGroup = ""
 										r.pathPattern = "/sendChatAction"
 										r.args = args
 										r.count = 0
@@ -3784,6 +3838,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										r.name = SendContactOperation
 										r.summary = ""
 										r.operationID = "sendContact"
+										r.operationGroup = ""
 										r.pathPattern = "/sendContact"
 										r.args = args
 										r.count = 0
@@ -3822,6 +3877,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										r.name = SendDiceOperation
 										r.summary = ""
 										r.operationID = "sendDice"
+										r.operationGroup = ""
 										r.pathPattern = "/sendDice"
 										r.args = args
 										r.count = 0
@@ -3846,6 +3902,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										r.name = SendDocumentOperation
 										r.summary = ""
 										r.operationID = "sendDocument"
+										r.operationGroup = ""
 										r.pathPattern = "/sendDocument"
 										r.args = args
 										r.count = 0
@@ -3872,6 +3929,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									r.name = SendGameOperation
 									r.summary = ""
 									r.operationID = "sendGame"
+									r.operationGroup = ""
 									r.pathPattern = "/sendGame"
 									r.args = args
 									r.count = 0
@@ -3896,6 +3954,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									r.name = SendInvoiceOperation
 									r.summary = ""
 									r.operationID = "sendInvoice"
+									r.operationGroup = ""
 									r.pathPattern = "/sendInvoice"
 									r.args = args
 									r.count = 0
@@ -3920,6 +3979,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									r.name = SendLocationOperation
 									r.summary = ""
 									r.operationID = "sendLocation"
+									r.operationGroup = ""
 									r.pathPattern = "/sendLocation"
 									r.args = args
 									r.count = 0
@@ -3956,6 +4016,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										r.name = SendMediaGroupOperation
 										r.summary = ""
 										r.operationID = "sendMediaGroup"
+										r.operationGroup = ""
 										r.pathPattern = "/sendMediaGroup"
 										r.args = args
 										r.count = 0
@@ -3980,6 +4041,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										r.name = SendMessageOperation
 										r.summary = ""
 										r.operationID = "sendMessage"
+										r.operationGroup = ""
 										r.pathPattern = "/sendMessage"
 										r.args = args
 										r.count = 0
@@ -4018,6 +4080,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										r.name = SendPhotoOperation
 										r.summary = ""
 										r.operationID = "sendPhoto"
+										r.operationGroup = ""
 										r.pathPattern = "/sendPhoto"
 										r.args = args
 										r.count = 0
@@ -4042,6 +4105,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										r.name = SendPollOperation
 										r.summary = ""
 										r.operationID = "sendPoll"
+										r.operationGroup = ""
 										r.pathPattern = "/sendPoll"
 										r.args = args
 										r.count = 0
@@ -4068,6 +4132,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									r.name = SendStickerOperation
 									r.summary = ""
 									r.operationID = "sendSticker"
+									r.operationGroup = ""
 									r.pathPattern = "/sendSticker"
 									r.args = args
 									r.count = 0
@@ -4104,6 +4169,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										r.name = SendVenueOperation
 										r.summary = ""
 										r.operationID = "sendVenue"
+										r.operationGroup = ""
 										r.pathPattern = "/sendVenue"
 										r.args = args
 										r.count = 0
@@ -4127,6 +4193,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										r.name = SendVideoOperation
 										r.summary = ""
 										r.operationID = "sendVideo"
+										r.operationGroup = ""
 										r.pathPattern = "/sendVideo"
 										r.args = args
 										r.count = 0
@@ -4151,6 +4218,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = SendVideoNoteOperation
 											r.summary = ""
 											r.operationID = "sendVideoNote"
+											r.operationGroup = ""
 											r.pathPattern = "/sendVideoNote"
 											r.args = args
 											r.count = 0
@@ -4177,6 +4245,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										r.name = SendVoiceOperation
 										r.summary = ""
 										r.operationID = "sendVoice"
+										r.operationGroup = ""
 										r.pathPattern = "/sendVoice"
 										r.args = args
 										r.count = 0
@@ -4229,6 +4298,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										r.name = SetChatAdministratorCustomTitleOperation
 										r.summary = ""
 										r.operationID = "setChatAdministratorCustomTitle"
+										r.operationGroup = ""
 										r.pathPattern = "/setChatAdministratorCustomTitle"
 										r.args = args
 										r.count = 0
@@ -4253,6 +4323,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										r.name = SetChatDescriptionOperation
 										r.summary = ""
 										r.operationID = "setChatDescription"
+										r.operationGroup = ""
 										r.pathPattern = "/setChatDescription"
 										r.args = args
 										r.count = 0
@@ -4289,6 +4360,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = SetChatPermissionsOperation
 											r.summary = ""
 											r.operationID = "setChatPermissions"
+											r.operationGroup = ""
 											r.pathPattern = "/setChatPermissions"
 											r.args = args
 											r.count = 0
@@ -4313,6 +4385,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = SetChatPhotoOperation
 											r.summary = ""
 											r.operationID = "setChatPhoto"
+											r.operationGroup = ""
 											r.pathPattern = "/setChatPhoto"
 											r.args = args
 											r.count = 0
@@ -4339,6 +4412,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										r.name = SetChatStickerSetOperation
 										r.summary = ""
 										r.operationID = "setChatStickerSet"
+										r.operationGroup = ""
 										r.pathPattern = "/setChatStickerSet"
 										r.args = args
 										r.count = 0
@@ -4363,6 +4437,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										r.name = SetChatTitleOperation
 										r.summary = ""
 										r.operationID = "setChatTitle"
+										r.operationGroup = ""
 										r.pathPattern = "/setChatTitle"
 										r.args = args
 										r.count = 0
@@ -4389,6 +4464,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									r.name = SetGameScoreOperation
 									r.summary = ""
 									r.operationID = "setGameScore"
+									r.operationGroup = ""
 									r.pathPattern = "/setGameScore"
 									r.args = args
 									r.count = 0
@@ -4413,6 +4489,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									r.name = SetMyCommandsOperation
 									r.summary = ""
 									r.operationID = "setMyCommands"
+									r.operationGroup = ""
 									r.pathPattern = "/setMyCommands"
 									r.args = args
 									r.count = 0
@@ -4437,6 +4514,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									r.name = SetPassportDataErrorsOperation
 									r.summary = ""
 									r.operationID = "setPassportDataErrors"
+									r.operationGroup = ""
 									r.pathPattern = "/setPassportDataErrors"
 									r.args = args
 									r.count = 0
@@ -4473,6 +4551,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										r.name = SetStickerPositionInSetOperation
 										r.summary = ""
 										r.operationID = "setStickerPositionInSet"
+										r.operationGroup = ""
 										r.pathPattern = "/setStickerPositionInSet"
 										r.args = args
 										r.count = 0
@@ -4497,6 +4576,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										r.name = SetStickerSetThumbOperation
 										r.summary = ""
 										r.operationID = "setStickerSetThumb"
+										r.operationGroup = ""
 										r.pathPattern = "/setStickerSetThumb"
 										r.args = args
 										r.count = 0
@@ -4523,6 +4603,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									r.name = SetWebhookOperation
 									r.summary = ""
 									r.operationID = "setWebhook"
+									r.operationGroup = ""
 									r.pathPattern = "/setWebhook"
 									r.args = args
 									r.count = 0
@@ -4563,6 +4644,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.name = StopMessageLiveLocationOperation
 								r.summary = ""
 								r.operationID = "stopMessageLiveLocation"
+								r.operationGroup = ""
 								r.pathPattern = "/stopMessageLiveLocation"
 								r.args = args
 								r.count = 0
@@ -4587,6 +4669,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.name = StopPollOperation
 								r.summary = ""
 								r.operationID = "stopPoll"
+								r.operationGroup = ""
 								r.pathPattern = "/stopPoll"
 								r.args = args
 								r.count = 0
@@ -4651,6 +4734,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									r.name = UnbanChatMemberOperation
 									r.summary = ""
 									r.operationID = "unbanChatMember"
+									r.operationGroup = ""
 									r.pathPattern = "/unbanChatMember"
 									r.args = args
 									r.count = 0
@@ -4675,6 +4759,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									r.name = UnbanChatSenderChatOperation
 									r.summary = ""
 									r.operationID = "unbanChatSenderChat"
+									r.operationGroup = ""
 									r.pathPattern = "/unbanChatSenderChat"
 									r.args = args
 									r.count = 0
@@ -4713,6 +4798,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									r.name = UnpinAllChatMessagesOperation
 									r.summary = ""
 									r.operationID = "unpinAllChatMessages"
+									r.operationGroup = ""
 									r.pathPattern = "/unpinAllChatMessages"
 									r.args = args
 									r.count = 0
@@ -4737,6 +4823,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									r.name = UnpinChatMessageOperation
 									r.summary = ""
 									r.operationID = "unpinChatMessage"
+									r.operationGroup = ""
 									r.pathPattern = "/unpinChatMessage"
 									r.args = args
 									r.count = 0
@@ -4765,6 +4852,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							r.name = UploadStickerFileOperation
 							r.summary = ""
 							r.operationID = "uploadStickerFile"
+							r.operationGroup = ""
 							r.pathPattern = "/uploadStickerFile"
 							r.args = args
 							r.count = 0

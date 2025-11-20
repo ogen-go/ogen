@@ -412,12 +412,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 // Route is route object.
 type Route struct {
-	name        string
-	summary     string
-	operationID string
-	pathPattern string
-	count       int
-	args        [0]string
+	name           string
+	summary        string
+	operationID    string
+	operationGroup string
+	pathPattern    string
+	count          int
+	args           [0]string
 }
 
 // Name returns ogen operation name.
@@ -435,6 +436,11 @@ func (r Route) Summary() string {
 // OperationID returns OpenAPI operationId.
 func (r Route) OperationID() string {
 	return r.operationID
+}
+
+// OperationGroup returns the x-ogen-operation-group value.
+func (r Route) OperationGroup() string {
+	return r.operationGroup
 }
 
 // PathPattern returns OpenAPI path.
@@ -511,6 +517,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						r.name = AnyContentTypeBinaryStringSchemaOperation
 						r.summary = ""
 						r.operationID = "anyContentTypeBinaryStringSchema"
+						r.operationGroup = ""
 						r.pathPattern = "/anyContentTypeBinaryStringSchema"
 						r.args = args
 						r.count = 0
@@ -535,6 +542,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							r.name = AnyContentTypeBinaryStringSchemaDefaultOperation
 							r.summary = ""
 							r.operationID = "anyContentTypeBinaryStringSchemaDefault"
+							r.operationGroup = ""
 							r.pathPattern = "/anyContentTypeBinaryStringSchemaDefault"
 							r.args = args
 							r.count = 0
@@ -561,6 +569,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						r.name = CombinedOperation
 						r.summary = ""
 						r.operationID = "combined"
+						r.operationGroup = ""
 						r.pathPattern = "/combined"
 						r.args = args
 						r.count = 0
@@ -597,6 +606,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							r.name = Headers200Operation
 							r.summary = ""
 							r.operationID = "headers200"
+							r.operationGroup = ""
 							r.pathPattern = "/headers200"
 							r.args = args
 							r.count = 0
@@ -621,6 +631,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							r.name = HeadersCombinedOperation
 							r.summary = ""
 							r.operationID = "headersCombined"
+							r.operationGroup = ""
 							r.pathPattern = "/headersCombined"
 							r.args = args
 							r.count = 0
@@ -645,6 +656,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							r.name = HeadersDefaultOperation
 							r.summary = ""
 							r.operationID = "headersDefault"
+							r.operationGroup = ""
 							r.pathPattern = "/headersDefault"
 							r.args = args
 							r.count = 0
@@ -669,6 +681,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							r.name = HeadersJSONOperation
 							r.summary = ""
 							r.operationID = "headersJSON"
+							r.operationGroup = ""
 							r.pathPattern = "/headersJSON"
 							r.args = args
 							r.count = 0
@@ -693,6 +706,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							r.name = HeadersPatternOperation
 							r.summary = ""
 							r.operationID = "headersPattern"
+							r.operationGroup = ""
 							r.pathPattern = "/headersPattern"
 							r.args = args
 							r.count = 0
@@ -719,6 +733,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						r.name = IntersectPatternCodeOperation
 						r.summary = ""
 						r.operationID = "intersectPatternCode"
+						r.operationGroup = ""
 						r.pathPattern = "/intersectPatternCode"
 						r.args = args
 						r.count = 0
@@ -743,6 +758,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						r.name = MultipleGenericResponsesOperation
 						r.summary = ""
 						r.operationID = "multipleGenericResponses"
+						r.operationGroup = ""
 						r.pathPattern = "/multipleGenericResponses"
 						r.args = args
 						r.count = 0
@@ -791,6 +807,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.name = OctetStreamBinaryStringSchemaOperation
 								r.summary = ""
 								r.operationID = "octetStreamBinaryStringSchema"
+								r.operationGroup = ""
 								r.pathPattern = "/octetStreamBinaryStringSchema"
 								r.args = args
 								r.count = 0
@@ -815,6 +832,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.name = OctetStreamEmptySchemaOperation
 								r.summary = ""
 								r.operationID = "octetStreamEmptySchema"
+								r.operationGroup = ""
 								r.pathPattern = "/octetStreamEmptySchema"
 								r.args = args
 								r.count = 0
@@ -841,6 +859,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							r.name = OptionalHeadersOperation
 							r.summary = ""
 							r.operationID = "optionalHeaders"
+							r.operationGroup = ""
 							r.pathPattern = "/optionalHeaders"
 							r.args = args
 							r.count = 0
@@ -867,6 +886,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						r.name = StreamJSONOperation
 						r.summary = ""
 						r.operationID = "streamJSON"
+						r.operationGroup = ""
 						r.pathPattern = "/streamJSON"
 						r.args = args
 						r.count = 0
@@ -891,6 +911,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						r.name = TextPlainBinaryStringSchemaOperation
 						r.summary = ""
 						r.operationID = "textPlainBinaryStringSchema"
+						r.operationGroup = ""
 						r.pathPattern = "/textPlainBinaryStringSchema"
 						r.args = args
 						r.count = 0

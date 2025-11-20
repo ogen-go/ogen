@@ -617,12 +617,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 // Route is route object.
 type Route struct {
-	name        string
-	summary     string
-	operationID string
-	pathPattern string
-	count       int
-	args        [0]string
+	name           string
+	summary        string
+	operationID    string
+	operationGroup string
+	pathPattern    string
+	count          int
+	args           [0]string
 }
 
 // Name returns ogen operation name.
@@ -640,6 +641,11 @@ func (r Route) Summary() string {
 // OperationID returns OpenAPI operationId.
 func (r Route) OperationID() string {
 	return r.operationID
+}
+
+// OperationGroup returns the x-ogen-operation-group value.
+func (r Route) OperationGroup() string {
+	return r.operationGroup
 }
 
 // PathPattern returns OpenAPI path.
@@ -729,6 +735,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							r.name = MarketBondsGetOperation
 							r.summary = "Получение списка облигаций"
 							r.operationID = ""
+							r.operationGroup = ""
 							r.pathPattern = "/market/bonds"
 							r.args = args
 							r.count = 0
@@ -765,6 +772,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.name = MarketCandlesGetOperation
 								r.summary = "Получение исторических свечей по FIGI"
 								r.operationID = ""
+								r.operationGroup = ""
 								r.pathPattern = "/market/candles"
 								r.args = args
 								r.count = 0
@@ -789,6 +797,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.name = MarketCurrenciesGetOperation
 								r.summary = "Получение списка валютных пар"
 								r.operationID = ""
+								r.operationGroup = ""
 								r.pathPattern = "/market/currencies"
 								r.args = args
 								r.count = 0
@@ -815,6 +824,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							r.name = MarketEtfsGetOperation
 							r.summary = "Получение списка ETF"
 							r.operationID = ""
+							r.operationGroup = ""
 							r.pathPattern = "/market/etfs"
 							r.args = args
 							r.count = 0
@@ -839,6 +849,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							r.name = MarketOrderbookGetOperation
 							r.summary = "Получение стакана по FIGI"
 							r.operationID = ""
+							r.operationGroup = ""
 							r.pathPattern = "/market/orderbook"
 							r.args = args
 							r.count = 0
@@ -887,6 +898,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									r.name = MarketSearchByFigiGetOperation
 									r.summary = "Получение инструмента по FIGI"
 									r.operationID = ""
+									r.operationGroup = ""
 									r.pathPattern = "/market/search/by-figi"
 									r.args = args
 									r.count = 0
@@ -911,6 +923,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									r.name = MarketSearchByTickerGetOperation
 									r.summary = "Получение инструмента по тикеру"
 									r.operationID = ""
+									r.operationGroup = ""
 									r.pathPattern = "/market/search/by-ticker"
 									r.args = args
 									r.count = 0
@@ -937,6 +950,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.name = MarketStocksGetOperation
 								r.summary = "Получение списка акций"
 								r.operationID = ""
+								r.operationGroup = ""
 								r.pathPattern = "/market/stocks"
 								r.args = args
 								r.count = 0
@@ -977,6 +991,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							r.name = OperationsGetOperation
 							r.summary = "Получение списка операций"
 							r.operationID = ""
+							r.operationGroup = ""
 							r.pathPattern = "/operations"
 							r.args = args
 							r.count = 0
@@ -1000,6 +1015,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							r.name = OrdersGetOperation
 							r.summary = "Получение списка активных заявок"
 							r.operationID = ""
+							r.operationGroup = ""
 							r.pathPattern = "/orders"
 							r.args = args
 							r.count = 0
@@ -1036,6 +1052,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									r.name = OrdersCancelPostOperation
 									r.summary = "Отмена заявки"
 									r.operationID = ""
+									r.operationGroup = ""
 									r.pathPattern = "/orders/cancel"
 									r.args = args
 									r.count = 0
@@ -1060,6 +1077,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									r.name = OrdersLimitOrderPostOperation
 									r.summary = "Создание лимитной заявки"
 									r.operationID = ""
+									r.operationGroup = ""
 									r.pathPattern = "/orders/limit-order"
 									r.args = args
 									r.count = 0
@@ -1084,6 +1102,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									r.name = OrdersMarketOrderPostOperation
 									r.summary = "Создание рыночной заявки"
 									r.operationID = ""
+									r.operationGroup = ""
 									r.pathPattern = "/orders/market-order"
 									r.args = args
 									r.count = 0
@@ -1113,6 +1132,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						r.name = PortfolioGetOperation
 						r.summary = "Получение портфеля клиента"
 						r.operationID = ""
+						r.operationGroup = ""
 						r.pathPattern = "/portfolio"
 						r.args = args
 						r.count = 0
@@ -1137,6 +1157,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							r.name = PortfolioCurrenciesGetOperation
 							r.summary = "Получение валютных активов клиента"
 							r.operationID = ""
+							r.operationGroup = ""
 							r.pathPattern = "/portfolio/currencies"
 							r.args = args
 							r.count = 0
@@ -1187,6 +1208,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.name = SandboxClearPostOperation
 								r.summary = "Удаление всех позиций"
 								r.operationID = ""
+								r.operationGroup = ""
 								r.pathPattern = "/sandbox/clear"
 								r.args = args
 								r.count = 0
@@ -1211,6 +1233,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.name = SandboxCurrenciesBalancePostOperation
 								r.summary = "Выставление баланса по валютным позициям"
 								r.operationID = ""
+								r.operationGroup = ""
 								r.pathPattern = "/sandbox/currencies/balance"
 								r.args = args
 								r.count = 0
@@ -1237,6 +1260,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							r.name = SandboxPositionsBalancePostOperation
 							r.summary = "Выставление баланса по инструментным позициям"
 							r.operationID = ""
+							r.operationGroup = ""
 							r.pathPattern = "/sandbox/positions/balance"
 							r.args = args
 							r.count = 0
@@ -1273,6 +1297,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.name = SandboxRegisterPostOperation
 								r.summary = "Регистрация клиента в sandbox"
 								r.operationID = ""
+								r.operationGroup = ""
 								r.pathPattern = "/sandbox/register"
 								r.args = args
 								r.count = 0
@@ -1297,6 +1322,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.name = SandboxRemovePostOperation
 								r.summary = "Удаление счета"
 								r.operationID = ""
+								r.operationGroup = ""
 								r.pathPattern = "/sandbox/remove"
 								r.args = args
 								r.count = 0
@@ -1325,6 +1351,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						r.name = UserAccountsGetOperation
 						r.summary = "Получение брокерских счетов клиента"
 						r.operationID = ""
+						r.operationGroup = ""
 						r.pathPattern = "/user/accounts"
 						r.args = args
 						r.count = 0

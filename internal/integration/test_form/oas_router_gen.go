@@ -306,12 +306,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 // Route is route object.
 type Route struct {
-	name        string
-	summary     string
-	operationID string
-	pathPattern string
-	count       int
-	args        [0]string
+	name           string
+	summary        string
+	operationID    string
+	operationGroup string
+	pathPattern    string
+	count          int
+	args           [0]string
 }
 
 // Name returns ogen operation name.
@@ -329,6 +330,11 @@ func (r Route) Summary() string {
 // OperationID returns OpenAPI operationId.
 func (r Route) OperationID() string {
 	return r.operationID
+}
+
+// OperationGroup returns the x-ogen-operation-group value.
+func (r Route) OperationGroup() string {
+	return r.operationGroup
 }
 
 // PathPattern returns OpenAPI path.
@@ -418,6 +424,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							r.name = OnlyFormOperation
 							r.summary = ""
 							r.operationID = "onlyForm"
+							r.operationGroup = ""
 							r.pathPattern = "/onlyForm"
 							r.args = args
 							r.count = 0
@@ -454,6 +461,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.name = OnlyMultipartFileOperation
 								r.summary = ""
 								r.operationID = "onlyMultipartFile"
+								r.operationGroup = ""
 								r.pathPattern = "/onlyMultipartFile"
 								r.args = args
 								r.count = 0
@@ -478,6 +486,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.name = OnlyMultipartFormOperation
 								r.summary = ""
 								r.operationID = "onlyMultipartForm"
+								r.operationGroup = ""
 								r.pathPattern = "/onlyMultipartForm"
 								r.args = args
 								r.count = 0
@@ -518,6 +527,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							r.name = TestFormURLEncodedOperation
 							r.summary = ""
 							r.operationID = "testFormURLEncoded"
+							r.operationGroup = ""
 							r.pathPattern = "/testFormURLEncoded"
 							r.args = args
 							r.count = 0
@@ -541,6 +551,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							r.name = TestMultipartOperation
 							r.summary = ""
 							r.operationID = "testMultipart"
+							r.operationGroup = ""
 							r.pathPattern = "/testMultipart"
 							r.args = args
 							r.count = 0
@@ -565,6 +576,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.name = TestMultipartUploadOperation
 								r.summary = ""
 								r.operationID = "testMultipartUpload"
+								r.operationGroup = ""
 								r.pathPattern = "/testMultipartUpload"
 								r.args = args
 								r.count = 0
@@ -603,6 +615,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.name = TestReuseFormOptionalSchemaOperation
 								r.summary = ""
 								r.operationID = "testReuseFormOptionalSchema"
+								r.operationGroup = ""
 								r.pathPattern = "/testReuseFormOptionalSchema"
 								r.args = args
 								r.count = 0
@@ -627,6 +640,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.name = TestReuseFormSchemaOperation
 								r.summary = ""
 								r.operationID = "testReuseFormSchema"
+								r.operationGroup = ""
 								r.pathPattern = "/testReuseFormSchema"
 								r.args = args
 								r.count = 0
@@ -653,6 +667,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							r.name = TestShareFormSchemaOperation
 							r.summary = ""
 							r.operationID = "testShareFormSchema"
+							r.operationGroup = ""
 							r.pathPattern = "/testShareFormSchema"
 							r.args = args
 							r.count = 0

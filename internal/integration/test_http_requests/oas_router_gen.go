@@ -191,12 +191,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 // Route is route object.
 type Route struct {
-	name        string
-	summary     string
-	operationID string
-	pathPattern string
-	count       int
-	args        [0]string
+	name           string
+	summary        string
+	operationID    string
+	operationGroup string
+	pathPattern    string
+	count          int
+	args           [0]string
 }
 
 // Name returns ogen operation name.
@@ -214,6 +215,11 @@ func (r Route) Summary() string {
 // OperationID returns OpenAPI operationId.
 func (r Route) OperationID() string {
 	return r.operationID
+}
+
+// OperationGroup returns the x-ogen-operation-group value.
+func (r Route) OperationGroup() string {
+	return r.operationGroup
 }
 
 // PathPattern returns OpenAPI path.
@@ -290,6 +296,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						r.name = AllRequestBodiesOperation
 						r.summary = ""
 						r.operationID = "allRequestBodies"
+						r.operationGroup = ""
 						r.pathPattern = "/allRequestBodies"
 						r.args = args
 						r.count = 0
@@ -314,6 +321,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							r.name = AllRequestBodiesOptionalOperation
 							r.summary = ""
 							r.operationID = "allRequestBodiesOptional"
+							r.operationGroup = ""
 							r.pathPattern = "/allRequestBodiesOptional"
 							r.args = args
 							r.count = 0
@@ -340,6 +348,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						r.name = Base64RequestOperation
 						r.summary = ""
 						r.operationID = "base64Request"
+						r.operationGroup = ""
 						r.pathPattern = "/base64Request"
 						r.args = args
 						r.count = 0
@@ -363,6 +372,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						r.name = MaskContentTypeOperation
 						r.summary = ""
 						r.operationID = "maskContentType"
+						r.operationGroup = ""
 						r.pathPattern = "/maskContentType"
 						r.args = args
 						r.count = 0
@@ -387,6 +397,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							r.name = MaskContentTypeOptionalOperation
 							r.summary = ""
 							r.operationID = "maskContentTypeOptional"
+							r.operationGroup = ""
 							r.pathPattern = "/maskContentTypeOptional"
 							r.args = args
 							r.count = 0
@@ -413,6 +424,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						r.name = StreamJSONOperation
 						r.summary = ""
 						r.operationID = "streamJSON"
+						r.operationGroup = ""
 						r.pathPattern = "/streamJSON"
 						r.args = args
 						r.count = 0
