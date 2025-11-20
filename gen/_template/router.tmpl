@@ -54,6 +54,7 @@ type Route struct {
 	name string
 	summary string
 	operationID string
+	operationGroup string
 	pathPattern string
 	count int
 	args [{{ $router.MaxParametersCount }}]string
@@ -74,6 +75,11 @@ func (r Route) Summary() string {
 // OperationID returns OpenAPI operationId.
 func (r Route) OperationID() string {
 	return r.operationID
+}
+
+// OperationGroup returns the x-ogen-operation-group value.
+func (r Route) OperationGroup() string {
+	return r.operationGroup
 }
 
 // PathPattern returns OpenAPI path.
@@ -273,6 +279,7 @@ func (s *WebhookServer) Handler(webhookName string) http.Handler {
 		r.name = {{ $op.Name }}Operation
 		r.summary = {{ quote $op.Summary }}
 		r.operationID = {{ quote $op.Spec.OperationID }}
+		r.operationGroup = {{ quote $op.OperationGroup }}
 		r.pathPattern = {{ quote $route.Path }}
 		r.args = args
 		r.count = {{ $.ParameterIndex }}
