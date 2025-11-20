@@ -29,6 +29,10 @@ func (c *codeRecorder) WriteHeader(status int) {
 	c.ResponseWriter.WriteHeader(status)
 }
 
+func (c *codeRecorder) Unwrap() http.ResponseWriter {
+	return c.ResponseWriter
+}
+
 // handleCreateSnapshotRequest handles createSnapshot operation.
 //
 // Creates a snapshot of the microVM state. The microVM should be in the `Paused` state.
