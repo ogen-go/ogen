@@ -29,6 +29,10 @@ func (c *codeRecorder) WriteHeader(status int) {
 	c.ResponseWriter.WriteHeader(status)
 }
 
+func (c *codeRecorder) Unwrap() http.ResponseWriter {
+	return c.ResponseWriter
+}
+
 // handleCachingRequest handles Caching operation.
 //
 // Test #7. The Caching test exercises the preferred in-memory or separate-process caching technology

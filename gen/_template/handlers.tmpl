@@ -12,6 +12,10 @@ func (c *codeRecorder) WriteHeader(status int) {
 	c.ResponseWriter.WriteHeader(status)
 }
 
+func (c *codeRecorder) Unwrap() http.ResponseWriter {
+	return c.ResponseWriter
+}
+
 {{- if not $.OpenTelemetryEnabled }}
 {{/* Define static no-op recordError, it would be optimized to nothing. */}}
 func recordError(string, error) {}
