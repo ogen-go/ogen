@@ -36,6 +36,7 @@ type Generator struct {
 	webhookRouter     WebhookRouter
 	router            Router
 	imports           map[string]string
+	equalitySpecs     []*ir.EqualityMethodSpec // Types requiring Equal() methods for uniqueItems validation
 
 	log *zap.Logger
 }
@@ -130,6 +131,10 @@ func (g *Generator) makeIR(api *openapi.API) error {
 	if err := g.makeOps(api.Operations); err != nil {
 		return errors.Wrap(err, "operations")
 	}
+
+	// Collect types that need Equal() and Hash() methods for complex uniqueItems validation
+	g.collectEqualitySpecs()
+
 	return nil
 }
 

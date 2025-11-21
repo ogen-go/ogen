@@ -1,0 +1,89 @@
+openapi: 3.0.3
+info:
+  title: Golden File Test for Equal/Hash Generation
+  version: 1.0.0
+  description: |
+    Reference schema for golden file testing.
+    Ensures Equal() and Hash() generation remains stable.
+
+paths:
+  /golden/test:
+    post:
+      operationId: createGoldenItems
+      summary: Create items for golden file testing
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - items
+              properties:
+                items:
+                  type: array
+                  uniqueItems: true
+                  items:
+                    $ref: '#/components/schemas/GoldenItem'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  created:
+                    type: integer
+
+components:
+  schemas:
+    GoldenItem:
+      type: object
+      description: Reference item with diverse field types
+      required:
+        - id
+        - name
+      properties:
+        # Required primitives
+        id:
+          type: string
+        name:
+          type: string
+
+        # Optional primitive
+        description:
+          type: string
+
+        # Nullable
+        externalRef:
+          type: string
+          nullable: true
+
+        # Array
+        tags:
+          type: array
+          items:
+            type: string
+
+        # Map
+        attributes:
+          type: object
+          additionalProperties:
+            type: string
+
+        # Nested object
+        metadata:
+          $ref: '#/components/schemas/Metadata'
+
+    Metadata:
+      type: object
+      properties:
+        version:
+          type: string
+        timestamp:
+          type: integer
+        labels:
+          type: object
+          additionalProperties:
+            type: string
