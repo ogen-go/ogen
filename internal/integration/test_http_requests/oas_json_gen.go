@@ -11,31 +11,6 @@ import (
 	"github.com/ogen-go/ogen/validate"
 )
 
-// Encode encodes AllRequestBodiesApplicationJSON as json.
-func (s *AllRequestBodiesApplicationJSON) Encode(e *jx.Encoder) {
-	unwrapped := (*SimpleObject)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes AllRequestBodiesApplicationJSON from json.
-func (s *AllRequestBodiesApplicationJSON) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode AllRequestBodiesApplicationJSON to nil")
-	}
-	var unwrapped SimpleObject
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = AllRequestBodiesApplicationJSON(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *AllRequestBodiesApplicationJSON) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -47,31 +22,6 @@ func (s *AllRequestBodiesApplicationJSON) MarshalJSON() ([]byte, error) {
 func (s *AllRequestBodiesApplicationJSON) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes AllRequestBodiesApplicationXWwwFormUrlencoded as json.
-func (s *AllRequestBodiesApplicationXWwwFormUrlencoded) Encode(e *jx.Encoder) {
-	unwrapped := (*SimpleObject)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes AllRequestBodiesApplicationXWwwFormUrlencoded from json.
-func (s *AllRequestBodiesApplicationXWwwFormUrlencoded) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode AllRequestBodiesApplicationXWwwFormUrlencoded to nil")
-	}
-	var unwrapped SimpleObject
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = AllRequestBodiesApplicationXWwwFormUrlencoded(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -87,31 +37,6 @@ func (s *AllRequestBodiesApplicationXWwwFormUrlencoded) UnmarshalJSON(data []byt
 	return s.Decode(d)
 }
 
-// Encode encodes AllRequestBodiesOptionalApplicationJSON as json.
-func (s *AllRequestBodiesOptionalApplicationJSON) Encode(e *jx.Encoder) {
-	unwrapped := (*SimpleObject)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes AllRequestBodiesOptionalApplicationJSON from json.
-func (s *AllRequestBodiesOptionalApplicationJSON) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode AllRequestBodiesOptionalApplicationJSON to nil")
-	}
-	var unwrapped SimpleObject
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = AllRequestBodiesOptionalApplicationJSON(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *AllRequestBodiesOptionalApplicationJSON) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -123,31 +48,6 @@ func (s *AllRequestBodiesOptionalApplicationJSON) MarshalJSON() ([]byte, error) 
 func (s *AllRequestBodiesOptionalApplicationJSON) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes AllRequestBodiesOptionalApplicationXWwwFormUrlencoded as json.
-func (s *AllRequestBodiesOptionalApplicationXWwwFormUrlencoded) Encode(e *jx.Encoder) {
-	unwrapped := (*SimpleObject)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes AllRequestBodiesOptionalApplicationXWwwFormUrlencoded from json.
-func (s *AllRequestBodiesOptionalApplicationXWwwFormUrlencoded) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode AllRequestBodiesOptionalApplicationXWwwFormUrlencoded to nil")
-	}
-	var unwrapped SimpleObject
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = AllRequestBodiesOptionalApplicationXWwwFormUrlencoded(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.

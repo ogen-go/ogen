@@ -6,11 +6,15 @@ import (
 	"io"
 )
 
-type AllRequestBodiesApplicationJSON SimpleObject
+type AllRequestBodiesApplicationJSON struct {
+	SimpleObject
+}
 
 func (*AllRequestBodiesApplicationJSON) allRequestBodiesReq() {}
 
-type AllRequestBodiesApplicationXWwwFormUrlencoded SimpleObject
+type AllRequestBodiesApplicationXWwwFormUrlencoded struct {
+	SimpleObject
+}
 
 func (*AllRequestBodiesApplicationXWwwFormUrlencoded) allRequestBodiesReq() {}
 
@@ -28,11 +32,15 @@ func (s AllRequestBodiesOK) Read(p []byte) (n int, err error) {
 	return s.Data.Read(p)
 }
 
-type AllRequestBodiesOptionalApplicationJSON SimpleObject
+type AllRequestBodiesOptionalApplicationJSON struct {
+	SimpleObject
+}
 
 func (*AllRequestBodiesOptionalApplicationJSON) allRequestBodiesOptionalReq() {}
 
-type AllRequestBodiesOptionalApplicationXWwwFormUrlencoded SimpleObject
+type AllRequestBodiesOptionalApplicationXWwwFormUrlencoded struct {
+	SimpleObject
+}
 
 func (*AllRequestBodiesOptionalApplicationXWwwFormUrlencoded) allRequestBodiesOptionalReq() {}
 
