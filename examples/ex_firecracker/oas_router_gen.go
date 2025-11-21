@@ -500,12 +500,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 // Route is route object.
 type Route struct {
-	name        string
-	summary     string
-	operationID string
-	pathPattern string
-	count       int
-	args        [1]string
+	name           string
+	summary        string
+	operationID    string
+	operationGroup string
+	pathPattern    string
+	count          int
+	args           [1]string
 }
 
 // Name returns ogen operation name.
@@ -523,6 +524,11 @@ func (r Route) Summary() string {
 // OperationID returns OpenAPI operationId.
 func (r Route) OperationID() string {
 	return r.operationID
+}
+
+// OperationGroup returns the x-ogen-operation-group value.
+func (r Route) OperationGroup() string {
+	return r.operationGroup
 }
 
 // PathPattern returns OpenAPI path.
@@ -587,6 +593,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					r.name = DescribeInstanceOperation
 					r.summary = "Returns general information about an instance."
 					r.operationID = "describeInstance"
+					r.operationGroup = ""
 					r.pathPattern = "/"
 					r.args = args
 					r.count = 0
@@ -611,6 +618,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						r.name = CreateSyncActionOperation
 						r.summary = "Creates a synchronous action."
 						r.operationID = "createSyncAction"
+						r.operationGroup = ""
 						r.pathPattern = "/actions"
 						r.args = args
 						r.count = 0
@@ -646,6 +654,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							r.name = DescribeBalloonConfigOperation
 							r.summary = "Returns the current balloon device configuration."
 							r.operationID = "describeBalloonConfig"
+							r.operationGroup = ""
 							r.pathPattern = "/balloon"
 							r.args = args
 							r.count = 0
@@ -654,6 +663,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							r.name = PatchBalloonOperation
 							r.summary = "Updates a balloon device."
 							r.operationID = "patchBalloon"
+							r.operationGroup = ""
 							r.pathPattern = "/balloon"
 							r.args = args
 							r.count = 0
@@ -662,6 +672,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							r.name = PutBalloonOperation
 							r.summary = "Creates or updates a balloon device."
 							r.operationID = "putBalloon"
+							r.operationGroup = ""
 							r.pathPattern = "/balloon"
 							r.args = args
 							r.count = 0
@@ -686,6 +697,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.name = DescribeBalloonStatsOperation
 								r.summary = "Returns the latest balloon device statistics, only if enabled pre-boot."
 								r.operationID = "describeBalloonStats"
+								r.operationGroup = ""
 								r.pathPattern = "/balloon/statistics"
 								r.args = args
 								r.count = 0
@@ -694,6 +706,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.name = PatchBalloonStatsIntervalOperation
 								r.summary = "Updates a balloon device statistics polling interval."
 								r.operationID = "patchBalloonStatsInterval"
+								r.operationGroup = ""
 								r.pathPattern = "/balloon/statistics"
 								r.args = args
 								r.count = 0
@@ -720,6 +733,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							r.name = PutGuestBootSourceOperation
 							r.summary = "Creates or updates the boot source. Pre-boot only."
 							r.operationID = "putGuestBootSource"
+							r.operationGroup = ""
 							r.pathPattern = "/boot-source"
 							r.args = args
 							r.count = 0
@@ -755,6 +769,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						r.name = PatchGuestDriveByIDOperation
 						r.summary = "Updates the properties of a drive. Post-boot only."
 						r.operationID = "patchGuestDriveByID"
+						r.operationGroup = ""
 						r.pathPattern = "/drives/{drive_id}"
 						r.args = args
 						r.count = 1
@@ -763,6 +778,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						r.name = PutGuestDriveByIDOperation
 						r.summary = "Creates or updates a drive. Pre-boot only."
 						r.operationID = "putGuestDriveByID"
+						r.operationGroup = ""
 						r.pathPattern = "/drives/{drive_id}"
 						r.args = args
 						r.count = 1
@@ -787,6 +803,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						r.name = PutLoggerOperation
 						r.summary = "Initializes the logger by specifying a named pipe or a file for the logs output."
 						r.operationID = "putLogger"
+						r.operationGroup = ""
 						r.pathPattern = "/logger"
 						r.args = args
 						r.count = 0
@@ -823,6 +840,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							r.name = GetMachineConfigurationOperation
 							r.summary = "Gets the machine configuration of the VM."
 							r.operationID = "getMachineConfiguration"
+							r.operationGroup = ""
 							r.pathPattern = "/machine-config"
 							r.args = args
 							r.count = 0
@@ -831,6 +849,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							r.name = PatchMachineConfigurationOperation
 							r.summary = "Partially updates the Machine Configuration of the VM. Pre-boot only."
 							r.operationID = "patchMachineConfiguration"
+							r.operationGroup = ""
 							r.pathPattern = "/machine-config"
 							r.args = args
 							r.count = 0
@@ -839,6 +858,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							r.name = PutMachineConfigurationOperation
 							r.summary = "Updates the Machine Configuration of the VM. Pre-boot only."
 							r.operationID = "putMachineConfiguration"
+							r.operationGroup = ""
 							r.pathPattern = "/machine-config"
 							r.args = args
 							r.count = 0
@@ -863,6 +883,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							r.name = PutMetricsOperation
 							r.summary = "Initializes the metrics system by specifying a named pipe or a file for the metrics output."
 							r.operationID = "putMetrics"
+							r.operationGroup = ""
 							r.pathPattern = "/metrics"
 							r.args = args
 							r.count = 0
@@ -886,6 +907,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							r.name = MmdsGetOperation
 							r.summary = "Get the MMDS data store."
 							r.operationID = ""
+							r.operationGroup = ""
 							r.pathPattern = "/mmds"
 							r.args = args
 							r.count = 0
@@ -894,6 +916,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							r.name = MmdsPatchOperation
 							r.summary = "Updates the MMDS data store."
 							r.operationID = ""
+							r.operationGroup = ""
 							r.pathPattern = "/mmds"
 							r.args = args
 							r.count = 0
@@ -902,6 +925,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							r.name = MmdsPutOperation
 							r.summary = "Creates a MMDS (Microvm Metadata Service) data store."
 							r.operationID = ""
+							r.operationGroup = ""
 							r.pathPattern = "/mmds"
 							r.args = args
 							r.count = 0
@@ -926,6 +950,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.name = MmdsConfigPutOperation
 								r.summary = "Set MMDS configuration. Pre-boot only."
 								r.operationID = ""
+								r.operationGroup = ""
 								r.pathPattern = "/mmds/config"
 								r.args = args
 								r.count = 0
@@ -963,6 +988,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						r.name = PatchGuestNetworkInterfaceByIDOperation
 						r.summary = "Updates the rate limiters applied to a network interface. Post-boot only."
 						r.operationID = "patchGuestNetworkInterfaceByID"
+						r.operationGroup = ""
 						r.pathPattern = "/network-interfaces/{iface_id}"
 						r.args = args
 						r.count = 1
@@ -971,6 +997,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						r.name = PutGuestNetworkInterfaceByIDOperation
 						r.summary = "Creates a network interface. Pre-boot only."
 						r.operationID = "putGuestNetworkInterfaceByID"
+						r.operationGroup = ""
 						r.pathPattern = "/network-interfaces/{iface_id}"
 						r.args = args
 						r.count = 1
@@ -1007,6 +1034,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							r.name = CreateSnapshotOperation
 							r.summary = "Creates a full or diff snapshot. Post-boot only."
 							r.operationID = "createSnapshot"
+							r.operationGroup = ""
 							r.pathPattern = "/snapshot/create"
 							r.args = args
 							r.count = 0
@@ -1031,6 +1059,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							r.name = LoadSnapshotOperation
 							r.summary = "Loads a snapshot. Pre-boot only."
 							r.operationID = "loadSnapshot"
+							r.operationGroup = ""
 							r.pathPattern = "/snapshot/load"
 							r.args = args
 							r.count = 0
@@ -1068,6 +1097,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							r.name = PatchVmOperation
 							r.summary = "Updates the microVM state."
 							r.operationID = "patchVm"
+							r.operationGroup = ""
 							r.pathPattern = "/vm"
 							r.args = args
 							r.count = 0
@@ -1092,6 +1122,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.name = GetExportVmConfigOperation
 								r.summary = "Gets the full VM configuration."
 								r.operationID = "getExportVmConfig"
+								r.operationGroup = ""
 								r.pathPattern = "/vm/config"
 								r.args = args
 								r.count = 0
@@ -1118,6 +1149,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							r.name = PutGuestVsockOperation
 							r.summary = "Creates/updates a vsock device. Pre-boot only."
 							r.operationID = "putGuestVsock"
+							r.operationGroup = ""
 							r.pathPattern = "/vsock"
 							r.args = args
 							r.count = 0

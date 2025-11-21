@@ -306,12 +306,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 // Route is route object.
 type Route struct {
-	name        string
-	summary     string
-	operationID string
-	pathPattern string
-	count       int
-	args        [0]string
+	name           string
+	summary        string
+	operationID    string
+	operationGroup string
+	pathPattern    string
+	count          int
+	args           [0]string
 }
 
 // Name returns ogen operation name.
@@ -329,6 +330,11 @@ func (r Route) Summary() string {
 // OperationID returns OpenAPI operationId.
 func (r Route) OperationID() string {
 	return r.operationID
+}
+
+// OperationGroup returns the x-ogen-operation-group value.
+func (r Route) OperationGroup() string {
+	return r.operationGroup
 }
 
 // PathPattern returns OpenAPI path.
@@ -406,6 +412,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						r.name = NullableStringsOperation
 						r.summary = ""
 						r.operationID = "nullableStrings"
+						r.operationGroup = ""
 						r.pathPattern = "/nullableStrings"
 						r.args = args
 						r.count = 0
@@ -442,6 +449,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							r.name = ObjectsWithConflictingArrayPropertyOperation
 							r.summary = ""
 							r.operationID = "objectsWithConflictingArrayProperty"
+							r.operationGroup = ""
 							r.pathPattern = "/objectsWithConflictingArrayProperty"
 							r.args = args
 							r.count = 0
@@ -466,6 +474,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							r.name = ObjectsWithConflictingPropertiesOperation
 							r.summary = ""
 							r.operationID = "objectsWithConflictingProperties"
+							r.operationGroup = ""
 							r.pathPattern = "/objectsWithConflictingProperties"
 							r.args = args
 							r.count = 0
@@ -504,6 +513,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							r.name = ReferencedAllOfNullableOperation
 							r.summary = ""
 							r.operationID = "referencedAllOfNullable"
+							r.operationGroup = ""
 							r.pathPattern = "/referencedAllOfNullable"
 							r.args = args
 							r.count = 0
@@ -527,6 +537,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							r.name = ReferencedAllofOperation
 							r.summary = ""
 							r.operationID = "referencedAllof"
+							r.operationGroup = ""
 							r.pathPattern = "/referencedAllof"
 							r.args = args
 							r.count = 0
@@ -551,6 +562,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.name = ReferencedAllofOptionalOperation
 								r.summary = ""
 								r.operationID = "referencedAllofOptional"
+								r.operationGroup = ""
 								r.pathPattern = "/referencedAllofOptional"
 								r.args = args
 								r.count = 0
@@ -603,6 +615,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.name = SimpleIntegerOperation
 								r.summary = ""
 								r.operationID = "simpleInteger"
+								r.operationGroup = ""
 								r.pathPattern = "/simpleInteger"
 								r.args = args
 								r.count = 0
@@ -627,6 +640,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.name = SimpleObjectsOperation
 								r.summary = ""
 								r.operationID = "simpleObjects"
+								r.operationGroup = ""
 								r.pathPattern = "/simpleObjects"
 								r.args = args
 								r.count = 0
@@ -653,6 +667,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							r.name = StringsNotypeOperation
 							r.summary = ""
 							r.operationID = "stringsNotype"
+							r.operationGroup = ""
 							r.pathPattern = "/stringsNotype"
 							r.args = args
 							r.count = 0

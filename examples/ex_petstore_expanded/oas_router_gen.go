@@ -114,12 +114,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 // Route is route object.
 type Route struct {
-	name        string
-	summary     string
-	operationID string
-	pathPattern string
-	count       int
-	args        [1]string
+	name           string
+	summary        string
+	operationID    string
+	operationGroup string
+	pathPattern    string
+	count          int
+	args           [1]string
 }
 
 // Name returns ogen operation name.
@@ -137,6 +138,11 @@ func (r Route) Summary() string {
 // OperationID returns OpenAPI operationId.
 func (r Route) OperationID() string {
 	return r.operationID
+}
+
+// OperationGroup returns the x-ogen-operation-group value.
+func (r Route) OperationGroup() string {
+	return r.operationGroup
 }
 
 // PathPattern returns OpenAPI path.
@@ -201,6 +207,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					r.name = FindPetsOperation
 					r.summary = ""
 					r.operationID = "findPets"
+					r.operationGroup = ""
 					r.pathPattern = "/pets"
 					r.args = args
 					r.count = 0
@@ -209,6 +216,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					r.name = AddPetOperation
 					r.summary = ""
 					r.operationID = "addPet"
+					r.operationGroup = ""
 					r.pathPattern = "/pets"
 					r.args = args
 					r.count = 0
@@ -242,6 +250,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						r.name = DeletePetOperation
 						r.summary = ""
 						r.operationID = "deletePet"
+						r.operationGroup = ""
 						r.pathPattern = "/pets/{id}"
 						r.args = args
 						r.count = 1
@@ -250,6 +259,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						r.name = FindPetByIDOperation
 						r.summary = ""
 						r.operationID = "find pet by id"
+						r.operationGroup = ""
 						r.pathPattern = "/pets/{id}"
 						r.args = args
 						r.count = 1

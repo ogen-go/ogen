@@ -215,12 +215,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 // Route is route object.
 type Route struct {
-	name        string
-	summary     string
-	operationID string
-	pathPattern string
-	count       int
-	args        [1]string
+	name           string
+	summary        string
+	operationID    string
+	operationGroup string
+	pathPattern    string
+	count          int
+	args           [1]string
 }
 
 // Name returns ogen operation name.
@@ -238,6 +239,11 @@ func (r Route) Summary() string {
 // OperationID returns OpenAPI operationId.
 func (r Route) OperationID() string {
 	return r.operationID
+}
+
+// OperationGroup returns the x-ogen-operation-group value.
+func (r Route) OperationGroup() string {
+	return r.operationGroup
 }
 
 // PathPattern returns OpenAPI path.
@@ -302,6 +308,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					r.name = ListPetOperation
 					r.summary = "List Pets"
 					r.operationID = "listPet"
+					r.operationGroup = ""
 					r.pathPattern = "/pets"
 					r.args = args
 					r.count = 0
@@ -310,6 +317,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					r.name = CreatePetOperation
 					r.summary = "Create a new Pet"
 					r.operationID = "createPet"
+					r.operationGroup = ""
 					r.pathPattern = "/pets"
 					r.args = args
 					r.count = 0
@@ -342,6 +350,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						r.name = DeletePetOperation
 						r.summary = "Deletes a Pet by ID"
 						r.operationID = "deletePet"
+						r.operationGroup = ""
 						r.pathPattern = "/pets/{id}"
 						r.args = args
 						r.count = 1
@@ -350,6 +359,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						r.name = ReadPetOperation
 						r.summary = "Find a Pet by ID"
 						r.operationID = "readPet"
+						r.operationGroup = ""
 						r.pathPattern = "/pets/{id}"
 						r.args = args
 						r.count = 1
@@ -358,6 +368,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						r.name = UpdatePetOperation
 						r.summary = "Updates a Pet"
 						r.operationID = "updatePet"
+						r.operationGroup = ""
 						r.pathPattern = "/pets/{id}"
 						r.args = args
 						r.count = 1
@@ -394,6 +405,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.name = ListPetCategoriesOperation
 								r.summary = "List attached Categories"
 								r.operationID = "listPetCategories"
+								r.operationGroup = ""
 								r.pathPattern = "/pets/{id}/categories"
 								r.args = args
 								r.count = 1
@@ -402,6 +414,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.name = CreatePetCategoriesOperation
 								r.summary = "Create a new Category and attach it to the Pet"
 								r.operationID = "createPetCategories"
+								r.operationGroup = ""
 								r.pathPattern = "/pets/{id}/categories"
 								r.args = args
 								r.count = 1
@@ -426,6 +439,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.name = ListPetFriendsOperation
 								r.summary = "List attached Friends"
 								r.operationID = "listPetFriends"
+								r.operationGroup = ""
 								r.pathPattern = "/pets/{id}/friends"
 								r.args = args
 								r.count = 1
@@ -434,6 +448,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.name = CreatePetFriendsOperation
 								r.summary = "Create a new Pet and attach it to the Pet"
 								r.operationID = "createPetFriends"
+								r.operationGroup = ""
 								r.pathPattern = "/pets/{id}/friends"
 								r.args = args
 								r.count = 1
@@ -458,6 +473,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.name = DeletePetOwnerOperation
 								r.summary = "Delete the attached Owner"
 								r.operationID = "deletePetOwner"
+								r.operationGroup = ""
 								r.pathPattern = "/pets/{id}/owner"
 								r.args = args
 								r.count = 1
@@ -466,6 +482,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.name = ReadPetOwnerOperation
 								r.summary = "Find the attached User"
 								r.operationID = "readPetOwner"
+								r.operationGroup = ""
 								r.pathPattern = "/pets/{id}/owner"
 								r.args = args
 								r.count = 1
@@ -474,6 +491,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.name = CreatePetOwnerOperation
 								r.summary = "Create a new User and attach it to the Pet"
 								r.operationID = "createPetOwner"
+								r.operationGroup = ""
 								r.pathPattern = "/pets/{id}/owner"
 								r.args = args
 								r.count = 1

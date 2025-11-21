@@ -642,12 +642,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 // Route is route object.
 type Route struct {
-	name        string
-	summary     string
-	operationID string
-	pathPattern string
-	count       int
-	args        [3]string
+	name           string
+	summary        string
+	operationID    string
+	operationGroup string
+	pathPattern    string
+	count          int
+	args           [3]string
 }
 
 // Name returns ogen operation name.
@@ -665,6 +666,11 @@ func (r Route) Summary() string {
 // OperationID returns OpenAPI operationId.
 func (r Route) OperationID() string {
 	return r.operationID
+}
+
+// OperationGroup returns the x-ogen-operation-group value.
+func (r Route) OperationGroup() string {
+	return r.operationGroup
 }
 
 // PathPattern returns OpenAPI path.
@@ -778,6 +784,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									r.name = APICaptcha2chcaptchaIDGetOperation
 									r.summary = "Получение ид для использования 2chcaptcha."
 									r.operationID = ""
+									r.operationGroup = ""
 									r.pathPattern = "/api/captcha/2chcaptcha/id"
 									r.args = args
 									r.count = 0
@@ -802,6 +809,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									r.name = APICaptcha2chcaptchaShowGetOperation
 									r.summary = "Отображение 2chcaptcha по id."
 									r.operationID = ""
+									r.operationGroup = ""
 									r.pathPattern = "/api/captcha/2chcaptcha/show"
 									r.args = args
 									r.count = 0
@@ -837,6 +845,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.name = APICaptchaAppIDPublicKeyGetOperation
 								r.summary = "Получение app_response_id для отправки поста."
 								r.operationID = ""
+								r.operationGroup = ""
 								r.pathPattern = "/api/captcha/app/id/{public_key}"
 								r.args = args
 								r.count = 1
@@ -873,6 +882,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									r.name = APICaptchaInvisibleRecaptchaIDGetOperation
 									r.summary = "Получение публичного ключа invisible recaptcha."
 									r.operationID = ""
+									r.operationGroup = ""
 									r.pathPattern = "/api/captcha/invisible_recaptcha/id"
 									r.args = args
 									r.count = 0
@@ -897,6 +907,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									r.name = APICaptchaInvisibleRecaptchaMobileGetOperation
 									r.summary = "Получение html страницы для решения капчи, CORS отключён."
 									r.operationID = ""
+									r.operationGroup = ""
 									r.pathPattern = "/api/captcha/invisible_recaptcha/mobile"
 									r.args = args
 									r.count = 0
@@ -935,6 +946,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									r.name = APICaptchaRecaptchaIDGetOperation
 									r.summary = "Получение публичного ключа recaptcha v2."
 									r.operationID = ""
+									r.operationGroup = ""
 									r.pathPattern = "/api/captcha/recaptcha/id"
 									r.args = args
 									r.count = 0
@@ -959,6 +971,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									r.name = APICaptchaRecaptchaMobileGetOperation
 									r.summary = "Получение html страницы для решения капчи, CORS отключён."
 									r.operationID = ""
+									r.operationGroup = ""
 									r.pathPattern = "/api/captcha/recaptcha/mobile"
 									r.args = args
 									r.count = 0
@@ -987,6 +1000,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							r.name = APIDislikeGetOperation
 							r.summary = "Добавление дизлайка на пост."
 							r.operationID = ""
+							r.operationGroup = ""
 							r.pathPattern = "/api/dislike"
 							r.args = args
 							r.count = 0
@@ -1011,6 +1025,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							r.name = APILikeGetOperation
 							r.summary = "Добавление лайка на пост."
 							r.operationID = ""
+							r.operationGroup = ""
 							r.pathPattern = "/api/like"
 							r.args = args
 							r.count = 0
@@ -1098,6 +1113,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										r.name = APIMobileV2AfterBoardThreadNumGetOperation
 										r.summary = "Получение постов в треде >= указанного. Не рекомендуется использовать для получения треда целиком, только для проверки новых постов."
 										r.operationID = ""
+										r.operationGroup = ""
 										r.pathPattern = "/api/mobile/v2/after/{board}/{thread}/{num}"
 										r.args = args
 										r.count = 3
@@ -1126,6 +1142,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.name = APIMobileV2BoardsGetOperation
 								r.summary = "Получение списка досок и их настроек."
 								r.operationID = ""
+								r.operationGroup = ""
 								r.pathPattern = "/api/mobile/v2/boards"
 								r.args = args
 								r.count = 0
@@ -1180,6 +1197,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									r.name = APIMobileV2InfoBoardThreadGetOperation
 									r.summary = "Получение информации о треде."
 									r.operationID = ""
+									r.operationGroup = ""
 									r.pathPattern = "/api/mobile/v2/info/{board}/{thread}"
 									r.args = args
 									r.count = 2
@@ -1236,6 +1254,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									r.name = APIMobileV2PostBoardNumGetOperation
 									r.summary = "Получение информации о посте."
 									r.operationID = ""
+									r.operationGroup = ""
 									r.pathPattern = "/api/mobile/v2/post/{board}/{num}"
 									r.args = args
 									r.count = 2
@@ -1290,6 +1309,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.name = UserPassloginPostOperation
 								r.summary = "Авторизация пасскода."
 								r.operationID = ""
+								r.operationGroup = ""
 								r.pathPattern = "/user/passlogin"
 								r.args = args
 								r.count = 0
@@ -1314,6 +1334,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.name = UserPostingPostOperation
 								r.summary = "Создание нового поста или треда."
 								r.operationID = ""
+								r.operationGroup = ""
 								r.pathPattern = "/user/posting"
 								r.args = args
 								r.count = 0
@@ -1340,6 +1361,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							r.name = UserReportPostOperation
 							r.summary = "Отправка жалобы."
 							r.operationID = ""
+							r.operationGroup = ""
 							r.pathPattern = "/user/report"
 							r.args = args
 							r.count = 0
