@@ -3,9 +3,9 @@ package gen
 import "github.com/ogen-go/ogen/gen/ir"
 
 const (
-	prefixOpt   = "Opt"
-	prefixNil   = "Nil"
-	fieldValue  = "Value"
+	prefixOpt  = "Opt"
+	prefixNil  = "Nil"
+	fieldValue = "Value"
 )
 
 // collectEqualitySpecs identifies types that require Equal() and Hash() methods
