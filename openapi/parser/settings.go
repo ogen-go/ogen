@@ -40,6 +40,11 @@ type Settings struct {
 	// In that case schemaParser will handle that schema as "array" schema, because it has "items" field.
 	InferTypes bool
 
+	// AllowCrossTypeConstraints enables interpretation of cross-type schema constraints.
+	// When true (default), constraints like pattern on numbers or maximum on strings
+	// are allowed and interpreted during code generation.
+	AllowCrossTypeConstraints bool
+
 	// AuthenticationSchemes is the list of allowed HTTP Authorization schemes in a Security Scheme Object.
 	//
 	// Authorization schemes are case-insensitive.

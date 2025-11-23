@@ -1,6 +1,7 @@
 package validate
 
 import (
+	"fmt"
 	"unicode"
 
 	"github.com/go-faster/errors"
@@ -17,6 +18,12 @@ type String struct {
 	Email        bool
 	Regex        ogenregex.Regexp
 	Hostname     bool
+
+	// Numeric constraints for strings representing numbers
+	MinNumeric    float64
+	MinNumericSet bool
+	MaxNumeric    float64
+	MaxNumericSet bool
 }
 
 // SetMaxLength sets maximum string length (in Unicode code points).
@@ -31,9 +38,21 @@ func (t *String) SetMinLength(v int) {
 	t.MinLength = v
 }
 
+// SetMaximumNumeric sets maximum numeric value for numeric strings.
+func (t *String) SetMaximumNumeric(v float64) {
+	t.MaxNumericSet = true
+	t.MaxNumeric = v
+}
+
+// SetMinimumNumeric sets minimum numeric value for numeric strings.
+func (t *String) SetMinimumNumeric(v float64) {
+	t.MinNumericSet = true
+	t.MinNumeric = v
+}
+
 // Set reports whether any validations are set.
 func (t String) Set() bool {
-	return t.MaxLengthSet || t.MinLengthSet || t.Email || t.Regex != nil || t.Hostname
+	return t.MaxLengthSet || t.MinLengthSet || t.Email || t.Regex != nil || t.Hostname || t.MinNumericSet || t.MaxNumericSet
 }
 
 func (t String) checkHostname(v string) error {
@@ -128,6 +147,28 @@ func (t String) Validate(v string) error {
 				Pattern: r,
 			}
 		}
+	}
+	// Validate numeric constraints on string values
+	if t.MinNumericSet || t.MaxNumericSet {
+		if err := t.validateNumeric(v); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+func (t String) validateNumeric(v string) error {
+	// Parse string as float64
+	var val float64
+	if _, err := fmt.Sscanf(v, "%f", &val); err != nil {
+		return errors.Wrap(err, "parse as number")
+	}
+
+	if t.MinNumericSet && val < t.MinNumeric {
+		return errors.Errorf("value %f less than minimum %f", val, t.MinNumeric)
+	}
+	if t.MaxNumericSet && val > t.MaxNumeric {
+		return errors.Errorf("value %f greater than maximum %f", val, t.MaxNumeric)
 	}
 	return nil
 }

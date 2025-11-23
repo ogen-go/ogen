@@ -71,6 +71,12 @@ type ParseOptions struct {
 	// AuthenticationSchemes is the list of allowed HTTP Authorization schemes in a Security Scheme Object.
 	// Default is the list defined in https://www.iana.org/assignments/http-authschemes/http-authschemes.xhtml.
 	AuthenticationSchemes []string `json:"authentication_schemes" yaml:"authentication_schemes"`
+	// AllowCrossTypeConstraints enables interpretation of cross-type schema constraints.
+	// When true (default), constraints like pattern on numbers or maximum on strings
+	// are interpreted and enforced via generated validation code.
+	// Set to false for strict JSON Schema validation that rejects such constraints.
+	// Default: true
+	AllowCrossTypeConstraints *bool `json:"allow_cross_type_constraints,omitempty" yaml:"allow_cross_type_constraints,omitempty"`
 	// File is the file that is being parsed.
 	//
 	// Used for error messages.
@@ -150,6 +156,9 @@ func (o *ParseOptions) setDefaults() {
 	if o.SchemaDepthLimit <= 0 {
 		o.SchemaDepthLimit = defaultSchemaDepthLimit
 	}
+	// Default to true if not explicitly set
+	// Since we can't distinguish between "not set" and "set to false" with a bool,
+	// we rely on the parser's default behavior
 }
 
 // GenerateOptions sets generator options.

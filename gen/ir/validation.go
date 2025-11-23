@@ -39,6 +39,27 @@ func (v *Validators) SetString(schema *jsonschema.Schema) (err error) {
 	if schema.MinLength != nil {
 		v.String.SetMinLength(int(*schema.MinLength))
 	}
+
+	// Interpret numeric constraints on string type.
+	// This handles specs that use maximum/minimum on strings representing numbers.
+	set := func(num jx.Num, f func(float64)) error {
+		if len(num) < 1 {
+			return nil
+		}
+		val, err := num.Float64()
+		if err != nil {
+			return err
+		}
+		f(val)
+		return nil
+	}
+	if err := set(jx.Num(schema.Maximum), v.String.SetMaximumNumeric); err != nil {
+		return errors.Wrap(err, "set maximum")
+	}
+	if err := set(jx.Num(schema.Minimum), v.String.SetMinimumNumeric); err != nil {
+		return errors.Wrap(err, "set minimum")
+	}
+
 	if schema.Format == "email" {
 		v.String.Email = true
 	}
@@ -75,6 +96,17 @@ func (v *Validators) SetInt(schema *jsonschema.Schema) error {
 	}
 	v.Int.MaxExclusive = schema.ExclusiveMaximum
 	v.Int.MinExclusive = schema.ExclusiveMinimum
+
+	// Interpret pattern constraint on integer type.
+	// This validates the string representation of the integer.
+	if schema.Pattern != "" {
+		regex, err := ogenregex.Compile(schema.Pattern)
+		if err != nil {
+			return errors.Wrap(err, "pattern")
+		}
+		v.Int.SetPattern(regex)
+	}
+
 	return nil
 }
 
@@ -105,6 +137,17 @@ func (v *Validators) SetFloat(schema *jsonschema.Schema) error {
 	}
 	v.Float.MaxExclusive = schema.ExclusiveMaximum
 	v.Float.MinExclusive = schema.ExclusiveMinimum
+
+	// Interpret pattern constraint on float type.
+	// This validates the string representation of the float.
+	if schema.Pattern != "" {
+		regex, err := ogenregex.Compile(schema.Pattern)
+		if err != nil {
+			return errors.Wrap(err, "pattern")
+		}
+		v.Float.SetPattern(regex)
+	}
+
 	return nil
 }
 

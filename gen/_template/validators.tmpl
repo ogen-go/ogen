@@ -104,6 +104,10 @@
 			{{- else }}
 			Regex:          nil,
 			{{- end }}
+			MinNumeric:     {{ $v.MinNumeric }},
+			MinNumericSet:  {{ $v.MinNumericSet }},
+			MaxNumeric:     {{ $v.MaxNumeric }},
+			MaxNumericSet:  {{ $v.MaxNumericSet }},
 		}).Validate(string({{ $.Var }})); err != nil {
 			return errors.Wrap(err, "string")
 		}
@@ -121,6 +125,11 @@
 			MaxExclusive: {{ $v.MaxExclusive }},
 			MultipleOfSet:{{ $v.MultipleOfSet }},
 			MultipleOf:   {{ $v.MultipleOf }},
+			{{- if $v.Pattern }}
+			Pattern:      regexMap[{{ quote $v.Pattern }}],
+			{{- else }}
+			Pattern:      nil,
+			{{- end }}
 		}).Validate(int64({{ $.Var }})); err != nil {
 			return errors.Wrap(err, "int")
 		}
@@ -141,6 +150,11 @@
 			MultipleOf: ratMap[{{ quote $v.MultipleOf.RatString }}],
 			{{- else }}
 			MultipleOf: nil,
+			{{- end }}
+			{{- if $v.Pattern }}
+			Pattern:      regexMap[{{ quote $v.Pattern }}],
+			{{- else }}
+			Pattern:      nil,
 			{{- end }}
 		{{ end }} }).Validate{{- if $t.IsStringifiedFloat -}}Stringified{{- end }}(float64({{ $.Var }})); err != nil {
 			return errors.Wrap(err, "float")
