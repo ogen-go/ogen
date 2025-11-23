@@ -175,6 +175,14 @@ type GenerateOptions struct {
 	ConvenientErrors ConvenientErrors `json:"convenient_errors" yaml:"convenient_errors"`
 	// ContentTypeAliases contains content type aliases.
 	ContentTypeAliases ContentTypeAliases `json:"content_type_aliases" yaml:"content_type_aliases"`
+	// WildcardContentTypeDefault specifies the default encoding to use for wildcard
+	// content types (*/* or application/*) when the schema is not binary.
+	//
+	// Common values: "application/json", "text/plain"
+	//
+	// If empty, wildcard content types are treated as unsupported and will cause
+	// an error unless explicitly mapped via ContentTypeAliases.
+	WildcardContentTypeDefault ir.Encoding `json:"wildcard_content_type_default" yaml:"wildcard_content_type_default"`
 }
 
 // ConvenientErrors is an option type to control `Convenient Errors` feature.

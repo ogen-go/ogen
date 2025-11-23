@@ -37,7 +37,8 @@ func testGenerate(t *testing.T, dir, filename string, data []byte, aliases ctAli
 			NotImplementedHook: func(name string, err error) {
 				notImplemented[name] = struct{}{}
 			},
-			ContentTypeAliases: aliases,
+			ContentTypeAliases:         aliases,
+			WildcardContentTypeDefault: ir.EncodingJSON,
 		},
 		Logger: log,
 	}
@@ -172,17 +173,13 @@ func TestGenerate(t *testing.T) {
 				"sum type parameter",
 				"array defaults",
 			},
-			"manga.json":            {},
-			"telegram_bot_api.json": {},
-			"gotd_bot_api.json":     {},
-			"k8s.json": {
-				"unsupported content types",
-			},
-			"petstore-expanded.yml": {},
-			"problemjson.yml":       {},
-			"redoc/discriminator.json": {
-				"unsupported content types",
-			},
+			"manga.json":               {},
+			"telegram_bot_api.json":    {},
+			"gotd_bot_api.json":        {},
+			"k8s.json":                 {},
+			"petstore-expanded.yml":    {},
+			"problemjson.yml":          {},
+			"redoc/discriminator.json": {},
 		}))
 }
 
