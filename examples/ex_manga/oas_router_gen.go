@@ -319,12 +319,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 // Route is route object.
 type Route struct {
-	name        string
-	summary     string
-	operationID string
-	pathPattern string
-	count       int
-	args        [3]string
+	name           string
+	summary        string
+	operationID    string
+	operationGroup string
+	pathPattern    string
+	count          int
+	args           [3]string
 }
 
 // Name returns ogen operation name.
@@ -342,6 +343,11 @@ func (r Route) Summary() string {
 // OperationID returns OpenAPI operationId.
 func (r Route) OperationID() string {
 	return r.operationID
+}
+
+// OperationGroup returns the x-ogen-operation-group value.
+func (r Route) OperationGroup() string {
+	return r.operationGroup
 }
 
 // PathPattern returns OpenAPI path.
@@ -443,6 +449,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.name = SearchOperation
 								r.summary = "Search for comics"
 								r.operationID = "search"
+								r.operationGroup = ""
 								r.pathPattern = "/api/galleries/search"
 								r.args = args
 								r.count = 0
@@ -467,6 +474,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.name = SearchByTagIDOperation
 								r.summary = "Search for comics by tag ID"
 								r.operationID = "searchByTagID"
+								r.operationGroup = ""
 								r.pathPattern = "/api/galleries/tagged"
 								r.args = args
 								r.count = 0
@@ -502,6 +510,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							r.name = GetBookOperation
 							r.summary = "Gets metadata of book"
 							r.operationID = "getBook"
+							r.operationGroup = ""
 							r.pathPattern = "/api/gallery/{book_id}"
 							r.args = args
 							r.count = 1
@@ -570,6 +579,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.name = GetPageCoverImageOperation
 								r.summary = "Gets page cover"
 								r.operationID = "getPageCoverImage"
+								r.operationGroup = ""
 								r.pathPattern = "/galleries/{media_id}/cover.{format}"
 								r.args = args
 								r.count = 2
@@ -618,6 +628,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.name = GetPageImageOperation
 								r.summary = "Gets page"
 								r.operationID = "getPageImage"
+								r.operationGroup = ""
 								r.pathPattern = "/galleries/{media_id}/{page}.{format}"
 								r.args = args
 								r.count = 3
@@ -651,6 +662,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.name = GetPageThumbnailImageOperation
 								r.summary = "Gets page thumbnail"
 								r.operationID = "getPageThumbnailImage"
+								r.operationGroup = ""
 								r.pathPattern = "/galleries/{media_id}/{page}t.{format}"
 								r.args = args
 								r.count = 3

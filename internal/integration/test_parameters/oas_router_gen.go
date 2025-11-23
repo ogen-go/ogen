@@ -393,12 +393,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 // Route is route object.
 type Route struct {
-	name        string
-	summary     string
-	operationID string
-	pathPattern string
-	count       int
-	args        [1]string
+	name           string
+	summary        string
+	operationID    string
+	operationGroup string
+	pathPattern    string
+	count          int
+	args           [1]string
 }
 
 // Name returns ogen operation name.
@@ -416,6 +417,11 @@ func (r Route) Summary() string {
 // OperationID returns OpenAPI operationId.
 func (r Route) OperationID() string {
 	return r.operationID
+}
+
+// OperationGroup returns the x-ogen-operation-group value.
+func (r Route) OperationGroup() string {
+	return r.operationGroup
 }
 
 // PathPattern returns OpenAPI path.
@@ -505,6 +511,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							r.name = ComplicatedParameterNameGetOperation
 							r.summary = ""
 							r.operationID = ""
+							r.operationGroup = ""
 							r.pathPattern = "/complicatedParameterName"
 							r.args = args
 							r.count = 0
@@ -538,6 +545,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							r.name = ContentParametersOperation
 							r.summary = ""
 							r.operationID = "contentParameters"
+							r.operationGroup = ""
 							r.pathPattern = "/contentParameters/{path}"
 							r.args = args
 							r.count = 1
@@ -562,6 +570,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							r.name = CookieParameterOperation
 							r.summary = ""
 							r.operationID = "cookieParameter"
+							r.operationGroup = ""
 							r.pathPattern = "/cookieParameter"
 							r.args = args
 							r.count = 0
@@ -588,6 +597,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						r.name = HeaderParameterOperation
 						r.summary = ""
 						r.operationID = "headerParameter"
+						r.operationGroup = ""
 						r.pathPattern = "/headerParameter"
 						r.args = args
 						r.count = 0
@@ -636,6 +646,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.name = ObjectCookieParameterOperation
 								r.summary = ""
 								r.operationID = "objectCookieParameter"
+								r.operationGroup = ""
 								r.pathPattern = "/objectCookieParameter"
 								r.args = args
 								r.count = 0
@@ -660,6 +671,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.name = ObjectQueryParameterOperation
 								r.summary = ""
 								r.operationID = "objectQueryParameter"
+								r.operationGroup = ""
 								r.pathPattern = "/objectQueryParameter"
 								r.args = args
 								r.count = 0
@@ -698,6 +710,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.name = OptionalArrayParameterOperation
 								r.summary = ""
 								r.operationID = "optionalArrayParameter"
+								r.operationGroup = ""
 								r.pathPattern = "/optionalArrayParameter"
 								r.args = args
 								r.count = 0
@@ -722,6 +735,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.name = OptionalParametersOperation
 								r.summary = ""
 								r.operationID = "optionalParameters"
+								r.operationGroup = ""
 								r.pathPattern = "/optionalParameters"
 								r.args = args
 								r.count = 0
@@ -759,6 +773,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						r.name = PathParameterOperation
 						r.summary = ""
 						r.operationID = "pathParameter"
+						r.operationGroup = ""
 						r.pathPattern = "/pathParameter/{value}"
 						r.args = args
 						r.count = 1
@@ -804,6 +819,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							r.name = SameNameOperation
 							r.summary = "parameters with different location, but with the same name"
 							r.operationID = "sameName"
+							r.operationGroup = ""
 							r.pathPattern = "/same_name/{param}"
 							r.args = args
 							r.count = 1
@@ -828,6 +844,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							r.name = SimilarNamesOperation
 							r.summary = "parameters with different location, but with similar names"
 							r.operationID = "similarNames"
+							r.operationGroup = ""
 							r.pathPattern = "/similarNames"
 							r.args = args
 							r.count = 0

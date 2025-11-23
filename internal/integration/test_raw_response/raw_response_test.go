@@ -1,6 +1,7 @@
 package api
 
 import (
+	"cmp"
 	"context"
 	"io"
 	"net/http"
@@ -27,16 +28,20 @@ func (h *testHandler) GetNormalData(ctx context.Context) (*GetNormalDataOK, erro
 func (h *testHandler) GetRawData(ctx context.Context, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	_, err := w.Write([]byte(`{"data": "raw response from server"}`))
-	return err
+	rc := http.NewResponseController(w)
+	_, writeErr := w.Write([]byte(`{"data": "raw response from server"}`))
+	flushErr := rc.Flush()
+	return cmp.Or(writeErr, flushErr)
 }
 
 // Mixed handler - writes raw response for octet-stream content type
 func (h *testHandler) GetMixedData(ctx context.Context, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/octet-stream")
 	w.WriteHeader(200)
-	_, err := w.Write([]byte("binary data from server"))
-	return err
+	rc := http.NewResponseController(w)
+	_, writeErr := w.Write([]byte("binary data from server"))
+	flushErr := rc.Flush()
+	return cmp.Or(writeErr, flushErr)
 }
 
 func TestRawResponse(t *testing.T) {

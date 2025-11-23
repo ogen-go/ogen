@@ -12934,12 +12934,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 // Route is route object.
 type Route struct {
-	name        string
-	summary     string
-	operationID string
-	pathPattern string
-	count       int
-	args        [3]string
+	name           string
+	summary        string
+	operationID    string
+	operationGroup string
+	pathPattern    string
+	count          int
+	args           [3]string
 }
 
 // Name returns ogen operation name.
@@ -12957,6 +12958,11 @@ func (r Route) Summary() string {
 // OperationID returns OpenAPI operationId.
 func (r Route) OperationID() string {
 	return r.operationID
+}
+
+// OperationGroup returns the x-ogen-operation-group value.
+func (r Route) OperationGroup() string {
+	return r.operationGroup
 }
 
 // PathPattern returns OpenAPI path.
@@ -13034,6 +13040,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						r.name = GetServiceAccountIssuerOpenIDConfigurationOperation
 						r.summary = ""
 						r.operationID = "getServiceAccountIssuerOpenIDConfiguration"
+						r.operationGroup = ""
 						r.pathPattern = "/.well-known/openid-configuration/"
 						r.args = args
 						r.count = 0
@@ -13069,6 +13076,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							r.name = GetCoreAPIVersionsOperation
 							r.summary = ""
 							r.operationID = "getCoreAPIVersions"
+							r.operationGroup = ""
 							r.pathPattern = "/api/"
 							r.args = args
 							r.count = 0
@@ -13092,6 +13100,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.name = GetCoreV1APIResourcesOperation
 								r.summary = ""
 								r.operationID = "getCoreV1APIResources"
+								r.operationGroup = ""
 								r.pathPattern = "/api/v1/"
 								r.args = args
 								r.count = 0
@@ -13127,6 +13136,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										r.name = ListCoreV1ComponentStatusOperation
 										r.summary = ""
 										r.operationID = "listCoreV1ComponentStatus"
+										r.operationGroup = ""
 										r.pathPattern = "/api/v1/componentstatuses"
 										r.args = args
 										r.count = 0
@@ -13160,6 +13170,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = ReadCoreV1ComponentStatusOperation
 											r.summary = ""
 											r.operationID = "readCoreV1ComponentStatus"
+											r.operationGroup = ""
 											r.pathPattern = "/api/v1/componentstatuses/{name}"
 											r.args = args
 											r.count = 1
@@ -13186,6 +13197,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										r.name = ListCoreV1ConfigMapForAllNamespacesOperation
 										r.summary = ""
 										r.operationID = "listCoreV1ConfigMapForAllNamespaces"
+										r.operationGroup = ""
 										r.pathPattern = "/api/v1/configmaps"
 										r.args = args
 										r.count = 0
@@ -13224,6 +13236,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										r.name = ListCoreV1EndpointsForAllNamespacesOperation
 										r.summary = ""
 										r.operationID = "listCoreV1EndpointsForAllNamespaces"
+										r.operationGroup = ""
 										r.pathPattern = "/api/v1/endpoints"
 										r.args = args
 										r.count = 0
@@ -13248,6 +13261,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										r.name = ListCoreV1EventForAllNamespacesOperation
 										r.summary = ""
 										r.operationID = "listCoreV1EventForAllNamespaces"
+										r.operationGroup = ""
 										r.pathPattern = "/api/v1/events"
 										r.args = args
 										r.count = 0
@@ -13274,6 +13288,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									r.name = ListCoreV1LimitRangeForAllNamespacesOperation
 									r.summary = ""
 									r.operationID = "listCoreV1LimitRangeForAllNamespaces"
+									r.operationGroup = ""
 									r.pathPattern = "/api/v1/limitranges"
 									r.args = args
 									r.count = 0
@@ -13309,6 +13324,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										r.name = ListCoreV1NamespaceOperation
 										r.summary = ""
 										r.operationID = "listCoreV1Namespace"
+										r.operationGroup = ""
 										r.pathPattern = "/api/v1/namespaces"
 										r.args = args
 										r.count = 0
@@ -13341,6 +13357,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = ReadCoreV1NamespaceOperation
 											r.summary = ""
 											r.operationID = "readCoreV1Namespace"
+											r.operationGroup = ""
 											r.pathPattern = "/api/v1/namespaces/{name}"
 											r.args = args
 											r.count = 1
@@ -13376,6 +13393,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = ListCoreV1NamespacedConfigMapOperation
 													r.summary = ""
 													r.operationID = "listCoreV1NamespacedConfigMap"
+													r.operationGroup = ""
 													r.pathPattern = "/api/v1/namespaces/{namespace}/configmaps"
 													r.args = args
 													r.count = 1
@@ -13409,6 +13427,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = ReadCoreV1NamespacedConfigMapOperation
 														r.summary = ""
 														r.operationID = "readCoreV1NamespacedConfigMap"
+														r.operationGroup = ""
 														r.pathPattern = "/api/v1/namespaces/{namespace}/configmaps/{name}"
 														r.args = args
 														r.count = 2
@@ -13417,6 +13436,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = PatchCoreV1NamespacedConfigMapOperation
 														r.summary = ""
 														r.operationID = "patchCoreV1NamespacedConfigMap"
+														r.operationGroup = ""
 														r.pathPattern = "/api/v1/namespaces/{namespace}/configmaps/{name}"
 														r.args = args
 														r.count = 2
@@ -13454,6 +13474,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = ListCoreV1NamespacedEndpointsOperation
 														r.summary = ""
 														r.operationID = "listCoreV1NamespacedEndpoints"
+														r.operationGroup = ""
 														r.pathPattern = "/api/v1/namespaces/{namespace}/endpoints"
 														r.args = args
 														r.count = 1
@@ -13487,6 +13508,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = ReadCoreV1NamespacedEndpointsOperation
 															r.summary = ""
 															r.operationID = "readCoreV1NamespacedEndpoints"
+															r.operationGroup = ""
 															r.pathPattern = "/api/v1/namespaces/{namespace}/endpoints/{name}"
 															r.args = args
 															r.count = 2
@@ -13512,6 +13534,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = ListCoreV1NamespacedEventOperation
 														r.summary = ""
 														r.operationID = "listCoreV1NamespacedEvent"
+														r.operationGroup = ""
 														r.pathPattern = "/api/v1/namespaces/{namespace}/events"
 														r.args = args
 														r.count = 1
@@ -13545,6 +13568,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = ReadCoreV1NamespacedEventOperation
 															r.summary = ""
 															r.operationID = "readCoreV1NamespacedEvent"
+															r.operationGroup = ""
 															r.pathPattern = "/api/v1/namespaces/{namespace}/events/{name}"
 															r.args = args
 															r.count = 2
@@ -13572,6 +13596,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = ListCoreV1NamespacedLimitRangeOperation
 													r.summary = ""
 													r.operationID = "listCoreV1NamespacedLimitRange"
+													r.operationGroup = ""
 													r.pathPattern = "/api/v1/namespaces/{namespace}/limitranges"
 													r.args = args
 													r.count = 1
@@ -13605,6 +13630,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = ReadCoreV1NamespacedLimitRangeOperation
 														r.summary = ""
 														r.operationID = "readCoreV1NamespacedLimitRange"
+														r.operationGroup = ""
 														r.pathPattern = "/api/v1/namespaces/{namespace}/limitranges/{name}"
 														r.args = args
 														r.count = 2
@@ -13642,6 +13668,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = ListCoreV1NamespacedPersistentVolumeClaimOperation
 														r.summary = ""
 														r.operationID = "listCoreV1NamespacedPersistentVolumeClaim"
+														r.operationGroup = ""
 														r.pathPattern = "/api/v1/namespaces/{namespace}/persistentvolumeclaims"
 														r.args = args
 														r.count = 1
@@ -13674,6 +13701,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = ReadCoreV1NamespacedPersistentVolumeClaimOperation
 															r.summary = ""
 															r.operationID = "readCoreV1NamespacedPersistentVolumeClaim"
+															r.operationGroup = ""
 															r.pathPattern = "/api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}"
 															r.args = args
 															r.count = 2
@@ -13698,6 +13726,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = ReadCoreV1NamespacedPersistentVolumeClaimStatusOperation
 																r.summary = ""
 																r.operationID = "readCoreV1NamespacedPersistentVolumeClaimStatus"
+																r.operationGroup = ""
 																r.pathPattern = "/api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}/status"
 																r.args = args
 																r.count = 2
@@ -13737,6 +13766,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = ListCoreV1NamespacedPodOperation
 															r.summary = ""
 															r.operationID = "listCoreV1NamespacedPod"
+															r.operationGroup = ""
 															r.pathPattern = "/api/v1/namespaces/{namespace}/pods"
 															r.args = args
 															r.count = 1
@@ -13769,6 +13799,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = ReadCoreV1NamespacedPodOperation
 																r.summary = ""
 																r.operationID = "readCoreV1NamespacedPod"
+																r.operationGroup = ""
 																r.pathPattern = "/api/v1/namespaces/{namespace}/pods/{name}"
 																r.args = args
 																r.count = 2
@@ -13805,6 +13836,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																		r.name = ConnectCoreV1GetNamespacedPodAttachOperation
 																		r.summary = ""
 																		r.operationID = "connectCoreV1GetNamespacedPodAttach"
+																		r.operationGroup = ""
 																		r.pathPattern = "/api/v1/namespaces/{namespace}/pods/{name}/attach"
 																		r.args = args
 																		r.count = 2
@@ -13813,6 +13845,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																		r.name = ConnectCoreV1PostNamespacedPodAttachOperation
 																		r.summary = ""
 																		r.operationID = "connectCoreV1PostNamespacedPodAttach"
+																		r.operationGroup = ""
 																		r.pathPattern = "/api/v1/namespaces/{namespace}/pods/{name}/attach"
 																		r.args = args
 																		r.count = 2
@@ -13849,6 +13882,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																			r.name = ReadCoreV1NamespacedPodEphemeralcontainersOperation
 																			r.summary = ""
 																			r.operationID = "readCoreV1NamespacedPodEphemeralcontainers"
+																			r.operationGroup = ""
 																			r.pathPattern = "/api/v1/namespaces/{namespace}/pods/{name}/ephemeralcontainers"
 																			r.args = args
 																			r.count = 2
@@ -13873,6 +13907,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																			r.name = ConnectCoreV1GetNamespacedPodExecOperation
 																			r.summary = ""
 																			r.operationID = "connectCoreV1GetNamespacedPodExec"
+																			r.operationGroup = ""
 																			r.pathPattern = "/api/v1/namespaces/{namespace}/pods/{name}/exec"
 																			r.args = args
 																			r.count = 2
@@ -13881,6 +13916,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																			r.name = ConnectCoreV1PostNamespacedPodExecOperation
 																			r.summary = ""
 																			r.operationID = "connectCoreV1PostNamespacedPodExec"
+																			r.operationGroup = ""
 																			r.pathPattern = "/api/v1/namespaces/{namespace}/pods/{name}/exec"
 																			r.args = args
 																			r.count = 2
@@ -13907,6 +13943,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																		r.name = ReadCoreV1NamespacedPodLogOperation
 																		r.summary = ""
 																		r.operationID = "readCoreV1NamespacedPodLog"
+																		r.operationGroup = ""
 																		r.pathPattern = "/api/v1/namespaces/{namespace}/pods/{name}/log"
 																		r.args = args
 																		r.count = 2
@@ -13943,6 +13980,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																			r.name = ConnectCoreV1GetNamespacedPodPortforwardOperation
 																			r.summary = ""
 																			r.operationID = "connectCoreV1GetNamespacedPodPortforward"
+																			r.operationGroup = ""
 																			r.pathPattern = "/api/v1/namespaces/{namespace}/pods/{name}/portforward"
 																			r.args = args
 																			r.count = 2
@@ -13951,6 +13989,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																			r.name = ConnectCoreV1PostNamespacedPodPortforwardOperation
 																			r.summary = ""
 																			r.operationID = "connectCoreV1PostNamespacedPodPortforward"
+																			r.operationGroup = ""
 																			r.pathPattern = "/api/v1/namespaces/{namespace}/pods/{name}/portforward"
 																			r.args = args
 																			r.count = 2
@@ -13974,6 +14013,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																			r.name = ConnectCoreV1DeleteNamespacedPodProxyOperation
 																			r.summary = ""
 																			r.operationID = "connectCoreV1DeleteNamespacedPodProxy"
+																			r.operationGroup = ""
 																			r.pathPattern = "/api/v1/namespaces/{namespace}/pods/{name}/proxy"
 																			r.args = args
 																			r.count = 2
@@ -13982,6 +14022,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																			r.name = ConnectCoreV1GetNamespacedPodProxyOperation
 																			r.summary = ""
 																			r.operationID = "connectCoreV1GetNamespacedPodProxy"
+																			r.operationGroup = ""
 																			r.pathPattern = "/api/v1/namespaces/{namespace}/pods/{name}/proxy"
 																			r.args = args
 																			r.count = 2
@@ -13990,6 +14031,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																			r.name = ConnectCoreV1HeadNamespacedPodProxyOperation
 																			r.summary = ""
 																			r.operationID = "connectCoreV1HeadNamespacedPodProxy"
+																			r.operationGroup = ""
 																			r.pathPattern = "/api/v1/namespaces/{namespace}/pods/{name}/proxy"
 																			r.args = args
 																			r.count = 2
@@ -13998,6 +14040,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																			r.name = ConnectCoreV1OptionsNamespacedPodProxyOperation
 																			r.summary = ""
 																			r.operationID = "connectCoreV1OptionsNamespacedPodProxy"
+																			r.operationGroup = ""
 																			r.pathPattern = "/api/v1/namespaces/{namespace}/pods/{name}/proxy"
 																			r.args = args
 																			r.count = 2
@@ -14006,6 +14049,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																			r.name = ConnectCoreV1PatchNamespacedPodProxyOperation
 																			r.summary = ""
 																			r.operationID = "connectCoreV1PatchNamespacedPodProxy"
+																			r.operationGroup = ""
 																			r.pathPattern = "/api/v1/namespaces/{namespace}/pods/{name}/proxy"
 																			r.args = args
 																			r.count = 2
@@ -14014,6 +14058,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																			r.name = ConnectCoreV1PostNamespacedPodProxyOperation
 																			r.summary = ""
 																			r.operationID = "connectCoreV1PostNamespacedPodProxy"
+																			r.operationGroup = ""
 																			r.pathPattern = "/api/v1/namespaces/{namespace}/pods/{name}/proxy"
 																			r.args = args
 																			r.count = 2
@@ -14022,6 +14067,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																			r.name = ConnectCoreV1PutNamespacedPodProxyOperation
 																			r.summary = ""
 																			r.operationID = "connectCoreV1PutNamespacedPodProxy"
+																			r.operationGroup = ""
 																			r.pathPattern = "/api/v1/namespaces/{namespace}/pods/{name}/proxy"
 																			r.args = args
 																			r.count = 2
@@ -14055,6 +14101,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																				r.name = ConnectCoreV1DeleteNamespacedPodProxyWithPathOperation
 																				r.summary = ""
 																				r.operationID = "connectCoreV1DeleteNamespacedPodProxyWithPath"
+																				r.operationGroup = ""
 																				r.pathPattern = "/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}"
 																				r.args = args
 																				r.count = 3
@@ -14063,6 +14110,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																				r.name = ConnectCoreV1GetNamespacedPodProxyWithPathOperation
 																				r.summary = ""
 																				r.operationID = "connectCoreV1GetNamespacedPodProxyWithPath"
+																				r.operationGroup = ""
 																				r.pathPattern = "/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}"
 																				r.args = args
 																				r.count = 3
@@ -14071,6 +14119,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																				r.name = ConnectCoreV1HeadNamespacedPodProxyWithPathOperation
 																				r.summary = ""
 																				r.operationID = "connectCoreV1HeadNamespacedPodProxyWithPath"
+																				r.operationGroup = ""
 																				r.pathPattern = "/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}"
 																				r.args = args
 																				r.count = 3
@@ -14079,6 +14128,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																				r.name = ConnectCoreV1OptionsNamespacedPodProxyWithPathOperation
 																				r.summary = ""
 																				r.operationID = "connectCoreV1OptionsNamespacedPodProxyWithPath"
+																				r.operationGroup = ""
 																				r.pathPattern = "/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}"
 																				r.args = args
 																				r.count = 3
@@ -14087,6 +14137,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																				r.name = ConnectCoreV1PatchNamespacedPodProxyWithPathOperation
 																				r.summary = ""
 																				r.operationID = "connectCoreV1PatchNamespacedPodProxyWithPath"
+																				r.operationGroup = ""
 																				r.pathPattern = "/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}"
 																				r.args = args
 																				r.count = 3
@@ -14095,6 +14146,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																				r.name = ConnectCoreV1PostNamespacedPodProxyWithPathOperation
 																				r.summary = ""
 																				r.operationID = "connectCoreV1PostNamespacedPodProxyWithPath"
+																				r.operationGroup = ""
 																				r.pathPattern = "/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}"
 																				r.args = args
 																				r.count = 3
@@ -14103,6 +14155,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																				r.name = ConnectCoreV1PutNamespacedPodProxyWithPathOperation
 																				r.summary = ""
 																				r.operationID = "connectCoreV1PutNamespacedPodProxyWithPath"
+																				r.operationGroup = ""
 																				r.pathPattern = "/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}"
 																				r.args = args
 																				r.count = 3
@@ -14131,6 +14184,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																		r.name = ReadCoreV1NamespacedPodStatusOperation
 																		r.summary = ""
 																		r.operationID = "readCoreV1NamespacedPodStatus"
+																		r.operationGroup = ""
 																		r.pathPattern = "/api/v1/namespaces/{namespace}/pods/{name}/status"
 																		r.args = args
 																		r.count = 2
@@ -14160,6 +14214,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = ListCoreV1NamespacedPodTemplateOperation
 															r.summary = ""
 															r.operationID = "listCoreV1NamespacedPodTemplate"
+															r.operationGroup = ""
 															r.pathPattern = "/api/v1/namespaces/{namespace}/podtemplates"
 															r.args = args
 															r.count = 1
@@ -14193,6 +14248,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = ReadCoreV1NamespacedPodTemplateOperation
 																r.summary = ""
 																r.operationID = "readCoreV1NamespacedPodTemplate"
+																r.operationGroup = ""
 																r.pathPattern = "/api/v1/namespaces/{namespace}/podtemplates/{name}"
 																r.args = args
 																r.count = 2
@@ -14234,6 +14290,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = ListCoreV1NamespacedReplicationControllerOperation
 														r.summary = ""
 														r.operationID = "listCoreV1NamespacedReplicationController"
+														r.operationGroup = ""
 														r.pathPattern = "/api/v1/namespaces/{namespace}/replicationcontrollers"
 														r.args = args
 														r.count = 1
@@ -14266,6 +14323,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = ReadCoreV1NamespacedReplicationControllerOperation
 															r.summary = ""
 															r.operationID = "readCoreV1NamespacedReplicationController"
+															r.operationGroup = ""
 															r.pathPattern = "/api/v1/namespaces/{namespace}/replicationcontrollers/{name}"
 															r.args = args
 															r.count = 2
@@ -14302,6 +14360,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = ReadCoreV1NamespacedReplicationControllerScaleOperation
 																	r.summary = ""
 																	r.operationID = "readCoreV1NamespacedReplicationControllerScale"
+																	r.operationGroup = ""
 																	r.pathPattern = "/api/v1/namespaces/{namespace}/replicationcontrollers/{name}/scale"
 																	r.args = args
 																	r.count = 2
@@ -14326,6 +14385,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = ReadCoreV1NamespacedReplicationControllerStatusOperation
 																	r.summary = ""
 																	r.operationID = "readCoreV1NamespacedReplicationControllerStatus"
+																	r.operationGroup = ""
 																	r.pathPattern = "/api/v1/namespaces/{namespace}/replicationcontrollers/{name}/status"
 																	r.args = args
 																	r.count = 2
@@ -14355,6 +14415,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = ListCoreV1NamespacedResourceQuotaOperation
 														r.summary = ""
 														r.operationID = "listCoreV1NamespacedResourceQuota"
+														r.operationGroup = ""
 														r.pathPattern = "/api/v1/namespaces/{namespace}/resourcequotas"
 														r.args = args
 														r.count = 1
@@ -14387,6 +14448,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = ReadCoreV1NamespacedResourceQuotaOperation
 															r.summary = ""
 															r.operationID = "readCoreV1NamespacedResourceQuota"
+															r.operationGroup = ""
 															r.pathPattern = "/api/v1/namespaces/{namespace}/resourcequotas/{name}"
 															r.args = args
 															r.count = 2
@@ -14411,6 +14473,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = ReadCoreV1NamespacedResourceQuotaStatusOperation
 																r.summary = ""
 																r.operationID = "readCoreV1NamespacedResourceQuotaStatus"
+																r.operationGroup = ""
 																r.pathPattern = "/api/v1/namespaces/{namespace}/resourcequotas/{name}/status"
 																r.args = args
 																r.count = 2
@@ -14464,6 +14527,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = ListCoreV1NamespacedSecretOperation
 															r.summary = ""
 															r.operationID = "listCoreV1NamespacedSecret"
+															r.operationGroup = ""
 															r.pathPattern = "/api/v1/namespaces/{namespace}/secrets"
 															r.args = args
 															r.count = 1
@@ -14497,6 +14561,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = ReadCoreV1NamespacedSecretOperation
 																r.summary = ""
 																r.operationID = "readCoreV1NamespacedSecret"
+																r.operationGroup = ""
 																r.pathPattern = "/api/v1/namespaces/{namespace}/secrets/{name}"
 																r.args = args
 																r.count = 2
@@ -14534,6 +14599,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = ListCoreV1NamespacedServiceAccountOperation
 																r.summary = ""
 																r.operationID = "listCoreV1NamespacedServiceAccount"
+																r.operationGroup = ""
 																r.pathPattern = "/api/v1/namespaces/{namespace}/serviceaccounts"
 																r.args = args
 																r.count = 1
@@ -14567,6 +14633,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = ReadCoreV1NamespacedServiceAccountOperation
 																	r.summary = ""
 																	r.operationID = "readCoreV1NamespacedServiceAccount"
+																	r.operationGroup = ""
 																	r.pathPattern = "/api/v1/namespaces/{namespace}/serviceaccounts/{name}"
 																	r.args = args
 																	r.count = 2
@@ -14592,6 +14659,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = ListCoreV1NamespacedServiceOperation
 																r.summary = ""
 																r.operationID = "listCoreV1NamespacedService"
+																r.operationGroup = ""
 																r.pathPattern = "/api/v1/namespaces/{namespace}/services"
 																r.args = args
 																r.count = 1
@@ -14624,6 +14692,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = ReadCoreV1NamespacedServiceOperation
 																	r.summary = ""
 																	r.operationID = "readCoreV1NamespacedService"
+																	r.operationGroup = ""
 																	r.pathPattern = "/api/v1/namespaces/{namespace}/services/{name}"
 																	r.args = args
 																	r.count = 2
@@ -14659,6 +14728,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																			r.name = ConnectCoreV1DeleteNamespacedServiceProxyOperation
 																			r.summary = ""
 																			r.operationID = "connectCoreV1DeleteNamespacedServiceProxy"
+																			r.operationGroup = ""
 																			r.pathPattern = "/api/v1/namespaces/{namespace}/services/{name}/proxy"
 																			r.args = args
 																			r.count = 2
@@ -14667,6 +14737,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																			r.name = ConnectCoreV1GetNamespacedServiceProxyOperation
 																			r.summary = ""
 																			r.operationID = "connectCoreV1GetNamespacedServiceProxy"
+																			r.operationGroup = ""
 																			r.pathPattern = "/api/v1/namespaces/{namespace}/services/{name}/proxy"
 																			r.args = args
 																			r.count = 2
@@ -14675,6 +14746,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																			r.name = ConnectCoreV1HeadNamespacedServiceProxyOperation
 																			r.summary = ""
 																			r.operationID = "connectCoreV1HeadNamespacedServiceProxy"
+																			r.operationGroup = ""
 																			r.pathPattern = "/api/v1/namespaces/{namespace}/services/{name}/proxy"
 																			r.args = args
 																			r.count = 2
@@ -14683,6 +14755,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																			r.name = ConnectCoreV1OptionsNamespacedServiceProxyOperation
 																			r.summary = ""
 																			r.operationID = "connectCoreV1OptionsNamespacedServiceProxy"
+																			r.operationGroup = ""
 																			r.pathPattern = "/api/v1/namespaces/{namespace}/services/{name}/proxy"
 																			r.args = args
 																			r.count = 2
@@ -14691,6 +14764,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																			r.name = ConnectCoreV1PatchNamespacedServiceProxyOperation
 																			r.summary = ""
 																			r.operationID = "connectCoreV1PatchNamespacedServiceProxy"
+																			r.operationGroup = ""
 																			r.pathPattern = "/api/v1/namespaces/{namespace}/services/{name}/proxy"
 																			r.args = args
 																			r.count = 2
@@ -14699,6 +14773,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																			r.name = ConnectCoreV1PostNamespacedServiceProxyOperation
 																			r.summary = ""
 																			r.operationID = "connectCoreV1PostNamespacedServiceProxy"
+																			r.operationGroup = ""
 																			r.pathPattern = "/api/v1/namespaces/{namespace}/services/{name}/proxy"
 																			r.args = args
 																			r.count = 2
@@ -14707,6 +14782,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																			r.name = ConnectCoreV1PutNamespacedServiceProxyOperation
 																			r.summary = ""
 																			r.operationID = "connectCoreV1PutNamespacedServiceProxy"
+																			r.operationGroup = ""
 																			r.pathPattern = "/api/v1/namespaces/{namespace}/services/{name}/proxy"
 																			r.args = args
 																			r.count = 2
@@ -14740,6 +14816,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																				r.name = ConnectCoreV1DeleteNamespacedServiceProxyWithPathOperation
 																				r.summary = ""
 																				r.operationID = "connectCoreV1DeleteNamespacedServiceProxyWithPath"
+																				r.operationGroup = ""
 																				r.pathPattern = "/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}"
 																				r.args = args
 																				r.count = 3
@@ -14748,6 +14825,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																				r.name = ConnectCoreV1GetNamespacedServiceProxyWithPathOperation
 																				r.summary = ""
 																				r.operationID = "connectCoreV1GetNamespacedServiceProxyWithPath"
+																				r.operationGroup = ""
 																				r.pathPattern = "/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}"
 																				r.args = args
 																				r.count = 3
@@ -14756,6 +14834,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																				r.name = ConnectCoreV1HeadNamespacedServiceProxyWithPathOperation
 																				r.summary = ""
 																				r.operationID = "connectCoreV1HeadNamespacedServiceProxyWithPath"
+																				r.operationGroup = ""
 																				r.pathPattern = "/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}"
 																				r.args = args
 																				r.count = 3
@@ -14764,6 +14843,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																				r.name = ConnectCoreV1OptionsNamespacedServiceProxyWithPathOperation
 																				r.summary = ""
 																				r.operationID = "connectCoreV1OptionsNamespacedServiceProxyWithPath"
+																				r.operationGroup = ""
 																				r.pathPattern = "/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}"
 																				r.args = args
 																				r.count = 3
@@ -14772,6 +14852,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																				r.name = ConnectCoreV1PatchNamespacedServiceProxyWithPathOperation
 																				r.summary = ""
 																				r.operationID = "connectCoreV1PatchNamespacedServiceProxyWithPath"
+																				r.operationGroup = ""
 																				r.pathPattern = "/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}"
 																				r.args = args
 																				r.count = 3
@@ -14780,6 +14861,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																				r.name = ConnectCoreV1PostNamespacedServiceProxyWithPathOperation
 																				r.summary = ""
 																				r.operationID = "connectCoreV1PostNamespacedServiceProxyWithPath"
+																				r.operationGroup = ""
 																				r.pathPattern = "/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}"
 																				r.args = args
 																				r.count = 3
@@ -14788,6 +14870,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																				r.name = ConnectCoreV1PutNamespacedServiceProxyWithPathOperation
 																				r.summary = ""
 																				r.operationID = "connectCoreV1PutNamespacedServiceProxyWithPath"
+																				r.operationGroup = ""
 																				r.pathPattern = "/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}"
 																				r.args = args
 																				r.count = 3
@@ -14814,6 +14897,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																			r.name = ReadCoreV1NamespacedServiceStatusOperation
 																			r.summary = ""
 																			r.operationID = "readCoreV1NamespacedServiceStatus"
+																			r.operationGroup = ""
 																			r.pathPattern = "/api/v1/namespaces/{namespace}/services/{name}/status"
 																			r.args = args
 																			r.count = 2
@@ -14848,6 +14932,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = ReadCoreV1NamespaceStatusOperation
 														r.summary = ""
 														r.operationID = "readCoreV1NamespaceStatus"
+														r.operationGroup = ""
 														r.pathPattern = "/api/v1/namespaces/{name}/status"
 														r.args = args
 														r.count = 1
@@ -14879,6 +14964,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										r.name = ListCoreV1NodeOperation
 										r.summary = ""
 										r.operationID = "listCoreV1Node"
+										r.operationGroup = ""
 										r.pathPattern = "/api/v1/nodes"
 										r.args = args
 										r.count = 0
@@ -14911,6 +14997,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = ReadCoreV1NodeOperation
 											r.summary = ""
 											r.operationID = "readCoreV1Node"
+											r.operationGroup = ""
 											r.pathPattern = "/api/v1/nodes/{name}"
 											r.args = args
 											r.count = 1
@@ -14946,6 +15033,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = ConnectCoreV1DeleteNodeProxyOperation
 													r.summary = ""
 													r.operationID = "connectCoreV1DeleteNodeProxy"
+													r.operationGroup = ""
 													r.pathPattern = "/api/v1/nodes/{name}/proxy"
 													r.args = args
 													r.count = 1
@@ -14954,6 +15042,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = ConnectCoreV1GetNodeProxyOperation
 													r.summary = ""
 													r.operationID = "connectCoreV1GetNodeProxy"
+													r.operationGroup = ""
 													r.pathPattern = "/api/v1/nodes/{name}/proxy"
 													r.args = args
 													r.count = 1
@@ -14962,6 +15051,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = ConnectCoreV1HeadNodeProxyOperation
 													r.summary = ""
 													r.operationID = "connectCoreV1HeadNodeProxy"
+													r.operationGroup = ""
 													r.pathPattern = "/api/v1/nodes/{name}/proxy"
 													r.args = args
 													r.count = 1
@@ -14970,6 +15060,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = ConnectCoreV1OptionsNodeProxyOperation
 													r.summary = ""
 													r.operationID = "connectCoreV1OptionsNodeProxy"
+													r.operationGroup = ""
 													r.pathPattern = "/api/v1/nodes/{name}/proxy"
 													r.args = args
 													r.count = 1
@@ -14978,6 +15069,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = ConnectCoreV1PatchNodeProxyOperation
 													r.summary = ""
 													r.operationID = "connectCoreV1PatchNodeProxy"
+													r.operationGroup = ""
 													r.pathPattern = "/api/v1/nodes/{name}/proxy"
 													r.args = args
 													r.count = 1
@@ -14986,6 +15078,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = ConnectCoreV1PostNodeProxyOperation
 													r.summary = ""
 													r.operationID = "connectCoreV1PostNodeProxy"
+													r.operationGroup = ""
 													r.pathPattern = "/api/v1/nodes/{name}/proxy"
 													r.args = args
 													r.count = 1
@@ -14994,6 +15087,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = ConnectCoreV1PutNodeProxyOperation
 													r.summary = ""
 													r.operationID = "connectCoreV1PutNodeProxy"
+													r.operationGroup = ""
 													r.pathPattern = "/api/v1/nodes/{name}/proxy"
 													r.args = args
 													r.count = 1
@@ -15027,6 +15121,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = ConnectCoreV1DeleteNodeProxyWithPathOperation
 														r.summary = ""
 														r.operationID = "connectCoreV1DeleteNodeProxyWithPath"
+														r.operationGroup = ""
 														r.pathPattern = "/api/v1/nodes/{name}/proxy/{path}"
 														r.args = args
 														r.count = 2
@@ -15035,6 +15130,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = ConnectCoreV1GetNodeProxyWithPathOperation
 														r.summary = ""
 														r.operationID = "connectCoreV1GetNodeProxyWithPath"
+														r.operationGroup = ""
 														r.pathPattern = "/api/v1/nodes/{name}/proxy/{path}"
 														r.args = args
 														r.count = 2
@@ -15043,6 +15139,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = ConnectCoreV1HeadNodeProxyWithPathOperation
 														r.summary = ""
 														r.operationID = "connectCoreV1HeadNodeProxyWithPath"
+														r.operationGroup = ""
 														r.pathPattern = "/api/v1/nodes/{name}/proxy/{path}"
 														r.args = args
 														r.count = 2
@@ -15051,6 +15148,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = ConnectCoreV1OptionsNodeProxyWithPathOperation
 														r.summary = ""
 														r.operationID = "connectCoreV1OptionsNodeProxyWithPath"
+														r.operationGroup = ""
 														r.pathPattern = "/api/v1/nodes/{name}/proxy/{path}"
 														r.args = args
 														r.count = 2
@@ -15059,6 +15157,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = ConnectCoreV1PatchNodeProxyWithPathOperation
 														r.summary = ""
 														r.operationID = "connectCoreV1PatchNodeProxyWithPath"
+														r.operationGroup = ""
 														r.pathPattern = "/api/v1/nodes/{name}/proxy/{path}"
 														r.args = args
 														r.count = 2
@@ -15067,6 +15166,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = ConnectCoreV1PostNodeProxyWithPathOperation
 														r.summary = ""
 														r.operationID = "connectCoreV1PostNodeProxyWithPath"
+														r.operationGroup = ""
 														r.pathPattern = "/api/v1/nodes/{name}/proxy/{path}"
 														r.args = args
 														r.count = 2
@@ -15075,6 +15175,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = ConnectCoreV1PutNodeProxyWithPathOperation
 														r.summary = ""
 														r.operationID = "connectCoreV1PutNodeProxyWithPath"
+														r.operationGroup = ""
 														r.pathPattern = "/api/v1/nodes/{name}/proxy/{path}"
 														r.args = args
 														r.count = 2
@@ -15101,6 +15202,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = ReadCoreV1NodeStatusOperation
 													r.summary = ""
 													r.operationID = "readCoreV1NodeStatus"
+													r.operationGroup = ""
 													r.pathPattern = "/api/v1/nodes/{name}/status"
 													r.args = args
 													r.count = 1
@@ -15157,6 +15259,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = ListCoreV1PersistentVolumeClaimForAllNamespacesOperation
 											r.summary = ""
 											r.operationID = "listCoreV1PersistentVolumeClaimForAllNamespaces"
+											r.operationGroup = ""
 											r.pathPattern = "/api/v1/persistentvolumeclaims"
 											r.args = args
 											r.count = 0
@@ -15180,6 +15283,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = ListCoreV1PersistentVolumeOperation
 											r.summary = ""
 											r.operationID = "listCoreV1PersistentVolume"
+											r.operationGroup = ""
 											r.pathPattern = "/api/v1/persistentvolumes"
 											r.args = args
 											r.count = 0
@@ -15212,6 +15316,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = ReadCoreV1PersistentVolumeOperation
 												r.summary = ""
 												r.operationID = "readCoreV1PersistentVolume"
+												r.operationGroup = ""
 												r.pathPattern = "/api/v1/persistentvolumes/{name}"
 												r.args = args
 												r.count = 1
@@ -15236,6 +15341,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = ReadCoreV1PersistentVolumeStatusOperation
 													r.summary = ""
 													r.operationID = "readCoreV1PersistentVolumeStatus"
+													r.operationGroup = ""
 													r.pathPattern = "/api/v1/persistentvolumes/{name}/status"
 													r.args = args
 													r.count = 1
@@ -15278,6 +15384,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = ListCoreV1PodForAllNamespacesOperation
 											r.summary = ""
 											r.operationID = "listCoreV1PodForAllNamespaces"
+											r.operationGroup = ""
 											r.pathPattern = "/api/v1/pods"
 											r.args = args
 											r.count = 0
@@ -15302,6 +15409,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = ListCoreV1PodTemplateForAllNamespacesOperation
 											r.summary = ""
 											r.operationID = "listCoreV1PodTemplateForAllNamespaces"
+											r.operationGroup = ""
 											r.pathPattern = "/api/v1/podtemplates"
 											r.args = args
 											r.count = 0
@@ -15342,6 +15450,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										r.name = ListCoreV1ReplicationControllerForAllNamespacesOperation
 										r.summary = ""
 										r.operationID = "listCoreV1ReplicationControllerForAllNamespaces"
+										r.operationGroup = ""
 										r.pathPattern = "/api/v1/replicationcontrollers"
 										r.args = args
 										r.count = 0
@@ -15366,6 +15475,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										r.name = ListCoreV1ResourceQuotaForAllNamespacesOperation
 										r.summary = ""
 										r.operationID = "listCoreV1ResourceQuotaForAllNamespaces"
+										r.operationGroup = ""
 										r.pathPattern = "/api/v1/resourcequotas"
 										r.args = args
 										r.count = 0
@@ -15404,6 +15514,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										r.name = ListCoreV1SecretForAllNamespacesOperation
 										r.summary = ""
 										r.operationID = "listCoreV1SecretForAllNamespaces"
+										r.operationGroup = ""
 										r.pathPattern = "/api/v1/secrets"
 										r.args = args
 										r.count = 0
@@ -15440,6 +15551,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = ListCoreV1ServiceAccountForAllNamespacesOperation
 											r.summary = ""
 											r.operationID = "listCoreV1ServiceAccountForAllNamespaces"
+											r.operationGroup = ""
 											r.pathPattern = "/api/v1/serviceaccounts"
 											r.args = args
 											r.count = 0
@@ -15464,6 +15576,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = ListCoreV1ServiceForAllNamespacesOperation
 											r.summary = ""
 											r.operationID = "listCoreV1ServiceForAllNamespaces"
+											r.operationGroup = ""
 											r.pathPattern = "/api/v1/services"
 											r.args = args
 											r.count = 0
@@ -15504,6 +15617,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										r.name = WatchCoreV1ConfigMapListForAllNamespacesOperation
 										r.summary = ""
 										r.operationID = "watchCoreV1ConfigMapListForAllNamespaces"
+										r.operationGroup = ""
 										r.pathPattern = "/api/v1/watch/configmaps"
 										r.args = args
 										r.count = 0
@@ -15540,6 +15654,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = WatchCoreV1EndpointsListForAllNamespacesOperation
 											r.summary = ""
 											r.operationID = "watchCoreV1EndpointsListForAllNamespaces"
+											r.operationGroup = ""
 											r.pathPattern = "/api/v1/watch/endpoints"
 											r.args = args
 											r.count = 0
@@ -15564,6 +15679,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = WatchCoreV1EventListForAllNamespacesOperation
 											r.summary = ""
 											r.operationID = "watchCoreV1EventListForAllNamespaces"
+											r.operationGroup = ""
 											r.pathPattern = "/api/v1/watch/events"
 											r.args = args
 											r.count = 0
@@ -15590,6 +15706,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										r.name = WatchCoreV1LimitRangeListForAllNamespacesOperation
 										r.summary = ""
 										r.operationID = "watchCoreV1LimitRangeListForAllNamespaces"
+										r.operationGroup = ""
 										r.pathPattern = "/api/v1/watch/limitranges"
 										r.args = args
 										r.count = 0
@@ -15625,6 +15742,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = WatchCoreV1NamespaceListOperation
 											r.summary = ""
 											r.operationID = "watchCoreV1NamespaceList"
+											r.operationGroup = ""
 											r.pathPattern = "/api/v1/watch/namespaces"
 											r.args = args
 											r.count = 0
@@ -15657,6 +15775,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = WatchCoreV1NamespaceOperation
 												r.summary = ""
 												r.operationID = "watchCoreV1Namespace"
+												r.operationGroup = ""
 												r.pathPattern = "/api/v1/watch/namespaces/{name}"
 												r.args = args
 												r.count = 1
@@ -15692,6 +15811,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = WatchCoreV1NamespacedConfigMapListOperation
 														r.summary = ""
 														r.operationID = "watchCoreV1NamespacedConfigMapList"
+														r.operationGroup = ""
 														r.pathPattern = "/api/v1/watch/namespaces/{namespace}/configmaps"
 														r.args = args
 														r.count = 1
@@ -15725,6 +15845,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = WatchCoreV1NamespacedConfigMapOperation
 															r.summary = ""
 															r.operationID = "watchCoreV1NamespacedConfigMap"
+															r.operationGroup = ""
 															r.pathPattern = "/api/v1/watch/namespaces/{namespace}/configmaps/{name}"
 															r.args = args
 															r.count = 2
@@ -15762,6 +15883,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = WatchCoreV1NamespacedEndpointsListOperation
 															r.summary = ""
 															r.operationID = "watchCoreV1NamespacedEndpointsList"
+															r.operationGroup = ""
 															r.pathPattern = "/api/v1/watch/namespaces/{namespace}/endpoints"
 															r.args = args
 															r.count = 1
@@ -15795,6 +15917,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = WatchCoreV1NamespacedEndpointsOperation
 																r.summary = ""
 																r.operationID = "watchCoreV1NamespacedEndpoints"
+																r.operationGroup = ""
 																r.pathPattern = "/api/v1/watch/namespaces/{namespace}/endpoints/{name}"
 																r.args = args
 																r.count = 2
@@ -15820,6 +15943,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = WatchCoreV1NamespacedEventListOperation
 															r.summary = ""
 															r.operationID = "watchCoreV1NamespacedEventList"
+															r.operationGroup = ""
 															r.pathPattern = "/api/v1/watch/namespaces/{namespace}/events"
 															r.args = args
 															r.count = 1
@@ -15853,6 +15977,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = WatchCoreV1NamespacedEventOperation
 																r.summary = ""
 																r.operationID = "watchCoreV1NamespacedEvent"
+																r.operationGroup = ""
 																r.pathPattern = "/api/v1/watch/namespaces/{namespace}/events/{name}"
 																r.args = args
 																r.count = 2
@@ -15880,6 +16005,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = WatchCoreV1NamespacedLimitRangeListOperation
 														r.summary = ""
 														r.operationID = "watchCoreV1NamespacedLimitRangeList"
+														r.operationGroup = ""
 														r.pathPattern = "/api/v1/watch/namespaces/{namespace}/limitranges"
 														r.args = args
 														r.count = 1
@@ -15913,6 +16039,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = WatchCoreV1NamespacedLimitRangeOperation
 															r.summary = ""
 															r.operationID = "watchCoreV1NamespacedLimitRange"
+															r.operationGroup = ""
 															r.pathPattern = "/api/v1/watch/namespaces/{namespace}/limitranges/{name}"
 															r.args = args
 															r.count = 2
@@ -15950,6 +16077,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = WatchCoreV1NamespacedPersistentVolumeClaimListOperation
 															r.summary = ""
 															r.operationID = "watchCoreV1NamespacedPersistentVolumeClaimList"
+															r.operationGroup = ""
 															r.pathPattern = "/api/v1/watch/namespaces/{namespace}/persistentvolumeclaims"
 															r.args = args
 															r.count = 1
@@ -15983,6 +16111,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = WatchCoreV1NamespacedPersistentVolumeClaimOperation
 																r.summary = ""
 																r.operationID = "watchCoreV1NamespacedPersistentVolumeClaim"
+																r.operationGroup = ""
 																r.pathPattern = "/api/v1/watch/namespaces/{namespace}/persistentvolumeclaims/{name}"
 																r.args = args
 																r.count = 2
@@ -16020,6 +16149,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = WatchCoreV1NamespacedPodListOperation
 																r.summary = ""
 																r.operationID = "watchCoreV1NamespacedPodList"
+																r.operationGroup = ""
 																r.pathPattern = "/api/v1/watch/namespaces/{namespace}/pods"
 																r.args = args
 																r.count = 1
@@ -16053,6 +16183,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = WatchCoreV1NamespacedPodOperation
 																	r.summary = ""
 																	r.operationID = "watchCoreV1NamespacedPod"
+																	r.operationGroup = ""
 																	r.pathPattern = "/api/v1/watch/namespaces/{namespace}/pods/{name}"
 																	r.args = args
 																	r.count = 2
@@ -16078,6 +16209,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = WatchCoreV1NamespacedPodTemplateListOperation
 																r.summary = ""
 																r.operationID = "watchCoreV1NamespacedPodTemplateList"
+																r.operationGroup = ""
 																r.pathPattern = "/api/v1/watch/namespaces/{namespace}/podtemplates"
 																r.args = args
 																r.count = 1
@@ -16111,6 +16243,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = WatchCoreV1NamespacedPodTemplateOperation
 																	r.summary = ""
 																	r.operationID = "watchCoreV1NamespacedPodTemplate"
+																	r.operationGroup = ""
 																	r.pathPattern = "/api/v1/watch/namespaces/{namespace}/podtemplates/{name}"
 																	r.args = args
 																	r.count = 2
@@ -16152,6 +16285,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = WatchCoreV1NamespacedReplicationControllerListOperation
 															r.summary = ""
 															r.operationID = "watchCoreV1NamespacedReplicationControllerList"
+															r.operationGroup = ""
 															r.pathPattern = "/api/v1/watch/namespaces/{namespace}/replicationcontrollers"
 															r.args = args
 															r.count = 1
@@ -16185,6 +16319,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = WatchCoreV1NamespacedReplicationControllerOperation
 																r.summary = ""
 																r.operationID = "watchCoreV1NamespacedReplicationController"
+																r.operationGroup = ""
 																r.pathPattern = "/api/v1/watch/namespaces/{namespace}/replicationcontrollers/{name}"
 																r.args = args
 																r.count = 2
@@ -16210,6 +16345,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = WatchCoreV1NamespacedResourceQuotaListOperation
 															r.summary = ""
 															r.operationID = "watchCoreV1NamespacedResourceQuotaList"
+															r.operationGroup = ""
 															r.pathPattern = "/api/v1/watch/namespaces/{namespace}/resourcequotas"
 															r.args = args
 															r.count = 1
@@ -16243,6 +16379,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = WatchCoreV1NamespacedResourceQuotaOperation
 																r.summary = ""
 																r.operationID = "watchCoreV1NamespacedResourceQuota"
+																r.operationGroup = ""
 																r.pathPattern = "/api/v1/watch/namespaces/{namespace}/resourcequotas/{name}"
 																r.args = args
 																r.count = 2
@@ -16282,6 +16419,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = WatchCoreV1NamespacedSecretListOperation
 															r.summary = ""
 															r.operationID = "watchCoreV1NamespacedSecretList"
+															r.operationGroup = ""
 															r.pathPattern = "/api/v1/watch/namespaces/{namespace}/secrets"
 															r.args = args
 															r.count = 1
@@ -16315,6 +16453,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = WatchCoreV1NamespacedSecretOperation
 																r.summary = ""
 																r.operationID = "watchCoreV1NamespacedSecret"
+																r.operationGroup = ""
 																r.pathPattern = "/api/v1/watch/namespaces/{namespace}/secrets/{name}"
 																r.args = args
 																r.count = 2
@@ -16352,6 +16491,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = WatchCoreV1NamespacedServiceAccountListOperation
 																r.summary = ""
 																r.operationID = "watchCoreV1NamespacedServiceAccountList"
+																r.operationGroup = ""
 																r.pathPattern = "/api/v1/watch/namespaces/{namespace}/serviceaccounts"
 																r.args = args
 																r.count = 1
@@ -16385,6 +16525,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = WatchCoreV1NamespacedServiceAccountOperation
 																	r.summary = ""
 																	r.operationID = "watchCoreV1NamespacedServiceAccount"
+																	r.operationGroup = ""
 																	r.pathPattern = "/api/v1/watch/namespaces/{namespace}/serviceaccounts/{name}"
 																	r.args = args
 																	r.count = 2
@@ -16410,6 +16551,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = WatchCoreV1NamespacedServiceListOperation
 																r.summary = ""
 																r.operationID = "watchCoreV1NamespacedServiceList"
+																r.operationGroup = ""
 																r.pathPattern = "/api/v1/watch/namespaces/{namespace}/services"
 																r.args = args
 																r.count = 1
@@ -16443,6 +16585,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = WatchCoreV1NamespacedServiceOperation
 																	r.summary = ""
 																	r.operationID = "watchCoreV1NamespacedService"
+																	r.operationGroup = ""
 																	r.pathPattern = "/api/v1/watch/namespaces/{namespace}/services/{name}"
 																	r.args = args
 																	r.count = 2
@@ -16478,6 +16621,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = WatchCoreV1NodeListOperation
 											r.summary = ""
 											r.operationID = "watchCoreV1NodeList"
+											r.operationGroup = ""
 											r.pathPattern = "/api/v1/watch/nodes"
 											r.args = args
 											r.count = 0
@@ -16511,6 +16655,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = WatchCoreV1NodeOperation
 												r.summary = ""
 												r.operationID = "watchCoreV1Node"
+												r.operationGroup = ""
 												r.pathPattern = "/api/v1/watch/nodes/{name}"
 												r.args = args
 												r.count = 1
@@ -16563,6 +16708,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = WatchCoreV1PersistentVolumeClaimListForAllNamespacesOperation
 												r.summary = ""
 												r.operationID = "watchCoreV1PersistentVolumeClaimListForAllNamespaces"
+												r.operationGroup = ""
 												r.pathPattern = "/api/v1/watch/persistentvolumeclaims"
 												r.args = args
 												r.count = 0
@@ -16586,6 +16732,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = WatchCoreV1PersistentVolumeListOperation
 												r.summary = ""
 												r.operationID = "watchCoreV1PersistentVolumeList"
+												r.operationGroup = ""
 												r.pathPattern = "/api/v1/watch/persistentvolumes"
 												r.args = args
 												r.count = 0
@@ -16619,6 +16766,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = WatchCoreV1PersistentVolumeOperation
 													r.summary = ""
 													r.operationID = "watchCoreV1PersistentVolume"
+													r.operationGroup = ""
 													r.pathPattern = "/api/v1/watch/persistentvolumes/{name}"
 													r.args = args
 													r.count = 1
@@ -16659,6 +16807,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = WatchCoreV1PodListForAllNamespacesOperation
 												r.summary = ""
 												r.operationID = "watchCoreV1PodListForAllNamespaces"
+												r.operationGroup = ""
 												r.pathPattern = "/api/v1/watch/pods"
 												r.args = args
 												r.count = 0
@@ -16683,6 +16832,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = WatchCoreV1PodTemplateListForAllNamespacesOperation
 												r.summary = ""
 												r.operationID = "watchCoreV1PodTemplateListForAllNamespaces"
+												r.operationGroup = ""
 												r.pathPattern = "/api/v1/watch/podtemplates"
 												r.args = args
 												r.count = 0
@@ -16723,6 +16873,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = WatchCoreV1ReplicationControllerListForAllNamespacesOperation
 											r.summary = ""
 											r.operationID = "watchCoreV1ReplicationControllerListForAllNamespaces"
+											r.operationGroup = ""
 											r.pathPattern = "/api/v1/watch/replicationcontrollers"
 											r.args = args
 											r.count = 0
@@ -16747,6 +16898,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = WatchCoreV1ResourceQuotaListForAllNamespacesOperation
 											r.summary = ""
 											r.operationID = "watchCoreV1ResourceQuotaListForAllNamespaces"
+											r.operationGroup = ""
 											r.pathPattern = "/api/v1/watch/resourcequotas"
 											r.args = args
 											r.count = 0
@@ -16785,6 +16937,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = WatchCoreV1SecretListForAllNamespacesOperation
 											r.summary = ""
 											r.operationID = "watchCoreV1SecretListForAllNamespaces"
+											r.operationGroup = ""
 											r.pathPattern = "/api/v1/watch/secrets"
 											r.args = args
 											r.count = 0
@@ -16821,6 +16974,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = WatchCoreV1ServiceAccountListForAllNamespacesOperation
 												r.summary = ""
 												r.operationID = "watchCoreV1ServiceAccountListForAllNamespaces"
+												r.operationGroup = ""
 												r.pathPattern = "/api/v1/watch/serviceaccounts"
 												r.args = args
 												r.count = 0
@@ -16845,6 +16999,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = WatchCoreV1ServiceListForAllNamespacesOperation
 												r.summary = ""
 												r.operationID = "watchCoreV1ServiceListForAllNamespaces"
+												r.operationGroup = ""
 												r.pathPattern = "/api/v1/watch/services"
 												r.args = args
 												r.count = 0
@@ -16878,6 +17033,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							r.name = GetAPIVersionsOperation
 							r.summary = ""
 							r.operationID = "getAPIVersions"
+							r.operationGroup = ""
 							r.pathPattern = "/apis/"
 							r.args = args
 							r.count = 0
@@ -16913,6 +17069,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									r.name = GetAdmissionregistrationAPIGroupOperation
 									r.summary = ""
 									r.operationID = "getAdmissionregistrationAPIGroup"
+									r.operationGroup = ""
 									r.pathPattern = "/apis/admissionregistration.k8s.io/"
 									r.args = args
 									r.count = 0
@@ -16936,6 +17093,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										r.name = GetAdmissionregistrationV1APIResourcesOperation
 										r.summary = ""
 										r.operationID = "getAdmissionregistrationV1APIResources"
+										r.operationGroup = ""
 										r.pathPattern = "/apis/admissionregistration.k8s.io/v1/"
 										r.args = args
 										r.count = 0
@@ -16959,6 +17117,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = ListAdmissionregistrationV1MutatingWebhookConfigurationOperation
 											r.summary = ""
 											r.operationID = "listAdmissionregistrationV1MutatingWebhookConfiguration"
+											r.operationGroup = ""
 											r.pathPattern = "/apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations"
 											r.args = args
 											r.count = 0
@@ -16992,6 +17151,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = ReadAdmissionregistrationV1MutatingWebhookConfigurationOperation
 												r.summary = ""
 												r.operationID = "readAdmissionregistrationV1MutatingWebhookConfiguration"
+												r.operationGroup = ""
 												r.pathPattern = "/apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations/{name}"
 												r.args = args
 												r.count = 1
@@ -17017,6 +17177,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = ListAdmissionregistrationV1ValidatingWebhookConfigurationOperation
 											r.summary = ""
 											r.operationID = "listAdmissionregistrationV1ValidatingWebhookConfiguration"
+											r.operationGroup = ""
 											r.pathPattern = "/apis/admissionregistration.k8s.io/v1/validatingwebhookconfigurations"
 											r.args = args
 											r.count = 0
@@ -17050,6 +17211,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = ReadAdmissionregistrationV1ValidatingWebhookConfigurationOperation
 												r.summary = ""
 												r.operationID = "readAdmissionregistrationV1ValidatingWebhookConfiguration"
+												r.operationGroup = ""
 												r.pathPattern = "/apis/admissionregistration.k8s.io/v1/validatingwebhookconfigurations/{name}"
 												r.args = args
 												r.count = 1
@@ -17087,6 +17249,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = WatchAdmissionregistrationV1MutatingWebhookConfigurationListOperation
 												r.summary = ""
 												r.operationID = "watchAdmissionregistrationV1MutatingWebhookConfigurationList"
+												r.operationGroup = ""
 												r.pathPattern = "/apis/admissionregistration.k8s.io/v1/watch/mutatingwebhookconfigurations"
 												r.args = args
 												r.count = 0
@@ -17120,6 +17283,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = WatchAdmissionregistrationV1MutatingWebhookConfigurationOperation
 													r.summary = ""
 													r.operationID = "watchAdmissionregistrationV1MutatingWebhookConfiguration"
+													r.operationGroup = ""
 													r.pathPattern = "/apis/admissionregistration.k8s.io/v1/watch/mutatingwebhookconfigurations/{name}"
 													r.args = args
 													r.count = 1
@@ -17145,6 +17309,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = WatchAdmissionregistrationV1ValidatingWebhookConfigurationListOperation
 												r.summary = ""
 												r.operationID = "watchAdmissionregistrationV1ValidatingWebhookConfigurationList"
+												r.operationGroup = ""
 												r.pathPattern = "/apis/admissionregistration.k8s.io/v1/watch/validatingwebhookconfigurations"
 												r.args = args
 												r.count = 0
@@ -17178,6 +17343,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = WatchAdmissionregistrationV1ValidatingWebhookConfigurationOperation
 													r.summary = ""
 													r.operationID = "watchAdmissionregistrationV1ValidatingWebhookConfiguration"
+													r.operationGroup = ""
 													r.pathPattern = "/apis/admissionregistration.k8s.io/v1/watch/validatingwebhookconfigurations/{name}"
 													r.args = args
 													r.count = 1
@@ -17233,6 +17399,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = GetApiextensionsAPIGroupOperation
 											r.summary = ""
 											r.operationID = "getApiextensionsAPIGroup"
+											r.operationGroup = ""
 											r.pathPattern = "/apis/apiextensions.k8s.io/"
 											r.args = args
 											r.count = 0
@@ -17256,6 +17423,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = GetApiextensionsV1APIResourcesOperation
 												r.summary = ""
 												r.operationID = "getApiextensionsV1APIResources"
+												r.operationGroup = ""
 												r.pathPattern = "/apis/apiextensions.k8s.io/v1/"
 												r.args = args
 												r.count = 0
@@ -17279,6 +17447,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = ListApiextensionsV1CustomResourceDefinitionOperation
 													r.summary = ""
 													r.operationID = "listApiextensionsV1CustomResourceDefinition"
+													r.operationGroup = ""
 													r.pathPattern = "/apis/apiextensions.k8s.io/v1/customresourcedefinitions"
 													r.args = args
 													r.count = 0
@@ -17311,6 +17480,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = ReadApiextensionsV1CustomResourceDefinitionOperation
 														r.summary = ""
 														r.operationID = "readApiextensionsV1CustomResourceDefinition"
+														r.operationGroup = ""
 														r.pathPattern = "/apis/apiextensions.k8s.io/v1/customresourcedefinitions/{name}"
 														r.args = args
 														r.count = 1
@@ -17335,6 +17505,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = ReadApiextensionsV1CustomResourceDefinitionStatusOperation
 															r.summary = ""
 															r.operationID = "readApiextensionsV1CustomResourceDefinitionStatus"
+															r.operationGroup = ""
 															r.pathPattern = "/apis/apiextensions.k8s.io/v1/customresourcedefinitions/{name}/status"
 															r.args = args
 															r.count = 1
@@ -17362,6 +17533,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = WatchApiextensionsV1CustomResourceDefinitionListOperation
 													r.summary = ""
 													r.operationID = "watchApiextensionsV1CustomResourceDefinitionList"
+													r.operationGroup = ""
 													r.pathPattern = "/apis/apiextensions.k8s.io/v1/watch/customresourcedefinitions"
 													r.args = args
 													r.count = 0
@@ -17395,6 +17567,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = WatchApiextensionsV1CustomResourceDefinitionOperation
 														r.summary = ""
 														r.operationID = "watchApiextensionsV1CustomResourceDefinition"
+														r.operationGroup = ""
 														r.pathPattern = "/apis/apiextensions.k8s.io/v1/watch/customresourcedefinitions/{name}"
 														r.args = args
 														r.count = 1
@@ -17424,6 +17597,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = GetApiregistrationAPIGroupOperation
 											r.summary = ""
 											r.operationID = "getApiregistrationAPIGroup"
+											r.operationGroup = ""
 											r.pathPattern = "/apis/apiregistration.k8s.io/"
 											r.args = args
 											r.count = 0
@@ -17447,6 +17621,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = GetApiregistrationV1APIResourcesOperation
 												r.summary = ""
 												r.operationID = "getApiregistrationV1APIResources"
+												r.operationGroup = ""
 												r.pathPattern = "/apis/apiregistration.k8s.io/v1/"
 												r.args = args
 												r.count = 0
@@ -17470,6 +17645,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = ListApiregistrationV1APIServiceOperation
 													r.summary = ""
 													r.operationID = "listApiregistrationV1APIService"
+													r.operationGroup = ""
 													r.pathPattern = "/apis/apiregistration.k8s.io/v1/apiservices"
 													r.args = args
 													r.count = 0
@@ -17502,6 +17678,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = ReadApiregistrationV1APIServiceOperation
 														r.summary = ""
 														r.operationID = "readApiregistrationV1APIService"
+														r.operationGroup = ""
 														r.pathPattern = "/apis/apiregistration.k8s.io/v1/apiservices/{name}"
 														r.args = args
 														r.count = 1
@@ -17526,6 +17703,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = ReadApiregistrationV1APIServiceStatusOperation
 															r.summary = ""
 															r.operationID = "readApiregistrationV1APIServiceStatus"
+															r.operationGroup = ""
 															r.pathPattern = "/apis/apiregistration.k8s.io/v1/apiservices/{name}/status"
 															r.args = args
 															r.count = 1
@@ -17553,6 +17731,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = WatchApiregistrationV1APIServiceListOperation
 													r.summary = ""
 													r.operationID = "watchApiregistrationV1APIServiceList"
+													r.operationGroup = ""
 													r.pathPattern = "/apis/apiregistration.k8s.io/v1/watch/apiservices"
 													r.args = args
 													r.count = 0
@@ -17586,6 +17765,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = WatchApiregistrationV1APIServiceOperation
 														r.summary = ""
 														r.operationID = "watchApiregistrationV1APIService"
+														r.operationGroup = ""
 														r.pathPattern = "/apis/apiregistration.k8s.io/v1/watch/apiservices/{name}"
 														r.args = args
 														r.count = 1
@@ -17617,6 +17797,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										r.name = GetAppsAPIGroupOperation
 										r.summary = ""
 										r.operationID = "getAppsAPIGroup"
+										r.operationGroup = ""
 										r.pathPattern = "/apis/apps/"
 										r.args = args
 										r.count = 0
@@ -17640,6 +17821,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = GetAppsV1APIResourcesOperation
 											r.summary = ""
 											r.operationID = "getAppsV1APIResources"
+											r.operationGroup = ""
 											r.pathPattern = "/apis/apps/v1/"
 											r.args = args
 											r.count = 0
@@ -17664,6 +17846,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = ListAppsV1ControllerRevisionForAllNamespacesOperation
 												r.summary = ""
 												r.operationID = "listAppsV1ControllerRevisionForAllNamespaces"
+												r.operationGroup = ""
 												r.pathPattern = "/apis/apps/v1/controllerrevisions"
 												r.args = args
 												r.count = 0
@@ -17700,6 +17883,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = ListAppsV1DaemonSetForAllNamespacesOperation
 													r.summary = ""
 													r.operationID = "listAppsV1DaemonSetForAllNamespaces"
+													r.operationGroup = ""
 													r.pathPattern = "/apis/apps/v1/daemonsets"
 													r.args = args
 													r.count = 0
@@ -17724,6 +17908,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = ListAppsV1DeploymentForAllNamespacesOperation
 													r.summary = ""
 													r.operationID = "listAppsV1DeploymentForAllNamespaces"
+													r.operationGroup = ""
 													r.pathPattern = "/apis/apps/v1/deployments"
 													r.args = args
 													r.count = 0
@@ -17782,6 +17967,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = ListAppsV1NamespacedControllerRevisionOperation
 														r.summary = ""
 														r.operationID = "listAppsV1NamespacedControllerRevision"
+														r.operationGroup = ""
 														r.pathPattern = "/apis/apps/v1/namespaces/{namespace}/controllerrevisions"
 														r.args = args
 														r.count = 1
@@ -17815,6 +18001,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = ReadAppsV1NamespacedControllerRevisionOperation
 															r.summary = ""
 															r.operationID = "readAppsV1NamespacedControllerRevision"
+															r.operationGroup = ""
 															r.pathPattern = "/apis/apps/v1/namespaces/{namespace}/controllerrevisions/{name}"
 															r.args = args
 															r.count = 2
@@ -17852,6 +18039,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = ListAppsV1NamespacedDaemonSetOperation
 															r.summary = ""
 															r.operationID = "listAppsV1NamespacedDaemonSet"
+															r.operationGroup = ""
 															r.pathPattern = "/apis/apps/v1/namespaces/{namespace}/daemonsets"
 															r.args = args
 															r.count = 1
@@ -17884,6 +18072,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = ReadAppsV1NamespacedDaemonSetOperation
 																r.summary = ""
 																r.operationID = "readAppsV1NamespacedDaemonSet"
+																r.operationGroup = ""
 																r.pathPattern = "/apis/apps/v1/namespaces/{namespace}/daemonsets/{name}"
 																r.args = args
 																r.count = 2
@@ -17908,6 +18097,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = ReadAppsV1NamespacedDaemonSetStatusOperation
 																	r.summary = ""
 																	r.operationID = "readAppsV1NamespacedDaemonSetStatus"
+																	r.operationGroup = ""
 																	r.pathPattern = "/apis/apps/v1/namespaces/{namespace}/daemonsets/{name}/status"
 																	r.args = args
 																	r.count = 2
@@ -17935,6 +18125,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = ListAppsV1NamespacedDeploymentOperation
 															r.summary = ""
 															r.operationID = "listAppsV1NamespacedDeployment"
+															r.operationGroup = ""
 															r.pathPattern = "/apis/apps/v1/namespaces/{namespace}/deployments"
 															r.args = args
 															r.count = 1
@@ -17967,6 +18158,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = ReadAppsV1NamespacedDeploymentOperation
 																r.summary = ""
 																r.operationID = "readAppsV1NamespacedDeployment"
+																r.operationGroup = ""
 																r.pathPattern = "/apis/apps/v1/namespaces/{namespace}/deployments/{name}"
 																r.args = args
 																r.count = 2
@@ -18003,6 +18195,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																		r.name = ReadAppsV1NamespacedDeploymentScaleOperation
 																		r.summary = ""
 																		r.operationID = "readAppsV1NamespacedDeploymentScale"
+																		r.operationGroup = ""
 																		r.pathPattern = "/apis/apps/v1/namespaces/{namespace}/deployments/{name}/scale"
 																		r.args = args
 																		r.count = 2
@@ -18027,6 +18220,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																		r.name = ReadAppsV1NamespacedDeploymentStatusOperation
 																		r.summary = ""
 																		r.operationID = "readAppsV1NamespacedDeploymentStatus"
+																		r.operationGroup = ""
 																		r.pathPattern = "/apis/apps/v1/namespaces/{namespace}/deployments/{name}/status"
 																		r.args = args
 																		r.count = 2
@@ -18058,6 +18252,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = ListAppsV1NamespacedReplicaSetOperation
 														r.summary = ""
 														r.operationID = "listAppsV1NamespacedReplicaSet"
+														r.operationGroup = ""
 														r.pathPattern = "/apis/apps/v1/namespaces/{namespace}/replicasets"
 														r.args = args
 														r.count = 1
@@ -18090,6 +18285,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = ReadAppsV1NamespacedReplicaSetOperation
 															r.summary = ""
 															r.operationID = "readAppsV1NamespacedReplicaSet"
+															r.operationGroup = ""
 															r.pathPattern = "/apis/apps/v1/namespaces/{namespace}/replicasets/{name}"
 															r.args = args
 															r.count = 2
@@ -18126,6 +18322,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = ReadAppsV1NamespacedReplicaSetScaleOperation
 																	r.summary = ""
 																	r.operationID = "readAppsV1NamespacedReplicaSetScale"
+																	r.operationGroup = ""
 																	r.pathPattern = "/apis/apps/v1/namespaces/{namespace}/replicasets/{name}/scale"
 																	r.args = args
 																	r.count = 2
@@ -18150,6 +18347,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = ReadAppsV1NamespacedReplicaSetStatusOperation
 																	r.summary = ""
 																	r.operationID = "readAppsV1NamespacedReplicaSetStatus"
+																	r.operationGroup = ""
 																	r.pathPattern = "/apis/apps/v1/namespaces/{namespace}/replicasets/{name}/status"
 																	r.args = args
 																	r.count = 2
@@ -18179,6 +18377,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = ListAppsV1NamespacedStatefulSetOperation
 														r.summary = ""
 														r.operationID = "listAppsV1NamespacedStatefulSet"
+														r.operationGroup = ""
 														r.pathPattern = "/apis/apps/v1/namespaces/{namespace}/statefulsets"
 														r.args = args
 														r.count = 1
@@ -18211,6 +18410,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = ReadAppsV1NamespacedStatefulSetOperation
 															r.summary = ""
 															r.operationID = "readAppsV1NamespacedStatefulSet"
+															r.operationGroup = ""
 															r.pathPattern = "/apis/apps/v1/namespaces/{namespace}/statefulsets/{name}"
 															r.args = args
 															r.count = 2
@@ -18247,6 +18447,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = ReadAppsV1NamespacedStatefulSetScaleOperation
 																	r.summary = ""
 																	r.operationID = "readAppsV1NamespacedStatefulSetScale"
+																	r.operationGroup = ""
 																	r.pathPattern = "/apis/apps/v1/namespaces/{namespace}/statefulsets/{name}/scale"
 																	r.args = args
 																	r.count = 2
@@ -18271,6 +18472,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = ReadAppsV1NamespacedStatefulSetStatusOperation
 																	r.summary = ""
 																	r.operationID = "readAppsV1NamespacedStatefulSetStatus"
+																	r.operationGroup = ""
 																	r.pathPattern = "/apis/apps/v1/namespaces/{namespace}/statefulsets/{name}/status"
 																	r.args = args
 																	r.count = 2
@@ -18305,6 +18507,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = ListAppsV1ReplicaSetForAllNamespacesOperation
 												r.summary = ""
 												r.operationID = "listAppsV1ReplicaSetForAllNamespaces"
+												r.operationGroup = ""
 												r.pathPattern = "/apis/apps/v1/replicasets"
 												r.args = args
 												r.count = 0
@@ -18329,6 +18532,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = ListAppsV1StatefulSetForAllNamespacesOperation
 												r.summary = ""
 												r.operationID = "listAppsV1StatefulSetForAllNamespaces"
+												r.operationGroup = ""
 												r.pathPattern = "/apis/apps/v1/statefulsets"
 												r.args = args
 												r.count = 0
@@ -18365,6 +18569,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = WatchAppsV1ControllerRevisionListForAllNamespacesOperation
 													r.summary = ""
 													r.operationID = "watchAppsV1ControllerRevisionListForAllNamespaces"
+													r.operationGroup = ""
 													r.pathPattern = "/apis/apps/v1/watch/controllerrevisions"
 													r.args = args
 													r.count = 0
@@ -18401,6 +18606,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = WatchAppsV1DaemonSetListForAllNamespacesOperation
 														r.summary = ""
 														r.operationID = "watchAppsV1DaemonSetListForAllNamespaces"
+														r.operationGroup = ""
 														r.pathPattern = "/apis/apps/v1/watch/daemonsets"
 														r.args = args
 														r.count = 0
@@ -18425,6 +18631,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = WatchAppsV1DeploymentListForAllNamespacesOperation
 														r.summary = ""
 														r.operationID = "watchAppsV1DeploymentListForAllNamespaces"
+														r.operationGroup = ""
 														r.pathPattern = "/apis/apps/v1/watch/deployments"
 														r.args = args
 														r.count = 0
@@ -18483,6 +18690,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = WatchAppsV1NamespacedControllerRevisionListOperation
 															r.summary = ""
 															r.operationID = "watchAppsV1NamespacedControllerRevisionList"
+															r.operationGroup = ""
 															r.pathPattern = "/apis/apps/v1/watch/namespaces/{namespace}/controllerrevisions"
 															r.args = args
 															r.count = 1
@@ -18516,6 +18724,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = WatchAppsV1NamespacedControllerRevisionOperation
 																r.summary = ""
 																r.operationID = "watchAppsV1NamespacedControllerRevision"
+																r.operationGroup = ""
 																r.pathPattern = "/apis/apps/v1/watch/namespaces/{namespace}/controllerrevisions/{name}"
 																r.args = args
 																r.count = 2
@@ -18553,6 +18762,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = WatchAppsV1NamespacedDaemonSetListOperation
 																r.summary = ""
 																r.operationID = "watchAppsV1NamespacedDaemonSetList"
+																r.operationGroup = ""
 																r.pathPattern = "/apis/apps/v1/watch/namespaces/{namespace}/daemonsets"
 																r.args = args
 																r.count = 1
@@ -18586,6 +18796,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = WatchAppsV1NamespacedDaemonSetOperation
 																	r.summary = ""
 																	r.operationID = "watchAppsV1NamespacedDaemonSet"
+																	r.operationGroup = ""
 																	r.pathPattern = "/apis/apps/v1/watch/namespaces/{namespace}/daemonsets/{name}"
 																	r.args = args
 																	r.count = 2
@@ -18611,6 +18822,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = WatchAppsV1NamespacedDeploymentListOperation
 																r.summary = ""
 																r.operationID = "watchAppsV1NamespacedDeploymentList"
+																r.operationGroup = ""
 																r.pathPattern = "/apis/apps/v1/watch/namespaces/{namespace}/deployments"
 																r.args = args
 																r.count = 1
@@ -18644,6 +18856,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = WatchAppsV1NamespacedDeploymentOperation
 																	r.summary = ""
 																	r.operationID = "watchAppsV1NamespacedDeployment"
+																	r.operationGroup = ""
 																	r.pathPattern = "/apis/apps/v1/watch/namespaces/{namespace}/deployments/{name}"
 																	r.args = args
 																	r.count = 2
@@ -18671,6 +18884,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = WatchAppsV1NamespacedReplicaSetListOperation
 															r.summary = ""
 															r.operationID = "watchAppsV1NamespacedReplicaSetList"
+															r.operationGroup = ""
 															r.pathPattern = "/apis/apps/v1/watch/namespaces/{namespace}/replicasets"
 															r.args = args
 															r.count = 1
@@ -18704,6 +18918,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = WatchAppsV1NamespacedReplicaSetOperation
 																r.summary = ""
 																r.operationID = "watchAppsV1NamespacedReplicaSet"
+																r.operationGroup = ""
 																r.pathPattern = "/apis/apps/v1/watch/namespaces/{namespace}/replicasets/{name}"
 																r.args = args
 																r.count = 2
@@ -18729,6 +18944,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = WatchAppsV1NamespacedStatefulSetListOperation
 															r.summary = ""
 															r.operationID = "watchAppsV1NamespacedStatefulSetList"
+															r.operationGroup = ""
 															r.pathPattern = "/apis/apps/v1/watch/namespaces/{namespace}/statefulsets"
 															r.args = args
 															r.count = 1
@@ -18762,6 +18978,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = WatchAppsV1NamespacedStatefulSetOperation
 																r.summary = ""
 																r.operationID = "watchAppsV1NamespacedStatefulSet"
+																r.operationGroup = ""
 																r.pathPattern = "/apis/apps/v1/watch/namespaces/{namespace}/statefulsets/{name}"
 																r.args = args
 																r.count = 2
@@ -18792,6 +19009,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = WatchAppsV1ReplicaSetListForAllNamespacesOperation
 													r.summary = ""
 													r.operationID = "watchAppsV1ReplicaSetListForAllNamespaces"
+													r.operationGroup = ""
 													r.pathPattern = "/apis/apps/v1/watch/replicasets"
 													r.args = args
 													r.count = 0
@@ -18816,6 +19034,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = WatchAppsV1StatefulSetListForAllNamespacesOperation
 													r.summary = ""
 													r.operationID = "watchAppsV1StatefulSetListForAllNamespaces"
+													r.operationGroup = ""
 													r.pathPattern = "/apis/apps/v1/watch/statefulsets"
 													r.args = args
 													r.count = 0
@@ -18871,6 +19090,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = GetAuthenticationAPIGroupOperation
 											r.summary = ""
 											r.operationID = "getAuthenticationAPIGroup"
+											r.operationGroup = ""
 											r.pathPattern = "/apis/authentication.k8s.io/"
 											r.args = args
 											r.count = 0
@@ -18895,6 +19115,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = GetAuthenticationV1APIResourcesOperation
 												r.summary = ""
 												r.operationID = "getAuthenticationV1APIResources"
+												r.operationGroup = ""
 												r.pathPattern = "/apis/authentication.k8s.io/v1/"
 												r.args = args
 												r.count = 0
@@ -18920,6 +19141,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = GetAuthorizationAPIGroupOperation
 											r.summary = ""
 											r.operationID = "getAuthorizationAPIGroup"
+											r.operationGroup = ""
 											r.pathPattern = "/apis/authorization.k8s.io/"
 											r.args = args
 											r.count = 0
@@ -18944,6 +19166,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = GetAuthorizationV1APIResourcesOperation
 												r.summary = ""
 												r.operationID = "getAuthorizationV1APIResources"
+												r.operationGroup = ""
 												r.pathPattern = "/apis/authorization.k8s.io/v1/"
 												r.args = args
 												r.count = 0
@@ -18971,6 +19194,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										r.name = GetAutoscalingAPIGroupOperation
 										r.summary = ""
 										r.operationID = "getAutoscalingAPIGroup"
+										r.operationGroup = ""
 										r.pathPattern = "/apis/autoscaling/"
 										r.args = args
 										r.count = 0
@@ -19006,6 +19230,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = GetAutoscalingV1APIResourcesOperation
 												r.summary = ""
 												r.operationID = "getAutoscalingV1APIResources"
+												r.operationGroup = ""
 												r.pathPattern = "/apis/autoscaling/v1/"
 												r.args = args
 												r.count = 0
@@ -19030,6 +19255,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesOperation
 													r.summary = ""
 													r.operationID = "listAutoscalingV1HorizontalPodAutoscalerForAllNamespaces"
+													r.operationGroup = ""
 													r.pathPattern = "/apis/autoscaling/v1/horizontalpodautoscalers"
 													r.args = args
 													r.count = 0
@@ -19074,6 +19300,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = ListAutoscalingV1NamespacedHorizontalPodAutoscalerOperation
 														r.summary = ""
 														r.operationID = "listAutoscalingV1NamespacedHorizontalPodAutoscaler"
+														r.operationGroup = ""
 														r.pathPattern = "/apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers"
 														r.args = args
 														r.count = 1
@@ -19106,6 +19333,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = ReadAutoscalingV1NamespacedHorizontalPodAutoscalerOperation
 															r.summary = ""
 															r.operationID = "readAutoscalingV1NamespacedHorizontalPodAutoscaler"
+															r.operationGroup = ""
 															r.pathPattern = "/apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}"
 															r.args = args
 															r.count = 2
@@ -19130,6 +19358,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusOperation
 																r.summary = ""
 																r.operationID = "readAutoscalingV1NamespacedHorizontalPodAutoscalerStatus"
+																r.operationGroup = ""
 																r.pathPattern = "/apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}/status"
 																r.args = args
 																r.count = 2
@@ -19172,6 +19401,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesOperation
 														r.summary = ""
 														r.operationID = "watchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces"
+														r.operationGroup = ""
 														r.pathPattern = "/apis/autoscaling/v1/watch/horizontalpodautoscalers"
 														r.args = args
 														r.count = 0
@@ -19216,6 +19446,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListOperation
 															r.summary = ""
 															r.operationID = "watchAutoscalingV1NamespacedHorizontalPodAutoscalerList"
+															r.operationGroup = ""
 															r.pathPattern = "/apis/autoscaling/v1/watch/namespaces/{namespace}/horizontalpodautoscalers"
 															r.args = args
 															r.count = 1
@@ -19249,6 +19480,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = WatchAutoscalingV1NamespacedHorizontalPodAutoscalerOperation
 																r.summary = ""
 																r.operationID = "watchAutoscalingV1NamespacedHorizontalPodAutoscaler"
+																r.operationGroup = ""
 																r.pathPattern = "/apis/autoscaling/v1/watch/namespaces/{namespace}/horizontalpodautoscalers/{name}"
 																r.args = args
 																r.count = 2
@@ -19292,6 +19524,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = GetAutoscalingV2beta1APIResourcesOperation
 													r.summary = ""
 													r.operationID = "getAutoscalingV2beta1APIResources"
+													r.operationGroup = ""
 													r.pathPattern = "/apis/autoscaling/v2beta1/"
 													r.args = args
 													r.count = 0
@@ -19316,6 +19549,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesOperation
 														r.summary = ""
 														r.operationID = "listAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces"
+														r.operationGroup = ""
 														r.pathPattern = "/apis/autoscaling/v2beta1/horizontalpodautoscalers"
 														r.args = args
 														r.count = 0
@@ -19360,6 +19594,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = ListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerOperation
 															r.summary = ""
 															r.operationID = "listAutoscalingV2beta1NamespacedHorizontalPodAutoscaler"
+															r.operationGroup = ""
 															r.pathPattern = "/apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers"
 															r.args = args
 															r.count = 1
@@ -19392,6 +19627,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerOperation
 																r.summary = ""
 																r.operationID = "readAutoscalingV2beta1NamespacedHorizontalPodAutoscaler"
+																r.operationGroup = ""
 																r.pathPattern = "/apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers/{name}"
 																r.args = args
 																r.count = 2
@@ -19416,6 +19652,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusOperation
 																	r.summary = ""
 																	r.operationID = "readAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus"
+																	r.operationGroup = ""
 																	r.pathPattern = "/apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers/{name}/status"
 																	r.args = args
 																	r.count = 2
@@ -19458,6 +19695,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesOperation
 															r.summary = ""
 															r.operationID = "watchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces"
+															r.operationGroup = ""
 															r.pathPattern = "/apis/autoscaling/v2beta1/watch/horizontalpodautoscalers"
 															r.args = args
 															r.count = 0
@@ -19502,6 +19740,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListOperation
 																r.summary = ""
 																r.operationID = "watchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList"
+																r.operationGroup = ""
 																r.pathPattern = "/apis/autoscaling/v2beta1/watch/namespaces/{namespace}/horizontalpodautoscalers"
 																r.args = args
 																r.count = 1
@@ -19535,6 +19774,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerOperation
 																	r.summary = ""
 																	r.operationID = "watchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler"
+																	r.operationGroup = ""
 																	r.pathPattern = "/apis/autoscaling/v2beta1/watch/namespaces/{namespace}/horizontalpodautoscalers/{name}"
 																	r.args = args
 																	r.count = 2
@@ -19566,6 +19806,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = GetAutoscalingV2beta2APIResourcesOperation
 													r.summary = ""
 													r.operationID = "getAutoscalingV2beta2APIResources"
+													r.operationGroup = ""
 													r.pathPattern = "/apis/autoscaling/v2beta2/"
 													r.args = args
 													r.count = 0
@@ -19590,6 +19831,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesOperation
 														r.summary = ""
 														r.operationID = "listAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces"
+														r.operationGroup = ""
 														r.pathPattern = "/apis/autoscaling/v2beta2/horizontalpodautoscalers"
 														r.args = args
 														r.count = 0
@@ -19634,6 +19876,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = ListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerOperation
 															r.summary = ""
 															r.operationID = "listAutoscalingV2beta2NamespacedHorizontalPodAutoscaler"
+															r.operationGroup = ""
 															r.pathPattern = "/apis/autoscaling/v2beta2/namespaces/{namespace}/horizontalpodautoscalers"
 															r.args = args
 															r.count = 1
@@ -19666,6 +19909,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerOperation
 																r.summary = ""
 																r.operationID = "readAutoscalingV2beta2NamespacedHorizontalPodAutoscaler"
+																r.operationGroup = ""
 																r.pathPattern = "/apis/autoscaling/v2beta2/namespaces/{namespace}/horizontalpodautoscalers/{name}"
 																r.args = args
 																r.count = 2
@@ -19690,6 +19934,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusOperation
 																	r.summary = ""
 																	r.operationID = "readAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus"
+																	r.operationGroup = ""
 																	r.pathPattern = "/apis/autoscaling/v2beta2/namespaces/{namespace}/horizontalpodautoscalers/{name}/status"
 																	r.args = args
 																	r.count = 2
@@ -19732,6 +19977,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesOperation
 															r.summary = ""
 															r.operationID = "watchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces"
+															r.operationGroup = ""
 															r.pathPattern = "/apis/autoscaling/v2beta2/watch/horizontalpodautoscalers"
 															r.args = args
 															r.count = 0
@@ -19776,6 +20022,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListOperation
 																r.summary = ""
 																r.operationID = "watchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList"
+																r.operationGroup = ""
 																r.pathPattern = "/apis/autoscaling/v2beta2/watch/namespaces/{namespace}/horizontalpodautoscalers"
 																r.args = args
 																r.count = 1
@@ -19809,6 +20056,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerOperation
 																	r.summary = ""
 																	r.operationID = "watchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler"
+																	r.operationGroup = ""
 																	r.pathPattern = "/apis/autoscaling/v2beta2/watch/namespaces/{namespace}/horizontalpodautoscalers/{name}"
 																	r.args = args
 																	r.count = 2
@@ -19850,6 +20098,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.name = GetBatchAPIGroupOperation
 								r.summary = ""
 								r.operationID = "getBatchAPIGroup"
+								r.operationGroup = ""
 								r.pathPattern = "/apis/batch/"
 								r.args = args
 								r.count = 0
@@ -19885,6 +20134,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										r.name = GetBatchV1APIResourcesOperation
 										r.summary = ""
 										r.operationID = "getBatchV1APIResources"
+										r.operationGroup = ""
 										r.pathPattern = "/apis/batch/v1/"
 										r.args = args
 										r.count = 0
@@ -19909,6 +20159,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = ListBatchV1CronJobForAllNamespacesOperation
 											r.summary = ""
 											r.operationID = "listBatchV1CronJobForAllNamespaces"
+											r.operationGroup = ""
 											r.pathPattern = "/apis/batch/v1/cronjobs"
 											r.args = args
 											r.count = 0
@@ -19933,6 +20184,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = ListBatchV1JobForAllNamespacesOperation
 											r.summary = ""
 											r.operationID = "listBatchV1JobForAllNamespaces"
+											r.operationGroup = ""
 											r.pathPattern = "/apis/batch/v1/jobs"
 											r.args = args
 											r.count = 0
@@ -19989,6 +20241,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = ListBatchV1NamespacedCronJobOperation
 													r.summary = ""
 													r.operationID = "listBatchV1NamespacedCronJob"
+													r.operationGroup = ""
 													r.pathPattern = "/apis/batch/v1/namespaces/{namespace}/cronjobs"
 													r.args = args
 													r.count = 1
@@ -20021,6 +20274,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = ReadBatchV1NamespacedCronJobOperation
 														r.summary = ""
 														r.operationID = "readBatchV1NamespacedCronJob"
+														r.operationGroup = ""
 														r.pathPattern = "/apis/batch/v1/namespaces/{namespace}/cronjobs/{name}"
 														r.args = args
 														r.count = 2
@@ -20045,6 +20299,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = ReadBatchV1NamespacedCronJobStatusOperation
 															r.summary = ""
 															r.operationID = "readBatchV1NamespacedCronJobStatus"
+															r.operationGroup = ""
 															r.pathPattern = "/apis/batch/v1/namespaces/{namespace}/cronjobs/{name}/status"
 															r.args = args
 															r.count = 2
@@ -20072,6 +20327,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = ListBatchV1NamespacedJobOperation
 													r.summary = ""
 													r.operationID = "listBatchV1NamespacedJob"
+													r.operationGroup = ""
 													r.pathPattern = "/apis/batch/v1/namespaces/{namespace}/jobs"
 													r.args = args
 													r.count = 1
@@ -20104,6 +20360,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = ReadBatchV1NamespacedJobOperation
 														r.summary = ""
 														r.operationID = "readBatchV1NamespacedJob"
+														r.operationGroup = ""
 														r.pathPattern = "/apis/batch/v1/namespaces/{namespace}/jobs/{name}"
 														r.args = args
 														r.count = 2
@@ -20128,6 +20385,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = ReadBatchV1NamespacedJobStatusOperation
 															r.summary = ""
 															r.operationID = "readBatchV1NamespacedJobStatus"
+															r.operationGroup = ""
 															r.pathPattern = "/apis/batch/v1/namespaces/{namespace}/jobs/{name}/status"
 															r.args = args
 															r.count = 2
@@ -20172,6 +20430,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = WatchBatchV1CronJobListForAllNamespacesOperation
 												r.summary = ""
 												r.operationID = "watchBatchV1CronJobListForAllNamespaces"
+												r.operationGroup = ""
 												r.pathPattern = "/apis/batch/v1/watch/cronjobs"
 												r.args = args
 												r.count = 0
@@ -20196,6 +20455,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = WatchBatchV1JobListForAllNamespacesOperation
 												r.summary = ""
 												r.operationID = "watchBatchV1JobListForAllNamespaces"
+												r.operationGroup = ""
 												r.pathPattern = "/apis/batch/v1/watch/jobs"
 												r.args = args
 												r.count = 0
@@ -20252,6 +20512,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = WatchBatchV1NamespacedCronJobListOperation
 														r.summary = ""
 														r.operationID = "watchBatchV1NamespacedCronJobList"
+														r.operationGroup = ""
 														r.pathPattern = "/apis/batch/v1/watch/namespaces/{namespace}/cronjobs"
 														r.args = args
 														r.count = 1
@@ -20285,6 +20546,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = WatchBatchV1NamespacedCronJobOperation
 															r.summary = ""
 															r.operationID = "watchBatchV1NamespacedCronJob"
+															r.operationGroup = ""
 															r.pathPattern = "/apis/batch/v1/watch/namespaces/{namespace}/cronjobs/{name}"
 															r.args = args
 															r.count = 2
@@ -20310,6 +20572,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = WatchBatchV1NamespacedJobListOperation
 														r.summary = ""
 														r.operationID = "watchBatchV1NamespacedJobList"
+														r.operationGroup = ""
 														r.pathPattern = "/apis/batch/v1/watch/namespaces/{namespace}/jobs"
 														r.args = args
 														r.count = 1
@@ -20343,6 +20606,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = WatchBatchV1NamespacedJobOperation
 															r.summary = ""
 															r.operationID = "watchBatchV1NamespacedJob"
+															r.operationGroup = ""
 															r.pathPattern = "/apis/batch/v1/watch/namespaces/{namespace}/jobs/{name}"
 															r.args = args
 															r.count = 2
@@ -20376,6 +20640,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										r.name = GetBatchV1beta1APIResourcesOperation
 										r.summary = ""
 										r.operationID = "getBatchV1beta1APIResources"
+										r.operationGroup = ""
 										r.pathPattern = "/apis/batch/v1beta1/"
 										r.args = args
 										r.count = 0
@@ -20400,6 +20665,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = ListBatchV1beta1CronJobForAllNamespacesOperation
 											r.summary = ""
 											r.operationID = "listBatchV1beta1CronJobForAllNamespaces"
+											r.operationGroup = ""
 											r.pathPattern = "/apis/batch/v1beta1/cronjobs"
 											r.args = args
 											r.count = 0
@@ -20444,6 +20710,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = ListBatchV1beta1NamespacedCronJobOperation
 												r.summary = ""
 												r.operationID = "listBatchV1beta1NamespacedCronJob"
+												r.operationGroup = ""
 												r.pathPattern = "/apis/batch/v1beta1/namespaces/{namespace}/cronjobs"
 												r.args = args
 												r.count = 1
@@ -20476,6 +20743,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = ReadBatchV1beta1NamespacedCronJobOperation
 													r.summary = ""
 													r.operationID = "readBatchV1beta1NamespacedCronJob"
+													r.operationGroup = ""
 													r.pathPattern = "/apis/batch/v1beta1/namespaces/{namespace}/cronjobs/{name}"
 													r.args = args
 													r.count = 2
@@ -20500,6 +20768,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = ReadBatchV1beta1NamespacedCronJobStatusOperation
 														r.summary = ""
 														r.operationID = "readBatchV1beta1NamespacedCronJobStatus"
+														r.operationGroup = ""
 														r.pathPattern = "/apis/batch/v1beta1/namespaces/{namespace}/cronjobs/{name}/status"
 														r.args = args
 														r.count = 2
@@ -20542,6 +20811,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = WatchBatchV1beta1CronJobListForAllNamespacesOperation
 												r.summary = ""
 												r.operationID = "watchBatchV1beta1CronJobListForAllNamespaces"
+												r.operationGroup = ""
 												r.pathPattern = "/apis/batch/v1beta1/watch/cronjobs"
 												r.args = args
 												r.count = 0
@@ -20586,6 +20856,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = WatchBatchV1beta1NamespacedCronJobListOperation
 													r.summary = ""
 													r.operationID = "watchBatchV1beta1NamespacedCronJobList"
+													r.operationGroup = ""
 													r.pathPattern = "/apis/batch/v1beta1/watch/namespaces/{namespace}/cronjobs"
 													r.args = args
 													r.count = 1
@@ -20619,6 +20890,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = WatchBatchV1beta1NamespacedCronJobOperation
 														r.summary = ""
 														r.operationID = "watchBatchV1beta1NamespacedCronJob"
+														r.operationGroup = ""
 														r.pathPattern = "/apis/batch/v1beta1/watch/namespaces/{namespace}/cronjobs/{name}"
 														r.args = args
 														r.count = 2
@@ -20666,6 +20938,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									r.name = GetCertificatesAPIGroupOperation
 									r.summary = ""
 									r.operationID = "getCertificatesAPIGroup"
+									r.operationGroup = ""
 									r.pathPattern = "/apis/certificates.k8s.io/"
 									r.args = args
 									r.count = 0
@@ -20689,6 +20962,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										r.name = GetCertificatesV1APIResourcesOperation
 										r.summary = ""
 										r.operationID = "getCertificatesV1APIResources"
+										r.operationGroup = ""
 										r.pathPattern = "/apis/certificates.k8s.io/v1/"
 										r.args = args
 										r.count = 0
@@ -20712,6 +20986,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = ListCertificatesV1CertificateSigningRequestOperation
 											r.summary = ""
 											r.operationID = "listCertificatesV1CertificateSigningRequest"
+											r.operationGroup = ""
 											r.pathPattern = "/apis/certificates.k8s.io/v1/certificatesigningrequests"
 											r.args = args
 											r.count = 0
@@ -20744,6 +21019,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = ReadCertificatesV1CertificateSigningRequestOperation
 												r.summary = ""
 												r.operationID = "readCertificatesV1CertificateSigningRequest"
+												r.operationGroup = ""
 												r.pathPattern = "/apis/certificates.k8s.io/v1/certificatesigningrequests/{name}"
 												r.args = args
 												r.count = 1
@@ -20780,6 +21056,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = ReadCertificatesV1CertificateSigningRequestApprovalOperation
 														r.summary = ""
 														r.operationID = "readCertificatesV1CertificateSigningRequestApproval"
+														r.operationGroup = ""
 														r.pathPattern = "/apis/certificates.k8s.io/v1/certificatesigningrequests/{name}/approval"
 														r.args = args
 														r.count = 1
@@ -20804,6 +21081,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = ReadCertificatesV1CertificateSigningRequestStatusOperation
 														r.summary = ""
 														r.operationID = "readCertificatesV1CertificateSigningRequestStatus"
+														r.operationGroup = ""
 														r.pathPattern = "/apis/certificates.k8s.io/v1/certificatesigningrequests/{name}/status"
 														r.args = args
 														r.count = 1
@@ -20833,6 +21111,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = WatchCertificatesV1CertificateSigningRequestListOperation
 											r.summary = ""
 											r.operationID = "watchCertificatesV1CertificateSigningRequestList"
+											r.operationGroup = ""
 											r.pathPattern = "/apis/certificates.k8s.io/v1/watch/certificatesigningrequests"
 											r.args = args
 											r.count = 0
@@ -20866,6 +21145,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = WatchCertificatesV1CertificateSigningRequestOperation
 												r.summary = ""
 												r.operationID = "watchCertificatesV1CertificateSigningRequest"
+												r.operationGroup = ""
 												r.pathPattern = "/apis/certificates.k8s.io/v1/watch/certificatesigningrequests/{name}"
 												r.args = args
 												r.count = 1
@@ -20895,6 +21175,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									r.name = GetCoordinationAPIGroupOperation
 									r.summary = ""
 									r.operationID = "getCoordinationAPIGroup"
+									r.operationGroup = ""
 									r.pathPattern = "/apis/coordination.k8s.io/"
 									r.args = args
 									r.count = 0
@@ -20918,6 +21199,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										r.name = GetCoordinationV1APIResourcesOperation
 										r.summary = ""
 										r.operationID = "getCoordinationV1APIResources"
+										r.operationGroup = ""
 										r.pathPattern = "/apis/coordination.k8s.io/v1/"
 										r.args = args
 										r.count = 0
@@ -20942,6 +21224,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = ListCoordinationV1LeaseForAllNamespacesOperation
 											r.summary = ""
 											r.operationID = "listCoordinationV1LeaseForAllNamespaces"
+											r.operationGroup = ""
 											r.pathPattern = "/apis/coordination.k8s.io/v1/leases"
 											r.args = args
 											r.count = 0
@@ -20986,6 +21269,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = ListCoordinationV1NamespacedLeaseOperation
 												r.summary = ""
 												r.operationID = "listCoordinationV1NamespacedLease"
+												r.operationGroup = ""
 												r.pathPattern = "/apis/coordination.k8s.io/v1/namespaces/{namespace}/leases"
 												r.args = args
 												r.count = 1
@@ -21019,6 +21303,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = ReadCoordinationV1NamespacedLeaseOperation
 													r.summary = ""
 													r.operationID = "readCoordinationV1NamespacedLease"
+													r.operationGroup = ""
 													r.pathPattern = "/apis/coordination.k8s.io/v1/namespaces/{namespace}/leases/{name}"
 													r.args = args
 													r.count = 2
@@ -21059,6 +21344,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = WatchCoordinationV1LeaseListForAllNamespacesOperation
 												r.summary = ""
 												r.operationID = "watchCoordinationV1LeaseListForAllNamespaces"
+												r.operationGroup = ""
 												r.pathPattern = "/apis/coordination.k8s.io/v1/watch/leases"
 												r.args = args
 												r.count = 0
@@ -21103,6 +21389,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = WatchCoordinationV1NamespacedLeaseListOperation
 													r.summary = ""
 													r.operationID = "watchCoordinationV1NamespacedLeaseList"
+													r.operationGroup = ""
 													r.pathPattern = "/apis/coordination.k8s.io/v1/watch/namespaces/{namespace}/leases"
 													r.args = args
 													r.count = 1
@@ -21136,6 +21423,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = WatchCoordinationV1NamespacedLeaseOperation
 														r.summary = ""
 														r.operationID = "watchCoordinationV1NamespacedLease"
+														r.operationGroup = ""
 														r.pathPattern = "/apis/coordination.k8s.io/v1/watch/namespaces/{namespace}/leases/{name}"
 														r.args = args
 														r.count = 2
@@ -21171,6 +21459,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.name = GetDiscoveryAPIGroupOperation
 								r.summary = ""
 								r.operationID = "getDiscoveryAPIGroup"
+								r.operationGroup = ""
 								r.pathPattern = "/apis/discovery.k8s.io/"
 								r.args = args
 								r.count = 0
@@ -21206,6 +21495,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										r.name = GetDiscoveryV1APIResourcesOperation
 										r.summary = ""
 										r.operationID = "getDiscoveryV1APIResources"
+										r.operationGroup = ""
 										r.pathPattern = "/apis/discovery.k8s.io/v1/"
 										r.args = args
 										r.count = 0
@@ -21230,6 +21520,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = ListDiscoveryV1EndpointSliceForAllNamespacesOperation
 											r.summary = ""
 											r.operationID = "listDiscoveryV1EndpointSliceForAllNamespaces"
+											r.operationGroup = ""
 											r.pathPattern = "/apis/discovery.k8s.io/v1/endpointslices"
 											r.args = args
 											r.count = 0
@@ -21274,6 +21565,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = ListDiscoveryV1NamespacedEndpointSliceOperation
 												r.summary = ""
 												r.operationID = "listDiscoveryV1NamespacedEndpointSlice"
+												r.operationGroup = ""
 												r.pathPattern = "/apis/discovery.k8s.io/v1/namespaces/{namespace}/endpointslices"
 												r.args = args
 												r.count = 1
@@ -21307,6 +21599,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = ReadDiscoveryV1NamespacedEndpointSliceOperation
 													r.summary = ""
 													r.operationID = "readDiscoveryV1NamespacedEndpointSlice"
+													r.operationGroup = ""
 													r.pathPattern = "/apis/discovery.k8s.io/v1/namespaces/{namespace}/endpointslices/{name}"
 													r.args = args
 													r.count = 2
@@ -21347,6 +21640,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = WatchDiscoveryV1EndpointSliceListForAllNamespacesOperation
 												r.summary = ""
 												r.operationID = "watchDiscoveryV1EndpointSliceListForAllNamespaces"
+												r.operationGroup = ""
 												r.pathPattern = "/apis/discovery.k8s.io/v1/watch/endpointslices"
 												r.args = args
 												r.count = 0
@@ -21391,6 +21685,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = WatchDiscoveryV1NamespacedEndpointSliceListOperation
 													r.summary = ""
 													r.operationID = "watchDiscoveryV1NamespacedEndpointSliceList"
+													r.operationGroup = ""
 													r.pathPattern = "/apis/discovery.k8s.io/v1/watch/namespaces/{namespace}/endpointslices"
 													r.args = args
 													r.count = 1
@@ -21424,6 +21719,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = WatchDiscoveryV1NamespacedEndpointSliceOperation
 														r.summary = ""
 														r.operationID = "watchDiscoveryV1NamespacedEndpointSlice"
+														r.operationGroup = ""
 														r.pathPattern = "/apis/discovery.k8s.io/v1/watch/namespaces/{namespace}/endpointslices/{name}"
 														r.args = args
 														r.count = 2
@@ -21455,6 +21751,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										r.name = GetDiscoveryV1beta1APIResourcesOperation
 										r.summary = ""
 										r.operationID = "getDiscoveryV1beta1APIResources"
+										r.operationGroup = ""
 										r.pathPattern = "/apis/discovery.k8s.io/v1beta1/"
 										r.args = args
 										r.count = 0
@@ -21479,6 +21776,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = ListDiscoveryV1beta1EndpointSliceForAllNamespacesOperation
 											r.summary = ""
 											r.operationID = "listDiscoveryV1beta1EndpointSliceForAllNamespaces"
+											r.operationGroup = ""
 											r.pathPattern = "/apis/discovery.k8s.io/v1beta1/endpointslices"
 											r.args = args
 											r.count = 0
@@ -21523,6 +21821,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = ListDiscoveryV1beta1NamespacedEndpointSliceOperation
 												r.summary = ""
 												r.operationID = "listDiscoveryV1beta1NamespacedEndpointSlice"
+												r.operationGroup = ""
 												r.pathPattern = "/apis/discovery.k8s.io/v1beta1/namespaces/{namespace}/endpointslices"
 												r.args = args
 												r.count = 1
@@ -21556,6 +21855,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = ReadDiscoveryV1beta1NamespacedEndpointSliceOperation
 													r.summary = ""
 													r.operationID = "readDiscoveryV1beta1NamespacedEndpointSlice"
+													r.operationGroup = ""
 													r.pathPattern = "/apis/discovery.k8s.io/v1beta1/namespaces/{namespace}/endpointslices/{name}"
 													r.args = args
 													r.count = 2
@@ -21596,6 +21896,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesOperation
 												r.summary = ""
 												r.operationID = "watchDiscoveryV1beta1EndpointSliceListForAllNamespaces"
+												r.operationGroup = ""
 												r.pathPattern = "/apis/discovery.k8s.io/v1beta1/watch/endpointslices"
 												r.args = args
 												r.count = 0
@@ -21640,6 +21941,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = WatchDiscoveryV1beta1NamespacedEndpointSliceListOperation
 													r.summary = ""
 													r.operationID = "watchDiscoveryV1beta1NamespacedEndpointSliceList"
+													r.operationGroup = ""
 													r.pathPattern = "/apis/discovery.k8s.io/v1beta1/watch/namespaces/{namespace}/endpointslices"
 													r.args = args
 													r.count = 1
@@ -21673,6 +21975,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = WatchDiscoveryV1beta1NamespacedEndpointSliceOperation
 														r.summary = ""
 														r.operationID = "watchDiscoveryV1beta1NamespacedEndpointSlice"
+														r.operationGroup = ""
 														r.pathPattern = "/apis/discovery.k8s.io/v1beta1/watch/namespaces/{namespace}/endpointslices/{name}"
 														r.args = args
 														r.count = 2
@@ -21708,6 +22011,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.name = GetEventsAPIGroupOperation
 								r.summary = ""
 								r.operationID = "getEventsAPIGroup"
+								r.operationGroup = ""
 								r.pathPattern = "/apis/events.k8s.io/"
 								r.args = args
 								r.count = 0
@@ -21743,6 +22047,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										r.name = GetEventsV1APIResourcesOperation
 										r.summary = ""
 										r.operationID = "getEventsV1APIResources"
+										r.operationGroup = ""
 										r.pathPattern = "/apis/events.k8s.io/v1/"
 										r.args = args
 										r.count = 0
@@ -21767,6 +22072,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = ListEventsV1EventForAllNamespacesOperation
 											r.summary = ""
 											r.operationID = "listEventsV1EventForAllNamespaces"
+											r.operationGroup = ""
 											r.pathPattern = "/apis/events.k8s.io/v1/events"
 											r.args = args
 											r.count = 0
@@ -21811,6 +22117,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = ListEventsV1NamespacedEventOperation
 												r.summary = ""
 												r.operationID = "listEventsV1NamespacedEvent"
+												r.operationGroup = ""
 												r.pathPattern = "/apis/events.k8s.io/v1/namespaces/{namespace}/events"
 												r.args = args
 												r.count = 1
@@ -21844,6 +22151,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = ReadEventsV1NamespacedEventOperation
 													r.summary = ""
 													r.operationID = "readEventsV1NamespacedEvent"
+													r.operationGroup = ""
 													r.pathPattern = "/apis/events.k8s.io/v1/namespaces/{namespace}/events/{name}"
 													r.args = args
 													r.count = 2
@@ -21884,6 +22192,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = WatchEventsV1EventListForAllNamespacesOperation
 												r.summary = ""
 												r.operationID = "watchEventsV1EventListForAllNamespaces"
+												r.operationGroup = ""
 												r.pathPattern = "/apis/events.k8s.io/v1/watch/events"
 												r.args = args
 												r.count = 0
@@ -21928,6 +22237,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = WatchEventsV1NamespacedEventListOperation
 													r.summary = ""
 													r.operationID = "watchEventsV1NamespacedEventList"
+													r.operationGroup = ""
 													r.pathPattern = "/apis/events.k8s.io/v1/watch/namespaces/{namespace}/events"
 													r.args = args
 													r.count = 1
@@ -21961,6 +22271,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = WatchEventsV1NamespacedEventOperation
 														r.summary = ""
 														r.operationID = "watchEventsV1NamespacedEvent"
+														r.operationGroup = ""
 														r.pathPattern = "/apis/events.k8s.io/v1/watch/namespaces/{namespace}/events/{name}"
 														r.args = args
 														r.count = 2
@@ -21992,6 +22303,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										r.name = GetEventsV1beta1APIResourcesOperation
 										r.summary = ""
 										r.operationID = "getEventsV1beta1APIResources"
+										r.operationGroup = ""
 										r.pathPattern = "/apis/events.k8s.io/v1beta1/"
 										r.args = args
 										r.count = 0
@@ -22016,6 +22328,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = ListEventsV1beta1EventForAllNamespacesOperation
 											r.summary = ""
 											r.operationID = "listEventsV1beta1EventForAllNamespaces"
+											r.operationGroup = ""
 											r.pathPattern = "/apis/events.k8s.io/v1beta1/events"
 											r.args = args
 											r.count = 0
@@ -22060,6 +22373,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = ListEventsV1beta1NamespacedEventOperation
 												r.summary = ""
 												r.operationID = "listEventsV1beta1NamespacedEvent"
+												r.operationGroup = ""
 												r.pathPattern = "/apis/events.k8s.io/v1beta1/namespaces/{namespace}/events"
 												r.args = args
 												r.count = 1
@@ -22093,6 +22407,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = ReadEventsV1beta1NamespacedEventOperation
 													r.summary = ""
 													r.operationID = "readEventsV1beta1NamespacedEvent"
+													r.operationGroup = ""
 													r.pathPattern = "/apis/events.k8s.io/v1beta1/namespaces/{namespace}/events/{name}"
 													r.args = args
 													r.count = 2
@@ -22133,6 +22448,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = WatchEventsV1beta1EventListForAllNamespacesOperation
 												r.summary = ""
 												r.operationID = "watchEventsV1beta1EventListForAllNamespaces"
+												r.operationGroup = ""
 												r.pathPattern = "/apis/events.k8s.io/v1beta1/watch/events"
 												r.args = args
 												r.count = 0
@@ -22177,6 +22493,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = WatchEventsV1beta1NamespacedEventListOperation
 													r.summary = ""
 													r.operationID = "watchEventsV1beta1NamespacedEventList"
+													r.operationGroup = ""
 													r.pathPattern = "/apis/events.k8s.io/v1beta1/watch/namespaces/{namespace}/events"
 													r.args = args
 													r.count = 1
@@ -22210,6 +22527,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = WatchEventsV1beta1NamespacedEventOperation
 														r.summary = ""
 														r.operationID = "watchEventsV1beta1NamespacedEvent"
+														r.operationGroup = ""
 														r.pathPattern = "/apis/events.k8s.io/v1beta1/watch/namespaces/{namespace}/events/{name}"
 														r.args = args
 														r.count = 2
@@ -22245,6 +22563,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.name = GetFlowcontrolApiserverAPIGroupOperation
 								r.summary = ""
 								r.operationID = "getFlowcontrolApiserverAPIGroup"
+								r.operationGroup = ""
 								r.pathPattern = "/apis/flowcontrol.apiserver.k8s.io/"
 								r.args = args
 								r.count = 0
@@ -22280,6 +22599,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										r.name = GetFlowcontrolApiserverV1beta1APIResourcesOperation
 										r.summary = ""
 										r.operationID = "getFlowcontrolApiserverV1beta1APIResources"
+										r.operationGroup = ""
 										r.pathPattern = "/apis/flowcontrol.apiserver.k8s.io/v1beta1/"
 										r.args = args
 										r.count = 0
@@ -22303,6 +22623,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = ListFlowcontrolApiserverV1beta1FlowSchemaOperation
 											r.summary = ""
 											r.operationID = "listFlowcontrolApiserverV1beta1FlowSchema"
+											r.operationGroup = ""
 											r.pathPattern = "/apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas"
 											r.args = args
 											r.count = 0
@@ -22335,6 +22656,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = ReadFlowcontrolApiserverV1beta1FlowSchemaOperation
 												r.summary = ""
 												r.operationID = "readFlowcontrolApiserverV1beta1FlowSchema"
+												r.operationGroup = ""
 												r.pathPattern = "/apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas/{name}"
 												r.args = args
 												r.count = 1
@@ -22359,6 +22681,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = ReadFlowcontrolApiserverV1beta1FlowSchemaStatusOperation
 													r.summary = ""
 													r.operationID = "readFlowcontrolApiserverV1beta1FlowSchemaStatus"
+													r.operationGroup = ""
 													r.pathPattern = "/apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas/{name}/status"
 													r.args = args
 													r.count = 1
@@ -22386,6 +22709,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationOperation
 											r.summary = ""
 											r.operationID = "listFlowcontrolApiserverV1beta1PriorityLevelConfiguration"
+											r.operationGroup = ""
 											r.pathPattern = "/apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations"
 											r.args = args
 											r.count = 0
@@ -22418,6 +22742,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationOperation
 												r.summary = ""
 												r.operationID = "readFlowcontrolApiserverV1beta1PriorityLevelConfiguration"
+												r.operationGroup = ""
 												r.pathPattern = "/apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations/{name}"
 												r.args = args
 												r.count = 1
@@ -22442,6 +22767,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusOperation
 													r.summary = ""
 													r.operationID = "readFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus"
+													r.operationGroup = ""
 													r.pathPattern = "/apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations/{name}/status"
 													r.args = args
 													r.count = 1
@@ -22481,6 +22807,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = WatchFlowcontrolApiserverV1beta1FlowSchemaListOperation
 												r.summary = ""
 												r.operationID = "watchFlowcontrolApiserverV1beta1FlowSchemaList"
+												r.operationGroup = ""
 												r.pathPattern = "/apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/flowschemas"
 												r.args = args
 												r.count = 0
@@ -22514,6 +22841,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = WatchFlowcontrolApiserverV1beta1FlowSchemaOperation
 													r.summary = ""
 													r.operationID = "watchFlowcontrolApiserverV1beta1FlowSchema"
+													r.operationGroup = ""
 													r.pathPattern = "/apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/flowschemas/{name}"
 													r.args = args
 													r.count = 1
@@ -22539,6 +22867,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListOperation
 												r.summary = ""
 												r.operationID = "watchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList"
+												r.operationGroup = ""
 												r.pathPattern = "/apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/prioritylevelconfigurations"
 												r.args = args
 												r.count = 0
@@ -22572,6 +22901,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationOperation
 													r.summary = ""
 													r.operationID = "watchFlowcontrolApiserverV1beta1PriorityLevelConfiguration"
+													r.operationGroup = ""
 													r.pathPattern = "/apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/prioritylevelconfigurations/{name}"
 													r.args = args
 													r.count = 1
@@ -22601,6 +22931,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										r.name = GetFlowcontrolApiserverV1beta2APIResourcesOperation
 										r.summary = ""
 										r.operationID = "getFlowcontrolApiserverV1beta2APIResources"
+										r.operationGroup = ""
 										r.pathPattern = "/apis/flowcontrol.apiserver.k8s.io/v1beta2/"
 										r.args = args
 										r.count = 0
@@ -22624,6 +22955,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = ListFlowcontrolApiserverV1beta2FlowSchemaOperation
 											r.summary = ""
 											r.operationID = "listFlowcontrolApiserverV1beta2FlowSchema"
+											r.operationGroup = ""
 											r.pathPattern = "/apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas"
 											r.args = args
 											r.count = 0
@@ -22656,6 +22988,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = ReadFlowcontrolApiserverV1beta2FlowSchemaOperation
 												r.summary = ""
 												r.operationID = "readFlowcontrolApiserverV1beta2FlowSchema"
+												r.operationGroup = ""
 												r.pathPattern = "/apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas/{name}"
 												r.args = args
 												r.count = 1
@@ -22680,6 +23013,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = ReadFlowcontrolApiserverV1beta2FlowSchemaStatusOperation
 													r.summary = ""
 													r.operationID = "readFlowcontrolApiserverV1beta2FlowSchemaStatus"
+													r.operationGroup = ""
 													r.pathPattern = "/apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas/{name}/status"
 													r.args = args
 													r.count = 1
@@ -22707,6 +23041,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationOperation
 											r.summary = ""
 											r.operationID = "listFlowcontrolApiserverV1beta2PriorityLevelConfiguration"
+											r.operationGroup = ""
 											r.pathPattern = "/apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations"
 											r.args = args
 											r.count = 0
@@ -22739,6 +23074,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationOperation
 												r.summary = ""
 												r.operationID = "readFlowcontrolApiserverV1beta2PriorityLevelConfiguration"
+												r.operationGroup = ""
 												r.pathPattern = "/apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations/{name}"
 												r.args = args
 												r.count = 1
@@ -22763,6 +23099,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusOperation
 													r.summary = ""
 													r.operationID = "readFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus"
+													r.operationGroup = ""
 													r.pathPattern = "/apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations/{name}/status"
 													r.args = args
 													r.count = 1
@@ -22802,6 +23139,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = WatchFlowcontrolApiserverV1beta2FlowSchemaListOperation
 												r.summary = ""
 												r.operationID = "watchFlowcontrolApiserverV1beta2FlowSchemaList"
+												r.operationGroup = ""
 												r.pathPattern = "/apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/flowschemas"
 												r.args = args
 												r.count = 0
@@ -22835,6 +23173,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = WatchFlowcontrolApiserverV1beta2FlowSchemaOperation
 													r.summary = ""
 													r.operationID = "watchFlowcontrolApiserverV1beta2FlowSchema"
+													r.operationGroup = ""
 													r.pathPattern = "/apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/flowschemas/{name}"
 													r.args = args
 													r.count = 1
@@ -22860,6 +23199,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListOperation
 												r.summary = ""
 												r.operationID = "watchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList"
+												r.operationGroup = ""
 												r.pathPattern = "/apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/prioritylevelconfigurations"
 												r.args = args
 												r.count = 0
@@ -22893,6 +23233,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationOperation
 													r.summary = ""
 													r.operationID = "watchFlowcontrolApiserverV1beta2PriorityLevelConfiguration"
+													r.operationGroup = ""
 													r.pathPattern = "/apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/prioritylevelconfigurations/{name}"
 													r.args = args
 													r.count = 1
@@ -22926,6 +23267,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.name = GetInternalApiserverAPIGroupOperation
 								r.summary = ""
 								r.operationID = "getInternalApiserverAPIGroup"
+								r.operationGroup = ""
 								r.pathPattern = "/apis/internal.apiserver.k8s.io/"
 								r.args = args
 								r.count = 0
@@ -22949,6 +23291,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									r.name = GetInternalApiserverV1alpha1APIResourcesOperation
 									r.summary = ""
 									r.operationID = "getInternalApiserverV1alpha1APIResources"
+									r.operationGroup = ""
 									r.pathPattern = "/apis/internal.apiserver.k8s.io/v1alpha1/"
 									r.args = args
 									r.count = 0
@@ -22972,6 +23315,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										r.name = ListInternalApiserverV1alpha1StorageVersionOperation
 										r.summary = ""
 										r.operationID = "listInternalApiserverV1alpha1StorageVersion"
+										r.operationGroup = ""
 										r.pathPattern = "/apis/internal.apiserver.k8s.io/v1alpha1/storageversions"
 										r.args = args
 										r.count = 0
@@ -23004,6 +23348,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = ReadInternalApiserverV1alpha1StorageVersionOperation
 											r.summary = ""
 											r.operationID = "readInternalApiserverV1alpha1StorageVersion"
+											r.operationGroup = ""
 											r.pathPattern = "/apis/internal.apiserver.k8s.io/v1alpha1/storageversions/{name}"
 											r.args = args
 											r.count = 1
@@ -23028,6 +23373,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = ReadInternalApiserverV1alpha1StorageVersionStatusOperation
 												r.summary = ""
 												r.operationID = "readInternalApiserverV1alpha1StorageVersionStatus"
+												r.operationGroup = ""
 												r.pathPattern = "/apis/internal.apiserver.k8s.io/v1alpha1/storageversions/{name}/status"
 												r.args = args
 												r.count = 1
@@ -23055,6 +23401,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										r.name = WatchInternalApiserverV1alpha1StorageVersionListOperation
 										r.summary = ""
 										r.operationID = "watchInternalApiserverV1alpha1StorageVersionList"
+										r.operationGroup = ""
 										r.pathPattern = "/apis/internal.apiserver.k8s.io/v1alpha1/watch/storageversions"
 										r.args = args
 										r.count = 0
@@ -23088,6 +23435,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = WatchInternalApiserverV1alpha1StorageVersionOperation
 											r.summary = ""
 											r.operationID = "watchInternalApiserverV1alpha1StorageVersion"
+											r.operationGroup = ""
 											r.pathPattern = "/apis/internal.apiserver.k8s.io/v1alpha1/watch/storageversions/{name}"
 											r.args = args
 											r.count = 1
@@ -23129,6 +23477,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									r.name = GetNetworkingAPIGroupOperation
 									r.summary = ""
 									r.operationID = "getNetworkingAPIGroup"
+									r.operationGroup = ""
 									r.pathPattern = "/apis/networking.k8s.io/"
 									r.args = args
 									r.count = 0
@@ -23152,6 +23501,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										r.name = GetNetworkingV1APIResourcesOperation
 										r.summary = ""
 										r.operationID = "getNetworkingV1APIResources"
+										r.operationGroup = ""
 										r.pathPattern = "/apis/networking.k8s.io/v1/"
 										r.args = args
 										r.count = 0
@@ -23187,6 +23537,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = ListNetworkingV1IngressClassOperation
 												r.summary = ""
 												r.operationID = "listNetworkingV1IngressClass"
+												r.operationGroup = ""
 												r.pathPattern = "/apis/networking.k8s.io/v1/ingressclasses"
 												r.args = args
 												r.count = 0
@@ -23220,6 +23571,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = ReadNetworkingV1IngressClassOperation
 													r.summary = ""
 													r.operationID = "readNetworkingV1IngressClass"
+													r.operationGroup = ""
 													r.pathPattern = "/apis/networking.k8s.io/v1/ingressclasses/{name}"
 													r.args = args
 													r.count = 1
@@ -23246,6 +23598,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = ListNetworkingV1IngressForAllNamespacesOperation
 												r.summary = ""
 												r.operationID = "listNetworkingV1IngressForAllNamespaces"
+												r.operationGroup = ""
 												r.pathPattern = "/apis/networking.k8s.io/v1/ingresses"
 												r.args = args
 												r.count = 0
@@ -23316,6 +23669,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = ListNetworkingV1NamespacedIngressOperation
 														r.summary = ""
 														r.operationID = "listNetworkingV1NamespacedIngress"
+														r.operationGroup = ""
 														r.pathPattern = "/apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses"
 														r.args = args
 														r.count = 1
@@ -23348,6 +23702,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = ReadNetworkingV1NamespacedIngressOperation
 															r.summary = ""
 															r.operationID = "readNetworkingV1NamespacedIngress"
+															r.operationGroup = ""
 															r.pathPattern = "/apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses/{name}"
 															r.args = args
 															r.count = 2
@@ -23372,6 +23727,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = ReadNetworkingV1NamespacedIngressStatusOperation
 																r.summary = ""
 																r.operationID = "readNetworkingV1NamespacedIngressStatus"
+																r.operationGroup = ""
 																r.pathPattern = "/apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses/{name}/status"
 																r.args = args
 																r.count = 2
@@ -23399,6 +23755,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = ListNetworkingV1NamespacedNetworkPolicyOperation
 														r.summary = ""
 														r.operationID = "listNetworkingV1NamespacedNetworkPolicy"
+														r.operationGroup = ""
 														r.pathPattern = "/apis/networking.k8s.io/v1/namespaces/{namespace}/networkpolicies"
 														r.args = args
 														r.count = 1
@@ -23432,6 +23789,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = ReadNetworkingV1NamespacedNetworkPolicyOperation
 															r.summary = ""
 															r.operationID = "readNetworkingV1NamespacedNetworkPolicy"
+															r.operationGroup = ""
 															r.pathPattern = "/apis/networking.k8s.io/v1/namespaces/{namespace}/networkpolicies/{name}"
 															r.args = args
 															r.count = 2
@@ -23462,6 +23820,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = ListNetworkingV1NetworkPolicyForAllNamespacesOperation
 												r.summary = ""
 												r.operationID = "listNetworkingV1NetworkPolicyForAllNamespaces"
+												r.operationGroup = ""
 												r.pathPattern = "/apis/networking.k8s.io/v1/networkpolicies"
 												r.args = args
 												r.count = 0
@@ -23511,6 +23870,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = WatchNetworkingV1IngressClassListOperation
 													r.summary = ""
 													r.operationID = "watchNetworkingV1IngressClassList"
+													r.operationGroup = ""
 													r.pathPattern = "/apis/networking.k8s.io/v1/watch/ingressclasses"
 													r.args = args
 													r.count = 0
@@ -23544,6 +23904,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = WatchNetworkingV1IngressClassOperation
 														r.summary = ""
 														r.operationID = "watchNetworkingV1IngressClass"
+														r.operationGroup = ""
 														r.pathPattern = "/apis/networking.k8s.io/v1/watch/ingressclasses/{name}"
 														r.args = args
 														r.count = 1
@@ -23570,6 +23931,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = WatchNetworkingV1IngressListForAllNamespacesOperation
 													r.summary = ""
 													r.operationID = "watchNetworkingV1IngressListForAllNamespaces"
+													r.operationGroup = ""
 													r.pathPattern = "/apis/networking.k8s.io/v1/watch/ingresses"
 													r.args = args
 													r.count = 0
@@ -23640,6 +24002,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = WatchNetworkingV1NamespacedIngressListOperation
 															r.summary = ""
 															r.operationID = "watchNetworkingV1NamespacedIngressList"
+															r.operationGroup = ""
 															r.pathPattern = "/apis/networking.k8s.io/v1/watch/namespaces/{namespace}/ingresses"
 															r.args = args
 															r.count = 1
@@ -23673,6 +24036,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = WatchNetworkingV1NamespacedIngressOperation
 																r.summary = ""
 																r.operationID = "watchNetworkingV1NamespacedIngress"
+																r.operationGroup = ""
 																r.pathPattern = "/apis/networking.k8s.io/v1/watch/namespaces/{namespace}/ingresses/{name}"
 																r.args = args
 																r.count = 2
@@ -23698,6 +24062,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = WatchNetworkingV1NamespacedNetworkPolicyListOperation
 															r.summary = ""
 															r.operationID = "watchNetworkingV1NamespacedNetworkPolicyList"
+															r.operationGroup = ""
 															r.pathPattern = "/apis/networking.k8s.io/v1/watch/namespaces/{namespace}/networkpolicies"
 															r.args = args
 															r.count = 1
@@ -23731,6 +24096,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = WatchNetworkingV1NamespacedNetworkPolicyOperation
 																r.summary = ""
 																r.operationID = "watchNetworkingV1NamespacedNetworkPolicy"
+																r.operationGroup = ""
 																r.pathPattern = "/apis/networking.k8s.io/v1/watch/namespaces/{namespace}/networkpolicies/{name}"
 																r.args = args
 																r.count = 2
@@ -23761,6 +24127,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = WatchNetworkingV1NetworkPolicyListForAllNamespacesOperation
 													r.summary = ""
 													r.operationID = "watchNetworkingV1NetworkPolicyListForAllNamespaces"
+													r.operationGroup = ""
 													r.pathPattern = "/apis/networking.k8s.io/v1/watch/networkpolicies"
 													r.args = args
 													r.count = 0
@@ -23792,6 +24159,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									r.name = GetNodeAPIGroupOperation
 									r.summary = ""
 									r.operationID = "getNodeAPIGroup"
+									r.operationGroup = ""
 									r.pathPattern = "/apis/node.k8s.io/"
 									r.args = args
 									r.count = 0
@@ -23827,6 +24195,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = GetNodeV1APIResourcesOperation
 											r.summary = ""
 											r.operationID = "getNodeV1APIResources"
+											r.operationGroup = ""
 											r.pathPattern = "/apis/node.k8s.io/v1/"
 											r.args = args
 											r.count = 0
@@ -23850,6 +24219,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = ListNodeV1RuntimeClassOperation
 												r.summary = ""
 												r.operationID = "listNodeV1RuntimeClass"
+												r.operationGroup = ""
 												r.pathPattern = "/apis/node.k8s.io/v1/runtimeclasses"
 												r.args = args
 												r.count = 0
@@ -23883,6 +24253,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = ReadNodeV1RuntimeClassOperation
 													r.summary = ""
 													r.operationID = "readNodeV1RuntimeClass"
+													r.operationGroup = ""
 													r.pathPattern = "/apis/node.k8s.io/v1/runtimeclasses/{name}"
 													r.args = args
 													r.count = 1
@@ -23908,6 +24279,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = WatchNodeV1RuntimeClassListOperation
 												r.summary = ""
 												r.operationID = "watchNodeV1RuntimeClassList"
+												r.operationGroup = ""
 												r.pathPattern = "/apis/node.k8s.io/v1/watch/runtimeclasses"
 												r.args = args
 												r.count = 0
@@ -23941,6 +24313,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = WatchNodeV1RuntimeClassOperation
 													r.summary = ""
 													r.operationID = "watchNodeV1RuntimeClass"
+													r.operationGroup = ""
 													r.pathPattern = "/apis/node.k8s.io/v1/watch/runtimeclasses/{name}"
 													r.args = args
 													r.count = 1
@@ -23968,6 +24341,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = GetNodeV1alpha1APIResourcesOperation
 											r.summary = ""
 											r.operationID = "getNodeV1alpha1APIResources"
+											r.operationGroup = ""
 											r.pathPattern = "/apis/node.k8s.io/v1alpha1/"
 											r.args = args
 											r.count = 0
@@ -23991,6 +24365,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = ListNodeV1alpha1RuntimeClassOperation
 												r.summary = ""
 												r.operationID = "listNodeV1alpha1RuntimeClass"
+												r.operationGroup = ""
 												r.pathPattern = "/apis/node.k8s.io/v1alpha1/runtimeclasses"
 												r.args = args
 												r.count = 0
@@ -24024,6 +24399,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = ReadNodeV1alpha1RuntimeClassOperation
 													r.summary = ""
 													r.operationID = "readNodeV1alpha1RuntimeClass"
+													r.operationGroup = ""
 													r.pathPattern = "/apis/node.k8s.io/v1alpha1/runtimeclasses/{name}"
 													r.args = args
 													r.count = 1
@@ -24049,6 +24425,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = WatchNodeV1alpha1RuntimeClassListOperation
 												r.summary = ""
 												r.operationID = "watchNodeV1alpha1RuntimeClassList"
+												r.operationGroup = ""
 												r.pathPattern = "/apis/node.k8s.io/v1alpha1/watch/runtimeclasses"
 												r.args = args
 												r.count = 0
@@ -24082,6 +24459,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = WatchNodeV1alpha1RuntimeClassOperation
 													r.summary = ""
 													r.operationID = "watchNodeV1alpha1RuntimeClass"
+													r.operationGroup = ""
 													r.pathPattern = "/apis/node.k8s.io/v1alpha1/watch/runtimeclasses/{name}"
 													r.args = args
 													r.count = 1
@@ -24109,6 +24487,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = GetNodeV1beta1APIResourcesOperation
 											r.summary = ""
 											r.operationID = "getNodeV1beta1APIResources"
+											r.operationGroup = ""
 											r.pathPattern = "/apis/node.k8s.io/v1beta1/"
 											r.args = args
 											r.count = 0
@@ -24132,6 +24511,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = ListNodeV1beta1RuntimeClassOperation
 												r.summary = ""
 												r.operationID = "listNodeV1beta1RuntimeClass"
+												r.operationGroup = ""
 												r.pathPattern = "/apis/node.k8s.io/v1beta1/runtimeclasses"
 												r.args = args
 												r.count = 0
@@ -24165,6 +24545,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = ReadNodeV1beta1RuntimeClassOperation
 													r.summary = ""
 													r.operationID = "readNodeV1beta1RuntimeClass"
+													r.operationGroup = ""
 													r.pathPattern = "/apis/node.k8s.io/v1beta1/runtimeclasses/{name}"
 													r.args = args
 													r.count = 1
@@ -24190,6 +24571,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = WatchNodeV1beta1RuntimeClassListOperation
 												r.summary = ""
 												r.operationID = "watchNodeV1beta1RuntimeClassList"
+												r.operationGroup = ""
 												r.pathPattern = "/apis/node.k8s.io/v1beta1/watch/runtimeclasses"
 												r.args = args
 												r.count = 0
@@ -24223,6 +24605,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = WatchNodeV1beta1RuntimeClassOperation
 													r.summary = ""
 													r.operationID = "watchNodeV1beta1RuntimeClass"
+													r.operationGroup = ""
 													r.pathPattern = "/apis/node.k8s.io/v1beta1/watch/runtimeclasses/{name}"
 													r.args = args
 													r.count = 1
@@ -24256,6 +24639,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.name = GetPolicyAPIGroupOperation
 								r.summary = ""
 								r.operationID = "getPolicyAPIGroup"
+								r.operationGroup = ""
 								r.pathPattern = "/apis/policy/"
 								r.args = args
 								r.count = 0
@@ -24291,6 +24675,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										r.name = GetPolicyV1APIResourcesOperation
 										r.summary = ""
 										r.operationID = "getPolicyV1APIResources"
+										r.operationGroup = ""
 										r.pathPattern = "/apis/policy/v1/"
 										r.args = args
 										r.count = 0
@@ -24335,6 +24720,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = ListPolicyV1NamespacedPodDisruptionBudgetOperation
 												r.summary = ""
 												r.operationID = "listPolicyV1NamespacedPodDisruptionBudget"
+												r.operationGroup = ""
 												r.pathPattern = "/apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets"
 												r.args = args
 												r.count = 1
@@ -24367,6 +24753,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = ReadPolicyV1NamespacedPodDisruptionBudgetOperation
 													r.summary = ""
 													r.operationID = "readPolicyV1NamespacedPodDisruptionBudget"
+													r.operationGroup = ""
 													r.pathPattern = "/apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets/{name}"
 													r.args = args
 													r.count = 2
@@ -24391,6 +24778,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = ReadPolicyV1NamespacedPodDisruptionBudgetStatusOperation
 														r.summary = ""
 														r.operationID = "readPolicyV1NamespacedPodDisruptionBudgetStatus"
+														r.operationGroup = ""
 														r.pathPattern = "/apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets/{name}/status"
 														r.args = args
 														r.count = 2
@@ -24421,6 +24809,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = ListPolicyV1PodDisruptionBudgetForAllNamespacesOperation
 											r.summary = ""
 											r.operationID = "listPolicyV1PodDisruptionBudgetForAllNamespaces"
+											r.operationGroup = ""
 											r.pathPattern = "/apis/policy/v1/poddisruptionbudgets"
 											r.args = args
 											r.count = 0
@@ -24477,6 +24866,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = WatchPolicyV1NamespacedPodDisruptionBudgetListOperation
 													r.summary = ""
 													r.operationID = "watchPolicyV1NamespacedPodDisruptionBudgetList"
+													r.operationGroup = ""
 													r.pathPattern = "/apis/policy/v1/watch/namespaces/{namespace}/poddisruptionbudgets"
 													r.args = args
 													r.count = 1
@@ -24510,6 +24900,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = WatchPolicyV1NamespacedPodDisruptionBudgetOperation
 														r.summary = ""
 														r.operationID = "watchPolicyV1NamespacedPodDisruptionBudget"
+														r.operationGroup = ""
 														r.pathPattern = "/apis/policy/v1/watch/namespaces/{namespace}/poddisruptionbudgets/{name}"
 														r.args = args
 														r.count = 2
@@ -24538,6 +24929,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = WatchPolicyV1PodDisruptionBudgetListForAllNamespacesOperation
 												r.summary = ""
 												r.operationID = "watchPolicyV1PodDisruptionBudgetListForAllNamespaces"
+												r.operationGroup = ""
 												r.pathPattern = "/apis/policy/v1/watch/poddisruptionbudgets"
 												r.args = args
 												r.count = 0
@@ -24565,6 +24957,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										r.name = GetPolicyV1beta1APIResourcesOperation
 										r.summary = ""
 										r.operationID = "getPolicyV1beta1APIResources"
+										r.operationGroup = ""
 										r.pathPattern = "/apis/policy/v1beta1/"
 										r.args = args
 										r.count = 0
@@ -24609,6 +25002,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = ListPolicyV1beta1NamespacedPodDisruptionBudgetOperation
 												r.summary = ""
 												r.operationID = "listPolicyV1beta1NamespacedPodDisruptionBudget"
+												r.operationGroup = ""
 												r.pathPattern = "/apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets"
 												r.args = args
 												r.count = 1
@@ -24641,6 +25035,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = ReadPolicyV1beta1NamespacedPodDisruptionBudgetOperation
 													r.summary = ""
 													r.operationID = "readPolicyV1beta1NamespacedPodDisruptionBudget"
+													r.operationGroup = ""
 													r.pathPattern = "/apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets/{name}"
 													r.args = args
 													r.count = 2
@@ -24665,6 +25060,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusOperation
 														r.summary = ""
 														r.operationID = "readPolicyV1beta1NamespacedPodDisruptionBudgetStatus"
+														r.operationGroup = ""
 														r.pathPattern = "/apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets/{name}/status"
 														r.args = args
 														r.count = 2
@@ -24707,6 +25103,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesOperation
 												r.summary = ""
 												r.operationID = "listPolicyV1beta1PodDisruptionBudgetForAllNamespaces"
+												r.operationGroup = ""
 												r.pathPattern = "/apis/policy/v1beta1/poddisruptionbudgets"
 												r.args = args
 												r.count = 0
@@ -24730,6 +25127,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = ListPolicyV1beta1PodSecurityPolicyOperation
 												r.summary = ""
 												r.operationID = "listPolicyV1beta1PodSecurityPolicy"
+												r.operationGroup = ""
 												r.pathPattern = "/apis/policy/v1beta1/podsecuritypolicies"
 												r.args = args
 												r.count = 0
@@ -24763,6 +25161,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = ReadPolicyV1beta1PodSecurityPolicyOperation
 													r.summary = ""
 													r.operationID = "readPolicyV1beta1PodSecurityPolicy"
+													r.operationGroup = ""
 													r.pathPattern = "/apis/policy/v1beta1/podsecuritypolicies/{name}"
 													r.args = args
 													r.count = 1
@@ -24823,6 +25222,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = WatchPolicyV1beta1NamespacedPodDisruptionBudgetListOperation
 													r.summary = ""
 													r.operationID = "watchPolicyV1beta1NamespacedPodDisruptionBudgetList"
+													r.operationGroup = ""
 													r.pathPattern = "/apis/policy/v1beta1/watch/namespaces/{namespace}/poddisruptionbudgets"
 													r.args = args
 													r.count = 1
@@ -24856,6 +25256,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = WatchPolicyV1beta1NamespacedPodDisruptionBudgetOperation
 														r.summary = ""
 														r.operationID = "watchPolicyV1beta1NamespacedPodDisruptionBudget"
+														r.operationGroup = ""
 														r.pathPattern = "/apis/policy/v1beta1/watch/namespaces/{namespace}/poddisruptionbudgets/{name}"
 														r.args = args
 														r.count = 2
@@ -24896,6 +25297,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesOperation
 													r.summary = ""
 													r.operationID = "watchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces"
+													r.operationGroup = ""
 													r.pathPattern = "/apis/policy/v1beta1/watch/poddisruptionbudgets"
 													r.args = args
 													r.count = 0
@@ -24919,6 +25321,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = WatchPolicyV1beta1PodSecurityPolicyListOperation
 													r.summary = ""
 													r.operationID = "watchPolicyV1beta1PodSecurityPolicyList"
+													r.operationGroup = ""
 													r.pathPattern = "/apis/policy/v1beta1/watch/podsecuritypolicies"
 													r.args = args
 													r.count = 0
@@ -24952,6 +25355,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = WatchPolicyV1beta1PodSecurityPolicyOperation
 														r.summary = ""
 														r.operationID = "watchPolicyV1beta1PodSecurityPolicy"
+														r.operationGroup = ""
 														r.pathPattern = "/apis/policy/v1beta1/watch/podsecuritypolicies/{name}"
 														r.args = args
 														r.count = 1
@@ -24987,6 +25391,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.name = GetRbacAuthorizationAPIGroupOperation
 								r.summary = ""
 								r.operationID = "getRbacAuthorizationAPIGroup"
+								r.operationGroup = ""
 								r.pathPattern = "/apis/rbac.authorization.k8s.io/"
 								r.args = args
 								r.count = 0
@@ -25010,6 +25415,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									r.name = GetRbacAuthorizationV1APIResourcesOperation
 									r.summary = ""
 									r.operationID = "getRbacAuthorizationV1APIResources"
+									r.operationGroup = ""
 									r.pathPattern = "/apis/rbac.authorization.k8s.io/v1/"
 									r.args = args
 									r.count = 0
@@ -25045,6 +25451,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = ListRbacAuthorizationV1ClusterRoleBindingOperation
 											r.summary = ""
 											r.operationID = "listRbacAuthorizationV1ClusterRoleBinding"
+											r.operationGroup = ""
 											r.pathPattern = "/apis/rbac.authorization.k8s.io/v1/clusterrolebindings"
 											r.args = args
 											r.count = 0
@@ -25078,6 +25485,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = ReadRbacAuthorizationV1ClusterRoleBindingOperation
 												r.summary = ""
 												r.operationID = "readRbacAuthorizationV1ClusterRoleBinding"
+												r.operationGroup = ""
 												r.pathPattern = "/apis/rbac.authorization.k8s.io/v1/clusterrolebindings/{name}"
 												r.args = args
 												r.count = 1
@@ -25103,6 +25511,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = ListRbacAuthorizationV1ClusterRoleOperation
 											r.summary = ""
 											r.operationID = "listRbacAuthorizationV1ClusterRole"
+											r.operationGroup = ""
 											r.pathPattern = "/apis/rbac.authorization.k8s.io/v1/clusterroles"
 											r.args = args
 											r.count = 0
@@ -25136,6 +25545,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = ReadRbacAuthorizationV1ClusterRoleOperation
 												r.summary = ""
 												r.operationID = "readRbacAuthorizationV1ClusterRole"
+												r.operationGroup = ""
 												r.pathPattern = "/apis/rbac.authorization.k8s.io/v1/clusterroles/{name}"
 												r.args = args
 												r.count = 1
@@ -25196,6 +25606,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = ListRbacAuthorizationV1NamespacedRoleBindingOperation
 												r.summary = ""
 												r.operationID = "listRbacAuthorizationV1NamespacedRoleBinding"
+												r.operationGroup = ""
 												r.pathPattern = "/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/rolebindings"
 												r.args = args
 												r.count = 1
@@ -25229,6 +25640,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = ReadRbacAuthorizationV1NamespacedRoleBindingOperation
 													r.summary = ""
 													r.operationID = "readRbacAuthorizationV1NamespacedRoleBinding"
+													r.operationGroup = ""
 													r.pathPattern = "/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/rolebindings/{name}"
 													r.args = args
 													r.count = 2
@@ -25254,6 +25666,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = ListRbacAuthorizationV1NamespacedRoleOperation
 												r.summary = ""
 												r.operationID = "listRbacAuthorizationV1NamespacedRole"
+												r.operationGroup = ""
 												r.pathPattern = "/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/roles"
 												r.args = args
 												r.count = 1
@@ -25287,6 +25700,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = ReadRbacAuthorizationV1NamespacedRoleOperation
 													r.summary = ""
 													r.operationID = "readRbacAuthorizationV1NamespacedRole"
+													r.operationGroup = ""
 													r.pathPattern = "/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/roles/{name}"
 													r.args = args
 													r.count = 2
@@ -25329,6 +25743,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = ListRbacAuthorizationV1RoleBindingForAllNamespacesOperation
 											r.summary = ""
 											r.operationID = "listRbacAuthorizationV1RoleBindingForAllNamespaces"
+											r.operationGroup = ""
 											r.pathPattern = "/apis/rbac.authorization.k8s.io/v1/rolebindings"
 											r.args = args
 											r.count = 0
@@ -25353,6 +25768,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = ListRbacAuthorizationV1RoleForAllNamespacesOperation
 											r.summary = ""
 											r.operationID = "listRbacAuthorizationV1RoleForAllNamespaces"
+											r.operationGroup = ""
 											r.pathPattern = "/apis/rbac.authorization.k8s.io/v1/roles"
 											r.args = args
 											r.count = 0
@@ -25402,6 +25818,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = WatchRbacAuthorizationV1ClusterRoleBindingListOperation
 												r.summary = ""
 												r.operationID = "watchRbacAuthorizationV1ClusterRoleBindingList"
+												r.operationGroup = ""
 												r.pathPattern = "/apis/rbac.authorization.k8s.io/v1/watch/clusterrolebindings"
 												r.args = args
 												r.count = 0
@@ -25435,6 +25852,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = WatchRbacAuthorizationV1ClusterRoleBindingOperation
 													r.summary = ""
 													r.operationID = "watchRbacAuthorizationV1ClusterRoleBinding"
+													r.operationGroup = ""
 													r.pathPattern = "/apis/rbac.authorization.k8s.io/v1/watch/clusterrolebindings/{name}"
 													r.args = args
 													r.count = 1
@@ -25460,6 +25878,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = WatchRbacAuthorizationV1ClusterRoleListOperation
 												r.summary = ""
 												r.operationID = "watchRbacAuthorizationV1ClusterRoleList"
+												r.operationGroup = ""
 												r.pathPattern = "/apis/rbac.authorization.k8s.io/v1/watch/clusterroles"
 												r.args = args
 												r.count = 0
@@ -25493,6 +25912,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = WatchRbacAuthorizationV1ClusterRoleOperation
 													r.summary = ""
 													r.operationID = "watchRbacAuthorizationV1ClusterRole"
+													r.operationGroup = ""
 													r.pathPattern = "/apis/rbac.authorization.k8s.io/v1/watch/clusterroles/{name}"
 													r.args = args
 													r.count = 1
@@ -25553,6 +25973,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = WatchRbacAuthorizationV1NamespacedRoleBindingListOperation
 													r.summary = ""
 													r.operationID = "watchRbacAuthorizationV1NamespacedRoleBindingList"
+													r.operationGroup = ""
 													r.pathPattern = "/apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/rolebindings"
 													r.args = args
 													r.count = 1
@@ -25586,6 +26007,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = WatchRbacAuthorizationV1NamespacedRoleBindingOperation
 														r.summary = ""
 														r.operationID = "watchRbacAuthorizationV1NamespacedRoleBinding"
+														r.operationGroup = ""
 														r.pathPattern = "/apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/rolebindings/{name}"
 														r.args = args
 														r.count = 2
@@ -25611,6 +26033,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = WatchRbacAuthorizationV1NamespacedRoleListOperation
 													r.summary = ""
 													r.operationID = "watchRbacAuthorizationV1NamespacedRoleList"
+													r.operationGroup = ""
 													r.pathPattern = "/apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/roles"
 													r.args = args
 													r.count = 1
@@ -25644,6 +26067,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = WatchRbacAuthorizationV1NamespacedRoleOperation
 														r.summary = ""
 														r.operationID = "watchRbacAuthorizationV1NamespacedRole"
+														r.operationGroup = ""
 														r.pathPattern = "/apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/roles/{name}"
 														r.args = args
 														r.count = 2
@@ -25686,6 +26110,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = WatchRbacAuthorizationV1RoleBindingListForAllNamespacesOperation
 												r.summary = ""
 												r.operationID = "watchRbacAuthorizationV1RoleBindingListForAllNamespaces"
+												r.operationGroup = ""
 												r.pathPattern = "/apis/rbac.authorization.k8s.io/v1/watch/rolebindings"
 												r.args = args
 												r.count = 0
@@ -25710,6 +26135,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = WatchRbacAuthorizationV1RoleListForAllNamespacesOperation
 												r.summary = ""
 												r.operationID = "watchRbacAuthorizationV1RoleListForAllNamespaces"
+												r.operationGroup = ""
 												r.pathPattern = "/apis/rbac.authorization.k8s.io/v1/watch/roles"
 												r.args = args
 												r.count = 0
@@ -25753,6 +26179,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									r.name = GetSchedulingAPIGroupOperation
 									r.summary = ""
 									r.operationID = "getSchedulingAPIGroup"
+									r.operationGroup = ""
 									r.pathPattern = "/apis/scheduling.k8s.io/"
 									r.args = args
 									r.count = 0
@@ -25776,6 +26203,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										r.name = GetSchedulingV1APIResourcesOperation
 										r.summary = ""
 										r.operationID = "getSchedulingV1APIResources"
+										r.operationGroup = ""
 										r.pathPattern = "/apis/scheduling.k8s.io/v1/"
 										r.args = args
 										r.count = 0
@@ -25799,6 +26227,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = ListSchedulingV1PriorityClassOperation
 											r.summary = ""
 											r.operationID = "listSchedulingV1PriorityClass"
+											r.operationGroup = ""
 											r.pathPattern = "/apis/scheduling.k8s.io/v1/priorityclasses"
 											r.args = args
 											r.count = 0
@@ -25832,6 +26261,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = ReadSchedulingV1PriorityClassOperation
 												r.summary = ""
 												r.operationID = "readSchedulingV1PriorityClass"
+												r.operationGroup = ""
 												r.pathPattern = "/apis/scheduling.k8s.io/v1/priorityclasses/{name}"
 												r.args = args
 												r.count = 1
@@ -25857,6 +26287,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = WatchSchedulingV1PriorityClassListOperation
 											r.summary = ""
 											r.operationID = "watchSchedulingV1PriorityClassList"
+											r.operationGroup = ""
 											r.pathPattern = "/apis/scheduling.k8s.io/v1/watch/priorityclasses"
 											r.args = args
 											r.count = 0
@@ -25890,6 +26321,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = WatchSchedulingV1PriorityClassOperation
 												r.summary = ""
 												r.operationID = "watchSchedulingV1PriorityClass"
+												r.operationGroup = ""
 												r.pathPattern = "/apis/scheduling.k8s.io/v1/watch/priorityclasses/{name}"
 												r.args = args
 												r.count = 1
@@ -25919,6 +26351,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									r.name = GetStorageAPIGroupOperation
 									r.summary = ""
 									r.operationID = "getStorageAPIGroup"
+									r.operationGroup = ""
 									r.pathPattern = "/apis/storage.k8s.io/"
 									r.args = args
 									r.count = 0
@@ -25954,6 +26387,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = GetStorageV1APIResourcesOperation
 											r.summary = ""
 											r.operationID = "getStorageV1APIResources"
+											r.operationGroup = ""
 											r.pathPattern = "/apis/storage.k8s.io/v1/"
 											r.args = args
 											r.count = 0
@@ -25989,6 +26423,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = ListStorageV1CSIDriverOperation
 													r.summary = ""
 													r.operationID = "listStorageV1CSIDriver"
+													r.operationGroup = ""
 													r.pathPattern = "/apis/storage.k8s.io/v1/csidrivers"
 													r.args = args
 													r.count = 0
@@ -26022,6 +26457,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = ReadStorageV1CSIDriverOperation
 														r.summary = ""
 														r.operationID = "readStorageV1CSIDriver"
+														r.operationGroup = ""
 														r.pathPattern = "/apis/storage.k8s.io/v1/csidrivers/{name}"
 														r.args = args
 														r.count = 1
@@ -26047,6 +26483,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = ListStorageV1CSINodeOperation
 													r.summary = ""
 													r.operationID = "listStorageV1CSINode"
+													r.operationGroup = ""
 													r.pathPattern = "/apis/storage.k8s.io/v1/csinodes"
 													r.args = args
 													r.count = 0
@@ -26080,6 +26517,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = ReadStorageV1CSINodeOperation
 														r.summary = ""
 														r.operationID = "readStorageV1CSINode"
+														r.operationGroup = ""
 														r.pathPattern = "/apis/storage.k8s.io/v1/csinodes/{name}"
 														r.args = args
 														r.count = 1
@@ -26107,6 +26545,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = ListStorageV1StorageClassOperation
 												r.summary = ""
 												r.operationID = "listStorageV1StorageClass"
+												r.operationGroup = ""
 												r.pathPattern = "/apis/storage.k8s.io/v1/storageclasses"
 												r.args = args
 												r.count = 0
@@ -26140,6 +26579,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = ReadStorageV1StorageClassOperation
 													r.summary = ""
 													r.operationID = "readStorageV1StorageClass"
+													r.operationGroup = ""
 													r.pathPattern = "/apis/storage.k8s.io/v1/storageclasses/{name}"
 													r.args = args
 													r.count = 1
@@ -26165,6 +26605,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = ListStorageV1VolumeAttachmentOperation
 												r.summary = ""
 												r.operationID = "listStorageV1VolumeAttachment"
+												r.operationGroup = ""
 												r.pathPattern = "/apis/storage.k8s.io/v1/volumeattachments"
 												r.args = args
 												r.count = 0
@@ -26197,6 +26638,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = ReadStorageV1VolumeAttachmentOperation
 													r.summary = ""
 													r.operationID = "readStorageV1VolumeAttachment"
+													r.operationGroup = ""
 													r.pathPattern = "/apis/storage.k8s.io/v1/volumeattachments/{name}"
 													r.args = args
 													r.count = 1
@@ -26221,6 +26663,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = ReadStorageV1VolumeAttachmentStatusOperation
 														r.summary = ""
 														r.operationID = "readStorageV1VolumeAttachmentStatus"
+														r.operationGroup = ""
 														r.pathPattern = "/apis/storage.k8s.io/v1/volumeattachments/{name}/status"
 														r.args = args
 														r.count = 1
@@ -26272,6 +26715,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = WatchStorageV1CSIDriverListOperation
 														r.summary = ""
 														r.operationID = "watchStorageV1CSIDriverList"
+														r.operationGroup = ""
 														r.pathPattern = "/apis/storage.k8s.io/v1/watch/csidrivers"
 														r.args = args
 														r.count = 0
@@ -26305,6 +26749,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = WatchStorageV1CSIDriverOperation
 															r.summary = ""
 															r.operationID = "watchStorageV1CSIDriver"
+															r.operationGroup = ""
 															r.pathPattern = "/apis/storage.k8s.io/v1/watch/csidrivers/{name}"
 															r.args = args
 															r.count = 1
@@ -26330,6 +26775,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = WatchStorageV1CSINodeListOperation
 														r.summary = ""
 														r.operationID = "watchStorageV1CSINodeList"
+														r.operationGroup = ""
 														r.pathPattern = "/apis/storage.k8s.io/v1/watch/csinodes"
 														r.args = args
 														r.count = 0
@@ -26363,6 +26809,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = WatchStorageV1CSINodeOperation
 															r.summary = ""
 															r.operationID = "watchStorageV1CSINode"
+															r.operationGroup = ""
 															r.pathPattern = "/apis/storage.k8s.io/v1/watch/csinodes/{name}"
 															r.args = args
 															r.count = 1
@@ -26390,6 +26837,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = WatchStorageV1StorageClassListOperation
 													r.summary = ""
 													r.operationID = "watchStorageV1StorageClassList"
+													r.operationGroup = ""
 													r.pathPattern = "/apis/storage.k8s.io/v1/watch/storageclasses"
 													r.args = args
 													r.count = 0
@@ -26423,6 +26871,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = WatchStorageV1StorageClassOperation
 														r.summary = ""
 														r.operationID = "watchStorageV1StorageClass"
+														r.operationGroup = ""
 														r.pathPattern = "/apis/storage.k8s.io/v1/watch/storageclasses/{name}"
 														r.args = args
 														r.count = 1
@@ -26448,6 +26897,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = WatchStorageV1VolumeAttachmentListOperation
 													r.summary = ""
 													r.operationID = "watchStorageV1VolumeAttachmentList"
+													r.operationGroup = ""
 													r.pathPattern = "/apis/storage.k8s.io/v1/watch/volumeattachments"
 													r.args = args
 													r.count = 0
@@ -26481,6 +26931,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = WatchStorageV1VolumeAttachmentOperation
 														r.summary = ""
 														r.operationID = "watchStorageV1VolumeAttachment"
+														r.operationGroup = ""
 														r.pathPattern = "/apis/storage.k8s.io/v1/watch/volumeattachments/{name}"
 														r.args = args
 														r.count = 1
@@ -26510,6 +26961,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = GetStorageV1alpha1APIResourcesOperation
 											r.summary = ""
 											r.operationID = "getStorageV1alpha1APIResources"
+											r.operationGroup = ""
 											r.pathPattern = "/apis/storage.k8s.io/v1alpha1/"
 											r.args = args
 											r.count = 0
@@ -26534,6 +26986,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = ListStorageV1alpha1CSIStorageCapacityForAllNamespacesOperation
 												r.summary = ""
 												r.operationID = "listStorageV1alpha1CSIStorageCapacityForAllNamespaces"
+												r.operationGroup = ""
 												r.pathPattern = "/apis/storage.k8s.io/v1alpha1/csistoragecapacities"
 												r.args = args
 												r.count = 0
@@ -26578,6 +27031,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = ListStorageV1alpha1NamespacedCSIStorageCapacityOperation
 													r.summary = ""
 													r.operationID = "listStorageV1alpha1NamespacedCSIStorageCapacity"
+													r.operationGroup = ""
 													r.pathPattern = "/apis/storage.k8s.io/v1alpha1/namespaces/{namespace}/csistoragecapacities"
 													r.args = args
 													r.count = 1
@@ -26611,6 +27065,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = ReadStorageV1alpha1NamespacedCSIStorageCapacityOperation
 														r.summary = ""
 														r.operationID = "readStorageV1alpha1NamespacedCSIStorageCapacity"
+														r.operationGroup = ""
 														r.pathPattern = "/apis/storage.k8s.io/v1alpha1/namespaces/{namespace}/csistoragecapacities/{name}"
 														r.args = args
 														r.count = 2
@@ -26651,6 +27106,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesOperation
 													r.summary = ""
 													r.operationID = "watchStorageV1alpha1CSIStorageCapacityListForAllNamespaces"
+													r.operationGroup = ""
 													r.pathPattern = "/apis/storage.k8s.io/v1alpha1/watch/csistoragecapacities"
 													r.args = args
 													r.count = 0
@@ -26695,6 +27151,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = WatchStorageV1alpha1NamespacedCSIStorageCapacityListOperation
 														r.summary = ""
 														r.operationID = "watchStorageV1alpha1NamespacedCSIStorageCapacityList"
+														r.operationGroup = ""
 														r.pathPattern = "/apis/storage.k8s.io/v1alpha1/watch/namespaces/{namespace}/csistoragecapacities"
 														r.args = args
 														r.count = 1
@@ -26728,6 +27185,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = WatchStorageV1alpha1NamespacedCSIStorageCapacityOperation
 															r.summary = ""
 															r.operationID = "watchStorageV1alpha1NamespacedCSIStorageCapacity"
+															r.operationGroup = ""
 															r.pathPattern = "/apis/storage.k8s.io/v1alpha1/watch/namespaces/{namespace}/csistoragecapacities/{name}"
 															r.args = args
 															r.count = 2
@@ -26759,6 +27217,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = GetStorageV1beta1APIResourcesOperation
 											r.summary = ""
 											r.operationID = "getStorageV1beta1APIResources"
+											r.operationGroup = ""
 											r.pathPattern = "/apis/storage.k8s.io/v1beta1/"
 											r.args = args
 											r.count = 0
@@ -26783,6 +27242,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = ListStorageV1beta1CSIStorageCapacityForAllNamespacesOperation
 												r.summary = ""
 												r.operationID = "listStorageV1beta1CSIStorageCapacityForAllNamespaces"
+												r.operationGroup = ""
 												r.pathPattern = "/apis/storage.k8s.io/v1beta1/csistoragecapacities"
 												r.args = args
 												r.count = 0
@@ -26827,6 +27287,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = ListStorageV1beta1NamespacedCSIStorageCapacityOperation
 													r.summary = ""
 													r.operationID = "listStorageV1beta1NamespacedCSIStorageCapacity"
+													r.operationGroup = ""
 													r.pathPattern = "/apis/storage.k8s.io/v1beta1/namespaces/{namespace}/csistoragecapacities"
 													r.args = args
 													r.count = 1
@@ -26860,6 +27321,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = ReadStorageV1beta1NamespacedCSIStorageCapacityOperation
 														r.summary = ""
 														r.operationID = "readStorageV1beta1NamespacedCSIStorageCapacity"
+														r.operationGroup = ""
 														r.pathPattern = "/apis/storage.k8s.io/v1beta1/namespaces/{namespace}/csistoragecapacities/{name}"
 														r.args = args
 														r.count = 2
@@ -26900,6 +27362,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesOperation
 													r.summary = ""
 													r.operationID = "watchStorageV1beta1CSIStorageCapacityListForAllNamespaces"
+													r.operationGroup = ""
 													r.pathPattern = "/apis/storage.k8s.io/v1beta1/watch/csistoragecapacities"
 													r.args = args
 													r.count = 0
@@ -26944,6 +27407,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = WatchStorageV1beta1NamespacedCSIStorageCapacityListOperation
 														r.summary = ""
 														r.operationID = "watchStorageV1beta1NamespacedCSIStorageCapacityList"
+														r.operationGroup = ""
 														r.pathPattern = "/apis/storage.k8s.io/v1beta1/watch/namespaces/{namespace}/csistoragecapacities"
 														r.args = args
 														r.count = 1
@@ -26977,6 +27441,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = WatchStorageV1beta1NamespacedCSIStorageCapacityOperation
 															r.summary = ""
 															r.operationID = "watchStorageV1beta1NamespacedCSIStorageCapacity"
+															r.operationGroup = ""
 															r.pathPattern = "/apis/storage.k8s.io/v1beta1/watch/namespaces/{namespace}/csistoragecapacities/{name}"
 															r.args = args
 															r.count = 2
@@ -27018,6 +27483,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						r.name = LogFileListHandlerOperation
 						r.summary = ""
 						r.operationID = "logFileListHandler"
+						r.operationGroup = ""
 						r.pathPattern = "/logs/"
 						r.args = args
 						r.count = 0
@@ -27042,6 +27508,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						r.name = LogFileHandlerOperation
 						r.summary = ""
 						r.operationID = "logFileHandler"
+						r.operationGroup = ""
 						r.pathPattern = "/logs/{logpath}"
 						r.args = args
 						r.count = 1
@@ -27066,6 +27533,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						r.name = GetServiceAccountIssuerOpenIDKeysetOperation
 						r.summary = ""
 						r.operationID = "getServiceAccountIssuerOpenIDKeyset"
+						r.operationGroup = ""
 						r.pathPattern = "/openid/v1/jwks/"
 						r.args = args
 						r.count = 0
@@ -27090,6 +27558,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						r.name = GetCodeVersionOperation
 						r.summary = ""
 						r.operationID = "getCodeVersion"
+						r.operationGroup = ""
 						r.pathPattern = "/version/"
 						r.args = args
 						r.count = 0

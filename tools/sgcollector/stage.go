@@ -43,5 +43,5 @@ func (s Stage) String() string {
 	if int(s) >= len(r) {
 		return ""
 	}
-	return r[s]
+	return r[s] // #nosec G602
 }

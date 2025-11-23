@@ -8,6 +8,17 @@ import (
 
 // Handler handles operations described by OpenAPI v3 specification.
 type Handler interface {
+	PetStoreHandler
+	// NewError creates *ErrorStatusCode from error returned by handler.
+	//
+	// Used for common default response.
+	NewError(ctx context.Context, err error) *ErrorStatusCode
+}
+
+// PetStoreHandler handles operations described by OpenAPI v3 specification.
+//
+// x-ogen-operation-group: PetStore
+type PetStoreHandler interface {
 	// CreatePets implements createPets operation.
 	//
 	// Create a pet.
@@ -26,10 +37,6 @@ type Handler interface {
 	//
 	// GET /pets/{petId}
 	ShowPetById(ctx context.Context, params ShowPetByIdParams) (*Pet, error)
-	// NewError creates *ErrorStatusCode from error returned by handler.
-	//
-	// Used for common default response.
-	NewError(ctx context.Context, err error) *ErrorStatusCode
 }
 
 // Server implements http server based on OpenAPI v3 specification and

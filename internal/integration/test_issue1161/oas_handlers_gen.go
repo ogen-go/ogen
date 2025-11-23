@@ -28,6 +28,10 @@ func (c *codeRecorder) WriteHeader(status int) {
 	c.ResponseWriter.WriteHeader(status)
 }
 
+func (c *codeRecorder) Unwrap() http.ResponseWriter {
+	return c.ResponseWriter
+}
+
 // handleFooBarBazGetRequest handles GET /foo/bar/baz operation.
 //
 // GET /foo/bar/baz
