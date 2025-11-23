@@ -206,8 +206,9 @@ func templateFunctions() template.FuncMap {
 		"mod": func(a, b int) int {
 			return a % b
 		},
-		"isObjectParam":     isObjectParam,
-		"paramObjectFields": paramObjectFields,
+		"isObjectParam":       isObjectParam,
+		"paramObjectFields":   paramObjectFields,
+		"uniqueResponseTypes": uniqueResponseTypes,
 	}
 }
 
@@ -269,4 +270,26 @@ func paramObjectFields(typ *ir.Type) string {
 	}
 
 	return "[]uri.QueryParameterObjectField{" + strings.Join(fields, ",") + "}"
+}
+
+// uniqueResponseTypes deduplicates response types by Type.Name to avoid duplicate case statements
+// in type switches. When multiple responses share the same type (e.g., multiple patterns using the
+// same schema), we only need one case statement.
+func uniqueResponseTypes(responses []ir.ResponseInfo) []ir.ResponseInfo {
+	seen := make(map[string]bool)
+	var unique []ir.ResponseInfo
+
+	for _, resp := range responses {
+		if resp.RawResponse {
+			// Raw responses are handled separately in the template
+			continue
+		}
+		typeName := resp.Type.Name
+		if !seen[typeName] {
+			seen[typeName] = true
+			unique = append(unique, resp)
+		}
+	}
+
+	return unique
 }
