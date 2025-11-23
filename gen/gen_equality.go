@@ -413,7 +413,8 @@ func (g *Generator) writeArrayComparisonWithNullable(
 	fmt.Fprintf(b, "%s\treturn false\n", indent)
 	fmt.Fprintf(b, "%s}\n", indent)
 	fmt.Fprintf(b, "%sfor i := range %s {\n", indent, aArray)
-	if isArrayOfNullable {
+	switch {
+	case isArrayOfNullable:
 		// Nullable wrapper elements - compare Null flag then Value
 		fmt.Fprintf(b, "%s\tif %s[i].Null != %s[i].Null {\n", indent, aArray, bArray)
 		fmt.Fprintf(b, "%s\t\treturn false\n", indent)
@@ -434,7 +435,7 @@ func (g *Generator) writeArrayComparisonWithNullable(
 		fmt.Fprintf(b, "%s\t\t\treturn false\n", indent)
 		fmt.Fprintf(b, "%s\t\t}\n", indent)
 		fmt.Fprintf(b, "%s\t}\n", indent)
-	} else if isArrayOfStructs {
+	case isArrayOfStructs:
 		// Array elements are structs - call Equal()
 		if hasDepth {
 			fmt.Fprintf(b, "%s\tif !%s[i].Equal(%s[i], depth+1) {\n", indent, aArray, bArray)
@@ -443,7 +444,7 @@ func (g *Generator) writeArrayComparisonWithNullable(
 		}
 		fmt.Fprintf(b, "%s\t\treturn false\n", indent)
 		fmt.Fprintf(b, "%s\t}\n", indent)
-	} else {
+	default:
 		// Primitive elements can use !=
 		fmt.Fprintf(b, "%s\tif %s[i] != %s[i] {\n", indent, aArray, bArray)
 		fmt.Fprintf(b, "%s\t\treturn false\n", indent)
