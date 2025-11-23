@@ -520,6 +520,7 @@ func (s *Server) decodePetUpdateNamePostRequest(r *http.Request) (
 						MaxLength:    0,
 						MaxLengthSet: false,
 						Email:        false,
+						Byte:         false,
 						Hostname:     false,
 						Regex:        nil,
 					}).Validate(string(value)); err != nil {

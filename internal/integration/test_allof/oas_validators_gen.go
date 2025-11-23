@@ -105,6 +105,7 @@ func (s *ObjectsWithConflictingPropertiesReq) Validate() error {
 			MaxLength:    0,
 			MaxLengthSet: false,
 			Email:        false,
+			Byte:         false,
 			Hostname:     false,
 			Regex:        nil,
 		}).Validate(string(s.Foo)); err != nil {

@@ -1942,6 +1942,7 @@ func (c *Client) sendPetUpdateNamePost(ctx context.Context, request OptString) (
 					MaxLength:    0,
 					MaxLengthSet: false,
 					Email:        false,
+					Byte:         false,
 					Hostname:     false,
 					Regex:        nil,
 				}).Validate(string(value)); err != nil {

@@ -431,6 +431,7 @@ func (s *TestRequestFormatTestReq) Validate() error {
 					MaxLength:    0,
 					MaxLengthSet: false,
 					Email:        true,
+					Byte:         false,
 					Hostname:     false,
 					Regex:        nil,
 				}).Validate(string(elem)); err != nil {
@@ -523,6 +524,7 @@ func (s *TestRequestFormatTestReq) Validate() error {
 					MaxLength:    0,
 					MaxLengthSet: false,
 					Email:        false,
+					Byte:         false,
 					Hostname:     true,
 					Regex:        nil,
 				}).Validate(string(elem)); err != nil {
@@ -1765,6 +1767,7 @@ func (s *TestRequestFormatTestReq) Validate() error {
 							MaxLength:    0,
 							MaxLengthSet: false,
 							Email:        true,
+							Byte:         false,
 							Hostname:     false,
 							Regex:        nil,
 						}).Validate(string(elem)); err != nil {
@@ -1908,6 +1911,7 @@ func (s *TestRequestFormatTestReq) Validate() error {
 							MaxLength:    0,
 							MaxLengthSet: false,
 							Email:        false,
+							Byte:         false,
 							Hostname:     true,
 							Regex:        nil,
 						}).Validate(string(elem)); err != nil {
@@ -2626,6 +2630,7 @@ func (s *TestRequestFormatTestReq) Validate() error {
 			MaxLength:    0,
 			MaxLengthSet: false,
 			Email:        true,
+			Byte:         false,
 			Hostname:     false,
 			Regex:        nil,
 		}).Validate(string(s.RequiredStringEmail)); err != nil {
@@ -2667,6 +2672,7 @@ func (s *TestRequestFormatTestReq) Validate() error {
 			MaxLength:    0,
 			MaxLengthSet: false,
 			Email:        false,
+			Byte:         false,
 			Hostname:     true,
 			Regex:        nil,
 		}).Validate(string(s.RequiredStringHostname)); err != nil {
@@ -2764,6 +2770,7 @@ func (s *TestRequestFormatTestReq) Validate() error {
 					MaxLength:    0,
 					MaxLengthSet: false,
 					Email:        true,
+					Byte:         false,
 					Hostname:     false,
 					Regex:        nil,
 				}).Validate(string(elem)); err != nil {
@@ -2847,6 +2854,7 @@ func (s *TestRequestFormatTestReq) Validate() error {
 					MaxLength:    0,
 					MaxLengthSet: false,
 					Email:        false,
+					Byte:         false,
 					Hostname:     true,
 					Regex:        nil,
 				}).Validate(string(elem)); err != nil {
@@ -3737,6 +3745,7 @@ func (s *TestRequestFormatTestReq) Validate() error {
 							MaxLength:    0,
 							MaxLengthSet: false,
 							Email:        true,
+							Byte:         false,
 							Hostname:     false,
 							Regex:        nil,
 						}).Validate(string(elem)); err != nil {
@@ -3871,6 +3880,7 @@ func (s *TestRequestFormatTestReq) Validate() error {
 							MaxLength:    0,
 							MaxLengthSet: false,
 							Email:        false,
+							Byte:         false,
 							Hostname:     true,
 							Regex:        nil,
 						}).Validate(string(elem)); err != nil {
@@ -4543,6 +4553,7 @@ func (s *TestRequestFormatTestReq) Validate() error {
 					MaxLength:    0,
 					MaxLengthSet: false,
 					Email:        true,
+					Byte:         false,
 					Hostname:     false,
 					Regex:        nil,
 				}).Validate(string(value)); err != nil {
@@ -4605,6 +4616,7 @@ func (s *TestRequestFormatTestReq) Validate() error {
 					MaxLength:    0,
 					MaxLengthSet: false,
 					Email:        false,
+					Byte:         false,
 					Hostname:     true,
 					Regex:        nil,
 				}).Validate(string(value)); err != nil {
@@ -5050,6 +5062,7 @@ func (s *TestRequestRequiredFormatTestReq) Validate() error {
 					MaxLength:    0,
 					MaxLengthSet: false,
 					Email:        true,
+					Byte:         false,
 					Hostname:     false,
 					Regex:        nil,
 				}).Validate(string(elem)); err != nil {
@@ -5142,6 +5155,7 @@ func (s *TestRequestRequiredFormatTestReq) Validate() error {
 					MaxLength:    0,
 					MaxLengthSet: false,
 					Email:        false,
+					Byte:         false,
 					Hostname:     true,
 					Regex:        nil,
 				}).Validate(string(elem)); err != nil {
@@ -6384,6 +6398,7 @@ func (s *TestRequestRequiredFormatTestReq) Validate() error {
 							MaxLength:    0,
 							MaxLengthSet: false,
 							Email:        true,
+							Byte:         false,
 							Hostname:     false,
 							Regex:        nil,
 						}).Validate(string(elem)); err != nil {
@@ -6527,6 +6542,7 @@ func (s *TestRequestRequiredFormatTestReq) Validate() error {
 							MaxLength:    0,
 							MaxLengthSet: false,
 							Email:        false,
+							Byte:         false,
 							Hostname:     true,
 							Regex:        nil,
 						}).Validate(string(elem)); err != nil {
@@ -7245,6 +7261,7 @@ func (s *TestRequestRequiredFormatTestReq) Validate() error {
 			MaxLength:    0,
 			MaxLengthSet: false,
 			Email:        true,
+			Byte:         false,
 			Hostname:     false,
 			Regex:        nil,
 		}).Validate(string(s.RequiredStringEmail)); err != nil {
@@ -7286,6 +7303,7 @@ func (s *TestRequestRequiredFormatTestReq) Validate() error {
 			MaxLength:    0,
 			MaxLengthSet: false,
 			Email:        false,
+			Byte:         false,
 			Hostname:     true,
 			Regex:        nil,
 		}).Validate(string(s.RequiredStringHostname)); err != nil {
@@ -7383,6 +7401,7 @@ func (s *TestRequestRequiredFormatTestReq) Validate() error {
 					MaxLength:    0,
 					MaxLengthSet: false,
 					Email:        true,
+					Byte:         false,
 					Hostname:     false,
 					Regex:        nil,
 				}).Validate(string(elem)); err != nil {
@@ -7466,6 +7485,7 @@ func (s *TestRequestRequiredFormatTestReq) Validate() error {
 					MaxLength:    0,
 					MaxLengthSet: false,
 					Email:        false,
+					Byte:         false,
 					Hostname:     true,
 					Regex:        nil,
 				}).Validate(string(elem)); err != nil {
@@ -8356,6 +8376,7 @@ func (s *TestRequestRequiredFormatTestReq) Validate() error {
 							MaxLength:    0,
 							MaxLengthSet: false,
 							Email:        true,
+							Byte:         false,
 							Hostname:     false,
 							Regex:        nil,
 						}).Validate(string(elem)); err != nil {
@@ -8490,6 +8511,7 @@ func (s *TestRequestRequiredFormatTestReq) Validate() error {
 							MaxLength:    0,
 							MaxLengthSet: false,
 							Email:        false,
+							Byte:         false,
 							Hostname:     true,
 							Regex:        nil,
 						}).Validate(string(elem)); err != nil {
@@ -9162,6 +9184,7 @@ func (s *TestRequestRequiredFormatTestReq) Validate() error {
 					MaxLength:    0,
 					MaxLengthSet: false,
 					Email:        true,
+					Byte:         false,
 					Hostname:     false,
 					Regex:        nil,
 				}).Validate(string(value)); err != nil {
@@ -9224,6 +9247,7 @@ func (s *TestRequestRequiredFormatTestReq) Validate() error {
 					MaxLength:    0,
 					MaxLengthSet: false,
 					Email:        false,
+					Byte:         false,
 					Hostname:     true,
 					Regex:        nil,
 				}).Validate(string(value)); err != nil {
@@ -9669,6 +9693,7 @@ func (s *TestResponseFormatTestOK) Validate() error {
 					MaxLength:    0,
 					MaxLengthSet: false,
 					Email:        true,
+					Byte:         false,
 					Hostname:     false,
 					Regex:        nil,
 				}).Validate(string(elem)); err != nil {
@@ -9761,6 +9786,7 @@ func (s *TestResponseFormatTestOK) Validate() error {
 					MaxLength:    0,
 					MaxLengthSet: false,
 					Email:        false,
+					Byte:         false,
 					Hostname:     true,
 					Regex:        nil,
 				}).Validate(string(elem)); err != nil {
@@ -11003,6 +11029,7 @@ func (s *TestResponseFormatTestOK) Validate() error {
 							MaxLength:    0,
 							MaxLengthSet: false,
 							Email:        true,
+							Byte:         false,
 							Hostname:     false,
 							Regex:        nil,
 						}).Validate(string(elem)); err != nil {
@@ -11146,6 +11173,7 @@ func (s *TestResponseFormatTestOK) Validate() error {
 							MaxLength:    0,
 							MaxLengthSet: false,
 							Email:        false,
+							Byte:         false,
 							Hostname:     true,
 							Regex:        nil,
 						}).Validate(string(elem)); err != nil {
@@ -11864,6 +11892,7 @@ func (s *TestResponseFormatTestOK) Validate() error {
 			MaxLength:    0,
 			MaxLengthSet: false,
 			Email:        true,
+			Byte:         false,
 			Hostname:     false,
 			Regex:        nil,
 		}).Validate(string(s.RequiredStringEmail)); err != nil {
@@ -11905,6 +11934,7 @@ func (s *TestResponseFormatTestOK) Validate() error {
 			MaxLength:    0,
 			MaxLengthSet: false,
 			Email:        false,
+			Byte:         false,
 			Hostname:     true,
 			Regex:        nil,
 		}).Validate(string(s.RequiredStringHostname)); err != nil {
@@ -12002,6 +12032,7 @@ func (s *TestResponseFormatTestOK) Validate() error {
 					MaxLength:    0,
 					MaxLengthSet: false,
 					Email:        true,
+					Byte:         false,
 					Hostname:     false,
 					Regex:        nil,
 				}).Validate(string(elem)); err != nil {
@@ -12085,6 +12116,7 @@ func (s *TestResponseFormatTestOK) Validate() error {
 					MaxLength:    0,
 					MaxLengthSet: false,
 					Email:        false,
+					Byte:         false,
 					Hostname:     true,
 					Regex:        nil,
 				}).Validate(string(elem)); err != nil {
@@ -12975,6 +13007,7 @@ func (s *TestResponseFormatTestOK) Validate() error {
 							MaxLength:    0,
 							MaxLengthSet: false,
 							Email:        true,
+							Byte:         false,
 							Hostname:     false,
 							Regex:        nil,
 						}).Validate(string(elem)); err != nil {
@@ -13109,6 +13142,7 @@ func (s *TestResponseFormatTestOK) Validate() error {
 							MaxLength:    0,
 							MaxLengthSet: false,
 							Email:        false,
+							Byte:         false,
 							Hostname:     true,
 							Regex:        nil,
 						}).Validate(string(elem)); err != nil {
@@ -13781,6 +13815,7 @@ func (s *TestResponseFormatTestOK) Validate() error {
 					MaxLength:    0,
 					MaxLengthSet: false,
 					Email:        true,
+					Byte:         false,
 					Hostname:     false,
 					Regex:        nil,
 				}).Validate(string(value)); err != nil {
@@ -13843,6 +13878,7 @@ func (s *TestResponseFormatTestOK) Validate() error {
 					MaxLength:    0,
 					MaxLengthSet: false,
 					Email:        false,
+					Byte:         false,
 					Hostname:     true,
 					Regex:        nil,
 				}).Validate(string(value)); err != nil {

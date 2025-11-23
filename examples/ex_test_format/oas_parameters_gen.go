@@ -3719,6 +3719,7 @@ func decodeTestQueryParameterParams(args [0]string, argsEscaped bool, r *http.Re
 					MaxLength:    0,
 					MaxLengthSet: false,
 					Email:        true,
+					Byte:         false,
 					Hostname:     false,
 					Regex:        nil,
 				}).Validate(string(params.StringEmail)); err != nil {
@@ -3786,6 +3787,7 @@ func decodeTestQueryParameterParams(args [0]string, argsEscaped bool, r *http.Re
 							MaxLength:    0,
 							MaxLengthSet: false,
 							Email:        true,
+							Byte:         false,
 							Hostname:     false,
 							Regex:        nil,
 						}).Validate(string(elem)); err != nil {
@@ -4077,6 +4079,7 @@ func decodeTestQueryParameterParams(args [0]string, argsEscaped bool, r *http.Re
 					MaxLength:    0,
 					MaxLengthSet: false,
 					Email:        false,
+					Byte:         false,
 					Hostname:     true,
 					Regex:        nil,
 				}).Validate(string(params.StringHostname)); err != nil {
@@ -4144,6 +4147,7 @@ func decodeTestQueryParameterParams(args [0]string, argsEscaped bool, r *http.Re
 							MaxLength:    0,
 							MaxLengthSet: false,
 							Email:        false,
+							Byte:         false,
 							Hostname:     true,
 							Regex:        nil,
 						}).Validate(string(elem)); err != nil {

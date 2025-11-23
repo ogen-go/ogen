@@ -244,6 +244,7 @@ func (s *IoK8sAPIAdmissionregistrationV1WebhookClientConfig) Validate() error {
 			MaxLength:    0,
 			MaxLengthSet: false,
 			Email:        false,
+			Byte:         true,
 			Hostname:     false,
 			Regex:        regexMap["^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$"],
 		}).Validate(string(s.CaBundle)); err != nil {
@@ -1347,6 +1348,7 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestSpec) Validate() error {
 			MaxLength:    0,
 			MaxLengthSet: false,
 			Email:        false,
+			Byte:         true,
 			Hostname:     false,
 			Regex:        regexMap["^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$"],
 		}).Validate(string(s.Request)); err != nil {
@@ -1400,6 +1402,7 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestStatus) Validate() error
 			MaxLength:    0,
 			MaxLengthSet: false,
 			Email:        false,
+			Byte:         true,
 			Hostname:     false,
 			Regex:        regexMap["^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$"],
 		}).Validate(string(s.Certificate)); err != nil {
@@ -1580,6 +1583,7 @@ func (s IoK8sAPICoreV1ConfigMapBinaryData) Validate() error {
 				MaxLength:    0,
 				MaxLengthSet: false,
 				Email:        false,
+				Byte:         true,
 				Hostname:     false,
 				Regex:        regexMap["^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$"],
 			}).Validate(string(elem)); err != nil {
@@ -2482,6 +2486,7 @@ func (s IoK8sAPICoreV1SecretData) Validate() error {
 				MaxLength:    0,
 				MaxLengthSet: false,
 				Email:        false,
+				Byte:         true,
 				Hostname:     false,
 				Regex:        regexMap["^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$"],
 			}).Validate(string(elem)); err != nil {
@@ -5086,6 +5091,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig) V
 			MaxLength:    0,
 			MaxLengthSet: false,
 			Email:        false,
+			Byte:         true,
 			Hostname:     false,
 			Regex:        regexMap["^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$"],
 		}).Validate(string(s.CaBundle)); err != nil {
@@ -5388,6 +5394,7 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) Validate() e
 			MaxLength:    0,
 			MaxLengthSet: false,
 			Email:        false,
+			Byte:         true,
 			Hostname:     false,
 			Regex:        regexMap["^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$"],
 		}).Validate(string(s.CaBundle)); err != nil {
