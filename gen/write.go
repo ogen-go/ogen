@@ -139,6 +139,8 @@ func (t TemplateConfig) RegexStrings() []string {
 	return t.collectStrings(func(typ *ir.Type) (r []string) {
 		for _, exp := range []ogenregex.Regexp{
 			typ.Validators.String.Regex,
+			typ.Validators.Int.Pattern,
+			typ.Validators.Float.Pattern,
 			typ.MapPattern,
 		} {
 			if exp == nil {
