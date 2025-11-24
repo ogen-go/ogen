@@ -1,0 +1,158 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Any Type Parameters Test",
+    "version": "1.0.0",
+    "description": "Test spec for parameters with unspecified types (any)"
+  },
+  "paths": {
+    "/any/{pathParam}": {
+      "get": {
+        "operationId": "anyParams",
+        "summary": "Test all parameter locations with any type",
+        "parameters": [
+          {
+            "name": "pathParam",
+            "in": "path",
+            "required": true,
+            "description": "Path parameter with no type specified",
+            "schema": {}
+          },
+          {
+            "name": "queryParam",
+            "in": "query",
+            "required": false,
+            "description": "Query parameter with no type specified",
+            "schema": {}
+          },
+          {
+            "name": "X-Header-Param",
+            "in": "header",
+            "required": false,
+            "description": "Header parameter with no type specified",
+            "schema": {}
+          },
+          {
+            "name": "cookieParam",
+            "in": "cookie",
+            "required": false,
+            "description": "Cookie parameter with no type specified",
+            "schema": {}
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": ["echo"],
+                  "properties": {
+                    "echo": {
+                      "type": "object",
+                      "required": ["pathParam"],
+                      "properties": {
+                        "pathParam": {
+                          "type": "string"
+                        },
+                        "queryParam": {
+                          "type": "string"
+                        },
+                        "headerParam": {
+                          "type": "string"
+                        },
+                        "cookieParam": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/any/required/{pathParam}": {
+      "get": {
+        "operationId": "anyParamsRequired",
+        "summary": "Test required any type parameters",
+        "parameters": [
+          {
+            "name": "pathParam",
+            "in": "path",
+            "required": true,
+            "schema": {}
+          },
+          {
+            "name": "queryParam",
+            "in": "query",
+            "required": true,
+            "schema": {}
+          },
+          {
+            "name": "X-Header-Param",
+            "in": "header",
+            "required": true,
+            "schema": {}
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": ["received"],
+                  "properties": {
+                    "received": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/any/array": {
+      "get": {
+        "operationId": "anyArrayParam",
+        "summary": "Test array of any type",
+        "parameters": [
+          {
+            "name": "items",
+            "in": "query",
+            "required": false,
+            "description": "Array parameter with any type items",
+            "schema": {
+              "type": "array",
+              "items": {}
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "count": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

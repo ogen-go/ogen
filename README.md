@@ -49,6 +49,11 @@ docker run --rm \
     - When nullable, `nil` denotes that value is `nil`
     - When required, `nil` currently the same as `[]`, but is actually invalid
     - If both nullable and required, wrapper will be generated (TODO)
+- Support for untyped parameters (any)
+  - Parameters with no `type` specified in schema are represented as Go `any`
+  - Decoded as strings from URI (path, query, header, cookie)
+  - Client encoding uses `fmt.Sprint` for flexible value conversion
+  - Useful for legacy APIs or dynamic parameter types
 - Generated sum types for oneOf
   - Primitive types (`string`, `number`) are detected by type
   - Discriminator field is used if defined in schema

@@ -256,6 +256,9 @@ func (t *Type) Go() string {
 	case KindPrimitive:
 		return t.Primitive.String()
 	case KindAny:
+		if t.HasFeature("uri") {
+			return "any"
+		}
 		return "jx.Raw"
 	case KindArray:
 		return "[]" + t.Item.Go()
