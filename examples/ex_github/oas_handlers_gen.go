@@ -2212,6 +2212,180 @@ func (s *Server) handleActionsCreateSelfHostedRunnerGroupForOrgRequest(args [1]s
 	}
 }
 
+// handleActionsCreateWorkflowDispatchRequest handles actions/create-workflow-dispatch operation.
+//
+// You can use this endpoint to manually trigger a GitHub Actions workflow run. You can replace
+// `workflow_id` with the workflow file name. For example, you could use `main.yaml`.
+// You must configure your GitHub Actions workflow to run when the [`workflow_dispatch`
+// webhook](/developers/webhooks-and-events/webhook-events-and-payloads#workflow_dispatch) event
+// occurs. The `inputs` are configured in the workflow file. For more information about how to
+// configure the `workflow_dispatch` event in the workflow file, see "[Events that trigger
+// workflows](/actions/reference/events-that-trigger-workflows#workflow_dispatch)."
+// You must authenticate using an access token with the `repo` scope to use this endpoint. GitHub
+// Apps must have the `actions:write` permission to use this endpoint. For more information, see
+// "[Creating a personal access token for the command line](https://help.github.
+// com/articles/creating-a-personal-access-token-for-the-command-line).".
+//
+// POST /repos/{owner}/{repo}/actions/workflows/{workflow_id}/dispatches
+func (s *Server) handleActionsCreateWorkflowDispatchRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	statusWriter := &codeRecorder{ResponseWriter: w}
+	w = statusWriter
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/create-workflow-dispatch"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/workflows/{workflow_id}/dispatches"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsCreateWorkflowDispatchOperation,
+		trace.WithAttributes(otelAttrs...),
+		serverSpanKind,
+	)
+	defer span.End()
+
+	// Add Labeler to context.
+	labeler := &Labeler{attrs: otelAttrs}
+	ctx = contextWithLabeler(ctx, labeler)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+
+		attrSet := labeler.AttributeSet()
+		attrs := attrSet.ToSlice()
+		code := statusWriter.status
+		if code != 0 {
+			codeAttr := semconv.HTTPResponseStatusCode(code)
+			attrs = append(attrs, codeAttr)
+			span.SetAttributes(codeAttr)
+		}
+		attrOpt := metric.WithAttributes(attrs...)
+
+		// Increment request counter.
+		s.requests.Add(ctx, 1, attrOpt)
+
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		s.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), attrOpt)
+	}()
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+
+			// https://opentelemetry.io/docs/specs/semconv/http/http-spans/#status
+			// Span Status MUST be left unset if HTTP status code was in the 1xx, 2xx or 3xx ranges,
+			// unless there was another error (e.g., network error receiving the response body; or 3xx codes with
+			// max redirects exceeded), in which case status MUST be set to Error.
+			code := statusWriter.status
+			if code < 100 || code >= 500 {
+				span.SetStatus(codes.Error, stage)
+			}
+
+			attrSet := labeler.AttributeSet()
+			attrs := attrSet.ToSlice()
+			if code != 0 {
+				attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
+			}
+
+			s.errors.Add(ctx, 1, metric.WithAttributes(attrs...))
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: ActionsCreateWorkflowDispatchOperation,
+			ID:   "actions/create-workflow-dispatch",
+		}
+	)
+	params, err := decodeActionsCreateWorkflowDispatchParams(args, argsEscaped, r)
+	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		defer recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeActionsCreateWorkflowDispatchRequest(r)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		defer recordError("DecodeRequest", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
+
+	var response *ActionsCreateWorkflowDispatchNoContent
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:          ctx,
+			OperationName:    ActionsCreateWorkflowDispatchOperation,
+			OperationSummary: "Create a workflow dispatch event",
+			OperationID:      "actions/create-workflow-dispatch",
+			Body:             request,
+			RawBody:          rawBody,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "workflow_id",
+					In:   "path",
+				}: params.WorkflowID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = *ActionsCreateWorkflowDispatchReq
+			Params   = ActionsCreateWorkflowDispatchParams
+			Response = *ActionsCreateWorkflowDispatchNoContent
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackActionsCreateWorkflowDispatchParams,
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				err = s.h.ActionsCreateWorkflowDispatch(ctx, request, params)
+				return response, err
+			},
+		)
+	} else {
+		err = s.h.ActionsCreateWorkflowDispatch(ctx, request, params)
+	}
+	if err != nil {
+		defer recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeActionsCreateWorkflowDispatchResponse(response, w, span); err != nil {
+		defer recordError("EncodeResponse", err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
+		return
+	}
+}
+
 // handleActionsDeleteArtifactRequest handles actions/delete-artifact operation.
 //
 // Deletes an artifact for a workflow run. You must authenticate using an access token with the
@@ -3714,6 +3888,158 @@ func (s *Server) handleActionsDisableSelectedRepositoryGithubActionsOrganization
 	}
 }
 
+// handleActionsDisableWorkflowRequest handles actions/disable-workflow operation.
+//
+// Disables a workflow and sets the `state` of the workflow to `disabled_manually`. You can replace
+// `workflow_id` with the workflow file name. For example, you could use `main.yaml`.
+// You must authenticate using an access token with the `repo` scope to use this endpoint. GitHub
+// Apps must have the `actions:write` permission to use this endpoint.
+//
+// PUT /repos/{owner}/{repo}/actions/workflows/{workflow_id}/disable
+func (s *Server) handleActionsDisableWorkflowRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	statusWriter := &codeRecorder{ResponseWriter: w}
+	w = statusWriter
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/disable-workflow"),
+		semconv.HTTPRequestMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/workflows/{workflow_id}/disable"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsDisableWorkflowOperation,
+		trace.WithAttributes(otelAttrs...),
+		serverSpanKind,
+	)
+	defer span.End()
+
+	// Add Labeler to context.
+	labeler := &Labeler{attrs: otelAttrs}
+	ctx = contextWithLabeler(ctx, labeler)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+
+		attrSet := labeler.AttributeSet()
+		attrs := attrSet.ToSlice()
+		code := statusWriter.status
+		if code != 0 {
+			codeAttr := semconv.HTTPResponseStatusCode(code)
+			attrs = append(attrs, codeAttr)
+			span.SetAttributes(codeAttr)
+		}
+		attrOpt := metric.WithAttributes(attrs...)
+
+		// Increment request counter.
+		s.requests.Add(ctx, 1, attrOpt)
+
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		s.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), attrOpt)
+	}()
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+
+			// https://opentelemetry.io/docs/specs/semconv/http/http-spans/#status
+			// Span Status MUST be left unset if HTTP status code was in the 1xx, 2xx or 3xx ranges,
+			// unless there was another error (e.g., network error receiving the response body; or 3xx codes with
+			// max redirects exceeded), in which case status MUST be set to Error.
+			code := statusWriter.status
+			if code < 100 || code >= 500 {
+				span.SetStatus(codes.Error, stage)
+			}
+
+			attrSet := labeler.AttributeSet()
+			attrs := attrSet.ToSlice()
+			if code != 0 {
+				attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
+			}
+
+			s.errors.Add(ctx, 1, metric.WithAttributes(attrs...))
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: ActionsDisableWorkflowOperation,
+			ID:   "actions/disable-workflow",
+		}
+	)
+	params, err := decodeActionsDisableWorkflowParams(args, argsEscaped, r)
+	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		defer recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	var rawBody []byte
+
+	var response *ActionsDisableWorkflowNoContent
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:          ctx,
+			OperationName:    ActionsDisableWorkflowOperation,
+			OperationSummary: "Disable a workflow",
+			OperationID:      "actions/disable-workflow",
+			Body:             nil,
+			RawBody:          rawBody,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "workflow_id",
+					In:   "path",
+				}: params.WorkflowID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActionsDisableWorkflowParams
+			Response = *ActionsDisableWorkflowNoContent
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackActionsDisableWorkflowParams,
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				err = s.h.ActionsDisableWorkflow(ctx, params)
+				return response, err
+			},
+		)
+	} else {
+		err = s.h.ActionsDisableWorkflow(ctx, params)
+	}
+	if err != nil {
+		defer recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeActionsDisableWorkflowResponse(response, w, span); err != nil {
+		defer recordError("EncodeResponse", err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
+		return
+	}
+}
+
 // handleActionsDownloadArtifactRequest handles actions/download-artifact operation.
 //
 // Gets a redirect URL to download an archive for a repository. This URL expires after 1 minute. Look
@@ -4327,6 +4653,158 @@ func (s *Server) handleActionsEnableSelectedRepositoryGithubActionsOrganizationR
 	}
 
 	if err := encodeActionsEnableSelectedRepositoryGithubActionsOrganizationResponse(response, w, span); err != nil {
+		defer recordError("EncodeResponse", err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
+		return
+	}
+}
+
+// handleActionsEnableWorkflowRequest handles actions/enable-workflow operation.
+//
+// Enables a workflow and sets the `state` of the workflow to `active`. You can replace `workflow_id`
+// with the workflow file name. For example, you could use `main.yaml`.
+// You must authenticate using an access token with the `repo` scope to use this endpoint. GitHub
+// Apps must have the `actions:write` permission to use this endpoint.
+//
+// PUT /repos/{owner}/{repo}/actions/workflows/{workflow_id}/enable
+func (s *Server) handleActionsEnableWorkflowRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	statusWriter := &codeRecorder{ResponseWriter: w}
+	w = statusWriter
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/enable-workflow"),
+		semconv.HTTPRequestMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/workflows/{workflow_id}/enable"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsEnableWorkflowOperation,
+		trace.WithAttributes(otelAttrs...),
+		serverSpanKind,
+	)
+	defer span.End()
+
+	// Add Labeler to context.
+	labeler := &Labeler{attrs: otelAttrs}
+	ctx = contextWithLabeler(ctx, labeler)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+
+		attrSet := labeler.AttributeSet()
+		attrs := attrSet.ToSlice()
+		code := statusWriter.status
+		if code != 0 {
+			codeAttr := semconv.HTTPResponseStatusCode(code)
+			attrs = append(attrs, codeAttr)
+			span.SetAttributes(codeAttr)
+		}
+		attrOpt := metric.WithAttributes(attrs...)
+
+		// Increment request counter.
+		s.requests.Add(ctx, 1, attrOpt)
+
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		s.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), attrOpt)
+	}()
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+
+			// https://opentelemetry.io/docs/specs/semconv/http/http-spans/#status
+			// Span Status MUST be left unset if HTTP status code was in the 1xx, 2xx or 3xx ranges,
+			// unless there was another error (e.g., network error receiving the response body; or 3xx codes with
+			// max redirects exceeded), in which case status MUST be set to Error.
+			code := statusWriter.status
+			if code < 100 || code >= 500 {
+				span.SetStatus(codes.Error, stage)
+			}
+
+			attrSet := labeler.AttributeSet()
+			attrs := attrSet.ToSlice()
+			if code != 0 {
+				attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
+			}
+
+			s.errors.Add(ctx, 1, metric.WithAttributes(attrs...))
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: ActionsEnableWorkflowOperation,
+			ID:   "actions/enable-workflow",
+		}
+	)
+	params, err := decodeActionsEnableWorkflowParams(args, argsEscaped, r)
+	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		defer recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	var rawBody []byte
+
+	var response *ActionsEnableWorkflowNoContent
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:          ctx,
+			OperationName:    ActionsEnableWorkflowOperation,
+			OperationSummary: "Enable a workflow",
+			OperationID:      "actions/enable-workflow",
+			Body:             nil,
+			RawBody:          rawBody,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "workflow_id",
+					In:   "path",
+				}: params.WorkflowID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActionsEnableWorkflowParams
+			Response = *ActionsEnableWorkflowNoContent
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackActionsEnableWorkflowParams,
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				err = s.h.ActionsEnableWorkflow(ctx, params)
+				return response, err
+			},
+		)
+	} else {
+		err = s.h.ActionsEnableWorkflow(ctx, params)
+	}
+	if err != nil {
+		defer recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeActionsEnableWorkflowResponse(response, w, span); err != nil {
 		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
@@ -6710,6 +7188,158 @@ func (s *Server) handleActionsGetSelfHostedRunnerGroupForOrgRequest(args [2]stri
 	}
 }
 
+// handleActionsGetWorkflowRequest handles actions/get-workflow operation.
+//
+// Gets a specific workflow. You can replace `workflow_id` with the workflow file name. For example,
+// you could use `main.yaml`. Anyone with read access to the repository can use this endpoint. If the
+// repository is private you must use an access token with the `repo` scope. GitHub Apps must have
+// the `actions:read` permission to use this endpoint.
+//
+// GET /repos/{owner}/{repo}/actions/workflows/{workflow_id}
+func (s *Server) handleActionsGetWorkflowRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	statusWriter := &codeRecorder{ResponseWriter: w}
+	w = statusWriter
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/get-workflow"),
+		semconv.HTTPRequestMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/workflows/{workflow_id}"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsGetWorkflowOperation,
+		trace.WithAttributes(otelAttrs...),
+		serverSpanKind,
+	)
+	defer span.End()
+
+	// Add Labeler to context.
+	labeler := &Labeler{attrs: otelAttrs}
+	ctx = contextWithLabeler(ctx, labeler)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+
+		attrSet := labeler.AttributeSet()
+		attrs := attrSet.ToSlice()
+		code := statusWriter.status
+		if code != 0 {
+			codeAttr := semconv.HTTPResponseStatusCode(code)
+			attrs = append(attrs, codeAttr)
+			span.SetAttributes(codeAttr)
+		}
+		attrOpt := metric.WithAttributes(attrs...)
+
+		// Increment request counter.
+		s.requests.Add(ctx, 1, attrOpt)
+
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		s.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), attrOpt)
+	}()
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+
+			// https://opentelemetry.io/docs/specs/semconv/http/http-spans/#status
+			// Span Status MUST be left unset if HTTP status code was in the 1xx, 2xx or 3xx ranges,
+			// unless there was another error (e.g., network error receiving the response body; or 3xx codes with
+			// max redirects exceeded), in which case status MUST be set to Error.
+			code := statusWriter.status
+			if code < 100 || code >= 500 {
+				span.SetStatus(codes.Error, stage)
+			}
+
+			attrSet := labeler.AttributeSet()
+			attrs := attrSet.ToSlice()
+			if code != 0 {
+				attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
+			}
+
+			s.errors.Add(ctx, 1, metric.WithAttributes(attrs...))
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: ActionsGetWorkflowOperation,
+			ID:   "actions/get-workflow",
+		}
+	)
+	params, err := decodeActionsGetWorkflowParams(args, argsEscaped, r)
+	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		defer recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	var rawBody []byte
+
+	var response *Workflow
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:          ctx,
+			OperationName:    ActionsGetWorkflowOperation,
+			OperationSummary: "Get a workflow",
+			OperationID:      "actions/get-workflow",
+			Body:             nil,
+			RawBody:          rawBody,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "workflow_id",
+					In:   "path",
+				}: params.WorkflowID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActionsGetWorkflowParams
+			Response = *Workflow
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackActionsGetWorkflowParams,
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.ActionsGetWorkflow(ctx, params)
+				return response, err
+			},
+		)
+	} else {
+		response, err = s.h.ActionsGetWorkflow(ctx, params)
+	}
+	if err != nil {
+		defer recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeActionsGetWorkflowResponse(response, w, span); err != nil {
+		defer recordError("EncodeResponse", err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
+		return
+	}
+}
+
 // handleActionsGetWorkflowRunRequest handles actions/get-workflow-run operation.
 //
 // Gets a specific workflow run. Anyone with read access to the repository can use this endpoint. If
@@ -7011,6 +7641,165 @@ func (s *Server) handleActionsGetWorkflowRunUsageRequest(args [3]string, argsEsc
 	}
 
 	if err := encodeActionsGetWorkflowRunUsageResponse(response, w, span); err != nil {
+		defer recordError("EncodeResponse", err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
+		return
+	}
+}
+
+// handleActionsGetWorkflowUsageRequest handles actions/get-workflow-usage operation.
+//
+// Gets the number of billable minutes used by a specific workflow during the current billing cycle.
+// Billable minutes only apply to workflows in private repositories that use GitHub-hosted runners.
+// Usage is listed for each GitHub-hosted runner operating system in milliseconds. Any job re-runs
+// are also included in the usage. The usage does not include the multiplier for macOS and Windows
+// runners and is not rounded up to the nearest whole minute. For more information, see "[Managing
+// billing for GitHub Actions](https://help.github.
+// com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-actions)".
+// You can replace `workflow_id` with the workflow file name. For example, you could use `main.yaml`.
+// Anyone with read access to the repository can use this endpoint. If the repository is private you
+// must use an access token with the `repo` scope. GitHub Apps must have the `actions:read`
+// permission to use this endpoint.
+//
+// GET /repos/{owner}/{repo}/actions/workflows/{workflow_id}/timing
+func (s *Server) handleActionsGetWorkflowUsageRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	statusWriter := &codeRecorder{ResponseWriter: w}
+	w = statusWriter
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/get-workflow-usage"),
+		semconv.HTTPRequestMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/workflows/{workflow_id}/timing"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsGetWorkflowUsageOperation,
+		trace.WithAttributes(otelAttrs...),
+		serverSpanKind,
+	)
+	defer span.End()
+
+	// Add Labeler to context.
+	labeler := &Labeler{attrs: otelAttrs}
+	ctx = contextWithLabeler(ctx, labeler)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+
+		attrSet := labeler.AttributeSet()
+		attrs := attrSet.ToSlice()
+		code := statusWriter.status
+		if code != 0 {
+			codeAttr := semconv.HTTPResponseStatusCode(code)
+			attrs = append(attrs, codeAttr)
+			span.SetAttributes(codeAttr)
+		}
+		attrOpt := metric.WithAttributes(attrs...)
+
+		// Increment request counter.
+		s.requests.Add(ctx, 1, attrOpt)
+
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		s.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), attrOpt)
+	}()
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+
+			// https://opentelemetry.io/docs/specs/semconv/http/http-spans/#status
+			// Span Status MUST be left unset if HTTP status code was in the 1xx, 2xx or 3xx ranges,
+			// unless there was another error (e.g., network error receiving the response body; or 3xx codes with
+			// max redirects exceeded), in which case status MUST be set to Error.
+			code := statusWriter.status
+			if code < 100 || code >= 500 {
+				span.SetStatus(codes.Error, stage)
+			}
+
+			attrSet := labeler.AttributeSet()
+			attrs := attrSet.ToSlice()
+			if code != 0 {
+				attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
+			}
+
+			s.errors.Add(ctx, 1, metric.WithAttributes(attrs...))
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: ActionsGetWorkflowUsageOperation,
+			ID:   "actions/get-workflow-usage",
+		}
+	)
+	params, err := decodeActionsGetWorkflowUsageParams(args, argsEscaped, r)
+	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		defer recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	var rawBody []byte
+
+	var response *WorkflowUsage
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:          ctx,
+			OperationName:    ActionsGetWorkflowUsageOperation,
+			OperationSummary: "Get workflow usage",
+			OperationID:      "actions/get-workflow-usage",
+			Body:             nil,
+			RawBody:          rawBody,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "workflow_id",
+					In:   "path",
+				}: params.WorkflowID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActionsGetWorkflowUsageParams
+			Response = *WorkflowUsage
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackActionsGetWorkflowUsageParams,
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.ActionsGetWorkflowUsage(ctx, params)
+				return response, err
+			},
+		)
+	} else {
+		response, err = s.h.ActionsGetWorkflowUsage(ctx, params)
+	}
+	if err != nil {
+		defer recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeActionsGetWorkflowUsageResponse(response, w, span); err != nil {
 		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
@@ -9475,6 +10264,188 @@ func (s *Server) handleActionsListWorkflowRunArtifactsRequest(args [3]string, ar
 	}
 
 	if err := encodeActionsListWorkflowRunArtifactsResponse(response, w, span); err != nil {
+		defer recordError("EncodeResponse", err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
+		return
+	}
+}
+
+// handleActionsListWorkflowRunsRequest handles actions/list-workflow-runs operation.
+//
+// List all workflow runs for a workflow. You can replace `workflow_id` with the workflow file name.
+// For example, you could use `main.yaml`. You can use parameters to narrow the list of results. For
+// more information about using parameters, see [Parameters](https://docs.github.
+// com/rest/overview/resources-in-the-rest-api#parameters).
+// Anyone with read access to the repository can use this endpoint. If the repository is private you
+// must use an access token with the `repo` scope.
+//
+// GET /repos/{owner}/{repo}/actions/workflows/{workflow_id}/runs
+func (s *Server) handleActionsListWorkflowRunsRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	statusWriter := &codeRecorder{ResponseWriter: w}
+	w = statusWriter
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/list-workflow-runs"),
+		semconv.HTTPRequestMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/workflows/{workflow_id}/runs"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsListWorkflowRunsOperation,
+		trace.WithAttributes(otelAttrs...),
+		serverSpanKind,
+	)
+	defer span.End()
+
+	// Add Labeler to context.
+	labeler := &Labeler{attrs: otelAttrs}
+	ctx = contextWithLabeler(ctx, labeler)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+
+		attrSet := labeler.AttributeSet()
+		attrs := attrSet.ToSlice()
+		code := statusWriter.status
+		if code != 0 {
+			codeAttr := semconv.HTTPResponseStatusCode(code)
+			attrs = append(attrs, codeAttr)
+			span.SetAttributes(codeAttr)
+		}
+		attrOpt := metric.WithAttributes(attrs...)
+
+		// Increment request counter.
+		s.requests.Add(ctx, 1, attrOpt)
+
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		s.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), attrOpt)
+	}()
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+
+			// https://opentelemetry.io/docs/specs/semconv/http/http-spans/#status
+			// Span Status MUST be left unset if HTTP status code was in the 1xx, 2xx or 3xx ranges,
+			// unless there was another error (e.g., network error receiving the response body; or 3xx codes with
+			// max redirects exceeded), in which case status MUST be set to Error.
+			code := statusWriter.status
+			if code < 100 || code >= 500 {
+				span.SetStatus(codes.Error, stage)
+			}
+
+			attrSet := labeler.AttributeSet()
+			attrs := attrSet.ToSlice()
+			if code != 0 {
+				attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
+			}
+
+			s.errors.Add(ctx, 1, metric.WithAttributes(attrs...))
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: ActionsListWorkflowRunsOperation,
+			ID:   "actions/list-workflow-runs",
+		}
+	)
+	params, err := decodeActionsListWorkflowRunsParams(args, argsEscaped, r)
+	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		defer recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	var rawBody []byte
+
+	var response *ActionsListWorkflowRunsOKHeaders
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:          ctx,
+			OperationName:    ActionsListWorkflowRunsOperation,
+			OperationSummary: "List workflow runs",
+			OperationID:      "actions/list-workflow-runs",
+			Body:             nil,
+			RawBody:          rawBody,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "workflow_id",
+					In:   "path",
+				}: params.WorkflowID,
+				{
+					Name: "actor",
+					In:   "query",
+				}: params.Actor,
+				{
+					Name: "branch",
+					In:   "query",
+				}: params.Branch,
+				{
+					Name: "event",
+					In:   "query",
+				}: params.Event,
+				{
+					Name: "status",
+					In:   "query",
+				}: params.Status,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
+				{
+					Name: "created",
+					In:   "query",
+				}: params.Created,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActionsListWorkflowRunsParams
+			Response = *ActionsListWorkflowRunsOKHeaders
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackActionsListWorkflowRunsParams,
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.ActionsListWorkflowRuns(ctx, params)
+				return response, err
+			},
+		)
+	} else {
+		response, err = s.h.ActionsListWorkflowRuns(ctx, params)
+	}
+	if err != nil {
+		defer recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeActionsListWorkflowRunsResponse(response, w, span); err != nil {
 		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)

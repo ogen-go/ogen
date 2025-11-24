@@ -1772,6 +1772,220 @@ func decodeActionsCreateSelfHostedRunnerGroupForOrgParams(args [1]string, argsEs
 	return params, nil
 }
 
+// ActionsCreateWorkflowDispatchParams is parameters of actions/create-workflow-dispatch operation.
+type ActionsCreateWorkflowDispatchParams struct {
+	Owner string
+	Repo  string
+	// The ID of the workflow. You can also pass the workflow file name as a string.
+	WorkflowID WorkflowID
+}
+
+func unpackActionsCreateWorkflowDispatchParams(packed middleware.Parameters) (params ActionsCreateWorkflowDispatchParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "workflow_id",
+			In:   "path",
+		}
+		params.WorkflowID = packed[key].(WorkflowID)
+	}
+	return params
+}
+
+func decodeActionsCreateWorkflowDispatchParams(args [3]string, argsEscaped bool, r *http.Request) (params ActionsCreateWorkflowDispatchParams, _ error) {
+	// Decode path: owner.
+	if err := func() error {
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
+		}
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return err
+			}
+		} else {
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "owner",
+			In:   "path",
+			Err:  err,
+		}
+	}
+	// Decode path: repo.
+	if err := func() error {
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
+		}
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return err
+			}
+		} else {
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "repo",
+			In:   "path",
+			Err:  err,
+		}
+	}
+	// Decode path: workflow_id.
+	if err := func() error {
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
+		}
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "workflow_id",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				var failures []error
+				// Try to decode as Int
+				if err := func() error {
+					var variant int
+					if err := func() error {
+						val, err := d.DecodeValue()
+						if err != nil {
+							return err
+						}
+
+						c, err := conv.ToInt(val)
+						if err != nil {
+							return err
+						}
+
+						variant = c
+						return nil
+					}(); err != nil {
+						return err
+					}
+					params.WorkflowID.SetInt(variant)
+					return nil
+				}(); err == nil {
+					return nil
+				} else {
+					failures = append(failures, errors.Wrap(err, "Int"))
+				}
+				// Try to decode as String
+				if err := func() error {
+					var variant string
+					if err := func() error {
+						val, err := d.DecodeValue()
+						if err != nil {
+							return err
+						}
+
+						c, err := conv.ToString(val)
+						if err != nil {
+							return err
+						}
+
+						variant = c
+						return nil
+					}(); err != nil {
+						return err
+					}
+					params.WorkflowID.SetString(variant)
+					return nil
+				}(); err == nil {
+					return nil
+				} else {
+					failures = append(failures, errors.Wrap(err, "String"))
+				}
+				return errors.Wrap(errors.Join(failures...), "failed to decode WorkflowID")
+			}(); err != nil {
+				return err
+			}
+		} else {
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "workflow_id",
+			In:   "path",
+			Err:  err,
+		}
+	}
+	return params, nil
+}
+
 // ActionsDeleteArtifactParams is parameters of actions/delete-artifact operation.
 type ActionsDeleteArtifactParams struct {
 	Owner string
@@ -3280,6 +3494,220 @@ func decodeActionsDisableSelectedRepositoryGithubActionsOrganizationParams(args 
 	return params, nil
 }
 
+// ActionsDisableWorkflowParams is parameters of actions/disable-workflow operation.
+type ActionsDisableWorkflowParams struct {
+	Owner string
+	Repo  string
+	// The ID of the workflow. You can also pass the workflow file name as a string.
+	WorkflowID WorkflowID
+}
+
+func unpackActionsDisableWorkflowParams(packed middleware.Parameters) (params ActionsDisableWorkflowParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "workflow_id",
+			In:   "path",
+		}
+		params.WorkflowID = packed[key].(WorkflowID)
+	}
+	return params
+}
+
+func decodeActionsDisableWorkflowParams(args [3]string, argsEscaped bool, r *http.Request) (params ActionsDisableWorkflowParams, _ error) {
+	// Decode path: owner.
+	if err := func() error {
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
+		}
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return err
+			}
+		} else {
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "owner",
+			In:   "path",
+			Err:  err,
+		}
+	}
+	// Decode path: repo.
+	if err := func() error {
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
+		}
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return err
+			}
+		} else {
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "repo",
+			In:   "path",
+			Err:  err,
+		}
+	}
+	// Decode path: workflow_id.
+	if err := func() error {
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
+		}
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "workflow_id",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				var failures []error
+				// Try to decode as Int
+				if err := func() error {
+					var variant int
+					if err := func() error {
+						val, err := d.DecodeValue()
+						if err != nil {
+							return err
+						}
+
+						c, err := conv.ToInt(val)
+						if err != nil {
+							return err
+						}
+
+						variant = c
+						return nil
+					}(); err != nil {
+						return err
+					}
+					params.WorkflowID.SetInt(variant)
+					return nil
+				}(); err == nil {
+					return nil
+				} else {
+					failures = append(failures, errors.Wrap(err, "Int"))
+				}
+				// Try to decode as String
+				if err := func() error {
+					var variant string
+					if err := func() error {
+						val, err := d.DecodeValue()
+						if err != nil {
+							return err
+						}
+
+						c, err := conv.ToString(val)
+						if err != nil {
+							return err
+						}
+
+						variant = c
+						return nil
+					}(); err != nil {
+						return err
+					}
+					params.WorkflowID.SetString(variant)
+					return nil
+				}(); err == nil {
+					return nil
+				} else {
+					failures = append(failures, errors.Wrap(err, "String"))
+				}
+				return errors.Wrap(errors.Join(failures...), "failed to decode WorkflowID")
+			}(); err != nil {
+				return err
+			}
+		} else {
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "workflow_id",
+			In:   "path",
+			Err:  err,
+		}
+	}
+	return params, nil
+}
+
 // ActionsDownloadArtifactParams is parameters of actions/download-artifact operation.
 type ActionsDownloadArtifactParams struct {
 	Owner string
@@ -3960,6 +4388,220 @@ func decodeActionsEnableSelectedRepositoryGithubActionsOrganizationParams(args [
 	}(); err != nil {
 		return params, &ogenerrors.DecodeParamError{
 			Name: "repository_id",
+			In:   "path",
+			Err:  err,
+		}
+	}
+	return params, nil
+}
+
+// ActionsEnableWorkflowParams is parameters of actions/enable-workflow operation.
+type ActionsEnableWorkflowParams struct {
+	Owner string
+	Repo  string
+	// The ID of the workflow. You can also pass the workflow file name as a string.
+	WorkflowID WorkflowID
+}
+
+func unpackActionsEnableWorkflowParams(packed middleware.Parameters) (params ActionsEnableWorkflowParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "workflow_id",
+			In:   "path",
+		}
+		params.WorkflowID = packed[key].(WorkflowID)
+	}
+	return params
+}
+
+func decodeActionsEnableWorkflowParams(args [3]string, argsEscaped bool, r *http.Request) (params ActionsEnableWorkflowParams, _ error) {
+	// Decode path: owner.
+	if err := func() error {
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
+		}
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return err
+			}
+		} else {
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "owner",
+			In:   "path",
+			Err:  err,
+		}
+	}
+	// Decode path: repo.
+	if err := func() error {
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
+		}
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return err
+			}
+		} else {
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "repo",
+			In:   "path",
+			Err:  err,
+		}
+	}
+	// Decode path: workflow_id.
+	if err := func() error {
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
+		}
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "workflow_id",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				var failures []error
+				// Try to decode as Int
+				if err := func() error {
+					var variant int
+					if err := func() error {
+						val, err := d.DecodeValue()
+						if err != nil {
+							return err
+						}
+
+						c, err := conv.ToInt(val)
+						if err != nil {
+							return err
+						}
+
+						variant = c
+						return nil
+					}(); err != nil {
+						return err
+					}
+					params.WorkflowID.SetInt(variant)
+					return nil
+				}(); err == nil {
+					return nil
+				} else {
+					failures = append(failures, errors.Wrap(err, "Int"))
+				}
+				// Try to decode as String
+				if err := func() error {
+					var variant string
+					if err := func() error {
+						val, err := d.DecodeValue()
+						if err != nil {
+							return err
+						}
+
+						c, err := conv.ToString(val)
+						if err != nil {
+							return err
+						}
+
+						variant = c
+						return nil
+					}(); err != nil {
+						return err
+					}
+					params.WorkflowID.SetString(variant)
+					return nil
+				}(); err == nil {
+					return nil
+				} else {
+					failures = append(failures, errors.Wrap(err, "String"))
+				}
+				return errors.Wrap(errors.Join(failures...), "failed to decode WorkflowID")
+			}(); err != nil {
+				return err
+			}
+		} else {
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "workflow_id",
 			In:   "path",
 			Err:  err,
 		}
@@ -6025,6 +6667,220 @@ func decodeActionsGetSelfHostedRunnerGroupForOrgParams(args [2]string, argsEscap
 	return params, nil
 }
 
+// ActionsGetWorkflowParams is parameters of actions/get-workflow operation.
+type ActionsGetWorkflowParams struct {
+	Owner string
+	Repo  string
+	// The ID of the workflow. You can also pass the workflow file name as a string.
+	WorkflowID WorkflowID
+}
+
+func unpackActionsGetWorkflowParams(packed middleware.Parameters) (params ActionsGetWorkflowParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "workflow_id",
+			In:   "path",
+		}
+		params.WorkflowID = packed[key].(WorkflowID)
+	}
+	return params
+}
+
+func decodeActionsGetWorkflowParams(args [3]string, argsEscaped bool, r *http.Request) (params ActionsGetWorkflowParams, _ error) {
+	// Decode path: owner.
+	if err := func() error {
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
+		}
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return err
+			}
+		} else {
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "owner",
+			In:   "path",
+			Err:  err,
+		}
+	}
+	// Decode path: repo.
+	if err := func() error {
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
+		}
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return err
+			}
+		} else {
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "repo",
+			In:   "path",
+			Err:  err,
+		}
+	}
+	// Decode path: workflow_id.
+	if err := func() error {
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
+		}
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "workflow_id",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				var failures []error
+				// Try to decode as Int
+				if err := func() error {
+					var variant int
+					if err := func() error {
+						val, err := d.DecodeValue()
+						if err != nil {
+							return err
+						}
+
+						c, err := conv.ToInt(val)
+						if err != nil {
+							return err
+						}
+
+						variant = c
+						return nil
+					}(); err != nil {
+						return err
+					}
+					params.WorkflowID.SetInt(variant)
+					return nil
+				}(); err == nil {
+					return nil
+				} else {
+					failures = append(failures, errors.Wrap(err, "Int"))
+				}
+				// Try to decode as String
+				if err := func() error {
+					var variant string
+					if err := func() error {
+						val, err := d.DecodeValue()
+						if err != nil {
+							return err
+						}
+
+						c, err := conv.ToString(val)
+						if err != nil {
+							return err
+						}
+
+						variant = c
+						return nil
+					}(); err != nil {
+						return err
+					}
+					params.WorkflowID.SetString(variant)
+					return nil
+				}(); err == nil {
+					return nil
+				} else {
+					failures = append(failures, errors.Wrap(err, "String"))
+				}
+				return errors.Wrap(errors.Join(failures...), "failed to decode WorkflowID")
+			}(); err != nil {
+				return err
+			}
+		} else {
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "workflow_id",
+			In:   "path",
+			Err:  err,
+		}
+	}
+	return params, nil
+}
+
 // ActionsGetWorkflowRunParams is parameters of actions/get-workflow-run operation.
 type ActionsGetWorkflowRunParams struct {
 	Owner string
@@ -6362,6 +7218,220 @@ func decodeActionsGetWorkflowRunUsageParams(args [3]string, argsEscaped bool, r 
 	}(); err != nil {
 		return params, &ogenerrors.DecodeParamError{
 			Name: "run_id",
+			In:   "path",
+			Err:  err,
+		}
+	}
+	return params, nil
+}
+
+// ActionsGetWorkflowUsageParams is parameters of actions/get-workflow-usage operation.
+type ActionsGetWorkflowUsageParams struct {
+	Owner string
+	Repo  string
+	// The ID of the workflow. You can also pass the workflow file name as a string.
+	WorkflowID WorkflowID
+}
+
+func unpackActionsGetWorkflowUsageParams(packed middleware.Parameters) (params ActionsGetWorkflowUsageParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "workflow_id",
+			In:   "path",
+		}
+		params.WorkflowID = packed[key].(WorkflowID)
+	}
+	return params
+}
+
+func decodeActionsGetWorkflowUsageParams(args [3]string, argsEscaped bool, r *http.Request) (params ActionsGetWorkflowUsageParams, _ error) {
+	// Decode path: owner.
+	if err := func() error {
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
+		}
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return err
+			}
+		} else {
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "owner",
+			In:   "path",
+			Err:  err,
+		}
+	}
+	// Decode path: repo.
+	if err := func() error {
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
+		}
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return err
+			}
+		} else {
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "repo",
+			In:   "path",
+			Err:  err,
+		}
+	}
+	// Decode path: workflow_id.
+	if err := func() error {
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
+		}
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "workflow_id",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				var failures []error
+				// Try to decode as Int
+				if err := func() error {
+					var variant int
+					if err := func() error {
+						val, err := d.DecodeValue()
+						if err != nil {
+							return err
+						}
+
+						c, err := conv.ToInt(val)
+						if err != nil {
+							return err
+						}
+
+						variant = c
+						return nil
+					}(); err != nil {
+						return err
+					}
+					params.WorkflowID.SetInt(variant)
+					return nil
+				}(); err == nil {
+					return nil
+				} else {
+					failures = append(failures, errors.Wrap(err, "Int"))
+				}
+				// Try to decode as String
+				if err := func() error {
+					var variant string
+					if err := func() error {
+						val, err := d.DecodeValue()
+						if err != nil {
+							return err
+						}
+
+						c, err := conv.ToString(val)
+						if err != nil {
+							return err
+						}
+
+						variant = c
+						return nil
+					}(); err != nil {
+						return err
+					}
+					params.WorkflowID.SetString(variant)
+					return nil
+				}(); err == nil {
+					return nil
+				} else {
+					failures = append(failures, errors.Wrap(err, "String"))
+				}
+				return errors.Wrap(errors.Join(failures...), "failed to decode WorkflowID")
+			}(); err != nil {
+				return err
+			}
+		} else {
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "workflow_id",
 			In:   "path",
 			Err:  err,
 		}
@@ -9781,6 +10851,615 @@ func decodeActionsListWorkflowRunArtifactsParams(args [3]string, argsEscaped boo
 	}(); err != nil {
 		return params, &ogenerrors.DecodeParamError{
 			Name: "page",
+			In:   "query",
+			Err:  err,
+		}
+	}
+	return params, nil
+}
+
+// ActionsListWorkflowRunsParams is parameters of actions/list-workflow-runs operation.
+type ActionsListWorkflowRunsParams struct {
+	Owner string
+	Repo  string
+	// The ID of the workflow. You can also pass the workflow file name as a string.
+	WorkflowID WorkflowID
+	// Returns someone's workflow runs. Use the login for the user who created the `push` associated with
+	// the check suite or workflow run.
+	Actor OptString `json:",omitempty,omitzero"`
+	// Returns workflow runs associated with a branch. Use the name of the branch of the `push`.
+	Branch OptString `json:",omitempty,omitzero"`
+	// Returns workflow run triggered by the event you specify. For example, `push`, `pull_request` or
+	// `issue`. For more information, see "[Events that trigger workflows](https://help.github.
+	// com/en/actions/automating-your-workflow-with-github-actions/events-that-trigger-workflows).".
+	Event OptString `json:",omitempty,omitzero"`
+	// Returns workflow runs with the check run `status` or `conclusion` that you specify. For example, a
+	// conclusion can be `success` or a status can be `in_progress`. Only GitHub can set a status of
+	// `waiting` or `requested`. For a list of the possible `status` and `conclusion` options, see
+	// "[Create a check run](https://docs.github.com/rest/reference/checks#create-a-check-run).".
+	Status OptWorkflowRunStatus `json:",omitempty,omitzero"`
+	// Results per page (max 100).
+	PerPage OptInt `json:",omitempty,omitzero"`
+	// Page number of the results to fetch.
+	Page    OptInt      `json:",omitempty,omitzero"`
+	Created OptDateTime `json:",omitempty,omitzero"`
+}
+
+func unpackActionsListWorkflowRunsParams(packed middleware.Parameters) (params ActionsListWorkflowRunsParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "workflow_id",
+			In:   "path",
+		}
+		params.WorkflowID = packed[key].(WorkflowID)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "actor",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Actor = v.(OptString)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "branch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Branch = v.(OptString)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "event",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Event = v.(OptString)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "status",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Status = v.(OptWorkflowRunStatus)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "created",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Created = v.(OptDateTime)
+		}
+	}
+	return params
+}
+
+func decodeActionsListWorkflowRunsParams(args [3]string, argsEscaped bool, r *http.Request) (params ActionsListWorkflowRunsParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
+	// Decode path: owner.
+	if err := func() error {
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
+		}
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return err
+			}
+		} else {
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "owner",
+			In:   "path",
+			Err:  err,
+		}
+	}
+	// Decode path: repo.
+	if err := func() error {
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
+		}
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return err
+			}
+		} else {
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "repo",
+			In:   "path",
+			Err:  err,
+		}
+	}
+	// Decode path: workflow_id.
+	if err := func() error {
+		param := args[2]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[2])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
+		}
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "workflow_id",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				var failures []error
+				// Try to decode as Int
+				if err := func() error {
+					var variant int
+					if err := func() error {
+						val, err := d.DecodeValue()
+						if err != nil {
+							return err
+						}
+
+						c, err := conv.ToInt(val)
+						if err != nil {
+							return err
+						}
+
+						variant = c
+						return nil
+					}(); err != nil {
+						return err
+					}
+					params.WorkflowID.SetInt(variant)
+					return nil
+				}(); err == nil {
+					return nil
+				} else {
+					failures = append(failures, errors.Wrap(err, "Int"))
+				}
+				// Try to decode as String
+				if err := func() error {
+					var variant string
+					if err := func() error {
+						val, err := d.DecodeValue()
+						if err != nil {
+							return err
+						}
+
+						c, err := conv.ToString(val)
+						if err != nil {
+							return err
+						}
+
+						variant = c
+						return nil
+					}(); err != nil {
+						return err
+					}
+					params.WorkflowID.SetString(variant)
+					return nil
+				}(); err == nil {
+					return nil
+				} else {
+					failures = append(failures, errors.Wrap(err, "String"))
+				}
+				return errors.Wrap(errors.Join(failures...), "failed to decode WorkflowID")
+			}(); err != nil {
+				return err
+			}
+		} else {
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "workflow_id",
+			In:   "path",
+			Err:  err,
+		}
+	}
+	// Decode query: actor.
+	if err := func() error {
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "actor",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				var paramsDotActorVal string
+				if err := func() error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(val)
+					if err != nil {
+						return err
+					}
+
+					paramsDotActorVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Actor.SetTo(paramsDotActorVal)
+				return nil
+			}); err != nil {
+				return err
+			}
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "actor",
+			In:   "query",
+			Err:  err,
+		}
+	}
+	// Decode query: branch.
+	if err := func() error {
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "branch",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				var paramsDotBranchVal string
+				if err := func() error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(val)
+					if err != nil {
+						return err
+					}
+
+					paramsDotBranchVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Branch.SetTo(paramsDotBranchVal)
+				return nil
+			}); err != nil {
+				return err
+			}
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "branch",
+			In:   "query",
+			Err:  err,
+		}
+	}
+	// Decode query: event.
+	if err := func() error {
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "event",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				var paramsDotEventVal string
+				if err := func() error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(val)
+					if err != nil {
+						return err
+					}
+
+					paramsDotEventVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Event.SetTo(paramsDotEventVal)
+				return nil
+			}); err != nil {
+				return err
+			}
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "event",
+			In:   "query",
+			Err:  err,
+		}
+	}
+	// Decode query: status.
+	if err := func() error {
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "status",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				var paramsDotStatusVal WorkflowRunStatus
+				if err := func() error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(val)
+					if err != nil {
+						return err
+					}
+
+					paramsDotStatusVal = WorkflowRunStatus(c)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Status.SetTo(paramsDotStatusVal)
+				return nil
+			}); err != nil {
+				return err
+			}
+			if err := func() error {
+				if value, ok := params.Status.Get(); ok {
+					if err := func() error {
+						if err := value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "status",
+			In:   "query",
+			Err:  err,
+		}
+	}
+	// Set default value for query: per_page.
+	{
+		val := int(30)
+		params.PerPage.SetTo(val)
+	}
+	// Decode query: per_page.
+	if err := func() error {
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				var paramsDotPerPageVal int
+				if err := func() error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(val)
+					if err != nil {
+						return err
+					}
+
+					paramsDotPerPageVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(paramsDotPerPageVal)
+				return nil
+			}); err != nil {
+				return err
+			}
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "per_page",
+			In:   "query",
+			Err:  err,
+		}
+	}
+	// Set default value for query: page.
+	{
+		val := int(1)
+		params.Page.SetTo(val)
+	}
+	// Decode query: page.
+	if err := func() error {
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				var paramsDotPageVal int
+				if err := func() error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(val)
+					if err != nil {
+						return err
+					}
+
+					paramsDotPageVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(paramsDotPageVal)
+				return nil
+			}); err != nil {
+				return err
+			}
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "page",
+			In:   "query",
+			Err:  err,
+		}
+	}
+	// Decode query: created.
+	if err := func() error {
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "created",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				var paramsDotCreatedVal time.Time
+				if err := func() error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToDateTime(val)
+					if err != nil {
+						return err
+					}
+
+					paramsDotCreatedVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Created.SetTo(paramsDotCreatedVal)
+				return nil
+			}); err != nil {
+				return err
+			}
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "created",
 			In:   "query",
 			Err:  err,
 		}

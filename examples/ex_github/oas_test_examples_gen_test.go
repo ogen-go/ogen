@@ -369,6 +369,61 @@ func TestActionsCreateSelfHostedRunnerGroupForOrgReqVisibility_EncodeDecode(t *t
 	var typ2 ActionsCreateSelfHostedRunnerGroupForOrgReqVisibility
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+func TestActionsCreateWorkflowDispatchReq_EncodeDecode(t *testing.T) {
+	var typ ActionsCreateWorkflowDispatchReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ActionsCreateWorkflowDispatchReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestActionsCreateWorkflowDispatchReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\"inputs\":{\"home\":\"San Francisco, CA\",\"name\":\"Mona the Octocat\"},\"ref\":\"topic-branch\"}"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ ActionsCreateWorkflowDispatchReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 ActionsCreateWorkflowDispatchReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
+}
+func TestActionsCreateWorkflowDispatchReqInputs_EncodeDecode(t *testing.T) {
+	var typ ActionsCreateWorkflowDispatchReqInputs
+	typ = make(ActionsCreateWorkflowDispatchReqInputs)
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ActionsCreateWorkflowDispatchReqInputs
+	typ2 = make(ActionsCreateWorkflowDispatchReqInputs)
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
 func TestActionsEnabled_EncodeDecode(t *testing.T) {
 	var typ ActionsEnabled
 	typ.SetFake()
@@ -1033,6 +1088,47 @@ func TestActionsListWorkflowRunsForRepoOK_Examples(t *testing.T) {
 			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 ActionsListWorkflowRunsForRepoOK
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
+}
+func TestActionsListWorkflowRunsOK_EncodeDecode(t *testing.T) {
+	var typ ActionsListWorkflowRunsOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ActionsListWorkflowRunsOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestActionsListWorkflowRunsOK_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\"total_count\":1,\"workflow_runs\":[{\"artifacts_url\":\"https://api.github.com/repos/octo-org/octo-repo/actions/runs/30433642/artifacts\",\"cancel_url\":\"https://api.github.com/repos/octo-org/octo-repo/actions/runs/30433642/cancel\",\"check_suite_url\":\"https://api.github.com/repos/octo-org/octo-repo/check-suites/414944374\",\"conclusion\":null,\"created_at\":\"2020-01-22T19:33:08Z\",\"event\":\"push\",\"head_branch\":\"master\",\"head_commit\":{\"author\":{\"email\":\"octocat@github.com\",\"name\":\"Octo Cat\"},\"committer\":{\"email\":\"noreply@github.com\",\"name\":\"GitHub\"},\"id\":\"acb5820ced9479c074f688cc328bf03f341a511d\",\"message\":\"Create linter.yaml\",\"timestamp\":\"2020-01-22T19:33:05Z\",\"tree_id\":\"d23f6eedb1e1b9610bbc754ddb5197bfe7271223\"},\"head_repository\":{\"archive_url\":\"https://api.github.com/repos/octo-org/octo-repo/{archive_format}{/ref}\",\"assignees_url\":\"https://api.github.com/repos/octo-org/octo-repo/assignees{/user}\",\"blobs_url\":\"https://api.github.com/repos/octo-org/octo-repo/git/blobs{/sha}\",\"branches_url\":\"https://api.github.com/repos/octo-org/octo-repo/branches{/branch}\",\"collaborators_url\":\"https://api.github.com/repos/octo-org/octo-repo/collaborators{/collaborator}\",\"comments_url\":\"https://api.github.com/repos/octo-org/octo-repo/comments{/number}\",\"commits_url\":\"https://api.github.com/repos/octo-org/octo-repo/commits{/sha}\",\"compare_url\":\"https://api.github.com/repos/octo-org/octo-repo/compare/{base}...{head}\",\"contents_url\":\"https://api.github.com/repos/octo-org/octo-repo/contents/{+path}\",\"contributors_url\":\"https://api.github.com/repos/octo-org/octo-repo/contributors\",\"deployments_url\":\"https://api.github.com/repos/octo-org/octo-repo/deployments\",\"description\":null,\"downloads_url\":\"https://api.github.com/repos/octo-org/octo-repo/downloads\",\"events_url\":\"https://api.github.com/repos/octo-org/octo-repo/events\",\"fork\":false,\"forks_url\":\"https://api.github.com/repos/octo-org/octo-repo/forks\",\"full_name\":\"octo-org/octo-repo\",\"git_commits_url\":\"https://api.github.com/repos/octo-org/octo-repo/git/commits{/sha}\",\"git_refs_url\":\"https://api.github.com/repos/octo-org/octo-repo/git/refs{/sha}\",\"git_tags_url\":\"https://api.github.com/repos/octo-org/octo-repo/git/tags{/sha}\",\"hooks_url\":\"https://api.github.com/repos/octo-org/octo-repo/hooks\",\"html_url\":\"https://github.com/octo-org/octo-repo\",\"id\":217723378,\"issue_comment_url\":\"https://api.github.com/repos/octo-org/octo-repo/issues/comments{/number}\",\"issue_events_url\":\"https://api.github.com/repos/octo-org/octo-repo/issues/events{/number}\",\"issues_url\":\"https://api.github.com/repos/octo-org/octo-repo/issues{/number}\",\"keys_url\":\"https://api.github.com/repos/octo-org/octo-repo/keys{/key_id}\",\"labels_url\":\"https://api.github.com/repos/octo-org/octo-repo/labels{/name}\",\"languages_url\":\"https://api.github.com/repos/octo-org/octo-repo/languages\",\"merges_url\":\"https://api.github.com/repos/octo-org/octo-repo/merges\",\"milestones_url\":\"https://api.github.com/repos/octo-org/octo-repo/milestones{/number}\",\"name\":\"octo-repo\",\"node_id\":\"MDEwOlJlcG9zaXRvcnkyMTc3MjMzNzg=\",\"notifications_url\":\"https://api.github.com/repos/octo-org/octo-repo/notifications{?since,all,participating}\",\"owner\":{\"avatar_url\":\"https://github.com/images/error/octocat_happy.gif\",\"events_url\":\"https://api.github.com/users/octocat/events{/privacy}\",\"followers_url\":\"https://api.github.com/users/octocat/followers\",\"following_url\":\"https://api.github.com/users/octocat/following{/other_user}\",\"gists_url\":\"https://api.github.com/users/octocat/gists{/gist_id}\",\"gravatar_id\":\"\",\"html_url\":\"https://github.com/octocat\",\"id\":1,\"login\":\"octocat\",\"node_id\":\"MDQ6VXNlcjE=\",\"organizations_url\":\"https://api.github.com/users/octocat/orgs\",\"received_events_url\":\"https://api.github.com/users/octocat/received_events\",\"repos_url\":\"https://api.github.com/users/octocat/repos\",\"site_admin\":false,\"starred_url\":\"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\"subscriptions_url\":\"https://api.github.com/users/octocat/subscriptions\",\"type\":\"User\",\"url\":\"https://api.github.com/users/octocat\"},\"private\":true,\"pulls_url\":\"https://api.github.com/repos/octo-org/octo-repo/pulls{/number}\",\"releases_url\":\"https://api.github.com/repos/octo-org/octo-repo/releases{/id}\",\"stargazers_url\":\"https://api.github.com/repos/octo-org/octo-repo/stargazers\",\"statuses_url\":\"https://api.github.com/repos/octo-org/octo-repo/statuses/{sha}\",\"subscribers_url\":\"https://api.github.com/repos/octo-org/octo-repo/subscribers\",\"subscription_url\":\"https://api.github.com/repos/octo-org/octo-repo/subscription\",\"tags_url\":\"https://api.github.com/repos/octo-org/octo-repo/tags\",\"teams_url\":\"https://api.github.com/repos/octo-org/octo-repo/teams\",\"trees_url\":\"https://api.github.com/repos/octo-org/octo-repo/git/trees{/sha}\",\"url\":\"https://api.github.com/repos/octo-org/octo-repo\"},\"head_sha\":\"acb5820ced9479c074f688cc328bf03f341a511d\",\"html_url\":\"https://github.com/octo-org/octo-repo/actions/runs/30433642\",\"id\":30433642,\"jobs_url\":\"https://api.github.com/repos/octo-org/octo-repo/actions/runs/30433642/jobs\",\"logs_url\":\"https://api.github.com/repos/octo-org/octo-repo/actions/runs/30433642/logs\",\"name\":\"Build\",\"node_id\":\"MDEyOldvcmtmbG93IFJ1bjI2OTI4OQ==\",\"pull_requests\":[],\"repository\":{\"archive_url\":\"https://api.github.com/repos/octocat/Hello-World/{archive_format}{/ref}\",\"assignees_url\":\"https://api.github.com/repos/octocat/Hello-World/assignees{/user}\",\"blobs_url\":\"https://api.github.com/repos/octocat/Hello-World/git/blobs{/sha}\",\"branches_url\":\"https://api.github.com/repos/octocat/Hello-World/branches{/branch}\",\"collaborators_url\":\"https://api.github.com/repos/octocat/Hello-World/collaborators{/collaborator}\",\"comments_url\":\"https://api.github.com/repos/octocat/Hello-World/comments{/number}\",\"commits_url\":\"https://api.github.com/repos/octocat/Hello-World/commits{/sha}\",\"compare_url\":\"https://api.github.com/repos/octocat/Hello-World/compare/{base}...{head}\",\"contents_url\":\"https://api.github.com/repos/octocat/Hello-World/contents/{+path}\",\"contributors_url\":\"https://api.github.com/repos/octocat/Hello-World/contributors\",\"deployments_url\":\"https://api.github.com/repos/octocat/Hello-World/deployments\",\"description\":\"This your first repo!\",\"downloads_url\":\"https://api.github.com/repos/octocat/Hello-World/downloads\",\"events_url\":\"https://api.github.com/repos/octocat/Hello-World/events\",\"fork\":false,\"forks_url\":\"https://api.github.com/repos/octocat/Hello-World/forks\",\"full_name\":\"octocat/Hello-World\",\"git_commits_url\":\"https://api.github.com/repos/octocat/Hello-World/git/commits{/sha}\",\"git_refs_url\":\"https://api.github.com/repos/octocat/Hello-World/git/refs{/sha}\",\"git_tags_url\":\"https://api.github.com/repos/octocat/Hello-World/git/tags{/sha}\",\"git_url\":\"git:github.com/octocat/Hello-World.git\",\"hooks_url\":\"http://api.github.com/repos/octocat/Hello-World/hooks\",\"html_url\":\"https://github.com/octocat/Hello-World\",\"id\":1296269,\"issue_comment_url\":\"https://api.github.com/repos/octocat/Hello-World/issues/comments{/number}\",\"issue_events_url\":\"https://api.github.com/repos/octocat/Hello-World/issues/events{/number}\",\"issues_url\":\"https://api.github.com/repos/octocat/Hello-World/issues{/number}\",\"keys_url\":\"https://api.github.com/repos/octocat/Hello-World/keys{/key_id}\",\"labels_url\":\"https://api.github.com/repos/octocat/Hello-World/labels{/name}\",\"languages_url\":\"https://api.github.com/repos/octocat/Hello-World/languages\",\"merges_url\":\"https://api.github.com/repos/octocat/Hello-World/merges\",\"milestones_url\":\"https://api.github.com/repos/octocat/Hello-World/milestones{/number}\",\"name\":\"Hello-World\",\"node_id\":\"MDEwOlJlcG9zaXRvcnkxMjk2MjY5\",\"notifications_url\":\"https://api.github.com/repos/octocat/Hello-World/notifications{?since,all,participating}\",\"owner\":{\"avatar_url\":\"https://github.com/images/error/octocat_happy.gif\",\"events_url\":\"https://api.github.com/users/octocat/events{/privacy}\",\"followers_url\":\"https://api.github.com/users/octocat/followers\",\"following_url\":\"https://api.github.com/users/octocat/following{/other_user}\",\"gists_url\":\"https://api.github.com/users/octocat/gists{/gist_id}\",\"gravatar_id\":\"\",\"html_url\":\"https://github.com/octocat\",\"id\":1,\"login\":\"octocat\",\"node_id\":\"MDQ6VXNlcjE=\",\"organizations_url\":\"https://api.github.com/users/octocat/orgs\",\"received_events_url\":\"https://api.github.com/users/octocat/received_events\",\"repos_url\":\"https://api.github.com/users/octocat/repos\",\"site_admin\":false,\"starred_url\":\"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\"subscriptions_url\":\"https://api.github.com/users/octocat/subscriptions\",\"type\":\"User\",\"url\":\"https://api.github.com/users/octocat\"},\"private\":false,\"pulls_url\":\"https://api.github.com/repos/octocat/Hello-World/pulls{/number}\",\"releases_url\":\"https://api.github.com/repos/octocat/Hello-World/releases{/id}\",\"ssh_url\":\"git@github.com:octocat/Hello-World.git\",\"stargazers_url\":\"https://api.github.com/repos/octocat/Hello-World/stargazers\",\"statuses_url\":\"https://api.github.com/repos/octocat/Hello-World/statuses/{sha}\",\"subscribers_url\":\"https://api.github.com/repos/octocat/Hello-World/subscribers\",\"subscription_url\":\"https://api.github.com/repos/octocat/Hello-World/subscription\",\"tags_url\":\"https://api.github.com/repos/octocat/Hello-World/tags\",\"teams_url\":\"https://api.github.com/repos/octocat/Hello-World/teams\",\"trees_url\":\"https://api.github.com/repos/octocat/Hello-World/git/trees{/sha}\",\"url\":\"https://api.github.com/repos/octocat/Hello-World\"},\"rerun_url\":\"https://api.github.com/repos/octo-org/octo-repo/actions/runs/30433642/rerun\",\"run_number\":562,\"status\":\"queued\",\"updated_at\":\"2020-01-22T19:33:08Z\",\"url\":\"https://api.github.com/repos/octo-org/octo-repo/actions/runs/30433642\",\"workflow_id\":159038,\"workflow_url\":\"https://api.github.com/repos/octo-org/octo-repo/actions/workflows/159038\"}]}"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ ActionsListWorkflowRunsOK
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 ActionsListWorkflowRunsOK
 			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
@@ -26992,4 +27088,93 @@ func TestWorkflowState_Examples(t *testing.T) {
 			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
+}
+func TestWorkflowUsage_EncodeDecode(t *testing.T) {
+	var typ WorkflowUsage
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 WorkflowUsage
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestWorkflowUsage_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\"billable\":{\"MACOS\":{\"total_ms\":240000},\"UBUNTU\":{\"total_ms\":180000},\"WINDOWS\":{\"total_ms\":300000}}}"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ WorkflowUsage
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 WorkflowUsage
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
+}
+func TestWorkflowUsageBillable_EncodeDecode(t *testing.T) {
+	var typ WorkflowUsageBillable
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 WorkflowUsageBillable
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestWorkflowUsageBillableMACOS_EncodeDecode(t *testing.T) {
+	var typ WorkflowUsageBillableMACOS
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 WorkflowUsageBillableMACOS
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestWorkflowUsageBillableUBUNTU_EncodeDecode(t *testing.T) {
+	var typ WorkflowUsageBillableUBUNTU
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 WorkflowUsageBillableUBUNTU
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestWorkflowUsageBillableWINDOWS_EncodeDecode(t *testing.T) {
+	var typ WorkflowUsageBillableWINDOWS
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 WorkflowUsageBillableWINDOWS
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }

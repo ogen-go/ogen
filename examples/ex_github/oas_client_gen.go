@@ -323,6 +323,22 @@ type Invoker interface {
 	//
 	// POST /orgs/{org}/actions/runner-groups
 	ActionsCreateSelfHostedRunnerGroupForOrg(ctx context.Context, request *ActionsCreateSelfHostedRunnerGroupForOrgReq, params ActionsCreateSelfHostedRunnerGroupForOrgParams) (*RunnerGroupsOrg, error)
+	// ActionsCreateWorkflowDispatch invokes actions/create-workflow-dispatch operation.
+	//
+	// You can use this endpoint to manually trigger a GitHub Actions workflow run. You can replace
+	// `workflow_id` with the workflow file name. For example, you could use `main.yaml`.
+	// You must configure your GitHub Actions workflow to run when the [`workflow_dispatch`
+	// webhook](/developers/webhooks-and-events/webhook-events-and-payloads#workflow_dispatch) event
+	// occurs. The `inputs` are configured in the workflow file. For more information about how to
+	// configure the `workflow_dispatch` event in the workflow file, see "[Events that trigger
+	// workflows](/actions/reference/events-that-trigger-workflows#workflow_dispatch)."
+	// You must authenticate using an access token with the `repo` scope to use this endpoint. GitHub
+	// Apps must have the `actions:write` permission to use this endpoint. For more information, see
+	// "[Creating a personal access token for the command line](https://help.github.
+	// com/articles/creating-a-personal-access-token-for-the-command-line).".
+	//
+	// POST /repos/{owner}/{repo}/actions/workflows/{workflow_id}/dispatches
+	ActionsCreateWorkflowDispatch(ctx context.Context, request *ActionsCreateWorkflowDispatchReq, params ActionsCreateWorkflowDispatchParams) error
 	// ActionsDeleteArtifact invokes actions/delete-artifact operation.
 	//
 	// Deletes an artifact for a workflow run. You must authenticate using an access token with the
@@ -411,6 +427,15 @@ type Invoker interface {
 	//
 	// DELETE /orgs/{org}/actions/permissions/repositories/{repository_id}
 	ActionsDisableSelectedRepositoryGithubActionsOrganization(ctx context.Context, params ActionsDisableSelectedRepositoryGithubActionsOrganizationParams) error
+	// ActionsDisableWorkflow invokes actions/disable-workflow operation.
+	//
+	// Disables a workflow and sets the `state` of the workflow to `disabled_manually`. You can replace
+	// `workflow_id` with the workflow file name. For example, you could use `main.yaml`.
+	// You must authenticate using an access token with the `repo` scope to use this endpoint. GitHub
+	// Apps must have the `actions:write` permission to use this endpoint.
+	//
+	// PUT /repos/{owner}/{repo}/actions/workflows/{workflow_id}/disable
+	ActionsDisableWorkflow(ctx context.Context, params ActionsDisableWorkflowParams) error
 	// ActionsDownloadArtifact invokes actions/download-artifact operation.
 	//
 	// Gets a redirect URL to download an archive for a repository. This URL expires after 1 minute. Look
@@ -458,6 +483,15 @@ type Invoker interface {
 	//
 	// PUT /orgs/{org}/actions/permissions/repositories/{repository_id}
 	ActionsEnableSelectedRepositoryGithubActionsOrganization(ctx context.Context, params ActionsEnableSelectedRepositoryGithubActionsOrganizationParams) error
+	// ActionsEnableWorkflow invokes actions/enable-workflow operation.
+	//
+	// Enables a workflow and sets the `state` of the workflow to `active`. You can replace `workflow_id`
+	// with the workflow file name. For example, you could use `main.yaml`.
+	// You must authenticate using an access token with the `repo` scope to use this endpoint. GitHub
+	// Apps must have the `actions:write` permission to use this endpoint.
+	//
+	// PUT /repos/{owner}/{repo}/actions/workflows/{workflow_id}/enable
+	ActionsEnableWorkflow(ctx context.Context, params ActionsEnableWorkflowParams) error
 	// ActionsGetAllowedActionsOrganization invokes actions/get-allowed-actions-organization operation.
 	//
 	// Gets the selected actions that are allowed in an organization. To use this endpoint, the
@@ -597,6 +631,15 @@ type Invoker interface {
 	//
 	// GET /orgs/{org}/actions/runner-groups/{runner_group_id}
 	ActionsGetSelfHostedRunnerGroupForOrg(ctx context.Context, params ActionsGetSelfHostedRunnerGroupForOrgParams) (*RunnerGroupsOrg, error)
+	// ActionsGetWorkflow invokes actions/get-workflow operation.
+	//
+	// Gets a specific workflow. You can replace `workflow_id` with the workflow file name. For example,
+	// you could use `main.yaml`. Anyone with read access to the repository can use this endpoint. If the
+	// repository is private you must use an access token with the `repo` scope. GitHub Apps must have
+	// the `actions:read` permission to use this endpoint.
+	//
+	// GET /repos/{owner}/{repo}/actions/workflows/{workflow_id}
+	ActionsGetWorkflow(ctx context.Context, params ActionsGetWorkflowParams) (*Workflow, error)
 	// ActionsGetWorkflowRun invokes actions/get-workflow-run operation.
 	//
 	// Gets a specific workflow run. Anyone with read access to the repository can use this endpoint. If
@@ -620,6 +663,22 @@ type Invoker interface {
 	//
 	// GET /repos/{owner}/{repo}/actions/runs/{run_id}/timing
 	ActionsGetWorkflowRunUsage(ctx context.Context, params ActionsGetWorkflowRunUsageParams) (*WorkflowRunUsage, error)
+	// ActionsGetWorkflowUsage invokes actions/get-workflow-usage operation.
+	//
+	// Gets the number of billable minutes used by a specific workflow during the current billing cycle.
+	// Billable minutes only apply to workflows in private repositories that use GitHub-hosted runners.
+	// Usage is listed for each GitHub-hosted runner operating system in milliseconds. Any job re-runs
+	// are also included in the usage. The usage does not include the multiplier for macOS and Windows
+	// runners and is not rounded up to the nearest whole minute. For more information, see "[Managing
+	// billing for GitHub Actions](https://help.github.
+	// com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-actions)".
+	// You can replace `workflow_id` with the workflow file name. For example, you could use `main.yaml`.
+	// Anyone with read access to the repository can use this endpoint. If the repository is private you
+	// must use an access token with the `repo` scope. GitHub Apps must have the `actions:read`
+	// permission to use this endpoint.
+	//
+	// GET /repos/{owner}/{repo}/actions/workflows/{workflow_id}/timing
+	ActionsGetWorkflowUsage(ctx context.Context, params ActionsGetWorkflowUsageParams) (*WorkflowUsage, error)
 	// ActionsListArtifactsForRepo invokes actions/list-artifacts-for-repo operation.
 	//
 	// Lists all artifacts for a repository. Anyone with read access to the repository can use this
@@ -756,6 +815,17 @@ type Invoker interface {
 	//
 	// GET /repos/{owner}/{repo}/actions/runs/{run_id}/artifacts
 	ActionsListWorkflowRunArtifacts(ctx context.Context, params ActionsListWorkflowRunArtifactsParams) (*ActionsListWorkflowRunArtifactsOKHeaders, error)
+	// ActionsListWorkflowRuns invokes actions/list-workflow-runs operation.
+	//
+	// List all workflow runs for a workflow. You can replace `workflow_id` with the workflow file name.
+	// For example, you could use `main.yaml`. You can use parameters to narrow the list of results. For
+	// more information about using parameters, see [Parameters](https://docs.github.
+	// com/rest/overview/resources-in-the-rest-api#parameters).
+	// Anyone with read access to the repository can use this endpoint. If the repository is private you
+	// must use an access token with the `repo` scope.
+	//
+	// GET /repos/{owner}/{repo}/actions/workflows/{workflow_id}/runs
+	ActionsListWorkflowRuns(ctx context.Context, params ActionsListWorkflowRunsParams) (*ActionsListWorkflowRunsOKHeaders, error)
 	// ActionsListWorkflowRunsForRepo invokes actions/list-workflow-runs-for-repo operation.
 	//
 	// Lists all workflow runs for a repository. You can use parameters to narrow the list of results.
@@ -9559,6 +9629,157 @@ func (c *Client) sendActionsCreateSelfHostedRunnerGroupForOrg(ctx context.Contex
 	return result, nil
 }
 
+// ActionsCreateWorkflowDispatch invokes actions/create-workflow-dispatch operation.
+//
+// You can use this endpoint to manually trigger a GitHub Actions workflow run. You can replace
+// `workflow_id` with the workflow file name. For example, you could use `main.yaml`.
+// You must configure your GitHub Actions workflow to run when the [`workflow_dispatch`
+// webhook](/developers/webhooks-and-events/webhook-events-and-payloads#workflow_dispatch) event
+// occurs. The `inputs` are configured in the workflow file. For more information about how to
+// configure the `workflow_dispatch` event in the workflow file, see "[Events that trigger
+// workflows](/actions/reference/events-that-trigger-workflows#workflow_dispatch)."
+// You must authenticate using an access token with the `repo` scope to use this endpoint. GitHub
+// Apps must have the `actions:write` permission to use this endpoint. For more information, see
+// "[Creating a personal access token for the command line](https://help.github.
+// com/articles/creating-a-personal-access-token-for-the-command-line).".
+//
+// POST /repos/{owner}/{repo}/actions/workflows/{workflow_id}/dispatches
+func (c *Client) ActionsCreateWorkflowDispatch(ctx context.Context, request *ActionsCreateWorkflowDispatchReq, params ActionsCreateWorkflowDispatchParams) error {
+	_, err := c.sendActionsCreateWorkflowDispatch(ctx, request, params)
+	return err
+}
+
+func (c *Client) sendActionsCreateWorkflowDispatch(ctx context.Context, request *ActionsCreateWorkflowDispatchReq, params ActionsCreateWorkflowDispatchParams) (res *ActionsCreateWorkflowDispatchNoContent, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/create-workflow-dispatch"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/actions/workflows/{workflow_id}/dispatches"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, ActionsCreateWorkflowDispatchOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
+	{
+		// Encode "owner" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "owner",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Owner))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		encoded, err := e.Result()
+		if err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		pathParts[1] = encoded
+	}
+	pathParts[2] = "/"
+	{
+		// Encode "repo" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "repo",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Repo))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		encoded, err := e.Result()
+		if err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		pathParts[3] = encoded
+	}
+	pathParts[4] = "/actions/workflows/"
+	{
+		// Encode "workflow_id" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "workflow_id",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			switch params.WorkflowID.Type {
+			case IntWorkflowID:
+				return e.EncodeValue(conv.IntToString(params.WorkflowID.Int))
+			case StringWorkflowID:
+				return e.EncodeValue(conv.StringToString(params.WorkflowID.String))
+			default:
+				return errors.Errorf("invalid WorkflowID type: %q", params.WorkflowID.Type)
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		encoded, err := e.Result()
+		if err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		pathParts[5] = encoded
+	}
+	pathParts[6] = "/dispatches"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeActionsCreateWorkflowDispatchRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeActionsCreateWorkflowDispatchResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
 // ActionsDeleteArtifact invokes actions/delete-artifact operation.
 //
 // Deletes an artifact for a workflow run. You must authenticate using an access token with the
@@ -10802,6 +11023,147 @@ func (c *Client) sendActionsDisableSelectedRepositoryGithubActionsOrganization(c
 	return result, nil
 }
 
+// ActionsDisableWorkflow invokes actions/disable-workflow operation.
+//
+// Disables a workflow and sets the `state` of the workflow to `disabled_manually`. You can replace
+// `workflow_id` with the workflow file name. For example, you could use `main.yaml`.
+// You must authenticate using an access token with the `repo` scope to use this endpoint. GitHub
+// Apps must have the `actions:write` permission to use this endpoint.
+//
+// PUT /repos/{owner}/{repo}/actions/workflows/{workflow_id}/disable
+func (c *Client) ActionsDisableWorkflow(ctx context.Context, params ActionsDisableWorkflowParams) error {
+	_, err := c.sendActionsDisableWorkflow(ctx, params)
+	return err
+}
+
+func (c *Client) sendActionsDisableWorkflow(ctx context.Context, params ActionsDisableWorkflowParams) (res *ActionsDisableWorkflowNoContent, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/disable-workflow"),
+		semconv.HTTPRequestMethodKey.String("PUT"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/actions/workflows/{workflow_id}/disable"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, ActionsDisableWorkflowOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
+	{
+		// Encode "owner" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "owner",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Owner))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		encoded, err := e.Result()
+		if err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		pathParts[1] = encoded
+	}
+	pathParts[2] = "/"
+	{
+		// Encode "repo" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "repo",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Repo))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		encoded, err := e.Result()
+		if err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		pathParts[3] = encoded
+	}
+	pathParts[4] = "/actions/workflows/"
+	{
+		// Encode "workflow_id" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "workflow_id",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			switch params.WorkflowID.Type {
+			case IntWorkflowID:
+				return e.EncodeValue(conv.IntToString(params.WorkflowID.Int))
+			case StringWorkflowID:
+				return e.EncodeValue(conv.StringToString(params.WorkflowID.String))
+			default:
+				return errors.Errorf("invalid WorkflowID type: %q", params.WorkflowID.Type)
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		encoded, err := e.Result()
+		if err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		pathParts[5] = encoded
+	}
+	pathParts[6] = "/disable"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "PUT", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeActionsDisableWorkflowResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
 // ActionsDownloadArtifact invokes actions/download-artifact operation.
 //
 // Gets a redirect URL to download an archive for a repository. This URL expires after 1 minute. Look
@@ -11338,6 +11700,147 @@ func (c *Client) sendActionsEnableSelectedRepositoryGithubActionsOrganization(ct
 
 	stage = "DecodeResponse"
 	result, err := decodeActionsEnableSelectedRepositoryGithubActionsOrganizationResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// ActionsEnableWorkflow invokes actions/enable-workflow operation.
+//
+// Enables a workflow and sets the `state` of the workflow to `active`. You can replace `workflow_id`
+// with the workflow file name. For example, you could use `main.yaml`.
+// You must authenticate using an access token with the `repo` scope to use this endpoint. GitHub
+// Apps must have the `actions:write` permission to use this endpoint.
+//
+// PUT /repos/{owner}/{repo}/actions/workflows/{workflow_id}/enable
+func (c *Client) ActionsEnableWorkflow(ctx context.Context, params ActionsEnableWorkflowParams) error {
+	_, err := c.sendActionsEnableWorkflow(ctx, params)
+	return err
+}
+
+func (c *Client) sendActionsEnableWorkflow(ctx context.Context, params ActionsEnableWorkflowParams) (res *ActionsEnableWorkflowNoContent, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/enable-workflow"),
+		semconv.HTTPRequestMethodKey.String("PUT"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/actions/workflows/{workflow_id}/enable"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, ActionsEnableWorkflowOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
+	{
+		// Encode "owner" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "owner",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Owner))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		encoded, err := e.Result()
+		if err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		pathParts[1] = encoded
+	}
+	pathParts[2] = "/"
+	{
+		// Encode "repo" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "repo",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Repo))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		encoded, err := e.Result()
+		if err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		pathParts[3] = encoded
+	}
+	pathParts[4] = "/actions/workflows/"
+	{
+		// Encode "workflow_id" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "workflow_id",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			switch params.WorkflowID.Type {
+			case IntWorkflowID:
+				return e.EncodeValue(conv.IntToString(params.WorkflowID.Int))
+			case StringWorkflowID:
+				return e.EncodeValue(conv.StringToString(params.WorkflowID.String))
+			default:
+				return errors.Errorf("invalid WorkflowID type: %q", params.WorkflowID.Type)
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		encoded, err := e.Result()
+		if err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		pathParts[5] = encoded
+	}
+	pathParts[6] = "/enable"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "PUT", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeActionsEnableWorkflowResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -13213,6 +13716,146 @@ func (c *Client) sendActionsGetSelfHostedRunnerGroupForOrg(ctx context.Context, 
 	return result, nil
 }
 
+// ActionsGetWorkflow invokes actions/get-workflow operation.
+//
+// Gets a specific workflow. You can replace `workflow_id` with the workflow file name. For example,
+// you could use `main.yaml`. Anyone with read access to the repository can use this endpoint. If the
+// repository is private you must use an access token with the `repo` scope. GitHub Apps must have
+// the `actions:read` permission to use this endpoint.
+//
+// GET /repos/{owner}/{repo}/actions/workflows/{workflow_id}
+func (c *Client) ActionsGetWorkflow(ctx context.Context, params ActionsGetWorkflowParams) (*Workflow, error) {
+	res, err := c.sendActionsGetWorkflow(ctx, params)
+	return res, err
+}
+
+func (c *Client) sendActionsGetWorkflow(ctx context.Context, params ActionsGetWorkflowParams) (res *Workflow, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/get-workflow"),
+		semconv.HTTPRequestMethodKey.String("GET"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/actions/workflows/{workflow_id}"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, ActionsGetWorkflowOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [6]string
+	pathParts[0] = "/repos/"
+	{
+		// Encode "owner" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "owner",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Owner))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		encoded, err := e.Result()
+		if err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		pathParts[1] = encoded
+	}
+	pathParts[2] = "/"
+	{
+		// Encode "repo" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "repo",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Repo))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		encoded, err := e.Result()
+		if err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		pathParts[3] = encoded
+	}
+	pathParts[4] = "/actions/workflows/"
+	{
+		// Encode "workflow_id" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "workflow_id",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			switch params.WorkflowID.Type {
+			case IntWorkflowID:
+				return e.EncodeValue(conv.IntToString(params.WorkflowID.Int))
+			case StringWorkflowID:
+				return e.EncodeValue(conv.StringToString(params.WorkflowID.String))
+			default:
+				return errors.Errorf("invalid WorkflowID type: %q", params.WorkflowID.Type)
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		encoded, err := e.Result()
+		if err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		pathParts[5] = encoded
+	}
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "GET", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeActionsGetWorkflowResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
 // ActionsGetWorkflowRun invokes actions/get-workflow-run operation.
 //
 // Gets a specific workflow run. Anyone with read access to the repository can use this endpoint. If
@@ -13476,6 +14119,154 @@ func (c *Client) sendActionsGetWorkflowRunUsage(ctx context.Context, params Acti
 
 	stage = "DecodeResponse"
 	result, err := decodeActionsGetWorkflowRunUsageResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// ActionsGetWorkflowUsage invokes actions/get-workflow-usage operation.
+//
+// Gets the number of billable minutes used by a specific workflow during the current billing cycle.
+// Billable minutes only apply to workflows in private repositories that use GitHub-hosted runners.
+// Usage is listed for each GitHub-hosted runner operating system in milliseconds. Any job re-runs
+// are also included in the usage. The usage does not include the multiplier for macOS and Windows
+// runners and is not rounded up to the nearest whole minute. For more information, see "[Managing
+// billing for GitHub Actions](https://help.github.
+// com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-actions)".
+// You can replace `workflow_id` with the workflow file name. For example, you could use `main.yaml`.
+// Anyone with read access to the repository can use this endpoint. If the repository is private you
+// must use an access token with the `repo` scope. GitHub Apps must have the `actions:read`
+// permission to use this endpoint.
+//
+// GET /repos/{owner}/{repo}/actions/workflows/{workflow_id}/timing
+func (c *Client) ActionsGetWorkflowUsage(ctx context.Context, params ActionsGetWorkflowUsageParams) (*WorkflowUsage, error) {
+	res, err := c.sendActionsGetWorkflowUsage(ctx, params)
+	return res, err
+}
+
+func (c *Client) sendActionsGetWorkflowUsage(ctx context.Context, params ActionsGetWorkflowUsageParams) (res *WorkflowUsage, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/get-workflow-usage"),
+		semconv.HTTPRequestMethodKey.String("GET"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/actions/workflows/{workflow_id}/timing"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, ActionsGetWorkflowUsageOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
+	{
+		// Encode "owner" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "owner",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Owner))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		encoded, err := e.Result()
+		if err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		pathParts[1] = encoded
+	}
+	pathParts[2] = "/"
+	{
+		// Encode "repo" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "repo",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Repo))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		encoded, err := e.Result()
+		if err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		pathParts[3] = encoded
+	}
+	pathParts[4] = "/actions/workflows/"
+	{
+		// Encode "workflow_id" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "workflow_id",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			switch params.WorkflowID.Type {
+			case IntWorkflowID:
+				return e.EncodeValue(conv.IntToString(params.WorkflowID.Int))
+			case StringWorkflowID:
+				return e.EncodeValue(conv.StringToString(params.WorkflowID.String))
+			default:
+				return errors.Errorf("invalid WorkflowID type: %q", params.WorkflowID.Type)
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		encoded, err := e.Result()
+		if err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		pathParts[5] = encoded
+	}
+	pathParts[6] = "/timing"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "GET", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeActionsGetWorkflowUsageResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -15784,6 +16575,272 @@ func (c *Client) sendActionsListWorkflowRunArtifacts(ctx context.Context, params
 
 	stage = "DecodeResponse"
 	result, err := decodeActionsListWorkflowRunArtifactsResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// ActionsListWorkflowRuns invokes actions/list-workflow-runs operation.
+//
+// List all workflow runs for a workflow. You can replace `workflow_id` with the workflow file name.
+// For example, you could use `main.yaml`. You can use parameters to narrow the list of results. For
+// more information about using parameters, see [Parameters](https://docs.github.
+// com/rest/overview/resources-in-the-rest-api#parameters).
+// Anyone with read access to the repository can use this endpoint. If the repository is private you
+// must use an access token with the `repo` scope.
+//
+// GET /repos/{owner}/{repo}/actions/workflows/{workflow_id}/runs
+func (c *Client) ActionsListWorkflowRuns(ctx context.Context, params ActionsListWorkflowRunsParams) (*ActionsListWorkflowRunsOKHeaders, error) {
+	res, err := c.sendActionsListWorkflowRuns(ctx, params)
+	return res, err
+}
+
+func (c *Client) sendActionsListWorkflowRuns(ctx context.Context, params ActionsListWorkflowRunsParams) (res *ActionsListWorkflowRunsOKHeaders, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/list-workflow-runs"),
+		semconv.HTTPRequestMethodKey.String("GET"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/actions/workflows/{workflow_id}/runs"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, ActionsListWorkflowRunsOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [7]string
+	pathParts[0] = "/repos/"
+	{
+		// Encode "owner" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "owner",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Owner))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		encoded, err := e.Result()
+		if err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		pathParts[1] = encoded
+	}
+	pathParts[2] = "/"
+	{
+		// Encode "repo" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "repo",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Repo))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		encoded, err := e.Result()
+		if err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		pathParts[3] = encoded
+	}
+	pathParts[4] = "/actions/workflows/"
+	{
+		// Encode "workflow_id" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "workflow_id",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			switch params.WorkflowID.Type {
+			case IntWorkflowID:
+				return e.EncodeValue(conv.IntToString(params.WorkflowID.Int))
+			case StringWorkflowID:
+				return e.EncodeValue(conv.StringToString(params.WorkflowID.String))
+			default:
+				return errors.Errorf("invalid WorkflowID type: %q", params.WorkflowID.Type)
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		encoded, err := e.Result()
+		if err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		pathParts[5] = encoded
+	}
+	pathParts[6] = "/runs"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeQueryParams"
+	q := uri.NewQueryEncoder()
+	{
+		// Encode "actor" parameter.
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "actor",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+			if val, ok := params.Actor.Get(); ok {
+				return e.EncodeValue(conv.StringToString(val))
+			}
+			return nil
+		}); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+	}
+	{
+		// Encode "branch" parameter.
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "branch",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+			if val, ok := params.Branch.Get(); ok {
+				return e.EncodeValue(conv.StringToString(val))
+			}
+			return nil
+		}); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+	}
+	{
+		// Encode "event" parameter.
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "event",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+			if val, ok := params.Event.Get(); ok {
+				return e.EncodeValue(conv.StringToString(val))
+			}
+			return nil
+		}); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+	}
+	{
+		// Encode "status" parameter.
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "status",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+			if val, ok := params.Status.Get(); ok {
+				return e.EncodeValue(conv.StringToString(string(val)))
+			}
+			return nil
+		}); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+	}
+	{
+		// Encode "per_page" parameter.
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+			if val, ok := params.PerPage.Get(); ok {
+				return e.EncodeValue(conv.IntToString(val))
+			}
+			return nil
+		}); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+	}
+	{
+		// Encode "page" parameter.
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+			if val, ok := params.Page.Get(); ok {
+				return e.EncodeValue(conv.IntToString(val))
+			}
+			return nil
+		}); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+	}
+	{
+		// Encode "created" parameter.
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "created",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+			if val, ok := params.Created.Get(); ok {
+				return e.EncodeValue(conv.DateTimeToString(val))
+			}
+			return nil
+		}); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+	}
+	u.RawQuery = q.Values().Encode()
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "GET", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeActionsListWorkflowRunsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}

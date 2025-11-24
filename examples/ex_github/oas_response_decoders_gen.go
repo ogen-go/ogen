@@ -581,6 +581,15 @@ func decodeActionsCreateSelfHostedRunnerGroupForOrgResponse(resp *http.Response)
 	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
+func decodeActionsCreateWorkflowDispatchResponse(resp *http.Response) (res *ActionsCreateWorkflowDispatchNoContent, _ error) {
+	switch resp.StatusCode {
+	case 204:
+		// Code 204.
+		return &ActionsCreateWorkflowDispatchNoContent{}, nil
+	}
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
+}
+
 func decodeActionsDeleteArtifactResponse(resp *http.Response) (res *ActionsDeleteArtifactNoContent, _ error) {
 	switch resp.StatusCode {
 	case 204:
@@ -667,6 +676,15 @@ func decodeActionsDisableSelectedRepositoryGithubActionsOrganizationResponse(res
 	case 204:
 		// Code 204.
 		return &ActionsDisableSelectedRepositoryGithubActionsOrganizationNoContent{}, nil
+	}
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
+}
+
+func decodeActionsDisableWorkflowResponse(resp *http.Response) (res *ActionsDisableWorkflowNoContent, _ error) {
+	switch resp.StatusCode {
+	case 204:
+		// Code 204.
+		return &ActionsDisableWorkflowNoContent{}, nil
 	}
 	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
@@ -820,6 +838,15 @@ func decodeActionsEnableSelectedRepositoryGithubActionsOrganizationResponse(resp
 	case 204:
 		// Code 204.
 		return &ActionsEnableSelectedRepositoryGithubActionsOrganizationNoContent{}, nil
+	}
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
+}
+
+func decodeActionsEnableWorkflowResponse(resp *http.Response) (res *ActionsEnableWorkflowNoContent, _ error) {
+	switch resp.StatusCode {
+	case 204:
+		// Code 204.
+		return &ActionsEnableWorkflowNoContent{}, nil
 	}
 	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
@@ -1577,6 +1604,56 @@ func decodeActionsGetSelfHostedRunnerGroupForOrgResponse(resp *http.Response) (r
 	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
+func decodeActionsGetWorkflowResponse(resp *http.Response) (res *Workflow, _ error) {
+	switch resp.StatusCode {
+	case 200:
+		// Code 200.
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
+			buf, err := io.ReadAll(resp.Body)
+			if err != nil {
+				return res, err
+			}
+			d := jx.DecodeBytes(buf)
+
+			var response Workflow
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				if err := d.Skip(); err != io.EOF {
+					return errors.New("unexpected trailing data")
+				}
+				return nil
+			}(); err != nil {
+				err = &ogenerrors.DecodeBodyError{
+					ContentType: ct,
+					Body:        buf,
+					Err:         err,
+				}
+				return res, err
+			}
+			// Validate response.
+			if err := func() error {
+				if err := response.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, errors.Wrap(err, "validate")
+			}
+			return &response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	}
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
+}
+
 func decodeActionsGetWorkflowRunResponse(resp *http.Response) (res *WorkflowRun, _ error) {
 	switch resp.StatusCode {
 	case 200:
@@ -1635,6 +1712,47 @@ func decodeActionsGetWorkflowRunUsageResponse(resp *http.Response) (res *Workflo
 			d := jx.DecodeBytes(buf)
 
 			var response WorkflowRunUsage
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				if err := d.Skip(); err != io.EOF {
+					return errors.New("unexpected trailing data")
+				}
+				return nil
+			}(); err != nil {
+				err = &ogenerrors.DecodeBodyError{
+					ContentType: ct,
+					Body:        buf,
+					Err:         err,
+				}
+				return res, err
+			}
+			return &response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	}
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
+}
+
+func decodeActionsGetWorkflowUsageResponse(resp *http.Response) (res *WorkflowUsage, _ error) {
+	switch resp.StatusCode {
+	case 200:
+		// Code 200.
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
+			buf, err := io.ReadAll(resp.Body)
+			if err != nil {
+				return res, err
+			}
+			d := jx.DecodeBytes(buf)
+
+			var response WorkflowUsage
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -2828,6 +2946,96 @@ func decodeActionsListWorkflowRunArtifactsResponse(resp *http.Response) (res *Ac
 				return res, errors.Wrap(err, "validate")
 			}
 			var wrapper ActionsListWorkflowRunArtifactsOKHeaders
+			wrapper.Response = response
+			h := uri.NewHeaderDecoder(resp.Header)
+			// Parse "Link" header.
+			{
+				cfg := uri.HeaderParameterDecodingConfig{
+					Name:    "Link",
+					Explode: false,
+				}
+				if err := func() error {
+					if err := h.HasParam(cfg); err == nil {
+						if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+							var wrapperDotLinkVal string
+							if err := func() error {
+								val, err := d.DecodeValue()
+								if err != nil {
+									return err
+								}
+
+								c, err := conv.ToString(val)
+								if err != nil {
+									return err
+								}
+
+								wrapperDotLinkVal = c
+								return nil
+							}(); err != nil {
+								return err
+							}
+							wrapper.Link.SetTo(wrapperDotLinkVal)
+							return nil
+						}); err != nil {
+							return err
+						}
+					}
+					return nil
+				}(); err != nil {
+					return res, errors.Wrap(err, "parse Link header")
+				}
+			}
+			return &wrapper, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	}
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
+}
+
+func decodeActionsListWorkflowRunsResponse(resp *http.Response) (res *ActionsListWorkflowRunsOKHeaders, _ error) {
+	switch resp.StatusCode {
+	case 200:
+		// Code 200.
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
+			buf, err := io.ReadAll(resp.Body)
+			if err != nil {
+				return res, err
+			}
+			d := jx.DecodeBytes(buf)
+
+			var response ActionsListWorkflowRunsOK
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				if err := d.Skip(); err != io.EOF {
+					return errors.New("unexpected trailing data")
+				}
+				return nil
+			}(); err != nil {
+				err = &ogenerrors.DecodeBodyError{
+					ContentType: ct,
+					Body:        buf,
+					Err:         err,
+				}
+				return res, err
+			}
+			// Validate response.
+			if err := func() error {
+				if err := response.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, errors.Wrap(err, "validate")
+			}
+			var wrapper ActionsListWorkflowRunsOKHeaders
 			wrapper.Response = response
 			h := uri.NewHeaderDecoder(resp.Header)
 			// Parse "Link" header.

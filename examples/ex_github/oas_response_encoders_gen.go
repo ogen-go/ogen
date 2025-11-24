@@ -255,6 +255,13 @@ func encodeActionsCreateSelfHostedRunnerGroupForOrgResponse(response *RunnerGrou
 	return nil
 }
 
+func encodeActionsCreateWorkflowDispatchResponse(response *ActionsCreateWorkflowDispatchNoContent, w http.ResponseWriter, span trace.Span) error {
+	w.WriteHeader(204)
+	span.SetStatus(codes.Ok, http.StatusText(204))
+
+	return nil
+}
+
 func encodeActionsDeleteArtifactResponse(response *ActionsDeleteArtifactNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
@@ -319,6 +326,13 @@ func encodeActionsDeleteWorkflowRunLogsResponse(response *ActionsDeleteWorkflowR
 }
 
 func encodeActionsDisableSelectedRepositoryGithubActionsOrganizationResponse(response *ActionsDisableSelectedRepositoryGithubActionsOrganizationNoContent, w http.ResponseWriter, span trace.Span) error {
+	w.WriteHeader(204)
+	span.SetStatus(codes.Ok, http.StatusText(204))
+
+	return nil
+}
+
+func encodeActionsDisableWorkflowResponse(response *ActionsDisableWorkflowNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 
@@ -404,6 +418,13 @@ func encodeActionsDownloadWorkflowRunLogsResponse(response *ActionsDownloadWorkf
 }
 
 func encodeActionsEnableSelectedRepositoryGithubActionsOrganizationResponse(response *ActionsEnableSelectedRepositoryGithubActionsOrganizationNoContent, w http.ResponseWriter, span trace.Span) error {
+	w.WriteHeader(204)
+	span.SetStatus(codes.Ok, http.StatusText(204))
+
+	return nil
+}
+
+func encodeActionsEnableWorkflowResponse(response *ActionsEnableWorkflowNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 
@@ -638,6 +659,20 @@ func encodeActionsGetSelfHostedRunnerGroupForOrgResponse(response *RunnerGroupsO
 	return nil
 }
 
+func encodeActionsGetWorkflowResponse(response *Workflow, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+
+	e := new(jx.Encoder)
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
 func encodeActionsGetWorkflowRunResponse(response *WorkflowRun, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
@@ -653,6 +688,20 @@ func encodeActionsGetWorkflowRunResponse(response *WorkflowRun, w http.ResponseW
 }
 
 func encodeActionsGetWorkflowRunUsageResponse(response *WorkflowRunUsage, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+
+	e := new(jx.Encoder)
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
+func encodeActionsGetWorkflowUsageResponse(response *WorkflowUsage, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -1056,6 +1105,39 @@ func encodeActionsListSelfHostedRunnersInGroupForOrgResponse(response *ActionsLi
 }
 
 func encodeActionsListWorkflowRunArtifactsResponse(response *ActionsListWorkflowRunArtifactsOKHeaders, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	// Encoding response headers.
+	{
+		h := uri.NewHeaderEncoder(w.Header())
+		// Encode "Link" header.
+		{
+			cfg := uri.HeaderParameterEncodingConfig{
+				Name:    "Link",
+				Explode: false,
+			}
+			if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+				if val, ok := response.Link.Get(); ok {
+					return e.EncodeValue(conv.StringToString(val))
+				}
+				return nil
+			}); err != nil {
+				return errors.Wrap(err, "encode Link header")
+			}
+		}
+	}
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+
+	e := new(jx.Encoder)
+	response.Response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
+func encodeActionsListWorkflowRunsResponse(response *ActionsListWorkflowRunsOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	// Encoding response headers.
 	{
