@@ -75,6 +75,13 @@
 	return {{ $var }}.DecodeURI(d)
 {{- else if $t.IsMap }}
 	return {{ $var }}.DecodeURI(d)
+{{- else if $t.IsAny }}
+	val, err := d.DecodeValue()
+	if err != nil {
+		return err
+	}
+	{{ $var }} = val
+	return nil
 {{- else }}
     {{ errorf "unexpected kind" $t.Kind }}
 {{- end }}
