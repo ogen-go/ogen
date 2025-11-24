@@ -40631,13 +40631,17 @@ func decodeTestResponseStringEmailResponse(resp *http.Response) (res string, _ e
 			// Validate response.
 			if err := func() error {
 				if err := (validate.String{
-					MinLength:    0,
-					MinLengthSet: false,
-					MaxLength:    0,
-					MaxLengthSet: false,
-					Email:        true,
-					Hostname:     false,
-					Regex:        nil,
+					MinLength:     0,
+					MinLengthSet:  false,
+					MaxLength:     0,
+					MaxLengthSet:  false,
+					Email:         true,
+					Hostname:      false,
+					Regex:         nil,
+					MinNumeric:    0,
+					MinNumericSet: false,
+					MaxNumeric:    0,
+					MaxNumericSet: false,
 				}).Validate(string(response)); err != nil {
 					return errors.Wrap(err, "string")
 				}
@@ -40705,13 +40709,17 @@ func decodeTestResponseStringEmailArrayResponse(resp *http.Response) (res []stri
 				for i, elem := range response {
 					if err := func() error {
 						if err := (validate.String{
-							MinLength:    0,
-							MinLengthSet: false,
-							MaxLength:    0,
-							MaxLengthSet: false,
-							Email:        true,
-							Hostname:     false,
-							Regex:        nil,
+							MinLength:     0,
+							MinLengthSet:  false,
+							MaxLength:     0,
+							MaxLengthSet:  false,
+							Email:         true,
+							Hostname:      false,
+							Regex:         nil,
+							MinNumeric:    0,
+							MinNumericSet: false,
+							MaxNumeric:    0,
+							MaxNumericSet: false,
 						}).Validate(string(elem)); err != nil {
 							return errors.Wrap(err, "string")
 						}
@@ -40804,13 +40812,17 @@ func decodeTestResponseStringEmailArrayArrayResponse(resp *http.Response) (res [
 						for i, elem := range elem {
 							if err := func() error {
 								if err := (validate.String{
-									MinLength:    0,
-									MinLengthSet: false,
-									MaxLength:    0,
-									MaxLengthSet: false,
-									Email:        true,
-									Hostname:     false,
-									Regex:        nil,
+									MinLength:     0,
+									MinLengthSet:  false,
+									MaxLength:     0,
+									MaxLengthSet:  false,
+									Email:         true,
+									Hostname:      false,
+									Regex:         nil,
+									MinNumeric:    0,
+									MinNumericSet: false,
+									MaxNumeric:    0,
+									MaxNumericSet: false,
 								}).Validate(string(elem)); err != nil {
 									return errors.Wrap(err, "string")
 								}
@@ -40886,13 +40898,17 @@ func decodeTestResponseStringEmailNullableResponse(resp *http.Response) (res Nil
 				if value, ok := response.Get(); ok {
 					if err := func() error {
 						if err := (validate.String{
-							MinLength:    0,
-							MinLengthSet: false,
-							MaxLength:    0,
-							MaxLengthSet: false,
-							Email:        true,
-							Hostname:     false,
-							Regex:        nil,
+							MinLength:     0,
+							MinLengthSet:  false,
+							MaxLength:     0,
+							MaxLengthSet:  false,
+							Email:         true,
+							Hostname:      false,
+							Regex:         nil,
+							MinNumeric:    0,
+							MinNumericSet: false,
+							MaxNumeric:    0,
+							MaxNumericSet: false,
 						}).Validate(string(value)); err != nil {
 							return errors.Wrap(err, "string")
 						}
@@ -40965,13 +40981,17 @@ func decodeTestResponseStringEmailNullableArrayResponse(resp *http.Response) (re
 						if value, ok := elem.Get(); ok {
 							if err := func() error {
 								if err := (validate.String{
-									MinLength:    0,
-									MinLengthSet: false,
-									MaxLength:    0,
-									MaxLengthSet: false,
-									Email:        true,
-									Hostname:     false,
-									Regex:        nil,
+									MinLength:     0,
+									MinLengthSet:  false,
+									MaxLength:     0,
+									MaxLengthSet:  false,
+									Email:         true,
+									Hostname:      false,
+									Regex:         nil,
+									MinNumeric:    0,
+									MinNumericSet: false,
+									MaxNumeric:    0,
+									MaxNumericSet: false,
 								}).Validate(string(value)); err != nil {
 									return errors.Wrap(err, "string")
 								}
@@ -41069,13 +41089,17 @@ func decodeTestResponseStringEmailNullableArrayArrayResponse(resp *http.Response
 								if value, ok := elem.Get(); ok {
 									if err := func() error {
 										if err := (validate.String{
-											MinLength:    0,
-											MinLengthSet: false,
-											MaxLength:    0,
-											MaxLengthSet: false,
-											Email:        true,
-											Hostname:     false,
-											Regex:        nil,
+											MinLength:     0,
+											MinLengthSet:  false,
+											MaxLength:     0,
+											MaxLengthSet:  false,
+											Email:         true,
+											Hostname:      false,
+											Regex:         nil,
+											MinNumeric:    0,
+											MinNumericSet: false,
+											MaxNumeric:    0,
+											MaxNumericSet: false,
 										}).Validate(string(value)); err != nil {
 											return errors.Wrap(err, "string")
 										}
@@ -42110,13 +42134,17 @@ func decodeTestResponseStringHostnameResponse(resp *http.Response) (res string, 
 			// Validate response.
 			if err := func() error {
 				if err := (validate.String{
-					MinLength:    0,
-					MinLengthSet: false,
-					MaxLength:    0,
-					MaxLengthSet: false,
-					Email:        false,
-					Hostname:     true,
-					Regex:        nil,
+					MinLength:     0,
+					MinLengthSet:  false,
+					MaxLength:     0,
+					MaxLengthSet:  false,
+					Email:         false,
+					Hostname:      true,
+					Regex:         nil,
+					MinNumeric:    0,
+					MinNumericSet: false,
+					MaxNumeric:    0,
+					MaxNumericSet: false,
 				}).Validate(string(response)); err != nil {
 					return errors.Wrap(err, "string")
 				}
@@ -42184,13 +42212,17 @@ func decodeTestResponseStringHostnameArrayResponse(resp *http.Response) (res []s
 				for i, elem := range response {
 					if err := func() error {
 						if err := (validate.String{
-							MinLength:    0,
-							MinLengthSet: false,
-							MaxLength:    0,
-							MaxLengthSet: false,
-							Email:        false,
-							Hostname:     true,
-							Regex:        nil,
+							MinLength:     0,
+							MinLengthSet:  false,
+							MaxLength:     0,
+							MaxLengthSet:  false,
+							Email:         false,
+							Hostname:      true,
+							Regex:         nil,
+							MinNumeric:    0,
+							MinNumericSet: false,
+							MaxNumeric:    0,
+							MaxNumericSet: false,
 						}).Validate(string(elem)); err != nil {
 							return errors.Wrap(err, "string")
 						}
@@ -42283,13 +42315,17 @@ func decodeTestResponseStringHostnameArrayArrayResponse(resp *http.Response) (re
 						for i, elem := range elem {
 							if err := func() error {
 								if err := (validate.String{
-									MinLength:    0,
-									MinLengthSet: false,
-									MaxLength:    0,
-									MaxLengthSet: false,
-									Email:        false,
-									Hostname:     true,
-									Regex:        nil,
+									MinLength:     0,
+									MinLengthSet:  false,
+									MaxLength:     0,
+									MaxLengthSet:  false,
+									Email:         false,
+									Hostname:      true,
+									Regex:         nil,
+									MinNumeric:    0,
+									MinNumericSet: false,
+									MaxNumeric:    0,
+									MaxNumericSet: false,
 								}).Validate(string(elem)); err != nil {
 									return errors.Wrap(err, "string")
 								}
@@ -42365,13 +42401,17 @@ func decodeTestResponseStringHostnameNullableResponse(resp *http.Response) (res 
 				if value, ok := response.Get(); ok {
 					if err := func() error {
 						if err := (validate.String{
-							MinLength:    0,
-							MinLengthSet: false,
-							MaxLength:    0,
-							MaxLengthSet: false,
-							Email:        false,
-							Hostname:     true,
-							Regex:        nil,
+							MinLength:     0,
+							MinLengthSet:  false,
+							MaxLength:     0,
+							MaxLengthSet:  false,
+							Email:         false,
+							Hostname:      true,
+							Regex:         nil,
+							MinNumeric:    0,
+							MinNumericSet: false,
+							MaxNumeric:    0,
+							MaxNumericSet: false,
 						}).Validate(string(value)); err != nil {
 							return errors.Wrap(err, "string")
 						}
@@ -42444,13 +42484,17 @@ func decodeTestResponseStringHostnameNullableArrayResponse(resp *http.Response) 
 						if value, ok := elem.Get(); ok {
 							if err := func() error {
 								if err := (validate.String{
-									MinLength:    0,
-									MinLengthSet: false,
-									MaxLength:    0,
-									MaxLengthSet: false,
-									Email:        false,
-									Hostname:     true,
-									Regex:        nil,
+									MinLength:     0,
+									MinLengthSet:  false,
+									MaxLength:     0,
+									MaxLengthSet:  false,
+									Email:         false,
+									Hostname:      true,
+									Regex:         nil,
+									MinNumeric:    0,
+									MinNumericSet: false,
+									MaxNumeric:    0,
+									MaxNumericSet: false,
 								}).Validate(string(value)); err != nil {
 									return errors.Wrap(err, "string")
 								}
@@ -42548,13 +42592,17 @@ func decodeTestResponseStringHostnameNullableArrayArrayResponse(resp *http.Respo
 								if value, ok := elem.Get(); ok {
 									if err := func() error {
 										if err := (validate.String{
-											MinLength:    0,
-											MinLengthSet: false,
-											MaxLength:    0,
-											MaxLengthSet: false,
-											Email:        false,
-											Hostname:     true,
-											Regex:        nil,
+											MinLength:     0,
+											MinLengthSet:  false,
+											MaxLength:     0,
+											MaxLengthSet:  false,
+											Email:         false,
+											Hostname:      true,
+											Regex:         nil,
+											MinNumeric:    0,
+											MinNumericSet: false,
+											MaxNumeric:    0,
+											MaxNumericSet: false,
 										}).Validate(string(value)); err != nil {
 											return errors.Wrap(err, "string")
 										}

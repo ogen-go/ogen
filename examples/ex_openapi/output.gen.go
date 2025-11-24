@@ -18327,6 +18327,7 @@ func (s MultipleOf) Validate() error {
 		MaxExclusive:  false,
 		MultipleOfSet: false,
 		MultipleOf:    nil,
+		Pattern:       nil,
 	}).Validate(float64(alias)); err != nil {
 		return errors.Wrap(err, "float")
 	}
@@ -18829,6 +18830,7 @@ func (s PositiveInteger) Validate() error {
 		MaxExclusive:  false,
 		MultipleOfSet: false,
 		MultipleOf:    0,
+		Pattern:       nil,
 	}).Validate(int64(alias)); err != nil {
 		return errors.Wrap(err, "int")
 	}

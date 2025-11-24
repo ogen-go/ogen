@@ -76,6 +76,7 @@ func decodeGetBookParams(args [1]string, argsEscaped bool, r *http.Request) (par
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
+					Pattern:       nil,
 				}).Validate(int64(params.BookID)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -168,6 +169,7 @@ func decodeGetPageCoverImageParams(args [2]string, argsEscaped bool, r *http.Req
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
+					Pattern:       nil,
 				}).Validate(int64(params.MediaID)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -319,6 +321,7 @@ func decodeGetPageImageParams(args [3]string, argsEscaped bool, r *http.Request)
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
+					Pattern:       nil,
 				}).Validate(int64(params.MediaID)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -381,6 +384,7 @@ func decodeGetPageImageParams(args [3]string, argsEscaped bool, r *http.Request)
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
+					Pattern:       nil,
 				}).Validate(int64(params.Page)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -532,6 +536,7 @@ func decodeGetPageThumbnailImageParams(args [3]string, argsEscaped bool, r *http
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
+					Pattern:       nil,
 				}).Validate(int64(params.MediaID)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -594,6 +599,7 @@ func decodeGetPageThumbnailImageParams(args [3]string, argsEscaped bool, r *http
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
+					Pattern:       nil,
 				}).Validate(int64(params.Page)); err != nil {
 					return errors.Wrap(err, "int")
 				}

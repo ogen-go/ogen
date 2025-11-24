@@ -131,6 +131,7 @@ func decodeAPICaptcha2chcaptchaIDGetParams(args [0]string, argsEscaped bool, r *
 							MaxExclusive:  false,
 							MultipleOfSet: false,
 							MultipleOf:    0,
+							Pattern:       nil,
 						}).Validate(int64(value)); err != nil {
 							return errors.Wrap(err, "int")
 						}
@@ -386,6 +387,7 @@ func decodeAPICaptchaAppIDPublicKeyGetParams(args [1]string, argsEscaped bool, r
 							MaxExclusive:  false,
 							MultipleOfSet: false,
 							MultipleOf:    0,
+							Pattern:       nil,
 						}).Validate(int64(value)); err != nil {
 							return errors.Wrap(err, "int")
 						}
@@ -527,6 +529,7 @@ func decodeAPICaptchaInvisibleRecaptchaIDGetParams(args [0]string, argsEscaped b
 							MaxExclusive:  false,
 							MultipleOfSet: false,
 							MultipleOf:    0,
+							Pattern:       nil,
 						}).Validate(int64(value)); err != nil {
 							return errors.Wrap(err, "int")
 						}
@@ -668,6 +671,7 @@ func decodeAPICaptchaRecaptchaIDGetParams(args [0]string, argsEscaped bool, r *h
 							MaxExclusive:  false,
 							MultipleOfSet: false,
 							MultipleOf:    0,
+							Pattern:       nil,
 						}).Validate(int64(value)); err != nil {
 							return errors.Wrap(err, "int")
 						}
@@ -791,6 +795,7 @@ func decodeAPIDislikeGetParams(args [0]string, argsEscaped bool, r *http.Request
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
+					Pattern:       nil,
 				}).Validate(int64(params.Num)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -911,6 +916,7 @@ func decodeAPILikeGetParams(args [0]string, argsEscaped bool, r *http.Request) (
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
+					Pattern:       nil,
 				}).Validate(int64(params.Num)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -1057,6 +1063,7 @@ func decodeAPIMobileV2AfterBoardThreadNumGetParams(args [3]string, argsEscaped b
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
+					Pattern:       nil,
 				}).Validate(int64(params.Thread)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -1119,6 +1126,7 @@ func decodeAPIMobileV2AfterBoardThreadNumGetParams(args [3]string, argsEscaped b
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
+					Pattern:       nil,
 				}).Validate(int64(params.Num)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -1256,6 +1264,7 @@ func decodeAPIMobileV2InfoBoardThreadGetParams(args [2]string, argsEscaped bool,
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
+					Pattern:       nil,
 				}).Validate(int64(params.Thread)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -1393,6 +1402,7 @@ func decodeAPIMobileV2PostBoardNumGetParams(args [2]string, argsEscaped bool, r 
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
+					Pattern:       nil,
 				}).Validate(int64(params.Num)); err != nil {
 					return errors.Wrap(err, "int")
 				}
