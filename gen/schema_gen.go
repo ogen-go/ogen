@@ -206,11 +206,10 @@ func (g *schemaGen) generate2(name string, schema *jsonschema.Schema) (ret *ir.T
 
 	if schema.UniqueItems {
 		item := schema.Item
-		if item == nil ||
-			item.Type == "" ||
-			item.Type == jsonschema.Array ||
-			item.Type == jsonschema.Object {
-			return nil, &ErrNotImplemented{Name: "complex uniqueItems"}
+		// Only error on truly invalid cases (nil or empty item type).
+		// Complex types (Array, Object) are now supported via Equal/Hash generation.
+		if item == nil || item.Type == "" {
+			return nil, &ErrNotImplemented{Name: "empty uniqueItems"}
 		}
 	}
 
