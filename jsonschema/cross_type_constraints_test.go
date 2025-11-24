@@ -8,12 +8,12 @@ import (
 
 func TestCrossTypeConstraints(t *testing.T) {
 	tests := []struct {
-		name             string
-		schema           *RawSchema
-		allowCrossType   bool
-		wantErr          bool
-		errContains      string
-		checkSchema      func(*testing.T, *Schema)
+		name           string
+		schema         *RawSchema
+		allowCrossType bool
+		wantErr        bool
+		errContains    string
+		checkSchema    func(*testing.T, *Schema)
 	}{
 		{
 			name: "maximum on string type - strict mode",
