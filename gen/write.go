@@ -27,6 +27,7 @@ type TemplateConfig struct {
 	DefaultOperations []*ir.Operation
 	OperationGroups   []*ir.OperationGroup
 	Webhooks          []*ir.Operation
+	MediaTypes        []*ir.MediaType
 	Types             map[string]*ir.Type
 	Interfaces        map[string]*ir.Type
 	Error             *ir.Response
@@ -261,6 +262,7 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 		DefaultOperations:         g.defaultOperations,
 		OperationGroups:           g.operationGroups,
 		Webhooks:                  g.webhooks,
+		MediaTypes:                g.MediaTypes(),
 		Types:                     types,
 		Interfaces:                interfaces,
 		Error:                     g.errType,
@@ -341,6 +343,7 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 		{"unimplemented", features.Has(OgenUnimplemented) && genServer},
 		{"labeler", features.Has(OgenOtel) && genServer},
 		{"operations", (genClient || genServer)},
+		{"mediatypes", (genClient || genServer)},
 	} {
 		t := t
 		if !t.enabled {

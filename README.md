@@ -158,6 +158,70 @@ func NewStringID(v string) ID
 func NewIntID(v int) ID
 ```
 
+## Multiple Response Content Types
+
+For responses with multiple possible content types, a parameter is automatically added to represent the HTTP Accept header.
+If desired, the generated server can use this parameter to pick a response format, and the generated client can use this parameter to set the Accept header.
+Existing parameters remain untouched, and if a parameter is explicitly defined for the Accept header, no automatic parameter is generated.
+
+Given the following OpenAPI spec:
+
+```yaml
+openapi: 3.0.3
+paths:
+  /multipleContentTypes:
+    get:
+      operationId: multipleContentTypes
+      responses:
+        "200":
+          description: "OK"
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                format: binary
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: string
+                required:
+                  - "data"
+```
+
+The server can handle the Accept header like this:
+
+```go
+func (h HandlerImplementation) MultipleContentTypesWithoutParameters(ctx context.Context, params api.MultipleContentTypesParams) (api.MultipleContentTypesRes, error) {
+	if params.Accept.MatchesContentType(api.MediaTypeApplicationOctetStream) {
+		return &api.MultipleContentTypesOKApplicationOctetStream{
+			Data: bytes.NewBufferString("byte content"),
+		}, nil
+	} else if params.Accept.MatchesContentType(api.MediaTypeApplicationJSON) {
+		return &api.MultipleContentTypesOKApplicationJSON{
+			Data: "json data",
+		}, nil
+	} else {
+		// Local error type which may be used in convenient errors to generate an appropriate response
+		return nil, errNotAcceptable
+	}
+}
+```
+
+And the client can set it like this:
+
+```go
+r, err := client.MultipleContentTypes(ctx, api.MultipleContentTypesParams{
+	Accept: http.AcceptHeaderNew(api.MediaTypeApplicationOctetStream),
+})
+res, ok := r.(*api.MultipleContentTypesOKApplicationOctetStream)
+if !ok {
+	// Wrong type
+}
+// Handle content
+```
+
 ## Extension properties
 
 OpenAPI enables [Specification Extensions](https://spec.openapis.org/oas/v3.1.0#specification-extensions),

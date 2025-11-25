@@ -30,6 +30,7 @@ type Generator struct {
 	defaultOperations []*ir.Operation // Operations without an operation group.
 	operationGroups   []*ir.OperationGroup
 	webhooks          []*ir.Operation
+	mediaTypes        map[ir.ContentType]*ir.MediaType
 	securities        map[string]*ir.Security
 	tstorage          *tstorage
 	errType           *ir.Response
@@ -108,6 +109,7 @@ func NewGenerator(spec *ogen.Spec, opts Options) (*Generator, error) {
 		servers:       nil,
 		operations:    nil,
 		webhooks:      nil,
+		mediaTypes:    map[ir.ContentType]*ir.MediaType{},
 		securities:    map[string]*ir.Security{},
 		tstorage:      newTStorage(),
 		errType:       nil,
@@ -202,6 +204,21 @@ func (g *Generator) makeOps(ops []*openapi.Operation) error {
 			return err
 		}
 
+		// Collect all media types used in responses to generate constants
+		for _, response := range op.Responses.StatusCode {
+			for contentType := range response.Contents {
+				if _, ok := g.mediaTypes[contentType]; !ok {
+					constantName, err := pascalNonEmpty(string(contentType))
+					if err != nil {
+						return errors.Wrap(err, "gather media types")
+					}
+					g.mediaTypes[contentType] = &ir.MediaType{
+						Name:  constantName,
+						Value: contentType,
+					}
+				}
+			}
+		}
 		g.operations = append(g.operations, op)
 	}
 
@@ -297,6 +314,12 @@ func sortOperations(ops []*ir.Operation) {
 	})
 }
 
+func sortMediaTypes(types []*ir.MediaType) {
+	slices.SortStableFunc(types, func(a, b *ir.MediaType) int {
+		return strings.Compare(a.Name, b.Name)
+	})
+}
+
 func groupOperations(ops []*ir.Operation) (
 	defaultOperations []*ir.Operation,
 	operationGroups []*ir.OperationGroup,
@@ -333,6 +356,16 @@ func (g *Generator) Types() map[string]*ir.Type {
 // Operations returns generated operations.
 func (g *Generator) Operations() []*ir.Operation {
 	return g.operations
+}
+
+// MediaTypes returns generated media type constants.
+func (g *Generator) MediaTypes() []*ir.MediaType {
+	mediaTypesSorted := make([]*ir.MediaType, 0, len(g.mediaTypes))
+	for _, mt := range g.mediaTypes {
+		mediaTypesSorted = append(mediaTypesSorted, mt)
+	}
+	sortMediaTypes(mediaTypesSorted)
+	return mediaTypesSorted
 }
 
 // Webhooks returns generated webhooks.
