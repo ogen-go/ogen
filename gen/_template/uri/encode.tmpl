@@ -40,6 +40,11 @@
 	return {{ $var }}.EncodeURI(e)
 {{- else if $t.IsMap }}
 	return {{ $var }}.EncodeURI(e)
+{{- else if $t.IsAny }}
+	if {{ $var }} != nil {
+		return e.EncodeValue(fmt.Sprint({{ $var }}))
+	}
+	return nil
 {{- else }}
 	{{ errorf "unexpected kind %s" $t.Kind }}
 {{- end }}

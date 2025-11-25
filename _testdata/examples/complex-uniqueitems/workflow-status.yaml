@@ -1,0 +1,69 @@
+openapi: 3.0.3
+info:
+  title: Workflow Status API (Simple Nested Test)
+  version: 1.0.0
+  description: |
+    Simple test schema for complex uniqueItems validation.
+    Tests 2-level nesting with basic field types.
+
+paths:
+  /workflow/statuses:
+    post:
+      operationId: createWorkflowStatuses
+      summary: Create workflow statuses
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - statuses
+              properties:
+                statuses:
+                  type: array
+                  uniqueItems: true
+                  items:
+                    $ref: '#/components/schemas/WorkflowStatus'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  created:
+                    type: integer
+
+components:
+  schemas:
+    WorkflowStatus:
+      type: object
+      required:
+        - id
+        - name
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the status
+        name:
+          type: string
+          description: Display name of the status
+        description:
+          type: string
+          description: Optional description
+        properties:
+          $ref: '#/components/schemas/StatusProperties'
+
+    StatusProperties:
+      type: object
+      description: Nested properties object (level 2)
+      properties:
+        category:
+          type: string
+          enum: [TODO, IN_PROGRESS, DONE]
+        color:
+          type: string
+        isDefault:
+          type: boolean

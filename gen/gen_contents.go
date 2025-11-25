@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"mime"
 	"path"
+	"strings"
 
 	"github.com/go-faster/errors"
 	"go.uber.org/zap"
@@ -298,6 +299,22 @@ func (g *Generator) generateContents(
 					return &ErrNotImplemented{"multipart form CT aliasing"}
 				}
 				encoding = r
+			}
+
+			// Handle wildcard content types using configured default
+			// unless the schema is binary (which is already handled by isStream check below)
+			if strings.ContainsRune(parsedContentType, '*') && g.opt.WildcardContentTypeDefault != "" {
+				// Check if this is a binary stream - if so, keep default behavior
+				if !isStream(media.Schema) {
+					g.log.Info("Mapping wildcard content type",
+						zapPosition(media),
+						zap.String("contentType", contentType),
+						zap.String("mappedTo", string(g.opt.WildcardContentTypeDefault)),
+					)
+					encoding = g.opt.WildcardContentTypeDefault
+					// Use the mapped content type for the result key to avoid wrapping
+					parsedContentType = string(encoding)
+				}
 			}
 
 			if encoding != ir.EncodingJSON && encoding != ir.EncodingProblemJSON && media.XOgenJSONStreaming {

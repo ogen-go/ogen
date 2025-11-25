@@ -1,0 +1,57 @@
+openapi: 3.0.3
+info:
+  title: Duplicate Response Types Test
+  description: Test that multiple response patterns using the same schema don't generate duplicate case statements
+  version: 1.0.0
+paths:
+  /test:
+    post:
+      operationId: testOperation
+      summary: Test operation with multiple patterns sharing a schema
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                message:
+                  type: string
+      responses:
+        '2XX':
+          description: Success pattern (2XX)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommonResponse'
+        '3XX':
+          description: Redirect pattern (3XX)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommonResponse'
+        default:
+          description: Error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    CommonResponse:
+      type: object
+      required:
+        - status
+        - data
+      properties:
+        status:
+          type: string
+        data:
+          type: string
+    ErrorResponse:
+      type: object
+      required:
+        - error
+      properties:
+        error:
+          type: string

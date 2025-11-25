@@ -258,7 +258,7 @@ func isParamAllowed(t *ir.Type, root bool, visited map[*ir.Type]struct{}) error 
 	case ir.KindMap:
 		return nil
 	case ir.KindAny:
-		return &ErrNotImplemented{"any type parameter"}
+		return nil
 	default:
 		panic(unreachable(t))
 	}

@@ -24,7 +24,7 @@ func encodeErrorResponse(response {{ $.ErrorGoType }}, w http.ResponseWriter, {{
 		{{- end }}
 	{{- else }}
 		switch response := response.(type) {
-		{{- range $info := $infos }}
+		{{- range $info := uniqueResponseTypes $infos }}
 			case *{{ $info.Type.Name }}:
 			{{- if and $info.Type.NeedValidation $.ResponseValidationEnabled }}
 			if err := func() error {
@@ -72,8 +72,7 @@ func encode{{ $op.Name }}Response(response {{ $op.Responses.GoType }}, w http.Re
 		{{- end }}
 	{{- else }}
 		switch response := response.(type) {
-		{{- range $info := $types }}
-		{{- if not $info.RawResponse }}
+		{{- range $info := uniqueResponseTypes $types }}
 			case *{{ $info.Type.Name }}:
 				{{- if and $info.Type.NeedValidation $cfg.ResponseValidationEnabled }}
 				if err := func() error {
@@ -83,7 +82,6 @@ func encode{{ $op.Name }}Response(response {{ $op.Responses.GoType }}, w http.Re
 				}
 				{{- end }}
 				{{- template "respond" $info }}
-			{{- end }}
 		{{- end }}
 		default:
 			return errors.Errorf("unexpected response type: %T", response)
