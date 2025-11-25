@@ -35,6 +35,23 @@ func TestSchemaGenAnyWarn(t *testing.T) {
 	a.Equal("foo", args["name"])
 }
 
+func TestSchemaGenNilSchema(t *testing.T) {
+	a := require.New(t)
+
+	s := newSchemaGen(func(ref jsonschema.Ref) (*ir.Type, bool) {
+		return nil, false
+	})
+
+	// Test that nil schema (empty schema in OpenAPI spec) is handled as "any".
+	// This occurs when request/response body has content without a schema field,
+	// e.g., DELETE requests with empty body: {"content": {"application/json": {}}}
+	typ, err := s.generate("test", nil, false)
+	a.NoError(err)
+	a.NotNil(typ)
+	a.Equal(ir.KindAny, typ.Kind)
+	a.Equal("jx.Raw", typ.Go())
+}
+
 func TestGenerate(t *testing.T) {
 	var loc location.Locator
 	loc.UnmarshalYAML(&yaml.Node{

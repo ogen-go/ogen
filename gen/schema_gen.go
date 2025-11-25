@@ -132,7 +132,10 @@ func (g *schemaGen) generate(name string, schema *jsonschema.Schema, optional bo
 
 func (g *schemaGen) generate2(name string, schema *jsonschema.Schema) (ret *ir.Type, err error) {
 	if schema == nil {
-		return nil, &ErrNotImplemented{Name: "empty schema"}
+		// Empty schema (no schema field in OpenAPI spec) means "any valid JSON value".
+		// This is consistent with how we handle empty schemas in arrays (line 431).
+		// See JSON Schema spec: https://json-schema.org/understanding-json-schema/basics.html
+		return ir.Any(nil), nil
 	}
 
 	if ref := schema.Ref; !ref.IsZero() {
