@@ -108,6 +108,7 @@ func decodeDataGetFormatParams(args [5]string, argsEscaped bool, r *http.Request
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
+					Pattern:       nil,
 				}).Validate(int64(params.ID)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -162,13 +163,17 @@ func decodeDataGetFormatParams(args [5]string, argsEscaped bool, r *http.Request
 			}
 			if err := func() error {
 				if err := (validate.String{
-					MinLength:    1,
-					MinLengthSet: true,
-					MaxLength:    0,
-					MaxLengthSet: false,
-					Email:        false,
-					Hostname:     false,
-					Regex:        nil,
+					MinLength:     1,
+					MinLengthSet:  true,
+					MaxLength:     0,
+					MaxLengthSet:  false,
+					Email:         false,
+					Hostname:      false,
+					Regex:         nil,
+					MinNumeric:    0,
+					MinNumericSet: false,
+					MaxNumeric:    0,
+					MaxNumericSet: false,
 				}).Validate(string(params.Foo)); err != nil {
 					return errors.Wrap(err, "string")
 				}
@@ -223,13 +228,17 @@ func decodeDataGetFormatParams(args [5]string, argsEscaped bool, r *http.Request
 			}
 			if err := func() error {
 				if err := (validate.String{
-					MinLength:    1,
-					MinLengthSet: true,
-					MaxLength:    0,
-					MaxLengthSet: false,
-					Email:        false,
-					Hostname:     false,
-					Regex:        nil,
+					MinLength:     1,
+					MinLengthSet:  true,
+					MaxLength:     0,
+					MaxLengthSet:  false,
+					Email:         false,
+					Hostname:      false,
+					Regex:         nil,
+					MinNumeric:    0,
+					MinNumericSet: false,
+					MaxNumeric:    0,
+					MaxNumericSet: false,
 				}).Validate(string(params.Bar)); err != nil {
 					return errors.Wrap(err, "string")
 				}
@@ -284,13 +293,17 @@ func decodeDataGetFormatParams(args [5]string, argsEscaped bool, r *http.Request
 			}
 			if err := func() error {
 				if err := (validate.String{
-					MinLength:    1,
-					MinLengthSet: true,
-					MaxLength:    0,
-					MaxLengthSet: false,
-					Email:        false,
-					Hostname:     false,
-					Regex:        nil,
+					MinLength:     1,
+					MinLengthSet:  true,
+					MaxLength:     0,
+					MaxLengthSet:  false,
+					Email:         false,
+					Hostname:      false,
+					Regex:         nil,
+					MinNumeric:    0,
+					MinNumericSet: false,
+					MaxNumeric:    0,
+					MaxNumericSet: false,
 				}).Validate(string(params.Baz)); err != nil {
 					return errors.Wrap(err, "string")
 				}
@@ -345,13 +358,17 @@ func decodeDataGetFormatParams(args [5]string, argsEscaped bool, r *http.Request
 			}
 			if err := func() error {
 				if err := (validate.String{
-					MinLength:    1,
-					MinLengthSet: true,
-					MaxLength:    0,
-					MaxLengthSet: false,
-					Email:        false,
-					Hostname:     false,
-					Regex:        nil,
+					MinLength:     1,
+					MinLengthSet:  true,
+					MaxLength:     0,
+					MaxLengthSet:  false,
+					Email:         false,
+					Hostname:      false,
+					Regex:         nil,
+					MinNumeric:    0,
+					MinNumericSet: false,
+					MaxNumeric:    0,
+					MaxNumericSet: false,
 				}).Validate(string(params.Kek)); err != nil {
 					return errors.Wrap(err, "string")
 				}
@@ -693,6 +710,7 @@ func decodePetGetParams(args [0]string, argsEscaped bool, r *http.Request) (para
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
+					Pattern:       nil,
 				}).Validate(int64(params.PetID)); err != nil {
 					return errors.Wrap(err, "int")
 				}

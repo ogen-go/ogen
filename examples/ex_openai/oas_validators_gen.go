@@ -89,13 +89,17 @@ func (s *CreateAnswerRequest) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.String{
-			MinLength:    1,
-			MinLengthSet: true,
-			MaxLength:    0,
-			MaxLengthSet: false,
-			Email:        false,
-			Hostname:     false,
-			Regex:        nil,
+			MinLength:     1,
+			MinLengthSet:  true,
+			MaxLength:     0,
+			MaxLengthSet:  false,
+			Email:         false,
+			Hostname:      false,
+			Regex:         nil,
+			MinNumeric:    0,
+			MinNumericSet: false,
+			MaxNumeric:    0,
+			MaxNumericSet: false,
 		}).Validate(string(s.Question)); err != nil {
 			return errors.Wrap(err, "string")
 		}
@@ -136,13 +140,17 @@ func (s *CreateAnswerRequest) Validate() error {
 				for i, elem := range elem {
 					if err := func() error {
 						if err := (validate.String{
-							MinLength:    1,
-							MinLengthSet: true,
-							MaxLength:    0,
-							MaxLengthSet: false,
-							Email:        false,
-							Hostname:     false,
-							Regex:        nil,
+							MinLength:     1,
+							MinLengthSet:  true,
+							MaxLength:     0,
+							MaxLengthSet:  false,
+							Email:         false,
+							Hostname:      false,
+							Regex:         nil,
+							MinNumeric:    0,
+							MinNumericSet: false,
+							MaxNumeric:    0,
+							MaxNumericSet: false,
 						}).Validate(string(elem)); err != nil {
 							return errors.Wrap(err, "string")
 						}
@@ -231,6 +239,7 @@ func (s *CreateAnswerRequest) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
+					Pattern:       nil,
 				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -276,6 +285,7 @@ func (s *CreateAnswerRequest) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
+					Pattern:       nil,
 				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -391,6 +401,7 @@ func (s *CreateChatCompletionRequest) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    nil,
+					Pattern:       nil,
 				}).Validate(float64(value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
@@ -418,6 +429,7 @@ func (s *CreateChatCompletionRequest) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    nil,
+					Pattern:       nil,
 				}).Validate(float64(value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
@@ -445,6 +457,7 @@ func (s *CreateChatCompletionRequest) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
+					Pattern:       nil,
 				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -490,6 +503,7 @@ func (s *CreateChatCompletionRequest) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    nil,
+					Pattern:       nil,
 				}).Validate(float64(value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
@@ -517,6 +531,7 @@ func (s *CreateChatCompletionRequest) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    nil,
+					Pattern:       nil,
 				}).Validate(float64(value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
@@ -638,13 +653,17 @@ func (s *CreateClassificationRequest) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.String{
-			MinLength:    1,
-			MinLengthSet: true,
-			MaxLength:    0,
-			MaxLengthSet: false,
-			Email:        false,
-			Hostname:     false,
-			Regex:        nil,
+			MinLength:     1,
+			MinLengthSet:  true,
+			MaxLength:     0,
+			MaxLengthSet:  false,
+			Email:         false,
+			Hostname:      false,
+			Regex:         nil,
+			MinNumeric:    0,
+			MinNumericSet: false,
+			MaxNumeric:    0,
+			MaxNumericSet: false,
 		}).Validate(string(s.Query)); err != nil {
 			return errors.Wrap(err, "string")
 		}
@@ -687,13 +706,17 @@ func (s *CreateClassificationRequest) Validate() error {
 						for i, elem := range elem {
 							if err := func() error {
 								if err := (validate.String{
-									MinLength:    1,
-									MinLengthSet: true,
-									MaxLength:    0,
-									MaxLengthSet: false,
-									Email:        false,
-									Hostname:     false,
-									Regex:        nil,
+									MinLength:     1,
+									MinLengthSet:  true,
+									MaxLength:     0,
+									MaxLengthSet:  false,
+									Email:         false,
+									Hostname:      false,
+									Regex:         nil,
+									MinNumeric:    0,
+									MinNumericSet: false,
+									MaxNumeric:    0,
+									MaxNumericSet: false,
 								}).Validate(string(elem)); err != nil {
 									return errors.Wrap(err, "string")
 								}
@@ -769,6 +792,7 @@ func (s *CreateClassificationRequest) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    nil,
+					Pattern:       nil,
 				}).Validate(float64(value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
@@ -796,6 +820,7 @@ func (s *CreateClassificationRequest) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
+					Pattern:       nil,
 				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -871,6 +896,7 @@ func (s *CreateCompletionRequest) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
+					Pattern:       nil,
 				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -898,6 +924,7 @@ func (s *CreateCompletionRequest) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    nil,
+					Pattern:       nil,
 				}).Validate(float64(value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
@@ -925,6 +952,7 @@ func (s *CreateCompletionRequest) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    nil,
+					Pattern:       nil,
 				}).Validate(float64(value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
@@ -952,6 +980,7 @@ func (s *CreateCompletionRequest) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
+					Pattern:       nil,
 				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -979,6 +1008,7 @@ func (s *CreateCompletionRequest) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
+					Pattern:       nil,
 				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -1024,6 +1054,7 @@ func (s *CreateCompletionRequest) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    nil,
+					Pattern:       nil,
 				}).Validate(float64(value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
@@ -1051,6 +1082,7 @@ func (s *CreateCompletionRequest) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    nil,
+					Pattern:       nil,
 				}).Validate(float64(value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
@@ -1078,6 +1110,7 @@ func (s *CreateCompletionRequest) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
+					Pattern:       nil,
 				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -1262,6 +1295,7 @@ func (s *CreateEditRequest) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
+					Pattern:       nil,
 				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -1289,6 +1323,7 @@ func (s *CreateEditRequest) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    nil,
+					Pattern:       nil,
 				}).Validate(float64(value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
@@ -1316,6 +1351,7 @@ func (s *CreateEditRequest) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    nil,
+					Pattern:       nil,
 				}).Validate(float64(value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
@@ -1642,13 +1678,17 @@ func (s *CreateFineTuneRequest) Validate() error {
 		if value, ok := s.Suffix.Get(); ok {
 			if err := func() error {
 				if err := (validate.String{
-					MinLength:    1,
-					MinLengthSet: true,
-					MaxLength:    40,
-					MaxLengthSet: true,
-					Email:        false,
-					Hostname:     false,
-					Regex:        nil,
+					MinLength:     1,
+					MinLengthSet:  true,
+					MaxLength:     40,
+					MaxLengthSet:  true,
+					Email:         false,
+					Hostname:      false,
+					Regex:         nil,
+					MinNumeric:    0,
+					MinNumericSet: false,
+					MaxNumeric:    0,
+					MaxNumericSet: false,
 				}).Validate(string(value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
@@ -1688,6 +1728,7 @@ func (s *CreateImageEditRequestMultipart) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
+					Pattern:       nil,
 				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -1787,6 +1828,7 @@ func (s *CreateImageRequest) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
+					Pattern:       nil,
 				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -1886,6 +1928,7 @@ func (s *CreateImageVariationRequestMultipart) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
+					Pattern:       nil,
 				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -2164,13 +2207,17 @@ func (s *CreateSearchRequest) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.String{
-			MinLength:    1,
-			MinLengthSet: true,
-			MaxLength:    0,
-			MaxLengthSet: false,
-			Email:        false,
-			Hostname:     false,
-			Regex:        nil,
+			MinLength:     1,
+			MinLengthSet:  true,
+			MaxLength:     0,
+			MaxLengthSet:  false,
+			Email:         false,
+			Hostname:      false,
+			Regex:         nil,
+			MinNumeric:    0,
+			MinNumericSet: false,
+			MaxNumeric:    0,
+			MaxNumericSet: false,
 		}).Validate(string(s.Query)); err != nil {
 			return errors.Wrap(err, "string")
 		}
@@ -2219,6 +2266,7 @@ func (s *CreateSearchRequest) Validate() error {
 					MaxExclusive:  false,
 					MultipleOfSet: false,
 					MultipleOf:    0,
+					Pattern:       nil,
 				}).Validate(int64(value)); err != nil {
 					return errors.Wrap(err, "int")
 				}

@@ -31,6 +31,11 @@ type Settings struct {
 	//
 	// In that case schemaParser will handle that schema as "array" schema, because it has "items" field.
 	InferTypes bool
+
+	// AllowCrossTypeConstraints enables interpretation of cross-type schema constraints.
+	// When true (default), constraints like pattern on numbers or maximum on strings
+	// are allowed and interpreted during code generation.
+	AllowCrossTypeConstraints bool
 }
 
 type nopResolver struct{}
@@ -46,4 +51,6 @@ func (s *Settings) setDefaults() {
 	if s.Resolver == nil {
 		s.Resolver = nopResolver{}
 	}
+	// Default: allow cross-type constraints (interpret them correctly)
+	// This can be overridden by explicitly setting to false
 }

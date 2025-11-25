@@ -34,7 +34,8 @@ type Parser struct {
 
 	rootFile location.File // optional, used for error messages
 
-	inferTypes bool
+	inferTypes                bool
+	allowCrossTypeConstraints bool
 }
 
 // NewParser creates new Parser.
@@ -48,9 +49,10 @@ func NewParser(s Settings) *Parser {
 				file:              s.File,
 			},
 		},
-		refcache:   map[jsonpointer.RefKey]*Schema{},
-		rootFile:   s.File,
-		inferTypes: s.InferTypes,
+		refcache:                  map[jsonpointer.RefKey]*Schema{},
+		rootFile:                  s.File,
+		inferTypes:                s.InferTypes,
+		allowCrossTypeConstraints: s.AllowCrossTypeConstraints,
 	}
 }
 
@@ -384,6 +386,11 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx *jsonpointer.ResolveCtx, hoo
 				}
 
 				if _, ok := allowedFields[field]; !ok {
+					if p.allowCrossTypeConstraints {
+						// Allow cross-type constraints.
+						// They will be interpreted during validation code generation.
+						continue
+					}
 					return nil, wrapField(field, errors.Errorf("unexpected field for type %q", schema.Type))
 				}
 			}

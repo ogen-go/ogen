@@ -289,6 +289,9 @@ func run() error {
 		packageName = set.String("package", "api", "Target package name")
 		clean       = set.Bool("clean", false, "Clean generated files before generation")
 
+		// Parser options.
+		strict = set.Bool("strict", false, "Disable cross-type constraint interpretation (reject pattern on numbers, min/max on strings)")
+
 		// Logging options.
 		logOptions ogenzap.Options
 
@@ -364,6 +367,12 @@ func run() error {
 	opts, err := loadConfig(*cfgPath, logger)
 	if err != nil {
 		return errors.Wrap(err, "load config")
+	}
+
+	// Apply CLI flags that override config
+	if *strict {
+		strictVal := false
+		opts.Parser.AllowCrossTypeConstraints = &strictVal
 	}
 
 	data, err := opts.SetLocation(specPath, gen.RemoteOptions{})

@@ -106,8 +106,9 @@ func Parse(spec *ogen.Spec, s Settings) (_ *openapi.API, rerr error) {
 				components: spec.Components.Schemas,
 				root:       jsonschema.NewRootResolver(spec.Raw),
 			},
-			File:       s.File,
-			InferTypes: s.InferTypes,
+			File:                      s.File,
+			InferTypes:                s.InferTypes,
+			AllowCrossTypeConstraints: s.AllowCrossTypeConstraints,
 		}),
 	}
 	if spec.Raw != nil {

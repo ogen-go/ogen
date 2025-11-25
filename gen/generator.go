@@ -77,12 +77,19 @@ func NewGenerator(spec *ogen.Spec, opts Options) (*Generator, error) {
 	if opts.Parser.AllowRemote {
 		external = jsonschema.NewExternalResolver(opts.Parser.Remote)
 	}
+	// Default: allow cross-type constraints unless explicitly set to false
+	allowCrossType := true
+	if opts.Parser.AllowCrossTypeConstraints != nil {
+		allowCrossType = *opts.Parser.AllowCrossTypeConstraints
+	}
+
 	api, err := parser.Parse(spec, parser.Settings{
-		External:              external,
-		File:                  opts.Parser.File,
-		RootURL:               opts.Parser.RootURL,
-		InferTypes:            opts.Parser.InferSchemaType,
-		AuthenticationSchemes: opts.Parser.AuthenticationSchemes,
+		External:                  external,
+		File:                      opts.Parser.File,
+		RootURL:                   opts.Parser.RootURL,
+		InferTypes:                opts.Parser.InferSchemaType,
+		AllowCrossTypeConstraints: allowCrossType,
+		AuthenticationSchemes:     opts.Parser.AuthenticationSchemes,
 	})
 	if err != nil {
 		return nil, &ErrParseSpec{err: err}

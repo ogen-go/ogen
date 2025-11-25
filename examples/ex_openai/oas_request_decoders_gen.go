@@ -865,6 +865,7 @@ func (s *Server) decodeCreateImageEditRequest(r *http.Request) (
 								MaxExclusive:  false,
 								MultipleOfSet: false,
 								MultipleOf:    0,
+								Pattern:       nil,
 							}).Validate(int64(value)); err != nil {
 								return errors.Wrap(err, "int")
 							}
@@ -1146,6 +1147,7 @@ func (s *Server) decodeCreateImageVariationRequest(r *http.Request) (
 								MaxExclusive:  false,
 								MultipleOfSet: false,
 								MultipleOf:    0,
+								Pattern:       nil,
 							}).Validate(int64(value)); err != nil {
 								return errors.Wrap(err, "int")
 							}

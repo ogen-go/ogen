@@ -3,8 +3,11 @@ package validate
 import (
 	"math"
 	"math/big"
+	"strconv"
 
 	"github.com/go-faster/errors"
+
+	"github.com/ogen-go/ogen/ogenregex"
 )
 
 // Float validates float numbers.
@@ -19,6 +22,9 @@ type Float struct {
 	Max          float64
 	MaxSet       bool
 	MaxExclusive bool
+
+	// Pattern constraint for validating string representation
+	Pattern ogenregex.Regexp
 }
 
 // SetMultipleOf sets multipleOf validator.
@@ -51,9 +57,14 @@ func (t *Float) SetMaximum(v float64) {
 	t.MaxSet = true
 }
 
+// SetPattern sets pattern constraint for validating string representation.
+func (t *Float) SetPattern(v ogenregex.Regexp) {
+	t.Pattern = v
+}
+
 // Set reports whether any validations are set.
 func (t Float) Set() bool {
-	return t.MinSet || t.MaxSet || t.MultipleOfSet
+	return t.MinSet || t.MaxSet || t.MultipleOfSet || t.Pattern != nil
 }
 
 // Validate returns error if v does not match validation rules.
@@ -83,6 +94,20 @@ func (t Float) validate(v float64) error {
 		val := new(big.Rat).SetFloat64(v)
 		if !val.Quo(val, t.MultipleOf).IsInt() {
 			return errors.Errorf("value %f is not multiple of %s", v, t.MultipleOf.RatString())
+		}
+	}
+
+	// Validate pattern on string representation
+	if r := t.Pattern; r != nil {
+		str := strconv.FormatFloat(v, 'f', -1, 64)
+		match, err := r.MatchString(str)
+		if err != nil {
+			return errors.Wrap(err, "execute regex")
+		}
+		if !match {
+			return &NoRegexMatchError{
+				Pattern: r,
+			}
 		}
 	}
 
