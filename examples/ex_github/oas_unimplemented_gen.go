@@ -348,6 +348,25 @@ func (UnimplementedHandler) ActionsCreateSelfHostedRunnerGroupForOrg(ctx context
 	return r, ht.ErrNotImplemented
 }
 
+// ActionsCreateWorkflowDispatch implements actions/create-workflow-dispatch operation.
+//
+// You can use this endpoint to manually trigger a GitHub Actions workflow run. You can replace
+// `workflow_id` with the workflow file name. For example, you could use `main.yaml`.
+// You must configure your GitHub Actions workflow to run when the [`workflow_dispatch`
+// webhook](/developers/webhooks-and-events/webhook-events-and-payloads#workflow_dispatch) event
+// occurs. The `inputs` are configured in the workflow file. For more information about how to
+// configure the `workflow_dispatch` event in the workflow file, see "[Events that trigger
+// workflows](/actions/reference/events-that-trigger-workflows#workflow_dispatch)."
+// You must authenticate using an access token with the `repo` scope to use this endpoint. GitHub
+// Apps must have the `actions:write` permission to use this endpoint. For more information, see
+// "[Creating a personal access token for the command line](https://help.github.
+// com/articles/creating-a-personal-access-token-for-the-command-line).".
+//
+// POST /repos/{owner}/{repo}/actions/workflows/{workflow_id}/dispatches
+func (UnimplementedHandler) ActionsCreateWorkflowDispatch(ctx context.Context, req *ActionsCreateWorkflowDispatchReq, params ActionsCreateWorkflowDispatchParams) error {
+	return ht.ErrNotImplemented
+}
+
 // ActionsDeleteArtifact implements actions/delete-artifact operation.
 //
 // Deletes an artifact for a workflow run. You must authenticate using an access token with the
@@ -466,6 +485,18 @@ func (UnimplementedHandler) ActionsDisableSelectedRepositoryGithubActionsOrganiz
 	return ht.ErrNotImplemented
 }
 
+// ActionsDisableWorkflow implements actions/disable-workflow operation.
+//
+// Disables a workflow and sets the `state` of the workflow to `disabled_manually`. You can replace
+// `workflow_id` with the workflow file name. For example, you could use `main.yaml`.
+// You must authenticate using an access token with the `repo` scope to use this endpoint. GitHub
+// Apps must have the `actions:write` permission to use this endpoint.
+//
+// PUT /repos/{owner}/{repo}/actions/workflows/{workflow_id}/disable
+func (UnimplementedHandler) ActionsDisableWorkflow(ctx context.Context, params ActionsDisableWorkflowParams) error {
+	return ht.ErrNotImplemented
+}
+
 // ActionsDownloadArtifact implements actions/download-artifact operation.
 //
 // Gets a redirect URL to download an archive for a repository. This URL expires after 1 minute. Look
@@ -524,6 +555,18 @@ func (UnimplementedHandler) ActionsDownloadWorkflowRunLogs(ctx context.Context, 
 //
 // PUT /orgs/{org}/actions/permissions/repositories/{repository_id}
 func (UnimplementedHandler) ActionsEnableSelectedRepositoryGithubActionsOrganization(ctx context.Context, params ActionsEnableSelectedRepositoryGithubActionsOrganizationParams) error {
+	return ht.ErrNotImplemented
+}
+
+// ActionsEnableWorkflow implements actions/enable-workflow operation.
+//
+// Enables a workflow and sets the `state` of the workflow to `active`. You can replace `workflow_id`
+// with the workflow file name. For example, you could use `main.yaml`.
+// You must authenticate using an access token with the `repo` scope to use this endpoint. GitHub
+// Apps must have the `actions:write` permission to use this endpoint.
+//
+// PUT /repos/{owner}/{repo}/actions/workflows/{workflow_id}/enable
+func (UnimplementedHandler) ActionsEnableWorkflow(ctx context.Context, params ActionsEnableWorkflowParams) error {
 	return ht.ErrNotImplemented
 }
 
@@ -714,6 +757,18 @@ func (UnimplementedHandler) ActionsGetSelfHostedRunnerGroupForOrg(ctx context.Co
 	return r, ht.ErrNotImplemented
 }
 
+// ActionsGetWorkflow implements actions/get-workflow operation.
+//
+// Gets a specific workflow. You can replace `workflow_id` with the workflow file name. For example,
+// you could use `main.yaml`. Anyone with read access to the repository can use this endpoint. If the
+// repository is private you must use an access token with the `repo` scope. GitHub Apps must have
+// the `actions:read` permission to use this endpoint.
+//
+// GET /repos/{owner}/{repo}/actions/workflows/{workflow_id}
+func (UnimplementedHandler) ActionsGetWorkflow(ctx context.Context, params ActionsGetWorkflowParams) (r *Workflow, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
 // ActionsGetWorkflowRun implements actions/get-workflow-run operation.
 //
 // Gets a specific workflow run. Anyone with read access to the repository can use this endpoint. If
@@ -740,6 +795,25 @@ func (UnimplementedHandler) ActionsGetWorkflowRun(ctx context.Context, params Ac
 //
 // GET /repos/{owner}/{repo}/actions/runs/{run_id}/timing
 func (UnimplementedHandler) ActionsGetWorkflowRunUsage(ctx context.Context, params ActionsGetWorkflowRunUsageParams) (r *WorkflowRunUsage, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// ActionsGetWorkflowUsage implements actions/get-workflow-usage operation.
+//
+// Gets the number of billable minutes used by a specific workflow during the current billing cycle.
+// Billable minutes only apply to workflows in private repositories that use GitHub-hosted runners.
+// Usage is listed for each GitHub-hosted runner operating system in milliseconds. Any job re-runs
+// are also included in the usage. The usage does not include the multiplier for macOS and Windows
+// runners and is not rounded up to the nearest whole minute. For more information, see "[Managing
+// billing for GitHub Actions](https://help.github.
+// com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-actions)".
+// You can replace `workflow_id` with the workflow file name. For example, you could use `main.yaml`.
+// Anyone with read access to the repository can use this endpoint. If the repository is private you
+// must use an access token with the `repo` scope. GitHub Apps must have the `actions:read`
+// permission to use this endpoint.
+//
+// GET /repos/{owner}/{repo}/actions/workflows/{workflow_id}/timing
+func (UnimplementedHandler) ActionsGetWorkflowUsage(ctx context.Context, params ActionsGetWorkflowUsageParams) (r *WorkflowUsage, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -924,6 +998,20 @@ func (UnimplementedHandler) ActionsListSelfHostedRunnersInGroupForOrg(ctx contex
 //
 // GET /repos/{owner}/{repo}/actions/runs/{run_id}/artifacts
 func (UnimplementedHandler) ActionsListWorkflowRunArtifacts(ctx context.Context, params ActionsListWorkflowRunArtifactsParams) (r *ActionsListWorkflowRunArtifactsOKHeaders, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// ActionsListWorkflowRuns implements actions/list-workflow-runs operation.
+//
+// List all workflow runs for a workflow. You can replace `workflow_id` with the workflow file name.
+// For example, you could use `main.yaml`. You can use parameters to narrow the list of results. For
+// more information about using parameters, see [Parameters](https://docs.github.
+// com/rest/overview/resources-in-the-rest-api#parameters).
+// Anyone with read access to the repository can use this endpoint. If the repository is private you
+// must use an access token with the `repo` scope.
+//
+// GET /repos/{owner}/{repo}/actions/workflows/{workflow_id}/runs
+func (UnimplementedHandler) ActionsListWorkflowRuns(ctx context.Context, params ActionsListWorkflowRunsParams) (r *ActionsListWorkflowRunsOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 

@@ -247,14 +247,14 @@ func isParamAllowed(t *ir.Type, root bool, visited map[*ir.Type]struct{}) error 
 	case ir.KindGeneric:
 		return isParamAllowed(t.GenericOf, root, visited)
 	case ir.KindSum:
-		// for i, of := range t.SumOf {
-		// 	if err := isParamAllowed(of, false, visited); err != nil {
-		// 		// TODO: Check field.Spec existence.
-		// 		return errors.Wrapf(err, "sum[%d]", i)
-		// 	}
-		// }
-		// return nil
-		return &ErrNotImplemented{"sum type parameter"}
+		// Sum types are allowed in parameters.
+		// We'll try each variant in order during decoding.
+		for i, of := range t.SumOf {
+			if err := isParamAllowed(of, false, visited); err != nil {
+				return errors.Wrapf(err, "sum[%d]", i)
+			}
+		}
+		return nil
 	case ir.KindMap:
 		return nil
 	case ir.KindAny:

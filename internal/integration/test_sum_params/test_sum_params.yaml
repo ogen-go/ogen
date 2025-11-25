@@ -1,0 +1,72 @@
+openapi: 3.0.1
+info:
+  title: Sum Type Parameters Test
+  version: 1.0.0
+paths:
+  /items/{id}:
+    get:
+      operationId: getItemById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Item ID - can be UUID or integer
+          schema:
+            anyOf:
+              - type: string
+                format: uuid
+              - type: integer
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  message:
+                    type: string
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+  /search:
+    get:
+      operationId: searchItems
+      parameters:
+        - name: filter
+          in: query
+          required: false
+          description: Filter value - can be string or number
+          schema:
+            anyOf:
+              - type: string
+              - type: integer
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      type: string
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string

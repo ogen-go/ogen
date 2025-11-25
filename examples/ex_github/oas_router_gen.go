@@ -6825,7 +6825,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 
 												if len(elem) == 0 {
-													// Leaf node.
 													switch r.Method {
 													case "GET":
 														s.handleActionsListRepoWorkflowsRequest([2]string{
@@ -6837,6 +6836,190 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 
 													return
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/"
+
+													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													// Param: "workflow_id"
+													// Match until "/"
+													idx := strings.IndexByte(elem, '/')
+													if idx < 0 {
+														idx = len(elem)
+													}
+													args[2] = elem[:idx]
+													elem = elem[idx:]
+
+													if len(elem) == 0 {
+														switch r.Method {
+														case "GET":
+															s.handleActionsGetWorkflowRequest([3]string{
+																args[0],
+																args[1],
+																args[2],
+															}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "GET")
+														}
+
+														return
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/"
+
+														if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															break
+														}
+														switch elem[0] {
+														case 'd': // Prefix: "dis"
+
+															if l := len("dis"); len(elem) >= l && elem[0:l] == "dis" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																break
+															}
+															switch elem[0] {
+															case 'a': // Prefix: "able"
+
+																if l := len("able"); len(elem) >= l && elem[0:l] == "able" {
+																	elem = elem[l:]
+																} else {
+																	break
+																}
+
+																if len(elem) == 0 {
+																	// Leaf node.
+																	switch r.Method {
+																	case "PUT":
+																		s.handleActionsDisableWorkflowRequest([3]string{
+																			args[0],
+																			args[1],
+																			args[2],
+																		}, elemIsEscaped, w, r)
+																	default:
+																		s.notAllowed(w, r, "PUT")
+																	}
+
+																	return
+																}
+
+															case 'p': // Prefix: "patches"
+
+																if l := len("patches"); len(elem) >= l && elem[0:l] == "patches" {
+																	elem = elem[l:]
+																} else {
+																	break
+																}
+
+																if len(elem) == 0 {
+																	// Leaf node.
+																	switch r.Method {
+																	case "POST":
+																		s.handleActionsCreateWorkflowDispatchRequest([3]string{
+																			args[0],
+																			args[1],
+																			args[2],
+																		}, elemIsEscaped, w, r)
+																	default:
+																		s.notAllowed(w, r, "POST")
+																	}
+
+																	return
+																}
+
+															}
+
+														case 'e': // Prefix: "enable"
+
+															if l := len("enable"); len(elem) >= l && elem[0:l] == "enable" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																// Leaf node.
+																switch r.Method {
+																case "PUT":
+																	s.handleActionsEnableWorkflowRequest([3]string{
+																		args[0],
+																		args[1],
+																		args[2],
+																	}, elemIsEscaped, w, r)
+																default:
+																	s.notAllowed(w, r, "PUT")
+																}
+
+																return
+															}
+
+														case 'r': // Prefix: "runs"
+
+															if l := len("runs"); len(elem) >= l && elem[0:l] == "runs" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																// Leaf node.
+																switch r.Method {
+																case "GET":
+																	s.handleActionsListWorkflowRunsRequest([3]string{
+																		args[0],
+																		args[1],
+																		args[2],
+																	}, elemIsEscaped, w, r)
+																default:
+																	s.notAllowed(w, r, "GET")
+																}
+
+																return
+															}
+
+														case 't': // Prefix: "timing"
+
+															if l := len("timing"); len(elem) >= l && elem[0:l] == "timing" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																// Leaf node.
+																switch r.Method {
+																case "GET":
+																	s.handleActionsGetWorkflowUsageRequest([3]string{
+																		args[0],
+																		args[1],
+																		args[2],
+																	}, elemIsEscaped, w, r)
+																default:
+																	s.notAllowed(w, r, "GET")
+																}
+
+																return
+															}
+
+														}
+
+													}
+
 												}
 
 											}
@@ -24030,7 +24213,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
-													// Leaf node.
 													switch method {
 													case "GET":
 														r.name = ActionsListRepoWorkflowsOperation
@@ -24044,6 +24226,196 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													default:
 														return
 													}
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/"
+
+													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													// Param: "workflow_id"
+													// Match until "/"
+													idx := strings.IndexByte(elem, '/')
+													if idx < 0 {
+														idx = len(elem)
+													}
+													args[2] = elem[:idx]
+													elem = elem[idx:]
+
+													if len(elem) == 0 {
+														switch method {
+														case "GET":
+															r.name = ActionsGetWorkflowOperation
+															r.summary = "Get a workflow"
+															r.operationID = "actions/get-workflow"
+															r.operationGroup = ""
+															r.pathPattern = "/repos/{owner}/{repo}/actions/workflows/{workflow_id}"
+															r.args = args
+															r.count = 3
+															return r, true
+														default:
+															return
+														}
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/"
+
+														if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															break
+														}
+														switch elem[0] {
+														case 'd': // Prefix: "dis"
+
+															if l := len("dis"); len(elem) >= l && elem[0:l] == "dis" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																break
+															}
+															switch elem[0] {
+															case 'a': // Prefix: "able"
+
+																if l := len("able"); len(elem) >= l && elem[0:l] == "able" {
+																	elem = elem[l:]
+																} else {
+																	break
+																}
+
+																if len(elem) == 0 {
+																	// Leaf node.
+																	switch method {
+																	case "PUT":
+																		r.name = ActionsDisableWorkflowOperation
+																		r.summary = "Disable a workflow"
+																		r.operationID = "actions/disable-workflow"
+																		r.operationGroup = ""
+																		r.pathPattern = "/repos/{owner}/{repo}/actions/workflows/{workflow_id}/disable"
+																		r.args = args
+																		r.count = 3
+																		return r, true
+																	default:
+																		return
+																	}
+																}
+
+															case 'p': // Prefix: "patches"
+
+																if l := len("patches"); len(elem) >= l && elem[0:l] == "patches" {
+																	elem = elem[l:]
+																} else {
+																	break
+																}
+
+																if len(elem) == 0 {
+																	// Leaf node.
+																	switch method {
+																	case "POST":
+																		r.name = ActionsCreateWorkflowDispatchOperation
+																		r.summary = "Create a workflow dispatch event"
+																		r.operationID = "actions/create-workflow-dispatch"
+																		r.operationGroup = ""
+																		r.pathPattern = "/repos/{owner}/{repo}/actions/workflows/{workflow_id}/dispatches"
+																		r.args = args
+																		r.count = 3
+																		return r, true
+																	default:
+																		return
+																	}
+																}
+
+															}
+
+														case 'e': // Prefix: "enable"
+
+															if l := len("enable"); len(elem) >= l && elem[0:l] == "enable" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																// Leaf node.
+																switch method {
+																case "PUT":
+																	r.name = ActionsEnableWorkflowOperation
+																	r.summary = "Enable a workflow"
+																	r.operationID = "actions/enable-workflow"
+																	r.operationGroup = ""
+																	r.pathPattern = "/repos/{owner}/{repo}/actions/workflows/{workflow_id}/enable"
+																	r.args = args
+																	r.count = 3
+																	return r, true
+																default:
+																	return
+																}
+															}
+
+														case 'r': // Prefix: "runs"
+
+															if l := len("runs"); len(elem) >= l && elem[0:l] == "runs" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																// Leaf node.
+																switch method {
+																case "GET":
+																	r.name = ActionsListWorkflowRunsOperation
+																	r.summary = "List workflow runs"
+																	r.operationID = "actions/list-workflow-runs"
+																	r.operationGroup = ""
+																	r.pathPattern = "/repos/{owner}/{repo}/actions/workflows/{workflow_id}/runs"
+																	r.args = args
+																	r.count = 3
+																	return r, true
+																default:
+																	return
+																}
+															}
+
+														case 't': // Prefix: "timing"
+
+															if l := len("timing"); len(elem) >= l && elem[0:l] == "timing" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																// Leaf node.
+																switch method {
+																case "GET":
+																	r.name = ActionsGetWorkflowUsageOperation
+																	r.summary = "Get workflow usage"
+																	r.operationID = "actions/get-workflow-usage"
+																	r.operationGroup = ""
+																	r.pathPattern = "/repos/{owner}/{repo}/actions/workflows/{workflow_id}/timing"
+																	r.args = args
+																	r.count = 3
+																	return r, true
+																default:
+																	return
+																}
+															}
+
+														}
+
+													}
+
 												}
 
 											}

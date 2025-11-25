@@ -82,6 +82,26 @@
 	}
 	{{ $var }} = val
 	return nil
+{{- else if $t.IsSum }}
+	var failures []error
+	{{- range $t.SumOf }}
+	// Try to decode as {{ .Name }}
+	if err := func() error {
+		var variant {{ .Go }}
+		if err := func() error {
+			{{- template "uri/decode" elem . "variant" }}
+		}(); err != nil {
+			return err
+		}
+		{{ $var }}.Set{{ .Name }}(variant)
+		return nil
+	}(); err == nil {
+		return nil
+	} else {
+		failures = append(failures, errors.Wrap(err, {{ printf "%q" .Name }}))
+	}
+	{{- end }}
+	return errors.Wrap(errors.Join(failures...), "failed to decode {{ $t.Go }}")
 {{- else }}
     {{ errorf "unexpected kind" $t.Kind }}
 {{- end }}

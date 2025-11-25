@@ -45,6 +45,19 @@
 		return e.EncodeValue(fmt.Sprint({{ $var }}))
 	}
 	return nil
+{{- else if $t.IsSum }}
+	switch {{ $var }}.Type {
+	{{- range $s := $t.SumOf }}
+		{{- $entries := $t.SumSpec.PickMappingEntriesFor $t $s }}
+		{{- range $e := $entries }}
+	case {{ $e.Name }}:
+		{{- template "uri/encode" elem $s (printf "%s.%s" $var $s.Name) }}
+		{{- end }}
+	{{- end }}
+	default:
+		return errors.Errorf("invalid {{ $t.Go }} type: %q", {{ $var }}.Type)
+	}
+	return nil
 {{- else }}
 	{{ errorf "unexpected kind %s" $t.Kind }}
 {{- end }}

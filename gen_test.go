@@ -170,7 +170,6 @@ func TestGenerate(t *testing.T) {
 				"complex anyOf",
 				"discriminator inference",
 				"sum types with same names",
-				"sum type parameter",
 				"array defaults",
 			},
 			"manga.json":               {},

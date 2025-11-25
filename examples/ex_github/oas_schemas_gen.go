@@ -608,6 +608,50 @@ func (s *ActionsCreateSelfHostedRunnerGroupForOrgReqVisibility) UnmarshalText(da
 	}
 }
 
+// ActionsCreateWorkflowDispatchNoContent is response for ActionsCreateWorkflowDispatch operation.
+type ActionsCreateWorkflowDispatchNoContent struct{}
+
+type ActionsCreateWorkflowDispatchReq struct {
+	// The git reference for the workflow. The reference can be a branch or tag name.
+	Ref string `json:"ref"`
+	// Input keys and values configured in the workflow file. The maximum number of properties is 10. Any
+	// default properties configured in the workflow file will be used when `inputs` are omitted.
+	Inputs OptActionsCreateWorkflowDispatchReqInputs `json:"inputs"`
+}
+
+// GetRef returns the value of Ref.
+func (s *ActionsCreateWorkflowDispatchReq) GetRef() string {
+	return s.Ref
+}
+
+// GetInputs returns the value of Inputs.
+func (s *ActionsCreateWorkflowDispatchReq) GetInputs() OptActionsCreateWorkflowDispatchReqInputs {
+	return s.Inputs
+}
+
+// SetRef sets the value of Ref.
+func (s *ActionsCreateWorkflowDispatchReq) SetRef(val string) {
+	s.Ref = val
+}
+
+// SetInputs sets the value of Inputs.
+func (s *ActionsCreateWorkflowDispatchReq) SetInputs(val OptActionsCreateWorkflowDispatchReqInputs) {
+	s.Inputs = val
+}
+
+// Input keys and values configured in the workflow file. The maximum number of properties is 10. Any
+// default properties configured in the workflow file will be used when `inputs` are omitted.
+type ActionsCreateWorkflowDispatchReqInputs map[string]string
+
+func (s *ActionsCreateWorkflowDispatchReqInputs) init() ActionsCreateWorkflowDispatchReqInputs {
+	m := *s
+	if m == nil {
+		m = map[string]string{}
+		*s = m
+	}
+	return m
+}
+
 // ActionsDeleteArtifactNoContent is response for ActionsDeleteArtifact operation.
 type ActionsDeleteArtifactNoContent struct{}
 
@@ -637,6 +681,9 @@ type ActionsDeleteWorkflowRunNoContent struct{}
 
 // ActionsDisableSelectedRepositoryGithubActionsOrganizationNoContent is response for ActionsDisableSelectedRepositoryGithubActionsOrganization operation.
 type ActionsDisableSelectedRepositoryGithubActionsOrganizationNoContent struct{}
+
+// ActionsDisableWorkflowNoContent is response for ActionsDisableWorkflow operation.
+type ActionsDisableWorkflowNoContent struct{}
 
 // ActionsDownloadArtifactFound is response for ActionsDownloadArtifact operation.
 type ActionsDownloadArtifactFound struct {
@@ -685,6 +732,9 @@ func (s *ActionsDownloadWorkflowRunLogsFound) SetLocation(val OptString) {
 
 // ActionsEnableSelectedRepositoryGithubActionsOrganizationNoContent is response for ActionsEnableSelectedRepositoryGithubActionsOrganization operation.
 type ActionsEnableSelectedRepositoryGithubActionsOrganizationNoContent struct{}
+
+// ActionsEnableWorkflowNoContent is response for ActionsEnableWorkflow operation.
+type ActionsEnableWorkflowNoContent struct{}
 
 type ActionsEnabled bool
 
@@ -1437,6 +1487,57 @@ func (s *ActionsListWorkflowRunsForRepoOKHeaders) SetLink(val OptString) {
 
 // SetResponse sets the value of Response.
 func (s *ActionsListWorkflowRunsForRepoOKHeaders) SetResponse(val ActionsListWorkflowRunsForRepoOK) {
+	s.Response = val
+}
+
+type ActionsListWorkflowRunsOK struct {
+	TotalCount   int           `json:"total_count"`
+	WorkflowRuns []WorkflowRun `json:"workflow_runs"`
+}
+
+// GetTotalCount returns the value of TotalCount.
+func (s *ActionsListWorkflowRunsOK) GetTotalCount() int {
+	return s.TotalCount
+}
+
+// GetWorkflowRuns returns the value of WorkflowRuns.
+func (s *ActionsListWorkflowRunsOK) GetWorkflowRuns() []WorkflowRun {
+	return s.WorkflowRuns
+}
+
+// SetTotalCount sets the value of TotalCount.
+func (s *ActionsListWorkflowRunsOK) SetTotalCount(val int) {
+	s.TotalCount = val
+}
+
+// SetWorkflowRuns sets the value of WorkflowRuns.
+func (s *ActionsListWorkflowRunsOK) SetWorkflowRuns(val []WorkflowRun) {
+	s.WorkflowRuns = val
+}
+
+// ActionsListWorkflowRunsOKHeaders wraps ActionsListWorkflowRunsOK with response headers.
+type ActionsListWorkflowRunsOKHeaders struct {
+	Link     OptString
+	Response ActionsListWorkflowRunsOK
+}
+
+// GetLink returns the value of Link.
+func (s *ActionsListWorkflowRunsOKHeaders) GetLink() OptString {
+	return s.Link
+}
+
+// GetResponse returns the value of Response.
+func (s *ActionsListWorkflowRunsOKHeaders) GetResponse() ActionsListWorkflowRunsOK {
+	return s.Response
+}
+
+// SetLink sets the value of Link.
+func (s *ActionsListWorkflowRunsOKHeaders) SetLink(val OptString) {
+	s.Link = val
+}
+
+// SetResponse sets the value of Response.
+func (s *ActionsListWorkflowRunsOKHeaders) SetResponse(val ActionsListWorkflowRunsOK) {
 	s.Response = val
 }
 
@@ -40619,6 +40720,52 @@ func (o OptActionsCreateSelfHostedRunnerGroupForOrgReqVisibility) Or(d ActionsCr
 	return d
 }
 
+// NewOptActionsCreateWorkflowDispatchReqInputs returns new OptActionsCreateWorkflowDispatchReqInputs with value set to v.
+func NewOptActionsCreateWorkflowDispatchReqInputs(v ActionsCreateWorkflowDispatchReqInputs) OptActionsCreateWorkflowDispatchReqInputs {
+	return OptActionsCreateWorkflowDispatchReqInputs{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptActionsCreateWorkflowDispatchReqInputs is optional ActionsCreateWorkflowDispatchReqInputs.
+type OptActionsCreateWorkflowDispatchReqInputs struct {
+	Value ActionsCreateWorkflowDispatchReqInputs
+	Set   bool
+}
+
+// IsSet returns true if OptActionsCreateWorkflowDispatchReqInputs was set.
+func (o OptActionsCreateWorkflowDispatchReqInputs) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptActionsCreateWorkflowDispatchReqInputs) Reset() {
+	var v ActionsCreateWorkflowDispatchReqInputs
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptActionsCreateWorkflowDispatchReqInputs) SetTo(v ActionsCreateWorkflowDispatchReqInputs) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptActionsCreateWorkflowDispatchReqInputs) Get() (v ActionsCreateWorkflowDispatchReqInputs, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptActionsCreateWorkflowDispatchReqInputs) Or(d ActionsCreateWorkflowDispatchReqInputs) ActionsCreateWorkflowDispatchReqInputs {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptActionsListJobsForWorkflowRunFilter returns new OptActionsListJobsForWorkflowRunFilter with value set to v.
 func NewOptActionsListJobsForWorkflowRunFilter(v ActionsListJobsForWorkflowRunFilter) OptActionsListJobsForWorkflowRunFilter {
 	return OptActionsListJobsForWorkflowRunFilter{
@@ -60224,6 +60371,144 @@ func (o OptWorkflowRunUsageBillableWINDOWS) Get() (v WorkflowRunUsageBillableWIN
 
 // Or returns value if set, or given parameter if does not.
 func (o OptWorkflowRunUsageBillableWINDOWS) Or(d WorkflowRunUsageBillableWINDOWS) WorkflowRunUsageBillableWINDOWS {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptWorkflowUsageBillableMACOS returns new OptWorkflowUsageBillableMACOS with value set to v.
+func NewOptWorkflowUsageBillableMACOS(v WorkflowUsageBillableMACOS) OptWorkflowUsageBillableMACOS {
+	return OptWorkflowUsageBillableMACOS{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptWorkflowUsageBillableMACOS is optional WorkflowUsageBillableMACOS.
+type OptWorkflowUsageBillableMACOS struct {
+	Value WorkflowUsageBillableMACOS
+	Set   bool
+}
+
+// IsSet returns true if OptWorkflowUsageBillableMACOS was set.
+func (o OptWorkflowUsageBillableMACOS) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptWorkflowUsageBillableMACOS) Reset() {
+	var v WorkflowUsageBillableMACOS
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptWorkflowUsageBillableMACOS) SetTo(v WorkflowUsageBillableMACOS) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptWorkflowUsageBillableMACOS) Get() (v WorkflowUsageBillableMACOS, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptWorkflowUsageBillableMACOS) Or(d WorkflowUsageBillableMACOS) WorkflowUsageBillableMACOS {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptWorkflowUsageBillableUBUNTU returns new OptWorkflowUsageBillableUBUNTU with value set to v.
+func NewOptWorkflowUsageBillableUBUNTU(v WorkflowUsageBillableUBUNTU) OptWorkflowUsageBillableUBUNTU {
+	return OptWorkflowUsageBillableUBUNTU{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptWorkflowUsageBillableUBUNTU is optional WorkflowUsageBillableUBUNTU.
+type OptWorkflowUsageBillableUBUNTU struct {
+	Value WorkflowUsageBillableUBUNTU
+	Set   bool
+}
+
+// IsSet returns true if OptWorkflowUsageBillableUBUNTU was set.
+func (o OptWorkflowUsageBillableUBUNTU) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptWorkflowUsageBillableUBUNTU) Reset() {
+	var v WorkflowUsageBillableUBUNTU
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptWorkflowUsageBillableUBUNTU) SetTo(v WorkflowUsageBillableUBUNTU) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptWorkflowUsageBillableUBUNTU) Get() (v WorkflowUsageBillableUBUNTU, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptWorkflowUsageBillableUBUNTU) Or(d WorkflowUsageBillableUBUNTU) WorkflowUsageBillableUBUNTU {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptWorkflowUsageBillableWINDOWS returns new OptWorkflowUsageBillableWINDOWS with value set to v.
+func NewOptWorkflowUsageBillableWINDOWS(v WorkflowUsageBillableWINDOWS) OptWorkflowUsageBillableWINDOWS {
+	return OptWorkflowUsageBillableWINDOWS{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptWorkflowUsageBillableWINDOWS is optional WorkflowUsageBillableWINDOWS.
+type OptWorkflowUsageBillableWINDOWS struct {
+	Value WorkflowUsageBillableWINDOWS
+	Set   bool
+}
+
+// IsSet returns true if OptWorkflowUsageBillableWINDOWS was set.
+func (o OptWorkflowUsageBillableWINDOWS) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptWorkflowUsageBillableWINDOWS) Reset() {
+	var v WorkflowUsageBillableWINDOWS
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptWorkflowUsageBillableWINDOWS) SetTo(v WorkflowUsageBillableWINDOWS) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptWorkflowUsageBillableWINDOWS) Get() (v WorkflowUsageBillableWINDOWS, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptWorkflowUsageBillableWINDOWS) Or(d WorkflowUsageBillableWINDOWS) WorkflowUsageBillableWINDOWS {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -100022,6 +100307,70 @@ func (s *Workflow) SetDeletedAt(val OptDateTime) {
 	s.DeletedAt = val
 }
 
+// WorkflowID represents sum type.
+type WorkflowID struct {
+	Type   WorkflowIDType // switch on this field
+	Int    int
+	String string
+}
+
+// WorkflowIDType is oneOf type of WorkflowID.
+type WorkflowIDType string
+
+// Possible values for WorkflowIDType.
+const (
+	IntWorkflowID    WorkflowIDType = "int"
+	StringWorkflowID WorkflowIDType = "string"
+)
+
+// IsInt reports whether WorkflowID is int.
+func (s WorkflowID) IsInt() bool { return s.Type == IntWorkflowID }
+
+// IsString reports whether WorkflowID is string.
+func (s WorkflowID) IsString() bool { return s.Type == StringWorkflowID }
+
+// SetInt sets WorkflowID to int.
+func (s *WorkflowID) SetInt(v int) {
+	s.Type = IntWorkflowID
+	s.Int = v
+}
+
+// GetInt returns int and true boolean if WorkflowID is int.
+func (s WorkflowID) GetInt() (v int, ok bool) {
+	if !s.IsInt() {
+		return v, false
+	}
+	return s.Int, true
+}
+
+// NewIntWorkflowID returns new WorkflowID from int.
+func NewIntWorkflowID(v int) WorkflowID {
+	var s WorkflowID
+	s.SetInt(v)
+	return s
+}
+
+// SetString sets WorkflowID to string.
+func (s *WorkflowID) SetString(v string) {
+	s.Type = StringWorkflowID
+	s.String = v
+}
+
+// GetString returns string and true boolean if WorkflowID is string.
+func (s WorkflowID) GetString() (v string, ok bool) {
+	if !s.IsString() {
+		return v, false
+	}
+	return s.String, true
+}
+
+// NewStringWorkflowID returns new WorkflowID from string.
+func NewStringWorkflowID(v string) WorkflowID {
+	var s WorkflowID
+	s.SetString(v)
+	return s
+}
+
 // An invocation of a workflow.
 // Ref: #/components/schemas/workflow-run
 type WorkflowRun struct {
@@ -100690,4 +101039,98 @@ func (s *WorkflowState) UnmarshalText(data []byte) error {
 	default:
 		return errors.Errorf("invalid value: %q", data)
 	}
+}
+
+// Workflow Usage.
+// Ref: #/components/schemas/workflow-usage
+type WorkflowUsage struct {
+	Billable WorkflowUsageBillable `json:"billable"`
+}
+
+// GetBillable returns the value of Billable.
+func (s *WorkflowUsage) GetBillable() WorkflowUsageBillable {
+	return s.Billable
+}
+
+// SetBillable sets the value of Billable.
+func (s *WorkflowUsage) SetBillable(val WorkflowUsageBillable) {
+	s.Billable = val
+}
+
+type WorkflowUsageBillable struct {
+	UBUNTU  OptWorkflowUsageBillableUBUNTU  `json:"UBUNTU"`
+	MACOS   OptWorkflowUsageBillableMACOS   `json:"MACOS"`
+	WINDOWS OptWorkflowUsageBillableWINDOWS `json:"WINDOWS"`
+}
+
+// GetUBUNTU returns the value of UBUNTU.
+func (s *WorkflowUsageBillable) GetUBUNTU() OptWorkflowUsageBillableUBUNTU {
+	return s.UBUNTU
+}
+
+// GetMACOS returns the value of MACOS.
+func (s *WorkflowUsageBillable) GetMACOS() OptWorkflowUsageBillableMACOS {
+	return s.MACOS
+}
+
+// GetWINDOWS returns the value of WINDOWS.
+func (s *WorkflowUsageBillable) GetWINDOWS() OptWorkflowUsageBillableWINDOWS {
+	return s.WINDOWS
+}
+
+// SetUBUNTU sets the value of UBUNTU.
+func (s *WorkflowUsageBillable) SetUBUNTU(val OptWorkflowUsageBillableUBUNTU) {
+	s.UBUNTU = val
+}
+
+// SetMACOS sets the value of MACOS.
+func (s *WorkflowUsageBillable) SetMACOS(val OptWorkflowUsageBillableMACOS) {
+	s.MACOS = val
+}
+
+// SetWINDOWS sets the value of WINDOWS.
+func (s *WorkflowUsageBillable) SetWINDOWS(val OptWorkflowUsageBillableWINDOWS) {
+	s.WINDOWS = val
+}
+
+type WorkflowUsageBillableMACOS struct {
+	TotalMs OptInt `json:"total_ms"`
+}
+
+// GetTotalMs returns the value of TotalMs.
+func (s *WorkflowUsageBillableMACOS) GetTotalMs() OptInt {
+	return s.TotalMs
+}
+
+// SetTotalMs sets the value of TotalMs.
+func (s *WorkflowUsageBillableMACOS) SetTotalMs(val OptInt) {
+	s.TotalMs = val
+}
+
+type WorkflowUsageBillableUBUNTU struct {
+	TotalMs OptInt `json:"total_ms"`
+}
+
+// GetTotalMs returns the value of TotalMs.
+func (s *WorkflowUsageBillableUBUNTU) GetTotalMs() OptInt {
+	return s.TotalMs
+}
+
+// SetTotalMs sets the value of TotalMs.
+func (s *WorkflowUsageBillableUBUNTU) SetTotalMs(val OptInt) {
+	s.TotalMs = val
+}
+
+type WorkflowUsageBillableWINDOWS struct {
+	TotalMs OptInt `json:"total_ms"`
+}
+
+// GetTotalMs returns the value of TotalMs.
+func (s *WorkflowUsageBillableWINDOWS) GetTotalMs() OptInt {
+	return s.TotalMs
+}
+
+// SetTotalMs sets the value of TotalMs.
+func (s *WorkflowUsageBillableWINDOWS) SetTotalMs(val OptInt) {
+	s.TotalMs = val
 }

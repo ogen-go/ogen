@@ -337,6 +337,31 @@ func (s *ActionsCreateSelfHostedRunnerGroupForOrgReqVisibility) SetFake() {
 }
 
 // SetFake set fake values.
+func (s *ActionsCreateWorkflowDispatchReq) SetFake() {
+	{
+		{
+			s.Ref = "string"
+		}
+	}
+	{
+		{
+			s.Inputs.SetFake()
+		}
+	}
+}
+
+// SetFake set fake values.
+func (s *ActionsCreateWorkflowDispatchReqInputs) SetFake() {
+	var (
+		elem string
+		m    map[string]string = s.init()
+	)
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
+	}
+}
+
+// SetFake set fake values.
 func (s *ActionsEnabled) SetFake() {
 	var unwrapped bool
 	{
@@ -665,6 +690,27 @@ func (s *ActionsListWorkflowRunArtifactsOK) SetFake() {
 
 // SetFake set fake values.
 func (s *ActionsListWorkflowRunsForRepoOK) SetFake() {
+	{
+		{
+			s.TotalCount = int(0)
+		}
+	}
+	{
+		{
+			s.WorkflowRuns = nil
+			for i := 0; i < 0; i++ {
+				var elem WorkflowRun
+				{
+					elem.SetFake()
+				}
+				s.WorkflowRuns = append(s.WorkflowRuns, elem)
+			}
+		}
+	}
+}
+
+// SetFake set fake values.
+func (s *ActionsListWorkflowRunsOK) SetFake() {
 	{
 		{
 			s.TotalCount = int(0)
@@ -17392,6 +17438,15 @@ func (s *OptActionsCreateSelfHostedRunnerGroupForOrgReqVisibility) SetFake() {
 }
 
 // SetFake set fake values.
+func (s *OptActionsCreateWorkflowDispatchReqInputs) SetFake() {
+	var elem ActionsCreateWorkflowDispatchReqInputs
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
+}
+
+// SetFake set fake values.
 func (s *OptActionsUpdateSelfHostedRunnerGroupForOrgReqVisibility) SetFake() {
 	var elem ActionsUpdateSelfHostedRunnerGroupForOrgReqVisibility
 	{
@@ -20217,6 +20272,33 @@ func (s *OptWorkflowRunUsageBillableUBUNTU) SetFake() {
 // SetFake set fake values.
 func (s *OptWorkflowRunUsageBillableWINDOWS) SetFake() {
 	var elem WorkflowRunUsageBillableWINDOWS
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
+}
+
+// SetFake set fake values.
+func (s *OptWorkflowUsageBillableMACOS) SetFake() {
+	var elem WorkflowUsageBillableMACOS
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
+}
+
+// SetFake set fake values.
+func (s *OptWorkflowUsageBillableUBUNTU) SetFake() {
+	var elem WorkflowUsageBillableUBUNTU
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
+}
+
+// SetFake set fake values.
+func (s *OptWorkflowUsageBillableWINDOWS) SetFake() {
+	var elem WorkflowUsageBillableWINDOWS
 	{
 		elem.SetFake()
 	}
@@ -37283,4 +37365,59 @@ func (s *WorkflowRunUsageBillableWINDOWS) SetFake() {
 // SetFake set fake values.
 func (s *WorkflowState) SetFake() {
 	*s = WorkflowStateActive
+}
+
+// SetFake set fake values.
+func (s *WorkflowUsage) SetFake() {
+	{
+		{
+			s.Billable.SetFake()
+		}
+	}
+}
+
+// SetFake set fake values.
+func (s *WorkflowUsageBillable) SetFake() {
+	{
+		{
+			s.UBUNTU.SetFake()
+		}
+	}
+	{
+		{
+			s.MACOS.SetFake()
+		}
+	}
+	{
+		{
+			s.WINDOWS.SetFake()
+		}
+	}
+}
+
+// SetFake set fake values.
+func (s *WorkflowUsageBillableMACOS) SetFake() {
+	{
+		{
+			s.TotalMs.SetFake()
+		}
+	}
+}
+
+// SetFake set fake values.
+func (s *WorkflowUsageBillableUBUNTU) SetFake() {
+	{
+		{
+			s.TotalMs.SetFake()
+		}
+	}
+}
+
+// SetFake set fake values.
+func (s *WorkflowUsageBillableWINDOWS) SetFake() {
+	{
+		{
+			s.TotalMs.SetFake()
+		}
+	}
 }
