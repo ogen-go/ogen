@@ -1,0 +1,39 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Empty response body test",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/resource/{id}": {
+      "get": {
+        "operationId": "getResource",
+        "description": "Get a resource with unknown JSON response",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success with unknown JSON structure",
+            "content": {
+              "application/json": {}
+            }
+          },
+          "default": {
+            "description": "Error with unknown structure",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    }
+  }
+}

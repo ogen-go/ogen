@@ -31,6 +31,8 @@ type schemaGen struct {
 	depthLimit int
 	depthCount int
 
+	request bool // true if generating for request body
+
 	log *zap.Logger
 }
 
@@ -132,9 +134,14 @@ func (g *schemaGen) generate(name string, schema *jsonschema.Schema, optional bo
 
 func (g *schemaGen) generate2(name string, schema *jsonschema.Schema) (ret *ir.Type, err error) {
 	if schema == nil {
-		// Empty schema (no schema field in OpenAPI spec) means "any valid JSON value".
-		// This is consistent with how we handle empty schemas in arrays (line 431).
-		// See JSON Schema spec: https://json-schema.org/understanding-json-schema/basics.html
+		// Empty schema (no schema field in OpenAPI spec).
+		// For responses: Allow jx.Raw since client must handle unknown JSON from server.
+		// For requests: Reject to avoid clients sending arbitrary data without spec guidance.
+		if g.request {
+			return nil, &ErrNotImplemented{Name: "empty schema in request body"}
+		}
+		// For responses, treat as "any valid JSON value" (jx.Raw).
+		// Consistent with array item handling (line 437).
 		return ir.Any(nil), nil
 	}
 
