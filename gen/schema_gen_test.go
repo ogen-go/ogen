@@ -35,6 +35,39 @@ func TestSchemaGenAnyWarn(t *testing.T) {
 	a.Equal("foo", args["name"])
 }
 
+func TestSchemaGenNilSchema(t *testing.T) {
+	a := require.New(t)
+
+	t.Run("Response", func(t *testing.T) {
+		s := newSchemaGen(func(ref jsonschema.Ref) (*ir.Type, bool) {
+			return nil, false
+		})
+		s.request = false // response
+
+		// Test that nil schema in responses is handled as "any" (jx.Raw).
+		// This occurs when response has content without a schema field,
+		// e.g., default error responses: {"content": {"application/json": {}}}
+		typ, err := s.generate("test", nil, false)
+		a.NoError(err)
+		a.NotNil(typ)
+		a.Equal(ir.KindAny, typ.Kind)
+		a.Equal("jx.Raw", typ.Go())
+	})
+
+	t.Run("Request", func(t *testing.T) {
+		s := newSchemaGen(func(ref jsonschema.Ref) (*ir.Type, bool) {
+			return nil, false
+		})
+		s.request = true // request
+
+		// Test that nil schema in requests returns an error.
+		// Clients shouldn't send arbitrary data without explicit schema guidance.
+		_, err := s.generate("test", nil, false)
+		a.Error(err)
+		a.Contains(err.Error(), "empty schema in request body")
+	})
+}
+
 func TestGenerate(t *testing.T) {
 	var loc location.Locator
 	loc.UnmarshalYAML(&yaml.Node{
