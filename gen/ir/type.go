@@ -38,6 +38,15 @@ type UniqueFieldVariant struct {
 	VariantType string // e.g., "SystemEventEvent"
 	FieldType   string // jx.Type constant, e.g., "jx.String"
 	Nullable    bool   // true if field is nullable (accepts both base type and jx.Null)
+
+	// ArrayElementType is the jx.Type of array elements for array element discrimination.
+	// Only set when FieldType is "jx.Array" and element type can distinguish variants.
+	// e.g., "jx.String" for array[string], "jx.Number" for array[integer], "jx.Object" for array[object]
+	ArrayElementType string
+
+	// ArrayElementTypeID is the full type ID for array elements (e.g., "string", "integer", "object").
+	// Used for more detailed discrimination like distinguishing integer vs number.
+	ArrayElementTypeID string
 }
 
 // SumSpec for KindSum.

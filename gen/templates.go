@@ -206,10 +206,12 @@ func templateFunctions() template.FuncMap {
 		"mod": func(a, b int) int {
 			return a % b
 		},
-		"isObjectParam":        isObjectParam,
-		"paramObjectFields":    paramObjectFields,
-		"uniqueResponseTypes":  uniqueResponseTypes,
-		"dedupeVariantsByType": dedupeVariantsByType,
+		"isObjectParam":                    isObjectParam,
+		"paramObjectFields":                paramObjectFields,
+		"uniqueResponseTypes":              uniqueResponseTypes,
+		"dedupeVariantsByType":             dedupeVariantsByType,
+		"needsArrayElementDiscrimination":  needsArrayElementDiscrimination,
+		"dedupeVariantsByArrayElementType": dedupeVariantsByArrayElementType,
 	}
 }
 
@@ -310,6 +312,54 @@ func dedupeVariantsByType(variants []ir.UniqueFieldVariant) []ir.UniqueFieldVari
 		if v.FieldType == "" || !seen[v.FieldType] {
 			if v.FieldType != "" {
 				seen[v.FieldType] = true
+			}
+			result = append(result, v)
+		}
+	}
+
+	return result
+}
+
+// needsArrayElementDiscrimination checks if all variants have the same jx.Array FieldType
+// but different ArrayElementTypes, requiring element-level discrimination.
+func needsArrayElementDiscrimination(variants []ir.UniqueFieldVariant) bool {
+	if len(variants) < 2 {
+		return false
+	}
+
+	// All variants must be arrays
+	for _, v := range variants {
+		if v.FieldType != jxTypeArray {
+			return false
+		}
+	}
+
+	// Count unique element types
+	uniqueElemTypes := make(map[string]bool)
+	for _, v := range variants {
+		if v.ArrayElementType != "" {
+			uniqueElemTypes[v.ArrayElementType] = true
+		}
+	}
+
+	return len(uniqueElemTypes) > 1
+}
+
+// dedupeVariantsByArrayElementType deduplicates array variants by their ArrayElementType.
+// Used when all variants are arrays that need element-level discrimination.
+func dedupeVariantsByArrayElementType(variants []ir.UniqueFieldVariant) []ir.UniqueFieldVariant {
+	if len(variants) == 0 {
+		return variants
+	}
+
+	seen := make(map[string]bool)
+	result := make([]ir.UniqueFieldVariant, 0, len(variants))
+
+	for _, v := range variants {
+		// If ArrayElementType is empty, include the variant
+		if v.ArrayElementType == "" || !seen[v.ArrayElementType] {
+			if v.ArrayElementType != "" {
+				seen[v.ArrayElementType] = true
 			}
 			result = append(result, v)
 		}
