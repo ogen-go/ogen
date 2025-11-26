@@ -1,0 +1,73 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Optional Type Discrimination Test",
+    "version": "1.0.0",
+    "description": "Tests type-based discrimination with optional fields"
+  },
+  "paths": {
+    "/config": {
+      "get": {
+        "operationId": "getConfig",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Config"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Config": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/ServerConfig"
+          },
+          {
+            "$ref": "#/components/schemas/ClientConfig"
+          }
+        ]
+      },
+      "ServerConfig": {
+        "type": "object",
+        "required": ["host"],
+        "properties": {
+          "host": {
+            "type": "string"
+          },
+          "port": {
+            "type": "integer",
+            "description": "Optional integer port - unique to ServerConfig"
+          },
+          "timeout": {
+            "type": "integer"
+          }
+        }
+      },
+      "ClientConfig": {
+        "type": "object",
+        "required": ["host"],
+        "properties": {
+          "host": {
+            "type": "string"
+          },
+          "port": {
+            "type": "string",
+            "description": "Optional string port (e.g., 'dynamic') - different type from ServerConfig"
+          },
+          "timeout": {
+            "type": "integer"
+          }
+        }
+      }
+    }
+  }
+}

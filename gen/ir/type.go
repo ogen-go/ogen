@@ -32,6 +32,14 @@ type SumSpecMap struct {
 	Name string
 }
 
+// UniqueFieldVariant represents a variant that has a specific unique field.
+type UniqueFieldVariant struct {
+	VariantName string // e.g., "SystemEvent"
+	VariantType string // e.g., "SystemEventEvent"
+	FieldType   string // jx.Type constant, e.g., "jx.String"
+	Nullable    bool   // true if field is nullable (accepts both base type and jx.Null)
+}
+
 // SumSpec for KindSum.
 type SumSpec struct {
 	Unique []*Field
@@ -47,6 +55,16 @@ type SumSpec struct {
 
 	// TypeDiscriminator denotes to distinguish variants by type.
 	TypeDiscriminator bool
+
+	// UniqueFieldTypes maps field JSON names to their expected jx.Type for type-based discrimination.
+	// Key: field JSON name, Value: jx.Type constant name (e.g., "jx.String", "jx.Number")
+	// Only populated for fields that require runtime type checking.
+	UniqueFieldTypes map[string]string
+
+	// UniqueFields maps field names to variants that have that field as unique.
+	// Used for generating field-based discrimination in oneOf/anyOf.
+	// Key: field JSON name, Value: list of variants with that unique field
+	UniqueFields map[string][]UniqueFieldVariant
 }
 
 type ResolvedSumSpecMap struct {

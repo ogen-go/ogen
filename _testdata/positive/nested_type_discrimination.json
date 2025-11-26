@@ -1,0 +1,146 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Nested Type Discrimination Test",
+    "version": "1.0.0",
+    "description": "Tests type-based discrimination with nested sum types"
+  },
+  "paths": {
+    "/messages": {
+      "post": {
+        "operationId": "sendMessage",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Message"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Message": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/TextMessage"
+          },
+          {
+            "$ref": "#/components/schemas/DataMessage"
+          }
+        ]
+      },
+      "TextMessage": {
+        "type": "object",
+        "required": ["sender", "content"],
+        "properties": {
+          "sender": {
+            "type": "string"
+          },
+          "content": {
+            "$ref": "#/components/schemas/TextContent"
+          },
+          "messageType": {
+            "type": "string",
+            "description": "Unique to TextMessage - discriminates from DataMessage"
+          }
+        }
+      },
+      "DataMessage": {
+        "type": "object",
+        "required": ["sender", "content"],
+        "properties": {
+          "sender": {
+            "type": "string"
+          },
+          "content": {
+            "$ref": "#/components/schemas/DataContent"
+          },
+          "encoding": {
+            "type": "string",
+            "description": "Unique to DataMessage - discriminates from TextMessage"
+          }
+        }
+      },
+      "TextContent": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/PlainText"
+          },
+          {
+            "$ref": "#/components/schemas/FormattedText"
+          }
+        ]
+      },
+      "PlainText": {
+        "type": "object",
+        "required": ["text"],
+        "properties": {
+          "text": {
+            "type": "string"
+          }
+        }
+      },
+      "FormattedText": {
+        "type": "object",
+        "required": ["text", "format"],
+        "properties": {
+          "text": {
+            "type": "string"
+          },
+          "format": {
+            "type": "string",
+            "description": "Unique to FormattedText"
+          }
+        }
+      },
+      "DataContent": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/BinaryData"
+          },
+          {
+            "$ref": "#/components/schemas/StructuredData"
+          }
+        ]
+      },
+      "BinaryData": {
+        "type": "object",
+        "required": ["data"],
+        "properties": {
+          "data": {
+            "type": "string",
+            "format": "byte"
+          },
+          "size": {
+            "type": "integer",
+            "description": "Unique to BinaryData"
+          }
+        }
+      },
+      "StructuredData": {
+        "type": "object",
+        "required": ["data"],
+        "properties": {
+          "data": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "schema": {
+            "type": "string",
+            "description": "Unique to StructuredData"
+          }
+        }
+      }
+    }
+  }
+}

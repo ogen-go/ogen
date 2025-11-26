@@ -1,0 +1,110 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Hybrid Discrimination Test",
+    "version": "1.0.0",
+    "description": "Tests improved discrimination with mixed field types and names"
+  },
+  "paths": {
+    "/items": {
+      "get": {
+        "operationId": "getItems",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Item"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Item": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/Product"
+          },
+          {
+            "$ref": "#/components/schemas/Service"
+          },
+          {
+            "$ref": "#/components/schemas/Bundle"
+          }
+        ]
+      },
+      "Product": {
+        "type": "object",
+        "required": ["id", "name", "price"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Product ID (string)"
+          },
+          "name": {
+            "type": "string"
+          },
+          "price": {
+            "type": "number"
+          },
+          "weight": {
+            "type": "number",
+            "description": "Unique to Product"
+          }
+        }
+      },
+      "Service": {
+        "type": "object",
+        "required": ["id", "name", "price"],
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Service ID (integer - different from Product!)"
+          },
+          "name": {
+            "type": "string"
+          },
+          "price": {
+            "type": "number"
+          },
+          "duration": {
+            "type": "integer",
+            "description": "Unique to Service"
+          }
+        }
+      },
+      "Bundle": {
+        "type": "object",
+        "required": ["id", "name", "price"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Bundle ID (string - same as Product)"
+          },
+          "name": {
+            "type": "string"
+          },
+          "price": {
+            "type": "number"
+          },
+          "items": {
+            "type": "array",
+            "description": "Unique to Bundle",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+}

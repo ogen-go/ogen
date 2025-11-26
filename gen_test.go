@@ -171,6 +171,7 @@ func TestGenerate(t *testing.T) {
 				"discriminator inference",
 				"sum types with same names",
 				"array defaults",
+				"type-based discrimination with same jxType",
 			},
 			"manga.json":               {},
 			"telegram_bot_api.json":    {},

@@ -206,9 +206,10 @@ func templateFunctions() template.FuncMap {
 		"mod": func(a, b int) int {
 			return a % b
 		},
-		"isObjectParam":       isObjectParam,
-		"paramObjectFields":   paramObjectFields,
-		"uniqueResponseTypes": uniqueResponseTypes,
+		"isObjectParam":        isObjectParam,
+		"paramObjectFields":    paramObjectFields,
+		"uniqueResponseTypes":  uniqueResponseTypes,
+		"dedupeVariantsByType": dedupeVariantsByType,
 	}
 }
 
@@ -292,4 +293,27 @@ func uniqueResponseTypes(responses []ir.ResponseInfo) []ir.ResponseInfo {
 	}
 
 	return unique
+}
+
+// dedupeVariantsByType deduplicates variants by their FieldType to avoid duplicate type checks.
+// When multiple variants have the same field type (or no type discrimination), keep only unique entries.
+func dedupeVariantsByType(variants []ir.UniqueFieldVariant) []ir.UniqueFieldVariant {
+	if len(variants) == 0 {
+		return variants
+	}
+
+	seen := make(map[string]bool)
+	result := make([]ir.UniqueFieldVariant, 0, len(variants))
+
+	for _, v := range variants {
+		// If FieldType is empty (no type discrimination), include all variants
+		if v.FieldType == "" || !seen[v.FieldType] {
+			if v.FieldType != "" {
+				seen[v.FieldType] = true
+			}
+			result = append(result, v)
+		}
+	}
+
+	return result
 }
