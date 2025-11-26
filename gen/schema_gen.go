@@ -4,6 +4,7 @@ import (
 	"cmp"
 	"fmt"
 	"path"
+	"sort"
 	"strings"
 
 	"github.com/go-faster/errors"
@@ -865,7 +866,14 @@ func inferSchemaFromObject(obj map[string]any) *jsonschema.Schema {
 	schema := &jsonschema.Schema{
 		Type: jsonschema.Object,
 	}
-	for fieldName, fieldValue := range obj {
+	// Sort keys for deterministic output
+	keys := make([]string, 0, len(obj))
+	for k := range obj {
+		keys = append(keys, k)
+	}
+	sort.Strings(keys)
+	for _, fieldName := range keys {
+		fieldValue := obj[fieldName]
 		prop := jsonschema.Property{
 			Name:     fieldName,
 			Schema:   inferSchemaFromValue(fieldValue),
