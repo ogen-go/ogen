@@ -60,6 +60,7 @@ docker run --rm \
   - Type is inferred by unique fields if possible
     - Field name discrimination: variants with different field names
     - Field type discrimination: variants with same field names but different types (e.g., `{id: string}` vs `{id: integer}`)
+    - Field value discrimination: variants with same field names and types but different enum values
 - Extra Go struct field tags in the generated types
 - OpenTelemetry tracing and metrics
 
@@ -232,6 +233,31 @@ ogen analyzes the fields in each variant to find discriminating characteristics:
 ```
 
 In this case, ogen checks the JSON type of the `id` field at runtime to determine which variant to decode.
+
+- **Field value discrimination**: Variants have fields with the same name and type but different enum values
+
+```json
+{
+  "oneOf": [
+    {
+      "type": "object",
+      "required": ["status"],
+      "properties": {
+        "status": {"type": "string", "enum": ["active", "pending"]}
+      }
+    },
+    {
+      "type": "object",
+      "required": ["status"],
+      "properties": {
+        "status": {"type": "string", "enum": ["inactive", "deleted"]}
+      }
+    }
+  ]
+}
+```
+
+In this case, ogen checks the actual string value of the `status` field at runtime and matches it against each variant's enum values. The enum values must be disjoint (non-overlapping) for this to work. If enum values overlap, ogen will report an error and suggest using an explicit discriminator.
 
 ## Extension properties
 

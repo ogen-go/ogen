@@ -1,0 +1,229 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Value-Based Discrimination Test",
+    "version": "1.0.0",
+    "description": "Tests that oneOf variants can be discriminated by enum values (same field name and JSON type, but different enum values)"
+  },
+  "paths": {
+    "/status": {
+      "get": {
+        "operationId": "getStatus",
+        "responses": {
+          "200": {
+            "description": "Status response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StatusResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/resource": {
+      "get": {
+        "operationId": "getResource",
+        "responses": {
+          "200": {
+            "description": "Resource response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Resource"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/event": {
+      "post": {
+        "operationId": "logEvent",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Event"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "StatusResponse": {
+        "description": "Basic enum value discrimination - different enum values for same field",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/ActiveStatus"
+          },
+          {
+            "$ref": "#/components/schemas/InactiveStatus"
+          }
+        ]
+      },
+      "ActiveStatus": {
+        "type": "object",
+        "required": ["status", "lastActive"],
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": ["active", "pending"],
+            "description": "Active states"
+          },
+          "lastActive": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "InactiveStatus": {
+        "type": "object",
+        "required": ["status", "deletedAt"],
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": ["inactive", "deleted"],
+            "description": "Inactive states"
+          },
+          "deletedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "Resource": {
+        "description": "Multiple fields with value-based discrimination",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/UserResource"
+          },
+          {
+            "$ref": "#/components/schemas/AdminResource"
+          }
+        ]
+      },
+      "UserResource": {
+        "type": "object",
+        "required": ["type", "role", "userId"],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": ["user"],
+            "description": "Resource type"
+          },
+          "role": {
+            "type": "string",
+            "enum": ["viewer", "editor"],
+            "description": "User roles"
+          },
+          "userId": {
+            "type": "string"
+          }
+        }
+      },
+      "AdminResource": {
+        "type": "object",
+        "required": ["type", "role", "adminId"],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": ["admin"],
+            "description": "Resource type"
+          },
+          "role": {
+            "type": "string",
+            "enum": ["superadmin", "moderator"],
+            "description": "Admin roles"
+          },
+          "adminId": {
+            "type": "string"
+          }
+        }
+      },
+      "Event": {
+        "description": "Mixed discrimination - some fields by type, some by value",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/UserEvent"
+          },
+          {
+            "$ref": "#/components/schemas/SystemEvent"
+          },
+          {
+            "$ref": "#/components/schemas/MetricEvent"
+          }
+        ]
+      },
+      "UserEvent": {
+        "type": "object",
+        "required": ["eventType", "priority", "userId"],
+        "properties": {
+          "eventType": {
+            "type": "string",
+            "enum": ["user_login", "user_logout"],
+            "description": "User event types - discriminated by value"
+          },
+          "priority": {
+            "type": "string",
+            "description": "String priority - discriminated by type"
+          },
+          "userId": {
+            "type": "string",
+            "description": "Unique field - discriminated by name"
+          }
+        }
+      },
+      "SystemEvent": {
+        "type": "object",
+        "required": ["eventType", "priority", "systemId"],
+        "properties": {
+          "eventType": {
+            "type": "string",
+            "enum": ["system_start", "system_stop"],
+            "description": "System event types - discriminated by value"
+          },
+          "priority": {
+            "type": "integer",
+            "description": "Integer priority - discriminated by type"
+          },
+          "systemId": {
+            "type": "string",
+            "description": "Unique field - discriminated by name"
+          }
+        }
+      },
+      "MetricEvent": {
+        "type": "object",
+        "required": ["eventType", "priority", "metricId"],
+        "properties": {
+          "eventType": {
+            "type": "string",
+            "enum": ["metric_update", "metric_alert"],
+            "description": "Metric event types - discriminated by value"
+          },
+          "priority": {
+            "type": "number",
+            "description": "Numeric priority - discriminated by type"
+          },
+          "metricId": {
+            "type": "string",
+            "description": "Unique field - discriminated by name"
+          }
+        }
+      }
+    }
+  }
+}
