@@ -1,0 +1,69 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Nullable Type Discrimination Test",
+    "version": "1.0.0",
+    "description": "Tests type-based discrimination with nullable fields"
+  },
+  "paths": {
+    "/data": {
+      "get": {
+        "operationId": "getData",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Data"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Data": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/StringData"
+          },
+          {
+            "$ref": "#/components/schemas/NumberData"
+          }
+        ]
+      },
+      "StringData": {
+        "type": "object",
+        "required": ["name"],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "metadata": {
+            "type": "string",
+            "nullable": true,
+            "description": "Nullable string field - unique to StringData"
+          }
+        }
+      },
+      "NumberData": {
+        "type": "object",
+        "required": ["name"],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "count": {
+            "type": "integer",
+            "nullable": true,
+            "description": "Nullable integer field - unique to NumberData"
+          }
+        }
+      }
+    }
+  }
+}

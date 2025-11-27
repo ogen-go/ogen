@@ -12,10 +12,130 @@ import (
 	"github.com/go-faster/jx"
 
 	"github.com/ogen-go/ogen/gen/ir"
-	"github.com/ogen-go/ogen/internal/xmaps"
 	"github.com/ogen-go/ogen/jsonschema"
 	"github.com/ogen-go/ogen/location"
 )
+
+// fieldSignature represents a field's discriminating characteristics (name + type).
+//
+// This enables type-based field discrimination: fields with the same name but different
+// types are not considered "common" and can be used for discrimination.
+//
+// For example, if VariantA has {id: string} and VariantB has {id: integer}, the "id"
+// field can help discriminate between them even though the field names are identical.
+type fieldSignature struct {
+	name   string
+	typeID string
+}
+
+const (
+	typeIDAny     = "any"
+	typeIDBoolean = "boolean"
+	typeIDInteger = "integer"
+	typeIDNumber  = "number"
+	typeIDString  = "string"
+	typeIDNull    = "null"
+	typeIDObject  = "object"
+	typeIDSum     = "sum"
+	typeIDAlias   = "alias"
+	typeIDPointer = "pointer"
+)
+
+// jxTypeForFieldType returns the jx.Type constant name for runtime type checking.
+// Returns empty string if the type is not distinguishable at JSON level.
+func jxTypeForFieldType(typeID string) string {
+	switch {
+	case typeID == typeIDBoolean:
+		return "jx.Bool"
+	case typeID == typeIDInteger, typeID == typeIDNumber:
+		return "jx.Number"
+	case typeID == typeIDString:
+		return "jx.String"
+	case typeID == typeIDNull:
+		return "jx.Null"
+	case typeID == typeIDObject:
+		return "jx.Object"
+	case strings.HasPrefix(typeID, "array["):
+		return "jx.Array"
+	case strings.HasPrefix(typeID, "map["):
+		return "jx.Object"
+	case strings.HasPrefix(typeID, "enum_"):
+		// Enums serialize as strings in JSON
+		return "jx.String"
+	default:
+		return ""
+	}
+}
+
+// getFieldTypeID returns a type identifier for discrimination purposes.
+// Fields with the same name but different typeIDs can discriminate variants.
+func getFieldTypeID(t *ir.Type) string {
+	if t == nil {
+		return typeIDAny
+	}
+
+	// Unwrap optionals and nullables to get the base type
+	base := t
+	for base.IsGeneric() {
+		if v := base.GenericOf; v != nil {
+			base = v
+			continue
+		}
+		break
+	}
+
+	switch base.Kind {
+	case ir.KindAny:
+		return typeIDAny
+	case ir.KindPrimitive:
+		switch base.Primitive {
+		case ir.Bool:
+			return typeIDBoolean
+		case ir.Int, ir.Int8, ir.Int16, ir.Int32, ir.Int64,
+			ir.Uint, ir.Uint8, ir.Uint16, ir.Uint32, ir.Uint64:
+			return typeIDInteger
+		case ir.Float32, ir.Float64:
+			return typeIDNumber
+		case ir.String, ir.ByteSlice:
+			return typeIDString
+		case ir.Null:
+			return typeIDNull
+		default:
+			return fmt.Sprintf("primitive_%s", base.Primitive)
+		}
+	case ir.KindArray:
+		itemID := typeIDAny
+		if base.Item != nil {
+			itemID = getFieldTypeID(base.Item)
+		}
+		return fmt.Sprintf("array[%s]", itemID)
+	case ir.KindEnum:
+		// Enums are distinct from their underlying types
+		return fmt.Sprintf("enum_%s", base.Name)
+	case ir.KindStruct:
+		return typeIDObject
+	case ir.KindMap:
+		itemID := typeIDAny
+		if base.Item != nil {
+			itemID = getFieldTypeID(base.Item)
+		}
+		return fmt.Sprintf("map[%s]", itemID)
+	case ir.KindSum:
+		return typeIDSum
+	case ir.KindAlias:
+		if base.AliasTo != nil {
+			return getFieldTypeID(base.AliasTo)
+		}
+		return typeIDAlias
+	case ir.KindPointer:
+		if base.PointerTo != nil {
+			return getFieldTypeID(base.PointerTo)
+		}
+		return typeIDPointer
+	default:
+		return string(base.Kind)
+	}
+}
 
 func canUseTypeDiscriminator(sum []*ir.Type, isOneOf bool) bool {
 	var (
@@ -217,6 +337,51 @@ func (g *schemaGen) handleExplicitDiscriminator(sum *ir.Type, schema *jsonschema
 		return false, nil
 	}
 
+	// Validate: Check if discriminator field uses value-based discrimination
+	// Collect the discriminator field type from each variant
+	discriminatorFieldTypes := make(map[string]string) // variant name -> jxType
+	for _, mapping := range sum.SumSpec.Mapping {
+		variant := mapping.Type
+		// Find the discriminator field in this variant
+		for _, f := range variant.JSON().Fields() {
+			if f.Tag.JSON == propName {
+				typeID := getFieldTypeID(f.Type)
+				jxType := jxTypeForFieldType(typeID)
+				discriminatorFieldTypes[variant.Name] = jxType
+				break
+			}
+		}
+	}
+
+	// Check if all discriminator fields have the same empty jxType (value-based discrimination)
+	if len(discriminatorFieldTypes) > 1 {
+		firstJxType := ""
+		allSameAndEmpty := true
+		for _, jxType := range discriminatorFieldTypes {
+			if firstJxType == "" {
+				firstJxType = jxType
+			} else if jxType != firstJxType {
+				allSameAndEmpty = false
+				break
+			}
+			if jxType != "" {
+				allSameAndEmpty = false
+			}
+		}
+
+		if allSameAndEmpty {
+			variantNames := make([]string, 0, len(discriminatorFieldTypes))
+			for name := range discriminatorFieldTypes {
+				variantNames = append(variantNames, name)
+			}
+			return true, errors.Wrapf(
+				&ErrNotImplemented{Name: "value-based discriminator"},
+				"discriminator field %q: all variants have same JSON type (cannot discriminate by type), variants: %v",
+				propName, variantNames,
+			)
+		}
+	}
+
 	// Set discriminator only if we have mappings
 	sum.SumSpec.Discriminator = propName
 
@@ -320,6 +485,64 @@ func (g *schemaGen) oneOf(name string, schema *jsonschema.Schema, side bool) (*i
 		return nil, err
 	}
 
+	// Collect variants first to enable early validation
+	variants, err := g.collectSumVariants(name, schema.OneOf)
+	if err != nil {
+		return nil, errors.Wrap(err, "collect variants")
+	}
+
+	// Early validation for explicit discriminator (before regtype)
+	// This prevents broken types from being registered when discriminator is invalid
+	if schema.Discriminator != nil {
+		// Quick validation: check if this would be value-based discrimination
+		d := schema.Discriminator
+		propName := d.PropertyName
+
+		// Only validate if there are explicit mappings
+		if len(d.Mapping) > 0 {
+			discriminatorFieldTypes := make(map[string]string)
+			for _, variant := range variants {
+				for _, f := range variant.JSON().Fields() {
+					if f.Tag.JSON == propName {
+						typeID := getFieldTypeID(f.Type)
+						jxType := jxTypeForFieldType(typeID)
+						discriminatorFieldTypes[variant.Name] = jxType
+						break
+					}
+				}
+			}
+
+			// Check if all discriminator fields have same empty jxType (value-based)
+			if len(discriminatorFieldTypes) > 1 {
+				firstJxType := ""
+				allSameAndEmpty := true
+				for _, jxType := range discriminatorFieldTypes {
+					if firstJxType == "" {
+						firstJxType = jxType
+					} else if jxType != firstJxType {
+						allSameAndEmpty = false
+						break
+					}
+					if jxType != "" {
+						allSameAndEmpty = false
+					}
+				}
+
+				if allSameAndEmpty {
+					variantNames := make([]string, 0, len(discriminatorFieldTypes))
+					for name := range discriminatorFieldTypes {
+						variantNames = append(variantNames, name)
+					}
+					return nil, errors.Wrapf(
+						&ErrNotImplemented{Name: "value-based discriminator"},
+						"discriminator field %q: all variants have same JSON type (cannot discriminate by type), variants: %v",
+						propName, variantNames,
+					)
+				}
+			}
+		}
+	}
+
 	var regSchema *jsonschema.Schema
 	if !side {
 		regSchema = schema
@@ -329,13 +552,7 @@ func (g *schemaGen) oneOf(name string, schema *jsonschema.Schema, side bool) (*i
 		Kind:   ir.KindSum,
 		Schema: regSchema,
 	})
-	{
-		variants, err := g.collectSumVariants(name, schema.OneOf)
-		if err != nil {
-			return nil, errors.Wrap(err, "collect variants")
-		}
-		sum.SumOf = variants
-	}
+	sum.SumOf = variants
 
 	// 1st case: explicit discriminator.
 	if handled, err := g.handleExplicitDiscriminator(sum, schema, schema.OneOf); handled {
@@ -425,13 +642,17 @@ func (g *schemaGen) oneOf(name string, schema *jsonschema.Schema, side bool) (*i
 		return sum, nil
 	}
 
-	// 4th case: distinguish by unique fields.
+	// 4th case: distinguish by unique fields (considering field types).
 
 	// Determine unique fields for each SumOf variant.
-	uniq := map[string]map[string]struct{}{}
+	// We now track field signatures (name + type) instead of just names.
+	uniq := map[string]map[fieldSignature]struct{}{}
+	fieldNameToSignatures := map[string]map[string]map[fieldSignature]struct{}{} // variant -> fieldName -> signatures
 
 	for _, s := range sum.SumOf {
-		uniq[s.Name] = map[string]struct{}{}
+		uniq[s.Name] = map[fieldSignature]struct{}{}
+		fieldNameToSignatures[s.Name] = map[string]map[fieldSignature]struct{}{}
+
 		if !s.Is(ir.KindStruct) {
 			return nil, errors.Wrapf(&ErrNotImplemented{Name: "discriminator inference"},
 				"oneOf %s: variant %s: no unique fields, "+
@@ -439,34 +660,45 @@ func (g *schemaGen) oneOf(name string, schema *jsonschema.Schema, side bool) (*i
 			)
 		}
 		for _, f := range s.JSON().Fields() {
-			uniq[s.Name][f.Tag.JSON] = struct{}{}
+			sig := fieldSignature{
+				name:   f.Tag.JSON,
+				typeID: getFieldTypeID(f.Type),
+			}
+			uniq[s.Name][sig] = struct{}{}
+
+			if fieldNameToSignatures[s.Name][f.Tag.JSON] == nil {
+				fieldNameToSignatures[s.Name][f.Tag.JSON] = map[fieldSignature]struct{}{}
+			}
+			fieldNameToSignatures[s.Name][f.Tag.JSON][sig] = struct{}{}
 		}
 	}
 	{
-		// Collect fields that common for at least 2 variants.
-		commonFields := map[string]struct{}{}
+		// Collect field signatures that are common to at least 2 variants.
+		// A field signature is common if it appears in multiple variants with the exact same name AND type.
+		commonSigs := map[fieldSignature]struct{}{}
 		for _, variant := range sum.SumOf {
 			k := variant.Name
-			fields := uniq[k]
+			sigs := uniq[k]
 			for _, otherVariant := range sum.SumOf {
 				otherK := otherVariant.Name
 				if otherK == k {
 					continue
 				}
-				otherFields := uniq[otherK]
-				for otherField := range otherFields {
-					if _, has := fields[otherField]; has {
-						// variant and otherVariant have common field otherField.
-						commonFields[otherField] = struct{}{}
+				otherSigs := uniq[otherK]
+				for otherSig := range otherSigs {
+					if _, has := sigs[otherSig]; has {
+						// variant and otherVariant have common field signature.
+						// This means same field name with same type.
+						commonSigs[otherSig] = struct{}{}
 					}
 				}
 			}
 		}
 
-		// Delete such fields.
-		for field := range commonFields {
+		// Delete common field signatures from unique sets.
+		for sig := range commonSigs {
 			for _, variant := range sum.SumOf {
-				delete(uniq[variant.Name], field)
+				delete(uniq[variant.Name], sig)
 			}
 		}
 
@@ -532,34 +764,146 @@ func (g *schemaGen) oneOf(name string, schema *jsonschema.Schema, side bool) (*i
 		Name   string
 		Unique []string
 	}
-	var variants []sumVariant
+	// Build sorted list of variants with their unique field names.
+	// Use alphabetical sorting to match upstream behavior and minimize diffs.
+	var sortedVariants []sumVariant
 	for _, s := range sum.SumOf {
 		k := s.Name
-		f := uniq[k]
-		variants = append(variants, sumVariant{
+		sigs := uniq[k]
+
+		// Extract unique field names from signatures
+		uniqueNames := make(map[string]struct{})
+		for sig := range sigs {
+			uniqueNames[sig.name] = struct{}{}
+		}
+
+		// Sort field names alphabetically
+		sortedNames := make([]string, 0, len(uniqueNames))
+		for name := range uniqueNames {
+			sortedNames = append(sortedNames, name)
+		}
+		slices.Sort(sortedNames)
+
+		sortedVariants = append(sortedVariants, sumVariant{
 			Name:   k,
-			Unique: xmaps.SortedKeys(f),
+			Unique: sortedNames,
 		})
 	}
-	slices.SortStableFunc(variants, func(a, b sumVariant) int {
+	// Sort variants alphabetically by name
+	slices.SortStableFunc(sortedVariants, func(a, b sumVariant) int {
 		return strings.Compare(a.Name, b.Name)
 	})
-	for _, v := range variants {
+
+	// Populate SumSpec.Unique with fields that are discriminating.
+	// Also build UniqueFields map for template iteration.
+	sum.SumSpec.UniqueFields = make(map[string][]ir.UniqueFieldVariant)
+	for _, v := range sortedVariants {
 		for _, s := range sum.SumOf {
 			if s.Name != v.Name {
 				continue
 			}
-			if len(s.SumSpec.Unique) > 0 {
-				continue
+
+			// Initialize UniqueFieldTypes map for runtime type checking
+			if s.SumSpec.UniqueFieldTypes == nil {
+				s.SumSpec.UniqueFieldTypes = make(map[string]string)
 			}
+
+			// Iterate through fields in schema order
 			for _, f := range s.JSON().Fields() {
+				// Check if this field name is in the unique list
 				if !slices.Contains(v.Unique, f.Tag.JSON) {
 					continue
 				}
-				s.SumSpec.Unique = append(s.SumSpec.Unique, f)
+
+				// Verify the field signature is actually unique
+				sig := fieldSignature{
+					name:   f.Tag.JSON,
+					typeID: getFieldTypeID(f.Type),
+				}
+				if _, ok := uniq[s.Name][sig]; !ok {
+					continue
+				}
+
+				// Check if this field was already added to Unique
+				alreadyAdded := false
+				for _, existing := range s.SumSpec.Unique {
+					if existing.Tag.JSON == f.Tag.JSON {
+						alreadyAdded = true
+						break
+					}
+				}
+				if !alreadyAdded {
+					s.SumSpec.Unique = append(s.SumSpec.Unique, f)
+				}
+
+				// Store expected jx.Type for runtime type checking
+				jxType := jxTypeForFieldType(sig.typeID)
+				if jxType != "" {
+					s.SumSpec.UniqueFieldTypes[sig.name] = jxType
+				}
+
+				// Check if field is nullable (can be null in JSON)
+				// A field is nullable if:
+				// 1. It's a generic type (KindGeneric) with Nullable=true (e.g., NilString, OptNilInt)
+				// 2. It's a pointer with Null semantic
+				isNullable := (f.Type.IsGeneric() && f.Type.GenericVariant.Nullable) ||
+					(f.Type.IsPointer() && f.Type.NilSemantic.Null())
+
+				// Add to UniqueFields map for template iteration
+				// Include entries even when jxType is empty (simple field-name discrimination)
+				sum.SumSpec.UniqueFields[f.Tag.JSON] = append(sum.SumSpec.UniqueFields[f.Tag.JSON], ir.UniqueFieldVariant{
+					VariantName: s.Name,
+					VariantType: s.Name + sum.Name,
+					FieldType:   jxType,     // Empty string means no runtime type check needed
+					Nullable:    isNullable, // true if field accepts null values
+				})
 			}
 		}
 	}
+
+	// Validate that we can actually discriminate variants after jxType deduplication
+	// This catches cases like arrays with different element types that both map to jx.Array
+	for fieldName, fieldVariants := range sum.SumSpec.UniqueFields {
+		if len(fieldVariants) < 2 {
+			continue // Single variant, no need to discriminate
+		}
+
+		// Count unique jxTypes for this field
+		uniqueJxTypes := make(map[string]bool)
+		for _, fv := range fieldVariants {
+			if fv.FieldType != "" {
+				uniqueJxTypes[fv.FieldType] = true
+			}
+		}
+
+		// If all variants have the same jxType (or empty), we can't discriminate
+		if len(uniqueJxTypes) <= 1 {
+			// Find the type IDs to provide better error message
+			var typeIDs []string
+			for _, v := range sortedVariants {
+				for _, s := range sum.SumOf {
+					if s.Name != v.Name {
+						continue
+					}
+					for _, f := range s.JSON().Fields() {
+						if f.Tag.JSON == fieldName {
+							typeID := getFieldTypeID(f.Type)
+							typeIDs = append(typeIDs, fmt.Sprintf("%s: %s", s.Name, typeID))
+							break
+						}
+					}
+				}
+			}
+
+			return nil, errors.Wrapf(
+				&ErrNotImplemented{Name: "type-based discrimination with same jxType"},
+				"field %q cannot discriminate variants (requires unsupported discrimination): %v",
+				fieldName,
+				typeIDs,
+			)
+		}
+	}
+
 	return sum, nil
 }
 

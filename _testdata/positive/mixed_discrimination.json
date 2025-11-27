@@ -1,0 +1,98 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Mixed Discrimination Test",
+    "version": "1.0.0",
+    "description": "Tests mixed field name and type discrimination"
+  },
+  "paths": {
+    "/events": {
+      "post": {
+        "operationId": "logEvent",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Event"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Event": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/UserEvent"
+          },
+          {
+            "$ref": "#/components/schemas/SystemEvent"
+          },
+          {
+            "$ref": "#/components/schemas/MetricEvent"
+          }
+        ]
+      },
+      "UserEvent": {
+        "type": "object",
+        "required": ["timestamp", "userId"],
+        "properties": {
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "userId": {
+            "type": "string",
+            "description": "Unique field name - discriminates UserEvent"
+          },
+          "action": {
+            "type": "string"
+          }
+        }
+      },
+      "SystemEvent": {
+        "type": "object",
+        "required": ["timestamp", "severity"],
+        "properties": {
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "severity": {
+            "type": "string",
+            "description": "String severity - same name as MetricEvent but different type"
+          },
+          "action": {
+            "type": "string"
+          }
+        }
+      },
+      "MetricEvent": {
+        "type": "object",
+        "required": ["timestamp", "severity"],
+        "properties": {
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "severity": {
+            "type": "integer",
+            "description": "Integer severity level - same name as SystemEvent but different type"
+          },
+          "action": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

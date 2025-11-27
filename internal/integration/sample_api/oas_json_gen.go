@@ -605,7 +605,12 @@ func (s *DataDescription) Decode(d *jx.Decoder) error {
 	if err := d.Capture(func(d *jx.Decoder) error {
 		return d.ObjBytes(func(d *jx.Decoder, key []byte) error {
 			switch string(key) {
-			case "name":
+			case "count":
+				// Type-based discrimination: check if field has expected JSON type
+				if typ := d.Next(); typ != jx.Number {
+					// Field exists but has wrong type, not a match for this variant
+					return d.Skip()
+				}
 				match := DescriptionDetailedDataDescription
 				if found && s.Type != match {
 					s.Type = ""
@@ -613,8 +618,13 @@ func (s *DataDescription) Decode(d *jx.Decoder) error {
 				}
 				found = true
 				s.Type = match
-			case "count":
-				match := DescriptionDetailedDataDescription
+			case "description":
+				// Type-based discrimination: check if field has expected JSON type
+				if typ := d.Next(); typ != jx.String {
+					// Field exists but has wrong type, not a match for this variant
+					return d.Skip()
+				}
+				match := DescriptionSimpleDataDescription
 				if found && s.Type != match {
 					s.Type = ""
 					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
@@ -629,8 +639,13 @@ func (s *DataDescription) Decode(d *jx.Decoder) error {
 				}
 				found = true
 				s.Type = match
-			case "description":
-				match := DescriptionSimpleDataDescription
+			case "name":
+				// Type-based discrimination: check if field has expected JSON type
+				if typ := d.Next(); typ != jx.String {
+					// Field exists but has wrong type, not a match for this variant
+					return d.Skip()
+				}
+				match := DescriptionDetailedDataDescription
 				if found && s.Type != match {
 					s.Type = ""
 					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
@@ -1941,16 +1956,26 @@ func (s *InlineUniqueFieldsOneOfSum) Decode(d *jx.Decoder) error {
 	if err := d.Capture(func(d *jx.Decoder) error {
 		return d.ObjBytes(func(d *jx.Decoder, key []byte) error {
 			switch string(key) {
-			case "foo":
-				match := InlineOneOfFooInlineUniqueFieldsOneOfSum
+			case "bar":
+				// Type-based discrimination: check if field has expected JSON type
+				if typ := d.Next(); typ != jx.String {
+					// Field exists but has wrong type, not a match for this variant
+					return d.Skip()
+				}
+				match := InlineOneOfBarInlineUniqueFieldsOneOfSum
 				if found && s.Type != match {
 					s.Type = ""
 					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
 				}
 				found = true
 				s.Type = match
-			case "bar":
-				match := InlineOneOfBarInlineUniqueFieldsOneOfSum
+			case "foo":
+				// Type-based discrimination: check if field has expected JSON type
+				if typ := d.Next(); typ != jx.String {
+					// Field exists but has wrong type, not a match for this variant
+					return d.Skip()
+				}
+				match := InlineOneOfFooInlineUniqueFieldsOneOfSum
 				if found && s.Type != match {
 					s.Type = ""
 					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
@@ -2177,6 +2202,11 @@ func (s *Issue143) Decode(d *jx.Decoder) error {
 		return d.ObjBytes(func(d *jx.Decoder, key []byte) error {
 			switch string(key) {
 			case "unique-1":
+				// Type-based discrimination: check if field has expected JSON type
+				if typ := d.Next(); typ != jx.String {
+					// Field exists but has wrong type, not a match for this variant
+					return d.Skip()
+				}
 				match := Issue1430Issue143
 				if found && s.Type != match {
 					s.Type = ""
@@ -2185,6 +2215,11 @@ func (s *Issue143) Decode(d *jx.Decoder) error {
 				found = true
 				s.Type = match
 			case "unique-2":
+				// Type-based discrimination: check if field has expected JSON type
+				if typ := d.Next(); typ != jx.String {
+					// Field exists but has wrong type, not a match for this variant
+					return d.Skip()
+				}
 				match := Issue1431Issue143
 				if found && s.Type != match {
 					s.Type = ""
@@ -2193,6 +2228,11 @@ func (s *Issue143) Decode(d *jx.Decoder) error {
 				found = true
 				s.Type = match
 			case "unique-3":
+				// Type-based discrimination: check if field has expected JSON type
+				if typ := d.Next(); typ != jx.String {
+					// Field exists but has wrong type, not a match for this variant
+					return d.Skip()
+				}
 				match := Issue1432Issue143
 				if found && s.Type != match {
 					s.Type = ""
@@ -2201,6 +2241,11 @@ func (s *Issue143) Decode(d *jx.Decoder) error {
 				found = true
 				s.Type = match
 			case "unique-4":
+				// Type-based discrimination: check if field has expected JSON type
+				if typ := d.Next(); typ != jx.String {
+					// Field exists but has wrong type, not a match for this variant
+					return d.Skip()
+				}
 				match := Issue1433Issue143
 				if found && s.Type != match {
 					s.Type = ""
@@ -4591,16 +4636,26 @@ func (s *MergeUniqueFieldsOneOfSum) Decode(d *jx.Decoder) error {
 	if err := d.Capture(func(d *jx.Decoder) error {
 		return d.ObjBytes(func(d *jx.Decoder, key []byte) error {
 			switch string(key) {
-			case "foo":
-				match := InlineOneOfFooMergeUniqueFieldsOneOfSum
+			case "bar":
+				// Type-based discrimination: check if field has expected JSON type
+				if typ := d.Next(); typ != jx.String {
+					// Field exists but has wrong type, not a match for this variant
+					return d.Skip()
+				}
+				match := InlineOneOfBarMergeUniqueFieldsOneOfSum
 				if found && s.Type != match {
 					s.Type = ""
 					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
 				}
 				found = true
 				s.Type = match
-			case "bar":
-				match := InlineOneOfBarMergeUniqueFieldsOneOfSum
+			case "foo":
+				// Type-based discrimination: check if field has expected JSON type
+				if typ := d.Next(); typ != jx.String {
+					// Field exists but has wrong type, not a match for this variant
+					return d.Skip()
+				}
+				match := InlineOneOfFooMergeUniqueFieldsOneOfSum
 				if found && s.Type != match {
 					s.Type = ""
 					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
@@ -6184,6 +6239,11 @@ func (s *OneVariantHasNoUniqueFields) Decode(d *jx.Decoder) error {
 		return d.ObjBytes(func(d *jx.Decoder, key []byte) error {
 			switch string(key) {
 			case "d":
+				// Type-based discrimination: check if field has expected JSON type
+				if typ := d.Next(); typ != jx.Number {
+					// Field exists but has wrong type, not a match for this variant
+					return d.Skip()
+				}
 				match := OneVariantHasNoUniqueFields1OneVariantHasNoUniqueFields
 				if found && s.Type != match {
 					s.Type = ""

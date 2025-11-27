@@ -30,6 +30,11 @@ package integration
 //go:generate go run ../../cmd/ogen -v --clean --config _config/allOf.yml --target test_allof ../../_testdata/positive/allOf.yml
 //go:generate go run ../../cmd/ogen -v --clean --config _config/anyOf.yml --target test_anyof ../../_testdata/positive/anyOf.json
 //go:generate go run ../../cmd/ogen -v --clean --target test_discriminator_mapping ../../_testdata/positive/discriminator_mapping.json
+//go:generate go run ../../cmd/ogen -v --clean --target test_nullable_type_discrimination ../../_testdata/positive/nullable_type_discrimination.json
+//go:generate go run ../../cmd/ogen -v --clean --target test_optional_type_discrimination ../../_testdata/positive/optional_type_discrimination.json
+//go:generate go run ../../cmd/ogen -v --clean --target test_array_object_type_discrimination ../../_testdata/positive/array_object_type_discrimination.json
+//go:generate go run ../../cmd/ogen -v --clean --target test_nested_type_discrimination ../../_testdata/positive/nested_type_discrimination.json
+//go:generate go run ../../cmd/ogen -v --clean --target test_mixed_discrimination ../../_testdata/positive/mixed_discrimination.json
 //go:generate go run ../../cmd/ogen -v --clean --config _config/additionalPropertiesPatternProperties.yml --target test_additionalpropertiespatternproperties ../../_testdata/positive/additionalPropertiesPatternProperties.yml
 //go:generate go run ../../cmd/ogen -v --clean --config _config/client_options.yml --target test_client_options ../../_testdata/positive/client_options.json
 //

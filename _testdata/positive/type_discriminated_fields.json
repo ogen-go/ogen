@@ -1,0 +1,70 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Type-Based Field Discrimination Test",
+    "version": "1.0.0",
+    "description": "Tests that oneOf variants can be discriminated by field types (same field name, different types)"
+  },
+  "paths": {
+    "/items": {
+      "get": {
+        "operationId": "getItems",
+        "responses": {
+          "200": {
+            "description": "List of items",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Item"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Item": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/StringItem"
+          },
+          {
+            "$ref": "#/components/schemas/NumberItem"
+          }
+        ]
+      },
+      "StringItem": {
+        "type": "object",
+        "required": ["id", "value"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "String identifier"
+          },
+          "value": {
+            "type": "string"
+          }
+        }
+      },
+      "NumberItem": {
+        "type": "object",
+        "required": ["id", "value"],
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Numeric identifier"
+          },
+          "value": {
+            "type": "number"
+          }
+        }
+      }
+    }
+  }
+}

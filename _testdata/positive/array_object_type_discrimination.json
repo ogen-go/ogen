@@ -1,0 +1,82 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Array/Object Type Discrimination Test",
+    "version": "1.0.0",
+    "description": "Tests discrimination between array and object types"
+  },
+  "paths": {
+    "/resources": {
+      "get": {
+        "operationId": "getResources",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Resource"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Resource": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/CollectionResource"
+          },
+          {
+            "$ref": "#/components/schemas/SingleResource"
+          }
+        ]
+      },
+      "CollectionResource": {
+        "type": "object",
+        "required": ["name", "items"],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "items": {
+            "type": "array",
+            "description": "Array of item IDs",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "SingleResource": {
+        "type": "object",
+        "required": ["name", "items"],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "items": {
+            "type": "object",
+            "description": "Single item details",
+            "required": ["id", "count"],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "count": {
+                "type": "integer"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

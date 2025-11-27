@@ -156,9 +156,6 @@ func (o *ParseOptions) setDefaults() {
 	if o.SchemaDepthLimit <= 0 {
 		o.SchemaDepthLimit = defaultSchemaDepthLimit
 	}
-	// Default to true if not explicitly set
-	// Since we can't distinguish between "not set" and "set to false" with a bool,
-	// we rely on the parser's default behavior
 }
 
 // GenerateOptions sets generator options.
