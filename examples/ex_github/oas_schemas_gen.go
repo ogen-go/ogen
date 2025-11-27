@@ -213,11 +213,15 @@ func (*ActionsAddSelectedRepoToOrgSecretNoContent) actionsAddSelectedRepoToOrgSe
 // ActionsAddSelfHostedRunnerToGroupForOrgNoContent is response for ActionsAddSelfHostedRunnerToGroupForOrg operation.
 type ActionsAddSelfHostedRunnerToGroupForOrgNoContent struct{}
 
-type ActionsApproveWorkflowRunForbidden BasicError
+type ActionsApproveWorkflowRunForbidden struct {
+	BasicError
+}
 
 func (*ActionsApproveWorkflowRunForbidden) actionsApproveWorkflowRunRes() {}
 
-type ActionsApproveWorkflowRunNotFound BasicError
+type ActionsApproveWorkflowRunNotFound struct {
+	BasicError
+}
 
 func (*ActionsApproveWorkflowRunNotFound) actionsApproveWorkflowRunRes() {}
 
@@ -2060,7 +2064,9 @@ func (s *ActionsUpdateSelfHostedRunnerGroupForOrgReqVisibility) UnmarshalText(da
 	}
 }
 
-type ActivityCheckRepoIsStarredByAuthenticatedUserForbidden BasicError
+type ActivityCheckRepoIsStarredByAuthenticatedUserForbidden struct {
+	BasicError
+}
 
 func (*ActivityCheckRepoIsStarredByAuthenticatedUserForbidden) activityCheckRepoIsStarredByAuthenticatedUserRes() {
 }
@@ -2071,12 +2077,16 @@ type ActivityCheckRepoIsStarredByAuthenticatedUserNoContent struct{}
 func (*ActivityCheckRepoIsStarredByAuthenticatedUserNoContent) activityCheckRepoIsStarredByAuthenticatedUserRes() {
 }
 
-type ActivityCheckRepoIsStarredByAuthenticatedUserNotFound BasicError
+type ActivityCheckRepoIsStarredByAuthenticatedUserNotFound struct {
+	BasicError
+}
 
 func (*ActivityCheckRepoIsStarredByAuthenticatedUserNotFound) activityCheckRepoIsStarredByAuthenticatedUserRes() {
 }
 
-type ActivityCheckRepoIsStarredByAuthenticatedUserUnauthorized BasicError
+type ActivityCheckRepoIsStarredByAuthenticatedUserUnauthorized struct {
+	BasicError
+}
 
 func (*ActivityCheckRepoIsStarredByAuthenticatedUserUnauthorized) activityCheckRepoIsStarredByAuthenticatedUserRes() {
 }
@@ -2084,7 +2094,9 @@ func (*ActivityCheckRepoIsStarredByAuthenticatedUserUnauthorized) activityCheckR
 // ActivityDeleteRepoSubscriptionNoContent is response for ActivityDeleteRepoSubscription operation.
 type ActivityDeleteRepoSubscriptionNoContent struct{}
 
-type ActivityDeleteThreadSubscriptionForbidden BasicError
+type ActivityDeleteThreadSubscriptionForbidden struct {
+	BasicError
+}
 
 func (*ActivityDeleteThreadSubscriptionForbidden) activityDeleteThreadSubscriptionRes() {}
 
@@ -2093,7 +2105,9 @@ type ActivityDeleteThreadSubscriptionNoContent struct{}
 
 func (*ActivityDeleteThreadSubscriptionNoContent) activityDeleteThreadSubscriptionRes() {}
 
-type ActivityDeleteThreadSubscriptionUnauthorized BasicError
+type ActivityDeleteThreadSubscriptionUnauthorized struct {
+	BasicError
+}
 
 func (*ActivityDeleteThreadSubscriptionUnauthorized) activityDeleteThreadSubscriptionRes() {}
 
@@ -2102,25 +2116,35 @@ type ActivityGetRepoSubscriptionNotFound struct{}
 
 func (*ActivityGetRepoSubscriptionNotFound) activityGetRepoSubscriptionRes() {}
 
-type ActivityGetThreadForbidden BasicError
+type ActivityGetThreadForbidden struct {
+	BasicError
+}
 
 func (*ActivityGetThreadForbidden) activityGetThreadRes() {}
 
-type ActivityGetThreadSubscriptionForAuthenticatedUserForbidden BasicError
+type ActivityGetThreadSubscriptionForAuthenticatedUserForbidden struct {
+	BasicError
+}
 
 func (*ActivityGetThreadSubscriptionForAuthenticatedUserForbidden) activityGetThreadSubscriptionForAuthenticatedUserRes() {
 }
 
-type ActivityGetThreadSubscriptionForAuthenticatedUserUnauthorized BasicError
+type ActivityGetThreadSubscriptionForAuthenticatedUserUnauthorized struct {
+	BasicError
+}
 
 func (*ActivityGetThreadSubscriptionForAuthenticatedUserUnauthorized) activityGetThreadSubscriptionForAuthenticatedUserRes() {
 }
 
-type ActivityGetThreadUnauthorized BasicError
+type ActivityGetThreadUnauthorized struct {
+	BasicError
+}
 
 func (*ActivityGetThreadUnauthorized) activityGetThreadRes() {}
 
-type ActivityListNotificationsForAuthenticatedUserForbidden BasicError
+type ActivityListNotificationsForAuthenticatedUserForbidden struct {
+	BasicError
+}
 
 func (*ActivityListNotificationsForAuthenticatedUserForbidden) activityListNotificationsForAuthenticatedUserRes() {
 }
@@ -2154,21 +2178,29 @@ func (s *ActivityListNotificationsForAuthenticatedUserOKHeaders) SetResponse(val
 func (*ActivityListNotificationsForAuthenticatedUserOKHeaders) activityListNotificationsForAuthenticatedUserRes() {
 }
 
-type ActivityListNotificationsForAuthenticatedUserUnauthorized BasicError
+type ActivityListNotificationsForAuthenticatedUserUnauthorized struct {
+	BasicError
+}
 
 func (*ActivityListNotificationsForAuthenticatedUserUnauthorized) activityListNotificationsForAuthenticatedUserRes() {
 }
 
-type ActivityListPublicEventsForRepoNetworkForbidden BasicError
+type ActivityListPublicEventsForRepoNetworkForbidden struct {
+	BasicError
+}
 
 func (*ActivityListPublicEventsForRepoNetworkForbidden) activityListPublicEventsForRepoNetworkRes() {}
 
-type ActivityListPublicEventsForRepoNetworkMovedPermanently BasicError
+type ActivityListPublicEventsForRepoNetworkMovedPermanently struct {
+	BasicError
+}
 
 func (*ActivityListPublicEventsForRepoNetworkMovedPermanently) activityListPublicEventsForRepoNetworkRes() {
 }
 
-type ActivityListPublicEventsForRepoNetworkNotFound BasicError
+type ActivityListPublicEventsForRepoNetworkNotFound struct {
+	BasicError
+}
 
 func (*ActivityListPublicEventsForRepoNetworkNotFound) activityListPublicEventsForRepoNetworkRes() {}
 
@@ -2207,7 +2239,9 @@ func (s *ActivityListRepoNotificationsForAuthenticatedUserOKHeaders) SetResponse
 	s.Response = val
 }
 
-type ActivityListReposStarredByAuthenticatedUserForbidden BasicError
+type ActivityListReposStarredByAuthenticatedUserForbidden struct {
+	BasicError
+}
 
 func (*ActivityListReposStarredByAuthenticatedUserForbidden) activityListReposStarredByAuthenticatedUserRes() {
 }
@@ -2241,7 +2275,9 @@ func (s *ActivityListReposStarredByAuthenticatedUserOKHeaders) SetResponse(val [
 func (*ActivityListReposStarredByAuthenticatedUserOKHeaders) activityListReposStarredByAuthenticatedUserRes() {
 }
 
-type ActivityListReposStarredByAuthenticatedUserUnauthorized BasicError
+type ActivityListReposStarredByAuthenticatedUserUnauthorized struct {
+	BasicError
+}
 
 func (*ActivityListReposStarredByAuthenticatedUserUnauthorized) activityListReposStarredByAuthenticatedUserRes() {
 }
@@ -2272,7 +2308,9 @@ func (s *ActivityListReposWatchedByUserOKHeaders) SetResponse(val []MinimalRepos
 	s.Response = val
 }
 
-type ActivityListWatchedReposForAuthenticatedUserForbidden BasicError
+type ActivityListWatchedReposForAuthenticatedUserForbidden struct {
+	BasicError
+}
 
 func (*ActivityListWatchedReposForAuthenticatedUserForbidden) activityListWatchedReposForAuthenticatedUserRes() {
 }
@@ -2306,7 +2344,9 @@ func (s *ActivityListWatchedReposForAuthenticatedUserOKHeaders) SetResponse(val 
 func (*ActivityListWatchedReposForAuthenticatedUserOKHeaders) activityListWatchedReposForAuthenticatedUserRes() {
 }
 
-type ActivityListWatchedReposForAuthenticatedUserUnauthorized BasicError
+type ActivityListWatchedReposForAuthenticatedUserUnauthorized struct {
+	BasicError
+}
 
 func (*ActivityListWatchedReposForAuthenticatedUserUnauthorized) activityListWatchedReposForAuthenticatedUserRes() {
 }
@@ -2353,7 +2393,9 @@ func (s *ActivityMarkNotificationsAsReadAccepted) SetMessage(val OptString) {
 
 func (*ActivityMarkNotificationsAsReadAccepted) activityMarkNotificationsAsReadRes() {}
 
-type ActivityMarkNotificationsAsReadForbidden BasicError
+type ActivityMarkNotificationsAsReadForbidden struct {
+	BasicError
+}
 
 func (*ActivityMarkNotificationsAsReadForbidden) activityMarkNotificationsAsReadRes() {}
 
@@ -2389,7 +2431,9 @@ type ActivityMarkNotificationsAsReadResetContent struct{}
 
 func (*ActivityMarkNotificationsAsReadResetContent) activityMarkNotificationsAsReadRes() {}
 
-type ActivityMarkNotificationsAsReadUnauthorized BasicError
+type ActivityMarkNotificationsAsReadUnauthorized struct {
+	BasicError
+}
 
 func (*ActivityMarkNotificationsAsReadUnauthorized) activityMarkNotificationsAsReadRes() {}
 
@@ -2475,7 +2519,9 @@ func (s *ActivitySetRepoSubscriptionReq) SetIgnored(val OptBool) {
 	s.Ignored = val
 }
 
-type ActivitySetThreadSubscriptionForbidden BasicError
+type ActivitySetThreadSubscriptionForbidden struct {
+	BasicError
+}
 
 func (*ActivitySetThreadSubscriptionForbidden) activitySetThreadSubscriptionRes() {}
 
@@ -2494,11 +2540,15 @@ func (s *ActivitySetThreadSubscriptionReq) SetIgnored(val OptBool) {
 	s.Ignored = val
 }
 
-type ActivitySetThreadSubscriptionUnauthorized BasicError
+type ActivitySetThreadSubscriptionUnauthorized struct {
+	BasicError
+}
 
 func (*ActivitySetThreadSubscriptionUnauthorized) activitySetThreadSubscriptionRes() {}
 
-type ActivityStarRepoForAuthenticatedUserForbidden BasicError
+type ActivityStarRepoForAuthenticatedUserForbidden struct {
+	BasicError
+}
 
 func (*ActivityStarRepoForAuthenticatedUserForbidden) activityStarRepoForAuthenticatedUserRes() {}
 
@@ -2507,15 +2557,21 @@ type ActivityStarRepoForAuthenticatedUserNoContent struct{}
 
 func (*ActivityStarRepoForAuthenticatedUserNoContent) activityStarRepoForAuthenticatedUserRes() {}
 
-type ActivityStarRepoForAuthenticatedUserNotFound BasicError
+type ActivityStarRepoForAuthenticatedUserNotFound struct {
+	BasicError
+}
 
 func (*ActivityStarRepoForAuthenticatedUserNotFound) activityStarRepoForAuthenticatedUserRes() {}
 
-type ActivityStarRepoForAuthenticatedUserUnauthorized BasicError
+type ActivityStarRepoForAuthenticatedUserUnauthorized struct {
+	BasicError
+}
 
 func (*ActivityStarRepoForAuthenticatedUserUnauthorized) activityStarRepoForAuthenticatedUserRes() {}
 
-type ActivityUnstarRepoForAuthenticatedUserForbidden BasicError
+type ActivityUnstarRepoForAuthenticatedUserForbidden struct {
+	BasicError
+}
 
 func (*ActivityUnstarRepoForAuthenticatedUserForbidden) activityUnstarRepoForAuthenticatedUserRes() {}
 
@@ -2524,11 +2580,15 @@ type ActivityUnstarRepoForAuthenticatedUserNoContent struct{}
 
 func (*ActivityUnstarRepoForAuthenticatedUserNoContent) activityUnstarRepoForAuthenticatedUserRes() {}
 
-type ActivityUnstarRepoForAuthenticatedUserNotFound BasicError
+type ActivityUnstarRepoForAuthenticatedUserNotFound struct {
+	BasicError
+}
 
 func (*ActivityUnstarRepoForAuthenticatedUserNotFound) activityUnstarRepoForAuthenticatedUserRes() {}
 
-type ActivityUnstarRepoForAuthenticatedUserUnauthorized BasicError
+type ActivityUnstarRepoForAuthenticatedUserUnauthorized struct {
+	BasicError
+}
 
 func (*ActivityUnstarRepoForAuthenticatedUserUnauthorized) activityUnstarRepoForAuthenticatedUserRes() {
 }
@@ -4519,7 +4579,9 @@ func (s *ApplicationGrantApp) SetURL(val url.URL) {
 	s.URL = val
 }
 
-type AppsAddRepoToInstallationForbidden BasicError
+type AppsAddRepoToInstallationForbidden struct {
+	BasicError
+}
 
 func (*AppsAddRepoToInstallationForbidden) appsAddRepoToInstallationRes() {}
 
@@ -4528,7 +4590,9 @@ type AppsAddRepoToInstallationNoContent struct{}
 
 func (*AppsAddRepoToInstallationNoContent) appsAddRepoToInstallationRes() {}
 
-type AppsAddRepoToInstallationNotFound BasicError
+type AppsAddRepoToInstallationNotFound struct {
+	BasicError
+}
 
 func (*AppsAddRepoToInstallationNotFound) appsAddRepoToInstallationRes() {}
 
@@ -4547,15 +4611,21 @@ func (s *AppsCheckTokenReq) SetAccessToken(val string) {
 	s.AccessToken = val
 }
 
-type AppsCreateContentAttachmentForbidden BasicError
+type AppsCreateContentAttachmentForbidden struct {
+	BasicError
+}
 
 func (*AppsCreateContentAttachmentForbidden) appsCreateContentAttachmentRes() {}
 
-type AppsCreateContentAttachmentGone BasicError
+type AppsCreateContentAttachmentGone struct {
+	BasicError
+}
 
 func (*AppsCreateContentAttachmentGone) appsCreateContentAttachmentRes() {}
 
-type AppsCreateContentAttachmentNotFound BasicError
+type AppsCreateContentAttachmentNotFound struct {
+	BasicError
+}
 
 func (*AppsCreateContentAttachmentNotFound) appsCreateContentAttachmentRes() {}
 
@@ -4894,11 +4964,15 @@ func (s *AppsCreateFromManifestCreatedPermissionsAdditional) init() AppsCreateFr
 
 type AppsCreateFromManifestReq struct{}
 
-type AppsCreateInstallationAccessTokenForbidden BasicError
+type AppsCreateInstallationAccessTokenForbidden struct {
+	BasicError
+}
 
 func (*AppsCreateInstallationAccessTokenForbidden) appsCreateInstallationAccessTokenRes() {}
 
-type AppsCreateInstallationAccessTokenNotFound BasicError
+type AppsCreateInstallationAccessTokenNotFound struct {
+	BasicError
+}
 
 func (*AppsCreateInstallationAccessTokenNotFound) appsCreateInstallationAccessTokenRes() {}
 
@@ -4940,7 +5014,9 @@ func (s *AppsCreateInstallationAccessTokenReq) SetPermissions(val OptAppPermissi
 	s.Permissions = val
 }
 
-type AppsCreateInstallationAccessTokenUnauthorized BasicError
+type AppsCreateInstallationAccessTokenUnauthorized struct {
+	BasicError
+}
 
 func (*AppsCreateInstallationAccessTokenUnauthorized) appsCreateInstallationAccessTokenRes() {}
 
@@ -4989,15 +5065,21 @@ func (s *AppsDeleteTokenReq) SetAccessToken(val string) {
 	s.AccessToken = val
 }
 
-type AppsGetBySlugForbidden BasicError
+type AppsGetBySlugForbidden struct {
+	BasicError
+}
 
 func (*AppsGetBySlugForbidden) appsGetBySlugRes() {}
 
-type AppsGetBySlugNotFound BasicError
+type AppsGetBySlugNotFound struct {
+	BasicError
+}
 
 func (*AppsGetBySlugNotFound) appsGetBySlugRes() {}
 
-type AppsGetSubscriptionPlanForAccountNotFound BasicError
+type AppsGetSubscriptionPlanForAccountNotFound struct {
+	BasicError
+}
 
 func (*AppsGetSubscriptionPlanForAccountNotFound) appsGetSubscriptionPlanForAccountRes() {}
 
@@ -5007,7 +5089,9 @@ type AppsGetSubscriptionPlanForAccountStubbedNotFound struct{}
 func (*AppsGetSubscriptionPlanForAccountStubbedNotFound) appsGetSubscriptionPlanForAccountStubbedRes() {
 }
 
-type AppsGetSubscriptionPlanForAccountUnauthorized BasicError
+type AppsGetSubscriptionPlanForAccountUnauthorized struct {
+	BasicError
+}
 
 func (*AppsGetSubscriptionPlanForAccountUnauthorized) appsGetSubscriptionPlanForAccountRes() {}
 
@@ -5052,7 +5136,9 @@ func (s *AppsListAccountsForPlanDirection) UnmarshalText(data []byte) error {
 	}
 }
 
-type AppsListAccountsForPlanNotFound BasicError
+type AppsListAccountsForPlanNotFound struct {
+	BasicError
+}
 
 func (*AppsListAccountsForPlanNotFound) appsListAccountsForPlanRes() {}
 
@@ -5153,16 +5239,22 @@ func (s *AppsListAccountsForPlanStubbedOKHeaders) SetResponse(val []MarketplaceP
 
 func (*AppsListAccountsForPlanStubbedOKHeaders) appsListAccountsForPlanStubbedRes() {}
 
-type AppsListAccountsForPlanUnauthorized BasicError
+type AppsListAccountsForPlanUnauthorized struct {
+	BasicError
+}
 
 func (*AppsListAccountsForPlanUnauthorized) appsListAccountsForPlanRes() {}
 
-type AppsListInstallationReposForAuthenticatedUserForbidden BasicError
+type AppsListInstallationReposForAuthenticatedUserForbidden struct {
+	BasicError
+}
 
 func (*AppsListInstallationReposForAuthenticatedUserForbidden) appsListInstallationReposForAuthenticatedUserRes() {
 }
 
-type AppsListInstallationReposForAuthenticatedUserNotFound BasicError
+type AppsListInstallationReposForAuthenticatedUserNotFound struct {
+	BasicError
+}
 
 func (*AppsListInstallationReposForAuthenticatedUserNotFound) appsListInstallationReposForAuthenticatedUserRes() {
 }
@@ -5232,7 +5324,9 @@ func (s *AppsListInstallationReposForAuthenticatedUserOKHeaders) SetResponse(val
 func (*AppsListInstallationReposForAuthenticatedUserOKHeaders) appsListInstallationReposForAuthenticatedUserRes() {
 }
 
-type AppsListPlansNotFound BasicError
+type AppsListPlansNotFound struct {
+	BasicError
+}
 
 func (*AppsListPlansNotFound) appsListPlansRes() {}
 
@@ -5292,11 +5386,15 @@ func (s *AppsListPlansStubbedOKHeaders) SetResponse(val []MarketplaceListingPlan
 
 func (*AppsListPlansStubbedOKHeaders) appsListPlansStubbedRes() {}
 
-type AppsListPlansUnauthorized BasicError
+type AppsListPlansUnauthorized struct {
+	BasicError
+}
 
 func (*AppsListPlansUnauthorized) appsListPlansRes() {}
 
-type AppsListReposAccessibleToInstallationForbidden BasicError
+type AppsListReposAccessibleToInstallationForbidden struct {
+	BasicError
+}
 
 func (*AppsListReposAccessibleToInstallationForbidden) appsListReposAccessibleToInstallationRes() {}
 
@@ -5364,12 +5462,16 @@ func (s *AppsListReposAccessibleToInstallationOKHeaders) SetResponse(val AppsLis
 
 func (*AppsListReposAccessibleToInstallationOKHeaders) appsListReposAccessibleToInstallationRes() {}
 
-type AppsListReposAccessibleToInstallationUnauthorized BasicError
+type AppsListReposAccessibleToInstallationUnauthorized struct {
+	BasicError
+}
 
 func (*AppsListReposAccessibleToInstallationUnauthorized) appsListReposAccessibleToInstallationRes() {
 }
 
-type AppsListSubscriptionsForAuthenticatedUserNotFound BasicError
+type AppsListSubscriptionsForAuthenticatedUserNotFound struct {
+	BasicError
+}
 
 func (*AppsListSubscriptionsForAuthenticatedUserNotFound) appsListSubscriptionsForAuthenticatedUserRes() {
 }
@@ -5432,7 +5534,9 @@ func (s *AppsListSubscriptionsForAuthenticatedUserStubbedOKHeaders) SetResponse(
 func (*AppsListSubscriptionsForAuthenticatedUserStubbedOKHeaders) appsListSubscriptionsForAuthenticatedUserStubbedRes() {
 }
 
-type AppsListSubscriptionsForAuthenticatedUserUnauthorized BasicError
+type AppsListSubscriptionsForAuthenticatedUserUnauthorized struct {
+	BasicError
+}
 
 func (*AppsListSubscriptionsForAuthenticatedUserUnauthorized) appsListSubscriptionsForAuthenticatedUserRes() {
 }
@@ -5441,7 +5545,9 @@ type AppsListWebhookDeliveriesOKApplicationJSON []HookDeliveryItem
 
 func (*AppsListWebhookDeliveriesOKApplicationJSON) appsListWebhookDeliveriesRes() {}
 
-type AppsRemoveRepoFromInstallationForbidden BasicError
+type AppsRemoveRepoFromInstallationForbidden struct {
+	BasicError
+}
 
 func (*AppsRemoveRepoFromInstallationForbidden) appsRemoveRepoFromInstallationRes() {}
 
@@ -5450,7 +5556,9 @@ type AppsRemoveRepoFromInstallationNoContent struct{}
 
 func (*AppsRemoveRepoFromInstallationNoContent) appsRemoveRepoFromInstallationRes() {}
 
-type AppsRemoveRepoFromInstallationNotFound BasicError
+type AppsRemoveRepoFromInstallationNotFound struct {
+	BasicError
+}
 
 func (*AppsRemoveRepoFromInstallationNotFound) appsRemoveRepoFromInstallationRes() {}
 
@@ -5472,11 +5580,15 @@ func (s *AppsResetTokenReq) SetAccessToken(val string) {
 // AppsRevokeInstallationAccessTokenNoContent is response for AppsRevokeInstallationAccessToken operation.
 type AppsRevokeInstallationAccessTokenNoContent struct{}
 
-type AppsScopeTokenForbidden BasicError
+type AppsScopeTokenForbidden struct {
+	BasicError
+}
 
 func (*AppsScopeTokenForbidden) appsScopeTokenRes() {}
 
-type AppsScopeTokenNotFound BasicError
+type AppsScopeTokenNotFound struct {
+	BasicError
+}
 
 func (*AppsScopeTokenNotFound) appsScopeTokenRes() {}
 
@@ -5558,7 +5670,9 @@ func (s *AppsScopeTokenReq) SetPermissions(val OptAppPermissions) {
 	s.Permissions = val
 }
 
-type AppsScopeTokenUnauthorized BasicError
+type AppsScopeTokenUnauthorized struct {
+	BasicError
+}
 
 func (*AppsScopeTokenUnauthorized) appsScopeTokenRes() {}
 
@@ -9782,11 +9896,15 @@ func (s *CheckSuiteStatus) UnmarshalText(data []byte) error {
 	}
 }
 
-type ChecksCreateSuiteCreated CheckSuite
+type ChecksCreateSuiteCreated struct {
+	CheckSuite
+}
 
 func (*ChecksCreateSuiteCreated) checksCreateSuiteRes() {}
 
-type ChecksCreateSuiteOK CheckSuite
+type ChecksCreateSuiteOK struct {
+	CheckSuite
+}
 
 func (*ChecksCreateSuiteOK) checksCreateSuiteRes() {}
 
@@ -11552,31 +11670,45 @@ type CodeScanningAnalysisToolVersion string
 
 type CodeScanningAnalysisURL url.URL
 
-type CodeScanningDeleteAnalysisBadRequest BasicError
+type CodeScanningDeleteAnalysisBadRequest struct {
+	BasicError
+}
 
 func (*CodeScanningDeleteAnalysisBadRequest) codeScanningDeleteAnalysisRes() {}
 
-type CodeScanningDeleteAnalysisForbidden BasicError
+type CodeScanningDeleteAnalysisForbidden struct {
+	BasicError
+}
 
 func (*CodeScanningDeleteAnalysisForbidden) codeScanningDeleteAnalysisRes() {}
 
-type CodeScanningDeleteAnalysisNotFound BasicError
+type CodeScanningDeleteAnalysisNotFound struct {
+	BasicError
+}
 
 func (*CodeScanningDeleteAnalysisNotFound) codeScanningDeleteAnalysisRes() {}
 
-type CodeScanningGetAlertForbidden BasicError
+type CodeScanningGetAlertForbidden struct {
+	BasicError
+}
 
 func (*CodeScanningGetAlertForbidden) codeScanningGetAlertRes() {}
 
-type CodeScanningGetAlertNotFound BasicError
+type CodeScanningGetAlertNotFound struct {
+	BasicError
+}
 
 func (*CodeScanningGetAlertNotFound) codeScanningGetAlertRes() {}
 
-type CodeScanningGetAnalysisForbidden BasicError
+type CodeScanningGetAnalysisForbidden struct {
+	BasicError
+}
 
 func (*CodeScanningGetAnalysisForbidden) codeScanningGetAnalysisRes() {}
 
-type CodeScanningGetAnalysisNotFound BasicError
+type CodeScanningGetAnalysisNotFound struct {
+	BasicError
+}
 
 func (*CodeScanningGetAnalysisNotFound) codeScanningGetAnalysisRes() {}
 
@@ -11601,11 +11733,15 @@ type CodeScanningGetSarifNotFound struct{}
 
 func (*CodeScanningGetSarifNotFound) codeScanningGetSarifRes() {}
 
-type CodeScanningListAlertInstancesForbidden BasicError
+type CodeScanningListAlertInstancesForbidden struct {
+	BasicError
+}
 
 func (*CodeScanningListAlertInstancesForbidden) codeScanningListAlertInstancesRes() {}
 
-type CodeScanningListAlertInstancesNotFound BasicError
+type CodeScanningListAlertInstancesNotFound struct {
+	BasicError
+}
 
 func (*CodeScanningListAlertInstancesNotFound) codeScanningListAlertInstancesRes() {}
 
@@ -11613,11 +11749,15 @@ type CodeScanningListAlertInstancesOKApplicationJSON []CodeScanningAlertInstance
 
 func (*CodeScanningListAlertInstancesOKApplicationJSON) codeScanningListAlertInstancesRes() {}
 
-type CodeScanningListAlertsForRepoForbidden BasicError
+type CodeScanningListAlertsForRepoForbidden struct {
+	BasicError
+}
 
 func (*CodeScanningListAlertsForRepoForbidden) codeScanningListAlertsForRepoRes() {}
 
-type CodeScanningListAlertsForRepoNotFound BasicError
+type CodeScanningListAlertsForRepoNotFound struct {
+	BasicError
+}
 
 func (*CodeScanningListAlertsForRepoNotFound) codeScanningListAlertsForRepoRes() {}
 
@@ -11625,11 +11765,15 @@ type CodeScanningListAlertsForRepoOKApplicationJSON []CodeScanningAlertItems
 
 func (*CodeScanningListAlertsForRepoOKApplicationJSON) codeScanningListAlertsForRepoRes() {}
 
-type CodeScanningListRecentAnalysesForbidden BasicError
+type CodeScanningListRecentAnalysesForbidden struct {
+	BasicError
+}
 
 func (*CodeScanningListRecentAnalysesForbidden) codeScanningListRecentAnalysesRes() {}
 
-type CodeScanningListRecentAnalysesNotFound BasicError
+type CodeScanningListRecentAnalysesNotFound struct {
+	BasicError
+}
 
 func (*CodeScanningListRecentAnalysesNotFound) codeScanningListRecentAnalysesRes() {}
 
@@ -11742,11 +11886,15 @@ func (s *CodeScanningSarifsStatusProcessingStatus) UnmarshalText(data []byte) er
 	}
 }
 
-type CodeScanningUpdateAlertForbidden BasicError
+type CodeScanningUpdateAlertForbidden struct {
+	BasicError
+}
 
 func (*CodeScanningUpdateAlertForbidden) codeScanningUpdateAlertRes() {}
 
-type CodeScanningUpdateAlertNotFound BasicError
+type CodeScanningUpdateAlertNotFound struct {
+	BasicError
+}
 
 func (*CodeScanningUpdateAlertNotFound) codeScanningUpdateAlertRes() {}
 
@@ -11780,11 +11928,15 @@ type CodeScanningUploadSarifBadRequest struct{}
 
 func (*CodeScanningUploadSarifBadRequest) codeScanningUploadSarifRes() {}
 
-type CodeScanningUploadSarifForbidden BasicError
+type CodeScanningUploadSarifForbidden struct {
+	BasicError
+}
 
 func (*CodeScanningUploadSarifForbidden) codeScanningUploadSarifRes() {}
 
-type CodeScanningUploadSarifNotFound BasicError
+type CodeScanningUploadSarifNotFound struct {
+	BasicError
+}
 
 func (*CodeScanningUploadSarifNotFound) codeScanningUploadSarifRes() {}
 
@@ -20350,11 +20502,15 @@ type GistsCheckIsStarredNotFound struct{}
 
 func (*GistsCheckIsStarredNotFound) gistsCheckIsStarredRes() {}
 
-type GistsCreateCommentForbidden BasicError
+type GistsCreateCommentForbidden struct {
+	BasicError
+}
 
 func (*GistsCreateCommentForbidden) gistsCreateCommentRes() {}
 
-type GistsCreateCommentNotFound BasicError
+type GistsCreateCommentNotFound struct {
+	BasicError
+}
 
 func (*GistsCreateCommentNotFound) gistsCreateCommentRes() {}
 
@@ -20373,11 +20529,15 @@ func (s *GistsCreateCommentReq) SetBody(val string) {
 	s.Body = val
 }
 
-type GistsCreateForbidden BasicError
+type GistsCreateForbidden struct {
+	BasicError
+}
 
 func (*GistsCreateForbidden) gistsCreateRes() {}
 
-type GistsCreateNotFound BasicError
+type GistsCreateNotFound struct {
+	BasicError
+}
 
 func (*GistsCreateNotFound) gistsCreateRes() {}
 
@@ -20553,7 +20713,9 @@ func (s *GistsCreateReqPublic1) UnmarshalText(data []byte) error {
 	}
 }
 
-type GistsDeleteCommentForbidden BasicError
+type GistsDeleteCommentForbidden struct {
+	BasicError
+}
 
 func (*GistsDeleteCommentForbidden) gistsDeleteCommentRes() {}
 
@@ -20562,11 +20724,15 @@ type GistsDeleteCommentNoContent struct{}
 
 func (*GistsDeleteCommentNoContent) gistsDeleteCommentRes() {}
 
-type GistsDeleteCommentNotFound BasicError
+type GistsDeleteCommentNotFound struct {
+	BasicError
+}
 
 func (*GistsDeleteCommentNotFound) gistsDeleteCommentRes() {}
 
-type GistsDeleteForbidden BasicError
+type GistsDeleteForbidden struct {
+	BasicError
+}
 
 func (*GistsDeleteForbidden) gistsDeleteRes() {}
 
@@ -20575,31 +20741,45 @@ type GistsDeleteNoContent struct{}
 
 func (*GistsDeleteNoContent) gistsDeleteRes() {}
 
-type GistsDeleteNotFound BasicError
+type GistsDeleteNotFound struct {
+	BasicError
+}
 
 func (*GistsDeleteNotFound) gistsDeleteRes() {}
 
-type GistsForkForbidden BasicError
+type GistsForkForbidden struct {
+	BasicError
+}
 
 func (*GistsForkForbidden) gistsForkRes() {}
 
-type GistsForkNotFound BasicError
+type GistsForkNotFound struct {
+	BasicError
+}
 
 func (*GistsForkNotFound) gistsForkRes() {}
 
-type GistsGetRevisionForbidden BasicError
+type GistsGetRevisionForbidden struct {
+	BasicError
+}
 
 func (*GistsGetRevisionForbidden) gistsGetRevisionRes() {}
 
-type GistsGetRevisionNotFound BasicError
+type GistsGetRevisionNotFound struct {
+	BasicError
+}
 
 func (*GistsGetRevisionNotFound) gistsGetRevisionRes() {}
 
-type GistsListCommentsForbidden BasicError
+type GistsListCommentsForbidden struct {
+	BasicError
+}
 
 func (*GistsListCommentsForbidden) gistsListCommentsRes() {}
 
-type GistsListCommentsNotFound BasicError
+type GistsListCommentsNotFound struct {
+	BasicError
+}
 
 func (*GistsListCommentsNotFound) gistsListCommentsRes() {}
 
@@ -20631,11 +20811,15 @@ func (s *GistsListCommentsOKHeaders) SetResponse(val []GistComment) {
 
 func (*GistsListCommentsOKHeaders) gistsListCommentsRes() {}
 
-type GistsListCommitsForbidden BasicError
+type GistsListCommitsForbidden struct {
+	BasicError
+}
 
 func (*GistsListCommitsForbidden) gistsListCommitsRes() {}
 
-type GistsListCommitsNotFound BasicError
+type GistsListCommitsNotFound struct {
+	BasicError
+}
 
 func (*GistsListCommitsNotFound) gistsListCommitsRes() {}
 
@@ -20695,11 +20879,15 @@ func (s *GistsListForUserOKHeaders) SetResponse(val []BaseGist) {
 
 func (*GistsListForUserOKHeaders) gistsListForUserRes() {}
 
-type GistsListForksForbidden BasicError
+type GistsListForksForbidden struct {
+	BasicError
+}
 
 func (*GistsListForksForbidden) gistsListForksRes() {}
 
-type GistsListForksNotFound BasicError
+type GistsListForksNotFound struct {
+	BasicError
+}
 
 func (*GistsListForksNotFound) gistsListForksRes() {}
 
@@ -20787,7 +20975,9 @@ func (s *GistsListPublicOKHeaders) SetResponse(val []BaseGist) {
 
 func (*GistsListPublicOKHeaders) gistsListPublicRes() {}
 
-type GistsListStarredForbidden BasicError
+type GistsListStarredForbidden struct {
+	BasicError
+}
 
 func (*GistsListStarredForbidden) gistsListStarredRes() {}
 
@@ -20819,11 +21009,15 @@ func (s *GistsListStarredOKHeaders) SetResponse(val []BaseGist) {
 
 func (*GistsListStarredOKHeaders) gistsListStarredRes() {}
 
-type GistsListStarredUnauthorized BasicError
+type GistsListStarredUnauthorized struct {
+	BasicError
+}
 
 func (*GistsListStarredUnauthorized) gistsListStarredRes() {}
 
-type GistsStarForbidden BasicError
+type GistsStarForbidden struct {
+	BasicError
+}
 
 func (*GistsStarForbidden) gistsStarRes() {}
 
@@ -20832,11 +21026,15 @@ type GistsStarNoContent struct{}
 
 func (*GistsStarNoContent) gistsStarRes() {}
 
-type GistsStarNotFound BasicError
+type GistsStarNotFound struct {
+	BasicError
+}
 
 func (*GistsStarNotFound) gistsStarRes() {}
 
-type GistsUnstarForbidden BasicError
+type GistsUnstarForbidden struct {
+	BasicError
+}
 
 func (*GistsUnstarForbidden) gistsUnstarRes() {}
 
@@ -20845,7 +21043,9 @@ type GistsUnstarNoContent struct{}
 
 func (*GistsUnstarNoContent) gistsUnstarRes() {}
 
-type GistsUnstarNotFound BasicError
+type GistsUnstarNotFound struct {
+	BasicError
+}
 
 func (*GistsUnstarNotFound) gistsUnstarRes() {}
 
@@ -21203,15 +21403,21 @@ func (s *GitCommitVerification) SetPayload(val NilString) {
 	s.Payload = val
 }
 
-type GitCreateBlobConflict BasicError
+type GitCreateBlobConflict struct {
+	BasicError
+}
 
 func (*GitCreateBlobConflict) gitCreateBlobRes() {}
 
-type GitCreateBlobForbidden BasicError
+type GitCreateBlobForbidden struct {
+	BasicError
+}
 
 func (*GitCreateBlobForbidden) gitCreateBlobRes() {}
 
-type GitCreateBlobNotFound BasicError
+type GitCreateBlobNotFound struct {
+	BasicError
+}
 
 func (*GitCreateBlobNotFound) gitCreateBlobRes() {}
 
@@ -21605,11 +21811,15 @@ func (s *GitCreateTagReqType) UnmarshalText(data []byte) error {
 	}
 }
 
-type GitCreateTreeForbidden BasicError
+type GitCreateTreeForbidden struct {
+	BasicError
+}
 
 func (*GitCreateTreeForbidden) gitCreateTreeRes() {}
 
-type GitCreateTreeNotFound BasicError
+type GitCreateTreeNotFound struct {
+	BasicError
+}
 
 func (*GitCreateTreeNotFound) gitCreateTreeRes() {}
 
@@ -21839,11 +22049,15 @@ type GitDeleteRefNoContent struct{}
 
 func (*GitDeleteRefNoContent) gitDeleteRefRes() {}
 
-type GitGetBlobForbidden BasicError
+type GitGetBlobForbidden struct {
+	BasicError
+}
 
 func (*GitGetBlobForbidden) gitGetBlobRes() {}
 
-type GitGetBlobNotFound BasicError
+type GitGetBlobNotFound struct {
+	BasicError
+}
 
 func (*GitGetBlobNotFound) gitGetBlobRes() {}
 
@@ -26849,15 +27063,21 @@ type IssuesCheckUserCanBeAssignedNoContent struct{}
 
 func (*IssuesCheckUserCanBeAssignedNoContent) issuesCheckUserCanBeAssignedRes() {}
 
-type IssuesCreateCommentForbidden BasicError
+type IssuesCreateCommentForbidden struct {
+	BasicError
+}
 
 func (*IssuesCreateCommentForbidden) issuesCreateCommentRes() {}
 
-type IssuesCreateCommentGone BasicError
+type IssuesCreateCommentGone struct {
+	BasicError
+}
 
 func (*IssuesCreateCommentGone) issuesCreateCommentRes() {}
 
-type IssuesCreateCommentNotFound BasicError
+type IssuesCreateCommentNotFound struct {
+	BasicError
+}
 
 func (*IssuesCreateCommentNotFound) issuesCreateCommentRes() {}
 
@@ -26876,11 +27096,15 @@ func (s *IssuesCreateCommentReq) SetBody(val string) {
 	s.Body = val
 }
 
-type IssuesCreateForbidden BasicError
+type IssuesCreateForbidden struct {
+	BasicError
+}
 
 func (*IssuesCreateForbidden) issuesCreateRes() {}
 
-type IssuesCreateGone BasicError
+type IssuesCreateGone struct {
+	BasicError
+}
 
 func (*IssuesCreateGone) issuesCreateRes() {}
 
@@ -27021,7 +27245,9 @@ func (s *IssuesCreateMilestoneReqState) UnmarshalText(data []byte) error {
 	}
 }
 
-type IssuesCreateNotFound BasicError
+type IssuesCreateNotFound struct {
+	BasicError
+}
 
 func (*IssuesCreateNotFound) issuesCreateRes() {}
 
@@ -27356,27 +27582,39 @@ type IssuesDeleteMilestoneNoContent struct{}
 
 func (*IssuesDeleteMilestoneNoContent) issuesDeleteMilestoneRes() {}
 
-type IssuesGetEventForbidden BasicError
+type IssuesGetEventForbidden struct {
+	BasicError
+}
 
 func (*IssuesGetEventForbidden) issuesGetEventRes() {}
 
-type IssuesGetEventGone BasicError
+type IssuesGetEventGone struct {
+	BasicError
+}
 
 func (*IssuesGetEventGone) issuesGetEventRes() {}
 
-type IssuesGetEventNotFound BasicError
+type IssuesGetEventNotFound struct {
+	BasicError
+}
 
 func (*IssuesGetEventNotFound) issuesGetEventRes() {}
 
-type IssuesGetGone BasicError
+type IssuesGetGone struct {
+	BasicError
+}
 
 func (*IssuesGetGone) issuesGetRes() {}
 
-type IssuesGetMovedPermanently BasicError
+type IssuesGetMovedPermanently struct {
+	BasicError
+}
 
 func (*IssuesGetMovedPermanently) issuesGetRes() {}
 
-type IssuesGetNotFound BasicError
+type IssuesGetNotFound struct {
+	BasicError
+}
 
 func (*IssuesGetNotFound) issuesGetRes() {}
 
@@ -27477,11 +27715,15 @@ func (s *IssuesListCommentsForRepoOKHeaders) SetResponse(val []IssueComment) {
 
 func (*IssuesListCommentsForRepoOKHeaders) issuesListCommentsForRepoRes() {}
 
-type IssuesListCommentsGone BasicError
+type IssuesListCommentsGone struct {
+	BasicError
+}
 
 func (*IssuesListCommentsGone) issuesListCommentsRes() {}
 
-type IssuesListCommentsNotFound BasicError
+type IssuesListCommentsNotFound struct {
+	BasicError
+}
 
 func (*IssuesListCommentsNotFound) issuesListCommentsRes() {}
 
@@ -27996,11 +28238,15 @@ func (s *IssuesListForOrgState) UnmarshalText(data []byte) error {
 	}
 }
 
-type IssuesListForRepoMovedPermanently BasicError
+type IssuesListForRepoMovedPermanently struct {
+	BasicError
+}
 
 func (*IssuesListForRepoMovedPermanently) issuesListForRepoRes() {}
 
-type IssuesListForRepoNotFound BasicError
+type IssuesListForRepoNotFound struct {
+	BasicError
+}
 
 func (*IssuesListForRepoNotFound) issuesListForRepoRes() {}
 
@@ -28492,11 +28738,15 @@ func (s *IssuesListState) UnmarshalText(data []byte) error {
 	}
 }
 
-type IssuesLockForbidden BasicError
+type IssuesLockForbidden struct {
+	BasicError
+}
 
 func (*IssuesLockForbidden) issuesLockRes() {}
 
-type IssuesLockGone BasicError
+type IssuesLockGone struct {
+	BasicError
+}
 
 func (*IssuesLockGone) issuesLockRes() {}
 
@@ -28505,7 +28755,9 @@ type IssuesLockNoContent struct{}
 
 func (*IssuesLockNoContent) issuesLockRes() {}
 
-type IssuesLockNotFound BasicError
+type IssuesLockNotFound struct {
+	BasicError
+}
 
 func (*IssuesLockNotFound) issuesLockRes() {}
 
@@ -28611,11 +28863,15 @@ func (s *IssuesRemoveAssigneesReq) SetAssignees(val []string) {
 	s.Assignees = val
 }
 
-type IssuesRemoveLabelGone BasicError
+type IssuesRemoveLabelGone struct {
+	BasicError
+}
 
 func (*IssuesRemoveLabelGone) issuesRemoveLabelRes() {}
 
-type IssuesRemoveLabelNotFound BasicError
+type IssuesRemoveLabelNotFound struct {
+	BasicError
+}
 
 func (*IssuesRemoveLabelNotFound) issuesRemoveLabelRes() {}
 
@@ -28623,7 +28879,9 @@ type IssuesRemoveLabelOKApplicationJSON []Label
 
 func (*IssuesRemoveLabelOKApplicationJSON) issuesRemoveLabelRes() {}
 
-type IssuesUnlockForbidden BasicError
+type IssuesUnlockForbidden struct {
+	BasicError
+}
 
 func (*IssuesUnlockForbidden) issuesUnlockRes() {}
 
@@ -28632,7 +28890,9 @@ type IssuesUnlockNoContent struct{}
 
 func (*IssuesUnlockNoContent) issuesUnlockRes() {}
 
-type IssuesUnlockNotFound BasicError
+type IssuesUnlockNotFound struct {
+	BasicError
+}
 
 func (*IssuesUnlockNotFound) issuesUnlockRes() {}
 
@@ -28651,11 +28911,15 @@ func (s *IssuesUpdateCommentReq) SetBody(val string) {
 	s.Body = val
 }
 
-type IssuesUpdateForbidden BasicError
+type IssuesUpdateForbidden struct {
+	BasicError
+}
 
 func (*IssuesUpdateForbidden) issuesUpdateRes() {}
 
-type IssuesUpdateGone BasicError
+type IssuesUpdateGone struct {
+	BasicError
+}
 
 func (*IssuesUpdateGone) issuesUpdateRes() {}
 
@@ -28796,11 +29060,15 @@ func (s *IssuesUpdateMilestoneReqState) UnmarshalText(data []byte) error {
 	}
 }
 
-type IssuesUpdateMovedPermanently BasicError
+type IssuesUpdateMovedPermanently struct {
+	BasicError
+}
 
 func (*IssuesUpdateMovedPermanently) issuesUpdateRes() {}
 
-type IssuesUpdateNotFound BasicError
+type IssuesUpdateNotFound struct {
+	BasicError
+}
 
 func (*IssuesUpdateNotFound) issuesUpdateRes() {}
 
@@ -30272,11 +30540,15 @@ type LicensesGetAllCommonlyUsedOKApplicationJSON []LicenseSimple
 
 func (*LicensesGetAllCommonlyUsedOKApplicationJSON) licensesGetAllCommonlyUsedRes() {}
 
-type LicensesGetForbidden BasicError
+type LicensesGetForbidden struct {
+	BasicError
+}
 
 func (*LicensesGetForbidden) licensesGetRes() {}
 
-type LicensesGetNotFound BasicError
+type LicensesGetNotFound struct {
+	BasicError
+}
 
 func (*LicensesGetNotFound) licensesGetRes() {}
 
@@ -31691,7 +31963,9 @@ func (*Migration) migrationsStartForOrgRes()                   {}
 // MigrationsCancelImportNoContent is response for MigrationsCancelImport operation.
 type MigrationsCancelImportNoContent struct{}
 
-type MigrationsDeleteArchiveForAuthenticatedUserForbidden BasicError
+type MigrationsDeleteArchiveForAuthenticatedUserForbidden struct {
+	BasicError
+}
 
 func (*MigrationsDeleteArchiveForAuthenticatedUserForbidden) migrationsDeleteArchiveForAuthenticatedUserRes() {
 }
@@ -31702,12 +31976,16 @@ type MigrationsDeleteArchiveForAuthenticatedUserNoContent struct{}
 func (*MigrationsDeleteArchiveForAuthenticatedUserNoContent) migrationsDeleteArchiveForAuthenticatedUserRes() {
 }
 
-type MigrationsDeleteArchiveForAuthenticatedUserNotFound BasicError
+type MigrationsDeleteArchiveForAuthenticatedUserNotFound struct {
+	BasicError
+}
 
 func (*MigrationsDeleteArchiveForAuthenticatedUserNotFound) migrationsDeleteArchiveForAuthenticatedUserRes() {
 }
 
-type MigrationsDeleteArchiveForAuthenticatedUserUnauthorized BasicError
+type MigrationsDeleteArchiveForAuthenticatedUserUnauthorized struct {
+	BasicError
+}
 
 func (*MigrationsDeleteArchiveForAuthenticatedUserUnauthorized) migrationsDeleteArchiveForAuthenticatedUserRes() {
 }
@@ -31722,7 +32000,9 @@ type MigrationsDownloadArchiveForOrgFound struct{}
 
 func (*MigrationsDownloadArchiveForOrgFound) migrationsDownloadArchiveForOrgRes() {}
 
-type MigrationsGetArchiveForAuthenticatedUserForbidden BasicError
+type MigrationsGetArchiveForAuthenticatedUserForbidden struct {
+	BasicError
+}
 
 func (*MigrationsGetArchiveForAuthenticatedUserForbidden) migrationsGetArchiveForAuthenticatedUserRes() {
 }
@@ -31732,7 +32012,9 @@ type MigrationsGetArchiveForAuthenticatedUserFound struct{}
 
 func (*MigrationsGetArchiveForAuthenticatedUserFound) migrationsGetArchiveForAuthenticatedUserRes() {}
 
-type MigrationsGetArchiveForAuthenticatedUserUnauthorized BasicError
+type MigrationsGetArchiveForAuthenticatedUserUnauthorized struct {
+	BasicError
+}
 
 func (*MigrationsGetArchiveForAuthenticatedUserUnauthorized) migrationsGetArchiveForAuthenticatedUserRes() {
 }
@@ -31741,17 +32023,23 @@ type MigrationsGetCommitAuthorsOKApplicationJSON []PorterAuthor
 
 func (*MigrationsGetCommitAuthorsOKApplicationJSON) migrationsGetCommitAuthorsRes() {}
 
-type MigrationsGetStatusForAuthenticatedUserForbidden BasicError
+type MigrationsGetStatusForAuthenticatedUserForbidden struct {
+	BasicError
+}
 
 func (*MigrationsGetStatusForAuthenticatedUserForbidden) migrationsGetStatusForAuthenticatedUserRes() {
 }
 
-type MigrationsGetStatusForAuthenticatedUserNotFound BasicError
+type MigrationsGetStatusForAuthenticatedUserNotFound struct {
+	BasicError
+}
 
 func (*MigrationsGetStatusForAuthenticatedUserNotFound) migrationsGetStatusForAuthenticatedUserRes() {
 }
 
-type MigrationsGetStatusForAuthenticatedUserUnauthorized BasicError
+type MigrationsGetStatusForAuthenticatedUserUnauthorized struct {
+	BasicError
+}
 
 func (*MigrationsGetStatusForAuthenticatedUserUnauthorized) migrationsGetStatusForAuthenticatedUserRes() {
 }
@@ -31791,7 +32079,9 @@ func (s *MigrationsGetStatusForOrgExcludeItem) UnmarshalText(data []byte) error 
 	}
 }
 
-type MigrationsListForAuthenticatedUserForbidden BasicError
+type MigrationsListForAuthenticatedUserForbidden struct {
+	BasicError
+}
 
 func (*MigrationsListForAuthenticatedUserForbidden) migrationsListForAuthenticatedUserRes() {}
 
@@ -31823,7 +32113,9 @@ func (s *MigrationsListForAuthenticatedUserOKHeaders) SetResponse(val []Migratio
 
 func (*MigrationsListForAuthenticatedUserOKHeaders) migrationsListForAuthenticatedUserRes() {}
 
-type MigrationsListForAuthenticatedUserUnauthorized BasicError
+type MigrationsListForAuthenticatedUserUnauthorized struct {
+	BasicError
+}
 
 func (*MigrationsListForAuthenticatedUserUnauthorized) migrationsListForAuthenticatedUserRes() {}
 
@@ -32030,7 +32322,9 @@ func (s *MigrationsSetLfsPreferenceReqUseLfs) UnmarshalText(data []byte) error {
 	}
 }
 
-type MigrationsStartForAuthenticatedUserForbidden BasicError
+type MigrationsStartForAuthenticatedUserForbidden struct {
+	BasicError
+}
 
 func (*MigrationsStartForAuthenticatedUserForbidden) migrationsStartForAuthenticatedUserRes() {}
 
@@ -32143,7 +32437,9 @@ func (s *MigrationsStartForAuthenticatedUserReqExcludeItem) UnmarshalText(data [
 	}
 }
 
-type MigrationsStartForAuthenticatedUserUnauthorized BasicError
+type MigrationsStartForAuthenticatedUserUnauthorized struct {
+	BasicError
+}
 
 func (*MigrationsStartForAuthenticatedUserUnauthorized) migrationsStartForAuthenticatedUserRes() {}
 
@@ -32381,7 +32677,9 @@ func (s *MigrationsStartImportReqVcs) UnmarshalText(data []byte) error {
 	}
 }
 
-type MigrationsUnlockRepoForAuthenticatedUserForbidden BasicError
+type MigrationsUnlockRepoForAuthenticatedUserForbidden struct {
+	BasicError
+}
 
 func (*MigrationsUnlockRepoForAuthenticatedUserForbidden) migrationsUnlockRepoForAuthenticatedUserRes() {
 }
@@ -32392,12 +32690,16 @@ type MigrationsUnlockRepoForAuthenticatedUserNoContent struct{}
 func (*MigrationsUnlockRepoForAuthenticatedUserNoContent) migrationsUnlockRepoForAuthenticatedUserRes() {
 }
 
-type MigrationsUnlockRepoForAuthenticatedUserNotFound BasicError
+type MigrationsUnlockRepoForAuthenticatedUserNotFound struct {
+	BasicError
+}
 
 func (*MigrationsUnlockRepoForAuthenticatedUserNotFound) migrationsUnlockRepoForAuthenticatedUserRes() {
 }
 
-type MigrationsUnlockRepoForAuthenticatedUserUnauthorized BasicError
+type MigrationsUnlockRepoForAuthenticatedUserUnauthorized struct {
+	BasicError
+}
 
 func (*MigrationsUnlockRepoForAuthenticatedUserUnauthorized) migrationsUnlockRepoForAuthenticatedUserRes() {
 }
@@ -40194,11 +40496,15 @@ func (s *NullableTeamSimple) SetLdapDn(val OptString) {
 	s.LdapDn = val
 }
 
-type OAuthAuthorizationsCreateAuthorizationForbidden BasicError
+type OAuthAuthorizationsCreateAuthorizationForbidden struct {
+	BasicError
+}
 
 func (*OAuthAuthorizationsCreateAuthorizationForbidden) oAuthAuthorizationsCreateAuthorizationRes() {}
 
-type OAuthAuthorizationsCreateAuthorizationGone BasicError
+type OAuthAuthorizationsCreateAuthorizationGone struct {
+	BasicError
+}
 
 func (*OAuthAuthorizationsCreateAuthorizationGone) oAuthAuthorizationsCreateAuthorizationRes() {}
 
@@ -40278,12 +40584,16 @@ func (s *OAuthAuthorizationsCreateAuthorizationReq) SetFingerprint(val OptString
 	s.Fingerprint = val
 }
 
-type OAuthAuthorizationsCreateAuthorizationUnauthorized BasicError
+type OAuthAuthorizationsCreateAuthorizationUnauthorized struct {
+	BasicError
+}
 
 func (*OAuthAuthorizationsCreateAuthorizationUnauthorized) oAuthAuthorizationsCreateAuthorizationRes() {
 }
 
-type OAuthAuthorizationsDeleteAuthorizationForbidden BasicError
+type OAuthAuthorizationsDeleteAuthorizationForbidden struct {
+	BasicError
+}
 
 func (*OAuthAuthorizationsDeleteAuthorizationForbidden) oAuthAuthorizationsDeleteAuthorizationRes() {}
 
@@ -40292,12 +40602,16 @@ type OAuthAuthorizationsDeleteAuthorizationNoContent struct{}
 
 func (*OAuthAuthorizationsDeleteAuthorizationNoContent) oAuthAuthorizationsDeleteAuthorizationRes() {}
 
-type OAuthAuthorizationsDeleteAuthorizationUnauthorized BasicError
+type OAuthAuthorizationsDeleteAuthorizationUnauthorized struct {
+	BasicError
+}
 
 func (*OAuthAuthorizationsDeleteAuthorizationUnauthorized) oAuthAuthorizationsDeleteAuthorizationRes() {
 }
 
-type OAuthAuthorizationsDeleteGrantForbidden BasicError
+type OAuthAuthorizationsDeleteGrantForbidden struct {
+	BasicError
+}
 
 func (*OAuthAuthorizationsDeleteGrantForbidden) oAuthAuthorizationsDeleteGrantRes() {}
 
@@ -40306,32 +40620,46 @@ type OAuthAuthorizationsDeleteGrantNoContent struct{}
 
 func (*OAuthAuthorizationsDeleteGrantNoContent) oAuthAuthorizationsDeleteGrantRes() {}
 
-type OAuthAuthorizationsDeleteGrantUnauthorized BasicError
+type OAuthAuthorizationsDeleteGrantUnauthorized struct {
+	BasicError
+}
 
 func (*OAuthAuthorizationsDeleteGrantUnauthorized) oAuthAuthorizationsDeleteGrantRes() {}
 
-type OAuthAuthorizationsGetAuthorizationForbidden BasicError
+type OAuthAuthorizationsGetAuthorizationForbidden struct {
+	BasicError
+}
 
 func (*OAuthAuthorizationsGetAuthorizationForbidden) oAuthAuthorizationsGetAuthorizationRes() {}
 
-type OAuthAuthorizationsGetAuthorizationUnauthorized BasicError
+type OAuthAuthorizationsGetAuthorizationUnauthorized struct {
+	BasicError
+}
 
 func (*OAuthAuthorizationsGetAuthorizationUnauthorized) oAuthAuthorizationsGetAuthorizationRes() {}
 
-type OAuthAuthorizationsGetGrantForbidden BasicError
+type OAuthAuthorizationsGetGrantForbidden struct {
+	BasicError
+}
 
 func (*OAuthAuthorizationsGetGrantForbidden) oAuthAuthorizationsGetGrantRes() {}
 
-type OAuthAuthorizationsGetGrantUnauthorized BasicError
+type OAuthAuthorizationsGetGrantUnauthorized struct {
+	BasicError
+}
 
 func (*OAuthAuthorizationsGetGrantUnauthorized) oAuthAuthorizationsGetGrantRes() {}
 
-type OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintCreated AuthorizationHeaders
+type OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintCreated struct {
+	AuthorizationHeaders
+}
 
 func (*OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintCreated) oAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRes() {
 }
 
-type OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintOK AuthorizationHeaders
+type OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintOK struct {
+	AuthorizationHeaders
+}
 
 func (*OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintOK) oAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRes() {
 }
@@ -40387,17 +40715,23 @@ func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReq) Set
 	s.NoteURL = val
 }
 
-type OAuthAuthorizationsGetOrCreateAuthorizationForAppCreated AuthorizationHeaders
+type OAuthAuthorizationsGetOrCreateAuthorizationForAppCreated struct {
+	AuthorizationHeaders
+}
 
 func (*OAuthAuthorizationsGetOrCreateAuthorizationForAppCreated) oAuthAuthorizationsGetOrCreateAuthorizationForAppRes() {
 }
 
-type OAuthAuthorizationsGetOrCreateAuthorizationForAppForbidden BasicError
+type OAuthAuthorizationsGetOrCreateAuthorizationForAppForbidden struct {
+	BasicError
+}
 
 func (*OAuthAuthorizationsGetOrCreateAuthorizationForAppForbidden) oAuthAuthorizationsGetOrCreateAuthorizationForAppRes() {
 }
 
-type OAuthAuthorizationsGetOrCreateAuthorizationForAppOK AuthorizationHeaders
+type OAuthAuthorizationsGetOrCreateAuthorizationForAppOK struct {
+	AuthorizationHeaders
+}
 
 func (*OAuthAuthorizationsGetOrCreateAuthorizationForAppOK) oAuthAuthorizationsGetOrCreateAuthorizationForAppRes() {
 }
@@ -40466,16 +40800,22 @@ func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppReq) SetFingerprint(va
 	s.Fingerprint = val
 }
 
-type OAuthAuthorizationsGetOrCreateAuthorizationForAppUnauthorized BasicError
+type OAuthAuthorizationsGetOrCreateAuthorizationForAppUnauthorized struct {
+	BasicError
+}
 
 func (*OAuthAuthorizationsGetOrCreateAuthorizationForAppUnauthorized) oAuthAuthorizationsGetOrCreateAuthorizationForAppRes() {
 }
 
-type OAuthAuthorizationsListAuthorizationsForbidden BasicError
+type OAuthAuthorizationsListAuthorizationsForbidden struct {
+	BasicError
+}
 
 func (*OAuthAuthorizationsListAuthorizationsForbidden) oAuthAuthorizationsListAuthorizationsRes() {}
 
-type OAuthAuthorizationsListAuthorizationsNotFound BasicError
+type OAuthAuthorizationsListAuthorizationsNotFound struct {
+	BasicError
+}
 
 func (*OAuthAuthorizationsListAuthorizationsNotFound) oAuthAuthorizationsListAuthorizationsRes() {}
 
@@ -40507,16 +40847,22 @@ func (s *OAuthAuthorizationsListAuthorizationsOKHeaders) SetResponse(val []Autho
 
 func (*OAuthAuthorizationsListAuthorizationsOKHeaders) oAuthAuthorizationsListAuthorizationsRes() {}
 
-type OAuthAuthorizationsListAuthorizationsUnauthorized BasicError
+type OAuthAuthorizationsListAuthorizationsUnauthorized struct {
+	BasicError
+}
 
 func (*OAuthAuthorizationsListAuthorizationsUnauthorized) oAuthAuthorizationsListAuthorizationsRes() {
 }
 
-type OAuthAuthorizationsListGrantsForbidden BasicError
+type OAuthAuthorizationsListGrantsForbidden struct {
+	BasicError
+}
 
 func (*OAuthAuthorizationsListGrantsForbidden) oAuthAuthorizationsListGrantsRes() {}
 
-type OAuthAuthorizationsListGrantsNotFound BasicError
+type OAuthAuthorizationsListGrantsNotFound struct {
+	BasicError
+}
 
 func (*OAuthAuthorizationsListGrantsNotFound) oAuthAuthorizationsListGrantsRes() {}
 
@@ -40548,7 +40894,9 @@ func (s *OAuthAuthorizationsListGrantsOKHeaders) SetResponse(val []ApplicationGr
 
 func (*OAuthAuthorizationsListGrantsOKHeaders) oAuthAuthorizationsListGrantsRes() {}
 
-type OAuthAuthorizationsListGrantsUnauthorized BasicError
+type OAuthAuthorizationsListGrantsUnauthorized struct {
+	BasicError
+}
 
 func (*OAuthAuthorizationsListGrantsUnauthorized) oAuthAuthorizationsListGrantsRes() {}
 
@@ -62352,19 +62700,27 @@ type OrgsDeleteWebhookNoContent struct{}
 
 func (*OrgsDeleteWebhookNoContent) orgsDeleteWebhookRes() {}
 
-type OrgsGetMembershipForAuthenticatedUserForbidden BasicError
+type OrgsGetMembershipForAuthenticatedUserForbidden struct {
+	BasicError
+}
 
 func (*OrgsGetMembershipForAuthenticatedUserForbidden) orgsGetMembershipForAuthenticatedUserRes() {}
 
-type OrgsGetMembershipForAuthenticatedUserNotFound BasicError
+type OrgsGetMembershipForAuthenticatedUserNotFound struct {
+	BasicError
+}
 
 func (*OrgsGetMembershipForAuthenticatedUserNotFound) orgsGetMembershipForAuthenticatedUserRes() {}
 
-type OrgsGetMembershipForUserForbidden BasicError
+type OrgsGetMembershipForUserForbidden struct {
+	BasicError
+}
 
 func (*OrgsGetMembershipForUserForbidden) orgsGetMembershipForUserRes() {}
 
-type OrgsGetMembershipForUserNotFound BasicError
+type OrgsGetMembershipForUserNotFound struct {
+	BasicError
+}
 
 func (*OrgsGetMembershipForUserNotFound) orgsGetMembershipForUserRes() {}
 
@@ -62400,7 +62756,9 @@ func (s *OrgsListFailedInvitationsOKHeaders) SetResponse(val []OrganizationInvit
 
 func (*OrgsListFailedInvitationsOKHeaders) orgsListFailedInvitationsRes() {}
 
-type OrgsListForAuthenticatedUserForbidden BasicError
+type OrgsListForAuthenticatedUserForbidden struct {
+	BasicError
+}
 
 func (*OrgsListForAuthenticatedUserForbidden) orgsListForAuthenticatedUserRes() {}
 
@@ -62432,7 +62790,9 @@ func (s *OrgsListForAuthenticatedUserOKHeaders) SetResponse(val []OrganizationSi
 
 func (*OrgsListForAuthenticatedUserOKHeaders) orgsListForAuthenticatedUserRes() {}
 
-type OrgsListForAuthenticatedUserUnauthorized BasicError
+type OrgsListForAuthenticatedUserUnauthorized struct {
+	BasicError
+}
 
 func (*OrgsListForAuthenticatedUserUnauthorized) orgsListForAuthenticatedUserRes() {}
 
@@ -62624,7 +62984,9 @@ func (s *OrgsListMembersRole) UnmarshalText(data []byte) error {
 	}
 }
 
-type OrgsListMembershipsForAuthenticatedUserForbidden BasicError
+type OrgsListMembershipsForAuthenticatedUserForbidden struct {
+	BasicError
+}
 
 func (*OrgsListMembershipsForAuthenticatedUserForbidden) orgsListMembershipsForAuthenticatedUserRes() {
 }
@@ -62699,7 +63061,9 @@ func (s *OrgsListMembershipsForAuthenticatedUserState) UnmarshalText(data []byte
 	}
 }
 
-type OrgsListMembershipsForAuthenticatedUserUnauthorized BasicError
+type OrgsListMembershipsForAuthenticatedUserUnauthorized struct {
+	BasicError
+}
 
 func (*OrgsListMembershipsForAuthenticatedUserUnauthorized) orgsListMembershipsForAuthenticatedUserRes() {
 }
@@ -62895,7 +63259,9 @@ type OrgsRemoveMemberNoContent struct{}
 
 func (*OrgsRemoveMemberNoContent) orgsRemoveMemberRes() {}
 
-type OrgsRemoveMembershipForUserForbidden BasicError
+type OrgsRemoveMembershipForUserForbidden struct {
+	BasicError
+}
 
 func (*OrgsRemoveMembershipForUserForbidden) orgsRemoveMembershipForUserRes() {}
 
@@ -62904,7 +63270,9 @@ type OrgsRemoveMembershipForUserNoContent struct{}
 
 func (*OrgsRemoveMembershipForUserNoContent) orgsRemoveMembershipForUserRes() {}
 
-type OrgsRemoveMembershipForUserNotFound BasicError
+type OrgsRemoveMembershipForUserNotFound struct {
+	BasicError
+}
 
 func (*OrgsRemoveMembershipForUserNotFound) orgsRemoveMembershipForUserRes() {}
 
@@ -63018,12 +63386,16 @@ func (*OrgsSetPublicMembershipForAuthenticatedUserNoContent) orgsSetPublicMember
 // OrgsUnblockUserNoContent is response for OrgsUnblockUser operation.
 type OrgsUnblockUserNoContent struct{}
 
-type OrgsUpdateMembershipForAuthenticatedUserForbidden BasicError
+type OrgsUpdateMembershipForAuthenticatedUserForbidden struct {
+	BasicError
+}
 
 func (*OrgsUpdateMembershipForAuthenticatedUserForbidden) orgsUpdateMembershipForAuthenticatedUserRes() {
 }
 
-type OrgsUpdateMembershipForAuthenticatedUserNotFound BasicError
+type OrgsUpdateMembershipForAuthenticatedUserNotFound struct {
+	BasicError
+}
 
 func (*OrgsUpdateMembershipForAuthenticatedUserNotFound) orgsUpdateMembershipForAuthenticatedUserRes() {
 }
@@ -63884,7 +64256,9 @@ func (s *PackagesBillingUsage) SetIncludedGigabytesBandwidth(val int) {
 	s.IncludedGigabytesBandwidth = val
 }
 
-type PackagesDeletePackageForAuthenticatedUserForbidden BasicError
+type PackagesDeletePackageForAuthenticatedUserForbidden struct {
+	BasicError
+}
 
 func (*PackagesDeletePackageForAuthenticatedUserForbidden) packagesDeletePackageForAuthenticatedUserRes() {
 }
@@ -63895,17 +64269,23 @@ type PackagesDeletePackageForAuthenticatedUserNoContent struct{}
 func (*PackagesDeletePackageForAuthenticatedUserNoContent) packagesDeletePackageForAuthenticatedUserRes() {
 }
 
-type PackagesDeletePackageForAuthenticatedUserNotFound BasicError
+type PackagesDeletePackageForAuthenticatedUserNotFound struct {
+	BasicError
+}
 
 func (*PackagesDeletePackageForAuthenticatedUserNotFound) packagesDeletePackageForAuthenticatedUserRes() {
 }
 
-type PackagesDeletePackageForAuthenticatedUserUnauthorized BasicError
+type PackagesDeletePackageForAuthenticatedUserUnauthorized struct {
+	BasicError
+}
 
 func (*PackagesDeletePackageForAuthenticatedUserUnauthorized) packagesDeletePackageForAuthenticatedUserRes() {
 }
 
-type PackagesDeletePackageForOrgForbidden BasicError
+type PackagesDeletePackageForOrgForbidden struct {
+	BasicError
+}
 
 func (*PackagesDeletePackageForOrgForbidden) packagesDeletePackageForOrgRes() {}
 
@@ -63914,15 +64294,21 @@ type PackagesDeletePackageForOrgNoContent struct{}
 
 func (*PackagesDeletePackageForOrgNoContent) packagesDeletePackageForOrgRes() {}
 
-type PackagesDeletePackageForOrgNotFound BasicError
+type PackagesDeletePackageForOrgNotFound struct {
+	BasicError
+}
 
 func (*PackagesDeletePackageForOrgNotFound) packagesDeletePackageForOrgRes() {}
 
-type PackagesDeletePackageForOrgUnauthorized BasicError
+type PackagesDeletePackageForOrgUnauthorized struct {
+	BasicError
+}
 
 func (*PackagesDeletePackageForOrgUnauthorized) packagesDeletePackageForOrgRes() {}
 
-type PackagesDeletePackageForUserForbidden BasicError
+type PackagesDeletePackageForUserForbidden struct {
+	BasicError
+}
 
 func (*PackagesDeletePackageForUserForbidden) packagesDeletePackageForUserRes() {}
 
@@ -63931,15 +64317,21 @@ type PackagesDeletePackageForUserNoContent struct{}
 
 func (*PackagesDeletePackageForUserNoContent) packagesDeletePackageForUserRes() {}
 
-type PackagesDeletePackageForUserNotFound BasicError
+type PackagesDeletePackageForUserNotFound struct {
+	BasicError
+}
 
 func (*PackagesDeletePackageForUserNotFound) packagesDeletePackageForUserRes() {}
 
-type PackagesDeletePackageForUserUnauthorized BasicError
+type PackagesDeletePackageForUserUnauthorized struct {
+	BasicError
+}
 
 func (*PackagesDeletePackageForUserUnauthorized) packagesDeletePackageForUserRes() {}
 
-type PackagesDeletePackageVersionForAuthenticatedUserForbidden BasicError
+type PackagesDeletePackageVersionForAuthenticatedUserForbidden struct {
+	BasicError
+}
 
 func (*PackagesDeletePackageVersionForAuthenticatedUserForbidden) packagesDeletePackageVersionForAuthenticatedUserRes() {
 }
@@ -63950,17 +64342,23 @@ type PackagesDeletePackageVersionForAuthenticatedUserNoContent struct{}
 func (*PackagesDeletePackageVersionForAuthenticatedUserNoContent) packagesDeletePackageVersionForAuthenticatedUserRes() {
 }
 
-type PackagesDeletePackageVersionForAuthenticatedUserNotFound BasicError
+type PackagesDeletePackageVersionForAuthenticatedUserNotFound struct {
+	BasicError
+}
 
 func (*PackagesDeletePackageVersionForAuthenticatedUserNotFound) packagesDeletePackageVersionForAuthenticatedUserRes() {
 }
 
-type PackagesDeletePackageVersionForAuthenticatedUserUnauthorized BasicError
+type PackagesDeletePackageVersionForAuthenticatedUserUnauthorized struct {
+	BasicError
+}
 
 func (*PackagesDeletePackageVersionForAuthenticatedUserUnauthorized) packagesDeletePackageVersionForAuthenticatedUserRes() {
 }
 
-type PackagesDeletePackageVersionForOrgForbidden BasicError
+type PackagesDeletePackageVersionForOrgForbidden struct {
+	BasicError
+}
 
 func (*PackagesDeletePackageVersionForOrgForbidden) packagesDeletePackageVersionForOrgRes() {}
 
@@ -63969,15 +64367,21 @@ type PackagesDeletePackageVersionForOrgNoContent struct{}
 
 func (*PackagesDeletePackageVersionForOrgNoContent) packagesDeletePackageVersionForOrgRes() {}
 
-type PackagesDeletePackageVersionForOrgNotFound BasicError
+type PackagesDeletePackageVersionForOrgNotFound struct {
+	BasicError
+}
 
 func (*PackagesDeletePackageVersionForOrgNotFound) packagesDeletePackageVersionForOrgRes() {}
 
-type PackagesDeletePackageVersionForOrgUnauthorized BasicError
+type PackagesDeletePackageVersionForOrgUnauthorized struct {
+	BasicError
+}
 
 func (*PackagesDeletePackageVersionForOrgUnauthorized) packagesDeletePackageVersionForOrgRes() {}
 
-type PackagesDeletePackageVersionForUserForbidden BasicError
+type PackagesDeletePackageVersionForUserForbidden struct {
+	BasicError
+}
 
 func (*PackagesDeletePackageVersionForUserForbidden) packagesDeletePackageVersionForUserRes() {}
 
@@ -63986,20 +64390,28 @@ type PackagesDeletePackageVersionForUserNoContent struct{}
 
 func (*PackagesDeletePackageVersionForUserNoContent) packagesDeletePackageVersionForUserRes() {}
 
-type PackagesDeletePackageVersionForUserNotFound BasicError
+type PackagesDeletePackageVersionForUserNotFound struct {
+	BasicError
+}
 
 func (*PackagesDeletePackageVersionForUserNotFound) packagesDeletePackageVersionForUserRes() {}
 
-type PackagesDeletePackageVersionForUserUnauthorized BasicError
+type PackagesDeletePackageVersionForUserUnauthorized struct {
+	BasicError
+}
 
 func (*PackagesDeletePackageVersionForUserUnauthorized) packagesDeletePackageVersionForUserRes() {}
 
-type PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserForbidden BasicError
+type PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserForbidden struct {
+	BasicError
+}
 
 func (*PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserForbidden) packagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRes() {
 }
 
-type PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserNotFound BasicError
+type PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserNotFound struct {
+	BasicError
+}
 
 func (*PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserNotFound) packagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRes() {
 }
@@ -64050,17 +64462,23 @@ func (s *PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState) U
 	}
 }
 
-type PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserUnauthorized BasicError
+type PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserUnauthorized struct {
+	BasicError
+}
 
 func (*PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserUnauthorized) packagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRes() {
 }
 
-type PackagesGetAllPackageVersionsForPackageOwnedByOrgForbidden BasicError
+type PackagesGetAllPackageVersionsForPackageOwnedByOrgForbidden struct {
+	BasicError
+}
 
 func (*PackagesGetAllPackageVersionsForPackageOwnedByOrgForbidden) packagesGetAllPackageVersionsForPackageOwnedByOrgRes() {
 }
 
-type PackagesGetAllPackageVersionsForPackageOwnedByOrgNotFound BasicError
+type PackagesGetAllPackageVersionsForPackageOwnedByOrgNotFound struct {
+	BasicError
+}
 
 func (*PackagesGetAllPackageVersionsForPackageOwnedByOrgNotFound) packagesGetAllPackageVersionsForPackageOwnedByOrgRes() {
 }
@@ -64111,17 +64529,23 @@ func (s *PackagesGetAllPackageVersionsForPackageOwnedByOrgState) UnmarshalText(d
 	}
 }
 
-type PackagesGetAllPackageVersionsForPackageOwnedByOrgUnauthorized BasicError
+type PackagesGetAllPackageVersionsForPackageOwnedByOrgUnauthorized struct {
+	BasicError
+}
 
 func (*PackagesGetAllPackageVersionsForPackageOwnedByOrgUnauthorized) packagesGetAllPackageVersionsForPackageOwnedByOrgRes() {
 }
 
-type PackagesGetAllPackageVersionsForPackageOwnedByUserForbidden BasicError
+type PackagesGetAllPackageVersionsForPackageOwnedByUserForbidden struct {
+	BasicError
+}
 
 func (*PackagesGetAllPackageVersionsForPackageOwnedByUserForbidden) packagesGetAllPackageVersionsForPackageOwnedByUserRes() {
 }
 
-type PackagesGetAllPackageVersionsForPackageOwnedByUserNotFound BasicError
+type PackagesGetAllPackageVersionsForPackageOwnedByUserNotFound struct {
+	BasicError
+}
 
 func (*PackagesGetAllPackageVersionsForPackageOwnedByUserNotFound) packagesGetAllPackageVersionsForPackageOwnedByUserRes() {
 }
@@ -64131,7 +64555,9 @@ type PackagesGetAllPackageVersionsForPackageOwnedByUserOKApplicationJSON []Packa
 func (*PackagesGetAllPackageVersionsForPackageOwnedByUserOKApplicationJSON) packagesGetAllPackageVersionsForPackageOwnedByUserRes() {
 }
 
-type PackagesGetAllPackageVersionsForPackageOwnedByUserUnauthorized BasicError
+type PackagesGetAllPackageVersionsForPackageOwnedByUserUnauthorized struct {
+	BasicError
+}
 
 func (*PackagesGetAllPackageVersionsForPackageOwnedByUserUnauthorized) packagesGetAllPackageVersionsForPackageOwnedByUserRes() {
 }
@@ -64205,7 +64631,9 @@ func (s *PackagesListPackagesForAuthenticatedUserPackageType) UnmarshalText(data
 	}
 }
 
-type PackagesListPackagesForOrganizationForbidden BasicError
+type PackagesListPackagesForOrganizationForbidden struct {
+	BasicError
+}
 
 func (*PackagesListPackagesForOrganizationForbidden) packagesListPackagesForOrganizationRes() {}
 
@@ -64283,11 +64711,15 @@ func (s *PackagesListPackagesForOrganizationPackageType) UnmarshalText(data []by
 	}
 }
 
-type PackagesListPackagesForOrganizationUnauthorized BasicError
+type PackagesListPackagesForOrganizationUnauthorized struct {
+	BasicError
+}
 
 func (*PackagesListPackagesForOrganizationUnauthorized) packagesListPackagesForOrganizationRes() {}
 
-type PackagesListPackagesForUserForbidden BasicError
+type PackagesListPackagesForUserForbidden struct {
+	BasicError
+}
 
 func (*PackagesListPackagesForUserForbidden) packagesListPackagesForUserRes() {}
 
@@ -64364,11 +64796,15 @@ func (s *PackagesListPackagesForUserPackageType) UnmarshalText(data []byte) erro
 	}
 }
 
-type PackagesListPackagesForUserUnauthorized BasicError
+type PackagesListPackagesForUserUnauthorized struct {
+	BasicError
+}
 
 func (*PackagesListPackagesForUserUnauthorized) packagesListPackagesForUserRes() {}
 
-type PackagesRestorePackageForAuthenticatedUserForbidden BasicError
+type PackagesRestorePackageForAuthenticatedUserForbidden struct {
+	BasicError
+}
 
 func (*PackagesRestorePackageForAuthenticatedUserForbidden) packagesRestorePackageForAuthenticatedUserRes() {
 }
@@ -64379,17 +64815,23 @@ type PackagesRestorePackageForAuthenticatedUserNoContent struct{}
 func (*PackagesRestorePackageForAuthenticatedUserNoContent) packagesRestorePackageForAuthenticatedUserRes() {
 }
 
-type PackagesRestorePackageForAuthenticatedUserNotFound BasicError
+type PackagesRestorePackageForAuthenticatedUserNotFound struct {
+	BasicError
+}
 
 func (*PackagesRestorePackageForAuthenticatedUserNotFound) packagesRestorePackageForAuthenticatedUserRes() {
 }
 
-type PackagesRestorePackageForAuthenticatedUserUnauthorized BasicError
+type PackagesRestorePackageForAuthenticatedUserUnauthorized struct {
+	BasicError
+}
 
 func (*PackagesRestorePackageForAuthenticatedUserUnauthorized) packagesRestorePackageForAuthenticatedUserRes() {
 }
 
-type PackagesRestorePackageForOrgForbidden BasicError
+type PackagesRestorePackageForOrgForbidden struct {
+	BasicError
+}
 
 func (*PackagesRestorePackageForOrgForbidden) packagesRestorePackageForOrgRes() {}
 
@@ -64398,15 +64840,21 @@ type PackagesRestorePackageForOrgNoContent struct{}
 
 func (*PackagesRestorePackageForOrgNoContent) packagesRestorePackageForOrgRes() {}
 
-type PackagesRestorePackageForOrgNotFound BasicError
+type PackagesRestorePackageForOrgNotFound struct {
+	BasicError
+}
 
 func (*PackagesRestorePackageForOrgNotFound) packagesRestorePackageForOrgRes() {}
 
-type PackagesRestorePackageForOrgUnauthorized BasicError
+type PackagesRestorePackageForOrgUnauthorized struct {
+	BasicError
+}
 
 func (*PackagesRestorePackageForOrgUnauthorized) packagesRestorePackageForOrgRes() {}
 
-type PackagesRestorePackageForUserForbidden BasicError
+type PackagesRestorePackageForUserForbidden struct {
+	BasicError
+}
 
 func (*PackagesRestorePackageForUserForbidden) packagesRestorePackageForUserRes() {}
 
@@ -64415,15 +64863,21 @@ type PackagesRestorePackageForUserNoContent struct{}
 
 func (*PackagesRestorePackageForUserNoContent) packagesRestorePackageForUserRes() {}
 
-type PackagesRestorePackageForUserNotFound BasicError
+type PackagesRestorePackageForUserNotFound struct {
+	BasicError
+}
 
 func (*PackagesRestorePackageForUserNotFound) packagesRestorePackageForUserRes() {}
 
-type PackagesRestorePackageForUserUnauthorized BasicError
+type PackagesRestorePackageForUserUnauthorized struct {
+	BasicError
+}
 
 func (*PackagesRestorePackageForUserUnauthorized) packagesRestorePackageForUserRes() {}
 
-type PackagesRestorePackageVersionForAuthenticatedUserForbidden BasicError
+type PackagesRestorePackageVersionForAuthenticatedUserForbidden struct {
+	BasicError
+}
 
 func (*PackagesRestorePackageVersionForAuthenticatedUserForbidden) packagesRestorePackageVersionForAuthenticatedUserRes() {
 }
@@ -64434,17 +64888,23 @@ type PackagesRestorePackageVersionForAuthenticatedUserNoContent struct{}
 func (*PackagesRestorePackageVersionForAuthenticatedUserNoContent) packagesRestorePackageVersionForAuthenticatedUserRes() {
 }
 
-type PackagesRestorePackageVersionForAuthenticatedUserNotFound BasicError
+type PackagesRestorePackageVersionForAuthenticatedUserNotFound struct {
+	BasicError
+}
 
 func (*PackagesRestorePackageVersionForAuthenticatedUserNotFound) packagesRestorePackageVersionForAuthenticatedUserRes() {
 }
 
-type PackagesRestorePackageVersionForAuthenticatedUserUnauthorized BasicError
+type PackagesRestorePackageVersionForAuthenticatedUserUnauthorized struct {
+	BasicError
+}
 
 func (*PackagesRestorePackageVersionForAuthenticatedUserUnauthorized) packagesRestorePackageVersionForAuthenticatedUserRes() {
 }
 
-type PackagesRestorePackageVersionForOrgForbidden BasicError
+type PackagesRestorePackageVersionForOrgForbidden struct {
+	BasicError
+}
 
 func (*PackagesRestorePackageVersionForOrgForbidden) packagesRestorePackageVersionForOrgRes() {}
 
@@ -64453,15 +64913,21 @@ type PackagesRestorePackageVersionForOrgNoContent struct{}
 
 func (*PackagesRestorePackageVersionForOrgNoContent) packagesRestorePackageVersionForOrgRes() {}
 
-type PackagesRestorePackageVersionForOrgNotFound BasicError
+type PackagesRestorePackageVersionForOrgNotFound struct {
+	BasicError
+}
 
 func (*PackagesRestorePackageVersionForOrgNotFound) packagesRestorePackageVersionForOrgRes() {}
 
-type PackagesRestorePackageVersionForOrgUnauthorized BasicError
+type PackagesRestorePackageVersionForOrgUnauthorized struct {
+	BasicError
+}
 
 func (*PackagesRestorePackageVersionForOrgUnauthorized) packagesRestorePackageVersionForOrgRes() {}
 
-type PackagesRestorePackageVersionForUserForbidden BasicError
+type PackagesRestorePackageVersionForUserForbidden struct {
+	BasicError
+}
 
 func (*PackagesRestorePackageVersionForUserForbidden) packagesRestorePackageVersionForUserRes() {}
 
@@ -64470,11 +64936,15 @@ type PackagesRestorePackageVersionForUserNoContent struct{}
 
 func (*PackagesRestorePackageVersionForUserNoContent) packagesRestorePackageVersionForUserRes() {}
 
-type PackagesRestorePackageVersionForUserNotFound BasicError
+type PackagesRestorePackageVersionForUserNotFound struct {
+	BasicError
+}
 
 func (*PackagesRestorePackageVersionForUserNotFound) packagesRestorePackageVersionForUserRes() {}
 
-type PackagesRestorePackageVersionForUserUnauthorized BasicError
+type PackagesRestorePackageVersionForUserUnauthorized struct {
+	BasicError
+}
 
 func (*PackagesRestorePackageVersionForUserUnauthorized) packagesRestorePackageVersionForUserRes() {}
 
@@ -66955,7 +67425,9 @@ func (s *ProjectOrganizationPermission) UnmarshalText(data []byte) error {
 	}
 }
 
-type ProjectsAddCollaboratorForbidden BasicError
+type ProjectsAddCollaboratorForbidden struct {
+	BasicError
+}
 
 func (*ProjectsAddCollaboratorForbidden) projectsAddCollaboratorRes() {}
 
@@ -66964,7 +67436,9 @@ type ProjectsAddCollaboratorNoContent struct{}
 
 func (*ProjectsAddCollaboratorNoContent) projectsAddCollaboratorRes() {}
 
-type ProjectsAddCollaboratorNotFound BasicError
+type ProjectsAddCollaboratorNotFound struct {
+	BasicError
+}
 
 func (*ProjectsAddCollaboratorNotFound) projectsAddCollaboratorRes() {}
 
@@ -67032,11 +67506,15 @@ func (s *ProjectsAddCollaboratorReqPermission) UnmarshalText(data []byte) error 
 	}
 }
 
-type ProjectsAddCollaboratorUnauthorized BasicError
+type ProjectsAddCollaboratorUnauthorized struct {
+	BasicError
+}
 
 func (*ProjectsAddCollaboratorUnauthorized) projectsAddCollaboratorRes() {}
 
-type ProjectsCreateColumnForbidden BasicError
+type ProjectsCreateColumnForbidden struct {
+	BasicError
+}
 
 func (*ProjectsCreateColumnForbidden) projectsCreateColumnRes() {}
 
@@ -67055,11 +67533,15 @@ func (s *ProjectsCreateColumnReq) SetName(val string) {
 	s.Name = val
 }
 
-type ProjectsCreateColumnUnauthorized BasicError
+type ProjectsCreateColumnUnauthorized struct {
+	BasicError
+}
 
 func (*ProjectsCreateColumnUnauthorized) projectsCreateColumnRes() {}
 
-type ProjectsCreateForAuthenticatedUserForbidden BasicError
+type ProjectsCreateForAuthenticatedUserForbidden struct {
+	BasicError
+}
 
 func (*ProjectsCreateForAuthenticatedUserForbidden) projectsCreateForAuthenticatedUserRes() {}
 
@@ -67090,19 +67572,27 @@ func (s *ProjectsCreateForAuthenticatedUserReq) SetBody(val OptNilString) {
 	s.Body = val
 }
 
-type ProjectsCreateForAuthenticatedUserUnauthorized BasicError
+type ProjectsCreateForAuthenticatedUserUnauthorized struct {
+	BasicError
+}
 
 func (*ProjectsCreateForAuthenticatedUserUnauthorized) projectsCreateForAuthenticatedUserRes() {}
 
-type ProjectsCreateForOrgForbidden BasicError
+type ProjectsCreateForOrgForbidden struct {
+	BasicError
+}
 
 func (*ProjectsCreateForOrgForbidden) projectsCreateForOrgRes() {}
 
-type ProjectsCreateForOrgGone BasicError
+type ProjectsCreateForOrgGone struct {
+	BasicError
+}
 
 func (*ProjectsCreateForOrgGone) projectsCreateForOrgRes() {}
 
-type ProjectsCreateForOrgNotFound BasicError
+type ProjectsCreateForOrgNotFound struct {
+	BasicError
+}
 
 func (*ProjectsCreateForOrgNotFound) projectsCreateForOrgRes() {}
 
@@ -67133,19 +67623,27 @@ func (s *ProjectsCreateForOrgReq) SetBody(val OptString) {
 	s.Body = val
 }
 
-type ProjectsCreateForOrgUnauthorized BasicError
+type ProjectsCreateForOrgUnauthorized struct {
+	BasicError
+}
 
 func (*ProjectsCreateForOrgUnauthorized) projectsCreateForOrgRes() {}
 
-type ProjectsCreateForRepoForbidden BasicError
+type ProjectsCreateForRepoForbidden struct {
+	BasicError
+}
 
 func (*ProjectsCreateForRepoForbidden) projectsCreateForRepoRes() {}
 
-type ProjectsCreateForRepoGone BasicError
+type ProjectsCreateForRepoGone struct {
+	BasicError
+}
 
 func (*ProjectsCreateForRepoGone) projectsCreateForRepoRes() {}
 
-type ProjectsCreateForRepoNotFound BasicError
+type ProjectsCreateForRepoNotFound struct {
+	BasicError
+}
 
 func (*ProjectsCreateForRepoNotFound) projectsCreateForRepoRes() {}
 
@@ -67176,7 +67674,9 @@ func (s *ProjectsCreateForRepoReq) SetBody(val OptString) {
 	s.Body = val
 }
 
-type ProjectsCreateForRepoUnauthorized BasicError
+type ProjectsCreateForRepoUnauthorized struct {
+	BasicError
+}
 
 func (*ProjectsCreateForRepoUnauthorized) projectsCreateForRepoRes() {}
 
@@ -67223,15 +67723,21 @@ type ProjectsDeleteCardNoContent struct{}
 
 func (*ProjectsDeleteCardNoContent) projectsDeleteCardRes() {}
 
-type ProjectsDeleteCardNotFound BasicError
+type ProjectsDeleteCardNotFound struct {
+	BasicError
+}
 
 func (*ProjectsDeleteCardNotFound) projectsDeleteCardRes() {}
 
-type ProjectsDeleteCardUnauthorized BasicError
+type ProjectsDeleteCardUnauthorized struct {
+	BasicError
+}
 
 func (*ProjectsDeleteCardUnauthorized) projectsDeleteCardRes() {}
 
-type ProjectsDeleteColumnForbidden BasicError
+type ProjectsDeleteColumnForbidden struct {
+	BasicError
+}
 
 func (*ProjectsDeleteColumnForbidden) projectsDeleteColumnRes() {}
 
@@ -67240,7 +67746,9 @@ type ProjectsDeleteColumnNoContent struct{}
 
 func (*ProjectsDeleteColumnNoContent) projectsDeleteColumnRes() {}
 
-type ProjectsDeleteColumnUnauthorized BasicError
+type ProjectsDeleteColumnUnauthorized struct {
+	BasicError
+}
 
 func (*ProjectsDeleteColumnUnauthorized) projectsDeleteColumnRes() {}
 
@@ -67282,7 +67790,9 @@ func (s *ProjectsDeleteForbidden) SetErrors(val []string) {
 
 func (*ProjectsDeleteForbidden) projectsDeleteRes() {}
 
-type ProjectsDeleteGone BasicError
+type ProjectsDeleteGone struct {
+	BasicError
+}
 
 func (*ProjectsDeleteGone) projectsDeleteRes() {}
 
@@ -67291,55 +67801,81 @@ type ProjectsDeleteNoContent struct{}
 
 func (*ProjectsDeleteNoContent) projectsDeleteRes() {}
 
-type ProjectsDeleteNotFound BasicError
+type ProjectsDeleteNotFound struct {
+	BasicError
+}
 
 func (*ProjectsDeleteNotFound) projectsDeleteRes() {}
 
-type ProjectsDeleteUnauthorized BasicError
+type ProjectsDeleteUnauthorized struct {
+	BasicError
+}
 
 func (*ProjectsDeleteUnauthorized) projectsDeleteRes() {}
 
-type ProjectsGetCardForbidden BasicError
+type ProjectsGetCardForbidden struct {
+	BasicError
+}
 
 func (*ProjectsGetCardForbidden) projectsGetCardRes() {}
 
-type ProjectsGetCardNotFound BasicError
+type ProjectsGetCardNotFound struct {
+	BasicError
+}
 
 func (*ProjectsGetCardNotFound) projectsGetCardRes() {}
 
-type ProjectsGetCardUnauthorized BasicError
+type ProjectsGetCardUnauthorized struct {
+	BasicError
+}
 
 func (*ProjectsGetCardUnauthorized) projectsGetCardRes() {}
 
-type ProjectsGetColumnForbidden BasicError
+type ProjectsGetColumnForbidden struct {
+	BasicError
+}
 
 func (*ProjectsGetColumnForbidden) projectsGetColumnRes() {}
 
-type ProjectsGetColumnNotFound BasicError
+type ProjectsGetColumnNotFound struct {
+	BasicError
+}
 
 func (*ProjectsGetColumnNotFound) projectsGetColumnRes() {}
 
-type ProjectsGetColumnUnauthorized BasicError
+type ProjectsGetColumnUnauthorized struct {
+	BasicError
+}
 
 func (*ProjectsGetColumnUnauthorized) projectsGetColumnRes() {}
 
-type ProjectsGetForbidden BasicError
+type ProjectsGetForbidden struct {
+	BasicError
+}
 
 func (*ProjectsGetForbidden) projectsGetRes() {}
 
-type ProjectsGetPermissionForUserForbidden BasicError
+type ProjectsGetPermissionForUserForbidden struct {
+	BasicError
+}
 
 func (*ProjectsGetPermissionForUserForbidden) projectsGetPermissionForUserRes() {}
 
-type ProjectsGetPermissionForUserNotFound BasicError
+type ProjectsGetPermissionForUserNotFound struct {
+	BasicError
+}
 
 func (*ProjectsGetPermissionForUserNotFound) projectsGetPermissionForUserRes() {}
 
-type ProjectsGetPermissionForUserUnauthorized BasicError
+type ProjectsGetPermissionForUserUnauthorized struct {
+	BasicError
+}
 
 func (*ProjectsGetPermissionForUserUnauthorized) projectsGetPermissionForUserRes() {}
 
-type ProjectsGetUnauthorized BasicError
+type ProjectsGetUnauthorized struct {
+	BasicError
+}
 
 func (*ProjectsGetUnauthorized) projectsGetRes() {}
 
@@ -67391,7 +67927,9 @@ func (s *ProjectsListCardsArchivedState) UnmarshalText(data []byte) error {
 	}
 }
 
-type ProjectsListCardsForbidden BasicError
+type ProjectsListCardsForbidden struct {
+	BasicError
+}
 
 func (*ProjectsListCardsForbidden) projectsListCardsRes() {}
 
@@ -67423,7 +67961,9 @@ func (s *ProjectsListCardsOKHeaders) SetResponse(val []ProjectCard) {
 
 func (*ProjectsListCardsOKHeaders) projectsListCardsRes() {}
 
-type ProjectsListCardsUnauthorized BasicError
+type ProjectsListCardsUnauthorized struct {
+	BasicError
+}
 
 func (*ProjectsListCardsUnauthorized) projectsListCardsRes() {}
 
@@ -67475,11 +68015,15 @@ func (s *ProjectsListCollaboratorsAffiliation) UnmarshalText(data []byte) error 
 	}
 }
 
-type ProjectsListCollaboratorsForbidden BasicError
+type ProjectsListCollaboratorsForbidden struct {
+	BasicError
+}
 
 func (*ProjectsListCollaboratorsForbidden) projectsListCollaboratorsRes() {}
 
-type ProjectsListCollaboratorsNotFound BasicError
+type ProjectsListCollaboratorsNotFound struct {
+	BasicError
+}
 
 func (*ProjectsListCollaboratorsNotFound) projectsListCollaboratorsRes() {}
 
@@ -67511,11 +68055,15 @@ func (s *ProjectsListCollaboratorsOKHeaders) SetResponse(val []SimpleUser) {
 
 func (*ProjectsListCollaboratorsOKHeaders) projectsListCollaboratorsRes() {}
 
-type ProjectsListCollaboratorsUnauthorized BasicError
+type ProjectsListCollaboratorsUnauthorized struct {
+	BasicError
+}
 
 func (*ProjectsListCollaboratorsUnauthorized) projectsListCollaboratorsRes() {}
 
-type ProjectsListColumnsForbidden BasicError
+type ProjectsListColumnsForbidden struct {
+	BasicError
+}
 
 func (*ProjectsListColumnsForbidden) projectsListColumnsRes() {}
 
@@ -67547,7 +68095,9 @@ func (s *ProjectsListColumnsOKHeaders) SetResponse(val []ProjectColumn) {
 
 func (*ProjectsListColumnsOKHeaders) projectsListColumnsRes() {}
 
-type ProjectsListColumnsUnauthorized BasicError
+type ProjectsListColumnsUnauthorized struct {
+	BasicError
+}
 
 func (*ProjectsListColumnsUnauthorized) projectsListColumnsRes() {}
 
@@ -67627,15 +68177,21 @@ func (s *ProjectsListForOrgState) UnmarshalText(data []byte) error {
 	}
 }
 
-type ProjectsListForRepoForbidden BasicError
+type ProjectsListForRepoForbidden struct {
+	BasicError
+}
 
 func (*ProjectsListForRepoForbidden) projectsListForRepoRes() {}
 
-type ProjectsListForRepoGone BasicError
+type ProjectsListForRepoGone struct {
+	BasicError
+}
 
 func (*ProjectsListForRepoGone) projectsListForRepoRes() {}
 
-type ProjectsListForRepoNotFound BasicError
+type ProjectsListForRepoNotFound struct {
+	BasicError
+}
 
 func (*ProjectsListForRepoNotFound) projectsListForRepoRes() {}
 
@@ -67715,7 +68271,9 @@ func (s *ProjectsListForRepoState) UnmarshalText(data []byte) error {
 	}
 }
 
-type ProjectsListForRepoUnauthorized BasicError
+type ProjectsListForRepoUnauthorized struct {
+	BasicError
+}
 
 func (*ProjectsListForRepoUnauthorized) projectsListForRepoRes() {}
 
@@ -67990,7 +68548,9 @@ type ProjectsMoveColumnCreated struct{}
 
 func (*ProjectsMoveColumnCreated) projectsMoveColumnRes() {}
 
-type ProjectsMoveColumnForbidden BasicError
+type ProjectsMoveColumnForbidden struct {
+	BasicError
+}
 
 func (*ProjectsMoveColumnForbidden) projectsMoveColumnRes() {}
 
@@ -68010,11 +68570,15 @@ func (s *ProjectsMoveColumnReq) SetPosition(val string) {
 	s.Position = val
 }
 
-type ProjectsMoveColumnUnauthorized BasicError
+type ProjectsMoveColumnUnauthorized struct {
+	BasicError
+}
 
 func (*ProjectsMoveColumnUnauthorized) projectsMoveColumnRes() {}
 
-type ProjectsRemoveCollaboratorForbidden BasicError
+type ProjectsRemoveCollaboratorForbidden struct {
+	BasicError
+}
 
 func (*ProjectsRemoveCollaboratorForbidden) projectsRemoveCollaboratorRes() {}
 
@@ -68023,19 +68587,27 @@ type ProjectsRemoveCollaboratorNoContent struct{}
 
 func (*ProjectsRemoveCollaboratorNoContent) projectsRemoveCollaboratorRes() {}
 
-type ProjectsRemoveCollaboratorNotFound BasicError
+type ProjectsRemoveCollaboratorNotFound struct {
+	BasicError
+}
 
 func (*ProjectsRemoveCollaboratorNotFound) projectsRemoveCollaboratorRes() {}
 
-type ProjectsRemoveCollaboratorUnauthorized BasicError
+type ProjectsRemoveCollaboratorUnauthorized struct {
+	BasicError
+}
 
 func (*ProjectsRemoveCollaboratorUnauthorized) projectsRemoveCollaboratorRes() {}
 
-type ProjectsUpdateCardForbidden BasicError
+type ProjectsUpdateCardForbidden struct {
+	BasicError
+}
 
 func (*ProjectsUpdateCardForbidden) projectsUpdateCardRes() {}
 
-type ProjectsUpdateCardNotFound BasicError
+type ProjectsUpdateCardNotFound struct {
+	BasicError
+}
 
 func (*ProjectsUpdateCardNotFound) projectsUpdateCardRes() {}
 
@@ -68066,11 +68638,15 @@ func (s *ProjectsUpdateCardReq) SetArchived(val OptBool) {
 	s.Archived = val
 }
 
-type ProjectsUpdateCardUnauthorized BasicError
+type ProjectsUpdateCardUnauthorized struct {
+	BasicError
+}
 
 func (*ProjectsUpdateCardUnauthorized) projectsUpdateCardRes() {}
 
-type ProjectsUpdateColumnForbidden BasicError
+type ProjectsUpdateColumnForbidden struct {
+	BasicError
+}
 
 func (*ProjectsUpdateColumnForbidden) projectsUpdateColumnRes() {}
 
@@ -68089,7 +68665,9 @@ func (s *ProjectsUpdateColumnReq) SetName(val string) {
 	s.Name = val
 }
 
-type ProjectsUpdateColumnUnauthorized BasicError
+type ProjectsUpdateColumnUnauthorized struct {
+	BasicError
+}
 
 func (*ProjectsUpdateColumnUnauthorized) projectsUpdateColumnRes() {}
 
@@ -68131,7 +68709,9 @@ func (s *ProjectsUpdateForbidden) SetErrors(val []string) {
 
 func (*ProjectsUpdateForbidden) projectsUpdateRes() {}
 
-type ProjectsUpdateGone BasicError
+type ProjectsUpdateGone struct {
+	BasicError
+}
 
 func (*ProjectsUpdateGone) projectsUpdateRes() {}
 
@@ -68259,7 +68839,9 @@ func (s *ProjectsUpdateReqOrganizationPermission) UnmarshalText(data []byte) err
 	}
 }
 
-type ProjectsUpdateUnauthorized BasicError
+type ProjectsUpdateUnauthorized struct {
+	BasicError
+}
 
 func (*ProjectsUpdateUnauthorized) projectsUpdateRes() {}
 
@@ -75206,11 +75788,15 @@ func (s *PullsDismissReviewReq) SetEvent(val OptString) {
 	s.Event = val
 }
 
-type PullsGetInternalServerError BasicError
+type PullsGetInternalServerError struct {
+	BasicError
+}
 
 func (*PullsGetInternalServerError) pullsGetRes() {}
 
-type PullsGetNotFound BasicError
+type PullsGetNotFound struct {
+	BasicError
+}
 
 func (*PullsGetNotFound) pullsGetRes() {}
 
@@ -75703,7 +76289,9 @@ func (s *PullsMergeConflict) SetDocumentationURL(val OptString) {
 
 func (*PullsMergeConflict) pullsMergeRes() {}
 
-type PullsMergeForbidden BasicError
+type PullsMergeForbidden struct {
+	BasicError
+}
 
 func (*PullsMergeForbidden) pullsMergeRes() {}
 
@@ -75734,7 +76322,9 @@ func (s *PullsMergeMethodNotAllowed) SetDocumentationURL(val OptString) {
 
 func (*PullsMergeMethodNotAllowed) pullsMergeRes() {}
 
-type PullsMergeNotFound BasicError
+type PullsMergeNotFound struct {
+	BasicError
+}
 
 func (*PullsMergeNotFound) pullsMergeRes() {}
 
@@ -75865,11 +76455,15 @@ func (s *PullsRemoveRequestedReviewersReq) SetTeamReviewers(val []string) {
 	s.TeamReviewers = val
 }
 
-type PullsSubmitReviewForbidden BasicError
+type PullsSubmitReviewForbidden struct {
+	BasicError
+}
 
 func (*PullsSubmitReviewForbidden) pullsSubmitReviewRes() {}
 
-type PullsSubmitReviewNotFound BasicError
+type PullsSubmitReviewNotFound struct {
+	BasicError
+}
 
 func (*PullsSubmitReviewNotFound) pullsSubmitReviewRes() {}
 
@@ -76604,11 +77198,15 @@ func (s *ReactionRollup) SetRocket(val int) {
 	s.Rocket = val
 }
 
-type ReactionsCreateForCommitCommentCreated Reaction
+type ReactionsCreateForCommitCommentCreated struct {
+	Reaction
+}
 
 func (*ReactionsCreateForCommitCommentCreated) reactionsCreateForCommitCommentRes() {}
 
-type ReactionsCreateForCommitCommentOK Reaction
+type ReactionsCreateForCommitCommentOK struct {
+	Reaction
+}
 
 func (*ReactionsCreateForCommitCommentOK) reactionsCreateForCommitCommentRes() {}
 
@@ -76713,11 +77311,15 @@ func (s *ReactionsCreateForCommitCommentReqContent) UnmarshalText(data []byte) e
 	}
 }
 
-type ReactionsCreateForIssueCommentCreated Reaction
+type ReactionsCreateForIssueCommentCreated struct {
+	Reaction
+}
 
 func (*ReactionsCreateForIssueCommentCreated) reactionsCreateForIssueCommentRes() {}
 
-type ReactionsCreateForIssueCommentOK Reaction
+type ReactionsCreateForIssueCommentOK struct {
+	Reaction
+}
 
 func (*ReactionsCreateForIssueCommentOK) reactionsCreateForIssueCommentRes() {}
 
@@ -76822,11 +77424,15 @@ func (s *ReactionsCreateForIssueCommentReqContent) UnmarshalText(data []byte) er
 	}
 }
 
-type ReactionsCreateForIssueCreated Reaction
+type ReactionsCreateForIssueCreated struct {
+	Reaction
+}
 
 func (*ReactionsCreateForIssueCreated) reactionsCreateForIssueRes() {}
 
-type ReactionsCreateForIssueOK Reaction
+type ReactionsCreateForIssueOK struct {
+	Reaction
+}
 
 func (*ReactionsCreateForIssueOK) reactionsCreateForIssueRes() {}
 
@@ -76931,12 +77537,16 @@ func (s *ReactionsCreateForIssueReqContent) UnmarshalText(data []byte) error {
 	}
 }
 
-type ReactionsCreateForPullRequestReviewCommentCreated Reaction
+type ReactionsCreateForPullRequestReviewCommentCreated struct {
+	Reaction
+}
 
 func (*ReactionsCreateForPullRequestReviewCommentCreated) reactionsCreateForPullRequestReviewCommentRes() {
 }
 
-type ReactionsCreateForPullRequestReviewCommentOK Reaction
+type ReactionsCreateForPullRequestReviewCommentOK struct {
+	Reaction
+}
 
 func (*ReactionsCreateForPullRequestReviewCommentOK) reactionsCreateForPullRequestReviewCommentRes() {
 }
@@ -77042,11 +77652,15 @@ func (s *ReactionsCreateForPullRequestReviewCommentReqContent) UnmarshalText(dat
 	}
 }
 
-type ReactionsCreateForReleaseCreated Reaction
+type ReactionsCreateForReleaseCreated struct {
+	Reaction
+}
 
 func (*ReactionsCreateForReleaseCreated) reactionsCreateForReleaseRes() {}
 
-type ReactionsCreateForReleaseOK Reaction
+type ReactionsCreateForReleaseOK struct {
+	Reaction
+}
 
 func (*ReactionsCreateForReleaseOK) reactionsCreateForReleaseRes() {}
 
@@ -77137,12 +77751,16 @@ func (s *ReactionsCreateForReleaseReqContent) UnmarshalText(data []byte) error {
 	}
 }
 
-type ReactionsCreateForTeamDiscussionCommentInOrgCreated Reaction
+type ReactionsCreateForTeamDiscussionCommentInOrgCreated struct {
+	Reaction
+}
 
 func (*ReactionsCreateForTeamDiscussionCommentInOrgCreated) reactionsCreateForTeamDiscussionCommentInOrgRes() {
 }
 
-type ReactionsCreateForTeamDiscussionCommentInOrgOK Reaction
+type ReactionsCreateForTeamDiscussionCommentInOrgOK struct {
+	Reaction
+}
 
 func (*ReactionsCreateForTeamDiscussionCommentInOrgOK) reactionsCreateForTeamDiscussionCommentInOrgRes() {
 }
@@ -77349,11 +77967,15 @@ func (s *ReactionsCreateForTeamDiscussionCommentLegacyReqContent) UnmarshalText(
 	}
 }
 
-type ReactionsCreateForTeamDiscussionInOrgCreated Reaction
+type ReactionsCreateForTeamDiscussionInOrgCreated struct {
+	Reaction
+}
 
 func (*ReactionsCreateForTeamDiscussionInOrgCreated) reactionsCreateForTeamDiscussionInOrgRes() {}
 
-type ReactionsCreateForTeamDiscussionInOrgOK Reaction
+type ReactionsCreateForTeamDiscussionInOrgOK struct {
+	Reaction
+}
 
 func (*ReactionsCreateForTeamDiscussionInOrgOK) reactionsCreateForTeamDiscussionInOrgRes() {}
 
@@ -77577,11 +78199,15 @@ type ReactionsDeleteForTeamDiscussionCommentNoContent struct{}
 // ReactionsDeleteForTeamDiscussionNoContent is response for ReactionsDeleteForTeamDiscussion operation.
 type ReactionsDeleteForTeamDiscussionNoContent struct{}
 
-type ReactionsDeleteLegacyForbidden BasicError
+type ReactionsDeleteLegacyForbidden struct {
+	BasicError
+}
 
 func (*ReactionsDeleteLegacyForbidden) reactionsDeleteLegacyRes() {}
 
-type ReactionsDeleteLegacyGone BasicError
+type ReactionsDeleteLegacyGone struct {
+	BasicError
+}
 
 func (*ReactionsDeleteLegacyGone) reactionsDeleteLegacyRes() {}
 
@@ -77590,7 +78216,9 @@ type ReactionsDeleteLegacyNoContent struct{}
 
 func (*ReactionsDeleteLegacyNoContent) reactionsDeleteLegacyRes() {}
 
-type ReactionsDeleteLegacyUnauthorized BasicError
+type ReactionsDeleteLegacyUnauthorized struct {
+	BasicError
+}
 
 func (*ReactionsDeleteLegacyUnauthorized) reactionsDeleteLegacyRes() {}
 
@@ -77899,11 +78527,15 @@ func (s *ReactionsListForIssueContent) UnmarshalText(data []byte) error {
 	}
 }
 
-type ReactionsListForIssueGone BasicError
+type ReactionsListForIssueGone struct {
+	BasicError
+}
 
 func (*ReactionsListForIssueGone) reactionsListForIssueRes() {}
 
-type ReactionsListForIssueNotFound BasicError
+type ReactionsListForIssueNotFound struct {
+	BasicError
+}
 
 func (*ReactionsListForIssueNotFound) reactionsListForIssueRes() {}
 
@@ -80009,11 +80641,15 @@ func (s *RepoSearchResultItemPermissions) SetPull(val bool) {
 	s.Pull = val
 }
 
-type ReposAcceptInvitationConflict BasicError
+type ReposAcceptInvitationConflict struct {
+	BasicError
+}
 
 func (*ReposAcceptInvitationConflict) reposAcceptInvitationRes() {}
 
-type ReposAcceptInvitationForbidden BasicError
+type ReposAcceptInvitationForbidden struct {
+	BasicError
+}
 
 func (*ReposAcceptInvitationForbidden) reposAcceptInvitationRes() {}
 
@@ -80022,7 +80658,9 @@ type ReposAcceptInvitationNoContent struct{}
 
 func (*ReposAcceptInvitationNoContent) reposAcceptInvitationRes() {}
 
-type ReposAcceptInvitationNotFound BasicError
+type ReposAcceptInvitationNotFound struct {
+	BasicError
+}
 
 func (*ReposAcceptInvitationNotFound) reposAcceptInvitationRes() {}
 
@@ -80227,11 +80865,15 @@ func (s *ReposAddCollaboratorReqPermission) UnmarshalText(data []byte) error {
 	}
 }
 
-type ReposAddStatusCheckContextsForbidden BasicError
+type ReposAddStatusCheckContextsForbidden struct {
+	BasicError
+}
 
 func (*ReposAddStatusCheckContextsForbidden) reposAddStatusCheckContextsRes() {}
 
-type ReposAddStatusCheckContextsNotFound BasicError
+type ReposAddStatusCheckContextsNotFound struct {
+	BasicError
+}
 
 func (*ReposAddStatusCheckContextsNotFound) reposAddStatusCheckContextsRes() {}
 
@@ -80516,11 +81158,15 @@ type ReposCheckVulnerabilityAlertsNotFound struct{}
 
 func (*ReposCheckVulnerabilityAlertsNotFound) reposCheckVulnerabilityAlertsRes() {}
 
-type ReposCompareCommitsInternalServerError BasicError
+type ReposCompareCommitsInternalServerError struct {
+	BasicError
+}
 
 func (*ReposCompareCommitsInternalServerError) reposCompareCommitsRes() {}
 
-type ReposCompareCommitsNotFound BasicError
+type ReposCompareCommitsNotFound struct {
+	BasicError
+}
 
 func (*ReposCompareCommitsNotFound) reposCompareCommitsRes() {}
 
@@ -81278,15 +81924,21 @@ func (s *ReposCreateDispatchEventReqClientPayload) init() ReposCreateDispatchEve
 	return m
 }
 
-type ReposCreateForAuthenticatedUserBadRequest BasicError
+type ReposCreateForAuthenticatedUserBadRequest struct {
+	BasicError
+}
 
 func (*ReposCreateForAuthenticatedUserBadRequest) reposCreateForAuthenticatedUserRes() {}
 
-type ReposCreateForAuthenticatedUserForbidden BasicError
+type ReposCreateForAuthenticatedUserForbidden struct {
+	BasicError
+}
 
 func (*ReposCreateForAuthenticatedUserForbidden) reposCreateForAuthenticatedUserRes() {}
 
-type ReposCreateForAuthenticatedUserNotFound BasicError
+type ReposCreateForAuthenticatedUserNotFound struct {
+	BasicError
+}
 
 func (*ReposCreateForAuthenticatedUserNotFound) reposCreateForAuthenticatedUserRes() {}
 
@@ -81510,19 +82162,27 @@ func (s *ReposCreateForAuthenticatedUserReq) SetIsTemplate(val OptBool) {
 	s.IsTemplate = val
 }
 
-type ReposCreateForAuthenticatedUserUnauthorized BasicError
+type ReposCreateForAuthenticatedUserUnauthorized struct {
+	BasicError
+}
 
 func (*ReposCreateForAuthenticatedUserUnauthorized) reposCreateForAuthenticatedUserRes() {}
 
-type ReposCreateForkBadRequest BasicError
+type ReposCreateForkBadRequest struct {
+	BasicError
+}
 
 func (*ReposCreateForkBadRequest) reposCreateForkRes() {}
 
-type ReposCreateForkForbidden BasicError
+type ReposCreateForkForbidden struct {
+	BasicError
+}
 
 func (*ReposCreateForkForbidden) reposCreateForkRes() {}
 
-type ReposCreateForkNotFound BasicError
+type ReposCreateForkNotFound struct {
+	BasicError
+}
 
 func (*ReposCreateForkNotFound) reposCreateForkRes() {}
 
@@ -81839,19 +82499,27 @@ func (s *ReposCreateInOrgReqVisibility) UnmarshalText(data []byte) error {
 	}
 }
 
-type ReposCreateOrUpdateFileContentsConflict BasicError
+type ReposCreateOrUpdateFileContentsConflict struct {
+	BasicError
+}
 
 func (*ReposCreateOrUpdateFileContentsConflict) reposCreateOrUpdateFileContentsRes() {}
 
-type ReposCreateOrUpdateFileContentsCreated FileCommit
+type ReposCreateOrUpdateFileContentsCreated struct {
+	FileCommit
+}
 
 func (*ReposCreateOrUpdateFileContentsCreated) reposCreateOrUpdateFileContentsRes() {}
 
-type ReposCreateOrUpdateFileContentsNotFound BasicError
+type ReposCreateOrUpdateFileContentsNotFound struct {
+	BasicError
+}
 
 func (*ReposCreateOrUpdateFileContentsNotFound) reposCreateOrUpdateFileContentsRes() {}
 
-type ReposCreateOrUpdateFileContentsOK FileCommit
+type ReposCreateOrUpdateFileContentsOK struct {
+	FileCommit
+}
 
 func (*ReposCreateOrUpdateFileContentsOK) reposCreateOrUpdateFileContentsRes() {}
 
@@ -82257,11 +82925,15 @@ func (s *ReposCreateUsingTemplateReq) SetPrivate(val OptBool) {
 	s.Private = val
 }
 
-type ReposCreateWebhookForbidden BasicError
+type ReposCreateWebhookForbidden struct {
+	BasicError
+}
 
 func (*ReposCreateWebhookForbidden) reposCreateWebhookRes() {}
 
-type ReposCreateWebhookNotFound BasicError
+type ReposCreateWebhookNotFound struct {
+	BasicError
+}
 
 func (*ReposCreateWebhookNotFound) reposCreateWebhookRes() {}
 
@@ -82390,11 +83062,15 @@ func (s *ReposCreateWebhookReqConfig) SetDigest(val OptString) {
 	s.Digest = val
 }
 
-type ReposDeclineInvitationConflict BasicError
+type ReposDeclineInvitationConflict struct {
+	BasicError
+}
 
 func (*ReposDeclineInvitationConflict) reposDeclineInvitationRes() {}
 
-type ReposDeclineInvitationForbidden BasicError
+type ReposDeclineInvitationForbidden struct {
+	BasicError
+}
 
 func (*ReposDeclineInvitationForbidden) reposDeclineInvitationRes() {}
 
@@ -82403,7 +83079,9 @@ type ReposDeclineInvitationNoContent struct{}
 
 func (*ReposDeclineInvitationNoContent) reposDeclineInvitationRes() {}
 
-type ReposDeclineInvitationNotFound BasicError
+type ReposDeclineInvitationNotFound struct {
+	BasicError
+}
 
 func (*ReposDeclineInvitationNotFound) reposDeclineInvitationRes() {}
 
@@ -82446,11 +83124,15 @@ type ReposDeleteDeploymentNoContent struct{}
 
 func (*ReposDeleteDeploymentNoContent) reposDeleteDeploymentRes() {}
 
-type ReposDeleteFileConflict BasicError
+type ReposDeleteFileConflict struct {
+	BasicError
+}
 
 func (*ReposDeleteFileConflict) reposDeleteFileRes() {}
 
-type ReposDeleteFileNotFound BasicError
+type ReposDeleteFileNotFound struct {
+	BasicError
+}
 
 func (*ReposDeleteFileNotFound) reposDeleteFileRes() {}
 
@@ -82608,7 +83290,9 @@ type ReposDeleteNoContent struct{}
 
 func (*ReposDeleteNoContent) reposDeleteRes() {}
 
-type ReposDeleteNotFound BasicError
+type ReposDeleteNotFound struct {
+	BasicError
+}
 
 func (*ReposDeleteNotFound) reposDeleteRes() {}
 
@@ -82628,7 +83312,9 @@ type ReposDeleteReleaseAssetNoContent struct{}
 // ReposDeleteReleaseNoContent is response for ReposDeleteRelease operation.
 type ReposDeleteReleaseNoContent struct{}
 
-type ReposDeleteTemporaryRedirect BasicError
+type ReposDeleteTemporaryRedirect struct {
+	BasicError
+}
 
 func (*ReposDeleteTemporaryRedirect) reposDeleteRes() {}
 
@@ -82696,11 +83382,15 @@ type ReposGetAppsWithAccessToProtectedBranchOKApplicationJSON []Integration
 func (*ReposGetAppsWithAccessToProtectedBranchOKApplicationJSON) reposGetAppsWithAccessToProtectedBranchRes() {
 }
 
-type ReposGetBranchMovedPermanently BasicError
+type ReposGetBranchMovedPermanently struct {
+	BasicError
+}
 
 func (*ReposGetBranchMovedPermanently) reposGetBranchRes() {}
 
-type ReposGetBranchNotFound BasicError
+type ReposGetBranchNotFound struct {
+	BasicError
+}
 
 func (*ReposGetBranchNotFound) reposGetBranchRes() {}
 
@@ -82712,11 +83402,15 @@ type ReposGetCommitActivityStatsOKApplicationJSON []CommitActivity
 
 func (*ReposGetCommitActivityStatsOKApplicationJSON) reposGetCommitActivityStatsRes() {}
 
-type ReposGetCommitInternalServerError BasicError
+type ReposGetCommitInternalServerError struct {
+	BasicError
+}
 
 func (*ReposGetCommitInternalServerError) reposGetCommitRes() {}
 
-type ReposGetCommitNotFound BasicError
+type ReposGetCommitNotFound struct {
+	BasicError
+}
 
 func (*ReposGetCommitNotFound) reposGetCommitRes() {}
 
@@ -82724,15 +83418,21 @@ type ReposGetContributorsStatsOKApplicationJSON []ContributorActivity
 
 func (*ReposGetContributorsStatsOKApplicationJSON) reposGetContributorsStatsRes() {}
 
-type ReposGetForbidden BasicError
+type ReposGetForbidden struct {
+	BasicError
+}
 
 func (*ReposGetForbidden) reposGetRes() {}
 
-type ReposGetMovedPermanently BasicError
+type ReposGetMovedPermanently struct {
+	BasicError
+}
 
 func (*ReposGetMovedPermanently) reposGetRes() {}
 
-type ReposGetNotFound BasicError
+type ReposGetNotFound struct {
+	BasicError
+}
 
 func (*ReposGetNotFound) reposGetRes() {}
 
@@ -82956,19 +83656,27 @@ func (s *ReposListCommitStatusesForRefOKHeaders) SetResponse(val []Status) {
 
 func (*ReposListCommitStatusesForRefOKHeaders) reposListCommitStatusesForRefRes() {}
 
-type ReposListCommitsBadRequest BasicError
+type ReposListCommitsBadRequest struct {
+	BasicError
+}
 
 func (*ReposListCommitsBadRequest) reposListCommitsRes() {}
 
-type ReposListCommitsConflict BasicError
+type ReposListCommitsConflict struct {
+	BasicError
+}
 
 func (*ReposListCommitsConflict) reposListCommitsRes() {}
 
-type ReposListCommitsInternalServerError BasicError
+type ReposListCommitsInternalServerError struct {
+	BasicError
+}
 
 func (*ReposListCommitsInternalServerError) reposListCommitsRes() {}
 
-type ReposListCommitsNotFound BasicError
+type ReposListCommitsNotFound struct {
+	BasicError
+}
 
 func (*ReposListCommitsNotFound) reposListCommitsRes() {}
 
@@ -83000,7 +83708,9 @@ func (s *ReposListCommitsOKHeaders) SetResponse(val []Commit) {
 
 func (*ReposListCommitsOKHeaders) reposListCommitsRes() {}
 
-type ReposListContributorsForbidden BasicError
+type ReposListContributorsForbidden struct {
+	BasicError
+}
 
 func (*ReposListContributorsForbidden) reposListContributorsRes() {}
 
@@ -83009,7 +83719,9 @@ type ReposListContributorsNoContent struct{}
 
 func (*ReposListContributorsNoContent) reposListContributorsRes() {}
 
-type ReposListContributorsNotFound BasicError
+type ReposListContributorsNotFound struct {
+	BasicError
+}
 
 func (*ReposListContributorsNotFound) reposListContributorsRes() {}
 
@@ -83162,7 +83874,9 @@ func (s *ReposListForAuthenticatedUserDirection) UnmarshalText(data []byte) erro
 	}
 }
 
-type ReposListForAuthenticatedUserForbidden BasicError
+type ReposListForAuthenticatedUserForbidden struct {
+	BasicError
+}
 
 func (*ReposListForAuthenticatedUserForbidden) reposListForAuthenticatedUserRes() {}
 
@@ -83287,7 +84001,9 @@ func (s *ReposListForAuthenticatedUserType) UnmarshalText(data []byte) error {
 	}
 }
 
-type ReposListForAuthenticatedUserUnauthorized BasicError
+type ReposListForAuthenticatedUserUnauthorized struct {
+	BasicError
+}
 
 func (*ReposListForAuthenticatedUserUnauthorized) reposListForAuthenticatedUserRes() {}
 
@@ -83790,12 +84506,16 @@ func (s *ReposListForksSort) UnmarshalText(data []byte) error {
 	}
 }
 
-type ReposListInvitationsForAuthenticatedUserForbidden BasicError
+type ReposListInvitationsForAuthenticatedUserForbidden struct {
+	BasicError
+}
 
 func (*ReposListInvitationsForAuthenticatedUserForbidden) reposListInvitationsForAuthenticatedUserRes() {
 }
 
-type ReposListInvitationsForAuthenticatedUserNotFound BasicError
+type ReposListInvitationsForAuthenticatedUserNotFound struct {
+	BasicError
+}
 
 func (*ReposListInvitationsForAuthenticatedUserNotFound) reposListInvitationsForAuthenticatedUserRes() {
 }
@@ -83829,7 +84549,9 @@ func (s *ReposListInvitationsForAuthenticatedUserOKHeaders) SetResponse(val []Re
 func (*ReposListInvitationsForAuthenticatedUserOKHeaders) reposListInvitationsForAuthenticatedUserRes() {
 }
 
-type ReposListInvitationsForAuthenticatedUserUnauthorized BasicError
+type ReposListInvitationsForAuthenticatedUserUnauthorized struct {
+	BasicError
+}
 
 func (*ReposListInvitationsForAuthenticatedUserUnauthorized) reposListInvitationsForAuthenticatedUserRes() {
 }
@@ -84516,11 +85238,15 @@ func (s *ReposRemoveUserAccessRestrictionsReq0) SetUsers(val []string) {
 	s.Users = val
 }
 
-type ReposRenameBranchForbidden BasicError
+type ReposRenameBranchForbidden struct {
+	BasicError
+}
 
 func (*ReposRenameBranchForbidden) reposRenameBranchRes() {}
 
-type ReposRenameBranchNotFound BasicError
+type ReposRenameBranchNotFound struct {
+	BasicError
+}
 
 func (*ReposRenameBranchNotFound) reposRenameBranchRes() {}
 
@@ -84937,11 +85663,15 @@ func (s *ReposTransferReq) SetTeamIds(val []int) {
 	s.TeamIds = val
 }
 
-type ReposUpdateBranchProtectionForbidden BasicError
+type ReposUpdateBranchProtectionForbidden struct {
+	BasicError
+}
 
 func (*ReposUpdateBranchProtectionForbidden) reposUpdateBranchProtectionRes() {}
 
-type ReposUpdateBranchProtectionNotFound BasicError
+type ReposUpdateBranchProtectionNotFound struct {
+	BasicError
+}
 
 func (*ReposUpdateBranchProtectionNotFound) reposUpdateBranchProtectionRes() {}
 
@@ -85231,7 +85961,9 @@ func (s *ReposUpdateCommitCommentReq) SetBody(val string) {
 	s.Body = val
 }
 
-type ReposUpdateForbidden BasicError
+type ReposUpdateForbidden struct {
+	BasicError
+}
 
 func (*ReposUpdateForbidden) reposUpdateRes() {}
 
@@ -85315,7 +86047,9 @@ func (s *ReposUpdateInvitationReqPermissions) UnmarshalText(data []byte) error {
 	}
 }
 
-type ReposUpdateNotFound BasicError
+type ReposUpdateNotFound struct {
+	BasicError
+}
 
 func (*ReposUpdateNotFound) reposUpdateRes() {}
 
@@ -85924,7 +86658,9 @@ func (s *ReposUpdateStatusCheckProtectionReq) SetContexts(val []string) {
 	s.Contexts = val
 }
 
-type ReposUpdateTemporaryRedirect BasicError
+type ReposUpdateTemporaryRedirect struct {
+	BasicError
+}
 
 func (*ReposUpdateTemporaryRedirect) reposUpdateRes() {}
 
@@ -89550,7 +90286,9 @@ func (s *RunnerLabelsItemType) UnmarshalText(data []byte) error {
 	}
 }
 
-type ScimDeleteUserFromOrgForbidden ScimError
+type ScimDeleteUserFromOrgForbidden struct {
+	ScimError
+}
 
 func (*ScimDeleteUserFromOrgForbidden) scimDeleteUserFromOrgRes() {}
 
@@ -89559,7 +90297,9 @@ type ScimDeleteUserFromOrgNoContent struct{}
 
 func (*ScimDeleteUserFromOrgNoContent) scimDeleteUserFromOrgRes() {}
 
-type ScimDeleteUserFromOrgNotFound ScimError
+type ScimDeleteUserFromOrgNotFound struct {
+	ScimError
+}
 
 func (*ScimDeleteUserFromOrgNotFound) scimDeleteUserFromOrgRes() {}
 
@@ -90799,11 +91539,15 @@ func (s *SearchIssuesAndPullRequestsSort) UnmarshalText(data []byte) error {
 	}
 }
 
-type SearchLabelsForbidden BasicError
+type SearchLabelsForbidden struct {
+	BasicError
+}
 
 func (*SearchLabelsForbidden) searchLabelsRes() {}
 
-type SearchLabelsNotFound BasicError
+type SearchLabelsNotFound struct {
+	BasicError
+}
 
 func (*SearchLabelsNotFound) searchLabelsRes() {}
 
@@ -96178,11 +96922,15 @@ func (s *TeamsListChildInOrgOKHeaders) SetResponse(val []Team) {
 	s.Response = val
 }
 
-type TeamsListChildLegacyForbidden BasicError
+type TeamsListChildLegacyForbidden struct {
+	BasicError
+}
 
 func (*TeamsListChildLegacyForbidden) teamsListChildLegacyRes() {}
 
-type TeamsListChildLegacyNotFound BasicError
+type TeamsListChildLegacyNotFound struct {
+	BasicError
+}
 
 func (*TeamsListChildLegacyNotFound) teamsListChildLegacyRes() {}
 
@@ -96318,11 +97066,15 @@ func (s *TeamsListDiscussionsLegacyOKHeaders) SetResponse(val []TeamDiscussion) 
 	s.Response = val
 }
 
-type TeamsListForAuthenticatedUserForbidden BasicError
+type TeamsListForAuthenticatedUserForbidden struct {
+	BasicError
+}
 
 func (*TeamsListForAuthenticatedUserForbidden) teamsListForAuthenticatedUserRes() {}
 
-type TeamsListForAuthenticatedUserNotFound BasicError
+type TeamsListForAuthenticatedUserNotFound struct {
+	BasicError
+}
 
 func (*TeamsListForAuthenticatedUserNotFound) teamsListForAuthenticatedUserRes() {}
 
@@ -96354,11 +97106,15 @@ func (s *TeamsListForAuthenticatedUserOKHeaders) SetResponse(val []TeamFull) {
 
 func (*TeamsListForAuthenticatedUserOKHeaders) teamsListForAuthenticatedUserRes() {}
 
-type TeamsListIdpGroupsForLegacyForbidden BasicError
+type TeamsListIdpGroupsForLegacyForbidden struct {
+	BasicError
+}
 
 func (*TeamsListIdpGroupsForLegacyForbidden) teamsListIdpGroupsForLegacyRes() {}
 
-type TeamsListIdpGroupsForLegacyNotFound BasicError
+type TeamsListIdpGroupsForLegacyNotFound struct {
+	BasicError
+}
 
 func (*TeamsListIdpGroupsForLegacyNotFound) teamsListIdpGroupsForLegacyRes() {}
 
@@ -97004,19 +97760,27 @@ func (s *TeamsUpdateInOrgReqPrivacy) UnmarshalText(data []byte) error {
 	}
 }
 
-type TeamsUpdateLegacyCreated TeamFull
+type TeamsUpdateLegacyCreated struct {
+	TeamFull
+}
 
 func (*TeamsUpdateLegacyCreated) teamsUpdateLegacyRes() {}
 
-type TeamsUpdateLegacyForbidden BasicError
+type TeamsUpdateLegacyForbidden struct {
+	BasicError
+}
 
 func (*TeamsUpdateLegacyForbidden) teamsUpdateLegacyRes() {}
 
-type TeamsUpdateLegacyNotFound BasicError
+type TeamsUpdateLegacyNotFound struct {
+	BasicError
+}
 
 func (*TeamsUpdateLegacyNotFound) teamsUpdateLegacyRes() {}
 
-type TeamsUpdateLegacyOK TeamFull
+type TeamsUpdateLegacyOK struct {
+	TeamFull
+}
 
 func (*TeamsUpdateLegacyOK) teamsUpdateLegacyRes() {}
 
@@ -98267,11 +99031,15 @@ type UsersAddEmailForAuthenticatedCreatedApplicationJSON []Email
 
 func (*UsersAddEmailForAuthenticatedCreatedApplicationJSON) usersAddEmailForAuthenticatedRes() {}
 
-type UsersAddEmailForAuthenticatedForbidden BasicError
+type UsersAddEmailForAuthenticatedForbidden struct {
+	BasicError
+}
 
 func (*UsersAddEmailForAuthenticatedForbidden) usersAddEmailForAuthenticatedRes() {}
 
-type UsersAddEmailForAuthenticatedNotFound BasicError
+type UsersAddEmailForAuthenticatedNotFound struct {
+	BasicError
+}
 
 func (*UsersAddEmailForAuthenticatedNotFound) usersAddEmailForAuthenticatedRes() {}
 
@@ -98388,11 +99156,15 @@ func (s *UsersAddEmailForAuthenticatedReq0) SetEmails(val []string) {
 	s.Emails = val
 }
 
-type UsersAddEmailForAuthenticatedUnauthorized BasicError
+type UsersAddEmailForAuthenticatedUnauthorized struct {
+	BasicError
+}
 
 func (*UsersAddEmailForAuthenticatedUnauthorized) usersAddEmailForAuthenticatedRes() {}
 
-type UsersBlockForbidden BasicError
+type UsersBlockForbidden struct {
+	BasicError
+}
 
 func (*UsersBlockForbidden) usersBlockRes() {}
 
@@ -98401,15 +99173,21 @@ type UsersBlockNoContent struct{}
 
 func (*UsersBlockNoContent) usersBlockRes() {}
 
-type UsersBlockNotFound BasicError
+type UsersBlockNotFound struct {
+	BasicError
+}
 
 func (*UsersBlockNotFound) usersBlockRes() {}
 
-type UsersBlockUnauthorized BasicError
+type UsersBlockUnauthorized struct {
+	BasicError
+}
 
 func (*UsersBlockUnauthorized) usersBlockRes() {}
 
-type UsersCheckBlockedForbidden BasicError
+type UsersCheckBlockedForbidden struct {
+	BasicError
+}
 
 func (*UsersCheckBlockedForbidden) usersCheckBlockedRes() {}
 
@@ -98418,11 +99196,15 @@ type UsersCheckBlockedNoContent struct{}
 
 func (*UsersCheckBlockedNoContent) usersCheckBlockedRes() {}
 
-type UsersCheckBlockedNotFound BasicError
+type UsersCheckBlockedNotFound struct {
+	BasicError
+}
 
 func (*UsersCheckBlockedNotFound) usersCheckBlockedRes() {}
 
-type UsersCheckBlockedUnauthorized BasicError
+type UsersCheckBlockedUnauthorized struct {
+	BasicError
+}
 
 func (*UsersCheckBlockedUnauthorized) usersCheckBlockedRes() {}
 
@@ -98436,7 +99218,9 @@ type UsersCheckFollowingForUserNotFound struct{}
 
 func (*UsersCheckFollowingForUserNotFound) usersCheckFollowingForUserRes() {}
 
-type UsersCheckPersonIsFollowedByAuthenticatedForbidden BasicError
+type UsersCheckPersonIsFollowedByAuthenticatedForbidden struct {
+	BasicError
+}
 
 func (*UsersCheckPersonIsFollowedByAuthenticatedForbidden) usersCheckPersonIsFollowedByAuthenticatedRes() {
 }
@@ -98447,21 +99231,29 @@ type UsersCheckPersonIsFollowedByAuthenticatedNoContent struct{}
 func (*UsersCheckPersonIsFollowedByAuthenticatedNoContent) usersCheckPersonIsFollowedByAuthenticatedRes() {
 }
 
-type UsersCheckPersonIsFollowedByAuthenticatedNotFound BasicError
+type UsersCheckPersonIsFollowedByAuthenticatedNotFound struct {
+	BasicError
+}
 
 func (*UsersCheckPersonIsFollowedByAuthenticatedNotFound) usersCheckPersonIsFollowedByAuthenticatedRes() {
 }
 
-type UsersCheckPersonIsFollowedByAuthenticatedUnauthorized BasicError
+type UsersCheckPersonIsFollowedByAuthenticatedUnauthorized struct {
+	BasicError
+}
 
 func (*UsersCheckPersonIsFollowedByAuthenticatedUnauthorized) usersCheckPersonIsFollowedByAuthenticatedRes() {
 }
 
-type UsersCreateGpgKeyForAuthenticatedForbidden BasicError
+type UsersCreateGpgKeyForAuthenticatedForbidden struct {
+	BasicError
+}
 
 func (*UsersCreateGpgKeyForAuthenticatedForbidden) usersCreateGpgKeyForAuthenticatedRes() {}
 
-type UsersCreateGpgKeyForAuthenticatedNotFound BasicError
+type UsersCreateGpgKeyForAuthenticatedNotFound struct {
+	BasicError
+}
 
 func (*UsersCreateGpgKeyForAuthenticatedNotFound) usersCreateGpgKeyForAuthenticatedRes() {}
 
@@ -98480,16 +99272,22 @@ func (s *UsersCreateGpgKeyForAuthenticatedReq) SetArmoredPublicKey(val string) {
 	s.ArmoredPublicKey = val
 }
 
-type UsersCreateGpgKeyForAuthenticatedUnauthorized BasicError
+type UsersCreateGpgKeyForAuthenticatedUnauthorized struct {
+	BasicError
+}
 
 func (*UsersCreateGpgKeyForAuthenticatedUnauthorized) usersCreateGpgKeyForAuthenticatedRes() {}
 
-type UsersCreatePublicSSHKeyForAuthenticatedForbidden BasicError
+type UsersCreatePublicSSHKeyForAuthenticatedForbidden struct {
+	BasicError
+}
 
 func (*UsersCreatePublicSSHKeyForAuthenticatedForbidden) usersCreatePublicSSHKeyForAuthenticatedRes() {
 }
 
-type UsersCreatePublicSSHKeyForAuthenticatedNotFound BasicError
+type UsersCreatePublicSSHKeyForAuthenticatedNotFound struct {
+	BasicError
+}
 
 func (*UsersCreatePublicSSHKeyForAuthenticatedNotFound) usersCreatePublicSSHKeyForAuthenticatedRes() {
 }
@@ -98521,12 +99319,16 @@ func (s *UsersCreatePublicSSHKeyForAuthenticatedReq) SetKey(val string) {
 	s.Key = val
 }
 
-type UsersCreatePublicSSHKeyForAuthenticatedUnauthorized BasicError
+type UsersCreatePublicSSHKeyForAuthenticatedUnauthorized struct {
+	BasicError
+}
 
 func (*UsersCreatePublicSSHKeyForAuthenticatedUnauthorized) usersCreatePublicSSHKeyForAuthenticatedRes() {
 }
 
-type UsersDeleteEmailForAuthenticatedForbidden BasicError
+type UsersDeleteEmailForAuthenticatedForbidden struct {
+	BasicError
+}
 
 func (*UsersDeleteEmailForAuthenticatedForbidden) usersDeleteEmailForAuthenticatedRes() {}
 
@@ -98535,7 +99337,9 @@ type UsersDeleteEmailForAuthenticatedNoContent struct{}
 
 func (*UsersDeleteEmailForAuthenticatedNoContent) usersDeleteEmailForAuthenticatedRes() {}
 
-type UsersDeleteEmailForAuthenticatedNotFound BasicError
+type UsersDeleteEmailForAuthenticatedNotFound struct {
+	BasicError
+}
 
 func (*UsersDeleteEmailForAuthenticatedNotFound) usersDeleteEmailForAuthenticatedRes() {}
 
@@ -98653,11 +99457,15 @@ func (s *UsersDeleteEmailForAuthenticatedReq0) SetEmails(val []string) {
 	s.Emails = val
 }
 
-type UsersDeleteEmailForAuthenticatedUnauthorized BasicError
+type UsersDeleteEmailForAuthenticatedUnauthorized struct {
+	BasicError
+}
 
 func (*UsersDeleteEmailForAuthenticatedUnauthorized) usersDeleteEmailForAuthenticatedRes() {}
 
-type UsersDeleteGpgKeyForAuthenticatedForbidden BasicError
+type UsersDeleteGpgKeyForAuthenticatedForbidden struct {
+	BasicError
+}
 
 func (*UsersDeleteGpgKeyForAuthenticatedForbidden) usersDeleteGpgKeyForAuthenticatedRes() {}
 
@@ -98666,15 +99474,21 @@ type UsersDeleteGpgKeyForAuthenticatedNoContent struct{}
 
 func (*UsersDeleteGpgKeyForAuthenticatedNoContent) usersDeleteGpgKeyForAuthenticatedRes() {}
 
-type UsersDeleteGpgKeyForAuthenticatedNotFound BasicError
+type UsersDeleteGpgKeyForAuthenticatedNotFound struct {
+	BasicError
+}
 
 func (*UsersDeleteGpgKeyForAuthenticatedNotFound) usersDeleteGpgKeyForAuthenticatedRes() {}
 
-type UsersDeleteGpgKeyForAuthenticatedUnauthorized BasicError
+type UsersDeleteGpgKeyForAuthenticatedUnauthorized struct {
+	BasicError
+}
 
 func (*UsersDeleteGpgKeyForAuthenticatedUnauthorized) usersDeleteGpgKeyForAuthenticatedRes() {}
 
-type UsersDeletePublicSSHKeyForAuthenticatedForbidden BasicError
+type UsersDeletePublicSSHKeyForAuthenticatedForbidden struct {
+	BasicError
+}
 
 func (*UsersDeletePublicSSHKeyForAuthenticatedForbidden) usersDeletePublicSSHKeyForAuthenticatedRes() {
 }
@@ -98685,17 +99499,23 @@ type UsersDeletePublicSSHKeyForAuthenticatedNoContent struct{}
 func (*UsersDeletePublicSSHKeyForAuthenticatedNoContent) usersDeletePublicSSHKeyForAuthenticatedRes() {
 }
 
-type UsersDeletePublicSSHKeyForAuthenticatedNotFound BasicError
+type UsersDeletePublicSSHKeyForAuthenticatedNotFound struct {
+	BasicError
+}
 
 func (*UsersDeletePublicSSHKeyForAuthenticatedNotFound) usersDeletePublicSSHKeyForAuthenticatedRes() {
 }
 
-type UsersDeletePublicSSHKeyForAuthenticatedUnauthorized BasicError
+type UsersDeletePublicSSHKeyForAuthenticatedUnauthorized struct {
+	BasicError
+}
 
 func (*UsersDeletePublicSSHKeyForAuthenticatedUnauthorized) usersDeletePublicSSHKeyForAuthenticatedRes() {
 }
 
-type UsersFollowForbidden BasicError
+type UsersFollowForbidden struct {
+	BasicError
+}
 
 func (*UsersFollowForbidden) usersFollowRes() {}
 
@@ -98704,15 +99524,21 @@ type UsersFollowNoContent struct{}
 
 func (*UsersFollowNoContent) usersFollowRes() {}
 
-type UsersFollowNotFound BasicError
+type UsersFollowNotFound struct {
+	BasicError
+}
 
 func (*UsersFollowNotFound) usersFollowRes() {}
 
-type UsersFollowUnauthorized BasicError
+type UsersFollowUnauthorized struct {
+	BasicError
+}
 
 func (*UsersFollowUnauthorized) usersFollowRes() {}
 
-type UsersGetAuthenticatedForbidden BasicError
+type UsersGetAuthenticatedForbidden struct {
+	BasicError
+}
 
 func (*UsersGetAuthenticatedForbidden) usersGetAuthenticatedRes() {}
 
@@ -98786,7 +99612,9 @@ func NewPublicUserUsersGetAuthenticatedOK(v PublicUser) UsersGetAuthenticatedOK 
 
 func (*UsersGetAuthenticatedOK) usersGetAuthenticatedRes() {}
 
-type UsersGetAuthenticatedUnauthorized BasicError
+type UsersGetAuthenticatedUnauthorized struct {
+	BasicError
+}
 
 func (*UsersGetAuthenticatedUnauthorized) usersGetAuthenticatedRes() {}
 
@@ -98911,35 +99739,51 @@ func (s *UsersGetContextForUserSubjectType) UnmarshalText(data []byte) error {
 	}
 }
 
-type UsersGetGpgKeyForAuthenticatedForbidden BasicError
+type UsersGetGpgKeyForAuthenticatedForbidden struct {
+	BasicError
+}
 
 func (*UsersGetGpgKeyForAuthenticatedForbidden) usersGetGpgKeyForAuthenticatedRes() {}
 
-type UsersGetGpgKeyForAuthenticatedNotFound BasicError
+type UsersGetGpgKeyForAuthenticatedNotFound struct {
+	BasicError
+}
 
 func (*UsersGetGpgKeyForAuthenticatedNotFound) usersGetGpgKeyForAuthenticatedRes() {}
 
-type UsersGetGpgKeyForAuthenticatedUnauthorized BasicError
+type UsersGetGpgKeyForAuthenticatedUnauthorized struct {
+	BasicError
+}
 
 func (*UsersGetGpgKeyForAuthenticatedUnauthorized) usersGetGpgKeyForAuthenticatedRes() {}
 
-type UsersGetPublicSSHKeyForAuthenticatedForbidden BasicError
+type UsersGetPublicSSHKeyForAuthenticatedForbidden struct {
+	BasicError
+}
 
 func (*UsersGetPublicSSHKeyForAuthenticatedForbidden) usersGetPublicSSHKeyForAuthenticatedRes() {}
 
-type UsersGetPublicSSHKeyForAuthenticatedNotFound BasicError
+type UsersGetPublicSSHKeyForAuthenticatedNotFound struct {
+	BasicError
+}
 
 func (*UsersGetPublicSSHKeyForAuthenticatedNotFound) usersGetPublicSSHKeyForAuthenticatedRes() {}
 
-type UsersGetPublicSSHKeyForAuthenticatedUnauthorized BasicError
+type UsersGetPublicSSHKeyForAuthenticatedUnauthorized struct {
+	BasicError
+}
 
 func (*UsersGetPublicSSHKeyForAuthenticatedUnauthorized) usersGetPublicSSHKeyForAuthenticatedRes() {}
 
-type UsersListBlockedByAuthenticatedForbidden BasicError
+type UsersListBlockedByAuthenticatedForbidden struct {
+	BasicError
+}
 
 func (*UsersListBlockedByAuthenticatedForbidden) usersListBlockedByAuthenticatedRes() {}
 
-type UsersListBlockedByAuthenticatedNotFound BasicError
+type UsersListBlockedByAuthenticatedNotFound struct {
+	BasicError
+}
 
 func (*UsersListBlockedByAuthenticatedNotFound) usersListBlockedByAuthenticatedRes() {}
 
@@ -98947,15 +99791,21 @@ type UsersListBlockedByAuthenticatedOKApplicationJSON []SimpleUser
 
 func (*UsersListBlockedByAuthenticatedOKApplicationJSON) usersListBlockedByAuthenticatedRes() {}
 
-type UsersListBlockedByAuthenticatedUnauthorized BasicError
+type UsersListBlockedByAuthenticatedUnauthorized struct {
+	BasicError
+}
 
 func (*UsersListBlockedByAuthenticatedUnauthorized) usersListBlockedByAuthenticatedRes() {}
 
-type UsersListEmailsForAuthenticatedForbidden BasicError
+type UsersListEmailsForAuthenticatedForbidden struct {
+	BasicError
+}
 
 func (*UsersListEmailsForAuthenticatedForbidden) usersListEmailsForAuthenticatedRes() {}
 
-type UsersListEmailsForAuthenticatedNotFound BasicError
+type UsersListEmailsForAuthenticatedNotFound struct {
+	BasicError
+}
 
 func (*UsersListEmailsForAuthenticatedNotFound) usersListEmailsForAuthenticatedRes() {}
 
@@ -98987,11 +99837,15 @@ func (s *UsersListEmailsForAuthenticatedOKHeaders) SetResponse(val []Email) {
 
 func (*UsersListEmailsForAuthenticatedOKHeaders) usersListEmailsForAuthenticatedRes() {}
 
-type UsersListEmailsForAuthenticatedUnauthorized BasicError
+type UsersListEmailsForAuthenticatedUnauthorized struct {
+	BasicError
+}
 
 func (*UsersListEmailsForAuthenticatedUnauthorized) usersListEmailsForAuthenticatedRes() {}
 
-type UsersListFollowedByAuthenticatedForbidden BasicError
+type UsersListFollowedByAuthenticatedForbidden struct {
+	BasicError
+}
 
 func (*UsersListFollowedByAuthenticatedForbidden) usersListFollowedByAuthenticatedRes() {}
 
@@ -99023,11 +99877,15 @@ func (s *UsersListFollowedByAuthenticatedOKHeaders) SetResponse(val []SimpleUser
 
 func (*UsersListFollowedByAuthenticatedOKHeaders) usersListFollowedByAuthenticatedRes() {}
 
-type UsersListFollowedByAuthenticatedUnauthorized BasicError
+type UsersListFollowedByAuthenticatedUnauthorized struct {
+	BasicError
+}
 
 func (*UsersListFollowedByAuthenticatedUnauthorized) usersListFollowedByAuthenticatedRes() {}
 
-type UsersListFollowersForAuthenticatedUserForbidden BasicError
+type UsersListFollowersForAuthenticatedUserForbidden struct {
+	BasicError
+}
 
 func (*UsersListFollowersForAuthenticatedUserForbidden) usersListFollowersForAuthenticatedUserRes() {}
 
@@ -99059,7 +99917,9 @@ func (s *UsersListFollowersForAuthenticatedUserOKHeaders) SetResponse(val []Simp
 
 func (*UsersListFollowersForAuthenticatedUserOKHeaders) usersListFollowersForAuthenticatedUserRes() {}
 
-type UsersListFollowersForAuthenticatedUserUnauthorized BasicError
+type UsersListFollowersForAuthenticatedUserUnauthorized struct {
+	BasicError
+}
 
 func (*UsersListFollowersForAuthenticatedUserUnauthorized) usersListFollowersForAuthenticatedUserRes() {
 }
@@ -99116,11 +99976,15 @@ func (s *UsersListFollowingForUserOKHeaders) SetResponse(val []SimpleUser) {
 	s.Response = val
 }
 
-type UsersListGpgKeysForAuthenticatedForbidden BasicError
+type UsersListGpgKeysForAuthenticatedForbidden struct {
+	BasicError
+}
 
 func (*UsersListGpgKeysForAuthenticatedForbidden) usersListGpgKeysForAuthenticatedRes() {}
 
-type UsersListGpgKeysForAuthenticatedNotFound BasicError
+type UsersListGpgKeysForAuthenticatedNotFound struct {
+	BasicError
+}
 
 func (*UsersListGpgKeysForAuthenticatedNotFound) usersListGpgKeysForAuthenticatedRes() {}
 
@@ -99152,7 +100016,9 @@ func (s *UsersListGpgKeysForAuthenticatedOKHeaders) SetResponse(val []GpgKey) {
 
 func (*UsersListGpgKeysForAuthenticatedOKHeaders) usersListGpgKeysForAuthenticatedRes() {}
 
-type UsersListGpgKeysForAuthenticatedUnauthorized BasicError
+type UsersListGpgKeysForAuthenticatedUnauthorized struct {
+	BasicError
+}
 
 func (*UsersListGpgKeysForAuthenticatedUnauthorized) usersListGpgKeysForAuthenticatedRes() {}
 
@@ -99210,11 +100076,15 @@ func (s *UsersListOKHeaders) SetResponse(val []SimpleUser) {
 
 func (*UsersListOKHeaders) usersListRes() {}
 
-type UsersListPublicEmailsForAuthenticatedForbidden BasicError
+type UsersListPublicEmailsForAuthenticatedForbidden struct {
+	BasicError
+}
 
 func (*UsersListPublicEmailsForAuthenticatedForbidden) usersListPublicEmailsForAuthenticatedRes() {}
 
-type UsersListPublicEmailsForAuthenticatedNotFound BasicError
+type UsersListPublicEmailsForAuthenticatedNotFound struct {
+	BasicError
+}
 
 func (*UsersListPublicEmailsForAuthenticatedNotFound) usersListPublicEmailsForAuthenticatedRes() {}
 
@@ -99246,7 +100116,9 @@ func (s *UsersListPublicEmailsForAuthenticatedOKHeaders) SetResponse(val []Email
 
 func (*UsersListPublicEmailsForAuthenticatedOKHeaders) usersListPublicEmailsForAuthenticatedRes() {}
 
-type UsersListPublicEmailsForAuthenticatedUnauthorized BasicError
+type UsersListPublicEmailsForAuthenticatedUnauthorized struct {
+	BasicError
+}
 
 func (*UsersListPublicEmailsForAuthenticatedUnauthorized) usersListPublicEmailsForAuthenticatedRes() {
 }
@@ -99277,11 +100149,15 @@ func (s *UsersListPublicKeysForUserOKHeaders) SetResponse(val []KeySimple) {
 	s.Response = val
 }
 
-type UsersListPublicSSHKeysForAuthenticatedForbidden BasicError
+type UsersListPublicSSHKeysForAuthenticatedForbidden struct {
+	BasicError
+}
 
 func (*UsersListPublicSSHKeysForAuthenticatedForbidden) usersListPublicSSHKeysForAuthenticatedRes() {}
 
-type UsersListPublicSSHKeysForAuthenticatedNotFound BasicError
+type UsersListPublicSSHKeysForAuthenticatedNotFound struct {
+	BasicError
+}
 
 func (*UsersListPublicSSHKeysForAuthenticatedNotFound) usersListPublicSSHKeysForAuthenticatedRes() {}
 
@@ -99313,17 +100189,23 @@ func (s *UsersListPublicSSHKeysForAuthenticatedOKHeaders) SetResponse(val []Key)
 
 func (*UsersListPublicSSHKeysForAuthenticatedOKHeaders) usersListPublicSSHKeysForAuthenticatedRes() {}
 
-type UsersListPublicSSHKeysForAuthenticatedUnauthorized BasicError
+type UsersListPublicSSHKeysForAuthenticatedUnauthorized struct {
+	BasicError
+}
 
 func (*UsersListPublicSSHKeysForAuthenticatedUnauthorized) usersListPublicSSHKeysForAuthenticatedRes() {
 }
 
-type UsersSetPrimaryEmailVisibilityForAuthenticatedForbidden BasicError
+type UsersSetPrimaryEmailVisibilityForAuthenticatedForbidden struct {
+	BasicError
+}
 
 func (*UsersSetPrimaryEmailVisibilityForAuthenticatedForbidden) usersSetPrimaryEmailVisibilityForAuthenticatedRes() {
 }
 
-type UsersSetPrimaryEmailVisibilityForAuthenticatedNotFound BasicError
+type UsersSetPrimaryEmailVisibilityForAuthenticatedNotFound struct {
+	BasicError
+}
 
 func (*UsersSetPrimaryEmailVisibilityForAuthenticatedNotFound) usersSetPrimaryEmailVisibilityForAuthenticatedRes() {
 }
@@ -99390,12 +100272,16 @@ func (s *UsersSetPrimaryEmailVisibilityForAuthenticatedReqVisibility) UnmarshalT
 	}
 }
 
-type UsersSetPrimaryEmailVisibilityForAuthenticatedUnauthorized BasicError
+type UsersSetPrimaryEmailVisibilityForAuthenticatedUnauthorized struct {
+	BasicError
+}
 
 func (*UsersSetPrimaryEmailVisibilityForAuthenticatedUnauthorized) usersSetPrimaryEmailVisibilityForAuthenticatedRes() {
 }
 
-type UsersUnblockForbidden BasicError
+type UsersUnblockForbidden struct {
+	BasicError
+}
 
 func (*UsersUnblockForbidden) usersUnblockRes() {}
 
@@ -99404,15 +100290,21 @@ type UsersUnblockNoContent struct{}
 
 func (*UsersUnblockNoContent) usersUnblockRes() {}
 
-type UsersUnblockNotFound BasicError
+type UsersUnblockNotFound struct {
+	BasicError
+}
 
 func (*UsersUnblockNotFound) usersUnblockRes() {}
 
-type UsersUnblockUnauthorized BasicError
+type UsersUnblockUnauthorized struct {
+	BasicError
+}
 
 func (*UsersUnblockUnauthorized) usersUnblockRes() {}
 
-type UsersUnfollowForbidden BasicError
+type UsersUnfollowForbidden struct {
+	BasicError
+}
 
 func (*UsersUnfollowForbidden) usersUnfollowRes() {}
 
@@ -99421,19 +100313,27 @@ type UsersUnfollowNoContent struct{}
 
 func (*UsersUnfollowNoContent) usersUnfollowRes() {}
 
-type UsersUnfollowNotFound BasicError
+type UsersUnfollowNotFound struct {
+	BasicError
+}
 
 func (*UsersUnfollowNotFound) usersUnfollowRes() {}
 
-type UsersUnfollowUnauthorized BasicError
+type UsersUnfollowUnauthorized struct {
+	BasicError
+}
 
 func (*UsersUnfollowUnauthorized) usersUnfollowRes() {}
 
-type UsersUpdateAuthenticatedForbidden BasicError
+type UsersUpdateAuthenticatedForbidden struct {
+	BasicError
+}
 
 func (*UsersUpdateAuthenticatedForbidden) usersUpdateAuthenticatedRes() {}
 
-type UsersUpdateAuthenticatedNotFound BasicError
+type UsersUpdateAuthenticatedNotFound struct {
+	BasicError
+}
 
 func (*UsersUpdateAuthenticatedNotFound) usersUpdateAuthenticatedRes() {}
 
@@ -99536,7 +100436,9 @@ func (s *UsersUpdateAuthenticatedReq) SetBio(val OptString) {
 	s.Bio = val
 }
 
-type UsersUpdateAuthenticatedUnauthorized BasicError
+type UsersUpdateAuthenticatedUnauthorized struct {
+	BasicError
+}
 
 func (*UsersUpdateAuthenticatedUnauthorized) usersUpdateAuthenticatedRes() {}
 

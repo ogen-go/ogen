@@ -556,31 +556,6 @@ func (s *Accepted) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes ActionsApproveWorkflowRunForbidden as json.
-func (s *ActionsApproveWorkflowRunForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ActionsApproveWorkflowRunForbidden from json.
-func (s *ActionsApproveWorkflowRunForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ActionsApproveWorkflowRunForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ActionsApproveWorkflowRunForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *ActionsApproveWorkflowRunForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -592,31 +567,6 @@ func (s *ActionsApproveWorkflowRunForbidden) MarshalJSON() ([]byte, error) {
 func (s *ActionsApproveWorkflowRunForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes ActionsApproveWorkflowRunNotFound as json.
-func (s *ActionsApproveWorkflowRunNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ActionsApproveWorkflowRunNotFound from json.
-func (s *ActionsApproveWorkflowRunNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ActionsApproveWorkflowRunNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ActionsApproveWorkflowRunNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -5565,31 +5515,6 @@ func (s *ActionsUpdateSelfHostedRunnerGroupForOrgReqVisibility) UnmarshalJSON(da
 	return s.Decode(d)
 }
 
-// Encode encodes ActivityCheckRepoIsStarredByAuthenticatedUserForbidden as json.
-func (s *ActivityCheckRepoIsStarredByAuthenticatedUserForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ActivityCheckRepoIsStarredByAuthenticatedUserForbidden from json.
-func (s *ActivityCheckRepoIsStarredByAuthenticatedUserForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ActivityCheckRepoIsStarredByAuthenticatedUserForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ActivityCheckRepoIsStarredByAuthenticatedUserForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *ActivityCheckRepoIsStarredByAuthenticatedUserForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -5601,31 +5526,6 @@ func (s *ActivityCheckRepoIsStarredByAuthenticatedUserForbidden) MarshalJSON() (
 func (s *ActivityCheckRepoIsStarredByAuthenticatedUserForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes ActivityCheckRepoIsStarredByAuthenticatedUserNotFound as json.
-func (s *ActivityCheckRepoIsStarredByAuthenticatedUserNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ActivityCheckRepoIsStarredByAuthenticatedUserNotFound from json.
-func (s *ActivityCheckRepoIsStarredByAuthenticatedUserNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ActivityCheckRepoIsStarredByAuthenticatedUserNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ActivityCheckRepoIsStarredByAuthenticatedUserNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -5641,31 +5541,6 @@ func (s *ActivityCheckRepoIsStarredByAuthenticatedUserNotFound) UnmarshalJSON(da
 	return s.Decode(d)
 }
 
-// Encode encodes ActivityCheckRepoIsStarredByAuthenticatedUserUnauthorized as json.
-func (s *ActivityCheckRepoIsStarredByAuthenticatedUserUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ActivityCheckRepoIsStarredByAuthenticatedUserUnauthorized from json.
-func (s *ActivityCheckRepoIsStarredByAuthenticatedUserUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ActivityCheckRepoIsStarredByAuthenticatedUserUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ActivityCheckRepoIsStarredByAuthenticatedUserUnauthorized(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *ActivityCheckRepoIsStarredByAuthenticatedUserUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -5677,31 +5552,6 @@ func (s *ActivityCheckRepoIsStarredByAuthenticatedUserUnauthorized) MarshalJSON(
 func (s *ActivityCheckRepoIsStarredByAuthenticatedUserUnauthorized) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes ActivityDeleteThreadSubscriptionForbidden as json.
-func (s *ActivityDeleteThreadSubscriptionForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ActivityDeleteThreadSubscriptionForbidden from json.
-func (s *ActivityDeleteThreadSubscriptionForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ActivityDeleteThreadSubscriptionForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ActivityDeleteThreadSubscriptionForbidden(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -5717,31 +5567,6 @@ func (s *ActivityDeleteThreadSubscriptionForbidden) UnmarshalJSON(data []byte) e
 	return s.Decode(d)
 }
 
-// Encode encodes ActivityDeleteThreadSubscriptionUnauthorized as json.
-func (s *ActivityDeleteThreadSubscriptionUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ActivityDeleteThreadSubscriptionUnauthorized from json.
-func (s *ActivityDeleteThreadSubscriptionUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ActivityDeleteThreadSubscriptionUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ActivityDeleteThreadSubscriptionUnauthorized(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *ActivityDeleteThreadSubscriptionUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -5753,31 +5578,6 @@ func (s *ActivityDeleteThreadSubscriptionUnauthorized) MarshalJSON() ([]byte, er
 func (s *ActivityDeleteThreadSubscriptionUnauthorized) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes ActivityGetThreadForbidden as json.
-func (s *ActivityGetThreadForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ActivityGetThreadForbidden from json.
-func (s *ActivityGetThreadForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ActivityGetThreadForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ActivityGetThreadForbidden(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -5793,31 +5593,6 @@ func (s *ActivityGetThreadForbidden) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes ActivityGetThreadSubscriptionForAuthenticatedUserForbidden as json.
-func (s *ActivityGetThreadSubscriptionForAuthenticatedUserForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ActivityGetThreadSubscriptionForAuthenticatedUserForbidden from json.
-func (s *ActivityGetThreadSubscriptionForAuthenticatedUserForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ActivityGetThreadSubscriptionForAuthenticatedUserForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ActivityGetThreadSubscriptionForAuthenticatedUserForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *ActivityGetThreadSubscriptionForAuthenticatedUserForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -5829,31 +5604,6 @@ func (s *ActivityGetThreadSubscriptionForAuthenticatedUserForbidden) MarshalJSON
 func (s *ActivityGetThreadSubscriptionForAuthenticatedUserForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes ActivityGetThreadSubscriptionForAuthenticatedUserUnauthorized as json.
-func (s *ActivityGetThreadSubscriptionForAuthenticatedUserUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ActivityGetThreadSubscriptionForAuthenticatedUserUnauthorized from json.
-func (s *ActivityGetThreadSubscriptionForAuthenticatedUserUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ActivityGetThreadSubscriptionForAuthenticatedUserUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ActivityGetThreadSubscriptionForAuthenticatedUserUnauthorized(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -5869,31 +5619,6 @@ func (s *ActivityGetThreadSubscriptionForAuthenticatedUserUnauthorized) Unmarsha
 	return s.Decode(d)
 }
 
-// Encode encodes ActivityGetThreadUnauthorized as json.
-func (s *ActivityGetThreadUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ActivityGetThreadUnauthorized from json.
-func (s *ActivityGetThreadUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ActivityGetThreadUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ActivityGetThreadUnauthorized(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *ActivityGetThreadUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -5905,31 +5630,6 @@ func (s *ActivityGetThreadUnauthorized) MarshalJSON() ([]byte, error) {
 func (s *ActivityGetThreadUnauthorized) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes ActivityListNotificationsForAuthenticatedUserForbidden as json.
-func (s *ActivityListNotificationsForAuthenticatedUserForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ActivityListNotificationsForAuthenticatedUserForbidden from json.
-func (s *ActivityListNotificationsForAuthenticatedUserForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ActivityListNotificationsForAuthenticatedUserForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ActivityListNotificationsForAuthenticatedUserForbidden(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -5945,31 +5645,6 @@ func (s *ActivityListNotificationsForAuthenticatedUserForbidden) UnmarshalJSON(d
 	return s.Decode(d)
 }
 
-// Encode encodes ActivityListNotificationsForAuthenticatedUserUnauthorized as json.
-func (s *ActivityListNotificationsForAuthenticatedUserUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ActivityListNotificationsForAuthenticatedUserUnauthorized from json.
-func (s *ActivityListNotificationsForAuthenticatedUserUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ActivityListNotificationsForAuthenticatedUserUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ActivityListNotificationsForAuthenticatedUserUnauthorized(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *ActivityListNotificationsForAuthenticatedUserUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -5981,31 +5656,6 @@ func (s *ActivityListNotificationsForAuthenticatedUserUnauthorized) MarshalJSON(
 func (s *ActivityListNotificationsForAuthenticatedUserUnauthorized) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes ActivityListPublicEventsForRepoNetworkForbidden as json.
-func (s *ActivityListPublicEventsForRepoNetworkForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ActivityListPublicEventsForRepoNetworkForbidden from json.
-func (s *ActivityListPublicEventsForRepoNetworkForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ActivityListPublicEventsForRepoNetworkForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ActivityListPublicEventsForRepoNetworkForbidden(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -6021,31 +5671,6 @@ func (s *ActivityListPublicEventsForRepoNetworkForbidden) UnmarshalJSON(data []b
 	return s.Decode(d)
 }
 
-// Encode encodes ActivityListPublicEventsForRepoNetworkMovedPermanently as json.
-func (s *ActivityListPublicEventsForRepoNetworkMovedPermanently) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ActivityListPublicEventsForRepoNetworkMovedPermanently from json.
-func (s *ActivityListPublicEventsForRepoNetworkMovedPermanently) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ActivityListPublicEventsForRepoNetworkMovedPermanently to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ActivityListPublicEventsForRepoNetworkMovedPermanently(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *ActivityListPublicEventsForRepoNetworkMovedPermanently) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -6057,31 +5682,6 @@ func (s *ActivityListPublicEventsForRepoNetworkMovedPermanently) MarshalJSON() (
 func (s *ActivityListPublicEventsForRepoNetworkMovedPermanently) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes ActivityListPublicEventsForRepoNetworkNotFound as json.
-func (s *ActivityListPublicEventsForRepoNetworkNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ActivityListPublicEventsForRepoNetworkNotFound from json.
-func (s *ActivityListPublicEventsForRepoNetworkNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ActivityListPublicEventsForRepoNetworkNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ActivityListPublicEventsForRepoNetworkNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -6197,31 +5797,6 @@ func (s *ActivityListPublicEventsOKApplicationJSON) UnmarshalJSON(data []byte) e
 	return s.Decode(d)
 }
 
-// Encode encodes ActivityListReposStarredByAuthenticatedUserForbidden as json.
-func (s *ActivityListReposStarredByAuthenticatedUserForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ActivityListReposStarredByAuthenticatedUserForbidden from json.
-func (s *ActivityListReposStarredByAuthenticatedUserForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ActivityListReposStarredByAuthenticatedUserForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ActivityListReposStarredByAuthenticatedUserForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *ActivityListReposStarredByAuthenticatedUserForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -6233,31 +5808,6 @@ func (s *ActivityListReposStarredByAuthenticatedUserForbidden) MarshalJSON() ([]
 func (s *ActivityListReposStarredByAuthenticatedUserForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes ActivityListReposStarredByAuthenticatedUserUnauthorized as json.
-func (s *ActivityListReposStarredByAuthenticatedUserUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ActivityListReposStarredByAuthenticatedUserUnauthorized from json.
-func (s *ActivityListReposStarredByAuthenticatedUserUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ActivityListReposStarredByAuthenticatedUserUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ActivityListReposStarredByAuthenticatedUserUnauthorized(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -6273,31 +5823,6 @@ func (s *ActivityListReposStarredByAuthenticatedUserUnauthorized) UnmarshalJSON(
 	return s.Decode(d)
 }
 
-// Encode encodes ActivityListWatchedReposForAuthenticatedUserForbidden as json.
-func (s *ActivityListWatchedReposForAuthenticatedUserForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ActivityListWatchedReposForAuthenticatedUserForbidden from json.
-func (s *ActivityListWatchedReposForAuthenticatedUserForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ActivityListWatchedReposForAuthenticatedUserForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ActivityListWatchedReposForAuthenticatedUserForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *ActivityListWatchedReposForAuthenticatedUserForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -6309,31 +5834,6 @@ func (s *ActivityListWatchedReposForAuthenticatedUserForbidden) MarshalJSON() ([
 func (s *ActivityListWatchedReposForAuthenticatedUserForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes ActivityListWatchedReposForAuthenticatedUserUnauthorized as json.
-func (s *ActivityListWatchedReposForAuthenticatedUserUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ActivityListWatchedReposForAuthenticatedUserUnauthorized from json.
-func (s *ActivityListWatchedReposForAuthenticatedUserUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ActivityListWatchedReposForAuthenticatedUserUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ActivityListWatchedReposForAuthenticatedUserUnauthorized(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -6410,31 +5910,6 @@ func (s *ActivityMarkNotificationsAsReadAccepted) MarshalJSON() ([]byte, error) 
 func (s *ActivityMarkNotificationsAsReadAccepted) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes ActivityMarkNotificationsAsReadForbidden as json.
-func (s *ActivityMarkNotificationsAsReadForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ActivityMarkNotificationsAsReadForbidden from json.
-func (s *ActivityMarkNotificationsAsReadForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ActivityMarkNotificationsAsReadForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ActivityMarkNotificationsAsReadForbidden(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -6528,31 +6003,6 @@ func (s *ActivityMarkNotificationsAsReadReq) MarshalJSON() ([]byte, error) {
 func (s *ActivityMarkNotificationsAsReadReq) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes ActivityMarkNotificationsAsReadUnauthorized as json.
-func (s *ActivityMarkNotificationsAsReadUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ActivityMarkNotificationsAsReadUnauthorized from json.
-func (s *ActivityMarkNotificationsAsReadUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ActivityMarkNotificationsAsReadUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ActivityMarkNotificationsAsReadUnauthorized(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -6791,31 +6241,6 @@ func (s *ActivitySetRepoSubscriptionReq) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes ActivitySetThreadSubscriptionForbidden as json.
-func (s *ActivitySetThreadSubscriptionForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ActivitySetThreadSubscriptionForbidden from json.
-func (s *ActivitySetThreadSubscriptionForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ActivitySetThreadSubscriptionForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ActivitySetThreadSubscriptionForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *ActivitySetThreadSubscriptionForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -6893,31 +6318,6 @@ func (s *ActivitySetThreadSubscriptionReq) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes ActivitySetThreadSubscriptionUnauthorized as json.
-func (s *ActivitySetThreadSubscriptionUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ActivitySetThreadSubscriptionUnauthorized from json.
-func (s *ActivitySetThreadSubscriptionUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ActivitySetThreadSubscriptionUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ActivitySetThreadSubscriptionUnauthorized(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *ActivitySetThreadSubscriptionUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -6929,31 +6329,6 @@ func (s *ActivitySetThreadSubscriptionUnauthorized) MarshalJSON() ([]byte, error
 func (s *ActivitySetThreadSubscriptionUnauthorized) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes ActivityStarRepoForAuthenticatedUserForbidden as json.
-func (s *ActivityStarRepoForAuthenticatedUserForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ActivityStarRepoForAuthenticatedUserForbidden from json.
-func (s *ActivityStarRepoForAuthenticatedUserForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ActivityStarRepoForAuthenticatedUserForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ActivityStarRepoForAuthenticatedUserForbidden(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -6969,31 +6344,6 @@ func (s *ActivityStarRepoForAuthenticatedUserForbidden) UnmarshalJSON(data []byt
 	return s.Decode(d)
 }
 
-// Encode encodes ActivityStarRepoForAuthenticatedUserNotFound as json.
-func (s *ActivityStarRepoForAuthenticatedUserNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ActivityStarRepoForAuthenticatedUserNotFound from json.
-func (s *ActivityStarRepoForAuthenticatedUserNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ActivityStarRepoForAuthenticatedUserNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ActivityStarRepoForAuthenticatedUserNotFound(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *ActivityStarRepoForAuthenticatedUserNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -7005,31 +6355,6 @@ func (s *ActivityStarRepoForAuthenticatedUserNotFound) MarshalJSON() ([]byte, er
 func (s *ActivityStarRepoForAuthenticatedUserNotFound) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes ActivityStarRepoForAuthenticatedUserUnauthorized as json.
-func (s *ActivityStarRepoForAuthenticatedUserUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ActivityStarRepoForAuthenticatedUserUnauthorized from json.
-func (s *ActivityStarRepoForAuthenticatedUserUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ActivityStarRepoForAuthenticatedUserUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ActivityStarRepoForAuthenticatedUserUnauthorized(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -7045,31 +6370,6 @@ func (s *ActivityStarRepoForAuthenticatedUserUnauthorized) UnmarshalJSON(data []
 	return s.Decode(d)
 }
 
-// Encode encodes ActivityUnstarRepoForAuthenticatedUserForbidden as json.
-func (s *ActivityUnstarRepoForAuthenticatedUserForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ActivityUnstarRepoForAuthenticatedUserForbidden from json.
-func (s *ActivityUnstarRepoForAuthenticatedUserForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ActivityUnstarRepoForAuthenticatedUserForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ActivityUnstarRepoForAuthenticatedUserForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *ActivityUnstarRepoForAuthenticatedUserForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -7083,31 +6383,6 @@ func (s *ActivityUnstarRepoForAuthenticatedUserForbidden) UnmarshalJSON(data []b
 	return s.Decode(d)
 }
 
-// Encode encodes ActivityUnstarRepoForAuthenticatedUserNotFound as json.
-func (s *ActivityUnstarRepoForAuthenticatedUserNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ActivityUnstarRepoForAuthenticatedUserNotFound from json.
-func (s *ActivityUnstarRepoForAuthenticatedUserNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ActivityUnstarRepoForAuthenticatedUserNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ActivityUnstarRepoForAuthenticatedUserNotFound(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *ActivityUnstarRepoForAuthenticatedUserNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -7119,31 +6394,6 @@ func (s *ActivityUnstarRepoForAuthenticatedUserNotFound) MarshalJSON() ([]byte, 
 func (s *ActivityUnstarRepoForAuthenticatedUserNotFound) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes ActivityUnstarRepoForAuthenticatedUserUnauthorized as json.
-func (s *ActivityUnstarRepoForAuthenticatedUserUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ActivityUnstarRepoForAuthenticatedUserUnauthorized from json.
-func (s *ActivityUnstarRepoForAuthenticatedUserUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ActivityUnstarRepoForAuthenticatedUserUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ActivityUnstarRepoForAuthenticatedUserUnauthorized(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -9729,31 +8979,6 @@ func (s *ApplicationGrantApp) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes AppsAddRepoToInstallationForbidden as json.
-func (s *AppsAddRepoToInstallationForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes AppsAddRepoToInstallationForbidden from json.
-func (s *AppsAddRepoToInstallationForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode AppsAddRepoToInstallationForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = AppsAddRepoToInstallationForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *AppsAddRepoToInstallationForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -9765,31 +8990,6 @@ func (s *AppsAddRepoToInstallationForbidden) MarshalJSON() ([]byte, error) {
 func (s *AppsAddRepoToInstallationForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes AppsAddRepoToInstallationNotFound as json.
-func (s *AppsAddRepoToInstallationNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes AppsAddRepoToInstallationNotFound from json.
-func (s *AppsAddRepoToInstallationNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode AppsAddRepoToInstallationNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = AppsAddRepoToInstallationNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -9901,31 +9101,6 @@ func (s *AppsCheckTokenReq) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes AppsCreateContentAttachmentForbidden as json.
-func (s *AppsCreateContentAttachmentForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes AppsCreateContentAttachmentForbidden from json.
-func (s *AppsCreateContentAttachmentForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode AppsCreateContentAttachmentForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = AppsCreateContentAttachmentForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *AppsCreateContentAttachmentForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -9939,31 +9114,6 @@ func (s *AppsCreateContentAttachmentForbidden) UnmarshalJSON(data []byte) error 
 	return s.Decode(d)
 }
 
-// Encode encodes AppsCreateContentAttachmentGone as json.
-func (s *AppsCreateContentAttachmentGone) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes AppsCreateContentAttachmentGone from json.
-func (s *AppsCreateContentAttachmentGone) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode AppsCreateContentAttachmentGone to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = AppsCreateContentAttachmentGone(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *AppsCreateContentAttachmentGone) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -9975,31 +9125,6 @@ func (s *AppsCreateContentAttachmentGone) MarshalJSON() ([]byte, error) {
 func (s *AppsCreateContentAttachmentGone) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes AppsCreateContentAttachmentNotFound as json.
-func (s *AppsCreateContentAttachmentNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes AppsCreateContentAttachmentNotFound from json.
-func (s *AppsCreateContentAttachmentNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode AppsCreateContentAttachmentNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = AppsCreateContentAttachmentNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -10827,31 +9952,6 @@ func (s *AppsCreateFromManifestReq) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes AppsCreateInstallationAccessTokenForbidden as json.
-func (s *AppsCreateInstallationAccessTokenForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes AppsCreateInstallationAccessTokenForbidden from json.
-func (s *AppsCreateInstallationAccessTokenForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode AppsCreateInstallationAccessTokenForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = AppsCreateInstallationAccessTokenForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *AppsCreateInstallationAccessTokenForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -10863,31 +9963,6 @@ func (s *AppsCreateInstallationAccessTokenForbidden) MarshalJSON() ([]byte, erro
 func (s *AppsCreateInstallationAccessTokenForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes AppsCreateInstallationAccessTokenNotFound as json.
-func (s *AppsCreateInstallationAccessTokenNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes AppsCreateInstallationAccessTokenNotFound from json.
-func (s *AppsCreateInstallationAccessTokenNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode AppsCreateInstallationAccessTokenNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = AppsCreateInstallationAccessTokenNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -11024,31 +10099,6 @@ func (s *AppsCreateInstallationAccessTokenReq) MarshalJSON() ([]byte, error) {
 func (s *AppsCreateInstallationAccessTokenReq) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes AppsCreateInstallationAccessTokenUnauthorized as json.
-func (s *AppsCreateInstallationAccessTokenUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes AppsCreateInstallationAccessTokenUnauthorized from json.
-func (s *AppsCreateInstallationAccessTokenUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode AppsCreateInstallationAccessTokenUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = AppsCreateInstallationAccessTokenUnauthorized(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -11256,31 +10306,6 @@ func (s *AppsDeleteTokenReq) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes AppsGetBySlugForbidden as json.
-func (s *AppsGetBySlugForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes AppsGetBySlugForbidden from json.
-func (s *AppsGetBySlugForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode AppsGetBySlugForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = AppsGetBySlugForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *AppsGetBySlugForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -11292,31 +10317,6 @@ func (s *AppsGetBySlugForbidden) MarshalJSON() ([]byte, error) {
 func (s *AppsGetBySlugForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes AppsGetBySlugNotFound as json.
-func (s *AppsGetBySlugNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes AppsGetBySlugNotFound from json.
-func (s *AppsGetBySlugNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode AppsGetBySlugNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = AppsGetBySlugNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -11332,31 +10332,6 @@ func (s *AppsGetBySlugNotFound) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes AppsGetSubscriptionPlanForAccountNotFound as json.
-func (s *AppsGetSubscriptionPlanForAccountNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes AppsGetSubscriptionPlanForAccountNotFound from json.
-func (s *AppsGetSubscriptionPlanForAccountNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode AppsGetSubscriptionPlanForAccountNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = AppsGetSubscriptionPlanForAccountNotFound(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *AppsGetSubscriptionPlanForAccountNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -11368,31 +10343,6 @@ func (s *AppsGetSubscriptionPlanForAccountNotFound) MarshalJSON() ([]byte, error
 func (s *AppsGetSubscriptionPlanForAccountNotFound) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes AppsGetSubscriptionPlanForAccountUnauthorized as json.
-func (s *AppsGetSubscriptionPlanForAccountUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes AppsGetSubscriptionPlanForAccountUnauthorized from json.
-func (s *AppsGetSubscriptionPlanForAccountUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode AppsGetSubscriptionPlanForAccountUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = AppsGetSubscriptionPlanForAccountUnauthorized(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -11408,31 +10358,6 @@ func (s *AppsGetSubscriptionPlanForAccountUnauthorized) UnmarshalJSON(data []byt
 	return s.Decode(d)
 }
 
-// Encode encodes AppsListAccountsForPlanNotFound as json.
-func (s *AppsListAccountsForPlanNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes AppsListAccountsForPlanNotFound from json.
-func (s *AppsListAccountsForPlanNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode AppsListAccountsForPlanNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = AppsListAccountsForPlanNotFound(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *AppsListAccountsForPlanNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -11444,31 +10369,6 @@ func (s *AppsListAccountsForPlanNotFound) MarshalJSON() ([]byte, error) {
 func (s *AppsListAccountsForPlanNotFound) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes AppsListAccountsForPlanUnauthorized as json.
-func (s *AppsListAccountsForPlanUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes AppsListAccountsForPlanUnauthorized from json.
-func (s *AppsListAccountsForPlanUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode AppsListAccountsForPlanUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = AppsListAccountsForPlanUnauthorized(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -11484,31 +10384,6 @@ func (s *AppsListAccountsForPlanUnauthorized) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes AppsListInstallationReposForAuthenticatedUserForbidden as json.
-func (s *AppsListInstallationReposForAuthenticatedUserForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes AppsListInstallationReposForAuthenticatedUserForbidden from json.
-func (s *AppsListInstallationReposForAuthenticatedUserForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode AppsListInstallationReposForAuthenticatedUserForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = AppsListInstallationReposForAuthenticatedUserForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *AppsListInstallationReposForAuthenticatedUserForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -11520,31 +10395,6 @@ func (s *AppsListInstallationReposForAuthenticatedUserForbidden) MarshalJSON() (
 func (s *AppsListInstallationReposForAuthenticatedUserForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes AppsListInstallationReposForAuthenticatedUserNotFound as json.
-func (s *AppsListInstallationReposForAuthenticatedUserNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes AppsListInstallationReposForAuthenticatedUserNotFound from json.
-func (s *AppsListInstallationReposForAuthenticatedUserNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode AppsListInstallationReposForAuthenticatedUserNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = AppsListInstallationReposForAuthenticatedUserNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -11700,31 +10550,6 @@ func (s *AppsListInstallationReposForAuthenticatedUserOK) UnmarshalJSON(data []b
 	return s.Decode(d)
 }
 
-// Encode encodes AppsListPlansNotFound as json.
-func (s *AppsListPlansNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes AppsListPlansNotFound from json.
-func (s *AppsListPlansNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode AppsListPlansNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = AppsListPlansNotFound(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *AppsListPlansNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -11738,31 +10563,6 @@ func (s *AppsListPlansNotFound) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes AppsListPlansUnauthorized as json.
-func (s *AppsListPlansUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes AppsListPlansUnauthorized from json.
-func (s *AppsListPlansUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode AppsListPlansUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = AppsListPlansUnauthorized(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *AppsListPlansUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -11774,31 +10574,6 @@ func (s *AppsListPlansUnauthorized) MarshalJSON() ([]byte, error) {
 func (s *AppsListPlansUnauthorized) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes AppsListReposAccessibleToInstallationForbidden as json.
-func (s *AppsListReposAccessibleToInstallationForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes AppsListReposAccessibleToInstallationForbidden from json.
-func (s *AppsListReposAccessibleToInstallationForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode AppsListReposAccessibleToInstallationForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = AppsListReposAccessibleToInstallationForbidden(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -11954,31 +10729,6 @@ func (s *AppsListReposAccessibleToInstallationOK) UnmarshalJSON(data []byte) err
 	return s.Decode(d)
 }
 
-// Encode encodes AppsListReposAccessibleToInstallationUnauthorized as json.
-func (s *AppsListReposAccessibleToInstallationUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes AppsListReposAccessibleToInstallationUnauthorized from json.
-func (s *AppsListReposAccessibleToInstallationUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode AppsListReposAccessibleToInstallationUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = AppsListReposAccessibleToInstallationUnauthorized(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *AppsListReposAccessibleToInstallationUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -11992,31 +10742,6 @@ func (s *AppsListReposAccessibleToInstallationUnauthorized) UnmarshalJSON(data [
 	return s.Decode(d)
 }
 
-// Encode encodes AppsListSubscriptionsForAuthenticatedUserNotFound as json.
-func (s *AppsListSubscriptionsForAuthenticatedUserNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes AppsListSubscriptionsForAuthenticatedUserNotFound from json.
-func (s *AppsListSubscriptionsForAuthenticatedUserNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode AppsListSubscriptionsForAuthenticatedUserNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = AppsListSubscriptionsForAuthenticatedUserNotFound(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *AppsListSubscriptionsForAuthenticatedUserNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -12028,31 +10753,6 @@ func (s *AppsListSubscriptionsForAuthenticatedUserNotFound) MarshalJSON() ([]byt
 func (s *AppsListSubscriptionsForAuthenticatedUserNotFound) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes AppsListSubscriptionsForAuthenticatedUserUnauthorized as json.
-func (s *AppsListSubscriptionsForAuthenticatedUserUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes AppsListSubscriptionsForAuthenticatedUserUnauthorized from json.
-func (s *AppsListSubscriptionsForAuthenticatedUserUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode AppsListSubscriptionsForAuthenticatedUserUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = AppsListSubscriptionsForAuthenticatedUserUnauthorized(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -12118,31 +10818,6 @@ func (s *AppsListWebhookDeliveriesOKApplicationJSON) UnmarshalJSON(data []byte) 
 	return s.Decode(d)
 }
 
-// Encode encodes AppsRemoveRepoFromInstallationForbidden as json.
-func (s *AppsRemoveRepoFromInstallationForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes AppsRemoveRepoFromInstallationForbidden from json.
-func (s *AppsRemoveRepoFromInstallationForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode AppsRemoveRepoFromInstallationForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = AppsRemoveRepoFromInstallationForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *AppsRemoveRepoFromInstallationForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -12154,31 +10829,6 @@ func (s *AppsRemoveRepoFromInstallationForbidden) MarshalJSON() ([]byte, error) 
 func (s *AppsRemoveRepoFromInstallationForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes AppsRemoveRepoFromInstallationNotFound as json.
-func (s *AppsRemoveRepoFromInstallationNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes AppsRemoveRepoFromInstallationNotFound from json.
-func (s *AppsRemoveRepoFromInstallationNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode AppsRemoveRepoFromInstallationNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = AppsRemoveRepoFromInstallationNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -12290,31 +10940,6 @@ func (s *AppsResetTokenReq) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes AppsScopeTokenForbidden as json.
-func (s *AppsScopeTokenForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes AppsScopeTokenForbidden from json.
-func (s *AppsScopeTokenForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode AppsScopeTokenForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = AppsScopeTokenForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *AppsScopeTokenForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -12326,31 +10951,6 @@ func (s *AppsScopeTokenForbidden) MarshalJSON() ([]byte, error) {
 func (s *AppsScopeTokenForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes AppsScopeTokenNotFound as json.
-func (s *AppsScopeTokenNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes AppsScopeTokenNotFound from json.
-func (s *AppsScopeTokenNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode AppsScopeTokenNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = AppsScopeTokenNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -12571,31 +11171,6 @@ func (s *AppsScopeTokenReq) MarshalJSON() ([]byte, error) {
 func (s *AppsScopeTokenReq) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes AppsScopeTokenUnauthorized as json.
-func (s *AppsScopeTokenUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes AppsScopeTokenUnauthorized from json.
-func (s *AppsScopeTokenUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode AppsScopeTokenUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = AppsScopeTokenUnauthorized(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -20651,31 +19226,6 @@ func (s *CheckSuiteStatus) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes ChecksCreateSuiteCreated as json.
-func (s *ChecksCreateSuiteCreated) Encode(e *jx.Encoder) {
-	unwrapped := (*CheckSuite)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ChecksCreateSuiteCreated from json.
-func (s *ChecksCreateSuiteCreated) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ChecksCreateSuiteCreated to nil")
-	}
-	var unwrapped CheckSuite
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ChecksCreateSuiteCreated(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *ChecksCreateSuiteCreated) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -20687,31 +19237,6 @@ func (s *ChecksCreateSuiteCreated) MarshalJSON() ([]byte, error) {
 func (s *ChecksCreateSuiteCreated) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes ChecksCreateSuiteOK as json.
-func (s *ChecksCreateSuiteOK) Encode(e *jx.Encoder) {
-	unwrapped := (*CheckSuite)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ChecksCreateSuiteOK from json.
-func (s *ChecksCreateSuiteOK) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ChecksCreateSuiteOK to nil")
-	}
-	var unwrapped CheckSuite
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ChecksCreateSuiteOK(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -24542,31 +23067,6 @@ func (s *CodeScanningAnalysisURL) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes CodeScanningDeleteAnalysisBadRequest as json.
-func (s *CodeScanningDeleteAnalysisBadRequest) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes CodeScanningDeleteAnalysisBadRequest from json.
-func (s *CodeScanningDeleteAnalysisBadRequest) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode CodeScanningDeleteAnalysisBadRequest to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = CodeScanningDeleteAnalysisBadRequest(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *CodeScanningDeleteAnalysisBadRequest) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -24578,31 +23078,6 @@ func (s *CodeScanningDeleteAnalysisBadRequest) MarshalJSON() ([]byte, error) {
 func (s *CodeScanningDeleteAnalysisBadRequest) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes CodeScanningDeleteAnalysisForbidden as json.
-func (s *CodeScanningDeleteAnalysisForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes CodeScanningDeleteAnalysisForbidden from json.
-func (s *CodeScanningDeleteAnalysisForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode CodeScanningDeleteAnalysisForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = CodeScanningDeleteAnalysisForbidden(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -24618,31 +23093,6 @@ func (s *CodeScanningDeleteAnalysisForbidden) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes CodeScanningDeleteAnalysisNotFound as json.
-func (s *CodeScanningDeleteAnalysisNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes CodeScanningDeleteAnalysisNotFound from json.
-func (s *CodeScanningDeleteAnalysisNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode CodeScanningDeleteAnalysisNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = CodeScanningDeleteAnalysisNotFound(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *CodeScanningDeleteAnalysisNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -24654,31 +23104,6 @@ func (s *CodeScanningDeleteAnalysisNotFound) MarshalJSON() ([]byte, error) {
 func (s *CodeScanningDeleteAnalysisNotFound) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes CodeScanningGetAlertForbidden as json.
-func (s *CodeScanningGetAlertForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes CodeScanningGetAlertForbidden from json.
-func (s *CodeScanningGetAlertForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode CodeScanningGetAlertForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = CodeScanningGetAlertForbidden(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -24694,31 +23119,6 @@ func (s *CodeScanningGetAlertForbidden) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes CodeScanningGetAlertNotFound as json.
-func (s *CodeScanningGetAlertNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes CodeScanningGetAlertNotFound from json.
-func (s *CodeScanningGetAlertNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode CodeScanningGetAlertNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = CodeScanningGetAlertNotFound(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *CodeScanningGetAlertNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -24730,31 +23130,6 @@ func (s *CodeScanningGetAlertNotFound) MarshalJSON() ([]byte, error) {
 func (s *CodeScanningGetAlertNotFound) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes CodeScanningGetAnalysisForbidden as json.
-func (s *CodeScanningGetAnalysisForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes CodeScanningGetAnalysisForbidden from json.
-func (s *CodeScanningGetAnalysisForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode CodeScanningGetAnalysisForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = CodeScanningGetAnalysisForbidden(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -24770,31 +23145,6 @@ func (s *CodeScanningGetAnalysisForbidden) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes CodeScanningGetAnalysisNotFound as json.
-func (s *CodeScanningGetAnalysisNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes CodeScanningGetAnalysisNotFound from json.
-func (s *CodeScanningGetAnalysisNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode CodeScanningGetAnalysisNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = CodeScanningGetAnalysisNotFound(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *CodeScanningGetAnalysisNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -24808,31 +23158,6 @@ func (s *CodeScanningGetAnalysisNotFound) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes CodeScanningListAlertInstancesForbidden as json.
-func (s *CodeScanningListAlertInstancesForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes CodeScanningListAlertInstancesForbidden from json.
-func (s *CodeScanningListAlertInstancesForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode CodeScanningListAlertInstancesForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = CodeScanningListAlertInstancesForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *CodeScanningListAlertInstancesForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -24844,31 +23169,6 @@ func (s *CodeScanningListAlertInstancesForbidden) MarshalJSON() ([]byte, error) 
 func (s *CodeScanningListAlertInstancesForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes CodeScanningListAlertInstancesNotFound as json.
-func (s *CodeScanningListAlertInstancesNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes CodeScanningListAlertInstancesNotFound from json.
-func (s *CodeScanningListAlertInstancesNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode CodeScanningListAlertInstancesNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = CodeScanningListAlertInstancesNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -24934,31 +23234,6 @@ func (s *CodeScanningListAlertInstancesOKApplicationJSON) UnmarshalJSON(data []b
 	return s.Decode(d)
 }
 
-// Encode encodes CodeScanningListAlertsForRepoForbidden as json.
-func (s *CodeScanningListAlertsForRepoForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes CodeScanningListAlertsForRepoForbidden from json.
-func (s *CodeScanningListAlertsForRepoForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode CodeScanningListAlertsForRepoForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = CodeScanningListAlertsForRepoForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *CodeScanningListAlertsForRepoForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -24970,31 +23245,6 @@ func (s *CodeScanningListAlertsForRepoForbidden) MarshalJSON() ([]byte, error) {
 func (s *CodeScanningListAlertsForRepoForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes CodeScanningListAlertsForRepoNotFound as json.
-func (s *CodeScanningListAlertsForRepoNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes CodeScanningListAlertsForRepoNotFound from json.
-func (s *CodeScanningListAlertsForRepoNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode CodeScanningListAlertsForRepoNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = CodeScanningListAlertsForRepoNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -25060,31 +23310,6 @@ func (s *CodeScanningListAlertsForRepoOKApplicationJSON) UnmarshalJSON(data []by
 	return s.Decode(d)
 }
 
-// Encode encodes CodeScanningListRecentAnalysesForbidden as json.
-func (s *CodeScanningListRecentAnalysesForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes CodeScanningListRecentAnalysesForbidden from json.
-func (s *CodeScanningListRecentAnalysesForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode CodeScanningListRecentAnalysesForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = CodeScanningListRecentAnalysesForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *CodeScanningListRecentAnalysesForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -25096,31 +23321,6 @@ func (s *CodeScanningListRecentAnalysesForbidden) MarshalJSON() ([]byte, error) 
 func (s *CodeScanningListRecentAnalysesForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes CodeScanningListRecentAnalysesNotFound as json.
-func (s *CodeScanningListRecentAnalysesNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes CodeScanningListRecentAnalysesNotFound from json.
-func (s *CodeScanningListRecentAnalysesNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode CodeScanningListRecentAnalysesNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = CodeScanningListRecentAnalysesNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -25426,31 +23626,6 @@ func (s *CodeScanningSarifsStatusProcessingStatus) UnmarshalJSON(data []byte) er
 	return s.Decode(d)
 }
 
-// Encode encodes CodeScanningUpdateAlertForbidden as json.
-func (s *CodeScanningUpdateAlertForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes CodeScanningUpdateAlertForbidden from json.
-func (s *CodeScanningUpdateAlertForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode CodeScanningUpdateAlertForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = CodeScanningUpdateAlertForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *CodeScanningUpdateAlertForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -25462,31 +23637,6 @@ func (s *CodeScanningUpdateAlertForbidden) MarshalJSON() ([]byte, error) {
 func (s *CodeScanningUpdateAlertForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes CodeScanningUpdateAlertNotFound as json.
-func (s *CodeScanningUpdateAlertNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes CodeScanningUpdateAlertNotFound from json.
-func (s *CodeScanningUpdateAlertNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode CodeScanningUpdateAlertNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = CodeScanningUpdateAlertNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -25613,31 +23763,6 @@ func (s *CodeScanningUpdateAlertReq) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes CodeScanningUploadSarifForbidden as json.
-func (s *CodeScanningUploadSarifForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes CodeScanningUploadSarifForbidden from json.
-func (s *CodeScanningUploadSarifForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode CodeScanningUploadSarifForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = CodeScanningUploadSarifForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *CodeScanningUploadSarifForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -25649,31 +23774,6 @@ func (s *CodeScanningUploadSarifForbidden) MarshalJSON() ([]byte, error) {
 func (s *CodeScanningUploadSarifForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes CodeScanningUploadSarifNotFound as json.
-func (s *CodeScanningUploadSarifNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes CodeScanningUploadSarifNotFound from json.
-func (s *CodeScanningUploadSarifNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode CodeScanningUploadSarifNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = CodeScanningUploadSarifNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -44399,31 +42499,6 @@ func (s *GistsCheckIsStarredNotFound) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes GistsCreateCommentForbidden as json.
-func (s *GistsCreateCommentForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes GistsCreateCommentForbidden from json.
-func (s *GistsCreateCommentForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode GistsCreateCommentForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = GistsCreateCommentForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *GistsCreateCommentForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -44435,31 +42510,6 @@ func (s *GistsCreateCommentForbidden) MarshalJSON() ([]byte, error) {
 func (s *GistsCreateCommentForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes GistsCreateCommentNotFound as json.
-func (s *GistsCreateCommentNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes GistsCreateCommentNotFound from json.
-func (s *GistsCreateCommentNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode GistsCreateCommentNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = GistsCreateCommentNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -44571,31 +42621,6 @@ func (s *GistsCreateCommentReq) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes GistsCreateForbidden as json.
-func (s *GistsCreateForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes GistsCreateForbidden from json.
-func (s *GistsCreateForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode GistsCreateForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = GistsCreateForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *GistsCreateForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -44607,31 +42632,6 @@ func (s *GistsCreateForbidden) MarshalJSON() ([]byte, error) {
 func (s *GistsCreateForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes GistsCreateNotFound as json.
-func (s *GistsCreateNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes GistsCreateNotFound from json.
-func (s *GistsCreateNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode GistsCreateNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = GistsCreateNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -45013,31 +43013,6 @@ func (s *GistsCreateReqPublic1) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes GistsDeleteCommentForbidden as json.
-func (s *GistsDeleteCommentForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes GistsDeleteCommentForbidden from json.
-func (s *GistsDeleteCommentForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode GistsDeleteCommentForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = GistsDeleteCommentForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *GistsDeleteCommentForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -45049,31 +43024,6 @@ func (s *GistsDeleteCommentForbidden) MarshalJSON() ([]byte, error) {
 func (s *GistsDeleteCommentForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes GistsDeleteCommentNotFound as json.
-func (s *GistsDeleteCommentNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes GistsDeleteCommentNotFound from json.
-func (s *GistsDeleteCommentNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode GistsDeleteCommentNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = GistsDeleteCommentNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -45089,31 +43039,6 @@ func (s *GistsDeleteCommentNotFound) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes GistsDeleteForbidden as json.
-func (s *GistsDeleteForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes GistsDeleteForbidden from json.
-func (s *GistsDeleteForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode GistsDeleteForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = GistsDeleteForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *GistsDeleteForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -45125,31 +43050,6 @@ func (s *GistsDeleteForbidden) MarshalJSON() ([]byte, error) {
 func (s *GistsDeleteForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes GistsDeleteNotFound as json.
-func (s *GistsDeleteNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes GistsDeleteNotFound from json.
-func (s *GistsDeleteNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode GistsDeleteNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = GistsDeleteNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -45165,31 +43065,6 @@ func (s *GistsDeleteNotFound) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes GistsForkForbidden as json.
-func (s *GistsForkForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes GistsForkForbidden from json.
-func (s *GistsForkForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode GistsForkForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = GistsForkForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *GistsForkForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -45201,31 +43076,6 @@ func (s *GistsForkForbidden) MarshalJSON() ([]byte, error) {
 func (s *GistsForkForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes GistsForkNotFound as json.
-func (s *GistsForkNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes GistsForkNotFound from json.
-func (s *GistsForkNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode GistsForkNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = GistsForkNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -45241,31 +43091,6 @@ func (s *GistsForkNotFound) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes GistsGetRevisionForbidden as json.
-func (s *GistsGetRevisionForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes GistsGetRevisionForbidden from json.
-func (s *GistsGetRevisionForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode GistsGetRevisionForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = GistsGetRevisionForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *GistsGetRevisionForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -45277,31 +43102,6 @@ func (s *GistsGetRevisionForbidden) MarshalJSON() ([]byte, error) {
 func (s *GistsGetRevisionForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes GistsGetRevisionNotFound as json.
-func (s *GistsGetRevisionNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes GistsGetRevisionNotFound from json.
-func (s *GistsGetRevisionNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode GistsGetRevisionNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = GistsGetRevisionNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -45317,31 +43117,6 @@ func (s *GistsGetRevisionNotFound) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes GistsListCommentsForbidden as json.
-func (s *GistsListCommentsForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes GistsListCommentsForbidden from json.
-func (s *GistsListCommentsForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode GistsListCommentsForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = GistsListCommentsForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *GistsListCommentsForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -45353,31 +43128,6 @@ func (s *GistsListCommentsForbidden) MarshalJSON() ([]byte, error) {
 func (s *GistsListCommentsForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes GistsListCommentsNotFound as json.
-func (s *GistsListCommentsNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes GistsListCommentsNotFound from json.
-func (s *GistsListCommentsNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode GistsListCommentsNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = GistsListCommentsNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -45393,31 +43143,6 @@ func (s *GistsListCommentsNotFound) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes GistsListCommitsForbidden as json.
-func (s *GistsListCommitsForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes GistsListCommitsForbidden from json.
-func (s *GistsListCommitsForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode GistsListCommitsForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = GistsListCommitsForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *GistsListCommitsForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -45429,31 +43154,6 @@ func (s *GistsListCommitsForbidden) MarshalJSON() ([]byte, error) {
 func (s *GistsListCommitsForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes GistsListCommitsNotFound as json.
-func (s *GistsListCommitsNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes GistsListCommitsNotFound from json.
-func (s *GistsListCommitsNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode GistsListCommitsNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = GistsListCommitsNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -45469,31 +43169,6 @@ func (s *GistsListCommitsNotFound) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes GistsListForksForbidden as json.
-func (s *GistsListForksForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes GistsListForksForbidden from json.
-func (s *GistsListForksForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode GistsListForksForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = GistsListForksForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *GistsListForksForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -45505,31 +43180,6 @@ func (s *GistsListForksForbidden) MarshalJSON() ([]byte, error) {
 func (s *GistsListForksForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes GistsListForksNotFound as json.
-func (s *GistsListForksNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes GistsListForksNotFound from json.
-func (s *GistsListForksNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode GistsListForksNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = GistsListForksNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -45545,31 +43195,6 @@ func (s *GistsListForksNotFound) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes GistsListStarredForbidden as json.
-func (s *GistsListStarredForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes GistsListStarredForbidden from json.
-func (s *GistsListStarredForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode GistsListStarredForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = GistsListStarredForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *GistsListStarredForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -45581,31 +43206,6 @@ func (s *GistsListStarredForbidden) MarshalJSON() ([]byte, error) {
 func (s *GistsListStarredForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes GistsListStarredUnauthorized as json.
-func (s *GistsListStarredUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes GistsListStarredUnauthorized from json.
-func (s *GistsListStarredUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode GistsListStarredUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = GistsListStarredUnauthorized(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -45621,31 +43221,6 @@ func (s *GistsListStarredUnauthorized) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes GistsStarForbidden as json.
-func (s *GistsStarForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes GistsStarForbidden from json.
-func (s *GistsStarForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode GistsStarForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = GistsStarForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *GistsStarForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -45657,31 +43232,6 @@ func (s *GistsStarForbidden) MarshalJSON() ([]byte, error) {
 func (s *GistsStarForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes GistsStarNotFound as json.
-func (s *GistsStarNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes GistsStarNotFound from json.
-func (s *GistsStarNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode GistsStarNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = GistsStarNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -45697,31 +43247,6 @@ func (s *GistsStarNotFound) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes GistsUnstarForbidden as json.
-func (s *GistsUnstarForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes GistsUnstarForbidden from json.
-func (s *GistsUnstarForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode GistsUnstarForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = GistsUnstarForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *GistsUnstarForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -45733,31 +43258,6 @@ func (s *GistsUnstarForbidden) MarshalJSON() ([]byte, error) {
 func (s *GistsUnstarForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes GistsUnstarNotFound as json.
-func (s *GistsUnstarNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes GistsUnstarNotFound from json.
-func (s *GistsUnstarNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode GistsUnstarNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = GistsUnstarNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -46767,31 +44267,6 @@ func (s *GitCommitVerification) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes GitCreateBlobConflict as json.
-func (s *GitCreateBlobConflict) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes GitCreateBlobConflict from json.
-func (s *GitCreateBlobConflict) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode GitCreateBlobConflict to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = GitCreateBlobConflict(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *GitCreateBlobConflict) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -46805,31 +44280,6 @@ func (s *GitCreateBlobConflict) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes GitCreateBlobForbidden as json.
-func (s *GitCreateBlobForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes GitCreateBlobForbidden from json.
-func (s *GitCreateBlobForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode GitCreateBlobForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = GitCreateBlobForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *GitCreateBlobForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -46841,31 +44291,6 @@ func (s *GitCreateBlobForbidden) MarshalJSON() ([]byte, error) {
 func (s *GitCreateBlobForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes GitCreateBlobNotFound as json.
-func (s *GitCreateBlobNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes GitCreateBlobNotFound from json.
-func (s *GitCreateBlobNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode GitCreateBlobNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = GitCreateBlobNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -47880,31 +45305,6 @@ func (s *GitCreateTagReqType) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes GitCreateTreeForbidden as json.
-func (s *GitCreateTreeForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes GitCreateTreeForbidden from json.
-func (s *GitCreateTreeForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode GitCreateTreeForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = GitCreateTreeForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *GitCreateTreeForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -47916,31 +45316,6 @@ func (s *GitCreateTreeForbidden) MarshalJSON() ([]byte, error) {
 func (s *GitCreateTreeForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes GitCreateTreeNotFound as json.
-func (s *GitCreateTreeNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes GitCreateTreeNotFound from json.
-func (s *GitCreateTreeNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode GitCreateTreeNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = GitCreateTreeNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -48298,31 +45673,6 @@ func (s *GitCreateTreeReqTreeItemType) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes GitGetBlobForbidden as json.
-func (s *GitGetBlobForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes GitGetBlobForbidden from json.
-func (s *GitGetBlobForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode GitGetBlobForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = GitGetBlobForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *GitGetBlobForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -48334,31 +45684,6 @@ func (s *GitGetBlobForbidden) MarshalJSON() ([]byte, error) {
 func (s *GitGetBlobForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes GitGetBlobNotFound as json.
-func (s *GitGetBlobNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes GitGetBlobNotFound from json.
-func (s *GitGetBlobNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode GitGetBlobNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = GitGetBlobNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -58483,31 +55808,6 @@ func (s *IssuesAddAssigneesReq) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes IssuesCreateCommentForbidden as json.
-func (s *IssuesCreateCommentForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes IssuesCreateCommentForbidden from json.
-func (s *IssuesCreateCommentForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode IssuesCreateCommentForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = IssuesCreateCommentForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *IssuesCreateCommentForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -58521,31 +55821,6 @@ func (s *IssuesCreateCommentForbidden) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes IssuesCreateCommentGone as json.
-func (s *IssuesCreateCommentGone) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes IssuesCreateCommentGone from json.
-func (s *IssuesCreateCommentGone) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode IssuesCreateCommentGone to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = IssuesCreateCommentGone(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *IssuesCreateCommentGone) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -58557,31 +55832,6 @@ func (s *IssuesCreateCommentGone) MarshalJSON() ([]byte, error) {
 func (s *IssuesCreateCommentGone) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes IssuesCreateCommentNotFound as json.
-func (s *IssuesCreateCommentNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes IssuesCreateCommentNotFound from json.
-func (s *IssuesCreateCommentNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode IssuesCreateCommentNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = IssuesCreateCommentNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -58693,31 +55943,6 @@ func (s *IssuesCreateCommentReq) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes IssuesCreateForbidden as json.
-func (s *IssuesCreateForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes IssuesCreateForbidden from json.
-func (s *IssuesCreateForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode IssuesCreateForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = IssuesCreateForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *IssuesCreateForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -58729,31 +55954,6 @@ func (s *IssuesCreateForbidden) MarshalJSON() ([]byte, error) {
 func (s *IssuesCreateForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes IssuesCreateGone as json.
-func (s *IssuesCreateGone) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes IssuesCreateGone from json.
-func (s *IssuesCreateGone) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode IssuesCreateGone to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = IssuesCreateGone(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -59085,31 +56285,6 @@ func (s IssuesCreateMilestoneReqState) MarshalJSON() ([]byte, error) {
 func (s *IssuesCreateMilestoneReqState) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes IssuesCreateNotFound as json.
-func (s *IssuesCreateNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes IssuesCreateNotFound from json.
-func (s *IssuesCreateNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode IssuesCreateNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = IssuesCreateNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -59590,31 +56765,6 @@ func (s *IssuesCreateReqTitle) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes IssuesGetEventForbidden as json.
-func (s *IssuesGetEventForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes IssuesGetEventForbidden from json.
-func (s *IssuesGetEventForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode IssuesGetEventForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = IssuesGetEventForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *IssuesGetEventForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -59626,31 +56776,6 @@ func (s *IssuesGetEventForbidden) MarshalJSON() ([]byte, error) {
 func (s *IssuesGetEventForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes IssuesGetEventGone as json.
-func (s *IssuesGetEventGone) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes IssuesGetEventGone from json.
-func (s *IssuesGetEventGone) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode IssuesGetEventGone to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = IssuesGetEventGone(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -59666,31 +56791,6 @@ func (s *IssuesGetEventGone) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes IssuesGetEventNotFound as json.
-func (s *IssuesGetEventNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes IssuesGetEventNotFound from json.
-func (s *IssuesGetEventNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode IssuesGetEventNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = IssuesGetEventNotFound(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *IssuesGetEventNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -59702,31 +56802,6 @@ func (s *IssuesGetEventNotFound) MarshalJSON() ([]byte, error) {
 func (s *IssuesGetEventNotFound) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes IssuesGetGone as json.
-func (s *IssuesGetGone) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes IssuesGetGone from json.
-func (s *IssuesGetGone) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode IssuesGetGone to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = IssuesGetGone(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -59742,31 +56817,6 @@ func (s *IssuesGetGone) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes IssuesGetMovedPermanently as json.
-func (s *IssuesGetMovedPermanently) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes IssuesGetMovedPermanently from json.
-func (s *IssuesGetMovedPermanently) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode IssuesGetMovedPermanently to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = IssuesGetMovedPermanently(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *IssuesGetMovedPermanently) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -59778,31 +56828,6 @@ func (s *IssuesGetMovedPermanently) MarshalJSON() ([]byte, error) {
 func (s *IssuesGetMovedPermanently) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes IssuesGetNotFound as json.
-func (s *IssuesGetNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes IssuesGetNotFound from json.
-func (s *IssuesGetNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode IssuesGetNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = IssuesGetNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -59818,31 +56843,6 @@ func (s *IssuesGetNotFound) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes IssuesListCommentsGone as json.
-func (s *IssuesListCommentsGone) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes IssuesListCommentsGone from json.
-func (s *IssuesListCommentsGone) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode IssuesListCommentsGone to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = IssuesListCommentsGone(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *IssuesListCommentsGone) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -59854,31 +56854,6 @@ func (s *IssuesListCommentsGone) MarshalJSON() ([]byte, error) {
 func (s *IssuesListCommentsGone) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes IssuesListCommentsNotFound as json.
-func (s *IssuesListCommentsNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes IssuesListCommentsNotFound from json.
-func (s *IssuesListCommentsNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode IssuesListCommentsNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = IssuesListCommentsNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -59894,31 +56869,6 @@ func (s *IssuesListCommentsNotFound) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes IssuesListForRepoMovedPermanently as json.
-func (s *IssuesListForRepoMovedPermanently) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes IssuesListForRepoMovedPermanently from json.
-func (s *IssuesListForRepoMovedPermanently) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode IssuesListForRepoMovedPermanently to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = IssuesListForRepoMovedPermanently(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *IssuesListForRepoMovedPermanently) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -59930,31 +56880,6 @@ func (s *IssuesListForRepoMovedPermanently) MarshalJSON() ([]byte, error) {
 func (s *IssuesListForRepoMovedPermanently) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes IssuesListForRepoNotFound as json.
-func (s *IssuesListForRepoNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes IssuesListForRepoNotFound from json.
-func (s *IssuesListForRepoNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode IssuesListForRepoNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = IssuesListForRepoNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -59970,31 +56895,6 @@ func (s *IssuesListForRepoNotFound) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes IssuesLockForbidden as json.
-func (s *IssuesLockForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes IssuesLockForbidden from json.
-func (s *IssuesLockForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode IssuesLockForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = IssuesLockForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *IssuesLockForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -60008,31 +56908,6 @@ func (s *IssuesLockForbidden) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes IssuesLockGone as json.
-func (s *IssuesLockGone) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes IssuesLockGone from json.
-func (s *IssuesLockGone) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode IssuesLockGone to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = IssuesLockGone(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *IssuesLockGone) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -60044,31 +56919,6 @@ func (s *IssuesLockGone) MarshalJSON() ([]byte, error) {
 func (s *IssuesLockGone) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes IssuesLockNotFound as json.
-func (s *IssuesLockNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes IssuesLockNotFound from json.
-func (s *IssuesLockNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode IssuesLockNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = IssuesLockNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -60267,31 +57117,6 @@ func (s *IssuesRemoveAssigneesReq) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes IssuesRemoveLabelGone as json.
-func (s *IssuesRemoveLabelGone) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes IssuesRemoveLabelGone from json.
-func (s *IssuesRemoveLabelGone) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode IssuesRemoveLabelGone to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = IssuesRemoveLabelGone(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *IssuesRemoveLabelGone) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -60303,31 +57128,6 @@ func (s *IssuesRemoveLabelGone) MarshalJSON() ([]byte, error) {
 func (s *IssuesRemoveLabelGone) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes IssuesRemoveLabelNotFound as json.
-func (s *IssuesRemoveLabelNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes IssuesRemoveLabelNotFound from json.
-func (s *IssuesRemoveLabelNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode IssuesRemoveLabelNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = IssuesRemoveLabelNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -60393,31 +57193,6 @@ func (s *IssuesRemoveLabelOKApplicationJSON) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes IssuesUnlockForbidden as json.
-func (s *IssuesUnlockForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes IssuesUnlockForbidden from json.
-func (s *IssuesUnlockForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode IssuesUnlockForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = IssuesUnlockForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *IssuesUnlockForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -60429,31 +57204,6 @@ func (s *IssuesUnlockForbidden) MarshalJSON() ([]byte, error) {
 func (s *IssuesUnlockForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes IssuesUnlockNotFound as json.
-func (s *IssuesUnlockNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes IssuesUnlockNotFound from json.
-func (s *IssuesUnlockNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode IssuesUnlockNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = IssuesUnlockNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -60565,31 +57315,6 @@ func (s *IssuesUpdateCommentReq) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes IssuesUpdateForbidden as json.
-func (s *IssuesUpdateForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes IssuesUpdateForbidden from json.
-func (s *IssuesUpdateForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode IssuesUpdateForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = IssuesUpdateForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *IssuesUpdateForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -60601,31 +57326,6 @@ func (s *IssuesUpdateForbidden) MarshalJSON() ([]byte, error) {
 func (s *IssuesUpdateForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes IssuesUpdateGone as json.
-func (s *IssuesUpdateGone) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes IssuesUpdateGone from json.
-func (s *IssuesUpdateGone) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode IssuesUpdateGone to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = IssuesUpdateGone(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -60893,31 +57593,6 @@ func (s *IssuesUpdateMilestoneReqState) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes IssuesUpdateMovedPermanently as json.
-func (s *IssuesUpdateMovedPermanently) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes IssuesUpdateMovedPermanently from json.
-func (s *IssuesUpdateMovedPermanently) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode IssuesUpdateMovedPermanently to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = IssuesUpdateMovedPermanently(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *IssuesUpdateMovedPermanently) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -60929,31 +57604,6 @@ func (s *IssuesUpdateMovedPermanently) MarshalJSON() ([]byte, error) {
 func (s *IssuesUpdateMovedPermanently) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes IssuesUpdateNotFound as json.
-func (s *IssuesUpdateNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes IssuesUpdateNotFound from json.
-func (s *IssuesUpdateNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode IssuesUpdateNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = IssuesUpdateNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -63812,31 +60462,6 @@ func (s *LicensesGetAllCommonlyUsedOKApplicationJSON) UnmarshalJSON(data []byte)
 	return s.Decode(d)
 }
 
-// Encode encodes LicensesGetForbidden as json.
-func (s *LicensesGetForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes LicensesGetForbidden from json.
-func (s *LicensesGetForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode LicensesGetForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = LicensesGetForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *LicensesGetForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -63848,31 +60473,6 @@ func (s *LicensesGetForbidden) MarshalJSON() ([]byte, error) {
 func (s *LicensesGetForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes LicensesGetNotFound as json.
-func (s *LicensesGetNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes LicensesGetNotFound from json.
-func (s *LicensesGetNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode LicensesGetNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = LicensesGetNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -66479,31 +63079,6 @@ func (s *Migration) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes MigrationsDeleteArchiveForAuthenticatedUserForbidden as json.
-func (s *MigrationsDeleteArchiveForAuthenticatedUserForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes MigrationsDeleteArchiveForAuthenticatedUserForbidden from json.
-func (s *MigrationsDeleteArchiveForAuthenticatedUserForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode MigrationsDeleteArchiveForAuthenticatedUserForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = MigrationsDeleteArchiveForAuthenticatedUserForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *MigrationsDeleteArchiveForAuthenticatedUserForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -66515,31 +63090,6 @@ func (s *MigrationsDeleteArchiveForAuthenticatedUserForbidden) MarshalJSON() ([]
 func (s *MigrationsDeleteArchiveForAuthenticatedUserForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes MigrationsDeleteArchiveForAuthenticatedUserNotFound as json.
-func (s *MigrationsDeleteArchiveForAuthenticatedUserNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes MigrationsDeleteArchiveForAuthenticatedUserNotFound from json.
-func (s *MigrationsDeleteArchiveForAuthenticatedUserNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode MigrationsDeleteArchiveForAuthenticatedUserNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = MigrationsDeleteArchiveForAuthenticatedUserNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -66555,31 +63105,6 @@ func (s *MigrationsDeleteArchiveForAuthenticatedUserNotFound) UnmarshalJSON(data
 	return s.Decode(d)
 }
 
-// Encode encodes MigrationsDeleteArchiveForAuthenticatedUserUnauthorized as json.
-func (s *MigrationsDeleteArchiveForAuthenticatedUserUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes MigrationsDeleteArchiveForAuthenticatedUserUnauthorized from json.
-func (s *MigrationsDeleteArchiveForAuthenticatedUserUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode MigrationsDeleteArchiveForAuthenticatedUserUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = MigrationsDeleteArchiveForAuthenticatedUserUnauthorized(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *MigrationsDeleteArchiveForAuthenticatedUserUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -66593,31 +63118,6 @@ func (s *MigrationsDeleteArchiveForAuthenticatedUserUnauthorized) UnmarshalJSON(
 	return s.Decode(d)
 }
 
-// Encode encodes MigrationsGetArchiveForAuthenticatedUserForbidden as json.
-func (s *MigrationsGetArchiveForAuthenticatedUserForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes MigrationsGetArchiveForAuthenticatedUserForbidden from json.
-func (s *MigrationsGetArchiveForAuthenticatedUserForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode MigrationsGetArchiveForAuthenticatedUserForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = MigrationsGetArchiveForAuthenticatedUserForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *MigrationsGetArchiveForAuthenticatedUserForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -66629,31 +63129,6 @@ func (s *MigrationsGetArchiveForAuthenticatedUserForbidden) MarshalJSON() ([]byt
 func (s *MigrationsGetArchiveForAuthenticatedUserForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes MigrationsGetArchiveForAuthenticatedUserUnauthorized as json.
-func (s *MigrationsGetArchiveForAuthenticatedUserUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes MigrationsGetArchiveForAuthenticatedUserUnauthorized from json.
-func (s *MigrationsGetArchiveForAuthenticatedUserUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode MigrationsGetArchiveForAuthenticatedUserUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = MigrationsGetArchiveForAuthenticatedUserUnauthorized(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -66719,31 +63194,6 @@ func (s *MigrationsGetCommitAuthorsOKApplicationJSON) UnmarshalJSON(data []byte)
 	return s.Decode(d)
 }
 
-// Encode encodes MigrationsGetStatusForAuthenticatedUserForbidden as json.
-func (s *MigrationsGetStatusForAuthenticatedUserForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes MigrationsGetStatusForAuthenticatedUserForbidden from json.
-func (s *MigrationsGetStatusForAuthenticatedUserForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode MigrationsGetStatusForAuthenticatedUserForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = MigrationsGetStatusForAuthenticatedUserForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *MigrationsGetStatusForAuthenticatedUserForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -66755,31 +63205,6 @@ func (s *MigrationsGetStatusForAuthenticatedUserForbidden) MarshalJSON() ([]byte
 func (s *MigrationsGetStatusForAuthenticatedUserForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes MigrationsGetStatusForAuthenticatedUserNotFound as json.
-func (s *MigrationsGetStatusForAuthenticatedUserNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes MigrationsGetStatusForAuthenticatedUserNotFound from json.
-func (s *MigrationsGetStatusForAuthenticatedUserNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode MigrationsGetStatusForAuthenticatedUserNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = MigrationsGetStatusForAuthenticatedUserNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -66795,31 +63220,6 @@ func (s *MigrationsGetStatusForAuthenticatedUserNotFound) UnmarshalJSON(data []b
 	return s.Decode(d)
 }
 
-// Encode encodes MigrationsGetStatusForAuthenticatedUserUnauthorized as json.
-func (s *MigrationsGetStatusForAuthenticatedUserUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes MigrationsGetStatusForAuthenticatedUserUnauthorized from json.
-func (s *MigrationsGetStatusForAuthenticatedUserUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode MigrationsGetStatusForAuthenticatedUserUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = MigrationsGetStatusForAuthenticatedUserUnauthorized(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *MigrationsGetStatusForAuthenticatedUserUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -66833,31 +63233,6 @@ func (s *MigrationsGetStatusForAuthenticatedUserUnauthorized) UnmarshalJSON(data
 	return s.Decode(d)
 }
 
-// Encode encodes MigrationsListForAuthenticatedUserForbidden as json.
-func (s *MigrationsListForAuthenticatedUserForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes MigrationsListForAuthenticatedUserForbidden from json.
-func (s *MigrationsListForAuthenticatedUserForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode MigrationsListForAuthenticatedUserForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = MigrationsListForAuthenticatedUserForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *MigrationsListForAuthenticatedUserForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -66869,31 +63244,6 @@ func (s *MigrationsListForAuthenticatedUserForbidden) MarshalJSON() ([]byte, err
 func (s *MigrationsListForAuthenticatedUserForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes MigrationsListForAuthenticatedUserUnauthorized as json.
-func (s *MigrationsListForAuthenticatedUserUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes MigrationsListForAuthenticatedUserUnauthorized from json.
-func (s *MigrationsListForAuthenticatedUserUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode MigrationsListForAuthenticatedUserUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = MigrationsListForAuthenticatedUserUnauthorized(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -67121,31 +63471,6 @@ func (s MigrationsSetLfsPreferenceReqUseLfs) MarshalJSON() ([]byte, error) {
 func (s *MigrationsSetLfsPreferenceReqUseLfs) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes MigrationsStartForAuthenticatedUserForbidden as json.
-func (s *MigrationsStartForAuthenticatedUserForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes MigrationsStartForAuthenticatedUserForbidden from json.
-func (s *MigrationsStartForAuthenticatedUserForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode MigrationsStartForAuthenticatedUserForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = MigrationsStartForAuthenticatedUserForbidden(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -67401,31 +63726,6 @@ func (s MigrationsStartForAuthenticatedUserReqExcludeItem) MarshalJSON() ([]byte
 func (s *MigrationsStartForAuthenticatedUserReqExcludeItem) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes MigrationsStartForAuthenticatedUserUnauthorized as json.
-func (s *MigrationsStartForAuthenticatedUserUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes MigrationsStartForAuthenticatedUserUnauthorized from json.
-func (s *MigrationsStartForAuthenticatedUserUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode MigrationsStartForAuthenticatedUserUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = MigrationsStartForAuthenticatedUserUnauthorized(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -67892,31 +64192,6 @@ func (s *MigrationsStartImportReqVcs) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes MigrationsUnlockRepoForAuthenticatedUserForbidden as json.
-func (s *MigrationsUnlockRepoForAuthenticatedUserForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes MigrationsUnlockRepoForAuthenticatedUserForbidden from json.
-func (s *MigrationsUnlockRepoForAuthenticatedUserForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode MigrationsUnlockRepoForAuthenticatedUserForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = MigrationsUnlockRepoForAuthenticatedUserForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *MigrationsUnlockRepoForAuthenticatedUserForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -67930,31 +64205,6 @@ func (s *MigrationsUnlockRepoForAuthenticatedUserForbidden) UnmarshalJSON(data [
 	return s.Decode(d)
 }
 
-// Encode encodes MigrationsUnlockRepoForAuthenticatedUserNotFound as json.
-func (s *MigrationsUnlockRepoForAuthenticatedUserNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes MigrationsUnlockRepoForAuthenticatedUserNotFound from json.
-func (s *MigrationsUnlockRepoForAuthenticatedUserNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode MigrationsUnlockRepoForAuthenticatedUserNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = MigrationsUnlockRepoForAuthenticatedUserNotFound(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *MigrationsUnlockRepoForAuthenticatedUserNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -67966,31 +64216,6 @@ func (s *MigrationsUnlockRepoForAuthenticatedUserNotFound) MarshalJSON() ([]byte
 func (s *MigrationsUnlockRepoForAuthenticatedUserNotFound) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes MigrationsUnlockRepoForAuthenticatedUserUnauthorized as json.
-func (s *MigrationsUnlockRepoForAuthenticatedUserUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes MigrationsUnlockRepoForAuthenticatedUserUnauthorized from json.
-func (s *MigrationsUnlockRepoForAuthenticatedUserUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode MigrationsUnlockRepoForAuthenticatedUserUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = MigrationsUnlockRepoForAuthenticatedUserUnauthorized(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -80322,31 +76547,6 @@ func (s *NullableTeamSimple) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes OAuthAuthorizationsCreateAuthorizationForbidden as json.
-func (s *OAuthAuthorizationsCreateAuthorizationForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes OAuthAuthorizationsCreateAuthorizationForbidden from json.
-func (s *OAuthAuthorizationsCreateAuthorizationForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode OAuthAuthorizationsCreateAuthorizationForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = OAuthAuthorizationsCreateAuthorizationForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *OAuthAuthorizationsCreateAuthorizationForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -80358,31 +76558,6 @@ func (s *OAuthAuthorizationsCreateAuthorizationForbidden) MarshalJSON() ([]byte,
 func (s *OAuthAuthorizationsCreateAuthorizationForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes OAuthAuthorizationsCreateAuthorizationGone as json.
-func (s *OAuthAuthorizationsCreateAuthorizationGone) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes OAuthAuthorizationsCreateAuthorizationGone from json.
-func (s *OAuthAuthorizationsCreateAuthorizationGone) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode OAuthAuthorizationsCreateAuthorizationGone to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = OAuthAuthorizationsCreateAuthorizationGone(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -80546,31 +76721,6 @@ func (s *OAuthAuthorizationsCreateAuthorizationReq) UnmarshalJSON(data []byte) e
 	return s.Decode(d)
 }
 
-// Encode encodes OAuthAuthorizationsCreateAuthorizationUnauthorized as json.
-func (s *OAuthAuthorizationsCreateAuthorizationUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes OAuthAuthorizationsCreateAuthorizationUnauthorized from json.
-func (s *OAuthAuthorizationsCreateAuthorizationUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode OAuthAuthorizationsCreateAuthorizationUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = OAuthAuthorizationsCreateAuthorizationUnauthorized(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *OAuthAuthorizationsCreateAuthorizationUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -80582,31 +76732,6 @@ func (s *OAuthAuthorizationsCreateAuthorizationUnauthorized) MarshalJSON() ([]by
 func (s *OAuthAuthorizationsCreateAuthorizationUnauthorized) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes OAuthAuthorizationsDeleteAuthorizationForbidden as json.
-func (s *OAuthAuthorizationsDeleteAuthorizationForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes OAuthAuthorizationsDeleteAuthorizationForbidden from json.
-func (s *OAuthAuthorizationsDeleteAuthorizationForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode OAuthAuthorizationsDeleteAuthorizationForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = OAuthAuthorizationsDeleteAuthorizationForbidden(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -80622,31 +76747,6 @@ func (s *OAuthAuthorizationsDeleteAuthorizationForbidden) UnmarshalJSON(data []b
 	return s.Decode(d)
 }
 
-// Encode encodes OAuthAuthorizationsDeleteAuthorizationUnauthorized as json.
-func (s *OAuthAuthorizationsDeleteAuthorizationUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes OAuthAuthorizationsDeleteAuthorizationUnauthorized from json.
-func (s *OAuthAuthorizationsDeleteAuthorizationUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode OAuthAuthorizationsDeleteAuthorizationUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = OAuthAuthorizationsDeleteAuthorizationUnauthorized(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *OAuthAuthorizationsDeleteAuthorizationUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -80658,31 +76758,6 @@ func (s *OAuthAuthorizationsDeleteAuthorizationUnauthorized) MarshalJSON() ([]by
 func (s *OAuthAuthorizationsDeleteAuthorizationUnauthorized) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes OAuthAuthorizationsDeleteGrantForbidden as json.
-func (s *OAuthAuthorizationsDeleteGrantForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes OAuthAuthorizationsDeleteGrantForbidden from json.
-func (s *OAuthAuthorizationsDeleteGrantForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode OAuthAuthorizationsDeleteGrantForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = OAuthAuthorizationsDeleteGrantForbidden(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -80698,31 +76773,6 @@ func (s *OAuthAuthorizationsDeleteGrantForbidden) UnmarshalJSON(data []byte) err
 	return s.Decode(d)
 }
 
-// Encode encodes OAuthAuthorizationsDeleteGrantUnauthorized as json.
-func (s *OAuthAuthorizationsDeleteGrantUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes OAuthAuthorizationsDeleteGrantUnauthorized from json.
-func (s *OAuthAuthorizationsDeleteGrantUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode OAuthAuthorizationsDeleteGrantUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = OAuthAuthorizationsDeleteGrantUnauthorized(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *OAuthAuthorizationsDeleteGrantUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -80734,31 +76784,6 @@ func (s *OAuthAuthorizationsDeleteGrantUnauthorized) MarshalJSON() ([]byte, erro
 func (s *OAuthAuthorizationsDeleteGrantUnauthorized) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes OAuthAuthorizationsGetAuthorizationForbidden as json.
-func (s *OAuthAuthorizationsGetAuthorizationForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes OAuthAuthorizationsGetAuthorizationForbidden from json.
-func (s *OAuthAuthorizationsGetAuthorizationForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode OAuthAuthorizationsGetAuthorizationForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = OAuthAuthorizationsGetAuthorizationForbidden(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -80774,31 +76799,6 @@ func (s *OAuthAuthorizationsGetAuthorizationForbidden) UnmarshalJSON(data []byte
 	return s.Decode(d)
 }
 
-// Encode encodes OAuthAuthorizationsGetAuthorizationUnauthorized as json.
-func (s *OAuthAuthorizationsGetAuthorizationUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes OAuthAuthorizationsGetAuthorizationUnauthorized from json.
-func (s *OAuthAuthorizationsGetAuthorizationUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode OAuthAuthorizationsGetAuthorizationUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = OAuthAuthorizationsGetAuthorizationUnauthorized(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *OAuthAuthorizationsGetAuthorizationUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -80812,31 +76812,6 @@ func (s *OAuthAuthorizationsGetAuthorizationUnauthorized) UnmarshalJSON(data []b
 	return s.Decode(d)
 }
 
-// Encode encodes OAuthAuthorizationsGetGrantForbidden as json.
-func (s *OAuthAuthorizationsGetGrantForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes OAuthAuthorizationsGetGrantForbidden from json.
-func (s *OAuthAuthorizationsGetGrantForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode OAuthAuthorizationsGetGrantForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = OAuthAuthorizationsGetGrantForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *OAuthAuthorizationsGetGrantForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -80848,31 +76823,6 @@ func (s *OAuthAuthorizationsGetGrantForbidden) MarshalJSON() ([]byte, error) {
 func (s *OAuthAuthorizationsGetGrantForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes OAuthAuthorizationsGetGrantUnauthorized as json.
-func (s *OAuthAuthorizationsGetGrantUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes OAuthAuthorizationsGetGrantUnauthorized from json.
-func (s *OAuthAuthorizationsGetGrantUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode OAuthAuthorizationsGetGrantUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = OAuthAuthorizationsGetGrantUnauthorized(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -81033,31 +76983,6 @@ func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReq) Mar
 func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReq) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes OAuthAuthorizationsGetOrCreateAuthorizationForAppForbidden as json.
-func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes OAuthAuthorizationsGetOrCreateAuthorizationForAppForbidden from json.
-func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode OAuthAuthorizationsGetOrCreateAuthorizationForAppForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = OAuthAuthorizationsGetOrCreateAuthorizationForAppForbidden(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -81237,31 +77162,6 @@ func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppReq) UnmarshalJSON(dat
 	return s.Decode(d)
 }
 
-// Encode encodes OAuthAuthorizationsGetOrCreateAuthorizationForAppUnauthorized as json.
-func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes OAuthAuthorizationsGetOrCreateAuthorizationForAppUnauthorized from json.
-func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode OAuthAuthorizationsGetOrCreateAuthorizationForAppUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = OAuthAuthorizationsGetOrCreateAuthorizationForAppUnauthorized(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -81273,31 +77173,6 @@ func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppUnauthorized) MarshalJ
 func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppUnauthorized) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes OAuthAuthorizationsListAuthorizationsForbidden as json.
-func (s *OAuthAuthorizationsListAuthorizationsForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes OAuthAuthorizationsListAuthorizationsForbidden from json.
-func (s *OAuthAuthorizationsListAuthorizationsForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode OAuthAuthorizationsListAuthorizationsForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = OAuthAuthorizationsListAuthorizationsForbidden(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -81313,31 +77188,6 @@ func (s *OAuthAuthorizationsListAuthorizationsForbidden) UnmarshalJSON(data []by
 	return s.Decode(d)
 }
 
-// Encode encodes OAuthAuthorizationsListAuthorizationsNotFound as json.
-func (s *OAuthAuthorizationsListAuthorizationsNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes OAuthAuthorizationsListAuthorizationsNotFound from json.
-func (s *OAuthAuthorizationsListAuthorizationsNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode OAuthAuthorizationsListAuthorizationsNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = OAuthAuthorizationsListAuthorizationsNotFound(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *OAuthAuthorizationsListAuthorizationsNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -81349,31 +77199,6 @@ func (s *OAuthAuthorizationsListAuthorizationsNotFound) MarshalJSON() ([]byte, e
 func (s *OAuthAuthorizationsListAuthorizationsNotFound) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes OAuthAuthorizationsListAuthorizationsUnauthorized as json.
-func (s *OAuthAuthorizationsListAuthorizationsUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes OAuthAuthorizationsListAuthorizationsUnauthorized from json.
-func (s *OAuthAuthorizationsListAuthorizationsUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode OAuthAuthorizationsListAuthorizationsUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = OAuthAuthorizationsListAuthorizationsUnauthorized(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -81389,31 +77214,6 @@ func (s *OAuthAuthorizationsListAuthorizationsUnauthorized) UnmarshalJSON(data [
 	return s.Decode(d)
 }
 
-// Encode encodes OAuthAuthorizationsListGrantsForbidden as json.
-func (s *OAuthAuthorizationsListGrantsForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes OAuthAuthorizationsListGrantsForbidden from json.
-func (s *OAuthAuthorizationsListGrantsForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode OAuthAuthorizationsListGrantsForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = OAuthAuthorizationsListGrantsForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *OAuthAuthorizationsListGrantsForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -81427,31 +77227,6 @@ func (s *OAuthAuthorizationsListGrantsForbidden) UnmarshalJSON(data []byte) erro
 	return s.Decode(d)
 }
 
-// Encode encodes OAuthAuthorizationsListGrantsNotFound as json.
-func (s *OAuthAuthorizationsListGrantsNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes OAuthAuthorizationsListGrantsNotFound from json.
-func (s *OAuthAuthorizationsListGrantsNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode OAuthAuthorizationsListGrantsNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = OAuthAuthorizationsListGrantsNotFound(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *OAuthAuthorizationsListGrantsNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -81463,31 +77238,6 @@ func (s *OAuthAuthorizationsListGrantsNotFound) MarshalJSON() ([]byte, error) {
 func (s *OAuthAuthorizationsListGrantsNotFound) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes OAuthAuthorizationsListGrantsUnauthorized as json.
-func (s *OAuthAuthorizationsListGrantsUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes OAuthAuthorizationsListGrantsUnauthorized from json.
-func (s *OAuthAuthorizationsListGrantsUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode OAuthAuthorizationsListGrantsUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = OAuthAuthorizationsListGrantsUnauthorized(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -97046,31 +92796,6 @@ func (s *OrgsCreateWebhookReqConfig) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes OrgsGetMembershipForAuthenticatedUserForbidden as json.
-func (s *OrgsGetMembershipForAuthenticatedUserForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes OrgsGetMembershipForAuthenticatedUserForbidden from json.
-func (s *OrgsGetMembershipForAuthenticatedUserForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode OrgsGetMembershipForAuthenticatedUserForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = OrgsGetMembershipForAuthenticatedUserForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *OrgsGetMembershipForAuthenticatedUserForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -97082,31 +92807,6 @@ func (s *OrgsGetMembershipForAuthenticatedUserForbidden) MarshalJSON() ([]byte, 
 func (s *OrgsGetMembershipForAuthenticatedUserForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes OrgsGetMembershipForAuthenticatedUserNotFound as json.
-func (s *OrgsGetMembershipForAuthenticatedUserNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes OrgsGetMembershipForAuthenticatedUserNotFound from json.
-func (s *OrgsGetMembershipForAuthenticatedUserNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode OrgsGetMembershipForAuthenticatedUserNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = OrgsGetMembershipForAuthenticatedUserNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -97122,31 +92822,6 @@ func (s *OrgsGetMembershipForAuthenticatedUserNotFound) UnmarshalJSON(data []byt
 	return s.Decode(d)
 }
 
-// Encode encodes OrgsGetMembershipForUserForbidden as json.
-func (s *OrgsGetMembershipForUserForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes OrgsGetMembershipForUserForbidden from json.
-func (s *OrgsGetMembershipForUserForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode OrgsGetMembershipForUserForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = OrgsGetMembershipForUserForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *OrgsGetMembershipForUserForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -97158,31 +92833,6 @@ func (s *OrgsGetMembershipForUserForbidden) MarshalJSON() ([]byte, error) {
 func (s *OrgsGetMembershipForUserForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes OrgsGetMembershipForUserNotFound as json.
-func (s *OrgsGetMembershipForUserNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes OrgsGetMembershipForUserNotFound from json.
-func (s *OrgsGetMembershipForUserNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode OrgsGetMembershipForUserNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = OrgsGetMembershipForUserNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -97248,31 +92898,6 @@ func (s *OrgsListBlockedUsersOKApplicationJSON) UnmarshalJSON(data []byte) error
 	return s.Decode(d)
 }
 
-// Encode encodes OrgsListForAuthenticatedUserForbidden as json.
-func (s *OrgsListForAuthenticatedUserForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes OrgsListForAuthenticatedUserForbidden from json.
-func (s *OrgsListForAuthenticatedUserForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode OrgsListForAuthenticatedUserForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = OrgsListForAuthenticatedUserForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *OrgsListForAuthenticatedUserForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -97284,31 +92909,6 @@ func (s *OrgsListForAuthenticatedUserForbidden) MarshalJSON() ([]byte, error) {
 func (s *OrgsListForAuthenticatedUserForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes OrgsListForAuthenticatedUserUnauthorized as json.
-func (s *OrgsListForAuthenticatedUserUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes OrgsListForAuthenticatedUserUnauthorized from json.
-func (s *OrgsListForAuthenticatedUserUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode OrgsListForAuthenticatedUserUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = OrgsListForAuthenticatedUserUnauthorized(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -97324,31 +92924,6 @@ func (s *OrgsListForAuthenticatedUserUnauthorized) UnmarshalJSON(data []byte) er
 	return s.Decode(d)
 }
 
-// Encode encodes OrgsListMembershipsForAuthenticatedUserForbidden as json.
-func (s *OrgsListMembershipsForAuthenticatedUserForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes OrgsListMembershipsForAuthenticatedUserForbidden from json.
-func (s *OrgsListMembershipsForAuthenticatedUserForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode OrgsListMembershipsForAuthenticatedUserForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = OrgsListMembershipsForAuthenticatedUserForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *OrgsListMembershipsForAuthenticatedUserForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -97360,31 +92935,6 @@ func (s *OrgsListMembershipsForAuthenticatedUserForbidden) MarshalJSON() ([]byte
 func (s *OrgsListMembershipsForAuthenticatedUserForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes OrgsListMembershipsForAuthenticatedUserUnauthorized as json.
-func (s *OrgsListMembershipsForAuthenticatedUserUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes OrgsListMembershipsForAuthenticatedUserUnauthorized from json.
-func (s *OrgsListMembershipsForAuthenticatedUserUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode OrgsListMembershipsForAuthenticatedUserUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = OrgsListMembershipsForAuthenticatedUserUnauthorized(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -97450,31 +93000,6 @@ func (s *OrgsListWebhookDeliveriesOKApplicationJSON) UnmarshalJSON(data []byte) 
 	return s.Decode(d)
 }
 
-// Encode encodes OrgsRemoveMembershipForUserForbidden as json.
-func (s *OrgsRemoveMembershipForUserForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes OrgsRemoveMembershipForUserForbidden from json.
-func (s *OrgsRemoveMembershipForUserForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode OrgsRemoveMembershipForUserForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = OrgsRemoveMembershipForUserForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *OrgsRemoveMembershipForUserForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -97486,31 +93011,6 @@ func (s *OrgsRemoveMembershipForUserForbidden) MarshalJSON() ([]byte, error) {
 func (s *OrgsRemoveMembershipForUserForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes OrgsRemoveMembershipForUserNotFound as json.
-func (s *OrgsRemoveMembershipForUserNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes OrgsRemoveMembershipForUserNotFound from json.
-func (s *OrgsRemoveMembershipForUserNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode OrgsRemoveMembershipForUserNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = OrgsRemoveMembershipForUserNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -97710,31 +93210,6 @@ func (s *OrgsSetMembershipForUserReqRole) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes OrgsUpdateMembershipForAuthenticatedUserForbidden as json.
-func (s *OrgsUpdateMembershipForAuthenticatedUserForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes OrgsUpdateMembershipForAuthenticatedUserForbidden from json.
-func (s *OrgsUpdateMembershipForAuthenticatedUserForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode OrgsUpdateMembershipForAuthenticatedUserForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = OrgsUpdateMembershipForAuthenticatedUserForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *OrgsUpdateMembershipForAuthenticatedUserForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -97746,31 +93221,6 @@ func (s *OrgsUpdateMembershipForAuthenticatedUserForbidden) MarshalJSON() ([]byt
 func (s *OrgsUpdateMembershipForAuthenticatedUserForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes OrgsUpdateMembershipForAuthenticatedUserNotFound as json.
-func (s *OrgsUpdateMembershipForAuthenticatedUserNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes OrgsUpdateMembershipForAuthenticatedUserNotFound from json.
-func (s *OrgsUpdateMembershipForAuthenticatedUserNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode OrgsUpdateMembershipForAuthenticatedUserNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = OrgsUpdateMembershipForAuthenticatedUserNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -99417,31 +94867,6 @@ func (s *PackagesBillingUsage) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes PackagesDeletePackageForAuthenticatedUserForbidden as json.
-func (s *PackagesDeletePackageForAuthenticatedUserForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes PackagesDeletePackageForAuthenticatedUserForbidden from json.
-func (s *PackagesDeletePackageForAuthenticatedUserForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode PackagesDeletePackageForAuthenticatedUserForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = PackagesDeletePackageForAuthenticatedUserForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *PackagesDeletePackageForAuthenticatedUserForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -99453,31 +94878,6 @@ func (s *PackagesDeletePackageForAuthenticatedUserForbidden) MarshalJSON() ([]by
 func (s *PackagesDeletePackageForAuthenticatedUserForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes PackagesDeletePackageForAuthenticatedUserNotFound as json.
-func (s *PackagesDeletePackageForAuthenticatedUserNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes PackagesDeletePackageForAuthenticatedUserNotFound from json.
-func (s *PackagesDeletePackageForAuthenticatedUserNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode PackagesDeletePackageForAuthenticatedUserNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = PackagesDeletePackageForAuthenticatedUserNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -99493,31 +94893,6 @@ func (s *PackagesDeletePackageForAuthenticatedUserNotFound) UnmarshalJSON(data [
 	return s.Decode(d)
 }
 
-// Encode encodes PackagesDeletePackageForAuthenticatedUserUnauthorized as json.
-func (s *PackagesDeletePackageForAuthenticatedUserUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes PackagesDeletePackageForAuthenticatedUserUnauthorized from json.
-func (s *PackagesDeletePackageForAuthenticatedUserUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode PackagesDeletePackageForAuthenticatedUserUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = PackagesDeletePackageForAuthenticatedUserUnauthorized(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *PackagesDeletePackageForAuthenticatedUserUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -99529,31 +94904,6 @@ func (s *PackagesDeletePackageForAuthenticatedUserUnauthorized) MarshalJSON() ([
 func (s *PackagesDeletePackageForAuthenticatedUserUnauthorized) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes PackagesDeletePackageForOrgForbidden as json.
-func (s *PackagesDeletePackageForOrgForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes PackagesDeletePackageForOrgForbidden from json.
-func (s *PackagesDeletePackageForOrgForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode PackagesDeletePackageForOrgForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = PackagesDeletePackageForOrgForbidden(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -99569,31 +94919,6 @@ func (s *PackagesDeletePackageForOrgForbidden) UnmarshalJSON(data []byte) error 
 	return s.Decode(d)
 }
 
-// Encode encodes PackagesDeletePackageForOrgNotFound as json.
-func (s *PackagesDeletePackageForOrgNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes PackagesDeletePackageForOrgNotFound from json.
-func (s *PackagesDeletePackageForOrgNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode PackagesDeletePackageForOrgNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = PackagesDeletePackageForOrgNotFound(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *PackagesDeletePackageForOrgNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -99605,31 +94930,6 @@ func (s *PackagesDeletePackageForOrgNotFound) MarshalJSON() ([]byte, error) {
 func (s *PackagesDeletePackageForOrgNotFound) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes PackagesDeletePackageForOrgUnauthorized as json.
-func (s *PackagesDeletePackageForOrgUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes PackagesDeletePackageForOrgUnauthorized from json.
-func (s *PackagesDeletePackageForOrgUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode PackagesDeletePackageForOrgUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = PackagesDeletePackageForOrgUnauthorized(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -99645,31 +94945,6 @@ func (s *PackagesDeletePackageForOrgUnauthorized) UnmarshalJSON(data []byte) err
 	return s.Decode(d)
 }
 
-// Encode encodes PackagesDeletePackageForUserForbidden as json.
-func (s *PackagesDeletePackageForUserForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes PackagesDeletePackageForUserForbidden from json.
-func (s *PackagesDeletePackageForUserForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode PackagesDeletePackageForUserForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = PackagesDeletePackageForUserForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *PackagesDeletePackageForUserForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -99681,31 +94956,6 @@ func (s *PackagesDeletePackageForUserForbidden) MarshalJSON() ([]byte, error) {
 func (s *PackagesDeletePackageForUserForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes PackagesDeletePackageForUserNotFound as json.
-func (s *PackagesDeletePackageForUserNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes PackagesDeletePackageForUserNotFound from json.
-func (s *PackagesDeletePackageForUserNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode PackagesDeletePackageForUserNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = PackagesDeletePackageForUserNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -99721,31 +94971,6 @@ func (s *PackagesDeletePackageForUserNotFound) UnmarshalJSON(data []byte) error 
 	return s.Decode(d)
 }
 
-// Encode encodes PackagesDeletePackageForUserUnauthorized as json.
-func (s *PackagesDeletePackageForUserUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes PackagesDeletePackageForUserUnauthorized from json.
-func (s *PackagesDeletePackageForUserUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode PackagesDeletePackageForUserUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = PackagesDeletePackageForUserUnauthorized(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *PackagesDeletePackageForUserUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -99757,31 +94982,6 @@ func (s *PackagesDeletePackageForUserUnauthorized) MarshalJSON() ([]byte, error)
 func (s *PackagesDeletePackageForUserUnauthorized) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes PackagesDeletePackageVersionForAuthenticatedUserForbidden as json.
-func (s *PackagesDeletePackageVersionForAuthenticatedUserForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes PackagesDeletePackageVersionForAuthenticatedUserForbidden from json.
-func (s *PackagesDeletePackageVersionForAuthenticatedUserForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode PackagesDeletePackageVersionForAuthenticatedUserForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = PackagesDeletePackageVersionForAuthenticatedUserForbidden(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -99797,31 +94997,6 @@ func (s *PackagesDeletePackageVersionForAuthenticatedUserForbidden) UnmarshalJSO
 	return s.Decode(d)
 }
 
-// Encode encodes PackagesDeletePackageVersionForAuthenticatedUserNotFound as json.
-func (s *PackagesDeletePackageVersionForAuthenticatedUserNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes PackagesDeletePackageVersionForAuthenticatedUserNotFound from json.
-func (s *PackagesDeletePackageVersionForAuthenticatedUserNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode PackagesDeletePackageVersionForAuthenticatedUserNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = PackagesDeletePackageVersionForAuthenticatedUserNotFound(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *PackagesDeletePackageVersionForAuthenticatedUserNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -99833,31 +95008,6 @@ func (s *PackagesDeletePackageVersionForAuthenticatedUserNotFound) MarshalJSON()
 func (s *PackagesDeletePackageVersionForAuthenticatedUserNotFound) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes PackagesDeletePackageVersionForAuthenticatedUserUnauthorized as json.
-func (s *PackagesDeletePackageVersionForAuthenticatedUserUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes PackagesDeletePackageVersionForAuthenticatedUserUnauthorized from json.
-func (s *PackagesDeletePackageVersionForAuthenticatedUserUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode PackagesDeletePackageVersionForAuthenticatedUserUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = PackagesDeletePackageVersionForAuthenticatedUserUnauthorized(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -99873,31 +95023,6 @@ func (s *PackagesDeletePackageVersionForAuthenticatedUserUnauthorized) Unmarshal
 	return s.Decode(d)
 }
 
-// Encode encodes PackagesDeletePackageVersionForOrgForbidden as json.
-func (s *PackagesDeletePackageVersionForOrgForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes PackagesDeletePackageVersionForOrgForbidden from json.
-func (s *PackagesDeletePackageVersionForOrgForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode PackagesDeletePackageVersionForOrgForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = PackagesDeletePackageVersionForOrgForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *PackagesDeletePackageVersionForOrgForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -99909,31 +95034,6 @@ func (s *PackagesDeletePackageVersionForOrgForbidden) MarshalJSON() ([]byte, err
 func (s *PackagesDeletePackageVersionForOrgForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes PackagesDeletePackageVersionForOrgNotFound as json.
-func (s *PackagesDeletePackageVersionForOrgNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes PackagesDeletePackageVersionForOrgNotFound from json.
-func (s *PackagesDeletePackageVersionForOrgNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode PackagesDeletePackageVersionForOrgNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = PackagesDeletePackageVersionForOrgNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -99949,31 +95049,6 @@ func (s *PackagesDeletePackageVersionForOrgNotFound) UnmarshalJSON(data []byte) 
 	return s.Decode(d)
 }
 
-// Encode encodes PackagesDeletePackageVersionForOrgUnauthorized as json.
-func (s *PackagesDeletePackageVersionForOrgUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes PackagesDeletePackageVersionForOrgUnauthorized from json.
-func (s *PackagesDeletePackageVersionForOrgUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode PackagesDeletePackageVersionForOrgUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = PackagesDeletePackageVersionForOrgUnauthorized(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *PackagesDeletePackageVersionForOrgUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -99985,31 +95060,6 @@ func (s *PackagesDeletePackageVersionForOrgUnauthorized) MarshalJSON() ([]byte, 
 func (s *PackagesDeletePackageVersionForOrgUnauthorized) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes PackagesDeletePackageVersionForUserForbidden as json.
-func (s *PackagesDeletePackageVersionForUserForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes PackagesDeletePackageVersionForUserForbidden from json.
-func (s *PackagesDeletePackageVersionForUserForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode PackagesDeletePackageVersionForUserForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = PackagesDeletePackageVersionForUserForbidden(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -100025,31 +95075,6 @@ func (s *PackagesDeletePackageVersionForUserForbidden) UnmarshalJSON(data []byte
 	return s.Decode(d)
 }
 
-// Encode encodes PackagesDeletePackageVersionForUserNotFound as json.
-func (s *PackagesDeletePackageVersionForUserNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes PackagesDeletePackageVersionForUserNotFound from json.
-func (s *PackagesDeletePackageVersionForUserNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode PackagesDeletePackageVersionForUserNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = PackagesDeletePackageVersionForUserNotFound(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *PackagesDeletePackageVersionForUserNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -100061,31 +95086,6 @@ func (s *PackagesDeletePackageVersionForUserNotFound) MarshalJSON() ([]byte, err
 func (s *PackagesDeletePackageVersionForUserNotFound) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes PackagesDeletePackageVersionForUserUnauthorized as json.
-func (s *PackagesDeletePackageVersionForUserUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes PackagesDeletePackageVersionForUserUnauthorized from json.
-func (s *PackagesDeletePackageVersionForUserUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode PackagesDeletePackageVersionForUserUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = PackagesDeletePackageVersionForUserUnauthorized(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -100101,31 +95101,6 @@ func (s *PackagesDeletePackageVersionForUserUnauthorized) UnmarshalJSON(data []b
 	return s.Decode(d)
 }
 
-// Encode encodes PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserForbidden as json.
-func (s *PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserForbidden from json.
-func (s *PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -100137,31 +95112,6 @@ func (s *PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserForbidde
 func (s *PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserNotFound as json.
-func (s *PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserNotFound from json.
-func (s *PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -100227,31 +95177,6 @@ func (s *PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserOKApplic
 	return s.Decode(d)
 }
 
-// Encode encodes PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserUnauthorized as json.
-func (s *PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserUnauthorized from json.
-func (s *PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserUnauthorized(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -100265,31 +95190,6 @@ func (s *PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserUnauthor
 	return s.Decode(d)
 }
 
-// Encode encodes PackagesGetAllPackageVersionsForPackageOwnedByOrgForbidden as json.
-func (s *PackagesGetAllPackageVersionsForPackageOwnedByOrgForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes PackagesGetAllPackageVersionsForPackageOwnedByOrgForbidden from json.
-func (s *PackagesGetAllPackageVersionsForPackageOwnedByOrgForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode PackagesGetAllPackageVersionsForPackageOwnedByOrgForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = PackagesGetAllPackageVersionsForPackageOwnedByOrgForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *PackagesGetAllPackageVersionsForPackageOwnedByOrgForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -100301,31 +95201,6 @@ func (s *PackagesGetAllPackageVersionsForPackageOwnedByOrgForbidden) MarshalJSON
 func (s *PackagesGetAllPackageVersionsForPackageOwnedByOrgForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes PackagesGetAllPackageVersionsForPackageOwnedByOrgNotFound as json.
-func (s *PackagesGetAllPackageVersionsForPackageOwnedByOrgNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes PackagesGetAllPackageVersionsForPackageOwnedByOrgNotFound from json.
-func (s *PackagesGetAllPackageVersionsForPackageOwnedByOrgNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode PackagesGetAllPackageVersionsForPackageOwnedByOrgNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = PackagesGetAllPackageVersionsForPackageOwnedByOrgNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -100391,31 +95266,6 @@ func (s *PackagesGetAllPackageVersionsForPackageOwnedByOrgOKApplicationJSON) Unm
 	return s.Decode(d)
 }
 
-// Encode encodes PackagesGetAllPackageVersionsForPackageOwnedByOrgUnauthorized as json.
-func (s *PackagesGetAllPackageVersionsForPackageOwnedByOrgUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes PackagesGetAllPackageVersionsForPackageOwnedByOrgUnauthorized from json.
-func (s *PackagesGetAllPackageVersionsForPackageOwnedByOrgUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode PackagesGetAllPackageVersionsForPackageOwnedByOrgUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = PackagesGetAllPackageVersionsForPackageOwnedByOrgUnauthorized(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *PackagesGetAllPackageVersionsForPackageOwnedByOrgUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -100429,31 +95279,6 @@ func (s *PackagesGetAllPackageVersionsForPackageOwnedByOrgUnauthorized) Unmarsha
 	return s.Decode(d)
 }
 
-// Encode encodes PackagesGetAllPackageVersionsForPackageOwnedByUserForbidden as json.
-func (s *PackagesGetAllPackageVersionsForPackageOwnedByUserForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes PackagesGetAllPackageVersionsForPackageOwnedByUserForbidden from json.
-func (s *PackagesGetAllPackageVersionsForPackageOwnedByUserForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode PackagesGetAllPackageVersionsForPackageOwnedByUserForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = PackagesGetAllPackageVersionsForPackageOwnedByUserForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *PackagesGetAllPackageVersionsForPackageOwnedByUserForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -100465,31 +95290,6 @@ func (s *PackagesGetAllPackageVersionsForPackageOwnedByUserForbidden) MarshalJSO
 func (s *PackagesGetAllPackageVersionsForPackageOwnedByUserForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes PackagesGetAllPackageVersionsForPackageOwnedByUserNotFound as json.
-func (s *PackagesGetAllPackageVersionsForPackageOwnedByUserNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes PackagesGetAllPackageVersionsForPackageOwnedByUserNotFound from json.
-func (s *PackagesGetAllPackageVersionsForPackageOwnedByUserNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode PackagesGetAllPackageVersionsForPackageOwnedByUserNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = PackagesGetAllPackageVersionsForPackageOwnedByUserNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -100555,31 +95355,6 @@ func (s *PackagesGetAllPackageVersionsForPackageOwnedByUserOKApplicationJSON) Un
 	return s.Decode(d)
 }
 
-// Encode encodes PackagesGetAllPackageVersionsForPackageOwnedByUserUnauthorized as json.
-func (s *PackagesGetAllPackageVersionsForPackageOwnedByUserUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes PackagesGetAllPackageVersionsForPackageOwnedByUserUnauthorized from json.
-func (s *PackagesGetAllPackageVersionsForPackageOwnedByUserUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode PackagesGetAllPackageVersionsForPackageOwnedByUserUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = PackagesGetAllPackageVersionsForPackageOwnedByUserUnauthorized(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *PackagesGetAllPackageVersionsForPackageOwnedByUserUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -100591,31 +95366,6 @@ func (s *PackagesGetAllPackageVersionsForPackageOwnedByUserUnauthorized) Marshal
 func (s *PackagesGetAllPackageVersionsForPackageOwnedByUserUnauthorized) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes PackagesListPackagesForOrganizationForbidden as json.
-func (s *PackagesListPackagesForOrganizationForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes PackagesListPackagesForOrganizationForbidden from json.
-func (s *PackagesListPackagesForOrganizationForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode PackagesListPackagesForOrganizationForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = PackagesListPackagesForOrganizationForbidden(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -100681,31 +95431,6 @@ func (s *PackagesListPackagesForOrganizationOKApplicationJSON) UnmarshalJSON(dat
 	return s.Decode(d)
 }
 
-// Encode encodes PackagesListPackagesForOrganizationUnauthorized as json.
-func (s *PackagesListPackagesForOrganizationUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes PackagesListPackagesForOrganizationUnauthorized from json.
-func (s *PackagesListPackagesForOrganizationUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode PackagesListPackagesForOrganizationUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = PackagesListPackagesForOrganizationUnauthorized(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *PackagesListPackagesForOrganizationUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -100717,31 +95442,6 @@ func (s *PackagesListPackagesForOrganizationUnauthorized) MarshalJSON() ([]byte,
 func (s *PackagesListPackagesForOrganizationUnauthorized) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes PackagesListPackagesForUserForbidden as json.
-func (s *PackagesListPackagesForUserForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes PackagesListPackagesForUserForbidden from json.
-func (s *PackagesListPackagesForUserForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode PackagesListPackagesForUserForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = PackagesListPackagesForUserForbidden(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -100807,31 +95507,6 @@ func (s *PackagesListPackagesForUserOKApplicationJSON) UnmarshalJSON(data []byte
 	return s.Decode(d)
 }
 
-// Encode encodes PackagesListPackagesForUserUnauthorized as json.
-func (s *PackagesListPackagesForUserUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes PackagesListPackagesForUserUnauthorized from json.
-func (s *PackagesListPackagesForUserUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode PackagesListPackagesForUserUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = PackagesListPackagesForUserUnauthorized(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *PackagesListPackagesForUserUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -100843,31 +95518,6 @@ func (s *PackagesListPackagesForUserUnauthorized) MarshalJSON() ([]byte, error) 
 func (s *PackagesListPackagesForUserUnauthorized) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes PackagesRestorePackageForAuthenticatedUserForbidden as json.
-func (s *PackagesRestorePackageForAuthenticatedUserForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes PackagesRestorePackageForAuthenticatedUserForbidden from json.
-func (s *PackagesRestorePackageForAuthenticatedUserForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode PackagesRestorePackageForAuthenticatedUserForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = PackagesRestorePackageForAuthenticatedUserForbidden(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -100883,31 +95533,6 @@ func (s *PackagesRestorePackageForAuthenticatedUserForbidden) UnmarshalJSON(data
 	return s.Decode(d)
 }
 
-// Encode encodes PackagesRestorePackageForAuthenticatedUserNotFound as json.
-func (s *PackagesRestorePackageForAuthenticatedUserNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes PackagesRestorePackageForAuthenticatedUserNotFound from json.
-func (s *PackagesRestorePackageForAuthenticatedUserNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode PackagesRestorePackageForAuthenticatedUserNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = PackagesRestorePackageForAuthenticatedUserNotFound(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *PackagesRestorePackageForAuthenticatedUserNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -100919,31 +95544,6 @@ func (s *PackagesRestorePackageForAuthenticatedUserNotFound) MarshalJSON() ([]by
 func (s *PackagesRestorePackageForAuthenticatedUserNotFound) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes PackagesRestorePackageForAuthenticatedUserUnauthorized as json.
-func (s *PackagesRestorePackageForAuthenticatedUserUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes PackagesRestorePackageForAuthenticatedUserUnauthorized from json.
-func (s *PackagesRestorePackageForAuthenticatedUserUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode PackagesRestorePackageForAuthenticatedUserUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = PackagesRestorePackageForAuthenticatedUserUnauthorized(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -100959,31 +95559,6 @@ func (s *PackagesRestorePackageForAuthenticatedUserUnauthorized) UnmarshalJSON(d
 	return s.Decode(d)
 }
 
-// Encode encodes PackagesRestorePackageForOrgForbidden as json.
-func (s *PackagesRestorePackageForOrgForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes PackagesRestorePackageForOrgForbidden from json.
-func (s *PackagesRestorePackageForOrgForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode PackagesRestorePackageForOrgForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = PackagesRestorePackageForOrgForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *PackagesRestorePackageForOrgForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -100995,31 +95570,6 @@ func (s *PackagesRestorePackageForOrgForbidden) MarshalJSON() ([]byte, error) {
 func (s *PackagesRestorePackageForOrgForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes PackagesRestorePackageForOrgNotFound as json.
-func (s *PackagesRestorePackageForOrgNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes PackagesRestorePackageForOrgNotFound from json.
-func (s *PackagesRestorePackageForOrgNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode PackagesRestorePackageForOrgNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = PackagesRestorePackageForOrgNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -101035,31 +95585,6 @@ func (s *PackagesRestorePackageForOrgNotFound) UnmarshalJSON(data []byte) error 
 	return s.Decode(d)
 }
 
-// Encode encodes PackagesRestorePackageForOrgUnauthorized as json.
-func (s *PackagesRestorePackageForOrgUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes PackagesRestorePackageForOrgUnauthorized from json.
-func (s *PackagesRestorePackageForOrgUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode PackagesRestorePackageForOrgUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = PackagesRestorePackageForOrgUnauthorized(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *PackagesRestorePackageForOrgUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -101071,31 +95596,6 @@ func (s *PackagesRestorePackageForOrgUnauthorized) MarshalJSON() ([]byte, error)
 func (s *PackagesRestorePackageForOrgUnauthorized) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes PackagesRestorePackageForUserForbidden as json.
-func (s *PackagesRestorePackageForUserForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes PackagesRestorePackageForUserForbidden from json.
-func (s *PackagesRestorePackageForUserForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode PackagesRestorePackageForUserForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = PackagesRestorePackageForUserForbidden(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -101111,31 +95611,6 @@ func (s *PackagesRestorePackageForUserForbidden) UnmarshalJSON(data []byte) erro
 	return s.Decode(d)
 }
 
-// Encode encodes PackagesRestorePackageForUserNotFound as json.
-func (s *PackagesRestorePackageForUserNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes PackagesRestorePackageForUserNotFound from json.
-func (s *PackagesRestorePackageForUserNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode PackagesRestorePackageForUserNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = PackagesRestorePackageForUserNotFound(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *PackagesRestorePackageForUserNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -101147,31 +95622,6 @@ func (s *PackagesRestorePackageForUserNotFound) MarshalJSON() ([]byte, error) {
 func (s *PackagesRestorePackageForUserNotFound) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes PackagesRestorePackageForUserUnauthorized as json.
-func (s *PackagesRestorePackageForUserUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes PackagesRestorePackageForUserUnauthorized from json.
-func (s *PackagesRestorePackageForUserUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode PackagesRestorePackageForUserUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = PackagesRestorePackageForUserUnauthorized(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -101187,31 +95637,6 @@ func (s *PackagesRestorePackageForUserUnauthorized) UnmarshalJSON(data []byte) e
 	return s.Decode(d)
 }
 
-// Encode encodes PackagesRestorePackageVersionForAuthenticatedUserForbidden as json.
-func (s *PackagesRestorePackageVersionForAuthenticatedUserForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes PackagesRestorePackageVersionForAuthenticatedUserForbidden from json.
-func (s *PackagesRestorePackageVersionForAuthenticatedUserForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode PackagesRestorePackageVersionForAuthenticatedUserForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = PackagesRestorePackageVersionForAuthenticatedUserForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *PackagesRestorePackageVersionForAuthenticatedUserForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -101223,31 +95648,6 @@ func (s *PackagesRestorePackageVersionForAuthenticatedUserForbidden) MarshalJSON
 func (s *PackagesRestorePackageVersionForAuthenticatedUserForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes PackagesRestorePackageVersionForAuthenticatedUserNotFound as json.
-func (s *PackagesRestorePackageVersionForAuthenticatedUserNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes PackagesRestorePackageVersionForAuthenticatedUserNotFound from json.
-func (s *PackagesRestorePackageVersionForAuthenticatedUserNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode PackagesRestorePackageVersionForAuthenticatedUserNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = PackagesRestorePackageVersionForAuthenticatedUserNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -101263,31 +95663,6 @@ func (s *PackagesRestorePackageVersionForAuthenticatedUserNotFound) UnmarshalJSO
 	return s.Decode(d)
 }
 
-// Encode encodes PackagesRestorePackageVersionForAuthenticatedUserUnauthorized as json.
-func (s *PackagesRestorePackageVersionForAuthenticatedUserUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes PackagesRestorePackageVersionForAuthenticatedUserUnauthorized from json.
-func (s *PackagesRestorePackageVersionForAuthenticatedUserUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode PackagesRestorePackageVersionForAuthenticatedUserUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = PackagesRestorePackageVersionForAuthenticatedUserUnauthorized(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *PackagesRestorePackageVersionForAuthenticatedUserUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -101299,31 +95674,6 @@ func (s *PackagesRestorePackageVersionForAuthenticatedUserUnauthorized) MarshalJ
 func (s *PackagesRestorePackageVersionForAuthenticatedUserUnauthorized) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes PackagesRestorePackageVersionForOrgForbidden as json.
-func (s *PackagesRestorePackageVersionForOrgForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes PackagesRestorePackageVersionForOrgForbidden from json.
-func (s *PackagesRestorePackageVersionForOrgForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode PackagesRestorePackageVersionForOrgForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = PackagesRestorePackageVersionForOrgForbidden(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -101339,31 +95689,6 @@ func (s *PackagesRestorePackageVersionForOrgForbidden) UnmarshalJSON(data []byte
 	return s.Decode(d)
 }
 
-// Encode encodes PackagesRestorePackageVersionForOrgNotFound as json.
-func (s *PackagesRestorePackageVersionForOrgNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes PackagesRestorePackageVersionForOrgNotFound from json.
-func (s *PackagesRestorePackageVersionForOrgNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode PackagesRestorePackageVersionForOrgNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = PackagesRestorePackageVersionForOrgNotFound(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *PackagesRestorePackageVersionForOrgNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -101375,31 +95700,6 @@ func (s *PackagesRestorePackageVersionForOrgNotFound) MarshalJSON() ([]byte, err
 func (s *PackagesRestorePackageVersionForOrgNotFound) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes PackagesRestorePackageVersionForOrgUnauthorized as json.
-func (s *PackagesRestorePackageVersionForOrgUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes PackagesRestorePackageVersionForOrgUnauthorized from json.
-func (s *PackagesRestorePackageVersionForOrgUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode PackagesRestorePackageVersionForOrgUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = PackagesRestorePackageVersionForOrgUnauthorized(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -101415,31 +95715,6 @@ func (s *PackagesRestorePackageVersionForOrgUnauthorized) UnmarshalJSON(data []b
 	return s.Decode(d)
 }
 
-// Encode encodes PackagesRestorePackageVersionForUserForbidden as json.
-func (s *PackagesRestorePackageVersionForUserForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes PackagesRestorePackageVersionForUserForbidden from json.
-func (s *PackagesRestorePackageVersionForUserForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode PackagesRestorePackageVersionForUserForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = PackagesRestorePackageVersionForUserForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *PackagesRestorePackageVersionForUserForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -101453,31 +95728,6 @@ func (s *PackagesRestorePackageVersionForUserForbidden) UnmarshalJSON(data []byt
 	return s.Decode(d)
 }
 
-// Encode encodes PackagesRestorePackageVersionForUserNotFound as json.
-func (s *PackagesRestorePackageVersionForUserNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes PackagesRestorePackageVersionForUserNotFound from json.
-func (s *PackagesRestorePackageVersionForUserNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode PackagesRestorePackageVersionForUserNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = PackagesRestorePackageVersionForUserNotFound(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *PackagesRestorePackageVersionForUserNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -101489,31 +95739,6 @@ func (s *PackagesRestorePackageVersionForUserNotFound) MarshalJSON() ([]byte, er
 func (s *PackagesRestorePackageVersionForUserNotFound) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes PackagesRestorePackageVersionForUserUnauthorized as json.
-func (s *PackagesRestorePackageVersionForUserUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes PackagesRestorePackageVersionForUserUnauthorized from json.
-func (s *PackagesRestorePackageVersionForUserUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode PackagesRestorePackageVersionForUserUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = PackagesRestorePackageVersionForUserUnauthorized(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -106162,31 +100387,6 @@ func (s *ProjectOrganizationPermission) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes ProjectsAddCollaboratorForbidden as json.
-func (s *ProjectsAddCollaboratorForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ProjectsAddCollaboratorForbidden from json.
-func (s *ProjectsAddCollaboratorForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ProjectsAddCollaboratorForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ProjectsAddCollaboratorForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *ProjectsAddCollaboratorForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -106198,31 +100398,6 @@ func (s *ProjectsAddCollaboratorForbidden) MarshalJSON() ([]byte, error) {
 func (s *ProjectsAddCollaboratorForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes ProjectsAddCollaboratorNotFound as json.
-func (s *ProjectsAddCollaboratorNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ProjectsAddCollaboratorNotFound from json.
-func (s *ProjectsAddCollaboratorNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ProjectsAddCollaboratorNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ProjectsAddCollaboratorNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -106344,31 +100519,6 @@ func (s *ProjectsAddCollaboratorReqPermission) UnmarshalJSON(data []byte) error 
 	return s.Decode(d)
 }
 
-// Encode encodes ProjectsAddCollaboratorUnauthorized as json.
-func (s *ProjectsAddCollaboratorUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ProjectsAddCollaboratorUnauthorized from json.
-func (s *ProjectsAddCollaboratorUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ProjectsAddCollaboratorUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ProjectsAddCollaboratorUnauthorized(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *ProjectsAddCollaboratorUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -106380,31 +100530,6 @@ func (s *ProjectsAddCollaboratorUnauthorized) MarshalJSON() ([]byte, error) {
 func (s *ProjectsAddCollaboratorUnauthorized) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes ProjectsCreateColumnForbidden as json.
-func (s *ProjectsCreateColumnForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ProjectsCreateColumnForbidden from json.
-func (s *ProjectsCreateColumnForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ProjectsCreateColumnForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ProjectsCreateColumnForbidden(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -106516,31 +100641,6 @@ func (s *ProjectsCreateColumnReq) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes ProjectsCreateColumnUnauthorized as json.
-func (s *ProjectsCreateColumnUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ProjectsCreateColumnUnauthorized from json.
-func (s *ProjectsCreateColumnUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ProjectsCreateColumnUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ProjectsCreateColumnUnauthorized(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *ProjectsCreateColumnUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -106552,31 +100652,6 @@ func (s *ProjectsCreateColumnUnauthorized) MarshalJSON() ([]byte, error) {
 func (s *ProjectsCreateColumnUnauthorized) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes ProjectsCreateForAuthenticatedUserForbidden as json.
-func (s *ProjectsCreateForAuthenticatedUserForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ProjectsCreateForAuthenticatedUserForbidden from json.
-func (s *ProjectsCreateForAuthenticatedUserForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ProjectsCreateForAuthenticatedUserForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ProjectsCreateForAuthenticatedUserForbidden(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -106705,31 +100780,6 @@ func (s *ProjectsCreateForAuthenticatedUserReq) UnmarshalJSON(data []byte) error
 	return s.Decode(d)
 }
 
-// Encode encodes ProjectsCreateForAuthenticatedUserUnauthorized as json.
-func (s *ProjectsCreateForAuthenticatedUserUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ProjectsCreateForAuthenticatedUserUnauthorized from json.
-func (s *ProjectsCreateForAuthenticatedUserUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ProjectsCreateForAuthenticatedUserUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ProjectsCreateForAuthenticatedUserUnauthorized(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *ProjectsCreateForAuthenticatedUserUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -106741,31 +100791,6 @@ func (s *ProjectsCreateForAuthenticatedUserUnauthorized) MarshalJSON() ([]byte, 
 func (s *ProjectsCreateForAuthenticatedUserUnauthorized) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes ProjectsCreateForOrgForbidden as json.
-func (s *ProjectsCreateForOrgForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ProjectsCreateForOrgForbidden from json.
-func (s *ProjectsCreateForOrgForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ProjectsCreateForOrgForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ProjectsCreateForOrgForbidden(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -106781,31 +100806,6 @@ func (s *ProjectsCreateForOrgForbidden) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes ProjectsCreateForOrgGone as json.
-func (s *ProjectsCreateForOrgGone) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ProjectsCreateForOrgGone from json.
-func (s *ProjectsCreateForOrgGone) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ProjectsCreateForOrgGone to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ProjectsCreateForOrgGone(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *ProjectsCreateForOrgGone) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -106817,31 +100817,6 @@ func (s *ProjectsCreateForOrgGone) MarshalJSON() ([]byte, error) {
 func (s *ProjectsCreateForOrgGone) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes ProjectsCreateForOrgNotFound as json.
-func (s *ProjectsCreateForOrgNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ProjectsCreateForOrgNotFound from json.
-func (s *ProjectsCreateForOrgNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ProjectsCreateForOrgNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ProjectsCreateForOrgNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -106970,31 +100945,6 @@ func (s *ProjectsCreateForOrgReq) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes ProjectsCreateForOrgUnauthorized as json.
-func (s *ProjectsCreateForOrgUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ProjectsCreateForOrgUnauthorized from json.
-func (s *ProjectsCreateForOrgUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ProjectsCreateForOrgUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ProjectsCreateForOrgUnauthorized(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *ProjectsCreateForOrgUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -107006,31 +100956,6 @@ func (s *ProjectsCreateForOrgUnauthorized) MarshalJSON() ([]byte, error) {
 func (s *ProjectsCreateForOrgUnauthorized) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes ProjectsCreateForRepoForbidden as json.
-func (s *ProjectsCreateForRepoForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ProjectsCreateForRepoForbidden from json.
-func (s *ProjectsCreateForRepoForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ProjectsCreateForRepoForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ProjectsCreateForRepoForbidden(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -107046,31 +100971,6 @@ func (s *ProjectsCreateForRepoForbidden) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes ProjectsCreateForRepoGone as json.
-func (s *ProjectsCreateForRepoGone) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ProjectsCreateForRepoGone from json.
-func (s *ProjectsCreateForRepoGone) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ProjectsCreateForRepoGone to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ProjectsCreateForRepoGone(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *ProjectsCreateForRepoGone) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -107082,31 +100982,6 @@ func (s *ProjectsCreateForRepoGone) MarshalJSON() ([]byte, error) {
 func (s *ProjectsCreateForRepoGone) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes ProjectsCreateForRepoNotFound as json.
-func (s *ProjectsCreateForRepoNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ProjectsCreateForRepoNotFound from json.
-func (s *ProjectsCreateForRepoNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ProjectsCreateForRepoNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ProjectsCreateForRepoNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -107235,31 +101110,6 @@ func (s *ProjectsCreateForRepoReq) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes ProjectsCreateForRepoUnauthorized as json.
-func (s *ProjectsCreateForRepoUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ProjectsCreateForRepoUnauthorized from json.
-func (s *ProjectsCreateForRepoUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ProjectsCreateForRepoUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ProjectsCreateForRepoUnauthorized(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *ProjectsCreateForRepoUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -107383,31 +101233,6 @@ func (s *ProjectsDeleteCardForbidden) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes ProjectsDeleteCardNotFound as json.
-func (s *ProjectsDeleteCardNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ProjectsDeleteCardNotFound from json.
-func (s *ProjectsDeleteCardNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ProjectsDeleteCardNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ProjectsDeleteCardNotFound(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *ProjectsDeleteCardNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -107419,31 +101244,6 @@ func (s *ProjectsDeleteCardNotFound) MarshalJSON() ([]byte, error) {
 func (s *ProjectsDeleteCardNotFound) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes ProjectsDeleteCardUnauthorized as json.
-func (s *ProjectsDeleteCardUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ProjectsDeleteCardUnauthorized from json.
-func (s *ProjectsDeleteCardUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ProjectsDeleteCardUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ProjectsDeleteCardUnauthorized(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -107459,31 +101259,6 @@ func (s *ProjectsDeleteCardUnauthorized) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes ProjectsDeleteColumnForbidden as json.
-func (s *ProjectsDeleteColumnForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ProjectsDeleteColumnForbidden from json.
-func (s *ProjectsDeleteColumnForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ProjectsDeleteColumnForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ProjectsDeleteColumnForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *ProjectsDeleteColumnForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -107495,31 +101270,6 @@ func (s *ProjectsDeleteColumnForbidden) MarshalJSON() ([]byte, error) {
 func (s *ProjectsDeleteColumnForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes ProjectsDeleteColumnUnauthorized as json.
-func (s *ProjectsDeleteColumnUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ProjectsDeleteColumnUnauthorized from json.
-func (s *ProjectsDeleteColumnUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ProjectsDeleteColumnUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ProjectsDeleteColumnUnauthorized(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -107645,31 +101395,6 @@ func (s *ProjectsDeleteForbidden) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes ProjectsDeleteGone as json.
-func (s *ProjectsDeleteGone) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ProjectsDeleteGone from json.
-func (s *ProjectsDeleteGone) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ProjectsDeleteGone to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ProjectsDeleteGone(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *ProjectsDeleteGone) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -107681,31 +101406,6 @@ func (s *ProjectsDeleteGone) MarshalJSON() ([]byte, error) {
 func (s *ProjectsDeleteGone) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes ProjectsDeleteNotFound as json.
-func (s *ProjectsDeleteNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ProjectsDeleteNotFound from json.
-func (s *ProjectsDeleteNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ProjectsDeleteNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ProjectsDeleteNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -107721,31 +101421,6 @@ func (s *ProjectsDeleteNotFound) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes ProjectsDeleteUnauthorized as json.
-func (s *ProjectsDeleteUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ProjectsDeleteUnauthorized from json.
-func (s *ProjectsDeleteUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ProjectsDeleteUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ProjectsDeleteUnauthorized(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *ProjectsDeleteUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -107757,31 +101432,6 @@ func (s *ProjectsDeleteUnauthorized) MarshalJSON() ([]byte, error) {
 func (s *ProjectsDeleteUnauthorized) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes ProjectsGetCardForbidden as json.
-func (s *ProjectsGetCardForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ProjectsGetCardForbidden from json.
-func (s *ProjectsGetCardForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ProjectsGetCardForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ProjectsGetCardForbidden(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -107797,31 +101447,6 @@ func (s *ProjectsGetCardForbidden) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes ProjectsGetCardNotFound as json.
-func (s *ProjectsGetCardNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ProjectsGetCardNotFound from json.
-func (s *ProjectsGetCardNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ProjectsGetCardNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ProjectsGetCardNotFound(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *ProjectsGetCardNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -107833,31 +101458,6 @@ func (s *ProjectsGetCardNotFound) MarshalJSON() ([]byte, error) {
 func (s *ProjectsGetCardNotFound) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes ProjectsGetCardUnauthorized as json.
-func (s *ProjectsGetCardUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ProjectsGetCardUnauthorized from json.
-func (s *ProjectsGetCardUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ProjectsGetCardUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ProjectsGetCardUnauthorized(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -107873,31 +101473,6 @@ func (s *ProjectsGetCardUnauthorized) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes ProjectsGetColumnForbidden as json.
-func (s *ProjectsGetColumnForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ProjectsGetColumnForbidden from json.
-func (s *ProjectsGetColumnForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ProjectsGetColumnForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ProjectsGetColumnForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *ProjectsGetColumnForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -107909,31 +101484,6 @@ func (s *ProjectsGetColumnForbidden) MarshalJSON() ([]byte, error) {
 func (s *ProjectsGetColumnForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes ProjectsGetColumnNotFound as json.
-func (s *ProjectsGetColumnNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ProjectsGetColumnNotFound from json.
-func (s *ProjectsGetColumnNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ProjectsGetColumnNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ProjectsGetColumnNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -107949,31 +101499,6 @@ func (s *ProjectsGetColumnNotFound) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes ProjectsGetColumnUnauthorized as json.
-func (s *ProjectsGetColumnUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ProjectsGetColumnUnauthorized from json.
-func (s *ProjectsGetColumnUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ProjectsGetColumnUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ProjectsGetColumnUnauthorized(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *ProjectsGetColumnUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -107985,31 +101510,6 @@ func (s *ProjectsGetColumnUnauthorized) MarshalJSON() ([]byte, error) {
 func (s *ProjectsGetColumnUnauthorized) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes ProjectsGetForbidden as json.
-func (s *ProjectsGetForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ProjectsGetForbidden from json.
-func (s *ProjectsGetForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ProjectsGetForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ProjectsGetForbidden(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -108025,31 +101525,6 @@ func (s *ProjectsGetForbidden) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes ProjectsGetPermissionForUserForbidden as json.
-func (s *ProjectsGetPermissionForUserForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ProjectsGetPermissionForUserForbidden from json.
-func (s *ProjectsGetPermissionForUserForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ProjectsGetPermissionForUserForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ProjectsGetPermissionForUserForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *ProjectsGetPermissionForUserForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -108061,31 +101536,6 @@ func (s *ProjectsGetPermissionForUserForbidden) MarshalJSON() ([]byte, error) {
 func (s *ProjectsGetPermissionForUserForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes ProjectsGetPermissionForUserNotFound as json.
-func (s *ProjectsGetPermissionForUserNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ProjectsGetPermissionForUserNotFound from json.
-func (s *ProjectsGetPermissionForUserNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ProjectsGetPermissionForUserNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ProjectsGetPermissionForUserNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -108101,31 +101551,6 @@ func (s *ProjectsGetPermissionForUserNotFound) UnmarshalJSON(data []byte) error 
 	return s.Decode(d)
 }
 
-// Encode encodes ProjectsGetPermissionForUserUnauthorized as json.
-func (s *ProjectsGetPermissionForUserUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ProjectsGetPermissionForUserUnauthorized from json.
-func (s *ProjectsGetPermissionForUserUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ProjectsGetPermissionForUserUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ProjectsGetPermissionForUserUnauthorized(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *ProjectsGetPermissionForUserUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -108137,31 +101562,6 @@ func (s *ProjectsGetPermissionForUserUnauthorized) MarshalJSON() ([]byte, error)
 func (s *ProjectsGetPermissionForUserUnauthorized) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes ProjectsGetUnauthorized as json.
-func (s *ProjectsGetUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ProjectsGetUnauthorized from json.
-func (s *ProjectsGetUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ProjectsGetUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ProjectsGetUnauthorized(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -108177,31 +101577,6 @@ func (s *ProjectsGetUnauthorized) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes ProjectsListCardsForbidden as json.
-func (s *ProjectsListCardsForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ProjectsListCardsForbidden from json.
-func (s *ProjectsListCardsForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ProjectsListCardsForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ProjectsListCardsForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *ProjectsListCardsForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -108213,31 +101588,6 @@ func (s *ProjectsListCardsForbidden) MarshalJSON() ([]byte, error) {
 func (s *ProjectsListCardsForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes ProjectsListCardsUnauthorized as json.
-func (s *ProjectsListCardsUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ProjectsListCardsUnauthorized from json.
-func (s *ProjectsListCardsUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ProjectsListCardsUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ProjectsListCardsUnauthorized(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -108253,31 +101603,6 @@ func (s *ProjectsListCardsUnauthorized) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes ProjectsListCollaboratorsForbidden as json.
-func (s *ProjectsListCollaboratorsForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ProjectsListCollaboratorsForbidden from json.
-func (s *ProjectsListCollaboratorsForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ProjectsListCollaboratorsForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ProjectsListCollaboratorsForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *ProjectsListCollaboratorsForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -108289,31 +101614,6 @@ func (s *ProjectsListCollaboratorsForbidden) MarshalJSON() ([]byte, error) {
 func (s *ProjectsListCollaboratorsForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes ProjectsListCollaboratorsNotFound as json.
-func (s *ProjectsListCollaboratorsNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ProjectsListCollaboratorsNotFound from json.
-func (s *ProjectsListCollaboratorsNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ProjectsListCollaboratorsNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ProjectsListCollaboratorsNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -108329,31 +101629,6 @@ func (s *ProjectsListCollaboratorsNotFound) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes ProjectsListCollaboratorsUnauthorized as json.
-func (s *ProjectsListCollaboratorsUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ProjectsListCollaboratorsUnauthorized from json.
-func (s *ProjectsListCollaboratorsUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ProjectsListCollaboratorsUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ProjectsListCollaboratorsUnauthorized(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *ProjectsListCollaboratorsUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -108365,31 +101640,6 @@ func (s *ProjectsListCollaboratorsUnauthorized) MarshalJSON() ([]byte, error) {
 func (s *ProjectsListCollaboratorsUnauthorized) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes ProjectsListColumnsForbidden as json.
-func (s *ProjectsListColumnsForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ProjectsListColumnsForbidden from json.
-func (s *ProjectsListColumnsForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ProjectsListColumnsForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ProjectsListColumnsForbidden(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -108405,31 +101655,6 @@ func (s *ProjectsListColumnsForbidden) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes ProjectsListColumnsUnauthorized as json.
-func (s *ProjectsListColumnsUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ProjectsListColumnsUnauthorized from json.
-func (s *ProjectsListColumnsUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ProjectsListColumnsUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ProjectsListColumnsUnauthorized(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *ProjectsListColumnsUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -108441,31 +101666,6 @@ func (s *ProjectsListColumnsUnauthorized) MarshalJSON() ([]byte, error) {
 func (s *ProjectsListColumnsUnauthorized) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes ProjectsListForRepoForbidden as json.
-func (s *ProjectsListForRepoForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ProjectsListForRepoForbidden from json.
-func (s *ProjectsListForRepoForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ProjectsListForRepoForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ProjectsListForRepoForbidden(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -108481,31 +101681,6 @@ func (s *ProjectsListForRepoForbidden) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes ProjectsListForRepoGone as json.
-func (s *ProjectsListForRepoGone) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ProjectsListForRepoGone from json.
-func (s *ProjectsListForRepoGone) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ProjectsListForRepoGone to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ProjectsListForRepoGone(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *ProjectsListForRepoGone) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -108519,31 +101694,6 @@ func (s *ProjectsListForRepoGone) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes ProjectsListForRepoNotFound as json.
-func (s *ProjectsListForRepoNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ProjectsListForRepoNotFound from json.
-func (s *ProjectsListForRepoNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ProjectsListForRepoNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ProjectsListForRepoNotFound(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *ProjectsListForRepoNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -108555,31 +101705,6 @@ func (s *ProjectsListForRepoNotFound) MarshalJSON() ([]byte, error) {
 func (s *ProjectsListForRepoNotFound) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes ProjectsListForRepoUnauthorized as json.
-func (s *ProjectsListForRepoUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ProjectsListForRepoUnauthorized from json.
-func (s *ProjectsListForRepoUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ProjectsListForRepoUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ProjectsListForRepoUnauthorized(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -109223,31 +102348,6 @@ func (s *ProjectsMoveColumnCreated) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes ProjectsMoveColumnForbidden as json.
-func (s *ProjectsMoveColumnForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ProjectsMoveColumnForbidden from json.
-func (s *ProjectsMoveColumnForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ProjectsMoveColumnForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ProjectsMoveColumnForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *ProjectsMoveColumnForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -109357,31 +102457,6 @@ func (s *ProjectsMoveColumnReq) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes ProjectsMoveColumnUnauthorized as json.
-func (s *ProjectsMoveColumnUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ProjectsMoveColumnUnauthorized from json.
-func (s *ProjectsMoveColumnUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ProjectsMoveColumnUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ProjectsMoveColumnUnauthorized(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *ProjectsMoveColumnUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -109393,31 +102468,6 @@ func (s *ProjectsMoveColumnUnauthorized) MarshalJSON() ([]byte, error) {
 func (s *ProjectsMoveColumnUnauthorized) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes ProjectsRemoveCollaboratorForbidden as json.
-func (s *ProjectsRemoveCollaboratorForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ProjectsRemoveCollaboratorForbidden from json.
-func (s *ProjectsRemoveCollaboratorForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ProjectsRemoveCollaboratorForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ProjectsRemoveCollaboratorForbidden(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -109433,31 +102483,6 @@ func (s *ProjectsRemoveCollaboratorForbidden) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes ProjectsRemoveCollaboratorNotFound as json.
-func (s *ProjectsRemoveCollaboratorNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ProjectsRemoveCollaboratorNotFound from json.
-func (s *ProjectsRemoveCollaboratorNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ProjectsRemoveCollaboratorNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ProjectsRemoveCollaboratorNotFound(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *ProjectsRemoveCollaboratorNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -109469,31 +102494,6 @@ func (s *ProjectsRemoveCollaboratorNotFound) MarshalJSON() ([]byte, error) {
 func (s *ProjectsRemoveCollaboratorNotFound) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes ProjectsRemoveCollaboratorUnauthorized as json.
-func (s *ProjectsRemoveCollaboratorUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ProjectsRemoveCollaboratorUnauthorized from json.
-func (s *ProjectsRemoveCollaboratorUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ProjectsRemoveCollaboratorUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ProjectsRemoveCollaboratorUnauthorized(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -109509,31 +102509,6 @@ func (s *ProjectsRemoveCollaboratorUnauthorized) UnmarshalJSON(data []byte) erro
 	return s.Decode(d)
 }
 
-// Encode encodes ProjectsUpdateCardForbidden as json.
-func (s *ProjectsUpdateCardForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ProjectsUpdateCardForbidden from json.
-func (s *ProjectsUpdateCardForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ProjectsUpdateCardForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ProjectsUpdateCardForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *ProjectsUpdateCardForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -109545,31 +102520,6 @@ func (s *ProjectsUpdateCardForbidden) MarshalJSON() ([]byte, error) {
 func (s *ProjectsUpdateCardForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes ProjectsUpdateCardNotFound as json.
-func (s *ProjectsUpdateCardNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ProjectsUpdateCardNotFound from json.
-func (s *ProjectsUpdateCardNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ProjectsUpdateCardNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ProjectsUpdateCardNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -109665,31 +102615,6 @@ func (s *ProjectsUpdateCardReq) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes ProjectsUpdateCardUnauthorized as json.
-func (s *ProjectsUpdateCardUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ProjectsUpdateCardUnauthorized from json.
-func (s *ProjectsUpdateCardUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ProjectsUpdateCardUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ProjectsUpdateCardUnauthorized(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *ProjectsUpdateCardUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -109701,31 +102626,6 @@ func (s *ProjectsUpdateCardUnauthorized) MarshalJSON() ([]byte, error) {
 func (s *ProjectsUpdateCardUnauthorized) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes ProjectsUpdateColumnForbidden as json.
-func (s *ProjectsUpdateColumnForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ProjectsUpdateColumnForbidden from json.
-func (s *ProjectsUpdateColumnForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ProjectsUpdateColumnForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ProjectsUpdateColumnForbidden(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -109835,31 +102735,6 @@ func (s *ProjectsUpdateColumnReq) MarshalJSON() ([]byte, error) {
 func (s *ProjectsUpdateColumnReq) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes ProjectsUpdateColumnUnauthorized as json.
-func (s *ProjectsUpdateColumnUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ProjectsUpdateColumnUnauthorized from json.
-func (s *ProjectsUpdateColumnUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ProjectsUpdateColumnUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ProjectsUpdateColumnUnauthorized(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -109983,31 +102858,6 @@ func (s *ProjectsUpdateForbidden) MarshalJSON() ([]byte, error) {
 func (s *ProjectsUpdateForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes ProjectsUpdateGone as json.
-func (s *ProjectsUpdateGone) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ProjectsUpdateGone from json.
-func (s *ProjectsUpdateGone) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ProjectsUpdateGone to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ProjectsUpdateGone(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -110196,31 +103046,6 @@ func (s ProjectsUpdateReqOrganizationPermission) MarshalJSON() ([]byte, error) {
 func (s *ProjectsUpdateReqOrganizationPermission) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes ProjectsUpdateUnauthorized as json.
-func (s *ProjectsUpdateUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ProjectsUpdateUnauthorized from json.
-func (s *ProjectsUpdateUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ProjectsUpdateUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ProjectsUpdateUnauthorized(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -124314,31 +117139,6 @@ func (s *PullsDismissReviewReq) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes PullsGetInternalServerError as json.
-func (s *PullsGetInternalServerError) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes PullsGetInternalServerError from json.
-func (s *PullsGetInternalServerError) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode PullsGetInternalServerError to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = PullsGetInternalServerError(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *PullsGetInternalServerError) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -124350,31 +117150,6 @@ func (s *PullsGetInternalServerError) MarshalJSON() ([]byte, error) {
 func (s *PullsGetInternalServerError) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes PullsGetNotFound as json.
-func (s *PullsGetNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes PullsGetNotFound from json.
-func (s *PullsGetNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode PullsGetNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = PullsGetNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -124470,31 +117245,6 @@ func (s *PullsMergeConflict) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes PullsMergeForbidden as json.
-func (s *PullsMergeForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes PullsMergeForbidden from json.
-func (s *PullsMergeForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode PullsMergeForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = PullsMergeForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *PullsMergeForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -124586,31 +117336,6 @@ func (s *PullsMergeMethodNotAllowed) MarshalJSON() ([]byte, error) {
 func (s *PullsMergeMethodNotAllowed) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes PullsMergeNotFound as json.
-func (s *PullsMergeNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes PullsMergeNotFound from json.
-func (s *PullsMergeNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode PullsMergeNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = PullsMergeNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -124920,31 +117645,6 @@ func (s *PullsRemoveRequestedReviewersReq) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes PullsSubmitReviewForbidden as json.
-func (s *PullsSubmitReviewForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes PullsSubmitReviewForbidden from json.
-func (s *PullsSubmitReviewForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode PullsSubmitReviewForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = PullsSubmitReviewForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *PullsSubmitReviewForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -124956,31 +117656,6 @@ func (s *PullsSubmitReviewForbidden) MarshalJSON() ([]byte, error) {
 func (s *PullsSubmitReviewForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes PullsSubmitReviewNotFound as json.
-func (s *PullsSubmitReviewNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes PullsSubmitReviewNotFound from json.
-func (s *PullsSubmitReviewNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode PullsSubmitReviewNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = PullsSubmitReviewNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -126567,31 +119242,6 @@ func (s *ReactionRollup) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes ReactionsCreateForCommitCommentCreated as json.
-func (s *ReactionsCreateForCommitCommentCreated) Encode(e *jx.Encoder) {
-	unwrapped := (*Reaction)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ReactionsCreateForCommitCommentCreated from json.
-func (s *ReactionsCreateForCommitCommentCreated) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ReactionsCreateForCommitCommentCreated to nil")
-	}
-	var unwrapped Reaction
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ReactionsCreateForCommitCommentCreated(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *ReactionsCreateForCommitCommentCreated) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -126603,31 +119253,6 @@ func (s *ReactionsCreateForCommitCommentCreated) MarshalJSON() ([]byte, error) {
 func (s *ReactionsCreateForCommitCommentCreated) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes ReactionsCreateForCommitCommentOK as json.
-func (s *ReactionsCreateForCommitCommentOK) Encode(e *jx.Encoder) {
-	unwrapped := (*Reaction)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ReactionsCreateForCommitCommentOK from json.
-func (s *ReactionsCreateForCommitCommentOK) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ReactionsCreateForCommitCommentOK to nil")
-	}
-	var unwrapped Reaction
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ReactionsCreateForCommitCommentOK(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -126789,31 +119414,6 @@ func (s *ReactionsCreateForCommitCommentReqContent) UnmarshalJSON(data []byte) e
 	return s.Decode(d)
 }
 
-// Encode encodes ReactionsCreateForIssueCommentCreated as json.
-func (s *ReactionsCreateForIssueCommentCreated) Encode(e *jx.Encoder) {
-	unwrapped := (*Reaction)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ReactionsCreateForIssueCommentCreated from json.
-func (s *ReactionsCreateForIssueCommentCreated) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ReactionsCreateForIssueCommentCreated to nil")
-	}
-	var unwrapped Reaction
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ReactionsCreateForIssueCommentCreated(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *ReactionsCreateForIssueCommentCreated) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -126825,31 +119425,6 @@ func (s *ReactionsCreateForIssueCommentCreated) MarshalJSON() ([]byte, error) {
 func (s *ReactionsCreateForIssueCommentCreated) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes ReactionsCreateForIssueCommentOK as json.
-func (s *ReactionsCreateForIssueCommentOK) Encode(e *jx.Encoder) {
-	unwrapped := (*Reaction)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ReactionsCreateForIssueCommentOK from json.
-func (s *ReactionsCreateForIssueCommentOK) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ReactionsCreateForIssueCommentOK to nil")
-	}
-	var unwrapped Reaction
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ReactionsCreateForIssueCommentOK(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -127011,31 +119586,6 @@ func (s *ReactionsCreateForIssueCommentReqContent) UnmarshalJSON(data []byte) er
 	return s.Decode(d)
 }
 
-// Encode encodes ReactionsCreateForIssueCreated as json.
-func (s *ReactionsCreateForIssueCreated) Encode(e *jx.Encoder) {
-	unwrapped := (*Reaction)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ReactionsCreateForIssueCreated from json.
-func (s *ReactionsCreateForIssueCreated) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ReactionsCreateForIssueCreated to nil")
-	}
-	var unwrapped Reaction
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ReactionsCreateForIssueCreated(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *ReactionsCreateForIssueCreated) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -127047,31 +119597,6 @@ func (s *ReactionsCreateForIssueCreated) MarshalJSON() ([]byte, error) {
 func (s *ReactionsCreateForIssueCreated) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes ReactionsCreateForIssueOK as json.
-func (s *ReactionsCreateForIssueOK) Encode(e *jx.Encoder) {
-	unwrapped := (*Reaction)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ReactionsCreateForIssueOK from json.
-func (s *ReactionsCreateForIssueOK) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ReactionsCreateForIssueOK to nil")
-	}
-	var unwrapped Reaction
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ReactionsCreateForIssueOK(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -127233,31 +119758,6 @@ func (s *ReactionsCreateForIssueReqContent) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes ReactionsCreateForPullRequestReviewCommentCreated as json.
-func (s *ReactionsCreateForPullRequestReviewCommentCreated) Encode(e *jx.Encoder) {
-	unwrapped := (*Reaction)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ReactionsCreateForPullRequestReviewCommentCreated from json.
-func (s *ReactionsCreateForPullRequestReviewCommentCreated) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ReactionsCreateForPullRequestReviewCommentCreated to nil")
-	}
-	var unwrapped Reaction
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ReactionsCreateForPullRequestReviewCommentCreated(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *ReactionsCreateForPullRequestReviewCommentCreated) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -127269,31 +119769,6 @@ func (s *ReactionsCreateForPullRequestReviewCommentCreated) MarshalJSON() ([]byt
 func (s *ReactionsCreateForPullRequestReviewCommentCreated) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes ReactionsCreateForPullRequestReviewCommentOK as json.
-func (s *ReactionsCreateForPullRequestReviewCommentOK) Encode(e *jx.Encoder) {
-	unwrapped := (*Reaction)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ReactionsCreateForPullRequestReviewCommentOK from json.
-func (s *ReactionsCreateForPullRequestReviewCommentOK) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ReactionsCreateForPullRequestReviewCommentOK to nil")
-	}
-	var unwrapped Reaction
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ReactionsCreateForPullRequestReviewCommentOK(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -127455,31 +119930,6 @@ func (s *ReactionsCreateForPullRequestReviewCommentReqContent) UnmarshalJSON(dat
 	return s.Decode(d)
 }
 
-// Encode encodes ReactionsCreateForReleaseCreated as json.
-func (s *ReactionsCreateForReleaseCreated) Encode(e *jx.Encoder) {
-	unwrapped := (*Reaction)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ReactionsCreateForReleaseCreated from json.
-func (s *ReactionsCreateForReleaseCreated) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ReactionsCreateForReleaseCreated to nil")
-	}
-	var unwrapped Reaction
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ReactionsCreateForReleaseCreated(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *ReactionsCreateForReleaseCreated) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -127491,31 +119941,6 @@ func (s *ReactionsCreateForReleaseCreated) MarshalJSON() ([]byte, error) {
 func (s *ReactionsCreateForReleaseCreated) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes ReactionsCreateForReleaseOK as json.
-func (s *ReactionsCreateForReleaseOK) Encode(e *jx.Encoder) {
-	unwrapped := (*Reaction)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ReactionsCreateForReleaseOK from json.
-func (s *ReactionsCreateForReleaseOK) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ReactionsCreateForReleaseOK to nil")
-	}
-	var unwrapped Reaction
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ReactionsCreateForReleaseOK(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -127673,31 +120098,6 @@ func (s *ReactionsCreateForReleaseReqContent) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes ReactionsCreateForTeamDiscussionCommentInOrgCreated as json.
-func (s *ReactionsCreateForTeamDiscussionCommentInOrgCreated) Encode(e *jx.Encoder) {
-	unwrapped := (*Reaction)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ReactionsCreateForTeamDiscussionCommentInOrgCreated from json.
-func (s *ReactionsCreateForTeamDiscussionCommentInOrgCreated) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ReactionsCreateForTeamDiscussionCommentInOrgCreated to nil")
-	}
-	var unwrapped Reaction
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ReactionsCreateForTeamDiscussionCommentInOrgCreated(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *ReactionsCreateForTeamDiscussionCommentInOrgCreated) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -127709,31 +120109,6 @@ func (s *ReactionsCreateForTeamDiscussionCommentInOrgCreated) MarshalJSON() ([]b
 func (s *ReactionsCreateForTeamDiscussionCommentInOrgCreated) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes ReactionsCreateForTeamDiscussionCommentInOrgOK as json.
-func (s *ReactionsCreateForTeamDiscussionCommentInOrgOK) Encode(e *jx.Encoder) {
-	unwrapped := (*Reaction)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ReactionsCreateForTeamDiscussionCommentInOrgOK from json.
-func (s *ReactionsCreateForTeamDiscussionCommentInOrgOK) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ReactionsCreateForTeamDiscussionCommentInOrgOK to nil")
-	}
-	var unwrapped Reaction
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ReactionsCreateForTeamDiscussionCommentInOrgOK(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -128041,31 +120416,6 @@ func (s *ReactionsCreateForTeamDiscussionCommentLegacyReqContent) UnmarshalJSON(
 	return s.Decode(d)
 }
 
-// Encode encodes ReactionsCreateForTeamDiscussionInOrgCreated as json.
-func (s *ReactionsCreateForTeamDiscussionInOrgCreated) Encode(e *jx.Encoder) {
-	unwrapped := (*Reaction)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ReactionsCreateForTeamDiscussionInOrgCreated from json.
-func (s *ReactionsCreateForTeamDiscussionInOrgCreated) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ReactionsCreateForTeamDiscussionInOrgCreated to nil")
-	}
-	var unwrapped Reaction
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ReactionsCreateForTeamDiscussionInOrgCreated(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *ReactionsCreateForTeamDiscussionInOrgCreated) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -128077,31 +120427,6 @@ func (s *ReactionsCreateForTeamDiscussionInOrgCreated) MarshalJSON() ([]byte, er
 func (s *ReactionsCreateForTeamDiscussionInOrgCreated) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes ReactionsCreateForTeamDiscussionInOrgOK as json.
-func (s *ReactionsCreateForTeamDiscussionInOrgOK) Encode(e *jx.Encoder) {
-	unwrapped := (*Reaction)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ReactionsCreateForTeamDiscussionInOrgOK from json.
-func (s *ReactionsCreateForTeamDiscussionInOrgOK) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ReactionsCreateForTeamDiscussionInOrgOK to nil")
-	}
-	var unwrapped Reaction
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ReactionsCreateForTeamDiscussionInOrgOK(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -128409,31 +120734,6 @@ func (s *ReactionsCreateForTeamDiscussionLegacyReqContent) UnmarshalJSON(data []
 	return s.Decode(d)
 }
 
-// Encode encodes ReactionsDeleteLegacyForbidden as json.
-func (s *ReactionsDeleteLegacyForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ReactionsDeleteLegacyForbidden from json.
-func (s *ReactionsDeleteLegacyForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ReactionsDeleteLegacyForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ReactionsDeleteLegacyForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *ReactionsDeleteLegacyForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -128445,31 +120745,6 @@ func (s *ReactionsDeleteLegacyForbidden) MarshalJSON() ([]byte, error) {
 func (s *ReactionsDeleteLegacyForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes ReactionsDeleteLegacyGone as json.
-func (s *ReactionsDeleteLegacyGone) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ReactionsDeleteLegacyGone from json.
-func (s *ReactionsDeleteLegacyGone) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ReactionsDeleteLegacyGone to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ReactionsDeleteLegacyGone(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -128485,31 +120760,6 @@ func (s *ReactionsDeleteLegacyGone) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes ReactionsDeleteLegacyUnauthorized as json.
-func (s *ReactionsDeleteLegacyUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ReactionsDeleteLegacyUnauthorized from json.
-func (s *ReactionsDeleteLegacyUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ReactionsDeleteLegacyUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ReactionsDeleteLegacyUnauthorized(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *ReactionsDeleteLegacyUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -128523,31 +120773,6 @@ func (s *ReactionsDeleteLegacyUnauthorized) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes ReactionsListForIssueGone as json.
-func (s *ReactionsListForIssueGone) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ReactionsListForIssueGone from json.
-func (s *ReactionsListForIssueGone) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ReactionsListForIssueGone to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ReactionsListForIssueGone(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *ReactionsListForIssueGone) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -128559,31 +120784,6 @@ func (s *ReactionsListForIssueGone) MarshalJSON() ([]byte, error) {
 func (s *ReactionsListForIssueGone) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes ReactionsListForIssueNotFound as json.
-func (s *ReactionsListForIssueNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ReactionsListForIssueNotFound from json.
-func (s *ReactionsListForIssueNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ReactionsListForIssueNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ReactionsListForIssueNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -131234,31 +123434,6 @@ func (s *RepoSearchResultItemPermissions) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes ReposAcceptInvitationConflict as json.
-func (s *ReposAcceptInvitationConflict) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ReposAcceptInvitationConflict from json.
-func (s *ReposAcceptInvitationConflict) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ReposAcceptInvitationConflict to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ReposAcceptInvitationConflict(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *ReposAcceptInvitationConflict) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -131272,31 +123447,6 @@ func (s *ReposAcceptInvitationConflict) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes ReposAcceptInvitationForbidden as json.
-func (s *ReposAcceptInvitationForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ReposAcceptInvitationForbidden from json.
-func (s *ReposAcceptInvitationForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ReposAcceptInvitationForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ReposAcceptInvitationForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *ReposAcceptInvitationForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -131308,31 +123458,6 @@ func (s *ReposAcceptInvitationForbidden) MarshalJSON() ([]byte, error) {
 func (s *ReposAcceptInvitationForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes ReposAcceptInvitationNotFound as json.
-func (s *ReposAcceptInvitationNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ReposAcceptInvitationNotFound from json.
-func (s *ReposAcceptInvitationNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ReposAcceptInvitationNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ReposAcceptInvitationNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -131693,31 +123818,6 @@ func (s *ReposAddCollaboratorReqPermission) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes ReposAddStatusCheckContextsForbidden as json.
-func (s *ReposAddStatusCheckContextsForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ReposAddStatusCheckContextsForbidden from json.
-func (s *ReposAddStatusCheckContextsForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ReposAddStatusCheckContextsForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ReposAddStatusCheckContextsForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *ReposAddStatusCheckContextsForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -131729,31 +123829,6 @@ func (s *ReposAddStatusCheckContextsForbidden) MarshalJSON() ([]byte, error) {
 func (s *ReposAddStatusCheckContextsForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes ReposAddStatusCheckContextsNotFound as json.
-func (s *ReposAddStatusCheckContextsNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ReposAddStatusCheckContextsNotFound from json.
-func (s *ReposAddStatusCheckContextsNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ReposAddStatusCheckContextsNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ReposAddStatusCheckContextsNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -132425,31 +124500,6 @@ func (s *ReposAddUserAccessRestrictionsReq0) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes ReposCompareCommitsInternalServerError as json.
-func (s *ReposCompareCommitsInternalServerError) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ReposCompareCommitsInternalServerError from json.
-func (s *ReposCompareCommitsInternalServerError) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ReposCompareCommitsInternalServerError to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ReposCompareCommitsInternalServerError(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *ReposCompareCommitsInternalServerError) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -132461,31 +124511,6 @@ func (s *ReposCompareCommitsInternalServerError) MarshalJSON() ([]byte, error) {
 func (s *ReposCompareCommitsInternalServerError) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes ReposCompareCommitsNotFound as json.
-func (s *ReposCompareCommitsNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ReposCompareCommitsNotFound from json.
-func (s *ReposCompareCommitsNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ReposCompareCommitsNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ReposCompareCommitsNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -133968,31 +125993,6 @@ func (s *ReposCreateDispatchEventReqClientPayload) UnmarshalJSON(data []byte) er
 	return s.Decode(d)
 }
 
-// Encode encodes ReposCreateForAuthenticatedUserBadRequest as json.
-func (s *ReposCreateForAuthenticatedUserBadRequest) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ReposCreateForAuthenticatedUserBadRequest from json.
-func (s *ReposCreateForAuthenticatedUserBadRequest) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ReposCreateForAuthenticatedUserBadRequest to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ReposCreateForAuthenticatedUserBadRequest(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *ReposCreateForAuthenticatedUserBadRequest) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -134006,31 +126006,6 @@ func (s *ReposCreateForAuthenticatedUserBadRequest) UnmarshalJSON(data []byte) e
 	return s.Decode(d)
 }
 
-// Encode encodes ReposCreateForAuthenticatedUserForbidden as json.
-func (s *ReposCreateForAuthenticatedUserForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ReposCreateForAuthenticatedUserForbidden from json.
-func (s *ReposCreateForAuthenticatedUserForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ReposCreateForAuthenticatedUserForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ReposCreateForAuthenticatedUserForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *ReposCreateForAuthenticatedUserForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -134042,31 +126017,6 @@ func (s *ReposCreateForAuthenticatedUserForbidden) MarshalJSON() ([]byte, error)
 func (s *ReposCreateForAuthenticatedUserForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes ReposCreateForAuthenticatedUserNotFound as json.
-func (s *ReposCreateForAuthenticatedUserNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ReposCreateForAuthenticatedUserNotFound from json.
-func (s *ReposCreateForAuthenticatedUserNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ReposCreateForAuthenticatedUserNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ReposCreateForAuthenticatedUserNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -134470,31 +126420,6 @@ func (s *ReposCreateForAuthenticatedUserReq) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes ReposCreateForAuthenticatedUserUnauthorized as json.
-func (s *ReposCreateForAuthenticatedUserUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ReposCreateForAuthenticatedUserUnauthorized from json.
-func (s *ReposCreateForAuthenticatedUserUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ReposCreateForAuthenticatedUserUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ReposCreateForAuthenticatedUserUnauthorized(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *ReposCreateForAuthenticatedUserUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -134506,31 +126431,6 @@ func (s *ReposCreateForAuthenticatedUserUnauthorized) MarshalJSON() ([]byte, err
 func (s *ReposCreateForAuthenticatedUserUnauthorized) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes ReposCreateForkBadRequest as json.
-func (s *ReposCreateForkBadRequest) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ReposCreateForkBadRequest from json.
-func (s *ReposCreateForkBadRequest) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ReposCreateForkBadRequest to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ReposCreateForkBadRequest(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -134546,31 +126446,6 @@ func (s *ReposCreateForkBadRequest) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes ReposCreateForkForbidden as json.
-func (s *ReposCreateForkForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ReposCreateForkForbidden from json.
-func (s *ReposCreateForkForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ReposCreateForkForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ReposCreateForkForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *ReposCreateForkForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -134582,31 +126457,6 @@ func (s *ReposCreateForkForbidden) MarshalJSON() ([]byte, error) {
 func (s *ReposCreateForkForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes ReposCreateForkNotFound as json.
-func (s *ReposCreateForkNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ReposCreateForkNotFound from json.
-func (s *ReposCreateForkNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ReposCreateForkNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ReposCreateForkNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -135117,31 +126967,6 @@ func (s *ReposCreateInOrgReqVisibility) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes ReposCreateOrUpdateFileContentsConflict as json.
-func (s *ReposCreateOrUpdateFileContentsConflict) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ReposCreateOrUpdateFileContentsConflict from json.
-func (s *ReposCreateOrUpdateFileContentsConflict) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ReposCreateOrUpdateFileContentsConflict to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ReposCreateOrUpdateFileContentsConflict(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *ReposCreateOrUpdateFileContentsConflict) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -135153,31 +126978,6 @@ func (s *ReposCreateOrUpdateFileContentsConflict) MarshalJSON() ([]byte, error) 
 func (s *ReposCreateOrUpdateFileContentsConflict) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes ReposCreateOrUpdateFileContentsCreated as json.
-func (s *ReposCreateOrUpdateFileContentsCreated) Encode(e *jx.Encoder) {
-	unwrapped := (*FileCommit)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ReposCreateOrUpdateFileContentsCreated from json.
-func (s *ReposCreateOrUpdateFileContentsCreated) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ReposCreateOrUpdateFileContentsCreated to nil")
-	}
-	var unwrapped FileCommit
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ReposCreateOrUpdateFileContentsCreated(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -135193,31 +126993,6 @@ func (s *ReposCreateOrUpdateFileContentsCreated) UnmarshalJSON(data []byte) erro
 	return s.Decode(d)
 }
 
-// Encode encodes ReposCreateOrUpdateFileContentsNotFound as json.
-func (s *ReposCreateOrUpdateFileContentsNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ReposCreateOrUpdateFileContentsNotFound from json.
-func (s *ReposCreateOrUpdateFileContentsNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ReposCreateOrUpdateFileContentsNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ReposCreateOrUpdateFileContentsNotFound(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *ReposCreateOrUpdateFileContentsNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -135229,31 +127004,6 @@ func (s *ReposCreateOrUpdateFileContentsNotFound) MarshalJSON() ([]byte, error) 
 func (s *ReposCreateOrUpdateFileContentsNotFound) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes ReposCreateOrUpdateFileContentsOK as json.
-func (s *ReposCreateOrUpdateFileContentsOK) Encode(e *jx.Encoder) {
-	unwrapped := (*FileCommit)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ReposCreateOrUpdateFileContentsOK from json.
-func (s *ReposCreateOrUpdateFileContentsOK) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ReposCreateOrUpdateFileContentsOK to nil")
-	}
-	var unwrapped FileCommit
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ReposCreateOrUpdateFileContentsOK(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -136322,31 +128072,6 @@ func (s *ReposCreateUsingTemplateReq) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes ReposCreateWebhookForbidden as json.
-func (s *ReposCreateWebhookForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ReposCreateWebhookForbidden from json.
-func (s *ReposCreateWebhookForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ReposCreateWebhookForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ReposCreateWebhookForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *ReposCreateWebhookForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -136358,31 +128083,6 @@ func (s *ReposCreateWebhookForbidden) MarshalJSON() ([]byte, error) {
 func (s *ReposCreateWebhookForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes ReposCreateWebhookNotFound as json.
-func (s *ReposCreateWebhookNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ReposCreateWebhookNotFound from json.
-func (s *ReposCreateWebhookNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ReposCreateWebhookNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ReposCreateWebhookNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -136674,31 +128374,6 @@ func (s *ReposCreateWebhookReqConfig) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes ReposDeclineInvitationConflict as json.
-func (s *ReposDeclineInvitationConflict) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ReposDeclineInvitationConflict from json.
-func (s *ReposDeclineInvitationConflict) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ReposDeclineInvitationConflict to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ReposDeclineInvitationConflict(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *ReposDeclineInvitationConflict) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -136710,31 +128385,6 @@ func (s *ReposDeclineInvitationConflict) MarshalJSON() ([]byte, error) {
 func (s *ReposDeclineInvitationConflict) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes ReposDeclineInvitationForbidden as json.
-func (s *ReposDeclineInvitationForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ReposDeclineInvitationForbidden from json.
-func (s *ReposDeclineInvitationForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ReposDeclineInvitationForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ReposDeclineInvitationForbidden(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -136750,31 +128400,6 @@ func (s *ReposDeclineInvitationForbidden) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes ReposDeclineInvitationNotFound as json.
-func (s *ReposDeclineInvitationNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ReposDeclineInvitationNotFound from json.
-func (s *ReposDeclineInvitationNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ReposDeclineInvitationNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ReposDeclineInvitationNotFound(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *ReposDeclineInvitationNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -136788,31 +128413,6 @@ func (s *ReposDeclineInvitationNotFound) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes ReposDeleteFileConflict as json.
-func (s *ReposDeleteFileConflict) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ReposDeleteFileConflict from json.
-func (s *ReposDeleteFileConflict) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ReposDeleteFileConflict to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ReposDeleteFileConflict(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *ReposDeleteFileConflict) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -136824,31 +128424,6 @@ func (s *ReposDeleteFileConflict) MarshalJSON() ([]byte, error) {
 func (s *ReposDeleteFileConflict) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes ReposDeleteFileNotFound as json.
-func (s *ReposDeleteFileNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ReposDeleteFileNotFound from json.
-func (s *ReposDeleteFileNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ReposDeleteFileNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ReposDeleteFileNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -137268,31 +128843,6 @@ func (s *ReposDeleteForbidden) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes ReposDeleteNotFound as json.
-func (s *ReposDeleteNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ReposDeleteNotFound from json.
-func (s *ReposDeleteNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ReposDeleteNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ReposDeleteNotFound(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *ReposDeleteNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -137304,31 +128854,6 @@ func (s *ReposDeleteNotFound) MarshalJSON() ([]byte, error) {
 func (s *ReposDeleteNotFound) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes ReposDeleteTemporaryRedirect as json.
-func (s *ReposDeleteTemporaryRedirect) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ReposDeleteTemporaryRedirect from json.
-func (s *ReposDeleteTemporaryRedirect) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ReposDeleteTemporaryRedirect to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ReposDeleteTemporaryRedirect(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -137446,31 +128971,6 @@ func (s *ReposGetAppsWithAccessToProtectedBranchOKApplicationJSON) UnmarshalJSON
 	return s.Decode(d)
 }
 
-// Encode encodes ReposGetBranchMovedPermanently as json.
-func (s *ReposGetBranchMovedPermanently) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ReposGetBranchMovedPermanently from json.
-func (s *ReposGetBranchMovedPermanently) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ReposGetBranchMovedPermanently to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ReposGetBranchMovedPermanently(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *ReposGetBranchMovedPermanently) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -137482,31 +128982,6 @@ func (s *ReposGetBranchMovedPermanently) MarshalJSON() ([]byte, error) {
 func (s *ReposGetBranchMovedPermanently) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes ReposGetBranchNotFound as json.
-func (s *ReposGetBranchNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ReposGetBranchNotFound from json.
-func (s *ReposGetBranchNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ReposGetBranchNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ReposGetBranchNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -137622,31 +129097,6 @@ func (s *ReposGetCommitActivityStatsOKApplicationJSON) UnmarshalJSON(data []byte
 	return s.Decode(d)
 }
 
-// Encode encodes ReposGetCommitInternalServerError as json.
-func (s *ReposGetCommitInternalServerError) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ReposGetCommitInternalServerError from json.
-func (s *ReposGetCommitInternalServerError) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ReposGetCommitInternalServerError to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ReposGetCommitInternalServerError(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *ReposGetCommitInternalServerError) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -137658,31 +129108,6 @@ func (s *ReposGetCommitInternalServerError) MarshalJSON() ([]byte, error) {
 func (s *ReposGetCommitInternalServerError) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes ReposGetCommitNotFound as json.
-func (s *ReposGetCommitNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ReposGetCommitNotFound from json.
-func (s *ReposGetCommitNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ReposGetCommitNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ReposGetCommitNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -137748,31 +129173,6 @@ func (s *ReposGetContributorsStatsOKApplicationJSON) UnmarshalJSON(data []byte) 
 	return s.Decode(d)
 }
 
-// Encode encodes ReposGetForbidden as json.
-func (s *ReposGetForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ReposGetForbidden from json.
-func (s *ReposGetForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ReposGetForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ReposGetForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *ReposGetForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -137786,31 +129186,6 @@ func (s *ReposGetForbidden) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes ReposGetMovedPermanently as json.
-func (s *ReposGetMovedPermanently) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ReposGetMovedPermanently from json.
-func (s *ReposGetMovedPermanently) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ReposGetMovedPermanently to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ReposGetMovedPermanently(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *ReposGetMovedPermanently) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -137822,31 +129197,6 @@ func (s *ReposGetMovedPermanently) MarshalJSON() ([]byte, error) {
 func (s *ReposGetMovedPermanently) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes ReposGetNotFound as json.
-func (s *ReposGetNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ReposGetNotFound from json.
-func (s *ReposGetNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ReposGetNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ReposGetNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -138162,31 +129512,6 @@ func (s *ReposListBranchesForHeadCommitOKApplicationJSON) UnmarshalJSON(data []b
 	return s.Decode(d)
 }
 
-// Encode encodes ReposListCommitsBadRequest as json.
-func (s *ReposListCommitsBadRequest) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ReposListCommitsBadRequest from json.
-func (s *ReposListCommitsBadRequest) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ReposListCommitsBadRequest to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ReposListCommitsBadRequest(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *ReposListCommitsBadRequest) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -138198,31 +129523,6 @@ func (s *ReposListCommitsBadRequest) MarshalJSON() ([]byte, error) {
 func (s *ReposListCommitsBadRequest) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes ReposListCommitsConflict as json.
-func (s *ReposListCommitsConflict) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ReposListCommitsConflict from json.
-func (s *ReposListCommitsConflict) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ReposListCommitsConflict to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ReposListCommitsConflict(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -138238,31 +129538,6 @@ func (s *ReposListCommitsConflict) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes ReposListCommitsInternalServerError as json.
-func (s *ReposListCommitsInternalServerError) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ReposListCommitsInternalServerError from json.
-func (s *ReposListCommitsInternalServerError) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ReposListCommitsInternalServerError to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ReposListCommitsInternalServerError(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *ReposListCommitsInternalServerError) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -138274,31 +129549,6 @@ func (s *ReposListCommitsInternalServerError) MarshalJSON() ([]byte, error) {
 func (s *ReposListCommitsInternalServerError) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes ReposListCommitsNotFound as json.
-func (s *ReposListCommitsNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ReposListCommitsNotFound from json.
-func (s *ReposListCommitsNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ReposListCommitsNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ReposListCommitsNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -138314,31 +129564,6 @@ func (s *ReposListCommitsNotFound) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes ReposListContributorsForbidden as json.
-func (s *ReposListContributorsForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ReposListContributorsForbidden from json.
-func (s *ReposListContributorsForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ReposListContributorsForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ReposListContributorsForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *ReposListContributorsForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -138352,31 +129577,6 @@ func (s *ReposListContributorsForbidden) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes ReposListContributorsNotFound as json.
-func (s *ReposListContributorsNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ReposListContributorsNotFound from json.
-func (s *ReposListContributorsNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ReposListContributorsNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ReposListContributorsNotFound(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *ReposListContributorsNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -138388,31 +129588,6 @@ func (s *ReposListContributorsNotFound) MarshalJSON() ([]byte, error) {
 func (s *ReposListContributorsNotFound) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes ReposListForAuthenticatedUserForbidden as json.
-func (s *ReposListForAuthenticatedUserForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ReposListForAuthenticatedUserForbidden from json.
-func (s *ReposListForAuthenticatedUserForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ReposListForAuthenticatedUserForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ReposListForAuthenticatedUserForbidden(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -138478,31 +129653,6 @@ func (s *ReposListForAuthenticatedUserOKApplicationJSON) UnmarshalJSON(data []by
 	return s.Decode(d)
 }
 
-// Encode encodes ReposListForAuthenticatedUserUnauthorized as json.
-func (s *ReposListForAuthenticatedUserUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ReposListForAuthenticatedUserUnauthorized from json.
-func (s *ReposListForAuthenticatedUserUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ReposListForAuthenticatedUserUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ReposListForAuthenticatedUserUnauthorized(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *ReposListForAuthenticatedUserUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -138514,31 +129664,6 @@ func (s *ReposListForAuthenticatedUserUnauthorized) MarshalJSON() ([]byte, error
 func (s *ReposListForAuthenticatedUserUnauthorized) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes ReposListInvitationsForAuthenticatedUserForbidden as json.
-func (s *ReposListInvitationsForAuthenticatedUserForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ReposListInvitationsForAuthenticatedUserForbidden from json.
-func (s *ReposListInvitationsForAuthenticatedUserForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ReposListInvitationsForAuthenticatedUserForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ReposListInvitationsForAuthenticatedUserForbidden(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -138554,31 +129679,6 @@ func (s *ReposListInvitationsForAuthenticatedUserForbidden) UnmarshalJSON(data [
 	return s.Decode(d)
 }
 
-// Encode encodes ReposListInvitationsForAuthenticatedUserNotFound as json.
-func (s *ReposListInvitationsForAuthenticatedUserNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ReposListInvitationsForAuthenticatedUserNotFound from json.
-func (s *ReposListInvitationsForAuthenticatedUserNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ReposListInvitationsForAuthenticatedUserNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ReposListInvitationsForAuthenticatedUserNotFound(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *ReposListInvitationsForAuthenticatedUserNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -138590,31 +129690,6 @@ func (s *ReposListInvitationsForAuthenticatedUserNotFound) MarshalJSON() ([]byte
 func (s *ReposListInvitationsForAuthenticatedUserNotFound) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes ReposListInvitationsForAuthenticatedUserUnauthorized as json.
-func (s *ReposListInvitationsForAuthenticatedUserUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ReposListInvitationsForAuthenticatedUserUnauthorized from json.
-func (s *ReposListInvitationsForAuthenticatedUserUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ReposListInvitationsForAuthenticatedUserUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ReposListInvitationsForAuthenticatedUserUnauthorized(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -139780,31 +130855,6 @@ func (s *ReposRemoveUserAccessRestrictionsReq0) UnmarshalJSON(data []byte) error
 	return s.Decode(d)
 }
 
-// Encode encodes ReposRenameBranchForbidden as json.
-func (s *ReposRenameBranchForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ReposRenameBranchForbidden from json.
-func (s *ReposRenameBranchForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ReposRenameBranchForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ReposRenameBranchForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *ReposRenameBranchForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -139816,31 +130866,6 @@ func (s *ReposRenameBranchForbidden) MarshalJSON() ([]byte, error) {
 func (s *ReposRenameBranchForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes ReposRenameBranchNotFound as json.
-func (s *ReposRenameBranchNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ReposRenameBranchNotFound from json.
-func (s *ReposRenameBranchNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ReposRenameBranchNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ReposRenameBranchNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -141060,31 +132085,6 @@ func (s *ReposTransferReq) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes ReposUpdateBranchProtectionForbidden as json.
-func (s *ReposUpdateBranchProtectionForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ReposUpdateBranchProtectionForbidden from json.
-func (s *ReposUpdateBranchProtectionForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ReposUpdateBranchProtectionForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ReposUpdateBranchProtectionForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *ReposUpdateBranchProtectionForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -141096,31 +132096,6 @@ func (s *ReposUpdateBranchProtectionForbidden) MarshalJSON() ([]byte, error) {
 func (s *ReposUpdateBranchProtectionForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes ReposUpdateBranchProtectionNotFound as json.
-func (s *ReposUpdateBranchProtectionNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ReposUpdateBranchProtectionNotFound from json.
-func (s *ReposUpdateBranchProtectionNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ReposUpdateBranchProtectionNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ReposUpdateBranchProtectionNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -141951,31 +132926,6 @@ func (s *ReposUpdateCommitCommentReq) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes ReposUpdateForbidden as json.
-func (s *ReposUpdateForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ReposUpdateForbidden from json.
-func (s *ReposUpdateForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ReposUpdateForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ReposUpdateForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *ReposUpdateForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -142096,31 +133046,6 @@ func (s ReposUpdateInvitationReqPermissions) MarshalJSON() ([]byte, error) {
 func (s *ReposUpdateInvitationReqPermissions) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes ReposUpdateNotFound as json.
-func (s *ReposUpdateNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ReposUpdateNotFound from json.
-func (s *ReposUpdateNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ReposUpdateNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ReposUpdateNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -143312,31 +134237,6 @@ func (s *ReposUpdateStatusCheckProtectionReq) MarshalJSON() ([]byte, error) {
 func (s *ReposUpdateStatusCheckProtectionReq) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes ReposUpdateTemporaryRedirect as json.
-func (s *ReposUpdateTemporaryRedirect) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ReposUpdateTemporaryRedirect from json.
-func (s *ReposUpdateTemporaryRedirect) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ReposUpdateTemporaryRedirect to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ReposUpdateTemporaryRedirect(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -149786,31 +140686,6 @@ func (s *RunnerLabelsItemType) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes ScimDeleteUserFromOrgForbidden as json.
-func (s *ScimDeleteUserFromOrgForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*ScimError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ScimDeleteUserFromOrgForbidden from json.
-func (s *ScimDeleteUserFromOrgForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ScimDeleteUserFromOrgForbidden to nil")
-	}
-	var unwrapped ScimError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ScimDeleteUserFromOrgForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *ScimDeleteUserFromOrgForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -149822,31 +140697,6 @@ func (s *ScimDeleteUserFromOrgForbidden) MarshalJSON() ([]byte, error) {
 func (s *ScimDeleteUserFromOrgForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes ScimDeleteUserFromOrgNotFound as json.
-func (s *ScimDeleteUserFromOrgNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*ScimError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes ScimDeleteUserFromOrgNotFound from json.
-func (s *ScimDeleteUserFromOrgNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ScimDeleteUserFromOrgNotFound to nil")
-	}
-	var unwrapped ScimError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = ScimDeleteUserFromOrgNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -152887,31 +143737,6 @@ func (s *SearchIssuesAndPullRequestsOK) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes SearchLabelsForbidden as json.
-func (s *SearchLabelsForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes SearchLabelsForbidden from json.
-func (s *SearchLabelsForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode SearchLabelsForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = SearchLabelsForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *SearchLabelsForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -152923,31 +143748,6 @@ func (s *SearchLabelsForbidden) MarshalJSON() ([]byte, error) {
 func (s *SearchLabelsForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes SearchLabelsNotFound as json.
-func (s *SearchLabelsNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes SearchLabelsNotFound from json.
-func (s *SearchLabelsNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode SearchLabelsNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = SearchLabelsNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -163060,31 +153860,6 @@ func (s *TeamsCreateReqPrivacy) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes TeamsListChildLegacyForbidden as json.
-func (s *TeamsListChildLegacyForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes TeamsListChildLegacyForbidden from json.
-func (s *TeamsListChildLegacyForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode TeamsListChildLegacyForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = TeamsListChildLegacyForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *TeamsListChildLegacyForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -163096,31 +153871,6 @@ func (s *TeamsListChildLegacyForbidden) MarshalJSON() ([]byte, error) {
 func (s *TeamsListChildLegacyForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes TeamsListChildLegacyNotFound as json.
-func (s *TeamsListChildLegacyNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes TeamsListChildLegacyNotFound from json.
-func (s *TeamsListChildLegacyNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode TeamsListChildLegacyNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = TeamsListChildLegacyNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -163136,31 +153886,6 @@ func (s *TeamsListChildLegacyNotFound) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes TeamsListForAuthenticatedUserForbidden as json.
-func (s *TeamsListForAuthenticatedUserForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes TeamsListForAuthenticatedUserForbidden from json.
-func (s *TeamsListForAuthenticatedUserForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode TeamsListForAuthenticatedUserForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = TeamsListForAuthenticatedUserForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *TeamsListForAuthenticatedUserForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -163172,31 +153897,6 @@ func (s *TeamsListForAuthenticatedUserForbidden) MarshalJSON() ([]byte, error) {
 func (s *TeamsListForAuthenticatedUserForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes TeamsListForAuthenticatedUserNotFound as json.
-func (s *TeamsListForAuthenticatedUserNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes TeamsListForAuthenticatedUserNotFound from json.
-func (s *TeamsListForAuthenticatedUserNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode TeamsListForAuthenticatedUserNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = TeamsListForAuthenticatedUserNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -163212,31 +153912,6 @@ func (s *TeamsListForAuthenticatedUserNotFound) UnmarshalJSON(data []byte) error
 	return s.Decode(d)
 }
 
-// Encode encodes TeamsListIdpGroupsForLegacyForbidden as json.
-func (s *TeamsListIdpGroupsForLegacyForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes TeamsListIdpGroupsForLegacyForbidden from json.
-func (s *TeamsListIdpGroupsForLegacyForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode TeamsListIdpGroupsForLegacyForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = TeamsListIdpGroupsForLegacyForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *TeamsListIdpGroupsForLegacyForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -163248,31 +153923,6 @@ func (s *TeamsListIdpGroupsForLegacyForbidden) MarshalJSON() ([]byte, error) {
 func (s *TeamsListIdpGroupsForLegacyForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes TeamsListIdpGroupsForLegacyNotFound as json.
-func (s *TeamsListIdpGroupsForLegacyNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes TeamsListIdpGroupsForLegacyNotFound from json.
-func (s *TeamsListIdpGroupsForLegacyNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode TeamsListIdpGroupsForLegacyNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = TeamsListIdpGroupsForLegacyNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -163854,31 +154504,6 @@ func (s *TeamsUpdateInOrgReqPrivacy) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes TeamsUpdateLegacyCreated as json.
-func (s *TeamsUpdateLegacyCreated) Encode(e *jx.Encoder) {
-	unwrapped := (*TeamFull)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes TeamsUpdateLegacyCreated from json.
-func (s *TeamsUpdateLegacyCreated) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode TeamsUpdateLegacyCreated to nil")
-	}
-	var unwrapped TeamFull
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = TeamsUpdateLegacyCreated(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *TeamsUpdateLegacyCreated) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -163890,31 +154515,6 @@ func (s *TeamsUpdateLegacyCreated) MarshalJSON() ([]byte, error) {
 func (s *TeamsUpdateLegacyCreated) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes TeamsUpdateLegacyForbidden as json.
-func (s *TeamsUpdateLegacyForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes TeamsUpdateLegacyForbidden from json.
-func (s *TeamsUpdateLegacyForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode TeamsUpdateLegacyForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = TeamsUpdateLegacyForbidden(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -163930,31 +154530,6 @@ func (s *TeamsUpdateLegacyForbidden) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes TeamsUpdateLegacyNotFound as json.
-func (s *TeamsUpdateLegacyNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes TeamsUpdateLegacyNotFound from json.
-func (s *TeamsUpdateLegacyNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode TeamsUpdateLegacyNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = TeamsUpdateLegacyNotFound(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *TeamsUpdateLegacyNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -163966,31 +154541,6 @@ func (s *TeamsUpdateLegacyNotFound) MarshalJSON() ([]byte, error) {
 func (s *TeamsUpdateLegacyNotFound) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes TeamsUpdateLegacyOK as json.
-func (s *TeamsUpdateLegacyOK) Encode(e *jx.Encoder) {
-	unwrapped := (*TeamFull)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes TeamsUpdateLegacyOK from json.
-func (s *TeamsUpdateLegacyOK) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode TeamsUpdateLegacyOK to nil")
-	}
-	var unwrapped TeamFull
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = TeamsUpdateLegacyOK(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -166665,31 +157215,6 @@ func (s *UsersAddEmailForAuthenticatedCreatedApplicationJSON) UnmarshalJSON(data
 	return s.Decode(d)
 }
 
-// Encode encodes UsersAddEmailForAuthenticatedForbidden as json.
-func (s *UsersAddEmailForAuthenticatedForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes UsersAddEmailForAuthenticatedForbidden from json.
-func (s *UsersAddEmailForAuthenticatedForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode UsersAddEmailForAuthenticatedForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = UsersAddEmailForAuthenticatedForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *UsersAddEmailForAuthenticatedForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -166701,31 +157226,6 @@ func (s *UsersAddEmailForAuthenticatedForbidden) MarshalJSON() ([]byte, error) {
 func (s *UsersAddEmailForAuthenticatedForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes UsersAddEmailForAuthenticatedNotFound as json.
-func (s *UsersAddEmailForAuthenticatedNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes UsersAddEmailForAuthenticatedNotFound from json.
-func (s *UsersAddEmailForAuthenticatedNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode UsersAddEmailForAuthenticatedNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = UsersAddEmailForAuthenticatedNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -166918,31 +157418,6 @@ func (s *UsersAddEmailForAuthenticatedReq0) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes UsersAddEmailForAuthenticatedUnauthorized as json.
-func (s *UsersAddEmailForAuthenticatedUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes UsersAddEmailForAuthenticatedUnauthorized from json.
-func (s *UsersAddEmailForAuthenticatedUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode UsersAddEmailForAuthenticatedUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = UsersAddEmailForAuthenticatedUnauthorized(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *UsersAddEmailForAuthenticatedUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -166954,31 +157429,6 @@ func (s *UsersAddEmailForAuthenticatedUnauthorized) MarshalJSON() ([]byte, error
 func (s *UsersAddEmailForAuthenticatedUnauthorized) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes UsersBlockForbidden as json.
-func (s *UsersBlockForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes UsersBlockForbidden from json.
-func (s *UsersBlockForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode UsersBlockForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = UsersBlockForbidden(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -166994,31 +157444,6 @@ func (s *UsersBlockForbidden) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes UsersBlockNotFound as json.
-func (s *UsersBlockNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes UsersBlockNotFound from json.
-func (s *UsersBlockNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode UsersBlockNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = UsersBlockNotFound(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *UsersBlockNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -167030,31 +157455,6 @@ func (s *UsersBlockNotFound) MarshalJSON() ([]byte, error) {
 func (s *UsersBlockNotFound) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes UsersBlockUnauthorized as json.
-func (s *UsersBlockUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes UsersBlockUnauthorized from json.
-func (s *UsersBlockUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode UsersBlockUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = UsersBlockUnauthorized(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -167070,31 +157470,6 @@ func (s *UsersBlockUnauthorized) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes UsersCheckBlockedForbidden as json.
-func (s *UsersCheckBlockedForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes UsersCheckBlockedForbidden from json.
-func (s *UsersCheckBlockedForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode UsersCheckBlockedForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = UsersCheckBlockedForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *UsersCheckBlockedForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -167106,31 +157481,6 @@ func (s *UsersCheckBlockedForbidden) MarshalJSON() ([]byte, error) {
 func (s *UsersCheckBlockedForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes UsersCheckBlockedNotFound as json.
-func (s *UsersCheckBlockedNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes UsersCheckBlockedNotFound from json.
-func (s *UsersCheckBlockedNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode UsersCheckBlockedNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = UsersCheckBlockedNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -167146,31 +157496,6 @@ func (s *UsersCheckBlockedNotFound) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes UsersCheckBlockedUnauthorized as json.
-func (s *UsersCheckBlockedUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes UsersCheckBlockedUnauthorized from json.
-func (s *UsersCheckBlockedUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode UsersCheckBlockedUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = UsersCheckBlockedUnauthorized(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *UsersCheckBlockedUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -167182,31 +157507,6 @@ func (s *UsersCheckBlockedUnauthorized) MarshalJSON() ([]byte, error) {
 func (s *UsersCheckBlockedUnauthorized) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes UsersCheckPersonIsFollowedByAuthenticatedForbidden as json.
-func (s *UsersCheckPersonIsFollowedByAuthenticatedForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes UsersCheckPersonIsFollowedByAuthenticatedForbidden from json.
-func (s *UsersCheckPersonIsFollowedByAuthenticatedForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode UsersCheckPersonIsFollowedByAuthenticatedForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = UsersCheckPersonIsFollowedByAuthenticatedForbidden(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -167222,31 +157522,6 @@ func (s *UsersCheckPersonIsFollowedByAuthenticatedForbidden) UnmarshalJSON(data 
 	return s.Decode(d)
 }
 
-// Encode encodes UsersCheckPersonIsFollowedByAuthenticatedNotFound as json.
-func (s *UsersCheckPersonIsFollowedByAuthenticatedNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes UsersCheckPersonIsFollowedByAuthenticatedNotFound from json.
-func (s *UsersCheckPersonIsFollowedByAuthenticatedNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode UsersCheckPersonIsFollowedByAuthenticatedNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = UsersCheckPersonIsFollowedByAuthenticatedNotFound(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *UsersCheckPersonIsFollowedByAuthenticatedNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -167258,31 +157533,6 @@ func (s *UsersCheckPersonIsFollowedByAuthenticatedNotFound) MarshalJSON() ([]byt
 func (s *UsersCheckPersonIsFollowedByAuthenticatedNotFound) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes UsersCheckPersonIsFollowedByAuthenticatedUnauthorized as json.
-func (s *UsersCheckPersonIsFollowedByAuthenticatedUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes UsersCheckPersonIsFollowedByAuthenticatedUnauthorized from json.
-func (s *UsersCheckPersonIsFollowedByAuthenticatedUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode UsersCheckPersonIsFollowedByAuthenticatedUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = UsersCheckPersonIsFollowedByAuthenticatedUnauthorized(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -167298,31 +157548,6 @@ func (s *UsersCheckPersonIsFollowedByAuthenticatedUnauthorized) UnmarshalJSON(da
 	return s.Decode(d)
 }
 
-// Encode encodes UsersCreateGpgKeyForAuthenticatedForbidden as json.
-func (s *UsersCreateGpgKeyForAuthenticatedForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes UsersCreateGpgKeyForAuthenticatedForbidden from json.
-func (s *UsersCreateGpgKeyForAuthenticatedForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode UsersCreateGpgKeyForAuthenticatedForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = UsersCreateGpgKeyForAuthenticatedForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *UsersCreateGpgKeyForAuthenticatedForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -167334,31 +157559,6 @@ func (s *UsersCreateGpgKeyForAuthenticatedForbidden) MarshalJSON() ([]byte, erro
 func (s *UsersCreateGpgKeyForAuthenticatedForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes UsersCreateGpgKeyForAuthenticatedNotFound as json.
-func (s *UsersCreateGpgKeyForAuthenticatedNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes UsersCreateGpgKeyForAuthenticatedNotFound from json.
-func (s *UsersCreateGpgKeyForAuthenticatedNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode UsersCreateGpgKeyForAuthenticatedNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = UsersCreateGpgKeyForAuthenticatedNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -167470,31 +157670,6 @@ func (s *UsersCreateGpgKeyForAuthenticatedReq) UnmarshalJSON(data []byte) error 
 	return s.Decode(d)
 }
 
-// Encode encodes UsersCreateGpgKeyForAuthenticatedUnauthorized as json.
-func (s *UsersCreateGpgKeyForAuthenticatedUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes UsersCreateGpgKeyForAuthenticatedUnauthorized from json.
-func (s *UsersCreateGpgKeyForAuthenticatedUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode UsersCreateGpgKeyForAuthenticatedUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = UsersCreateGpgKeyForAuthenticatedUnauthorized(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *UsersCreateGpgKeyForAuthenticatedUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -167508,31 +157683,6 @@ func (s *UsersCreateGpgKeyForAuthenticatedUnauthorized) UnmarshalJSON(data []byt
 	return s.Decode(d)
 }
 
-// Encode encodes UsersCreatePublicSSHKeyForAuthenticatedForbidden as json.
-func (s *UsersCreatePublicSSHKeyForAuthenticatedForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes UsersCreatePublicSSHKeyForAuthenticatedForbidden from json.
-func (s *UsersCreatePublicSSHKeyForAuthenticatedForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode UsersCreatePublicSSHKeyForAuthenticatedForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = UsersCreatePublicSSHKeyForAuthenticatedForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *UsersCreatePublicSSHKeyForAuthenticatedForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -167544,31 +157694,6 @@ func (s *UsersCreatePublicSSHKeyForAuthenticatedForbidden) MarshalJSON() ([]byte
 func (s *UsersCreatePublicSSHKeyForAuthenticatedForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes UsersCreatePublicSSHKeyForAuthenticatedNotFound as json.
-func (s *UsersCreatePublicSSHKeyForAuthenticatedNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes UsersCreatePublicSSHKeyForAuthenticatedNotFound from json.
-func (s *UsersCreatePublicSSHKeyForAuthenticatedNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode UsersCreatePublicSSHKeyForAuthenticatedNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = UsersCreatePublicSSHKeyForAuthenticatedNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -167697,31 +157822,6 @@ func (s *UsersCreatePublicSSHKeyForAuthenticatedReq) UnmarshalJSON(data []byte) 
 	return s.Decode(d)
 }
 
-// Encode encodes UsersCreatePublicSSHKeyForAuthenticatedUnauthorized as json.
-func (s *UsersCreatePublicSSHKeyForAuthenticatedUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes UsersCreatePublicSSHKeyForAuthenticatedUnauthorized from json.
-func (s *UsersCreatePublicSSHKeyForAuthenticatedUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode UsersCreatePublicSSHKeyForAuthenticatedUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = UsersCreatePublicSSHKeyForAuthenticatedUnauthorized(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *UsersCreatePublicSSHKeyForAuthenticatedUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -167735,31 +157835,6 @@ func (s *UsersCreatePublicSSHKeyForAuthenticatedUnauthorized) UnmarshalJSON(data
 	return s.Decode(d)
 }
 
-// Encode encodes UsersDeleteEmailForAuthenticatedForbidden as json.
-func (s *UsersDeleteEmailForAuthenticatedForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes UsersDeleteEmailForAuthenticatedForbidden from json.
-func (s *UsersDeleteEmailForAuthenticatedForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode UsersDeleteEmailForAuthenticatedForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = UsersDeleteEmailForAuthenticatedForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *UsersDeleteEmailForAuthenticatedForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -167771,31 +157846,6 @@ func (s *UsersDeleteEmailForAuthenticatedForbidden) MarshalJSON() ([]byte, error
 func (s *UsersDeleteEmailForAuthenticatedForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes UsersDeleteEmailForAuthenticatedNotFound as json.
-func (s *UsersDeleteEmailForAuthenticatedNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes UsersDeleteEmailForAuthenticatedNotFound from json.
-func (s *UsersDeleteEmailForAuthenticatedNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode UsersDeleteEmailForAuthenticatedNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = UsersDeleteEmailForAuthenticatedNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -167988,31 +158038,6 @@ func (s *UsersDeleteEmailForAuthenticatedReq0) UnmarshalJSON(data []byte) error 
 	return s.Decode(d)
 }
 
-// Encode encodes UsersDeleteEmailForAuthenticatedUnauthorized as json.
-func (s *UsersDeleteEmailForAuthenticatedUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes UsersDeleteEmailForAuthenticatedUnauthorized from json.
-func (s *UsersDeleteEmailForAuthenticatedUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode UsersDeleteEmailForAuthenticatedUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = UsersDeleteEmailForAuthenticatedUnauthorized(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *UsersDeleteEmailForAuthenticatedUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -168024,31 +158049,6 @@ func (s *UsersDeleteEmailForAuthenticatedUnauthorized) MarshalJSON() ([]byte, er
 func (s *UsersDeleteEmailForAuthenticatedUnauthorized) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes UsersDeleteGpgKeyForAuthenticatedForbidden as json.
-func (s *UsersDeleteGpgKeyForAuthenticatedForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes UsersDeleteGpgKeyForAuthenticatedForbidden from json.
-func (s *UsersDeleteGpgKeyForAuthenticatedForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode UsersDeleteGpgKeyForAuthenticatedForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = UsersDeleteGpgKeyForAuthenticatedForbidden(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -168064,31 +158064,6 @@ func (s *UsersDeleteGpgKeyForAuthenticatedForbidden) UnmarshalJSON(data []byte) 
 	return s.Decode(d)
 }
 
-// Encode encodes UsersDeleteGpgKeyForAuthenticatedNotFound as json.
-func (s *UsersDeleteGpgKeyForAuthenticatedNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes UsersDeleteGpgKeyForAuthenticatedNotFound from json.
-func (s *UsersDeleteGpgKeyForAuthenticatedNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode UsersDeleteGpgKeyForAuthenticatedNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = UsersDeleteGpgKeyForAuthenticatedNotFound(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *UsersDeleteGpgKeyForAuthenticatedNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -168100,31 +158075,6 @@ func (s *UsersDeleteGpgKeyForAuthenticatedNotFound) MarshalJSON() ([]byte, error
 func (s *UsersDeleteGpgKeyForAuthenticatedNotFound) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes UsersDeleteGpgKeyForAuthenticatedUnauthorized as json.
-func (s *UsersDeleteGpgKeyForAuthenticatedUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes UsersDeleteGpgKeyForAuthenticatedUnauthorized from json.
-func (s *UsersDeleteGpgKeyForAuthenticatedUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode UsersDeleteGpgKeyForAuthenticatedUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = UsersDeleteGpgKeyForAuthenticatedUnauthorized(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -168140,31 +158090,6 @@ func (s *UsersDeleteGpgKeyForAuthenticatedUnauthorized) UnmarshalJSON(data []byt
 	return s.Decode(d)
 }
 
-// Encode encodes UsersDeletePublicSSHKeyForAuthenticatedForbidden as json.
-func (s *UsersDeletePublicSSHKeyForAuthenticatedForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes UsersDeletePublicSSHKeyForAuthenticatedForbidden from json.
-func (s *UsersDeletePublicSSHKeyForAuthenticatedForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode UsersDeletePublicSSHKeyForAuthenticatedForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = UsersDeletePublicSSHKeyForAuthenticatedForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *UsersDeletePublicSSHKeyForAuthenticatedForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -168176,31 +158101,6 @@ func (s *UsersDeletePublicSSHKeyForAuthenticatedForbidden) MarshalJSON() ([]byte
 func (s *UsersDeletePublicSSHKeyForAuthenticatedForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes UsersDeletePublicSSHKeyForAuthenticatedNotFound as json.
-func (s *UsersDeletePublicSSHKeyForAuthenticatedNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes UsersDeletePublicSSHKeyForAuthenticatedNotFound from json.
-func (s *UsersDeletePublicSSHKeyForAuthenticatedNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode UsersDeletePublicSSHKeyForAuthenticatedNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = UsersDeletePublicSSHKeyForAuthenticatedNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -168216,31 +158116,6 @@ func (s *UsersDeletePublicSSHKeyForAuthenticatedNotFound) UnmarshalJSON(data []b
 	return s.Decode(d)
 }
 
-// Encode encodes UsersDeletePublicSSHKeyForAuthenticatedUnauthorized as json.
-func (s *UsersDeletePublicSSHKeyForAuthenticatedUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes UsersDeletePublicSSHKeyForAuthenticatedUnauthorized from json.
-func (s *UsersDeletePublicSSHKeyForAuthenticatedUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode UsersDeletePublicSSHKeyForAuthenticatedUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = UsersDeletePublicSSHKeyForAuthenticatedUnauthorized(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *UsersDeletePublicSSHKeyForAuthenticatedUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -168252,31 +158127,6 @@ func (s *UsersDeletePublicSSHKeyForAuthenticatedUnauthorized) MarshalJSON() ([]b
 func (s *UsersDeletePublicSSHKeyForAuthenticatedUnauthorized) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes UsersFollowForbidden as json.
-func (s *UsersFollowForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes UsersFollowForbidden from json.
-func (s *UsersFollowForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode UsersFollowForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = UsersFollowForbidden(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -168292,31 +158142,6 @@ func (s *UsersFollowForbidden) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes UsersFollowNotFound as json.
-func (s *UsersFollowNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes UsersFollowNotFound from json.
-func (s *UsersFollowNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode UsersFollowNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = UsersFollowNotFound(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *UsersFollowNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -168330,31 +158155,6 @@ func (s *UsersFollowNotFound) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes UsersFollowUnauthorized as json.
-func (s *UsersFollowUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes UsersFollowUnauthorized from json.
-func (s *UsersFollowUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode UsersFollowUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = UsersFollowUnauthorized(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *UsersFollowUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -168366,31 +158166,6 @@ func (s *UsersFollowUnauthorized) MarshalJSON() ([]byte, error) {
 func (s *UsersFollowUnauthorized) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes UsersGetAuthenticatedForbidden as json.
-func (s *UsersGetAuthenticatedForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes UsersGetAuthenticatedForbidden from json.
-func (s *UsersGetAuthenticatedForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode UsersGetAuthenticatedForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = UsersGetAuthenticatedForbidden(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -168515,31 +158290,6 @@ func (s *UsersGetAuthenticatedOK) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes UsersGetAuthenticatedUnauthorized as json.
-func (s *UsersGetAuthenticatedUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes UsersGetAuthenticatedUnauthorized from json.
-func (s *UsersGetAuthenticatedUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode UsersGetAuthenticatedUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = UsersGetAuthenticatedUnauthorized(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *UsersGetAuthenticatedUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -168662,31 +158412,6 @@ func (s *UsersGetByUsernameOK) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes UsersGetGpgKeyForAuthenticatedForbidden as json.
-func (s *UsersGetGpgKeyForAuthenticatedForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes UsersGetGpgKeyForAuthenticatedForbidden from json.
-func (s *UsersGetGpgKeyForAuthenticatedForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode UsersGetGpgKeyForAuthenticatedForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = UsersGetGpgKeyForAuthenticatedForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *UsersGetGpgKeyForAuthenticatedForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -168698,31 +158423,6 @@ func (s *UsersGetGpgKeyForAuthenticatedForbidden) MarshalJSON() ([]byte, error) 
 func (s *UsersGetGpgKeyForAuthenticatedForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes UsersGetGpgKeyForAuthenticatedNotFound as json.
-func (s *UsersGetGpgKeyForAuthenticatedNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes UsersGetGpgKeyForAuthenticatedNotFound from json.
-func (s *UsersGetGpgKeyForAuthenticatedNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode UsersGetGpgKeyForAuthenticatedNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = UsersGetGpgKeyForAuthenticatedNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -168738,31 +158438,6 @@ func (s *UsersGetGpgKeyForAuthenticatedNotFound) UnmarshalJSON(data []byte) erro
 	return s.Decode(d)
 }
 
-// Encode encodes UsersGetGpgKeyForAuthenticatedUnauthorized as json.
-func (s *UsersGetGpgKeyForAuthenticatedUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes UsersGetGpgKeyForAuthenticatedUnauthorized from json.
-func (s *UsersGetGpgKeyForAuthenticatedUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode UsersGetGpgKeyForAuthenticatedUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = UsersGetGpgKeyForAuthenticatedUnauthorized(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *UsersGetGpgKeyForAuthenticatedUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -168774,31 +158449,6 @@ func (s *UsersGetGpgKeyForAuthenticatedUnauthorized) MarshalJSON() ([]byte, erro
 func (s *UsersGetGpgKeyForAuthenticatedUnauthorized) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes UsersGetPublicSSHKeyForAuthenticatedForbidden as json.
-func (s *UsersGetPublicSSHKeyForAuthenticatedForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes UsersGetPublicSSHKeyForAuthenticatedForbidden from json.
-func (s *UsersGetPublicSSHKeyForAuthenticatedForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode UsersGetPublicSSHKeyForAuthenticatedForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = UsersGetPublicSSHKeyForAuthenticatedForbidden(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -168814,31 +158464,6 @@ func (s *UsersGetPublicSSHKeyForAuthenticatedForbidden) UnmarshalJSON(data []byt
 	return s.Decode(d)
 }
 
-// Encode encodes UsersGetPublicSSHKeyForAuthenticatedNotFound as json.
-func (s *UsersGetPublicSSHKeyForAuthenticatedNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes UsersGetPublicSSHKeyForAuthenticatedNotFound from json.
-func (s *UsersGetPublicSSHKeyForAuthenticatedNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode UsersGetPublicSSHKeyForAuthenticatedNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = UsersGetPublicSSHKeyForAuthenticatedNotFound(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *UsersGetPublicSSHKeyForAuthenticatedNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -168850,31 +158475,6 @@ func (s *UsersGetPublicSSHKeyForAuthenticatedNotFound) MarshalJSON() ([]byte, er
 func (s *UsersGetPublicSSHKeyForAuthenticatedNotFound) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes UsersGetPublicSSHKeyForAuthenticatedUnauthorized as json.
-func (s *UsersGetPublicSSHKeyForAuthenticatedUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes UsersGetPublicSSHKeyForAuthenticatedUnauthorized from json.
-func (s *UsersGetPublicSSHKeyForAuthenticatedUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode UsersGetPublicSSHKeyForAuthenticatedUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = UsersGetPublicSSHKeyForAuthenticatedUnauthorized(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -168890,31 +158490,6 @@ func (s *UsersGetPublicSSHKeyForAuthenticatedUnauthorized) UnmarshalJSON(data []
 	return s.Decode(d)
 }
 
-// Encode encodes UsersListBlockedByAuthenticatedForbidden as json.
-func (s *UsersListBlockedByAuthenticatedForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes UsersListBlockedByAuthenticatedForbidden from json.
-func (s *UsersListBlockedByAuthenticatedForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode UsersListBlockedByAuthenticatedForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = UsersListBlockedByAuthenticatedForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *UsersListBlockedByAuthenticatedForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -168926,31 +158501,6 @@ func (s *UsersListBlockedByAuthenticatedForbidden) MarshalJSON() ([]byte, error)
 func (s *UsersListBlockedByAuthenticatedForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes UsersListBlockedByAuthenticatedNotFound as json.
-func (s *UsersListBlockedByAuthenticatedNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes UsersListBlockedByAuthenticatedNotFound from json.
-func (s *UsersListBlockedByAuthenticatedNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode UsersListBlockedByAuthenticatedNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = UsersListBlockedByAuthenticatedNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -169016,31 +158566,6 @@ func (s *UsersListBlockedByAuthenticatedOKApplicationJSON) UnmarshalJSON(data []
 	return s.Decode(d)
 }
 
-// Encode encodes UsersListBlockedByAuthenticatedUnauthorized as json.
-func (s *UsersListBlockedByAuthenticatedUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes UsersListBlockedByAuthenticatedUnauthorized from json.
-func (s *UsersListBlockedByAuthenticatedUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode UsersListBlockedByAuthenticatedUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = UsersListBlockedByAuthenticatedUnauthorized(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *UsersListBlockedByAuthenticatedUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -169052,31 +158577,6 @@ func (s *UsersListBlockedByAuthenticatedUnauthorized) MarshalJSON() ([]byte, err
 func (s *UsersListBlockedByAuthenticatedUnauthorized) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes UsersListEmailsForAuthenticatedForbidden as json.
-func (s *UsersListEmailsForAuthenticatedForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes UsersListEmailsForAuthenticatedForbidden from json.
-func (s *UsersListEmailsForAuthenticatedForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode UsersListEmailsForAuthenticatedForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = UsersListEmailsForAuthenticatedForbidden(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -169092,31 +158592,6 @@ func (s *UsersListEmailsForAuthenticatedForbidden) UnmarshalJSON(data []byte) er
 	return s.Decode(d)
 }
 
-// Encode encodes UsersListEmailsForAuthenticatedNotFound as json.
-func (s *UsersListEmailsForAuthenticatedNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes UsersListEmailsForAuthenticatedNotFound from json.
-func (s *UsersListEmailsForAuthenticatedNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode UsersListEmailsForAuthenticatedNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = UsersListEmailsForAuthenticatedNotFound(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *UsersListEmailsForAuthenticatedNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -169128,31 +158603,6 @@ func (s *UsersListEmailsForAuthenticatedNotFound) MarshalJSON() ([]byte, error) 
 func (s *UsersListEmailsForAuthenticatedNotFound) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes UsersListEmailsForAuthenticatedUnauthorized as json.
-func (s *UsersListEmailsForAuthenticatedUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes UsersListEmailsForAuthenticatedUnauthorized from json.
-func (s *UsersListEmailsForAuthenticatedUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode UsersListEmailsForAuthenticatedUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = UsersListEmailsForAuthenticatedUnauthorized(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -169168,31 +158618,6 @@ func (s *UsersListEmailsForAuthenticatedUnauthorized) UnmarshalJSON(data []byte)
 	return s.Decode(d)
 }
 
-// Encode encodes UsersListFollowedByAuthenticatedForbidden as json.
-func (s *UsersListFollowedByAuthenticatedForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes UsersListFollowedByAuthenticatedForbidden from json.
-func (s *UsersListFollowedByAuthenticatedForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode UsersListFollowedByAuthenticatedForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = UsersListFollowedByAuthenticatedForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *UsersListFollowedByAuthenticatedForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -169204,31 +158629,6 @@ func (s *UsersListFollowedByAuthenticatedForbidden) MarshalJSON() ([]byte, error
 func (s *UsersListFollowedByAuthenticatedForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes UsersListFollowedByAuthenticatedUnauthorized as json.
-func (s *UsersListFollowedByAuthenticatedUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes UsersListFollowedByAuthenticatedUnauthorized from json.
-func (s *UsersListFollowedByAuthenticatedUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode UsersListFollowedByAuthenticatedUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = UsersListFollowedByAuthenticatedUnauthorized(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -169244,31 +158644,6 @@ func (s *UsersListFollowedByAuthenticatedUnauthorized) UnmarshalJSON(data []byte
 	return s.Decode(d)
 }
 
-// Encode encodes UsersListFollowersForAuthenticatedUserForbidden as json.
-func (s *UsersListFollowersForAuthenticatedUserForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes UsersListFollowersForAuthenticatedUserForbidden from json.
-func (s *UsersListFollowersForAuthenticatedUserForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode UsersListFollowersForAuthenticatedUserForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = UsersListFollowersForAuthenticatedUserForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *UsersListFollowersForAuthenticatedUserForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -169280,31 +158655,6 @@ func (s *UsersListFollowersForAuthenticatedUserForbidden) MarshalJSON() ([]byte,
 func (s *UsersListFollowersForAuthenticatedUserForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes UsersListFollowersForAuthenticatedUserUnauthorized as json.
-func (s *UsersListFollowersForAuthenticatedUserUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes UsersListFollowersForAuthenticatedUserUnauthorized from json.
-func (s *UsersListFollowersForAuthenticatedUserUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode UsersListFollowersForAuthenticatedUserUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = UsersListFollowersForAuthenticatedUserUnauthorized(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -169320,31 +158670,6 @@ func (s *UsersListFollowersForAuthenticatedUserUnauthorized) UnmarshalJSON(data 
 	return s.Decode(d)
 }
 
-// Encode encodes UsersListGpgKeysForAuthenticatedForbidden as json.
-func (s *UsersListGpgKeysForAuthenticatedForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes UsersListGpgKeysForAuthenticatedForbidden from json.
-func (s *UsersListGpgKeysForAuthenticatedForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode UsersListGpgKeysForAuthenticatedForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = UsersListGpgKeysForAuthenticatedForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *UsersListGpgKeysForAuthenticatedForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -169356,31 +158681,6 @@ func (s *UsersListGpgKeysForAuthenticatedForbidden) MarshalJSON() ([]byte, error
 func (s *UsersListGpgKeysForAuthenticatedForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes UsersListGpgKeysForAuthenticatedNotFound as json.
-func (s *UsersListGpgKeysForAuthenticatedNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes UsersListGpgKeysForAuthenticatedNotFound from json.
-func (s *UsersListGpgKeysForAuthenticatedNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode UsersListGpgKeysForAuthenticatedNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = UsersListGpgKeysForAuthenticatedNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -169396,31 +158696,6 @@ func (s *UsersListGpgKeysForAuthenticatedNotFound) UnmarshalJSON(data []byte) er
 	return s.Decode(d)
 }
 
-// Encode encodes UsersListGpgKeysForAuthenticatedUnauthorized as json.
-func (s *UsersListGpgKeysForAuthenticatedUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes UsersListGpgKeysForAuthenticatedUnauthorized from json.
-func (s *UsersListGpgKeysForAuthenticatedUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode UsersListGpgKeysForAuthenticatedUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = UsersListGpgKeysForAuthenticatedUnauthorized(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *UsersListGpgKeysForAuthenticatedUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -169432,31 +158707,6 @@ func (s *UsersListGpgKeysForAuthenticatedUnauthorized) MarshalJSON() ([]byte, er
 func (s *UsersListGpgKeysForAuthenticatedUnauthorized) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes UsersListPublicEmailsForAuthenticatedForbidden as json.
-func (s *UsersListPublicEmailsForAuthenticatedForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes UsersListPublicEmailsForAuthenticatedForbidden from json.
-func (s *UsersListPublicEmailsForAuthenticatedForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode UsersListPublicEmailsForAuthenticatedForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = UsersListPublicEmailsForAuthenticatedForbidden(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -169472,31 +158722,6 @@ func (s *UsersListPublicEmailsForAuthenticatedForbidden) UnmarshalJSON(data []by
 	return s.Decode(d)
 }
 
-// Encode encodes UsersListPublicEmailsForAuthenticatedNotFound as json.
-func (s *UsersListPublicEmailsForAuthenticatedNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes UsersListPublicEmailsForAuthenticatedNotFound from json.
-func (s *UsersListPublicEmailsForAuthenticatedNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode UsersListPublicEmailsForAuthenticatedNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = UsersListPublicEmailsForAuthenticatedNotFound(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *UsersListPublicEmailsForAuthenticatedNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -169508,31 +158733,6 @@ func (s *UsersListPublicEmailsForAuthenticatedNotFound) MarshalJSON() ([]byte, e
 func (s *UsersListPublicEmailsForAuthenticatedNotFound) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes UsersListPublicEmailsForAuthenticatedUnauthorized as json.
-func (s *UsersListPublicEmailsForAuthenticatedUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes UsersListPublicEmailsForAuthenticatedUnauthorized from json.
-func (s *UsersListPublicEmailsForAuthenticatedUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode UsersListPublicEmailsForAuthenticatedUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = UsersListPublicEmailsForAuthenticatedUnauthorized(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -169548,31 +158748,6 @@ func (s *UsersListPublicEmailsForAuthenticatedUnauthorized) UnmarshalJSON(data [
 	return s.Decode(d)
 }
 
-// Encode encodes UsersListPublicSSHKeysForAuthenticatedForbidden as json.
-func (s *UsersListPublicSSHKeysForAuthenticatedForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes UsersListPublicSSHKeysForAuthenticatedForbidden from json.
-func (s *UsersListPublicSSHKeysForAuthenticatedForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode UsersListPublicSSHKeysForAuthenticatedForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = UsersListPublicSSHKeysForAuthenticatedForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *UsersListPublicSSHKeysForAuthenticatedForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -169584,31 +158759,6 @@ func (s *UsersListPublicSSHKeysForAuthenticatedForbidden) MarshalJSON() ([]byte,
 func (s *UsersListPublicSSHKeysForAuthenticatedForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes UsersListPublicSSHKeysForAuthenticatedNotFound as json.
-func (s *UsersListPublicSSHKeysForAuthenticatedNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes UsersListPublicSSHKeysForAuthenticatedNotFound from json.
-func (s *UsersListPublicSSHKeysForAuthenticatedNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode UsersListPublicSSHKeysForAuthenticatedNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = UsersListPublicSSHKeysForAuthenticatedNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -169624,31 +158774,6 @@ func (s *UsersListPublicSSHKeysForAuthenticatedNotFound) UnmarshalJSON(data []by
 	return s.Decode(d)
 }
 
-// Encode encodes UsersListPublicSSHKeysForAuthenticatedUnauthorized as json.
-func (s *UsersListPublicSSHKeysForAuthenticatedUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes UsersListPublicSSHKeysForAuthenticatedUnauthorized from json.
-func (s *UsersListPublicSSHKeysForAuthenticatedUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode UsersListPublicSSHKeysForAuthenticatedUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = UsersListPublicSSHKeysForAuthenticatedUnauthorized(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *UsersListPublicSSHKeysForAuthenticatedUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -169662,31 +158787,6 @@ func (s *UsersListPublicSSHKeysForAuthenticatedUnauthorized) UnmarshalJSON(data 
 	return s.Decode(d)
 }
 
-// Encode encodes UsersSetPrimaryEmailVisibilityForAuthenticatedForbidden as json.
-func (s *UsersSetPrimaryEmailVisibilityForAuthenticatedForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes UsersSetPrimaryEmailVisibilityForAuthenticatedForbidden from json.
-func (s *UsersSetPrimaryEmailVisibilityForAuthenticatedForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode UsersSetPrimaryEmailVisibilityForAuthenticatedForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = UsersSetPrimaryEmailVisibilityForAuthenticatedForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *UsersSetPrimaryEmailVisibilityForAuthenticatedForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -169698,31 +158798,6 @@ func (s *UsersSetPrimaryEmailVisibilityForAuthenticatedForbidden) MarshalJSON() 
 func (s *UsersSetPrimaryEmailVisibilityForAuthenticatedForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes UsersSetPrimaryEmailVisibilityForAuthenticatedNotFound as json.
-func (s *UsersSetPrimaryEmailVisibilityForAuthenticatedNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes UsersSetPrimaryEmailVisibilityForAuthenticatedNotFound from json.
-func (s *UsersSetPrimaryEmailVisibilityForAuthenticatedNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode UsersSetPrimaryEmailVisibilityForAuthenticatedNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = UsersSetPrimaryEmailVisibilityForAuthenticatedNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -169922,31 +158997,6 @@ func (s *UsersSetPrimaryEmailVisibilityForAuthenticatedReqVisibility) UnmarshalJ
 	return s.Decode(d)
 }
 
-// Encode encodes UsersSetPrimaryEmailVisibilityForAuthenticatedUnauthorized as json.
-func (s *UsersSetPrimaryEmailVisibilityForAuthenticatedUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes UsersSetPrimaryEmailVisibilityForAuthenticatedUnauthorized from json.
-func (s *UsersSetPrimaryEmailVisibilityForAuthenticatedUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode UsersSetPrimaryEmailVisibilityForAuthenticatedUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = UsersSetPrimaryEmailVisibilityForAuthenticatedUnauthorized(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *UsersSetPrimaryEmailVisibilityForAuthenticatedUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -169958,31 +159008,6 @@ func (s *UsersSetPrimaryEmailVisibilityForAuthenticatedUnauthorized) MarshalJSON
 func (s *UsersSetPrimaryEmailVisibilityForAuthenticatedUnauthorized) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes UsersUnblockForbidden as json.
-func (s *UsersUnblockForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes UsersUnblockForbidden from json.
-func (s *UsersUnblockForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode UsersUnblockForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = UsersUnblockForbidden(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -169998,31 +159023,6 @@ func (s *UsersUnblockForbidden) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes UsersUnblockNotFound as json.
-func (s *UsersUnblockNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes UsersUnblockNotFound from json.
-func (s *UsersUnblockNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode UsersUnblockNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = UsersUnblockNotFound(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *UsersUnblockNotFound) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -170034,31 +159034,6 @@ func (s *UsersUnblockNotFound) MarshalJSON() ([]byte, error) {
 func (s *UsersUnblockNotFound) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes UsersUnblockUnauthorized as json.
-func (s *UsersUnblockUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes UsersUnblockUnauthorized from json.
-func (s *UsersUnblockUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode UsersUnblockUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = UsersUnblockUnauthorized(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -170074,31 +159049,6 @@ func (s *UsersUnblockUnauthorized) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes UsersUnfollowForbidden as json.
-func (s *UsersUnfollowForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes UsersUnfollowForbidden from json.
-func (s *UsersUnfollowForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode UsersUnfollowForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = UsersUnfollowForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *UsersUnfollowForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -170110,31 +159060,6 @@ func (s *UsersUnfollowForbidden) MarshalJSON() ([]byte, error) {
 func (s *UsersUnfollowForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes UsersUnfollowNotFound as json.
-func (s *UsersUnfollowNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes UsersUnfollowNotFound from json.
-func (s *UsersUnfollowNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode UsersUnfollowNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = UsersUnfollowNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -170150,31 +159075,6 @@ func (s *UsersUnfollowNotFound) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes UsersUnfollowUnauthorized as json.
-func (s *UsersUnfollowUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes UsersUnfollowUnauthorized from json.
-func (s *UsersUnfollowUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode UsersUnfollowUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = UsersUnfollowUnauthorized(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *UsersUnfollowUnauthorized) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -170188,31 +159088,6 @@ func (s *UsersUnfollowUnauthorized) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes UsersUpdateAuthenticatedForbidden as json.
-func (s *UsersUpdateAuthenticatedForbidden) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes UsersUpdateAuthenticatedForbidden from json.
-func (s *UsersUpdateAuthenticatedForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode UsersUpdateAuthenticatedForbidden to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = UsersUpdateAuthenticatedForbidden(unwrapped)
-	return nil
-}
-
 // MarshalJSON implements stdjson.Marshaler.
 func (s *UsersUpdateAuthenticatedForbidden) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
@@ -170224,31 +159099,6 @@ func (s *UsersUpdateAuthenticatedForbidden) MarshalJSON() ([]byte, error) {
 func (s *UsersUpdateAuthenticatedForbidden) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes UsersUpdateAuthenticatedNotFound as json.
-func (s *UsersUpdateAuthenticatedNotFound) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes UsersUpdateAuthenticatedNotFound from json.
-func (s *UsersUpdateAuthenticatedNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode UsersUpdateAuthenticatedNotFound to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = UsersUpdateAuthenticatedNotFound(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
@@ -170444,31 +159294,6 @@ func (s *UsersUpdateAuthenticatedReq) MarshalJSON() ([]byte, error) {
 func (s *UsersUpdateAuthenticatedReq) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
-}
-
-// Encode encodes UsersUpdateAuthenticatedUnauthorized as json.
-func (s *UsersUpdateAuthenticatedUnauthorized) Encode(e *jx.Encoder) {
-	unwrapped := (*BasicError)(s)
-
-	unwrapped.Encode(e)
-}
-
-// Decode decodes UsersUpdateAuthenticatedUnauthorized from json.
-func (s *UsersUpdateAuthenticatedUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode UsersUpdateAuthenticatedUnauthorized to nil")
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = UsersUpdateAuthenticatedUnauthorized(unwrapped)
-	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
