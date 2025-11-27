@@ -153,6 +153,46 @@ func (s *{{ $.Name }}) Decode(d *jx.Decoder) error {
 				}
 				found = true
 				s.Type = match
+				{{- else if needsArrayElementDiscrimination $variants }}
+				// Array element discrimination: peek into array to check first element type
+				if typ := d.Next(); typ != jx.Array {
+					return d.Skip()
+				}
+				// Capture array to peek at first element without consuming
+				if err := d.Capture(func(d *jx.Decoder) error {
+					// Check if array is empty
+					iter, err := d.ArrIter()
+					if err != nil {
+						return err
+					}
+					if !iter.Next() {
+						// Empty array - use first variant as default
+						{{- $firstVariant := index (dedupeVariantsByArrayElementType $variants) 0 }}
+						if !found {
+							found = true
+							s.Type = {{ $firstVariant.VariantType }}
+						}
+						return nil
+					}
+					elemType := d.Next()
+					switch elemType {
+					{{- range $v := dedupeVariantsByArrayElementType $variants }}
+					{{- if $v.ArrayElementType }}
+					case {{ $v.ArrayElementType }}:
+						match := {{ $v.VariantType }}
+						if found && s.Type != match {
+							s.Type = ""
+							return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+						}
+						found = true
+						s.Type = match
+					{{- end }}
+					{{- end }}
+					}
+					return nil
+				}); err != nil {
+					return err
+				}
 				{{- else }}
 				// Multiple variants have this field - use type checking to discriminate
 				typ := d.Next()

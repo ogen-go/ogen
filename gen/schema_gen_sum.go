@@ -39,6 +39,9 @@ const (
 	typeIDSum     = "sum"
 	typeIDAlias   = "alias"
 	typeIDPointer = "pointer"
+
+	// jxTypeArray is the string representation of jx.Array for template generation.
+	jxTypeArray = "jx.Array"
 )
 
 // jxTypeForFieldType returns the jx.Type constant name for runtime type checking.
@@ -56,7 +59,7 @@ func jxTypeForFieldType(typeID string) string {
 	case typeID == typeIDObject:
 		return "jx.Object"
 	case strings.HasPrefix(typeID, "array["):
-		return "jx.Array"
+		return jxTypeArray
 	case strings.HasPrefix(typeID, "map["):
 		return "jx.Object"
 	case strings.HasPrefix(typeID, "enum_"):
@@ -65,6 +68,24 @@ func jxTypeForFieldType(typeID string) string {
 	default:
 		return ""
 	}
+}
+
+// getArrayElementTypeInfo extracts element type information from an array type ID.
+// Returns the element type ID and its corresponding jx.Type.
+// For non-array types, returns empty strings.
+func getArrayElementTypeInfo(typeID string) (elementTypeID, elementJxType string) {
+	if !strings.HasPrefix(typeID, "array[") {
+		return "", ""
+	}
+
+	// Extract element type: "array[string]" -> "string"
+	elementTypeID = strings.TrimPrefix(typeID, "array[")
+	elementTypeID = strings.TrimSuffix(elementTypeID, "]")
+
+	// Get the jx.Type for the element
+	elementJxType = jxTypeForFieldType(elementTypeID)
+
+	return elementTypeID, elementJxType
 }
 
 // getFieldTypeID returns a type identifier for discrimination purposes.
@@ -849,13 +870,18 @@ func (g *schemaGen) oneOf(name string, schema *jsonschema.Schema, side bool) (*i
 				isNullable := (f.Type.IsGeneric() && f.Type.GenericVariant.Nullable) ||
 					(f.Type.IsPointer() && f.Type.NilSemantic.Null())
 
+				// Get array element type info for array element discrimination
+				elemTypeID, elemJxType := getArrayElementTypeInfo(sig.typeID)
+
 				// Add to UniqueFields map for template iteration
 				// Include entries even when jxType is empty (simple field-name discrimination)
 				sum.SumSpec.UniqueFields[f.Tag.JSON] = append(sum.SumSpec.UniqueFields[f.Tag.JSON], ir.UniqueFieldVariant{
-					VariantName: s.Name,
-					VariantType: s.Name + sum.Name,
-					FieldType:   jxType,     // Empty string means no runtime type check needed
-					Nullable:    isNullable, // true if field accepts null values
+					VariantName:        s.Name,
+					VariantType:        s.Name + sum.Name,
+					FieldType:          jxType,     // Empty string means no runtime type check needed
+					Nullable:           isNullable, // true if field accepts null values
+					ArrayElementType:   elemJxType,
+					ArrayElementTypeID: elemTypeID,
 				})
 			}
 		}
@@ -1008,7 +1034,7 @@ func (g *schemaGen) oneOf(name string, schema *jsonschema.Schema, side bool) (*i
 			}
 		}
 
-		// If all variants have the same jxType (or empty), try value-based discrimination
+		// If all variants have the same jxType (or empty), try value-based or array element discrimination
 		if len(uniqueJxTypes) <= 1 {
 			// Try value-based discrimination (enum values)
 			canUse, discriminator, err := canUseValueDiscrimination(fieldName, fieldVariants)
@@ -1028,7 +1054,66 @@ func (g *schemaGen) oneOf(name string, schema *jsonschema.Schema, side bool) (*i
 				continue // This field can discriminate, move to next field
 			}
 
-			// Can't use value discrimination, find type IDs for error message
+			// Check if this is an array field that can be discriminated by element type
+			allArrays := true
+			uniqueArrayElemTypes := make(map[string]bool)
+			for _, fv := range fieldVariants {
+				if fv.FieldType != jxTypeArray {
+					allArrays = false
+					break
+				}
+				if fv.ArrayElementType != "" {
+					uniqueArrayElemTypes[fv.ArrayElementType] = true
+				}
+			}
+
+			// If all variants are arrays with different element types, check if we have other discriminating fields
+			if allArrays && len(uniqueArrayElemTypes) > 1 {
+				// Array element discrimination works, but we need to check if there are other
+				// unique fields to discriminate in case this array field is missing or empty.
+				// If this array field is the ONLY way to discriminate, we should reject it
+				// because the field might be optional and missing from the JSON.
+
+				// Check if any variant has a unique field that exists ONLY in that variant (by name)
+				hasOtherUniqueFields := false
+				variantFieldNames := make(map[string]map[string]struct{}) // variant -> set of field names
+				for _, variant := range sum.SumOf {
+					variantFieldNames[variant.Name] = make(map[string]struct{})
+					for _, f := range variant.JSON().Fields() {
+						variantFieldNames[variant.Name][f.Tag.JSON] = struct{}{}
+					}
+				}
+
+				// For each variant, check if it has any field name unique to it
+				for _, variant := range sum.SumOf {
+					for fieldName := range variantFieldNames[variant.Name] {
+						isUniqueToVariant := true
+						for _, otherVariant := range sum.SumOf {
+							if otherVariant.Name == variant.Name {
+								continue
+							}
+							if _, hasField := variantFieldNames[otherVariant.Name][fieldName]; hasField {
+								isUniqueToVariant = false
+								break
+							}
+						}
+						if isUniqueToVariant {
+							hasOtherUniqueFields = true
+							break
+						}
+					}
+					if hasOtherUniqueFields {
+						break
+					}
+				}
+
+				if hasOtherUniqueFields {
+					continue // Can discriminate by array element type (with fallback to other fields)
+				}
+				// Fall through to the error below - array element discrimination alone is not sufficient
+			}
+
+			// Can't use value or array element discrimination, find type IDs for error message
 			var typeIDs []string
 			for _, v := range sortedVariants {
 				for _, s := range sum.SumOf {
