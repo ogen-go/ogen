@@ -24,6 +24,14 @@ func (s *ActivitySetThreadSubscriptionReq) setDefaults() {
 }
 
 // setDefaults set default value of fields.
+func (s *ChecksCreateReq) setDefaults() {
+	{
+		val := ChecksCreateReqStatus("queued")
+		s.Status.SetTo(val)
+	}
+}
+
+// setDefaults set default value of fields.
 func (s *ChecksSetSuitesPreferencesReqAutoTriggerChecksItem) setDefaults() {
 	{
 		val := bool(true)

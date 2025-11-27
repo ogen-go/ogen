@@ -21982,6 +21982,124 @@ func decodeBillingGetSharedStorageBillingUserParams(args [1]string, argsEscaped 
 	return params, nil
 }
 
+// ChecksCreateParams is parameters of checks/create operation.
+type ChecksCreateParams struct {
+	Owner string
+	Repo  string
+}
+
+func unpackChecksCreateParams(packed middleware.Parameters) (params ChecksCreateParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	return params
+}
+
+func decodeChecksCreateParams(args [2]string, argsEscaped bool, r *http.Request) (params ChecksCreateParams, _ error) {
+	// Decode path: owner.
+	if err := func() error {
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
+		}
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return err
+			}
+		} else {
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "owner",
+			In:   "path",
+			Err:  err,
+		}
+	}
+	// Decode path: repo.
+	if err := func() error {
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
+		}
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return err
+			}
+		} else {
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "repo",
+			In:   "path",
+			Err:  err,
+		}
+	}
+	return params, nil
+}
+
 // ChecksCreateSuiteParams is parameters of checks/create-suite operation.
 type ChecksCreateSuiteParams struct {
 	Owner string

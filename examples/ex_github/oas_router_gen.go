@@ -7764,51 +7764,49 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												break
 											}
 											switch elem[0] {
-											case 'r': // Prefix: "runs/"
+											case 'r': // Prefix: "runs"
 
-												if l := len("runs/"); len(elem) >= l && elem[0:l] == "runs/" {
+												if l := len("runs"); len(elem) >= l && elem[0:l] == "runs" {
 													elem = elem[l:]
 												} else {
 													break
 												}
 
-												// Param: "check_run_id"
-												// Match until "/"
-												idx := strings.IndexByte(elem, '/')
-												if idx < 0 {
-													idx = len(elem)
-												}
-												args[2] = elem[:idx]
-												elem = elem[idx:]
-
 												if len(elem) == 0 {
 													switch r.Method {
-													case "GET":
-														s.handleChecksGetRequest([3]string{
+													case "POST":
+														s.handleChecksCreateRequest([2]string{
 															args[0],
 															args[1],
-															args[2],
 														}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "GET")
+														s.notAllowed(w, r, "POST")
 													}
 
 													return
 												}
 												switch elem[0] {
-												case '/': // Prefix: "/annotations"
+												case '/': // Prefix: "/"
 
-													if l := len("/annotations"); len(elem) >= l && elem[0:l] == "/annotations" {
+													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 														elem = elem[l:]
 													} else {
 														break
 													}
 
+													// Param: "check_run_id"
+													// Match until "/"
+													idx := strings.IndexByte(elem, '/')
+													if idx < 0 {
+														idx = len(elem)
+													}
+													args[2] = elem[:idx]
+													elem = elem[idx:]
+
 													if len(elem) == 0 {
-														// Leaf node.
 														switch r.Method {
 														case "GET":
-															s.handleChecksListAnnotationsRequest([3]string{
+															s.handleChecksGetRequest([3]string{
 																args[0],
 																args[1],
 																args[2],
@@ -7818,6 +7816,32 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														}
 
 														return
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/annotations"
+
+														if l := len("/annotations"); len(elem) >= l && elem[0:l] == "/annotations" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															// Leaf node.
+															switch r.Method {
+															case "GET":
+																s.handleChecksListAnnotationsRequest([3]string{
+																	args[0],
+																	args[1],
+																	args[2],
+																}, elemIsEscaped, w, r)
+															default:
+																s.notAllowed(w, r, "GET")
+															}
+
+															return
+														}
+
 													}
 
 												}
@@ -25262,62 +25286,88 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												break
 											}
 											switch elem[0] {
-											case 'r': // Prefix: "runs/"
+											case 'r': // Prefix: "runs"
 
-												if l := len("runs/"); len(elem) >= l && elem[0:l] == "runs/" {
+												if l := len("runs"); len(elem) >= l && elem[0:l] == "runs" {
 													elem = elem[l:]
 												} else {
 													break
 												}
 
-												// Param: "check_run_id"
-												// Match until "/"
-												idx := strings.IndexByte(elem, '/')
-												if idx < 0 {
-													idx = len(elem)
-												}
-												args[2] = elem[:idx]
-												elem = elem[idx:]
-
 												if len(elem) == 0 {
 													switch method {
-													case "GET":
-														r.name = ChecksGetOperation
-														r.summary = "Get a check run"
-														r.operationID = "checks/get"
+													case "POST":
+														r.name = ChecksCreateOperation
+														r.summary = "Create a check run"
+														r.operationID = "checks/create"
 														r.operationGroup = ""
-														r.pathPattern = "/repos/{owner}/{repo}/check-runs/{check_run_id}"
+														r.pathPattern = "/repos/{owner}/{repo}/check-runs"
 														r.args = args
-														r.count = 3
+														r.count = 2
 														return r, true
 													default:
 														return
 													}
 												}
 												switch elem[0] {
-												case '/': // Prefix: "/annotations"
+												case '/': // Prefix: "/"
 
-													if l := len("/annotations"); len(elem) >= l && elem[0:l] == "/annotations" {
+													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 														elem = elem[l:]
 													} else {
 														break
 													}
 
+													// Param: "check_run_id"
+													// Match until "/"
+													idx := strings.IndexByte(elem, '/')
+													if idx < 0 {
+														idx = len(elem)
+													}
+													args[2] = elem[:idx]
+													elem = elem[idx:]
+
 													if len(elem) == 0 {
-														// Leaf node.
 														switch method {
 														case "GET":
-															r.name = ChecksListAnnotationsOperation
-															r.summary = "List check run annotations"
-															r.operationID = "checks/list-annotations"
+															r.name = ChecksGetOperation
+															r.summary = "Get a check run"
+															r.operationID = "checks/get"
 															r.operationGroup = ""
-															r.pathPattern = "/repos/{owner}/{repo}/check-runs/{check_run_id}/annotations"
+															r.pathPattern = "/repos/{owner}/{repo}/check-runs/{check_run_id}"
 															r.args = args
 															r.count = 3
 															return r, true
 														default:
 															return
 														}
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/annotations"
+
+														if l := len("/annotations"); len(elem) >= l && elem[0:l] == "/annotations" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															// Leaf node.
+															switch method {
+															case "GET":
+																r.name = ChecksListAnnotationsOperation
+																r.summary = "List check run annotations"
+																r.operationID = "checks/list-annotations"
+																r.operationGroup = ""
+																r.pathPattern = "/repos/{owner}/{repo}/check-runs/{check_run_id}/annotations"
+																r.args = args
+																r.count = 3
+																return r, true
+															default:
+																return
+															}
+														}
+
 													}
 
 												}
