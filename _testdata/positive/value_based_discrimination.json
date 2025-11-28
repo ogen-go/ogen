@@ -59,6 +59,24 @@
           }
         }
       }
+    },
+    "/shipping-option": {
+      "get": {
+        "operationId": "getShippingOption",
+        "description": "Test overlapping enum values with a discriminating field - should use carrier field to discriminate",
+        "responses": {
+          "200": {
+            "description": "Shipping option response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ShippingOption"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -221,6 +239,49 @@
           "metricId": {
             "type": "string",
             "description": "Unique field - discriminated by name"
+          }
+        }
+      },
+      "ShippingOption": {
+        "description": "Overlapping enum values with a discriminating field - carrier field discriminates, signature has overlapping values",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/USPSShippingOption"
+          },
+          {
+            "$ref": "#/components/schemas/FedExShippingOption"
+          }
+        ]
+      },
+      "USPSShippingOption": {
+        "type": "object",
+        "required": ["carrier", "signature"],
+        "properties": {
+          "carrier": {
+            "type": "string",
+            "enum": ["usps"],
+            "description": "Carrier identifier - unique enum value for discrimination"
+          },
+          "signature": {
+            "type": "string",
+            "enum": ["gift", "sample", "standard"],
+            "description": "Signature type - has overlapping values with FedEx"
+          }
+        }
+      },
+      "FedExShippingOption": {
+        "type": "object",
+        "required": ["carrier", "signature"],
+        "properties": {
+          "carrier": {
+            "type": "string",
+            "enum": ["fedex"],
+            "description": "Carrier identifier - unique enum value for discrimination"
+          },
+          "signature": {
+            "type": "string",
+            "enum": ["gift", "sample", "express"],
+            "description": "Signature type - has overlapping values with USPS"
           }
         }
       }
