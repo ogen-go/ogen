@@ -100,24 +100,58 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					return
 				}
 
-			case 's': // Prefix: "status"
+			case 's': // Prefix: "s"
 
-				if l := len("status"); len(elem) >= l && elem[0:l] == "status" {
+				if l := len("s"); len(elem) >= l && elem[0:l] == "s" {
 					elem = elem[l:]
 				} else {
 					break
 				}
 
 				if len(elem) == 0 {
-					// Leaf node.
-					switch r.Method {
-					case "GET":
-						s.handleGetStatusRequest([0]string{}, elemIsEscaped, w, r)
-					default:
-						s.notAllowed(w, r, "GET")
+					break
+				}
+				switch elem[0] {
+				case 'h': // Prefix: "hipping-option"
+
+					if l := len("hipping-option"); len(elem) >= l && elem[0:l] == "hipping-option" {
+						elem = elem[l:]
+					} else {
+						break
 					}
 
-					return
+					if len(elem) == 0 {
+						// Leaf node.
+						switch r.Method {
+						case "GET":
+							s.handleGetShippingOptionRequest([0]string{}, elemIsEscaped, w, r)
+						default:
+							s.notAllowed(w, r, "GET")
+						}
+
+						return
+					}
+
+				case 't': // Prefix: "tatus"
+
+					if l := len("tatus"); len(elem) >= l && elem[0:l] == "tatus" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						// Leaf node.
+						switch r.Method {
+						case "GET":
+							s.handleGetStatusRequest([0]string{}, elemIsEscaped, w, r)
+						default:
+							s.notAllowed(w, r, "GET")
+						}
+
+						return
+					}
+
 				}
 
 			}
@@ -270,29 +304,68 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					}
 				}
 
-			case 's': // Prefix: "status"
+			case 's': // Prefix: "s"
 
-				if l := len("status"); len(elem) >= l && elem[0:l] == "status" {
+				if l := len("s"); len(elem) >= l && elem[0:l] == "s" {
 					elem = elem[l:]
 				} else {
 					break
 				}
 
 				if len(elem) == 0 {
-					// Leaf node.
-					switch method {
-					case "GET":
-						r.name = GetStatusOperation
-						r.summary = ""
-						r.operationID = "getStatus"
-						r.operationGroup = ""
-						r.pathPattern = "/status"
-						r.args = args
-						r.count = 0
-						return r, true
-					default:
-						return
+					break
+				}
+				switch elem[0] {
+				case 'h': // Prefix: "hipping-option"
+
+					if l := len("hipping-option"); len(elem) >= l && elem[0:l] == "hipping-option" {
+						elem = elem[l:]
+					} else {
+						break
 					}
+
+					if len(elem) == 0 {
+						// Leaf node.
+						switch method {
+						case "GET":
+							r.name = GetShippingOptionOperation
+							r.summary = ""
+							r.operationID = "getShippingOption"
+							r.operationGroup = ""
+							r.pathPattern = "/shipping-option"
+							r.args = args
+							r.count = 0
+							return r, true
+						default:
+							return
+						}
+					}
+
+				case 't': // Prefix: "tatus"
+
+					if l := len("tatus"); len(elem) >= l && elem[0:l] == "tatus" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						// Leaf node.
+						switch method {
+						case "GET":
+							r.name = GetStatusOperation
+							r.summary = ""
+							r.operationID = "getStatus"
+							r.operationGroup = ""
+							r.pathPattern = "/status"
+							r.args = args
+							r.count = 0
+							return r, true
+						default:
+							return
+						}
+					}
+
 				}
 
 			}

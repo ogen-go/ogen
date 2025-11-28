@@ -12,6 +12,12 @@ type Handler interface {
 	//
 	// GET /resource
 	GetResource(ctx context.Context) (Resource, error)
+	// GetShippingOption implements getShippingOption operation.
+	//
+	// Test overlapping enum values with a discriminating field - should use carrier field to discriminate.
+	//
+	// GET /shipping-option
+	GetShippingOption(ctx context.Context) (ShippingOption, error)
 	// GetStatus implements getStatus operation.
 	//
 	// GET /status

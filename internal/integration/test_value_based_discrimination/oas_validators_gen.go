@@ -117,6 +117,62 @@ func (s Event) Validate() error {
 	}
 }
 
+func (s *FedExShippingOption) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
+	var failures []validate.FieldError
+	if err := func() error {
+		if err := s.Carrier.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "carrier",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if err := s.Signature.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "signature",
+			Error: err,
+		})
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+
+func (s FedExShippingOptionCarrier) Validate() error {
+	switch s {
+	case "fedex":
+		return nil
+	default:
+		return errors.Errorf("invalid value: %v", s)
+	}
+}
+
+func (s FedExShippingOptionSignature) Validate() error {
+	switch s {
+	case "gift":
+		return nil
+	case "sample":
+		return nil
+	case "express":
+		return nil
+	default:
+		return errors.Errorf("invalid value: %v", s)
+	}
+}
+
 func (s *InactiveStatus) Validate() error {
 	if s == nil {
 		return validate.ErrNilPointer
@@ -213,6 +269,23 @@ func (s Resource) Validate() error {
 	}
 }
 
+func (s ShippingOption) Validate() error {
+	switch s.Type {
+	case USPSShippingOptionShippingOption:
+		if err := s.USPSShippingOption.Validate(); err != nil {
+			return err
+		}
+		return nil
+	case FedExShippingOptionShippingOption:
+		if err := s.FedExShippingOption.Validate(); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return errors.Errorf("invalid type %q", s.Type)
+	}
+}
+
 func (s StatusResponse) Validate() error {
 	switch s.Type {
 	case ActiveStatusStatusResponse:
@@ -258,6 +331,62 @@ func (s SystemEventEventType) Validate() error {
 	case "system_start":
 		return nil
 	case "system_stop":
+		return nil
+	default:
+		return errors.Errorf("invalid value: %v", s)
+	}
+}
+
+func (s *USPSShippingOption) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
+	var failures []validate.FieldError
+	if err := func() error {
+		if err := s.Carrier.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "carrier",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if err := s.Signature.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "signature",
+			Error: err,
+		})
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+
+func (s USPSShippingOptionCarrier) Validate() error {
+	switch s {
+	case "usps":
+		return nil
+	default:
+		return errors.Errorf("invalid value: %v", s)
+	}
+}
+
+func (s USPSShippingOptionSignature) Validate() error {
+	switch s {
+	case "gift":
+		return nil
+	case "sample":
+		return nil
+	case "standard":
 		return nil
 	default:
 		return errors.Errorf("invalid value: %v", s)

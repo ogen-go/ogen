@@ -30,6 +30,12 @@ type Invoker interface {
 	//
 	// GET /resource
 	GetResource(ctx context.Context) (Resource, error)
+	// GetShippingOption invokes getShippingOption operation.
+	//
+	// Test overlapping enum values with a discriminating field - should use carrier field to discriminate.
+	//
+	// GET /shipping-option
+	GetShippingOption(ctx context.Context) (ShippingOption, error)
 	// GetStatus invokes getStatus operation.
 	//
 	// GET /status
@@ -147,6 +153,79 @@ func (c *Client) sendGetResource(ctx context.Context) (res Resource, err error) 
 
 	stage = "DecodeResponse"
 	result, err := decodeGetResourceResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// GetShippingOption invokes getShippingOption operation.
+//
+// Test overlapping enum values with a discriminating field - should use carrier field to discriminate.
+//
+// GET /shipping-option
+func (c *Client) GetShippingOption(ctx context.Context) (ShippingOption, error) {
+	res, err := c.sendGetShippingOption(ctx)
+	return res, err
+}
+
+func (c *Client) sendGetShippingOption(ctx context.Context) (res ShippingOption, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("getShippingOption"),
+		semconv.HTTPRequestMethodKey.String("GET"),
+		semconv.URLTemplateKey.String("/shipping-option"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, GetShippingOptionOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/shipping-option"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "GET", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeGetShippingOptionResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}

@@ -20,6 +20,15 @@ func (UnimplementedHandler) GetResource(ctx context.Context) (r Resource, _ erro
 	return r, ht.ErrNotImplemented
 }
 
+// GetShippingOption implements getShippingOption operation.
+//
+// Test overlapping enum values with a discriminating field - should use carrier field to discriminate.
+//
+// GET /shipping-option
+func (UnimplementedHandler) GetShippingOption(ctx context.Context) (r ShippingOption, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
 // GetStatus implements getStatus operation.
 //
 // GET /status

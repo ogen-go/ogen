@@ -571,6 +571,195 @@ func (s *Event) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
+func (s *FedExShippingOption) Encode(e *jx.Encoder) {
+	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields encodes fields.
+func (s *FedExShippingOption) encodeFields(e *jx.Encoder) {
+	{
+		e.FieldStart("carrier")
+		s.Carrier.Encode(e)
+	}
+	{
+		e.FieldStart("signature")
+		s.Signature.Encode(e)
+	}
+}
+
+var jsonFieldsNameOfFedExShippingOption = [2]string{
+	0: "carrier",
+	1: "signature",
+}
+
+// Decode decodes FedExShippingOption from json.
+func (s *FedExShippingOption) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode FedExShippingOption to nil")
+	}
+	var requiredBitSet [1]uint8
+
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		case "carrier":
+			requiredBitSet[0] |= 1 << 0
+			if err := func() error {
+				if err := s.Carrier.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"carrier\"")
+			}
+		case "signature":
+			requiredBitSet[0] |= 1 << 1
+			if err := func() error {
+				if err := s.Signature.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"signature\"")
+			}
+		default:
+			return d.Skip()
+		}
+		return nil
+	}); err != nil {
+		return errors.Wrap(err, "decode FedExShippingOption")
+	}
+	// Validate required fields.
+	var failures []validate.FieldError
+	for i, mask := range [1]uint8{
+		0b00000011,
+	} {
+		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
+			// Mask only required fields and check equality to mask using XOR.
+			//
+			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
+			// Bits of fields which would be set are actually bits of missed fields.
+			missed := bits.OnesCount8(result)
+			for bitN := 0; bitN < missed; bitN++ {
+				bitIdx := bits.TrailingZeros8(result)
+				fieldIdx := i*8 + bitIdx
+				var name string
+				if fieldIdx < len(jsonFieldsNameOfFedExShippingOption) {
+					name = jsonFieldsNameOfFedExShippingOption[fieldIdx]
+				} else {
+					name = strconv.Itoa(fieldIdx)
+				}
+				failures = append(failures, validate.FieldError{
+					Name:  name,
+					Error: validate.ErrFieldRequired,
+				})
+				// Reset bit.
+				result &^= 1 << bitIdx
+			}
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *FedExShippingOption) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *FedExShippingOption) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes FedExShippingOptionCarrier as json.
+func (s FedExShippingOptionCarrier) Encode(e *jx.Encoder) {
+	e.Str(string(s))
+}
+
+// Decode decodes FedExShippingOptionCarrier from json.
+func (s *FedExShippingOptionCarrier) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode FedExShippingOptionCarrier to nil")
+	}
+	v, err := d.StrBytes()
+	if err != nil {
+		return err
+	}
+	// Try to use constant string.
+	switch FedExShippingOptionCarrier(v) {
+	case FedExShippingOptionCarrierFedex:
+		*s = FedExShippingOptionCarrierFedex
+	default:
+		*s = FedExShippingOptionCarrier(v)
+	}
+
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s FedExShippingOptionCarrier) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *FedExShippingOptionCarrier) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes FedExShippingOptionSignature as json.
+func (s FedExShippingOptionSignature) Encode(e *jx.Encoder) {
+	e.Str(string(s))
+}
+
+// Decode decodes FedExShippingOptionSignature from json.
+func (s *FedExShippingOptionSignature) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode FedExShippingOptionSignature to nil")
+	}
+	v, err := d.StrBytes()
+	if err != nil {
+		return err
+	}
+	// Try to use constant string.
+	switch FedExShippingOptionSignature(v) {
+	case FedExShippingOptionSignatureGift:
+		*s = FedExShippingOptionSignatureGift
+	case FedExShippingOptionSignatureSample:
+		*s = FedExShippingOptionSignatureSample
+	case FedExShippingOptionSignatureExpress:
+		*s = FedExShippingOptionSignatureExpress
+	default:
+		*s = FedExShippingOptionSignature(v)
+	}
+
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s FedExShippingOptionSignature) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *FedExShippingOptionSignature) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode implements json.Marshaler.
 func (s *InactiveStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
@@ -1061,6 +1250,122 @@ func (s *Resource) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
+// Encode encodes ShippingOption as json.
+func (s ShippingOption) Encode(e *jx.Encoder) {
+	switch s.Type {
+	case USPSShippingOptionShippingOption:
+		s.USPSShippingOption.Encode(e)
+	case FedExShippingOptionShippingOption:
+		s.FedExShippingOption.Encode(e)
+	}
+}
+
+func (s ShippingOption) encodeFields(e *jx.Encoder) {
+	switch s.Type {
+	case USPSShippingOptionShippingOption:
+		s.USPSShippingOption.encodeFields(e)
+	case FedExShippingOptionShippingOption:
+		s.FedExShippingOption.encodeFields(e)
+	}
+}
+
+// Decode decodes ShippingOption from json.
+func (s *ShippingOption) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode ShippingOption to nil")
+	}
+	// Sum type fields.
+	if typ := d.Next(); typ != jx.Object {
+		return errors.Errorf("unexpected json type %q", typ)
+	}
+
+	var found bool
+	if err := d.Capture(func(d *jx.Decoder) error {
+		return d.ObjBytes(func(d *jx.Decoder, key []byte) error {
+			switch string(key) {
+			case "signature":
+				// Multiple variants have this field - use type checking to discriminate
+				typ := d.Next()
+				switch typ {
+				case jx.String:
+					match := FedExShippingOptionShippingOption
+					if found && s.Type != match {
+						s.Type = ""
+						return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+					}
+					found = true
+					s.Type = match
+				default:
+					// Unknown type for this field
+					return d.Skip()
+				}
+			case "carrier":
+				// Value-based discrimination: check enum value
+				if typ := d.Next(); typ != jx.String {
+					return d.Skip()
+				}
+				value, err := d.StrBytes()
+				if err != nil {
+					return err
+				}
+				switch string(value) {
+				case "fedex":
+					match := FedExShippingOptionShippingOption
+					if found && s.Type != match {
+						s.Type = ""
+						return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+					}
+					found = true
+					s.Type = match
+				case "usps":
+					match := USPSShippingOptionShippingOption
+					if found && s.Type != match {
+						s.Type = ""
+						return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+					}
+					found = true
+					s.Type = match
+				default:
+					// Unknown enum value, ignore and continue
+				}
+				return nil
+			}
+			return d.Skip()
+		})
+	}); err != nil {
+		return errors.Wrap(err, "capture")
+	}
+	if !found {
+		return errors.New("unable to detect sum type variant")
+	}
+	switch s.Type {
+	case USPSShippingOptionShippingOption:
+		if err := s.USPSShippingOption.Decode(d); err != nil {
+			return err
+		}
+	case FedExShippingOptionShippingOption:
+		if err := s.FedExShippingOption.Decode(d); err != nil {
+			return err
+		}
+	default:
+		return errors.Errorf("inferred invalid type: %s", s.Type)
+	}
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s ShippingOption) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *ShippingOption) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes StatusResponse as json.
 func (s StatusResponse) Encode(e *jx.Encoder) {
 	switch s.Type {
@@ -1357,6 +1662,195 @@ func (s SystemEventEventType) MarshalJSON() ([]byte, error) {
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
 func (s *SystemEventEventType) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode implements json.Marshaler.
+func (s *USPSShippingOption) Encode(e *jx.Encoder) {
+	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields encodes fields.
+func (s *USPSShippingOption) encodeFields(e *jx.Encoder) {
+	{
+		e.FieldStart("carrier")
+		s.Carrier.Encode(e)
+	}
+	{
+		e.FieldStart("signature")
+		s.Signature.Encode(e)
+	}
+}
+
+var jsonFieldsNameOfUSPSShippingOption = [2]string{
+	0: "carrier",
+	1: "signature",
+}
+
+// Decode decodes USPSShippingOption from json.
+func (s *USPSShippingOption) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode USPSShippingOption to nil")
+	}
+	var requiredBitSet [1]uint8
+
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		case "carrier":
+			requiredBitSet[0] |= 1 << 0
+			if err := func() error {
+				if err := s.Carrier.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"carrier\"")
+			}
+		case "signature":
+			requiredBitSet[0] |= 1 << 1
+			if err := func() error {
+				if err := s.Signature.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"signature\"")
+			}
+		default:
+			return d.Skip()
+		}
+		return nil
+	}); err != nil {
+		return errors.Wrap(err, "decode USPSShippingOption")
+	}
+	// Validate required fields.
+	var failures []validate.FieldError
+	for i, mask := range [1]uint8{
+		0b00000011,
+	} {
+		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
+			// Mask only required fields and check equality to mask using XOR.
+			//
+			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
+			// Bits of fields which would be set are actually bits of missed fields.
+			missed := bits.OnesCount8(result)
+			for bitN := 0; bitN < missed; bitN++ {
+				bitIdx := bits.TrailingZeros8(result)
+				fieldIdx := i*8 + bitIdx
+				var name string
+				if fieldIdx < len(jsonFieldsNameOfUSPSShippingOption) {
+					name = jsonFieldsNameOfUSPSShippingOption[fieldIdx]
+				} else {
+					name = strconv.Itoa(fieldIdx)
+				}
+				failures = append(failures, validate.FieldError{
+					Name:  name,
+					Error: validate.ErrFieldRequired,
+				})
+				// Reset bit.
+				result &^= 1 << bitIdx
+			}
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *USPSShippingOption) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *USPSShippingOption) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes USPSShippingOptionCarrier as json.
+func (s USPSShippingOptionCarrier) Encode(e *jx.Encoder) {
+	e.Str(string(s))
+}
+
+// Decode decodes USPSShippingOptionCarrier from json.
+func (s *USPSShippingOptionCarrier) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode USPSShippingOptionCarrier to nil")
+	}
+	v, err := d.StrBytes()
+	if err != nil {
+		return err
+	}
+	// Try to use constant string.
+	switch USPSShippingOptionCarrier(v) {
+	case USPSShippingOptionCarrierUsps:
+		*s = USPSShippingOptionCarrierUsps
+	default:
+		*s = USPSShippingOptionCarrier(v)
+	}
+
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s USPSShippingOptionCarrier) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *USPSShippingOptionCarrier) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes USPSShippingOptionSignature as json.
+func (s USPSShippingOptionSignature) Encode(e *jx.Encoder) {
+	e.Str(string(s))
+}
+
+// Decode decodes USPSShippingOptionSignature from json.
+func (s *USPSShippingOptionSignature) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode USPSShippingOptionSignature to nil")
+	}
+	v, err := d.StrBytes()
+	if err != nil {
+		return err
+	}
+	// Try to use constant string.
+	switch USPSShippingOptionSignature(v) {
+	case USPSShippingOptionSignatureGift:
+		*s = USPSShippingOptionSignatureGift
+	case USPSShippingOptionSignatureSample:
+		*s = USPSShippingOptionSignatureSample
+	case USPSShippingOptionSignatureStandard:
+		*s = USPSShippingOptionSignatureStandard
+	default:
+		*s = USPSShippingOptionSignature(v)
+	}
+
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s USPSShippingOptionSignature) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *USPSShippingOptionSignature) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }

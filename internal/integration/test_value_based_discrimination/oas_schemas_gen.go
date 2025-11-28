@@ -285,6 +285,118 @@ func NewMetricEventEvent(v MetricEvent) Event {
 	return s
 }
 
+// Ref: #/components/schemas/FedExShippingOption
+type FedExShippingOption struct {
+	// Carrier identifier - unique enum value for discrimination.
+	Carrier FedExShippingOptionCarrier `json:"carrier"`
+	// Signature type - has overlapping values with USPS.
+	Signature FedExShippingOptionSignature `json:"signature"`
+}
+
+// GetCarrier returns the value of Carrier.
+func (s *FedExShippingOption) GetCarrier() FedExShippingOptionCarrier {
+	return s.Carrier
+}
+
+// GetSignature returns the value of Signature.
+func (s *FedExShippingOption) GetSignature() FedExShippingOptionSignature {
+	return s.Signature
+}
+
+// SetCarrier sets the value of Carrier.
+func (s *FedExShippingOption) SetCarrier(val FedExShippingOptionCarrier) {
+	s.Carrier = val
+}
+
+// SetSignature sets the value of Signature.
+func (s *FedExShippingOption) SetSignature(val FedExShippingOptionSignature) {
+	s.Signature = val
+}
+
+// Carrier identifier - unique enum value for discrimination.
+type FedExShippingOptionCarrier string
+
+const (
+	FedExShippingOptionCarrierFedex FedExShippingOptionCarrier = "fedex"
+)
+
+// AllValues returns all FedExShippingOptionCarrier values.
+func (FedExShippingOptionCarrier) AllValues() []FedExShippingOptionCarrier {
+	return []FedExShippingOptionCarrier{
+		FedExShippingOptionCarrierFedex,
+	}
+}
+
+// MarshalText implements encoding.TextMarshaler.
+func (s FedExShippingOptionCarrier) MarshalText() ([]byte, error) {
+	switch s {
+	case FedExShippingOptionCarrierFedex:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *FedExShippingOptionCarrier) UnmarshalText(data []byte) error {
+	switch FedExShippingOptionCarrier(data) {
+	case FedExShippingOptionCarrierFedex:
+		*s = FedExShippingOptionCarrierFedex
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
+// Signature type - has overlapping values with USPS.
+type FedExShippingOptionSignature string
+
+const (
+	FedExShippingOptionSignatureGift    FedExShippingOptionSignature = "gift"
+	FedExShippingOptionSignatureSample  FedExShippingOptionSignature = "sample"
+	FedExShippingOptionSignatureExpress FedExShippingOptionSignature = "express"
+)
+
+// AllValues returns all FedExShippingOptionSignature values.
+func (FedExShippingOptionSignature) AllValues() []FedExShippingOptionSignature {
+	return []FedExShippingOptionSignature{
+		FedExShippingOptionSignatureGift,
+		FedExShippingOptionSignatureSample,
+		FedExShippingOptionSignatureExpress,
+	}
+}
+
+// MarshalText implements encoding.TextMarshaler.
+func (s FedExShippingOptionSignature) MarshalText() ([]byte, error) {
+	switch s {
+	case FedExShippingOptionSignatureGift:
+		return []byte(s), nil
+	case FedExShippingOptionSignatureSample:
+		return []byte(s), nil
+	case FedExShippingOptionSignatureExpress:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *FedExShippingOptionSignature) UnmarshalText(data []byte) error {
+	switch FedExShippingOptionSignature(data) {
+	case FedExShippingOptionSignatureGift:
+		*s = FedExShippingOptionSignatureGift
+		return nil
+	case FedExShippingOptionSignatureSample:
+		*s = FedExShippingOptionSignatureSample
+		return nil
+	case FedExShippingOptionSignatureExpress:
+		*s = FedExShippingOptionSignatureExpress
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // Ref: #/components/schemas/InactiveStatus
 type InactiveStatus struct {
 	// Inactive states.
@@ -505,6 +617,77 @@ func NewAdminResourceResource(v AdminResource) Resource {
 	return s
 }
 
+// Overlapping enum values with a discriminating field - carrier field discriminates, signature has
+// overlapping values.
+// Ref: #/components/schemas/ShippingOption
+// ShippingOption represents sum type.
+type ShippingOption struct {
+	Type                ShippingOptionType // switch on this field
+	USPSShippingOption  USPSShippingOption
+	FedExShippingOption FedExShippingOption
+}
+
+// ShippingOptionType is oneOf type of ShippingOption.
+type ShippingOptionType string
+
+// Possible values for ShippingOptionType.
+const (
+	USPSShippingOptionShippingOption  ShippingOptionType = "USPSShippingOption"
+	FedExShippingOptionShippingOption ShippingOptionType = "FedExShippingOption"
+)
+
+// IsUSPSShippingOption reports whether ShippingOption is USPSShippingOption.
+func (s ShippingOption) IsUSPSShippingOption() bool {
+	return s.Type == USPSShippingOptionShippingOption
+}
+
+// IsFedExShippingOption reports whether ShippingOption is FedExShippingOption.
+func (s ShippingOption) IsFedExShippingOption() bool {
+	return s.Type == FedExShippingOptionShippingOption
+}
+
+// SetUSPSShippingOption sets ShippingOption to USPSShippingOption.
+func (s *ShippingOption) SetUSPSShippingOption(v USPSShippingOption) {
+	s.Type = USPSShippingOptionShippingOption
+	s.USPSShippingOption = v
+}
+
+// GetUSPSShippingOption returns USPSShippingOption and true boolean if ShippingOption is USPSShippingOption.
+func (s ShippingOption) GetUSPSShippingOption() (v USPSShippingOption, ok bool) {
+	if !s.IsUSPSShippingOption() {
+		return v, false
+	}
+	return s.USPSShippingOption, true
+}
+
+// NewUSPSShippingOptionShippingOption returns new ShippingOption from USPSShippingOption.
+func NewUSPSShippingOptionShippingOption(v USPSShippingOption) ShippingOption {
+	var s ShippingOption
+	s.SetUSPSShippingOption(v)
+	return s
+}
+
+// SetFedExShippingOption sets ShippingOption to FedExShippingOption.
+func (s *ShippingOption) SetFedExShippingOption(v FedExShippingOption) {
+	s.Type = FedExShippingOptionShippingOption
+	s.FedExShippingOption = v
+}
+
+// GetFedExShippingOption returns FedExShippingOption and true boolean if ShippingOption is FedExShippingOption.
+func (s ShippingOption) GetFedExShippingOption() (v FedExShippingOption, ok bool) {
+	if !s.IsFedExShippingOption() {
+		return v, false
+	}
+	return s.FedExShippingOption, true
+}
+
+// NewFedExShippingOptionShippingOption returns new ShippingOption from FedExShippingOption.
+func NewFedExShippingOptionShippingOption(v FedExShippingOption) ShippingOption {
+	var s ShippingOption
+	s.SetFedExShippingOption(v)
+	return s
+}
+
 // Basic enum value discrimination - different enum values for same field.
 // Ref: #/components/schemas/StatusResponse
 // StatusResponse represents sum type.
@@ -647,6 +830,118 @@ func (s *SystemEventEventType) UnmarshalText(data []byte) error {
 		return nil
 	case SystemEventEventTypeSystemStop:
 		*s = SystemEventEventTypeSystemStop
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
+// Ref: #/components/schemas/USPSShippingOption
+type USPSShippingOption struct {
+	// Carrier identifier - unique enum value for discrimination.
+	Carrier USPSShippingOptionCarrier `json:"carrier"`
+	// Signature type - has overlapping values with FedEx.
+	Signature USPSShippingOptionSignature `json:"signature"`
+}
+
+// GetCarrier returns the value of Carrier.
+func (s *USPSShippingOption) GetCarrier() USPSShippingOptionCarrier {
+	return s.Carrier
+}
+
+// GetSignature returns the value of Signature.
+func (s *USPSShippingOption) GetSignature() USPSShippingOptionSignature {
+	return s.Signature
+}
+
+// SetCarrier sets the value of Carrier.
+func (s *USPSShippingOption) SetCarrier(val USPSShippingOptionCarrier) {
+	s.Carrier = val
+}
+
+// SetSignature sets the value of Signature.
+func (s *USPSShippingOption) SetSignature(val USPSShippingOptionSignature) {
+	s.Signature = val
+}
+
+// Carrier identifier - unique enum value for discrimination.
+type USPSShippingOptionCarrier string
+
+const (
+	USPSShippingOptionCarrierUsps USPSShippingOptionCarrier = "usps"
+)
+
+// AllValues returns all USPSShippingOptionCarrier values.
+func (USPSShippingOptionCarrier) AllValues() []USPSShippingOptionCarrier {
+	return []USPSShippingOptionCarrier{
+		USPSShippingOptionCarrierUsps,
+	}
+}
+
+// MarshalText implements encoding.TextMarshaler.
+func (s USPSShippingOptionCarrier) MarshalText() ([]byte, error) {
+	switch s {
+	case USPSShippingOptionCarrierUsps:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *USPSShippingOptionCarrier) UnmarshalText(data []byte) error {
+	switch USPSShippingOptionCarrier(data) {
+	case USPSShippingOptionCarrierUsps:
+		*s = USPSShippingOptionCarrierUsps
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
+// Signature type - has overlapping values with FedEx.
+type USPSShippingOptionSignature string
+
+const (
+	USPSShippingOptionSignatureGift     USPSShippingOptionSignature = "gift"
+	USPSShippingOptionSignatureSample   USPSShippingOptionSignature = "sample"
+	USPSShippingOptionSignatureStandard USPSShippingOptionSignature = "standard"
+)
+
+// AllValues returns all USPSShippingOptionSignature values.
+func (USPSShippingOptionSignature) AllValues() []USPSShippingOptionSignature {
+	return []USPSShippingOptionSignature{
+		USPSShippingOptionSignatureGift,
+		USPSShippingOptionSignatureSample,
+		USPSShippingOptionSignatureStandard,
+	}
+}
+
+// MarshalText implements encoding.TextMarshaler.
+func (s USPSShippingOptionSignature) MarshalText() ([]byte, error) {
+	switch s {
+	case USPSShippingOptionSignatureGift:
+		return []byte(s), nil
+	case USPSShippingOptionSignatureSample:
+		return []byte(s), nil
+	case USPSShippingOptionSignatureStandard:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *USPSShippingOptionSignature) UnmarshalText(data []byte) error {
+	switch USPSShippingOptionSignature(data) {
+	case USPSShippingOptionSignatureGift:
+		*s = USPSShippingOptionSignatureGift
+		return nil
+	case USPSShippingOptionSignatureSample:
+		*s = USPSShippingOptionSignatureSample
+		return nil
+	case USPSShippingOptionSignatureStandard:
+		*s = USPSShippingOptionSignatureStandard
 		return nil
 	default:
 		return errors.Errorf("invalid value: %q", data)
