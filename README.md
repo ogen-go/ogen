@@ -2,7 +2,27 @@
 <img width="256" height="256" src="_logo/logo.svg" alt="ogen svg logo">
 </p>
 
-# ogen [![Go Reference](https://img.shields.io/badge/go-pkg-00ADD8)](https://pkg.go.dev/github.com/ogen-go/ogen#section-documentation) [![codecov](https://img.shields.io/codecov/c/github/ogen-go/ogen?label=cover)](https://codecov.io/gh/ogen-go/ogen) [![stable](https://img.shields.io/badge/-stable-brightgreen)](https://go-faster.org/docs/projects/status#stable)
+# ogen (lanej fork)
+
+This is a fork of [ogen-go/ogen](https://github.com/ogen-go/ogen) with additional discriminator inference features pending upstream merge.
+
+## Fork Features
+
+- **Value-based discrimination** ([PR #1588](https://github.com/ogen-go/ogen/pull/1588)): Discriminate oneOf variants by enum values
+- **Array element type discrimination** ([PR #1589](https://github.com/ogen-go/ogen/pull/1589)): Discriminate by array element types
+
+## Using This Fork
+
+```go
+// go.mod
+require github.com/ogen-go/ogen v1.18.0
+
+replace github.com/ogen-go/ogen => github.com/lanej/ogen v1.19.0
+```
+
+---
+
+[![Go Reference](https://img.shields.io/badge/go-pkg-00ADD8)](https://pkg.go.dev/github.com/ogen-go/ogen#section-documentation) [![codecov](https://img.shields.io/codecov/c/github/ogen-go/ogen?label=cover)](https://codecov.io/gh/ogen-go/ogen) [![stable](https://img.shields.io/badge/-stable-brightgreen)](https://go-faster.org/docs/projects/status#stable)
 
 OpenAPI v3 Code Generator for Go.
 
