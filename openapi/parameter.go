@@ -49,6 +49,9 @@ type Parameter struct {
 	Required      bool
 	AllowReserved bool
 
+	// XOgenName is the custom Go field name specified by x-ogen-name extension.
+	XOgenName string
+
 	location.Pointer `json:"-" yaml:"-"`
 }
 
