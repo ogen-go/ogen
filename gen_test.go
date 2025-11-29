@@ -183,6 +183,79 @@ func TestGenerate(t *testing.T) {
 		}))
 }
 
+// TestDuplicatePathsDifferentMethods tests that the generator correctly handles
+// paths that normalize to the same structure but have different HTTP methods.
+func TestDuplicatePathsDifferentMethods(t *testing.T) {
+	log := zaptest.NewLogger(t)
+	a := require.New(t)
+
+	specYAML := `
+openapi: 3.0.3
+info:
+  title: Test API
+  version: 1.0.0
+paths:
+  /pets/{petId}:
+    get:
+      operationId: getPet
+      parameters:
+        - name: petId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+  /pets/{id}:
+    post:
+      operationId: createPet
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+`
+	spec, err := ogen.Parse([]byte(specYAML))
+	a.NoError(err)
+
+	opt := gen.Options{
+		Parser: gen.ParseOptions{
+			File: location.NewFile("test.yaml", "test.yaml", []byte(specYAML)),
+		},
+		Logger: log,
+	}
+
+	g, err := gen.NewGenerator(spec, opt)
+	a.NoError(err)
+
+	// Verify both operations were generated
+	ops := g.Operations()
+	a.Len(ops, 2)
+
+	var foundGet, foundPost bool
+	for _, op := range ops {
+		switch op.Spec.OperationID {
+		case "getPet":
+			foundGet = true
+			a.Equal("get", op.Spec.HTTPMethod)
+		case "createPet":
+			foundPost = true
+			a.Equal("post", op.Spec.HTTPMethod)
+		}
+	}
+	a.True(foundGet, "GET operation not found")
+	a.True(foundPost, "POST operation not found")
+
+	// Also verify that we can write the generated files without error
+	err = g.WriteSource(genfs.CheckFS{}, "api")
+	a.NoError(err)
+}
+
 func TestNegative(t *testing.T) {
 	walkTestdata(t, "_testdata/negative", func(t *testing.T, file string, data []byte) {
 		log := zaptest.NewLogger(t)
