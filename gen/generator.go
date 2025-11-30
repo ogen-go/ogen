@@ -84,12 +84,13 @@ func NewGenerator(spec *ogen.Spec, opts Options) (*Generator, error) {
 	}
 
 	api, err := parser.Parse(spec, parser.Settings{
-		External:                  external,
-		File:                      opts.Parser.File,
-		RootURL:                   opts.Parser.RootURL,
-		InferTypes:                opts.Parser.InferSchemaType,
-		AllowCrossTypeConstraints: allowCrossType,
-		AuthenticationSchemes:     opts.Parser.AuthenticationSchemes,
+		External:                     external,
+		File:                         opts.Parser.File,
+		RootURL:                      opts.Parser.RootURL,
+		InferTypes:                   opts.Parser.InferSchemaType,
+		AllowCrossTypeConstraints:    allowCrossType,
+		AuthenticationSchemes:        opts.Parser.AuthenticationSchemes,
+		DisallowDuplicateMethodPaths: opts.Parser.DisallowDuplicateMethodPaths,
 	})
 	if err != nil {
 		return nil, &ErrParseSpec{err: err}

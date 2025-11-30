@@ -77,6 +77,15 @@ type ParseOptions struct {
 	// Set to false for strict JSON Schema validation that rejects such constraints.
 	// Default: true
 	AllowCrossTypeConstraints *bool `json:"allow_cross_type_constraints,omitempty" yaml:"allow_cross_type_constraints,omitempty"`
+	// DisallowDuplicateMethodPaths controls whether paths that normalize to the same
+	// structure (e.g., /pets/{petId} and /pets/{id}) are allowed when they have
+	// different HTTP methods.
+	//
+	// When false (default), paths with different parameter names but different HTTP methods
+	// are allowed, and operations are disambiguated by path + params + method.
+	//
+	// When true, duplicate paths are always rejected per strict OpenAPI spec interpretation.
+	DisallowDuplicateMethodPaths bool `json:"disallow_duplicate_method_paths" yaml:"disallow_duplicate_method_paths"`
 	// File is the file that is being parsed.
 	//
 	// Used for error messages.

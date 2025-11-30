@@ -138,3 +138,186 @@ func extensionValue(name, value string) ogen.OpenAPICommon {
 		},
 	}
 }
+
+// TestDuplicatePathsDifferentMethods tests that paths with the same structure
+// but different parameter names are allowed when they have different HTTP methods.
+func TestDuplicatePathsDifferentMethods(t *testing.T) {
+	root := &ogen.Spec{
+		OpenAPI: "3.0.3",
+		Paths: map[string]*ogen.PathItem{
+			"/pets/{petId}": {
+				Get: &ogen.Operation{
+					OperationID: "getPet",
+					Parameters: []*ogen.Parameter{
+						{
+							Name:     "petId",
+							In:       "path",
+							Required: true,
+							Schema:   &ogen.Schema{Type: "string"},
+						},
+					},
+					Responses: map[string]*ogen.Response{
+						"200": {Description: "OK"},
+					},
+				},
+			},
+			"/pets/{id}": {
+				Post: &ogen.Operation{
+					OperationID: "createPet",
+					Parameters: []*ogen.Parameter{
+						{
+							Name:     "id",
+							In:       "path",
+							Required: true,
+							Schema:   &ogen.Schema{Type: "string"},
+						},
+					},
+					Responses: map[string]*ogen.Response{
+						"200": {Description: "OK"},
+					},
+				},
+			},
+		},
+	}
+
+	a := require.New(t)
+
+	var raw yaml.Node
+	a.NoError(raw.Encode(root))
+	root.Raw = &raw
+
+	// Default behavior: should allow duplicate paths with different methods
+	spec, err := Parse(root, Settings{
+		RootURL: testRootURL,
+	})
+	a.NoError(err)
+	a.Len(spec.Operations, 2)
+
+	// Verify both operations are present with correct paths
+	var foundGet, foundPost bool
+	for _, op := range spec.Operations {
+		switch op.OperationID {
+		case "getPet":
+			foundGet = true
+			a.Equal("get", op.HTTPMethod)
+			a.Equal("/pets/{petId}", op.Path.String())
+		case "createPet":
+			foundPost = true
+			a.Equal("post", op.HTTPMethod)
+			a.Equal("/pets/{id}", op.Path.String())
+		}
+	}
+	a.True(foundGet, "GET operation not found")
+	a.True(foundPost, "POST operation not found")
+}
+
+// TestDuplicatePathsDifferentMethodsDisabled tests that paths with the same structure
+// but different parameter names are rejected when DisallowDuplicateMethodPaths is true.
+func TestDuplicatePathsDifferentMethodsDisabled(t *testing.T) {
+	root := &ogen.Spec{
+		OpenAPI: "3.0.3",
+		Paths: map[string]*ogen.PathItem{
+			"/pets/{petId}": {
+				Get: &ogen.Operation{
+					OperationID: "getPet",
+					Parameters: []*ogen.Parameter{
+						{
+							Name:     "petId",
+							In:       "path",
+							Required: true,
+							Schema:   &ogen.Schema{Type: "string"},
+						},
+					},
+					Responses: map[string]*ogen.Response{
+						"200": {Description: "OK"},
+					},
+				},
+			},
+			"/pets/{id}": {
+				Post: &ogen.Operation{
+					OperationID: "createPet",
+					Parameters: []*ogen.Parameter{
+						{
+							Name:     "id",
+							In:       "path",
+							Required: true,
+							Schema:   &ogen.Schema{Type: "string"},
+						},
+					},
+					Responses: map[string]*ogen.Response{
+						"200": {Description: "OK"},
+					},
+				},
+			},
+		},
+	}
+
+	a := require.New(t)
+
+	var raw yaml.Node
+	a.NoError(raw.Encode(root))
+	root.Raw = &raw
+
+	// With strict mode: should reject duplicate paths even with different methods
+	_, err := Parse(root, Settings{
+		RootURL:                      testRootURL,
+		DisallowDuplicateMethodPaths: true,
+	})
+	a.Error(err)
+	a.Contains(err.Error(), "duplicate path")
+}
+
+// TestDuplicatePathsSameMethod tests that paths with the same structure,
+// same HTTP method, but different parameter names are always rejected.
+func TestDuplicatePathsSameMethod(t *testing.T) {
+	root := &ogen.Spec{
+		OpenAPI: "3.0.3",
+		Paths: map[string]*ogen.PathItem{
+			"/pets/{petId}": {
+				Get: &ogen.Operation{
+					OperationID: "getPetById",
+					Parameters: []*ogen.Parameter{
+						{
+							Name:     "petId",
+							In:       "path",
+							Required: true,
+							Schema:   &ogen.Schema{Type: "string"},
+						},
+					},
+					Responses: map[string]*ogen.Response{
+						"200": {Description: "OK"},
+					},
+				},
+			},
+			"/pets/{id}": {
+				Get: &ogen.Operation{
+					OperationID: "getPet",
+					Parameters: []*ogen.Parameter{
+						{
+							Name:     "id",
+							In:       "path",
+							Required: true,
+							Schema:   &ogen.Schema{Type: "string"},
+						},
+					},
+					Responses: map[string]*ogen.Response{
+						"200": {Description: "OK"},
+					},
+				},
+			},
+		},
+	}
+
+	a := require.New(t)
+
+	var raw yaml.Node
+	a.NoError(raw.Encode(root))
+	root.Raw = &raw
+
+	// Same method on duplicate paths should always error
+	_, err := Parse(root, Settings{
+		RootURL: testRootURL,
+	})
+	a.Error(err)
+	a.Contains(err.Error(), "duplicate path")
+}

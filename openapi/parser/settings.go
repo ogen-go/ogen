@@ -53,6 +53,16 @@ type Settings struct {
 	//
 	// See https://swagger.io/specification/#security-scheme-object.
 	AuthenticationSchemes []string
+
+	// DisallowDuplicateMethodPaths controls whether paths that normalize to the same
+	// structure (e.g., /pets/{petId} and /pets/{id}) are allowed when they have
+	// different HTTP methods.
+	//
+	// When false (default), paths with different parameter names but different HTTP methods
+	// are allowed, and operations are disambiguated by path + params + method.
+	//
+	// When true, duplicate paths are always rejected per strict OpenAPI spec interpretation.
+	DisallowDuplicateMethodPaths bool
 }
 
 func (s *Settings) setDefaults() {
