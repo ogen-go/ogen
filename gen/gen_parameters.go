@@ -174,9 +174,16 @@ func (g *Generator) generateParameter(ctx *genctx, opName string, p *openapi.Par
 		return nil, errors.Wrapf(err, "%q", p.Name)
 	}
 
-	paramName, err := pascalNonEmpty(p.Name)
-	if err != nil {
-		return nil, errors.Wrapf(err, "parameter name: %q", p.Name)
+	var paramName string
+	if p.XOgenName != "" {
+		// Use custom name from x-ogen-name extension.
+		paramName = p.XOgenName
+	} else {
+		var err error
+		paramName, err = pascalNonEmpty(p.Name)
+		if err != nil {
+			return nil, errors.Wrapf(err, "parameter name: %q", p.Name)
+		}
 	}
 
 	var tag ir.Tag

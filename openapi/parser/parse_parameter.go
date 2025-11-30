@@ -2,6 +2,7 @@ package parser
 
 import (
 	"fmt"
+	"go/token"
 	"net/textproto"
 	"strings"
 
@@ -195,6 +196,28 @@ func (p *parser) parseParameter(param *ogen.Parameter, ctx *jsonpointer.ResolveC
 
 	if err := p.validateParamStyle(op, p.file(ctx)); err != nil {
 		return nil, err
+	}
+
+	// Parse x-ogen-name extension.
+	const nameKey = "x-ogen-name"
+	if nameNode, ok := param.Common.Extensions[nameKey]; ok {
+		if err := func() error {
+			if err := nameNode.Decode(&op.XOgenName); err != nil {
+				return err
+			}
+
+			name := op.XOgenName
+			switch {
+			case !token.IsIdentifier(name):
+				return errors.Errorf("invalid Go identifier %q", name)
+			case !token.IsExported(name):
+				return errors.Errorf("identifier must be public, got %q", name)
+			}
+			return nil
+		}(); err != nil {
+			locator := locator.Field(nameKey)
+			return nil, p.wrapLocation(p.file(ctx), locator, err)
+		}
 	}
 
 	return op, nil

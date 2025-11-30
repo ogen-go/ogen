@@ -1,0 +1,58 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Parameter Naming Extensions Test",
+    "version": "v0.1.0"
+  },
+  "paths": {
+    "/items/{itemid}": {
+      "get": {
+        "operationId": "getItem",
+        "parameters": [
+          {
+            "name": "itemid",
+            "in": "path",
+            "required": true,
+            "x-ogen-name": "ItemID",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pickuptype",
+            "in": "query",
+            "x-ogen-name": "PickupType",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-custom-header",
+            "in": "header",
+            "x-ogen-name": "CustomHeader",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Item info",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
