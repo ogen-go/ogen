@@ -374,6 +374,13 @@ func (j JSON) Sum() SumJSON {
 			Type: SumJSONTypeDiscriminator,
 		}
 	}
+	// Check for field-based discrimination (UniqueFields or ValueDiscriminators on sum type)
+	if len(j.t.SumSpec.UniqueFields) > 0 || len(j.t.SumSpec.ValueDiscriminators) > 0 {
+		return SumJSON{
+			Type: SumJSONFields,
+		}
+	}
+	// Check for unique fields on variants (legacy approach)
 	for _, s := range j.t.SumOf {
 		if len(s.SumSpec.Unique) > 0 {
 			return SumJSON{

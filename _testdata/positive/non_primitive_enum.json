@@ -1,0 +1,47 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Non-primitive enum test",
+    "version": "0.1.0"
+  },
+  "paths": {
+    "/test": {
+      "get": {
+        "operationId": "getTest",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ObjectEnum"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ObjectEnum": {
+        "description": "An enum of specific object values",
+        "type": "object",
+        "enum": [
+          {"type": "foo", "value": 1},
+          {"type": "bar", "value": 2},
+          {"type": "baz", "value": 3}
+        ]
+      },
+      "ArrayEnum": {
+        "description": "An enum of specific array values",
+        "type": "array",
+        "enum": [
+          [1, 2, 3],
+          ["a", "b", "c"]
+        ]
+      }
+    }
+  }
+}

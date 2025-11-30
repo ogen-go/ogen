@@ -65,6 +65,20 @@ type SumSpec struct {
 	// Used for generating field-based discrimination in oneOf/anyOf.
 	// Key: field JSON name, Value: list of variants with that unique field
 	UniqueFields map[string][]UniqueFieldVariant
+
+	// ValueDiscriminators maps field names to value-based discriminators.
+	// Used when variants have the same field name and JSON type but different enum values.
+	// Key: field JSON name, Value: ValueDiscriminator with enum value mappings
+	ValueDiscriminators map[string]ValueDiscriminator
+}
+
+// ValueDiscriminator represents a field that discriminates variants by enum value.
+type ValueDiscriminator struct {
+	// FieldName is the JSON field name used for discrimination
+	FieldName string
+	// ValueToVariant maps enum values to variant type constants
+	// Key: enum value (e.g., "active"), Value: variant type constant (e.g., "ActiveStatusResponse")
+	ValueToVariant map[string]string
 }
 
 type ResolvedSumSpecMap struct {

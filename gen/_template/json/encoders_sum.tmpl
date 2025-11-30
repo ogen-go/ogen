@@ -179,6 +179,32 @@ func (s *{{ $.Name }}) Decode(d *jx.Decoder) error {
 				}
 				{{- end }}
 			{{- end }}
+			{{- range $fieldName, $discriminator := $.SumSpec.ValueDiscriminators }}
+			case {{ quote $fieldName }}:
+				// Value-based discrimination: check enum value
+				if typ := d.Next(); typ != jx.String {
+					return d.Skip()
+				}
+				value, err := d.StrBytes()
+				if err != nil {
+					return err
+				}
+				switch string(value) {
+					{{- range $enumValue, $variantType := $discriminator.ValueToVariant }}
+				case {{ quote $enumValue }}:
+					match := {{ $variantType }}
+					if found && s.Type != match {
+						s.Type = ""
+						return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+					}
+					found = true
+					s.Type = match
+					{{- end }}
+				default:
+					// Unknown enum value, ignore and continue
+				}
+				return nil
+			{{- end }}
 			{{- end }}
 			}
 			return d.Skip()
