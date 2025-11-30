@@ -158,6 +158,7 @@ const (
 	BillingGetSharedStorageBillingGheOperation                                      OperationName = "BillingGetSharedStorageBillingGhe"
 	BillingGetSharedStorageBillingOrgOperation                                      OperationName = "BillingGetSharedStorageBillingOrg"
 	BillingGetSharedStorageBillingUserOperation                                     OperationName = "BillingGetSharedStorageBillingUser"
+	ChecksCreateOperation                                                           OperationName = "ChecksCreate"
 	ChecksCreateSuiteOperation                                                      OperationName = "ChecksCreateSuite"
 	ChecksGetOperation                                                              OperationName = "ChecksGet"
 	ChecksGetSuiteOperation                                                         OperationName = "ChecksGetSuite"

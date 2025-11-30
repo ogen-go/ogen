@@ -4444,6 +4444,220 @@ func TestCheckSuiteStatus_Examples(t *testing.T) {
 		})
 	}
 }
+func TestChecksCreateReq_EncodeDecode(t *testing.T) {
+	var typ ChecksCreateReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ChecksCreateReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestChecksCreateReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\"actions\":[{\"description\":\"Allow us to fix these errors for you\",\"identifier\":\"fix_errors\",\"label\":\"Fix\"}],\"completed_at\":\"2017-11-30T19:49:10Z\",\"conclusion\":\"success\",\"head_sha\":\"ce587453ced02b1526dfb4cb910479d431683101\",\"name\":\"mighty_readme\",\"output\":{\"annotations\":[{\"annotation_level\":\"warning\",\"end_line\":2,\"message\":\"Check your spelling for 'banaas'.\",\"path\":\"README.md\",\"raw_details\":\"Do you mean 'bananas' or 'banana'?\",\"start_line\":2,\"title\":\"Spell Checker\"},{\"annotation_level\":\"warning\",\"end_line\":4,\"message\":\"Check your spelling for 'aples'\",\"path\":\"README.md\",\"raw_details\":\"Do you mean 'apples' or 'Naples'\",\"start_line\":4,\"title\":\"Spell Checker\"}],\"images\":[{\"alt\":\"Super bananas\",\"image_url\":\"http://example.com/images/42\"}],\"summary\":\"There are 0 failures, 2 warnings, and 1 notices.\",\"text\":\"You may have some misspelled words on lines 2 and 4. You also may want to add a section in your README about how to install your app.\",\"title\":\"Mighty Readme report\"},\"started_at\":\"2017-11-30T19:39:10Z\",\"status\":\"completed\"}"},
+		{Input: "{\"external_id\":\"42\",\"head_sha\":\"ce587453ced02b1526dfb4cb910479d431683101\",\"name\":\"mighty_readme\",\"output\":{\"summary\":\"\",\"text\":\"\",\"title\":\"Mighty Readme report\"},\"started_at\":\"2018-05-04T01:14:52Z\",\"status\":\"in_progress\"}"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ ChecksCreateReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 ChecksCreateReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
+}
+func TestChecksCreateReqActionsItem_EncodeDecode(t *testing.T) {
+	var typ ChecksCreateReqActionsItem
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ChecksCreateReqActionsItem
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestChecksCreateReqConclusion_EncodeDecode(t *testing.T) {
+	var typ ChecksCreateReqConclusion
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ChecksCreateReqConclusion
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestChecksCreateReqOutput_EncodeDecode(t *testing.T) {
+	var typ ChecksCreateReqOutput
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ChecksCreateReqOutput
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestChecksCreateReqOutputAnnotationsItem_EncodeDecode(t *testing.T) {
+	var typ ChecksCreateReqOutputAnnotationsItem
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ChecksCreateReqOutputAnnotationsItem
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestChecksCreateReqOutputAnnotationsItemAnnotationLevel_EncodeDecode(t *testing.T) {
+	var typ ChecksCreateReqOutputAnnotationsItemAnnotationLevel
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ChecksCreateReqOutputAnnotationsItemAnnotationLevel
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestChecksCreateReqOutputImagesItem_EncodeDecode(t *testing.T) {
+	var typ ChecksCreateReqOutputImagesItem
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ChecksCreateReqOutputImagesItem
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestChecksCreateReqStatus_EncodeDecode(t *testing.T) {
+	var typ ChecksCreateReqStatus
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ChecksCreateReqStatus
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestChecksCreateReqSum_EncodeDecode(t *testing.T) {
+	var typ ChecksCreateReqSum
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ChecksCreateReqSum
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestChecksCreateReqSum0_EncodeDecode(t *testing.T) {
+	var typ ChecksCreateReqSum0
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ChecksCreateReqSum0
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestChecksCreateReqSum0Additional_EncodeDecode(t *testing.T) {
+	var typ ChecksCreateReqSum0Additional
+	typ = make(ChecksCreateReqSum0Additional)
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ChecksCreateReqSum0Additional
+	typ2 = make(ChecksCreateReqSum0Additional)
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestChecksCreateReqSum0Status_EncodeDecode(t *testing.T) {
+	var typ ChecksCreateReqSum0Status
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ChecksCreateReqSum0Status
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestChecksCreateReqSum1_EncodeDecode(t *testing.T) {
+	var typ ChecksCreateReqSum1
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ChecksCreateReqSum1
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestChecksCreateReqSum1Additional_EncodeDecode(t *testing.T) {
+	var typ ChecksCreateReqSum1Additional
+	typ = make(ChecksCreateReqSum1Additional)
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ChecksCreateReqSum1Additional
+	typ2 = make(ChecksCreateReqSum1Additional)
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestChecksCreateReqSum1Status_EncodeDecode(t *testing.T) {
+	var typ ChecksCreateReqSum1Status
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ChecksCreateReqSum1Status
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
 func TestChecksCreateSuiteCreated_EncodeDecode(t *testing.T) {
 	var typ ChecksCreateSuiteCreated
 	typ.SetFake()

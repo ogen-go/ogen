@@ -35,6 +35,7 @@ package integration
 //go:generate go run ../../cmd/ogen -v --clean --target test_array_object_type_discrimination ../../_testdata/positive/array_object_type_discrimination.json
 //go:generate go run ../../cmd/ogen -v --clean --target test_nested_type_discrimination ../../_testdata/positive/nested_type_discrimination.json
 //go:generate go run ../../cmd/ogen -v --clean --target test_mixed_discrimination ../../_testdata/positive/mixed_discrimination.json
+//go:generate go run ../../cmd/ogen -v --clean --target test_value_based_discrimination ../../_testdata/positive/value_based_discrimination.json
 //go:generate go run ../../cmd/ogen -v --clean --config _config/additionalPropertiesPatternProperties.yml --target test_additionalpropertiespatternproperties ../../_testdata/positive/additionalPropertiesPatternProperties.yml
 //go:generate go run ../../cmd/ogen -v --clean --config _config/client_options.yml --target test_client_options ../../_testdata/positive/client_options.json
 //

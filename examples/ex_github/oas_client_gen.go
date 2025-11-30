@@ -1681,6 +1681,18 @@ type Invoker interface {
 	//
 	// GET /users/{username}/settings/billing/shared-storage
 	BillingGetSharedStorageBillingUser(ctx context.Context, params BillingGetSharedStorageBillingUserParams) (*CombinedBillingUsage, error)
+	// ChecksCreate invokes checks/create operation.
+	//
+	// **Note:** The Checks API only looks for pushes in the repository where the check suite or check
+	// run were created. Pushes to a branch in a forked repository are not detected and return an empty
+	// `pull_requests` array.
+	// Creates a new check run for a specific commit in a repository. Your GitHub App must have the
+	// `checks:write` permission to create check runs.
+	// In a check suite, GitHub limits the number of check runs with the same name to 1000. Once these
+	// check runs exceed 1000, GitHub will start to automatically delete older check runs.
+	//
+	// POST /repos/{owner}/{repo}/check-runs
+	ChecksCreate(ctx context.Context, request *ChecksCreateReq, params ChecksCreateParams) (*CheckRun, error)
 	// ChecksCreateSuite invokes checks/create-suite operation.
 	//
 	// **Note:** The Checks API only looks for pushes in the repository where the check suite or check
@@ -26692,6 +26704,126 @@ func (c *Client) sendBillingGetSharedStorageBillingUser(ctx context.Context, par
 
 	stage = "DecodeResponse"
 	result, err := decodeBillingGetSharedStorageBillingUserResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// ChecksCreate invokes checks/create operation.
+//
+// **Note:** The Checks API only looks for pushes in the repository where the check suite or check
+// run were created. Pushes to a branch in a forked repository are not detected and return an empty
+// `pull_requests` array.
+// Creates a new check run for a specific commit in a repository. Your GitHub App must have the
+// `checks:write` permission to create check runs.
+// In a check suite, GitHub limits the number of check runs with the same name to 1000. Once these
+// check runs exceed 1000, GitHub will start to automatically delete older check runs.
+//
+// POST /repos/{owner}/{repo}/check-runs
+func (c *Client) ChecksCreate(ctx context.Context, request *ChecksCreateReq, params ChecksCreateParams) (*CheckRun, error) {
+	res, err := c.sendChecksCreate(ctx, request, params)
+	return res, err
+}
+
+func (c *Client) sendChecksCreate(ctx context.Context, request *ChecksCreateReq, params ChecksCreateParams) (res *CheckRun, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("checks/create"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/repos/{owner}/{repo}/check-runs"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, ChecksCreateOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [5]string
+	pathParts[0] = "/repos/"
+	{
+		// Encode "owner" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "owner",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Owner))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		encoded, err := e.Result()
+		if err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		pathParts[1] = encoded
+	}
+	pathParts[2] = "/"
+	{
+		// Encode "repo" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "repo",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Repo))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		encoded, err := e.Result()
+		if err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		pathParts[3] = encoded
+	}
+	pathParts[4] = "/check-runs"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeChecksCreateRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeChecksCreateResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}

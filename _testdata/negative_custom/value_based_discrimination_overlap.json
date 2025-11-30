@@ -1,0 +1,68 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Value-Based Discrimination Overlap Test",
+    "version": "1.0.0",
+    "description": "Tests that overlapping enum values are rejected - this should fail"
+  },
+  "paths": {
+    "/status": {
+      "get": {
+        "operationId": "getStatus",
+        "responses": {
+          "200": {
+            "description": "Status response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StatusResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "StatusResponse": {
+        "description": "Overlapping enum values - should fail discrimination",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/StatusA"
+          },
+          {
+            "$ref": "#/components/schemas/StatusB"
+          }
+        ]
+      },
+      "StatusA": {
+        "type": "object",
+        "required": ["status"],
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": ["active", "pending", "inactive"]
+          },
+          "fieldA": {
+            "type": "string"
+          }
+        }
+      },
+      "StatusB": {
+        "type": "object",
+        "required": ["status"],
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": ["inactive", "deleted", "archived"]
+          },
+          "fieldB": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

@@ -453,6 +453,20 @@ func encodeAppsUpdateWebhookConfigForAppRequest(
 	return nil
 }
 
+func encodeChecksCreateRequest(
+	req *ChecksCreateReq,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	e := new(jx.Encoder)
+	{
+		req.Encode(e)
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+
 func encodeChecksCreateSuiteRequest(
 	req *ChecksCreateSuiteReq,
 	r *http.Request,

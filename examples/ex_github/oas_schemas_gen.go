@@ -9782,6 +9782,829 @@ func (s *CheckSuiteStatus) UnmarshalText(data []byte) error {
 	}
 }
 
+type ChecksCreateReq struct {
+	// The name of the check. For example, "code-coverage".
+	Name string `json:"name"`
+	// The SHA of the commit.
+	HeadSha string `json:"head_sha"`
+	// The URL of the integrator's site that has the full details of the check. If the integrator does
+	// not provide this, then the homepage of the GitHub app is used.
+	DetailsURL OptString `json:"details_url"`
+	// A reference for the run on the integrator's system.
+	ExternalID OptString `json:"external_id"`
+	// The current status. Can be one of `queued`, `in_progress`, or `completed`.
+	Status OptChecksCreateReqStatus `json:"status"`
+	// The time that the check run began. This is a timestamp in [ISO 8601](https://en.wikipedia.
+	// org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+	StartedAt OptDateTime `json:"started_at"`
+	// **Required if you provide `completed_at` or a `status` of `completed`**. The final conclusion of
+	// the check. Can be one of `action_required`, `cancelled`, `failure`, `neutral`, `success`,
+	// `skipped`, `stale`, or `timed_out`. When the conclusion is `action_required`, additional details
+	// should be provided on the site specified by `details_url`.
+	// **Note:** Providing `conclusion` will automatically set the `status` parameter to `completed`. You
+	// cannot change a check run conclusion to `stale`, only GitHub can set this.
+	Conclusion OptChecksCreateReqConclusion `json:"conclusion"`
+	// The time the check completed. This is a timestamp in [ISO 8601](https://en.wikipedia.
+	// org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+	CompletedAt OptDateTime `json:"completed_at"`
+	// Check runs can accept a variety of data in the `output` object, including a `title` and `summary`
+	// and can optionally provide descriptive details about the run. See the [`output`
+	// object](https://docs.github.com/rest/reference/checks#output-object) description.
+	Output OptChecksCreateReqOutput `json:"output"`
+	// Displays a button on GitHub that can be clicked to alert your app to do additional tasks. For
+	// example, a code linting app can display a button that automatically fixes detected errors. The
+	// button created in this object is displayed after the check run completes. When a user clicks the
+	// button, GitHub sends the [`check_run.requested_action` webhook](https://docs.github.
+	// com/webhooks/event-payloads/#check_run) to your app. Each action includes a `label`, `identifier`
+	// and `description`. A maximum of three actions are accepted. See the [`actions`
+	// object](https://docs.github.com/rest/reference/checks#actions-object) description. To learn more
+	// about check runs and requested actions, see "[Check runs and requested actions](https://docs.
+	// github.com/rest/reference/checks#check-runs-and-requested-actions)." To learn more about check
+	// runs and requested actions, see "[Check runs and requested actions](https://docs.github.
+	// com/rest/reference/checks#check-runs-and-requested-actions).".
+	Actions []ChecksCreateReqActionsItem `json:"actions"`
+	OneOf   ChecksCreateReqSum
+}
+
+// GetName returns the value of Name.
+func (s *ChecksCreateReq) GetName() string {
+	return s.Name
+}
+
+// GetHeadSha returns the value of HeadSha.
+func (s *ChecksCreateReq) GetHeadSha() string {
+	return s.HeadSha
+}
+
+// GetDetailsURL returns the value of DetailsURL.
+func (s *ChecksCreateReq) GetDetailsURL() OptString {
+	return s.DetailsURL
+}
+
+// GetExternalID returns the value of ExternalID.
+func (s *ChecksCreateReq) GetExternalID() OptString {
+	return s.ExternalID
+}
+
+// GetStatus returns the value of Status.
+func (s *ChecksCreateReq) GetStatus() OptChecksCreateReqStatus {
+	return s.Status
+}
+
+// GetStartedAt returns the value of StartedAt.
+func (s *ChecksCreateReq) GetStartedAt() OptDateTime {
+	return s.StartedAt
+}
+
+// GetConclusion returns the value of Conclusion.
+func (s *ChecksCreateReq) GetConclusion() OptChecksCreateReqConclusion {
+	return s.Conclusion
+}
+
+// GetCompletedAt returns the value of CompletedAt.
+func (s *ChecksCreateReq) GetCompletedAt() OptDateTime {
+	return s.CompletedAt
+}
+
+// GetOutput returns the value of Output.
+func (s *ChecksCreateReq) GetOutput() OptChecksCreateReqOutput {
+	return s.Output
+}
+
+// GetActions returns the value of Actions.
+func (s *ChecksCreateReq) GetActions() []ChecksCreateReqActionsItem {
+	return s.Actions
+}
+
+// GetOneOf returns the value of OneOf.
+func (s *ChecksCreateReq) GetOneOf() ChecksCreateReqSum {
+	return s.OneOf
+}
+
+// SetName sets the value of Name.
+func (s *ChecksCreateReq) SetName(val string) {
+	s.Name = val
+}
+
+// SetHeadSha sets the value of HeadSha.
+func (s *ChecksCreateReq) SetHeadSha(val string) {
+	s.HeadSha = val
+}
+
+// SetDetailsURL sets the value of DetailsURL.
+func (s *ChecksCreateReq) SetDetailsURL(val OptString) {
+	s.DetailsURL = val
+}
+
+// SetExternalID sets the value of ExternalID.
+func (s *ChecksCreateReq) SetExternalID(val OptString) {
+	s.ExternalID = val
+}
+
+// SetStatus sets the value of Status.
+func (s *ChecksCreateReq) SetStatus(val OptChecksCreateReqStatus) {
+	s.Status = val
+}
+
+// SetStartedAt sets the value of StartedAt.
+func (s *ChecksCreateReq) SetStartedAt(val OptDateTime) {
+	s.StartedAt = val
+}
+
+// SetConclusion sets the value of Conclusion.
+func (s *ChecksCreateReq) SetConclusion(val OptChecksCreateReqConclusion) {
+	s.Conclusion = val
+}
+
+// SetCompletedAt sets the value of CompletedAt.
+func (s *ChecksCreateReq) SetCompletedAt(val OptDateTime) {
+	s.CompletedAt = val
+}
+
+// SetOutput sets the value of Output.
+func (s *ChecksCreateReq) SetOutput(val OptChecksCreateReqOutput) {
+	s.Output = val
+}
+
+// SetActions sets the value of Actions.
+func (s *ChecksCreateReq) SetActions(val []ChecksCreateReqActionsItem) {
+	s.Actions = val
+}
+
+// SetOneOf sets the value of OneOf.
+func (s *ChecksCreateReq) SetOneOf(val ChecksCreateReqSum) {
+	s.OneOf = val
+}
+
+type ChecksCreateReqActionsItem struct {
+	// The text to be displayed on a button in the web UI. The maximum size is 20 characters.
+	Label string `json:"label"`
+	// A short explanation of what this action would do. The maximum size is 40 characters.
+	Description string `json:"description"`
+	// A reference for the action on the integrator's system. The maximum size is 20 characters.
+	Identifier string `json:"identifier"`
+}
+
+// GetLabel returns the value of Label.
+func (s *ChecksCreateReqActionsItem) GetLabel() string {
+	return s.Label
+}
+
+// GetDescription returns the value of Description.
+func (s *ChecksCreateReqActionsItem) GetDescription() string {
+	return s.Description
+}
+
+// GetIdentifier returns the value of Identifier.
+func (s *ChecksCreateReqActionsItem) GetIdentifier() string {
+	return s.Identifier
+}
+
+// SetLabel sets the value of Label.
+func (s *ChecksCreateReqActionsItem) SetLabel(val string) {
+	s.Label = val
+}
+
+// SetDescription sets the value of Description.
+func (s *ChecksCreateReqActionsItem) SetDescription(val string) {
+	s.Description = val
+}
+
+// SetIdentifier sets the value of Identifier.
+func (s *ChecksCreateReqActionsItem) SetIdentifier(val string) {
+	s.Identifier = val
+}
+
+// **Required if you provide `completed_at` or a `status` of `completed`**. The final conclusion of
+// the check. Can be one of `action_required`, `cancelled`, `failure`, `neutral`, `success`,
+// `skipped`, `stale`, or `timed_out`. When the conclusion is `action_required`, additional details
+// should be provided on the site specified by `details_url`.
+// **Note:** Providing `conclusion` will automatically set the `status` parameter to `completed`. You
+// cannot change a check run conclusion to `stale`, only GitHub can set this.
+type ChecksCreateReqConclusion string
+
+const (
+	ChecksCreateReqConclusionActionRequired ChecksCreateReqConclusion = "action_required"
+	ChecksCreateReqConclusionCancelled      ChecksCreateReqConclusion = "cancelled"
+	ChecksCreateReqConclusionFailure        ChecksCreateReqConclusion = "failure"
+	ChecksCreateReqConclusionNeutral        ChecksCreateReqConclusion = "neutral"
+	ChecksCreateReqConclusionSuccess        ChecksCreateReqConclusion = "success"
+	ChecksCreateReqConclusionSkipped        ChecksCreateReqConclusion = "skipped"
+	ChecksCreateReqConclusionStale          ChecksCreateReqConclusion = "stale"
+	ChecksCreateReqConclusionTimedOut       ChecksCreateReqConclusion = "timed_out"
+)
+
+// AllValues returns all ChecksCreateReqConclusion values.
+func (ChecksCreateReqConclusion) AllValues() []ChecksCreateReqConclusion {
+	return []ChecksCreateReqConclusion{
+		ChecksCreateReqConclusionActionRequired,
+		ChecksCreateReqConclusionCancelled,
+		ChecksCreateReqConclusionFailure,
+		ChecksCreateReqConclusionNeutral,
+		ChecksCreateReqConclusionSuccess,
+		ChecksCreateReqConclusionSkipped,
+		ChecksCreateReqConclusionStale,
+		ChecksCreateReqConclusionTimedOut,
+	}
+}
+
+// MarshalText implements encoding.TextMarshaler.
+func (s ChecksCreateReqConclusion) MarshalText() ([]byte, error) {
+	switch s {
+	case ChecksCreateReqConclusionActionRequired:
+		return []byte(s), nil
+	case ChecksCreateReqConclusionCancelled:
+		return []byte(s), nil
+	case ChecksCreateReqConclusionFailure:
+		return []byte(s), nil
+	case ChecksCreateReqConclusionNeutral:
+		return []byte(s), nil
+	case ChecksCreateReqConclusionSuccess:
+		return []byte(s), nil
+	case ChecksCreateReqConclusionSkipped:
+		return []byte(s), nil
+	case ChecksCreateReqConclusionStale:
+		return []byte(s), nil
+	case ChecksCreateReqConclusionTimedOut:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *ChecksCreateReqConclusion) UnmarshalText(data []byte) error {
+	switch ChecksCreateReqConclusion(data) {
+	case ChecksCreateReqConclusionActionRequired:
+		*s = ChecksCreateReqConclusionActionRequired
+		return nil
+	case ChecksCreateReqConclusionCancelled:
+		*s = ChecksCreateReqConclusionCancelled
+		return nil
+	case ChecksCreateReqConclusionFailure:
+		*s = ChecksCreateReqConclusionFailure
+		return nil
+	case ChecksCreateReqConclusionNeutral:
+		*s = ChecksCreateReqConclusionNeutral
+		return nil
+	case ChecksCreateReqConclusionSuccess:
+		*s = ChecksCreateReqConclusionSuccess
+		return nil
+	case ChecksCreateReqConclusionSkipped:
+		*s = ChecksCreateReqConclusionSkipped
+		return nil
+	case ChecksCreateReqConclusionStale:
+		*s = ChecksCreateReqConclusionStale
+		return nil
+	case ChecksCreateReqConclusionTimedOut:
+		*s = ChecksCreateReqConclusionTimedOut
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
+// Check runs can accept a variety of data in the `output` object, including a `title` and `summary`
+// and can optionally provide descriptive details about the run. See the [`output`
+// object](https://docs.github.com/rest/reference/checks#output-object) description.
+type ChecksCreateReqOutput struct {
+	// The title of the check run.
+	Title string `json:"title"`
+	// The summary of the check run. This parameter supports Markdown.
+	Summary string `json:"summary"`
+	// The details of the check run. This parameter supports Markdown.
+	Text OptString `json:"text"`
+	// Adds information from your analysis to specific lines of code. Annotations are visible on GitHub
+	// in the **Checks** and **Files changed** tab of the pull request. The Checks API limits the number
+	// of annotations to a maximum of 50 per API request. To create more than 50 annotations, you have to
+	// make multiple requests to the [Update a check run](https://docs.github.
+	// com/rest/reference/checks#update-a-check-run) endpoint. Each time you update the check run,
+	// annotations are appended to the list of annotations that already exist for the check run. For
+	// details about how you can view annotations on GitHub, see "[About status checks](https://help.
+	// github.com/articles/about-status-checks#checks)". See the [`annotations` object](https://docs.
+	// github.com/rest/reference/checks#annotations-object) description for details about how to use this
+	// parameter.
+	Annotations []ChecksCreateReqOutputAnnotationsItem `json:"annotations"`
+	// Adds images to the output displayed in the GitHub pull request UI. See the [`images`
+	// object](https://docs.github.com/rest/reference/checks#images-object) description for details.
+	Images []ChecksCreateReqOutputImagesItem `json:"images"`
+}
+
+// GetTitle returns the value of Title.
+func (s *ChecksCreateReqOutput) GetTitle() string {
+	return s.Title
+}
+
+// GetSummary returns the value of Summary.
+func (s *ChecksCreateReqOutput) GetSummary() string {
+	return s.Summary
+}
+
+// GetText returns the value of Text.
+func (s *ChecksCreateReqOutput) GetText() OptString {
+	return s.Text
+}
+
+// GetAnnotations returns the value of Annotations.
+func (s *ChecksCreateReqOutput) GetAnnotations() []ChecksCreateReqOutputAnnotationsItem {
+	return s.Annotations
+}
+
+// GetImages returns the value of Images.
+func (s *ChecksCreateReqOutput) GetImages() []ChecksCreateReqOutputImagesItem {
+	return s.Images
+}
+
+// SetTitle sets the value of Title.
+func (s *ChecksCreateReqOutput) SetTitle(val string) {
+	s.Title = val
+}
+
+// SetSummary sets the value of Summary.
+func (s *ChecksCreateReqOutput) SetSummary(val string) {
+	s.Summary = val
+}
+
+// SetText sets the value of Text.
+func (s *ChecksCreateReqOutput) SetText(val OptString) {
+	s.Text = val
+}
+
+// SetAnnotations sets the value of Annotations.
+func (s *ChecksCreateReqOutput) SetAnnotations(val []ChecksCreateReqOutputAnnotationsItem) {
+	s.Annotations = val
+}
+
+// SetImages sets the value of Images.
+func (s *ChecksCreateReqOutput) SetImages(val []ChecksCreateReqOutputImagesItem) {
+	s.Images = val
+}
+
+type ChecksCreateReqOutputAnnotationsItem struct {
+	// The path of the file to add an annotation to. For example, `assets/css/main.css`.
+	Path string `json:"path"`
+	// The start line of the annotation.
+	StartLine int `json:"start_line"`
+	// The end line of the annotation.
+	EndLine int `json:"end_line"`
+	// The start column of the annotation. Annotations only support `start_column` and `end_column` on
+	// the same line. Omit this parameter if `start_line` and `end_line` have different values.
+	StartColumn OptInt `json:"start_column"`
+	// The end column of the annotation. Annotations only support `start_column` and `end_column` on the
+	// same line. Omit this parameter if `start_line` and `end_line` have different values.
+	EndColumn OptInt `json:"end_column"`
+	// The level of the annotation. Can be one of `notice`, `warning`, or `failure`.
+	AnnotationLevel ChecksCreateReqOutputAnnotationsItemAnnotationLevel `json:"annotation_level"`
+	// A short description of the feedback for these lines of code. The maximum size is 64 KB.
+	Message string `json:"message"`
+	// The title that represents the annotation. The maximum size is 255 characters.
+	Title OptString `json:"title"`
+	// Details about this annotation. The maximum size is 64 KB.
+	RawDetails OptString `json:"raw_details"`
+}
+
+// GetPath returns the value of Path.
+func (s *ChecksCreateReqOutputAnnotationsItem) GetPath() string {
+	return s.Path
+}
+
+// GetStartLine returns the value of StartLine.
+func (s *ChecksCreateReqOutputAnnotationsItem) GetStartLine() int {
+	return s.StartLine
+}
+
+// GetEndLine returns the value of EndLine.
+func (s *ChecksCreateReqOutputAnnotationsItem) GetEndLine() int {
+	return s.EndLine
+}
+
+// GetStartColumn returns the value of StartColumn.
+func (s *ChecksCreateReqOutputAnnotationsItem) GetStartColumn() OptInt {
+	return s.StartColumn
+}
+
+// GetEndColumn returns the value of EndColumn.
+func (s *ChecksCreateReqOutputAnnotationsItem) GetEndColumn() OptInt {
+	return s.EndColumn
+}
+
+// GetAnnotationLevel returns the value of AnnotationLevel.
+func (s *ChecksCreateReqOutputAnnotationsItem) GetAnnotationLevel() ChecksCreateReqOutputAnnotationsItemAnnotationLevel {
+	return s.AnnotationLevel
+}
+
+// GetMessage returns the value of Message.
+func (s *ChecksCreateReqOutputAnnotationsItem) GetMessage() string {
+	return s.Message
+}
+
+// GetTitle returns the value of Title.
+func (s *ChecksCreateReqOutputAnnotationsItem) GetTitle() OptString {
+	return s.Title
+}
+
+// GetRawDetails returns the value of RawDetails.
+func (s *ChecksCreateReqOutputAnnotationsItem) GetRawDetails() OptString {
+	return s.RawDetails
+}
+
+// SetPath sets the value of Path.
+func (s *ChecksCreateReqOutputAnnotationsItem) SetPath(val string) {
+	s.Path = val
+}
+
+// SetStartLine sets the value of StartLine.
+func (s *ChecksCreateReqOutputAnnotationsItem) SetStartLine(val int) {
+	s.StartLine = val
+}
+
+// SetEndLine sets the value of EndLine.
+func (s *ChecksCreateReqOutputAnnotationsItem) SetEndLine(val int) {
+	s.EndLine = val
+}
+
+// SetStartColumn sets the value of StartColumn.
+func (s *ChecksCreateReqOutputAnnotationsItem) SetStartColumn(val OptInt) {
+	s.StartColumn = val
+}
+
+// SetEndColumn sets the value of EndColumn.
+func (s *ChecksCreateReqOutputAnnotationsItem) SetEndColumn(val OptInt) {
+	s.EndColumn = val
+}
+
+// SetAnnotationLevel sets the value of AnnotationLevel.
+func (s *ChecksCreateReqOutputAnnotationsItem) SetAnnotationLevel(val ChecksCreateReqOutputAnnotationsItemAnnotationLevel) {
+	s.AnnotationLevel = val
+}
+
+// SetMessage sets the value of Message.
+func (s *ChecksCreateReqOutputAnnotationsItem) SetMessage(val string) {
+	s.Message = val
+}
+
+// SetTitle sets the value of Title.
+func (s *ChecksCreateReqOutputAnnotationsItem) SetTitle(val OptString) {
+	s.Title = val
+}
+
+// SetRawDetails sets the value of RawDetails.
+func (s *ChecksCreateReqOutputAnnotationsItem) SetRawDetails(val OptString) {
+	s.RawDetails = val
+}
+
+// The level of the annotation. Can be one of `notice`, `warning`, or `failure`.
+type ChecksCreateReqOutputAnnotationsItemAnnotationLevel string
+
+const (
+	ChecksCreateReqOutputAnnotationsItemAnnotationLevelNotice  ChecksCreateReqOutputAnnotationsItemAnnotationLevel = "notice"
+	ChecksCreateReqOutputAnnotationsItemAnnotationLevelWarning ChecksCreateReqOutputAnnotationsItemAnnotationLevel = "warning"
+	ChecksCreateReqOutputAnnotationsItemAnnotationLevelFailure ChecksCreateReqOutputAnnotationsItemAnnotationLevel = "failure"
+)
+
+// AllValues returns all ChecksCreateReqOutputAnnotationsItemAnnotationLevel values.
+func (ChecksCreateReqOutputAnnotationsItemAnnotationLevel) AllValues() []ChecksCreateReqOutputAnnotationsItemAnnotationLevel {
+	return []ChecksCreateReqOutputAnnotationsItemAnnotationLevel{
+		ChecksCreateReqOutputAnnotationsItemAnnotationLevelNotice,
+		ChecksCreateReqOutputAnnotationsItemAnnotationLevelWarning,
+		ChecksCreateReqOutputAnnotationsItemAnnotationLevelFailure,
+	}
+}
+
+// MarshalText implements encoding.TextMarshaler.
+func (s ChecksCreateReqOutputAnnotationsItemAnnotationLevel) MarshalText() ([]byte, error) {
+	switch s {
+	case ChecksCreateReqOutputAnnotationsItemAnnotationLevelNotice:
+		return []byte(s), nil
+	case ChecksCreateReqOutputAnnotationsItemAnnotationLevelWarning:
+		return []byte(s), nil
+	case ChecksCreateReqOutputAnnotationsItemAnnotationLevelFailure:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *ChecksCreateReqOutputAnnotationsItemAnnotationLevel) UnmarshalText(data []byte) error {
+	switch ChecksCreateReqOutputAnnotationsItemAnnotationLevel(data) {
+	case ChecksCreateReqOutputAnnotationsItemAnnotationLevelNotice:
+		*s = ChecksCreateReqOutputAnnotationsItemAnnotationLevelNotice
+		return nil
+	case ChecksCreateReqOutputAnnotationsItemAnnotationLevelWarning:
+		*s = ChecksCreateReqOutputAnnotationsItemAnnotationLevelWarning
+		return nil
+	case ChecksCreateReqOutputAnnotationsItemAnnotationLevelFailure:
+		*s = ChecksCreateReqOutputAnnotationsItemAnnotationLevelFailure
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
+type ChecksCreateReqOutputImagesItem struct {
+	// The alternative text for the image.
+	Alt string `json:"alt"`
+	// The full URL of the image.
+	ImageURL string `json:"image_url"`
+	// A short image description.
+	Caption OptString `json:"caption"`
+}
+
+// GetAlt returns the value of Alt.
+func (s *ChecksCreateReqOutputImagesItem) GetAlt() string {
+	return s.Alt
+}
+
+// GetImageURL returns the value of ImageURL.
+func (s *ChecksCreateReqOutputImagesItem) GetImageURL() string {
+	return s.ImageURL
+}
+
+// GetCaption returns the value of Caption.
+func (s *ChecksCreateReqOutputImagesItem) GetCaption() OptString {
+	return s.Caption
+}
+
+// SetAlt sets the value of Alt.
+func (s *ChecksCreateReqOutputImagesItem) SetAlt(val string) {
+	s.Alt = val
+}
+
+// SetImageURL sets the value of ImageURL.
+func (s *ChecksCreateReqOutputImagesItem) SetImageURL(val string) {
+	s.ImageURL = val
+}
+
+// SetCaption sets the value of Caption.
+func (s *ChecksCreateReqOutputImagesItem) SetCaption(val OptString) {
+	s.Caption = val
+}
+
+// The current status. Can be one of `queued`, `in_progress`, or `completed`.
+type ChecksCreateReqStatus string
+
+const (
+	ChecksCreateReqStatusQueued     ChecksCreateReqStatus = "queued"
+	ChecksCreateReqStatusInProgress ChecksCreateReqStatus = "in_progress"
+	ChecksCreateReqStatusCompleted  ChecksCreateReqStatus = "completed"
+)
+
+// AllValues returns all ChecksCreateReqStatus values.
+func (ChecksCreateReqStatus) AllValues() []ChecksCreateReqStatus {
+	return []ChecksCreateReqStatus{
+		ChecksCreateReqStatusQueued,
+		ChecksCreateReqStatusInProgress,
+		ChecksCreateReqStatusCompleted,
+	}
+}
+
+// MarshalText implements encoding.TextMarshaler.
+func (s ChecksCreateReqStatus) MarshalText() ([]byte, error) {
+	switch s {
+	case ChecksCreateReqStatusQueued:
+		return []byte(s), nil
+	case ChecksCreateReqStatusInProgress:
+		return []byte(s), nil
+	case ChecksCreateReqStatusCompleted:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *ChecksCreateReqStatus) UnmarshalText(data []byte) error {
+	switch ChecksCreateReqStatus(data) {
+	case ChecksCreateReqStatusQueued:
+		*s = ChecksCreateReqStatusQueued
+		return nil
+	case ChecksCreateReqStatusInProgress:
+		*s = ChecksCreateReqStatusInProgress
+		return nil
+	case ChecksCreateReqStatusCompleted:
+		*s = ChecksCreateReqStatusCompleted
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
+// ChecksCreateReqSum represents sum type.
+type ChecksCreateReqSum struct {
+	Type                ChecksCreateReqSumType // switch on this field
+	ChecksCreateReqSum0 ChecksCreateReqSum0
+	ChecksCreateReqSum1 ChecksCreateReqSum1
+}
+
+// ChecksCreateReqSumType is oneOf type of ChecksCreateReqSum.
+type ChecksCreateReqSumType string
+
+// Possible values for ChecksCreateReqSumType.
+const (
+	ChecksCreateReqSum0ChecksCreateReqSum ChecksCreateReqSumType = "ChecksCreateReqSum0"
+	ChecksCreateReqSum1ChecksCreateReqSum ChecksCreateReqSumType = "ChecksCreateReqSum1"
+)
+
+// IsChecksCreateReqSum0 reports whether ChecksCreateReqSum is ChecksCreateReqSum0.
+func (s ChecksCreateReqSum) IsChecksCreateReqSum0() bool {
+	return s.Type == ChecksCreateReqSum0ChecksCreateReqSum
+}
+
+// IsChecksCreateReqSum1 reports whether ChecksCreateReqSum is ChecksCreateReqSum1.
+func (s ChecksCreateReqSum) IsChecksCreateReqSum1() bool {
+	return s.Type == ChecksCreateReqSum1ChecksCreateReqSum
+}
+
+// SetChecksCreateReqSum0 sets ChecksCreateReqSum to ChecksCreateReqSum0.
+func (s *ChecksCreateReqSum) SetChecksCreateReqSum0(v ChecksCreateReqSum0) {
+	s.Type = ChecksCreateReqSum0ChecksCreateReqSum
+	s.ChecksCreateReqSum0 = v
+}
+
+// GetChecksCreateReqSum0 returns ChecksCreateReqSum0 and true boolean if ChecksCreateReqSum is ChecksCreateReqSum0.
+func (s ChecksCreateReqSum) GetChecksCreateReqSum0() (v ChecksCreateReqSum0, ok bool) {
+	if !s.IsChecksCreateReqSum0() {
+		return v, false
+	}
+	return s.ChecksCreateReqSum0, true
+}
+
+// NewChecksCreateReqSum0ChecksCreateReqSum returns new ChecksCreateReqSum from ChecksCreateReqSum0.
+func NewChecksCreateReqSum0ChecksCreateReqSum(v ChecksCreateReqSum0) ChecksCreateReqSum {
+	var s ChecksCreateReqSum
+	s.SetChecksCreateReqSum0(v)
+	return s
+}
+
+// SetChecksCreateReqSum1 sets ChecksCreateReqSum to ChecksCreateReqSum1.
+func (s *ChecksCreateReqSum) SetChecksCreateReqSum1(v ChecksCreateReqSum1) {
+	s.Type = ChecksCreateReqSum1ChecksCreateReqSum
+	s.ChecksCreateReqSum1 = v
+}
+
+// GetChecksCreateReqSum1 returns ChecksCreateReqSum1 and true boolean if ChecksCreateReqSum is ChecksCreateReqSum1.
+func (s ChecksCreateReqSum) GetChecksCreateReqSum1() (v ChecksCreateReqSum1, ok bool) {
+	if !s.IsChecksCreateReqSum1() {
+		return v, false
+	}
+	return s.ChecksCreateReqSum1, true
+}
+
+// NewChecksCreateReqSum1ChecksCreateReqSum returns new ChecksCreateReqSum from ChecksCreateReqSum1.
+func NewChecksCreateReqSum1ChecksCreateReqSum(v ChecksCreateReqSum1) ChecksCreateReqSum {
+	var s ChecksCreateReqSum
+	s.SetChecksCreateReqSum1(v)
+	return s
+}
+
+type ChecksCreateReqSum0 struct {
+	Status          ChecksCreateReqSum0Status `json:"status"`
+	AdditionalProps ChecksCreateReqSum0Additional
+}
+
+// GetStatus returns the value of Status.
+func (s *ChecksCreateReqSum0) GetStatus() ChecksCreateReqSum0Status {
+	return s.Status
+}
+
+// GetAdditionalProps returns the value of AdditionalProps.
+func (s *ChecksCreateReqSum0) GetAdditionalProps() ChecksCreateReqSum0Additional {
+	return s.AdditionalProps
+}
+
+// SetStatus sets the value of Status.
+func (s *ChecksCreateReqSum0) SetStatus(val ChecksCreateReqSum0Status) {
+	s.Status = val
+}
+
+// SetAdditionalProps sets the value of AdditionalProps.
+func (s *ChecksCreateReqSum0) SetAdditionalProps(val ChecksCreateReqSum0Additional) {
+	s.AdditionalProps = val
+}
+
+type ChecksCreateReqSum0Additional map[string]jx.Raw
+
+func (s *ChecksCreateReqSum0Additional) init() ChecksCreateReqSum0Additional {
+	m := *s
+	if m == nil {
+		m = map[string]jx.Raw{}
+		*s = m
+	}
+	return m
+}
+
+type ChecksCreateReqSum0Status string
+
+const (
+	ChecksCreateReqSum0StatusCompleted ChecksCreateReqSum0Status = "completed"
+)
+
+// AllValues returns all ChecksCreateReqSum0Status values.
+func (ChecksCreateReqSum0Status) AllValues() []ChecksCreateReqSum0Status {
+	return []ChecksCreateReqSum0Status{
+		ChecksCreateReqSum0StatusCompleted,
+	}
+}
+
+// MarshalText implements encoding.TextMarshaler.
+func (s ChecksCreateReqSum0Status) MarshalText() ([]byte, error) {
+	switch s {
+	case ChecksCreateReqSum0StatusCompleted:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *ChecksCreateReqSum0Status) UnmarshalText(data []byte) error {
+	switch ChecksCreateReqSum0Status(data) {
+	case ChecksCreateReqSum0StatusCompleted:
+		*s = ChecksCreateReqSum0StatusCompleted
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
+type ChecksCreateReqSum1 struct {
+	Status          OptChecksCreateReqSum1Status `json:"status"`
+	AdditionalProps ChecksCreateReqSum1Additional
+}
+
+// GetStatus returns the value of Status.
+func (s *ChecksCreateReqSum1) GetStatus() OptChecksCreateReqSum1Status {
+	return s.Status
+}
+
+// GetAdditionalProps returns the value of AdditionalProps.
+func (s *ChecksCreateReqSum1) GetAdditionalProps() ChecksCreateReqSum1Additional {
+	return s.AdditionalProps
+}
+
+// SetStatus sets the value of Status.
+func (s *ChecksCreateReqSum1) SetStatus(val OptChecksCreateReqSum1Status) {
+	s.Status = val
+}
+
+// SetAdditionalProps sets the value of AdditionalProps.
+func (s *ChecksCreateReqSum1) SetAdditionalProps(val ChecksCreateReqSum1Additional) {
+	s.AdditionalProps = val
+}
+
+type ChecksCreateReqSum1Additional map[string]jx.Raw
+
+func (s *ChecksCreateReqSum1Additional) init() ChecksCreateReqSum1Additional {
+	m := *s
+	if m == nil {
+		m = map[string]jx.Raw{}
+		*s = m
+	}
+	return m
+}
+
+type ChecksCreateReqSum1Status string
+
+const (
+	ChecksCreateReqSum1StatusQueued     ChecksCreateReqSum1Status = "queued"
+	ChecksCreateReqSum1StatusInProgress ChecksCreateReqSum1Status = "in_progress"
+)
+
+// AllValues returns all ChecksCreateReqSum1Status values.
+func (ChecksCreateReqSum1Status) AllValues() []ChecksCreateReqSum1Status {
+	return []ChecksCreateReqSum1Status{
+		ChecksCreateReqSum1StatusQueued,
+		ChecksCreateReqSum1StatusInProgress,
+	}
+}
+
+// MarshalText implements encoding.TextMarshaler.
+func (s ChecksCreateReqSum1Status) MarshalText() ([]byte, error) {
+	switch s {
+	case ChecksCreateReqSum1StatusQueued:
+		return []byte(s), nil
+	case ChecksCreateReqSum1StatusInProgress:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *ChecksCreateReqSum1Status) UnmarshalText(data []byte) error {
+	switch ChecksCreateReqSum1Status(data) {
+	case ChecksCreateReqSum1StatusQueued:
+		*s = ChecksCreateReqSum1StatusQueued
+		return nil
+	case ChecksCreateReqSum1StatusInProgress:
+		*s = ChecksCreateReqSum1StatusInProgress
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 type ChecksCreateSuiteCreated CheckSuite
 
 func (*ChecksCreateSuiteCreated) checksCreateSuiteRes() {}
@@ -43750,6 +44573,190 @@ func (o OptBranchRestrictionPolicyAppsItemPermissions) Get() (v BranchRestrictio
 
 // Or returns value if set, or given parameter if does not.
 func (o OptBranchRestrictionPolicyAppsItemPermissions) Or(d BranchRestrictionPolicyAppsItemPermissions) BranchRestrictionPolicyAppsItemPermissions {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptChecksCreateReqConclusion returns new OptChecksCreateReqConclusion with value set to v.
+func NewOptChecksCreateReqConclusion(v ChecksCreateReqConclusion) OptChecksCreateReqConclusion {
+	return OptChecksCreateReqConclusion{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptChecksCreateReqConclusion is optional ChecksCreateReqConclusion.
+type OptChecksCreateReqConclusion struct {
+	Value ChecksCreateReqConclusion
+	Set   bool
+}
+
+// IsSet returns true if OptChecksCreateReqConclusion was set.
+func (o OptChecksCreateReqConclusion) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptChecksCreateReqConclusion) Reset() {
+	var v ChecksCreateReqConclusion
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptChecksCreateReqConclusion) SetTo(v ChecksCreateReqConclusion) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptChecksCreateReqConclusion) Get() (v ChecksCreateReqConclusion, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptChecksCreateReqConclusion) Or(d ChecksCreateReqConclusion) ChecksCreateReqConclusion {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptChecksCreateReqOutput returns new OptChecksCreateReqOutput with value set to v.
+func NewOptChecksCreateReqOutput(v ChecksCreateReqOutput) OptChecksCreateReqOutput {
+	return OptChecksCreateReqOutput{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptChecksCreateReqOutput is optional ChecksCreateReqOutput.
+type OptChecksCreateReqOutput struct {
+	Value ChecksCreateReqOutput
+	Set   bool
+}
+
+// IsSet returns true if OptChecksCreateReqOutput was set.
+func (o OptChecksCreateReqOutput) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptChecksCreateReqOutput) Reset() {
+	var v ChecksCreateReqOutput
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptChecksCreateReqOutput) SetTo(v ChecksCreateReqOutput) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptChecksCreateReqOutput) Get() (v ChecksCreateReqOutput, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptChecksCreateReqOutput) Or(d ChecksCreateReqOutput) ChecksCreateReqOutput {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptChecksCreateReqStatus returns new OptChecksCreateReqStatus with value set to v.
+func NewOptChecksCreateReqStatus(v ChecksCreateReqStatus) OptChecksCreateReqStatus {
+	return OptChecksCreateReqStatus{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptChecksCreateReqStatus is optional ChecksCreateReqStatus.
+type OptChecksCreateReqStatus struct {
+	Value ChecksCreateReqStatus
+	Set   bool
+}
+
+// IsSet returns true if OptChecksCreateReqStatus was set.
+func (o OptChecksCreateReqStatus) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptChecksCreateReqStatus) Reset() {
+	var v ChecksCreateReqStatus
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptChecksCreateReqStatus) SetTo(v ChecksCreateReqStatus) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptChecksCreateReqStatus) Get() (v ChecksCreateReqStatus, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptChecksCreateReqStatus) Or(d ChecksCreateReqStatus) ChecksCreateReqStatus {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptChecksCreateReqSum1Status returns new OptChecksCreateReqSum1Status with value set to v.
+func NewOptChecksCreateReqSum1Status(v ChecksCreateReqSum1Status) OptChecksCreateReqSum1Status {
+	return OptChecksCreateReqSum1Status{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptChecksCreateReqSum1Status is optional ChecksCreateReqSum1Status.
+type OptChecksCreateReqSum1Status struct {
+	Value ChecksCreateReqSum1Status
+	Set   bool
+}
+
+// IsSet returns true if OptChecksCreateReqSum1Status was set.
+func (o OptChecksCreateReqSum1Status) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptChecksCreateReqSum1Status) Reset() {
+	var v ChecksCreateReqSum1Status
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptChecksCreateReqSum1Status) SetTo(v ChecksCreateReqSum1Status) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptChecksCreateReqSum1Status) Get() (v ChecksCreateReqSum1Status, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptChecksCreateReqSum1Status) Or(d ChecksCreateReqSum1Status) ChecksCreateReqSum1Status {
 	if v, ok := o.Get(); ok {
 		return v
 	}

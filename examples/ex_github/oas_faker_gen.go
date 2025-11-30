@@ -4181,6 +4181,282 @@ func (s *CheckSuiteStatus) SetFake() {
 }
 
 // SetFake set fake values.
+func (s *ChecksCreateReq) SetFake() {
+	{
+		{
+			s.Name = "string"
+		}
+	}
+	{
+		{
+			s.HeadSha = "string"
+		}
+	}
+	{
+		{
+			s.DetailsURL.SetFake()
+		}
+	}
+	{
+		{
+			s.ExternalID.SetFake()
+		}
+	}
+	{
+		{
+			s.StartedAt.SetFake()
+		}
+	}
+	{
+		{
+			s.Conclusion.SetFake()
+		}
+	}
+	{
+		{
+			s.CompletedAt.SetFake()
+		}
+	}
+	{
+		{
+			s.Output.SetFake()
+		}
+	}
+	{
+		{
+			s.Actions = nil
+			for i := 0; i < 0; i++ {
+				var elem ChecksCreateReqActionsItem
+				{
+					elem.SetFake()
+				}
+				s.Actions = append(s.Actions, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OneOf.SetFake()
+		}
+	}
+}
+
+// SetFake set fake values.
+func (s *ChecksCreateReqActionsItem) SetFake() {
+	{
+		{
+			s.Label = "string"
+		}
+	}
+	{
+		{
+			s.Description = "string"
+		}
+	}
+	{
+		{
+			s.Identifier = "string"
+		}
+	}
+}
+
+// SetFake set fake values.
+func (s *ChecksCreateReqConclusion) SetFake() {
+	*s = ChecksCreateReqConclusionActionRequired
+}
+
+// SetFake set fake values.
+func (s *ChecksCreateReqOutput) SetFake() {
+	{
+		{
+			s.Title = "string"
+		}
+	}
+	{
+		{
+			s.Summary = "string"
+		}
+	}
+	{
+		{
+			s.Text.SetFake()
+		}
+	}
+	{
+		{
+			s.Annotations = nil
+			for i := 0; i < 0; i++ {
+				var elem ChecksCreateReqOutputAnnotationsItem
+				{
+					elem.SetFake()
+				}
+				s.Annotations = append(s.Annotations, elem)
+			}
+		}
+	}
+	{
+		{
+			s.Images = nil
+			for i := 0; i < 0; i++ {
+				var elem ChecksCreateReqOutputImagesItem
+				{
+					elem.SetFake()
+				}
+				s.Images = append(s.Images, elem)
+			}
+		}
+	}
+}
+
+// SetFake set fake values.
+func (s *ChecksCreateReqOutputAnnotationsItem) SetFake() {
+	{
+		{
+			s.Path = "string"
+		}
+	}
+	{
+		{
+			s.StartLine = int(0)
+		}
+	}
+	{
+		{
+			s.EndLine = int(0)
+		}
+	}
+	{
+		{
+			s.StartColumn.SetFake()
+		}
+	}
+	{
+		{
+			s.EndColumn.SetFake()
+		}
+	}
+	{
+		{
+			s.AnnotationLevel.SetFake()
+		}
+	}
+	{
+		{
+			s.Message = "string"
+		}
+	}
+	{
+		{
+			s.Title.SetFake()
+		}
+	}
+	{
+		{
+			s.RawDetails.SetFake()
+		}
+	}
+}
+
+// SetFake set fake values.
+func (s *ChecksCreateReqOutputAnnotationsItemAnnotationLevel) SetFake() {
+	*s = ChecksCreateReqOutputAnnotationsItemAnnotationLevelNotice
+}
+
+// SetFake set fake values.
+func (s *ChecksCreateReqOutputImagesItem) SetFake() {
+	{
+		{
+			s.Alt = "string"
+		}
+	}
+	{
+		{
+			s.ImageURL = "string"
+		}
+	}
+	{
+		{
+			s.Caption.SetFake()
+		}
+	}
+}
+
+// SetFake set fake values.
+func (s *ChecksCreateReqStatus) SetFake() {
+	*s = ChecksCreateReqStatusQueued
+}
+
+// SetFake set fake values.
+func (s *ChecksCreateReqSum) SetFake() {
+	var variant ChecksCreateReqSum0
+
+	{
+		variant.SetFake()
+	}
+	s.SetChecksCreateReqSum0(variant)
+}
+
+// SetFake set fake values.
+func (s *ChecksCreateReqSum0) SetFake() {
+	{
+		{
+			s.Status.SetFake()
+		}
+	}
+	{
+		{
+			s.AdditionalProps.SetFake()
+		}
+	}
+}
+
+// SetFake set fake values.
+func (s *ChecksCreateReqSum0Additional) SetFake() {
+	var (
+		elem jx.Raw
+		m    map[string]jx.Raw = s.init()
+	)
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
+	}
+}
+
+// SetFake set fake values.
+func (s *ChecksCreateReqSum0Status) SetFake() {
+	*s = ChecksCreateReqSum0StatusCompleted
+}
+
+// SetFake set fake values.
+func (s *ChecksCreateReqSum1) SetFake() {
+	{
+		{
+			s.Status.SetFake()
+		}
+	}
+	{
+		{
+			s.AdditionalProps.SetFake()
+		}
+	}
+}
+
+// SetFake set fake values.
+func (s *ChecksCreateReqSum1Additional) SetFake() {
+	var (
+		elem jx.Raw
+		m    map[string]jx.Raw = s.init()
+	)
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
+	}
+}
+
+// SetFake set fake values.
+func (s *ChecksCreateReqSum1Status) SetFake() {
+	*s = ChecksCreateReqSum1StatusQueued
+}
+
+// SetFake set fake values.
 func (s *ChecksCreateSuiteCreated) SetFake() {
 	var unwrapped CheckSuite
 	{
@@ -17980,6 +18256,42 @@ func (s *OptBranchRestrictionPolicyAppsItemOwner) SetFake() {
 // SetFake set fake values.
 func (s *OptBranchRestrictionPolicyAppsItemPermissions) SetFake() {
 	var elem BranchRestrictionPolicyAppsItemPermissions
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
+}
+
+// SetFake set fake values.
+func (s *OptChecksCreateReqConclusion) SetFake() {
+	var elem ChecksCreateReqConclusion
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
+}
+
+// SetFake set fake values.
+func (s *OptChecksCreateReqOutput) SetFake() {
+	var elem ChecksCreateReqOutput
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
+}
+
+// SetFake set fake values.
+func (s *OptChecksCreateReqStatus) SetFake() {
+	var elem ChecksCreateReqStatus
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
+}
+
+// SetFake set fake values.
+func (s *OptChecksCreateReqSum1Status) SetFake() {
+	var elem ChecksCreateReqSum1Status
 	{
 		elem.SetFake()
 	}

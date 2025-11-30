@@ -861,8 +861,154 @@ func (g *schemaGen) oneOf(name string, schema *jsonschema.Schema, side bool) (*i
 		}
 	}
 
+	// canUseValueDiscrimination checks if a field can discriminate variants by enum values.
+	// Returns true if all variants have non-overlapping enum values for this field.
+	canUseValueDiscrimination := func(fieldName string, variants []ir.UniqueFieldVariant) (bool, ir.ValueDiscriminator, error) {
+		if len(variants) < 2 {
+			return false, ir.ValueDiscriminator{}, nil
+		}
+
+		// Collect enum values for each variant
+		type variantEnumInfo struct {
+			variantType string
+			enumValues  map[string]bool // set of enum values
+			irType      *ir.Type
+		}
+		variantEnums := make(map[string]*variantEnumInfo)
+
+		for _, fv := range variants {
+			// Find the IR type for this variant
+			var variantIRType *ir.Type
+			for _, s := range sum.SumOf {
+				if s.Name+sum.Name == fv.VariantType {
+					variantIRType = s
+					break
+				}
+			}
+			if variantIRType == nil {
+				continue
+			}
+
+			// Find the field in this variant
+			var fieldType *ir.Type
+			for _, f := range variantIRType.JSON().Fields() {
+				if f.Tag.JSON == fieldName {
+					fieldType = f.Type
+					break
+				}
+			}
+			if fieldType == nil {
+				continue
+			}
+
+			// Unwrap optionals/pointers to get base type
+			baseType := fieldType
+		unwrapLoop:
+			for baseType.IsGeneric() || baseType.IsPointer() {
+				switch {
+				case baseType.IsGeneric() && baseType.GenericOf != nil:
+					baseType = baseType.GenericOf
+				case baseType.IsPointer() && baseType.PointerTo != nil:
+					baseType = baseType.PointerTo
+				default:
+					break unwrapLoop
+				}
+			}
+
+			// Check if it's an enum
+			if baseType.Kind != ir.KindEnum {
+				// Not an enum, can't use value discrimination
+				return false, ir.ValueDiscriminator{}, nil
+			}
+
+			// Collect enum values
+			enumValues := make(map[string]bool)
+			for _, ev := range baseType.EnumVariants {
+				// EnumVariant.Value is the actual value (string, int, etc.)
+				// For string enums, it's already a string
+				if strVal, ok := ev.Value.(string); ok {
+					enumValues[strVal] = true
+				} else {
+					// Non-string enums (shouldn't happen for JSON strings, but be safe)
+					return false, ir.ValueDiscriminator{}, nil
+				}
+			}
+
+			if len(enumValues) == 0 {
+				// Empty enum, can't discriminate
+				return false, ir.ValueDiscriminator{}, nil
+			}
+
+			variantEnums[fv.VariantType] = &variantEnumInfo{
+				variantType: fv.VariantType,
+				enumValues:  enumValues,
+				irType:      baseType,
+			}
+		}
+
+		// Check that we found enum info for all variants
+		if len(variantEnums) != len(variants) {
+			// Some variants don't have enum types
+			return false, ir.ValueDiscriminator{}, nil
+		}
+
+		// Check for overlapping enum values
+		valueToVariants := make(map[string][]string)
+		for variantType, info := range variantEnums {
+			for enumValue := range info.enumValues {
+				valueToVariants[enumValue] = append(valueToVariants[enumValue], variantType)
+			}
+		}
+
+		// Find overlaps
+		var overlappingValues []string
+		for value, variantTypes := range valueToVariants {
+			if len(variantTypes) > 1 {
+				overlappingValues = append(overlappingValues, value)
+			}
+		}
+
+		if len(overlappingValues) > 0 {
+			// Build error message about overlapping values
+			slices.Sort(overlappingValues)
+			return false, ir.ValueDiscriminator{}, errors.Errorf(
+				"field %q has overlapping enum values %v across variants; "+
+					"enum values must be disjoint for automatic discrimination or use an explicit discriminator",
+				fieldName,
+				overlappingValues,
+			)
+		}
+
+		// Build the value -> variant mapping
+		valueToVariant := make(map[string]string)
+		for variantType, info := range variantEnums {
+			for enumValue := range info.enumValues {
+				valueToVariant[enumValue] = variantType
+			}
+		}
+
+		return true, ir.ValueDiscriminator{
+			FieldName:      fieldName,
+			ValueToVariant: valueToVariant,
+		}, nil
+	}
+
 	// Validate that we can actually discriminate variants after jxType deduplication
 	// This catches cases like arrays with different element types that both map to jx.Array
+	//
+	// We need to find at least one field that can discriminate all variants.
+	// If a field has overlapping enum values, we skip it and try other fields.
+	// Only fail if NO field can discriminate.
+
+	// Track fields that need discrimination but couldn't be discriminated
+	type undiscriminableField struct {
+		fieldName string
+		typeIDs   []string
+		reason    string
+	}
+	var undiscriminableFields []undiscriminableField
+	hasSuccessfulDiscriminator := false
+
 	for fieldName, fieldVariants := range sum.SumSpec.UniqueFields {
 		if len(fieldVariants) < 2 {
 			continue // Single variant, no need to discriminate
@@ -876,9 +1022,48 @@ func (g *schemaGen) oneOf(name string, schema *jsonschema.Schema, side bool) (*i
 			}
 		}
 
-		// If all variants have the same jxType (or empty), we can't discriminate
+		// If all variants have the same jxType (or empty), try value-based discrimination
 		if len(uniqueJxTypes) <= 1 {
-			// Find the type IDs to provide better error message
+			// Try value-based discrimination (enum values)
+			canUse, discriminator, err := canUseValueDiscrimination(fieldName, fieldVariants)
+			if err != nil {
+				// Overlapping enum values - record this but continue checking other fields
+				var typeIDs []string
+				for _, v := range sortedVariants {
+					for _, s := range sum.SumOf {
+						if s.Name != v.Name {
+							continue
+						}
+						for _, f := range s.JSON().Fields() {
+							if f.Tag.JSON == fieldName {
+								typeID := getFieldTypeID(f.Type)
+								typeIDs = append(typeIDs, fmt.Sprintf("%s: %s", s.Name, typeID))
+								break
+							}
+						}
+					}
+				}
+				undiscriminableFields = append(undiscriminableFields, undiscriminableField{
+					fieldName: fieldName,
+					typeIDs:   typeIDs,
+					reason:    err.Error(),
+				})
+				continue // Try next field
+			}
+			if canUse {
+				// Initialize map if needed
+				if sum.SumSpec.ValueDiscriminators == nil {
+					sum.SumSpec.ValueDiscriminators = make(map[string]ir.ValueDiscriminator)
+				}
+				// Store the value discriminator
+				sum.SumSpec.ValueDiscriminators[fieldName] = discriminator
+				// Remove from UniqueFields to avoid duplicate case statements in template
+				delete(sum.SumSpec.UniqueFields, fieldName)
+				hasSuccessfulDiscriminator = true
+				continue // This field can discriminate, move to next field
+			}
+
+			// Can't use value discrimination, record for potential error
 			var typeIDs []string
 			for _, v := range sortedVariants {
 				for _, s := range sum.SumOf {
@@ -894,14 +1079,26 @@ func (g *schemaGen) oneOf(name string, schema *jsonschema.Schema, side bool) (*i
 					}
 				}
 			}
-
-			return nil, errors.Wrapf(
-				&ErrNotImplemented{Name: "type-based discrimination with same jxType"},
-				"field %q cannot discriminate variants (requires unsupported discrimination): %v",
-				fieldName,
-				typeIDs,
-			)
+			undiscriminableFields = append(undiscriminableFields, undiscriminableField{
+				fieldName: fieldName,
+				typeIDs:   typeIDs,
+				reason:    "no enum values for discrimination",
+			})
 		}
+	}
+
+	// If we have undiscriminable fields and no successful discriminator was found,
+	// we need to fail. But if at least one field can discriminate, we're okay.
+	if len(undiscriminableFields) > 0 && !hasSuccessfulDiscriminator {
+		// Use the first undiscriminable field for the error message
+		f := undiscriminableFields[0]
+		return nil, errors.Wrapf(
+			&ErrNotImplemented{Name: "type-based discrimination with same jxType"},
+			"field %q cannot discriminate variants (%s): %v",
+			f.fieldName,
+			f.reason,
+			f.typeIDs,
+		)
 	}
 
 	return sum, nil
