@@ -305,11 +305,19 @@ func (g *schemaGen) generate2(name string, schema *jsonschema.Schema) (ret *ir.T
 			jsonschema.Number,
 			jsonschema.Boolean,
 			jsonschema.Null:
-		default:
-			return nil, errors.Wrap(
-				&ErrNotImplemented{Name: "non-primitive enum"},
-				name,
-			)
+			// Primitive enums are handled below
+		case jsonschema.Object:
+			// Non-primitive object enums generate sum types with struct variants.
+			// Each enum value becomes a concrete struct type.
+			t, err := g.nonPrimitiveObjectEnum(name, schema)
+			if err != nil {
+				return nil, errors.Wrap(err, "non-primitive object enum")
+			}
+			return t, nil
+		case jsonschema.Array, jsonschema.Empty:
+			// Array enums and empty type enums are treated as "any" type.
+			// The enum constraint is documented in OpenAPI but not enforced at runtime.
+			return g.regtype(name, ir.Any(schema)), nil
 		}
 	}
 
@@ -708,4 +716,210 @@ func (g *schemaGen) checkDefaultType(s *jsonschema.Schema, val any) error {
 	}
 
 	return nil
+}
+
+// nonPrimitiveObjectEnum generates a sum type for object enums.
+// Each enum value becomes a concrete struct variant.
+func (g *schemaGen) nonPrimitiveObjectEnum(name string, schema *jsonschema.Schema) (*ir.Type, error) {
+	if len(schema.Enum) == 0 {
+		return nil, errors.New("enum has no values")
+	}
+
+	// Convert enum values to map[string]any
+	enumObjects := make([]map[string]any, 0, len(schema.Enum))
+	for i, v := range schema.Enum {
+		obj, ok := v.(map[string]any)
+		if !ok {
+			return nil, errors.Errorf("enum[%d]: expected object, got %T", i, v)
+		}
+		enumObjects = append(enumObjects, obj)
+	}
+
+	// Find a discriminating field - a string field with unique values across all variants
+	discriminatorField, variantNames := findEnumDiscriminator(enumObjects)
+	if discriminatorField == "" {
+		// No discriminator found, fall back to index-based naming
+		for i := range enumObjects {
+			variantNames = append(variantNames, fmt.Sprintf("Variant%d", i))
+		}
+	}
+
+	// Create the sum type
+	sum := g.regtype(name, &ir.Type{
+		Name:   name,
+		Kind:   ir.KindSum,
+		Schema: schema,
+	})
+
+	// Generate struct types for each enum value
+	variants := make([]*ir.Type, 0, len(enumObjects))
+	for i, obj := range enumObjects {
+		variantName := name + variantNames[i]
+		variantSchema := inferSchemaFromObject(obj)
+
+		// Generate the variant struct type
+		variantType := &ir.Type{
+			Kind:   ir.KindStruct,
+			Name:   variantName,
+			Schema: variantSchema,
+		}
+
+		// Add fields from the object
+		for fieldName, fieldValue := range obj {
+			fieldSchema := inferSchemaFromValue(fieldValue)
+			fieldType := g.inferTypeFromValue(fieldValue, fieldSchema)
+
+			field := &ir.Field{
+				Name: naming.Capitalize(fieldName),
+				Type: fieldType,
+				Tag: ir.Tag{
+					JSON: fieldName,
+				},
+				Spec: &jsonschema.Property{
+					Name:     fieldName,
+					Schema:   fieldSchema,
+					Required: true,
+				},
+			}
+			variantType.Fields = append(variantType.Fields, field)
+		}
+
+		// Register and add to variants
+		g.regtype(variantName, variantType)
+		variants = append(variants, variantType)
+	}
+
+	sum.SumOf = variants
+
+	// Set up discrimination
+	if discriminatorField != "" {
+		// Value-based discrimination on the discriminator field
+		valueToVariant := make(map[string]string)
+		for i, obj := range enumObjects {
+			if val, ok := obj[discriminatorField].(string); ok {
+				valueToVariant[val] = variants[i].Name + name
+			}
+		}
+		sum.SumSpec.ValueDiscriminators = map[string]ir.ValueDiscriminator{
+			discriminatorField: {
+				FieldName:      discriminatorField,
+				ValueToVariant: valueToVariant,
+			},
+		}
+	} else {
+		// No discriminator field found, use type-based discrimination as fallback
+		sum.SumSpec.TypeDiscriminator = true
+	}
+
+	return sum, nil
+}
+
+// findEnumDiscriminator finds a string field that has unique values across all enum objects.
+func findEnumDiscriminator(objects []map[string]any) (fieldName string, values []string) {
+	if len(objects) == 0 {
+		return "", nil
+	}
+
+	// Find all string fields present in all objects
+	stringFields := make(map[string][]string)
+	for _, obj := range objects {
+		for k, v := range obj {
+			if s, ok := v.(string); ok {
+				stringFields[k] = append(stringFields[k], s)
+			}
+		}
+	}
+
+	// Find a field with unique values across all objects
+	for field, values := range stringFields {
+		if len(values) != len(objects) {
+			continue // Field not present in all objects
+		}
+
+		// Check if all values are unique
+		seen := make(map[string]bool)
+		allUnique := true
+		for _, v := range values {
+			if seen[v] {
+				allUnique = false
+				break
+			}
+			seen[v] = true
+		}
+
+		if allUnique {
+			// Use these values as variant names (capitalized)
+			variantNames := make([]string, len(values))
+			for i, v := range values {
+				variantNames[i] = naming.Capitalize(v)
+			}
+			return field, variantNames
+		}
+	}
+
+	return "", nil
+}
+
+// inferSchemaFromObject creates a jsonschema.Schema from an object literal.
+func inferSchemaFromObject(obj map[string]any) *jsonschema.Schema {
+	schema := &jsonschema.Schema{
+		Type: jsonschema.Object,
+	}
+	for fieldName, fieldValue := range obj {
+		prop := jsonschema.Property{
+			Name:     fieldName,
+			Schema:   inferSchemaFromValue(fieldValue),
+			Required: true,
+		}
+		schema.Properties = append(schema.Properties, prop)
+	}
+	return schema
+}
+
+// inferSchemaFromValue creates a jsonschema.Schema from a JSON value.
+func inferSchemaFromValue(v any) *jsonschema.Schema {
+	switch val := v.(type) {
+	case string:
+		return &jsonschema.Schema{Type: jsonschema.String}
+	case int64:
+		return &jsonschema.Schema{Type: jsonschema.Integer}
+	case float64:
+		return &jsonschema.Schema{Type: jsonschema.Number}
+	case bool:
+		return &jsonschema.Schema{Type: jsonschema.Boolean}
+	case nil:
+		return &jsonschema.Schema{Type: jsonschema.Null}
+	case []any:
+		schema := &jsonschema.Schema{Type: jsonschema.Array}
+		if len(val) > 0 {
+			schema.Item = inferSchemaFromValue(val[0])
+		}
+		return schema
+	case map[string]any:
+		return inferSchemaFromObject(val)
+	default:
+		return &jsonschema.Schema{}
+	}
+}
+
+// inferTypeFromValue creates an ir.Type from a JSON value.
+func (g *schemaGen) inferTypeFromValue(v any, schema *jsonschema.Schema) *ir.Type {
+	switch v.(type) {
+	case string:
+		return ir.Primitive(ir.String, schema)
+	case int64:
+		return ir.Primitive(ir.Int64, schema)
+	case float64:
+		return ir.Primitive(ir.Float64, schema)
+	case bool:
+		return ir.Primitive(ir.Bool, schema)
+	case nil:
+		return ir.Primitive(ir.Null, schema)
+	case []any:
+		return ir.Array(g.inferTypeFromValue(nil, nil), ir.NilInvalid, schema)
+	case map[string]any:
+		return ir.Any(schema)
+	default:
+		return ir.Any(schema)
+	}
 }
