@@ -815,7 +815,7 @@ func (g *schemaGen) nonPrimitiveObjectEnum(name string, schema *jsonschema.Schem
 }
 
 // findEnumDiscriminator finds a string field that has unique values across all enum objects.
-func findEnumDiscriminator(objects []map[string]any) (string, []string) {
+func findEnumDiscriminator(objects []map[string]any) (fieldName string, values []string) {
 	if len(objects) == 0 {
 		return "", nil
 	}
