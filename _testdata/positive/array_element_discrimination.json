@@ -1,0 +1,264 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Array Element Type Discrimination Test",
+    "version": "1.0.0",
+    "description": "Tests discrimination between oneOf variants based on array element types (currently unsupported but should work)"
+  },
+  "paths": {
+    "/basic-arrays": {
+      "get": {
+        "operationId": "getBasicArrays",
+        "description": "Test basic array element discrimination: string[] vs integer[]",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/BasicArrayResource"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/object-vs-primitive-arrays": {
+      "get": {
+        "operationId": "getObjectVsPrimitiveArrays",
+        "description": "Test array of objects vs array of primitives",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ObjectVsPrimitiveResource"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/mixed-discrimination": {
+      "post": {
+        "operationId": "postMixedDiscrimination",
+        "description": "Test mixed discrimination with array field + other fields",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MixedDiscriminationResource"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "BasicArrayResource": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/StringArrayVariant"
+          },
+          {
+            "$ref": "#/components/schemas/IntegerArrayVariant"
+          },
+          {
+            "$ref": "#/components/schemas/BooleanArrayVariant"
+          }
+        ]
+      },
+      "StringArrayVariant": {
+        "type": "object",
+        "required": ["name", "items"],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "items": {
+            "type": "array",
+            "description": "Array of string items",
+            "items": {
+              "type": "string"
+            }
+          },
+          "stringInfo": {
+            "type": "string",
+            "description": "Unique to string variant for fallback discrimination"
+          }
+        }
+      },
+      "IntegerArrayVariant": {
+        "type": "object",
+        "required": ["name", "items"],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "items": {
+            "type": "array",
+            "description": "Array of integer items",
+            "items": {
+              "type": "integer"
+            }
+          },
+          "intInfo": {
+            "type": "integer",
+            "description": "Unique to integer variant for fallback discrimination"
+          }
+        }
+      },
+      "BooleanArrayVariant": {
+        "type": "object",
+        "required": ["name", "items"],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "items": {
+            "type": "array",
+            "description": "Array of boolean items",
+            "items": {
+              "type": "boolean"
+            }
+          },
+          "boolInfo": {
+            "type": "boolean",
+            "description": "Unique to boolean variant for fallback discrimination"
+          }
+        }
+      },
+      "ObjectVsPrimitiveResource": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/ObjectArrayVariant"
+          },
+          {
+            "$ref": "#/components/schemas/PrimitiveArrayVariant"
+          }
+        ]
+      },
+      "ObjectArrayVariant": {
+        "type": "object",
+        "required": ["id", "items"],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "items": {
+            "type": "array",
+            "description": "Array of object items",
+            "items": {
+              "type": "object",
+              "required": ["key", "value"],
+              "properties": {
+                "key": {
+                  "type": "string"
+                },
+                "value": {
+                  "type": "integer"
+                }
+              }
+            }
+          },
+          "objectMeta": {
+            "type": "object",
+            "description": "Unique to object variant for fallback discrimination",
+            "properties": {
+              "version": {
+                "type": "integer"
+              }
+            }
+          }
+        }
+      },
+      "PrimitiveArrayVariant": {
+        "type": "object",
+        "required": ["id", "items"],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "items": {
+            "type": "array",
+            "description": "Array of primitive string items",
+            "items": {
+              "type": "string"
+            }
+          },
+          "primitiveMeta": {
+            "type": "string",
+            "description": "Unique to primitive variant for fallback discrimination"
+          }
+        }
+      },
+      "MixedDiscriminationResource": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/MixedStringArrayVariant"
+          },
+          {
+            "$ref": "#/components/schemas/MixedNumberArrayVariant"
+          }
+        ]
+      },
+      "MixedStringArrayVariant": {
+        "type": "object",
+        "required": ["id", "items", "metadata"],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "items": {
+            "type": "array",
+            "description": "Array of strings",
+            "items": {
+              "type": "string"
+            }
+          },
+          "metadata": {
+            "type": "string",
+            "description": "Unique to string variant"
+          }
+        }
+      },
+      "MixedNumberArrayVariant": {
+        "type": "object",
+        "required": ["id", "items", "count"],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "items": {
+            "type": "array",
+            "description": "Array of numbers",
+            "items": {
+              "type": "number"
+            }
+          },
+          "count": {
+            "type": "integer",
+            "description": "Unique to number variant"
+          }
+        }
+      }
+    }
+  }
+}
