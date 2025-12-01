@@ -1,0 +1,97 @@
+openapi: 3.0.1
+info:
+  version: 1.0.0
+  title: API with +json suffix content types
+  description: Tests that +json suffix media types are automatically handled as JSON per RFC 6838
+paths:
+  /resources/{id}:
+    patch:
+      operationId: patchResource
+      summary: Update resource using JSON Patch
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json-patch+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/JSONPatchOperation'
+      responses:
+        "200":
+          description: Resource updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /resources/{id}/merge:
+    patch:
+      operationId: mergeResource
+      summary: Update resource using JSON Merge Patch
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/merge-patch+json:
+            schema:
+              $ref: '#/components/schemas/Resource'
+      responses:
+        "200":
+          description: Resource updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /custom:
+    post:
+      operationId: customVendorJson
+      summary: Test custom vendor +json type
+      requestBody:
+        required: true
+        content:
+          application/vnd.example.custom+json:
+            schema:
+              type: object
+              properties:
+                data:
+                  type: string
+      responses:
+        "201":
+          description: Created
+components:
+  schemas:
+    JSONPatchOperation:
+      type: object
+      required:
+        - op
+        - path
+      properties:
+        op:
+          type: string
+          enum: [add, remove, replace, move, copy, test]
+        path:
+          type: string
+        value: {}
+        from:
+          type: string
+    Resource:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        tags:
+          type: array
+          items:
+            type: string
