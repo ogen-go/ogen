@@ -23,6 +23,18 @@ func TestGetServiceAccountIssuerOpenIDConfigurationOKApplicationJSON_EncodeDecod
 	var typ2 GetServiceAccountIssuerOpenIDConfigurationOKApplicationJSON
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+func TestGetServiceAccountIssuerOpenIDKeysetOKApplicationJwkSetJSON_EncodeDecode(t *testing.T) {
+	var typ GetServiceAccountIssuerOpenIDKeysetOKApplicationJwkSetJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GetServiceAccountIssuerOpenIDKeysetOKApplicationJwkSetJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
 func TestIoK8sAPIAdmissionregistrationV1MutatingWebhook_EncodeDecode(t *testing.T) {
 	var typ IoK8sAPIAdmissionregistrationV1MutatingWebhook
 	typ.SetFake()
@@ -6811,6 +6823,2202 @@ func TestIoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference_EncodeDecod
 	var typ2 IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+func TestPatchAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAdmissionregistrationV1MutatingWebhookConfigurationApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchAdmissionregistrationV1MutatingWebhookConfigurationApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAdmissionregistrationV1MutatingWebhookConfigurationApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAdmissionregistrationV1MutatingWebhookConfigurationApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchAdmissionregistrationV1MutatingWebhookConfigurationApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAdmissionregistrationV1MutatingWebhookConfigurationApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAdmissionregistrationV1MutatingWebhookConfigurationCreated_EncodeDecode(t *testing.T) {
+	var typ PatchAdmissionregistrationV1MutatingWebhookConfigurationCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAdmissionregistrationV1MutatingWebhookConfigurationCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAdmissionregistrationV1MutatingWebhookConfigurationOK_EncodeDecode(t *testing.T) {
+	var typ PatchAdmissionregistrationV1MutatingWebhookConfigurationOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAdmissionregistrationV1MutatingWebhookConfigurationOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAdmissionregistrationV1ValidatingWebhookConfigurationApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchAdmissionregistrationV1ValidatingWebhookConfigurationApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAdmissionregistrationV1ValidatingWebhookConfigurationApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAdmissionregistrationV1ValidatingWebhookConfigurationApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchAdmissionregistrationV1ValidatingWebhookConfigurationApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAdmissionregistrationV1ValidatingWebhookConfigurationApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAdmissionregistrationV1ValidatingWebhookConfigurationCreated_EncodeDecode(t *testing.T) {
+	var typ PatchAdmissionregistrationV1ValidatingWebhookConfigurationCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAdmissionregistrationV1ValidatingWebhookConfigurationCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAdmissionregistrationV1ValidatingWebhookConfigurationOK_EncodeDecode(t *testing.T) {
+	var typ PatchAdmissionregistrationV1ValidatingWebhookConfigurationOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAdmissionregistrationV1ValidatingWebhookConfigurationOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchApiextensionsV1CustomResourceDefinitionApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchApiextensionsV1CustomResourceDefinitionApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchApiextensionsV1CustomResourceDefinitionApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchApiextensionsV1CustomResourceDefinitionApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchApiextensionsV1CustomResourceDefinitionApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchApiextensionsV1CustomResourceDefinitionApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchApiextensionsV1CustomResourceDefinitionApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchApiextensionsV1CustomResourceDefinitionApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchApiextensionsV1CustomResourceDefinitionApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchApiextensionsV1CustomResourceDefinitionCreated_EncodeDecode(t *testing.T) {
+	var typ PatchApiextensionsV1CustomResourceDefinitionCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchApiextensionsV1CustomResourceDefinitionCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchApiextensionsV1CustomResourceDefinitionOK_EncodeDecode(t *testing.T) {
+	var typ PatchApiextensionsV1CustomResourceDefinitionOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchApiextensionsV1CustomResourceDefinitionOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchApiextensionsV1CustomResourceDefinitionStatusApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchApiextensionsV1CustomResourceDefinitionStatusApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchApiextensionsV1CustomResourceDefinitionStatusApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchApiextensionsV1CustomResourceDefinitionStatusApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchApiextensionsV1CustomResourceDefinitionStatusApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchApiextensionsV1CustomResourceDefinitionStatusApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchApiextensionsV1CustomResourceDefinitionStatusApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchApiextensionsV1CustomResourceDefinitionStatusApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchApiextensionsV1CustomResourceDefinitionStatusApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchApiextensionsV1CustomResourceDefinitionStatusCreated_EncodeDecode(t *testing.T) {
+	var typ PatchApiextensionsV1CustomResourceDefinitionStatusCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchApiextensionsV1CustomResourceDefinitionStatusCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchApiextensionsV1CustomResourceDefinitionStatusOK_EncodeDecode(t *testing.T) {
+	var typ PatchApiextensionsV1CustomResourceDefinitionStatusOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchApiextensionsV1CustomResourceDefinitionStatusOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchApiregistrationV1APIServiceApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchApiregistrationV1APIServiceApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchApiregistrationV1APIServiceApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchApiregistrationV1APIServiceApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchApiregistrationV1APIServiceApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchApiregistrationV1APIServiceApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchApiregistrationV1APIServiceApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchApiregistrationV1APIServiceApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchApiregistrationV1APIServiceApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchApiregistrationV1APIServiceCreated_EncodeDecode(t *testing.T) {
+	var typ PatchApiregistrationV1APIServiceCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchApiregistrationV1APIServiceCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchApiregistrationV1APIServiceOK_EncodeDecode(t *testing.T) {
+	var typ PatchApiregistrationV1APIServiceOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchApiregistrationV1APIServiceOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchApiregistrationV1APIServiceStatusApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchApiregistrationV1APIServiceStatusApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchApiregistrationV1APIServiceStatusApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchApiregistrationV1APIServiceStatusApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchApiregistrationV1APIServiceStatusApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchApiregistrationV1APIServiceStatusApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchApiregistrationV1APIServiceStatusApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchApiregistrationV1APIServiceStatusApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchApiregistrationV1APIServiceStatusApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchApiregistrationV1APIServiceStatusCreated_EncodeDecode(t *testing.T) {
+	var typ PatchApiregistrationV1APIServiceStatusCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchApiregistrationV1APIServiceStatusCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchApiregistrationV1APIServiceStatusOK_EncodeDecode(t *testing.T) {
+	var typ PatchApiregistrationV1APIServiceStatusOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchApiregistrationV1APIServiceStatusOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAppsV1NamespacedControllerRevisionApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchAppsV1NamespacedControllerRevisionApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAppsV1NamespacedControllerRevisionApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAppsV1NamespacedControllerRevisionApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchAppsV1NamespacedControllerRevisionApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAppsV1NamespacedControllerRevisionApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAppsV1NamespacedControllerRevisionApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchAppsV1NamespacedControllerRevisionApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAppsV1NamespacedControllerRevisionApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAppsV1NamespacedControllerRevisionCreated_EncodeDecode(t *testing.T) {
+	var typ PatchAppsV1NamespacedControllerRevisionCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAppsV1NamespacedControllerRevisionCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAppsV1NamespacedControllerRevisionOK_EncodeDecode(t *testing.T) {
+	var typ PatchAppsV1NamespacedControllerRevisionOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAppsV1NamespacedControllerRevisionOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAppsV1NamespacedDaemonSetApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchAppsV1NamespacedDaemonSetApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAppsV1NamespacedDaemonSetApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAppsV1NamespacedDaemonSetApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchAppsV1NamespacedDaemonSetApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAppsV1NamespacedDaemonSetApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAppsV1NamespacedDaemonSetApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchAppsV1NamespacedDaemonSetApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAppsV1NamespacedDaemonSetApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAppsV1NamespacedDaemonSetCreated_EncodeDecode(t *testing.T) {
+	var typ PatchAppsV1NamespacedDaemonSetCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAppsV1NamespacedDaemonSetCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAppsV1NamespacedDaemonSetOK_EncodeDecode(t *testing.T) {
+	var typ PatchAppsV1NamespacedDaemonSetOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAppsV1NamespacedDaemonSetOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAppsV1NamespacedDaemonSetStatusApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchAppsV1NamespacedDaemonSetStatusApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAppsV1NamespacedDaemonSetStatusApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAppsV1NamespacedDaemonSetStatusApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchAppsV1NamespacedDaemonSetStatusApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAppsV1NamespacedDaemonSetStatusApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAppsV1NamespacedDaemonSetStatusApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchAppsV1NamespacedDaemonSetStatusApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAppsV1NamespacedDaemonSetStatusApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAppsV1NamespacedDaemonSetStatusCreated_EncodeDecode(t *testing.T) {
+	var typ PatchAppsV1NamespacedDaemonSetStatusCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAppsV1NamespacedDaemonSetStatusCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAppsV1NamespacedDaemonSetStatusOK_EncodeDecode(t *testing.T) {
+	var typ PatchAppsV1NamespacedDaemonSetStatusOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAppsV1NamespacedDaemonSetStatusOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAppsV1NamespacedDeploymentApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchAppsV1NamespacedDeploymentApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAppsV1NamespacedDeploymentApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAppsV1NamespacedDeploymentApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchAppsV1NamespacedDeploymentApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAppsV1NamespacedDeploymentApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAppsV1NamespacedDeploymentApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchAppsV1NamespacedDeploymentApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAppsV1NamespacedDeploymentApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAppsV1NamespacedDeploymentCreated_EncodeDecode(t *testing.T) {
+	var typ PatchAppsV1NamespacedDeploymentCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAppsV1NamespacedDeploymentCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAppsV1NamespacedDeploymentOK_EncodeDecode(t *testing.T) {
+	var typ PatchAppsV1NamespacedDeploymentOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAppsV1NamespacedDeploymentOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAppsV1NamespacedDeploymentScaleApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchAppsV1NamespacedDeploymentScaleApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAppsV1NamespacedDeploymentScaleApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAppsV1NamespacedDeploymentScaleApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchAppsV1NamespacedDeploymentScaleApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAppsV1NamespacedDeploymentScaleApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAppsV1NamespacedDeploymentScaleApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchAppsV1NamespacedDeploymentScaleApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAppsV1NamespacedDeploymentScaleApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAppsV1NamespacedDeploymentScaleCreated_EncodeDecode(t *testing.T) {
+	var typ PatchAppsV1NamespacedDeploymentScaleCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAppsV1NamespacedDeploymentScaleCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAppsV1NamespacedDeploymentScaleOK_EncodeDecode(t *testing.T) {
+	var typ PatchAppsV1NamespacedDeploymentScaleOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAppsV1NamespacedDeploymentScaleOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAppsV1NamespacedDeploymentStatusApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchAppsV1NamespacedDeploymentStatusApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAppsV1NamespacedDeploymentStatusApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAppsV1NamespacedDeploymentStatusApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchAppsV1NamespacedDeploymentStatusApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAppsV1NamespacedDeploymentStatusApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAppsV1NamespacedDeploymentStatusApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchAppsV1NamespacedDeploymentStatusApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAppsV1NamespacedDeploymentStatusApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAppsV1NamespacedDeploymentStatusCreated_EncodeDecode(t *testing.T) {
+	var typ PatchAppsV1NamespacedDeploymentStatusCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAppsV1NamespacedDeploymentStatusCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAppsV1NamespacedDeploymentStatusOK_EncodeDecode(t *testing.T) {
+	var typ PatchAppsV1NamespacedDeploymentStatusOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAppsV1NamespacedDeploymentStatusOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAppsV1NamespacedReplicaSetApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchAppsV1NamespacedReplicaSetApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAppsV1NamespacedReplicaSetApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAppsV1NamespacedReplicaSetApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchAppsV1NamespacedReplicaSetApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAppsV1NamespacedReplicaSetApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAppsV1NamespacedReplicaSetApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchAppsV1NamespacedReplicaSetApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAppsV1NamespacedReplicaSetApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAppsV1NamespacedReplicaSetCreated_EncodeDecode(t *testing.T) {
+	var typ PatchAppsV1NamespacedReplicaSetCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAppsV1NamespacedReplicaSetCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAppsV1NamespacedReplicaSetOK_EncodeDecode(t *testing.T) {
+	var typ PatchAppsV1NamespacedReplicaSetOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAppsV1NamespacedReplicaSetOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAppsV1NamespacedReplicaSetScaleApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchAppsV1NamespacedReplicaSetScaleApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAppsV1NamespacedReplicaSetScaleApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAppsV1NamespacedReplicaSetScaleApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchAppsV1NamespacedReplicaSetScaleApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAppsV1NamespacedReplicaSetScaleApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAppsV1NamespacedReplicaSetScaleApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchAppsV1NamespacedReplicaSetScaleApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAppsV1NamespacedReplicaSetScaleApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAppsV1NamespacedReplicaSetScaleCreated_EncodeDecode(t *testing.T) {
+	var typ PatchAppsV1NamespacedReplicaSetScaleCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAppsV1NamespacedReplicaSetScaleCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAppsV1NamespacedReplicaSetScaleOK_EncodeDecode(t *testing.T) {
+	var typ PatchAppsV1NamespacedReplicaSetScaleOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAppsV1NamespacedReplicaSetScaleOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAppsV1NamespacedReplicaSetStatusApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchAppsV1NamespacedReplicaSetStatusApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAppsV1NamespacedReplicaSetStatusApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAppsV1NamespacedReplicaSetStatusApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchAppsV1NamespacedReplicaSetStatusApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAppsV1NamespacedReplicaSetStatusApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAppsV1NamespacedReplicaSetStatusApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchAppsV1NamespacedReplicaSetStatusApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAppsV1NamespacedReplicaSetStatusApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAppsV1NamespacedReplicaSetStatusCreated_EncodeDecode(t *testing.T) {
+	var typ PatchAppsV1NamespacedReplicaSetStatusCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAppsV1NamespacedReplicaSetStatusCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAppsV1NamespacedReplicaSetStatusOK_EncodeDecode(t *testing.T) {
+	var typ PatchAppsV1NamespacedReplicaSetStatusOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAppsV1NamespacedReplicaSetStatusOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAppsV1NamespacedStatefulSetApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchAppsV1NamespacedStatefulSetApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAppsV1NamespacedStatefulSetApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAppsV1NamespacedStatefulSetApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchAppsV1NamespacedStatefulSetApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAppsV1NamespacedStatefulSetApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAppsV1NamespacedStatefulSetApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchAppsV1NamespacedStatefulSetApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAppsV1NamespacedStatefulSetApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAppsV1NamespacedStatefulSetCreated_EncodeDecode(t *testing.T) {
+	var typ PatchAppsV1NamespacedStatefulSetCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAppsV1NamespacedStatefulSetCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAppsV1NamespacedStatefulSetOK_EncodeDecode(t *testing.T) {
+	var typ PatchAppsV1NamespacedStatefulSetOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAppsV1NamespacedStatefulSetOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAppsV1NamespacedStatefulSetScaleApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchAppsV1NamespacedStatefulSetScaleApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAppsV1NamespacedStatefulSetScaleApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAppsV1NamespacedStatefulSetScaleApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchAppsV1NamespacedStatefulSetScaleApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAppsV1NamespacedStatefulSetScaleApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAppsV1NamespacedStatefulSetScaleApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchAppsV1NamespacedStatefulSetScaleApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAppsV1NamespacedStatefulSetScaleApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAppsV1NamespacedStatefulSetScaleCreated_EncodeDecode(t *testing.T) {
+	var typ PatchAppsV1NamespacedStatefulSetScaleCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAppsV1NamespacedStatefulSetScaleCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAppsV1NamespacedStatefulSetScaleOK_EncodeDecode(t *testing.T) {
+	var typ PatchAppsV1NamespacedStatefulSetScaleOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAppsV1NamespacedStatefulSetScaleOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAppsV1NamespacedStatefulSetStatusApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchAppsV1NamespacedStatefulSetStatusApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAppsV1NamespacedStatefulSetStatusApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAppsV1NamespacedStatefulSetStatusApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchAppsV1NamespacedStatefulSetStatusApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAppsV1NamespacedStatefulSetStatusApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAppsV1NamespacedStatefulSetStatusApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchAppsV1NamespacedStatefulSetStatusApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAppsV1NamespacedStatefulSetStatusApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAppsV1NamespacedStatefulSetStatusCreated_EncodeDecode(t *testing.T) {
+	var typ PatchAppsV1NamespacedStatefulSetStatusCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAppsV1NamespacedStatefulSetStatusCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAppsV1NamespacedStatefulSetStatusOK_EncodeDecode(t *testing.T) {
+	var typ PatchAppsV1NamespacedStatefulSetStatusOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAppsV1NamespacedStatefulSetStatusOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAutoscalingV1NamespacedHorizontalPodAutoscalerApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchAutoscalingV1NamespacedHorizontalPodAutoscalerApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAutoscalingV1NamespacedHorizontalPodAutoscalerApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAutoscalingV1NamespacedHorizontalPodAutoscalerApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchAutoscalingV1NamespacedHorizontalPodAutoscalerApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAutoscalingV1NamespacedHorizontalPodAutoscalerApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAutoscalingV1NamespacedHorizontalPodAutoscalerApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchAutoscalingV1NamespacedHorizontalPodAutoscalerApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAutoscalingV1NamespacedHorizontalPodAutoscalerApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAutoscalingV1NamespacedHorizontalPodAutoscalerCreated_EncodeDecode(t *testing.T) {
+	var typ PatchAutoscalingV1NamespacedHorizontalPodAutoscalerCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAutoscalingV1NamespacedHorizontalPodAutoscalerCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAutoscalingV1NamespacedHorizontalPodAutoscalerOK_EncodeDecode(t *testing.T) {
+	var typ PatchAutoscalingV1NamespacedHorizontalPodAutoscalerOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAutoscalingV1NamespacedHorizontalPodAutoscalerOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusCreated_EncodeDecode(t *testing.T) {
+	var typ PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusOK_EncodeDecode(t *testing.T) {
+	var typ PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerCreated_EncodeDecode(t *testing.T) {
+	var typ PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerOK_EncodeDecode(t *testing.T) {
+	var typ PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusCreated_EncodeDecode(t *testing.T) {
+	var typ PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusOK_EncodeDecode(t *testing.T) {
+	var typ PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerCreated_EncodeDecode(t *testing.T) {
+	var typ PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerOK_EncodeDecode(t *testing.T) {
+	var typ PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusCreated_EncodeDecode(t *testing.T) {
+	var typ PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusOK_EncodeDecode(t *testing.T) {
+	var typ PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchBatchV1NamespacedCronJobApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchBatchV1NamespacedCronJobApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchBatchV1NamespacedCronJobApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchBatchV1NamespacedCronJobApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchBatchV1NamespacedCronJobApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchBatchV1NamespacedCronJobApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchBatchV1NamespacedCronJobApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchBatchV1NamespacedCronJobApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchBatchV1NamespacedCronJobApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchBatchV1NamespacedCronJobCreated_EncodeDecode(t *testing.T) {
+	var typ PatchBatchV1NamespacedCronJobCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchBatchV1NamespacedCronJobCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchBatchV1NamespacedCronJobOK_EncodeDecode(t *testing.T) {
+	var typ PatchBatchV1NamespacedCronJobOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchBatchV1NamespacedCronJobOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchBatchV1NamespacedCronJobStatusApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchBatchV1NamespacedCronJobStatusApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchBatchV1NamespacedCronJobStatusApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchBatchV1NamespacedCronJobStatusApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchBatchV1NamespacedCronJobStatusApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchBatchV1NamespacedCronJobStatusApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchBatchV1NamespacedCronJobStatusApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchBatchV1NamespacedCronJobStatusApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchBatchV1NamespacedCronJobStatusApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchBatchV1NamespacedCronJobStatusCreated_EncodeDecode(t *testing.T) {
+	var typ PatchBatchV1NamespacedCronJobStatusCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchBatchV1NamespacedCronJobStatusCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchBatchV1NamespacedCronJobStatusOK_EncodeDecode(t *testing.T) {
+	var typ PatchBatchV1NamespacedCronJobStatusOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchBatchV1NamespacedCronJobStatusOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchBatchV1NamespacedJobApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchBatchV1NamespacedJobApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchBatchV1NamespacedJobApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchBatchV1NamespacedJobApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchBatchV1NamespacedJobApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchBatchV1NamespacedJobApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchBatchV1NamespacedJobApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchBatchV1NamespacedJobApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchBatchV1NamespacedJobApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchBatchV1NamespacedJobCreated_EncodeDecode(t *testing.T) {
+	var typ PatchBatchV1NamespacedJobCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchBatchV1NamespacedJobCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchBatchV1NamespacedJobOK_EncodeDecode(t *testing.T) {
+	var typ PatchBatchV1NamespacedJobOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchBatchV1NamespacedJobOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchBatchV1NamespacedJobStatusApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchBatchV1NamespacedJobStatusApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchBatchV1NamespacedJobStatusApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchBatchV1NamespacedJobStatusApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchBatchV1NamespacedJobStatusApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchBatchV1NamespacedJobStatusApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchBatchV1NamespacedJobStatusApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchBatchV1NamespacedJobStatusApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchBatchV1NamespacedJobStatusApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchBatchV1NamespacedJobStatusCreated_EncodeDecode(t *testing.T) {
+	var typ PatchBatchV1NamespacedJobStatusCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchBatchV1NamespacedJobStatusCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchBatchV1NamespacedJobStatusOK_EncodeDecode(t *testing.T) {
+	var typ PatchBatchV1NamespacedJobStatusOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchBatchV1NamespacedJobStatusOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchBatchV1beta1NamespacedCronJobApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchBatchV1beta1NamespacedCronJobApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchBatchV1beta1NamespacedCronJobApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchBatchV1beta1NamespacedCronJobApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchBatchV1beta1NamespacedCronJobApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchBatchV1beta1NamespacedCronJobApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchBatchV1beta1NamespacedCronJobApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchBatchV1beta1NamespacedCronJobApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchBatchV1beta1NamespacedCronJobApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchBatchV1beta1NamespacedCronJobCreated_EncodeDecode(t *testing.T) {
+	var typ PatchBatchV1beta1NamespacedCronJobCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchBatchV1beta1NamespacedCronJobCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchBatchV1beta1NamespacedCronJobOK_EncodeDecode(t *testing.T) {
+	var typ PatchBatchV1beta1NamespacedCronJobOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchBatchV1beta1NamespacedCronJobOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchBatchV1beta1NamespacedCronJobStatusApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchBatchV1beta1NamespacedCronJobStatusApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchBatchV1beta1NamespacedCronJobStatusApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchBatchV1beta1NamespacedCronJobStatusApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchBatchV1beta1NamespacedCronJobStatusApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchBatchV1beta1NamespacedCronJobStatusApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchBatchV1beta1NamespacedCronJobStatusApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchBatchV1beta1NamespacedCronJobStatusApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchBatchV1beta1NamespacedCronJobStatusApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchBatchV1beta1NamespacedCronJobStatusCreated_EncodeDecode(t *testing.T) {
+	var typ PatchBatchV1beta1NamespacedCronJobStatusCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchBatchV1beta1NamespacedCronJobStatusCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchBatchV1beta1NamespacedCronJobStatusOK_EncodeDecode(t *testing.T) {
+	var typ PatchBatchV1beta1NamespacedCronJobStatusOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchBatchV1beta1NamespacedCronJobStatusOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCertificatesV1CertificateSigningRequestApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchCertificatesV1CertificateSigningRequestApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCertificatesV1CertificateSigningRequestApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCertificatesV1CertificateSigningRequestApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchCertificatesV1CertificateSigningRequestApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCertificatesV1CertificateSigningRequestApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCertificatesV1CertificateSigningRequestApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchCertificatesV1CertificateSigningRequestApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCertificatesV1CertificateSigningRequestApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCertificatesV1CertificateSigningRequestApprovalApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchCertificatesV1CertificateSigningRequestApprovalApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCertificatesV1CertificateSigningRequestApprovalApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCertificatesV1CertificateSigningRequestApprovalApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchCertificatesV1CertificateSigningRequestApprovalApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCertificatesV1CertificateSigningRequestApprovalApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCertificatesV1CertificateSigningRequestApprovalApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchCertificatesV1CertificateSigningRequestApprovalApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCertificatesV1CertificateSigningRequestApprovalApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCertificatesV1CertificateSigningRequestApprovalCreated_EncodeDecode(t *testing.T) {
+	var typ PatchCertificatesV1CertificateSigningRequestApprovalCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCertificatesV1CertificateSigningRequestApprovalCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCertificatesV1CertificateSigningRequestApprovalOK_EncodeDecode(t *testing.T) {
+	var typ PatchCertificatesV1CertificateSigningRequestApprovalOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCertificatesV1CertificateSigningRequestApprovalOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCertificatesV1CertificateSigningRequestCreated_EncodeDecode(t *testing.T) {
+	var typ PatchCertificatesV1CertificateSigningRequestCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCertificatesV1CertificateSigningRequestCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCertificatesV1CertificateSigningRequestOK_EncodeDecode(t *testing.T) {
+	var typ PatchCertificatesV1CertificateSigningRequestOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCertificatesV1CertificateSigningRequestOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCertificatesV1CertificateSigningRequestStatusApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchCertificatesV1CertificateSigningRequestStatusApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCertificatesV1CertificateSigningRequestStatusApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCertificatesV1CertificateSigningRequestStatusApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchCertificatesV1CertificateSigningRequestStatusApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCertificatesV1CertificateSigningRequestStatusApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCertificatesV1CertificateSigningRequestStatusApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchCertificatesV1CertificateSigningRequestStatusApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCertificatesV1CertificateSigningRequestStatusApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCertificatesV1CertificateSigningRequestStatusCreated_EncodeDecode(t *testing.T) {
+	var typ PatchCertificatesV1CertificateSigningRequestStatusCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCertificatesV1CertificateSigningRequestStatusCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCertificatesV1CertificateSigningRequestStatusOK_EncodeDecode(t *testing.T) {
+	var typ PatchCertificatesV1CertificateSigningRequestStatusOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCertificatesV1CertificateSigningRequestStatusOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoordinationV1NamespacedLeaseApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchCoordinationV1NamespacedLeaseApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoordinationV1NamespacedLeaseApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoordinationV1NamespacedLeaseApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchCoordinationV1NamespacedLeaseApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoordinationV1NamespacedLeaseApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoordinationV1NamespacedLeaseApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchCoordinationV1NamespacedLeaseApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoordinationV1NamespacedLeaseApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoordinationV1NamespacedLeaseCreated_EncodeDecode(t *testing.T) {
+	var typ PatchCoordinationV1NamespacedLeaseCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoordinationV1NamespacedLeaseCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoordinationV1NamespacedLeaseOK_EncodeDecode(t *testing.T) {
+	var typ PatchCoordinationV1NamespacedLeaseOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoordinationV1NamespacedLeaseOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespaceApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespaceApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespaceApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespaceApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespaceApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespaceApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespaceApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespaceApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespaceApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespaceCreated_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespaceCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespaceCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespaceOK_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespaceOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespaceOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespaceStatusApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespaceStatusApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespaceStatusApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespaceStatusApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespaceStatusApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespaceStatusApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespaceStatusApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespaceStatusApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespaceStatusApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespaceStatusCreated_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespaceStatusCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespaceStatusCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespaceStatusOK_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespaceStatusOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespaceStatusOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedConfigMapApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedConfigMapApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedConfigMapApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedConfigMapApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedConfigMapApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedConfigMapApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedConfigMapApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedConfigMapApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedConfigMapApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
 func TestPatchCoreV1NamespacedConfigMapCreated_EncodeDecode(t *testing.T) {
 	var typ PatchCoreV1NamespacedConfigMapCreated
 	typ.SetFake()
@@ -6833,6 +9041,3606 @@ func TestPatchCoreV1NamespacedConfigMapOK_EncodeDecode(t *testing.T) {
 	require.True(t, std.Valid(data), "Encoded: %s", data)
 
 	var typ2 PatchCoreV1NamespacedConfigMapOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedEndpointsApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedEndpointsApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedEndpointsApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedEndpointsApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedEndpointsApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedEndpointsApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedEndpointsApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedEndpointsApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedEndpointsApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedEndpointsCreated_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedEndpointsCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedEndpointsCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedEndpointsOK_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedEndpointsOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedEndpointsOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedEventApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedEventApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedEventApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedEventApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedEventApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedEventApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedEventApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedEventApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedEventApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedEventCreated_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedEventCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedEventCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedEventOK_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedEventOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedEventOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedLimitRangeApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedLimitRangeApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedLimitRangeApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedLimitRangeApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedLimitRangeApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedLimitRangeApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedLimitRangeApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedLimitRangeApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedLimitRangeApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedLimitRangeCreated_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedLimitRangeCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedLimitRangeCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedLimitRangeOK_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedLimitRangeOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedLimitRangeOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedPersistentVolumeClaimApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedPersistentVolumeClaimApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedPersistentVolumeClaimApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedPersistentVolumeClaimApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedPersistentVolumeClaimApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedPersistentVolumeClaimApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedPersistentVolumeClaimApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedPersistentVolumeClaimApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedPersistentVolumeClaimApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedPersistentVolumeClaimCreated_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedPersistentVolumeClaimCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedPersistentVolumeClaimCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedPersistentVolumeClaimOK_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedPersistentVolumeClaimOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedPersistentVolumeClaimOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedPersistentVolumeClaimStatusApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedPersistentVolumeClaimStatusApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedPersistentVolumeClaimStatusApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedPersistentVolumeClaimStatusApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedPersistentVolumeClaimStatusApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedPersistentVolumeClaimStatusApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedPersistentVolumeClaimStatusApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedPersistentVolumeClaimStatusApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedPersistentVolumeClaimStatusApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedPersistentVolumeClaimStatusCreated_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedPersistentVolumeClaimStatusCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedPersistentVolumeClaimStatusCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedPersistentVolumeClaimStatusOK_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedPersistentVolumeClaimStatusOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedPersistentVolumeClaimStatusOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedPodApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedPodApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedPodApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedPodApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedPodApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedPodApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedPodApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedPodApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedPodApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedPodCreated_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedPodCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedPodCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedPodEphemeralcontainersApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedPodEphemeralcontainersApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedPodEphemeralcontainersApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedPodEphemeralcontainersApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedPodEphemeralcontainersApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedPodEphemeralcontainersApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedPodEphemeralcontainersApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedPodEphemeralcontainersApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedPodEphemeralcontainersApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedPodEphemeralcontainersCreated_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedPodEphemeralcontainersCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedPodEphemeralcontainersCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedPodEphemeralcontainersOK_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedPodEphemeralcontainersOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedPodEphemeralcontainersOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedPodOK_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedPodOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedPodOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedPodStatusApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedPodStatusApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedPodStatusApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedPodStatusApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedPodStatusApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedPodStatusApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedPodStatusApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedPodStatusApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedPodStatusApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedPodStatusCreated_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedPodStatusCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedPodStatusCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedPodStatusOK_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedPodStatusOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedPodStatusOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedPodTemplateApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedPodTemplateApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedPodTemplateApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedPodTemplateApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedPodTemplateApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedPodTemplateApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedPodTemplateApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedPodTemplateApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedPodTemplateApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedPodTemplateCreated_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedPodTemplateCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedPodTemplateCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedPodTemplateOK_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedPodTemplateOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedPodTemplateOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedReplicationControllerApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedReplicationControllerApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedReplicationControllerApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedReplicationControllerApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedReplicationControllerApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedReplicationControllerApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedReplicationControllerApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedReplicationControllerApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedReplicationControllerApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedReplicationControllerCreated_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedReplicationControllerCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedReplicationControllerCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedReplicationControllerOK_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedReplicationControllerOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedReplicationControllerOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedReplicationControllerScaleApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedReplicationControllerScaleApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedReplicationControllerScaleApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedReplicationControllerScaleApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedReplicationControllerScaleApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedReplicationControllerScaleApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedReplicationControllerScaleApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedReplicationControllerScaleApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedReplicationControllerScaleApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedReplicationControllerScaleCreated_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedReplicationControllerScaleCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedReplicationControllerScaleCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedReplicationControllerScaleOK_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedReplicationControllerScaleOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedReplicationControllerScaleOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedReplicationControllerStatusApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedReplicationControllerStatusApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedReplicationControllerStatusApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedReplicationControllerStatusApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedReplicationControllerStatusApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedReplicationControllerStatusApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedReplicationControllerStatusApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedReplicationControllerStatusApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedReplicationControllerStatusApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedReplicationControllerStatusCreated_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedReplicationControllerStatusCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedReplicationControllerStatusCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedReplicationControllerStatusOK_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedReplicationControllerStatusOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedReplicationControllerStatusOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedResourceQuotaApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedResourceQuotaApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedResourceQuotaApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedResourceQuotaApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedResourceQuotaApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedResourceQuotaApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedResourceQuotaApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedResourceQuotaApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedResourceQuotaApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedResourceQuotaCreated_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedResourceQuotaCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedResourceQuotaCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedResourceQuotaOK_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedResourceQuotaOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedResourceQuotaOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedResourceQuotaStatusApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedResourceQuotaStatusApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedResourceQuotaStatusApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedResourceQuotaStatusApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedResourceQuotaStatusApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedResourceQuotaStatusApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedResourceQuotaStatusApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedResourceQuotaStatusApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedResourceQuotaStatusApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedResourceQuotaStatusCreated_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedResourceQuotaStatusCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedResourceQuotaStatusCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedResourceQuotaStatusOK_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedResourceQuotaStatusOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedResourceQuotaStatusOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedSecretApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedSecretApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedSecretApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedSecretApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedSecretApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedSecretApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedSecretApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedSecretApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedSecretApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedSecretCreated_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedSecretCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedSecretCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedSecretOK_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedSecretOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedSecretOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedServiceAccountApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedServiceAccountApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedServiceAccountApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedServiceAccountApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedServiceAccountApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedServiceAccountApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedServiceAccountApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedServiceAccountApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedServiceAccountApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedServiceAccountCreated_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedServiceAccountCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedServiceAccountCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedServiceAccountOK_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedServiceAccountOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedServiceAccountOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedServiceApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedServiceApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedServiceApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedServiceApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedServiceApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedServiceApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedServiceApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedServiceApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedServiceApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedServiceCreated_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedServiceCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedServiceCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedServiceOK_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedServiceOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedServiceOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedServiceStatusApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedServiceStatusApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedServiceStatusApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedServiceStatusApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedServiceStatusApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedServiceStatusApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedServiceStatusApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedServiceStatusApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedServiceStatusApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedServiceStatusCreated_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedServiceStatusCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedServiceStatusCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedServiceStatusOK_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedServiceStatusOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedServiceStatusOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NodeApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NodeApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NodeApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NodeApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NodeApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NodeApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NodeApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NodeApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NodeApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NodeCreated_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NodeCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NodeCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NodeOK_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NodeOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NodeOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NodeStatusApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NodeStatusApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NodeStatusApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NodeStatusApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NodeStatusApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NodeStatusApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NodeStatusApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NodeStatusApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NodeStatusApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NodeStatusCreated_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NodeStatusCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NodeStatusCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NodeStatusOK_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NodeStatusOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NodeStatusOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1PersistentVolumeApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1PersistentVolumeApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1PersistentVolumeApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1PersistentVolumeApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1PersistentVolumeApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1PersistentVolumeApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1PersistentVolumeApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1PersistentVolumeApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1PersistentVolumeApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1PersistentVolumeCreated_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1PersistentVolumeCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1PersistentVolumeCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1PersistentVolumeOK_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1PersistentVolumeOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1PersistentVolumeOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1PersistentVolumeStatusApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1PersistentVolumeStatusApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1PersistentVolumeStatusApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1PersistentVolumeStatusApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1PersistentVolumeStatusApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1PersistentVolumeStatusApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1PersistentVolumeStatusApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1PersistentVolumeStatusApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1PersistentVolumeStatusApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1PersistentVolumeStatusCreated_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1PersistentVolumeStatusCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1PersistentVolumeStatusCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1PersistentVolumeStatusOK_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1PersistentVolumeStatusOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1PersistentVolumeStatusOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchDiscoveryV1NamespacedEndpointSliceApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchDiscoveryV1NamespacedEndpointSliceApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchDiscoveryV1NamespacedEndpointSliceApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchDiscoveryV1NamespacedEndpointSliceApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchDiscoveryV1NamespacedEndpointSliceApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchDiscoveryV1NamespacedEndpointSliceApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchDiscoveryV1NamespacedEndpointSliceApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchDiscoveryV1NamespacedEndpointSliceApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchDiscoveryV1NamespacedEndpointSliceApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchDiscoveryV1NamespacedEndpointSliceCreated_EncodeDecode(t *testing.T) {
+	var typ PatchDiscoveryV1NamespacedEndpointSliceCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchDiscoveryV1NamespacedEndpointSliceCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchDiscoveryV1NamespacedEndpointSliceOK_EncodeDecode(t *testing.T) {
+	var typ PatchDiscoveryV1NamespacedEndpointSliceOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchDiscoveryV1NamespacedEndpointSliceOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchDiscoveryV1beta1NamespacedEndpointSliceApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchDiscoveryV1beta1NamespacedEndpointSliceApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchDiscoveryV1beta1NamespacedEndpointSliceApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchDiscoveryV1beta1NamespacedEndpointSliceApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchDiscoveryV1beta1NamespacedEndpointSliceApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchDiscoveryV1beta1NamespacedEndpointSliceApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchDiscoveryV1beta1NamespacedEndpointSliceApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchDiscoveryV1beta1NamespacedEndpointSliceApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchDiscoveryV1beta1NamespacedEndpointSliceApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchDiscoveryV1beta1NamespacedEndpointSliceCreated_EncodeDecode(t *testing.T) {
+	var typ PatchDiscoveryV1beta1NamespacedEndpointSliceCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchDiscoveryV1beta1NamespacedEndpointSliceCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchDiscoveryV1beta1NamespacedEndpointSliceOK_EncodeDecode(t *testing.T) {
+	var typ PatchDiscoveryV1beta1NamespacedEndpointSliceOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchDiscoveryV1beta1NamespacedEndpointSliceOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchEventsV1NamespacedEventApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchEventsV1NamespacedEventApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchEventsV1NamespacedEventApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchEventsV1NamespacedEventApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchEventsV1NamespacedEventApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchEventsV1NamespacedEventApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchEventsV1NamespacedEventApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchEventsV1NamespacedEventApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchEventsV1NamespacedEventApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchEventsV1NamespacedEventCreated_EncodeDecode(t *testing.T) {
+	var typ PatchEventsV1NamespacedEventCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchEventsV1NamespacedEventCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchEventsV1NamespacedEventOK_EncodeDecode(t *testing.T) {
+	var typ PatchEventsV1NamespacedEventOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchEventsV1NamespacedEventOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchEventsV1beta1NamespacedEventApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchEventsV1beta1NamespacedEventApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchEventsV1beta1NamespacedEventApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchEventsV1beta1NamespacedEventApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchEventsV1beta1NamespacedEventApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchEventsV1beta1NamespacedEventApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchEventsV1beta1NamespacedEventApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchEventsV1beta1NamespacedEventApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchEventsV1beta1NamespacedEventApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchEventsV1beta1NamespacedEventCreated_EncodeDecode(t *testing.T) {
+	var typ PatchEventsV1beta1NamespacedEventCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchEventsV1beta1NamespacedEventCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchEventsV1beta1NamespacedEventOK_EncodeDecode(t *testing.T) {
+	var typ PatchEventsV1beta1NamespacedEventOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchEventsV1beta1NamespacedEventOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchFlowcontrolApiserverV1beta1FlowSchemaApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchFlowcontrolApiserverV1beta1FlowSchemaApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchFlowcontrolApiserverV1beta1FlowSchemaApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchFlowcontrolApiserverV1beta1FlowSchemaApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchFlowcontrolApiserverV1beta1FlowSchemaApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchFlowcontrolApiserverV1beta1FlowSchemaApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchFlowcontrolApiserverV1beta1FlowSchemaCreated_EncodeDecode(t *testing.T) {
+	var typ PatchFlowcontrolApiserverV1beta1FlowSchemaCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchFlowcontrolApiserverV1beta1FlowSchemaCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchFlowcontrolApiserverV1beta1FlowSchemaOK_EncodeDecode(t *testing.T) {
+	var typ PatchFlowcontrolApiserverV1beta1FlowSchemaOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchFlowcontrolApiserverV1beta1FlowSchemaOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchFlowcontrolApiserverV1beta1FlowSchemaStatusApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchFlowcontrolApiserverV1beta1FlowSchemaStatusApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchFlowcontrolApiserverV1beta1FlowSchemaStatusApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchFlowcontrolApiserverV1beta1FlowSchemaStatusApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchFlowcontrolApiserverV1beta1FlowSchemaStatusApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchFlowcontrolApiserverV1beta1FlowSchemaStatusApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchFlowcontrolApiserverV1beta1FlowSchemaStatusApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchFlowcontrolApiserverV1beta1FlowSchemaStatusApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchFlowcontrolApiserverV1beta1FlowSchemaStatusApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchFlowcontrolApiserverV1beta1FlowSchemaStatusCreated_EncodeDecode(t *testing.T) {
+	var typ PatchFlowcontrolApiserverV1beta1FlowSchemaStatusCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchFlowcontrolApiserverV1beta1FlowSchemaStatusCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchFlowcontrolApiserverV1beta1FlowSchemaStatusOK_EncodeDecode(t *testing.T) {
+	var typ PatchFlowcontrolApiserverV1beta1FlowSchemaStatusOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchFlowcontrolApiserverV1beta1FlowSchemaStatusOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationCreated_EncodeDecode(t *testing.T) {
+	var typ PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationOK_EncodeDecode(t *testing.T) {
+	var typ PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusCreated_EncodeDecode(t *testing.T) {
+	var typ PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusOK_EncodeDecode(t *testing.T) {
+	var typ PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchFlowcontrolApiserverV1beta2FlowSchemaApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchFlowcontrolApiserverV1beta2FlowSchemaApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchFlowcontrolApiserverV1beta2FlowSchemaApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchFlowcontrolApiserverV1beta2FlowSchemaApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchFlowcontrolApiserverV1beta2FlowSchemaApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchFlowcontrolApiserverV1beta2FlowSchemaApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchFlowcontrolApiserverV1beta2FlowSchemaCreated_EncodeDecode(t *testing.T) {
+	var typ PatchFlowcontrolApiserverV1beta2FlowSchemaCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchFlowcontrolApiserverV1beta2FlowSchemaCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchFlowcontrolApiserverV1beta2FlowSchemaOK_EncodeDecode(t *testing.T) {
+	var typ PatchFlowcontrolApiserverV1beta2FlowSchemaOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchFlowcontrolApiserverV1beta2FlowSchemaOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchFlowcontrolApiserverV1beta2FlowSchemaStatusApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchFlowcontrolApiserverV1beta2FlowSchemaStatusApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchFlowcontrolApiserverV1beta2FlowSchemaStatusApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchFlowcontrolApiserverV1beta2FlowSchemaStatusApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchFlowcontrolApiserverV1beta2FlowSchemaStatusApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchFlowcontrolApiserverV1beta2FlowSchemaStatusApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchFlowcontrolApiserverV1beta2FlowSchemaStatusApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchFlowcontrolApiserverV1beta2FlowSchemaStatusApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchFlowcontrolApiserverV1beta2FlowSchemaStatusApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchFlowcontrolApiserverV1beta2FlowSchemaStatusCreated_EncodeDecode(t *testing.T) {
+	var typ PatchFlowcontrolApiserverV1beta2FlowSchemaStatusCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchFlowcontrolApiserverV1beta2FlowSchemaStatusCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchFlowcontrolApiserverV1beta2FlowSchemaStatusOK_EncodeDecode(t *testing.T) {
+	var typ PatchFlowcontrolApiserverV1beta2FlowSchemaStatusOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchFlowcontrolApiserverV1beta2FlowSchemaStatusOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationCreated_EncodeDecode(t *testing.T) {
+	var typ PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationOK_EncodeDecode(t *testing.T) {
+	var typ PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusCreated_EncodeDecode(t *testing.T) {
+	var typ PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusOK_EncodeDecode(t *testing.T) {
+	var typ PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchInternalApiserverV1alpha1StorageVersionApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchInternalApiserverV1alpha1StorageVersionApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchInternalApiserverV1alpha1StorageVersionApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchInternalApiserverV1alpha1StorageVersionApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchInternalApiserverV1alpha1StorageVersionApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchInternalApiserverV1alpha1StorageVersionApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchInternalApiserverV1alpha1StorageVersionApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchInternalApiserverV1alpha1StorageVersionApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchInternalApiserverV1alpha1StorageVersionApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchInternalApiserverV1alpha1StorageVersionCreated_EncodeDecode(t *testing.T) {
+	var typ PatchInternalApiserverV1alpha1StorageVersionCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchInternalApiserverV1alpha1StorageVersionCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchInternalApiserverV1alpha1StorageVersionOK_EncodeDecode(t *testing.T) {
+	var typ PatchInternalApiserverV1alpha1StorageVersionOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchInternalApiserverV1alpha1StorageVersionOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchInternalApiserverV1alpha1StorageVersionStatusApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchInternalApiserverV1alpha1StorageVersionStatusApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchInternalApiserverV1alpha1StorageVersionStatusApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchInternalApiserverV1alpha1StorageVersionStatusApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchInternalApiserverV1alpha1StorageVersionStatusApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchInternalApiserverV1alpha1StorageVersionStatusApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchInternalApiserverV1alpha1StorageVersionStatusApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchInternalApiserverV1alpha1StorageVersionStatusApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchInternalApiserverV1alpha1StorageVersionStatusApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchInternalApiserverV1alpha1StorageVersionStatusCreated_EncodeDecode(t *testing.T) {
+	var typ PatchInternalApiserverV1alpha1StorageVersionStatusCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchInternalApiserverV1alpha1StorageVersionStatusCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchInternalApiserverV1alpha1StorageVersionStatusOK_EncodeDecode(t *testing.T) {
+	var typ PatchInternalApiserverV1alpha1StorageVersionStatusOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchInternalApiserverV1alpha1StorageVersionStatusOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchNetworkingV1IngressClassApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchNetworkingV1IngressClassApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchNetworkingV1IngressClassApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchNetworkingV1IngressClassApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchNetworkingV1IngressClassApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchNetworkingV1IngressClassApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchNetworkingV1IngressClassApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchNetworkingV1IngressClassApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchNetworkingV1IngressClassApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchNetworkingV1IngressClassCreated_EncodeDecode(t *testing.T) {
+	var typ PatchNetworkingV1IngressClassCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchNetworkingV1IngressClassCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchNetworkingV1IngressClassOK_EncodeDecode(t *testing.T) {
+	var typ PatchNetworkingV1IngressClassOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchNetworkingV1IngressClassOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchNetworkingV1NamespacedIngressApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchNetworkingV1NamespacedIngressApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchNetworkingV1NamespacedIngressApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchNetworkingV1NamespacedIngressApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchNetworkingV1NamespacedIngressApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchNetworkingV1NamespacedIngressApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchNetworkingV1NamespacedIngressApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchNetworkingV1NamespacedIngressApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchNetworkingV1NamespacedIngressApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchNetworkingV1NamespacedIngressCreated_EncodeDecode(t *testing.T) {
+	var typ PatchNetworkingV1NamespacedIngressCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchNetworkingV1NamespacedIngressCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchNetworkingV1NamespacedIngressOK_EncodeDecode(t *testing.T) {
+	var typ PatchNetworkingV1NamespacedIngressOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchNetworkingV1NamespacedIngressOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchNetworkingV1NamespacedIngressStatusApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchNetworkingV1NamespacedIngressStatusApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchNetworkingV1NamespacedIngressStatusApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchNetworkingV1NamespacedIngressStatusApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchNetworkingV1NamespacedIngressStatusApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchNetworkingV1NamespacedIngressStatusApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchNetworkingV1NamespacedIngressStatusApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchNetworkingV1NamespacedIngressStatusApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchNetworkingV1NamespacedIngressStatusApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchNetworkingV1NamespacedIngressStatusCreated_EncodeDecode(t *testing.T) {
+	var typ PatchNetworkingV1NamespacedIngressStatusCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchNetworkingV1NamespacedIngressStatusCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchNetworkingV1NamespacedIngressStatusOK_EncodeDecode(t *testing.T) {
+	var typ PatchNetworkingV1NamespacedIngressStatusOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchNetworkingV1NamespacedIngressStatusOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchNetworkingV1NamespacedNetworkPolicyApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchNetworkingV1NamespacedNetworkPolicyApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchNetworkingV1NamespacedNetworkPolicyApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchNetworkingV1NamespacedNetworkPolicyApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchNetworkingV1NamespacedNetworkPolicyApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchNetworkingV1NamespacedNetworkPolicyApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchNetworkingV1NamespacedNetworkPolicyApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchNetworkingV1NamespacedNetworkPolicyApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchNetworkingV1NamespacedNetworkPolicyApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchNetworkingV1NamespacedNetworkPolicyCreated_EncodeDecode(t *testing.T) {
+	var typ PatchNetworkingV1NamespacedNetworkPolicyCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchNetworkingV1NamespacedNetworkPolicyCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchNetworkingV1NamespacedNetworkPolicyOK_EncodeDecode(t *testing.T) {
+	var typ PatchNetworkingV1NamespacedNetworkPolicyOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchNetworkingV1NamespacedNetworkPolicyOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchNodeV1RuntimeClassApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchNodeV1RuntimeClassApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchNodeV1RuntimeClassApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchNodeV1RuntimeClassApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchNodeV1RuntimeClassApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchNodeV1RuntimeClassApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchNodeV1RuntimeClassApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchNodeV1RuntimeClassApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchNodeV1RuntimeClassApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchNodeV1RuntimeClassCreated_EncodeDecode(t *testing.T) {
+	var typ PatchNodeV1RuntimeClassCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchNodeV1RuntimeClassCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchNodeV1RuntimeClassOK_EncodeDecode(t *testing.T) {
+	var typ PatchNodeV1RuntimeClassOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchNodeV1RuntimeClassOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchNodeV1alpha1RuntimeClassApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchNodeV1alpha1RuntimeClassApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchNodeV1alpha1RuntimeClassApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchNodeV1alpha1RuntimeClassApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchNodeV1alpha1RuntimeClassApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchNodeV1alpha1RuntimeClassApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchNodeV1alpha1RuntimeClassApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchNodeV1alpha1RuntimeClassApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchNodeV1alpha1RuntimeClassApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchNodeV1alpha1RuntimeClassCreated_EncodeDecode(t *testing.T) {
+	var typ PatchNodeV1alpha1RuntimeClassCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchNodeV1alpha1RuntimeClassCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchNodeV1alpha1RuntimeClassOK_EncodeDecode(t *testing.T) {
+	var typ PatchNodeV1alpha1RuntimeClassOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchNodeV1alpha1RuntimeClassOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchNodeV1beta1RuntimeClassApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchNodeV1beta1RuntimeClassApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchNodeV1beta1RuntimeClassApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchNodeV1beta1RuntimeClassApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchNodeV1beta1RuntimeClassApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchNodeV1beta1RuntimeClassApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchNodeV1beta1RuntimeClassApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchNodeV1beta1RuntimeClassApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchNodeV1beta1RuntimeClassApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchNodeV1beta1RuntimeClassCreated_EncodeDecode(t *testing.T) {
+	var typ PatchNodeV1beta1RuntimeClassCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchNodeV1beta1RuntimeClassCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchNodeV1beta1RuntimeClassOK_EncodeDecode(t *testing.T) {
+	var typ PatchNodeV1beta1RuntimeClassOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchNodeV1beta1RuntimeClassOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchPolicyV1NamespacedPodDisruptionBudgetApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchPolicyV1NamespacedPodDisruptionBudgetApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchPolicyV1NamespacedPodDisruptionBudgetApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchPolicyV1NamespacedPodDisruptionBudgetApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchPolicyV1NamespacedPodDisruptionBudgetApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchPolicyV1NamespacedPodDisruptionBudgetApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchPolicyV1NamespacedPodDisruptionBudgetApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchPolicyV1NamespacedPodDisruptionBudgetApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchPolicyV1NamespacedPodDisruptionBudgetApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchPolicyV1NamespacedPodDisruptionBudgetCreated_EncodeDecode(t *testing.T) {
+	var typ PatchPolicyV1NamespacedPodDisruptionBudgetCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchPolicyV1NamespacedPodDisruptionBudgetCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchPolicyV1NamespacedPodDisruptionBudgetOK_EncodeDecode(t *testing.T) {
+	var typ PatchPolicyV1NamespacedPodDisruptionBudgetOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchPolicyV1NamespacedPodDisruptionBudgetOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchPolicyV1NamespacedPodDisruptionBudgetStatusApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchPolicyV1NamespacedPodDisruptionBudgetStatusApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchPolicyV1NamespacedPodDisruptionBudgetStatusApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchPolicyV1NamespacedPodDisruptionBudgetStatusApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchPolicyV1NamespacedPodDisruptionBudgetStatusApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchPolicyV1NamespacedPodDisruptionBudgetStatusApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchPolicyV1NamespacedPodDisruptionBudgetStatusApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchPolicyV1NamespacedPodDisruptionBudgetStatusApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchPolicyV1NamespacedPodDisruptionBudgetStatusApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchPolicyV1NamespacedPodDisruptionBudgetStatusCreated_EncodeDecode(t *testing.T) {
+	var typ PatchPolicyV1NamespacedPodDisruptionBudgetStatusCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchPolicyV1NamespacedPodDisruptionBudgetStatusCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchPolicyV1NamespacedPodDisruptionBudgetStatusOK_EncodeDecode(t *testing.T) {
+	var typ PatchPolicyV1NamespacedPodDisruptionBudgetStatusOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchPolicyV1NamespacedPodDisruptionBudgetStatusOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchPolicyV1beta1NamespacedPodDisruptionBudgetApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchPolicyV1beta1NamespacedPodDisruptionBudgetApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchPolicyV1beta1NamespacedPodDisruptionBudgetApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchPolicyV1beta1NamespacedPodDisruptionBudgetApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchPolicyV1beta1NamespacedPodDisruptionBudgetApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchPolicyV1beta1NamespacedPodDisruptionBudgetApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchPolicyV1beta1NamespacedPodDisruptionBudgetApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchPolicyV1beta1NamespacedPodDisruptionBudgetApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchPolicyV1beta1NamespacedPodDisruptionBudgetApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchPolicyV1beta1NamespacedPodDisruptionBudgetCreated_EncodeDecode(t *testing.T) {
+	var typ PatchPolicyV1beta1NamespacedPodDisruptionBudgetCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchPolicyV1beta1NamespacedPodDisruptionBudgetCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchPolicyV1beta1NamespacedPodDisruptionBudgetOK_EncodeDecode(t *testing.T) {
+	var typ PatchPolicyV1beta1NamespacedPodDisruptionBudgetOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchPolicyV1beta1NamespacedPodDisruptionBudgetOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchPolicyV1beta1NamespacedPodDisruptionBudgetStatusApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchPolicyV1beta1NamespacedPodDisruptionBudgetStatusApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchPolicyV1beta1NamespacedPodDisruptionBudgetStatusApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchPolicyV1beta1NamespacedPodDisruptionBudgetStatusApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchPolicyV1beta1NamespacedPodDisruptionBudgetStatusApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchPolicyV1beta1NamespacedPodDisruptionBudgetStatusApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchPolicyV1beta1NamespacedPodDisruptionBudgetStatusApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchPolicyV1beta1NamespacedPodDisruptionBudgetStatusApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchPolicyV1beta1NamespacedPodDisruptionBudgetStatusApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchPolicyV1beta1NamespacedPodDisruptionBudgetStatusCreated_EncodeDecode(t *testing.T) {
+	var typ PatchPolicyV1beta1NamespacedPodDisruptionBudgetStatusCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchPolicyV1beta1NamespacedPodDisruptionBudgetStatusCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchPolicyV1beta1NamespacedPodDisruptionBudgetStatusOK_EncodeDecode(t *testing.T) {
+	var typ PatchPolicyV1beta1NamespacedPodDisruptionBudgetStatusOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchPolicyV1beta1NamespacedPodDisruptionBudgetStatusOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchPolicyV1beta1PodSecurityPolicyApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchPolicyV1beta1PodSecurityPolicyApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchPolicyV1beta1PodSecurityPolicyApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchPolicyV1beta1PodSecurityPolicyApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchPolicyV1beta1PodSecurityPolicyApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchPolicyV1beta1PodSecurityPolicyApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchPolicyV1beta1PodSecurityPolicyApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchPolicyV1beta1PodSecurityPolicyApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchPolicyV1beta1PodSecurityPolicyApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchPolicyV1beta1PodSecurityPolicyCreated_EncodeDecode(t *testing.T) {
+	var typ PatchPolicyV1beta1PodSecurityPolicyCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchPolicyV1beta1PodSecurityPolicyCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchPolicyV1beta1PodSecurityPolicyOK_EncodeDecode(t *testing.T) {
+	var typ PatchPolicyV1beta1PodSecurityPolicyOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchPolicyV1beta1PodSecurityPolicyOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchRbacAuthorizationV1ClusterRoleApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchRbacAuthorizationV1ClusterRoleApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchRbacAuthorizationV1ClusterRoleApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchRbacAuthorizationV1ClusterRoleApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchRbacAuthorizationV1ClusterRoleApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchRbacAuthorizationV1ClusterRoleApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchRbacAuthorizationV1ClusterRoleApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchRbacAuthorizationV1ClusterRoleApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchRbacAuthorizationV1ClusterRoleApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchRbacAuthorizationV1ClusterRoleBindingApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchRbacAuthorizationV1ClusterRoleBindingApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchRbacAuthorizationV1ClusterRoleBindingApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchRbacAuthorizationV1ClusterRoleBindingApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchRbacAuthorizationV1ClusterRoleBindingApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchRbacAuthorizationV1ClusterRoleBindingApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchRbacAuthorizationV1ClusterRoleBindingApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchRbacAuthorizationV1ClusterRoleBindingApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchRbacAuthorizationV1ClusterRoleBindingApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchRbacAuthorizationV1ClusterRoleBindingCreated_EncodeDecode(t *testing.T) {
+	var typ PatchRbacAuthorizationV1ClusterRoleBindingCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchRbacAuthorizationV1ClusterRoleBindingCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchRbacAuthorizationV1ClusterRoleBindingOK_EncodeDecode(t *testing.T) {
+	var typ PatchRbacAuthorizationV1ClusterRoleBindingOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchRbacAuthorizationV1ClusterRoleBindingOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchRbacAuthorizationV1ClusterRoleCreated_EncodeDecode(t *testing.T) {
+	var typ PatchRbacAuthorizationV1ClusterRoleCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchRbacAuthorizationV1ClusterRoleCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchRbacAuthorizationV1ClusterRoleOK_EncodeDecode(t *testing.T) {
+	var typ PatchRbacAuthorizationV1ClusterRoleOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchRbacAuthorizationV1ClusterRoleOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchRbacAuthorizationV1NamespacedRoleApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchRbacAuthorizationV1NamespacedRoleApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchRbacAuthorizationV1NamespacedRoleApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchRbacAuthorizationV1NamespacedRoleApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchRbacAuthorizationV1NamespacedRoleApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchRbacAuthorizationV1NamespacedRoleApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchRbacAuthorizationV1NamespacedRoleApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchRbacAuthorizationV1NamespacedRoleApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchRbacAuthorizationV1NamespacedRoleApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchRbacAuthorizationV1NamespacedRoleBindingApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchRbacAuthorizationV1NamespacedRoleBindingApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchRbacAuthorizationV1NamespacedRoleBindingApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchRbacAuthorizationV1NamespacedRoleBindingApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchRbacAuthorizationV1NamespacedRoleBindingApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchRbacAuthorizationV1NamespacedRoleBindingApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchRbacAuthorizationV1NamespacedRoleBindingApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchRbacAuthorizationV1NamespacedRoleBindingApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchRbacAuthorizationV1NamespacedRoleBindingApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchRbacAuthorizationV1NamespacedRoleBindingCreated_EncodeDecode(t *testing.T) {
+	var typ PatchRbacAuthorizationV1NamespacedRoleBindingCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchRbacAuthorizationV1NamespacedRoleBindingCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchRbacAuthorizationV1NamespacedRoleBindingOK_EncodeDecode(t *testing.T) {
+	var typ PatchRbacAuthorizationV1NamespacedRoleBindingOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchRbacAuthorizationV1NamespacedRoleBindingOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchRbacAuthorizationV1NamespacedRoleCreated_EncodeDecode(t *testing.T) {
+	var typ PatchRbacAuthorizationV1NamespacedRoleCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchRbacAuthorizationV1NamespacedRoleCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchRbacAuthorizationV1NamespacedRoleOK_EncodeDecode(t *testing.T) {
+	var typ PatchRbacAuthorizationV1NamespacedRoleOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchRbacAuthorizationV1NamespacedRoleOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchSchedulingV1PriorityClassApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchSchedulingV1PriorityClassApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchSchedulingV1PriorityClassApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchSchedulingV1PriorityClassApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchSchedulingV1PriorityClassApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchSchedulingV1PriorityClassApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchSchedulingV1PriorityClassApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchSchedulingV1PriorityClassApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchSchedulingV1PriorityClassApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchSchedulingV1PriorityClassCreated_EncodeDecode(t *testing.T) {
+	var typ PatchSchedulingV1PriorityClassCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchSchedulingV1PriorityClassCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchSchedulingV1PriorityClassOK_EncodeDecode(t *testing.T) {
+	var typ PatchSchedulingV1PriorityClassOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchSchedulingV1PriorityClassOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchStorageV1CSIDriverApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchStorageV1CSIDriverApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchStorageV1CSIDriverApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchStorageV1CSIDriverApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchStorageV1CSIDriverApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchStorageV1CSIDriverApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchStorageV1CSIDriverApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchStorageV1CSIDriverApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchStorageV1CSIDriverApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchStorageV1CSIDriverCreated_EncodeDecode(t *testing.T) {
+	var typ PatchStorageV1CSIDriverCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchStorageV1CSIDriverCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchStorageV1CSIDriverOK_EncodeDecode(t *testing.T) {
+	var typ PatchStorageV1CSIDriverOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchStorageV1CSIDriverOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchStorageV1CSINodeApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchStorageV1CSINodeApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchStorageV1CSINodeApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchStorageV1CSINodeApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchStorageV1CSINodeApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchStorageV1CSINodeApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchStorageV1CSINodeApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchStorageV1CSINodeApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchStorageV1CSINodeApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchStorageV1CSINodeCreated_EncodeDecode(t *testing.T) {
+	var typ PatchStorageV1CSINodeCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchStorageV1CSINodeCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchStorageV1CSINodeOK_EncodeDecode(t *testing.T) {
+	var typ PatchStorageV1CSINodeOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchStorageV1CSINodeOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchStorageV1StorageClassApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchStorageV1StorageClassApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchStorageV1StorageClassApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchStorageV1StorageClassApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchStorageV1StorageClassApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchStorageV1StorageClassApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchStorageV1StorageClassApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchStorageV1StorageClassApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchStorageV1StorageClassApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchStorageV1StorageClassCreated_EncodeDecode(t *testing.T) {
+	var typ PatchStorageV1StorageClassCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchStorageV1StorageClassCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchStorageV1StorageClassOK_EncodeDecode(t *testing.T) {
+	var typ PatchStorageV1StorageClassOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchStorageV1StorageClassOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchStorageV1VolumeAttachmentApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchStorageV1VolumeAttachmentApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchStorageV1VolumeAttachmentApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchStorageV1VolumeAttachmentApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchStorageV1VolumeAttachmentApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchStorageV1VolumeAttachmentApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchStorageV1VolumeAttachmentApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchStorageV1VolumeAttachmentApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchStorageV1VolumeAttachmentApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchStorageV1VolumeAttachmentCreated_EncodeDecode(t *testing.T) {
+	var typ PatchStorageV1VolumeAttachmentCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchStorageV1VolumeAttachmentCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchStorageV1VolumeAttachmentOK_EncodeDecode(t *testing.T) {
+	var typ PatchStorageV1VolumeAttachmentOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchStorageV1VolumeAttachmentOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchStorageV1VolumeAttachmentStatusApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchStorageV1VolumeAttachmentStatusApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchStorageV1VolumeAttachmentStatusApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchStorageV1VolumeAttachmentStatusApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchStorageV1VolumeAttachmentStatusApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchStorageV1VolumeAttachmentStatusApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchStorageV1VolumeAttachmentStatusApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchStorageV1VolumeAttachmentStatusApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchStorageV1VolumeAttachmentStatusApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchStorageV1VolumeAttachmentStatusCreated_EncodeDecode(t *testing.T) {
+	var typ PatchStorageV1VolumeAttachmentStatusCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchStorageV1VolumeAttachmentStatusCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchStorageV1VolumeAttachmentStatusOK_EncodeDecode(t *testing.T) {
+	var typ PatchStorageV1VolumeAttachmentStatusOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchStorageV1VolumeAttachmentStatusOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchStorageV1alpha1NamespacedCSIStorageCapacityApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchStorageV1alpha1NamespacedCSIStorageCapacityApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchStorageV1alpha1NamespacedCSIStorageCapacityApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchStorageV1alpha1NamespacedCSIStorageCapacityApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchStorageV1alpha1NamespacedCSIStorageCapacityApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchStorageV1alpha1NamespacedCSIStorageCapacityApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchStorageV1alpha1NamespacedCSIStorageCapacityApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchStorageV1alpha1NamespacedCSIStorageCapacityApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchStorageV1alpha1NamespacedCSIStorageCapacityApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchStorageV1alpha1NamespacedCSIStorageCapacityCreated_EncodeDecode(t *testing.T) {
+	var typ PatchStorageV1alpha1NamespacedCSIStorageCapacityCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchStorageV1alpha1NamespacedCSIStorageCapacityCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchStorageV1alpha1NamespacedCSIStorageCapacityOK_EncodeDecode(t *testing.T) {
+	var typ PatchStorageV1alpha1NamespacedCSIStorageCapacityOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchStorageV1alpha1NamespacedCSIStorageCapacityOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchStorageV1beta1NamespacedCSIStorageCapacityApplicationJSONPatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchStorageV1beta1NamespacedCSIStorageCapacityApplicationJSONPatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchStorageV1beta1NamespacedCSIStorageCapacityApplicationJSONPatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchStorageV1beta1NamespacedCSIStorageCapacityApplicationMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchStorageV1beta1NamespacedCSIStorageCapacityApplicationMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchStorageV1beta1NamespacedCSIStorageCapacityApplicationMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchStorageV1beta1NamespacedCSIStorageCapacityApplicationStrategicMergePatchJSON_EncodeDecode(t *testing.T) {
+	var typ PatchStorageV1beta1NamespacedCSIStorageCapacityApplicationStrategicMergePatchJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchStorageV1beta1NamespacedCSIStorageCapacityApplicationStrategicMergePatchJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchStorageV1beta1NamespacedCSIStorageCapacityCreated_EncodeDecode(t *testing.T) {
+	var typ PatchStorageV1beta1NamespacedCSIStorageCapacityCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchStorageV1beta1NamespacedCSIStorageCapacityCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchStorageV1beta1NamespacedCSIStorageCapacityOK_EncodeDecode(t *testing.T) {
+	var typ PatchStorageV1beta1NamespacedCSIStorageCapacityOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchStorageV1beta1NamespacedCSIStorageCapacityOK
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 func TestReadCoreV1NamespacedPodLogOKApplicationJSON_EncodeDecode(t *testing.T) {

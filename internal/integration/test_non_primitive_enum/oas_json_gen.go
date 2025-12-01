@@ -137,18 +137,18 @@ func (s *ObjectEnumBar) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *ObjectEnumBar) encodeFields(e *jx.Encoder) {
 	{
-		e.FieldStart("type")
-		e.Str(s.Type)
-	}
-	{
 		e.FieldStart("value")
 		e.Int64(s.Value)
+	}
+	{
+		e.FieldStart("type")
+		e.Str(s.Type)
 	}
 }
 
 var jsonFieldsNameOfObjectEnumBar = [2]string{
-	0: "type",
-	1: "value",
+	0: "value",
+	1: "type",
 }
 
 // Decode decodes ObjectEnumBar from json.
@@ -160,20 +160,8 @@ func (s *ObjectEnumBar) Decode(d *jx.Decoder) error {
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "type":
-			requiredBitSet[0] |= 1 << 0
-			if err := func() error {
-				v, err := d.Str()
-				s.Type = string(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"type\"")
-			}
 		case "value":
-			requiredBitSet[0] |= 1 << 1
+			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
 				v, err := d.Int64()
 				s.Value = int64(v)
@@ -183,6 +171,18 @@ func (s *ObjectEnumBar) Decode(d *jx.Decoder) error {
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"value\"")
+			}
+		case "type":
+			requiredBitSet[0] |= 1 << 1
+			if err := func() error {
+				v, err := d.Str()
+				s.Type = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"type\"")
 			}
 		default:
 			return d.Skip()

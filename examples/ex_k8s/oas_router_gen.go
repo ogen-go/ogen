@@ -345,8 +345,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											s.handleReadCoreV1NamespaceRequest([1]string{
 												args[0],
 											}, elemIsEscaped, w, r)
+										case "PATCH":
+											s.handlePatchCoreV1NamespaceRequest([1]string{
+												args[0],
+											}, elemIsEscaped, w, r)
 										default:
-											s.notAllowed(w, r, "GET")
+											s.notAllowed(w, r, "GET,PATCH")
 										}
 
 										return
@@ -482,8 +486,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																args[0],
 																args[1],
 															}, elemIsEscaped, w, r)
+														case "PATCH":
+															s.handlePatchCoreV1NamespacedEndpointsRequest([2]string{
+																args[0],
+																args[1],
+															}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "GET")
+															s.notAllowed(w, r, "GET,PATCH")
 														}
 
 														return
@@ -537,8 +546,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																args[0],
 																args[1],
 															}, elemIsEscaped, w, r)
+														case "PATCH":
+															s.handlePatchCoreV1NamespacedEventRequest([2]string{
+																args[0],
+																args[1],
+															}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "GET")
+															s.notAllowed(w, r, "GET,PATCH")
 														}
 
 														return
@@ -594,8 +608,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															args[0],
 															args[1],
 														}, elemIsEscaped, w, r)
+													case "PATCH":
+														s.handlePatchCoreV1NamespacedLimitRangeRequest([2]string{
+															args[0],
+															args[1],
+														}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "GET")
+														s.notAllowed(w, r, "GET,PATCH")
 													}
 
 													return
@@ -660,8 +679,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																args[0],
 																args[1],
 															}, elemIsEscaped, w, r)
+														case "PATCH":
+															s.handlePatchCoreV1NamespacedPersistentVolumeClaimRequest([2]string{
+																args[0],
+																args[1],
+															}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "GET")
+															s.notAllowed(w, r, "GET,PATCH")
 														}
 
 														return
@@ -683,8 +707,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	args[0],
 																	args[1],
 																}, elemIsEscaped, w, r)
+															case "PATCH":
+																s.handlePatchCoreV1NamespacedPersistentVolumeClaimStatusRequest([2]string{
+																	args[0],
+																	args[1],
+																}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "GET")
+																s.notAllowed(w, r, "GET,PATCH")
 															}
 
 															return
@@ -751,8 +780,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	args[0],
 																	args[1],
 																}, elemIsEscaped, w, r)
+															case "PATCH":
+																s.handlePatchCoreV1NamespacedPodRequest([2]string{
+																	args[0],
+																	args[1],
+																}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "GET")
+																s.notAllowed(w, r, "GET,PATCH")
 															}
 
 															return
@@ -826,8 +860,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																				args[0],
 																				args[1],
 																			}, elemIsEscaped, w, r)
+																		case "PATCH":
+																			s.handlePatchCoreV1NamespacedPodEphemeralcontainersRequest([2]string{
+																				args[0],
+																				args[1],
+																			}, elemIsEscaped, w, r)
 																		default:
-																			s.notAllowed(w, r, "GET")
+																			s.notAllowed(w, r, "GET,PATCH")
 																		}
 
 																		return
@@ -1067,8 +1106,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																			args[0],
 																			args[1],
 																		}, elemIsEscaped, w, r)
+																	case "PATCH":
+																		s.handlePatchCoreV1NamespacedPodStatusRequest([2]string{
+																			args[0],
+																			args[1],
+																		}, elemIsEscaped, w, r)
 																	default:
-																		s.notAllowed(w, r, "GET")
+																		s.notAllowed(w, r, "GET,PATCH")
 																	}
 
 																	return
@@ -1126,8 +1170,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	args[0],
 																	args[1],
 																}, elemIsEscaped, w, r)
+															case "PATCH":
+																s.handlePatchCoreV1NamespacedPodTemplateRequest([2]string{
+																	args[0],
+																	args[1],
+																}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "GET")
+																s.notAllowed(w, r, "GET,PATCH")
 															}
 
 															return
@@ -1196,8 +1245,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																args[0],
 																args[1],
 															}, elemIsEscaped, w, r)
+														case "PATCH":
+															s.handlePatchCoreV1NamespacedReplicationControllerRequest([2]string{
+																args[0],
+																args[1],
+															}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "GET")
+															s.notAllowed(w, r, "GET,PATCH")
 														}
 
 														return
@@ -1231,8 +1285,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																		args[0],
 																		args[1],
 																	}, elemIsEscaped, w, r)
+																case "PATCH":
+																	s.handlePatchCoreV1NamespacedReplicationControllerScaleRequest([2]string{
+																		args[0],
+																		args[1],
+																	}, elemIsEscaped, w, r)
 																default:
-																	s.notAllowed(w, r, "GET")
+																	s.notAllowed(w, r, "GET,PATCH")
 																}
 
 																return
@@ -1254,8 +1313,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																		args[0],
 																		args[1],
 																	}, elemIsEscaped, w, r)
+																case "PATCH":
+																	s.handlePatchCoreV1NamespacedReplicationControllerStatusRequest([2]string{
+																		args[0],
+																		args[1],
+																	}, elemIsEscaped, w, r)
 																default:
-																	s.notAllowed(w, r, "GET")
+																	s.notAllowed(w, r, "GET,PATCH")
 																}
 
 																return
@@ -1312,8 +1376,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																args[0],
 																args[1],
 															}, elemIsEscaped, w, r)
+														case "PATCH":
+															s.handlePatchCoreV1NamespacedResourceQuotaRequest([2]string{
+																args[0],
+																args[1],
+															}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "GET")
+															s.notAllowed(w, r, "GET,PATCH")
 														}
 
 														return
@@ -1335,8 +1404,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	args[0],
 																	args[1],
 																}, elemIsEscaped, w, r)
+															case "PATCH":
+																s.handlePatchCoreV1NamespacedResourceQuotaStatusRequest([2]string{
+																	args[0],
+																	args[1],
+																}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "GET")
+																s.notAllowed(w, r, "GET,PATCH")
 															}
 
 															return
@@ -1418,8 +1492,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	args[0],
 																	args[1],
 																}, elemIsEscaped, w, r)
+															case "PATCH":
+																s.handlePatchCoreV1NamespacedSecretRequest([2]string{
+																	args[0],
+																	args[1],
+																}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "GET")
+																s.notAllowed(w, r, "GET,PATCH")
 															}
 
 															return
@@ -1485,8 +1564,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																		args[0],
 																		args[1],
 																	}, elemIsEscaped, w, r)
+																case "PATCH":
+																	s.handlePatchCoreV1NamespacedServiceAccountRequest([2]string{
+																		args[0],
+																		args[1],
+																	}, elemIsEscaped, w, r)
 																default:
-																	s.notAllowed(w, r, "GET")
+																	s.notAllowed(w, r, "GET,PATCH")
 																}
 
 																return
@@ -1539,8 +1623,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																		args[0],
 																		args[1],
 																	}, elemIsEscaped, w, r)
+																case "PATCH":
+																	s.handlePatchCoreV1NamespacedServiceRequest([2]string{
+																		args[0],
+																		args[1],
+																	}, elemIsEscaped, w, r)
 																default:
-																	s.notAllowed(w, r, "GET")
+																	s.notAllowed(w, r, "GET,PATCH")
 																}
 
 																return
@@ -1697,8 +1786,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																				args[0],
 																				args[1],
 																			}, elemIsEscaped, w, r)
+																		case "PATCH":
+																			s.handlePatchCoreV1NamespacedServiceStatusRequest([2]string{
+																				args[0],
+																				args[1],
+																			}, elemIsEscaped, w, r)
 																		default:
-																			s.notAllowed(w, r, "GET")
+																			s.notAllowed(w, r, "GET,PATCH")
 																		}
 
 																		return
@@ -1729,8 +1823,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														s.handleReadCoreV1NamespaceStatusRequest([1]string{
 															args[0],
 														}, elemIsEscaped, w, r)
+													case "PATCH":
+														s.handlePatchCoreV1NamespaceStatusRequest([1]string{
+															args[0],
+														}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "GET")
+														s.notAllowed(w, r, "GET,PATCH")
 													}
 
 													return
@@ -1786,8 +1884,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											s.handleReadCoreV1NodeRequest([1]string{
 												args[0],
 											}, elemIsEscaped, w, r)
+										case "PATCH":
+											s.handlePatchCoreV1NodeRequest([1]string{
+												args[0],
+											}, elemIsEscaped, w, r)
 										default:
-											s.notAllowed(w, r, "GET")
+											s.notAllowed(w, r, "GET,PATCH")
 										}
 
 										return
@@ -1929,8 +2031,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													s.handleReadCoreV1NodeStatusRequest([1]string{
 														args[0],
 													}, elemIsEscaped, w, r)
+												case "PATCH":
+													s.handlePatchCoreV1NodeStatusRequest([1]string{
+														args[0],
+													}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "GET")
+													s.notAllowed(w, r, "GET,PATCH")
 												}
 
 												return
@@ -2030,8 +2136,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												s.handleReadCoreV1PersistentVolumeRequest([1]string{
 													args[0],
 												}, elemIsEscaped, w, r)
+											case "PATCH":
+												s.handlePatchCoreV1PersistentVolumeRequest([1]string{
+													args[0],
+												}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "GET")
+												s.notAllowed(w, r, "GET,PATCH")
 											}
 
 											return
@@ -2052,8 +2162,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													s.handleReadCoreV1PersistentVolumeStatusRequest([1]string{
 														args[0],
 													}, elemIsEscaped, w, r)
+												case "PATCH":
+													s.handlePatchCoreV1PersistentVolumeStatusRequest([1]string{
+														args[0],
+													}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "GET")
+													s.notAllowed(w, r, "GET,PATCH")
 												}
 
 												return
@@ -3660,8 +3774,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												s.handleReadAdmissionregistrationV1MutatingWebhookConfigurationRequest([1]string{
 													args[0],
 												}, elemIsEscaped, w, r)
+											case "PATCH":
+												s.handlePatchAdmissionregistrationV1MutatingWebhookConfigurationRequest([1]string{
+													args[0],
+												}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "GET")
+												s.notAllowed(w, r, "GET,PATCH")
 											}
 
 											return
@@ -3712,8 +3830,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												s.handleReadAdmissionregistrationV1ValidatingWebhookConfigurationRequest([1]string{
 													args[0],
 												}, elemIsEscaped, w, r)
+											case "PATCH":
+												s.handlePatchAdmissionregistrationV1ValidatingWebhookConfigurationRequest([1]string{
+													args[0],
+												}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "GET")
+												s.notAllowed(w, r, "GET,PATCH")
 											}
 
 											return
@@ -3947,8 +4069,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														s.handleReadApiextensionsV1CustomResourceDefinitionRequest([1]string{
 															args[0],
 														}, elemIsEscaped, w, r)
+													case "PATCH":
+														s.handlePatchApiextensionsV1CustomResourceDefinitionRequest([1]string{
+															args[0],
+														}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "GET")
+														s.notAllowed(w, r, "GET,PATCH")
 													}
 
 													return
@@ -3969,8 +4095,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															s.handleReadApiextensionsV1CustomResourceDefinitionStatusRequest([1]string{
 																args[0],
 															}, elemIsEscaped, w, r)
+														case "PATCH":
+															s.handlePatchApiextensionsV1CustomResourceDefinitionStatusRequest([1]string{
+																args[0],
+															}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "GET")
+															s.notAllowed(w, r, "GET,PATCH")
 														}
 
 														return
@@ -4116,8 +4246,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														s.handleReadApiregistrationV1APIServiceRequest([1]string{
 															args[0],
 														}, elemIsEscaped, w, r)
+													case "PATCH":
+														s.handlePatchApiregistrationV1APIServiceRequest([1]string{
+															args[0],
+														}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "GET")
+														s.notAllowed(w, r, "GET,PATCH")
 													}
 
 													return
@@ -4138,8 +4272,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															s.handleReadApiregistrationV1APIServiceStatusRequest([1]string{
 																args[0],
 															}, elemIsEscaped, w, r)
+														case "PATCH":
+															s.handlePatchApiregistrationV1APIServiceStatusRequest([1]string{
+																args[0],
+															}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "GET")
+															s.notAllowed(w, r, "GET,PATCH")
 														}
 
 														return
@@ -4398,8 +4536,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																args[0],
 																args[1],
 															}, elemIsEscaped, w, r)
+														case "PATCH":
+															s.handlePatchAppsV1NamespacedControllerRevisionRequest([2]string{
+																args[0],
+																args[1],
+															}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "GET")
+															s.notAllowed(w, r, "GET,PATCH")
 														}
 
 														return
@@ -4464,8 +4607,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	args[0],
 																	args[1],
 																}, elemIsEscaped, w, r)
+															case "PATCH":
+																s.handlePatchAppsV1NamespacedDaemonSetRequest([2]string{
+																	args[0],
+																	args[1],
+																}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "GET")
+																s.notAllowed(w, r, "GET,PATCH")
 															}
 
 															return
@@ -4487,8 +4635,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																		args[0],
 																		args[1],
 																	}, elemIsEscaped, w, r)
+																case "PATCH":
+																	s.handlePatchAppsV1NamespacedDaemonSetStatusRequest([2]string{
+																		args[0],
+																		args[1],
+																	}, elemIsEscaped, w, r)
 																default:
-																	s.notAllowed(w, r, "GET")
+																	s.notAllowed(w, r, "GET,PATCH")
 																}
 
 																return
@@ -4543,8 +4696,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	args[0],
 																	args[1],
 																}, elemIsEscaped, w, r)
+															case "PATCH":
+																s.handlePatchAppsV1NamespacedDeploymentRequest([2]string{
+																	args[0],
+																	args[1],
+																}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "GET")
+																s.notAllowed(w, r, "GET,PATCH")
 															}
 
 															return
@@ -4578,8 +4736,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																			args[0],
 																			args[1],
 																		}, elemIsEscaped, w, r)
+																	case "PATCH":
+																		s.handlePatchAppsV1NamespacedDeploymentScaleRequest([2]string{
+																			args[0],
+																			args[1],
+																		}, elemIsEscaped, w, r)
 																	default:
-																		s.notAllowed(w, r, "GET")
+																		s.notAllowed(w, r, "GET,PATCH")
 																	}
 
 																	return
@@ -4601,8 +4764,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																			args[0],
 																			args[1],
 																		}, elemIsEscaped, w, r)
+																	case "PATCH":
+																		s.handlePatchAppsV1NamespacedDeploymentStatusRequest([2]string{
+																			args[0],
+																			args[1],
+																		}, elemIsEscaped, w, r)
 																	default:
-																		s.notAllowed(w, r, "GET")
+																		s.notAllowed(w, r, "GET,PATCH")
 																	}
 
 																	return
@@ -4661,8 +4829,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																args[0],
 																args[1],
 															}, elemIsEscaped, w, r)
+														case "PATCH":
+															s.handlePatchAppsV1NamespacedReplicaSetRequest([2]string{
+																args[0],
+																args[1],
+															}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "GET")
+															s.notAllowed(w, r, "GET,PATCH")
 														}
 
 														return
@@ -4696,8 +4869,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																		args[0],
 																		args[1],
 																	}, elemIsEscaped, w, r)
+																case "PATCH":
+																	s.handlePatchAppsV1NamespacedReplicaSetScaleRequest([2]string{
+																		args[0],
+																		args[1],
+																	}, elemIsEscaped, w, r)
 																default:
-																	s.notAllowed(w, r, "GET")
+																	s.notAllowed(w, r, "GET,PATCH")
 																}
 
 																return
@@ -4719,8 +4897,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																		args[0],
 																		args[1],
 																	}, elemIsEscaped, w, r)
+																case "PATCH":
+																	s.handlePatchAppsV1NamespacedReplicaSetStatusRequest([2]string{
+																		args[0],
+																		args[1],
+																	}, elemIsEscaped, w, r)
 																default:
-																	s.notAllowed(w, r, "GET")
+																	s.notAllowed(w, r, "GET,PATCH")
 																}
 
 																return
@@ -4777,8 +4960,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																args[0],
 																args[1],
 															}, elemIsEscaped, w, r)
+														case "PATCH":
+															s.handlePatchAppsV1NamespacedStatefulSetRequest([2]string{
+																args[0],
+																args[1],
+															}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "GET")
+															s.notAllowed(w, r, "GET,PATCH")
 														}
 
 														return
@@ -4812,8 +5000,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																		args[0],
 																		args[1],
 																	}, elemIsEscaped, w, r)
+																case "PATCH":
+																	s.handlePatchAppsV1NamespacedStatefulSetScaleRequest([2]string{
+																		args[0],
+																		args[1],
+																	}, elemIsEscaped, w, r)
 																default:
-																	s.notAllowed(w, r, "GET")
+																	s.notAllowed(w, r, "GET,PATCH")
 																}
 
 																return
@@ -4835,8 +5028,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																		args[0],
 																		args[1],
 																	}, elemIsEscaped, w, r)
+																case "PATCH":
+																	s.handlePatchAppsV1NamespacedStatefulSetStatusRequest([2]string{
+																		args[0],
+																		args[1],
+																	}, elemIsEscaped, w, r)
 																default:
-																	s.notAllowed(w, r, "GET")
+																	s.notAllowed(w, r, "GET,PATCH")
 																}
 
 																return
@@ -5596,8 +5794,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																args[0],
 																args[1],
 															}, elemIsEscaped, w, r)
+														case "PATCH":
+															s.handlePatchAutoscalingV1NamespacedHorizontalPodAutoscalerRequest([2]string{
+																args[0],
+																args[1],
+															}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "GET")
+															s.notAllowed(w, r, "GET,PATCH")
 														}
 
 														return
@@ -5619,8 +5822,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	args[0],
 																	args[1],
 																}, elemIsEscaped, w, r)
+															case "PATCH":
+																s.handlePatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusRequest([2]string{
+																	args[0],
+																	args[1],
+																}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "GET")
+																s.notAllowed(w, r, "GET,PATCH")
 															}
 
 															return
@@ -5863,8 +6071,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	args[0],
 																	args[1],
 																}, elemIsEscaped, w, r)
+															case "PATCH":
+																s.handlePatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRequest([2]string{
+																	args[0],
+																	args[1],
+																}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "GET")
+																s.notAllowed(w, r, "GET,PATCH")
 															}
 
 															return
@@ -5886,8 +6099,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																		args[0],
 																		args[1],
 																	}, elemIsEscaped, w, r)
+																case "PATCH":
+																	s.handlePatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusRequest([2]string{
+																		args[0],
+																		args[1],
+																	}, elemIsEscaped, w, r)
 																default:
-																	s.notAllowed(w, r, "GET")
+																	s.notAllowed(w, r, "GET,PATCH")
 																}
 
 																return
@@ -6118,8 +6336,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	args[0],
 																	args[1],
 																}, elemIsEscaped, w, r)
+															case "PATCH":
+																s.handlePatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRequest([2]string{
+																	args[0],
+																	args[1],
+																}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "GET")
+																s.notAllowed(w, r, "GET,PATCH")
 															}
 
 															return
@@ -6141,8 +6364,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																		args[0],
 																		args[1],
 																	}, elemIsEscaped, w, r)
+																case "PATCH":
+																	s.handlePatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusRequest([2]string{
+																		args[0],
+																		args[1],
+																	}, elemIsEscaped, w, r)
 																default:
-																	s.notAllowed(w, r, "GET")
+																	s.notAllowed(w, r, "GET,PATCH")
 																}
 
 																return
@@ -6446,8 +6674,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															args[0],
 															args[1],
 														}, elemIsEscaped, w, r)
+													case "PATCH":
+														s.handlePatchBatchV1NamespacedCronJobRequest([2]string{
+															args[0],
+															args[1],
+														}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "GET")
+														s.notAllowed(w, r, "GET,PATCH")
 													}
 
 													return
@@ -6469,8 +6702,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																args[0],
 																args[1],
 															}, elemIsEscaped, w, r)
+														case "PATCH":
+															s.handlePatchBatchV1NamespacedCronJobStatusRequest([2]string{
+																args[0],
+																args[1],
+															}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "GET")
+															s.notAllowed(w, r, "GET,PATCH")
 														}
 
 														return
@@ -6525,8 +6763,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															args[0],
 															args[1],
 														}, elemIsEscaped, w, r)
+													case "PATCH":
+														s.handlePatchBatchV1NamespacedJobRequest([2]string{
+															args[0],
+															args[1],
+														}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "GET")
+														s.notAllowed(w, r, "GET,PATCH")
 													}
 
 													return
@@ -6548,8 +6791,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																args[0],
 																args[1],
 															}, elemIsEscaped, w, r)
+														case "PATCH":
+															s.handlePatchBatchV1NamespacedJobStatusRequest([2]string{
+																args[0],
+																args[1],
+															}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "GET")
+															s.notAllowed(w, r, "GET,PATCH")
 														}
 
 														return
@@ -6871,8 +7119,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														args[0],
 														args[1],
 													}, elemIsEscaped, w, r)
+												case "PATCH":
+													s.handlePatchBatchV1beta1NamespacedCronJobRequest([2]string{
+														args[0],
+														args[1],
+													}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "GET")
+													s.notAllowed(w, r, "GET,PATCH")
 												}
 
 												return
@@ -6894,8 +7147,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															args[0],
 															args[1],
 														}, elemIsEscaped, w, r)
+													case "PATCH":
+														s.handlePatchBatchV1beta1NamespacedCronJobStatusRequest([2]string{
+															args[0],
+															args[1],
+														}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "GET")
+														s.notAllowed(w, r, "GET,PATCH")
 													}
 
 													return
@@ -7117,8 +7375,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												s.handleReadCertificatesV1CertificateSigningRequestRequest([1]string{
 													args[0],
 												}, elemIsEscaped, w, r)
+											case "PATCH":
+												s.handlePatchCertificatesV1CertificateSigningRequestRequest([1]string{
+													args[0],
+												}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "GET")
+												s.notAllowed(w, r, "GET,PATCH")
 											}
 
 											return
@@ -7151,8 +7413,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														s.handleReadCertificatesV1CertificateSigningRequestApprovalRequest([1]string{
 															args[0],
 														}, elemIsEscaped, w, r)
+													case "PATCH":
+														s.handlePatchCertificatesV1CertificateSigningRequestApprovalRequest([1]string{
+															args[0],
+														}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "GET")
+														s.notAllowed(w, r, "GET,PATCH")
 													}
 
 													return
@@ -7173,8 +7439,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														s.handleReadCertificatesV1CertificateSigningRequestStatusRequest([1]string{
 															args[0],
 														}, elemIsEscaped, w, r)
+													case "PATCH":
+														s.handlePatchCertificatesV1CertificateSigningRequestStatusRequest([1]string{
+															args[0],
+														}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "GET")
+														s.notAllowed(w, r, "GET,PATCH")
 													}
 
 													return
@@ -7367,8 +7637,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														args[0],
 														args[1],
 													}, elemIsEscaped, w, r)
+												case "PATCH":
+													s.handlePatchCoordinationV1NamespacedLeaseRequest([2]string{
+														args[0],
+														args[1],
+													}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "GET")
+													s.notAllowed(w, r, "GET,PATCH")
 												}
 
 												return
@@ -7633,8 +7908,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														args[0],
 														args[1],
 													}, elemIsEscaped, w, r)
+												case "PATCH":
+													s.handlePatchDiscoveryV1NamespacedEndpointSliceRequest([2]string{
+														args[0],
+														args[1],
+													}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "GET")
+													s.notAllowed(w, r, "GET,PATCH")
 												}
 
 												return
@@ -7864,8 +8144,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														args[0],
 														args[1],
 													}, elemIsEscaped, w, r)
+												case "PATCH":
+													s.handlePatchDiscoveryV1beta1NamespacedEndpointSliceRequest([2]string{
+														args[0],
+														args[1],
+													}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "GET")
+													s.notAllowed(w, r, "GET,PATCH")
 												}
 
 												return
@@ -8130,8 +8415,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														args[0],
 														args[1],
 													}, elemIsEscaped, w, r)
+												case "PATCH":
+													s.handlePatchEventsV1NamespacedEventRequest([2]string{
+														args[0],
+														args[1],
+													}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "GET")
+													s.notAllowed(w, r, "GET,PATCH")
 												}
 
 												return
@@ -8361,8 +8651,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														args[0],
 														args[1],
 													}, elemIsEscaped, w, r)
+												case "PATCH":
+													s.handlePatchEventsV1beta1NamespacedEventRequest([2]string{
+														args[0],
+														args[1],
+													}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "GET")
+													s.notAllowed(w, r, "GET,PATCH")
 												}
 
 												return
@@ -8582,8 +8877,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												s.handleReadFlowcontrolApiserverV1beta1FlowSchemaRequest([1]string{
 													args[0],
 												}, elemIsEscaped, w, r)
+											case "PATCH":
+												s.handlePatchFlowcontrolApiserverV1beta1FlowSchemaRequest([1]string{
+													args[0],
+												}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "GET")
+												s.notAllowed(w, r, "GET,PATCH")
 											}
 
 											return
@@ -8604,8 +8903,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													s.handleReadFlowcontrolApiserverV1beta1FlowSchemaStatusRequest([1]string{
 														args[0],
 													}, elemIsEscaped, w, r)
+												case "PATCH":
+													s.handlePatchFlowcontrolApiserverV1beta1FlowSchemaStatusRequest([1]string{
+														args[0],
+													}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "GET")
+													s.notAllowed(w, r, "GET,PATCH")
 												}
 
 												return
@@ -8657,8 +8960,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												s.handleReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationRequest([1]string{
 													args[0],
 												}, elemIsEscaped, w, r)
+											case "PATCH":
+												s.handlePatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationRequest([1]string{
+													args[0],
+												}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "GET")
+												s.notAllowed(w, r, "GET,PATCH")
 											}
 
 											return
@@ -8679,8 +8986,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													s.handleReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusRequest([1]string{
 														args[0],
 													}, elemIsEscaped, w, r)
+												case "PATCH":
+													s.handlePatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusRequest([1]string{
+														args[0],
+													}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "GET")
+													s.notAllowed(w, r, "GET,PATCH")
 												}
 
 												return
@@ -8871,8 +9182,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												s.handleReadFlowcontrolApiserverV1beta2FlowSchemaRequest([1]string{
 													args[0],
 												}, elemIsEscaped, w, r)
+											case "PATCH":
+												s.handlePatchFlowcontrolApiserverV1beta2FlowSchemaRequest([1]string{
+													args[0],
+												}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "GET")
+												s.notAllowed(w, r, "GET,PATCH")
 											}
 
 											return
@@ -8893,8 +9208,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													s.handleReadFlowcontrolApiserverV1beta2FlowSchemaStatusRequest([1]string{
 														args[0],
 													}, elemIsEscaped, w, r)
+												case "PATCH":
+													s.handlePatchFlowcontrolApiserverV1beta2FlowSchemaStatusRequest([1]string{
+														args[0],
+													}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "GET")
+													s.notAllowed(w, r, "GET,PATCH")
 												}
 
 												return
@@ -8946,8 +9265,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												s.handleReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationRequest([1]string{
 													args[0],
 												}, elemIsEscaped, w, r)
+											case "PATCH":
+												s.handlePatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationRequest([1]string{
+													args[0],
+												}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "GET")
+												s.notAllowed(w, r, "GET,PATCH")
 											}
 
 											return
@@ -8968,8 +9291,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													s.handleReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusRequest([1]string{
 														args[0],
 													}, elemIsEscaped, w, r)
+												case "PATCH":
+													s.handlePatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusRequest([1]string{
+														args[0],
+													}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "GET")
+													s.notAllowed(w, r, "GET,PATCH")
 												}
 
 												return
@@ -9183,8 +9510,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											s.handleReadInternalApiserverV1alpha1StorageVersionRequest([1]string{
 												args[0],
 											}, elemIsEscaped, w, r)
+										case "PATCH":
+											s.handlePatchInternalApiserverV1alpha1StorageVersionRequest([1]string{
+												args[0],
+											}, elemIsEscaped, w, r)
 										default:
-											s.notAllowed(w, r, "GET")
+											s.notAllowed(w, r, "GET,PATCH")
 										}
 
 										return
@@ -9205,8 +9536,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												s.handleReadInternalApiserverV1alpha1StorageVersionStatusRequest([1]string{
 													args[0],
 												}, elemIsEscaped, w, r)
+											case "PATCH":
+												s.handlePatchInternalApiserverV1alpha1StorageVersionStatusRequest([1]string{
+													args[0],
+												}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "GET")
+												s.notAllowed(w, r, "GET,PATCH")
 											}
 
 											return
@@ -9377,8 +9712,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													s.handleReadNetworkingV1IngressClassRequest([1]string{
 														args[0],
 													}, elemIsEscaped, w, r)
+												case "PATCH":
+													s.handlePatchNetworkingV1IngressClassRequest([1]string{
+														args[0],
+													}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "GET")
+													s.notAllowed(w, r, "GET,PATCH")
 												}
 
 												return
@@ -9498,8 +9837,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																args[0],
 																args[1],
 															}, elemIsEscaped, w, r)
+														case "PATCH":
+															s.handlePatchNetworkingV1NamespacedIngressRequest([2]string{
+																args[0],
+																args[1],
+															}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "GET")
+															s.notAllowed(w, r, "GET,PATCH")
 														}
 
 														return
@@ -9521,8 +9865,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	args[0],
 																	args[1],
 																}, elemIsEscaped, w, r)
+															case "PATCH":
+																s.handlePatchNetworkingV1NamespacedIngressStatusRequest([2]string{
+																	args[0],
+																	args[1],
+																}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "GET")
+																s.notAllowed(w, r, "GET,PATCH")
 															}
 
 															return
@@ -9578,8 +9927,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																args[0],
 																args[1],
 															}, elemIsEscaped, w, r)
+														case "PATCH":
+															s.handlePatchNetworkingV1NamespacedNetworkPolicyRequest([2]string{
+																args[0],
+																args[1],
+															}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "GET")
+															s.notAllowed(w, r, "GET,PATCH")
 														}
 
 														return
@@ -9991,8 +10345,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													s.handleReadNodeV1RuntimeClassRequest([1]string{
 														args[0],
 													}, elemIsEscaped, w, r)
+												case "PATCH":
+													s.handlePatchNodeV1RuntimeClassRequest([1]string{
+														args[0],
+													}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "GET")
+													s.notAllowed(w, r, "GET,PATCH")
 												}
 
 												return
@@ -10116,8 +10474,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													s.handleReadNodeV1alpha1RuntimeClassRequest([1]string{
 														args[0],
 													}, elemIsEscaped, w, r)
+												case "PATCH":
+													s.handlePatchNodeV1alpha1RuntimeClassRequest([1]string{
+														args[0],
+													}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "GET")
+													s.notAllowed(w, r, "GET,PATCH")
 												}
 
 												return
@@ -10241,8 +10603,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													s.handleReadNodeV1beta1RuntimeClassRequest([1]string{
 														args[0],
 													}, elemIsEscaped, w, r)
+												case "PATCH":
+													s.handlePatchNodeV1beta1RuntimeClassRequest([1]string{
+														args[0],
+													}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "GET")
+													s.notAllowed(w, r, "GET,PATCH")
 												}
 
 												return
@@ -10426,8 +10792,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														args[0],
 														args[1],
 													}, elemIsEscaped, w, r)
+												case "PATCH":
+													s.handlePatchPolicyV1NamespacedPodDisruptionBudgetRequest([2]string{
+														args[0],
+														args[1],
+													}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "GET")
+													s.notAllowed(w, r, "GET,PATCH")
 												}
 
 												return
@@ -10449,8 +10820,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															args[0],
 															args[1],
 														}, elemIsEscaped, w, r)
+													case "PATCH":
+														s.handlePatchPolicyV1NamespacedPodDisruptionBudgetStatusRequest([2]string{
+															args[0],
+															args[1],
+														}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "GET")
+														s.notAllowed(w, r, "GET,PATCH")
 													}
 
 													return
@@ -10681,8 +11057,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														args[0],
 														args[1],
 													}, elemIsEscaped, w, r)
+												case "PATCH":
+													s.handlePatchPolicyV1beta1NamespacedPodDisruptionBudgetRequest([2]string{
+														args[0],
+														args[1],
+													}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "GET")
+													s.notAllowed(w, r, "GET,PATCH")
 												}
 
 												return
@@ -10704,8 +11085,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															args[0],
 															args[1],
 														}, elemIsEscaped, w, r)
+													case "PATCH":
+														s.handlePatchPolicyV1beta1NamespacedPodDisruptionBudgetStatusRequest([2]string{
+															args[0],
+															args[1],
+														}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "GET")
+														s.notAllowed(w, r, "GET,PATCH")
 													}
 
 													return
@@ -10792,8 +11178,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													s.handleReadPolicyV1beta1PodSecurityPolicyRequest([1]string{
 														args[0],
 													}, elemIsEscaped, w, r)
+												case "PATCH":
+													s.handlePatchPolicyV1beta1PodSecurityPolicyRequest([1]string{
+														args[0],
+													}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "GET")
+													s.notAllowed(w, r, "GET,PATCH")
 												}
 
 												return
@@ -11080,8 +11470,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												s.handleReadRbacAuthorizationV1ClusterRoleBindingRequest([1]string{
 													args[0],
 												}, elemIsEscaped, w, r)
+											case "PATCH":
+												s.handlePatchRbacAuthorizationV1ClusterRoleBindingRequest([1]string{
+													args[0],
+												}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "GET")
+												s.notAllowed(w, r, "GET,PATCH")
 											}
 
 											return
@@ -11132,8 +11526,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												s.handleReadRbacAuthorizationV1ClusterRoleRequest([1]string{
 													args[0],
 												}, elemIsEscaped, w, r)
+											case "PATCH":
+												s.handlePatchRbacAuthorizationV1ClusterRoleRequest([1]string{
+													args[0],
+												}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "GET")
+												s.notAllowed(w, r, "GET,PATCH")
 											}
 
 											return
@@ -11222,8 +11620,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														args[0],
 														args[1],
 													}, elemIsEscaped, w, r)
+												case "PATCH":
+													s.handlePatchRbacAuthorizationV1NamespacedRoleBindingRequest([2]string{
+														args[0],
+														args[1],
+													}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "GET")
+													s.notAllowed(w, r, "GET,PATCH")
 												}
 
 												return
@@ -11277,8 +11680,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														args[0],
 														args[1],
 													}, elemIsEscaped, w, r)
+												case "PATCH":
+													s.handlePatchRbacAuthorizationV1NamespacedRoleRequest([2]string{
+														args[0],
+														args[1],
+													}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "GET")
+													s.notAllowed(w, r, "GET,PATCH")
 												}
 
 												return
@@ -11774,8 +12182,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												s.handleReadSchedulingV1PriorityClassRequest([1]string{
 													args[0],
 												}, elemIsEscaped, w, r)
+											case "PATCH":
+												s.handlePatchSchedulingV1PriorityClassRequest([1]string{
+													args[0],
+												}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "GET")
+												s.notAllowed(w, r, "GET,PATCH")
 											}
 
 											return
@@ -11944,8 +12356,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														s.handleReadStorageV1CSIDriverRequest([1]string{
 															args[0],
 														}, elemIsEscaped, w, r)
+													case "PATCH":
+														s.handlePatchStorageV1CSIDriverRequest([1]string{
+															args[0],
+														}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "GET")
+														s.notAllowed(w, r, "GET,PATCH")
 													}
 
 													return
@@ -11996,8 +12412,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														s.handleReadStorageV1CSINodeRequest([1]string{
 															args[0],
 														}, elemIsEscaped, w, r)
+													case "PATCH":
+														s.handlePatchStorageV1CSINodeRequest([1]string{
+															args[0],
+														}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "GET")
+														s.notAllowed(w, r, "GET,PATCH")
 													}
 
 													return
@@ -12050,8 +12470,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													s.handleReadStorageV1StorageClassRequest([1]string{
 														args[0],
 													}, elemIsEscaped, w, r)
+												case "PATCH":
+													s.handlePatchStorageV1StorageClassRequest([1]string{
+														args[0],
+													}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "GET")
+													s.notAllowed(w, r, "GET,PATCH")
 												}
 
 												return
@@ -12101,8 +12525,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													s.handleReadStorageV1VolumeAttachmentRequest([1]string{
 														args[0],
 													}, elemIsEscaped, w, r)
+												case "PATCH":
+													s.handlePatchStorageV1VolumeAttachmentRequest([1]string{
+														args[0],
+													}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "GET")
+													s.notAllowed(w, r, "GET,PATCH")
 												}
 
 												return
@@ -12123,8 +12551,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														s.handleReadStorageV1VolumeAttachmentStatusRequest([1]string{
 															args[0],
 														}, elemIsEscaped, w, r)
+													case "PATCH":
+														s.handlePatchStorageV1VolumeAttachmentStatusRequest([1]string{
+															args[0],
+														}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "GET")
+														s.notAllowed(w, r, "GET,PATCH")
 													}
 
 													return
@@ -12478,8 +12910,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															args[0],
 															args[1],
 														}, elemIsEscaped, w, r)
+													case "PATCH":
+														s.handlePatchStorageV1alpha1NamespacedCSIStorageCapacityRequest([2]string{
+															args[0],
+															args[1],
+														}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "GET")
+														s.notAllowed(w, r, "GET,PATCH")
 													}
 
 													return
@@ -12709,8 +13146,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															args[0],
 															args[1],
 														}, elemIsEscaped, w, r)
+													case "PATCH":
+														s.handlePatchStorageV1beta1NamespacedCSIStorageCapacityRequest([2]string{
+															args[0],
+															args[1],
+														}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "GET")
+														s.notAllowed(w, r, "GET,PATCH")
 													}
 
 													return
@@ -13362,6 +13804,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.args = args
 											r.count = 1
 											return r, true
+										case "PATCH":
+											r.name = PatchCoreV1NamespaceOperation
+											r.summary = ""
+											r.operationID = "patchCoreV1Namespace"
+											r.operationGroup = ""
+											r.pathPattern = "/api/v1/namespaces/{name}"
+											r.args = args
+											r.count = 1
+											return r, true
 										default:
 											return
 										}
@@ -13513,6 +13964,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.args = args
 															r.count = 2
 															return r, true
+														case "PATCH":
+															r.name = PatchCoreV1NamespacedEndpointsOperation
+															r.summary = ""
+															r.operationID = "patchCoreV1NamespacedEndpoints"
+															r.operationGroup = ""
+															r.pathPattern = "/api/v1/namespaces/{namespace}/endpoints/{name}"
+															r.args = args
+															r.count = 2
+															return r, true
 														default:
 															return
 														}
@@ -13568,6 +14028,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = ReadCoreV1NamespacedEventOperation
 															r.summary = ""
 															r.operationID = "readCoreV1NamespacedEvent"
+															r.operationGroup = ""
+															r.pathPattern = "/api/v1/namespaces/{namespace}/events/{name}"
+															r.args = args
+															r.count = 2
+															return r, true
+														case "PATCH":
+															r.name = PatchCoreV1NamespacedEventOperation
+															r.summary = ""
+															r.operationID = "patchCoreV1NamespacedEvent"
 															r.operationGroup = ""
 															r.pathPattern = "/api/v1/namespaces/{namespace}/events/{name}"
 															r.args = args
@@ -13630,6 +14099,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = ReadCoreV1NamespacedLimitRangeOperation
 														r.summary = ""
 														r.operationID = "readCoreV1NamespacedLimitRange"
+														r.operationGroup = ""
+														r.pathPattern = "/api/v1/namespaces/{namespace}/limitranges/{name}"
+														r.args = args
+														r.count = 2
+														return r, true
+													case "PATCH":
+														r.name = PatchCoreV1NamespacedLimitRangeOperation
+														r.summary = ""
+														r.operationID = "patchCoreV1NamespacedLimitRange"
 														r.operationGroup = ""
 														r.pathPattern = "/api/v1/namespaces/{namespace}/limitranges/{name}"
 														r.args = args
@@ -13706,6 +14184,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.args = args
 															r.count = 2
 															return r, true
+														case "PATCH":
+															r.name = PatchCoreV1NamespacedPersistentVolumeClaimOperation
+															r.summary = ""
+															r.operationID = "patchCoreV1NamespacedPersistentVolumeClaim"
+															r.operationGroup = ""
+															r.pathPattern = "/api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}"
+															r.args = args
+															r.count = 2
+															return r, true
 														default:
 															return
 														}
@@ -13726,6 +14213,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = ReadCoreV1NamespacedPersistentVolumeClaimStatusOperation
 																r.summary = ""
 																r.operationID = "readCoreV1NamespacedPersistentVolumeClaimStatus"
+																r.operationGroup = ""
+																r.pathPattern = "/api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}/status"
+																r.args = args
+																r.count = 2
+																return r, true
+															case "PATCH":
+																r.name = PatchCoreV1NamespacedPersistentVolumeClaimStatusOperation
+																r.summary = ""
+																r.operationID = "patchCoreV1NamespacedPersistentVolumeClaimStatus"
 																r.operationGroup = ""
 																r.pathPattern = "/api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}/status"
 																r.args = args
@@ -13799,6 +14295,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = ReadCoreV1NamespacedPodOperation
 																r.summary = ""
 																r.operationID = "readCoreV1NamespacedPod"
+																r.operationGroup = ""
+																r.pathPattern = "/api/v1/namespaces/{namespace}/pods/{name}"
+																r.args = args
+																r.count = 2
+																return r, true
+															case "PATCH":
+																r.name = PatchCoreV1NamespacedPodOperation
+																r.summary = ""
+																r.operationID = "patchCoreV1NamespacedPod"
 																r.operationGroup = ""
 																r.pathPattern = "/api/v1/namespaces/{namespace}/pods/{name}"
 																r.args = args
@@ -13882,6 +14387,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																			r.name = ReadCoreV1NamespacedPodEphemeralcontainersOperation
 																			r.summary = ""
 																			r.operationID = "readCoreV1NamespacedPodEphemeralcontainers"
+																			r.operationGroup = ""
+																			r.pathPattern = "/api/v1/namespaces/{namespace}/pods/{name}/ephemeralcontainers"
+																			r.args = args
+																			r.count = 2
+																			return r, true
+																		case "PATCH":
+																			r.name = PatchCoreV1NamespacedPodEphemeralcontainersOperation
+																			r.summary = ""
+																			r.operationID = "patchCoreV1NamespacedPodEphemeralcontainers"
 																			r.operationGroup = ""
 																			r.pathPattern = "/api/v1/namespaces/{namespace}/pods/{name}/ephemeralcontainers"
 																			r.args = args
@@ -14189,6 +14703,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																		r.args = args
 																		r.count = 2
 																		return r, true
+																	case "PATCH":
+																		r.name = PatchCoreV1NamespacedPodStatusOperation
+																		r.summary = ""
+																		r.operationID = "patchCoreV1NamespacedPodStatus"
+																		r.operationGroup = ""
+																		r.pathPattern = "/api/v1/namespaces/{namespace}/pods/{name}/status"
+																		r.args = args
+																		r.count = 2
+																		return r, true
 																	default:
 																		return
 																	}
@@ -14248,6 +14771,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = ReadCoreV1NamespacedPodTemplateOperation
 																r.summary = ""
 																r.operationID = "readCoreV1NamespacedPodTemplate"
+																r.operationGroup = ""
+																r.pathPattern = "/api/v1/namespaces/{namespace}/podtemplates/{name}"
+																r.args = args
+																r.count = 2
+																return r, true
+															case "PATCH":
+																r.name = PatchCoreV1NamespacedPodTemplateOperation
+																r.summary = ""
+																r.operationID = "patchCoreV1NamespacedPodTemplate"
 																r.operationGroup = ""
 																r.pathPattern = "/api/v1/namespaces/{namespace}/podtemplates/{name}"
 																r.args = args
@@ -14328,6 +14860,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.args = args
 															r.count = 2
 															return r, true
+														case "PATCH":
+															r.name = PatchCoreV1NamespacedReplicationControllerOperation
+															r.summary = ""
+															r.operationID = "patchCoreV1NamespacedReplicationController"
+															r.operationGroup = ""
+															r.pathPattern = "/api/v1/namespaces/{namespace}/replicationcontrollers/{name}"
+															r.args = args
+															r.count = 2
+															return r, true
 														default:
 															return
 														}
@@ -14365,6 +14906,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.args = args
 																	r.count = 2
 																	return r, true
+																case "PATCH":
+																	r.name = PatchCoreV1NamespacedReplicationControllerScaleOperation
+																	r.summary = ""
+																	r.operationID = "patchCoreV1NamespacedReplicationControllerScale"
+																	r.operationGroup = ""
+																	r.pathPattern = "/api/v1/namespaces/{namespace}/replicationcontrollers/{name}/scale"
+																	r.args = args
+																	r.count = 2
+																	return r, true
 																default:
 																	return
 																}
@@ -14385,6 +14935,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = ReadCoreV1NamespacedReplicationControllerStatusOperation
 																	r.summary = ""
 																	r.operationID = "readCoreV1NamespacedReplicationControllerStatus"
+																	r.operationGroup = ""
+																	r.pathPattern = "/api/v1/namespaces/{namespace}/replicationcontrollers/{name}/status"
+																	r.args = args
+																	r.count = 2
+																	return r, true
+																case "PATCH":
+																	r.name = PatchCoreV1NamespacedReplicationControllerStatusOperation
+																	r.summary = ""
+																	r.operationID = "patchCoreV1NamespacedReplicationControllerStatus"
 																	r.operationGroup = ""
 																	r.pathPattern = "/api/v1/namespaces/{namespace}/replicationcontrollers/{name}/status"
 																	r.args = args
@@ -14453,6 +15012,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.args = args
 															r.count = 2
 															return r, true
+														case "PATCH":
+															r.name = PatchCoreV1NamespacedResourceQuotaOperation
+															r.summary = ""
+															r.operationID = "patchCoreV1NamespacedResourceQuota"
+															r.operationGroup = ""
+															r.pathPattern = "/api/v1/namespaces/{namespace}/resourcequotas/{name}"
+															r.args = args
+															r.count = 2
+															return r, true
 														default:
 															return
 														}
@@ -14473,6 +15041,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = ReadCoreV1NamespacedResourceQuotaStatusOperation
 																r.summary = ""
 																r.operationID = "readCoreV1NamespacedResourceQuotaStatus"
+																r.operationGroup = ""
+																r.pathPattern = "/api/v1/namespaces/{namespace}/resourcequotas/{name}/status"
+																r.args = args
+																r.count = 2
+																return r, true
+															case "PATCH":
+																r.name = PatchCoreV1NamespacedResourceQuotaStatusOperation
+																r.summary = ""
+																r.operationID = "patchCoreV1NamespacedResourceQuotaStatus"
 																r.operationGroup = ""
 																r.pathPattern = "/api/v1/namespaces/{namespace}/resourcequotas/{name}/status"
 																r.args = args
@@ -14566,6 +15143,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.args = args
 																r.count = 2
 																return r, true
+															case "PATCH":
+																r.name = PatchCoreV1NamespacedSecretOperation
+																r.summary = ""
+																r.operationID = "patchCoreV1NamespacedSecret"
+																r.operationGroup = ""
+																r.pathPattern = "/api/v1/namespaces/{namespace}/secrets/{name}"
+																r.args = args
+																r.count = 2
+																return r, true
 															default:
 																return
 															}
@@ -14638,6 +15224,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.args = args
 																	r.count = 2
 																	return r, true
+																case "PATCH":
+																	r.name = PatchCoreV1NamespacedServiceAccountOperation
+																	r.summary = ""
+																	r.operationID = "patchCoreV1NamespacedServiceAccount"
+																	r.operationGroup = ""
+																	r.pathPattern = "/api/v1/namespaces/{namespace}/serviceaccounts/{name}"
+																	r.args = args
+																	r.count = 2
+																	return r, true
 																default:
 																	return
 																}
@@ -14692,6 +15287,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = ReadCoreV1NamespacedServiceOperation
 																	r.summary = ""
 																	r.operationID = "readCoreV1NamespacedService"
+																	r.operationGroup = ""
+																	r.pathPattern = "/api/v1/namespaces/{namespace}/services/{name}"
+																	r.args = args
+																	r.count = 2
+																	return r, true
+																case "PATCH":
+																	r.name = PatchCoreV1NamespacedServiceOperation
+																	r.summary = ""
+																	r.operationID = "patchCoreV1NamespacedService"
 																	r.operationGroup = ""
 																	r.pathPattern = "/api/v1/namespaces/{namespace}/services/{name}"
 																	r.args = args
@@ -14902,6 +15506,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																			r.args = args
 																			r.count = 2
 																			return r, true
+																		case "PATCH":
+																			r.name = PatchCoreV1NamespacedServiceStatusOperation
+																			r.summary = ""
+																			r.operationID = "patchCoreV1NamespacedServiceStatus"
+																			r.operationGroup = ""
+																			r.pathPattern = "/api/v1/namespaces/{namespace}/services/{name}/status"
+																			r.args = args
+																			r.count = 2
+																			return r, true
 																		default:
 																			return
 																		}
@@ -14932,6 +15545,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = ReadCoreV1NamespaceStatusOperation
 														r.summary = ""
 														r.operationID = "readCoreV1NamespaceStatus"
+														r.operationGroup = ""
+														r.pathPattern = "/api/v1/namespaces/{name}/status"
+														r.args = args
+														r.count = 1
+														return r, true
+													case "PATCH":
+														r.name = PatchCoreV1NamespaceStatusOperation
+														r.summary = ""
+														r.operationID = "patchCoreV1NamespaceStatus"
 														r.operationGroup = ""
 														r.pathPattern = "/api/v1/namespaces/{name}/status"
 														r.args = args
@@ -14997,6 +15619,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.name = ReadCoreV1NodeOperation
 											r.summary = ""
 											r.operationID = "readCoreV1Node"
+											r.operationGroup = ""
+											r.pathPattern = "/api/v1/nodes/{name}"
+											r.args = args
+											r.count = 1
+											return r, true
+										case "PATCH":
+											r.name = PatchCoreV1NodeOperation
+											r.summary = ""
+											r.operationID = "patchCoreV1Node"
 											r.operationGroup = ""
 											r.pathPattern = "/api/v1/nodes/{name}"
 											r.args = args
@@ -15207,6 +15838,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.args = args
 													r.count = 1
 													return r, true
+												case "PATCH":
+													r.name = PatchCoreV1NodeStatusOperation
+													r.summary = ""
+													r.operationID = "patchCoreV1NodeStatus"
+													r.operationGroup = ""
+													r.pathPattern = "/api/v1/nodes/{name}/status"
+													r.args = args
+													r.count = 1
+													return r, true
 												default:
 													return
 												}
@@ -15321,6 +15961,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.args = args
 												r.count = 1
 												return r, true
+											case "PATCH":
+												r.name = PatchCoreV1PersistentVolumeOperation
+												r.summary = ""
+												r.operationID = "patchCoreV1PersistentVolume"
+												r.operationGroup = ""
+												r.pathPattern = "/api/v1/persistentvolumes/{name}"
+												r.args = args
+												r.count = 1
+												return r, true
 											default:
 												return
 											}
@@ -15341,6 +15990,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = ReadCoreV1PersistentVolumeStatusOperation
 													r.summary = ""
 													r.operationID = "readCoreV1PersistentVolumeStatus"
+													r.operationGroup = ""
+													r.pathPattern = "/api/v1/persistentvolumes/{name}/status"
+													r.args = args
+													r.count = 1
+													return r, true
+												case "PATCH":
+													r.name = PatchCoreV1PersistentVolumeStatusOperation
+													r.summary = ""
+													r.operationID = "patchCoreV1PersistentVolumeStatus"
 													r.operationGroup = ""
 													r.pathPattern = "/api/v1/persistentvolumes/{name}/status"
 													r.args = args
@@ -17156,6 +17814,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.args = args
 												r.count = 1
 												return r, true
+											case "PATCH":
+												r.name = PatchAdmissionregistrationV1MutatingWebhookConfigurationOperation
+												r.summary = ""
+												r.operationID = "patchAdmissionregistrationV1MutatingWebhookConfiguration"
+												r.operationGroup = ""
+												r.pathPattern = "/apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations/{name}"
+												r.args = args
+												r.count = 1
+												return r, true
 											default:
 												return
 											}
@@ -17211,6 +17878,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = ReadAdmissionregistrationV1ValidatingWebhookConfigurationOperation
 												r.summary = ""
 												r.operationID = "readAdmissionregistrationV1ValidatingWebhookConfiguration"
+												r.operationGroup = ""
+												r.pathPattern = "/apis/admissionregistration.k8s.io/v1/validatingwebhookconfigurations/{name}"
+												r.args = args
+												r.count = 1
+												return r, true
+											case "PATCH":
+												r.name = PatchAdmissionregistrationV1ValidatingWebhookConfigurationOperation
+												r.summary = ""
+												r.operationID = "patchAdmissionregistrationV1ValidatingWebhookConfiguration"
 												r.operationGroup = ""
 												r.pathPattern = "/apis/admissionregistration.k8s.io/v1/validatingwebhookconfigurations/{name}"
 												r.args = args
@@ -17485,6 +18161,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.args = args
 														r.count = 1
 														return r, true
+													case "PATCH":
+														r.name = PatchApiextensionsV1CustomResourceDefinitionOperation
+														r.summary = ""
+														r.operationID = "patchApiextensionsV1CustomResourceDefinition"
+														r.operationGroup = ""
+														r.pathPattern = "/apis/apiextensions.k8s.io/v1/customresourcedefinitions/{name}"
+														r.args = args
+														r.count = 1
+														return r, true
 													default:
 														return
 													}
@@ -17505,6 +18190,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = ReadApiextensionsV1CustomResourceDefinitionStatusOperation
 															r.summary = ""
 															r.operationID = "readApiextensionsV1CustomResourceDefinitionStatus"
+															r.operationGroup = ""
+															r.pathPattern = "/apis/apiextensions.k8s.io/v1/customresourcedefinitions/{name}/status"
+															r.args = args
+															r.count = 1
+															return r, true
+														case "PATCH":
+															r.name = PatchApiextensionsV1CustomResourceDefinitionStatusOperation
+															r.summary = ""
+															r.operationID = "patchApiextensionsV1CustomResourceDefinitionStatus"
 															r.operationGroup = ""
 															r.pathPattern = "/apis/apiextensions.k8s.io/v1/customresourcedefinitions/{name}/status"
 															r.args = args
@@ -17683,6 +18377,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.args = args
 														r.count = 1
 														return r, true
+													case "PATCH":
+														r.name = PatchApiregistrationV1APIServiceOperation
+														r.summary = ""
+														r.operationID = "patchApiregistrationV1APIService"
+														r.operationGroup = ""
+														r.pathPattern = "/apis/apiregistration.k8s.io/v1/apiservices/{name}"
+														r.args = args
+														r.count = 1
+														return r, true
 													default:
 														return
 													}
@@ -17703,6 +18406,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = ReadApiregistrationV1APIServiceStatusOperation
 															r.summary = ""
 															r.operationID = "readApiregistrationV1APIServiceStatus"
+															r.operationGroup = ""
+															r.pathPattern = "/apis/apiregistration.k8s.io/v1/apiservices/{name}/status"
+															r.args = args
+															r.count = 1
+															return r, true
+														case "PATCH":
+															r.name = PatchApiregistrationV1APIServiceStatusOperation
+															r.summary = ""
+															r.operationID = "patchApiregistrationV1APIServiceStatus"
 															r.operationGroup = ""
 															r.pathPattern = "/apis/apiregistration.k8s.io/v1/apiservices/{name}/status"
 															r.args = args
@@ -18006,6 +18718,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.args = args
 															r.count = 2
 															return r, true
+														case "PATCH":
+															r.name = PatchAppsV1NamespacedControllerRevisionOperation
+															r.summary = ""
+															r.operationID = "patchAppsV1NamespacedControllerRevision"
+															r.operationGroup = ""
+															r.pathPattern = "/apis/apps/v1/namespaces/{namespace}/controllerrevisions/{name}"
+															r.args = args
+															r.count = 2
+															return r, true
 														default:
 															return
 														}
@@ -18077,6 +18798,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.args = args
 																r.count = 2
 																return r, true
+															case "PATCH":
+																r.name = PatchAppsV1NamespacedDaemonSetOperation
+																r.summary = ""
+																r.operationID = "patchAppsV1NamespacedDaemonSet"
+																r.operationGroup = ""
+																r.pathPattern = "/apis/apps/v1/namespaces/{namespace}/daemonsets/{name}"
+																r.args = args
+																r.count = 2
+																return r, true
 															default:
 																return
 															}
@@ -18097,6 +18827,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = ReadAppsV1NamespacedDaemonSetStatusOperation
 																	r.summary = ""
 																	r.operationID = "readAppsV1NamespacedDaemonSetStatus"
+																	r.operationGroup = ""
+																	r.pathPattern = "/apis/apps/v1/namespaces/{namespace}/daemonsets/{name}/status"
+																	r.args = args
+																	r.count = 2
+																	return r, true
+																case "PATCH":
+																	r.name = PatchAppsV1NamespacedDaemonSetStatusOperation
+																	r.summary = ""
+																	r.operationID = "patchAppsV1NamespacedDaemonSetStatus"
 																	r.operationGroup = ""
 																	r.pathPattern = "/apis/apps/v1/namespaces/{namespace}/daemonsets/{name}/status"
 																	r.args = args
@@ -18163,6 +18902,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.args = args
 																r.count = 2
 																return r, true
+															case "PATCH":
+																r.name = PatchAppsV1NamespacedDeploymentOperation
+																r.summary = ""
+																r.operationID = "patchAppsV1NamespacedDeployment"
+																r.operationGroup = ""
+																r.pathPattern = "/apis/apps/v1/namespaces/{namespace}/deployments/{name}"
+																r.args = args
+																r.count = 2
+																return r, true
 															default:
 																return
 															}
@@ -18200,6 +18948,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																		r.args = args
 																		r.count = 2
 																		return r, true
+																	case "PATCH":
+																		r.name = PatchAppsV1NamespacedDeploymentScaleOperation
+																		r.summary = ""
+																		r.operationID = "patchAppsV1NamespacedDeploymentScale"
+																		r.operationGroup = ""
+																		r.pathPattern = "/apis/apps/v1/namespaces/{namespace}/deployments/{name}/scale"
+																		r.args = args
+																		r.count = 2
+																		return r, true
 																	default:
 																		return
 																	}
@@ -18220,6 +18977,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																		r.name = ReadAppsV1NamespacedDeploymentStatusOperation
 																		r.summary = ""
 																		r.operationID = "readAppsV1NamespacedDeploymentStatus"
+																		r.operationGroup = ""
+																		r.pathPattern = "/apis/apps/v1/namespaces/{namespace}/deployments/{name}/status"
+																		r.args = args
+																		r.count = 2
+																		return r, true
+																	case "PATCH":
+																		r.name = PatchAppsV1NamespacedDeploymentStatusOperation
+																		r.summary = ""
+																		r.operationID = "patchAppsV1NamespacedDeploymentStatus"
 																		r.operationGroup = ""
 																		r.pathPattern = "/apis/apps/v1/namespaces/{namespace}/deployments/{name}/status"
 																		r.args = args
@@ -18290,6 +19056,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.args = args
 															r.count = 2
 															return r, true
+														case "PATCH":
+															r.name = PatchAppsV1NamespacedReplicaSetOperation
+															r.summary = ""
+															r.operationID = "patchAppsV1NamespacedReplicaSet"
+															r.operationGroup = ""
+															r.pathPattern = "/apis/apps/v1/namespaces/{namespace}/replicasets/{name}"
+															r.args = args
+															r.count = 2
+															return r, true
 														default:
 															return
 														}
@@ -18327,6 +19102,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.args = args
 																	r.count = 2
 																	return r, true
+																case "PATCH":
+																	r.name = PatchAppsV1NamespacedReplicaSetScaleOperation
+																	r.summary = ""
+																	r.operationID = "patchAppsV1NamespacedReplicaSetScale"
+																	r.operationGroup = ""
+																	r.pathPattern = "/apis/apps/v1/namespaces/{namespace}/replicasets/{name}/scale"
+																	r.args = args
+																	r.count = 2
+																	return r, true
 																default:
 																	return
 																}
@@ -18347,6 +19131,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = ReadAppsV1NamespacedReplicaSetStatusOperation
 																	r.summary = ""
 																	r.operationID = "readAppsV1NamespacedReplicaSetStatus"
+																	r.operationGroup = ""
+																	r.pathPattern = "/apis/apps/v1/namespaces/{namespace}/replicasets/{name}/status"
+																	r.args = args
+																	r.count = 2
+																	return r, true
+																case "PATCH":
+																	r.name = PatchAppsV1NamespacedReplicaSetStatusOperation
+																	r.summary = ""
+																	r.operationID = "patchAppsV1NamespacedReplicaSetStatus"
 																	r.operationGroup = ""
 																	r.pathPattern = "/apis/apps/v1/namespaces/{namespace}/replicasets/{name}/status"
 																	r.args = args
@@ -18415,6 +19208,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.args = args
 															r.count = 2
 															return r, true
+														case "PATCH":
+															r.name = PatchAppsV1NamespacedStatefulSetOperation
+															r.summary = ""
+															r.operationID = "patchAppsV1NamespacedStatefulSet"
+															r.operationGroup = ""
+															r.pathPattern = "/apis/apps/v1/namespaces/{namespace}/statefulsets/{name}"
+															r.args = args
+															r.count = 2
+															return r, true
 														default:
 															return
 														}
@@ -18452,6 +19254,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.args = args
 																	r.count = 2
 																	return r, true
+																case "PATCH":
+																	r.name = PatchAppsV1NamespacedStatefulSetScaleOperation
+																	r.summary = ""
+																	r.operationID = "patchAppsV1NamespacedStatefulSetScale"
+																	r.operationGroup = ""
+																	r.pathPattern = "/apis/apps/v1/namespaces/{namespace}/statefulsets/{name}/scale"
+																	r.args = args
+																	r.count = 2
+																	return r, true
 																default:
 																	return
 																}
@@ -18472,6 +19283,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = ReadAppsV1NamespacedStatefulSetStatusOperation
 																	r.summary = ""
 																	r.operationID = "readAppsV1NamespacedStatefulSetStatus"
+																	r.operationGroup = ""
+																	r.pathPattern = "/apis/apps/v1/namespaces/{namespace}/statefulsets/{name}/status"
+																	r.args = args
+																	r.count = 2
+																	return r, true
+																case "PATCH":
+																	r.name = PatchAppsV1NamespacedStatefulSetStatusOperation
+																	r.summary = ""
+																	r.operationID = "patchAppsV1NamespacedStatefulSetStatus"
 																	r.operationGroup = ""
 																	r.pathPattern = "/apis/apps/v1/namespaces/{namespace}/statefulsets/{name}/status"
 																	r.args = args
@@ -19338,6 +20158,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.args = args
 															r.count = 2
 															return r, true
+														case "PATCH":
+															r.name = PatchAutoscalingV1NamespacedHorizontalPodAutoscalerOperation
+															r.summary = ""
+															r.operationID = "patchAutoscalingV1NamespacedHorizontalPodAutoscaler"
+															r.operationGroup = ""
+															r.pathPattern = "/apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}"
+															r.args = args
+															r.count = 2
+															return r, true
 														default:
 															return
 														}
@@ -19358,6 +20187,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusOperation
 																r.summary = ""
 																r.operationID = "readAutoscalingV1NamespacedHorizontalPodAutoscalerStatus"
+																r.operationGroup = ""
+																r.pathPattern = "/apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}/status"
+																r.args = args
+																r.count = 2
+																return r, true
+															case "PATCH":
+																r.name = PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusOperation
+																r.summary = ""
+																r.operationID = "patchAutoscalingV1NamespacedHorizontalPodAutoscalerStatus"
 																r.operationGroup = ""
 																r.pathPattern = "/apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}/status"
 																r.args = args
@@ -19632,6 +20470,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.args = args
 																r.count = 2
 																return r, true
+															case "PATCH":
+																r.name = PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerOperation
+																r.summary = ""
+																r.operationID = "patchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler"
+																r.operationGroup = ""
+																r.pathPattern = "/apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers/{name}"
+																r.args = args
+																r.count = 2
+																return r, true
 															default:
 																return
 															}
@@ -19652,6 +20499,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusOperation
 																	r.summary = ""
 																	r.operationID = "readAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus"
+																	r.operationGroup = ""
+																	r.pathPattern = "/apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers/{name}/status"
+																	r.args = args
+																	r.count = 2
+																	return r, true
+																case "PATCH":
+																	r.name = PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusOperation
+																	r.summary = ""
+																	r.operationID = "patchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus"
 																	r.operationGroup = ""
 																	r.pathPattern = "/apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers/{name}/status"
 																	r.args = args
@@ -19914,6 +20770,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.args = args
 																r.count = 2
 																return r, true
+															case "PATCH":
+																r.name = PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerOperation
+																r.summary = ""
+																r.operationID = "patchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler"
+																r.operationGroup = ""
+																r.pathPattern = "/apis/autoscaling/v2beta2/namespaces/{namespace}/horizontalpodautoscalers/{name}"
+																r.args = args
+																r.count = 2
+																return r, true
 															default:
 																return
 															}
@@ -19934,6 +20799,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.name = ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusOperation
 																	r.summary = ""
 																	r.operationID = "readAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus"
+																	r.operationGroup = ""
+																	r.pathPattern = "/apis/autoscaling/v2beta2/namespaces/{namespace}/horizontalpodautoscalers/{name}/status"
+																	r.args = args
+																	r.count = 2
+																	return r, true
+																case "PATCH":
+																	r.name = PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusOperation
+																	r.summary = ""
+																	r.operationID = "patchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus"
 																	r.operationGroup = ""
 																	r.pathPattern = "/apis/autoscaling/v2beta2/namespaces/{namespace}/horizontalpodautoscalers/{name}/status"
 																	r.args = args
@@ -20279,6 +21153,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.args = args
 														r.count = 2
 														return r, true
+													case "PATCH":
+														r.name = PatchBatchV1NamespacedCronJobOperation
+														r.summary = ""
+														r.operationID = "patchBatchV1NamespacedCronJob"
+														r.operationGroup = ""
+														r.pathPattern = "/apis/batch/v1/namespaces/{namespace}/cronjobs/{name}"
+														r.args = args
+														r.count = 2
+														return r, true
 													default:
 														return
 													}
@@ -20299,6 +21182,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = ReadBatchV1NamespacedCronJobStatusOperation
 															r.summary = ""
 															r.operationID = "readBatchV1NamespacedCronJobStatus"
+															r.operationGroup = ""
+															r.pathPattern = "/apis/batch/v1/namespaces/{namespace}/cronjobs/{name}/status"
+															r.args = args
+															r.count = 2
+															return r, true
+														case "PATCH":
+															r.name = PatchBatchV1NamespacedCronJobStatusOperation
+															r.summary = ""
+															r.operationID = "patchBatchV1NamespacedCronJobStatus"
 															r.operationGroup = ""
 															r.pathPattern = "/apis/batch/v1/namespaces/{namespace}/cronjobs/{name}/status"
 															r.args = args
@@ -20365,6 +21257,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.args = args
 														r.count = 2
 														return r, true
+													case "PATCH":
+														r.name = PatchBatchV1NamespacedJobOperation
+														r.summary = ""
+														r.operationID = "patchBatchV1NamespacedJob"
+														r.operationGroup = ""
+														r.pathPattern = "/apis/batch/v1/namespaces/{namespace}/jobs/{name}"
+														r.args = args
+														r.count = 2
+														return r, true
 													default:
 														return
 													}
@@ -20385,6 +21286,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = ReadBatchV1NamespacedJobStatusOperation
 															r.summary = ""
 															r.operationID = "readBatchV1NamespacedJobStatus"
+															r.operationGroup = ""
+															r.pathPattern = "/apis/batch/v1/namespaces/{namespace}/jobs/{name}/status"
+															r.args = args
+															r.count = 2
+															return r, true
+														case "PATCH":
+															r.name = PatchBatchV1NamespacedJobStatusOperation
+															r.summary = ""
+															r.operationID = "patchBatchV1NamespacedJobStatus"
 															r.operationGroup = ""
 															r.pathPattern = "/apis/batch/v1/namespaces/{namespace}/jobs/{name}/status"
 															r.args = args
@@ -20748,6 +21658,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.args = args
 													r.count = 2
 													return r, true
+												case "PATCH":
+													r.name = PatchBatchV1beta1NamespacedCronJobOperation
+													r.summary = ""
+													r.operationID = "patchBatchV1beta1NamespacedCronJob"
+													r.operationGroup = ""
+													r.pathPattern = "/apis/batch/v1beta1/namespaces/{namespace}/cronjobs/{name}"
+													r.args = args
+													r.count = 2
+													return r, true
 												default:
 													return
 												}
@@ -20768,6 +21687,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = ReadBatchV1beta1NamespacedCronJobStatusOperation
 														r.summary = ""
 														r.operationID = "readBatchV1beta1NamespacedCronJobStatus"
+														r.operationGroup = ""
+														r.pathPattern = "/apis/batch/v1beta1/namespaces/{namespace}/cronjobs/{name}/status"
+														r.args = args
+														r.count = 2
+														return r, true
+													case "PATCH":
+														r.name = PatchBatchV1beta1NamespacedCronJobStatusOperation
+														r.summary = ""
+														r.operationID = "patchBatchV1beta1NamespacedCronJobStatus"
 														r.operationGroup = ""
 														r.pathPattern = "/apis/batch/v1beta1/namespaces/{namespace}/cronjobs/{name}/status"
 														r.args = args
@@ -21024,6 +21952,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.args = args
 												r.count = 1
 												return r, true
+											case "PATCH":
+												r.name = PatchCertificatesV1CertificateSigningRequestOperation
+												r.summary = ""
+												r.operationID = "patchCertificatesV1CertificateSigningRequest"
+												r.operationGroup = ""
+												r.pathPattern = "/apis/certificates.k8s.io/v1/certificatesigningrequests/{name}"
+												r.args = args
+												r.count = 1
+												return r, true
 											default:
 												return
 											}
@@ -21061,6 +21998,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.args = args
 														r.count = 1
 														return r, true
+													case "PATCH":
+														r.name = PatchCertificatesV1CertificateSigningRequestApprovalOperation
+														r.summary = ""
+														r.operationID = "patchCertificatesV1CertificateSigningRequestApproval"
+														r.operationGroup = ""
+														r.pathPattern = "/apis/certificates.k8s.io/v1/certificatesigningrequests/{name}/approval"
+														r.args = args
+														r.count = 1
+														return r, true
 													default:
 														return
 													}
@@ -21081,6 +22027,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = ReadCertificatesV1CertificateSigningRequestStatusOperation
 														r.summary = ""
 														r.operationID = "readCertificatesV1CertificateSigningRequestStatus"
+														r.operationGroup = ""
+														r.pathPattern = "/apis/certificates.k8s.io/v1/certificatesigningrequests/{name}/status"
+														r.args = args
+														r.count = 1
+														return r, true
+													case "PATCH":
+														r.name = PatchCertificatesV1CertificateSigningRequestStatusOperation
+														r.summary = ""
+														r.operationID = "patchCertificatesV1CertificateSigningRequestStatus"
 														r.operationGroup = ""
 														r.pathPattern = "/apis/certificates.k8s.io/v1/certificatesigningrequests/{name}/status"
 														r.args = args
@@ -21303,6 +22258,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = ReadCoordinationV1NamespacedLeaseOperation
 													r.summary = ""
 													r.operationID = "readCoordinationV1NamespacedLease"
+													r.operationGroup = ""
+													r.pathPattern = "/apis/coordination.k8s.io/v1/namespaces/{namespace}/leases/{name}"
+													r.args = args
+													r.count = 2
+													return r, true
+												case "PATCH":
+													r.name = PatchCoordinationV1NamespacedLeaseOperation
+													r.summary = ""
+													r.operationID = "patchCoordinationV1NamespacedLease"
 													r.operationGroup = ""
 													r.pathPattern = "/apis/coordination.k8s.io/v1/namespaces/{namespace}/leases/{name}"
 													r.args = args
@@ -21604,6 +22568,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.args = args
 													r.count = 2
 													return r, true
+												case "PATCH":
+													r.name = PatchDiscoveryV1NamespacedEndpointSliceOperation
+													r.summary = ""
+													r.operationID = "patchDiscoveryV1NamespacedEndpointSlice"
+													r.operationGroup = ""
+													r.pathPattern = "/apis/discovery.k8s.io/v1/namespaces/{namespace}/endpointslices/{name}"
+													r.args = args
+													r.count = 2
+													return r, true
 												default:
 													return
 												}
@@ -21855,6 +22828,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = ReadDiscoveryV1beta1NamespacedEndpointSliceOperation
 													r.summary = ""
 													r.operationID = "readDiscoveryV1beta1NamespacedEndpointSlice"
+													r.operationGroup = ""
+													r.pathPattern = "/apis/discovery.k8s.io/v1beta1/namespaces/{namespace}/endpointslices/{name}"
+													r.args = args
+													r.count = 2
+													return r, true
+												case "PATCH":
+													r.name = PatchDiscoveryV1beta1NamespacedEndpointSliceOperation
+													r.summary = ""
+													r.operationID = "patchDiscoveryV1beta1NamespacedEndpointSlice"
 													r.operationGroup = ""
 													r.pathPattern = "/apis/discovery.k8s.io/v1beta1/namespaces/{namespace}/endpointslices/{name}"
 													r.args = args
@@ -22156,6 +23138,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.args = args
 													r.count = 2
 													return r, true
+												case "PATCH":
+													r.name = PatchEventsV1NamespacedEventOperation
+													r.summary = ""
+													r.operationID = "patchEventsV1NamespacedEvent"
+													r.operationGroup = ""
+													r.pathPattern = "/apis/events.k8s.io/v1/namespaces/{namespace}/events/{name}"
+													r.args = args
+													r.count = 2
+													return r, true
 												default:
 													return
 												}
@@ -22412,6 +23403,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.args = args
 													r.count = 2
 													return r, true
+												case "PATCH":
+													r.name = PatchEventsV1beta1NamespacedEventOperation
+													r.summary = ""
+													r.operationID = "patchEventsV1beta1NamespacedEvent"
+													r.operationGroup = ""
+													r.pathPattern = "/apis/events.k8s.io/v1beta1/namespaces/{namespace}/events/{name}"
+													r.args = args
+													r.count = 2
+													return r, true
 												default:
 													return
 												}
@@ -22661,6 +23661,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.args = args
 												r.count = 1
 												return r, true
+											case "PATCH":
+												r.name = PatchFlowcontrolApiserverV1beta1FlowSchemaOperation
+												r.summary = ""
+												r.operationID = "patchFlowcontrolApiserverV1beta1FlowSchema"
+												r.operationGroup = ""
+												r.pathPattern = "/apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas/{name}"
+												r.args = args
+												r.count = 1
+												return r, true
 											default:
 												return
 											}
@@ -22681,6 +23690,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = ReadFlowcontrolApiserverV1beta1FlowSchemaStatusOperation
 													r.summary = ""
 													r.operationID = "readFlowcontrolApiserverV1beta1FlowSchemaStatus"
+													r.operationGroup = ""
+													r.pathPattern = "/apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas/{name}/status"
+													r.args = args
+													r.count = 1
+													return r, true
+												case "PATCH":
+													r.name = PatchFlowcontrolApiserverV1beta1FlowSchemaStatusOperation
+													r.summary = ""
+													r.operationID = "patchFlowcontrolApiserverV1beta1FlowSchemaStatus"
 													r.operationGroup = ""
 													r.pathPattern = "/apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas/{name}/status"
 													r.args = args
@@ -22747,6 +23765,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.args = args
 												r.count = 1
 												return r, true
+											case "PATCH":
+												r.name = PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationOperation
+												r.summary = ""
+												r.operationID = "patchFlowcontrolApiserverV1beta1PriorityLevelConfiguration"
+												r.operationGroup = ""
+												r.pathPattern = "/apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations/{name}"
+												r.args = args
+												r.count = 1
+												return r, true
 											default:
 												return
 											}
@@ -22767,6 +23794,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusOperation
 													r.summary = ""
 													r.operationID = "readFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus"
+													r.operationGroup = ""
+													r.pathPattern = "/apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations/{name}/status"
+													r.args = args
+													r.count = 1
+													return r, true
+												case "PATCH":
+													r.name = PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusOperation
+													r.summary = ""
+													r.operationID = "patchFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus"
 													r.operationGroup = ""
 													r.pathPattern = "/apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations/{name}/status"
 													r.args = args
@@ -22993,6 +24029,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.args = args
 												r.count = 1
 												return r, true
+											case "PATCH":
+												r.name = PatchFlowcontrolApiserverV1beta2FlowSchemaOperation
+												r.summary = ""
+												r.operationID = "patchFlowcontrolApiserverV1beta2FlowSchema"
+												r.operationGroup = ""
+												r.pathPattern = "/apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas/{name}"
+												r.args = args
+												r.count = 1
+												return r, true
 											default:
 												return
 											}
@@ -23013,6 +24058,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = ReadFlowcontrolApiserverV1beta2FlowSchemaStatusOperation
 													r.summary = ""
 													r.operationID = "readFlowcontrolApiserverV1beta2FlowSchemaStatus"
+													r.operationGroup = ""
+													r.pathPattern = "/apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas/{name}/status"
+													r.args = args
+													r.count = 1
+													return r, true
+												case "PATCH":
+													r.name = PatchFlowcontrolApiserverV1beta2FlowSchemaStatusOperation
+													r.summary = ""
+													r.operationID = "patchFlowcontrolApiserverV1beta2FlowSchemaStatus"
 													r.operationGroup = ""
 													r.pathPattern = "/apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas/{name}/status"
 													r.args = args
@@ -23079,6 +24133,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.args = args
 												r.count = 1
 												return r, true
+											case "PATCH":
+												r.name = PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationOperation
+												r.summary = ""
+												r.operationID = "patchFlowcontrolApiserverV1beta2PriorityLevelConfiguration"
+												r.operationGroup = ""
+												r.pathPattern = "/apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations/{name}"
+												r.args = args
+												r.count = 1
+												return r, true
 											default:
 												return
 											}
@@ -23099,6 +24162,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusOperation
 													r.summary = ""
 													r.operationID = "readFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus"
+													r.operationGroup = ""
+													r.pathPattern = "/apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations/{name}/status"
+													r.args = args
+													r.count = 1
+													return r, true
+												case "PATCH":
+													r.name = PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusOperation
+													r.summary = ""
+													r.operationID = "patchFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus"
 													r.operationGroup = ""
 													r.pathPattern = "/apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations/{name}/status"
 													r.args = args
@@ -23353,6 +24425,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.args = args
 											r.count = 1
 											return r, true
+										case "PATCH":
+											r.name = PatchInternalApiserverV1alpha1StorageVersionOperation
+											r.summary = ""
+											r.operationID = "patchInternalApiserverV1alpha1StorageVersion"
+											r.operationGroup = ""
+											r.pathPattern = "/apis/internal.apiserver.k8s.io/v1alpha1/storageversions/{name}"
+											r.args = args
+											r.count = 1
+											return r, true
 										default:
 											return
 										}
@@ -23373,6 +24454,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = ReadInternalApiserverV1alpha1StorageVersionStatusOperation
 												r.summary = ""
 												r.operationID = "readInternalApiserverV1alpha1StorageVersionStatus"
+												r.operationGroup = ""
+												r.pathPattern = "/apis/internal.apiserver.k8s.io/v1alpha1/storageversions/{name}/status"
+												r.args = args
+												r.count = 1
+												return r, true
+											case "PATCH":
+												r.name = PatchInternalApiserverV1alpha1StorageVersionStatusOperation
+												r.summary = ""
+												r.operationID = "patchInternalApiserverV1alpha1StorageVersionStatus"
 												r.operationGroup = ""
 												r.pathPattern = "/apis/internal.apiserver.k8s.io/v1alpha1/storageversions/{name}/status"
 												r.args = args
@@ -23576,6 +24666,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.args = args
 													r.count = 1
 													return r, true
+												case "PATCH":
+													r.name = PatchNetworkingV1IngressClassOperation
+													r.summary = ""
+													r.operationID = "patchNetworkingV1IngressClass"
+													r.operationGroup = ""
+													r.pathPattern = "/apis/networking.k8s.io/v1/ingressclasses/{name}"
+													r.args = args
+													r.count = 1
+													return r, true
 												default:
 													return
 												}
@@ -23707,6 +24806,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.args = args
 															r.count = 2
 															return r, true
+														case "PATCH":
+															r.name = PatchNetworkingV1NamespacedIngressOperation
+															r.summary = ""
+															r.operationID = "patchNetworkingV1NamespacedIngress"
+															r.operationGroup = ""
+															r.pathPattern = "/apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses/{name}"
+															r.args = args
+															r.count = 2
+															return r, true
 														default:
 															return
 														}
@@ -23727,6 +24835,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.name = ReadNetworkingV1NamespacedIngressStatusOperation
 																r.summary = ""
 																r.operationID = "readNetworkingV1NamespacedIngressStatus"
+																r.operationGroup = ""
+																r.pathPattern = "/apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses/{name}/status"
+																r.args = args
+																r.count = 2
+																return r, true
+															case "PATCH":
+																r.name = PatchNetworkingV1NamespacedIngressStatusOperation
+																r.summary = ""
+																r.operationID = "patchNetworkingV1NamespacedIngressStatus"
 																r.operationGroup = ""
 																r.pathPattern = "/apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses/{name}/status"
 																r.args = args
@@ -23789,6 +24906,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.name = ReadNetworkingV1NamespacedNetworkPolicyOperation
 															r.summary = ""
 															r.operationID = "readNetworkingV1NamespacedNetworkPolicy"
+															r.operationGroup = ""
+															r.pathPattern = "/apis/networking.k8s.io/v1/namespaces/{namespace}/networkpolicies/{name}"
+															r.args = args
+															r.count = 2
+															return r, true
+														case "PATCH":
+															r.name = PatchNetworkingV1NamespacedNetworkPolicyOperation
+															r.summary = ""
+															r.operationID = "patchNetworkingV1NamespacedNetworkPolicy"
 															r.operationGroup = ""
 															r.pathPattern = "/apis/networking.k8s.io/v1/namespaces/{namespace}/networkpolicies/{name}"
 															r.args = args
@@ -24258,6 +25384,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.args = args
 													r.count = 1
 													return r, true
+												case "PATCH":
+													r.name = PatchNodeV1RuntimeClassOperation
+													r.summary = ""
+													r.operationID = "patchNodeV1RuntimeClass"
+													r.operationGroup = ""
+													r.pathPattern = "/apis/node.k8s.io/v1/runtimeclasses/{name}"
+													r.args = args
+													r.count = 1
+													return r, true
 												default:
 													return
 												}
@@ -24404,6 +25539,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.args = args
 													r.count = 1
 													return r, true
+												case "PATCH":
+													r.name = PatchNodeV1alpha1RuntimeClassOperation
+													r.summary = ""
+													r.operationID = "patchNodeV1alpha1RuntimeClass"
+													r.operationGroup = ""
+													r.pathPattern = "/apis/node.k8s.io/v1alpha1/runtimeclasses/{name}"
+													r.args = args
+													r.count = 1
+													return r, true
 												default:
 													return
 												}
@@ -24545,6 +25689,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = ReadNodeV1beta1RuntimeClassOperation
 													r.summary = ""
 													r.operationID = "readNodeV1beta1RuntimeClass"
+													r.operationGroup = ""
+													r.pathPattern = "/apis/node.k8s.io/v1beta1/runtimeclasses/{name}"
+													r.args = args
+													r.count = 1
+													return r, true
+												case "PATCH":
+													r.name = PatchNodeV1beta1RuntimeClassOperation
+													r.summary = ""
+													r.operationID = "patchNodeV1beta1RuntimeClass"
 													r.operationGroup = ""
 													r.pathPattern = "/apis/node.k8s.io/v1beta1/runtimeclasses/{name}"
 													r.args = args
@@ -24758,6 +25911,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.args = args
 													r.count = 2
 													return r, true
+												case "PATCH":
+													r.name = PatchPolicyV1NamespacedPodDisruptionBudgetOperation
+													r.summary = ""
+													r.operationID = "patchPolicyV1NamespacedPodDisruptionBudget"
+													r.operationGroup = ""
+													r.pathPattern = "/apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets/{name}"
+													r.args = args
+													r.count = 2
+													return r, true
 												default:
 													return
 												}
@@ -24778,6 +25940,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = ReadPolicyV1NamespacedPodDisruptionBudgetStatusOperation
 														r.summary = ""
 														r.operationID = "readPolicyV1NamespacedPodDisruptionBudgetStatus"
+														r.operationGroup = ""
+														r.pathPattern = "/apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets/{name}/status"
+														r.args = args
+														r.count = 2
+														return r, true
+													case "PATCH":
+														r.name = PatchPolicyV1NamespacedPodDisruptionBudgetStatusOperation
+														r.summary = ""
+														r.operationID = "patchPolicyV1NamespacedPodDisruptionBudgetStatus"
 														r.operationGroup = ""
 														r.pathPattern = "/apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets/{name}/status"
 														r.args = args
@@ -25040,6 +26211,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.args = args
 													r.count = 2
 													return r, true
+												case "PATCH":
+													r.name = PatchPolicyV1beta1NamespacedPodDisruptionBudgetOperation
+													r.summary = ""
+													r.operationID = "patchPolicyV1beta1NamespacedPodDisruptionBudget"
+													r.operationGroup = ""
+													r.pathPattern = "/apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets/{name}"
+													r.args = args
+													r.count = 2
+													return r, true
 												default:
 													return
 												}
@@ -25060,6 +26240,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusOperation
 														r.summary = ""
 														r.operationID = "readPolicyV1beta1NamespacedPodDisruptionBudgetStatus"
+														r.operationGroup = ""
+														r.pathPattern = "/apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets/{name}/status"
+														r.args = args
+														r.count = 2
+														return r, true
+													case "PATCH":
+														r.name = PatchPolicyV1beta1NamespacedPodDisruptionBudgetStatusOperation
+														r.summary = ""
+														r.operationID = "patchPolicyV1beta1NamespacedPodDisruptionBudgetStatus"
 														r.operationGroup = ""
 														r.pathPattern = "/apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets/{name}/status"
 														r.args = args
@@ -25161,6 +26350,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = ReadPolicyV1beta1PodSecurityPolicyOperation
 													r.summary = ""
 													r.operationID = "readPolicyV1beta1PodSecurityPolicy"
+													r.operationGroup = ""
+													r.pathPattern = "/apis/policy/v1beta1/podsecuritypolicies/{name}"
+													r.args = args
+													r.count = 1
+													return r, true
+												case "PATCH":
+													r.name = PatchPolicyV1beta1PodSecurityPolicyOperation
+													r.summary = ""
+													r.operationID = "patchPolicyV1beta1PodSecurityPolicy"
 													r.operationGroup = ""
 													r.pathPattern = "/apis/policy/v1beta1/podsecuritypolicies/{name}"
 													r.args = args
@@ -25490,6 +26688,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.args = args
 												r.count = 1
 												return r, true
+											case "PATCH":
+												r.name = PatchRbacAuthorizationV1ClusterRoleBindingOperation
+												r.summary = ""
+												r.operationID = "patchRbacAuthorizationV1ClusterRoleBinding"
+												r.operationGroup = ""
+												r.pathPattern = "/apis/rbac.authorization.k8s.io/v1/clusterrolebindings/{name}"
+												r.args = args
+												r.count = 1
+												return r, true
 											default:
 												return
 											}
@@ -25545,6 +26752,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.name = ReadRbacAuthorizationV1ClusterRoleOperation
 												r.summary = ""
 												r.operationID = "readRbacAuthorizationV1ClusterRole"
+												r.operationGroup = ""
+												r.pathPattern = "/apis/rbac.authorization.k8s.io/v1/clusterroles/{name}"
+												r.args = args
+												r.count = 1
+												return r, true
+											case "PATCH":
+												r.name = PatchRbacAuthorizationV1ClusterRoleOperation
+												r.summary = ""
+												r.operationID = "patchRbacAuthorizationV1ClusterRole"
 												r.operationGroup = ""
 												r.pathPattern = "/apis/rbac.authorization.k8s.io/v1/clusterroles/{name}"
 												r.args = args
@@ -25645,6 +26861,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.args = args
 													r.count = 2
 													return r, true
+												case "PATCH":
+													r.name = PatchRbacAuthorizationV1NamespacedRoleBindingOperation
+													r.summary = ""
+													r.operationID = "patchRbacAuthorizationV1NamespacedRoleBinding"
+													r.operationGroup = ""
+													r.pathPattern = "/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/rolebindings/{name}"
+													r.args = args
+													r.count = 2
+													return r, true
 												default:
 													return
 												}
@@ -25700,6 +26925,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.name = ReadRbacAuthorizationV1NamespacedRoleOperation
 													r.summary = ""
 													r.operationID = "readRbacAuthorizationV1NamespacedRole"
+													r.operationGroup = ""
+													r.pathPattern = "/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/roles/{name}"
+													r.args = args
+													r.count = 2
+													return r, true
+												case "PATCH":
+													r.name = PatchRbacAuthorizationV1NamespacedRoleOperation
+													r.summary = ""
+													r.operationID = "patchRbacAuthorizationV1NamespacedRole"
 													r.operationGroup = ""
 													r.pathPattern = "/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/roles/{name}"
 													r.args = args
@@ -26266,6 +27500,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.args = args
 												r.count = 1
 												return r, true
+											case "PATCH":
+												r.name = PatchSchedulingV1PriorityClassOperation
+												r.summary = ""
+												r.operationID = "patchSchedulingV1PriorityClass"
+												r.operationGroup = ""
+												r.pathPattern = "/apis/scheduling.k8s.io/v1/priorityclasses/{name}"
+												r.args = args
+												r.count = 1
+												return r, true
 											default:
 												return
 											}
@@ -26462,6 +27705,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.args = args
 														r.count = 1
 														return r, true
+													case "PATCH":
+														r.name = PatchStorageV1CSIDriverOperation
+														r.summary = ""
+														r.operationID = "patchStorageV1CSIDriver"
+														r.operationGroup = ""
+														r.pathPattern = "/apis/storage.k8s.io/v1/csidrivers/{name}"
+														r.args = args
+														r.count = 1
+														return r, true
 													default:
 														return
 													}
@@ -26517,6 +27769,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = ReadStorageV1CSINodeOperation
 														r.summary = ""
 														r.operationID = "readStorageV1CSINode"
+														r.operationGroup = ""
+														r.pathPattern = "/apis/storage.k8s.io/v1/csinodes/{name}"
+														r.args = args
+														r.count = 1
+														return r, true
+													case "PATCH":
+														r.name = PatchStorageV1CSINodeOperation
+														r.summary = ""
+														r.operationID = "patchStorageV1CSINode"
 														r.operationGroup = ""
 														r.pathPattern = "/apis/storage.k8s.io/v1/csinodes/{name}"
 														r.args = args
@@ -26584,6 +27845,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.args = args
 													r.count = 1
 													return r, true
+												case "PATCH":
+													r.name = PatchStorageV1StorageClassOperation
+													r.summary = ""
+													r.operationID = "patchStorageV1StorageClass"
+													r.operationGroup = ""
+													r.pathPattern = "/apis/storage.k8s.io/v1/storageclasses/{name}"
+													r.args = args
+													r.count = 1
+													return r, true
 												default:
 													return
 												}
@@ -26643,6 +27913,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.args = args
 													r.count = 1
 													return r, true
+												case "PATCH":
+													r.name = PatchStorageV1VolumeAttachmentOperation
+													r.summary = ""
+													r.operationID = "patchStorageV1VolumeAttachment"
+													r.operationGroup = ""
+													r.pathPattern = "/apis/storage.k8s.io/v1/volumeattachments/{name}"
+													r.args = args
+													r.count = 1
+													return r, true
 												default:
 													return
 												}
@@ -26663,6 +27942,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = ReadStorageV1VolumeAttachmentStatusOperation
 														r.summary = ""
 														r.operationID = "readStorageV1VolumeAttachmentStatus"
+														r.operationGroup = ""
+														r.pathPattern = "/apis/storage.k8s.io/v1/volumeattachments/{name}/status"
+														r.args = args
+														r.count = 1
+														return r, true
+													case "PATCH":
+														r.name = PatchStorageV1VolumeAttachmentStatusOperation
+														r.summary = ""
+														r.operationID = "patchStorageV1VolumeAttachmentStatus"
 														r.operationGroup = ""
 														r.pathPattern = "/apis/storage.k8s.io/v1/volumeattachments/{name}/status"
 														r.args = args
@@ -27070,6 +28358,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.args = args
 														r.count = 2
 														return r, true
+													case "PATCH":
+														r.name = PatchStorageV1alpha1NamespacedCSIStorageCapacityOperation
+														r.summary = ""
+														r.operationID = "patchStorageV1alpha1NamespacedCSIStorageCapacity"
+														r.operationGroup = ""
+														r.pathPattern = "/apis/storage.k8s.io/v1alpha1/namespaces/{namespace}/csistoragecapacities/{name}"
+														r.args = args
+														r.count = 2
+														return r, true
 													default:
 														return
 													}
@@ -27321,6 +28618,15 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = ReadStorageV1beta1NamespacedCSIStorageCapacityOperation
 														r.summary = ""
 														r.operationID = "readStorageV1beta1NamespacedCSIStorageCapacity"
+														r.operationGroup = ""
+														r.pathPattern = "/apis/storage.k8s.io/v1beta1/namespaces/{namespace}/csistoragecapacities/{name}"
+														r.args = args
+														r.count = 2
+														return r, true
+													case "PATCH":
+														r.name = PatchStorageV1beta1NamespacedCSIStorageCapacityOperation
+														r.summary = ""
+														r.operationID = "patchStorageV1beta1NamespacedCSIStorageCapacity"
 														r.operationGroup = ""
 														r.pathPattern = "/apis/storage.k8s.io/v1beta1/namespaces/{namespace}/csistoragecapacities/{name}"
 														r.args = args

@@ -53,6 +53,46 @@ func (s *GetServiceAccountIssuerOpenIDConfigurationOKApplicationJSON) UnmarshalJ
 	return s.Decode(d)
 }
 
+// Encode encodes GetServiceAccountIssuerOpenIDKeysetOKApplicationJwkSetJSON as json.
+func (s GetServiceAccountIssuerOpenIDKeysetOKApplicationJwkSetJSON) Encode(e *jx.Encoder) {
+	unwrapped := string(s)
+
+	e.Str(unwrapped)
+}
+
+// Decode decodes GetServiceAccountIssuerOpenIDKeysetOKApplicationJwkSetJSON from json.
+func (s *GetServiceAccountIssuerOpenIDKeysetOKApplicationJwkSetJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode GetServiceAccountIssuerOpenIDKeysetOKApplicationJwkSetJSON to nil")
+	}
+	var unwrapped string
+	if err := func() error {
+		v, err := d.Str()
+		unwrapped = string(v)
+		if err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = GetServiceAccountIssuerOpenIDKeysetOKApplicationJwkSetJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s GetServiceAccountIssuerOpenIDKeysetOKApplicationJwkSetJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *GetServiceAccountIssuerOpenIDKeysetOKApplicationJwkSetJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhook) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -86076,6 +86116,6960 @@ func (s *OptString) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
+// Encode encodes PatchAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONPatchJSON as json.
+func (s *PatchAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONPatchJSON from json.
+func (s *PatchAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAdmissionregistrationV1MutatingWebhookConfigurationApplicationMergePatchJSON as json.
+func (s *PatchAdmissionregistrationV1MutatingWebhookConfigurationApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAdmissionregistrationV1MutatingWebhookConfigurationApplicationMergePatchJSON from json.
+func (s *PatchAdmissionregistrationV1MutatingWebhookConfigurationApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAdmissionregistrationV1MutatingWebhookConfigurationApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAdmissionregistrationV1MutatingWebhookConfigurationApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAdmissionregistrationV1MutatingWebhookConfigurationApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAdmissionregistrationV1MutatingWebhookConfigurationApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAdmissionregistrationV1MutatingWebhookConfigurationApplicationStrategicMergePatchJSON as json.
+func (s *PatchAdmissionregistrationV1MutatingWebhookConfigurationApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAdmissionregistrationV1MutatingWebhookConfigurationApplicationStrategicMergePatchJSON from json.
+func (s *PatchAdmissionregistrationV1MutatingWebhookConfigurationApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAdmissionregistrationV1MutatingWebhookConfigurationApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAdmissionregistrationV1MutatingWebhookConfigurationApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAdmissionregistrationV1MutatingWebhookConfigurationApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAdmissionregistrationV1MutatingWebhookConfigurationApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAdmissionregistrationV1MutatingWebhookConfigurationCreated as json.
+func (s *PatchAdmissionregistrationV1MutatingWebhookConfigurationCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAdmissionregistrationV1MutatingWebhookConfigurationCreated from json.
+func (s *PatchAdmissionregistrationV1MutatingWebhookConfigurationCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAdmissionregistrationV1MutatingWebhookConfigurationCreated to nil")
+	}
+	var unwrapped IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAdmissionregistrationV1MutatingWebhookConfigurationCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAdmissionregistrationV1MutatingWebhookConfigurationCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAdmissionregistrationV1MutatingWebhookConfigurationCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAdmissionregistrationV1MutatingWebhookConfigurationOK as json.
+func (s *PatchAdmissionregistrationV1MutatingWebhookConfigurationOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAdmissionregistrationV1MutatingWebhookConfigurationOK from json.
+func (s *PatchAdmissionregistrationV1MutatingWebhookConfigurationOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAdmissionregistrationV1MutatingWebhookConfigurationOK to nil")
+	}
+	var unwrapped IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAdmissionregistrationV1MutatingWebhookConfigurationOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAdmissionregistrationV1MutatingWebhookConfigurationOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAdmissionregistrationV1MutatingWebhookConfigurationOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONPatchJSON as json.
+func (s *PatchAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONPatchJSON from json.
+func (s *PatchAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAdmissionregistrationV1ValidatingWebhookConfigurationApplicationMergePatchJSON as json.
+func (s *PatchAdmissionregistrationV1ValidatingWebhookConfigurationApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAdmissionregistrationV1ValidatingWebhookConfigurationApplicationMergePatchJSON from json.
+func (s *PatchAdmissionregistrationV1ValidatingWebhookConfigurationApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAdmissionregistrationV1ValidatingWebhookConfigurationApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAdmissionregistrationV1ValidatingWebhookConfigurationApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAdmissionregistrationV1ValidatingWebhookConfigurationApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAdmissionregistrationV1ValidatingWebhookConfigurationApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAdmissionregistrationV1ValidatingWebhookConfigurationApplicationStrategicMergePatchJSON as json.
+func (s *PatchAdmissionregistrationV1ValidatingWebhookConfigurationApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAdmissionregistrationV1ValidatingWebhookConfigurationApplicationStrategicMergePatchJSON from json.
+func (s *PatchAdmissionregistrationV1ValidatingWebhookConfigurationApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAdmissionregistrationV1ValidatingWebhookConfigurationApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAdmissionregistrationV1ValidatingWebhookConfigurationApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAdmissionregistrationV1ValidatingWebhookConfigurationApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAdmissionregistrationV1ValidatingWebhookConfigurationApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAdmissionregistrationV1ValidatingWebhookConfigurationCreated as json.
+func (s *PatchAdmissionregistrationV1ValidatingWebhookConfigurationCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAdmissionregistrationV1ValidatingWebhookConfigurationCreated from json.
+func (s *PatchAdmissionregistrationV1ValidatingWebhookConfigurationCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAdmissionregistrationV1ValidatingWebhookConfigurationCreated to nil")
+	}
+	var unwrapped IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAdmissionregistrationV1ValidatingWebhookConfigurationCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAdmissionregistrationV1ValidatingWebhookConfigurationCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAdmissionregistrationV1ValidatingWebhookConfigurationCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAdmissionregistrationV1ValidatingWebhookConfigurationOK as json.
+func (s *PatchAdmissionregistrationV1ValidatingWebhookConfigurationOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAdmissionregistrationV1ValidatingWebhookConfigurationOK from json.
+func (s *PatchAdmissionregistrationV1ValidatingWebhookConfigurationOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAdmissionregistrationV1ValidatingWebhookConfigurationOK to nil")
+	}
+	var unwrapped IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAdmissionregistrationV1ValidatingWebhookConfigurationOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAdmissionregistrationV1ValidatingWebhookConfigurationOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAdmissionregistrationV1ValidatingWebhookConfigurationOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchApiextensionsV1CustomResourceDefinitionApplicationJSONPatchJSON as json.
+func (s *PatchApiextensionsV1CustomResourceDefinitionApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchApiextensionsV1CustomResourceDefinitionApplicationJSONPatchJSON from json.
+func (s *PatchApiextensionsV1CustomResourceDefinitionApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchApiextensionsV1CustomResourceDefinitionApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchApiextensionsV1CustomResourceDefinitionApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchApiextensionsV1CustomResourceDefinitionApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchApiextensionsV1CustomResourceDefinitionApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchApiextensionsV1CustomResourceDefinitionApplicationMergePatchJSON as json.
+func (s *PatchApiextensionsV1CustomResourceDefinitionApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchApiextensionsV1CustomResourceDefinitionApplicationMergePatchJSON from json.
+func (s *PatchApiextensionsV1CustomResourceDefinitionApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchApiextensionsV1CustomResourceDefinitionApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchApiextensionsV1CustomResourceDefinitionApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchApiextensionsV1CustomResourceDefinitionApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchApiextensionsV1CustomResourceDefinitionApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchApiextensionsV1CustomResourceDefinitionApplicationStrategicMergePatchJSON as json.
+func (s *PatchApiextensionsV1CustomResourceDefinitionApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchApiextensionsV1CustomResourceDefinitionApplicationStrategicMergePatchJSON from json.
+func (s *PatchApiextensionsV1CustomResourceDefinitionApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchApiextensionsV1CustomResourceDefinitionApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchApiextensionsV1CustomResourceDefinitionApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchApiextensionsV1CustomResourceDefinitionApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchApiextensionsV1CustomResourceDefinitionApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchApiextensionsV1CustomResourceDefinitionCreated as json.
+func (s *PatchApiextensionsV1CustomResourceDefinitionCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchApiextensionsV1CustomResourceDefinitionCreated from json.
+func (s *PatchApiextensionsV1CustomResourceDefinitionCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchApiextensionsV1CustomResourceDefinitionCreated to nil")
+	}
+	var unwrapped IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchApiextensionsV1CustomResourceDefinitionCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchApiextensionsV1CustomResourceDefinitionCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchApiextensionsV1CustomResourceDefinitionCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchApiextensionsV1CustomResourceDefinitionOK as json.
+func (s *PatchApiextensionsV1CustomResourceDefinitionOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchApiextensionsV1CustomResourceDefinitionOK from json.
+func (s *PatchApiextensionsV1CustomResourceDefinitionOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchApiextensionsV1CustomResourceDefinitionOK to nil")
+	}
+	var unwrapped IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchApiextensionsV1CustomResourceDefinitionOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchApiextensionsV1CustomResourceDefinitionOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchApiextensionsV1CustomResourceDefinitionOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchApiextensionsV1CustomResourceDefinitionStatusApplicationJSONPatchJSON as json.
+func (s *PatchApiextensionsV1CustomResourceDefinitionStatusApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchApiextensionsV1CustomResourceDefinitionStatusApplicationJSONPatchJSON from json.
+func (s *PatchApiextensionsV1CustomResourceDefinitionStatusApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchApiextensionsV1CustomResourceDefinitionStatusApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchApiextensionsV1CustomResourceDefinitionStatusApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchApiextensionsV1CustomResourceDefinitionStatusApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchApiextensionsV1CustomResourceDefinitionStatusApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchApiextensionsV1CustomResourceDefinitionStatusApplicationMergePatchJSON as json.
+func (s *PatchApiextensionsV1CustomResourceDefinitionStatusApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchApiextensionsV1CustomResourceDefinitionStatusApplicationMergePatchJSON from json.
+func (s *PatchApiextensionsV1CustomResourceDefinitionStatusApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchApiextensionsV1CustomResourceDefinitionStatusApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchApiextensionsV1CustomResourceDefinitionStatusApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchApiextensionsV1CustomResourceDefinitionStatusApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchApiextensionsV1CustomResourceDefinitionStatusApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchApiextensionsV1CustomResourceDefinitionStatusApplicationStrategicMergePatchJSON as json.
+func (s *PatchApiextensionsV1CustomResourceDefinitionStatusApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchApiextensionsV1CustomResourceDefinitionStatusApplicationStrategicMergePatchJSON from json.
+func (s *PatchApiextensionsV1CustomResourceDefinitionStatusApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchApiextensionsV1CustomResourceDefinitionStatusApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchApiextensionsV1CustomResourceDefinitionStatusApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchApiextensionsV1CustomResourceDefinitionStatusApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchApiextensionsV1CustomResourceDefinitionStatusApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchApiextensionsV1CustomResourceDefinitionStatusCreated as json.
+func (s *PatchApiextensionsV1CustomResourceDefinitionStatusCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchApiextensionsV1CustomResourceDefinitionStatusCreated from json.
+func (s *PatchApiextensionsV1CustomResourceDefinitionStatusCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchApiextensionsV1CustomResourceDefinitionStatusCreated to nil")
+	}
+	var unwrapped IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchApiextensionsV1CustomResourceDefinitionStatusCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchApiextensionsV1CustomResourceDefinitionStatusCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchApiextensionsV1CustomResourceDefinitionStatusCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchApiextensionsV1CustomResourceDefinitionStatusOK as json.
+func (s *PatchApiextensionsV1CustomResourceDefinitionStatusOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchApiextensionsV1CustomResourceDefinitionStatusOK from json.
+func (s *PatchApiextensionsV1CustomResourceDefinitionStatusOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchApiextensionsV1CustomResourceDefinitionStatusOK to nil")
+	}
+	var unwrapped IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchApiextensionsV1CustomResourceDefinitionStatusOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchApiextensionsV1CustomResourceDefinitionStatusOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchApiextensionsV1CustomResourceDefinitionStatusOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchApiregistrationV1APIServiceApplicationJSONPatchJSON as json.
+func (s *PatchApiregistrationV1APIServiceApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchApiregistrationV1APIServiceApplicationJSONPatchJSON from json.
+func (s *PatchApiregistrationV1APIServiceApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchApiregistrationV1APIServiceApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchApiregistrationV1APIServiceApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchApiregistrationV1APIServiceApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchApiregistrationV1APIServiceApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchApiregistrationV1APIServiceApplicationMergePatchJSON as json.
+func (s *PatchApiregistrationV1APIServiceApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchApiregistrationV1APIServiceApplicationMergePatchJSON from json.
+func (s *PatchApiregistrationV1APIServiceApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchApiregistrationV1APIServiceApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchApiregistrationV1APIServiceApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchApiregistrationV1APIServiceApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchApiregistrationV1APIServiceApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchApiregistrationV1APIServiceApplicationStrategicMergePatchJSON as json.
+func (s *PatchApiregistrationV1APIServiceApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchApiregistrationV1APIServiceApplicationStrategicMergePatchJSON from json.
+func (s *PatchApiregistrationV1APIServiceApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchApiregistrationV1APIServiceApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchApiregistrationV1APIServiceApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchApiregistrationV1APIServiceApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchApiregistrationV1APIServiceApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchApiregistrationV1APIServiceCreated as json.
+func (s *PatchApiregistrationV1APIServiceCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sKubeAggregatorPkgApisApiregistrationV1APIService)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchApiregistrationV1APIServiceCreated from json.
+func (s *PatchApiregistrationV1APIServiceCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchApiregistrationV1APIServiceCreated to nil")
+	}
+	var unwrapped IoK8sKubeAggregatorPkgApisApiregistrationV1APIService
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchApiregistrationV1APIServiceCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchApiregistrationV1APIServiceCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchApiregistrationV1APIServiceCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchApiregistrationV1APIServiceOK as json.
+func (s *PatchApiregistrationV1APIServiceOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sKubeAggregatorPkgApisApiregistrationV1APIService)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchApiregistrationV1APIServiceOK from json.
+func (s *PatchApiregistrationV1APIServiceOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchApiregistrationV1APIServiceOK to nil")
+	}
+	var unwrapped IoK8sKubeAggregatorPkgApisApiregistrationV1APIService
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchApiregistrationV1APIServiceOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchApiregistrationV1APIServiceOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchApiregistrationV1APIServiceOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchApiregistrationV1APIServiceStatusApplicationJSONPatchJSON as json.
+func (s *PatchApiregistrationV1APIServiceStatusApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchApiregistrationV1APIServiceStatusApplicationJSONPatchJSON from json.
+func (s *PatchApiregistrationV1APIServiceStatusApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchApiregistrationV1APIServiceStatusApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchApiregistrationV1APIServiceStatusApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchApiregistrationV1APIServiceStatusApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchApiregistrationV1APIServiceStatusApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchApiregistrationV1APIServiceStatusApplicationMergePatchJSON as json.
+func (s *PatchApiregistrationV1APIServiceStatusApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchApiregistrationV1APIServiceStatusApplicationMergePatchJSON from json.
+func (s *PatchApiregistrationV1APIServiceStatusApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchApiregistrationV1APIServiceStatusApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchApiregistrationV1APIServiceStatusApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchApiregistrationV1APIServiceStatusApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchApiregistrationV1APIServiceStatusApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchApiregistrationV1APIServiceStatusApplicationStrategicMergePatchJSON as json.
+func (s *PatchApiregistrationV1APIServiceStatusApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchApiregistrationV1APIServiceStatusApplicationStrategicMergePatchJSON from json.
+func (s *PatchApiregistrationV1APIServiceStatusApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchApiregistrationV1APIServiceStatusApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchApiregistrationV1APIServiceStatusApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchApiregistrationV1APIServiceStatusApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchApiregistrationV1APIServiceStatusApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchApiregistrationV1APIServiceStatusCreated as json.
+func (s *PatchApiregistrationV1APIServiceStatusCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sKubeAggregatorPkgApisApiregistrationV1APIService)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchApiregistrationV1APIServiceStatusCreated from json.
+func (s *PatchApiregistrationV1APIServiceStatusCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchApiregistrationV1APIServiceStatusCreated to nil")
+	}
+	var unwrapped IoK8sKubeAggregatorPkgApisApiregistrationV1APIService
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchApiregistrationV1APIServiceStatusCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchApiregistrationV1APIServiceStatusCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchApiregistrationV1APIServiceStatusCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchApiregistrationV1APIServiceStatusOK as json.
+func (s *PatchApiregistrationV1APIServiceStatusOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sKubeAggregatorPkgApisApiregistrationV1APIService)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchApiregistrationV1APIServiceStatusOK from json.
+func (s *PatchApiregistrationV1APIServiceStatusOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchApiregistrationV1APIServiceStatusOK to nil")
+	}
+	var unwrapped IoK8sKubeAggregatorPkgApisApiregistrationV1APIService
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchApiregistrationV1APIServiceStatusOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchApiregistrationV1APIServiceStatusOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchApiregistrationV1APIServiceStatusOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAppsV1NamespacedControllerRevisionApplicationJSONPatchJSON as json.
+func (s *PatchAppsV1NamespacedControllerRevisionApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAppsV1NamespacedControllerRevisionApplicationJSONPatchJSON from json.
+func (s *PatchAppsV1NamespacedControllerRevisionApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAppsV1NamespacedControllerRevisionApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAppsV1NamespacedControllerRevisionApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAppsV1NamespacedControllerRevisionApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAppsV1NamespacedControllerRevisionApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAppsV1NamespacedControllerRevisionApplicationMergePatchJSON as json.
+func (s *PatchAppsV1NamespacedControllerRevisionApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAppsV1NamespacedControllerRevisionApplicationMergePatchJSON from json.
+func (s *PatchAppsV1NamespacedControllerRevisionApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAppsV1NamespacedControllerRevisionApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAppsV1NamespacedControllerRevisionApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAppsV1NamespacedControllerRevisionApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAppsV1NamespacedControllerRevisionApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAppsV1NamespacedControllerRevisionApplicationStrategicMergePatchJSON as json.
+func (s *PatchAppsV1NamespacedControllerRevisionApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAppsV1NamespacedControllerRevisionApplicationStrategicMergePatchJSON from json.
+func (s *PatchAppsV1NamespacedControllerRevisionApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAppsV1NamespacedControllerRevisionApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAppsV1NamespacedControllerRevisionApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAppsV1NamespacedControllerRevisionApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAppsV1NamespacedControllerRevisionApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAppsV1NamespacedControllerRevisionCreated as json.
+func (s *PatchAppsV1NamespacedControllerRevisionCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIAppsV1ControllerRevision)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAppsV1NamespacedControllerRevisionCreated from json.
+func (s *PatchAppsV1NamespacedControllerRevisionCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAppsV1NamespacedControllerRevisionCreated to nil")
+	}
+	var unwrapped IoK8sAPIAppsV1ControllerRevision
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAppsV1NamespacedControllerRevisionCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAppsV1NamespacedControllerRevisionCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAppsV1NamespacedControllerRevisionCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAppsV1NamespacedControllerRevisionOK as json.
+func (s *PatchAppsV1NamespacedControllerRevisionOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIAppsV1ControllerRevision)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAppsV1NamespacedControllerRevisionOK from json.
+func (s *PatchAppsV1NamespacedControllerRevisionOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAppsV1NamespacedControllerRevisionOK to nil")
+	}
+	var unwrapped IoK8sAPIAppsV1ControllerRevision
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAppsV1NamespacedControllerRevisionOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAppsV1NamespacedControllerRevisionOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAppsV1NamespacedControllerRevisionOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAppsV1NamespacedDaemonSetApplicationJSONPatchJSON as json.
+func (s *PatchAppsV1NamespacedDaemonSetApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAppsV1NamespacedDaemonSetApplicationJSONPatchJSON from json.
+func (s *PatchAppsV1NamespacedDaemonSetApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAppsV1NamespacedDaemonSetApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAppsV1NamespacedDaemonSetApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAppsV1NamespacedDaemonSetApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAppsV1NamespacedDaemonSetApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAppsV1NamespacedDaemonSetApplicationMergePatchJSON as json.
+func (s *PatchAppsV1NamespacedDaemonSetApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAppsV1NamespacedDaemonSetApplicationMergePatchJSON from json.
+func (s *PatchAppsV1NamespacedDaemonSetApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAppsV1NamespacedDaemonSetApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAppsV1NamespacedDaemonSetApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAppsV1NamespacedDaemonSetApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAppsV1NamespacedDaemonSetApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAppsV1NamespacedDaemonSetApplicationStrategicMergePatchJSON as json.
+func (s *PatchAppsV1NamespacedDaemonSetApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAppsV1NamespacedDaemonSetApplicationStrategicMergePatchJSON from json.
+func (s *PatchAppsV1NamespacedDaemonSetApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAppsV1NamespacedDaemonSetApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAppsV1NamespacedDaemonSetApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAppsV1NamespacedDaemonSetApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAppsV1NamespacedDaemonSetApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAppsV1NamespacedDaemonSetCreated as json.
+func (s *PatchAppsV1NamespacedDaemonSetCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIAppsV1DaemonSet)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAppsV1NamespacedDaemonSetCreated from json.
+func (s *PatchAppsV1NamespacedDaemonSetCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAppsV1NamespacedDaemonSetCreated to nil")
+	}
+	var unwrapped IoK8sAPIAppsV1DaemonSet
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAppsV1NamespacedDaemonSetCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAppsV1NamespacedDaemonSetCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAppsV1NamespacedDaemonSetCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAppsV1NamespacedDaemonSetOK as json.
+func (s *PatchAppsV1NamespacedDaemonSetOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIAppsV1DaemonSet)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAppsV1NamespacedDaemonSetOK from json.
+func (s *PatchAppsV1NamespacedDaemonSetOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAppsV1NamespacedDaemonSetOK to nil")
+	}
+	var unwrapped IoK8sAPIAppsV1DaemonSet
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAppsV1NamespacedDaemonSetOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAppsV1NamespacedDaemonSetOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAppsV1NamespacedDaemonSetOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAppsV1NamespacedDaemonSetStatusApplicationJSONPatchJSON as json.
+func (s *PatchAppsV1NamespacedDaemonSetStatusApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAppsV1NamespacedDaemonSetStatusApplicationJSONPatchJSON from json.
+func (s *PatchAppsV1NamespacedDaemonSetStatusApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAppsV1NamespacedDaemonSetStatusApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAppsV1NamespacedDaemonSetStatusApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAppsV1NamespacedDaemonSetStatusApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAppsV1NamespacedDaemonSetStatusApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAppsV1NamespacedDaemonSetStatusApplicationMergePatchJSON as json.
+func (s *PatchAppsV1NamespacedDaemonSetStatusApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAppsV1NamespacedDaemonSetStatusApplicationMergePatchJSON from json.
+func (s *PatchAppsV1NamespacedDaemonSetStatusApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAppsV1NamespacedDaemonSetStatusApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAppsV1NamespacedDaemonSetStatusApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAppsV1NamespacedDaemonSetStatusApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAppsV1NamespacedDaemonSetStatusApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAppsV1NamespacedDaemonSetStatusApplicationStrategicMergePatchJSON as json.
+func (s *PatchAppsV1NamespacedDaemonSetStatusApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAppsV1NamespacedDaemonSetStatusApplicationStrategicMergePatchJSON from json.
+func (s *PatchAppsV1NamespacedDaemonSetStatusApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAppsV1NamespacedDaemonSetStatusApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAppsV1NamespacedDaemonSetStatusApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAppsV1NamespacedDaemonSetStatusApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAppsV1NamespacedDaemonSetStatusApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAppsV1NamespacedDaemonSetStatusCreated as json.
+func (s *PatchAppsV1NamespacedDaemonSetStatusCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIAppsV1DaemonSet)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAppsV1NamespacedDaemonSetStatusCreated from json.
+func (s *PatchAppsV1NamespacedDaemonSetStatusCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAppsV1NamespacedDaemonSetStatusCreated to nil")
+	}
+	var unwrapped IoK8sAPIAppsV1DaemonSet
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAppsV1NamespacedDaemonSetStatusCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAppsV1NamespacedDaemonSetStatusCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAppsV1NamespacedDaemonSetStatusCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAppsV1NamespacedDaemonSetStatusOK as json.
+func (s *PatchAppsV1NamespacedDaemonSetStatusOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIAppsV1DaemonSet)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAppsV1NamespacedDaemonSetStatusOK from json.
+func (s *PatchAppsV1NamespacedDaemonSetStatusOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAppsV1NamespacedDaemonSetStatusOK to nil")
+	}
+	var unwrapped IoK8sAPIAppsV1DaemonSet
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAppsV1NamespacedDaemonSetStatusOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAppsV1NamespacedDaemonSetStatusOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAppsV1NamespacedDaemonSetStatusOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAppsV1NamespacedDeploymentApplicationJSONPatchJSON as json.
+func (s *PatchAppsV1NamespacedDeploymentApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAppsV1NamespacedDeploymentApplicationJSONPatchJSON from json.
+func (s *PatchAppsV1NamespacedDeploymentApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAppsV1NamespacedDeploymentApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAppsV1NamespacedDeploymentApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAppsV1NamespacedDeploymentApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAppsV1NamespacedDeploymentApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAppsV1NamespacedDeploymentApplicationMergePatchJSON as json.
+func (s *PatchAppsV1NamespacedDeploymentApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAppsV1NamespacedDeploymentApplicationMergePatchJSON from json.
+func (s *PatchAppsV1NamespacedDeploymentApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAppsV1NamespacedDeploymentApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAppsV1NamespacedDeploymentApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAppsV1NamespacedDeploymentApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAppsV1NamespacedDeploymentApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAppsV1NamespacedDeploymentApplicationStrategicMergePatchJSON as json.
+func (s *PatchAppsV1NamespacedDeploymentApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAppsV1NamespacedDeploymentApplicationStrategicMergePatchJSON from json.
+func (s *PatchAppsV1NamespacedDeploymentApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAppsV1NamespacedDeploymentApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAppsV1NamespacedDeploymentApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAppsV1NamespacedDeploymentApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAppsV1NamespacedDeploymentApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAppsV1NamespacedDeploymentCreated as json.
+func (s *PatchAppsV1NamespacedDeploymentCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIAppsV1Deployment)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAppsV1NamespacedDeploymentCreated from json.
+func (s *PatchAppsV1NamespacedDeploymentCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAppsV1NamespacedDeploymentCreated to nil")
+	}
+	var unwrapped IoK8sAPIAppsV1Deployment
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAppsV1NamespacedDeploymentCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAppsV1NamespacedDeploymentCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAppsV1NamespacedDeploymentCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAppsV1NamespacedDeploymentOK as json.
+func (s *PatchAppsV1NamespacedDeploymentOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIAppsV1Deployment)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAppsV1NamespacedDeploymentOK from json.
+func (s *PatchAppsV1NamespacedDeploymentOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAppsV1NamespacedDeploymentOK to nil")
+	}
+	var unwrapped IoK8sAPIAppsV1Deployment
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAppsV1NamespacedDeploymentOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAppsV1NamespacedDeploymentOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAppsV1NamespacedDeploymentOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAppsV1NamespacedDeploymentScaleApplicationJSONPatchJSON as json.
+func (s *PatchAppsV1NamespacedDeploymentScaleApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAppsV1NamespacedDeploymentScaleApplicationJSONPatchJSON from json.
+func (s *PatchAppsV1NamespacedDeploymentScaleApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAppsV1NamespacedDeploymentScaleApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAppsV1NamespacedDeploymentScaleApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAppsV1NamespacedDeploymentScaleApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAppsV1NamespacedDeploymentScaleApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAppsV1NamespacedDeploymentScaleApplicationMergePatchJSON as json.
+func (s *PatchAppsV1NamespacedDeploymentScaleApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAppsV1NamespacedDeploymentScaleApplicationMergePatchJSON from json.
+func (s *PatchAppsV1NamespacedDeploymentScaleApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAppsV1NamespacedDeploymentScaleApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAppsV1NamespacedDeploymentScaleApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAppsV1NamespacedDeploymentScaleApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAppsV1NamespacedDeploymentScaleApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAppsV1NamespacedDeploymentScaleApplicationStrategicMergePatchJSON as json.
+func (s *PatchAppsV1NamespacedDeploymentScaleApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAppsV1NamespacedDeploymentScaleApplicationStrategicMergePatchJSON from json.
+func (s *PatchAppsV1NamespacedDeploymentScaleApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAppsV1NamespacedDeploymentScaleApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAppsV1NamespacedDeploymentScaleApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAppsV1NamespacedDeploymentScaleApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAppsV1NamespacedDeploymentScaleApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAppsV1NamespacedDeploymentScaleCreated as json.
+func (s *PatchAppsV1NamespacedDeploymentScaleCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIAutoscalingV1Scale)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAppsV1NamespacedDeploymentScaleCreated from json.
+func (s *PatchAppsV1NamespacedDeploymentScaleCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAppsV1NamespacedDeploymentScaleCreated to nil")
+	}
+	var unwrapped IoK8sAPIAutoscalingV1Scale
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAppsV1NamespacedDeploymentScaleCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAppsV1NamespacedDeploymentScaleCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAppsV1NamespacedDeploymentScaleCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAppsV1NamespacedDeploymentScaleOK as json.
+func (s *PatchAppsV1NamespacedDeploymentScaleOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIAutoscalingV1Scale)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAppsV1NamespacedDeploymentScaleOK from json.
+func (s *PatchAppsV1NamespacedDeploymentScaleOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAppsV1NamespacedDeploymentScaleOK to nil")
+	}
+	var unwrapped IoK8sAPIAutoscalingV1Scale
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAppsV1NamespacedDeploymentScaleOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAppsV1NamespacedDeploymentScaleOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAppsV1NamespacedDeploymentScaleOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAppsV1NamespacedDeploymentStatusApplicationJSONPatchJSON as json.
+func (s *PatchAppsV1NamespacedDeploymentStatusApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAppsV1NamespacedDeploymentStatusApplicationJSONPatchJSON from json.
+func (s *PatchAppsV1NamespacedDeploymentStatusApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAppsV1NamespacedDeploymentStatusApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAppsV1NamespacedDeploymentStatusApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAppsV1NamespacedDeploymentStatusApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAppsV1NamespacedDeploymentStatusApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAppsV1NamespacedDeploymentStatusApplicationMergePatchJSON as json.
+func (s *PatchAppsV1NamespacedDeploymentStatusApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAppsV1NamespacedDeploymentStatusApplicationMergePatchJSON from json.
+func (s *PatchAppsV1NamespacedDeploymentStatusApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAppsV1NamespacedDeploymentStatusApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAppsV1NamespacedDeploymentStatusApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAppsV1NamespacedDeploymentStatusApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAppsV1NamespacedDeploymentStatusApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAppsV1NamespacedDeploymentStatusApplicationStrategicMergePatchJSON as json.
+func (s *PatchAppsV1NamespacedDeploymentStatusApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAppsV1NamespacedDeploymentStatusApplicationStrategicMergePatchJSON from json.
+func (s *PatchAppsV1NamespacedDeploymentStatusApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAppsV1NamespacedDeploymentStatusApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAppsV1NamespacedDeploymentStatusApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAppsV1NamespacedDeploymentStatusApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAppsV1NamespacedDeploymentStatusApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAppsV1NamespacedDeploymentStatusCreated as json.
+func (s *PatchAppsV1NamespacedDeploymentStatusCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIAppsV1Deployment)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAppsV1NamespacedDeploymentStatusCreated from json.
+func (s *PatchAppsV1NamespacedDeploymentStatusCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAppsV1NamespacedDeploymentStatusCreated to nil")
+	}
+	var unwrapped IoK8sAPIAppsV1Deployment
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAppsV1NamespacedDeploymentStatusCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAppsV1NamespacedDeploymentStatusCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAppsV1NamespacedDeploymentStatusCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAppsV1NamespacedDeploymentStatusOK as json.
+func (s *PatchAppsV1NamespacedDeploymentStatusOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIAppsV1Deployment)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAppsV1NamespacedDeploymentStatusOK from json.
+func (s *PatchAppsV1NamespacedDeploymentStatusOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAppsV1NamespacedDeploymentStatusOK to nil")
+	}
+	var unwrapped IoK8sAPIAppsV1Deployment
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAppsV1NamespacedDeploymentStatusOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAppsV1NamespacedDeploymentStatusOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAppsV1NamespacedDeploymentStatusOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAppsV1NamespacedReplicaSetApplicationJSONPatchJSON as json.
+func (s *PatchAppsV1NamespacedReplicaSetApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAppsV1NamespacedReplicaSetApplicationJSONPatchJSON from json.
+func (s *PatchAppsV1NamespacedReplicaSetApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAppsV1NamespacedReplicaSetApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAppsV1NamespacedReplicaSetApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAppsV1NamespacedReplicaSetApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAppsV1NamespacedReplicaSetApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAppsV1NamespacedReplicaSetApplicationMergePatchJSON as json.
+func (s *PatchAppsV1NamespacedReplicaSetApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAppsV1NamespacedReplicaSetApplicationMergePatchJSON from json.
+func (s *PatchAppsV1NamespacedReplicaSetApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAppsV1NamespacedReplicaSetApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAppsV1NamespacedReplicaSetApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAppsV1NamespacedReplicaSetApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAppsV1NamespacedReplicaSetApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAppsV1NamespacedReplicaSetApplicationStrategicMergePatchJSON as json.
+func (s *PatchAppsV1NamespacedReplicaSetApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAppsV1NamespacedReplicaSetApplicationStrategicMergePatchJSON from json.
+func (s *PatchAppsV1NamespacedReplicaSetApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAppsV1NamespacedReplicaSetApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAppsV1NamespacedReplicaSetApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAppsV1NamespacedReplicaSetApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAppsV1NamespacedReplicaSetApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAppsV1NamespacedReplicaSetCreated as json.
+func (s *PatchAppsV1NamespacedReplicaSetCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIAppsV1ReplicaSet)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAppsV1NamespacedReplicaSetCreated from json.
+func (s *PatchAppsV1NamespacedReplicaSetCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAppsV1NamespacedReplicaSetCreated to nil")
+	}
+	var unwrapped IoK8sAPIAppsV1ReplicaSet
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAppsV1NamespacedReplicaSetCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAppsV1NamespacedReplicaSetCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAppsV1NamespacedReplicaSetCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAppsV1NamespacedReplicaSetOK as json.
+func (s *PatchAppsV1NamespacedReplicaSetOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIAppsV1ReplicaSet)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAppsV1NamespacedReplicaSetOK from json.
+func (s *PatchAppsV1NamespacedReplicaSetOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAppsV1NamespacedReplicaSetOK to nil")
+	}
+	var unwrapped IoK8sAPIAppsV1ReplicaSet
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAppsV1NamespacedReplicaSetOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAppsV1NamespacedReplicaSetOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAppsV1NamespacedReplicaSetOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAppsV1NamespacedReplicaSetScaleApplicationJSONPatchJSON as json.
+func (s *PatchAppsV1NamespacedReplicaSetScaleApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAppsV1NamespacedReplicaSetScaleApplicationJSONPatchJSON from json.
+func (s *PatchAppsV1NamespacedReplicaSetScaleApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAppsV1NamespacedReplicaSetScaleApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAppsV1NamespacedReplicaSetScaleApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAppsV1NamespacedReplicaSetScaleApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAppsV1NamespacedReplicaSetScaleApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAppsV1NamespacedReplicaSetScaleApplicationMergePatchJSON as json.
+func (s *PatchAppsV1NamespacedReplicaSetScaleApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAppsV1NamespacedReplicaSetScaleApplicationMergePatchJSON from json.
+func (s *PatchAppsV1NamespacedReplicaSetScaleApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAppsV1NamespacedReplicaSetScaleApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAppsV1NamespacedReplicaSetScaleApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAppsV1NamespacedReplicaSetScaleApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAppsV1NamespacedReplicaSetScaleApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAppsV1NamespacedReplicaSetScaleApplicationStrategicMergePatchJSON as json.
+func (s *PatchAppsV1NamespacedReplicaSetScaleApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAppsV1NamespacedReplicaSetScaleApplicationStrategicMergePatchJSON from json.
+func (s *PatchAppsV1NamespacedReplicaSetScaleApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAppsV1NamespacedReplicaSetScaleApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAppsV1NamespacedReplicaSetScaleApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAppsV1NamespacedReplicaSetScaleApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAppsV1NamespacedReplicaSetScaleApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAppsV1NamespacedReplicaSetScaleCreated as json.
+func (s *PatchAppsV1NamespacedReplicaSetScaleCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIAutoscalingV1Scale)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAppsV1NamespacedReplicaSetScaleCreated from json.
+func (s *PatchAppsV1NamespacedReplicaSetScaleCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAppsV1NamespacedReplicaSetScaleCreated to nil")
+	}
+	var unwrapped IoK8sAPIAutoscalingV1Scale
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAppsV1NamespacedReplicaSetScaleCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAppsV1NamespacedReplicaSetScaleCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAppsV1NamespacedReplicaSetScaleCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAppsV1NamespacedReplicaSetScaleOK as json.
+func (s *PatchAppsV1NamespacedReplicaSetScaleOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIAutoscalingV1Scale)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAppsV1NamespacedReplicaSetScaleOK from json.
+func (s *PatchAppsV1NamespacedReplicaSetScaleOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAppsV1NamespacedReplicaSetScaleOK to nil")
+	}
+	var unwrapped IoK8sAPIAutoscalingV1Scale
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAppsV1NamespacedReplicaSetScaleOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAppsV1NamespacedReplicaSetScaleOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAppsV1NamespacedReplicaSetScaleOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAppsV1NamespacedReplicaSetStatusApplicationJSONPatchJSON as json.
+func (s *PatchAppsV1NamespacedReplicaSetStatusApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAppsV1NamespacedReplicaSetStatusApplicationJSONPatchJSON from json.
+func (s *PatchAppsV1NamespacedReplicaSetStatusApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAppsV1NamespacedReplicaSetStatusApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAppsV1NamespacedReplicaSetStatusApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAppsV1NamespacedReplicaSetStatusApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAppsV1NamespacedReplicaSetStatusApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAppsV1NamespacedReplicaSetStatusApplicationMergePatchJSON as json.
+func (s *PatchAppsV1NamespacedReplicaSetStatusApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAppsV1NamespacedReplicaSetStatusApplicationMergePatchJSON from json.
+func (s *PatchAppsV1NamespacedReplicaSetStatusApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAppsV1NamespacedReplicaSetStatusApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAppsV1NamespacedReplicaSetStatusApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAppsV1NamespacedReplicaSetStatusApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAppsV1NamespacedReplicaSetStatusApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAppsV1NamespacedReplicaSetStatusApplicationStrategicMergePatchJSON as json.
+func (s *PatchAppsV1NamespacedReplicaSetStatusApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAppsV1NamespacedReplicaSetStatusApplicationStrategicMergePatchJSON from json.
+func (s *PatchAppsV1NamespacedReplicaSetStatusApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAppsV1NamespacedReplicaSetStatusApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAppsV1NamespacedReplicaSetStatusApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAppsV1NamespacedReplicaSetStatusApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAppsV1NamespacedReplicaSetStatusApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAppsV1NamespacedReplicaSetStatusCreated as json.
+func (s *PatchAppsV1NamespacedReplicaSetStatusCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIAppsV1ReplicaSet)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAppsV1NamespacedReplicaSetStatusCreated from json.
+func (s *PatchAppsV1NamespacedReplicaSetStatusCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAppsV1NamespacedReplicaSetStatusCreated to nil")
+	}
+	var unwrapped IoK8sAPIAppsV1ReplicaSet
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAppsV1NamespacedReplicaSetStatusCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAppsV1NamespacedReplicaSetStatusCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAppsV1NamespacedReplicaSetStatusCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAppsV1NamespacedReplicaSetStatusOK as json.
+func (s *PatchAppsV1NamespacedReplicaSetStatusOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIAppsV1ReplicaSet)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAppsV1NamespacedReplicaSetStatusOK from json.
+func (s *PatchAppsV1NamespacedReplicaSetStatusOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAppsV1NamespacedReplicaSetStatusOK to nil")
+	}
+	var unwrapped IoK8sAPIAppsV1ReplicaSet
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAppsV1NamespacedReplicaSetStatusOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAppsV1NamespacedReplicaSetStatusOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAppsV1NamespacedReplicaSetStatusOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAppsV1NamespacedStatefulSetApplicationJSONPatchJSON as json.
+func (s *PatchAppsV1NamespacedStatefulSetApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAppsV1NamespacedStatefulSetApplicationJSONPatchJSON from json.
+func (s *PatchAppsV1NamespacedStatefulSetApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAppsV1NamespacedStatefulSetApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAppsV1NamespacedStatefulSetApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAppsV1NamespacedStatefulSetApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAppsV1NamespacedStatefulSetApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAppsV1NamespacedStatefulSetApplicationMergePatchJSON as json.
+func (s *PatchAppsV1NamespacedStatefulSetApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAppsV1NamespacedStatefulSetApplicationMergePatchJSON from json.
+func (s *PatchAppsV1NamespacedStatefulSetApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAppsV1NamespacedStatefulSetApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAppsV1NamespacedStatefulSetApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAppsV1NamespacedStatefulSetApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAppsV1NamespacedStatefulSetApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAppsV1NamespacedStatefulSetApplicationStrategicMergePatchJSON as json.
+func (s *PatchAppsV1NamespacedStatefulSetApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAppsV1NamespacedStatefulSetApplicationStrategicMergePatchJSON from json.
+func (s *PatchAppsV1NamespacedStatefulSetApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAppsV1NamespacedStatefulSetApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAppsV1NamespacedStatefulSetApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAppsV1NamespacedStatefulSetApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAppsV1NamespacedStatefulSetApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAppsV1NamespacedStatefulSetCreated as json.
+func (s *PatchAppsV1NamespacedStatefulSetCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIAppsV1StatefulSet)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAppsV1NamespacedStatefulSetCreated from json.
+func (s *PatchAppsV1NamespacedStatefulSetCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAppsV1NamespacedStatefulSetCreated to nil")
+	}
+	var unwrapped IoK8sAPIAppsV1StatefulSet
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAppsV1NamespacedStatefulSetCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAppsV1NamespacedStatefulSetCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAppsV1NamespacedStatefulSetCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAppsV1NamespacedStatefulSetOK as json.
+func (s *PatchAppsV1NamespacedStatefulSetOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIAppsV1StatefulSet)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAppsV1NamespacedStatefulSetOK from json.
+func (s *PatchAppsV1NamespacedStatefulSetOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAppsV1NamespacedStatefulSetOK to nil")
+	}
+	var unwrapped IoK8sAPIAppsV1StatefulSet
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAppsV1NamespacedStatefulSetOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAppsV1NamespacedStatefulSetOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAppsV1NamespacedStatefulSetOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAppsV1NamespacedStatefulSetScaleApplicationJSONPatchJSON as json.
+func (s *PatchAppsV1NamespacedStatefulSetScaleApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAppsV1NamespacedStatefulSetScaleApplicationJSONPatchJSON from json.
+func (s *PatchAppsV1NamespacedStatefulSetScaleApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAppsV1NamespacedStatefulSetScaleApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAppsV1NamespacedStatefulSetScaleApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAppsV1NamespacedStatefulSetScaleApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAppsV1NamespacedStatefulSetScaleApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAppsV1NamespacedStatefulSetScaleApplicationMergePatchJSON as json.
+func (s *PatchAppsV1NamespacedStatefulSetScaleApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAppsV1NamespacedStatefulSetScaleApplicationMergePatchJSON from json.
+func (s *PatchAppsV1NamespacedStatefulSetScaleApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAppsV1NamespacedStatefulSetScaleApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAppsV1NamespacedStatefulSetScaleApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAppsV1NamespacedStatefulSetScaleApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAppsV1NamespacedStatefulSetScaleApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAppsV1NamespacedStatefulSetScaleApplicationStrategicMergePatchJSON as json.
+func (s *PatchAppsV1NamespacedStatefulSetScaleApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAppsV1NamespacedStatefulSetScaleApplicationStrategicMergePatchJSON from json.
+func (s *PatchAppsV1NamespacedStatefulSetScaleApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAppsV1NamespacedStatefulSetScaleApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAppsV1NamespacedStatefulSetScaleApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAppsV1NamespacedStatefulSetScaleApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAppsV1NamespacedStatefulSetScaleApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAppsV1NamespacedStatefulSetScaleCreated as json.
+func (s *PatchAppsV1NamespacedStatefulSetScaleCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIAutoscalingV1Scale)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAppsV1NamespacedStatefulSetScaleCreated from json.
+func (s *PatchAppsV1NamespacedStatefulSetScaleCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAppsV1NamespacedStatefulSetScaleCreated to nil")
+	}
+	var unwrapped IoK8sAPIAutoscalingV1Scale
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAppsV1NamespacedStatefulSetScaleCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAppsV1NamespacedStatefulSetScaleCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAppsV1NamespacedStatefulSetScaleCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAppsV1NamespacedStatefulSetScaleOK as json.
+func (s *PatchAppsV1NamespacedStatefulSetScaleOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIAutoscalingV1Scale)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAppsV1NamespacedStatefulSetScaleOK from json.
+func (s *PatchAppsV1NamespacedStatefulSetScaleOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAppsV1NamespacedStatefulSetScaleOK to nil")
+	}
+	var unwrapped IoK8sAPIAutoscalingV1Scale
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAppsV1NamespacedStatefulSetScaleOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAppsV1NamespacedStatefulSetScaleOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAppsV1NamespacedStatefulSetScaleOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAppsV1NamespacedStatefulSetStatusApplicationJSONPatchJSON as json.
+func (s *PatchAppsV1NamespacedStatefulSetStatusApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAppsV1NamespacedStatefulSetStatusApplicationJSONPatchJSON from json.
+func (s *PatchAppsV1NamespacedStatefulSetStatusApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAppsV1NamespacedStatefulSetStatusApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAppsV1NamespacedStatefulSetStatusApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAppsV1NamespacedStatefulSetStatusApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAppsV1NamespacedStatefulSetStatusApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAppsV1NamespacedStatefulSetStatusApplicationMergePatchJSON as json.
+func (s *PatchAppsV1NamespacedStatefulSetStatusApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAppsV1NamespacedStatefulSetStatusApplicationMergePatchJSON from json.
+func (s *PatchAppsV1NamespacedStatefulSetStatusApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAppsV1NamespacedStatefulSetStatusApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAppsV1NamespacedStatefulSetStatusApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAppsV1NamespacedStatefulSetStatusApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAppsV1NamespacedStatefulSetStatusApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAppsV1NamespacedStatefulSetStatusApplicationStrategicMergePatchJSON as json.
+func (s *PatchAppsV1NamespacedStatefulSetStatusApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAppsV1NamespacedStatefulSetStatusApplicationStrategicMergePatchJSON from json.
+func (s *PatchAppsV1NamespacedStatefulSetStatusApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAppsV1NamespacedStatefulSetStatusApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAppsV1NamespacedStatefulSetStatusApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAppsV1NamespacedStatefulSetStatusApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAppsV1NamespacedStatefulSetStatusApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAppsV1NamespacedStatefulSetStatusCreated as json.
+func (s *PatchAppsV1NamespacedStatefulSetStatusCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIAppsV1StatefulSet)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAppsV1NamespacedStatefulSetStatusCreated from json.
+func (s *PatchAppsV1NamespacedStatefulSetStatusCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAppsV1NamespacedStatefulSetStatusCreated to nil")
+	}
+	var unwrapped IoK8sAPIAppsV1StatefulSet
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAppsV1NamespacedStatefulSetStatusCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAppsV1NamespacedStatefulSetStatusCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAppsV1NamespacedStatefulSetStatusCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAppsV1NamespacedStatefulSetStatusOK as json.
+func (s *PatchAppsV1NamespacedStatefulSetStatusOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIAppsV1StatefulSet)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAppsV1NamespacedStatefulSetStatusOK from json.
+func (s *PatchAppsV1NamespacedStatefulSetStatusOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAppsV1NamespacedStatefulSetStatusOK to nil")
+	}
+	var unwrapped IoK8sAPIAppsV1StatefulSet
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAppsV1NamespacedStatefulSetStatusOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAppsV1NamespacedStatefulSetStatusOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAppsV1NamespacedStatefulSetStatusOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAutoscalingV1NamespacedHorizontalPodAutoscalerApplicationJSONPatchJSON as json.
+func (s *PatchAutoscalingV1NamespacedHorizontalPodAutoscalerApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAutoscalingV1NamespacedHorizontalPodAutoscalerApplicationJSONPatchJSON from json.
+func (s *PatchAutoscalingV1NamespacedHorizontalPodAutoscalerApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAutoscalingV1NamespacedHorizontalPodAutoscalerApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAutoscalingV1NamespacedHorizontalPodAutoscalerApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAutoscalingV1NamespacedHorizontalPodAutoscalerApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAutoscalingV1NamespacedHorizontalPodAutoscalerApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAutoscalingV1NamespacedHorizontalPodAutoscalerApplicationMergePatchJSON as json.
+func (s *PatchAutoscalingV1NamespacedHorizontalPodAutoscalerApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAutoscalingV1NamespacedHorizontalPodAutoscalerApplicationMergePatchJSON from json.
+func (s *PatchAutoscalingV1NamespacedHorizontalPodAutoscalerApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAutoscalingV1NamespacedHorizontalPodAutoscalerApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAutoscalingV1NamespacedHorizontalPodAutoscalerApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAutoscalingV1NamespacedHorizontalPodAutoscalerApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAutoscalingV1NamespacedHorizontalPodAutoscalerApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAutoscalingV1NamespacedHorizontalPodAutoscalerApplicationStrategicMergePatchJSON as json.
+func (s *PatchAutoscalingV1NamespacedHorizontalPodAutoscalerApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAutoscalingV1NamespacedHorizontalPodAutoscalerApplicationStrategicMergePatchJSON from json.
+func (s *PatchAutoscalingV1NamespacedHorizontalPodAutoscalerApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAutoscalingV1NamespacedHorizontalPodAutoscalerApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAutoscalingV1NamespacedHorizontalPodAutoscalerApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAutoscalingV1NamespacedHorizontalPodAutoscalerApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAutoscalingV1NamespacedHorizontalPodAutoscalerApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAutoscalingV1NamespacedHorizontalPodAutoscalerCreated as json.
+func (s *PatchAutoscalingV1NamespacedHorizontalPodAutoscalerCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIAutoscalingV1HorizontalPodAutoscaler)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAutoscalingV1NamespacedHorizontalPodAutoscalerCreated from json.
+func (s *PatchAutoscalingV1NamespacedHorizontalPodAutoscalerCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAutoscalingV1NamespacedHorizontalPodAutoscalerCreated to nil")
+	}
+	var unwrapped IoK8sAPIAutoscalingV1HorizontalPodAutoscaler
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAutoscalingV1NamespacedHorizontalPodAutoscalerCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAutoscalingV1NamespacedHorizontalPodAutoscalerCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAutoscalingV1NamespacedHorizontalPodAutoscalerCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAutoscalingV1NamespacedHorizontalPodAutoscalerOK as json.
+func (s *PatchAutoscalingV1NamespacedHorizontalPodAutoscalerOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIAutoscalingV1HorizontalPodAutoscaler)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAutoscalingV1NamespacedHorizontalPodAutoscalerOK from json.
+func (s *PatchAutoscalingV1NamespacedHorizontalPodAutoscalerOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAutoscalingV1NamespacedHorizontalPodAutoscalerOK to nil")
+	}
+	var unwrapped IoK8sAPIAutoscalingV1HorizontalPodAutoscaler
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAutoscalingV1NamespacedHorizontalPodAutoscalerOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAutoscalingV1NamespacedHorizontalPodAutoscalerOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAutoscalingV1NamespacedHorizontalPodAutoscalerOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusApplicationJSONPatchJSON as json.
+func (s *PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusApplicationJSONPatchJSON from json.
+func (s *PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusApplicationMergePatchJSON as json.
+func (s *PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusApplicationMergePatchJSON from json.
+func (s *PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusApplicationStrategicMergePatchJSON as json.
+func (s *PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusApplicationStrategicMergePatchJSON from json.
+func (s *PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusCreated as json.
+func (s *PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIAutoscalingV1HorizontalPodAutoscaler)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusCreated from json.
+func (s *PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusCreated to nil")
+	}
+	var unwrapped IoK8sAPIAutoscalingV1HorizontalPodAutoscaler
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusOK as json.
+func (s *PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIAutoscalingV1HorizontalPodAutoscaler)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusOK from json.
+func (s *PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusOK to nil")
+	}
+	var unwrapped IoK8sAPIAutoscalingV1HorizontalPodAutoscaler
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerApplicationJSONPatchJSON as json.
+func (s *PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerApplicationJSONPatchJSON from json.
+func (s *PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerApplicationMergePatchJSON as json.
+func (s *PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerApplicationMergePatchJSON from json.
+func (s *PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerApplicationStrategicMergePatchJSON as json.
+func (s *PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerApplicationStrategicMergePatchJSON from json.
+func (s *PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerCreated as json.
+func (s *PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerCreated from json.
+func (s *PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerCreated to nil")
+	}
+	var unwrapped IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerOK as json.
+func (s *PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerOK from json.
+func (s *PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerOK to nil")
+	}
+	var unwrapped IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusApplicationJSONPatchJSON as json.
+func (s *PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusApplicationJSONPatchJSON from json.
+func (s *PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusApplicationMergePatchJSON as json.
+func (s *PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusApplicationMergePatchJSON from json.
+func (s *PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusApplicationStrategicMergePatchJSON as json.
+func (s *PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusApplicationStrategicMergePatchJSON from json.
+func (s *PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusCreated as json.
+func (s *PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusCreated from json.
+func (s *PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusCreated to nil")
+	}
+	var unwrapped IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusOK as json.
+func (s *PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusOK from json.
+func (s *PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusOK to nil")
+	}
+	var unwrapped IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerApplicationJSONPatchJSON as json.
+func (s *PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerApplicationJSONPatchJSON from json.
+func (s *PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerApplicationMergePatchJSON as json.
+func (s *PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerApplicationMergePatchJSON from json.
+func (s *PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerApplicationStrategicMergePatchJSON as json.
+func (s *PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerApplicationStrategicMergePatchJSON from json.
+func (s *PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerCreated as json.
+func (s *PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerCreated from json.
+func (s *PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerCreated to nil")
+	}
+	var unwrapped IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerOK as json.
+func (s *PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerOK from json.
+func (s *PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerOK to nil")
+	}
+	var unwrapped IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusApplicationJSONPatchJSON as json.
+func (s *PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusApplicationJSONPatchJSON from json.
+func (s *PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusApplicationMergePatchJSON as json.
+func (s *PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusApplicationMergePatchJSON from json.
+func (s *PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusApplicationStrategicMergePatchJSON as json.
+func (s *PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusApplicationStrategicMergePatchJSON from json.
+func (s *PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusCreated as json.
+func (s *PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusCreated from json.
+func (s *PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusCreated to nil")
+	}
+	var unwrapped IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusOK as json.
+func (s *PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusOK from json.
+func (s *PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusOK to nil")
+	}
+	var unwrapped IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchBatchV1NamespacedCronJobApplicationJSONPatchJSON as json.
+func (s *PatchBatchV1NamespacedCronJobApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchBatchV1NamespacedCronJobApplicationJSONPatchJSON from json.
+func (s *PatchBatchV1NamespacedCronJobApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchBatchV1NamespacedCronJobApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchBatchV1NamespacedCronJobApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchBatchV1NamespacedCronJobApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchBatchV1NamespacedCronJobApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchBatchV1NamespacedCronJobApplicationMergePatchJSON as json.
+func (s *PatchBatchV1NamespacedCronJobApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchBatchV1NamespacedCronJobApplicationMergePatchJSON from json.
+func (s *PatchBatchV1NamespacedCronJobApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchBatchV1NamespacedCronJobApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchBatchV1NamespacedCronJobApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchBatchV1NamespacedCronJobApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchBatchV1NamespacedCronJobApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchBatchV1NamespacedCronJobApplicationStrategicMergePatchJSON as json.
+func (s *PatchBatchV1NamespacedCronJobApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchBatchV1NamespacedCronJobApplicationStrategicMergePatchJSON from json.
+func (s *PatchBatchV1NamespacedCronJobApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchBatchV1NamespacedCronJobApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchBatchV1NamespacedCronJobApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchBatchV1NamespacedCronJobApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchBatchV1NamespacedCronJobApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchBatchV1NamespacedCronJobCreated as json.
+func (s *PatchBatchV1NamespacedCronJobCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIBatchV1CronJob)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchBatchV1NamespacedCronJobCreated from json.
+func (s *PatchBatchV1NamespacedCronJobCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchBatchV1NamespacedCronJobCreated to nil")
+	}
+	var unwrapped IoK8sAPIBatchV1CronJob
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchBatchV1NamespacedCronJobCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchBatchV1NamespacedCronJobCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchBatchV1NamespacedCronJobCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchBatchV1NamespacedCronJobOK as json.
+func (s *PatchBatchV1NamespacedCronJobOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIBatchV1CronJob)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchBatchV1NamespacedCronJobOK from json.
+func (s *PatchBatchV1NamespacedCronJobOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchBatchV1NamespacedCronJobOK to nil")
+	}
+	var unwrapped IoK8sAPIBatchV1CronJob
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchBatchV1NamespacedCronJobOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchBatchV1NamespacedCronJobOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchBatchV1NamespacedCronJobOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchBatchV1NamespacedCronJobStatusApplicationJSONPatchJSON as json.
+func (s *PatchBatchV1NamespacedCronJobStatusApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchBatchV1NamespacedCronJobStatusApplicationJSONPatchJSON from json.
+func (s *PatchBatchV1NamespacedCronJobStatusApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchBatchV1NamespacedCronJobStatusApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchBatchV1NamespacedCronJobStatusApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchBatchV1NamespacedCronJobStatusApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchBatchV1NamespacedCronJobStatusApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchBatchV1NamespacedCronJobStatusApplicationMergePatchJSON as json.
+func (s *PatchBatchV1NamespacedCronJobStatusApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchBatchV1NamespacedCronJobStatusApplicationMergePatchJSON from json.
+func (s *PatchBatchV1NamespacedCronJobStatusApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchBatchV1NamespacedCronJobStatusApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchBatchV1NamespacedCronJobStatusApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchBatchV1NamespacedCronJobStatusApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchBatchV1NamespacedCronJobStatusApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchBatchV1NamespacedCronJobStatusApplicationStrategicMergePatchJSON as json.
+func (s *PatchBatchV1NamespacedCronJobStatusApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchBatchV1NamespacedCronJobStatusApplicationStrategicMergePatchJSON from json.
+func (s *PatchBatchV1NamespacedCronJobStatusApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchBatchV1NamespacedCronJobStatusApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchBatchV1NamespacedCronJobStatusApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchBatchV1NamespacedCronJobStatusApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchBatchV1NamespacedCronJobStatusApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchBatchV1NamespacedCronJobStatusCreated as json.
+func (s *PatchBatchV1NamespacedCronJobStatusCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIBatchV1CronJob)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchBatchV1NamespacedCronJobStatusCreated from json.
+func (s *PatchBatchV1NamespacedCronJobStatusCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchBatchV1NamespacedCronJobStatusCreated to nil")
+	}
+	var unwrapped IoK8sAPIBatchV1CronJob
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchBatchV1NamespacedCronJobStatusCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchBatchV1NamespacedCronJobStatusCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchBatchV1NamespacedCronJobStatusCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchBatchV1NamespacedCronJobStatusOK as json.
+func (s *PatchBatchV1NamespacedCronJobStatusOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIBatchV1CronJob)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchBatchV1NamespacedCronJobStatusOK from json.
+func (s *PatchBatchV1NamespacedCronJobStatusOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchBatchV1NamespacedCronJobStatusOK to nil")
+	}
+	var unwrapped IoK8sAPIBatchV1CronJob
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchBatchV1NamespacedCronJobStatusOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchBatchV1NamespacedCronJobStatusOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchBatchV1NamespacedCronJobStatusOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchBatchV1NamespacedJobApplicationJSONPatchJSON as json.
+func (s *PatchBatchV1NamespacedJobApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchBatchV1NamespacedJobApplicationJSONPatchJSON from json.
+func (s *PatchBatchV1NamespacedJobApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchBatchV1NamespacedJobApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchBatchV1NamespacedJobApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchBatchV1NamespacedJobApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchBatchV1NamespacedJobApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchBatchV1NamespacedJobApplicationMergePatchJSON as json.
+func (s *PatchBatchV1NamespacedJobApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchBatchV1NamespacedJobApplicationMergePatchJSON from json.
+func (s *PatchBatchV1NamespacedJobApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchBatchV1NamespacedJobApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchBatchV1NamespacedJobApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchBatchV1NamespacedJobApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchBatchV1NamespacedJobApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchBatchV1NamespacedJobApplicationStrategicMergePatchJSON as json.
+func (s *PatchBatchV1NamespacedJobApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchBatchV1NamespacedJobApplicationStrategicMergePatchJSON from json.
+func (s *PatchBatchV1NamespacedJobApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchBatchV1NamespacedJobApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchBatchV1NamespacedJobApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchBatchV1NamespacedJobApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchBatchV1NamespacedJobApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchBatchV1NamespacedJobCreated as json.
+func (s *PatchBatchV1NamespacedJobCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIBatchV1Job)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchBatchV1NamespacedJobCreated from json.
+func (s *PatchBatchV1NamespacedJobCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchBatchV1NamespacedJobCreated to nil")
+	}
+	var unwrapped IoK8sAPIBatchV1Job
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchBatchV1NamespacedJobCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchBatchV1NamespacedJobCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchBatchV1NamespacedJobCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchBatchV1NamespacedJobOK as json.
+func (s *PatchBatchV1NamespacedJobOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIBatchV1Job)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchBatchV1NamespacedJobOK from json.
+func (s *PatchBatchV1NamespacedJobOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchBatchV1NamespacedJobOK to nil")
+	}
+	var unwrapped IoK8sAPIBatchV1Job
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchBatchV1NamespacedJobOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchBatchV1NamespacedJobOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchBatchV1NamespacedJobOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchBatchV1NamespacedJobStatusApplicationJSONPatchJSON as json.
+func (s *PatchBatchV1NamespacedJobStatusApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchBatchV1NamespacedJobStatusApplicationJSONPatchJSON from json.
+func (s *PatchBatchV1NamespacedJobStatusApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchBatchV1NamespacedJobStatusApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchBatchV1NamespacedJobStatusApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchBatchV1NamespacedJobStatusApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchBatchV1NamespacedJobStatusApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchBatchV1NamespacedJobStatusApplicationMergePatchJSON as json.
+func (s *PatchBatchV1NamespacedJobStatusApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchBatchV1NamespacedJobStatusApplicationMergePatchJSON from json.
+func (s *PatchBatchV1NamespacedJobStatusApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchBatchV1NamespacedJobStatusApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchBatchV1NamespacedJobStatusApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchBatchV1NamespacedJobStatusApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchBatchV1NamespacedJobStatusApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchBatchV1NamespacedJobStatusApplicationStrategicMergePatchJSON as json.
+func (s *PatchBatchV1NamespacedJobStatusApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchBatchV1NamespacedJobStatusApplicationStrategicMergePatchJSON from json.
+func (s *PatchBatchV1NamespacedJobStatusApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchBatchV1NamespacedJobStatusApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchBatchV1NamespacedJobStatusApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchBatchV1NamespacedJobStatusApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchBatchV1NamespacedJobStatusApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchBatchV1NamespacedJobStatusCreated as json.
+func (s *PatchBatchV1NamespacedJobStatusCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIBatchV1Job)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchBatchV1NamespacedJobStatusCreated from json.
+func (s *PatchBatchV1NamespacedJobStatusCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchBatchV1NamespacedJobStatusCreated to nil")
+	}
+	var unwrapped IoK8sAPIBatchV1Job
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchBatchV1NamespacedJobStatusCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchBatchV1NamespacedJobStatusCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchBatchV1NamespacedJobStatusCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchBatchV1NamespacedJobStatusOK as json.
+func (s *PatchBatchV1NamespacedJobStatusOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIBatchV1Job)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchBatchV1NamespacedJobStatusOK from json.
+func (s *PatchBatchV1NamespacedJobStatusOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchBatchV1NamespacedJobStatusOK to nil")
+	}
+	var unwrapped IoK8sAPIBatchV1Job
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchBatchV1NamespacedJobStatusOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchBatchV1NamespacedJobStatusOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchBatchV1NamespacedJobStatusOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchBatchV1beta1NamespacedCronJobApplicationJSONPatchJSON as json.
+func (s *PatchBatchV1beta1NamespacedCronJobApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchBatchV1beta1NamespacedCronJobApplicationJSONPatchJSON from json.
+func (s *PatchBatchV1beta1NamespacedCronJobApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchBatchV1beta1NamespacedCronJobApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchBatchV1beta1NamespacedCronJobApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchBatchV1beta1NamespacedCronJobApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchBatchV1beta1NamespacedCronJobApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchBatchV1beta1NamespacedCronJobApplicationMergePatchJSON as json.
+func (s *PatchBatchV1beta1NamespacedCronJobApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchBatchV1beta1NamespacedCronJobApplicationMergePatchJSON from json.
+func (s *PatchBatchV1beta1NamespacedCronJobApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchBatchV1beta1NamespacedCronJobApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchBatchV1beta1NamespacedCronJobApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchBatchV1beta1NamespacedCronJobApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchBatchV1beta1NamespacedCronJobApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchBatchV1beta1NamespacedCronJobApplicationStrategicMergePatchJSON as json.
+func (s *PatchBatchV1beta1NamespacedCronJobApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchBatchV1beta1NamespacedCronJobApplicationStrategicMergePatchJSON from json.
+func (s *PatchBatchV1beta1NamespacedCronJobApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchBatchV1beta1NamespacedCronJobApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchBatchV1beta1NamespacedCronJobApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchBatchV1beta1NamespacedCronJobApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchBatchV1beta1NamespacedCronJobApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchBatchV1beta1NamespacedCronJobCreated as json.
+func (s *PatchBatchV1beta1NamespacedCronJobCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIBatchV1beta1CronJob)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchBatchV1beta1NamespacedCronJobCreated from json.
+func (s *PatchBatchV1beta1NamespacedCronJobCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchBatchV1beta1NamespacedCronJobCreated to nil")
+	}
+	var unwrapped IoK8sAPIBatchV1beta1CronJob
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchBatchV1beta1NamespacedCronJobCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchBatchV1beta1NamespacedCronJobCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchBatchV1beta1NamespacedCronJobCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchBatchV1beta1NamespacedCronJobOK as json.
+func (s *PatchBatchV1beta1NamespacedCronJobOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIBatchV1beta1CronJob)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchBatchV1beta1NamespacedCronJobOK from json.
+func (s *PatchBatchV1beta1NamespacedCronJobOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchBatchV1beta1NamespacedCronJobOK to nil")
+	}
+	var unwrapped IoK8sAPIBatchV1beta1CronJob
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchBatchV1beta1NamespacedCronJobOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchBatchV1beta1NamespacedCronJobOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchBatchV1beta1NamespacedCronJobOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchBatchV1beta1NamespacedCronJobStatusApplicationJSONPatchJSON as json.
+func (s *PatchBatchV1beta1NamespacedCronJobStatusApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchBatchV1beta1NamespacedCronJobStatusApplicationJSONPatchJSON from json.
+func (s *PatchBatchV1beta1NamespacedCronJobStatusApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchBatchV1beta1NamespacedCronJobStatusApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchBatchV1beta1NamespacedCronJobStatusApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchBatchV1beta1NamespacedCronJobStatusApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchBatchV1beta1NamespacedCronJobStatusApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchBatchV1beta1NamespacedCronJobStatusApplicationMergePatchJSON as json.
+func (s *PatchBatchV1beta1NamespacedCronJobStatusApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchBatchV1beta1NamespacedCronJobStatusApplicationMergePatchJSON from json.
+func (s *PatchBatchV1beta1NamespacedCronJobStatusApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchBatchV1beta1NamespacedCronJobStatusApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchBatchV1beta1NamespacedCronJobStatusApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchBatchV1beta1NamespacedCronJobStatusApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchBatchV1beta1NamespacedCronJobStatusApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchBatchV1beta1NamespacedCronJobStatusApplicationStrategicMergePatchJSON as json.
+func (s *PatchBatchV1beta1NamespacedCronJobStatusApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchBatchV1beta1NamespacedCronJobStatusApplicationStrategicMergePatchJSON from json.
+func (s *PatchBatchV1beta1NamespacedCronJobStatusApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchBatchV1beta1NamespacedCronJobStatusApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchBatchV1beta1NamespacedCronJobStatusApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchBatchV1beta1NamespacedCronJobStatusApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchBatchV1beta1NamespacedCronJobStatusApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchBatchV1beta1NamespacedCronJobStatusCreated as json.
+func (s *PatchBatchV1beta1NamespacedCronJobStatusCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIBatchV1beta1CronJob)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchBatchV1beta1NamespacedCronJobStatusCreated from json.
+func (s *PatchBatchV1beta1NamespacedCronJobStatusCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchBatchV1beta1NamespacedCronJobStatusCreated to nil")
+	}
+	var unwrapped IoK8sAPIBatchV1beta1CronJob
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchBatchV1beta1NamespacedCronJobStatusCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchBatchV1beta1NamespacedCronJobStatusCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchBatchV1beta1NamespacedCronJobStatusCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchBatchV1beta1NamespacedCronJobStatusOK as json.
+func (s *PatchBatchV1beta1NamespacedCronJobStatusOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIBatchV1beta1CronJob)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchBatchV1beta1NamespacedCronJobStatusOK from json.
+func (s *PatchBatchV1beta1NamespacedCronJobStatusOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchBatchV1beta1NamespacedCronJobStatusOK to nil")
+	}
+	var unwrapped IoK8sAPIBatchV1beta1CronJob
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchBatchV1beta1NamespacedCronJobStatusOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchBatchV1beta1NamespacedCronJobStatusOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchBatchV1beta1NamespacedCronJobStatusOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCertificatesV1CertificateSigningRequestApplicationJSONPatchJSON as json.
+func (s *PatchCertificatesV1CertificateSigningRequestApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCertificatesV1CertificateSigningRequestApplicationJSONPatchJSON from json.
+func (s *PatchCertificatesV1CertificateSigningRequestApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCertificatesV1CertificateSigningRequestApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCertificatesV1CertificateSigningRequestApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCertificatesV1CertificateSigningRequestApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCertificatesV1CertificateSigningRequestApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCertificatesV1CertificateSigningRequestApplicationMergePatchJSON as json.
+func (s *PatchCertificatesV1CertificateSigningRequestApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCertificatesV1CertificateSigningRequestApplicationMergePatchJSON from json.
+func (s *PatchCertificatesV1CertificateSigningRequestApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCertificatesV1CertificateSigningRequestApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCertificatesV1CertificateSigningRequestApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCertificatesV1CertificateSigningRequestApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCertificatesV1CertificateSigningRequestApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCertificatesV1CertificateSigningRequestApplicationStrategicMergePatchJSON as json.
+func (s *PatchCertificatesV1CertificateSigningRequestApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCertificatesV1CertificateSigningRequestApplicationStrategicMergePatchJSON from json.
+func (s *PatchCertificatesV1CertificateSigningRequestApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCertificatesV1CertificateSigningRequestApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCertificatesV1CertificateSigningRequestApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCertificatesV1CertificateSigningRequestApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCertificatesV1CertificateSigningRequestApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCertificatesV1CertificateSigningRequestApprovalApplicationJSONPatchJSON as json.
+func (s *PatchCertificatesV1CertificateSigningRequestApprovalApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCertificatesV1CertificateSigningRequestApprovalApplicationJSONPatchJSON from json.
+func (s *PatchCertificatesV1CertificateSigningRequestApprovalApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCertificatesV1CertificateSigningRequestApprovalApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCertificatesV1CertificateSigningRequestApprovalApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCertificatesV1CertificateSigningRequestApprovalApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCertificatesV1CertificateSigningRequestApprovalApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCertificatesV1CertificateSigningRequestApprovalApplicationMergePatchJSON as json.
+func (s *PatchCertificatesV1CertificateSigningRequestApprovalApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCertificatesV1CertificateSigningRequestApprovalApplicationMergePatchJSON from json.
+func (s *PatchCertificatesV1CertificateSigningRequestApprovalApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCertificatesV1CertificateSigningRequestApprovalApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCertificatesV1CertificateSigningRequestApprovalApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCertificatesV1CertificateSigningRequestApprovalApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCertificatesV1CertificateSigningRequestApprovalApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCertificatesV1CertificateSigningRequestApprovalApplicationStrategicMergePatchJSON as json.
+func (s *PatchCertificatesV1CertificateSigningRequestApprovalApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCertificatesV1CertificateSigningRequestApprovalApplicationStrategicMergePatchJSON from json.
+func (s *PatchCertificatesV1CertificateSigningRequestApprovalApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCertificatesV1CertificateSigningRequestApprovalApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCertificatesV1CertificateSigningRequestApprovalApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCertificatesV1CertificateSigningRequestApprovalApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCertificatesV1CertificateSigningRequestApprovalApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCertificatesV1CertificateSigningRequestApprovalCreated as json.
+func (s *PatchCertificatesV1CertificateSigningRequestApprovalCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPICertificatesV1CertificateSigningRequest)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCertificatesV1CertificateSigningRequestApprovalCreated from json.
+func (s *PatchCertificatesV1CertificateSigningRequestApprovalCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCertificatesV1CertificateSigningRequestApprovalCreated to nil")
+	}
+	var unwrapped IoK8sAPICertificatesV1CertificateSigningRequest
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCertificatesV1CertificateSigningRequestApprovalCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCertificatesV1CertificateSigningRequestApprovalCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCertificatesV1CertificateSigningRequestApprovalCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCertificatesV1CertificateSigningRequestApprovalOK as json.
+func (s *PatchCertificatesV1CertificateSigningRequestApprovalOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPICertificatesV1CertificateSigningRequest)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCertificatesV1CertificateSigningRequestApprovalOK from json.
+func (s *PatchCertificatesV1CertificateSigningRequestApprovalOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCertificatesV1CertificateSigningRequestApprovalOK to nil")
+	}
+	var unwrapped IoK8sAPICertificatesV1CertificateSigningRequest
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCertificatesV1CertificateSigningRequestApprovalOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCertificatesV1CertificateSigningRequestApprovalOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCertificatesV1CertificateSigningRequestApprovalOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCertificatesV1CertificateSigningRequestCreated as json.
+func (s *PatchCertificatesV1CertificateSigningRequestCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPICertificatesV1CertificateSigningRequest)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCertificatesV1CertificateSigningRequestCreated from json.
+func (s *PatchCertificatesV1CertificateSigningRequestCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCertificatesV1CertificateSigningRequestCreated to nil")
+	}
+	var unwrapped IoK8sAPICertificatesV1CertificateSigningRequest
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCertificatesV1CertificateSigningRequestCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCertificatesV1CertificateSigningRequestCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCertificatesV1CertificateSigningRequestCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCertificatesV1CertificateSigningRequestOK as json.
+func (s *PatchCertificatesV1CertificateSigningRequestOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPICertificatesV1CertificateSigningRequest)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCertificatesV1CertificateSigningRequestOK from json.
+func (s *PatchCertificatesV1CertificateSigningRequestOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCertificatesV1CertificateSigningRequestOK to nil")
+	}
+	var unwrapped IoK8sAPICertificatesV1CertificateSigningRequest
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCertificatesV1CertificateSigningRequestOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCertificatesV1CertificateSigningRequestOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCertificatesV1CertificateSigningRequestOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCertificatesV1CertificateSigningRequestStatusApplicationJSONPatchJSON as json.
+func (s *PatchCertificatesV1CertificateSigningRequestStatusApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCertificatesV1CertificateSigningRequestStatusApplicationJSONPatchJSON from json.
+func (s *PatchCertificatesV1CertificateSigningRequestStatusApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCertificatesV1CertificateSigningRequestStatusApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCertificatesV1CertificateSigningRequestStatusApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCertificatesV1CertificateSigningRequestStatusApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCertificatesV1CertificateSigningRequestStatusApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCertificatesV1CertificateSigningRequestStatusApplicationMergePatchJSON as json.
+func (s *PatchCertificatesV1CertificateSigningRequestStatusApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCertificatesV1CertificateSigningRequestStatusApplicationMergePatchJSON from json.
+func (s *PatchCertificatesV1CertificateSigningRequestStatusApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCertificatesV1CertificateSigningRequestStatusApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCertificatesV1CertificateSigningRequestStatusApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCertificatesV1CertificateSigningRequestStatusApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCertificatesV1CertificateSigningRequestStatusApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCertificatesV1CertificateSigningRequestStatusApplicationStrategicMergePatchJSON as json.
+func (s *PatchCertificatesV1CertificateSigningRequestStatusApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCertificatesV1CertificateSigningRequestStatusApplicationStrategicMergePatchJSON from json.
+func (s *PatchCertificatesV1CertificateSigningRequestStatusApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCertificatesV1CertificateSigningRequestStatusApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCertificatesV1CertificateSigningRequestStatusApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCertificatesV1CertificateSigningRequestStatusApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCertificatesV1CertificateSigningRequestStatusApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCertificatesV1CertificateSigningRequestStatusCreated as json.
+func (s *PatchCertificatesV1CertificateSigningRequestStatusCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPICertificatesV1CertificateSigningRequest)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCertificatesV1CertificateSigningRequestStatusCreated from json.
+func (s *PatchCertificatesV1CertificateSigningRequestStatusCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCertificatesV1CertificateSigningRequestStatusCreated to nil")
+	}
+	var unwrapped IoK8sAPICertificatesV1CertificateSigningRequest
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCertificatesV1CertificateSigningRequestStatusCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCertificatesV1CertificateSigningRequestStatusCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCertificatesV1CertificateSigningRequestStatusCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCertificatesV1CertificateSigningRequestStatusOK as json.
+func (s *PatchCertificatesV1CertificateSigningRequestStatusOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPICertificatesV1CertificateSigningRequest)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCertificatesV1CertificateSigningRequestStatusOK from json.
+func (s *PatchCertificatesV1CertificateSigningRequestStatusOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCertificatesV1CertificateSigningRequestStatusOK to nil")
+	}
+	var unwrapped IoK8sAPICertificatesV1CertificateSigningRequest
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCertificatesV1CertificateSigningRequestStatusOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCertificatesV1CertificateSigningRequestStatusOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCertificatesV1CertificateSigningRequestStatusOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoordinationV1NamespacedLeaseApplicationJSONPatchJSON as json.
+func (s *PatchCoordinationV1NamespacedLeaseApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoordinationV1NamespacedLeaseApplicationJSONPatchJSON from json.
+func (s *PatchCoordinationV1NamespacedLeaseApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoordinationV1NamespacedLeaseApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoordinationV1NamespacedLeaseApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoordinationV1NamespacedLeaseApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoordinationV1NamespacedLeaseApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoordinationV1NamespacedLeaseApplicationMergePatchJSON as json.
+func (s *PatchCoordinationV1NamespacedLeaseApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoordinationV1NamespacedLeaseApplicationMergePatchJSON from json.
+func (s *PatchCoordinationV1NamespacedLeaseApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoordinationV1NamespacedLeaseApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoordinationV1NamespacedLeaseApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoordinationV1NamespacedLeaseApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoordinationV1NamespacedLeaseApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoordinationV1NamespacedLeaseApplicationStrategicMergePatchJSON as json.
+func (s *PatchCoordinationV1NamespacedLeaseApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoordinationV1NamespacedLeaseApplicationStrategicMergePatchJSON from json.
+func (s *PatchCoordinationV1NamespacedLeaseApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoordinationV1NamespacedLeaseApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoordinationV1NamespacedLeaseApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoordinationV1NamespacedLeaseApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoordinationV1NamespacedLeaseApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoordinationV1NamespacedLeaseCreated as json.
+func (s *PatchCoordinationV1NamespacedLeaseCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPICoordinationV1Lease)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoordinationV1NamespacedLeaseCreated from json.
+func (s *PatchCoordinationV1NamespacedLeaseCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoordinationV1NamespacedLeaseCreated to nil")
+	}
+	var unwrapped IoK8sAPICoordinationV1Lease
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoordinationV1NamespacedLeaseCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoordinationV1NamespacedLeaseCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoordinationV1NamespacedLeaseCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoordinationV1NamespacedLeaseOK as json.
+func (s *PatchCoordinationV1NamespacedLeaseOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPICoordinationV1Lease)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoordinationV1NamespacedLeaseOK from json.
+func (s *PatchCoordinationV1NamespacedLeaseOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoordinationV1NamespacedLeaseOK to nil")
+	}
+	var unwrapped IoK8sAPICoordinationV1Lease
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoordinationV1NamespacedLeaseOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoordinationV1NamespacedLeaseOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoordinationV1NamespacedLeaseOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespaceApplicationJSONPatchJSON as json.
+func (s *PatchCoreV1NamespaceApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespaceApplicationJSONPatchJSON from json.
+func (s *PatchCoreV1NamespaceApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespaceApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespaceApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespaceApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespaceApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespaceApplicationMergePatchJSON as json.
+func (s *PatchCoreV1NamespaceApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespaceApplicationMergePatchJSON from json.
+func (s *PatchCoreV1NamespaceApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespaceApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespaceApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespaceApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespaceApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespaceApplicationStrategicMergePatchJSON as json.
+func (s *PatchCoreV1NamespaceApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespaceApplicationStrategicMergePatchJSON from json.
+func (s *PatchCoreV1NamespaceApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespaceApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespaceApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespaceApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespaceApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespaceCreated as json.
+func (s *PatchCoreV1NamespaceCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPICoreV1Namespace)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespaceCreated from json.
+func (s *PatchCoreV1NamespaceCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespaceCreated to nil")
+	}
+	var unwrapped IoK8sAPICoreV1Namespace
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespaceCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespaceCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespaceCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespaceOK as json.
+func (s *PatchCoreV1NamespaceOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPICoreV1Namespace)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespaceOK from json.
+func (s *PatchCoreV1NamespaceOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespaceOK to nil")
+	}
+	var unwrapped IoK8sAPICoreV1Namespace
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespaceOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespaceOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespaceOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespaceStatusApplicationJSONPatchJSON as json.
+func (s *PatchCoreV1NamespaceStatusApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespaceStatusApplicationJSONPatchJSON from json.
+func (s *PatchCoreV1NamespaceStatusApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespaceStatusApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespaceStatusApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespaceStatusApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespaceStatusApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespaceStatusApplicationMergePatchJSON as json.
+func (s *PatchCoreV1NamespaceStatusApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespaceStatusApplicationMergePatchJSON from json.
+func (s *PatchCoreV1NamespaceStatusApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespaceStatusApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespaceStatusApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespaceStatusApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespaceStatusApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespaceStatusApplicationStrategicMergePatchJSON as json.
+func (s *PatchCoreV1NamespaceStatusApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespaceStatusApplicationStrategicMergePatchJSON from json.
+func (s *PatchCoreV1NamespaceStatusApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespaceStatusApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespaceStatusApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespaceStatusApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespaceStatusApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespaceStatusCreated as json.
+func (s *PatchCoreV1NamespaceStatusCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPICoreV1Namespace)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespaceStatusCreated from json.
+func (s *PatchCoreV1NamespaceStatusCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespaceStatusCreated to nil")
+	}
+	var unwrapped IoK8sAPICoreV1Namespace
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespaceStatusCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespaceStatusCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespaceStatusCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespaceStatusOK as json.
+func (s *PatchCoreV1NamespaceStatusOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPICoreV1Namespace)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespaceStatusOK from json.
+func (s *PatchCoreV1NamespaceStatusOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespaceStatusOK to nil")
+	}
+	var unwrapped IoK8sAPICoreV1Namespace
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespaceStatusOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespaceStatusOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespaceStatusOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedConfigMapApplicationJSON as json.
+func (s *PatchCoreV1NamespacedConfigMapApplicationJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedConfigMapApplicationJSON from json.
+func (s *PatchCoreV1NamespacedConfigMapApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedConfigMapApplicationJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedConfigMapApplicationJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedConfigMapApplicationJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedConfigMapApplicationJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedConfigMapApplicationMergePatchJSON as json.
+func (s *PatchCoreV1NamespacedConfigMapApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedConfigMapApplicationMergePatchJSON from json.
+func (s *PatchCoreV1NamespacedConfigMapApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedConfigMapApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedConfigMapApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedConfigMapApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedConfigMapApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedConfigMapApplicationStrategicMergePatchJSON as json.
+func (s *PatchCoreV1NamespacedConfigMapApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedConfigMapApplicationStrategicMergePatchJSON from json.
+func (s *PatchCoreV1NamespacedConfigMapApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedConfigMapApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedConfigMapApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedConfigMapApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedConfigMapApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes PatchCoreV1NamespacedConfigMapCreated as json.
 func (s *PatchCoreV1NamespacedConfigMapCreated) Encode(e *jx.Encoder) {
 	unwrapped := (*IoK8sAPICoreV1ConfigMap)(s)
@@ -86148,6 +93142,11406 @@ func (s *PatchCoreV1NamespacedConfigMapOK) MarshalJSON() ([]byte, error) {
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
 func (s *PatchCoreV1NamespacedConfigMapOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedEndpointsApplicationJSONPatchJSON as json.
+func (s *PatchCoreV1NamespacedEndpointsApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedEndpointsApplicationJSONPatchJSON from json.
+func (s *PatchCoreV1NamespacedEndpointsApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedEndpointsApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedEndpointsApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedEndpointsApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedEndpointsApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedEndpointsApplicationMergePatchJSON as json.
+func (s *PatchCoreV1NamespacedEndpointsApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedEndpointsApplicationMergePatchJSON from json.
+func (s *PatchCoreV1NamespacedEndpointsApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedEndpointsApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedEndpointsApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedEndpointsApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedEndpointsApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedEndpointsApplicationStrategicMergePatchJSON as json.
+func (s *PatchCoreV1NamespacedEndpointsApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedEndpointsApplicationStrategicMergePatchJSON from json.
+func (s *PatchCoreV1NamespacedEndpointsApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedEndpointsApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedEndpointsApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedEndpointsApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedEndpointsApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedEndpointsCreated as json.
+func (s *PatchCoreV1NamespacedEndpointsCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPICoreV1Endpoints)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedEndpointsCreated from json.
+func (s *PatchCoreV1NamespacedEndpointsCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedEndpointsCreated to nil")
+	}
+	var unwrapped IoK8sAPICoreV1Endpoints
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedEndpointsCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedEndpointsCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedEndpointsCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedEndpointsOK as json.
+func (s *PatchCoreV1NamespacedEndpointsOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPICoreV1Endpoints)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedEndpointsOK from json.
+func (s *PatchCoreV1NamespacedEndpointsOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedEndpointsOK to nil")
+	}
+	var unwrapped IoK8sAPICoreV1Endpoints
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedEndpointsOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedEndpointsOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedEndpointsOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedEventApplicationJSONPatchJSON as json.
+func (s *PatchCoreV1NamespacedEventApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedEventApplicationJSONPatchJSON from json.
+func (s *PatchCoreV1NamespacedEventApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedEventApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedEventApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedEventApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedEventApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedEventApplicationMergePatchJSON as json.
+func (s *PatchCoreV1NamespacedEventApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedEventApplicationMergePatchJSON from json.
+func (s *PatchCoreV1NamespacedEventApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedEventApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedEventApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedEventApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedEventApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedEventApplicationStrategicMergePatchJSON as json.
+func (s *PatchCoreV1NamespacedEventApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedEventApplicationStrategicMergePatchJSON from json.
+func (s *PatchCoreV1NamespacedEventApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedEventApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedEventApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedEventApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedEventApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedEventCreated as json.
+func (s *PatchCoreV1NamespacedEventCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPICoreV1Event)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedEventCreated from json.
+func (s *PatchCoreV1NamespacedEventCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedEventCreated to nil")
+	}
+	var unwrapped IoK8sAPICoreV1Event
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedEventCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedEventCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedEventCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedEventOK as json.
+func (s *PatchCoreV1NamespacedEventOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPICoreV1Event)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedEventOK from json.
+func (s *PatchCoreV1NamespacedEventOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedEventOK to nil")
+	}
+	var unwrapped IoK8sAPICoreV1Event
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedEventOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedEventOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedEventOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedLimitRangeApplicationJSONPatchJSON as json.
+func (s *PatchCoreV1NamespacedLimitRangeApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedLimitRangeApplicationJSONPatchJSON from json.
+func (s *PatchCoreV1NamespacedLimitRangeApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedLimitRangeApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedLimitRangeApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedLimitRangeApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedLimitRangeApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedLimitRangeApplicationMergePatchJSON as json.
+func (s *PatchCoreV1NamespacedLimitRangeApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedLimitRangeApplicationMergePatchJSON from json.
+func (s *PatchCoreV1NamespacedLimitRangeApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedLimitRangeApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedLimitRangeApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedLimitRangeApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedLimitRangeApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedLimitRangeApplicationStrategicMergePatchJSON as json.
+func (s *PatchCoreV1NamespacedLimitRangeApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedLimitRangeApplicationStrategicMergePatchJSON from json.
+func (s *PatchCoreV1NamespacedLimitRangeApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedLimitRangeApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedLimitRangeApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedLimitRangeApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedLimitRangeApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedLimitRangeCreated as json.
+func (s *PatchCoreV1NamespacedLimitRangeCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPICoreV1LimitRange)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedLimitRangeCreated from json.
+func (s *PatchCoreV1NamespacedLimitRangeCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedLimitRangeCreated to nil")
+	}
+	var unwrapped IoK8sAPICoreV1LimitRange
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedLimitRangeCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedLimitRangeCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedLimitRangeCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedLimitRangeOK as json.
+func (s *PatchCoreV1NamespacedLimitRangeOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPICoreV1LimitRange)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedLimitRangeOK from json.
+func (s *PatchCoreV1NamespacedLimitRangeOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedLimitRangeOK to nil")
+	}
+	var unwrapped IoK8sAPICoreV1LimitRange
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedLimitRangeOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedLimitRangeOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedLimitRangeOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedPersistentVolumeClaimApplicationJSONPatchJSON as json.
+func (s *PatchCoreV1NamespacedPersistentVolumeClaimApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedPersistentVolumeClaimApplicationJSONPatchJSON from json.
+func (s *PatchCoreV1NamespacedPersistentVolumeClaimApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedPersistentVolumeClaimApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedPersistentVolumeClaimApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedPersistentVolumeClaimApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedPersistentVolumeClaimApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedPersistentVolumeClaimApplicationMergePatchJSON as json.
+func (s *PatchCoreV1NamespacedPersistentVolumeClaimApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedPersistentVolumeClaimApplicationMergePatchJSON from json.
+func (s *PatchCoreV1NamespacedPersistentVolumeClaimApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedPersistentVolumeClaimApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedPersistentVolumeClaimApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedPersistentVolumeClaimApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedPersistentVolumeClaimApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedPersistentVolumeClaimApplicationStrategicMergePatchJSON as json.
+func (s *PatchCoreV1NamespacedPersistentVolumeClaimApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedPersistentVolumeClaimApplicationStrategicMergePatchJSON from json.
+func (s *PatchCoreV1NamespacedPersistentVolumeClaimApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedPersistentVolumeClaimApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedPersistentVolumeClaimApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedPersistentVolumeClaimApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedPersistentVolumeClaimApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedPersistentVolumeClaimCreated as json.
+func (s *PatchCoreV1NamespacedPersistentVolumeClaimCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPICoreV1PersistentVolumeClaim)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedPersistentVolumeClaimCreated from json.
+func (s *PatchCoreV1NamespacedPersistentVolumeClaimCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedPersistentVolumeClaimCreated to nil")
+	}
+	var unwrapped IoK8sAPICoreV1PersistentVolumeClaim
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedPersistentVolumeClaimCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedPersistentVolumeClaimCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedPersistentVolumeClaimCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedPersistentVolumeClaimOK as json.
+func (s *PatchCoreV1NamespacedPersistentVolumeClaimOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPICoreV1PersistentVolumeClaim)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedPersistentVolumeClaimOK from json.
+func (s *PatchCoreV1NamespacedPersistentVolumeClaimOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedPersistentVolumeClaimOK to nil")
+	}
+	var unwrapped IoK8sAPICoreV1PersistentVolumeClaim
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedPersistentVolumeClaimOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedPersistentVolumeClaimOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedPersistentVolumeClaimOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedPersistentVolumeClaimStatusApplicationJSONPatchJSON as json.
+func (s *PatchCoreV1NamespacedPersistentVolumeClaimStatusApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedPersistentVolumeClaimStatusApplicationJSONPatchJSON from json.
+func (s *PatchCoreV1NamespacedPersistentVolumeClaimStatusApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedPersistentVolumeClaimStatusApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedPersistentVolumeClaimStatusApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedPersistentVolumeClaimStatusApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedPersistentVolumeClaimStatusApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedPersistentVolumeClaimStatusApplicationMergePatchJSON as json.
+func (s *PatchCoreV1NamespacedPersistentVolumeClaimStatusApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedPersistentVolumeClaimStatusApplicationMergePatchJSON from json.
+func (s *PatchCoreV1NamespacedPersistentVolumeClaimStatusApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedPersistentVolumeClaimStatusApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedPersistentVolumeClaimStatusApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedPersistentVolumeClaimStatusApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedPersistentVolumeClaimStatusApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedPersistentVolumeClaimStatusApplicationStrategicMergePatchJSON as json.
+func (s *PatchCoreV1NamespacedPersistentVolumeClaimStatusApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedPersistentVolumeClaimStatusApplicationStrategicMergePatchJSON from json.
+func (s *PatchCoreV1NamespacedPersistentVolumeClaimStatusApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedPersistentVolumeClaimStatusApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedPersistentVolumeClaimStatusApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedPersistentVolumeClaimStatusApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedPersistentVolumeClaimStatusApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedPersistentVolumeClaimStatusCreated as json.
+func (s *PatchCoreV1NamespacedPersistentVolumeClaimStatusCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPICoreV1PersistentVolumeClaim)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedPersistentVolumeClaimStatusCreated from json.
+func (s *PatchCoreV1NamespacedPersistentVolumeClaimStatusCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedPersistentVolumeClaimStatusCreated to nil")
+	}
+	var unwrapped IoK8sAPICoreV1PersistentVolumeClaim
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedPersistentVolumeClaimStatusCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedPersistentVolumeClaimStatusCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedPersistentVolumeClaimStatusCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedPersistentVolumeClaimStatusOK as json.
+func (s *PatchCoreV1NamespacedPersistentVolumeClaimStatusOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPICoreV1PersistentVolumeClaim)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedPersistentVolumeClaimStatusOK from json.
+func (s *PatchCoreV1NamespacedPersistentVolumeClaimStatusOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedPersistentVolumeClaimStatusOK to nil")
+	}
+	var unwrapped IoK8sAPICoreV1PersistentVolumeClaim
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedPersistentVolumeClaimStatusOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedPersistentVolumeClaimStatusOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedPersistentVolumeClaimStatusOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedPodApplicationJSONPatchJSON as json.
+func (s *PatchCoreV1NamespacedPodApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedPodApplicationJSONPatchJSON from json.
+func (s *PatchCoreV1NamespacedPodApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedPodApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedPodApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedPodApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedPodApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedPodApplicationMergePatchJSON as json.
+func (s *PatchCoreV1NamespacedPodApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedPodApplicationMergePatchJSON from json.
+func (s *PatchCoreV1NamespacedPodApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedPodApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedPodApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedPodApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedPodApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedPodApplicationStrategicMergePatchJSON as json.
+func (s *PatchCoreV1NamespacedPodApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedPodApplicationStrategicMergePatchJSON from json.
+func (s *PatchCoreV1NamespacedPodApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedPodApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedPodApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedPodApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedPodApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedPodCreated as json.
+func (s *PatchCoreV1NamespacedPodCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPICoreV1Pod)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedPodCreated from json.
+func (s *PatchCoreV1NamespacedPodCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedPodCreated to nil")
+	}
+	var unwrapped IoK8sAPICoreV1Pod
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedPodCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedPodCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedPodCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedPodEphemeralcontainersApplicationJSONPatchJSON as json.
+func (s *PatchCoreV1NamespacedPodEphemeralcontainersApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedPodEphemeralcontainersApplicationJSONPatchJSON from json.
+func (s *PatchCoreV1NamespacedPodEphemeralcontainersApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedPodEphemeralcontainersApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedPodEphemeralcontainersApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedPodEphemeralcontainersApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedPodEphemeralcontainersApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedPodEphemeralcontainersApplicationMergePatchJSON as json.
+func (s *PatchCoreV1NamespacedPodEphemeralcontainersApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedPodEphemeralcontainersApplicationMergePatchJSON from json.
+func (s *PatchCoreV1NamespacedPodEphemeralcontainersApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedPodEphemeralcontainersApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedPodEphemeralcontainersApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedPodEphemeralcontainersApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedPodEphemeralcontainersApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedPodEphemeralcontainersApplicationStrategicMergePatchJSON as json.
+func (s *PatchCoreV1NamespacedPodEphemeralcontainersApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedPodEphemeralcontainersApplicationStrategicMergePatchJSON from json.
+func (s *PatchCoreV1NamespacedPodEphemeralcontainersApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedPodEphemeralcontainersApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedPodEphemeralcontainersApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedPodEphemeralcontainersApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedPodEphemeralcontainersApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedPodEphemeralcontainersCreated as json.
+func (s *PatchCoreV1NamespacedPodEphemeralcontainersCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPICoreV1Pod)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedPodEphemeralcontainersCreated from json.
+func (s *PatchCoreV1NamespacedPodEphemeralcontainersCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedPodEphemeralcontainersCreated to nil")
+	}
+	var unwrapped IoK8sAPICoreV1Pod
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedPodEphemeralcontainersCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedPodEphemeralcontainersCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedPodEphemeralcontainersCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedPodEphemeralcontainersOK as json.
+func (s *PatchCoreV1NamespacedPodEphemeralcontainersOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPICoreV1Pod)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedPodEphemeralcontainersOK from json.
+func (s *PatchCoreV1NamespacedPodEphemeralcontainersOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedPodEphemeralcontainersOK to nil")
+	}
+	var unwrapped IoK8sAPICoreV1Pod
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedPodEphemeralcontainersOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedPodEphemeralcontainersOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedPodEphemeralcontainersOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedPodOK as json.
+func (s *PatchCoreV1NamespacedPodOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPICoreV1Pod)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedPodOK from json.
+func (s *PatchCoreV1NamespacedPodOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedPodOK to nil")
+	}
+	var unwrapped IoK8sAPICoreV1Pod
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedPodOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedPodOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedPodOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedPodStatusApplicationJSONPatchJSON as json.
+func (s *PatchCoreV1NamespacedPodStatusApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedPodStatusApplicationJSONPatchJSON from json.
+func (s *PatchCoreV1NamespacedPodStatusApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedPodStatusApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedPodStatusApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedPodStatusApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedPodStatusApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedPodStatusApplicationMergePatchJSON as json.
+func (s *PatchCoreV1NamespacedPodStatusApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedPodStatusApplicationMergePatchJSON from json.
+func (s *PatchCoreV1NamespacedPodStatusApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedPodStatusApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedPodStatusApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedPodStatusApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedPodStatusApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedPodStatusApplicationStrategicMergePatchJSON as json.
+func (s *PatchCoreV1NamespacedPodStatusApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedPodStatusApplicationStrategicMergePatchJSON from json.
+func (s *PatchCoreV1NamespacedPodStatusApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedPodStatusApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedPodStatusApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedPodStatusApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedPodStatusApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedPodStatusCreated as json.
+func (s *PatchCoreV1NamespacedPodStatusCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPICoreV1Pod)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedPodStatusCreated from json.
+func (s *PatchCoreV1NamespacedPodStatusCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedPodStatusCreated to nil")
+	}
+	var unwrapped IoK8sAPICoreV1Pod
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedPodStatusCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedPodStatusCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedPodStatusCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedPodStatusOK as json.
+func (s *PatchCoreV1NamespacedPodStatusOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPICoreV1Pod)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedPodStatusOK from json.
+func (s *PatchCoreV1NamespacedPodStatusOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedPodStatusOK to nil")
+	}
+	var unwrapped IoK8sAPICoreV1Pod
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedPodStatusOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedPodStatusOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedPodStatusOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedPodTemplateApplicationJSONPatchJSON as json.
+func (s *PatchCoreV1NamespacedPodTemplateApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedPodTemplateApplicationJSONPatchJSON from json.
+func (s *PatchCoreV1NamespacedPodTemplateApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedPodTemplateApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedPodTemplateApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedPodTemplateApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedPodTemplateApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedPodTemplateApplicationMergePatchJSON as json.
+func (s *PatchCoreV1NamespacedPodTemplateApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedPodTemplateApplicationMergePatchJSON from json.
+func (s *PatchCoreV1NamespacedPodTemplateApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedPodTemplateApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedPodTemplateApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedPodTemplateApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedPodTemplateApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedPodTemplateApplicationStrategicMergePatchJSON as json.
+func (s *PatchCoreV1NamespacedPodTemplateApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedPodTemplateApplicationStrategicMergePatchJSON from json.
+func (s *PatchCoreV1NamespacedPodTemplateApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedPodTemplateApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedPodTemplateApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedPodTemplateApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedPodTemplateApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedPodTemplateCreated as json.
+func (s *PatchCoreV1NamespacedPodTemplateCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPICoreV1PodTemplate)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedPodTemplateCreated from json.
+func (s *PatchCoreV1NamespacedPodTemplateCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedPodTemplateCreated to nil")
+	}
+	var unwrapped IoK8sAPICoreV1PodTemplate
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedPodTemplateCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedPodTemplateCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedPodTemplateCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedPodTemplateOK as json.
+func (s *PatchCoreV1NamespacedPodTemplateOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPICoreV1PodTemplate)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedPodTemplateOK from json.
+func (s *PatchCoreV1NamespacedPodTemplateOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedPodTemplateOK to nil")
+	}
+	var unwrapped IoK8sAPICoreV1PodTemplate
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedPodTemplateOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedPodTemplateOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedPodTemplateOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedReplicationControllerApplicationJSONPatchJSON as json.
+func (s *PatchCoreV1NamespacedReplicationControllerApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedReplicationControllerApplicationJSONPatchJSON from json.
+func (s *PatchCoreV1NamespacedReplicationControllerApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedReplicationControllerApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedReplicationControllerApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedReplicationControllerApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedReplicationControllerApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedReplicationControllerApplicationMergePatchJSON as json.
+func (s *PatchCoreV1NamespacedReplicationControllerApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedReplicationControllerApplicationMergePatchJSON from json.
+func (s *PatchCoreV1NamespacedReplicationControllerApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedReplicationControllerApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedReplicationControllerApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedReplicationControllerApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedReplicationControllerApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedReplicationControllerApplicationStrategicMergePatchJSON as json.
+func (s *PatchCoreV1NamespacedReplicationControllerApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedReplicationControllerApplicationStrategicMergePatchJSON from json.
+func (s *PatchCoreV1NamespacedReplicationControllerApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedReplicationControllerApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedReplicationControllerApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedReplicationControllerApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedReplicationControllerApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedReplicationControllerCreated as json.
+func (s *PatchCoreV1NamespacedReplicationControllerCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPICoreV1ReplicationController)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedReplicationControllerCreated from json.
+func (s *PatchCoreV1NamespacedReplicationControllerCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedReplicationControllerCreated to nil")
+	}
+	var unwrapped IoK8sAPICoreV1ReplicationController
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedReplicationControllerCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedReplicationControllerCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedReplicationControllerCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedReplicationControllerOK as json.
+func (s *PatchCoreV1NamespacedReplicationControllerOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPICoreV1ReplicationController)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedReplicationControllerOK from json.
+func (s *PatchCoreV1NamespacedReplicationControllerOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedReplicationControllerOK to nil")
+	}
+	var unwrapped IoK8sAPICoreV1ReplicationController
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedReplicationControllerOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedReplicationControllerOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedReplicationControllerOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedReplicationControllerScaleApplicationJSONPatchJSON as json.
+func (s *PatchCoreV1NamespacedReplicationControllerScaleApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedReplicationControllerScaleApplicationJSONPatchJSON from json.
+func (s *PatchCoreV1NamespacedReplicationControllerScaleApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedReplicationControllerScaleApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedReplicationControllerScaleApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedReplicationControllerScaleApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedReplicationControllerScaleApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedReplicationControllerScaleApplicationMergePatchJSON as json.
+func (s *PatchCoreV1NamespacedReplicationControllerScaleApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedReplicationControllerScaleApplicationMergePatchJSON from json.
+func (s *PatchCoreV1NamespacedReplicationControllerScaleApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedReplicationControllerScaleApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedReplicationControllerScaleApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedReplicationControllerScaleApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedReplicationControllerScaleApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedReplicationControllerScaleApplicationStrategicMergePatchJSON as json.
+func (s *PatchCoreV1NamespacedReplicationControllerScaleApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedReplicationControllerScaleApplicationStrategicMergePatchJSON from json.
+func (s *PatchCoreV1NamespacedReplicationControllerScaleApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedReplicationControllerScaleApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedReplicationControllerScaleApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedReplicationControllerScaleApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedReplicationControllerScaleApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedReplicationControllerScaleCreated as json.
+func (s *PatchCoreV1NamespacedReplicationControllerScaleCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIAutoscalingV1Scale)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedReplicationControllerScaleCreated from json.
+func (s *PatchCoreV1NamespacedReplicationControllerScaleCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedReplicationControllerScaleCreated to nil")
+	}
+	var unwrapped IoK8sAPIAutoscalingV1Scale
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedReplicationControllerScaleCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedReplicationControllerScaleCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedReplicationControllerScaleCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedReplicationControllerScaleOK as json.
+func (s *PatchCoreV1NamespacedReplicationControllerScaleOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIAutoscalingV1Scale)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedReplicationControllerScaleOK from json.
+func (s *PatchCoreV1NamespacedReplicationControllerScaleOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedReplicationControllerScaleOK to nil")
+	}
+	var unwrapped IoK8sAPIAutoscalingV1Scale
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedReplicationControllerScaleOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedReplicationControllerScaleOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedReplicationControllerScaleOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedReplicationControllerStatusApplicationJSONPatchJSON as json.
+func (s *PatchCoreV1NamespacedReplicationControllerStatusApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedReplicationControllerStatusApplicationJSONPatchJSON from json.
+func (s *PatchCoreV1NamespacedReplicationControllerStatusApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedReplicationControllerStatusApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedReplicationControllerStatusApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedReplicationControllerStatusApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedReplicationControllerStatusApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedReplicationControllerStatusApplicationMergePatchJSON as json.
+func (s *PatchCoreV1NamespacedReplicationControllerStatusApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedReplicationControllerStatusApplicationMergePatchJSON from json.
+func (s *PatchCoreV1NamespacedReplicationControllerStatusApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedReplicationControllerStatusApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedReplicationControllerStatusApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedReplicationControllerStatusApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedReplicationControllerStatusApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedReplicationControllerStatusApplicationStrategicMergePatchJSON as json.
+func (s *PatchCoreV1NamespacedReplicationControllerStatusApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedReplicationControllerStatusApplicationStrategicMergePatchJSON from json.
+func (s *PatchCoreV1NamespacedReplicationControllerStatusApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedReplicationControllerStatusApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedReplicationControllerStatusApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedReplicationControllerStatusApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedReplicationControllerStatusApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedReplicationControllerStatusCreated as json.
+func (s *PatchCoreV1NamespacedReplicationControllerStatusCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPICoreV1ReplicationController)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedReplicationControllerStatusCreated from json.
+func (s *PatchCoreV1NamespacedReplicationControllerStatusCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedReplicationControllerStatusCreated to nil")
+	}
+	var unwrapped IoK8sAPICoreV1ReplicationController
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedReplicationControllerStatusCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedReplicationControllerStatusCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedReplicationControllerStatusCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedReplicationControllerStatusOK as json.
+func (s *PatchCoreV1NamespacedReplicationControllerStatusOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPICoreV1ReplicationController)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedReplicationControllerStatusOK from json.
+func (s *PatchCoreV1NamespacedReplicationControllerStatusOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedReplicationControllerStatusOK to nil")
+	}
+	var unwrapped IoK8sAPICoreV1ReplicationController
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedReplicationControllerStatusOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedReplicationControllerStatusOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedReplicationControllerStatusOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedResourceQuotaApplicationJSONPatchJSON as json.
+func (s *PatchCoreV1NamespacedResourceQuotaApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedResourceQuotaApplicationJSONPatchJSON from json.
+func (s *PatchCoreV1NamespacedResourceQuotaApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedResourceQuotaApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedResourceQuotaApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedResourceQuotaApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedResourceQuotaApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedResourceQuotaApplicationMergePatchJSON as json.
+func (s *PatchCoreV1NamespacedResourceQuotaApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedResourceQuotaApplicationMergePatchJSON from json.
+func (s *PatchCoreV1NamespacedResourceQuotaApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedResourceQuotaApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedResourceQuotaApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedResourceQuotaApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedResourceQuotaApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedResourceQuotaApplicationStrategicMergePatchJSON as json.
+func (s *PatchCoreV1NamespacedResourceQuotaApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedResourceQuotaApplicationStrategicMergePatchJSON from json.
+func (s *PatchCoreV1NamespacedResourceQuotaApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedResourceQuotaApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedResourceQuotaApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedResourceQuotaApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedResourceQuotaApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedResourceQuotaCreated as json.
+func (s *PatchCoreV1NamespacedResourceQuotaCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPICoreV1ResourceQuota)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedResourceQuotaCreated from json.
+func (s *PatchCoreV1NamespacedResourceQuotaCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedResourceQuotaCreated to nil")
+	}
+	var unwrapped IoK8sAPICoreV1ResourceQuota
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedResourceQuotaCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedResourceQuotaCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedResourceQuotaCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedResourceQuotaOK as json.
+func (s *PatchCoreV1NamespacedResourceQuotaOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPICoreV1ResourceQuota)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedResourceQuotaOK from json.
+func (s *PatchCoreV1NamespacedResourceQuotaOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedResourceQuotaOK to nil")
+	}
+	var unwrapped IoK8sAPICoreV1ResourceQuota
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedResourceQuotaOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedResourceQuotaOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedResourceQuotaOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedResourceQuotaStatusApplicationJSONPatchJSON as json.
+func (s *PatchCoreV1NamespacedResourceQuotaStatusApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedResourceQuotaStatusApplicationJSONPatchJSON from json.
+func (s *PatchCoreV1NamespacedResourceQuotaStatusApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedResourceQuotaStatusApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedResourceQuotaStatusApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedResourceQuotaStatusApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedResourceQuotaStatusApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedResourceQuotaStatusApplicationMergePatchJSON as json.
+func (s *PatchCoreV1NamespacedResourceQuotaStatusApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedResourceQuotaStatusApplicationMergePatchJSON from json.
+func (s *PatchCoreV1NamespacedResourceQuotaStatusApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedResourceQuotaStatusApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedResourceQuotaStatusApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedResourceQuotaStatusApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedResourceQuotaStatusApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedResourceQuotaStatusApplicationStrategicMergePatchJSON as json.
+func (s *PatchCoreV1NamespacedResourceQuotaStatusApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedResourceQuotaStatusApplicationStrategicMergePatchJSON from json.
+func (s *PatchCoreV1NamespacedResourceQuotaStatusApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedResourceQuotaStatusApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedResourceQuotaStatusApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedResourceQuotaStatusApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedResourceQuotaStatusApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedResourceQuotaStatusCreated as json.
+func (s *PatchCoreV1NamespacedResourceQuotaStatusCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPICoreV1ResourceQuota)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedResourceQuotaStatusCreated from json.
+func (s *PatchCoreV1NamespacedResourceQuotaStatusCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedResourceQuotaStatusCreated to nil")
+	}
+	var unwrapped IoK8sAPICoreV1ResourceQuota
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedResourceQuotaStatusCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedResourceQuotaStatusCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedResourceQuotaStatusCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedResourceQuotaStatusOK as json.
+func (s *PatchCoreV1NamespacedResourceQuotaStatusOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPICoreV1ResourceQuota)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedResourceQuotaStatusOK from json.
+func (s *PatchCoreV1NamespacedResourceQuotaStatusOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedResourceQuotaStatusOK to nil")
+	}
+	var unwrapped IoK8sAPICoreV1ResourceQuota
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedResourceQuotaStatusOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedResourceQuotaStatusOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedResourceQuotaStatusOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedSecretApplicationJSONPatchJSON as json.
+func (s *PatchCoreV1NamespacedSecretApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedSecretApplicationJSONPatchJSON from json.
+func (s *PatchCoreV1NamespacedSecretApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedSecretApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedSecretApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedSecretApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedSecretApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedSecretApplicationMergePatchJSON as json.
+func (s *PatchCoreV1NamespacedSecretApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedSecretApplicationMergePatchJSON from json.
+func (s *PatchCoreV1NamespacedSecretApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedSecretApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedSecretApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedSecretApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedSecretApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedSecretApplicationStrategicMergePatchJSON as json.
+func (s *PatchCoreV1NamespacedSecretApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedSecretApplicationStrategicMergePatchJSON from json.
+func (s *PatchCoreV1NamespacedSecretApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedSecretApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedSecretApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedSecretApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedSecretApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedSecretCreated as json.
+func (s *PatchCoreV1NamespacedSecretCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPICoreV1Secret)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedSecretCreated from json.
+func (s *PatchCoreV1NamespacedSecretCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedSecretCreated to nil")
+	}
+	var unwrapped IoK8sAPICoreV1Secret
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedSecretCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedSecretCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedSecretCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedSecretOK as json.
+func (s *PatchCoreV1NamespacedSecretOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPICoreV1Secret)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedSecretOK from json.
+func (s *PatchCoreV1NamespacedSecretOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedSecretOK to nil")
+	}
+	var unwrapped IoK8sAPICoreV1Secret
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedSecretOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedSecretOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedSecretOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedServiceAccountApplicationJSONPatchJSON as json.
+func (s *PatchCoreV1NamespacedServiceAccountApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedServiceAccountApplicationJSONPatchJSON from json.
+func (s *PatchCoreV1NamespacedServiceAccountApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedServiceAccountApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedServiceAccountApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedServiceAccountApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedServiceAccountApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedServiceAccountApplicationMergePatchJSON as json.
+func (s *PatchCoreV1NamespacedServiceAccountApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedServiceAccountApplicationMergePatchJSON from json.
+func (s *PatchCoreV1NamespacedServiceAccountApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedServiceAccountApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedServiceAccountApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedServiceAccountApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedServiceAccountApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedServiceAccountApplicationStrategicMergePatchJSON as json.
+func (s *PatchCoreV1NamespacedServiceAccountApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedServiceAccountApplicationStrategicMergePatchJSON from json.
+func (s *PatchCoreV1NamespacedServiceAccountApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedServiceAccountApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedServiceAccountApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedServiceAccountApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedServiceAccountApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedServiceAccountCreated as json.
+func (s *PatchCoreV1NamespacedServiceAccountCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPICoreV1ServiceAccount)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedServiceAccountCreated from json.
+func (s *PatchCoreV1NamespacedServiceAccountCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedServiceAccountCreated to nil")
+	}
+	var unwrapped IoK8sAPICoreV1ServiceAccount
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedServiceAccountCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedServiceAccountCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedServiceAccountCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedServiceAccountOK as json.
+func (s *PatchCoreV1NamespacedServiceAccountOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPICoreV1ServiceAccount)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedServiceAccountOK from json.
+func (s *PatchCoreV1NamespacedServiceAccountOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedServiceAccountOK to nil")
+	}
+	var unwrapped IoK8sAPICoreV1ServiceAccount
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedServiceAccountOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedServiceAccountOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedServiceAccountOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedServiceApplicationJSONPatchJSON as json.
+func (s *PatchCoreV1NamespacedServiceApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedServiceApplicationJSONPatchJSON from json.
+func (s *PatchCoreV1NamespacedServiceApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedServiceApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedServiceApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedServiceApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedServiceApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedServiceApplicationMergePatchJSON as json.
+func (s *PatchCoreV1NamespacedServiceApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedServiceApplicationMergePatchJSON from json.
+func (s *PatchCoreV1NamespacedServiceApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedServiceApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedServiceApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedServiceApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedServiceApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedServiceApplicationStrategicMergePatchJSON as json.
+func (s *PatchCoreV1NamespacedServiceApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedServiceApplicationStrategicMergePatchJSON from json.
+func (s *PatchCoreV1NamespacedServiceApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedServiceApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedServiceApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedServiceApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedServiceApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedServiceCreated as json.
+func (s *PatchCoreV1NamespacedServiceCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPICoreV1Service)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedServiceCreated from json.
+func (s *PatchCoreV1NamespacedServiceCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedServiceCreated to nil")
+	}
+	var unwrapped IoK8sAPICoreV1Service
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedServiceCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedServiceCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedServiceCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedServiceOK as json.
+func (s *PatchCoreV1NamespacedServiceOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPICoreV1Service)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedServiceOK from json.
+func (s *PatchCoreV1NamespacedServiceOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedServiceOK to nil")
+	}
+	var unwrapped IoK8sAPICoreV1Service
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedServiceOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedServiceOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedServiceOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedServiceStatusApplicationJSONPatchJSON as json.
+func (s *PatchCoreV1NamespacedServiceStatusApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedServiceStatusApplicationJSONPatchJSON from json.
+func (s *PatchCoreV1NamespacedServiceStatusApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedServiceStatusApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedServiceStatusApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedServiceStatusApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedServiceStatusApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedServiceStatusApplicationMergePatchJSON as json.
+func (s *PatchCoreV1NamespacedServiceStatusApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedServiceStatusApplicationMergePatchJSON from json.
+func (s *PatchCoreV1NamespacedServiceStatusApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedServiceStatusApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedServiceStatusApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedServiceStatusApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedServiceStatusApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedServiceStatusApplicationStrategicMergePatchJSON as json.
+func (s *PatchCoreV1NamespacedServiceStatusApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedServiceStatusApplicationStrategicMergePatchJSON from json.
+func (s *PatchCoreV1NamespacedServiceStatusApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedServiceStatusApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedServiceStatusApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedServiceStatusApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedServiceStatusApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedServiceStatusCreated as json.
+func (s *PatchCoreV1NamespacedServiceStatusCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPICoreV1Service)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedServiceStatusCreated from json.
+func (s *PatchCoreV1NamespacedServiceStatusCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedServiceStatusCreated to nil")
+	}
+	var unwrapped IoK8sAPICoreV1Service
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedServiceStatusCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedServiceStatusCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedServiceStatusCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedServiceStatusOK as json.
+func (s *PatchCoreV1NamespacedServiceStatusOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPICoreV1Service)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedServiceStatusOK from json.
+func (s *PatchCoreV1NamespacedServiceStatusOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedServiceStatusOK to nil")
+	}
+	var unwrapped IoK8sAPICoreV1Service
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedServiceStatusOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedServiceStatusOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedServiceStatusOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NodeApplicationJSONPatchJSON as json.
+func (s *PatchCoreV1NodeApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NodeApplicationJSONPatchJSON from json.
+func (s *PatchCoreV1NodeApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NodeApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NodeApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NodeApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NodeApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NodeApplicationMergePatchJSON as json.
+func (s *PatchCoreV1NodeApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NodeApplicationMergePatchJSON from json.
+func (s *PatchCoreV1NodeApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NodeApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NodeApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NodeApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NodeApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NodeApplicationStrategicMergePatchJSON as json.
+func (s *PatchCoreV1NodeApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NodeApplicationStrategicMergePatchJSON from json.
+func (s *PatchCoreV1NodeApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NodeApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NodeApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NodeApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NodeApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NodeCreated as json.
+func (s *PatchCoreV1NodeCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPICoreV1Node)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NodeCreated from json.
+func (s *PatchCoreV1NodeCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NodeCreated to nil")
+	}
+	var unwrapped IoK8sAPICoreV1Node
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NodeCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NodeCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NodeCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NodeOK as json.
+func (s *PatchCoreV1NodeOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPICoreV1Node)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NodeOK from json.
+func (s *PatchCoreV1NodeOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NodeOK to nil")
+	}
+	var unwrapped IoK8sAPICoreV1Node
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NodeOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NodeOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NodeOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NodeStatusApplicationJSONPatchJSON as json.
+func (s *PatchCoreV1NodeStatusApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NodeStatusApplicationJSONPatchJSON from json.
+func (s *PatchCoreV1NodeStatusApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NodeStatusApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NodeStatusApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NodeStatusApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NodeStatusApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NodeStatusApplicationMergePatchJSON as json.
+func (s *PatchCoreV1NodeStatusApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NodeStatusApplicationMergePatchJSON from json.
+func (s *PatchCoreV1NodeStatusApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NodeStatusApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NodeStatusApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NodeStatusApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NodeStatusApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NodeStatusApplicationStrategicMergePatchJSON as json.
+func (s *PatchCoreV1NodeStatusApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NodeStatusApplicationStrategicMergePatchJSON from json.
+func (s *PatchCoreV1NodeStatusApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NodeStatusApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NodeStatusApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NodeStatusApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NodeStatusApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NodeStatusCreated as json.
+func (s *PatchCoreV1NodeStatusCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPICoreV1Node)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NodeStatusCreated from json.
+func (s *PatchCoreV1NodeStatusCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NodeStatusCreated to nil")
+	}
+	var unwrapped IoK8sAPICoreV1Node
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NodeStatusCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NodeStatusCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NodeStatusCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NodeStatusOK as json.
+func (s *PatchCoreV1NodeStatusOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPICoreV1Node)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NodeStatusOK from json.
+func (s *PatchCoreV1NodeStatusOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NodeStatusOK to nil")
+	}
+	var unwrapped IoK8sAPICoreV1Node
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NodeStatusOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NodeStatusOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NodeStatusOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1PersistentVolumeApplicationJSONPatchJSON as json.
+func (s *PatchCoreV1PersistentVolumeApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1PersistentVolumeApplicationJSONPatchJSON from json.
+func (s *PatchCoreV1PersistentVolumeApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1PersistentVolumeApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1PersistentVolumeApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1PersistentVolumeApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1PersistentVolumeApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1PersistentVolumeApplicationMergePatchJSON as json.
+func (s *PatchCoreV1PersistentVolumeApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1PersistentVolumeApplicationMergePatchJSON from json.
+func (s *PatchCoreV1PersistentVolumeApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1PersistentVolumeApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1PersistentVolumeApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1PersistentVolumeApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1PersistentVolumeApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1PersistentVolumeApplicationStrategicMergePatchJSON as json.
+func (s *PatchCoreV1PersistentVolumeApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1PersistentVolumeApplicationStrategicMergePatchJSON from json.
+func (s *PatchCoreV1PersistentVolumeApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1PersistentVolumeApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1PersistentVolumeApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1PersistentVolumeApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1PersistentVolumeApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1PersistentVolumeCreated as json.
+func (s *PatchCoreV1PersistentVolumeCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPICoreV1PersistentVolume)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1PersistentVolumeCreated from json.
+func (s *PatchCoreV1PersistentVolumeCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1PersistentVolumeCreated to nil")
+	}
+	var unwrapped IoK8sAPICoreV1PersistentVolume
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1PersistentVolumeCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1PersistentVolumeCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1PersistentVolumeCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1PersistentVolumeOK as json.
+func (s *PatchCoreV1PersistentVolumeOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPICoreV1PersistentVolume)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1PersistentVolumeOK from json.
+func (s *PatchCoreV1PersistentVolumeOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1PersistentVolumeOK to nil")
+	}
+	var unwrapped IoK8sAPICoreV1PersistentVolume
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1PersistentVolumeOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1PersistentVolumeOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1PersistentVolumeOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1PersistentVolumeStatusApplicationJSONPatchJSON as json.
+func (s *PatchCoreV1PersistentVolumeStatusApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1PersistentVolumeStatusApplicationJSONPatchJSON from json.
+func (s *PatchCoreV1PersistentVolumeStatusApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1PersistentVolumeStatusApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1PersistentVolumeStatusApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1PersistentVolumeStatusApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1PersistentVolumeStatusApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1PersistentVolumeStatusApplicationMergePatchJSON as json.
+func (s *PatchCoreV1PersistentVolumeStatusApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1PersistentVolumeStatusApplicationMergePatchJSON from json.
+func (s *PatchCoreV1PersistentVolumeStatusApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1PersistentVolumeStatusApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1PersistentVolumeStatusApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1PersistentVolumeStatusApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1PersistentVolumeStatusApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1PersistentVolumeStatusApplicationStrategicMergePatchJSON as json.
+func (s *PatchCoreV1PersistentVolumeStatusApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1PersistentVolumeStatusApplicationStrategicMergePatchJSON from json.
+func (s *PatchCoreV1PersistentVolumeStatusApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1PersistentVolumeStatusApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1PersistentVolumeStatusApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1PersistentVolumeStatusApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1PersistentVolumeStatusApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1PersistentVolumeStatusCreated as json.
+func (s *PatchCoreV1PersistentVolumeStatusCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPICoreV1PersistentVolume)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1PersistentVolumeStatusCreated from json.
+func (s *PatchCoreV1PersistentVolumeStatusCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1PersistentVolumeStatusCreated to nil")
+	}
+	var unwrapped IoK8sAPICoreV1PersistentVolume
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1PersistentVolumeStatusCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1PersistentVolumeStatusCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1PersistentVolumeStatusCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1PersistentVolumeStatusOK as json.
+func (s *PatchCoreV1PersistentVolumeStatusOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPICoreV1PersistentVolume)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1PersistentVolumeStatusOK from json.
+func (s *PatchCoreV1PersistentVolumeStatusOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1PersistentVolumeStatusOK to nil")
+	}
+	var unwrapped IoK8sAPICoreV1PersistentVolume
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1PersistentVolumeStatusOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1PersistentVolumeStatusOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1PersistentVolumeStatusOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchDiscoveryV1NamespacedEndpointSliceApplicationJSONPatchJSON as json.
+func (s *PatchDiscoveryV1NamespacedEndpointSliceApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchDiscoveryV1NamespacedEndpointSliceApplicationJSONPatchJSON from json.
+func (s *PatchDiscoveryV1NamespacedEndpointSliceApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchDiscoveryV1NamespacedEndpointSliceApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchDiscoveryV1NamespacedEndpointSliceApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchDiscoveryV1NamespacedEndpointSliceApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchDiscoveryV1NamespacedEndpointSliceApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchDiscoveryV1NamespacedEndpointSliceApplicationMergePatchJSON as json.
+func (s *PatchDiscoveryV1NamespacedEndpointSliceApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchDiscoveryV1NamespacedEndpointSliceApplicationMergePatchJSON from json.
+func (s *PatchDiscoveryV1NamespacedEndpointSliceApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchDiscoveryV1NamespacedEndpointSliceApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchDiscoveryV1NamespacedEndpointSliceApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchDiscoveryV1NamespacedEndpointSliceApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchDiscoveryV1NamespacedEndpointSliceApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchDiscoveryV1NamespacedEndpointSliceApplicationStrategicMergePatchJSON as json.
+func (s *PatchDiscoveryV1NamespacedEndpointSliceApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchDiscoveryV1NamespacedEndpointSliceApplicationStrategicMergePatchJSON from json.
+func (s *PatchDiscoveryV1NamespacedEndpointSliceApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchDiscoveryV1NamespacedEndpointSliceApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchDiscoveryV1NamespacedEndpointSliceApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchDiscoveryV1NamespacedEndpointSliceApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchDiscoveryV1NamespacedEndpointSliceApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchDiscoveryV1NamespacedEndpointSliceCreated as json.
+func (s *PatchDiscoveryV1NamespacedEndpointSliceCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIDiscoveryV1EndpointSlice)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchDiscoveryV1NamespacedEndpointSliceCreated from json.
+func (s *PatchDiscoveryV1NamespacedEndpointSliceCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchDiscoveryV1NamespacedEndpointSliceCreated to nil")
+	}
+	var unwrapped IoK8sAPIDiscoveryV1EndpointSlice
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchDiscoveryV1NamespacedEndpointSliceCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchDiscoveryV1NamespacedEndpointSliceCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchDiscoveryV1NamespacedEndpointSliceCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchDiscoveryV1NamespacedEndpointSliceOK as json.
+func (s *PatchDiscoveryV1NamespacedEndpointSliceOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIDiscoveryV1EndpointSlice)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchDiscoveryV1NamespacedEndpointSliceOK from json.
+func (s *PatchDiscoveryV1NamespacedEndpointSliceOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchDiscoveryV1NamespacedEndpointSliceOK to nil")
+	}
+	var unwrapped IoK8sAPIDiscoveryV1EndpointSlice
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchDiscoveryV1NamespacedEndpointSliceOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchDiscoveryV1NamespacedEndpointSliceOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchDiscoveryV1NamespacedEndpointSliceOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchDiscoveryV1beta1NamespacedEndpointSliceApplicationJSONPatchJSON as json.
+func (s *PatchDiscoveryV1beta1NamespacedEndpointSliceApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchDiscoveryV1beta1NamespacedEndpointSliceApplicationJSONPatchJSON from json.
+func (s *PatchDiscoveryV1beta1NamespacedEndpointSliceApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchDiscoveryV1beta1NamespacedEndpointSliceApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchDiscoveryV1beta1NamespacedEndpointSliceApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchDiscoveryV1beta1NamespacedEndpointSliceApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchDiscoveryV1beta1NamespacedEndpointSliceApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchDiscoveryV1beta1NamespacedEndpointSliceApplicationMergePatchJSON as json.
+func (s *PatchDiscoveryV1beta1NamespacedEndpointSliceApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchDiscoveryV1beta1NamespacedEndpointSliceApplicationMergePatchJSON from json.
+func (s *PatchDiscoveryV1beta1NamespacedEndpointSliceApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchDiscoveryV1beta1NamespacedEndpointSliceApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchDiscoveryV1beta1NamespacedEndpointSliceApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchDiscoveryV1beta1NamespacedEndpointSliceApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchDiscoveryV1beta1NamespacedEndpointSliceApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchDiscoveryV1beta1NamespacedEndpointSliceApplicationStrategicMergePatchJSON as json.
+func (s *PatchDiscoveryV1beta1NamespacedEndpointSliceApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchDiscoveryV1beta1NamespacedEndpointSliceApplicationStrategicMergePatchJSON from json.
+func (s *PatchDiscoveryV1beta1NamespacedEndpointSliceApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchDiscoveryV1beta1NamespacedEndpointSliceApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchDiscoveryV1beta1NamespacedEndpointSliceApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchDiscoveryV1beta1NamespacedEndpointSliceApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchDiscoveryV1beta1NamespacedEndpointSliceApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchDiscoveryV1beta1NamespacedEndpointSliceCreated as json.
+func (s *PatchDiscoveryV1beta1NamespacedEndpointSliceCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIDiscoveryV1beta1EndpointSlice)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchDiscoveryV1beta1NamespacedEndpointSliceCreated from json.
+func (s *PatchDiscoveryV1beta1NamespacedEndpointSliceCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchDiscoveryV1beta1NamespacedEndpointSliceCreated to nil")
+	}
+	var unwrapped IoK8sAPIDiscoveryV1beta1EndpointSlice
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchDiscoveryV1beta1NamespacedEndpointSliceCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchDiscoveryV1beta1NamespacedEndpointSliceCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchDiscoveryV1beta1NamespacedEndpointSliceCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchDiscoveryV1beta1NamespacedEndpointSliceOK as json.
+func (s *PatchDiscoveryV1beta1NamespacedEndpointSliceOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIDiscoveryV1beta1EndpointSlice)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchDiscoveryV1beta1NamespacedEndpointSliceOK from json.
+func (s *PatchDiscoveryV1beta1NamespacedEndpointSliceOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchDiscoveryV1beta1NamespacedEndpointSliceOK to nil")
+	}
+	var unwrapped IoK8sAPIDiscoveryV1beta1EndpointSlice
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchDiscoveryV1beta1NamespacedEndpointSliceOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchDiscoveryV1beta1NamespacedEndpointSliceOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchDiscoveryV1beta1NamespacedEndpointSliceOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchEventsV1NamespacedEventApplicationJSONPatchJSON as json.
+func (s *PatchEventsV1NamespacedEventApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchEventsV1NamespacedEventApplicationJSONPatchJSON from json.
+func (s *PatchEventsV1NamespacedEventApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchEventsV1NamespacedEventApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchEventsV1NamespacedEventApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchEventsV1NamespacedEventApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchEventsV1NamespacedEventApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchEventsV1NamespacedEventApplicationMergePatchJSON as json.
+func (s *PatchEventsV1NamespacedEventApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchEventsV1NamespacedEventApplicationMergePatchJSON from json.
+func (s *PatchEventsV1NamespacedEventApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchEventsV1NamespacedEventApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchEventsV1NamespacedEventApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchEventsV1NamespacedEventApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchEventsV1NamespacedEventApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchEventsV1NamespacedEventApplicationStrategicMergePatchJSON as json.
+func (s *PatchEventsV1NamespacedEventApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchEventsV1NamespacedEventApplicationStrategicMergePatchJSON from json.
+func (s *PatchEventsV1NamespacedEventApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchEventsV1NamespacedEventApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchEventsV1NamespacedEventApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchEventsV1NamespacedEventApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchEventsV1NamespacedEventApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchEventsV1NamespacedEventCreated as json.
+func (s *PatchEventsV1NamespacedEventCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIEventsV1Event)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchEventsV1NamespacedEventCreated from json.
+func (s *PatchEventsV1NamespacedEventCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchEventsV1NamespacedEventCreated to nil")
+	}
+	var unwrapped IoK8sAPIEventsV1Event
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchEventsV1NamespacedEventCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchEventsV1NamespacedEventCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchEventsV1NamespacedEventCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchEventsV1NamespacedEventOK as json.
+func (s *PatchEventsV1NamespacedEventOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIEventsV1Event)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchEventsV1NamespacedEventOK from json.
+func (s *PatchEventsV1NamespacedEventOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchEventsV1NamespacedEventOK to nil")
+	}
+	var unwrapped IoK8sAPIEventsV1Event
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchEventsV1NamespacedEventOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchEventsV1NamespacedEventOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchEventsV1NamespacedEventOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchEventsV1beta1NamespacedEventApplicationJSONPatchJSON as json.
+func (s *PatchEventsV1beta1NamespacedEventApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchEventsV1beta1NamespacedEventApplicationJSONPatchJSON from json.
+func (s *PatchEventsV1beta1NamespacedEventApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchEventsV1beta1NamespacedEventApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchEventsV1beta1NamespacedEventApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchEventsV1beta1NamespacedEventApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchEventsV1beta1NamespacedEventApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchEventsV1beta1NamespacedEventApplicationMergePatchJSON as json.
+func (s *PatchEventsV1beta1NamespacedEventApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchEventsV1beta1NamespacedEventApplicationMergePatchJSON from json.
+func (s *PatchEventsV1beta1NamespacedEventApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchEventsV1beta1NamespacedEventApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchEventsV1beta1NamespacedEventApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchEventsV1beta1NamespacedEventApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchEventsV1beta1NamespacedEventApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchEventsV1beta1NamespacedEventApplicationStrategicMergePatchJSON as json.
+func (s *PatchEventsV1beta1NamespacedEventApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchEventsV1beta1NamespacedEventApplicationStrategicMergePatchJSON from json.
+func (s *PatchEventsV1beta1NamespacedEventApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchEventsV1beta1NamespacedEventApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchEventsV1beta1NamespacedEventApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchEventsV1beta1NamespacedEventApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchEventsV1beta1NamespacedEventApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchEventsV1beta1NamespacedEventCreated as json.
+func (s *PatchEventsV1beta1NamespacedEventCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIEventsV1beta1Event)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchEventsV1beta1NamespacedEventCreated from json.
+func (s *PatchEventsV1beta1NamespacedEventCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchEventsV1beta1NamespacedEventCreated to nil")
+	}
+	var unwrapped IoK8sAPIEventsV1beta1Event
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchEventsV1beta1NamespacedEventCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchEventsV1beta1NamespacedEventCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchEventsV1beta1NamespacedEventCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchEventsV1beta1NamespacedEventOK as json.
+func (s *PatchEventsV1beta1NamespacedEventOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIEventsV1beta1Event)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchEventsV1beta1NamespacedEventOK from json.
+func (s *PatchEventsV1beta1NamespacedEventOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchEventsV1beta1NamespacedEventOK to nil")
+	}
+	var unwrapped IoK8sAPIEventsV1beta1Event
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchEventsV1beta1NamespacedEventOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchEventsV1beta1NamespacedEventOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchEventsV1beta1NamespacedEventOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONPatchJSON as json.
+func (s *PatchFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONPatchJSON from json.
+func (s *PatchFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchFlowcontrolApiserverV1beta1FlowSchemaApplicationMergePatchJSON as json.
+func (s *PatchFlowcontrolApiserverV1beta1FlowSchemaApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchFlowcontrolApiserverV1beta1FlowSchemaApplicationMergePatchJSON from json.
+func (s *PatchFlowcontrolApiserverV1beta1FlowSchemaApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchFlowcontrolApiserverV1beta1FlowSchemaApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchFlowcontrolApiserverV1beta1FlowSchemaApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchFlowcontrolApiserverV1beta1FlowSchemaApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchFlowcontrolApiserverV1beta1FlowSchemaApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchFlowcontrolApiserverV1beta1FlowSchemaApplicationStrategicMergePatchJSON as json.
+func (s *PatchFlowcontrolApiserverV1beta1FlowSchemaApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchFlowcontrolApiserverV1beta1FlowSchemaApplicationStrategicMergePatchJSON from json.
+func (s *PatchFlowcontrolApiserverV1beta1FlowSchemaApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchFlowcontrolApiserverV1beta1FlowSchemaApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchFlowcontrolApiserverV1beta1FlowSchemaApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchFlowcontrolApiserverV1beta1FlowSchemaApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchFlowcontrolApiserverV1beta1FlowSchemaApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchFlowcontrolApiserverV1beta1FlowSchemaCreated as json.
+func (s *PatchFlowcontrolApiserverV1beta1FlowSchemaCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIFlowcontrolV1beta1FlowSchema)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchFlowcontrolApiserverV1beta1FlowSchemaCreated from json.
+func (s *PatchFlowcontrolApiserverV1beta1FlowSchemaCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchFlowcontrolApiserverV1beta1FlowSchemaCreated to nil")
+	}
+	var unwrapped IoK8sAPIFlowcontrolV1beta1FlowSchema
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchFlowcontrolApiserverV1beta1FlowSchemaCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchFlowcontrolApiserverV1beta1FlowSchemaCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchFlowcontrolApiserverV1beta1FlowSchemaCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchFlowcontrolApiserverV1beta1FlowSchemaOK as json.
+func (s *PatchFlowcontrolApiserverV1beta1FlowSchemaOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIFlowcontrolV1beta1FlowSchema)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchFlowcontrolApiserverV1beta1FlowSchemaOK from json.
+func (s *PatchFlowcontrolApiserverV1beta1FlowSchemaOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchFlowcontrolApiserverV1beta1FlowSchemaOK to nil")
+	}
+	var unwrapped IoK8sAPIFlowcontrolV1beta1FlowSchema
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchFlowcontrolApiserverV1beta1FlowSchemaOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchFlowcontrolApiserverV1beta1FlowSchemaOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchFlowcontrolApiserverV1beta1FlowSchemaOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchFlowcontrolApiserverV1beta1FlowSchemaStatusApplicationJSONPatchJSON as json.
+func (s *PatchFlowcontrolApiserverV1beta1FlowSchemaStatusApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchFlowcontrolApiserverV1beta1FlowSchemaStatusApplicationJSONPatchJSON from json.
+func (s *PatchFlowcontrolApiserverV1beta1FlowSchemaStatusApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchFlowcontrolApiserverV1beta1FlowSchemaStatusApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchFlowcontrolApiserverV1beta1FlowSchemaStatusApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchFlowcontrolApiserverV1beta1FlowSchemaStatusApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchFlowcontrolApiserverV1beta1FlowSchemaStatusApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchFlowcontrolApiserverV1beta1FlowSchemaStatusApplicationMergePatchJSON as json.
+func (s *PatchFlowcontrolApiserverV1beta1FlowSchemaStatusApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchFlowcontrolApiserverV1beta1FlowSchemaStatusApplicationMergePatchJSON from json.
+func (s *PatchFlowcontrolApiserverV1beta1FlowSchemaStatusApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchFlowcontrolApiserverV1beta1FlowSchemaStatusApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchFlowcontrolApiserverV1beta1FlowSchemaStatusApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchFlowcontrolApiserverV1beta1FlowSchemaStatusApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchFlowcontrolApiserverV1beta1FlowSchemaStatusApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchFlowcontrolApiserverV1beta1FlowSchemaStatusApplicationStrategicMergePatchJSON as json.
+func (s *PatchFlowcontrolApiserverV1beta1FlowSchemaStatusApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchFlowcontrolApiserverV1beta1FlowSchemaStatusApplicationStrategicMergePatchJSON from json.
+func (s *PatchFlowcontrolApiserverV1beta1FlowSchemaStatusApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchFlowcontrolApiserverV1beta1FlowSchemaStatusApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchFlowcontrolApiserverV1beta1FlowSchemaStatusApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchFlowcontrolApiserverV1beta1FlowSchemaStatusApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchFlowcontrolApiserverV1beta1FlowSchemaStatusApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchFlowcontrolApiserverV1beta1FlowSchemaStatusCreated as json.
+func (s *PatchFlowcontrolApiserverV1beta1FlowSchemaStatusCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIFlowcontrolV1beta1FlowSchema)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchFlowcontrolApiserverV1beta1FlowSchemaStatusCreated from json.
+func (s *PatchFlowcontrolApiserverV1beta1FlowSchemaStatusCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchFlowcontrolApiserverV1beta1FlowSchemaStatusCreated to nil")
+	}
+	var unwrapped IoK8sAPIFlowcontrolV1beta1FlowSchema
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchFlowcontrolApiserverV1beta1FlowSchemaStatusCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchFlowcontrolApiserverV1beta1FlowSchemaStatusCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchFlowcontrolApiserverV1beta1FlowSchemaStatusCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchFlowcontrolApiserverV1beta1FlowSchemaStatusOK as json.
+func (s *PatchFlowcontrolApiserverV1beta1FlowSchemaStatusOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIFlowcontrolV1beta1FlowSchema)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchFlowcontrolApiserverV1beta1FlowSchemaStatusOK from json.
+func (s *PatchFlowcontrolApiserverV1beta1FlowSchemaStatusOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchFlowcontrolApiserverV1beta1FlowSchemaStatusOK to nil")
+	}
+	var unwrapped IoK8sAPIFlowcontrolV1beta1FlowSchema
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchFlowcontrolApiserverV1beta1FlowSchemaStatusOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchFlowcontrolApiserverV1beta1FlowSchemaStatusOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchFlowcontrolApiserverV1beta1FlowSchemaStatusOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationJSONPatchJSON as json.
+func (s *PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationJSONPatchJSON from json.
+func (s *PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationMergePatchJSON as json.
+func (s *PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationMergePatchJSON from json.
+func (s *PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationStrategicMergePatchJSON as json.
+func (s *PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationStrategicMergePatchJSON from json.
+func (s *PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationCreated as json.
+func (s *PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationCreated from json.
+func (s *PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationCreated to nil")
+	}
+	var unwrapped IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationOK as json.
+func (s *PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationOK from json.
+func (s *PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationOK to nil")
+	}
+	var unwrapped IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusApplicationJSONPatchJSON as json.
+func (s *PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusApplicationJSONPatchJSON from json.
+func (s *PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusApplicationMergePatchJSON as json.
+func (s *PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusApplicationMergePatchJSON from json.
+func (s *PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusApplicationStrategicMergePatchJSON as json.
+func (s *PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusApplicationStrategicMergePatchJSON from json.
+func (s *PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusCreated as json.
+func (s *PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusCreated from json.
+func (s *PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusCreated to nil")
+	}
+	var unwrapped IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusOK as json.
+func (s *PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusOK from json.
+func (s *PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusOK to nil")
+	}
+	var unwrapped IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONPatchJSON as json.
+func (s *PatchFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONPatchJSON from json.
+func (s *PatchFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchFlowcontrolApiserverV1beta2FlowSchemaApplicationMergePatchJSON as json.
+func (s *PatchFlowcontrolApiserverV1beta2FlowSchemaApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchFlowcontrolApiserverV1beta2FlowSchemaApplicationMergePatchJSON from json.
+func (s *PatchFlowcontrolApiserverV1beta2FlowSchemaApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchFlowcontrolApiserverV1beta2FlowSchemaApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchFlowcontrolApiserverV1beta2FlowSchemaApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchFlowcontrolApiserverV1beta2FlowSchemaApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchFlowcontrolApiserverV1beta2FlowSchemaApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchFlowcontrolApiserverV1beta2FlowSchemaApplicationStrategicMergePatchJSON as json.
+func (s *PatchFlowcontrolApiserverV1beta2FlowSchemaApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchFlowcontrolApiserverV1beta2FlowSchemaApplicationStrategicMergePatchJSON from json.
+func (s *PatchFlowcontrolApiserverV1beta2FlowSchemaApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchFlowcontrolApiserverV1beta2FlowSchemaApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchFlowcontrolApiserverV1beta2FlowSchemaApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchFlowcontrolApiserverV1beta2FlowSchemaApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchFlowcontrolApiserverV1beta2FlowSchemaApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchFlowcontrolApiserverV1beta2FlowSchemaCreated as json.
+func (s *PatchFlowcontrolApiserverV1beta2FlowSchemaCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIFlowcontrolV1beta2FlowSchema)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchFlowcontrolApiserverV1beta2FlowSchemaCreated from json.
+func (s *PatchFlowcontrolApiserverV1beta2FlowSchemaCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchFlowcontrolApiserverV1beta2FlowSchemaCreated to nil")
+	}
+	var unwrapped IoK8sAPIFlowcontrolV1beta2FlowSchema
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchFlowcontrolApiserverV1beta2FlowSchemaCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchFlowcontrolApiserverV1beta2FlowSchemaCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchFlowcontrolApiserverV1beta2FlowSchemaCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchFlowcontrolApiserverV1beta2FlowSchemaOK as json.
+func (s *PatchFlowcontrolApiserverV1beta2FlowSchemaOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIFlowcontrolV1beta2FlowSchema)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchFlowcontrolApiserverV1beta2FlowSchemaOK from json.
+func (s *PatchFlowcontrolApiserverV1beta2FlowSchemaOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchFlowcontrolApiserverV1beta2FlowSchemaOK to nil")
+	}
+	var unwrapped IoK8sAPIFlowcontrolV1beta2FlowSchema
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchFlowcontrolApiserverV1beta2FlowSchemaOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchFlowcontrolApiserverV1beta2FlowSchemaOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchFlowcontrolApiserverV1beta2FlowSchemaOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchFlowcontrolApiserverV1beta2FlowSchemaStatusApplicationJSONPatchJSON as json.
+func (s *PatchFlowcontrolApiserverV1beta2FlowSchemaStatusApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchFlowcontrolApiserverV1beta2FlowSchemaStatusApplicationJSONPatchJSON from json.
+func (s *PatchFlowcontrolApiserverV1beta2FlowSchemaStatusApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchFlowcontrolApiserverV1beta2FlowSchemaStatusApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchFlowcontrolApiserverV1beta2FlowSchemaStatusApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchFlowcontrolApiserverV1beta2FlowSchemaStatusApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchFlowcontrolApiserverV1beta2FlowSchemaStatusApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchFlowcontrolApiserverV1beta2FlowSchemaStatusApplicationMergePatchJSON as json.
+func (s *PatchFlowcontrolApiserverV1beta2FlowSchemaStatusApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchFlowcontrolApiserverV1beta2FlowSchemaStatusApplicationMergePatchJSON from json.
+func (s *PatchFlowcontrolApiserverV1beta2FlowSchemaStatusApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchFlowcontrolApiserverV1beta2FlowSchemaStatusApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchFlowcontrolApiserverV1beta2FlowSchemaStatusApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchFlowcontrolApiserverV1beta2FlowSchemaStatusApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchFlowcontrolApiserverV1beta2FlowSchemaStatusApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchFlowcontrolApiserverV1beta2FlowSchemaStatusApplicationStrategicMergePatchJSON as json.
+func (s *PatchFlowcontrolApiserverV1beta2FlowSchemaStatusApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchFlowcontrolApiserverV1beta2FlowSchemaStatusApplicationStrategicMergePatchJSON from json.
+func (s *PatchFlowcontrolApiserverV1beta2FlowSchemaStatusApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchFlowcontrolApiserverV1beta2FlowSchemaStatusApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchFlowcontrolApiserverV1beta2FlowSchemaStatusApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchFlowcontrolApiserverV1beta2FlowSchemaStatusApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchFlowcontrolApiserverV1beta2FlowSchemaStatusApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchFlowcontrolApiserverV1beta2FlowSchemaStatusCreated as json.
+func (s *PatchFlowcontrolApiserverV1beta2FlowSchemaStatusCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIFlowcontrolV1beta2FlowSchema)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchFlowcontrolApiserverV1beta2FlowSchemaStatusCreated from json.
+func (s *PatchFlowcontrolApiserverV1beta2FlowSchemaStatusCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchFlowcontrolApiserverV1beta2FlowSchemaStatusCreated to nil")
+	}
+	var unwrapped IoK8sAPIFlowcontrolV1beta2FlowSchema
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchFlowcontrolApiserverV1beta2FlowSchemaStatusCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchFlowcontrolApiserverV1beta2FlowSchemaStatusCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchFlowcontrolApiserverV1beta2FlowSchemaStatusCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchFlowcontrolApiserverV1beta2FlowSchemaStatusOK as json.
+func (s *PatchFlowcontrolApiserverV1beta2FlowSchemaStatusOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIFlowcontrolV1beta2FlowSchema)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchFlowcontrolApiserverV1beta2FlowSchemaStatusOK from json.
+func (s *PatchFlowcontrolApiserverV1beta2FlowSchemaStatusOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchFlowcontrolApiserverV1beta2FlowSchemaStatusOK to nil")
+	}
+	var unwrapped IoK8sAPIFlowcontrolV1beta2FlowSchema
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchFlowcontrolApiserverV1beta2FlowSchemaStatusOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchFlowcontrolApiserverV1beta2FlowSchemaStatusOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchFlowcontrolApiserverV1beta2FlowSchemaStatusOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationJSONPatchJSON as json.
+func (s *PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationJSONPatchJSON from json.
+func (s *PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationMergePatchJSON as json.
+func (s *PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationMergePatchJSON from json.
+func (s *PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationStrategicMergePatchJSON as json.
+func (s *PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationStrategicMergePatchJSON from json.
+func (s *PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationCreated as json.
+func (s *PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationCreated from json.
+func (s *PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationCreated to nil")
+	}
+	var unwrapped IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationOK as json.
+func (s *PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationOK from json.
+func (s *PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationOK to nil")
+	}
+	var unwrapped IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusApplicationJSONPatchJSON as json.
+func (s *PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusApplicationJSONPatchJSON from json.
+func (s *PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusApplicationMergePatchJSON as json.
+func (s *PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusApplicationMergePatchJSON from json.
+func (s *PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusApplicationStrategicMergePatchJSON as json.
+func (s *PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusApplicationStrategicMergePatchJSON from json.
+func (s *PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusCreated as json.
+func (s *PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusCreated from json.
+func (s *PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusCreated to nil")
+	}
+	var unwrapped IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusOK as json.
+func (s *PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusOK from json.
+func (s *PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusOK to nil")
+	}
+	var unwrapped IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchInternalApiserverV1alpha1StorageVersionApplicationJSONPatchJSON as json.
+func (s *PatchInternalApiserverV1alpha1StorageVersionApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchInternalApiserverV1alpha1StorageVersionApplicationJSONPatchJSON from json.
+func (s *PatchInternalApiserverV1alpha1StorageVersionApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchInternalApiserverV1alpha1StorageVersionApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchInternalApiserverV1alpha1StorageVersionApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchInternalApiserverV1alpha1StorageVersionApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchInternalApiserverV1alpha1StorageVersionApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchInternalApiserverV1alpha1StorageVersionApplicationMergePatchJSON as json.
+func (s *PatchInternalApiserverV1alpha1StorageVersionApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchInternalApiserverV1alpha1StorageVersionApplicationMergePatchJSON from json.
+func (s *PatchInternalApiserverV1alpha1StorageVersionApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchInternalApiserverV1alpha1StorageVersionApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchInternalApiserverV1alpha1StorageVersionApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchInternalApiserverV1alpha1StorageVersionApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchInternalApiserverV1alpha1StorageVersionApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchInternalApiserverV1alpha1StorageVersionApplicationStrategicMergePatchJSON as json.
+func (s *PatchInternalApiserverV1alpha1StorageVersionApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchInternalApiserverV1alpha1StorageVersionApplicationStrategicMergePatchJSON from json.
+func (s *PatchInternalApiserverV1alpha1StorageVersionApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchInternalApiserverV1alpha1StorageVersionApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchInternalApiserverV1alpha1StorageVersionApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchInternalApiserverV1alpha1StorageVersionApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchInternalApiserverV1alpha1StorageVersionApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchInternalApiserverV1alpha1StorageVersionCreated as json.
+func (s *PatchInternalApiserverV1alpha1StorageVersionCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIApiserverinternalV1alpha1StorageVersion)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchInternalApiserverV1alpha1StorageVersionCreated from json.
+func (s *PatchInternalApiserverV1alpha1StorageVersionCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchInternalApiserverV1alpha1StorageVersionCreated to nil")
+	}
+	var unwrapped IoK8sAPIApiserverinternalV1alpha1StorageVersion
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchInternalApiserverV1alpha1StorageVersionCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchInternalApiserverV1alpha1StorageVersionCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchInternalApiserverV1alpha1StorageVersionCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchInternalApiserverV1alpha1StorageVersionOK as json.
+func (s *PatchInternalApiserverV1alpha1StorageVersionOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIApiserverinternalV1alpha1StorageVersion)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchInternalApiserverV1alpha1StorageVersionOK from json.
+func (s *PatchInternalApiserverV1alpha1StorageVersionOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchInternalApiserverV1alpha1StorageVersionOK to nil")
+	}
+	var unwrapped IoK8sAPIApiserverinternalV1alpha1StorageVersion
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchInternalApiserverV1alpha1StorageVersionOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchInternalApiserverV1alpha1StorageVersionOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchInternalApiserverV1alpha1StorageVersionOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchInternalApiserverV1alpha1StorageVersionStatusApplicationJSONPatchJSON as json.
+func (s *PatchInternalApiserverV1alpha1StorageVersionStatusApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchInternalApiserverV1alpha1StorageVersionStatusApplicationJSONPatchJSON from json.
+func (s *PatchInternalApiserverV1alpha1StorageVersionStatusApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchInternalApiserverV1alpha1StorageVersionStatusApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchInternalApiserverV1alpha1StorageVersionStatusApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchInternalApiserverV1alpha1StorageVersionStatusApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchInternalApiserverV1alpha1StorageVersionStatusApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchInternalApiserverV1alpha1StorageVersionStatusApplicationMergePatchJSON as json.
+func (s *PatchInternalApiserverV1alpha1StorageVersionStatusApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchInternalApiserverV1alpha1StorageVersionStatusApplicationMergePatchJSON from json.
+func (s *PatchInternalApiserverV1alpha1StorageVersionStatusApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchInternalApiserverV1alpha1StorageVersionStatusApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchInternalApiserverV1alpha1StorageVersionStatusApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchInternalApiserverV1alpha1StorageVersionStatusApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchInternalApiserverV1alpha1StorageVersionStatusApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchInternalApiserverV1alpha1StorageVersionStatusApplicationStrategicMergePatchJSON as json.
+func (s *PatchInternalApiserverV1alpha1StorageVersionStatusApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchInternalApiserverV1alpha1StorageVersionStatusApplicationStrategicMergePatchJSON from json.
+func (s *PatchInternalApiserverV1alpha1StorageVersionStatusApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchInternalApiserverV1alpha1StorageVersionStatusApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchInternalApiserverV1alpha1StorageVersionStatusApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchInternalApiserverV1alpha1StorageVersionStatusApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchInternalApiserverV1alpha1StorageVersionStatusApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchInternalApiserverV1alpha1StorageVersionStatusCreated as json.
+func (s *PatchInternalApiserverV1alpha1StorageVersionStatusCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIApiserverinternalV1alpha1StorageVersion)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchInternalApiserverV1alpha1StorageVersionStatusCreated from json.
+func (s *PatchInternalApiserverV1alpha1StorageVersionStatusCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchInternalApiserverV1alpha1StorageVersionStatusCreated to nil")
+	}
+	var unwrapped IoK8sAPIApiserverinternalV1alpha1StorageVersion
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchInternalApiserverV1alpha1StorageVersionStatusCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchInternalApiserverV1alpha1StorageVersionStatusCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchInternalApiserverV1alpha1StorageVersionStatusCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchInternalApiserverV1alpha1StorageVersionStatusOK as json.
+func (s *PatchInternalApiserverV1alpha1StorageVersionStatusOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIApiserverinternalV1alpha1StorageVersion)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchInternalApiserverV1alpha1StorageVersionStatusOK from json.
+func (s *PatchInternalApiserverV1alpha1StorageVersionStatusOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchInternalApiserverV1alpha1StorageVersionStatusOK to nil")
+	}
+	var unwrapped IoK8sAPIApiserverinternalV1alpha1StorageVersion
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchInternalApiserverV1alpha1StorageVersionStatusOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchInternalApiserverV1alpha1StorageVersionStatusOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchInternalApiserverV1alpha1StorageVersionStatusOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchNetworkingV1IngressClassApplicationJSONPatchJSON as json.
+func (s *PatchNetworkingV1IngressClassApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchNetworkingV1IngressClassApplicationJSONPatchJSON from json.
+func (s *PatchNetworkingV1IngressClassApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchNetworkingV1IngressClassApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchNetworkingV1IngressClassApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchNetworkingV1IngressClassApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchNetworkingV1IngressClassApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchNetworkingV1IngressClassApplicationMergePatchJSON as json.
+func (s *PatchNetworkingV1IngressClassApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchNetworkingV1IngressClassApplicationMergePatchJSON from json.
+func (s *PatchNetworkingV1IngressClassApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchNetworkingV1IngressClassApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchNetworkingV1IngressClassApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchNetworkingV1IngressClassApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchNetworkingV1IngressClassApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchNetworkingV1IngressClassApplicationStrategicMergePatchJSON as json.
+func (s *PatchNetworkingV1IngressClassApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchNetworkingV1IngressClassApplicationStrategicMergePatchJSON from json.
+func (s *PatchNetworkingV1IngressClassApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchNetworkingV1IngressClassApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchNetworkingV1IngressClassApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchNetworkingV1IngressClassApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchNetworkingV1IngressClassApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchNetworkingV1IngressClassCreated as json.
+func (s *PatchNetworkingV1IngressClassCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPINetworkingV1IngressClass)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchNetworkingV1IngressClassCreated from json.
+func (s *PatchNetworkingV1IngressClassCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchNetworkingV1IngressClassCreated to nil")
+	}
+	var unwrapped IoK8sAPINetworkingV1IngressClass
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchNetworkingV1IngressClassCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchNetworkingV1IngressClassCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchNetworkingV1IngressClassCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchNetworkingV1IngressClassOK as json.
+func (s *PatchNetworkingV1IngressClassOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPINetworkingV1IngressClass)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchNetworkingV1IngressClassOK from json.
+func (s *PatchNetworkingV1IngressClassOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchNetworkingV1IngressClassOK to nil")
+	}
+	var unwrapped IoK8sAPINetworkingV1IngressClass
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchNetworkingV1IngressClassOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchNetworkingV1IngressClassOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchNetworkingV1IngressClassOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchNetworkingV1NamespacedIngressApplicationJSONPatchJSON as json.
+func (s *PatchNetworkingV1NamespacedIngressApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchNetworkingV1NamespacedIngressApplicationJSONPatchJSON from json.
+func (s *PatchNetworkingV1NamespacedIngressApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchNetworkingV1NamespacedIngressApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchNetworkingV1NamespacedIngressApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchNetworkingV1NamespacedIngressApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchNetworkingV1NamespacedIngressApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchNetworkingV1NamespacedIngressApplicationMergePatchJSON as json.
+func (s *PatchNetworkingV1NamespacedIngressApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchNetworkingV1NamespacedIngressApplicationMergePatchJSON from json.
+func (s *PatchNetworkingV1NamespacedIngressApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchNetworkingV1NamespacedIngressApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchNetworkingV1NamespacedIngressApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchNetworkingV1NamespacedIngressApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchNetworkingV1NamespacedIngressApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchNetworkingV1NamespacedIngressApplicationStrategicMergePatchJSON as json.
+func (s *PatchNetworkingV1NamespacedIngressApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchNetworkingV1NamespacedIngressApplicationStrategicMergePatchJSON from json.
+func (s *PatchNetworkingV1NamespacedIngressApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchNetworkingV1NamespacedIngressApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchNetworkingV1NamespacedIngressApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchNetworkingV1NamespacedIngressApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchNetworkingV1NamespacedIngressApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchNetworkingV1NamespacedIngressCreated as json.
+func (s *PatchNetworkingV1NamespacedIngressCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPINetworkingV1Ingress)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchNetworkingV1NamespacedIngressCreated from json.
+func (s *PatchNetworkingV1NamespacedIngressCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchNetworkingV1NamespacedIngressCreated to nil")
+	}
+	var unwrapped IoK8sAPINetworkingV1Ingress
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchNetworkingV1NamespacedIngressCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchNetworkingV1NamespacedIngressCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchNetworkingV1NamespacedIngressCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchNetworkingV1NamespacedIngressOK as json.
+func (s *PatchNetworkingV1NamespacedIngressOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPINetworkingV1Ingress)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchNetworkingV1NamespacedIngressOK from json.
+func (s *PatchNetworkingV1NamespacedIngressOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchNetworkingV1NamespacedIngressOK to nil")
+	}
+	var unwrapped IoK8sAPINetworkingV1Ingress
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchNetworkingV1NamespacedIngressOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchNetworkingV1NamespacedIngressOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchNetworkingV1NamespacedIngressOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchNetworkingV1NamespacedIngressStatusApplicationJSONPatchJSON as json.
+func (s *PatchNetworkingV1NamespacedIngressStatusApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchNetworkingV1NamespacedIngressStatusApplicationJSONPatchJSON from json.
+func (s *PatchNetworkingV1NamespacedIngressStatusApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchNetworkingV1NamespacedIngressStatusApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchNetworkingV1NamespacedIngressStatusApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchNetworkingV1NamespacedIngressStatusApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchNetworkingV1NamespacedIngressStatusApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchNetworkingV1NamespacedIngressStatusApplicationMergePatchJSON as json.
+func (s *PatchNetworkingV1NamespacedIngressStatusApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchNetworkingV1NamespacedIngressStatusApplicationMergePatchJSON from json.
+func (s *PatchNetworkingV1NamespacedIngressStatusApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchNetworkingV1NamespacedIngressStatusApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchNetworkingV1NamespacedIngressStatusApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchNetworkingV1NamespacedIngressStatusApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchNetworkingV1NamespacedIngressStatusApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchNetworkingV1NamespacedIngressStatusApplicationStrategicMergePatchJSON as json.
+func (s *PatchNetworkingV1NamespacedIngressStatusApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchNetworkingV1NamespacedIngressStatusApplicationStrategicMergePatchJSON from json.
+func (s *PatchNetworkingV1NamespacedIngressStatusApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchNetworkingV1NamespacedIngressStatusApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchNetworkingV1NamespacedIngressStatusApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchNetworkingV1NamespacedIngressStatusApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchNetworkingV1NamespacedIngressStatusApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchNetworkingV1NamespacedIngressStatusCreated as json.
+func (s *PatchNetworkingV1NamespacedIngressStatusCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPINetworkingV1Ingress)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchNetworkingV1NamespacedIngressStatusCreated from json.
+func (s *PatchNetworkingV1NamespacedIngressStatusCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchNetworkingV1NamespacedIngressStatusCreated to nil")
+	}
+	var unwrapped IoK8sAPINetworkingV1Ingress
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchNetworkingV1NamespacedIngressStatusCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchNetworkingV1NamespacedIngressStatusCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchNetworkingV1NamespacedIngressStatusCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchNetworkingV1NamespacedIngressStatusOK as json.
+func (s *PatchNetworkingV1NamespacedIngressStatusOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPINetworkingV1Ingress)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchNetworkingV1NamespacedIngressStatusOK from json.
+func (s *PatchNetworkingV1NamespacedIngressStatusOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchNetworkingV1NamespacedIngressStatusOK to nil")
+	}
+	var unwrapped IoK8sAPINetworkingV1Ingress
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchNetworkingV1NamespacedIngressStatusOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchNetworkingV1NamespacedIngressStatusOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchNetworkingV1NamespacedIngressStatusOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchNetworkingV1NamespacedNetworkPolicyApplicationJSONPatchJSON as json.
+func (s *PatchNetworkingV1NamespacedNetworkPolicyApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchNetworkingV1NamespacedNetworkPolicyApplicationJSONPatchJSON from json.
+func (s *PatchNetworkingV1NamespacedNetworkPolicyApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchNetworkingV1NamespacedNetworkPolicyApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchNetworkingV1NamespacedNetworkPolicyApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchNetworkingV1NamespacedNetworkPolicyApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchNetworkingV1NamespacedNetworkPolicyApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchNetworkingV1NamespacedNetworkPolicyApplicationMergePatchJSON as json.
+func (s *PatchNetworkingV1NamespacedNetworkPolicyApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchNetworkingV1NamespacedNetworkPolicyApplicationMergePatchJSON from json.
+func (s *PatchNetworkingV1NamespacedNetworkPolicyApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchNetworkingV1NamespacedNetworkPolicyApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchNetworkingV1NamespacedNetworkPolicyApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchNetworkingV1NamespacedNetworkPolicyApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchNetworkingV1NamespacedNetworkPolicyApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchNetworkingV1NamespacedNetworkPolicyApplicationStrategicMergePatchJSON as json.
+func (s *PatchNetworkingV1NamespacedNetworkPolicyApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchNetworkingV1NamespacedNetworkPolicyApplicationStrategicMergePatchJSON from json.
+func (s *PatchNetworkingV1NamespacedNetworkPolicyApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchNetworkingV1NamespacedNetworkPolicyApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchNetworkingV1NamespacedNetworkPolicyApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchNetworkingV1NamespacedNetworkPolicyApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchNetworkingV1NamespacedNetworkPolicyApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchNetworkingV1NamespacedNetworkPolicyCreated as json.
+func (s *PatchNetworkingV1NamespacedNetworkPolicyCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPINetworkingV1NetworkPolicy)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchNetworkingV1NamespacedNetworkPolicyCreated from json.
+func (s *PatchNetworkingV1NamespacedNetworkPolicyCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchNetworkingV1NamespacedNetworkPolicyCreated to nil")
+	}
+	var unwrapped IoK8sAPINetworkingV1NetworkPolicy
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchNetworkingV1NamespacedNetworkPolicyCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchNetworkingV1NamespacedNetworkPolicyCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchNetworkingV1NamespacedNetworkPolicyCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchNetworkingV1NamespacedNetworkPolicyOK as json.
+func (s *PatchNetworkingV1NamespacedNetworkPolicyOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPINetworkingV1NetworkPolicy)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchNetworkingV1NamespacedNetworkPolicyOK from json.
+func (s *PatchNetworkingV1NamespacedNetworkPolicyOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchNetworkingV1NamespacedNetworkPolicyOK to nil")
+	}
+	var unwrapped IoK8sAPINetworkingV1NetworkPolicy
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchNetworkingV1NamespacedNetworkPolicyOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchNetworkingV1NamespacedNetworkPolicyOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchNetworkingV1NamespacedNetworkPolicyOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchNodeV1RuntimeClassApplicationJSONPatchJSON as json.
+func (s *PatchNodeV1RuntimeClassApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchNodeV1RuntimeClassApplicationJSONPatchJSON from json.
+func (s *PatchNodeV1RuntimeClassApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchNodeV1RuntimeClassApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchNodeV1RuntimeClassApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchNodeV1RuntimeClassApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchNodeV1RuntimeClassApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchNodeV1RuntimeClassApplicationMergePatchJSON as json.
+func (s *PatchNodeV1RuntimeClassApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchNodeV1RuntimeClassApplicationMergePatchJSON from json.
+func (s *PatchNodeV1RuntimeClassApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchNodeV1RuntimeClassApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchNodeV1RuntimeClassApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchNodeV1RuntimeClassApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchNodeV1RuntimeClassApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchNodeV1RuntimeClassApplicationStrategicMergePatchJSON as json.
+func (s *PatchNodeV1RuntimeClassApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchNodeV1RuntimeClassApplicationStrategicMergePatchJSON from json.
+func (s *PatchNodeV1RuntimeClassApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchNodeV1RuntimeClassApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchNodeV1RuntimeClassApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchNodeV1RuntimeClassApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchNodeV1RuntimeClassApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchNodeV1RuntimeClassCreated as json.
+func (s *PatchNodeV1RuntimeClassCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPINodeV1RuntimeClass)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchNodeV1RuntimeClassCreated from json.
+func (s *PatchNodeV1RuntimeClassCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchNodeV1RuntimeClassCreated to nil")
+	}
+	var unwrapped IoK8sAPINodeV1RuntimeClass
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchNodeV1RuntimeClassCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchNodeV1RuntimeClassCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchNodeV1RuntimeClassCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchNodeV1RuntimeClassOK as json.
+func (s *PatchNodeV1RuntimeClassOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPINodeV1RuntimeClass)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchNodeV1RuntimeClassOK from json.
+func (s *PatchNodeV1RuntimeClassOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchNodeV1RuntimeClassOK to nil")
+	}
+	var unwrapped IoK8sAPINodeV1RuntimeClass
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchNodeV1RuntimeClassOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchNodeV1RuntimeClassOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchNodeV1RuntimeClassOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchNodeV1alpha1RuntimeClassApplicationJSONPatchJSON as json.
+func (s *PatchNodeV1alpha1RuntimeClassApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchNodeV1alpha1RuntimeClassApplicationJSONPatchJSON from json.
+func (s *PatchNodeV1alpha1RuntimeClassApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchNodeV1alpha1RuntimeClassApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchNodeV1alpha1RuntimeClassApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchNodeV1alpha1RuntimeClassApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchNodeV1alpha1RuntimeClassApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchNodeV1alpha1RuntimeClassApplicationMergePatchJSON as json.
+func (s *PatchNodeV1alpha1RuntimeClassApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchNodeV1alpha1RuntimeClassApplicationMergePatchJSON from json.
+func (s *PatchNodeV1alpha1RuntimeClassApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchNodeV1alpha1RuntimeClassApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchNodeV1alpha1RuntimeClassApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchNodeV1alpha1RuntimeClassApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchNodeV1alpha1RuntimeClassApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchNodeV1alpha1RuntimeClassApplicationStrategicMergePatchJSON as json.
+func (s *PatchNodeV1alpha1RuntimeClassApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchNodeV1alpha1RuntimeClassApplicationStrategicMergePatchJSON from json.
+func (s *PatchNodeV1alpha1RuntimeClassApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchNodeV1alpha1RuntimeClassApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchNodeV1alpha1RuntimeClassApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchNodeV1alpha1RuntimeClassApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchNodeV1alpha1RuntimeClassApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchNodeV1alpha1RuntimeClassCreated as json.
+func (s *PatchNodeV1alpha1RuntimeClassCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPINodeV1alpha1RuntimeClass)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchNodeV1alpha1RuntimeClassCreated from json.
+func (s *PatchNodeV1alpha1RuntimeClassCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchNodeV1alpha1RuntimeClassCreated to nil")
+	}
+	var unwrapped IoK8sAPINodeV1alpha1RuntimeClass
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchNodeV1alpha1RuntimeClassCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchNodeV1alpha1RuntimeClassCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchNodeV1alpha1RuntimeClassCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchNodeV1alpha1RuntimeClassOK as json.
+func (s *PatchNodeV1alpha1RuntimeClassOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPINodeV1alpha1RuntimeClass)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchNodeV1alpha1RuntimeClassOK from json.
+func (s *PatchNodeV1alpha1RuntimeClassOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchNodeV1alpha1RuntimeClassOK to nil")
+	}
+	var unwrapped IoK8sAPINodeV1alpha1RuntimeClass
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchNodeV1alpha1RuntimeClassOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchNodeV1alpha1RuntimeClassOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchNodeV1alpha1RuntimeClassOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchNodeV1beta1RuntimeClassApplicationJSONPatchJSON as json.
+func (s *PatchNodeV1beta1RuntimeClassApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchNodeV1beta1RuntimeClassApplicationJSONPatchJSON from json.
+func (s *PatchNodeV1beta1RuntimeClassApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchNodeV1beta1RuntimeClassApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchNodeV1beta1RuntimeClassApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchNodeV1beta1RuntimeClassApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchNodeV1beta1RuntimeClassApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchNodeV1beta1RuntimeClassApplicationMergePatchJSON as json.
+func (s *PatchNodeV1beta1RuntimeClassApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchNodeV1beta1RuntimeClassApplicationMergePatchJSON from json.
+func (s *PatchNodeV1beta1RuntimeClassApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchNodeV1beta1RuntimeClassApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchNodeV1beta1RuntimeClassApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchNodeV1beta1RuntimeClassApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchNodeV1beta1RuntimeClassApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchNodeV1beta1RuntimeClassApplicationStrategicMergePatchJSON as json.
+func (s *PatchNodeV1beta1RuntimeClassApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchNodeV1beta1RuntimeClassApplicationStrategicMergePatchJSON from json.
+func (s *PatchNodeV1beta1RuntimeClassApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchNodeV1beta1RuntimeClassApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchNodeV1beta1RuntimeClassApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchNodeV1beta1RuntimeClassApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchNodeV1beta1RuntimeClassApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchNodeV1beta1RuntimeClassCreated as json.
+func (s *PatchNodeV1beta1RuntimeClassCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPINodeV1beta1RuntimeClass)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchNodeV1beta1RuntimeClassCreated from json.
+func (s *PatchNodeV1beta1RuntimeClassCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchNodeV1beta1RuntimeClassCreated to nil")
+	}
+	var unwrapped IoK8sAPINodeV1beta1RuntimeClass
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchNodeV1beta1RuntimeClassCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchNodeV1beta1RuntimeClassCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchNodeV1beta1RuntimeClassCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchNodeV1beta1RuntimeClassOK as json.
+func (s *PatchNodeV1beta1RuntimeClassOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPINodeV1beta1RuntimeClass)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchNodeV1beta1RuntimeClassOK from json.
+func (s *PatchNodeV1beta1RuntimeClassOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchNodeV1beta1RuntimeClassOK to nil")
+	}
+	var unwrapped IoK8sAPINodeV1beta1RuntimeClass
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchNodeV1beta1RuntimeClassOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchNodeV1beta1RuntimeClassOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchNodeV1beta1RuntimeClassOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchPolicyV1NamespacedPodDisruptionBudgetApplicationJSONPatchJSON as json.
+func (s *PatchPolicyV1NamespacedPodDisruptionBudgetApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchPolicyV1NamespacedPodDisruptionBudgetApplicationJSONPatchJSON from json.
+func (s *PatchPolicyV1NamespacedPodDisruptionBudgetApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchPolicyV1NamespacedPodDisruptionBudgetApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchPolicyV1NamespacedPodDisruptionBudgetApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchPolicyV1NamespacedPodDisruptionBudgetApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchPolicyV1NamespacedPodDisruptionBudgetApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchPolicyV1NamespacedPodDisruptionBudgetApplicationMergePatchJSON as json.
+func (s *PatchPolicyV1NamespacedPodDisruptionBudgetApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchPolicyV1NamespacedPodDisruptionBudgetApplicationMergePatchJSON from json.
+func (s *PatchPolicyV1NamespacedPodDisruptionBudgetApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchPolicyV1NamespacedPodDisruptionBudgetApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchPolicyV1NamespacedPodDisruptionBudgetApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchPolicyV1NamespacedPodDisruptionBudgetApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchPolicyV1NamespacedPodDisruptionBudgetApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchPolicyV1NamespacedPodDisruptionBudgetApplicationStrategicMergePatchJSON as json.
+func (s *PatchPolicyV1NamespacedPodDisruptionBudgetApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchPolicyV1NamespacedPodDisruptionBudgetApplicationStrategicMergePatchJSON from json.
+func (s *PatchPolicyV1NamespacedPodDisruptionBudgetApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchPolicyV1NamespacedPodDisruptionBudgetApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchPolicyV1NamespacedPodDisruptionBudgetApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchPolicyV1NamespacedPodDisruptionBudgetApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchPolicyV1NamespacedPodDisruptionBudgetApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchPolicyV1NamespacedPodDisruptionBudgetCreated as json.
+func (s *PatchPolicyV1NamespacedPodDisruptionBudgetCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIPolicyV1PodDisruptionBudget)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchPolicyV1NamespacedPodDisruptionBudgetCreated from json.
+func (s *PatchPolicyV1NamespacedPodDisruptionBudgetCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchPolicyV1NamespacedPodDisruptionBudgetCreated to nil")
+	}
+	var unwrapped IoK8sAPIPolicyV1PodDisruptionBudget
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchPolicyV1NamespacedPodDisruptionBudgetCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchPolicyV1NamespacedPodDisruptionBudgetCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchPolicyV1NamespacedPodDisruptionBudgetCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchPolicyV1NamespacedPodDisruptionBudgetOK as json.
+func (s *PatchPolicyV1NamespacedPodDisruptionBudgetOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIPolicyV1PodDisruptionBudget)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchPolicyV1NamespacedPodDisruptionBudgetOK from json.
+func (s *PatchPolicyV1NamespacedPodDisruptionBudgetOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchPolicyV1NamespacedPodDisruptionBudgetOK to nil")
+	}
+	var unwrapped IoK8sAPIPolicyV1PodDisruptionBudget
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchPolicyV1NamespacedPodDisruptionBudgetOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchPolicyV1NamespacedPodDisruptionBudgetOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchPolicyV1NamespacedPodDisruptionBudgetOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchPolicyV1NamespacedPodDisruptionBudgetStatusApplicationJSONPatchJSON as json.
+func (s *PatchPolicyV1NamespacedPodDisruptionBudgetStatusApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchPolicyV1NamespacedPodDisruptionBudgetStatusApplicationJSONPatchJSON from json.
+func (s *PatchPolicyV1NamespacedPodDisruptionBudgetStatusApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchPolicyV1NamespacedPodDisruptionBudgetStatusApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchPolicyV1NamespacedPodDisruptionBudgetStatusApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchPolicyV1NamespacedPodDisruptionBudgetStatusApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchPolicyV1NamespacedPodDisruptionBudgetStatusApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchPolicyV1NamespacedPodDisruptionBudgetStatusApplicationMergePatchJSON as json.
+func (s *PatchPolicyV1NamespacedPodDisruptionBudgetStatusApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchPolicyV1NamespacedPodDisruptionBudgetStatusApplicationMergePatchJSON from json.
+func (s *PatchPolicyV1NamespacedPodDisruptionBudgetStatusApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchPolicyV1NamespacedPodDisruptionBudgetStatusApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchPolicyV1NamespacedPodDisruptionBudgetStatusApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchPolicyV1NamespacedPodDisruptionBudgetStatusApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchPolicyV1NamespacedPodDisruptionBudgetStatusApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchPolicyV1NamespacedPodDisruptionBudgetStatusApplicationStrategicMergePatchJSON as json.
+func (s *PatchPolicyV1NamespacedPodDisruptionBudgetStatusApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchPolicyV1NamespacedPodDisruptionBudgetStatusApplicationStrategicMergePatchJSON from json.
+func (s *PatchPolicyV1NamespacedPodDisruptionBudgetStatusApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchPolicyV1NamespacedPodDisruptionBudgetStatusApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchPolicyV1NamespacedPodDisruptionBudgetStatusApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchPolicyV1NamespacedPodDisruptionBudgetStatusApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchPolicyV1NamespacedPodDisruptionBudgetStatusApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchPolicyV1NamespacedPodDisruptionBudgetStatusCreated as json.
+func (s *PatchPolicyV1NamespacedPodDisruptionBudgetStatusCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIPolicyV1PodDisruptionBudget)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchPolicyV1NamespacedPodDisruptionBudgetStatusCreated from json.
+func (s *PatchPolicyV1NamespacedPodDisruptionBudgetStatusCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchPolicyV1NamespacedPodDisruptionBudgetStatusCreated to nil")
+	}
+	var unwrapped IoK8sAPIPolicyV1PodDisruptionBudget
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchPolicyV1NamespacedPodDisruptionBudgetStatusCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchPolicyV1NamespacedPodDisruptionBudgetStatusCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchPolicyV1NamespacedPodDisruptionBudgetStatusCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchPolicyV1NamespacedPodDisruptionBudgetStatusOK as json.
+func (s *PatchPolicyV1NamespacedPodDisruptionBudgetStatusOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIPolicyV1PodDisruptionBudget)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchPolicyV1NamespacedPodDisruptionBudgetStatusOK from json.
+func (s *PatchPolicyV1NamespacedPodDisruptionBudgetStatusOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchPolicyV1NamespacedPodDisruptionBudgetStatusOK to nil")
+	}
+	var unwrapped IoK8sAPIPolicyV1PodDisruptionBudget
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchPolicyV1NamespacedPodDisruptionBudgetStatusOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchPolicyV1NamespacedPodDisruptionBudgetStatusOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchPolicyV1NamespacedPodDisruptionBudgetStatusOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchPolicyV1beta1NamespacedPodDisruptionBudgetApplicationJSONPatchJSON as json.
+func (s *PatchPolicyV1beta1NamespacedPodDisruptionBudgetApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchPolicyV1beta1NamespacedPodDisruptionBudgetApplicationJSONPatchJSON from json.
+func (s *PatchPolicyV1beta1NamespacedPodDisruptionBudgetApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchPolicyV1beta1NamespacedPodDisruptionBudgetApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchPolicyV1beta1NamespacedPodDisruptionBudgetApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchPolicyV1beta1NamespacedPodDisruptionBudgetApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchPolicyV1beta1NamespacedPodDisruptionBudgetApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchPolicyV1beta1NamespacedPodDisruptionBudgetApplicationMergePatchJSON as json.
+func (s *PatchPolicyV1beta1NamespacedPodDisruptionBudgetApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchPolicyV1beta1NamespacedPodDisruptionBudgetApplicationMergePatchJSON from json.
+func (s *PatchPolicyV1beta1NamespacedPodDisruptionBudgetApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchPolicyV1beta1NamespacedPodDisruptionBudgetApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchPolicyV1beta1NamespacedPodDisruptionBudgetApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchPolicyV1beta1NamespacedPodDisruptionBudgetApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchPolicyV1beta1NamespacedPodDisruptionBudgetApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchPolicyV1beta1NamespacedPodDisruptionBudgetApplicationStrategicMergePatchJSON as json.
+func (s *PatchPolicyV1beta1NamespacedPodDisruptionBudgetApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchPolicyV1beta1NamespacedPodDisruptionBudgetApplicationStrategicMergePatchJSON from json.
+func (s *PatchPolicyV1beta1NamespacedPodDisruptionBudgetApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchPolicyV1beta1NamespacedPodDisruptionBudgetApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchPolicyV1beta1NamespacedPodDisruptionBudgetApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchPolicyV1beta1NamespacedPodDisruptionBudgetApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchPolicyV1beta1NamespacedPodDisruptionBudgetApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchPolicyV1beta1NamespacedPodDisruptionBudgetCreated as json.
+func (s *PatchPolicyV1beta1NamespacedPodDisruptionBudgetCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIPolicyV1beta1PodDisruptionBudget)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchPolicyV1beta1NamespacedPodDisruptionBudgetCreated from json.
+func (s *PatchPolicyV1beta1NamespacedPodDisruptionBudgetCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchPolicyV1beta1NamespacedPodDisruptionBudgetCreated to nil")
+	}
+	var unwrapped IoK8sAPIPolicyV1beta1PodDisruptionBudget
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchPolicyV1beta1NamespacedPodDisruptionBudgetCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchPolicyV1beta1NamespacedPodDisruptionBudgetCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchPolicyV1beta1NamespacedPodDisruptionBudgetCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchPolicyV1beta1NamespacedPodDisruptionBudgetOK as json.
+func (s *PatchPolicyV1beta1NamespacedPodDisruptionBudgetOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIPolicyV1beta1PodDisruptionBudget)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchPolicyV1beta1NamespacedPodDisruptionBudgetOK from json.
+func (s *PatchPolicyV1beta1NamespacedPodDisruptionBudgetOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchPolicyV1beta1NamespacedPodDisruptionBudgetOK to nil")
+	}
+	var unwrapped IoK8sAPIPolicyV1beta1PodDisruptionBudget
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchPolicyV1beta1NamespacedPodDisruptionBudgetOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchPolicyV1beta1NamespacedPodDisruptionBudgetOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchPolicyV1beta1NamespacedPodDisruptionBudgetOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchPolicyV1beta1NamespacedPodDisruptionBudgetStatusApplicationJSONPatchJSON as json.
+func (s *PatchPolicyV1beta1NamespacedPodDisruptionBudgetStatusApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchPolicyV1beta1NamespacedPodDisruptionBudgetStatusApplicationJSONPatchJSON from json.
+func (s *PatchPolicyV1beta1NamespacedPodDisruptionBudgetStatusApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchPolicyV1beta1NamespacedPodDisruptionBudgetStatusApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchPolicyV1beta1NamespacedPodDisruptionBudgetStatusApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchPolicyV1beta1NamespacedPodDisruptionBudgetStatusApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchPolicyV1beta1NamespacedPodDisruptionBudgetStatusApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchPolicyV1beta1NamespacedPodDisruptionBudgetStatusApplicationMergePatchJSON as json.
+func (s *PatchPolicyV1beta1NamespacedPodDisruptionBudgetStatusApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchPolicyV1beta1NamespacedPodDisruptionBudgetStatusApplicationMergePatchJSON from json.
+func (s *PatchPolicyV1beta1NamespacedPodDisruptionBudgetStatusApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchPolicyV1beta1NamespacedPodDisruptionBudgetStatusApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchPolicyV1beta1NamespacedPodDisruptionBudgetStatusApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchPolicyV1beta1NamespacedPodDisruptionBudgetStatusApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchPolicyV1beta1NamespacedPodDisruptionBudgetStatusApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchPolicyV1beta1NamespacedPodDisruptionBudgetStatusApplicationStrategicMergePatchJSON as json.
+func (s *PatchPolicyV1beta1NamespacedPodDisruptionBudgetStatusApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchPolicyV1beta1NamespacedPodDisruptionBudgetStatusApplicationStrategicMergePatchJSON from json.
+func (s *PatchPolicyV1beta1NamespacedPodDisruptionBudgetStatusApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchPolicyV1beta1NamespacedPodDisruptionBudgetStatusApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchPolicyV1beta1NamespacedPodDisruptionBudgetStatusApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchPolicyV1beta1NamespacedPodDisruptionBudgetStatusApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchPolicyV1beta1NamespacedPodDisruptionBudgetStatusApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchPolicyV1beta1NamespacedPodDisruptionBudgetStatusCreated as json.
+func (s *PatchPolicyV1beta1NamespacedPodDisruptionBudgetStatusCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIPolicyV1beta1PodDisruptionBudget)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchPolicyV1beta1NamespacedPodDisruptionBudgetStatusCreated from json.
+func (s *PatchPolicyV1beta1NamespacedPodDisruptionBudgetStatusCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchPolicyV1beta1NamespacedPodDisruptionBudgetStatusCreated to nil")
+	}
+	var unwrapped IoK8sAPIPolicyV1beta1PodDisruptionBudget
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchPolicyV1beta1NamespacedPodDisruptionBudgetStatusCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchPolicyV1beta1NamespacedPodDisruptionBudgetStatusCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchPolicyV1beta1NamespacedPodDisruptionBudgetStatusCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchPolicyV1beta1NamespacedPodDisruptionBudgetStatusOK as json.
+func (s *PatchPolicyV1beta1NamespacedPodDisruptionBudgetStatusOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIPolicyV1beta1PodDisruptionBudget)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchPolicyV1beta1NamespacedPodDisruptionBudgetStatusOK from json.
+func (s *PatchPolicyV1beta1NamespacedPodDisruptionBudgetStatusOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchPolicyV1beta1NamespacedPodDisruptionBudgetStatusOK to nil")
+	}
+	var unwrapped IoK8sAPIPolicyV1beta1PodDisruptionBudget
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchPolicyV1beta1NamespacedPodDisruptionBudgetStatusOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchPolicyV1beta1NamespacedPodDisruptionBudgetStatusOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchPolicyV1beta1NamespacedPodDisruptionBudgetStatusOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchPolicyV1beta1PodSecurityPolicyApplicationJSONPatchJSON as json.
+func (s *PatchPolicyV1beta1PodSecurityPolicyApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchPolicyV1beta1PodSecurityPolicyApplicationJSONPatchJSON from json.
+func (s *PatchPolicyV1beta1PodSecurityPolicyApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchPolicyV1beta1PodSecurityPolicyApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchPolicyV1beta1PodSecurityPolicyApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchPolicyV1beta1PodSecurityPolicyApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchPolicyV1beta1PodSecurityPolicyApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchPolicyV1beta1PodSecurityPolicyApplicationMergePatchJSON as json.
+func (s *PatchPolicyV1beta1PodSecurityPolicyApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchPolicyV1beta1PodSecurityPolicyApplicationMergePatchJSON from json.
+func (s *PatchPolicyV1beta1PodSecurityPolicyApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchPolicyV1beta1PodSecurityPolicyApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchPolicyV1beta1PodSecurityPolicyApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchPolicyV1beta1PodSecurityPolicyApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchPolicyV1beta1PodSecurityPolicyApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchPolicyV1beta1PodSecurityPolicyApplicationStrategicMergePatchJSON as json.
+func (s *PatchPolicyV1beta1PodSecurityPolicyApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchPolicyV1beta1PodSecurityPolicyApplicationStrategicMergePatchJSON from json.
+func (s *PatchPolicyV1beta1PodSecurityPolicyApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchPolicyV1beta1PodSecurityPolicyApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchPolicyV1beta1PodSecurityPolicyApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchPolicyV1beta1PodSecurityPolicyApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchPolicyV1beta1PodSecurityPolicyApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchPolicyV1beta1PodSecurityPolicyCreated as json.
+func (s *PatchPolicyV1beta1PodSecurityPolicyCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIPolicyV1beta1PodSecurityPolicy)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchPolicyV1beta1PodSecurityPolicyCreated from json.
+func (s *PatchPolicyV1beta1PodSecurityPolicyCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchPolicyV1beta1PodSecurityPolicyCreated to nil")
+	}
+	var unwrapped IoK8sAPIPolicyV1beta1PodSecurityPolicy
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchPolicyV1beta1PodSecurityPolicyCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchPolicyV1beta1PodSecurityPolicyCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchPolicyV1beta1PodSecurityPolicyCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchPolicyV1beta1PodSecurityPolicyOK as json.
+func (s *PatchPolicyV1beta1PodSecurityPolicyOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIPolicyV1beta1PodSecurityPolicy)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchPolicyV1beta1PodSecurityPolicyOK from json.
+func (s *PatchPolicyV1beta1PodSecurityPolicyOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchPolicyV1beta1PodSecurityPolicyOK to nil")
+	}
+	var unwrapped IoK8sAPIPolicyV1beta1PodSecurityPolicy
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchPolicyV1beta1PodSecurityPolicyOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchPolicyV1beta1PodSecurityPolicyOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchPolicyV1beta1PodSecurityPolicyOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchRbacAuthorizationV1ClusterRoleApplicationJSONPatchJSON as json.
+func (s *PatchRbacAuthorizationV1ClusterRoleApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchRbacAuthorizationV1ClusterRoleApplicationJSONPatchJSON from json.
+func (s *PatchRbacAuthorizationV1ClusterRoleApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchRbacAuthorizationV1ClusterRoleApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchRbacAuthorizationV1ClusterRoleApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchRbacAuthorizationV1ClusterRoleApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchRbacAuthorizationV1ClusterRoleApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchRbacAuthorizationV1ClusterRoleApplicationMergePatchJSON as json.
+func (s *PatchRbacAuthorizationV1ClusterRoleApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchRbacAuthorizationV1ClusterRoleApplicationMergePatchJSON from json.
+func (s *PatchRbacAuthorizationV1ClusterRoleApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchRbacAuthorizationV1ClusterRoleApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchRbacAuthorizationV1ClusterRoleApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchRbacAuthorizationV1ClusterRoleApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchRbacAuthorizationV1ClusterRoleApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchRbacAuthorizationV1ClusterRoleApplicationStrategicMergePatchJSON as json.
+func (s *PatchRbacAuthorizationV1ClusterRoleApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchRbacAuthorizationV1ClusterRoleApplicationStrategicMergePatchJSON from json.
+func (s *PatchRbacAuthorizationV1ClusterRoleApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchRbacAuthorizationV1ClusterRoleApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchRbacAuthorizationV1ClusterRoleApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchRbacAuthorizationV1ClusterRoleApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchRbacAuthorizationV1ClusterRoleApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchRbacAuthorizationV1ClusterRoleBindingApplicationJSONPatchJSON as json.
+func (s *PatchRbacAuthorizationV1ClusterRoleBindingApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchRbacAuthorizationV1ClusterRoleBindingApplicationJSONPatchJSON from json.
+func (s *PatchRbacAuthorizationV1ClusterRoleBindingApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchRbacAuthorizationV1ClusterRoleBindingApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchRbacAuthorizationV1ClusterRoleBindingApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchRbacAuthorizationV1ClusterRoleBindingApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchRbacAuthorizationV1ClusterRoleBindingApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchRbacAuthorizationV1ClusterRoleBindingApplicationMergePatchJSON as json.
+func (s *PatchRbacAuthorizationV1ClusterRoleBindingApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchRbacAuthorizationV1ClusterRoleBindingApplicationMergePatchJSON from json.
+func (s *PatchRbacAuthorizationV1ClusterRoleBindingApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchRbacAuthorizationV1ClusterRoleBindingApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchRbacAuthorizationV1ClusterRoleBindingApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchRbacAuthorizationV1ClusterRoleBindingApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchRbacAuthorizationV1ClusterRoleBindingApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchRbacAuthorizationV1ClusterRoleBindingApplicationStrategicMergePatchJSON as json.
+func (s *PatchRbacAuthorizationV1ClusterRoleBindingApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchRbacAuthorizationV1ClusterRoleBindingApplicationStrategicMergePatchJSON from json.
+func (s *PatchRbacAuthorizationV1ClusterRoleBindingApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchRbacAuthorizationV1ClusterRoleBindingApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchRbacAuthorizationV1ClusterRoleBindingApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchRbacAuthorizationV1ClusterRoleBindingApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchRbacAuthorizationV1ClusterRoleBindingApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchRbacAuthorizationV1ClusterRoleBindingCreated as json.
+func (s *PatchRbacAuthorizationV1ClusterRoleBindingCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIRbacV1ClusterRoleBinding)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchRbacAuthorizationV1ClusterRoleBindingCreated from json.
+func (s *PatchRbacAuthorizationV1ClusterRoleBindingCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchRbacAuthorizationV1ClusterRoleBindingCreated to nil")
+	}
+	var unwrapped IoK8sAPIRbacV1ClusterRoleBinding
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchRbacAuthorizationV1ClusterRoleBindingCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchRbacAuthorizationV1ClusterRoleBindingCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchRbacAuthorizationV1ClusterRoleBindingCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchRbacAuthorizationV1ClusterRoleBindingOK as json.
+func (s *PatchRbacAuthorizationV1ClusterRoleBindingOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIRbacV1ClusterRoleBinding)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchRbacAuthorizationV1ClusterRoleBindingOK from json.
+func (s *PatchRbacAuthorizationV1ClusterRoleBindingOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchRbacAuthorizationV1ClusterRoleBindingOK to nil")
+	}
+	var unwrapped IoK8sAPIRbacV1ClusterRoleBinding
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchRbacAuthorizationV1ClusterRoleBindingOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchRbacAuthorizationV1ClusterRoleBindingOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchRbacAuthorizationV1ClusterRoleBindingOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchRbacAuthorizationV1ClusterRoleCreated as json.
+func (s *PatchRbacAuthorizationV1ClusterRoleCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIRbacV1ClusterRole)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchRbacAuthorizationV1ClusterRoleCreated from json.
+func (s *PatchRbacAuthorizationV1ClusterRoleCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchRbacAuthorizationV1ClusterRoleCreated to nil")
+	}
+	var unwrapped IoK8sAPIRbacV1ClusterRole
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchRbacAuthorizationV1ClusterRoleCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchRbacAuthorizationV1ClusterRoleCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchRbacAuthorizationV1ClusterRoleCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchRbacAuthorizationV1ClusterRoleOK as json.
+func (s *PatchRbacAuthorizationV1ClusterRoleOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIRbacV1ClusterRole)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchRbacAuthorizationV1ClusterRoleOK from json.
+func (s *PatchRbacAuthorizationV1ClusterRoleOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchRbacAuthorizationV1ClusterRoleOK to nil")
+	}
+	var unwrapped IoK8sAPIRbacV1ClusterRole
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchRbacAuthorizationV1ClusterRoleOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchRbacAuthorizationV1ClusterRoleOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchRbacAuthorizationV1ClusterRoleOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchRbacAuthorizationV1NamespacedRoleApplicationJSONPatchJSON as json.
+func (s *PatchRbacAuthorizationV1NamespacedRoleApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchRbacAuthorizationV1NamespacedRoleApplicationJSONPatchJSON from json.
+func (s *PatchRbacAuthorizationV1NamespacedRoleApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchRbacAuthorizationV1NamespacedRoleApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchRbacAuthorizationV1NamespacedRoleApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchRbacAuthorizationV1NamespacedRoleApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchRbacAuthorizationV1NamespacedRoleApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchRbacAuthorizationV1NamespacedRoleApplicationMergePatchJSON as json.
+func (s *PatchRbacAuthorizationV1NamespacedRoleApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchRbacAuthorizationV1NamespacedRoleApplicationMergePatchJSON from json.
+func (s *PatchRbacAuthorizationV1NamespacedRoleApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchRbacAuthorizationV1NamespacedRoleApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchRbacAuthorizationV1NamespacedRoleApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchRbacAuthorizationV1NamespacedRoleApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchRbacAuthorizationV1NamespacedRoleApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchRbacAuthorizationV1NamespacedRoleApplicationStrategicMergePatchJSON as json.
+func (s *PatchRbacAuthorizationV1NamespacedRoleApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchRbacAuthorizationV1NamespacedRoleApplicationStrategicMergePatchJSON from json.
+func (s *PatchRbacAuthorizationV1NamespacedRoleApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchRbacAuthorizationV1NamespacedRoleApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchRbacAuthorizationV1NamespacedRoleApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchRbacAuthorizationV1NamespacedRoleApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchRbacAuthorizationV1NamespacedRoleApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchRbacAuthorizationV1NamespacedRoleBindingApplicationJSONPatchJSON as json.
+func (s *PatchRbacAuthorizationV1NamespacedRoleBindingApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchRbacAuthorizationV1NamespacedRoleBindingApplicationJSONPatchJSON from json.
+func (s *PatchRbacAuthorizationV1NamespacedRoleBindingApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchRbacAuthorizationV1NamespacedRoleBindingApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchRbacAuthorizationV1NamespacedRoleBindingApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchRbacAuthorizationV1NamespacedRoleBindingApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchRbacAuthorizationV1NamespacedRoleBindingApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchRbacAuthorizationV1NamespacedRoleBindingApplicationMergePatchJSON as json.
+func (s *PatchRbacAuthorizationV1NamespacedRoleBindingApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchRbacAuthorizationV1NamespacedRoleBindingApplicationMergePatchJSON from json.
+func (s *PatchRbacAuthorizationV1NamespacedRoleBindingApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchRbacAuthorizationV1NamespacedRoleBindingApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchRbacAuthorizationV1NamespacedRoleBindingApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchRbacAuthorizationV1NamespacedRoleBindingApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchRbacAuthorizationV1NamespacedRoleBindingApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchRbacAuthorizationV1NamespacedRoleBindingApplicationStrategicMergePatchJSON as json.
+func (s *PatchRbacAuthorizationV1NamespacedRoleBindingApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchRbacAuthorizationV1NamespacedRoleBindingApplicationStrategicMergePatchJSON from json.
+func (s *PatchRbacAuthorizationV1NamespacedRoleBindingApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchRbacAuthorizationV1NamespacedRoleBindingApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchRbacAuthorizationV1NamespacedRoleBindingApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchRbacAuthorizationV1NamespacedRoleBindingApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchRbacAuthorizationV1NamespacedRoleBindingApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchRbacAuthorizationV1NamespacedRoleBindingCreated as json.
+func (s *PatchRbacAuthorizationV1NamespacedRoleBindingCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIRbacV1RoleBinding)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchRbacAuthorizationV1NamespacedRoleBindingCreated from json.
+func (s *PatchRbacAuthorizationV1NamespacedRoleBindingCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchRbacAuthorizationV1NamespacedRoleBindingCreated to nil")
+	}
+	var unwrapped IoK8sAPIRbacV1RoleBinding
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchRbacAuthorizationV1NamespacedRoleBindingCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchRbacAuthorizationV1NamespacedRoleBindingCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchRbacAuthorizationV1NamespacedRoleBindingCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchRbacAuthorizationV1NamespacedRoleBindingOK as json.
+func (s *PatchRbacAuthorizationV1NamespacedRoleBindingOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIRbacV1RoleBinding)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchRbacAuthorizationV1NamespacedRoleBindingOK from json.
+func (s *PatchRbacAuthorizationV1NamespacedRoleBindingOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchRbacAuthorizationV1NamespacedRoleBindingOK to nil")
+	}
+	var unwrapped IoK8sAPIRbacV1RoleBinding
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchRbacAuthorizationV1NamespacedRoleBindingOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchRbacAuthorizationV1NamespacedRoleBindingOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchRbacAuthorizationV1NamespacedRoleBindingOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchRbacAuthorizationV1NamespacedRoleCreated as json.
+func (s *PatchRbacAuthorizationV1NamespacedRoleCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIRbacV1Role)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchRbacAuthorizationV1NamespacedRoleCreated from json.
+func (s *PatchRbacAuthorizationV1NamespacedRoleCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchRbacAuthorizationV1NamespacedRoleCreated to nil")
+	}
+	var unwrapped IoK8sAPIRbacV1Role
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchRbacAuthorizationV1NamespacedRoleCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchRbacAuthorizationV1NamespacedRoleCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchRbacAuthorizationV1NamespacedRoleCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchRbacAuthorizationV1NamespacedRoleOK as json.
+func (s *PatchRbacAuthorizationV1NamespacedRoleOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIRbacV1Role)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchRbacAuthorizationV1NamespacedRoleOK from json.
+func (s *PatchRbacAuthorizationV1NamespacedRoleOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchRbacAuthorizationV1NamespacedRoleOK to nil")
+	}
+	var unwrapped IoK8sAPIRbacV1Role
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchRbacAuthorizationV1NamespacedRoleOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchRbacAuthorizationV1NamespacedRoleOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchRbacAuthorizationV1NamespacedRoleOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchSchedulingV1PriorityClassApplicationJSONPatchJSON as json.
+func (s *PatchSchedulingV1PriorityClassApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchSchedulingV1PriorityClassApplicationJSONPatchJSON from json.
+func (s *PatchSchedulingV1PriorityClassApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchSchedulingV1PriorityClassApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchSchedulingV1PriorityClassApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchSchedulingV1PriorityClassApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchSchedulingV1PriorityClassApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchSchedulingV1PriorityClassApplicationMergePatchJSON as json.
+func (s *PatchSchedulingV1PriorityClassApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchSchedulingV1PriorityClassApplicationMergePatchJSON from json.
+func (s *PatchSchedulingV1PriorityClassApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchSchedulingV1PriorityClassApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchSchedulingV1PriorityClassApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchSchedulingV1PriorityClassApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchSchedulingV1PriorityClassApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchSchedulingV1PriorityClassApplicationStrategicMergePatchJSON as json.
+func (s *PatchSchedulingV1PriorityClassApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchSchedulingV1PriorityClassApplicationStrategicMergePatchJSON from json.
+func (s *PatchSchedulingV1PriorityClassApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchSchedulingV1PriorityClassApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchSchedulingV1PriorityClassApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchSchedulingV1PriorityClassApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchSchedulingV1PriorityClassApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchSchedulingV1PriorityClassCreated as json.
+func (s *PatchSchedulingV1PriorityClassCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPISchedulingV1PriorityClass)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchSchedulingV1PriorityClassCreated from json.
+func (s *PatchSchedulingV1PriorityClassCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchSchedulingV1PriorityClassCreated to nil")
+	}
+	var unwrapped IoK8sAPISchedulingV1PriorityClass
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchSchedulingV1PriorityClassCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchSchedulingV1PriorityClassCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchSchedulingV1PriorityClassCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchSchedulingV1PriorityClassOK as json.
+func (s *PatchSchedulingV1PriorityClassOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPISchedulingV1PriorityClass)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchSchedulingV1PriorityClassOK from json.
+func (s *PatchSchedulingV1PriorityClassOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchSchedulingV1PriorityClassOK to nil")
+	}
+	var unwrapped IoK8sAPISchedulingV1PriorityClass
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchSchedulingV1PriorityClassOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchSchedulingV1PriorityClassOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchSchedulingV1PriorityClassOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchStorageV1CSIDriverApplicationJSONPatchJSON as json.
+func (s *PatchStorageV1CSIDriverApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchStorageV1CSIDriverApplicationJSONPatchJSON from json.
+func (s *PatchStorageV1CSIDriverApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchStorageV1CSIDriverApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchStorageV1CSIDriverApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchStorageV1CSIDriverApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchStorageV1CSIDriverApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchStorageV1CSIDriverApplicationMergePatchJSON as json.
+func (s *PatchStorageV1CSIDriverApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchStorageV1CSIDriverApplicationMergePatchJSON from json.
+func (s *PatchStorageV1CSIDriverApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchStorageV1CSIDriverApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchStorageV1CSIDriverApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchStorageV1CSIDriverApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchStorageV1CSIDriverApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchStorageV1CSIDriverApplicationStrategicMergePatchJSON as json.
+func (s *PatchStorageV1CSIDriverApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchStorageV1CSIDriverApplicationStrategicMergePatchJSON from json.
+func (s *PatchStorageV1CSIDriverApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchStorageV1CSIDriverApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchStorageV1CSIDriverApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchStorageV1CSIDriverApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchStorageV1CSIDriverApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchStorageV1CSIDriverCreated as json.
+func (s *PatchStorageV1CSIDriverCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIStorageV1CSIDriver)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchStorageV1CSIDriverCreated from json.
+func (s *PatchStorageV1CSIDriverCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchStorageV1CSIDriverCreated to nil")
+	}
+	var unwrapped IoK8sAPIStorageV1CSIDriver
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchStorageV1CSIDriverCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchStorageV1CSIDriverCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchStorageV1CSIDriverCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchStorageV1CSIDriverOK as json.
+func (s *PatchStorageV1CSIDriverOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIStorageV1CSIDriver)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchStorageV1CSIDriverOK from json.
+func (s *PatchStorageV1CSIDriverOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchStorageV1CSIDriverOK to nil")
+	}
+	var unwrapped IoK8sAPIStorageV1CSIDriver
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchStorageV1CSIDriverOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchStorageV1CSIDriverOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchStorageV1CSIDriverOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchStorageV1CSINodeApplicationJSONPatchJSON as json.
+func (s *PatchStorageV1CSINodeApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchStorageV1CSINodeApplicationJSONPatchJSON from json.
+func (s *PatchStorageV1CSINodeApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchStorageV1CSINodeApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchStorageV1CSINodeApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchStorageV1CSINodeApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchStorageV1CSINodeApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchStorageV1CSINodeApplicationMergePatchJSON as json.
+func (s *PatchStorageV1CSINodeApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchStorageV1CSINodeApplicationMergePatchJSON from json.
+func (s *PatchStorageV1CSINodeApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchStorageV1CSINodeApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchStorageV1CSINodeApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchStorageV1CSINodeApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchStorageV1CSINodeApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchStorageV1CSINodeApplicationStrategicMergePatchJSON as json.
+func (s *PatchStorageV1CSINodeApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchStorageV1CSINodeApplicationStrategicMergePatchJSON from json.
+func (s *PatchStorageV1CSINodeApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchStorageV1CSINodeApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchStorageV1CSINodeApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchStorageV1CSINodeApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchStorageV1CSINodeApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchStorageV1CSINodeCreated as json.
+func (s *PatchStorageV1CSINodeCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIStorageV1CSINode)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchStorageV1CSINodeCreated from json.
+func (s *PatchStorageV1CSINodeCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchStorageV1CSINodeCreated to nil")
+	}
+	var unwrapped IoK8sAPIStorageV1CSINode
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchStorageV1CSINodeCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchStorageV1CSINodeCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchStorageV1CSINodeCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchStorageV1CSINodeOK as json.
+func (s *PatchStorageV1CSINodeOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIStorageV1CSINode)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchStorageV1CSINodeOK from json.
+func (s *PatchStorageV1CSINodeOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchStorageV1CSINodeOK to nil")
+	}
+	var unwrapped IoK8sAPIStorageV1CSINode
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchStorageV1CSINodeOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchStorageV1CSINodeOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchStorageV1CSINodeOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchStorageV1StorageClassApplicationJSONPatchJSON as json.
+func (s *PatchStorageV1StorageClassApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchStorageV1StorageClassApplicationJSONPatchJSON from json.
+func (s *PatchStorageV1StorageClassApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchStorageV1StorageClassApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchStorageV1StorageClassApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchStorageV1StorageClassApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchStorageV1StorageClassApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchStorageV1StorageClassApplicationMergePatchJSON as json.
+func (s *PatchStorageV1StorageClassApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchStorageV1StorageClassApplicationMergePatchJSON from json.
+func (s *PatchStorageV1StorageClassApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchStorageV1StorageClassApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchStorageV1StorageClassApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchStorageV1StorageClassApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchStorageV1StorageClassApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchStorageV1StorageClassApplicationStrategicMergePatchJSON as json.
+func (s *PatchStorageV1StorageClassApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchStorageV1StorageClassApplicationStrategicMergePatchJSON from json.
+func (s *PatchStorageV1StorageClassApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchStorageV1StorageClassApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchStorageV1StorageClassApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchStorageV1StorageClassApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchStorageV1StorageClassApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchStorageV1StorageClassCreated as json.
+func (s *PatchStorageV1StorageClassCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIStorageV1StorageClass)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchStorageV1StorageClassCreated from json.
+func (s *PatchStorageV1StorageClassCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchStorageV1StorageClassCreated to nil")
+	}
+	var unwrapped IoK8sAPIStorageV1StorageClass
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchStorageV1StorageClassCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchStorageV1StorageClassCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchStorageV1StorageClassCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchStorageV1StorageClassOK as json.
+func (s *PatchStorageV1StorageClassOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIStorageV1StorageClass)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchStorageV1StorageClassOK from json.
+func (s *PatchStorageV1StorageClassOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchStorageV1StorageClassOK to nil")
+	}
+	var unwrapped IoK8sAPIStorageV1StorageClass
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchStorageV1StorageClassOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchStorageV1StorageClassOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchStorageV1StorageClassOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchStorageV1VolumeAttachmentApplicationJSONPatchJSON as json.
+func (s *PatchStorageV1VolumeAttachmentApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchStorageV1VolumeAttachmentApplicationJSONPatchJSON from json.
+func (s *PatchStorageV1VolumeAttachmentApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchStorageV1VolumeAttachmentApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchStorageV1VolumeAttachmentApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchStorageV1VolumeAttachmentApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchStorageV1VolumeAttachmentApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchStorageV1VolumeAttachmentApplicationMergePatchJSON as json.
+func (s *PatchStorageV1VolumeAttachmentApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchStorageV1VolumeAttachmentApplicationMergePatchJSON from json.
+func (s *PatchStorageV1VolumeAttachmentApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchStorageV1VolumeAttachmentApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchStorageV1VolumeAttachmentApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchStorageV1VolumeAttachmentApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchStorageV1VolumeAttachmentApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchStorageV1VolumeAttachmentApplicationStrategicMergePatchJSON as json.
+func (s *PatchStorageV1VolumeAttachmentApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchStorageV1VolumeAttachmentApplicationStrategicMergePatchJSON from json.
+func (s *PatchStorageV1VolumeAttachmentApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchStorageV1VolumeAttachmentApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchStorageV1VolumeAttachmentApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchStorageV1VolumeAttachmentApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchStorageV1VolumeAttachmentApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchStorageV1VolumeAttachmentCreated as json.
+func (s *PatchStorageV1VolumeAttachmentCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIStorageV1VolumeAttachment)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchStorageV1VolumeAttachmentCreated from json.
+func (s *PatchStorageV1VolumeAttachmentCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchStorageV1VolumeAttachmentCreated to nil")
+	}
+	var unwrapped IoK8sAPIStorageV1VolumeAttachment
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchStorageV1VolumeAttachmentCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchStorageV1VolumeAttachmentCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchStorageV1VolumeAttachmentCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchStorageV1VolumeAttachmentOK as json.
+func (s *PatchStorageV1VolumeAttachmentOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIStorageV1VolumeAttachment)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchStorageV1VolumeAttachmentOK from json.
+func (s *PatchStorageV1VolumeAttachmentOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchStorageV1VolumeAttachmentOK to nil")
+	}
+	var unwrapped IoK8sAPIStorageV1VolumeAttachment
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchStorageV1VolumeAttachmentOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchStorageV1VolumeAttachmentOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchStorageV1VolumeAttachmentOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchStorageV1VolumeAttachmentStatusApplicationJSONPatchJSON as json.
+func (s *PatchStorageV1VolumeAttachmentStatusApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchStorageV1VolumeAttachmentStatusApplicationJSONPatchJSON from json.
+func (s *PatchStorageV1VolumeAttachmentStatusApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchStorageV1VolumeAttachmentStatusApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchStorageV1VolumeAttachmentStatusApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchStorageV1VolumeAttachmentStatusApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchStorageV1VolumeAttachmentStatusApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchStorageV1VolumeAttachmentStatusApplicationMergePatchJSON as json.
+func (s *PatchStorageV1VolumeAttachmentStatusApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchStorageV1VolumeAttachmentStatusApplicationMergePatchJSON from json.
+func (s *PatchStorageV1VolumeAttachmentStatusApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchStorageV1VolumeAttachmentStatusApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchStorageV1VolumeAttachmentStatusApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchStorageV1VolumeAttachmentStatusApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchStorageV1VolumeAttachmentStatusApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchStorageV1VolumeAttachmentStatusApplicationStrategicMergePatchJSON as json.
+func (s *PatchStorageV1VolumeAttachmentStatusApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchStorageV1VolumeAttachmentStatusApplicationStrategicMergePatchJSON from json.
+func (s *PatchStorageV1VolumeAttachmentStatusApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchStorageV1VolumeAttachmentStatusApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchStorageV1VolumeAttachmentStatusApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchStorageV1VolumeAttachmentStatusApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchStorageV1VolumeAttachmentStatusApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchStorageV1VolumeAttachmentStatusCreated as json.
+func (s *PatchStorageV1VolumeAttachmentStatusCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIStorageV1VolumeAttachment)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchStorageV1VolumeAttachmentStatusCreated from json.
+func (s *PatchStorageV1VolumeAttachmentStatusCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchStorageV1VolumeAttachmentStatusCreated to nil")
+	}
+	var unwrapped IoK8sAPIStorageV1VolumeAttachment
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchStorageV1VolumeAttachmentStatusCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchStorageV1VolumeAttachmentStatusCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchStorageV1VolumeAttachmentStatusCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchStorageV1VolumeAttachmentStatusOK as json.
+func (s *PatchStorageV1VolumeAttachmentStatusOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIStorageV1VolumeAttachment)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchStorageV1VolumeAttachmentStatusOK from json.
+func (s *PatchStorageV1VolumeAttachmentStatusOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchStorageV1VolumeAttachmentStatusOK to nil")
+	}
+	var unwrapped IoK8sAPIStorageV1VolumeAttachment
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchStorageV1VolumeAttachmentStatusOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchStorageV1VolumeAttachmentStatusOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchStorageV1VolumeAttachmentStatusOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchStorageV1alpha1NamespacedCSIStorageCapacityApplicationJSONPatchJSON as json.
+func (s *PatchStorageV1alpha1NamespacedCSIStorageCapacityApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchStorageV1alpha1NamespacedCSIStorageCapacityApplicationJSONPatchJSON from json.
+func (s *PatchStorageV1alpha1NamespacedCSIStorageCapacityApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchStorageV1alpha1NamespacedCSIStorageCapacityApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchStorageV1alpha1NamespacedCSIStorageCapacityApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchStorageV1alpha1NamespacedCSIStorageCapacityApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchStorageV1alpha1NamespacedCSIStorageCapacityApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchStorageV1alpha1NamespacedCSIStorageCapacityApplicationMergePatchJSON as json.
+func (s *PatchStorageV1alpha1NamespacedCSIStorageCapacityApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchStorageV1alpha1NamespacedCSIStorageCapacityApplicationMergePatchJSON from json.
+func (s *PatchStorageV1alpha1NamespacedCSIStorageCapacityApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchStorageV1alpha1NamespacedCSIStorageCapacityApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchStorageV1alpha1NamespacedCSIStorageCapacityApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchStorageV1alpha1NamespacedCSIStorageCapacityApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchStorageV1alpha1NamespacedCSIStorageCapacityApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchStorageV1alpha1NamespacedCSIStorageCapacityApplicationStrategicMergePatchJSON as json.
+func (s *PatchStorageV1alpha1NamespacedCSIStorageCapacityApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchStorageV1alpha1NamespacedCSIStorageCapacityApplicationStrategicMergePatchJSON from json.
+func (s *PatchStorageV1alpha1NamespacedCSIStorageCapacityApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchStorageV1alpha1NamespacedCSIStorageCapacityApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchStorageV1alpha1NamespacedCSIStorageCapacityApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchStorageV1alpha1NamespacedCSIStorageCapacityApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchStorageV1alpha1NamespacedCSIStorageCapacityApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchStorageV1alpha1NamespacedCSIStorageCapacityCreated as json.
+func (s *PatchStorageV1alpha1NamespacedCSIStorageCapacityCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIStorageV1alpha1CSIStorageCapacity)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchStorageV1alpha1NamespacedCSIStorageCapacityCreated from json.
+func (s *PatchStorageV1alpha1NamespacedCSIStorageCapacityCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchStorageV1alpha1NamespacedCSIStorageCapacityCreated to nil")
+	}
+	var unwrapped IoK8sAPIStorageV1alpha1CSIStorageCapacity
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchStorageV1alpha1NamespacedCSIStorageCapacityCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchStorageV1alpha1NamespacedCSIStorageCapacityCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchStorageV1alpha1NamespacedCSIStorageCapacityCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchStorageV1alpha1NamespacedCSIStorageCapacityOK as json.
+func (s *PatchStorageV1alpha1NamespacedCSIStorageCapacityOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIStorageV1alpha1CSIStorageCapacity)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchStorageV1alpha1NamespacedCSIStorageCapacityOK from json.
+func (s *PatchStorageV1alpha1NamespacedCSIStorageCapacityOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchStorageV1alpha1NamespacedCSIStorageCapacityOK to nil")
+	}
+	var unwrapped IoK8sAPIStorageV1alpha1CSIStorageCapacity
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchStorageV1alpha1NamespacedCSIStorageCapacityOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchStorageV1alpha1NamespacedCSIStorageCapacityOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchStorageV1alpha1NamespacedCSIStorageCapacityOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchStorageV1beta1NamespacedCSIStorageCapacityApplicationJSONPatchJSON as json.
+func (s *PatchStorageV1beta1NamespacedCSIStorageCapacityApplicationJSONPatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchStorageV1beta1NamespacedCSIStorageCapacityApplicationJSONPatchJSON from json.
+func (s *PatchStorageV1beta1NamespacedCSIStorageCapacityApplicationJSONPatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchStorageV1beta1NamespacedCSIStorageCapacityApplicationJSONPatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchStorageV1beta1NamespacedCSIStorageCapacityApplicationJSONPatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchStorageV1beta1NamespacedCSIStorageCapacityApplicationJSONPatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchStorageV1beta1NamespacedCSIStorageCapacityApplicationJSONPatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchStorageV1beta1NamespacedCSIStorageCapacityApplicationMergePatchJSON as json.
+func (s *PatchStorageV1beta1NamespacedCSIStorageCapacityApplicationMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchStorageV1beta1NamespacedCSIStorageCapacityApplicationMergePatchJSON from json.
+func (s *PatchStorageV1beta1NamespacedCSIStorageCapacityApplicationMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchStorageV1beta1NamespacedCSIStorageCapacityApplicationMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchStorageV1beta1NamespacedCSIStorageCapacityApplicationMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchStorageV1beta1NamespacedCSIStorageCapacityApplicationMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchStorageV1beta1NamespacedCSIStorageCapacityApplicationMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchStorageV1beta1NamespacedCSIStorageCapacityApplicationStrategicMergePatchJSON as json.
+func (s *PatchStorageV1beta1NamespacedCSIStorageCapacityApplicationStrategicMergePatchJSON) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sApimachineryPkgApisMetaV1Patch)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchStorageV1beta1NamespacedCSIStorageCapacityApplicationStrategicMergePatchJSON from json.
+func (s *PatchStorageV1beta1NamespacedCSIStorageCapacityApplicationStrategicMergePatchJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchStorageV1beta1NamespacedCSIStorageCapacityApplicationStrategicMergePatchJSON to nil")
+	}
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchStorageV1beta1NamespacedCSIStorageCapacityApplicationStrategicMergePatchJSON(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchStorageV1beta1NamespacedCSIStorageCapacityApplicationStrategicMergePatchJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchStorageV1beta1NamespacedCSIStorageCapacityApplicationStrategicMergePatchJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchStorageV1beta1NamespacedCSIStorageCapacityCreated as json.
+func (s *PatchStorageV1beta1NamespacedCSIStorageCapacityCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIStorageV1beta1CSIStorageCapacity)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchStorageV1beta1NamespacedCSIStorageCapacityCreated from json.
+func (s *PatchStorageV1beta1NamespacedCSIStorageCapacityCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchStorageV1beta1NamespacedCSIStorageCapacityCreated to nil")
+	}
+	var unwrapped IoK8sAPIStorageV1beta1CSIStorageCapacity
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchStorageV1beta1NamespacedCSIStorageCapacityCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchStorageV1beta1NamespacedCSIStorageCapacityCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchStorageV1beta1NamespacedCSIStorageCapacityCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchStorageV1beta1NamespacedCSIStorageCapacityOK as json.
+func (s *PatchStorageV1beta1NamespacedCSIStorageCapacityOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPIStorageV1beta1CSIStorageCapacity)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchStorageV1beta1NamespacedCSIStorageCapacityOK from json.
+func (s *PatchStorageV1beta1NamespacedCSIStorageCapacityOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchStorageV1beta1NamespacedCSIStorageCapacityOK to nil")
+	}
+	var unwrapped IoK8sAPIStorageV1beta1CSIStorageCapacity
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchStorageV1beta1NamespacedCSIStorageCapacityOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchStorageV1beta1NamespacedCSIStorageCapacityOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchStorageV1beta1NamespacedCSIStorageCapacityOK) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }

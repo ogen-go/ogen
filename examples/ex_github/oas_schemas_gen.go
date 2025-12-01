@@ -2212,33 +2212,62 @@ type ActivityListReposStarredByAuthenticatedUserForbidden BasicError
 func (*ActivityListReposStarredByAuthenticatedUserForbidden) activityListReposStarredByAuthenticatedUserRes() {
 }
 
-// ActivityListReposStarredByAuthenticatedUserOKHeaders wraps []Repository with response headers.
-type ActivityListReposStarredByAuthenticatedUserOKHeaders struct {
+// ActivityListReposStarredByAuthenticatedUserOKApplicationJSONHeaders wraps []Repository with response headers.
+type ActivityListReposStarredByAuthenticatedUserOKApplicationJSONHeaders struct {
 	Link     OptString
 	Response []Repository
 }
 
 // GetLink returns the value of Link.
-func (s *ActivityListReposStarredByAuthenticatedUserOKHeaders) GetLink() OptString {
+func (s *ActivityListReposStarredByAuthenticatedUserOKApplicationJSONHeaders) GetLink() OptString {
 	return s.Link
 }
 
 // GetResponse returns the value of Response.
-func (s *ActivityListReposStarredByAuthenticatedUserOKHeaders) GetResponse() []Repository {
+func (s *ActivityListReposStarredByAuthenticatedUserOKApplicationJSONHeaders) GetResponse() []Repository {
 	return s.Response
 }
 
 // SetLink sets the value of Link.
-func (s *ActivityListReposStarredByAuthenticatedUserOKHeaders) SetLink(val OptString) {
+func (s *ActivityListReposStarredByAuthenticatedUserOKApplicationJSONHeaders) SetLink(val OptString) {
 	s.Link = val
 }
 
 // SetResponse sets the value of Response.
-func (s *ActivityListReposStarredByAuthenticatedUserOKHeaders) SetResponse(val []Repository) {
+func (s *ActivityListReposStarredByAuthenticatedUserOKApplicationJSONHeaders) SetResponse(val []Repository) {
 	s.Response = val
 }
 
-func (*ActivityListReposStarredByAuthenticatedUserOKHeaders) activityListReposStarredByAuthenticatedUserRes() {
+func (*ActivityListReposStarredByAuthenticatedUserOKApplicationJSONHeaders) activityListReposStarredByAuthenticatedUserRes() {
+}
+
+// ActivityListReposStarredByAuthenticatedUserOKApplicationVndGithubV3StarJSONHeaders wraps []StarredRepository with response headers.
+type ActivityListReposStarredByAuthenticatedUserOKApplicationVndGithubV3StarJSONHeaders struct {
+	Link     OptString
+	Response []StarredRepository
+}
+
+// GetLink returns the value of Link.
+func (s *ActivityListReposStarredByAuthenticatedUserOKApplicationVndGithubV3StarJSONHeaders) GetLink() OptString {
+	return s.Link
+}
+
+// GetResponse returns the value of Response.
+func (s *ActivityListReposStarredByAuthenticatedUserOKApplicationVndGithubV3StarJSONHeaders) GetResponse() []StarredRepository {
+	return s.Response
+}
+
+// SetLink sets the value of Link.
+func (s *ActivityListReposStarredByAuthenticatedUserOKApplicationVndGithubV3StarJSONHeaders) SetLink(val OptString) {
+	s.Link = val
+}
+
+// SetResponse sets the value of Response.
+func (s *ActivityListReposStarredByAuthenticatedUserOKApplicationVndGithubV3StarJSONHeaders) SetResponse(val []StarredRepository) {
+	s.Response = val
+}
+
+func (*ActivityListReposStarredByAuthenticatedUserOKApplicationVndGithubV3StarJSONHeaders) activityListReposStarredByAuthenticatedUserRes() {
 }
 
 type ActivityListReposStarredByAuthenticatedUserUnauthorized BasicError
@@ -7455,6 +7484,7 @@ func (*BasicError) reposUpdateCommitCommentRes()                         {}
 func (*BasicError) reposUpdateReleaseRes()                               {}
 func (*BasicError) reposUpdateStatusCheckProtectionRes()                 {}
 func (*BasicError) reposUpdateWebhookRes()                               {}
+func (*BasicError) scimUpdateAttributeForUserRes()                       {}
 func (*BasicError) searchCodeRes()                                       {}
 func (*BasicError) searchIssuesAndPullRequestsRes()                      {}
 func (*BasicError) secretScanningListAlertsForOrgRes()                   {}
@@ -12375,9 +12405,9 @@ type CodeScanningAnalysisToolVersion string
 
 type CodeScanningAnalysisURL url.URL
 
-type CodeScanningDeleteAnalysisBadRequest BasicError
+type CodeScanningDeleteAnalysisApplicationJSONBadRequest BasicError
 
-func (*CodeScanningDeleteAnalysisBadRequest) codeScanningDeleteAnalysisRes() {}
+func (*CodeScanningDeleteAnalysisApplicationJSONBadRequest) codeScanningDeleteAnalysisRes() {}
 
 type CodeScanningDeleteAnalysisForbidden BasicError
 
@@ -36398,6 +36428,11 @@ func (*NotModified) reposListForAuthenticatedUserRes()                     {}
 func (*NotModified) reposListInvitationsForAuthenticatedUserRes()          {}
 func (*NotModified) reposListPublicRes()                                   {}
 func (*NotModified) scimDeleteUserFromOrgRes()                             {}
+func (*NotModified) scimGetProvisioningInformationForUserRes()             {}
+func (*NotModified) scimListProvisionedIdentitiesRes()                     {}
+func (*NotModified) scimProvisionAndInviteUserRes()                        {}
+func (*NotModified) scimSetInformationForProvisionedUserRes()              {}
+func (*NotModified) scimUpdateAttributeForUserRes()                        {}
 func (*NotModified) searchCodeRes()                                        {}
 func (*NotModified) searchCommitsRes()                                     {}
 func (*NotModified) searchIssuesAndPullRequestsRes()                       {}
@@ -58578,6 +58613,52 @@ func (o OptScimGroupListEnterpriseResourcesItemMeta) Or(d ScimGroupListEnterpris
 	return d
 }
 
+// NewOptScimUpdateAttributeForUserReqOperationsItemValue returns new OptScimUpdateAttributeForUserReqOperationsItemValue with value set to v.
+func NewOptScimUpdateAttributeForUserReqOperationsItemValue(v ScimUpdateAttributeForUserReqOperationsItemValue) OptScimUpdateAttributeForUserReqOperationsItemValue {
+	return OptScimUpdateAttributeForUserReqOperationsItemValue{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptScimUpdateAttributeForUserReqOperationsItemValue is optional ScimUpdateAttributeForUserReqOperationsItemValue.
+type OptScimUpdateAttributeForUserReqOperationsItemValue struct {
+	Value ScimUpdateAttributeForUserReqOperationsItemValue
+	Set   bool
+}
+
+// IsSet returns true if OptScimUpdateAttributeForUserReqOperationsItemValue was set.
+func (o OptScimUpdateAttributeForUserReqOperationsItemValue) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptScimUpdateAttributeForUserReqOperationsItemValue) Reset() {
+	var v ScimUpdateAttributeForUserReqOperationsItemValue
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptScimUpdateAttributeForUserReqOperationsItemValue) SetTo(v ScimUpdateAttributeForUserReqOperationsItemValue) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptScimUpdateAttributeForUserReqOperationsItemValue) Get() (v ScimUpdateAttributeForUserReqOperationsItemValue, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptScimUpdateAttributeForUserReqOperationsItemValue) Or(d ScimUpdateAttributeForUserReqOperationsItemValue) ScimUpdateAttributeForUserReqOperationsItemValue {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptScimUserListEnterpriseResourcesItemMeta returns new OptScimUserListEnterpriseResourcesItemMeta with value set to v.
 func NewOptScimUserListEnterpriseResourcesItemMeta(v ScimUserListEnterpriseResourcesItemMeta) OptScimUserListEnterpriseResourcesItemMeta {
 	return OptScimUserListEnterpriseResourcesItemMeta{
@@ -58664,6 +58745,52 @@ func (o OptScimUserListEnterpriseResourcesItemName) Get() (v ScimUserListEnterpr
 
 // Or returns value if set, or given parameter if does not.
 func (o OptScimUserListEnterpriseResourcesItemName) Or(d ScimUserListEnterpriseResourcesItemName) ScimUserListEnterpriseResourcesItemName {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptScimUserOperationsItemValue returns new OptScimUserOperationsItemValue with value set to v.
+func NewOptScimUserOperationsItemValue(v ScimUserOperationsItemValue) OptScimUserOperationsItemValue {
+	return OptScimUserOperationsItemValue{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptScimUserOperationsItemValue is optional ScimUserOperationsItemValue.
+type OptScimUserOperationsItemValue struct {
+	Value ScimUserOperationsItemValue
+	Set   bool
+}
+
+// IsSet returns true if OptScimUserOperationsItemValue was set.
+func (o OptScimUserOperationsItemValue) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptScimUserOperationsItemValue) Reset() {
+	var v ScimUserOperationsItemValue
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptScimUserOperationsItemValue) SetTo(v ScimUserOperationsItemValue) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptScimUserOperationsItemValue) Get() (v ScimUserOperationsItemValue, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptScimUserOperationsItemValue) Or(d ScimUserOperationsItemValue) ScimUserOperationsItemValue {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -82285,9 +82412,10 @@ func (s *ReposCreateDispatchEventReqClientPayload) init() ReposCreateDispatchEve
 	return m
 }
 
-type ReposCreateForAuthenticatedUserBadRequest BasicError
+type ReposCreateForAuthenticatedUserApplicationJSONBadRequest BasicError
 
-func (*ReposCreateForAuthenticatedUserBadRequest) reposCreateForAuthenticatedUserRes() {}
+func (*ReposCreateForAuthenticatedUserApplicationJSONBadRequest) reposCreateForAuthenticatedUserRes() {
+}
 
 type ReposCreateForAuthenticatedUserForbidden BasicError
 
@@ -82521,9 +82649,9 @@ type ReposCreateForAuthenticatedUserUnauthorized BasicError
 
 func (*ReposCreateForAuthenticatedUserUnauthorized) reposCreateForAuthenticatedUserRes() {}
 
-type ReposCreateForkBadRequest BasicError
+type ReposCreateForkApplicationJSONBadRequest BasicError
 
-func (*ReposCreateForkBadRequest) reposCreateForkRes() {}
+func (*ReposCreateForkApplicationJSONBadRequest) reposCreateForkRes() {}
 
 type ReposCreateForkForbidden BasicError
 
@@ -83963,9 +84091,9 @@ func (s *ReposListCommitStatusesForRefOKHeaders) SetResponse(val []Status) {
 
 func (*ReposListCommitStatusesForRefOKHeaders) reposListCommitStatusesForRefRes() {}
 
-type ReposListCommitsBadRequest BasicError
+type ReposListCommitsApplicationJSONBadRequest BasicError
 
-func (*ReposListCommitsBadRequest) reposListCommitsRes() {}
+func (*ReposListCommitsApplicationJSONBadRequest) reposListCommitsRes() {}
 
 type ReposListCommitsConflict BasicError
 
@@ -90557,18 +90685,26 @@ func (s *RunnerLabelsItemType) UnmarshalText(data []byte) error {
 	}
 }
 
-type ScimDeleteUserFromOrgForbidden ScimError
+type ScimDeleteUserFromOrgApplicationJSONForbidden ScimError
 
-func (*ScimDeleteUserFromOrgForbidden) scimDeleteUserFromOrgRes() {}
+func (*ScimDeleteUserFromOrgApplicationJSONForbidden) scimDeleteUserFromOrgRes() {}
+
+type ScimDeleteUserFromOrgApplicationJSONNotFound ScimError
+
+func (*ScimDeleteUserFromOrgApplicationJSONNotFound) scimDeleteUserFromOrgRes() {}
+
+type ScimDeleteUserFromOrgApplicationScimJSONForbidden ScimError
+
+func (*ScimDeleteUserFromOrgApplicationScimJSONForbidden) scimDeleteUserFromOrgRes() {}
+
+type ScimDeleteUserFromOrgApplicationScimJSONNotFound ScimError
+
+func (*ScimDeleteUserFromOrgApplicationScimJSONNotFound) scimDeleteUserFromOrgRes() {}
 
 // ScimDeleteUserFromOrgNoContent is response for ScimDeleteUserFromOrg operation.
 type ScimDeleteUserFromOrgNoContent struct{}
 
 func (*ScimDeleteUserFromOrgNoContent) scimDeleteUserFromOrgRes() {}
-
-type ScimDeleteUserFromOrgNotFound ScimError
-
-func (*ScimDeleteUserFromOrgNotFound) scimDeleteUserFromOrgRes() {}
 
 // Ref: #/components/schemas/scim-enterprise-group
 type ScimEnterpriseGroup struct {
@@ -91019,6 +91155,41 @@ func (s *ScimError) SetSchemas(val []string) {
 	s.Schemas = val
 }
 
+func (*ScimError) appsGetWebhookDeliveryRes()          {}
+func (*ScimError) appsListWebhookDeliveriesRes()       {}
+func (*ScimError) appsRedeliverWebhookDeliveryRes()    {}
+func (*ScimError) codeScanningDeleteAnalysisRes()      {}
+func (*ScimError) orgsGetWebhookDeliveryRes()          {}
+func (*ScimError) orgsListWebhookDeliveriesRes()       {}
+func (*ScimError) orgsRedeliverWebhookDeliveryRes()    {}
+func (*ScimError) reposCreateForAuthenticatedUserRes() {}
+func (*ScimError) reposCreateForkRes()                 {}
+func (*ScimError) reposGetWebhookDeliveryRes()         {}
+func (*ScimError) reposListCommitsRes()                {}
+func (*ScimError) reposListForksRes()                  {}
+func (*ScimError) reposListWebhookDeliveriesRes()      {}
+func (*ScimError) reposRedeliverWebhookDeliveryRes()   {}
+
+type ScimGetProvisioningInformationForUserApplicationJSONForbidden ScimError
+
+func (*ScimGetProvisioningInformationForUserApplicationJSONForbidden) scimGetProvisioningInformationForUserRes() {
+}
+
+type ScimGetProvisioningInformationForUserApplicationJSONNotFound ScimError
+
+func (*ScimGetProvisioningInformationForUserApplicationJSONNotFound) scimGetProvisioningInformationForUserRes() {
+}
+
+type ScimGetProvisioningInformationForUserApplicationScimJSONForbidden ScimError
+
+func (*ScimGetProvisioningInformationForUserApplicationScimJSONForbidden) scimGetProvisioningInformationForUserRes() {
+}
+
+type ScimGetProvisioningInformationForUserApplicationScimJSONNotFound ScimError
+
+func (*ScimGetProvisioningInformationForUserApplicationScimJSONNotFound) scimGetProvisioningInformationForUserRes() {
+}
+
 // Ref: #/components/schemas/scim-group-list-enterprise
 type ScimGroupListEnterprise struct {
 	Schemas      []string                               `json:"schemas"`
@@ -91229,6 +91400,1004 @@ func (s *ScimGroupListEnterpriseResourcesItemMeta) SetLastModified(val OptString
 func (s *ScimGroupListEnterpriseResourcesItemMeta) SetLocation(val OptString) {
 	s.Location = val
 }
+
+type ScimListProvisionedIdentitiesApplicationJSONBadRequest ScimError
+
+func (*ScimListProvisionedIdentitiesApplicationJSONBadRequest) scimListProvisionedIdentitiesRes() {}
+
+type ScimListProvisionedIdentitiesApplicationJSONForbidden ScimError
+
+func (*ScimListProvisionedIdentitiesApplicationJSONForbidden) scimListProvisionedIdentitiesRes() {}
+
+type ScimListProvisionedIdentitiesApplicationJSONNotFound ScimError
+
+func (*ScimListProvisionedIdentitiesApplicationJSONNotFound) scimListProvisionedIdentitiesRes() {}
+
+type ScimListProvisionedIdentitiesApplicationScimJSONBadRequest ScimError
+
+func (*ScimListProvisionedIdentitiesApplicationScimJSONBadRequest) scimListProvisionedIdentitiesRes() {
+}
+
+type ScimListProvisionedIdentitiesApplicationScimJSONForbidden ScimError
+
+func (*ScimListProvisionedIdentitiesApplicationScimJSONForbidden) scimListProvisionedIdentitiesRes() {
+}
+
+type ScimListProvisionedIdentitiesApplicationScimJSONNotFound ScimError
+
+func (*ScimListProvisionedIdentitiesApplicationScimJSONNotFound) scimListProvisionedIdentitiesRes() {}
+
+type ScimProvisionAndInviteUserApplicationJSONBadRequest ScimError
+
+func (*ScimProvisionAndInviteUserApplicationJSONBadRequest) scimProvisionAndInviteUserRes() {}
+
+type ScimProvisionAndInviteUserApplicationJSONConflict ScimError
+
+func (*ScimProvisionAndInviteUserApplicationJSONConflict) scimProvisionAndInviteUserRes() {}
+
+type ScimProvisionAndInviteUserApplicationJSONForbidden ScimError
+
+func (*ScimProvisionAndInviteUserApplicationJSONForbidden) scimProvisionAndInviteUserRes() {}
+
+type ScimProvisionAndInviteUserApplicationJSONInternalServerError ScimError
+
+func (*ScimProvisionAndInviteUserApplicationJSONInternalServerError) scimProvisionAndInviteUserRes() {
+}
+
+type ScimProvisionAndInviteUserApplicationJSONNotFound ScimError
+
+func (*ScimProvisionAndInviteUserApplicationJSONNotFound) scimProvisionAndInviteUserRes() {}
+
+type ScimProvisionAndInviteUserApplicationScimJSONBadRequest ScimError
+
+func (*ScimProvisionAndInviteUserApplicationScimJSONBadRequest) scimProvisionAndInviteUserRes() {}
+
+type ScimProvisionAndInviteUserApplicationScimJSONConflict ScimError
+
+func (*ScimProvisionAndInviteUserApplicationScimJSONConflict) scimProvisionAndInviteUserRes() {}
+
+type ScimProvisionAndInviteUserApplicationScimJSONForbidden ScimError
+
+func (*ScimProvisionAndInviteUserApplicationScimJSONForbidden) scimProvisionAndInviteUserRes() {}
+
+type ScimProvisionAndInviteUserApplicationScimJSONInternalServerError ScimError
+
+func (*ScimProvisionAndInviteUserApplicationScimJSONInternalServerError) scimProvisionAndInviteUserRes() {
+}
+
+type ScimProvisionAndInviteUserApplicationScimJSONNotFound ScimError
+
+func (*ScimProvisionAndInviteUserApplicationScimJSONNotFound) scimProvisionAndInviteUserRes() {}
+
+type ScimProvisionAndInviteUserReq struct {
+	// Configured by the admin. Could be an email, login, or username.
+	UserName string `json:"userName"`
+	// The name of the user, suitable for display to end-users.
+	DisplayName OptString                         `json:"displayName"`
+	Name        ScimProvisionAndInviteUserReqName `json:"name"`
+	// User emails.
+	Emails     []ScimProvisionAndInviteUserReqEmailsItem `json:"emails"`
+	Schemas    []string                                  `json:"schemas"`
+	ExternalId OptString                                 `json:"externalId"`
+	Groups     []string                                  `json:"groups"`
+	Active     OptBool                                   `json:"active"`
+}
+
+// GetUserName returns the value of UserName.
+func (s *ScimProvisionAndInviteUserReq) GetUserName() string {
+	return s.UserName
+}
+
+// GetDisplayName returns the value of DisplayName.
+func (s *ScimProvisionAndInviteUserReq) GetDisplayName() OptString {
+	return s.DisplayName
+}
+
+// GetName returns the value of Name.
+func (s *ScimProvisionAndInviteUserReq) GetName() ScimProvisionAndInviteUserReqName {
+	return s.Name
+}
+
+// GetEmails returns the value of Emails.
+func (s *ScimProvisionAndInviteUserReq) GetEmails() []ScimProvisionAndInviteUserReqEmailsItem {
+	return s.Emails
+}
+
+// GetSchemas returns the value of Schemas.
+func (s *ScimProvisionAndInviteUserReq) GetSchemas() []string {
+	return s.Schemas
+}
+
+// GetExternalId returns the value of ExternalId.
+func (s *ScimProvisionAndInviteUserReq) GetExternalId() OptString {
+	return s.ExternalId
+}
+
+// GetGroups returns the value of Groups.
+func (s *ScimProvisionAndInviteUserReq) GetGroups() []string {
+	return s.Groups
+}
+
+// GetActive returns the value of Active.
+func (s *ScimProvisionAndInviteUserReq) GetActive() OptBool {
+	return s.Active
+}
+
+// SetUserName sets the value of UserName.
+func (s *ScimProvisionAndInviteUserReq) SetUserName(val string) {
+	s.UserName = val
+}
+
+// SetDisplayName sets the value of DisplayName.
+func (s *ScimProvisionAndInviteUserReq) SetDisplayName(val OptString) {
+	s.DisplayName = val
+}
+
+// SetName sets the value of Name.
+func (s *ScimProvisionAndInviteUserReq) SetName(val ScimProvisionAndInviteUserReqName) {
+	s.Name = val
+}
+
+// SetEmails sets the value of Emails.
+func (s *ScimProvisionAndInviteUserReq) SetEmails(val []ScimProvisionAndInviteUserReqEmailsItem) {
+	s.Emails = val
+}
+
+// SetSchemas sets the value of Schemas.
+func (s *ScimProvisionAndInviteUserReq) SetSchemas(val []string) {
+	s.Schemas = val
+}
+
+// SetExternalId sets the value of ExternalId.
+func (s *ScimProvisionAndInviteUserReq) SetExternalId(val OptString) {
+	s.ExternalId = val
+}
+
+// SetGroups sets the value of Groups.
+func (s *ScimProvisionAndInviteUserReq) SetGroups(val []string) {
+	s.Groups = val
+}
+
+// SetActive sets the value of Active.
+func (s *ScimProvisionAndInviteUserReq) SetActive(val OptBool) {
+	s.Active = val
+}
+
+type ScimProvisionAndInviteUserReqEmailsItem struct {
+	Value   string    `json:"value"`
+	Primary OptBool   `json:"primary"`
+	Type    OptString `json:"type"`
+}
+
+// GetValue returns the value of Value.
+func (s *ScimProvisionAndInviteUserReqEmailsItem) GetValue() string {
+	return s.Value
+}
+
+// GetPrimary returns the value of Primary.
+func (s *ScimProvisionAndInviteUserReqEmailsItem) GetPrimary() OptBool {
+	return s.Primary
+}
+
+// GetType returns the value of Type.
+func (s *ScimProvisionAndInviteUserReqEmailsItem) GetType() OptString {
+	return s.Type
+}
+
+// SetValue sets the value of Value.
+func (s *ScimProvisionAndInviteUserReqEmailsItem) SetValue(val string) {
+	s.Value = val
+}
+
+// SetPrimary sets the value of Primary.
+func (s *ScimProvisionAndInviteUserReqEmailsItem) SetPrimary(val OptBool) {
+	s.Primary = val
+}
+
+// SetType sets the value of Type.
+func (s *ScimProvisionAndInviteUserReqEmailsItem) SetType(val OptString) {
+	s.Type = val
+}
+
+type ScimProvisionAndInviteUserReqName struct {
+	GivenName  string    `json:"givenName"`
+	FamilyName string    `json:"familyName"`
+	Formatted  OptString `json:"formatted"`
+}
+
+// GetGivenName returns the value of GivenName.
+func (s *ScimProvisionAndInviteUserReqName) GetGivenName() string {
+	return s.GivenName
+}
+
+// GetFamilyName returns the value of FamilyName.
+func (s *ScimProvisionAndInviteUserReqName) GetFamilyName() string {
+	return s.FamilyName
+}
+
+// GetFormatted returns the value of Formatted.
+func (s *ScimProvisionAndInviteUserReqName) GetFormatted() OptString {
+	return s.Formatted
+}
+
+// SetGivenName sets the value of GivenName.
+func (s *ScimProvisionAndInviteUserReqName) SetGivenName(val string) {
+	s.GivenName = val
+}
+
+// SetFamilyName sets the value of FamilyName.
+func (s *ScimProvisionAndInviteUserReqName) SetFamilyName(val string) {
+	s.FamilyName = val
+}
+
+// SetFormatted sets the value of Formatted.
+func (s *ScimProvisionAndInviteUserReqName) SetFormatted(val OptString) {
+	s.Formatted = val
+}
+
+type ScimSetInformationForProvisionedUserApplicationJSONForbidden ScimError
+
+func (*ScimSetInformationForProvisionedUserApplicationJSONForbidden) scimSetInformationForProvisionedUserRes() {
+}
+
+type ScimSetInformationForProvisionedUserApplicationJSONNotFound ScimError
+
+func (*ScimSetInformationForProvisionedUserApplicationJSONNotFound) scimSetInformationForProvisionedUserRes() {
+}
+
+type ScimSetInformationForProvisionedUserApplicationScimJSONForbidden ScimError
+
+func (*ScimSetInformationForProvisionedUserApplicationScimJSONForbidden) scimSetInformationForProvisionedUserRes() {
+}
+
+type ScimSetInformationForProvisionedUserApplicationScimJSONNotFound ScimError
+
+func (*ScimSetInformationForProvisionedUserApplicationScimJSONNotFound) scimSetInformationForProvisionedUserRes() {
+}
+
+type ScimSetInformationForProvisionedUserReq struct {
+	Schemas []string `json:"schemas"`
+	// The name of the user, suitable for display to end-users.
+	DisplayName OptString `json:"displayName"`
+	ExternalId  OptString `json:"externalId"`
+	Groups      []string  `json:"groups"`
+	Active      OptBool   `json:"active"`
+	// Configured by the admin. Could be an email, login, or username.
+	UserName string                                      `json:"userName"`
+	Name     ScimSetInformationForProvisionedUserReqName `json:"name"`
+	// User emails.
+	Emails []ScimSetInformationForProvisionedUserReqEmailsItem `json:"emails"`
+}
+
+// GetSchemas returns the value of Schemas.
+func (s *ScimSetInformationForProvisionedUserReq) GetSchemas() []string {
+	return s.Schemas
+}
+
+// GetDisplayName returns the value of DisplayName.
+func (s *ScimSetInformationForProvisionedUserReq) GetDisplayName() OptString {
+	return s.DisplayName
+}
+
+// GetExternalId returns the value of ExternalId.
+func (s *ScimSetInformationForProvisionedUserReq) GetExternalId() OptString {
+	return s.ExternalId
+}
+
+// GetGroups returns the value of Groups.
+func (s *ScimSetInformationForProvisionedUserReq) GetGroups() []string {
+	return s.Groups
+}
+
+// GetActive returns the value of Active.
+func (s *ScimSetInformationForProvisionedUserReq) GetActive() OptBool {
+	return s.Active
+}
+
+// GetUserName returns the value of UserName.
+func (s *ScimSetInformationForProvisionedUserReq) GetUserName() string {
+	return s.UserName
+}
+
+// GetName returns the value of Name.
+func (s *ScimSetInformationForProvisionedUserReq) GetName() ScimSetInformationForProvisionedUserReqName {
+	return s.Name
+}
+
+// GetEmails returns the value of Emails.
+func (s *ScimSetInformationForProvisionedUserReq) GetEmails() []ScimSetInformationForProvisionedUserReqEmailsItem {
+	return s.Emails
+}
+
+// SetSchemas sets the value of Schemas.
+func (s *ScimSetInformationForProvisionedUserReq) SetSchemas(val []string) {
+	s.Schemas = val
+}
+
+// SetDisplayName sets the value of DisplayName.
+func (s *ScimSetInformationForProvisionedUserReq) SetDisplayName(val OptString) {
+	s.DisplayName = val
+}
+
+// SetExternalId sets the value of ExternalId.
+func (s *ScimSetInformationForProvisionedUserReq) SetExternalId(val OptString) {
+	s.ExternalId = val
+}
+
+// SetGroups sets the value of Groups.
+func (s *ScimSetInformationForProvisionedUserReq) SetGroups(val []string) {
+	s.Groups = val
+}
+
+// SetActive sets the value of Active.
+func (s *ScimSetInformationForProvisionedUserReq) SetActive(val OptBool) {
+	s.Active = val
+}
+
+// SetUserName sets the value of UserName.
+func (s *ScimSetInformationForProvisionedUserReq) SetUserName(val string) {
+	s.UserName = val
+}
+
+// SetName sets the value of Name.
+func (s *ScimSetInformationForProvisionedUserReq) SetName(val ScimSetInformationForProvisionedUserReqName) {
+	s.Name = val
+}
+
+// SetEmails sets the value of Emails.
+func (s *ScimSetInformationForProvisionedUserReq) SetEmails(val []ScimSetInformationForProvisionedUserReqEmailsItem) {
+	s.Emails = val
+}
+
+type ScimSetInformationForProvisionedUserReqEmailsItem struct {
+	Type    OptString `json:"type"`
+	Value   string    `json:"value"`
+	Primary OptBool   `json:"primary"`
+}
+
+// GetType returns the value of Type.
+func (s *ScimSetInformationForProvisionedUserReqEmailsItem) GetType() OptString {
+	return s.Type
+}
+
+// GetValue returns the value of Value.
+func (s *ScimSetInformationForProvisionedUserReqEmailsItem) GetValue() string {
+	return s.Value
+}
+
+// GetPrimary returns the value of Primary.
+func (s *ScimSetInformationForProvisionedUserReqEmailsItem) GetPrimary() OptBool {
+	return s.Primary
+}
+
+// SetType sets the value of Type.
+func (s *ScimSetInformationForProvisionedUserReqEmailsItem) SetType(val OptString) {
+	s.Type = val
+}
+
+// SetValue sets the value of Value.
+func (s *ScimSetInformationForProvisionedUserReqEmailsItem) SetValue(val string) {
+	s.Value = val
+}
+
+// SetPrimary sets the value of Primary.
+func (s *ScimSetInformationForProvisionedUserReqEmailsItem) SetPrimary(val OptBool) {
+	s.Primary = val
+}
+
+type ScimSetInformationForProvisionedUserReqName struct {
+	GivenName  string    `json:"givenName"`
+	FamilyName string    `json:"familyName"`
+	Formatted  OptString `json:"formatted"`
+}
+
+// GetGivenName returns the value of GivenName.
+func (s *ScimSetInformationForProvisionedUserReqName) GetGivenName() string {
+	return s.GivenName
+}
+
+// GetFamilyName returns the value of FamilyName.
+func (s *ScimSetInformationForProvisionedUserReqName) GetFamilyName() string {
+	return s.FamilyName
+}
+
+// GetFormatted returns the value of Formatted.
+func (s *ScimSetInformationForProvisionedUserReqName) GetFormatted() OptString {
+	return s.Formatted
+}
+
+// SetGivenName sets the value of GivenName.
+func (s *ScimSetInformationForProvisionedUserReqName) SetGivenName(val string) {
+	s.GivenName = val
+}
+
+// SetFamilyName sets the value of FamilyName.
+func (s *ScimSetInformationForProvisionedUserReqName) SetFamilyName(val string) {
+	s.FamilyName = val
+}
+
+// SetFormatted sets the value of Formatted.
+func (s *ScimSetInformationForProvisionedUserReqName) SetFormatted(val OptString) {
+	s.Formatted = val
+}
+
+type ScimUpdateAttributeForUserApplicationJSONBadRequest ScimError
+
+func (*ScimUpdateAttributeForUserApplicationJSONBadRequest) scimUpdateAttributeForUserRes() {}
+
+type ScimUpdateAttributeForUserApplicationJSONForbidden ScimError
+
+func (*ScimUpdateAttributeForUserApplicationJSONForbidden) scimUpdateAttributeForUserRes() {}
+
+type ScimUpdateAttributeForUserApplicationJSONNotFound ScimError
+
+func (*ScimUpdateAttributeForUserApplicationJSONNotFound) scimUpdateAttributeForUserRes() {}
+
+type ScimUpdateAttributeForUserApplicationScimJSONBadRequest ScimError
+
+func (*ScimUpdateAttributeForUserApplicationScimJSONBadRequest) scimUpdateAttributeForUserRes() {}
+
+type ScimUpdateAttributeForUserApplicationScimJSONForbidden ScimError
+
+func (*ScimUpdateAttributeForUserApplicationScimJSONForbidden) scimUpdateAttributeForUserRes() {}
+
+type ScimUpdateAttributeForUserApplicationScimJSONNotFound ScimError
+
+func (*ScimUpdateAttributeForUserApplicationScimJSONNotFound) scimUpdateAttributeForUserRes() {}
+
+type ScimUpdateAttributeForUserReq struct {
+	Schemas []string `json:"schemas"`
+	// Set of operations to be performed.
+	Operations []ScimUpdateAttributeForUserReqOperationsItem `json:"Operations"`
+}
+
+// GetSchemas returns the value of Schemas.
+func (s *ScimUpdateAttributeForUserReq) GetSchemas() []string {
+	return s.Schemas
+}
+
+// GetOperations returns the value of Operations.
+func (s *ScimUpdateAttributeForUserReq) GetOperations() []ScimUpdateAttributeForUserReqOperationsItem {
+	return s.Operations
+}
+
+// SetSchemas sets the value of Schemas.
+func (s *ScimUpdateAttributeForUserReq) SetSchemas(val []string) {
+	s.Schemas = val
+}
+
+// SetOperations sets the value of Operations.
+func (s *ScimUpdateAttributeForUserReq) SetOperations(val []ScimUpdateAttributeForUserReqOperationsItem) {
+	s.Operations = val
+}
+
+type ScimUpdateAttributeForUserReqOperationsItem struct {
+	Op    ScimUpdateAttributeForUserReqOperationsItemOp       `json:"op"`
+	Path  OptString                                           `json:"path"`
+	Value OptScimUpdateAttributeForUserReqOperationsItemValue `json:"value"`
+}
+
+// GetOp returns the value of Op.
+func (s *ScimUpdateAttributeForUserReqOperationsItem) GetOp() ScimUpdateAttributeForUserReqOperationsItemOp {
+	return s.Op
+}
+
+// GetPath returns the value of Path.
+func (s *ScimUpdateAttributeForUserReqOperationsItem) GetPath() OptString {
+	return s.Path
+}
+
+// GetValue returns the value of Value.
+func (s *ScimUpdateAttributeForUserReqOperationsItem) GetValue() OptScimUpdateAttributeForUserReqOperationsItemValue {
+	return s.Value
+}
+
+// SetOp sets the value of Op.
+func (s *ScimUpdateAttributeForUserReqOperationsItem) SetOp(val ScimUpdateAttributeForUserReqOperationsItemOp) {
+	s.Op = val
+}
+
+// SetPath sets the value of Path.
+func (s *ScimUpdateAttributeForUserReqOperationsItem) SetPath(val OptString) {
+	s.Path = val
+}
+
+// SetValue sets the value of Value.
+func (s *ScimUpdateAttributeForUserReqOperationsItem) SetValue(val OptScimUpdateAttributeForUserReqOperationsItemValue) {
+	s.Value = val
+}
+
+type ScimUpdateAttributeForUserReqOperationsItemOp string
+
+const (
+	ScimUpdateAttributeForUserReqOperationsItemOpAdd     ScimUpdateAttributeForUserReqOperationsItemOp = "add"
+	ScimUpdateAttributeForUserReqOperationsItemOpRemove  ScimUpdateAttributeForUserReqOperationsItemOp = "remove"
+	ScimUpdateAttributeForUserReqOperationsItemOpReplace ScimUpdateAttributeForUserReqOperationsItemOp = "replace"
+)
+
+// AllValues returns all ScimUpdateAttributeForUserReqOperationsItemOp values.
+func (ScimUpdateAttributeForUserReqOperationsItemOp) AllValues() []ScimUpdateAttributeForUserReqOperationsItemOp {
+	return []ScimUpdateAttributeForUserReqOperationsItemOp{
+		ScimUpdateAttributeForUserReqOperationsItemOpAdd,
+		ScimUpdateAttributeForUserReqOperationsItemOpRemove,
+		ScimUpdateAttributeForUserReqOperationsItemOpReplace,
+	}
+}
+
+// MarshalText implements encoding.TextMarshaler.
+func (s ScimUpdateAttributeForUserReqOperationsItemOp) MarshalText() ([]byte, error) {
+	switch s {
+	case ScimUpdateAttributeForUserReqOperationsItemOpAdd:
+		return []byte(s), nil
+	case ScimUpdateAttributeForUserReqOperationsItemOpRemove:
+		return []byte(s), nil
+	case ScimUpdateAttributeForUserReqOperationsItemOpReplace:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *ScimUpdateAttributeForUserReqOperationsItemOp) UnmarshalText(data []byte) error {
+	switch ScimUpdateAttributeForUserReqOperationsItemOp(data) {
+	case ScimUpdateAttributeForUserReqOperationsItemOpAdd:
+		*s = ScimUpdateAttributeForUserReqOperationsItemOpAdd
+		return nil
+	case ScimUpdateAttributeForUserReqOperationsItemOpRemove:
+		*s = ScimUpdateAttributeForUserReqOperationsItemOpRemove
+		return nil
+	case ScimUpdateAttributeForUserReqOperationsItemOpReplace:
+		*s = ScimUpdateAttributeForUserReqOperationsItemOpReplace
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
+// ScimUpdateAttributeForUserReqOperationsItemValue represents sum type.
+type ScimUpdateAttributeForUserReqOperationsItemValue struct {
+	Type                                                       ScimUpdateAttributeForUserReqOperationsItemValueType // switch on this field
+	ScimUpdateAttributeForUserReqOperationsItemValue0          ScimUpdateAttributeForUserReqOperationsItemValue0
+	ScimUpdateAttributeForUserReqOperationsItemValue1ItemArray []ScimUpdateAttributeForUserReqOperationsItemValue1Item
+	String                                                     string
+}
+
+// ScimUpdateAttributeForUserReqOperationsItemValueType is oneOf type of ScimUpdateAttributeForUserReqOperationsItemValue.
+type ScimUpdateAttributeForUserReqOperationsItemValueType string
+
+// Possible values for ScimUpdateAttributeForUserReqOperationsItemValueType.
+const (
+	ScimUpdateAttributeForUserReqOperationsItemValue0ScimUpdateAttributeForUserReqOperationsItemValue          ScimUpdateAttributeForUserReqOperationsItemValueType = "ScimUpdateAttributeForUserReqOperationsItemValue0"
+	ScimUpdateAttributeForUserReqOperationsItemValue1ItemArrayScimUpdateAttributeForUserReqOperationsItemValue ScimUpdateAttributeForUserReqOperationsItemValueType = "[]ScimUpdateAttributeForUserReqOperationsItemValue1Item"
+	StringScimUpdateAttributeForUserReqOperationsItemValue                                                     ScimUpdateAttributeForUserReqOperationsItemValueType = "string"
+)
+
+// IsScimUpdateAttributeForUserReqOperationsItemValue0 reports whether ScimUpdateAttributeForUserReqOperationsItemValue is ScimUpdateAttributeForUserReqOperationsItemValue0.
+func (s ScimUpdateAttributeForUserReqOperationsItemValue) IsScimUpdateAttributeForUserReqOperationsItemValue0() bool {
+	return s.Type == ScimUpdateAttributeForUserReqOperationsItemValue0ScimUpdateAttributeForUserReqOperationsItemValue
+}
+
+// IsScimUpdateAttributeForUserReqOperationsItemValue1ItemArray reports whether ScimUpdateAttributeForUserReqOperationsItemValue is []ScimUpdateAttributeForUserReqOperationsItemValue1Item.
+func (s ScimUpdateAttributeForUserReqOperationsItemValue) IsScimUpdateAttributeForUserReqOperationsItemValue1ItemArray() bool {
+	return s.Type == ScimUpdateAttributeForUserReqOperationsItemValue1ItemArrayScimUpdateAttributeForUserReqOperationsItemValue
+}
+
+// IsString reports whether ScimUpdateAttributeForUserReqOperationsItemValue is string.
+func (s ScimUpdateAttributeForUserReqOperationsItemValue) IsString() bool {
+	return s.Type == StringScimUpdateAttributeForUserReqOperationsItemValue
+}
+
+// SetScimUpdateAttributeForUserReqOperationsItemValue0 sets ScimUpdateAttributeForUserReqOperationsItemValue to ScimUpdateAttributeForUserReqOperationsItemValue0.
+func (s *ScimUpdateAttributeForUserReqOperationsItemValue) SetScimUpdateAttributeForUserReqOperationsItemValue0(v ScimUpdateAttributeForUserReqOperationsItemValue0) {
+	s.Type = ScimUpdateAttributeForUserReqOperationsItemValue0ScimUpdateAttributeForUserReqOperationsItemValue
+	s.ScimUpdateAttributeForUserReqOperationsItemValue0 = v
+}
+
+// GetScimUpdateAttributeForUserReqOperationsItemValue0 returns ScimUpdateAttributeForUserReqOperationsItemValue0 and true boolean if ScimUpdateAttributeForUserReqOperationsItemValue is ScimUpdateAttributeForUserReqOperationsItemValue0.
+func (s ScimUpdateAttributeForUserReqOperationsItemValue) GetScimUpdateAttributeForUserReqOperationsItemValue0() (v ScimUpdateAttributeForUserReqOperationsItemValue0, ok bool) {
+	if !s.IsScimUpdateAttributeForUserReqOperationsItemValue0() {
+		return v, false
+	}
+	return s.ScimUpdateAttributeForUserReqOperationsItemValue0, true
+}
+
+// NewScimUpdateAttributeForUserReqOperationsItemValue0ScimUpdateAttributeForUserReqOperationsItemValue returns new ScimUpdateAttributeForUserReqOperationsItemValue from ScimUpdateAttributeForUserReqOperationsItemValue0.
+func NewScimUpdateAttributeForUserReqOperationsItemValue0ScimUpdateAttributeForUserReqOperationsItemValue(v ScimUpdateAttributeForUserReqOperationsItemValue0) ScimUpdateAttributeForUserReqOperationsItemValue {
+	var s ScimUpdateAttributeForUserReqOperationsItemValue
+	s.SetScimUpdateAttributeForUserReqOperationsItemValue0(v)
+	return s
+}
+
+// SetScimUpdateAttributeForUserReqOperationsItemValue1ItemArray sets ScimUpdateAttributeForUserReqOperationsItemValue to []ScimUpdateAttributeForUserReqOperationsItemValue1Item.
+func (s *ScimUpdateAttributeForUserReqOperationsItemValue) SetScimUpdateAttributeForUserReqOperationsItemValue1ItemArray(v []ScimUpdateAttributeForUserReqOperationsItemValue1Item) {
+	s.Type = ScimUpdateAttributeForUserReqOperationsItemValue1ItemArrayScimUpdateAttributeForUserReqOperationsItemValue
+	s.ScimUpdateAttributeForUserReqOperationsItemValue1ItemArray = v
+}
+
+// GetScimUpdateAttributeForUserReqOperationsItemValue1ItemArray returns []ScimUpdateAttributeForUserReqOperationsItemValue1Item and true boolean if ScimUpdateAttributeForUserReqOperationsItemValue is []ScimUpdateAttributeForUserReqOperationsItemValue1Item.
+func (s ScimUpdateAttributeForUserReqOperationsItemValue) GetScimUpdateAttributeForUserReqOperationsItemValue1ItemArray() (v []ScimUpdateAttributeForUserReqOperationsItemValue1Item, ok bool) {
+	if !s.IsScimUpdateAttributeForUserReqOperationsItemValue1ItemArray() {
+		return v, false
+	}
+	return s.ScimUpdateAttributeForUserReqOperationsItemValue1ItemArray, true
+}
+
+// NewScimUpdateAttributeForUserReqOperationsItemValue1ItemArrayScimUpdateAttributeForUserReqOperationsItemValue returns new ScimUpdateAttributeForUserReqOperationsItemValue from []ScimUpdateAttributeForUserReqOperationsItemValue1Item.
+func NewScimUpdateAttributeForUserReqOperationsItemValue1ItemArrayScimUpdateAttributeForUserReqOperationsItemValue(v []ScimUpdateAttributeForUserReqOperationsItemValue1Item) ScimUpdateAttributeForUserReqOperationsItemValue {
+	var s ScimUpdateAttributeForUserReqOperationsItemValue
+	s.SetScimUpdateAttributeForUserReqOperationsItemValue1ItemArray(v)
+	return s
+}
+
+// SetString sets ScimUpdateAttributeForUserReqOperationsItemValue to string.
+func (s *ScimUpdateAttributeForUserReqOperationsItemValue) SetString(v string) {
+	s.Type = StringScimUpdateAttributeForUserReqOperationsItemValue
+	s.String = v
+}
+
+// GetString returns string and true boolean if ScimUpdateAttributeForUserReqOperationsItemValue is string.
+func (s ScimUpdateAttributeForUserReqOperationsItemValue) GetString() (v string, ok bool) {
+	if !s.IsString() {
+		return v, false
+	}
+	return s.String, true
+}
+
+// NewStringScimUpdateAttributeForUserReqOperationsItemValue returns new ScimUpdateAttributeForUserReqOperationsItemValue from string.
+func NewStringScimUpdateAttributeForUserReqOperationsItemValue(v string) ScimUpdateAttributeForUserReqOperationsItemValue {
+	var s ScimUpdateAttributeForUserReqOperationsItemValue
+	s.SetString(v)
+	return s
+}
+
+type ScimUpdateAttributeForUserReqOperationsItemValue0 struct {
+	Active     OptNilBool   `json:"active"`
+	UserName   OptNilString `json:"userName"`
+	ExternalId OptNilString `json:"externalId"`
+	GivenName  OptNilString `json:"givenName"`
+	FamilyName OptNilString `json:"familyName"`
+}
+
+// GetActive returns the value of Active.
+func (s *ScimUpdateAttributeForUserReqOperationsItemValue0) GetActive() OptNilBool {
+	return s.Active
+}
+
+// GetUserName returns the value of UserName.
+func (s *ScimUpdateAttributeForUserReqOperationsItemValue0) GetUserName() OptNilString {
+	return s.UserName
+}
+
+// GetExternalId returns the value of ExternalId.
+func (s *ScimUpdateAttributeForUserReqOperationsItemValue0) GetExternalId() OptNilString {
+	return s.ExternalId
+}
+
+// GetGivenName returns the value of GivenName.
+func (s *ScimUpdateAttributeForUserReqOperationsItemValue0) GetGivenName() OptNilString {
+	return s.GivenName
+}
+
+// GetFamilyName returns the value of FamilyName.
+func (s *ScimUpdateAttributeForUserReqOperationsItemValue0) GetFamilyName() OptNilString {
+	return s.FamilyName
+}
+
+// SetActive sets the value of Active.
+func (s *ScimUpdateAttributeForUserReqOperationsItemValue0) SetActive(val OptNilBool) {
+	s.Active = val
+}
+
+// SetUserName sets the value of UserName.
+func (s *ScimUpdateAttributeForUserReqOperationsItemValue0) SetUserName(val OptNilString) {
+	s.UserName = val
+}
+
+// SetExternalId sets the value of ExternalId.
+func (s *ScimUpdateAttributeForUserReqOperationsItemValue0) SetExternalId(val OptNilString) {
+	s.ExternalId = val
+}
+
+// SetGivenName sets the value of GivenName.
+func (s *ScimUpdateAttributeForUserReqOperationsItemValue0) SetGivenName(val OptNilString) {
+	s.GivenName = val
+}
+
+// SetFamilyName sets the value of FamilyName.
+func (s *ScimUpdateAttributeForUserReqOperationsItemValue0) SetFamilyName(val OptNilString) {
+	s.FamilyName = val
+}
+
+type ScimUpdateAttributeForUserReqOperationsItemValue1Item struct {
+	Value   OptString `json:"value"`
+	Primary OptBool   `json:"primary"`
+}
+
+// GetValue returns the value of Value.
+func (s *ScimUpdateAttributeForUserReqOperationsItemValue1Item) GetValue() OptString {
+	return s.Value
+}
+
+// GetPrimary returns the value of Primary.
+func (s *ScimUpdateAttributeForUserReqOperationsItemValue1Item) GetPrimary() OptBool {
+	return s.Primary
+}
+
+// SetValue sets the value of Value.
+func (s *ScimUpdateAttributeForUserReqOperationsItemValue1Item) SetValue(val OptString) {
+	s.Value = val
+}
+
+// SetPrimary sets the value of Primary.
+func (s *ScimUpdateAttributeForUserReqOperationsItemValue1Item) SetPrimary(val OptBool) {
+	s.Primary = val
+}
+
+// SCIM /Users provisioning endpoints.
+// Ref: #/components/schemas/scim-user
+type ScimUser struct {
+	// SCIM schema used.
+	Schemas []string `json:"schemas"`
+	// Unique identifier of an external identity.
+	ID string `json:"id"`
+	// The ID of the User.
+	ExternalId NilString `json:"externalId"`
+	// Configured by the admin. Could be an email, login, or username.
+	UserName NilString `json:"userName"`
+	// The name of the user, suitable for display to end-users.
+	DisplayName OptNilString `json:"displayName"`
+	Name        ScimUserName `json:"name"`
+	// User emails.
+	Emails []ScimUserEmailsItem `json:"emails"`
+	// The active status of the User.
+	Active bool         `json:"active"`
+	Meta   ScimUserMeta `json:"meta"`
+	// The ID of the organization.
+	OrganizationID OptInt `json:"organization_id"`
+	// Set of operations to be performed.
+	Operations []ScimUserOperationsItem `json:"operations"`
+	// Associated groups.
+	Groups []ScimUserGroupsItem `json:"groups"`
+}
+
+// GetSchemas returns the value of Schemas.
+func (s *ScimUser) GetSchemas() []string {
+	return s.Schemas
+}
+
+// GetID returns the value of ID.
+func (s *ScimUser) GetID() string {
+	return s.ID
+}
+
+// GetExternalId returns the value of ExternalId.
+func (s *ScimUser) GetExternalId() NilString {
+	return s.ExternalId
+}
+
+// GetUserName returns the value of UserName.
+func (s *ScimUser) GetUserName() NilString {
+	return s.UserName
+}
+
+// GetDisplayName returns the value of DisplayName.
+func (s *ScimUser) GetDisplayName() OptNilString {
+	return s.DisplayName
+}
+
+// GetName returns the value of Name.
+func (s *ScimUser) GetName() ScimUserName {
+	return s.Name
+}
+
+// GetEmails returns the value of Emails.
+func (s *ScimUser) GetEmails() []ScimUserEmailsItem {
+	return s.Emails
+}
+
+// GetActive returns the value of Active.
+func (s *ScimUser) GetActive() bool {
+	return s.Active
+}
+
+// GetMeta returns the value of Meta.
+func (s *ScimUser) GetMeta() ScimUserMeta {
+	return s.Meta
+}
+
+// GetOrganizationID returns the value of OrganizationID.
+func (s *ScimUser) GetOrganizationID() OptInt {
+	return s.OrganizationID
+}
+
+// GetOperations returns the value of Operations.
+func (s *ScimUser) GetOperations() []ScimUserOperationsItem {
+	return s.Operations
+}
+
+// GetGroups returns the value of Groups.
+func (s *ScimUser) GetGroups() []ScimUserGroupsItem {
+	return s.Groups
+}
+
+// SetSchemas sets the value of Schemas.
+func (s *ScimUser) SetSchemas(val []string) {
+	s.Schemas = val
+}
+
+// SetID sets the value of ID.
+func (s *ScimUser) SetID(val string) {
+	s.ID = val
+}
+
+// SetExternalId sets the value of ExternalId.
+func (s *ScimUser) SetExternalId(val NilString) {
+	s.ExternalId = val
+}
+
+// SetUserName sets the value of UserName.
+func (s *ScimUser) SetUserName(val NilString) {
+	s.UserName = val
+}
+
+// SetDisplayName sets the value of DisplayName.
+func (s *ScimUser) SetDisplayName(val OptNilString) {
+	s.DisplayName = val
+}
+
+// SetName sets the value of Name.
+func (s *ScimUser) SetName(val ScimUserName) {
+	s.Name = val
+}
+
+// SetEmails sets the value of Emails.
+func (s *ScimUser) SetEmails(val []ScimUserEmailsItem) {
+	s.Emails = val
+}
+
+// SetActive sets the value of Active.
+func (s *ScimUser) SetActive(val bool) {
+	s.Active = val
+}
+
+// SetMeta sets the value of Meta.
+func (s *ScimUser) SetMeta(val ScimUserMeta) {
+	s.Meta = val
+}
+
+// SetOrganizationID sets the value of OrganizationID.
+func (s *ScimUser) SetOrganizationID(val OptInt) {
+	s.OrganizationID = val
+}
+
+// SetOperations sets the value of Operations.
+func (s *ScimUser) SetOperations(val []ScimUserOperationsItem) {
+	s.Operations = val
+}
+
+// SetGroups sets the value of Groups.
+func (s *ScimUser) SetGroups(val []ScimUserGroupsItem) {
+	s.Groups = val
+}
+
+func (*ScimUser) scimGetProvisioningInformationForUserRes() {}
+func (*ScimUser) scimProvisionAndInviteUserRes()            {}
+func (*ScimUser) scimSetInformationForProvisionedUserRes()  {}
+func (*ScimUser) scimUpdateAttributeForUserRes()            {}
+
+type ScimUserEmailsItem struct {
+	Value   string  `json:"value"`
+	Primary OptBool `json:"primary"`
+}
+
+// GetValue returns the value of Value.
+func (s *ScimUserEmailsItem) GetValue() string {
+	return s.Value
+}
+
+// GetPrimary returns the value of Primary.
+func (s *ScimUserEmailsItem) GetPrimary() OptBool {
+	return s.Primary
+}
+
+// SetValue sets the value of Value.
+func (s *ScimUserEmailsItem) SetValue(val string) {
+	s.Value = val
+}
+
+// SetPrimary sets the value of Primary.
+func (s *ScimUserEmailsItem) SetPrimary(val OptBool) {
+	s.Primary = val
+}
+
+type ScimUserGroupsItem struct {
+	Value   OptString `json:"value"`
+	Display OptString `json:"display"`
+}
+
+// GetValue returns the value of Value.
+func (s *ScimUserGroupsItem) GetValue() OptString {
+	return s.Value
+}
+
+// GetDisplay returns the value of Display.
+func (s *ScimUserGroupsItem) GetDisplay() OptString {
+	return s.Display
+}
+
+// SetValue sets the value of Value.
+func (s *ScimUserGroupsItem) SetValue(val OptString) {
+	s.Value = val
+}
+
+// SetDisplay sets the value of Display.
+func (s *ScimUserGroupsItem) SetDisplay(val OptString) {
+	s.Display = val
+}
+
+// SCIM User List.
+// Ref: #/components/schemas/scim-user-list
+type ScimUserList struct {
+	// SCIM schema used.
+	Schemas      []string   `json:"schemas"`
+	TotalResults int        `json:"totalResults"`
+	ItemsPerPage int        `json:"itemsPerPage"`
+	StartIndex   int        `json:"startIndex"`
+	Resources    []ScimUser `json:"Resources"`
+}
+
+// GetSchemas returns the value of Schemas.
+func (s *ScimUserList) GetSchemas() []string {
+	return s.Schemas
+}
+
+// GetTotalResults returns the value of TotalResults.
+func (s *ScimUserList) GetTotalResults() int {
+	return s.TotalResults
+}
+
+// GetItemsPerPage returns the value of ItemsPerPage.
+func (s *ScimUserList) GetItemsPerPage() int {
+	return s.ItemsPerPage
+}
+
+// GetStartIndex returns the value of StartIndex.
+func (s *ScimUserList) GetStartIndex() int {
+	return s.StartIndex
+}
+
+// GetResources returns the value of Resources.
+func (s *ScimUserList) GetResources() []ScimUser {
+	return s.Resources
+}
+
+// SetSchemas sets the value of Schemas.
+func (s *ScimUserList) SetSchemas(val []string) {
+	s.Schemas = val
+}
+
+// SetTotalResults sets the value of TotalResults.
+func (s *ScimUserList) SetTotalResults(val int) {
+	s.TotalResults = val
+}
+
+// SetItemsPerPage sets the value of ItemsPerPage.
+func (s *ScimUserList) SetItemsPerPage(val int) {
+	s.ItemsPerPage = val
+}
+
+// SetStartIndex sets the value of StartIndex.
+func (s *ScimUserList) SetStartIndex(val int) {
+	s.StartIndex = val
+}
+
+// SetResources sets the value of Resources.
+func (s *ScimUserList) SetResources(val []ScimUser) {
+	s.Resources = val
+}
+
+func (*ScimUserList) scimListProvisionedIdentitiesRes() {}
 
 // Ref: #/components/schemas/scim-user-list-enterprise
 type ScimUserListEnterprise struct {
@@ -91512,6 +92681,271 @@ func (s *ScimUserListEnterpriseResourcesItemName) SetGivenName(val OptString) {
 func (s *ScimUserListEnterpriseResourcesItemName) SetFamilyName(val OptString) {
 	s.FamilyName = val
 }
+
+type ScimUserMeta struct {
+	ResourceType OptString   `json:"resourceType"`
+	Created      OptDateTime `json:"created"`
+	LastModified OptDateTime `json:"lastModified"`
+	Location     OptURI      `json:"location"`
+}
+
+// GetResourceType returns the value of ResourceType.
+func (s *ScimUserMeta) GetResourceType() OptString {
+	return s.ResourceType
+}
+
+// GetCreated returns the value of Created.
+func (s *ScimUserMeta) GetCreated() OptDateTime {
+	return s.Created
+}
+
+// GetLastModified returns the value of LastModified.
+func (s *ScimUserMeta) GetLastModified() OptDateTime {
+	return s.LastModified
+}
+
+// GetLocation returns the value of Location.
+func (s *ScimUserMeta) GetLocation() OptURI {
+	return s.Location
+}
+
+// SetResourceType sets the value of ResourceType.
+func (s *ScimUserMeta) SetResourceType(val OptString) {
+	s.ResourceType = val
+}
+
+// SetCreated sets the value of Created.
+func (s *ScimUserMeta) SetCreated(val OptDateTime) {
+	s.Created = val
+}
+
+// SetLastModified sets the value of LastModified.
+func (s *ScimUserMeta) SetLastModified(val OptDateTime) {
+	s.LastModified = val
+}
+
+// SetLocation sets the value of Location.
+func (s *ScimUserMeta) SetLocation(val OptURI) {
+	s.Location = val
+}
+
+type ScimUserName struct {
+	GivenName  NilString    `json:"givenName"`
+	FamilyName NilString    `json:"familyName"`
+	Formatted  OptNilString `json:"formatted"`
+}
+
+// GetGivenName returns the value of GivenName.
+func (s *ScimUserName) GetGivenName() NilString {
+	return s.GivenName
+}
+
+// GetFamilyName returns the value of FamilyName.
+func (s *ScimUserName) GetFamilyName() NilString {
+	return s.FamilyName
+}
+
+// GetFormatted returns the value of Formatted.
+func (s *ScimUserName) GetFormatted() OptNilString {
+	return s.Formatted
+}
+
+// SetGivenName sets the value of GivenName.
+func (s *ScimUserName) SetGivenName(val NilString) {
+	s.GivenName = val
+}
+
+// SetFamilyName sets the value of FamilyName.
+func (s *ScimUserName) SetFamilyName(val NilString) {
+	s.FamilyName = val
+}
+
+// SetFormatted sets the value of Formatted.
+func (s *ScimUserName) SetFormatted(val OptNilString) {
+	s.Formatted = val
+}
+
+type ScimUserOperationsItem struct {
+	Op    ScimUserOperationsItemOp       `json:"op"`
+	Path  OptString                      `json:"path"`
+	Value OptScimUserOperationsItemValue `json:"value"`
+}
+
+// GetOp returns the value of Op.
+func (s *ScimUserOperationsItem) GetOp() ScimUserOperationsItemOp {
+	return s.Op
+}
+
+// GetPath returns the value of Path.
+func (s *ScimUserOperationsItem) GetPath() OptString {
+	return s.Path
+}
+
+// GetValue returns the value of Value.
+func (s *ScimUserOperationsItem) GetValue() OptScimUserOperationsItemValue {
+	return s.Value
+}
+
+// SetOp sets the value of Op.
+func (s *ScimUserOperationsItem) SetOp(val ScimUserOperationsItemOp) {
+	s.Op = val
+}
+
+// SetPath sets the value of Path.
+func (s *ScimUserOperationsItem) SetPath(val OptString) {
+	s.Path = val
+}
+
+// SetValue sets the value of Value.
+func (s *ScimUserOperationsItem) SetValue(val OptScimUserOperationsItemValue) {
+	s.Value = val
+}
+
+type ScimUserOperationsItemOp string
+
+const (
+	ScimUserOperationsItemOpAdd     ScimUserOperationsItemOp = "add"
+	ScimUserOperationsItemOpRemove  ScimUserOperationsItemOp = "remove"
+	ScimUserOperationsItemOpReplace ScimUserOperationsItemOp = "replace"
+)
+
+// AllValues returns all ScimUserOperationsItemOp values.
+func (ScimUserOperationsItemOp) AllValues() []ScimUserOperationsItemOp {
+	return []ScimUserOperationsItemOp{
+		ScimUserOperationsItemOpAdd,
+		ScimUserOperationsItemOpRemove,
+		ScimUserOperationsItemOpReplace,
+	}
+}
+
+// MarshalText implements encoding.TextMarshaler.
+func (s ScimUserOperationsItemOp) MarshalText() ([]byte, error) {
+	switch s {
+	case ScimUserOperationsItemOpAdd:
+		return []byte(s), nil
+	case ScimUserOperationsItemOpRemove:
+		return []byte(s), nil
+	case ScimUserOperationsItemOpReplace:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *ScimUserOperationsItemOp) UnmarshalText(data []byte) error {
+	switch ScimUserOperationsItemOp(data) {
+	case ScimUserOperationsItemOpAdd:
+		*s = ScimUserOperationsItemOpAdd
+		return nil
+	case ScimUserOperationsItemOpRemove:
+		*s = ScimUserOperationsItemOpRemove
+		return nil
+	case ScimUserOperationsItemOpReplace:
+		*s = ScimUserOperationsItemOpReplace
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
+// ScimUserOperationsItemValue represents sum type.
+type ScimUserOperationsItemValue struct {
+	Type                         ScimUserOperationsItemValueType // switch on this field
+	String                       string
+	ScimUserOperationsItemValue1 ScimUserOperationsItemValue1
+	AnyArray                     []jx.Raw
+}
+
+// ScimUserOperationsItemValueType is oneOf type of ScimUserOperationsItemValue.
+type ScimUserOperationsItemValueType string
+
+// Possible values for ScimUserOperationsItemValueType.
+const (
+	StringScimUserOperationsItemValue                       ScimUserOperationsItemValueType = "string"
+	ScimUserOperationsItemValue1ScimUserOperationsItemValue ScimUserOperationsItemValueType = "ScimUserOperationsItemValue1"
+	AnyArrayScimUserOperationsItemValue                     ScimUserOperationsItemValueType = "[]jx.Raw"
+)
+
+// IsString reports whether ScimUserOperationsItemValue is string.
+func (s ScimUserOperationsItemValue) IsString() bool {
+	return s.Type == StringScimUserOperationsItemValue
+}
+
+// IsScimUserOperationsItemValue1 reports whether ScimUserOperationsItemValue is ScimUserOperationsItemValue1.
+func (s ScimUserOperationsItemValue) IsScimUserOperationsItemValue1() bool {
+	return s.Type == ScimUserOperationsItemValue1ScimUserOperationsItemValue
+}
+
+// IsAnyArray reports whether ScimUserOperationsItemValue is []jx.Raw.
+func (s ScimUserOperationsItemValue) IsAnyArray() bool {
+	return s.Type == AnyArrayScimUserOperationsItemValue
+}
+
+// SetString sets ScimUserOperationsItemValue to string.
+func (s *ScimUserOperationsItemValue) SetString(v string) {
+	s.Type = StringScimUserOperationsItemValue
+	s.String = v
+}
+
+// GetString returns string and true boolean if ScimUserOperationsItemValue is string.
+func (s ScimUserOperationsItemValue) GetString() (v string, ok bool) {
+	if !s.IsString() {
+		return v, false
+	}
+	return s.String, true
+}
+
+// NewStringScimUserOperationsItemValue returns new ScimUserOperationsItemValue from string.
+func NewStringScimUserOperationsItemValue(v string) ScimUserOperationsItemValue {
+	var s ScimUserOperationsItemValue
+	s.SetString(v)
+	return s
+}
+
+// SetScimUserOperationsItemValue1 sets ScimUserOperationsItemValue to ScimUserOperationsItemValue1.
+func (s *ScimUserOperationsItemValue) SetScimUserOperationsItemValue1(v ScimUserOperationsItemValue1) {
+	s.Type = ScimUserOperationsItemValue1ScimUserOperationsItemValue
+	s.ScimUserOperationsItemValue1 = v
+}
+
+// GetScimUserOperationsItemValue1 returns ScimUserOperationsItemValue1 and true boolean if ScimUserOperationsItemValue is ScimUserOperationsItemValue1.
+func (s ScimUserOperationsItemValue) GetScimUserOperationsItemValue1() (v ScimUserOperationsItemValue1, ok bool) {
+	if !s.IsScimUserOperationsItemValue1() {
+		return v, false
+	}
+	return s.ScimUserOperationsItemValue1, true
+}
+
+// NewScimUserOperationsItemValue1ScimUserOperationsItemValue returns new ScimUserOperationsItemValue from ScimUserOperationsItemValue1.
+func NewScimUserOperationsItemValue1ScimUserOperationsItemValue(v ScimUserOperationsItemValue1) ScimUserOperationsItemValue {
+	var s ScimUserOperationsItemValue
+	s.SetScimUserOperationsItemValue1(v)
+	return s
+}
+
+// SetAnyArray sets ScimUserOperationsItemValue to []jx.Raw.
+func (s *ScimUserOperationsItemValue) SetAnyArray(v []jx.Raw) {
+	s.Type = AnyArrayScimUserOperationsItemValue
+	s.AnyArray = v
+}
+
+// GetAnyArray returns []jx.Raw and true boolean if ScimUserOperationsItemValue is []jx.Raw.
+func (s ScimUserOperationsItemValue) GetAnyArray() (v []jx.Raw, ok bool) {
+	if !s.IsAnyArray() {
+		return v, false
+	}
+	return s.AnyArray, true
+}
+
+// NewAnyArrayScimUserOperationsItemValue returns new ScimUserOperationsItemValue from []jx.Raw.
+func NewAnyArrayScimUserOperationsItemValue(v []jx.Raw) ScimUserOperationsItemValue {
+	var s ScimUserOperationsItemValue
+	s.SetAnyArray(v)
+	return s
+}
+
+type ScimUserOperationsItemValue1 struct{}
 
 type SearchCodeOK struct {
 	TotalCount        int                    `json:"total_count"`
@@ -93352,6 +94786,33 @@ func (s *Sort) UnmarshalText(data []byte) error {
 	default:
 		return errors.Errorf("invalid value: %q", data)
 	}
+}
+
+// Starred Repository.
+// Ref: #/components/schemas/starred-repository
+type StarredRepository struct {
+	StarredAt time.Time  `json:"starred_at"`
+	Repo      Repository `json:"repo"`
+}
+
+// GetStarredAt returns the value of StarredAt.
+func (s *StarredRepository) GetStarredAt() time.Time {
+	return s.StarredAt
+}
+
+// GetRepo returns the value of Repo.
+func (s *StarredRepository) GetRepo() Repository {
+	return s.Repo
+}
+
+// SetStarredAt sets the value of StarredAt.
+func (s *StarredRepository) SetStarredAt(val time.Time) {
+	s.StarredAt = val
+}
+
+// SetRepo sets the value of Repo.
+func (s *StarredRepository) SetRepo(val Repository) {
+	s.Repo = val
 }
 
 // The status of a commit.

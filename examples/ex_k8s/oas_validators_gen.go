@@ -5434,6 +5434,438 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) Validate() e
 	return nil
 }
 
+func (s *PatchAdmissionregistrationV1MutatingWebhookConfigurationCreated) Validate() error {
+	alias := (*IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchAdmissionregistrationV1MutatingWebhookConfigurationOK) Validate() error {
+	alias := (*IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchAdmissionregistrationV1ValidatingWebhookConfigurationCreated) Validate() error {
+	alias := (*IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchAdmissionregistrationV1ValidatingWebhookConfigurationOK) Validate() error {
+	alias := (*IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchApiextensionsV1CustomResourceDefinitionCreated) Validate() error {
+	alias := (*IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchApiextensionsV1CustomResourceDefinitionOK) Validate() error {
+	alias := (*IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchApiextensionsV1CustomResourceDefinitionStatusCreated) Validate() error {
+	alias := (*IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchApiextensionsV1CustomResourceDefinitionStatusOK) Validate() error {
+	alias := (*IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchApiregistrationV1APIServiceCreated) Validate() error {
+	alias := (*IoK8sKubeAggregatorPkgApisApiregistrationV1APIService)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchApiregistrationV1APIServiceOK) Validate() error {
+	alias := (*IoK8sKubeAggregatorPkgApisApiregistrationV1APIService)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchApiregistrationV1APIServiceStatusCreated) Validate() error {
+	alias := (*IoK8sKubeAggregatorPkgApisApiregistrationV1APIService)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchApiregistrationV1APIServiceStatusOK) Validate() error {
+	alias := (*IoK8sKubeAggregatorPkgApisApiregistrationV1APIService)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchAppsV1NamespacedDaemonSetCreated) Validate() error {
+	alias := (*IoK8sAPIAppsV1DaemonSet)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchAppsV1NamespacedDaemonSetOK) Validate() error {
+	alias := (*IoK8sAPIAppsV1DaemonSet)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchAppsV1NamespacedDaemonSetStatusCreated) Validate() error {
+	alias := (*IoK8sAPIAppsV1DaemonSet)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchAppsV1NamespacedDaemonSetStatusOK) Validate() error {
+	alias := (*IoK8sAPIAppsV1DaemonSet)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchAppsV1NamespacedDeploymentCreated) Validate() error {
+	alias := (*IoK8sAPIAppsV1Deployment)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchAppsV1NamespacedDeploymentOK) Validate() error {
+	alias := (*IoK8sAPIAppsV1Deployment)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchAppsV1NamespacedDeploymentStatusCreated) Validate() error {
+	alias := (*IoK8sAPIAppsV1Deployment)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchAppsV1NamespacedDeploymentStatusOK) Validate() error {
+	alias := (*IoK8sAPIAppsV1Deployment)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchAppsV1NamespacedReplicaSetCreated) Validate() error {
+	alias := (*IoK8sAPIAppsV1ReplicaSet)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchAppsV1NamespacedReplicaSetOK) Validate() error {
+	alias := (*IoK8sAPIAppsV1ReplicaSet)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchAppsV1NamespacedReplicaSetStatusCreated) Validate() error {
+	alias := (*IoK8sAPIAppsV1ReplicaSet)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchAppsV1NamespacedReplicaSetStatusOK) Validate() error {
+	alias := (*IoK8sAPIAppsV1ReplicaSet)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchAppsV1NamespacedStatefulSetCreated) Validate() error {
+	alias := (*IoK8sAPIAppsV1StatefulSet)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchAppsV1NamespacedStatefulSetOK) Validate() error {
+	alias := (*IoK8sAPIAppsV1StatefulSet)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchAppsV1NamespacedStatefulSetStatusCreated) Validate() error {
+	alias := (*IoK8sAPIAppsV1StatefulSet)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchAppsV1NamespacedStatefulSetStatusOK) Validate() error {
+	alias := (*IoK8sAPIAppsV1StatefulSet)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerCreated) Validate() error {
+	alias := (*IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerOK) Validate() error {
+	alias := (*IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusCreated) Validate() error {
+	alias := (*IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusOK) Validate() error {
+	alias := (*IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerCreated) Validate() error {
+	alias := (*IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerOK) Validate() error {
+	alias := (*IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusCreated) Validate() error {
+	alias := (*IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusOK) Validate() error {
+	alias := (*IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchBatchV1NamespacedCronJobCreated) Validate() error {
+	alias := (*IoK8sAPIBatchV1CronJob)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchBatchV1NamespacedCronJobOK) Validate() error {
+	alias := (*IoK8sAPIBatchV1CronJob)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchBatchV1NamespacedCronJobStatusCreated) Validate() error {
+	alias := (*IoK8sAPIBatchV1CronJob)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchBatchV1NamespacedCronJobStatusOK) Validate() error {
+	alias := (*IoK8sAPIBatchV1CronJob)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchBatchV1NamespacedJobCreated) Validate() error {
+	alias := (*IoK8sAPIBatchV1Job)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchBatchV1NamespacedJobOK) Validate() error {
+	alias := (*IoK8sAPIBatchV1Job)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchBatchV1NamespacedJobStatusCreated) Validate() error {
+	alias := (*IoK8sAPIBatchV1Job)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchBatchV1NamespacedJobStatusOK) Validate() error {
+	alias := (*IoK8sAPIBatchV1Job)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchBatchV1beta1NamespacedCronJobCreated) Validate() error {
+	alias := (*IoK8sAPIBatchV1beta1CronJob)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchBatchV1beta1NamespacedCronJobOK) Validate() error {
+	alias := (*IoK8sAPIBatchV1beta1CronJob)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchBatchV1beta1NamespacedCronJobStatusCreated) Validate() error {
+	alias := (*IoK8sAPIBatchV1beta1CronJob)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchBatchV1beta1NamespacedCronJobStatusOK) Validate() error {
+	alias := (*IoK8sAPIBatchV1beta1CronJob)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchCertificatesV1CertificateSigningRequestApprovalCreated) Validate() error {
+	alias := (*IoK8sAPICertificatesV1CertificateSigningRequest)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchCertificatesV1CertificateSigningRequestApprovalOK) Validate() error {
+	alias := (*IoK8sAPICertificatesV1CertificateSigningRequest)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchCertificatesV1CertificateSigningRequestCreated) Validate() error {
+	alias := (*IoK8sAPICertificatesV1CertificateSigningRequest)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchCertificatesV1CertificateSigningRequestOK) Validate() error {
+	alias := (*IoK8sAPICertificatesV1CertificateSigningRequest)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchCertificatesV1CertificateSigningRequestStatusCreated) Validate() error {
+	alias := (*IoK8sAPICertificatesV1CertificateSigningRequest)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchCertificatesV1CertificateSigningRequestStatusOK) Validate() error {
+	alias := (*IoK8sAPICertificatesV1CertificateSigningRequest)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (s *PatchCoreV1NamespacedConfigMapCreated) Validate() error {
 	alias := (*IoK8sAPICoreV1ConfigMap)(s)
 	if err := alias.Validate(); err != nil {
@@ -5444,6 +5876,406 @@ func (s *PatchCoreV1NamespacedConfigMapCreated) Validate() error {
 
 func (s *PatchCoreV1NamespacedConfigMapOK) Validate() error {
 	alias := (*IoK8sAPICoreV1ConfigMap)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchCoreV1NamespacedLimitRangeCreated) Validate() error {
+	alias := (*IoK8sAPICoreV1LimitRange)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchCoreV1NamespacedLimitRangeOK) Validate() error {
+	alias := (*IoK8sAPICoreV1LimitRange)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchCoreV1NamespacedPodCreated) Validate() error {
+	alias := (*IoK8sAPICoreV1Pod)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchCoreV1NamespacedPodEphemeralcontainersCreated) Validate() error {
+	alias := (*IoK8sAPICoreV1Pod)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchCoreV1NamespacedPodEphemeralcontainersOK) Validate() error {
+	alias := (*IoK8sAPICoreV1Pod)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchCoreV1NamespacedPodOK) Validate() error {
+	alias := (*IoK8sAPICoreV1Pod)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchCoreV1NamespacedPodStatusCreated) Validate() error {
+	alias := (*IoK8sAPICoreV1Pod)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchCoreV1NamespacedPodStatusOK) Validate() error {
+	alias := (*IoK8sAPICoreV1Pod)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchCoreV1NamespacedPodTemplateCreated) Validate() error {
+	alias := (*IoK8sAPICoreV1PodTemplate)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchCoreV1NamespacedPodTemplateOK) Validate() error {
+	alias := (*IoK8sAPICoreV1PodTemplate)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchCoreV1NamespacedReplicationControllerCreated) Validate() error {
+	alias := (*IoK8sAPICoreV1ReplicationController)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchCoreV1NamespacedReplicationControllerOK) Validate() error {
+	alias := (*IoK8sAPICoreV1ReplicationController)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchCoreV1NamespacedReplicationControllerStatusCreated) Validate() error {
+	alias := (*IoK8sAPICoreV1ReplicationController)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchCoreV1NamespacedReplicationControllerStatusOK) Validate() error {
+	alias := (*IoK8sAPICoreV1ReplicationController)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchCoreV1NamespacedSecretCreated) Validate() error {
+	alias := (*IoK8sAPICoreV1Secret)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchCoreV1NamespacedSecretOK) Validate() error {
+	alias := (*IoK8sAPICoreV1Secret)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchCoreV1PersistentVolumeCreated) Validate() error {
+	alias := (*IoK8sAPICoreV1PersistentVolume)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchCoreV1PersistentVolumeOK) Validate() error {
+	alias := (*IoK8sAPICoreV1PersistentVolume)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchCoreV1PersistentVolumeStatusCreated) Validate() error {
+	alias := (*IoK8sAPICoreV1PersistentVolume)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchCoreV1PersistentVolumeStatusOK) Validate() error {
+	alias := (*IoK8sAPICoreV1PersistentVolume)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchDiscoveryV1NamespacedEndpointSliceCreated) Validate() error {
+	alias := (*IoK8sAPIDiscoveryV1EndpointSlice)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchDiscoveryV1NamespacedEndpointSliceOK) Validate() error {
+	alias := (*IoK8sAPIDiscoveryV1EndpointSlice)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchDiscoveryV1beta1NamespacedEndpointSliceCreated) Validate() error {
+	alias := (*IoK8sAPIDiscoveryV1beta1EndpointSlice)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchDiscoveryV1beta1NamespacedEndpointSliceOK) Validate() error {
+	alias := (*IoK8sAPIDiscoveryV1beta1EndpointSlice)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchFlowcontrolApiserverV1beta1FlowSchemaCreated) Validate() error {
+	alias := (*IoK8sAPIFlowcontrolV1beta1FlowSchema)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchFlowcontrolApiserverV1beta1FlowSchemaOK) Validate() error {
+	alias := (*IoK8sAPIFlowcontrolV1beta1FlowSchema)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchFlowcontrolApiserverV1beta1FlowSchemaStatusCreated) Validate() error {
+	alias := (*IoK8sAPIFlowcontrolV1beta1FlowSchema)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchFlowcontrolApiserverV1beta1FlowSchemaStatusOK) Validate() error {
+	alias := (*IoK8sAPIFlowcontrolV1beta1FlowSchema)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchFlowcontrolApiserverV1beta2FlowSchemaCreated) Validate() error {
+	alias := (*IoK8sAPIFlowcontrolV1beta2FlowSchema)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchFlowcontrolApiserverV1beta2FlowSchemaOK) Validate() error {
+	alias := (*IoK8sAPIFlowcontrolV1beta2FlowSchema)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchFlowcontrolApiserverV1beta2FlowSchemaStatusCreated) Validate() error {
+	alias := (*IoK8sAPIFlowcontrolV1beta2FlowSchema)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchFlowcontrolApiserverV1beta2FlowSchemaStatusOK) Validate() error {
+	alias := (*IoK8sAPIFlowcontrolV1beta2FlowSchema)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchNetworkingV1NamespacedIngressCreated) Validate() error {
+	alias := (*IoK8sAPINetworkingV1Ingress)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchNetworkingV1NamespacedIngressOK) Validate() error {
+	alias := (*IoK8sAPINetworkingV1Ingress)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchNetworkingV1NamespacedIngressStatusCreated) Validate() error {
+	alias := (*IoK8sAPINetworkingV1Ingress)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchNetworkingV1NamespacedIngressStatusOK) Validate() error {
+	alias := (*IoK8sAPINetworkingV1Ingress)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchPolicyV1beta1PodSecurityPolicyCreated) Validate() error {
+	alias := (*IoK8sAPIPolicyV1beta1PodSecurityPolicy)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchPolicyV1beta1PodSecurityPolicyOK) Validate() error {
+	alias := (*IoK8sAPIPolicyV1beta1PodSecurityPolicy)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchRbacAuthorizationV1ClusterRoleCreated) Validate() error {
+	alias := (*IoK8sAPIRbacV1ClusterRole)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchRbacAuthorizationV1ClusterRoleOK) Validate() error {
+	alias := (*IoK8sAPIRbacV1ClusterRole)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchRbacAuthorizationV1NamespacedRoleCreated) Validate() error {
+	alias := (*IoK8sAPIRbacV1Role)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchRbacAuthorizationV1NamespacedRoleOK) Validate() error {
+	alias := (*IoK8sAPIRbacV1Role)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchStorageV1CSINodeCreated) Validate() error {
+	alias := (*IoK8sAPIStorageV1CSINode)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchStorageV1CSINodeOK) Validate() error {
+	alias := (*IoK8sAPIStorageV1CSINode)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchStorageV1StorageClassCreated) Validate() error {
+	alias := (*IoK8sAPIStorageV1StorageClass)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchStorageV1StorageClassOK) Validate() error {
+	alias := (*IoK8sAPIStorageV1StorageClass)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchStorageV1VolumeAttachmentCreated) Validate() error {
+	alias := (*IoK8sAPIStorageV1VolumeAttachment)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchStorageV1VolumeAttachmentOK) Validate() error {
+	alias := (*IoK8sAPIStorageV1VolumeAttachment)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchStorageV1VolumeAttachmentStatusCreated) Validate() error {
+	alias := (*IoK8sAPIStorageV1VolumeAttachment)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchStorageV1VolumeAttachmentStatusOK) Validate() error {
+	alias := (*IoK8sAPIStorageV1VolumeAttachment)(s)
 	if err := alias.Validate(); err != nil {
 		return err
 	}

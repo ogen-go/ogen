@@ -6,20 +6,3596 @@ import (
 	"bytes"
 	"net/http"
 
+	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
 	ht "github.com/ogen-go/ogen/http"
 )
 
-func encodePatchCoreV1NamespacedConfigMapRequest(
-	req *IoK8sApimachineryPkgApisMetaV1Patch,
+func encodePatchAdmissionregistrationV1MutatingWebhookConfigurationRequest(
+	req PatchAdmissionregistrationV1MutatingWebhookConfigurationReq,
 	r *http.Request,
 ) error {
-	const contentType = "application/json"
-	e := new(jx.Encoder)
-	{
-		req.Encode(e)
+	switch req := req.(type) {
+	case *PatchAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchAdmissionregistrationV1MutatingWebhookConfigurationApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchAdmissionregistrationV1MutatingWebhookConfigurationApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
 	}
-	encoded := e.Bytes()
-	ht.SetBody(r, bytes.NewReader(encoded), contentType)
-	return nil
+}
+
+func encodePatchAdmissionregistrationV1ValidatingWebhookConfigurationRequest(
+	req PatchAdmissionregistrationV1ValidatingWebhookConfigurationReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchAdmissionregistrationV1ValidatingWebhookConfigurationApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchAdmissionregistrationV1ValidatingWebhookConfigurationApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchApiextensionsV1CustomResourceDefinitionRequest(
+	req PatchApiextensionsV1CustomResourceDefinitionReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchApiextensionsV1CustomResourceDefinitionApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchApiextensionsV1CustomResourceDefinitionApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchApiextensionsV1CustomResourceDefinitionApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchApiextensionsV1CustomResourceDefinitionStatusRequest(
+	req PatchApiextensionsV1CustomResourceDefinitionStatusReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchApiextensionsV1CustomResourceDefinitionStatusApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchApiextensionsV1CustomResourceDefinitionStatusApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchApiextensionsV1CustomResourceDefinitionStatusApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchApiregistrationV1APIServiceRequest(
+	req PatchApiregistrationV1APIServiceReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchApiregistrationV1APIServiceApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchApiregistrationV1APIServiceApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchApiregistrationV1APIServiceApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchApiregistrationV1APIServiceStatusRequest(
+	req PatchApiregistrationV1APIServiceStatusReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchApiregistrationV1APIServiceStatusApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchApiregistrationV1APIServiceStatusApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchApiregistrationV1APIServiceStatusApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchAppsV1NamespacedControllerRevisionRequest(
+	req PatchAppsV1NamespacedControllerRevisionReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchAppsV1NamespacedControllerRevisionApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchAppsV1NamespacedControllerRevisionApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchAppsV1NamespacedControllerRevisionApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchAppsV1NamespacedDaemonSetRequest(
+	req PatchAppsV1NamespacedDaemonSetReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchAppsV1NamespacedDaemonSetApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchAppsV1NamespacedDaemonSetApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchAppsV1NamespacedDaemonSetApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchAppsV1NamespacedDaemonSetStatusRequest(
+	req PatchAppsV1NamespacedDaemonSetStatusReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchAppsV1NamespacedDaemonSetStatusApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchAppsV1NamespacedDaemonSetStatusApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchAppsV1NamespacedDaemonSetStatusApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchAppsV1NamespacedDeploymentRequest(
+	req PatchAppsV1NamespacedDeploymentReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchAppsV1NamespacedDeploymentApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchAppsV1NamespacedDeploymentApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchAppsV1NamespacedDeploymentApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchAppsV1NamespacedDeploymentScaleRequest(
+	req PatchAppsV1NamespacedDeploymentScaleReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchAppsV1NamespacedDeploymentScaleApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchAppsV1NamespacedDeploymentScaleApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchAppsV1NamespacedDeploymentScaleApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchAppsV1NamespacedDeploymentStatusRequest(
+	req PatchAppsV1NamespacedDeploymentStatusReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchAppsV1NamespacedDeploymentStatusApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchAppsV1NamespacedDeploymentStatusApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchAppsV1NamespacedDeploymentStatusApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchAppsV1NamespacedReplicaSetRequest(
+	req PatchAppsV1NamespacedReplicaSetReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchAppsV1NamespacedReplicaSetApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchAppsV1NamespacedReplicaSetApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchAppsV1NamespacedReplicaSetApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchAppsV1NamespacedReplicaSetScaleRequest(
+	req PatchAppsV1NamespacedReplicaSetScaleReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchAppsV1NamespacedReplicaSetScaleApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchAppsV1NamespacedReplicaSetScaleApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchAppsV1NamespacedReplicaSetScaleApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchAppsV1NamespacedReplicaSetStatusRequest(
+	req PatchAppsV1NamespacedReplicaSetStatusReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchAppsV1NamespacedReplicaSetStatusApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchAppsV1NamespacedReplicaSetStatusApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchAppsV1NamespacedReplicaSetStatusApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchAppsV1NamespacedStatefulSetRequest(
+	req PatchAppsV1NamespacedStatefulSetReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchAppsV1NamespacedStatefulSetApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchAppsV1NamespacedStatefulSetApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchAppsV1NamespacedStatefulSetApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchAppsV1NamespacedStatefulSetScaleRequest(
+	req PatchAppsV1NamespacedStatefulSetScaleReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchAppsV1NamespacedStatefulSetScaleApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchAppsV1NamespacedStatefulSetScaleApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchAppsV1NamespacedStatefulSetScaleApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchAppsV1NamespacedStatefulSetStatusRequest(
+	req PatchAppsV1NamespacedStatefulSetStatusReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchAppsV1NamespacedStatefulSetStatusApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchAppsV1NamespacedStatefulSetStatusApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchAppsV1NamespacedStatefulSetStatusApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchAutoscalingV1NamespacedHorizontalPodAutoscalerRequest(
+	req PatchAutoscalingV1NamespacedHorizontalPodAutoscalerReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchAutoscalingV1NamespacedHorizontalPodAutoscalerApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchAutoscalingV1NamespacedHorizontalPodAutoscalerApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchAutoscalingV1NamespacedHorizontalPodAutoscalerApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusRequest(
+	req PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRequest(
+	req PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusRequest(
+	req PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRequest(
+	req PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusRequest(
+	req PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchBatchV1NamespacedCronJobRequest(
+	req PatchBatchV1NamespacedCronJobReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchBatchV1NamespacedCronJobApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchBatchV1NamespacedCronJobApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchBatchV1NamespacedCronJobApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchBatchV1NamespacedCronJobStatusRequest(
+	req PatchBatchV1NamespacedCronJobStatusReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchBatchV1NamespacedCronJobStatusApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchBatchV1NamespacedCronJobStatusApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchBatchV1NamespacedCronJobStatusApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchBatchV1NamespacedJobRequest(
+	req PatchBatchV1NamespacedJobReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchBatchV1NamespacedJobApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchBatchV1NamespacedJobApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchBatchV1NamespacedJobApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchBatchV1NamespacedJobStatusRequest(
+	req PatchBatchV1NamespacedJobStatusReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchBatchV1NamespacedJobStatusApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchBatchV1NamespacedJobStatusApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchBatchV1NamespacedJobStatusApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchBatchV1beta1NamespacedCronJobRequest(
+	req PatchBatchV1beta1NamespacedCronJobReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchBatchV1beta1NamespacedCronJobApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchBatchV1beta1NamespacedCronJobApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchBatchV1beta1NamespacedCronJobApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchBatchV1beta1NamespacedCronJobStatusRequest(
+	req PatchBatchV1beta1NamespacedCronJobStatusReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchBatchV1beta1NamespacedCronJobStatusApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchBatchV1beta1NamespacedCronJobStatusApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchBatchV1beta1NamespacedCronJobStatusApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchCertificatesV1CertificateSigningRequestRequest(
+	req PatchCertificatesV1CertificateSigningRequestReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchCertificatesV1CertificateSigningRequestApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchCertificatesV1CertificateSigningRequestApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchCertificatesV1CertificateSigningRequestApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchCertificatesV1CertificateSigningRequestApprovalRequest(
+	req PatchCertificatesV1CertificateSigningRequestApprovalReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchCertificatesV1CertificateSigningRequestApprovalApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchCertificatesV1CertificateSigningRequestApprovalApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchCertificatesV1CertificateSigningRequestApprovalApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchCertificatesV1CertificateSigningRequestStatusRequest(
+	req PatchCertificatesV1CertificateSigningRequestStatusReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchCertificatesV1CertificateSigningRequestStatusApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchCertificatesV1CertificateSigningRequestStatusApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchCertificatesV1CertificateSigningRequestStatusApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchCoordinationV1NamespacedLeaseRequest(
+	req PatchCoordinationV1NamespacedLeaseReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchCoordinationV1NamespacedLeaseApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchCoordinationV1NamespacedLeaseApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchCoordinationV1NamespacedLeaseApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchCoreV1NamespaceRequest(
+	req PatchCoreV1NamespaceReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchCoreV1NamespaceApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchCoreV1NamespaceApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchCoreV1NamespaceApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchCoreV1NamespaceStatusRequest(
+	req PatchCoreV1NamespaceStatusReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchCoreV1NamespaceStatusApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchCoreV1NamespaceStatusApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchCoreV1NamespaceStatusApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchCoreV1NamespacedConfigMapRequest(
+	req PatchCoreV1NamespacedConfigMapReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchCoreV1NamespacedConfigMapApplicationJSON:
+		const contentType = "application/json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchCoreV1NamespacedConfigMapApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchCoreV1NamespacedConfigMapApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchCoreV1NamespacedEndpointsRequest(
+	req PatchCoreV1NamespacedEndpointsReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchCoreV1NamespacedEndpointsApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchCoreV1NamespacedEndpointsApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchCoreV1NamespacedEndpointsApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchCoreV1NamespacedEventRequest(
+	req PatchCoreV1NamespacedEventReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchCoreV1NamespacedEventApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchCoreV1NamespacedEventApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchCoreV1NamespacedEventApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchCoreV1NamespacedLimitRangeRequest(
+	req PatchCoreV1NamespacedLimitRangeReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchCoreV1NamespacedLimitRangeApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchCoreV1NamespacedLimitRangeApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchCoreV1NamespacedLimitRangeApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchCoreV1NamespacedPersistentVolumeClaimRequest(
+	req PatchCoreV1NamespacedPersistentVolumeClaimReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchCoreV1NamespacedPersistentVolumeClaimApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchCoreV1NamespacedPersistentVolumeClaimApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchCoreV1NamespacedPersistentVolumeClaimApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchCoreV1NamespacedPersistentVolumeClaimStatusRequest(
+	req PatchCoreV1NamespacedPersistentVolumeClaimStatusReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchCoreV1NamespacedPersistentVolumeClaimStatusApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchCoreV1NamespacedPersistentVolumeClaimStatusApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchCoreV1NamespacedPersistentVolumeClaimStatusApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchCoreV1NamespacedPodRequest(
+	req PatchCoreV1NamespacedPodReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchCoreV1NamespacedPodApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchCoreV1NamespacedPodApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchCoreV1NamespacedPodApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchCoreV1NamespacedPodEphemeralcontainersRequest(
+	req PatchCoreV1NamespacedPodEphemeralcontainersReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchCoreV1NamespacedPodEphemeralcontainersApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchCoreV1NamespacedPodEphemeralcontainersApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchCoreV1NamespacedPodEphemeralcontainersApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchCoreV1NamespacedPodStatusRequest(
+	req PatchCoreV1NamespacedPodStatusReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchCoreV1NamespacedPodStatusApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchCoreV1NamespacedPodStatusApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchCoreV1NamespacedPodStatusApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchCoreV1NamespacedPodTemplateRequest(
+	req PatchCoreV1NamespacedPodTemplateReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchCoreV1NamespacedPodTemplateApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchCoreV1NamespacedPodTemplateApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchCoreV1NamespacedPodTemplateApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchCoreV1NamespacedReplicationControllerRequest(
+	req PatchCoreV1NamespacedReplicationControllerReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchCoreV1NamespacedReplicationControllerApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchCoreV1NamespacedReplicationControllerApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchCoreV1NamespacedReplicationControllerApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchCoreV1NamespacedReplicationControllerScaleRequest(
+	req PatchCoreV1NamespacedReplicationControllerScaleReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchCoreV1NamespacedReplicationControllerScaleApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchCoreV1NamespacedReplicationControllerScaleApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchCoreV1NamespacedReplicationControllerScaleApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchCoreV1NamespacedReplicationControllerStatusRequest(
+	req PatchCoreV1NamespacedReplicationControllerStatusReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchCoreV1NamespacedReplicationControllerStatusApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchCoreV1NamespacedReplicationControllerStatusApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchCoreV1NamespacedReplicationControllerStatusApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchCoreV1NamespacedResourceQuotaRequest(
+	req PatchCoreV1NamespacedResourceQuotaReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchCoreV1NamespacedResourceQuotaApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchCoreV1NamespacedResourceQuotaApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchCoreV1NamespacedResourceQuotaApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchCoreV1NamespacedResourceQuotaStatusRequest(
+	req PatchCoreV1NamespacedResourceQuotaStatusReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchCoreV1NamespacedResourceQuotaStatusApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchCoreV1NamespacedResourceQuotaStatusApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchCoreV1NamespacedResourceQuotaStatusApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchCoreV1NamespacedSecretRequest(
+	req PatchCoreV1NamespacedSecretReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchCoreV1NamespacedSecretApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchCoreV1NamespacedSecretApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchCoreV1NamespacedSecretApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchCoreV1NamespacedServiceRequest(
+	req PatchCoreV1NamespacedServiceReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchCoreV1NamespacedServiceApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchCoreV1NamespacedServiceApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchCoreV1NamespacedServiceApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchCoreV1NamespacedServiceAccountRequest(
+	req PatchCoreV1NamespacedServiceAccountReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchCoreV1NamespacedServiceAccountApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchCoreV1NamespacedServiceAccountApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchCoreV1NamespacedServiceAccountApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchCoreV1NamespacedServiceStatusRequest(
+	req PatchCoreV1NamespacedServiceStatusReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchCoreV1NamespacedServiceStatusApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchCoreV1NamespacedServiceStatusApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchCoreV1NamespacedServiceStatusApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchCoreV1NodeRequest(
+	req PatchCoreV1NodeReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchCoreV1NodeApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchCoreV1NodeApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchCoreV1NodeApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchCoreV1NodeStatusRequest(
+	req PatchCoreV1NodeStatusReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchCoreV1NodeStatusApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchCoreV1NodeStatusApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchCoreV1NodeStatusApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchCoreV1PersistentVolumeRequest(
+	req PatchCoreV1PersistentVolumeReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchCoreV1PersistentVolumeApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchCoreV1PersistentVolumeApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchCoreV1PersistentVolumeApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchCoreV1PersistentVolumeStatusRequest(
+	req PatchCoreV1PersistentVolumeStatusReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchCoreV1PersistentVolumeStatusApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchCoreV1PersistentVolumeStatusApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchCoreV1PersistentVolumeStatusApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchDiscoveryV1NamespacedEndpointSliceRequest(
+	req PatchDiscoveryV1NamespacedEndpointSliceReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchDiscoveryV1NamespacedEndpointSliceApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchDiscoveryV1NamespacedEndpointSliceApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchDiscoveryV1NamespacedEndpointSliceApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchDiscoveryV1beta1NamespacedEndpointSliceRequest(
+	req PatchDiscoveryV1beta1NamespacedEndpointSliceReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchDiscoveryV1beta1NamespacedEndpointSliceApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchDiscoveryV1beta1NamespacedEndpointSliceApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchDiscoveryV1beta1NamespacedEndpointSliceApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchEventsV1NamespacedEventRequest(
+	req PatchEventsV1NamespacedEventReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchEventsV1NamespacedEventApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchEventsV1NamespacedEventApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchEventsV1NamespacedEventApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchEventsV1beta1NamespacedEventRequest(
+	req PatchEventsV1beta1NamespacedEventReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchEventsV1beta1NamespacedEventApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchEventsV1beta1NamespacedEventApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchEventsV1beta1NamespacedEventApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchFlowcontrolApiserverV1beta1FlowSchemaRequest(
+	req PatchFlowcontrolApiserverV1beta1FlowSchemaReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchFlowcontrolApiserverV1beta1FlowSchemaApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchFlowcontrolApiserverV1beta1FlowSchemaApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchFlowcontrolApiserverV1beta1FlowSchemaStatusRequest(
+	req PatchFlowcontrolApiserverV1beta1FlowSchemaStatusReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchFlowcontrolApiserverV1beta1FlowSchemaStatusApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchFlowcontrolApiserverV1beta1FlowSchemaStatusApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchFlowcontrolApiserverV1beta1FlowSchemaStatusApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationRequest(
+	req PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusRequest(
+	req PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchFlowcontrolApiserverV1beta2FlowSchemaRequest(
+	req PatchFlowcontrolApiserverV1beta2FlowSchemaReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchFlowcontrolApiserverV1beta2FlowSchemaApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchFlowcontrolApiserverV1beta2FlowSchemaApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchFlowcontrolApiserverV1beta2FlowSchemaStatusRequest(
+	req PatchFlowcontrolApiserverV1beta2FlowSchemaStatusReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchFlowcontrolApiserverV1beta2FlowSchemaStatusApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchFlowcontrolApiserverV1beta2FlowSchemaStatusApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchFlowcontrolApiserverV1beta2FlowSchemaStatusApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationRequest(
+	req PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusRequest(
+	req PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchInternalApiserverV1alpha1StorageVersionRequest(
+	req PatchInternalApiserverV1alpha1StorageVersionReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchInternalApiserverV1alpha1StorageVersionApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchInternalApiserverV1alpha1StorageVersionApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchInternalApiserverV1alpha1StorageVersionApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchInternalApiserverV1alpha1StorageVersionStatusRequest(
+	req PatchInternalApiserverV1alpha1StorageVersionStatusReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchInternalApiserverV1alpha1StorageVersionStatusApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchInternalApiserverV1alpha1StorageVersionStatusApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchInternalApiserverV1alpha1StorageVersionStatusApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchNetworkingV1IngressClassRequest(
+	req PatchNetworkingV1IngressClassReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchNetworkingV1IngressClassApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchNetworkingV1IngressClassApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchNetworkingV1IngressClassApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchNetworkingV1NamespacedIngressRequest(
+	req PatchNetworkingV1NamespacedIngressReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchNetworkingV1NamespacedIngressApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchNetworkingV1NamespacedIngressApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchNetworkingV1NamespacedIngressApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchNetworkingV1NamespacedIngressStatusRequest(
+	req PatchNetworkingV1NamespacedIngressStatusReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchNetworkingV1NamespacedIngressStatusApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchNetworkingV1NamespacedIngressStatusApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchNetworkingV1NamespacedIngressStatusApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchNetworkingV1NamespacedNetworkPolicyRequest(
+	req PatchNetworkingV1NamespacedNetworkPolicyReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchNetworkingV1NamespacedNetworkPolicyApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchNetworkingV1NamespacedNetworkPolicyApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchNetworkingV1NamespacedNetworkPolicyApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchNodeV1RuntimeClassRequest(
+	req PatchNodeV1RuntimeClassReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchNodeV1RuntimeClassApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchNodeV1RuntimeClassApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchNodeV1RuntimeClassApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchNodeV1alpha1RuntimeClassRequest(
+	req PatchNodeV1alpha1RuntimeClassReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchNodeV1alpha1RuntimeClassApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchNodeV1alpha1RuntimeClassApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchNodeV1alpha1RuntimeClassApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchNodeV1beta1RuntimeClassRequest(
+	req PatchNodeV1beta1RuntimeClassReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchNodeV1beta1RuntimeClassApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchNodeV1beta1RuntimeClassApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchNodeV1beta1RuntimeClassApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchPolicyV1NamespacedPodDisruptionBudgetRequest(
+	req PatchPolicyV1NamespacedPodDisruptionBudgetReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchPolicyV1NamespacedPodDisruptionBudgetApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchPolicyV1NamespacedPodDisruptionBudgetApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchPolicyV1NamespacedPodDisruptionBudgetApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchPolicyV1NamespacedPodDisruptionBudgetStatusRequest(
+	req PatchPolicyV1NamespacedPodDisruptionBudgetStatusReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchPolicyV1NamespacedPodDisruptionBudgetStatusApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchPolicyV1NamespacedPodDisruptionBudgetStatusApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchPolicyV1NamespacedPodDisruptionBudgetStatusApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchPolicyV1beta1NamespacedPodDisruptionBudgetRequest(
+	req PatchPolicyV1beta1NamespacedPodDisruptionBudgetReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchPolicyV1beta1NamespacedPodDisruptionBudgetApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchPolicyV1beta1NamespacedPodDisruptionBudgetApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchPolicyV1beta1NamespacedPodDisruptionBudgetApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchPolicyV1beta1NamespacedPodDisruptionBudgetStatusRequest(
+	req PatchPolicyV1beta1NamespacedPodDisruptionBudgetStatusReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchPolicyV1beta1NamespacedPodDisruptionBudgetStatusApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchPolicyV1beta1NamespacedPodDisruptionBudgetStatusApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchPolicyV1beta1NamespacedPodDisruptionBudgetStatusApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchPolicyV1beta1PodSecurityPolicyRequest(
+	req PatchPolicyV1beta1PodSecurityPolicyReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchPolicyV1beta1PodSecurityPolicyApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchPolicyV1beta1PodSecurityPolicyApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchPolicyV1beta1PodSecurityPolicyApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchRbacAuthorizationV1ClusterRoleRequest(
+	req PatchRbacAuthorizationV1ClusterRoleReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchRbacAuthorizationV1ClusterRoleApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchRbacAuthorizationV1ClusterRoleApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchRbacAuthorizationV1ClusterRoleApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchRbacAuthorizationV1ClusterRoleBindingRequest(
+	req PatchRbacAuthorizationV1ClusterRoleBindingReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchRbacAuthorizationV1ClusterRoleBindingApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchRbacAuthorizationV1ClusterRoleBindingApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchRbacAuthorizationV1ClusterRoleBindingApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchRbacAuthorizationV1NamespacedRoleRequest(
+	req PatchRbacAuthorizationV1NamespacedRoleReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchRbacAuthorizationV1NamespacedRoleApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchRbacAuthorizationV1NamespacedRoleApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchRbacAuthorizationV1NamespacedRoleApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchRbacAuthorizationV1NamespacedRoleBindingRequest(
+	req PatchRbacAuthorizationV1NamespacedRoleBindingReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchRbacAuthorizationV1NamespacedRoleBindingApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchRbacAuthorizationV1NamespacedRoleBindingApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchRbacAuthorizationV1NamespacedRoleBindingApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchSchedulingV1PriorityClassRequest(
+	req PatchSchedulingV1PriorityClassReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchSchedulingV1PriorityClassApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchSchedulingV1PriorityClassApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchSchedulingV1PriorityClassApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchStorageV1CSIDriverRequest(
+	req PatchStorageV1CSIDriverReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchStorageV1CSIDriverApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchStorageV1CSIDriverApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchStorageV1CSIDriverApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchStorageV1CSINodeRequest(
+	req PatchStorageV1CSINodeReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchStorageV1CSINodeApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchStorageV1CSINodeApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchStorageV1CSINodeApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchStorageV1StorageClassRequest(
+	req PatchStorageV1StorageClassReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchStorageV1StorageClassApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchStorageV1StorageClassApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchStorageV1StorageClassApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchStorageV1VolumeAttachmentRequest(
+	req PatchStorageV1VolumeAttachmentReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchStorageV1VolumeAttachmentApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchStorageV1VolumeAttachmentApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchStorageV1VolumeAttachmentApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchStorageV1VolumeAttachmentStatusRequest(
+	req PatchStorageV1VolumeAttachmentStatusReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchStorageV1VolumeAttachmentStatusApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchStorageV1VolumeAttachmentStatusApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchStorageV1VolumeAttachmentStatusApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchStorageV1alpha1NamespacedCSIStorageCapacityRequest(
+	req PatchStorageV1alpha1NamespacedCSIStorageCapacityReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchStorageV1alpha1NamespacedCSIStorageCapacityApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchStorageV1alpha1NamespacedCSIStorageCapacityApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchStorageV1alpha1NamespacedCSIStorageCapacityApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
+func encodePatchStorageV1beta1NamespacedCSIStorageCapacityRequest(
+	req PatchStorageV1beta1NamespacedCSIStorageCapacityReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *PatchStorageV1beta1NamespacedCSIStorageCapacityApplicationJSONPatchJSON:
+		const contentType = "application/json-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchStorageV1beta1NamespacedCSIStorageCapacityApplicationMergePatchJSON:
+		const contentType = "application/merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *PatchStorageV1beta1NamespacedCSIStorageCapacityApplicationStrategicMergePatchJSON:
+		const contentType = "application/strategic-merge-patch+json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
 }
