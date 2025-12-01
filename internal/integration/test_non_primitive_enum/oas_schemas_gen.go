@@ -95,13 +95,8 @@ func NewObjectEnumBazObjectEnum(v ObjectEnumBaz) ObjectEnum {
 }
 
 type ObjectEnumBar struct {
-	Value int64  `json:"value"`
 	Type  string `json:"type"`
-}
-
-// GetValue returns the value of Value.
-func (s *ObjectEnumBar) GetValue() int64 {
-	return s.Value
+	Value int64  `json:"value"`
 }
 
 // GetType returns the value of Type.
@@ -109,14 +104,19 @@ func (s *ObjectEnumBar) GetType() string {
 	return s.Type
 }
 
-// SetValue sets the value of Value.
-func (s *ObjectEnumBar) SetValue(val int64) {
-	s.Value = val
+// GetValue returns the value of Value.
+func (s *ObjectEnumBar) GetValue() int64 {
+	return s.Value
 }
 
 // SetType sets the value of Type.
 func (s *ObjectEnumBar) SetType(val string) {
 	s.Type = val
+}
+
+// SetValue sets the value of Value.
+func (s *ObjectEnumBar) SetValue(val int64) {
+	s.Value = val
 }
 
 type ObjectEnumBaz struct {
