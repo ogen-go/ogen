@@ -13456,36 +13456,78 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							break
 						}
 						switch elem[0] {
-						case '/': // Prefix: "/Users/"
+						case '/': // Prefix: "/Users"
 
-							if l := len("/Users/"); len(elem) >= l && elem[0:l] == "/Users/" {
+							if l := len("/Users"); len(elem) >= l && elem[0:l] == "/Users" {
 								elem = elem[l:]
 							} else {
 								break
 							}
 
-							// Param: "scim_user_id"
-							// Leaf parameter, slashes are prohibited
-							idx := strings.IndexByte(elem, '/')
-							if idx >= 0 {
-								break
-							}
-							args[1] = elem
-							elem = ""
-
 							if len(elem) == 0 {
-								// Leaf node.
 								switch r.Method {
-								case "DELETE":
-									s.handleScimDeleteUserFromOrgRequest([2]string{
+								case "GET":
+									s.handleScimListProvisionedIdentitiesRequest([1]string{
 										args[0],
-										args[1],
+									}, elemIsEscaped, w, r)
+								case "POST":
+									s.handleScimProvisionAndInviteUserRequest([1]string{
+										args[0],
 									}, elemIsEscaped, w, r)
 								default:
-									s.notAllowed(w, r, "DELETE")
+									s.notAllowed(w, r, "GET,POST")
 								}
 
 								return
+							}
+							switch elem[0] {
+							case '/': // Prefix: "/"
+
+								if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+									elem = elem[l:]
+								} else {
+									break
+								}
+
+								// Param: "scim_user_id"
+								// Leaf parameter, slashes are prohibited
+								idx := strings.IndexByte(elem, '/')
+								if idx >= 0 {
+									break
+								}
+								args[1] = elem
+								elem = ""
+
+								if len(elem) == 0 {
+									// Leaf node.
+									switch r.Method {
+									case "DELETE":
+										s.handleScimDeleteUserFromOrgRequest([2]string{
+											args[0],
+											args[1],
+										}, elemIsEscaped, w, r)
+									case "GET":
+										s.handleScimGetProvisioningInformationForUserRequest([2]string{
+											args[0],
+											args[1],
+										}, elemIsEscaped, w, r)
+									case "PATCH":
+										s.handleScimUpdateAttributeForUserRequest([2]string{
+											args[0],
+											args[1],
+										}, elemIsEscaped, w, r)
+									case "PUT":
+										s.handleScimSetInformationForProvisionedUserRequest([2]string{
+											args[0],
+											args[1],
+										}, elemIsEscaped, w, r)
+									default:
+										s.notAllowed(w, r, "DELETE,GET,PATCH,PUT")
+									}
+
+									return
+								}
+
 							}
 
 						}
@@ -31479,38 +31521,100 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							break
 						}
 						switch elem[0] {
-						case '/': // Prefix: "/Users/"
+						case '/': // Prefix: "/Users"
 
-							if l := len("/Users/"); len(elem) >= l && elem[0:l] == "/Users/" {
+							if l := len("/Users"); len(elem) >= l && elem[0:l] == "/Users" {
 								elem = elem[l:]
 							} else {
 								break
 							}
 
-							// Param: "scim_user_id"
-							// Leaf parameter, slashes are prohibited
-							idx := strings.IndexByte(elem, '/')
-							if idx >= 0 {
-								break
-							}
-							args[1] = elem
-							elem = ""
-
 							if len(elem) == 0 {
-								// Leaf node.
 								switch method {
-								case "DELETE":
-									r.name = ScimDeleteUserFromOrgOperation
-									r.summary = "Delete a SCIM user from an organization"
-									r.operationID = "scim/delete-user-from-org"
+								case "GET":
+									r.name = ScimListProvisionedIdentitiesOperation
+									r.summary = "List SCIM provisioned identities"
+									r.operationID = "scim/list-provisioned-identities"
 									r.operationGroup = ""
-									r.pathPattern = "/scim/v2/organizations/{org}/Users/{scim_user_id}"
+									r.pathPattern = "/scim/v2/organizations/{org}/Users"
 									r.args = args
-									r.count = 2
+									r.count = 1
+									return r, true
+								case "POST":
+									r.name = ScimProvisionAndInviteUserOperation
+									r.summary = "Provision and invite a SCIM user"
+									r.operationID = "scim/provision-and-invite-user"
+									r.operationGroup = ""
+									r.pathPattern = "/scim/v2/organizations/{org}/Users"
+									r.args = args
+									r.count = 1
 									return r, true
 								default:
 									return
 								}
+							}
+							switch elem[0] {
+							case '/': // Prefix: "/"
+
+								if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+									elem = elem[l:]
+								} else {
+									break
+								}
+
+								// Param: "scim_user_id"
+								// Leaf parameter, slashes are prohibited
+								idx := strings.IndexByte(elem, '/')
+								if idx >= 0 {
+									break
+								}
+								args[1] = elem
+								elem = ""
+
+								if len(elem) == 0 {
+									// Leaf node.
+									switch method {
+									case "DELETE":
+										r.name = ScimDeleteUserFromOrgOperation
+										r.summary = "Delete a SCIM user from an organization"
+										r.operationID = "scim/delete-user-from-org"
+										r.operationGroup = ""
+										r.pathPattern = "/scim/v2/organizations/{org}/Users/{scim_user_id}"
+										r.args = args
+										r.count = 2
+										return r, true
+									case "GET":
+										r.name = ScimGetProvisioningInformationForUserOperation
+										r.summary = "Get SCIM provisioning information for a user"
+										r.operationID = "scim/get-provisioning-information-for-user"
+										r.operationGroup = ""
+										r.pathPattern = "/scim/v2/organizations/{org}/Users/{scim_user_id}"
+										r.args = args
+										r.count = 2
+										return r, true
+									case "PATCH":
+										r.name = ScimUpdateAttributeForUserOperation
+										r.summary = "Update an attribute for a SCIM user"
+										r.operationID = "scim/update-attribute-for-user"
+										r.operationGroup = ""
+										r.pathPattern = "/scim/v2/organizations/{org}/Users/{scim_user_id}"
+										r.args = args
+										r.count = 2
+										return r, true
+									case "PUT":
+										r.name = ScimSetInformationForProvisionedUserOperation
+										r.summary = "Update a provisioned organization membership"
+										r.operationID = "scim/set-information-for-provisioned-user"
+										r.operationGroup = ""
+										r.pathPattern = "/scim/v2/organizations/{org}/Users/{scim_user_id}"
+										r.args = args
+										r.count = 2
+										return r, true
+									default:
+										return
+									}
+								}
+
 							}
 
 						}

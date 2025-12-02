@@ -6579,6 +6579,87 @@ type Invoker interface {
 	//
 	// DELETE /scim/v2/organizations/{org}/Users/{scim_user_id}
 	ScimDeleteUserFromOrg(ctx context.Context, params ScimDeleteUserFromOrgParams) (ScimDeleteUserFromOrgRes, error)
+	// ScimGetProvisioningInformationForUser invokes scim/get-provisioning-information-for-user operation.
+	//
+	// Get SCIM provisioning information for a user.
+	//
+	// GET /scim/v2/organizations/{org}/Users/{scim_user_id}
+	ScimGetProvisioningInformationForUser(ctx context.Context, params ScimGetProvisioningInformationForUserParams) (ScimGetProvisioningInformationForUserRes, error)
+	// ScimListProvisionedIdentities invokes scim/list-provisioned-identities operation.
+	//
+	// Retrieves a paginated list of all provisioned organization members, including pending invitations.
+	// If you provide the `filter` parameter, the resources for all matching provisions members are
+	// returned.
+	// When a user with a SAML-provisioned external identity leaves (or is removed from) an organization,
+	// the account's metadata is immediately removed. However, the returned list of user accounts might
+	// not always match the organization or enterprise member list you see on GitHub. This can happen in
+	// certain cases where an external identity associated with an organization will not match an
+	// organization member:
+	// - When a user with a SCIM-provisioned external identity is removed from an organization, the
+	// account's metadata is preserved to allow the user to re-join the organization in the future.
+	// - When inviting a user to join an organization, you can expect to see their external identity in
+	// the results before they accept the invitation, or if the invitation is cancelled (or never
+	// accepted).
+	// - When a user is invited over SCIM, an external identity is created that matches with the
+	// invitee's email address. However, this identity is only linked to a user account when the user
+	// accepts the invitation by going through SAML SSO.
+	// The returned list of external identities can include an entry for a `null` user. These are
+	// unlinked SAML identities that are created when a user goes through the following Single Sign-On
+	// (SSO) process but does not sign in to their GitHub account after completing SSO:
+	// 1. The user is granted access by the IdP and is not a member of the GitHub organization.
+	// 1. The user attempts to access the GitHub organization and initiates the SAML SSO process, and is
+	// not currently signed in to their GitHub account.
+	// 1. After successfully authenticating with the SAML SSO IdP, the `null` external identity entry is
+	// created and the user is prompted to sign in to their GitHub account:
+	// - If the user signs in, their GitHub account is linked to this entry.
+	// - If the user does not sign in (or does not create a new account when prompted), they are not
+	// added to the GitHub organization, and the external identity `null` entry remains in place.
+	//
+	// GET /scim/v2/organizations/{org}/Users
+	ScimListProvisionedIdentities(ctx context.Context, params ScimListProvisionedIdentitiesParams) (ScimListProvisionedIdentitiesRes, error)
+	// ScimProvisionAndInviteUser invokes scim/provision-and-invite-user operation.
+	//
+	// Provision organization membership for a user, and send an activation email to the email address.
+	//
+	// POST /scim/v2/organizations/{org}/Users
+	ScimProvisionAndInviteUser(ctx context.Context, request *ScimProvisionAndInviteUserReq, params ScimProvisionAndInviteUserParams) (ScimProvisionAndInviteUserRes, error)
+	// ScimSetInformationForProvisionedUser invokes scim/set-information-for-provisioned-user operation.
+	//
+	// Replaces an existing provisioned user's information. You must provide all the information required
+	// for the user as if you were provisioning them for the first time. Any existing user information
+	// that you don't provide will be removed. If you want to only update a specific attribute, use the
+	// [Update an attribute for a SCIM user](https://docs.github.
+	// com/rest/reference/scim#update-an-attribute-for-a-scim-user) endpoint instead.
+	// You must at least provide the required values for the user: `userName`, `name`, and `emails`.
+	// **Warning:** Setting `active: false` removes the user from the organization, deletes the external
+	// identity, and deletes the associated `{scim_user_id}`.
+	//
+	// PUT /scim/v2/organizations/{org}/Users/{scim_user_id}
+	ScimSetInformationForProvisionedUser(ctx context.Context, request *ScimSetInformationForProvisionedUserReq, params ScimSetInformationForProvisionedUserParams) (ScimSetInformationForProvisionedUserRes, error)
+	// ScimUpdateAttributeForUser invokes scim/update-attribute-for-user operation.
+	//
+	// Allows you to change a provisioned user's individual attributes. To change a user's values, you
+	// must provide a specific `Operations` JSON format that contains at least one of the `add`, `remove`,
+	//  or `replace` operations. For examples and more information on the SCIM operations format, see the
+	// [SCIM specification](https://tools.ietf.org/html/rfc7644#section-3.5.2).
+	// **Note:** Complicated SCIM `path` selectors that include filters are not supported. For example, a
+	// `path` selector defined as `"path": "emails[type eq \"work\"]"` will not work.
+	// **Warning:** If you set `active:false` using the `replace` operation (as shown in the JSON example
+	// below), it removes the user from the organization, deletes the external identity, and deletes the
+	// associated `:scim_user_id`.
+	// ```
+	// {
+	// "Operations":[{
+	// "op":"replace",
+	// "value":{
+	// "active":false
+	// }
+	// }]
+	// }
+	// ```.
+	//
+	// PATCH /scim/v2/organizations/{org}/Users/{scim_user_id}
+	ScimUpdateAttributeForUser(ctx context.Context, request *ScimUpdateAttributeForUserReq, params ScimUpdateAttributeForUserParams) (ScimUpdateAttributeForUserRes, error)
 	// SearchCode invokes search/code operation.
 	//
 	// Searches for query terms inside of a file. This method returns up to 100 results [per
@@ -90022,6 +90103,637 @@ func (c *Client) sendScimDeleteUserFromOrg(ctx context.Context, params ScimDelet
 
 	stage = "DecodeResponse"
 	result, err := decodeScimDeleteUserFromOrgResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// ScimGetProvisioningInformationForUser invokes scim/get-provisioning-information-for-user operation.
+//
+// Get SCIM provisioning information for a user.
+//
+// GET /scim/v2/organizations/{org}/Users/{scim_user_id}
+func (c *Client) ScimGetProvisioningInformationForUser(ctx context.Context, params ScimGetProvisioningInformationForUserParams) (ScimGetProvisioningInformationForUserRes, error) {
+	res, err := c.sendScimGetProvisioningInformationForUser(ctx, params)
+	return res, err
+}
+
+func (c *Client) sendScimGetProvisioningInformationForUser(ctx context.Context, params ScimGetProvisioningInformationForUserParams) (res ScimGetProvisioningInformationForUserRes, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("scim/get-provisioning-information-for-user"),
+		semconv.HTTPRequestMethodKey.String("GET"),
+		semconv.URLTemplateKey.String("/scim/v2/organizations/{org}/Users/{scim_user_id}"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, ScimGetProvisioningInformationForUserOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [4]string
+	pathParts[0] = "/scim/v2/organizations/"
+	{
+		// Encode "org" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "org",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Org))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		encoded, err := e.Result()
+		if err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		pathParts[1] = encoded
+	}
+	pathParts[2] = "/Users/"
+	{
+		// Encode "scim_user_id" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "scim_user_id",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.ScimUserID))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		encoded, err := e.Result()
+		if err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		pathParts[3] = encoded
+	}
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "GET", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeScimGetProvisioningInformationForUserResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// ScimListProvisionedIdentities invokes scim/list-provisioned-identities operation.
+//
+// Retrieves a paginated list of all provisioned organization members, including pending invitations.
+// If you provide the `filter` parameter, the resources for all matching provisions members are
+// returned.
+// When a user with a SAML-provisioned external identity leaves (or is removed from) an organization,
+// the account's metadata is immediately removed. However, the returned list of user accounts might
+// not always match the organization or enterprise member list you see on GitHub. This can happen in
+// certain cases where an external identity associated with an organization will not match an
+// organization member:
+// - When a user with a SCIM-provisioned external identity is removed from an organization, the
+// account's metadata is preserved to allow the user to re-join the organization in the future.
+// - When inviting a user to join an organization, you can expect to see their external identity in
+// the results before they accept the invitation, or if the invitation is cancelled (or never
+// accepted).
+// - When a user is invited over SCIM, an external identity is created that matches with the
+// invitee's email address. However, this identity is only linked to a user account when the user
+// accepts the invitation by going through SAML SSO.
+// The returned list of external identities can include an entry for a `null` user. These are
+// unlinked SAML identities that are created when a user goes through the following Single Sign-On
+// (SSO) process but does not sign in to their GitHub account after completing SSO:
+// 1. The user is granted access by the IdP and is not a member of the GitHub organization.
+// 1. The user attempts to access the GitHub organization and initiates the SAML SSO process, and is
+// not currently signed in to their GitHub account.
+// 1. After successfully authenticating with the SAML SSO IdP, the `null` external identity entry is
+// created and the user is prompted to sign in to their GitHub account:
+// - If the user signs in, their GitHub account is linked to this entry.
+// - If the user does not sign in (or does not create a new account when prompted), they are not
+// added to the GitHub organization, and the external identity `null` entry remains in place.
+//
+// GET /scim/v2/organizations/{org}/Users
+func (c *Client) ScimListProvisionedIdentities(ctx context.Context, params ScimListProvisionedIdentitiesParams) (ScimListProvisionedIdentitiesRes, error) {
+	res, err := c.sendScimListProvisionedIdentities(ctx, params)
+	return res, err
+}
+
+func (c *Client) sendScimListProvisionedIdentities(ctx context.Context, params ScimListProvisionedIdentitiesParams) (res ScimListProvisionedIdentitiesRes, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("scim/list-provisioned-identities"),
+		semconv.HTTPRequestMethodKey.String("GET"),
+		semconv.URLTemplateKey.String("/scim/v2/organizations/{org}/Users"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, ScimListProvisionedIdentitiesOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [3]string
+	pathParts[0] = "/scim/v2/organizations/"
+	{
+		// Encode "org" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "org",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Org))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		encoded, err := e.Result()
+		if err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		pathParts[1] = encoded
+	}
+	pathParts[2] = "/Users"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeQueryParams"
+	q := uri.NewQueryEncoder()
+	{
+		// Encode "startIndex" parameter.
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "startIndex",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+			if val, ok := params.StartIndex.Get(); ok {
+				return e.EncodeValue(conv.IntToString(val))
+			}
+			return nil
+		}); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+	}
+	{
+		// Encode "count" parameter.
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "count",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+			if val, ok := params.Count.Get(); ok {
+				return e.EncodeValue(conv.IntToString(val))
+			}
+			return nil
+		}); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+	}
+	{
+		// Encode "filter" parameter.
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "filter",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+			if val, ok := params.Filter.Get(); ok {
+				return e.EncodeValue(conv.StringToString(val))
+			}
+			return nil
+		}); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+	}
+	u.RawQuery = q.Values().Encode()
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "GET", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeScimListProvisionedIdentitiesResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// ScimProvisionAndInviteUser invokes scim/provision-and-invite-user operation.
+//
+// Provision organization membership for a user, and send an activation email to the email address.
+//
+// POST /scim/v2/organizations/{org}/Users
+func (c *Client) ScimProvisionAndInviteUser(ctx context.Context, request *ScimProvisionAndInviteUserReq, params ScimProvisionAndInviteUserParams) (ScimProvisionAndInviteUserRes, error) {
+	res, err := c.sendScimProvisionAndInviteUser(ctx, request, params)
+	return res, err
+}
+
+func (c *Client) sendScimProvisionAndInviteUser(ctx context.Context, request *ScimProvisionAndInviteUserReq, params ScimProvisionAndInviteUserParams) (res ScimProvisionAndInviteUserRes, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("scim/provision-and-invite-user"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/scim/v2/organizations/{org}/Users"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, ScimProvisionAndInviteUserOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [3]string
+	pathParts[0] = "/scim/v2/organizations/"
+	{
+		// Encode "org" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "org",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Org))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		encoded, err := e.Result()
+		if err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		pathParts[1] = encoded
+	}
+	pathParts[2] = "/Users"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeScimProvisionAndInviteUserRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeScimProvisionAndInviteUserResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// ScimSetInformationForProvisionedUser invokes scim/set-information-for-provisioned-user operation.
+//
+// Replaces an existing provisioned user's information. You must provide all the information required
+// for the user as if you were provisioning them for the first time. Any existing user information
+// that you don't provide will be removed. If you want to only update a specific attribute, use the
+// [Update an attribute for a SCIM user](https://docs.github.
+// com/rest/reference/scim#update-an-attribute-for-a-scim-user) endpoint instead.
+// You must at least provide the required values for the user: `userName`, `name`, and `emails`.
+// **Warning:** Setting `active: false` removes the user from the organization, deletes the external
+// identity, and deletes the associated `{scim_user_id}`.
+//
+// PUT /scim/v2/organizations/{org}/Users/{scim_user_id}
+func (c *Client) ScimSetInformationForProvisionedUser(ctx context.Context, request *ScimSetInformationForProvisionedUserReq, params ScimSetInformationForProvisionedUserParams) (ScimSetInformationForProvisionedUserRes, error) {
+	res, err := c.sendScimSetInformationForProvisionedUser(ctx, request, params)
+	return res, err
+}
+
+func (c *Client) sendScimSetInformationForProvisionedUser(ctx context.Context, request *ScimSetInformationForProvisionedUserReq, params ScimSetInformationForProvisionedUserParams) (res ScimSetInformationForProvisionedUserRes, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("scim/set-information-for-provisioned-user"),
+		semconv.HTTPRequestMethodKey.String("PUT"),
+		semconv.URLTemplateKey.String("/scim/v2/organizations/{org}/Users/{scim_user_id}"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, ScimSetInformationForProvisionedUserOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [4]string
+	pathParts[0] = "/scim/v2/organizations/"
+	{
+		// Encode "org" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "org",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Org))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		encoded, err := e.Result()
+		if err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		pathParts[1] = encoded
+	}
+	pathParts[2] = "/Users/"
+	{
+		// Encode "scim_user_id" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "scim_user_id",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.ScimUserID))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		encoded, err := e.Result()
+		if err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		pathParts[3] = encoded
+	}
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "PUT", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeScimSetInformationForProvisionedUserRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeScimSetInformationForProvisionedUserResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// ScimUpdateAttributeForUser invokes scim/update-attribute-for-user operation.
+//
+// Allows you to change a provisioned user's individual attributes. To change a user's values, you
+// must provide a specific `Operations` JSON format that contains at least one of the `add`, `remove`,
+//
+//	or `replace` operations. For examples and more information on the SCIM operations format, see the
+//
+// [SCIM specification](https://tools.ietf.org/html/rfc7644#section-3.5.2).
+// **Note:** Complicated SCIM `path` selectors that include filters are not supported. For example, a
+// `path` selector defined as `"path": "emails[type eq \"work\"]"` will not work.
+// **Warning:** If you set `active:false` using the `replace` operation (as shown in the JSON example
+// below), it removes the user from the organization, deletes the external identity, and deletes the
+// associated `:scim_user_id`.
+// ```
+// {
+// "Operations":[{
+// "op":"replace",
+// "value":{
+// "active":false
+// }
+// }]
+// }
+// ```.
+//
+// PATCH /scim/v2/organizations/{org}/Users/{scim_user_id}
+func (c *Client) ScimUpdateAttributeForUser(ctx context.Context, request *ScimUpdateAttributeForUserReq, params ScimUpdateAttributeForUserParams) (ScimUpdateAttributeForUserRes, error) {
+	res, err := c.sendScimUpdateAttributeForUser(ctx, request, params)
+	return res, err
+}
+
+func (c *Client) sendScimUpdateAttributeForUser(ctx context.Context, request *ScimUpdateAttributeForUserReq, params ScimUpdateAttributeForUserParams) (res ScimUpdateAttributeForUserRes, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("scim/update-attribute-for-user"),
+		semconv.HTTPRequestMethodKey.String("PATCH"),
+		semconv.URLTemplateKey.String("/scim/v2/organizations/{org}/Users/{scim_user_id}"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, ScimUpdateAttributeForUserOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [4]string
+	pathParts[0] = "/scim/v2/organizations/"
+	{
+		// Encode "org" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "org",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Org))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		encoded, err := e.Result()
+		if err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		pathParts[1] = encoded
+	}
+	pathParts[2] = "/Users/"
+	{
+		// Encode "scim_user_id" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "scim_user_id",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.ScimUserID))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		encoded, err := e.Result()
+		if err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		pathParts[3] = encoded
+	}
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "PATCH", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeScimUpdateAttributeForUserRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeScimUpdateAttributeForUserResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}

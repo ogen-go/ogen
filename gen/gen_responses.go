@@ -331,7 +331,14 @@ func (g *Generator) responseToIR(
 				},
 			}
 		}
-		t, err := wrapResponseType(ctx, name, resp.Ref, media.Type, headers, withStatusCode, len(contents) > 1)
+		// Use content-type-specific name for wrapper when there are multiple contents
+		// to avoid name conflicts (e.g., when both application/json and
+		// application/vnd.github.v3.star+json have array schemas without names).
+		wrapperName := name
+		if len(contents) > 1 {
+			wrapperName, _ = pascal(name, string(contentType))
+		}
+		t, err := wrapResponseType(ctx, wrapperName, resp.Ref, media.Type, headers, withStatusCode, len(contents) > 1)
 		if err != nil {
 			return nil, errors.Wrapf(err, "content: %q: wrap response type", contentType)
 		}

@@ -301,6 +301,16 @@ func (g *Generator) generateContents(
 				encoding = r
 			}
 
+			// Auto-detect +json suffix media types as JSON per RFC 6838.
+			// This allows types like application/json-patch+json, application/merge-patch+json,
+			// application/vnd.api+json, etc. to work without explicit ContentTypeAliases.
+			// Note: application/problem+json has special handling via EncodingProblemJSON.
+			if strings.HasSuffix(string(encoding), "+json") &&
+				encoding != ir.EncodingJSON &&
+				encoding != ir.EncodingProblemJSON {
+				encoding = ir.EncodingJSON
+			}
+
 			// Handle wildcard content types using configured default
 			// unless the schema is binary (which is already handled by isStream check below)
 			if strings.ContainsRune(parsedContentType, '*') && g.opt.WildcardContentTypeDefault != "" {

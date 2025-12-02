@@ -1854,12 +1854,876 @@ func (UnimplementedHandler) LogFileListHandler(ctx context.Context) error {
 	return ht.ErrNotImplemented
 }
 
+// PatchAdmissionregistrationV1MutatingWebhookConfiguration implements patchAdmissionregistrationV1MutatingWebhookConfiguration operation.
+//
+// Partially update the specified MutatingWebhookConfiguration.
+//
+// PATCH /apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations/{name}
+func (UnimplementedHandler) PatchAdmissionregistrationV1MutatingWebhookConfiguration(ctx context.Context, req PatchAdmissionregistrationV1MutatingWebhookConfigurationReq, params PatchAdmissionregistrationV1MutatingWebhookConfigurationParams) (r PatchAdmissionregistrationV1MutatingWebhookConfigurationRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchAdmissionregistrationV1ValidatingWebhookConfiguration implements patchAdmissionregistrationV1ValidatingWebhookConfiguration operation.
+//
+// Partially update the specified ValidatingWebhookConfiguration.
+//
+// PATCH /apis/admissionregistration.k8s.io/v1/validatingwebhookconfigurations/{name}
+func (UnimplementedHandler) PatchAdmissionregistrationV1ValidatingWebhookConfiguration(ctx context.Context, req PatchAdmissionregistrationV1ValidatingWebhookConfigurationReq, params PatchAdmissionregistrationV1ValidatingWebhookConfigurationParams) (r PatchAdmissionregistrationV1ValidatingWebhookConfigurationRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchApiextensionsV1CustomResourceDefinition implements patchApiextensionsV1CustomResourceDefinition operation.
+//
+// Partially update the specified CustomResourceDefinition.
+//
+// PATCH /apis/apiextensions.k8s.io/v1/customresourcedefinitions/{name}
+func (UnimplementedHandler) PatchApiextensionsV1CustomResourceDefinition(ctx context.Context, req PatchApiextensionsV1CustomResourceDefinitionReq, params PatchApiextensionsV1CustomResourceDefinitionParams) (r PatchApiextensionsV1CustomResourceDefinitionRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchApiextensionsV1CustomResourceDefinitionStatus implements patchApiextensionsV1CustomResourceDefinitionStatus operation.
+//
+// Partially update status of the specified CustomResourceDefinition.
+//
+// PATCH /apis/apiextensions.k8s.io/v1/customresourcedefinitions/{name}/status
+func (UnimplementedHandler) PatchApiextensionsV1CustomResourceDefinitionStatus(ctx context.Context, req PatchApiextensionsV1CustomResourceDefinitionStatusReq, params PatchApiextensionsV1CustomResourceDefinitionStatusParams) (r PatchApiextensionsV1CustomResourceDefinitionStatusRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchApiregistrationV1APIService implements patchApiregistrationV1APIService operation.
+//
+// Partially update the specified APIService.
+//
+// PATCH /apis/apiregistration.k8s.io/v1/apiservices/{name}
+func (UnimplementedHandler) PatchApiregistrationV1APIService(ctx context.Context, req PatchApiregistrationV1APIServiceReq, params PatchApiregistrationV1APIServiceParams) (r PatchApiregistrationV1APIServiceRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchApiregistrationV1APIServiceStatus implements patchApiregistrationV1APIServiceStatus operation.
+//
+// Partially update status of the specified APIService.
+//
+// PATCH /apis/apiregistration.k8s.io/v1/apiservices/{name}/status
+func (UnimplementedHandler) PatchApiregistrationV1APIServiceStatus(ctx context.Context, req PatchApiregistrationV1APIServiceStatusReq, params PatchApiregistrationV1APIServiceStatusParams) (r PatchApiregistrationV1APIServiceStatusRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchAppsV1NamespacedControllerRevision implements patchAppsV1NamespacedControllerRevision operation.
+//
+// Partially update the specified ControllerRevision.
+//
+// PATCH /apis/apps/v1/namespaces/{namespace}/controllerrevisions/{name}
+func (UnimplementedHandler) PatchAppsV1NamespacedControllerRevision(ctx context.Context, req PatchAppsV1NamespacedControllerRevisionReq, params PatchAppsV1NamespacedControllerRevisionParams) (r PatchAppsV1NamespacedControllerRevisionRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchAppsV1NamespacedDaemonSet implements patchAppsV1NamespacedDaemonSet operation.
+//
+// Partially update the specified DaemonSet.
+//
+// PATCH /apis/apps/v1/namespaces/{namespace}/daemonsets/{name}
+func (UnimplementedHandler) PatchAppsV1NamespacedDaemonSet(ctx context.Context, req PatchAppsV1NamespacedDaemonSetReq, params PatchAppsV1NamespacedDaemonSetParams) (r PatchAppsV1NamespacedDaemonSetRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchAppsV1NamespacedDaemonSetStatus implements patchAppsV1NamespacedDaemonSetStatus operation.
+//
+// Partially update status of the specified DaemonSet.
+//
+// PATCH /apis/apps/v1/namespaces/{namespace}/daemonsets/{name}/status
+func (UnimplementedHandler) PatchAppsV1NamespacedDaemonSetStatus(ctx context.Context, req PatchAppsV1NamespacedDaemonSetStatusReq, params PatchAppsV1NamespacedDaemonSetStatusParams) (r PatchAppsV1NamespacedDaemonSetStatusRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchAppsV1NamespacedDeployment implements patchAppsV1NamespacedDeployment operation.
+//
+// Partially update the specified Deployment.
+//
+// PATCH /apis/apps/v1/namespaces/{namespace}/deployments/{name}
+func (UnimplementedHandler) PatchAppsV1NamespacedDeployment(ctx context.Context, req PatchAppsV1NamespacedDeploymentReq, params PatchAppsV1NamespacedDeploymentParams) (r PatchAppsV1NamespacedDeploymentRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchAppsV1NamespacedDeploymentScale implements patchAppsV1NamespacedDeploymentScale operation.
+//
+// Partially update scale of the specified Deployment.
+//
+// PATCH /apis/apps/v1/namespaces/{namespace}/deployments/{name}/scale
+func (UnimplementedHandler) PatchAppsV1NamespacedDeploymentScale(ctx context.Context, req PatchAppsV1NamespacedDeploymentScaleReq, params PatchAppsV1NamespacedDeploymentScaleParams) (r PatchAppsV1NamespacedDeploymentScaleRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchAppsV1NamespacedDeploymentStatus implements patchAppsV1NamespacedDeploymentStatus operation.
+//
+// Partially update status of the specified Deployment.
+//
+// PATCH /apis/apps/v1/namespaces/{namespace}/deployments/{name}/status
+func (UnimplementedHandler) PatchAppsV1NamespacedDeploymentStatus(ctx context.Context, req PatchAppsV1NamespacedDeploymentStatusReq, params PatchAppsV1NamespacedDeploymentStatusParams) (r PatchAppsV1NamespacedDeploymentStatusRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchAppsV1NamespacedReplicaSet implements patchAppsV1NamespacedReplicaSet operation.
+//
+// Partially update the specified ReplicaSet.
+//
+// PATCH /apis/apps/v1/namespaces/{namespace}/replicasets/{name}
+func (UnimplementedHandler) PatchAppsV1NamespacedReplicaSet(ctx context.Context, req PatchAppsV1NamespacedReplicaSetReq, params PatchAppsV1NamespacedReplicaSetParams) (r PatchAppsV1NamespacedReplicaSetRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchAppsV1NamespacedReplicaSetScale implements patchAppsV1NamespacedReplicaSetScale operation.
+//
+// Partially update scale of the specified ReplicaSet.
+//
+// PATCH /apis/apps/v1/namespaces/{namespace}/replicasets/{name}/scale
+func (UnimplementedHandler) PatchAppsV1NamespacedReplicaSetScale(ctx context.Context, req PatchAppsV1NamespacedReplicaSetScaleReq, params PatchAppsV1NamespacedReplicaSetScaleParams) (r PatchAppsV1NamespacedReplicaSetScaleRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchAppsV1NamespacedReplicaSetStatus implements patchAppsV1NamespacedReplicaSetStatus operation.
+//
+// Partially update status of the specified ReplicaSet.
+//
+// PATCH /apis/apps/v1/namespaces/{namespace}/replicasets/{name}/status
+func (UnimplementedHandler) PatchAppsV1NamespacedReplicaSetStatus(ctx context.Context, req PatchAppsV1NamespacedReplicaSetStatusReq, params PatchAppsV1NamespacedReplicaSetStatusParams) (r PatchAppsV1NamespacedReplicaSetStatusRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchAppsV1NamespacedStatefulSet implements patchAppsV1NamespacedStatefulSet operation.
+//
+// Partially update the specified StatefulSet.
+//
+// PATCH /apis/apps/v1/namespaces/{namespace}/statefulsets/{name}
+func (UnimplementedHandler) PatchAppsV1NamespacedStatefulSet(ctx context.Context, req PatchAppsV1NamespacedStatefulSetReq, params PatchAppsV1NamespacedStatefulSetParams) (r PatchAppsV1NamespacedStatefulSetRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchAppsV1NamespacedStatefulSetScale implements patchAppsV1NamespacedStatefulSetScale operation.
+//
+// Partially update scale of the specified StatefulSet.
+//
+// PATCH /apis/apps/v1/namespaces/{namespace}/statefulsets/{name}/scale
+func (UnimplementedHandler) PatchAppsV1NamespacedStatefulSetScale(ctx context.Context, req PatchAppsV1NamespacedStatefulSetScaleReq, params PatchAppsV1NamespacedStatefulSetScaleParams) (r PatchAppsV1NamespacedStatefulSetScaleRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchAppsV1NamespacedStatefulSetStatus implements patchAppsV1NamespacedStatefulSetStatus operation.
+//
+// Partially update status of the specified StatefulSet.
+//
+// PATCH /apis/apps/v1/namespaces/{namespace}/statefulsets/{name}/status
+func (UnimplementedHandler) PatchAppsV1NamespacedStatefulSetStatus(ctx context.Context, req PatchAppsV1NamespacedStatefulSetStatusReq, params PatchAppsV1NamespacedStatefulSetStatusParams) (r PatchAppsV1NamespacedStatefulSetStatusRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchAutoscalingV1NamespacedHorizontalPodAutoscaler implements patchAutoscalingV1NamespacedHorizontalPodAutoscaler operation.
+//
+// Partially update the specified HorizontalPodAutoscaler.
+//
+// PATCH /apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}
+func (UnimplementedHandler) PatchAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx context.Context, req PatchAutoscalingV1NamespacedHorizontalPodAutoscalerReq, params PatchAutoscalingV1NamespacedHorizontalPodAutoscalerParams) (r PatchAutoscalingV1NamespacedHorizontalPodAutoscalerRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatus implements patchAutoscalingV1NamespacedHorizontalPodAutoscalerStatus operation.
+//
+// Partially update status of the specified HorizontalPodAutoscaler.
+//
+// PATCH /apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}/status
+func (UnimplementedHandler) PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatus(ctx context.Context, req PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusReq, params PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusParams) (r PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler implements patchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler operation.
+//
+// Partially update the specified HorizontalPodAutoscaler.
+//
+// PATCH /apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers/{name}
+func (UnimplementedHandler) PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx context.Context, req PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerReq, params PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams) (r PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus implements patchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus operation.
+//
+// Partially update status of the specified HorizontalPodAutoscaler.
+//
+// PATCH /apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers/{name}/status
+func (UnimplementedHandler) PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus(ctx context.Context, req PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusReq, params PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusParams) (r PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler implements patchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler operation.
+//
+// Partially update the specified HorizontalPodAutoscaler.
+//
+// PATCH /apis/autoscaling/v2beta2/namespaces/{namespace}/horizontalpodautoscalers/{name}
+func (UnimplementedHandler) PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx context.Context, req PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerReq, params PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams) (r PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus implements patchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus operation.
+//
+// Partially update status of the specified HorizontalPodAutoscaler.
+//
+// PATCH /apis/autoscaling/v2beta2/namespaces/{namespace}/horizontalpodautoscalers/{name}/status
+func (UnimplementedHandler) PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus(ctx context.Context, req PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusReq, params PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusParams) (r PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchBatchV1NamespacedCronJob implements patchBatchV1NamespacedCronJob operation.
+//
+// Partially update the specified CronJob.
+//
+// PATCH /apis/batch/v1/namespaces/{namespace}/cronjobs/{name}
+func (UnimplementedHandler) PatchBatchV1NamespacedCronJob(ctx context.Context, req PatchBatchV1NamespacedCronJobReq, params PatchBatchV1NamespacedCronJobParams) (r PatchBatchV1NamespacedCronJobRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchBatchV1NamespacedCronJobStatus implements patchBatchV1NamespacedCronJobStatus operation.
+//
+// Partially update status of the specified CronJob.
+//
+// PATCH /apis/batch/v1/namespaces/{namespace}/cronjobs/{name}/status
+func (UnimplementedHandler) PatchBatchV1NamespacedCronJobStatus(ctx context.Context, req PatchBatchV1NamespacedCronJobStatusReq, params PatchBatchV1NamespacedCronJobStatusParams) (r PatchBatchV1NamespacedCronJobStatusRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchBatchV1NamespacedJob implements patchBatchV1NamespacedJob operation.
+//
+// Partially update the specified Job.
+//
+// PATCH /apis/batch/v1/namespaces/{namespace}/jobs/{name}
+func (UnimplementedHandler) PatchBatchV1NamespacedJob(ctx context.Context, req PatchBatchV1NamespacedJobReq, params PatchBatchV1NamespacedJobParams) (r PatchBatchV1NamespacedJobRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchBatchV1NamespacedJobStatus implements patchBatchV1NamespacedJobStatus operation.
+//
+// Partially update status of the specified Job.
+//
+// PATCH /apis/batch/v1/namespaces/{namespace}/jobs/{name}/status
+func (UnimplementedHandler) PatchBatchV1NamespacedJobStatus(ctx context.Context, req PatchBatchV1NamespacedJobStatusReq, params PatchBatchV1NamespacedJobStatusParams) (r PatchBatchV1NamespacedJobStatusRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchBatchV1beta1NamespacedCronJob implements patchBatchV1beta1NamespacedCronJob operation.
+//
+// Partially update the specified CronJob.
+//
+// PATCH /apis/batch/v1beta1/namespaces/{namespace}/cronjobs/{name}
+func (UnimplementedHandler) PatchBatchV1beta1NamespacedCronJob(ctx context.Context, req PatchBatchV1beta1NamespacedCronJobReq, params PatchBatchV1beta1NamespacedCronJobParams) (r PatchBatchV1beta1NamespacedCronJobRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchBatchV1beta1NamespacedCronJobStatus implements patchBatchV1beta1NamespacedCronJobStatus operation.
+//
+// Partially update status of the specified CronJob.
+//
+// PATCH /apis/batch/v1beta1/namespaces/{namespace}/cronjobs/{name}/status
+func (UnimplementedHandler) PatchBatchV1beta1NamespacedCronJobStatus(ctx context.Context, req PatchBatchV1beta1NamespacedCronJobStatusReq, params PatchBatchV1beta1NamespacedCronJobStatusParams) (r PatchBatchV1beta1NamespacedCronJobStatusRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchCertificatesV1CertificateSigningRequest implements patchCertificatesV1CertificateSigningRequest operation.
+//
+// Partially update the specified CertificateSigningRequest.
+//
+// PATCH /apis/certificates.k8s.io/v1/certificatesigningrequests/{name}
+func (UnimplementedHandler) PatchCertificatesV1CertificateSigningRequest(ctx context.Context, req PatchCertificatesV1CertificateSigningRequestReq, params PatchCertificatesV1CertificateSigningRequestParams) (r PatchCertificatesV1CertificateSigningRequestRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchCertificatesV1CertificateSigningRequestApproval implements patchCertificatesV1CertificateSigningRequestApproval operation.
+//
+// Partially update approval of the specified CertificateSigningRequest.
+//
+// PATCH /apis/certificates.k8s.io/v1/certificatesigningrequests/{name}/approval
+func (UnimplementedHandler) PatchCertificatesV1CertificateSigningRequestApproval(ctx context.Context, req PatchCertificatesV1CertificateSigningRequestApprovalReq, params PatchCertificatesV1CertificateSigningRequestApprovalParams) (r PatchCertificatesV1CertificateSigningRequestApprovalRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchCertificatesV1CertificateSigningRequestStatus implements patchCertificatesV1CertificateSigningRequestStatus operation.
+//
+// Partially update status of the specified CertificateSigningRequest.
+//
+// PATCH /apis/certificates.k8s.io/v1/certificatesigningrequests/{name}/status
+func (UnimplementedHandler) PatchCertificatesV1CertificateSigningRequestStatus(ctx context.Context, req PatchCertificatesV1CertificateSigningRequestStatusReq, params PatchCertificatesV1CertificateSigningRequestStatusParams) (r PatchCertificatesV1CertificateSigningRequestStatusRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchCoordinationV1NamespacedLease implements patchCoordinationV1NamespacedLease operation.
+//
+// Partially update the specified Lease.
+//
+// PATCH /apis/coordination.k8s.io/v1/namespaces/{namespace}/leases/{name}
+func (UnimplementedHandler) PatchCoordinationV1NamespacedLease(ctx context.Context, req PatchCoordinationV1NamespacedLeaseReq, params PatchCoordinationV1NamespacedLeaseParams) (r PatchCoordinationV1NamespacedLeaseRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchCoreV1Namespace implements patchCoreV1Namespace operation.
+//
+// Partially update the specified Namespace.
+//
+// PATCH /api/v1/namespaces/{name}
+func (UnimplementedHandler) PatchCoreV1Namespace(ctx context.Context, req PatchCoreV1NamespaceReq, params PatchCoreV1NamespaceParams) (r PatchCoreV1NamespaceRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchCoreV1NamespaceStatus implements patchCoreV1NamespaceStatus operation.
+//
+// Partially update status of the specified Namespace.
+//
+// PATCH /api/v1/namespaces/{name}/status
+func (UnimplementedHandler) PatchCoreV1NamespaceStatus(ctx context.Context, req PatchCoreV1NamespaceStatusReq, params PatchCoreV1NamespaceStatusParams) (r PatchCoreV1NamespaceStatusRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
 // PatchCoreV1NamespacedConfigMap implements patchCoreV1NamespacedConfigMap operation.
 //
 // Partially update the specified ConfigMap.
 //
 // PATCH /api/v1/namespaces/{namespace}/configmaps/{name}
-func (UnimplementedHandler) PatchCoreV1NamespacedConfigMap(ctx context.Context, req *IoK8sApimachineryPkgApisMetaV1Patch, params PatchCoreV1NamespacedConfigMapParams) (r PatchCoreV1NamespacedConfigMapRes, _ error) {
+func (UnimplementedHandler) PatchCoreV1NamespacedConfigMap(ctx context.Context, req PatchCoreV1NamespacedConfigMapReq, params PatchCoreV1NamespacedConfigMapParams) (r PatchCoreV1NamespacedConfigMapRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchCoreV1NamespacedEndpoints implements patchCoreV1NamespacedEndpoints operation.
+//
+// Partially update the specified Endpoints.
+//
+// PATCH /api/v1/namespaces/{namespace}/endpoints/{name}
+func (UnimplementedHandler) PatchCoreV1NamespacedEndpoints(ctx context.Context, req PatchCoreV1NamespacedEndpointsReq, params PatchCoreV1NamespacedEndpointsParams) (r PatchCoreV1NamespacedEndpointsRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchCoreV1NamespacedEvent implements patchCoreV1NamespacedEvent operation.
+//
+// Partially update the specified Event.
+//
+// PATCH /api/v1/namespaces/{namespace}/events/{name}
+func (UnimplementedHandler) PatchCoreV1NamespacedEvent(ctx context.Context, req PatchCoreV1NamespacedEventReq, params PatchCoreV1NamespacedEventParams) (r PatchCoreV1NamespacedEventRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchCoreV1NamespacedLimitRange implements patchCoreV1NamespacedLimitRange operation.
+//
+// Partially update the specified LimitRange.
+//
+// PATCH /api/v1/namespaces/{namespace}/limitranges/{name}
+func (UnimplementedHandler) PatchCoreV1NamespacedLimitRange(ctx context.Context, req PatchCoreV1NamespacedLimitRangeReq, params PatchCoreV1NamespacedLimitRangeParams) (r PatchCoreV1NamespacedLimitRangeRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchCoreV1NamespacedPersistentVolumeClaim implements patchCoreV1NamespacedPersistentVolumeClaim operation.
+//
+// Partially update the specified PersistentVolumeClaim.
+//
+// PATCH /api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}
+func (UnimplementedHandler) PatchCoreV1NamespacedPersistentVolumeClaim(ctx context.Context, req PatchCoreV1NamespacedPersistentVolumeClaimReq, params PatchCoreV1NamespacedPersistentVolumeClaimParams) (r PatchCoreV1NamespacedPersistentVolumeClaimRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchCoreV1NamespacedPersistentVolumeClaimStatus implements patchCoreV1NamespacedPersistentVolumeClaimStatus operation.
+//
+// Partially update status of the specified PersistentVolumeClaim.
+//
+// PATCH /api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}/status
+func (UnimplementedHandler) PatchCoreV1NamespacedPersistentVolumeClaimStatus(ctx context.Context, req PatchCoreV1NamespacedPersistentVolumeClaimStatusReq, params PatchCoreV1NamespacedPersistentVolumeClaimStatusParams) (r PatchCoreV1NamespacedPersistentVolumeClaimStatusRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchCoreV1NamespacedPod implements patchCoreV1NamespacedPod operation.
+//
+// Partially update the specified Pod.
+//
+// PATCH /api/v1/namespaces/{namespace}/pods/{name}
+func (UnimplementedHandler) PatchCoreV1NamespacedPod(ctx context.Context, req PatchCoreV1NamespacedPodReq, params PatchCoreV1NamespacedPodParams) (r PatchCoreV1NamespacedPodRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchCoreV1NamespacedPodEphemeralcontainers implements patchCoreV1NamespacedPodEphemeralcontainers operation.
+//
+// Partially update ephemeralcontainers of the specified Pod.
+//
+// PATCH /api/v1/namespaces/{namespace}/pods/{name}/ephemeralcontainers
+func (UnimplementedHandler) PatchCoreV1NamespacedPodEphemeralcontainers(ctx context.Context, req PatchCoreV1NamespacedPodEphemeralcontainersReq, params PatchCoreV1NamespacedPodEphemeralcontainersParams) (r PatchCoreV1NamespacedPodEphemeralcontainersRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchCoreV1NamespacedPodStatus implements patchCoreV1NamespacedPodStatus operation.
+//
+// Partially update status of the specified Pod.
+//
+// PATCH /api/v1/namespaces/{namespace}/pods/{name}/status
+func (UnimplementedHandler) PatchCoreV1NamespacedPodStatus(ctx context.Context, req PatchCoreV1NamespacedPodStatusReq, params PatchCoreV1NamespacedPodStatusParams) (r PatchCoreV1NamespacedPodStatusRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchCoreV1NamespacedPodTemplate implements patchCoreV1NamespacedPodTemplate operation.
+//
+// Partially update the specified PodTemplate.
+//
+// PATCH /api/v1/namespaces/{namespace}/podtemplates/{name}
+func (UnimplementedHandler) PatchCoreV1NamespacedPodTemplate(ctx context.Context, req PatchCoreV1NamespacedPodTemplateReq, params PatchCoreV1NamespacedPodTemplateParams) (r PatchCoreV1NamespacedPodTemplateRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchCoreV1NamespacedReplicationController implements patchCoreV1NamespacedReplicationController operation.
+//
+// Partially update the specified ReplicationController.
+//
+// PATCH /api/v1/namespaces/{namespace}/replicationcontrollers/{name}
+func (UnimplementedHandler) PatchCoreV1NamespacedReplicationController(ctx context.Context, req PatchCoreV1NamespacedReplicationControllerReq, params PatchCoreV1NamespacedReplicationControllerParams) (r PatchCoreV1NamespacedReplicationControllerRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchCoreV1NamespacedReplicationControllerScale implements patchCoreV1NamespacedReplicationControllerScale operation.
+//
+// Partially update scale of the specified ReplicationController.
+//
+// PATCH /api/v1/namespaces/{namespace}/replicationcontrollers/{name}/scale
+func (UnimplementedHandler) PatchCoreV1NamespacedReplicationControllerScale(ctx context.Context, req PatchCoreV1NamespacedReplicationControllerScaleReq, params PatchCoreV1NamespacedReplicationControllerScaleParams) (r PatchCoreV1NamespacedReplicationControllerScaleRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchCoreV1NamespacedReplicationControllerStatus implements patchCoreV1NamespacedReplicationControllerStatus operation.
+//
+// Partially update status of the specified ReplicationController.
+//
+// PATCH /api/v1/namespaces/{namespace}/replicationcontrollers/{name}/status
+func (UnimplementedHandler) PatchCoreV1NamespacedReplicationControllerStatus(ctx context.Context, req PatchCoreV1NamespacedReplicationControllerStatusReq, params PatchCoreV1NamespacedReplicationControllerStatusParams) (r PatchCoreV1NamespacedReplicationControllerStatusRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchCoreV1NamespacedResourceQuota implements patchCoreV1NamespacedResourceQuota operation.
+//
+// Partially update the specified ResourceQuota.
+//
+// PATCH /api/v1/namespaces/{namespace}/resourcequotas/{name}
+func (UnimplementedHandler) PatchCoreV1NamespacedResourceQuota(ctx context.Context, req PatchCoreV1NamespacedResourceQuotaReq, params PatchCoreV1NamespacedResourceQuotaParams) (r PatchCoreV1NamespacedResourceQuotaRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchCoreV1NamespacedResourceQuotaStatus implements patchCoreV1NamespacedResourceQuotaStatus operation.
+//
+// Partially update status of the specified ResourceQuota.
+//
+// PATCH /api/v1/namespaces/{namespace}/resourcequotas/{name}/status
+func (UnimplementedHandler) PatchCoreV1NamespacedResourceQuotaStatus(ctx context.Context, req PatchCoreV1NamespacedResourceQuotaStatusReq, params PatchCoreV1NamespacedResourceQuotaStatusParams) (r PatchCoreV1NamespacedResourceQuotaStatusRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchCoreV1NamespacedSecret implements patchCoreV1NamespacedSecret operation.
+//
+// Partially update the specified Secret.
+//
+// PATCH /api/v1/namespaces/{namespace}/secrets/{name}
+func (UnimplementedHandler) PatchCoreV1NamespacedSecret(ctx context.Context, req PatchCoreV1NamespacedSecretReq, params PatchCoreV1NamespacedSecretParams) (r PatchCoreV1NamespacedSecretRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchCoreV1NamespacedService implements patchCoreV1NamespacedService operation.
+//
+// Partially update the specified Service.
+//
+// PATCH /api/v1/namespaces/{namespace}/services/{name}
+func (UnimplementedHandler) PatchCoreV1NamespacedService(ctx context.Context, req PatchCoreV1NamespacedServiceReq, params PatchCoreV1NamespacedServiceParams) (r PatchCoreV1NamespacedServiceRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchCoreV1NamespacedServiceAccount implements patchCoreV1NamespacedServiceAccount operation.
+//
+// Partially update the specified ServiceAccount.
+//
+// PATCH /api/v1/namespaces/{namespace}/serviceaccounts/{name}
+func (UnimplementedHandler) PatchCoreV1NamespacedServiceAccount(ctx context.Context, req PatchCoreV1NamespacedServiceAccountReq, params PatchCoreV1NamespacedServiceAccountParams) (r PatchCoreV1NamespacedServiceAccountRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchCoreV1NamespacedServiceStatus implements patchCoreV1NamespacedServiceStatus operation.
+//
+// Partially update status of the specified Service.
+//
+// PATCH /api/v1/namespaces/{namespace}/services/{name}/status
+func (UnimplementedHandler) PatchCoreV1NamespacedServiceStatus(ctx context.Context, req PatchCoreV1NamespacedServiceStatusReq, params PatchCoreV1NamespacedServiceStatusParams) (r PatchCoreV1NamespacedServiceStatusRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchCoreV1Node implements patchCoreV1Node operation.
+//
+// Partially update the specified Node.
+//
+// PATCH /api/v1/nodes/{name}
+func (UnimplementedHandler) PatchCoreV1Node(ctx context.Context, req PatchCoreV1NodeReq, params PatchCoreV1NodeParams) (r PatchCoreV1NodeRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchCoreV1NodeStatus implements patchCoreV1NodeStatus operation.
+//
+// Partially update status of the specified Node.
+//
+// PATCH /api/v1/nodes/{name}/status
+func (UnimplementedHandler) PatchCoreV1NodeStatus(ctx context.Context, req PatchCoreV1NodeStatusReq, params PatchCoreV1NodeStatusParams) (r PatchCoreV1NodeStatusRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchCoreV1PersistentVolume implements patchCoreV1PersistentVolume operation.
+//
+// Partially update the specified PersistentVolume.
+//
+// PATCH /api/v1/persistentvolumes/{name}
+func (UnimplementedHandler) PatchCoreV1PersistentVolume(ctx context.Context, req PatchCoreV1PersistentVolumeReq, params PatchCoreV1PersistentVolumeParams) (r PatchCoreV1PersistentVolumeRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchCoreV1PersistentVolumeStatus implements patchCoreV1PersistentVolumeStatus operation.
+//
+// Partially update status of the specified PersistentVolume.
+//
+// PATCH /api/v1/persistentvolumes/{name}/status
+func (UnimplementedHandler) PatchCoreV1PersistentVolumeStatus(ctx context.Context, req PatchCoreV1PersistentVolumeStatusReq, params PatchCoreV1PersistentVolumeStatusParams) (r PatchCoreV1PersistentVolumeStatusRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchDiscoveryV1NamespacedEndpointSlice implements patchDiscoveryV1NamespacedEndpointSlice operation.
+//
+// Partially update the specified EndpointSlice.
+//
+// PATCH /apis/discovery.k8s.io/v1/namespaces/{namespace}/endpointslices/{name}
+func (UnimplementedHandler) PatchDiscoveryV1NamespacedEndpointSlice(ctx context.Context, req PatchDiscoveryV1NamespacedEndpointSliceReq, params PatchDiscoveryV1NamespacedEndpointSliceParams) (r PatchDiscoveryV1NamespacedEndpointSliceRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchDiscoveryV1beta1NamespacedEndpointSlice implements patchDiscoveryV1beta1NamespacedEndpointSlice operation.
+//
+// Partially update the specified EndpointSlice.
+//
+// PATCH /apis/discovery.k8s.io/v1beta1/namespaces/{namespace}/endpointslices/{name}
+func (UnimplementedHandler) PatchDiscoveryV1beta1NamespacedEndpointSlice(ctx context.Context, req PatchDiscoveryV1beta1NamespacedEndpointSliceReq, params PatchDiscoveryV1beta1NamespacedEndpointSliceParams) (r PatchDiscoveryV1beta1NamespacedEndpointSliceRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchEventsV1NamespacedEvent implements patchEventsV1NamespacedEvent operation.
+//
+// Partially update the specified Event.
+//
+// PATCH /apis/events.k8s.io/v1/namespaces/{namespace}/events/{name}
+func (UnimplementedHandler) PatchEventsV1NamespacedEvent(ctx context.Context, req PatchEventsV1NamespacedEventReq, params PatchEventsV1NamespacedEventParams) (r PatchEventsV1NamespacedEventRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchEventsV1beta1NamespacedEvent implements patchEventsV1beta1NamespacedEvent operation.
+//
+// Partially update the specified Event.
+//
+// PATCH /apis/events.k8s.io/v1beta1/namespaces/{namespace}/events/{name}
+func (UnimplementedHandler) PatchEventsV1beta1NamespacedEvent(ctx context.Context, req PatchEventsV1beta1NamespacedEventReq, params PatchEventsV1beta1NamespacedEventParams) (r PatchEventsV1beta1NamespacedEventRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchFlowcontrolApiserverV1beta1FlowSchema implements patchFlowcontrolApiserverV1beta1FlowSchema operation.
+//
+// Partially update the specified FlowSchema.
+//
+// PATCH /apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas/{name}
+func (UnimplementedHandler) PatchFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context, req PatchFlowcontrolApiserverV1beta1FlowSchemaReq, params PatchFlowcontrolApiserverV1beta1FlowSchemaParams) (r PatchFlowcontrolApiserverV1beta1FlowSchemaRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchFlowcontrolApiserverV1beta1FlowSchemaStatus implements patchFlowcontrolApiserverV1beta1FlowSchemaStatus operation.
+//
+// Partially update status of the specified FlowSchema.
+//
+// PATCH /apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas/{name}/status
+func (UnimplementedHandler) PatchFlowcontrolApiserverV1beta1FlowSchemaStatus(ctx context.Context, req PatchFlowcontrolApiserverV1beta1FlowSchemaStatusReq, params PatchFlowcontrolApiserverV1beta1FlowSchemaStatusParams) (r PatchFlowcontrolApiserverV1beta1FlowSchemaStatusRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchFlowcontrolApiserverV1beta1PriorityLevelConfiguration implements patchFlowcontrolApiserverV1beta1PriorityLevelConfiguration operation.
+//
+// Partially update the specified PriorityLevelConfiguration.
+//
+// PATCH /apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations/{name}
+func (UnimplementedHandler) PatchFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx context.Context, req PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationReq, params PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams) (r PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus implements patchFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus operation.
+//
+// Partially update status of the specified PriorityLevelConfiguration.
+//
+// PATCH /apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations/{name}/status
+func (UnimplementedHandler) PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus(ctx context.Context, req PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusReq, params PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusParams) (r PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchFlowcontrolApiserverV1beta2FlowSchema implements patchFlowcontrolApiserverV1beta2FlowSchema operation.
+//
+// Partially update the specified FlowSchema.
+//
+// PATCH /apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas/{name}
+func (UnimplementedHandler) PatchFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context, req PatchFlowcontrolApiserverV1beta2FlowSchemaReq, params PatchFlowcontrolApiserverV1beta2FlowSchemaParams) (r PatchFlowcontrolApiserverV1beta2FlowSchemaRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchFlowcontrolApiserverV1beta2FlowSchemaStatus implements patchFlowcontrolApiserverV1beta2FlowSchemaStatus operation.
+//
+// Partially update status of the specified FlowSchema.
+//
+// PATCH /apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas/{name}/status
+func (UnimplementedHandler) PatchFlowcontrolApiserverV1beta2FlowSchemaStatus(ctx context.Context, req PatchFlowcontrolApiserverV1beta2FlowSchemaStatusReq, params PatchFlowcontrolApiserverV1beta2FlowSchemaStatusParams) (r PatchFlowcontrolApiserverV1beta2FlowSchemaStatusRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchFlowcontrolApiserverV1beta2PriorityLevelConfiguration implements patchFlowcontrolApiserverV1beta2PriorityLevelConfiguration operation.
+//
+// Partially update the specified PriorityLevelConfiguration.
+//
+// PATCH /apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations/{name}
+func (UnimplementedHandler) PatchFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx context.Context, req PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationReq, params PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams) (r PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus implements patchFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus operation.
+//
+// Partially update status of the specified PriorityLevelConfiguration.
+//
+// PATCH /apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations/{name}/status
+func (UnimplementedHandler) PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus(ctx context.Context, req PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusReq, params PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusParams) (r PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchInternalApiserverV1alpha1StorageVersion implements patchInternalApiserverV1alpha1StorageVersion operation.
+//
+// Partially update the specified StorageVersion.
+//
+// PATCH /apis/internal.apiserver.k8s.io/v1alpha1/storageversions/{name}
+func (UnimplementedHandler) PatchInternalApiserverV1alpha1StorageVersion(ctx context.Context, req PatchInternalApiserverV1alpha1StorageVersionReq, params PatchInternalApiserverV1alpha1StorageVersionParams) (r PatchInternalApiserverV1alpha1StorageVersionRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchInternalApiserverV1alpha1StorageVersionStatus implements patchInternalApiserverV1alpha1StorageVersionStatus operation.
+//
+// Partially update status of the specified StorageVersion.
+//
+// PATCH /apis/internal.apiserver.k8s.io/v1alpha1/storageversions/{name}/status
+func (UnimplementedHandler) PatchInternalApiserverV1alpha1StorageVersionStatus(ctx context.Context, req PatchInternalApiserverV1alpha1StorageVersionStatusReq, params PatchInternalApiserverV1alpha1StorageVersionStatusParams) (r PatchInternalApiserverV1alpha1StorageVersionStatusRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchNetworkingV1IngressClass implements patchNetworkingV1IngressClass operation.
+//
+// Partially update the specified IngressClass.
+//
+// PATCH /apis/networking.k8s.io/v1/ingressclasses/{name}
+func (UnimplementedHandler) PatchNetworkingV1IngressClass(ctx context.Context, req PatchNetworkingV1IngressClassReq, params PatchNetworkingV1IngressClassParams) (r PatchNetworkingV1IngressClassRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchNetworkingV1NamespacedIngress implements patchNetworkingV1NamespacedIngress operation.
+//
+// Partially update the specified Ingress.
+//
+// PATCH /apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses/{name}
+func (UnimplementedHandler) PatchNetworkingV1NamespacedIngress(ctx context.Context, req PatchNetworkingV1NamespacedIngressReq, params PatchNetworkingV1NamespacedIngressParams) (r PatchNetworkingV1NamespacedIngressRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchNetworkingV1NamespacedIngressStatus implements patchNetworkingV1NamespacedIngressStatus operation.
+//
+// Partially update status of the specified Ingress.
+//
+// PATCH /apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses/{name}/status
+func (UnimplementedHandler) PatchNetworkingV1NamespacedIngressStatus(ctx context.Context, req PatchNetworkingV1NamespacedIngressStatusReq, params PatchNetworkingV1NamespacedIngressStatusParams) (r PatchNetworkingV1NamespacedIngressStatusRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchNetworkingV1NamespacedNetworkPolicy implements patchNetworkingV1NamespacedNetworkPolicy operation.
+//
+// Partially update the specified NetworkPolicy.
+//
+// PATCH /apis/networking.k8s.io/v1/namespaces/{namespace}/networkpolicies/{name}
+func (UnimplementedHandler) PatchNetworkingV1NamespacedNetworkPolicy(ctx context.Context, req PatchNetworkingV1NamespacedNetworkPolicyReq, params PatchNetworkingV1NamespacedNetworkPolicyParams) (r PatchNetworkingV1NamespacedNetworkPolicyRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchNodeV1RuntimeClass implements patchNodeV1RuntimeClass operation.
+//
+// Partially update the specified RuntimeClass.
+//
+// PATCH /apis/node.k8s.io/v1/runtimeclasses/{name}
+func (UnimplementedHandler) PatchNodeV1RuntimeClass(ctx context.Context, req PatchNodeV1RuntimeClassReq, params PatchNodeV1RuntimeClassParams) (r PatchNodeV1RuntimeClassRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchNodeV1alpha1RuntimeClass implements patchNodeV1alpha1RuntimeClass operation.
+//
+// Partially update the specified RuntimeClass.
+//
+// PATCH /apis/node.k8s.io/v1alpha1/runtimeclasses/{name}
+func (UnimplementedHandler) PatchNodeV1alpha1RuntimeClass(ctx context.Context, req PatchNodeV1alpha1RuntimeClassReq, params PatchNodeV1alpha1RuntimeClassParams) (r PatchNodeV1alpha1RuntimeClassRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchNodeV1beta1RuntimeClass implements patchNodeV1beta1RuntimeClass operation.
+//
+// Partially update the specified RuntimeClass.
+//
+// PATCH /apis/node.k8s.io/v1beta1/runtimeclasses/{name}
+func (UnimplementedHandler) PatchNodeV1beta1RuntimeClass(ctx context.Context, req PatchNodeV1beta1RuntimeClassReq, params PatchNodeV1beta1RuntimeClassParams) (r PatchNodeV1beta1RuntimeClassRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchPolicyV1NamespacedPodDisruptionBudget implements patchPolicyV1NamespacedPodDisruptionBudget operation.
+//
+// Partially update the specified PodDisruptionBudget.
+//
+// PATCH /apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets/{name}
+func (UnimplementedHandler) PatchPolicyV1NamespacedPodDisruptionBudget(ctx context.Context, req PatchPolicyV1NamespacedPodDisruptionBudgetReq, params PatchPolicyV1NamespacedPodDisruptionBudgetParams) (r PatchPolicyV1NamespacedPodDisruptionBudgetRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchPolicyV1NamespacedPodDisruptionBudgetStatus implements patchPolicyV1NamespacedPodDisruptionBudgetStatus operation.
+//
+// Partially update status of the specified PodDisruptionBudget.
+//
+// PATCH /apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets/{name}/status
+func (UnimplementedHandler) PatchPolicyV1NamespacedPodDisruptionBudgetStatus(ctx context.Context, req PatchPolicyV1NamespacedPodDisruptionBudgetStatusReq, params PatchPolicyV1NamespacedPodDisruptionBudgetStatusParams) (r PatchPolicyV1NamespacedPodDisruptionBudgetStatusRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchPolicyV1beta1NamespacedPodDisruptionBudget implements patchPolicyV1beta1NamespacedPodDisruptionBudget operation.
+//
+// Partially update the specified PodDisruptionBudget.
+//
+// PATCH /apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets/{name}
+func (UnimplementedHandler) PatchPolicyV1beta1NamespacedPodDisruptionBudget(ctx context.Context, req PatchPolicyV1beta1NamespacedPodDisruptionBudgetReq, params PatchPolicyV1beta1NamespacedPodDisruptionBudgetParams) (r PatchPolicyV1beta1NamespacedPodDisruptionBudgetRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchPolicyV1beta1NamespacedPodDisruptionBudgetStatus implements patchPolicyV1beta1NamespacedPodDisruptionBudgetStatus operation.
+//
+// Partially update status of the specified PodDisruptionBudget.
+//
+// PATCH /apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets/{name}/status
+func (UnimplementedHandler) PatchPolicyV1beta1NamespacedPodDisruptionBudgetStatus(ctx context.Context, req PatchPolicyV1beta1NamespacedPodDisruptionBudgetStatusReq, params PatchPolicyV1beta1NamespacedPodDisruptionBudgetStatusParams) (r PatchPolicyV1beta1NamespacedPodDisruptionBudgetStatusRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchPolicyV1beta1PodSecurityPolicy implements patchPolicyV1beta1PodSecurityPolicy operation.
+//
+// Partially update the specified PodSecurityPolicy.
+//
+// PATCH /apis/policy/v1beta1/podsecuritypolicies/{name}
+func (UnimplementedHandler) PatchPolicyV1beta1PodSecurityPolicy(ctx context.Context, req PatchPolicyV1beta1PodSecurityPolicyReq, params PatchPolicyV1beta1PodSecurityPolicyParams) (r PatchPolicyV1beta1PodSecurityPolicyRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchRbacAuthorizationV1ClusterRole implements patchRbacAuthorizationV1ClusterRole operation.
+//
+// Partially update the specified ClusterRole.
+//
+// PATCH /apis/rbac.authorization.k8s.io/v1/clusterroles/{name}
+func (UnimplementedHandler) PatchRbacAuthorizationV1ClusterRole(ctx context.Context, req PatchRbacAuthorizationV1ClusterRoleReq, params PatchRbacAuthorizationV1ClusterRoleParams) (r PatchRbacAuthorizationV1ClusterRoleRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchRbacAuthorizationV1ClusterRoleBinding implements patchRbacAuthorizationV1ClusterRoleBinding operation.
+//
+// Partially update the specified ClusterRoleBinding.
+//
+// PATCH /apis/rbac.authorization.k8s.io/v1/clusterrolebindings/{name}
+func (UnimplementedHandler) PatchRbacAuthorizationV1ClusterRoleBinding(ctx context.Context, req PatchRbacAuthorizationV1ClusterRoleBindingReq, params PatchRbacAuthorizationV1ClusterRoleBindingParams) (r PatchRbacAuthorizationV1ClusterRoleBindingRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchRbacAuthorizationV1NamespacedRole implements patchRbacAuthorizationV1NamespacedRole operation.
+//
+// Partially update the specified Role.
+//
+// PATCH /apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/roles/{name}
+func (UnimplementedHandler) PatchRbacAuthorizationV1NamespacedRole(ctx context.Context, req PatchRbacAuthorizationV1NamespacedRoleReq, params PatchRbacAuthorizationV1NamespacedRoleParams) (r PatchRbacAuthorizationV1NamespacedRoleRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchRbacAuthorizationV1NamespacedRoleBinding implements patchRbacAuthorizationV1NamespacedRoleBinding operation.
+//
+// Partially update the specified RoleBinding.
+//
+// PATCH /apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/rolebindings/{name}
+func (UnimplementedHandler) PatchRbacAuthorizationV1NamespacedRoleBinding(ctx context.Context, req PatchRbacAuthorizationV1NamespacedRoleBindingReq, params PatchRbacAuthorizationV1NamespacedRoleBindingParams) (r PatchRbacAuthorizationV1NamespacedRoleBindingRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchSchedulingV1PriorityClass implements patchSchedulingV1PriorityClass operation.
+//
+// Partially update the specified PriorityClass.
+//
+// PATCH /apis/scheduling.k8s.io/v1/priorityclasses/{name}
+func (UnimplementedHandler) PatchSchedulingV1PriorityClass(ctx context.Context, req PatchSchedulingV1PriorityClassReq, params PatchSchedulingV1PriorityClassParams) (r PatchSchedulingV1PriorityClassRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchStorageV1CSIDriver implements patchStorageV1CSIDriver operation.
+//
+// Partially update the specified CSIDriver.
+//
+// PATCH /apis/storage.k8s.io/v1/csidrivers/{name}
+func (UnimplementedHandler) PatchStorageV1CSIDriver(ctx context.Context, req PatchStorageV1CSIDriverReq, params PatchStorageV1CSIDriverParams) (r PatchStorageV1CSIDriverRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchStorageV1CSINode implements patchStorageV1CSINode operation.
+//
+// Partially update the specified CSINode.
+//
+// PATCH /apis/storage.k8s.io/v1/csinodes/{name}
+func (UnimplementedHandler) PatchStorageV1CSINode(ctx context.Context, req PatchStorageV1CSINodeReq, params PatchStorageV1CSINodeParams) (r PatchStorageV1CSINodeRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchStorageV1StorageClass implements patchStorageV1StorageClass operation.
+//
+// Partially update the specified StorageClass.
+//
+// PATCH /apis/storage.k8s.io/v1/storageclasses/{name}
+func (UnimplementedHandler) PatchStorageV1StorageClass(ctx context.Context, req PatchStorageV1StorageClassReq, params PatchStorageV1StorageClassParams) (r PatchStorageV1StorageClassRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchStorageV1VolumeAttachment implements patchStorageV1VolumeAttachment operation.
+//
+// Partially update the specified VolumeAttachment.
+//
+// PATCH /apis/storage.k8s.io/v1/volumeattachments/{name}
+func (UnimplementedHandler) PatchStorageV1VolumeAttachment(ctx context.Context, req PatchStorageV1VolumeAttachmentReq, params PatchStorageV1VolumeAttachmentParams) (r PatchStorageV1VolumeAttachmentRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchStorageV1VolumeAttachmentStatus implements patchStorageV1VolumeAttachmentStatus operation.
+//
+// Partially update status of the specified VolumeAttachment.
+//
+// PATCH /apis/storage.k8s.io/v1/volumeattachments/{name}/status
+func (UnimplementedHandler) PatchStorageV1VolumeAttachmentStatus(ctx context.Context, req PatchStorageV1VolumeAttachmentStatusReq, params PatchStorageV1VolumeAttachmentStatusParams) (r PatchStorageV1VolumeAttachmentStatusRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchStorageV1alpha1NamespacedCSIStorageCapacity implements patchStorageV1alpha1NamespacedCSIStorageCapacity operation.
+//
+// Partially update the specified CSIStorageCapacity.
+//
+// PATCH /apis/storage.k8s.io/v1alpha1/namespaces/{namespace}/csistoragecapacities/{name}
+func (UnimplementedHandler) PatchStorageV1alpha1NamespacedCSIStorageCapacity(ctx context.Context, req PatchStorageV1alpha1NamespacedCSIStorageCapacityReq, params PatchStorageV1alpha1NamespacedCSIStorageCapacityParams) (r PatchStorageV1alpha1NamespacedCSIStorageCapacityRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// PatchStorageV1beta1NamespacedCSIStorageCapacity implements patchStorageV1beta1NamespacedCSIStorageCapacity operation.
+//
+// Partially update the specified CSIStorageCapacity.
+//
+// PATCH /apis/storage.k8s.io/v1beta1/namespaces/{namespace}/csistoragecapacities/{name}
+func (UnimplementedHandler) PatchStorageV1beta1NamespacedCSIStorageCapacity(ctx context.Context, req PatchStorageV1beta1NamespacedCSIStorageCapacityReq, params PatchStorageV1beta1NamespacedCSIStorageCapacityParams) (r PatchStorageV1beta1NamespacedCSIStorageCapacityRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 

@@ -2630,6 +2630,48 @@ func encodeReposUploadReleaseAssetRequest(
 	}
 }
 
+func encodeScimProvisionAndInviteUserRequest(
+	req *ScimProvisionAndInviteUserReq,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	e := new(jx.Encoder)
+	{
+		req.Encode(e)
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+
+func encodeScimSetInformationForProvisionedUserRequest(
+	req *ScimSetInformationForProvisionedUserReq,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	e := new(jx.Encoder)
+	{
+		req.Encode(e)
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+
+func encodeScimUpdateAttributeForUserRequest(
+	req *ScimUpdateAttributeForUserReq,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	e := new(jx.Encoder)
+	{
+		req.Encode(e)
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+
 func encodeSecretScanningUpdateAlertRequest(
 	req *SecretScanningUpdateAlertReq,
 	r *http.Request,

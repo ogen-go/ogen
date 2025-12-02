@@ -5245,12 +5245,12 @@ func (s *CodeScanningAnalysisURL) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *CodeScanningDeleteAnalysisBadRequest) SetFake() {
+func (s *CodeScanningDeleteAnalysisApplicationJSONBadRequest) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = CodeScanningDeleteAnalysisBadRequest(unwrapped)
+	*s = CodeScanningDeleteAnalysisApplicationJSONBadRequest(unwrapped)
 }
 
 // SetFake set fake values.
@@ -20168,6 +20168,15 @@ func (s *OptScimGroupListEnterpriseResourcesItemMeta) SetFake() {
 }
 
 // SetFake set fake values.
+func (s *OptScimUpdateAttributeForUserReqOperationsItemValue) SetFake() {
+	var elem ScimUpdateAttributeForUserReqOperationsItemValue
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
+}
+
+// SetFake set fake values.
 func (s *OptScimUserListEnterpriseResourcesItemMeta) SetFake() {
 	var elem ScimUserListEnterpriseResourcesItemMeta
 	{
@@ -20179,6 +20188,15 @@ func (s *OptScimUserListEnterpriseResourcesItemMeta) SetFake() {
 // SetFake set fake values.
 func (s *OptScimUserListEnterpriseResourcesItemName) SetFake() {
 	var elem ScimUserListEnterpriseResourcesItemName
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
+}
+
+// SetFake set fake values.
+func (s *OptScimUserOperationsItemValue) SetFake() {
+	var elem ScimUserOperationsItemValue
 	{
 		elem.SetFake()
 	}
@@ -29245,12 +29263,12 @@ func (s *ReposCreateDispatchEventReqClientPayload) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *ReposCreateForAuthenticatedUserBadRequest) SetFake() {
+func (s *ReposCreateForAuthenticatedUserApplicationJSONBadRequest) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ReposCreateForAuthenticatedUserBadRequest(unwrapped)
+	*s = ReposCreateForAuthenticatedUserApplicationJSONBadRequest(unwrapped)
 }
 
 // SetFake set fake values.
@@ -29375,12 +29393,12 @@ func (s *ReposCreateForAuthenticatedUserUnauthorized) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *ReposCreateForkBadRequest) SetFake() {
+func (s *ReposCreateForkApplicationJSONBadRequest) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ReposCreateForkBadRequest(unwrapped)
+	*s = ReposCreateForkApplicationJSONBadRequest(unwrapped)
 }
 
 // SetFake set fake values.
@@ -30170,12 +30188,12 @@ func (s *ReposListBranchesForHeadCommitOKApplicationJSON) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *ReposListCommitsBadRequest) SetFake() {
+func (s *ReposListCommitsApplicationJSONBadRequest) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ReposListCommitsBadRequest(unwrapped)
+	*s = ReposListCommitsApplicationJSONBadRequest(unwrapped)
 }
 
 // SetFake set fake values.
@@ -32820,21 +32838,39 @@ func (s *RunnerLabelsItemType) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *ScimDeleteUserFromOrgForbidden) SetFake() {
+func (s *ScimDeleteUserFromOrgApplicationJSONForbidden) SetFake() {
 	var unwrapped ScimError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ScimDeleteUserFromOrgForbidden(unwrapped)
+	*s = ScimDeleteUserFromOrgApplicationJSONForbidden(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ScimDeleteUserFromOrgNotFound) SetFake() {
+func (s *ScimDeleteUserFromOrgApplicationJSONNotFound) SetFake() {
 	var unwrapped ScimError
 	{
 		unwrapped.SetFake()
 	}
-	*s = ScimDeleteUserFromOrgNotFound(unwrapped)
+	*s = ScimDeleteUserFromOrgApplicationJSONNotFound(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *ScimDeleteUserFromOrgApplicationScimJSONForbidden) SetFake() {
+	var unwrapped ScimError
+	{
+		unwrapped.SetFake()
+	}
+	*s = ScimDeleteUserFromOrgApplicationScimJSONForbidden(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *ScimDeleteUserFromOrgApplicationScimJSONNotFound) SetFake() {
+	var unwrapped ScimError
+	{
+		unwrapped.SetFake()
+	}
+	*s = ScimDeleteUserFromOrgApplicationScimJSONNotFound(unwrapped)
 }
 
 // SetFake set fake values.
@@ -33106,6 +33142,42 @@ func (s *ScimError) SetFake() {
 }
 
 // SetFake set fake values.
+func (s *ScimGetProvisioningInformationForUserApplicationJSONForbidden) SetFake() {
+	var unwrapped ScimError
+	{
+		unwrapped.SetFake()
+	}
+	*s = ScimGetProvisioningInformationForUserApplicationJSONForbidden(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *ScimGetProvisioningInformationForUserApplicationJSONNotFound) SetFake() {
+	var unwrapped ScimError
+	{
+		unwrapped.SetFake()
+	}
+	*s = ScimGetProvisioningInformationForUserApplicationJSONNotFound(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *ScimGetProvisioningInformationForUserApplicationScimJSONForbidden) SetFake() {
+	var unwrapped ScimError
+	{
+		unwrapped.SetFake()
+	}
+	*s = ScimGetProvisioningInformationForUserApplicationScimJSONForbidden(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *ScimGetProvisioningInformationForUserApplicationScimJSONNotFound) SetFake() {
+	var unwrapped ScimError
+	{
+		unwrapped.SetFake()
+	}
+	*s = ScimGetProvisioningInformationForUserApplicationScimJSONNotFound(unwrapped)
+}
+
+// SetFake set fake values.
 func (s *ScimGroupListEnterprise) SetFake() {
 	{
 		{
@@ -33235,6 +33307,714 @@ func (s *ScimGroupListEnterpriseResourcesItemMeta) SetFake() {
 	{
 		{
 			s.Location.SetFake()
+		}
+	}
+}
+
+// SetFake set fake values.
+func (s *ScimListProvisionedIdentitiesApplicationJSONBadRequest) SetFake() {
+	var unwrapped ScimError
+	{
+		unwrapped.SetFake()
+	}
+	*s = ScimListProvisionedIdentitiesApplicationJSONBadRequest(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *ScimListProvisionedIdentitiesApplicationJSONForbidden) SetFake() {
+	var unwrapped ScimError
+	{
+		unwrapped.SetFake()
+	}
+	*s = ScimListProvisionedIdentitiesApplicationJSONForbidden(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *ScimListProvisionedIdentitiesApplicationJSONNotFound) SetFake() {
+	var unwrapped ScimError
+	{
+		unwrapped.SetFake()
+	}
+	*s = ScimListProvisionedIdentitiesApplicationJSONNotFound(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *ScimListProvisionedIdentitiesApplicationScimJSONBadRequest) SetFake() {
+	var unwrapped ScimError
+	{
+		unwrapped.SetFake()
+	}
+	*s = ScimListProvisionedIdentitiesApplicationScimJSONBadRequest(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *ScimListProvisionedIdentitiesApplicationScimJSONForbidden) SetFake() {
+	var unwrapped ScimError
+	{
+		unwrapped.SetFake()
+	}
+	*s = ScimListProvisionedIdentitiesApplicationScimJSONForbidden(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *ScimListProvisionedIdentitiesApplicationScimJSONNotFound) SetFake() {
+	var unwrapped ScimError
+	{
+		unwrapped.SetFake()
+	}
+	*s = ScimListProvisionedIdentitiesApplicationScimJSONNotFound(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *ScimProvisionAndInviteUserApplicationJSONBadRequest) SetFake() {
+	var unwrapped ScimError
+	{
+		unwrapped.SetFake()
+	}
+	*s = ScimProvisionAndInviteUserApplicationJSONBadRequest(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *ScimProvisionAndInviteUserApplicationJSONConflict) SetFake() {
+	var unwrapped ScimError
+	{
+		unwrapped.SetFake()
+	}
+	*s = ScimProvisionAndInviteUserApplicationJSONConflict(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *ScimProvisionAndInviteUserApplicationJSONForbidden) SetFake() {
+	var unwrapped ScimError
+	{
+		unwrapped.SetFake()
+	}
+	*s = ScimProvisionAndInviteUserApplicationJSONForbidden(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *ScimProvisionAndInviteUserApplicationJSONInternalServerError) SetFake() {
+	var unwrapped ScimError
+	{
+		unwrapped.SetFake()
+	}
+	*s = ScimProvisionAndInviteUserApplicationJSONInternalServerError(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *ScimProvisionAndInviteUserApplicationJSONNotFound) SetFake() {
+	var unwrapped ScimError
+	{
+		unwrapped.SetFake()
+	}
+	*s = ScimProvisionAndInviteUserApplicationJSONNotFound(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *ScimProvisionAndInviteUserApplicationScimJSONBadRequest) SetFake() {
+	var unwrapped ScimError
+	{
+		unwrapped.SetFake()
+	}
+	*s = ScimProvisionAndInviteUserApplicationScimJSONBadRequest(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *ScimProvisionAndInviteUserApplicationScimJSONConflict) SetFake() {
+	var unwrapped ScimError
+	{
+		unwrapped.SetFake()
+	}
+	*s = ScimProvisionAndInviteUserApplicationScimJSONConflict(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *ScimProvisionAndInviteUserApplicationScimJSONForbidden) SetFake() {
+	var unwrapped ScimError
+	{
+		unwrapped.SetFake()
+	}
+	*s = ScimProvisionAndInviteUserApplicationScimJSONForbidden(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *ScimProvisionAndInviteUserApplicationScimJSONInternalServerError) SetFake() {
+	var unwrapped ScimError
+	{
+		unwrapped.SetFake()
+	}
+	*s = ScimProvisionAndInviteUserApplicationScimJSONInternalServerError(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *ScimProvisionAndInviteUserApplicationScimJSONNotFound) SetFake() {
+	var unwrapped ScimError
+	{
+		unwrapped.SetFake()
+	}
+	*s = ScimProvisionAndInviteUserApplicationScimJSONNotFound(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *ScimProvisionAndInviteUserReq) SetFake() {
+	{
+		{
+			s.UserName = "string"
+		}
+	}
+	{
+		{
+			s.DisplayName.SetFake()
+		}
+	}
+	{
+		{
+			s.Name.SetFake()
+		}
+	}
+	{
+		{
+			s.Emails = nil
+			for i := 0; i < 1; i++ {
+				var elem ScimProvisionAndInviteUserReqEmailsItem
+				{
+					elem.SetFake()
+				}
+				s.Emails = append(s.Emails, elem)
+			}
+		}
+	}
+	{
+		{
+			s.Schemas = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+				{
+					elem = "string"
+				}
+				s.Schemas = append(s.Schemas, elem)
+			}
+		}
+	}
+	{
+		{
+			s.ExternalId.SetFake()
+		}
+	}
+	{
+		{
+			s.Groups = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+				{
+					elem = "string"
+				}
+				s.Groups = append(s.Groups, elem)
+			}
+		}
+	}
+	{
+		{
+			s.Active.SetFake()
+		}
+	}
+}
+
+// SetFake set fake values.
+func (s *ScimProvisionAndInviteUserReqEmailsItem) SetFake() {
+	{
+		{
+			s.Value = "string"
+		}
+	}
+	{
+		{
+			s.Primary.SetFake()
+		}
+	}
+	{
+		{
+			s.Type.SetFake()
+		}
+	}
+}
+
+// SetFake set fake values.
+func (s *ScimProvisionAndInviteUserReqName) SetFake() {
+	{
+		{
+			s.GivenName = "string"
+		}
+	}
+	{
+		{
+			s.FamilyName = "string"
+		}
+	}
+	{
+		{
+			s.Formatted.SetFake()
+		}
+	}
+}
+
+// SetFake set fake values.
+func (s *ScimSetInformationForProvisionedUserApplicationJSONForbidden) SetFake() {
+	var unwrapped ScimError
+	{
+		unwrapped.SetFake()
+	}
+	*s = ScimSetInformationForProvisionedUserApplicationJSONForbidden(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *ScimSetInformationForProvisionedUserApplicationJSONNotFound) SetFake() {
+	var unwrapped ScimError
+	{
+		unwrapped.SetFake()
+	}
+	*s = ScimSetInformationForProvisionedUserApplicationJSONNotFound(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *ScimSetInformationForProvisionedUserApplicationScimJSONForbidden) SetFake() {
+	var unwrapped ScimError
+	{
+		unwrapped.SetFake()
+	}
+	*s = ScimSetInformationForProvisionedUserApplicationScimJSONForbidden(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *ScimSetInformationForProvisionedUserApplicationScimJSONNotFound) SetFake() {
+	var unwrapped ScimError
+	{
+		unwrapped.SetFake()
+	}
+	*s = ScimSetInformationForProvisionedUserApplicationScimJSONNotFound(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *ScimSetInformationForProvisionedUserReq) SetFake() {
+	{
+		{
+			s.Schemas = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+				{
+					elem = "string"
+				}
+				s.Schemas = append(s.Schemas, elem)
+			}
+		}
+	}
+	{
+		{
+			s.DisplayName.SetFake()
+		}
+	}
+	{
+		{
+			s.ExternalId.SetFake()
+		}
+	}
+	{
+		{
+			s.Groups = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+				{
+					elem = "string"
+				}
+				s.Groups = append(s.Groups, elem)
+			}
+		}
+	}
+	{
+		{
+			s.Active.SetFake()
+		}
+	}
+	{
+		{
+			s.UserName = "string"
+		}
+	}
+	{
+		{
+			s.Name.SetFake()
+		}
+	}
+	{
+		{
+			s.Emails = nil
+			for i := 0; i < 1; i++ {
+				var elem ScimSetInformationForProvisionedUserReqEmailsItem
+				{
+					elem.SetFake()
+				}
+				s.Emails = append(s.Emails, elem)
+			}
+		}
+	}
+}
+
+// SetFake set fake values.
+func (s *ScimSetInformationForProvisionedUserReqEmailsItem) SetFake() {
+	{
+		{
+			s.Type.SetFake()
+		}
+	}
+	{
+		{
+			s.Value = "string"
+		}
+	}
+	{
+		{
+			s.Primary.SetFake()
+		}
+	}
+}
+
+// SetFake set fake values.
+func (s *ScimSetInformationForProvisionedUserReqName) SetFake() {
+	{
+		{
+			s.GivenName = "string"
+		}
+	}
+	{
+		{
+			s.FamilyName = "string"
+		}
+	}
+	{
+		{
+			s.Formatted.SetFake()
+		}
+	}
+}
+
+// SetFake set fake values.
+func (s *ScimUpdateAttributeForUserApplicationJSONBadRequest) SetFake() {
+	var unwrapped ScimError
+	{
+		unwrapped.SetFake()
+	}
+	*s = ScimUpdateAttributeForUserApplicationJSONBadRequest(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *ScimUpdateAttributeForUserApplicationJSONForbidden) SetFake() {
+	var unwrapped ScimError
+	{
+		unwrapped.SetFake()
+	}
+	*s = ScimUpdateAttributeForUserApplicationJSONForbidden(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *ScimUpdateAttributeForUserApplicationJSONNotFound) SetFake() {
+	var unwrapped ScimError
+	{
+		unwrapped.SetFake()
+	}
+	*s = ScimUpdateAttributeForUserApplicationJSONNotFound(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *ScimUpdateAttributeForUserApplicationScimJSONBadRequest) SetFake() {
+	var unwrapped ScimError
+	{
+		unwrapped.SetFake()
+	}
+	*s = ScimUpdateAttributeForUserApplicationScimJSONBadRequest(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *ScimUpdateAttributeForUserApplicationScimJSONForbidden) SetFake() {
+	var unwrapped ScimError
+	{
+		unwrapped.SetFake()
+	}
+	*s = ScimUpdateAttributeForUserApplicationScimJSONForbidden(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *ScimUpdateAttributeForUserApplicationScimJSONNotFound) SetFake() {
+	var unwrapped ScimError
+	{
+		unwrapped.SetFake()
+	}
+	*s = ScimUpdateAttributeForUserApplicationScimJSONNotFound(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *ScimUpdateAttributeForUserReq) SetFake() {
+	{
+		{
+			s.Schemas = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+				{
+					elem = "string"
+				}
+				s.Schemas = append(s.Schemas, elem)
+			}
+		}
+	}
+	{
+		{
+			s.Operations = nil
+			for i := 0; i < 1; i++ {
+				var elem ScimUpdateAttributeForUserReqOperationsItem
+				{
+					elem.SetFake()
+				}
+				s.Operations = append(s.Operations, elem)
+			}
+		}
+	}
+}
+
+// SetFake set fake values.
+func (s *ScimUpdateAttributeForUserReqOperationsItem) SetFake() {
+	{
+		{
+			s.Op.SetFake()
+		}
+	}
+	{
+		{
+			s.Path.SetFake()
+		}
+	}
+	{
+		{
+			s.Value.SetFake()
+		}
+	}
+}
+
+// SetFake set fake values.
+func (s *ScimUpdateAttributeForUserReqOperationsItemOp) SetFake() {
+	*s = ScimUpdateAttributeForUserReqOperationsItemOpAdd
+}
+
+// SetFake set fake values.
+func (s *ScimUpdateAttributeForUserReqOperationsItemValue) SetFake() {
+	var variant ScimUpdateAttributeForUserReqOperationsItemValue0
+
+	{
+		variant.SetFake()
+	}
+	s.SetScimUpdateAttributeForUserReqOperationsItemValue0(variant)
+}
+
+// SetFake set fake values.
+func (s *ScimUpdateAttributeForUserReqOperationsItemValue0) SetFake() {
+	{
+		{
+			s.Active.SetFake()
+		}
+	}
+	{
+		{
+			s.UserName.SetFake()
+		}
+	}
+	{
+		{
+			s.ExternalId.SetFake()
+		}
+	}
+	{
+		{
+			s.GivenName.SetFake()
+		}
+	}
+	{
+		{
+			s.FamilyName.SetFake()
+		}
+	}
+}
+
+// SetFake set fake values.
+func (s *ScimUpdateAttributeForUserReqOperationsItemValue1Item) SetFake() {
+	{
+		{
+			s.Value.SetFake()
+		}
+	}
+	{
+		{
+			s.Primary.SetFake()
+		}
+	}
+}
+
+// SetFake set fake values.
+func (s *ScimUser) SetFake() {
+	{
+		{
+			s.Schemas = nil
+			for i := 0; i < 1; i++ {
+				var elem string
+				{
+					elem = "string"
+				}
+				s.Schemas = append(s.Schemas, elem)
+			}
+		}
+	}
+	{
+		{
+			s.ID = "string"
+		}
+	}
+	{
+		{
+			s.ExternalId.SetFake()
+		}
+	}
+	{
+		{
+			s.UserName.SetFake()
+		}
+	}
+	{
+		{
+			s.DisplayName.SetFake()
+		}
+	}
+	{
+		{
+			s.Name.SetFake()
+		}
+	}
+	{
+		{
+			s.Emails = nil
+			for i := 0; i < 1; i++ {
+				var elem ScimUserEmailsItem
+				{
+					elem.SetFake()
+				}
+				s.Emails = append(s.Emails, elem)
+			}
+		}
+	}
+	{
+		{
+			s.Active = true
+		}
+	}
+	{
+		{
+			s.Meta.SetFake()
+		}
+	}
+	{
+		{
+			s.OrganizationID.SetFake()
+		}
+	}
+	{
+		{
+			s.Operations = nil
+			for i := 0; i < 1; i++ {
+				var elem ScimUserOperationsItem
+				{
+					elem.SetFake()
+				}
+				s.Operations = append(s.Operations, elem)
+			}
+		}
+	}
+	{
+		{
+			s.Groups = nil
+			for i := 0; i < 0; i++ {
+				var elem ScimUserGroupsItem
+				{
+					elem.SetFake()
+				}
+				s.Groups = append(s.Groups, elem)
+			}
+		}
+	}
+}
+
+// SetFake set fake values.
+func (s *ScimUserEmailsItem) SetFake() {
+	{
+		{
+			s.Value = "string"
+		}
+	}
+	{
+		{
+			s.Primary.SetFake()
+		}
+	}
+}
+
+// SetFake set fake values.
+func (s *ScimUserGroupsItem) SetFake() {
+	{
+		{
+			s.Value.SetFake()
+		}
+	}
+	{
+		{
+			s.Display.SetFake()
+		}
+	}
+}
+
+// SetFake set fake values.
+func (s *ScimUserList) SetFake() {
+	{
+		{
+			s.Schemas = nil
+			for i := 0; i < 1; i++ {
+				var elem string
+				{
+					elem = "string"
+				}
+				s.Schemas = append(s.Schemas, elem)
+			}
+		}
+	}
+	{
+		{
+			s.TotalResults = int(0)
+		}
+	}
+	{
+		{
+			s.ItemsPerPage = int(0)
+		}
+	}
+	{
+		{
+			s.StartIndex = int(0)
+		}
+	}
+	{
+		{
+			s.Resources = nil
+			for i := 0; i < 0; i++ {
+				var elem ScimUser
+				{
+					elem.SetFake()
+				}
+				s.Resources = append(s.Resources, elem)
+			}
 		}
 	}
 }
@@ -33416,6 +34196,87 @@ func (s *ScimUserListEnterpriseResourcesItemName) SetFake() {
 			s.FamilyName.SetFake()
 		}
 	}
+}
+
+// SetFake set fake values.
+func (s *ScimUserMeta) SetFake() {
+	{
+		{
+			s.ResourceType.SetFake()
+		}
+	}
+	{
+		{
+			s.Created.SetFake()
+		}
+	}
+	{
+		{
+			s.LastModified.SetFake()
+		}
+	}
+	{
+		{
+			s.Location.SetFake()
+		}
+	}
+}
+
+// SetFake set fake values.
+func (s *ScimUserName) SetFake() {
+	{
+		{
+			s.GivenName.SetFake()
+		}
+	}
+	{
+		{
+			s.FamilyName.SetFake()
+		}
+	}
+	{
+		{
+			s.Formatted.SetFake()
+		}
+	}
+}
+
+// SetFake set fake values.
+func (s *ScimUserOperationsItem) SetFake() {
+	{
+		{
+			s.Op.SetFake()
+		}
+	}
+	{
+		{
+			s.Path.SetFake()
+		}
+	}
+	{
+		{
+			s.Value.SetFake()
+		}
+	}
+}
+
+// SetFake set fake values.
+func (s *ScimUserOperationsItemOp) SetFake() {
+	*s = ScimUserOperationsItemOpAdd
+}
+
+// SetFake set fake values.
+func (s *ScimUserOperationsItemValue) SetFake() {
+	var variant string
+
+	{
+		variant = "string"
+	}
+	s.SetString(variant)
+}
+
+// SetFake set fake values.
+func (s *ScimUserOperationsItemValue1) SetFake() {
 }
 
 // SetFake set fake values.
@@ -34127,6 +34988,20 @@ func (s *SimpleUser) SetFake() {
 	{
 		{
 			s.StarredAt.SetFake()
+		}
+	}
+}
+
+// SetFake set fake values.
+func (s *StarredRepository) SetFake() {
+	{
+		{
+			s.StarredAt = time.Now()
+		}
+	}
+	{
+		{
+			s.Repo.SetFake()
 		}
 	}
 }

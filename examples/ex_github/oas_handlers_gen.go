@@ -97960,6 +97960,833 @@ func (s *Server) handleScimDeleteUserFromOrgRequest(args [2]string, argsEscaped 
 	}
 }
 
+// handleScimGetProvisioningInformationForUserRequest handles scim/get-provisioning-information-for-user operation.
+//
+// Get SCIM provisioning information for a user.
+//
+// GET /scim/v2/organizations/{org}/Users/{scim_user_id}
+func (s *Server) handleScimGetProvisioningInformationForUserRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	statusWriter := &codeRecorder{ResponseWriter: w}
+	w = statusWriter
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("scim/get-provisioning-information-for-user"),
+		semconv.HTTPRequestMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/scim/v2/organizations/{org}/Users/{scim_user_id}"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ScimGetProvisioningInformationForUserOperation,
+		trace.WithAttributes(otelAttrs...),
+		serverSpanKind,
+	)
+	defer span.End()
+
+	// Add Labeler to context.
+	labeler := &Labeler{attrs: otelAttrs}
+	ctx = contextWithLabeler(ctx, labeler)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+
+		attrSet := labeler.AttributeSet()
+		attrs := attrSet.ToSlice()
+		code := statusWriter.status
+		if code != 0 {
+			codeAttr := semconv.HTTPResponseStatusCode(code)
+			attrs = append(attrs, codeAttr)
+			span.SetAttributes(codeAttr)
+		}
+		attrOpt := metric.WithAttributes(attrs...)
+
+		// Increment request counter.
+		s.requests.Add(ctx, 1, attrOpt)
+
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		s.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), attrOpt)
+	}()
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+
+			// https://opentelemetry.io/docs/specs/semconv/http/http-spans/#status
+			// Span Status MUST be left unset if HTTP status code was in the 1xx, 2xx or 3xx ranges,
+			// unless there was another error (e.g., network error receiving the response body; or 3xx codes with
+			// max redirects exceeded), in which case status MUST be set to Error.
+			code := statusWriter.status
+			if code < 100 || code >= 500 {
+				span.SetStatus(codes.Error, stage)
+			}
+
+			attrSet := labeler.AttributeSet()
+			attrs := attrSet.ToSlice()
+			if code != 0 {
+				attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
+			}
+
+			s.errors.Add(ctx, 1, metric.WithAttributes(attrs...))
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: ScimGetProvisioningInformationForUserOperation,
+			ID:   "scim/get-provisioning-information-for-user",
+		}
+	)
+	params, err := decodeScimGetProvisioningInformationForUserParams(args, argsEscaped, r)
+	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		defer recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	var rawBody []byte
+
+	var response ScimGetProvisioningInformationForUserRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:          ctx,
+			OperationName:    ScimGetProvisioningInformationForUserOperation,
+			OperationSummary: "Get SCIM provisioning information for a user",
+			OperationID:      "scim/get-provisioning-information-for-user",
+			Body:             nil,
+			RawBody:          rawBody,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "scim_user_id",
+					In:   "path",
+				}: params.ScimUserID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ScimGetProvisioningInformationForUserParams
+			Response = ScimGetProvisioningInformationForUserRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackScimGetProvisioningInformationForUserParams,
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.ScimGetProvisioningInformationForUser(ctx, params)
+				return response, err
+			},
+		)
+	} else {
+		response, err = s.h.ScimGetProvisioningInformationForUser(ctx, params)
+	}
+	if err != nil {
+		defer recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeScimGetProvisioningInformationForUserResponse(response, w, span); err != nil {
+		defer recordError("EncodeResponse", err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
+		return
+	}
+}
+
+// handleScimListProvisionedIdentitiesRequest handles scim/list-provisioned-identities operation.
+//
+// Retrieves a paginated list of all provisioned organization members, including pending invitations.
+// If you provide the `filter` parameter, the resources for all matching provisions members are
+// returned.
+// When a user with a SAML-provisioned external identity leaves (or is removed from) an organization,
+// the account's metadata is immediately removed. However, the returned list of user accounts might
+// not always match the organization or enterprise member list you see on GitHub. This can happen in
+// certain cases where an external identity associated with an organization will not match an
+// organization member:
+// - When a user with a SCIM-provisioned external identity is removed from an organization, the
+// account's metadata is preserved to allow the user to re-join the organization in the future.
+// - When inviting a user to join an organization, you can expect to see their external identity in
+// the results before they accept the invitation, or if the invitation is cancelled (or never
+// accepted).
+// - When a user is invited over SCIM, an external identity is created that matches with the
+// invitee's email address. However, this identity is only linked to a user account when the user
+// accepts the invitation by going through SAML SSO.
+// The returned list of external identities can include an entry for a `null` user. These are
+// unlinked SAML identities that are created when a user goes through the following Single Sign-On
+// (SSO) process but does not sign in to their GitHub account after completing SSO:
+// 1. The user is granted access by the IdP and is not a member of the GitHub organization.
+// 1. The user attempts to access the GitHub organization and initiates the SAML SSO process, and is
+// not currently signed in to their GitHub account.
+// 1. After successfully authenticating with the SAML SSO IdP, the `null` external identity entry is
+// created and the user is prompted to sign in to their GitHub account:
+// - If the user signs in, their GitHub account is linked to this entry.
+// - If the user does not sign in (or does not create a new account when prompted), they are not
+// added to the GitHub organization, and the external identity `null` entry remains in place.
+//
+// GET /scim/v2/organizations/{org}/Users
+func (s *Server) handleScimListProvisionedIdentitiesRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	statusWriter := &codeRecorder{ResponseWriter: w}
+	w = statusWriter
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("scim/list-provisioned-identities"),
+		semconv.HTTPRequestMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/scim/v2/organizations/{org}/Users"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ScimListProvisionedIdentitiesOperation,
+		trace.WithAttributes(otelAttrs...),
+		serverSpanKind,
+	)
+	defer span.End()
+
+	// Add Labeler to context.
+	labeler := &Labeler{attrs: otelAttrs}
+	ctx = contextWithLabeler(ctx, labeler)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+
+		attrSet := labeler.AttributeSet()
+		attrs := attrSet.ToSlice()
+		code := statusWriter.status
+		if code != 0 {
+			codeAttr := semconv.HTTPResponseStatusCode(code)
+			attrs = append(attrs, codeAttr)
+			span.SetAttributes(codeAttr)
+		}
+		attrOpt := metric.WithAttributes(attrs...)
+
+		// Increment request counter.
+		s.requests.Add(ctx, 1, attrOpt)
+
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		s.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), attrOpt)
+	}()
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+
+			// https://opentelemetry.io/docs/specs/semconv/http/http-spans/#status
+			// Span Status MUST be left unset if HTTP status code was in the 1xx, 2xx or 3xx ranges,
+			// unless there was another error (e.g., network error receiving the response body; or 3xx codes with
+			// max redirects exceeded), in which case status MUST be set to Error.
+			code := statusWriter.status
+			if code < 100 || code >= 500 {
+				span.SetStatus(codes.Error, stage)
+			}
+
+			attrSet := labeler.AttributeSet()
+			attrs := attrSet.ToSlice()
+			if code != 0 {
+				attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
+			}
+
+			s.errors.Add(ctx, 1, metric.WithAttributes(attrs...))
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: ScimListProvisionedIdentitiesOperation,
+			ID:   "scim/list-provisioned-identities",
+		}
+	)
+	params, err := decodeScimListProvisionedIdentitiesParams(args, argsEscaped, r)
+	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		defer recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	var rawBody []byte
+
+	var response ScimListProvisionedIdentitiesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:          ctx,
+			OperationName:    ScimListProvisionedIdentitiesOperation,
+			OperationSummary: "List SCIM provisioned identities",
+			OperationID:      "scim/list-provisioned-identities",
+			Body:             nil,
+			RawBody:          rawBody,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "startIndex",
+					In:   "query",
+				}: params.StartIndex,
+				{
+					Name: "count",
+					In:   "query",
+				}: params.Count,
+				{
+					Name: "filter",
+					In:   "query",
+				}: params.Filter,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ScimListProvisionedIdentitiesParams
+			Response = ScimListProvisionedIdentitiesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackScimListProvisionedIdentitiesParams,
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.ScimListProvisionedIdentities(ctx, params)
+				return response, err
+			},
+		)
+	} else {
+		response, err = s.h.ScimListProvisionedIdentities(ctx, params)
+	}
+	if err != nil {
+		defer recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeScimListProvisionedIdentitiesResponse(response, w, span); err != nil {
+		defer recordError("EncodeResponse", err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
+		return
+	}
+}
+
+// handleScimProvisionAndInviteUserRequest handles scim/provision-and-invite-user operation.
+//
+// Provision organization membership for a user, and send an activation email to the email address.
+//
+// POST /scim/v2/organizations/{org}/Users
+func (s *Server) handleScimProvisionAndInviteUserRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	statusWriter := &codeRecorder{ResponseWriter: w}
+	w = statusWriter
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("scim/provision-and-invite-user"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/scim/v2/organizations/{org}/Users"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ScimProvisionAndInviteUserOperation,
+		trace.WithAttributes(otelAttrs...),
+		serverSpanKind,
+	)
+	defer span.End()
+
+	// Add Labeler to context.
+	labeler := &Labeler{attrs: otelAttrs}
+	ctx = contextWithLabeler(ctx, labeler)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+
+		attrSet := labeler.AttributeSet()
+		attrs := attrSet.ToSlice()
+		code := statusWriter.status
+		if code != 0 {
+			codeAttr := semconv.HTTPResponseStatusCode(code)
+			attrs = append(attrs, codeAttr)
+			span.SetAttributes(codeAttr)
+		}
+		attrOpt := metric.WithAttributes(attrs...)
+
+		// Increment request counter.
+		s.requests.Add(ctx, 1, attrOpt)
+
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		s.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), attrOpt)
+	}()
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+
+			// https://opentelemetry.io/docs/specs/semconv/http/http-spans/#status
+			// Span Status MUST be left unset if HTTP status code was in the 1xx, 2xx or 3xx ranges,
+			// unless there was another error (e.g., network error receiving the response body; or 3xx codes with
+			// max redirects exceeded), in which case status MUST be set to Error.
+			code := statusWriter.status
+			if code < 100 || code >= 500 {
+				span.SetStatus(codes.Error, stage)
+			}
+
+			attrSet := labeler.AttributeSet()
+			attrs := attrSet.ToSlice()
+			if code != 0 {
+				attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
+			}
+
+			s.errors.Add(ctx, 1, metric.WithAttributes(attrs...))
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: ScimProvisionAndInviteUserOperation,
+			ID:   "scim/provision-and-invite-user",
+		}
+	)
+	params, err := decodeScimProvisionAndInviteUserParams(args, argsEscaped, r)
+	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		defer recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeScimProvisionAndInviteUserRequest(r)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		defer recordError("DecodeRequest", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
+
+	var response ScimProvisionAndInviteUserRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:          ctx,
+			OperationName:    ScimProvisionAndInviteUserOperation,
+			OperationSummary: "Provision and invite a SCIM user",
+			OperationID:      "scim/provision-and-invite-user",
+			Body:             request,
+			RawBody:          rawBody,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = *ScimProvisionAndInviteUserReq
+			Params   = ScimProvisionAndInviteUserParams
+			Response = ScimProvisionAndInviteUserRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackScimProvisionAndInviteUserParams,
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.ScimProvisionAndInviteUser(ctx, request, params)
+				return response, err
+			},
+		)
+	} else {
+		response, err = s.h.ScimProvisionAndInviteUser(ctx, request, params)
+	}
+	if err != nil {
+		defer recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeScimProvisionAndInviteUserResponse(response, w, span); err != nil {
+		defer recordError("EncodeResponse", err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
+		return
+	}
+}
+
+// handleScimSetInformationForProvisionedUserRequest handles scim/set-information-for-provisioned-user operation.
+//
+// Replaces an existing provisioned user's information. You must provide all the information required
+// for the user as if you were provisioning them for the first time. Any existing user information
+// that you don't provide will be removed. If you want to only update a specific attribute, use the
+// [Update an attribute for a SCIM user](https://docs.github.
+// com/rest/reference/scim#update-an-attribute-for-a-scim-user) endpoint instead.
+// You must at least provide the required values for the user: `userName`, `name`, and `emails`.
+// **Warning:** Setting `active: false` removes the user from the organization, deletes the external
+// identity, and deletes the associated `{scim_user_id}`.
+//
+// PUT /scim/v2/organizations/{org}/Users/{scim_user_id}
+func (s *Server) handleScimSetInformationForProvisionedUserRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	statusWriter := &codeRecorder{ResponseWriter: w}
+	w = statusWriter
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("scim/set-information-for-provisioned-user"),
+		semconv.HTTPRequestMethodKey.String("PUT"),
+		semconv.HTTPRouteKey.String("/scim/v2/organizations/{org}/Users/{scim_user_id}"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ScimSetInformationForProvisionedUserOperation,
+		trace.WithAttributes(otelAttrs...),
+		serverSpanKind,
+	)
+	defer span.End()
+
+	// Add Labeler to context.
+	labeler := &Labeler{attrs: otelAttrs}
+	ctx = contextWithLabeler(ctx, labeler)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+
+		attrSet := labeler.AttributeSet()
+		attrs := attrSet.ToSlice()
+		code := statusWriter.status
+		if code != 0 {
+			codeAttr := semconv.HTTPResponseStatusCode(code)
+			attrs = append(attrs, codeAttr)
+			span.SetAttributes(codeAttr)
+		}
+		attrOpt := metric.WithAttributes(attrs...)
+
+		// Increment request counter.
+		s.requests.Add(ctx, 1, attrOpt)
+
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		s.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), attrOpt)
+	}()
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+
+			// https://opentelemetry.io/docs/specs/semconv/http/http-spans/#status
+			// Span Status MUST be left unset if HTTP status code was in the 1xx, 2xx or 3xx ranges,
+			// unless there was another error (e.g., network error receiving the response body; or 3xx codes with
+			// max redirects exceeded), in which case status MUST be set to Error.
+			code := statusWriter.status
+			if code < 100 || code >= 500 {
+				span.SetStatus(codes.Error, stage)
+			}
+
+			attrSet := labeler.AttributeSet()
+			attrs := attrSet.ToSlice()
+			if code != 0 {
+				attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
+			}
+
+			s.errors.Add(ctx, 1, metric.WithAttributes(attrs...))
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: ScimSetInformationForProvisionedUserOperation,
+			ID:   "scim/set-information-for-provisioned-user",
+		}
+	)
+	params, err := decodeScimSetInformationForProvisionedUserParams(args, argsEscaped, r)
+	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		defer recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeScimSetInformationForProvisionedUserRequest(r)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		defer recordError("DecodeRequest", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
+
+	var response ScimSetInformationForProvisionedUserRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:          ctx,
+			OperationName:    ScimSetInformationForProvisionedUserOperation,
+			OperationSummary: "Update a provisioned organization membership",
+			OperationID:      "scim/set-information-for-provisioned-user",
+			Body:             request,
+			RawBody:          rawBody,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "scim_user_id",
+					In:   "path",
+				}: params.ScimUserID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = *ScimSetInformationForProvisionedUserReq
+			Params   = ScimSetInformationForProvisionedUserParams
+			Response = ScimSetInformationForProvisionedUserRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackScimSetInformationForProvisionedUserParams,
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.ScimSetInformationForProvisionedUser(ctx, request, params)
+				return response, err
+			},
+		)
+	} else {
+		response, err = s.h.ScimSetInformationForProvisionedUser(ctx, request, params)
+	}
+	if err != nil {
+		defer recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeScimSetInformationForProvisionedUserResponse(response, w, span); err != nil {
+		defer recordError("EncodeResponse", err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
+		return
+	}
+}
+
+// handleScimUpdateAttributeForUserRequest handles scim/update-attribute-for-user operation.
+//
+// Allows you to change a provisioned user's individual attributes. To change a user's values, you
+// must provide a specific `Operations` JSON format that contains at least one of the `add`, `remove`,
+//
+//	or `replace` operations. For examples and more information on the SCIM operations format, see the
+//
+// [SCIM specification](https://tools.ietf.org/html/rfc7644#section-3.5.2).
+// **Note:** Complicated SCIM `path` selectors that include filters are not supported. For example, a
+// `path` selector defined as `"path": "emails[type eq \"work\"]"` will not work.
+// **Warning:** If you set `active:false` using the `replace` operation (as shown in the JSON example
+// below), it removes the user from the organization, deletes the external identity, and deletes the
+// associated `:scim_user_id`.
+// ```
+// {
+// "Operations":[{
+// "op":"replace",
+// "value":{
+// "active":false
+// }
+// }]
+// }
+// ```.
+//
+// PATCH /scim/v2/organizations/{org}/Users/{scim_user_id}
+func (s *Server) handleScimUpdateAttributeForUserRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	statusWriter := &codeRecorder{ResponseWriter: w}
+	w = statusWriter
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("scim/update-attribute-for-user"),
+		semconv.HTTPRequestMethodKey.String("PATCH"),
+		semconv.HTTPRouteKey.String("/scim/v2/organizations/{org}/Users/{scim_user_id}"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ScimUpdateAttributeForUserOperation,
+		trace.WithAttributes(otelAttrs...),
+		serverSpanKind,
+	)
+	defer span.End()
+
+	// Add Labeler to context.
+	labeler := &Labeler{attrs: otelAttrs}
+	ctx = contextWithLabeler(ctx, labeler)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+
+		attrSet := labeler.AttributeSet()
+		attrs := attrSet.ToSlice()
+		code := statusWriter.status
+		if code != 0 {
+			codeAttr := semconv.HTTPResponseStatusCode(code)
+			attrs = append(attrs, codeAttr)
+			span.SetAttributes(codeAttr)
+		}
+		attrOpt := metric.WithAttributes(attrs...)
+
+		// Increment request counter.
+		s.requests.Add(ctx, 1, attrOpt)
+
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		s.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), attrOpt)
+	}()
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+
+			// https://opentelemetry.io/docs/specs/semconv/http/http-spans/#status
+			// Span Status MUST be left unset if HTTP status code was in the 1xx, 2xx or 3xx ranges,
+			// unless there was another error (e.g., network error receiving the response body; or 3xx codes with
+			// max redirects exceeded), in which case status MUST be set to Error.
+			code := statusWriter.status
+			if code < 100 || code >= 500 {
+				span.SetStatus(codes.Error, stage)
+			}
+
+			attrSet := labeler.AttributeSet()
+			attrs := attrSet.ToSlice()
+			if code != 0 {
+				attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
+			}
+
+			s.errors.Add(ctx, 1, metric.WithAttributes(attrs...))
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: ScimUpdateAttributeForUserOperation,
+			ID:   "scim/update-attribute-for-user",
+		}
+	)
+	params, err := decodeScimUpdateAttributeForUserParams(args, argsEscaped, r)
+	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		defer recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeScimUpdateAttributeForUserRequest(r)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		defer recordError("DecodeRequest", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
+
+	var response ScimUpdateAttributeForUserRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:          ctx,
+			OperationName:    ScimUpdateAttributeForUserOperation,
+			OperationSummary: "Update an attribute for a SCIM user",
+			OperationID:      "scim/update-attribute-for-user",
+			Body:             request,
+			RawBody:          rawBody,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "scim_user_id",
+					In:   "path",
+				}: params.ScimUserID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = *ScimUpdateAttributeForUserReq
+			Params   = ScimUpdateAttributeForUserParams
+			Response = ScimUpdateAttributeForUserRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackScimUpdateAttributeForUserParams,
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.ScimUpdateAttributeForUser(ctx, request, params)
+				return response, err
+			},
+		)
+	} else {
+		response, err = s.h.ScimUpdateAttributeForUser(ctx, request, params)
+	}
+	if err != nil {
+		defer recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeScimUpdateAttributeForUserResponse(response, w, span); err != nil {
+		defer recordError("EncodeResponse", err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
+		return
+	}
+}
+
 // handleSearchCodeRequest handles search/code operation.
 //
 // Searches for query terms inside of a file. This method returns up to 100 results [per
