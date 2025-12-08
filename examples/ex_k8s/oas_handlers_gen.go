@@ -41663,6 +41663,8 @@ func (s *Server) handlePatchAdmissionregistrationV1MutatingWebhookConfigurationR
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations/{name}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchAdmissionregistrationV1MutatingWebhookConfigurationOperation,
@@ -41879,6 +41881,8 @@ func (s *Server) handlePatchAdmissionregistrationV1ValidatingWebhookConfiguratio
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/apis/admissionregistration.k8s.io/v1/validatingwebhookconfigurations/{name}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchAdmissionregistrationV1ValidatingWebhookConfigurationOperation,
@@ -42095,6 +42099,8 @@ func (s *Server) handlePatchApiextensionsV1CustomResourceDefinitionRequest(args 
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/apis/apiextensions.k8s.io/v1/customresourcedefinitions/{name}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchApiextensionsV1CustomResourceDefinitionOperation,
@@ -42311,6 +42317,8 @@ func (s *Server) handlePatchApiextensionsV1CustomResourceDefinitionStatusRequest
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/apis/apiextensions.k8s.io/v1/customresourcedefinitions/{name}/status"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchApiextensionsV1CustomResourceDefinitionStatusOperation,
@@ -42527,6 +42535,8 @@ func (s *Server) handlePatchApiregistrationV1APIServiceRequest(args [1]string, a
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/apis/apiregistration.k8s.io/v1/apiservices/{name}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchApiregistrationV1APIServiceOperation,
@@ -42743,6 +42753,8 @@ func (s *Server) handlePatchApiregistrationV1APIServiceStatusRequest(args [1]str
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/apis/apiregistration.k8s.io/v1/apiservices/{name}/status"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchApiregistrationV1APIServiceStatusOperation,
@@ -42959,6 +42971,8 @@ func (s *Server) handlePatchAppsV1NamespacedControllerRevisionRequest(args [2]st
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/controllerrevisions/{name}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchAppsV1NamespacedControllerRevisionOperation,
@@ -43179,6 +43193,8 @@ func (s *Server) handlePatchAppsV1NamespacedDaemonSetRequest(args [2]string, arg
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/daemonsets/{name}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchAppsV1NamespacedDaemonSetOperation,
@@ -43399,6 +43415,8 @@ func (s *Server) handlePatchAppsV1NamespacedDaemonSetStatusRequest(args [2]strin
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/daemonsets/{name}/status"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchAppsV1NamespacedDaemonSetStatusOperation,
@@ -43619,6 +43637,8 @@ func (s *Server) handlePatchAppsV1NamespacedDeploymentRequest(args [2]string, ar
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/deployments/{name}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchAppsV1NamespacedDeploymentOperation,
@@ -43839,6 +43859,8 @@ func (s *Server) handlePatchAppsV1NamespacedDeploymentScaleRequest(args [2]strin
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/deployments/{name}/scale"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchAppsV1NamespacedDeploymentScaleOperation,
@@ -44059,6 +44081,8 @@ func (s *Server) handlePatchAppsV1NamespacedDeploymentStatusRequest(args [2]stri
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/deployments/{name}/status"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchAppsV1NamespacedDeploymentStatusOperation,
@@ -44279,6 +44303,8 @@ func (s *Server) handlePatchAppsV1NamespacedReplicaSetRequest(args [2]string, ar
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/replicasets/{name}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchAppsV1NamespacedReplicaSetOperation,
@@ -44499,6 +44525,8 @@ func (s *Server) handlePatchAppsV1NamespacedReplicaSetScaleRequest(args [2]strin
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/replicasets/{name}/scale"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchAppsV1NamespacedReplicaSetScaleOperation,
@@ -44719,6 +44747,8 @@ func (s *Server) handlePatchAppsV1NamespacedReplicaSetStatusRequest(args [2]stri
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/replicasets/{name}/status"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchAppsV1NamespacedReplicaSetStatusOperation,
@@ -44939,6 +44969,8 @@ func (s *Server) handlePatchAppsV1NamespacedStatefulSetRequest(args [2]string, a
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/statefulsets/{name}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchAppsV1NamespacedStatefulSetOperation,
@@ -45159,6 +45191,8 @@ func (s *Server) handlePatchAppsV1NamespacedStatefulSetScaleRequest(args [2]stri
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/statefulsets/{name}/scale"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchAppsV1NamespacedStatefulSetScaleOperation,
@@ -45379,6 +45413,8 @@ func (s *Server) handlePatchAppsV1NamespacedStatefulSetStatusRequest(args [2]str
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/statefulsets/{name}/status"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchAppsV1NamespacedStatefulSetStatusOperation,
@@ -45599,6 +45635,8 @@ func (s *Server) handlePatchAutoscalingV1NamespacedHorizontalPodAutoscalerReques
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchAutoscalingV1NamespacedHorizontalPodAutoscalerOperation,
@@ -45819,6 +45857,8 @@ func (s *Server) handlePatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatus
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}/status"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusOperation,
@@ -46039,6 +46079,8 @@ func (s *Server) handlePatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerR
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers/{name}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerOperation,
@@ -46259,6 +46301,8 @@ func (s *Server) handlePatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerS
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers/{name}/status"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusOperation,
@@ -46479,6 +46523,8 @@ func (s *Server) handlePatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerR
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/apis/autoscaling/v2beta2/namespaces/{namespace}/horizontalpodautoscalers/{name}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerOperation,
@@ -46699,6 +46745,8 @@ func (s *Server) handlePatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerS
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/apis/autoscaling/v2beta2/namespaces/{namespace}/horizontalpodautoscalers/{name}/status"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusOperation,
@@ -46919,6 +46967,8 @@ func (s *Server) handlePatchBatchV1NamespacedCronJobRequest(args [2]string, args
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/apis/batch/v1/namespaces/{namespace}/cronjobs/{name}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchBatchV1NamespacedCronJobOperation,
@@ -47139,6 +47189,8 @@ func (s *Server) handlePatchBatchV1NamespacedCronJobStatusRequest(args [2]string
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/apis/batch/v1/namespaces/{namespace}/cronjobs/{name}/status"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchBatchV1NamespacedCronJobStatusOperation,
@@ -47359,6 +47411,8 @@ func (s *Server) handlePatchBatchV1NamespacedJobRequest(args [2]string, argsEsca
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/apis/batch/v1/namespaces/{namespace}/jobs/{name}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchBatchV1NamespacedJobOperation,
@@ -47579,6 +47633,8 @@ func (s *Server) handlePatchBatchV1NamespacedJobStatusRequest(args [2]string, ar
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/apis/batch/v1/namespaces/{namespace}/jobs/{name}/status"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchBatchV1NamespacedJobStatusOperation,
@@ -47799,6 +47855,8 @@ func (s *Server) handlePatchBatchV1beta1NamespacedCronJobRequest(args [2]string,
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/apis/batch/v1beta1/namespaces/{namespace}/cronjobs/{name}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchBatchV1beta1NamespacedCronJobOperation,
@@ -48019,6 +48077,8 @@ func (s *Server) handlePatchBatchV1beta1NamespacedCronJobStatusRequest(args [2]s
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/apis/batch/v1beta1/namespaces/{namespace}/cronjobs/{name}/status"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchBatchV1beta1NamespacedCronJobStatusOperation,
@@ -48239,6 +48299,8 @@ func (s *Server) handlePatchCertificatesV1CertificateSigningRequestRequest(args 
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/apis/certificates.k8s.io/v1/certificatesigningrequests/{name}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchCertificatesV1CertificateSigningRequestOperation,
@@ -48455,6 +48517,8 @@ func (s *Server) handlePatchCertificatesV1CertificateSigningRequestApprovalReque
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/apis/certificates.k8s.io/v1/certificatesigningrequests/{name}/approval"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchCertificatesV1CertificateSigningRequestApprovalOperation,
@@ -48671,6 +48735,8 @@ func (s *Server) handlePatchCertificatesV1CertificateSigningRequestStatusRequest
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/apis/certificates.k8s.io/v1/certificatesigningrequests/{name}/status"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchCertificatesV1CertificateSigningRequestStatusOperation,
@@ -48887,6 +48953,8 @@ func (s *Server) handlePatchCoordinationV1NamespacedLeaseRequest(args [2]string,
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/apis/coordination.k8s.io/v1/namespaces/{namespace}/leases/{name}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchCoordinationV1NamespacedLeaseOperation,
@@ -49107,6 +49175,8 @@ func (s *Server) handlePatchCoreV1NamespaceRequest(args [1]string, argsEscaped b
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{name}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchCoreV1NamespaceOperation,
@@ -49323,6 +49393,8 @@ func (s *Server) handlePatchCoreV1NamespaceStatusRequest(args [1]string, argsEsc
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{name}/status"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchCoreV1NamespaceStatusOperation,
@@ -49761,6 +49833,8 @@ func (s *Server) handlePatchCoreV1NamespacedEndpointsRequest(args [2]string, arg
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/endpoints/{name}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchCoreV1NamespacedEndpointsOperation,
@@ -49981,6 +50055,8 @@ func (s *Server) handlePatchCoreV1NamespacedEventRequest(args [2]string, argsEsc
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/events/{name}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchCoreV1NamespacedEventOperation,
@@ -50201,6 +50277,8 @@ func (s *Server) handlePatchCoreV1NamespacedLimitRangeRequest(args [2]string, ar
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/limitranges/{name}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchCoreV1NamespacedLimitRangeOperation,
@@ -50421,6 +50499,8 @@ func (s *Server) handlePatchCoreV1NamespacedPersistentVolumeClaimRequest(args [2
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchCoreV1NamespacedPersistentVolumeClaimOperation,
@@ -50641,6 +50721,8 @@ func (s *Server) handlePatchCoreV1NamespacedPersistentVolumeClaimStatusRequest(a
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}/status"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchCoreV1NamespacedPersistentVolumeClaimStatusOperation,
@@ -50861,6 +50943,8 @@ func (s *Server) handlePatchCoreV1NamespacedPodRequest(args [2]string, argsEscap
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchCoreV1NamespacedPodOperation,
@@ -51081,6 +51165,8 @@ func (s *Server) handlePatchCoreV1NamespacedPodEphemeralcontainersRequest(args [
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/ephemeralcontainers"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchCoreV1NamespacedPodEphemeralcontainersOperation,
@@ -51301,6 +51387,8 @@ func (s *Server) handlePatchCoreV1NamespacedPodStatusRequest(args [2]string, arg
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/status"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchCoreV1NamespacedPodStatusOperation,
@@ -51521,6 +51609,8 @@ func (s *Server) handlePatchCoreV1NamespacedPodTemplateRequest(args [2]string, a
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/podtemplates/{name}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchCoreV1NamespacedPodTemplateOperation,
@@ -51741,6 +51831,8 @@ func (s *Server) handlePatchCoreV1NamespacedReplicationControllerRequest(args [2
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/replicationcontrollers/{name}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchCoreV1NamespacedReplicationControllerOperation,
@@ -51961,6 +52053,8 @@ func (s *Server) handlePatchCoreV1NamespacedReplicationControllerScaleRequest(ar
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/replicationcontrollers/{name}/scale"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchCoreV1NamespacedReplicationControllerScaleOperation,
@@ -52181,6 +52275,8 @@ func (s *Server) handlePatchCoreV1NamespacedReplicationControllerStatusRequest(a
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/replicationcontrollers/{name}/status"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchCoreV1NamespacedReplicationControllerStatusOperation,
@@ -52401,6 +52497,8 @@ func (s *Server) handlePatchCoreV1NamespacedResourceQuotaRequest(args [2]string,
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/resourcequotas/{name}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchCoreV1NamespacedResourceQuotaOperation,
@@ -52621,6 +52719,8 @@ func (s *Server) handlePatchCoreV1NamespacedResourceQuotaStatusRequest(args [2]s
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/resourcequotas/{name}/status"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchCoreV1NamespacedResourceQuotaStatusOperation,
@@ -52841,6 +52941,8 @@ func (s *Server) handlePatchCoreV1NamespacedSecretRequest(args [2]string, argsEs
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/secrets/{name}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchCoreV1NamespacedSecretOperation,
@@ -53061,6 +53163,8 @@ func (s *Server) handlePatchCoreV1NamespacedServiceRequest(args [2]string, argsE
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/services/{name}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchCoreV1NamespacedServiceOperation,
@@ -53281,6 +53385,8 @@ func (s *Server) handlePatchCoreV1NamespacedServiceAccountRequest(args [2]string
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/serviceaccounts/{name}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchCoreV1NamespacedServiceAccountOperation,
@@ -53501,6 +53607,8 @@ func (s *Server) handlePatchCoreV1NamespacedServiceStatusRequest(args [2]string,
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/services/{name}/status"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchCoreV1NamespacedServiceStatusOperation,
@@ -53721,6 +53829,8 @@ func (s *Server) handlePatchCoreV1NodeRequest(args [1]string, argsEscaped bool, 
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/api/v1/nodes/{name}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchCoreV1NodeOperation,
@@ -53937,6 +54047,8 @@ func (s *Server) handlePatchCoreV1NodeStatusRequest(args [1]string, argsEscaped 
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/api/v1/nodes/{name}/status"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchCoreV1NodeStatusOperation,
@@ -54153,6 +54265,8 @@ func (s *Server) handlePatchCoreV1PersistentVolumeRequest(args [1]string, argsEs
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/api/v1/persistentvolumes/{name}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchCoreV1PersistentVolumeOperation,
@@ -54369,6 +54483,8 @@ func (s *Server) handlePatchCoreV1PersistentVolumeStatusRequest(args [1]string, 
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/api/v1/persistentvolumes/{name}/status"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchCoreV1PersistentVolumeStatusOperation,
@@ -54585,6 +54701,8 @@ func (s *Server) handlePatchDiscoveryV1NamespacedEndpointSliceRequest(args [2]st
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/apis/discovery.k8s.io/v1/namespaces/{namespace}/endpointslices/{name}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchDiscoveryV1NamespacedEndpointSliceOperation,
@@ -54805,6 +54923,8 @@ func (s *Server) handlePatchDiscoveryV1beta1NamespacedEndpointSliceRequest(args 
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/apis/discovery.k8s.io/v1beta1/namespaces/{namespace}/endpointslices/{name}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchDiscoveryV1beta1NamespacedEndpointSliceOperation,
@@ -55025,6 +55145,8 @@ func (s *Server) handlePatchEventsV1NamespacedEventRequest(args [2]string, argsE
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/apis/events.k8s.io/v1/namespaces/{namespace}/events/{name}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchEventsV1NamespacedEventOperation,
@@ -55245,6 +55367,8 @@ func (s *Server) handlePatchEventsV1beta1NamespacedEventRequest(args [2]string, 
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/apis/events.k8s.io/v1beta1/namespaces/{namespace}/events/{name}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchEventsV1beta1NamespacedEventOperation,
@@ -55465,6 +55589,8 @@ func (s *Server) handlePatchFlowcontrolApiserverV1beta1FlowSchemaRequest(args [1
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas/{name}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchFlowcontrolApiserverV1beta1FlowSchemaOperation,
@@ -55681,6 +55807,8 @@ func (s *Server) handlePatchFlowcontrolApiserverV1beta1FlowSchemaStatusRequest(a
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas/{name}/status"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchFlowcontrolApiserverV1beta1FlowSchemaStatusOperation,
@@ -55897,6 +56025,8 @@ func (s *Server) handlePatchFlowcontrolApiserverV1beta1PriorityLevelConfiguratio
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations/{name}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationOperation,
@@ -56113,6 +56243,8 @@ func (s *Server) handlePatchFlowcontrolApiserverV1beta1PriorityLevelConfiguratio
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations/{name}/status"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusOperation,
@@ -56329,6 +56461,8 @@ func (s *Server) handlePatchFlowcontrolApiserverV1beta2FlowSchemaRequest(args [1
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas/{name}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchFlowcontrolApiserverV1beta2FlowSchemaOperation,
@@ -56545,6 +56679,8 @@ func (s *Server) handlePatchFlowcontrolApiserverV1beta2FlowSchemaStatusRequest(a
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas/{name}/status"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchFlowcontrolApiserverV1beta2FlowSchemaStatusOperation,
@@ -56761,6 +56897,8 @@ func (s *Server) handlePatchFlowcontrolApiserverV1beta2PriorityLevelConfiguratio
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations/{name}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationOperation,
@@ -56977,6 +57115,8 @@ func (s *Server) handlePatchFlowcontrolApiserverV1beta2PriorityLevelConfiguratio
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations/{name}/status"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusOperation,
@@ -57193,6 +57333,8 @@ func (s *Server) handlePatchInternalApiserverV1alpha1StorageVersionRequest(args 
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/apis/internal.apiserver.k8s.io/v1alpha1/storageversions/{name}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchInternalApiserverV1alpha1StorageVersionOperation,
@@ -57409,6 +57551,8 @@ func (s *Server) handlePatchInternalApiserverV1alpha1StorageVersionStatusRequest
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/apis/internal.apiserver.k8s.io/v1alpha1/storageversions/{name}/status"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchInternalApiserverV1alpha1StorageVersionStatusOperation,
@@ -57625,6 +57769,8 @@ func (s *Server) handlePatchNetworkingV1IngressClassRequest(args [1]string, args
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/ingressclasses/{name}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchNetworkingV1IngressClassOperation,
@@ -57841,6 +57987,8 @@ func (s *Server) handlePatchNetworkingV1NamespacedIngressRequest(args [2]string,
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses/{name}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchNetworkingV1NamespacedIngressOperation,
@@ -58061,6 +58209,8 @@ func (s *Server) handlePatchNetworkingV1NamespacedIngressStatusRequest(args [2]s
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses/{name}/status"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchNetworkingV1NamespacedIngressStatusOperation,
@@ -58281,6 +58431,8 @@ func (s *Server) handlePatchNetworkingV1NamespacedNetworkPolicyRequest(args [2]s
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/namespaces/{namespace}/networkpolicies/{name}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchNetworkingV1NamespacedNetworkPolicyOperation,
@@ -58501,6 +58653,8 @@ func (s *Server) handlePatchNodeV1RuntimeClassRequest(args [1]string, argsEscape
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/apis/node.k8s.io/v1/runtimeclasses/{name}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchNodeV1RuntimeClassOperation,
@@ -58717,6 +58871,8 @@ func (s *Server) handlePatchNodeV1alpha1RuntimeClassRequest(args [1]string, args
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/apis/node.k8s.io/v1alpha1/runtimeclasses/{name}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchNodeV1alpha1RuntimeClassOperation,
@@ -58933,6 +59089,8 @@ func (s *Server) handlePatchNodeV1beta1RuntimeClassRequest(args [1]string, argsE
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/apis/node.k8s.io/v1beta1/runtimeclasses/{name}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchNodeV1beta1RuntimeClassOperation,
@@ -59149,6 +59307,8 @@ func (s *Server) handlePatchPolicyV1NamespacedPodDisruptionBudgetRequest(args [2
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets/{name}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchPolicyV1NamespacedPodDisruptionBudgetOperation,
@@ -59369,6 +59529,8 @@ func (s *Server) handlePatchPolicyV1NamespacedPodDisruptionBudgetStatusRequest(a
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets/{name}/status"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchPolicyV1NamespacedPodDisruptionBudgetStatusOperation,
@@ -59589,6 +59751,8 @@ func (s *Server) handlePatchPolicyV1beta1NamespacedPodDisruptionBudgetRequest(ar
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets/{name}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchPolicyV1beta1NamespacedPodDisruptionBudgetOperation,
@@ -59809,6 +59973,8 @@ func (s *Server) handlePatchPolicyV1beta1NamespacedPodDisruptionBudgetStatusRequ
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets/{name}/status"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchPolicyV1beta1NamespacedPodDisruptionBudgetStatusOperation,
@@ -60029,6 +60195,8 @@ func (s *Server) handlePatchPolicyV1beta1PodSecurityPolicyRequest(args [1]string
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/apis/policy/v1beta1/podsecuritypolicies/{name}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchPolicyV1beta1PodSecurityPolicyOperation,
@@ -60245,6 +60413,8 @@ func (s *Server) handlePatchRbacAuthorizationV1ClusterRoleRequest(args [1]string
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/clusterroles/{name}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchRbacAuthorizationV1ClusterRoleOperation,
@@ -60461,6 +60631,8 @@ func (s *Server) handlePatchRbacAuthorizationV1ClusterRoleBindingRequest(args [1
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/clusterrolebindings/{name}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchRbacAuthorizationV1ClusterRoleBindingOperation,
@@ -60677,6 +60849,8 @@ func (s *Server) handlePatchRbacAuthorizationV1NamespacedRoleRequest(args [2]str
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/roles/{name}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchRbacAuthorizationV1NamespacedRoleOperation,
@@ -60897,6 +61071,8 @@ func (s *Server) handlePatchRbacAuthorizationV1NamespacedRoleBindingRequest(args
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/rolebindings/{name}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchRbacAuthorizationV1NamespacedRoleBindingOperation,
@@ -61117,6 +61293,8 @@ func (s *Server) handlePatchSchedulingV1PriorityClassRequest(args [1]string, arg
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/apis/scheduling.k8s.io/v1/priorityclasses/{name}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchSchedulingV1PriorityClassOperation,
@@ -61333,6 +61511,8 @@ func (s *Server) handlePatchStorageV1CSIDriverRequest(args [1]string, argsEscape
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/csidrivers/{name}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchStorageV1CSIDriverOperation,
@@ -61549,6 +61729,8 @@ func (s *Server) handlePatchStorageV1CSINodeRequest(args [1]string, argsEscaped 
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/csinodes/{name}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchStorageV1CSINodeOperation,
@@ -61765,6 +61947,8 @@ func (s *Server) handlePatchStorageV1StorageClassRequest(args [1]string, argsEsc
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/storageclasses/{name}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchStorageV1StorageClassOperation,
@@ -61981,6 +62165,8 @@ func (s *Server) handlePatchStorageV1VolumeAttachmentRequest(args [1]string, arg
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/volumeattachments/{name}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchStorageV1VolumeAttachmentOperation,
@@ -62197,6 +62383,8 @@ func (s *Server) handlePatchStorageV1VolumeAttachmentStatusRequest(args [1]strin
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/volumeattachments/{name}/status"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchStorageV1VolumeAttachmentStatusOperation,
@@ -62413,6 +62601,8 @@ func (s *Server) handlePatchStorageV1alpha1NamespacedCSIStorageCapacityRequest(a
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1alpha1/namespaces/{namespace}/csistoragecapacities/{name}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchStorageV1alpha1NamespacedCSIStorageCapacityOperation,
@@ -62633,6 +62823,8 @@ func (s *Server) handlePatchStorageV1beta1NamespacedCSIStorageCapacityRequest(ar
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1beta1/namespaces/{namespace}/csistoragecapacities/{name}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchStorageV1beta1NamespacedCSIStorageCapacityOperation,

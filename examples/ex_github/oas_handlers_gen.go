@@ -99227,6 +99227,8 @@ func (s *Server) handleScimGetProvisioningInformationForUserRequest(args [2]stri
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/scim/v2/organizations/{org}/Users/{scim_user_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ScimGetProvisioningInformationForUserOperation,
@@ -99398,6 +99400,8 @@ func (s *Server) handleScimListProvisionedIdentitiesRequest(args [1]string, args
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/scim/v2/organizations/{org}/Users"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ScimListProvisionedIdentitiesOperation,
@@ -99551,6 +99555,8 @@ func (s *Server) handleScimProvisionAndInviteUserRequest(args [1]string, argsEsc
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/scim/v2/organizations/{org}/Users"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ScimProvisionAndInviteUserOperation,
@@ -99714,6 +99720,8 @@ func (s *Server) handleScimSetInformationForProvisionedUserRequest(args [2]strin
 		semconv.HTTPRequestMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/scim/v2/organizations/{org}/Users/{scim_user_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ScimSetInformationForProvisionedUserOperation,
@@ -99894,6 +99902,8 @@ func (s *Server) handleScimUpdateAttributeForUserRequest(args [2]string, argsEsc
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/scim/v2/organizations/{org}/Users/{scim_user_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ScimUpdateAttributeForUserOperation,
