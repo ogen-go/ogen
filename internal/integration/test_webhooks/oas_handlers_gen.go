@@ -44,6 +44,8 @@ func (s *Server) handlePublishEventRequest(args [0]string, argsEscaped bool, w h
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/event"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PublishEventOperation,
@@ -191,6 +193,8 @@ func (s *WebhookServer) handleStatusWebhookRequest(args [0]string, argsEscaped b
 		otelogen.OperationID("statusWebhook"),
 		otelogen.WebhookName("status"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), StatusWebhookOperation,
@@ -307,6 +311,8 @@ func (s *WebhookServer) handleUpdateDeleteRequest(args [0]string, argsEscaped bo
 	otelAttrs := []attribute.KeyValue{
 		otelogen.WebhookName("update"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), UpdateDeleteOperation,
@@ -424,6 +430,8 @@ func (s *WebhookServer) handleUpdateWebhookRequest(args [0]string, argsEscaped b
 		otelogen.OperationID("updateWebhook"),
 		otelogen.WebhookName("update"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), UpdateWebhookOperation,
