@@ -114,6 +114,8 @@ linters:
       - linters:
           - goconst
         text: string `(Unix|unix|date|time|ipv6|String|DateTime|Number)
+      - linters: [revive]
+        text: avoid.+package names
     paths:
       - third_party$
       - builtin$
