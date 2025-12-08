@@ -17,6 +17,15 @@ func (s *GetServiceAccountIssuerOpenIDConfigurationOKApplicationJSON) SetFake() 
 }
 
 // SetFake set fake values.
+func (s *GetServiceAccountIssuerOpenIDKeysetOKApplicationJwkSetJSON) SetFake() {
+	var unwrapped string
+	{
+		unwrapped = "string"
+	}
+	*s = GetServiceAccountIssuerOpenIDKeysetOKApplicationJwkSetJSON(unwrapped)
+}
+
+// SetFake set fake values.
 func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhook) SetFake() {
 	{
 		{
@@ -18207,6 +18216,1653 @@ func (s *OptString) SetFake() {
 }
 
 // SetFake set fake values.
+func (s *PatchAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAdmissionregistrationV1MutatingWebhookConfigurationApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAdmissionregistrationV1MutatingWebhookConfigurationApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAdmissionregistrationV1MutatingWebhookConfigurationApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAdmissionregistrationV1MutatingWebhookConfigurationApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAdmissionregistrationV1MutatingWebhookConfigurationApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAdmissionregistrationV1MutatingWebhookConfigurationCreated) SetFake() {
+	var unwrapped IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAdmissionregistrationV1MutatingWebhookConfigurationCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAdmissionregistrationV1MutatingWebhookConfigurationOK) SetFake() {
+	var unwrapped IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAdmissionregistrationV1MutatingWebhookConfigurationOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAdmissionregistrationV1ValidatingWebhookConfigurationApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAdmissionregistrationV1ValidatingWebhookConfigurationApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAdmissionregistrationV1ValidatingWebhookConfigurationApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAdmissionregistrationV1ValidatingWebhookConfigurationApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAdmissionregistrationV1ValidatingWebhookConfigurationApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAdmissionregistrationV1ValidatingWebhookConfigurationCreated) SetFake() {
+	var unwrapped IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAdmissionregistrationV1ValidatingWebhookConfigurationCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAdmissionregistrationV1ValidatingWebhookConfigurationOK) SetFake() {
+	var unwrapped IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAdmissionregistrationV1ValidatingWebhookConfigurationOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchApiextensionsV1CustomResourceDefinitionApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchApiextensionsV1CustomResourceDefinitionApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchApiextensionsV1CustomResourceDefinitionApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchApiextensionsV1CustomResourceDefinitionApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchApiextensionsV1CustomResourceDefinitionApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchApiextensionsV1CustomResourceDefinitionApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchApiextensionsV1CustomResourceDefinitionCreated) SetFake() {
+	var unwrapped IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchApiextensionsV1CustomResourceDefinitionCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchApiextensionsV1CustomResourceDefinitionOK) SetFake() {
+	var unwrapped IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchApiextensionsV1CustomResourceDefinitionOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchApiextensionsV1CustomResourceDefinitionStatusApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchApiextensionsV1CustomResourceDefinitionStatusApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchApiextensionsV1CustomResourceDefinitionStatusApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchApiextensionsV1CustomResourceDefinitionStatusApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchApiextensionsV1CustomResourceDefinitionStatusApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchApiextensionsV1CustomResourceDefinitionStatusApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchApiextensionsV1CustomResourceDefinitionStatusCreated) SetFake() {
+	var unwrapped IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchApiextensionsV1CustomResourceDefinitionStatusCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchApiextensionsV1CustomResourceDefinitionStatusOK) SetFake() {
+	var unwrapped IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchApiextensionsV1CustomResourceDefinitionStatusOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchApiregistrationV1APIServiceApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchApiregistrationV1APIServiceApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchApiregistrationV1APIServiceApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchApiregistrationV1APIServiceApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchApiregistrationV1APIServiceApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchApiregistrationV1APIServiceApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchApiregistrationV1APIServiceCreated) SetFake() {
+	var unwrapped IoK8sKubeAggregatorPkgApisApiregistrationV1APIService
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchApiregistrationV1APIServiceCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchApiregistrationV1APIServiceOK) SetFake() {
+	var unwrapped IoK8sKubeAggregatorPkgApisApiregistrationV1APIService
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchApiregistrationV1APIServiceOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchApiregistrationV1APIServiceStatusApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchApiregistrationV1APIServiceStatusApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchApiregistrationV1APIServiceStatusApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchApiregistrationV1APIServiceStatusApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchApiregistrationV1APIServiceStatusApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchApiregistrationV1APIServiceStatusApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchApiregistrationV1APIServiceStatusCreated) SetFake() {
+	var unwrapped IoK8sKubeAggregatorPkgApisApiregistrationV1APIService
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchApiregistrationV1APIServiceStatusCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchApiregistrationV1APIServiceStatusOK) SetFake() {
+	var unwrapped IoK8sKubeAggregatorPkgApisApiregistrationV1APIService
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchApiregistrationV1APIServiceStatusOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAppsV1NamespacedControllerRevisionApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAppsV1NamespacedControllerRevisionApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAppsV1NamespacedControllerRevisionApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAppsV1NamespacedControllerRevisionApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAppsV1NamespacedControllerRevisionApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAppsV1NamespacedControllerRevisionApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAppsV1NamespacedControllerRevisionCreated) SetFake() {
+	var unwrapped IoK8sAPIAppsV1ControllerRevision
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAppsV1NamespacedControllerRevisionCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAppsV1NamespacedControllerRevisionOK) SetFake() {
+	var unwrapped IoK8sAPIAppsV1ControllerRevision
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAppsV1NamespacedControllerRevisionOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAppsV1NamespacedDaemonSetApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAppsV1NamespacedDaemonSetApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAppsV1NamespacedDaemonSetApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAppsV1NamespacedDaemonSetApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAppsV1NamespacedDaemonSetApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAppsV1NamespacedDaemonSetApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAppsV1NamespacedDaemonSetCreated) SetFake() {
+	var unwrapped IoK8sAPIAppsV1DaemonSet
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAppsV1NamespacedDaemonSetCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAppsV1NamespacedDaemonSetOK) SetFake() {
+	var unwrapped IoK8sAPIAppsV1DaemonSet
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAppsV1NamespacedDaemonSetOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAppsV1NamespacedDaemonSetStatusApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAppsV1NamespacedDaemonSetStatusApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAppsV1NamespacedDaemonSetStatusApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAppsV1NamespacedDaemonSetStatusApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAppsV1NamespacedDaemonSetStatusApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAppsV1NamespacedDaemonSetStatusApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAppsV1NamespacedDaemonSetStatusCreated) SetFake() {
+	var unwrapped IoK8sAPIAppsV1DaemonSet
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAppsV1NamespacedDaemonSetStatusCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAppsV1NamespacedDaemonSetStatusOK) SetFake() {
+	var unwrapped IoK8sAPIAppsV1DaemonSet
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAppsV1NamespacedDaemonSetStatusOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAppsV1NamespacedDeploymentApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAppsV1NamespacedDeploymentApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAppsV1NamespacedDeploymentApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAppsV1NamespacedDeploymentApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAppsV1NamespacedDeploymentApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAppsV1NamespacedDeploymentApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAppsV1NamespacedDeploymentCreated) SetFake() {
+	var unwrapped IoK8sAPIAppsV1Deployment
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAppsV1NamespacedDeploymentCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAppsV1NamespacedDeploymentOK) SetFake() {
+	var unwrapped IoK8sAPIAppsV1Deployment
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAppsV1NamespacedDeploymentOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAppsV1NamespacedDeploymentScaleApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAppsV1NamespacedDeploymentScaleApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAppsV1NamespacedDeploymentScaleApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAppsV1NamespacedDeploymentScaleApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAppsV1NamespacedDeploymentScaleApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAppsV1NamespacedDeploymentScaleApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAppsV1NamespacedDeploymentScaleCreated) SetFake() {
+	var unwrapped IoK8sAPIAutoscalingV1Scale
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAppsV1NamespacedDeploymentScaleCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAppsV1NamespacedDeploymentScaleOK) SetFake() {
+	var unwrapped IoK8sAPIAutoscalingV1Scale
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAppsV1NamespacedDeploymentScaleOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAppsV1NamespacedDeploymentStatusApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAppsV1NamespacedDeploymentStatusApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAppsV1NamespacedDeploymentStatusApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAppsV1NamespacedDeploymentStatusApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAppsV1NamespacedDeploymentStatusApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAppsV1NamespacedDeploymentStatusApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAppsV1NamespacedDeploymentStatusCreated) SetFake() {
+	var unwrapped IoK8sAPIAppsV1Deployment
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAppsV1NamespacedDeploymentStatusCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAppsV1NamespacedDeploymentStatusOK) SetFake() {
+	var unwrapped IoK8sAPIAppsV1Deployment
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAppsV1NamespacedDeploymentStatusOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAppsV1NamespacedReplicaSetApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAppsV1NamespacedReplicaSetApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAppsV1NamespacedReplicaSetApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAppsV1NamespacedReplicaSetApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAppsV1NamespacedReplicaSetApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAppsV1NamespacedReplicaSetApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAppsV1NamespacedReplicaSetCreated) SetFake() {
+	var unwrapped IoK8sAPIAppsV1ReplicaSet
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAppsV1NamespacedReplicaSetCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAppsV1NamespacedReplicaSetOK) SetFake() {
+	var unwrapped IoK8sAPIAppsV1ReplicaSet
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAppsV1NamespacedReplicaSetOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAppsV1NamespacedReplicaSetScaleApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAppsV1NamespacedReplicaSetScaleApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAppsV1NamespacedReplicaSetScaleApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAppsV1NamespacedReplicaSetScaleApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAppsV1NamespacedReplicaSetScaleApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAppsV1NamespacedReplicaSetScaleApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAppsV1NamespacedReplicaSetScaleCreated) SetFake() {
+	var unwrapped IoK8sAPIAutoscalingV1Scale
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAppsV1NamespacedReplicaSetScaleCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAppsV1NamespacedReplicaSetScaleOK) SetFake() {
+	var unwrapped IoK8sAPIAutoscalingV1Scale
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAppsV1NamespacedReplicaSetScaleOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAppsV1NamespacedReplicaSetStatusApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAppsV1NamespacedReplicaSetStatusApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAppsV1NamespacedReplicaSetStatusApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAppsV1NamespacedReplicaSetStatusApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAppsV1NamespacedReplicaSetStatusApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAppsV1NamespacedReplicaSetStatusApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAppsV1NamespacedReplicaSetStatusCreated) SetFake() {
+	var unwrapped IoK8sAPIAppsV1ReplicaSet
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAppsV1NamespacedReplicaSetStatusCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAppsV1NamespacedReplicaSetStatusOK) SetFake() {
+	var unwrapped IoK8sAPIAppsV1ReplicaSet
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAppsV1NamespacedReplicaSetStatusOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAppsV1NamespacedStatefulSetApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAppsV1NamespacedStatefulSetApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAppsV1NamespacedStatefulSetApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAppsV1NamespacedStatefulSetApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAppsV1NamespacedStatefulSetApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAppsV1NamespacedStatefulSetApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAppsV1NamespacedStatefulSetCreated) SetFake() {
+	var unwrapped IoK8sAPIAppsV1StatefulSet
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAppsV1NamespacedStatefulSetCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAppsV1NamespacedStatefulSetOK) SetFake() {
+	var unwrapped IoK8sAPIAppsV1StatefulSet
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAppsV1NamespacedStatefulSetOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAppsV1NamespacedStatefulSetScaleApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAppsV1NamespacedStatefulSetScaleApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAppsV1NamespacedStatefulSetScaleApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAppsV1NamespacedStatefulSetScaleApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAppsV1NamespacedStatefulSetScaleApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAppsV1NamespacedStatefulSetScaleApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAppsV1NamespacedStatefulSetScaleCreated) SetFake() {
+	var unwrapped IoK8sAPIAutoscalingV1Scale
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAppsV1NamespacedStatefulSetScaleCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAppsV1NamespacedStatefulSetScaleOK) SetFake() {
+	var unwrapped IoK8sAPIAutoscalingV1Scale
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAppsV1NamespacedStatefulSetScaleOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAppsV1NamespacedStatefulSetStatusApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAppsV1NamespacedStatefulSetStatusApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAppsV1NamespacedStatefulSetStatusApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAppsV1NamespacedStatefulSetStatusApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAppsV1NamespacedStatefulSetStatusApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAppsV1NamespacedStatefulSetStatusApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAppsV1NamespacedStatefulSetStatusCreated) SetFake() {
+	var unwrapped IoK8sAPIAppsV1StatefulSet
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAppsV1NamespacedStatefulSetStatusCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAppsV1NamespacedStatefulSetStatusOK) SetFake() {
+	var unwrapped IoK8sAPIAppsV1StatefulSet
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAppsV1NamespacedStatefulSetStatusOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAutoscalingV1NamespacedHorizontalPodAutoscalerApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAutoscalingV1NamespacedHorizontalPodAutoscalerApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAutoscalingV1NamespacedHorizontalPodAutoscalerApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAutoscalingV1NamespacedHorizontalPodAutoscalerApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAutoscalingV1NamespacedHorizontalPodAutoscalerApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAutoscalingV1NamespacedHorizontalPodAutoscalerApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAutoscalingV1NamespacedHorizontalPodAutoscalerCreated) SetFake() {
+	var unwrapped IoK8sAPIAutoscalingV1HorizontalPodAutoscaler
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAutoscalingV1NamespacedHorizontalPodAutoscalerCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAutoscalingV1NamespacedHorizontalPodAutoscalerOK) SetFake() {
+	var unwrapped IoK8sAPIAutoscalingV1HorizontalPodAutoscaler
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAutoscalingV1NamespacedHorizontalPodAutoscalerOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusCreated) SetFake() {
+	var unwrapped IoK8sAPIAutoscalingV1HorizontalPodAutoscaler
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusOK) SetFake() {
+	var unwrapped IoK8sAPIAutoscalingV1HorizontalPodAutoscaler
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerCreated) SetFake() {
+	var unwrapped IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerOK) SetFake() {
+	var unwrapped IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusCreated) SetFake() {
+	var unwrapped IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusOK) SetFake() {
+	var unwrapped IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerCreated) SetFake() {
+	var unwrapped IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerOK) SetFake() {
+	var unwrapped IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusCreated) SetFake() {
+	var unwrapped IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusOK) SetFake() {
+	var unwrapped IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchBatchV1NamespacedCronJobApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchBatchV1NamespacedCronJobApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchBatchV1NamespacedCronJobApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchBatchV1NamespacedCronJobApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchBatchV1NamespacedCronJobApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchBatchV1NamespacedCronJobApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchBatchV1NamespacedCronJobCreated) SetFake() {
+	var unwrapped IoK8sAPIBatchV1CronJob
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchBatchV1NamespacedCronJobCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchBatchV1NamespacedCronJobOK) SetFake() {
+	var unwrapped IoK8sAPIBatchV1CronJob
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchBatchV1NamespacedCronJobOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchBatchV1NamespacedCronJobStatusApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchBatchV1NamespacedCronJobStatusApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchBatchV1NamespacedCronJobStatusApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchBatchV1NamespacedCronJobStatusApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchBatchV1NamespacedCronJobStatusApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchBatchV1NamespacedCronJobStatusApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchBatchV1NamespacedCronJobStatusCreated) SetFake() {
+	var unwrapped IoK8sAPIBatchV1CronJob
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchBatchV1NamespacedCronJobStatusCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchBatchV1NamespacedCronJobStatusOK) SetFake() {
+	var unwrapped IoK8sAPIBatchV1CronJob
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchBatchV1NamespacedCronJobStatusOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchBatchV1NamespacedJobApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchBatchV1NamespacedJobApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchBatchV1NamespacedJobApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchBatchV1NamespacedJobApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchBatchV1NamespacedJobApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchBatchV1NamespacedJobApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchBatchV1NamespacedJobCreated) SetFake() {
+	var unwrapped IoK8sAPIBatchV1Job
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchBatchV1NamespacedJobCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchBatchV1NamespacedJobOK) SetFake() {
+	var unwrapped IoK8sAPIBatchV1Job
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchBatchV1NamespacedJobOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchBatchV1NamespacedJobStatusApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchBatchV1NamespacedJobStatusApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchBatchV1NamespacedJobStatusApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchBatchV1NamespacedJobStatusApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchBatchV1NamespacedJobStatusApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchBatchV1NamespacedJobStatusApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchBatchV1NamespacedJobStatusCreated) SetFake() {
+	var unwrapped IoK8sAPIBatchV1Job
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchBatchV1NamespacedJobStatusCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchBatchV1NamespacedJobStatusOK) SetFake() {
+	var unwrapped IoK8sAPIBatchV1Job
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchBatchV1NamespacedJobStatusOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchBatchV1beta1NamespacedCronJobApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchBatchV1beta1NamespacedCronJobApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchBatchV1beta1NamespacedCronJobApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchBatchV1beta1NamespacedCronJobApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchBatchV1beta1NamespacedCronJobApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchBatchV1beta1NamespacedCronJobApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchBatchV1beta1NamespacedCronJobCreated) SetFake() {
+	var unwrapped IoK8sAPIBatchV1beta1CronJob
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchBatchV1beta1NamespacedCronJobCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchBatchV1beta1NamespacedCronJobOK) SetFake() {
+	var unwrapped IoK8sAPIBatchV1beta1CronJob
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchBatchV1beta1NamespacedCronJobOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchBatchV1beta1NamespacedCronJobStatusApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchBatchV1beta1NamespacedCronJobStatusApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchBatchV1beta1NamespacedCronJobStatusApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchBatchV1beta1NamespacedCronJobStatusApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchBatchV1beta1NamespacedCronJobStatusApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchBatchV1beta1NamespacedCronJobStatusApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchBatchV1beta1NamespacedCronJobStatusCreated) SetFake() {
+	var unwrapped IoK8sAPIBatchV1beta1CronJob
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchBatchV1beta1NamespacedCronJobStatusCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchBatchV1beta1NamespacedCronJobStatusOK) SetFake() {
+	var unwrapped IoK8sAPIBatchV1beta1CronJob
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchBatchV1beta1NamespacedCronJobStatusOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCertificatesV1CertificateSigningRequestApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCertificatesV1CertificateSigningRequestApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCertificatesV1CertificateSigningRequestApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCertificatesV1CertificateSigningRequestApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCertificatesV1CertificateSigningRequestApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCertificatesV1CertificateSigningRequestApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCertificatesV1CertificateSigningRequestApprovalApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCertificatesV1CertificateSigningRequestApprovalApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCertificatesV1CertificateSigningRequestApprovalApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCertificatesV1CertificateSigningRequestApprovalApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCertificatesV1CertificateSigningRequestApprovalApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCertificatesV1CertificateSigningRequestApprovalApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCertificatesV1CertificateSigningRequestApprovalCreated) SetFake() {
+	var unwrapped IoK8sAPICertificatesV1CertificateSigningRequest
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCertificatesV1CertificateSigningRequestApprovalCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCertificatesV1CertificateSigningRequestApprovalOK) SetFake() {
+	var unwrapped IoK8sAPICertificatesV1CertificateSigningRequest
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCertificatesV1CertificateSigningRequestApprovalOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCertificatesV1CertificateSigningRequestCreated) SetFake() {
+	var unwrapped IoK8sAPICertificatesV1CertificateSigningRequest
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCertificatesV1CertificateSigningRequestCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCertificatesV1CertificateSigningRequestOK) SetFake() {
+	var unwrapped IoK8sAPICertificatesV1CertificateSigningRequest
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCertificatesV1CertificateSigningRequestOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCertificatesV1CertificateSigningRequestStatusApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCertificatesV1CertificateSigningRequestStatusApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCertificatesV1CertificateSigningRequestStatusApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCertificatesV1CertificateSigningRequestStatusApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCertificatesV1CertificateSigningRequestStatusApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCertificatesV1CertificateSigningRequestStatusApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCertificatesV1CertificateSigningRequestStatusCreated) SetFake() {
+	var unwrapped IoK8sAPICertificatesV1CertificateSigningRequest
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCertificatesV1CertificateSigningRequestStatusCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCertificatesV1CertificateSigningRequestStatusOK) SetFake() {
+	var unwrapped IoK8sAPICertificatesV1CertificateSigningRequest
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCertificatesV1CertificateSigningRequestStatusOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoordinationV1NamespacedLeaseApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoordinationV1NamespacedLeaseApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoordinationV1NamespacedLeaseApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoordinationV1NamespacedLeaseApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoordinationV1NamespacedLeaseApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoordinationV1NamespacedLeaseApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoordinationV1NamespacedLeaseCreated) SetFake() {
+	var unwrapped IoK8sAPICoordinationV1Lease
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoordinationV1NamespacedLeaseCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoordinationV1NamespacedLeaseOK) SetFake() {
+	var unwrapped IoK8sAPICoordinationV1Lease
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoordinationV1NamespacedLeaseOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespaceApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespaceApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespaceApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespaceApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespaceApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespaceApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespaceCreated) SetFake() {
+	var unwrapped IoK8sAPICoreV1Namespace
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespaceCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespaceOK) SetFake() {
+	var unwrapped IoK8sAPICoreV1Namespace
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespaceOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespaceStatusApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespaceStatusApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespaceStatusApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespaceStatusApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespaceStatusApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespaceStatusApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespaceStatusCreated) SetFake() {
+	var unwrapped IoK8sAPICoreV1Namespace
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespaceStatusCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespaceStatusOK) SetFake() {
+	var unwrapped IoK8sAPICoreV1Namespace
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespaceStatusOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedConfigMapApplicationJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedConfigMapApplicationJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedConfigMapApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedConfigMapApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedConfigMapApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedConfigMapApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
 func (s *PatchCoreV1NamespacedConfigMapCreated) SetFake() {
 	var unwrapped IoK8sAPICoreV1ConfigMap
 	{
@@ -18222,6 +19878,2706 @@ func (s *PatchCoreV1NamespacedConfigMapOK) SetFake() {
 		unwrapped.SetFake()
 	}
 	*s = PatchCoreV1NamespacedConfigMapOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedEndpointsApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedEndpointsApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedEndpointsApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedEndpointsApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedEndpointsApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedEndpointsApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedEndpointsCreated) SetFake() {
+	var unwrapped IoK8sAPICoreV1Endpoints
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedEndpointsCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedEndpointsOK) SetFake() {
+	var unwrapped IoK8sAPICoreV1Endpoints
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedEndpointsOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedEventApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedEventApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedEventApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedEventApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedEventApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedEventApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedEventCreated) SetFake() {
+	var unwrapped IoK8sAPICoreV1Event
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedEventCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedEventOK) SetFake() {
+	var unwrapped IoK8sAPICoreV1Event
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedEventOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedLimitRangeApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedLimitRangeApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedLimitRangeApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedLimitRangeApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedLimitRangeApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedLimitRangeApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedLimitRangeCreated) SetFake() {
+	var unwrapped IoK8sAPICoreV1LimitRange
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedLimitRangeCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedLimitRangeOK) SetFake() {
+	var unwrapped IoK8sAPICoreV1LimitRange
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedLimitRangeOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedPersistentVolumeClaimApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedPersistentVolumeClaimApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedPersistentVolumeClaimApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedPersistentVolumeClaimApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedPersistentVolumeClaimApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedPersistentVolumeClaimApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedPersistentVolumeClaimCreated) SetFake() {
+	var unwrapped IoK8sAPICoreV1PersistentVolumeClaim
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedPersistentVolumeClaimCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedPersistentVolumeClaimOK) SetFake() {
+	var unwrapped IoK8sAPICoreV1PersistentVolumeClaim
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedPersistentVolumeClaimOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedPersistentVolumeClaimStatusApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedPersistentVolumeClaimStatusApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedPersistentVolumeClaimStatusApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedPersistentVolumeClaimStatusApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedPersistentVolumeClaimStatusApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedPersistentVolumeClaimStatusApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedPersistentVolumeClaimStatusCreated) SetFake() {
+	var unwrapped IoK8sAPICoreV1PersistentVolumeClaim
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedPersistentVolumeClaimStatusCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedPersistentVolumeClaimStatusOK) SetFake() {
+	var unwrapped IoK8sAPICoreV1PersistentVolumeClaim
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedPersistentVolumeClaimStatusOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedPodApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedPodApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedPodApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedPodApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedPodApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedPodApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedPodCreated) SetFake() {
+	var unwrapped IoK8sAPICoreV1Pod
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedPodCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedPodEphemeralcontainersApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedPodEphemeralcontainersApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedPodEphemeralcontainersApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedPodEphemeralcontainersApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedPodEphemeralcontainersApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedPodEphemeralcontainersApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedPodEphemeralcontainersCreated) SetFake() {
+	var unwrapped IoK8sAPICoreV1Pod
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedPodEphemeralcontainersCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedPodEphemeralcontainersOK) SetFake() {
+	var unwrapped IoK8sAPICoreV1Pod
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedPodEphemeralcontainersOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedPodOK) SetFake() {
+	var unwrapped IoK8sAPICoreV1Pod
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedPodOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedPodStatusApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedPodStatusApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedPodStatusApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedPodStatusApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedPodStatusApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedPodStatusApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedPodStatusCreated) SetFake() {
+	var unwrapped IoK8sAPICoreV1Pod
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedPodStatusCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedPodStatusOK) SetFake() {
+	var unwrapped IoK8sAPICoreV1Pod
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedPodStatusOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedPodTemplateApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedPodTemplateApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedPodTemplateApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedPodTemplateApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedPodTemplateApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedPodTemplateApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedPodTemplateCreated) SetFake() {
+	var unwrapped IoK8sAPICoreV1PodTemplate
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedPodTemplateCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedPodTemplateOK) SetFake() {
+	var unwrapped IoK8sAPICoreV1PodTemplate
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedPodTemplateOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedReplicationControllerApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedReplicationControllerApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedReplicationControllerApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedReplicationControllerApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedReplicationControllerApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedReplicationControllerApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedReplicationControllerCreated) SetFake() {
+	var unwrapped IoK8sAPICoreV1ReplicationController
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedReplicationControllerCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedReplicationControllerOK) SetFake() {
+	var unwrapped IoK8sAPICoreV1ReplicationController
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedReplicationControllerOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedReplicationControllerScaleApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedReplicationControllerScaleApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedReplicationControllerScaleApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedReplicationControllerScaleApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedReplicationControllerScaleApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedReplicationControllerScaleApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedReplicationControllerScaleCreated) SetFake() {
+	var unwrapped IoK8sAPIAutoscalingV1Scale
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedReplicationControllerScaleCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedReplicationControllerScaleOK) SetFake() {
+	var unwrapped IoK8sAPIAutoscalingV1Scale
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedReplicationControllerScaleOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedReplicationControllerStatusApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedReplicationControllerStatusApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedReplicationControllerStatusApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedReplicationControllerStatusApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedReplicationControllerStatusApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedReplicationControllerStatusApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedReplicationControllerStatusCreated) SetFake() {
+	var unwrapped IoK8sAPICoreV1ReplicationController
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedReplicationControllerStatusCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedReplicationControllerStatusOK) SetFake() {
+	var unwrapped IoK8sAPICoreV1ReplicationController
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedReplicationControllerStatusOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedResourceQuotaApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedResourceQuotaApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedResourceQuotaApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedResourceQuotaApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedResourceQuotaApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedResourceQuotaApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedResourceQuotaCreated) SetFake() {
+	var unwrapped IoK8sAPICoreV1ResourceQuota
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedResourceQuotaCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedResourceQuotaOK) SetFake() {
+	var unwrapped IoK8sAPICoreV1ResourceQuota
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedResourceQuotaOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedResourceQuotaStatusApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedResourceQuotaStatusApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedResourceQuotaStatusApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedResourceQuotaStatusApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedResourceQuotaStatusApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedResourceQuotaStatusApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedResourceQuotaStatusCreated) SetFake() {
+	var unwrapped IoK8sAPICoreV1ResourceQuota
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedResourceQuotaStatusCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedResourceQuotaStatusOK) SetFake() {
+	var unwrapped IoK8sAPICoreV1ResourceQuota
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedResourceQuotaStatusOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedSecretApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedSecretApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedSecretApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedSecretApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedSecretApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedSecretApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedSecretCreated) SetFake() {
+	var unwrapped IoK8sAPICoreV1Secret
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedSecretCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedSecretOK) SetFake() {
+	var unwrapped IoK8sAPICoreV1Secret
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedSecretOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedServiceAccountApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedServiceAccountApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedServiceAccountApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedServiceAccountApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedServiceAccountApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedServiceAccountApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedServiceAccountCreated) SetFake() {
+	var unwrapped IoK8sAPICoreV1ServiceAccount
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedServiceAccountCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedServiceAccountOK) SetFake() {
+	var unwrapped IoK8sAPICoreV1ServiceAccount
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedServiceAccountOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedServiceApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedServiceApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedServiceApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedServiceApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedServiceApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedServiceApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedServiceCreated) SetFake() {
+	var unwrapped IoK8sAPICoreV1Service
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedServiceCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedServiceOK) SetFake() {
+	var unwrapped IoK8sAPICoreV1Service
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedServiceOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedServiceStatusApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedServiceStatusApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedServiceStatusApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedServiceStatusApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedServiceStatusApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedServiceStatusApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedServiceStatusCreated) SetFake() {
+	var unwrapped IoK8sAPICoreV1Service
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedServiceStatusCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedServiceStatusOK) SetFake() {
+	var unwrapped IoK8sAPICoreV1Service
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedServiceStatusOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NodeApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NodeApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NodeApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NodeApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NodeApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NodeApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NodeCreated) SetFake() {
+	var unwrapped IoK8sAPICoreV1Node
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NodeCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NodeOK) SetFake() {
+	var unwrapped IoK8sAPICoreV1Node
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NodeOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NodeStatusApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NodeStatusApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NodeStatusApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NodeStatusApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NodeStatusApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NodeStatusApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NodeStatusCreated) SetFake() {
+	var unwrapped IoK8sAPICoreV1Node
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NodeStatusCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NodeStatusOK) SetFake() {
+	var unwrapped IoK8sAPICoreV1Node
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NodeStatusOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1PersistentVolumeApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1PersistentVolumeApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1PersistentVolumeApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1PersistentVolumeApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1PersistentVolumeApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1PersistentVolumeApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1PersistentVolumeCreated) SetFake() {
+	var unwrapped IoK8sAPICoreV1PersistentVolume
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1PersistentVolumeCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1PersistentVolumeOK) SetFake() {
+	var unwrapped IoK8sAPICoreV1PersistentVolume
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1PersistentVolumeOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1PersistentVolumeStatusApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1PersistentVolumeStatusApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1PersistentVolumeStatusApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1PersistentVolumeStatusApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1PersistentVolumeStatusApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1PersistentVolumeStatusApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1PersistentVolumeStatusCreated) SetFake() {
+	var unwrapped IoK8sAPICoreV1PersistentVolume
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1PersistentVolumeStatusCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1PersistentVolumeStatusOK) SetFake() {
+	var unwrapped IoK8sAPICoreV1PersistentVolume
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1PersistentVolumeStatusOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchDiscoveryV1NamespacedEndpointSliceApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchDiscoveryV1NamespacedEndpointSliceApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchDiscoveryV1NamespacedEndpointSliceApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchDiscoveryV1NamespacedEndpointSliceApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchDiscoveryV1NamespacedEndpointSliceApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchDiscoveryV1NamespacedEndpointSliceApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchDiscoveryV1NamespacedEndpointSliceCreated) SetFake() {
+	var unwrapped IoK8sAPIDiscoveryV1EndpointSlice
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchDiscoveryV1NamespacedEndpointSliceCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchDiscoveryV1NamespacedEndpointSliceOK) SetFake() {
+	var unwrapped IoK8sAPIDiscoveryV1EndpointSlice
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchDiscoveryV1NamespacedEndpointSliceOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchDiscoveryV1beta1NamespacedEndpointSliceApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchDiscoveryV1beta1NamespacedEndpointSliceApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchDiscoveryV1beta1NamespacedEndpointSliceApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchDiscoveryV1beta1NamespacedEndpointSliceApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchDiscoveryV1beta1NamespacedEndpointSliceApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchDiscoveryV1beta1NamespacedEndpointSliceApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchDiscoveryV1beta1NamespacedEndpointSliceCreated) SetFake() {
+	var unwrapped IoK8sAPIDiscoveryV1beta1EndpointSlice
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchDiscoveryV1beta1NamespacedEndpointSliceCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchDiscoveryV1beta1NamespacedEndpointSliceOK) SetFake() {
+	var unwrapped IoK8sAPIDiscoveryV1beta1EndpointSlice
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchDiscoveryV1beta1NamespacedEndpointSliceOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchEventsV1NamespacedEventApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchEventsV1NamespacedEventApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchEventsV1NamespacedEventApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchEventsV1NamespacedEventApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchEventsV1NamespacedEventApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchEventsV1NamespacedEventApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchEventsV1NamespacedEventCreated) SetFake() {
+	var unwrapped IoK8sAPIEventsV1Event
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchEventsV1NamespacedEventCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchEventsV1NamespacedEventOK) SetFake() {
+	var unwrapped IoK8sAPIEventsV1Event
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchEventsV1NamespacedEventOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchEventsV1beta1NamespacedEventApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchEventsV1beta1NamespacedEventApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchEventsV1beta1NamespacedEventApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchEventsV1beta1NamespacedEventApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchEventsV1beta1NamespacedEventApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchEventsV1beta1NamespacedEventApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchEventsV1beta1NamespacedEventCreated) SetFake() {
+	var unwrapped IoK8sAPIEventsV1beta1Event
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchEventsV1beta1NamespacedEventCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchEventsV1beta1NamespacedEventOK) SetFake() {
+	var unwrapped IoK8sAPIEventsV1beta1Event
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchEventsV1beta1NamespacedEventOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchFlowcontrolApiserverV1beta1FlowSchemaApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchFlowcontrolApiserverV1beta1FlowSchemaApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchFlowcontrolApiserverV1beta1FlowSchemaApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchFlowcontrolApiserverV1beta1FlowSchemaApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchFlowcontrolApiserverV1beta1FlowSchemaApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchFlowcontrolApiserverV1beta1FlowSchemaCreated) SetFake() {
+	var unwrapped IoK8sAPIFlowcontrolV1beta1FlowSchema
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchFlowcontrolApiserverV1beta1FlowSchemaCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchFlowcontrolApiserverV1beta1FlowSchemaOK) SetFake() {
+	var unwrapped IoK8sAPIFlowcontrolV1beta1FlowSchema
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchFlowcontrolApiserverV1beta1FlowSchemaOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchFlowcontrolApiserverV1beta1FlowSchemaStatusApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchFlowcontrolApiserverV1beta1FlowSchemaStatusApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchFlowcontrolApiserverV1beta1FlowSchemaStatusApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchFlowcontrolApiserverV1beta1FlowSchemaStatusApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchFlowcontrolApiserverV1beta1FlowSchemaStatusApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchFlowcontrolApiserverV1beta1FlowSchemaStatusApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchFlowcontrolApiserverV1beta1FlowSchemaStatusCreated) SetFake() {
+	var unwrapped IoK8sAPIFlowcontrolV1beta1FlowSchema
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchFlowcontrolApiserverV1beta1FlowSchemaStatusCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchFlowcontrolApiserverV1beta1FlowSchemaStatusOK) SetFake() {
+	var unwrapped IoK8sAPIFlowcontrolV1beta1FlowSchema
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchFlowcontrolApiserverV1beta1FlowSchemaStatusOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationCreated) SetFake() {
+	var unwrapped IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationOK) SetFake() {
+	var unwrapped IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusCreated) SetFake() {
+	var unwrapped IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusOK) SetFake() {
+	var unwrapped IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchFlowcontrolApiserverV1beta2FlowSchemaApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchFlowcontrolApiserverV1beta2FlowSchemaApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchFlowcontrolApiserverV1beta2FlowSchemaApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchFlowcontrolApiserverV1beta2FlowSchemaApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchFlowcontrolApiserverV1beta2FlowSchemaApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchFlowcontrolApiserverV1beta2FlowSchemaCreated) SetFake() {
+	var unwrapped IoK8sAPIFlowcontrolV1beta2FlowSchema
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchFlowcontrolApiserverV1beta2FlowSchemaCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchFlowcontrolApiserverV1beta2FlowSchemaOK) SetFake() {
+	var unwrapped IoK8sAPIFlowcontrolV1beta2FlowSchema
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchFlowcontrolApiserverV1beta2FlowSchemaOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchFlowcontrolApiserverV1beta2FlowSchemaStatusApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchFlowcontrolApiserverV1beta2FlowSchemaStatusApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchFlowcontrolApiserverV1beta2FlowSchemaStatusApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchFlowcontrolApiserverV1beta2FlowSchemaStatusApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchFlowcontrolApiserverV1beta2FlowSchemaStatusApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchFlowcontrolApiserverV1beta2FlowSchemaStatusApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchFlowcontrolApiserverV1beta2FlowSchemaStatusCreated) SetFake() {
+	var unwrapped IoK8sAPIFlowcontrolV1beta2FlowSchema
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchFlowcontrolApiserverV1beta2FlowSchemaStatusCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchFlowcontrolApiserverV1beta2FlowSchemaStatusOK) SetFake() {
+	var unwrapped IoK8sAPIFlowcontrolV1beta2FlowSchema
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchFlowcontrolApiserverV1beta2FlowSchemaStatusOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationCreated) SetFake() {
+	var unwrapped IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationOK) SetFake() {
+	var unwrapped IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusCreated) SetFake() {
+	var unwrapped IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusOK) SetFake() {
+	var unwrapped IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchInternalApiserverV1alpha1StorageVersionApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchInternalApiserverV1alpha1StorageVersionApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchInternalApiserverV1alpha1StorageVersionApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchInternalApiserverV1alpha1StorageVersionApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchInternalApiserverV1alpha1StorageVersionApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchInternalApiserverV1alpha1StorageVersionApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchInternalApiserverV1alpha1StorageVersionCreated) SetFake() {
+	var unwrapped IoK8sAPIApiserverinternalV1alpha1StorageVersion
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchInternalApiserverV1alpha1StorageVersionCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchInternalApiserverV1alpha1StorageVersionOK) SetFake() {
+	var unwrapped IoK8sAPIApiserverinternalV1alpha1StorageVersion
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchInternalApiserverV1alpha1StorageVersionOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchInternalApiserverV1alpha1StorageVersionStatusApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchInternalApiserverV1alpha1StorageVersionStatusApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchInternalApiserverV1alpha1StorageVersionStatusApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchInternalApiserverV1alpha1StorageVersionStatusApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchInternalApiserverV1alpha1StorageVersionStatusApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchInternalApiserverV1alpha1StorageVersionStatusApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchInternalApiserverV1alpha1StorageVersionStatusCreated) SetFake() {
+	var unwrapped IoK8sAPIApiserverinternalV1alpha1StorageVersion
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchInternalApiserverV1alpha1StorageVersionStatusCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchInternalApiserverV1alpha1StorageVersionStatusOK) SetFake() {
+	var unwrapped IoK8sAPIApiserverinternalV1alpha1StorageVersion
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchInternalApiserverV1alpha1StorageVersionStatusOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchNetworkingV1IngressClassApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchNetworkingV1IngressClassApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchNetworkingV1IngressClassApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchNetworkingV1IngressClassApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchNetworkingV1IngressClassApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchNetworkingV1IngressClassApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchNetworkingV1IngressClassCreated) SetFake() {
+	var unwrapped IoK8sAPINetworkingV1IngressClass
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchNetworkingV1IngressClassCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchNetworkingV1IngressClassOK) SetFake() {
+	var unwrapped IoK8sAPINetworkingV1IngressClass
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchNetworkingV1IngressClassOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchNetworkingV1NamespacedIngressApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchNetworkingV1NamespacedIngressApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchNetworkingV1NamespacedIngressApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchNetworkingV1NamespacedIngressApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchNetworkingV1NamespacedIngressApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchNetworkingV1NamespacedIngressApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchNetworkingV1NamespacedIngressCreated) SetFake() {
+	var unwrapped IoK8sAPINetworkingV1Ingress
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchNetworkingV1NamespacedIngressCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchNetworkingV1NamespacedIngressOK) SetFake() {
+	var unwrapped IoK8sAPINetworkingV1Ingress
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchNetworkingV1NamespacedIngressOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchNetworkingV1NamespacedIngressStatusApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchNetworkingV1NamespacedIngressStatusApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchNetworkingV1NamespacedIngressStatusApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchNetworkingV1NamespacedIngressStatusApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchNetworkingV1NamespacedIngressStatusApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchNetworkingV1NamespacedIngressStatusApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchNetworkingV1NamespacedIngressStatusCreated) SetFake() {
+	var unwrapped IoK8sAPINetworkingV1Ingress
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchNetworkingV1NamespacedIngressStatusCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchNetworkingV1NamespacedIngressStatusOK) SetFake() {
+	var unwrapped IoK8sAPINetworkingV1Ingress
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchNetworkingV1NamespacedIngressStatusOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchNetworkingV1NamespacedNetworkPolicyApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchNetworkingV1NamespacedNetworkPolicyApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchNetworkingV1NamespacedNetworkPolicyApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchNetworkingV1NamespacedNetworkPolicyApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchNetworkingV1NamespacedNetworkPolicyApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchNetworkingV1NamespacedNetworkPolicyApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchNetworkingV1NamespacedNetworkPolicyCreated) SetFake() {
+	var unwrapped IoK8sAPINetworkingV1NetworkPolicy
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchNetworkingV1NamespacedNetworkPolicyCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchNetworkingV1NamespacedNetworkPolicyOK) SetFake() {
+	var unwrapped IoK8sAPINetworkingV1NetworkPolicy
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchNetworkingV1NamespacedNetworkPolicyOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchNodeV1RuntimeClassApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchNodeV1RuntimeClassApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchNodeV1RuntimeClassApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchNodeV1RuntimeClassApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchNodeV1RuntimeClassApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchNodeV1RuntimeClassApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchNodeV1RuntimeClassCreated) SetFake() {
+	var unwrapped IoK8sAPINodeV1RuntimeClass
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchNodeV1RuntimeClassCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchNodeV1RuntimeClassOK) SetFake() {
+	var unwrapped IoK8sAPINodeV1RuntimeClass
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchNodeV1RuntimeClassOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchNodeV1alpha1RuntimeClassApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchNodeV1alpha1RuntimeClassApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchNodeV1alpha1RuntimeClassApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchNodeV1alpha1RuntimeClassApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchNodeV1alpha1RuntimeClassApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchNodeV1alpha1RuntimeClassApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchNodeV1alpha1RuntimeClassCreated) SetFake() {
+	var unwrapped IoK8sAPINodeV1alpha1RuntimeClass
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchNodeV1alpha1RuntimeClassCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchNodeV1alpha1RuntimeClassOK) SetFake() {
+	var unwrapped IoK8sAPINodeV1alpha1RuntimeClass
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchNodeV1alpha1RuntimeClassOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchNodeV1beta1RuntimeClassApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchNodeV1beta1RuntimeClassApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchNodeV1beta1RuntimeClassApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchNodeV1beta1RuntimeClassApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchNodeV1beta1RuntimeClassApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchNodeV1beta1RuntimeClassApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchNodeV1beta1RuntimeClassCreated) SetFake() {
+	var unwrapped IoK8sAPINodeV1beta1RuntimeClass
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchNodeV1beta1RuntimeClassCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchNodeV1beta1RuntimeClassOK) SetFake() {
+	var unwrapped IoK8sAPINodeV1beta1RuntimeClass
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchNodeV1beta1RuntimeClassOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchPolicyV1NamespacedPodDisruptionBudgetApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchPolicyV1NamespacedPodDisruptionBudgetApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchPolicyV1NamespacedPodDisruptionBudgetApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchPolicyV1NamespacedPodDisruptionBudgetApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchPolicyV1NamespacedPodDisruptionBudgetApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchPolicyV1NamespacedPodDisruptionBudgetApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchPolicyV1NamespacedPodDisruptionBudgetCreated) SetFake() {
+	var unwrapped IoK8sAPIPolicyV1PodDisruptionBudget
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchPolicyV1NamespacedPodDisruptionBudgetCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchPolicyV1NamespacedPodDisruptionBudgetOK) SetFake() {
+	var unwrapped IoK8sAPIPolicyV1PodDisruptionBudget
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchPolicyV1NamespacedPodDisruptionBudgetOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchPolicyV1NamespacedPodDisruptionBudgetStatusApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchPolicyV1NamespacedPodDisruptionBudgetStatusApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchPolicyV1NamespacedPodDisruptionBudgetStatusApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchPolicyV1NamespacedPodDisruptionBudgetStatusApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchPolicyV1NamespacedPodDisruptionBudgetStatusApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchPolicyV1NamespacedPodDisruptionBudgetStatusApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchPolicyV1NamespacedPodDisruptionBudgetStatusCreated) SetFake() {
+	var unwrapped IoK8sAPIPolicyV1PodDisruptionBudget
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchPolicyV1NamespacedPodDisruptionBudgetStatusCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchPolicyV1NamespacedPodDisruptionBudgetStatusOK) SetFake() {
+	var unwrapped IoK8sAPIPolicyV1PodDisruptionBudget
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchPolicyV1NamespacedPodDisruptionBudgetStatusOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchPolicyV1beta1NamespacedPodDisruptionBudgetApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchPolicyV1beta1NamespacedPodDisruptionBudgetApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchPolicyV1beta1NamespacedPodDisruptionBudgetApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchPolicyV1beta1NamespacedPodDisruptionBudgetApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchPolicyV1beta1NamespacedPodDisruptionBudgetApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchPolicyV1beta1NamespacedPodDisruptionBudgetApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchPolicyV1beta1NamespacedPodDisruptionBudgetCreated) SetFake() {
+	var unwrapped IoK8sAPIPolicyV1beta1PodDisruptionBudget
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchPolicyV1beta1NamespacedPodDisruptionBudgetCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchPolicyV1beta1NamespacedPodDisruptionBudgetOK) SetFake() {
+	var unwrapped IoK8sAPIPolicyV1beta1PodDisruptionBudget
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchPolicyV1beta1NamespacedPodDisruptionBudgetOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchPolicyV1beta1NamespacedPodDisruptionBudgetStatusApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchPolicyV1beta1NamespacedPodDisruptionBudgetStatusApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchPolicyV1beta1NamespacedPodDisruptionBudgetStatusApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchPolicyV1beta1NamespacedPodDisruptionBudgetStatusApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchPolicyV1beta1NamespacedPodDisruptionBudgetStatusApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchPolicyV1beta1NamespacedPodDisruptionBudgetStatusApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchPolicyV1beta1NamespacedPodDisruptionBudgetStatusCreated) SetFake() {
+	var unwrapped IoK8sAPIPolicyV1beta1PodDisruptionBudget
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchPolicyV1beta1NamespacedPodDisruptionBudgetStatusCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchPolicyV1beta1NamespacedPodDisruptionBudgetStatusOK) SetFake() {
+	var unwrapped IoK8sAPIPolicyV1beta1PodDisruptionBudget
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchPolicyV1beta1NamespacedPodDisruptionBudgetStatusOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchPolicyV1beta1PodSecurityPolicyApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchPolicyV1beta1PodSecurityPolicyApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchPolicyV1beta1PodSecurityPolicyApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchPolicyV1beta1PodSecurityPolicyApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchPolicyV1beta1PodSecurityPolicyApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchPolicyV1beta1PodSecurityPolicyApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchPolicyV1beta1PodSecurityPolicyCreated) SetFake() {
+	var unwrapped IoK8sAPIPolicyV1beta1PodSecurityPolicy
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchPolicyV1beta1PodSecurityPolicyCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchPolicyV1beta1PodSecurityPolicyOK) SetFake() {
+	var unwrapped IoK8sAPIPolicyV1beta1PodSecurityPolicy
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchPolicyV1beta1PodSecurityPolicyOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchRbacAuthorizationV1ClusterRoleApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchRbacAuthorizationV1ClusterRoleApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchRbacAuthorizationV1ClusterRoleApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchRbacAuthorizationV1ClusterRoleApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchRbacAuthorizationV1ClusterRoleApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchRbacAuthorizationV1ClusterRoleApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchRbacAuthorizationV1ClusterRoleBindingApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchRbacAuthorizationV1ClusterRoleBindingApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchRbacAuthorizationV1ClusterRoleBindingApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchRbacAuthorizationV1ClusterRoleBindingApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchRbacAuthorizationV1ClusterRoleBindingApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchRbacAuthorizationV1ClusterRoleBindingApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchRbacAuthorizationV1ClusterRoleBindingCreated) SetFake() {
+	var unwrapped IoK8sAPIRbacV1ClusterRoleBinding
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchRbacAuthorizationV1ClusterRoleBindingCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchRbacAuthorizationV1ClusterRoleBindingOK) SetFake() {
+	var unwrapped IoK8sAPIRbacV1ClusterRoleBinding
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchRbacAuthorizationV1ClusterRoleBindingOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchRbacAuthorizationV1ClusterRoleCreated) SetFake() {
+	var unwrapped IoK8sAPIRbacV1ClusterRole
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchRbacAuthorizationV1ClusterRoleCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchRbacAuthorizationV1ClusterRoleOK) SetFake() {
+	var unwrapped IoK8sAPIRbacV1ClusterRole
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchRbacAuthorizationV1ClusterRoleOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchRbacAuthorizationV1NamespacedRoleApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchRbacAuthorizationV1NamespacedRoleApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchRbacAuthorizationV1NamespacedRoleApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchRbacAuthorizationV1NamespacedRoleApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchRbacAuthorizationV1NamespacedRoleApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchRbacAuthorizationV1NamespacedRoleApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchRbacAuthorizationV1NamespacedRoleBindingApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchRbacAuthorizationV1NamespacedRoleBindingApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchRbacAuthorizationV1NamespacedRoleBindingApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchRbacAuthorizationV1NamespacedRoleBindingApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchRbacAuthorizationV1NamespacedRoleBindingApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchRbacAuthorizationV1NamespacedRoleBindingApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchRbacAuthorizationV1NamespacedRoleBindingCreated) SetFake() {
+	var unwrapped IoK8sAPIRbacV1RoleBinding
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchRbacAuthorizationV1NamespacedRoleBindingCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchRbacAuthorizationV1NamespacedRoleBindingOK) SetFake() {
+	var unwrapped IoK8sAPIRbacV1RoleBinding
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchRbacAuthorizationV1NamespacedRoleBindingOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchRbacAuthorizationV1NamespacedRoleCreated) SetFake() {
+	var unwrapped IoK8sAPIRbacV1Role
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchRbacAuthorizationV1NamespacedRoleCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchRbacAuthorizationV1NamespacedRoleOK) SetFake() {
+	var unwrapped IoK8sAPIRbacV1Role
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchRbacAuthorizationV1NamespacedRoleOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchSchedulingV1PriorityClassApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchSchedulingV1PriorityClassApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchSchedulingV1PriorityClassApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchSchedulingV1PriorityClassApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchSchedulingV1PriorityClassApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchSchedulingV1PriorityClassApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchSchedulingV1PriorityClassCreated) SetFake() {
+	var unwrapped IoK8sAPISchedulingV1PriorityClass
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchSchedulingV1PriorityClassCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchSchedulingV1PriorityClassOK) SetFake() {
+	var unwrapped IoK8sAPISchedulingV1PriorityClass
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchSchedulingV1PriorityClassOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchStorageV1CSIDriverApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchStorageV1CSIDriverApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchStorageV1CSIDriverApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchStorageV1CSIDriverApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchStorageV1CSIDriverApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchStorageV1CSIDriverApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchStorageV1CSIDriverCreated) SetFake() {
+	var unwrapped IoK8sAPIStorageV1CSIDriver
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchStorageV1CSIDriverCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchStorageV1CSIDriverOK) SetFake() {
+	var unwrapped IoK8sAPIStorageV1CSIDriver
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchStorageV1CSIDriverOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchStorageV1CSINodeApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchStorageV1CSINodeApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchStorageV1CSINodeApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchStorageV1CSINodeApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchStorageV1CSINodeApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchStorageV1CSINodeApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchStorageV1CSINodeCreated) SetFake() {
+	var unwrapped IoK8sAPIStorageV1CSINode
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchStorageV1CSINodeCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchStorageV1CSINodeOK) SetFake() {
+	var unwrapped IoK8sAPIStorageV1CSINode
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchStorageV1CSINodeOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchStorageV1StorageClassApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchStorageV1StorageClassApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchStorageV1StorageClassApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchStorageV1StorageClassApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchStorageV1StorageClassApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchStorageV1StorageClassApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchStorageV1StorageClassCreated) SetFake() {
+	var unwrapped IoK8sAPIStorageV1StorageClass
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchStorageV1StorageClassCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchStorageV1StorageClassOK) SetFake() {
+	var unwrapped IoK8sAPIStorageV1StorageClass
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchStorageV1StorageClassOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchStorageV1VolumeAttachmentApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchStorageV1VolumeAttachmentApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchStorageV1VolumeAttachmentApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchStorageV1VolumeAttachmentApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchStorageV1VolumeAttachmentApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchStorageV1VolumeAttachmentApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchStorageV1VolumeAttachmentCreated) SetFake() {
+	var unwrapped IoK8sAPIStorageV1VolumeAttachment
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchStorageV1VolumeAttachmentCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchStorageV1VolumeAttachmentOK) SetFake() {
+	var unwrapped IoK8sAPIStorageV1VolumeAttachment
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchStorageV1VolumeAttachmentOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchStorageV1VolumeAttachmentStatusApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchStorageV1VolumeAttachmentStatusApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchStorageV1VolumeAttachmentStatusApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchStorageV1VolumeAttachmentStatusApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchStorageV1VolumeAttachmentStatusApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchStorageV1VolumeAttachmentStatusApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchStorageV1VolumeAttachmentStatusCreated) SetFake() {
+	var unwrapped IoK8sAPIStorageV1VolumeAttachment
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchStorageV1VolumeAttachmentStatusCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchStorageV1VolumeAttachmentStatusOK) SetFake() {
+	var unwrapped IoK8sAPIStorageV1VolumeAttachment
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchStorageV1VolumeAttachmentStatusOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchStorageV1alpha1NamespacedCSIStorageCapacityApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchStorageV1alpha1NamespacedCSIStorageCapacityApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchStorageV1alpha1NamespacedCSIStorageCapacityApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchStorageV1alpha1NamespacedCSIStorageCapacityApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchStorageV1alpha1NamespacedCSIStorageCapacityApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchStorageV1alpha1NamespacedCSIStorageCapacityApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchStorageV1alpha1NamespacedCSIStorageCapacityCreated) SetFake() {
+	var unwrapped IoK8sAPIStorageV1alpha1CSIStorageCapacity
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchStorageV1alpha1NamespacedCSIStorageCapacityCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchStorageV1alpha1NamespacedCSIStorageCapacityOK) SetFake() {
+	var unwrapped IoK8sAPIStorageV1alpha1CSIStorageCapacity
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchStorageV1alpha1NamespacedCSIStorageCapacityOK(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchStorageV1beta1NamespacedCSIStorageCapacityApplicationJSONPatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchStorageV1beta1NamespacedCSIStorageCapacityApplicationJSONPatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchStorageV1beta1NamespacedCSIStorageCapacityApplicationMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchStorageV1beta1NamespacedCSIStorageCapacityApplicationMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchStorageV1beta1NamespacedCSIStorageCapacityApplicationStrategicMergePatchJSON) SetFake() {
+	var unwrapped IoK8sApimachineryPkgApisMetaV1Patch
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchStorageV1beta1NamespacedCSIStorageCapacityApplicationStrategicMergePatchJSON(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchStorageV1beta1NamespacedCSIStorageCapacityCreated) SetFake() {
+	var unwrapped IoK8sAPIStorageV1beta1CSIStorageCapacity
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchStorageV1beta1NamespacedCSIStorageCapacityCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchStorageV1beta1NamespacedCSIStorageCapacityOK) SetFake() {
+	var unwrapped IoK8sAPIStorageV1beta1CSIStorageCapacity
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchStorageV1beta1NamespacedCSIStorageCapacityOK(unwrapped)
 }
 
 // SetFake set fake values.

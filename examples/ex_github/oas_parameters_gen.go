@@ -104372,6 +104372,655 @@ func decodeScimDeleteUserFromOrgParams(args [2]string, argsEscaped bool, r *http
 	return params, nil
 }
 
+// ScimGetProvisioningInformationForUserParams is parameters of scim/get-provisioning-information-for-user operation.
+type ScimGetProvisioningInformationForUserParams struct {
+	Org string
+	// Scim_user_id parameter.
+	ScimUserID string
+}
+
+func unpackScimGetProvisioningInformationForUserParams(packed middleware.Parameters) (params ScimGetProvisioningInformationForUserParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "scim_user_id",
+			In:   "path",
+		}
+		params.ScimUserID = packed[key].(string)
+	}
+	return params
+}
+
+func decodeScimGetProvisioningInformationForUserParams(args [2]string, argsEscaped bool, r *http.Request) (params ScimGetProvisioningInformationForUserParams, _ error) {
+	// Decode path: org.
+	if err := func() error {
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
+		}
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "org",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Org = c
+				return nil
+			}(); err != nil {
+				return err
+			}
+		} else {
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "org",
+			In:   "path",
+			Err:  err,
+		}
+	}
+	// Decode path: scim_user_id.
+	if err := func() error {
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
+		}
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "scim_user_id",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.ScimUserID = c
+				return nil
+			}(); err != nil {
+				return err
+			}
+		} else {
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "scim_user_id",
+			In:   "path",
+			Err:  err,
+		}
+	}
+	return params, nil
+}
+
+// ScimListProvisionedIdentitiesParams is parameters of scim/list-provisioned-identities operation.
+type ScimListProvisionedIdentitiesParams struct {
+	Org string
+	// Used for pagination: the index of the first result to return.
+	StartIndex OptInt `json:",omitempty,omitzero"`
+	// Used for pagination: the number of results to return.
+	Count OptInt `json:",omitempty,omitzero"`
+	// Filters results using the equals query parameter operator (`eq`). You can filter results that are
+	// equal to `id`, `userName`, `emails`, and `external_id`. For example, to search for an identity
+	// with the `userName` Octocat, you would use this query:
+	// `?filter=userName%20eq%20\"Octocat\"`.
+	// To filter results for the identity with the email `octocat@github.com`, you would use this query:
+	// `?filter=emails%20eq%20\"octocat@github.com\"`.
+	Filter OptString `json:",omitempty,omitzero"`
+}
+
+func unpackScimListProvisionedIdentitiesParams(packed middleware.Parameters) (params ScimListProvisionedIdentitiesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "startIndex",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.StartIndex = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "count",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Count = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "filter",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Filter = v.(OptString)
+		}
+	}
+	return params
+}
+
+func decodeScimListProvisionedIdentitiesParams(args [1]string, argsEscaped bool, r *http.Request) (params ScimListProvisionedIdentitiesParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
+	// Decode path: org.
+	if err := func() error {
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
+		}
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "org",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Org = c
+				return nil
+			}(); err != nil {
+				return err
+			}
+		} else {
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "org",
+			In:   "path",
+			Err:  err,
+		}
+	}
+	// Decode query: startIndex.
+	if err := func() error {
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "startIndex",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				var paramsDotStartIndexVal int
+				if err := func() error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(val)
+					if err != nil {
+						return err
+					}
+
+					paramsDotStartIndexVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.StartIndex.SetTo(paramsDotStartIndexVal)
+				return nil
+			}); err != nil {
+				return err
+			}
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "startIndex",
+			In:   "query",
+			Err:  err,
+		}
+	}
+	// Decode query: count.
+	if err := func() error {
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "count",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				var paramsDotCountVal int
+				if err := func() error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(val)
+					if err != nil {
+						return err
+					}
+
+					paramsDotCountVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Count.SetTo(paramsDotCountVal)
+				return nil
+			}); err != nil {
+				return err
+			}
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "count",
+			In:   "query",
+			Err:  err,
+		}
+	}
+	// Decode query: filter.
+	if err := func() error {
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "filter",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				var paramsDotFilterVal string
+				if err := func() error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(val)
+					if err != nil {
+						return err
+					}
+
+					paramsDotFilterVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Filter.SetTo(paramsDotFilterVal)
+				return nil
+			}); err != nil {
+				return err
+			}
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "filter",
+			In:   "query",
+			Err:  err,
+		}
+	}
+	return params, nil
+}
+
+// ScimProvisionAndInviteUserParams is parameters of scim/provision-and-invite-user operation.
+type ScimProvisionAndInviteUserParams struct {
+	Org string
+}
+
+func unpackScimProvisionAndInviteUserParams(packed middleware.Parameters) (params ScimProvisionAndInviteUserParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
+	return params
+}
+
+func decodeScimProvisionAndInviteUserParams(args [1]string, argsEscaped bool, r *http.Request) (params ScimProvisionAndInviteUserParams, _ error) {
+	// Decode path: org.
+	if err := func() error {
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
+		}
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "org",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Org = c
+				return nil
+			}(); err != nil {
+				return err
+			}
+		} else {
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "org",
+			In:   "path",
+			Err:  err,
+		}
+	}
+	return params, nil
+}
+
+// ScimSetInformationForProvisionedUserParams is parameters of scim/set-information-for-provisioned-user operation.
+type ScimSetInformationForProvisionedUserParams struct {
+	Org string
+	// Scim_user_id parameter.
+	ScimUserID string
+}
+
+func unpackScimSetInformationForProvisionedUserParams(packed middleware.Parameters) (params ScimSetInformationForProvisionedUserParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "scim_user_id",
+			In:   "path",
+		}
+		params.ScimUserID = packed[key].(string)
+	}
+	return params
+}
+
+func decodeScimSetInformationForProvisionedUserParams(args [2]string, argsEscaped bool, r *http.Request) (params ScimSetInformationForProvisionedUserParams, _ error) {
+	// Decode path: org.
+	if err := func() error {
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
+		}
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "org",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Org = c
+				return nil
+			}(); err != nil {
+				return err
+			}
+		} else {
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "org",
+			In:   "path",
+			Err:  err,
+		}
+	}
+	// Decode path: scim_user_id.
+	if err := func() error {
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
+		}
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "scim_user_id",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.ScimUserID = c
+				return nil
+			}(); err != nil {
+				return err
+			}
+		} else {
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "scim_user_id",
+			In:   "path",
+			Err:  err,
+		}
+	}
+	return params, nil
+}
+
+// ScimUpdateAttributeForUserParams is parameters of scim/update-attribute-for-user operation.
+type ScimUpdateAttributeForUserParams struct {
+	Org string
+	// Scim_user_id parameter.
+	ScimUserID string
+}
+
+func unpackScimUpdateAttributeForUserParams(packed middleware.Parameters) (params ScimUpdateAttributeForUserParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "scim_user_id",
+			In:   "path",
+		}
+		params.ScimUserID = packed[key].(string)
+	}
+	return params
+}
+
+func decodeScimUpdateAttributeForUserParams(args [2]string, argsEscaped bool, r *http.Request) (params ScimUpdateAttributeForUserParams, _ error) {
+	// Decode path: org.
+	if err := func() error {
+		param := args[0]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[0])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
+		}
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "org",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Org = c
+				return nil
+			}(); err != nil {
+				return err
+			}
+		} else {
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "org",
+			In:   "path",
+			Err:  err,
+		}
+	}
+	// Decode path: scim_user_id.
+	if err := func() error {
+		param := args[1]
+		if argsEscaped {
+			unescaped, err := url.PathUnescape(args[1])
+			if err != nil {
+				return errors.Wrap(err, "unescape path")
+			}
+			param = unescaped
+		}
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "scim_user_id",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.ScimUserID = c
+				return nil
+			}(); err != nil {
+				return err
+			}
+		} else {
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "scim_user_id",
+			In:   "path",
+			Err:  err,
+		}
+	}
+	return params, nil
+}
+
 // SearchCodeParams is parameters of search/code operation.
 type SearchCodeParams struct {
 	// The query contains one or more search keywords and qualifiers. Qualifiers allow you to limit your

@@ -1517,6 +1517,26 @@ type ScimDeleteUserFromOrgRes interface {
 	scimDeleteUserFromOrgRes()
 }
 
+type ScimGetProvisioningInformationForUserRes interface {
+	scimGetProvisioningInformationForUserRes()
+}
+
+type ScimListProvisionedIdentitiesRes interface {
+	scimListProvisionedIdentitiesRes()
+}
+
+type ScimProvisionAndInviteUserRes interface {
+	scimProvisionAndInviteUserRes()
+}
+
+type ScimSetInformationForProvisionedUserRes interface {
+	scimSetInformationForProvisionedUserRes()
+}
+
+type ScimUpdateAttributeForUserRes interface {
+	scimUpdateAttributeForUserRes()
+}
+
 type SearchCodeRes interface {
 	searchCodeRes()
 }

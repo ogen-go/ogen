@@ -813,8 +813,780 @@ type ListStorageV1beta1NamespacedCSIStorageCapacityRes interface {
 	listStorageV1beta1NamespacedCSIStorageCapacityRes()
 }
 
+type PatchAdmissionregistrationV1MutatingWebhookConfigurationReq interface {
+	patchAdmissionregistrationV1MutatingWebhookConfigurationReq()
+}
+
+type PatchAdmissionregistrationV1MutatingWebhookConfigurationRes interface {
+	patchAdmissionregistrationV1MutatingWebhookConfigurationRes()
+}
+
+type PatchAdmissionregistrationV1ValidatingWebhookConfigurationReq interface {
+	patchAdmissionregistrationV1ValidatingWebhookConfigurationReq()
+}
+
+type PatchAdmissionregistrationV1ValidatingWebhookConfigurationRes interface {
+	patchAdmissionregistrationV1ValidatingWebhookConfigurationRes()
+}
+
+type PatchApiextensionsV1CustomResourceDefinitionReq interface {
+	patchApiextensionsV1CustomResourceDefinitionReq()
+}
+
+type PatchApiextensionsV1CustomResourceDefinitionRes interface {
+	patchApiextensionsV1CustomResourceDefinitionRes()
+}
+
+type PatchApiextensionsV1CustomResourceDefinitionStatusReq interface {
+	patchApiextensionsV1CustomResourceDefinitionStatusReq()
+}
+
+type PatchApiextensionsV1CustomResourceDefinitionStatusRes interface {
+	patchApiextensionsV1CustomResourceDefinitionStatusRes()
+}
+
+type PatchApiregistrationV1APIServiceReq interface {
+	patchApiregistrationV1APIServiceReq()
+}
+
+type PatchApiregistrationV1APIServiceRes interface {
+	patchApiregistrationV1APIServiceRes()
+}
+
+type PatchApiregistrationV1APIServiceStatusReq interface {
+	patchApiregistrationV1APIServiceStatusReq()
+}
+
+type PatchApiregistrationV1APIServiceStatusRes interface {
+	patchApiregistrationV1APIServiceStatusRes()
+}
+
+type PatchAppsV1NamespacedControllerRevisionReq interface {
+	patchAppsV1NamespacedControllerRevisionReq()
+}
+
+type PatchAppsV1NamespacedControllerRevisionRes interface {
+	patchAppsV1NamespacedControllerRevisionRes()
+}
+
+type PatchAppsV1NamespacedDaemonSetReq interface {
+	patchAppsV1NamespacedDaemonSetReq()
+}
+
+type PatchAppsV1NamespacedDaemonSetRes interface {
+	patchAppsV1NamespacedDaemonSetRes()
+}
+
+type PatchAppsV1NamespacedDaemonSetStatusReq interface {
+	patchAppsV1NamespacedDaemonSetStatusReq()
+}
+
+type PatchAppsV1NamespacedDaemonSetStatusRes interface {
+	patchAppsV1NamespacedDaemonSetStatusRes()
+}
+
+type PatchAppsV1NamespacedDeploymentReq interface {
+	patchAppsV1NamespacedDeploymentReq()
+}
+
+type PatchAppsV1NamespacedDeploymentRes interface {
+	patchAppsV1NamespacedDeploymentRes()
+}
+
+type PatchAppsV1NamespacedDeploymentScaleReq interface {
+	patchAppsV1NamespacedDeploymentScaleReq()
+}
+
+type PatchAppsV1NamespacedDeploymentScaleRes interface {
+	patchAppsV1NamespacedDeploymentScaleRes()
+}
+
+type PatchAppsV1NamespacedDeploymentStatusReq interface {
+	patchAppsV1NamespacedDeploymentStatusReq()
+}
+
+type PatchAppsV1NamespacedDeploymentStatusRes interface {
+	patchAppsV1NamespacedDeploymentStatusRes()
+}
+
+type PatchAppsV1NamespacedReplicaSetReq interface {
+	patchAppsV1NamespacedReplicaSetReq()
+}
+
+type PatchAppsV1NamespacedReplicaSetRes interface {
+	patchAppsV1NamespacedReplicaSetRes()
+}
+
+type PatchAppsV1NamespacedReplicaSetScaleReq interface {
+	patchAppsV1NamespacedReplicaSetScaleReq()
+}
+
+type PatchAppsV1NamespacedReplicaSetScaleRes interface {
+	patchAppsV1NamespacedReplicaSetScaleRes()
+}
+
+type PatchAppsV1NamespacedReplicaSetStatusReq interface {
+	patchAppsV1NamespacedReplicaSetStatusReq()
+}
+
+type PatchAppsV1NamespacedReplicaSetStatusRes interface {
+	patchAppsV1NamespacedReplicaSetStatusRes()
+}
+
+type PatchAppsV1NamespacedStatefulSetReq interface {
+	patchAppsV1NamespacedStatefulSetReq()
+}
+
+type PatchAppsV1NamespacedStatefulSetRes interface {
+	patchAppsV1NamespacedStatefulSetRes()
+}
+
+type PatchAppsV1NamespacedStatefulSetScaleReq interface {
+	patchAppsV1NamespacedStatefulSetScaleReq()
+}
+
+type PatchAppsV1NamespacedStatefulSetScaleRes interface {
+	patchAppsV1NamespacedStatefulSetScaleRes()
+}
+
+type PatchAppsV1NamespacedStatefulSetStatusReq interface {
+	patchAppsV1NamespacedStatefulSetStatusReq()
+}
+
+type PatchAppsV1NamespacedStatefulSetStatusRes interface {
+	patchAppsV1NamespacedStatefulSetStatusRes()
+}
+
+type PatchAutoscalingV1NamespacedHorizontalPodAutoscalerReq interface {
+	patchAutoscalingV1NamespacedHorizontalPodAutoscalerReq()
+}
+
+type PatchAutoscalingV1NamespacedHorizontalPodAutoscalerRes interface {
+	patchAutoscalingV1NamespacedHorizontalPodAutoscalerRes()
+}
+
+type PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusReq interface {
+	patchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusReq()
+}
+
+type PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusRes interface {
+	patchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusRes()
+}
+
+type PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerReq interface {
+	patchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerReq()
+}
+
+type PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRes interface {
+	patchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRes()
+}
+
+type PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusReq interface {
+	patchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusReq()
+}
+
+type PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusRes interface {
+	patchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusRes()
+}
+
+type PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerReq interface {
+	patchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerReq()
+}
+
+type PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRes interface {
+	patchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRes()
+}
+
+type PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusReq interface {
+	patchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusReq()
+}
+
+type PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusRes interface {
+	patchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusRes()
+}
+
+type PatchBatchV1NamespacedCronJobReq interface {
+	patchBatchV1NamespacedCronJobReq()
+}
+
+type PatchBatchV1NamespacedCronJobRes interface {
+	patchBatchV1NamespacedCronJobRes()
+}
+
+type PatchBatchV1NamespacedCronJobStatusReq interface {
+	patchBatchV1NamespacedCronJobStatusReq()
+}
+
+type PatchBatchV1NamespacedCronJobStatusRes interface {
+	patchBatchV1NamespacedCronJobStatusRes()
+}
+
+type PatchBatchV1NamespacedJobReq interface {
+	patchBatchV1NamespacedJobReq()
+}
+
+type PatchBatchV1NamespacedJobRes interface {
+	patchBatchV1NamespacedJobRes()
+}
+
+type PatchBatchV1NamespacedJobStatusReq interface {
+	patchBatchV1NamespacedJobStatusReq()
+}
+
+type PatchBatchV1NamespacedJobStatusRes interface {
+	patchBatchV1NamespacedJobStatusRes()
+}
+
+type PatchBatchV1beta1NamespacedCronJobReq interface {
+	patchBatchV1beta1NamespacedCronJobReq()
+}
+
+type PatchBatchV1beta1NamespacedCronJobRes interface {
+	patchBatchV1beta1NamespacedCronJobRes()
+}
+
+type PatchBatchV1beta1NamespacedCronJobStatusReq interface {
+	patchBatchV1beta1NamespacedCronJobStatusReq()
+}
+
+type PatchBatchV1beta1NamespacedCronJobStatusRes interface {
+	patchBatchV1beta1NamespacedCronJobStatusRes()
+}
+
+type PatchCertificatesV1CertificateSigningRequestApprovalReq interface {
+	patchCertificatesV1CertificateSigningRequestApprovalReq()
+}
+
+type PatchCertificatesV1CertificateSigningRequestApprovalRes interface {
+	patchCertificatesV1CertificateSigningRequestApprovalRes()
+}
+
+type PatchCertificatesV1CertificateSigningRequestReq interface {
+	patchCertificatesV1CertificateSigningRequestReq()
+}
+
+type PatchCertificatesV1CertificateSigningRequestRes interface {
+	patchCertificatesV1CertificateSigningRequestRes()
+}
+
+type PatchCertificatesV1CertificateSigningRequestStatusReq interface {
+	patchCertificatesV1CertificateSigningRequestStatusReq()
+}
+
+type PatchCertificatesV1CertificateSigningRequestStatusRes interface {
+	patchCertificatesV1CertificateSigningRequestStatusRes()
+}
+
+type PatchCoordinationV1NamespacedLeaseReq interface {
+	patchCoordinationV1NamespacedLeaseReq()
+}
+
+type PatchCoordinationV1NamespacedLeaseRes interface {
+	patchCoordinationV1NamespacedLeaseRes()
+}
+
+type PatchCoreV1NamespaceReq interface {
+	patchCoreV1NamespaceReq()
+}
+
+type PatchCoreV1NamespaceRes interface {
+	patchCoreV1NamespaceRes()
+}
+
+type PatchCoreV1NamespaceStatusReq interface {
+	patchCoreV1NamespaceStatusReq()
+}
+
+type PatchCoreV1NamespaceStatusRes interface {
+	patchCoreV1NamespaceStatusRes()
+}
+
+type PatchCoreV1NamespacedConfigMapReq interface {
+	patchCoreV1NamespacedConfigMapReq()
+}
+
 type PatchCoreV1NamespacedConfigMapRes interface {
 	patchCoreV1NamespacedConfigMapRes()
+}
+
+type PatchCoreV1NamespacedEndpointsReq interface {
+	patchCoreV1NamespacedEndpointsReq()
+}
+
+type PatchCoreV1NamespacedEndpointsRes interface {
+	patchCoreV1NamespacedEndpointsRes()
+}
+
+type PatchCoreV1NamespacedEventReq interface {
+	patchCoreV1NamespacedEventReq()
+}
+
+type PatchCoreV1NamespacedEventRes interface {
+	patchCoreV1NamespacedEventRes()
+}
+
+type PatchCoreV1NamespacedLimitRangeReq interface {
+	patchCoreV1NamespacedLimitRangeReq()
+}
+
+type PatchCoreV1NamespacedLimitRangeRes interface {
+	patchCoreV1NamespacedLimitRangeRes()
+}
+
+type PatchCoreV1NamespacedPersistentVolumeClaimReq interface {
+	patchCoreV1NamespacedPersistentVolumeClaimReq()
+}
+
+type PatchCoreV1NamespacedPersistentVolumeClaimRes interface {
+	patchCoreV1NamespacedPersistentVolumeClaimRes()
+}
+
+type PatchCoreV1NamespacedPersistentVolumeClaimStatusReq interface {
+	patchCoreV1NamespacedPersistentVolumeClaimStatusReq()
+}
+
+type PatchCoreV1NamespacedPersistentVolumeClaimStatusRes interface {
+	patchCoreV1NamespacedPersistentVolumeClaimStatusRes()
+}
+
+type PatchCoreV1NamespacedPodEphemeralcontainersReq interface {
+	patchCoreV1NamespacedPodEphemeralcontainersReq()
+}
+
+type PatchCoreV1NamespacedPodEphemeralcontainersRes interface {
+	patchCoreV1NamespacedPodEphemeralcontainersRes()
+}
+
+type PatchCoreV1NamespacedPodReq interface {
+	patchCoreV1NamespacedPodReq()
+}
+
+type PatchCoreV1NamespacedPodRes interface {
+	patchCoreV1NamespacedPodRes()
+}
+
+type PatchCoreV1NamespacedPodStatusReq interface {
+	patchCoreV1NamespacedPodStatusReq()
+}
+
+type PatchCoreV1NamespacedPodStatusRes interface {
+	patchCoreV1NamespacedPodStatusRes()
+}
+
+type PatchCoreV1NamespacedPodTemplateReq interface {
+	patchCoreV1NamespacedPodTemplateReq()
+}
+
+type PatchCoreV1NamespacedPodTemplateRes interface {
+	patchCoreV1NamespacedPodTemplateRes()
+}
+
+type PatchCoreV1NamespacedReplicationControllerReq interface {
+	patchCoreV1NamespacedReplicationControllerReq()
+}
+
+type PatchCoreV1NamespacedReplicationControllerRes interface {
+	patchCoreV1NamespacedReplicationControllerRes()
+}
+
+type PatchCoreV1NamespacedReplicationControllerScaleReq interface {
+	patchCoreV1NamespacedReplicationControllerScaleReq()
+}
+
+type PatchCoreV1NamespacedReplicationControllerScaleRes interface {
+	patchCoreV1NamespacedReplicationControllerScaleRes()
+}
+
+type PatchCoreV1NamespacedReplicationControllerStatusReq interface {
+	patchCoreV1NamespacedReplicationControllerStatusReq()
+}
+
+type PatchCoreV1NamespacedReplicationControllerStatusRes interface {
+	patchCoreV1NamespacedReplicationControllerStatusRes()
+}
+
+type PatchCoreV1NamespacedResourceQuotaReq interface {
+	patchCoreV1NamespacedResourceQuotaReq()
+}
+
+type PatchCoreV1NamespacedResourceQuotaRes interface {
+	patchCoreV1NamespacedResourceQuotaRes()
+}
+
+type PatchCoreV1NamespacedResourceQuotaStatusReq interface {
+	patchCoreV1NamespacedResourceQuotaStatusReq()
+}
+
+type PatchCoreV1NamespacedResourceQuotaStatusRes interface {
+	patchCoreV1NamespacedResourceQuotaStatusRes()
+}
+
+type PatchCoreV1NamespacedSecretReq interface {
+	patchCoreV1NamespacedSecretReq()
+}
+
+type PatchCoreV1NamespacedSecretRes interface {
+	patchCoreV1NamespacedSecretRes()
+}
+
+type PatchCoreV1NamespacedServiceAccountReq interface {
+	patchCoreV1NamespacedServiceAccountReq()
+}
+
+type PatchCoreV1NamespacedServiceAccountRes interface {
+	patchCoreV1NamespacedServiceAccountRes()
+}
+
+type PatchCoreV1NamespacedServiceReq interface {
+	patchCoreV1NamespacedServiceReq()
+}
+
+type PatchCoreV1NamespacedServiceRes interface {
+	patchCoreV1NamespacedServiceRes()
+}
+
+type PatchCoreV1NamespacedServiceStatusReq interface {
+	patchCoreV1NamespacedServiceStatusReq()
+}
+
+type PatchCoreV1NamespacedServiceStatusRes interface {
+	patchCoreV1NamespacedServiceStatusRes()
+}
+
+type PatchCoreV1NodeReq interface {
+	patchCoreV1NodeReq()
+}
+
+type PatchCoreV1NodeRes interface {
+	patchCoreV1NodeRes()
+}
+
+type PatchCoreV1NodeStatusReq interface {
+	patchCoreV1NodeStatusReq()
+}
+
+type PatchCoreV1NodeStatusRes interface {
+	patchCoreV1NodeStatusRes()
+}
+
+type PatchCoreV1PersistentVolumeReq interface {
+	patchCoreV1PersistentVolumeReq()
+}
+
+type PatchCoreV1PersistentVolumeRes interface {
+	patchCoreV1PersistentVolumeRes()
+}
+
+type PatchCoreV1PersistentVolumeStatusReq interface {
+	patchCoreV1PersistentVolumeStatusReq()
+}
+
+type PatchCoreV1PersistentVolumeStatusRes interface {
+	patchCoreV1PersistentVolumeStatusRes()
+}
+
+type PatchDiscoveryV1NamespacedEndpointSliceReq interface {
+	patchDiscoveryV1NamespacedEndpointSliceReq()
+}
+
+type PatchDiscoveryV1NamespacedEndpointSliceRes interface {
+	patchDiscoveryV1NamespacedEndpointSliceRes()
+}
+
+type PatchDiscoveryV1beta1NamespacedEndpointSliceReq interface {
+	patchDiscoveryV1beta1NamespacedEndpointSliceReq()
+}
+
+type PatchDiscoveryV1beta1NamespacedEndpointSliceRes interface {
+	patchDiscoveryV1beta1NamespacedEndpointSliceRes()
+}
+
+type PatchEventsV1NamespacedEventReq interface {
+	patchEventsV1NamespacedEventReq()
+}
+
+type PatchEventsV1NamespacedEventRes interface {
+	patchEventsV1NamespacedEventRes()
+}
+
+type PatchEventsV1beta1NamespacedEventReq interface {
+	patchEventsV1beta1NamespacedEventReq()
+}
+
+type PatchEventsV1beta1NamespacedEventRes interface {
+	patchEventsV1beta1NamespacedEventRes()
+}
+
+type PatchFlowcontrolApiserverV1beta1FlowSchemaReq interface {
+	patchFlowcontrolApiserverV1beta1FlowSchemaReq()
+}
+
+type PatchFlowcontrolApiserverV1beta1FlowSchemaRes interface {
+	patchFlowcontrolApiserverV1beta1FlowSchemaRes()
+}
+
+type PatchFlowcontrolApiserverV1beta1FlowSchemaStatusReq interface {
+	patchFlowcontrolApiserverV1beta1FlowSchemaStatusReq()
+}
+
+type PatchFlowcontrolApiserverV1beta1FlowSchemaStatusRes interface {
+	patchFlowcontrolApiserverV1beta1FlowSchemaStatusRes()
+}
+
+type PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationReq interface {
+	patchFlowcontrolApiserverV1beta1PriorityLevelConfigurationReq()
+}
+
+type PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes interface {
+	patchFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes()
+}
+
+type PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusReq interface {
+	patchFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusReq()
+}
+
+type PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusRes interface {
+	patchFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusRes()
+}
+
+type PatchFlowcontrolApiserverV1beta2FlowSchemaReq interface {
+	patchFlowcontrolApiserverV1beta2FlowSchemaReq()
+}
+
+type PatchFlowcontrolApiserverV1beta2FlowSchemaRes interface {
+	patchFlowcontrolApiserverV1beta2FlowSchemaRes()
+}
+
+type PatchFlowcontrolApiserverV1beta2FlowSchemaStatusReq interface {
+	patchFlowcontrolApiserverV1beta2FlowSchemaStatusReq()
+}
+
+type PatchFlowcontrolApiserverV1beta2FlowSchemaStatusRes interface {
+	patchFlowcontrolApiserverV1beta2FlowSchemaStatusRes()
+}
+
+type PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationReq interface {
+	patchFlowcontrolApiserverV1beta2PriorityLevelConfigurationReq()
+}
+
+type PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes interface {
+	patchFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes()
+}
+
+type PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusReq interface {
+	patchFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusReq()
+}
+
+type PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusRes interface {
+	patchFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusRes()
+}
+
+type PatchInternalApiserverV1alpha1StorageVersionReq interface {
+	patchInternalApiserverV1alpha1StorageVersionReq()
+}
+
+type PatchInternalApiserverV1alpha1StorageVersionRes interface {
+	patchInternalApiserverV1alpha1StorageVersionRes()
+}
+
+type PatchInternalApiserverV1alpha1StorageVersionStatusReq interface {
+	patchInternalApiserverV1alpha1StorageVersionStatusReq()
+}
+
+type PatchInternalApiserverV1alpha1StorageVersionStatusRes interface {
+	patchInternalApiserverV1alpha1StorageVersionStatusRes()
+}
+
+type PatchNetworkingV1IngressClassReq interface {
+	patchNetworkingV1IngressClassReq()
+}
+
+type PatchNetworkingV1IngressClassRes interface {
+	patchNetworkingV1IngressClassRes()
+}
+
+type PatchNetworkingV1NamespacedIngressReq interface {
+	patchNetworkingV1NamespacedIngressReq()
+}
+
+type PatchNetworkingV1NamespacedIngressRes interface {
+	patchNetworkingV1NamespacedIngressRes()
+}
+
+type PatchNetworkingV1NamespacedIngressStatusReq interface {
+	patchNetworkingV1NamespacedIngressStatusReq()
+}
+
+type PatchNetworkingV1NamespacedIngressStatusRes interface {
+	patchNetworkingV1NamespacedIngressStatusRes()
+}
+
+type PatchNetworkingV1NamespacedNetworkPolicyReq interface {
+	patchNetworkingV1NamespacedNetworkPolicyReq()
+}
+
+type PatchNetworkingV1NamespacedNetworkPolicyRes interface {
+	patchNetworkingV1NamespacedNetworkPolicyRes()
+}
+
+type PatchNodeV1RuntimeClassReq interface {
+	patchNodeV1RuntimeClassReq()
+}
+
+type PatchNodeV1RuntimeClassRes interface {
+	patchNodeV1RuntimeClassRes()
+}
+
+type PatchNodeV1alpha1RuntimeClassReq interface {
+	patchNodeV1alpha1RuntimeClassReq()
+}
+
+type PatchNodeV1alpha1RuntimeClassRes interface {
+	patchNodeV1alpha1RuntimeClassRes()
+}
+
+type PatchNodeV1beta1RuntimeClassReq interface {
+	patchNodeV1beta1RuntimeClassReq()
+}
+
+type PatchNodeV1beta1RuntimeClassRes interface {
+	patchNodeV1beta1RuntimeClassRes()
+}
+
+type PatchPolicyV1NamespacedPodDisruptionBudgetReq interface {
+	patchPolicyV1NamespacedPodDisruptionBudgetReq()
+}
+
+type PatchPolicyV1NamespacedPodDisruptionBudgetRes interface {
+	patchPolicyV1NamespacedPodDisruptionBudgetRes()
+}
+
+type PatchPolicyV1NamespacedPodDisruptionBudgetStatusReq interface {
+	patchPolicyV1NamespacedPodDisruptionBudgetStatusReq()
+}
+
+type PatchPolicyV1NamespacedPodDisruptionBudgetStatusRes interface {
+	patchPolicyV1NamespacedPodDisruptionBudgetStatusRes()
+}
+
+type PatchPolicyV1beta1NamespacedPodDisruptionBudgetReq interface {
+	patchPolicyV1beta1NamespacedPodDisruptionBudgetReq()
+}
+
+type PatchPolicyV1beta1NamespacedPodDisruptionBudgetRes interface {
+	patchPolicyV1beta1NamespacedPodDisruptionBudgetRes()
+}
+
+type PatchPolicyV1beta1NamespacedPodDisruptionBudgetStatusReq interface {
+	patchPolicyV1beta1NamespacedPodDisruptionBudgetStatusReq()
+}
+
+type PatchPolicyV1beta1NamespacedPodDisruptionBudgetStatusRes interface {
+	patchPolicyV1beta1NamespacedPodDisruptionBudgetStatusRes()
+}
+
+type PatchPolicyV1beta1PodSecurityPolicyReq interface {
+	patchPolicyV1beta1PodSecurityPolicyReq()
+}
+
+type PatchPolicyV1beta1PodSecurityPolicyRes interface {
+	patchPolicyV1beta1PodSecurityPolicyRes()
+}
+
+type PatchRbacAuthorizationV1ClusterRoleBindingReq interface {
+	patchRbacAuthorizationV1ClusterRoleBindingReq()
+}
+
+type PatchRbacAuthorizationV1ClusterRoleBindingRes interface {
+	patchRbacAuthorizationV1ClusterRoleBindingRes()
+}
+
+type PatchRbacAuthorizationV1ClusterRoleReq interface {
+	patchRbacAuthorizationV1ClusterRoleReq()
+}
+
+type PatchRbacAuthorizationV1ClusterRoleRes interface {
+	patchRbacAuthorizationV1ClusterRoleRes()
+}
+
+type PatchRbacAuthorizationV1NamespacedRoleBindingReq interface {
+	patchRbacAuthorizationV1NamespacedRoleBindingReq()
+}
+
+type PatchRbacAuthorizationV1NamespacedRoleBindingRes interface {
+	patchRbacAuthorizationV1NamespacedRoleBindingRes()
+}
+
+type PatchRbacAuthorizationV1NamespacedRoleReq interface {
+	patchRbacAuthorizationV1NamespacedRoleReq()
+}
+
+type PatchRbacAuthorizationV1NamespacedRoleRes interface {
+	patchRbacAuthorizationV1NamespacedRoleRes()
+}
+
+type PatchSchedulingV1PriorityClassReq interface {
+	patchSchedulingV1PriorityClassReq()
+}
+
+type PatchSchedulingV1PriorityClassRes interface {
+	patchSchedulingV1PriorityClassRes()
+}
+
+type PatchStorageV1CSIDriverReq interface {
+	patchStorageV1CSIDriverReq()
+}
+
+type PatchStorageV1CSIDriverRes interface {
+	patchStorageV1CSIDriverRes()
+}
+
+type PatchStorageV1CSINodeReq interface {
+	patchStorageV1CSINodeReq()
+}
+
+type PatchStorageV1CSINodeRes interface {
+	patchStorageV1CSINodeRes()
+}
+
+type PatchStorageV1StorageClassReq interface {
+	patchStorageV1StorageClassReq()
+}
+
+type PatchStorageV1StorageClassRes interface {
+	patchStorageV1StorageClassRes()
+}
+
+type PatchStorageV1VolumeAttachmentReq interface {
+	patchStorageV1VolumeAttachmentReq()
+}
+
+type PatchStorageV1VolumeAttachmentRes interface {
+	patchStorageV1VolumeAttachmentRes()
+}
+
+type PatchStorageV1VolumeAttachmentStatusReq interface {
+	patchStorageV1VolumeAttachmentStatusReq()
+}
+
+type PatchStorageV1VolumeAttachmentStatusRes interface {
+	patchStorageV1VolumeAttachmentStatusRes()
+}
+
+type PatchStorageV1alpha1NamespacedCSIStorageCapacityReq interface {
+	patchStorageV1alpha1NamespacedCSIStorageCapacityReq()
+}
+
+type PatchStorageV1alpha1NamespacedCSIStorageCapacityRes interface {
+	patchStorageV1alpha1NamespacedCSIStorageCapacityRes()
+}
+
+type PatchStorageV1beta1NamespacedCSIStorageCapacityReq interface {
+	patchStorageV1beta1NamespacedCSIStorageCapacityReq()
+}
+
+type PatchStorageV1beta1NamespacedCSIStorageCapacityRes interface {
+	patchStorageV1beta1NamespacedCSIStorageCapacityRes()
 }
 
 type ReadAdmissionregistrationV1MutatingWebhookConfigurationRes interface {
