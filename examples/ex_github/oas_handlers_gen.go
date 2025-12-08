@@ -54,6 +54,8 @@ func (s *Server) handleActionsAddRepoAccessToSelfHostedRunnerGroupInOrgRequest(a
 		semconv.HTTPRequestMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/actions/runner-groups/{runner_group_id}/repositories/{repository_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgOperation,
@@ -207,6 +209,8 @@ func (s *Server) handleActionsAddSelectedRepoToOrgSecretRequest(args [3]string, 
 		semconv.HTTPRequestMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/actions/secrets/{secret_name}/repositories/{repository_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsAddSelectedRepoToOrgSecretOperation,
@@ -361,6 +365,8 @@ func (s *Server) handleActionsAddSelfHostedRunnerToGroupForOrgRequest(args [3]st
 		semconv.HTTPRequestMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/actions/runner-groups/{runner_group_id}/runners/{runner_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsAddSelfHostedRunnerToGroupForOrgOperation,
@@ -514,6 +520,8 @@ func (s *Server) handleActionsApproveWorkflowRunRequest(args [3]string, argsEsca
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/runs/{run_id}/approve"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsApproveWorkflowRunOperation,
@@ -665,6 +673,8 @@ func (s *Server) handleActionsCancelWorkflowRunRequest(args [3]string, argsEscap
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/runs/{run_id}/cancel"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsCancelWorkflowRunOperation,
@@ -867,6 +877,8 @@ func (s *Server) handleActionsCreateOrUpdateEnvironmentSecretRequest(args [3]str
 		semconv.HTTPRequestMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsCreateOrUpdateEnvironmentSecretOperation,
@@ -1084,6 +1096,8 @@ func (s *Server) handleActionsCreateOrUpdateOrgSecretRequest(args [2]string, arg
 		semconv.HTTPRequestMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/actions/secrets/{secret_name}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsCreateOrUpdateOrgSecretOperation,
@@ -1297,6 +1311,8 @@ func (s *Server) handleActionsCreateOrUpdateRepoSecretRequest(args [3]string, ar
 		semconv.HTTPRequestMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/secrets/{secret_name}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsCreateOrUpdateRepoSecretOperation,
@@ -1468,6 +1484,8 @@ func (s *Server) handleActionsCreateRegistrationTokenForOrgRequest(args [1]strin
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/actions/runners/registration-token"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsCreateRegistrationTokenForOrgOperation,
@@ -1617,6 +1635,8 @@ func (s *Server) handleActionsCreateRegistrationTokenForRepoRequest(args [2]stri
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/runners/registration-token"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsCreateRegistrationTokenForRepoOperation,
@@ -1771,6 +1791,8 @@ func (s *Server) handleActionsCreateRemoveTokenForOrgRequest(args [1]string, arg
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/actions/runners/remove-token"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsCreateRemoveTokenForOrgOperation,
@@ -1920,6 +1942,8 @@ func (s *Server) handleActionsCreateRemoveTokenForRepoRequest(args [2]string, ar
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/runners/remove-token"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsCreateRemoveTokenForRepoOperation,
@@ -2069,6 +2093,8 @@ func (s *Server) handleActionsCreateSelfHostedRunnerGroupForOrgRequest(args [1]s
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/actions/runner-groups"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsCreateSelfHostedRunnerGroupForOrgOperation,
@@ -2235,6 +2261,8 @@ func (s *Server) handleActionsCreateWorkflowDispatchRequest(args [3]string, args
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/workflows/{workflow_id}/dispatches"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsCreateWorkflowDispatchOperation,
@@ -2401,6 +2429,8 @@ func (s *Server) handleActionsDeleteArtifactRequest(args [3]string, argsEscaped 
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/artifacts/{artifact_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsDeleteArtifactOperation,
@@ -2552,6 +2582,8 @@ func (s *Server) handleActionsDeleteEnvironmentSecretRequest(args [3]string, arg
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsDeleteEnvironmentSecretOperation,
@@ -2703,6 +2735,8 @@ func (s *Server) handleActionsDeleteOrgSecretRequest(args [2]string, argsEscaped
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/actions/secrets/{secret_name}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsDeleteOrgSecretOperation,
@@ -2850,6 +2884,8 @@ func (s *Server) handleActionsDeleteRepoSecretRequest(args [3]string, argsEscape
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/secrets/{secret_name}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsDeleteRepoSecretOperation,
@@ -3001,6 +3037,8 @@ func (s *Server) handleActionsDeleteSelfHostedRunnerFromOrgRequest(args [2]strin
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/actions/runners/{runner_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsDeleteSelfHostedRunnerFromOrgOperation,
@@ -3149,6 +3187,8 @@ func (s *Server) handleActionsDeleteSelfHostedRunnerFromRepoRequest(args [3]stri
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/runners/{runner_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsDeleteSelfHostedRunnerFromRepoOperation,
@@ -3302,6 +3342,8 @@ func (s *Server) handleActionsDeleteSelfHostedRunnerGroupFromOrgRequest(args [2]
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/actions/runner-groups/{runner_group_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsDeleteSelfHostedRunnerGroupFromOrgOperation,
@@ -3451,6 +3493,8 @@ func (s *Server) handleActionsDeleteWorkflowRunRequest(args [3]string, argsEscap
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/runs/{run_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsDeleteWorkflowRunOperation,
@@ -3602,6 +3646,8 @@ func (s *Server) handleActionsDeleteWorkflowRunLogsRequest(args [3]string, argsE
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/runs/{run_id}/logs"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsDeleteWorkflowRunLogsOperation,
@@ -3756,6 +3802,8 @@ func (s *Server) handleActionsDisableSelectedRepositoryGithubActionsOrganization
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/actions/permissions/repositories/{repository_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsDisableSelectedRepositoryGithubActionsOrganizationOperation,
@@ -3904,6 +3952,8 @@ func (s *Server) handleActionsDisableWorkflowRequest(args [3]string, argsEscaped
 		semconv.HTTPRequestMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/workflows/{workflow_id}/disable"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsDisableWorkflowOperation,
@@ -4059,6 +4109,8 @@ func (s *Server) handleActionsDownloadArtifactRequest(args [4]string, argsEscape
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/artifacts/{artifact_id}/{archive_format}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsDownloadArtifactOperation,
@@ -4220,6 +4272,8 @@ func (s *Server) handleActionsDownloadJobLogsForWorkflowRunRequest(args [3]strin
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/jobs/{job_id}/logs"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsDownloadJobLogsForWorkflowRunOperation,
@@ -4375,6 +4429,8 @@ func (s *Server) handleActionsDownloadWorkflowRunLogsRequest(args [3]string, arg
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/runs/{run_id}/logs"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsDownloadWorkflowRunLogsOperation,
@@ -4529,6 +4585,8 @@ func (s *Server) handleActionsEnableSelectedRepositoryGithubActionsOrganizationR
 		semconv.HTTPRequestMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/actions/permissions/repositories/{repository_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsEnableSelectedRepositoryGithubActionsOrganizationOperation,
@@ -4677,6 +4735,8 @@ func (s *Server) handleActionsEnableWorkflowRequest(args [3]string, argsEscaped 
 		semconv.HTTPRequestMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/workflows/{workflow_id}/enable"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsEnableWorkflowOperation,
@@ -4831,6 +4891,8 @@ func (s *Server) handleActionsGetAllowedActionsOrganizationRequest(args [1]strin
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/actions/permissions/selected-actions"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsGetAllowedActionsOrganizationOperation,
@@ -4977,6 +5039,8 @@ func (s *Server) handleActionsGetAllowedActionsRepositoryRequest(args [2]string,
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/permissions/selected-actions"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsGetAllowedActionsRepositoryOperation,
@@ -5124,6 +5188,8 @@ func (s *Server) handleActionsGetArtifactRequest(args [3]string, argsEscaped boo
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/artifacts/{artifact_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsGetArtifactOperation,
@@ -5276,6 +5342,8 @@ func (s *Server) handleActionsGetEnvironmentPublicKeyRequest(args [2]string, arg
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repositories/{repository_id}/environments/{environment_name}/secrets/public-key"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsGetEnvironmentPublicKeyOperation,
@@ -5423,6 +5491,8 @@ func (s *Server) handleActionsGetEnvironmentSecretRequest(args [3]string, argsEs
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsGetEnvironmentSecretOperation,
@@ -5574,6 +5644,8 @@ func (s *Server) handleActionsGetGithubActionsPermissionsOrganizationRequest(arg
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/actions/permissions"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsGetGithubActionsPermissionsOrganizationOperation,
@@ -5718,6 +5790,8 @@ func (s *Server) handleActionsGetGithubActionsPermissionsRepositoryRequest(args 
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/permissions"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsGetGithubActionsPermissionsRepositoryOperation,
@@ -5865,6 +5939,8 @@ func (s *Server) handleActionsGetJobForWorkflowRunRequest(args [3]string, argsEs
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/jobs/{job_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsGetJobForWorkflowRunOperation,
@@ -6017,6 +6093,8 @@ func (s *Server) handleActionsGetOrgPublicKeyRequest(args [1]string, argsEscaped
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/actions/secrets/public-key"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsGetOrgPublicKeyOperation,
@@ -6160,6 +6238,8 @@ func (s *Server) handleActionsGetOrgSecretRequest(args [2]string, argsEscaped bo
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/actions/secrets/{secret_name}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsGetOrgSecretOperation,
@@ -6308,6 +6388,8 @@ func (s *Server) handleActionsGetRepoPublicKeyRequest(args [2]string, argsEscape
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/secrets/public-key"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsGetRepoPublicKeyOperation,
@@ -6455,6 +6537,8 @@ func (s *Server) handleActionsGetRepoSecretRequest(args [3]string, argsEscaped b
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/secrets/{secret_name}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsGetRepoSecretOperation,
@@ -6606,6 +6690,8 @@ func (s *Server) handleActionsGetReviewsForRunRequest(args [3]string, argsEscape
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/runs/{run_id}/approvals"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsGetReviewsForRunOperation,
@@ -6756,6 +6842,8 @@ func (s *Server) handleActionsGetSelfHostedRunnerForOrgRequest(args [2]string, a
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/actions/runners/{runner_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsGetSelfHostedRunnerForOrgOperation,
@@ -6903,6 +6991,8 @@ func (s *Server) handleActionsGetSelfHostedRunnerForRepoRequest(args [3]string, 
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/runners/{runner_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsGetSelfHostedRunnerForRepoOperation,
@@ -7056,6 +7146,8 @@ func (s *Server) handleActionsGetSelfHostedRunnerGroupForOrgRequest(args [2]stri
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/actions/runner-groups/{runner_group_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsGetSelfHostedRunnerGroupForOrgOperation,
@@ -7204,6 +7296,8 @@ func (s *Server) handleActionsGetWorkflowRequest(args [3]string, argsEscaped boo
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/workflows/{workflow_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsGetWorkflowOperation,
@@ -7355,6 +7449,8 @@ func (s *Server) handleActionsGetWorkflowRunRequest(args [3]string, argsEscaped 
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/runs/{run_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsGetWorkflowRunOperation,
@@ -7513,6 +7609,8 @@ func (s *Server) handleActionsGetWorkflowRunUsageRequest(args [3]string, argsEsc
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/runs/{run_id}/timing"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsGetWorkflowRunUsageOperation,
@@ -7672,6 +7770,8 @@ func (s *Server) handleActionsGetWorkflowUsageRequest(args [3]string, argsEscape
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/workflows/{workflow_id}/timing"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsGetWorkflowUsageOperation,
@@ -7823,6 +7923,8 @@ func (s *Server) handleActionsListArtifactsForRepoRequest(args [2]string, argsEs
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/artifacts"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsListArtifactsForRepoOperation,
@@ -7978,6 +8080,8 @@ func (s *Server) handleActionsListEnvironmentSecretsRequest(args [2]string, args
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repositories/{repository_id}/environments/{environment_name}/secrets"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsListEnvironmentSecretsOperation,
@@ -8135,6 +8239,8 @@ func (s *Server) handleActionsListJobsForWorkflowRunRequest(args [3]string, args
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/runs/{run_id}/jobs"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsListJobsForWorkflowRunOperation,
@@ -8298,6 +8404,8 @@ func (s *Server) handleActionsListOrgSecretsRequest(args [1]string, argsEscaped 
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/actions/secrets"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsListOrgSecretsOperation,
@@ -8451,6 +8559,8 @@ func (s *Server) handleActionsListRepoAccessToSelfHostedRunnerGroupInOrgRequest(
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/actions/runner-groups/{runner_group_id}/repositories"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsListRepoAccessToSelfHostedRunnerGroupInOrgOperation,
@@ -8606,6 +8716,8 @@ func (s *Server) handleActionsListRepoSecretsRequest(args [2]string, argsEscaped
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/secrets"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsListRepoSecretsOperation,
@@ -8761,6 +8873,8 @@ func (s *Server) handleActionsListRepoWorkflowsRequest(args [2]string, argsEscap
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/workflows"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsListRepoWorkflowsOperation,
@@ -8915,6 +9029,8 @@ func (s *Server) handleActionsListRunnerApplicationsForOrgRequest(args [1]string
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/actions/runners/downloads"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsListRunnerApplicationsForOrgOperation,
@@ -9057,6 +9173,8 @@ func (s *Server) handleActionsListRunnerApplicationsForRepoRequest(args [2]strin
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/runners/downloads"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsListRunnerApplicationsForRepoOperation,
@@ -9205,6 +9323,8 @@ func (s *Server) handleActionsListSelectedReposForOrgSecretRequest(args [2]strin
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/actions/secrets/{secret_name}/repositories"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsListSelectedReposForOrgSecretOperation,
@@ -9363,6 +9483,8 @@ func (s *Server) handleActionsListSelectedRepositoriesEnabledGithubActionsOrgani
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/actions/permissions/repositories"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOperation,
@@ -9516,6 +9638,8 @@ func (s *Server) handleActionsListSelfHostedRunnerGroupsForOrgRequest(args [1]st
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/actions/runner-groups"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsListSelfHostedRunnerGroupsForOrgOperation,
@@ -9666,6 +9790,8 @@ func (s *Server) handleActionsListSelfHostedRunnersForOrgRequest(args [1]string,
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/actions/runners"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsListSelfHostedRunnersForOrgOperation,
@@ -9816,6 +9942,8 @@ func (s *Server) handleActionsListSelfHostedRunnersForRepoRequest(args [2]string
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/runners"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsListSelfHostedRunnersForRepoOperation,
@@ -9973,6 +10101,8 @@ func (s *Server) handleActionsListSelfHostedRunnersInGroupForOrgRequest(args [2]
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/actions/runner-groups/{runner_group_id}/runners"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsListSelfHostedRunnersInGroupForOrgOperation,
@@ -10128,6 +10258,8 @@ func (s *Server) handleActionsListWorkflowRunArtifactsRequest(args [3]string, ar
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/runs/{run_id}/artifacts"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsListWorkflowRunArtifactsOperation,
@@ -10290,6 +10422,8 @@ func (s *Server) handleActionsListWorkflowRunsRequest(args [3]string, argsEscape
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/workflows/{workflow_id}/runs"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsListWorkflowRunsOperation,
@@ -10472,6 +10606,8 @@ func (s *Server) handleActionsListWorkflowRunsForRepoRequest(args [2]string, arg
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/runs"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsListWorkflowRunsForRepoOperation,
@@ -10652,6 +10788,8 @@ func (s *Server) handleActionsReRunWorkflowRequest(args [3]string, argsEscaped b
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/runs/{run_id}/rerun"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsReRunWorkflowOperation,
@@ -10808,6 +10946,8 @@ func (s *Server) handleActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgReques
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/actions/runner-groups/{runner_group_id}/repositories/{repository_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgOperation,
@@ -10961,6 +11101,8 @@ func (s *Server) handleActionsRemoveSelectedRepoFromOrgSecretRequest(args [3]str
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/actions/secrets/{secret_name}/repositories/{repository_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsRemoveSelectedRepoFromOrgSecretOperation,
@@ -11115,6 +11257,8 @@ func (s *Server) handleActionsRemoveSelfHostedRunnerFromGroupForOrgRequest(args 
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/actions/runner-groups/{runner_group_id}/runners/{runner_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsRemoveSelfHostedRunnerFromGroupForOrgOperation,
@@ -11266,6 +11410,8 @@ func (s *Server) handleActionsRetryWorkflowRequest(args [3]string, argsEscaped b
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/runs/{run_id}/retry"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsRetryWorkflowOperation,
@@ -11416,6 +11562,8 @@ func (s *Server) handleActionsReviewPendingDeploymentsForRunRequest(args [3]stri
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/runs/{run_id}/pending_deployments"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsReviewPendingDeploymentsForRunOperation,
@@ -11590,6 +11738,8 @@ func (s *Server) handleActionsSetAllowedActionsOrganizationRequest(args [1]strin
 		semconv.HTTPRequestMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/actions/permissions/selected-actions"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsSetAllowedActionsOrganizationOperation,
@@ -11755,6 +11905,8 @@ func (s *Server) handleActionsSetAllowedActionsRepositoryRequest(args [2]string,
 		semconv.HTTPRequestMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/permissions/selected-actions"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsSetAllowedActionsRepositoryOperation,
@@ -11920,6 +12072,8 @@ func (s *Server) handleActionsSetGithubActionsPermissionsOrganizationRequest(arg
 		semconv.HTTPRequestMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/actions/permissions"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsSetGithubActionsPermissionsOrganizationOperation,
@@ -12082,6 +12236,8 @@ func (s *Server) handleActionsSetGithubActionsPermissionsRepositoryRequest(args 
 		semconv.HTTPRequestMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/actions/permissions"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsSetGithubActionsPermissionsRepositoryOperation,
@@ -12247,6 +12403,8 @@ func (s *Server) handleActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(a
 		semconv.HTTPRequestMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/actions/runner-groups/{runner_group_id}/repositories"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgOperation,
@@ -12411,6 +12569,8 @@ func (s *Server) handleActionsSetSelectedReposForOrgSecretRequest(args [2]string
 		semconv.HTTPRequestMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/actions/secrets/{secret_name}/repositories"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsSetSelectedReposForOrgSecretOperation,
@@ -12576,6 +12736,8 @@ func (s *Server) handleActionsSetSelectedRepositoriesEnabledGithubActionsOrganiz
 		semconv.HTTPRequestMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/actions/permissions/repositories"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationOperation,
@@ -12736,6 +12898,8 @@ func (s *Server) handleActionsSetSelfHostedRunnersInGroupForOrgRequest(args [2]s
 		semconv.HTTPRequestMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/actions/runner-groups/{runner_group_id}/runners"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsSetSelfHostedRunnersInGroupForOrgOperation,
@@ -12900,6 +13064,8 @@ func (s *Server) handleActionsUpdateSelfHostedRunnerGroupForOrgRequest(args [2]s
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/actions/runner-groups/{runner_group_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsUpdateSelfHostedRunnerGroupForOrgOperation,
@@ -13060,6 +13226,8 @@ func (s *Server) handleActivityCheckRepoIsStarredByAuthenticatedUserRequest(args
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/user/starred/{owner}/{repo}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActivityCheckRepoIsStarredByAuthenticatedUserOperation,
@@ -13207,6 +13375,8 @@ func (s *Server) handleActivityDeleteRepoSubscriptionRequest(args [2]string, arg
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/subscription"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActivityDeleteRepoSubscriptionOperation,
@@ -13356,6 +13526,8 @@ func (s *Server) handleActivityDeleteThreadSubscriptionRequest(args [1]string, a
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/notifications/threads/{thread_id}/subscription"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActivityDeleteThreadSubscriptionOperation,
@@ -13511,6 +13683,8 @@ func (s *Server) handleActivityGetFeedsRequest(args [0]string, argsEscaped bool,
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/feeds"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActivityGetFeedsOperation,
@@ -13633,6 +13807,8 @@ func (s *Server) handleActivityGetRepoSubscriptionRequest(args [2]string, argsEs
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/subscription"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActivityGetRepoSubscriptionOperation,
@@ -13778,6 +13954,8 @@ func (s *Server) handleActivityGetThreadRequest(args [1]string, argsEscaped bool
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/notifications/threads/{thread_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActivityGetThreadOperation,
@@ -13922,6 +14100,8 @@ func (s *Server) handleActivityGetThreadSubscriptionForAuthenticatedUserRequest(
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/notifications/threads/{thread_id}/subscription"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActivityGetThreadSubscriptionForAuthenticatedUserOperation,
@@ -14064,6 +14244,8 @@ func (s *Server) handleActivityListEventsForAuthenticatedUserRequest(args [1]str
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/users/{username}/events"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActivityListEventsForAuthenticatedUserOperation,
@@ -14213,6 +14395,8 @@ func (s *Server) handleActivityListNotificationsForAuthenticatedUserRequest(args
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/notifications"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActivityListNotificationsForAuthenticatedUserOperation,
@@ -14374,6 +14558,8 @@ func (s *Server) handleActivityListOrgEventsForAuthenticatedUserRequest(args [2]
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/users/{username}/events/orgs/{org}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActivityListOrgEventsForAuthenticatedUserOperation,
@@ -14528,6 +14714,8 @@ func (s *Server) handleActivityListPublicEventsRequest(args [0]string, argsEscap
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/events"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActivityListPublicEventsOperation,
@@ -14673,6 +14861,8 @@ func (s *Server) handleActivityListPublicEventsForRepoNetworkRequest(args [2]str
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/networks/{owner}/{repo}/events"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActivityListPublicEventsForRepoNetworkOperation,
@@ -14826,6 +15016,8 @@ func (s *Server) handleActivityListPublicEventsForUserRequest(args [1]string, ar
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/users/{username}/events/public"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActivityListPublicEventsForUserOperation,
@@ -14975,6 +15167,8 @@ func (s *Server) handleActivityListPublicOrgEventsRequest(args [1]string, argsEs
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/events"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActivityListPublicOrgEventsOperation,
@@ -15126,6 +15320,8 @@ func (s *Server) handleActivityListReceivedEventsForUserRequest(args [1]string, 
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/users/{username}/received_events"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActivityListReceivedEventsForUserOperation,
@@ -15275,6 +15471,8 @@ func (s *Server) handleActivityListReceivedPublicEventsForUserRequest(args [1]st
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/users/{username}/received_events/public"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActivityListReceivedPublicEventsForUserOperation,
@@ -15424,6 +15622,8 @@ func (s *Server) handleActivityListRepoEventsRequest(args [2]string, argsEscaped
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/events"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActivityListRepoEventsOperation,
@@ -15577,6 +15777,8 @@ func (s *Server) handleActivityListRepoNotificationsForAuthenticatedUserRequest(
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/notifications"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActivityListRepoNotificationsForAuthenticatedUserOperation,
@@ -15748,6 +15950,8 @@ func (s *Server) handleActivityListReposStarredByAuthenticatedUserRequest(args [
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/user/starred"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActivityListReposStarredByAuthenticatedUserOperation,
@@ -15901,6 +16105,8 @@ func (s *Server) handleActivityListReposWatchedByUserRequest(args [1]string, arg
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/users/{username}/subscriptions"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActivityListReposWatchedByUserOperation,
@@ -16050,6 +16256,8 @@ func (s *Server) handleActivityListWatchedReposForAuthenticatedUserRequest(args 
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/user/subscriptions"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActivityListWatchedReposForAuthenticatedUserOperation,
@@ -16195,6 +16403,8 @@ func (s *Server) handleActivityListWatchersForRepoRequest(args [2]string, argsEs
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/subscribers"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActivityListWatchersForRepoOperation,
@@ -16354,6 +16564,8 @@ func (s *Server) handleActivityMarkNotificationsAsReadRequest(args [0]string, ar
 		semconv.HTTPRequestMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/notifications"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActivityMarkNotificationsAsReadOperation,
@@ -16501,6 +16713,8 @@ func (s *Server) handleActivityMarkRepoNotificationsAsReadRequest(args [2]string
 		semconv.HTTPRequestMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/notifications"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActivityMarkRepoNotificationsAsReadOperation,
@@ -16661,6 +16875,8 @@ func (s *Server) handleActivityMarkThreadAsReadRequest(args [1]string, argsEscap
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/notifications/threads/{thread_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActivityMarkThreadAsReadOperation,
@@ -16805,6 +17021,8 @@ func (s *Server) handleActivitySetRepoSubscriptionRequest(args [2]string, argsEs
 		semconv.HTTPRequestMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/subscription"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActivitySetRepoSubscriptionOperation,
@@ -16972,6 +17190,8 @@ func (s *Server) handleActivitySetThreadSubscriptionRequest(args [1]string, args
 		semconv.HTTPRequestMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/notifications/threads/{thread_id}/subscription"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActivitySetThreadSubscriptionOperation,
@@ -17130,6 +17350,8 @@ func (s *Server) handleActivityStarRepoForAuthenticatedUserRequest(args [2]strin
 		semconv.HTTPRequestMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/user/starred/{owner}/{repo}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActivityStarRepoForAuthenticatedUserOperation,
@@ -17275,6 +17497,8 @@ func (s *Server) handleActivityUnstarRepoForAuthenticatedUserRequest(args [2]str
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/user/starred/{owner}/{repo}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ActivityUnstarRepoForAuthenticatedUserOperation,
@@ -17425,6 +17649,8 @@ func (s *Server) handleAppsAddRepoToInstallationRequest(args [2]string, argsEsca
 		semconv.HTTPRequestMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/user/installations/{installation_id}/repositories/{repository_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), AppsAddRepoToInstallationOperation,
@@ -17575,6 +17801,8 @@ func (s *Server) handleAppsCheckTokenRequest(args [1]string, argsEscaped bool, w
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/applications/{client_id}/token"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), AppsCheckTokenOperation,
@@ -17740,6 +17968,8 @@ func (s *Server) handleAppsCreateContentAttachmentRequest(args [3]string, argsEs
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/content_references/{content_reference_id}/attachments"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), AppsCreateContentAttachmentOperation,
@@ -17907,6 +18137,8 @@ func (s *Server) handleAppsCreateFromManifestRequest(args [1]string, argsEscaped
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/app-manifests/{code}/conversions"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), AppsCreateFromManifestOperation,
@@ -18072,6 +18304,8 @@ func (s *Server) handleAppsCreateInstallationAccessTokenRequest(args [1]string, 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/app/installations/{installation_id}/access_tokens"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), AppsCreateInstallationAccessTokenOperation,
@@ -18237,6 +18471,8 @@ func (s *Server) handleAppsDeleteAuthorizationRequest(args [1]string, argsEscape
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/applications/{client_id}/grant"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), AppsDeleteAuthorizationOperation,
@@ -18398,6 +18634,8 @@ func (s *Server) handleAppsDeleteInstallationRequest(args [1]string, argsEscaped
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/app/installations/{installation_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), AppsDeleteInstallationOperation,
@@ -18542,6 +18780,8 @@ func (s *Server) handleAppsDeleteTokenRequest(args [1]string, argsEscaped bool, 
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/applications/{client_id}/token"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), AppsDeleteTokenOperation,
@@ -18705,6 +18945,8 @@ func (s *Server) handleAppsGetAuthenticatedRequest(args [0]string, argsEscaped b
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/app"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), AppsGetAuthenticatedOperation,
@@ -18834,6 +19076,8 @@ func (s *Server) handleAppsGetBySlugRequest(args [1]string, argsEscaped bool, w 
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apps/{app_slug}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), AppsGetBySlugOperation,
@@ -18982,6 +19226,8 @@ func (s *Server) handleAppsGetSubscriptionPlanForAccountRequest(args [1]string, 
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/marketplace_listing/accounts/{account_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), AppsGetSubscriptionPlanForAccountOperation,
@@ -19130,6 +19376,8 @@ func (s *Server) handleAppsGetSubscriptionPlanForAccountStubbedRequest(args [1]s
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/marketplace_listing/stubbed/accounts/{account_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), AppsGetSubscriptionPlanForAccountStubbedOperation,
@@ -19275,6 +19523,8 @@ func (s *Server) handleAppsGetWebhookConfigForAppRequest(args [0]string, argsEsc
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/app/hook/config"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), AppsGetWebhookConfigForAppOperation,
@@ -19400,6 +19650,8 @@ func (s *Server) handleAppsGetWebhookDeliveryRequest(args [1]string, argsEscaped
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/app/hook/deliveries/{delivery_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), AppsGetWebhookDeliveryOperation,
@@ -19549,6 +19801,8 @@ func (s *Server) handleAppsListAccountsForPlanRequest(args [1]string, argsEscape
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/marketplace_listing/plans/{plan_id}/accounts"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), AppsListAccountsForPlanOperation,
@@ -19714,6 +19968,8 @@ func (s *Server) handleAppsListAccountsForPlanStubbedRequest(args [1]string, arg
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/marketplace_listing/stubbed/plans/{plan_id}/accounts"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), AppsListAccountsForPlanStubbedOperation,
@@ -19877,6 +20133,8 @@ func (s *Server) handleAppsListInstallationReposForAuthenticatedUserRequest(args
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/user/installations/{installation_id}/repositories"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), AppsListInstallationReposForAuthenticatedUserOperation,
@@ -20031,6 +20289,8 @@ func (s *Server) handleAppsListPlansRequest(args [0]string, argsEscaped bool, w 
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/marketplace_listing/plans"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), AppsListPlansOperation,
@@ -20181,6 +20441,8 @@ func (s *Server) handleAppsListPlansStubbedRequest(args [0]string, argsEscaped b
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/marketplace_listing/stubbed/plans"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), AppsListPlansStubbedOperation,
@@ -20329,6 +20591,8 @@ func (s *Server) handleAppsListReposAccessibleToInstallationRequest(args [0]stri
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/installation/repositories"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), AppsListReposAccessibleToInstallationOperation,
@@ -20476,6 +20740,8 @@ func (s *Server) handleAppsListSubscriptionsForAuthenticatedUserRequest(args [0]
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/user/marketplace_purchases"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), AppsListSubscriptionsForAuthenticatedUserOperation,
@@ -20623,6 +20889,8 @@ func (s *Server) handleAppsListSubscriptionsForAuthenticatedUserStubbedRequest(a
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/user/marketplace_purchases/stubbed"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), AppsListSubscriptionsForAuthenticatedUserStubbedOperation,
@@ -20771,6 +21039,8 @@ func (s *Server) handleAppsListWebhookDeliveriesRequest(args [0]string, argsEsca
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/app/hook/deliveries"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), AppsListWebhookDeliveriesOperation,
@@ -20919,6 +21189,8 @@ func (s *Server) handleAppsRedeliverWebhookDeliveryRequest(args [1]string, argsE
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/app/hook/deliveries/{delivery_id}/attempts"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), AppsRedeliverWebhookDeliveryOperation,
@@ -21065,6 +21337,8 @@ func (s *Server) handleAppsRemoveRepoFromInstallationRequest(args [2]string, arg
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/user/installations/{installation_id}/repositories/{repository_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), AppsRemoveRepoFromInstallationOperation,
@@ -21215,6 +21489,8 @@ func (s *Server) handleAppsResetTokenRequest(args [1]string, argsEscaped bool, w
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/applications/{client_id}/token"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), AppsResetTokenOperation,
@@ -21380,6 +21656,8 @@ func (s *Server) handleAppsRevokeInstallationAccessTokenRequest(args [0]string, 
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/installation/token"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), AppsRevokeInstallationAccessTokenOperation,
@@ -21507,6 +21785,8 @@ func (s *Server) handleAppsScopeTokenRequest(args [1]string, argsEscaped bool, w
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/applications/{client_id}/token/scoped"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), AppsScopeTokenOperation,
@@ -21668,6 +21948,8 @@ func (s *Server) handleAppsSuspendInstallationRequest(args [1]string, argsEscape
 		semconv.HTTPRequestMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/app/installations/{installation_id}/suspended"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), AppsSuspendInstallationOperation,
@@ -21812,6 +22094,8 @@ func (s *Server) handleAppsUnsuspendInstallationRequest(args [1]string, argsEsca
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/app/installations/{installation_id}/suspended"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), AppsUnsuspendInstallationOperation,
@@ -21957,6 +22241,8 @@ func (s *Server) handleAppsUpdateWebhookConfigForAppRequest(args [0]string, args
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/app/hook/config"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), AppsUpdateWebhookConfigForAppOperation,
@@ -22105,6 +22391,8 @@ func (s *Server) handleBillingGetGithubActionsBillingGheRequest(args [1]string, 
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/settings/billing/actions"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), BillingGetGithubActionsBillingGheOperation,
@@ -22253,6 +22541,8 @@ func (s *Server) handleBillingGetGithubActionsBillingOrgRequest(args [1]string, 
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/settings/billing/actions"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), BillingGetGithubActionsBillingOrgOperation,
@@ -22401,6 +22691,8 @@ func (s *Server) handleBillingGetGithubActionsBillingUserRequest(args [1]string,
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/users/{username}/settings/billing/actions"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), BillingGetGithubActionsBillingUserOperation,
@@ -22546,6 +22838,8 @@ func (s *Server) handleBillingGetGithubPackagesBillingGheRequest(args [1]string,
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/settings/billing/packages"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), BillingGetGithubPackagesBillingGheOperation,
@@ -22691,6 +22985,8 @@ func (s *Server) handleBillingGetGithubPackagesBillingOrgRequest(args [1]string,
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/settings/billing/packages"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), BillingGetGithubPackagesBillingOrgOperation,
@@ -22836,6 +23132,8 @@ func (s *Server) handleBillingGetGithubPackagesBillingUserRequest(args [1]string
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/users/{username}/settings/billing/packages"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), BillingGetGithubPackagesBillingUserOperation,
@@ -22981,6 +23279,8 @@ func (s *Server) handleBillingGetSharedStorageBillingGheRequest(args [1]string, 
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/settings/billing/shared-storage"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), BillingGetSharedStorageBillingGheOperation,
@@ -23126,6 +23426,8 @@ func (s *Server) handleBillingGetSharedStorageBillingOrgRequest(args [1]string, 
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/settings/billing/shared-storage"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), BillingGetSharedStorageBillingOrgOperation,
@@ -23271,6 +23573,8 @@ func (s *Server) handleBillingGetSharedStorageBillingUserRequest(args [1]string,
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/users/{username}/settings/billing/shared-storage"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), BillingGetSharedStorageBillingUserOperation,
@@ -23418,6 +23722,8 @@ func (s *Server) handleChecksCreateRequest(args [2]string, argsEscaped bool, w h
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/check-runs"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ChecksCreateOperation,
@@ -23586,6 +23892,8 @@ func (s *Server) handleChecksCreateSuiteRequest(args [2]string, argsEscaped bool
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/check-suites"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ChecksCreateSuiteOperation,
@@ -23751,6 +24059,8 @@ func (s *Server) handleChecksGetRequest(args [3]string, argsEscaped bool, w http
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/check-runs/{check_run_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ChecksGetOperation,
@@ -23905,6 +24215,8 @@ func (s *Server) handleChecksGetSuiteRequest(args [3]string, argsEscaped bool, w
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/check-suites/{check_suite_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ChecksGetSuiteOperation,
@@ -24057,6 +24369,8 @@ func (s *Server) handleChecksListAnnotationsRequest(args [3]string, argsEscaped 
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/check-runs/{check_run_id}/annotations"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ChecksListAnnotationsOperation,
@@ -24220,6 +24534,8 @@ func (s *Server) handleChecksListForRefRequest(args [3]string, argsEscaped bool,
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/commits/{ref}/check-runs"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ChecksListForRefOperation,
@@ -24398,6 +24714,8 @@ func (s *Server) handleChecksListForSuiteRequest(args [3]string, argsEscaped boo
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/check-suites/{check_suite_id}/check-runs"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ChecksListForSuiteOperation,
@@ -24573,6 +24891,8 @@ func (s *Server) handleChecksListSuitesForRefRequest(args [3]string, argsEscaped
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/commits/{ref}/check-suites"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ChecksListSuitesForRefOperation,
@@ -24743,6 +25063,8 @@ func (s *Server) handleChecksRerequestSuiteRequest(args [3]string, argsEscaped b
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/check-suites/{check_suite_id}/rerequest"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ChecksRerequestSuiteOperation,
@@ -24896,6 +25218,8 @@ func (s *Server) handleChecksSetSuitesPreferencesRequest(args [2]string, argsEsc
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/check-suites/preferences"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ChecksSetSuitesPreferencesOperation,
@@ -25114,6 +25438,8 @@ func (s *Server) handleCodeScanningDeleteAnalysisRequest(args [3]string, argsEsc
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/code-scanning/analyses/{analysis_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), CodeScanningDeleteAnalysisOperation,
@@ -25273,6 +25599,8 @@ func (s *Server) handleCodeScanningGetAlertRequest(args [3]string, argsEscaped b
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), CodeScanningGetAlertOperation,
@@ -25440,6 +25768,8 @@ func (s *Server) handleCodeScanningGetAnalysisRequest(args [3]string, argsEscape
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/code-scanning/analyses/{analysis_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), CodeScanningGetAnalysisOperation,
@@ -25594,6 +25924,8 @@ func (s *Server) handleCodeScanningGetSarifRequest(args [3]string, argsEscaped b
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/code-scanning/sarifs/{sarif_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), CodeScanningGetSarifOperation,
@@ -25745,6 +26077,8 @@ func (s *Server) handleCodeScanningListAlertInstancesRequest(args [3]string, arg
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}/instances"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), CodeScanningListAlertInstancesOperation,
@@ -25913,6 +26247,8 @@ func (s *Server) handleCodeScanningListAlertsForRepoRequest(args [2]string, args
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/code-scanning/alerts"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), CodeScanningListAlertsForRepoOperation,
@@ -26096,6 +26432,8 @@ func (s *Server) handleCodeScanningListRecentAnalysesRequest(args [2]string, arg
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/code-scanning/analyses"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), CodeScanningListRecentAnalysesOperation,
@@ -26267,6 +26605,8 @@ func (s *Server) handleCodeScanningUpdateAlertRequest(args [3]string, argsEscape
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), CodeScanningUpdateAlertOperation,
@@ -26457,6 +26797,8 @@ func (s *Server) handleCodeScanningUploadSarifRequest(args [2]string, argsEscape
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/code-scanning/sarifs"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), CodeScanningUploadSarifOperation,
@@ -26617,6 +26959,8 @@ func (s *Server) handleCodesOfConductGetAllCodesOfConductRequest(args [0]string,
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/codes_of_conduct"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), CodesOfConductGetAllCodesOfConductOperation,
@@ -26739,6 +27083,8 @@ func (s *Server) handleCodesOfConductGetConductCodeRequest(args [1]string, argsE
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/codes_of_conduct/{key}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), CodesOfConductGetConductCodeOperation,
@@ -26880,6 +27226,8 @@ func (s *Server) handleEmojisGetRequest(args [0]string, argsEscaped bool, w http
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/emojis"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), EmojisGetOperation,
@@ -27006,6 +27354,8 @@ func (s *Server) handleEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnter
 		semconv.HTTPRequestMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations/{org_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseOperation,
@@ -27157,6 +27507,8 @@ func (s *Server) handleEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseReq
 		semconv.HTTPRequestMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners/{runner_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseOperation,
@@ -27313,6 +27665,8 @@ func (s *Server) handleEnterpriseAdminCreateRegistrationTokenForEnterpriseReques
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/runners/registration-token"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), EnterpriseAdminCreateRegistrationTokenForEnterpriseOperation,
@@ -27463,6 +27817,8 @@ func (s *Server) handleEnterpriseAdminCreateRemoveTokenForEnterpriseRequest(args
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/runners/remove-token"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), EnterpriseAdminCreateRemoveTokenForEnterpriseOperation,
@@ -27605,6 +27961,8 @@ func (s *Server) handleEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRe
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/runner-groups"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseOperation,
@@ -27762,6 +28120,8 @@ func (s *Server) handleEnterpriseAdminDeleteScimGroupFromEnterpriseRequest(args 
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), EnterpriseAdminDeleteScimGroupFromEnterpriseOperation,
@@ -27909,6 +28269,8 @@ func (s *Server) handleEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseReques
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/runners/{runner_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseOperation,
@@ -28055,6 +28417,8 @@ func (s *Server) handleEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseR
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseOperation,
@@ -28201,6 +28565,8 @@ func (s *Server) handleEnterpriseAdminDeleteUserFromEnterpriseRequest(args [2]st
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/scim/v2/enterprises/{enterprise}/Users/{scim_user_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), EnterpriseAdminDeleteUserFromEnterpriseOperation,
@@ -28350,6 +28716,8 @@ func (s *Server) handleEnterpriseAdminDisableSelectedOrganizationGithubActionsEn
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/permissions/organizations/{org_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseOperation,
@@ -28499,6 +28867,8 @@ func (s *Server) handleEnterpriseAdminEnableSelectedOrganizationGithubActionsEnt
 		semconv.HTTPRequestMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/permissions/organizations/{org_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseOperation,
@@ -28648,6 +29018,8 @@ func (s *Server) handleEnterpriseAdminGetAllowedActionsEnterpriseRequest(args [1
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/permissions/selected-actions"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), EnterpriseAdminGetAllowedActionsEnterpriseOperation,
@@ -28790,6 +29162,8 @@ func (s *Server) handleEnterpriseAdminGetAuditLogRequest(args [1]string, argsEsc
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/audit-log"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), EnterpriseAdminGetAuditLogOperation,
@@ -28960,6 +29334,8 @@ func (s *Server) handleEnterpriseAdminGetGithubActionsPermissionsEnterpriseReque
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/permissions"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), EnterpriseAdminGetGithubActionsPermissionsEnterpriseOperation,
@@ -29102,6 +29478,8 @@ func (s *Server) handleEnterpriseAdminGetProvisioningInformationForEnterpriseGro
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), EnterpriseAdminGetProvisioningInformationForEnterpriseGroupOperation,
@@ -29252,6 +29630,8 @@ func (s *Server) handleEnterpriseAdminGetProvisioningInformationForEnterpriseUse
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/scim/v2/enterprises/{enterprise}/Users/{scim_user_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), EnterpriseAdminGetProvisioningInformationForEnterpriseUserOperation,
@@ -29398,6 +29778,8 @@ func (s *Server) handleEnterpriseAdminGetSelfHostedRunnerForEnterpriseRequest(ar
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/runners/{runner_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), EnterpriseAdminGetSelfHostedRunnerForEnterpriseOperation,
@@ -29544,6 +29926,8 @@ func (s *Server) handleEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseReque
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), EnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseOperation,
@@ -29690,6 +30074,8 @@ func (s *Server) handleEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnte
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOperation,
@@ -29844,6 +30230,8 @@ func (s *Server) handleEnterpriseAdminListProvisionedGroupsEnterpriseRequest(arg
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/scim/v2/enterprises/{enterprise}/Groups"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), EnterpriseAdminListProvisionedGroupsEnterpriseOperation,
@@ -30027,6 +30415,8 @@ func (s *Server) handleEnterpriseAdminListProvisionedIdentitiesEnterpriseRequest
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/scim/v2/enterprises/{enterprise}/Users"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), EnterpriseAdminListProvisionedIdentitiesEnterpriseOperation,
@@ -30181,6 +30571,8 @@ func (s *Server) handleEnterpriseAdminListRunnerApplicationsForEnterpriseRequest
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/runners/downloads"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), EnterpriseAdminListRunnerApplicationsForEnterpriseOperation,
@@ -30326,6 +30718,8 @@ func (s *Server) handleEnterpriseAdminListSelectedOrganizationsEnabledGithubActi
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/permissions/organizations"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseOperation,
@@ -30476,6 +30870,8 @@ func (s *Server) handleEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseReq
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/runner-groups"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOperation,
@@ -30626,6 +31022,8 @@ func (s *Server) handleEnterpriseAdminListSelfHostedRunnersForEnterpriseRequest(
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/runners"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), EnterpriseAdminListSelfHostedRunnersForEnterpriseOperation,
@@ -30776,6 +31174,8 @@ func (s *Server) handleEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseR
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOperation,
@@ -30933,6 +31333,8 @@ func (s *Server) handleEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(a
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/scim/v2/enterprises/{enterprise}/Groups"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), EnterpriseAdminProvisionAndInviteEnterpriseGroupOperation,
@@ -31095,6 +31497,8 @@ func (s *Server) handleEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(ar
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/scim/v2/enterprises/{enterprise}/Users"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), EnterpriseAdminProvisionAndInviteEnterpriseUserOperation,
@@ -31255,6 +31659,8 @@ func (s *Server) handleEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEn
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations/{org_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseOperation,
@@ -31406,6 +31812,8 @@ func (s *Server) handleEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpri
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners/{runner_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseOperation,
@@ -31559,6 +31967,8 @@ func (s *Server) handleEnterpriseAdminSetAllowedActionsEnterpriseRequest(args [1
 		semconv.HTTPRequestMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/permissions/selected-actions"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), EnterpriseAdminSetAllowedActionsEnterpriseOperation,
@@ -31716,6 +32126,8 @@ func (s *Server) handleEnterpriseAdminSetGithubActionsPermissionsEnterpriseReque
 		semconv.HTTPRequestMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/permissions"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), EnterpriseAdminSetGithubActionsPermissionsEnterpriseOperation,
@@ -31878,6 +32290,8 @@ func (s *Server) handleEnterpriseAdminSetInformationForProvisionedEnterpriseGrou
 		semconv.HTTPRequestMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), EnterpriseAdminSetInformationForProvisionedEnterpriseGroupOperation,
@@ -32047,6 +32461,8 @@ func (s *Server) handleEnterpriseAdminSetInformationForProvisionedEnterpriseUser
 		semconv.HTTPRequestMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/scim/v2/enterprises/{enterprise}/Users/{scim_user_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), EnterpriseAdminSetInformationForProvisionedEnterpriseUserOperation,
@@ -32209,6 +32625,8 @@ func (s *Server) handleEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnter
 		semconv.HTTPRequestMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseOperation,
@@ -32373,6 +32791,8 @@ func (s *Server) handleEnterpriseAdminSetSelectedOrganizationsEnabledGithubActio
 		semconv.HTTPRequestMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/permissions/organizations"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseOperation,
@@ -32530,6 +32950,8 @@ func (s *Server) handleEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRe
 		semconv.HTTPRequestMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseOperation,
@@ -32695,6 +33117,8 @@ func (s *Server) handleEnterpriseAdminUpdateAttributeForEnterpriseGroupRequest(a
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), EnterpriseAdminUpdateAttributeForEnterpriseGroupOperation,
@@ -32877,6 +33301,8 @@ func (s *Server) handleEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(ar
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/scim/v2/enterprises/{enterprise}/Users/{scim_user_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), EnterpriseAdminUpdateAttributeForEnterpriseUserOperation,
@@ -33038,6 +33464,8 @@ func (s *Server) handleEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRe
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseOperation,
@@ -33198,6 +33626,8 @@ func (s *Server) handleGistsCheckIsStarredRequest(args [1]string, argsEscaped bo
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/gists/{gist_id}/star"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), GistsCheckIsStarredOperation,
@@ -33341,6 +33771,8 @@ func (s *Server) handleGistsCreateRequest(args [0]string, argsEscaped bool, w ht
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/gists"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), GistsCreateOperation,
@@ -33482,6 +33914,8 @@ func (s *Server) handleGistsCreateCommentRequest(args [1]string, argsEscaped boo
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/gists/{gist_id}/comments"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), GistsCreateCommentOperation,
@@ -33638,6 +34072,8 @@ func (s *Server) handleGistsDeleteRequest(args [1]string, argsEscaped bool, w ht
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/gists/{gist_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), GistsDeleteOperation,
@@ -33779,6 +34215,8 @@ func (s *Server) handleGistsDeleteCommentRequest(args [2]string, argsEscaped boo
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/gists/{gist_id}/comments/{comment_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), GistsDeleteCommentOperation,
@@ -33924,6 +34362,8 @@ func (s *Server) handleGistsForkRequest(args [1]string, argsEscaped bool, w http
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/gists/{gist_id}/forks"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), GistsForkOperation,
@@ -34065,6 +34505,8 @@ func (s *Server) handleGistsGetRequest(args [1]string, argsEscaped bool, w http.
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/gists/{gist_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), GistsGetOperation,
@@ -34206,6 +34648,8 @@ func (s *Server) handleGistsGetCommentRequest(args [2]string, argsEscaped bool, 
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/gists/{gist_id}/comments/{comment_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), GistsGetCommentOperation,
@@ -34351,6 +34795,8 @@ func (s *Server) handleGistsGetRevisionRequest(args [2]string, argsEscaped bool,
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/gists/{gist_id}/{sha}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), GistsGetRevisionOperation,
@@ -34497,6 +34943,8 @@ func (s *Server) handleGistsListRequest(args [0]string, argsEscaped bool, w http
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/gists"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), GistsListOperation,
@@ -34646,6 +35094,8 @@ func (s *Server) handleGistsListCommentsRequest(args [1]string, argsEscaped bool
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/gists/{gist_id}/comments"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), GistsListCommentsOperation,
@@ -34795,6 +35245,8 @@ func (s *Server) handleGistsListCommitsRequest(args [1]string, argsEscaped bool,
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/gists/{gist_id}/commits"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), GistsListCommitsOperation,
@@ -34944,6 +35396,8 @@ func (s *Server) handleGistsListForUserRequest(args [1]string, argsEscaped bool,
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/users/{username}/gists"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), GistsListForUserOperation,
@@ -35097,6 +35551,8 @@ func (s *Server) handleGistsListForksRequest(args [1]string, argsEscaped bool, w
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/gists/{gist_id}/forks"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), GistsListForksOperation,
@@ -35249,6 +35705,8 @@ func (s *Server) handleGistsListPublicRequest(args [0]string, argsEscaped bool, 
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/gists/public"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), GistsListPublicOperation,
@@ -35398,6 +35856,8 @@ func (s *Server) handleGistsListStarredRequest(args [0]string, argsEscaped bool,
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/gists/starred"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), GistsListStarredOperation,
@@ -35549,6 +36009,8 @@ func (s *Server) handleGistsStarRequest(args [1]string, argsEscaped bool, w http
 		semconv.HTTPRequestMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/gists/{gist_id}/star"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), GistsStarOperation,
@@ -35690,6 +36152,8 @@ func (s *Server) handleGistsUnstarRequest(args [1]string, argsEscaped bool, w ht
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/gists/{gist_id}/star"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), GistsUnstarOperation,
@@ -35831,6 +36295,8 @@ func (s *Server) handleGistsUpdateCommentRequest(args [2]string, argsEscaped boo
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/gists/{gist_id}/comments/{comment_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), GistsUpdateCommentOperation,
@@ -35991,6 +36457,8 @@ func (s *Server) handleGitCreateBlobRequest(args [2]string, argsEscaped bool, w 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/git/blobs"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), GitCreateBlobOperation,
@@ -36184,6 +36652,8 @@ func (s *Server) handleGitCreateCommitRequest(args [2]string, argsEscaped bool, 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/git/commits"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), GitCreateCommitOperation,
@@ -36346,6 +36816,8 @@ func (s *Server) handleGitCreateRefRequest(args [2]string, argsEscaped bool, w h
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/git/refs"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), GitCreateRefOperation,
@@ -36542,6 +37014,8 @@ func (s *Server) handleGitCreateTagRequest(args [2]string, argsEscaped bool, w h
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/git/tags"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), GitCreateTagOperation,
@@ -36708,6 +37182,8 @@ func (s *Server) handleGitCreateTreeRequest(args [2]string, argsEscaped bool, w 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/git/trees"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), GitCreateTreeOperation,
@@ -36868,6 +37344,8 @@ func (s *Server) handleGitDeleteRefRequest(args [3]string, argsEscaped bool, w h
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/git/refs/{ref}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), GitDeleteRefOperation,
@@ -37018,6 +37496,8 @@ func (s *Server) handleGitGetBlobRequest(args [3]string, argsEscaped bool, w htt
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/git/blobs/{file_sha}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), GitGetBlobOperation,
@@ -37200,6 +37680,8 @@ func (s *Server) handleGitGetCommitRequest(args [3]string, argsEscaped bool, w h
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/git/commits/{commit_sha}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), GitGetCommitOperation,
@@ -37356,6 +37838,8 @@ func (s *Server) handleGitGetRefRequest(args [3]string, argsEscaped bool, w http
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/git/ref/{ref}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), GitGetRefOperation,
@@ -37536,6 +38020,8 @@ func (s *Server) handleGitGetTagRequest(args [3]string, argsEscaped bool, w http
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/git/tags/{tag_sha}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), GitGetTagOperation,
@@ -37688,6 +38174,8 @@ func (s *Server) handleGitGetTreeRequest(args [3]string, argsEscaped bool, w htt
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/git/trees/{tree_sha}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), GitGetTreeOperation,
@@ -37855,6 +38343,8 @@ func (s *Server) handleGitListMatchingRefsRequest(args [3]string, argsEscaped bo
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/git/matching-refs/{ref}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), GitListMatchingRefsOperation,
@@ -38012,6 +38502,8 @@ func (s *Server) handleGitUpdateRefRequest(args [3]string, argsEscaped bool, w h
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/git/refs/{ref}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), GitUpdateRefOperation,
@@ -38177,6 +38669,8 @@ func (s *Server) handleGitignoreGetAllTemplatesRequest(args [0]string, argsEscap
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/gitignore/templates"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), GitignoreGetAllTemplatesOperation,
@@ -38301,6 +38795,8 @@ func (s *Server) handleGitignoreGetTemplateRequest(args [1]string, argsEscaped b
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/gitignore/templates/{name}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), GitignoreGetTemplateOperation,
@@ -38442,6 +38938,8 @@ func (s *Server) handleInteractionsRemoveRestrictionsForAuthenticatedUserRequest
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/user/interaction-limits"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), InteractionsRemoveRestrictionsForAuthenticatedUserOperation,
@@ -38565,6 +39063,8 @@ func (s *Server) handleInteractionsRemoveRestrictionsForOrgRequest(args [1]strin
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/interaction-limits"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), InteractionsRemoveRestrictionsForOrgOperation,
@@ -38709,6 +39209,8 @@ func (s *Server) handleInteractionsRemoveRestrictionsForRepoRequest(args [2]stri
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/interaction-limits"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), InteractionsRemoveRestrictionsForRepoOperation,
@@ -38856,6 +39358,8 @@ func (s *Server) handleInteractionsSetRestrictionsForAuthenticatedUserRequest(ar
 		semconv.HTTPRequestMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/user/interaction-limits"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), InteractionsSetRestrictionsForAuthenticatedUserOperation,
@@ -39000,6 +39504,8 @@ func (s *Server) handleInteractionsSetRestrictionsForOrgRequest(args [1]string, 
 		semconv.HTTPRequestMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/interaction-limits"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), InteractionsSetRestrictionsForOrgOperation,
@@ -39159,6 +39665,8 @@ func (s *Server) handleInteractionsSetRestrictionsForRepoRequest(args [2]string,
 		semconv.HTTPRequestMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/interaction-limits"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), InteractionsSetRestrictionsForRepoOperation,
@@ -39319,6 +39827,8 @@ func (s *Server) handleIssuesAddAssigneesRequest(args [3]string, argsEscaped boo
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/{issue_number}/assignees"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), IssuesAddAssigneesOperation,
@@ -39486,6 +39996,8 @@ func (s *Server) handleIssuesCheckUserCanBeAssignedRequest(args [3]string, argsE
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/assignees/{assignee}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), IssuesCheckUserCanBeAssignedOperation,
@@ -39644,6 +40156,8 @@ func (s *Server) handleIssuesCreateRequest(args [2]string, argsEscaped bool, w h
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), IssuesCreateOperation,
@@ -39810,6 +40324,8 @@ func (s *Server) handleIssuesCreateCommentRequest(args [3]string, argsEscaped bo
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/{issue_number}/comments"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), IssuesCreateCommentOperation,
@@ -39974,6 +40490,8 @@ func (s *Server) handleIssuesCreateLabelRequest(args [2]string, argsEscaped bool
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/labels"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), IssuesCreateLabelOperation,
@@ -40134,6 +40652,8 @@ func (s *Server) handleIssuesCreateMilestoneRequest(args [2]string, argsEscaped 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/milestones"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), IssuesCreateMilestoneOperation,
@@ -40294,6 +40814,8 @@ func (s *Server) handleIssuesDeleteCommentRequest(args [3]string, argsEscaped bo
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/comments/{comment_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), IssuesDeleteCommentOperation,
@@ -40443,6 +40965,8 @@ func (s *Server) handleIssuesDeleteLabelRequest(args [3]string, argsEscaped bool
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/labels/{name}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), IssuesDeleteLabelOperation,
@@ -40592,6 +41116,8 @@ func (s *Server) handleIssuesDeleteMilestoneRequest(args [3]string, argsEscaped 
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/milestones/{milestone_number}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), IssuesDeleteMilestoneOperation,
@@ -40759,6 +41285,8 @@ func (s *Server) handleIssuesGetRequest(args [3]string, argsEscaped bool, w http
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/{issue_number}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), IssuesGetOperation,
@@ -40908,6 +41436,8 @@ func (s *Server) handleIssuesGetCommentRequest(args [3]string, argsEscaped bool,
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/comments/{comment_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), IssuesGetCommentOperation,
@@ -41057,6 +41587,8 @@ func (s *Server) handleIssuesGetEventRequest(args [3]string, argsEscaped bool, w
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/events/{event_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), IssuesGetEventOperation,
@@ -41206,6 +41738,8 @@ func (s *Server) handleIssuesGetLabelRequest(args [3]string, argsEscaped bool, w
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/labels/{name}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), IssuesGetLabelOperation,
@@ -41355,6 +41889,8 @@ func (s *Server) handleIssuesGetMilestoneRequest(args [3]string, argsEscaped boo
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/milestones/{milestone_number}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), IssuesGetMilestoneOperation,
@@ -41516,6 +42052,8 @@ func (s *Server) handleIssuesListRequest(args [0]string, argsEscaped bool, w htt
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/issues"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), IssuesListOperation,
@@ -41702,6 +42240,8 @@ func (s *Server) handleIssuesListAssigneesRequest(args [2]string, argsEscaped bo
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/assignees"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), IssuesListAssigneesOperation,
@@ -41855,6 +42395,8 @@ func (s *Server) handleIssuesListCommentsRequest(args [3]string, argsEscaped boo
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/{issue_number}/comments"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), IssuesListCommentsOperation,
@@ -42016,6 +42558,8 @@ func (s *Server) handleIssuesListCommentsForRepoRequest(args [2]string, argsEsca
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/comments"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), IssuesListCommentsForRepoOperation,
@@ -42181,6 +42725,8 @@ func (s *Server) handleIssuesListEventsForRepoRequest(args [2]string, argsEscape
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/events"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), IssuesListEventsForRepoOperation,
@@ -42342,6 +42888,8 @@ func (s *Server) handleIssuesListForAuthenticatedUserRequest(args [0]string, arg
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/user/issues"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), IssuesListForAuthenticatedUserOperation,
@@ -42519,6 +43067,8 @@ func (s *Server) handleIssuesListForOrgRequest(args [1]string, argsEscaped bool,
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/issues"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), IssuesListForOrgOperation,
@@ -42700,6 +43250,8 @@ func (s *Server) handleIssuesListForRepoRequest(args [2]string, argsEscaped bool
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), IssuesListForRepoOperation,
@@ -42889,6 +43441,8 @@ func (s *Server) handleIssuesListLabelsForMilestoneRequest(args [3]string, argsE
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/milestones/{milestone_number}/labels"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), IssuesListLabelsForMilestoneOperation,
@@ -43046,6 +43600,8 @@ func (s *Server) handleIssuesListLabelsForRepoRequest(args [2]string, argsEscape
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/labels"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), IssuesListLabelsForRepoOperation,
@@ -43199,6 +43755,8 @@ func (s *Server) handleIssuesListLabelsOnIssueRequest(args [3]string, argsEscape
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/{issue_number}/labels"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), IssuesListLabelsOnIssueOperation,
@@ -43356,6 +43914,8 @@ func (s *Server) handleIssuesListMilestonesRequest(args [2]string, argsEscaped b
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/milestones"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), IssuesListMilestonesOperation,
@@ -43524,6 +44084,8 @@ func (s *Server) handleIssuesLockRequest(args [3]string, argsEscaped bool, w htt
 		semconv.HTTPRequestMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/{issue_number}/lock"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), IssuesLockOperation,
@@ -43688,6 +44250,8 @@ func (s *Server) handleIssuesRemoveAllLabelsRequest(args [3]string, argsEscaped 
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/{issue_number}/labels"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), IssuesRemoveAllLabelsOperation,
@@ -43837,6 +44401,8 @@ func (s *Server) handleIssuesRemoveAssigneesRequest(args [3]string, argsEscaped 
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/{issue_number}/assignees"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), IssuesRemoveAssigneesOperation,
@@ -44002,6 +44568,8 @@ func (s *Server) handleIssuesRemoveLabelRequest(args [4]string, argsEscaped bool
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/{issue_number}/labels/{name}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), IssuesRemoveLabelOperation,
@@ -44155,6 +44723,8 @@ func (s *Server) handleIssuesUnlockRequest(args [3]string, argsEscaped bool, w h
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/{issue_number}/lock"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), IssuesUnlockOperation,
@@ -44304,6 +44874,8 @@ func (s *Server) handleIssuesUpdateRequest(args [3]string, argsEscaped bool, w h
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/{issue_number}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), IssuesUpdateOperation,
@@ -44468,6 +45040,8 @@ func (s *Server) handleIssuesUpdateCommentRequest(args [3]string, argsEscaped bo
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/comments/{comment_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), IssuesUpdateCommentOperation,
@@ -44632,6 +45206,8 @@ func (s *Server) handleIssuesUpdateLabelRequest(args [3]string, argsEscaped bool
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/labels/{name}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), IssuesUpdateLabelOperation,
@@ -44796,6 +45372,8 @@ func (s *Server) handleIssuesUpdateMilestoneRequest(args [3]string, argsEscaped 
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/milestones/{milestone_number}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), IssuesUpdateMilestoneOperation,
@@ -44960,6 +45538,8 @@ func (s *Server) handleLicensesGetRequest(args [1]string, argsEscaped bool, w ht
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/licenses/{license}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), LicensesGetOperation,
@@ -45101,6 +45681,8 @@ func (s *Server) handleLicensesGetAllCommonlyUsedRequest(args [0]string, argsEsc
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/licenses"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), LicensesGetAllCommonlyUsedOperation,
@@ -45254,6 +45836,8 @@ func (s *Server) handleLicensesGetForRepoRequest(args [2]string, argsEscaped boo
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/license"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), LicensesGetForRepoOperation,
@@ -45399,6 +45983,8 @@ func (s *Server) handleMarkdownRenderRequest(args [0]string, argsEscaped bool, w
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/markdown"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), MarkdownRenderOperation,
@@ -45543,6 +46129,8 @@ func (s *Server) handleMarkdownRenderRawRequest(args [0]string, argsEscaped bool
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/markdown/raw"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), MarkdownRenderRawOperation,
@@ -45688,6 +46276,8 @@ func (s *Server) handleMetaGetRequest(args [0]string, argsEscaped bool, w http.R
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/meta"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), MetaGetOperation,
@@ -45810,6 +46400,8 @@ func (s *Server) handleMetaGetOctocatRequest(args [0]string, argsEscaped bool, w
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/octocat"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), MetaGetOctocatOperation,
@@ -45951,6 +46543,8 @@ func (s *Server) handleMetaGetZenRequest(args [0]string, argsEscaped bool, w htt
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/zen"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), MetaGetZenOperation,
@@ -46073,6 +46667,8 @@ func (s *Server) handleMetaRootRequest(args [0]string, argsEscaped bool, w http.
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), MetaRootOperation,
@@ -46195,6 +46791,8 @@ func (s *Server) handleMigrationsCancelImportRequest(args [2]string, argsEscaped
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/import"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), MigrationsCancelImportOperation,
@@ -46344,6 +46942,8 @@ func (s *Server) handleMigrationsDeleteArchiveForAuthenticatedUserRequest(args [
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/user/migrations/{migration_id}/archive"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), MigrationsDeleteArchiveForAuthenticatedUserOperation,
@@ -46486,6 +47086,8 @@ func (s *Server) handleMigrationsDeleteArchiveForOrgRequest(args [2]string, args
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/migrations/{migration_id}/archive"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), MigrationsDeleteArchiveForOrgOperation,
@@ -46631,6 +47233,8 @@ func (s *Server) handleMigrationsDownloadArchiveForOrgRequest(args [2]string, ar
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/migrations/{migration_id}/archive"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), MigrationsDownloadArchiveForOrgOperation,
@@ -46796,6 +47400,8 @@ func (s *Server) handleMigrationsGetArchiveForAuthenticatedUserRequest(args [1]s
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/user/migrations/{migration_id}/archive"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), MigrationsGetArchiveForAuthenticatedUserOperation,
@@ -46944,6 +47550,8 @@ func (s *Server) handleMigrationsGetCommitAuthorsRequest(args [2]string, argsEsc
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/import/authors"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), MigrationsGetCommitAuthorsOperation,
@@ -47145,6 +47753,8 @@ func (s *Server) handleMigrationsGetImportStatusRequest(args [2]string, argsEsca
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/import"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), MigrationsGetImportStatusOperation,
@@ -47290,6 +47900,8 @@ func (s *Server) handleMigrationsGetLargeFilesRequest(args [2]string, argsEscape
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/import/large_files"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), MigrationsGetLargeFilesOperation,
@@ -47442,6 +48054,8 @@ func (s *Server) handleMigrationsGetStatusForAuthenticatedUserRequest(args [1]st
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/user/migrations/{migration_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), MigrationsGetStatusForAuthenticatedUserOperation,
@@ -47592,6 +48206,8 @@ func (s *Server) handleMigrationsGetStatusForOrgRequest(args [2]string, argsEsca
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/migrations/{migration_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), MigrationsGetStatusForOrgOperation,
@@ -47741,6 +48357,8 @@ func (s *Server) handleMigrationsListForAuthenticatedUserRequest(args [0]string,
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/user/migrations"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), MigrationsListForAuthenticatedUserOperation,
@@ -47886,6 +48504,8 @@ func (s *Server) handleMigrationsListForOrgRequest(args [1]string, argsEscaped b
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/migrations"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), MigrationsListForOrgOperation,
@@ -48039,6 +48659,8 @@ func (s *Server) handleMigrationsListReposForOrgRequest(args [2]string, argsEsca
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/migrations/{migration_id}/repositories"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), MigrationsListReposForOrgOperation,
@@ -48192,6 +48814,8 @@ func (s *Server) handleMigrationsListReposForUserRequest(args [1]string, argsEsc
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/user/migrations/{migration_id}/repositories"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), MigrationsListReposForUserOperation,
@@ -48342,6 +48966,8 @@ func (s *Server) handleMigrationsMapCommitAuthorRequest(args [3]string, argsEsca
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/import/authors/{author_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), MigrationsMapCommitAuthorOperation,
@@ -48509,6 +49135,8 @@ func (s *Server) handleMigrationsSetLfsPreferenceRequest(args [2]string, argsEsc
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/import/lfs"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), MigrationsSetLfsPreferenceOperation,
@@ -48669,6 +49297,8 @@ func (s *Server) handleMigrationsStartForAuthenticatedUserRequest(args [0]string
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/user/migrations"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), MigrationsStartForAuthenticatedUserOperation,
@@ -48810,6 +49440,8 @@ func (s *Server) handleMigrationsStartForOrgRequest(args [1]string, argsEscaped 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/migrations"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), MigrationsStartForOrgOperation,
@@ -48966,6 +49598,8 @@ func (s *Server) handleMigrationsStartImportRequest(args [2]string, argsEscaped 
 		semconv.HTTPRequestMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/import"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), MigrationsStartImportOperation,
@@ -49130,6 +49764,8 @@ func (s *Server) handleMigrationsUnlockRepoForAuthenticatedUserRequest(args [2]s
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/user/migrations/{migration_id}/repos/{repo_name}/lock"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), MigrationsUnlockRepoForAuthenticatedUserOperation,
@@ -49277,6 +49913,8 @@ func (s *Server) handleMigrationsUnlockRepoForOrgRequest(args [3]string, argsEsc
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/migrations/{migration_id}/repos/{repo_name}/lock"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), MigrationsUnlockRepoForOrgOperation,
@@ -49428,6 +50066,8 @@ func (s *Server) handleMigrationsUpdateImportRequest(args [2]string, argsEscaped
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/import"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), MigrationsUpdateImportOperation,
@@ -49617,6 +50257,8 @@ func (s *Server) handleOAuthAuthorizationsCreateAuthorizationRequest(args [0]str
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/authorizations"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), OAuthAuthorizationsCreateAuthorizationOperation,
@@ -49767,6 +50409,8 @@ func (s *Server) handleOAuthAuthorizationsDeleteAuthorizationRequest(args [1]str
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/authorizations/{authorization_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), OAuthAuthorizationsDeleteAuthorizationOperation,
@@ -49920,6 +50564,8 @@ func (s *Server) handleOAuthAuthorizationsDeleteGrantRequest(args [1]string, arg
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/applications/grants/{grant_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), OAuthAuthorizationsDeleteGrantOperation,
@@ -50070,6 +50716,8 @@ func (s *Server) handleOAuthAuthorizationsGetAuthorizationRequest(args [1]string
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/authorizations/{authorization_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), OAuthAuthorizationsGetAuthorizationOperation,
@@ -50220,6 +50868,8 @@ func (s *Server) handleOAuthAuthorizationsGetGrantRequest(args [1]string, argsEs
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/applications/grants/{grant_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), OAuthAuthorizationsGetGrantOperation,
@@ -50389,6 +51039,8 @@ func (s *Server) handleOAuthAuthorizationsGetOrCreateAuthorizationForAppRequest(
 		semconv.HTTPRequestMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/authorizations/clients/{client_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), OAuthAuthorizationsGetOrCreateAuthorizationForAppOperation,
@@ -50568,6 +51220,8 @@ func (s *Server) handleOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFinge
 		semconv.HTTPRequestMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/authorizations/clients/{client_id}/{fingerprint}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintOperation,
@@ -50737,6 +51391,8 @@ func (s *Server) handleOAuthAuthorizationsListAuthorizationsRequest(args [0]stri
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/authorizations"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), OAuthAuthorizationsListAuthorizationsOperation,
@@ -50906,6 +51562,8 @@ func (s *Server) handleOAuthAuthorizationsListGrantsRequest(args [0]string, args
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/applications/grants"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), OAuthAuthorizationsListGrantsOperation,
@@ -51068,6 +51726,8 @@ func (s *Server) handleOAuthAuthorizationsUpdateAuthorizationRequest(args [1]str
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/authorizations/{authorization_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), OAuthAuthorizationsUpdateAuthorizationOperation,
@@ -51224,6 +51884,8 @@ func (s *Server) handleOrgsBlockUserRequest(args [2]string, argsEscaped bool, w 
 		semconv.HTTPRequestMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/blocks/{username}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), OrgsBlockUserOperation,
@@ -51372,6 +52034,8 @@ func (s *Server) handleOrgsCancelInvitationRequest(args [2]string, argsEscaped b
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/invitations/{invitation_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), OrgsCancelInvitationOperation,
@@ -51517,6 +52181,8 @@ func (s *Server) handleOrgsCheckBlockedUserRequest(args [2]string, argsEscaped b
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/blocks/{username}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), OrgsCheckBlockedUserOperation,
@@ -51662,6 +52328,8 @@ func (s *Server) handleOrgsCheckMembershipForUserRequest(args [2]string, argsEsc
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/members/{username}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), OrgsCheckMembershipForUserOperation,
@@ -51807,6 +52475,8 @@ func (s *Server) handleOrgsCheckPublicMembershipForUserRequest(args [2]string, a
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/public_members/{username}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), OrgsCheckPublicMembershipForUserOperation,
@@ -51956,6 +52626,8 @@ func (s *Server) handleOrgsConvertMemberToOutsideCollaboratorRequest(args [2]str
 		semconv.HTTPRequestMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/outside_collaborators/{username}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), OrgsConvertMemberToOutsideCollaboratorOperation,
@@ -52109,6 +52781,8 @@ func (s *Server) handleOrgsCreateInvitationRequest(args [1]string, argsEscaped b
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/invitations"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), OrgsCreateInvitationOperation,
@@ -52265,6 +52939,8 @@ func (s *Server) handleOrgsCreateWebhookRequest(args [1]string, argsEscaped bool
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/hooks"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), OrgsCreateWebhookOperation,
@@ -52421,6 +53097,8 @@ func (s *Server) handleOrgsDeleteWebhookRequest(args [2]string, argsEscaped bool
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/hooks/{hook_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), OrgsDeleteWebhookOperation,
@@ -52574,6 +53252,8 @@ func (s *Server) handleOrgsGetRequest(args [1]string, argsEscaped bool, w http.R
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), OrgsGetOperation,
@@ -52720,6 +53400,8 @@ func (s *Server) handleOrgsGetAuditLogRequest(args [1]string, argsEscaped bool, 
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/audit-log"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), OrgsGetAuditLogOperation,
@@ -52889,6 +53571,8 @@ func (s *Server) handleOrgsGetMembershipForAuthenticatedUserRequest(args [1]stri
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/user/memberships/orgs/{org}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), OrgsGetMembershipForAuthenticatedUserOperation,
@@ -53032,6 +53716,8 @@ func (s *Server) handleOrgsGetMembershipForUserRequest(args [2]string, argsEscap
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/memberships/{username}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), OrgsGetMembershipForUserOperation,
@@ -53179,6 +53865,8 @@ func (s *Server) handleOrgsGetWebhookRequest(args [2]string, argsEscaped bool, w
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/hooks/{hook_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), OrgsGetWebhookOperation,
@@ -53328,6 +54016,8 @@ func (s *Server) handleOrgsGetWebhookConfigForOrgRequest(args [2]string, argsEsc
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/hooks/{hook_id}/config"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), OrgsGetWebhookConfigForOrgOperation,
@@ -53473,6 +54163,8 @@ func (s *Server) handleOrgsGetWebhookDeliveryRequest(args [3]string, argsEscaped
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/hooks/{hook_id}/deliveries/{delivery_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), OrgsGetWebhookDeliveryOperation,
@@ -53625,6 +54317,8 @@ func (s *Server) handleOrgsListRequest(args [0]string, argsEscaped bool, w http.
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/organizations"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), OrgsListOperation,
@@ -53770,6 +54464,8 @@ func (s *Server) handleOrgsListBlockedUsersRequest(args [1]string, argsEscaped b
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/blocks"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), OrgsListBlockedUsersOperation,
@@ -53912,6 +54608,8 @@ func (s *Server) handleOrgsListFailedInvitationsRequest(args [1]string, argsEsca
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/failed_invitations"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), OrgsListFailedInvitationsOperation,
@@ -54066,6 +54764,8 @@ func (s *Server) handleOrgsListForAuthenticatedUserRequest(args [0]string, argsE
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/user/orgs"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), OrgsListForAuthenticatedUserOperation,
@@ -54216,6 +54916,8 @@ func (s *Server) handleOrgsListForUserRequest(args [1]string, argsEscaped bool, 
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/users/{username}/orgs"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), OrgsListForUserOperation,
@@ -54366,6 +55068,8 @@ func (s *Server) handleOrgsListInvitationTeamsRequest(args [2]string, argsEscape
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/invitations/{invitation_id}/teams"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), OrgsListInvitationTeamsOperation,
@@ -54520,6 +55224,8 @@ func (s *Server) handleOrgsListMembersRequest(args [1]string, argsEscaped bool, 
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/members"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), OrgsListMembersOperation,
@@ -54677,6 +55383,8 @@ func (s *Server) handleOrgsListMembershipsForAuthenticatedUserRequest(args [0]st
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/user/memberships/orgs"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), OrgsListMembershipsForAuthenticatedUserOperation,
@@ -54826,6 +55534,8 @@ func (s *Server) handleOrgsListOutsideCollaboratorsRequest(args [1]string, argsE
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/outside_collaborators"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), OrgsListOutsideCollaboratorsOperation,
@@ -54982,6 +55692,8 @@ func (s *Server) handleOrgsListPendingInvitationsRequest(args [1]string, argsEsc
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/invitations"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), OrgsListPendingInvitationsOperation,
@@ -55131,6 +55843,8 @@ func (s *Server) handleOrgsListPublicMembersRequest(args [1]string, argsEscaped 
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/public_members"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), OrgsListPublicMembersOperation,
@@ -55287,6 +56001,8 @@ func (s *Server) handleOrgsListSamlSSOAuthorizationsRequest(args [1]string, args
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/credential-authorizations"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), OrgsListSamlSSOAuthorizationsOperation,
@@ -55428,6 +56144,8 @@ func (s *Server) handleOrgsListWebhookDeliveriesRequest(args [2]string, argsEsca
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/hooks/{hook_id}/deliveries"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), OrgsListWebhookDeliveriesOperation,
@@ -55581,6 +56299,8 @@ func (s *Server) handleOrgsListWebhooksRequest(args [1]string, argsEscaped bool,
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/hooks"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), OrgsListWebhooksOperation,
@@ -55731,6 +56451,8 @@ func (s *Server) handleOrgsPingWebhookRequest(args [2]string, argsEscaped bool, 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/hooks/{hook_id}/pings"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), OrgsPingWebhookOperation,
@@ -55876,6 +56598,8 @@ func (s *Server) handleOrgsRedeliverWebhookDeliveryRequest(args [3]string, argsE
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/hooks/{hook_id}/deliveries/{delivery_id}/attempts"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), OrgsRedeliverWebhookDeliveryOperation,
@@ -56026,6 +56750,8 @@ func (s *Server) handleOrgsRemoveMemberRequest(args [2]string, argsEscaped bool,
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/members/{username}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), OrgsRemoveMemberOperation,
@@ -56175,6 +56901,8 @@ func (s *Server) handleOrgsRemoveMembershipForUserRequest(args [2]string, argsEs
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/memberships/{username}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), OrgsRemoveMembershipForUserOperation,
@@ -56320,6 +57048,8 @@ func (s *Server) handleOrgsRemoveOutsideCollaboratorRequest(args [2]string, args
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/outside_collaborators/{username}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), OrgsRemoveOutsideCollaboratorOperation,
@@ -56465,6 +57195,8 @@ func (s *Server) handleOrgsRemovePublicMembershipForAuthenticatedUserRequest(arg
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/public_members/{username}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), OrgsRemovePublicMembershipForAuthenticatedUserOperation,
@@ -56616,6 +57348,8 @@ func (s *Server) handleOrgsRemoveSamlSSOAuthorizationRequest(args [2]string, arg
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/credential-authorizations/{credential_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), OrgsRemoveSamlSSOAuthorizationOperation,
@@ -56774,6 +57508,8 @@ func (s *Server) handleOrgsSetMembershipForUserRequest(args [2]string, argsEscap
 		semconv.HTTPRequestMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/memberships/{username}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), OrgsSetMembershipForUserOperation,
@@ -56938,6 +57674,8 @@ func (s *Server) handleOrgsSetPublicMembershipForAuthenticatedUserRequest(args [
 		semconv.HTTPRequestMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/public_members/{username}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), OrgsSetPublicMembershipForAuthenticatedUserOperation,
@@ -57083,6 +57821,8 @@ func (s *Server) handleOrgsUnblockUserRequest(args [2]string, argsEscaped bool, 
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/blocks/{username}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), OrgsUnblockUserOperation,
@@ -57228,6 +57968,8 @@ func (s *Server) handleOrgsUpdateMembershipForAuthenticatedUserRequest(args [1]s
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/user/memberships/orgs/{org}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), OrgsUpdateMembershipForAuthenticatedUserOperation,
@@ -57388,6 +58130,8 @@ func (s *Server) handleOrgsUpdateWebhookRequest(args [2]string, argsEscaped bool
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/hooks/{hook_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), OrgsUpdateWebhookOperation,
@@ -57552,6 +58296,8 @@ func (s *Server) handleOrgsUpdateWebhookConfigForOrgRequest(args [2]string, args
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/hooks/{hook_id}/config"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), OrgsUpdateWebhookConfigForOrgOperation,
@@ -57717,6 +58463,8 @@ func (s *Server) handlePackagesDeletePackageForAuthenticatedUserRequest(args [2]
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/user/packages/{package_type}/{package_name}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PackagesDeletePackageForAuthenticatedUserOperation,
@@ -57869,6 +58617,8 @@ func (s *Server) handlePackagesDeletePackageForOrgRequest(args [3]string, argsEs
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/packages/{package_type}/{package_name}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PackagesDeletePackageForOrgOperation,
@@ -58025,6 +58775,8 @@ func (s *Server) handlePackagesDeletePackageForUserRequest(args [3]string, argsE
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/users/{username}/packages/{package_type}/{package_name}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PackagesDeletePackageForUserOperation,
@@ -58179,6 +58931,8 @@ func (s *Server) handlePackagesDeletePackageVersionForAuthenticatedUserRequest(a
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/user/packages/{package_type}/{package_name}/versions/{package_version_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PackagesDeletePackageVersionForAuthenticatedUserOperation,
@@ -58335,6 +59089,8 @@ func (s *Server) handlePackagesDeletePackageVersionForOrgRequest(args [4]string,
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PackagesDeletePackageVersionForOrgOperation,
@@ -58495,6 +59251,8 @@ func (s *Server) handlePackagesDeletePackageVersionForUserRequest(args [4]string
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PackagesDeletePackageVersionForUserOperation,
@@ -58650,6 +59408,8 @@ func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByAuthenticat
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/user/packages/{package_type}/{package_name}/versions"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserOperation,
@@ -58809,6 +59569,8 @@ func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByOrgRequest(
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/packages/{package_type}/{package_name}/versions"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PackagesGetAllPackageVersionsForPackageOwnedByOrgOperation,
@@ -58972,6 +59734,8 @@ func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByUserRequest
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/users/{username}/packages/{package_type}/{package_name}/versions"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PackagesGetAllPackageVersionsForPackageOwnedByUserOperation,
@@ -59123,6 +59887,8 @@ func (s *Server) handlePackagesGetPackageForAuthenticatedUserRequest(args [2]str
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/user/packages/{package_type}/{package_name}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PackagesGetPackageForAuthenticatedUserOperation,
@@ -59270,6 +60036,8 @@ func (s *Server) handlePackagesGetPackageForOrganizationRequest(args [3]string, 
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/packages/{package_type}/{package_name}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PackagesGetPackageForOrganizationOperation,
@@ -59421,6 +60189,8 @@ func (s *Server) handlePackagesGetPackageForUserRequest(args [3]string, argsEsca
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/users/{username}/packages/{package_type}/{package_name}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PackagesGetPackageForUserOperation,
@@ -59572,6 +60342,8 @@ func (s *Server) handlePackagesGetPackageVersionForAuthenticatedUserRequest(args
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/user/packages/{package_type}/{package_name}/versions/{package_version_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PackagesGetPackageVersionForAuthenticatedUserOperation,
@@ -59723,6 +60495,8 @@ func (s *Server) handlePackagesGetPackageVersionForOrganizationRequest(args [4]s
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PackagesGetPackageVersionForOrganizationOperation,
@@ -59879,6 +60653,8 @@ func (s *Server) handlePackagesGetPackageVersionForUserRequest(args [4]string, a
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PackagesGetPackageVersionForUserOperation,
@@ -60034,6 +60810,8 @@ func (s *Server) handlePackagesListPackagesForAuthenticatedUserRequest(args [0]s
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/user/packages"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PackagesListPackagesForAuthenticatedUserOperation,
@@ -60181,6 +60959,8 @@ func (s *Server) handlePackagesListPackagesForOrganizationRequest(args [1]string
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/packages"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PackagesListPackagesForOrganizationOperation,
@@ -60332,6 +61112,8 @@ func (s *Server) handlePackagesListPackagesForUserRequest(args [1]string, argsEs
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/users/{username}/packages"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PackagesListPackagesForUserOperation,
@@ -60490,6 +61272,8 @@ func (s *Server) handlePackagesRestorePackageForAuthenticatedUserRequest(args [2
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/user/packages/{package_type}/{package_name}/restore"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PackagesRestorePackageForAuthenticatedUserOperation,
@@ -60650,6 +61434,8 @@ func (s *Server) handlePackagesRestorePackageForOrgRequest(args [3]string, argsE
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/packages/{package_type}/{package_name}/restore"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PackagesRestorePackageForOrgOperation,
@@ -60814,6 +61600,8 @@ func (s *Server) handlePackagesRestorePackageForUserRequest(args [3]string, args
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/users/{username}/packages/{package_type}/{package_name}/restore"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PackagesRestorePackageForUserOperation,
@@ -60976,6 +61764,8 @@ func (s *Server) handlePackagesRestorePackageVersionForAuthenticatedUserRequest(
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/user/packages/{package_type}/{package_name}/versions/{package_version_id}/restore"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PackagesRestorePackageVersionForAuthenticatedUserOperation,
@@ -61136,6 +61926,8 @@ func (s *Server) handlePackagesRestorePackageVersionForOrgRequest(args [4]string
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}/restore"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PackagesRestorePackageVersionForOrgOperation,
@@ -61300,6 +62092,8 @@ func (s *Server) handlePackagesRestorePackageVersionForUserRequest(args [4]strin
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}/restore"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PackagesRestorePackageVersionForUserOperation,
@@ -61454,6 +62248,8 @@ func (s *Server) handleProjectsAddCollaboratorRequest(args [2]string, argsEscape
 		semconv.HTTPRequestMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/projects/{project_id}/collaborators/{username}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ProjectsAddCollaboratorOperation,
@@ -61614,6 +62410,8 @@ func (s *Server) handleProjectsCreateColumnRequest(args [1]string, argsEscaped b
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/projects/{project_id}/columns"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ProjectsCreateColumnOperation,
@@ -61770,6 +62568,8 @@ func (s *Server) handleProjectsCreateForAuthenticatedUserRequest(args [0]string,
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/user/projects"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ProjectsCreateForAuthenticatedUserOperation,
@@ -61913,6 +62713,8 @@ func (s *Server) handleProjectsCreateForOrgRequest(args [1]string, argsEscaped b
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/projects"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ProjectsCreateForOrgOperation,
@@ -62071,6 +62873,8 @@ func (s *Server) handleProjectsCreateForRepoRequest(args [2]string, argsEscaped 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/projects"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ProjectsCreateForRepoOperation,
@@ -62231,6 +63035,8 @@ func (s *Server) handleProjectsDeleteRequest(args [1]string, argsEscaped bool, w
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/projects/{project_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ProjectsDeleteOperation,
@@ -62372,6 +63178,8 @@ func (s *Server) handleProjectsDeleteCardRequest(args [1]string, argsEscaped boo
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/projects/columns/cards/{card_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ProjectsDeleteCardOperation,
@@ -62513,6 +63321,8 @@ func (s *Server) handleProjectsDeleteColumnRequest(args [1]string, argsEscaped b
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/projects/columns/{column_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ProjectsDeleteColumnOperation,
@@ -62656,6 +63466,8 @@ func (s *Server) handleProjectsGetRequest(args [1]string, argsEscaped bool, w ht
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/projects/{project_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ProjectsGetOperation,
@@ -62797,6 +63609,8 @@ func (s *Server) handleProjectsGetCardRequest(args [1]string, argsEscaped bool, 
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/projects/columns/cards/{card_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ProjectsGetCardOperation,
@@ -62938,6 +63752,8 @@ func (s *Server) handleProjectsGetColumnRequest(args [1]string, argsEscaped bool
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/projects/columns/{column_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ProjectsGetColumnOperation,
@@ -63081,6 +63897,8 @@ func (s *Server) handleProjectsGetPermissionForUserRequest(args [2]string, argsE
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/projects/{project_id}/collaborators/{username}/permission"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ProjectsGetPermissionForUserOperation,
@@ -63226,6 +64044,8 @@ func (s *Server) handleProjectsListCardsRequest(args [1]string, argsEscaped bool
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/projects/columns/{column_id}/cards"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ProjectsListCardsOperation,
@@ -63383,6 +64203,8 @@ func (s *Server) handleProjectsListCollaboratorsRequest(args [1]string, argsEsca
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/projects/{project_id}/collaborators"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ProjectsListCollaboratorsOperation,
@@ -63536,6 +64358,8 @@ func (s *Server) handleProjectsListColumnsRequest(args [1]string, argsEscaped bo
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/projects/{project_id}/columns"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ProjectsListColumnsOperation,
@@ -63687,6 +64511,8 @@ func (s *Server) handleProjectsListForOrgRequest(args [1]string, argsEscaped boo
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/projects"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ProjectsListForOrgOperation,
@@ -63842,6 +64668,8 @@ func (s *Server) handleProjectsListForRepoRequest(args [2]string, argsEscaped bo
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/projects"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ProjectsListForRepoOperation,
@@ -63999,6 +64827,8 @@ func (s *Server) handleProjectsListForUserRequest(args [1]string, argsEscaped bo
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/users/{username}/projects"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ProjectsListForUserOperation,
@@ -64152,6 +64982,8 @@ func (s *Server) handleProjectsMoveCardRequest(args [1]string, argsEscaped bool,
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/projects/columns/cards/{card_id}/moves"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ProjectsMoveCardOperation,
@@ -64308,6 +65140,8 @@ func (s *Server) handleProjectsMoveColumnRequest(args [1]string, argsEscaped boo
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/projects/columns/{column_id}/moves"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ProjectsMoveColumnOperation,
@@ -64465,6 +65299,8 @@ func (s *Server) handleProjectsRemoveCollaboratorRequest(args [2]string, argsEsc
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/projects/{project_id}/collaborators/{username}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ProjectsRemoveCollaboratorOperation,
@@ -64612,6 +65448,8 @@ func (s *Server) handleProjectsUpdateRequest(args [1]string, argsEscaped bool, w
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/projects/{project_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ProjectsUpdateOperation,
@@ -64768,6 +65606,8 @@ func (s *Server) handleProjectsUpdateCardRequest(args [1]string, argsEscaped boo
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/projects/columns/cards/{card_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ProjectsUpdateCardOperation,
@@ -64924,6 +65764,8 @@ func (s *Server) handleProjectsUpdateColumnRequest(args [1]string, argsEscaped b
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/projects/columns/{column_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ProjectsUpdateColumnOperation,
@@ -65080,6 +65922,8 @@ func (s *Server) handlePullsCheckIfMergedRequest(args [3]string, argsEscaped boo
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/merge"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PullsCheckIfMergedOperation,
@@ -65244,6 +66088,8 @@ func (s *Server) handlePullsCreateRequest(args [2]string, argsEscaped bool, w ht
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PullsCreateOperation,
@@ -65413,6 +66259,8 @@ func (s *Server) handlePullsCreateReplyForReviewCommentRequest(args [4]string, a
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/comments/{comment_id}/replies"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PullsCreateReplyForReviewCommentOperation,
@@ -65599,6 +66447,8 @@ func (s *Server) handlePullsCreateReviewRequest(args [3]string, argsEscaped bool
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/reviews"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PullsCreateReviewOperation,
@@ -65782,6 +66632,8 @@ func (s *Server) handlePullsCreateReviewCommentRequest(args [3]string, argsEscap
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/comments"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PullsCreateReviewCommentOperation,
@@ -65946,6 +66798,8 @@ func (s *Server) handlePullsDeletePendingReviewRequest(args [4]string, argsEscap
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PullsDeletePendingReviewOperation,
@@ -66099,6 +66953,8 @@ func (s *Server) handlePullsDeleteReviewCommentRequest(args [3]string, argsEscap
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/comments/{comment_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PullsDeleteReviewCommentOperation,
@@ -66250,6 +67106,8 @@ func (s *Server) handlePullsDismissReviewRequest(args [4]string, argsEscaped boo
 		semconv.HTTPRequestMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/dismissals"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PullsDismissReviewOperation,
@@ -66451,6 +67309,8 @@ func (s *Server) handlePullsGetRequest(args [3]string, argsEscaped bool, w http.
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PullsGetOperation,
@@ -66600,6 +67460,8 @@ func (s *Server) handlePullsGetReviewRequest(args [4]string, argsEscaped bool, w
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PullsGetReviewOperation,
@@ -66753,6 +67615,8 @@ func (s *Server) handlePullsGetReviewCommentRequest(args [3]string, argsEscaped 
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/comments/{comment_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PullsGetReviewCommentOperation,
@@ -66906,6 +67770,8 @@ func (s *Server) handlePullsListRequest(args [2]string, argsEscaped bool, w http
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PullsListOperation,
@@ -67079,6 +67945,8 @@ func (s *Server) handlePullsListCommentsForReviewRequest(args [4]string, argsEsc
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/comments"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PullsListCommentsForReviewOperation,
@@ -67242,6 +68110,8 @@ func (s *Server) handlePullsListCommitsRequest(args [3]string, argsEscaped bool,
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/commits"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PullsListCommitsOperation,
@@ -67400,6 +68270,8 @@ func (s *Server) handlePullsListFilesRequest(args [3]string, argsEscaped bool, w
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/files"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PullsListFilesOperation,
@@ -67557,6 +68429,8 @@ func (s *Server) handlePullsListRequestedReviewersRequest(args [3]string, argsEs
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PullsListRequestedReviewersOperation,
@@ -67715,6 +68589,8 @@ func (s *Server) handlePullsListReviewCommentsRequest(args [3]string, argsEscape
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/comments"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PullsListReviewCommentsOperation,
@@ -67885,6 +68761,8 @@ func (s *Server) handlePullsListReviewCommentsForRepoRequest(args [2]string, arg
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/comments"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PullsListReviewCommentsForRepoOperation,
@@ -68050,6 +68928,8 @@ func (s *Server) handlePullsListReviewsRequest(args [3]string, argsEscaped bool,
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/reviews"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PullsListReviewsOperation,
@@ -68213,6 +69093,8 @@ func (s *Server) handlePullsMergeRequest(args [3]string, argsEscaped bool, w htt
 		semconv.HTTPRequestMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/merge"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PullsMergeOperation,
@@ -68377,6 +69259,8 @@ func (s *Server) handlePullsRemoveRequestedReviewersRequest(args [3]string, args
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PullsRemoveRequestedReviewersOperation,
@@ -68541,6 +69425,8 @@ func (s *Server) handlePullsSubmitReviewRequest(args [4]string, argsEscaped bool
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/events"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PullsSubmitReviewOperation,
@@ -68716,6 +69602,8 @@ func (s *Server) handlePullsUpdateRequest(args [3]string, argsEscaped bool, w ht
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PullsUpdateOperation,
@@ -68881,6 +69769,8 @@ func (s *Server) handlePullsUpdateBranchRequest(args [3]string, argsEscaped bool
 		semconv.HTTPRequestMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/update-branch"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PullsUpdateBranchOperation,
@@ -69045,6 +69935,8 @@ func (s *Server) handlePullsUpdateReviewRequest(args [4]string, argsEscaped bool
 		semconv.HTTPRequestMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PullsUpdateReviewOperation,
@@ -69213,6 +70105,8 @@ func (s *Server) handlePullsUpdateReviewCommentRequest(args [3]string, argsEscap
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/comments/{comment_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), PullsUpdateReviewCommentOperation,
@@ -69380,6 +70274,8 @@ func (s *Server) handleRateLimitGetRequest(args [0]string, argsEscaped bool, w h
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/rate_limit"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), RateLimitGetOperation,
@@ -69504,6 +70400,8 @@ func (s *Server) handleReactionsCreateForCommitCommentRequest(args [3]string, ar
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/comments/{comment_id}/reactions"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReactionsCreateForCommitCommentOperation,
@@ -69669,6 +70567,8 @@ func (s *Server) handleReactionsCreateForIssueRequest(args [3]string, argsEscape
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/{issue_number}/reactions"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReactionsCreateForIssueOperation,
@@ -69835,6 +70735,8 @@ func (s *Server) handleReactionsCreateForIssueCommentRequest(args [3]string, arg
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/comments/{comment_id}/reactions"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReactionsCreateForIssueCommentOperation,
@@ -70001,6 +70903,8 @@ func (s *Server) handleReactionsCreateForPullRequestReviewCommentRequest(args [3
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReactionsCreateForPullRequestReviewCommentOperation,
@@ -70166,6 +71070,8 @@ func (s *Server) handleReactionsCreateForReleaseRequest(args [3]string, argsEsca
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/releases/{release_id}/reactions"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReactionsCreateForReleaseOperation,
@@ -70336,6 +71242,8 @@ func (s *Server) handleReactionsCreateForTeamDiscussionCommentInOrgRequest(args 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReactionsCreateForTeamDiscussionCommentInOrgOperation,
@@ -70514,6 +71422,8 @@ func (s *Server) handleReactionsCreateForTeamDiscussionCommentLegacyRequest(args
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReactionsCreateForTeamDiscussionCommentLegacyOperation,
@@ -70685,6 +71595,8 @@ func (s *Server) handleReactionsCreateForTeamDiscussionInOrgRequest(args [3]stri
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReactionsCreateForTeamDiscussionInOrgOperation,
@@ -70860,6 +71772,8 @@ func (s *Server) handleReactionsCreateForTeamDiscussionLegacyRequest(args [2]str
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/teams/{team_id}/discussions/{discussion_number}/reactions"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReactionsCreateForTeamDiscussionLegacyOperation,
@@ -71022,6 +71936,8 @@ func (s *Server) handleReactionsDeleteForCommitCommentRequest(args [4]string, ar
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/comments/{comment_id}/reactions/{reaction_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReactionsDeleteForCommitCommentOperation,
@@ -71177,6 +72093,8 @@ func (s *Server) handleReactionsDeleteForIssueRequest(args [4]string, argsEscape
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/{issue_number}/reactions/{reaction_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReactionsDeleteForIssueOperation,
@@ -71332,6 +72250,8 @@ func (s *Server) handleReactionsDeleteForIssueCommentRequest(args [4]string, arg
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/comments/{comment_id}/reactions/{reaction_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReactionsDeleteForIssueCommentOperation,
@@ -71488,6 +72408,8 @@ func (s *Server) handleReactionsDeleteForPullRequestCommentRequest(args [4]strin
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions/{reaction_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReactionsDeleteForPullRequestCommentOperation,
@@ -71648,6 +72570,8 @@ func (s *Server) handleReactionsDeleteForTeamDiscussionRequest(args [4]string, a
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions/{reaction_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReactionsDeleteForTeamDiscussionOperation,
@@ -71806,6 +72730,8 @@ func (s *Server) handleReactionsDeleteForTeamDiscussionCommentRequest(args [5]st
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions/{reaction_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReactionsDeleteForTeamDiscussionCommentOperation,
@@ -71972,6 +72898,8 @@ func (s *Server) handleReactionsDeleteLegacyRequest(args [1]string, argsEscaped 
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/reactions/{reaction_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReactionsDeleteLegacyOperation,
@@ -72113,6 +73041,8 @@ func (s *Server) handleReactionsListForCommitCommentRequest(args [3]string, args
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/comments/{comment_id}/reactions"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReactionsListForCommitCommentOperation,
@@ -72274,6 +73204,8 @@ func (s *Server) handleReactionsListForIssueRequest(args [3]string, argsEscaped 
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/{issue_number}/reactions"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReactionsListForIssueOperation,
@@ -72435,6 +73367,8 @@ func (s *Server) handleReactionsListForIssueCommentRequest(args [3]string, argsE
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/issues/comments/{comment_id}/reactions"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReactionsListForIssueCommentOperation,
@@ -72597,6 +73531,8 @@ func (s *Server) handleReactionsListForPullRequestReviewCommentRequest(args [3]s
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReactionsListForPullRequestReviewCommentOperation,
@@ -72762,6 +73698,8 @@ func (s *Server) handleReactionsListForTeamDiscussionCommentInOrgRequest(args [4
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReactionsListForTeamDiscussionCommentInOrgOperation,
@@ -72935,6 +73873,8 @@ func (s *Server) handleReactionsListForTeamDiscussionCommentLegacyRequest(args [
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReactionsListForTeamDiscussionCommentLegacyOperation,
@@ -73100,6 +74040,8 @@ func (s *Server) handleReactionsListForTeamDiscussionInOrgRequest(args [3]string
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReactionsListForTeamDiscussionInOrgOperation,
@@ -73269,6 +74211,8 @@ func (s *Server) handleReactionsListForTeamDiscussionLegacyRequest(args [2]strin
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/teams/{team_id}/discussions/{discussion_number}/reactions"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReactionsListForTeamDiscussionLegacyOperation,
@@ -73426,6 +74370,8 @@ func (s *Server) handleReposAcceptInvitationRequest(args [1]string, argsEscaped 
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/user/repository_invitations/{invitation_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposAcceptInvitationOperation,
@@ -73581,6 +74527,8 @@ func (s *Server) handleReposAddAppAccessRestrictionsRequest(args [3]string, args
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposAddAppAccessRestrictionsOperation,
@@ -73764,6 +74712,8 @@ func (s *Server) handleReposAddCollaboratorRequest(args [3]string, argsEscaped b
 		semconv.HTTPRequestMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/collaborators/{username}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposAddCollaboratorOperation,
@@ -73932,6 +74882,8 @@ func (s *Server) handleReposAddStatusCheckContextsRequest(args [3]string, argsEs
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposAddStatusCheckContextsOperation,
@@ -74110,6 +75062,8 @@ func (s *Server) handleReposAddTeamAccessRestrictionsRequest(args [3]string, arg
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposAddTeamAccessRestrictionsOperation,
@@ -74287,6 +75241,8 @@ func (s *Server) handleReposAddUserAccessRestrictionsRequest(args [3]string, arg
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposAddUserAccessRestrictionsOperation,
@@ -74455,6 +75411,8 @@ func (s *Server) handleReposCheckCollaboratorRequest(args [3]string, argsEscaped
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/collaborators/{username}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposCheckCollaboratorOperation,
@@ -74607,6 +75565,8 @@ func (s *Server) handleReposCheckVulnerabilityAlertsRequest(args [2]string, args
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/vulnerability-alerts"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposCheckVulnerabilityAlertsOperation,
@@ -74806,6 +75766,8 @@ func (s *Server) handleReposCompareCommitsRequest(args [3]string, argsEscaped bo
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/compare/{basehead}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposCompareCommitsOperation,
@@ -74963,6 +75925,8 @@ func (s *Server) handleReposCreateAutolinkRequest(args [2]string, argsEscaped bo
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/autolinks"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposCreateAutolinkOperation,
@@ -75130,6 +76094,8 @@ func (s *Server) handleReposCreateCommitCommentRequest(args [3]string, argsEscap
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/commits/{commit_sha}/comments"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposCreateCommitCommentOperation,
@@ -75300,6 +76266,8 @@ func (s *Server) handleReposCreateCommitSignatureProtectionRequest(args [3]strin
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/required_signatures"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposCreateCommitSignatureProtectionOperation,
@@ -75451,6 +76419,8 @@ func (s *Server) handleReposCreateCommitStatusRequest(args [3]string, argsEscape
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/statuses/{sha}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposCreateCommitStatusOperation,
@@ -75615,6 +76585,8 @@ func (s *Server) handleReposCreateDeployKeyRequest(args [2]string, argsEscaped b
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/keys"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposCreateDeployKeyOperation,
@@ -75830,6 +76802,8 @@ func (s *Server) handleReposCreateDeploymentRequest(args [2]string, argsEscaped 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/deployments"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposCreateDeploymentOperation,
@@ -75992,6 +76966,8 @@ func (s *Server) handleReposCreateDeploymentStatusRequest(args [3]string, argsEs
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/deployments/{deployment_id}/statuses"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposCreateDeploymentStatusOperation,
@@ -76175,6 +77151,8 @@ func (s *Server) handleReposCreateDispatchEventRequest(args [2]string, argsEscap
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/dispatches"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposCreateDispatchEventOperation,
@@ -76341,6 +77319,8 @@ func (s *Server) handleReposCreateForAuthenticatedUserRequest(args [0]string, ar
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/user/repos"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposCreateForAuthenticatedUserOperation,
@@ -76485,6 +77465,8 @@ func (s *Server) handleReposCreateForkRequest(args [2]string, argsEscaped bool, 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/forks"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposCreateForkOperation,
@@ -76652,6 +77634,8 @@ func (s *Server) handleReposCreateInOrgRequest(args [1]string, argsEscaped bool,
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/repos"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposCreateInOrgOperation,
@@ -76808,6 +77792,8 @@ func (s *Server) handleReposCreateOrUpdateFileContentsRequest(args [3]string, ar
 		semconv.HTTPRequestMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/contents/{path}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposCreateOrUpdateFileContentsOperation,
@@ -76973,6 +77959,8 @@ func (s *Server) handleReposCreatePagesSiteRequest(args [2]string, argsEscaped b
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pages"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposCreatePagesSiteOperation,
@@ -77140,6 +78128,8 @@ func (s *Server) handleReposCreateReleaseRequest(args [2]string, argsEscaped boo
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/releases"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposCreateReleaseOperation,
@@ -77311,6 +78301,8 @@ func (s *Server) handleReposCreateUsingTemplateRequest(args [2]string, argsEscap
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{template_owner}/{template_repo}/generate"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposCreateUsingTemplateOperation,
@@ -77473,6 +78465,8 @@ func (s *Server) handleReposCreateWebhookRequest(args [2]string, argsEscaped boo
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/hooks"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposCreateWebhookOperation,
@@ -77633,6 +78627,8 @@ func (s *Server) handleReposDeclineInvitationRequest(args [1]string, argsEscaped
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/user/repository_invitations/{invitation_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposDeclineInvitationOperation,
@@ -77777,6 +78773,8 @@ func (s *Server) handleReposDeleteRequest(args [2]string, argsEscaped bool, w ht
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposDeleteOperation,
@@ -77927,6 +78925,8 @@ func (s *Server) handleReposDeleteAccessRestrictionsRequest(args [3]string, args
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposDeleteAccessRestrictionsOperation,
@@ -78082,6 +79082,8 @@ func (s *Server) handleReposDeleteAdminBranchProtectionRequest(args [3]string, a
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposDeleteAdminBranchProtectionOperation,
@@ -78231,6 +79233,8 @@ func (s *Server) handleReposDeleteAnEnvironmentRequest(args [3]string, argsEscap
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/environments/{environment_name}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposDeleteAnEnvironmentOperation,
@@ -78381,6 +79385,8 @@ func (s *Server) handleReposDeleteAutolinkRequest(args [3]string, argsEscaped bo
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/autolinks/{autolink_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposDeleteAutolinkOperation,
@@ -78534,6 +79540,8 @@ func (s *Server) handleReposDeleteBranchProtectionRequest(args [3]string, argsEs
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposDeleteBranchProtectionOperation,
@@ -78683,6 +79691,8 @@ func (s *Server) handleReposDeleteCommitCommentRequest(args [3]string, argsEscap
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/comments/{comment_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposDeleteCommitCommentOperation,
@@ -78839,6 +79849,8 @@ func (s *Server) handleReposDeleteCommitSignatureProtectionRequest(args [3]strin
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/required_signatures"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposDeleteCommitSignatureProtectionOperation,
@@ -78989,6 +80001,8 @@ func (s *Server) handleReposDeleteDeployKeyRequest(args [3]string, argsEscaped b
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/keys/{key_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposDeleteDeployKeyOperation,
@@ -79146,6 +80160,8 @@ func (s *Server) handleReposDeleteDeploymentRequest(args [3]string, argsEscaped 
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/deployments/{deployment_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposDeleteDeploymentOperation,
@@ -79302,6 +80318,8 @@ func (s *Server) handleReposDeleteFileRequest(args [3]string, argsEscaped bool, 
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/contents/{path}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposDeleteFileOperation,
@@ -79466,6 +80484,8 @@ func (s *Server) handleReposDeleteInvitationRequest(args [3]string, argsEscaped 
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/invitations/{invitation_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposDeleteInvitationOperation,
@@ -79615,6 +80635,8 @@ func (s *Server) handleReposDeletePagesSiteRequest(args [2]string, argsEscaped b
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pages"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposDeletePagesSiteOperation,
@@ -79764,6 +80786,8 @@ func (s *Server) handleReposDeletePullRequestReviewProtectionRequest(args [3]str
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposDeletePullRequestReviewProtectionOperation,
@@ -79913,6 +80937,8 @@ func (s *Server) handleReposDeleteReleaseRequest(args [3]string, argsEscaped boo
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/releases/{release_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposDeleteReleaseOperation,
@@ -80062,6 +81088,8 @@ func (s *Server) handleReposDeleteReleaseAssetRequest(args [3]string, argsEscape
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/releases/assets/{asset_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposDeleteReleaseAssetOperation,
@@ -80211,6 +81239,8 @@ func (s *Server) handleReposDeleteWebhookRequest(args [3]string, argsEscaped boo
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/hooks/{hook_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposDeleteWebhookOperation,
@@ -80362,6 +81392,8 @@ func (s *Server) handleReposDisableAutomatedSecurityFixesRequest(args [2]string,
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/automated-security-fixes"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposDisableAutomatedSecurityFixesOperation,
@@ -80507,6 +81539,8 @@ func (s *Server) handleReposDisableLfsForRepoRequest(args [2]string, argsEscaped
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/lfs"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposDisableLfsForRepoOperation,
@@ -80655,6 +81689,8 @@ func (s *Server) handleReposDisableVulnerabilityAlertsRequest(args [2]string, ar
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/vulnerability-alerts"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposDisableVulnerabilityAlertsOperation,
@@ -80805,6 +81841,8 @@ func (s *Server) handleReposDownloadTarballArchiveRequest(args [3]string, argsEs
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/tarball/{ref}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposDownloadTarballArchiveOperation,
@@ -80959,6 +81997,8 @@ func (s *Server) handleReposDownloadZipballArchiveRequest(args [3]string, argsEs
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/zipball/{ref}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposDownloadZipballArchiveOperation,
@@ -81110,6 +82150,8 @@ func (s *Server) handleReposEnableAutomatedSecurityFixesRequest(args [2]string, 
 		semconv.HTTPRequestMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/automated-security-fixes"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposEnableAutomatedSecurityFixesOperation,
@@ -81255,6 +82297,8 @@ func (s *Server) handleReposEnableLfsForRepoRequest(args [2]string, argsEscaped 
 		semconv.HTTPRequestMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/lfs"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposEnableLfsForRepoOperation,
@@ -81403,6 +82447,8 @@ func (s *Server) handleReposEnableVulnerabilityAlertsRequest(args [2]string, arg
 		semconv.HTTPRequestMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/vulnerability-alerts"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposEnableVulnerabilityAlertsOperation,
@@ -81549,6 +82595,8 @@ func (s *Server) handleReposGetRequest(args [2]string, argsEscaped bool, w http.
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposGetOperation,
@@ -81701,6 +82749,8 @@ func (s *Server) handleReposGetAccessRestrictionsRequest(args [3]string, argsEsc
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposGetAccessRestrictionsOperation,
@@ -81854,6 +82904,8 @@ func (s *Server) handleReposGetAdminBranchProtectionRequest(args [3]string, args
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposGetAdminBranchProtectionOperation,
@@ -82007,6 +83059,8 @@ func (s *Server) handleReposGetAllStatusCheckContextsRequest(args [3]string, arg
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposGetAllStatusCheckContextsOperation,
@@ -82156,6 +83210,8 @@ func (s *Server) handleReposGetAllTopicsRequest(args [2]string, argsEscaped bool
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/topics"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposGetAllTopicsOperation,
@@ -82316,6 +83372,8 @@ func (s *Server) handleReposGetAppsWithAccessToProtectedBranchRequest(args [3]st
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposGetAppsWithAccessToProtectedBranchOperation,
@@ -82466,6 +83524,8 @@ func (s *Server) handleReposGetAutolinkRequest(args [3]string, argsEscaped bool,
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/autolinks/{autolink_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposGetAutolinkOperation,
@@ -82615,6 +83675,8 @@ func (s *Server) handleReposGetBranchRequest(args [3]string, argsEscaped bool, w
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposGetBranchOperation,
@@ -82768,6 +83830,8 @@ func (s *Server) handleReposGetBranchProtectionRequest(args [3]string, argsEscap
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposGetBranchProtectionOperation,
@@ -82918,6 +83982,8 @@ func (s *Server) handleReposGetClonesRequest(args [2]string, argsEscaped bool, w
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/traffic/clones"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposGetClonesOperation,
@@ -83067,6 +84133,8 @@ func (s *Server) handleReposGetCodeFrequencyStatsRequest(args [2]string, argsEsc
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/stats/code_frequency"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposGetCodeFrequencyStatsOperation,
@@ -83213,6 +84281,8 @@ func (s *Server) handleReposGetCollaboratorPermissionLevelRequest(args [3]string
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/collaborators/{username}/permission"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposGetCollaboratorPermissionLevelOperation,
@@ -83370,6 +84440,8 @@ func (s *Server) handleReposGetCombinedStatusForRefRequest(args [3]string, argsE
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/commits/{ref}/status"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposGetCombinedStatusForRefOperation,
@@ -83573,6 +84645,8 @@ func (s *Server) handleReposGetCommitRequest(args [3]string, argsEscaped bool, w
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/commits/{ref}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposGetCommitOperation,
@@ -83731,6 +84805,8 @@ func (s *Server) handleReposGetCommitActivityStatsRequest(args [2]string, argsEs
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/stats/commit_activity"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposGetCommitActivityStatsOperation,
@@ -83876,6 +84952,8 @@ func (s *Server) handleReposGetCommitCommentRequest(args [3]string, argsEscaped 
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/comments/{comment_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposGetCommitCommentOperation,
@@ -84034,6 +85112,8 @@ func (s *Server) handleReposGetCommitSignatureProtectionRequest(args [3]string, 
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/required_signatures"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposGetCommitSignatureProtectionOperation,
@@ -84192,6 +85272,8 @@ func (s *Server) handleReposGetCommunityProfileMetricsRequest(args [2]string, ar
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/community/profile"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposGetCommunityProfileMetricsOperation,
@@ -84342,6 +85424,8 @@ func (s *Server) handleReposGetContributorsStatsRequest(args [2]string, argsEsca
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/stats/contributors"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposGetContributorsStatsOperation,
@@ -84487,6 +85571,8 @@ func (s *Server) handleReposGetDeployKeyRequest(args [3]string, argsEscaped bool
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/keys/{key_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposGetDeployKeyOperation,
@@ -84636,6 +85722,8 @@ func (s *Server) handleReposGetDeploymentRequest(args [3]string, argsEscaped boo
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/deployments/{deployment_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposGetDeploymentOperation,
@@ -84785,6 +85873,8 @@ func (s *Server) handleReposGetDeploymentStatusRequest(args [4]string, argsEscap
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/deployments/{deployment_id}/statuses/{status_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposGetDeploymentStatusOperation,
@@ -84938,6 +86028,8 @@ func (s *Server) handleReposGetLatestPagesBuildRequest(args [2]string, argsEscap
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pages/builds/latest"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposGetLatestPagesBuildOperation,
@@ -85086,6 +86178,8 @@ func (s *Server) handleReposGetLatestReleaseRequest(args [2]string, argsEscaped 
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/releases/latest"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposGetLatestReleaseOperation,
@@ -85231,6 +86325,8 @@ func (s *Server) handleReposGetPagesRequest(args [2]string, argsEscaped bool, w 
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pages"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposGetPagesOperation,
@@ -85376,6 +86472,8 @@ func (s *Server) handleReposGetPagesBuildRequest(args [3]string, argsEscaped boo
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pages/builds/{build_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposGetPagesBuildOperation,
@@ -85531,6 +86629,8 @@ func (s *Server) handleReposGetPagesHealthCheckRequest(args [2]string, argsEscap
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pages/health"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposGetPagesHealthCheckOperation,
@@ -85679,6 +86779,8 @@ func (s *Server) handleReposGetParticipationStatsRequest(args [2]string, argsEsc
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/stats/participation"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposGetParticipationStatsOperation,
@@ -85828,6 +86930,8 @@ func (s *Server) handleReposGetPullRequestReviewProtectionRequest(args [3]string
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposGetPullRequestReviewProtectionOperation,
@@ -85982,6 +87086,8 @@ func (s *Server) handleReposGetPunchCardStatsRequest(args [2]string, argsEscaped
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/stats/punch_card"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposGetPunchCardStatsOperation,
@@ -86129,6 +87235,8 @@ func (s *Server) handleReposGetReadmeRequest(args [2]string, argsEscaped bool, w
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/readme"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposGetReadmeOperation,
@@ -86280,6 +87388,8 @@ func (s *Server) handleReposGetReadmeInDirectoryRequest(args [3]string, argsEsca
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/readme/{dir}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposGetReadmeInDirectoryOperation,
@@ -86435,6 +87545,8 @@ func (s *Server) handleReposGetReleaseRequest(args [3]string, argsEscaped bool, 
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/releases/{release_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposGetReleaseOperation,
@@ -86587,6 +87699,8 @@ func (s *Server) handleReposGetReleaseAssetRequest(args [3]string, argsEscaped b
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/releases/assets/{asset_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposGetReleaseAssetOperation,
@@ -86736,6 +87850,8 @@ func (s *Server) handleReposGetReleaseByTagRequest(args [3]string, argsEscaped b
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/releases/tags/{tag}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposGetReleaseByTagOperation,
@@ -86889,6 +88005,8 @@ func (s *Server) handleReposGetStatusChecksProtectionRequest(args [3]string, arg
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposGetStatusChecksProtectionOperation,
@@ -87043,6 +88161,8 @@ func (s *Server) handleReposGetTeamsWithAccessToProtectedBranchRequest(args [3]s
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposGetTeamsWithAccessToProtectedBranchOperation,
@@ -87192,6 +88312,8 @@ func (s *Server) handleReposGetTopPathsRequest(args [2]string, argsEscaped bool,
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/traffic/popular/paths"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposGetTopPathsOperation,
@@ -87337,6 +88459,8 @@ func (s *Server) handleReposGetTopReferrersRequest(args [2]string, argsEscaped b
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/traffic/popular/referrers"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposGetTopReferrersOperation,
@@ -87487,6 +88611,8 @@ func (s *Server) handleReposGetUsersWithAccessToProtectedBranchRequest(args [3]s
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposGetUsersWithAccessToProtectedBranchOperation,
@@ -87637,6 +88763,8 @@ func (s *Server) handleReposGetViewsRequest(args [2]string, argsEscaped bool, w 
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/traffic/views"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposGetViewsOperation,
@@ -87788,6 +88916,8 @@ func (s *Server) handleReposGetWebhookRequest(args [3]string, argsEscaped bool, 
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/hooks/{hook_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposGetWebhookOperation,
@@ -87941,6 +89071,8 @@ func (s *Server) handleReposGetWebhookConfigForRepoRequest(args [3]string, argsE
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/hooks/{hook_id}/config"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposGetWebhookConfigForRepoOperation,
@@ -88090,6 +89222,8 @@ func (s *Server) handleReposGetWebhookDeliveryRequest(args [4]string, argsEscape
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/hooks/{hook_id}/deliveries/{delivery_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposGetWebhookDeliveryOperation,
@@ -88244,6 +89378,8 @@ func (s *Server) handleReposListAutolinksRequest(args [2]string, argsEscaped boo
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/autolinks"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposListAutolinksOperation,
@@ -88393,6 +89529,8 @@ func (s *Server) handleReposListBranchesRequest(args [2]string, argsEscaped bool
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposListBranchesOperation,
@@ -88555,6 +89693,8 @@ func (s *Server) handleReposListBranchesForHeadCommitRequest(args [3]string, arg
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/commits/{commit_sha}/branches-where-head"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposListBranchesForHeadCommitOperation,
@@ -88708,6 +89848,8 @@ func (s *Server) handleReposListCollaboratorsRequest(args [2]string, argsEscaped
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/collaborators"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposListCollaboratorsOperation,
@@ -88865,6 +90007,8 @@ func (s *Server) handleReposListCommentsForCommitRequest(args [3]string, argsEsc
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/commits/{commit_sha}/comments"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposListCommentsForCommitOperation,
@@ -89025,6 +90169,8 @@ func (s *Server) handleReposListCommitCommentsForRepoRequest(args [2]string, arg
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/comments"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposListCommitCommentsForRepoOperation,
@@ -89181,6 +90327,8 @@ func (s *Server) handleReposListCommitStatusesForRefRequest(args [3]string, args
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/commits/{ref}/statuses"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposListCommitStatusesForRefOperation,
@@ -89369,6 +90517,8 @@ func (s *Server) handleReposListCommitsRequest(args [2]string, argsEscaped bool,
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/commits"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposListCommitsOperation,
@@ -89548,6 +90698,8 @@ func (s *Server) handleReposListContributorsRequest(args [2]string, argsEscaped 
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/contributors"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposListContributorsOperation,
@@ -89705,6 +90857,8 @@ func (s *Server) handleReposListDeployKeysRequest(args [2]string, argsEscaped bo
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/keys"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposListDeployKeysOperation,
@@ -89858,6 +91012,8 @@ func (s *Server) handleReposListDeploymentStatusesRequest(args [3]string, argsEs
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/deployments/{deployment_id}/statuses"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposListDeploymentStatusesOperation,
@@ -90015,6 +91171,8 @@ func (s *Server) handleReposListDeploymentsRequest(args [2]string, argsEscaped b
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/deployments"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposListDeploymentsOperation,
@@ -90187,6 +91345,8 @@ func (s *Server) handleReposListForAuthenticatedUserRequest(args [0]string, args
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/user/repos"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposListForAuthenticatedUserOperation,
@@ -90360,6 +91520,8 @@ func (s *Server) handleReposListForOrgRequest(args [1]string, argsEscaped bool, 
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/repos"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposListForOrgOperation,
@@ -90522,6 +91684,8 @@ func (s *Server) handleReposListForUserRequest(args [1]string, argsEscaped bool,
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/users/{username}/repos"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposListForUserOperation,
@@ -90683,6 +91847,8 @@ func (s *Server) handleReposListForksRequest(args [2]string, argsEscaped bool, w
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/forks"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposListForksOperation,
@@ -90841,6 +92007,8 @@ func (s *Server) handleReposListInvitationsRequest(args [2]string, argsEscaped b
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/invitations"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposListInvitationsOperation,
@@ -90995,6 +92163,8 @@ func (s *Server) handleReposListInvitationsForAuthenticatedUserRequest(args [0]s
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/user/repository_invitations"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposListInvitationsForAuthenticatedUserOperation,
@@ -91141,6 +92311,8 @@ func (s *Server) handleReposListLanguagesRequest(args [2]string, argsEscaped boo
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/languages"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposListLanguagesOperation,
@@ -91286,6 +92458,8 @@ func (s *Server) handleReposListPagesBuildsRequest(args [2]string, argsEscaped b
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pages/builds"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposListPagesBuildsOperation,
@@ -91445,6 +92619,8 @@ func (s *Server) handleReposListPublicRequest(args [0]string, argsEscaped bool, 
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repositories"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposListPublicOperation,
@@ -91591,6 +92767,8 @@ func (s *Server) handleReposListPullRequestsAssociatedWithCommitRequest(args [3]
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/commits/{commit_sha}/pulls"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposListPullRequestsAssociatedWithCommitOperation,
@@ -91748,6 +92926,8 @@ func (s *Server) handleReposListReleaseAssetsRequest(args [3]string, argsEscaped
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/releases/{release_id}/assets"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposListReleaseAssetsOperation,
@@ -91909,6 +93089,8 @@ func (s *Server) handleReposListReleasesRequest(args [2]string, argsEscaped bool
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/releases"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposListReleasesOperation,
@@ -92062,6 +93244,8 @@ func (s *Server) handleReposListTagsRequest(args [2]string, argsEscaped bool, w 
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/tags"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposListTagsOperation,
@@ -92215,6 +93399,8 @@ func (s *Server) handleReposListTeamsRequest(args [2]string, argsEscaped bool, w
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/teams"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposListTeamsOperation,
@@ -92368,6 +93554,8 @@ func (s *Server) handleReposListWebhookDeliveriesRequest(args [3]string, argsEsc
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/hooks/{hook_id}/deliveries"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposListWebhookDeliveriesOperation,
@@ -92525,6 +93713,8 @@ func (s *Server) handleReposListWebhooksRequest(args [2]string, argsEscaped bool
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/hooks"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposListWebhooksOperation,
@@ -92678,6 +93868,8 @@ func (s *Server) handleReposMergeRequest(args [2]string, argsEscaped bool, w htt
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/merges"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposMergeOperation,
@@ -92839,6 +94031,8 @@ func (s *Server) handleReposMergeUpstreamRequest(args [2]string, argsEscaped boo
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/merge-upstream"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposMergeUpstreamOperation,
@@ -93000,6 +94194,8 @@ func (s *Server) handleReposPingWebhookRequest(args [3]string, argsEscaped bool,
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/hooks/{hook_id}/pings"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposPingWebhookOperation,
@@ -93149,6 +94345,8 @@ func (s *Server) handleReposRedeliverWebhookDeliveryRequest(args [4]string, args
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/hooks/{hook_id}/deliveries/{delivery_id}/attempts"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposRedeliverWebhookDeliveryOperation,
@@ -93316,6 +94514,8 @@ func (s *Server) handleReposRemoveAppAccessRestrictionsRequest(args [3]string, a
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposRemoveAppAccessRestrictionsOperation,
@@ -93480,6 +94680,8 @@ func (s *Server) handleReposRemoveCollaboratorRequest(args [3]string, argsEscape
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/collaborators/{username}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposRemoveCollaboratorOperation,
@@ -93633,6 +94835,8 @@ func (s *Server) handleReposRemoveStatusCheckContextsRequest(args [3]string, arg
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposRemoveStatusCheckContextsOperation,
@@ -93801,6 +95005,8 @@ func (s *Server) handleReposRemoveStatusCheckProtectionRequest(args [3]string, a
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposRemoveStatusCheckProtectionOperation,
@@ -93964,6 +95170,8 @@ func (s *Server) handleReposRemoveTeamAccessRestrictionsRequest(args [3]string, 
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposRemoveTeamAccessRestrictionsOperation,
@@ -94141,6 +95349,8 @@ func (s *Server) handleReposRemoveUserAccessRestrictionsRequest(args [3]string, 
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposRemoveUserAccessRestrictionsOperation,
@@ -94317,6 +95527,8 @@ func (s *Server) handleReposRenameBranchRequest(args [3]string, argsEscaped bool
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/rename"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposRenameBranchOperation,
@@ -94481,6 +95693,8 @@ func (s *Server) handleReposReplaceAllTopicsRequest(args [2]string, argsEscaped 
 		semconv.HTTPRequestMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/topics"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposReplaceAllTopicsOperation,
@@ -94646,6 +95860,8 @@ func (s *Server) handleReposRequestPagesBuildRequest(args [2]string, argsEscaped
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/pages/builds"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposRequestPagesBuildOperation,
@@ -94797,6 +96013,8 @@ func (s *Server) handleReposSetAdminBranchProtectionRequest(args [3]string, args
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposSetAdminBranchProtectionOperation,
@@ -94962,6 +96180,8 @@ func (s *Server) handleReposSetAppAccessRestrictionsRequest(args [3]string, args
 		semconv.HTTPRequestMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposSetAppAccessRestrictionsOperation,
@@ -95130,6 +96350,8 @@ func (s *Server) handleReposSetStatusCheckContextsRequest(args [3]string, argsEs
 		semconv.HTTPRequestMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposSetStatusCheckContextsOperation,
@@ -95309,6 +96531,8 @@ func (s *Server) handleReposSetTeamAccessRestrictionsRequest(args [3]string, arg
 		semconv.HTTPRequestMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposSetTeamAccessRestrictionsOperation,
@@ -95487,6 +96711,8 @@ func (s *Server) handleReposSetUserAccessRestrictionsRequest(args [3]string, arg
 		semconv.HTTPRequestMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposSetUserAccessRestrictionsOperation,
@@ -95654,6 +96880,8 @@ func (s *Server) handleReposTestPushWebhookRequest(args [3]string, argsEscaped b
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/hooks/{hook_id}/tests"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposTestPushWebhookOperation,
@@ -95807,6 +97035,8 @@ func (s *Server) handleReposTransferRequest(args [2]string, argsEscaped bool, w 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/transfer"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposTransferOperation,
@@ -95968,6 +97198,8 @@ func (s *Server) handleReposUpdateRequest(args [2]string, argsEscaped bool, w ht
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposUpdateOperation,
@@ -96135,6 +97367,8 @@ func (s *Server) handleReposUpdateBranchProtectionRequest(args [3]string, argsEs
 		semconv.HTTPRequestMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposUpdateBranchProtectionOperation,
@@ -96299,6 +97533,8 @@ func (s *Server) handleReposUpdateCommitCommentRequest(args [3]string, argsEscap
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/comments/{comment_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposUpdateCommitCommentOperation,
@@ -96463,6 +97699,8 @@ func (s *Server) handleReposUpdateInvitationRequest(args [3]string, argsEscaped 
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/invitations/{invitation_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposUpdateInvitationOperation,
@@ -96634,6 +97872,8 @@ func (s *Server) handleReposUpdatePullRequestReviewProtectionRequest(args [3]str
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposUpdatePullRequestReviewProtectionOperation,
@@ -96798,6 +98038,8 @@ func (s *Server) handleReposUpdateReleaseRequest(args [3]string, argsEscaped boo
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/releases/{release_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposUpdateReleaseOperation,
@@ -96962,6 +98204,8 @@ func (s *Server) handleReposUpdateReleaseAssetRequest(args [3]string, argsEscape
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/releases/assets/{asset_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposUpdateReleaseAssetOperation,
@@ -97132,6 +98376,8 @@ func (s *Server) handleReposUpdateStatusCheckProtectionRequest(args [3]string, a
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposUpdateStatusCheckProtectionOperation,
@@ -97299,6 +98545,8 @@ func (s *Server) handleReposUpdateWebhookRequest(args [3]string, argsEscaped boo
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/hooks/{hook_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposUpdateWebhookOperation,
@@ -97467,6 +98715,8 @@ func (s *Server) handleReposUpdateWebhookConfigForRepoRequest(args [3]string, ar
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/hooks/{hook_id}/config"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposUpdateWebhookConfigForRepoOperation,
@@ -97656,6 +98906,8 @@ func (s *Server) handleReposUploadReleaseAssetRequest(args [3]string, argsEscape
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/releases/{release_id}/assets"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposUploadReleaseAssetOperation,
@@ -97828,6 +99080,8 @@ func (s *Server) handleScimDeleteUserFromOrgRequest(args [2]string, argsEscaped 
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/scim/v2/organizations/{org}/Users/{scim_user_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), ScimDeleteUserFromOrgOperation,
@@ -97992,6 +99246,8 @@ func (s *Server) handleSearchCodeRequest(args [0]string, argsEscaped bool, w htt
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/search/code"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), SearchCodeOperation,
@@ -98159,6 +99415,8 @@ func (s *Server) handleSearchCommitsRequest(args [0]string, argsEscaped bool, w 
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/search/commits"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), SearchCommitsOperation,
@@ -98338,6 +99596,8 @@ func (s *Server) handleSearchIssuesAndPullRequestsRequest(args [0]string, argsEs
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/search/issues"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), SearchIssuesAndPullRequestsOperation,
@@ -98504,6 +99764,8 @@ func (s *Server) handleSearchLabelsRequest(args [0]string, argsEscaped bool, w h
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/search/labels"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), SearchLabelsOperation,
@@ -98680,6 +99942,8 @@ func (s *Server) handleSearchReposRequest(args [0]string, argsEscaped bool, w ht
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/search/repositories"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), SearchReposOperation,
@@ -98850,6 +100114,8 @@ func (s *Server) handleSearchTopicsRequest(args [0]string, argsEscaped bool, w h
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/search/topics"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), SearchTopicsOperation,
@@ -99010,6 +100276,8 @@ func (s *Server) handleSearchUsersRequest(args [0]string, argsEscaped bool, w ht
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/search/users"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), SearchUsersOperation,
@@ -99170,6 +100438,8 @@ func (s *Server) handleSecretScanningGetAlertRequest(args [3]string, argsEscaped
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), SecretScanningGetAlertOperation,
@@ -99323,6 +100593,8 @@ func (s *Server) handleSecretScanningListAlertsForOrgRequest(args [1]string, arg
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/secret-scanning/alerts"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), SecretScanningListAlertsForOrgOperation,
@@ -99483,6 +100755,8 @@ func (s *Server) handleSecretScanningListAlertsForRepoRequest(args [2]string, ar
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/secret-scanning/alerts"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), SecretScanningListAlertsForRepoOperation,
@@ -99647,6 +100921,8 @@ func (s *Server) handleSecretScanningUpdateAlertRequest(args [3]string, argsEsca
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), SecretScanningUpdateAlertOperation,
@@ -99832,6 +101108,8 @@ func (s *Server) handleTeamsAddMemberLegacyRequest(args [2]string, argsEscaped b
 		semconv.HTTPRequestMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/teams/{team_id}/members/{username}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsAddMemberLegacyOperation,
@@ -99998,6 +101276,8 @@ func (s *Server) handleTeamsAddOrUpdateMembershipForUserInOrgRequest(args [3]str
 		semconv.HTTPRequestMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/memberships/{username}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsAddOrUpdateMembershipForUserInOrgOperation,
@@ -100188,6 +101468,8 @@ func (s *Server) handleTeamsAddOrUpdateMembershipForUserLegacyRequest(args [2]st
 		semconv.HTTPRequestMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/teams/{team_id}/memberships/{username}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsAddOrUpdateMembershipForUserLegacyOperation,
@@ -100352,6 +101634,8 @@ func (s *Server) handleTeamsAddOrUpdateProjectPermissionsInOrgRequest(args [3]st
 		semconv.HTTPRequestMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/projects/{project_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsAddOrUpdateProjectPermissionsInOrgOperation,
@@ -100524,6 +101808,8 @@ func (s *Server) handleTeamsAddOrUpdateProjectPermissionsLegacyRequest(args [2]s
 		semconv.HTTPRequestMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/teams/{team_id}/projects/{project_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsAddOrUpdateProjectPermissionsLegacyOperation,
@@ -100695,6 +101981,8 @@ func (s *Server) handleTeamsAddOrUpdateRepoPermissionsInOrgRequest(args [4]strin
 		semconv.HTTPRequestMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsAddOrUpdateRepoPermissionsInOrgOperation,
@@ -100876,6 +102164,8 @@ func (s *Server) handleTeamsAddOrUpdateRepoPermissionsLegacyRequest(args [3]stri
 		semconv.HTTPRequestMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/teams/{team_id}/repos/{owner}/{repo}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsAddOrUpdateRepoPermissionsLegacyOperation,
@@ -101043,6 +102333,8 @@ func (s *Server) handleTeamsCheckPermissionsForProjectInOrgRequest(args [3]strin
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/projects/{project_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsCheckPermissionsForProjectInOrgOperation,
@@ -101199,6 +102491,8 @@ func (s *Server) handleTeamsCheckPermissionsForProjectLegacyRequest(args [2]stri
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/teams/{team_id}/projects/{project_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsCheckPermissionsForProjectLegacyOperation,
@@ -101352,6 +102646,8 @@ func (s *Server) handleTeamsCheckPermissionsForRepoInOrgRequest(args [4]string, 
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsCheckPermissionsForRepoInOrgOperation,
@@ -101514,6 +102810,8 @@ func (s *Server) handleTeamsCheckPermissionsForRepoLegacyRequest(args [3]string,
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/teams/{team_id}/repos/{owner}/{repo}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsCheckPermissionsForRepoLegacyOperation,
@@ -101670,6 +102968,8 @@ func (s *Server) handleTeamsCreateRequest(args [1]string, argsEscaped bool, w ht
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/teams"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsCreateOperation,
@@ -101836,6 +103136,8 @@ func (s *Server) handleTeamsCreateDiscussionCommentInOrgRequest(args [3]string, 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsCreateDiscussionCommentInOrgOperation,
@@ -102013,6 +103315,8 @@ func (s *Server) handleTeamsCreateDiscussionCommentLegacyRequest(args [2]string,
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/teams/{team_id}/discussions/{discussion_number}/comments"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsCreateDiscussionCommentLegacyOperation,
@@ -102183,6 +103487,8 @@ func (s *Server) handleTeamsCreateDiscussionInOrgRequest(args [2]string, argsEsc
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/discussions"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsCreateDiscussionInOrgOperation,
@@ -102356,6 +103662,8 @@ func (s *Server) handleTeamsCreateDiscussionLegacyRequest(args [1]string, argsEs
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/teams/{team_id}/discussions"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsCreateDiscussionLegacyOperation,
@@ -102519,6 +103827,8 @@ func (s *Server) handleTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(args [
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/team-sync/group-mappings"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsCreateOrUpdateIdpGroupConnectionsInOrgOperation,
@@ -102690,6 +104000,8 @@ func (s *Server) handleTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequest(args 
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/teams/{team_id}/team-sync/group-mappings"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsCreateOrUpdateIdpGroupConnectionsLegacyOperation,
@@ -102849,6 +104161,8 @@ func (s *Server) handleTeamsDeleteDiscussionCommentInOrgRequest(args [4]string, 
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsDeleteDiscussionCommentInOrgOperation,
@@ -103008,6 +104322,8 @@ func (s *Server) handleTeamsDeleteDiscussionCommentLegacyRequest(args [3]string,
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsDeleteDiscussionCommentLegacyOperation,
@@ -103160,6 +104476,8 @@ func (s *Server) handleTeamsDeleteDiscussionInOrgRequest(args [3]string, argsEsc
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsDeleteDiscussionInOrgOperation,
@@ -103315,6 +104633,8 @@ func (s *Server) handleTeamsDeleteDiscussionLegacyRequest(args [2]string, argsEs
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/teams/{team_id}/discussions/{discussion_number}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsDeleteDiscussionLegacyOperation,
@@ -103464,6 +104784,8 @@ func (s *Server) handleTeamsDeleteInOrgRequest(args [2]string, argsEscaped bool,
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsDeleteInOrgOperation,
@@ -103616,6 +104938,8 @@ func (s *Server) handleTeamsDeleteLegacyRequest(args [1]string, argsEscaped bool
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/teams/{team_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsDeleteLegacyOperation,
@@ -103759,6 +105083,8 @@ func (s *Server) handleTeamsGetByNameRequest(args [2]string, argsEscaped bool, w
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsGetByNameOperation,
@@ -103907,6 +105233,8 @@ func (s *Server) handleTeamsGetDiscussionCommentInOrgRequest(args [4]string, arg
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsGetDiscussionCommentInOrgOperation,
@@ -104066,6 +105394,8 @@ func (s *Server) handleTeamsGetDiscussionCommentLegacyRequest(args [3]string, ar
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsGetDiscussionCommentLegacyOperation,
@@ -104218,6 +105548,8 @@ func (s *Server) handleTeamsGetDiscussionInOrgRequest(args [3]string, argsEscape
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsGetDiscussionInOrgOperation,
@@ -104373,6 +105705,8 @@ func (s *Server) handleTeamsGetDiscussionLegacyRequest(args [2]string, argsEscap
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/teams/{team_id}/discussions/{discussion_number}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsGetDiscussionLegacyOperation,
@@ -104522,6 +105856,8 @@ func (s *Server) handleTeamsGetLegacyRequest(args [1]string, argsEscaped bool, w
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/teams/{team_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsGetLegacyOperation,
@@ -104669,6 +106005,8 @@ func (s *Server) handleTeamsGetMemberLegacyRequest(args [2]string, argsEscaped b
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/teams/{team_id}/members/{username}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsGetMemberLegacyOperation,
@@ -104821,6 +106159,8 @@ func (s *Server) handleTeamsGetMembershipForUserInOrgRequest(args [3]string, arg
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/memberships/{username}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsGetMembershipForUserInOrgOperation,
@@ -104980,6 +106320,8 @@ func (s *Server) handleTeamsGetMembershipForUserLegacyRequest(args [2]string, ar
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/teams/{team_id}/memberships/{username}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsGetMembershipForUserLegacyOperation,
@@ -105125,6 +106467,8 @@ func (s *Server) handleTeamsListRequest(args [1]string, argsEscaped bool, w http
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/teams"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsListOperation,
@@ -105276,6 +106620,8 @@ func (s *Server) handleTeamsListChildInOrgRequest(args [2]string, argsEscaped bo
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/teams"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsListChildInOrgOperation,
@@ -105433,6 +106779,8 @@ func (s *Server) handleTeamsListChildLegacyRequest(args [1]string, argsEscaped b
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/teams/{team_id}/teams"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsListChildLegacyOperation,
@@ -105585,6 +106933,8 @@ func (s *Server) handleTeamsListDiscussionCommentsInOrgRequest(args [3]string, a
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsListDiscussionCommentsInOrgOperation,
@@ -105752,6 +107102,8 @@ func (s *Server) handleTeamsListDiscussionCommentsLegacyRequest(args [2]string, 
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/teams/{team_id}/discussions/{discussion_number}/comments"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsListDiscussionCommentsLegacyOperation,
@@ -105912,6 +107264,8 @@ func (s *Server) handleTeamsListDiscussionsInOrgRequest(args [2]string, argsEsca
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/discussions"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsListDiscussionsInOrgOperation,
@@ -106079,6 +107433,8 @@ func (s *Server) handleTeamsListDiscussionsLegacyRequest(args [1]string, argsEsc
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/teams/{team_id}/discussions"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsListDiscussionsLegacyOperation,
@@ -106235,6 +107591,8 @@ func (s *Server) handleTeamsListForAuthenticatedUserRequest(args [0]string, args
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/user/teams"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsListForAuthenticatedUserOperation,
@@ -106388,6 +107746,8 @@ func (s *Server) handleTeamsListIdpGroupsForLegacyRequest(args [1]string, argsEs
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/teams/{team_id}/team-sync/group-mappings"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsListIdpGroupsForLegacyOperation,
@@ -106535,6 +107895,8 @@ func (s *Server) handleTeamsListIdpGroupsForOrgRequest(args [1]string, argsEscap
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/team-sync/groups"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsListIdpGroupsForOrgOperation,
@@ -106689,6 +108051,8 @@ func (s *Server) handleTeamsListIdpGroupsInOrgRequest(args [2]string, argsEscape
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/team-sync/group-mappings"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsListIdpGroupsInOrgOperation,
@@ -106835,6 +108199,8 @@ func (s *Server) handleTeamsListMembersInOrgRequest(args [2]string, argsEscaped 
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/members"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsListMembersInOrgOperation,
@@ -106997,6 +108363,8 @@ func (s *Server) handleTeamsListMembersLegacyRequest(args [1]string, argsEscaped
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/teams/{team_id}/members"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsListMembersLegacyOperation,
@@ -107155,6 +108523,8 @@ func (s *Server) handleTeamsListPendingInvitationsInOrgRequest(args [2]string, a
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/invitations"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsListPendingInvitationsInOrgOperation,
@@ -107316,6 +108686,8 @@ func (s *Server) handleTeamsListPendingInvitationsLegacyRequest(args [1]string, 
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/teams/{team_id}/invitations"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsListPendingInvitationsLegacyOperation,
@@ -107467,6 +108839,8 @@ func (s *Server) handleTeamsListProjectsInOrgRequest(args [2]string, argsEscaped
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/projects"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsListProjectsInOrgOperation,
@@ -107625,6 +108999,8 @@ func (s *Server) handleTeamsListProjectsLegacyRequest(args [1]string, argsEscape
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/teams/{team_id}/projects"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsListProjectsLegacyOperation,
@@ -107776,6 +109152,8 @@ func (s *Server) handleTeamsListReposInOrgRequest(args [2]string, argsEscaped bo
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/repos"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsListReposInOrgOperation,
@@ -107933,6 +109311,8 @@ func (s *Server) handleTeamsListReposLegacyRequest(args [1]string, argsEscaped b
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/teams/{team_id}/repos"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsListReposLegacyOperation,
@@ -108102,6 +109482,8 @@ func (s *Server) handleTeamsRemoveMemberLegacyRequest(args [2]string, argsEscape
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/teams/{team_id}/members/{username}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsRemoveMemberLegacyOperation,
@@ -108261,6 +109643,8 @@ func (s *Server) handleTeamsRemoveMembershipForUserInOrgRequest(args [3]string, 
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/memberships/{username}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsRemoveMembershipForUserInOrgOperation,
@@ -108427,6 +109811,8 @@ func (s *Server) handleTeamsRemoveMembershipForUserLegacyRequest(args [2]string,
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/teams/{team_id}/memberships/{username}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsRemoveMembershipForUserLegacyOperation,
@@ -108577,6 +109963,8 @@ func (s *Server) handleTeamsRemoveProjectInOrgRequest(args [3]string, argsEscape
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/projects/{project_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsRemoveProjectInOrgOperation,
@@ -108734,6 +110122,8 @@ func (s *Server) handleTeamsRemoveProjectLegacyRequest(args [2]string, argsEscap
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/teams/{team_id}/projects/{project_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsRemoveProjectLegacyOperation,
@@ -108884,6 +110274,8 @@ func (s *Server) handleTeamsRemoveRepoInOrgRequest(args [4]string, argsEscaped b
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsRemoveRepoInOrgOperation,
@@ -109045,6 +110437,8 @@ func (s *Server) handleTeamsRemoveRepoLegacyRequest(args [3]string, argsEscaped 
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/teams/{team_id}/repos/{owner}/{repo}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsRemoveRepoLegacyOperation,
@@ -109197,6 +110591,8 @@ func (s *Server) handleTeamsUpdateDiscussionCommentInOrgRequest(args [4]string, 
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsUpdateDiscussionCommentInOrgOperation,
@@ -109371,6 +110767,8 @@ func (s *Server) handleTeamsUpdateDiscussionCommentLegacyRequest(args [3]string,
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsUpdateDiscussionCommentLegacyOperation,
@@ -109539,6 +110937,8 @@ func (s *Server) handleTeamsUpdateDiscussionInOrgRequest(args [3]string, argsEsc
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsUpdateDiscussionInOrgOperation,
@@ -109710,6 +111110,8 @@ func (s *Server) handleTeamsUpdateDiscussionLegacyRequest(args [2]string, argsEs
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/teams/{team_id}/discussions/{discussion_number}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsUpdateDiscussionLegacyOperation,
@@ -109872,6 +111274,8 @@ func (s *Server) handleTeamsUpdateInOrgRequest(args [2]string, argsEscaped bool,
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/orgs/{org}/teams/{team_slug}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsUpdateInOrgOperation,
@@ -110038,6 +111442,8 @@ func (s *Server) handleTeamsUpdateLegacyRequest(args [1]string, argsEscaped bool
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/teams/{team_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsUpdateLegacyOperation,
@@ -110194,6 +111600,8 @@ func (s *Server) handleUsersAddEmailForAuthenticatedRequest(args [0]string, args
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/user/emails"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), UsersAddEmailForAuthenticatedOperation,
@@ -110335,6 +111743,8 @@ func (s *Server) handleUsersBlockRequest(args [1]string, argsEscaped bool, w htt
 		semconv.HTTPRequestMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/user/blocks/{username}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), UsersBlockOperation,
@@ -110476,6 +111886,8 @@ func (s *Server) handleUsersCheckBlockedRequest(args [1]string, argsEscaped bool
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/user/blocks/{username}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), UsersCheckBlockedOperation,
@@ -110617,6 +112029,8 @@ func (s *Server) handleUsersCheckFollowingForUserRequest(args [2]string, argsEsc
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/users/{username}/following/{target_user}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), UsersCheckFollowingForUserOperation,
@@ -110762,6 +112176,8 @@ func (s *Server) handleUsersCheckPersonIsFollowedByAuthenticatedRequest(args [1]
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/user/following/{username}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), UsersCheckPersonIsFollowedByAuthenticatedOperation,
@@ -110905,6 +112321,8 @@ func (s *Server) handleUsersCreateGpgKeyForAuthenticatedRequest(args [0]string, 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/user/gpg_keys"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), UsersCreateGpgKeyForAuthenticatedOperation,
@@ -111048,6 +112466,8 @@ func (s *Server) handleUsersCreatePublicSSHKeyForAuthenticatedRequest(args [0]st
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/user/keys"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), UsersCreatePublicSSHKeyForAuthenticatedOperation,
@@ -111189,6 +112609,8 @@ func (s *Server) handleUsersDeleteEmailForAuthenticatedRequest(args [0]string, a
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/user/emails"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), UsersDeleteEmailForAuthenticatedOperation,
@@ -111332,6 +112754,8 @@ func (s *Server) handleUsersDeleteGpgKeyForAuthenticatedRequest(args [1]string, 
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/user/gpg_keys/{gpg_key_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), UsersDeleteGpgKeyForAuthenticatedOperation,
@@ -111475,6 +112899,8 @@ func (s *Server) handleUsersDeletePublicSSHKeyForAuthenticatedRequest(args [1]st
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/user/keys/{key_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), UsersDeletePublicSSHKeyForAuthenticatedOperation,
@@ -111620,6 +113046,8 @@ func (s *Server) handleUsersFollowRequest(args [1]string, argsEscaped bool, w ht
 		semconv.HTTPRequestMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/user/following/{username}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), UsersFollowOperation,
@@ -111764,6 +113192,8 @@ func (s *Server) handleUsersGetAuthenticatedRequest(args [0]string, argsEscaped 
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/user"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), UsersGetAuthenticatedOperation,
@@ -111900,6 +113330,8 @@ func (s *Server) handleUsersGetByUsernameRequest(args [1]string, argsEscaped boo
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/users/{username}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), UsersGetByUsernameOperation,
@@ -112050,6 +113482,8 @@ func (s *Server) handleUsersGetContextForUserRequest(args [1]string, argsEscaped
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/users/{username}/hovercard"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), UsersGetContextForUserOperation,
@@ -112201,6 +113635,8 @@ func (s *Server) handleUsersGetGpgKeyForAuthenticatedRequest(args [1]string, arg
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/user/gpg_keys/{gpg_key_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), UsersGetGpgKeyForAuthenticatedOperation,
@@ -112344,6 +113780,8 @@ func (s *Server) handleUsersGetPublicSSHKeyForAuthenticatedRequest(args [1]strin
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/user/keys/{key_id}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), UsersGetPublicSSHKeyForAuthenticatedOperation,
@@ -112489,6 +113927,8 @@ func (s *Server) handleUsersListRequest(args [0]string, argsEscaped bool, w http
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/users"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), UsersListOperation,
@@ -112634,6 +114074,8 @@ func (s *Server) handleUsersListBlockedByAuthenticatedRequest(args [0]string, ar
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/user/blocks"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), UsersListBlockedByAuthenticatedOperation,
@@ -112757,6 +114199,8 @@ func (s *Server) handleUsersListEmailsForAuthenticatedRequest(args [0]string, ar
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/user/emails"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), UsersListEmailsForAuthenticatedOperation,
@@ -112902,6 +114346,8 @@ func (s *Server) handleUsersListFollowedByAuthenticatedRequest(args [0]string, a
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/user/following"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), UsersListFollowedByAuthenticatedOperation,
@@ -113047,6 +114493,8 @@ func (s *Server) handleUsersListFollowersForAuthenticatedUserRequest(args [0]str
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/user/followers"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), UsersListFollowersForAuthenticatedUserOperation,
@@ -113192,6 +114640,8 @@ func (s *Server) handleUsersListFollowersForUserRequest(args [1]string, argsEsca
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/users/{username}/followers"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), UsersListFollowersForUserOperation,
@@ -113341,6 +114791,8 @@ func (s *Server) handleUsersListFollowingForUserRequest(args [1]string, argsEsca
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/users/{username}/following"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), UsersListFollowingForUserOperation,
@@ -113492,6 +114944,8 @@ func (s *Server) handleUsersListGpgKeysForAuthenticatedRequest(args [0]string, a
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/user/gpg_keys"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), UsersListGpgKeysForAuthenticatedOperation,
@@ -113637,6 +115091,8 @@ func (s *Server) handleUsersListGpgKeysForUserRequest(args [1]string, argsEscape
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/users/{username}/gpg_keys"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), UsersListGpgKeysForUserOperation,
@@ -113789,6 +115245,8 @@ func (s *Server) handleUsersListPublicEmailsForAuthenticatedRequest(args [0]stri
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/user/public_emails"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), UsersListPublicEmailsForAuthenticatedOperation,
@@ -113934,6 +115392,8 @@ func (s *Server) handleUsersListPublicKeysForUserRequest(args [1]string, argsEsc
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/users/{username}/keys"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), UsersListPublicKeysForUserOperation,
@@ -114085,6 +115545,8 @@ func (s *Server) handleUsersListPublicSSHKeysForAuthenticatedRequest(args [0]str
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/user/keys"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), UsersListPublicSSHKeysForAuthenticatedOperation,
@@ -114230,6 +115692,8 @@ func (s *Server) handleUsersSetPrimaryEmailVisibilityForAuthenticatedRequest(arg
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/user/email/visibility"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), UsersSetPrimaryEmailVisibilityForAuthenticatedOperation,
@@ -114371,6 +115835,8 @@ func (s *Server) handleUsersUnblockRequest(args [1]string, argsEscaped bool, w h
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/user/blocks/{username}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), UsersUnblockOperation,
@@ -114513,6 +115979,8 @@ func (s *Server) handleUsersUnfollowRequest(args [1]string, argsEscaped bool, w 
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/user/following/{username}"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), UsersUnfollowOperation,
@@ -114656,6 +116124,8 @@ func (s *Server) handleUsersUpdateAuthenticatedRequest(args [0]string, argsEscap
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/user"),
 	}
+	// Add attributes from config.
+	otelAttrs = append(otelAttrs, s.cfg.Attributes...)
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), UsersUpdateAuthenticatedOperation,
