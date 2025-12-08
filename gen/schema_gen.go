@@ -4,6 +4,7 @@ import (
 	"cmp"
 	"fmt"
 	"path"
+	"slices"
 	"sort"
 	"strings"
 
@@ -784,6 +785,10 @@ func (g *schemaGen) nonPrimitiveObjectEnum(name string, schema *jsonschema.Schem
 			}
 			variantType.Fields = append(variantType.Fields, field)
 		}
+
+		slices.SortFunc(variantType.Fields, func(a, b *ir.Field) int {
+			return strings.Compare(a.Name, b.Name)
+		})
 
 		// Register and add to variants
 		g.regtype(variantName, variantType)
