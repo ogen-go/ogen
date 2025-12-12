@@ -66,7 +66,7 @@ jobs:
       #
       # See https://github.com/actions/setup-go/issues/357#issuecomment-1486486358
       - name: Restore cache
-        uses: actions/cache/restore@v4
+        uses: actions/cache/restore@v5
         with:
           path: |
             ${{ env.cache }}
