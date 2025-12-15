@@ -320,7 +320,7 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 		{"schemas", true},
 		{"uri", g.hasURIObjectParams()},
 		{"json", g.hasJSON()},
-		{"interfaces", (genClient || genServer) && len(interfaces) > 0},
+		{"interfaces", len(interfaces) > 0},
 		{"parameters", g.hasParams()},
 		{"handlers", genServer},
 		{"request_encoders", genClient},
