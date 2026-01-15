@@ -1,7 +1,9 @@
 package validate
 
 import (
+	"bytes"
 	"fmt"
+	"io"
 	"net/http"
 	"strings"
 
@@ -70,10 +72,16 @@ type UnexpectedStatusCodeError struct {
 
 // UnexpectedStatusCodeWithResponse creates new UnexpectedStatusCode.
 func UnexpectedStatusCodeWithResponse(response *http.Response) error {
-	return &UnexpectedStatusCodeError{
+	ret := &UnexpectedStatusCodeError{
 		StatusCode: response.StatusCode,
 		Payload:    response,
 	}
+
+	// response.Body is defer-closed by caller.
+	// we want to retain it in Payload.
+	buf, err := io.ReadAll(response.Body)
+	response.Body = io.NopCloser(bytes.NewBuffer(buf))
+	return errors.Join(ret, err)
 }
 
 // UnexpectedStatusCode creates new UnexpectedStatusCode.
