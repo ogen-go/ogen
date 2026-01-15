@@ -36,7 +36,7 @@ func (g *schemaGen) enum(name string, t *ir.Type, schema *jsonschema.Schema) (*i
 		// Reject time-related formats for string enums until we properly handle them
 		if t.Schema.Type == jsonschema.String {
 			switch f {
-			case "date", "time", "date-time":
+			case "date", "time", "date-time", "http-date":
 				return nil, errors.Wrapf(&ErrNotImplemented{"enum format"}, "format %q", f)
 			}
 		}
@@ -181,6 +181,7 @@ func TypeFormatMapping() map[jsonschema.SchemaType]map[string]ir.PrimitiveType {
 			"date-time": ir.Time,
 			"date":      ir.Time,
 			"time":      ir.Time,
+			"http-date": ir.Time,
 			"duration":  ir.Duration,
 			"uuid":      ir.UUID,
 			"mac":       ir.MAC,

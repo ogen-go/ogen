@@ -45,6 +45,7 @@ func BytesToString(v []byte) string {
 func TimeToString(v time.Time) string     { return v.Format(timeLayout) }
 func DateToString(v time.Time) string     { return v.Format(dateLayout) }
 func DateTimeToString(v time.Time) string { return v.Format(time.RFC3339) }
+func HTTPDateToString(v time.Time) string { return v.UTC().Format(httpDateLayout) }
 
 func UnixSecondsToString(v time.Time) string { return StringInt64ToString(v.Unix()) }
 func UnixNanoToString(v time.Time) string    { return StringInt64ToString(v.UnixNano()) }
