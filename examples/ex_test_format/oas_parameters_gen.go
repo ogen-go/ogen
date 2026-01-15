@@ -90,6 +90,8 @@ type TestQueryParameterParams struct {
 	StringFloat64Array      []float64 `json:",omitempty"`
 	StringHostname          string
 	StringHostnameArray     []string `json:",omitempty"`
+	StringHTTPDate          time.Time
+	StringHTTPDateArray     []time.Time `json:",omitempty"`
 	StringInt               int
 	StringInt16             int16
 	StringInt16Array        []int16 `json:",omitempty"`
@@ -614,6 +616,20 @@ func unpackTestQueryParameterParams(packed middleware.Parameters) (params TestQu
 			In:   "query",
 		}
 		params.StringHostnameArray = packed[key].([]string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "string_http-date",
+			In:   "query",
+		}
+		params.StringHTTPDate = packed[key].(time.Time)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "string_http-date_array",
+			In:   "query",
+		}
+		params.StringHTTPDateArray = packed[key].([]time.Time)
 	}
 	{
 		key := middleware.ParameterKey{
@@ -4187,6 +4203,95 @@ func decodeTestQueryParameterParams(args [0]string, argsEscaped bool, r *http.Re
 	}(); err != nil {
 		return params, &ogenerrors.DecodeParamError{
 			Name: "string_hostname_array",
+			In:   "query",
+			Err:  err,
+		}
+	}
+	// Decode query: string_http-date.
+	if err := func() error {
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "string_http-date",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToHTTPDate(val)
+				if err != nil {
+					return err
+				}
+
+				params.StringHTTPDate = c
+				return nil
+			}); err != nil {
+				return err
+			}
+		} else {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "string_http-date",
+			In:   "query",
+			Err:  err,
+		}
+	}
+	// Decode query: string_http-date_array.
+	if err := func() error {
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "string_http-date_array",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				return d.DecodeArray(func(d uri.Decoder) error {
+					var paramsDotStringHTTPDateArrayVal time.Time
+					if err := func() error {
+						val, err := d.DecodeValue()
+						if err != nil {
+							return err
+						}
+
+						c, err := conv.ToHTTPDate(val)
+						if err != nil {
+							return err
+						}
+
+						paramsDotStringHTTPDateArrayVal = c
+						return nil
+					}(); err != nil {
+						return err
+					}
+					params.StringHTTPDateArray = append(params.StringHTTPDateArray, paramsDotStringHTTPDateArrayVal)
+					return nil
+				})
+			}); err != nil {
+				return err
+			}
+			if err := func() error {
+				if params.StringHTTPDateArray == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		} else {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "string_http-date_array",
 			In:   "query",
 			Err:  err,
 		}

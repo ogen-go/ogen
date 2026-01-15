@@ -8274,100 +8274,52 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 									}
 
-								case 'h': // Prefix: "hostname"
+								case 'h': // Prefix: "h"
 
-									if l := len("hostname"); len(elem) >= l && elem[0:l] == "hostname" {
+									if l := len("h"); len(elem) >= l && elem[0:l] == "h" {
 										elem = elem[l:]
 									} else {
 										break
 									}
 
 									if len(elem) == 0 {
-										switch r.Method {
-										case "POST":
-											s.handleTestRequestRequiredStringHostnameRequest([0]string{}, elemIsEscaped, w, r)
-										default:
-											s.notAllowed(w, r, "POST")
-										}
-
-										return
+										break
 									}
 									switch elem[0] {
-									case '_': // Prefix: "_"
+									case 'o': // Prefix: "ostname"
 
-										if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+										if l := len("ostname"); len(elem) >= l && elem[0:l] == "ostname" {
 											elem = elem[l:]
 										} else {
 											break
 										}
 
 										if len(elem) == 0 {
-											break
+											switch r.Method {
+											case "POST":
+												s.handleTestRequestRequiredStringHostnameRequest([0]string{}, elemIsEscaped, w, r)
+											default:
+												s.notAllowed(w, r, "POST")
+											}
+
+											return
 										}
 										switch elem[0] {
-										case 'a': // Prefix: "array"
+										case '_': // Prefix: "_"
 
-											if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+											if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
 												elem = elem[l:]
 											} else {
 												break
 											}
 
 											if len(elem) == 0 {
-												switch r.Method {
-												case "POST":
-													s.handleTestRequestRequiredStringHostnameArrayRequest([0]string{}, elemIsEscaped, w, r)
-												default:
-													s.notAllowed(w, r, "POST")
-												}
-
-												return
-											}
-											switch elem[0] {
-											case '_': // Prefix: "_array"
-
-												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													// Leaf node.
-													switch r.Method {
-													case "POST":
-														s.handleTestRequestRequiredStringHostnameArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
-													default:
-														s.notAllowed(w, r, "POST")
-													}
-
-													return
-												}
-
-											}
-
-										case 'n': // Prefix: "nullable"
-
-											if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
-												elem = elem[l:]
-											} else {
 												break
 											}
-
-											if len(elem) == 0 {
-												switch r.Method {
-												case "POST":
-													s.handleTestRequestRequiredStringHostnameNullableRequest([0]string{}, elemIsEscaped, w, r)
-												default:
-													s.notAllowed(w, r, "POST")
-												}
-
-												return
-											}
 											switch elem[0] {
-											case '_': // Prefix: "_array"
+											case 'a': // Prefix: "array"
 
-												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+												if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
 													elem = elem[l:]
 												} else {
 													break
@@ -8376,7 +8328,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestRequiredStringHostnameNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
+														s.handleTestRequestRequiredStringHostnameArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -8396,12 +8348,212 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														// Leaf node.
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestRequiredStringHostnameNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+															s.handleTestRequestRequiredStringHostnameArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
 
 														return
+													}
+
+												}
+
+											case 'n': // Prefix: "nullable"
+
+												if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestRequestRequiredStringHostnameNullableRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch r.Method {
+														case "POST":
+															s.handleTestRequestRequiredStringHostnameNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															// Leaf node.
+															switch r.Method {
+															case "POST":
+																s.handleTestRequestRequiredStringHostnameNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+															default:
+																s.notAllowed(w, r, "POST")
+															}
+
+															return
+														}
+
+													}
+
+												}
+
+											}
+
+										}
+
+									case 't': // Prefix: "ttp-date"
+
+										if l := len("ttp-date"); len(elem) >= l && elem[0:l] == "ttp-date" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											switch r.Method {
+											case "POST":
+												s.handleTestRequestRequiredStringHTTPDateRequest([0]string{}, elemIsEscaped, w, r)
+											default:
+												s.notAllowed(w, r, "POST")
+											}
+
+											return
+										}
+										switch elem[0] {
+										case '_': // Prefix: "_"
+
+											if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case 'a': // Prefix: "array"
+
+												if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestRequestRequiredStringHTTPDateArrayRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf node.
+														switch r.Method {
+														case "POST":
+															s.handleTestRequestRequiredStringHTTPDateArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+
+												}
+
+											case 'n': // Prefix: "nullable"
+
+												if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestRequestRequiredStringHTTPDateNullableRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch r.Method {
+														case "POST":
+															s.handleTestRequestRequiredStringHTTPDateNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															// Leaf node.
+															switch r.Method {
+															case "POST":
+																s.handleTestRequestRequiredStringHTTPDateNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+															default:
+																s.notAllowed(w, r, "POST")
+															}
+
+															return
+														}
+
 													}
 
 												}
@@ -13218,100 +13370,52 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 								}
 
-							case 'h': // Prefix: "hostname"
+							case 'h': // Prefix: "h"
 
-								if l := len("hostname"); len(elem) >= l && elem[0:l] == "hostname" {
+								if l := len("h"); len(elem) >= l && elem[0:l] == "h" {
 									elem = elem[l:]
 								} else {
 									break
 								}
 
 								if len(elem) == 0 {
-									switch r.Method {
-									case "POST":
-										s.handleTestRequestStringHostnameRequest([0]string{}, elemIsEscaped, w, r)
-									default:
-										s.notAllowed(w, r, "POST")
-									}
-
-									return
+									break
 								}
 								switch elem[0] {
-								case '_': // Prefix: "_"
+								case 'o': // Prefix: "ostname"
 
-									if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+									if l := len("ostname"); len(elem) >= l && elem[0:l] == "ostname" {
 										elem = elem[l:]
 									} else {
 										break
 									}
 
 									if len(elem) == 0 {
-										break
+										switch r.Method {
+										case "POST":
+											s.handleTestRequestStringHostnameRequest([0]string{}, elemIsEscaped, w, r)
+										default:
+											s.notAllowed(w, r, "POST")
+										}
+
+										return
 									}
 									switch elem[0] {
-									case 'a': // Prefix: "array"
+									case '_': // Prefix: "_"
 
-										if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+										if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
 											elem = elem[l:]
 										} else {
 											break
 										}
 
 										if len(elem) == 0 {
-											switch r.Method {
-											case "POST":
-												s.handleTestRequestStringHostnameArrayRequest([0]string{}, elemIsEscaped, w, r)
-											default:
-												s.notAllowed(w, r, "POST")
-											}
-
-											return
-										}
-										switch elem[0] {
-										case '_': // Prefix: "_array"
-
-											if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												// Leaf node.
-												switch r.Method {
-												case "POST":
-													s.handleTestRequestStringHostnameArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
-												default:
-													s.notAllowed(w, r, "POST")
-												}
-
-												return
-											}
-
-										}
-
-									case 'n': // Prefix: "nullable"
-
-										if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
-											elem = elem[l:]
-										} else {
 											break
 										}
-
-										if len(elem) == 0 {
-											switch r.Method {
-											case "POST":
-												s.handleTestRequestStringHostnameNullableRequest([0]string{}, elemIsEscaped, w, r)
-											default:
-												s.notAllowed(w, r, "POST")
-											}
-
-											return
-										}
 										switch elem[0] {
-										case '_': // Prefix: "_array"
+										case 'a': // Prefix: "array"
 
-											if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+											if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
 												elem = elem[l:]
 											} else {
 												break
@@ -13320,7 +13424,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestRequestStringHostnameNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
+													s.handleTestRequestStringHostnameArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -13340,12 +13444,212 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													// Leaf node.
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestStringHostnameNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+														s.handleTestRequestStringHostnameArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
 
 													return
+												}
+
+											}
+
+										case 'n': // Prefix: "nullable"
+
+											if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch r.Method {
+												case "POST":
+													s.handleTestRequestStringHostnameNullableRequest([0]string{}, elemIsEscaped, w, r)
+												default:
+													s.notAllowed(w, r, "POST")
+												}
+
+												return
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestRequestStringHostnameNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf node.
+														switch r.Method {
+														case "POST":
+															s.handleTestRequestStringHostnameNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+
+												}
+
+											}
+
+										}
+
+									}
+
+								case 't': // Prefix: "ttp-date"
+
+									if l := len("ttp-date"); len(elem) >= l && elem[0:l] == "ttp-date" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										switch r.Method {
+										case "POST":
+											s.handleTestRequestStringHTTPDateRequest([0]string{}, elemIsEscaped, w, r)
+										default:
+											s.notAllowed(w, r, "POST")
+										}
+
+										return
+									}
+									switch elem[0] {
+									case '_': // Prefix: "_"
+
+										if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case 'a': // Prefix: "array"
+
+											if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch r.Method {
+												case "POST":
+													s.handleTestRequestStringHTTPDateArrayRequest([0]string{}, elemIsEscaped, w, r)
+												default:
+													s.notAllowed(w, r, "POST")
+												}
+
+												return
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													// Leaf node.
+													switch r.Method {
+													case "POST":
+														s.handleTestRequestStringHTTPDateArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+
+											}
+
+										case 'n': // Prefix: "nullable"
+
+											if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch r.Method {
+												case "POST":
+													s.handleTestRequestStringHTTPDateNullableRequest([0]string{}, elemIsEscaped, w, r)
+												default:
+													s.notAllowed(w, r, "POST")
+												}
+
+												return
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestRequestStringHTTPDateNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf node.
+														switch r.Method {
+														case "POST":
+															s.handleTestRequestStringHTTPDateNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+
 												}
 
 											}
@@ -21506,100 +21810,52 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 								}
 
-							case 'h': // Prefix: "hostname"
+							case 'h': // Prefix: "h"
 
-								if l := len("hostname"); len(elem) >= l && elem[0:l] == "hostname" {
+								if l := len("h"); len(elem) >= l && elem[0:l] == "h" {
 									elem = elem[l:]
 								} else {
 									break
 								}
 
 								if len(elem) == 0 {
-									switch r.Method {
-									case "POST":
-										s.handleTestResponseStringHostnameRequest([0]string{}, elemIsEscaped, w, r)
-									default:
-										s.notAllowed(w, r, "POST")
-									}
-
-									return
+									break
 								}
 								switch elem[0] {
-								case '_': // Prefix: "_"
+								case 'o': // Prefix: "ostname"
 
-									if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+									if l := len("ostname"); len(elem) >= l && elem[0:l] == "ostname" {
 										elem = elem[l:]
 									} else {
 										break
 									}
 
 									if len(elem) == 0 {
-										break
+										switch r.Method {
+										case "POST":
+											s.handleTestResponseStringHostnameRequest([0]string{}, elemIsEscaped, w, r)
+										default:
+											s.notAllowed(w, r, "POST")
+										}
+
+										return
 									}
 									switch elem[0] {
-									case 'a': // Prefix: "array"
+									case '_': // Prefix: "_"
 
-										if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+										if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
 											elem = elem[l:]
 										} else {
 											break
 										}
 
 										if len(elem) == 0 {
-											switch r.Method {
-											case "POST":
-												s.handleTestResponseStringHostnameArrayRequest([0]string{}, elemIsEscaped, w, r)
-											default:
-												s.notAllowed(w, r, "POST")
-											}
-
-											return
-										}
-										switch elem[0] {
-										case '_': // Prefix: "_array"
-
-											if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												// Leaf node.
-												switch r.Method {
-												case "POST":
-													s.handleTestResponseStringHostnameArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
-												default:
-													s.notAllowed(w, r, "POST")
-												}
-
-												return
-											}
-
-										}
-
-									case 'n': // Prefix: "nullable"
-
-										if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
-											elem = elem[l:]
-										} else {
 											break
 										}
-
-										if len(elem) == 0 {
-											switch r.Method {
-											case "POST":
-												s.handleTestResponseStringHostnameNullableRequest([0]string{}, elemIsEscaped, w, r)
-											default:
-												s.notAllowed(w, r, "POST")
-											}
-
-											return
-										}
 										switch elem[0] {
-										case '_': // Prefix: "_array"
+										case 'a': // Prefix: "array"
 
-											if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+											if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
 												elem = elem[l:]
 											} else {
 												break
@@ -21608,7 +21864,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestResponseStringHostnameNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
+													s.handleTestResponseStringHostnameArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -21628,12 +21884,212 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													// Leaf node.
 													switch r.Method {
 													case "POST":
-														s.handleTestResponseStringHostnameNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+														s.handleTestResponseStringHostnameArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
 
 													return
+												}
+
+											}
+
+										case 'n': // Prefix: "nullable"
+
+											if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch r.Method {
+												case "POST":
+													s.handleTestResponseStringHostnameNullableRequest([0]string{}, elemIsEscaped, w, r)
+												default:
+													s.notAllowed(w, r, "POST")
+												}
+
+												return
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestResponseStringHostnameNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf node.
+														switch r.Method {
+														case "POST":
+															s.handleTestResponseStringHostnameNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+
+												}
+
+											}
+
+										}
+
+									}
+
+								case 't': // Prefix: "ttp-date"
+
+									if l := len("ttp-date"); len(elem) >= l && elem[0:l] == "ttp-date" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										switch r.Method {
+										case "POST":
+											s.handleTestResponseStringHTTPDateRequest([0]string{}, elemIsEscaped, w, r)
+										default:
+											s.notAllowed(w, r, "POST")
+										}
+
+										return
+									}
+									switch elem[0] {
+									case '_': // Prefix: "_"
+
+										if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case 'a': // Prefix: "array"
+
+											if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch r.Method {
+												case "POST":
+													s.handleTestResponseStringHTTPDateArrayRequest([0]string{}, elemIsEscaped, w, r)
+												default:
+													s.notAllowed(w, r, "POST")
+												}
+
+												return
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													// Leaf node.
+													switch r.Method {
+													case "POST":
+														s.handleTestResponseStringHTTPDateArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+
+											}
+
+										case 'n': // Prefix: "nullable"
+
+											if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch r.Method {
+												case "POST":
+													s.handleTestResponseStringHTTPDateNullableRequest([0]string{}, elemIsEscaped, w, r)
+												default:
+													s.notAllowed(w, r, "POST")
+												}
+
+												return
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestResponseStringHTTPDateNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf node.
+														switch r.Method {
+														case "POST":
+															s.handleTestResponseStringHTTPDateNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+
 												}
 
 											}
@@ -35002,120 +35458,57 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 
 									}
 
-								case 'h': // Prefix: "hostname"
+								case 'h': // Prefix: "h"
 
-									if l := len("hostname"); len(elem) >= l && elem[0:l] == "hostname" {
+									if l := len("h"); len(elem) >= l && elem[0:l] == "h" {
 										elem = elem[l:]
 									} else {
 										break
 									}
 
 									if len(elem) == 0 {
-										switch method {
-										case "POST":
-											r.name = TestRequestRequiredStringHostnameOperation
-											r.summary = ""
-											r.operationID = "test_request_required_string_hostname"
-											r.operationGroup = ""
-											r.pathPattern = "/test_request_required_string_hostname"
-											r.args = args
-											r.count = 0
-											return r, true
-										default:
-											return
-										}
+										break
 									}
 									switch elem[0] {
-									case '_': // Prefix: "_"
+									case 'o': // Prefix: "ostname"
 
-										if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+										if l := len("ostname"); len(elem) >= l && elem[0:l] == "ostname" {
 											elem = elem[l:]
 										} else {
 											break
 										}
 
 										if len(elem) == 0 {
-											break
+											switch method {
+											case "POST":
+												r.name = TestRequestRequiredStringHostnameOperation
+												r.summary = ""
+												r.operationID = "test_request_required_string_hostname"
+												r.operationGroup = ""
+												r.pathPattern = "/test_request_required_string_hostname"
+												r.args = args
+												r.count = 0
+												return r, true
+											default:
+												return
+											}
 										}
 										switch elem[0] {
-										case 'a': // Prefix: "array"
+										case '_': // Prefix: "_"
 
-											if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+											if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
 												elem = elem[l:]
 											} else {
 												break
 											}
 
 											if len(elem) == 0 {
-												switch method {
-												case "POST":
-													r.name = TestRequestRequiredStringHostnameArrayOperation
-													r.summary = ""
-													r.operationID = "test_request_required_string_hostname_array"
-													r.operationGroup = ""
-													r.pathPattern = "/test_request_required_string_hostname_array"
-													r.args = args
-													r.count = 0
-													return r, true
-												default:
-													return
-												}
-											}
-											switch elem[0] {
-											case '_': // Prefix: "_array"
-
-												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													// Leaf node.
-													switch method {
-													case "POST":
-														r.name = TestRequestRequiredStringHostnameArrayArrayOperation
-														r.summary = ""
-														r.operationID = "test_request_required_string_hostname_array_array"
-														r.operationGroup = ""
-														r.pathPattern = "/test_request_required_string_hostname_array_array"
-														r.args = args
-														r.count = 0
-														return r, true
-													default:
-														return
-													}
-												}
-
-											}
-
-										case 'n': // Prefix: "nullable"
-
-											if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
-												elem = elem[l:]
-											} else {
 												break
 											}
-
-											if len(elem) == 0 {
-												switch method {
-												case "POST":
-													r.name = TestRequestRequiredStringHostnameNullableOperation
-													r.summary = ""
-													r.operationID = "test_request_required_string_hostname_nullable"
-													r.operationGroup = ""
-													r.pathPattern = "/test_request_required_string_hostname_nullable"
-													r.args = args
-													r.count = 0
-													return r, true
-												default:
-													return
-												}
-											}
 											switch elem[0] {
-											case '_': // Prefix: "_array"
+											case 'a': // Prefix: "array"
 
-												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+												if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
 													elem = elem[l:]
 												} else {
 													break
@@ -35124,11 +35517,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												if len(elem) == 0 {
 													switch method {
 													case "POST":
-														r.name = TestRequestRequiredStringHostnameNullableArrayOperation
+														r.name = TestRequestRequiredStringHostnameArrayOperation
 														r.summary = ""
-														r.operationID = "test_request_required_string_hostname_nullable_array"
+														r.operationID = "test_request_required_string_hostname_array"
 														r.operationGroup = ""
-														r.pathPattern = "/test_request_required_string_hostname_nullable_array"
+														r.pathPattern = "/test_request_required_string_hostname_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -35149,17 +35542,262 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														// Leaf node.
 														switch method {
 														case "POST":
-															r.name = TestRequestRequiredStringHostnameNullableArrayArrayOperation
+															r.name = TestRequestRequiredStringHostnameArrayArrayOperation
 															r.summary = ""
-															r.operationID = "test_request_required_string_hostname_nullable_array_array"
+															r.operationID = "test_request_required_string_hostname_array_array"
 															r.operationGroup = ""
-															r.pathPattern = "/test_request_required_string_hostname_nullable_array_array"
+															r.pathPattern = "/test_request_required_string_hostname_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
 														default:
 															return
 														}
+													}
+
+												}
+
+											case 'n': // Prefix: "nullable"
+
+												if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = TestRequestRequiredStringHostnameNullableOperation
+														r.summary = ""
+														r.operationID = "test_request_required_string_hostname_nullable"
+														r.operationGroup = ""
+														r.pathPattern = "/test_request_required_string_hostname_nullable"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															r.name = TestRequestRequiredStringHostnameNullableArrayOperation
+															r.summary = ""
+															r.operationID = "test_request_required_string_hostname_nullable_array"
+															r.operationGroup = ""
+															r.pathPattern = "/test_request_required_string_hostname_nullable_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															// Leaf node.
+															switch method {
+															case "POST":
+																r.name = TestRequestRequiredStringHostnameNullableArrayArrayOperation
+																r.summary = ""
+																r.operationID = "test_request_required_string_hostname_nullable_array_array"
+																r.operationGroup = ""
+																r.pathPattern = "/test_request_required_string_hostname_nullable_array_array"
+																r.args = args
+																r.count = 0
+																return r, true
+															default:
+																return
+															}
+														}
+
+													}
+
+												}
+
+											}
+
+										}
+
+									case 't': // Prefix: "ttp-date"
+
+										if l := len("ttp-date"); len(elem) >= l && elem[0:l] == "ttp-date" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											switch method {
+											case "POST":
+												r.name = TestRequestRequiredStringHTTPDateOperation
+												r.summary = ""
+												r.operationID = "test_request_required_string_http-date"
+												r.operationGroup = ""
+												r.pathPattern = "/test_request_required_string_http-date"
+												r.args = args
+												r.count = 0
+												return r, true
+											default:
+												return
+											}
+										}
+										switch elem[0] {
+										case '_': // Prefix: "_"
+
+											if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case 'a': // Prefix: "array"
+
+												if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = TestRequestRequiredStringHTTPDateArrayOperation
+														r.summary = ""
+														r.operationID = "test_request_required_string_http-date_array"
+														r.operationGroup = ""
+														r.pathPattern = "/test_request_required_string_http-date_array"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf node.
+														switch method {
+														case "POST":
+															r.name = TestRequestRequiredStringHTTPDateArrayArrayOperation
+															r.summary = ""
+															r.operationID = "test_request_required_string_http-date_array_array"
+															r.operationGroup = ""
+															r.pathPattern = "/test_request_required_string_http-date_array_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+
+												}
+
+											case 'n': // Prefix: "nullable"
+
+												if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = TestRequestRequiredStringHTTPDateNullableOperation
+														r.summary = ""
+														r.operationID = "test_request_required_string_http-date_nullable"
+														r.operationGroup = ""
+														r.pathPattern = "/test_request_required_string_http-date_nullable"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															r.name = TestRequestRequiredStringHTTPDateNullableArrayOperation
+															r.summary = ""
+															r.operationID = "test_request_required_string_http-date_nullable_array"
+															r.operationGroup = ""
+															r.pathPattern = "/test_request_required_string_http-date_nullable_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															// Leaf node.
+															switch method {
+															case "POST":
+																r.name = TestRequestRequiredStringHTTPDateNullableArrayArrayOperation
+																r.summary = ""
+																r.operationID = "test_request_required_string_http-date_nullable_array_array"
+																r.operationGroup = ""
+																r.pathPattern = "/test_request_required_string_http-date_nullable_array_array"
+																r.args = args
+																r.count = 0
+																return r, true
+															default:
+																return
+															}
+														}
+
 													}
 
 												}
@@ -40996,120 +41634,57 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 
 								}
 
-							case 'h': // Prefix: "hostname"
+							case 'h': // Prefix: "h"
 
-								if l := len("hostname"); len(elem) >= l && elem[0:l] == "hostname" {
+								if l := len("h"); len(elem) >= l && elem[0:l] == "h" {
 									elem = elem[l:]
 								} else {
 									break
 								}
 
 								if len(elem) == 0 {
-									switch method {
-									case "POST":
-										r.name = TestRequestStringHostnameOperation
-										r.summary = ""
-										r.operationID = "test_request_string_hostname"
-										r.operationGroup = ""
-										r.pathPattern = "/test_request_string_hostname"
-										r.args = args
-										r.count = 0
-										return r, true
-									default:
-										return
-									}
+									break
 								}
 								switch elem[0] {
-								case '_': // Prefix: "_"
+								case 'o': // Prefix: "ostname"
 
-									if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+									if l := len("ostname"); len(elem) >= l && elem[0:l] == "ostname" {
 										elem = elem[l:]
 									} else {
 										break
 									}
 
 									if len(elem) == 0 {
-										break
+										switch method {
+										case "POST":
+											r.name = TestRequestStringHostnameOperation
+											r.summary = ""
+											r.operationID = "test_request_string_hostname"
+											r.operationGroup = ""
+											r.pathPattern = "/test_request_string_hostname"
+											r.args = args
+											r.count = 0
+											return r, true
+										default:
+											return
+										}
 									}
 									switch elem[0] {
-									case 'a': // Prefix: "array"
+									case '_': // Prefix: "_"
 
-										if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+										if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
 											elem = elem[l:]
 										} else {
 											break
 										}
 
 										if len(elem) == 0 {
-											switch method {
-											case "POST":
-												r.name = TestRequestStringHostnameArrayOperation
-												r.summary = ""
-												r.operationID = "test_request_string_hostname_array"
-												r.operationGroup = ""
-												r.pathPattern = "/test_request_string_hostname_array"
-												r.args = args
-												r.count = 0
-												return r, true
-											default:
-												return
-											}
-										}
-										switch elem[0] {
-										case '_': // Prefix: "_array"
-
-											if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												// Leaf node.
-												switch method {
-												case "POST":
-													r.name = TestRequestStringHostnameArrayArrayOperation
-													r.summary = ""
-													r.operationID = "test_request_string_hostname_array_array"
-													r.operationGroup = ""
-													r.pathPattern = "/test_request_string_hostname_array_array"
-													r.args = args
-													r.count = 0
-													return r, true
-												default:
-													return
-												}
-											}
-
-										}
-
-									case 'n': // Prefix: "nullable"
-
-										if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
-											elem = elem[l:]
-										} else {
 											break
 										}
-
-										if len(elem) == 0 {
-											switch method {
-											case "POST":
-												r.name = TestRequestStringHostnameNullableOperation
-												r.summary = ""
-												r.operationID = "test_request_string_hostname_nullable"
-												r.operationGroup = ""
-												r.pathPattern = "/test_request_string_hostname_nullable"
-												r.args = args
-												r.count = 0
-												return r, true
-											default:
-												return
-											}
-										}
 										switch elem[0] {
-										case '_': // Prefix: "_array"
+										case 'a': // Prefix: "array"
 
-											if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+											if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
 												elem = elem[l:]
 											} else {
 												break
@@ -41118,11 +41693,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											if len(elem) == 0 {
 												switch method {
 												case "POST":
-													r.name = TestRequestStringHostnameNullableArrayOperation
+													r.name = TestRequestStringHostnameArrayOperation
 													r.summary = ""
-													r.operationID = "test_request_string_hostname_nullable_array"
+													r.operationID = "test_request_string_hostname_array"
 													r.operationGroup = ""
-													r.pathPattern = "/test_request_string_hostname_nullable_array"
+													r.pathPattern = "/test_request_string_hostname_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -41143,17 +41718,262 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													// Leaf node.
 													switch method {
 													case "POST":
-														r.name = TestRequestStringHostnameNullableArrayArrayOperation
+														r.name = TestRequestStringHostnameArrayArrayOperation
 														r.summary = ""
-														r.operationID = "test_request_string_hostname_nullable_array_array"
+														r.operationID = "test_request_string_hostname_array_array"
 														r.operationGroup = ""
-														r.pathPattern = "/test_request_string_hostname_nullable_array_array"
+														r.pathPattern = "/test_request_string_hostname_array_array"
 														r.args = args
 														r.count = 0
 														return r, true
 													default:
 														return
 													}
+												}
+
+											}
+
+										case 'n': // Prefix: "nullable"
+
+											if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch method {
+												case "POST":
+													r.name = TestRequestStringHostnameNullableOperation
+													r.summary = ""
+													r.operationID = "test_request_string_hostname_nullable"
+													r.operationGroup = ""
+													r.pathPattern = "/test_request_string_hostname_nullable"
+													r.args = args
+													r.count = 0
+													return r, true
+												default:
+													return
+												}
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = TestRequestStringHostnameNullableArrayOperation
+														r.summary = ""
+														r.operationID = "test_request_string_hostname_nullable_array"
+														r.operationGroup = ""
+														r.pathPattern = "/test_request_string_hostname_nullable_array"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf node.
+														switch method {
+														case "POST":
+															r.name = TestRequestStringHostnameNullableArrayArrayOperation
+															r.summary = ""
+															r.operationID = "test_request_string_hostname_nullable_array_array"
+															r.operationGroup = ""
+															r.pathPattern = "/test_request_string_hostname_nullable_array_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+
+												}
+
+											}
+
+										}
+
+									}
+
+								case 't': // Prefix: "ttp-date"
+
+									if l := len("ttp-date"); len(elem) >= l && elem[0:l] == "ttp-date" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										switch method {
+										case "POST":
+											r.name = TestRequestStringHTTPDateOperation
+											r.summary = ""
+											r.operationID = "test_request_string_http-date"
+											r.operationGroup = ""
+											r.pathPattern = "/test_request_string_http-date"
+											r.args = args
+											r.count = 0
+											return r, true
+										default:
+											return
+										}
+									}
+									switch elem[0] {
+									case '_': // Prefix: "_"
+
+										if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case 'a': // Prefix: "array"
+
+											if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch method {
+												case "POST":
+													r.name = TestRequestStringHTTPDateArrayOperation
+													r.summary = ""
+													r.operationID = "test_request_string_http-date_array"
+													r.operationGroup = ""
+													r.pathPattern = "/test_request_string_http-date_array"
+													r.args = args
+													r.count = 0
+													return r, true
+												default:
+													return
+												}
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													// Leaf node.
+													switch method {
+													case "POST":
+														r.name = TestRequestStringHTTPDateArrayArrayOperation
+														r.summary = ""
+														r.operationID = "test_request_string_http-date_array_array"
+														r.operationGroup = ""
+														r.pathPattern = "/test_request_string_http-date_array_array"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+
+											}
+
+										case 'n': // Prefix: "nullable"
+
+											if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch method {
+												case "POST":
+													r.name = TestRequestStringHTTPDateNullableOperation
+													r.summary = ""
+													r.operationID = "test_request_string_http-date_nullable"
+													r.operationGroup = ""
+													r.pathPattern = "/test_request_string_http-date_nullable"
+													r.args = args
+													r.count = 0
+													return r, true
+												default:
+													return
+												}
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = TestRequestStringHTTPDateNullableArrayOperation
+														r.summary = ""
+														r.operationID = "test_request_string_http-date_nullable_array"
+														r.operationGroup = ""
+														r.pathPattern = "/test_request_string_http-date_nullable_array"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf node.
+														switch method {
+														case "POST":
+															r.name = TestRequestStringHTTPDateNullableArrayArrayOperation
+															r.summary = ""
+															r.operationID = "test_request_string_http-date_nullable_array_array"
+															r.operationGroup = ""
+															r.pathPattern = "/test_request_string_http-date_nullable_array_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+
 												}
 
 											}
@@ -51039,120 +51859,57 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 
 								}
 
-							case 'h': // Prefix: "hostname"
+							case 'h': // Prefix: "h"
 
-								if l := len("hostname"); len(elem) >= l && elem[0:l] == "hostname" {
+								if l := len("h"); len(elem) >= l && elem[0:l] == "h" {
 									elem = elem[l:]
 								} else {
 									break
 								}
 
 								if len(elem) == 0 {
-									switch method {
-									case "POST":
-										r.name = TestResponseStringHostnameOperation
-										r.summary = ""
-										r.operationID = "test_response_string_hostname"
-										r.operationGroup = ""
-										r.pathPattern = "/test_response_string_hostname"
-										r.args = args
-										r.count = 0
-										return r, true
-									default:
-										return
-									}
+									break
 								}
 								switch elem[0] {
-								case '_': // Prefix: "_"
+								case 'o': // Prefix: "ostname"
 
-									if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+									if l := len("ostname"); len(elem) >= l && elem[0:l] == "ostname" {
 										elem = elem[l:]
 									} else {
 										break
 									}
 
 									if len(elem) == 0 {
-										break
+										switch method {
+										case "POST":
+											r.name = TestResponseStringHostnameOperation
+											r.summary = ""
+											r.operationID = "test_response_string_hostname"
+											r.operationGroup = ""
+											r.pathPattern = "/test_response_string_hostname"
+											r.args = args
+											r.count = 0
+											return r, true
+										default:
+											return
+										}
 									}
 									switch elem[0] {
-									case 'a': // Prefix: "array"
+									case '_': // Prefix: "_"
 
-										if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+										if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
 											elem = elem[l:]
 										} else {
 											break
 										}
 
 										if len(elem) == 0 {
-											switch method {
-											case "POST":
-												r.name = TestResponseStringHostnameArrayOperation
-												r.summary = ""
-												r.operationID = "test_response_string_hostname_array"
-												r.operationGroup = ""
-												r.pathPattern = "/test_response_string_hostname_array"
-												r.args = args
-												r.count = 0
-												return r, true
-											default:
-												return
-											}
-										}
-										switch elem[0] {
-										case '_': // Prefix: "_array"
-
-											if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												// Leaf node.
-												switch method {
-												case "POST":
-													r.name = TestResponseStringHostnameArrayArrayOperation
-													r.summary = ""
-													r.operationID = "test_response_string_hostname_array_array"
-													r.operationGroup = ""
-													r.pathPattern = "/test_response_string_hostname_array_array"
-													r.args = args
-													r.count = 0
-													return r, true
-												default:
-													return
-												}
-											}
-
-										}
-
-									case 'n': // Prefix: "nullable"
-
-										if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
-											elem = elem[l:]
-										} else {
 											break
 										}
-
-										if len(elem) == 0 {
-											switch method {
-											case "POST":
-												r.name = TestResponseStringHostnameNullableOperation
-												r.summary = ""
-												r.operationID = "test_response_string_hostname_nullable"
-												r.operationGroup = ""
-												r.pathPattern = "/test_response_string_hostname_nullable"
-												r.args = args
-												r.count = 0
-												return r, true
-											default:
-												return
-											}
-										}
 										switch elem[0] {
-										case '_': // Prefix: "_array"
+										case 'a': // Prefix: "array"
 
-											if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+											if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
 												elem = elem[l:]
 											} else {
 												break
@@ -51161,11 +51918,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											if len(elem) == 0 {
 												switch method {
 												case "POST":
-													r.name = TestResponseStringHostnameNullableArrayOperation
+													r.name = TestResponseStringHostnameArrayOperation
 													r.summary = ""
-													r.operationID = "test_response_string_hostname_nullable_array"
+													r.operationID = "test_response_string_hostname_array"
 													r.operationGroup = ""
-													r.pathPattern = "/test_response_string_hostname_nullable_array"
+													r.pathPattern = "/test_response_string_hostname_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -51186,17 +51943,262 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													// Leaf node.
 													switch method {
 													case "POST":
-														r.name = TestResponseStringHostnameNullableArrayArrayOperation
+														r.name = TestResponseStringHostnameArrayArrayOperation
 														r.summary = ""
-														r.operationID = "test_response_string_hostname_nullable_array_array"
+														r.operationID = "test_response_string_hostname_array_array"
 														r.operationGroup = ""
-														r.pathPattern = "/test_response_string_hostname_nullable_array_array"
+														r.pathPattern = "/test_response_string_hostname_array_array"
 														r.args = args
 														r.count = 0
 														return r, true
 													default:
 														return
 													}
+												}
+
+											}
+
+										case 'n': // Prefix: "nullable"
+
+											if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch method {
+												case "POST":
+													r.name = TestResponseStringHostnameNullableOperation
+													r.summary = ""
+													r.operationID = "test_response_string_hostname_nullable"
+													r.operationGroup = ""
+													r.pathPattern = "/test_response_string_hostname_nullable"
+													r.args = args
+													r.count = 0
+													return r, true
+												default:
+													return
+												}
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = TestResponseStringHostnameNullableArrayOperation
+														r.summary = ""
+														r.operationID = "test_response_string_hostname_nullable_array"
+														r.operationGroup = ""
+														r.pathPattern = "/test_response_string_hostname_nullable_array"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf node.
+														switch method {
+														case "POST":
+															r.name = TestResponseStringHostnameNullableArrayArrayOperation
+															r.summary = ""
+															r.operationID = "test_response_string_hostname_nullable_array_array"
+															r.operationGroup = ""
+															r.pathPattern = "/test_response_string_hostname_nullable_array_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+
+												}
+
+											}
+
+										}
+
+									}
+
+								case 't': // Prefix: "ttp-date"
+
+									if l := len("ttp-date"); len(elem) >= l && elem[0:l] == "ttp-date" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										switch method {
+										case "POST":
+											r.name = TestResponseStringHTTPDateOperation
+											r.summary = ""
+											r.operationID = "test_response_string_http-date"
+											r.operationGroup = ""
+											r.pathPattern = "/test_response_string_http-date"
+											r.args = args
+											r.count = 0
+											return r, true
+										default:
+											return
+										}
+									}
+									switch elem[0] {
+									case '_': // Prefix: "_"
+
+										if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case 'a': // Prefix: "array"
+
+											if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch method {
+												case "POST":
+													r.name = TestResponseStringHTTPDateArrayOperation
+													r.summary = ""
+													r.operationID = "test_response_string_http-date_array"
+													r.operationGroup = ""
+													r.pathPattern = "/test_response_string_http-date_array"
+													r.args = args
+													r.count = 0
+													return r, true
+												default:
+													return
+												}
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													// Leaf node.
+													switch method {
+													case "POST":
+														r.name = TestResponseStringHTTPDateArrayArrayOperation
+														r.summary = ""
+														r.operationID = "test_response_string_http-date_array_array"
+														r.operationGroup = ""
+														r.pathPattern = "/test_response_string_http-date_array_array"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+
+											}
+
+										case 'n': // Prefix: "nullable"
+
+											if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch method {
+												case "POST":
+													r.name = TestResponseStringHTTPDateNullableOperation
+													r.summary = ""
+													r.operationID = "test_response_string_http-date_nullable"
+													r.operationGroup = ""
+													r.pathPattern = "/test_response_string_http-date_nullable"
+													r.args = args
+													r.count = 0
+													return r, true
+												default:
+													return
+												}
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = TestResponseStringHTTPDateNullableArrayOperation
+														r.summary = ""
+														r.operationID = "test_response_string_http-date_nullable_array"
+														r.operationGroup = ""
+														r.pathPattern = "/test_response_string_http-date_nullable_array"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf node.
+														switch method {
+														case "POST":
+															r.name = TestResponseStringHTTPDateNullableArrayArrayOperation
+															r.summary = ""
+															r.operationID = "test_response_string_http-date_nullable_array_array"
+															r.operationGroup = ""
+															r.pathPattern = "/test_response_string_http-date_nullable_array_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+
 												}
 
 											}
