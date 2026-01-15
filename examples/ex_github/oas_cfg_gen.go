@@ -4,6 +4,7 @@ package api
 
 import (
 	"net/http"
+	"strings"
 
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/middleware"
@@ -90,18 +91,8 @@ func (o otelOptionFunc) applyServer(c *serverConfig) {
 
 func newServerConfig(opts ...ServerOption) serverConfig {
 	cfg := serverConfig{
-		NotFound: http.NotFound,
-		MethodNotAllowed: func(w http.ResponseWriter, r *http.Request, allowed string) {
-			status := http.StatusMethodNotAllowed
-			if r.Method == "OPTIONS" {
-				w.Header().Set("Access-Control-Allow-Methods", allowed)
-				w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
-				status = http.StatusNoContent
-			} else {
-				w.Header().Set("Allow", allowed)
-			}
-			w.WriteHeader(status)
-		},
+		NotFound:           http.NotFound,
+		MethodNotAllowed:   nil,
 		ErrorHandler:       ogenerrors.DefaultErrorHandler,
 		Middleware:         nil,
 		MaxMultipartMemory: 32 << 20, // 32 MB
@@ -124,8 +115,43 @@ func (s baseServer) notFound(w http.ResponseWriter, r *http.Request) {
 	s.cfg.NotFound(w, r)
 }
 
-func (s baseServer) notAllowed(w http.ResponseWriter, r *http.Request, allowed string) {
-	s.cfg.MethodNotAllowed(w, r, allowed)
+type notAllowedParams struct {
+	allowedMethods string
+	allowedHeaders map[string]string
+	acceptPost     string
+	acceptPatch    string
+}
+
+func (s baseServer) notAllowed(w http.ResponseWriter, r *http.Request, params notAllowedParams) {
+	isOptions := r.Method == "OPTIONS"
+	if isOptions {
+		w.Header().Set("Access-Control-Allow-Methods", params.allowedMethods)
+		if params.allowedHeaders != nil {
+			m := r.Header.Get("Access-Control-Request-Method")
+			if m != "" {
+				allowedHeaders, ok := params.allowedHeaders[strings.ToUpper(m)]
+				if ok {
+					w.Header().Set("Access-Control-Allow-Headers", allowedHeaders)
+				}
+			}
+		}
+		if params.acceptPost != "" {
+			w.Header().Set("Accept-Post", params.acceptPost)
+		}
+		if params.acceptPatch != "" {
+			w.Header().Set("Accept-Patch", params.acceptPatch)
+		}
+	}
+	if s.cfg.MethodNotAllowed != nil {
+		s.cfg.MethodNotAllowed(w, r, params.allowedMethods)
+		return
+	}
+	status := http.StatusNoContent
+	if !isOptions {
+		w.Header().Set("Allow", params.allowedMethods)
+		status = http.StatusMethodNotAllowed
+	}
+	w.WriteHeader(status)
 }
 
 func (cfg serverConfig) baseServer() (s baseServer, err error) {

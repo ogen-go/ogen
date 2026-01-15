@@ -23,6 +23,7 @@ func encodeCreatePetsResponse(response *CreatePetsCreated, w http.ResponseWriter
 
 func encodeListPetsResponse(response *PetsHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	w.Header().Set("Access-Control-Expose-Headers", "X-Next")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())

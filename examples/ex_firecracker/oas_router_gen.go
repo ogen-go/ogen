@@ -10,6 +10,59 @@ import (
 	"github.com/ogen-go/ogen/uri"
 )
 
+var (
+	rn3AllowedHeaders = map[string]string{
+		"PUT": "Content-Type",
+	}
+	rn4AllowedHeaders = map[string]string{
+		"PATCH": "Content-Type",
+		"PUT":   "Content-Type",
+	}
+	rn5AllowedHeaders = map[string]string{
+		"PATCH": "Content-Type",
+	}
+	rn19AllowedHeaders = map[string]string{
+		"PUT": "Content-Type",
+	}
+	rn14AllowedHeaders = map[string]string{
+		"PATCH": "Content-Type",
+		"PUT":   "Content-Type",
+	}
+	rn22AllowedHeaders = map[string]string{
+		"PUT": "Content-Type",
+	}
+	rn7AllowedHeaders = map[string]string{
+		"PATCH": "Content-Type",
+		"PUT":   "Content-Type",
+	}
+	rn23AllowedHeaders = map[string]string{
+		"PUT": "Content-Type",
+	}
+	rn12AllowedHeaders = map[string]string{
+		"PATCH": "Content-Type",
+		"PUT":   "Content-Type",
+	}
+	rn11AllowedHeaders = map[string]string{
+		"PUT": "Content-Type",
+	}
+	rn16AllowedHeaders = map[string]string{
+		"PATCH": "Content-Type",
+		"PUT":   "Content-Type",
+	}
+	rn1AllowedHeaders = map[string]string{
+		"PUT": "Content-Type",
+	}
+	rn9AllowedHeaders = map[string]string{
+		"PUT": "Content-Type",
+	}
+	rn17AllowedHeaders = map[string]string{
+		"PATCH": "Content-Type",
+	}
+	rn21AllowedHeaders = map[string]string{
+		"PUT": "Content-Type",
+	}
+)
+
 func (s *Server) cutPrefix(path string) (string, bool) {
 	prefix := s.cfg.Prefix
 	if prefix == "" {
@@ -62,7 +115,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				case "GET":
 					s.handleDescribeInstanceRequest([0]string{}, elemIsEscaped, w, r)
 				default:
-					s.notAllowed(w, r, "GET")
+					s.notAllowed(w, r, notAllowedParams{
+						allowedMethods: "GET",
+						allowedHeaders: nil,
+						acceptPost:     "",
+						acceptPatch:    "",
+					})
 				}
 
 				return
@@ -82,7 +140,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					case "PUT":
 						s.handleCreateSyncActionRequest([0]string{}, elemIsEscaped, w, r)
 					default:
-						s.notAllowed(w, r, "PUT")
+						s.notAllowed(w, r, notAllowedParams{
+							allowedMethods: "PUT",
+							allowedHeaders: rn3AllowedHeaders,
+							acceptPost:     "",
+							acceptPatch:    "",
+						})
 					}
 
 					return
@@ -117,7 +180,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "PUT":
 							s.handlePutBalloonRequest([0]string{}, elemIsEscaped, w, r)
 						default:
-							s.notAllowed(w, r, "GET,PATCH,PUT")
+							s.notAllowed(w, r, notAllowedParams{
+								allowedMethods: "GET,PATCH,PUT",
+								allowedHeaders: rn4AllowedHeaders,
+								acceptPost:     "",
+								acceptPatch:    "application/json",
+							})
 						}
 
 						return
@@ -139,7 +207,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "PATCH":
 								s.handlePatchBalloonStatsIntervalRequest([0]string{}, elemIsEscaped, w, r)
 							default:
-								s.notAllowed(w, r, "GET,PATCH")
+								s.notAllowed(w, r, notAllowedParams{
+									allowedMethods: "GET,PATCH",
+									allowedHeaders: rn5AllowedHeaders,
+									acceptPost:     "",
+									acceptPatch:    "application/json",
+								})
 							}
 
 							return
@@ -161,7 +234,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "PUT":
 							s.handlePutGuestBootSourceRequest([0]string{}, elemIsEscaped, w, r)
 						default:
-							s.notAllowed(w, r, "PUT")
+							s.notAllowed(w, r, notAllowedParams{
+								allowedMethods: "PUT",
+								allowedHeaders: rn19AllowedHeaders,
+								acceptPost:     "",
+								acceptPatch:    "",
+							})
 						}
 
 						return
@@ -198,7 +276,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							args[0],
 						}, elemIsEscaped, w, r)
 					default:
-						s.notAllowed(w, r, "PATCH,PUT")
+						s.notAllowed(w, r, notAllowedParams{
+							allowedMethods: "PATCH,PUT",
+							allowedHeaders: rn14AllowedHeaders,
+							acceptPost:     "",
+							acceptPatch:    "application/json",
+						})
 					}
 
 					return
@@ -218,7 +301,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					case "PUT":
 						s.handlePutLoggerRequest([0]string{}, elemIsEscaped, w, r)
 					default:
-						s.notAllowed(w, r, "PUT")
+						s.notAllowed(w, r, notAllowedParams{
+							allowedMethods: "PUT",
+							allowedHeaders: rn22AllowedHeaders,
+							acceptPost:     "",
+							acceptPatch:    "",
+						})
 					}
 
 					return
@@ -254,7 +342,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "PUT":
 							s.handlePutMachineConfigurationRequest([0]string{}, elemIsEscaped, w, r)
 						default:
-							s.notAllowed(w, r, "GET,PATCH,PUT")
+							s.notAllowed(w, r, notAllowedParams{
+								allowedMethods: "GET,PATCH,PUT",
+								allowedHeaders: rn7AllowedHeaders,
+								acceptPost:     "",
+								acceptPatch:    "application/json",
+							})
 						}
 
 						return
@@ -274,7 +367,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "PUT":
 							s.handlePutMetricsRequest([0]string{}, elemIsEscaped, w, r)
 						default:
-							s.notAllowed(w, r, "PUT")
+							s.notAllowed(w, r, notAllowedParams{
+								allowedMethods: "PUT",
+								allowedHeaders: rn23AllowedHeaders,
+								acceptPost:     "",
+								acceptPatch:    "",
+							})
 						}
 
 						return
@@ -297,7 +395,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "PUT":
 							s.handleMmdsPutRequest([0]string{}, elemIsEscaped, w, r)
 						default:
-							s.notAllowed(w, r, "GET,PATCH,PUT")
+							s.notAllowed(w, r, notAllowedParams{
+								allowedMethods: "GET,PATCH,PUT",
+								allowedHeaders: rn12AllowedHeaders,
+								acceptPost:     "",
+								acceptPatch:    "application/json",
+							})
 						}
 
 						return
@@ -317,7 +420,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "PUT":
 								s.handleMmdsConfigPutRequest([0]string{}, elemIsEscaped, w, r)
 							default:
-								s.notAllowed(w, r, "PUT")
+								s.notAllowed(w, r, notAllowedParams{
+									allowedMethods: "PUT",
+									allowedHeaders: rn11AllowedHeaders,
+									acceptPost:     "",
+									acceptPatch:    "",
+								})
 							}
 
 							return
@@ -356,7 +464,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							args[0],
 						}, elemIsEscaped, w, r)
 					default:
-						s.notAllowed(w, r, "PATCH,PUT")
+						s.notAllowed(w, r, notAllowedParams{
+							allowedMethods: "PATCH,PUT",
+							allowedHeaders: rn16AllowedHeaders,
+							acceptPost:     "",
+							acceptPatch:    "application/json",
+						})
 					}
 
 					return
@@ -388,7 +501,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "PUT":
 							s.handleCreateSnapshotRequest([0]string{}, elemIsEscaped, w, r)
 						default:
-							s.notAllowed(w, r, "PUT")
+							s.notAllowed(w, r, notAllowedParams{
+								allowedMethods: "PUT",
+								allowedHeaders: rn1AllowedHeaders,
+								acceptPost:     "",
+								acceptPatch:    "",
+							})
 						}
 
 						return
@@ -408,7 +526,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "PUT":
 							s.handleLoadSnapshotRequest([0]string{}, elemIsEscaped, w, r)
 						default:
-							s.notAllowed(w, r, "PUT")
+							s.notAllowed(w, r, notAllowedParams{
+								allowedMethods: "PUT",
+								allowedHeaders: rn9AllowedHeaders,
+								acceptPost:     "",
+								acceptPatch:    "",
+							})
 						}
 
 						return
@@ -441,7 +564,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "PATCH":
 							s.handlePatchVmRequest([0]string{}, elemIsEscaped, w, r)
 						default:
-							s.notAllowed(w, r, "PATCH")
+							s.notAllowed(w, r, notAllowedParams{
+								allowedMethods: "PATCH",
+								allowedHeaders: rn17AllowedHeaders,
+								acceptPost:     "",
+								acceptPatch:    "application/json",
+							})
 						}
 
 						return
@@ -461,7 +589,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "GET":
 								s.handleGetExportVmConfigRequest([0]string{}, elemIsEscaped, w, r)
 							default:
-								s.notAllowed(w, r, "GET")
+								s.notAllowed(w, r, notAllowedParams{
+									allowedMethods: "GET",
+									allowedHeaders: nil,
+									acceptPost:     "",
+									acceptPatch:    "",
+								})
 							}
 
 							return
@@ -483,7 +616,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "PUT":
 							s.handlePutGuestVsockRequest([0]string{}, elemIsEscaped, w, r)
 						default:
-							s.notAllowed(w, r, "PUT")
+							s.notAllowed(w, r, notAllowedParams{
+								allowedMethods: "PUT",
+								allowedHeaders: rn21AllowedHeaders,
+								acceptPost:     "",
+								acceptPatch:    "",
+							})
 						}
 
 						return
