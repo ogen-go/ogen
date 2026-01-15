@@ -1,0 +1,53 @@
+openapi: 3.1.0
+info:
+  title: title
+  version: 0.1.0
+paths:
+  /foo:
+    get:
+      parameters:
+        - name: Content-Length
+          in: header
+          required: true
+          schema: { type: integer, format: int64 }
+      responses:
+        "200":
+          description: default
+    post:
+      security:
+        - bearerToken: []
+      requestBody:
+        required: true
+        content:
+          text/plain:
+            schema: { type: string }
+          application/json:
+            schema: { type: string }
+      responses:
+        "200":
+          description: default
+          headers:
+            Location:
+              required: true
+              schema: { type: string }
+    patch:
+      security:
+        - headerKey: []
+        - bearerToken: []
+      requestBody:
+        required: true
+        content:
+          application/sdp:
+            schema: { type: string }
+      responses:
+        "200":
+          description: default
+components:
+  securitySchemes:
+    headerKey:
+      type: apiKey
+      in: header
+      name: X-Api-Key
+    bearerToken:
+      type: http
+      scheme: bearer
