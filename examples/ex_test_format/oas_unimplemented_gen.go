@@ -2442,6 +2442,48 @@ func (UnimplementedHandler) TestRequestRequiredStringFloat64NullableArrayArray(c
 	return r, ht.ErrNotImplemented
 }
 
+// TestRequestRequiredStringHTTPDate implements test_request_required_string_http-date operation.
+//
+// POST /test_request_required_string_http-date
+func (UnimplementedHandler) TestRequestRequiredStringHTTPDate(ctx context.Context, req time.Time) (r *Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestRequiredStringHTTPDateArray implements test_request_required_string_http-date_array operation.
+//
+// POST /test_request_required_string_http-date_array
+func (UnimplementedHandler) TestRequestRequiredStringHTTPDateArray(ctx context.Context, req []time.Time) (r *Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestRequiredStringHTTPDateArrayArray implements test_request_required_string_http-date_array_array operation.
+//
+// POST /test_request_required_string_http-date_array_array
+func (UnimplementedHandler) TestRequestRequiredStringHTTPDateArrayArray(ctx context.Context, req [][]time.Time) (r *Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestRequiredStringHTTPDateNullable implements test_request_required_string_http-date_nullable operation.
+//
+// POST /test_request_required_string_http-date_nullable
+func (UnimplementedHandler) TestRequestRequiredStringHTTPDateNullable(ctx context.Context, req NilHTTPDate) (r *Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestRequiredStringHTTPDateNullableArray implements test_request_required_string_http-date_nullable_array operation.
+//
+// POST /test_request_required_string_http-date_nullable_array
+func (UnimplementedHandler) TestRequestRequiredStringHTTPDateNullableArray(ctx context.Context, req []NilHTTPDate) (r *Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestRequiredStringHTTPDateNullableArrayArray implements test_request_required_string_http-date_nullable_array_array operation.
+//
+// POST /test_request_required_string_http-date_nullable_array_array
+func (UnimplementedHandler) TestRequestRequiredStringHTTPDateNullableArrayArray(ctx context.Context, req [][]NilHTTPDate) (r *Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
 // TestRequestRequiredStringHostname implements test_request_required_string_hostname operation.
 //
 // POST /test_request_required_string_hostname
@@ -3909,6 +3951,48 @@ func (UnimplementedHandler) TestRequestStringFloat64NullableArray(ctx context.Co
 //
 // POST /test_request_string_float64_nullable_array_array
 func (UnimplementedHandler) TestRequestStringFloat64NullableArrayArray(ctx context.Context, req [][]NilStringFloat64) (r *Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestStringHTTPDate implements test_request_string_http-date operation.
+//
+// POST /test_request_string_http-date
+func (UnimplementedHandler) TestRequestStringHTTPDate(ctx context.Context, req OptHTTPDate) (r *Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestStringHTTPDateArray implements test_request_string_http-date_array operation.
+//
+// POST /test_request_string_http-date_array
+func (UnimplementedHandler) TestRequestStringHTTPDateArray(ctx context.Context, req []time.Time) (r *Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestStringHTTPDateArrayArray implements test_request_string_http-date_array_array operation.
+//
+// POST /test_request_string_http-date_array_array
+func (UnimplementedHandler) TestRequestStringHTTPDateArrayArray(ctx context.Context, req [][]time.Time) (r *Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestStringHTTPDateNullable implements test_request_string_http-date_nullable operation.
+//
+// POST /test_request_string_http-date_nullable
+func (UnimplementedHandler) TestRequestStringHTTPDateNullable(ctx context.Context, req OptNilHTTPDate) (r *Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestStringHTTPDateNullableArray implements test_request_string_http-date_nullable_array operation.
+//
+// POST /test_request_string_http-date_nullable_array
+func (UnimplementedHandler) TestRequestStringHTTPDateNullableArray(ctx context.Context, req []NilHTTPDate) (r *Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestStringHTTPDateNullableArrayArray implements test_request_string_http-date_nullable_array_array operation.
+//
+// POST /test_request_string_http-date_nullable_array_array
+func (UnimplementedHandler) TestRequestStringHTTPDateNullableArrayArray(ctx context.Context, req [][]NilHTTPDate) (r *Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -6366,6 +6450,48 @@ func (UnimplementedHandler) TestResponseStringFloat64NullableArray(ctx context.C
 //
 // POST /test_response_string_float64_nullable_array_array
 func (UnimplementedHandler) TestResponseStringFloat64NullableArrayArray(ctx context.Context, req string) (r [][]NilStringFloat64, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestResponseStringHTTPDate implements test_response_string_http-date operation.
+//
+// POST /test_response_string_http-date
+func (UnimplementedHandler) TestResponseStringHTTPDate(ctx context.Context, req string) (r time.Time, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestResponseStringHTTPDateArray implements test_response_string_http-date_array operation.
+//
+// POST /test_response_string_http-date_array
+func (UnimplementedHandler) TestResponseStringHTTPDateArray(ctx context.Context, req string) (r []time.Time, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestResponseStringHTTPDateArrayArray implements test_response_string_http-date_array_array operation.
+//
+// POST /test_response_string_http-date_array_array
+func (UnimplementedHandler) TestResponseStringHTTPDateArrayArray(ctx context.Context, req string) (r [][]time.Time, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestResponseStringHTTPDateNullable implements test_response_string_http-date_nullable operation.
+//
+// POST /test_response_string_http-date_nullable
+func (UnimplementedHandler) TestResponseStringHTTPDateNullable(ctx context.Context, req string) (r NilHTTPDate, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestResponseStringHTTPDateNullableArray implements test_response_string_http-date_nullable_array operation.
+//
+// POST /test_response_string_http-date_nullable_array
+func (UnimplementedHandler) TestResponseStringHTTPDateNullableArray(ctx context.Context, req string) (r []NilHTTPDate, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestResponseStringHTTPDateNullableArrayArray implements test_response_string_http-date_nullable_array_array operation.
+//
+// POST /test_response_string_http-date_nullable_array_array
+func (UnimplementedHandler) TestResponseStringHTTPDateNullableArrayArray(ctx context.Context, req string) (r [][]NilHTTPDate, _ error) {
 	return r, ht.ErrNotImplemented
 }
 

@@ -1416,6 +1416,30 @@ type Invoker interface {
 	//
 	// POST /test_request_required_string_float64_nullable_array_array
 	TestRequestRequiredStringFloat64NullableArrayArray(ctx context.Context, request [][]NilStringFloat64) (*Error, error)
+	// TestRequestRequiredStringHTTPDate invokes test_request_required_string_http-date operation.
+	//
+	// POST /test_request_required_string_http-date
+	TestRequestRequiredStringHTTPDate(ctx context.Context, request time.Time) (*Error, error)
+	// TestRequestRequiredStringHTTPDateArray invokes test_request_required_string_http-date_array operation.
+	//
+	// POST /test_request_required_string_http-date_array
+	TestRequestRequiredStringHTTPDateArray(ctx context.Context, request []time.Time) (*Error, error)
+	// TestRequestRequiredStringHTTPDateArrayArray invokes test_request_required_string_http-date_array_array operation.
+	//
+	// POST /test_request_required_string_http-date_array_array
+	TestRequestRequiredStringHTTPDateArrayArray(ctx context.Context, request [][]time.Time) (*Error, error)
+	// TestRequestRequiredStringHTTPDateNullable invokes test_request_required_string_http-date_nullable operation.
+	//
+	// POST /test_request_required_string_http-date_nullable
+	TestRequestRequiredStringHTTPDateNullable(ctx context.Context, request NilHTTPDate) (*Error, error)
+	// TestRequestRequiredStringHTTPDateNullableArray invokes test_request_required_string_http-date_nullable_array operation.
+	//
+	// POST /test_request_required_string_http-date_nullable_array
+	TestRequestRequiredStringHTTPDateNullableArray(ctx context.Context, request []NilHTTPDate) (*Error, error)
+	// TestRequestRequiredStringHTTPDateNullableArrayArray invokes test_request_required_string_http-date_nullable_array_array operation.
+	//
+	// POST /test_request_required_string_http-date_nullable_array_array
+	TestRequestRequiredStringHTTPDateNullableArrayArray(ctx context.Context, request [][]NilHTTPDate) (*Error, error)
 	// TestRequestRequiredStringHostname invokes test_request_required_string_hostname operation.
 	//
 	// POST /test_request_required_string_hostname
@@ -2256,6 +2280,30 @@ type Invoker interface {
 	//
 	// POST /test_request_string_float64_nullable_array_array
 	TestRequestStringFloat64NullableArrayArray(ctx context.Context, request [][]NilStringFloat64) (*Error, error)
+	// TestRequestStringHTTPDate invokes test_request_string_http-date operation.
+	//
+	// POST /test_request_string_http-date
+	TestRequestStringHTTPDate(ctx context.Context, request OptHTTPDate) (*Error, error)
+	// TestRequestStringHTTPDateArray invokes test_request_string_http-date_array operation.
+	//
+	// POST /test_request_string_http-date_array
+	TestRequestStringHTTPDateArray(ctx context.Context, request []time.Time) (*Error, error)
+	// TestRequestStringHTTPDateArrayArray invokes test_request_string_http-date_array_array operation.
+	//
+	// POST /test_request_string_http-date_array_array
+	TestRequestStringHTTPDateArrayArray(ctx context.Context, request [][]time.Time) (*Error, error)
+	// TestRequestStringHTTPDateNullable invokes test_request_string_http-date_nullable operation.
+	//
+	// POST /test_request_string_http-date_nullable
+	TestRequestStringHTTPDateNullable(ctx context.Context, request OptNilHTTPDate) (*Error, error)
+	// TestRequestStringHTTPDateNullableArray invokes test_request_string_http-date_nullable_array operation.
+	//
+	// POST /test_request_string_http-date_nullable_array
+	TestRequestStringHTTPDateNullableArray(ctx context.Context, request []NilHTTPDate) (*Error, error)
+	// TestRequestStringHTTPDateNullableArrayArray invokes test_request_string_http-date_nullable_array_array operation.
+	//
+	// POST /test_request_string_http-date_nullable_array_array
+	TestRequestStringHTTPDateNullableArrayArray(ctx context.Context, request [][]NilHTTPDate) (*Error, error)
 	// TestRequestStringHostname invokes test_request_string_hostname operation.
 	//
 	// POST /test_request_string_hostname
@@ -3660,6 +3708,30 @@ type Invoker interface {
 	//
 	// POST /test_response_string_float64_nullable_array_array
 	TestResponseStringFloat64NullableArrayArray(ctx context.Context, request string) ([][]NilStringFloat64, error)
+	// TestResponseStringHTTPDate invokes test_response_string_http-date operation.
+	//
+	// POST /test_response_string_http-date
+	TestResponseStringHTTPDate(ctx context.Context, request string) (time.Time, error)
+	// TestResponseStringHTTPDateArray invokes test_response_string_http-date_array operation.
+	//
+	// POST /test_response_string_http-date_array
+	TestResponseStringHTTPDateArray(ctx context.Context, request string) ([]time.Time, error)
+	// TestResponseStringHTTPDateArrayArray invokes test_response_string_http-date_array_array operation.
+	//
+	// POST /test_response_string_http-date_array_array
+	TestResponseStringHTTPDateArrayArray(ctx context.Context, request string) ([][]time.Time, error)
+	// TestResponseStringHTTPDateNullable invokes test_response_string_http-date_nullable operation.
+	//
+	// POST /test_response_string_http-date_nullable
+	TestResponseStringHTTPDateNullable(ctx context.Context, request string) (NilHTTPDate, error)
+	// TestResponseStringHTTPDateNullableArray invokes test_response_string_http-date_nullable_array operation.
+	//
+	// POST /test_response_string_http-date_nullable_array
+	TestResponseStringHTTPDateNullableArray(ctx context.Context, request string) ([]NilHTTPDate, error)
+	// TestResponseStringHTTPDateNullableArrayArray invokes test_response_string_http-date_nullable_array_array operation.
+	//
+	// POST /test_response_string_http-date_nullable_array_array
+	TestResponseStringHTTPDateNullableArrayArray(ctx context.Context, request string) ([][]NilHTTPDate, error)
 	// TestResponseStringHostname invokes test_response_string_hostname operation.
 	//
 	// POST /test_response_string_hostname
@@ -5592,6 +5664,43 @@ func (c *Client) sendTestQueryParameter(ctx context.Context, request string, par
 				for i, item := range params.StringHostnameArray {
 					if err := func() error {
 						return e.EncodeValue(conv.StringToString(item))
+					}(); err != nil {
+						return errors.Wrapf(err, "[%d]", i)
+					}
+				}
+				return nil
+			})
+		}); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+	}
+	{
+		// Encode "string_http-date" parameter.
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "string_http-date",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+			return e.EncodeValue(conv.HTTPDateToString(params.StringHTTPDate))
+		}); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+	}
+	{
+		// Encode "string_http-date_array" parameter.
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "string_http-date_array",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+			return e.EncodeArray(func(e uri.Encoder) error {
+				for i, item := range params.StringHTTPDateArray {
+					if err := func() error {
+						return e.EncodeValue(conv.HTTPDateToString(item))
 					}(); err != nil {
 						return errors.Wrapf(err, "[%d]", i)
 					}
@@ -32010,6 +32119,450 @@ func (c *Client) sendTestRequestRequiredStringFloat64NullableArrayArray(ctx cont
 	return result, nil
 }
 
+// TestRequestRequiredStringHTTPDate invokes test_request_required_string_http-date operation.
+//
+// POST /test_request_required_string_http-date
+func (c *Client) TestRequestRequiredStringHTTPDate(ctx context.Context, request time.Time) (*Error, error) {
+	res, err := c.sendTestRequestRequiredStringHTTPDate(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestRequestRequiredStringHTTPDate(ctx context.Context, request time.Time) (res *Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_http-date"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/test_request_required_string_http-date"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringHTTPDateOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_request_required_string_http-date"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestRequestRequiredStringHTTPDateRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestRequiredStringHTTPDateResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredStringHTTPDateArray invokes test_request_required_string_http-date_array operation.
+//
+// POST /test_request_required_string_http-date_array
+func (c *Client) TestRequestRequiredStringHTTPDateArray(ctx context.Context, request []time.Time) (*Error, error) {
+	res, err := c.sendTestRequestRequiredStringHTTPDateArray(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestRequestRequiredStringHTTPDateArray(ctx context.Context, request []time.Time) (res *Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_http-date_array"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/test_request_required_string_http-date_array"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringHTTPDateArrayOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_request_required_string_http-date_array"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestRequestRequiredStringHTTPDateArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestRequiredStringHTTPDateArrayResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredStringHTTPDateArrayArray invokes test_request_required_string_http-date_array_array operation.
+//
+// POST /test_request_required_string_http-date_array_array
+func (c *Client) TestRequestRequiredStringHTTPDateArrayArray(ctx context.Context, request [][]time.Time) (*Error, error) {
+	res, err := c.sendTestRequestRequiredStringHTTPDateArrayArray(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestRequestRequiredStringHTTPDateArrayArray(ctx context.Context, request [][]time.Time) (res *Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_http-date_array_array"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/test_request_required_string_http-date_array_array"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringHTTPDateArrayArrayOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_request_required_string_http-date_array_array"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestRequestRequiredStringHTTPDateArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestRequiredStringHTTPDateArrayArrayResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredStringHTTPDateNullable invokes test_request_required_string_http-date_nullable operation.
+//
+// POST /test_request_required_string_http-date_nullable
+func (c *Client) TestRequestRequiredStringHTTPDateNullable(ctx context.Context, request NilHTTPDate) (*Error, error) {
+	res, err := c.sendTestRequestRequiredStringHTTPDateNullable(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestRequestRequiredStringHTTPDateNullable(ctx context.Context, request NilHTTPDate) (res *Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_http-date_nullable"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/test_request_required_string_http-date_nullable"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringHTTPDateNullableOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_request_required_string_http-date_nullable"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestRequestRequiredStringHTTPDateNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestRequiredStringHTTPDateNullableResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredStringHTTPDateNullableArray invokes test_request_required_string_http-date_nullable_array operation.
+//
+// POST /test_request_required_string_http-date_nullable_array
+func (c *Client) TestRequestRequiredStringHTTPDateNullableArray(ctx context.Context, request []NilHTTPDate) (*Error, error) {
+	res, err := c.sendTestRequestRequiredStringHTTPDateNullableArray(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestRequestRequiredStringHTTPDateNullableArray(ctx context.Context, request []NilHTTPDate) (res *Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_http-date_nullable_array"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/test_request_required_string_http-date_nullable_array"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringHTTPDateNullableArrayOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_request_required_string_http-date_nullable_array"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestRequestRequiredStringHTTPDateNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestRequiredStringHTTPDateNullableArrayResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredStringHTTPDateNullableArrayArray invokes test_request_required_string_http-date_nullable_array_array operation.
+//
+// POST /test_request_required_string_http-date_nullable_array_array
+func (c *Client) TestRequestRequiredStringHTTPDateNullableArrayArray(ctx context.Context, request [][]NilHTTPDate) (*Error, error) {
+	res, err := c.sendTestRequestRequiredStringHTTPDateNullableArrayArray(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestRequestRequiredStringHTTPDateNullableArrayArray(ctx context.Context, request [][]NilHTTPDate) (res *Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_http-date_nullable_array_array"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/test_request_required_string_http-date_nullable_array_array"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringHTTPDateNullableArrayArrayOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_request_required_string_http-date_nullable_array_array"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestRequestRequiredStringHTTPDateNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestRequiredStringHTTPDateNullableArrayArrayResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
 // TestRequestRequiredStringHostname invokes test_request_required_string_hostname operation.
 //
 // POST /test_request_required_string_hostname
@@ -47543,6 +48096,450 @@ func (c *Client) sendTestRequestStringFloat64NullableArrayArray(ctx context.Cont
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringFloat64NullableArrayArrayResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestStringHTTPDate invokes test_request_string_http-date operation.
+//
+// POST /test_request_string_http-date
+func (c *Client) TestRequestStringHTTPDate(ctx context.Context, request OptHTTPDate) (*Error, error) {
+	res, err := c.sendTestRequestStringHTTPDate(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestRequestStringHTTPDate(ctx context.Context, request OptHTTPDate) (res *Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_http-date"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/test_request_string_http-date"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringHTTPDateOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_request_string_http-date"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestRequestStringHTTPDateRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestStringHTTPDateResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestStringHTTPDateArray invokes test_request_string_http-date_array operation.
+//
+// POST /test_request_string_http-date_array
+func (c *Client) TestRequestStringHTTPDateArray(ctx context.Context, request []time.Time) (*Error, error) {
+	res, err := c.sendTestRequestStringHTTPDateArray(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestRequestStringHTTPDateArray(ctx context.Context, request []time.Time) (res *Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_http-date_array"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/test_request_string_http-date_array"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringHTTPDateArrayOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_request_string_http-date_array"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestRequestStringHTTPDateArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestStringHTTPDateArrayResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestStringHTTPDateArrayArray invokes test_request_string_http-date_array_array operation.
+//
+// POST /test_request_string_http-date_array_array
+func (c *Client) TestRequestStringHTTPDateArrayArray(ctx context.Context, request [][]time.Time) (*Error, error) {
+	res, err := c.sendTestRequestStringHTTPDateArrayArray(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestRequestStringHTTPDateArrayArray(ctx context.Context, request [][]time.Time) (res *Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_http-date_array_array"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/test_request_string_http-date_array_array"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringHTTPDateArrayArrayOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_request_string_http-date_array_array"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestRequestStringHTTPDateArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestStringHTTPDateArrayArrayResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestStringHTTPDateNullable invokes test_request_string_http-date_nullable operation.
+//
+// POST /test_request_string_http-date_nullable
+func (c *Client) TestRequestStringHTTPDateNullable(ctx context.Context, request OptNilHTTPDate) (*Error, error) {
+	res, err := c.sendTestRequestStringHTTPDateNullable(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestRequestStringHTTPDateNullable(ctx context.Context, request OptNilHTTPDate) (res *Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_http-date_nullable"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/test_request_string_http-date_nullable"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringHTTPDateNullableOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_request_string_http-date_nullable"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestRequestStringHTTPDateNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestStringHTTPDateNullableResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestStringHTTPDateNullableArray invokes test_request_string_http-date_nullable_array operation.
+//
+// POST /test_request_string_http-date_nullable_array
+func (c *Client) TestRequestStringHTTPDateNullableArray(ctx context.Context, request []NilHTTPDate) (*Error, error) {
+	res, err := c.sendTestRequestStringHTTPDateNullableArray(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestRequestStringHTTPDateNullableArray(ctx context.Context, request []NilHTTPDate) (res *Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_http-date_nullable_array"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/test_request_string_http-date_nullable_array"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringHTTPDateNullableArrayOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_request_string_http-date_nullable_array"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestRequestStringHTTPDateNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestStringHTTPDateNullableArrayResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestStringHTTPDateNullableArrayArray invokes test_request_string_http-date_nullable_array_array operation.
+//
+// POST /test_request_string_http-date_nullable_array_array
+func (c *Client) TestRequestStringHTTPDateNullableArrayArray(ctx context.Context, request [][]NilHTTPDate) (*Error, error) {
+	res, err := c.sendTestRequestStringHTTPDateNullableArrayArray(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestRequestStringHTTPDateNullableArrayArray(ctx context.Context, request [][]NilHTTPDate) (res *Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_http-date_nullable_array_array"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/test_request_string_http-date_nullable_array_array"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringHTTPDateNullableArrayArrayOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_request_string_http-date_nullable_array_array"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestRequestStringHTTPDateNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestStringHTTPDateNullableArrayArrayResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -73517,6 +74514,450 @@ func (c *Client) sendTestResponseStringFloat64NullableArrayArray(ctx context.Con
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringFloat64NullableArrayArrayResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseStringHTTPDate invokes test_response_string_http-date operation.
+//
+// POST /test_response_string_http-date
+func (c *Client) TestResponseStringHTTPDate(ctx context.Context, request string) (time.Time, error) {
+	res, err := c.sendTestResponseStringHTTPDate(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestResponseStringHTTPDate(ctx context.Context, request string) (res time.Time, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_http-date"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/test_response_string_http-date"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringHTTPDateOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_response_string_http-date"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestResponseStringHTTPDateRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestResponseStringHTTPDateResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseStringHTTPDateArray invokes test_response_string_http-date_array operation.
+//
+// POST /test_response_string_http-date_array
+func (c *Client) TestResponseStringHTTPDateArray(ctx context.Context, request string) ([]time.Time, error) {
+	res, err := c.sendTestResponseStringHTTPDateArray(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestResponseStringHTTPDateArray(ctx context.Context, request string) (res []time.Time, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_http-date_array"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/test_response_string_http-date_array"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringHTTPDateArrayOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_response_string_http-date_array"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestResponseStringHTTPDateArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestResponseStringHTTPDateArrayResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseStringHTTPDateArrayArray invokes test_response_string_http-date_array_array operation.
+//
+// POST /test_response_string_http-date_array_array
+func (c *Client) TestResponseStringHTTPDateArrayArray(ctx context.Context, request string) ([][]time.Time, error) {
+	res, err := c.sendTestResponseStringHTTPDateArrayArray(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestResponseStringHTTPDateArrayArray(ctx context.Context, request string) (res [][]time.Time, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_http-date_array_array"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/test_response_string_http-date_array_array"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringHTTPDateArrayArrayOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_response_string_http-date_array_array"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestResponseStringHTTPDateArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestResponseStringHTTPDateArrayArrayResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseStringHTTPDateNullable invokes test_response_string_http-date_nullable operation.
+//
+// POST /test_response_string_http-date_nullable
+func (c *Client) TestResponseStringHTTPDateNullable(ctx context.Context, request string) (NilHTTPDate, error) {
+	res, err := c.sendTestResponseStringHTTPDateNullable(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestResponseStringHTTPDateNullable(ctx context.Context, request string) (res NilHTTPDate, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_http-date_nullable"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/test_response_string_http-date_nullable"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringHTTPDateNullableOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_response_string_http-date_nullable"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestResponseStringHTTPDateNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestResponseStringHTTPDateNullableResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseStringHTTPDateNullableArray invokes test_response_string_http-date_nullable_array operation.
+//
+// POST /test_response_string_http-date_nullable_array
+func (c *Client) TestResponseStringHTTPDateNullableArray(ctx context.Context, request string) ([]NilHTTPDate, error) {
+	res, err := c.sendTestResponseStringHTTPDateNullableArray(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestResponseStringHTTPDateNullableArray(ctx context.Context, request string) (res []NilHTTPDate, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_http-date_nullable_array"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/test_response_string_http-date_nullable_array"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringHTTPDateNullableArrayOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_response_string_http-date_nullable_array"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestResponseStringHTTPDateNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestResponseStringHTTPDateNullableArrayResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseStringHTTPDateNullableArrayArray invokes test_response_string_http-date_nullable_array_array operation.
+//
+// POST /test_response_string_http-date_nullable_array_array
+func (c *Client) TestResponseStringHTTPDateNullableArrayArray(ctx context.Context, request string) ([][]NilHTTPDate, error) {
+	res, err := c.sendTestResponseStringHTTPDateNullableArrayArray(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestResponseStringHTTPDateNullableArrayArray(ctx context.Context, request string) (res [][]NilHTTPDate, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_http-date_nullable_array_array"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/test_response_string_http-date_nullable_array_array"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringHTTPDateNullableArrayArrayOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_response_string_http-date_nullable_array_array"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestResponseStringHTTPDateNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestResponseStringHTTPDateNullableArrayArrayResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}

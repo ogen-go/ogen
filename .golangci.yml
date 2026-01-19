@@ -110,10 +110,10 @@ linters:
         text: emptyFallthrough
       - linters:
           - goconst
-        text: string `(string|number|u?int\d{0,2}|float\d{2})`
+        text: string `(string|number|u?int\d{0,2}|float\d{2}|decimal)`
       - linters:
           - goconst
-        text: string `(Unix|unix|date|time|ipv6|String|DateTime|Number)
+        text: string `(Unix|unix|date|time|http-date|ipv6|String|DateTime|HTTPDate|Number)
       - linters: [revive]
         text: avoid.+package names
     paths:

@@ -99,6 +99,10 @@ func ToDateTime(s string) (time.Time, error) {
 	return time.Parse(time.RFC3339, s)
 }
 
+func ToHTTPDate(s string) (time.Time, error) {
+	return time.Parse(httpDateLayout, s)
+}
+
 func ToUnixSeconds(s string) (time.Time, error) {
 	val, err := ToInt64(s)
 	if err != nil {

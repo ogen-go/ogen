@@ -7,8 +7,9 @@ import (
 )
 
 const (
-	dateLayout = "2006-01-02"
-	timeLayout = "15:04:05"
+	dateLayout     = "2006-01-02"
+	timeLayout     = "15:04:05"
+	httpDateLayout = "Mon, 02 Jan 2006 15:04:05 GMT"
 )
 
 // DecodeTimeFormat decodes date, time & date-time from json using a custom layout.
@@ -78,6 +79,16 @@ func DecodeDateTime(d *jx.Decoder) (v time.Time, err error) {
 // EncodeDateTime encodes date-time to json.
 func EncodeDateTime(e *jx.Encoder, v time.Time) {
 	EncodeTimeFormat(e, v, time.RFC3339)
+}
+
+// DecodeHTTPDate decodes http-date from json.
+func DecodeHTTPDate(d *jx.Decoder) (v time.Time, err error) {
+	return DecodeTimeFormat(d, httpDateLayout)
+}
+
+// EncodeHTTPDate encodes http-date to json.
+func EncodeHTTPDate(e *jx.Encoder, v time.Time) {
+	EncodeTimeFormat(e, v.UTC(), httpDateLayout)
 }
 
 // DecodeDuration decodes duration from json.

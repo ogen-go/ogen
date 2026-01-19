@@ -151,6 +151,8 @@ func (j JSON) Format() string {
 		return "Time"
 	case "date-time":
 		return "DateTime"
+	case "http-date":
+		return "HTTPDate"
 	case "duration":
 		return "Duration"
 	case "ip":
