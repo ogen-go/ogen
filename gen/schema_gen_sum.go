@@ -1367,7 +1367,7 @@ func mergeSchemes(s1, s2 *jsonschema.Schema) (_ *jsonschema.Schema, err error) {
 	}
 
 	containsValidators := func(s *jsonschema.Schema) bool {
-		if s.Type != "" || s.Format != "" || s.Nullable || len(s.Enum) > 0 || s.DefaultSet {
+		if s.Type != "" || s.Format != "" || s.Nullable || len(s.Enum) > 0 || s.DefaultSet || s.ConstSet {
 			return true
 		}
 		if s.Item != nil ||
@@ -1466,6 +1466,23 @@ func mergeSchemes(s1, s2 *jsonschema.Schema) (_ *jsonschema.Schema, err error) {
 
 		r.Default = s1.Default
 		r.DefaultSet = true
+	}
+
+	// Const
+	switch {
+	case s1.ConstSet && !s2.ConstSet:
+		r.Const = s1.Const
+		r.ConstSet = true
+	case !s1.ConstSet && s2.ConstSet:
+		r.Const = s2.Const
+		r.ConstSet = true
+	case s1.ConstSet && s2.ConstSet:
+		if !reflect.DeepEqual(s1.Const, s2.Const) {
+			return nil, errors.New("schemes have different const values")
+		}
+
+		r.Const = s1.Const
+		r.ConstSet = true
 	}
 
 	// Discriminator

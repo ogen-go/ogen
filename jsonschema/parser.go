@@ -134,6 +134,21 @@ func (p *Parser) parse1(schema *RawSchema, ctx *jsonpointer.ResolveCtx, hook fun
 			return nil, p.wrapField("default", p.file(ctx), schema.Common.Locator, err)
 		}
 	}
+	if len(schema.Const) > 0 {
+		if err := func() error {
+			v, err := parseJSONValue(nil, json.RawMessage(schema.Const))
+			if err != nil {
+				return err
+			}
+
+			s.Const = v
+			s.ConstSet = true
+			return nil
+		}(); err != nil {
+			err := errors.Wrap(err, "parse const")
+			return nil, p.wrapField("const", p.file(ctx), schema.Common.Locator, err)
+		}
+	}
 
 	for key, val := range schema.Common.Extensions {
 		if err := func() error {
@@ -364,7 +379,7 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx *jsonpointer.ResolveCtx, hoo
 		for _, fset := range allowed {
 			// Generic fields.
 			for _, f := range []string{
-				"type", "enum", "nullable", "format", "default",
+				"type", "enum", "const", "nullable", "format", "default",
 				"oneOf", "anyOf", "allOf", "discriminator",
 				"description", "example", "examples", "deprecated",
 				"additionalProperties", "xml",

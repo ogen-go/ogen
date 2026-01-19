@@ -13,6 +13,12 @@ import (
 func (g *schemaGen) primitive(name string, schema *jsonschema.Schema) (*ir.Type, error) {
 	t := g.parseSimple(schema)
 
+	// If const is set, treat it as a const value (not enum)
+	// Const takes precedence over enum
+	if schema.ConstSet {
+		return t, nil
+	}
+
 	if len(schema.Enum) > 0 {
 		return g.enum(name, t, schema)
 	}

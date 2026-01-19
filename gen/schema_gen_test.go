@@ -68,6 +68,73 @@ func TestSchemaGenNilSchema(t *testing.T) {
 	})
 }
 
+func TestSchemaGenConst(t *testing.T) {
+	a := require.New(t)
+
+	tests := []struct {
+		name          string
+		schema        *jsonschema.Schema
+		expectedConst any
+	}{
+		{
+			name: "integer const",
+			schema: &jsonschema.Schema{
+				Type: jsonschema.Object,
+				Properties: []jsonschema.Property{
+					{
+						Name: "code",
+						Schema: &jsonschema.Schema{
+							Type:     jsonschema.Integer,
+							Const:    int64(400),
+							ConstSet: true,
+						},
+						Required: true,
+					},
+				},
+			},
+			expectedConst: int64(400),
+		},
+		{
+			name: "string const",
+			schema: &jsonschema.Schema{
+				Type: jsonschema.Object,
+				Properties: []jsonschema.Property{
+					{
+						Name: "status",
+						Schema: &jsonschema.Schema{
+							Type:     jsonschema.String,
+							Const:    "active",
+							ConstSet: true,
+						},
+						Required: true,
+					},
+				},
+			},
+			expectedConst: "active",
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			s := newSchemaGen(func(ref jsonschema.Ref) (*ir.Type, bool) {
+				return nil, false
+			})
+
+			typ, err := s.generate("Test", tt.schema, false)
+			a.NoError(err)
+			a.NotNil(typ)
+			a.Equal(ir.KindStruct, typ.Kind)
+			a.Len(typ.Fields, 1)
+
+			field := typ.Fields[0]
+			constVal := field.Const()
+			a.True(constVal.Set, "field should have Const().Set=true")
+			a.Equal(tt.expectedConst, constVal.Value, "const value should match")
+			a.Equal(ir.KindPrimitive, field.Type.Kind, "field type should be primitive, not enum")
+		})
+	}
+}
+
 func TestGenerate(t *testing.T) {
 	var loc location.Locator
 	loc.UnmarshalYAML(&yaml.Node{

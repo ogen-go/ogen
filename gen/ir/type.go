@@ -16,6 +16,7 @@ const (
 	KindArray     Kind = "array"
 	KindMap       Kind = "map"
 	KindAlias     Kind = "alias"
+	KindConst     Kind = "const"
 	KindEnum      Kind = "enum"
 	KindStruct    Kind = "struct"
 	KindPointer   Kind = "pointer"
