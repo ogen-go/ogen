@@ -51,6 +51,8 @@ func (t Type) uriFormat() string {
 			return naming.Capitalize(f)
 		case "date-time":
 			return "DateTime"
+		case "http-date":
+			return "HTTPDate"
 		case "mac":
 			return "MAC"
 		case "int8",

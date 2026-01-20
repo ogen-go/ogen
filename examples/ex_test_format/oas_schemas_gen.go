@@ -354,6 +354,51 @@ func (o NilFloat64) Or(d float64) float64 {
 	return d
 }
 
+// NewNilHTTPDate returns new NilHTTPDate with value set to v.
+func NewNilHTTPDate(v time.Time) NilHTTPDate {
+	return NilHTTPDate{
+		Value: v,
+	}
+}
+
+// NilHTTPDate is nullable time.Time.
+type NilHTTPDate struct {
+	Value time.Time
+	Null  bool
+}
+
+// SetTo sets value to v.
+func (o *NilHTTPDate) SetTo(v time.Time) {
+	o.Null = false
+	o.Value = v
+}
+
+// IsNull returns true if value is Null.
+func (o NilHTTPDate) IsNull() bool { return o.Null }
+
+// SetToNull sets value to null.
+func (o *NilHTTPDate) SetToNull() {
+	o.Null = true
+	var v time.Time
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o NilHTTPDate) Get() (v time.Time, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o NilHTTPDate) Or(d time.Time) time.Time {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewNilHardwareAddr returns new NilHardwareAddr with value set to v.
 func NewNilHardwareAddr(v net.HardwareAddr) NilHardwareAddr {
 	return NilHardwareAddr{
@@ -2431,6 +2476,52 @@ func (o OptFloat64) Or(d float64) float64 {
 	return d
 }
 
+// NewOptHTTPDate returns new OptHTTPDate with value set to v.
+func NewOptHTTPDate(v time.Time) OptHTTPDate {
+	return OptHTTPDate{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptHTTPDate is optional time.Time.
+type OptHTTPDate struct {
+	Value time.Time
+	Set   bool
+}
+
+// IsSet returns true if OptHTTPDate was set.
+func (o OptHTTPDate) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptHTTPDate) Reset() {
+	var v time.Time
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptHTTPDate) SetTo(v time.Time) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptHTTPDate) Get() (v time.Time, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptHTTPDate) Or(d time.Time) time.Time {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptHardwareAddr returns new OptHardwareAddr with value set to v.
 func NewOptHardwareAddr(v net.HardwareAddr) OptHardwareAddr {
 	return OptHardwareAddr{
@@ -3343,6 +3434,69 @@ func (o OptNilFloat64) Get() (v float64, ok bool) {
 
 // Or returns value if set, or given parameter if does not.
 func (o OptNilFloat64) Or(d float64) float64 {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptNilHTTPDate returns new OptNilHTTPDate with value set to v.
+func NewOptNilHTTPDate(v time.Time) OptNilHTTPDate {
+	return OptNilHTTPDate{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptNilHTTPDate is optional nullable time.Time.
+type OptNilHTTPDate struct {
+	Value time.Time
+	Set   bool
+	Null  bool
+}
+
+// IsSet returns true if OptNilHTTPDate was set.
+func (o OptNilHTTPDate) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptNilHTTPDate) Reset() {
+	var v time.Time
+	o.Value = v
+	o.Set = false
+	o.Null = false
+}
+
+// SetTo sets value to v.
+func (o *OptNilHTTPDate) SetTo(v time.Time) {
+	o.Set = true
+	o.Null = false
+	o.Value = v
+}
+
+// IsNull returns true if value is Null.
+func (o OptNilHTTPDate) IsNull() bool { return o.Null }
+
+// SetToNull sets value to null.
+func (o *OptNilHTTPDate) SetToNull() {
+	o.Set = true
+	o.Null = true
+	var v time.Time
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptNilHTTPDate) Get() (v time.Time, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptNilHTTPDate) Or(d time.Time) time.Time {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -7318,6 +7472,7 @@ type TestRequestFormatTestReq struct {
 	RequiredArrayStringFloat32                 []float32            `json:"required_array_string_float32"`
 	RequiredArrayStringFloat64                 []float64            `json:"required_array_string_float64"`
 	RequiredArrayStringHostname                []string             `json:"required_array_string_hostname"`
+	RequiredArrayStringHTTPMinusDate           []time.Time          `json:"required_array_string_http-date"`
 	RequiredArrayStringInt                     []int                `json:"required_array_string_int"`
 	RequiredArrayStringInt16                   []int16              `json:"required_array_string_int16"`
 	RequiredArrayStringInt32                   []int32              `json:"required_array_string_int32"`
@@ -7378,6 +7533,7 @@ type TestRequestFormatTestReq struct {
 	RequiredDoubleArrayStringFloat32           [][]float32          `json:"required_double_array_string_float32"`
 	RequiredDoubleArrayStringFloat64           [][]float64          `json:"required_double_array_string_float64"`
 	RequiredDoubleArrayStringHostname          [][]string           `json:"required_double_array_string_hostname"`
+	RequiredDoubleArrayStringHTTPMinusDate     [][]time.Time        `json:"required_double_array_string_http-date"`
 	RequiredDoubleArrayStringInt               [][]int              `json:"required_double_array_string_int"`
 	RequiredDoubleArrayStringInt16             [][]int16            `json:"required_double_array_string_int16"`
 	RequiredDoubleArrayStringInt32             [][]int32            `json:"required_double_array_string_int32"`
@@ -7435,6 +7591,7 @@ type TestRequestFormatTestReq struct {
 	RequiredStringFloat32                      float32              `json:"required_string_float32"`
 	RequiredStringFloat64                      float64              `json:"required_string_float64"`
 	RequiredStringHostname                     string               `json:"required_string_hostname"`
+	RequiredStringHTTPMinusDate                time.Time            `json:"required_string_http-date"`
 	RequiredStringInt                          int                  `json:"required_string_int"`
 	RequiredStringInt16                        int16                `json:"required_string_int16"`
 	RequiredStringInt32                        int32                `json:"required_string_int32"`
@@ -7495,6 +7652,7 @@ type TestRequestFormatTestReq struct {
 	OptionalArrayStringFloat32                 []float32            `json:"optional_array_string_float32"`
 	OptionalArrayStringFloat64                 []float64            `json:"optional_array_string_float64"`
 	OptionalArrayStringHostname                []string             `json:"optional_array_string_hostname"`
+	OptionalArrayStringHTTPMinusDate           []time.Time          `json:"optional_array_string_http-date"`
 	OptionalArrayStringInt                     []int                `json:"optional_array_string_int"`
 	OptionalArrayStringInt16                   []int16              `json:"optional_array_string_int16"`
 	OptionalArrayStringInt32                   []int32              `json:"optional_array_string_int32"`
@@ -7555,6 +7713,7 @@ type TestRequestFormatTestReq struct {
 	OptionalDoubleArrayStringFloat32           [][]float32          `json:"optional_double_array_string_float32"`
 	OptionalDoubleArrayStringFloat64           [][]float64          `json:"optional_double_array_string_float64"`
 	OptionalDoubleArrayStringHostname          [][]string           `json:"optional_double_array_string_hostname"`
+	OptionalDoubleArrayStringHTTPMinusDate     [][]time.Time        `json:"optional_double_array_string_http-date"`
 	OptionalDoubleArrayStringInt               [][]int              `json:"optional_double_array_string_int"`
 	OptionalDoubleArrayStringInt16             [][]int16            `json:"optional_double_array_string_int16"`
 	OptionalDoubleArrayStringInt32             [][]int32            `json:"optional_double_array_string_int32"`
@@ -7612,6 +7771,7 @@ type TestRequestFormatTestReq struct {
 	OptionalStringFloat32                      OptStringFloat32     `json:"optional_string_float32"`
 	OptionalStringFloat64                      OptStringFloat64     `json:"optional_string_float64"`
 	OptionalStringHostname                     OptString            `json:"optional_string_hostname"`
+	OptionalStringHTTPMinusDate                OptHTTPDate          `json:"optional_string_http-date"`
 	OptionalStringInt                          OptStringInt         `json:"optional_string_int"`
 	OptionalStringInt16                        OptStringInt16       `json:"optional_string_int16"`
 	OptionalStringInt32                        OptStringInt32       `json:"optional_string_int32"`
@@ -7820,6 +7980,11 @@ func (s *TestRequestFormatTestReq) GetRequiredArrayStringFloat64() []float64 {
 // GetRequiredArrayStringHostname returns the value of RequiredArrayStringHostname.
 func (s *TestRequestFormatTestReq) GetRequiredArrayStringHostname() []string {
 	return s.RequiredArrayStringHostname
+}
+
+// GetRequiredArrayStringHTTPMinusDate returns the value of RequiredArrayStringHTTPMinusDate.
+func (s *TestRequestFormatTestReq) GetRequiredArrayStringHTTPMinusDate() []time.Time {
+	return s.RequiredArrayStringHTTPMinusDate
 }
 
 // GetRequiredArrayStringInt returns the value of RequiredArrayStringInt.
@@ -8122,6 +8287,11 @@ func (s *TestRequestFormatTestReq) GetRequiredDoubleArrayStringHostname() [][]st
 	return s.RequiredDoubleArrayStringHostname
 }
 
+// GetRequiredDoubleArrayStringHTTPMinusDate returns the value of RequiredDoubleArrayStringHTTPMinusDate.
+func (s *TestRequestFormatTestReq) GetRequiredDoubleArrayStringHTTPMinusDate() [][]time.Time {
+	return s.RequiredDoubleArrayStringHTTPMinusDate
+}
+
 // GetRequiredDoubleArrayStringInt returns the value of RequiredDoubleArrayStringInt.
 func (s *TestRequestFormatTestReq) GetRequiredDoubleArrayStringInt() [][]int {
 	return s.RequiredDoubleArrayStringInt
@@ -8405,6 +8575,11 @@ func (s *TestRequestFormatTestReq) GetRequiredStringFloat64() float64 {
 // GetRequiredStringHostname returns the value of RequiredStringHostname.
 func (s *TestRequestFormatTestReq) GetRequiredStringHostname() string {
 	return s.RequiredStringHostname
+}
+
+// GetRequiredStringHTTPMinusDate returns the value of RequiredStringHTTPMinusDate.
+func (s *TestRequestFormatTestReq) GetRequiredStringHTTPMinusDate() time.Time {
+	return s.RequiredStringHTTPMinusDate
 }
 
 // GetRequiredStringInt returns the value of RequiredStringInt.
@@ -8707,6 +8882,11 @@ func (s *TestRequestFormatTestReq) GetOptionalArrayStringHostname() []string {
 	return s.OptionalArrayStringHostname
 }
 
+// GetOptionalArrayStringHTTPMinusDate returns the value of OptionalArrayStringHTTPMinusDate.
+func (s *TestRequestFormatTestReq) GetOptionalArrayStringHTTPMinusDate() []time.Time {
+	return s.OptionalArrayStringHTTPMinusDate
+}
+
 // GetOptionalArrayStringInt returns the value of OptionalArrayStringInt.
 func (s *TestRequestFormatTestReq) GetOptionalArrayStringInt() []int {
 	return s.OptionalArrayStringInt
@@ -9007,6 +9187,11 @@ func (s *TestRequestFormatTestReq) GetOptionalDoubleArrayStringHostname() [][]st
 	return s.OptionalDoubleArrayStringHostname
 }
 
+// GetOptionalDoubleArrayStringHTTPMinusDate returns the value of OptionalDoubleArrayStringHTTPMinusDate.
+func (s *TestRequestFormatTestReq) GetOptionalDoubleArrayStringHTTPMinusDate() [][]time.Time {
+	return s.OptionalDoubleArrayStringHTTPMinusDate
+}
+
 // GetOptionalDoubleArrayStringInt returns the value of OptionalDoubleArrayStringInt.
 func (s *TestRequestFormatTestReq) GetOptionalDoubleArrayStringInt() [][]int {
 	return s.OptionalDoubleArrayStringInt
@@ -9290,6 +9475,11 @@ func (s *TestRequestFormatTestReq) GetOptionalStringFloat64() OptStringFloat64 {
 // GetOptionalStringHostname returns the value of OptionalStringHostname.
 func (s *TestRequestFormatTestReq) GetOptionalStringHostname() OptString {
 	return s.OptionalStringHostname
+}
+
+// GetOptionalStringHTTPMinusDate returns the value of OptionalStringHTTPMinusDate.
+func (s *TestRequestFormatTestReq) GetOptionalStringHTTPMinusDate() OptHTTPDate {
+	return s.OptionalStringHTTPMinusDate
 }
 
 // GetOptionalStringInt returns the value of OptionalStringInt.
@@ -9592,6 +9782,11 @@ func (s *TestRequestFormatTestReq) SetRequiredArrayStringHostname(val []string) 
 	s.RequiredArrayStringHostname = val
 }
 
+// SetRequiredArrayStringHTTPMinusDate sets the value of RequiredArrayStringHTTPMinusDate.
+func (s *TestRequestFormatTestReq) SetRequiredArrayStringHTTPMinusDate(val []time.Time) {
+	s.RequiredArrayStringHTTPMinusDate = val
+}
+
 // SetRequiredArrayStringInt sets the value of RequiredArrayStringInt.
 func (s *TestRequestFormatTestReq) SetRequiredArrayStringInt(val []int) {
 	s.RequiredArrayStringInt = val
@@ -9892,6 +10087,11 @@ func (s *TestRequestFormatTestReq) SetRequiredDoubleArrayStringHostname(val [][]
 	s.RequiredDoubleArrayStringHostname = val
 }
 
+// SetRequiredDoubleArrayStringHTTPMinusDate sets the value of RequiredDoubleArrayStringHTTPMinusDate.
+func (s *TestRequestFormatTestReq) SetRequiredDoubleArrayStringHTTPMinusDate(val [][]time.Time) {
+	s.RequiredDoubleArrayStringHTTPMinusDate = val
+}
+
 // SetRequiredDoubleArrayStringInt sets the value of RequiredDoubleArrayStringInt.
 func (s *TestRequestFormatTestReq) SetRequiredDoubleArrayStringInt(val [][]int) {
 	s.RequiredDoubleArrayStringInt = val
@@ -10175,6 +10375,11 @@ func (s *TestRequestFormatTestReq) SetRequiredStringFloat64(val float64) {
 // SetRequiredStringHostname sets the value of RequiredStringHostname.
 func (s *TestRequestFormatTestReq) SetRequiredStringHostname(val string) {
 	s.RequiredStringHostname = val
+}
+
+// SetRequiredStringHTTPMinusDate sets the value of RequiredStringHTTPMinusDate.
+func (s *TestRequestFormatTestReq) SetRequiredStringHTTPMinusDate(val time.Time) {
+	s.RequiredStringHTTPMinusDate = val
 }
 
 // SetRequiredStringInt sets the value of RequiredStringInt.
@@ -10477,6 +10682,11 @@ func (s *TestRequestFormatTestReq) SetOptionalArrayStringHostname(val []string) 
 	s.OptionalArrayStringHostname = val
 }
 
+// SetOptionalArrayStringHTTPMinusDate sets the value of OptionalArrayStringHTTPMinusDate.
+func (s *TestRequestFormatTestReq) SetOptionalArrayStringHTTPMinusDate(val []time.Time) {
+	s.OptionalArrayStringHTTPMinusDate = val
+}
+
 // SetOptionalArrayStringInt sets the value of OptionalArrayStringInt.
 func (s *TestRequestFormatTestReq) SetOptionalArrayStringInt(val []int) {
 	s.OptionalArrayStringInt = val
@@ -10777,6 +10987,11 @@ func (s *TestRequestFormatTestReq) SetOptionalDoubleArrayStringHostname(val [][]
 	s.OptionalDoubleArrayStringHostname = val
 }
 
+// SetOptionalDoubleArrayStringHTTPMinusDate sets the value of OptionalDoubleArrayStringHTTPMinusDate.
+func (s *TestRequestFormatTestReq) SetOptionalDoubleArrayStringHTTPMinusDate(val [][]time.Time) {
+	s.OptionalDoubleArrayStringHTTPMinusDate = val
+}
+
 // SetOptionalDoubleArrayStringInt sets the value of OptionalDoubleArrayStringInt.
 func (s *TestRequestFormatTestReq) SetOptionalDoubleArrayStringInt(val [][]int) {
 	s.OptionalDoubleArrayStringInt = val
@@ -11062,6 +11277,11 @@ func (s *TestRequestFormatTestReq) SetOptionalStringHostname(val OptString) {
 	s.OptionalStringHostname = val
 }
 
+// SetOptionalStringHTTPMinusDate sets the value of OptionalStringHTTPMinusDate.
+func (s *TestRequestFormatTestReq) SetOptionalStringHTTPMinusDate(val OptHTTPDate) {
+	s.OptionalStringHTTPMinusDate = val
+}
+
 // SetOptionalStringInt sets the value of OptionalStringInt.
 func (s *TestRequestFormatTestReq) SetOptionalStringInt(val OptStringInt) {
 	s.OptionalStringInt = val
@@ -11217,6 +11437,7 @@ type TestRequestRequiredFormatTestReq struct {
 	RequiredArrayStringFloat32                 []float32            `json:"required_array_string_float32"`
 	RequiredArrayStringFloat64                 []float64            `json:"required_array_string_float64"`
 	RequiredArrayStringHostname                []string             `json:"required_array_string_hostname"`
+	RequiredArrayStringHTTPMinusDate           []time.Time          `json:"required_array_string_http-date"`
 	RequiredArrayStringInt                     []int                `json:"required_array_string_int"`
 	RequiredArrayStringInt16                   []int16              `json:"required_array_string_int16"`
 	RequiredArrayStringInt32                   []int32              `json:"required_array_string_int32"`
@@ -11277,6 +11498,7 @@ type TestRequestRequiredFormatTestReq struct {
 	RequiredDoubleArrayStringFloat32           [][]float32          `json:"required_double_array_string_float32"`
 	RequiredDoubleArrayStringFloat64           [][]float64          `json:"required_double_array_string_float64"`
 	RequiredDoubleArrayStringHostname          [][]string           `json:"required_double_array_string_hostname"`
+	RequiredDoubleArrayStringHTTPMinusDate     [][]time.Time        `json:"required_double_array_string_http-date"`
 	RequiredDoubleArrayStringInt               [][]int              `json:"required_double_array_string_int"`
 	RequiredDoubleArrayStringInt16             [][]int16            `json:"required_double_array_string_int16"`
 	RequiredDoubleArrayStringInt32             [][]int32            `json:"required_double_array_string_int32"`
@@ -11334,6 +11556,7 @@ type TestRequestRequiredFormatTestReq struct {
 	RequiredStringFloat32                      float32              `json:"required_string_float32"`
 	RequiredStringFloat64                      float64              `json:"required_string_float64"`
 	RequiredStringHostname                     string               `json:"required_string_hostname"`
+	RequiredStringHTTPMinusDate                time.Time            `json:"required_string_http-date"`
 	RequiredStringInt                          int                  `json:"required_string_int"`
 	RequiredStringInt16                        int16                `json:"required_string_int16"`
 	RequiredStringInt32                        int32                `json:"required_string_int32"`
@@ -11394,6 +11617,7 @@ type TestRequestRequiredFormatTestReq struct {
 	OptionalArrayStringFloat32                 []float32            `json:"optional_array_string_float32"`
 	OptionalArrayStringFloat64                 []float64            `json:"optional_array_string_float64"`
 	OptionalArrayStringHostname                []string             `json:"optional_array_string_hostname"`
+	OptionalArrayStringHTTPMinusDate           []time.Time          `json:"optional_array_string_http-date"`
 	OptionalArrayStringInt                     []int                `json:"optional_array_string_int"`
 	OptionalArrayStringInt16                   []int16              `json:"optional_array_string_int16"`
 	OptionalArrayStringInt32                   []int32              `json:"optional_array_string_int32"`
@@ -11454,6 +11678,7 @@ type TestRequestRequiredFormatTestReq struct {
 	OptionalDoubleArrayStringFloat32           [][]float32          `json:"optional_double_array_string_float32"`
 	OptionalDoubleArrayStringFloat64           [][]float64          `json:"optional_double_array_string_float64"`
 	OptionalDoubleArrayStringHostname          [][]string           `json:"optional_double_array_string_hostname"`
+	OptionalDoubleArrayStringHTTPMinusDate     [][]time.Time        `json:"optional_double_array_string_http-date"`
 	OptionalDoubleArrayStringInt               [][]int              `json:"optional_double_array_string_int"`
 	OptionalDoubleArrayStringInt16             [][]int16            `json:"optional_double_array_string_int16"`
 	OptionalDoubleArrayStringInt32             [][]int32            `json:"optional_double_array_string_int32"`
@@ -11511,6 +11736,7 @@ type TestRequestRequiredFormatTestReq struct {
 	OptionalStringFloat32                      OptStringFloat32     `json:"optional_string_float32"`
 	OptionalStringFloat64                      OptStringFloat64     `json:"optional_string_float64"`
 	OptionalStringHostname                     OptString            `json:"optional_string_hostname"`
+	OptionalStringHTTPMinusDate                OptHTTPDate          `json:"optional_string_http-date"`
 	OptionalStringInt                          OptStringInt         `json:"optional_string_int"`
 	OptionalStringInt16                        OptStringInt16       `json:"optional_string_int16"`
 	OptionalStringInt32                        OptStringInt32       `json:"optional_string_int32"`
@@ -11719,6 +11945,11 @@ func (s *TestRequestRequiredFormatTestReq) GetRequiredArrayStringFloat64() []flo
 // GetRequiredArrayStringHostname returns the value of RequiredArrayStringHostname.
 func (s *TestRequestRequiredFormatTestReq) GetRequiredArrayStringHostname() []string {
 	return s.RequiredArrayStringHostname
+}
+
+// GetRequiredArrayStringHTTPMinusDate returns the value of RequiredArrayStringHTTPMinusDate.
+func (s *TestRequestRequiredFormatTestReq) GetRequiredArrayStringHTTPMinusDate() []time.Time {
+	return s.RequiredArrayStringHTTPMinusDate
 }
 
 // GetRequiredArrayStringInt returns the value of RequiredArrayStringInt.
@@ -12021,6 +12252,11 @@ func (s *TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringHostname(
 	return s.RequiredDoubleArrayStringHostname
 }
 
+// GetRequiredDoubleArrayStringHTTPMinusDate returns the value of RequiredDoubleArrayStringHTTPMinusDate.
+func (s *TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringHTTPMinusDate() [][]time.Time {
+	return s.RequiredDoubleArrayStringHTTPMinusDate
+}
+
 // GetRequiredDoubleArrayStringInt returns the value of RequiredDoubleArrayStringInt.
 func (s *TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringInt() [][]int {
 	return s.RequiredDoubleArrayStringInt
@@ -12304,6 +12540,11 @@ func (s *TestRequestRequiredFormatTestReq) GetRequiredStringFloat64() float64 {
 // GetRequiredStringHostname returns the value of RequiredStringHostname.
 func (s *TestRequestRequiredFormatTestReq) GetRequiredStringHostname() string {
 	return s.RequiredStringHostname
+}
+
+// GetRequiredStringHTTPMinusDate returns the value of RequiredStringHTTPMinusDate.
+func (s *TestRequestRequiredFormatTestReq) GetRequiredStringHTTPMinusDate() time.Time {
+	return s.RequiredStringHTTPMinusDate
 }
 
 // GetRequiredStringInt returns the value of RequiredStringInt.
@@ -12606,6 +12847,11 @@ func (s *TestRequestRequiredFormatTestReq) GetOptionalArrayStringHostname() []st
 	return s.OptionalArrayStringHostname
 }
 
+// GetOptionalArrayStringHTTPMinusDate returns the value of OptionalArrayStringHTTPMinusDate.
+func (s *TestRequestRequiredFormatTestReq) GetOptionalArrayStringHTTPMinusDate() []time.Time {
+	return s.OptionalArrayStringHTTPMinusDate
+}
+
 // GetOptionalArrayStringInt returns the value of OptionalArrayStringInt.
 func (s *TestRequestRequiredFormatTestReq) GetOptionalArrayStringInt() []int {
 	return s.OptionalArrayStringInt
@@ -12906,6 +13152,11 @@ func (s *TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringHostname(
 	return s.OptionalDoubleArrayStringHostname
 }
 
+// GetOptionalDoubleArrayStringHTTPMinusDate returns the value of OptionalDoubleArrayStringHTTPMinusDate.
+func (s *TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringHTTPMinusDate() [][]time.Time {
+	return s.OptionalDoubleArrayStringHTTPMinusDate
+}
+
 // GetOptionalDoubleArrayStringInt returns the value of OptionalDoubleArrayStringInt.
 func (s *TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringInt() [][]int {
 	return s.OptionalDoubleArrayStringInt
@@ -13189,6 +13440,11 @@ func (s *TestRequestRequiredFormatTestReq) GetOptionalStringFloat64() OptStringF
 // GetOptionalStringHostname returns the value of OptionalStringHostname.
 func (s *TestRequestRequiredFormatTestReq) GetOptionalStringHostname() OptString {
 	return s.OptionalStringHostname
+}
+
+// GetOptionalStringHTTPMinusDate returns the value of OptionalStringHTTPMinusDate.
+func (s *TestRequestRequiredFormatTestReq) GetOptionalStringHTTPMinusDate() OptHTTPDate {
+	return s.OptionalStringHTTPMinusDate
 }
 
 // GetOptionalStringInt returns the value of OptionalStringInt.
@@ -13491,6 +13747,11 @@ func (s *TestRequestRequiredFormatTestReq) SetRequiredArrayStringHostname(val []
 	s.RequiredArrayStringHostname = val
 }
 
+// SetRequiredArrayStringHTTPMinusDate sets the value of RequiredArrayStringHTTPMinusDate.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredArrayStringHTTPMinusDate(val []time.Time) {
+	s.RequiredArrayStringHTTPMinusDate = val
+}
+
 // SetRequiredArrayStringInt sets the value of RequiredArrayStringInt.
 func (s *TestRequestRequiredFormatTestReq) SetRequiredArrayStringInt(val []int) {
 	s.RequiredArrayStringInt = val
@@ -13791,6 +14052,11 @@ func (s *TestRequestRequiredFormatTestReq) SetRequiredDoubleArrayStringHostname(
 	s.RequiredDoubleArrayStringHostname = val
 }
 
+// SetRequiredDoubleArrayStringHTTPMinusDate sets the value of RequiredDoubleArrayStringHTTPMinusDate.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredDoubleArrayStringHTTPMinusDate(val [][]time.Time) {
+	s.RequiredDoubleArrayStringHTTPMinusDate = val
+}
+
 // SetRequiredDoubleArrayStringInt sets the value of RequiredDoubleArrayStringInt.
 func (s *TestRequestRequiredFormatTestReq) SetRequiredDoubleArrayStringInt(val [][]int) {
 	s.RequiredDoubleArrayStringInt = val
@@ -14074,6 +14340,11 @@ func (s *TestRequestRequiredFormatTestReq) SetRequiredStringFloat64(val float64)
 // SetRequiredStringHostname sets the value of RequiredStringHostname.
 func (s *TestRequestRequiredFormatTestReq) SetRequiredStringHostname(val string) {
 	s.RequiredStringHostname = val
+}
+
+// SetRequiredStringHTTPMinusDate sets the value of RequiredStringHTTPMinusDate.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredStringHTTPMinusDate(val time.Time) {
+	s.RequiredStringHTTPMinusDate = val
 }
 
 // SetRequiredStringInt sets the value of RequiredStringInt.
@@ -14376,6 +14647,11 @@ func (s *TestRequestRequiredFormatTestReq) SetOptionalArrayStringHostname(val []
 	s.OptionalArrayStringHostname = val
 }
 
+// SetOptionalArrayStringHTTPMinusDate sets the value of OptionalArrayStringHTTPMinusDate.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalArrayStringHTTPMinusDate(val []time.Time) {
+	s.OptionalArrayStringHTTPMinusDate = val
+}
+
 // SetOptionalArrayStringInt sets the value of OptionalArrayStringInt.
 func (s *TestRequestRequiredFormatTestReq) SetOptionalArrayStringInt(val []int) {
 	s.OptionalArrayStringInt = val
@@ -14676,6 +14952,11 @@ func (s *TestRequestRequiredFormatTestReq) SetOptionalDoubleArrayStringHostname(
 	s.OptionalDoubleArrayStringHostname = val
 }
 
+// SetOptionalDoubleArrayStringHTTPMinusDate sets the value of OptionalDoubleArrayStringHTTPMinusDate.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalDoubleArrayStringHTTPMinusDate(val [][]time.Time) {
+	s.OptionalDoubleArrayStringHTTPMinusDate = val
+}
+
 // SetOptionalDoubleArrayStringInt sets the value of OptionalDoubleArrayStringInt.
 func (s *TestRequestRequiredFormatTestReq) SetOptionalDoubleArrayStringInt(val [][]int) {
 	s.OptionalDoubleArrayStringInt = val
@@ -14961,6 +15242,11 @@ func (s *TestRequestRequiredFormatTestReq) SetOptionalStringHostname(val OptStri
 	s.OptionalStringHostname = val
 }
 
+// SetOptionalStringHTTPMinusDate sets the value of OptionalStringHTTPMinusDate.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalStringHTTPMinusDate(val OptHTTPDate) {
+	s.OptionalStringHTTPMinusDate = val
+}
+
 // SetOptionalStringInt sets the value of OptionalStringInt.
 func (s *TestRequestRequiredFormatTestReq) SetOptionalStringInt(val OptStringInt) {
 	s.OptionalStringInt = val
@@ -15116,6 +15402,7 @@ type TestResponseFormatTestOK struct {
 	RequiredArrayStringFloat32                 []float32            `json:"required_array_string_float32"`
 	RequiredArrayStringFloat64                 []float64            `json:"required_array_string_float64"`
 	RequiredArrayStringHostname                []string             `json:"required_array_string_hostname"`
+	RequiredArrayStringHTTPMinusDate           []time.Time          `json:"required_array_string_http-date"`
 	RequiredArrayStringInt                     []int                `json:"required_array_string_int"`
 	RequiredArrayStringInt16                   []int16              `json:"required_array_string_int16"`
 	RequiredArrayStringInt32                   []int32              `json:"required_array_string_int32"`
@@ -15176,6 +15463,7 @@ type TestResponseFormatTestOK struct {
 	RequiredDoubleArrayStringFloat32           [][]float32          `json:"required_double_array_string_float32"`
 	RequiredDoubleArrayStringFloat64           [][]float64          `json:"required_double_array_string_float64"`
 	RequiredDoubleArrayStringHostname          [][]string           `json:"required_double_array_string_hostname"`
+	RequiredDoubleArrayStringHTTPMinusDate     [][]time.Time        `json:"required_double_array_string_http-date"`
 	RequiredDoubleArrayStringInt               [][]int              `json:"required_double_array_string_int"`
 	RequiredDoubleArrayStringInt16             [][]int16            `json:"required_double_array_string_int16"`
 	RequiredDoubleArrayStringInt32             [][]int32            `json:"required_double_array_string_int32"`
@@ -15233,6 +15521,7 @@ type TestResponseFormatTestOK struct {
 	RequiredStringFloat32                      float32              `json:"required_string_float32"`
 	RequiredStringFloat64                      float64              `json:"required_string_float64"`
 	RequiredStringHostname                     string               `json:"required_string_hostname"`
+	RequiredStringHTTPMinusDate                time.Time            `json:"required_string_http-date"`
 	RequiredStringInt                          int                  `json:"required_string_int"`
 	RequiredStringInt16                        int16                `json:"required_string_int16"`
 	RequiredStringInt32                        int32                `json:"required_string_int32"`
@@ -15293,6 +15582,7 @@ type TestResponseFormatTestOK struct {
 	OptionalArrayStringFloat32                 []float32            `json:"optional_array_string_float32"`
 	OptionalArrayStringFloat64                 []float64            `json:"optional_array_string_float64"`
 	OptionalArrayStringHostname                []string             `json:"optional_array_string_hostname"`
+	OptionalArrayStringHTTPMinusDate           []time.Time          `json:"optional_array_string_http-date"`
 	OptionalArrayStringInt                     []int                `json:"optional_array_string_int"`
 	OptionalArrayStringInt16                   []int16              `json:"optional_array_string_int16"`
 	OptionalArrayStringInt32                   []int32              `json:"optional_array_string_int32"`
@@ -15353,6 +15643,7 @@ type TestResponseFormatTestOK struct {
 	OptionalDoubleArrayStringFloat32           [][]float32          `json:"optional_double_array_string_float32"`
 	OptionalDoubleArrayStringFloat64           [][]float64          `json:"optional_double_array_string_float64"`
 	OptionalDoubleArrayStringHostname          [][]string           `json:"optional_double_array_string_hostname"`
+	OptionalDoubleArrayStringHTTPMinusDate     [][]time.Time        `json:"optional_double_array_string_http-date"`
 	OptionalDoubleArrayStringInt               [][]int              `json:"optional_double_array_string_int"`
 	OptionalDoubleArrayStringInt16             [][]int16            `json:"optional_double_array_string_int16"`
 	OptionalDoubleArrayStringInt32             [][]int32            `json:"optional_double_array_string_int32"`
@@ -15410,6 +15701,7 @@ type TestResponseFormatTestOK struct {
 	OptionalStringFloat32                      OptStringFloat32     `json:"optional_string_float32"`
 	OptionalStringFloat64                      OptStringFloat64     `json:"optional_string_float64"`
 	OptionalStringHostname                     OptString            `json:"optional_string_hostname"`
+	OptionalStringHTTPMinusDate                OptHTTPDate          `json:"optional_string_http-date"`
 	OptionalStringInt                          OptStringInt         `json:"optional_string_int"`
 	OptionalStringInt16                        OptStringInt16       `json:"optional_string_int16"`
 	OptionalStringInt32                        OptStringInt32       `json:"optional_string_int32"`
@@ -15618,6 +15910,11 @@ func (s *TestResponseFormatTestOK) GetRequiredArrayStringFloat64() []float64 {
 // GetRequiredArrayStringHostname returns the value of RequiredArrayStringHostname.
 func (s *TestResponseFormatTestOK) GetRequiredArrayStringHostname() []string {
 	return s.RequiredArrayStringHostname
+}
+
+// GetRequiredArrayStringHTTPMinusDate returns the value of RequiredArrayStringHTTPMinusDate.
+func (s *TestResponseFormatTestOK) GetRequiredArrayStringHTTPMinusDate() []time.Time {
+	return s.RequiredArrayStringHTTPMinusDate
 }
 
 // GetRequiredArrayStringInt returns the value of RequiredArrayStringInt.
@@ -15920,6 +16217,11 @@ func (s *TestResponseFormatTestOK) GetRequiredDoubleArrayStringHostname() [][]st
 	return s.RequiredDoubleArrayStringHostname
 }
 
+// GetRequiredDoubleArrayStringHTTPMinusDate returns the value of RequiredDoubleArrayStringHTTPMinusDate.
+func (s *TestResponseFormatTestOK) GetRequiredDoubleArrayStringHTTPMinusDate() [][]time.Time {
+	return s.RequiredDoubleArrayStringHTTPMinusDate
+}
+
 // GetRequiredDoubleArrayStringInt returns the value of RequiredDoubleArrayStringInt.
 func (s *TestResponseFormatTestOK) GetRequiredDoubleArrayStringInt() [][]int {
 	return s.RequiredDoubleArrayStringInt
@@ -16203,6 +16505,11 @@ func (s *TestResponseFormatTestOK) GetRequiredStringFloat64() float64 {
 // GetRequiredStringHostname returns the value of RequiredStringHostname.
 func (s *TestResponseFormatTestOK) GetRequiredStringHostname() string {
 	return s.RequiredStringHostname
+}
+
+// GetRequiredStringHTTPMinusDate returns the value of RequiredStringHTTPMinusDate.
+func (s *TestResponseFormatTestOK) GetRequiredStringHTTPMinusDate() time.Time {
+	return s.RequiredStringHTTPMinusDate
 }
 
 // GetRequiredStringInt returns the value of RequiredStringInt.
@@ -16505,6 +16812,11 @@ func (s *TestResponseFormatTestOK) GetOptionalArrayStringHostname() []string {
 	return s.OptionalArrayStringHostname
 }
 
+// GetOptionalArrayStringHTTPMinusDate returns the value of OptionalArrayStringHTTPMinusDate.
+func (s *TestResponseFormatTestOK) GetOptionalArrayStringHTTPMinusDate() []time.Time {
+	return s.OptionalArrayStringHTTPMinusDate
+}
+
 // GetOptionalArrayStringInt returns the value of OptionalArrayStringInt.
 func (s *TestResponseFormatTestOK) GetOptionalArrayStringInt() []int {
 	return s.OptionalArrayStringInt
@@ -16805,6 +17117,11 @@ func (s *TestResponseFormatTestOK) GetOptionalDoubleArrayStringHostname() [][]st
 	return s.OptionalDoubleArrayStringHostname
 }
 
+// GetOptionalDoubleArrayStringHTTPMinusDate returns the value of OptionalDoubleArrayStringHTTPMinusDate.
+func (s *TestResponseFormatTestOK) GetOptionalDoubleArrayStringHTTPMinusDate() [][]time.Time {
+	return s.OptionalDoubleArrayStringHTTPMinusDate
+}
+
 // GetOptionalDoubleArrayStringInt returns the value of OptionalDoubleArrayStringInt.
 func (s *TestResponseFormatTestOK) GetOptionalDoubleArrayStringInt() [][]int {
 	return s.OptionalDoubleArrayStringInt
@@ -17088,6 +17405,11 @@ func (s *TestResponseFormatTestOK) GetOptionalStringFloat64() OptStringFloat64 {
 // GetOptionalStringHostname returns the value of OptionalStringHostname.
 func (s *TestResponseFormatTestOK) GetOptionalStringHostname() OptString {
 	return s.OptionalStringHostname
+}
+
+// GetOptionalStringHTTPMinusDate returns the value of OptionalStringHTTPMinusDate.
+func (s *TestResponseFormatTestOK) GetOptionalStringHTTPMinusDate() OptHTTPDate {
+	return s.OptionalStringHTTPMinusDate
 }
 
 // GetOptionalStringInt returns the value of OptionalStringInt.
@@ -17390,6 +17712,11 @@ func (s *TestResponseFormatTestOK) SetRequiredArrayStringHostname(val []string) 
 	s.RequiredArrayStringHostname = val
 }
 
+// SetRequiredArrayStringHTTPMinusDate sets the value of RequiredArrayStringHTTPMinusDate.
+func (s *TestResponseFormatTestOK) SetRequiredArrayStringHTTPMinusDate(val []time.Time) {
+	s.RequiredArrayStringHTTPMinusDate = val
+}
+
 // SetRequiredArrayStringInt sets the value of RequiredArrayStringInt.
 func (s *TestResponseFormatTestOK) SetRequiredArrayStringInt(val []int) {
 	s.RequiredArrayStringInt = val
@@ -17690,6 +18017,11 @@ func (s *TestResponseFormatTestOK) SetRequiredDoubleArrayStringHostname(val [][]
 	s.RequiredDoubleArrayStringHostname = val
 }
 
+// SetRequiredDoubleArrayStringHTTPMinusDate sets the value of RequiredDoubleArrayStringHTTPMinusDate.
+func (s *TestResponseFormatTestOK) SetRequiredDoubleArrayStringHTTPMinusDate(val [][]time.Time) {
+	s.RequiredDoubleArrayStringHTTPMinusDate = val
+}
+
 // SetRequiredDoubleArrayStringInt sets the value of RequiredDoubleArrayStringInt.
 func (s *TestResponseFormatTestOK) SetRequiredDoubleArrayStringInt(val [][]int) {
 	s.RequiredDoubleArrayStringInt = val
@@ -17973,6 +18305,11 @@ func (s *TestResponseFormatTestOK) SetRequiredStringFloat64(val float64) {
 // SetRequiredStringHostname sets the value of RequiredStringHostname.
 func (s *TestResponseFormatTestOK) SetRequiredStringHostname(val string) {
 	s.RequiredStringHostname = val
+}
+
+// SetRequiredStringHTTPMinusDate sets the value of RequiredStringHTTPMinusDate.
+func (s *TestResponseFormatTestOK) SetRequiredStringHTTPMinusDate(val time.Time) {
+	s.RequiredStringHTTPMinusDate = val
 }
 
 // SetRequiredStringInt sets the value of RequiredStringInt.
@@ -18275,6 +18612,11 @@ func (s *TestResponseFormatTestOK) SetOptionalArrayStringHostname(val []string) 
 	s.OptionalArrayStringHostname = val
 }
 
+// SetOptionalArrayStringHTTPMinusDate sets the value of OptionalArrayStringHTTPMinusDate.
+func (s *TestResponseFormatTestOK) SetOptionalArrayStringHTTPMinusDate(val []time.Time) {
+	s.OptionalArrayStringHTTPMinusDate = val
+}
+
 // SetOptionalArrayStringInt sets the value of OptionalArrayStringInt.
 func (s *TestResponseFormatTestOK) SetOptionalArrayStringInt(val []int) {
 	s.OptionalArrayStringInt = val
@@ -18575,6 +18917,11 @@ func (s *TestResponseFormatTestOK) SetOptionalDoubleArrayStringHostname(val [][]
 	s.OptionalDoubleArrayStringHostname = val
 }
 
+// SetOptionalDoubleArrayStringHTTPMinusDate sets the value of OptionalDoubleArrayStringHTTPMinusDate.
+func (s *TestResponseFormatTestOK) SetOptionalDoubleArrayStringHTTPMinusDate(val [][]time.Time) {
+	s.OptionalDoubleArrayStringHTTPMinusDate = val
+}
+
 // SetOptionalDoubleArrayStringInt sets the value of OptionalDoubleArrayStringInt.
 func (s *TestResponseFormatTestOK) SetOptionalDoubleArrayStringInt(val [][]int) {
 	s.OptionalDoubleArrayStringInt = val
@@ -18858,6 +19205,11 @@ func (s *TestResponseFormatTestOK) SetOptionalStringFloat64(val OptStringFloat64
 // SetOptionalStringHostname sets the value of OptionalStringHostname.
 func (s *TestResponseFormatTestOK) SetOptionalStringHostname(val OptString) {
 	s.OptionalStringHostname = val
+}
+
+// SetOptionalStringHTTPMinusDate sets the value of OptionalStringHTTPMinusDate.
+func (s *TestResponseFormatTestOK) SetOptionalStringHTTPMinusDate(val OptHTTPDate) {
+	s.OptionalStringHTTPMinusDate = val
 }
 
 // SetOptionalStringInt sets the value of OptionalStringInt.
