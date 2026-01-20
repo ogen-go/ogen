@@ -1026,6 +1026,9 @@ func Date() *Schema { return schema("string", "date") }
 // DateTime returns a date as defined by date-time - RFC3339 OAS data type (Schema).
 func DateTime() *Schema { return schema("string", "date-time") }
 
+// HTTPDate returns a date as defined by HTTP-date - RFC7231 OAS data type (Schema).
+func HTTPDate() *Schema { return schema("string", "http-date") }
+
 // Password returns an obscured OAS data type (Schema).
 func Password() *Schema { return schema("string", "password") }
 

@@ -1400,6 +1400,30 @@ type Handler interface {
 	//
 	// POST /test_request_required_string_float64_nullable_array_array
 	TestRequestRequiredStringFloat64NullableArrayArray(ctx context.Context, req [][]NilStringFloat64) (*Error, error)
+	// TestRequestRequiredStringHTTPDate implements test_request_required_string_http-date operation.
+	//
+	// POST /test_request_required_string_http-date
+	TestRequestRequiredStringHTTPDate(ctx context.Context, req time.Time) (*Error, error)
+	// TestRequestRequiredStringHTTPDateArray implements test_request_required_string_http-date_array operation.
+	//
+	// POST /test_request_required_string_http-date_array
+	TestRequestRequiredStringHTTPDateArray(ctx context.Context, req []time.Time) (*Error, error)
+	// TestRequestRequiredStringHTTPDateArrayArray implements test_request_required_string_http-date_array_array operation.
+	//
+	// POST /test_request_required_string_http-date_array_array
+	TestRequestRequiredStringHTTPDateArrayArray(ctx context.Context, req [][]time.Time) (*Error, error)
+	// TestRequestRequiredStringHTTPDateNullable implements test_request_required_string_http-date_nullable operation.
+	//
+	// POST /test_request_required_string_http-date_nullable
+	TestRequestRequiredStringHTTPDateNullable(ctx context.Context, req NilHTTPDate) (*Error, error)
+	// TestRequestRequiredStringHTTPDateNullableArray implements test_request_required_string_http-date_nullable_array operation.
+	//
+	// POST /test_request_required_string_http-date_nullable_array
+	TestRequestRequiredStringHTTPDateNullableArray(ctx context.Context, req []NilHTTPDate) (*Error, error)
+	// TestRequestRequiredStringHTTPDateNullableArrayArray implements test_request_required_string_http-date_nullable_array_array operation.
+	//
+	// POST /test_request_required_string_http-date_nullable_array_array
+	TestRequestRequiredStringHTTPDateNullableArrayArray(ctx context.Context, req [][]NilHTTPDate) (*Error, error)
 	// TestRequestRequiredStringHostname implements test_request_required_string_hostname operation.
 	//
 	// POST /test_request_required_string_hostname
@@ -2240,6 +2264,30 @@ type Handler interface {
 	//
 	// POST /test_request_string_float64_nullable_array_array
 	TestRequestStringFloat64NullableArrayArray(ctx context.Context, req [][]NilStringFloat64) (*Error, error)
+	// TestRequestStringHTTPDate implements test_request_string_http-date operation.
+	//
+	// POST /test_request_string_http-date
+	TestRequestStringHTTPDate(ctx context.Context, req OptHTTPDate) (*Error, error)
+	// TestRequestStringHTTPDateArray implements test_request_string_http-date_array operation.
+	//
+	// POST /test_request_string_http-date_array
+	TestRequestStringHTTPDateArray(ctx context.Context, req []time.Time) (*Error, error)
+	// TestRequestStringHTTPDateArrayArray implements test_request_string_http-date_array_array operation.
+	//
+	// POST /test_request_string_http-date_array_array
+	TestRequestStringHTTPDateArrayArray(ctx context.Context, req [][]time.Time) (*Error, error)
+	// TestRequestStringHTTPDateNullable implements test_request_string_http-date_nullable operation.
+	//
+	// POST /test_request_string_http-date_nullable
+	TestRequestStringHTTPDateNullable(ctx context.Context, req OptNilHTTPDate) (*Error, error)
+	// TestRequestStringHTTPDateNullableArray implements test_request_string_http-date_nullable_array operation.
+	//
+	// POST /test_request_string_http-date_nullable_array
+	TestRequestStringHTTPDateNullableArray(ctx context.Context, req []NilHTTPDate) (*Error, error)
+	// TestRequestStringHTTPDateNullableArrayArray implements test_request_string_http-date_nullable_array_array operation.
+	//
+	// POST /test_request_string_http-date_nullable_array_array
+	TestRequestStringHTTPDateNullableArrayArray(ctx context.Context, req [][]NilHTTPDate) (*Error, error)
 	// TestRequestStringHostname implements test_request_string_hostname operation.
 	//
 	// POST /test_request_string_hostname
@@ -3644,6 +3692,30 @@ type Handler interface {
 	//
 	// POST /test_response_string_float64_nullable_array_array
 	TestResponseStringFloat64NullableArrayArray(ctx context.Context, req string) ([][]NilStringFloat64, error)
+	// TestResponseStringHTTPDate implements test_response_string_http-date operation.
+	//
+	// POST /test_response_string_http-date
+	TestResponseStringHTTPDate(ctx context.Context, req string) (time.Time, error)
+	// TestResponseStringHTTPDateArray implements test_response_string_http-date_array operation.
+	//
+	// POST /test_response_string_http-date_array
+	TestResponseStringHTTPDateArray(ctx context.Context, req string) ([]time.Time, error)
+	// TestResponseStringHTTPDateArrayArray implements test_response_string_http-date_array_array operation.
+	//
+	// POST /test_response_string_http-date_array_array
+	TestResponseStringHTTPDateArrayArray(ctx context.Context, req string) ([][]time.Time, error)
+	// TestResponseStringHTTPDateNullable implements test_response_string_http-date_nullable operation.
+	//
+	// POST /test_response_string_http-date_nullable
+	TestResponseStringHTTPDateNullable(ctx context.Context, req string) (NilHTTPDate, error)
+	// TestResponseStringHTTPDateNullableArray implements test_response_string_http-date_nullable_array operation.
+	//
+	// POST /test_response_string_http-date_nullable_array
+	TestResponseStringHTTPDateNullableArray(ctx context.Context, req string) ([]NilHTTPDate, error)
+	// TestResponseStringHTTPDateNullableArrayArray implements test_response_string_http-date_nullable_array_array operation.
+	//
+	// POST /test_response_string_http-date_nullable_array_array
+	TestResponseStringHTTPDateNullableArrayArray(ctx context.Context, req string) ([][]NilHTTPDate, error)
 	// TestResponseStringHostname implements test_response_string_hostname operation.
 	//
 	// POST /test_response_string_hostname

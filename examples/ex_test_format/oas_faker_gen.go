@@ -63,6 +63,11 @@ func (s *NilFloat64) SetFake() {
 }
 
 // SetFake set fake values.
+func (s *NilHTTPDate) SetFake() {
+	s.Null = true
+}
+
+// SetFake set fake values.
 func (s *NilHardwareAddr) SetFake() {
 	s.Null = true
 }
@@ -321,6 +326,15 @@ func (s *OptFloat64) SetFake() {
 }
 
 // SetFake set fake values.
+func (s *OptHTTPDate) SetFake() {
+	var elem time.Time
+	{
+		elem = time.Now()
+	}
+	s.SetTo(elem)
+}
+
+// SetFake set fake values.
 func (s *OptHardwareAddr) SetFake() {
 	var elem net.HardwareAddr
 	{
@@ -445,6 +459,12 @@ func (s *OptNilFloat32) SetFake() {
 
 // SetFake set fake values.
 func (s *OptNilFloat64) SetFake() {
+	s.Null = true
+	s.Set = true
+}
+
+// SetFake set fake values.
+func (s *OptNilHTTPDate) SetFake() {
 	s.Null = true
 	s.Set = true
 }
@@ -1416,6 +1436,18 @@ func (s *TestRequestFormatTestReq) SetFake() {
 	}
 	{
 		{
+			s.RequiredArrayStringHTTPMinusDate = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Time
+				{
+					elem = time.Now()
+				}
+				s.RequiredArrayStringHTTPMinusDate = append(s.RequiredArrayStringHTTPMinusDate, elem)
+			}
+		}
+	}
+	{
+		{
 			s.RequiredArrayStringInt = nil
 			for i := 0; i < 0; i++ {
 				var elem int
@@ -2381,6 +2413,25 @@ func (s *TestRequestFormatTestReq) SetFake() {
 	}
 	{
 		{
+			s.RequiredDoubleArrayStringHTTPMinusDate = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Time
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Time
+						{
+							elemElem = time.Now()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringHTTPMinusDate = append(s.RequiredDoubleArrayStringHTTPMinusDate, elem)
+			}
+		}
+	}
+	{
+		{
 			s.RequiredDoubleArrayStringInt = nil
 			for i := 0; i < 0; i++ {
 				var elem []int
@@ -2988,6 +3039,11 @@ func (s *TestRequestFormatTestReq) SetFake() {
 	}
 	{
 		{
+			s.RequiredStringHTTPMinusDate = time.Now()
+		}
+	}
+	{
+		{
 			s.RequiredStringInt = int(0)
 		}
 	}
@@ -3535,6 +3591,18 @@ func (s *TestRequestFormatTestReq) SetFake() {
 					elem = "string"
 				}
 				s.OptionalArrayStringHostname = append(s.OptionalArrayStringHostname, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringHTTPMinusDate = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Time
+				{
+					elem = time.Now()
+				}
+				s.OptionalArrayStringHTTPMinusDate = append(s.OptionalArrayStringHTTPMinusDate, elem)
 			}
 		}
 	}
@@ -4505,6 +4573,25 @@ func (s *TestRequestFormatTestReq) SetFake() {
 	}
 	{
 		{
+			s.OptionalDoubleArrayStringHTTPMinusDate = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Time
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Time
+						{
+							elemElem = time.Now()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringHTTPMinusDate = append(s.OptionalDoubleArrayStringHTTPMinusDate, elem)
+			}
+		}
+	}
+	{
+		{
 			s.OptionalDoubleArrayStringInt = nil
 			for i := 0; i < 0; i++ {
 				var elem []int
@@ -5108,6 +5195,11 @@ func (s *TestRequestFormatTestReq) SetFake() {
 	{
 		{
 			s.OptionalStringHostname.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringHTTPMinusDate.SetFake()
 		}
 	}
 	{
@@ -5672,6 +5764,18 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 	}
 	{
 		{
+			s.RequiredArrayStringHTTPMinusDate = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Time
+				{
+					elem = time.Now()
+				}
+				s.RequiredArrayStringHTTPMinusDate = append(s.RequiredArrayStringHTTPMinusDate, elem)
+			}
+		}
+	}
+	{
+		{
 			s.RequiredArrayStringInt = nil
 			for i := 0; i < 0; i++ {
 				var elem int
@@ -6637,6 +6741,25 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 	}
 	{
 		{
+			s.RequiredDoubleArrayStringHTTPMinusDate = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Time
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Time
+						{
+							elemElem = time.Now()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringHTTPMinusDate = append(s.RequiredDoubleArrayStringHTTPMinusDate, elem)
+			}
+		}
+	}
+	{
+		{
 			s.RequiredDoubleArrayStringInt = nil
 			for i := 0; i < 0; i++ {
 				var elem []int
@@ -7244,6 +7367,11 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 	}
 	{
 		{
+			s.RequiredStringHTTPMinusDate = time.Now()
+		}
+	}
+	{
+		{
 			s.RequiredStringInt = int(0)
 		}
 	}
@@ -7791,6 +7919,18 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 					elem = "string"
 				}
 				s.OptionalArrayStringHostname = append(s.OptionalArrayStringHostname, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringHTTPMinusDate = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Time
+				{
+					elem = time.Now()
+				}
+				s.OptionalArrayStringHTTPMinusDate = append(s.OptionalArrayStringHTTPMinusDate, elem)
 			}
 		}
 	}
@@ -8761,6 +8901,25 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 	}
 	{
 		{
+			s.OptionalDoubleArrayStringHTTPMinusDate = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Time
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Time
+						{
+							elemElem = time.Now()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringHTTPMinusDate = append(s.OptionalDoubleArrayStringHTTPMinusDate, elem)
+			}
+		}
+	}
+	{
+		{
 			s.OptionalDoubleArrayStringInt = nil
 			for i := 0; i < 0; i++ {
 				var elem []int
@@ -9364,6 +9523,11 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 	{
 		{
 			s.OptionalStringHostname.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringHTTPMinusDate.SetFake()
 		}
 	}
 	{
@@ -9928,6 +10092,18 @@ func (s *TestResponseFormatTestOK) SetFake() {
 	}
 	{
 		{
+			s.RequiredArrayStringHTTPMinusDate = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Time
+				{
+					elem = time.Now()
+				}
+				s.RequiredArrayStringHTTPMinusDate = append(s.RequiredArrayStringHTTPMinusDate, elem)
+			}
+		}
+	}
+	{
+		{
 			s.RequiredArrayStringInt = nil
 			for i := 0; i < 0; i++ {
 				var elem int
@@ -10893,6 +11069,25 @@ func (s *TestResponseFormatTestOK) SetFake() {
 	}
 	{
 		{
+			s.RequiredDoubleArrayStringHTTPMinusDate = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Time
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Time
+						{
+							elemElem = time.Now()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringHTTPMinusDate = append(s.RequiredDoubleArrayStringHTTPMinusDate, elem)
+			}
+		}
+	}
+	{
+		{
 			s.RequiredDoubleArrayStringInt = nil
 			for i := 0; i < 0; i++ {
 				var elem []int
@@ -11500,6 +11695,11 @@ func (s *TestResponseFormatTestOK) SetFake() {
 	}
 	{
 		{
+			s.RequiredStringHTTPMinusDate = time.Now()
+		}
+	}
+	{
+		{
 			s.RequiredStringInt = int(0)
 		}
 	}
@@ -12047,6 +12247,18 @@ func (s *TestResponseFormatTestOK) SetFake() {
 					elem = "string"
 				}
 				s.OptionalArrayStringHostname = append(s.OptionalArrayStringHostname, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringHTTPMinusDate = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Time
+				{
+					elem = time.Now()
+				}
+				s.OptionalArrayStringHTTPMinusDate = append(s.OptionalArrayStringHTTPMinusDate, elem)
 			}
 		}
 	}
@@ -13017,6 +13229,25 @@ func (s *TestResponseFormatTestOK) SetFake() {
 	}
 	{
 		{
+			s.OptionalDoubleArrayStringHTTPMinusDate = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Time
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Time
+						{
+							elemElem = time.Now()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringHTTPMinusDate = append(s.OptionalDoubleArrayStringHTTPMinusDate, elem)
+			}
+		}
+	}
+	{
+		{
 			s.OptionalDoubleArrayStringInt = nil
 			for i := 0; i < 0; i++ {
 				var elem []int
@@ -13620,6 +13851,11 @@ func (s *TestResponseFormatTestOK) SetFake() {
 	{
 		{
 			s.OptionalStringHostname.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringHTTPMinusDate.SetFake()
 		}
 	}
 	{
