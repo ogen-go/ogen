@@ -252,6 +252,7 @@ func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) handle{{ $op.Name }}Req
 				}: params.{{ $param.Name }},
 				{{- end }}
 			},
+			ParamsStruct: {{- if $op.Params }}params{{- else }}nil{{- end }},
 			Raw: r,
 		}
 
