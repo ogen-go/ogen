@@ -94,23 +94,24 @@ type notAllowedParams struct {
 }
 
 func (s baseServer) notAllowed(w http.ResponseWriter, r *http.Request, params notAllowedParams) {
+	h := w.Header()
 	isOptions := r.Method == "OPTIONS"
 	if isOptions {
-		w.Header().Set("Access-Control-Allow-Methods", params.allowedMethods)
+		h.Set("Access-Control-Allow-Methods", params.allowedMethods)
 		if params.allowedHeaders != nil {
 			m := r.Header.Get("Access-Control-Request-Method")
 			if m != "" {
 				allowedHeaders, ok := params.allowedHeaders[strings.ToUpper(m)]
 				if ok {
-					w.Header().Set("Access-Control-Allow-Headers", allowedHeaders)
+					h.Set("Access-Control-Allow-Headers", allowedHeaders)
 				}
 			}
 		}
 		if params.acceptPost != "" {
-			w.Header().Set("Accept-Post", params.acceptPost)
+			h.Set("Accept-Post", params.acceptPost)
 		}
 		if params.acceptPatch != "" {
-			w.Header().Set("Accept-Patch", params.acceptPatch)
+			h.Set("Accept-Patch", params.acceptPatch)
 		}
 	}
 	if s.cfg.MethodNotAllowed != nil {
@@ -119,7 +120,7 @@ func (s baseServer) notAllowed(w http.ResponseWriter, r *http.Request, params no
 	}
 	status := http.StatusNoContent
 	if !isOptions {
-		w.Header().Set("Allow", params.allowedMethods)
+		h.Set("Allow", params.allowedMethods)
 		status = http.StatusMethodNotAllowed
 	}
 	w.WriteHeader(status)
