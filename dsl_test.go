@@ -334,6 +334,9 @@ func TestBuilder(t *testing.T) {
 		SetHead(ogen.NewOperation().SetOperationID("head").SetResponses(ogen.Responses{"resp": ogen.NewResponse()})).
 		SetPatch(ogen.NewOperation().SetOperationID("patch").AddParameters(ogen.NewParameter().InHeader().SetDeprecated(true))).
 		SetTrace(ogen.NewOperation().SetOperationID("trace")).
+		SetQuery(ogen.NewOperation().SetOperationID("query")).
+		SetAdditionalOperations(map[string]*ogen.Operation{"LINK": ogen.NewOperation().SetOperationID("link")}).
+		SetAdditionalOperation("UNLINK", ogen.NewOperation().SetOperationID("unlink")).
 		SetServers([]ogen.Server{{"url1", "desc1", nil, _common}}).
 		AddServers(ogen.NewServer().SetDescription("desc2").SetURL("url2")).
 		SetParameters([]*ogen.Parameter{_queryParam.Parameter})
@@ -344,6 +347,11 @@ func TestBuilder(t *testing.T) {
 		Head:    &ogen.Operation{OperationID: "head", Responses: ogen.Responses{"resp": &ogen.Response{}}},
 		Patch:   &ogen.Operation{OperationID: "patch", Parameters: []*ogen.Parameter{{In: "header", Deprecated: true}}},
 		Trace:   &ogen.Operation{OperationID: "trace"},
+		Query:   &ogen.Operation{OperationID: "query"},
+		AdditionalOperations: map[string]*ogen.Operation{
+			"LINK":   {OperationID: "link"},
+			"UNLINK": {OperationID: "unlink"},
+		},
 		Servers: []ogen.Server{
 			{"url1", "desc1", nil, _common},
 			{"url2", "desc2", nil, _common},

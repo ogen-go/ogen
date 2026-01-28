@@ -18,6 +18,7 @@ func TestVersion_UnmarshalText(t *testing.T) {
 		{"3.1", Version{Major: 3, Minor: 1}, false},
 		{"3.1.0", Version{Major: 3, Minor: 1, Patch: 0}, false},
 		{"3.1.1", Version{Major: 3, Minor: 1, Patch: 1}, false},
+		{"3.2.0", Version{Major: 3, Minor: 2, Patch: 0}, false},
 
 		{"", Version{}, true},
 		{" ", Version{}, true},
@@ -31,7 +32,6 @@ func TestVersion_UnmarshalText(t *testing.T) {
 		{"3.3.0.4", Version{}, true},
 	}
 	for i, tt := range tests {
-		tt := tt
 		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
 			a := require.New(t)
 

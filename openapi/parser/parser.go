@@ -4,6 +4,7 @@ package parser
 import (
 	"fmt"
 	"net/url"
+	"strings"
 
 	"github.com/go-faster/errors"
 	"golang.org/x/exp/maps"
@@ -199,6 +200,12 @@ func getPathMethods(item *ogen.PathItem) map[string]struct{} {
 	}
 	if item.Trace != nil {
 		methods["trace"] = struct{}{}
+	}
+	if item.Query != nil {
+		methods["query"] = struct{}{}
+	}
+	for method := range item.AdditionalOperations {
+		methods[strings.ToLower(method)] = struct{}{}
 	}
 	return methods
 }

@@ -315,6 +315,15 @@ type PathItem struct {
 	Patch *Operation `json:"patch,omitempty" yaml:"patch,omitempty"`
 	// A definition of a TRACE operation on this path.
 	Trace *Operation `json:"trace,omitempty" yaml:"trace,omitempty"`
+	// A definition of a QUERY operation on this path.
+	Query *Operation `json:"query,omitempty" yaml:"query,omitempty"`
+	// A map of additional operations on this path.
+	//
+	// The map key is the HTTP method with the same capitalization that is to be sent in the request.
+	//
+	// This map MUST NOT contain any entry for the methods that can be defined by other fixed fields
+	// with Operation Object values (e.g. no POST entry, as the post field is used for this method).
+	AdditionalOperations map[string]*Operation `json:"additionalOperations,omitempty" yaml:"additionalOperations,omitempty"`
 	// An alternative server array to service all operations in this path.
 	Servers []Server `json:"servers,omitempty" yaml:"servers,omitempty"`
 	// A list of parameters that are applicable for all the operations described under this path.
@@ -329,9 +338,9 @@ type PathItem struct {
 }
 
 // MarshalJSON implements [json.Marshaler].
-func (s *PathItem) MarshalJSON() ([]byte, error) {
+func (p *PathItem) MarshalJSON() ([]byte, error) {
 	type Alias PathItem
-	originalJSON, err := json.Marshal(Alias(*s))
+	originalJSON, err := json.Marshal(Alias(*p))
 	if err != nil {
 		return nil, err
 	}
@@ -353,7 +362,7 @@ func (s *PathItem) MarshalJSON() ([]byte, error) {
 		return nil, err
 	}
 
-	for extK, extV := range s.Common.Extensions {
+	for extK, extV := range p.Common.Extensions {
 		e.FieldStart(extK)
 		e.Str(extV.Value)
 	}
@@ -418,9 +427,9 @@ type Operation struct {
 }
 
 // MarshalJSON implements [json.Marshaler].
-func (s *Operation) MarshalJSON() ([]byte, error) {
+func (o *Operation) MarshalJSON() ([]byte, error) {
 	type Alias Operation
-	originalJSON, err := json.Marshal(Alias(*s))
+	originalJSON, err := json.Marshal(Alias(*o))
 	if err != nil {
 		return nil, err
 	}
@@ -441,7 +450,7 @@ func (s *Operation) MarshalJSON() ([]byte, error) {
 		return nil, err
 	}
 
-	for extK, extV := range s.Common.Extensions {
+	for extK, extV := range o.Common.Extensions {
 		e.FieldStart(extK)
 		e.Str(extV.Value)
 	}

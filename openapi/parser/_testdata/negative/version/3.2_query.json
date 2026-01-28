@@ -1,0 +1,18 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "title",
+    "version": "v0.1.0"
+  },
+  "paths": {
+    "/foo": {
+      "query": {
+        "responses": {
+          "200": {
+            "description": "default"
+          }
+        }
+      }
+    }
+  }
+}
