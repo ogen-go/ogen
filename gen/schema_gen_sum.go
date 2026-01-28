@@ -338,11 +338,19 @@ func (g *schemaGen) handleExplicitDiscriminator(sum *ir.Type, schema *jsonschema
 				vschema = variants[i]
 			}
 
+			var discriminatorType *ir.Type
+			for _, field := range s.Fields {
+				if field.Spec != nil && field.Spec.Name == propName {
+					discriminatorType = field.Type
+				}
+			}
+
 			if vschema.Ref == v.Ref {
 				found = true
 				sum.SumSpec.Mapping = append(sum.SumSpec.Mapping, ir.SumSpecMap{
-					Key:  k,
-					Type: s,
+					Key:               k,
+					Type:              s,
+					DiscriminatorType: discriminatorType,
 				})
 				mappingKeys = append(mappingKeys, k)
 				break

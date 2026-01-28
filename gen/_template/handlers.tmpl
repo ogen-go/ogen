@@ -270,7 +270,11 @@ func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) handle{{ $op.Name }}Req
 			mreq,
 			{{ if $op.Params }}unpack{{ $op.Name }}Params{{ else }}nil{{ end }},
 			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				{{- if $op.OperationGroup }}
+				err = s.h.{{ $op.Name }}(ctx{{ if $op.Request }}, request{{ end }}{{ if $op.Params }}, params{{ end }}, w)
+				{{- else }}
 				err = s.rh.{{ $op.Name }}(ctx{{ if $op.Request }}, request{{ end }}{{ if $op.Params }}, params{{ end }}, w)
+				{{- end }}
 				return response, err
 			},
 		)
@@ -291,7 +295,11 @@ func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) handle{{ $op.Name }}Req
 		{{- end }}
 	} else {
 		{{- if $op.HasRawResponse }}
+		{{- if $op.OperationGroup }}
+		err = s.h.{{ $op.Name }}(ctx{{ if $op.Request }}, request{{ end }}{{ if $op.Params }}, params{{ end }}, w)
+		{{- else }}
 		err = s.rh.{{ $op.Name }}(ctx{{ if $op.Request }}, request{{ end }}{{ if $op.Params }}, params{{ end }}, w)
+		{{- end }}
 		{{- else }}
 		{{- if $op.Responses.DoPass }}response,{{ end }} err = s.h.{{ $op.Name }}(ctx{{ if $op.Request }}, request{{ end }}{{ if $op.Params }}, params{{ end }})
 		{{- end }}

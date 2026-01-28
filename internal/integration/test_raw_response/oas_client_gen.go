@@ -26,6 +26,7 @@ func trimTrailingSlashes(u *url.URL) {
 
 // Invoker invokes operations described by OpenAPI v3 specification.
 type Invoker interface {
+	TestInvoker
 	// GetMixedData invokes getMixedData operation.
 	//
 	// GET /mixed-data
@@ -40,15 +41,21 @@ type Invoker interface {
 	GetRawData(ctx context.Context) (GetRawDataRes, error)
 }
 
+// TestInvoker invokes operations described by OpenAPI v3 specification.
+//
+// x-gen-operation-group: Test
+type TestInvoker interface {
+	// GetRawDataInsideOperationGroup invokes getRawDataInsideOperationGroup operation.
+	//
+	// GET /raw-data-inside-operation-group
+	GetRawDataInsideOperationGroup(ctx context.Context) (GetRawDataInsideOperationGroupRes, error)
+}
+
 // Client implements OAS client.
 type Client struct {
 	serverURL *url.URL
 	baseClient
 }
-
-var _ Handler = struct {
-	*Client
-}{}
 
 // NewClient initializes new Client defined by OAS.
 func NewClient(serverURL string, opts ...ClientOption) (*Client, error) {
@@ -287,6 +294,76 @@ func (c *Client) sendGetRawData(ctx context.Context) (res GetRawDataRes, err err
 
 	stage = "DecodeResponse"
 	result, err := decodeGetRawDataResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// GetRawDataInsideOperationGroup invokes getRawDataInsideOperationGroup operation.
+//
+// GET /raw-data-inside-operation-group
+func (c *Client) GetRawDataInsideOperationGroup(ctx context.Context) (GetRawDataInsideOperationGroupRes, error) {
+	res, err := c.sendGetRawDataInsideOperationGroup(ctx)
+	return res, err
+}
+
+func (c *Client) sendGetRawDataInsideOperationGroup(ctx context.Context) (res GetRawDataInsideOperationGroupRes, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("getRawDataInsideOperationGroup"),
+		semconv.HTTPRequestMethodKey.String("GET"),
+		semconv.URLTemplateKey.String("/raw-data-inside-operation-group"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, GetRawDataInsideOperationGroupOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/raw-data-inside-operation-group"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "GET", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+
+	stage = "DecodeResponse"
+	result, err := decodeGetRawDataInsideOperationGroupResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}

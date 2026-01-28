@@ -26,14 +26,22 @@ func (s {{ $.ReadOnlyReceiver }}) encodeFields(e *jx.Encoder) {
 				{{- if eq (len $entries) 1}}
 					{{- range $e := $entries }}
 						e.FieldStart({{ quote $.SumSpec.Discriminator }})
-						e.Str({{ quote $e.Key }})
+						{{- if $e.DiscriminatorType.IsInteger }}
+							e.Int({{ $e.Key }})
+						{{- else }}
+							e.Str({{ quote $e.Key }})
+						{{- end }}
 					{{- end }}
 				{{- else }}
 				switch s.Type {
 				{{- range $e := $entries }}
 				case {{ $e.Name }}:
 					e.FieldStart({{ quote $.SumSpec.Discriminator }})
-					e.Str({{ quote $e.Key }})
+					{{- if $e.DiscriminatorType.IsInteger }}
+						e.Int({{ $e.Key }})
+					{{- else }}
+						e.Str({{ quote $e.Key }})
+					{{- end }}
 				{{- end }}
 				}
 				{{- end }}

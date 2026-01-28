@@ -114,6 +114,9 @@ linters:
       - linters:
           - goconst
         text: string `(Unix|unix|date|time|http-date|ipv6|String|DateTime|HTTPDate|Number)
+      - linters:
+          - goconst
+        text: string `(query)`
       - linters: [revive]
         text: avoid.+package names
     paths:

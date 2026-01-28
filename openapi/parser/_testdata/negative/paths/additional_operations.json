@@ -1,0 +1,20 @@
+{
+  "openapi": "3.2.0",
+  "info": {
+    "title": "title",
+    "version": "v0.1.0"
+  },
+  "paths": {
+    "/foo": {
+      "additionalOperations": {
+        "post": {
+          "responses": {
+            "200": {
+              "description": "default"
+            }
+          }
+        }
+      }
+    }
+  }
+}

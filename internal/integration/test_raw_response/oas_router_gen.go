@@ -119,7 +119,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 
 				if len(elem) == 0 {
-					// Leaf node.
 					switch r.Method {
 					case "GET":
 						s.handleGetRawDataRequest([0]string{}, elemIsEscaped, w, r)
@@ -133,6 +132,33 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					return
+				}
+				switch elem[0] {
+				case '-': // Prefix: "-inside-operation-group"
+
+					if l := len("-inside-operation-group"); len(elem) >= l && elem[0:l] == "-inside-operation-group" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						// Leaf node.
+						switch r.Method {
+						case "GET":
+							s.handleGetRawDataInsideOperationGroupRequest([0]string{}, elemIsEscaped, w, r)
+						default:
+							s.notAllowed(w, r, notAllowedParams{
+								allowedMethods: "GET",
+								allowedHeaders: nil,
+								acceptPost:     "",
+								acceptPatch:    "",
+							})
+						}
+
+						return
+					}
+
 				}
 
 			}
@@ -294,7 +320,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
-					// Leaf node.
 					switch method {
 					case "GET":
 						r.name = GetRawDataOperation
@@ -308,6 +333,33 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					default:
 						return
 					}
+				}
+				switch elem[0] {
+				case '-': // Prefix: "-inside-operation-group"
+
+					if l := len("-inside-operation-group"); len(elem) >= l && elem[0:l] == "-inside-operation-group" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						// Leaf node.
+						switch method {
+						case "GET":
+							r.name = GetRawDataInsideOperationGroupOperation
+							r.summary = ""
+							r.operationID = "getRawDataInsideOperationGroup"
+							r.operationGroup = "Test"
+							r.pathPattern = "/raw-data-inside-operation-group"
+							r.args = args
+							r.count = 0
+							return r, true
+						default:
+							return
+						}
+					}
+
 				}
 
 			}

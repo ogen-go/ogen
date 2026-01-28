@@ -39,6 +39,7 @@ package integration
 //go:generate go run ../../cmd/ogen -v --clean --config _config/additionalPropertiesPatternProperties.yml --target test_additionalpropertiespatternproperties ../../_testdata/positive/additionalPropertiesPatternProperties.yml
 //go:generate go run ../../cmd/ogen -v --clean --config _config/client_options.yml --target test_client_options ../../_testdata/positive/client_options.json
 //go:generate go run ../../cmd/ogen -v --clean --target test_cors ../../_testdata/positive/cors.yaml
+//go:generate go run ../../cmd/ogen -v --clean --target test_additional_operations ../../_testdata/positive/additional_operations.yml
 //
 //go:generate go run ../../cmd/ogen -v --clean -target test_enum_naming       ../../_testdata/positive/enum_naming.yml
 //go:generate go run ../../cmd/ogen -v --clean -target test_naming_extensions ../../_testdata/positive/naming_extensions.json

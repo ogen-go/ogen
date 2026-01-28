@@ -21,7 +21,7 @@ func (p *parser) parseVersion() (rerr error) {
 	if err := p.version.UnmarshalText([]byte(version)); err != nil {
 		return errors.Wrap(err, "invalid version")
 	}
-	if p.version.Major != 3 || p.version.Minor > 1 {
+	if p.version.Major != 3 || p.version.Minor > 2 {
 		return errors.Errorf("unsupported version: %s", version)
 	}
 	return nil

@@ -27,9 +27,10 @@ const (
 )
 
 type SumSpecMap struct {
-	Key  string
-	Type *Type
-	Name string
+	Key               string
+	Type              *Type
+	DiscriminatorType *Type
+	Name              string
 }
 
 // UniqueFieldVariant represents a variant that has a specific unique field.
@@ -91,8 +92,9 @@ type ValueDiscriminator struct {
 }
 
 type ResolvedSumSpecMap struct {
-	Name string
-	Key  string
+	Name              string
+	Key               string
+	DiscriminatorType *Type
 }
 
 type PickedMappingEntries []*ResolvedSumSpecMap
@@ -117,6 +119,7 @@ func (s SumSpec) PickMappingEntriesFor(t, sumOf *Type) PickedMappingEntries {
 	buildEntry := func(e *tmpEntry) *ResolvedSumSpecMap {
 		var name []string
 		var value string
+		var discriminatorType = e.typ
 		switch {
 		case e.sumSpecMap == nil || e.sumSpecMap.Key == e.sumOf.Go():
 			name = []string{e.sumOf.Name, e.typ.Name}
@@ -128,9 +131,15 @@ func (s SumSpec) PickMappingEntriesFor(t, sumOf *Type) PickedMappingEntries {
 			name = []string{e.sumSpecMap.Name, e.typ.Name}
 			value = e.sumSpecMap.Key
 		}
+
+		if e.sumSpecMap != nil && e.sumSpecMap.DiscriminatorType != nil {
+			discriminatorType = e.sumSpecMap.DiscriminatorType
+		}
+
 		return &ResolvedSumSpecMap{
-			Name: strings.Join(name, ""),
-			Key:  value,
+			Name:              strings.Join(name, ""),
+			Key:               value,
+			DiscriminatorType: discriminatorType,
 		}
 	}
 

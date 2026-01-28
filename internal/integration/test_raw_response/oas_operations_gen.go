@@ -6,7 +6,8 @@ package api
 type OperationName = string
 
 const (
-	GetMixedDataOperation  OperationName = "GetMixedData"
-	GetNormalDataOperation OperationName = "GetNormalData"
-	GetRawDataOperation    OperationName = "GetRawData"
+	GetMixedDataOperation                   OperationName = "GetMixedData"
+	GetNormalDataOperation                  OperationName = "GetNormalData"
+	GetRawDataOperation                     OperationName = "GetRawData"
+	GetRawDataInsideOperationGroupOperation OperationName = "GetRawDataInsideOperationGroup"
 )

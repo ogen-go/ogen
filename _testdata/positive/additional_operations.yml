@@ -1,0 +1,20 @@
+openapi: 3.2.0
+info:
+  title: title
+  version: v0.1.0
+paths:
+  /echo:
+    additionalOperations:
+      link:
+        operationId: echo
+        requestBody:
+          required: true
+          content:
+            text/plain:
+              schema: { type: string }
+        responses:
+          "200":
+            description: OK
+            content:
+              text/plain:
+                schema: { type: string }
