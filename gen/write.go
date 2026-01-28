@@ -180,7 +180,7 @@ type writer struct {
 const generatorBufSize = 1024 * 1024
 
 var bufPool = sync.Pool{
-	New: func() interface{} {
+	New: func() any {
 		var b bytes.Buffer
 		b.Grow(generatorBufSize)
 		b.Reset()
@@ -342,7 +342,6 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 		{"labeler", features.Has(OgenOtel) && genServer},
 		{"operations", (genClient || genServer)},
 	} {
-		t := t
 		if !t.enabled {
 			continue
 		}

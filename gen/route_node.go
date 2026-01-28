@@ -1,6 +1,8 @@
 package gen
 
 import (
+	"net/textproto"
+	"slices"
 	"sort"
 	"strings"
 
@@ -8,6 +10,23 @@ import (
 
 	"github.com/ogen-go/ogen/gen/ir"
 )
+
+// idSeq is a monotonically increasing id sequence.
+type idSeq struct {
+	id  int
+	seq *int
+}
+
+func (s *idSeq) next() idSeq {
+	if s.seq == nil {
+		s.seq = new(int)
+	}
+	*s.seq++
+	return idSeq{
+		id:  *s.seq,
+		seq: s.seq,
+	}
+}
 
 type nodes []*RouteNode
 
@@ -29,6 +48,8 @@ func (e nodes) Sort() {
 
 // RouteNode is node of Radix tree of routes.
 type RouteNode struct {
+	idSeq idSeq
+
 	prefix string
 	head   byte
 	child  nodes
@@ -37,6 +58,11 @@ type RouteNode struct {
 	param     *ir.Parameter // nil-able
 
 	routes Routes
+}
+
+// ID returns node identifier.
+func (n *RouteNode) ID() int {
+	return n.idSeq.id
 }
 
 // AddRoute adds new method route to node.
@@ -130,7 +156,104 @@ func (n *RouteNode) AllowedMethods() string {
 	return s.String()
 }
 
-// Routes returns list of associated MethodRoute.
+// WithAllowedHeaders reports whether any route
+// in this node accepts any headers.
+func (n *RouteNode) WithAllowedHeaders() bool {
+	for _, route := range n.routes {
+		if route.Operation.HasHeaderParams() {
+			return true
+		}
+		if route.Operation.Request != nil {
+			return true
+		}
+		for _, sec := range route.Operation.Security.Securities {
+			if sec.Format == ir.APIKeySecurityFormat {
+				if sec.Kind == ir.HeaderSecurity {
+					return true
+				}
+			} else {
+				return true
+			}
+		}
+	}
+	return false
+}
+
+// AllowedHeaders returns HTTP method and allowed headers pairs.
+// Allowed headers are formatted as a comma-separated list of headers.
+func (n *RouteNode) AllowedHeaders() [][2]string {
+	var kvs [][2]string
+	for _, route := range n.routes {
+		var headers []string
+
+		headerParams := route.Operation.HeaderParams()
+		for _, param := range headerParams {
+			headers = append(headers, textproto.CanonicalMIMEHeaderKey(param.Spec.Name))
+		}
+
+		if route.Operation.Request != nil {
+			headers = append(headers, "Content-Type")
+		}
+
+		securities := route.Operation.Security.Securities
+		for _, sec := range securities {
+			if sec.Format == ir.APIKeySecurityFormat {
+				if sec.Kind == ir.HeaderSecurity {
+					headers = append(headers, textproto.CanonicalMIMEHeaderKey(sec.ParameterName))
+				}
+			} else {
+				headers = append(headers, "Authorization")
+			}
+		}
+
+		if len(headers) == 0 {
+			continue
+		}
+
+		slices.Sort(headers)
+		headers = slices.Compact(headers)
+
+		kvs = append(kvs, [2]string{
+			route.Method,
+			strings.Join(headers, ","),
+		})
+	}
+	return kvs
+}
+
+// PostContentTypes returns comma-separated list of content types
+// accepted by a route with POST method.
+func (n *RouteNode) PostContentTypes() string {
+	return n.methodContentTypes("POST")
+}
+
+// PatchContentTypes returns comma-separated list of content types
+// accepted by a route with PATCH method.
+func (n *RouteNode) PatchContentTypes() string {
+	return n.methodContentTypes("PATCH")
+}
+
+// methodContentTypes returns comma-separated list of content types
+// accepted by a route with the specified HTTP method.
+func (n *RouteNode) methodContentTypes(method string) string {
+	var types []string
+	for _, route := range n.routes {
+		if route.Method != method {
+			continue
+		}
+		if route.Operation.Request == nil {
+			return ""
+		}
+		for typ := range route.Operation.Request.Contents {
+			types = append(types, string(typ))
+		}
+		break
+	}
+	slices.Sort(types)
+	return strings.Join(types, ",")
+}
+
+// Routes returns list of associated Route.
 func (n *RouteNode) Routes() []Route {
 	return n.routes
 }
@@ -173,6 +296,7 @@ func (n *RouteNode) addChild(path string, op *ir.Operation, ch *RouteNode) (r *R
 			if len(path[end:]) > 0 {
 				path = path[end:]
 				n, err := ch.addChild(path, op, &RouteNode{
+					idSeq:  n.idSeq.next(),
 					prefix: path,
 					head:   path[0],
 				})
@@ -188,6 +312,7 @@ func (n *RouteNode) addChild(path string, op *ir.Operation, ch *RouteNode) (r *R
 			path = path[start:]
 			// Add parameterized child node.
 			n, err := ch.addChild(path, op, &RouteNode{
+				idSeq:     n.idSeq.next(),
 				head:      path[0],
 				paramName: paramName,
 				param:     p,

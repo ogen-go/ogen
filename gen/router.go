@@ -1,6 +1,7 @@
 package gen
 
 import (
+	"net/textproto"
 	"slices"
 	"sort"
 	"strings"
@@ -8,6 +9,7 @@ import (
 	"github.com/go-faster/errors"
 
 	"github.com/ogen-go/ogen/gen/ir"
+	"github.com/ogen-go/ogen/internal/xmaps"
 	"github.com/ogen-go/ogen/openapi"
 )
 
@@ -59,6 +61,18 @@ func (s *Router) Add(r Route) error {
 	return s.Tree.addRoute(r)
 }
 
+// NodesWithAllowedHeaders returns route nodes that
+// contain routes that accept headers.
+func (s Router) NodesWithAllowedHeaders() []*RouteNode {
+	var nodes []*RouteNode
+	s.Tree.Walk(func(level int, n *RouteNode) {
+		if n.WithAllowedHeaders() {
+			nodes = append(nodes, n)
+		}
+	})
+	return nodes
+}
+
 // WebhookRoute is a webhook route.
 type WebhookRoute struct {
 	Method    string
@@ -68,6 +82,12 @@ type WebhookRoute struct {
 // WebhookRoutes is a list of webhook methods.
 type WebhookRoutes struct {
 	Routes []WebhookRoute
+	idSeq  idSeq
+}
+
+// ID returns list identifier.
+func (r WebhookRoutes) ID() int {
+	return r.idSeq.id
 }
 
 // Add adds new operation to the route.
@@ -96,9 +116,120 @@ func (r WebhookRoutes) AllowedMethods() string {
 	return s.String()
 }
 
+// WithAllowedHeaders reports whether any route
+// in this list accepts any headers.
+func (r WebhookRoutes) WithAllowedHeaders() bool {
+	for _, route := range r.Routes {
+		if route.Operation.HasHeaderParams() {
+			return true
+		}
+		if route.Operation.Request != nil {
+			return true
+		}
+		for _, sec := range route.Operation.Security.Securities {
+			if sec.Format == ir.APIKeySecurityFormat {
+				if sec.Kind == ir.HeaderSecurity {
+					return true
+				}
+			} else {
+				return true
+			}
+		}
+	}
+	return false
+}
+
+// AllowedHeaders returns HTTP method and allowed headers pairs.
+// Allowed headers are formatted as a comma-separated list of headers.
+func (r WebhookRoutes) AllowedHeaders() [][2]string {
+	var kvs [][2]string
+	for _, route := range r.Routes {
+		var headers []string
+
+		headerParams := route.Operation.HeaderParams()
+		for _, param := range headerParams {
+			headers = append(headers, textproto.CanonicalMIMEHeaderKey(param.Spec.Name))
+		}
+
+		if route.Operation.Request != nil {
+			headers = append(headers, "Content-Type")
+		}
+
+		securities := route.Operation.Security.Securities
+		for _, sec := range securities {
+			if sec.Format == ir.APIKeySecurityFormat {
+				if sec.Kind == ir.HeaderSecurity {
+					headers = append(headers, textproto.CanonicalMIMEHeaderKey(sec.ParameterName))
+				}
+			} else {
+				headers = append(headers, "Authorization")
+			}
+		}
+
+		if len(headers) == 0 {
+			continue
+		}
+
+		slices.Sort(headers)
+		headers = slices.Compact(headers)
+
+		kvs = append(kvs, [2]string{
+			route.Method,
+			strings.Join(headers, ","),
+		})
+	}
+	return kvs
+}
+
+// PostContentTypes returns comma-separated list of content types
+// accepted by a route with POST method.
+func (r WebhookRoutes) PostContentTypes() string {
+	return r.methodContentTypes("POST")
+}
+
+// PatchContentTypes returns comma-separated list of content types
+// accepted by a route with PATCH method.
+func (r WebhookRoutes) PatchContentTypes() string {
+	return r.methodContentTypes("PATCH")
+}
+
+// methodContentTypes returns comma-separated list of content types
+// accepted by a route with the specified HTTP method.
+func (r WebhookRoutes) methodContentTypes(method string) string {
+	var types []string
+	for _, route := range r.Routes {
+		if route.Method != method {
+			continue
+		}
+		if route.Operation.Request == nil {
+			return ""
+		}
+		for typ := range route.Operation.Request.Contents {
+			types = append(types, string(typ))
+		}
+		break
+	}
+	slices.Sort(types)
+	return strings.Join(types, ",")
+}
+
 // WebhookRouter contains routing information for webhooks.
 type WebhookRouter struct {
 	Webhooks map[string]WebhookRoutes
+	idSeq    idSeq
+}
+
+// WebhooksWithAllowedHeaders returns lists that
+// contain routes that accept any headers.
+func (r WebhookRouter) WebhooksWithAllowedHeaders() []WebhookRoutes {
+	var hooks []WebhookRoutes
+	for _, key := range xmaps.SortedKeys(r.Webhooks) {
+		route := r.Webhooks[key]
+		if route.WithAllowedHeaders() {
+			hooks = append(hooks, route)
+		}
+	}
+	return hooks
 }
 
 // Add adds new route.
@@ -108,7 +239,7 @@ func (r *WebhookRouter) Add(name string, nr WebhookRoute) error {
 	}
 	route, ok := r.Webhooks[name]
 	if !ok {
-		route = WebhookRoutes{}
+		route = WebhookRoutes{idSeq: r.idSeq.next()}
 	}
 	if err := route.Add(nr); err != nil {
 		return errors.Wrapf(err, "webhook %q", name)

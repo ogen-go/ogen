@@ -10,6 +10,258 @@ import (
 	"github.com/ogen-go/ogen/uri"
 )
 
+var (
+	rn1AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn3AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn5AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn6AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn7AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn8AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn9AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn11AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn13AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn16AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn17AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn19AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn20AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn22AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn24AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn26AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn28AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn29AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn30AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn31AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn33AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn35AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn36AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn37AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn38AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn40AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn41AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn42AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn43AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn44AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn45AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn47AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn49AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn50AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn53AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn55AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn56AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn57AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn59AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn61AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn64AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn66AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn67AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn69AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn70AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn72AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn74AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn76AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn77AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn79AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn80AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn81AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn82AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn83AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn85AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn86AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn88AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn89AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn90AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn92AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn93AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn94AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn96AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn98AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn99AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn100AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn102AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn103AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn104AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn106AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn107AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn109AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn110AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn111AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn113AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn114AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn116AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn118AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn119AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn121AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn123AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn125AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn127AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+)
+
 func (s *Server) cutPrefix(path string) (string, bool) {
 	prefix := s.cfg.Prefix
 	if prefix == "" {
@@ -86,7 +338,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "POST":
 							s.handleAddStickerToSetRequest([0]string{}, elemIsEscaped, w, r)
 						default:
-							s.notAllowed(w, r, "POST")
+							s.notAllowed(w, r, notAllowedParams{
+								allowedMethods: "POST",
+								allowedHeaders: rn1AllowedHeaders,
+								acceptPost:     "application/json",
+								acceptPatch:    "",
+							})
 						}
 
 						return
@@ -118,7 +375,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "POST":
 								s.handleAnswerCallbackQueryRequest([0]string{}, elemIsEscaped, w, r)
 							default:
-								s.notAllowed(w, r, "POST")
+								s.notAllowed(w, r, notAllowedParams{
+									allowedMethods: "POST",
+									allowedHeaders: rn3AllowedHeaders,
+									acceptPost:     "application/json",
+									acceptPatch:    "",
+								})
 							}
 
 							return
@@ -138,7 +400,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "POST":
 								s.handleAnswerInlineQueryRequest([0]string{}, elemIsEscaped, w, r)
 							default:
-								s.notAllowed(w, r, "POST")
+								s.notAllowed(w, r, notAllowedParams{
+									allowedMethods: "POST",
+									allowedHeaders: rn5AllowedHeaders,
+									acceptPost:     "application/json",
+									acceptPatch:    "",
+								})
 							}
 
 							return
@@ -158,7 +425,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "POST":
 								s.handleAnswerPreCheckoutQueryRequest([0]string{}, elemIsEscaped, w, r)
 							default:
-								s.notAllowed(w, r, "POST")
+								s.notAllowed(w, r, notAllowedParams{
+									allowedMethods: "POST",
+									allowedHeaders: rn6AllowedHeaders,
+									acceptPost:     "application/json",
+									acceptPatch:    "",
+								})
 							}
 
 							return
@@ -178,7 +450,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "POST":
 								s.handleAnswerShippingQueryRequest([0]string{}, elemIsEscaped, w, r)
 							default:
-								s.notAllowed(w, r, "POST")
+								s.notAllowed(w, r, notAllowedParams{
+									allowedMethods: "POST",
+									allowedHeaders: rn7AllowedHeaders,
+									acceptPost:     "application/json",
+									acceptPatch:    "",
+								})
 							}
 
 							return
@@ -198,7 +475,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "POST":
 								s.handleAnswerWebAppQueryRequest([0]string{}, elemIsEscaped, w, r)
 							default:
-								s.notAllowed(w, r, "POST")
+								s.notAllowed(w, r, notAllowedParams{
+									allowedMethods: "POST",
+									allowedHeaders: rn8AllowedHeaders,
+									acceptPost:     "application/json",
+									acceptPatch:    "",
+								})
 							}
 
 							return
@@ -220,7 +502,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "POST":
 							s.handleApproveChatJoinRequestRequest([0]string{}, elemIsEscaped, w, r)
 						default:
-							s.notAllowed(w, r, "POST")
+							s.notAllowed(w, r, notAllowedParams{
+								allowedMethods: "POST",
+								allowedHeaders: rn9AllowedHeaders,
+								acceptPost:     "application/json",
+								acceptPatch:    "",
+							})
 						}
 
 						return
@@ -254,7 +541,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "POST":
 							s.handleBanChatMemberRequest([0]string{}, elemIsEscaped, w, r)
 						default:
-							s.notAllowed(w, r, "POST")
+							s.notAllowed(w, r, notAllowedParams{
+								allowedMethods: "POST",
+								allowedHeaders: rn11AllowedHeaders,
+								acceptPost:     "application/json",
+								acceptPatch:    "",
+							})
 						}
 
 						return
@@ -274,7 +566,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "POST":
 							s.handleBanChatSenderChatRequest([0]string{}, elemIsEscaped, w, r)
 						default:
-							s.notAllowed(w, r, "POST")
+							s.notAllowed(w, r, notAllowedParams{
+								allowedMethods: "POST",
+								allowedHeaders: rn13AllowedHeaders,
+								acceptPost:     "application/json",
+								acceptPatch:    "",
+							})
 						}
 
 						return
@@ -308,7 +605,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "POST":
 							s.handleCloseRequest([0]string{}, elemIsEscaped, w, r)
 						default:
-							s.notAllowed(w, r, "POST")
+							s.notAllowed(w, r, notAllowedParams{
+								allowedMethods: "POST",
+								allowedHeaders: nil,
+								acceptPost:     "",
+								acceptPatch:    "",
+							})
 						}
 
 						return
@@ -328,7 +630,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "POST":
 							s.handleCopyMessageRequest([0]string{}, elemIsEscaped, w, r)
 						default:
-							s.notAllowed(w, r, "POST")
+							s.notAllowed(w, r, notAllowedParams{
+								allowedMethods: "POST",
+								allowedHeaders: rn16AllowedHeaders,
+								acceptPost:     "application/json",
+								acceptPatch:    "",
+							})
 						}
 
 						return
@@ -360,7 +667,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "POST":
 								s.handleCreateChatInviteLinkRequest([0]string{}, elemIsEscaped, w, r)
 							default:
-								s.notAllowed(w, r, "POST")
+								s.notAllowed(w, r, notAllowedParams{
+									allowedMethods: "POST",
+									allowedHeaders: rn17AllowedHeaders,
+									acceptPost:     "application/json",
+									acceptPatch:    "",
+								})
 							}
 
 							return
@@ -380,7 +692,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "POST":
 								s.handleCreateNewStickerSetRequest([0]string{}, elemIsEscaped, w, r)
 							default:
-								s.notAllowed(w, r, "POST")
+								s.notAllowed(w, r, notAllowedParams{
+									allowedMethods: "POST",
+									allowedHeaders: rn19AllowedHeaders,
+									acceptPost:     "application/json",
+									acceptPatch:    "",
+								})
 							}
 
 							return
@@ -416,7 +733,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "POST":
 							s.handleDeclineChatJoinRequestRequest([0]string{}, elemIsEscaped, w, r)
 						default:
-							s.notAllowed(w, r, "POST")
+							s.notAllowed(w, r, notAllowedParams{
+								allowedMethods: "POST",
+								allowedHeaders: rn20AllowedHeaders,
+								acceptPost:     "application/json",
+								acceptPatch:    "",
+							})
 						}
 
 						return
@@ -460,7 +782,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								case "POST":
 									s.handleDeleteChatPhotoRequest([0]string{}, elemIsEscaped, w, r)
 								default:
-									s.notAllowed(w, r, "POST")
+									s.notAllowed(w, r, notAllowedParams{
+										allowedMethods: "POST",
+										allowedHeaders: rn22AllowedHeaders,
+										acceptPost:     "application/json",
+										acceptPatch:    "",
+									})
 								}
 
 								return
@@ -480,7 +807,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								case "POST":
 									s.handleDeleteChatStickerSetRequest([0]string{}, elemIsEscaped, w, r)
 								default:
-									s.notAllowed(w, r, "POST")
+									s.notAllowed(w, r, notAllowedParams{
+										allowedMethods: "POST",
+										allowedHeaders: rn24AllowedHeaders,
+										acceptPost:     "application/json",
+										acceptPatch:    "",
+									})
 								}
 
 								return
@@ -514,7 +846,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								case "POST":
 									s.handleDeleteMessageRequest([0]string{}, elemIsEscaped, w, r)
 								default:
-									s.notAllowed(w, r, "POST")
+									s.notAllowed(w, r, notAllowedParams{
+										allowedMethods: "POST",
+										allowedHeaders: rn26AllowedHeaders,
+										acceptPost:     "application/json",
+										acceptPatch:    "",
+									})
 								}
 
 								return
@@ -534,7 +871,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								case "POST":
 									s.handleDeleteMyCommandsRequest([0]string{}, elemIsEscaped, w, r)
 								default:
-									s.notAllowed(w, r, "POST")
+									s.notAllowed(w, r, notAllowedParams{
+										allowedMethods: "POST",
+										allowedHeaders: rn28AllowedHeaders,
+										acceptPost:     "application/json",
+										acceptPatch:    "",
+									})
 								}
 
 								return
@@ -556,7 +898,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "POST":
 								s.handleDeleteStickerFromSetRequest([0]string{}, elemIsEscaped, w, r)
 							default:
-								s.notAllowed(w, r, "POST")
+								s.notAllowed(w, r, notAllowedParams{
+									allowedMethods: "POST",
+									allowedHeaders: rn29AllowedHeaders,
+									acceptPost:     "application/json",
+									acceptPatch:    "",
+								})
 							}
 
 							return
@@ -576,7 +923,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "POST":
 								s.handleDeleteWebhookRequest([0]string{}, elemIsEscaped, w, r)
 							default:
-								s.notAllowed(w, r, "POST")
+								s.notAllowed(w, r, notAllowedParams{
+									allowedMethods: "POST",
+									allowedHeaders: rn30AllowedHeaders,
+									acceptPost:     "application/json",
+									acceptPatch:    "",
+								})
 							}
 
 							return
@@ -624,7 +976,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "POST":
 								s.handleEditChatInviteLinkRequest([0]string{}, elemIsEscaped, w, r)
 							default:
-								s.notAllowed(w, r, "POST")
+								s.notAllowed(w, r, notAllowedParams{
+									allowedMethods: "POST",
+									allowedHeaders: rn31AllowedHeaders,
+									acceptPost:     "application/json",
+									acceptPatch:    "",
+								})
 							}
 
 							return
@@ -656,7 +1013,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								case "POST":
 									s.handleEditMessageCaptionRequest([0]string{}, elemIsEscaped, w, r)
 								default:
-									s.notAllowed(w, r, "POST")
+									s.notAllowed(w, r, notAllowedParams{
+										allowedMethods: "POST",
+										allowedHeaders: rn33AllowedHeaders,
+										acceptPost:     "application/json",
+										acceptPatch:    "",
+									})
 								}
 
 								return
@@ -676,7 +1038,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								case "POST":
 									s.handleEditMessageLiveLocationRequest([0]string{}, elemIsEscaped, w, r)
 								default:
-									s.notAllowed(w, r, "POST")
+									s.notAllowed(w, r, notAllowedParams{
+										allowedMethods: "POST",
+										allowedHeaders: rn35AllowedHeaders,
+										acceptPost:     "application/json",
+										acceptPatch:    "",
+									})
 								}
 
 								return
@@ -696,7 +1063,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								case "POST":
 									s.handleEditMessageMediaRequest([0]string{}, elemIsEscaped, w, r)
 								default:
-									s.notAllowed(w, r, "POST")
+									s.notAllowed(w, r, notAllowedParams{
+										allowedMethods: "POST",
+										allowedHeaders: rn36AllowedHeaders,
+										acceptPost:     "application/json",
+										acceptPatch:    "",
+									})
 								}
 
 								return
@@ -716,7 +1088,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								case "POST":
 									s.handleEditMessageReplyMarkupRequest([0]string{}, elemIsEscaped, w, r)
 								default:
-									s.notAllowed(w, r, "POST")
+									s.notAllowed(w, r, notAllowedParams{
+										allowedMethods: "POST",
+										allowedHeaders: rn37AllowedHeaders,
+										acceptPost:     "application/json",
+										acceptPatch:    "",
+									})
 								}
 
 								return
@@ -736,7 +1113,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								case "POST":
 									s.handleEditMessageTextRequest([0]string{}, elemIsEscaped, w, r)
 								default:
-									s.notAllowed(w, r, "POST")
+									s.notAllowed(w, r, notAllowedParams{
+										allowedMethods: "POST",
+										allowedHeaders: rn38AllowedHeaders,
+										acceptPost:     "application/json",
+										acceptPatch:    "",
+									})
 								}
 
 								return
@@ -760,7 +1142,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "POST":
 							s.handleExportChatInviteLinkRequest([0]string{}, elemIsEscaped, w, r)
 						default:
-							s.notAllowed(w, r, "POST")
+							s.notAllowed(w, r, notAllowedParams{
+								allowedMethods: "POST",
+								allowedHeaders: rn40AllowedHeaders,
+								acceptPost:     "application/json",
+								acceptPatch:    "",
+							})
 						}
 
 						return
@@ -782,7 +1169,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					case "POST":
 						s.handleForwardMessageRequest([0]string{}, elemIsEscaped, w, r)
 					default:
-						s.notAllowed(w, r, "POST")
+						s.notAllowed(w, r, notAllowedParams{
+							allowedMethods: "POST",
+							allowedHeaders: rn41AllowedHeaders,
+							acceptPost:     "application/json",
+							acceptPatch:    "",
+						})
 					}
 
 					return
@@ -813,7 +1205,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "POST":
 							s.handleGetChatRequest([0]string{}, elemIsEscaped, w, r)
 						default:
-							s.notAllowed(w, r, "POST")
+							s.notAllowed(w, r, notAllowedParams{
+								allowedMethods: "POST",
+								allowedHeaders: rn42AllowedHeaders,
+								acceptPost:     "application/json",
+								acceptPatch:    "",
+							})
 						}
 
 						return
@@ -833,7 +1230,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "POST":
 								s.handleGetChatAdministratorsRequest([0]string{}, elemIsEscaped, w, r)
 							default:
-								s.notAllowed(w, r, "POST")
+								s.notAllowed(w, r, notAllowedParams{
+									allowedMethods: "POST",
+									allowedHeaders: rn43AllowedHeaders,
+									acceptPost:     "application/json",
+									acceptPatch:    "",
+								})
 							}
 
 							return
@@ -864,7 +1266,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								case "POST":
 									s.handleGetChatMemberRequest([0]string{}, elemIsEscaped, w, r)
 								default:
-									s.notAllowed(w, r, "POST")
+									s.notAllowed(w, r, notAllowedParams{
+										allowedMethods: "POST",
+										allowedHeaders: rn44AllowedHeaders,
+										acceptPost:     "application/json",
+										acceptPatch:    "",
+									})
 								}
 
 								return
@@ -884,7 +1291,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									case "POST":
 										s.handleGetChatMemberCountRequest([0]string{}, elemIsEscaped, w, r)
 									default:
-										s.notAllowed(w, r, "POST")
+										s.notAllowed(w, r, notAllowedParams{
+											allowedMethods: "POST",
+											allowedHeaders: rn45AllowedHeaders,
+											acceptPost:     "application/json",
+											acceptPatch:    "",
+										})
 									}
 
 									return
@@ -906,7 +1318,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								case "POST":
 									s.handleGetChatMenuButtonRequest([0]string{}, elemIsEscaped, w, r)
 								default:
-									s.notAllowed(w, r, "POST")
+									s.notAllowed(w, r, notAllowedParams{
+										allowedMethods: "POST",
+										allowedHeaders: rn47AllowedHeaders,
+										acceptPost:     "application/json",
+										acceptPatch:    "",
+									})
 								}
 
 								return
@@ -930,7 +1347,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "POST":
 							s.handleGetFileRequest([0]string{}, elemIsEscaped, w, r)
 						default:
-							s.notAllowed(w, r, "POST")
+							s.notAllowed(w, r, notAllowedParams{
+								allowedMethods: "POST",
+								allowedHeaders: rn49AllowedHeaders,
+								acceptPost:     "application/json",
+								acceptPatch:    "",
+							})
 						}
 
 						return
@@ -950,7 +1372,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "POST":
 							s.handleGetGameHighScoresRequest([0]string{}, elemIsEscaped, w, r)
 						default:
-							s.notAllowed(w, r, "POST")
+							s.notAllowed(w, r, notAllowedParams{
+								allowedMethods: "POST",
+								allowedHeaders: rn50AllowedHeaders,
+								acceptPost:     "application/json",
+								acceptPatch:    "",
+							})
 						}
 
 						return
@@ -982,7 +1409,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "POST":
 								s.handleGetMeRequest([0]string{}, elemIsEscaped, w, r)
 							default:
-								s.notAllowed(w, r, "POST")
+								s.notAllowed(w, r, notAllowedParams{
+									allowedMethods: "POST",
+									allowedHeaders: nil,
+									acceptPost:     "",
+									acceptPatch:    "",
+								})
 							}
 
 							return
@@ -1014,7 +1446,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								case "POST":
 									s.handleGetMyCommandsRequest([0]string{}, elemIsEscaped, w, r)
 								default:
-									s.notAllowed(w, r, "POST")
+									s.notAllowed(w, r, notAllowedParams{
+										allowedMethods: "POST",
+										allowedHeaders: rn53AllowedHeaders,
+										acceptPost:     "application/json",
+										acceptPatch:    "",
+									})
 								}
 
 								return
@@ -1034,7 +1471,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								case "POST":
 									s.handleGetMyDefaultAdministratorRightsRequest([0]string{}, elemIsEscaped, w, r)
 								default:
-									s.notAllowed(w, r, "POST")
+									s.notAllowed(w, r, notAllowedParams{
+										allowedMethods: "POST",
+										allowedHeaders: rn55AllowedHeaders,
+										acceptPost:     "application/json",
+										acceptPatch:    "",
+									})
 								}
 
 								return
@@ -1058,7 +1500,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "POST":
 							s.handleGetStickerSetRequest([0]string{}, elemIsEscaped, w, r)
 						default:
-							s.notAllowed(w, r, "POST")
+							s.notAllowed(w, r, notAllowedParams{
+								allowedMethods: "POST",
+								allowedHeaders: rn56AllowedHeaders,
+								acceptPost:     "application/json",
+								acceptPatch:    "",
+							})
 						}
 
 						return
@@ -1090,7 +1537,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "POST":
 								s.handleGetUpdatesRequest([0]string{}, elemIsEscaped, w, r)
 							default:
-								s.notAllowed(w, r, "POST")
+								s.notAllowed(w, r, notAllowedParams{
+									allowedMethods: "POST",
+									allowedHeaders: rn57AllowedHeaders,
+									acceptPost:     "application/json",
+									acceptPatch:    "",
+								})
 							}
 
 							return
@@ -1110,7 +1562,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "POST":
 								s.handleGetUserProfilePhotosRequest([0]string{}, elemIsEscaped, w, r)
 							default:
-								s.notAllowed(w, r, "POST")
+								s.notAllowed(w, r, notAllowedParams{
+									allowedMethods: "POST",
+									allowedHeaders: rn59AllowedHeaders,
+									acceptPost:     "application/json",
+									acceptPatch:    "",
+								})
 							}
 
 							return
@@ -1132,7 +1589,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "POST":
 							s.handleGetWebhookInfoRequest([0]string{}, elemIsEscaped, w, r)
 						default:
-							s.notAllowed(w, r, "POST")
+							s.notAllowed(w, r, notAllowedParams{
+								allowedMethods: "POST",
+								allowedHeaders: nil,
+								acceptPost:     "",
+								acceptPatch:    "",
+							})
 						}
 
 						return
@@ -1166,7 +1628,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "POST":
 							s.handleLeaveChatRequest([0]string{}, elemIsEscaped, w, r)
 						default:
-							s.notAllowed(w, r, "POST")
+							s.notAllowed(w, r, notAllowedParams{
+								allowedMethods: "POST",
+								allowedHeaders: rn61AllowedHeaders,
+								acceptPost:     "application/json",
+								acceptPatch:    "",
+							})
 						}
 
 						return
@@ -1186,7 +1653,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "POST":
 							s.handleLogOutRequest([0]string{}, elemIsEscaped, w, r)
 						default:
-							s.notAllowed(w, r, "POST")
+							s.notAllowed(w, r, notAllowedParams{
+								allowedMethods: "POST",
+								allowedHeaders: nil,
+								acceptPost:     "",
+								acceptPatch:    "",
+							})
 						}
 
 						return
@@ -1220,7 +1692,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "POST":
 							s.handlePinChatMessageRequest([0]string{}, elemIsEscaped, w, r)
 						default:
-							s.notAllowed(w, r, "POST")
+							s.notAllowed(w, r, notAllowedParams{
+								allowedMethods: "POST",
+								allowedHeaders: rn64AllowedHeaders,
+								acceptPost:     "application/json",
+								acceptPatch:    "",
+							})
 						}
 
 						return
@@ -1240,7 +1717,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "POST":
 							s.handlePromoteChatMemberRequest([0]string{}, elemIsEscaped, w, r)
 						default:
-							s.notAllowed(w, r, "POST")
+							s.notAllowed(w, r, notAllowedParams{
+								allowedMethods: "POST",
+								allowedHeaders: rn66AllowedHeaders,
+								acceptPost:     "application/json",
+								acceptPatch:    "",
+							})
 						}
 
 						return
@@ -1274,7 +1756,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "POST":
 							s.handleRestrictChatMemberRequest([0]string{}, elemIsEscaped, w, r)
 						default:
-							s.notAllowed(w, r, "POST")
+							s.notAllowed(w, r, notAllowedParams{
+								allowedMethods: "POST",
+								allowedHeaders: rn67AllowedHeaders,
+								acceptPost:     "application/json",
+								acceptPatch:    "",
+							})
 						}
 
 						return
@@ -1294,7 +1781,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "POST":
 							s.handleRevokeChatInviteLinkRequest([0]string{}, elemIsEscaped, w, r)
 						default:
-							s.notAllowed(w, r, "POST")
+							s.notAllowed(w, r, notAllowedParams{
+								allowedMethods: "POST",
+								allowedHeaders: rn69AllowedHeaders,
+								acceptPost:     "application/json",
+								acceptPatch:    "",
+							})
 						}
 
 						return
@@ -1364,7 +1856,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									case "POST":
 										s.handleSendAnimationRequest([0]string{}, elemIsEscaped, w, r)
 									default:
-										s.notAllowed(w, r, "POST")
+										s.notAllowed(w, r, notAllowedParams{
+											allowedMethods: "POST",
+											allowedHeaders: rn70AllowedHeaders,
+											acceptPost:     "application/json",
+											acceptPatch:    "",
+										})
 									}
 
 									return
@@ -1384,7 +1881,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									case "POST":
 										s.handleSendAudioRequest([0]string{}, elemIsEscaped, w, r)
 									default:
-										s.notAllowed(w, r, "POST")
+										s.notAllowed(w, r, notAllowedParams{
+											allowedMethods: "POST",
+											allowedHeaders: rn72AllowedHeaders,
+											acceptPost:     "application/json",
+											acceptPatch:    "",
+										})
 									}
 
 									return
@@ -1418,7 +1920,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									case "POST":
 										s.handleSendChatActionRequest([0]string{}, elemIsEscaped, w, r)
 									default:
-										s.notAllowed(w, r, "POST")
+										s.notAllowed(w, r, notAllowedParams{
+											allowedMethods: "POST",
+											allowedHeaders: rn74AllowedHeaders,
+											acceptPost:     "application/json",
+											acceptPatch:    "",
+										})
 									}
 
 									return
@@ -1438,7 +1945,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									case "POST":
 										s.handleSendContactRequest([0]string{}, elemIsEscaped, w, r)
 									default:
-										s.notAllowed(w, r, "POST")
+										s.notAllowed(w, r, notAllowedParams{
+											allowedMethods: "POST",
+											allowedHeaders: rn76AllowedHeaders,
+											acceptPost:     "application/json",
+											acceptPatch:    "",
+										})
 									}
 
 									return
@@ -1472,7 +1984,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									case "POST":
 										s.handleSendDiceRequest([0]string{}, elemIsEscaped, w, r)
 									default:
-										s.notAllowed(w, r, "POST")
+										s.notAllowed(w, r, notAllowedParams{
+											allowedMethods: "POST",
+											allowedHeaders: rn77AllowedHeaders,
+											acceptPost:     "application/json",
+											acceptPatch:    "",
+										})
 									}
 
 									return
@@ -1492,7 +2009,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									case "POST":
 										s.handleSendDocumentRequest([0]string{}, elemIsEscaped, w, r)
 									default:
-										s.notAllowed(w, r, "POST")
+										s.notAllowed(w, r, notAllowedParams{
+											allowedMethods: "POST",
+											allowedHeaders: rn79AllowedHeaders,
+											acceptPost:     "application/json",
+											acceptPatch:    "",
+										})
 									}
 
 									return
@@ -1514,7 +2036,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								case "POST":
 									s.handleSendGameRequest([0]string{}, elemIsEscaped, w, r)
 								default:
-									s.notAllowed(w, r, "POST")
+									s.notAllowed(w, r, notAllowedParams{
+										allowedMethods: "POST",
+										allowedHeaders: rn80AllowedHeaders,
+										acceptPost:     "application/json",
+										acceptPatch:    "",
+									})
 								}
 
 								return
@@ -1534,7 +2061,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								case "POST":
 									s.handleSendInvoiceRequest([0]string{}, elemIsEscaped, w, r)
 								default:
-									s.notAllowed(w, r, "POST")
+									s.notAllowed(w, r, notAllowedParams{
+										allowedMethods: "POST",
+										allowedHeaders: rn81AllowedHeaders,
+										acceptPost:     "application/json",
+										acceptPatch:    "",
+									})
 								}
 
 								return
@@ -1554,7 +2086,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								case "POST":
 									s.handleSendLocationRequest([0]string{}, elemIsEscaped, w, r)
 								default:
-									s.notAllowed(w, r, "POST")
+									s.notAllowed(w, r, notAllowedParams{
+										allowedMethods: "POST",
+										allowedHeaders: rn82AllowedHeaders,
+										acceptPost:     "application/json",
+										acceptPatch:    "",
+									})
 								}
 
 								return
@@ -1586,7 +2123,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									case "POST":
 										s.handleSendMediaGroupRequest([0]string{}, elemIsEscaped, w, r)
 									default:
-										s.notAllowed(w, r, "POST")
+										s.notAllowed(w, r, notAllowedParams{
+											allowedMethods: "POST",
+											allowedHeaders: rn83AllowedHeaders,
+											acceptPost:     "application/json",
+											acceptPatch:    "",
+										})
 									}
 
 									return
@@ -1606,7 +2148,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									case "POST":
 										s.handleSendMessageRequest([0]string{}, elemIsEscaped, w, r)
 									default:
-										s.notAllowed(w, r, "POST")
+										s.notAllowed(w, r, notAllowedParams{
+											allowedMethods: "POST",
+											allowedHeaders: rn85AllowedHeaders,
+											acceptPost:     "application/json",
+											acceptPatch:    "",
+										})
 									}
 
 									return
@@ -1640,7 +2187,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									case "POST":
 										s.handleSendPhotoRequest([0]string{}, elemIsEscaped, w, r)
 									default:
-										s.notAllowed(w, r, "POST")
+										s.notAllowed(w, r, notAllowedParams{
+											allowedMethods: "POST",
+											allowedHeaders: rn86AllowedHeaders,
+											acceptPost:     "application/json",
+											acceptPatch:    "",
+										})
 									}
 
 									return
@@ -1660,7 +2212,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									case "POST":
 										s.handleSendPollRequest([0]string{}, elemIsEscaped, w, r)
 									default:
-										s.notAllowed(w, r, "POST")
+										s.notAllowed(w, r, notAllowedParams{
+											allowedMethods: "POST",
+											allowedHeaders: rn88AllowedHeaders,
+											acceptPost:     "application/json",
+											acceptPatch:    "",
+										})
 									}
 
 									return
@@ -1682,7 +2239,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								case "POST":
 									s.handleSendStickerRequest([0]string{}, elemIsEscaped, w, r)
 								default:
-									s.notAllowed(w, r, "POST")
+									s.notAllowed(w, r, notAllowedParams{
+										allowedMethods: "POST",
+										allowedHeaders: rn89AllowedHeaders,
+										acceptPost:     "application/json",
+										acceptPatch:    "",
+									})
 								}
 
 								return
@@ -1714,7 +2276,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									case "POST":
 										s.handleSendVenueRequest([0]string{}, elemIsEscaped, w, r)
 									default:
-										s.notAllowed(w, r, "POST")
+										s.notAllowed(w, r, notAllowedParams{
+											allowedMethods: "POST",
+											allowedHeaders: rn90AllowedHeaders,
+											acceptPost:     "application/json",
+											acceptPatch:    "",
+										})
 									}
 
 									return
@@ -1733,7 +2300,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									case "POST":
 										s.handleSendVideoRequest([0]string{}, elemIsEscaped, w, r)
 									default:
-										s.notAllowed(w, r, "POST")
+										s.notAllowed(w, r, notAllowedParams{
+											allowedMethods: "POST",
+											allowedHeaders: rn92AllowedHeaders,
+											acceptPost:     "application/json",
+											acceptPatch:    "",
+										})
 									}
 
 									return
@@ -1753,7 +2325,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "POST":
 											s.handleSendVideoNoteRequest([0]string{}, elemIsEscaped, w, r)
 										default:
-											s.notAllowed(w, r, "POST")
+											s.notAllowed(w, r, notAllowedParams{
+												allowedMethods: "POST",
+												allowedHeaders: rn93AllowedHeaders,
+												acceptPost:     "application/json",
+												acceptPatch:    "",
+											})
 										}
 
 										return
@@ -1775,7 +2352,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									case "POST":
 										s.handleSendVoiceRequest([0]string{}, elemIsEscaped, w, r)
 									default:
-										s.notAllowed(w, r, "POST")
+										s.notAllowed(w, r, notAllowedParams{
+											allowedMethods: "POST",
+											allowedHeaders: rn94AllowedHeaders,
+											acceptPost:     "application/json",
+											acceptPatch:    "",
+										})
 									}
 
 									return
@@ -1823,7 +2405,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									case "POST":
 										s.handleSetChatAdministratorCustomTitleRequest([0]string{}, elemIsEscaped, w, r)
 									default:
-										s.notAllowed(w, r, "POST")
+										s.notAllowed(w, r, notAllowedParams{
+											allowedMethods: "POST",
+											allowedHeaders: rn96AllowedHeaders,
+											acceptPost:     "application/json",
+											acceptPatch:    "",
+										})
 									}
 
 									return
@@ -1843,7 +2430,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									case "POST":
 										s.handleSetChatDescriptionRequest([0]string{}, elemIsEscaped, w, r)
 									default:
-										s.notAllowed(w, r, "POST")
+										s.notAllowed(w, r, notAllowedParams{
+											allowedMethods: "POST",
+											allowedHeaders: rn98AllowedHeaders,
+											acceptPost:     "application/json",
+											acceptPatch:    "",
+										})
 									}
 
 									return
@@ -1863,7 +2455,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									case "POST":
 										s.handleSetChatMenuButtonRequest([0]string{}, elemIsEscaped, w, r)
 									default:
-										s.notAllowed(w, r, "POST")
+										s.notAllowed(w, r, notAllowedParams{
+											allowedMethods: "POST",
+											allowedHeaders: rn99AllowedHeaders,
+											acceptPost:     "application/json",
+											acceptPatch:    "",
+										})
 									}
 
 									return
@@ -1895,7 +2492,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "POST":
 											s.handleSetChatPermissionsRequest([0]string{}, elemIsEscaped, w, r)
 										default:
-											s.notAllowed(w, r, "POST")
+											s.notAllowed(w, r, notAllowedParams{
+												allowedMethods: "POST",
+												allowedHeaders: rn100AllowedHeaders,
+												acceptPost:     "application/json",
+												acceptPatch:    "",
+											})
 										}
 
 										return
@@ -1915,7 +2517,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "POST":
 											s.handleSetChatPhotoRequest([0]string{}, elemIsEscaped, w, r)
 										default:
-											s.notAllowed(w, r, "POST")
+											s.notAllowed(w, r, notAllowedParams{
+												allowedMethods: "POST",
+												allowedHeaders: rn102AllowedHeaders,
+												acceptPost:     "application/json",
+												acceptPatch:    "",
+											})
 										}
 
 										return
@@ -1937,7 +2544,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									case "POST":
 										s.handleSetChatStickerSetRequest([0]string{}, elemIsEscaped, w, r)
 									default:
-										s.notAllowed(w, r, "POST")
+										s.notAllowed(w, r, notAllowedParams{
+											allowedMethods: "POST",
+											allowedHeaders: rn103AllowedHeaders,
+											acceptPost:     "application/json",
+											acceptPatch:    "",
+										})
 									}
 
 									return
@@ -1957,7 +2569,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									case "POST":
 										s.handleSetChatTitleRequest([0]string{}, elemIsEscaped, w, r)
 									default:
-										s.notAllowed(w, r, "POST")
+										s.notAllowed(w, r, notAllowedParams{
+											allowedMethods: "POST",
+											allowedHeaders: rn104AllowedHeaders,
+											acceptPost:     "application/json",
+											acceptPatch:    "",
+										})
 									}
 
 									return
@@ -1979,7 +2596,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								case "POST":
 									s.handleSetGameScoreRequest([0]string{}, elemIsEscaped, w, r)
 								default:
-									s.notAllowed(w, r, "POST")
+									s.notAllowed(w, r, notAllowedParams{
+										allowedMethods: "POST",
+										allowedHeaders: rn106AllowedHeaders,
+										acceptPost:     "application/json",
+										acceptPatch:    "",
+									})
 								}
 
 								return
@@ -2011,7 +2633,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									case "POST":
 										s.handleSetMyCommandsRequest([0]string{}, elemIsEscaped, w, r)
 									default:
-										s.notAllowed(w, r, "POST")
+										s.notAllowed(w, r, notAllowedParams{
+											allowedMethods: "POST",
+											allowedHeaders: rn107AllowedHeaders,
+											acceptPost:     "application/json",
+											acceptPatch:    "",
+										})
 									}
 
 									return
@@ -2031,7 +2658,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									case "POST":
 										s.handleSetMyDefaultAdministratorRightsRequest([0]string{}, elemIsEscaped, w, r)
 									default:
-										s.notAllowed(w, r, "POST")
+										s.notAllowed(w, r, notAllowedParams{
+											allowedMethods: "POST",
+											allowedHeaders: rn109AllowedHeaders,
+											acceptPost:     "application/json",
+											acceptPatch:    "",
+										})
 									}
 
 									return
@@ -2053,7 +2685,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								case "POST":
 									s.handleSetPassportDataErrorsRequest([0]string{}, elemIsEscaped, w, r)
 								default:
-									s.notAllowed(w, r, "POST")
+									s.notAllowed(w, r, notAllowedParams{
+										allowedMethods: "POST",
+										allowedHeaders: rn110AllowedHeaders,
+										acceptPost:     "application/json",
+										acceptPatch:    "",
+									})
 								}
 
 								return
@@ -2085,7 +2722,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									case "POST":
 										s.handleSetStickerPositionInSetRequest([0]string{}, elemIsEscaped, w, r)
 									default:
-										s.notAllowed(w, r, "POST")
+										s.notAllowed(w, r, notAllowedParams{
+											allowedMethods: "POST",
+											allowedHeaders: rn111AllowedHeaders,
+											acceptPost:     "application/json",
+											acceptPatch:    "",
+										})
 									}
 
 									return
@@ -2105,7 +2747,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									case "POST":
 										s.handleSetStickerSetThumbRequest([0]string{}, elemIsEscaped, w, r)
 									default:
-										s.notAllowed(w, r, "POST")
+										s.notAllowed(w, r, notAllowedParams{
+											allowedMethods: "POST",
+											allowedHeaders: rn113AllowedHeaders,
+											acceptPost:     "application/json",
+											acceptPatch:    "",
+										})
 									}
 
 									return
@@ -2127,7 +2774,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								case "POST":
 									s.handleSetWebhookRequest([0]string{}, elemIsEscaped, w, r)
 								default:
-									s.notAllowed(w, r, "POST")
+									s.notAllowed(w, r, notAllowedParams{
+										allowedMethods: "POST",
+										allowedHeaders: rn114AllowedHeaders,
+										acceptPost:     "application/json",
+										acceptPatch:    "",
+									})
 								}
 
 								return
@@ -2163,7 +2815,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "POST":
 								s.handleStopMessageLiveLocationRequest([0]string{}, elemIsEscaped, w, r)
 							default:
-								s.notAllowed(w, r, "POST")
+								s.notAllowed(w, r, notAllowedParams{
+									allowedMethods: "POST",
+									allowedHeaders: rn116AllowedHeaders,
+									acceptPost:     "application/json",
+									acceptPatch:    "",
+								})
 							}
 
 							return
@@ -2183,7 +2840,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "POST":
 								s.handleStopPollRequest([0]string{}, elemIsEscaped, w, r)
 							default:
-								s.notAllowed(w, r, "POST")
+								s.notAllowed(w, r, notAllowedParams{
+									allowedMethods: "POST",
+									allowedHeaders: rn118AllowedHeaders,
+									acceptPost:     "application/json",
+									acceptPatch:    "",
+								})
 							}
 
 							return
@@ -2243,7 +2905,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								case "POST":
 									s.handleUnbanChatMemberRequest([0]string{}, elemIsEscaped, w, r)
 								default:
-									s.notAllowed(w, r, "POST")
+									s.notAllowed(w, r, notAllowedParams{
+										allowedMethods: "POST",
+										allowedHeaders: rn119AllowedHeaders,
+										acceptPost:     "application/json",
+										acceptPatch:    "",
+									})
 								}
 
 								return
@@ -2263,7 +2930,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								case "POST":
 									s.handleUnbanChatSenderChatRequest([0]string{}, elemIsEscaped, w, r)
 								default:
-									s.notAllowed(w, r, "POST")
+									s.notAllowed(w, r, notAllowedParams{
+										allowedMethods: "POST",
+										allowedHeaders: rn121AllowedHeaders,
+										acceptPost:     "application/json",
+										acceptPatch:    "",
+									})
 								}
 
 								return
@@ -2297,7 +2969,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								case "POST":
 									s.handleUnpinAllChatMessagesRequest([0]string{}, elemIsEscaped, w, r)
 								default:
-									s.notAllowed(w, r, "POST")
+									s.notAllowed(w, r, notAllowedParams{
+										allowedMethods: "POST",
+										allowedHeaders: rn123AllowedHeaders,
+										acceptPost:     "application/json",
+										acceptPatch:    "",
+									})
 								}
 
 								return
@@ -2317,7 +2994,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								case "POST":
 									s.handleUnpinChatMessageRequest([0]string{}, elemIsEscaped, w, r)
 								default:
-									s.notAllowed(w, r, "POST")
+									s.notAllowed(w, r, notAllowedParams{
+										allowedMethods: "POST",
+										allowedHeaders: rn125AllowedHeaders,
+										acceptPost:     "application/json",
+										acceptPatch:    "",
+									})
 								}
 
 								return
@@ -2341,7 +3023,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						case "POST":
 							s.handleUploadStickerFileRequest([0]string{}, elemIsEscaped, w, r)
 						default:
-							s.notAllowed(w, r, "POST")
+							s.notAllowed(w, r, notAllowedParams{
+								allowedMethods: "POST",
+								allowedHeaders: rn127AllowedHeaders,
+								acceptPost:     "application/json",
+								acceptPatch:    "",
+							})
 						}
 
 						return

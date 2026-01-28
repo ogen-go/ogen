@@ -2,8 +2,12 @@ package ir
 
 import (
 	"fmt"
+	"net/textproto"
 	"slices"
+	"strconv"
 	"strings"
+
+	"github.com/ogen-go/ogen/internal/xmaps"
 )
 
 type ResponseInfo struct {
@@ -27,6 +31,34 @@ func (r ResponseInfo) ContentTypeHeader() string {
 	default:
 		return fmt.Sprintf(`%q`, r.ContentType)
 	}
+}
+
+var corsSimpleResponseHeaders = map[string]struct{}{
+	"Cache-Control":    {},
+	"Content-Language": {},
+	"Content-Length":   {},
+	"Content-Type":     {},
+	"Expires":          {},
+	"Last-Modified":    {},
+	"Pragma":           {},
+}
+
+func (r ResponseInfo) ExposeHeadersHeader() string {
+	var hdr strings.Builder
+	for _, header := range xmaps.SortedKeys(r.Headers) {
+		header := textproto.CanonicalMIMEHeaderKey(header)
+		if _, ok := corsSimpleResponseHeaders[header]; ok {
+			continue
+		}
+		if hdr.Len() != 0 {
+			hdr.WriteByte(',')
+		}
+		hdr.WriteString(header)
+	}
+	if hdr.Len() == 0 {
+		return ""
+	}
+	return strconv.Quote(hdr.String())
 }
 
 func sortResponseInfos(result []ResponseInfo) {

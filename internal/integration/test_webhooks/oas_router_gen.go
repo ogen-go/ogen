@@ -10,6 +10,12 @@ import (
 	"github.com/ogen-go/ogen/uri"
 )
 
+var (
+	rn1AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+)
+
 func (s *Server) cutPrefix(path string) (string, bool) {
 	prefix := s.cfg.Prefix
 	if prefix == "" {
@@ -62,7 +68,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				case "POST":
 					s.handlePublishEventRequest([0]string{}, elemIsEscaped, w, r)
 				default:
-					s.notAllowed(w, r, "POST")
+					s.notAllowed(w, r, notAllowedParams{
+						allowedMethods: "POST",
+						allowedHeaders: rn1AllowedHeaders,
+						acceptPost:     "application/json",
+						acceptPatch:    "",
+					})
 				}
 
 				return
@@ -184,6 +195,12 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 	return r, false
 }
 
+var (
+	wh2AllowedHeaders = map[string]string{
+		"POST": "Content-Type,X-Webhook-Token",
+	}
+)
+
 // Handle handles webhook request.
 //
 // Returns true if there is a webhook handler for given name and requested method.
@@ -223,14 +240,24 @@ func (s *WebhookServer) Handler(webhookName string) http.Handler {
 		return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 			// We know that webhook exists, so false means wrong method.
 			if !s.Handle(webhookName, w, r) {
-				s.notAllowed(w, r, "GET")
+				s.notAllowed(w, r, notAllowedParams{
+					allowedMethods: "GET",
+					allowedHeaders: nil,
+					acceptPost:     "",
+					acceptPatch:    "",
+				})
 			}
 		})
 	case "update":
 		return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 			// We know that webhook exists, so false means wrong method.
 			if !s.Handle(webhookName, w, r) {
-				s.notAllowed(w, r, "DELETE,POST")
+				s.notAllowed(w, r, notAllowedParams{
+					allowedMethods: "DELETE,POST",
+					allowedHeaders: wh2AllowedHeaders,
+					acceptPost:     "application/json",
+					acceptPatch:    "",
+				})
 			}
 		})
 	default:

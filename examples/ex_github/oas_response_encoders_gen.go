@@ -340,6 +340,7 @@ func encodeActionsDisableWorkflowResponse(response *ActionsDisableWorkflowNoCont
 }
 
 func encodeActionsDownloadArtifactResponse(response *ActionsDownloadArtifactFound, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Access-Control-Expose-Headers", "Location")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -366,6 +367,7 @@ func encodeActionsDownloadArtifactResponse(response *ActionsDownloadArtifactFoun
 }
 
 func encodeActionsDownloadJobLogsForWorkflowRunResponse(response *ActionsDownloadJobLogsForWorkflowRunFound, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Access-Control-Expose-Headers", "Location")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -392,6 +394,7 @@ func encodeActionsDownloadJobLogsForWorkflowRunResponse(response *ActionsDownloa
 }
 
 func encodeActionsDownloadWorkflowRunLogsResponse(response *ActionsDownloadWorkflowRunLogsFound, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Access-Control-Expose-Headers", "Location")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -717,6 +720,7 @@ func encodeActionsGetWorkflowUsageResponse(response *WorkflowUsage, w http.Respo
 
 func encodeActionsListArtifactsForRepoResponse(response *ActionsListArtifactsForRepoOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	w.Header().Set("Access-Control-Expose-Headers", "Link")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -750,6 +754,7 @@ func encodeActionsListArtifactsForRepoResponse(response *ActionsListArtifactsFor
 
 func encodeActionsListEnvironmentSecretsResponse(response *ActionsListEnvironmentSecretsOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	w.Header().Set("Access-Control-Expose-Headers", "Link")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -783,6 +788,7 @@ func encodeActionsListEnvironmentSecretsResponse(response *ActionsListEnvironmen
 
 func encodeActionsListJobsForWorkflowRunResponse(response *ActionsListJobsForWorkflowRunOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	w.Header().Set("Access-Control-Expose-Headers", "Link")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -816,6 +822,7 @@ func encodeActionsListJobsForWorkflowRunResponse(response *ActionsListJobsForWor
 
 func encodeActionsListOrgSecretsResponse(response *ActionsListOrgSecretsOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	w.Header().Set("Access-Control-Expose-Headers", "Link")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -863,6 +870,7 @@ func encodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgResponse(response *A
 
 func encodeActionsListRepoSecretsResponse(response *ActionsListRepoSecretsOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	w.Header().Set("Access-Control-Expose-Headers", "Link")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -896,6 +904,7 @@ func encodeActionsListRepoSecretsResponse(response *ActionsListRepoSecretsOKHead
 
 func encodeActionsListRepoWorkflowsResponse(response *ActionsListRepoWorkflowsOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	w.Header().Set("Access-Control-Expose-Headers", "Link")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -1007,6 +1016,7 @@ func encodeActionsListSelfHostedRunnerGroupsForOrgResponse(response *ActionsList
 
 func encodeActionsListSelfHostedRunnersForOrgResponse(response *ActionsListSelfHostedRunnersForOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	w.Header().Set("Access-Control-Expose-Headers", "Link")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -1040,6 +1050,7 @@ func encodeActionsListSelfHostedRunnersForOrgResponse(response *ActionsListSelfH
 
 func encodeActionsListSelfHostedRunnersForRepoResponse(response *ActionsListSelfHostedRunnersForRepoOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	w.Header().Set("Access-Control-Expose-Headers", "Link")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -1073,6 +1084,7 @@ func encodeActionsListSelfHostedRunnersForRepoResponse(response *ActionsListSelf
 
 func encodeActionsListSelfHostedRunnersInGroupForOrgResponse(response *ActionsListSelfHostedRunnersInGroupForOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	w.Header().Set("Access-Control-Expose-Headers", "Link")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -1106,6 +1118,7 @@ func encodeActionsListSelfHostedRunnersInGroupForOrgResponse(response *ActionsLi
 
 func encodeActionsListWorkflowRunArtifactsResponse(response *ActionsListWorkflowRunArtifactsOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	w.Header().Set("Access-Control-Expose-Headers", "Link")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -1139,6 +1152,7 @@ func encodeActionsListWorkflowRunArtifactsResponse(response *ActionsListWorkflow
 
 func encodeActionsListWorkflowRunsResponse(response *ActionsListWorkflowRunsOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	w.Header().Set("Access-Control-Expose-Headers", "Link")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -1172,6 +1186,7 @@ func encodeActionsListWorkflowRunsResponse(response *ActionsListWorkflowRunsOKHe
 
 func encodeActionsListWorkflowRunsForRepoResponse(response *ActionsListWorkflowRunsForRepoOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	w.Header().Set("Access-Control-Expose-Headers", "Link")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -1641,6 +1656,7 @@ func encodeActivityListNotificationsForAuthenticatedUserResponse(response Activi
 	switch response := response.(type) {
 	case *ActivityListNotificationsForAuthenticatedUserOKHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Link")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -1952,6 +1968,7 @@ func encodeActivityListRepoEventsResponse(response []Event, w http.ResponseWrite
 
 func encodeActivityListRepoNotificationsForAuthenticatedUserResponse(response *ActivityListRepoNotificationsForAuthenticatedUserOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	w.Header().Set("Access-Control-Expose-Headers", "Link")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -1991,6 +2008,7 @@ func encodeActivityListReposStarredByAuthenticatedUserResponse(response Activity
 	switch response := response.(type) {
 	case *ActivityListReposStarredByAuthenticatedUserOKApplicationJSONHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Link")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -2027,6 +2045,7 @@ func encodeActivityListReposStarredByAuthenticatedUserResponse(response Activity
 
 	case *ActivityListReposStarredByAuthenticatedUserOKApplicationVndGithubV3StarJSONHeaders:
 		w.Header().Set("Content-Type", "application/vnd.github.v3.star+json")
+		w.Header().Set("Access-Control-Expose-Headers", "Link")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -2100,6 +2119,7 @@ func encodeActivityListReposStarredByAuthenticatedUserResponse(response Activity
 
 func encodeActivityListReposWatchedByUserResponse(response *ActivityListReposWatchedByUserOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	w.Header().Set("Access-Control-Expose-Headers", "Link")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -2139,6 +2159,7 @@ func encodeActivityListWatchedReposForAuthenticatedUserResponse(response Activit
 	switch response := response.(type) {
 	case *ActivityListWatchedReposForAuthenticatedUserOKHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Link")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -2212,6 +2233,7 @@ func encodeActivityListWatchedReposForAuthenticatedUserResponse(response Activit
 
 func encodeActivityListWatchersForRepoResponse(response *ActivityListWatchersForRepoOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	w.Header().Set("Access-Control-Expose-Headers", "Link")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -3171,6 +3193,7 @@ func encodeAppsListAccountsForPlanResponse(response AppsListAccountsForPlanRes, 
 	switch response := response.(type) {
 	case *AppsListAccountsForPlanOKHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Link")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -3253,6 +3276,7 @@ func encodeAppsListAccountsForPlanStubbedResponse(response AppsListAccountsForPl
 	switch response := response.(type) {
 	case *AppsListAccountsForPlanStubbedOKHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Link")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -3309,6 +3333,7 @@ func encodeAppsListInstallationReposForAuthenticatedUserResponse(response AppsLi
 	switch response := response.(type) {
 	case *AppsListInstallationReposForAuthenticatedUserOKHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Link")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -3380,6 +3405,7 @@ func encodeAppsListPlansResponse(response AppsListPlansRes, w http.ResponseWrite
 	switch response := response.(type) {
 	case *AppsListPlansOKHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Link")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -3449,6 +3475,7 @@ func encodeAppsListPlansStubbedResponse(response AppsListPlansStubbedRes, w http
 	switch response := response.(type) {
 	case *AppsListPlansStubbedOKHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Link")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -3505,6 +3532,7 @@ func encodeAppsListReposAccessibleToInstallationResponse(response AppsListReposA
 	switch response := response.(type) {
 	case *AppsListReposAccessibleToInstallationOKHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Link")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -3576,6 +3604,7 @@ func encodeAppsListSubscriptionsForAuthenticatedUserResponse(response AppsListSu
 	switch response := response.(type) {
 	case *AppsListSubscriptionsForAuthenticatedUserOKHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Link")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -3651,6 +3680,7 @@ func encodeAppsListSubscriptionsForAuthenticatedUserStubbedResponse(response App
 	switch response := response.(type) {
 	case *AppsListSubscriptionsForAuthenticatedUserStubbedOKHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Link")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -4253,6 +4283,7 @@ func encodeChecksGetSuiteResponse(response *CheckSuite, w http.ResponseWriter, s
 
 func encodeChecksListAnnotationsResponse(response *ChecksListAnnotationsOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	w.Header().Set("Access-Control-Expose-Headers", "Link")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -4290,6 +4321,7 @@ func encodeChecksListAnnotationsResponse(response *ChecksListAnnotationsOKHeader
 
 func encodeChecksListForRefResponse(response *ChecksListForRefOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	w.Header().Set("Access-Control-Expose-Headers", "Link")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -4323,6 +4355,7 @@ func encodeChecksListForRefResponse(response *ChecksListForRefOKHeaders, w http.
 
 func encodeChecksListForSuiteResponse(response *ChecksListForSuiteOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	w.Header().Set("Access-Control-Expose-Headers", "Link")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -4356,6 +4389,7 @@ func encodeChecksListForSuiteResponse(response *ChecksListForSuiteOKHeaders, w h
 
 func encodeChecksListSuitesForRefResponse(response *ChecksListSuitesForRefOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	w.Header().Set("Access-Control-Expose-Headers", "Link")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -5373,6 +5407,7 @@ func encodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseResponse(respon
 
 func encodeEnterpriseAdminListSelfHostedRunnersForEnterpriseResponse(response *EnterpriseAdminListSelfHostedRunnersForEnterpriseOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	w.Header().Set("Access-Control-Expose-Headers", "Link")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -5406,6 +5441,7 @@ func encodeEnterpriseAdminListSelfHostedRunnersForEnterpriseResponse(response *E
 
 func encodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseResponse(response *EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	w.Header().Set("Access-Control-Expose-Headers", "Link")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -5633,6 +5669,7 @@ func encodeGistsCreateResponse(response GistsCreateRes, w http.ResponseWriter, s
 	switch response := response.(type) {
 	case *GistSimpleHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Location")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -5717,6 +5754,7 @@ func encodeGistsCreateCommentResponse(response GistsCreateCommentRes, w http.Res
 	switch response := response.(type) {
 	case *GistCommentHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Location")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -5878,6 +5916,7 @@ func encodeGistsForkResponse(response GistsForkRes, w http.ResponseWriter, span 
 	switch response := response.(type) {
 	case *BaseGistHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Location")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -6125,6 +6164,7 @@ func encodeGistsListResponse(response GistsListRes, w http.ResponseWriter, span 
 	switch response := response.(type) {
 	case *GistsListOKHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Link")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -6187,6 +6227,7 @@ func encodeGistsListCommentsResponse(response GistsListCommentsRes, w http.Respo
 	switch response := response.(type) {
 	case *GistsListCommentsOKHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Link")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -6262,6 +6303,7 @@ func encodeGistsListCommitsResponse(response GistsListCommitsRes, w http.Respons
 	switch response := response.(type) {
 	case *GistsListCommitsOKHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Link")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -6337,6 +6379,7 @@ func encodeGistsListForUserResponse(response GistsListForUserRes, w http.Respons
 	switch response := response.(type) {
 	case *GistsListForUserOKHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Link")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -6393,6 +6436,7 @@ func encodeGistsListForksResponse(response GistsListForksRes, w http.ResponseWri
 	switch response := response.(type) {
 	case *GistsListForksOKHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Link")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -6468,6 +6512,7 @@ func encodeGistsListPublicResponse(response GistsListPublicRes, w http.ResponseW
 	switch response := response.(type) {
 	case *GistsListPublicOKHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Link")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -6543,6 +6588,7 @@ func encodeGistsListStarredResponse(response GistsListStarredRes, w http.Respons
 	switch response := response.(type) {
 	case *GistsListStarredOKHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Link")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -6741,6 +6787,7 @@ func encodeGitCreateBlobResponse(response GitCreateBlobRes, w http.ResponseWrite
 	switch response := response.(type) {
 	case *ShortBlobHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Location")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -6832,6 +6879,7 @@ func encodeGitCreateCommitResponse(response GitCreateCommitRes, w http.ResponseW
 	switch response := response.(type) {
 	case *GitCommitHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Location")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -6897,6 +6945,7 @@ func encodeGitCreateRefResponse(response GitCreateRefRes, w http.ResponseWriter,
 	switch response := response.(type) {
 	case *GitRefHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Location")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -6949,6 +6998,7 @@ func encodeGitCreateTagResponse(response GitCreateTagRes, w http.ResponseWriter,
 	switch response := response.(type) {
 	case *GitTagHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Location")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -7001,6 +7051,7 @@ func encodeGitCreateTreeResponse(response GitCreateTreeRes, w http.ResponseWrite
 	switch response := response.(type) {
 	case *GitTreeHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Location")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -7307,6 +7358,7 @@ func encodeGitGetTreeResponse(response GitGetTreeRes, w http.ResponseWriter, spa
 
 func encodeGitListMatchingRefsResponse(response *GitListMatchingRefsOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	w.Header().Set("Access-Control-Expose-Headers", "Link")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -7596,6 +7648,7 @@ func encodeIssuesCreateResponse(response IssuesCreateRes, w http.ResponseWriter,
 	switch response := response.(type) {
 	case *IssueHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Location")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -7700,6 +7753,7 @@ func encodeIssuesCreateCommentResponse(response IssuesCreateCommentRes, w http.R
 	switch response := response.(type) {
 	case *IssueCommentHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Location")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -7791,6 +7845,7 @@ func encodeIssuesCreateLabelResponse(response IssuesCreateLabelRes, w http.Respo
 	switch response := response.(type) {
 	case *LabelHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Location")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -7856,6 +7911,7 @@ func encodeIssuesCreateMilestoneResponse(response IssuesCreateMilestoneRes, w ht
 	switch response := response.(type) {
 	case *MilestoneHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Location")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -8184,6 +8240,7 @@ func encodeIssuesListResponse(response IssuesListRes, w http.ResponseWriter, spa
 	switch response := response.(type) {
 	case *IssuesListOKHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Link")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -8259,6 +8316,7 @@ func encodeIssuesListAssigneesResponse(response IssuesListAssigneesRes, w http.R
 	switch response := response.(type) {
 	case *IssuesListAssigneesOKHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Link")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -8315,6 +8373,7 @@ func encodeIssuesListCommentsResponse(response IssuesListCommentsRes, w http.Res
 	switch response := response.(type) {
 	case *IssuesListCommentsOKHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Link")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -8384,6 +8443,7 @@ func encodeIssuesListCommentsForRepoResponse(response IssuesListCommentsForRepoR
 	switch response := response.(type) {
 	case *IssuesListCommentsForRepoOKHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Link")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -8453,6 +8513,7 @@ func encodeIssuesListEventsForRepoResponse(response IssuesListEventsForRepoRes, 
 	switch response := response.(type) {
 	case *IssuesListEventsForRepoOKHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Link")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -8509,6 +8570,7 @@ func encodeIssuesListForAuthenticatedUserResponse(response IssuesListForAuthenti
 	switch response := response.(type) {
 	case *IssuesListForAuthenticatedUserOKHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Link")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -8571,6 +8633,7 @@ func encodeIssuesListForOrgResponse(response IssuesListForOrgRes, w http.Respons
 	switch response := response.(type) {
 	case *IssuesListForOrgOKHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Link")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -8627,6 +8690,7 @@ func encodeIssuesListForRepoResponse(response IssuesListForRepoRes, w http.Respo
 	switch response := response.(type) {
 	case *IssuesListForRepoOKHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Link")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -8707,6 +8771,7 @@ func encodeIssuesListForRepoResponse(response IssuesListForRepoRes, w http.Respo
 
 func encodeIssuesListLabelsForMilestoneResponse(response *IssuesListLabelsForMilestoneOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	w.Header().Set("Access-Control-Expose-Headers", "Link")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -8746,6 +8811,7 @@ func encodeIssuesListLabelsForRepoResponse(response IssuesListLabelsForRepoRes, 
 	switch response := response.(type) {
 	case *IssuesListLabelsForRepoOKHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Link")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -8802,6 +8868,7 @@ func encodeIssuesListLabelsOnIssueResponse(response IssuesListLabelsOnIssueRes, 
 	switch response := response.(type) {
 	case *IssuesListLabelsOnIssueOKHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Link")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -8858,6 +8925,7 @@ func encodeIssuesListMilestonesResponse(response IssuesListMilestonesRes, w http
 	switch response := response.(type) {
 	case *IssuesListMilestonesOKHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Link")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -9355,6 +9423,7 @@ func encodeMarkdownRenderResponse(response MarkdownRenderRes, w http.ResponseWri
 	switch response := response.(type) {
 	case *MarkdownRenderOKHeaders:
 		w.Header().Set("Content-Type", "text/html; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "X-Commonmarker-Version")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -9417,6 +9486,7 @@ func encodeMarkdownRenderRawResponse(response MarkdownRenderRawRes, w http.Respo
 	switch response := response.(type) {
 	case *MarkdownRenderRawOKHeaders:
 		w.Header().Set("Content-Type", "text/html; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "X-Commonmarker-Version")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -9880,6 +9950,7 @@ func encodeMigrationsListForAuthenticatedUserResponse(response MigrationsListFor
 	switch response := response.(type) {
 	case *MigrationsListForAuthenticatedUserOKHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Link")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -9953,6 +10024,7 @@ func encodeMigrationsListForAuthenticatedUserResponse(response MigrationsListFor
 
 func encodeMigrationsListForOrgResponse(response *MigrationsListForOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	w.Header().Set("Access-Control-Expose-Headers", "Link")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -9992,6 +10064,7 @@ func encodeMigrationsListReposForOrgResponse(response MigrationsListReposForOrgR
 	switch response := response.(type) {
 	case *MigrationsListReposForOrgOKHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Link")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -10048,6 +10121,7 @@ func encodeMigrationsListReposForUserResponse(response MigrationsListReposForUse
 	switch response := response.(type) {
 	case *MigrationsListReposForUserOKHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Link")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -10294,6 +10368,7 @@ func encodeMigrationsStartImportResponse(response MigrationsStartImportRes, w ht
 	switch response := response.(type) {
 	case *ImportHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Location")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -10457,6 +10532,7 @@ func encodeOAuthAuthorizationsCreateAuthorizationResponse(response OAuthAuthoriz
 	switch response := response.(type) {
 	case *AuthorizationHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Location")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -10748,6 +10824,7 @@ func encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppResponse(response OA
 	switch response := response.(type) {
 	case *OAuthAuthorizationsGetOrCreateAuthorizationForAppOK:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Location")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -10780,6 +10857,7 @@ func encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppResponse(response OA
 
 	case *OAuthAuthorizationsGetOrCreateAuthorizationForAppCreated:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Location")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -10864,6 +10942,7 @@ func encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRespon
 	switch response := response.(type) {
 	case *OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintOK:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Location")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -10896,6 +10975,7 @@ func encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRespon
 
 	case *OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintCreated:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Location")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -10948,6 +11028,7 @@ func encodeOAuthAuthorizationsListAuthorizationsResponse(response OAuthAuthoriza
 	switch response := response.(type) {
 	case *OAuthAuthorizationsListAuthorizationsOKHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Link")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -11036,6 +11117,7 @@ func encodeOAuthAuthorizationsListGrantsResponse(response OAuthAuthorizationsLis
 	switch response := response.(type) {
 	case *OAuthAuthorizationsListGrantsOKHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Link")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -11253,6 +11335,7 @@ func encodeOrgsCheckMembershipForUserResponse(response OrgsCheckMembershipForUse
 		return nil
 
 	case *OrgsCheckMembershipForUserFound:
+		w.Header().Set("Access-Control-Expose-Headers", "Location")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -11402,6 +11485,7 @@ func encodeOrgsCreateWebhookResponse(response OrgsCreateWebhookRes, w http.Respo
 	switch response := response.(type) {
 	case *OrgHookHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Location")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -11742,6 +11826,7 @@ func encodeOrgsListResponse(response OrgsListRes, w http.ResponseWriter, span tr
 	switch response := response.(type) {
 	case *OrgsListOKHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Link")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -11824,6 +11909,7 @@ func encodeOrgsListFailedInvitationsResponse(response OrgsListFailedInvitationsR
 	switch response := response.(type) {
 	case *OrgsListFailedInvitationsOKHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Link")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -11880,6 +11966,7 @@ func encodeOrgsListForAuthenticatedUserResponse(response OrgsListForAuthenticate
 	switch response := response.(type) {
 	case *OrgsListForAuthenticatedUserOKHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Link")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -11953,6 +12040,7 @@ func encodeOrgsListForAuthenticatedUserResponse(response OrgsListForAuthenticate
 
 func encodeOrgsListForUserResponse(response *OrgsListForUserOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	w.Header().Set("Access-Control-Expose-Headers", "Link")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -11992,6 +12080,7 @@ func encodeOrgsListInvitationTeamsResponse(response OrgsListInvitationTeamsRes, 
 	switch response := response.(type) {
 	case *OrgsListInvitationTeamsOKHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Link")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -12048,6 +12137,7 @@ func encodeOrgsListMembersResponse(response OrgsListMembersRes, w http.ResponseW
 	switch response := response.(type) {
 	case *OrgsListMembersOKHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Link")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -12083,6 +12173,7 @@ func encodeOrgsListMembersResponse(response OrgsListMembersRes, w http.ResponseW
 		return nil
 
 	case *OrgsListMembersFound:
+		w.Header().Set("Access-Control-Expose-Headers", "Location")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -12129,6 +12220,7 @@ func encodeOrgsListMembershipsForAuthenticatedUserResponse(response OrgsListMemb
 	switch response := response.(type) {
 	case *OrgsListMembershipsForAuthenticatedUserOKHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Link")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -12215,6 +12307,7 @@ func encodeOrgsListMembershipsForAuthenticatedUserResponse(response OrgsListMemb
 
 func encodeOrgsListOutsideCollaboratorsResponse(response *OrgsListOutsideCollaboratorsOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	w.Header().Set("Access-Control-Expose-Headers", "Link")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -12254,6 +12347,7 @@ func encodeOrgsListPendingInvitationsResponse(response OrgsListPendingInvitation
 	switch response := response.(type) {
 	case *OrgsListPendingInvitationsOKHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Link")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -12308,6 +12402,7 @@ func encodeOrgsListPendingInvitationsResponse(response OrgsListPendingInvitation
 
 func encodeOrgsListPublicMembersResponse(response *OrgsListPublicMembersOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	w.Header().Set("Access-Control-Expose-Headers", "Link")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -12424,6 +12519,7 @@ func encodeOrgsListWebhooksResponse(response OrgsListWebhooksRes, w http.Respons
 	switch response := response.(type) {
 	case *OrgsListWebhooksOKHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Link")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -14700,6 +14796,7 @@ func encodeProjectsListCardsResponse(response ProjectsListCardsRes, w http.Respo
 	switch response := response.(type) {
 	case *ProjectsListCardsOKHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Link")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -14775,6 +14872,7 @@ func encodeProjectsListCollaboratorsResponse(response ProjectsListCollaboratorsR
 	switch response := response.(type) {
 	case *ProjectsListCollaboratorsOKHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Link")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -14876,6 +14974,7 @@ func encodeProjectsListColumnsResponse(response ProjectsListColumnsRes, w http.R
 	switch response := response.(type) {
 	case *ProjectsListColumnsOKHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Link")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -14951,6 +15050,7 @@ func encodeProjectsListForOrgResponse(response ProjectsListForOrgRes, w http.Res
 	switch response := response.(type) {
 	case *ProjectsListForOrgOKHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Link")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -15007,6 +15107,7 @@ func encodeProjectsListForRepoResponse(response ProjectsListForRepoRes, w http.R
 	switch response := response.(type) {
 	case *ProjectsListForRepoOKHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Link")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -15115,6 +15216,7 @@ func encodeProjectsListForUserResponse(response ProjectsListForUserRes, w http.R
 	switch response := response.(type) {
 	case *ProjectsListForUserOKHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Link")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -15618,6 +15720,7 @@ func encodePullsCreateResponse(response PullsCreateRes, w http.ResponseWriter, s
 	switch response := response.(type) {
 	case *PullRequestHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Location")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -15683,6 +15786,7 @@ func encodePullsCreateReplyForReviewCommentResponse(response PullsCreateReplyFor
 	switch response := response.(type) {
 	case *PullRequestReviewCommentHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Location")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -15781,6 +15885,7 @@ func encodePullsCreateReviewCommentResponse(response PullsCreateReviewCommentRes
 	switch response := response.(type) {
 	case *PullRequestReviewCommentHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Location")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -16082,6 +16187,7 @@ func encodePullsListResponse(response PullsListRes, w http.ResponseWriter, span 
 	switch response := response.(type) {
 	case *PullsListOKHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Link")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -16144,6 +16250,7 @@ func encodePullsListCommentsForReviewResponse(response PullsListCommentsForRevie
 	switch response := response.(type) {
 	case *PullsListCommentsForReviewOKHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Link")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -16198,6 +16305,7 @@ func encodePullsListCommentsForReviewResponse(response PullsListCommentsForRevie
 
 func encodePullsListCommitsResponse(response *PullsListCommitsOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	w.Header().Set("Access-Control-Expose-Headers", "Link")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -16237,6 +16345,7 @@ func encodePullsListFilesResponse(response PullsListFilesRes, w http.ResponseWri
 	switch response := response.(type) {
 	case *PullsListFilesOKHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Link")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -16304,6 +16413,7 @@ func encodePullsListFilesResponse(response PullsListFilesRes, w http.ResponseWri
 
 func encodePullsListRequestedReviewersResponse(response *PullRequestReviewRequestHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	w.Header().Set("Access-Control-Expose-Headers", "Link")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -16337,6 +16447,7 @@ func encodePullsListRequestedReviewersResponse(response *PullRequestReviewReques
 
 func encodePullsListReviewCommentsResponse(response *PullsListReviewCommentsOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	w.Header().Set("Access-Control-Expose-Headers", "Link")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -16374,6 +16485,7 @@ func encodePullsListReviewCommentsResponse(response *PullsListReviewCommentsOKHe
 
 func encodePullsListReviewCommentsForRepoResponse(response *PullsListReviewCommentsForRepoOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	w.Header().Set("Access-Control-Expose-Headers", "Link")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -16411,6 +16523,7 @@ func encodePullsListReviewCommentsForRepoResponse(response *PullsListReviewComme
 
 func encodePullsListReviewsResponse(response *PullsListReviewsOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	w.Header().Set("Access-Control-Expose-Headers", "Link")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -16766,6 +16879,7 @@ func encodeRateLimitGetResponse(response RateLimitGetRes, w http.ResponseWriter,
 	switch response := response.(type) {
 	case *RateLimitOverviewHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "X-Ratelimit-Limit,X-Ratelimit-Remaining,X-Ratelimit-Reset")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -17356,6 +17470,7 @@ func encodeReactionsListForCommitCommentResponse(response ReactionsListForCommit
 	switch response := response.(type) {
 	case *ReactionsListForCommitCommentOKHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Link")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -17425,6 +17540,7 @@ func encodeReactionsListForIssueResponse(response ReactionsListForIssueRes, w ht
 	switch response := response.(type) {
 	case *ReactionsListForIssueOKHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Link")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -17507,6 +17623,7 @@ func encodeReactionsListForIssueCommentResponse(response ReactionsListForIssueCo
 	switch response := response.(type) {
 	case *ReactionsListForIssueCommentOKHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Link")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -17576,6 +17693,7 @@ func encodeReactionsListForPullRequestReviewCommentResponse(response ReactionsLi
 	switch response := response.(type) {
 	case *ReactionsListForPullRequestReviewCommentOKHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Link")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -17643,6 +17761,7 @@ func encodeReactionsListForPullRequestReviewCommentResponse(response ReactionsLi
 
 func encodeReactionsListForTeamDiscussionCommentInOrgResponse(response *ReactionsListForTeamDiscussionCommentInOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	w.Header().Set("Access-Control-Expose-Headers", "Link")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -17680,6 +17799,7 @@ func encodeReactionsListForTeamDiscussionCommentInOrgResponse(response *Reaction
 
 func encodeReactionsListForTeamDiscussionCommentLegacyResponse(response *ReactionsListForTeamDiscussionCommentLegacyOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	w.Header().Set("Access-Control-Expose-Headers", "Link")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -17717,6 +17837,7 @@ func encodeReactionsListForTeamDiscussionCommentLegacyResponse(response *Reactio
 
 func encodeReactionsListForTeamDiscussionInOrgResponse(response *ReactionsListForTeamDiscussionInOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	w.Header().Set("Access-Control-Expose-Headers", "Link")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -17754,6 +17875,7 @@ func encodeReactionsListForTeamDiscussionInOrgResponse(response *ReactionsListFo
 
 func encodeReactionsListForTeamDiscussionLegacyResponse(response *ReactionsListForTeamDiscussionLegacyOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	w.Header().Set("Access-Control-Expose-Headers", "Link")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -18145,6 +18267,7 @@ func encodeReposCreateAutolinkResponse(response ReposCreateAutolinkRes, w http.R
 	switch response := response.(type) {
 	case *AutolinkHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Location")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -18197,6 +18320,7 @@ func encodeReposCreateCommitCommentResponse(response ReposCreateCommitCommentRes
 	switch response := response.(type) {
 	case *CommitCommentHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Location")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -18293,6 +18417,7 @@ func encodeReposCreateCommitSignatureProtectionResponse(response ReposCreateComm
 
 func encodeReposCreateCommitStatusResponse(response *StatusHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	w.Header().Set("Access-Control-Expose-Headers", "Location")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -18328,6 +18453,7 @@ func encodeReposCreateDeployKeyResponse(response ReposCreateDeployKeyRes, w http
 	switch response := response.(type) {
 	case *DeployKeyHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Location")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -18432,6 +18558,7 @@ func encodeReposCreateDeploymentStatusResponse(response ReposCreateDeploymentSta
 	switch response := response.(type) {
 	case *DeploymentStatusHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Location")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -18510,6 +18637,7 @@ func encodeReposCreateForAuthenticatedUserResponse(response ReposCreateForAuthen
 	switch response := response.(type) {
 	case *RepositoryHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Location")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -18718,6 +18846,7 @@ func encodeReposCreateInOrgResponse(response ReposCreateInOrgRes, w http.Respons
 	switch response := response.(type) {
 	case *RepositoryHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Location")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -18914,6 +19043,7 @@ func encodeReposCreateReleaseResponse(response ReposCreateReleaseRes, w http.Res
 	switch response := response.(type) {
 	case *ReleaseHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Location")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -18977,6 +19107,7 @@ func encodeReposCreateReleaseResponse(response ReposCreateReleaseRes, w http.Res
 
 func encodeReposCreateUsingTemplateResponse(response *RepositoryHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	w.Header().Set("Access-Control-Expose-Headers", "Location")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -19012,6 +19143,7 @@ func encodeReposCreateWebhookResponse(response ReposCreateWebhookRes, w http.Res
 	switch response := response.(type) {
 	case *HookHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Location")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -19605,6 +19737,7 @@ func encodeReposDisableVulnerabilityAlertsResponse(response *ReposDisableVulnera
 }
 
 func encodeReposDownloadTarballArchiveResponse(response *ReposDownloadTarballArchiveFound, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Access-Control-Expose-Headers", "Location")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -19631,6 +19764,7 @@ func encodeReposDownloadTarballArchiveResponse(response *ReposDownloadTarballArc
 }
 
 func encodeReposDownloadZipballArchiveResponse(response *ReposDownloadZipballArchiveFound, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Access-Control-Expose-Headers", "Location")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -21248,6 +21382,7 @@ func encodeReposListBranchesResponse(response ReposListBranchesRes, w http.Respo
 	switch response := response.(type) {
 	case *ReposListBranchesOKHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Link")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -21337,6 +21472,7 @@ func encodeReposListCollaboratorsResponse(response ReposListCollaboratorsRes, w 
 	switch response := response.(type) {
 	case *ReposListCollaboratorsOKHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Link")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -21391,6 +21527,7 @@ func encodeReposListCollaboratorsResponse(response ReposListCollaboratorsRes, w 
 
 func encodeReposListCommentsForCommitResponse(response *ReposListCommentsForCommitOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	w.Header().Set("Access-Control-Expose-Headers", "Link")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -21428,6 +21565,7 @@ func encodeReposListCommentsForCommitResponse(response *ReposListCommentsForComm
 
 func encodeReposListCommitCommentsForRepoResponse(response *ReposListCommitCommentsForRepoOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	w.Header().Set("Access-Control-Expose-Headers", "Link")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -21467,6 +21605,7 @@ func encodeReposListCommitStatusesForRefResponse(response ReposListCommitStatuse
 	switch response := response.(type) {
 	case *ReposListCommitStatusesForRefOKHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Link")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -21523,6 +21662,7 @@ func encodeReposListCommitsResponse(response ReposListCommitsRes, w http.Respons
 	switch response := response.(type) {
 	case *ReposListCommitsOKHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Link")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -21631,6 +21771,7 @@ func encodeReposListContributorsResponse(response ReposListContributorsRes, w ht
 	switch response := response.(type) {
 	case *ReposListContributorsOKHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Link")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -21704,6 +21845,7 @@ func encodeReposListContributorsResponse(response ReposListContributorsRes, w ht
 
 func encodeReposListDeployKeysResponse(response *ReposListDeployKeysOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	w.Header().Set("Access-Control-Expose-Headers", "Link")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -21743,6 +21885,7 @@ func encodeReposListDeploymentStatusesResponse(response ReposListDeploymentStatu
 	switch response := response.(type) {
 	case *ReposListDeploymentStatusesOKHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Link")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -21797,6 +21940,7 @@ func encodeReposListDeploymentStatusesResponse(response ReposListDeploymentStatu
 
 func encodeReposListDeploymentsResponse(response *ReposListDeploymentsOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	w.Header().Set("Access-Control-Expose-Headers", "Link")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -21899,6 +22043,7 @@ func encodeReposListForAuthenticatedUserResponse(response ReposListForAuthentica
 
 func encodeReposListForOrgResponse(response *ReposListForOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	w.Header().Set("Access-Control-Expose-Headers", "Link")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -21936,6 +22081,7 @@ func encodeReposListForOrgResponse(response *ReposListForOrgOKHeaders, w http.Re
 
 func encodeReposListForUserResponse(response *ReposListForUserOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	w.Header().Set("Access-Control-Expose-Headers", "Link")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -21975,6 +22121,7 @@ func encodeReposListForksResponse(response ReposListForksRes, w http.ResponseWri
 	switch response := response.(type) {
 	case *ReposListForksOKHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Link")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -22042,6 +22189,7 @@ func encodeReposListForksResponse(response ReposListForksRes, w http.ResponseWri
 
 func encodeReposListInvitationsResponse(response *ReposListInvitationsOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	w.Header().Set("Access-Control-Expose-Headers", "Link")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -22081,6 +22229,7 @@ func encodeReposListInvitationsForAuthenticatedUserResponse(response ReposListIn
 	switch response := response.(type) {
 	case *ReposListInvitationsForAuthenticatedUserOKHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Link")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -22181,6 +22330,7 @@ func encodeReposListLanguagesResponse(response Language, w http.ResponseWriter, 
 
 func encodeReposListPagesBuildsResponse(response *ReposListPagesBuildsOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	w.Header().Set("Access-Control-Expose-Headers", "Link")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -22220,6 +22370,7 @@ func encodeReposListPublicResponse(response ReposListPublicRes, w http.ResponseW
 	switch response := response.(type) {
 	case *ReposListPublicOKHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Link")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -22280,6 +22431,7 @@ func encodeReposListPublicResponse(response ReposListPublicRes, w http.ResponseW
 
 func encodeReposListPullRequestsAssociatedWithCommitResponse(response *ReposListPullRequestsAssociatedWithCommitOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	w.Header().Set("Access-Control-Expose-Headers", "Link")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -22317,6 +22469,7 @@ func encodeReposListPullRequestsAssociatedWithCommitResponse(response *ReposList
 
 func encodeReposListReleaseAssetsResponse(response *ReposListReleaseAssetsOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	w.Header().Set("Access-Control-Expose-Headers", "Link")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -22356,6 +22509,7 @@ func encodeReposListReleasesResponse(response ReposListReleasesRes, w http.Respo
 	switch response := response.(type) {
 	case *ReposListReleasesOKHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Link")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -22410,6 +22564,7 @@ func encodeReposListReleasesResponse(response ReposListReleasesRes, w http.Respo
 
 func encodeReposListTagsResponse(response *ReposListTagsOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	w.Header().Set("Access-Control-Expose-Headers", "Link")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -22447,6 +22602,7 @@ func encodeReposListTagsResponse(response *ReposListTagsOKHeaders, w http.Respon
 
 func encodeReposListTeamsResponse(response *ReposListTeamsOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	w.Header().Set("Access-Control-Expose-Headers", "Link")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -22545,6 +22701,7 @@ func encodeReposListWebhooksResponse(response ReposListWebhooksRes, w http.Respo
 	switch response := response.(type) {
 	case *ReposListWebhooksOKHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Link")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -24670,6 +24827,7 @@ func encodeSecretScanningListAlertsForOrgResponse(response SecretScanningListAle
 	switch response := response.(type) {
 	case *SecretScanningListAlertsForOrgOKHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Link")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -25614,6 +25772,7 @@ func encodeTeamsListResponse(response TeamsListRes, w http.ResponseWriter, span 
 	switch response := response.(type) {
 	case *TeamsListOKHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Link")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -25668,6 +25827,7 @@ func encodeTeamsListResponse(response TeamsListRes, w http.ResponseWriter, span 
 
 func encodeTeamsListChildInOrgResponse(response *TeamsListChildInOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	w.Header().Set("Access-Control-Expose-Headers", "Link")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -25707,6 +25867,7 @@ func encodeTeamsListChildLegacyResponse(response TeamsListChildLegacyRes, w http
 	switch response := response.(type) {
 	case *TeamsListChildLegacyOKHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Link")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -25787,6 +25948,7 @@ func encodeTeamsListChildLegacyResponse(response TeamsListChildLegacyRes, w http
 
 func encodeTeamsListDiscussionCommentsInOrgResponse(response *TeamsListDiscussionCommentsInOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	w.Header().Set("Access-Control-Expose-Headers", "Link")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -25824,6 +25986,7 @@ func encodeTeamsListDiscussionCommentsInOrgResponse(response *TeamsListDiscussio
 
 func encodeTeamsListDiscussionCommentsLegacyResponse(response *TeamsListDiscussionCommentsLegacyOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	w.Header().Set("Access-Control-Expose-Headers", "Link")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -25861,6 +26024,7 @@ func encodeTeamsListDiscussionCommentsLegacyResponse(response *TeamsListDiscussi
 
 func encodeTeamsListDiscussionsInOrgResponse(response *TeamsListDiscussionsInOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	w.Header().Set("Access-Control-Expose-Headers", "Link")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -25898,6 +26062,7 @@ func encodeTeamsListDiscussionsInOrgResponse(response *TeamsListDiscussionsInOrg
 
 func encodeTeamsListDiscussionsLegacyResponse(response *TeamsListDiscussionsLegacyOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	w.Header().Set("Access-Control-Expose-Headers", "Link")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -25937,6 +26102,7 @@ func encodeTeamsListForAuthenticatedUserResponse(response TeamsListForAuthentica
 	switch response := response.(type) {
 	case *TeamsListForAuthenticatedUserOKHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Link")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -26056,6 +26222,7 @@ func encodeTeamsListIdpGroupsForLegacyResponse(response TeamsListIdpGroupsForLeg
 
 func encodeTeamsListIdpGroupsForOrgResponse(response *GroupMappingHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	w.Header().Set("Access-Control-Expose-Headers", "Link")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -26103,6 +26270,7 @@ func encodeTeamsListIdpGroupsInOrgResponse(response *GroupMapping, w http.Respon
 
 func encodeTeamsListMembersInOrgResponse(response *TeamsListMembersInOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	w.Header().Set("Access-Control-Expose-Headers", "Link")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -26142,6 +26310,7 @@ func encodeTeamsListMembersLegacyResponse(response TeamsListMembersLegacyRes, w 
 	switch response := response.(type) {
 	case *TeamsListMembersLegacyOKHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Link")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -26196,6 +26365,7 @@ func encodeTeamsListMembersLegacyResponse(response TeamsListMembersLegacyRes, w 
 
 func encodeTeamsListPendingInvitationsInOrgResponse(response *TeamsListPendingInvitationsInOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	w.Header().Set("Access-Control-Expose-Headers", "Link")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -26233,6 +26403,7 @@ func encodeTeamsListPendingInvitationsInOrgResponse(response *TeamsListPendingIn
 
 func encodeTeamsListPendingInvitationsLegacyResponse(response *TeamsListPendingInvitationsLegacyOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	w.Header().Set("Access-Control-Expose-Headers", "Link")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -26270,6 +26441,7 @@ func encodeTeamsListPendingInvitationsLegacyResponse(response *TeamsListPendingI
 
 func encodeTeamsListProjectsInOrgResponse(response *TeamsListProjectsInOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	w.Header().Set("Access-Control-Expose-Headers", "Link")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -26309,6 +26481,7 @@ func encodeTeamsListProjectsLegacyResponse(response TeamsListProjectsLegacyRes, 
 	switch response := response.(type) {
 	case *TeamsListProjectsLegacyOKHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Link")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -26363,6 +26536,7 @@ func encodeTeamsListProjectsLegacyResponse(response TeamsListProjectsLegacyRes, 
 
 func encodeTeamsListReposInOrgResponse(response *TeamsListReposInOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	w.Header().Set("Access-Control-Expose-Headers", "Link")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -26402,6 +26576,7 @@ func encodeTeamsListReposLegacyResponse(response TeamsListReposLegacyRes, w http
 	switch response := response.(type) {
 	case *TeamsListReposLegacyOKHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Link")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -27702,6 +27877,7 @@ func encodeUsersListResponse(response UsersListRes, w http.ResponseWriter, span 
 	switch response := response.(type) {
 	case *UsersListOKHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Link")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -27829,6 +28005,7 @@ func encodeUsersListEmailsForAuthenticatedResponse(response UsersListEmailsForAu
 	switch response := response.(type) {
 	case *UsersListEmailsForAuthenticatedOKHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Link")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -27917,6 +28094,7 @@ func encodeUsersListFollowedByAuthenticatedResponse(response UsersListFollowedBy
 	switch response := response.(type) {
 	case *UsersListFollowedByAuthenticatedOKHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Link")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -27992,6 +28170,7 @@ func encodeUsersListFollowersForAuthenticatedUserResponse(response UsersListFoll
 	switch response := response.(type) {
 	case *UsersListFollowersForAuthenticatedUserOKHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Link")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -28065,6 +28244,7 @@ func encodeUsersListFollowersForAuthenticatedUserResponse(response UsersListFoll
 
 func encodeUsersListFollowersForUserResponse(response *UsersListFollowersForUserOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	w.Header().Set("Access-Control-Expose-Headers", "Link")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -28102,6 +28282,7 @@ func encodeUsersListFollowersForUserResponse(response *UsersListFollowersForUser
 
 func encodeUsersListFollowingForUserResponse(response *UsersListFollowingForUserOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	w.Header().Set("Access-Control-Expose-Headers", "Link")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -28141,6 +28322,7 @@ func encodeUsersListGpgKeysForAuthenticatedResponse(response UsersListGpgKeysFor
 	switch response := response.(type) {
 	case *UsersListGpgKeysForAuthenticatedOKHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Link")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -28227,6 +28409,7 @@ func encodeUsersListGpgKeysForAuthenticatedResponse(response UsersListGpgKeysFor
 
 func encodeUsersListGpgKeysForUserResponse(response *UsersListGpgKeysForUserOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	w.Header().Set("Access-Control-Expose-Headers", "Link")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -28266,6 +28449,7 @@ func encodeUsersListPublicEmailsForAuthenticatedResponse(response UsersListPubli
 	switch response := response.(type) {
 	case *UsersListPublicEmailsForAuthenticatedOKHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Link")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -28352,6 +28536,7 @@ func encodeUsersListPublicEmailsForAuthenticatedResponse(response UsersListPubli
 
 func encodeUsersListPublicKeysForUserResponse(response *UsersListPublicKeysForUserOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	w.Header().Set("Access-Control-Expose-Headers", "Link")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -28391,6 +28576,7 @@ func encodeUsersListPublicSSHKeysForAuthenticatedResponse(response UsersListPubl
 	switch response := response.(type) {
 	case *UsersListPublicSSHKeysForAuthenticatedOKHeaders:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Expose-Headers", "Link")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())

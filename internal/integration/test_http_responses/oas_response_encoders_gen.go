@@ -189,6 +189,7 @@ func encodeCombinedResponse(response CombinedRes, w http.ResponseWriter, span tr
 }
 
 func encodeHeaders200Response(response *Headers200OK, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Access-Control-Expose-Headers", "X-Test-Header")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -214,6 +215,7 @@ func encodeHeaders200Response(response *Headers200OK, w http.ResponseWriter, spa
 func encodeHeadersCombinedResponse(response HeadersCombinedRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *HeadersCombinedOK:
+		w.Header().Set("Access-Control-Expose-Headers", "X-Test-Header")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -236,6 +238,7 @@ func encodeHeadersCombinedResponse(response HeadersCombinedRes, w http.ResponseW
 		return nil
 
 	case *HeadersCombined4XX:
+		w.Header().Set("Access-Control-Expose-Headers", "X-Test-Header")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -270,6 +273,7 @@ func encodeHeadersCombinedResponse(response HeadersCombinedRes, w http.ResponseW
 		return nil
 
 	case *HeadersCombinedDef:
+		w.Header().Set("Access-Control-Expose-Headers", "X-Test-Header")
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
@@ -309,6 +313,7 @@ func encodeHeadersCombinedResponse(response HeadersCombinedRes, w http.ResponseW
 }
 
 func encodeHeadersDefaultResponse(response *HeadersDefaultDef, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Access-Control-Expose-Headers", "X-Test-Header")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -344,6 +349,7 @@ func encodeHeadersDefaultResponse(response *HeadersDefaultDef, w http.ResponseWr
 }
 
 func encodeHeadersJSONResponse(response *HeadersJSONOK, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Access-Control-Expose-Headers", "X-Json-Custom-Header,X-Json-Header")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -391,6 +397,7 @@ func encodeHeadersJSONResponse(response *HeadersJSONOK, w http.ResponseWriter, s
 }
 
 func encodeHeadersPatternResponse(response *HeadersPattern4XX, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Access-Control-Expose-Headers", "X-Test-Header")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -536,6 +543,7 @@ func encodeOctetStreamEmptySchemaResponse(response OctetStreamEmptySchemaOK, w h
 }
 
 func encodeOptionalHeadersResponse(response *OptionalHeadersOK, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Access-Control-Expose-Headers", "X-Optional,X-Required")
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())

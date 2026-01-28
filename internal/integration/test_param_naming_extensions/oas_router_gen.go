@@ -10,6 +10,12 @@ import (
 	"github.com/ogen-go/ogen/uri"
 )
 
+var (
+	rn2AllowedHeaders = map[string]string{
+		"GET": "X-Custom-Header",
+	}
+)
+
 func (s *Server) cutPrefix(path string) (string, bool) {
 	prefix := s.cfg.Prefix
 	if prefix == "" {
@@ -74,7 +80,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						args[0],
 					}, elemIsEscaped, w, r)
 				default:
-					s.notAllowed(w, r, "GET")
+					s.notAllowed(w, r, notAllowedParams{
+						allowedMethods: "GET",
+						allowedHeaders: rn2AllowedHeaders,
+						acceptPost:     "",
+						acceptPatch:    "",
+					})
 				}
 
 				return

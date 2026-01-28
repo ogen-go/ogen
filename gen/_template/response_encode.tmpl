@@ -98,6 +98,9 @@ func encode{{ $op.Name }}Response(response {{ $op.Responses.GoType }}, w http.Re
 {{- end }}
 
 {{- if $.WithHeaders }}
+{{- with $exposeHeaders := $.ExposeHeadersHeader }}
+w.Header().Set("Access-Control-Expose-Headers", {{ $exposeHeaders }})
+{{- end }}
 // Encoding response headers.
 {
 	h := uri.NewHeaderEncoder(w.Header())
