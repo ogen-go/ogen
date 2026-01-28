@@ -1,7 +1,9 @@
 package validate
 
 import (
+	"io"
 	"net/http"
+	"strings"
 	"testing"
 
 	"github.com/stretchr/testify/require"
@@ -49,10 +51,20 @@ func TestUnexpectedStatusCode(t *testing.T) {
 
 func TestUnexpectedStatusCodeWithResponse(t *testing.T) {
 	a := require.New(t)
-	resp := http.Response{StatusCode: 500}
+	body := io.NopCloser(strings.NewReader("error"))
+	resp := http.Response{
+		StatusCode: 500,
+		Body:       body,
+	}
 	err := UnexpectedStatusCodeWithResponse(&resp)
+	body.Close() // emulate deferred close
 	var ctErr *UnexpectedStatusCodeError
 	a.EqualError(err, "unexpected status code: 500")
 	a.ErrorAs(err, &ctErr)
 	a.Equal(500, ctErr.StatusCode)
+
+	var sb strings.Builder
+	_, err = io.Copy(&sb, ctErr.Payload.Body)
+	a.NoError(err)
+	a.Equal("error", sb.String())
 }
