@@ -120,3 +120,24 @@ func decodeGetRawDataResponse(resp *http.Response) (res GetRawDataRes, _ error) 
 	}
 	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
+
+func decodeGetRawDataInsideOperationGroupResponse(resp *http.Response) (res GetRawDataInsideOperationGroupRes, _ error) {
+	switch resp.StatusCode {
+	case 200:
+		// Code 200.
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
+			// Raw response - return the http.Response directly
+			return &GetRawDataInsideOperationGroupOKRawApplicationJSON{
+				Response: resp,
+			}, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	}
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
+}

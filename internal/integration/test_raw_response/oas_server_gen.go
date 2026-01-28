@@ -9,6 +9,7 @@ import (
 
 // Handler handles operations described by OpenAPI v3 specification.
 type Handler interface {
+	TestHandler
 	// GetNormalData implements getNormalData operation.
 	//
 	// GET /normal-data
@@ -25,6 +26,16 @@ type RawHandler interface {
 	//
 	// GET /raw-data
 	GetRawData(ctx context.Context, w http.ResponseWriter) error
+}
+
+// TestHandler handles operations described by OpenAPI v3 specification.
+//
+// x-ogen-operation-group: Test
+type TestHandler interface {
+	// GetRawDataInsideOperationGroup implements getRawDataInsideOperationGroup operation.
+	//
+	// GET /raw-data-inside-operation-group
+	GetRawDataInsideOperationGroup(ctx context.Context, w http.ResponseWriter) error
 }
 
 // Server implements http server based on OpenAPI v3 specification and

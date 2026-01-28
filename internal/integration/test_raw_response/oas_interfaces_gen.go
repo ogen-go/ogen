@@ -5,6 +5,10 @@ type GetMixedDataRes interface {
 	getMixedDataRes()
 }
 
+type GetRawDataInsideOperationGroupRes interface {
+	getRawDataInsideOperationGroupRes()
+}
+
 type GetRawDataRes interface {
 	getRawDataRes()
 }

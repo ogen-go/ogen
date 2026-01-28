@@ -68,6 +68,37 @@ func (s *GetNormalDataOK) SetMessage(val OptString) {
 	s.Message = val
 }
 
+type GetRawDataInsideOperationGroupOK struct {
+	Message OptString `json:"message"`
+}
+
+// GetMessage returns the value of Message.
+func (s *GetRawDataInsideOperationGroupOK) GetMessage() OptString {
+	return s.Message
+}
+
+// SetMessage sets the value of Message.
+func (s *GetRawDataInsideOperationGroupOK) SetMessage(val OptString) {
+	s.Message = val
+}
+
+// GetRawDataInsideOperationGroupOKRawApplicationJSON represents raw HTTP response for GetRawDataInsideOperationGroup application/json.
+type GetRawDataInsideOperationGroupOKRawApplicationJSON struct {
+	Response *http.Response `json:"-"`
+}
+
+// GetResponse returns the value of Response.
+func (s *GetRawDataInsideOperationGroupOKRawApplicationJSON) GetResponse() *http.Response {
+	return s.Response
+}
+
+// SetResponse sets the value of Response.
+func (s *GetRawDataInsideOperationGroupOKRawApplicationJSON) SetResponse(val *http.Response) {
+	s.Response = val
+}
+
+func (*GetRawDataInsideOperationGroupOKRawApplicationJSON) getRawDataInsideOperationGroupRes() {}
+
 type GetRawDataOK struct {
 	Message OptString `json:"message"`
 }

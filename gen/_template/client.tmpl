@@ -113,18 +113,6 @@ type Client struct {
 	baseClient
 }
 
-{{- if and $.PathsServerEnabled (not $.RequestOptionsEnabled) }}
-{{- if $.Error }}
-type errorHandler interface {
-	NewError(ctx context.Context, err error) {{ $.ErrorGoType }}
-}
-{{- end }}
-var _ Handler = struct{
-	{{ if $.Error }}errorHandler{{- end }}
-	*Client
-}{}
-{{- end }}
-
 // NewClient initializes new Client defined by OAS.
 func NewClient(serverURL string, {{- if $.Securities }}sec SecuritySource,{{- end }} opts ...ClientOption) (*Client, error) {
 	u, err := url.Parse(serverURL)

@@ -17,6 +17,21 @@ paths:
                 properties:
                   message:
                     type: string
+  /raw-data-inside-operation-group:
+    get:
+      operationId: getRawDataInsideOperationGroup
+      x-ogen-operation-group: Test
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              x-ogen-raw-response: true
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
   /mixed-data:
     get:
       operationId: getMixedData
