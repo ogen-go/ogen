@@ -51,3 +51,10 @@ func encodeGetRawDataResponse(response GetRawDataRes, w http.ResponseWriter, spa
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
+func encodeGetRawDataInsideOperationGroupResponse(response GetRawDataInsideOperationGroupRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	default:
+		return errors.Errorf("unexpected response type: %T", response)
+	}
+}

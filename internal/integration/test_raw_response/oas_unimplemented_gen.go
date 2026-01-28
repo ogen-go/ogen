@@ -35,3 +35,10 @@ func (UnimplementedHandler) GetNormalData(ctx context.Context) (r *GetNormalData
 func (UnimplementedHandler) GetRawData(ctx context.Context, w http.ResponseWriter) error {
 	return ht.ErrNotImplemented
 }
+
+// GetRawDataInsideOperationGroup implements getRawDataInsideOperationGroup operation.
+//
+// GET /raw-data-inside-operation-group
+func (UnimplementedHandler) GetRawDataInsideOperationGroup(ctx context.Context, w http.ResponseWriter) error {
+	return ht.ErrNotImplemented
+}
