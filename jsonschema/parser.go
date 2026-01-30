@@ -262,7 +262,7 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx *jsonpointer.ResolveCtx, hoo
 		return s, nil
 	}
 
-	if schema.Type == "" && p.inferTypes {
+	if len(schema.Type) == 0 && p.inferTypes {
 		switch {
 		case len(schema.Default) > 0:
 			schema.Type, err = inferJSONType(json.RawMessage(schema.Default))

@@ -10,11 +10,11 @@ import (
 	"github.com/ogen-go/ogen/internal/xslices"
 )
 
-func inferJSONType(v json.RawMessage) (string, error) {
+func inferJSONType(v json.RawMessage) ([]string, error) {
 	d := jx.DecodeBytes(v)
 	switch tt := d.Next(); tt {
 	case jx.String:
-		return "string", nil
+		return []string{"string"}, nil
 	case jx.Number:
 		return "number", nil
 	case jx.Bool:

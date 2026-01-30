@@ -5,7 +5,7 @@ type RawSchema struct {
 	Ref                  string                `json:"$ref,omitempty" yaml:"$ref,omitempty"`
 	Summary              string                `json:"summary,omitempty" yaml:"summary,omitempty"`
 	Description          string                `json:"description,omitempty" yaml:"description,omitempty"`
-	Type                 string                `json:"type,omitempty" yaml:"type,omitempty"`
+	Type                 []string              `json:"type,omitempty" yaml:"type,omitempty"`
 	Format               string                `json:"format,omitempty" yaml:"format,omitempty"`
 	Properties           RawProperties         `json:"properties,omitempty" yaml:"properties,omitempty"`
 	AdditionalProperties *AdditionalProperties `json:"additionalProperties,omitempty" yaml:"additionalProperties,omitempty"`
