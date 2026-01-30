@@ -12,6 +12,7 @@ import (
 	"github.com/ogen-go/ogen"
 	"github.com/ogen-go/ogen/gen"
 	"github.com/ogen-go/ogen/gen/ir"
+	"github.com/ogen-go/ogen/jsonschema"
 )
 
 func generateSpec() *ogen.Spec {
@@ -107,11 +108,11 @@ func generateSpec() *ogen.Spec {
 					Description: "An Error Response",
 					Content: map[string]ogen.Media{
 						ir.EncodingJSON.String(): {Schema: &ogen.Schema{
-							Type:        "object",
+							Type:        jsonschema.StringArray{"object"},
 							Description: "Error Response Schema",
 							Properties: []ogen.Property{
-								{Name: "code", Schema: &ogen.Schema{Type: "integer", Format: "int32"}},
-								{Name: "status", Schema: &ogen.Schema{Type: "string"}},
+								{Name: "code", Schema: &ogen.Schema{Type: jsonschema.StringArray{"integer"}, Format: "int32"}},
+								{Name: "status", Schema: &ogen.Schema{Type: jsonschema.StringArray{"string"}}},
 							},
 						}},
 					},
@@ -122,7 +123,7 @@ func generateSpec() *ogen.Spec {
 					Description: "Referenced RequestBody",
 					Content: map[string]ogen.Media{
 						ir.EncodingJSON.String(): {
-							Schema: &ogen.Schema{Type: "string"},
+							Schema: &ogen.Schema{Type: jsonschema.StringArray{"string"}},
 						},
 					},
 					Required: true,
@@ -221,7 +222,7 @@ func generateSpec() *ogen.Spec {
 			}
 
 			s := &ogen.Schema{
-				Type:   typ,
+				Type:   jsonschema.StringArray{typ},
 				Format: format,
 			}
 			add(name, s)

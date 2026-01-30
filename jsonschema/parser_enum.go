@@ -16,13 +16,13 @@ func inferJSONType(v json.RawMessage) ([]string, error) {
 	case jx.String:
 		return []string{"string"}, nil
 	case jx.Number:
-		return "number", nil
+		return []string{"number"}, nil
 	case jx.Bool:
-		return "bool", nil
+		return []string{"boolean"}, nil
 	case jx.Null:
-		return "", errors.Errorf("cannot infer type from %q", v)
+		return []string{"null"}, nil
 	default:
-		return "", errors.Errorf("invalid value %q", v)
+		return nil, errors.Errorf("invalid value %q", v)
 	}
 }
 
@@ -102,7 +102,7 @@ func handleNullableEnum(s *Schema) {
 	// Notice that nullable enum requires `null` in value list.
 	//
 	// Check that enum contains `null` value.
-	s.Nullable = s.Nullable || slices.ContainsFunc(s.Enum, func(v any) bool {
+	s.Nullable = s.Nullable || s.Type == Null || slices.ContainsFunc(s.Enum, func(v any) bool {
 		return v == nil
 	})
 	// Filter all `null`s.

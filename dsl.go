@@ -813,11 +813,12 @@ func (s *Schema) SetDescription(d string) *Schema {
 
 // SetType sets the Type of the Schema.
 func (s *Schema) SetType(t string) *Schema {
-	if len(s.Type) == 0 {
-		s.Type = []string{t}
-		return s
-	}
+	s.Type = jsonschema.StringArray{t}
+	return s
+}
 
+// AddType adds the Type to the Type array of the Schema.
+func (s *Schema) AddType(t string) *Schema {
 	s.Type = append(s.Type, t)
 	return s
 }

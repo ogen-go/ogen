@@ -153,7 +153,7 @@ func TestDuplicatePathsDifferentMethods(t *testing.T) {
 							Name:     "petId",
 							In:       "path",
 							Required: true,
-							Schema:   &ogen.Schema{Type: "string"},
+							Schema:   &ogen.Schema{Type: jsonschema.StringArray{"string"}},
 						},
 					},
 					Responses: map[string]*ogen.Response{
@@ -169,7 +169,7 @@ func TestDuplicatePathsDifferentMethods(t *testing.T) {
 							Name:     "id",
 							In:       "path",
 							Required: true,
-							Schema:   &ogen.Schema{Type: "string"},
+							Schema:   &ogen.Schema{Type: jsonschema.StringArray{"string"}},
 						},
 					},
 					Responses: map[string]*ogen.Response{
@@ -225,7 +225,7 @@ func TestDuplicatePathsDifferentMethodsDisabled(t *testing.T) {
 							Name:     "petId",
 							In:       "path",
 							Required: true,
-							Schema:   &ogen.Schema{Type: "string"},
+							Schema:   &ogen.Schema{Type: jsonschema.StringArray{"string"}},
 						},
 					},
 					Responses: map[string]*ogen.Response{
@@ -241,7 +241,7 @@ func TestDuplicatePathsDifferentMethodsDisabled(t *testing.T) {
 							Name:     "id",
 							In:       "path",
 							Required: true,
-							Schema:   &ogen.Schema{Type: "string"},
+							Schema:   &ogen.Schema{Type: jsonschema.StringArray{"string"}},
 						},
 					},
 					Responses: map[string]*ogen.Response{
@@ -281,7 +281,7 @@ func TestDuplicatePathsSameMethod(t *testing.T) {
 							Name:     "petId",
 							In:       "path",
 							Required: true,
-							Schema:   &ogen.Schema{Type: "string"},
+							Schema:   &ogen.Schema{Type: jsonschema.StringArray{"string"}},
 						},
 					},
 					Responses: map[string]*ogen.Response{
@@ -297,7 +297,7 @@ func TestDuplicatePathsSameMethod(t *testing.T) {
 							Name:     "id",
 							In:       "path",
 							Required: true,
-							Schema:   &ogen.Schema{Type: "string"},
+							Schema:   &ogen.Schema{Type: jsonschema.StringArray{"string"}},
 						},
 					},
 					Responses: map[string]*ogen.Response{

@@ -283,45 +283,74 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx *jsonpointer.ResolveCtx, hoo
 				schema.PatternProperties != nil ||
 				schema.MaxProperties != nil ||
 				schema.MinProperties != nil:
-				schema.Type = "object"
+				schema.Type = []string{"object"}
 
 			case schema.Items != nil ||
 				schema.UniqueItems ||
 				schema.MaxItems != nil ||
 				schema.MinItems != nil:
-				schema.Type = "array"
+				schema.Type = []string{"array"}
 
 			case schema.Maximum != nil ||
 				schema.Minimum != nil ||
 				schema.ExclusiveMinimum ||
 				schema.ExclusiveMaximum || // FIXME(tdakkota): check for existence instead of true?
 				schema.MultipleOf != nil:
-				schema.Type = "number"
+				schema.Type = []string{"number"}
 
 			case schema.MaxLength != nil ||
 				schema.MinLength != nil ||
 				schema.Pattern != "":
-				schema.Type = "string"
+				schema.Type = []string{"string"}
 			}
 		}
 	}
 
-	typ, ok := map[string]SchemaType{
-		"object":  Object,
-		"array":   Array,
-		"string":  String,
-		"integer": Integer,
-		"number":  Number,
-		"boolean": Boolean,
-		"null":    Null,
-		"":        Empty,
-	}[schema.Type]
-	if !ok {
-		err := errors.Errorf("unexpected schema type: %q", schema.Type)
-		return nil, wrapField("type", err)
+	var (
+		typ      SchemaType
+		nullable = schema.Nullable
+	)
+	for _, t := range schema.Type {
+		if t == "null" {
+			nullable = true
+		}
 	}
 
-	if schema.Type != "" {
+	if len(schema.Type) > 0 {
+		switch len(schema.Type) {
+		case 1:
+			typ = SchemaType(schema.Type[0])
+		case 2:
+			var mainType string
+			for _, t := range schema.Type {
+				if t != "null" {
+					mainType = t
+					break
+				}
+			}
+
+			if mainType != "" {
+				typ = SchemaType(mainType)
+			} else {
+				typ = Null
+			}
+		default:
+			// More than 2 types, just pick the first one for now.
+			typ = SchemaType(schema.Type[0])
+		}
+
+		if typ == "null" {
+			typ = Null
+		}
+
+		if !typ.IsPrimitive() && typ != Empty && typ != Null {
+			return nil, wrapField("type", errors.Errorf("unexpected schema type: %q", typ))
+		}
+	} else {
+		typ = Empty
+	}
+
+	if len(schema.Type) > 0 {
 		allowed := map[string]map[string]struct{}{
 			"object": {
 				"required":          {},
@@ -373,7 +402,7 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx *jsonpointer.ResolveCtx, hoo
 			}
 		}
 
-		if allowedFields, ok := allowed[schema.Type]; ok {
+		if allowedFields, ok := allowed[string(typ)]; ok {
 			fields, err := getRawSchemaFields(schema)
 			if err != nil {
 				return nil, err
@@ -391,7 +420,7 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx *jsonpointer.ResolveCtx, hoo
 						// They will be interpreted during validation code generation.
 						continue
 					}
-					return nil, wrapField(field, errors.Errorf("unexpected field for type %q", schema.Type))
+					return nil, wrapField(field, errors.Errorf("unexpected field for type %q", typ))
 				}
 			}
 		}
@@ -400,7 +429,7 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx *jsonpointer.ResolveCtx, hoo
 	s := hook(&Schema{
 		Type:     typ,
 		Format:   schema.Format,
-		Nullable: typ == Null,
+		Nullable: nullable,
 		Required: slices.Clone(schema.Required),
 		// Object validators
 		MaxProperties: schema.MaxProperties,
@@ -605,7 +634,7 @@ func (p *Parser) extendInfo(schema *RawSchema, s *Schema, file location.File) *S
 
 	// Nullable enums will be handled later.
 	if len(s.Enum) < 1 {
-		s.Nullable = schema.Nullable
+		s.Nullable = s.Nullable || schema.Nullable
 	}
 	if x := schema.XML; x != nil {
 		s.XML = &XML{
