@@ -1,0 +1,39 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "status": {
+      "type": "integer",
+      "const": 200
+    },
+    "message": {
+      "type": "string",
+      "const": "OK"
+    },
+    "enabled": {
+      "type": "boolean",
+      "const": true
+    },
+    "version": {
+      "type": "number",
+      "const": 1.0
+    },
+    "errorCode": {
+      "type": "integer",
+      "const": 0
+    },
+    "emptyString": {
+      "type": "string",
+      "const": ""
+    },
+    "nullValue": {
+      "type": "null",
+      "const": null
+    },
+    "optionalStatus": {
+      "type": "integer",
+      "const": 404
+    }
+  },
+  "required": ["status", "message", "enabled", "version"]
+}

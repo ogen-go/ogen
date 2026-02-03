@@ -31,6 +31,7 @@ type RawSchema struct {
 	MaxProperties        *uint64               `json:"maxProperties,omitempty" yaml:"maxProperties,omitempty"`
 	MinProperties        *uint64               `json:"minProperties,omitempty" yaml:"minProperties,omitempty"`
 	Default              Default               `json:"default,omitempty" yaml:"default,omitempty"`
+	Const                Const                 `json:"const,omitempty" yaml:"const,omitempty"`
 	Deprecated           bool                  `json:"deprecated,omitempty" yaml:"deprecated,omitempty"`
 	ContentEncoding      string                `json:"contentEncoding,omitempty" yaml:"contentEncoding,omitempty"`
 	ContentMediaType     string                `json:"contentMediaType,omitempty" yaml:"contentMediaType,omitempty"`

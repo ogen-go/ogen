@@ -471,3 +471,89 @@ func TestSchema_MinMaxObjectProp(t *testing.T) {
 
 	require.Equal(t, expect, out)
 }
+
+func TestSchemaConst(t *testing.T) {
+	tests := []struct {
+		name      string
+		raw       *RawSchema
+		expect    *Schema
+		expectErr bool
+	}{
+		{
+			name: "integer const",
+			raw: &RawSchema{
+				Type:  "integer",
+				Const: []byte("400"),
+			},
+			expect: &Schema{
+				Type:     Integer,
+				Const:    int64(400),
+				ConstSet: true,
+			},
+			expectErr: false,
+		},
+		{
+			name: "string const",
+			raw: &RawSchema{
+				Type:  "string",
+				Const: []byte(`"hello"`),
+			},
+			expect: &Schema{
+				Type:     String,
+				Const:    "hello",
+				ConstSet: true,
+			},
+			expectErr: false,
+		},
+		{
+			name: "boolean const",
+			raw: &RawSchema{
+				Type:  "boolean",
+				Const: []byte("true"),
+			},
+			expect: &Schema{
+				Type:     Boolean,
+				Const:    true,
+				ConstSet: true,
+			},
+			expectErr: false,
+		},
+		{
+			name: "number const",
+			raw: &RawSchema{
+				Type:  "number",
+				Const: []byte("3.14"),
+			},
+			expect: &Schema{
+				Type:     Number,
+				Const:    float64(3.14),
+				ConstSet: true,
+			},
+			expectErr: false,
+		},
+		{
+			name: "invalid const",
+			raw: &RawSchema{
+				Type:  "integer",
+				Const: []byte("invalid"),
+			},
+			expect:    nil,
+			expectErr: true,
+		},
+	}
+
+	parser := NewParser(Settings{})
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			out, err := parser.Parse(tt.raw, testCtx())
+			if tt.expectErr {
+				require.Error(t, err)
+				return
+			}
+			require.NoError(t, err)
+			// Zero locator to simplify comparison.
+			out.Pointer = location.Pointer{}
+			require.Equal(t, tt.expect, out)
+		})
+	}
+}

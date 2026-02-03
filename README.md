@@ -259,6 +259,68 @@ In this case, ogen checks the JSON type of the `id` field at runtime to determin
 
 In this case, ogen checks the actual string value of the `status` field at runtime and matches it against each variant's enum values. The enum values must be disjoint (non-overlapping) for this to work. If enum values overlap, ogen will report an error and suggest using an explicit discriminator.
 
+## Const values
+
+ogen supports the JSON Schema [`const`](https://json-schema.org/understanding-json-schema/reference/generic#constant-values) keyword, which specifies that a field must have a fixed value (introduced in [JSON Schema draft 6](https://json-schema.org/draft-06/json-schema-release-notes.html) and supported in OpenAPI 3.0+). When a field has a `const` value, it is encoded directly in the generated JSON encoder without requiring the struct field to be set.
+
+### Example schema with const values
+
+```yaml
+components:
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          const: 400
+        status:
+          type: string
+          const: "error"
+        message:
+          type: string
+```
+
+### Generated code
+
+The generated struct includes the field, but the encoder hardcodes the const value:
+
+```go
+type ErrorResponse struct {
+    Code    int64  `json:"code"`    // const: 400
+    Status  string `json:"status"`  // const: "error"
+    Message string `json:"message"`
+}
+
+func (s *ErrorResponse) encodeFields(e *jx.Encoder) {
+    {
+        e.FieldStart("code")
+        e.Int64(400)  // Const value encoded directly
+    }
+    {
+        e.FieldStart("status")
+        e.Str("error")  // Const value encoded directly
+    }
+    {
+        e.FieldStart("message")
+        e.Str(s.Message)  // Regular field
+    }
+}
+```
+
+### Benefits
+
+- **Simplified initialization**: You don't need to set const fields when creating struct instances
+- **Type safety**: Const values are validated at code generation time
+- **Performance**: Const values are encoded directly without runtime lookups
+- **Works with allOf**: Const values are preserved when merging schemas with `allOf`
+
+### Supported const value types
+
+- Primitives: `integer`, `number`, `string`, `boolean`
+- Special values: `null`, empty strings (`""`), zero values (`0`, `false`)
+- Complex types: `object`, `array` (when specified in schema)
+
 ## Extension properties
 
 OpenAPI enables [Specification Extensions](https://spec.openapis.org/oas/v3.1.0#specification-extensions),

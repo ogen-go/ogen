@@ -34,6 +34,7 @@ func (s *Schema) ToJSONSchema() *jsonschema.RawSchema {
 		OneOf:                convertMany(s.OneOf),
 		AnyOf:                convertMany(s.AnyOf),
 		Enum:                 s.Enum,
+		Const:                s.Const,
 		MultipleOf:           s.MultipleOf,
 		Maximum:              s.Maximum,
 		ExclusiveMaximum:     s.ExclusiveMaximum,

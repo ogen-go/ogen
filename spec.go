@@ -15,6 +15,8 @@ type (
 	Num = jsonschema.Num
 	// Enum is JSON Schema enum validator description.
 	Enum = jsonschema.Enum
+	// Const is JSON Schema const validator description.
+	Const = jsonschema.Const
 	// Default is a default value.
 	Default = jsonschema.Default
 	// ExampleValue is an example value.

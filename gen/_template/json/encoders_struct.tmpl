@@ -7,8 +7,49 @@
 
 	{{- range $i, $f := $fields }}
 		{
+		{{- $const := $f.Const }}
+		{{- if $const.Set }}
+		{{- /* Field has const value, encode it directly */}}
+		e.FieldStart({{ $f.Tag.EscapedJSON }})
+		{{- $t := $f.Type }}
+		{{- $constVal := print_go $const.Value }}
+		{{- /* For generic types, get JSON encoding from underlying type */}}
+		{{- if $t.IsGeneric }}
+		{{- $g := $t.GenericOf }}
+		{{- if $g.IsNull }}
+		e.Null()
+		{{- else }}
+		{{- $j := $g.JSON }}
+		{{- if $j.TimeFormat }}
+		json.EncodeTimeFormat(e, {{ $constVal }}, {{ $j.TimeFormat }})
+		{{- else if $j.Encoder }}
+		json.Encode{{ $j.Encoder }}(e, {{ $constVal }})
+		{{- else if $j.Fn }}
+		e.{{ $j.Fn }}({{ $constVal }})
+		{{- else }}
+		{{ errorf "unsupported const encoding for generic type: %s (underlying: %s)" $t $g }}
+		{{- end }}
+		{{- end }}
+		{{- else }}
+		{{- if $t.IsNull }}
+		e.Null()
+		{{- else }}
+		{{- $j := $t.JSON }}
+		{{- if $j.TimeFormat }}
+		json.EncodeTimeFormat(e, {{ $constVal }}, {{ $j.TimeFormat }})
+		{{- else if $j.Encoder }}
+		json.Encode{{ $j.Encoder }}(e, {{ $constVal }})
+		{{- else if $j.Fn }}
+		e.{{ $j.Fn }}({{ $constVal }})
+		{{- else }}
+		{{ errorf "unsupported const encoding for type: %s" $t }}
+		{{- end }}
+		{{- end }}
+		{{- end }}
+		{{- else }}
 		{{- $elem := field_elem $f }}
 		{{- template "json/enc" $elem }}
+		{{- end }}
 		}
 	{{- end }}
 	{{- if $additional }}

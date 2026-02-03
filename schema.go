@@ -86,6 +86,11 @@ type Schema struct {
 	// Elements in the array SHOULD be unique.
 	Enum Enum `json:"enum,omitempty" yaml:"enum,omitempty"`
 
+	// The value of this keyword can be of any type.
+	//
+	// Note: "const" is a JSON Schema keyword and is not specific to OpenAPI.
+	Const Const `json:"const,omitempty" yaml:"const,omitempty"`
+
 	// The value of "multipleOf" MUST be a number, strictly greater than 0.
 	//
 	// A numeric instance is only valid if division by this keyword's value

@@ -63,6 +63,8 @@ type Schema struct {
 	AdditionalProperties *bool             // Whether Object has additional properties.
 	PatternProperties    []PatternProperty // Only for Object.
 	Enum                 []any             // Only for Enum.
+	Const                any               // Only for Const.
+	ConstSet             bool              // Whether Const is set.
 	Properties           []Property        // Only for Object.
 	Required             []string
 
