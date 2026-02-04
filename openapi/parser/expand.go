@@ -602,7 +602,10 @@ func (e *expander) Schema(schema *jsonschema.Schema, walked map[*jsonschema.Sche
 		delete(walked, schema)
 	}()
 
-	expanded.Type = schema.Type.String()
+	expanded.Type = jsonschema.StringArray{schema.Type.String()}
+	if schema.Type == jsonschema.Empty {
+		expanded.Type = nil
+	}
 	expanded.Format = schema.Format
 	expanded.ContentEncoding = schema.ContentEncoding
 	expanded.ContentMediaType = schema.ContentMediaType

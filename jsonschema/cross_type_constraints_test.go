@@ -18,7 +18,7 @@ func TestCrossTypeConstraints(t *testing.T) {
 		{
 			name: "maximum on string type - strict mode",
 			schema: &RawSchema{
-				Type:    "string",
+				Type:    StringArray{"string"},
 				Maximum: Num(`1000`),
 			},
 			allowCrossType: false,
@@ -28,7 +28,7 @@ func TestCrossTypeConstraints(t *testing.T) {
 		{
 			name: "maximum on string type - default mode interprets as numeric constraint",
 			schema: &RawSchema{
-				Type:    "string",
+				Type:    StringArray{"string"},
 				Maximum: Num(`1000`),
 			},
 			allowCrossType: true,
@@ -41,7 +41,7 @@ func TestCrossTypeConstraints(t *testing.T) {
 		{
 			name: "minimum on string type - strict mode",
 			schema: &RawSchema{
-				Type:    "string",
+				Type:    StringArray{"string"},
 				Minimum: Num(`0.001`),
 			},
 			allowCrossType: false,
@@ -51,7 +51,7 @@ func TestCrossTypeConstraints(t *testing.T) {
 		{
 			name: "minimum on string type - default mode",
 			schema: &RawSchema{
-				Type:    "string",
+				Type:    StringArray{"string"},
 				Minimum: Num(`0.001`),
 			},
 			allowCrossType: true,
@@ -60,7 +60,7 @@ func TestCrossTypeConstraints(t *testing.T) {
 		{
 			name: "pattern on number type - strict mode",
 			schema: &RawSchema{
-				Type:    "number",
+				Type:    StringArray{"number"},
 				Pattern: `^\d+(\.\d{1,2})?$`,
 			},
 			allowCrossType: false,
@@ -70,7 +70,7 @@ func TestCrossTypeConstraints(t *testing.T) {
 		{
 			name: "pattern on number type - default mode",
 			schema: &RawSchema{
-				Type:    "number",
+				Type:    StringArray{"number"},
 				Pattern: `^\d+(\.\d{1,2})?$`,
 			},
 			allowCrossType: true,
@@ -79,7 +79,7 @@ func TestCrossTypeConstraints(t *testing.T) {
 		{
 			name: "pattern on integer type - strict mode",
 			schema: &RawSchema{
-				Type:    "integer",
+				Type:    StringArray{"integer"},
 				Pattern: `^\d+$`,
 			},
 			allowCrossType: false,
@@ -89,7 +89,7 @@ func TestCrossTypeConstraints(t *testing.T) {
 		{
 			name: "pattern on integer type - default mode",
 			schema: &RawSchema{
-				Type:    "integer",
+				Type:    StringArray{"integer"},
 				Pattern: `^\d+$`,
 			},
 			allowCrossType: true,
@@ -98,7 +98,7 @@ func TestCrossTypeConstraints(t *testing.T) {
 		{
 			name: "maxLength on number type - strict mode",
 			schema: &RawSchema{
-				Type:      "number",
+				Type:      StringArray{"number"},
 				MaxLength: uint64Ptr(10),
 			},
 			allowCrossType: false,
@@ -108,7 +108,7 @@ func TestCrossTypeConstraints(t *testing.T) {
 		{
 			name: "maxLength on number type - default mode",
 			schema: &RawSchema{
-				Type:      "number",
+				Type:      StringArray{"number"},
 				MaxLength: uint64Ptr(10),
 			},
 			allowCrossType: true,
@@ -117,7 +117,7 @@ func TestCrossTypeConstraints(t *testing.T) {
 		{
 			name: "valid schema - both modes",
 			schema: &RawSchema{
-				Type:      "string",
+				Type:      StringArray{"string"},
 				MaxLength: uint64Ptr(100),
 				Pattern:   `^\w+$`,
 			},
@@ -151,12 +151,12 @@ func TestCrossTypeConstraints(t *testing.T) {
 func TestCrossTypeConstraintsComplex(t *testing.T) {
 	// Test with a more complex schema like the one in the issue
 	schema := &RawSchema{
-		Type: "object",
+		Type: StringArray{"object"},
 		Properties: []RawProperty{
 			{
 				Name: "weight",
 				Schema: &RawSchema{
-					Type:    "string",
+					Type:    StringArray{"string"},
 					Maximum: Num(`1000`),
 					Minimum: Num(`0.001`),
 				},
@@ -164,7 +164,7 @@ func TestCrossTypeConstraintsComplex(t *testing.T) {
 			{
 				Name: "quantity",
 				Schema: &RawSchema{
-					Type:    "number",
+					Type:    StringArray{"number"},
 					Pattern: `^\d+(\.\d{1,2})?$`,
 				},
 			},

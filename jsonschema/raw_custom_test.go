@@ -83,8 +83,8 @@ func TestRawProperties(t *testing.T) {
 		wantErr bool
 	}{
 		{`{"foo":{"type":"string"}, "bar":{"type":"number"}}`, RawProperties{
-			{Name: "foo", Schema: &RawSchema{Type: "string"}},
-			{Name: "bar", Schema: &RawSchema{Type: "number"}},
+			{Name: "foo", Schema: &RawSchema{Type: StringArray{"string"}}},
+			{Name: "bar", Schema: &RawSchema{Type: StringArray{"number"}}},
 		}, false},
 		// Invalid YAML.
 		{`{`, RawProperties{}, true},
@@ -109,7 +109,7 @@ func TestAdditionalProperties(t *testing.T) {
 		value   AdditionalProperties
 		wantErr bool
 	}{
-		{`{"type":"string"}`, AdditionalProperties{Schema: RawSchema{Type: "string"}}, false},
+		{`{"type":"string"}`, AdditionalProperties{Schema: RawSchema{Type: StringArray{"string"}}}, false},
 		{`false`, AdditionalProperties{Bool: new(bool)}, false},
 		// Invalid YAML.
 		{`{`, AdditionalProperties{}, true},
@@ -136,8 +136,8 @@ func TestPatternProperties(t *testing.T) {
 		wantErr bool
 	}{
 		{`{"\\w+":{"type":"string"}, "\\d+":{"type":"number"}}`, RawPatternProperties{
-			{Pattern: "\\w+", Schema: &RawSchema{Type: "string"}},
-			{Pattern: "\\d+", Schema: &RawSchema{Type: "number"}},
+			{Pattern: "\\w+", Schema: &RawSchema{Type: StringArray{"string"}}},
+			{Pattern: "\\d+", Schema: &RawSchema{Type: StringArray{"number"}}},
 		}, false},
 		// Invalid JSON.
 		{`{`, RawPatternProperties{}, true},
@@ -162,12 +162,12 @@ func TestItems(t *testing.T) {
 		value   RawItems
 		wantErr bool
 	}{
-		{`{"type":"string"}`, RawItems{Item: &RawSchema{Type: "string"}}, false},
+		{`{"type":"string"}`, RawItems{Item: &RawSchema{Type: StringArray{"string"}}}, false},
 		{`[]`, RawItems{}, false},
 		{`[{"type":"string"}, {"type":"integer"}]`, RawItems{
 			Items: []*RawSchema{
-				{Type: "string"},
-				{Type: "integer"},
+				{Type: StringArray{"string"}},
+				{Type: StringArray{"integer"}},
 			},
 		}, false},
 		// Invalid YAML.
