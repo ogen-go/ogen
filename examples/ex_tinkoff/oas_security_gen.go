@@ -79,6 +79,26 @@ type SecuritySource interface {
 	SSOAuth(ctx context.Context, operationName OperationName) (SSOAuth, error)
 }
 
+// GetRolesForSSOAuth returns the required roles for the given operation.
+//
+// This is useful for authorization scenarios where you need to know which roles
+// are required for an operation.
+//
+// Example:
+//
+//	requiredRoles := GetRolesForSSOAuth(AddPetOperation)
+//
+// Returns nil if the operation has no role requirements or if the operation is unknown.
+func GetRolesForSSOAuth(operation string) []string {
+	roles, ok := operationRolesSSOAuth[operation]
+	if !ok {
+		return nil
+	}
+	// Return a copy to prevent external modification
+	result := make([]string, len(roles))
+	copy(result, roles)
+	return result
+}
 func (s *Client) securitySSOAuth(ctx context.Context, operationName OperationName, req *http.Request) error {
 	t, err := s.sec.SSOAuth(ctx, operationName)
 	if err != nil {
