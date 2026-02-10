@@ -10,6 +10,3225 @@ import (
 	"github.com/ogen-go/ogen/uri"
 )
 
+var (
+	rn1AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn3AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn12AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn13AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn5AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn6AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn7AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn9AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn10AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn11AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn14AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn15AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn16AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn18AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn19AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn20AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn22AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn23AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn24AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn26AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn27AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn28AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn30AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn31AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn32AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn33AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn34AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn35AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn37AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn38AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn39AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn40AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn41AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn42AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn44AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn45AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn46AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn47AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn48AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn49AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn50AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn51AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn52AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn53AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn55AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn56AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn57AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn58AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn59AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn60AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn62AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn63AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn64AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn65AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn66AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn67AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn69AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn70AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn71AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn72AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn73AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn74AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn76AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn77AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn78AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn79AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn80AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn82AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn83AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn84AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn86AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn89AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn90AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn91AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn93AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn94AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn95AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn97AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn98AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn99AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn101AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn102AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn103AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn105AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn106AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn107AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn109AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn110AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn111AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn116AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn117AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn118AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn120AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn121AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn122AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn87AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn88AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn113AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn114AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn115AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn123AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn124AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn125AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn127AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn128AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn129AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn131AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn132AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn133AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn135AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn136AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn137AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn139AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn140AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn141AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn143AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn144AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn145AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn147AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn148AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn149AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn150AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn151AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn152AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn154AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn155AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn156AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn157AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn158AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn159AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn161AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn162AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn163AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn165AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn166AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn167AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn169AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn170AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn171AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn172AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn173AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn174AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn175AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn184AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn185AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn177AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn178AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn179AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn181AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn182AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn183AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn186AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn187AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn188AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn190AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn191AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn192AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn194AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn195AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn196AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn198AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn199AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn200AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn202AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn203AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn204AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn205AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn206AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn207AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn209AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn210AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn211AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn212AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn213AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn214AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn216AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn217AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn218AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn219AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn220AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn221AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn222AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn223AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn224AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn225AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn227AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn228AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn229AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn230AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn231AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn232AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn234AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn235AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn236AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn237AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn238AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn239AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn241AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn242AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn243AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn244AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn245AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn246AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn248AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn249AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn250AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn251AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn252AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn254AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn255AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn256AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn258AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn261AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn262AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn263AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn265AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn266AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn267AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn269AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn270AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn271AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn273AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn274AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn275AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn277AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn278AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn279AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn281AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn282AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn283AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn288AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn289AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn290AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn292AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn293AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn294AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn259AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn260AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn285AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn286AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn287AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn295AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn296AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn297AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn299AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn300AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn301AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn303AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn304AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn305AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn307AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn308AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn309AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn311AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn312AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn313AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn315AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn316AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn317AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn319AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn320AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn321AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn322AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn323AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn324AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn326AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn327AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn328AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn329AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn330AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn331AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn333AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn334AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn335AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn337AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn338AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn339AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn341AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn342AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn343AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn344AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn345AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn346AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn347AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn348AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn349AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn351AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn352AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn353AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn355AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn356AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn357AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn359AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn360AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn361AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn363AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn364AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn365AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn366AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn367AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn368AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn370AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn371AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn372AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn373AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn380AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn381AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn382AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn384AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn385AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn386AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn374AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn375AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn377AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn378AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn379AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn388AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn389AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn390AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn392AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn393AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn394AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn395AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn396AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn397AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn399AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn400AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn401AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn402AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn403AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn404AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn406AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn407AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn408AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn409AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn410AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn411AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn413AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn414AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn415AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn417AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn418AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn419AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn421AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn422AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn423AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn432AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn433AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn434AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn436AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn437AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn438AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn424AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn425AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn426AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn428AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn429AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn430AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn447AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn448AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn449AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn450AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn452AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn453AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn454AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn455AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn456AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn457AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn459AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn460AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn461AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn462AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn463AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn464AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn466AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn467AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn468AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn469AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn470AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn471AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn473AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn474AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn475AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn476AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn477AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn479AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn480AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn481AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn439AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn440AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn441AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn443AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn444AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn445AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn482AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn483AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn484AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn486AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn487AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn488AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn490AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn491AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn492AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn494AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn495AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn496AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn497AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn498AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn499AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn501AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn502AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn503AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn504AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn505AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn506AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn507AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn508AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn509AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn511AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn512AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn513AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn514AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn515AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn516AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn518AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn519AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn520AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn536AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn537AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn538AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn539AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn541AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn542AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn543AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn544AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn545AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn546AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn548AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn549AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn550AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn551AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn552AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn553AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn555AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn556AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn557AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn558AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn559AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn560AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn562AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn563AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn564AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn565AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn566AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn568AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn569AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn570AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn571AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn574AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn575AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn576AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn578AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn579AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn580AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn582AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn583AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn584AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn586AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn587AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn588AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn590AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn591AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn592AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn594AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn595AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn596AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn601AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn602AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn603AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn605AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn606AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn607AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn572AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn573AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn598AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn599AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn600AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn521AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn522AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn523AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn525AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn526AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn527AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn529AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn530AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn531AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn533AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn534AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn535AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn608AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn609AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn610AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn612AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn613AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn614AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn616AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn617AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn618AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn620AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn621AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn622AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn624AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn625AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn626AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn627AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn628AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn629AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn631AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn632AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn633AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn634AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn641AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn642AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn643AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn645AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn646AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn647AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn635AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn636AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn638AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn639AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn640AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn649AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn650AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn651AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn653AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn654AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn655AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn656AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn657AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn658AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn660AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn661AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn662AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn663AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn664AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn665AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn667AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn668AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn669AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn670AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn671AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn672AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn674AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn675AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn676AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn678AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn679AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn680AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn682AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn683AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn684AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn693AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn694AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn695AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn697AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn698AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn699AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn685AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn686AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn687AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn689AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn690AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn691AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn708AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn709AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn710AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn711AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn713AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn714AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn715AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn716AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn717AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn718AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn720AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn721AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn722AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn723AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn724AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn725AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn727AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn728AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn729AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn730AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn731AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn732AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn734AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn735AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn736AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn737AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn738AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn740AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn741AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn742AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn700AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn701AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn702AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn704AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn705AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn706AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn743AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn744AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn745AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn747AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn748AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn749AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn751AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn752AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn753AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn755AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn756AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn757AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn758AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn759AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn760AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn762AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn763AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn764AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn765AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn766AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn767AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn768AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn769AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn770AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn772AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn773AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn774AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn775AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn776AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn777AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn779AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn780AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn781AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn797AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn798AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn799AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn800AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn802AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn803AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn804AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn805AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn806AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn807AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn809AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn810AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn811AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn812AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn813AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn814AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn816AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn817AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn818AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn819AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn820AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn821AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn823AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn824AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn825AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn826AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn827AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn829AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn830AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn831AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn832AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn835AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn836AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn837AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn839AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn840AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn841AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn843AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn844AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn845AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn847AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn848AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn849AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn851AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn852AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn853AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn855AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn856AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn857AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn862AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn863AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn864AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn866AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn867AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn868AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn833AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn834AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn859AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn860AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn861AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn782AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn783AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn784AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn786AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn787AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn788AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn790AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn791AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn792AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn794AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn795AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn796AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn870AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn879AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn880AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn872AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn873AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn874AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn876AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn877AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn878AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn881AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn882AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn883AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn885AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn886AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn887AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn889AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn890AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn891AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn893AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn894AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn895AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn897AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn898AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn899AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn900AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn901AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn902AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn904AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn905AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn906AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn907AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn908AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn909AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn911AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn912AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn913AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn914AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn915AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn916AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn917AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn918AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn919AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn920AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn922AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn923AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn924AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn925AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn926AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn927AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn929AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn930AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn931AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn932AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn933AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn934AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn936AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn937AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn938AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn939AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn940AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn941AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn943AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn944AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn945AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn946AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn947AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn949AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn950AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn951AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn953AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn956AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn957AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn958AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn960AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn961AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn962AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn964AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn965AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn966AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn968AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn969AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn970AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn972AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn973AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn974AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn976AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn977AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn978AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn983AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn984AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn985AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn987AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn988AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn989AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn954AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn955AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn980AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn981AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn982AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn990AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn991AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn992AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn994AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn995AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn996AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn998AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn999AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1000AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1002AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1003AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1004AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1006AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1007AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1008AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1010AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1011AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1012AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1014AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1015AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1016AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1017AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1018AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1019AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1021AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1022AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1023AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1024AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1025AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1026AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1028AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1029AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1030AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1032AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1033AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1034AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1036AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1037AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1038AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1039AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1040AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1041AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1042AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1043AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1044AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1046AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1047AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1048AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1050AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1051AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1052AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1054AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1055AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1056AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1058AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1059AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1060AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1061AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1062AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1063AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1065AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1066AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1067AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1068AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1075AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1076AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1077AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1079AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1080AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1081AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1069AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1070AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1072AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1073AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1074AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1083AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1084AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1085AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1087AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1088AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1089AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1090AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1091AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1092AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1094AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1095AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1096AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1097AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1098AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1099AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1101AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1102AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1103AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1104AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1105AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1106AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1108AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1109AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1110AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1112AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1113AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1114AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1116AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1117AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1118AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1127AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1128AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1129AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1131AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1132AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1133AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1119AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1120AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1121AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1123AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1124AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1125AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1142AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1143AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1144AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1145AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1147AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1148AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1149AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1150AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1151AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1152AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1154AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1155AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1156AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1157AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1158AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1159AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1161AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1162AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1163AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1164AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1165AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1166AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1168AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1169AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1170AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1171AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1172AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1174AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1175AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1176AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1134AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1135AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1136AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1138AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1139AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1140AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1177AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1178AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1179AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1181AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1182AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1183AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1185AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1186AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1187AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1189AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1190AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1191AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1192AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1193AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1194AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1196AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1197AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1198AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1199AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1200AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1201AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1202AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1203AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1204AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1206AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1207AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1208AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1209AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1210AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1211AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1213AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1214AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1215AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1231AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1232AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1233AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1234AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1236AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1237AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1238AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1239AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1240AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1241AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1243AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1244AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1245AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1246AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1247AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1248AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1250AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1251AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1252AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1253AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1254AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1255AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1257AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1258AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1259AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1260AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1261AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1263AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1264AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1265AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1266AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1269AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1270AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1271AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1273AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1274AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1275AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1277AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1278AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1279AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1281AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1282AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1283AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1285AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1286AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1287AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1289AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1290AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1291AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1296AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1297AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1298AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1300AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1301AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1302AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1267AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1268AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1293AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1294AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1295AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1216AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1217AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1218AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1220AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1221AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1222AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1224AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1225AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1226AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1228AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1229AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+	rn1230AllowedHeaders = map[string]string{
+		"POST": "Content-Type",
+	}
+)
+
 func (s *Server) cutPrefix(path string) (string, bool) {
 	prefix := s.cfg.Prefix
 	if prefix == "" {
@@ -74,7 +3293,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					case "POST":
 						s.handleTestQueryParameterRequest([0]string{}, elemIsEscaped, w, r)
 					default:
-						s.notAllowed(w, r, "POST")
+						s.notAllowed(w, r, notAllowedParams{
+							allowedMethods: "POST",
+							allowedHeaders: rn1AllowedHeaders,
+							acceptPost:     "application/json",
+							acceptPatch:    "",
+						})
 					}
 
 					return
@@ -118,7 +3342,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "POST":
 								s.handleTestRequestAnyRequest([0]string{}, elemIsEscaped, w, r)
 							default:
-								s.notAllowed(w, r, "POST")
+								s.notAllowed(w, r, notAllowedParams{
+									allowedMethods: "POST",
+									allowedHeaders: rn3AllowedHeaders,
+									acceptPost:     "application/json",
+									acceptPatch:    "",
+								})
 							}
 
 							return
@@ -138,7 +3367,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "POST":
 								s.handleTestRequestEmptyStructRequest([0]string{}, elemIsEscaped, w, r)
 							default:
-								s.notAllowed(w, r, "POST")
+								s.notAllowed(w, r, notAllowedParams{
+									allowedMethods: "POST",
+									allowedHeaders: rn12AllowedHeaders,
+									acceptPost:     "application/json",
+									acceptPatch:    "",
+								})
 							}
 
 							return
@@ -158,7 +3392,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "POST":
 								s.handleTestRequestFormatTestRequest([0]string{}, elemIsEscaped, w, r)
 							default:
-								s.notAllowed(w, r, "POST")
+								s.notAllowed(w, r, notAllowedParams{
+									allowedMethods: "POST",
+									allowedHeaders: rn13AllowedHeaders,
+									acceptPost:     "application/json",
+									acceptPatch:    "",
+								})
 							}
 
 							return
@@ -177,7 +3416,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "POST":
 								s.handleTestRequestBooleanRequest([0]string{}, elemIsEscaped, w, r)
 							default:
-								s.notAllowed(w, r, "POST")
+								s.notAllowed(w, r, notAllowedParams{
+									allowedMethods: "POST",
+									allowedHeaders: rn5AllowedHeaders,
+									acceptPost:     "application/json",
+									acceptPatch:    "",
+								})
 							}
 
 							return
@@ -208,7 +3452,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									case "POST":
 										s.handleTestRequestBooleanArrayRequest([0]string{}, elemIsEscaped, w, r)
 									default:
-										s.notAllowed(w, r, "POST")
+										s.notAllowed(w, r, notAllowedParams{
+											allowedMethods: "POST",
+											allowedHeaders: rn6AllowedHeaders,
+											acceptPost:     "application/json",
+											acceptPatch:    "",
+										})
 									}
 
 									return
@@ -228,7 +3477,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "POST":
 											s.handleTestRequestBooleanArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 										default:
-											s.notAllowed(w, r, "POST")
+											s.notAllowed(w, r, notAllowedParams{
+												allowedMethods: "POST",
+												allowedHeaders: rn7AllowedHeaders,
+												acceptPost:     "application/json",
+												acceptPatch:    "",
+											})
 										}
 
 										return
@@ -249,7 +3503,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									case "POST":
 										s.handleTestRequestBooleanNullableRequest([0]string{}, elemIsEscaped, w, r)
 									default:
-										s.notAllowed(w, r, "POST")
+										s.notAllowed(w, r, notAllowedParams{
+											allowedMethods: "POST",
+											allowedHeaders: rn9AllowedHeaders,
+											acceptPost:     "application/json",
+											acceptPatch:    "",
+										})
 									}
 
 									return
@@ -268,7 +3527,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "POST":
 											s.handleTestRequestBooleanNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 										default:
-											s.notAllowed(w, r, "POST")
+											s.notAllowed(w, r, notAllowedParams{
+												allowedMethods: "POST",
+												allowedHeaders: rn10AllowedHeaders,
+												acceptPost:     "application/json",
+												acceptPatch:    "",
+											})
 										}
 
 										return
@@ -288,7 +3552,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestRequestBooleanNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn11AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -315,7 +3584,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "POST":
 								s.handleTestRequestIntegerRequest([0]string{}, elemIsEscaped, w, r)
 							default:
-								s.notAllowed(w, r, "POST")
+								s.notAllowed(w, r, notAllowedParams{
+									allowedMethods: "POST",
+									allowedHeaders: rn14AllowedHeaders,
+									acceptPost:     "application/json",
+									acceptPatch:    "",
+								})
 							}
 
 							return
@@ -346,7 +3620,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									case "POST":
 										s.handleTestRequestIntegerArrayRequest([0]string{}, elemIsEscaped, w, r)
 									default:
-										s.notAllowed(w, r, "POST")
+										s.notAllowed(w, r, notAllowedParams{
+											allowedMethods: "POST",
+											allowedHeaders: rn15AllowedHeaders,
+											acceptPost:     "application/json",
+											acceptPatch:    "",
+										})
 									}
 
 									return
@@ -366,7 +3645,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "POST":
 											s.handleTestRequestIntegerArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 										default:
-											s.notAllowed(w, r, "POST")
+											s.notAllowed(w, r, notAllowedParams{
+												allowedMethods: "POST",
+												allowedHeaders: rn16AllowedHeaders,
+												acceptPost:     "application/json",
+												acceptPatch:    "",
+											})
 										}
 
 										return
@@ -399,7 +3683,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "POST":
 											s.handleTestRequestIntegerInt16Request([0]string{}, elemIsEscaped, w, r)
 										default:
-											s.notAllowed(w, r, "POST")
+											s.notAllowed(w, r, notAllowedParams{
+												allowedMethods: "POST",
+												allowedHeaders: rn18AllowedHeaders,
+												acceptPost:     "application/json",
+												acceptPatch:    "",
+											})
 										}
 
 										return
@@ -430,7 +3719,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestIntegerInt16ArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn19AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -450,7 +3744,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestIntegerInt16ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn20AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -471,7 +3770,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestIntegerInt16NullableRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn22AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -490,7 +3794,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestIntegerInt16NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn23AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -510,7 +3819,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestIntegerInt16NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn24AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -537,7 +3851,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "POST":
 											s.handleTestRequestIntegerInt32Request([0]string{}, elemIsEscaped, w, r)
 										default:
-											s.notAllowed(w, r, "POST")
+											s.notAllowed(w, r, notAllowedParams{
+												allowedMethods: "POST",
+												allowedHeaders: rn26AllowedHeaders,
+												acceptPost:     "application/json",
+												acceptPatch:    "",
+											})
 										}
 
 										return
@@ -568,7 +3887,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestIntegerInt32ArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn27AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -588,7 +3912,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestIntegerInt32ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn28AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -609,7 +3938,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestIntegerInt32NullableRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn30AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -628,7 +3962,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestIntegerInt32NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn31AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -648,7 +3987,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestIntegerInt32NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn32AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -675,7 +4019,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "POST":
 											s.handleTestRequestIntegerInt64Request([0]string{}, elemIsEscaped, w, r)
 										default:
-											s.notAllowed(w, r, "POST")
+											s.notAllowed(w, r, notAllowedParams{
+												allowedMethods: "POST",
+												allowedHeaders: rn33AllowedHeaders,
+												acceptPost:     "application/json",
+												acceptPatch:    "",
+											})
 										}
 
 										return
@@ -706,7 +4055,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestIntegerInt64ArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn34AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -726,7 +4080,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestIntegerInt64ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn35AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -747,7 +4106,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestIntegerInt64NullableRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn37AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -766,7 +4130,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestIntegerInt64NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn38AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -786,7 +4155,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestIntegerInt64NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn39AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -813,7 +4187,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "POST":
 											s.handleTestRequestIntegerInt8Request([0]string{}, elemIsEscaped, w, r)
 										default:
-											s.notAllowed(w, r, "POST")
+											s.notAllowed(w, r, notAllowedParams{
+												allowedMethods: "POST",
+												allowedHeaders: rn40AllowedHeaders,
+												acceptPost:     "application/json",
+												acceptPatch:    "",
+											})
 										}
 
 										return
@@ -844,7 +4223,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestIntegerInt8ArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn41AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -864,7 +4248,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestIntegerInt8ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn42AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -885,7 +4274,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestIntegerInt8NullableRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn44AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -904,7 +4298,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestIntegerInt8NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn45AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -924,7 +4323,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestIntegerInt8NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn46AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -953,7 +4357,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									case "POST":
 										s.handleTestRequestIntegerNullableRequest([0]string{}, elemIsEscaped, w, r)
 									default:
-										s.notAllowed(w, r, "POST")
+										s.notAllowed(w, r, notAllowedParams{
+											allowedMethods: "POST",
+											allowedHeaders: rn47AllowedHeaders,
+											acceptPost:     "application/json",
+											acceptPatch:    "",
+										})
 									}
 
 									return
@@ -972,7 +4381,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "POST":
 											s.handleTestRequestIntegerNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 										default:
-											s.notAllowed(w, r, "POST")
+											s.notAllowed(w, r, notAllowedParams{
+												allowedMethods: "POST",
+												allowedHeaders: rn48AllowedHeaders,
+												acceptPost:     "application/json",
+												acceptPatch:    "",
+											})
 										}
 
 										return
@@ -992,7 +4406,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestRequestIntegerNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn49AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -1027,7 +4446,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "POST":
 											s.handleTestRequestIntegerUintRequest([0]string{}, elemIsEscaped, w, r)
 										default:
-											s.notAllowed(w, r, "POST")
+											s.notAllowed(w, r, notAllowedParams{
+												allowedMethods: "POST",
+												allowedHeaders: rn50AllowedHeaders,
+												acceptPost:     "application/json",
+												acceptPatch:    "",
+											})
 										}
 
 										return
@@ -1046,7 +4470,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestRequestIntegerUint16Request([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn51AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -1077,7 +4506,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestIntegerUint16ArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn52AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -1097,7 +4531,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestIntegerUint16ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn53AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -1118,7 +4557,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestIntegerUint16NullableRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn55AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -1137,7 +4581,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestIntegerUint16NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn56AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -1157,7 +4606,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestIntegerUint16NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn57AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -1184,7 +4638,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestRequestIntegerUint32Request([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn58AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -1215,7 +4674,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestIntegerUint32ArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn59AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -1235,7 +4699,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestIntegerUint32ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn60AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -1256,7 +4725,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestIntegerUint32NullableRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn62AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -1275,7 +4749,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestIntegerUint32NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn63AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -1295,7 +4774,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestIntegerUint32NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn64AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -1322,7 +4806,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestRequestIntegerUint64Request([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn65AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -1353,7 +4842,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestIntegerUint64ArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn66AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -1373,7 +4867,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestIntegerUint64ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn67AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -1394,7 +4893,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestIntegerUint64NullableRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn69AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -1413,7 +4917,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestIntegerUint64NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn70AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -1433,7 +4942,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestIntegerUint64NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn71AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -1460,7 +4974,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestRequestIntegerUint8Request([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn72AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -1491,7 +5010,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestIntegerUint8ArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn73AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -1511,7 +5035,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestIntegerUint8ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn74AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -1532,7 +5061,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestIntegerUint8NullableRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn76AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -1551,7 +5085,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestIntegerUint8NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn77AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -1571,7 +5110,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestIntegerUint8NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn78AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -1610,7 +5154,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestIntegerUintArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn79AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -1630,7 +5179,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestIntegerUintArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn80AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -1651,7 +5205,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestIntegerUintNullableRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn82AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -1670,7 +5229,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestIntegerUintNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn83AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -1690,7 +5254,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestIntegerUintNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn84AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -1717,7 +5286,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "POST":
 											s.handleTestRequestIntegerUnixRequest([0]string{}, elemIsEscaped, w, r)
 										default:
-											s.notAllowed(w, r, "POST")
+											s.notAllowed(w, r, notAllowedParams{
+												allowedMethods: "POST",
+												allowedHeaders: rn86AllowedHeaders,
+												acceptPost:     "application/json",
+												acceptPatch:    "",
+											})
 										}
 
 										return
@@ -1760,7 +5334,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestIntegerUnixMicroRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn89AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -1791,7 +5370,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestIntegerUnixMicroArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn90AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -1811,7 +5395,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																case "POST":
 																	s.handleTestRequestIntegerUnixMicroArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
-																	s.notAllowed(w, r, "POST")
+																	s.notAllowed(w, r, notAllowedParams{
+																		allowedMethods: "POST",
+																		allowedHeaders: rn91AllowedHeaders,
+																		acceptPost:     "application/json",
+																		acceptPatch:    "",
+																	})
 																}
 
 																return
@@ -1832,7 +5421,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestIntegerUnixMicroNullableRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn93AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -1851,7 +5445,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																case "POST":
 																	s.handleTestRequestIntegerUnixMicroNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
-																	s.notAllowed(w, r, "POST")
+																	s.notAllowed(w, r, notAllowedParams{
+																		allowedMethods: "POST",
+																		allowedHeaders: rn94AllowedHeaders,
+																		acceptPost:     "application/json",
+																		acceptPatch:    "",
+																	})
 																}
 
 																return
@@ -1871,7 +5470,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	case "POST":
 																		s.handleTestRequestIntegerUnixMicroNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																	default:
-																		s.notAllowed(w, r, "POST")
+																		s.notAllowed(w, r, notAllowedParams{
+																			allowedMethods: "POST",
+																			allowedHeaders: rn95AllowedHeaders,
+																			acceptPost:     "application/json",
+																			acceptPatch:    "",
+																		})
 																	}
 
 																	return
@@ -1898,7 +5502,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestIntegerUnixMilliRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn97AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -1929,7 +5538,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestIntegerUnixMilliArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn98AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -1949,7 +5563,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																case "POST":
 																	s.handleTestRequestIntegerUnixMilliArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
-																	s.notAllowed(w, r, "POST")
+																	s.notAllowed(w, r, notAllowedParams{
+																		allowedMethods: "POST",
+																		allowedHeaders: rn99AllowedHeaders,
+																		acceptPost:     "application/json",
+																		acceptPatch:    "",
+																	})
 																}
 
 																return
@@ -1970,7 +5589,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestIntegerUnixMilliNullableRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn101AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -1989,7 +5613,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																case "POST":
 																	s.handleTestRequestIntegerUnixMilliNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
-																	s.notAllowed(w, r, "POST")
+																	s.notAllowed(w, r, notAllowedParams{
+																		allowedMethods: "POST",
+																		allowedHeaders: rn102AllowedHeaders,
+																		acceptPost:     "application/json",
+																		acceptPatch:    "",
+																	})
 																}
 
 																return
@@ -2009,7 +5638,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	case "POST":
 																		s.handleTestRequestIntegerUnixMilliNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																	default:
-																		s.notAllowed(w, r, "POST")
+																		s.notAllowed(w, r, notAllowedParams{
+																			allowedMethods: "POST",
+																			allowedHeaders: rn103AllowedHeaders,
+																			acceptPost:     "application/json",
+																			acceptPatch:    "",
+																		})
 																	}
 
 																	return
@@ -2038,7 +5672,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestIntegerUnixNanoRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn105AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -2069,7 +5708,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestIntegerUnixNanoArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn106AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -2089,7 +5733,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestIntegerUnixNanoArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn107AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -2110,7 +5759,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestIntegerUnixNanoNullableRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn109AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -2129,7 +5783,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestIntegerUnixNanoNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn110AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -2149,7 +5808,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																case "POST":
 																	s.handleTestRequestIntegerUnixNanoNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
-																	s.notAllowed(w, r, "POST")
+																	s.notAllowed(w, r, notAllowedParams{
+																		allowedMethods: "POST",
+																		allowedHeaders: rn111AllowedHeaders,
+																		acceptPost:     "application/json",
+																		acceptPatch:    "",
+																	})
 																}
 
 																return
@@ -2176,7 +5840,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestIntegerUnixSecondsRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn116AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -2207,7 +5876,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestIntegerUnixSecondsArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn117AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -2227,7 +5901,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestIntegerUnixSecondsArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn118AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -2248,7 +5927,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestIntegerUnixSecondsNullableRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn120AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -2267,7 +5951,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestIntegerUnixSecondsNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn121AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -2287,7 +5976,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																case "POST":
 																	s.handleTestRequestIntegerUnixSecondsNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
-																	s.notAllowed(w, r, "POST")
+																	s.notAllowed(w, r, notAllowedParams{
+																		allowedMethods: "POST",
+																		allowedHeaders: rn122AllowedHeaders,
+																		acceptPost:     "application/json",
+																		acceptPatch:    "",
+																	})
 																}
 
 																return
@@ -2328,7 +6022,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestIntegerUnixArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn87AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -2348,7 +6047,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestIntegerUnixArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn88AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -2369,7 +6073,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestIntegerUnixNullableRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn113AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -2388,7 +6097,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestIntegerUnixNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn114AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -2408,7 +6122,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestIntegerUnixNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn115AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -2453,7 +6172,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								case "POST":
 									s.handleTestRequestNullRequest([0]string{}, elemIsEscaped, w, r)
 								default:
-									s.notAllowed(w, r, "POST")
+									s.notAllowed(w, r, notAllowedParams{
+										allowedMethods: "POST",
+										allowedHeaders: rn123AllowedHeaders,
+										acceptPost:     "application/json",
+										acceptPatch:    "",
+									})
 								}
 
 								return
@@ -2484,7 +6208,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "POST":
 											s.handleTestRequestNullArrayRequest([0]string{}, elemIsEscaped, w, r)
 										default:
-											s.notAllowed(w, r, "POST")
+											s.notAllowed(w, r, notAllowedParams{
+												allowedMethods: "POST",
+												allowedHeaders: rn124AllowedHeaders,
+												acceptPost:     "application/json",
+												acceptPatch:    "",
+											})
 										}
 
 										return
@@ -2504,7 +6233,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestRequestNullArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn125AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -2525,7 +6259,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "POST":
 											s.handleTestRequestNullNullableRequest([0]string{}, elemIsEscaped, w, r)
 										default:
-											s.notAllowed(w, r, "POST")
+											s.notAllowed(w, r, notAllowedParams{
+												allowedMethods: "POST",
+												allowedHeaders: rn127AllowedHeaders,
+												acceptPost:     "application/json",
+												acceptPatch:    "",
+											})
 										}
 
 										return
@@ -2544,7 +6283,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestRequestNullNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn128AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -2564,7 +6308,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestNullNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn129AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -2591,7 +6340,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								case "POST":
 									s.handleTestRequestNumberRequest([0]string{}, elemIsEscaped, w, r)
 								default:
-									s.notAllowed(w, r, "POST")
+									s.notAllowed(w, r, notAllowedParams{
+										allowedMethods: "POST",
+										allowedHeaders: rn131AllowedHeaders,
+										acceptPost:     "application/json",
+										acceptPatch:    "",
+									})
 								}
 
 								return
@@ -2622,7 +6376,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "POST":
 											s.handleTestRequestNumberArrayRequest([0]string{}, elemIsEscaped, w, r)
 										default:
-											s.notAllowed(w, r, "POST")
+											s.notAllowed(w, r, notAllowedParams{
+												allowedMethods: "POST",
+												allowedHeaders: rn132AllowedHeaders,
+												acceptPost:     "application/json",
+												acceptPatch:    "",
+											})
 										}
 
 										return
@@ -2642,7 +6401,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestRequestNumberArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn133AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -2675,7 +6439,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestRequestNumberDecimalRequest([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn135AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -2706,7 +6475,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestNumberDecimalArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn136AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -2726,7 +6500,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestNumberDecimalArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn137AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -2747,7 +6526,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestNumberDecimalNullableRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn139AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -2766,7 +6550,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestNumberDecimalNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn140AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -2786,7 +6575,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestNumberDecimalNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn141AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -2813,7 +6607,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestRequestNumberDoubleRequest([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn143AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -2844,7 +6643,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestNumberDoubleArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn144AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -2864,7 +6668,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestNumberDoubleArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn145AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -2885,7 +6694,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestNumberDoubleNullableRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn147AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -2904,7 +6718,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestNumberDoubleNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn148AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -2924,7 +6743,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestNumberDoubleNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn149AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -2953,7 +6777,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "POST":
 											s.handleTestRequestNumberFloatRequest([0]string{}, elemIsEscaped, w, r)
 										default:
-											s.notAllowed(w, r, "POST")
+											s.notAllowed(w, r, notAllowedParams{
+												allowedMethods: "POST",
+												allowedHeaders: rn150AllowedHeaders,
+												acceptPost:     "application/json",
+												acceptPatch:    "",
+											})
 										}
 
 										return
@@ -2984,7 +6813,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestNumberFloatArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn151AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -3004,7 +6838,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestNumberFloatArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn152AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -3025,7 +6864,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestNumberFloatNullableRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn154AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -3044,7 +6888,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestNumberFloatNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn155AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -3064,7 +6913,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestNumberFloatNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn156AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -3103,7 +6957,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestRequestNumberInt32Request([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn157AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -3134,7 +6993,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestNumberInt32ArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn158AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -3154,7 +7018,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestNumberInt32ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn159AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -3175,7 +7044,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestNumberInt32NullableRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn161AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -3194,7 +7068,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestNumberInt32NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn162AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -3214,7 +7093,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestNumberInt32NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn163AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -3241,7 +7125,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestRequestNumberInt64Request([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn165AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -3272,7 +7161,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestNumberInt64ArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn166AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -3292,7 +7186,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestNumberInt64ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn167AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -3313,7 +7212,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestNumberInt64NullableRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn169AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -3332,7 +7236,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestNumberInt64NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn170AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -3352,7 +7261,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestNumberInt64NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn171AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -3381,7 +7295,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "POST":
 											s.handleTestRequestNumberNullableRequest([0]string{}, elemIsEscaped, w, r)
 										default:
-											s.notAllowed(w, r, "POST")
+											s.notAllowed(w, r, notAllowedParams{
+												allowedMethods: "POST",
+												allowedHeaders: rn172AllowedHeaders,
+												acceptPost:     "application/json",
+												acceptPatch:    "",
+											})
 										}
 
 										return
@@ -3400,7 +7319,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestRequestNumberNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn173AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -3420,7 +7344,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestNumberNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn174AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -3462,7 +7391,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								case "POST":
 									s.handleTestRequestRequiredAnyRequest([0]string{}, elemIsEscaped, w, r)
 								default:
-									s.notAllowed(w, r, "POST")
+									s.notAllowed(w, r, notAllowedParams{
+										allowedMethods: "POST",
+										allowedHeaders: rn175AllowedHeaders,
+										acceptPost:     "application/json",
+										acceptPatch:    "",
+									})
 								}
 
 								return
@@ -3482,7 +7416,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								case "POST":
 									s.handleTestRequestRequiredEmptyStructRequest([0]string{}, elemIsEscaped, w, r)
 								default:
-									s.notAllowed(w, r, "POST")
+									s.notAllowed(w, r, notAllowedParams{
+										allowedMethods: "POST",
+										allowedHeaders: rn184AllowedHeaders,
+										acceptPost:     "application/json",
+										acceptPatch:    "",
+									})
 								}
 
 								return
@@ -3502,7 +7441,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								case "POST":
 									s.handleTestRequestRequiredFormatTestRequest([0]string{}, elemIsEscaped, w, r)
 								default:
-									s.notAllowed(w, r, "POST")
+									s.notAllowed(w, r, notAllowedParams{
+										allowedMethods: "POST",
+										allowedHeaders: rn185AllowedHeaders,
+										acceptPost:     "application/json",
+										acceptPatch:    "",
+									})
 								}
 
 								return
@@ -3521,7 +7465,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								case "POST":
 									s.handleTestRequestRequiredBooleanRequest([0]string{}, elemIsEscaped, w, r)
 								default:
-									s.notAllowed(w, r, "POST")
+									s.notAllowed(w, r, notAllowedParams{
+										allowedMethods: "POST",
+										allowedHeaders: rn177AllowedHeaders,
+										acceptPost:     "application/json",
+										acceptPatch:    "",
+									})
 								}
 
 								return
@@ -3552,7 +7501,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "POST":
 											s.handleTestRequestRequiredBooleanArrayRequest([0]string{}, elemIsEscaped, w, r)
 										default:
-											s.notAllowed(w, r, "POST")
+											s.notAllowed(w, r, notAllowedParams{
+												allowedMethods: "POST",
+												allowedHeaders: rn178AllowedHeaders,
+												acceptPost:     "application/json",
+												acceptPatch:    "",
+											})
 										}
 
 										return
@@ -3572,7 +7526,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestRequestRequiredBooleanArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn179AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -3593,7 +7552,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "POST":
 											s.handleTestRequestRequiredBooleanNullableRequest([0]string{}, elemIsEscaped, w, r)
 										default:
-											s.notAllowed(w, r, "POST")
+											s.notAllowed(w, r, notAllowedParams{
+												allowedMethods: "POST",
+												allowedHeaders: rn181AllowedHeaders,
+												acceptPost:     "application/json",
+												acceptPatch:    "",
+											})
 										}
 
 										return
@@ -3612,7 +7576,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestRequestRequiredBooleanNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn182AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -3632,7 +7601,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestRequiredBooleanNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn183AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -3659,7 +7633,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								case "POST":
 									s.handleTestRequestRequiredIntegerRequest([0]string{}, elemIsEscaped, w, r)
 								default:
-									s.notAllowed(w, r, "POST")
+									s.notAllowed(w, r, notAllowedParams{
+										allowedMethods: "POST",
+										allowedHeaders: rn186AllowedHeaders,
+										acceptPost:     "application/json",
+										acceptPatch:    "",
+									})
 								}
 
 								return
@@ -3690,7 +7669,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "POST":
 											s.handleTestRequestRequiredIntegerArrayRequest([0]string{}, elemIsEscaped, w, r)
 										default:
-											s.notAllowed(w, r, "POST")
+											s.notAllowed(w, r, notAllowedParams{
+												allowedMethods: "POST",
+												allowedHeaders: rn187AllowedHeaders,
+												acceptPost:     "application/json",
+												acceptPatch:    "",
+											})
 										}
 
 										return
@@ -3710,7 +7694,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestRequestRequiredIntegerArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn188AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -3743,7 +7732,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestRequestRequiredIntegerInt16Request([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn190AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -3774,7 +7768,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestRequiredIntegerInt16ArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn191AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -3794,7 +7793,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestRequiredIntegerInt16ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn192AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -3815,7 +7819,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestRequiredIntegerInt16NullableRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn194AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -3834,7 +7843,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestRequiredIntegerInt16NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn195AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -3854,7 +7868,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestRequiredIntegerInt16NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn196AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -3881,7 +7900,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestRequestRequiredIntegerInt32Request([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn198AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -3912,7 +7936,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestRequiredIntegerInt32ArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn199AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -3932,7 +7961,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestRequiredIntegerInt32ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn200AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -3953,7 +7987,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestRequiredIntegerInt32NullableRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn202AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -3972,7 +8011,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestRequiredIntegerInt32NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn203AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -3992,7 +8036,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestRequiredIntegerInt32NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn204AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -4019,7 +8068,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestRequestRequiredIntegerInt64Request([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn205AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -4050,7 +8104,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestRequiredIntegerInt64ArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn206AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -4070,7 +8129,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestRequiredIntegerInt64ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn207AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -4091,7 +8155,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestRequiredIntegerInt64NullableRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn209AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -4110,7 +8179,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestRequiredIntegerInt64NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn210AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -4130,7 +8204,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestRequiredIntegerInt64NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn211AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -4157,7 +8236,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestRequestRequiredIntegerInt8Request([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn212AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -4188,7 +8272,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestRequiredIntegerInt8ArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn213AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -4208,7 +8297,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestRequiredIntegerInt8ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn214AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -4229,7 +8323,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestRequiredIntegerInt8NullableRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn216AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -4248,7 +8347,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestRequiredIntegerInt8NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn217AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -4268,7 +8372,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestRequiredIntegerInt8NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn218AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -4297,7 +8406,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "POST":
 											s.handleTestRequestRequiredIntegerNullableRequest([0]string{}, elemIsEscaped, w, r)
 										default:
-											s.notAllowed(w, r, "POST")
+											s.notAllowed(w, r, notAllowedParams{
+												allowedMethods: "POST",
+												allowedHeaders: rn219AllowedHeaders,
+												acceptPost:     "application/json",
+												acceptPatch:    "",
+											})
 										}
 
 										return
@@ -4316,7 +8430,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestRequestRequiredIntegerNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn220AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -4336,7 +8455,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestRequiredIntegerNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn221AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -4371,7 +8495,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestRequestRequiredIntegerUintRequest([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn222AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -4390,7 +8519,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestRequiredIntegerUint16Request([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn223AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -4421,7 +8555,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestRequiredIntegerUint16ArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn224AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -4441,7 +8580,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestRequiredIntegerUint16ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn225AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -4462,7 +8606,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestRequiredIntegerUint16NullableRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn227AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -4481,7 +8630,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestRequiredIntegerUint16NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn228AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -4501,7 +8655,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																case "POST":
 																	s.handleTestRequestRequiredIntegerUint16NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
-																	s.notAllowed(w, r, "POST")
+																	s.notAllowed(w, r, notAllowedParams{
+																		allowedMethods: "POST",
+																		allowedHeaders: rn229AllowedHeaders,
+																		acceptPost:     "application/json",
+																		acceptPatch:    "",
+																	})
 																}
 
 																return
@@ -4528,7 +8687,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestRequiredIntegerUint32Request([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn230AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -4559,7 +8723,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestRequiredIntegerUint32ArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn231AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -4579,7 +8748,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestRequiredIntegerUint32ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn232AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -4600,7 +8774,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestRequiredIntegerUint32NullableRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn234AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -4619,7 +8798,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestRequiredIntegerUint32NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn235AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -4639,7 +8823,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																case "POST":
 																	s.handleTestRequestRequiredIntegerUint32NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
-																	s.notAllowed(w, r, "POST")
+																	s.notAllowed(w, r, notAllowedParams{
+																		allowedMethods: "POST",
+																		allowedHeaders: rn236AllowedHeaders,
+																		acceptPost:     "application/json",
+																		acceptPatch:    "",
+																	})
 																}
 
 																return
@@ -4666,7 +8855,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestRequiredIntegerUint64Request([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn237AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -4697,7 +8891,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestRequiredIntegerUint64ArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn238AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -4717,7 +8916,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestRequiredIntegerUint64ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn239AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -4738,7 +8942,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestRequiredIntegerUint64NullableRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn241AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -4757,7 +8966,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestRequiredIntegerUint64NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn242AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -4777,7 +8991,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																case "POST":
 																	s.handleTestRequestRequiredIntegerUint64NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
-																	s.notAllowed(w, r, "POST")
+																	s.notAllowed(w, r, notAllowedParams{
+																		allowedMethods: "POST",
+																		allowedHeaders: rn243AllowedHeaders,
+																		acceptPost:     "application/json",
+																		acceptPatch:    "",
+																	})
 																}
 
 																return
@@ -4804,7 +9023,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestRequiredIntegerUint8Request([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn244AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -4835,7 +9059,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestRequiredIntegerUint8ArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn245AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -4855,7 +9084,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestRequiredIntegerUint8ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn246AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -4876,7 +9110,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestRequiredIntegerUint8NullableRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn248AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -4895,7 +9134,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestRequiredIntegerUint8NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn249AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -4915,7 +9159,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																case "POST":
 																	s.handleTestRequestRequiredIntegerUint8NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
-																	s.notAllowed(w, r, "POST")
+																	s.notAllowed(w, r, notAllowedParams{
+																		allowedMethods: "POST",
+																		allowedHeaders: rn250AllowedHeaders,
+																		acceptPost:     "application/json",
+																		acceptPatch:    "",
+																	})
 																}
 
 																return
@@ -4954,7 +9203,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestRequiredIntegerUintArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn251AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -4974,7 +9228,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestRequiredIntegerUintArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn252AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -4995,7 +9254,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestRequiredIntegerUintNullableRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn254AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -5014,7 +9278,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestRequiredIntegerUintNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn255AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -5034,7 +9303,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestRequiredIntegerUintNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn256AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -5061,7 +9335,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestRequestRequiredIntegerUnixRequest([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn258AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -5104,7 +9383,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestRequiredIntegerUnixMicroRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn261AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -5135,7 +9419,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																case "POST":
 																	s.handleTestRequestRequiredIntegerUnixMicroArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
-																	s.notAllowed(w, r, "POST")
+																	s.notAllowed(w, r, notAllowedParams{
+																		allowedMethods: "POST",
+																		allowedHeaders: rn262AllowedHeaders,
+																		acceptPost:     "application/json",
+																		acceptPatch:    "",
+																	})
 																}
 
 																return
@@ -5155,7 +9444,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	case "POST":
 																		s.handleTestRequestRequiredIntegerUnixMicroArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																	default:
-																		s.notAllowed(w, r, "POST")
+																		s.notAllowed(w, r, notAllowedParams{
+																			allowedMethods: "POST",
+																			allowedHeaders: rn263AllowedHeaders,
+																			acceptPost:     "application/json",
+																			acceptPatch:    "",
+																		})
 																	}
 
 																	return
@@ -5176,7 +9470,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																case "POST":
 																	s.handleTestRequestRequiredIntegerUnixMicroNullableRequest([0]string{}, elemIsEscaped, w, r)
 																default:
-																	s.notAllowed(w, r, "POST")
+																	s.notAllowed(w, r, notAllowedParams{
+																		allowedMethods: "POST",
+																		allowedHeaders: rn265AllowedHeaders,
+																		acceptPost:     "application/json",
+																		acceptPatch:    "",
+																	})
 																}
 
 																return
@@ -5195,7 +9494,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	case "POST":
 																		s.handleTestRequestRequiredIntegerUnixMicroNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 																	default:
-																		s.notAllowed(w, r, "POST")
+																		s.notAllowed(w, r, notAllowedParams{
+																			allowedMethods: "POST",
+																			allowedHeaders: rn266AllowedHeaders,
+																			acceptPost:     "application/json",
+																			acceptPatch:    "",
+																		})
 																	}
 
 																	return
@@ -5215,7 +9519,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																		case "POST":
 																			s.handleTestRequestRequiredIntegerUnixMicroNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																		default:
-																			s.notAllowed(w, r, "POST")
+																			s.notAllowed(w, r, notAllowedParams{
+																				allowedMethods: "POST",
+																				allowedHeaders: rn267AllowedHeaders,
+																				acceptPost:     "application/json",
+																				acceptPatch:    "",
+																			})
 																		}
 
 																		return
@@ -5242,7 +9551,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestRequiredIntegerUnixMilliRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn269AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -5273,7 +9587,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																case "POST":
 																	s.handleTestRequestRequiredIntegerUnixMilliArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
-																	s.notAllowed(w, r, "POST")
+																	s.notAllowed(w, r, notAllowedParams{
+																		allowedMethods: "POST",
+																		allowedHeaders: rn270AllowedHeaders,
+																		acceptPost:     "application/json",
+																		acceptPatch:    "",
+																	})
 																}
 
 																return
@@ -5293,7 +9612,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	case "POST":
 																		s.handleTestRequestRequiredIntegerUnixMilliArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																	default:
-																		s.notAllowed(w, r, "POST")
+																		s.notAllowed(w, r, notAllowedParams{
+																			allowedMethods: "POST",
+																			allowedHeaders: rn271AllowedHeaders,
+																			acceptPost:     "application/json",
+																			acceptPatch:    "",
+																		})
 																	}
 
 																	return
@@ -5314,7 +9638,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																case "POST":
 																	s.handleTestRequestRequiredIntegerUnixMilliNullableRequest([0]string{}, elemIsEscaped, w, r)
 																default:
-																	s.notAllowed(w, r, "POST")
+																	s.notAllowed(w, r, notAllowedParams{
+																		allowedMethods: "POST",
+																		allowedHeaders: rn273AllowedHeaders,
+																		acceptPost:     "application/json",
+																		acceptPatch:    "",
+																	})
 																}
 
 																return
@@ -5333,7 +9662,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	case "POST":
 																		s.handleTestRequestRequiredIntegerUnixMilliNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 																	default:
-																		s.notAllowed(w, r, "POST")
+																		s.notAllowed(w, r, notAllowedParams{
+																			allowedMethods: "POST",
+																			allowedHeaders: rn274AllowedHeaders,
+																			acceptPost:     "application/json",
+																			acceptPatch:    "",
+																		})
 																	}
 
 																	return
@@ -5353,7 +9687,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																		case "POST":
 																			s.handleTestRequestRequiredIntegerUnixMilliNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																		default:
-																			s.notAllowed(w, r, "POST")
+																			s.notAllowed(w, r, notAllowedParams{
+																				allowedMethods: "POST",
+																				allowedHeaders: rn275AllowedHeaders,
+																				acceptPost:     "application/json",
+																				acceptPatch:    "",
+																			})
 																		}
 
 																		return
@@ -5382,7 +9721,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestRequiredIntegerUnixNanoRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn277AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -5413,7 +9757,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestRequiredIntegerUnixNanoArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn278AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -5433,7 +9782,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																case "POST":
 																	s.handleTestRequestRequiredIntegerUnixNanoArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
-																	s.notAllowed(w, r, "POST")
+																	s.notAllowed(w, r, notAllowedParams{
+																		allowedMethods: "POST",
+																		allowedHeaders: rn279AllowedHeaders,
+																		acceptPost:     "application/json",
+																		acceptPatch:    "",
+																	})
 																}
 
 																return
@@ -5454,7 +9808,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestRequiredIntegerUnixNanoNullableRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn281AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -5473,7 +9832,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																case "POST":
 																	s.handleTestRequestRequiredIntegerUnixNanoNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
-																	s.notAllowed(w, r, "POST")
+																	s.notAllowed(w, r, notAllowedParams{
+																		allowedMethods: "POST",
+																		allowedHeaders: rn282AllowedHeaders,
+																		acceptPost:     "application/json",
+																		acceptPatch:    "",
+																	})
 																}
 
 																return
@@ -5493,7 +9857,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	case "POST":
 																		s.handleTestRequestRequiredIntegerUnixNanoNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																	default:
-																		s.notAllowed(w, r, "POST")
+																		s.notAllowed(w, r, notAllowedParams{
+																			allowedMethods: "POST",
+																			allowedHeaders: rn283AllowedHeaders,
+																			acceptPost:     "application/json",
+																			acceptPatch:    "",
+																		})
 																	}
 
 																	return
@@ -5520,7 +9889,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestRequiredIntegerUnixSecondsRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn288AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -5551,7 +9925,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestRequiredIntegerUnixSecondsArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn289AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -5571,7 +9950,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																case "POST":
 																	s.handleTestRequestRequiredIntegerUnixSecondsArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
-																	s.notAllowed(w, r, "POST")
+																	s.notAllowed(w, r, notAllowedParams{
+																		allowedMethods: "POST",
+																		allowedHeaders: rn290AllowedHeaders,
+																		acceptPost:     "application/json",
+																		acceptPatch:    "",
+																	})
 																}
 
 																return
@@ -5592,7 +9976,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestRequiredIntegerUnixSecondsNullableRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn292AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -5611,7 +10000,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																case "POST":
 																	s.handleTestRequestRequiredIntegerUnixSecondsNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
-																	s.notAllowed(w, r, "POST")
+																	s.notAllowed(w, r, notAllowedParams{
+																		allowedMethods: "POST",
+																		allowedHeaders: rn293AllowedHeaders,
+																		acceptPost:     "application/json",
+																		acceptPatch:    "",
+																	})
 																}
 
 																return
@@ -5631,7 +10025,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	case "POST":
 																		s.handleTestRequestRequiredIntegerUnixSecondsNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																	default:
-																		s.notAllowed(w, r, "POST")
+																		s.notAllowed(w, r, notAllowedParams{
+																			allowedMethods: "POST",
+																			allowedHeaders: rn294AllowedHeaders,
+																			acceptPost:     "application/json",
+																			acceptPatch:    "",
+																		})
 																	}
 
 																	return
@@ -5672,7 +10071,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestRequiredIntegerUnixArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn259AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -5692,7 +10096,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestRequiredIntegerUnixArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn260AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -5713,7 +10122,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestRequiredIntegerUnixNullableRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn285AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -5732,7 +10146,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestRequiredIntegerUnixNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn286AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -5752,7 +10171,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestRequiredIntegerUnixNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn287AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -5797,7 +10221,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									case "POST":
 										s.handleTestRequestRequiredNullRequest([0]string{}, elemIsEscaped, w, r)
 									default:
-										s.notAllowed(w, r, "POST")
+										s.notAllowed(w, r, notAllowedParams{
+											allowedMethods: "POST",
+											allowedHeaders: rn295AllowedHeaders,
+											acceptPost:     "application/json",
+											acceptPatch:    "",
+										})
 									}
 
 									return
@@ -5828,7 +10257,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestRequestRequiredNullArrayRequest([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn296AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -5848,7 +10282,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestRequiredNullArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn297AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -5869,7 +10308,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestRequestRequiredNullNullableRequest([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn299AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -5888,7 +10332,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestRequiredNullNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn300AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -5908,7 +10357,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestRequiredNullNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn301AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -5935,7 +10389,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									case "POST":
 										s.handleTestRequestRequiredNumberRequest([0]string{}, elemIsEscaped, w, r)
 									default:
-										s.notAllowed(w, r, "POST")
+										s.notAllowed(w, r, notAllowedParams{
+											allowedMethods: "POST",
+											allowedHeaders: rn303AllowedHeaders,
+											acceptPost:     "application/json",
+											acceptPatch:    "",
+										})
 									}
 
 									return
@@ -5966,7 +10425,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestRequestRequiredNumberArrayRequest([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn304AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -5986,7 +10450,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestRequiredNumberArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn305AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -6019,7 +10488,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestRequiredNumberDecimalRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn307AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -6050,7 +10524,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestRequiredNumberDecimalArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn308AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -6070,7 +10549,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestRequiredNumberDecimalArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn309AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -6091,7 +10575,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestRequiredNumberDecimalNullableRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn311AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -6110,7 +10599,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestRequiredNumberDecimalNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn312AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -6130,7 +10624,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																case "POST":
 																	s.handleTestRequestRequiredNumberDecimalNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
-																	s.notAllowed(w, r, "POST")
+																	s.notAllowed(w, r, notAllowedParams{
+																		allowedMethods: "POST",
+																		allowedHeaders: rn313AllowedHeaders,
+																		acceptPost:     "application/json",
+																		acceptPatch:    "",
+																	})
 																}
 
 																return
@@ -6157,7 +10656,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestRequiredNumberDoubleRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn315AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -6188,7 +10692,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestRequiredNumberDoubleArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn316AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -6208,7 +10717,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestRequiredNumberDoubleArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn317AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -6229,7 +10743,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestRequiredNumberDoubleNullableRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn319AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -6248,7 +10767,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestRequiredNumberDoubleNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn320AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -6268,7 +10792,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																case "POST":
 																	s.handleTestRequestRequiredNumberDoubleNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
-																	s.notAllowed(w, r, "POST")
+																	s.notAllowed(w, r, notAllowedParams{
+																		allowedMethods: "POST",
+																		allowedHeaders: rn321AllowedHeaders,
+																		acceptPost:     "application/json",
+																		acceptPatch:    "",
+																	})
 																}
 
 																return
@@ -6297,7 +10826,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestRequestRequiredNumberFloatRequest([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn322AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -6328,7 +10862,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestRequiredNumberFloatArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn323AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -6348,7 +10887,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestRequiredNumberFloatArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn324AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -6369,7 +10913,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestRequiredNumberFloatNullableRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn326AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -6388,7 +10937,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestRequiredNumberFloatNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn327AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -6408,7 +10962,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestRequiredNumberFloatNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn328AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -6447,7 +11006,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestRequiredNumberInt32Request([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn329AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -6478,7 +11042,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestRequiredNumberInt32ArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn330AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -6498,7 +11067,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestRequiredNumberInt32ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn331AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -6519,7 +11093,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestRequiredNumberInt32NullableRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn333AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -6538,7 +11117,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestRequiredNumberInt32NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn334AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -6558,7 +11142,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																case "POST":
 																	s.handleTestRequestRequiredNumberInt32NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
-																	s.notAllowed(w, r, "POST")
+																	s.notAllowed(w, r, notAllowedParams{
+																		allowedMethods: "POST",
+																		allowedHeaders: rn335AllowedHeaders,
+																		acceptPost:     "application/json",
+																		acceptPatch:    "",
+																	})
 																}
 
 																return
@@ -6585,7 +11174,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestRequiredNumberInt64Request([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn337AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -6616,7 +11210,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestRequiredNumberInt64ArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn338AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -6636,7 +11235,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestRequiredNumberInt64ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn339AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -6657,7 +11261,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestRequiredNumberInt64NullableRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn341AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -6676,7 +11285,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestRequiredNumberInt64NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn342AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -6696,7 +11310,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																case "POST":
 																	s.handleTestRequestRequiredNumberInt64NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
-																	s.notAllowed(w, r, "POST")
+																	s.notAllowed(w, r, notAllowedParams{
+																		allowedMethods: "POST",
+																		allowedHeaders: rn343AllowedHeaders,
+																		acceptPost:     "application/json",
+																		acceptPatch:    "",
+																	})
 																}
 
 																return
@@ -6725,7 +11344,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestRequestRequiredNumberNullableRequest([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn344AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -6744,7 +11368,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestRequiredNumberNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn345AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -6764,7 +11393,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestRequiredNumberNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn346AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -6793,7 +11427,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								case "POST":
 									s.handleTestRequestRequiredStringRequest([0]string{}, elemIsEscaped, w, r)
 								default:
-									s.notAllowed(w, r, "POST")
+									s.notAllowed(w, r, notAllowedParams{
+										allowedMethods: "POST",
+										allowedHeaders: rn347AllowedHeaders,
+										acceptPost:     "application/json",
+										acceptPatch:    "",
+									})
 								}
 
 								return
@@ -6824,7 +11463,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "POST":
 											s.handleTestRequestRequiredStringArrayRequest([0]string{}, elemIsEscaped, w, r)
 										default:
-											s.notAllowed(w, r, "POST")
+											s.notAllowed(w, r, notAllowedParams{
+												allowedMethods: "POST",
+												allowedHeaders: rn348AllowedHeaders,
+												acceptPost:     "application/json",
+												acceptPatch:    "",
+											})
 										}
 
 										return
@@ -6844,7 +11488,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestRequestRequiredStringArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn349AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -6877,7 +11526,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestRequestRequiredStringBase64Request([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn351AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -6908,7 +11562,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestRequiredStringBase64ArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn352AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -6928,7 +11587,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestRequiredStringBase64ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn353AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -6949,7 +11613,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestRequiredStringBase64NullableRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn355AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -6968,7 +11637,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestRequiredStringBase64NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn356AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -6988,7 +11662,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestRequiredStringBase64NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn357AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -7015,7 +11694,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestRequestRequiredStringBinaryRequest([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn359AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -7046,7 +11730,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestRequiredStringBinaryArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn360AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -7066,7 +11755,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestRequiredStringBinaryArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn361AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -7087,7 +11781,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestRequiredStringBinaryNullableRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn363AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -7106,7 +11805,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestRequiredStringBinaryNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn364AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -7126,7 +11830,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestRequiredStringBinaryNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn365AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -7153,7 +11862,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestRequestRequiredStringByteRequest([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn366AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -7184,7 +11898,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestRequiredStringByteArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn367AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -7204,7 +11923,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestRequiredStringByteArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn368AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -7225,7 +11949,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestRequiredStringByteNullableRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn370AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -7244,7 +11973,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestRequiredStringByteNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn371AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -7264,7 +11998,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestRequiredStringByteNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn372AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -7305,7 +12044,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestRequestRequiredStringDateRequest([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn373AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -7324,7 +12068,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestRequiredStringDateTimeRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn380AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -7355,7 +12104,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestRequiredStringDateTimeArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn381AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -7375,7 +12129,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestRequiredStringDateTimeArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn382AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -7396,7 +12155,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestRequiredStringDateTimeNullableRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn384AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -7415,7 +12179,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestRequiredStringDateTimeNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn385AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -7435,7 +12204,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																case "POST":
 																	s.handleTestRequestRequiredStringDateTimeNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
-																	s.notAllowed(w, r, "POST")
+																	s.notAllowed(w, r, notAllowedParams{
+																		allowedMethods: "POST",
+																		allowedHeaders: rn386AllowedHeaders,
+																		acceptPost:     "application/json",
+																		acceptPatch:    "",
+																	})
 																}
 
 																return
@@ -7474,7 +12248,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestRequiredStringDateArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn374AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -7494,7 +12273,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestRequiredStringDateArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn375AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -7515,7 +12299,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestRequiredStringDateNullableRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn377AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -7534,7 +12323,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestRequiredStringDateNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn378AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -7554,7 +12348,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestRequiredStringDateNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn379AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -7581,7 +12380,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestRequestRequiredStringDecimalRequest([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn388AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -7612,7 +12416,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestRequiredStringDecimalArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn389AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -7632,7 +12441,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestRequiredStringDecimalArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn390AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -7653,7 +12467,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestRequiredStringDecimalNullableRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn392AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -7672,7 +12491,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestRequiredStringDecimalNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn393AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -7692,7 +12516,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestRequiredStringDecimalNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn394AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -7719,7 +12548,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestRequestRequiredStringDurationRequest([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn395AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -7750,7 +12584,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestRequiredStringDurationArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn396AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -7770,7 +12609,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestRequiredStringDurationArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn397AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -7791,7 +12635,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestRequiredStringDurationNullableRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn399AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -7810,7 +12659,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestRequiredStringDurationNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn400AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -7830,7 +12684,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestRequiredStringDurationNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn401AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -7859,7 +12718,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "POST":
 											s.handleTestRequestRequiredStringEmailRequest([0]string{}, elemIsEscaped, w, r)
 										default:
-											s.notAllowed(w, r, "POST")
+											s.notAllowed(w, r, notAllowedParams{
+												allowedMethods: "POST",
+												allowedHeaders: rn402AllowedHeaders,
+												acceptPost:     "application/json",
+												acceptPatch:    "",
+											})
 										}
 
 										return
@@ -7890,7 +12754,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestRequiredStringEmailArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn403AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -7910,7 +12779,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestRequiredStringEmailArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn404AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -7931,7 +12805,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestRequiredStringEmailNullableRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn406AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -7950,7 +12829,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestRequiredStringEmailNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn407AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -7970,7 +12854,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestRequiredStringEmailNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn408AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -8009,7 +12898,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestRequestRequiredStringFloat32Request([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn409AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -8040,7 +12934,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestRequiredStringFloat32ArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn410AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -8060,7 +12959,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestRequiredStringFloat32ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn411AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -8081,7 +12985,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestRequiredStringFloat32NullableRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn413AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -8100,7 +13009,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestRequiredStringFloat32NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn414AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -8120,7 +13034,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestRequiredStringFloat32NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn415AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -8147,7 +13066,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestRequestRequiredStringFloat64Request([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn417AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -8178,7 +13102,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestRequiredStringFloat64ArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn418AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -8198,7 +13127,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestRequiredStringFloat64ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn419AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -8219,7 +13153,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestRequiredStringFloat64NullableRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn421AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -8238,7 +13177,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestRequiredStringFloat64NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn422AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -8258,7 +13202,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestRequiredStringFloat64NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn423AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -8299,7 +13248,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestRequestRequiredStringHostnameRequest([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn432AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -8330,7 +13284,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestRequiredStringHostnameArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn433AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -8350,7 +13309,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestRequiredStringHostnameArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn434AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -8371,7 +13335,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestRequiredStringHostnameNullableRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn436AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -8390,7 +13359,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestRequiredStringHostnameNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn437AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -8410,7 +13384,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestRequiredStringHostnameNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn438AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -8437,7 +13416,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestRequestRequiredStringHTTPDateRequest([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn424AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -8468,7 +13452,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestRequiredStringHTTPDateArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn425AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -8488,7 +13477,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestRequiredStringHTTPDateArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn426AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -8509,7 +13503,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestRequiredStringHTTPDateNullableRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn428AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -8528,7 +13527,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestRequiredStringHTTPDateNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn429AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -8548,7 +13552,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestRequiredStringHTTPDateNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn430AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -8589,7 +13598,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestRequestRequiredStringIntRequest([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn447AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -8608,7 +13622,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestRequiredStringInt16Request([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn448AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -8639,7 +13658,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestRequiredStringInt16ArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn449AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -8659,7 +13683,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestRequiredStringInt16ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn450AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -8680,7 +13709,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestRequiredStringInt16NullableRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn452AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -8699,7 +13733,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestRequiredStringInt16NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn453AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -8719,7 +13758,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																case "POST":
 																	s.handleTestRequestRequiredStringInt16NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
-																	s.notAllowed(w, r, "POST")
+																	s.notAllowed(w, r, notAllowedParams{
+																		allowedMethods: "POST",
+																		allowedHeaders: rn454AllowedHeaders,
+																		acceptPost:     "application/json",
+																		acceptPatch:    "",
+																	})
 																}
 
 																return
@@ -8746,7 +13790,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestRequiredStringInt32Request([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn455AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -8777,7 +13826,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestRequiredStringInt32ArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn456AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -8797,7 +13851,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestRequiredStringInt32ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn457AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -8818,7 +13877,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestRequiredStringInt32NullableRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn459AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -8837,7 +13901,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestRequiredStringInt32NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn460AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -8857,7 +13926,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																case "POST":
 																	s.handleTestRequestRequiredStringInt32NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
-																	s.notAllowed(w, r, "POST")
+																	s.notAllowed(w, r, notAllowedParams{
+																		allowedMethods: "POST",
+																		allowedHeaders: rn461AllowedHeaders,
+																		acceptPost:     "application/json",
+																		acceptPatch:    "",
+																	})
 																}
 
 																return
@@ -8884,7 +13958,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestRequiredStringInt64Request([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn462AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -8915,7 +13994,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestRequiredStringInt64ArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn463AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -8935,7 +14019,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestRequiredStringInt64ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn464AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -8956,7 +14045,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestRequiredStringInt64NullableRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn466AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -8975,7 +14069,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestRequiredStringInt64NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn467AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -8995,7 +14094,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																case "POST":
 																	s.handleTestRequestRequiredStringInt64NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
-																	s.notAllowed(w, r, "POST")
+																	s.notAllowed(w, r, notAllowedParams{
+																		allowedMethods: "POST",
+																		allowedHeaders: rn468AllowedHeaders,
+																		acceptPost:     "application/json",
+																		acceptPatch:    "",
+																	})
 																}
 
 																return
@@ -9022,7 +14126,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestRequiredStringInt8Request([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn469AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -9053,7 +14162,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestRequiredStringInt8ArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn470AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -9073,7 +14187,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestRequiredStringInt8ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn471AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -9094,7 +14213,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestRequiredStringInt8NullableRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn473AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -9113,7 +14237,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestRequiredStringInt8NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn474AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -9133,7 +14262,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																case "POST":
 																	s.handleTestRequestRequiredStringInt8NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
-																	s.notAllowed(w, r, "POST")
+																	s.notAllowed(w, r, notAllowedParams{
+																		allowedMethods: "POST",
+																		allowedHeaders: rn475AllowedHeaders,
+																		acceptPost:     "application/json",
+																		acceptPatch:    "",
+																	})
 																}
 
 																return
@@ -9172,7 +14306,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestRequiredStringIntArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn476AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -9192,7 +14331,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestRequiredStringIntArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn477AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -9213,7 +14357,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestRequiredStringIntNullableRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn479AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -9232,7 +14381,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestRequiredStringIntNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn480AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -9252,7 +14406,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestRequiredStringIntNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn481AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -9279,7 +14438,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestRequestRequiredStringIPRequest([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn439AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -9310,7 +14474,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestRequiredStringIPArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn440AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -9330,7 +14499,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestRequiredStringIPArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn441AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -9351,7 +14525,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestRequiredStringIPNullableRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn443AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -9370,7 +14549,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestRequiredStringIPNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn444AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -9390,7 +14574,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestRequiredStringIPNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn445AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -9427,7 +14616,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestRequiredStringIpv4Request([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn482AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -9458,7 +14652,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestRequiredStringIpv4ArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn483AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -9478,7 +14677,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																case "POST":
 																	s.handleTestRequestRequiredStringIpv4ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
-																	s.notAllowed(w, r, "POST")
+																	s.notAllowed(w, r, notAllowedParams{
+																		allowedMethods: "POST",
+																		allowedHeaders: rn484AllowedHeaders,
+																		acceptPost:     "application/json",
+																		acceptPatch:    "",
+																	})
 																}
 
 																return
@@ -9499,7 +14703,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestRequiredStringIpv4NullableRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn486AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -9518,7 +14727,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																case "POST":
 																	s.handleTestRequestRequiredStringIpv4NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
-																	s.notAllowed(w, r, "POST")
+																	s.notAllowed(w, r, notAllowedParams{
+																		allowedMethods: "POST",
+																		allowedHeaders: rn487AllowedHeaders,
+																		acceptPost:     "application/json",
+																		acceptPatch:    "",
+																	})
 																}
 
 																return
@@ -9538,7 +14752,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	case "POST":
 																		s.handleTestRequestRequiredStringIpv4NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																	default:
-																		s.notAllowed(w, r, "POST")
+																		s.notAllowed(w, r, notAllowedParams{
+																			allowedMethods: "POST",
+																			allowedHeaders: rn488AllowedHeaders,
+																			acceptPost:     "application/json",
+																			acceptPatch:    "",
+																		})
 																	}
 
 																	return
@@ -9565,7 +14784,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestRequiredStringIpv6Request([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn490AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -9596,7 +14820,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestRequiredStringIpv6ArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn491AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -9616,7 +14845,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																case "POST":
 																	s.handleTestRequestRequiredStringIpv6ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
-																	s.notAllowed(w, r, "POST")
+																	s.notAllowed(w, r, notAllowedParams{
+																		allowedMethods: "POST",
+																		allowedHeaders: rn492AllowedHeaders,
+																		acceptPost:     "application/json",
+																		acceptPatch:    "",
+																	})
 																}
 
 																return
@@ -9637,7 +14871,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestRequiredStringIpv6NullableRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn494AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -9656,7 +14895,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																case "POST":
 																	s.handleTestRequestRequiredStringIpv6NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
-																	s.notAllowed(w, r, "POST")
+																	s.notAllowed(w, r, notAllowedParams{
+																		allowedMethods: "POST",
+																		allowedHeaders: rn495AllowedHeaders,
+																		acceptPost:     "application/json",
+																		acceptPatch:    "",
+																	})
 																}
 
 																return
@@ -9676,7 +14920,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	case "POST":
 																		s.handleTestRequestRequiredStringIpv6NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																	default:
-																		s.notAllowed(w, r, "POST")
+																		s.notAllowed(w, r, notAllowedParams{
+																			allowedMethods: "POST",
+																			allowedHeaders: rn496AllowedHeaders,
+																			acceptPost:     "application/json",
+																			acceptPatch:    "",
+																		})
 																	}
 
 																	return
@@ -9709,7 +14958,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "POST":
 											s.handleTestRequestRequiredStringMACRequest([0]string{}, elemIsEscaped, w, r)
 										default:
-											s.notAllowed(w, r, "POST")
+											s.notAllowed(w, r, notAllowedParams{
+												allowedMethods: "POST",
+												allowedHeaders: rn497AllowedHeaders,
+												acceptPost:     "application/json",
+												acceptPatch:    "",
+											})
 										}
 
 										return
@@ -9740,7 +14994,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestRequiredStringMACArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn498AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -9760,7 +15019,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestRequiredStringMACArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn499AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -9781,7 +15045,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestRequiredStringMACNullableRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn501AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -9800,7 +15069,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestRequiredStringMACNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn502AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -9820,7 +15094,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestRequiredStringMACNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn503AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -9847,7 +15126,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "POST":
 											s.handleTestRequestRequiredStringNullableRequest([0]string{}, elemIsEscaped, w, r)
 										default:
-											s.notAllowed(w, r, "POST")
+											s.notAllowed(w, r, notAllowedParams{
+												allowedMethods: "POST",
+												allowedHeaders: rn504AllowedHeaders,
+												acceptPost:     "application/json",
+												acceptPatch:    "",
+											})
 										}
 
 										return
@@ -9866,7 +15150,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestRequestRequiredStringNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn505AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -9886,7 +15175,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestRequiredStringNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn506AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -9909,7 +15203,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "POST":
 											s.handleTestRequestRequiredStringPasswordRequest([0]string{}, elemIsEscaped, w, r)
 										default:
-											s.notAllowed(w, r, "POST")
+											s.notAllowed(w, r, notAllowedParams{
+												allowedMethods: "POST",
+												allowedHeaders: rn507AllowedHeaders,
+												acceptPost:     "application/json",
+												acceptPatch:    "",
+											})
 										}
 
 										return
@@ -9940,7 +15239,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestRequiredStringPasswordArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn508AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -9960,7 +15264,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestRequiredStringPasswordArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn509AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -9981,7 +15290,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestRequiredStringPasswordNullableRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn511AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -10000,7 +15314,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestRequiredStringPasswordNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn512AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -10020,7 +15339,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestRequiredStringPasswordNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn513AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -10047,7 +15371,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "POST":
 											s.handleTestRequestRequiredStringTimeRequest([0]string{}, elemIsEscaped, w, r)
 										default:
-											s.notAllowed(w, r, "POST")
+											s.notAllowed(w, r, notAllowedParams{
+												allowedMethods: "POST",
+												allowedHeaders: rn514AllowedHeaders,
+												acceptPost:     "application/json",
+												acceptPatch:    "",
+											})
 										}
 
 										return
@@ -10078,7 +15407,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestRequiredStringTimeArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn515AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -10098,7 +15432,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestRequiredStringTimeArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn516AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -10119,7 +15458,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestRequiredStringTimeNullableRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn518AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -10138,7 +15482,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestRequiredStringTimeNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn519AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -10158,7 +15507,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestRequiredStringTimeNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn520AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -10197,7 +15551,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestRequestRequiredStringUintRequest([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn536AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -10216,7 +15575,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestRequiredStringUint16Request([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn537AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -10247,7 +15611,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestRequiredStringUint16ArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn538AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -10267,7 +15636,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestRequiredStringUint16ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn539AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -10288,7 +15662,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestRequiredStringUint16NullableRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn541AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -10307,7 +15686,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestRequiredStringUint16NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn542AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -10327,7 +15711,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																case "POST":
 																	s.handleTestRequestRequiredStringUint16NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
-																	s.notAllowed(w, r, "POST")
+																	s.notAllowed(w, r, notAllowedParams{
+																		allowedMethods: "POST",
+																		allowedHeaders: rn543AllowedHeaders,
+																		acceptPost:     "application/json",
+																		acceptPatch:    "",
+																	})
 																}
 
 																return
@@ -10354,7 +15743,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestRequiredStringUint32Request([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn544AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -10385,7 +15779,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestRequiredStringUint32ArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn545AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -10405,7 +15804,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestRequiredStringUint32ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn546AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -10426,7 +15830,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestRequiredStringUint32NullableRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn548AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -10445,7 +15854,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestRequiredStringUint32NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn549AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -10465,7 +15879,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																case "POST":
 																	s.handleTestRequestRequiredStringUint32NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
-																	s.notAllowed(w, r, "POST")
+																	s.notAllowed(w, r, notAllowedParams{
+																		allowedMethods: "POST",
+																		allowedHeaders: rn550AllowedHeaders,
+																		acceptPost:     "application/json",
+																		acceptPatch:    "",
+																	})
 																}
 
 																return
@@ -10492,7 +15911,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestRequiredStringUint64Request([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn551AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -10523,7 +15947,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestRequiredStringUint64ArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn552AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -10543,7 +15972,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestRequiredStringUint64ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn553AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -10564,7 +15998,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestRequiredStringUint64NullableRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn555AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -10583,7 +16022,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestRequiredStringUint64NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn556AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -10603,7 +16047,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																case "POST":
 																	s.handleTestRequestRequiredStringUint64NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
-																	s.notAllowed(w, r, "POST")
+																	s.notAllowed(w, r, notAllowedParams{
+																		allowedMethods: "POST",
+																		allowedHeaders: rn557AllowedHeaders,
+																		acceptPost:     "application/json",
+																		acceptPatch:    "",
+																	})
 																}
 
 																return
@@ -10630,7 +16079,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestRequiredStringUint8Request([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn558AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -10661,7 +16115,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestRequiredStringUint8ArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn559AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -10681,7 +16140,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestRequiredStringUint8ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn560AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -10702,7 +16166,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestRequiredStringUint8NullableRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn562AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -10721,7 +16190,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestRequiredStringUint8NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn563AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -10741,7 +16215,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																case "POST":
 																	s.handleTestRequestRequiredStringUint8NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
-																	s.notAllowed(w, r, "POST")
+																	s.notAllowed(w, r, notAllowedParams{
+																		allowedMethods: "POST",
+																		allowedHeaders: rn564AllowedHeaders,
+																		acceptPost:     "application/json",
+																		acceptPatch:    "",
+																	})
 																}
 
 																return
@@ -10780,7 +16259,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestRequiredStringUintArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn565AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -10800,7 +16284,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestRequiredStringUintArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn566AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -10821,7 +16310,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestRequiredStringUintNullableRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn568AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -10840,7 +16334,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestRequiredStringUintNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn569AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -10860,7 +16359,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestRequiredStringUintNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn570AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -10887,7 +16391,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestRequestRequiredStringUnixRequest([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn571AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -10930,7 +16439,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestRequiredStringUnixMicroRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn574AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -10961,7 +16475,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																case "POST":
 																	s.handleTestRequestRequiredStringUnixMicroArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
-																	s.notAllowed(w, r, "POST")
+																	s.notAllowed(w, r, notAllowedParams{
+																		allowedMethods: "POST",
+																		allowedHeaders: rn575AllowedHeaders,
+																		acceptPost:     "application/json",
+																		acceptPatch:    "",
+																	})
 																}
 
 																return
@@ -10981,7 +16500,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	case "POST":
 																		s.handleTestRequestRequiredStringUnixMicroArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																	default:
-																		s.notAllowed(w, r, "POST")
+																		s.notAllowed(w, r, notAllowedParams{
+																			allowedMethods: "POST",
+																			allowedHeaders: rn576AllowedHeaders,
+																			acceptPost:     "application/json",
+																			acceptPatch:    "",
+																		})
 																	}
 
 																	return
@@ -11002,7 +16526,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																case "POST":
 																	s.handleTestRequestRequiredStringUnixMicroNullableRequest([0]string{}, elemIsEscaped, w, r)
 																default:
-																	s.notAllowed(w, r, "POST")
+																	s.notAllowed(w, r, notAllowedParams{
+																		allowedMethods: "POST",
+																		allowedHeaders: rn578AllowedHeaders,
+																		acceptPost:     "application/json",
+																		acceptPatch:    "",
+																	})
 																}
 
 																return
@@ -11021,7 +16550,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	case "POST":
 																		s.handleTestRequestRequiredStringUnixMicroNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 																	default:
-																		s.notAllowed(w, r, "POST")
+																		s.notAllowed(w, r, notAllowedParams{
+																			allowedMethods: "POST",
+																			allowedHeaders: rn579AllowedHeaders,
+																			acceptPost:     "application/json",
+																			acceptPatch:    "",
+																		})
 																	}
 
 																	return
@@ -11041,7 +16575,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																		case "POST":
 																			s.handleTestRequestRequiredStringUnixMicroNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																		default:
-																			s.notAllowed(w, r, "POST")
+																			s.notAllowed(w, r, notAllowedParams{
+																				allowedMethods: "POST",
+																				allowedHeaders: rn580AllowedHeaders,
+																				acceptPost:     "application/json",
+																				acceptPatch:    "",
+																			})
 																		}
 
 																		return
@@ -11068,7 +16607,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestRequiredStringUnixMilliRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn582AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -11099,7 +16643,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																case "POST":
 																	s.handleTestRequestRequiredStringUnixMilliArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
-																	s.notAllowed(w, r, "POST")
+																	s.notAllowed(w, r, notAllowedParams{
+																		allowedMethods: "POST",
+																		allowedHeaders: rn583AllowedHeaders,
+																		acceptPost:     "application/json",
+																		acceptPatch:    "",
+																	})
 																}
 
 																return
@@ -11119,7 +16668,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	case "POST":
 																		s.handleTestRequestRequiredStringUnixMilliArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																	default:
-																		s.notAllowed(w, r, "POST")
+																		s.notAllowed(w, r, notAllowedParams{
+																			allowedMethods: "POST",
+																			allowedHeaders: rn584AllowedHeaders,
+																			acceptPost:     "application/json",
+																			acceptPatch:    "",
+																		})
 																	}
 
 																	return
@@ -11140,7 +16694,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																case "POST":
 																	s.handleTestRequestRequiredStringUnixMilliNullableRequest([0]string{}, elemIsEscaped, w, r)
 																default:
-																	s.notAllowed(w, r, "POST")
+																	s.notAllowed(w, r, notAllowedParams{
+																		allowedMethods: "POST",
+																		allowedHeaders: rn586AllowedHeaders,
+																		acceptPost:     "application/json",
+																		acceptPatch:    "",
+																	})
 																}
 
 																return
@@ -11159,7 +16718,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	case "POST":
 																		s.handleTestRequestRequiredStringUnixMilliNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 																	default:
-																		s.notAllowed(w, r, "POST")
+																		s.notAllowed(w, r, notAllowedParams{
+																			allowedMethods: "POST",
+																			allowedHeaders: rn587AllowedHeaders,
+																			acceptPost:     "application/json",
+																			acceptPatch:    "",
+																		})
 																	}
 
 																	return
@@ -11179,7 +16743,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																		case "POST":
 																			s.handleTestRequestRequiredStringUnixMilliNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																		default:
-																			s.notAllowed(w, r, "POST")
+																			s.notAllowed(w, r, notAllowedParams{
+																				allowedMethods: "POST",
+																				allowedHeaders: rn588AllowedHeaders,
+																				acceptPost:     "application/json",
+																				acceptPatch:    "",
+																			})
 																		}
 
 																		return
@@ -11208,7 +16777,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestRequiredStringUnixNanoRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn590AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -11239,7 +16813,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestRequiredStringUnixNanoArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn591AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -11259,7 +16838,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																case "POST":
 																	s.handleTestRequestRequiredStringUnixNanoArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
-																	s.notAllowed(w, r, "POST")
+																	s.notAllowed(w, r, notAllowedParams{
+																		allowedMethods: "POST",
+																		allowedHeaders: rn592AllowedHeaders,
+																		acceptPost:     "application/json",
+																		acceptPatch:    "",
+																	})
 																}
 
 																return
@@ -11280,7 +16864,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestRequiredStringUnixNanoNullableRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn594AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -11299,7 +16888,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																case "POST":
 																	s.handleTestRequestRequiredStringUnixNanoNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
-																	s.notAllowed(w, r, "POST")
+																	s.notAllowed(w, r, notAllowedParams{
+																		allowedMethods: "POST",
+																		allowedHeaders: rn595AllowedHeaders,
+																		acceptPost:     "application/json",
+																		acceptPatch:    "",
+																	})
 																}
 
 																return
@@ -11319,7 +16913,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	case "POST":
 																		s.handleTestRequestRequiredStringUnixNanoNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																	default:
-																		s.notAllowed(w, r, "POST")
+																		s.notAllowed(w, r, notAllowedParams{
+																			allowedMethods: "POST",
+																			allowedHeaders: rn596AllowedHeaders,
+																			acceptPost:     "application/json",
+																			acceptPatch:    "",
+																		})
 																	}
 
 																	return
@@ -11346,7 +16945,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestRequiredStringUnixSecondsRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn601AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -11377,7 +16981,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestRequiredStringUnixSecondsArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn602AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -11397,7 +17006,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																case "POST":
 																	s.handleTestRequestRequiredStringUnixSecondsArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
-																	s.notAllowed(w, r, "POST")
+																	s.notAllowed(w, r, notAllowedParams{
+																		allowedMethods: "POST",
+																		allowedHeaders: rn603AllowedHeaders,
+																		acceptPost:     "application/json",
+																		acceptPatch:    "",
+																	})
 																}
 
 																return
@@ -11418,7 +17032,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestRequiredStringUnixSecondsNullableRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn605AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -11437,7 +17056,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																case "POST":
 																	s.handleTestRequestRequiredStringUnixSecondsNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
-																	s.notAllowed(w, r, "POST")
+																	s.notAllowed(w, r, notAllowedParams{
+																		allowedMethods: "POST",
+																		allowedHeaders: rn606AllowedHeaders,
+																		acceptPost:     "application/json",
+																		acceptPatch:    "",
+																	})
 																}
 
 																return
@@ -11457,7 +17081,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	case "POST":
 																		s.handleTestRequestRequiredStringUnixSecondsNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																	default:
-																		s.notAllowed(w, r, "POST")
+																		s.notAllowed(w, r, notAllowedParams{
+																			allowedMethods: "POST",
+																			allowedHeaders: rn607AllowedHeaders,
+																			acceptPost:     "application/json",
+																			acceptPatch:    "",
+																		})
 																	}
 
 																	return
@@ -11498,7 +17127,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestRequiredStringUnixArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn572AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -11518,7 +17152,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestRequiredStringUnixArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn573AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -11539,7 +17178,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestRequiredStringUnixNullableRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn598AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -11558,7 +17202,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestRequiredStringUnixNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn599AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -11578,7 +17227,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestRequiredStringUnixNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn600AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -11605,7 +17259,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestRequestRequiredStringURIRequest([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn521AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -11636,7 +17295,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestRequiredStringURIArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn522AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -11656,7 +17320,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestRequiredStringURIArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn523AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -11677,7 +17346,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestRequiredStringURINullableRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn525AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -11696,7 +17370,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestRequiredStringURINullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn526AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -11716,7 +17395,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestRequiredStringURINullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn527AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -11743,7 +17427,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestRequestRequiredStringUUIDRequest([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn529AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -11774,7 +17463,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestRequiredStringUUIDArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn530AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -11794,7 +17488,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestRequiredStringUUIDArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn531AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -11815,7 +17514,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestRequiredStringUUIDNullableRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn533AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -11834,7 +17538,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestRequiredStringUUIDNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn534AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -11854,7 +17563,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestRequiredStringUUIDNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn535AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -11889,7 +17603,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "POST":
 								s.handleTestRequestStringRequest([0]string{}, elemIsEscaped, w, r)
 							default:
-								s.notAllowed(w, r, "POST")
+								s.notAllowed(w, r, notAllowedParams{
+									allowedMethods: "POST",
+									allowedHeaders: rn608AllowedHeaders,
+									acceptPost:     "application/json",
+									acceptPatch:    "",
+								})
 							}
 
 							return
@@ -11920,7 +17639,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									case "POST":
 										s.handleTestRequestStringArrayRequest([0]string{}, elemIsEscaped, w, r)
 									default:
-										s.notAllowed(w, r, "POST")
+										s.notAllowed(w, r, notAllowedParams{
+											allowedMethods: "POST",
+											allowedHeaders: rn609AllowedHeaders,
+											acceptPost:     "application/json",
+											acceptPatch:    "",
+										})
 									}
 
 									return
@@ -11940,7 +17664,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "POST":
 											s.handleTestRequestStringArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 										default:
-											s.notAllowed(w, r, "POST")
+											s.notAllowed(w, r, notAllowedParams{
+												allowedMethods: "POST",
+												allowedHeaders: rn610AllowedHeaders,
+												acceptPost:     "application/json",
+												acceptPatch:    "",
+											})
 										}
 
 										return
@@ -11973,7 +17702,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "POST":
 											s.handleTestRequestStringBase64Request([0]string{}, elemIsEscaped, w, r)
 										default:
-											s.notAllowed(w, r, "POST")
+											s.notAllowed(w, r, notAllowedParams{
+												allowedMethods: "POST",
+												allowedHeaders: rn612AllowedHeaders,
+												acceptPost:     "application/json",
+												acceptPatch:    "",
+											})
 										}
 
 										return
@@ -12004,7 +17738,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestStringBase64ArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn613AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -12024,7 +17763,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestStringBase64ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn614AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -12045,7 +17789,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestStringBase64NullableRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn616AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -12064,7 +17813,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestStringBase64NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn617AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -12084,7 +17838,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestStringBase64NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn618AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -12111,7 +17870,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "POST":
 											s.handleTestRequestStringBinaryRequest([0]string{}, elemIsEscaped, w, r)
 										default:
-											s.notAllowed(w, r, "POST")
+											s.notAllowed(w, r, notAllowedParams{
+												allowedMethods: "POST",
+												allowedHeaders: rn620AllowedHeaders,
+												acceptPost:     "application/json",
+												acceptPatch:    "",
+											})
 										}
 
 										return
@@ -12142,7 +17906,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestStringBinaryArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn621AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -12162,7 +17931,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestStringBinaryArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn622AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -12183,7 +17957,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestStringBinaryNullableRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn624AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -12202,7 +17981,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestStringBinaryNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn625AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -12222,7 +18006,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestStringBinaryNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn626AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -12249,7 +18038,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "POST":
 											s.handleTestRequestStringByteRequest([0]string{}, elemIsEscaped, w, r)
 										default:
-											s.notAllowed(w, r, "POST")
+											s.notAllowed(w, r, notAllowedParams{
+												allowedMethods: "POST",
+												allowedHeaders: rn627AllowedHeaders,
+												acceptPost:     "application/json",
+												acceptPatch:    "",
+											})
 										}
 
 										return
@@ -12280,7 +18074,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestStringByteArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn628AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -12300,7 +18099,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestStringByteArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn629AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -12321,7 +18125,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestStringByteNullableRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn631AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -12340,7 +18149,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestStringByteNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn632AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -12360,7 +18174,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestStringByteNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn633AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -12401,7 +18220,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "POST":
 											s.handleTestRequestStringDateRequest([0]string{}, elemIsEscaped, w, r)
 										default:
-											s.notAllowed(w, r, "POST")
+											s.notAllowed(w, r, notAllowedParams{
+												allowedMethods: "POST",
+												allowedHeaders: rn634AllowedHeaders,
+												acceptPost:     "application/json",
+												acceptPatch:    "",
+											})
 										}
 
 										return
@@ -12420,7 +18244,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestRequestStringDateTimeRequest([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn641AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -12451,7 +18280,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestStringDateTimeArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn642AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -12471,7 +18305,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestStringDateTimeArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn643AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -12492,7 +18331,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestStringDateTimeNullableRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn645AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -12511,7 +18355,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestStringDateTimeNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn646AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -12531,7 +18380,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestStringDateTimeNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn647AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -12570,7 +18424,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestStringDateArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn635AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -12590,7 +18449,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestStringDateArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn636AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -12611,7 +18475,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestStringDateNullableRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn638AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -12630,7 +18499,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestStringDateNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn639AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -12650,7 +18524,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestStringDateNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn640AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -12677,7 +18556,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "POST":
 											s.handleTestRequestStringDecimalRequest([0]string{}, elemIsEscaped, w, r)
 										default:
-											s.notAllowed(w, r, "POST")
+											s.notAllowed(w, r, notAllowedParams{
+												allowedMethods: "POST",
+												allowedHeaders: rn649AllowedHeaders,
+												acceptPost:     "application/json",
+												acceptPatch:    "",
+											})
 										}
 
 										return
@@ -12708,7 +18592,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestStringDecimalArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn650AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -12728,7 +18617,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestStringDecimalArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn651AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -12749,7 +18643,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestStringDecimalNullableRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn653AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -12768,7 +18667,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestStringDecimalNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn654AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -12788,7 +18692,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestStringDecimalNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn655AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -12815,7 +18724,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "POST":
 											s.handleTestRequestStringDurationRequest([0]string{}, elemIsEscaped, w, r)
 										default:
-											s.notAllowed(w, r, "POST")
+											s.notAllowed(w, r, notAllowedParams{
+												allowedMethods: "POST",
+												allowedHeaders: rn656AllowedHeaders,
+												acceptPost:     "application/json",
+												acceptPatch:    "",
+											})
 										}
 
 										return
@@ -12846,7 +18760,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestStringDurationArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn657AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -12866,7 +18785,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestStringDurationArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn658AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -12887,7 +18811,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestStringDurationNullableRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn660AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -12906,7 +18835,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestStringDurationNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn661AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -12926,7 +18860,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestStringDurationNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn662AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -12955,7 +18894,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									case "POST":
 										s.handleTestRequestStringEmailRequest([0]string{}, elemIsEscaped, w, r)
 									default:
-										s.notAllowed(w, r, "POST")
+										s.notAllowed(w, r, notAllowedParams{
+											allowedMethods: "POST",
+											allowedHeaders: rn663AllowedHeaders,
+											acceptPost:     "application/json",
+											acceptPatch:    "",
+										})
 									}
 
 									return
@@ -12986,7 +18930,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestRequestStringEmailArrayRequest([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn664AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -13006,7 +18955,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestStringEmailArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn665AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -13027,7 +18981,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestRequestStringEmailNullableRequest([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn667AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -13046,7 +19005,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestStringEmailNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn668AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -13066,7 +19030,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestStringEmailNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn669AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -13105,7 +19074,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "POST":
 											s.handleTestRequestStringFloat32Request([0]string{}, elemIsEscaped, w, r)
 										default:
-											s.notAllowed(w, r, "POST")
+											s.notAllowed(w, r, notAllowedParams{
+												allowedMethods: "POST",
+												allowedHeaders: rn670AllowedHeaders,
+												acceptPost:     "application/json",
+												acceptPatch:    "",
+											})
 										}
 
 										return
@@ -13136,7 +19110,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestStringFloat32ArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn671AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -13156,7 +19135,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestStringFloat32ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn672AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -13177,7 +19161,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestStringFloat32NullableRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn674AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -13196,7 +19185,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestStringFloat32NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn675AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -13216,7 +19210,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestStringFloat32NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn676AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -13243,7 +19242,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "POST":
 											s.handleTestRequestStringFloat64Request([0]string{}, elemIsEscaped, w, r)
 										default:
-											s.notAllowed(w, r, "POST")
+											s.notAllowed(w, r, notAllowedParams{
+												allowedMethods: "POST",
+												allowedHeaders: rn678AllowedHeaders,
+												acceptPost:     "application/json",
+												acceptPatch:    "",
+											})
 										}
 
 										return
@@ -13274,7 +19278,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestStringFloat64ArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn679AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -13294,7 +19303,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestStringFloat64ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn680AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -13315,7 +19329,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestStringFloat64NullableRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn682AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -13334,7 +19353,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestStringFloat64NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn683AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -13354,7 +19378,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestStringFloat64NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn684AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -13395,7 +19424,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "POST":
 											s.handleTestRequestStringHostnameRequest([0]string{}, elemIsEscaped, w, r)
 										default:
-											s.notAllowed(w, r, "POST")
+											s.notAllowed(w, r, notAllowedParams{
+												allowedMethods: "POST",
+												allowedHeaders: rn693AllowedHeaders,
+												acceptPost:     "application/json",
+												acceptPatch:    "",
+											})
 										}
 
 										return
@@ -13426,7 +19460,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestStringHostnameArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn694AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -13446,7 +19485,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestStringHostnameArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn695AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -13467,7 +19511,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestStringHostnameNullableRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn697AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -13486,7 +19535,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestStringHostnameNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn698AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -13506,7 +19560,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestStringHostnameNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn699AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -13533,7 +19592,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "POST":
 											s.handleTestRequestStringHTTPDateRequest([0]string{}, elemIsEscaped, w, r)
 										default:
-											s.notAllowed(w, r, "POST")
+											s.notAllowed(w, r, notAllowedParams{
+												allowedMethods: "POST",
+												allowedHeaders: rn685AllowedHeaders,
+												acceptPost:     "application/json",
+												acceptPatch:    "",
+											})
 										}
 
 										return
@@ -13564,7 +19628,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestStringHTTPDateArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn686AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -13584,7 +19653,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestStringHTTPDateArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn687AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -13605,7 +19679,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestStringHTTPDateNullableRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn689AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -13624,7 +19703,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestStringHTTPDateNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn690AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -13644,7 +19728,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestStringHTTPDateNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn691AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -13685,7 +19774,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "POST":
 											s.handleTestRequestStringIntRequest([0]string{}, elemIsEscaped, w, r)
 										default:
-											s.notAllowed(w, r, "POST")
+											s.notAllowed(w, r, notAllowedParams{
+												allowedMethods: "POST",
+												allowedHeaders: rn708AllowedHeaders,
+												acceptPost:     "application/json",
+												acceptPatch:    "",
+											})
 										}
 
 										return
@@ -13704,7 +19798,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestRequestStringInt16Request([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn709AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -13735,7 +19834,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestStringInt16ArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn710AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -13755,7 +19859,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestStringInt16ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn711AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -13776,7 +19885,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestStringInt16NullableRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn713AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -13795,7 +19909,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestStringInt16NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn714AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -13815,7 +19934,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestStringInt16NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn715AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -13842,7 +19966,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestRequestStringInt32Request([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn716AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -13873,7 +20002,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestStringInt32ArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn717AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -13893,7 +20027,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestStringInt32ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn718AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -13914,7 +20053,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestStringInt32NullableRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn720AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -13933,7 +20077,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestStringInt32NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn721AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -13953,7 +20102,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestStringInt32NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn722AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -13980,7 +20134,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestRequestStringInt64Request([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn723AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -14011,7 +20170,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestStringInt64ArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn724AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -14031,7 +20195,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestStringInt64ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn725AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -14052,7 +20221,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestStringInt64NullableRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn727AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -14071,7 +20245,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestStringInt64NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn728AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -14091,7 +20270,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestStringInt64NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn729AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -14118,7 +20302,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestRequestStringInt8Request([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn730AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -14149,7 +20338,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestStringInt8ArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn731AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -14169,7 +20363,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestStringInt8ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn732AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -14190,7 +20389,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestStringInt8NullableRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn734AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -14209,7 +20413,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestStringInt8NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn735AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -14229,7 +20438,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestStringInt8NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn736AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -14268,7 +20482,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestStringIntArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn737AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -14288,7 +20507,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestStringIntArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn738AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -14309,7 +20533,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestStringIntNullableRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn740AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -14328,7 +20557,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestStringIntNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn741AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -14348,7 +20582,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestStringIntNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn742AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -14375,7 +20614,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "POST":
 											s.handleTestRequestStringIPRequest([0]string{}, elemIsEscaped, w, r)
 										default:
-											s.notAllowed(w, r, "POST")
+											s.notAllowed(w, r, notAllowedParams{
+												allowedMethods: "POST",
+												allowedHeaders: rn700AllowedHeaders,
+												acceptPost:     "application/json",
+												acceptPatch:    "",
+											})
 										}
 
 										return
@@ -14406,7 +20650,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestStringIPArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn701AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -14426,7 +20675,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestStringIPArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn702AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -14447,7 +20701,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestStringIPNullableRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn704AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -14466,7 +20725,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestStringIPNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn705AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -14486,7 +20750,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestStringIPNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn706AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -14523,7 +20792,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestStringIpv4Request([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn743AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -14554,7 +20828,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestStringIpv4ArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn744AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -14574,7 +20853,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestStringIpv4ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn745AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -14595,7 +20879,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestStringIpv4NullableRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn747AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -14614,7 +20903,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestStringIpv4NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn748AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -14634,7 +20928,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																case "POST":
 																	s.handleTestRequestStringIpv4NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
-																	s.notAllowed(w, r, "POST")
+																	s.notAllowed(w, r, notAllowedParams{
+																		allowedMethods: "POST",
+																		allowedHeaders: rn749AllowedHeaders,
+																		acceptPost:     "application/json",
+																		acceptPatch:    "",
+																	})
 																}
 
 																return
@@ -14661,7 +20960,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestStringIpv6Request([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn751AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -14692,7 +20996,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestStringIpv6ArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn752AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -14712,7 +21021,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestStringIpv6ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn753AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -14733,7 +21047,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestStringIpv6NullableRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn755AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -14752,7 +21071,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestStringIpv6NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn756AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -14772,7 +21096,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																case "POST":
 																	s.handleTestRequestStringIpv6NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
-																	s.notAllowed(w, r, "POST")
+																	s.notAllowed(w, r, notAllowedParams{
+																		allowedMethods: "POST",
+																		allowedHeaders: rn757AllowedHeaders,
+																		acceptPost:     "application/json",
+																		acceptPatch:    "",
+																	})
 																}
 
 																return
@@ -14805,7 +21134,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									case "POST":
 										s.handleTestRequestStringMACRequest([0]string{}, elemIsEscaped, w, r)
 									default:
-										s.notAllowed(w, r, "POST")
+										s.notAllowed(w, r, notAllowedParams{
+											allowedMethods: "POST",
+											allowedHeaders: rn758AllowedHeaders,
+											acceptPost:     "application/json",
+											acceptPatch:    "",
+										})
 									}
 
 									return
@@ -14836,7 +21170,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestRequestStringMACArrayRequest([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn759AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -14856,7 +21195,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestStringMACArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn760AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -14877,7 +21221,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestRequestStringMACNullableRequest([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn762AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -14896,7 +21245,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestStringMACNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn763AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -14916,7 +21270,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestStringMACNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn764AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -14943,7 +21302,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									case "POST":
 										s.handleTestRequestStringNullableRequest([0]string{}, elemIsEscaped, w, r)
 									default:
-										s.notAllowed(w, r, "POST")
+										s.notAllowed(w, r, notAllowedParams{
+											allowedMethods: "POST",
+											allowedHeaders: rn765AllowedHeaders,
+											acceptPost:     "application/json",
+											acceptPatch:    "",
+										})
 									}
 
 									return
@@ -14962,7 +21326,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "POST":
 											s.handleTestRequestStringNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 										default:
-											s.notAllowed(w, r, "POST")
+											s.notAllowed(w, r, notAllowedParams{
+												allowedMethods: "POST",
+												allowedHeaders: rn766AllowedHeaders,
+												acceptPost:     "application/json",
+												acceptPatch:    "",
+											})
 										}
 
 										return
@@ -14982,7 +21351,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestRequestStringNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn767AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -15005,7 +21379,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									case "POST":
 										s.handleTestRequestStringPasswordRequest([0]string{}, elemIsEscaped, w, r)
 									default:
-										s.notAllowed(w, r, "POST")
+										s.notAllowed(w, r, notAllowedParams{
+											allowedMethods: "POST",
+											allowedHeaders: rn768AllowedHeaders,
+											acceptPost:     "application/json",
+											acceptPatch:    "",
+										})
 									}
 
 									return
@@ -15036,7 +21415,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestRequestStringPasswordArrayRequest([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn769AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -15056,7 +21440,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestStringPasswordArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn770AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -15077,7 +21466,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestRequestStringPasswordNullableRequest([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn772AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -15096,7 +21490,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestStringPasswordNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn773AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -15116,7 +21515,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestStringPasswordNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn774AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -15143,7 +21547,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									case "POST":
 										s.handleTestRequestStringTimeRequest([0]string{}, elemIsEscaped, w, r)
 									default:
-										s.notAllowed(w, r, "POST")
+										s.notAllowed(w, r, notAllowedParams{
+											allowedMethods: "POST",
+											allowedHeaders: rn775AllowedHeaders,
+											acceptPost:     "application/json",
+											acceptPatch:    "",
+										})
 									}
 
 									return
@@ -15174,7 +21583,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestRequestStringTimeArrayRequest([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn776AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -15194,7 +21608,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestStringTimeArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn777AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -15215,7 +21634,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestRequestStringTimeNullableRequest([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn779AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -15234,7 +21658,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestStringTimeNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn780AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -15254,7 +21683,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestStringTimeNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn781AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -15293,7 +21727,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "POST":
 											s.handleTestRequestStringUintRequest([0]string{}, elemIsEscaped, w, r)
 										default:
-											s.notAllowed(w, r, "POST")
+											s.notAllowed(w, r, notAllowedParams{
+												allowedMethods: "POST",
+												allowedHeaders: rn797AllowedHeaders,
+												acceptPost:     "application/json",
+												acceptPatch:    "",
+											})
 										}
 
 										return
@@ -15312,7 +21751,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestRequestStringUint16Request([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn798AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -15343,7 +21787,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestStringUint16ArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn799AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -15363,7 +21812,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestStringUint16ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn800AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -15384,7 +21838,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestStringUint16NullableRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn802AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -15403,7 +21862,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestStringUint16NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn803AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -15423,7 +21887,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestStringUint16NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn804AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -15450,7 +21919,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestRequestStringUint32Request([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn805AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -15481,7 +21955,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestStringUint32ArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn806AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -15501,7 +21980,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestStringUint32ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn807AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -15522,7 +22006,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestStringUint32NullableRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn809AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -15541,7 +22030,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestStringUint32NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn810AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -15561,7 +22055,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestStringUint32NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn811AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -15588,7 +22087,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestRequestStringUint64Request([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn812AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -15619,7 +22123,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestStringUint64ArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn813AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -15639,7 +22148,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestStringUint64ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn814AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -15660,7 +22174,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestStringUint64NullableRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn816AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -15679,7 +22198,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestStringUint64NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn817AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -15699,7 +22223,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestStringUint64NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn818AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -15726,7 +22255,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestRequestStringUint8Request([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn819AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -15757,7 +22291,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestStringUint8ArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn820AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -15777,7 +22316,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestStringUint8ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn821AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -15798,7 +22342,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestStringUint8NullableRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn823AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -15817,7 +22366,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestStringUint8NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn824AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -15837,7 +22391,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestStringUint8NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn825AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -15876,7 +22435,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestStringUintArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn826AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -15896,7 +22460,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestStringUintArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn827AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -15917,7 +22486,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestStringUintNullableRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn829AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -15936,7 +22510,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestStringUintNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn830AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -15956,7 +22535,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestStringUintNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn831AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -15983,7 +22567,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "POST":
 											s.handleTestRequestStringUnixRequest([0]string{}, elemIsEscaped, w, r)
 										default:
-											s.notAllowed(w, r, "POST")
+											s.notAllowed(w, r, notAllowedParams{
+												allowedMethods: "POST",
+												allowedHeaders: rn832AllowedHeaders,
+												acceptPost:     "application/json",
+												acceptPatch:    "",
+											})
 										}
 
 										return
@@ -16026,7 +22615,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestStringUnixMicroRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn835AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -16057,7 +22651,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestStringUnixMicroArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn836AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -16077,7 +22676,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																case "POST":
 																	s.handleTestRequestStringUnixMicroArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
-																	s.notAllowed(w, r, "POST")
+																	s.notAllowed(w, r, notAllowedParams{
+																		allowedMethods: "POST",
+																		allowedHeaders: rn837AllowedHeaders,
+																		acceptPost:     "application/json",
+																		acceptPatch:    "",
+																	})
 																}
 
 																return
@@ -16098,7 +22702,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestStringUnixMicroNullableRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn839AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -16117,7 +22726,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																case "POST":
 																	s.handleTestRequestStringUnixMicroNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
-																	s.notAllowed(w, r, "POST")
+																	s.notAllowed(w, r, notAllowedParams{
+																		allowedMethods: "POST",
+																		allowedHeaders: rn840AllowedHeaders,
+																		acceptPost:     "application/json",
+																		acceptPatch:    "",
+																	})
 																}
 
 																return
@@ -16137,7 +22751,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	case "POST":
 																		s.handleTestRequestStringUnixMicroNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																	default:
-																		s.notAllowed(w, r, "POST")
+																		s.notAllowed(w, r, notAllowedParams{
+																			allowedMethods: "POST",
+																			allowedHeaders: rn841AllowedHeaders,
+																			acceptPost:     "application/json",
+																			acceptPatch:    "",
+																		})
 																	}
 
 																	return
@@ -16164,7 +22783,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestStringUnixMilliRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn843AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -16195,7 +22819,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestStringUnixMilliArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn844AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -16215,7 +22844,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																case "POST":
 																	s.handleTestRequestStringUnixMilliArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
-																	s.notAllowed(w, r, "POST")
+																	s.notAllowed(w, r, notAllowedParams{
+																		allowedMethods: "POST",
+																		allowedHeaders: rn845AllowedHeaders,
+																		acceptPost:     "application/json",
+																		acceptPatch:    "",
+																	})
 																}
 
 																return
@@ -16236,7 +22870,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestStringUnixMilliNullableRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn847AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -16255,7 +22894,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																case "POST":
 																	s.handleTestRequestStringUnixMilliNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
-																	s.notAllowed(w, r, "POST")
+																	s.notAllowed(w, r, notAllowedParams{
+																		allowedMethods: "POST",
+																		allowedHeaders: rn848AllowedHeaders,
+																		acceptPost:     "application/json",
+																		acceptPatch:    "",
+																	})
 																}
 
 																return
@@ -16275,7 +22919,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	case "POST":
 																		s.handleTestRequestStringUnixMilliNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																	default:
-																		s.notAllowed(w, r, "POST")
+																		s.notAllowed(w, r, notAllowedParams{
+																			allowedMethods: "POST",
+																			allowedHeaders: rn849AllowedHeaders,
+																			acceptPost:     "application/json",
+																			acceptPatch:    "",
+																		})
 																	}
 
 																	return
@@ -16304,7 +22953,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestStringUnixNanoRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn851AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -16335,7 +22989,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestStringUnixNanoArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn852AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -16355,7 +23014,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestStringUnixNanoArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn853AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -16376,7 +23040,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestStringUnixNanoNullableRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn855AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -16395,7 +23064,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestStringUnixNanoNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn856AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -16415,7 +23089,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																case "POST":
 																	s.handleTestRequestStringUnixNanoNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
-																	s.notAllowed(w, r, "POST")
+																	s.notAllowed(w, r, notAllowedParams{
+																		allowedMethods: "POST",
+																		allowedHeaders: rn857AllowedHeaders,
+																		acceptPost:     "application/json",
+																		acceptPatch:    "",
+																	})
 																}
 
 																return
@@ -16442,7 +23121,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestStringUnixSecondsRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn862AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -16473,7 +23157,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestStringUnixSecondsArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn863AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -16493,7 +23182,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestStringUnixSecondsArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn864AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -16514,7 +23208,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestStringUnixSecondsNullableRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn866AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -16533,7 +23232,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestRequestStringUnixSecondsNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn867AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -16553,7 +23257,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																case "POST":
 																	s.handleTestRequestStringUnixSecondsNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
-																	s.notAllowed(w, r, "POST")
+																	s.notAllowed(w, r, notAllowedParams{
+																		allowedMethods: "POST",
+																		allowedHeaders: rn868AllowedHeaders,
+																		acceptPost:     "application/json",
+																		acceptPatch:    "",
+																	})
 																}
 
 																return
@@ -16594,7 +23303,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestStringUnixArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn833AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -16614,7 +23328,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestStringUnixArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn834AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -16635,7 +23354,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestStringUnixNullableRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn859AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -16654,7 +23378,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestStringUnixNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn860AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -16674,7 +23403,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestStringUnixNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn861AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -16701,7 +23435,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "POST":
 											s.handleTestRequestStringURIRequest([0]string{}, elemIsEscaped, w, r)
 										default:
-											s.notAllowed(w, r, "POST")
+											s.notAllowed(w, r, notAllowedParams{
+												allowedMethods: "POST",
+												allowedHeaders: rn782AllowedHeaders,
+												acceptPost:     "application/json",
+												acceptPatch:    "",
+											})
 										}
 
 										return
@@ -16732,7 +23471,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestStringURIArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn783AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -16752,7 +23496,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestStringURIArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn784AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -16773,7 +23522,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestStringURINullableRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn786AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -16792,7 +23546,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestStringURINullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn787AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -16812,7 +23571,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestStringURINullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn788AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -16839,7 +23603,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "POST":
 											s.handleTestRequestStringUUIDRequest([0]string{}, elemIsEscaped, w, r)
 										default:
-											s.notAllowed(w, r, "POST")
+											s.notAllowed(w, r, notAllowedParams{
+												allowedMethods: "POST",
+												allowedHeaders: rn790AllowedHeaders,
+												acceptPost:     "application/json",
+												acceptPatch:    "",
+											})
 										}
 
 										return
@@ -16870,7 +23639,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestStringUUIDArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn791AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -16890,7 +23664,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestStringUUIDArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn792AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -16911,7 +23690,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestRequestStringUUIDNullableRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn794AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -16930,7 +23714,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestRequestStringUUIDNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn795AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -16950,7 +23739,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestRequestStringUUIDNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn796AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -16998,7 +23792,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "POST":
 								s.handleTestResponseAnyRequest([0]string{}, elemIsEscaped, w, r)
 							default:
-								s.notAllowed(w, r, "POST")
+								s.notAllowed(w, r, notAllowedParams{
+									allowedMethods: "POST",
+									allowedHeaders: rn870AllowedHeaders,
+									acceptPost:     "application/json",
+									acceptPatch:    "",
+								})
 							}
 
 							return
@@ -17018,7 +23817,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "POST":
 								s.handleTestResponseEmptyStructRequest([0]string{}, elemIsEscaped, w, r)
 							default:
-								s.notAllowed(w, r, "POST")
+								s.notAllowed(w, r, notAllowedParams{
+									allowedMethods: "POST",
+									allowedHeaders: rn879AllowedHeaders,
+									acceptPost:     "application/json",
+									acceptPatch:    "",
+								})
 							}
 
 							return
@@ -17038,7 +23842,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "POST":
 								s.handleTestResponseFormatTestRequest([0]string{}, elemIsEscaped, w, r)
 							default:
-								s.notAllowed(w, r, "POST")
+								s.notAllowed(w, r, notAllowedParams{
+									allowedMethods: "POST",
+									allowedHeaders: rn880AllowedHeaders,
+									acceptPost:     "application/json",
+									acceptPatch:    "",
+								})
 							}
 
 							return
@@ -17057,7 +23866,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "POST":
 								s.handleTestResponseBooleanRequest([0]string{}, elemIsEscaped, w, r)
 							default:
-								s.notAllowed(w, r, "POST")
+								s.notAllowed(w, r, notAllowedParams{
+									allowedMethods: "POST",
+									allowedHeaders: rn872AllowedHeaders,
+									acceptPost:     "application/json",
+									acceptPatch:    "",
+								})
 							}
 
 							return
@@ -17088,7 +23902,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									case "POST":
 										s.handleTestResponseBooleanArrayRequest([0]string{}, elemIsEscaped, w, r)
 									default:
-										s.notAllowed(w, r, "POST")
+										s.notAllowed(w, r, notAllowedParams{
+											allowedMethods: "POST",
+											allowedHeaders: rn873AllowedHeaders,
+											acceptPost:     "application/json",
+											acceptPatch:    "",
+										})
 									}
 
 									return
@@ -17108,7 +23927,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "POST":
 											s.handleTestResponseBooleanArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 										default:
-											s.notAllowed(w, r, "POST")
+											s.notAllowed(w, r, notAllowedParams{
+												allowedMethods: "POST",
+												allowedHeaders: rn874AllowedHeaders,
+												acceptPost:     "application/json",
+												acceptPatch:    "",
+											})
 										}
 
 										return
@@ -17129,7 +23953,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									case "POST":
 										s.handleTestResponseBooleanNullableRequest([0]string{}, elemIsEscaped, w, r)
 									default:
-										s.notAllowed(w, r, "POST")
+										s.notAllowed(w, r, notAllowedParams{
+											allowedMethods: "POST",
+											allowedHeaders: rn876AllowedHeaders,
+											acceptPost:     "application/json",
+											acceptPatch:    "",
+										})
 									}
 
 									return
@@ -17148,7 +23977,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "POST":
 											s.handleTestResponseBooleanNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 										default:
-											s.notAllowed(w, r, "POST")
+											s.notAllowed(w, r, notAllowedParams{
+												allowedMethods: "POST",
+												allowedHeaders: rn877AllowedHeaders,
+												acceptPost:     "application/json",
+												acceptPatch:    "",
+											})
 										}
 
 										return
@@ -17168,7 +24002,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestResponseBooleanNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn878AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -17195,7 +24034,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "POST":
 								s.handleTestResponseIntegerRequest([0]string{}, elemIsEscaped, w, r)
 							default:
-								s.notAllowed(w, r, "POST")
+								s.notAllowed(w, r, notAllowedParams{
+									allowedMethods: "POST",
+									allowedHeaders: rn881AllowedHeaders,
+									acceptPost:     "application/json",
+									acceptPatch:    "",
+								})
 							}
 
 							return
@@ -17226,7 +24070,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									case "POST":
 										s.handleTestResponseIntegerArrayRequest([0]string{}, elemIsEscaped, w, r)
 									default:
-										s.notAllowed(w, r, "POST")
+										s.notAllowed(w, r, notAllowedParams{
+											allowedMethods: "POST",
+											allowedHeaders: rn882AllowedHeaders,
+											acceptPost:     "application/json",
+											acceptPatch:    "",
+										})
 									}
 
 									return
@@ -17246,7 +24095,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "POST":
 											s.handleTestResponseIntegerArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 										default:
-											s.notAllowed(w, r, "POST")
+											s.notAllowed(w, r, notAllowedParams{
+												allowedMethods: "POST",
+												allowedHeaders: rn883AllowedHeaders,
+												acceptPost:     "application/json",
+												acceptPatch:    "",
+											})
 										}
 
 										return
@@ -17279,7 +24133,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "POST":
 											s.handleTestResponseIntegerInt16Request([0]string{}, elemIsEscaped, w, r)
 										default:
-											s.notAllowed(w, r, "POST")
+											s.notAllowed(w, r, notAllowedParams{
+												allowedMethods: "POST",
+												allowedHeaders: rn885AllowedHeaders,
+												acceptPost:     "application/json",
+												acceptPatch:    "",
+											})
 										}
 
 										return
@@ -17310,7 +24169,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestResponseIntegerInt16ArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn886AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -17330,7 +24194,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestResponseIntegerInt16ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn887AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -17351,7 +24220,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestResponseIntegerInt16NullableRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn889AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -17370,7 +24244,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestResponseIntegerInt16NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn890AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -17390,7 +24269,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestResponseIntegerInt16NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn891AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -17417,7 +24301,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "POST":
 											s.handleTestResponseIntegerInt32Request([0]string{}, elemIsEscaped, w, r)
 										default:
-											s.notAllowed(w, r, "POST")
+											s.notAllowed(w, r, notAllowedParams{
+												allowedMethods: "POST",
+												allowedHeaders: rn893AllowedHeaders,
+												acceptPost:     "application/json",
+												acceptPatch:    "",
+											})
 										}
 
 										return
@@ -17448,7 +24337,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestResponseIntegerInt32ArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn894AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -17468,7 +24362,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestResponseIntegerInt32ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn895AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -17489,7 +24388,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestResponseIntegerInt32NullableRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn897AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -17508,7 +24412,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestResponseIntegerInt32NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn898AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -17528,7 +24437,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestResponseIntegerInt32NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn899AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -17555,7 +24469,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "POST":
 											s.handleTestResponseIntegerInt64Request([0]string{}, elemIsEscaped, w, r)
 										default:
-											s.notAllowed(w, r, "POST")
+											s.notAllowed(w, r, notAllowedParams{
+												allowedMethods: "POST",
+												allowedHeaders: rn900AllowedHeaders,
+												acceptPost:     "application/json",
+												acceptPatch:    "",
+											})
 										}
 
 										return
@@ -17586,7 +24505,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestResponseIntegerInt64ArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn901AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -17606,7 +24530,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestResponseIntegerInt64ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn902AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -17627,7 +24556,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestResponseIntegerInt64NullableRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn904AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -17646,7 +24580,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestResponseIntegerInt64NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn905AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -17666,7 +24605,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestResponseIntegerInt64NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn906AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -17693,7 +24637,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "POST":
 											s.handleTestResponseIntegerInt8Request([0]string{}, elemIsEscaped, w, r)
 										default:
-											s.notAllowed(w, r, "POST")
+											s.notAllowed(w, r, notAllowedParams{
+												allowedMethods: "POST",
+												allowedHeaders: rn907AllowedHeaders,
+												acceptPost:     "application/json",
+												acceptPatch:    "",
+											})
 										}
 
 										return
@@ -17724,7 +24673,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestResponseIntegerInt8ArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn908AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -17744,7 +24698,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestResponseIntegerInt8ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn909AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -17765,7 +24724,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestResponseIntegerInt8NullableRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn911AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -17784,7 +24748,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestResponseIntegerInt8NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn912AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -17804,7 +24773,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestResponseIntegerInt8NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn913AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -17833,7 +24807,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									case "POST":
 										s.handleTestResponseIntegerNullableRequest([0]string{}, elemIsEscaped, w, r)
 									default:
-										s.notAllowed(w, r, "POST")
+										s.notAllowed(w, r, notAllowedParams{
+											allowedMethods: "POST",
+											allowedHeaders: rn914AllowedHeaders,
+											acceptPost:     "application/json",
+											acceptPatch:    "",
+										})
 									}
 
 									return
@@ -17852,7 +24831,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "POST":
 											s.handleTestResponseIntegerNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 										default:
-											s.notAllowed(w, r, "POST")
+											s.notAllowed(w, r, notAllowedParams{
+												allowedMethods: "POST",
+												allowedHeaders: rn915AllowedHeaders,
+												acceptPost:     "application/json",
+												acceptPatch:    "",
+											})
 										}
 
 										return
@@ -17872,7 +24856,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestResponseIntegerNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn916AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -17907,7 +24896,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "POST":
 											s.handleTestResponseIntegerUintRequest([0]string{}, elemIsEscaped, w, r)
 										default:
-											s.notAllowed(w, r, "POST")
+											s.notAllowed(w, r, notAllowedParams{
+												allowedMethods: "POST",
+												allowedHeaders: rn917AllowedHeaders,
+												acceptPost:     "application/json",
+												acceptPatch:    "",
+											})
 										}
 
 										return
@@ -17926,7 +24920,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestResponseIntegerUint16Request([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn918AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -17957,7 +24956,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestResponseIntegerUint16ArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn919AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -17977,7 +24981,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestResponseIntegerUint16ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn920AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -17998,7 +25007,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestResponseIntegerUint16NullableRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn922AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -18017,7 +25031,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestResponseIntegerUint16NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn923AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -18037,7 +25056,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestResponseIntegerUint16NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn924AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -18064,7 +25088,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestResponseIntegerUint32Request([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn925AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -18095,7 +25124,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestResponseIntegerUint32ArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn926AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -18115,7 +25149,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestResponseIntegerUint32ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn927AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -18136,7 +25175,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestResponseIntegerUint32NullableRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn929AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -18155,7 +25199,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestResponseIntegerUint32NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn930AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -18175,7 +25224,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestResponseIntegerUint32NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn931AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -18202,7 +25256,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestResponseIntegerUint64Request([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn932AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -18233,7 +25292,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestResponseIntegerUint64ArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn933AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -18253,7 +25317,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestResponseIntegerUint64ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn934AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -18274,7 +25343,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestResponseIntegerUint64NullableRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn936AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -18293,7 +25367,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestResponseIntegerUint64NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn937AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -18313,7 +25392,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestResponseIntegerUint64NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn938AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -18340,7 +25424,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestResponseIntegerUint8Request([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn939AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -18371,7 +25460,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestResponseIntegerUint8ArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn940AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -18391,7 +25485,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestResponseIntegerUint8ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn941AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -18412,7 +25511,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestResponseIntegerUint8NullableRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn943AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -18431,7 +25535,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestResponseIntegerUint8NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn944AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -18451,7 +25560,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestResponseIntegerUint8NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn945AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -18490,7 +25604,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestResponseIntegerUintArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn946AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -18510,7 +25629,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestResponseIntegerUintArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn947AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -18531,7 +25655,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestResponseIntegerUintNullableRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn949AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -18550,7 +25679,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestResponseIntegerUintNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn950AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -18570,7 +25704,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestResponseIntegerUintNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn951AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -18597,7 +25736,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "POST":
 											s.handleTestResponseIntegerUnixRequest([0]string{}, elemIsEscaped, w, r)
 										default:
-											s.notAllowed(w, r, "POST")
+											s.notAllowed(w, r, notAllowedParams{
+												allowedMethods: "POST",
+												allowedHeaders: rn953AllowedHeaders,
+												acceptPost:     "application/json",
+												acceptPatch:    "",
+											})
 										}
 
 										return
@@ -18640,7 +25784,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestResponseIntegerUnixMicroRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn956AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -18671,7 +25820,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestResponseIntegerUnixMicroArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn957AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -18691,7 +25845,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																case "POST":
 																	s.handleTestResponseIntegerUnixMicroArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
-																	s.notAllowed(w, r, "POST")
+																	s.notAllowed(w, r, notAllowedParams{
+																		allowedMethods: "POST",
+																		allowedHeaders: rn958AllowedHeaders,
+																		acceptPost:     "application/json",
+																		acceptPatch:    "",
+																	})
 																}
 
 																return
@@ -18712,7 +25871,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestResponseIntegerUnixMicroNullableRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn960AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -18731,7 +25895,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																case "POST":
 																	s.handleTestResponseIntegerUnixMicroNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
-																	s.notAllowed(w, r, "POST")
+																	s.notAllowed(w, r, notAllowedParams{
+																		allowedMethods: "POST",
+																		allowedHeaders: rn961AllowedHeaders,
+																		acceptPost:     "application/json",
+																		acceptPatch:    "",
+																	})
 																}
 
 																return
@@ -18751,7 +25920,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	case "POST":
 																		s.handleTestResponseIntegerUnixMicroNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																	default:
-																		s.notAllowed(w, r, "POST")
+																		s.notAllowed(w, r, notAllowedParams{
+																			allowedMethods: "POST",
+																			allowedHeaders: rn962AllowedHeaders,
+																			acceptPost:     "application/json",
+																			acceptPatch:    "",
+																		})
 																	}
 
 																	return
@@ -18778,7 +25952,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestResponseIntegerUnixMilliRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn964AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -18809,7 +25988,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestResponseIntegerUnixMilliArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn965AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -18829,7 +26013,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																case "POST":
 																	s.handleTestResponseIntegerUnixMilliArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
-																	s.notAllowed(w, r, "POST")
+																	s.notAllowed(w, r, notAllowedParams{
+																		allowedMethods: "POST",
+																		allowedHeaders: rn966AllowedHeaders,
+																		acceptPost:     "application/json",
+																		acceptPatch:    "",
+																	})
 																}
 
 																return
@@ -18850,7 +26039,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestResponseIntegerUnixMilliNullableRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn968AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -18869,7 +26063,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																case "POST":
 																	s.handleTestResponseIntegerUnixMilliNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
-																	s.notAllowed(w, r, "POST")
+																	s.notAllowed(w, r, notAllowedParams{
+																		allowedMethods: "POST",
+																		allowedHeaders: rn969AllowedHeaders,
+																		acceptPost:     "application/json",
+																		acceptPatch:    "",
+																	})
 																}
 
 																return
@@ -18889,7 +26088,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	case "POST":
 																		s.handleTestResponseIntegerUnixMilliNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																	default:
-																		s.notAllowed(w, r, "POST")
+																		s.notAllowed(w, r, notAllowedParams{
+																			allowedMethods: "POST",
+																			allowedHeaders: rn970AllowedHeaders,
+																			acceptPost:     "application/json",
+																			acceptPatch:    "",
+																		})
 																	}
 
 																	return
@@ -18918,7 +26122,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestResponseIntegerUnixNanoRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn972AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -18949,7 +26158,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestResponseIntegerUnixNanoArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn973AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -18969,7 +26183,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestResponseIntegerUnixNanoArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn974AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -18990,7 +26209,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestResponseIntegerUnixNanoNullableRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn976AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -19009,7 +26233,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestResponseIntegerUnixNanoNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn977AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -19029,7 +26258,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																case "POST":
 																	s.handleTestResponseIntegerUnixNanoNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
-																	s.notAllowed(w, r, "POST")
+																	s.notAllowed(w, r, notAllowedParams{
+																		allowedMethods: "POST",
+																		allowedHeaders: rn978AllowedHeaders,
+																		acceptPost:     "application/json",
+																		acceptPatch:    "",
+																	})
 																}
 
 																return
@@ -19056,7 +26290,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestResponseIntegerUnixSecondsRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn983AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -19087,7 +26326,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestResponseIntegerUnixSecondsArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn984AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -19107,7 +26351,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestResponseIntegerUnixSecondsArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn985AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -19128,7 +26377,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestResponseIntegerUnixSecondsNullableRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn987AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -19147,7 +26401,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestResponseIntegerUnixSecondsNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn988AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -19167,7 +26426,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																case "POST":
 																	s.handleTestResponseIntegerUnixSecondsNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
-																	s.notAllowed(w, r, "POST")
+																	s.notAllowed(w, r, notAllowedParams{
+																		allowedMethods: "POST",
+																		allowedHeaders: rn989AllowedHeaders,
+																		acceptPost:     "application/json",
+																		acceptPatch:    "",
+																	})
 																}
 
 																return
@@ -19208,7 +26472,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestResponseIntegerUnixArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn954AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -19228,7 +26497,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestResponseIntegerUnixArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn955AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -19249,7 +26523,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestResponseIntegerUnixNullableRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn980AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -19268,7 +26547,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestResponseIntegerUnixNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn981AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -19288,7 +26572,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestResponseIntegerUnixNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn982AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -19333,7 +26622,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								case "POST":
 									s.handleTestResponseNullRequest([0]string{}, elemIsEscaped, w, r)
 								default:
-									s.notAllowed(w, r, "POST")
+									s.notAllowed(w, r, notAllowedParams{
+										allowedMethods: "POST",
+										allowedHeaders: rn990AllowedHeaders,
+										acceptPost:     "application/json",
+										acceptPatch:    "",
+									})
 								}
 
 								return
@@ -19364,7 +26658,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "POST":
 											s.handleTestResponseNullArrayRequest([0]string{}, elemIsEscaped, w, r)
 										default:
-											s.notAllowed(w, r, "POST")
+											s.notAllowed(w, r, notAllowedParams{
+												allowedMethods: "POST",
+												allowedHeaders: rn991AllowedHeaders,
+												acceptPost:     "application/json",
+												acceptPatch:    "",
+											})
 										}
 
 										return
@@ -19384,7 +26683,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestResponseNullArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn992AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -19405,7 +26709,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "POST":
 											s.handleTestResponseNullNullableRequest([0]string{}, elemIsEscaped, w, r)
 										default:
-											s.notAllowed(w, r, "POST")
+											s.notAllowed(w, r, notAllowedParams{
+												allowedMethods: "POST",
+												allowedHeaders: rn994AllowedHeaders,
+												acceptPost:     "application/json",
+												acceptPatch:    "",
+											})
 										}
 
 										return
@@ -19424,7 +26733,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestResponseNullNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn995AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -19444,7 +26758,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestResponseNullNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn996AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -19471,7 +26790,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								case "POST":
 									s.handleTestResponseNumberRequest([0]string{}, elemIsEscaped, w, r)
 								default:
-									s.notAllowed(w, r, "POST")
+									s.notAllowed(w, r, notAllowedParams{
+										allowedMethods: "POST",
+										allowedHeaders: rn998AllowedHeaders,
+										acceptPost:     "application/json",
+										acceptPatch:    "",
+									})
 								}
 
 								return
@@ -19502,7 +26826,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "POST":
 											s.handleTestResponseNumberArrayRequest([0]string{}, elemIsEscaped, w, r)
 										default:
-											s.notAllowed(w, r, "POST")
+											s.notAllowed(w, r, notAllowedParams{
+												allowedMethods: "POST",
+												allowedHeaders: rn999AllowedHeaders,
+												acceptPost:     "application/json",
+												acceptPatch:    "",
+											})
 										}
 
 										return
@@ -19522,7 +26851,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestResponseNumberArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn1000AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -19555,7 +26889,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestResponseNumberDecimalRequest([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn1002AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -19586,7 +26925,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestResponseNumberDecimalArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn1003AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -19606,7 +26950,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestResponseNumberDecimalArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn1004AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -19627,7 +26976,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestResponseNumberDecimalNullableRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn1006AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -19646,7 +27000,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestResponseNumberDecimalNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn1007AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -19666,7 +27025,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestResponseNumberDecimalNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn1008AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -19693,7 +27057,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestResponseNumberDoubleRequest([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn1010AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -19724,7 +27093,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestResponseNumberDoubleArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn1011AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -19744,7 +27118,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestResponseNumberDoubleArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn1012AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -19765,7 +27144,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestResponseNumberDoubleNullableRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn1014AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -19784,7 +27168,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestResponseNumberDoubleNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn1015AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -19804,7 +27193,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestResponseNumberDoubleNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn1016AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -19833,7 +27227,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "POST":
 											s.handleTestResponseNumberFloatRequest([0]string{}, elemIsEscaped, w, r)
 										default:
-											s.notAllowed(w, r, "POST")
+											s.notAllowed(w, r, notAllowedParams{
+												allowedMethods: "POST",
+												allowedHeaders: rn1017AllowedHeaders,
+												acceptPost:     "application/json",
+												acceptPatch:    "",
+											})
 										}
 
 										return
@@ -19864,7 +27263,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestResponseNumberFloatArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn1018AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -19884,7 +27288,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestResponseNumberFloatArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn1019AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -19905,7 +27314,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestResponseNumberFloatNullableRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn1021AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -19924,7 +27338,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestResponseNumberFloatNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn1022AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -19944,7 +27363,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestResponseNumberFloatNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn1023AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -19983,7 +27407,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestResponseNumberInt32Request([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn1024AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -20014,7 +27443,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestResponseNumberInt32ArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn1025AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -20034,7 +27468,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestResponseNumberInt32ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn1026AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -20055,7 +27494,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestResponseNumberInt32NullableRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn1028AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -20074,7 +27518,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestResponseNumberInt32NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn1029AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -20094,7 +27543,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestResponseNumberInt32NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn1030AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -20121,7 +27575,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestResponseNumberInt64Request([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn1032AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -20152,7 +27611,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestResponseNumberInt64ArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn1033AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -20172,7 +27636,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestResponseNumberInt64ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn1034AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -20193,7 +27662,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestResponseNumberInt64NullableRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn1036AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -20212,7 +27686,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestResponseNumberInt64NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn1037AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -20232,7 +27711,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestResponseNumberInt64NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn1038AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -20261,7 +27745,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "POST":
 											s.handleTestResponseNumberNullableRequest([0]string{}, elemIsEscaped, w, r)
 										default:
-											s.notAllowed(w, r, "POST")
+											s.notAllowed(w, r, notAllowedParams{
+												allowedMethods: "POST",
+												allowedHeaders: rn1039AllowedHeaders,
+												acceptPost:     "application/json",
+												acceptPatch:    "",
+											})
 										}
 
 										return
@@ -20280,7 +27769,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestResponseNumberNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn1040AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -20300,7 +27794,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestResponseNumberNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn1041AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -20329,7 +27828,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							case "POST":
 								s.handleTestResponseStringRequest([0]string{}, elemIsEscaped, w, r)
 							default:
-								s.notAllowed(w, r, "POST")
+								s.notAllowed(w, r, notAllowedParams{
+									allowedMethods: "POST",
+									allowedHeaders: rn1042AllowedHeaders,
+									acceptPost:     "application/json",
+									acceptPatch:    "",
+								})
 							}
 
 							return
@@ -20360,7 +27864,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									case "POST":
 										s.handleTestResponseStringArrayRequest([0]string{}, elemIsEscaped, w, r)
 									default:
-										s.notAllowed(w, r, "POST")
+										s.notAllowed(w, r, notAllowedParams{
+											allowedMethods: "POST",
+											allowedHeaders: rn1043AllowedHeaders,
+											acceptPost:     "application/json",
+											acceptPatch:    "",
+										})
 									}
 
 									return
@@ -20380,7 +27889,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "POST":
 											s.handleTestResponseStringArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 										default:
-											s.notAllowed(w, r, "POST")
+											s.notAllowed(w, r, notAllowedParams{
+												allowedMethods: "POST",
+												allowedHeaders: rn1044AllowedHeaders,
+												acceptPost:     "application/json",
+												acceptPatch:    "",
+											})
 										}
 
 										return
@@ -20413,7 +27927,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "POST":
 											s.handleTestResponseStringBase64Request([0]string{}, elemIsEscaped, w, r)
 										default:
-											s.notAllowed(w, r, "POST")
+											s.notAllowed(w, r, notAllowedParams{
+												allowedMethods: "POST",
+												allowedHeaders: rn1046AllowedHeaders,
+												acceptPost:     "application/json",
+												acceptPatch:    "",
+											})
 										}
 
 										return
@@ -20444,7 +27963,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestResponseStringBase64ArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn1047AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -20464,7 +27988,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestResponseStringBase64ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn1048AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -20485,7 +28014,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestResponseStringBase64NullableRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn1050AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -20504,7 +28038,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestResponseStringBase64NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn1051AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -20524,7 +28063,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestResponseStringBase64NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn1052AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -20551,7 +28095,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "POST":
 											s.handleTestResponseStringBinaryRequest([0]string{}, elemIsEscaped, w, r)
 										default:
-											s.notAllowed(w, r, "POST")
+											s.notAllowed(w, r, notAllowedParams{
+												allowedMethods: "POST",
+												allowedHeaders: rn1054AllowedHeaders,
+												acceptPost:     "application/json",
+												acceptPatch:    "",
+											})
 										}
 
 										return
@@ -20582,7 +28131,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestResponseStringBinaryArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn1055AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -20602,7 +28156,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestResponseStringBinaryArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn1056AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -20623,7 +28182,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestResponseStringBinaryNullableRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn1058AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -20642,7 +28206,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestResponseStringBinaryNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn1059AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -20662,7 +28231,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestResponseStringBinaryNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn1060AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -20689,7 +28263,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "POST":
 											s.handleTestResponseStringByteRequest([0]string{}, elemIsEscaped, w, r)
 										default:
-											s.notAllowed(w, r, "POST")
+											s.notAllowed(w, r, notAllowedParams{
+												allowedMethods: "POST",
+												allowedHeaders: rn1061AllowedHeaders,
+												acceptPost:     "application/json",
+												acceptPatch:    "",
+											})
 										}
 
 										return
@@ -20720,7 +28299,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestResponseStringByteArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn1062AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -20740,7 +28324,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestResponseStringByteArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn1063AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -20761,7 +28350,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestResponseStringByteNullableRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn1065AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -20780,7 +28374,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestResponseStringByteNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn1066AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -20800,7 +28399,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestResponseStringByteNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn1067AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -20841,7 +28445,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "POST":
 											s.handleTestResponseStringDateRequest([0]string{}, elemIsEscaped, w, r)
 										default:
-											s.notAllowed(w, r, "POST")
+											s.notAllowed(w, r, notAllowedParams{
+												allowedMethods: "POST",
+												allowedHeaders: rn1068AllowedHeaders,
+												acceptPost:     "application/json",
+												acceptPatch:    "",
+											})
 										}
 
 										return
@@ -20860,7 +28469,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestResponseStringDateTimeRequest([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn1075AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -20891,7 +28505,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestResponseStringDateTimeArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn1076AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -20911,7 +28530,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestResponseStringDateTimeArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn1077AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -20932,7 +28556,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestResponseStringDateTimeNullableRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn1079AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -20951,7 +28580,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestResponseStringDateTimeNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn1080AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -20971,7 +28605,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestResponseStringDateTimeNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn1081AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -21010,7 +28649,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestResponseStringDateArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn1069AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -21030,7 +28674,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestResponseStringDateArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn1070AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -21051,7 +28700,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestResponseStringDateNullableRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn1072AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -21070,7 +28724,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestResponseStringDateNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn1073AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -21090,7 +28749,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestResponseStringDateNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn1074AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -21117,7 +28781,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "POST":
 											s.handleTestResponseStringDecimalRequest([0]string{}, elemIsEscaped, w, r)
 										default:
-											s.notAllowed(w, r, "POST")
+											s.notAllowed(w, r, notAllowedParams{
+												allowedMethods: "POST",
+												allowedHeaders: rn1083AllowedHeaders,
+												acceptPost:     "application/json",
+												acceptPatch:    "",
+											})
 										}
 
 										return
@@ -21148,7 +28817,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestResponseStringDecimalArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn1084AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -21168,7 +28842,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestResponseStringDecimalArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn1085AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -21189,7 +28868,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestResponseStringDecimalNullableRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn1087AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -21208,7 +28892,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestResponseStringDecimalNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn1088AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -21228,7 +28917,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestResponseStringDecimalNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn1089AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -21255,7 +28949,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "POST":
 											s.handleTestResponseStringDurationRequest([0]string{}, elemIsEscaped, w, r)
 										default:
-											s.notAllowed(w, r, "POST")
+											s.notAllowed(w, r, notAllowedParams{
+												allowedMethods: "POST",
+												allowedHeaders: rn1090AllowedHeaders,
+												acceptPost:     "application/json",
+												acceptPatch:    "",
+											})
 										}
 
 										return
@@ -21286,7 +28985,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestResponseStringDurationArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn1091AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -21306,7 +29010,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestResponseStringDurationArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn1092AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -21327,7 +29036,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestResponseStringDurationNullableRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn1094AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -21346,7 +29060,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestResponseStringDurationNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn1095AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -21366,7 +29085,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestResponseStringDurationNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn1096AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -21395,7 +29119,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									case "POST":
 										s.handleTestResponseStringEmailRequest([0]string{}, elemIsEscaped, w, r)
 									default:
-										s.notAllowed(w, r, "POST")
+										s.notAllowed(w, r, notAllowedParams{
+											allowedMethods: "POST",
+											allowedHeaders: rn1097AllowedHeaders,
+											acceptPost:     "application/json",
+											acceptPatch:    "",
+										})
 									}
 
 									return
@@ -21426,7 +29155,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestResponseStringEmailArrayRequest([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn1098AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -21446,7 +29180,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestResponseStringEmailArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn1099AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -21467,7 +29206,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestResponseStringEmailNullableRequest([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn1101AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -21486,7 +29230,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestResponseStringEmailNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn1102AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -21506,7 +29255,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestResponseStringEmailNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn1103AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -21545,7 +29299,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "POST":
 											s.handleTestResponseStringFloat32Request([0]string{}, elemIsEscaped, w, r)
 										default:
-											s.notAllowed(w, r, "POST")
+											s.notAllowed(w, r, notAllowedParams{
+												allowedMethods: "POST",
+												allowedHeaders: rn1104AllowedHeaders,
+												acceptPost:     "application/json",
+												acceptPatch:    "",
+											})
 										}
 
 										return
@@ -21576,7 +29335,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestResponseStringFloat32ArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn1105AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -21596,7 +29360,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestResponseStringFloat32ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn1106AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -21617,7 +29386,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestResponseStringFloat32NullableRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn1108AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -21636,7 +29410,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestResponseStringFloat32NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn1109AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -21656,7 +29435,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestResponseStringFloat32NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn1110AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -21683,7 +29467,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "POST":
 											s.handleTestResponseStringFloat64Request([0]string{}, elemIsEscaped, w, r)
 										default:
-											s.notAllowed(w, r, "POST")
+											s.notAllowed(w, r, notAllowedParams{
+												allowedMethods: "POST",
+												allowedHeaders: rn1112AllowedHeaders,
+												acceptPost:     "application/json",
+												acceptPatch:    "",
+											})
 										}
 
 										return
@@ -21714,7 +29503,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestResponseStringFloat64ArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn1113AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -21734,7 +29528,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestResponseStringFloat64ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn1114AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -21755,7 +29554,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestResponseStringFloat64NullableRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn1116AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -21774,7 +29578,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestResponseStringFloat64NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn1117AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -21794,7 +29603,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestResponseStringFloat64NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn1118AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -21835,7 +29649,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "POST":
 											s.handleTestResponseStringHostnameRequest([0]string{}, elemIsEscaped, w, r)
 										default:
-											s.notAllowed(w, r, "POST")
+											s.notAllowed(w, r, notAllowedParams{
+												allowedMethods: "POST",
+												allowedHeaders: rn1127AllowedHeaders,
+												acceptPost:     "application/json",
+												acceptPatch:    "",
+											})
 										}
 
 										return
@@ -21866,7 +29685,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestResponseStringHostnameArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn1128AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -21886,7 +29710,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestResponseStringHostnameArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn1129AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -21907,7 +29736,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestResponseStringHostnameNullableRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn1131AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -21926,7 +29760,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestResponseStringHostnameNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn1132AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -21946,7 +29785,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestResponseStringHostnameNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn1133AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -21973,7 +29817,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "POST":
 											s.handleTestResponseStringHTTPDateRequest([0]string{}, elemIsEscaped, w, r)
 										default:
-											s.notAllowed(w, r, "POST")
+											s.notAllowed(w, r, notAllowedParams{
+												allowedMethods: "POST",
+												allowedHeaders: rn1119AllowedHeaders,
+												acceptPost:     "application/json",
+												acceptPatch:    "",
+											})
 										}
 
 										return
@@ -22004,7 +29853,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestResponseStringHTTPDateArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn1120AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -22024,7 +29878,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestResponseStringHTTPDateArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn1121AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -22045,7 +29904,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestResponseStringHTTPDateNullableRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn1123AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -22064,7 +29928,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestResponseStringHTTPDateNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn1124AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -22084,7 +29953,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestResponseStringHTTPDateNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn1125AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -22125,7 +29999,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "POST":
 											s.handleTestResponseStringIntRequest([0]string{}, elemIsEscaped, w, r)
 										default:
-											s.notAllowed(w, r, "POST")
+											s.notAllowed(w, r, notAllowedParams{
+												allowedMethods: "POST",
+												allowedHeaders: rn1142AllowedHeaders,
+												acceptPost:     "application/json",
+												acceptPatch:    "",
+											})
 										}
 
 										return
@@ -22144,7 +30023,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestResponseStringInt16Request([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn1143AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -22175,7 +30059,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestResponseStringInt16ArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn1144AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -22195,7 +30084,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestResponseStringInt16ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn1145AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -22216,7 +30110,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestResponseStringInt16NullableRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn1147AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -22235,7 +30134,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestResponseStringInt16NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn1148AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -22255,7 +30159,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestResponseStringInt16NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn1149AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -22282,7 +30191,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestResponseStringInt32Request([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn1150AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -22313,7 +30227,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestResponseStringInt32ArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn1151AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -22333,7 +30252,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestResponseStringInt32ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn1152AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -22354,7 +30278,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestResponseStringInt32NullableRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn1154AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -22373,7 +30302,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestResponseStringInt32NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn1155AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -22393,7 +30327,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestResponseStringInt32NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn1156AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -22420,7 +30359,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestResponseStringInt64Request([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn1157AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -22451,7 +30395,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestResponseStringInt64ArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn1158AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -22471,7 +30420,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestResponseStringInt64ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn1159AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -22492,7 +30446,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestResponseStringInt64NullableRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn1161AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -22511,7 +30470,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestResponseStringInt64NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn1162AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -22531,7 +30495,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestResponseStringInt64NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn1163AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -22558,7 +30527,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestResponseStringInt8Request([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn1164AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -22589,7 +30563,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestResponseStringInt8ArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn1165AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -22609,7 +30588,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestResponseStringInt8ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn1166AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -22630,7 +30614,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestResponseStringInt8NullableRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn1168AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -22649,7 +30638,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestResponseStringInt8NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn1169AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -22669,7 +30663,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestResponseStringInt8NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn1170AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -22708,7 +30707,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestResponseStringIntArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn1171AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -22728,7 +30732,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestResponseStringIntArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn1172AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -22749,7 +30758,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestResponseStringIntNullableRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn1174AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -22768,7 +30782,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestResponseStringIntNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn1175AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -22788,7 +30807,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestResponseStringIntNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn1176AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -22815,7 +30839,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "POST":
 											s.handleTestResponseStringIPRequest([0]string{}, elemIsEscaped, w, r)
 										default:
-											s.notAllowed(w, r, "POST")
+											s.notAllowed(w, r, notAllowedParams{
+												allowedMethods: "POST",
+												allowedHeaders: rn1134AllowedHeaders,
+												acceptPost:     "application/json",
+												acceptPatch:    "",
+											})
 										}
 
 										return
@@ -22846,7 +30875,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestResponseStringIPArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn1135AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -22866,7 +30900,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestResponseStringIPArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn1136AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -22887,7 +30926,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestResponseStringIPNullableRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn1138AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -22906,7 +30950,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestResponseStringIPNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn1139AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -22926,7 +30975,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestResponseStringIPNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn1140AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -22963,7 +31017,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestResponseStringIpv4Request([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn1177AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -22994,7 +31053,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestResponseStringIpv4ArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn1178AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -23014,7 +31078,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestResponseStringIpv4ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn1179AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -23035,7 +31104,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestResponseStringIpv4NullableRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn1181AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -23054,7 +31128,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestResponseStringIpv4NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn1182AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -23074,7 +31153,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																case "POST":
 																	s.handleTestResponseStringIpv4NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
-																	s.notAllowed(w, r, "POST")
+																	s.notAllowed(w, r, notAllowedParams{
+																		allowedMethods: "POST",
+																		allowedHeaders: rn1183AllowedHeaders,
+																		acceptPost:     "application/json",
+																		acceptPatch:    "",
+																	})
 																}
 
 																return
@@ -23101,7 +31185,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestResponseStringIpv6Request([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn1185AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -23132,7 +31221,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestResponseStringIpv6ArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn1186AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -23152,7 +31246,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestResponseStringIpv6ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn1187AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -23173,7 +31272,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestResponseStringIpv6NullableRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn1189AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -23192,7 +31296,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestResponseStringIpv6NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn1190AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -23212,7 +31321,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																case "POST":
 																	s.handleTestResponseStringIpv6NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
-																	s.notAllowed(w, r, "POST")
+																	s.notAllowed(w, r, notAllowedParams{
+																		allowedMethods: "POST",
+																		allowedHeaders: rn1191AllowedHeaders,
+																		acceptPost:     "application/json",
+																		acceptPatch:    "",
+																	})
 																}
 
 																return
@@ -23245,7 +31359,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									case "POST":
 										s.handleTestResponseStringMACRequest([0]string{}, elemIsEscaped, w, r)
 									default:
-										s.notAllowed(w, r, "POST")
+										s.notAllowed(w, r, notAllowedParams{
+											allowedMethods: "POST",
+											allowedHeaders: rn1192AllowedHeaders,
+											acceptPost:     "application/json",
+											acceptPatch:    "",
+										})
 									}
 
 									return
@@ -23276,7 +31395,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestResponseStringMACArrayRequest([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn1193AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -23296,7 +31420,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestResponseStringMACArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn1194AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -23317,7 +31446,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestResponseStringMACNullableRequest([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn1196AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -23336,7 +31470,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestResponseStringMACNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn1197AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -23356,7 +31495,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestResponseStringMACNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn1198AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -23383,7 +31527,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									case "POST":
 										s.handleTestResponseStringNullableRequest([0]string{}, elemIsEscaped, w, r)
 									default:
-										s.notAllowed(w, r, "POST")
+										s.notAllowed(w, r, notAllowedParams{
+											allowedMethods: "POST",
+											allowedHeaders: rn1199AllowedHeaders,
+											acceptPost:     "application/json",
+											acceptPatch:    "",
+										})
 									}
 
 									return
@@ -23402,7 +31551,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "POST":
 											s.handleTestResponseStringNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 										default:
-											s.notAllowed(w, r, "POST")
+											s.notAllowed(w, r, notAllowedParams{
+												allowedMethods: "POST",
+												allowedHeaders: rn1200AllowedHeaders,
+												acceptPost:     "application/json",
+												acceptPatch:    "",
+											})
 										}
 
 										return
@@ -23422,7 +31576,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestResponseStringNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn1201AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -23445,7 +31604,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									case "POST":
 										s.handleTestResponseStringPasswordRequest([0]string{}, elemIsEscaped, w, r)
 									default:
-										s.notAllowed(w, r, "POST")
+										s.notAllowed(w, r, notAllowedParams{
+											allowedMethods: "POST",
+											allowedHeaders: rn1202AllowedHeaders,
+											acceptPost:     "application/json",
+											acceptPatch:    "",
+										})
 									}
 
 									return
@@ -23476,7 +31640,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestResponseStringPasswordArrayRequest([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn1203AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -23496,7 +31665,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestResponseStringPasswordArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn1204AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -23517,7 +31691,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestResponseStringPasswordNullableRequest([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn1206AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -23536,7 +31715,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestResponseStringPasswordNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn1207AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -23556,7 +31740,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestResponseStringPasswordNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn1208AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -23583,7 +31772,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									case "POST":
 										s.handleTestResponseStringTimeRequest([0]string{}, elemIsEscaped, w, r)
 									default:
-										s.notAllowed(w, r, "POST")
+										s.notAllowed(w, r, notAllowedParams{
+											allowedMethods: "POST",
+											allowedHeaders: rn1209AllowedHeaders,
+											acceptPost:     "application/json",
+											acceptPatch:    "",
+										})
 									}
 
 									return
@@ -23614,7 +31808,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestResponseStringTimeArrayRequest([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn1210AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -23634,7 +31833,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestResponseStringTimeArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn1211AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -23655,7 +31859,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestResponseStringTimeNullableRequest([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn1213AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -23674,7 +31883,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestResponseStringTimeNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn1214AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -23694,7 +31908,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestResponseStringTimeNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn1215AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -23733,7 +31952,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "POST":
 											s.handleTestResponseStringUintRequest([0]string{}, elemIsEscaped, w, r)
 										default:
-											s.notAllowed(w, r, "POST")
+											s.notAllowed(w, r, notAllowedParams{
+												allowedMethods: "POST",
+												allowedHeaders: rn1231AllowedHeaders,
+												acceptPost:     "application/json",
+												acceptPatch:    "",
+											})
 										}
 
 										return
@@ -23752,7 +31976,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestResponseStringUint16Request([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn1232AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -23783,7 +32012,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestResponseStringUint16ArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn1233AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -23803,7 +32037,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestResponseStringUint16ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn1234AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -23824,7 +32063,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestResponseStringUint16NullableRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn1236AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -23843,7 +32087,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestResponseStringUint16NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn1237AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -23863,7 +32112,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestResponseStringUint16NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn1238AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -23890,7 +32144,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestResponseStringUint32Request([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn1239AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -23921,7 +32180,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestResponseStringUint32ArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn1240AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -23941,7 +32205,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestResponseStringUint32ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn1241AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -23962,7 +32231,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestResponseStringUint32NullableRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn1243AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -23981,7 +32255,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestResponseStringUint32NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn1244AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -24001,7 +32280,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestResponseStringUint32NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn1245AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -24028,7 +32312,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestResponseStringUint64Request([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn1246AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -24059,7 +32348,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestResponseStringUint64ArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn1247AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -24079,7 +32373,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestResponseStringUint64ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn1248AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -24100,7 +32399,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestResponseStringUint64NullableRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn1250AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -24119,7 +32423,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestResponseStringUint64NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn1251AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -24139,7 +32448,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestResponseStringUint64NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn1252AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -24166,7 +32480,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											case "POST":
 												s.handleTestResponseStringUint8Request([0]string{}, elemIsEscaped, w, r)
 											default:
-												s.notAllowed(w, r, "POST")
+												s.notAllowed(w, r, notAllowedParams{
+													allowedMethods: "POST",
+													allowedHeaders: rn1253AllowedHeaders,
+													acceptPost:     "application/json",
+													acceptPatch:    "",
+												})
 											}
 
 											return
@@ -24197,7 +32516,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestResponseStringUint8ArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn1254AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -24217,7 +32541,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestResponseStringUint8ArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn1255AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -24238,7 +32567,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestResponseStringUint8NullableRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn1257AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -24257,7 +32591,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestResponseStringUint8NullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn1258AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -24277,7 +32616,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestResponseStringUint8NullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn1259AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -24316,7 +32660,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestResponseStringUintArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn1260AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -24336,7 +32685,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestResponseStringUintArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn1261AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -24357,7 +32711,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestResponseStringUintNullableRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn1263AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -24376,7 +32735,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestResponseStringUintNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn1264AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -24396,7 +32760,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestResponseStringUintNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn1265AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -24423,7 +32792,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "POST":
 											s.handleTestResponseStringUnixRequest([0]string{}, elemIsEscaped, w, r)
 										default:
-											s.notAllowed(w, r, "POST")
+											s.notAllowed(w, r, notAllowedParams{
+												allowedMethods: "POST",
+												allowedHeaders: rn1266AllowedHeaders,
+												acceptPost:     "application/json",
+												acceptPatch:    "",
+											})
 										}
 
 										return
@@ -24466,7 +32840,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestResponseStringUnixMicroRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn1269AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -24497,7 +32876,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestResponseStringUnixMicroArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn1270AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -24517,7 +32901,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																case "POST":
 																	s.handleTestResponseStringUnixMicroArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
-																	s.notAllowed(w, r, "POST")
+																	s.notAllowed(w, r, notAllowedParams{
+																		allowedMethods: "POST",
+																		allowedHeaders: rn1271AllowedHeaders,
+																		acceptPost:     "application/json",
+																		acceptPatch:    "",
+																	})
 																}
 
 																return
@@ -24538,7 +32927,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestResponseStringUnixMicroNullableRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn1273AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -24557,7 +32951,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																case "POST":
 																	s.handleTestResponseStringUnixMicroNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
-																	s.notAllowed(w, r, "POST")
+																	s.notAllowed(w, r, notAllowedParams{
+																		allowedMethods: "POST",
+																		allowedHeaders: rn1274AllowedHeaders,
+																		acceptPost:     "application/json",
+																		acceptPatch:    "",
+																	})
 																}
 
 																return
@@ -24577,7 +32976,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	case "POST":
 																		s.handleTestResponseStringUnixMicroNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																	default:
-																		s.notAllowed(w, r, "POST")
+																		s.notAllowed(w, r, notAllowedParams{
+																			allowedMethods: "POST",
+																			allowedHeaders: rn1275AllowedHeaders,
+																			acceptPost:     "application/json",
+																			acceptPatch:    "",
+																		})
 																	}
 
 																	return
@@ -24604,7 +33008,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestResponseStringUnixMilliRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn1277AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -24635,7 +33044,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestResponseStringUnixMilliArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn1278AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -24655,7 +33069,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																case "POST":
 																	s.handleTestResponseStringUnixMilliArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
-																	s.notAllowed(w, r, "POST")
+																	s.notAllowed(w, r, notAllowedParams{
+																		allowedMethods: "POST",
+																		allowedHeaders: rn1279AllowedHeaders,
+																		acceptPost:     "application/json",
+																		acceptPatch:    "",
+																	})
 																}
 
 																return
@@ -24676,7 +33095,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestResponseStringUnixMilliNullableRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn1281AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -24695,7 +33119,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																case "POST":
 																	s.handleTestResponseStringUnixMilliNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
-																	s.notAllowed(w, r, "POST")
+																	s.notAllowed(w, r, notAllowedParams{
+																		allowedMethods: "POST",
+																		allowedHeaders: rn1282AllowedHeaders,
+																		acceptPost:     "application/json",
+																		acceptPatch:    "",
+																	})
 																}
 
 																return
@@ -24715,7 +33144,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	case "POST":
 																		s.handleTestResponseStringUnixMilliNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																	default:
-																		s.notAllowed(w, r, "POST")
+																		s.notAllowed(w, r, notAllowedParams{
+																			allowedMethods: "POST",
+																			allowedHeaders: rn1283AllowedHeaders,
+																			acceptPost:     "application/json",
+																			acceptPatch:    "",
+																		})
 																	}
 
 																	return
@@ -24744,7 +33178,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestResponseStringUnixNanoRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn1285AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -24775,7 +33214,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestResponseStringUnixNanoArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn1286AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -24795,7 +33239,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestResponseStringUnixNanoArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn1287AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -24816,7 +33265,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestResponseStringUnixNanoNullableRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn1289AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -24835,7 +33289,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestResponseStringUnixNanoNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn1290AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -24855,7 +33314,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																case "POST":
 																	s.handleTestResponseStringUnixNanoNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
-																	s.notAllowed(w, r, "POST")
+																	s.notAllowed(w, r, notAllowedParams{
+																		allowedMethods: "POST",
+																		allowedHeaders: rn1291AllowedHeaders,
+																		acceptPost:     "application/json",
+																		acceptPatch:    "",
+																	})
 																}
 
 																return
@@ -24882,7 +33346,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestResponseStringUnixSecondsRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn1296AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -24913,7 +33382,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestResponseStringUnixSecondsArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn1297AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -24933,7 +33407,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestResponseStringUnixSecondsArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn1298AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -24954,7 +33433,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestResponseStringUnixSecondsNullableRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn1300AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -24973,7 +33457,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															case "POST":
 																s.handleTestResponseStringUnixSecondsNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
-																s.notAllowed(w, r, "POST")
+																s.notAllowed(w, r, notAllowedParams{
+																	allowedMethods: "POST",
+																	allowedHeaders: rn1301AllowedHeaders,
+																	acceptPost:     "application/json",
+																	acceptPatch:    "",
+																})
 															}
 
 															return
@@ -24993,7 +33482,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																case "POST":
 																	s.handleTestResponseStringUnixSecondsNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 																default:
-																	s.notAllowed(w, r, "POST")
+																	s.notAllowed(w, r, notAllowedParams{
+																		allowedMethods: "POST",
+																		allowedHeaders: rn1302AllowedHeaders,
+																		acceptPost:     "application/json",
+																		acceptPatch:    "",
+																	})
 																}
 
 																return
@@ -25034,7 +33528,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestResponseStringUnixArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn1267AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -25054,7 +33553,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestResponseStringUnixArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn1268AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -25075,7 +33579,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestResponseStringUnixNullableRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn1293AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -25094,7 +33603,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestResponseStringUnixNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn1294AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -25114,7 +33628,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestResponseStringUnixNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn1295AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -25141,7 +33660,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "POST":
 											s.handleTestResponseStringURIRequest([0]string{}, elemIsEscaped, w, r)
 										default:
-											s.notAllowed(w, r, "POST")
+											s.notAllowed(w, r, notAllowedParams{
+												allowedMethods: "POST",
+												allowedHeaders: rn1216AllowedHeaders,
+												acceptPost:     "application/json",
+												acceptPatch:    "",
+											})
 										}
 
 										return
@@ -25172,7 +33696,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestResponseStringURIArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn1217AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -25192,7 +33721,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestResponseStringURIArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn1218AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -25213,7 +33747,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestResponseStringURINullableRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn1220AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -25232,7 +33771,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestResponseStringURINullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn1221AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -25252,7 +33796,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestResponseStringURINullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn1222AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return
@@ -25279,7 +33828,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										case "POST":
 											s.handleTestResponseStringUUIDRequest([0]string{}, elemIsEscaped, w, r)
 										default:
-											s.notAllowed(w, r, "POST")
+											s.notAllowed(w, r, notAllowedParams{
+												allowedMethods: "POST",
+												allowedHeaders: rn1224AllowedHeaders,
+												acceptPost:     "application/json",
+												acceptPatch:    "",
+											})
 										}
 
 										return
@@ -25310,7 +33864,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestResponseStringUUIDArrayRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn1225AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -25330,7 +33889,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestResponseStringUUIDArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn1226AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -25351,7 +33915,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												case "POST":
 													s.handleTestResponseStringUUIDNullableRequest([0]string{}, elemIsEscaped, w, r)
 												default:
-													s.notAllowed(w, r, "POST")
+													s.notAllowed(w, r, notAllowedParams{
+														allowedMethods: "POST",
+														allowedHeaders: rn1228AllowedHeaders,
+														acceptPost:     "application/json",
+														acceptPatch:    "",
+													})
 												}
 
 												return
@@ -25370,7 +33939,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													case "POST":
 														s.handleTestResponseStringUUIDNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "POST")
+														s.notAllowed(w, r, notAllowedParams{
+															allowedMethods: "POST",
+															allowedHeaders: rn1229AllowedHeaders,
+															acceptPost:     "application/json",
+															acceptPatch:    "",
+														})
 													}
 
 													return
@@ -25390,7 +33964,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														case "POST":
 															s.handleTestResponseStringUUIDNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
-															s.notAllowed(w, r, "POST")
+															s.notAllowed(w, r, notAllowedParams{
+																allowedMethods: "POST",
+																allowedHeaders: rn1230AllowedHeaders,
+																acceptPost:     "application/json",
+																acceptPatch:    "",
+															})
 														}
 
 														return

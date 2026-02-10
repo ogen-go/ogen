@@ -41,7 +41,7 @@ func (t *RouteTree) addRoute(m Route) error {
 
 	n := t.Root
 	if n == nil {
-		n = new(RouteNode)
+		n = &RouteNode{}
 		t.Root = n
 	}
 	for {
@@ -62,6 +62,7 @@ func (t *RouteTree) addRoute(m Route) error {
 		if n == nil {
 			// If there is no child with such head, create a new one.
 			r, err := parent.addChild(path, m.Operation, &RouteNode{
+				idSeq:  parent.idSeq.next(),
 				prefix: path,
 				head:   head,
 			})
@@ -93,6 +94,7 @@ func (t *RouteTree) addRoute(m Route) error {
 
 		// Otherwise, we try to replace existing node.
 		newChild := &RouteNode{
+			idSeq:  n.idSeq.next(),
 			head:   path[0],
 			prefix: path[:commonPrefix],
 		}
@@ -113,6 +115,7 @@ func (t *RouteTree) addRoute(m Route) error {
 
 		// Otherwise, we add new node as second child of replacer.
 		r, err := newChild.addChild(path, m.Operation, &RouteNode{
+			idSeq:  n.idSeq.next(),
 			prefix: path,
 			head:   path[0],
 		})
