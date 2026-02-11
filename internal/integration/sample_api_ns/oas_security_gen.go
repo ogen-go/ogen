@@ -40,6 +40,7 @@ func GetRolesForAPIKey(operation string) []string {
 	copy(result, roles)
 	return result
 }
+
 func (s *Client) securityAPIKey(ctx context.Context, operationName OperationName, req *http.Request) error {
 	t, err := s.sec.APIKey(ctx, operationName)
 	if err != nil {

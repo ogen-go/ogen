@@ -42,9 +42,165 @@ func findAuthorization(h http.Header, prefix string) (string, bool) {
 	return "", false
 }
 
+// operationRolesBasicAuth is a private map storing roles per operation.
 var operationRolesBasicAuth = map[string][]string{
 	DisjointSecurityOperation:  []string{},
 	IntersectSecurityOperation: []string{},
+}
+
+// GetRolesForBasicAuth returns the required roles for the given operation.
+//
+// This is useful for authorization scenarios where you need to know which roles
+// are required for an operation.
+//
+// Example:
+//
+//	requiredRoles := GetRolesForBasicAuth(AddPetOperation)
+//
+// Returns nil if the operation has no role requirements or if the operation is unknown.
+func GetRolesForBasicAuth(operation string) []string {
+	roles, ok := operationRolesBasicAuth[operation]
+	if !ok {
+		return nil
+	}
+	// Return a copy to prevent external modification
+	result := make([]string, len(roles))
+	copy(result, roles)
+	return result
+}
+
+// operationRolesBearerToken is a private map storing roles per operation.
+var operationRolesBearerToken = map[string][]string{
+	IntersectSecurityOperation: []string{},
+}
+
+// GetRolesForBearerToken returns the required roles for the given operation.
+//
+// This is useful for authorization scenarios where you need to know which roles
+// are required for an operation.
+//
+// Example:
+//
+//	requiredRoles := GetRolesForBearerToken(AddPetOperation)
+//
+// Returns nil if the operation has no role requirements or if the operation is unknown.
+func GetRolesForBearerToken(operation string) []string {
+	roles, ok := operationRolesBearerToken[operation]
+	if !ok {
+		return nil
+	}
+	// Return a copy to prevent external modification
+	result := make([]string, len(roles))
+	copy(result, roles)
+	return result
+}
+
+// operationRolesCookieKey is a private map storing roles per operation.
+var operationRolesCookieKey = map[string][]string{
+	DisjointSecurityOperation: []string{},
+}
+
+// GetRolesForCookieKey returns the required roles for the given operation.
+//
+// This is useful for authorization scenarios where you need to know which roles
+// are required for an operation.
+//
+// Example:
+//
+//	requiredRoles := GetRolesForCookieKey(AddPetOperation)
+//
+// Returns nil if the operation has no role requirements or if the operation is unknown.
+func GetRolesForCookieKey(operation string) []string {
+	roles, ok := operationRolesCookieKey[operation]
+	if !ok {
+		return nil
+	}
+	// Return a copy to prevent external modification
+	result := make([]string, len(roles))
+	copy(result, roles)
+	return result
+}
+
+// operationRolesCustom is a private map storing roles per operation.
+var operationRolesCustom = map[string][]string{
+	CustomSecurityOperation: []string{},
+}
+
+// GetRolesForCustom returns the required roles for the given operation.
+//
+// This is useful for authorization scenarios where you need to know which roles
+// are required for an operation.
+//
+// Example:
+//
+//	requiredRoles := GetRolesForCustom(AddPetOperation)
+//
+// Returns nil if the operation has no role requirements or if the operation is unknown.
+func GetRolesForCustom(operation string) []string {
+	roles, ok := operationRolesCustom[operation]
+	if !ok {
+		return nil
+	}
+	// Return a copy to prevent external modification
+	result := make([]string, len(roles))
+	copy(result, roles)
+	return result
+}
+
+// operationRolesHeaderKey is a private map storing roles per operation.
+var operationRolesHeaderKey = map[string][]string{
+	DisjointSecurityOperation:  []string{},
+	IntersectSecurityOperation: []string{},
+}
+
+// GetRolesForHeaderKey returns the required roles for the given operation.
+//
+// This is useful for authorization scenarios where you need to know which roles
+// are required for an operation.
+//
+// Example:
+//
+//	requiredRoles := GetRolesForHeaderKey(AddPetOperation)
+//
+// Returns nil if the operation has no role requirements or if the operation is unknown.
+func GetRolesForHeaderKey(operation string) []string {
+	roles, ok := operationRolesHeaderKey[operation]
+	if !ok {
+		return nil
+	}
+	// Return a copy to prevent external modification
+	result := make([]string, len(roles))
+	copy(result, roles)
+	return result
+}
+
+// operationRolesQueryKey is a private map storing roles per operation.
+var operationRolesQueryKey = map[string][]string{
+	DisjointSecurityOperation: []string{},
+	OptionalSecurityOperation: []string{
+		"admin",
+	},
+}
+
+// GetRolesForQueryKey returns the required roles for the given operation.
+//
+// This is useful for authorization scenarios where you need to know which roles
+// are required for an operation.
+//
+// Example:
+//
+//	requiredRoles := GetRolesForQueryKey(AddPetOperation)
+//
+// Returns nil if the operation has no role requirements or if the operation is unknown.
+func GetRolesForQueryKey(operation string) []string {
+	roles, ok := operationRolesQueryKey[operation]
+	if !ok {
+		return nil
+	}
+	// Return a copy to prevent external modification
+	result := make([]string, len(roles))
+	copy(result, roles)
+	return result
 }
 
 func (s *Server) securityBasicAuth(ctx context.Context, operationName OperationName, req *http.Request) (context.Context, bool, error) {
@@ -68,10 +224,6 @@ func (s *Server) securityBasicAuth(ctx context.Context, operationName OperationN
 	return rctx, true, err
 }
 
-var operationRolesBearerToken = map[string][]string{
-	IntersectSecurityOperation: []string{},
-}
-
 func (s *Server) securityBearerToken(ctx context.Context, operationName OperationName, req *http.Request) (context.Context, bool, error) {
 	var t BearerToken
 	token, ok := findAuthorization(req.Header, "Bearer")
@@ -87,10 +239,6 @@ func (s *Server) securityBearerToken(ctx context.Context, operationName Operatio
 		return nil, false, err
 	}
 	return rctx, true, err
-}
-
-var operationRolesCookieKey = map[string][]string{
-	DisjointSecurityOperation: []string{},
 }
 
 func (s *Server) securityCookieKey(ctx context.Context, operationName OperationName, req *http.Request) (context.Context, bool, error) {
@@ -116,10 +264,6 @@ func (s *Server) securityCookieKey(ctx context.Context, operationName OperationN
 	return rctx, true, err
 }
 
-var operationRolesCustom = map[string][]string{
-	CustomSecurityOperation: []string{},
-}
-
 func (s *Server) securityCustom(ctx context.Context, operationName OperationName, req *http.Request) (context.Context, bool, error) {
 	var t Custom
 	t.Request = req
@@ -131,11 +275,6 @@ func (s *Server) securityCustom(ctx context.Context, operationName OperationName
 		return nil, false, err
 	}
 	return rctx, true, err
-}
-
-var operationRolesHeaderKey = map[string][]string{
-	DisjointSecurityOperation:  []string{},
-	IntersectSecurityOperation: []string{},
 }
 
 func (s *Server) securityHeaderKey(ctx context.Context, operationName OperationName, req *http.Request) (context.Context, bool, error) {
@@ -154,13 +293,6 @@ func (s *Server) securityHeaderKey(ctx context.Context, operationName OperationN
 		return nil, false, err
 	}
 	return rctx, true, err
-}
-
-var operationRolesQueryKey = map[string][]string{
-	DisjointSecurityOperation: []string{},
-	OptionalSecurityOperation: []string{
-		"admin",
-	},
 }
 
 func (s *Server) securityQueryKey(ctx context.Context, operationName OperationName, req *http.Request) (context.Context, bool, error) {
@@ -198,131 +330,6 @@ type SecuritySource interface {
 	QueryKey(ctx context.Context, operationName OperationName, client *Client) (QueryKey, error)
 }
 
-// GetRolesForBasicAuth returns the required roles for the given operation.
-//
-// This is useful for authorization scenarios where you need to know which roles
-// are required for an operation.
-//
-// Example:
-//
-//	requiredRoles := GetRolesForBasicAuth(AddPetOperation)
-//
-// Returns nil if the operation has no role requirements or if the operation is unknown.
-func GetRolesForBasicAuth(operation string) []string {
-	roles, ok := operationRolesBasicAuth[operation]
-	if !ok {
-		return nil
-	}
-	// Return a copy to prevent external modification
-	result := make([]string, len(roles))
-	copy(result, roles)
-	return result
-}
-
-// GetRolesForBearerToken returns the required roles for the given operation.
-//
-// This is useful for authorization scenarios where you need to know which roles
-// are required for an operation.
-//
-// Example:
-//
-//	requiredRoles := GetRolesForBearerToken(AddPetOperation)
-//
-// Returns nil if the operation has no role requirements or if the operation is unknown.
-func GetRolesForBearerToken(operation string) []string {
-	roles, ok := operationRolesBearerToken[operation]
-	if !ok {
-		return nil
-	}
-	// Return a copy to prevent external modification
-	result := make([]string, len(roles))
-	copy(result, roles)
-	return result
-}
-
-// GetRolesForCookieKey returns the required roles for the given operation.
-//
-// This is useful for authorization scenarios where you need to know which roles
-// are required for an operation.
-//
-// Example:
-//
-//	requiredRoles := GetRolesForCookieKey(AddPetOperation)
-//
-// Returns nil if the operation has no role requirements or if the operation is unknown.
-func GetRolesForCookieKey(operation string) []string {
-	roles, ok := operationRolesCookieKey[operation]
-	if !ok {
-		return nil
-	}
-	// Return a copy to prevent external modification
-	result := make([]string, len(roles))
-	copy(result, roles)
-	return result
-}
-
-// GetRolesForCustom returns the required roles for the given operation.
-//
-// This is useful for authorization scenarios where you need to know which roles
-// are required for an operation.
-//
-// Example:
-//
-//	requiredRoles := GetRolesForCustom(AddPetOperation)
-//
-// Returns nil if the operation has no role requirements or if the operation is unknown.
-func GetRolesForCustom(operation string) []string {
-	roles, ok := operationRolesCustom[operation]
-	if !ok {
-		return nil
-	}
-	// Return a copy to prevent external modification
-	result := make([]string, len(roles))
-	copy(result, roles)
-	return result
-}
-
-// GetRolesForHeaderKey returns the required roles for the given operation.
-//
-// This is useful for authorization scenarios where you need to know which roles
-// are required for an operation.
-//
-// Example:
-//
-//	requiredRoles := GetRolesForHeaderKey(AddPetOperation)
-//
-// Returns nil if the operation has no role requirements or if the operation is unknown.
-func GetRolesForHeaderKey(operation string) []string {
-	roles, ok := operationRolesHeaderKey[operation]
-	if !ok {
-		return nil
-	}
-	// Return a copy to prevent external modification
-	result := make([]string, len(roles))
-	copy(result, roles)
-	return result
-}
-
-// GetRolesForQueryKey returns the required roles for the given operation.
-//
-// This is useful for authorization scenarios where you need to know which roles
-// are required for an operation.
-//
-// Example:
-//
-//	requiredRoles := GetRolesForQueryKey(AddPetOperation)
-//
-// Returns nil if the operation has no role requirements or if the operation is unknown.
-func GetRolesForQueryKey(operation string) []string {
-	roles, ok := operationRolesQueryKey[operation]
-	if !ok {
-		return nil
-	}
-	// Return a copy to prevent external modification
-	result := make([]string, len(roles))
-	copy(result, roles)
-	return result
-}
 func (s *Client) securityBasicAuth(ctx context.Context, operationName OperationName, req *http.Request) error {
 	t, err := s.sec.BasicAuth(ctx, operationName, s)
 	if err != nil {
