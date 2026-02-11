@@ -28,21 +28,9 @@ func findAuthorization(h http.Header, prefix string) (string, bool) {
 	return "", false
 }
 
-{{ range $s := $.Securities }}
+{{ template "security/scopes" $ }}
 
-{{if $s.Format.IsOAuth2Security}}
-var oauth2Scopes{{ $s.Type.Name }} = map[string][]string {
-{{- else}}
-var operationRoles{{ $s.Type.Name }} = map[string][]string {
-{{- end}}
-{{- range $operationName, $scopes := $s.Scopes }}
-	{{ $operationName }}Operation: []string{
-		{{- range $scope := $scopes }}
-			{{ quote $scope }},
-		{{- end}}
-	},
-{{- end }}
-}
+{{ range $s := $.Securities }}
 
 func (s *Server) security{{ $s.Type.Name }}(ctx context.Context, operationName OperationName, req *http.Request) (context.Context, bool, error) {
 	{{- if $s.Format.IsAPIKeySecurity }}
@@ -142,70 +130,8 @@ type SecuritySource interface {
 {{- end }}
 }
 
-{{ range $s := $.Securities }}
-
 {{- if not $.PathsServerEnabled }}
-{{if $s.Format.IsOAuth2Security}}
-// oauth2Scopes{{ $s.Type.Name }} is a private map storing OAuth2 scopes per operation.
-var oauth2Scopes{{ $s.Type.Name }} = map[string][]string {
-{{- else}}
-// operationRoles{{ $s.Type.Name }} is a private map storing roles per operation.
-var operationRoles{{ $s.Type.Name }} = map[string][]string {
-{{- end}}
-{{- range $operationName, $scopes := $s.Scopes }}
-	{{ $operationName }}Operation: []string{
-		{{- range $scope := $scopes }}
-			{{ quote $scope }},
-		{{- end}}
-	},
-{{- end }}
-}
-{{- end }}
-
-{{if $s.Format.IsOAuth2Security}}
-// GetOAuth2ScopesFor{{ $s.Type.Name }} returns the required OAuth2 scopes for the given operation.
-//
-// This is useful for token exchange scenarios where you need to know which scopes
-// to request when obtaining a token for a downstream API call.
-//
-// Example:
-//
-//	requiredScopes := GetOAuth2ScopesFor{{ $s.Type.Name }}(AddPetOperation)
-//	token := exchangeTokenWithScopes(requiredScopes, "https://api.example.com")
-//
-// Returns nil if the operation has no scope requirements or if the operation is unknown.
-func GetOAuth2ScopesFor{{ $s.Type.Name }}(operation string) []string {
-	scopes, ok := oauth2Scopes{{ $s.Type.Name }}[operation]
-	if !ok {
-		return nil
-	}
-	// Return a copy to prevent external modification
-	result := make([]string, len(scopes))
-	copy(result, scopes)
-	return result
-}
-{{- else}}
-// GetRolesFor{{ $s.Type.Name }} returns the required roles for the given operation.
-//
-// This is useful for authorization scenarios where you need to know which roles
-// are required for an operation.
-//
-// Example:
-//
-//	requiredRoles := GetRolesFor{{ $s.Type.Name }}(AddPetOperation)
-//
-// Returns nil if the operation has no role requirements or if the operation is unknown.
-func GetRolesFor{{ $s.Type.Name }}(operation string) []string {
-	roles, ok := operationRoles{{ $s.Type.Name }}[operation]
-	if !ok {
-		return nil
-	}
-	// Return a copy to prevent external modification
-	result := make([]string, len(roles))
-	copy(result, roles)
-	return result
-}
-{{- end}}
+{{ template "security/scopes" $ }}
 {{- end }}
 
 {{- range $s := $.Securities }}
@@ -256,6 +182,74 @@ func (s *Client) security{{ $s.Type.Name }}(ctx context.Context, operationName O
 }
 {{- end }}
 {{- end }}
+
+{{- end }}
+{{ end }}
+
+{{ define "security/scopes" }}
+{{- /*gotype: github.com/ogen-go/ogen/gen.TemplateConfig*/ -}}
+{{ range $s := $.Securities }}
+
+{{if $s.Format.IsOAuth2Security}}
+// oauth2Scopes{{ $s.Type.Name }} is a private map storing OAuth2 scopes per operation.
+var oauth2Scopes{{ $s.Type.Name }} = map[string][]string {
+{{- else}}
+// operationRoles{{ $s.Type.Name }} is a private map storing roles per operation.
+var operationRoles{{ $s.Type.Name }} = map[string][]string {
+{{- end}}
+{{- range $operationName, $scopes := $s.Scopes }}
+	{{ $operationName }}Operation: []string{
+		{{- range $scope := $scopes }}
+			{{ quote $scope }},
+		{{- end}}
+	},
+{{- end }}
+}
+
+{{if $s.Format.IsOAuth2Security}}
+// GetOAuth2ScopesFor{{ $s.Type.Name }} returns the required OAuth2 scopes for the given operation.
+//
+// This is useful for token exchange scenarios where you need to know which scopes
+// to request when obtaining a token for a downstream API call.
+//
+// Example:
+//
+//	requiredScopes := GetOAuth2ScopesFor{{ $s.Type.Name }}(AddPetOperation)
+//	token := exchangeTokenWithScopes(requiredScopes, "https://api.example.com")
+//
+// Returns nil if the operation has no scope requirements or if the operation is unknown.
+func GetOAuth2ScopesFor{{ $s.Type.Name }}(operation string) []string {
+	scopes, ok := oauth2Scopes{{ $s.Type.Name }}[operation]
+	if !ok {
+		return nil
+	}
+	// Return a copy to prevent external modification
+	result := make([]string, len(scopes))
+	copy(result, scopes)
+	return result
+}
+{{- else}}
+// GetRolesFor{{ $s.Type.Name }} returns the required roles for the given operation.
+//
+// This is useful for authorization scenarios where you need to know which roles
+// are required for an operation.
+//
+// Example:
+//
+//	requiredRoles := GetRolesFor{{ $s.Type.Name }}(AddPetOperation)
+//
+// Returns nil if the operation has no role requirements or if the operation is unknown.
+func GetRolesFor{{ $s.Type.Name }}(operation string) []string {
+	roles, ok := operationRoles{{ $s.Type.Name }}[operation]
+	if !ok {
+		return nil
+	}
+	// Return a copy to prevent external modification
+	result := make([]string, len(roles))
+	copy(result, roles)
+	return result
+}
+{{- end}}
 
 {{- end }}
 {{ end }}

@@ -34,9 +34,57 @@ func findAuthorization(h http.Header, prefix string) (string, bool) {
 	return "", false
 }
 
+// operationRolesBearerToken is a private map storing roles per operation.
 var operationRolesBearerToken = map[string][]string{
 	FooPatchOperation: []string{},
 	FooPostOperation:  []string{},
+}
+
+// GetRolesForBearerToken returns the required roles for the given operation.
+//
+// This is useful for authorization scenarios where you need to know which roles
+// are required for an operation.
+//
+// Example:
+//
+//	requiredRoles := GetRolesForBearerToken(AddPetOperation)
+//
+// Returns nil if the operation has no role requirements or if the operation is unknown.
+func GetRolesForBearerToken(operation string) []string {
+	roles, ok := operationRolesBearerToken[operation]
+	if !ok {
+		return nil
+	}
+	// Return a copy to prevent external modification
+	result := make([]string, len(roles))
+	copy(result, roles)
+	return result
+}
+
+// operationRolesHeaderKey is a private map storing roles per operation.
+var operationRolesHeaderKey = map[string][]string{
+	FooPatchOperation: []string{},
+}
+
+// GetRolesForHeaderKey returns the required roles for the given operation.
+//
+// This is useful for authorization scenarios where you need to know which roles
+// are required for an operation.
+//
+// Example:
+//
+//	requiredRoles := GetRolesForHeaderKey(AddPetOperation)
+//
+// Returns nil if the operation has no role requirements or if the operation is unknown.
+func GetRolesForHeaderKey(operation string) []string {
+	roles, ok := operationRolesHeaderKey[operation]
+	if !ok {
+		return nil
+	}
+	// Return a copy to prevent external modification
+	result := make([]string, len(roles))
+	copy(result, roles)
+	return result
 }
 
 func (s *Server) securityBearerToken(ctx context.Context, operationName OperationName, req *http.Request) (context.Context, bool, error) {
@@ -54,10 +102,6 @@ func (s *Server) securityBearerToken(ctx context.Context, operationName Operatio
 		return nil, false, err
 	}
 	return rctx, true, err
-}
-
-var operationRolesHeaderKey = map[string][]string{
-	FooPatchOperation: []string{},
 }
 
 func (s *Server) securityHeaderKey(ctx context.Context, operationName OperationName, req *http.Request) (context.Context, bool, error) {
@@ -86,47 +130,6 @@ type SecuritySource interface {
 	HeaderKey(ctx context.Context, operationName OperationName) (HeaderKey, error)
 }
 
-// GetRolesForBearerToken returns the required roles for the given operation.
-//
-// This is useful for authorization scenarios where you need to know which roles
-// are required for an operation.
-//
-// Example:
-//
-//	requiredRoles := GetRolesForBearerToken(AddPetOperation)
-//
-// Returns nil if the operation has no role requirements or if the operation is unknown.
-func GetRolesForBearerToken(operation string) []string {
-	roles, ok := operationRolesBearerToken[operation]
-	if !ok {
-		return nil
-	}
-	// Return a copy to prevent external modification
-	result := make([]string, len(roles))
-	copy(result, roles)
-	return result
-}
-
-// GetRolesForHeaderKey returns the required roles for the given operation.
-//
-// This is useful for authorization scenarios where you need to know which roles
-// are required for an operation.
-//
-// Example:
-//
-//	requiredRoles := GetRolesForHeaderKey(AddPetOperation)
-//
-// Returns nil if the operation has no role requirements or if the operation is unknown.
-func GetRolesForHeaderKey(operation string) []string {
-	roles, ok := operationRolesHeaderKey[operation]
-	if !ok {
-		return nil
-	}
-	// Return a copy to prevent external modification
-	result := make([]string, len(roles))
-	copy(result, roles)
-	return result
-}
 func (s *Client) securityBearerToken(ctx context.Context, operationName OperationName, req *http.Request) error {
 	t, err := s.sec.BearerToken(ctx, operationName)
 	if err != nil {

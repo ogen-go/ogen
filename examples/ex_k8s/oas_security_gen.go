@@ -33,6 +33,7 @@ func findAuthorization(h http.Header, prefix string) (string, bool) {
 	return "", false
 }
 
+// operationRolesBearerToken is a private map storing roles per operation.
 var operationRolesBearerToken = map[string][]string{
 	ConnectCoreV1DeleteNamespacedPodProxyOperation:                              []string{},
 	ConnectCoreV1DeleteNamespacedPodProxyWithPathOperation:                      []string{},
@@ -595,6 +596,27 @@ var operationRolesBearerToken = map[string][]string{
 	WatchStorageV1beta1NamespacedCSIStorageCapacityListOperation:                []string{},
 }
 
+// GetRolesForBearerToken returns the required roles for the given operation.
+//
+// This is useful for authorization scenarios where you need to know which roles
+// are required for an operation.
+//
+// Example:
+//
+//	requiredRoles := GetRolesForBearerToken(AddPetOperation)
+//
+// Returns nil if the operation has no role requirements or if the operation is unknown.
+func GetRolesForBearerToken(operation string) []string {
+	roles, ok := operationRolesBearerToken[operation]
+	if !ok {
+		return nil
+	}
+	// Return a copy to prevent external modification
+	result := make([]string, len(roles))
+	copy(result, roles)
+	return result
+}
+
 func (s *Server) securityBearerToken(ctx context.Context, operationName OperationName, req *http.Request) (context.Context, bool, error) {
 	var t BearerToken
 	const parameterName = "authorization"
@@ -620,26 +642,6 @@ type SecuritySource interface {
 	BearerToken(ctx context.Context, operationName OperationName) (BearerToken, error)
 }
 
-// GetRolesForBearerToken returns the required roles for the given operation.
-//
-// This is useful for authorization scenarios where you need to know which roles
-// are required for an operation.
-//
-// Example:
-//
-//	requiredRoles := GetRolesForBearerToken(AddPetOperation)
-//
-// Returns nil if the operation has no role requirements or if the operation is unknown.
-func GetRolesForBearerToken(operation string) []string {
-	roles, ok := operationRolesBearerToken[operation]
-	if !ok {
-		return nil
-	}
-	// Return a copy to prevent external modification
-	result := make([]string, len(roles))
-	copy(result, roles)
-	return result
-}
 func (s *Client) securityBearerToken(ctx context.Context, operationName OperationName, req *http.Request) error {
 	t, err := s.sec.BearerToken(ctx, operationName)
 	if err != nil {

@@ -32,6 +32,7 @@ func findAuthorization(h http.Header, prefix string) (string, bool) {
 	return "", false
 }
 
+// oauth2ScopesOAuth2 is a private map storing OAuth2 scopes per operation.
 var oauth2ScopesOAuth2 = map[string][]string{
 	AddPetOperation: []string{
 		"admin",
@@ -45,6 +46,28 @@ var oauth2ScopesOAuth2 = map[string][]string{
 	FindPetsOperation: []string{
 		"user",
 	},
+}
+
+// GetOAuth2ScopesForOAuth2 returns the required OAuth2 scopes for the given operation.
+//
+// This is useful for token exchange scenarios where you need to know which scopes
+// to request when obtaining a token for a downstream API call.
+//
+// Example:
+//
+//	requiredScopes := GetOAuth2ScopesForOAuth2(AddPetOperation)
+//	token := exchangeTokenWithScopes(requiredScopes, "https://api.example.com")
+//
+// Returns nil if the operation has no scope requirements or if the operation is unknown.
+func GetOAuth2ScopesForOAuth2(operation string) []string {
+	scopes, ok := oauth2ScopesOAuth2[operation]
+	if !ok {
+		return nil
+	}
+	// Return a copy to prevent external modification
+	result := make([]string, len(scopes))
+	copy(result, scopes)
+	return result
 }
 
 func (s *Server) securityOAuth2(ctx context.Context, operationName OperationName, req *http.Request) (context.Context, bool, error) {
@@ -70,27 +93,6 @@ type SecuritySource interface {
 	OAuth2(ctx context.Context, operationName OperationName) (OAuth2, error)
 }
 
-// GetOAuth2ScopesForOAuth2 returns the required OAuth2 scopes for the given operation.
-//
-// This is useful for token exchange scenarios where you need to know which scopes
-// to request when obtaining a token for a downstream API call.
-//
-// Example:
-//
-//	requiredScopes := GetOAuth2ScopesForOAuth2(AddPetOperation)
-//	token := exchangeTokenWithScopes(requiredScopes, "https://api.example.com")
-//
-// Returns nil if the operation has no scope requirements or if the operation is unknown.
-func GetOAuth2ScopesForOAuth2(operation string) []string {
-	scopes, ok := oauth2ScopesOAuth2[operation]
-	if !ok {
-		return nil
-	}
-	// Return a copy to prevent external modification
-	result := make([]string, len(scopes))
-	copy(result, scopes)
-	return result
-}
 func (s *Client) securityOAuth2(ctx context.Context, operationName OperationName, req *http.Request) error {
 	t, err := s.sec.OAuth2(ctx, operationName)
 	if err != nil {
