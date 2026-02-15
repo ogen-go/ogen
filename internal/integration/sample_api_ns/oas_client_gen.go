@@ -383,7 +383,8 @@ func (c *Client) sendDataGetFormat(ctx context.Context, params DataGetFormatPara
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
+	body := resp.Body
+	defer body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeDataGetFormatResponse(resp)
@@ -478,7 +479,8 @@ func (c *Client) sendDefaultTest(ctx context.Context, request *DefaultTest, para
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
+	body := resp.Body
+	defer body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeDefaultTestResponse(resp)
@@ -551,7 +553,8 @@ func (c *Client) sendErrorGet(ctx context.Context) (res *ErrorStatusCode, err er
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
+	body := resp.Body
+	defer body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeErrorGetResponse(resp)
@@ -656,7 +659,8 @@ func (c *Client) sendFoobarGet(ctx context.Context, params FoobarGetParams) (res
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
+	body := resp.Body
+	defer body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeFoobarGetResponse(resp)
@@ -732,7 +736,8 @@ func (c *Client) sendFoobarPost(ctx context.Context, request OptPet) (res Foobar
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
+	body := resp.Body
+	defer body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeFoobarPostResponse(resp)
@@ -802,7 +807,8 @@ func (c *Client) sendFoobarPut(ctx context.Context) (res *FoobarPutDef, err erro
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
+	body := resp.Body
+	defer body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeFoobarPutResponse(resp)
@@ -873,7 +879,8 @@ func (c *Client) sendNoAdditionalPropertiesTest(ctx context.Context) (res *NoAdd
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
+	body := resp.Body
+	defer body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeNoAdditionalPropertiesTestResponse(resp)
@@ -944,7 +951,8 @@ func (c *Client) sendNullableDefaultResponse(ctx context.Context) (res *NilIntSt
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
+	body := resp.Body
+	defer body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeNullableDefaultResponseResponse(resp)
@@ -1018,7 +1026,8 @@ func (c *Client) sendOneofBug(ctx context.Context, request *OneOfBugs) (res *One
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
+	body := resp.Body
+	defer body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeOneofBugResponse(resp)
@@ -1088,7 +1097,8 @@ func (c *Client) sendPatternRecursiveMapGet(ctx context.Context) (res PatternRec
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
+	body := resp.Body
+	defer body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodePatternRecursiveMapGetResponse(resp)
@@ -1164,7 +1174,8 @@ func (c *Client) sendPetCreate(ctx context.Context, request OptPet) (res *Pet, e
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
+	body := resp.Body
+	defer body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodePetCreateResponse(resp)
@@ -1255,7 +1266,8 @@ func (c *Client) sendPetFriendsNamesByID(ctx context.Context, params PetFriendsN
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
+	body := resp.Body
+	defer body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodePetFriendsNamesByIDResponse(resp)
@@ -1403,7 +1415,8 @@ func (c *Client) sendPetGet(ctx context.Context, params PetGetParams) (res PetGe
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
+	body := resp.Body
+	defer body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodePetGetResponse(resp)
@@ -1494,7 +1507,8 @@ func (c *Client) sendPetGetAvatarByID(ctx context.Context, params PetGetAvatarBy
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
+	body := resp.Body
+	defer body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodePetGetAvatarByIDResponse(resp)
@@ -1586,7 +1600,8 @@ func (c *Client) sendPetGetAvatarByName(ctx context.Context, params PetGetAvatar
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
+	body := resp.Body
+	defer body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodePetGetAvatarByNameResponse(resp)
@@ -1677,7 +1692,8 @@ func (c *Client) sendPetGetByName(ctx context.Context, params PetGetByNameParams
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
+	body := resp.Body
+	defer body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodePetGetByNameResponse(resp)
@@ -1768,7 +1784,8 @@ func (c *Client) sendPetNameByID(ctx context.Context, params PetNameByIDParams) 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
+	body := resp.Body
+	defer body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodePetNameByIDResponse(resp)
@@ -1841,7 +1858,8 @@ func (c *Client) sendPetUpdateNameAliasPost(ctx context.Context, request OptPetN
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
+	body := resp.Body
+	defer body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodePetUpdateNameAliasPostResponse(resp)
@@ -1914,7 +1932,8 @@ func (c *Client) sendPetUpdateNamePost(ctx context.Context, request OptString) (
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
+	body := resp.Body
+	defer body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodePetUpdateNamePostResponse(resp)
@@ -2008,7 +2027,8 @@ func (c *Client) sendPetUploadAvatarByID(ctx context.Context, request PetUploadA
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
+	body := resp.Body
+	defer body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodePetUploadAvatarByIDResponse(resp)
@@ -2078,7 +2098,8 @@ func (c *Client) sendRecursiveArrayGet(ctx context.Context) (res RecursiveArray,
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
+	body := resp.Body
+	defer body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeRecursiveArrayGetResponse(resp)
@@ -2148,7 +2169,8 @@ func (c *Client) sendRecursiveMapGet(ctx context.Context) (res *RecursiveMap, er
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
+	body := resp.Body
+	defer body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeRecursiveMapGetResponse(resp)
@@ -2252,7 +2274,8 @@ func (c *Client) sendSecurityTest(ctx context.Context) (res string, err error) {
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
+	body := resp.Body
+	defer body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeSecurityTestResponse(resp)
@@ -2322,7 +2345,8 @@ func (c *Client) sendStringIntMapGet(ctx context.Context) (res *StringIntMap, er
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
+	body := resp.Body
+	defer body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeStringIntMapGetResponse(resp)
@@ -2396,7 +2420,8 @@ func (c *Client) sendTestDecimalValidation(ctx context.Context, request *TestDec
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
+	body := resp.Body
+	defer body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestDecimalValidationResponse(resp)
@@ -2470,7 +2495,8 @@ func (c *Client) sendTestFloatValidation(ctx context.Context, request *TestFloat
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
+	body := resp.Body
+	defer body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestFloatValidationResponse(resp)
@@ -2541,7 +2567,8 @@ func (c *Client) sendTestInlineOneof(ctx context.Context) (res *TestInlineOneOf,
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
+	body := resp.Body
+	defer body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestInlineOneofResponse(resp)
@@ -2612,7 +2639,8 @@ func (c *Client) sendTestIssue1310(ctx context.Context) (res *Issue1310, err err
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
+	body := resp.Body
+	defer body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestIssue1310Response(resp)
@@ -2683,7 +2711,8 @@ func (c *Client) sendTestIssue1461(ctx context.Context) (res *Issue1461, err err
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
+	body := resp.Body
+	defer body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestIssue1461Response(resp)
@@ -2754,7 +2783,8 @@ func (c *Client) sendTestNullableOneofs(ctx context.Context) (res TestNullableOn
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
+	body := resp.Body
+	defer body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestNullableOneofsResponse(resp)
@@ -2825,7 +2855,8 @@ func (c *Client) sendTestTuple(ctx context.Context) (res *TupleTest, err error) 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
+	body := resp.Body
+	defer body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestTupleResponse(resp)
@@ -2896,7 +2927,8 @@ func (c *Client) sendTestTupleNamed(ctx context.Context) (res *TupleNamedTest, e
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
+	body := resp.Body
+	defer body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestTupleNamedResponse(resp)
@@ -2967,7 +2999,8 @@ func (c *Client) sendTestUniqueItems(ctx context.Context) (res *UniqueItemsTest,
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
+	body := resp.Body
+	defer body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestUniqueItemsResponse(resp)

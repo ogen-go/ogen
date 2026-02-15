@@ -139,7 +139,8 @@ func (c *Client) sendIntegerNumber(ctx context.Context) (res *IntegerNumber, err
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
+	body := resp.Body
+	defer body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeIntegerNumberResponse(resp)
@@ -210,7 +211,8 @@ func (c *Client) sendJaegerAnyOf(ctx context.Context) (res *JaegerAnyOf, err err
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
+	body := resp.Body
+	defer body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeJaegerAnyOfResponse(resp)
@@ -281,7 +283,8 @@ func (c *Client) sendOneUUID(ctx context.Context) (res *OneUUID, err error) {
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
+	body := resp.Body
+	defer body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeOneUUIDResponse(resp)

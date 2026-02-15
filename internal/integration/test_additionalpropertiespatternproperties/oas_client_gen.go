@@ -152,7 +152,8 @@ func (c *Client) sendAlive(ctx context.Context, params AliveParams) (res *AliveO
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
+	body := resp.Body
+	defer body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeAliveResponse(resp)

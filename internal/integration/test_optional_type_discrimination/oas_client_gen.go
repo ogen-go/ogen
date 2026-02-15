@@ -131,7 +131,8 @@ func (c *Client) sendGetConfig(ctx context.Context) (res Config, err error) {
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
+	body := resp.Body
+	defer body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeGetConfigResponse(resp)

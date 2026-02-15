@@ -188,7 +188,8 @@ func (c *Client) sendGetItem(ctx context.Context, params GetItemParams) (res *Ge
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
+	body := resp.Body
+	defer body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeGetItemResponse(resp)

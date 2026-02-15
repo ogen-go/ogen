@@ -184,7 +184,8 @@ func (c *Client) sendGetBook(ctx context.Context, params GetBookParams) (res Get
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
+	body := resp.Body
+	defer body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeGetBookResponse(resp)
@@ -294,7 +295,8 @@ func (c *Client) sendGetPageCoverImage(ctx context.Context, params GetPageCoverI
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
+	body := resp.Body
+	defer body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeGetPageCoverImageResponse(resp)
@@ -423,7 +425,8 @@ func (c *Client) sendGetPageImage(ctx context.Context, params GetPageImageParams
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
+	body := resp.Body
+	defer body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeGetPageImageResponse(resp)
@@ -552,7 +555,8 @@ func (c *Client) sendGetPageThumbnailImage(ctx context.Context, params GetPageTh
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
+	body := resp.Body
+	defer body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeGetPageThumbnailImageResponse(resp)
@@ -660,7 +664,8 @@ func (c *Client) sendSearch(ctx context.Context, params SearchParams) (res Searc
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
+	body := resp.Body
+	defer body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeSearchResponse(resp)
@@ -768,7 +773,8 @@ func (c *Client) sendSearchByTagID(ctx context.Context, params SearchByTagIDPara
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
+	body := resp.Body
+	defer body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeSearchByTagIDResponse(resp)

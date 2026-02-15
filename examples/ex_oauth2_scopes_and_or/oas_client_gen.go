@@ -171,7 +171,8 @@ func (c *Client) sendTesttest(ctx context.Context, request *TesttestReq) (res Te
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
+	body := resp.Body
+	defer body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTesttestResponse(resp)

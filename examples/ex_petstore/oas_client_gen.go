@@ -155,7 +155,8 @@ func (c *Client) sendCreatePets(ctx context.Context) (res *CreatePetsCreated, er
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
+	body := resp.Body
+	defer body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeCreatePetsResponse(resp)
@@ -249,7 +250,8 @@ func (c *Client) sendListPets(ctx context.Context, params ListPetsParams) (res *
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
+	body := resp.Body
+	defer body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeListPetsResponse(resp)
@@ -340,7 +342,8 @@ func (c *Client) sendShowPetById(ctx context.Context, params ShowPetByIdParams) 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
+	body := resp.Body
+	defer body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeShowPetByIdResponse(resp)

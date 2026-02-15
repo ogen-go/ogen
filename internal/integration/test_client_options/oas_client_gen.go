@@ -208,7 +208,8 @@ func (c *Client) sendFoo(ctx context.Context, params FooParams, requestOptions .
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
+	body := resp.Body
+	defer body.Close()
 
 	if err := reqCfg.onResponse(resp); err != nil {
 		return res, errors.Wrap(err, "edit response")
