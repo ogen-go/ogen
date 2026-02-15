@@ -394,7 +394,8 @@ func (c *Client) sendOptional(ctx context.Context, params OptionalParams) (res *
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
+	body := resp.Body
+	defer body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeOptionalResponse(resp)
@@ -680,7 +681,8 @@ func (c *Client) sendRequired(ctx context.Context, params RequiredParams) (res *
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
+	body := resp.Body
+	defer body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeRequiredResponse(resp)

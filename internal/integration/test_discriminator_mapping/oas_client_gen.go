@@ -156,7 +156,8 @@ func (c *Client) sendCreatePet(ctx context.Context, request Pet) (res Pet, err e
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
+	body := resp.Body
+	defer body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeCreatePetResponse(resp)
@@ -229,7 +230,8 @@ func (c *Client) sendListNotifications(ctx context.Context) (res []Notification,
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
+	body := resp.Body
+	defer body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeListNotificationsResponse(resp)
@@ -302,7 +304,8 @@ func (c *Client) sendListPets(ctx context.Context) (res []Pet, err error) {
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
+	body := resp.Body
+	defer body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeListPetsResponse(resp)
@@ -375,7 +378,8 @@ func (c *Client) sendListVehicles(ctx context.Context) (res []Vehicle, err error
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
+	body := resp.Body
+	defer body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeListVehiclesResponse(resp)

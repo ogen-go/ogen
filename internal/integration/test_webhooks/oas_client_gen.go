@@ -135,7 +135,8 @@ func (c *Client) sendPublishEvent(ctx context.Context, request OptEvent) (res *E
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
+	body := resp.Body
+	defer body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodePublishEventResponse(resp)
@@ -220,7 +221,8 @@ func (c *WebhookClient) sendStatusWebhook(ctx context.Context, targetURL string)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
+	body := resp.Body
+	defer body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeStatusWebhookResponse(resp)
@@ -288,7 +290,8 @@ func (c *WebhookClient) sendUpdateDelete(ctx context.Context, targetURL string) 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
+	body := resp.Body
+	defer body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeUpdateDeleteResponse(resp)
@@ -395,7 +398,8 @@ func (c *WebhookClient) sendUpdateWebhook(ctx context.Context, targetURL string,
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
+	body := resp.Body
+	defer body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeUpdateWebhookResponse(resp)

@@ -145,7 +145,8 @@ func (c *Client) sendGetResource(ctx context.Context) (res Resource, err error) 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
+	body := resp.Body
+	defer body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeGetResourceResponse(resp)
@@ -218,7 +219,8 @@ func (c *Client) sendGetShippingOption(ctx context.Context) (res ShippingOption,
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
+	body := resp.Body
+	defer body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeGetShippingOptionResponse(resp)
@@ -289,7 +291,8 @@ func (c *Client) sendGetStatus(ctx context.Context) (res StatusResponse, err err
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
+	body := resp.Body
+	defer body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeGetStatusResponse(resp)
@@ -363,7 +366,8 @@ func (c *Client) sendLogEvent(ctx context.Context, request Event) (res *LogEvent
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
+	body := resp.Body
+	defer body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeLogEventResponse(resp)

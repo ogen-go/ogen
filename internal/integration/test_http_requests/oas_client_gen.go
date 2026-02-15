@@ -154,7 +154,8 @@ func (c *Client) sendAllRequestBodies(ctx context.Context, request AllRequestBod
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
+	body := resp.Body
+	defer body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeAllRequestBodiesResponse(resp)
@@ -228,7 +229,8 @@ func (c *Client) sendAllRequestBodiesOptional(ctx context.Context, request AllRe
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
+	body := resp.Body
+	defer body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeAllRequestBodiesOptionalResponse(resp)
@@ -302,7 +304,8 @@ func (c *Client) sendBase64Request(ctx context.Context, request Base64RequestReq
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
+	body := resp.Body
+	defer body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeBase64RequestResponse(resp)
@@ -376,7 +379,8 @@ func (c *Client) sendMaskContentType(ctx context.Context, request *MaskContentTy
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
+	body := resp.Body
+	defer body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeMaskContentTypeResponse(resp)
@@ -450,7 +454,8 @@ func (c *Client) sendMaskContentTypeOptional(ctx context.Context, request *MaskC
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
+	body := resp.Body
+	defer body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeMaskContentTypeOptionalResponse(resp)
@@ -524,7 +529,8 @@ func (c *Client) sendStreamJSON(ctx context.Context, request []float64) (res flo
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
+	body := resp.Body
+	defer body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeStreamJSONResponse(resp)
