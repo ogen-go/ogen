@@ -32524,7 +32524,8 @@ func (c *Client) sendTestRequestRequiredStringHTTPDate(ctx context.Context, requ
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
+	body := resp.Body
+	defer body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringHTTPDateResponse(resp)
@@ -32598,7 +32599,8 @@ func (c *Client) sendTestRequestRequiredStringHTTPDateArray(ctx context.Context,
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
+	body := resp.Body
+	defer body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringHTTPDateArrayResponse(resp)
@@ -32672,7 +32674,8 @@ func (c *Client) sendTestRequestRequiredStringHTTPDateArrayArray(ctx context.Con
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
+	body := resp.Body
+	defer body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringHTTPDateArrayArrayResponse(resp)
@@ -32746,7 +32749,8 @@ func (c *Client) sendTestRequestRequiredStringHTTPDateNullable(ctx context.Conte
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
+	body := resp.Body
+	defer body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringHTTPDateNullableResponse(resp)
@@ -32820,7 +32824,8 @@ func (c *Client) sendTestRequestRequiredStringHTTPDateNullableArray(ctx context.
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
+	body := resp.Body
+	defer body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringHTTPDateNullableArrayResponse(resp)
@@ -32894,7 +32899,8 @@ func (c *Client) sendTestRequestRequiredStringHTTPDateNullableArrayArray(ctx con
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
+	body := resp.Body
+	defer body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredStringHTTPDateNullableArrayArrayResponse(resp)
@@ -48718,7 +48724,8 @@ func (c *Client) sendTestRequestStringHTTPDate(ctx context.Context, request OptH
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
+	body := resp.Body
+	defer body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringHTTPDateResponse(resp)
@@ -48792,7 +48799,8 @@ func (c *Client) sendTestRequestStringHTTPDateArray(ctx context.Context, request
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
+	body := resp.Body
+	defer body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringHTTPDateArrayResponse(resp)
@@ -48866,7 +48874,8 @@ func (c *Client) sendTestRequestStringHTTPDateArrayArray(ctx context.Context, re
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
+	body := resp.Body
+	defer body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringHTTPDateArrayArrayResponse(resp)
@@ -48940,7 +48949,8 @@ func (c *Client) sendTestRequestStringHTTPDateNullable(ctx context.Context, requ
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
+	body := resp.Body
+	defer body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringHTTPDateNullableResponse(resp)
@@ -49014,7 +49024,8 @@ func (c *Client) sendTestRequestStringHTTPDateNullableArray(ctx context.Context,
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
+	body := resp.Body
+	defer body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringHTTPDateNullableArrayResponse(resp)
@@ -49088,7 +49099,8 @@ func (c *Client) sendTestRequestStringHTTPDateNullableArrayArray(ctx context.Con
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
+	body := resp.Body
+	defer body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringHTTPDateNullableArrayArrayResponse(resp)
@@ -75487,7 +75499,8 @@ func (c *Client) sendTestResponseStringHTTPDate(ctx context.Context, request str
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
+	body := resp.Body
+	defer body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringHTTPDateResponse(resp)
@@ -75561,7 +75574,8 @@ func (c *Client) sendTestResponseStringHTTPDateArray(ctx context.Context, reques
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
+	body := resp.Body
+	defer body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringHTTPDateArrayResponse(resp)
@@ -75635,7 +75649,8 @@ func (c *Client) sendTestResponseStringHTTPDateArrayArray(ctx context.Context, r
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
+	body := resp.Body
+	defer body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringHTTPDateArrayArrayResponse(resp)
@@ -75709,7 +75724,8 @@ func (c *Client) sendTestResponseStringHTTPDateNullable(ctx context.Context, req
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
+	body := resp.Body
+	defer body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringHTTPDateNullableResponse(resp)
@@ -75783,7 +75799,8 @@ func (c *Client) sendTestResponseStringHTTPDateNullableArray(ctx context.Context
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
+	body := resp.Body
+	defer body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringHTTPDateNullableArrayResponse(resp)
@@ -75857,7 +75874,8 @@ func (c *Client) sendTestResponseStringHTTPDateNullableArrayArray(ctx context.Co
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
+	body := resp.Body
+	defer body.Close()
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringHTTPDateNullableArrayArrayResponse(resp)
