@@ -1,0 +1,96 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Discriminator with const-only fields",
+    "version": "v0.1.0"
+  },
+  "paths": {
+    "/check": {
+      "post": {
+        "operationId": "check",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": { "type": "string" }
+                  }
+                }
+              }
+            }
+          },
+          "412": {
+            "description": "Business error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CheckBusinessError"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "CheckBusinessError": {
+        "oneOf": [
+          { "$ref": "#/components/schemas/AmlBlockedError" },
+          { "$ref": "#/components/schemas/SoftBlockedError" },
+          { "$ref": "#/components/schemas/MixedError" }
+        ],
+        "discriminator": {
+          "propertyName": "code",
+          "mapping": {
+            "AML_BLOCKED": "#/components/schemas/AmlBlockedError",
+            "SOFT_BLOCKED": "#/components/schemas/SoftBlockedError",
+            "MIXED": "#/components/schemas/MixedError"
+          }
+        }
+      },
+      "AmlBlockedError": {
+        "type": "object",
+        "required": ["code", "type"],
+        "properties": {
+          "code": { "type": "string", "const": "AML_BLOCKED" },
+          "type": { "type": "string", "const": "general" }
+        }
+      },
+      "SoftBlockedError": {
+        "type": "object",
+        "required": ["code", "type"],
+        "properties": {
+          "code": { "type": "string", "const": "SOFT_BLOCKED" },
+          "type": { "type": "string", "const": "endpoint" }
+        }
+      },
+      "MixedError": {
+        "type": "object",
+        "required": ["code", "type", "message"],
+        "properties": {
+          "code": { "type": "string", "const": "MIXED" },
+          "type": { "type": "string", "const": "general" },
+          "message": { "type": "string" }
+        }
+      }
+    }
+  }
+}

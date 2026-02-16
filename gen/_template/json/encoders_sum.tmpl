@@ -48,7 +48,9 @@ func (s {{ $.ReadOnlyReceiver }}) encodeFields(e *jx.Encoder) {
 				{{- $j := $s.JSON.Except $.SumSpec.Discriminator }}
 				{{- if $j.AnyFields }}
 				{
+					{{- if $j.NeedsReceiver }}
 					s := s.{{ $s.Name }}
+					{{- end }}
 					{{- template "json/encode_struct_fields" $j }}
 				}
 			{{- end }}
