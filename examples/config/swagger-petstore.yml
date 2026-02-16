@@ -1,0 +1,2 @@
+generator:
+  ignore_not_implemented: ["nested objects in form parameters"]

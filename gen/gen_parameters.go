@@ -234,7 +234,7 @@ func isParamAllowed(t *ir.Type, root bool, visited map[*ir.Type]struct{}) error 
 		return nil
 	case ir.KindArray:
 		if !root {
-			return errors.New("nested arrays not allowed")
+			return &ErrNotImplemented{Name: "nested arrays in form parameters"}
 		}
 		return isParamAllowed(t.Item, false, visited)
 	case ir.KindAlias:
@@ -243,7 +243,7 @@ func isParamAllowed(t *ir.Type, root bool, visited map[*ir.Type]struct{}) error 
 		return isParamAllowed(t.PointerTo, root, visited)
 	case ir.KindStruct:
 		if !root {
-			return errors.New("nested objects not allowed")
+			return &ErrNotImplemented{Name: "nested objects in form parameters"}
 		}
 		for _, field := range t.Fields {
 			if err := isParamAllowed(field.Type, false, visited); err != nil {

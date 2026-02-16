@@ -180,6 +180,9 @@ func TestGenerate(t *testing.T) {
 			"petstore-expanded.yml":    {},
 			"problemjson.yml":          {},
 			"redoc/discriminator.json": {},
+			"swagger-petstore-1.0.27.yaml": {
+				"nested objects in form parameters",
+			},
 		}))
 }
 
