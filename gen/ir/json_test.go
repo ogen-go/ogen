@@ -3,6 +3,7 @@ package ir
 import (
 	"testing"
 
+	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
 	"github.com/ogen-go/ogen/jsonschema"
@@ -56,6 +57,74 @@ func TestJSONFields_RequiredMask(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			r := tt.j.RequiredMask()
 			require.Equalf(t, tt.wantR, r, "%08b != %08b", tt.wantR[0], r[0])
+		})
+	}
+}
+
+func TestJSON_NeedsReceiver(t *testing.T) {
+	constField := &Field{
+		Tag: Tag{JSON: "code"},
+		Spec: &jsonschema.Property{
+			Schema: &jsonschema.Schema{
+				Const:    "AML_BLOCKED",
+				ConstSet: true,
+			},
+		},
+	}
+	regularField := &Field{
+		Tag: Tag{JSON: "message"},
+		Spec: &jsonschema.Property{
+			Schema: &jsonschema.Schema{},
+		},
+	}
+	inlineAdditional := &Field{
+		Tag:    Tag{JSON: "extra"},
+		Inline: InlineAdditional,
+	}
+
+	tests := []struct {
+		name   string
+		fields []*Field
+		except []string
+		want   bool
+	}{
+		{
+			name:   "AllConst",
+			fields: []*Field{constField},
+			want:   false,
+		},
+		{
+			name:   "OneRegularField",
+			fields: []*Field{regularField},
+			want:   true,
+		},
+		{
+			name:   "MixedConstAndRegular",
+			fields: []*Field{constField, regularField},
+			want:   true,
+		},
+		{
+			name:   "InlineField",
+			fields: []*Field{inlineAdditional},
+			want:   true,
+		},
+		{
+			name:   "ExcludedNonConst",
+			fields: []*Field{regularField},
+			except: []string{"message"},
+			want:   false,
+		},
+		{
+			name:   "NoFields",
+			fields: nil,
+			want:   false,
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			typ := &Type{Fields: tt.fields}
+			j := JSON{t: typ, except: tt.except}
+			assert.Equal(t, tt.want, j.NeedsReceiver())
 		})
 	}
 }
