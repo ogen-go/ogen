@@ -129,7 +129,7 @@ func TestBuilder(t *testing.T) {
 							In:          "path",
 							Description: "ID Parameter in path",
 							Required:    true,
-							Schema:      &ogen.Schema{Type: "integer", Format: "int32"},
+							Schema:      &ogen.Schema{Type: []string{"integer"}, Format: "int32"},
 						},
 					},
 					Responses: ogen.Responses{
@@ -138,11 +138,11 @@ func TestBuilder(t *testing.T) {
 							Description: "Success",
 							Content: map[string]ogen.Media{
 								ir.EncodingJSON.String(): {Schema: &ogen.Schema{
-									Type:        "object",
+									Type:        []string{"object"},
 									Description: "Success",
 									Properties: []ogen.Property{
-										{Name: "prop1", Schema: &ogen.Schema{Type: "integer", Format: "int32"}},
-										{Name: "prop2", Schema: &ogen.Schema{Type: "string"}},
+										{Name: "prop1", Schema: &ogen.Schema{Type: []string{"integer"}, Format: "int32"}},
+										{Name: "prop2", Schema: &ogen.Schema{Type: []string{"string"}}},
 									},
 								}},
 							},
@@ -178,11 +178,11 @@ func TestBuilder(t *testing.T) {
 					Description: "An Error Response",
 					Content: map[string]ogen.Media{
 						ir.EncodingJSON.String(): {Schema: &ogen.Schema{
-							Type:        "object",
+							Type:        []string{"object"},
 							Description: "Error Response Schema",
 							Properties: []ogen.Property{
-								{Name: "code", Schema: &ogen.Schema{Type: "integer", Format: "int32"}},
-								{Name: "status", Schema: &ogen.Schema{Type: "string"}},
+								{Name: "code", Schema: &ogen.Schema{Type: []string{"integer"}, Format: "int32"}},
+								{Name: "status", Schema: &ogen.Schema{Type: []string{"string"}}},
 							},
 						}},
 					},
@@ -368,7 +368,7 @@ func TestBuilder(t *testing.T) {
 	assert.Equal(t, &ogen.Schema{
 		Ref:         "ref",
 		Description: "desc",
-		Type:        "object",
+		Type:        []string{"object"},
 		Format:      "",
 		Properties:  []ogen.Property{{Name: "prop"}},
 		Required:    []string{"prop"},

@@ -31,6 +31,16 @@ const (
 // String implements fmt.Stringer.
 func (t SchemaType) String() string { return string(t) }
 
+// IsPrimitive returns true if the type is a primitive type.
+func (t SchemaType) IsPrimitive() bool {
+	switch t {
+	case Object, Array, Integer, Number, String, Boolean, Null:
+		return true
+	default:
+		return false
+	}
+}
+
 // Ref is a JSON Schema reference.
 type Ref = jsonpointer.RefKey
 
