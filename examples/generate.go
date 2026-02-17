@@ -35,3 +35,4 @@ import (
 // GitHub API: type-based discrimination works, but some operations still require value-based discrimination
 //go:generate go run github.com/ogen-go/ogen/cmd/ogen -v --clean --config config/github.yml              --target ex_github                     ../_testdata/examples/api.github.com.json
 //go:generate go run github.com/ogen-go/ogen/cmd/ogen -v --clean --config config/with_client_editors.yml --target ex_oauth2_with_client_editors ../_testdata/examples/oauth2-scopes-and-or.yml
+//go:generate go run github.com/ogen-go/ogen/cmd/ogen -v --clean --config config/swagger-petstore.yml    --target ex_swagger_petstore           ../_testdata/examples/swagger-petstore-1.0.27.yaml
