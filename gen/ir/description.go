@@ -8,7 +8,48 @@ import (
 	"github.com/ogen-go/ogen/internal/naming"
 )
 
+// Global line limit, can be configured via SetLineLimit.
+var lineLimit = 100
+
+// Global flag to enable or disable pretty documentation.
+var prettyDocEnabled = true
+
+// SetLineLimit sets the maximum width of a comment line before it is wrapped.
+// Use a negative value to disable line wrapping altogether.
+func SetLineLimit(limit int) {
+	if limit == 0 {
+		// Use default value for zero.
+		lineLimit = 100
+		return
+	}
+	lineLimit = limit
+}
+
+// GetLineLimit returns the current line limit value.
+func GetLineLimit() int {
+	return lineLimit
+}
+
+// SetPrettyDoc enables or disables pretty documentation.
+func SetPrettyDoc(enabled bool) {
+	prettyDocEnabled = enabled
+}
+
+// IsPrettyDocEnabled returns whether pretty documentation is enabled.
+func IsPrettyDocEnabled() bool {
+	return prettyDocEnabled
+}
+
 func splitLine(s string, limit int) (r []string) {
+	// If limit is negative, don't split lines.
+	if limit < 0 {
+		s = strings.TrimSpace(s)
+		if s == "" {
+			return nil
+		}
+		return []string{s}
+	}
+
 	s = strings.TrimSpace(s)
 	if s == "" {
 		return nil
@@ -39,11 +80,27 @@ func splitLine(s string, limit int) (r []string) {
 	}
 }
 
-const (
-	lineLimit = 100
-)
-
 func prettyDoc(s, deprecation string) (r []string) {
+	// If pretty documentation is disabled, return the comment as-is
+	if !prettyDocEnabled {
+		// Just split by newlines.
+		for _, line := range strings.Split(s, "\n") {
+			r = append(r, line)
+		}
+
+		// Add deprecation notice if provided
+		if deprecation != "" {
+			if len(r) > 0 {
+				// Insert empty line between description and deprecated notice.
+				r = append(r, "")
+			}
+			r = append(r, deprecation)
+		}
+
+		return r
+	}
+
+	// Original pretty documentation behavior
 	// TODO(tdakkota): basic common mark rendering?
 	for _, line := range strings.Split(s, "\n") {
 		r = append(r, splitLine(line, lineLimit)...)

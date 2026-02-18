@@ -11,6 +11,12 @@ import (
 )
 
 func Test_prettyDoc(t *testing.T) {
+	// Save the original value to restore after the test
+	originalLimit := lineLimit
+	defer func() {
+		lineLimit = originalLimit
+	}()
+
 	tests := []struct {
 		input  string
 		notice string
@@ -76,4 +82,68 @@ func Test_prettyDoc(t *testing.T) {
 			require.Equal(t, tt.wantR, prettyDoc(tt.input, tt.notice))
 		})
 	}
+}
+
+func TestSetLineLimit(t *testing.T) {
+	// Save the original value to restore after the test
+	originalLimit := lineLimit
+	defer func() {
+		lineLimit = originalLimit
+	}()
+
+	const longText = "This is a very long description that should be split into multiple lines depending on the configured line limit"
+
+	tests := []struct {
+		name     string
+		limit    int
+		expected int // expected number of lines (approximate)
+	}{
+		{
+			name:     "default_limit",
+			limit:    0, // Should use default 100
+			expected: 2, // The long test will still need to be split in 2 with default limit
+		},
+		{
+			name:     "short_limit",
+			limit:    20,
+			expected: 8, // Will split into multiple lines
+		},
+		{
+			name:     "negative_limit_disables_wrapping",
+			limit:    -1,
+			expected: 1, // Should not wrap
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			SetLineLimit(tt.limit)
+			result := prettyDoc(longText, "")
+			require.Len(t, result, tt.expected)
+		})
+	}
+}
+
+func TestCommentLineLimit(t *testing.T) {
+	// Save the original value to restore after the test
+	originalLimit := lineLimit
+	defer func() {
+		lineLimit = originalLimit
+	}()
+
+	// Reset to default to start
+	SetLineLimit(0)
+	require.Equal(t, 100, lineLimit, "Default line limit should be 100")
+
+	// Test with a custom line limit
+	SetLineLimit(50)
+	require.Equal(t, 50, lineLimit, "Line limit should be updated to 50")
+
+	// Test with a negative value (disabled wrapping)
+	SetLineLimit(-1)
+	require.Equal(t, -1, lineLimit, "Negative line limit should disable wrapping")
+
+	// Test with zero (should set to default)
+	SetLineLimit(0)
+	require.Equal(t, 100, lineLimit, "Zero line limit should reset to default (100)")
 }
