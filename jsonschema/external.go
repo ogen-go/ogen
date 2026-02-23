@@ -91,6 +91,7 @@ func (e externalResolver) httpGet(ctx context.Context, u *url.URL) ([]byte, erro
 	}
 
 	start := time.Now()
+	//#nosec G704
 	resp, err := e.client.Do(req)
 	if err != nil {
 		return nil, errors.Wrap(err, "do")

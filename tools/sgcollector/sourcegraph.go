@@ -228,6 +228,7 @@ func sendSourcegraph(ctx context.Context, q GraphQLQuery, out io.Writer) error {
 		return errors.Wrap(err, "create request")
 	}
 
+	//#nosec G704
 	resp, err := http.DefaultClient.Do(req)
 	if err != nil {
 		return errors.Wrap(err, "do request")

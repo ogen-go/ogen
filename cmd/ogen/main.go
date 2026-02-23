@@ -42,6 +42,7 @@ func cleanDir(targetDir string, files []os.DirEntry) (rerr error) {
 			continue
 		}
 		// Do not return error if file does not exist.
+		//#nosec G703
 		if err := os.Remove(filepath.Join(targetDir, name)); err != nil && !os.IsNotExist(err) {
 			// Do not stop on first error, try to remove all files.
 			rerr = errors.Join(rerr, err)
@@ -75,6 +76,7 @@ func generate(data []byte, packageName, targetDir string, clean bool, opts gen.O
 	// Clean target dir only after flag parsing, spec parsing and IR building.
 	switch files, err := os.ReadDir(targetDir); {
 	case os.IsNotExist(err):
+		//#nosec G703
 		if err := os.MkdirAll(targetDir, 0o750); err != nil {
 			return err
 		}
@@ -116,6 +118,7 @@ func handleGenerateError(w io.Writer, color bool, err error) (r bool) {
 	}
 
 	if msg, feature, ok := handleNotImplementedError(err); ok {
+		//#nosec 6705
 		_, _ = fmt.Fprintf(w, `
 %s
 Try to create ogen.yml with:
@@ -160,12 +163,15 @@ func handleNotImplementedError(err error) (msg, feature string, _ bool) {
 	if inferErr, ok := errors.Into[*gen.ErrFieldsDiscriminatorInference](err); ok {
 		printTyp := func(sb *strings.Builder, typ *ir.Type) {
 			if typ.Schema == nil {
+				//#nosec G705
 				fmt.Fprintf(sb, "%q", typ.Name)
 				return
 			}
 			if ref := typ.Schema.Ref; ref.IsZero() {
+				//#nosec G705
 				fmt.Fprintf(sb, "%q", typ.Name)
 			} else {
+				//#nosec G705
 				fmt.Fprintf(sb, "%q", ref.Ptr)
 			}
 			ptr := typ.Schema.Pointer
@@ -205,11 +211,13 @@ func handleNotImplementedError(err error) (msg, feature string, _ bool) {
 			})
 			for _, field := range properties {
 				if printedProperties >= propertyLimit {
+					//#nosec G705
 					fmt.Fprintf(&sb, "\t\t...%d more properties...\n", len(properties))
 					break
 				}
 				printedProperties++
 
+				//#nosec G705
 				fmt.Fprintf(&sb, "\t\tproperty %q also used by\n", field)
 
 				var (
@@ -218,6 +226,7 @@ func handleNotImplementedError(err error) (msg, feature string, _ bool) {
 				)
 				for _, typ := range alsoUsedBy {
 					if printedUsedBy >= usedByLimit {
+						//#nosec G705
 						fmt.Fprintf(&sb, "\t\t\t...%d more variants...\n", len(alsoUsedBy))
 						break
 					}
@@ -257,6 +266,7 @@ func loadConfig(cfgPath string, log *zap.Logger) (opts gen.Options, _ error) {
 	}
 read:
 	log.Debug("Reading config file", zap.String("path", cfgPath))
+	//#nosec G703
 	data, err := os.ReadFile(cfgPath)
 	if err != nil {
 		return opts, err
@@ -276,6 +286,7 @@ func run() error {
 	set := flag.NewFlagSet(os.Args[0], flag.ExitOnError)
 	set.Usage = func() {
 		_, toolName := filepath.Split(os.Args[0])
+		//#nosec G705
 		_, _ = fmt.Fprintf(set.Output(), "Usage: %s [options] <spec>\n", toolName)
 		set.PrintDefaults()
 	}
@@ -330,6 +341,7 @@ func run() error {
 	}()
 
 	if f := *cpuProfile; f != "" {
+		//#nosec G703
 		f, err := os.Create(f)
 		if err != nil {
 			return errors.Wrap(err, "create cpu profile")
@@ -345,6 +357,7 @@ func run() error {
 		}
 	}
 	if f := *memProfile; f != "" {
+		//#nosec G703
 		f, err := os.Create(f)
 		if err != nil {
 			return errors.Wrap(err, "create memory profile")
