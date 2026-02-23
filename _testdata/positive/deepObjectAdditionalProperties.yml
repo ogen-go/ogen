@@ -1,0 +1,27 @@
+openapi: 3.1.0
+info:
+  title: "Deep Object Additional Properties Test"
+  version: 0.0.1
+
+paths:
+  /query:
+    get:
+      operationId: queryWithAdditionalProperties
+      parameters:
+        - name: object
+          in: query
+          style: deepObject
+          explode: true
+          schema:
+            type: object
+            additionalProperties:
+              type: string
+      responses:
+        "200":
+          description: ok
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: string

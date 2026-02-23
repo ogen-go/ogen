@@ -92,6 +92,30 @@ func TestQueryDecoder_HasParam(t *testing.T) {
 			},
 		},
 
+		// QueryStyleDeepObject + Explode + no Fields (additionalProperties)
+		{
+			Input: url.Values{
+				"object[foo]": []string{"bar"},
+				"object[baz]": []string{"qux"},
+			},
+			Cfg: QueryParameterDecodingConfig{
+				Name:    "object",
+				Style:   QueryStyleDeepObject,
+				Explode: true,
+			},
+		},
+		{
+			Input: url.Values{
+				"other": []string{"value"},
+			},
+			Cfg: QueryParameterDecodingConfig{
+				Name:    "object",
+				Style:   QueryStyleDeepObject,
+				Explode: true,
+			},
+			WantErr: `query parameter "object" not set`,
+		},
+
 		// Other
 		{
 			Cfg: QueryParameterDecodingConfig{
@@ -123,4 +147,36 @@ func TestQueryDecoder_HasParam(t *testing.T) {
 			require.NoError(t, err)
 		})
 	}
+}
+
+func TestQueryParamDecoder_DeepObjectAdditionalProperties(t *testing.T) {
+	values := url.Values{
+		"object[foo]": []string{"bar"},
+		"object[baz]": []string{"qux"},
+	}
+
+	d := NewQueryDecoder(values)
+	cfg := QueryParameterDecodingConfig{
+		Name:    "object",
+		Style:   QueryStyleDeepObject,
+		Explode: true,
+	}
+
+	require.NoError(t, d.HasParam(cfg))
+
+	result := map[string]string{}
+	err := d.DecodeParam(cfg, func(d Decoder) error {
+		return d.DecodeFields(func(name string, d Decoder) error {
+			val, err := d.DecodeValue()
+			if err != nil {
+				return err
+			}
+			result[name] = val
+			return nil
+		})
+	})
+
+	require.NoError(t, err)
+	require.Equal(t, "bar", result["foo"])
+	require.Equal(t, "qux", result["baz"])
 }
