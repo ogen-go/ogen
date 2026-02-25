@@ -5,6 +5,7 @@ import (
 
 	"github.com/stretchr/testify/require"
 
+	"github.com/ogen-go/ogen/gen/genfs"
 	"github.com/ogen-go/ogen/gen/ir"
 	"github.com/ogen-go/ogen/ogenregex"
 	"github.com/ogen-go/ogen/validate"
@@ -133,4 +134,29 @@ func TestRegexStrings_DeduplicatesPatterns(t *testing.T) {
 
 	require.Equal(t, []string{"^shared-pattern$"}, regexStrings,
 		"RegexStrings() should deduplicate identical patterns")
+}
+
+func TestGenerator_WriteSource_ProblemJSONErrorType(t *testing.T) {
+	g := &Generator{
+		opt: GenerateOptions{
+			Features: &FeatureOptions{
+				DisableAll: true,
+			},
+		},
+		tstorage: newTStorage(),
+		errType: &ir.Response{
+			Contents: map[ir.ContentType]ir.Media{
+				ir.ContentType("application/problem+json"): {
+					Encoding: ir.EncodingProblemJSON,
+					Type: &ir.Type{
+						Kind: ir.KindStruct,
+						Name: "ErrorResponse",
+					},
+				},
+			},
+		},
+		imports: defaultImports(),
+	}
+
+	require.NoError(t, g.WriteSource(genfs.CheckFS{}, "api"))
 }

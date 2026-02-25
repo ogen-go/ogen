@@ -15,6 +15,37 @@ import (
 	"github.com/ogen-go/ogen/openapi"
 )
 
+// normalizeContentEncoding parses the media type, applies aliases and
+// normalizes +json suffix media types as JSON per RFC 6838.
+// This allows types like application/json-patch+json,
+// application/vnd.api+json, application/merge-patch+json, etc.
+// to work without explicit ContentTypeAliases.
+// Note: application/problem+json has special handling via EncodingProblemJSON.
+func normalizeContentEncoding(contentType string, aliases ContentTypeAliases,
+) (parsedContentType string, encoding ir.Encoding, err error) {
+	parsedContentType, _, err = mime.ParseMediaType(contentType)
+	if err != nil {
+		return "", "", err
+	}
+
+	encoding = ir.Encoding(parsedContentType)
+	if override, ok := aliases[parsedContentType]; ok {
+		encoding = override
+	}
+
+	if strings.HasSuffix(string(encoding), "+json") &&
+		encoding != ir.EncodingJSON &&
+		encoding != ir.EncodingProblemJSON {
+		encoding = ir.EncodingJSON
+	}
+
+	return parsedContentType, encoding, nil
+}
+
+func isJSONLikeEncoding(encoding ir.Encoding) bool {
+	return encoding.JSON() || encoding.ProblemJSON()
+}
+
 func filterMostSpecific(contents map[string]*openapi.MediaType, log *zap.Logger) error {
 	keep := func(current, mask string) (string, bool) {
 		// Special case for "*", "**", etc.
@@ -278,7 +309,7 @@ func (g *Generator) generateContents(
 	for _, contentType := range keys {
 		media := contents[contentType]
 
-		parsedContentType, _, err := mime.ParseMediaType(contentType)
+		parsedContentType, encoding, err := normalizeContentEncoding(contentType, g.opt.ContentTypeAliases)
 		if err != nil {
 			return nil, errors.Wrapf(err, "parse content type %q", contentType)
 		}
@@ -293,22 +324,10 @@ func (g *Generator) generateContents(
 		names[ir.ContentType(parsedContentType)] = typeName
 
 		if err := func() error {
-			encoding := ir.Encoding(parsedContentType)
-			if r, ok := g.opt.ContentTypeAliases[parsedContentType]; ok {
-				if encoding.MultipartForm() {
+			if _, ok := g.opt.ContentTypeAliases[parsedContentType]; ok {
+				if ir.Encoding(parsedContentType).MultipartForm() {
 					return &ErrNotImplemented{"multipart form CT aliasing"}
 				}
-				encoding = r
-			}
-
-			// Auto-detect +json suffix media types as JSON per RFC 6838.
-			// This allows types like application/json-patch+json, application/merge-patch+json,
-			// application/vnd.api+json, etc. to work without explicit ContentTypeAliases.
-			// Note: application/problem+json has special handling via EncodingProblemJSON.
-			if strings.HasSuffix(string(encoding), "+json") &&
-				encoding != ir.EncodingJSON &&
-				encoding != ir.EncodingProblemJSON {
-				encoding = ir.EncodingJSON
 			}
 
 			// Handle wildcard content types using configured default

@@ -288,10 +288,13 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 			panic(unreachable("error type must have exactly one content type"))
 		}
 		for _, media := range cfg.Error.Contents {
-			if media.Encoding.JSON() {
+			if isJSONLikeEncoding(media.Encoding) {
 				cfg.ErrorType = media.Type
 				break
 			}
+		}
+		if cfg.ErrorType == nil {
+			panic(unreachable("error type must have JSON-like content type"))
 		}
 	}
 
