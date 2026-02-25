@@ -9,7 +9,6 @@ import (
 	"github.com/go-faster/errors"
 	"go.uber.org/zap"
 
-	"github.com/ogen-go/ogen/gen/ir"
 	ogenjson "github.com/ogen-go/ogen/json"
 	"github.com/ogen-go/ogen/jsonschema"
 	"github.com/ogen-go/ogen/location"
@@ -67,15 +66,16 @@ func (g *Generator) reduceDefault(ops []*openapi.Operation) error {
 		return reduceFailed(`response is multi-content`, d)
 	}
 	{
-		var ct ir.Encoding
+		var contentType string
 		for key := range d.Content {
-			ct = ir.Encoding(key)
+			contentType = key
 			break
 		}
-		if override, ok := g.opt.ContentTypeAliases[string(ct)]; ok {
-			ct = override
+		_, encoding, err := normalizeContentEncoding(contentType, g.opt.ContentTypeAliases)
+		if err != nil {
+			return reduceFailed(`response content type is invalid`, d)
 		}
-		if !ct.JSON() {
+		if !isJSONLikeEncoding(encoding) {
 			return reduceFailed(`response content must be JSON`, d)
 		}
 	}
@@ -103,7 +103,7 @@ func (g *Generator) reduceDefault(ops []*openapi.Operation) error {
 
 	hasJSON := false
 	for _, media := range resp.Contents {
-		if media.Encoding.JSON() {
+		if isJSONLikeEncoding(media.Encoding) {
 			hasJSON = true
 			break
 		}
