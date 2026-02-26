@@ -10,11 +10,11 @@ properties:
       infer_types:
         type: boolean
         description: "Enables type inference for schemas"
-        default: true
+        default: false
       allow_remote:
         type: boolean
         description: "Enables remote references resolving"
-        default: true
+        default: false
       depth_limit:
         type: integer
         description: "Maximum depth of schema generation"
@@ -40,6 +40,29 @@ properties:
             - "scram-sha-1"
             - "scram-sha-256"
             - "vapid"
+        default:
+          - "basic"
+          - "bearer"
+          - "concealed"
+          - "digest"
+          - "dpop"
+          - "gnap"
+          - "hoba"
+          - "mutual"
+          - "negotiate"
+          - "oauth"
+          - "privatetoken"
+          - "scram-sha-1"
+          - "scram-sha-256"
+          - "vapid"
+      allow_cross_type_constraints:
+        type: boolean
+        description: "Enables interpretation of cross-type schema constraints"
+        default: true
+      disallow_duplicate_method_paths:
+        type: boolean
+        description: "Enables strict duplicate normalized path checks"
+        default: false
     additionalProperties: false
   generator:
     type: object
@@ -51,7 +74,7 @@ properties:
         properties:
           enable:
             type: array
-            description: "Features to enable"
+            description: "Features to enable (applied after disable)"
             items:
               type: string
               enum:
@@ -60,14 +83,23 @@ properties:
                 - "webhooks/client"
                 - "webhooks/server"
                 - "client/security/reentrant"
+                - "client/request/options"
                 - "client/request/validation"
+                - "client/editors"
                 - "server/response/validation"
                 - "ogen/otel"
                 - "ogen/unimplemented"
                 - "debug/example_tests"
+            default:
+              - "paths/client"
+              - "paths/server"
+              - "webhooks/client"
+              - "webhooks/server"
+              - "ogen/otel"
+              - "ogen/unimplemented"
           disable:
             type: array
-            description: "Features to disable"
+            description: "Features to disable (applied before enable)"
             items:
               type: string
               enum:
@@ -76,14 +108,17 @@ properties:
                 - "webhooks/client"
                 - "webhooks/server"
                 - "client/security/reentrant"
+                - "client/request/options"
                 - "client/request/validation"
+                - "client/editors"
                 - "server/response/validation"
                 - "ogen/otel"
                 - "ogen/unimplemented"
                 - "debug/example_tests"
           disable_all:
             type: boolean
-            description: "Disable all features"
+            description: "Disable all features before applying disable and enable lists"
+            default: false
         additionalProperties: false
       filters:
         type: object
@@ -91,10 +126,14 @@ properties:
         properties:
           path_regex:
             type: string
-            description: "Regular expression to filter paths"
+            description: >
+              Regular expression to filter paths
+              (if unset, all paths are accepted)
           methods:
             type: array
-            description: "HTTP methods to include"
+            description: >
+              HTTP methods to keep
+              (empty list means all methods are accepted)
             items:
               type: string
               enum:
@@ -109,11 +148,32 @@ properties:
         additionalProperties: false
       ignore_not_implemented:
         type: array
-        description: "Functions to ignore when not implemented"
+        description: "Not implemented functions to ignore on generation"
         items:
           type: string
+      convenient_errors:
+        type: string
+        description: "Controls convenient error helper generation"
+        enum:
+          - "on"
+          - "off"
+          - "auto"
+        default: "auto"
+      content_type_aliases:
+        type: object
+        description: "Maps exact content types to known encodings"
+        additionalProperties:
+          type: string
+        default: {}
+      wildcard_content_type_default:
+        type: string
+        description: >
+          Default encoding for wildcard content types declared in spec
+          (if unset, wildcard content types stay unsupported)
     additionalProperties: false
   expand:
     type: string
-    description: "Path to expanded spec file"
+    description: >
+      Path to expanded spec file
+      (if unset, writing expanded spec is disabled)
 additionalProperties: false
