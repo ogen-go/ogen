@@ -1,0 +1,582 @@
+openapi: 3.0.3
+info:
+  title: Grafana Tempo 'query-frontend' API
+  version: 2.4.0
+externalDocs:
+  description: Tempo API reference
+  url: https://grafana.com/docs/tempo/latest/api_docs
+servers:
+  - url: "http://localhost:3200"
+paths:
+  /api/status/buildinfo:
+    get:
+      operationId: buildInfo
+      description: |
+        Returns Tempo buildinfo, in the same format as Prometheus `/api/v1/status/buildinfo`.
+        Used by Grafana to check Tempo API version.
+      responses:
+        200:
+          $ref: "#/components/responses/BuildInfo"
+        default:
+          $ref: "#/components/responses/Error"
+  /api/echo:
+    get:
+      operationId: echo
+      description: Echo request for testing, issued by Grafana.
+      responses:
+        "200":
+          description: Should return echo string
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: echo
+        default:
+          $ref: "#/components/responses/Error"
+
+  /api/traces/{traceID}:
+    get:
+      operationId: traceByID
+      description: Querying traces by id.
+      parameters:
+        - name: traceID
+          in: path
+          required: true
+          schema:
+            type: string
+          description: TraceID to query.
+
+        - name: start
+          in: query
+          schema:
+            type: integer
+            format: unix-seconds
+          description: Along with `end` define a time range from which traces should be returned.
+
+        - name: end
+          in: query
+          schema:
+            type: integer
+            format: unix-seconds
+          description: |
+            Along with `start` define a time range from which traces should be returned.
+            Providing both `start` and `end` will include traces for the specified time range only.
+            If the parameters are not provided then Tempo will check for the trace across all blocks in backend.
+            If the parameters are provided, it will only check in the blocks within the specified time range,
+            this can result in trace not being found or partial results if it does not fall in the specified time range.
+
+        - name: Accept
+          in: header
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          $ref: "#/components/responses/TraceByID"
+        404:
+          $ref: "#/components/responses/TraceByIDNotFound"
+        default:
+          $ref: "#/components/responses/Error"
+
+  /api/search:
+    get:
+      operationId: search
+      description: Execute TraceQL query.
+      parameters:
+        - name: q
+          in: query
+          schema:
+            type: string
+          description: URL-encoded TraceQL query.
+
+        - name: tags
+          in: query
+          schema:
+            type: string
+          description: |
+            logfmt encoding of any span-level or process-level attributes to filter on.
+            The value is matched as a case-insensitive substring.
+            Key-value pairs are separated by spaces.
+            If a value contains a space, it should be enclosed within double quotes.
+
+        - name: minDuration
+          in: query
+          schema:
+            type: string
+            format: duration
+          description: Find traces with at least this duration. Duration values are of the form 10s for 10 seconds, 100ms, 30m, etc.
+
+        - name: maxDuration
+          in: query
+          schema:
+            type: string
+            format: duration
+          description: Find traces with no greater than this duration. Uses the same form as `minDuration`.
+
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          description: Limit the number of search results. Default is 20, but this is configurable in the querier. Refer to Configuration.
+
+        - name: start
+          in: query
+          schema:
+            type: integer
+            format: unix-seconds
+          description: Along with `end` define a time range from which traces should be returned.
+
+        - name: end
+          in: query
+          schema:
+            type: integer
+            format: unix-seconds
+          description: |
+            Along with `start`, define a time range from which traces should be returned.
+            Providing both `start` and `end` will change the way that Tempo searches.
+            If the parameters are not provided, then Tempo will search the recent trace data stored in the ingesters.
+            If the parameters are provided, it will search the backend as well.
+
+        - name: spss
+          in: query
+          schema:
+            type: integer
+          description: |
+            Limit the number of spans per span-set. Default value is 3.
+      responses:
+        200:
+          $ref: "#/components/responses/Search"
+        default:
+          $ref: "#/components/responses/Error"
+
+  /api/search/tags:
+    get:
+      operationId: searchTags
+      description: This endpoint retrieves all discovered tag names that can be used in search.
+      parameters:
+        - name: scope
+          in: query
+          schema:
+            $ref: "#/components/schemas/TagScope"
+          description: |
+            Specifies the scope of the tags, this is an optional parameter, if not specified it means all scopes.
+
+        - name: start
+          in: query
+          schema:
+            type: integer
+            format: unix-seconds
+          description: |
+            Along with `end` define a time range from which tags should be returned.
+
+        - name: end
+          in: query
+          schema:
+            type: integer
+            format: unix-seconds
+          description: |
+            Along with `start` define a time range from which tags should be returned.
+            Providing both `start` and `end` includes blocks for the specified time range only.
+      responses:
+        200:
+          $ref: "#/components/responses/SearchTags"
+        default:
+          $ref: "#/components/responses/Error"
+
+  /api/search/tag/{tag_name}/values:
+    get:
+      operationId: searchTagValues
+      description: This endpoint retrieves all discovered values for the given tag, which can be used in search.
+      parameters:
+        - name: tag_name
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Tag name.
+
+        - name: q
+          in: query
+          schema:
+            type: string
+          description: |
+            If provided, the tag values returned by the API are filtered to only return values seen on spans matching your filter parameters.
+            Queries can be incomplete: for example, `{ .cluster = }`. Tempo extracts only the valid matchers and build a valid query.
+
+            Only queries with a single selector `{}`` and AND `&&` operators are supported.
+
+            - Example supported: `{ .cluster = "us-east-1" && .service = "frontend" }`
+            - Example unsupported: `{ .cluster = "us-east-1" || .service = "frontend" } && { .cluster = "us-east-2" }`
+
+        - name: start
+          in: query
+          schema:
+            type: integer
+            format: unix-seconds
+          description: |
+            Along with `end` define a time range from which tags should be returned.
+
+        - name: end
+          in: query
+          schema:
+            type: integer
+            format: unix-seconds
+          description: |
+            Along with `start` define a time range from which tags should be returned.
+            Providing both `start` and `end` includes blocks for the specified time range only.
+      responses:
+        200:
+          $ref: "#/components/responses/SearchTagValues"
+        default:
+          $ref: "#/components/responses/Error"
+
+  /api/v2/search/tag/{attribute_selector}/values:
+    get:
+      operationId: searchTagValuesV2
+      description: This endpoint retrieves all discovered values and their data types for the given TraceQL identifier.
+      parameters:
+        - name: attribute_selector
+          in: path
+          required: true
+          schema:
+            type: string
+          description: TraceQL attribute selector (`.service.name`, `resource.service.name`, etc.).
+
+        - name: q
+          in: query
+          schema:
+            type: string
+          description: |
+            If provided, the tag values returned by the API are filtered to only return values seen on spans matching your filter parameters.
+            Queries can be incomplete: for example, `{ .cluster = }`. Tempo extracts only the valid matchers and build a valid query.
+
+            Only queries with a single selector `{}`` and AND `&&` operators are supported.
+
+            - Example supported: `{ .cluster = "us-east-1" && .service = "frontend" }`
+            - Example unsupported: `{ .cluster = "us-east-1" || .service = "frontend" } && { .cluster = "us-east-2" }`
+
+        - name: start
+          in: query
+          schema:
+            type: integer
+            format: unix-seconds
+          description: |
+            Along with `end` define a time range from which tags should be returned.
+
+        - name: end
+          in: query
+          schema:
+            type: integer
+            format: unix-seconds
+          description: |
+            Along with `start` define a time range from which tags should be returned.
+            Providing both `start` and `end` includes blocks for the specified time range only.
+      responses:
+        200:
+          $ref: "#/components/responses/SearchTagValuesV2"
+        default:
+          $ref: "#/components/responses/Error"
+
+  /api/v2/search/tags:
+    get:
+      operationId: searchTagsV2
+      description: This endpoint retrieves all discovered tag names that can be used in search.
+      parameters:
+        - name: scope
+          in: query
+          schema:
+            $ref: "#/components/schemas/TagScope"
+          description: |
+            Specifies the scope of the tags, this is an optional parameter, if not specified it means all scopes.
+
+        - name: start
+          in: query
+          schema:
+            type: integer
+            format: unix-seconds
+          description: |
+            Along with `end` define a time range from which tags should be returned.
+
+        - name: end
+          in: query
+          schema:
+            type: integer
+            format: unix-seconds
+          description: |
+            Along with `start` define a time range from which tags should be returned.
+            Providing both `start` and `end` includes blocks for the specified time range only.
+      responses:
+        200:
+          $ref: "#/components/responses/SearchTagsV2"
+        default:
+          $ref: "#/components/responses/Error"
+
+components:
+  responses:
+    Error:
+      description: Error while processing request
+      content:
+        "application/json":
+          schema:
+            $ref: "#/components/schemas/Error"
+    BuildInfo:
+      description: Prometheus version JSON.
+      content:
+        "application/json":
+          schema:
+            $ref: "#/components/schemas/PrometheusVersion"
+    TraceByID:
+      description: Query by trace ID result
+      content:
+        "application/protobuf":
+          schema:
+            type: string
+            format: binary
+    TraceByIDNotFound:
+      description: Trace not found
+    Search:
+      description: Search result
+      content:
+        "application/json":
+          schema:
+            $ref: "#/components/schemas/Traces"
+    SearchTags:
+      description: Search tags result
+      content:
+        "application/json":
+          schema:
+            $ref: "#/components/schemas/TagNames"
+    SearchTagValues:
+      description: Search tag values result
+      content:
+        "application/json":
+          schema:
+            $ref: "#/components/schemas/TagValues"
+    SearchTagsV2:
+      description: Search tags result
+      content:
+        "application/json":
+          schema:
+            $ref: "#/components/schemas/TagNamesV2"
+    SearchTagValuesV2:
+      description: Search tag values result
+      content:
+        "application/json":
+          schema:
+            $ref: "#/components/schemas/TagValuesV2"
+
+  schemas:
+    Traces:
+      type: object
+      properties:
+        traces:
+          type: array
+          items:
+            $ref: "#/components/schemas/TraceSearchMetadata"
+    TraceSearchMetadata:
+      type: object
+      required:
+        - traceID
+        - startTimeUnixNano
+      properties:
+        traceID:
+          type: string
+        rootServiceName:
+          type: string
+        rootTraceName:
+          type: string
+        startTimeUnixNano:
+          type: string
+          format: unix-nano
+        durationMs:
+          type: integer
+        spanSet:
+          $ref: "#/components/schemas/TempoSpanSet"
+    TempoSpanSet:
+      type: object
+      required:
+        - spans
+      properties:
+        spans:
+          type: array
+          items:
+            $ref: "#/components/schemas/TempoSpan"
+        matched:
+          type: integer
+        attributes:
+          $ref: "#/components/schemas/Attributes"
+    TempoSpan:
+      type: object
+      required:
+        - spanID
+        - startTimeUnixNano
+        - durationNanos
+      properties:
+        spanID:
+          type: string
+        name:
+          type: string
+        startTimeUnixNano:
+          type: string
+          format: unix-nano
+        durationNanos:
+          type: string
+          format: int64
+        attributes:
+          $ref: "#/components/schemas/Attributes"
+
+    Attributes:
+      type: array
+      items:
+        $ref: "#/components/schemas/KeyValue"
+    KeyValue:
+      type: object
+      required: [key, value]
+      properties:
+        key:
+          type: string
+        value:
+          $ref: "#/components/schemas/AnyValue"
+    AnyValue:
+      oneOf:
+        - $ref: "#/components/schemas/StringValue"
+        - $ref: "#/components/schemas/BoolValue"
+        - $ref: "#/components/schemas/IntValue"
+        - $ref: "#/components/schemas/DoubleValue"
+        - $ref: "#/components/schemas/ArrayValue"
+        - $ref: "#/components/schemas/KvlistValue"
+        - $ref: "#/components/schemas/BytesValue"
+    StringValue:
+      type: object
+      required: [stringValue]
+      properties:
+        stringValue:
+          type: string
+    BoolValue:
+      type: object
+      required: [boolValue]
+      properties:
+        boolValue:
+          type: boolean
+    IntValue:
+      type: object
+      required: [intValue]
+      properties:
+        intValue:
+          type: string
+          format: int64
+    DoubleValue:
+      type: object
+      required: [doubleValue]
+      properties:
+        doubleValue:
+          type: number
+    ArrayValue:
+      type: object
+      required: [arrayValue]
+      properties:
+        arrayValue:
+          type: array
+          items:
+            $ref: "#/components/schemas/AnyValue"
+    KvlistValue:
+      type: object
+      required: [kvlistValue]
+      properties:
+        kvlistValue:
+          type: array
+          items:
+            $ref: "#/components/schemas/KeyValue"
+    BytesValue:
+      type: object
+      required: [bytesValue]
+      properties:
+        bytesValue:
+          type: string
+          format: base64
+
+    TagNames:
+      type: object
+      properties:
+        tagNames:
+          type: array
+          items:
+            type: string
+
+    TagValues:
+      type: object
+      properties:
+        tagValues:
+          type: array
+          items:
+            type: string
+
+    TagNamesV2:
+      type: object
+      properties:
+        scopes:
+          type: array
+          items:
+            $ref: "#/components/schemas/ScopeTags"
+    ScopeTags:
+      type: object
+      required: [name]
+      properties:
+        name:
+          $ref: "#/components/schemas/TagScope"
+        tags:
+          type: array
+          items:
+            type: string
+
+    TagValuesV2:
+      type: object
+      properties:
+        tagValues:
+          type: array
+          items:
+            $ref: "#/components/schemas/TagValue"
+
+    TagValue:
+      type: object
+      required: [type, value]
+      properties:
+        type:
+          # TODO(tdakkota): use enum?
+          type: string
+        value:
+          type: string
+
+    TagScope:
+      type: string
+      enum:
+        - "span"
+        - "resource"
+        - "intrinsic"
+        - "none"
+
+    PrometheusVersion:
+      type: object
+      required:
+        - version
+        - revision
+        - branch
+        - buildUser
+        - buildDate
+        - goVersion
+      properties:
+        version:
+          type: string
+        revision:
+          type: string
+        branch:
+          type: string
+        buildUser:
+          type: string
+        buildDate:
+          type: string
+        goVersion:
+          type: string
+
+    Error:
+      type: string
