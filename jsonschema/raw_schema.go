@@ -1,11 +1,96 @@
 package jsonschema
 
+import (
+	"encoding/json"
+
+	"github.com/go-faster/errors"
+	"github.com/go-faster/jx"
+	"github.com/go-faster/yaml"
+)
+
+// MarshalJSON implements json.Marshaler.
+func (s StringArray) MarshalJSON() ([]byte, error) {
+	if len(s) == 1 {
+		return json.Marshal(s[0])
+	}
+	return json.Marshal([]string(s))
+}
+
+// MarshalYAML implements yaml.Marshaler.
+func (s StringArray) MarshalYAML() (any, error) {
+	if len(s) == 1 {
+		return s[0], nil
+	}
+	return []string(s), nil
+}
+
+// StringArray is a type that can be unmarshaled from a single string or an array of strings.
+type StringArray []string
+
+// UnmarshalJSON implements json.Unmarshaler.
+func (s *StringArray) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	switch t := d.Next(); t {
+	case jx.String:
+		v, err := d.Str()
+		if err != nil {
+			return err
+		}
+		*s = []string{v}
+		return nil
+	case jx.Array:
+		*s = (*s)[:0]
+		return d.Arr(func(d *jx.Decoder) error {
+			v, err := d.Str()
+			if err != nil {
+				return err
+			}
+			*s = append(*s, v)
+			return nil
+		})
+	case jx.Null:
+		*s = nil
+		return nil
+	default:
+		return errors.Errorf("unexpected type %s", t)
+	}
+}
+
+// UnmarshalYAML implements yaml.Unmarshaler.
+func (s *StringArray) UnmarshalYAML(node *yaml.Node) error {
+	switch node.Kind {
+	case yaml.ScalarNode:
+		if node.Tag == "!!null" {
+			*s = nil
+			return nil
+		}
+		var v string
+		if err := node.Decode(&v); err != nil {
+			return err
+		}
+		*s = []string{v}
+		return nil
+	case yaml.SequenceNode:
+		*s = (*s)[:0]
+		for _, n := range node.Content {
+			var v string
+			if err := n.Decode(&v); err != nil {
+				return err
+			}
+			*s = append(*s, v)
+		}
+		return nil
+	default:
+		return errors.Errorf("unexpected kind %d", node.Kind)
+	}
+}
+
 // RawSchema is unparsed JSON Schema.
 type RawSchema struct {
 	Ref                  string                `json:"$ref,omitempty" yaml:"$ref,omitempty"`
 	Summary              string                `json:"summary,omitempty" yaml:"summary,omitempty"`
 	Description          string                `json:"description,omitempty" yaml:"description,omitempty"`
-	Type                 string                `json:"type,omitempty" yaml:"type,omitempty"`
+	Type                 StringArray           `json:"type,omitempty" yaml:"type,omitempty"`
 	Format               string                `json:"format,omitempty" yaml:"format,omitempty"`
 	Properties           RawProperties         `json:"properties,omitempty" yaml:"properties,omitempty"`
 	AdditionalProperties *AdditionalProperties `json:"additionalProperties,omitempty" yaml:"additionalProperties,omitempty"`

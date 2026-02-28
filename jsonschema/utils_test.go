@@ -15,11 +15,11 @@ func TestGetRawSchemaFields(t *testing.T) {
 	}{
 		{
 			Schema: &RawSchema{
-				Type: "object",
+				Type: StringArray{"object"},
 				Properties: RawProperties{
 					RawProperty{
 						Name:   "foo",
-						Schema: &RawSchema{Type: "null"},
+						Schema: &RawSchema{Type: StringArray{"null"}},
 					},
 				},
 				AdditionalProperties: &AdditionalProperties{Bool: &flse},
@@ -31,6 +31,6 @@ func TestGetRawSchemaFields(t *testing.T) {
 	for _, test := range tests {
 		fields, err := getRawSchemaFields(test.Schema)
 		require.NoError(t, err)
-		require.Equal(t, test.Expect, fields)
+		require.ElementsMatch(t, test.Expect, fields)
 	}
 }

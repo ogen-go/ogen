@@ -190,7 +190,7 @@ func TestExternalReference(t *testing.T) {
 			Content: map[string]ogen.Media{
 				"application/json": {
 					Schema: &ogen.Schema{
-						Type: "string",
+						Type: jsonschema.StringArray{"string"},
 					},
 					Examples: map[string]*ogen.Example{
 						"ref": {
@@ -200,7 +200,7 @@ func TestExternalReference(t *testing.T) {
 				},
 			},
 		},
-		"schema_file.json": ogen.Schema{Type: "string"},
+		"schema_file.json": ogen.Schema{Type: jsonschema.StringArray{"string"}},
 	}
 
 	a := require.New(t)
