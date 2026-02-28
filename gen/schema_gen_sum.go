@@ -46,14 +46,20 @@ const (
 
 // jxTypeForFieldType returns the jx.Type constant name for runtime type checking.
 // Returns empty string if the type is not distinguishable at JSON level.
-func jxTypeForFieldType(typeID string) string {
+func jxTypeForFieldType(ft *ir.Type) string {
+	typeID := getFieldTypeID(ft)
+	const strType = "jx.String"
 	switch {
 	case typeID == typeIDBoolean:
 		return "jx.Bool"
 	case typeID == typeIDInteger, typeID == typeIDNumber:
+		if s := ft.Schema; s != nil && s.Type == jsonschema.String {
+			// TODO(tdakkota): properly figure out JSON type.
+			return strType
+		}
 		return "jx.Number"
 	case typeID == typeIDString:
-		return "jx.String"
+		return strType
 	case typeID == typeIDNull:
 		return "jx.Null"
 	case typeID == typeIDObject:
@@ -64,7 +70,7 @@ func jxTypeForFieldType(typeID string) string {
 		return "jx.Object"
 	case strings.HasPrefix(typeID, "enum_"):
 		// Enums serialize as strings in JSON
-		return "jx.String"
+		return strType
 	default:
 		return ""
 	}
@@ -73,8 +79,9 @@ func jxTypeForFieldType(typeID string) string {
 // getArrayElementTypeInfo extracts element type information from an array type ID.
 // Returns the element type ID and its corresponding jx.Type.
 // For non-array types, returns empty strings.
-func getArrayElementTypeInfo(typeID string) (elementTypeID, elementJxType string) {
-	if !strings.HasPrefix(typeID, "array[") {
+func getArrayElementTypeInfo(t *ir.Type) (elementTypeID, elementJxType string) {
+	typeID := getFieldTypeID(t)
+	if !strings.HasPrefix(typeID, "array[") || t.Item == nil {
 		return "", ""
 	}
 
@@ -83,7 +90,7 @@ func getArrayElementTypeInfo(typeID string) (elementTypeID, elementJxType string
 	elementTypeID = strings.TrimSuffix(elementTypeID, "]")
 
 	// Get the jx.Type for the element
-	elementJxType = jxTypeForFieldType(elementTypeID)
+	elementJxType = jxTypeForFieldType(t.Item)
 
 	return elementTypeID, elementJxType
 }
@@ -374,8 +381,7 @@ func (g *schemaGen) handleExplicitDiscriminator(sum *ir.Type, schema *jsonschema
 		// Find the discriminator field in this variant
 		for _, f := range variant.JSON().Fields() {
 			if f.Tag.JSON == propName {
-				typeID := getFieldTypeID(f.Type)
-				jxType := jxTypeForFieldType(typeID)
+				jxType := jxTypeForFieldType(f.Type)
 				discriminatorFieldTypes[variant.Name] = jxType
 				break
 			}
@@ -533,8 +539,7 @@ func (g *schemaGen) oneOf(name string, schema *jsonschema.Schema, side bool) (*i
 			for _, variant := range variants {
 				for _, f := range variant.JSON().Fields() {
 					if f.Tag.JSON == propName {
-						typeID := getFieldTypeID(f.Type)
-						jxType := jxTypeForFieldType(typeID)
+						jxType := jxTypeForFieldType(f.Type)
 						discriminatorFieldTypes[variant.Name] = jxType
 						break
 					}
@@ -866,7 +871,7 @@ func (g *schemaGen) oneOf(name string, schema *jsonschema.Schema, side bool) (*i
 				}
 
 				// Store expected jx.Type for runtime type checking
-				jxType := jxTypeForFieldType(sig.typeID)
+				jxType := jxTypeForFieldType(f.Type)
 				if jxType != "" {
 					s.SumSpec.UniqueFieldTypes[sig.name] = jxType
 				}
@@ -879,7 +884,7 @@ func (g *schemaGen) oneOf(name string, schema *jsonschema.Schema, side bool) (*i
 					(f.Type.IsPointer() && f.Type.NilSemantic.Null())
 
 				// Get array element type info for array element discrimination
-				elemTypeID, elemJxType := getArrayElementTypeInfo(sig.typeID)
+				elemTypeID, elemJxType := getArrayElementTypeInfo(f.Type)
 
 				// Add to UniqueFields map for template iteration
 				// Include entries even when jxType is empty (simple field-name discrimination)
