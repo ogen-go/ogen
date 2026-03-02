@@ -1,8 +1,6 @@
 package examples
 
-import (
-	_ "github.com/ogen-go/ogen"
-)
+import _ "github.com/ogen-go/ogen"
 
 // Generate schemas:
 //

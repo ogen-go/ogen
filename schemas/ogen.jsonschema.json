@@ -193,8 +193,7 @@
           "additionalProperties": {
             "type": "string"
           },
-          "default": {
-          }
+          "default": {}
         },
         "wildcard_content_type_default": {
           "type": "string",
