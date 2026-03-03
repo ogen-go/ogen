@@ -10,6 +10,10 @@ generate:
 	go generate ./... && go mod tidy
 .PHONY: generate
 
+schemas:
+	cd schemas && go generate
+.PHONY: schemas
+
 examples:
 	cd examples && go generate && go mod tidy
 .PHONY: examples
