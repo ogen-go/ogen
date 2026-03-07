@@ -1,40 +1,42 @@
-# This file shows all available options with example values.
-# Not every value below is a default.
+# yaml-language-server: $schema=https://raw.githubusercontent.com/ogen-go/ogen/main/schemas/ogen.jsonschema.json
 
-# Sets parser options.
+# This file shows all available options with example values.
+
+# Parser configuration options.
 parser:
   # Enables type inference for schemas. Schema parser will try to detect schema type by its properties. Default is false.
-  infer_types: false
+  infer_types: true
   # Enables remote references resolving. See https://github.com/ogen-go/ogen/issues/385. Default is false.
-  allow_remote: false
-  # Is maximum depth of schema generation. Default is 1000.
+  allow_remote: true
+  # Maximum depth of schema generation. Default is 1000.
   depth_limit: 1000
-  # Allowed authentication schemes. See https://swagger.io/specification/#security-scheme-object. Default is full list.
+  # Allowed HTTP Authorization schemes in a Security Scheme Object. Default is ones from https://www.iana.org/assignments/http-authschemes/http-authschemes.xhtml.
   authentication_schemes:
-    - 'basic'
-    - 'bearer'
-    - 'concealed'
-    - 'digest'
-    - 'dpop'
-    - 'gnap'
-    - 'hoba'
-    - 'mutual'
-    - 'negotiate'
-    - 'oauth'
-    - 'privatetoken'
-    - 'scram-sha-1'
-    - 'scram-sha-256'
-    - 'vapid'
+    - basic
+    - bearer
+    - concealed
+    - digest
+    - dpop
+    - gnap
+    - hoba
+    - mutual
+    - negotiate
+    - oauth
+    - privatetoken
+    - scram-sha-1
+    - scram-sha-256
+    - vapid
   # Enables interpretation of cross-type schema constraints. When false, parser rejects such constraints. Default is true.
   allow_cross_type_constraints: true
   # Enables strict duplicate normalized path checks, even when they have different methods. Default is false.
   disallow_duplicate_method_paths: false
 
-# Sets generator options.
+# Generator configuration options.
 generator:
-  # Sets generator features.
+  # Generator features configuration.
   features:
-    # Enabled features. Default is:
+    # Features to enable. Applied after disable list, so entries here take priority.
+    # Default is:
     # - paths/client
     # - paths/server
     # - webhooks/client
@@ -42,77 +44,75 @@ generator:
     # - ogen/otel
     # - ogen/unimplemented
     enable:
-      # Enables paths client generation.
+      # Generate client code for API paths.
       - 'paths/client'
-      # Enables paths server generation.
+      # Generate server code for API paths.
       - 'paths/server'
-      # Enables webhooks client generation.
+      # Generate client code for webhooks.
       - 'webhooks/client'
-      # Enables webhooks server generation.
+      # Generate server code for webhooks.
       - 'webhooks/server'
-      # Enables client usage in security source implementations.
+      # Allow security source implementations to receive and use the generated client.
       - 'client/security/reentrant'
-      # Enables function options for client requests.
+      # Generate per-request option functions for client requests.
       - 'client/request/options'
-      # Enables validation of client requests.
+      # Enable client request validation before sending.
       - 'client/request/validation'
-      # Enables editors function options for client.
+      # Generate client request editor option functions.
       - 'client/editors'
-      # Enables validation of server responses.
+      # Enable server response validation.
       - 'server/response/validation'
-      # Enables OpenTelemetry integration.
+      # Enable OpenTelemetry integration.
       - 'ogen/otel'
-      # Enables stub Handler generation.
+      # Generate stub handlers for unimplemented operations.
       - 'ogen/unimplemented'
-      # Enables example tests generation.
+      # Generate debug example tests.
       - 'debug/example_tests'
-    # Disabled features. Default is empty list.
-    # Note: generator applies "disable" list first, then "enable".
+    # Features to disable. Applied before enable list, so entries in enable list take priority. Default is empty list.
     disable:
-      # Disables paths client generation.
+      # Disable client code generation for API paths.
       - 'paths/client'
-      # Disables paths server generation.
+      # Disable server code generation for API paths.
       - 'paths/server'
-      # Disables webhooks client generation.
+      # Disable client code generation for webhooks.
       - 'webhooks/client'
-      # Disables webhooks server generation.
+      # Disable server code generation for webhooks.
       - 'webhooks/server'
-      # Disables client usage in security source implementations.
+      # Disable passing the generated client to security source callbacks.
       - 'client/security/reentrant'
-      # Disables function options for client requests.
+      # Disable per-request option functions for client requests.
       - 'client/request/options'
-      # Disables validation of client requests.
+      # Disable client request validation before sending.
       - 'client/request/validation'
-      # Disables editors function options for client.
+      # Disable client request editor option functions.
       - 'client/editors'
-      # Disables validation of server responses.
+      # Disable server response validation.
       - 'server/response/validation'
-      # Disables OpenTelemetry integration.
+      # Disable OpenTelemetry integration.
       - 'ogen/otel'
-      # Disables stub Handler generation.
+      # Disable stub handlers for unimplemented operations.
       - 'ogen/unimplemented'
-      # Disables example tests generation.
+      # Disable debug example tests.
       - 'debug/example_tests'
-    # Disable all features flag. Default is false.
-    # Note: when true, generation starts with no enabled features.
-    disable_all: false
+    # Start from an empty feature set instead of default features. Default is false.
+    disable_all: true
 
-  # Contains filters to skip operations.
+  # Operation filtering configuration options.
   filters:
-    # Regex for path filtering. Default is not set, all paths are accepted.
+    # Regular expression to filter paths. If empty, all paths are accepted. Default is empty string.
     path_regex: ".*"
-    # HTTP methods to keep. Default is empty list, all methods are accepted.
+    # HTTP methods to keep. If empty, all methods are accepted. Default is empty list.
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "HEAD", "OPTIONS", "TRACE"]
 
-  # Not implemented functions to ignore on generation. "all" means skip all not-implemented generation errors. Default is empty list.
+  # Not implemented functions to skip during generation. "all" means skip all not-implemented generation errors. Default is empty list.
   ignore_not_implemented: ["all"]
-  # Controls automatic NewError helper generation: on, off or auto. See https://ogen.dev/docs/concepts/convenient_errors. Default is auto.
+  # Controls convenient error helper generation. See https://ogen.dev/docs/concepts/convenient_errors. Default is "auto".
   convenient_errors: "auto"
   # Maps exact content types to known encodings. Default is empty object.
   content_type_aliases:
     "text/json": "application/json"
-  # Default encoding for wildcard content types declared in spec (f.e. */* or application/*). Default is "", wildcard content types stay unsupported.
+  # Default encoding to use for wildcard content types (e.g. */* or application/*). If empty, wildcard content types are treated as unsupported. Default is empty string.
   wildcard_content_type_default: "application/json"
 
-# Path to write expanded spec. Default is "", writing expanded spec is disabled.
+# Path to write the expanded OpenAPI spec file. If empty, the expanded spec is not written. Default is empty string.
 expand: ""

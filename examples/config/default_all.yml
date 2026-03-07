@@ -1,0 +1,46 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/ogen-go/ogen/main/schemas/ogen.jsonschema.json
+
+# This file shows the configuration with all default options.
+
+parser:
+  infer_types: false
+  allow_remote: false
+  depth_limit: 1000
+  authentication_schemes:
+    - basic
+    - bearer
+    - concealed
+    - digest
+    - dpop
+    - gnap
+    - hoba
+    - mutual
+    - negotiate
+    - oauth
+    - privatetoken
+    - scram-sha-1
+    - scram-sha-256
+    - vapid
+  allow_cross_type_constraints: true
+  disallow_duplicate_method_paths: false
+
+generator:
+  features:
+    enable:
+      - paths/client
+      - paths/server
+      - webhooks/client
+      - webhooks/server
+      - ogen/otel
+      - ogen/unimplemented
+    disable: []
+    disable_all: false
+  filters:
+    path_regex: ""
+    methods: []
+  ignore_not_implemented: []
+  convenient_errors: auto
+  content_type_aliases: {}
+  wildcard_content_type_default: ""
+
+expand: ""
