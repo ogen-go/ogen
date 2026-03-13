@@ -1203,27 +1203,11 @@ func (g *schemaGen) oneOf(name string, schema *jsonschema.Schema, side bool) (*i
 }
 
 func (g *schemaGen) allOf(name string, schema *jsonschema.Schema) (*ir.Type, error) {
-	if err := ensureNoInfiniteRecursion(schema); err != nil {
-		return nil, err
-	}
-
-	// If there is only one schema in allOf, avoid merging to keep the reference.
-	if len(schema.AllOf) == 1 {
-		s := schema.AllOf[0]
-		if s != nil {
-			return g.generate(name, s, false)
-		}
-	}
-
-	mergedSchema, err := mergeNSchemes(schema.AllOf)
+	mergedSchema, err := flattenAllOfSchema(schema)
 	if err != nil {
 		return nil, err
 	}
-
-	// The reference field must not change
-	mergedSchema.Ref = schema.Ref
-
-	return g.generate(name, mergedSchema, false)
+	return g.generate2(name, mergedSchema)
 }
 
 // shallowSchemaCopy returns a shallow copy of the given schema.
@@ -1237,6 +1221,57 @@ func shallowSchemaCopy(s *jsonschema.Schema) *jsonschema.Schema {
 	}
 	cpy := *s
 	return &cpy
+}
+
+func flattenAllOfSchema(schema *jsonschema.Schema) (*jsonschema.Schema, error) {
+	if schema == nil || len(schema.AllOf) == 0 {
+		return schema, nil
+	}
+
+	if err := ensureNoInfiniteRecursion(schema); err != nil {
+		return nil, err
+	}
+
+	parent := shallowSchemaCopy(schema)
+	parent.AllOf = nil
+
+	// If there is only one schema in allOf, avoid merging and keep the inner schema
+	// while still applying wrapper-level metadata from the parent.
+	if len(schema.AllOf) == 1 {
+		child := shallowSchemaCopy(schema.AllOf[0])
+		if child == nil {
+			return parent, nil
+		}
+
+		child.Nullable = child.Nullable || parent.Nullable
+		if child.Type == jsonschema.Empty {
+			child.Type = parent.Type
+		}
+		if child.Ref.IsZero() {
+			child.Ref = parent.Ref
+		}
+		if _, ok := child.Position(); !ok {
+			child.Pointer = parent.Pointer
+		}
+		return child, nil
+	}
+
+	mergedSchema, err := mergeNSchemes(schema.AllOf)
+	if err != nil {
+		return nil, err
+	}
+
+	mergedSchema.Nullable = mergedSchema.Nullable || parent.Nullable
+	if mergedSchema.Type == jsonschema.Empty {
+		mergedSchema.Type = parent.Type
+	}
+	// The reference field must not change.
+	mergedSchema.Ref = parent.Ref
+	if _, ok := mergedSchema.Position(); !ok {
+		mergedSchema.Pointer = parent.Pointer
+	}
+
+	return mergedSchema, nil
 }
 
 func mergeNSchemes(ss []*jsonschema.Schema) (_ *jsonschema.Schema, err error) {
