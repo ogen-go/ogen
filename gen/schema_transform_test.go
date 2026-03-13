@@ -355,6 +355,33 @@ func TestNullableOneOf_Optionality(t *testing.T) {
 		assertOptionalNullableGeneric(t, optionalField.Type, ir.KindPrimitive)
 	})
 
+	t.Run("optional nullable allOf field", func(t *testing.T) {
+		a := require.New(t)
+		s := createTestSchemaGen(nil)
+
+		nullableStringAllOf := &jsonschema.Schema{
+			AllOf: []*jsonschema.Schema{
+				createPrimitiveSchema(jsonschema.String),
+				{Nullable: true},
+			},
+		}
+
+		optionalSchema := createObjectSchema(
+			createProperty("optionalNullable", nullableStringAllOf, false),
+		)
+		optionalResult, err := s.generate("WithOptionalAllOf", optionalSchema, false)
+
+		a.NoError(err)
+		a.NotNil(optionalResult)
+		a.Equal(ir.KindStruct, optionalResult.Kind)
+		a.Len(optionalResult.Fields, 1)
+
+		optionalField := optionalResult.Fields[0]
+		a.Equal("OptionalNullable", optionalField.Name)
+		assertOptionalNullableGeneric(t, optionalField.Type, ir.KindPrimitive)
+		a.Equal(ir.String, optionalField.Type.GenericOf.Primitive)
+	})
+
 	t.Run("field in optional object", func(t *testing.T) {
 		a := require.New(t)
 		s := createTestSchemaGen(nil)
