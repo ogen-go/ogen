@@ -8,6 +8,18 @@ import (
 
 // Handler handles operations described by OpenAPI v3 specification.
 type Handler interface {
+	// GetAdminFoo implements getAdminFoo operation.
+	//
+	// Returns Foo + admin-only fields via allOf.
+	//
+	// GET /admin/foo
+	GetAdminFoo(ctx context.Context) (*GetAdminFooOK, error)
+	// GetFoo implements getFoo operation.
+	//
+	// Returns a Foo (base schema with $ref nested types).
+	//
+	// GET /foo
+	GetFoo(ctx context.Context) (*Foo, error)
 	// NullableStrings implements nullableStrings operation.
 	//
 	// Nullable strings.
