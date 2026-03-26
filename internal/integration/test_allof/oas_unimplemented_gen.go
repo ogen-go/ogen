@@ -13,6 +13,24 @@ type UnimplementedHandler struct{}
 
 var _ Handler = UnimplementedHandler{}
 
+// GetAdminFoo implements getAdminFoo operation.
+//
+// Returns Foo + admin-only fields via allOf.
+//
+// GET /admin/foo
+func (UnimplementedHandler) GetAdminFoo(ctx context.Context) (r *GetAdminFooOK, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// GetFoo implements getFoo operation.
+//
+// Returns a Foo (base schema with $ref nested types).
+//
+// GET /foo
+func (UnimplementedHandler) GetFoo(ctx context.Context) (r *Foo, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
 // NullableStrings implements nullableStrings operation.
 //
 // Nullable strings.

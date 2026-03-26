@@ -7,6 +7,203 @@ import (
 	"github.com/google/uuid"
 )
 
+// Ref: #/components/schemas/Bar
+type Bar struct {
+	UUID  uuid.UUID `json:"uuid"`
+	Value float64   `json:"value"`
+}
+
+// GetUUID returns the value of UUID.
+func (s *Bar) GetUUID() uuid.UUID {
+	return s.UUID
+}
+
+// GetValue returns the value of Value.
+func (s *Bar) GetValue() float64 {
+	return s.Value
+}
+
+// SetUUID sets the value of UUID.
+func (s *Bar) SetUUID(val uuid.UUID) {
+	s.UUID = val
+}
+
+// SetValue sets the value of Value.
+func (s *Bar) SetValue(val float64) {
+	s.Value = val
+}
+
+// Ref: #/components/schemas/BazStatus
+type BazStatus string
+
+const (
+	BazStatusActive         BazStatus = "active"
+	BazStatusInactive       BazStatus = "inactive"
+	BazStatusDecommissioned BazStatus = "decommissioned"
+)
+
+// AllValues returns all BazStatus values.
+func (BazStatus) AllValues() []BazStatus {
+	return []BazStatus{
+		BazStatusActive,
+		BazStatusInactive,
+		BazStatusDecommissioned,
+	}
+}
+
+// MarshalText implements encoding.TextMarshaler.
+func (s BazStatus) MarshalText() ([]byte, error) {
+	switch s {
+	case BazStatusActive:
+		return []byte(s), nil
+	case BazStatusInactive:
+		return []byte(s), nil
+	case BazStatusDecommissioned:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *BazStatus) UnmarshalText(data []byte) error {
+	switch BazStatus(data) {
+	case BazStatusActive:
+		*s = BazStatusActive
+		return nil
+	case BazStatusInactive:
+		*s = BazStatusInactive
+		return nil
+	case BazStatusDecommissioned:
+		*s = BazStatusDecommissioned
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
+// Ref: #/components/schemas/Foo
+type Foo struct {
+	ID     string    `json:"id"`
+	Name   string    `json:"name"`
+	Config FooConfig `json:"config"`
+	Bar    NilBar    `json:"bar"`
+}
+
+// GetID returns the value of ID.
+func (s *Foo) GetID() string {
+	return s.ID
+}
+
+// GetName returns the value of Name.
+func (s *Foo) GetName() string {
+	return s.Name
+}
+
+// GetConfig returns the value of Config.
+func (s *Foo) GetConfig() FooConfig {
+	return s.Config
+}
+
+// GetBar returns the value of Bar.
+func (s *Foo) GetBar() NilBar {
+	return s.Bar
+}
+
+// SetID sets the value of ID.
+func (s *Foo) SetID(val string) {
+	s.ID = val
+}
+
+// SetName sets the value of Name.
+func (s *Foo) SetName(val string) {
+	s.Name = val
+}
+
+// SetConfig sets the value of Config.
+func (s *Foo) SetConfig(val FooConfig) {
+	s.Config = val
+}
+
+// SetBar sets the value of Bar.
+func (s *Foo) SetBar(val NilBar) {
+	s.Bar = val
+}
+
+// Ref: #/components/schemas/FooConfig
+type FooConfig struct {
+	Interval OptInt `json:"interval"`
+}
+
+// GetInterval returns the value of Interval.
+func (s *FooConfig) GetInterval() OptInt {
+	return s.Interval
+}
+
+// SetInterval sets the value of Interval.
+func (s *FooConfig) SetInterval(val OptInt) {
+	s.Interval = val
+}
+
+// Merged schema.
+type GetAdminFooOK struct {
+	ID        string    `json:"id"`
+	Name      string    `json:"name"`
+	Config    FooConfig `json:"config"`
+	Bar       NilBar    `json:"bar"`
+	BazStatus BazStatus `json:"bazStatus"`
+}
+
+// GetID returns the value of ID.
+func (s *GetAdminFooOK) GetID() string {
+	return s.ID
+}
+
+// GetName returns the value of Name.
+func (s *GetAdminFooOK) GetName() string {
+	return s.Name
+}
+
+// GetConfig returns the value of Config.
+func (s *GetAdminFooOK) GetConfig() FooConfig {
+	return s.Config
+}
+
+// GetBar returns the value of Bar.
+func (s *GetAdminFooOK) GetBar() NilBar {
+	return s.Bar
+}
+
+// GetBazStatus returns the value of BazStatus.
+func (s *GetAdminFooOK) GetBazStatus() BazStatus {
+	return s.BazStatus
+}
+
+// SetID sets the value of ID.
+func (s *GetAdminFooOK) SetID(val string) {
+	s.ID = val
+}
+
+// SetName sets the value of Name.
+func (s *GetAdminFooOK) SetName(val string) {
+	s.Name = val
+}
+
+// SetConfig sets the value of Config.
+func (s *GetAdminFooOK) SetConfig(val FooConfig) {
+	s.Config = val
+}
+
+// SetBar sets the value of Bar.
+func (s *GetAdminFooOK) SetBar(val NilBar) {
+	s.Bar = val
+}
+
+// SetBazStatus sets the value of BazStatus.
+func (s *GetAdminFooOK) SetBazStatus(val BazStatus) {
+	s.BazStatus = val
+}
+
 // Ref: #/components/schemas/Location
 type Location struct {
 	Lat float64 `json:"lat"`
@@ -31,6 +228,51 @@ func (s *Location) SetLat(val float64) {
 // SetLon sets the value of Lon.
 func (s *Location) SetLon(val float64) {
 	s.Lon = val
+}
+
+// NewNilBar returns new NilBar with value set to v.
+func NewNilBar(v Bar) NilBar {
+	return NilBar{
+		Value: v,
+	}
+}
+
+// NilBar is nullable Bar.
+type NilBar struct {
+	Value Bar
+	Null  bool
+}
+
+// SetTo sets value to v.
+func (o *NilBar) SetTo(v Bar) {
+	o.Null = false
+	o.Value = v
+}
+
+// IsNull returns true if value is Null.
+func (o NilBar) IsNull() bool { return o.Null }
+
+// SetToNull sets value to null.
+func (o *NilBar) SetToNull() {
+	o.Null = true
+	var v Bar
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o NilBar) Get() (v Bar, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o NilBar) Or(d Bar) Bar {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewNilString returns new NilString with value set to v.

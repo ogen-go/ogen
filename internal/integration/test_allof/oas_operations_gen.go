@@ -6,6 +6,8 @@ package api
 type OperationName = string
 
 const (
+	GetAdminFooOperation                         OperationName = "GetAdminFoo"
+	GetFooOperation                              OperationName = "GetFoo"
 	NullableStringsOperation                     OperationName = "NullableStrings"
 	ObjectsWithConflictingArrayPropertyOperation OperationName = "ObjectsWithConflictingArrayProperty"
 	ObjectsWithConflictingPropertiesOperation    OperationName = "ObjectsWithConflictingProperties"

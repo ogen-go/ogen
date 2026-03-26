@@ -1211,6 +1211,14 @@ func (g *schemaGen) allOf(name string, schema *jsonschema.Schema) (*ir.Type, err
 	if len(schema.AllOf) == 1 {
 		s := schema.AllOf[0]
 		if s != nil {
+			// Preserve the outer schema's Ref on the inner schema so that the
+			// type is registered under the correct reference key and can be
+			// looked up later (avoiding anonymous type name collisions).
+			if !schema.Ref.IsZero() && s.Ref.IsZero() {
+				cp := *s
+				cp.Ref = schema.Ref
+				s = &cp
+			}
 			return g.generate(name, s, false)
 		}
 	}

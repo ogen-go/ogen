@@ -1,4 +1,4 @@
-openapi: 3.0.0
+openapi: 3.1.0
 info:
   title: title
   version: v0.1.0
@@ -137,6 +137,35 @@ paths:
       responses:
         '200':
           description: ok
+  "/foo":
+    get:
+      operationId: getFoo
+      description: Returns a Foo (base schema with $ref nested types)
+      responses:
+        '200':
+          description: ok
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Foo"
+  "/admin/foo":
+    get:
+      operationId: getAdminFoo
+      description: Returns Foo + admin-only fields via allOf
+      responses:
+        '200':
+          description: ok
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/Foo"
+                  - type: object
+                    required:
+                    - bazStatus
+                    properties:
+                      bazStatus:
+                        $ref: "#/components/schemas/BazStatus"
   "/referencedAllof":
     post:
       operationId: referencedAllof
@@ -185,6 +214,49 @@ paths:
           description: ok
 components:
   schemas:
+    Foo:
+      type: object
+      required:
+      - id
+      - name
+      - config
+      - bar
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        config:
+          type: object
+          $ref: "#/components/schemas/FooConfig"
+        bar:
+          nullable: true
+          $ref: "#/components/schemas/Bar"
+    FooConfig:
+      type: object
+      properties:
+        interval:
+          type: integer
+    Bar:
+      nullable: true
+      type: object
+      allOf:
+        - type: object
+          required:
+            - uuid
+            - value
+          properties:
+            uuid:
+              type: string
+              format: uuid
+            value:
+              type: number
+    BazStatus:
+      type: string
+      enum:
+        - active
+        - inactive
+        - decommissioned
     Robot:
       allOf:
       - type: object

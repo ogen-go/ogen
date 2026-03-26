@@ -7,6 +7,87 @@ import (
 )
 
 // SetFake set fake values.
+func (s *Bar) SetFake() {
+	{
+		{
+			s.UUID = uuid.New()
+		}
+	}
+	{
+		{
+			s.Value = float64(0)
+		}
+	}
+}
+
+// SetFake set fake values.
+func (s *BazStatus) SetFake() {
+	*s = BazStatusActive
+}
+
+// SetFake set fake values.
+func (s *Foo) SetFake() {
+	{
+		{
+			s.ID = "string"
+		}
+	}
+	{
+		{
+			s.Name = "string"
+		}
+	}
+	{
+		{
+			s.Config.SetFake()
+		}
+	}
+	{
+		{
+			s.Bar.SetFake()
+		}
+	}
+}
+
+// SetFake set fake values.
+func (s *FooConfig) SetFake() {
+	{
+		{
+			s.Interval.SetFake()
+		}
+	}
+}
+
+// SetFake set fake values.
+func (s *GetAdminFooOK) SetFake() {
+	{
+		{
+			s.ID = "string"
+		}
+	}
+	{
+		{
+			s.Name = "string"
+		}
+	}
+	{
+		{
+			s.Config.SetFake()
+		}
+	}
+	{
+		{
+			s.Bar.SetFake()
+		}
+	}
+	{
+		{
+			s.BazStatus.SetFake()
+		}
+	}
+}
+
+// SetFake set fake values.
 func (s *Location) SetFake() {
 	{
 		{
@@ -18,6 +99,11 @@ func (s *Location) SetFake() {
 			s.Lon = float64(0)
 		}
 	}
+}
+
+// SetFake set fake values.
+func (s *NilBar) SetFake() {
+	s.Null = true
 }
 
 // SetFake set fake values.
