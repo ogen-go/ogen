@@ -50,7 +50,7 @@ func TestExternalReference(t *testing.T) {
 	remote := external{
 		"foo.json": components{
 			"RemoteSchema": {
-				Type: "object",
+				Type: StringArray{"object"},
 				Properties: RawProperties{
 					{
 						Name: "relative",
@@ -73,7 +73,7 @@ func TestExternalReference(t *testing.T) {
 				},
 			},
 			"Property": {
-				Type: "number",
+				Type: StringArray{"number"},
 			},
 		},
 		"https://example.com/bar.json": components{
@@ -84,7 +84,7 @@ func TestExternalReference(t *testing.T) {
 				Ref: "https://example.com/bar.json#/components/schemas/Property",
 			},
 			"Property": {
-				Type: "boolean",
+				Type: StringArray{"boolean"},
 			},
 		},
 	}
@@ -95,7 +95,7 @@ func TestExternalReference(t *testing.T) {
 	})
 
 	out, err := parser.Parse(&RawSchema{
-		Type: "array",
+		Type: StringArray{"array"},
 		Items: &RawItems{
 			Item: &RawSchema{
 				Ref: "#/components/schemas/LocalSchema",
@@ -162,7 +162,7 @@ func TestLimitDepth(t *testing.T) {
 			Ref: "#/components/schemas/Schema4",
 		},
 		"Schema4": {
-			Type: "string",
+			Type: StringArray{"string"},
 		},
 	}
 

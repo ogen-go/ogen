@@ -4,6 +4,8 @@ import (
 	"slices"
 	"strings"
 
+	"github.com/samber/lo"
+
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
 )
@@ -23,8 +25,8 @@ func (i *Infer) Apply(data []byte) error {
 	return apply(&i.target, jx.DecodeBytes(data))
 }
 
-func applyType(s *RawSchema, tt string) {
-	if hasType(s, tt) {
+func applyType(s *RawSchema, tt ...string) {
+	if hasType(s, tt...) {
 		return
 	}
 	if len(s.OneOf) > 0 {
@@ -32,7 +34,7 @@ func applyType(s *RawSchema, tt string) {
 		return
 	}
 
-	if s.Type == "" {
+	if s.Type == nil {
 		s.Type = tt
 		return
 	}
@@ -46,26 +48,28 @@ func applyType(s *RawSchema, tt string) {
 	}
 }
 
-func hasType(s *RawSchema, tt string) bool {
-	if s.Type == tt {
+func hasType(s *RawSchema, tt ...string) bool {
+	if len(lo.Intersect(s.Type, tt)) > 0 {
 		return true
 	}
+
 	for _, v := range s.OneOf {
-		if v.Type == tt {
+		if len(lo.Intersect(v.Type, tt)) > 0 {
 			return true
 		}
 	}
 	return false
 }
 
-func replaceType(s *RawSchema, from, to string) bool {
-	if s.Type == from {
+func replaceType(s *RawSchema, from, to []string) bool {
+	if lo.ElementsMatch(s.Type, from) {
 		s.Type = to
 		return true
 	}
+
 	for _, v := range s.OneOf {
-		if v.Type == from {
-			v.Type = to
+		if lo.ElementsMatch(v.Type, from) {
+			s.Type = to
 			return true
 		}
 	}
@@ -86,7 +90,7 @@ func apply(s *RawSchema, d *jx.Decoder) error {
 			applyType(s, "integer")
 			return nil
 		}
-		if replaceType(s, "integer", "number") {
+		if replaceType(s, []string{"integer"}, []string{"number"}) {
 			return nil
 		}
 		applyType(s, "number")

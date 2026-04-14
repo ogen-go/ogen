@@ -83,8 +83,8 @@ func TestProperties(t *testing.T) {
 		wantErr bool
 	}{
 		{`{"foo":{"type":"string"}, "bar":{"type":"number"}}`, Properties{
-			{Name: "foo", Schema: &Schema{Type: "string"}},
-			{Name: "bar", Schema: &Schema{Type: "number"}},
+			{Name: "foo", Schema: &Schema{Type: []string{"string"}}},
+			{Name: "bar", Schema: &Schema{Type: []string{"number"}}},
 		}, false},
 		// Invalid YAML.
 		{`{`, Properties{}, true},
@@ -109,7 +109,7 @@ func TestAdditionalProperties(t *testing.T) {
 		value   AdditionalProperties
 		wantErr bool
 	}{
-		{`{"type":"string"}`, AdditionalProperties{Schema: Schema{Type: "string"}}, false},
+		{`{"type":"string"}`, AdditionalProperties{Schema: Schema{Type: []string{"string"}}}, false},
 		{`false`, AdditionalProperties{Bool: new(bool)}, false},
 		// Invalid YAML.
 		{`{`, AdditionalProperties{}, true},
@@ -136,8 +136,8 @@ func TestPatternProperties(t *testing.T) {
 		wantErr bool
 	}{
 		{`{"\\w+":{"type":"string"}, "\\d+":{"type":"number"}}`, PatternProperties{
-			{Pattern: "\\w+", Schema: &Schema{Type: "string"}},
-			{Pattern: "\\d+", Schema: &Schema{Type: "number"}},
+			{Pattern: "\\w+", Schema: &Schema{Type: []string{"string"}}},
+			{Pattern: "\\d+", Schema: &Schema{Type: []string{"number"}}},
 		}, false},
 		// Invalid JSON.
 		{`{`, PatternProperties{}, true},

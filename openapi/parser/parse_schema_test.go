@@ -6,6 +6,7 @@ import (
 	"github.com/stretchr/testify/require"
 
 	"github.com/ogen-go/ogen"
+	"github.com/ogen-go/ogen/jsonschema"
 )
 
 func TestParseDiscriminator(t *testing.T) {
@@ -87,27 +88,27 @@ func TestParseDiscriminator(t *testing.T) {
 					},
 				},
 				"Cat": {
-					Type:     "object",
+					Type:     jsonschema.StringArray{"object"},
 					Required: []string{"petType", "meow"},
 					Properties: ogen.Properties{
-						{Name: "petType", Schema: &ogen.Schema{Type: "string"}},
-						{Name: "meow", Schema: &ogen.Schema{Type: "string"}},
+						{Name: "petType", Schema: &ogen.Schema{Type: jsonschema.StringArray{"string"}}},
+						{Name: "meow", Schema: &ogen.Schema{Type: jsonschema.StringArray{"string"}}},
 					},
 				},
 				"Dog": {
-					Type:     "object",
+					Type:     jsonschema.StringArray{"object"},
 					Required: []string{"petType", "bark"},
 					Properties: ogen.Properties{
-						{Name: "petType", Schema: &ogen.Schema{Type: "string"}},
-						{Name: "bark", Schema: &ogen.Schema{Type: "string"}},
+						{Name: "petType", Schema: &ogen.Schema{Type: jsonschema.StringArray{"string"}}},
+						{Name: "bark", Schema: &ogen.Schema{Type: jsonschema.StringArray{"string"}}},
 					},
 				},
 				"Cow": {
-					Type:     "object",
+					Type:     jsonschema.StringArray{"object"},
 					Required: []string{"petType", "moo"},
 					Properties: ogen.Properties{
-						{Name: "petType", Schema: &ogen.Schema{Type: "string"}},
-						{Name: "moo", Schema: &ogen.Schema{Type: "string"}},
+						{Name: "petType", Schema: &ogen.Schema{Type: jsonschema.StringArray{"string"}}},
+						{Name: "moo", Schema: &ogen.Schema{Type: jsonschema.StringArray{"string"}}},
 					},
 				},
 			},

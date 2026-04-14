@@ -36,28 +36,44 @@ func testCtx() *jsonpointer.ResolveCtx {
 	return jsonpointer.NewResolveCtx(&url.URL{Path: "/root.json"}, jsonpointer.DefaultDepthLimit)
 }
 
+func TestSchemaNullableType(t *testing.T) {
+	parser := NewParser(Settings{})
+
+	out, err := parser.Parse(&RawSchema{
+		Type: StringArray{"string", "null"},
+	}, testCtx())
+	require.NoError(t, err)
+
+	expect := &Schema{
+		Type:     String,
+		Nullable: true,
+	}
+
+	require.Equal(t, expect, out)
+}
+
 func TestSchemaSimple(t *testing.T) {
 	parser := NewParser(Settings{})
 
 	out, err := parser.Parse(&RawSchema{
-		Type: "object",
+		Type: StringArray{"object"},
 		Properties: []RawProperty{
 			{
 				Name:   "id",
-				Schema: &RawSchema{Type: "integer"},
+				Schema: &RawSchema{Type: StringArray{"integer"}},
 			},
 			{
 				Name:   "name",
-				Schema: &RawSchema{Type: "string"},
+				Schema: &RawSchema{Type: StringArray{"string"}},
 			},
 		},
-		Required: []string{"id", "name"},
+		Required: StringArray{"id", "name"},
 	}, testCtx())
 	require.NoError(t, err)
 
 	expect := &Schema{
 		Type:     Object,
-		Required: []string{"id", "name"},
+		Required: StringArray{"id", "name"},
 		Properties: []Property{
 			{
 				Name:     "id",
@@ -78,20 +94,20 @@ func TestSchemaSimple(t *testing.T) {
 func TestSchemaRecursive(t *testing.T) {
 	components := components{
 		"Pet": {
-			Type: "object",
+			Type: StringArray{"object"},
 			Properties: []RawProperty{
 				{
 					Name:   "id",
-					Schema: &RawSchema{Type: "integer"},
+					Schema: &RawSchema{Type: StringArray{"integer"}},
 				},
 				{
 					Name:   "name",
-					Schema: &RawSchema{Type: "string"},
+					Schema: &RawSchema{Type: StringArray{"string"}},
 				},
 				{
 					Name: "friends",
 					Schema: &RawSchema{
-						Type: "array",
+						Type: StringArray{"array"},
 						Items: &RawItems{
 							Item: &RawSchema{
 								Ref: "#/components/schemas/Pet",
@@ -100,13 +116,13 @@ func TestSchemaRecursive(t *testing.T) {
 					},
 				},
 			},
-			Required: []string{"id", "name", "friends"},
+			Required: StringArray{"id", "name", "friends"},
 		},
 	}
 
 	pet := &Schema{
 		Type:     Object,
-		Required: []string{"id", "name", "friends"},
+		Required: StringArray{"id", "name", "friends"},
 		Ref:      Ref{Loc: "/root.json", Ptr: "#/components/schemas/Pet"},
 	}
 	pet.Properties = []Property{
@@ -134,7 +150,7 @@ func TestSchemaRecursive(t *testing.T) {
 		{Loc: "/root.json", Ptr: "#/components/schemas/Pet"}: {
 			Type:     Object,
 			Ref:      Ref{Loc: "/root.json", Ptr: "#/components/schemas/Pet"},
-			Required: []string{"id", "name", "friends"},
+			Required: StringArray{"id", "name", "friends"},
 			Properties: []Property{
 				{
 					Name:     "id",
@@ -173,7 +189,7 @@ func TestSchemaRecursive(t *testing.T) {
 func TestSchemaInfiniteRecursion(t *testing.T) {
 	testCases := []RawSchema{
 		{
-			Type: "object",
+			Type: StringArray{"object"},
 			Ref:  "#/components/schemas/Type",
 		},
 	}
@@ -207,10 +223,10 @@ func TestSchemaRefToRef(t *testing.T) {
 			Ref: "#/components/schemas/actual",
 		},
 		"actual": {
-			Type: "integer",
+			Type: StringArray{"integer"},
 		},
 		"referer": {
-			Type: "object",
+			Type: StringArray{"object"},
 			Properties: RawProperties{
 				{"Ref1", &RawSchema{Ref: "#/components/schemas/first"}},
 				{"Ref2", &RawSchema{Ref: "#/components/schemas/first"}},
@@ -231,7 +247,7 @@ func TestSchemaSideEffects(t *testing.T) {
 	expectSide := []*Schema{
 		{
 			Type:     Object,
-			Required: []string{"name", "id", "age"},
+			Required: StringArray{"name", "id", "age"},
 			Properties: []Property{
 				{
 					Name:     "name",
@@ -254,7 +270,7 @@ func TestSchemaSideEffects(t *testing.T) {
 
 	expect := &Schema{
 		Type:     Object,
-		Required: []string{"id", "name", "owner"},
+		Required: StringArray{"id", "name", "owner"},
 		Properties: []Property{
 			{
 				Name:     "name",
@@ -272,35 +288,35 @@ func TestSchemaSideEffects(t *testing.T) {
 	parser := NewParser(Settings{})
 
 	out, err := parser.Parse(&RawSchema{
-		Type: "object",
+		Type: StringArray{"object"},
 		Properties: []RawProperty{
 			{
 				Name:   "name",
-				Schema: &RawSchema{Type: "string"},
+				Schema: &RawSchema{Type: StringArray{"string"}},
 			},
 			{
 				Name: "owner",
 				Schema: &RawSchema{
-					Type: "object",
+					Type: StringArray{"object"},
 					Properties: []RawProperty{
 						{
 							Name:   "name",
-							Schema: &RawSchema{Type: "string"},
+							Schema: &RawSchema{Type: StringArray{"string"}},
 						},
 						{
 							Name:   "age",
-							Schema: &RawSchema{Type: "integer"},
+							Schema: &RawSchema{Type: StringArray{"integer"}},
 						},
 						{
 							Name:   "id",
-							Schema: &RawSchema{Type: "integer"},
+							Schema: &RawSchema{Type: StringArray{"integer"}},
 						},
 					},
-					Required: []string{"name", "id", "age"},
+					Required: StringArray{"name", "id", "age"},
 				},
 			},
 		},
-		Required: []string{"id", "name", "owner"},
+		Required: StringArray{"id", "name", "owner"},
 	}, testCtx())
 
 	require.NoError(t, err)
@@ -310,10 +326,10 @@ func TestSchemaSideEffects(t *testing.T) {
 func TestSchemaReferencedArray(t *testing.T) {
 	components := components{
 		"Pets": {
-			Type: "array",
+			Type: StringArray{"array"},
 			Items: &RawItems{
 				Item: &RawSchema{
-					Type: "string",
+					Type: StringArray{"string"},
 				},
 			},
 		},
@@ -331,7 +347,7 @@ func TestSchemaReferencedArray(t *testing.T) {
 
 	expect := &Schema{
 		Type:     Object,
-		Required: []string{"pets"},
+		Required: StringArray{"pets"},
 		Properties: []Property{
 			{
 				Name:     "pets",
@@ -346,7 +362,7 @@ func TestSchemaReferencedArray(t *testing.T) {
 	})
 
 	out, err := parser.Parse(&RawSchema{
-		Type: "object",
+		Type: StringArray{"object"},
 		Properties: []RawProperty{
 			{
 				Name: "pets",
@@ -355,7 +371,7 @@ func TestSchemaReferencedArray(t *testing.T) {
 				},
 			},
 		},
-		Required: []string{"pets"},
+		Required: StringArray{"pets"},
 	}, testCtx())
 
 	require.NoError(t, err)
@@ -437,14 +453,14 @@ func TestInvalidMultipleOf(t *testing.T) {
 		t.Run(typ, func(t *testing.T) {
 			for _, v := range values {
 				_, err := parser.Parse(&RawSchema{
-					Type:       typ,
+					Type:       StringArray{typ},
 					MultipleOf: strconv.AppendInt(nil, int64(v), 10),
 				}, testCtx())
 				require.Errorf(t, err, "%d", v)
 			}
 		})
 		_, err := parser.Parse(&RawSchema{
-			Type:       typ,
+			Type:       StringArray{typ},
 			MultipleOf: []byte("true"),
 		}, testCtx())
 		require.Error(t, err)
@@ -457,7 +473,7 @@ func TestSchema_MinMaxObjectProp(t *testing.T) {
 	parser := NewParser(Settings{})
 
 	out, err := parser.Parse(&RawSchema{
-		Type:      "object",
+		Type:      StringArray{"object"},
 		MinLength: &minLength,
 		MaxLength: &maxLength,
 	}, testCtx())

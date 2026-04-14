@@ -52,13 +52,13 @@ func TestComplicatedReference(t *testing.T) {
 						"201": {
 							Headers: map[string]*ogen.Header{
 								"ResponseHeader": {
-									Schema: &ogen.Schema{Type: "string"},
+									Schema: &ogen.Schema{Type: jsonschema.StringArray{"string"}},
 									Style:  "simple",
 								},
 							},
 							Content: map[string]ogen.Media{
 								"application/json": {
-									Schema: &ogen.Schema{Type: "string"},
+									Schema: &ogen.Schema{Type: jsonschema.StringArray{"string"}},
 								},
 							},
 						},
@@ -75,7 +75,7 @@ func TestComplicatedReference(t *testing.T) {
 							In:    "query",
 							Style: "form",
 							Schema: &ogen.Schema{
-								Type: "string",
+								Type: jsonschema.StringArray{"string"},
 							},
 						},
 					},
@@ -83,7 +83,7 @@ func TestComplicatedReference(t *testing.T) {
 						Content: map[string]ogen.Media{
 							"application/json": {
 								Schema: &ogen.Schema{
-									Type: "string",
+									Type: jsonschema.StringArray{"string"},
 								},
 							},
 						},
@@ -92,7 +92,7 @@ func TestComplicatedReference(t *testing.T) {
 						"200": {
 							Headers: map[string]*ogen.Header{
 								"ResponseHeader": {
-									Schema: &ogen.Schema{Type: "string"},
+									Schema: &ogen.Schema{Type: jsonschema.StringArray{"string"}},
 									Style:  "simple",
 								},
 							},
@@ -124,7 +124,7 @@ func TestComplicatedReference(t *testing.T) {
 	var (
 		responseHeader = &openapi.Header{
 			Name:   "ResponseHeader",
-			Schema: &jsonschema.Schema{Type: "string"},
+			Schema: &jsonschema.Schema{Type: jsonschema.String},
 			In:     openapi.LocationHeader,
 			Style:  openapi.HeaderStyleSimple,
 		}
@@ -140,7 +140,7 @@ func TestComplicatedReference(t *testing.T) {
 					Ref:  refKey{Loc: "/root.json", Ptr: "#/paths/~1post/post/parameters/0"},
 					Name: "param",
 					Schema: &jsonschema.Schema{
-						Type: "string",
+						Type: jsonschema.String,
 					},
 					In:      openapi.LocationQuery,
 					Style:   openapi.QueryStyleForm,
@@ -152,7 +152,7 @@ func TestComplicatedReference(t *testing.T) {
 				Content: map[string]*openapi.MediaType{
 					"application/json": {
 						Schema: &jsonschema.Schema{
-							Type: "string",
+							Type: jsonschema.String,
 						},
 						Examples: map[string]*openapi.Example{},
 						Encoding: map[string]*openapi.Encoding{},
@@ -171,7 +171,7 @@ func TestComplicatedReference(t *testing.T) {
 							"application/json": {
 								Schema: &jsonschema.Schema{
 									Ref:  refKey{Loc: "/root.json", Ptr: "#/paths/~1post/post/requestBody/content/application~1json/schema"},
-									Type: "string",
+									Type: jsonschema.String,
 								},
 								Examples: map[string]*openapi.Example{},
 								Encoding: map[string]*openapi.Encoding{},
@@ -179,12 +179,13 @@ func TestComplicatedReference(t *testing.T) {
 						},
 					},
 					201: {
+						Ref: refKey{},
 						Headers: map[string]*openapi.Header{
 							"ResponseHeader": responseHeader,
 						},
 						Content: map[string]*openapi.MediaType{
 							"application/json": {
-								Schema:   &jsonschema.Schema{Type: "string"},
+								Schema:   &jsonschema.Schema{Type: jsonschema.String},
 								Examples: map[string]*openapi.Example{},
 								Encoding: map[string]*openapi.Encoding{},
 							},
@@ -204,7 +205,7 @@ func TestComplicatedReference(t *testing.T) {
 				{
 					Name: "param",
 					Schema: &jsonschema.Schema{
-						Type: "string",
+						Type: jsonschema.String,
 					},
 					In:      openapi.LocationQuery,
 					Style:   openapi.QueryStyleForm,
@@ -215,7 +216,7 @@ func TestComplicatedReference(t *testing.T) {
 				Content: map[string]*openapi.MediaType{
 					"application/json": {
 						Schema: &jsonschema.Schema{
-							Type: "string",
+							Type: jsonschema.String,
 						},
 						Examples: map[string]*openapi.Example{},
 						Encoding: map[string]*openapi.Encoding{},
@@ -232,8 +233,7 @@ func TestComplicatedReference(t *testing.T) {
 						Content: map[string]*openapi.MediaType{
 							"application/json": {
 								Schema: &jsonschema.Schema{
-									Ref:  refKey{Loc: "/root.json", Ptr: "#/paths/~1post/post/requestBody/content/application~1json/schema"},
-									Type: "string",
+									Type: jsonschema.String,
 								},
 								Examples: map[string]*openapi.Example{},
 								Encoding: map[string]*openapi.Encoding{},
@@ -307,16 +307,16 @@ func TestParserNoPanic(t *testing.T) {
 			AnyOf: []*ogen.Schema{nil},
 		}),
 		schema(&ogen.Schema{
-			Type: "array",
+			Type: jsonschema.StringArray{"array"},
 		}),
 		schema(&ogen.Schema{
-			Type: "object",
+			Type: jsonschema.StringArray{"object"},
 			Properties: ogen.Properties{
 				{Name: "foo", Schema: nil},
 			},
 		}),
 		schema(&ogen.Schema{
-			Type: "object",
+			Type: jsonschema.StringArray{"object"},
 			PatternProperties: ogen.PatternProperties{
 				{Pattern: "foo", Schema: nil},
 			},
