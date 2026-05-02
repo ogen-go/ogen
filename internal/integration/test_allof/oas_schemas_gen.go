@@ -565,6 +565,11 @@ func (o *OptNilLocation) SetToNull() {
 	o.Value = v
 }
 
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilLocation) IsEmpty() bool {
+	return !o.Set && !o.Null
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o OptNilLocation) Get() (v Location, ok bool) {
 	if o.Null {

@@ -48988,6 +48988,11 @@ func (o *OptNilBool) SetToNull() {
 	o.Value = v
 }
 
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilBool) IsEmpty() bool {
+	return !o.Set && !o.Null
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o OptNilBool) Get() (v bool, ok bool) {
 	if o.Null {
@@ -49049,6 +49054,11 @@ func (o *OptNilCodeScanningAlertDismissedReason) SetToNull() {
 	o.Null = true
 	var v CodeScanningAlertDismissedReason
 	o.Value = v
+}
+
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilCodeScanningAlertDismissedReason) IsEmpty() bool {
+	return !o.Set && !o.Null
 }
 
 // Get returns value and boolean that denotes whether value was set.
@@ -49114,6 +49124,11 @@ func (o *OptNilCodeScanningAlertRuleSecuritySeverityLevel) SetToNull() {
 	o.Value = v
 }
 
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilCodeScanningAlertRuleSecuritySeverityLevel) IsEmpty() bool {
+	return !o.Set && !o.Null
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o OptNilCodeScanningAlertRuleSecuritySeverityLevel) Get() (v CodeScanningAlertRuleSecuritySeverityLevel, ok bool) {
 	if o.Null {
@@ -49175,6 +49190,11 @@ func (o *OptNilCodeScanningAlertRuleSeverity) SetToNull() {
 	o.Null = true
 	var v CodeScanningAlertRuleSeverity
 	o.Value = v
+}
+
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilCodeScanningAlertRuleSeverity) IsEmpty() bool {
+	return !o.Set && !o.Null
 }
 
 // Get returns value and boolean that denotes whether value was set.
@@ -49240,6 +49260,11 @@ func (o *OptNilCodeScanningAlertRuleSummarySeverity) SetToNull() {
 	o.Value = v
 }
 
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilCodeScanningAlertRuleSummarySeverity) IsEmpty() bool {
+	return !o.Set && !o.Null
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o OptNilCodeScanningAlertRuleSummarySeverity) Get() (v CodeScanningAlertRuleSummarySeverity, ok bool) {
 	if o.Null {
@@ -49301,6 +49326,11 @@ func (o *OptNilCodeScanningAnalysisToolGUID) SetToNull() {
 	o.Null = true
 	var v CodeScanningAnalysisToolGUID
 	o.Value = v
+}
+
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilCodeScanningAnalysisToolGUID) IsEmpty() bool {
+	return !o.Set && !o.Null
 }
 
 // Get returns value and boolean that denotes whether value was set.
@@ -49366,6 +49396,11 @@ func (o *OptNilCodeScanningAnalysisToolVersion) SetToNull() {
 	o.Value = v
 }
 
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilCodeScanningAnalysisToolVersion) IsEmpty() bool {
+	return !o.Set && !o.Null
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o OptNilCodeScanningAnalysisToolVersion) Get() (v CodeScanningAnalysisToolVersion, ok bool) {
 	if o.Null {
@@ -49427,6 +49462,11 @@ func (o *OptNilDateTime) SetToNull() {
 	o.Null = true
 	var v time.Time
 	o.Value = v
+}
+
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilDateTime) IsEmpty() bool {
+	return !o.Set && !o.Null
 }
 
 // Get returns value and boolean that denotes whether value was set.
@@ -49492,6 +49532,11 @@ func (o *OptNilFullRepositorySecurityAndAnalysis) SetToNull() {
 	o.Value = v
 }
 
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilFullRepositorySecurityAndAnalysis) IsEmpty() bool {
+	return !o.Set && !o.Null
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o OptNilFullRepositorySecurityAndAnalysis) Get() (v FullRepositorySecurityAndAnalysis, ok bool) {
 	if o.Null {
@@ -49553,6 +49598,11 @@ func (o *OptNilGistHistoryArray) SetToNull() {
 	o.Null = true
 	var v []GistHistory
 	o.Value = v
+}
+
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilGistHistoryArray) IsEmpty() bool {
+	return !o.Set && !o.Null
 }
 
 // Get returns value and boolean that denotes whether value was set.
@@ -49618,6 +49668,11 @@ func (o *OptNilGistSimpleForkOf) SetToNull() {
 	o.Value = v
 }
 
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilGistSimpleForkOf) IsEmpty() bool {
+	return !o.Set && !o.Null
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o OptNilGistSimpleForkOf) Get() (v GistSimpleForkOf, ok bool) {
 	if o.Null {
@@ -49679,6 +49734,11 @@ func (o *OptNilGistSimpleForksItemArray) SetToNull() {
 	o.Null = true
 	var v []GistSimpleForksItem
 	o.Value = v
+}
+
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilGistSimpleForksItemArray) IsEmpty() bool {
+	return !o.Set && !o.Null
 }
 
 // Get returns value and boolean that denotes whether value was set.
@@ -49744,6 +49804,11 @@ func (o *OptNilInt) SetToNull() {
 	o.Value = v
 }
 
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilInt) IsEmpty() bool {
+	return !o.Set && !o.Null
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o OptNilInt) Get() (v int, ok bool) {
 	if o.Null {
@@ -49805,6 +49870,11 @@ func (o *OptNilIssuesCreateReqMilestone) SetToNull() {
 	o.Null = true
 	var v IssuesCreateReqMilestone
 	o.Value = v
+}
+
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilIssuesCreateReqMilestone) IsEmpty() bool {
+	return !o.Set && !o.Null
 }
 
 // Get returns value and boolean that denotes whether value was set.
@@ -49870,6 +49940,11 @@ func (o *OptNilIssuesLockReq) SetToNull() {
 	o.Value = v
 }
 
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilIssuesLockReq) IsEmpty() bool {
+	return !o.Set && !o.Null
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o OptNilIssuesLockReq) Get() (v IssuesLockReq, ok bool) {
 	if o.Null {
@@ -49931,6 +50006,11 @@ func (o *OptNilIssuesUpdateReqMilestone) SetToNull() {
 	o.Null = true
 	var v IssuesUpdateReqMilestone
 	o.Value = v
+}
+
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilIssuesUpdateReqMilestone) IsEmpty() bool {
+	return !o.Set && !o.Null
 }
 
 // Get returns value and boolean that denotes whether value was set.
@@ -49996,6 +50076,11 @@ func (o *OptNilIssuesUpdateReqTitle) SetToNull() {
 	o.Value = v
 }
 
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilIssuesUpdateReqTitle) IsEmpty() bool {
+	return !o.Set && !o.Null
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o OptNilIssuesUpdateReqTitle) Get() (v IssuesUpdateReqTitle, ok bool) {
 	if o.Null {
@@ -50057,6 +50142,11 @@ func (o *OptNilMarketplacePurchaseMarketplacePendingChange) SetToNull() {
 	o.Null = true
 	var v MarketplacePurchaseMarketplacePendingChange
 	o.Value = v
+}
+
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilMarketplacePurchaseMarketplacePendingChange) IsEmpty() bool {
+	return !o.Set && !o.Null
 }
 
 // Get returns value and boolean that denotes whether value was set.
@@ -50122,6 +50212,11 @@ func (o *OptNilMigrationsUpdateImportReq) SetToNull() {
 	o.Value = v
 }
 
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilMigrationsUpdateImportReq) IsEmpty() bool {
+	return !o.Set && !o.Null
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o OptNilMigrationsUpdateImportReq) Get() (v MigrationsUpdateImportReq, ok bool) {
 	if o.Null {
@@ -50183,6 +50278,11 @@ func (o *OptNilMinimalRepositoryLicense) SetToNull() {
 	o.Null = true
 	var v MinimalRepositoryLicense
 	o.Value = v
+}
+
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilMinimalRepositoryLicense) IsEmpty() bool {
+	return !o.Set && !o.Null
 }
 
 // Get returns value and boolean that denotes whether value was set.
@@ -50248,6 +50348,11 @@ func (o *OptNilNullableIntegration) SetToNull() {
 	o.Value = v
 }
 
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilNullableIntegration) IsEmpty() bool {
+	return !o.Set && !o.Null
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o OptNilNullableIntegration) Get() (v NullableIntegration, ok bool) {
 	if o.Null {
@@ -50309,6 +50414,11 @@ func (o *OptNilNullableMinimalRepository) SetToNull() {
 	o.Null = true
 	var v NullableMinimalRepository
 	o.Value = v
+}
+
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilNullableMinimalRepository) IsEmpty() bool {
+	return !o.Set && !o.Null
 }
 
 // Get returns value and boolean that denotes whether value was set.
@@ -50374,6 +50484,11 @@ func (o *OptNilNullableMinimalRepositoryLicense) SetToNull() {
 	o.Value = v
 }
 
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilNullableMinimalRepositoryLicense) IsEmpty() bool {
+	return !o.Set && !o.Null
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o OptNilNullableMinimalRepositoryLicense) Get() (v NullableMinimalRepositoryLicense, ok bool) {
 	if o.Null {
@@ -50435,6 +50550,11 @@ func (o *OptNilNullableRepository) SetToNull() {
 	o.Null = true
 	var v NullableRepository
 	o.Value = v
+}
+
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilNullableRepository) IsEmpty() bool {
+	return !o.Set && !o.Null
 }
 
 // Get returns value and boolean that denotes whether value was set.
@@ -50500,6 +50620,11 @@ func (o *OptNilNullableRepositoryTemplateRepository) SetToNull() {
 	o.Value = v
 }
 
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilNullableRepositoryTemplateRepository) IsEmpty() bool {
+	return !o.Set && !o.Null
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o OptNilNullableRepositoryTemplateRepository) Get() (v NullableRepositoryTemplateRepository, ok bool) {
 	if o.Null {
@@ -50561,6 +50686,11 @@ func (o *OptNilNullableScopedInstallation) SetToNull() {
 	o.Null = true
 	var v NullableScopedInstallation
 	o.Value = v
+}
+
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilNullableScopedInstallation) IsEmpty() bool {
+	return !o.Set && !o.Null
 }
 
 // Get returns value and boolean that denotes whether value was set.
@@ -50626,6 +50756,11 @@ func (o *OptNilNullableSimpleUser) SetToNull() {
 	o.Value = v
 }
 
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilNullableSimpleUser) IsEmpty() bool {
+	return !o.Set && !o.Null
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o OptNilNullableSimpleUser) Get() (v NullableSimpleUser, ok bool) {
 	if o.Null {
@@ -50687,6 +50822,11 @@ func (o *OptNilNullableTeamSimple) SetToNull() {
 	o.Null = true
 	var v NullableTeamSimple
 	o.Value = v
+}
+
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilNullableTeamSimple) IsEmpty() bool {
+	return !o.Set && !o.Null
 }
 
 // Get returns value and boolean that denotes whether value was set.
@@ -50752,6 +50892,11 @@ func (o *OptNilPageProtectedDomainState) SetToNull() {
 	o.Value = v
 }
 
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilPageProtectedDomainState) IsEmpty() bool {
+	return !o.Set && !o.Null
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o OptNilPageProtectedDomainState) Get() (v PageProtectedDomainState, ok bool) {
 	if o.Null {
@@ -50813,6 +50958,11 @@ func (o *OptNilPagesHealthCheckAltDomain) SetToNull() {
 	o.Null = true
 	var v PagesHealthCheckAltDomain
 	o.Value = v
+}
+
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilPagesHealthCheckAltDomain) IsEmpty() bool {
+	return !o.Set && !o.Null
 }
 
 // Get returns value and boolean that denotes whether value was set.
@@ -50878,6 +51028,11 @@ func (o *OptNilProjectsAddCollaboratorReq) SetToNull() {
 	o.Value = v
 }
 
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilProjectsAddCollaboratorReq) IsEmpty() bool {
+	return !o.Set && !o.Null
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o OptNilProjectsAddCollaboratorReq) Get() (v ProjectsAddCollaboratorReq, ok bool) {
 	if o.Null {
@@ -50939,6 +51094,11 @@ func (o *OptNilPullRequestReviewCommentStartSide) SetToNull() {
 	o.Null = true
 	var v PullRequestReviewCommentStartSide
 	o.Value = v
+}
+
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilPullRequestReviewCommentStartSide) IsEmpty() bool {
+	return !o.Set && !o.Null
 }
 
 // Get returns value and boolean that denotes whether value was set.
@@ -51004,6 +51164,11 @@ func (o *OptNilPullsMergeReq) SetToNull() {
 	o.Value = v
 }
 
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilPullsMergeReq) IsEmpty() bool {
+	return !o.Set && !o.Null
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o OptNilPullsMergeReq) Get() (v PullsMergeReq, ok bool) {
 	if o.Null {
@@ -51065,6 +51230,11 @@ func (o *OptNilPullsUpdateBranchReq) SetToNull() {
 	o.Null = true
 	var v PullsUpdateBranchReq
 	o.Value = v
+}
+
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilPullsUpdateBranchReq) IsEmpty() bool {
+	return !o.Set && !o.Null
 }
 
 // Get returns value and boolean that denotes whether value was set.
@@ -51130,6 +51300,11 @@ func (o *OptNilReposCreateForkReq) SetToNull() {
 	o.Value = v
 }
 
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilReposCreateForkReq) IsEmpty() bool {
+	return !o.Set && !o.Null
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o OptNilReposCreateForkReq) Get() (v ReposCreateForkReq, ok bool) {
 	if o.Null {
@@ -51191,6 +51366,11 @@ func (o *OptNilReposCreateWebhookReq) SetToNull() {
 	o.Null = true
 	var v ReposCreateWebhookReq
 	o.Value = v
+}
+
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilReposCreateWebhookReq) IsEmpty() bool {
+	return !o.Set && !o.Null
 }
 
 // Get returns value and boolean that denotes whether value was set.
@@ -51256,6 +51436,11 @@ func (o *OptNilReposUpdateReqSecurityAndAnalysis) SetToNull() {
 	o.Value = v
 }
 
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilReposUpdateReqSecurityAndAnalysis) IsEmpty() bool {
+	return !o.Set && !o.Null
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o OptNilReposUpdateReqSecurityAndAnalysis) Get() (v ReposUpdateReqSecurityAndAnalysis, ok bool) {
 	if o.Null {
@@ -51317,6 +51502,11 @@ func (o *OptNilRepositoryTemplateRepository) SetToNull() {
 	o.Null = true
 	var v RepositoryTemplateRepository
 	o.Value = v
+}
+
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilRepositoryTemplateRepository) IsEmpty() bool {
+	return !o.Set && !o.Null
 }
 
 // Get returns value and boolean that denotes whether value was set.
@@ -51382,6 +51572,11 @@ func (o *OptNilReviewCommentStartSide) SetToNull() {
 	o.Value = v
 }
 
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilReviewCommentStartSide) IsEmpty() bool {
+	return !o.Set && !o.Null
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o OptNilReviewCommentStartSide) Get() (v ReviewCommentStartSide, ok bool) {
 	if o.Null {
@@ -51443,6 +51638,11 @@ func (o *OptNilSecretScanningAlertResolution) SetToNull() {
 	o.Null = true
 	var v SecretScanningAlertResolution
 	o.Value = v
+}
+
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilSecretScanningAlertResolution) IsEmpty() bool {
+	return !o.Set && !o.Null
 }
 
 // Get returns value and boolean that denotes whether value was set.
@@ -51508,6 +51708,11 @@ func (o *OptNilSimpleUserArray) SetToNull() {
 	o.Value = v
 }
 
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilSimpleUserArray) IsEmpty() bool {
+	return !o.Set && !o.Null
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o OptNilSimpleUserArray) Get() (v []SimpleUser, ok bool) {
 	if o.Null {
@@ -51569,6 +51774,11 @@ func (o *OptNilString) SetToNull() {
 	o.Null = true
 	var v string
 	o.Value = v
+}
+
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilString) IsEmpty() bool {
+	return !o.Set && !o.Null
 }
 
 // Get returns value and boolean that denotes whether value was set.
@@ -51634,6 +51844,11 @@ func (o *OptNilStringArray) SetToNull() {
 	o.Value = v
 }
 
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilStringArray) IsEmpty() bool {
+	return !o.Set && !o.Null
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o OptNilStringArray) Get() (v []string, ok bool) {
 	if o.Null {
@@ -51695,6 +51910,11 @@ func (o *OptNilTeamArray) SetToNull() {
 	o.Null = true
 	var v []Team
 	o.Value = v
+}
+
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilTeamArray) IsEmpty() bool {
+	return !o.Set && !o.Null
 }
 
 // Get returns value and boolean that denotes whether value was set.
@@ -51760,6 +51980,11 @@ func (o *OptNilTeamSimpleArray) SetToNull() {
 	o.Value = v
 }
 
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilTeamSimpleArray) IsEmpty() bool {
+	return !o.Set && !o.Null
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o OptNilTeamSimpleArray) Get() (v []TeamSimple, ok bool) {
 	if o.Null {
@@ -51821,6 +52046,11 @@ func (o *OptNilTeamsAddOrUpdateProjectPermissionsInOrgReq) SetToNull() {
 	o.Null = true
 	var v TeamsAddOrUpdateProjectPermissionsInOrgReq
 	o.Value = v
+}
+
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilTeamsAddOrUpdateProjectPermissionsInOrgReq) IsEmpty() bool {
+	return !o.Set && !o.Null
 }
 
 // Get returns value and boolean that denotes whether value was set.
@@ -51886,6 +52116,11 @@ func (o *OptNilTopicSearchResultItemAliasesItemArray) SetToNull() {
 	o.Value = v
 }
 
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilTopicSearchResultItemAliasesItemArray) IsEmpty() bool {
+	return !o.Set && !o.Null
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o OptNilTopicSearchResultItemAliasesItemArray) Get() (v []TopicSearchResultItemAliasesItem, ok bool) {
 	if o.Null {
@@ -51949,6 +52184,11 @@ func (o *OptNilTopicSearchResultItemRelatedItemArray) SetToNull() {
 	o.Value = v
 }
 
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilTopicSearchResultItemRelatedItemArray) IsEmpty() bool {
+	return !o.Set && !o.Null
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o OptNilTopicSearchResultItemRelatedItemArray) Get() (v []TopicSearchResultItemRelatedItem, ok bool) {
 	if o.Null {
@@ -52010,6 +52250,11 @@ func (o *OptNilURI) SetToNull() {
 	o.Null = true
 	var v url.URL
 	o.Value = v
+}
+
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilURI) IsEmpty() bool {
+	return !o.Set && !o.Null
 }
 
 // Get returns value and boolean that denotes whether value was set.
