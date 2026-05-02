@@ -68,6 +68,13 @@ func (o *{{ $.Name }}) SetToNull() {
 }
 {{ end }}
 
+{{- if and $v.Nullable $v.Optional }}
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o {{ $.ReadOnlyReceiver }}) IsEmpty() bool { 
+    return !o.Set && !o.Null 
+}
+{{- end }}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o {{ $.ReadOnlyReceiver }}) Get() (v {{ $g.Go }}, ok bool) {
 	{{- if $v.Nullable }}
