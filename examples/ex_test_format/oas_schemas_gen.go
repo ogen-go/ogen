@@ -2980,6 +2980,11 @@ func (o *OptNilBool) SetToNull() {
 	o.Value = v
 }
 
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilBool) IsEmpty() bool {
+	return !o.Set && !o.Null
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o OptNilBool) Get() (v bool, ok bool) {
 	if o.Null {
@@ -3041,6 +3046,11 @@ func (o *OptNilByte) SetToNull() {
 	o.Null = true
 	var v []byte
 	o.Value = v
+}
+
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilByte) IsEmpty() bool {
+	return !o.Set && !o.Null
 }
 
 // Get returns value and boolean that denotes whether value was set.
@@ -3106,6 +3116,11 @@ func (o *OptNilDate) SetToNull() {
 	o.Value = v
 }
 
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilDate) IsEmpty() bool {
+	return !o.Set && !o.Null
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o OptNilDate) Get() (v time.Time, ok bool) {
 	if o.Null {
@@ -3167,6 +3182,11 @@ func (o *OptNilDateTime) SetToNull() {
 	o.Null = true
 	var v time.Time
 	o.Value = v
+}
+
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilDateTime) IsEmpty() bool {
+	return !o.Set && !o.Null
 }
 
 // Get returns value and boolean that denotes whether value was set.
@@ -3232,6 +3252,11 @@ func (o *OptNilDecimal) SetToNull() {
 	o.Value = v
 }
 
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilDecimal) IsEmpty() bool {
+	return !o.Set && !o.Null
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o OptNilDecimal) Get() (v decimal.Decimal, ok bool) {
 	if o.Null {
@@ -3293,6 +3318,11 @@ func (o *OptNilDuration) SetToNull() {
 	o.Null = true
 	var v time.Duration
 	o.Value = v
+}
+
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilDuration) IsEmpty() bool {
+	return !o.Set && !o.Null
 }
 
 // Get returns value and boolean that denotes whether value was set.
@@ -3358,6 +3388,11 @@ func (o *OptNilFloat32) SetToNull() {
 	o.Value = v
 }
 
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilFloat32) IsEmpty() bool {
+	return !o.Set && !o.Null
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o OptNilFloat32) Get() (v float32, ok bool) {
 	if o.Null {
@@ -3419,6 +3454,11 @@ func (o *OptNilFloat64) SetToNull() {
 	o.Null = true
 	var v float64
 	o.Value = v
+}
+
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilFloat64) IsEmpty() bool {
+	return !o.Set && !o.Null
 }
 
 // Get returns value and boolean that denotes whether value was set.
@@ -3484,6 +3524,11 @@ func (o *OptNilHTTPDate) SetToNull() {
 	o.Value = v
 }
 
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilHTTPDate) IsEmpty() bool {
+	return !o.Set && !o.Null
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o OptNilHTTPDate) Get() (v time.Time, ok bool) {
 	if o.Null {
@@ -3545,6 +3590,11 @@ func (o *OptNilHardwareAddr) SetToNull() {
 	o.Null = true
 	var v net.HardwareAddr
 	o.Value = v
+}
+
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilHardwareAddr) IsEmpty() bool {
+	return !o.Set && !o.Null
 }
 
 // Get returns value and boolean that denotes whether value was set.
@@ -3610,6 +3660,11 @@ func (o *OptNilIP) SetToNull() {
 	o.Value = v
 }
 
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilIP) IsEmpty() bool {
+	return !o.Set && !o.Null
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o OptNilIP) Get() (v netip.Addr, ok bool) {
 	if o.Null {
@@ -3671,6 +3726,11 @@ func (o *OptNilIPv4) SetToNull() {
 	o.Null = true
 	var v netip.Addr
 	o.Value = v
+}
+
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilIPv4) IsEmpty() bool {
+	return !o.Set && !o.Null
 }
 
 // Get returns value and boolean that denotes whether value was set.
@@ -3736,6 +3796,11 @@ func (o *OptNilIPv6) SetToNull() {
 	o.Value = v
 }
 
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilIPv6) IsEmpty() bool {
+	return !o.Set && !o.Null
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o OptNilIPv6) Get() (v netip.Addr, ok bool) {
 	if o.Null {
@@ -3797,6 +3862,11 @@ func (o *OptNilInt) SetToNull() {
 	o.Null = true
 	var v int
 	o.Value = v
+}
+
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilInt) IsEmpty() bool {
+	return !o.Set && !o.Null
 }
 
 // Get returns value and boolean that denotes whether value was set.
@@ -3862,6 +3932,11 @@ func (o *OptNilInt16) SetToNull() {
 	o.Value = v
 }
 
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilInt16) IsEmpty() bool {
+	return !o.Set && !o.Null
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o OptNilInt16) Get() (v int16, ok bool) {
 	if o.Null {
@@ -3923,6 +3998,11 @@ func (o *OptNilInt32) SetToNull() {
 	o.Null = true
 	var v int32
 	o.Value = v
+}
+
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilInt32) IsEmpty() bool {
+	return !o.Set && !o.Null
 }
 
 // Get returns value and boolean that denotes whether value was set.
@@ -3988,6 +4068,11 @@ func (o *OptNilInt64) SetToNull() {
 	o.Value = v
 }
 
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilInt64) IsEmpty() bool {
+	return !o.Set && !o.Null
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o OptNilInt64) Get() (v int64, ok bool) {
 	if o.Null {
@@ -4049,6 +4134,11 @@ func (o *OptNilInt8) SetToNull() {
 	o.Null = true
 	var v int8
 	o.Value = v
+}
+
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilInt8) IsEmpty() bool {
+	return !o.Set && !o.Null
 }
 
 // Get returns value and boolean that denotes whether value was set.
@@ -4114,6 +4204,11 @@ func (o *OptNilString) SetToNull() {
 	o.Value = v
 }
 
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilString) IsEmpty() bool {
+	return !o.Set && !o.Null
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o OptNilString) Get() (v string, ok bool) {
 	if o.Null {
@@ -4175,6 +4270,11 @@ func (o *OptNilStringDecimal) SetToNull() {
 	o.Null = true
 	var v decimal.Decimal
 	o.Value = v
+}
+
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilStringDecimal) IsEmpty() bool {
+	return !o.Set && !o.Null
 }
 
 // Get returns value and boolean that denotes whether value was set.
@@ -4240,6 +4340,11 @@ func (o *OptNilStringFloat32) SetToNull() {
 	o.Value = v
 }
 
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilStringFloat32) IsEmpty() bool {
+	return !o.Set && !o.Null
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o OptNilStringFloat32) Get() (v float32, ok bool) {
 	if o.Null {
@@ -4301,6 +4406,11 @@ func (o *OptNilStringFloat64) SetToNull() {
 	o.Null = true
 	var v float64
 	o.Value = v
+}
+
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilStringFloat64) IsEmpty() bool {
+	return !o.Set && !o.Null
 }
 
 // Get returns value and boolean that denotes whether value was set.
@@ -4366,6 +4476,11 @@ func (o *OptNilStringInt) SetToNull() {
 	o.Value = v
 }
 
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilStringInt) IsEmpty() bool {
+	return !o.Set && !o.Null
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o OptNilStringInt) Get() (v int, ok bool) {
 	if o.Null {
@@ -4427,6 +4542,11 @@ func (o *OptNilStringInt16) SetToNull() {
 	o.Null = true
 	var v int16
 	o.Value = v
+}
+
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilStringInt16) IsEmpty() bool {
+	return !o.Set && !o.Null
 }
 
 // Get returns value and boolean that denotes whether value was set.
@@ -4492,6 +4612,11 @@ func (o *OptNilStringInt32) SetToNull() {
 	o.Value = v
 }
 
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilStringInt32) IsEmpty() bool {
+	return !o.Set && !o.Null
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o OptNilStringInt32) Get() (v int32, ok bool) {
 	if o.Null {
@@ -4553,6 +4678,11 @@ func (o *OptNilStringInt64) SetToNull() {
 	o.Null = true
 	var v int64
 	o.Value = v
+}
+
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilStringInt64) IsEmpty() bool {
+	return !o.Set && !o.Null
 }
 
 // Get returns value and boolean that denotes whether value was set.
@@ -4618,6 +4748,11 @@ func (o *OptNilStringInt8) SetToNull() {
 	o.Value = v
 }
 
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilStringInt8) IsEmpty() bool {
+	return !o.Set && !o.Null
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o OptNilStringInt8) Get() (v int8, ok bool) {
 	if o.Null {
@@ -4679,6 +4814,11 @@ func (o *OptNilStringUint) SetToNull() {
 	o.Null = true
 	var v uint
 	o.Value = v
+}
+
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilStringUint) IsEmpty() bool {
+	return !o.Set && !o.Null
 }
 
 // Get returns value and boolean that denotes whether value was set.
@@ -4744,6 +4884,11 @@ func (o *OptNilStringUint16) SetToNull() {
 	o.Value = v
 }
 
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilStringUint16) IsEmpty() bool {
+	return !o.Set && !o.Null
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o OptNilStringUint16) Get() (v uint16, ok bool) {
 	if o.Null {
@@ -4805,6 +4950,11 @@ func (o *OptNilStringUint32) SetToNull() {
 	o.Null = true
 	var v uint32
 	o.Value = v
+}
+
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilStringUint32) IsEmpty() bool {
+	return !o.Set && !o.Null
 }
 
 // Get returns value and boolean that denotes whether value was set.
@@ -4870,6 +5020,11 @@ func (o *OptNilStringUint64) SetToNull() {
 	o.Value = v
 }
 
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilStringUint64) IsEmpty() bool {
+	return !o.Set && !o.Null
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o OptNilStringUint64) Get() (v uint64, ok bool) {
 	if o.Null {
@@ -4931,6 +5086,11 @@ func (o *OptNilStringUint8) SetToNull() {
 	o.Null = true
 	var v uint8
 	o.Value = v
+}
+
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilStringUint8) IsEmpty() bool {
+	return !o.Set && !o.Null
 }
 
 // Get returns value and boolean that denotes whether value was set.
@@ -4996,6 +5156,11 @@ func (o *OptNilStringUnixMicro) SetToNull() {
 	o.Value = v
 }
 
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilStringUnixMicro) IsEmpty() bool {
+	return !o.Set && !o.Null
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o OptNilStringUnixMicro) Get() (v time.Time, ok bool) {
 	if o.Null {
@@ -5057,6 +5222,11 @@ func (o *OptNilStringUnixMilli) SetToNull() {
 	o.Null = true
 	var v time.Time
 	o.Value = v
+}
+
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilStringUnixMilli) IsEmpty() bool {
+	return !o.Set && !o.Null
 }
 
 // Get returns value and boolean that denotes whether value was set.
@@ -5122,6 +5292,11 @@ func (o *OptNilStringUnixNano) SetToNull() {
 	o.Value = v
 }
 
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilStringUnixNano) IsEmpty() bool {
+	return !o.Set && !o.Null
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o OptNilStringUnixNano) Get() (v time.Time, ok bool) {
 	if o.Null {
@@ -5183,6 +5358,11 @@ func (o *OptNilStringUnixSeconds) SetToNull() {
 	o.Null = true
 	var v time.Time
 	o.Value = v
+}
+
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilStringUnixSeconds) IsEmpty() bool {
+	return !o.Set && !o.Null
 }
 
 // Get returns value and boolean that denotes whether value was set.
@@ -5248,6 +5428,11 @@ func (o *OptNilTime) SetToNull() {
 	o.Value = v
 }
 
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilTime) IsEmpty() bool {
+	return !o.Set && !o.Null
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o OptNilTime) Get() (v time.Time, ok bool) {
 	if o.Null {
@@ -5309,6 +5494,11 @@ func (o *OptNilURI) SetToNull() {
 	o.Null = true
 	var v url.URL
 	o.Value = v
+}
+
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilURI) IsEmpty() bool {
+	return !o.Set && !o.Null
 }
 
 // Get returns value and boolean that denotes whether value was set.
@@ -5374,6 +5564,11 @@ func (o *OptNilUUID) SetToNull() {
 	o.Value = v
 }
 
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilUUID) IsEmpty() bool {
+	return !o.Set && !o.Null
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o OptNilUUID) Get() (v uuid.UUID, ok bool) {
 	if o.Null {
@@ -5435,6 +5630,11 @@ func (o *OptNilUint) SetToNull() {
 	o.Null = true
 	var v uint
 	o.Value = v
+}
+
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilUint) IsEmpty() bool {
+	return !o.Set && !o.Null
 }
 
 // Get returns value and boolean that denotes whether value was set.
@@ -5500,6 +5700,11 @@ func (o *OptNilUint16) SetToNull() {
 	o.Value = v
 }
 
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilUint16) IsEmpty() bool {
+	return !o.Set && !o.Null
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o OptNilUint16) Get() (v uint16, ok bool) {
 	if o.Null {
@@ -5561,6 +5766,11 @@ func (o *OptNilUint32) SetToNull() {
 	o.Null = true
 	var v uint32
 	o.Value = v
+}
+
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilUint32) IsEmpty() bool {
+	return !o.Set && !o.Null
 }
 
 // Get returns value and boolean that denotes whether value was set.
@@ -5626,6 +5836,11 @@ func (o *OptNilUint64) SetToNull() {
 	o.Value = v
 }
 
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilUint64) IsEmpty() bool {
+	return !o.Set && !o.Null
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o OptNilUint64) Get() (v uint64, ok bool) {
 	if o.Null {
@@ -5687,6 +5902,11 @@ func (o *OptNilUint8) SetToNull() {
 	o.Null = true
 	var v uint8
 	o.Value = v
+}
+
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilUint8) IsEmpty() bool {
+	return !o.Set && !o.Null
 }
 
 // Get returns value and boolean that denotes whether value was set.
@@ -5752,6 +5972,11 @@ func (o *OptNilUnixMicro) SetToNull() {
 	o.Value = v
 }
 
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilUnixMicro) IsEmpty() bool {
+	return !o.Set && !o.Null
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o OptNilUnixMicro) Get() (v time.Time, ok bool) {
 	if o.Null {
@@ -5813,6 +6038,11 @@ func (o *OptNilUnixMilli) SetToNull() {
 	o.Null = true
 	var v time.Time
 	o.Value = v
+}
+
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilUnixMilli) IsEmpty() bool {
+	return !o.Set && !o.Null
 }
 
 // Get returns value and boolean that denotes whether value was set.
@@ -5878,6 +6108,11 @@ func (o *OptNilUnixNano) SetToNull() {
 	o.Value = v
 }
 
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilUnixNano) IsEmpty() bool {
+	return !o.Set && !o.Null
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o OptNilUnixNano) Get() (v time.Time, ok bool) {
 	if o.Null {
@@ -5939,6 +6174,11 @@ func (o *OptNilUnixSeconds) SetToNull() {
 	o.Null = true
 	var v time.Time
 	o.Value = v
+}
+
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilUnixSeconds) IsEmpty() bool {
+	return !o.Set && !o.Null
 }
 
 // Get returns value and boolean that denotes whether value was set.

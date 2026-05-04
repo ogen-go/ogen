@@ -13,6 +13,7 @@ type cookieParamEncoder struct {
 }
 
 func (e *cookieParamEncoder) setCookie(val string) {
+	//#nosec G124
 	e.req.AddCookie(&http.Cookie{
 		Name:  e.paramName,
 		Value: escapeCookie(val),

@@ -137,6 +137,7 @@ Multiple convenience helper methods and functions are generated, some of them:
 func (OptNilString) Get() (v string, ok bool)
 func (OptNilString) IsNull() bool
 func (OptNilString) IsSet() bool
+func (OptNilString) IsEmpty() bool
 
 func NewOptNilString(v string) OptNilString
 ```

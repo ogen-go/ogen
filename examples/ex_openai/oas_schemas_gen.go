@@ -4589,6 +4589,11 @@ func (o *OptNilAnyArray) SetToNull() {
 	o.Value = v
 }
 
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilAnyArray) IsEmpty() bool {
+	return !o.Set && !o.Null
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o OptNilAnyArray) Get() (v []jx.Raw, ok bool) {
 	if o.Null {
@@ -4650,6 +4655,11 @@ func (o *OptNilBool) SetToNull() {
 	o.Null = true
 	var v bool
 	o.Value = v
+}
+
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilBool) IsEmpty() bool {
+	return !o.Set && !o.Null
 }
 
 // Get returns value and boolean that denotes whether value was set.
@@ -4715,6 +4725,11 @@ func (o *OptNilCreateAnswerRequestStop) SetToNull() {
 	o.Value = v
 }
 
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilCreateAnswerRequestStop) IsEmpty() bool {
+	return !o.Set && !o.Null
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o OptNilCreateAnswerRequestStop) Get() (v CreateAnswerRequestStop, ok bool) {
 	if o.Null {
@@ -4776,6 +4791,11 @@ func (o *OptNilCreateChatCompletionRequestStop) SetToNull() {
 	o.Null = true
 	var v CreateChatCompletionRequestStop
 	o.Value = v
+}
+
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilCreateChatCompletionRequestStop) IsEmpty() bool {
+	return !o.Set && !o.Null
 }
 
 // Get returns value and boolean that denotes whether value was set.
@@ -4841,6 +4861,11 @@ func (o *OptNilCreateCompletionRequestPrompt) SetToNull() {
 	o.Value = v
 }
 
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilCreateCompletionRequestPrompt) IsEmpty() bool {
+	return !o.Set && !o.Null
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o OptNilCreateCompletionRequestPrompt) Get() (v CreateCompletionRequestPrompt, ok bool) {
 	if o.Null {
@@ -4902,6 +4927,11 @@ func (o *OptNilCreateCompletionRequestStop) SetToNull() {
 	o.Null = true
 	var v CreateCompletionRequestStop
 	o.Value = v
+}
+
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilCreateCompletionRequestStop) IsEmpty() bool {
+	return !o.Set && !o.Null
 }
 
 // Get returns value and boolean that denotes whether value was set.
@@ -4967,6 +4997,11 @@ func (o *OptNilCreateCompletionResponseChoicesItemLogprobs) SetToNull() {
 	o.Value = v
 }
 
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilCreateCompletionResponseChoicesItemLogprobs) IsEmpty() bool {
+	return !o.Set && !o.Null
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o OptNilCreateCompletionResponseChoicesItemLogprobs) Get() (v CreateCompletionResponseChoicesItemLogprobs, ok bool) {
 	if o.Null {
@@ -5028,6 +5063,11 @@ func (o *OptNilCreateEditResponseChoicesItemLogprobs) SetToNull() {
 	o.Null = true
 	var v CreateEditResponseChoicesItemLogprobs
 	o.Value = v
+}
+
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilCreateEditResponseChoicesItemLogprobs) IsEmpty() bool {
+	return !o.Set && !o.Null
 }
 
 // Get returns value and boolean that denotes whether value was set.
@@ -5093,6 +5133,11 @@ func (o *OptNilCreateImageEditRequestMultipartResponseFormat) SetToNull() {
 	o.Value = v
 }
 
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilCreateImageEditRequestMultipartResponseFormat) IsEmpty() bool {
+	return !o.Set && !o.Null
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o OptNilCreateImageEditRequestMultipartResponseFormat) Get() (v CreateImageEditRequestMultipartResponseFormat, ok bool) {
 	if o.Null {
@@ -5154,6 +5199,11 @@ func (o *OptNilCreateImageEditRequestMultipartSize) SetToNull() {
 	o.Null = true
 	var v CreateImageEditRequestMultipartSize
 	o.Value = v
+}
+
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilCreateImageEditRequestMultipartSize) IsEmpty() bool {
+	return !o.Set && !o.Null
 }
 
 // Get returns value and boolean that denotes whether value was set.
@@ -5219,6 +5269,11 @@ func (o *OptNilCreateImageRequestResponseFormat) SetToNull() {
 	o.Value = v
 }
 
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilCreateImageRequestResponseFormat) IsEmpty() bool {
+	return !o.Set && !o.Null
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o OptNilCreateImageRequestResponseFormat) Get() (v CreateImageRequestResponseFormat, ok bool) {
 	if o.Null {
@@ -5280,6 +5335,11 @@ func (o *OptNilCreateImageRequestSize) SetToNull() {
 	o.Null = true
 	var v CreateImageRequestSize
 	o.Value = v
+}
+
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilCreateImageRequestSize) IsEmpty() bool {
+	return !o.Set && !o.Null
 }
 
 // Get returns value and boolean that denotes whether value was set.
@@ -5345,6 +5405,11 @@ func (o *OptNilCreateImageVariationRequestMultipartResponseFormat) SetToNull() {
 	o.Value = v
 }
 
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilCreateImageVariationRequestMultipartResponseFormat) IsEmpty() bool {
+	return !o.Set && !o.Null
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o OptNilCreateImageVariationRequestMultipartResponseFormat) Get() (v CreateImageVariationRequestMultipartResponseFormat, ok bool) {
 	if o.Null {
@@ -5406,6 +5471,11 @@ func (o *OptNilCreateImageVariationRequestMultipartSize) SetToNull() {
 	o.Null = true
 	var v CreateImageVariationRequestMultipartSize
 	o.Value = v
+}
+
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilCreateImageVariationRequestMultipartSize) IsEmpty() bool {
+	return !o.Set && !o.Null
 }
 
 // Get returns value and boolean that denotes whether value was set.
@@ -5471,6 +5541,11 @@ func (o *OptNilFloat64) SetToNull() {
 	o.Value = v
 }
 
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilFloat64) IsEmpty() bool {
+	return !o.Set && !o.Null
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o OptNilFloat64) Get() (v float64, ok bool) {
 	if o.Null {
@@ -5532,6 +5607,11 @@ func (o *OptNilFloat64Array) SetToNull() {
 	o.Null = true
 	var v []float64
 	o.Value = v
+}
+
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilFloat64Array) IsEmpty() bool {
+	return !o.Set && !o.Null
 }
 
 // Get returns value and boolean that denotes whether value was set.
@@ -5597,6 +5677,11 @@ func (o *OptNilInt) SetToNull() {
 	o.Value = v
 }
 
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilInt) IsEmpty() bool {
+	return !o.Set && !o.Null
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o OptNilInt) Get() (v int, ok bool) {
 	if o.Null {
@@ -5658,6 +5743,11 @@ func (o *OptNilString) SetToNull() {
 	o.Null = true
 	var v string
 	o.Value = v
+}
+
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilString) IsEmpty() bool {
+	return !o.Set && !o.Null
 }
 
 // Get returns value and boolean that denotes whether value was set.
@@ -5723,6 +5813,11 @@ func (o *OptNilStringArray) SetToNull() {
 	o.Value = v
 }
 
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilStringArray) IsEmpty() bool {
+	return !o.Set && !o.Null
+}
+
 // Get returns value and boolean that denotes whether value was set.
 func (o OptNilStringArray) Get() (v []string, ok bool) {
 	if o.Null {
@@ -5784,6 +5879,11 @@ func (o *OptNilStringArrayArray) SetToNull() {
 	o.Null = true
 	var v [][]string
 	o.Value = v
+}
+
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilStringArrayArray) IsEmpty() bool {
+	return !o.Set && !o.Null
 }
 
 // Get returns value and boolean that denotes whether value was set.
