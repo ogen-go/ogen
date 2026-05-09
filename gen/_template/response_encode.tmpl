@@ -138,19 +138,15 @@ w.Header().Set("Access-Control-Expose-Headers", {{ $exposeHeaders }})
 	}
 	w.WriteHeader(code)
 	{{- if $.OpenTelemetry }}
-	if st := http.StatusText(code); code >= http.StatusBadRequest {
-		span.SetStatus(codes.Error, st)
-	} else {
-		span.SetStatus(codes.Ok, st)
+	if code >= http.StatusInternalServerError {
+		span.SetStatus(codes.Error, http.StatusText(code))
 	}
 	{{- end }}
 {{- else }}
 	w.WriteHeader({{ $.StatusCode }})
 	{{- if $.OpenTelemetry }}
-		{{- if ge .StatusCode 400 }}
+		{{- if ge .StatusCode 500 }}
 			span.SetStatus(codes.Error, http.StatusText({{ $.StatusCode }}))
-		{{- else }}
-			span.SetStatus(codes.Ok, http.StatusText({{ $.StatusCode }}))
 		{{- end }}
 	{{- end }}
 {{- end }}
