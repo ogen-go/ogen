@@ -7,41 +7,35 @@ import (
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
-	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/trace"
 )
 
 func encodeOnlyFormResponse(response *OnlyFormOK, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	return nil
 }
 
 func encodeOnlyMultipartFileResponse(response *OnlyMultipartFileOK, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	return nil
 }
 
 func encodeOnlyMultipartFormResponse(response *OnlyMultipartFormOK, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	return nil
 }
 
 func encodeTestFormURLEncodedResponse(response *TestFormURLEncodedOK, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	return nil
 }
 
 func encodeTestMultipartResponse(response *TestMultipartOK, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	return nil
 }
@@ -49,7 +43,6 @@ func encodeTestMultipartResponse(response *TestMultipartOK, w http.ResponseWrite
 func encodeTestMultipartUploadResponse(response *TestMultipartUploadOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -62,21 +55,18 @@ func encodeTestMultipartUploadResponse(response *TestMultipartUploadOK, w http.R
 
 func encodeTestReuseFormOptionalSchemaResponse(response *TestReuseFormOptionalSchemaOK, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	return nil
 }
 
 func encodeTestReuseFormSchemaResponse(response *TestReuseFormSchemaOK, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	return nil
 }
 
 func encodeTestShareFormSchemaResponse(response *TestShareFormSchemaOK, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	return nil
 }

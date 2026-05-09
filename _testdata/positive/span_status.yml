@@ -1,0 +1,78 @@
+openapi: 3.0.3
+info:
+  title: Span Status Test API
+  version: 0.1.0
+paths:
+  /span-status:
+    get:
+      operationId: spanStatusBody
+      responses:
+        "200":
+          description: Successful response with a fixed status code.
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - message
+                properties:
+                  message:
+                    type: string
+                    minLength: 1
+        "404":
+          description: Fixed client error without a response body.
+        "500":
+          description: Fixed server error without a response body.
+        default:
+          description: Dynamic status code with a JSON response body.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    put:
+      operationId: spanStatusNoBody
+      responses:
+        default:
+          description: Dynamic status code without a response body.
+    post:
+      operationId: spanStatusRequestChecks
+      parameters:
+        - name: id
+          in: query
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - message
+              properties:
+                message:
+                  type: string
+      security:
+        - api_key: []
+      responses:
+        "200":
+          description: Successful response.
+components:
+  securitySchemes:
+    api_key:
+      type: apiKey
+      name: X-API-Key
+      in: header
+  schemas:
+    Error:
+      type: object
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: integer
+          format: int64
+        message:
+          type: string

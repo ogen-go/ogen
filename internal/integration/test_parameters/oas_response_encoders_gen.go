@@ -7,13 +7,11 @@ import (
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
-	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/trace"
 )
 
 func encodeComplicatedParameterNameGetResponse(response *ComplicatedParameterNameGetOK, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	return nil
 }
@@ -21,7 +19,6 @@ func encodeComplicatedParameterNameGetResponse(response *ComplicatedParameterNam
 func encodeContentParametersResponse(response *ContentParameters, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -35,7 +32,6 @@ func encodeContentParametersResponse(response *ContentParameters, w http.Respons
 func encodeCookieParameterResponse(response *Value, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -49,7 +45,6 @@ func encodeCookieParameterResponse(response *Value, w http.ResponseWriter, span 
 func encodeHeaderParameterResponse(response *Value, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -63,7 +58,6 @@ func encodeHeaderParameterResponse(response *Value, w http.ResponseWriter, span 
 func encodeObjectCookieParameterResponse(response *OneLevelObject, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -77,7 +71,6 @@ func encodeObjectCookieParameterResponse(response *OneLevelObject, w http.Respon
 func encodeObjectQueryParameterResponse(response *ObjectQueryParameterOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -91,7 +84,6 @@ func encodeObjectQueryParameterResponse(response *ObjectQueryParameterOK, w http
 func encodeOptionalArrayParameterResponse(response string, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.Str(response)
@@ -105,7 +97,6 @@ func encodeOptionalArrayParameterResponse(response string, w http.ResponseWriter
 func encodeOptionalParametersResponse(response *OptionalQueryParametersResponse, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -119,7 +110,6 @@ func encodeOptionalParametersResponse(response *OptionalQueryParametersResponse,
 func encodePathParameterResponse(response *Value, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -132,14 +122,12 @@ func encodePathParameterResponse(response *Value, w http.ResponseWriter, span tr
 
 func encodeSameNameResponse(response *SameNameOK, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	return nil
 }
 
 func encodeSimilarNamesResponse(response *SimilarNamesOK, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	return nil
 }
