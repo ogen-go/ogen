@@ -7,14 +7,12 @@ import (
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
-	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/trace"
 )
 
 func encodeAPICaptcha2chcaptchaIDGetResponse(response *Captcha, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -29,13 +27,11 @@ func encodeAPICaptcha2chcaptchaShowGetResponse(response APICaptcha2chcaptchaShow
 	switch response := response.(type) {
 	case *APICaptcha2chcaptchaShowGetOK:
 		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		return nil
 
 	case *APICaptcha2chcaptchaShowGetNotFound:
 		w.WriteHeader(404)
-		span.SetStatus(codes.Error, http.StatusText(404))
 
 		return nil
 
@@ -47,7 +43,6 @@ func encodeAPICaptcha2chcaptchaShowGetResponse(response APICaptcha2chcaptchaShow
 func encodeAPICaptchaAppIDPublicKeyGetResponse(response *Captcha, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -61,7 +56,6 @@ func encodeAPICaptchaAppIDPublicKeyGetResponse(response *Captcha, w http.Respons
 func encodeAPICaptchaInvisibleRecaptchaIDGetResponse(response *Captcha, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -74,7 +68,6 @@ func encodeAPICaptchaInvisibleRecaptchaIDGetResponse(response *Captcha, w http.R
 
 func encodeAPICaptchaInvisibleRecaptchaMobileGetResponse(response *APICaptchaInvisibleRecaptchaMobileGetOK, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	return nil
 }
@@ -82,7 +75,6 @@ func encodeAPICaptchaInvisibleRecaptchaMobileGetResponse(response *APICaptchaInv
 func encodeAPICaptchaRecaptchaIDGetResponse(response *Captcha, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -95,7 +87,6 @@ func encodeAPICaptchaRecaptchaIDGetResponse(response *Captcha, w http.ResponseWr
 
 func encodeAPICaptchaRecaptchaMobileGetResponse(response *APICaptchaRecaptchaMobileGetOK, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	return nil
 }
@@ -103,7 +94,6 @@ func encodeAPICaptchaRecaptchaMobileGetResponse(response *APICaptchaRecaptchaMob
 func encodeAPIDislikeGetResponse(response *Like, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -117,7 +107,6 @@ func encodeAPIDislikeGetResponse(response *Like, w http.ResponseWriter, span tra
 func encodeAPILikeGetResponse(response *Like, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -131,7 +120,6 @@ func encodeAPILikeGetResponse(response *Like, w http.ResponseWriter, span trace.
 func encodeAPIMobileV2AfterBoardThreadNumGetResponse(response *MobileThreadPostsAfter, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -145,7 +133,6 @@ func encodeAPIMobileV2AfterBoardThreadNumGetResponse(response *MobileThreadPosts
 func encodeAPIMobileV2BoardsGetResponse(response Boards, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -159,7 +146,6 @@ func encodeAPIMobileV2BoardsGetResponse(response Boards, w http.ResponseWriter, 
 func encodeAPIMobileV2InfoBoardThreadGetResponse(response *MobileThreadLastInfo, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -173,7 +159,6 @@ func encodeAPIMobileV2InfoBoardThreadGetResponse(response *MobileThreadLastInfo,
 func encodeAPIMobileV2PostBoardNumGetResponse(response *MobilePost, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -187,7 +172,6 @@ func encodeAPIMobileV2PostBoardNumGetResponse(response *MobilePost, w http.Respo
 func encodeUserPassloginPostResponse(response *Passcode, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -201,7 +185,6 @@ func encodeUserPassloginPostResponse(response *Passcode, w http.ResponseWriter, 
 func encodeUserPostingPostResponse(response UserPostingPostOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -215,7 +198,6 @@ func encodeUserPostingPostResponse(response UserPostingPostOK, w http.ResponseWr
 func encodeUserReportPostResponse(response *Report, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)

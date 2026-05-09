@@ -16,7 +16,6 @@ func encodeMarketBondsGetResponse(response MarketBondsGetRes, w http.ResponseWri
 	case *MarketInstrumentListResponse:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		e := new(jx.Encoder)
 		response.Encode(e)
@@ -49,7 +48,6 @@ func encodeMarketCandlesGetResponse(response MarketCandlesGetRes, w http.Respons
 	case *CandlesResponse:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		e := new(jx.Encoder)
 		response.Encode(e)
@@ -82,7 +80,6 @@ func encodeMarketCurrenciesGetResponse(response MarketCurrenciesGetRes, w http.R
 	case *MarketInstrumentListResponse:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		e := new(jx.Encoder)
 		response.Encode(e)
@@ -115,7 +112,6 @@ func encodeMarketEtfsGetResponse(response MarketEtfsGetRes, w http.ResponseWrite
 	case *MarketInstrumentListResponse:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		e := new(jx.Encoder)
 		response.Encode(e)
@@ -148,7 +144,6 @@ func encodeMarketOrderbookGetResponse(response MarketOrderbookGetRes, w http.Res
 	case *OrderbookResponse:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		e := new(jx.Encoder)
 		response.Encode(e)
@@ -181,7 +176,6 @@ func encodeMarketSearchByFigiGetResponse(response MarketSearchByFigiGetRes, w ht
 	case *SearchMarketInstrumentResponse:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		e := new(jx.Encoder)
 		response.Encode(e)
@@ -214,7 +208,6 @@ func encodeMarketSearchByTickerGetResponse(response MarketSearchByTickerGetRes, 
 	case *MarketInstrumentListResponse:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		e := new(jx.Encoder)
 		response.Encode(e)
@@ -247,7 +240,6 @@ func encodeMarketStocksGetResponse(response MarketStocksGetRes, w http.ResponseW
 	case *MarketInstrumentListResponse:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		e := new(jx.Encoder)
 		response.Encode(e)
@@ -280,7 +272,6 @@ func encodeOperationsGetResponse(response OperationsGetRes, w http.ResponseWrite
 	case *OperationsResponse:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		e := new(jx.Encoder)
 		response.Encode(e)
@@ -313,7 +304,6 @@ func encodeOrdersCancelPostResponse(response OrdersCancelPostRes, w http.Respons
 	case *Empty:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		e := new(jx.Encoder)
 		response.Encode(e)
@@ -346,7 +336,6 @@ func encodeOrdersGetResponse(response OrdersGetRes, w http.ResponseWriter, span 
 	case *OrdersResponse:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		e := new(jx.Encoder)
 		response.Encode(e)
@@ -379,7 +368,6 @@ func encodeOrdersLimitOrderPostResponse(response OrdersLimitOrderPostRes, w http
 	case *LimitOrderResponse:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		e := new(jx.Encoder)
 		response.Encode(e)
@@ -412,7 +400,6 @@ func encodeOrdersMarketOrderPostResponse(response OrdersMarketOrderPostRes, w ht
 	case *MarketOrderResponse:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		e := new(jx.Encoder)
 		response.Encode(e)
@@ -445,7 +432,6 @@ func encodePortfolioCurrenciesGetResponse(response PortfolioCurrenciesGetRes, w 
 	case *PortfolioCurrenciesResponse:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		e := new(jx.Encoder)
 		response.Encode(e)
@@ -478,7 +464,6 @@ func encodePortfolioGetResponse(response PortfolioGetRes, w http.ResponseWriter,
 	case *PortfolioResponse:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		e := new(jx.Encoder)
 		response.Encode(e)
@@ -511,7 +496,6 @@ func encodeSandboxClearPostResponse(response SandboxClearPostRes, w http.Respons
 	case *Empty:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		e := new(jx.Encoder)
 		response.Encode(e)
@@ -544,7 +528,6 @@ func encodeSandboxCurrenciesBalancePostResponse(response SandboxCurrenciesBalanc
 	case *Empty:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		e := new(jx.Encoder)
 		response.Encode(e)
@@ -577,7 +560,6 @@ func encodeSandboxPositionsBalancePostResponse(response SandboxPositionsBalanceP
 	case *Empty:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		e := new(jx.Encoder)
 		response.Encode(e)
@@ -610,7 +592,6 @@ func encodeSandboxRegisterPostResponse(response SandboxRegisterPostRes, w http.R
 	case *SandboxRegisterResponse:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		e := new(jx.Encoder)
 		response.Encode(e)
@@ -643,7 +624,6 @@ func encodeSandboxRemovePostResponse(response SandboxRemovePostRes, w http.Respo
 	case *Empty:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		e := new(jx.Encoder)
 		response.Encode(e)
@@ -676,7 +656,6 @@ func encodeUserAccountsGetResponse(response UserAccountsGetRes, w http.ResponseW
 	case *UserAccountsResponse:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		e := new(jx.Encoder)
 		response.Encode(e)

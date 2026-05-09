@@ -14,14 +14,12 @@ import (
 	"github.com/google/uuid"
 	"github.com/ogen-go/ogen/json"
 	"github.com/shopspring/decimal"
-	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/trace"
 )
 
 func encodeTestQueryParameterResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -35,7 +33,6 @@ func encodeTestQueryParameterResponse(response *Error, w http.ResponseWriter, sp
 func encodeTestRequestAnyResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -49,7 +46,6 @@ func encodeTestRequestAnyResponse(response *Error, w http.ResponseWriter, span t
 func encodeTestRequestBooleanResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -63,7 +59,6 @@ func encodeTestRequestBooleanResponse(response *Error, w http.ResponseWriter, sp
 func encodeTestRequestBooleanArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -77,7 +72,6 @@ func encodeTestRequestBooleanArrayResponse(response *Error, w http.ResponseWrite
 func encodeTestRequestBooleanArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -91,7 +85,6 @@ func encodeTestRequestBooleanArrayArrayResponse(response *Error, w http.Response
 func encodeTestRequestBooleanNullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -105,7 +98,6 @@ func encodeTestRequestBooleanNullableResponse(response *Error, w http.ResponseWr
 func encodeTestRequestBooleanNullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -119,7 +111,6 @@ func encodeTestRequestBooleanNullableArrayResponse(response *Error, w http.Respo
 func encodeTestRequestBooleanNullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -133,7 +124,6 @@ func encodeTestRequestBooleanNullableArrayArrayResponse(response *Error, w http.
 func encodeTestRequestEmptyStructResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -147,7 +137,6 @@ func encodeTestRequestEmptyStructResponse(response *Error, w http.ResponseWriter
 func encodeTestRequestFormatTestResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -161,7 +150,6 @@ func encodeTestRequestFormatTestResponse(response *Error, w http.ResponseWriter,
 func encodeTestRequestIntegerResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -175,7 +163,6 @@ func encodeTestRequestIntegerResponse(response *Error, w http.ResponseWriter, sp
 func encodeTestRequestIntegerArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -189,7 +176,6 @@ func encodeTestRequestIntegerArrayResponse(response *Error, w http.ResponseWrite
 func encodeTestRequestIntegerArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -203,7 +189,6 @@ func encodeTestRequestIntegerArrayArrayResponse(response *Error, w http.Response
 func encodeTestRequestIntegerInt16Response(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -217,7 +202,6 @@ func encodeTestRequestIntegerInt16Response(response *Error, w http.ResponseWrite
 func encodeTestRequestIntegerInt16ArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -231,7 +215,6 @@ func encodeTestRequestIntegerInt16ArrayResponse(response *Error, w http.Response
 func encodeTestRequestIntegerInt16ArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -245,7 +228,6 @@ func encodeTestRequestIntegerInt16ArrayArrayResponse(response *Error, w http.Res
 func encodeTestRequestIntegerInt16NullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -259,7 +241,6 @@ func encodeTestRequestIntegerInt16NullableResponse(response *Error, w http.Respo
 func encodeTestRequestIntegerInt16NullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -273,7 +254,6 @@ func encodeTestRequestIntegerInt16NullableArrayResponse(response *Error, w http.
 func encodeTestRequestIntegerInt16NullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -287,7 +267,6 @@ func encodeTestRequestIntegerInt16NullableArrayArrayResponse(response *Error, w 
 func encodeTestRequestIntegerInt32Response(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -301,7 +280,6 @@ func encodeTestRequestIntegerInt32Response(response *Error, w http.ResponseWrite
 func encodeTestRequestIntegerInt32ArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -315,7 +293,6 @@ func encodeTestRequestIntegerInt32ArrayResponse(response *Error, w http.Response
 func encodeTestRequestIntegerInt32ArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -329,7 +306,6 @@ func encodeTestRequestIntegerInt32ArrayArrayResponse(response *Error, w http.Res
 func encodeTestRequestIntegerInt32NullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -343,7 +319,6 @@ func encodeTestRequestIntegerInt32NullableResponse(response *Error, w http.Respo
 func encodeTestRequestIntegerInt32NullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -357,7 +332,6 @@ func encodeTestRequestIntegerInt32NullableArrayResponse(response *Error, w http.
 func encodeTestRequestIntegerInt32NullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -371,7 +345,6 @@ func encodeTestRequestIntegerInt32NullableArrayArrayResponse(response *Error, w 
 func encodeTestRequestIntegerInt64Response(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -385,7 +358,6 @@ func encodeTestRequestIntegerInt64Response(response *Error, w http.ResponseWrite
 func encodeTestRequestIntegerInt64ArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -399,7 +371,6 @@ func encodeTestRequestIntegerInt64ArrayResponse(response *Error, w http.Response
 func encodeTestRequestIntegerInt64ArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -413,7 +384,6 @@ func encodeTestRequestIntegerInt64ArrayArrayResponse(response *Error, w http.Res
 func encodeTestRequestIntegerInt64NullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -427,7 +397,6 @@ func encodeTestRequestIntegerInt64NullableResponse(response *Error, w http.Respo
 func encodeTestRequestIntegerInt64NullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -441,7 +410,6 @@ func encodeTestRequestIntegerInt64NullableArrayResponse(response *Error, w http.
 func encodeTestRequestIntegerInt64NullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -455,7 +423,6 @@ func encodeTestRequestIntegerInt64NullableArrayArrayResponse(response *Error, w 
 func encodeTestRequestIntegerInt8Response(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -469,7 +436,6 @@ func encodeTestRequestIntegerInt8Response(response *Error, w http.ResponseWriter
 func encodeTestRequestIntegerInt8ArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -483,7 +449,6 @@ func encodeTestRequestIntegerInt8ArrayResponse(response *Error, w http.ResponseW
 func encodeTestRequestIntegerInt8ArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -497,7 +462,6 @@ func encodeTestRequestIntegerInt8ArrayArrayResponse(response *Error, w http.Resp
 func encodeTestRequestIntegerInt8NullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -511,7 +475,6 @@ func encodeTestRequestIntegerInt8NullableResponse(response *Error, w http.Respon
 func encodeTestRequestIntegerInt8NullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -525,7 +488,6 @@ func encodeTestRequestIntegerInt8NullableArrayResponse(response *Error, w http.R
 func encodeTestRequestIntegerInt8NullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -539,7 +501,6 @@ func encodeTestRequestIntegerInt8NullableArrayArrayResponse(response *Error, w h
 func encodeTestRequestIntegerNullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -553,7 +514,6 @@ func encodeTestRequestIntegerNullableResponse(response *Error, w http.ResponseWr
 func encodeTestRequestIntegerNullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -567,7 +527,6 @@ func encodeTestRequestIntegerNullableArrayResponse(response *Error, w http.Respo
 func encodeTestRequestIntegerNullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -581,7 +540,6 @@ func encodeTestRequestIntegerNullableArrayArrayResponse(response *Error, w http.
 func encodeTestRequestIntegerUintResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -595,7 +553,6 @@ func encodeTestRequestIntegerUintResponse(response *Error, w http.ResponseWriter
 func encodeTestRequestIntegerUint16Response(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -609,7 +566,6 @@ func encodeTestRequestIntegerUint16Response(response *Error, w http.ResponseWrit
 func encodeTestRequestIntegerUint16ArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -623,7 +579,6 @@ func encodeTestRequestIntegerUint16ArrayResponse(response *Error, w http.Respons
 func encodeTestRequestIntegerUint16ArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -637,7 +592,6 @@ func encodeTestRequestIntegerUint16ArrayArrayResponse(response *Error, w http.Re
 func encodeTestRequestIntegerUint16NullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -651,7 +605,6 @@ func encodeTestRequestIntegerUint16NullableResponse(response *Error, w http.Resp
 func encodeTestRequestIntegerUint16NullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -665,7 +618,6 @@ func encodeTestRequestIntegerUint16NullableArrayResponse(response *Error, w http
 func encodeTestRequestIntegerUint16NullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -679,7 +631,6 @@ func encodeTestRequestIntegerUint16NullableArrayArrayResponse(response *Error, w
 func encodeTestRequestIntegerUint32Response(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -693,7 +644,6 @@ func encodeTestRequestIntegerUint32Response(response *Error, w http.ResponseWrit
 func encodeTestRequestIntegerUint32ArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -707,7 +657,6 @@ func encodeTestRequestIntegerUint32ArrayResponse(response *Error, w http.Respons
 func encodeTestRequestIntegerUint32ArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -721,7 +670,6 @@ func encodeTestRequestIntegerUint32ArrayArrayResponse(response *Error, w http.Re
 func encodeTestRequestIntegerUint32NullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -735,7 +683,6 @@ func encodeTestRequestIntegerUint32NullableResponse(response *Error, w http.Resp
 func encodeTestRequestIntegerUint32NullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -749,7 +696,6 @@ func encodeTestRequestIntegerUint32NullableArrayResponse(response *Error, w http
 func encodeTestRequestIntegerUint32NullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -763,7 +709,6 @@ func encodeTestRequestIntegerUint32NullableArrayArrayResponse(response *Error, w
 func encodeTestRequestIntegerUint64Response(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -777,7 +722,6 @@ func encodeTestRequestIntegerUint64Response(response *Error, w http.ResponseWrit
 func encodeTestRequestIntegerUint64ArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -791,7 +735,6 @@ func encodeTestRequestIntegerUint64ArrayResponse(response *Error, w http.Respons
 func encodeTestRequestIntegerUint64ArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -805,7 +748,6 @@ func encodeTestRequestIntegerUint64ArrayArrayResponse(response *Error, w http.Re
 func encodeTestRequestIntegerUint64NullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -819,7 +761,6 @@ func encodeTestRequestIntegerUint64NullableResponse(response *Error, w http.Resp
 func encodeTestRequestIntegerUint64NullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -833,7 +774,6 @@ func encodeTestRequestIntegerUint64NullableArrayResponse(response *Error, w http
 func encodeTestRequestIntegerUint64NullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -847,7 +787,6 @@ func encodeTestRequestIntegerUint64NullableArrayArrayResponse(response *Error, w
 func encodeTestRequestIntegerUint8Response(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -861,7 +800,6 @@ func encodeTestRequestIntegerUint8Response(response *Error, w http.ResponseWrite
 func encodeTestRequestIntegerUint8ArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -875,7 +813,6 @@ func encodeTestRequestIntegerUint8ArrayResponse(response *Error, w http.Response
 func encodeTestRequestIntegerUint8ArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -889,7 +826,6 @@ func encodeTestRequestIntegerUint8ArrayArrayResponse(response *Error, w http.Res
 func encodeTestRequestIntegerUint8NullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -903,7 +839,6 @@ func encodeTestRequestIntegerUint8NullableResponse(response *Error, w http.Respo
 func encodeTestRequestIntegerUint8NullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -917,7 +852,6 @@ func encodeTestRequestIntegerUint8NullableArrayResponse(response *Error, w http.
 func encodeTestRequestIntegerUint8NullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -931,7 +865,6 @@ func encodeTestRequestIntegerUint8NullableArrayArrayResponse(response *Error, w 
 func encodeTestRequestIntegerUintArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -945,7 +878,6 @@ func encodeTestRequestIntegerUintArrayResponse(response *Error, w http.ResponseW
 func encodeTestRequestIntegerUintArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -959,7 +891,6 @@ func encodeTestRequestIntegerUintArrayArrayResponse(response *Error, w http.Resp
 func encodeTestRequestIntegerUintNullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -973,7 +904,6 @@ func encodeTestRequestIntegerUintNullableResponse(response *Error, w http.Respon
 func encodeTestRequestIntegerUintNullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -987,7 +917,6 @@ func encodeTestRequestIntegerUintNullableArrayResponse(response *Error, w http.R
 func encodeTestRequestIntegerUintNullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -1001,7 +930,6 @@ func encodeTestRequestIntegerUintNullableArrayArrayResponse(response *Error, w h
 func encodeTestRequestIntegerUnixResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -1015,7 +943,6 @@ func encodeTestRequestIntegerUnixResponse(response *Error, w http.ResponseWriter
 func encodeTestRequestIntegerUnixArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -1029,7 +956,6 @@ func encodeTestRequestIntegerUnixArrayResponse(response *Error, w http.ResponseW
 func encodeTestRequestIntegerUnixArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -1043,7 +969,6 @@ func encodeTestRequestIntegerUnixArrayArrayResponse(response *Error, w http.Resp
 func encodeTestRequestIntegerUnixMicroResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -1057,7 +982,6 @@ func encodeTestRequestIntegerUnixMicroResponse(response *Error, w http.ResponseW
 func encodeTestRequestIntegerUnixMicroArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -1071,7 +995,6 @@ func encodeTestRequestIntegerUnixMicroArrayResponse(response *Error, w http.Resp
 func encodeTestRequestIntegerUnixMicroArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -1085,7 +1008,6 @@ func encodeTestRequestIntegerUnixMicroArrayArrayResponse(response *Error, w http
 func encodeTestRequestIntegerUnixMicroNullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -1099,7 +1021,6 @@ func encodeTestRequestIntegerUnixMicroNullableResponse(response *Error, w http.R
 func encodeTestRequestIntegerUnixMicroNullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -1113,7 +1034,6 @@ func encodeTestRequestIntegerUnixMicroNullableArrayResponse(response *Error, w h
 func encodeTestRequestIntegerUnixMicroNullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -1127,7 +1047,6 @@ func encodeTestRequestIntegerUnixMicroNullableArrayArrayResponse(response *Error
 func encodeTestRequestIntegerUnixMilliResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -1141,7 +1060,6 @@ func encodeTestRequestIntegerUnixMilliResponse(response *Error, w http.ResponseW
 func encodeTestRequestIntegerUnixMilliArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -1155,7 +1073,6 @@ func encodeTestRequestIntegerUnixMilliArrayResponse(response *Error, w http.Resp
 func encodeTestRequestIntegerUnixMilliArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -1169,7 +1086,6 @@ func encodeTestRequestIntegerUnixMilliArrayArrayResponse(response *Error, w http
 func encodeTestRequestIntegerUnixMilliNullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -1183,7 +1099,6 @@ func encodeTestRequestIntegerUnixMilliNullableResponse(response *Error, w http.R
 func encodeTestRequestIntegerUnixMilliNullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -1197,7 +1112,6 @@ func encodeTestRequestIntegerUnixMilliNullableArrayResponse(response *Error, w h
 func encodeTestRequestIntegerUnixMilliNullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -1211,7 +1125,6 @@ func encodeTestRequestIntegerUnixMilliNullableArrayArrayResponse(response *Error
 func encodeTestRequestIntegerUnixNanoResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -1225,7 +1138,6 @@ func encodeTestRequestIntegerUnixNanoResponse(response *Error, w http.ResponseWr
 func encodeTestRequestIntegerUnixNanoArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -1239,7 +1151,6 @@ func encodeTestRequestIntegerUnixNanoArrayResponse(response *Error, w http.Respo
 func encodeTestRequestIntegerUnixNanoArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -1253,7 +1164,6 @@ func encodeTestRequestIntegerUnixNanoArrayArrayResponse(response *Error, w http.
 func encodeTestRequestIntegerUnixNanoNullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -1267,7 +1177,6 @@ func encodeTestRequestIntegerUnixNanoNullableResponse(response *Error, w http.Re
 func encodeTestRequestIntegerUnixNanoNullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -1281,7 +1190,6 @@ func encodeTestRequestIntegerUnixNanoNullableArrayResponse(response *Error, w ht
 func encodeTestRequestIntegerUnixNanoNullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -1295,7 +1203,6 @@ func encodeTestRequestIntegerUnixNanoNullableArrayArrayResponse(response *Error,
 func encodeTestRequestIntegerUnixNullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -1309,7 +1216,6 @@ func encodeTestRequestIntegerUnixNullableResponse(response *Error, w http.Respon
 func encodeTestRequestIntegerUnixNullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -1323,7 +1229,6 @@ func encodeTestRequestIntegerUnixNullableArrayResponse(response *Error, w http.R
 func encodeTestRequestIntegerUnixNullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -1337,7 +1242,6 @@ func encodeTestRequestIntegerUnixNullableArrayArrayResponse(response *Error, w h
 func encodeTestRequestIntegerUnixSecondsResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -1351,7 +1255,6 @@ func encodeTestRequestIntegerUnixSecondsResponse(response *Error, w http.Respons
 func encodeTestRequestIntegerUnixSecondsArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -1365,7 +1268,6 @@ func encodeTestRequestIntegerUnixSecondsArrayResponse(response *Error, w http.Re
 func encodeTestRequestIntegerUnixSecondsArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -1379,7 +1281,6 @@ func encodeTestRequestIntegerUnixSecondsArrayArrayResponse(response *Error, w ht
 func encodeTestRequestIntegerUnixSecondsNullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -1393,7 +1294,6 @@ func encodeTestRequestIntegerUnixSecondsNullableResponse(response *Error, w http
 func encodeTestRequestIntegerUnixSecondsNullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -1407,7 +1307,6 @@ func encodeTestRequestIntegerUnixSecondsNullableArrayResponse(response *Error, w
 func encodeTestRequestIntegerUnixSecondsNullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -1421,7 +1320,6 @@ func encodeTestRequestIntegerUnixSecondsNullableArrayArrayResponse(response *Err
 func encodeTestRequestNullResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -1435,7 +1333,6 @@ func encodeTestRequestNullResponse(response *Error, w http.ResponseWriter, span 
 func encodeTestRequestNullArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -1449,7 +1346,6 @@ func encodeTestRequestNullArrayResponse(response *Error, w http.ResponseWriter, 
 func encodeTestRequestNullArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -1463,7 +1359,6 @@ func encodeTestRequestNullArrayArrayResponse(response *Error, w http.ResponseWri
 func encodeTestRequestNullNullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -1477,7 +1372,6 @@ func encodeTestRequestNullNullableResponse(response *Error, w http.ResponseWrite
 func encodeTestRequestNullNullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -1491,7 +1385,6 @@ func encodeTestRequestNullNullableArrayResponse(response *Error, w http.Response
 func encodeTestRequestNullNullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -1505,7 +1398,6 @@ func encodeTestRequestNullNullableArrayArrayResponse(response *Error, w http.Res
 func encodeTestRequestNumberResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -1519,7 +1411,6 @@ func encodeTestRequestNumberResponse(response *Error, w http.ResponseWriter, spa
 func encodeTestRequestNumberArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -1533,7 +1424,6 @@ func encodeTestRequestNumberArrayResponse(response *Error, w http.ResponseWriter
 func encodeTestRequestNumberArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -1547,7 +1437,6 @@ func encodeTestRequestNumberArrayArrayResponse(response *Error, w http.ResponseW
 func encodeTestRequestNumberDecimalResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -1561,7 +1450,6 @@ func encodeTestRequestNumberDecimalResponse(response *Error, w http.ResponseWrit
 func encodeTestRequestNumberDecimalArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -1575,7 +1463,6 @@ func encodeTestRequestNumberDecimalArrayResponse(response *Error, w http.Respons
 func encodeTestRequestNumberDecimalArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -1589,7 +1476,6 @@ func encodeTestRequestNumberDecimalArrayArrayResponse(response *Error, w http.Re
 func encodeTestRequestNumberDecimalNullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -1603,7 +1489,6 @@ func encodeTestRequestNumberDecimalNullableResponse(response *Error, w http.Resp
 func encodeTestRequestNumberDecimalNullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -1617,7 +1502,6 @@ func encodeTestRequestNumberDecimalNullableArrayResponse(response *Error, w http
 func encodeTestRequestNumberDecimalNullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -1631,7 +1515,6 @@ func encodeTestRequestNumberDecimalNullableArrayArrayResponse(response *Error, w
 func encodeTestRequestNumberDoubleResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -1645,7 +1528,6 @@ func encodeTestRequestNumberDoubleResponse(response *Error, w http.ResponseWrite
 func encodeTestRequestNumberDoubleArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -1659,7 +1541,6 @@ func encodeTestRequestNumberDoubleArrayResponse(response *Error, w http.Response
 func encodeTestRequestNumberDoubleArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -1673,7 +1554,6 @@ func encodeTestRequestNumberDoubleArrayArrayResponse(response *Error, w http.Res
 func encodeTestRequestNumberDoubleNullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -1687,7 +1567,6 @@ func encodeTestRequestNumberDoubleNullableResponse(response *Error, w http.Respo
 func encodeTestRequestNumberDoubleNullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -1701,7 +1580,6 @@ func encodeTestRequestNumberDoubleNullableArrayResponse(response *Error, w http.
 func encodeTestRequestNumberDoubleNullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -1715,7 +1593,6 @@ func encodeTestRequestNumberDoubleNullableArrayArrayResponse(response *Error, w 
 func encodeTestRequestNumberFloatResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -1729,7 +1606,6 @@ func encodeTestRequestNumberFloatResponse(response *Error, w http.ResponseWriter
 func encodeTestRequestNumberFloatArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -1743,7 +1619,6 @@ func encodeTestRequestNumberFloatArrayResponse(response *Error, w http.ResponseW
 func encodeTestRequestNumberFloatArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -1757,7 +1632,6 @@ func encodeTestRequestNumberFloatArrayArrayResponse(response *Error, w http.Resp
 func encodeTestRequestNumberFloatNullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -1771,7 +1645,6 @@ func encodeTestRequestNumberFloatNullableResponse(response *Error, w http.Respon
 func encodeTestRequestNumberFloatNullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -1785,7 +1658,6 @@ func encodeTestRequestNumberFloatNullableArrayResponse(response *Error, w http.R
 func encodeTestRequestNumberFloatNullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -1799,7 +1671,6 @@ func encodeTestRequestNumberFloatNullableArrayArrayResponse(response *Error, w h
 func encodeTestRequestNumberInt32Response(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -1813,7 +1684,6 @@ func encodeTestRequestNumberInt32Response(response *Error, w http.ResponseWriter
 func encodeTestRequestNumberInt32ArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -1827,7 +1697,6 @@ func encodeTestRequestNumberInt32ArrayResponse(response *Error, w http.ResponseW
 func encodeTestRequestNumberInt32ArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -1841,7 +1710,6 @@ func encodeTestRequestNumberInt32ArrayArrayResponse(response *Error, w http.Resp
 func encodeTestRequestNumberInt32NullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -1855,7 +1723,6 @@ func encodeTestRequestNumberInt32NullableResponse(response *Error, w http.Respon
 func encodeTestRequestNumberInt32NullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -1869,7 +1736,6 @@ func encodeTestRequestNumberInt32NullableArrayResponse(response *Error, w http.R
 func encodeTestRequestNumberInt32NullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -1883,7 +1749,6 @@ func encodeTestRequestNumberInt32NullableArrayArrayResponse(response *Error, w h
 func encodeTestRequestNumberInt64Response(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -1897,7 +1762,6 @@ func encodeTestRequestNumberInt64Response(response *Error, w http.ResponseWriter
 func encodeTestRequestNumberInt64ArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -1911,7 +1775,6 @@ func encodeTestRequestNumberInt64ArrayResponse(response *Error, w http.ResponseW
 func encodeTestRequestNumberInt64ArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -1925,7 +1788,6 @@ func encodeTestRequestNumberInt64ArrayArrayResponse(response *Error, w http.Resp
 func encodeTestRequestNumberInt64NullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -1939,7 +1801,6 @@ func encodeTestRequestNumberInt64NullableResponse(response *Error, w http.Respon
 func encodeTestRequestNumberInt64NullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -1953,7 +1814,6 @@ func encodeTestRequestNumberInt64NullableArrayResponse(response *Error, w http.R
 func encodeTestRequestNumberInt64NullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -1967,7 +1827,6 @@ func encodeTestRequestNumberInt64NullableArrayArrayResponse(response *Error, w h
 func encodeTestRequestNumberNullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -1981,7 +1840,6 @@ func encodeTestRequestNumberNullableResponse(response *Error, w http.ResponseWri
 func encodeTestRequestNumberNullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -1995,7 +1853,6 @@ func encodeTestRequestNumberNullableArrayResponse(response *Error, w http.Respon
 func encodeTestRequestNumberNullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -2009,7 +1866,6 @@ func encodeTestRequestNumberNullableArrayArrayResponse(response *Error, w http.R
 func encodeTestRequestRequiredAnyResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -2023,7 +1879,6 @@ func encodeTestRequestRequiredAnyResponse(response *Error, w http.ResponseWriter
 func encodeTestRequestRequiredBooleanResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -2037,7 +1892,6 @@ func encodeTestRequestRequiredBooleanResponse(response *Error, w http.ResponseWr
 func encodeTestRequestRequiredBooleanArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -2051,7 +1905,6 @@ func encodeTestRequestRequiredBooleanArrayResponse(response *Error, w http.Respo
 func encodeTestRequestRequiredBooleanArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -2065,7 +1918,6 @@ func encodeTestRequestRequiredBooleanArrayArrayResponse(response *Error, w http.
 func encodeTestRequestRequiredBooleanNullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -2079,7 +1931,6 @@ func encodeTestRequestRequiredBooleanNullableResponse(response *Error, w http.Re
 func encodeTestRequestRequiredBooleanNullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -2093,7 +1944,6 @@ func encodeTestRequestRequiredBooleanNullableArrayResponse(response *Error, w ht
 func encodeTestRequestRequiredBooleanNullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -2107,7 +1957,6 @@ func encodeTestRequestRequiredBooleanNullableArrayArrayResponse(response *Error,
 func encodeTestRequestRequiredEmptyStructResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -2121,7 +1970,6 @@ func encodeTestRequestRequiredEmptyStructResponse(response *Error, w http.Respon
 func encodeTestRequestRequiredFormatTestResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -2135,7 +1983,6 @@ func encodeTestRequestRequiredFormatTestResponse(response *Error, w http.Respons
 func encodeTestRequestRequiredIntegerResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -2149,7 +1996,6 @@ func encodeTestRequestRequiredIntegerResponse(response *Error, w http.ResponseWr
 func encodeTestRequestRequiredIntegerArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -2163,7 +2009,6 @@ func encodeTestRequestRequiredIntegerArrayResponse(response *Error, w http.Respo
 func encodeTestRequestRequiredIntegerArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -2177,7 +2022,6 @@ func encodeTestRequestRequiredIntegerArrayArrayResponse(response *Error, w http.
 func encodeTestRequestRequiredIntegerInt16Response(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -2191,7 +2035,6 @@ func encodeTestRequestRequiredIntegerInt16Response(response *Error, w http.Respo
 func encodeTestRequestRequiredIntegerInt16ArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -2205,7 +2048,6 @@ func encodeTestRequestRequiredIntegerInt16ArrayResponse(response *Error, w http.
 func encodeTestRequestRequiredIntegerInt16ArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -2219,7 +2061,6 @@ func encodeTestRequestRequiredIntegerInt16ArrayArrayResponse(response *Error, w 
 func encodeTestRequestRequiredIntegerInt16NullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -2233,7 +2074,6 @@ func encodeTestRequestRequiredIntegerInt16NullableResponse(response *Error, w ht
 func encodeTestRequestRequiredIntegerInt16NullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -2247,7 +2087,6 @@ func encodeTestRequestRequiredIntegerInt16NullableArrayResponse(response *Error,
 func encodeTestRequestRequiredIntegerInt16NullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -2261,7 +2100,6 @@ func encodeTestRequestRequiredIntegerInt16NullableArrayArrayResponse(response *E
 func encodeTestRequestRequiredIntegerInt32Response(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -2275,7 +2113,6 @@ func encodeTestRequestRequiredIntegerInt32Response(response *Error, w http.Respo
 func encodeTestRequestRequiredIntegerInt32ArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -2289,7 +2126,6 @@ func encodeTestRequestRequiredIntegerInt32ArrayResponse(response *Error, w http.
 func encodeTestRequestRequiredIntegerInt32ArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -2303,7 +2139,6 @@ func encodeTestRequestRequiredIntegerInt32ArrayArrayResponse(response *Error, w 
 func encodeTestRequestRequiredIntegerInt32NullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -2317,7 +2152,6 @@ func encodeTestRequestRequiredIntegerInt32NullableResponse(response *Error, w ht
 func encodeTestRequestRequiredIntegerInt32NullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -2331,7 +2165,6 @@ func encodeTestRequestRequiredIntegerInt32NullableArrayResponse(response *Error,
 func encodeTestRequestRequiredIntegerInt32NullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -2345,7 +2178,6 @@ func encodeTestRequestRequiredIntegerInt32NullableArrayArrayResponse(response *E
 func encodeTestRequestRequiredIntegerInt64Response(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -2359,7 +2191,6 @@ func encodeTestRequestRequiredIntegerInt64Response(response *Error, w http.Respo
 func encodeTestRequestRequiredIntegerInt64ArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -2373,7 +2204,6 @@ func encodeTestRequestRequiredIntegerInt64ArrayResponse(response *Error, w http.
 func encodeTestRequestRequiredIntegerInt64ArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -2387,7 +2217,6 @@ func encodeTestRequestRequiredIntegerInt64ArrayArrayResponse(response *Error, w 
 func encodeTestRequestRequiredIntegerInt64NullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -2401,7 +2230,6 @@ func encodeTestRequestRequiredIntegerInt64NullableResponse(response *Error, w ht
 func encodeTestRequestRequiredIntegerInt64NullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -2415,7 +2243,6 @@ func encodeTestRequestRequiredIntegerInt64NullableArrayResponse(response *Error,
 func encodeTestRequestRequiredIntegerInt64NullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -2429,7 +2256,6 @@ func encodeTestRequestRequiredIntegerInt64NullableArrayArrayResponse(response *E
 func encodeTestRequestRequiredIntegerInt8Response(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -2443,7 +2269,6 @@ func encodeTestRequestRequiredIntegerInt8Response(response *Error, w http.Respon
 func encodeTestRequestRequiredIntegerInt8ArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -2457,7 +2282,6 @@ func encodeTestRequestRequiredIntegerInt8ArrayResponse(response *Error, w http.R
 func encodeTestRequestRequiredIntegerInt8ArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -2471,7 +2295,6 @@ func encodeTestRequestRequiredIntegerInt8ArrayArrayResponse(response *Error, w h
 func encodeTestRequestRequiredIntegerInt8NullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -2485,7 +2308,6 @@ func encodeTestRequestRequiredIntegerInt8NullableResponse(response *Error, w htt
 func encodeTestRequestRequiredIntegerInt8NullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -2499,7 +2321,6 @@ func encodeTestRequestRequiredIntegerInt8NullableArrayResponse(response *Error, 
 func encodeTestRequestRequiredIntegerInt8NullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -2513,7 +2334,6 @@ func encodeTestRequestRequiredIntegerInt8NullableArrayArrayResponse(response *Er
 func encodeTestRequestRequiredIntegerNullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -2527,7 +2347,6 @@ func encodeTestRequestRequiredIntegerNullableResponse(response *Error, w http.Re
 func encodeTestRequestRequiredIntegerNullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -2541,7 +2360,6 @@ func encodeTestRequestRequiredIntegerNullableArrayResponse(response *Error, w ht
 func encodeTestRequestRequiredIntegerNullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -2555,7 +2373,6 @@ func encodeTestRequestRequiredIntegerNullableArrayArrayResponse(response *Error,
 func encodeTestRequestRequiredIntegerUintResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -2569,7 +2386,6 @@ func encodeTestRequestRequiredIntegerUintResponse(response *Error, w http.Respon
 func encodeTestRequestRequiredIntegerUint16Response(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -2583,7 +2399,6 @@ func encodeTestRequestRequiredIntegerUint16Response(response *Error, w http.Resp
 func encodeTestRequestRequiredIntegerUint16ArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -2597,7 +2412,6 @@ func encodeTestRequestRequiredIntegerUint16ArrayResponse(response *Error, w http
 func encodeTestRequestRequiredIntegerUint16ArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -2611,7 +2425,6 @@ func encodeTestRequestRequiredIntegerUint16ArrayArrayResponse(response *Error, w
 func encodeTestRequestRequiredIntegerUint16NullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -2625,7 +2438,6 @@ func encodeTestRequestRequiredIntegerUint16NullableResponse(response *Error, w h
 func encodeTestRequestRequiredIntegerUint16NullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -2639,7 +2451,6 @@ func encodeTestRequestRequiredIntegerUint16NullableArrayResponse(response *Error
 func encodeTestRequestRequiredIntegerUint16NullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -2653,7 +2464,6 @@ func encodeTestRequestRequiredIntegerUint16NullableArrayArrayResponse(response *
 func encodeTestRequestRequiredIntegerUint32Response(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -2667,7 +2477,6 @@ func encodeTestRequestRequiredIntegerUint32Response(response *Error, w http.Resp
 func encodeTestRequestRequiredIntegerUint32ArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -2681,7 +2490,6 @@ func encodeTestRequestRequiredIntegerUint32ArrayResponse(response *Error, w http
 func encodeTestRequestRequiredIntegerUint32ArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -2695,7 +2503,6 @@ func encodeTestRequestRequiredIntegerUint32ArrayArrayResponse(response *Error, w
 func encodeTestRequestRequiredIntegerUint32NullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -2709,7 +2516,6 @@ func encodeTestRequestRequiredIntegerUint32NullableResponse(response *Error, w h
 func encodeTestRequestRequiredIntegerUint32NullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -2723,7 +2529,6 @@ func encodeTestRequestRequiredIntegerUint32NullableArrayResponse(response *Error
 func encodeTestRequestRequiredIntegerUint32NullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -2737,7 +2542,6 @@ func encodeTestRequestRequiredIntegerUint32NullableArrayArrayResponse(response *
 func encodeTestRequestRequiredIntegerUint64Response(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -2751,7 +2555,6 @@ func encodeTestRequestRequiredIntegerUint64Response(response *Error, w http.Resp
 func encodeTestRequestRequiredIntegerUint64ArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -2765,7 +2568,6 @@ func encodeTestRequestRequiredIntegerUint64ArrayResponse(response *Error, w http
 func encodeTestRequestRequiredIntegerUint64ArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -2779,7 +2581,6 @@ func encodeTestRequestRequiredIntegerUint64ArrayArrayResponse(response *Error, w
 func encodeTestRequestRequiredIntegerUint64NullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -2793,7 +2594,6 @@ func encodeTestRequestRequiredIntegerUint64NullableResponse(response *Error, w h
 func encodeTestRequestRequiredIntegerUint64NullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -2807,7 +2607,6 @@ func encodeTestRequestRequiredIntegerUint64NullableArrayResponse(response *Error
 func encodeTestRequestRequiredIntegerUint64NullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -2821,7 +2620,6 @@ func encodeTestRequestRequiredIntegerUint64NullableArrayArrayResponse(response *
 func encodeTestRequestRequiredIntegerUint8Response(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -2835,7 +2633,6 @@ func encodeTestRequestRequiredIntegerUint8Response(response *Error, w http.Respo
 func encodeTestRequestRequiredIntegerUint8ArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -2849,7 +2646,6 @@ func encodeTestRequestRequiredIntegerUint8ArrayResponse(response *Error, w http.
 func encodeTestRequestRequiredIntegerUint8ArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -2863,7 +2659,6 @@ func encodeTestRequestRequiredIntegerUint8ArrayArrayResponse(response *Error, w 
 func encodeTestRequestRequiredIntegerUint8NullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -2877,7 +2672,6 @@ func encodeTestRequestRequiredIntegerUint8NullableResponse(response *Error, w ht
 func encodeTestRequestRequiredIntegerUint8NullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -2891,7 +2685,6 @@ func encodeTestRequestRequiredIntegerUint8NullableArrayResponse(response *Error,
 func encodeTestRequestRequiredIntegerUint8NullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -2905,7 +2698,6 @@ func encodeTestRequestRequiredIntegerUint8NullableArrayArrayResponse(response *E
 func encodeTestRequestRequiredIntegerUintArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -2919,7 +2711,6 @@ func encodeTestRequestRequiredIntegerUintArrayResponse(response *Error, w http.R
 func encodeTestRequestRequiredIntegerUintArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -2933,7 +2724,6 @@ func encodeTestRequestRequiredIntegerUintArrayArrayResponse(response *Error, w h
 func encodeTestRequestRequiredIntegerUintNullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -2947,7 +2737,6 @@ func encodeTestRequestRequiredIntegerUintNullableResponse(response *Error, w htt
 func encodeTestRequestRequiredIntegerUintNullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -2961,7 +2750,6 @@ func encodeTestRequestRequiredIntegerUintNullableArrayResponse(response *Error, 
 func encodeTestRequestRequiredIntegerUintNullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -2975,7 +2763,6 @@ func encodeTestRequestRequiredIntegerUintNullableArrayArrayResponse(response *Er
 func encodeTestRequestRequiredIntegerUnixResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -2989,7 +2776,6 @@ func encodeTestRequestRequiredIntegerUnixResponse(response *Error, w http.Respon
 func encodeTestRequestRequiredIntegerUnixArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -3003,7 +2789,6 @@ func encodeTestRequestRequiredIntegerUnixArrayResponse(response *Error, w http.R
 func encodeTestRequestRequiredIntegerUnixArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -3017,7 +2802,6 @@ func encodeTestRequestRequiredIntegerUnixArrayArrayResponse(response *Error, w h
 func encodeTestRequestRequiredIntegerUnixMicroResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -3031,7 +2815,6 @@ func encodeTestRequestRequiredIntegerUnixMicroResponse(response *Error, w http.R
 func encodeTestRequestRequiredIntegerUnixMicroArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -3045,7 +2828,6 @@ func encodeTestRequestRequiredIntegerUnixMicroArrayResponse(response *Error, w h
 func encodeTestRequestRequiredIntegerUnixMicroArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -3059,7 +2841,6 @@ func encodeTestRequestRequiredIntegerUnixMicroArrayArrayResponse(response *Error
 func encodeTestRequestRequiredIntegerUnixMicroNullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -3073,7 +2854,6 @@ func encodeTestRequestRequiredIntegerUnixMicroNullableResponse(response *Error, 
 func encodeTestRequestRequiredIntegerUnixMicroNullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -3087,7 +2867,6 @@ func encodeTestRequestRequiredIntegerUnixMicroNullableArrayResponse(response *Er
 func encodeTestRequestRequiredIntegerUnixMicroNullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -3101,7 +2880,6 @@ func encodeTestRequestRequiredIntegerUnixMicroNullableArrayArrayResponse(respons
 func encodeTestRequestRequiredIntegerUnixMilliResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -3115,7 +2893,6 @@ func encodeTestRequestRequiredIntegerUnixMilliResponse(response *Error, w http.R
 func encodeTestRequestRequiredIntegerUnixMilliArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -3129,7 +2906,6 @@ func encodeTestRequestRequiredIntegerUnixMilliArrayResponse(response *Error, w h
 func encodeTestRequestRequiredIntegerUnixMilliArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -3143,7 +2919,6 @@ func encodeTestRequestRequiredIntegerUnixMilliArrayArrayResponse(response *Error
 func encodeTestRequestRequiredIntegerUnixMilliNullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -3157,7 +2932,6 @@ func encodeTestRequestRequiredIntegerUnixMilliNullableResponse(response *Error, 
 func encodeTestRequestRequiredIntegerUnixMilliNullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -3171,7 +2945,6 @@ func encodeTestRequestRequiredIntegerUnixMilliNullableArrayResponse(response *Er
 func encodeTestRequestRequiredIntegerUnixMilliNullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -3185,7 +2958,6 @@ func encodeTestRequestRequiredIntegerUnixMilliNullableArrayArrayResponse(respons
 func encodeTestRequestRequiredIntegerUnixNanoResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -3199,7 +2971,6 @@ func encodeTestRequestRequiredIntegerUnixNanoResponse(response *Error, w http.Re
 func encodeTestRequestRequiredIntegerUnixNanoArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -3213,7 +2984,6 @@ func encodeTestRequestRequiredIntegerUnixNanoArrayResponse(response *Error, w ht
 func encodeTestRequestRequiredIntegerUnixNanoArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -3227,7 +2997,6 @@ func encodeTestRequestRequiredIntegerUnixNanoArrayArrayResponse(response *Error,
 func encodeTestRequestRequiredIntegerUnixNanoNullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -3241,7 +3010,6 @@ func encodeTestRequestRequiredIntegerUnixNanoNullableResponse(response *Error, w
 func encodeTestRequestRequiredIntegerUnixNanoNullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -3255,7 +3023,6 @@ func encodeTestRequestRequiredIntegerUnixNanoNullableArrayResponse(response *Err
 func encodeTestRequestRequiredIntegerUnixNanoNullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -3269,7 +3036,6 @@ func encodeTestRequestRequiredIntegerUnixNanoNullableArrayArrayResponse(response
 func encodeTestRequestRequiredIntegerUnixNullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -3283,7 +3049,6 @@ func encodeTestRequestRequiredIntegerUnixNullableResponse(response *Error, w htt
 func encodeTestRequestRequiredIntegerUnixNullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -3297,7 +3062,6 @@ func encodeTestRequestRequiredIntegerUnixNullableArrayResponse(response *Error, 
 func encodeTestRequestRequiredIntegerUnixNullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -3311,7 +3075,6 @@ func encodeTestRequestRequiredIntegerUnixNullableArrayArrayResponse(response *Er
 func encodeTestRequestRequiredIntegerUnixSecondsResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -3325,7 +3088,6 @@ func encodeTestRequestRequiredIntegerUnixSecondsResponse(response *Error, w http
 func encodeTestRequestRequiredIntegerUnixSecondsArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -3339,7 +3101,6 @@ func encodeTestRequestRequiredIntegerUnixSecondsArrayResponse(response *Error, w
 func encodeTestRequestRequiredIntegerUnixSecondsArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -3353,7 +3114,6 @@ func encodeTestRequestRequiredIntegerUnixSecondsArrayArrayResponse(response *Err
 func encodeTestRequestRequiredIntegerUnixSecondsNullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -3367,7 +3127,6 @@ func encodeTestRequestRequiredIntegerUnixSecondsNullableResponse(response *Error
 func encodeTestRequestRequiredIntegerUnixSecondsNullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -3381,7 +3140,6 @@ func encodeTestRequestRequiredIntegerUnixSecondsNullableArrayResponse(response *
 func encodeTestRequestRequiredIntegerUnixSecondsNullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -3395,7 +3153,6 @@ func encodeTestRequestRequiredIntegerUnixSecondsNullableArrayArrayResponse(respo
 func encodeTestRequestRequiredNullResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -3409,7 +3166,6 @@ func encodeTestRequestRequiredNullResponse(response *Error, w http.ResponseWrite
 func encodeTestRequestRequiredNullArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -3423,7 +3179,6 @@ func encodeTestRequestRequiredNullArrayResponse(response *Error, w http.Response
 func encodeTestRequestRequiredNullArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -3437,7 +3192,6 @@ func encodeTestRequestRequiredNullArrayArrayResponse(response *Error, w http.Res
 func encodeTestRequestRequiredNullNullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -3451,7 +3205,6 @@ func encodeTestRequestRequiredNullNullableResponse(response *Error, w http.Respo
 func encodeTestRequestRequiredNullNullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -3465,7 +3218,6 @@ func encodeTestRequestRequiredNullNullableArrayResponse(response *Error, w http.
 func encodeTestRequestRequiredNullNullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -3479,7 +3231,6 @@ func encodeTestRequestRequiredNullNullableArrayArrayResponse(response *Error, w 
 func encodeTestRequestRequiredNumberResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -3493,7 +3244,6 @@ func encodeTestRequestRequiredNumberResponse(response *Error, w http.ResponseWri
 func encodeTestRequestRequiredNumberArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -3507,7 +3257,6 @@ func encodeTestRequestRequiredNumberArrayResponse(response *Error, w http.Respon
 func encodeTestRequestRequiredNumberArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -3521,7 +3270,6 @@ func encodeTestRequestRequiredNumberArrayArrayResponse(response *Error, w http.R
 func encodeTestRequestRequiredNumberDecimalResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -3535,7 +3283,6 @@ func encodeTestRequestRequiredNumberDecimalResponse(response *Error, w http.Resp
 func encodeTestRequestRequiredNumberDecimalArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -3549,7 +3296,6 @@ func encodeTestRequestRequiredNumberDecimalArrayResponse(response *Error, w http
 func encodeTestRequestRequiredNumberDecimalArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -3563,7 +3309,6 @@ func encodeTestRequestRequiredNumberDecimalArrayArrayResponse(response *Error, w
 func encodeTestRequestRequiredNumberDecimalNullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -3577,7 +3322,6 @@ func encodeTestRequestRequiredNumberDecimalNullableResponse(response *Error, w h
 func encodeTestRequestRequiredNumberDecimalNullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -3591,7 +3335,6 @@ func encodeTestRequestRequiredNumberDecimalNullableArrayResponse(response *Error
 func encodeTestRequestRequiredNumberDecimalNullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -3605,7 +3348,6 @@ func encodeTestRequestRequiredNumberDecimalNullableArrayArrayResponse(response *
 func encodeTestRequestRequiredNumberDoubleResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -3619,7 +3361,6 @@ func encodeTestRequestRequiredNumberDoubleResponse(response *Error, w http.Respo
 func encodeTestRequestRequiredNumberDoubleArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -3633,7 +3374,6 @@ func encodeTestRequestRequiredNumberDoubleArrayResponse(response *Error, w http.
 func encodeTestRequestRequiredNumberDoubleArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -3647,7 +3387,6 @@ func encodeTestRequestRequiredNumberDoubleArrayArrayResponse(response *Error, w 
 func encodeTestRequestRequiredNumberDoubleNullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -3661,7 +3400,6 @@ func encodeTestRequestRequiredNumberDoubleNullableResponse(response *Error, w ht
 func encodeTestRequestRequiredNumberDoubleNullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -3675,7 +3413,6 @@ func encodeTestRequestRequiredNumberDoubleNullableArrayResponse(response *Error,
 func encodeTestRequestRequiredNumberDoubleNullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -3689,7 +3426,6 @@ func encodeTestRequestRequiredNumberDoubleNullableArrayArrayResponse(response *E
 func encodeTestRequestRequiredNumberFloatResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -3703,7 +3439,6 @@ func encodeTestRequestRequiredNumberFloatResponse(response *Error, w http.Respon
 func encodeTestRequestRequiredNumberFloatArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -3717,7 +3452,6 @@ func encodeTestRequestRequiredNumberFloatArrayResponse(response *Error, w http.R
 func encodeTestRequestRequiredNumberFloatArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -3731,7 +3465,6 @@ func encodeTestRequestRequiredNumberFloatArrayArrayResponse(response *Error, w h
 func encodeTestRequestRequiredNumberFloatNullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -3745,7 +3478,6 @@ func encodeTestRequestRequiredNumberFloatNullableResponse(response *Error, w htt
 func encodeTestRequestRequiredNumberFloatNullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -3759,7 +3491,6 @@ func encodeTestRequestRequiredNumberFloatNullableArrayResponse(response *Error, 
 func encodeTestRequestRequiredNumberFloatNullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -3773,7 +3504,6 @@ func encodeTestRequestRequiredNumberFloatNullableArrayArrayResponse(response *Er
 func encodeTestRequestRequiredNumberInt32Response(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -3787,7 +3517,6 @@ func encodeTestRequestRequiredNumberInt32Response(response *Error, w http.Respon
 func encodeTestRequestRequiredNumberInt32ArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -3801,7 +3530,6 @@ func encodeTestRequestRequiredNumberInt32ArrayResponse(response *Error, w http.R
 func encodeTestRequestRequiredNumberInt32ArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -3815,7 +3543,6 @@ func encodeTestRequestRequiredNumberInt32ArrayArrayResponse(response *Error, w h
 func encodeTestRequestRequiredNumberInt32NullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -3829,7 +3556,6 @@ func encodeTestRequestRequiredNumberInt32NullableResponse(response *Error, w htt
 func encodeTestRequestRequiredNumberInt32NullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -3843,7 +3569,6 @@ func encodeTestRequestRequiredNumberInt32NullableArrayResponse(response *Error, 
 func encodeTestRequestRequiredNumberInt32NullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -3857,7 +3582,6 @@ func encodeTestRequestRequiredNumberInt32NullableArrayArrayResponse(response *Er
 func encodeTestRequestRequiredNumberInt64Response(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -3871,7 +3595,6 @@ func encodeTestRequestRequiredNumberInt64Response(response *Error, w http.Respon
 func encodeTestRequestRequiredNumberInt64ArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -3885,7 +3608,6 @@ func encodeTestRequestRequiredNumberInt64ArrayResponse(response *Error, w http.R
 func encodeTestRequestRequiredNumberInt64ArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -3899,7 +3621,6 @@ func encodeTestRequestRequiredNumberInt64ArrayArrayResponse(response *Error, w h
 func encodeTestRequestRequiredNumberInt64NullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -3913,7 +3634,6 @@ func encodeTestRequestRequiredNumberInt64NullableResponse(response *Error, w htt
 func encodeTestRequestRequiredNumberInt64NullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -3927,7 +3647,6 @@ func encodeTestRequestRequiredNumberInt64NullableArrayResponse(response *Error, 
 func encodeTestRequestRequiredNumberInt64NullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -3941,7 +3660,6 @@ func encodeTestRequestRequiredNumberInt64NullableArrayArrayResponse(response *Er
 func encodeTestRequestRequiredNumberNullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -3955,7 +3673,6 @@ func encodeTestRequestRequiredNumberNullableResponse(response *Error, w http.Res
 func encodeTestRequestRequiredNumberNullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -3969,7 +3686,6 @@ func encodeTestRequestRequiredNumberNullableArrayResponse(response *Error, w htt
 func encodeTestRequestRequiredNumberNullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -3983,7 +3699,6 @@ func encodeTestRequestRequiredNumberNullableArrayArrayResponse(response *Error, 
 func encodeTestRequestRequiredStringResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -3997,7 +3712,6 @@ func encodeTestRequestRequiredStringResponse(response *Error, w http.ResponseWri
 func encodeTestRequestRequiredStringArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -4011,7 +3725,6 @@ func encodeTestRequestRequiredStringArrayResponse(response *Error, w http.Respon
 func encodeTestRequestRequiredStringArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -4025,7 +3738,6 @@ func encodeTestRequestRequiredStringArrayArrayResponse(response *Error, w http.R
 func encodeTestRequestRequiredStringBase64Response(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -4039,7 +3751,6 @@ func encodeTestRequestRequiredStringBase64Response(response *Error, w http.Respo
 func encodeTestRequestRequiredStringBase64ArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -4053,7 +3764,6 @@ func encodeTestRequestRequiredStringBase64ArrayResponse(response *Error, w http.
 func encodeTestRequestRequiredStringBase64ArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -4067,7 +3777,6 @@ func encodeTestRequestRequiredStringBase64ArrayArrayResponse(response *Error, w 
 func encodeTestRequestRequiredStringBase64NullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -4081,7 +3790,6 @@ func encodeTestRequestRequiredStringBase64NullableResponse(response *Error, w ht
 func encodeTestRequestRequiredStringBase64NullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -4095,7 +3803,6 @@ func encodeTestRequestRequiredStringBase64NullableArrayResponse(response *Error,
 func encodeTestRequestRequiredStringBase64NullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -4109,7 +3816,6 @@ func encodeTestRequestRequiredStringBase64NullableArrayArrayResponse(response *E
 func encodeTestRequestRequiredStringBinaryResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -4123,7 +3829,6 @@ func encodeTestRequestRequiredStringBinaryResponse(response *Error, w http.Respo
 func encodeTestRequestRequiredStringBinaryArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -4137,7 +3842,6 @@ func encodeTestRequestRequiredStringBinaryArrayResponse(response *Error, w http.
 func encodeTestRequestRequiredStringBinaryArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -4151,7 +3855,6 @@ func encodeTestRequestRequiredStringBinaryArrayArrayResponse(response *Error, w 
 func encodeTestRequestRequiredStringBinaryNullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -4165,7 +3868,6 @@ func encodeTestRequestRequiredStringBinaryNullableResponse(response *Error, w ht
 func encodeTestRequestRequiredStringBinaryNullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -4179,7 +3881,6 @@ func encodeTestRequestRequiredStringBinaryNullableArrayResponse(response *Error,
 func encodeTestRequestRequiredStringBinaryNullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -4193,7 +3894,6 @@ func encodeTestRequestRequiredStringBinaryNullableArrayArrayResponse(response *E
 func encodeTestRequestRequiredStringByteResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -4207,7 +3907,6 @@ func encodeTestRequestRequiredStringByteResponse(response *Error, w http.Respons
 func encodeTestRequestRequiredStringByteArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -4221,7 +3920,6 @@ func encodeTestRequestRequiredStringByteArrayResponse(response *Error, w http.Re
 func encodeTestRequestRequiredStringByteArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -4235,7 +3933,6 @@ func encodeTestRequestRequiredStringByteArrayArrayResponse(response *Error, w ht
 func encodeTestRequestRequiredStringByteNullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -4249,7 +3946,6 @@ func encodeTestRequestRequiredStringByteNullableResponse(response *Error, w http
 func encodeTestRequestRequiredStringByteNullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -4263,7 +3959,6 @@ func encodeTestRequestRequiredStringByteNullableArrayResponse(response *Error, w
 func encodeTestRequestRequiredStringByteNullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -4277,7 +3972,6 @@ func encodeTestRequestRequiredStringByteNullableArrayArrayResponse(response *Err
 func encodeTestRequestRequiredStringDateResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -4291,7 +3985,6 @@ func encodeTestRequestRequiredStringDateResponse(response *Error, w http.Respons
 func encodeTestRequestRequiredStringDateArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -4305,7 +3998,6 @@ func encodeTestRequestRequiredStringDateArrayResponse(response *Error, w http.Re
 func encodeTestRequestRequiredStringDateArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -4319,7 +4011,6 @@ func encodeTestRequestRequiredStringDateArrayArrayResponse(response *Error, w ht
 func encodeTestRequestRequiredStringDateNullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -4333,7 +4024,6 @@ func encodeTestRequestRequiredStringDateNullableResponse(response *Error, w http
 func encodeTestRequestRequiredStringDateNullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -4347,7 +4037,6 @@ func encodeTestRequestRequiredStringDateNullableArrayResponse(response *Error, w
 func encodeTestRequestRequiredStringDateNullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -4361,7 +4050,6 @@ func encodeTestRequestRequiredStringDateNullableArrayArrayResponse(response *Err
 func encodeTestRequestRequiredStringDateTimeResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -4375,7 +4063,6 @@ func encodeTestRequestRequiredStringDateTimeResponse(response *Error, w http.Res
 func encodeTestRequestRequiredStringDateTimeArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -4389,7 +4076,6 @@ func encodeTestRequestRequiredStringDateTimeArrayResponse(response *Error, w htt
 func encodeTestRequestRequiredStringDateTimeArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -4403,7 +4089,6 @@ func encodeTestRequestRequiredStringDateTimeArrayArrayResponse(response *Error, 
 func encodeTestRequestRequiredStringDateTimeNullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -4417,7 +4102,6 @@ func encodeTestRequestRequiredStringDateTimeNullableResponse(response *Error, w 
 func encodeTestRequestRequiredStringDateTimeNullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -4431,7 +4115,6 @@ func encodeTestRequestRequiredStringDateTimeNullableArrayResponse(response *Erro
 func encodeTestRequestRequiredStringDateTimeNullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -4445,7 +4128,6 @@ func encodeTestRequestRequiredStringDateTimeNullableArrayArrayResponse(response 
 func encodeTestRequestRequiredStringDecimalResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -4459,7 +4141,6 @@ func encodeTestRequestRequiredStringDecimalResponse(response *Error, w http.Resp
 func encodeTestRequestRequiredStringDecimalArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -4473,7 +4154,6 @@ func encodeTestRequestRequiredStringDecimalArrayResponse(response *Error, w http
 func encodeTestRequestRequiredStringDecimalArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -4487,7 +4167,6 @@ func encodeTestRequestRequiredStringDecimalArrayArrayResponse(response *Error, w
 func encodeTestRequestRequiredStringDecimalNullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -4501,7 +4180,6 @@ func encodeTestRequestRequiredStringDecimalNullableResponse(response *Error, w h
 func encodeTestRequestRequiredStringDecimalNullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -4515,7 +4193,6 @@ func encodeTestRequestRequiredStringDecimalNullableArrayResponse(response *Error
 func encodeTestRequestRequiredStringDecimalNullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -4529,7 +4206,6 @@ func encodeTestRequestRequiredStringDecimalNullableArrayArrayResponse(response *
 func encodeTestRequestRequiredStringDurationResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -4543,7 +4219,6 @@ func encodeTestRequestRequiredStringDurationResponse(response *Error, w http.Res
 func encodeTestRequestRequiredStringDurationArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -4557,7 +4232,6 @@ func encodeTestRequestRequiredStringDurationArrayResponse(response *Error, w htt
 func encodeTestRequestRequiredStringDurationArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -4571,7 +4245,6 @@ func encodeTestRequestRequiredStringDurationArrayArrayResponse(response *Error, 
 func encodeTestRequestRequiredStringDurationNullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -4585,7 +4258,6 @@ func encodeTestRequestRequiredStringDurationNullableResponse(response *Error, w 
 func encodeTestRequestRequiredStringDurationNullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -4599,7 +4271,6 @@ func encodeTestRequestRequiredStringDurationNullableArrayResponse(response *Erro
 func encodeTestRequestRequiredStringDurationNullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -4613,7 +4284,6 @@ func encodeTestRequestRequiredStringDurationNullableArrayArrayResponse(response 
 func encodeTestRequestRequiredStringEmailResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -4627,7 +4297,6 @@ func encodeTestRequestRequiredStringEmailResponse(response *Error, w http.Respon
 func encodeTestRequestRequiredStringEmailArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -4641,7 +4310,6 @@ func encodeTestRequestRequiredStringEmailArrayResponse(response *Error, w http.R
 func encodeTestRequestRequiredStringEmailArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -4655,7 +4323,6 @@ func encodeTestRequestRequiredStringEmailArrayArrayResponse(response *Error, w h
 func encodeTestRequestRequiredStringEmailNullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -4669,7 +4336,6 @@ func encodeTestRequestRequiredStringEmailNullableResponse(response *Error, w htt
 func encodeTestRequestRequiredStringEmailNullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -4683,7 +4349,6 @@ func encodeTestRequestRequiredStringEmailNullableArrayResponse(response *Error, 
 func encodeTestRequestRequiredStringEmailNullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -4697,7 +4362,6 @@ func encodeTestRequestRequiredStringEmailNullableArrayArrayResponse(response *Er
 func encodeTestRequestRequiredStringFloat32Response(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -4711,7 +4375,6 @@ func encodeTestRequestRequiredStringFloat32Response(response *Error, w http.Resp
 func encodeTestRequestRequiredStringFloat32ArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -4725,7 +4388,6 @@ func encodeTestRequestRequiredStringFloat32ArrayResponse(response *Error, w http
 func encodeTestRequestRequiredStringFloat32ArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -4739,7 +4401,6 @@ func encodeTestRequestRequiredStringFloat32ArrayArrayResponse(response *Error, w
 func encodeTestRequestRequiredStringFloat32NullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -4753,7 +4414,6 @@ func encodeTestRequestRequiredStringFloat32NullableResponse(response *Error, w h
 func encodeTestRequestRequiredStringFloat32NullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -4767,7 +4427,6 @@ func encodeTestRequestRequiredStringFloat32NullableArrayResponse(response *Error
 func encodeTestRequestRequiredStringFloat32NullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -4781,7 +4440,6 @@ func encodeTestRequestRequiredStringFloat32NullableArrayArrayResponse(response *
 func encodeTestRequestRequiredStringFloat64Response(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -4795,7 +4453,6 @@ func encodeTestRequestRequiredStringFloat64Response(response *Error, w http.Resp
 func encodeTestRequestRequiredStringFloat64ArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -4809,7 +4466,6 @@ func encodeTestRequestRequiredStringFloat64ArrayResponse(response *Error, w http
 func encodeTestRequestRequiredStringFloat64ArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -4823,7 +4479,6 @@ func encodeTestRequestRequiredStringFloat64ArrayArrayResponse(response *Error, w
 func encodeTestRequestRequiredStringFloat64NullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -4837,7 +4492,6 @@ func encodeTestRequestRequiredStringFloat64NullableResponse(response *Error, w h
 func encodeTestRequestRequiredStringFloat64NullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -4851,7 +4505,6 @@ func encodeTestRequestRequiredStringFloat64NullableArrayResponse(response *Error
 func encodeTestRequestRequiredStringFloat64NullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -4865,7 +4518,6 @@ func encodeTestRequestRequiredStringFloat64NullableArrayArrayResponse(response *
 func encodeTestRequestRequiredStringHTTPDateResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -4879,7 +4531,6 @@ func encodeTestRequestRequiredStringHTTPDateResponse(response *Error, w http.Res
 func encodeTestRequestRequiredStringHTTPDateArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -4893,7 +4544,6 @@ func encodeTestRequestRequiredStringHTTPDateArrayResponse(response *Error, w htt
 func encodeTestRequestRequiredStringHTTPDateArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -4907,7 +4557,6 @@ func encodeTestRequestRequiredStringHTTPDateArrayArrayResponse(response *Error, 
 func encodeTestRequestRequiredStringHTTPDateNullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -4921,7 +4570,6 @@ func encodeTestRequestRequiredStringHTTPDateNullableResponse(response *Error, w 
 func encodeTestRequestRequiredStringHTTPDateNullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -4935,7 +4583,6 @@ func encodeTestRequestRequiredStringHTTPDateNullableArrayResponse(response *Erro
 func encodeTestRequestRequiredStringHTTPDateNullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -4949,7 +4596,6 @@ func encodeTestRequestRequiredStringHTTPDateNullableArrayArrayResponse(response 
 func encodeTestRequestRequiredStringHostnameResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -4963,7 +4609,6 @@ func encodeTestRequestRequiredStringHostnameResponse(response *Error, w http.Res
 func encodeTestRequestRequiredStringHostnameArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -4977,7 +4622,6 @@ func encodeTestRequestRequiredStringHostnameArrayResponse(response *Error, w htt
 func encodeTestRequestRequiredStringHostnameArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -4991,7 +4635,6 @@ func encodeTestRequestRequiredStringHostnameArrayArrayResponse(response *Error, 
 func encodeTestRequestRequiredStringHostnameNullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -5005,7 +4648,6 @@ func encodeTestRequestRequiredStringHostnameNullableResponse(response *Error, w 
 func encodeTestRequestRequiredStringHostnameNullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -5019,7 +4661,6 @@ func encodeTestRequestRequiredStringHostnameNullableArrayResponse(response *Erro
 func encodeTestRequestRequiredStringHostnameNullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -5033,7 +4674,6 @@ func encodeTestRequestRequiredStringHostnameNullableArrayArrayResponse(response 
 func encodeTestRequestRequiredStringIPResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -5047,7 +4687,6 @@ func encodeTestRequestRequiredStringIPResponse(response *Error, w http.ResponseW
 func encodeTestRequestRequiredStringIPArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -5061,7 +4700,6 @@ func encodeTestRequestRequiredStringIPArrayResponse(response *Error, w http.Resp
 func encodeTestRequestRequiredStringIPArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -5075,7 +4713,6 @@ func encodeTestRequestRequiredStringIPArrayArrayResponse(response *Error, w http
 func encodeTestRequestRequiredStringIPNullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -5089,7 +4726,6 @@ func encodeTestRequestRequiredStringIPNullableResponse(response *Error, w http.R
 func encodeTestRequestRequiredStringIPNullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -5103,7 +4739,6 @@ func encodeTestRequestRequiredStringIPNullableArrayResponse(response *Error, w h
 func encodeTestRequestRequiredStringIPNullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -5117,7 +4752,6 @@ func encodeTestRequestRequiredStringIPNullableArrayArrayResponse(response *Error
 func encodeTestRequestRequiredStringIntResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -5131,7 +4765,6 @@ func encodeTestRequestRequiredStringIntResponse(response *Error, w http.Response
 func encodeTestRequestRequiredStringInt16Response(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -5145,7 +4778,6 @@ func encodeTestRequestRequiredStringInt16Response(response *Error, w http.Respon
 func encodeTestRequestRequiredStringInt16ArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -5159,7 +4791,6 @@ func encodeTestRequestRequiredStringInt16ArrayResponse(response *Error, w http.R
 func encodeTestRequestRequiredStringInt16ArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -5173,7 +4804,6 @@ func encodeTestRequestRequiredStringInt16ArrayArrayResponse(response *Error, w h
 func encodeTestRequestRequiredStringInt16NullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -5187,7 +4817,6 @@ func encodeTestRequestRequiredStringInt16NullableResponse(response *Error, w htt
 func encodeTestRequestRequiredStringInt16NullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -5201,7 +4830,6 @@ func encodeTestRequestRequiredStringInt16NullableArrayResponse(response *Error, 
 func encodeTestRequestRequiredStringInt16NullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -5215,7 +4843,6 @@ func encodeTestRequestRequiredStringInt16NullableArrayArrayResponse(response *Er
 func encodeTestRequestRequiredStringInt32Response(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -5229,7 +4856,6 @@ func encodeTestRequestRequiredStringInt32Response(response *Error, w http.Respon
 func encodeTestRequestRequiredStringInt32ArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -5243,7 +4869,6 @@ func encodeTestRequestRequiredStringInt32ArrayResponse(response *Error, w http.R
 func encodeTestRequestRequiredStringInt32ArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -5257,7 +4882,6 @@ func encodeTestRequestRequiredStringInt32ArrayArrayResponse(response *Error, w h
 func encodeTestRequestRequiredStringInt32NullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -5271,7 +4895,6 @@ func encodeTestRequestRequiredStringInt32NullableResponse(response *Error, w htt
 func encodeTestRequestRequiredStringInt32NullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -5285,7 +4908,6 @@ func encodeTestRequestRequiredStringInt32NullableArrayResponse(response *Error, 
 func encodeTestRequestRequiredStringInt32NullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -5299,7 +4921,6 @@ func encodeTestRequestRequiredStringInt32NullableArrayArrayResponse(response *Er
 func encodeTestRequestRequiredStringInt64Response(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -5313,7 +4934,6 @@ func encodeTestRequestRequiredStringInt64Response(response *Error, w http.Respon
 func encodeTestRequestRequiredStringInt64ArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -5327,7 +4947,6 @@ func encodeTestRequestRequiredStringInt64ArrayResponse(response *Error, w http.R
 func encodeTestRequestRequiredStringInt64ArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -5341,7 +4960,6 @@ func encodeTestRequestRequiredStringInt64ArrayArrayResponse(response *Error, w h
 func encodeTestRequestRequiredStringInt64NullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -5355,7 +4973,6 @@ func encodeTestRequestRequiredStringInt64NullableResponse(response *Error, w htt
 func encodeTestRequestRequiredStringInt64NullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -5369,7 +4986,6 @@ func encodeTestRequestRequiredStringInt64NullableArrayResponse(response *Error, 
 func encodeTestRequestRequiredStringInt64NullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -5383,7 +4999,6 @@ func encodeTestRequestRequiredStringInt64NullableArrayArrayResponse(response *Er
 func encodeTestRequestRequiredStringInt8Response(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -5397,7 +5012,6 @@ func encodeTestRequestRequiredStringInt8Response(response *Error, w http.Respons
 func encodeTestRequestRequiredStringInt8ArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -5411,7 +5025,6 @@ func encodeTestRequestRequiredStringInt8ArrayResponse(response *Error, w http.Re
 func encodeTestRequestRequiredStringInt8ArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -5425,7 +5038,6 @@ func encodeTestRequestRequiredStringInt8ArrayArrayResponse(response *Error, w ht
 func encodeTestRequestRequiredStringInt8NullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -5439,7 +5051,6 @@ func encodeTestRequestRequiredStringInt8NullableResponse(response *Error, w http
 func encodeTestRequestRequiredStringInt8NullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -5453,7 +5064,6 @@ func encodeTestRequestRequiredStringInt8NullableArrayResponse(response *Error, w
 func encodeTestRequestRequiredStringInt8NullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -5467,7 +5077,6 @@ func encodeTestRequestRequiredStringInt8NullableArrayArrayResponse(response *Err
 func encodeTestRequestRequiredStringIntArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -5481,7 +5090,6 @@ func encodeTestRequestRequiredStringIntArrayResponse(response *Error, w http.Res
 func encodeTestRequestRequiredStringIntArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -5495,7 +5103,6 @@ func encodeTestRequestRequiredStringIntArrayArrayResponse(response *Error, w htt
 func encodeTestRequestRequiredStringIntNullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -5509,7 +5116,6 @@ func encodeTestRequestRequiredStringIntNullableResponse(response *Error, w http.
 func encodeTestRequestRequiredStringIntNullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -5523,7 +5129,6 @@ func encodeTestRequestRequiredStringIntNullableArrayResponse(response *Error, w 
 func encodeTestRequestRequiredStringIntNullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -5537,7 +5142,6 @@ func encodeTestRequestRequiredStringIntNullableArrayArrayResponse(response *Erro
 func encodeTestRequestRequiredStringIpv4Response(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -5551,7 +5155,6 @@ func encodeTestRequestRequiredStringIpv4Response(response *Error, w http.Respons
 func encodeTestRequestRequiredStringIpv4ArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -5565,7 +5168,6 @@ func encodeTestRequestRequiredStringIpv4ArrayResponse(response *Error, w http.Re
 func encodeTestRequestRequiredStringIpv4ArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -5579,7 +5181,6 @@ func encodeTestRequestRequiredStringIpv4ArrayArrayResponse(response *Error, w ht
 func encodeTestRequestRequiredStringIpv4NullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -5593,7 +5194,6 @@ func encodeTestRequestRequiredStringIpv4NullableResponse(response *Error, w http
 func encodeTestRequestRequiredStringIpv4NullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -5607,7 +5207,6 @@ func encodeTestRequestRequiredStringIpv4NullableArrayResponse(response *Error, w
 func encodeTestRequestRequiredStringIpv4NullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -5621,7 +5220,6 @@ func encodeTestRequestRequiredStringIpv4NullableArrayArrayResponse(response *Err
 func encodeTestRequestRequiredStringIpv6Response(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -5635,7 +5233,6 @@ func encodeTestRequestRequiredStringIpv6Response(response *Error, w http.Respons
 func encodeTestRequestRequiredStringIpv6ArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -5649,7 +5246,6 @@ func encodeTestRequestRequiredStringIpv6ArrayResponse(response *Error, w http.Re
 func encodeTestRequestRequiredStringIpv6ArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -5663,7 +5259,6 @@ func encodeTestRequestRequiredStringIpv6ArrayArrayResponse(response *Error, w ht
 func encodeTestRequestRequiredStringIpv6NullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -5677,7 +5272,6 @@ func encodeTestRequestRequiredStringIpv6NullableResponse(response *Error, w http
 func encodeTestRequestRequiredStringIpv6NullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -5691,7 +5285,6 @@ func encodeTestRequestRequiredStringIpv6NullableArrayResponse(response *Error, w
 func encodeTestRequestRequiredStringIpv6NullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -5705,7 +5298,6 @@ func encodeTestRequestRequiredStringIpv6NullableArrayArrayResponse(response *Err
 func encodeTestRequestRequiredStringMACResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -5719,7 +5311,6 @@ func encodeTestRequestRequiredStringMACResponse(response *Error, w http.Response
 func encodeTestRequestRequiredStringMACArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -5733,7 +5324,6 @@ func encodeTestRequestRequiredStringMACArrayResponse(response *Error, w http.Res
 func encodeTestRequestRequiredStringMACArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -5747,7 +5337,6 @@ func encodeTestRequestRequiredStringMACArrayArrayResponse(response *Error, w htt
 func encodeTestRequestRequiredStringMACNullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -5761,7 +5350,6 @@ func encodeTestRequestRequiredStringMACNullableResponse(response *Error, w http.
 func encodeTestRequestRequiredStringMACNullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -5775,7 +5363,6 @@ func encodeTestRequestRequiredStringMACNullableArrayResponse(response *Error, w 
 func encodeTestRequestRequiredStringMACNullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -5789,7 +5376,6 @@ func encodeTestRequestRequiredStringMACNullableArrayArrayResponse(response *Erro
 func encodeTestRequestRequiredStringNullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -5803,7 +5389,6 @@ func encodeTestRequestRequiredStringNullableResponse(response *Error, w http.Res
 func encodeTestRequestRequiredStringNullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -5817,7 +5402,6 @@ func encodeTestRequestRequiredStringNullableArrayResponse(response *Error, w htt
 func encodeTestRequestRequiredStringNullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -5831,7 +5415,6 @@ func encodeTestRequestRequiredStringNullableArrayArrayResponse(response *Error, 
 func encodeTestRequestRequiredStringPasswordResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -5845,7 +5428,6 @@ func encodeTestRequestRequiredStringPasswordResponse(response *Error, w http.Res
 func encodeTestRequestRequiredStringPasswordArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -5859,7 +5441,6 @@ func encodeTestRequestRequiredStringPasswordArrayResponse(response *Error, w htt
 func encodeTestRequestRequiredStringPasswordArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -5873,7 +5454,6 @@ func encodeTestRequestRequiredStringPasswordArrayArrayResponse(response *Error, 
 func encodeTestRequestRequiredStringPasswordNullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -5887,7 +5467,6 @@ func encodeTestRequestRequiredStringPasswordNullableResponse(response *Error, w 
 func encodeTestRequestRequiredStringPasswordNullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -5901,7 +5480,6 @@ func encodeTestRequestRequiredStringPasswordNullableArrayResponse(response *Erro
 func encodeTestRequestRequiredStringPasswordNullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -5915,7 +5493,6 @@ func encodeTestRequestRequiredStringPasswordNullableArrayArrayResponse(response 
 func encodeTestRequestRequiredStringTimeResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -5929,7 +5506,6 @@ func encodeTestRequestRequiredStringTimeResponse(response *Error, w http.Respons
 func encodeTestRequestRequiredStringTimeArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -5943,7 +5519,6 @@ func encodeTestRequestRequiredStringTimeArrayResponse(response *Error, w http.Re
 func encodeTestRequestRequiredStringTimeArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -5957,7 +5532,6 @@ func encodeTestRequestRequiredStringTimeArrayArrayResponse(response *Error, w ht
 func encodeTestRequestRequiredStringTimeNullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -5971,7 +5545,6 @@ func encodeTestRequestRequiredStringTimeNullableResponse(response *Error, w http
 func encodeTestRequestRequiredStringTimeNullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -5985,7 +5558,6 @@ func encodeTestRequestRequiredStringTimeNullableArrayResponse(response *Error, w
 func encodeTestRequestRequiredStringTimeNullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -5999,7 +5571,6 @@ func encodeTestRequestRequiredStringTimeNullableArrayArrayResponse(response *Err
 func encodeTestRequestRequiredStringURIResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -6013,7 +5584,6 @@ func encodeTestRequestRequiredStringURIResponse(response *Error, w http.Response
 func encodeTestRequestRequiredStringURIArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -6027,7 +5597,6 @@ func encodeTestRequestRequiredStringURIArrayResponse(response *Error, w http.Res
 func encodeTestRequestRequiredStringURIArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -6041,7 +5610,6 @@ func encodeTestRequestRequiredStringURIArrayArrayResponse(response *Error, w htt
 func encodeTestRequestRequiredStringURINullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -6055,7 +5623,6 @@ func encodeTestRequestRequiredStringURINullableResponse(response *Error, w http.
 func encodeTestRequestRequiredStringURINullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -6069,7 +5636,6 @@ func encodeTestRequestRequiredStringURINullableArrayResponse(response *Error, w 
 func encodeTestRequestRequiredStringURINullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -6083,7 +5649,6 @@ func encodeTestRequestRequiredStringURINullableArrayArrayResponse(response *Erro
 func encodeTestRequestRequiredStringUUIDResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -6097,7 +5662,6 @@ func encodeTestRequestRequiredStringUUIDResponse(response *Error, w http.Respons
 func encodeTestRequestRequiredStringUUIDArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -6111,7 +5675,6 @@ func encodeTestRequestRequiredStringUUIDArrayResponse(response *Error, w http.Re
 func encodeTestRequestRequiredStringUUIDArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -6125,7 +5688,6 @@ func encodeTestRequestRequiredStringUUIDArrayArrayResponse(response *Error, w ht
 func encodeTestRequestRequiredStringUUIDNullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -6139,7 +5701,6 @@ func encodeTestRequestRequiredStringUUIDNullableResponse(response *Error, w http
 func encodeTestRequestRequiredStringUUIDNullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -6153,7 +5714,6 @@ func encodeTestRequestRequiredStringUUIDNullableArrayResponse(response *Error, w
 func encodeTestRequestRequiredStringUUIDNullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -6167,7 +5727,6 @@ func encodeTestRequestRequiredStringUUIDNullableArrayArrayResponse(response *Err
 func encodeTestRequestRequiredStringUintResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -6181,7 +5740,6 @@ func encodeTestRequestRequiredStringUintResponse(response *Error, w http.Respons
 func encodeTestRequestRequiredStringUint16Response(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -6195,7 +5753,6 @@ func encodeTestRequestRequiredStringUint16Response(response *Error, w http.Respo
 func encodeTestRequestRequiredStringUint16ArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -6209,7 +5766,6 @@ func encodeTestRequestRequiredStringUint16ArrayResponse(response *Error, w http.
 func encodeTestRequestRequiredStringUint16ArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -6223,7 +5779,6 @@ func encodeTestRequestRequiredStringUint16ArrayArrayResponse(response *Error, w 
 func encodeTestRequestRequiredStringUint16NullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -6237,7 +5792,6 @@ func encodeTestRequestRequiredStringUint16NullableResponse(response *Error, w ht
 func encodeTestRequestRequiredStringUint16NullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -6251,7 +5805,6 @@ func encodeTestRequestRequiredStringUint16NullableArrayResponse(response *Error,
 func encodeTestRequestRequiredStringUint16NullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -6265,7 +5818,6 @@ func encodeTestRequestRequiredStringUint16NullableArrayArrayResponse(response *E
 func encodeTestRequestRequiredStringUint32Response(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -6279,7 +5831,6 @@ func encodeTestRequestRequiredStringUint32Response(response *Error, w http.Respo
 func encodeTestRequestRequiredStringUint32ArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -6293,7 +5844,6 @@ func encodeTestRequestRequiredStringUint32ArrayResponse(response *Error, w http.
 func encodeTestRequestRequiredStringUint32ArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -6307,7 +5857,6 @@ func encodeTestRequestRequiredStringUint32ArrayArrayResponse(response *Error, w 
 func encodeTestRequestRequiredStringUint32NullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -6321,7 +5870,6 @@ func encodeTestRequestRequiredStringUint32NullableResponse(response *Error, w ht
 func encodeTestRequestRequiredStringUint32NullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -6335,7 +5883,6 @@ func encodeTestRequestRequiredStringUint32NullableArrayResponse(response *Error,
 func encodeTestRequestRequiredStringUint32NullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -6349,7 +5896,6 @@ func encodeTestRequestRequiredStringUint32NullableArrayArrayResponse(response *E
 func encodeTestRequestRequiredStringUint64Response(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -6363,7 +5909,6 @@ func encodeTestRequestRequiredStringUint64Response(response *Error, w http.Respo
 func encodeTestRequestRequiredStringUint64ArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -6377,7 +5922,6 @@ func encodeTestRequestRequiredStringUint64ArrayResponse(response *Error, w http.
 func encodeTestRequestRequiredStringUint64ArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -6391,7 +5935,6 @@ func encodeTestRequestRequiredStringUint64ArrayArrayResponse(response *Error, w 
 func encodeTestRequestRequiredStringUint64NullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -6405,7 +5948,6 @@ func encodeTestRequestRequiredStringUint64NullableResponse(response *Error, w ht
 func encodeTestRequestRequiredStringUint64NullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -6419,7 +5961,6 @@ func encodeTestRequestRequiredStringUint64NullableArrayResponse(response *Error,
 func encodeTestRequestRequiredStringUint64NullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -6433,7 +5974,6 @@ func encodeTestRequestRequiredStringUint64NullableArrayArrayResponse(response *E
 func encodeTestRequestRequiredStringUint8Response(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -6447,7 +5987,6 @@ func encodeTestRequestRequiredStringUint8Response(response *Error, w http.Respon
 func encodeTestRequestRequiredStringUint8ArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -6461,7 +6000,6 @@ func encodeTestRequestRequiredStringUint8ArrayResponse(response *Error, w http.R
 func encodeTestRequestRequiredStringUint8ArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -6475,7 +6013,6 @@ func encodeTestRequestRequiredStringUint8ArrayArrayResponse(response *Error, w h
 func encodeTestRequestRequiredStringUint8NullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -6489,7 +6026,6 @@ func encodeTestRequestRequiredStringUint8NullableResponse(response *Error, w htt
 func encodeTestRequestRequiredStringUint8NullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -6503,7 +6039,6 @@ func encodeTestRequestRequiredStringUint8NullableArrayResponse(response *Error, 
 func encodeTestRequestRequiredStringUint8NullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -6517,7 +6052,6 @@ func encodeTestRequestRequiredStringUint8NullableArrayArrayResponse(response *Er
 func encodeTestRequestRequiredStringUintArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -6531,7 +6065,6 @@ func encodeTestRequestRequiredStringUintArrayResponse(response *Error, w http.Re
 func encodeTestRequestRequiredStringUintArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -6545,7 +6078,6 @@ func encodeTestRequestRequiredStringUintArrayArrayResponse(response *Error, w ht
 func encodeTestRequestRequiredStringUintNullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -6559,7 +6091,6 @@ func encodeTestRequestRequiredStringUintNullableResponse(response *Error, w http
 func encodeTestRequestRequiredStringUintNullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -6573,7 +6104,6 @@ func encodeTestRequestRequiredStringUintNullableArrayResponse(response *Error, w
 func encodeTestRequestRequiredStringUintNullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -6587,7 +6117,6 @@ func encodeTestRequestRequiredStringUintNullableArrayArrayResponse(response *Err
 func encodeTestRequestRequiredStringUnixResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -6601,7 +6130,6 @@ func encodeTestRequestRequiredStringUnixResponse(response *Error, w http.Respons
 func encodeTestRequestRequiredStringUnixArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -6615,7 +6143,6 @@ func encodeTestRequestRequiredStringUnixArrayResponse(response *Error, w http.Re
 func encodeTestRequestRequiredStringUnixArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -6629,7 +6156,6 @@ func encodeTestRequestRequiredStringUnixArrayArrayResponse(response *Error, w ht
 func encodeTestRequestRequiredStringUnixMicroResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -6643,7 +6169,6 @@ func encodeTestRequestRequiredStringUnixMicroResponse(response *Error, w http.Re
 func encodeTestRequestRequiredStringUnixMicroArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -6657,7 +6182,6 @@ func encodeTestRequestRequiredStringUnixMicroArrayResponse(response *Error, w ht
 func encodeTestRequestRequiredStringUnixMicroArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -6671,7 +6195,6 @@ func encodeTestRequestRequiredStringUnixMicroArrayArrayResponse(response *Error,
 func encodeTestRequestRequiredStringUnixMicroNullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -6685,7 +6208,6 @@ func encodeTestRequestRequiredStringUnixMicroNullableResponse(response *Error, w
 func encodeTestRequestRequiredStringUnixMicroNullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -6699,7 +6221,6 @@ func encodeTestRequestRequiredStringUnixMicroNullableArrayResponse(response *Err
 func encodeTestRequestRequiredStringUnixMicroNullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -6713,7 +6234,6 @@ func encodeTestRequestRequiredStringUnixMicroNullableArrayArrayResponse(response
 func encodeTestRequestRequiredStringUnixMilliResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -6727,7 +6247,6 @@ func encodeTestRequestRequiredStringUnixMilliResponse(response *Error, w http.Re
 func encodeTestRequestRequiredStringUnixMilliArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -6741,7 +6260,6 @@ func encodeTestRequestRequiredStringUnixMilliArrayResponse(response *Error, w ht
 func encodeTestRequestRequiredStringUnixMilliArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -6755,7 +6273,6 @@ func encodeTestRequestRequiredStringUnixMilliArrayArrayResponse(response *Error,
 func encodeTestRequestRequiredStringUnixMilliNullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -6769,7 +6286,6 @@ func encodeTestRequestRequiredStringUnixMilliNullableResponse(response *Error, w
 func encodeTestRequestRequiredStringUnixMilliNullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -6783,7 +6299,6 @@ func encodeTestRequestRequiredStringUnixMilliNullableArrayResponse(response *Err
 func encodeTestRequestRequiredStringUnixMilliNullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -6797,7 +6312,6 @@ func encodeTestRequestRequiredStringUnixMilliNullableArrayArrayResponse(response
 func encodeTestRequestRequiredStringUnixNanoResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -6811,7 +6325,6 @@ func encodeTestRequestRequiredStringUnixNanoResponse(response *Error, w http.Res
 func encodeTestRequestRequiredStringUnixNanoArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -6825,7 +6338,6 @@ func encodeTestRequestRequiredStringUnixNanoArrayResponse(response *Error, w htt
 func encodeTestRequestRequiredStringUnixNanoArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -6839,7 +6351,6 @@ func encodeTestRequestRequiredStringUnixNanoArrayArrayResponse(response *Error, 
 func encodeTestRequestRequiredStringUnixNanoNullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -6853,7 +6364,6 @@ func encodeTestRequestRequiredStringUnixNanoNullableResponse(response *Error, w 
 func encodeTestRequestRequiredStringUnixNanoNullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -6867,7 +6377,6 @@ func encodeTestRequestRequiredStringUnixNanoNullableArrayResponse(response *Erro
 func encodeTestRequestRequiredStringUnixNanoNullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -6881,7 +6390,6 @@ func encodeTestRequestRequiredStringUnixNanoNullableArrayArrayResponse(response 
 func encodeTestRequestRequiredStringUnixNullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -6895,7 +6403,6 @@ func encodeTestRequestRequiredStringUnixNullableResponse(response *Error, w http
 func encodeTestRequestRequiredStringUnixNullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -6909,7 +6416,6 @@ func encodeTestRequestRequiredStringUnixNullableArrayResponse(response *Error, w
 func encodeTestRequestRequiredStringUnixNullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -6923,7 +6429,6 @@ func encodeTestRequestRequiredStringUnixNullableArrayArrayResponse(response *Err
 func encodeTestRequestRequiredStringUnixSecondsResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -6937,7 +6442,6 @@ func encodeTestRequestRequiredStringUnixSecondsResponse(response *Error, w http.
 func encodeTestRequestRequiredStringUnixSecondsArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -6951,7 +6455,6 @@ func encodeTestRequestRequiredStringUnixSecondsArrayResponse(response *Error, w 
 func encodeTestRequestRequiredStringUnixSecondsArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -6965,7 +6468,6 @@ func encodeTestRequestRequiredStringUnixSecondsArrayArrayResponse(response *Erro
 func encodeTestRequestRequiredStringUnixSecondsNullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -6979,7 +6481,6 @@ func encodeTestRequestRequiredStringUnixSecondsNullableResponse(response *Error,
 func encodeTestRequestRequiredStringUnixSecondsNullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -6993,7 +6494,6 @@ func encodeTestRequestRequiredStringUnixSecondsNullableArrayResponse(response *E
 func encodeTestRequestRequiredStringUnixSecondsNullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -7007,7 +6507,6 @@ func encodeTestRequestRequiredStringUnixSecondsNullableArrayArrayResponse(respon
 func encodeTestRequestStringResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -7021,7 +6520,6 @@ func encodeTestRequestStringResponse(response *Error, w http.ResponseWriter, spa
 func encodeTestRequestStringArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -7035,7 +6533,6 @@ func encodeTestRequestStringArrayResponse(response *Error, w http.ResponseWriter
 func encodeTestRequestStringArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -7049,7 +6546,6 @@ func encodeTestRequestStringArrayArrayResponse(response *Error, w http.ResponseW
 func encodeTestRequestStringBase64Response(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -7063,7 +6559,6 @@ func encodeTestRequestStringBase64Response(response *Error, w http.ResponseWrite
 func encodeTestRequestStringBase64ArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -7077,7 +6572,6 @@ func encodeTestRequestStringBase64ArrayResponse(response *Error, w http.Response
 func encodeTestRequestStringBase64ArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -7091,7 +6585,6 @@ func encodeTestRequestStringBase64ArrayArrayResponse(response *Error, w http.Res
 func encodeTestRequestStringBase64NullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -7105,7 +6598,6 @@ func encodeTestRequestStringBase64NullableResponse(response *Error, w http.Respo
 func encodeTestRequestStringBase64NullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -7119,7 +6611,6 @@ func encodeTestRequestStringBase64NullableArrayResponse(response *Error, w http.
 func encodeTestRequestStringBase64NullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -7133,7 +6624,6 @@ func encodeTestRequestStringBase64NullableArrayArrayResponse(response *Error, w 
 func encodeTestRequestStringBinaryResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -7147,7 +6637,6 @@ func encodeTestRequestStringBinaryResponse(response *Error, w http.ResponseWrite
 func encodeTestRequestStringBinaryArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -7161,7 +6650,6 @@ func encodeTestRequestStringBinaryArrayResponse(response *Error, w http.Response
 func encodeTestRequestStringBinaryArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -7175,7 +6663,6 @@ func encodeTestRequestStringBinaryArrayArrayResponse(response *Error, w http.Res
 func encodeTestRequestStringBinaryNullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -7189,7 +6676,6 @@ func encodeTestRequestStringBinaryNullableResponse(response *Error, w http.Respo
 func encodeTestRequestStringBinaryNullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -7203,7 +6689,6 @@ func encodeTestRequestStringBinaryNullableArrayResponse(response *Error, w http.
 func encodeTestRequestStringBinaryNullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -7217,7 +6702,6 @@ func encodeTestRequestStringBinaryNullableArrayArrayResponse(response *Error, w 
 func encodeTestRequestStringByteResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -7231,7 +6715,6 @@ func encodeTestRequestStringByteResponse(response *Error, w http.ResponseWriter,
 func encodeTestRequestStringByteArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -7245,7 +6728,6 @@ func encodeTestRequestStringByteArrayResponse(response *Error, w http.ResponseWr
 func encodeTestRequestStringByteArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -7259,7 +6741,6 @@ func encodeTestRequestStringByteArrayArrayResponse(response *Error, w http.Respo
 func encodeTestRequestStringByteNullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -7273,7 +6754,6 @@ func encodeTestRequestStringByteNullableResponse(response *Error, w http.Respons
 func encodeTestRequestStringByteNullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -7287,7 +6767,6 @@ func encodeTestRequestStringByteNullableArrayResponse(response *Error, w http.Re
 func encodeTestRequestStringByteNullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -7301,7 +6780,6 @@ func encodeTestRequestStringByteNullableArrayArrayResponse(response *Error, w ht
 func encodeTestRequestStringDateResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -7315,7 +6793,6 @@ func encodeTestRequestStringDateResponse(response *Error, w http.ResponseWriter,
 func encodeTestRequestStringDateArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -7329,7 +6806,6 @@ func encodeTestRequestStringDateArrayResponse(response *Error, w http.ResponseWr
 func encodeTestRequestStringDateArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -7343,7 +6819,6 @@ func encodeTestRequestStringDateArrayArrayResponse(response *Error, w http.Respo
 func encodeTestRequestStringDateNullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -7357,7 +6832,6 @@ func encodeTestRequestStringDateNullableResponse(response *Error, w http.Respons
 func encodeTestRequestStringDateNullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -7371,7 +6845,6 @@ func encodeTestRequestStringDateNullableArrayResponse(response *Error, w http.Re
 func encodeTestRequestStringDateNullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -7385,7 +6858,6 @@ func encodeTestRequestStringDateNullableArrayArrayResponse(response *Error, w ht
 func encodeTestRequestStringDateTimeResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -7399,7 +6871,6 @@ func encodeTestRequestStringDateTimeResponse(response *Error, w http.ResponseWri
 func encodeTestRequestStringDateTimeArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -7413,7 +6884,6 @@ func encodeTestRequestStringDateTimeArrayResponse(response *Error, w http.Respon
 func encodeTestRequestStringDateTimeArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -7427,7 +6897,6 @@ func encodeTestRequestStringDateTimeArrayArrayResponse(response *Error, w http.R
 func encodeTestRequestStringDateTimeNullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -7441,7 +6910,6 @@ func encodeTestRequestStringDateTimeNullableResponse(response *Error, w http.Res
 func encodeTestRequestStringDateTimeNullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -7455,7 +6923,6 @@ func encodeTestRequestStringDateTimeNullableArrayResponse(response *Error, w htt
 func encodeTestRequestStringDateTimeNullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -7469,7 +6936,6 @@ func encodeTestRequestStringDateTimeNullableArrayArrayResponse(response *Error, 
 func encodeTestRequestStringDecimalResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -7483,7 +6949,6 @@ func encodeTestRequestStringDecimalResponse(response *Error, w http.ResponseWrit
 func encodeTestRequestStringDecimalArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -7497,7 +6962,6 @@ func encodeTestRequestStringDecimalArrayResponse(response *Error, w http.Respons
 func encodeTestRequestStringDecimalArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -7511,7 +6975,6 @@ func encodeTestRequestStringDecimalArrayArrayResponse(response *Error, w http.Re
 func encodeTestRequestStringDecimalNullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -7525,7 +6988,6 @@ func encodeTestRequestStringDecimalNullableResponse(response *Error, w http.Resp
 func encodeTestRequestStringDecimalNullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -7539,7 +7001,6 @@ func encodeTestRequestStringDecimalNullableArrayResponse(response *Error, w http
 func encodeTestRequestStringDecimalNullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -7553,7 +7014,6 @@ func encodeTestRequestStringDecimalNullableArrayArrayResponse(response *Error, w
 func encodeTestRequestStringDurationResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -7567,7 +7027,6 @@ func encodeTestRequestStringDurationResponse(response *Error, w http.ResponseWri
 func encodeTestRequestStringDurationArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -7581,7 +7040,6 @@ func encodeTestRequestStringDurationArrayResponse(response *Error, w http.Respon
 func encodeTestRequestStringDurationArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -7595,7 +7053,6 @@ func encodeTestRequestStringDurationArrayArrayResponse(response *Error, w http.R
 func encodeTestRequestStringDurationNullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -7609,7 +7066,6 @@ func encodeTestRequestStringDurationNullableResponse(response *Error, w http.Res
 func encodeTestRequestStringDurationNullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -7623,7 +7079,6 @@ func encodeTestRequestStringDurationNullableArrayResponse(response *Error, w htt
 func encodeTestRequestStringDurationNullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -7637,7 +7092,6 @@ func encodeTestRequestStringDurationNullableArrayArrayResponse(response *Error, 
 func encodeTestRequestStringEmailResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -7651,7 +7105,6 @@ func encodeTestRequestStringEmailResponse(response *Error, w http.ResponseWriter
 func encodeTestRequestStringEmailArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -7665,7 +7118,6 @@ func encodeTestRequestStringEmailArrayResponse(response *Error, w http.ResponseW
 func encodeTestRequestStringEmailArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -7679,7 +7131,6 @@ func encodeTestRequestStringEmailArrayArrayResponse(response *Error, w http.Resp
 func encodeTestRequestStringEmailNullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -7693,7 +7144,6 @@ func encodeTestRequestStringEmailNullableResponse(response *Error, w http.Respon
 func encodeTestRequestStringEmailNullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -7707,7 +7157,6 @@ func encodeTestRequestStringEmailNullableArrayResponse(response *Error, w http.R
 func encodeTestRequestStringEmailNullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -7721,7 +7170,6 @@ func encodeTestRequestStringEmailNullableArrayArrayResponse(response *Error, w h
 func encodeTestRequestStringFloat32Response(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -7735,7 +7183,6 @@ func encodeTestRequestStringFloat32Response(response *Error, w http.ResponseWrit
 func encodeTestRequestStringFloat32ArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -7749,7 +7196,6 @@ func encodeTestRequestStringFloat32ArrayResponse(response *Error, w http.Respons
 func encodeTestRequestStringFloat32ArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -7763,7 +7209,6 @@ func encodeTestRequestStringFloat32ArrayArrayResponse(response *Error, w http.Re
 func encodeTestRequestStringFloat32NullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -7777,7 +7222,6 @@ func encodeTestRequestStringFloat32NullableResponse(response *Error, w http.Resp
 func encodeTestRequestStringFloat32NullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -7791,7 +7235,6 @@ func encodeTestRequestStringFloat32NullableArrayResponse(response *Error, w http
 func encodeTestRequestStringFloat32NullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -7805,7 +7248,6 @@ func encodeTestRequestStringFloat32NullableArrayArrayResponse(response *Error, w
 func encodeTestRequestStringFloat64Response(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -7819,7 +7261,6 @@ func encodeTestRequestStringFloat64Response(response *Error, w http.ResponseWrit
 func encodeTestRequestStringFloat64ArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -7833,7 +7274,6 @@ func encodeTestRequestStringFloat64ArrayResponse(response *Error, w http.Respons
 func encodeTestRequestStringFloat64ArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -7847,7 +7287,6 @@ func encodeTestRequestStringFloat64ArrayArrayResponse(response *Error, w http.Re
 func encodeTestRequestStringFloat64NullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -7861,7 +7300,6 @@ func encodeTestRequestStringFloat64NullableResponse(response *Error, w http.Resp
 func encodeTestRequestStringFloat64NullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -7875,7 +7313,6 @@ func encodeTestRequestStringFloat64NullableArrayResponse(response *Error, w http
 func encodeTestRequestStringFloat64NullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -7889,7 +7326,6 @@ func encodeTestRequestStringFloat64NullableArrayArrayResponse(response *Error, w
 func encodeTestRequestStringHTTPDateResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -7903,7 +7339,6 @@ func encodeTestRequestStringHTTPDateResponse(response *Error, w http.ResponseWri
 func encodeTestRequestStringHTTPDateArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -7917,7 +7352,6 @@ func encodeTestRequestStringHTTPDateArrayResponse(response *Error, w http.Respon
 func encodeTestRequestStringHTTPDateArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -7931,7 +7365,6 @@ func encodeTestRequestStringHTTPDateArrayArrayResponse(response *Error, w http.R
 func encodeTestRequestStringHTTPDateNullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -7945,7 +7378,6 @@ func encodeTestRequestStringHTTPDateNullableResponse(response *Error, w http.Res
 func encodeTestRequestStringHTTPDateNullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -7959,7 +7391,6 @@ func encodeTestRequestStringHTTPDateNullableArrayResponse(response *Error, w htt
 func encodeTestRequestStringHTTPDateNullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -7973,7 +7404,6 @@ func encodeTestRequestStringHTTPDateNullableArrayArrayResponse(response *Error, 
 func encodeTestRequestStringHostnameResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -7987,7 +7417,6 @@ func encodeTestRequestStringHostnameResponse(response *Error, w http.ResponseWri
 func encodeTestRequestStringHostnameArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -8001,7 +7430,6 @@ func encodeTestRequestStringHostnameArrayResponse(response *Error, w http.Respon
 func encodeTestRequestStringHostnameArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -8015,7 +7443,6 @@ func encodeTestRequestStringHostnameArrayArrayResponse(response *Error, w http.R
 func encodeTestRequestStringHostnameNullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -8029,7 +7456,6 @@ func encodeTestRequestStringHostnameNullableResponse(response *Error, w http.Res
 func encodeTestRequestStringHostnameNullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -8043,7 +7469,6 @@ func encodeTestRequestStringHostnameNullableArrayResponse(response *Error, w htt
 func encodeTestRequestStringHostnameNullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -8057,7 +7482,6 @@ func encodeTestRequestStringHostnameNullableArrayArrayResponse(response *Error, 
 func encodeTestRequestStringIPResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -8071,7 +7495,6 @@ func encodeTestRequestStringIPResponse(response *Error, w http.ResponseWriter, s
 func encodeTestRequestStringIPArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -8085,7 +7508,6 @@ func encodeTestRequestStringIPArrayResponse(response *Error, w http.ResponseWrit
 func encodeTestRequestStringIPArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -8099,7 +7521,6 @@ func encodeTestRequestStringIPArrayArrayResponse(response *Error, w http.Respons
 func encodeTestRequestStringIPNullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -8113,7 +7534,6 @@ func encodeTestRequestStringIPNullableResponse(response *Error, w http.ResponseW
 func encodeTestRequestStringIPNullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -8127,7 +7547,6 @@ func encodeTestRequestStringIPNullableArrayResponse(response *Error, w http.Resp
 func encodeTestRequestStringIPNullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -8141,7 +7560,6 @@ func encodeTestRequestStringIPNullableArrayArrayResponse(response *Error, w http
 func encodeTestRequestStringIntResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -8155,7 +7573,6 @@ func encodeTestRequestStringIntResponse(response *Error, w http.ResponseWriter, 
 func encodeTestRequestStringInt16Response(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -8169,7 +7586,6 @@ func encodeTestRequestStringInt16Response(response *Error, w http.ResponseWriter
 func encodeTestRequestStringInt16ArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -8183,7 +7599,6 @@ func encodeTestRequestStringInt16ArrayResponse(response *Error, w http.ResponseW
 func encodeTestRequestStringInt16ArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -8197,7 +7612,6 @@ func encodeTestRequestStringInt16ArrayArrayResponse(response *Error, w http.Resp
 func encodeTestRequestStringInt16NullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -8211,7 +7625,6 @@ func encodeTestRequestStringInt16NullableResponse(response *Error, w http.Respon
 func encodeTestRequestStringInt16NullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -8225,7 +7638,6 @@ func encodeTestRequestStringInt16NullableArrayResponse(response *Error, w http.R
 func encodeTestRequestStringInt16NullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -8239,7 +7651,6 @@ func encodeTestRequestStringInt16NullableArrayArrayResponse(response *Error, w h
 func encodeTestRequestStringInt32Response(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -8253,7 +7664,6 @@ func encodeTestRequestStringInt32Response(response *Error, w http.ResponseWriter
 func encodeTestRequestStringInt32ArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -8267,7 +7677,6 @@ func encodeTestRequestStringInt32ArrayResponse(response *Error, w http.ResponseW
 func encodeTestRequestStringInt32ArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -8281,7 +7690,6 @@ func encodeTestRequestStringInt32ArrayArrayResponse(response *Error, w http.Resp
 func encodeTestRequestStringInt32NullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -8295,7 +7703,6 @@ func encodeTestRequestStringInt32NullableResponse(response *Error, w http.Respon
 func encodeTestRequestStringInt32NullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -8309,7 +7716,6 @@ func encodeTestRequestStringInt32NullableArrayResponse(response *Error, w http.R
 func encodeTestRequestStringInt32NullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -8323,7 +7729,6 @@ func encodeTestRequestStringInt32NullableArrayArrayResponse(response *Error, w h
 func encodeTestRequestStringInt64Response(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -8337,7 +7742,6 @@ func encodeTestRequestStringInt64Response(response *Error, w http.ResponseWriter
 func encodeTestRequestStringInt64ArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -8351,7 +7755,6 @@ func encodeTestRequestStringInt64ArrayResponse(response *Error, w http.ResponseW
 func encodeTestRequestStringInt64ArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -8365,7 +7768,6 @@ func encodeTestRequestStringInt64ArrayArrayResponse(response *Error, w http.Resp
 func encodeTestRequestStringInt64NullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -8379,7 +7781,6 @@ func encodeTestRequestStringInt64NullableResponse(response *Error, w http.Respon
 func encodeTestRequestStringInt64NullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -8393,7 +7794,6 @@ func encodeTestRequestStringInt64NullableArrayResponse(response *Error, w http.R
 func encodeTestRequestStringInt64NullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -8407,7 +7807,6 @@ func encodeTestRequestStringInt64NullableArrayArrayResponse(response *Error, w h
 func encodeTestRequestStringInt8Response(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -8421,7 +7820,6 @@ func encodeTestRequestStringInt8Response(response *Error, w http.ResponseWriter,
 func encodeTestRequestStringInt8ArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -8435,7 +7833,6 @@ func encodeTestRequestStringInt8ArrayResponse(response *Error, w http.ResponseWr
 func encodeTestRequestStringInt8ArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -8449,7 +7846,6 @@ func encodeTestRequestStringInt8ArrayArrayResponse(response *Error, w http.Respo
 func encodeTestRequestStringInt8NullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -8463,7 +7859,6 @@ func encodeTestRequestStringInt8NullableResponse(response *Error, w http.Respons
 func encodeTestRequestStringInt8NullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -8477,7 +7872,6 @@ func encodeTestRequestStringInt8NullableArrayResponse(response *Error, w http.Re
 func encodeTestRequestStringInt8NullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -8491,7 +7885,6 @@ func encodeTestRequestStringInt8NullableArrayArrayResponse(response *Error, w ht
 func encodeTestRequestStringIntArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -8505,7 +7898,6 @@ func encodeTestRequestStringIntArrayResponse(response *Error, w http.ResponseWri
 func encodeTestRequestStringIntArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -8519,7 +7911,6 @@ func encodeTestRequestStringIntArrayArrayResponse(response *Error, w http.Respon
 func encodeTestRequestStringIntNullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -8533,7 +7924,6 @@ func encodeTestRequestStringIntNullableResponse(response *Error, w http.Response
 func encodeTestRequestStringIntNullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -8547,7 +7937,6 @@ func encodeTestRequestStringIntNullableArrayResponse(response *Error, w http.Res
 func encodeTestRequestStringIntNullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -8561,7 +7950,6 @@ func encodeTestRequestStringIntNullableArrayArrayResponse(response *Error, w htt
 func encodeTestRequestStringIpv4Response(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -8575,7 +7963,6 @@ func encodeTestRequestStringIpv4Response(response *Error, w http.ResponseWriter,
 func encodeTestRequestStringIpv4ArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -8589,7 +7976,6 @@ func encodeTestRequestStringIpv4ArrayResponse(response *Error, w http.ResponseWr
 func encodeTestRequestStringIpv4ArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -8603,7 +7989,6 @@ func encodeTestRequestStringIpv4ArrayArrayResponse(response *Error, w http.Respo
 func encodeTestRequestStringIpv4NullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -8617,7 +8002,6 @@ func encodeTestRequestStringIpv4NullableResponse(response *Error, w http.Respons
 func encodeTestRequestStringIpv4NullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -8631,7 +8015,6 @@ func encodeTestRequestStringIpv4NullableArrayResponse(response *Error, w http.Re
 func encodeTestRequestStringIpv4NullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -8645,7 +8028,6 @@ func encodeTestRequestStringIpv4NullableArrayArrayResponse(response *Error, w ht
 func encodeTestRequestStringIpv6Response(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -8659,7 +8041,6 @@ func encodeTestRequestStringIpv6Response(response *Error, w http.ResponseWriter,
 func encodeTestRequestStringIpv6ArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -8673,7 +8054,6 @@ func encodeTestRequestStringIpv6ArrayResponse(response *Error, w http.ResponseWr
 func encodeTestRequestStringIpv6ArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -8687,7 +8067,6 @@ func encodeTestRequestStringIpv6ArrayArrayResponse(response *Error, w http.Respo
 func encodeTestRequestStringIpv6NullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -8701,7 +8080,6 @@ func encodeTestRequestStringIpv6NullableResponse(response *Error, w http.Respons
 func encodeTestRequestStringIpv6NullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -8715,7 +8093,6 @@ func encodeTestRequestStringIpv6NullableArrayResponse(response *Error, w http.Re
 func encodeTestRequestStringIpv6NullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -8729,7 +8106,6 @@ func encodeTestRequestStringIpv6NullableArrayArrayResponse(response *Error, w ht
 func encodeTestRequestStringMACResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -8743,7 +8119,6 @@ func encodeTestRequestStringMACResponse(response *Error, w http.ResponseWriter, 
 func encodeTestRequestStringMACArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -8757,7 +8132,6 @@ func encodeTestRequestStringMACArrayResponse(response *Error, w http.ResponseWri
 func encodeTestRequestStringMACArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -8771,7 +8145,6 @@ func encodeTestRequestStringMACArrayArrayResponse(response *Error, w http.Respon
 func encodeTestRequestStringMACNullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -8785,7 +8158,6 @@ func encodeTestRequestStringMACNullableResponse(response *Error, w http.Response
 func encodeTestRequestStringMACNullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -8799,7 +8171,6 @@ func encodeTestRequestStringMACNullableArrayResponse(response *Error, w http.Res
 func encodeTestRequestStringMACNullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -8813,7 +8184,6 @@ func encodeTestRequestStringMACNullableArrayArrayResponse(response *Error, w htt
 func encodeTestRequestStringNullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -8827,7 +8197,6 @@ func encodeTestRequestStringNullableResponse(response *Error, w http.ResponseWri
 func encodeTestRequestStringNullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -8841,7 +8210,6 @@ func encodeTestRequestStringNullableArrayResponse(response *Error, w http.Respon
 func encodeTestRequestStringNullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -8855,7 +8223,6 @@ func encodeTestRequestStringNullableArrayArrayResponse(response *Error, w http.R
 func encodeTestRequestStringPasswordResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -8869,7 +8236,6 @@ func encodeTestRequestStringPasswordResponse(response *Error, w http.ResponseWri
 func encodeTestRequestStringPasswordArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -8883,7 +8249,6 @@ func encodeTestRequestStringPasswordArrayResponse(response *Error, w http.Respon
 func encodeTestRequestStringPasswordArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -8897,7 +8262,6 @@ func encodeTestRequestStringPasswordArrayArrayResponse(response *Error, w http.R
 func encodeTestRequestStringPasswordNullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -8911,7 +8275,6 @@ func encodeTestRequestStringPasswordNullableResponse(response *Error, w http.Res
 func encodeTestRequestStringPasswordNullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -8925,7 +8288,6 @@ func encodeTestRequestStringPasswordNullableArrayResponse(response *Error, w htt
 func encodeTestRequestStringPasswordNullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -8939,7 +8301,6 @@ func encodeTestRequestStringPasswordNullableArrayArrayResponse(response *Error, 
 func encodeTestRequestStringTimeResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -8953,7 +8314,6 @@ func encodeTestRequestStringTimeResponse(response *Error, w http.ResponseWriter,
 func encodeTestRequestStringTimeArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -8967,7 +8327,6 @@ func encodeTestRequestStringTimeArrayResponse(response *Error, w http.ResponseWr
 func encodeTestRequestStringTimeArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -8981,7 +8340,6 @@ func encodeTestRequestStringTimeArrayArrayResponse(response *Error, w http.Respo
 func encodeTestRequestStringTimeNullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -8995,7 +8353,6 @@ func encodeTestRequestStringTimeNullableResponse(response *Error, w http.Respons
 func encodeTestRequestStringTimeNullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -9009,7 +8366,6 @@ func encodeTestRequestStringTimeNullableArrayResponse(response *Error, w http.Re
 func encodeTestRequestStringTimeNullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -9023,7 +8379,6 @@ func encodeTestRequestStringTimeNullableArrayArrayResponse(response *Error, w ht
 func encodeTestRequestStringURIResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -9037,7 +8392,6 @@ func encodeTestRequestStringURIResponse(response *Error, w http.ResponseWriter, 
 func encodeTestRequestStringURIArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -9051,7 +8405,6 @@ func encodeTestRequestStringURIArrayResponse(response *Error, w http.ResponseWri
 func encodeTestRequestStringURIArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -9065,7 +8418,6 @@ func encodeTestRequestStringURIArrayArrayResponse(response *Error, w http.Respon
 func encodeTestRequestStringURINullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -9079,7 +8431,6 @@ func encodeTestRequestStringURINullableResponse(response *Error, w http.Response
 func encodeTestRequestStringURINullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -9093,7 +8444,6 @@ func encodeTestRequestStringURINullableArrayResponse(response *Error, w http.Res
 func encodeTestRequestStringURINullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -9107,7 +8457,6 @@ func encodeTestRequestStringURINullableArrayArrayResponse(response *Error, w htt
 func encodeTestRequestStringUUIDResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -9121,7 +8470,6 @@ func encodeTestRequestStringUUIDResponse(response *Error, w http.ResponseWriter,
 func encodeTestRequestStringUUIDArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -9135,7 +8483,6 @@ func encodeTestRequestStringUUIDArrayResponse(response *Error, w http.ResponseWr
 func encodeTestRequestStringUUIDArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -9149,7 +8496,6 @@ func encodeTestRequestStringUUIDArrayArrayResponse(response *Error, w http.Respo
 func encodeTestRequestStringUUIDNullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -9163,7 +8509,6 @@ func encodeTestRequestStringUUIDNullableResponse(response *Error, w http.Respons
 func encodeTestRequestStringUUIDNullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -9177,7 +8522,6 @@ func encodeTestRequestStringUUIDNullableArrayResponse(response *Error, w http.Re
 func encodeTestRequestStringUUIDNullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -9191,7 +8535,6 @@ func encodeTestRequestStringUUIDNullableArrayArrayResponse(response *Error, w ht
 func encodeTestRequestStringUintResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -9205,7 +8548,6 @@ func encodeTestRequestStringUintResponse(response *Error, w http.ResponseWriter,
 func encodeTestRequestStringUint16Response(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -9219,7 +8561,6 @@ func encodeTestRequestStringUint16Response(response *Error, w http.ResponseWrite
 func encodeTestRequestStringUint16ArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -9233,7 +8574,6 @@ func encodeTestRequestStringUint16ArrayResponse(response *Error, w http.Response
 func encodeTestRequestStringUint16ArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -9247,7 +8587,6 @@ func encodeTestRequestStringUint16ArrayArrayResponse(response *Error, w http.Res
 func encodeTestRequestStringUint16NullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -9261,7 +8600,6 @@ func encodeTestRequestStringUint16NullableResponse(response *Error, w http.Respo
 func encodeTestRequestStringUint16NullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -9275,7 +8613,6 @@ func encodeTestRequestStringUint16NullableArrayResponse(response *Error, w http.
 func encodeTestRequestStringUint16NullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -9289,7 +8626,6 @@ func encodeTestRequestStringUint16NullableArrayArrayResponse(response *Error, w 
 func encodeTestRequestStringUint32Response(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -9303,7 +8639,6 @@ func encodeTestRequestStringUint32Response(response *Error, w http.ResponseWrite
 func encodeTestRequestStringUint32ArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -9317,7 +8652,6 @@ func encodeTestRequestStringUint32ArrayResponse(response *Error, w http.Response
 func encodeTestRequestStringUint32ArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -9331,7 +8665,6 @@ func encodeTestRequestStringUint32ArrayArrayResponse(response *Error, w http.Res
 func encodeTestRequestStringUint32NullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -9345,7 +8678,6 @@ func encodeTestRequestStringUint32NullableResponse(response *Error, w http.Respo
 func encodeTestRequestStringUint32NullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -9359,7 +8691,6 @@ func encodeTestRequestStringUint32NullableArrayResponse(response *Error, w http.
 func encodeTestRequestStringUint32NullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -9373,7 +8704,6 @@ func encodeTestRequestStringUint32NullableArrayArrayResponse(response *Error, w 
 func encodeTestRequestStringUint64Response(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -9387,7 +8717,6 @@ func encodeTestRequestStringUint64Response(response *Error, w http.ResponseWrite
 func encodeTestRequestStringUint64ArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -9401,7 +8730,6 @@ func encodeTestRequestStringUint64ArrayResponse(response *Error, w http.Response
 func encodeTestRequestStringUint64ArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -9415,7 +8743,6 @@ func encodeTestRequestStringUint64ArrayArrayResponse(response *Error, w http.Res
 func encodeTestRequestStringUint64NullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -9429,7 +8756,6 @@ func encodeTestRequestStringUint64NullableResponse(response *Error, w http.Respo
 func encodeTestRequestStringUint64NullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -9443,7 +8769,6 @@ func encodeTestRequestStringUint64NullableArrayResponse(response *Error, w http.
 func encodeTestRequestStringUint64NullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -9457,7 +8782,6 @@ func encodeTestRequestStringUint64NullableArrayArrayResponse(response *Error, w 
 func encodeTestRequestStringUint8Response(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -9471,7 +8795,6 @@ func encodeTestRequestStringUint8Response(response *Error, w http.ResponseWriter
 func encodeTestRequestStringUint8ArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -9485,7 +8808,6 @@ func encodeTestRequestStringUint8ArrayResponse(response *Error, w http.ResponseW
 func encodeTestRequestStringUint8ArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -9499,7 +8821,6 @@ func encodeTestRequestStringUint8ArrayArrayResponse(response *Error, w http.Resp
 func encodeTestRequestStringUint8NullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -9513,7 +8834,6 @@ func encodeTestRequestStringUint8NullableResponse(response *Error, w http.Respon
 func encodeTestRequestStringUint8NullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -9527,7 +8847,6 @@ func encodeTestRequestStringUint8NullableArrayResponse(response *Error, w http.R
 func encodeTestRequestStringUint8NullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -9541,7 +8860,6 @@ func encodeTestRequestStringUint8NullableArrayArrayResponse(response *Error, w h
 func encodeTestRequestStringUintArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -9555,7 +8873,6 @@ func encodeTestRequestStringUintArrayResponse(response *Error, w http.ResponseWr
 func encodeTestRequestStringUintArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -9569,7 +8886,6 @@ func encodeTestRequestStringUintArrayArrayResponse(response *Error, w http.Respo
 func encodeTestRequestStringUintNullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -9583,7 +8899,6 @@ func encodeTestRequestStringUintNullableResponse(response *Error, w http.Respons
 func encodeTestRequestStringUintNullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -9597,7 +8912,6 @@ func encodeTestRequestStringUintNullableArrayResponse(response *Error, w http.Re
 func encodeTestRequestStringUintNullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -9611,7 +8925,6 @@ func encodeTestRequestStringUintNullableArrayArrayResponse(response *Error, w ht
 func encodeTestRequestStringUnixResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -9625,7 +8938,6 @@ func encodeTestRequestStringUnixResponse(response *Error, w http.ResponseWriter,
 func encodeTestRequestStringUnixArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -9639,7 +8951,6 @@ func encodeTestRequestStringUnixArrayResponse(response *Error, w http.ResponseWr
 func encodeTestRequestStringUnixArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -9653,7 +8964,6 @@ func encodeTestRequestStringUnixArrayArrayResponse(response *Error, w http.Respo
 func encodeTestRequestStringUnixMicroResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -9667,7 +8977,6 @@ func encodeTestRequestStringUnixMicroResponse(response *Error, w http.ResponseWr
 func encodeTestRequestStringUnixMicroArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -9681,7 +8990,6 @@ func encodeTestRequestStringUnixMicroArrayResponse(response *Error, w http.Respo
 func encodeTestRequestStringUnixMicroArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -9695,7 +9003,6 @@ func encodeTestRequestStringUnixMicroArrayArrayResponse(response *Error, w http.
 func encodeTestRequestStringUnixMicroNullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -9709,7 +9016,6 @@ func encodeTestRequestStringUnixMicroNullableResponse(response *Error, w http.Re
 func encodeTestRequestStringUnixMicroNullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -9723,7 +9029,6 @@ func encodeTestRequestStringUnixMicroNullableArrayResponse(response *Error, w ht
 func encodeTestRequestStringUnixMicroNullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -9737,7 +9042,6 @@ func encodeTestRequestStringUnixMicroNullableArrayArrayResponse(response *Error,
 func encodeTestRequestStringUnixMilliResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -9751,7 +9055,6 @@ func encodeTestRequestStringUnixMilliResponse(response *Error, w http.ResponseWr
 func encodeTestRequestStringUnixMilliArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -9765,7 +9068,6 @@ func encodeTestRequestStringUnixMilliArrayResponse(response *Error, w http.Respo
 func encodeTestRequestStringUnixMilliArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -9779,7 +9081,6 @@ func encodeTestRequestStringUnixMilliArrayArrayResponse(response *Error, w http.
 func encodeTestRequestStringUnixMilliNullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -9793,7 +9094,6 @@ func encodeTestRequestStringUnixMilliNullableResponse(response *Error, w http.Re
 func encodeTestRequestStringUnixMilliNullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -9807,7 +9107,6 @@ func encodeTestRequestStringUnixMilliNullableArrayResponse(response *Error, w ht
 func encodeTestRequestStringUnixMilliNullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -9821,7 +9120,6 @@ func encodeTestRequestStringUnixMilliNullableArrayArrayResponse(response *Error,
 func encodeTestRequestStringUnixNanoResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -9835,7 +9133,6 @@ func encodeTestRequestStringUnixNanoResponse(response *Error, w http.ResponseWri
 func encodeTestRequestStringUnixNanoArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -9849,7 +9146,6 @@ func encodeTestRequestStringUnixNanoArrayResponse(response *Error, w http.Respon
 func encodeTestRequestStringUnixNanoArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -9863,7 +9159,6 @@ func encodeTestRequestStringUnixNanoArrayArrayResponse(response *Error, w http.R
 func encodeTestRequestStringUnixNanoNullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -9877,7 +9172,6 @@ func encodeTestRequestStringUnixNanoNullableResponse(response *Error, w http.Res
 func encodeTestRequestStringUnixNanoNullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -9891,7 +9185,6 @@ func encodeTestRequestStringUnixNanoNullableArrayResponse(response *Error, w htt
 func encodeTestRequestStringUnixNanoNullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -9905,7 +9198,6 @@ func encodeTestRequestStringUnixNanoNullableArrayArrayResponse(response *Error, 
 func encodeTestRequestStringUnixNullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -9919,7 +9211,6 @@ func encodeTestRequestStringUnixNullableResponse(response *Error, w http.Respons
 func encodeTestRequestStringUnixNullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -9933,7 +9224,6 @@ func encodeTestRequestStringUnixNullableArrayResponse(response *Error, w http.Re
 func encodeTestRequestStringUnixNullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -9947,7 +9237,6 @@ func encodeTestRequestStringUnixNullableArrayArrayResponse(response *Error, w ht
 func encodeTestRequestStringUnixSecondsResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -9961,7 +9250,6 @@ func encodeTestRequestStringUnixSecondsResponse(response *Error, w http.Response
 func encodeTestRequestStringUnixSecondsArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -9975,7 +9263,6 @@ func encodeTestRequestStringUnixSecondsArrayResponse(response *Error, w http.Res
 func encodeTestRequestStringUnixSecondsArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -9989,7 +9276,6 @@ func encodeTestRequestStringUnixSecondsArrayArrayResponse(response *Error, w htt
 func encodeTestRequestStringUnixSecondsNullableResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -10003,7 +9289,6 @@ func encodeTestRequestStringUnixSecondsNullableResponse(response *Error, w http.
 func encodeTestRequestStringUnixSecondsNullableArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -10017,7 +9302,6 @@ func encodeTestRequestStringUnixSecondsNullableArrayResponse(response *Error, w 
 func encodeTestRequestStringUnixSecondsNullableArrayArrayResponse(response *Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -10031,7 +9315,6 @@ func encodeTestRequestStringUnixSecondsNullableArrayArrayResponse(response *Erro
 func encodeTestResponseAnyResponse(response jx.Raw, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	if len(response) != 0 {
@@ -10047,7 +9330,6 @@ func encodeTestResponseAnyResponse(response jx.Raw, w http.ResponseWriter, span 
 func encodeTestResponseBooleanResponse(response bool, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.Bool(response)
@@ -10061,7 +9343,6 @@ func encodeTestResponseBooleanResponse(response bool, w http.ResponseWriter, spa
 func encodeTestResponseBooleanArrayResponse(response []bool, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -10079,7 +9360,6 @@ func encodeTestResponseBooleanArrayResponse(response []bool, w http.ResponseWrit
 func encodeTestResponseBooleanArrayArrayResponse(response [][]bool, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -10101,7 +9381,6 @@ func encodeTestResponseBooleanArrayArrayResponse(response [][]bool, w http.Respo
 func encodeTestResponseBooleanNullableResponse(response NilBool, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -10115,7 +9394,6 @@ func encodeTestResponseBooleanNullableResponse(response NilBool, w http.Response
 func encodeTestResponseBooleanNullableArrayResponse(response []NilBool, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -10133,7 +9411,6 @@ func encodeTestResponseBooleanNullableArrayResponse(response []NilBool, w http.R
 func encodeTestResponseBooleanNullableArrayArrayResponse(response [][]NilBool, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -10155,7 +9432,6 @@ func encodeTestResponseBooleanNullableArrayArrayResponse(response [][]NilBool, w
 func encodeTestResponseEmptyStructResponse(response *TestResponseEmptyStructOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -10169,7 +9445,6 @@ func encodeTestResponseEmptyStructResponse(response *TestResponseEmptyStructOK, 
 func encodeTestResponseFormatTestResponse(response *TestResponseFormatTestOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -10183,7 +9458,6 @@ func encodeTestResponseFormatTestResponse(response *TestResponseFormatTestOK, w 
 func encodeTestResponseIntegerResponse(response int, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.Int(response)
@@ -10197,7 +9471,6 @@ func encodeTestResponseIntegerResponse(response int, w http.ResponseWriter, span
 func encodeTestResponseIntegerArrayResponse(response []int, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -10215,7 +9488,6 @@ func encodeTestResponseIntegerArrayResponse(response []int, w http.ResponseWrite
 func encodeTestResponseIntegerArrayArrayResponse(response [][]int, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -10237,7 +9509,6 @@ func encodeTestResponseIntegerArrayArrayResponse(response [][]int, w http.Respon
 func encodeTestResponseIntegerInt16Response(response int16, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.Int16(response)
@@ -10251,7 +9522,6 @@ func encodeTestResponseIntegerInt16Response(response int16, w http.ResponseWrite
 func encodeTestResponseIntegerInt16ArrayResponse(response []int16, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -10269,7 +9539,6 @@ func encodeTestResponseIntegerInt16ArrayResponse(response []int16, w http.Respon
 func encodeTestResponseIntegerInt16ArrayArrayResponse(response [][]int16, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -10291,7 +9560,6 @@ func encodeTestResponseIntegerInt16ArrayArrayResponse(response [][]int16, w http
 func encodeTestResponseIntegerInt16NullableResponse(response NilInt16, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -10305,7 +9573,6 @@ func encodeTestResponseIntegerInt16NullableResponse(response NilInt16, w http.Re
 func encodeTestResponseIntegerInt16NullableArrayResponse(response []NilInt16, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -10323,7 +9590,6 @@ func encodeTestResponseIntegerInt16NullableArrayResponse(response []NilInt16, w 
 func encodeTestResponseIntegerInt16NullableArrayArrayResponse(response [][]NilInt16, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -10345,7 +9611,6 @@ func encodeTestResponseIntegerInt16NullableArrayArrayResponse(response [][]NilIn
 func encodeTestResponseIntegerInt32Response(response int32, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.Int32(response)
@@ -10359,7 +9624,6 @@ func encodeTestResponseIntegerInt32Response(response int32, w http.ResponseWrite
 func encodeTestResponseIntegerInt32ArrayResponse(response []int32, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -10377,7 +9641,6 @@ func encodeTestResponseIntegerInt32ArrayResponse(response []int32, w http.Respon
 func encodeTestResponseIntegerInt32ArrayArrayResponse(response [][]int32, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -10399,7 +9662,6 @@ func encodeTestResponseIntegerInt32ArrayArrayResponse(response [][]int32, w http
 func encodeTestResponseIntegerInt32NullableResponse(response NilInt32, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -10413,7 +9675,6 @@ func encodeTestResponseIntegerInt32NullableResponse(response NilInt32, w http.Re
 func encodeTestResponseIntegerInt32NullableArrayResponse(response []NilInt32, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -10431,7 +9692,6 @@ func encodeTestResponseIntegerInt32NullableArrayResponse(response []NilInt32, w 
 func encodeTestResponseIntegerInt32NullableArrayArrayResponse(response [][]NilInt32, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -10453,7 +9713,6 @@ func encodeTestResponseIntegerInt32NullableArrayArrayResponse(response [][]NilIn
 func encodeTestResponseIntegerInt64Response(response int64, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.Int64(response)
@@ -10467,7 +9726,6 @@ func encodeTestResponseIntegerInt64Response(response int64, w http.ResponseWrite
 func encodeTestResponseIntegerInt64ArrayResponse(response []int64, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -10485,7 +9743,6 @@ func encodeTestResponseIntegerInt64ArrayResponse(response []int64, w http.Respon
 func encodeTestResponseIntegerInt64ArrayArrayResponse(response [][]int64, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -10507,7 +9764,6 @@ func encodeTestResponseIntegerInt64ArrayArrayResponse(response [][]int64, w http
 func encodeTestResponseIntegerInt64NullableResponse(response NilInt64, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -10521,7 +9777,6 @@ func encodeTestResponseIntegerInt64NullableResponse(response NilInt64, w http.Re
 func encodeTestResponseIntegerInt64NullableArrayResponse(response []NilInt64, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -10539,7 +9794,6 @@ func encodeTestResponseIntegerInt64NullableArrayResponse(response []NilInt64, w 
 func encodeTestResponseIntegerInt64NullableArrayArrayResponse(response [][]NilInt64, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -10561,7 +9815,6 @@ func encodeTestResponseIntegerInt64NullableArrayArrayResponse(response [][]NilIn
 func encodeTestResponseIntegerInt8Response(response int8, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.Int8(response)
@@ -10575,7 +9828,6 @@ func encodeTestResponseIntegerInt8Response(response int8, w http.ResponseWriter,
 func encodeTestResponseIntegerInt8ArrayResponse(response []int8, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -10593,7 +9845,6 @@ func encodeTestResponseIntegerInt8ArrayResponse(response []int8, w http.Response
 func encodeTestResponseIntegerInt8ArrayArrayResponse(response [][]int8, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -10615,7 +9866,6 @@ func encodeTestResponseIntegerInt8ArrayArrayResponse(response [][]int8, w http.R
 func encodeTestResponseIntegerInt8NullableResponse(response NilInt8, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -10629,7 +9879,6 @@ func encodeTestResponseIntegerInt8NullableResponse(response NilInt8, w http.Resp
 func encodeTestResponseIntegerInt8NullableArrayResponse(response []NilInt8, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -10647,7 +9896,6 @@ func encodeTestResponseIntegerInt8NullableArrayResponse(response []NilInt8, w ht
 func encodeTestResponseIntegerInt8NullableArrayArrayResponse(response [][]NilInt8, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -10669,7 +9917,6 @@ func encodeTestResponseIntegerInt8NullableArrayArrayResponse(response [][]NilInt
 func encodeTestResponseIntegerNullableResponse(response NilInt, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -10683,7 +9930,6 @@ func encodeTestResponseIntegerNullableResponse(response NilInt, w http.ResponseW
 func encodeTestResponseIntegerNullableArrayResponse(response []NilInt, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -10701,7 +9947,6 @@ func encodeTestResponseIntegerNullableArrayResponse(response []NilInt, w http.Re
 func encodeTestResponseIntegerNullableArrayArrayResponse(response [][]NilInt, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -10723,7 +9968,6 @@ func encodeTestResponseIntegerNullableArrayArrayResponse(response [][]NilInt, w 
 func encodeTestResponseIntegerUintResponse(response uint, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.UInt(response)
@@ -10737,7 +9981,6 @@ func encodeTestResponseIntegerUintResponse(response uint, w http.ResponseWriter,
 func encodeTestResponseIntegerUint16Response(response uint16, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.UInt16(response)
@@ -10751,7 +9994,6 @@ func encodeTestResponseIntegerUint16Response(response uint16, w http.ResponseWri
 func encodeTestResponseIntegerUint16ArrayResponse(response []uint16, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -10769,7 +10011,6 @@ func encodeTestResponseIntegerUint16ArrayResponse(response []uint16, w http.Resp
 func encodeTestResponseIntegerUint16ArrayArrayResponse(response [][]uint16, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -10791,7 +10032,6 @@ func encodeTestResponseIntegerUint16ArrayArrayResponse(response [][]uint16, w ht
 func encodeTestResponseIntegerUint16NullableResponse(response NilUint16, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -10805,7 +10045,6 @@ func encodeTestResponseIntegerUint16NullableResponse(response NilUint16, w http.
 func encodeTestResponseIntegerUint16NullableArrayResponse(response []NilUint16, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -10823,7 +10062,6 @@ func encodeTestResponseIntegerUint16NullableArrayResponse(response []NilUint16, 
 func encodeTestResponseIntegerUint16NullableArrayArrayResponse(response [][]NilUint16, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -10845,7 +10083,6 @@ func encodeTestResponseIntegerUint16NullableArrayArrayResponse(response [][]NilU
 func encodeTestResponseIntegerUint32Response(response uint32, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.UInt32(response)
@@ -10859,7 +10096,6 @@ func encodeTestResponseIntegerUint32Response(response uint32, w http.ResponseWri
 func encodeTestResponseIntegerUint32ArrayResponse(response []uint32, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -10877,7 +10113,6 @@ func encodeTestResponseIntegerUint32ArrayResponse(response []uint32, w http.Resp
 func encodeTestResponseIntegerUint32ArrayArrayResponse(response [][]uint32, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -10899,7 +10134,6 @@ func encodeTestResponseIntegerUint32ArrayArrayResponse(response [][]uint32, w ht
 func encodeTestResponseIntegerUint32NullableResponse(response NilUint32, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -10913,7 +10147,6 @@ func encodeTestResponseIntegerUint32NullableResponse(response NilUint32, w http.
 func encodeTestResponseIntegerUint32NullableArrayResponse(response []NilUint32, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -10931,7 +10164,6 @@ func encodeTestResponseIntegerUint32NullableArrayResponse(response []NilUint32, 
 func encodeTestResponseIntegerUint32NullableArrayArrayResponse(response [][]NilUint32, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -10953,7 +10185,6 @@ func encodeTestResponseIntegerUint32NullableArrayArrayResponse(response [][]NilU
 func encodeTestResponseIntegerUint64Response(response uint64, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.UInt64(response)
@@ -10967,7 +10198,6 @@ func encodeTestResponseIntegerUint64Response(response uint64, w http.ResponseWri
 func encodeTestResponseIntegerUint64ArrayResponse(response []uint64, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -10985,7 +10215,6 @@ func encodeTestResponseIntegerUint64ArrayResponse(response []uint64, w http.Resp
 func encodeTestResponseIntegerUint64ArrayArrayResponse(response [][]uint64, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -11007,7 +10236,6 @@ func encodeTestResponseIntegerUint64ArrayArrayResponse(response [][]uint64, w ht
 func encodeTestResponseIntegerUint64NullableResponse(response NilUint64, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -11021,7 +10249,6 @@ func encodeTestResponseIntegerUint64NullableResponse(response NilUint64, w http.
 func encodeTestResponseIntegerUint64NullableArrayResponse(response []NilUint64, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -11039,7 +10266,6 @@ func encodeTestResponseIntegerUint64NullableArrayResponse(response []NilUint64, 
 func encodeTestResponseIntegerUint64NullableArrayArrayResponse(response [][]NilUint64, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -11061,7 +10287,6 @@ func encodeTestResponseIntegerUint64NullableArrayArrayResponse(response [][]NilU
 func encodeTestResponseIntegerUint8Response(response uint8, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.UInt8(response)
@@ -11075,7 +10300,6 @@ func encodeTestResponseIntegerUint8Response(response uint8, w http.ResponseWrite
 func encodeTestResponseIntegerUint8ArrayResponse(response []uint8, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -11093,7 +10317,6 @@ func encodeTestResponseIntegerUint8ArrayResponse(response []uint8, w http.Respon
 func encodeTestResponseIntegerUint8ArrayArrayResponse(response [][]uint8, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -11115,7 +10338,6 @@ func encodeTestResponseIntegerUint8ArrayArrayResponse(response [][]uint8, w http
 func encodeTestResponseIntegerUint8NullableResponse(response NilUint8, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -11129,7 +10351,6 @@ func encodeTestResponseIntegerUint8NullableResponse(response NilUint8, w http.Re
 func encodeTestResponseIntegerUint8NullableArrayResponse(response []NilUint8, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -11147,7 +10368,6 @@ func encodeTestResponseIntegerUint8NullableArrayResponse(response []NilUint8, w 
 func encodeTestResponseIntegerUint8NullableArrayArrayResponse(response [][]NilUint8, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -11169,7 +10389,6 @@ func encodeTestResponseIntegerUint8NullableArrayArrayResponse(response [][]NilUi
 func encodeTestResponseIntegerUintArrayResponse(response []uint, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -11187,7 +10406,6 @@ func encodeTestResponseIntegerUintArrayResponse(response []uint, w http.Response
 func encodeTestResponseIntegerUintArrayArrayResponse(response [][]uint, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -11209,7 +10427,6 @@ func encodeTestResponseIntegerUintArrayArrayResponse(response [][]uint, w http.R
 func encodeTestResponseIntegerUintNullableResponse(response NilUint, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -11223,7 +10440,6 @@ func encodeTestResponseIntegerUintNullableResponse(response NilUint, w http.Resp
 func encodeTestResponseIntegerUintNullableArrayResponse(response []NilUint, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -11241,7 +10457,6 @@ func encodeTestResponseIntegerUintNullableArrayResponse(response []NilUint, w ht
 func encodeTestResponseIntegerUintNullableArrayArrayResponse(response [][]NilUint, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -11263,7 +10478,6 @@ func encodeTestResponseIntegerUintNullableArrayArrayResponse(response [][]NilUin
 func encodeTestResponseIntegerUnixResponse(response time.Time, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	json.EncodeUnixSeconds(e, response)
@@ -11277,7 +10491,6 @@ func encodeTestResponseIntegerUnixResponse(response time.Time, w http.ResponseWr
 func encodeTestResponseIntegerUnixArrayResponse(response []time.Time, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -11295,7 +10508,6 @@ func encodeTestResponseIntegerUnixArrayResponse(response []time.Time, w http.Res
 func encodeTestResponseIntegerUnixArrayArrayResponse(response [][]time.Time, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -11317,7 +10529,6 @@ func encodeTestResponseIntegerUnixArrayArrayResponse(response [][]time.Time, w h
 func encodeTestResponseIntegerUnixMicroResponse(response time.Time, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	json.EncodeUnixMicro(e, response)
@@ -11331,7 +10542,6 @@ func encodeTestResponseIntegerUnixMicroResponse(response time.Time, w http.Respo
 func encodeTestResponseIntegerUnixMicroArrayResponse(response []time.Time, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -11349,7 +10559,6 @@ func encodeTestResponseIntegerUnixMicroArrayResponse(response []time.Time, w htt
 func encodeTestResponseIntegerUnixMicroArrayArrayResponse(response [][]time.Time, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -11371,7 +10580,6 @@ func encodeTestResponseIntegerUnixMicroArrayArrayResponse(response [][]time.Time
 func encodeTestResponseIntegerUnixMicroNullableResponse(response NilUnixMicro, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e, json.EncodeUnixMicro)
@@ -11385,7 +10593,6 @@ func encodeTestResponseIntegerUnixMicroNullableResponse(response NilUnixMicro, w
 func encodeTestResponseIntegerUnixMicroNullableArrayResponse(response []NilUnixMicro, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -11403,7 +10610,6 @@ func encodeTestResponseIntegerUnixMicroNullableArrayResponse(response []NilUnixM
 func encodeTestResponseIntegerUnixMicroNullableArrayArrayResponse(response [][]NilUnixMicro, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -11425,7 +10631,6 @@ func encodeTestResponseIntegerUnixMicroNullableArrayArrayResponse(response [][]N
 func encodeTestResponseIntegerUnixMilliResponse(response time.Time, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	json.EncodeUnixMilli(e, response)
@@ -11439,7 +10644,6 @@ func encodeTestResponseIntegerUnixMilliResponse(response time.Time, w http.Respo
 func encodeTestResponseIntegerUnixMilliArrayResponse(response []time.Time, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -11457,7 +10661,6 @@ func encodeTestResponseIntegerUnixMilliArrayResponse(response []time.Time, w htt
 func encodeTestResponseIntegerUnixMilliArrayArrayResponse(response [][]time.Time, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -11479,7 +10682,6 @@ func encodeTestResponseIntegerUnixMilliArrayArrayResponse(response [][]time.Time
 func encodeTestResponseIntegerUnixMilliNullableResponse(response NilUnixMilli, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e, json.EncodeUnixMilli)
@@ -11493,7 +10695,6 @@ func encodeTestResponseIntegerUnixMilliNullableResponse(response NilUnixMilli, w
 func encodeTestResponseIntegerUnixMilliNullableArrayResponse(response []NilUnixMilli, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -11511,7 +10712,6 @@ func encodeTestResponseIntegerUnixMilliNullableArrayResponse(response []NilUnixM
 func encodeTestResponseIntegerUnixMilliNullableArrayArrayResponse(response [][]NilUnixMilli, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -11533,7 +10733,6 @@ func encodeTestResponseIntegerUnixMilliNullableArrayArrayResponse(response [][]N
 func encodeTestResponseIntegerUnixNanoResponse(response time.Time, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	json.EncodeUnixNano(e, response)
@@ -11547,7 +10746,6 @@ func encodeTestResponseIntegerUnixNanoResponse(response time.Time, w http.Respon
 func encodeTestResponseIntegerUnixNanoArrayResponse(response []time.Time, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -11565,7 +10763,6 @@ func encodeTestResponseIntegerUnixNanoArrayResponse(response []time.Time, w http
 func encodeTestResponseIntegerUnixNanoArrayArrayResponse(response [][]time.Time, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -11587,7 +10784,6 @@ func encodeTestResponseIntegerUnixNanoArrayArrayResponse(response [][]time.Time,
 func encodeTestResponseIntegerUnixNanoNullableResponse(response NilUnixNano, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e, json.EncodeUnixNano)
@@ -11601,7 +10797,6 @@ func encodeTestResponseIntegerUnixNanoNullableResponse(response NilUnixNano, w h
 func encodeTestResponseIntegerUnixNanoNullableArrayResponse(response []NilUnixNano, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -11619,7 +10814,6 @@ func encodeTestResponseIntegerUnixNanoNullableArrayResponse(response []NilUnixNa
 func encodeTestResponseIntegerUnixNanoNullableArrayArrayResponse(response [][]NilUnixNano, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -11641,7 +10835,6 @@ func encodeTestResponseIntegerUnixNanoNullableArrayArrayResponse(response [][]Ni
 func encodeTestResponseIntegerUnixNullableResponse(response NilUnixSeconds, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e, json.EncodeUnixSeconds)
@@ -11655,7 +10848,6 @@ func encodeTestResponseIntegerUnixNullableResponse(response NilUnixSeconds, w ht
 func encodeTestResponseIntegerUnixNullableArrayResponse(response []NilUnixSeconds, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -11673,7 +10865,6 @@ func encodeTestResponseIntegerUnixNullableArrayResponse(response []NilUnixSecond
 func encodeTestResponseIntegerUnixNullableArrayArrayResponse(response [][]NilUnixSeconds, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -11695,7 +10886,6 @@ func encodeTestResponseIntegerUnixNullableArrayArrayResponse(response [][]NilUni
 func encodeTestResponseIntegerUnixSecondsResponse(response time.Time, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	json.EncodeUnixSeconds(e, response)
@@ -11709,7 +10899,6 @@ func encodeTestResponseIntegerUnixSecondsResponse(response time.Time, w http.Res
 func encodeTestResponseIntegerUnixSecondsArrayResponse(response []time.Time, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -11727,7 +10916,6 @@ func encodeTestResponseIntegerUnixSecondsArrayResponse(response []time.Time, w h
 func encodeTestResponseIntegerUnixSecondsArrayArrayResponse(response [][]time.Time, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -11749,7 +10937,6 @@ func encodeTestResponseIntegerUnixSecondsArrayArrayResponse(response [][]time.Ti
 func encodeTestResponseIntegerUnixSecondsNullableResponse(response NilUnixSeconds, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e, json.EncodeUnixSeconds)
@@ -11763,7 +10950,6 @@ func encodeTestResponseIntegerUnixSecondsNullableResponse(response NilUnixSecond
 func encodeTestResponseIntegerUnixSecondsNullableArrayResponse(response []NilUnixSeconds, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -11781,7 +10967,6 @@ func encodeTestResponseIntegerUnixSecondsNullableArrayResponse(response []NilUni
 func encodeTestResponseIntegerUnixSecondsNullableArrayArrayResponse(response [][]NilUnixSeconds, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -11803,7 +10988,6 @@ func encodeTestResponseIntegerUnixSecondsNullableArrayArrayResponse(response [][
 func encodeTestResponseNullResponse(response struct{}, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	_ = response
@@ -11818,7 +11002,6 @@ func encodeTestResponseNullResponse(response struct{}, w http.ResponseWriter, sp
 func encodeTestResponseNullArrayResponse(response []struct{}, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -11837,7 +11020,6 @@ func encodeTestResponseNullArrayResponse(response []struct{}, w http.ResponseWri
 func encodeTestResponseNullArrayArrayResponse(response [][]struct{}, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -11860,7 +11042,6 @@ func encodeTestResponseNullArrayArrayResponse(response [][]struct{}, w http.Resp
 func encodeTestResponseNullNullableResponse(response struct{}, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	_ = response
@@ -11875,7 +11056,6 @@ func encodeTestResponseNullNullableResponse(response struct{}, w http.ResponseWr
 func encodeTestResponseNullNullableArrayResponse(response []struct{}, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -11894,7 +11074,6 @@ func encodeTestResponseNullNullableArrayResponse(response []struct{}, w http.Res
 func encodeTestResponseNullNullableArrayArrayResponse(response [][]struct{}, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -11917,7 +11096,6 @@ func encodeTestResponseNullNullableArrayArrayResponse(response [][]struct{}, w h
 func encodeTestResponseNumberResponse(response float64, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.Float64(response)
@@ -11931,7 +11109,6 @@ func encodeTestResponseNumberResponse(response float64, w http.ResponseWriter, s
 func encodeTestResponseNumberArrayResponse(response []float64, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -11949,7 +11126,6 @@ func encodeTestResponseNumberArrayResponse(response []float64, w http.ResponseWr
 func encodeTestResponseNumberArrayArrayResponse(response [][]float64, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -11971,7 +11147,6 @@ func encodeTestResponseNumberArrayArrayResponse(response [][]float64, w http.Res
 func encodeTestResponseNumberDecimalResponse(response decimal.Decimal, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	json.EncodeDecimal(e, response)
@@ -11985,7 +11160,6 @@ func encodeTestResponseNumberDecimalResponse(response decimal.Decimal, w http.Re
 func encodeTestResponseNumberDecimalArrayResponse(response []decimal.Decimal, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -12003,7 +11177,6 @@ func encodeTestResponseNumberDecimalArrayResponse(response []decimal.Decimal, w 
 func encodeTestResponseNumberDecimalArrayArrayResponse(response [][]decimal.Decimal, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -12025,7 +11198,6 @@ func encodeTestResponseNumberDecimalArrayArrayResponse(response [][]decimal.Deci
 func encodeTestResponseNumberDecimalNullableResponse(response NilDecimal, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -12039,7 +11211,6 @@ func encodeTestResponseNumberDecimalNullableResponse(response NilDecimal, w http
 func encodeTestResponseNumberDecimalNullableArrayResponse(response []NilDecimal, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -12057,7 +11228,6 @@ func encodeTestResponseNumberDecimalNullableArrayResponse(response []NilDecimal,
 func encodeTestResponseNumberDecimalNullableArrayArrayResponse(response [][]NilDecimal, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -12079,7 +11249,6 @@ func encodeTestResponseNumberDecimalNullableArrayArrayResponse(response [][]NilD
 func encodeTestResponseNumberDoubleResponse(response float64, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.Float64(response)
@@ -12093,7 +11262,6 @@ func encodeTestResponseNumberDoubleResponse(response float64, w http.ResponseWri
 func encodeTestResponseNumberDoubleArrayResponse(response []float64, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -12111,7 +11279,6 @@ func encodeTestResponseNumberDoubleArrayResponse(response []float64, w http.Resp
 func encodeTestResponseNumberDoubleArrayArrayResponse(response [][]float64, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -12133,7 +11300,6 @@ func encodeTestResponseNumberDoubleArrayArrayResponse(response [][]float64, w ht
 func encodeTestResponseNumberDoubleNullableResponse(response NilFloat64, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -12147,7 +11313,6 @@ func encodeTestResponseNumberDoubleNullableResponse(response NilFloat64, w http.
 func encodeTestResponseNumberDoubleNullableArrayResponse(response []NilFloat64, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -12165,7 +11330,6 @@ func encodeTestResponseNumberDoubleNullableArrayResponse(response []NilFloat64, 
 func encodeTestResponseNumberDoubleNullableArrayArrayResponse(response [][]NilFloat64, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -12187,7 +11351,6 @@ func encodeTestResponseNumberDoubleNullableArrayArrayResponse(response [][]NilFl
 func encodeTestResponseNumberFloatResponse(response float32, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.Float32(response)
@@ -12201,7 +11364,6 @@ func encodeTestResponseNumberFloatResponse(response float32, w http.ResponseWrit
 func encodeTestResponseNumberFloatArrayResponse(response []float32, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -12219,7 +11381,6 @@ func encodeTestResponseNumberFloatArrayResponse(response []float32, w http.Respo
 func encodeTestResponseNumberFloatArrayArrayResponse(response [][]float32, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -12241,7 +11402,6 @@ func encodeTestResponseNumberFloatArrayArrayResponse(response [][]float32, w htt
 func encodeTestResponseNumberFloatNullableResponse(response NilFloat32, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -12255,7 +11415,6 @@ func encodeTestResponseNumberFloatNullableResponse(response NilFloat32, w http.R
 func encodeTestResponseNumberFloatNullableArrayResponse(response []NilFloat32, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -12273,7 +11432,6 @@ func encodeTestResponseNumberFloatNullableArrayResponse(response []NilFloat32, w
 func encodeTestResponseNumberFloatNullableArrayArrayResponse(response [][]NilFloat32, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -12295,7 +11453,6 @@ func encodeTestResponseNumberFloatNullableArrayArrayResponse(response [][]NilFlo
 func encodeTestResponseNumberInt32Response(response int32, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.Int32(response)
@@ -12309,7 +11466,6 @@ func encodeTestResponseNumberInt32Response(response int32, w http.ResponseWriter
 func encodeTestResponseNumberInt32ArrayResponse(response []int32, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -12327,7 +11483,6 @@ func encodeTestResponseNumberInt32ArrayResponse(response []int32, w http.Respons
 func encodeTestResponseNumberInt32ArrayArrayResponse(response [][]int32, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -12349,7 +11504,6 @@ func encodeTestResponseNumberInt32ArrayArrayResponse(response [][]int32, w http.
 func encodeTestResponseNumberInt32NullableResponse(response NilInt32, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -12363,7 +11517,6 @@ func encodeTestResponseNumberInt32NullableResponse(response NilInt32, w http.Res
 func encodeTestResponseNumberInt32NullableArrayResponse(response []NilInt32, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -12381,7 +11534,6 @@ func encodeTestResponseNumberInt32NullableArrayResponse(response []NilInt32, w h
 func encodeTestResponseNumberInt32NullableArrayArrayResponse(response [][]NilInt32, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -12403,7 +11555,6 @@ func encodeTestResponseNumberInt32NullableArrayArrayResponse(response [][]NilInt
 func encodeTestResponseNumberInt64Response(response int64, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.Int64(response)
@@ -12417,7 +11568,6 @@ func encodeTestResponseNumberInt64Response(response int64, w http.ResponseWriter
 func encodeTestResponseNumberInt64ArrayResponse(response []int64, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -12435,7 +11585,6 @@ func encodeTestResponseNumberInt64ArrayResponse(response []int64, w http.Respons
 func encodeTestResponseNumberInt64ArrayArrayResponse(response [][]int64, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -12457,7 +11606,6 @@ func encodeTestResponseNumberInt64ArrayArrayResponse(response [][]int64, w http.
 func encodeTestResponseNumberInt64NullableResponse(response NilInt64, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -12471,7 +11619,6 @@ func encodeTestResponseNumberInt64NullableResponse(response NilInt64, w http.Res
 func encodeTestResponseNumberInt64NullableArrayResponse(response []NilInt64, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -12489,7 +11636,6 @@ func encodeTestResponseNumberInt64NullableArrayResponse(response []NilInt64, w h
 func encodeTestResponseNumberInt64NullableArrayArrayResponse(response [][]NilInt64, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -12511,7 +11657,6 @@ func encodeTestResponseNumberInt64NullableArrayArrayResponse(response [][]NilInt
 func encodeTestResponseNumberNullableResponse(response NilFloat64, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -12525,7 +11670,6 @@ func encodeTestResponseNumberNullableResponse(response NilFloat64, w http.Respon
 func encodeTestResponseNumberNullableArrayResponse(response []NilFloat64, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -12543,7 +11687,6 @@ func encodeTestResponseNumberNullableArrayResponse(response []NilFloat64, w http
 func encodeTestResponseNumberNullableArrayArrayResponse(response [][]NilFloat64, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -12565,7 +11708,6 @@ func encodeTestResponseNumberNullableArrayArrayResponse(response [][]NilFloat64,
 func encodeTestResponseStringResponse(response string, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.Str(response)
@@ -12579,7 +11721,6 @@ func encodeTestResponseStringResponse(response string, w http.ResponseWriter, sp
 func encodeTestResponseStringArrayResponse(response []string, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -12597,7 +11738,6 @@ func encodeTestResponseStringArrayResponse(response []string, w http.ResponseWri
 func encodeTestResponseStringArrayArrayResponse(response [][]string, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -12619,7 +11759,6 @@ func encodeTestResponseStringArrayArrayResponse(response [][]string, w http.Resp
 func encodeTestResponseStringBase64Response(response []byte, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.Base64(response)
@@ -12633,7 +11772,6 @@ func encodeTestResponseStringBase64Response(response []byte, w http.ResponseWrit
 func encodeTestResponseStringBase64ArrayResponse(response [][]byte, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -12651,7 +11789,6 @@ func encodeTestResponseStringBase64ArrayResponse(response [][]byte, w http.Respo
 func encodeTestResponseStringBase64ArrayArrayResponse(response [][][]byte, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -12673,7 +11810,6 @@ func encodeTestResponseStringBase64ArrayArrayResponse(response [][][]byte, w htt
 func encodeTestResponseStringBase64NullableResponse(response []byte, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.Base64(response)
@@ -12687,7 +11823,6 @@ func encodeTestResponseStringBase64NullableResponse(response []byte, w http.Resp
 func encodeTestResponseStringBase64NullableArrayResponse(response [][]byte, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -12705,7 +11840,6 @@ func encodeTestResponseStringBase64NullableArrayResponse(response [][]byte, w ht
 func encodeTestResponseStringBase64NullableArrayArrayResponse(response [][][]byte, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -12727,7 +11861,6 @@ func encodeTestResponseStringBase64NullableArrayArrayResponse(response [][][]byt
 func encodeTestResponseStringBinaryResponse(response string, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.Str(response)
@@ -12741,7 +11874,6 @@ func encodeTestResponseStringBinaryResponse(response string, w http.ResponseWrit
 func encodeTestResponseStringBinaryArrayResponse(response []string, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -12759,7 +11891,6 @@ func encodeTestResponseStringBinaryArrayResponse(response []string, w http.Respo
 func encodeTestResponseStringBinaryArrayArrayResponse(response [][]string, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -12781,7 +11912,6 @@ func encodeTestResponseStringBinaryArrayArrayResponse(response [][]string, w htt
 func encodeTestResponseStringBinaryNullableResponse(response NilString, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -12795,7 +11925,6 @@ func encodeTestResponseStringBinaryNullableResponse(response NilString, w http.R
 func encodeTestResponseStringBinaryNullableArrayResponse(response []NilString, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -12813,7 +11942,6 @@ func encodeTestResponseStringBinaryNullableArrayResponse(response []NilString, w
 func encodeTestResponseStringBinaryNullableArrayArrayResponse(response [][]NilString, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -12835,7 +11963,6 @@ func encodeTestResponseStringBinaryNullableArrayArrayResponse(response [][]NilSt
 func encodeTestResponseStringByteResponse(response []byte, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.Base64(response)
@@ -12849,7 +11976,6 @@ func encodeTestResponseStringByteResponse(response []byte, w http.ResponseWriter
 func encodeTestResponseStringByteArrayResponse(response [][]byte, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -12867,7 +11993,6 @@ func encodeTestResponseStringByteArrayResponse(response [][]byte, w http.Respons
 func encodeTestResponseStringByteArrayArrayResponse(response [][][]byte, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -12889,7 +12014,6 @@ func encodeTestResponseStringByteArrayArrayResponse(response [][][]byte, w http.
 func encodeTestResponseStringByteNullableResponse(response []byte, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.Base64(response)
@@ -12903,7 +12027,6 @@ func encodeTestResponseStringByteNullableResponse(response []byte, w http.Respon
 func encodeTestResponseStringByteNullableArrayResponse(response [][]byte, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -12921,7 +12044,6 @@ func encodeTestResponseStringByteNullableArrayResponse(response [][]byte, w http
 func encodeTestResponseStringByteNullableArrayArrayResponse(response [][][]byte, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -12943,7 +12065,6 @@ func encodeTestResponseStringByteNullableArrayArrayResponse(response [][][]byte,
 func encodeTestResponseStringDateResponse(response time.Time, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	json.EncodeDate(e, response)
@@ -12957,7 +12078,6 @@ func encodeTestResponseStringDateResponse(response time.Time, w http.ResponseWri
 func encodeTestResponseStringDateArrayResponse(response []time.Time, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -12975,7 +12095,6 @@ func encodeTestResponseStringDateArrayResponse(response []time.Time, w http.Resp
 func encodeTestResponseStringDateArrayArrayResponse(response [][]time.Time, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -12997,7 +12116,6 @@ func encodeTestResponseStringDateArrayArrayResponse(response [][]time.Time, w ht
 func encodeTestResponseStringDateNullableResponse(response NilDate, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e, json.EncodeDate)
@@ -13011,7 +12129,6 @@ func encodeTestResponseStringDateNullableResponse(response NilDate, w http.Respo
 func encodeTestResponseStringDateNullableArrayResponse(response []NilDate, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -13029,7 +12146,6 @@ func encodeTestResponseStringDateNullableArrayResponse(response []NilDate, w htt
 func encodeTestResponseStringDateNullableArrayArrayResponse(response [][]NilDate, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -13051,7 +12167,6 @@ func encodeTestResponseStringDateNullableArrayArrayResponse(response [][]NilDate
 func encodeTestResponseStringDateTimeResponse(response time.Time, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	json.EncodeDateTime(e, response)
@@ -13065,7 +12180,6 @@ func encodeTestResponseStringDateTimeResponse(response time.Time, w http.Respons
 func encodeTestResponseStringDateTimeArrayResponse(response []time.Time, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -13083,7 +12197,6 @@ func encodeTestResponseStringDateTimeArrayResponse(response []time.Time, w http.
 func encodeTestResponseStringDateTimeArrayArrayResponse(response [][]time.Time, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -13105,7 +12218,6 @@ func encodeTestResponseStringDateTimeArrayArrayResponse(response [][]time.Time, 
 func encodeTestResponseStringDateTimeNullableResponse(response NilDateTime, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e, json.EncodeDateTime)
@@ -13119,7 +12231,6 @@ func encodeTestResponseStringDateTimeNullableResponse(response NilDateTime, w ht
 func encodeTestResponseStringDateTimeNullableArrayResponse(response []NilDateTime, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -13137,7 +12248,6 @@ func encodeTestResponseStringDateTimeNullableArrayResponse(response []NilDateTim
 func encodeTestResponseStringDateTimeNullableArrayArrayResponse(response [][]NilDateTime, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -13159,7 +12269,6 @@ func encodeTestResponseStringDateTimeNullableArrayArrayResponse(response [][]Nil
 func encodeTestResponseStringDecimalResponse(response decimal.Decimal, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	json.EncodeStringDecimal(e, response)
@@ -13173,7 +12282,6 @@ func encodeTestResponseStringDecimalResponse(response decimal.Decimal, w http.Re
 func encodeTestResponseStringDecimalArrayResponse(response []decimal.Decimal, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -13191,7 +12299,6 @@ func encodeTestResponseStringDecimalArrayResponse(response []decimal.Decimal, w 
 func encodeTestResponseStringDecimalArrayArrayResponse(response [][]decimal.Decimal, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -13213,7 +12320,6 @@ func encodeTestResponseStringDecimalArrayArrayResponse(response [][]decimal.Deci
 func encodeTestResponseStringDecimalNullableResponse(response NilStringDecimal, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -13227,7 +12333,6 @@ func encodeTestResponseStringDecimalNullableResponse(response NilStringDecimal, 
 func encodeTestResponseStringDecimalNullableArrayResponse(response []NilStringDecimal, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -13245,7 +12350,6 @@ func encodeTestResponseStringDecimalNullableArrayResponse(response []NilStringDe
 func encodeTestResponseStringDecimalNullableArrayArrayResponse(response [][]NilStringDecimal, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -13267,7 +12371,6 @@ func encodeTestResponseStringDecimalNullableArrayArrayResponse(response [][]NilS
 func encodeTestResponseStringDurationResponse(response time.Duration, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	json.EncodeDuration(e, response)
@@ -13281,7 +12384,6 @@ func encodeTestResponseStringDurationResponse(response time.Duration, w http.Res
 func encodeTestResponseStringDurationArrayResponse(response []time.Duration, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -13299,7 +12401,6 @@ func encodeTestResponseStringDurationArrayResponse(response []time.Duration, w h
 func encodeTestResponseStringDurationArrayArrayResponse(response [][]time.Duration, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -13321,7 +12422,6 @@ func encodeTestResponseStringDurationArrayArrayResponse(response [][]time.Durati
 func encodeTestResponseStringDurationNullableResponse(response NilDuration, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -13335,7 +12435,6 @@ func encodeTestResponseStringDurationNullableResponse(response NilDuration, w ht
 func encodeTestResponseStringDurationNullableArrayResponse(response []NilDuration, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -13353,7 +12452,6 @@ func encodeTestResponseStringDurationNullableArrayResponse(response []NilDuratio
 func encodeTestResponseStringDurationNullableArrayArrayResponse(response [][]NilDuration, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -13375,7 +12473,6 @@ func encodeTestResponseStringDurationNullableArrayArrayResponse(response [][]Nil
 func encodeTestResponseStringEmailResponse(response string, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.Str(response)
@@ -13389,7 +12486,6 @@ func encodeTestResponseStringEmailResponse(response string, w http.ResponseWrite
 func encodeTestResponseStringEmailArrayResponse(response []string, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -13407,7 +12503,6 @@ func encodeTestResponseStringEmailArrayResponse(response []string, w http.Respon
 func encodeTestResponseStringEmailArrayArrayResponse(response [][]string, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -13429,7 +12524,6 @@ func encodeTestResponseStringEmailArrayArrayResponse(response [][]string, w http
 func encodeTestResponseStringEmailNullableResponse(response NilString, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -13443,7 +12537,6 @@ func encodeTestResponseStringEmailNullableResponse(response NilString, w http.Re
 func encodeTestResponseStringEmailNullableArrayResponse(response []NilString, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -13461,7 +12554,6 @@ func encodeTestResponseStringEmailNullableArrayResponse(response []NilString, w 
 func encodeTestResponseStringEmailNullableArrayArrayResponse(response [][]NilString, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -13483,7 +12575,6 @@ func encodeTestResponseStringEmailNullableArrayArrayResponse(response [][]NilStr
 func encodeTestResponseStringFloat32Response(response float32, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	json.EncodeStringFloat32(e, response)
@@ -13497,7 +12588,6 @@ func encodeTestResponseStringFloat32Response(response float32, w http.ResponseWr
 func encodeTestResponseStringFloat32ArrayResponse(response []float32, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -13515,7 +12605,6 @@ func encodeTestResponseStringFloat32ArrayResponse(response []float32, w http.Res
 func encodeTestResponseStringFloat32ArrayArrayResponse(response [][]float32, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -13537,7 +12626,6 @@ func encodeTestResponseStringFloat32ArrayArrayResponse(response [][]float32, w h
 func encodeTestResponseStringFloat32NullableResponse(response NilStringFloat32, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -13551,7 +12639,6 @@ func encodeTestResponseStringFloat32NullableResponse(response NilStringFloat32, 
 func encodeTestResponseStringFloat32NullableArrayResponse(response []NilStringFloat32, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -13569,7 +12656,6 @@ func encodeTestResponseStringFloat32NullableArrayResponse(response []NilStringFl
 func encodeTestResponseStringFloat32NullableArrayArrayResponse(response [][]NilStringFloat32, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -13591,7 +12677,6 @@ func encodeTestResponseStringFloat32NullableArrayArrayResponse(response [][]NilS
 func encodeTestResponseStringFloat64Response(response float64, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	json.EncodeStringFloat64(e, response)
@@ -13605,7 +12690,6 @@ func encodeTestResponseStringFloat64Response(response float64, w http.ResponseWr
 func encodeTestResponseStringFloat64ArrayResponse(response []float64, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -13623,7 +12707,6 @@ func encodeTestResponseStringFloat64ArrayResponse(response []float64, w http.Res
 func encodeTestResponseStringFloat64ArrayArrayResponse(response [][]float64, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -13645,7 +12728,6 @@ func encodeTestResponseStringFloat64ArrayArrayResponse(response [][]float64, w h
 func encodeTestResponseStringFloat64NullableResponse(response NilStringFloat64, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -13659,7 +12741,6 @@ func encodeTestResponseStringFloat64NullableResponse(response NilStringFloat64, 
 func encodeTestResponseStringFloat64NullableArrayResponse(response []NilStringFloat64, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -13677,7 +12758,6 @@ func encodeTestResponseStringFloat64NullableArrayResponse(response []NilStringFl
 func encodeTestResponseStringFloat64NullableArrayArrayResponse(response [][]NilStringFloat64, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -13699,7 +12779,6 @@ func encodeTestResponseStringFloat64NullableArrayArrayResponse(response [][]NilS
 func encodeTestResponseStringHTTPDateResponse(response time.Time, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	json.EncodeHTTPDate(e, response)
@@ -13713,7 +12792,6 @@ func encodeTestResponseStringHTTPDateResponse(response time.Time, w http.Respons
 func encodeTestResponseStringHTTPDateArrayResponse(response []time.Time, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -13731,7 +12809,6 @@ func encodeTestResponseStringHTTPDateArrayResponse(response []time.Time, w http.
 func encodeTestResponseStringHTTPDateArrayArrayResponse(response [][]time.Time, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -13753,7 +12830,6 @@ func encodeTestResponseStringHTTPDateArrayArrayResponse(response [][]time.Time, 
 func encodeTestResponseStringHTTPDateNullableResponse(response NilHTTPDate, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e, json.EncodeHTTPDate)
@@ -13767,7 +12843,6 @@ func encodeTestResponseStringHTTPDateNullableResponse(response NilHTTPDate, w ht
 func encodeTestResponseStringHTTPDateNullableArrayResponse(response []NilHTTPDate, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -13785,7 +12860,6 @@ func encodeTestResponseStringHTTPDateNullableArrayResponse(response []NilHTTPDat
 func encodeTestResponseStringHTTPDateNullableArrayArrayResponse(response [][]NilHTTPDate, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -13807,7 +12881,6 @@ func encodeTestResponseStringHTTPDateNullableArrayArrayResponse(response [][]Nil
 func encodeTestResponseStringHostnameResponse(response string, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.Str(response)
@@ -13821,7 +12894,6 @@ func encodeTestResponseStringHostnameResponse(response string, w http.ResponseWr
 func encodeTestResponseStringHostnameArrayResponse(response []string, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -13839,7 +12911,6 @@ func encodeTestResponseStringHostnameArrayResponse(response []string, w http.Res
 func encodeTestResponseStringHostnameArrayArrayResponse(response [][]string, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -13861,7 +12932,6 @@ func encodeTestResponseStringHostnameArrayArrayResponse(response [][]string, w h
 func encodeTestResponseStringHostnameNullableResponse(response NilString, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -13875,7 +12945,6 @@ func encodeTestResponseStringHostnameNullableResponse(response NilString, w http
 func encodeTestResponseStringHostnameNullableArrayResponse(response []NilString, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -13893,7 +12962,6 @@ func encodeTestResponseStringHostnameNullableArrayResponse(response []NilString,
 func encodeTestResponseStringHostnameNullableArrayArrayResponse(response [][]NilString, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -13915,7 +12983,6 @@ func encodeTestResponseStringHostnameNullableArrayArrayResponse(response [][]Nil
 func encodeTestResponseStringIPResponse(response netip.Addr, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	json.EncodeIP(e, response)
@@ -13929,7 +12996,6 @@ func encodeTestResponseStringIPResponse(response netip.Addr, w http.ResponseWrit
 func encodeTestResponseStringIPArrayResponse(response []netip.Addr, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -13947,7 +13013,6 @@ func encodeTestResponseStringIPArrayResponse(response []netip.Addr, w http.Respo
 func encodeTestResponseStringIPArrayArrayResponse(response [][]netip.Addr, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -13969,7 +13034,6 @@ func encodeTestResponseStringIPArrayArrayResponse(response [][]netip.Addr, w htt
 func encodeTestResponseStringIPNullableResponse(response NilIP, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -13983,7 +13047,6 @@ func encodeTestResponseStringIPNullableResponse(response NilIP, w http.ResponseW
 func encodeTestResponseStringIPNullableArrayResponse(response []NilIP, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -14001,7 +13064,6 @@ func encodeTestResponseStringIPNullableArrayResponse(response []NilIP, w http.Re
 func encodeTestResponseStringIPNullableArrayArrayResponse(response [][]NilIP, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -14023,7 +13085,6 @@ func encodeTestResponseStringIPNullableArrayArrayResponse(response [][]NilIP, w 
 func encodeTestResponseStringIntResponse(response int, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	json.EncodeStringInt(e, response)
@@ -14037,7 +13098,6 @@ func encodeTestResponseStringIntResponse(response int, w http.ResponseWriter, sp
 func encodeTestResponseStringInt16Response(response int16, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	json.EncodeStringInt16(e, response)
@@ -14051,7 +13111,6 @@ func encodeTestResponseStringInt16Response(response int16, w http.ResponseWriter
 func encodeTestResponseStringInt16ArrayResponse(response []int16, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -14069,7 +13128,6 @@ func encodeTestResponseStringInt16ArrayResponse(response []int16, w http.Respons
 func encodeTestResponseStringInt16ArrayArrayResponse(response [][]int16, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -14091,7 +13149,6 @@ func encodeTestResponseStringInt16ArrayArrayResponse(response [][]int16, w http.
 func encodeTestResponseStringInt16NullableResponse(response NilStringInt16, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -14105,7 +13162,6 @@ func encodeTestResponseStringInt16NullableResponse(response NilStringInt16, w ht
 func encodeTestResponseStringInt16NullableArrayResponse(response []NilStringInt16, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -14123,7 +13179,6 @@ func encodeTestResponseStringInt16NullableArrayResponse(response []NilStringInt1
 func encodeTestResponseStringInt16NullableArrayArrayResponse(response [][]NilStringInt16, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -14145,7 +13200,6 @@ func encodeTestResponseStringInt16NullableArrayArrayResponse(response [][]NilStr
 func encodeTestResponseStringInt32Response(response int32, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	json.EncodeStringInt32(e, response)
@@ -14159,7 +13213,6 @@ func encodeTestResponseStringInt32Response(response int32, w http.ResponseWriter
 func encodeTestResponseStringInt32ArrayResponse(response []int32, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -14177,7 +13230,6 @@ func encodeTestResponseStringInt32ArrayResponse(response []int32, w http.Respons
 func encodeTestResponseStringInt32ArrayArrayResponse(response [][]int32, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -14199,7 +13251,6 @@ func encodeTestResponseStringInt32ArrayArrayResponse(response [][]int32, w http.
 func encodeTestResponseStringInt32NullableResponse(response NilStringInt32, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -14213,7 +13264,6 @@ func encodeTestResponseStringInt32NullableResponse(response NilStringInt32, w ht
 func encodeTestResponseStringInt32NullableArrayResponse(response []NilStringInt32, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -14231,7 +13281,6 @@ func encodeTestResponseStringInt32NullableArrayResponse(response []NilStringInt3
 func encodeTestResponseStringInt32NullableArrayArrayResponse(response [][]NilStringInt32, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -14253,7 +13302,6 @@ func encodeTestResponseStringInt32NullableArrayArrayResponse(response [][]NilStr
 func encodeTestResponseStringInt64Response(response int64, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	json.EncodeStringInt64(e, response)
@@ -14267,7 +13315,6 @@ func encodeTestResponseStringInt64Response(response int64, w http.ResponseWriter
 func encodeTestResponseStringInt64ArrayResponse(response []int64, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -14285,7 +13332,6 @@ func encodeTestResponseStringInt64ArrayResponse(response []int64, w http.Respons
 func encodeTestResponseStringInt64ArrayArrayResponse(response [][]int64, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -14307,7 +13353,6 @@ func encodeTestResponseStringInt64ArrayArrayResponse(response [][]int64, w http.
 func encodeTestResponseStringInt64NullableResponse(response NilStringInt64, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -14321,7 +13366,6 @@ func encodeTestResponseStringInt64NullableResponse(response NilStringInt64, w ht
 func encodeTestResponseStringInt64NullableArrayResponse(response []NilStringInt64, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -14339,7 +13383,6 @@ func encodeTestResponseStringInt64NullableArrayResponse(response []NilStringInt6
 func encodeTestResponseStringInt64NullableArrayArrayResponse(response [][]NilStringInt64, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -14361,7 +13404,6 @@ func encodeTestResponseStringInt64NullableArrayArrayResponse(response [][]NilStr
 func encodeTestResponseStringInt8Response(response int8, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	json.EncodeStringInt8(e, response)
@@ -14375,7 +13417,6 @@ func encodeTestResponseStringInt8Response(response int8, w http.ResponseWriter, 
 func encodeTestResponseStringInt8ArrayResponse(response []int8, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -14393,7 +13434,6 @@ func encodeTestResponseStringInt8ArrayResponse(response []int8, w http.ResponseW
 func encodeTestResponseStringInt8ArrayArrayResponse(response [][]int8, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -14415,7 +13455,6 @@ func encodeTestResponseStringInt8ArrayArrayResponse(response [][]int8, w http.Re
 func encodeTestResponseStringInt8NullableResponse(response NilStringInt8, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -14429,7 +13468,6 @@ func encodeTestResponseStringInt8NullableResponse(response NilStringInt8, w http
 func encodeTestResponseStringInt8NullableArrayResponse(response []NilStringInt8, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -14447,7 +13485,6 @@ func encodeTestResponseStringInt8NullableArrayResponse(response []NilStringInt8,
 func encodeTestResponseStringInt8NullableArrayArrayResponse(response [][]NilStringInt8, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -14469,7 +13506,6 @@ func encodeTestResponseStringInt8NullableArrayArrayResponse(response [][]NilStri
 func encodeTestResponseStringIntArrayResponse(response []int, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -14487,7 +13523,6 @@ func encodeTestResponseStringIntArrayResponse(response []int, w http.ResponseWri
 func encodeTestResponseStringIntArrayArrayResponse(response [][]int, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -14509,7 +13544,6 @@ func encodeTestResponseStringIntArrayArrayResponse(response [][]int, w http.Resp
 func encodeTestResponseStringIntNullableResponse(response NilStringInt, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -14523,7 +13557,6 @@ func encodeTestResponseStringIntNullableResponse(response NilStringInt, w http.R
 func encodeTestResponseStringIntNullableArrayResponse(response []NilStringInt, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -14541,7 +13574,6 @@ func encodeTestResponseStringIntNullableArrayResponse(response []NilStringInt, w
 func encodeTestResponseStringIntNullableArrayArrayResponse(response [][]NilStringInt, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -14563,7 +13595,6 @@ func encodeTestResponseStringIntNullableArrayArrayResponse(response [][]NilStrin
 func encodeTestResponseStringIpv4Response(response netip.Addr, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	json.EncodeIPv4(e, response)
@@ -14577,7 +13608,6 @@ func encodeTestResponseStringIpv4Response(response netip.Addr, w http.ResponseWr
 func encodeTestResponseStringIpv4ArrayResponse(response []netip.Addr, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -14595,7 +13625,6 @@ func encodeTestResponseStringIpv4ArrayResponse(response []netip.Addr, w http.Res
 func encodeTestResponseStringIpv4ArrayArrayResponse(response [][]netip.Addr, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -14617,7 +13646,6 @@ func encodeTestResponseStringIpv4ArrayArrayResponse(response [][]netip.Addr, w h
 func encodeTestResponseStringIpv4NullableResponse(response NilIPv4, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -14631,7 +13659,6 @@ func encodeTestResponseStringIpv4NullableResponse(response NilIPv4, w http.Respo
 func encodeTestResponseStringIpv4NullableArrayResponse(response []NilIPv4, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -14649,7 +13676,6 @@ func encodeTestResponseStringIpv4NullableArrayResponse(response []NilIPv4, w htt
 func encodeTestResponseStringIpv4NullableArrayArrayResponse(response [][]NilIPv4, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -14671,7 +13697,6 @@ func encodeTestResponseStringIpv4NullableArrayArrayResponse(response [][]NilIPv4
 func encodeTestResponseStringIpv6Response(response netip.Addr, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	json.EncodeIPv6(e, response)
@@ -14685,7 +13710,6 @@ func encodeTestResponseStringIpv6Response(response netip.Addr, w http.ResponseWr
 func encodeTestResponseStringIpv6ArrayResponse(response []netip.Addr, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -14703,7 +13727,6 @@ func encodeTestResponseStringIpv6ArrayResponse(response []netip.Addr, w http.Res
 func encodeTestResponseStringIpv6ArrayArrayResponse(response [][]netip.Addr, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -14725,7 +13748,6 @@ func encodeTestResponseStringIpv6ArrayArrayResponse(response [][]netip.Addr, w h
 func encodeTestResponseStringIpv6NullableResponse(response NilIPv6, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -14739,7 +13761,6 @@ func encodeTestResponseStringIpv6NullableResponse(response NilIPv6, w http.Respo
 func encodeTestResponseStringIpv6NullableArrayResponse(response []NilIPv6, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -14757,7 +13778,6 @@ func encodeTestResponseStringIpv6NullableArrayResponse(response []NilIPv6, w htt
 func encodeTestResponseStringIpv6NullableArrayArrayResponse(response [][]NilIPv6, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -14779,7 +13799,6 @@ func encodeTestResponseStringIpv6NullableArrayArrayResponse(response [][]NilIPv6
 func encodeTestResponseStringMACResponse(response net.HardwareAddr, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	json.EncodeMAC(e, response)
@@ -14793,7 +13812,6 @@ func encodeTestResponseStringMACResponse(response net.HardwareAddr, w http.Respo
 func encodeTestResponseStringMACArrayResponse(response []net.HardwareAddr, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -14811,7 +13829,6 @@ func encodeTestResponseStringMACArrayResponse(response []net.HardwareAddr, w htt
 func encodeTestResponseStringMACArrayArrayResponse(response [][]net.HardwareAddr, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -14833,7 +13850,6 @@ func encodeTestResponseStringMACArrayArrayResponse(response [][]net.HardwareAddr
 func encodeTestResponseStringMACNullableResponse(response NilHardwareAddr, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -14847,7 +13863,6 @@ func encodeTestResponseStringMACNullableResponse(response NilHardwareAddr, w htt
 func encodeTestResponseStringMACNullableArrayResponse(response []NilHardwareAddr, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -14865,7 +13880,6 @@ func encodeTestResponseStringMACNullableArrayResponse(response []NilHardwareAddr
 func encodeTestResponseStringMACNullableArrayArrayResponse(response [][]NilHardwareAddr, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -14887,7 +13901,6 @@ func encodeTestResponseStringMACNullableArrayArrayResponse(response [][]NilHardw
 func encodeTestResponseStringNullableResponse(response NilString, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -14901,7 +13914,6 @@ func encodeTestResponseStringNullableResponse(response NilString, w http.Respons
 func encodeTestResponseStringNullableArrayResponse(response []NilString, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -14919,7 +13931,6 @@ func encodeTestResponseStringNullableArrayResponse(response []NilString, w http.
 func encodeTestResponseStringNullableArrayArrayResponse(response [][]NilString, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -14941,7 +13952,6 @@ func encodeTestResponseStringNullableArrayArrayResponse(response [][]NilString, 
 func encodeTestResponseStringPasswordResponse(response string, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.Str(response)
@@ -14955,7 +13965,6 @@ func encodeTestResponseStringPasswordResponse(response string, w http.ResponseWr
 func encodeTestResponseStringPasswordArrayResponse(response []string, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -14973,7 +13982,6 @@ func encodeTestResponseStringPasswordArrayResponse(response []string, w http.Res
 func encodeTestResponseStringPasswordArrayArrayResponse(response [][]string, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -14995,7 +14003,6 @@ func encodeTestResponseStringPasswordArrayArrayResponse(response [][]string, w h
 func encodeTestResponseStringPasswordNullableResponse(response NilString, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -15009,7 +14016,6 @@ func encodeTestResponseStringPasswordNullableResponse(response NilString, w http
 func encodeTestResponseStringPasswordNullableArrayResponse(response []NilString, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -15027,7 +14033,6 @@ func encodeTestResponseStringPasswordNullableArrayResponse(response []NilString,
 func encodeTestResponseStringPasswordNullableArrayArrayResponse(response [][]NilString, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -15049,7 +14054,6 @@ func encodeTestResponseStringPasswordNullableArrayArrayResponse(response [][]Nil
 func encodeTestResponseStringTimeResponse(response time.Time, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	json.EncodeTime(e, response)
@@ -15063,7 +14067,6 @@ func encodeTestResponseStringTimeResponse(response time.Time, w http.ResponseWri
 func encodeTestResponseStringTimeArrayResponse(response []time.Time, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -15081,7 +14084,6 @@ func encodeTestResponseStringTimeArrayResponse(response []time.Time, w http.Resp
 func encodeTestResponseStringTimeArrayArrayResponse(response [][]time.Time, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -15103,7 +14105,6 @@ func encodeTestResponseStringTimeArrayArrayResponse(response [][]time.Time, w ht
 func encodeTestResponseStringTimeNullableResponse(response NilTime, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e, json.EncodeTime)
@@ -15117,7 +14118,6 @@ func encodeTestResponseStringTimeNullableResponse(response NilTime, w http.Respo
 func encodeTestResponseStringTimeNullableArrayResponse(response []NilTime, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -15135,7 +14135,6 @@ func encodeTestResponseStringTimeNullableArrayResponse(response []NilTime, w htt
 func encodeTestResponseStringTimeNullableArrayArrayResponse(response [][]NilTime, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -15157,7 +14156,6 @@ func encodeTestResponseStringTimeNullableArrayArrayResponse(response [][]NilTime
 func encodeTestResponseStringURIResponse(response url.URL, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	json.EncodeURI(e, response)
@@ -15171,7 +14169,6 @@ func encodeTestResponseStringURIResponse(response url.URL, w http.ResponseWriter
 func encodeTestResponseStringURIArrayResponse(response []url.URL, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -15189,7 +14186,6 @@ func encodeTestResponseStringURIArrayResponse(response []url.URL, w http.Respons
 func encodeTestResponseStringURIArrayArrayResponse(response [][]url.URL, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -15211,7 +14207,6 @@ func encodeTestResponseStringURIArrayArrayResponse(response [][]url.URL, w http.
 func encodeTestResponseStringURINullableResponse(response NilURI, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -15225,7 +14220,6 @@ func encodeTestResponseStringURINullableResponse(response NilURI, w http.Respons
 func encodeTestResponseStringURINullableArrayResponse(response []NilURI, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -15243,7 +14237,6 @@ func encodeTestResponseStringURINullableArrayResponse(response []NilURI, w http.
 func encodeTestResponseStringURINullableArrayArrayResponse(response [][]NilURI, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -15265,7 +14258,6 @@ func encodeTestResponseStringURINullableArrayArrayResponse(response [][]NilURI, 
 func encodeTestResponseStringUUIDResponse(response uuid.UUID, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	json.EncodeUUID(e, response)
@@ -15279,7 +14271,6 @@ func encodeTestResponseStringUUIDResponse(response uuid.UUID, w http.ResponseWri
 func encodeTestResponseStringUUIDArrayResponse(response []uuid.UUID, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -15297,7 +14288,6 @@ func encodeTestResponseStringUUIDArrayResponse(response []uuid.UUID, w http.Resp
 func encodeTestResponseStringUUIDArrayArrayResponse(response [][]uuid.UUID, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -15319,7 +14309,6 @@ func encodeTestResponseStringUUIDArrayArrayResponse(response [][]uuid.UUID, w ht
 func encodeTestResponseStringUUIDNullableResponse(response NilUUID, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -15333,7 +14322,6 @@ func encodeTestResponseStringUUIDNullableResponse(response NilUUID, w http.Respo
 func encodeTestResponseStringUUIDNullableArrayResponse(response []NilUUID, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -15351,7 +14339,6 @@ func encodeTestResponseStringUUIDNullableArrayResponse(response []NilUUID, w htt
 func encodeTestResponseStringUUIDNullableArrayArrayResponse(response [][]NilUUID, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -15373,7 +14360,6 @@ func encodeTestResponseStringUUIDNullableArrayArrayResponse(response [][]NilUUID
 func encodeTestResponseStringUintResponse(response uint, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	json.EncodeStringUint(e, response)
@@ -15387,7 +14373,6 @@ func encodeTestResponseStringUintResponse(response uint, w http.ResponseWriter, 
 func encodeTestResponseStringUint16Response(response uint16, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	json.EncodeStringUint16(e, response)
@@ -15401,7 +14386,6 @@ func encodeTestResponseStringUint16Response(response uint16, w http.ResponseWrit
 func encodeTestResponseStringUint16ArrayResponse(response []uint16, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -15419,7 +14403,6 @@ func encodeTestResponseStringUint16ArrayResponse(response []uint16, w http.Respo
 func encodeTestResponseStringUint16ArrayArrayResponse(response [][]uint16, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -15441,7 +14424,6 @@ func encodeTestResponseStringUint16ArrayArrayResponse(response [][]uint16, w htt
 func encodeTestResponseStringUint16NullableResponse(response NilStringUint16, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -15455,7 +14437,6 @@ func encodeTestResponseStringUint16NullableResponse(response NilStringUint16, w 
 func encodeTestResponseStringUint16NullableArrayResponse(response []NilStringUint16, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -15473,7 +14454,6 @@ func encodeTestResponseStringUint16NullableArrayResponse(response []NilStringUin
 func encodeTestResponseStringUint16NullableArrayArrayResponse(response [][]NilStringUint16, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -15495,7 +14475,6 @@ func encodeTestResponseStringUint16NullableArrayArrayResponse(response [][]NilSt
 func encodeTestResponseStringUint32Response(response uint32, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	json.EncodeStringUint32(e, response)
@@ -15509,7 +14488,6 @@ func encodeTestResponseStringUint32Response(response uint32, w http.ResponseWrit
 func encodeTestResponseStringUint32ArrayResponse(response []uint32, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -15527,7 +14505,6 @@ func encodeTestResponseStringUint32ArrayResponse(response []uint32, w http.Respo
 func encodeTestResponseStringUint32ArrayArrayResponse(response [][]uint32, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -15549,7 +14526,6 @@ func encodeTestResponseStringUint32ArrayArrayResponse(response [][]uint32, w htt
 func encodeTestResponseStringUint32NullableResponse(response NilStringUint32, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -15563,7 +14539,6 @@ func encodeTestResponseStringUint32NullableResponse(response NilStringUint32, w 
 func encodeTestResponseStringUint32NullableArrayResponse(response []NilStringUint32, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -15581,7 +14556,6 @@ func encodeTestResponseStringUint32NullableArrayResponse(response []NilStringUin
 func encodeTestResponseStringUint32NullableArrayArrayResponse(response [][]NilStringUint32, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -15603,7 +14577,6 @@ func encodeTestResponseStringUint32NullableArrayArrayResponse(response [][]NilSt
 func encodeTestResponseStringUint64Response(response uint64, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	json.EncodeStringUint64(e, response)
@@ -15617,7 +14590,6 @@ func encodeTestResponseStringUint64Response(response uint64, w http.ResponseWrit
 func encodeTestResponseStringUint64ArrayResponse(response []uint64, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -15635,7 +14607,6 @@ func encodeTestResponseStringUint64ArrayResponse(response []uint64, w http.Respo
 func encodeTestResponseStringUint64ArrayArrayResponse(response [][]uint64, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -15657,7 +14628,6 @@ func encodeTestResponseStringUint64ArrayArrayResponse(response [][]uint64, w htt
 func encodeTestResponseStringUint64NullableResponse(response NilStringUint64, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -15671,7 +14641,6 @@ func encodeTestResponseStringUint64NullableResponse(response NilStringUint64, w 
 func encodeTestResponseStringUint64NullableArrayResponse(response []NilStringUint64, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -15689,7 +14658,6 @@ func encodeTestResponseStringUint64NullableArrayResponse(response []NilStringUin
 func encodeTestResponseStringUint64NullableArrayArrayResponse(response [][]NilStringUint64, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -15711,7 +14679,6 @@ func encodeTestResponseStringUint64NullableArrayArrayResponse(response [][]NilSt
 func encodeTestResponseStringUint8Response(response uint8, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	json.EncodeStringUint8(e, response)
@@ -15725,7 +14692,6 @@ func encodeTestResponseStringUint8Response(response uint8, w http.ResponseWriter
 func encodeTestResponseStringUint8ArrayResponse(response []uint8, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -15743,7 +14709,6 @@ func encodeTestResponseStringUint8ArrayResponse(response []uint8, w http.Respons
 func encodeTestResponseStringUint8ArrayArrayResponse(response [][]uint8, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -15765,7 +14730,6 @@ func encodeTestResponseStringUint8ArrayArrayResponse(response [][]uint8, w http.
 func encodeTestResponseStringUint8NullableResponse(response NilStringUint8, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -15779,7 +14743,6 @@ func encodeTestResponseStringUint8NullableResponse(response NilStringUint8, w ht
 func encodeTestResponseStringUint8NullableArrayResponse(response []NilStringUint8, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -15797,7 +14760,6 @@ func encodeTestResponseStringUint8NullableArrayResponse(response []NilStringUint
 func encodeTestResponseStringUint8NullableArrayArrayResponse(response [][]NilStringUint8, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -15819,7 +14781,6 @@ func encodeTestResponseStringUint8NullableArrayArrayResponse(response [][]NilStr
 func encodeTestResponseStringUintArrayResponse(response []uint, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -15837,7 +14798,6 @@ func encodeTestResponseStringUintArrayResponse(response []uint, w http.ResponseW
 func encodeTestResponseStringUintArrayArrayResponse(response [][]uint, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -15859,7 +14819,6 @@ func encodeTestResponseStringUintArrayArrayResponse(response [][]uint, w http.Re
 func encodeTestResponseStringUintNullableResponse(response NilStringUint, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -15873,7 +14832,6 @@ func encodeTestResponseStringUintNullableResponse(response NilStringUint, w http
 func encodeTestResponseStringUintNullableArrayResponse(response []NilStringUint, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -15891,7 +14849,6 @@ func encodeTestResponseStringUintNullableArrayResponse(response []NilStringUint,
 func encodeTestResponseStringUintNullableArrayArrayResponse(response [][]NilStringUint, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -15913,7 +14870,6 @@ func encodeTestResponseStringUintNullableArrayArrayResponse(response [][]NilStri
 func encodeTestResponseStringUnixResponse(response time.Time, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	json.EncodeStringUnixSeconds(e, response)
@@ -15927,7 +14883,6 @@ func encodeTestResponseStringUnixResponse(response time.Time, w http.ResponseWri
 func encodeTestResponseStringUnixArrayResponse(response []time.Time, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -15945,7 +14900,6 @@ func encodeTestResponseStringUnixArrayResponse(response []time.Time, w http.Resp
 func encodeTestResponseStringUnixArrayArrayResponse(response [][]time.Time, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -15967,7 +14921,6 @@ func encodeTestResponseStringUnixArrayArrayResponse(response [][]time.Time, w ht
 func encodeTestResponseStringUnixMicroResponse(response time.Time, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	json.EncodeStringUnixMicro(e, response)
@@ -15981,7 +14934,6 @@ func encodeTestResponseStringUnixMicroResponse(response time.Time, w http.Respon
 func encodeTestResponseStringUnixMicroArrayResponse(response []time.Time, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -15999,7 +14951,6 @@ func encodeTestResponseStringUnixMicroArrayResponse(response []time.Time, w http
 func encodeTestResponseStringUnixMicroArrayArrayResponse(response [][]time.Time, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -16021,7 +14972,6 @@ func encodeTestResponseStringUnixMicroArrayArrayResponse(response [][]time.Time,
 func encodeTestResponseStringUnixMicroNullableResponse(response NilStringUnixMicro, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e, json.EncodeStringUnixMicro)
@@ -16035,7 +14985,6 @@ func encodeTestResponseStringUnixMicroNullableResponse(response NilStringUnixMic
 func encodeTestResponseStringUnixMicroNullableArrayResponse(response []NilStringUnixMicro, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -16053,7 +15002,6 @@ func encodeTestResponseStringUnixMicroNullableArrayResponse(response []NilString
 func encodeTestResponseStringUnixMicroNullableArrayArrayResponse(response [][]NilStringUnixMicro, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -16075,7 +15023,6 @@ func encodeTestResponseStringUnixMicroNullableArrayArrayResponse(response [][]Ni
 func encodeTestResponseStringUnixMilliResponse(response time.Time, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	json.EncodeStringUnixMilli(e, response)
@@ -16089,7 +15036,6 @@ func encodeTestResponseStringUnixMilliResponse(response time.Time, w http.Respon
 func encodeTestResponseStringUnixMilliArrayResponse(response []time.Time, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -16107,7 +15053,6 @@ func encodeTestResponseStringUnixMilliArrayResponse(response []time.Time, w http
 func encodeTestResponseStringUnixMilliArrayArrayResponse(response [][]time.Time, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -16129,7 +15074,6 @@ func encodeTestResponseStringUnixMilliArrayArrayResponse(response [][]time.Time,
 func encodeTestResponseStringUnixMilliNullableResponse(response NilStringUnixMilli, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e, json.EncodeStringUnixMilli)
@@ -16143,7 +15087,6 @@ func encodeTestResponseStringUnixMilliNullableResponse(response NilStringUnixMil
 func encodeTestResponseStringUnixMilliNullableArrayResponse(response []NilStringUnixMilli, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -16161,7 +15104,6 @@ func encodeTestResponseStringUnixMilliNullableArrayResponse(response []NilString
 func encodeTestResponseStringUnixMilliNullableArrayArrayResponse(response [][]NilStringUnixMilli, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -16183,7 +15125,6 @@ func encodeTestResponseStringUnixMilliNullableArrayArrayResponse(response [][]Ni
 func encodeTestResponseStringUnixNanoResponse(response time.Time, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	json.EncodeStringUnixNano(e, response)
@@ -16197,7 +15138,6 @@ func encodeTestResponseStringUnixNanoResponse(response time.Time, w http.Respons
 func encodeTestResponseStringUnixNanoArrayResponse(response []time.Time, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -16215,7 +15155,6 @@ func encodeTestResponseStringUnixNanoArrayResponse(response []time.Time, w http.
 func encodeTestResponseStringUnixNanoArrayArrayResponse(response [][]time.Time, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -16237,7 +15176,6 @@ func encodeTestResponseStringUnixNanoArrayArrayResponse(response [][]time.Time, 
 func encodeTestResponseStringUnixNanoNullableResponse(response NilStringUnixNano, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e, json.EncodeStringUnixNano)
@@ -16251,7 +15189,6 @@ func encodeTestResponseStringUnixNanoNullableResponse(response NilStringUnixNano
 func encodeTestResponseStringUnixNanoNullableArrayResponse(response []NilStringUnixNano, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -16269,7 +15206,6 @@ func encodeTestResponseStringUnixNanoNullableArrayResponse(response []NilStringU
 func encodeTestResponseStringUnixNanoNullableArrayArrayResponse(response [][]NilStringUnixNano, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -16291,7 +15227,6 @@ func encodeTestResponseStringUnixNanoNullableArrayArrayResponse(response [][]Nil
 func encodeTestResponseStringUnixNullableResponse(response NilStringUnixSeconds, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e, json.EncodeStringUnixSeconds)
@@ -16305,7 +15240,6 @@ func encodeTestResponseStringUnixNullableResponse(response NilStringUnixSeconds,
 func encodeTestResponseStringUnixNullableArrayResponse(response []NilStringUnixSeconds, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -16323,7 +15257,6 @@ func encodeTestResponseStringUnixNullableArrayResponse(response []NilStringUnixS
 func encodeTestResponseStringUnixNullableArrayArrayResponse(response [][]NilStringUnixSeconds, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -16345,7 +15278,6 @@ func encodeTestResponseStringUnixNullableArrayArrayResponse(response [][]NilStri
 func encodeTestResponseStringUnixSecondsResponse(response time.Time, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	json.EncodeStringUnixSeconds(e, response)
@@ -16359,7 +15291,6 @@ func encodeTestResponseStringUnixSecondsResponse(response time.Time, w http.Resp
 func encodeTestResponseStringUnixSecondsArrayResponse(response []time.Time, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -16377,7 +15308,6 @@ func encodeTestResponseStringUnixSecondsArrayResponse(response []time.Time, w ht
 func encodeTestResponseStringUnixSecondsArrayArrayResponse(response [][]time.Time, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -16399,7 +15329,6 @@ func encodeTestResponseStringUnixSecondsArrayArrayResponse(response [][]time.Tim
 func encodeTestResponseStringUnixSecondsNullableResponse(response NilStringUnixSeconds, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e, json.EncodeStringUnixSeconds)
@@ -16413,7 +15342,6 @@ func encodeTestResponseStringUnixSecondsNullableResponse(response NilStringUnixS
 func encodeTestResponseStringUnixSecondsNullableArrayResponse(response []NilStringUnixSeconds, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
@@ -16431,7 +15359,6 @@ func encodeTestResponseStringUnixSecondsNullableArrayResponse(response []NilStri
 func encodeTestResponseStringUnixSecondsNullableArrayArrayResponse(response [][]NilStringUnixSeconds, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	e.ArrStart()
