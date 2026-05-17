@@ -59,11 +59,11 @@ func TestMAC(t *testing.T) {
 		// Valid MAC.
 		{`"00:11:22:33:44:55"`, mac("00:11:22:33:44:55"), false},
 		{`"A1-B2-C3-D4-E5-F6"`, mac("A1-B2-C3-D4-E5-F6"), false},
+		// {`"A1B2C3D4E5F6"`, mac("A1B2C3D4E5F6"), false}, // This is accepted for Go 1.26+, commented for now
 
 		// Invalid MAC.
 		{"01:23:45:67:89:GH", nil, true}, // GH is not a valid hex digit.
 		{`"00-1B-2C-3D-4E"`, nil, true},  // Too few octets.
-		{`"A1B2C3D4E5F6"`, nil, true},    // Missing separators.
 	}
 	for i, tt := range tests {
 		tt := tt
