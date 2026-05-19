@@ -16,7 +16,6 @@ import (
 func encodeBuildInfoResponse(response *PrometheusVersion, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -30,7 +29,6 @@ func encodeBuildInfoResponse(response *PrometheusVersion, w http.ResponseWriter,
 func encodeEchoResponse(response EchoOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "text/plain; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	writer := w
 	if closer, ok := response.Data.(io.Closer); ok {
@@ -46,7 +44,6 @@ func encodeEchoResponse(response EchoOK, w http.ResponseWriter, span trace.Span)
 func encodeSearchResponse(response *Traces, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -60,7 +57,6 @@ func encodeSearchResponse(response *Traces, w http.ResponseWriter, span trace.Sp
 func encodeSearchTagValuesResponse(response *TagValues, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -74,7 +70,6 @@ func encodeSearchTagValuesResponse(response *TagValues, w http.ResponseWriter, s
 func encodeSearchTagValuesV2Response(response *TagValuesV2, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -88,7 +83,6 @@ func encodeSearchTagValuesV2Response(response *TagValuesV2, w http.ResponseWrite
 func encodeSearchTagsResponse(response *TagNames, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -102,7 +96,6 @@ func encodeSearchTagsResponse(response *TagNames, w http.ResponseWriter, span tr
 func encodeSearchTagsV2Response(response *TagNamesV2, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -118,7 +111,6 @@ func encodeTraceByIDResponse(response TraceByIDRes, w http.ResponseWriter, span 
 	case *TraceByID:
 		w.Header().Set("Content-Type", "application/protobuf")
 		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
 		if closer, ok := response.Data.(io.Closer); ok {
@@ -132,7 +124,6 @@ func encodeTraceByIDResponse(response TraceByIDRes, w http.ResponseWriter, span 
 
 	case *TraceByIDNotFound:
 		w.WriteHeader(404)
-		span.SetStatus(codes.Error, http.StatusText(404))
 
 		return nil
 
@@ -149,10 +140,8 @@ func encodeErrorResponse(response *ErrorStatusCode, w http.ResponseWriter, span 
 		code = http.StatusOK
 	}
 	w.WriteHeader(code)
-	if st := http.StatusText(code); code >= http.StatusBadRequest {
-		span.SetStatus(codes.Error, st)
-	} else {
-		span.SetStatus(codes.Ok, st)
+	if code >= http.StatusInternalServerError {
+		span.SetStatus(codes.Error, http.StatusText(code))
 	}
 
 	e := new(jx.Encoder)

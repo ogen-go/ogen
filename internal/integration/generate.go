@@ -18,6 +18,7 @@ package integration
 //go:generate go run ../../cmd/ogen -v --clean --target test_webhooks         ../../_testdata/positive/webhooks.json
 //go:generate go run ../../cmd/ogen -v --clean --target test_servers          ../../_testdata/positive/servers.json
 //go:generate go run ../../cmd/ogen -v --clean --target test_single_endpoint  ../../_testdata/positive/single_endpoint.json
+//go:generate go run ../../cmd/ogen -v --clean --target test_span_status      ../../_testdata/positive/span_status.yml
 //go:generate go run ../../cmd/ogen -v --clean --target test_http_responses   ../../_testdata/positive/http_responses.json
 //go:generate go run ../../cmd/ogen -v --clean --target test_http_requests    ../../_testdata/positive/http_requests.json
 //go:generate go run ../../cmd/ogen -v --clean --target test_form             ../../_testdata/positive/form.json

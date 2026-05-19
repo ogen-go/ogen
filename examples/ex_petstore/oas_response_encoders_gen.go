@@ -16,7 +16,6 @@ import (
 
 func encodeCreatePetsResponse(response *CreatePetsCreated, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(201)
-	span.SetStatus(codes.Ok, http.StatusText(201))
 
 	return nil
 }
@@ -44,7 +43,6 @@ func encodeListPetsResponse(response *PetsHeaders, w http.ResponseWriter, span t
 		}
 	}
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Response.Encode(e)
@@ -58,7 +56,6 @@ func encodeListPetsResponse(response *PetsHeaders, w http.ResponseWriter, span t
 func encodeShowPetByIdResponse(response *Pet, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	e := new(jx.Encoder)
 	response.Encode(e)
@@ -77,10 +74,8 @@ func encodeErrorResponse(response *ErrorStatusCode, w http.ResponseWriter, span 
 		code = http.StatusOK
 	}
 	w.WriteHeader(code)
-	if st := http.StatusText(code); code >= http.StatusBadRequest {
-		span.SetStatus(codes.Error, st)
-	} else {
-		span.SetStatus(codes.Ok, st)
+	if code >= http.StatusInternalServerError {
+		span.SetStatus(codes.Error, http.StatusText(code))
 	}
 
 	e := new(jx.Encoder)

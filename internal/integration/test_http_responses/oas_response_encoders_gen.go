@@ -33,7 +33,6 @@ func encodeAnyContentTypeBinaryStringSchemaResponse(response *AnyContentTypeBina
 		}
 	}
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	writer := w
 	if closer, ok := response.Response.Data.(io.Closer); ok {
@@ -69,10 +68,8 @@ func encodeAnyContentTypeBinaryStringSchemaDefaultResponse(response *AnyContentT
 		code = http.StatusOK
 	}
 	w.WriteHeader(code)
-	if st := http.StatusText(code); code >= http.StatusBadRequest {
-		span.SetStatus(codes.Error, st)
-	} else {
-		span.SetStatus(codes.Ok, st)
+	if code >= http.StatusInternalServerError {
+		span.SetStatus(codes.Error, http.StatusText(code))
 	}
 
 	writer := w
@@ -94,7 +91,6 @@ func encodeCombinedResponse(response CombinedRes, w http.ResponseWriter, span tr
 	case *CombinedOK:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		e := new(jx.Encoder)
 		response.Encode(e)
@@ -112,10 +108,8 @@ func encodeCombinedResponse(response CombinedRes, w http.ResponseWriter, span tr
 			code = http.StatusOK
 		}
 		w.WriteHeader(code)
-		if st := http.StatusText(code); code >= http.StatusBadRequest {
-			span.SetStatus(codes.Error, st)
-		} else {
-			span.SetStatus(codes.Ok, st)
+		if code >= http.StatusInternalServerError {
+			span.SetStatus(codes.Error, http.StatusText(code))
 		}
 
 		e := new(jx.Encoder)
@@ -137,10 +131,8 @@ func encodeCombinedResponse(response CombinedRes, w http.ResponseWriter, span tr
 			code = http.StatusOK
 		}
 		w.WriteHeader(code)
-		if st := http.StatusText(code); code >= http.StatusBadRequest {
-			span.SetStatus(codes.Error, st)
-		} else {
-			span.SetStatus(codes.Ok, st)
+		if code >= http.StatusInternalServerError {
+			span.SetStatus(codes.Error, http.StatusText(code))
 		}
 
 		e := new(jx.Encoder)
@@ -162,10 +154,8 @@ func encodeCombinedResponse(response CombinedRes, w http.ResponseWriter, span tr
 			code = http.StatusOK
 		}
 		w.WriteHeader(code)
-		if st := http.StatusText(code); code >= http.StatusBadRequest {
-			span.SetStatus(codes.Error, st)
-		} else {
-			span.SetStatus(codes.Ok, st)
+		if code >= http.StatusInternalServerError {
+			span.SetStatus(codes.Error, http.StatusText(code))
 		}
 
 		e := new(jx.Encoder)
@@ -207,7 +197,6 @@ func encodeHeaders200Response(response *Headers200OK, w http.ResponseWriter, spa
 		}
 	}
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	return nil
 }
@@ -233,7 +222,6 @@ func encodeHeadersCombinedResponse(response HeadersCombinedRes, w http.ResponseW
 			}
 		}
 		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		return nil
 
@@ -261,10 +249,8 @@ func encodeHeadersCombinedResponse(response HeadersCombinedRes, w http.ResponseW
 			code = http.StatusOK
 		}
 		w.WriteHeader(code)
-		if st := http.StatusText(code); code >= http.StatusBadRequest {
-			span.SetStatus(codes.Error, st)
-		} else {
-			span.SetStatus(codes.Ok, st)
+		if code >= http.StatusInternalServerError {
+			span.SetStatus(codes.Error, http.StatusText(code))
 		}
 
 		if code >= http.StatusInternalServerError {
@@ -296,10 +282,8 @@ func encodeHeadersCombinedResponse(response HeadersCombinedRes, w http.ResponseW
 			code = http.StatusOK
 		}
 		w.WriteHeader(code)
-		if st := http.StatusText(code); code >= http.StatusBadRequest {
-			span.SetStatus(codes.Error, st)
-		} else {
-			span.SetStatus(codes.Ok, st)
+		if code >= http.StatusInternalServerError {
+			span.SetStatus(codes.Error, http.StatusText(code))
 		}
 
 		if code >= http.StatusInternalServerError {
@@ -336,10 +320,8 @@ func encodeHeadersDefaultResponse(response *HeadersDefaultDef, w http.ResponseWr
 		code = http.StatusOK
 	}
 	w.WriteHeader(code)
-	if st := http.StatusText(code); code >= http.StatusBadRequest {
-		span.SetStatus(codes.Error, st)
-	} else {
-		span.SetStatus(codes.Ok, st)
+	if code >= http.StatusInternalServerError {
+		span.SetStatus(codes.Error, http.StatusText(code))
 	}
 
 	if code >= http.StatusInternalServerError {
@@ -391,7 +373,6 @@ func encodeHeadersJSONResponse(response *HeadersJSONOK, w http.ResponseWriter, s
 		}
 	}
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	return nil
 }
@@ -420,10 +401,8 @@ func encodeHeadersPatternResponse(response *HeadersPattern4XX, w http.ResponseWr
 		code = http.StatusOK
 	}
 	w.WriteHeader(code)
-	if st := http.StatusText(code); code >= http.StatusBadRequest {
-		span.SetStatus(codes.Error, st)
-	} else {
-		span.SetStatus(codes.Ok, st)
+	if code >= http.StatusInternalServerError {
+		span.SetStatus(codes.Error, http.StatusText(code))
 	}
 
 	if code >= http.StatusInternalServerError {
@@ -437,7 +416,6 @@ func encodeIntersectPatternCodeResponse(response IntersectPatternCodeRes, w http
 	case *IntersectPatternCodeOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		e := new(jx.Encoder)
 		response.Encode(e)
@@ -455,10 +433,8 @@ func encodeIntersectPatternCodeResponse(response IntersectPatternCodeRes, w http
 			code = http.StatusOK
 		}
 		w.WriteHeader(code)
-		if st := http.StatusText(code); code >= http.StatusBadRequest {
-			span.SetStatus(codes.Error, st)
-		} else {
-			span.SetStatus(codes.Ok, st)
+		if code >= http.StatusInternalServerError {
+			span.SetStatus(codes.Error, http.StatusText(code))
 		}
 
 		e := new(jx.Encoder)
@@ -482,7 +458,6 @@ func encodeMultipleGenericResponsesResponse(response MultipleGenericResponsesRes
 	case *NilInt:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		e := new(jx.Encoder)
 		response.Encode(e)
@@ -495,7 +470,6 @@ func encodeMultipleGenericResponsesResponse(response MultipleGenericResponsesRes
 	case *NilString:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(201)
-		span.SetStatus(codes.Ok, http.StatusText(201))
 
 		e := new(jx.Encoder)
 		response.Encode(e)
@@ -513,7 +487,6 @@ func encodeMultipleGenericResponsesResponse(response MultipleGenericResponsesRes
 func encodeOctetStreamBinaryStringSchemaResponse(response OctetStreamBinaryStringSchemaOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/octet-stream")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	writer := w
 	if closer, ok := response.Data.(io.Closer); ok {
@@ -529,7 +502,6 @@ func encodeOctetStreamBinaryStringSchemaResponse(response OctetStreamBinaryStrin
 func encodeOctetStreamEmptySchemaResponse(response OctetStreamEmptySchemaOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/octet-stream")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	writer := w
 	if closer, ok := response.Data.(io.Closer); ok {
@@ -576,7 +548,6 @@ func encodeOptionalHeadersResponse(response *OptionalHeadersOK, w http.ResponseW
 		}
 	}
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	return nil
 }
@@ -586,7 +557,6 @@ func encodeStreamJSONResponse(response StreamJSONRes, w http.ResponseWriter, spa
 	case *QueryData:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		e := jx.NewStreamingEncoder(w, -1)
 		response.Encode(e)
@@ -599,7 +569,6 @@ func encodeStreamJSONResponse(response StreamJSONRes, w http.ResponseWriter, spa
 	case *Error:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(400)
-		span.SetStatus(codes.Error, http.StatusText(400))
 
 		e := new(jx.Encoder)
 		response.Encode(e)
@@ -617,7 +586,6 @@ func encodeStreamJSONResponse(response StreamJSONRes, w http.ResponseWriter, spa
 func encodeTextPlainBinaryStringSchemaResponse(response TextPlainBinaryStringSchemaOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "text/plain; charset=utf-8")
 	w.WriteHeader(200)
-	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	writer := w
 	if closer, ok := response.Data.(io.Closer); ok {

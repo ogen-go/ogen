@@ -20,7 +20,6 @@ func encodeAddPetResponse(response AddPetRes, w http.ResponseWriter, span trace.
 	case *Pet:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		e := new(jx.Encoder)
 		response.Encode(e)
@@ -32,13 +31,11 @@ func encodeAddPetResponse(response AddPetRes, w http.ResponseWriter, span trace.
 
 	case *AddPetBadRequest:
 		w.WriteHeader(400)
-		span.SetStatus(codes.Error, http.StatusText(400))
 
 		return nil
 
 	case *AddPetUnprocessableEntity:
 		w.WriteHeader(422)
-		span.SetStatus(codes.Error, http.StatusText(422))
 
 		return nil
 
@@ -49,10 +46,8 @@ func encodeAddPetResponse(response AddPetRes, w http.ResponseWriter, span trace.
 			code = http.StatusOK
 		}
 		w.WriteHeader(code)
-		if st := http.StatusText(code); code >= http.StatusBadRequest {
-			span.SetStatus(codes.Error, st)
-		} else {
-			span.SetStatus(codes.Ok, st)
+		if code >= http.StatusInternalServerError {
+			span.SetStatus(codes.Error, http.StatusText(code))
 		}
 
 		if code >= http.StatusInternalServerError {
@@ -70,7 +65,6 @@ func encodeCreateUserResponse(response CreateUserRes, w http.ResponseWriter, spa
 	case *User:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		e := new(jx.Encoder)
 		response.Encode(e)
@@ -87,10 +81,8 @@ func encodeCreateUserResponse(response CreateUserRes, w http.ResponseWriter, spa
 			code = http.StatusOK
 		}
 		w.WriteHeader(code)
-		if st := http.StatusText(code); code >= http.StatusBadRequest {
-			span.SetStatus(codes.Error, st)
-		} else {
-			span.SetStatus(codes.Ok, st)
+		if code >= http.StatusInternalServerError {
+			span.SetStatus(codes.Error, http.StatusText(code))
 		}
 
 		if code >= http.StatusInternalServerError {
@@ -108,7 +100,6 @@ func encodeCreateUsersWithListInputResponse(response CreateUsersWithListInputRes
 	case *User:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		e := new(jx.Encoder)
 		response.Encode(e)
@@ -125,10 +116,8 @@ func encodeCreateUsersWithListInputResponse(response CreateUsersWithListInputRes
 			code = http.StatusOK
 		}
 		w.WriteHeader(code)
-		if st := http.StatusText(code); code >= http.StatusBadRequest {
-			span.SetStatus(codes.Error, st)
-		} else {
-			span.SetStatus(codes.Ok, st)
+		if code >= http.StatusInternalServerError {
+			span.SetStatus(codes.Error, http.StatusText(code))
 		}
 
 		if code >= http.StatusInternalServerError {
@@ -145,19 +134,16 @@ func encodeDeleteOrderResponse(response DeleteOrderRes, w http.ResponseWriter, s
 	switch response := response.(type) {
 	case *DeleteOrderOK:
 		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		return nil
 
 	case *DeleteOrderBadRequest:
 		w.WriteHeader(400)
-		span.SetStatus(codes.Error, http.StatusText(400))
 
 		return nil
 
 	case *DeleteOrderNotFound:
 		w.WriteHeader(404)
-		span.SetStatus(codes.Error, http.StatusText(404))
 
 		return nil
 
@@ -168,10 +154,8 @@ func encodeDeleteOrderResponse(response DeleteOrderRes, w http.ResponseWriter, s
 			code = http.StatusOK
 		}
 		w.WriteHeader(code)
-		if st := http.StatusText(code); code >= http.StatusBadRequest {
-			span.SetStatus(codes.Error, st)
-		} else {
-			span.SetStatus(codes.Ok, st)
+		if code >= http.StatusInternalServerError {
+			span.SetStatus(codes.Error, http.StatusText(code))
 		}
 
 		if code >= http.StatusInternalServerError {
@@ -188,13 +172,11 @@ func encodeDeletePetResponse(response DeletePetRes, w http.ResponseWriter, span 
 	switch response := response.(type) {
 	case *DeletePetOK:
 		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		return nil
 
 	case *DeletePetBadRequest:
 		w.WriteHeader(400)
-		span.SetStatus(codes.Error, http.StatusText(400))
 
 		return nil
 
@@ -205,10 +187,8 @@ func encodeDeletePetResponse(response DeletePetRes, w http.ResponseWriter, span 
 			code = http.StatusOK
 		}
 		w.WriteHeader(code)
-		if st := http.StatusText(code); code >= http.StatusBadRequest {
-			span.SetStatus(codes.Error, st)
-		} else {
-			span.SetStatus(codes.Ok, st)
+		if code >= http.StatusInternalServerError {
+			span.SetStatus(codes.Error, http.StatusText(code))
 		}
 
 		if code >= http.StatusInternalServerError {
@@ -225,19 +205,16 @@ func encodeDeleteUserResponse(response DeleteUserRes, w http.ResponseWriter, spa
 	switch response := response.(type) {
 	case *DeleteUserOK:
 		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		return nil
 
 	case *DeleteUserBadRequest:
 		w.WriteHeader(400)
-		span.SetStatus(codes.Error, http.StatusText(400))
 
 		return nil
 
 	case *DeleteUserNotFound:
 		w.WriteHeader(404)
-		span.SetStatus(codes.Error, http.StatusText(404))
 
 		return nil
 
@@ -248,10 +225,8 @@ func encodeDeleteUserResponse(response DeleteUserRes, w http.ResponseWriter, spa
 			code = http.StatusOK
 		}
 		w.WriteHeader(code)
-		if st := http.StatusText(code); code >= http.StatusBadRequest {
-			span.SetStatus(codes.Error, st)
-		} else {
-			span.SetStatus(codes.Ok, st)
+		if code >= http.StatusInternalServerError {
+			span.SetStatus(codes.Error, http.StatusText(code))
 		}
 
 		if code >= http.StatusInternalServerError {
@@ -269,7 +244,6 @@ func encodeFindPetsByStatusResponse(response FindPetsByStatusRes, w http.Respons
 	case *FindPetsByStatusOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		e := new(jx.Encoder)
 		response.Encode(e)
@@ -281,7 +255,6 @@ func encodeFindPetsByStatusResponse(response FindPetsByStatusRes, w http.Respons
 
 	case *FindPetsByStatusBadRequest:
 		w.WriteHeader(400)
-		span.SetStatus(codes.Error, http.StatusText(400))
 
 		return nil
 
@@ -292,10 +265,8 @@ func encodeFindPetsByStatusResponse(response FindPetsByStatusRes, w http.Respons
 			code = http.StatusOK
 		}
 		w.WriteHeader(code)
-		if st := http.StatusText(code); code >= http.StatusBadRequest {
-			span.SetStatus(codes.Error, st)
-		} else {
-			span.SetStatus(codes.Ok, st)
+		if code >= http.StatusInternalServerError {
+			span.SetStatus(codes.Error, http.StatusText(code))
 		}
 
 		if code >= http.StatusInternalServerError {
@@ -313,7 +284,6 @@ func encodeFindPetsByTagsResponse(response FindPetsByTagsRes, w http.ResponseWri
 	case *FindPetsByTagsOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		e := new(jx.Encoder)
 		response.Encode(e)
@@ -325,7 +295,6 @@ func encodeFindPetsByTagsResponse(response FindPetsByTagsRes, w http.ResponseWri
 
 	case *FindPetsByTagsBadRequest:
 		w.WriteHeader(400)
-		span.SetStatus(codes.Error, http.StatusText(400))
 
 		return nil
 
@@ -336,10 +305,8 @@ func encodeFindPetsByTagsResponse(response FindPetsByTagsRes, w http.ResponseWri
 			code = http.StatusOK
 		}
 		w.WriteHeader(code)
-		if st := http.StatusText(code); code >= http.StatusBadRequest {
-			span.SetStatus(codes.Error, st)
-		} else {
-			span.SetStatus(codes.Ok, st)
+		if code >= http.StatusInternalServerError {
+			span.SetStatus(codes.Error, http.StatusText(code))
 		}
 
 		if code >= http.StatusInternalServerError {
@@ -357,7 +324,6 @@ func encodeGetInventoryResponse(response GetInventoryRes, w http.ResponseWriter,
 	case *GetInventoryOK:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		e := new(jx.Encoder)
 		response.Encode(e)
@@ -374,10 +340,8 @@ func encodeGetInventoryResponse(response GetInventoryRes, w http.ResponseWriter,
 			code = http.StatusOK
 		}
 		w.WriteHeader(code)
-		if st := http.StatusText(code); code >= http.StatusBadRequest {
-			span.SetStatus(codes.Error, st)
-		} else {
-			span.SetStatus(codes.Ok, st)
+		if code >= http.StatusInternalServerError {
+			span.SetStatus(codes.Error, http.StatusText(code))
 		}
 
 		if code >= http.StatusInternalServerError {
@@ -395,7 +359,6 @@ func encodeGetOrderByIdResponse(response GetOrderByIdRes, w http.ResponseWriter,
 	case *Order:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		e := new(jx.Encoder)
 		response.Encode(e)
@@ -407,13 +370,11 @@ func encodeGetOrderByIdResponse(response GetOrderByIdRes, w http.ResponseWriter,
 
 	case *GetOrderByIdBadRequest:
 		w.WriteHeader(400)
-		span.SetStatus(codes.Error, http.StatusText(400))
 
 		return nil
 
 	case *GetOrderByIdNotFound:
 		w.WriteHeader(404)
-		span.SetStatus(codes.Error, http.StatusText(404))
 
 		return nil
 
@@ -424,10 +385,8 @@ func encodeGetOrderByIdResponse(response GetOrderByIdRes, w http.ResponseWriter,
 			code = http.StatusOK
 		}
 		w.WriteHeader(code)
-		if st := http.StatusText(code); code >= http.StatusBadRequest {
-			span.SetStatus(codes.Error, st)
-		} else {
-			span.SetStatus(codes.Ok, st)
+		if code >= http.StatusInternalServerError {
+			span.SetStatus(codes.Error, http.StatusText(code))
 		}
 
 		if code >= http.StatusInternalServerError {
@@ -445,7 +404,6 @@ func encodeGetPetByIdResponse(response GetPetByIdRes, w http.ResponseWriter, spa
 	case *Pet:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		e := new(jx.Encoder)
 		response.Encode(e)
@@ -457,13 +415,11 @@ func encodeGetPetByIdResponse(response GetPetByIdRes, w http.ResponseWriter, spa
 
 	case *GetPetByIdBadRequest:
 		w.WriteHeader(400)
-		span.SetStatus(codes.Error, http.StatusText(400))
 
 		return nil
 
 	case *GetPetByIdNotFound:
 		w.WriteHeader(404)
-		span.SetStatus(codes.Error, http.StatusText(404))
 
 		return nil
 
@@ -474,10 +430,8 @@ func encodeGetPetByIdResponse(response GetPetByIdRes, w http.ResponseWriter, spa
 			code = http.StatusOK
 		}
 		w.WriteHeader(code)
-		if st := http.StatusText(code); code >= http.StatusBadRequest {
-			span.SetStatus(codes.Error, st)
-		} else {
-			span.SetStatus(codes.Ok, st)
+		if code >= http.StatusInternalServerError {
+			span.SetStatus(codes.Error, http.StatusText(code))
 		}
 
 		if code >= http.StatusInternalServerError {
@@ -495,7 +449,6 @@ func encodeGetUserByNameResponse(response GetUserByNameRes, w http.ResponseWrite
 	case *User:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		e := new(jx.Encoder)
 		response.Encode(e)
@@ -507,13 +460,11 @@ func encodeGetUserByNameResponse(response GetUserByNameRes, w http.ResponseWrite
 
 	case *GetUserByNameBadRequest:
 		w.WriteHeader(400)
-		span.SetStatus(codes.Error, http.StatusText(400))
 
 		return nil
 
 	case *GetUserByNameNotFound:
 		w.WriteHeader(404)
-		span.SetStatus(codes.Error, http.StatusText(404))
 
 		return nil
 
@@ -524,10 +475,8 @@ func encodeGetUserByNameResponse(response GetUserByNameRes, w http.ResponseWrite
 			code = http.StatusOK
 		}
 		w.WriteHeader(code)
-		if st := http.StatusText(code); code >= http.StatusBadRequest {
-			span.SetStatus(codes.Error, st)
-		} else {
-			span.SetStatus(codes.Ok, st)
+		if code >= http.StatusInternalServerError {
+			span.SetStatus(codes.Error, http.StatusText(code))
 		}
 
 		if code >= http.StatusInternalServerError {
@@ -580,7 +529,6 @@ func encodeLoginUserResponse(response LoginUserRes, w http.ResponseWriter, span 
 			}
 		}
 		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		e := new(jx.Encoder)
 		e.Str(response.Response)
@@ -628,7 +576,6 @@ func encodeLoginUserResponse(response LoginUserRes, w http.ResponseWriter, span 
 			}
 		}
 		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
 		if closer, ok := response.Response.Data.(io.Closer); ok {
@@ -642,7 +589,6 @@ func encodeLoginUserResponse(response LoginUserRes, w http.ResponseWriter, span 
 
 	case *LoginUserBadRequest:
 		w.WriteHeader(400)
-		span.SetStatus(codes.Error, http.StatusText(400))
 
 		return nil
 
@@ -653,10 +599,8 @@ func encodeLoginUserResponse(response LoginUserRes, w http.ResponseWriter, span 
 			code = http.StatusOK
 		}
 		w.WriteHeader(code)
-		if st := http.StatusText(code); code >= http.StatusBadRequest {
-			span.SetStatus(codes.Error, st)
-		} else {
-			span.SetStatus(codes.Ok, st)
+		if code >= http.StatusInternalServerError {
+			span.SetStatus(codes.Error, http.StatusText(code))
 		}
 
 		if code >= http.StatusInternalServerError {
@@ -673,7 +617,6 @@ func encodeLogoutUserResponse(response LogoutUserRes, w http.ResponseWriter, spa
 	switch response := response.(type) {
 	case *LogoutUserOK:
 		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		return nil
 
@@ -684,10 +627,8 @@ func encodeLogoutUserResponse(response LogoutUserRes, w http.ResponseWriter, spa
 			code = http.StatusOK
 		}
 		w.WriteHeader(code)
-		if st := http.StatusText(code); code >= http.StatusBadRequest {
-			span.SetStatus(codes.Error, st)
-		} else {
-			span.SetStatus(codes.Ok, st)
+		if code >= http.StatusInternalServerError {
+			span.SetStatus(codes.Error, http.StatusText(code))
 		}
 
 		if code >= http.StatusInternalServerError {
@@ -705,7 +646,6 @@ func encodePlaceOrderResponse(response PlaceOrderRes, w http.ResponseWriter, spa
 	case *Order:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		e := new(jx.Encoder)
 		response.Encode(e)
@@ -717,13 +657,11 @@ func encodePlaceOrderResponse(response PlaceOrderRes, w http.ResponseWriter, spa
 
 	case *PlaceOrderBadRequest:
 		w.WriteHeader(400)
-		span.SetStatus(codes.Error, http.StatusText(400))
 
 		return nil
 
 	case *PlaceOrderUnprocessableEntity:
 		w.WriteHeader(422)
-		span.SetStatus(codes.Error, http.StatusText(422))
 
 		return nil
 
@@ -734,10 +672,8 @@ func encodePlaceOrderResponse(response PlaceOrderRes, w http.ResponseWriter, spa
 			code = http.StatusOK
 		}
 		w.WriteHeader(code)
-		if st := http.StatusText(code); code >= http.StatusBadRequest {
-			span.SetStatus(codes.Error, st)
-		} else {
-			span.SetStatus(codes.Ok, st)
+		if code >= http.StatusInternalServerError {
+			span.SetStatus(codes.Error, http.StatusText(code))
 		}
 
 		if code >= http.StatusInternalServerError {
@@ -755,7 +691,6 @@ func encodeUpdatePetResponse(response UpdatePetRes, w http.ResponseWriter, span 
 	case *Pet:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		e := new(jx.Encoder)
 		response.Encode(e)
@@ -767,19 +702,16 @@ func encodeUpdatePetResponse(response UpdatePetRes, w http.ResponseWriter, span 
 
 	case *UpdatePetBadRequest:
 		w.WriteHeader(400)
-		span.SetStatus(codes.Error, http.StatusText(400))
 
 		return nil
 
 	case *UpdatePetNotFound:
 		w.WriteHeader(404)
-		span.SetStatus(codes.Error, http.StatusText(404))
 
 		return nil
 
 	case *UpdatePetUnprocessableEntity:
 		w.WriteHeader(422)
-		span.SetStatus(codes.Error, http.StatusText(422))
 
 		return nil
 
@@ -790,10 +722,8 @@ func encodeUpdatePetResponse(response UpdatePetRes, w http.ResponseWriter, span 
 			code = http.StatusOK
 		}
 		w.WriteHeader(code)
-		if st := http.StatusText(code); code >= http.StatusBadRequest {
-			span.SetStatus(codes.Error, st)
-		} else {
-			span.SetStatus(codes.Ok, st)
+		if code >= http.StatusInternalServerError {
+			span.SetStatus(codes.Error, http.StatusText(code))
 		}
 
 		if code >= http.StatusInternalServerError {
@@ -811,7 +741,6 @@ func encodeUpdatePetWithFormResponse(response UpdatePetWithFormRes, w http.Respo
 	case *Pet:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		e := new(jx.Encoder)
 		response.Encode(e)
@@ -823,7 +752,6 @@ func encodeUpdatePetWithFormResponse(response UpdatePetWithFormRes, w http.Respo
 
 	case *UpdatePetWithFormBadRequest:
 		w.WriteHeader(400)
-		span.SetStatus(codes.Error, http.StatusText(400))
 
 		return nil
 
@@ -834,10 +762,8 @@ func encodeUpdatePetWithFormResponse(response UpdatePetWithFormRes, w http.Respo
 			code = http.StatusOK
 		}
 		w.WriteHeader(code)
-		if st := http.StatusText(code); code >= http.StatusBadRequest {
-			span.SetStatus(codes.Error, st)
-		} else {
-			span.SetStatus(codes.Ok, st)
+		if code >= http.StatusInternalServerError {
+			span.SetStatus(codes.Error, http.StatusText(code))
 		}
 
 		if code >= http.StatusInternalServerError {
@@ -854,19 +780,16 @@ func encodeUpdateUserResponse(response UpdateUserRes, w http.ResponseWriter, spa
 	switch response := response.(type) {
 	case *UpdateUserOK:
 		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		return nil
 
 	case *UpdateUserBadRequest:
 		w.WriteHeader(400)
-		span.SetStatus(codes.Error, http.StatusText(400))
 
 		return nil
 
 	case *UpdateUserNotFound:
 		w.WriteHeader(404)
-		span.SetStatus(codes.Error, http.StatusText(404))
 
 		return nil
 
@@ -877,10 +800,8 @@ func encodeUpdateUserResponse(response UpdateUserRes, w http.ResponseWriter, spa
 			code = http.StatusOK
 		}
 		w.WriteHeader(code)
-		if st := http.StatusText(code); code >= http.StatusBadRequest {
-			span.SetStatus(codes.Error, st)
-		} else {
-			span.SetStatus(codes.Ok, st)
+		if code >= http.StatusInternalServerError {
+			span.SetStatus(codes.Error, http.StatusText(code))
 		}
 
 		if code >= http.StatusInternalServerError {
@@ -898,7 +819,6 @@ func encodeUploadFileResponse(response UploadFileRes, w http.ResponseWriter, spa
 	case *ApiResponse:
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.WriteHeader(200)
-		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		e := new(jx.Encoder)
 		response.Encode(e)
@@ -910,13 +830,11 @@ func encodeUploadFileResponse(response UploadFileRes, w http.ResponseWriter, spa
 
 	case *UploadFileBadRequest:
 		w.WriteHeader(400)
-		span.SetStatus(codes.Error, http.StatusText(400))
 
 		return nil
 
 	case *UploadFileNotFound:
 		w.WriteHeader(404)
-		span.SetStatus(codes.Error, http.StatusText(404))
 
 		return nil
 
@@ -927,10 +845,8 @@ func encodeUploadFileResponse(response UploadFileRes, w http.ResponseWriter, spa
 			code = http.StatusOK
 		}
 		w.WriteHeader(code)
-		if st := http.StatusText(code); code >= http.StatusBadRequest {
-			span.SetStatus(codes.Error, st)
-		} else {
-			span.SetStatus(codes.Ok, st)
+		if code >= http.StatusInternalServerError {
+			span.SetStatus(codes.Error, http.StatusText(code))
 		}
 
 		if code >= http.StatusInternalServerError {
