@@ -111,6 +111,10 @@ func (g *schemaGen) generate(name string, schema *jsonschema.Schema, optional bo
 	}()
 
 	schema = transformSchema(schema)
+	schema, err := flattenAllOfSchema(schema)
+	if err != nil {
+		return nil, errors.Wrap(err, "flatten allOf")
+	}
 
 	t, err := g.generate2(name, schema)
 	if err != nil {
