@@ -69,7 +69,7 @@ func (s *Server) handleEchoRequest(args [0]string, argsEscaped bool, w http.Resp
 		if code != 0 {
 			codeAttr := semconv.HTTPResponseStatusCode(code)
 			attrs = append(attrs, codeAttr)
-			span.SetAttributes(codeAttr)
+			span.SetAttributes(attrs...)
 		}
 		attrOpt := metric.WithAttributes(attrs...)
 
