@@ -1,6 +1,9 @@
 package gen
 
 import (
+	"sort"
+	"strings"
+
 	"github.com/go-faster/errors"
 
 	"github.com/ogen-go/ogen/gen/ir"
@@ -42,7 +45,7 @@ type tstorage struct {
 	//  * [T]StatusCode
 	//  * [T]Headers
 	//  * [T]StatusCodeWithHeaders
-	wtypes map[[2]jsonschema.Ref]*ir.Type // Key: parent ref + ref
+	wtypes map[[3]jsonschema.Ref]*ir.Type // Key: parent ref + ref + headers ref (interned)
 }
 
 func newTStorage() *tstorage {
@@ -51,7 +54,7 @@ func newTStorage() *tstorage {
 		types:      map[string]*ir.Type{},
 		responses:  map[jsonschema.Ref]*ir.Response{},
 		parameters: map[jsonschema.Ref]*ir.Parameter{},
-		wtypes:     map[[2]jsonschema.Ref]*ir.Type{},
+		wtypes:     map[[3]jsonschema.Ref]*ir.Type{},
 	}
 }
 
@@ -109,8 +112,17 @@ func (s *tstorage) saveResponse(ref jsonschema.Ref, r *ir.Response) error {
 	return nil
 }
 
-func (s *tstorage) saveWType(parent, ref jsonschema.Ref, t *ir.Type) error {
-	key := [2]jsonschema.Ref{parent, ref}
+func headersRef(headers map[string]*ir.Parameter) jsonschema.Ref {
+	names := make([]string, 0, len(headers))
+	for k := range headers {
+		names = append(names, k)
+	}
+	sort.Strings(names)
+	return jsonschema.Ref{Ptr: strings.Join(names, ",")}
+}
+
+func (s *tstorage) saveWType(parent, ref jsonschema.Ref, headers map[string]*ir.Parameter, t *ir.Type) error {
+	key := [3]jsonschema.Ref{parent, ref, headersRef(headers)}
 	if _, ok := s.wtypes[key]; ok {
 		return errors.Errorf("reference conflict: %q", ref)
 	}
@@ -190,7 +202,7 @@ func (s *tstorage) merge(other *tstorage) error {
 
 	for ref := range other.wtypes {
 		if _, ok := s.wtypes[ref]; ok {
-			return errors.Errorf("wrapped type reference conflict: %q", ref)
+			return errors.Errorf("wrapped type reference conflict: %q/%s", ref[1], ref[2].Ptr)
 		}
 	}
 

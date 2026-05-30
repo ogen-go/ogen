@@ -1,0 +1,43 @@
+openapi: "3.0.3"
+info:
+  title: Shared body with differing response headers
+  version: "0.1.0"
+paths:
+  /foo:
+    get:
+      operationId: getFoo
+      responses:
+        "200":
+          description: OK
+          headers:
+            X-ID:
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Foo"
+  /bar:
+    post:
+      operationId: createBar
+      responses:
+        "202":
+          description: Accepted
+          headers:
+            Location:
+              schema:
+                type: string
+            X-ID:
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Foo"
+components:
+  schemas:
+    Foo:
+      type: object
+      properties:
+        id:
+          type: string

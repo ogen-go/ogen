@@ -373,7 +373,7 @@ func wrapResponseType(
 	}
 
 	if schema := t.Schema; schema != nil && !schema.Ref.IsZero() {
-		if t, ok := ctx.lookupWType(respRef, schema.Ref); ok {
+		if t, ok := ctx.lookupWType(respRef, schema.Ref, headers); ok {
 			return t, nil
 		}
 
@@ -382,7 +382,7 @@ func wrapResponseType(
 				return
 			}
 
-			if err := ctx.saveWType(respRef, schema.Ref, ret); err != nil {
+			if err := ctx.saveWType(respRef, schema.Ref, headers, ret); err != nil {
 				rerr = err
 				ret = nil
 			}
@@ -400,27 +400,34 @@ func wrapResponseType(
 		}()
 	}
 
-	// Prefer response name to schema name in case of wrapping.
-	if (respRef.IsZero() || multipleContents) && t.Name != "" {
-		name = t.Name
-	}
-
-	var (
-		namePostfix string
-		doc         string
-	)
+	var namePostfix string
 	switch {
 	case len(headers) > 0 && withStatusCode:
 		namePostfix = "StatusCodeWithHeaders"
-		doc = fmt.Sprintf("%sStatusCodeWithHeaders wraps %s with status code and response headers.", name, t.Go())
 	case len(headers) > 0:
 		namePostfix = "Headers"
-		doc = fmt.Sprintf("%sHeaders wraps %s with response headers.", name, t.Go())
 	case withStatusCode:
 		namePostfix = "StatusCode"
-		doc = fmt.Sprintf("%sStatusCode wraps %s with StatusCode.", name, t.Go())
 	default:
 		panic("unreachable")
+	}
+
+	// Prefer response name to schema name in case of wrapping, unless that name is
+	// already taken by a wrapper with a different header set.
+	if (respRef.IsZero() || multipleContents) && t.Name != "" {
+		if _, taken := ctx.lookupType(t.Name + namePostfix); !taken {
+			name = t.Name
+		}
+	}
+
+	var doc string
+	switch namePostfix {
+	case "StatusCodeWithHeaders":
+		doc = fmt.Sprintf("%sStatusCodeWithHeaders wraps %s with status code and response headers.", name, t.Go())
+	case "Headers":
+		doc = fmt.Sprintf("%sHeaders wraps %s with response headers.", name, t.Go())
+	case "StatusCode":
+		doc = fmt.Sprintf("%sStatusCode wraps %s with StatusCode.", name, t.Go())
 	}
 
 	wrapper := &ir.Type{
