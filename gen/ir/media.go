@@ -1,6 +1,10 @@
 package ir
 
-import "strings"
+import (
+	"strings"
+
+	"github.com/ogen-go/ogen/openapi"
+)
 
 // ContentType is a Content-Type header value.
 type ContentType string
@@ -45,16 +49,6 @@ func (t Encoding) TextPlain() bool { return t == EncodingTextPlain }
 
 func (t Encoding) EventStream() bool { return t == EncodingEventStream }
 
-type SSEEventShape string
-
-const (
-	SSEEventShapeNone     SSEEventShape = ""
-	SSEEventShapeDataOnly SSEEventShape = "data-only"
-	SSEEventShapeFull     SSEEventShape = "full"
-)
-
-func (s SSEEventShape) Enabled() bool { return s != SSEEventShapeNone }
-
 type Media struct {
 	// Encoding is the parsed content type used for encoding, but not for header value.
 	Encoding Encoding
@@ -66,5 +60,5 @@ type Media struct {
 	// RawResponse indicates that the raw HTTP response should be returned.
 	RawResponse bool
 	// SSEEventShape specifies the Server-Sent Events encoding mode for this media.
-	SSEEventShape SSEEventShape
+	SSEEventShape openapi.SSEEventShape
 }

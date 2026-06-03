@@ -124,6 +124,38 @@ func (op Operation) HasRawResponse() bool {
 	return checkResponse(op.Responses.Default)
 }
 
+// HasSSEStreamResponse returns true if the operation has any response content types
+// having an SSE stream response.
+func (op Operation) HasSSEStreamResponse() bool {
+	if op.Responses == nil {
+		return false
+	}
+
+	checkResponse := func(resp *Response) bool {
+		if resp == nil {
+			return false
+		}
+		for _, media := range resp.Contents {
+			if media.SSEEventShape.Enabled() {
+				return true
+			}
+		}
+		return false
+	}
+
+	for _, resp := range op.Responses.StatusCode {
+		if checkResponse(resp) {
+			return true
+		}
+	}
+	for _, resp := range op.Responses.Pattern {
+		if checkResponse(resp) {
+			return true
+		}
+	}
+	return checkResponse(op.Responses.Default)
+}
+
 type PathPart struct {
 	Raw   string
 	Param *Parameter
@@ -303,8 +335,11 @@ func (s Response) ResponseInfo(otel bool) []ResponseInfo {
 			ContentType:    contentType,
 			WithStatusCode: s.WithStatusCode,
 			WithHeaders:    s.WithHeaders,
-			JSONStreaming:  media.JSONStreaming,
 			OpenTelemetry:  otel,
+
+			JSONStreaming: media.JSONStreaming,
+			RawResponse:   media.RawResponse,
+			SSEEventShape: media.SSEEventShape,
 
 			Headers: s.Headers,
 		})

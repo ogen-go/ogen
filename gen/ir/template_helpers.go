@@ -171,6 +171,7 @@ func (t *Type) IsNull() bool {
 func (t *Type) IsArray() bool     { return t.Is(KindArray) }
 func (t *Type) IsMap() bool       { return t.Is(KindMap) }
 func (t *Type) IsPrimitive() bool { return t.Is(KindPrimitive) }
+func (t *Type) IsString() bool    { return t.Is(KindPrimitive) && t.Primitive == String }
 func (t *Type) IsStruct() bool    { return t.Is(KindStruct) }
 func (t *Type) IsPointer() bool   { return t.Is(KindPointer) }
 func (t *Type) IsEnum() bool      { return t.Is(KindEnum) }
@@ -180,6 +181,7 @@ func (t *Type) IsInterface() bool { return t.Is(KindInterface) }
 func (t *Type) IsSum() bool       { return t.Is(KindSum) }
 func (t *Type) IsAny() bool       { return t.Is(KindAny) }
 func (t *Type) IsStream() bool    { return t.Is(KindStream) }
+func (t *Type) IsSSEStream() bool { return t != nil && t.SSE != nil }
 func (t *Type) IsNumeric() bool   { return t.IsInteger() || t.IsFloat() || t.IsDecimal() }
 func (t *Type) IsExternal() bool  { return t.Schema != nil && t.Schema.XOgenType != "" }
 
