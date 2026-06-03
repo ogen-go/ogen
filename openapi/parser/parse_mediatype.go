@@ -205,6 +205,31 @@ func (p *parser) parseMediaType(ct string, m ogen.Media, ctx *jsonpointer.Resolv
 		}
 	}
 
+	var sseShape openapi.SSEEventShape
+	{
+		const extensionName = "x-ogen-sse-event-shape"
+		if ex, ok := m.Common.Extensions[extensionName]; ok && !rawResponse {
+			var value string
+			if err := ex.Decode(&value); err != nil {
+				err := errors.Wrap(err, "unmarshal value")
+				return nil, p.wrapField(extensionName, p.file(ctx), locator, err)
+			}
+			if ct != "text/event-stream" {
+				err := errors.Errorf("%s is only allowed for text/event-stream media type", extensionName)
+				return nil, p.wrapField(extensionName, p.file(ctx), locator, err)
+			}
+			switch shape := openapi.SSEEventShape(value); shape {
+			case openapi.SSEEventShapeDataOnly, openapi.SSEEventShapeFull:
+				sseShape = shape
+			default:
+				err := errors.Errorf("unknown SSE event shape %q", value)
+				return nil, p.wrapField(extensionName, p.file(ctx), locator, err)
+			}
+		} else if ct == "text/event-stream" && !rawResponse {
+			sseShape = openapi.SSEEventShapeDataOnly
+		}
+	}
+
 	return &openapi.MediaType{
 		Schema:             s,
 		Example:            json.RawMessage(m.Example),
@@ -212,6 +237,7 @@ func (p *parser) parseMediaType(ct string, m ogen.Media, ctx *jsonpointer.Resolv
 		Encoding:           encodings,
 		XOgenJSONStreaming: streaming,
 		XOgenRawResponse:   rawResponse,
+		XOgenSSEEventShape: sseShape,
 		Pointer:            locator.Pointer(p.file(ctx)),
 	}, nil
 }
