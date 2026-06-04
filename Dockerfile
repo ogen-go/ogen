@@ -1,5 +1,10 @@
 ARG GO_VERSION=latest
-ARG BASE_IMAGE=gcr.io/distroless/base-debian12
+# Use the "static" distroless variant rather than "base". The ogen and
+# jschemagen binaries are built with CGO disabled, so they are fully static
+# and need no glibc. The "base" variant additionally ships libssl3, which we
+# never link against; it showed up in a vulnerability scan (CVE-2026-31789),
+# and "static" omits it entirely, reducing the image's attack surface.
+ARG BASE_IMAGE=gcr.io/distroless/static-debian13
 
 FROM golang:${GO_VERSION} AS builder
 WORKDIR /go/src/app
