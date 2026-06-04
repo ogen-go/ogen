@@ -353,6 +353,16 @@ func (g *Generator) generateContents(
 				)
 			}
 
+			if media.XOgenRawResponse && media.XOgenSSEEventShape.Enabled() {
+				g.log.Warn(`Extension "x-ogen-sse-event-shape" will be ignored because "x-ogen-raw-response" is enabled`,
+					zapPosition(media),
+					zap.String("contentType", contentType),
+				)
+			} else if media.XOgenSSEEventShape.Enabled() {
+				// TODO: SSE content generation
+				return nil
+			}
+
 			switch encoding {
 			case ir.EncodingJSON:
 				t, err := g.generateSchema(ctx, typeName, media.Schema, optional, &generateSchemaOverride{
@@ -499,6 +509,7 @@ func (g *Generator) generateContents(
 				Encoding:      m.Encoding,
 				JSONStreaming: m.JSONStreaming,
 				RawResponse:   m.RawResponse,
+				SSEEventShape: m.SSEEventShape,
 			}
 		}
 	}

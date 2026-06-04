@@ -211,6 +211,7 @@ func addRawResponseTypes(ctx *genctx, result *ir.Responses, iface *ir.Type, opNa
 				Type:          rawType,
 				JSONStreaming: media.JSONStreaming,
 				RawResponse:   media.RawResponse,
+				SSEEventShape: media.SSEEventShape,
 			}
 		}
 		return nil
@@ -306,7 +307,12 @@ func (g *Generator) responseToIR(
 	var unsupported []string
 	for ct, content := range contents {
 		t, e := content.Type, content.Encoding
-		if e.JSON() || e.ProblemJSON() || t.IsStream() || isBinary(t.Schema) || content.RawResponse {
+		if e.JSON() ||
+			e.ProblemJSON() ||
+			e.EventStream() ||
+			t.IsStream() ||
+			isBinary(t.Schema) ||
+			content.RawResponse {
 			continue
 		}
 		delete(contents, ct)
@@ -347,6 +353,7 @@ func (g *Generator) responseToIR(
 			Type:          t,
 			JSONStreaming: media.JSONStreaming,
 			RawResponse:   media.RawResponse,
+			SSEEventShape: media.SSEEventShape,
 		}
 	}
 
