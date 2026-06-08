@@ -71,6 +71,28 @@ func TestParseMediaTypeSSEShapeFull(t *testing.T) {
 	require.Equal(t, openapi.SSEEventShapeFull, media.XOgenSSEEventShape)
 }
 
+func TestParseMediaTypeSSEShapeFullArray(t *testing.T) {
+	api, err := parser.Parse(sseSpec(ogen.Media{
+		Schema: &ogen.Schema{
+			Type: "array",
+			Items: &ogen.Items{
+				Item: &ogen.Schema{
+					Type: "object",
+				},
+			},
+		},
+		Common: ogen.OpenAPICommon{
+			Extensions: ogen.Extensions{
+				"x-ogen-sse-event-shape": extensionString("full-array"),
+			},
+		},
+	}), parser.Settings{})
+	require.NoError(t, err)
+
+	media := api.Operations[0].Responses.StatusCode[200].Content["text/event-stream"]
+	require.Equal(t, openapi.SSEEventShapeFullArray, media.XOgenSSEEventShape)
+}
+
 func TestParseMediaTypeSSEShapeRawResponsePriority(t *testing.T) {
 	api, err := parser.Parse(sseSpec(ogen.Media{
 		Schema: &ogen.Schema{Type: "object"},

@@ -219,7 +219,7 @@ func (p *parser) parseMediaType(ct string, m ogen.Media, ctx *jsonpointer.Resolv
 				return nil, p.wrapField(extensionName, p.file(ctx), locator, err)
 			}
 			switch shape := openapi.SSEEventShape(value); shape {
-			case openapi.SSEEventShapeDataOnly, openapi.SSEEventShapeFull:
+			case openapi.SSEEventShapeDataOnly, openapi.SSEEventShapeFull, openapi.SSEEventShapeFullArray:
 				sseShape = shape
 			default:
 				err := errors.Errorf("unknown SSE event shape %q", value)

@@ -17,6 +17,9 @@ const (
 	SSEEventShapeDataOnly SSEEventShape = "data-only"
 	// SSEEventShapeFull means schema describes the full SSE event envelope.
 	SSEEventShapeFull SSEEventShape = "full"
+	// SSEEventShapeFullArray means schema describes the SSE stream as an array
+	// of full SSE event envelopes.
+	SSEEventShapeFullArray SSEEventShape = "full-array"
 )
 
 // Enabled returns true if the media type should be generated as SSE.
