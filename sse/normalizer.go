@@ -72,7 +72,7 @@ func (r *newlineNormalizer) Read(p []byte) (int, error) {
 
 		i := bytes.IndexByte(p[:n], '\r')
 		if i == -1 {
-			// Hot path.
+			// Fast path.
 			return n, err
 		}
 
