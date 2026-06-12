@@ -17,13 +17,13 @@ func TestDecoder_Decode(t *testing.T) {
 	tests := []struct {
 		name    string
 		input   string
-		want    *Event
+		want    Event
 		wantErr bool
 	}{
 		{
 			name:  "ok for lf",
 			input: "id: 10\nevent: update\ndata: one\ndata: two\n\n",
-			want: &Event{
+			want: Event{
 				ID:   "10",
 				Type: "update",
 				Data: "one\ntwo",
@@ -32,7 +32,7 @@ func TestDecoder_Decode(t *testing.T) {
 		{
 			name:  "ok for crlf",
 			input: "data: ok\r\n\r\n",
-			want: &Event{
+			want: Event{
 				Type: DefaultEventType,
 				Data: "ok",
 			},
@@ -40,7 +40,7 @@ func TestDecoder_Decode(t *testing.T) {
 		{
 			name:  "ok for cr",
 			input: "data: ok\r\r",
-			want: &Event{
+			want: Event{
 				Type: DefaultEventType,
 				Data: "ok",
 			},
@@ -48,7 +48,7 @@ func TestDecoder_Decode(t *testing.T) {
 		{
 			name:  "ok for comments and unknown fields",
 			input: ": comment\ndata: ok\nunknown: ignored\nsomething\n\n",
-			want: &Event{
+			want: Event{
 				Type: DefaultEventType,
 				Data: "ok",
 			},
@@ -56,7 +56,7 @@ func TestDecoder_Decode(t *testing.T) {
 		{
 			name:  "ok for bom",
 			input: "\uFEFFdata: ok\n\n",
-			want: &Event{
+			want: Event{
 				Type: DefaultEventType,
 				Data: "ok",
 			},
@@ -64,7 +64,7 @@ func TestDecoder_Decode(t *testing.T) {
 		{
 			name:  "bom in field value is preserved",
 			input: "data: \uFEFFok\n\n",
-			want: &Event{
+			want: Event{
 				Type: DefaultEventType,
 				Data: "\uFEFFok",
 			},
@@ -72,7 +72,7 @@ func TestDecoder_Decode(t *testing.T) {
 		{
 			name:  "empty data field is dispatched",
 			input: "data\n\n",
-			want: &Event{
+			want: Event{
 				Type: DefaultEventType,
 				Data: "",
 			},
@@ -80,7 +80,7 @@ func TestDecoder_Decode(t *testing.T) {
 		{
 			name:  "only one leading value space is stripped",
 			input: "data:  ok\n\n",
-			want: &Event{
+			want: Event{
 				Type: DefaultEventType,
 				Data: " ok",
 			},
@@ -88,7 +88,7 @@ func TestDecoder_Decode(t *testing.T) {
 		{
 			name:  "no-colon event field defaults event type",
 			input: "event\ndata\n\n",
-			want: &Event{
+			want: Event{
 				Type: DefaultEventType,
 				Data: "",
 			},
@@ -96,7 +96,7 @@ func TestDecoder_Decode(t *testing.T) {
 		{
 			name:  "invalid id is ignored",
 			input: "id: keep\nid: bad\x00id\ndata: ok\n\n",
-			want: &Event{
+			want: Event{
 				ID:   "keep",
 				Type: DefaultEventType,
 				Data: "ok",
@@ -105,7 +105,7 @@ func TestDecoder_Decode(t *testing.T) {
 		{
 			name:  "ok for invalid utf8",
 			input: "data: \xff\n\n",
-			want: &Event{
+			want: Event{
 				Type: DefaultEventType,
 				Data: "\uFFFD",
 			},
@@ -113,7 +113,7 @@ func TestDecoder_Decode(t *testing.T) {
 		{
 			name:  "invalid retry is ignored",
 			input: "retry: 25\nretry: invalid\ndata: ok\n\n",
-			want: &Event{
+			want: Event{
 				Type:  DefaultEventType,
 				Data:  "ok",
 				Retry: newDuration(25 * time.Millisecond),
@@ -149,7 +149,7 @@ func TestDecoder_Decode_MaxEventSize(t *testing.T) {
 	tests := []struct {
 		name    string
 		input   string
-		want    *Event
+		want    Event
 		wantErr bool
 	}{
 		{
@@ -160,7 +160,7 @@ func TestDecoder_Decode_MaxEventSize(t *testing.T) {
 		{
 			name:  "ok for accumulated data",
 			input: "data: not\ndata: longy\n\n",
-			want: &Event{
+			want: Event{
 				Type: DefaultEventType,
 				Data: "not\nlongy",
 			},
@@ -205,8 +205,8 @@ func TestDecoder_Decode_EmptyIDResetsLastEventID(t *testing.T) {
 	if !errors.Is(err, io.EOF) {
 		t.Fatalf("Decode() error = %v, want io.EOF", err)
 	}
-	if event != nil {
-		t.Fatalf("Decode() event = %v, want nil", event)
+	if event != (Event{}) {
+		t.Fatalf("Decode() event = %v, want zero Event", event)
 	}
 	if got, want := d.LastEventID(), ""; got != want {
 		t.Fatalf("LastEventID() = %q, want %q", got, want)

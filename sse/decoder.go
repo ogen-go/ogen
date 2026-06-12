@@ -146,22 +146,25 @@ func (d *Decoder) Retry() time.Duration {
 // discards the incomplete event. If maxEventSize is exceeded, Decode returns
 // the event fields parsed so far together with [ErrEventTooLarge] and drains
 // the rest of that event.
-func (d *Decoder) Decode() (*Event, error) {
+func (d *Decoder) Decode() (Event, error) {
 	for {
 		line, isNewline, inLine, err := d.readLine()
 		if err != nil {
 			switch err {
 			case io.EOF:
-				return nil, io.EOF
+				return Event{}, io.EOF
 			case ErrEventTooLarge:
+				// On ErrEventTooLarge, Decode returns the event fields decoded
+				// before the size limit was reached.
 				_ = d.drainEvent(inLine)
-				return d.parseEvent(true), err
+				event, _ := d.parseEvent(true)
+				return event, ErrEventTooLarge
 			default:
-				return nil, err
+				return Event{}, err
 			}
 		}
 		if isNewline {
-			if event := d.parseEvent(false); event != nil {
+			if event, ok := d.parseEvent(false); ok {
 				return event, nil
 			}
 			continue
@@ -341,11 +344,11 @@ func (d *Decoder) processLine(line []byte) {
 	}
 }
 
-func (d *Decoder) parseEvent(force bool) *Event {
+func (d *Decoder) parseEvent(force bool) (event Event, ok bool) {
 	defer d.resetEvent()
 
 	if !force && d.eventData.Len() == 0 {
-		return nil
+		return Event{}, false
 	}
 
 	data := d.eventData.String()
@@ -356,12 +359,12 @@ func (d *Decoder) parseEvent(force bool) *Event {
 		eventType = DefaultEventType
 	}
 
-	return &Event{
+	return Event{
 		ID:    d.eventID,
 		Type:  eventType,
 		Data:  data,
 		Retry: d.eventRetry,
-	}
+	}, true
 }
 
 func (d *Decoder) resetEvent() {

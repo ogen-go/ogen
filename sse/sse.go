@@ -15,8 +15,14 @@ import (
 type State int
 
 const (
+	// StateConnecting indicates that the SSE connection is being established.
+	// It can indicate that the stream is reconnecting and waiting for the
+	// retry period.
 	StateConnecting State = iota
+	// StateOpen indicates that the SSE connection is active and receiving events.
 	StateOpen
+	// StateClosed indicates that the SSE connection has been closed by either
+	// the client or the server, and no further events will be received.
 	StateClosed
 )
 
