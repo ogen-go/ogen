@@ -8,6 +8,7 @@ import (
 	"context"
 	"errors"
 	"iter"
+	"time"
 )
 
 // State is the SSE stream client state.
@@ -18,6 +19,19 @@ const (
 	StateOpen
 	StateClosed
 )
+
+// RetryErrorHandler is called after a retry reconnect attempt fails.
+type RetryErrorHandler func(ctx context.Context, connectErr error)
+
+// ClientOptions configures SSE client behavior.
+type ClientOptions struct {
+	LastEventID       string
+	Retry             *time.Duration
+	MaxRetries        int
+	InitialBufferCap  int
+	MaxEventSize      int
+	RetryErrorHandler RetryErrorHandler
+}
 
 // Client represents SSE client.
 type Client[E any] interface {

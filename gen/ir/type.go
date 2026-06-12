@@ -326,7 +326,12 @@ func (t *Type) Go() string {
 		return "[]" + t.Item.Go()
 	case KindPointer:
 		return "*" + t.PointerTo.Go()
-	case KindStruct, KindMap, KindAlias, KindInterface, KindGeneric, KindEnum, KindSum, KindStream:
+	case KindStream:
+		if t.SSE != nil {
+			return t.Name + "Client"
+		}
+		return t.Name
+	case KindStruct, KindMap, KindAlias, KindInterface, KindGeneric, KindEnum, KindSum:
 		return t.Name
 	default:
 		panic(fmt.Sprintf("unexpected kind: %s", t.Kind))
