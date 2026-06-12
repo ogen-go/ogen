@@ -4,6 +4,7 @@ package api
 
 import (
 	"context"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
@@ -194,7 +195,13 @@ func (c *Client) sendTesttest(ctx context.Context, request *TesttestReq) (res Te
 		return res, errors.Wrap(err, "do request")
 	}
 	body := resp.Body
-	defer body.Close()
+	defer func() {
+		// Drain the body to EOF before closing, so the underlying
+		// connection can be reused by the Transport regardless of the
+		// response status code. See https://github.com/ogen-go/ogen/issues/1670.
+		_, _ = io.Copy(io.Discard, body)
+		_ = body.Close()
+	}()
 
 	if err := c.onResponse(ctx, resp); err != nil {
 		return res, errors.Wrap(err, "client edit response")
