@@ -185,6 +185,28 @@ func (t *Type) IsSSEStream() bool { return t != nil && t.SSE != nil }
 func (t *Type) IsNumeric() bool   { return t.IsInteger() || t.IsFloat() || t.IsDecimal() }
 func (t *Type) IsExternal() bool  { return t.Schema != nil && t.Schema.XOgenType != "" }
 
+// AcceptsJSONString reports whether t can be decoded as a JSON string token.
+func (t *Type) AcceptsJSONString() bool {
+	if t == nil {
+		return false
+	}
+	switch {
+	case t.JSON().Type() == "String":
+		return true
+	case t.IsAlias():
+		return t.AliasTo.AcceptsJSONString()
+	case t.IsGeneric():
+		return t.GenericOf.AcceptsJSONString()
+	case t.IsSum():
+		for _, s := range t.SumOf {
+			if s.AcceptsJSONString() {
+				return true
+			}
+		}
+	}
+	return false
+}
+
 func (t *Type) MustField(name string) *Field {
 	if t.IsAlias() {
 		return t.AliasTo.MustField(name)
