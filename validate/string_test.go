@@ -17,11 +17,16 @@ func TestEmail(t *testing.T) {
 		"foo@example",
 		"foo@example.com",
 		"foo@казахстан",
+		// Quoted local parts may legally contain spaces, '@' and other
+		// otherwise-disallowed characters. See #1419.
+		`"foo bar"@example.com`,
+		`"foo@bar"@example.com`,
+		`"@"@example.com`,
 	} {
 		require.NoError(t, v.Validate(s))
 	}
 	for _, s := range []string{
-		"foo @example",
+		"foo @example", // unquoted space
 		"",
 		"\x00",   // not printable
 		"\n",     // space character
@@ -30,7 +35,7 @@ func TestEmail(t *testing.T) {
 		"@",
 		"@@",
 		"@test",
-		"a@@test",
+		"a@@test", // unquoted, multiple @
 		"test@",
 	} {
 		require.Error(t, v.Validate(s), "%q should be invalid", s)
