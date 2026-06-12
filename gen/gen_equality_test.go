@@ -1,12 +1,14 @@
 package gen
 
 import (
+	"sort"
 	"strings"
 	"testing"
 
 	"github.com/stretchr/testify/require"
 
 	"github.com/ogen-go/ogen/gen/ir"
+	"github.com/ogen-go/ogen/jsonschema"
 )
 
 func TestCreateEqualityMethodSpec_ArrayDetection(t *testing.T) {
@@ -410,5 +412,55 @@ func TestWriteFieldComparison_NullableArray(t *testing.T) {
 					"output should NOT contain: %s", notExpected)
 			}
 		})
+	}
+}
+
+// TestCollectEqualitySpecs_Deterministic is a regression test for #1655:
+// collectEqualitySpecs ranged over the tstorage.types map directly, producing
+// equalitySpecs (and thus generated validateUnique* functions) in a
+// non-deterministic order across runs. The types are now visited in sorted
+// order, so the resulting specs must be deterministic and sorted by TypeName.
+func TestCollectEqualitySpecs_Deterministic(t *testing.T) {
+	newArrayOfStruct := func(name string) *ir.Type {
+		return &ir.Type{
+			Name:   name + "List",
+			Kind:   ir.KindArray,
+			Schema: &jsonschema.Schema{UniqueItems: true},
+			Item: &ir.Type{
+				Name: name,
+				Kind: ir.KindStruct,
+				Fields: []*ir.Field{
+					{Name: "ID", Type: &ir.Type{Kind: ir.KindPrimitive, Primitive: ir.Int}},
+				},
+			},
+		}
+	}
+
+	names := []string{"Pet", "User", "Order", "Account", "Zebra"}
+
+	var first []string
+	for run := range 20 {
+		g := &Generator{tstorage: newTStorage()}
+		for _, n := range names {
+			arr := newArrayOfStruct(n)
+			g.tstorage.types[arr.Name] = arr
+		}
+
+		g.collectEqualitySpecs()
+
+		got := make([]string, 0, len(g.equalitySpecs))
+		for _, spec := range g.equalitySpecs {
+			got = append(got, spec.TypeName)
+		}
+
+		require.True(t, sort.StringsAreSorted(got),
+			"equality specs must be emitted in sorted order, got %v", got)
+
+		if run == 0 {
+			first = got
+			continue
+		}
+		require.Equal(t, first, got,
+			"equality specs order must be deterministic across runs")
 	}
 }
