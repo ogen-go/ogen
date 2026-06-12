@@ -1,6 +1,10 @@
 package gen
 
-import "github.com/ogen-go/ogen/gen/ir"
+import (
+	"sort"
+
+	"github.com/ogen-go/ogen/gen/ir"
+)
 
 const (
 	prefixOpt  = "Opt"
@@ -11,10 +15,16 @@ const (
 // collectEqualitySpecs identifies types that require Equal() and Hash() methods
 // for complex uniqueItems validation.
 func (g *Generator) collectEqualitySpecs() {
-	// Iterate through all types to find arrays with complex uniqueItems
+	// Iterate through all types to find arrays with complex uniqueItems.
+	// Sort by name to ensure deterministic order of generated functions (#1655).
 	visited := make(map[string]bool)
-	for _, t := range g.tstorage.types {
-		g.collectFromType(t, visited)
+	names := make([]string, 0, len(g.tstorage.types))
+	for name := range g.tstorage.types {
+		names = append(names, name)
+	}
+	sort.Strings(names)
+	for _, name := range names {
+		g.collectFromType(g.tstorage.types[name], visited)
 	}
 }
 
