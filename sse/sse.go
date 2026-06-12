@@ -44,7 +44,6 @@ type Client[E any] interface {
 // IsReconnectable reports whether err should trigger automatic SSE reconnect.
 func IsReconnectable(err error) bool {
 	return err != nil &&
-		!errors.Is(err, ErrEventTooLarge) &&
 		!errors.Is(err, ErrStreamClosed) &&
 		!errors.Is(err, ErrNoReconnect) &&
 		!errors.Is(err, context.Canceled)

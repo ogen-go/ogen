@@ -9,7 +9,7 @@ import (
 var (
 	// ErrEventTooLarge reports that an SSE event exceeded the configured size limit.
 	ErrEventTooLarge = errors.New("sse: event too large")
-	// ErrStreamClosed reports use of a closed SSE stream.
+	// ErrStreamClosed reports that the SSE stream was closed by client.
 	ErrStreamClosed = errors.New("sse: stream is closed")
 	// ErrNoReconnect means the server explicitly requested no reconnect.
 	//
