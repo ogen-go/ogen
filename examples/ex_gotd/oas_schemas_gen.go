@@ -777,7 +777,8 @@ func (s *BotCommand) SetDescription(val string) {
 // Ref: #/components/schemas/BotCommandScope
 // BotCommandScope represents sum type.
 type BotCommandScope struct {
-	Type                                 BotCommandScopeType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type                                 BotCommandScopeType
 	BotCommandScopeDefault               BotCommandScopeDefault
 	BotCommandScopeAllPrivateChats       BotCommandScopeAllPrivateChats
 	BotCommandScopeAllGroupChats         BotCommandScopeAllGroupChats
@@ -1858,7 +1859,8 @@ func (s *ChatLocation) SetAddress(val string) {
 // Ref: #/components/schemas/ChatMember
 // ChatMember represents sum type.
 type ChatMember struct {
-	Type                    ChatMemberType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type                    ChatMemberType
 	ChatMemberOwner         ChatMemberOwner
 	ChatMemberAdministrator ChatMemberAdministrator
 	ChatMemberMember        ChatMemberMember
@@ -5012,7 +5014,8 @@ func (s *GetUserProfilePhotos) SetLimit(val OptInt) {
 // Ref: #/components/schemas/ID
 // ID represents sum type.
 type ID struct {
-	Type   IDType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type   IDType
 	String string
 	Int64  int64
 }
@@ -5362,7 +5365,8 @@ func (s *InlineQueryChatType) UnmarshalText(data []byte) error {
 // Ref: #/components/schemas/InlineQueryResult
 // InlineQueryResult represents sum type.
 type InlineQueryResult struct {
-	Type                            InlineQueryResultType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type                            InlineQueryResultType
 	InlineQueryResultCachedAudio    InlineQueryResultCachedAudio
 	InlineQueryResultCachedDocument InlineQueryResultCachedDocument
 	InlineQueryResultCachedGif      InlineQueryResultCachedGif
@@ -9016,7 +9020,8 @@ func (s *InputLocationMessageContent) SetProximityAlertRadius(val OptInt) {
 // Ref: #/components/schemas/InputMedia
 // InputMedia represents sum type.
 type InputMedia struct {
-	Type                InputMediaType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type                InputMediaType
 	InputMediaAnimation InputMediaAnimation
 	InputMediaDocument  InputMediaDocument
 	InputMediaAudio     InputMediaAudio
@@ -9702,7 +9707,8 @@ func (s *InputMediaVideo) SetSupportsStreaming(val OptBool) {
 // Ref: #/components/schemas/InputMessageContent
 // InputMessageContent represents sum type.
 type InputMessageContent struct {
-	Type                        InputMessageContentType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type                        InputMessageContentType
 	InputTextMessageContent     InputTextMessageContent
 	InputLocationMessageContent InputLocationMessageContent
 	InputVenueMessageContent    InputVenueMessageContent
@@ -10080,7 +10086,8 @@ func (s *Invoice) SetTotalAmount(val int) {
 // Ref: #/components/schemas/KeyboardButton
 // KeyboardButton represents sum type.
 type KeyboardButton struct {
-	Type                 KeyboardButtonType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type                 KeyboardButtonType
 	String               string
 	KeyboardButtonObject KeyboardButtonObject
 }
@@ -10478,7 +10485,8 @@ func (s *MaskPosition) SetScale(val float64) {
 // Ref: #/components/schemas/MenuButton
 // MenuButton represents sum type.
 type MenuButton struct {
-	Type               MenuButtonType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type               MenuButtonType
 	MenuButtonCommands MenuButtonCommands
 	MenuButtonWebApp   MenuButtonWebApp
 	MenuButtonDefault  MenuButtonDefault
@@ -15122,7 +15130,8 @@ func (s *PassportData) SetCredentials(val EncryptedCredentials) {
 // Ref: #/components/schemas/PassportElementError
 // PassportElementError represents sum type.
 type PassportElementError struct {
-	Type                                 PassportElementErrorType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type                                 PassportElementErrorType
 	PassportElementErrorDataField        PassportElementErrorDataField
 	PassportElementErrorFrontSide        PassportElementErrorFrontSide
 	PassportElementErrorReverseSide      PassportElementErrorReverseSide
@@ -17730,7 +17739,8 @@ func (s *ResultMessageOrBoolean) SetOk(val bool) {
 
 // ResultMessageOrBooleanResult represents sum type.
 type ResultMessageOrBooleanResult struct {
-	Type    ResultMessageOrBooleanResultType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type    ResultMessageOrBooleanResultType
 	Message Message
 	Bool    bool
 }
@@ -19394,7 +19404,8 @@ func (s *SendMediaGroup) SetAllowSendingWithoutReply(val OptBool) {
 
 // SendMediaGroupMediaItem represents sum type.
 type SendMediaGroupMediaItem struct {
-	Type               SendMediaGroupMediaItemType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type               SendMediaGroupMediaItemType
 	InputMediaAudio    InputMediaAudio
 	InputMediaDocument InputMediaDocument
 	InputMediaPhoto    InputMediaPhoto
@@ -19994,7 +20005,8 @@ func (s *SendPoll) SetReplyMarkup(val OptSendReplyMarkup) {
 // Ref: #/components/schemas/SendReplyMarkup
 // SendReplyMarkup represents sum type.
 type SendReplyMarkup struct {
-	Type                 SendReplyMarkupType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type                 SendReplyMarkupType
 	InlineKeyboardMarkup InlineKeyboardMarkup
 	ReplyKeyboardMarkup  ReplyKeyboardMarkup
 	ReplyKeyboardRemove  ReplyKeyboardRemove

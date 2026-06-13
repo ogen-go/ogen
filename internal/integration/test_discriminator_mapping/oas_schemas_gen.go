@@ -297,7 +297,8 @@ func (s *Motorcycle) SetEngineSize(val OptFloat64) {
 // Ref: #/components/schemas/Notification
 // Notification represents sum type.
 type Notification struct {
-	Type              NotificationType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type              NotificationType
 	EmailNotification EmailNotification
 	SMSNotification   SMSNotification
 	PushNotification  PushNotification
@@ -629,7 +630,8 @@ func (o OptString) Or(d string) string {
 // Ref: #/components/schemas/Pet
 // Pet represents sum type.
 type Pet struct {
-	Type PetType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type PetType
 	Dog  Dog
 	Cat  Cat
 	Bird Bird
@@ -873,7 +875,8 @@ func (s *SMSNotification) SetMessage(val string) {
 // Ref: #/components/schemas/Vehicle
 // Vehicle represents sum type.
 type Vehicle struct {
-	Type       VehicleType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type       VehicleType
 	Car        Car
 	Motorcycle Motorcycle
 }

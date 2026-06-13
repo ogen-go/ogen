@@ -11,8 +11,9 @@ import (
 	"time"
 
 	"github.com/go-faster/errors"
-	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
+	"github.com/ogen-go/ogen/ogenerrors"
+	"github.com/ogen-go/ogen/otelogen"
 	"github.com/ogen-go/ogen/sse"
 	"github.com/ogen-go/ogen/uri"
 	"github.com/ogen-go/ogen/validate"
@@ -253,24 +254,46 @@ func trimTrailingSlashes(u *url.URL) {
 
 // Invoker invokes operations described by OpenAPI v3 specification.
 type Invoker interface {
-	// V2StreamRecentchangeGet invokes GET /v2/stream/recentchange operation.
+	// CreateChatCompletion invokes createChatCompletion operation.
 	//
-	// Mediawiki.recentchange events.
-	// (NOTE: This stream is an alias of mediawiki.recentchange)
-	// Schema title: mediawiki/recentchange.
+	// **Starting a new project?** We recommend trying [Responses](/docs/api-reference/responses)
+	// to take advantage of the latest OpenAI platform features. Compare
+	// [Chat Completions with Responses](/docs/guides/responses-vs-chat-completions?api-mode=responses).
+	// ---
+	// Creates a model response for the given chat conversation. Learn more in the
+	// [text generation](/docs/guides/text-generation), [vision](/docs/guides/vision),
+	// and [audio](/docs/guides/audio) guides.
+	// Parameter support can differ depending on the model used to generate the
+	// response, particularly for newer reasoning models. Parameters that are only
+	// supported for reasoning models are noted below. For the current state of
+	// unsupported parameters in reasoning models,
+	// [refer to the reasoning guide](/docs/guides/reasoning).
 	//
-	// GET /v2/stream/recentchange
-	V2StreamRecentchangeGet(ctx context.Context, params V2StreamRecentchangeGetParams, options ...RequestOption) (V2StreamRecentchangeGetRes, error)
+	// POST /chat/completions
+	CreateChatCompletion(ctx context.Context, request *CreateChatCompletionRequest, options ...RequestOption) (CreateChatCompletionRes, error)
+	// CreateResponse invokes createResponse operation.
+	//
+	// Creates a model response. Provide [text](/docs/guides/text) or
+	// [image](/docs/guides/images) inputs to generate [text](/docs/guides/text)
+	// or [JSON](/docs/guides/structured-outputs) outputs. Have the model call
+	// your own [custom code](/docs/guides/function-calling) or use built-in
+	// [tools](/docs/guides/tools) like [web search](/docs/guides/tools-web-search)
+	// or [file search](/docs/guides/tools-file-search) to use your own data
+	// as input for the model's response.
+	//
+	// POST /responses
+	CreateResponse(ctx context.Context, request *CreateResponse, options ...RequestOption) (CreateResponseRes, error)
 }
 
 // Client implements OAS client.
 type Client struct {
 	serverURL *url.URL
+	sec       SecuritySource
 	baseClient
 }
 
 // NewClient initializes new Client defined by OAS.
-func NewClient(serverURL string, opts ...ClientOption) (*Client, error) {
+func NewClient(serverURL string, sec SecuritySource, opts ...ClientOption) (*Client, error) {
 	u, err := url.Parse(serverURL)
 	if err != nil {
 		return nil, err
@@ -283,6 +306,7 @@ func NewClient(serverURL string, opts ...ClientOption) (*Client, error) {
 	}
 	return &Client{
 		serverURL:  u,
+		sec:        sec,
 		baseClient: c,
 	}, nil
 }
@@ -304,22 +328,32 @@ func (c *Client) onResponse(ctx context.Context, resp *http.Response) error {
 	return nil
 }
 
-// V2StreamRecentchangeGet invokes GET /v2/stream/recentchange operation.
+// CreateChatCompletion invokes createChatCompletion operation.
 //
-// Mediawiki.recentchange events.
-// (NOTE: This stream is an alias of mediawiki.recentchange)
-// Schema title: mediawiki/recentchange.
+// **Starting a new project?** We recommend trying [Responses](/docs/api-reference/responses)
+// to take advantage of the latest OpenAI platform features. Compare
+// [Chat Completions with Responses](/docs/guides/responses-vs-chat-completions?api-mode=responses).
+// ---
+// Creates a model response for the given chat conversation. Learn more in the
+// [text generation](/docs/guides/text-generation), [vision](/docs/guides/vision),
+// and [audio](/docs/guides/audio) guides.
+// Parameter support can differ depending on the model used to generate the
+// response, particularly for newer reasoning models. Parameters that are only
+// supported for reasoning models are noted below. For the current state of
+// unsupported parameters in reasoning models,
+// [refer to the reasoning guide](/docs/guides/reasoning).
 //
-// GET /v2/stream/recentchange
-func (c *Client) V2StreamRecentchangeGet(ctx context.Context, params V2StreamRecentchangeGetParams, options ...RequestOption) (V2StreamRecentchangeGetRes, error) {
-	res, err := c.sendV2StreamRecentchangeGet(ctx, params, options...)
+// POST /chat/completions
+func (c *Client) CreateChatCompletion(ctx context.Context, request *CreateChatCompletionRequest, options ...RequestOption) (CreateChatCompletionRes, error) {
+	res, err := c.sendCreateChatCompletion(ctx, request, options...)
 	return res, err
 }
 
-func (c *Client) sendV2StreamRecentchangeGet(ctx context.Context, params V2StreamRecentchangeGetParams, requestOptions ...RequestOption) (res V2StreamRecentchangeGetRes, err error) {
+func (c *Client) sendCreateChatCompletion(ctx context.Context, request *CreateChatCompletionRequest, requestOptions ...RequestOption) (res CreateChatCompletionRes, err error) {
 	otelAttrs := []attribute.KeyValue{
-		semconv.HTTPRequestMethodKey.String("GET"),
-		semconv.URLTemplateKey.String("/v2/stream/recentchange"),
+		otelogen.OperationID("createChatCompletion"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/chat/completions"),
 	}
 	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
@@ -335,7 +369,7 @@ func (c *Client) sendV2StreamRecentchangeGet(ctx context.Context, params V2Strea
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, V2StreamRecentchangeGetOperation,
+	ctx, span := c.cfg.Tracer.Start(ctx, CreateChatCompletionOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -363,51 +397,16 @@ func (c *Client) sendV2StreamRecentchangeGet(ctx context.Context, params V2Strea
 	}
 	u = uri.Clone(u)
 	var pathParts [1]string
-	pathParts[0] = "/v2/stream/recentchange"
+	pathParts[0] = "/chat/completions"
 	uri.AddPathParts(u, pathParts[:]...)
 
-	stage = "EncodeQueryParams"
-	q := uri.NewQueryEncoder()
-	{
-		// Encode "since" parameter.
-		cfg := uri.QueryParameterEncodingConfig{
-			Name:    "since",
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		}
-
-		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
-			if val, ok := params.Since.Get(); ok {
-				return e.EncodeValue(conv.StringToString(val))
-			}
-			return nil
-		}); err != nil {
-			return res, errors.Wrap(err, "encode query")
-		}
-	}
-	u.RawQuery = q.Values().Encode()
-
 	stage = "EncodeRequest"
-	r, err := ht.NewRequest(ctx, "GET", u)
+	r, err := ht.NewRequest(ctx, "POST", u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
-
-	stage = "EncodeHeaderParams"
-	h := uri.NewHeaderEncoder(r.Header)
-	{
-		cfg := uri.HeaderParameterEncodingConfig{
-			Name:    "Last-Event-ID",
-			Explode: false,
-		}
-		if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
-			if val, ok := params.LastEventID.Get(); ok {
-				return e.EncodeValue(conv.StringToString(val))
-			}
-			return nil
-		}); err != nil {
-			return res, errors.Wrap(err, "encode header")
-		}
+	if err := encodeCreateChatCompletionRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
 	}
 
 	sseOptions := reqCfg.sseCfg
@@ -419,6 +418,38 @@ func (c *Client) sendV2StreamRecentchangeGet(ctx context.Context, params V2Strea
 	if lastEventID != "" {
 		r.Header.Set("Last-Event-ID", lastEventID)
 		sseOptions.LastEventID = lastEventID
+	}
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:ApiKeyAuth"
+			switch err := c.securityApiKeyAuth(ctx, CreateChatCompletionOperation, r); {
+			case err == nil: // if NO error
+				satisfied[0] |= 1 << 0
+			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"ApiKeyAuth\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, ogenerrors.ErrSecurityRequirementIsNotSatisfied
+		}
 	}
 
 	if err := c.onRequest(ctx, r); err != nil {
@@ -444,7 +475,215 @@ func (c *Client) sendV2StreamRecentchangeGet(ctx context.Context, params V2Strea
 	}
 
 	stage = "DecodeResponse"
-	result, err := decodeV2StreamRecentchangeGetResponse(resp)
+	result, err := decodeCreateChatCompletionResponse(resp)
+	if err != nil {
+		_ = resp.Body.Close()
+		return res, errors.Wrap(err, "decode response")
+	}
+	sseStreamResult := false
+	if stream, ok := any(result).(interface {
+		initSSEStream(sseConnectFunc, sseClientConfig)
+	}); ok {
+		sseStreamResult = true
+		stream.initSSEStream(func(reconnectCtx context.Context, lastEventID string) (*http.Response, error) {
+			reconnectReq := r.Clone(reconnectCtx)
+			reconnectReq.Header.Set("Cache-Control", "no-cache")
+			reconnectReq.Header.Set("Accept", "text/event-stream")
+			if lastEventID != "" {
+				reconnectReq.Header.Set("Last-Event-ID", lastEventID)
+			} else {
+				reconnectReq.Header.Del("Last-Event-ID")
+			}
+
+			if err := c.onRequest(reconnectCtx, reconnectReq); err != nil {
+				return nil, errors.Wrap(err, "client edit reconnect request")
+			}
+
+			if err := reqCfg.onRequest(reconnectReq); err != nil {
+				return nil, errors.Wrap(err, "edit reconnect request")
+			}
+			reconnectResp, err := reqCfg.Client.Do(reconnectReq)
+			if err != nil {
+				return nil, errors.Wrap(err, "do reconnect request")
+			}
+
+			if err := c.onResponse(reconnectCtx, reconnectResp); err != nil {
+				_ = reconnectResp.Body.Close()
+				return nil, errors.Wrap(err, "client edit reconnect response")
+			}
+
+			if err := reqCfg.onResponse(reconnectResp); err != nil {
+				_ = reconnectResp.Body.Close()
+				return nil, errors.Wrap(err, "edit reconnect response")
+			}
+
+			if reconnectResp.StatusCode != resp.StatusCode {
+				_ = reconnectResp.Body.Close()
+				return nil, validate.UnexpectedStatusCodeWithResponse(reconnectResp)
+			}
+			ct, _, err := mime.ParseMediaType(reconnectResp.Header.Get("Content-Type"))
+			if err != nil {
+				_ = reconnectResp.Body.Close()
+				return nil, errors.Wrap(err, "parse reconnect media type")
+			}
+			if !ht.MatchContentType("text/event-stream", ct) {
+				_ = reconnectResp.Body.Close()
+				return nil, validate.InvalidContentType(ct)
+			}
+
+			return reconnectResp, nil
+		}, sseOptions)
+	}
+	if !sseStreamResult {
+		_ = resp.Body.Close()
+	}
+
+	return result, nil
+}
+
+// CreateResponse invokes createResponse operation.
+//
+// Creates a model response. Provide [text](/docs/guides/text) or
+// [image](/docs/guides/images) inputs to generate [text](/docs/guides/text)
+// or [JSON](/docs/guides/structured-outputs) outputs. Have the model call
+// your own [custom code](/docs/guides/function-calling) or use built-in
+// [tools](/docs/guides/tools) like [web search](/docs/guides/tools-web-search)
+// or [file search](/docs/guides/tools-file-search) to use your own data
+// as input for the model's response.
+//
+// POST /responses
+func (c *Client) CreateResponse(ctx context.Context, request *CreateResponse, options ...RequestOption) (CreateResponseRes, error) {
+	res, err := c.sendCreateResponse(ctx, request, options...)
+	return res, err
+}
+
+func (c *Client) sendCreateResponse(ctx context.Context, request *CreateResponse, requestOptions ...RequestOption) (res CreateResponseRes, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("createResponse"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/responses"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, CreateResponseOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	var reqCfg requestConfig
+	reqCfg.setDefaults(c.baseClient)
+	for _, o := range requestOptions {
+		o(&reqCfg)
+	}
+
+	stage = "BuildURL"
+	u := c.serverURL
+	if override := reqCfg.ServerURL; override != nil {
+		u = override
+	}
+	u = uri.Clone(u)
+	var pathParts [1]string
+	pathParts[0] = "/responses"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeCreateResponseRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	sseOptions := reqCfg.sseCfg
+	r.Header.Set("Cache-Control", "no-cache")
+	lastEventID := r.Header.Get("Last-Event-ID")
+	if lastEventID == "" {
+		lastEventID = sseOptions.LastEventID
+	}
+	if lastEventID != "" {
+		r.Header.Set("Last-Event-ID", lastEventID)
+		sseOptions.LastEventID = lastEventID
+	}
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:ApiKeyAuth"
+			switch err := c.securityApiKeyAuth(ctx, CreateResponseOperation, r); {
+			case err == nil: // if NO error
+				satisfied[0] |= 1 << 0
+			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"ApiKeyAuth\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, ogenerrors.ErrSecurityRequirementIsNotSatisfied
+		}
+	}
+
+	if err := c.onRequest(ctx, r); err != nil {
+		return res, errors.Wrap(err, "client edit request")
+	}
+
+	if err := reqCfg.onRequest(r); err != nil {
+		return res, errors.Wrap(err, "edit request")
+	}
+
+	stage = "SendRequest"
+	resp, err := reqCfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+
+	if err := c.onResponse(ctx, resp); err != nil {
+		return res, errors.Wrap(err, "client edit response")
+	}
+
+	if err := reqCfg.onResponse(resp); err != nil {
+		return res, errors.Wrap(err, "edit response")
+	}
+
+	stage = "DecodeResponse"
+	result, err := decodeCreateResponseResponse(resp)
 	if err != nil {
 		_ = resp.Body.Close()
 		return res, errors.Wrap(err, "decode response")

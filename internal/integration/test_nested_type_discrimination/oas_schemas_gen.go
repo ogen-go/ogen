@@ -36,7 +36,8 @@ func (s *BinaryData) SetSize(val OptInt) {
 // Ref: #/components/schemas/DataContent
 // DataContent represents sum type.
 type DataContent struct {
-	Type           DataContentType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type           DataContentType
 	BinaryData     BinaryData
 	StructuredData StructuredData
 }
@@ -166,7 +167,8 @@ func (s *FormattedText) SetFormat(val string) {
 // Ref: #/components/schemas/Message
 // Message represents sum type.
 type Message struct {
-	Type        MessageType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type        MessageType
 	TextMessage TextMessage
 	DataMessage DataMessage
 }
@@ -379,7 +381,8 @@ func (s *StructuredDataData) init() StructuredDataData {
 // Ref: #/components/schemas/TextContent
 // TextContent represents sum type.
 type TextContent struct {
-	Type          TextContentType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type          TextContentType
 	PlainText     PlainText
 	FormattedText FormattedText
 }

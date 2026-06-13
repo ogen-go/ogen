@@ -915,7 +915,8 @@ func (s *V2StreamRecentchangeGetOKApplicationJSONLength) SetOld(val OptNilInt) {
 // Property only exists if event has rc_params.
 // V2StreamRecentchangeGetOKApplicationJSONLogParams represents sum type.
 type V2StreamRecentchangeGetOKApplicationJSONLogParams struct {
-	Type                                               V2StreamRecentchangeGetOKApplicationJSONLogParamsType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type                                               V2StreamRecentchangeGetOKApplicationJSONLogParamsType
 	AnyArray                                           []jx.Raw
 	V2StreamRecentchangeGetOKApplicationJSONLogParams1 V2StreamRecentchangeGetOKApplicationJSONLogParams1
 	String                                             string
@@ -1742,7 +1743,8 @@ func (s *V2StreamRecentchangeGetOKTextEventStreamEventDataLength) SetOld(val Opt
 // Property only exists if event has rc_params.
 // V2StreamRecentchangeGetOKTextEventStreamEventDataLogParams represents sum type.
 type V2StreamRecentchangeGetOKTextEventStreamEventDataLogParams struct {
-	Type                                                        V2StreamRecentchangeGetOKTextEventStreamEventDataLogParamsType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type                                                        V2StreamRecentchangeGetOKTextEventStreamEventDataLogParamsType
 	AnyArray                                                    []jx.Raw
 	V2StreamRecentchangeGetOKTextEventStreamEventDataLogParams1 V2StreamRecentchangeGetOKTextEventStreamEventDataLogParams1
 	String                                                      string

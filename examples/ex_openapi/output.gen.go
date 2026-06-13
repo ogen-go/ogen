@@ -70,7 +70,8 @@ func (s *Callback) SetPattern1Props(val CallbackPattern1) {
 // Ref: #/definitions/callbackOrReference
 // CallbackOrReference represents sum type.
 type CallbackOrReference struct {
-	Type      CallbackOrReferenceType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type      CallbackOrReferenceType
 	Callback  Callback
 	Reference Reference
 }
@@ -549,7 +550,8 @@ func (s *Example) SetPattern0Props(val ExamplePattern0) {
 // Ref: #/definitions/exampleOrReference
 // ExampleOrReference represents sum type.
 type ExampleOrReference struct {
-	Type      ExampleOrReferenceType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type      ExampleOrReferenceType
 	Example   Example
 	Reference Reference
 }
@@ -832,7 +834,8 @@ func (s *Header) SetPattern0Props(val HeaderPattern0) {
 // Ref: #/definitions/headerOrReference
 // HeaderOrReference represents sum type.
 type HeaderOrReference struct {
-	Type      HeaderOrReferenceType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type      HeaderOrReferenceType
 	Header    Header
 	Reference Reference
 }
@@ -1154,7 +1157,8 @@ func (s *Link) SetPattern0Props(val LinkPattern0) {
 // Ref: #/definitions/linkOrReference
 // LinkOrReference represents sum type.
 type LinkOrReference struct {
-	Type      LinkOrReferenceType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type      LinkOrReferenceType
 	Link      Link
 	Reference Reference
 }
@@ -3830,7 +3834,8 @@ func (s *ParameterIn) UnmarshalText(data []byte) error {
 // Ref: #/definitions/parameterOrReference
 // ParameterOrReference represents sum type.
 type ParameterOrReference struct {
-	Type      ParameterOrReferenceType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type      ParameterOrReferenceType
 	Parameter Parameter
 	Reference Reference
 }
@@ -4305,7 +4310,8 @@ func (s *RequestBody) SetPattern0Props(val RequestBodyPattern0) {
 // Ref: #/definitions/requestBodyOrReference
 // RequestBodyOrReference represents sum type.
 type RequestBodyOrReference struct {
-	Type        RequestBodyOrReferenceType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type        RequestBodyOrReferenceType
 	RequestBody RequestBody
 	Reference   Reference
 }
@@ -4445,7 +4451,8 @@ func (s *Response) SetPattern0Props(val ResponsePattern0) {
 // Ref: #/definitions/responseOrReference
 // ResponseOrReference represents sum type.
 type ResponseOrReference struct {
-	Type      ResponseOrReferenceType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type      ResponseOrReferenceType
 	Response  Response
 	Reference Reference
 }
@@ -5010,7 +5017,8 @@ func (s *Schema) SetPattern0Props(val SchemaPattern0) {
 
 // SchemaAdditionalProperties represents sum type.
 type SchemaAdditionalProperties struct {
-	Type              SchemaAdditionalPropertiesType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type              SchemaAdditionalPropertiesType
 	SchemaOrReference SchemaOrReference
 	Bool              bool
 }
@@ -5077,7 +5085,8 @@ func NewBoolSchemaAdditionalProperties(v bool) SchemaAdditionalProperties {
 // Ref: #/definitions/schemaOrReference
 // SchemaOrReference represents sum type.
 type SchemaOrReference struct {
-	Type      SchemaOrReferenceType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type      SchemaOrReferenceType
 	Schema    Schema
 	Reference Reference
 }
@@ -5381,7 +5390,8 @@ func (s *SecurityScheme) SetPattern0Props(val SecuritySchemePattern0) {
 // Ref: #/definitions/securitySchemeOrReference
 // SecuritySchemeOrReference represents sum type.
 type SecuritySchemeOrReference struct {
-	Type           SecuritySchemeOrReferenceType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type           SecuritySchemeOrReferenceType
 	SecurityScheme SecurityScheme
 	Reference      Reference
 }
