@@ -207,6 +207,20 @@ func (t *Type) AcceptsJSONString() bool {
 	return false
 }
 
+// HasGeneratedReservedField reports whether a generated sum type has a
+// reserved field name.
+func (t *Type) HasGeneratedReservedField() bool {
+	if t == nil || !t.IsSum() {
+		return false
+	}
+	for _, s := range t.SumOf {
+		if s.Name == "TypeValue" {
+			return true
+		}
+	}
+	return false
+}
+
 func (t *Type) MustField(name string) *Field {
 	if t.IsAlias() {
 		return t.AliasTo.MustField(name)

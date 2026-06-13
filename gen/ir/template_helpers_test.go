@@ -42,3 +42,31 @@ func TestTypeAcceptsJSONString(t *testing.T) {
 		}
 	})
 }
+
+func TestType_HasGeneratedReservedField(t *testing.T) {
+	t.Run("SumWithTypeValueVariant", func(t *testing.T) {
+		sum := &Type{
+			Kind: KindSum,
+			SumOf: []*Type{
+				{Name: "Some"},
+				{Name: "TypeValue"},
+			},
+		}
+		if !sum.HasGeneratedReservedField() {
+			t.Fatal("sum with TypeValue variant should report matching variant name")
+		}
+	})
+
+	t.Run("SumWithoutTypeValueVariant", func(t *testing.T) {
+		sum := &Type{
+			Kind: KindSum,
+			SumOf: []*Type{
+				{Name: "Some"},
+				{Name: "Other"},
+			},
+		}
+		if sum.HasGeneratedReservedField() {
+			t.Fatal("sum without TypeValue variant should not report matching variant name")
+		}
+	})
+}

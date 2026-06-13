@@ -2,7 +2,13 @@
 {{- define "schema/sum" }}
 // {{ $.Name }} represents sum type.
 type {{ $.Name }} struct {
-	Type {{ $.Name }}Type // switch on this field
+	{{- if $.HasGeneratedReservedField }}
+	// WARNING: schema property named Type is generated as TypeValue,
+	// Type field is reserved.
+	//
+	{{- end }}
+	// Type selects the active sum variant, switch on this field.
+	Type {{ $.Name }}Type
 	{{- range $s := $.SumOf }}
 		{{ $s.Name }} {{ $s.Go }}
 	{{- end }}
