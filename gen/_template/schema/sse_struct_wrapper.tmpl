@@ -1,0 +1,22 @@
+{{- /*gotype: github.com/ogen-go/ogen/gen/ir.Type*/ -}}
+{{- define "schema/sse_struct_wrapper" }}
+{{- range $f := $.Fields }}
+{{- if $f.Type.IsSSEStream }}
+func (s *{{ $.Name }}) initSSEStream(connect sseConnectFunc, options sseClientConfig) {
+	if stream, ok := any(s.{{ $f.Name }}).(interface {
+		initSSEStream(sseConnectFunc, sseClientConfig)
+	}); ok {
+		stream.initSSEStream(connect, options)
+	}
+}
+
+func (s *{{ $.Name }}) State() (sse.State, error) {
+	return s.{{ $f.Name }}.State()
+}
+
+func (s *{{ $.Name }}) Close() error {
+	return s.{{ $f.Name }}.Close()
+}
+{{- end }}
+{{- end }}
+{{ end }}
