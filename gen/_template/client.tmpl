@@ -211,7 +211,7 @@ func reconnectSSE(ctx context.Context,
 			options.RetryErrorHandler(ctx, err)
 		}
 		if options.MaxRetries > 0 && attempts >= options.MaxRetries {
-			return nil, nil, errors.Wrap(err, sse.ErrMaxRetriesExceeded.Error())
+			return nil, nil, errors.Wrap(sse.ErrMaxRetriesExceeded, err.Error())
 		}
 		if err := waitSSERetry(ctx, retry); err != nil {
 			if stateUpdater != nil {
