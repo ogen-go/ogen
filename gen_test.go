@@ -179,6 +179,9 @@ func TestGenerate(t *testing.T) {
 			"k8s.json":                 {},
 			"petstore-expanded.yml":    {},
 			"problemjson.yml":          {},
+			"wikimedia.openapi.yaml": {
+				"sse server response encoding",
+			},
 			"redoc/discriminator.json": {},
 			"swagger-petstore-1.0.27.yaml": {
 				"nested objects in form parameters",
