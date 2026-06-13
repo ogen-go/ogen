@@ -6,7 +6,6 @@ package sse
 
 import (
 	"context"
-	"errors"
 	"iter"
 	"time"
 )
@@ -45,12 +44,4 @@ type Client[E any] interface {
 	All(ctx context.Context) iter.Seq2[E, error]
 	State() (state State, connErr error)
 	Close() error
-}
-
-// IsReconnectable reports whether err should trigger automatic SSE reconnect.
-func IsReconnectable(err error) bool {
-	return err != nil &&
-		!errors.Is(err, ErrStreamClosed) &&
-		!errors.Is(err, ErrNoReconnect) &&
-		!errors.Is(err, context.Canceled)
 }

@@ -119,7 +119,7 @@ func (s *{{ $.Name }}) Next(ctx context.Context,
 			var event {{ $.SSE.EventType.Go }}
 			return event, err
 		}
-		if !sse.IsReconnectable(err) {
+		if !sse.IsReconnectableError(err) {
 			s.setState(sse.StateClosed, err)
 			var event {{ $.SSE.EventType.Go }}
 			return event, err
@@ -131,16 +131,8 @@ func (s *{{ $.Name }}) Next(ctx context.Context,
 		}
 
 		s.setState(sse.StateConnecting, err)
-		// Local options.RetryErrorHandler copy.
-		retryErrorHandler := options.RetryErrorHandler
-		options.RetryErrorHandler = func(reconnectCtx context.Context, connectErr error) {
-			s.setState(sse.StateConnecting, connectErr)
-			if retryErrorHandler != nil {
-				retryErrorHandler(reconnectCtx, connectErr)
-			}
-		}
 		reconnectCtx, cancel := s.withCloseContext(ctx)
-		nextResp, nextDecoder, err := reconnectSSE(reconnectCtx, resp, decoder, connect, options)
+		nextResp, nextDecoder, err := reconnectSSE(reconnectCtx, resp, decoder, connect, options, s)
 		cancel()
 		if s.closed.Load() {
 			if nextResp != nil && nextResp.Body != nil {

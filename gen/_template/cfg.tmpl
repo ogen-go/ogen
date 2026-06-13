@@ -166,14 +166,17 @@ type clientConfig struct {
 	{{- if $.AnyInstrumentable }}
 	otelConfig
 	{{- end }}
-    {{- if $.EditorsEnabled }}
-    // A list of callbacks for modifying requests which are generated before sending over
-    // the network.
-    RequestEditors []RequestEditor
-    // A list of callbacks for modifying response.
-    ResponseEditors []ResponseEditor
-    {{- end }}
+	{{- if $.EditorsEnabled }}
+	// A list of callbacks for modifying requests which are generated before sending over
+	// the network.
+	RequestEditors  []RequestEditor
+	// A list of callbacks for modifying response.
+	ResponseEditors []ResponseEditor
+	{{- end }}
 	Client ht.Client
+	{{- if $.AnyClientSSEEnabled }}
+	sseCfg sseClientConfig
+	{{- end }}
 }
 
 // ClientOption is client config option.
@@ -285,6 +288,15 @@ func WithClient(client ht.Client) ClientOption {
 		}
 	})
 }
+
+{{- if $.AnyClientSSEEnabled }}
+// WithSSEClientOptions configures default SSE client behavior.
+func WithSSEClientOptions(opts ...SSEOption) ClientOption {
+	return optionFunc[clientConfig](func(cfg *clientConfig) {
+		cfg.sseCfg.apply(opts...)
+	})
+}
+{{- end }}
 
 {{ if $.EditorsEnabled -}}
 // RequestEditor is the function signature for the RequestEditor callback function
