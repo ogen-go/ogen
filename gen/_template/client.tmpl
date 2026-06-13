@@ -4,16 +4,22 @@
 
 {{- if $.RequestOptionsEnabled }}
 type requestConfig struct {
-	Client ht.Client
-	ServerURL *url.URL
-	EditRequest func(req *http.Request) error
+	Client       ht.Client
+	ServerURL    *url.URL
+	EditRequest  func(req *http.Request) error
 	EditResponse func(resp *http.Response) error
+	{{- if $.AnyClientSSEEnabled }}
+	sseCfg       sseClientConfig
+	{{- end }}
 }
 
 func (cfg *requestConfig) setDefaults(c baseClient) {
 	if cfg.Client == nil {
 		cfg.Client = c.cfg.Client
 	}
+	{{- if $.AnyClientSSEEnabled }}
+	cfg.sseCfg = c.cfg.sseCfg
+	{{- end }}
 }
 
 func (cfg *requestConfig) onRequest(req *http.Request) error {
@@ -60,11 +66,178 @@ func WithEditResponse(fn func(resp *http.Response) error) RequestOption {
 		cfg.EditResponse = fn
 	}
 }
+
+{{- if $.AnyClientSSEEnabled }}
+// WithRequestSSEOptions configures SSE behavior for request.
+func WithRequestSSEOptions(opts ...SSEClientOption) RequestOption {
+	return func(cfg *requestConfig) {
+		cfg.sseCfg.apply(opts...)
+	}
+}
+{{- end }}
+{{- end }}
+
+{{- if $.AnyClientSSEEnabled }}
+type sseClientConfig struct {
+	LastEventID       string
+	Retry             *time.Duration
+	MaxRetries        int
+	InitialBufferCap  int
+	MaxEventSize      int
+	RetryErrorHandler sse.RetryErrorHandler
+}
+
+type SSEClientOption func(*sseClientConfig)
+
+func newSSEClientConfig(opts ...SSEClientOption) sseClientConfig {
+	var cfg sseClientConfig
+	cfg.apply(opts...)
+	return cfg
+}
+
+func (c *sseClientConfig) apply(opts ...SSEClientOption) {
+	for _, opt := range opts {
+		if opt != nil {
+			opt(c)
+		}
+	}
+}
+
+// WithSSELastEventID sets the initial lastEventID value for the stream.
+func WithSSELastEventID(lastEventID string) SSEClientOption {
+	return func(o *sseClientConfig) {
+		o.LastEventID = lastEventID
+	}
+}
+
+// WithSSERetry sets the initial SSE reconnect delay.
+func WithSSERetry(delay time.Duration) SSEClientOption {
+	return func(o *sseClientConfig) {
+		o.Retry = &delay
+	}
+}
+
+// WithSSEMaxRetries sets the maximum number of reconnect attempts.
+//
+// Zero sets unlimited reconnect attempts.
+func WithSSEMaxRetries(n int) SSEClientOption {
+	return func(o *sseClientConfig) {
+		o.MaxRetries = n
+	}
+}
+
+// WithSSEInitialBufferCap sets the initial decoder line buffer capacity.
+func WithSSEInitialBufferCap(n int) SSEClientOption {
+	return func(o *sseClientConfig) {
+		o.InitialBufferCap = n
+	}
+}
+
+// WithSSEMaxEventSize sets the maximum parsable SSE event size in bytes.
+//
+// Zero disables the limit.
+func WithSSEMaxEventSize(n int) SSEClientOption {
+	return func(o *sseClientConfig) {
+		o.MaxEventSize = n
+	}
+}
+
+// WithSSERetryErrorHandler sets the callback invoked after a reconnect attempt fails.
+func WithSSERetryErrorHandler(h sse.RetryErrorHandler) SSEClientOption {
+	return func(o *sseClientConfig) {
+		o.RetryErrorHandler = h
+	}
+}
+
+// sseConnectFunc reconnects an SSE stream using the lastEventID value.
+type sseConnectFunc func(ctx context.Context, lastEventID string) (*http.Response, error)
+
+func newSSEResponseDecoder(resp *http.Response, options sseClientConfig) *sse.Decoder {
+	if resp == nil || resp.Body == nil {
+		return nil
+	}
+	return sse.NewDecoder(resp.Body,
+		options.InitialBufferCap,
+		options.MaxEventSize,
+		options.LastEventID,
+		options.Retry,
+	)
+}
+
+func reconnectSSE(ctx context.Context,
+	resp *http.Response,
+	decoder *sse.Decoder,
+	connect sseConnectFunc,
+	options sseClientConfig,
+	stateUpdater interface { setState(sse.State, error) },
+) (*http.Response, *sse.Decoder, error) {
+	if resp != nil && resp.Body != nil {
+		if err := resp.Body.Close(); err != nil {
+			return nil, nil, err
+		}
+	}
+
+	retry := sse.DefaultRetry
+	if decoder != nil {
+		retry = decoder.Retry()
+	} else if options.Retry != nil {
+		retry = *options.Retry
+	}
+
+	lastEventID := options.LastEventID
+	if decoder != nil {
+		lastEventID = decoder.LastEventID()
+	}
+
+	if err := waitSSERetry(ctx, retry); err != nil {
+		if stateUpdater != nil {
+			stateUpdater.setState(sse.StateConnecting, err)
+		}
+		return nil, nil, err
+	}
+
+	var attempts int
+	for {
+		nextResp, err := connect(ctx, lastEventID)
+		if err == nil {
+			options.LastEventID = lastEventID
+			options.Retry = &retry
+			return nextResp, newSSEResponseDecoder(nextResp, options), nil
+		}
+
+		attempts++
+		stateUpdater.setState(sse.StateConnecting, err)
+		if options.RetryErrorHandler != nil {
+			options.RetryErrorHandler(ctx, err)
+		}
+		if options.MaxRetries > 0 && attempts >= options.MaxRetries {
+			return nil, nil, errors.Wrap(err, sse.ErrMaxRetriesExceeded.Error())
+		}
+		if err := waitSSERetry(ctx, retry); err != nil {
+			if stateUpdater != nil {
+				stateUpdater.setState(sse.StateConnecting, err)
+			}
+			return nil, nil, err
+		}
+	}
+}
+
+func waitSSERetry(ctx context.Context, retry time.Duration) error {
+	timer := time.NewTimer(retry)
+	defer timer.Stop()
+
+	select {
+	case <-ctx.Done():
+		return ctx.Err()
+	case <-timer.C:
+		return nil
+	}
+}
 {{- end }}
 
 func trimTrailingSlashes(u *url.URL) {
-    u.Path = strings.TrimRight(u.Path, "/")
-    u.RawPath = strings.TrimRight(u.RawPath, "/")
+	u.Path = strings.TrimRight(u.Path, "/")
+	u.RawPath = strings.TrimRight(u.RawPath, "/")
 }
 
 {{- if $.PathsClientEnabled }}
@@ -108,7 +281,7 @@ type {{ $group.Name }}Invoker interface {
 type Client struct {
 	serverURL *url.URL
 	{{- if $.Securities }}
-	sec 	  SecuritySource
+	sec       SecuritySource
 	{{- end }}
 	baseClient
 }
@@ -153,19 +326,19 @@ func (c *Client) requestURL(ctx context.Context) *url.URL {
 
 {{- if $.EditorsEnabled }}
 func (c *Client) onRequest(ctx context.Context, req *http.Request) error {
-    for _, fn := range c.cfg.RequestEditors {
-        if err := fn(ctx, req); err != nil {
-            return err
-        }
-    }
-    return nil
+	for _, fn := range c.cfg.RequestEditors {
+		if err := fn(ctx, req); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 func (c *Client) onResponse(ctx context.Context, resp *http.Response) error {
 	for _, fn := range c.cfg.ResponseEditors {
-        if err := fn(ctx, resp); err != nil {
-            return err
-        }
+		if err := fn(ctx, resp); err != nil {
+			return err
+		}
 	}
 	return nil
 }
@@ -373,6 +546,23 @@ func (c *{{ if $op.WebhookInfo }}Webhook{{ end }}Client) send{{ $op.Name }}(ctx 
 		{{- template "encode_cookie_parameters" $op }}
 	{{- end }}
 
+	{{- if $op.HasSSEStreamResponse }}
+		{{- if $cfg.RequestOptionsEnabled }}
+		sseOptions := reqCfg.sseCfg
+		{{- else }}
+		sseOptions := c.cfg.sseCfg
+		{{- end }}
+		r.Header.Set("Cache-Control", "no-cache")
+		lastEventID := r.Header.Get("Last-Event-ID")
+		if lastEventID == "" {
+			lastEventID = sseOptions.LastEventID
+		}
+		if lastEventID != "" {
+			r.Header.Set("Last-Event-ID", lastEventID)
+			sseOptions.LastEventID = lastEventID
+		}
+	{{- end }}
+
 	{{- with $securities := $op.Security.Securities }}
 	{
 		type bitset = [{{ $op.Security.BitArrayLen }}]uint8
@@ -415,11 +605,11 @@ func (c *{{ if $op.WebhookInfo }}Webhook{{ end }}Client) send{{ $op.Name }}(ctx 
 	}
 	{{- end }}
 
-    {{ if $cfg.EditorsEnabled -}}
-    if err := c.onRequest(ctx, r); err != nil {
-        return res, errors.Wrap(err, "client edit request")
-    }
-    {{- end }}
+	{{ if $cfg.EditorsEnabled -}}
+	if err := c.onRequest(ctx, r); err != nil {
+		return res, errors.Wrap(err, "client edit request")
+	}
+	{{- end }}
 
 	{{ if $cfg.RequestOptionsEnabled -}}
 	if err := reqCfg.onRequest(r); err != nil {
@@ -436,7 +626,7 @@ func (c *{{ if $op.WebhookInfo }}Webhook{{ end }}Client) send{{ $op.Name }}(ctx 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	{{- if not $op.HasRawResponse }}
+	{{- if and (not $op.HasRawResponse) (not $op.HasSSEStreamResponse) }}
 	body := resp.Body
 	defer func() {
 		// Drain the body to EOF before closing, so the underlying
@@ -447,11 +637,11 @@ func (c *{{ if $op.WebhookInfo }}Webhook{{ end }}Client) send{{ $op.Name }}(ctx 
 	}()
 	{{- end }}
 
-    {{ if $cfg.EditorsEnabled -}}
-    if err := c.onResponse(ctx, resp); err != nil {
-        return res, errors.Wrap(err, "client edit response")
-    }
-    {{- end }}
+	{{ if $cfg.EditorsEnabled -}}
+	if err := c.onResponse(ctx, resp); err != nil {
+		return res, errors.Wrap(err, "client edit response")
+	}
+	{{- end }}
 
 	{{ if $cfg.RequestOptionsEnabled -}}
 	if err := reqCfg.onResponse(resp); err != nil {
@@ -462,8 +652,83 @@ func (c *{{ if $op.WebhookInfo }}Webhook{{ end }}Client) send{{ $op.Name }}(ctx 
 	{{ if $otel }}stage = "DecodeResponse"{{ end }}
 	result, err := decode{{ $op.Name }}Response(resp)
 	if err != nil {
+		{{- if and (not $op.HasRawResponse) $op.HasSSEStreamResponse }}
+		_ = resp.Body.Close()
+		{{- end }}
 		return res, errors.Wrap(err, "decode response")
 	}
+
+	{{- if $op.HasSSEStreamResponse }}
+	sseStreamResult := false
+	if stream, ok := any(result).(interface {
+		initSSEStream(sseConnectFunc, sseClientConfig)
+	}); ok {
+		sseStreamResult = true
+		stream.initSSEStream(func(reconnectCtx context.Context, lastEventID string) (*http.Response, error) {
+			reconnectReq := r.Clone(reconnectCtx)
+			reconnectReq.Header.Set("Cache-Control", "no-cache")
+			reconnectReq.Header.Set("Accept", "text/event-stream")
+			if lastEventID != "" {
+				reconnectReq.Header.Set("Last-Event-ID", lastEventID)
+			} else {
+				reconnectReq.Header.Del("Last-Event-ID")
+			}
+
+			{{ if $cfg.EditorsEnabled -}}
+			if err := c.onRequest(reconnectCtx, reconnectReq); err != nil {
+				return nil, errors.Wrap(err, "client edit reconnect request")
+			}
+			{{- end }}
+
+			{{ if $cfg.RequestOptionsEnabled -}}
+			if err := reqCfg.onRequest(reconnectReq); err != nil {
+				return nil, errors.Wrap(err, "edit reconnect request")
+			}
+			{{- end }}
+			{{- if $cfg.RequestOptionsEnabled }}
+			reconnectResp, err := reqCfg.Client.Do(reconnectReq)
+			{{- else }}
+			reconnectResp, err := c.cfg.Client.Do(reconnectReq)
+			{{- end }}
+			if err != nil {
+				return nil, errors.Wrap(err, "do reconnect request")
+			}
+
+			{{ if $cfg.EditorsEnabled -}}
+			if err := c.onResponse(reconnectCtx, reconnectResp); err != nil {
+				_ = reconnectResp.Body.Close()
+				return nil, errors.Wrap(err, "client edit reconnect response")
+			}
+			{{- end }}
+
+			{{ if $cfg.RequestOptionsEnabled -}}
+			if err := reqCfg.onResponse(reconnectResp); err != nil {
+				_ = reconnectResp.Body.Close()
+				return nil, errors.Wrap(err, "edit reconnect response")
+			}
+			{{- end }}
+
+			if reconnectResp.StatusCode != resp.StatusCode {
+				_ = reconnectResp.Body.Close()
+				return nil, validate.UnexpectedStatusCodeWithResponse(reconnectResp)
+			}
+			ct, _, err := mime.ParseMediaType(reconnectResp.Header.Get("Content-Type"))
+			if err != nil {
+				_ = reconnectResp.Body.Close()
+				return nil, errors.Wrap(err, "parse reconnect media type")
+			}
+			if !ht.MatchContentType("text/event-stream", ct) {
+				_ = reconnectResp.Body.Close()
+				return nil, validate.InvalidContentType(ct)
+			}
+
+			return reconnectResp, nil
+		}, sseOptions)
+	}
+	if !sseStreamResult {
+		_ = resp.Body.Close()
+	}
+	{{- end }}
 
 	return result, nil
 }

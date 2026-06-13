@@ -291,7 +291,7 @@ func WithClient(client ht.Client) ClientOption {
 
 {{- if $.AnyClientSSEEnabled }}
 // WithSSEClientOptions configures default SSE client behavior.
-func WithSSEClientOptions(opts ...SSEOption) ClientOption {
+func WithSSEClientOptions(opts ...SSEClientOption) ClientOption {
 	return optionFunc[clientConfig](func(cfg *clientConfig) {
 		cfg.sseCfg.apply(opts...)
 	})
