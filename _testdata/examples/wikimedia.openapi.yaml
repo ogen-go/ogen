@@ -1,5 +1,9 @@
 # This OpenAPI spec includes only the SSE endpoint /v2/stream/recentchange,
 # filtered and modified to comply with OpenAPI 3.0.
+# Full spec can be found here: https://stream.wikimedia.org/?spec.
+#
+# NOTE: Wikimedia APIs require clients to send an appropriate User-Agent, else
+# request will be rejected with HTTP 403.
 
 openapi: 3.0.0
 info:
