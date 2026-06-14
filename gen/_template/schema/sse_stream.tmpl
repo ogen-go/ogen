@@ -1,9 +1,11 @@
 {{- /*gotype: github.com/ogen-go/ogen/gen/ir.Type*/ -}}
 {{- define "schema/sse_stream" }}
+// {{ $.Name }}Client reads events from the {{ $.Name }} SSE stream.
 type {{ $.Name }}Client interface {
 	sse.Client[{{ $.SSE.EventType.Go }}]
 }
 
+// {{ $.Name }} is a Server-Sent Events response stream.
 type {{ $.Name }} struct {
 	resp      *http.Response
 	decoder   *sse.Decoder
@@ -33,16 +35,17 @@ func (s *{{ $.Name }}) initSSEStream(
 	s.closeCh = make(chan struct{})
 }
 
-func (s *{{ $.Name }}) State() (sse.State, error) {
+// State returns the current stream state and the latest terminal or current reconnect error.
+func (s *{{ $.Name }}) State() (state sse.State, latestErr error) {
 	s.stateMu.RLock()
 	defer s.stateMu.RUnlock()
 	return s.state, s.latestErr
 }
 
-func (s *{{ $.Name }}) setState(state sse.State, err error) {
+func (s *{{ $.Name }}) setState(state sse.State, latestErr error) {
 	s.stateMu.Lock()
 	s.state = state
-	s.latestErr = err
+	s.latestErr = latestErr
 	s.stateMu.Unlock()
 }
 
@@ -67,6 +70,7 @@ func (s *{{ $.Name }}) withCloseContext(ctx context.Context,
 	return reconnectCtx, cancel
 }
 
+// Close closes the current stream and stops further reconnect attempts.
 func (s *{{ $.Name }}) Close() error {
 	if !s.closed.CompareAndSwap(false, true) {
 		return nil
@@ -92,6 +96,7 @@ func (s *{{ $.Name }}) Close() error {
 	return resp.Body.Close()
 }
 
+// Next returns the next event from the stream, reconnecting when needed.
 func (s *{{ $.Name }}) Next(ctx context.Context,
 ) ({{ $.SSE.EventType.Go }}, error) {
 	for {
@@ -164,6 +169,7 @@ func (s *{{ $.Name }}) Next(ctx context.Context,
 	}
 }
 
+// All iterates over stream events until the stream is closed, reconnecting when needed.
 func (s *{{ $.Name }}) All(ctx context.Context,
 ) iter.Seq2[{{ $.SSE.EventType.Go }}, error] {
 	return func(yield func({{ $.SSE.EventType.Go }}, error) bool) {

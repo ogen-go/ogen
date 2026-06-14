@@ -402,7 +402,6 @@ func (g *Generator) generateSSEContent(
 	streamType := &ir.Type{
 		Kind: ir.KindStruct,
 		Name: typeName,
-		Doc:  fmt.Sprintf("%s is a Server-Sent Events response stream.", typeName),
 		SSE: &ir.SSEMetadata{
 			Shape:     shape,
 			EventType: eventType,

@@ -42,6 +42,6 @@ type ClientOptions struct {
 type Client[E any] interface {
 	Next(ctx context.Context) (E, error)
 	All(ctx context.Context) iter.Seq2[E, error]
-	State() (state State, connErr error)
+	State() (state State, latestErr error)
 	Close() error
 }
