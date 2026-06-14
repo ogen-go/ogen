@@ -9,6 +9,7 @@ import (
 	"go.uber.org/zap/zapcore"
 	"go.uber.org/zap/zaptest/observer"
 
+	"github.com/ogen-go/ogen/jsonschema"
 	"github.com/ogen-go/ogen/openapi"
 )
 
@@ -65,4 +66,48 @@ func Test_filterMostSpecific(t *testing.T) {
 			}
 		})
 	}
+}
+
+func TestGenerator_normalizeFullSSESchema_RequiredStandardFields(t *testing.T) {
+	g := &Generator{}
+
+	schema := &jsonschema.Schema{
+		Type: jsonschema.Object,
+		Properties: []jsonschema.Property{
+			{
+				Name:     "id",
+				Schema:   &jsonschema.Schema{Type: jsonschema.String},
+				Required: false,
+			},
+			{
+				Name:     "event",
+				Schema:   &jsonschema.Schema{Type: jsonschema.String},
+				Required: false,
+			},
+			{
+				Name:     "data",
+				Schema:   &jsonschema.Schema{Type: jsonschema.String},
+				Required: false,
+			},
+			{
+				Name:     "retry",
+				Schema:   &jsonschema.Schema{Type: jsonschema.Integer},
+				Required: true,
+			},
+		},
+	}
+
+	got := g.normalizeFullSSESchema(schema, &openapi.MediaType{})
+	require.NotNil(t, got)
+
+	required := map[string]bool{}
+	for _, prop := range got.Properties {
+		required[prop.Name] = prop.Required
+	}
+
+	require.True(t, required["id"])
+	require.True(t, required["event"])
+	require.True(t, required["data"])
+	require.False(t, required["retry"])
+	require.ElementsMatch(t, []string{"id", "event", "data"}, got.Required)
 }

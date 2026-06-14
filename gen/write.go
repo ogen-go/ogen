@@ -66,6 +66,21 @@ func (t TemplateConfig) AnyInstrumentable() bool {
 	return t.OpenTelemetryEnabled && (t.AnyClientEnabled() || t.AnyServerEnabled())
 }
 
+// AnyClientSSEEnabled returns true if any generated client operation may return SSE.
+func (t TemplateConfig) AnyClientSSEEnabled() bool {
+	for _, op := range t.Operations {
+		if op.HasSSEStreamResponse() {
+			return true
+		}
+	}
+	for _, op := range t.Webhooks {
+		if op.HasSSEStreamResponse() {
+			return true
+		}
+	}
+	return false
+}
+
 // ErrorGoType returns Go type of error.
 func (t TemplateConfig) ErrorGoType() string {
 	typ := t.ErrorType

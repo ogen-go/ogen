@@ -17,7 +17,8 @@ func (s *ErrorStatusCode) Error() string {
 // Ref: #/components/schemas/AnyValue
 // AnyValue represents sum type.
 type AnyValue struct {
-	Type        AnyValueType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type        AnyValueType
 	StringValue StringValue
 	BoolValue   BoolValue
 	IntValue    IntValue

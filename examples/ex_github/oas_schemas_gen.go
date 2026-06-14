@@ -10422,7 +10422,8 @@ func (s *ChecksCreateReqStatus) UnmarshalText(data []byte) error {
 
 // ChecksCreateReqSum represents sum type.
 type ChecksCreateReqSum struct {
-	Type                ChecksCreateReqSumType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type                ChecksCreateReqSumType
 	ChecksCreateReqSum0 ChecksCreateReqSum0
 	ChecksCreateReqSum1 ChecksCreateReqSum1
 }
@@ -15710,7 +15711,8 @@ func (*Deployment) reposGetDeploymentRes()    {}
 
 // DeploymentPayload represents sum type.
 type DeploymentPayload struct {
-	Type               DeploymentPayloadType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type               DeploymentPayloadType
 	DeploymentPayload0 DeploymentPayload0
 	String             string
 }
@@ -17561,7 +17563,8 @@ func (s *EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp) Un
 
 // EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue represents sum type.
 type EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue struct {
-	Type                                                                    EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValueType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type                                                                    EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValueType
 	String                                                                  string
 	EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1 EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1
 	AnyArray                                                                []jx.Raw
@@ -21301,7 +21304,8 @@ func (s *GistsCreateReqFilesItem) SetContent(val string) {
 
 // GistsCreateReqPublic represents sum type.
 type GistsCreateReqPublic struct {
-	Type                  GistsCreateReqPublicType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type                  GistsCreateReqPublicType
 	Bool                  bool
 	GistsCreateReqPublic1 GistsCreateReqPublic1
 }
@@ -26582,7 +26586,8 @@ func (*IssueHeaders) issuesCreateRes() {}
 
 // IssueLabelsItem represents sum type.
 type IssueLabelsItem struct {
-	Type             IssueLabelsItemType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type             IssueLabelsItemType
 	String           string
 	IssueLabelsItem1 IssueLabelsItem1
 }
@@ -27958,7 +27963,8 @@ func (s *IssuesCreateReq) SetAssignees(val []string) {
 
 // IssuesCreateReqLabelsItem represents sum type.
 type IssuesCreateReqLabelsItem struct {
-	Type                       IssuesCreateReqLabelsItemType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type                       IssuesCreateReqLabelsItemType
 	String                     string
 	IssuesCreateReqLabelsItem1 IssuesCreateReqLabelsItem1
 }
@@ -28071,7 +28077,8 @@ func (s *IssuesCreateReqLabelsItem1) SetColor(val OptNilString) {
 
 // IssuesCreateReqMilestone represents sum type.
 type IssuesCreateReqMilestone struct {
-	Type   IssuesCreateReqMilestoneType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type   IssuesCreateReqMilestoneType
 	String string
 	Int    int
 }
@@ -28136,7 +28143,8 @@ func NewIntIssuesCreateReqMilestone(v int) IssuesCreateReqMilestone {
 // The title of the issue.
 // IssuesCreateReqTitle represents sum type.
 type IssuesCreateReqTitle struct {
-	Type   IssuesCreateReqTitleType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type   IssuesCreateReqTitleType
 	String string
 	Int    int
 }
@@ -29750,7 +29758,8 @@ func (s *IssuesUpdateReq) SetAssignees(val []string) {
 
 // IssuesUpdateReqLabelsItem represents sum type.
 type IssuesUpdateReqLabelsItem struct {
-	Type                       IssuesUpdateReqLabelsItemType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type                       IssuesUpdateReqLabelsItemType
 	String                     string
 	IssuesUpdateReqLabelsItem1 IssuesUpdateReqLabelsItem1
 }
@@ -29863,7 +29872,8 @@ func (s *IssuesUpdateReqLabelsItem1) SetColor(val OptNilString) {
 
 // IssuesUpdateReqMilestone represents sum type.
 type IssuesUpdateReqMilestone struct {
-	Type   IssuesUpdateReqMilestoneType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type   IssuesUpdateReqMilestoneType
 	String string
 	Int    int
 }
@@ -29970,7 +29980,8 @@ func (s *IssuesUpdateReqState) UnmarshalText(data []byte) error {
 // The title of the issue.
 // IssuesUpdateReqTitle represents sum type.
 type IssuesUpdateReqTitle struct {
-	Type   IssuesUpdateReqTitleType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type   IssuesUpdateReqTitleType
 	String string
 	Int    int
 }
@@ -81411,7 +81422,8 @@ func (*ReposAddAppAccessRestrictionsOKApplicationJSON) reposAddAppAccessRestrict
 
 // ReposAddAppAccessRestrictionsReq represents sum type.
 type ReposAddAppAccessRestrictionsReq struct {
-	Type                              ReposAddAppAccessRestrictionsReqType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type                              ReposAddAppAccessRestrictionsReqType
 	ReposAddAppAccessRestrictionsReq0 ReposAddAppAccessRestrictionsReq0
 	StringArray                       []string
 }
@@ -81620,7 +81632,8 @@ func (*ReposAddStatusCheckContextsOKApplicationJSON) reposAddStatusCheckContexts
 
 // ReposAddStatusCheckContextsReq represents sum type.
 type ReposAddStatusCheckContextsReq struct {
-	Type                            ReposAddStatusCheckContextsReqType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type                            ReposAddStatusCheckContextsReqType
 	ReposAddStatusCheckContextsReq0 ReposAddStatusCheckContextsReq0
 	StringArray                     []string
 }
@@ -81707,7 +81720,8 @@ func (*ReposAddTeamAccessRestrictionsOKApplicationJSON) reposAddTeamAccessRestri
 
 // ReposAddTeamAccessRestrictionsReq represents sum type.
 type ReposAddTeamAccessRestrictionsReq struct {
-	Type                               ReposAddTeamAccessRestrictionsReqType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type                               ReposAddTeamAccessRestrictionsReqType
 	ReposAddTeamAccessRestrictionsReq0 ReposAddTeamAccessRestrictionsReq0
 	StringArray                        []string
 }
@@ -81794,7 +81808,8 @@ func (*ReposAddUserAccessRestrictionsOKApplicationJSON) reposAddUserAccessRestri
 
 // ReposAddUserAccessRestrictionsReq represents sum type.
 type ReposAddUserAccessRestrictionsReq struct {
-	Type                               ReposAddUserAccessRestrictionsReqType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type                               ReposAddUserAccessRestrictionsReqType
 	ReposAddUserAccessRestrictionsReq0 ReposAddUserAccessRestrictionsReq0
 	StringArray                        []string
 }
@@ -82285,7 +82300,8 @@ func (s *ReposCreateDeploymentReq) SetProductionEnvironment(val OptBool) {
 
 // ReposCreateDeploymentReqPayload represents sum type.
 type ReposCreateDeploymentReqPayload struct {
-	Type                             ReposCreateDeploymentReqPayloadType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type                             ReposCreateDeploymentReqPayloadType
 	ReposCreateDeploymentReqPayload0 ReposCreateDeploymentReqPayload0
 	String                           string
 }
@@ -85548,7 +85564,8 @@ func (*ReposRemoveAppAccessRestrictionsOKApplicationJSON) reposRemoveAppAccessRe
 
 // ReposRemoveAppAccessRestrictionsReq represents sum type.
 type ReposRemoveAppAccessRestrictionsReq struct {
-	Type                                 ReposRemoveAppAccessRestrictionsReqType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type                                 ReposRemoveAppAccessRestrictionsReqType
 	ReposRemoveAppAccessRestrictionsReq0 ReposRemoveAppAccessRestrictionsReq0
 	StringArray                          []string
 }
@@ -85638,7 +85655,8 @@ func (*ReposRemoveStatusCheckContextsOKApplicationJSON) reposRemoveStatusCheckCo
 
 // ReposRemoveStatusCheckContextsReq represents sum type.
 type ReposRemoveStatusCheckContextsReq struct {
-	Type                               ReposRemoveStatusCheckContextsReqType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type                               ReposRemoveStatusCheckContextsReqType
 	ReposRemoveStatusCheckContextsReq0 ReposRemoveStatusCheckContextsReq0
 	StringArray                        []string
 }
@@ -85728,7 +85746,8 @@ func (*ReposRemoveTeamAccessRestrictionsOKApplicationJSON) reposRemoveTeamAccess
 
 // ReposRemoveTeamAccessRestrictionsReq represents sum type.
 type ReposRemoveTeamAccessRestrictionsReq struct {
-	Type                                  ReposRemoveTeamAccessRestrictionsReqType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type                                  ReposRemoveTeamAccessRestrictionsReqType
 	ReposRemoveTeamAccessRestrictionsReq0 ReposRemoveTeamAccessRestrictionsReq0
 	StringArray                           []string
 }
@@ -85815,7 +85834,8 @@ func (*ReposRemoveUserAccessRestrictionsOKApplicationJSON) reposRemoveUserAccess
 
 // ReposRemoveUserAccessRestrictionsReq represents sum type.
 type ReposRemoveUserAccessRestrictionsReq struct {
-	Type                                  ReposRemoveUserAccessRestrictionsReqType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type                                  ReposRemoveUserAccessRestrictionsReqType
 	ReposRemoveUserAccessRestrictionsReq0 ReposRemoveUserAccessRestrictionsReq0
 	StringArray                           []string
 }
@@ -85942,7 +85962,8 @@ func (*ReposSetAppAccessRestrictionsOKApplicationJSON) reposSetAppAccessRestrict
 
 // ReposSetAppAccessRestrictionsReq represents sum type.
 type ReposSetAppAccessRestrictionsReq struct {
-	Type                              ReposSetAppAccessRestrictionsReqType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type                              ReposSetAppAccessRestrictionsReqType
 	ReposSetAppAccessRestrictionsReq0 ReposSetAppAccessRestrictionsReq0
 	StringArray                       []string
 }
@@ -86029,7 +86050,8 @@ func (*ReposSetStatusCheckContextsOKApplicationJSON) reposSetStatusCheckContexts
 
 // ReposSetStatusCheckContextsReq represents sum type.
 type ReposSetStatusCheckContextsReq struct {
-	Type                            ReposSetStatusCheckContextsReqType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type                            ReposSetStatusCheckContextsReqType
 	ReposSetStatusCheckContextsReq0 ReposSetStatusCheckContextsReq0
 	StringArray                     []string
 }
@@ -86116,7 +86138,8 @@ func (*ReposSetTeamAccessRestrictionsOKApplicationJSON) reposSetTeamAccessRestri
 
 // ReposSetTeamAccessRestrictionsReq represents sum type.
 type ReposSetTeamAccessRestrictionsReq struct {
-	Type                               ReposSetTeamAccessRestrictionsReqType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type                               ReposSetTeamAccessRestrictionsReqType
 	ReposSetTeamAccessRestrictionsReq0 ReposSetTeamAccessRestrictionsReq0
 	StringArray                        []string
 }
@@ -86203,7 +86226,8 @@ func (*ReposSetUserAccessRestrictionsOKApplicationJSON) reposSetUserAccessRestri
 
 // ReposSetUserAccessRestrictionsReq represents sum type.
 type ReposSetUserAccessRestrictionsReq struct {
-	Type                               ReposSetUserAccessRestrictionsReqType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type                               ReposSetUserAccessRestrictionsReqType
 	ReposSetUserAccessRestrictionsReq0 ReposSetUserAccessRestrictionsReq0
 	StringArray                        []string
 }
@@ -92202,7 +92226,8 @@ func (s *ScimUpdateAttributeForUserReqOperationsItemOp) UnmarshalText(data []byt
 
 // ScimUpdateAttributeForUserReqOperationsItemValue represents sum type.
 type ScimUpdateAttributeForUserReqOperationsItemValue struct {
-	Type                                                       ScimUpdateAttributeForUserReqOperationsItemValueType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type                                                       ScimUpdateAttributeForUserReqOperationsItemValueType
 	ScimUpdateAttributeForUserReqOperationsItemValue0          ScimUpdateAttributeForUserReqOperationsItemValue0
 	ScimUpdateAttributeForUserReqOperationsItemValue1ItemArray []ScimUpdateAttributeForUserReqOperationsItemValue1Item
 	String                                                     string
@@ -93096,7 +93121,8 @@ func (s *ScimUserOperationsItemOp) UnmarshalText(data []byte) error {
 
 // ScimUserOperationsItemValue represents sum type.
 type ScimUserOperationsItemValue struct {
-	Type                         ScimUserOperationsItemValueType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type                         ScimUserOperationsItemValueType
 	String                       string
 	ScimUserOperationsItemValue1 ScimUserOperationsItemValue1
 	AnyArray                     []jx.Raw
@@ -100990,7 +101016,8 @@ func (*UsersAddEmailForAuthenticatedNotFound) usersAddEmailForAuthenticatedRes()
 
 // UsersAddEmailForAuthenticatedReq represents sum type.
 type UsersAddEmailForAuthenticatedReq struct {
-	Type                              UsersAddEmailForAuthenticatedReqType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type                              UsersAddEmailForAuthenticatedReqType
 	UsersAddEmailForAuthenticatedReq0 UsersAddEmailForAuthenticatedReq0
 	StringArray                       []string
 	String                            string
@@ -101254,7 +101281,8 @@ func (*UsersDeleteEmailForAuthenticatedNotFound) usersDeleteEmailForAuthenticate
 
 // UsersDeleteEmailForAuthenticatedReq represents sum type.
 type UsersDeleteEmailForAuthenticatedReq struct {
-	Type                                 UsersDeleteEmailForAuthenticatedReqType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type                                 UsersDeleteEmailForAuthenticatedReqType
 	UsersDeleteEmailForAuthenticatedReq0 UsersDeleteEmailForAuthenticatedReq0
 	StringArray                          []string
 	String                               string
@@ -101431,7 +101459,8 @@ func (*UsersGetAuthenticatedForbidden) usersGetAuthenticatedRes() {}
 
 // UsersGetAuthenticatedOK represents sum type.
 type UsersGetAuthenticatedOK struct {
-	Type        UsersGetAuthenticatedOKType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type        UsersGetAuthenticatedOKType
 	PrivateUser PrivateUser
 	PublicUser  PublicUser
 }
@@ -101505,7 +101534,8 @@ func (*UsersGetAuthenticatedUnauthorized) usersGetAuthenticatedRes() {}
 
 // UsersGetByUsernameOK represents sum type.
 type UsersGetByUsernameOK struct {
-	Type        UsersGetByUsernameOKType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type        UsersGetByUsernameOKType
 	PrivateUser PrivateUser
 	PublicUser  PublicUser
 }
@@ -102507,7 +102537,8 @@ func (s *ValidationErrorErrorsItem) SetValue(val OptValidationErrorErrorsItemVal
 
 // ValidationErrorErrorsItemValue represents sum type.
 type ValidationErrorErrorsItemValue struct {
-	Type        ValidationErrorErrorsItemValueType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type        ValidationErrorErrorsItemValueType
 	Null        struct{}
 	String      string
 	Int         int
@@ -102828,7 +102859,8 @@ type WebhookConfigContentType string
 // Ref: #/components/schemas/webhook-config-insecure-ssl
 // WebhookConfigInsecureSsl represents sum type.
 type WebhookConfigInsecureSsl struct {
-	Type    WebhookConfigInsecureSslType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type    WebhookConfigInsecureSslType
 	String  string
 	Float64 float64
 }
@@ -103022,7 +103054,8 @@ func (s *Workflow) SetDeletedAt(val OptDateTime) {
 
 // WorkflowID represents sum type.
 type WorkflowID struct {
-	Type   WorkflowIDType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type   WorkflowIDType
 	Int    int
 	String string
 }

@@ -7,6 +7,7 @@ import (
 	"github.com/ogen-go/ogen/internal/naming"
 	"github.com/ogen-go/ogen/jsonschema"
 	"github.com/ogen-go/ogen/ogenregex"
+	"github.com/ogen-go/ogen/openapi"
 )
 
 type Kind string
@@ -197,6 +198,15 @@ func (s SumSpec) PickMappingEntryFor(t *Type) *SumSpecMap {
 	return nil
 }
 
+// SSEMetadata marks type as a Server-Sent Events stream and carries its type data.
+type SSEMetadata struct {
+	Shape openapi.SSEEventShape
+	// EventType is the full event type returned on event.
+	EventType *Type
+	// DataType is the SSE data field type for data-only stream schemas.
+	DataType *Type
+}
+
 type Type struct {
 	Doc                 string              // ogen documentation
 	Kind                Kind                // kind
@@ -221,7 +231,8 @@ type Type struct {
 	AllowedProps        map[string]struct{} // only for map and struct
 	External            ExternalType        // only for custom type
 	Validators          Validators
-	Tuple               bool // only for struct
+	Tuple               bool         // only for struct
+	SSE                 *SSEMetadata // only for SSE stream types
 	// Features contains a set of features the type must implement.
 	// Available features: 'json', 'uri'.
 	//
@@ -315,7 +326,12 @@ func (t *Type) Go() string {
 		return "[]" + t.Item.Go()
 	case KindPointer:
 		return "*" + t.PointerTo.Go()
-	case KindStruct, KindMap, KindAlias, KindInterface, KindGeneric, KindEnum, KindSum, KindStream:
+	case KindStream:
+		if t.SSE != nil {
+			return t.Name + "Client"
+		}
+		return t.Name
+	case KindStruct, KindMap, KindAlias, KindInterface, KindGeneric, KindEnum, KindSum:
 		return t.Name
 	default:
 		panic(fmt.Sprintf("unexpected kind: %s", t.Kind))

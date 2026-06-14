@@ -1,0 +1,15 @@
+{{- /*gotype: github.com/ogen-go/ogen/gen/ir.Type*/ -}}
+{{- define "schema/sse_struct_wrapper" }}
+{{- range $f := $.Fields }}
+{{- if $f.Type.IsSSEStream }}
+// initSSEStream initializes the wrapped SSE stream with reconnect and decoder options.
+func (s *{{ $.Name }}) initSSEStream(connect sseConnectFunc, options sseClientConfig) {
+	if stream, ok := any(s.{{ $f.Name }}).(interface {
+		initSSEStream(sseConnectFunc, sseClientConfig)
+	}); ok {
+		stream.initSSEStream(connect, options)
+	}
+}
+{{- end }}
+{{- end }}
+{{ end }}

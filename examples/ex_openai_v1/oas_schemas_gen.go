@@ -442,7 +442,8 @@ type CreateAnswerRequestLogitBias struct{}
 // contain the stop sequence.
 // CreateAnswerRequestStop represents sum type.
 type CreateAnswerRequestStop struct {
-	Type        CreateAnswerRequestStopType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type        CreateAnswerRequestStopType
 	String      string
 	StringArray []string
 }
@@ -782,7 +783,8 @@ type CreateChatCompletionRequestLogitBias struct{}
 // Up to 4 sequences where the API will stop generating further tokens.
 // CreateChatCompletionRequestStop represents sum type.
 type CreateChatCompletionRequestStop struct {
-	Type        CreateChatCompletionRequestStopType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type        CreateChatCompletionRequestStopType
 	String      string
 	StringArray []string
 }
@@ -1571,7 +1573,8 @@ type CreateCompletionRequestLogitBias struct{}
 // prompt is not specified the model will generate as if from the beginning of a new document.
 // CreateCompletionRequestPrompt represents sum type.
 type CreateCompletionRequestPrompt struct {
-	Type        CreateCompletionRequestPromptType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type        CreateCompletionRequestPromptType
 	String      string
 	StringArray []string
 }
@@ -1641,7 +1644,8 @@ func NewStringArrayCreateCompletionRequestPrompt(v []string) CreateCompletionReq
 // contain the stop sequence.
 // CreateCompletionRequestStop represents sum type.
 type CreateCompletionRequestStop struct {
-	Type        CreateCompletionRequestStopType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type        CreateCompletionRequestStopType
 	Null        struct{}
 	String      string
 	StringArray []string
@@ -2247,7 +2251,8 @@ func (s *CreateEmbeddingRequest) SetUser(val OptString) {
 // must not exceed 8192 tokens in length.
 // CreateEmbeddingRequestInput represents sum type.
 type CreateEmbeddingRequestInput struct {
-	Type        CreateEmbeddingRequestInputType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type        CreateEmbeddingRequestInputType
 	String      string
 	StringArray []string
 }
@@ -3187,7 +3192,8 @@ func (s *CreateModerationRequest) SetModel(val OptString) {
 // The input text to classify.
 // CreateModerationRequestInput represents sum type.
 type CreateModerationRequestInput struct {
-	Type        CreateModerationRequestInputType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type        CreateModerationRequestInputType
 	String      string
 	StringArray []string
 }

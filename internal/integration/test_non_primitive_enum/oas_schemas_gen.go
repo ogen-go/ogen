@@ -6,7 +6,8 @@ package api
 // Ref: #/components/schemas/ObjectEnum
 // ObjectEnum represents sum type.
 type ObjectEnum struct {
-	Type          ObjectEnumType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type          ObjectEnumType
 	ObjectEnumFoo ObjectEnumFoo
 	ObjectEnumBar ObjectEnumBar
 	ObjectEnumBaz ObjectEnumBaz

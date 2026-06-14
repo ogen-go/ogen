@@ -2029,7 +2029,8 @@ func (s *UserPassloginPostReq) SetPasscode(val string) {
 
 // UserPostingPostOK represents sum type.
 type UserPostingPostOK struct {
-	Type             UserPostingPostOKType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type             UserPostingPostOKType
 	PostingNewThread PostingNewThread
 	PostingNewPost   PostingNewPost
 }

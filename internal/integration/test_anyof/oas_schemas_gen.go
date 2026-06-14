@@ -9,7 +9,8 @@ import (
 // Ref: #/components/schemas/AnyOfIntegerNumberString
 // AnyOfIntegerNumberString represents sum type.
 type AnyOfIntegerNumberString struct {
-	Type    AnyOfIntegerNumberStringType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type    AnyOfIntegerNumberStringType
 	Int     int
 	Float64 float64
 	String  string
@@ -140,7 +141,8 @@ func (s *JaegerAnyOf) SetSizeLimit(val JaegerAnyOfSizeLimit) {
 
 // JaegerAnyOfSizeLimit represents sum type.
 type JaegerAnyOfSizeLimit struct {
-	Type   JaegerAnyOfSizeLimitType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type   JaegerAnyOfSizeLimitType
 	Int    int
 	String string
 }
@@ -241,7 +243,8 @@ func (s *OneUUID) SetSubscriptionID(val OneUUIDSubscriptionID) {
 
 // OneUUIDSubscriptionID represents sum type.
 type OneUUIDSubscriptionID struct {
-	Type             OneUUIDSubscriptionIDType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type             OneUUIDSubscriptionIDType
 	SubscriptionUUID SubscriptionUUID
 }
 
@@ -282,7 +285,8 @@ func NewSubscriptionUUIDOneUUIDSubscriptionID(v SubscriptionUUID) OneUUIDSubscri
 // Ref: #/components/schemas/SubscriptionUUID
 // SubscriptionUUID represents sum type.
 type SubscriptionUUID struct {
-	Type   SubscriptionUUIDType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type   SubscriptionUUIDType
 	UUIDv4 UUIDv4
 }
 

@@ -737,7 +737,8 @@ func (s *BotCommand) SetDescription(val string) {
 // Ref: #/components/schemas/BotCommandScope
 // BotCommandScope represents sum type.
 type BotCommandScope struct {
-	Type                                 BotCommandScopeType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type                                 BotCommandScopeType
 	BotCommandScopeDefault               BotCommandScopeDefault
 	BotCommandScopeAllPrivateChats       BotCommandScopeAllPrivateChats
 	BotCommandScopeAllGroupChats         BotCommandScopeAllGroupChats
@@ -1666,7 +1667,8 @@ func (s *ChatLocation) SetAddress(val string) {
 // Ref: #/components/schemas/ChatMember
 // ChatMember represents sum type.
 type ChatMember struct {
-	Type                    ChatMemberType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type                    ChatMemberType
 	ChatMemberOwner         ChatMemberOwner
 	ChatMemberAdministrator ChatMemberAdministrator
 	ChatMemberMember        ChatMemberMember
@@ -2873,7 +2875,8 @@ func (s *CopyMessage) SetReplyMarkup(val OptCopyMessageReplyMarkup) {
 // keyboard, instructions to remove reply keyboard or to force a reply from the user.
 // CopyMessageReplyMarkup represents sum type.
 type CopyMessageReplyMarkup struct {
-	Type                 CopyMessageReplyMarkupType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type                 CopyMessageReplyMarkupType
 	InlineKeyboardMarkup InlineKeyboardMarkup
 	ReplyKeyboardMarkup  ReplyKeyboardMarkup
 	ReplyKeyboardRemove  ReplyKeyboardRemove
@@ -4880,7 +4883,8 @@ func (s *GetUserProfilePhotos) SetLimit(val OptInt) {
 // Ref: #/components/schemas/ID
 // ID represents sum type.
 type ID struct {
-	Type   IDType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type   IDType
 	String string
 	Int64  int64
 }
@@ -5219,7 +5223,8 @@ func (s *InlineQueryChatType) UnmarshalText(data []byte) error {
 // Ref: #/components/schemas/InlineQueryResult
 // InlineQueryResult represents sum type.
 type InlineQueryResult struct {
-	Type                            InlineQueryResultType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type                            InlineQueryResultType
 	InlineQueryResultCachedAudio    InlineQueryResultCachedAudio
 	InlineQueryResultCachedDocument InlineQueryResultCachedDocument
 	InlineQueryResultCachedGif      InlineQueryResultCachedGif
@@ -8873,7 +8878,8 @@ func (s *InputLocationMessageContent) SetProximityAlertRadius(val OptInt) {
 // Ref: #/components/schemas/InputMedia
 // InputMedia represents sum type.
 type InputMedia struct {
-	Type                InputMediaType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type                InputMediaType
 	InputMediaAnimation InputMediaAnimation
 	InputMediaDocument  InputMediaDocument
 	InputMediaAudio     InputMediaAudio
@@ -9559,7 +9565,8 @@ func (s *InputMediaVideo) SetSupportsStreaming(val OptBool) {
 // Ref: #/components/schemas/InputMessageContent
 // InputMessageContent represents sum type.
 type InputMessageContent struct {
-	Type                        InputMessageContentType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type                        InputMessageContentType
 	InputTextMessageContent     InputTextMessageContent
 	InputLocationMessageContent InputLocationMessageContent
 	InputVenueMessageContent    InputVenueMessageContent
@@ -9937,7 +9944,8 @@ func (s *Invoice) SetTotalAmount(val int) {
 // Ref: #/components/schemas/KeyboardButton
 // KeyboardButton represents sum type.
 type KeyboardButton struct {
-	Type                 KeyboardButtonType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type                 KeyboardButtonType
 	String               string
 	KeyboardButtonObject KeyboardButtonObject
 }
@@ -14980,7 +14988,8 @@ func (s *PassportData) SetCredentials(val EncryptedCredentials) {
 // Ref: #/components/schemas/PassportElementError
 // PassportElementError represents sum type.
 type PassportElementError struct {
-	Type                                 PassportElementErrorType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type                                 PassportElementErrorType
 	PassportElementErrorDataField        PassportElementErrorDataField
 	PassportElementErrorFrontSide        PassportElementErrorFrontSide
 	PassportElementErrorReverseSide      PassportElementErrorReverseSide
@@ -17900,7 +17909,8 @@ func (s *SendAnimation) SetReplyMarkup(val OptSendAnimationReplyMarkup) {
 // keyboard, instructions to remove reply keyboard or to force a reply from the user.
 // SendAnimationReplyMarkup represents sum type.
 type SendAnimationReplyMarkup struct {
-	Type                 SendAnimationReplyMarkupType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type                 SendAnimationReplyMarkupType
 	InlineKeyboardMarkup InlineKeyboardMarkup
 	ReplyKeyboardMarkup  ReplyKeyboardMarkup
 	ReplyKeyboardRemove  ReplyKeyboardRemove
@@ -18195,7 +18205,8 @@ func (s *SendAudio) SetReplyMarkup(val OptSendAudioReplyMarkup) {
 // keyboard, instructions to remove reply keyboard or to force a reply from the user.
 // SendAudioReplyMarkup represents sum type.
 type SendAudioReplyMarkup struct {
-	Type                 SendAudioReplyMarkupType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type                 SendAudioReplyMarkupType
 	InlineKeyboardMarkup InlineKeyboardMarkup
 	ReplyKeyboardMarkup  ReplyKeyboardMarkup
 	ReplyKeyboardRemove  ReplyKeyboardRemove
@@ -18463,7 +18474,8 @@ func (s *SendContact) SetReplyMarkup(val OptSendContactReplyMarkup) {
 // keyboard, instructions to remove keyboard or to force a reply from the user.
 // SendContactReplyMarkup represents sum type.
 type SendContactReplyMarkup struct {
-	Type                 SendContactReplyMarkupType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type                 SendContactReplyMarkupType
 	InlineKeyboardMarkup InlineKeyboardMarkup
 	ReplyKeyboardMarkup  ReplyKeyboardMarkup
 	ReplyKeyboardRemove  ReplyKeyboardRemove
@@ -18668,7 +18680,8 @@ func (s *SendDice) SetReplyMarkup(val OptSendDiceReplyMarkup) {
 // keyboard, instructions to remove reply keyboard or to force a reply from the user.
 // SendDiceReplyMarkup represents sum type.
 type SendDiceReplyMarkup struct {
-	Type                 SendDiceReplyMarkupType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type                 SendDiceReplyMarkupType
 	InlineKeyboardMarkup InlineKeyboardMarkup
 	ReplyKeyboardMarkup  ReplyKeyboardMarkup
 	ReplyKeyboardRemove  ReplyKeyboardRemove
@@ -18938,7 +18951,8 @@ func (s *SendDocument) SetReplyMarkup(val OptSendDocumentReplyMarkup) {
 // keyboard, instructions to remove reply keyboard or to force a reply from the user.
 // SendDocumentReplyMarkup represents sum type.
 type SendDocumentReplyMarkup struct {
-	Type                 SendDocumentReplyMarkupType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type                 SendDocumentReplyMarkupType
 	InlineKeyboardMarkup InlineKeyboardMarkup
 	ReplyKeyboardMarkup  ReplyKeyboardMarkup
 	ReplyKeyboardRemove  ReplyKeyboardRemove
@@ -19608,7 +19622,8 @@ func (s *SendLocation) SetReplyMarkup(val OptSendLocationReplyMarkup) {
 // keyboard, instructions to remove reply keyboard or to force a reply from the user.
 // SendLocationReplyMarkup represents sum type.
 type SendLocationReplyMarkup struct {
-	Type                 SendLocationReplyMarkupType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type                 SendLocationReplyMarkupType
 	InlineKeyboardMarkup InlineKeyboardMarkup
 	ReplyKeyboardMarkup  ReplyKeyboardMarkup
 	ReplyKeyboardRemove  ReplyKeyboardRemove
@@ -19796,7 +19811,8 @@ func (s *SendMediaGroup) SetAllowSendingWithoutReply(val OptBool) {
 
 // SendMediaGroupMediaItem represents sum type.
 type SendMediaGroupMediaItem struct {
-	Type               SendMediaGroupMediaItemType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type               SendMediaGroupMediaItemType
 	InputMediaAudio    InputMediaAudio
 	InputMediaDocument InputMediaDocument
 	InputMediaPhoto    InputMediaPhoto
@@ -20036,7 +20052,8 @@ func (s *SendMessage) SetReplyMarkup(val OptSendMessageReplyMarkup) {
 // keyboard, instructions to remove reply keyboard or to force a reply from the user.
 // SendMessageReplyMarkup represents sum type.
 type SendMessageReplyMarkup struct {
-	Type                 SendMessageReplyMarkupType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type                 SendMessageReplyMarkupType
 	InlineKeyboardMarkup InlineKeyboardMarkup
 	ReplyKeyboardMarkup  ReplyKeyboardMarkup
 	ReplyKeyboardRemove  ReplyKeyboardRemove
@@ -20281,7 +20298,8 @@ func (s *SendPhoto) SetReplyMarkup(val OptSendPhotoReplyMarkup) {
 // keyboard, instructions to remove reply keyboard or to force a reply from the user.
 // SendPhotoReplyMarkup represents sum type.
 type SendPhotoReplyMarkup struct {
-	Type                 SendPhotoReplyMarkupType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type                 SendPhotoReplyMarkupType
 	InlineKeyboardMarkup InlineKeyboardMarkup
 	ReplyKeyboardMarkup  ReplyKeyboardMarkup
 	ReplyKeyboardRemove  ReplyKeyboardRemove
@@ -20618,7 +20636,8 @@ func (s *SendPoll) SetReplyMarkup(val OptSendPollReplyMarkup) {
 // keyboard, instructions to remove reply keyboard or to force a reply from the user.
 // SendPollReplyMarkup represents sum type.
 type SendPollReplyMarkup struct {
-	Type                 SendPollReplyMarkupType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type                 SendPollReplyMarkupType
 	InlineKeyboardMarkup InlineKeyboardMarkup
 	ReplyKeyboardMarkup  ReplyKeyboardMarkup
 	ReplyKeyboardRemove  ReplyKeyboardRemove
@@ -20821,7 +20840,8 @@ func (s *SendSticker) SetReplyMarkup(val OptSendStickerReplyMarkup) {
 // keyboard, instructions to remove reply keyboard or to force a reply from the user.
 // SendStickerReplyMarkup represents sum type.
 type SendStickerReplyMarkup struct {
-	Type                 SendStickerReplyMarkupType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type                 SendStickerReplyMarkupType
 	InlineKeyboardMarkup InlineKeyboardMarkup
 	ReplyKeyboardMarkup  ReplyKeyboardMarkup
 	ReplyKeyboardRemove  ReplyKeyboardRemove
@@ -21109,7 +21129,8 @@ func (s *SendVenue) SetReplyMarkup(val OptSendVenueReplyMarkup) {
 // keyboard, instructions to remove reply keyboard or to force a reply from the user.
 // SendVenueReplyMarkup represents sum type.
 type SendVenueReplyMarkup struct {
-	Type                 SendVenueReplyMarkupType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type                 SendVenueReplyMarkupType
 	InlineKeyboardMarkup InlineKeyboardMarkup
 	ReplyKeyboardMarkup  ReplyKeyboardMarkup
 	ReplyKeyboardRemove  ReplyKeyboardRemove
@@ -21535,7 +21556,8 @@ func (s *SendVideoNote) SetReplyMarkup(val OptSendVideoNoteReplyMarkup) {
 // keyboard, instructions to remove reply keyboard or to force a reply from the user.
 // SendVideoNoteReplyMarkup represents sum type.
 type SendVideoNoteReplyMarkup struct {
-	Type                 SendVideoNoteReplyMarkupType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type                 SendVideoNoteReplyMarkupType
 	InlineKeyboardMarkup InlineKeyboardMarkup
 	ReplyKeyboardMarkup  ReplyKeyboardMarkup
 	ReplyKeyboardRemove  ReplyKeyboardRemove
@@ -21661,7 +21683,8 @@ func NewForceReplySendVideoNoteReplyMarkup(v ForceReply) SendVideoNoteReplyMarku
 // keyboard, instructions to remove reply keyboard or to force a reply from the user.
 // SendVideoReplyMarkup represents sum type.
 type SendVideoReplyMarkup struct {
-	Type                 SendVideoReplyMarkupType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type                 SendVideoReplyMarkupType
 	InlineKeyboardMarkup InlineKeyboardMarkup
 	ReplyKeyboardMarkup  ReplyKeyboardMarkup
 	ReplyKeyboardRemove  ReplyKeyboardRemove
@@ -21913,7 +21936,8 @@ func (s *SendVoice) SetReplyMarkup(val OptSendVoiceReplyMarkup) {
 // keyboard, instructions to remove reply keyboard or to force a reply from the user.
 // SendVoiceReplyMarkup represents sum type.
 type SendVoiceReplyMarkup struct {
-	Type                 SendVoiceReplyMarkupType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type                 SendVoiceReplyMarkupType
 	InlineKeyboardMarkup InlineKeyboardMarkup
 	ReplyKeyboardMarkup  ReplyKeyboardMarkup
 	ReplyKeyboardRemove  ReplyKeyboardRemove

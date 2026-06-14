@@ -1,0 +1,10 @@
+generator:
+  features:
+    enable:
+      - client/editors
+      - client/request/options
+      - ogen/otel
+      - ogen/unimplemented
+      - paths/client
+      - webhooks/client
+    disable_all: true

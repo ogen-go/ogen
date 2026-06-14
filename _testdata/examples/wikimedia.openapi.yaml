@@ -1,0 +1,417 @@
+# This OpenAPI spec includes only the SSE endpoint /v2/stream/recentchange,
+# filtered and modified to comply with OpenAPI 3.0.
+# Full spec can be found here: https://stream.wikimedia.org/?spec.
+#
+# NOTE: Wikimedia APIs require clients to send an appropriate User-Agent, else
+# request will be rejected with HTTP 403.
+
+openapi: 3.0.0
+info:
+  version: 0.18.0
+  title: Wikimedia EventStreams
+  description: Streaming Wikimedia event data over HTTP SSE / EventSource
+  termsOfService: https://wikimediafoundation.org/wiki/Terms_of_Use
+  license:
+    name: Apache2
+    url: http://www.apache.org/licenses/LICENSE-2.0
+externalDocs:
+  url: https://wikitech.wikimedia.org/wiki/EventStreams
+paths:
+  /v2/stream/recentchange:
+    get:
+      x-monitor: false
+      tags:
+        - streams
+      summary: recentchange events
+      description: |-
+        mediawiki.recentchange events.
+
+        (NOTE: This stream is an alias of mediawiki.recentchange)
+
+        Schema title: mediawiki/recentchange
+      parameters:
+        - name: Last-Event-ID
+          in: header
+          description: |
+            Specifies the Kafka topics, partitions and offsets from which to begin streaming. You may not specify topics that are not configured to be part of this stream endpoint. Example: `[{topic: datacenter1.topic, partition: 0, offset: 12345}, ...]`
+          schema:
+            # (zguydev): feature "nested objects in form parameters" is not implemented yet.
+            # type: array
+            # items:
+            #   type: object
+            #   properties:
+            #     topic:
+            #       type: string
+            #     partition:
+            #       type: integer
+            #     offset:
+            #       type: integer
+            #     timestamp:
+            #       type: string
+            type: string
+        - name: since
+          in: query
+          description: |
+            If given, this timestamp will be used as the historical starting position in each the requested streams. since should either be an integer UTC milliseconds unix epoch timestamp, or a string timestamp parseable by `Date.parse()`. If the timestamp given does not have any corresponding offsets, it will be ignored, and the data will begin streaming from the latest position in the stream. This parameter is ignored if `Last-Event-ID` is set with offsets (or timestamps) for individual topic partition assignments, e.g. when resuming after a disconnect. NOTE: Historical timestamp assignment is not supported indefinitely. Depending on backend stream configuration, will likely be only one or a few weeks.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                title: mediawiki/recentchange
+                description: |
+                  Represents a MW RecentChange event. https://www.mediawiki.org/wiki/Manual:RCFeed
+                type: object
+                additionalProperties: true
+                required:
+                  - $schema
+                  - meta
+                properties:
+                  title:
+                    description: Full page name, from Title::getPrefixedText.
+                    type: string
+                  $schema:
+                    description: |
+                      A URI identifying the JSONSchema for this event. This should match an schema's $id in a schema repository. E.g. /schema/title/1.0.0
+                    type: string
+                  type:
+                    description: |
+                      Type of recentchange event (rc_type). One of "edit", "new", "log", "categorize", or "external"; or a number. (See Manual:Recentchanges table#rc_type)
+                    type: string
+                  bot:
+                    description: (rc_bot)
+                    type: boolean
+                  comment:
+                    description: (rc_comment)
+                    type: string
+                  id:
+                    description: ID of the recentchange event (rcid).
+                    # type:
+                    #   - integer
+                    #   - "null"
+                    type: integer
+                    nullable: true
+                  length:
+                    description: Length of old and new change
+                    type: object
+                    properties:
+                      new:
+                        description: (rc_new_len)
+                        # type:
+                        #   - integer
+                        #   - "null"
+                        type: integer
+                        nullable: true
+                      old:
+                        description: (rc_old_len)
+                        # type:
+                        #   - integer
+                        #   - "null"
+                        type: integer
+                        nullable: true
+                  log_action:
+                    description: (rc_log_action)
+                    type: string
+                  log_action_comment:
+                    # type:
+                    #   - string
+                    #   - "null"
+                    type: string
+                    nullable: true
+                  log_id:
+                    description: (rc_log_id)
+                    # type:
+                    #   - integer
+                    #   - "null"
+                    type: integer
+                    nullable: true
+                  log_params:
+                    description: Property only exists if event has rc_params.
+                    # type:
+                    #   - array
+                    #   - object
+                    #   - string
+                    # additionalProperties: true
+                    oneOf:
+                      - type: array
+                        items: {}
+                      - type: object
+                        additionalProperties: true
+                      - type: string
+                  log_type:
+                    description: (rc_log_type)
+                    # type:
+                    #   - string
+                    #   - "null"
+                    type: string
+                    nullable: true
+                  meta:
+                    type: object
+                    required:
+                      - dt
+                      - stream
+                    properties:
+                      domain:
+                        description: Domain the event or entity pertains to
+                        type: string
+                        minLength: 1
+                      dt:
+                        description: UTC event datetime, in ISO-8601 format
+                        type: string
+                        format: date-time
+                        maxLength: 128
+                      id:
+                        description: Unique ID of this event
+                        type: string
+                      request_id:
+                        description: Unique ID of the request that caused the event
+                        type: string
+                      stream:
+                        description: Name of the stream/queue/dataset that this event belongs in
+                        type: string
+                        minLength: 1
+                      uri:
+                        description: Unique URI identifying the event or entity
+                        type: string
+                        format: uri-reference
+                        maxLength: 8192
+                  minor:
+                    description: (rc_minor).
+                    type: boolean
+                  namespace:
+                    description: |
+                      ID of relevant namespace of affected page (rc_namespace, page_namespace). This is -1 ("Special") for log events.
+                    type: integer
+                    maximum: 9007199254740991
+                    minimum: -9007199254740991
+                  parsedcomment:
+                    description: The rc_comment parsed into simple HTML. Optional
+                    type: string
+                  patrolled:
+                    description: |
+                      (rc_patrolled). This property only exists if patrolling is supported for this event (based on $wgUseRCPatrol, $wgUseNPPatrol).
+                    type: boolean
+                  revision:
+                    description: Old and new revision IDs
+                    type: object
+                    properties:
+                      new:
+                        description: (rc_last_oldid)
+                        # type:
+                        #   - integer
+                        #   - "null"
+                        type: integer
+                        nullable: true
+                      old:
+                        description: (rc_this_oldid)
+                        # type:
+                        #   - integer
+                        #   - "null"
+                        type: integer
+                        nullable: true
+                  server_name:
+                    description: $wgServerName
+                    type: string
+                  server_script_path:
+                    description: $wgScriptPath
+                    type: string
+                  server_url:
+                    description: $wgCanonicalServer
+                    type: string
+                  timestamp:
+                    description: Unix timestamp (derived from rc_timestamp).
+                    type: integer
+                    maximum: 9007199254740991
+                    minimum: -9007199254740991
+                  user:
+                    description: (rc_user_text)
+                    type: string
+                  wiki:
+                    description: wfWikiID ($wgDBprefix, $wgDBname)
+                    type: string
+              example:
+                $schema: /mediawiki/recentchange/1.0.1
+                meta:
+                  dt: "2020-07-01T00:00:00Z"
+                  stream: mediawiki.recentchange
+            text/event-stream:
+              schema:
+                title: mediawiki/recentchange
+                description: |
+                  Represents a MW RecentChange event. https://www.mediawiki.org/wiki/Manual:RCFeed
+                type: object
+                additionalProperties: true
+                required:
+                  - $schema
+                  - meta
+                properties:
+                  title:
+                    description: Full page name, from Title::getPrefixedText.
+                    type: string
+                  $schema:
+                    description: |
+                      A URI identifying the JSONSchema for this event. This should match an schema's $id in a schema repository. E.g. /schema/title/1.0.0
+                    type: string
+                  type:
+                    description: |
+                      Type of recentchange event (rc_type). One of "edit", "new", "log", "categorize", or "external"; or a number. (See Manual:Recentchanges table#rc_type)
+                    type: string
+                  bot:
+                    description: (rc_bot)
+                    type: boolean
+                  comment:
+                    description: (rc_comment)
+                    type: string
+                  id:
+                    description: ID of the recentchange event (rcid).
+                    # type:
+                    #   - integer
+                    #   - "null"
+                    type: integer
+                    nullable: true
+                  length:
+                    description: Length of old and new change
+                    type: object
+                    properties:
+                      new:
+                        description: (rc_new_len)
+                        # type:
+                        #   - integer
+                        #   - "null"
+                        type: integer
+                        nullable: true
+                      old:
+                        description: (rc_old_len)
+                        # type:
+                        #   - integer
+                        #   - "null"
+                        type: integer
+                        nullable: true
+                  log_action:
+                    description: (rc_log_action)
+                    type: string
+                  log_action_comment:
+                    # type:
+                    #   - string
+                    #   - "null"
+                    type: string
+                    nullable: true
+                  log_id:
+                    description: (rc_log_id)
+                    # type:
+                    #   - integer
+                    #   - "null"
+                    type: integer
+                    nullable: true
+                  log_params:
+                    description: Property only exists if event has rc_params.
+                    # type:
+                    #   - array
+                    #   - object
+                    #   - string
+                    # additionalProperties: true
+                    oneOf:
+                      - type: array
+                        items: {}
+                      - type: object
+                        additionalProperties: true
+                      - type: string
+                  log_type:
+                    description: (rc_log_type)
+                    # type:
+                    #   - string
+                    #   - "null"
+                    type: string
+                    nullable: true
+                  meta:
+                    type: object
+                    required:
+                      - dt
+                      - stream
+                    properties:
+                      domain:
+                        description: Domain the event or entity pertains to
+                        type: string
+                        minLength: 1
+                      dt:
+                        description: UTC event datetime, in ISO-8601 format
+                        type: string
+                        format: date-time
+                        maxLength: 128
+                      id:
+                        description: Unique ID of this event
+                        type: string
+                      request_id:
+                        description: Unique ID of the request that caused the event
+                        type: string
+                      stream:
+                        description: Name of the stream/queue/dataset that this event belongs in
+                        type: string
+                        minLength: 1
+                      uri:
+                        description: Unique URI identifying the event or entity
+                        type: string
+                        format: uri-reference
+                        maxLength: 8192
+                  minor:
+                    description: (rc_minor).
+                    type: boolean
+                  namespace:
+                    description: |
+                      ID of relevant namespace of affected page (rc_namespace, page_namespace). This is -1 ("Special") for log events.
+                    type: integer
+                    maximum: 9007199254740991
+                    minimum: -9007199254740991
+                  parsedcomment:
+                    description: The rc_comment parsed into simple HTML. Optional
+                    type: string
+                  patrolled:
+                    description: |
+                      (rc_patrolled). This property only exists if patrolling is supported for this event (based on $wgUseRCPatrol, $wgUseNPPatrol).
+                    type: boolean
+                  revision:
+                    description: Old and new revision IDs
+                    type: object
+                    properties:
+                      new:
+                        description: (rc_last_oldid)
+                        # type:
+                        #   - integer
+                        #   - "null"
+                        type: integer
+                        nullable: true
+                      old:
+                        description: (rc_this_oldid)
+                        # type:
+                        #   - integer
+                        #   - "null"
+                        type: integer
+                        nullable: true
+                  server_name:
+                    description: $wgServerName
+                    type: string
+                  server_script_path:
+                    description: $wgScriptPath
+                    type: string
+                  server_url:
+                    description: $wgCanonicalServer
+                    type: string
+                  timestamp:
+                    description: Unix timestamp (derived from rc_timestamp).
+                    type: integer
+                    maximum: 9007199254740991
+                    minimum: -9007199254740991
+                  user:
+                    description: (rc_user_text)
+                    type: string
+                  wiki:
+                    description: wfWikiID ($wgDBprefix, $wgDBname)
+                    type: string
+              example:
+                $schema: /mediawiki/recentchange/1.0.1
+                meta:
+                  dt: "2020-07-01T00:00:00Z"
+                  stream: mediawiki.recentchange
