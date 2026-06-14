@@ -451,9 +451,13 @@ func wrapResponseType(
 	}
 
 	injectHeaderFields(headers, wrapper)
+	responseType := t
+	if t.SSE != nil {
+		responseType = ir.Pointer(t, ir.NilOptional)
+	}
 	wrapper.Fields = append(wrapper.Fields, &ir.Field{
 		Name: "Response",
-		Type: t,
+		Type: responseType,
 	})
 
 	return wrapper, nil

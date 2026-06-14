@@ -181,9 +181,11 @@ func (t *Type) IsInterface() bool { return t.Is(KindInterface) }
 func (t *Type) IsSum() bool       { return t.Is(KindSum) }
 func (t *Type) IsAny() bool       { return t.Is(KindAny) }
 func (t *Type) IsStream() bool    { return t.Is(KindStream) }
-func (t *Type) IsSSEStream() bool { return t != nil && t.SSE != nil }
-func (t *Type) IsNumeric() bool   { return t.IsInteger() || t.IsFloat() || t.IsDecimal() }
-func (t *Type) IsExternal() bool  { return t.Schema != nil && t.Schema.XOgenType != "" }
+func (t *Type) IsSSEStream() bool {
+	return t != nil && (t.SSE != nil || (t.IsPointer() && t.PointerTo.IsSSEStream()))
+}
+func (t *Type) IsNumeric() bool  { return t.IsInteger() || t.IsFloat() || t.IsDecimal() }
+func (t *Type) IsExternal() bool { return t.Schema != nil && t.Schema.XOgenType != "" }
 
 // AcceptsJSONString reports whether t can be decoded as a JSON string token.
 func (t *Type) AcceptsJSONString() bool {

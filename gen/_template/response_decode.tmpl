@@ -114,7 +114,11 @@ func decode{{ $op.Name }}Response(resp *http.Response) (res {{ $op.Responses.GoT
 		{{- end }}
 
 		{{- if $media.SSEEventShape.Enabled }}
+			{{- if $type.IsPointer }}
+			response := &{{ $type.PointerTo.Go }}{resp: resp}
+			{{- else }}
 			response := {{ $type.Go }}{resp: resp}
+			{{- end }}
 		{{- else if or $encoding.JSON $encoding.ProblemJSON }}
 			{{- if $media.JSONStreaming }}
 			d := jx.Decode(resp.Body, -1)
@@ -182,7 +186,11 @@ func decode{{ $op.Name }}Response(resp *http.Response) (res {{ $op.Responses.GoT
 				Response:   response,
 			}, nil
 		{{- else }}
+			{{- if and $media.SSEEventShape.Enabled $type.IsPointer }}
+			return response, nil
+			{{- else }}
 			return {{ if $ptr }}&{{ end }}response, nil
+			{{- end }}
 		{{- end }}
 		{{- end }}{{/* End of RawResponse else block */}}
 	{{- end }}{{/* Range over contents */}}
