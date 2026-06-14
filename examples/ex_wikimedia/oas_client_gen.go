@@ -486,6 +486,11 @@ func (c *Client) sendV2StreamRecentchangeGet(ctx context.Context, params V2Strea
 				return nil, errors.Wrap(err, "edit reconnect response")
 			}
 
+			// SSE standard treats 204 No Content as an explicit instruction to stop reconnecting.
+			if reconnectResp.StatusCode == http.StatusNoContent {
+				_ = reconnectResp.Body.Close()
+				return nil, sse.ErrNoReconnect
+			}
 			if reconnectResp.StatusCode != resp.StatusCode {
 				_ = reconnectResp.Body.Close()
 				return nil, validate.UnexpectedStatusCodeWithResponse(reconnectResp)
