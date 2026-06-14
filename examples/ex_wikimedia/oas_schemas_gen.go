@@ -1124,11 +1124,12 @@ func (s *V2StreamRecentchangeGetOKApplicationJSONRevision) SetOld(val OptNilInt)
 	s.Old = val
 }
 
-// V2StreamRecentchangeGetOKTextEventStream is a Server-Sent Events response stream.
+// V2StreamRecentchangeGetOKTextEventStreamClient reads events from the V2StreamRecentchangeGetOKTextEventStream SSE stream.
 type V2StreamRecentchangeGetOKTextEventStreamClient interface {
 	sse.Client[V2StreamRecentchangeGetOKTextEventStreamEvent]
 }
 
+// V2StreamRecentchangeGetOKTextEventStream is a Server-Sent Events response stream.
 type V2StreamRecentchangeGetOKTextEventStream struct {
 	resp      *http.Response
 	decoder   *sse.Decoder
@@ -1158,16 +1159,17 @@ func (s *V2StreamRecentchangeGetOKTextEventStream) initSSEStream(
 	s.closeCh = make(chan struct{})
 }
 
-func (s *V2StreamRecentchangeGetOKTextEventStream) State() (sse.State, error) {
+// State returns the current stream state and the latest terminal or current reconnect error.
+func (s *V2StreamRecentchangeGetOKTextEventStream) State() (state sse.State, latestErr error) {
 	s.stateMu.RLock()
 	defer s.stateMu.RUnlock()
 	return s.state, s.latestErr
 }
 
-func (s *V2StreamRecentchangeGetOKTextEventStream) setState(state sse.State, err error) {
+func (s *V2StreamRecentchangeGetOKTextEventStream) setState(state sse.State, latestErr error) {
 	s.stateMu.Lock()
 	s.state = state
-	s.latestErr = err
+	s.latestErr = latestErr
 	s.stateMu.Unlock()
 }
 
@@ -1192,6 +1194,7 @@ func (s *V2StreamRecentchangeGetOKTextEventStream) withCloseContext(ctx context.
 	return reconnectCtx, cancel
 }
 
+// Close closes the current stream and stops further reconnect attempts.
 func (s *V2StreamRecentchangeGetOKTextEventStream) Close() error {
 	if !s.closed.CompareAndSwap(false, true) {
 		return nil
@@ -1217,6 +1220,7 @@ func (s *V2StreamRecentchangeGetOKTextEventStream) Close() error {
 	return resp.Body.Close()
 }
 
+// Next returns the next event from the stream, reconnecting when needed.
 func (s *V2StreamRecentchangeGetOKTextEventStream) Next(ctx context.Context,
 ) (V2StreamRecentchangeGetOKTextEventStreamEvent, error) {
 	for {
@@ -1289,6 +1293,7 @@ func (s *V2StreamRecentchangeGetOKTextEventStream) Next(ctx context.Context,
 	}
 }
 
+// All iterates over stream events until the stream is closed, reconnecting when needed.
 func (s *V2StreamRecentchangeGetOKTextEventStream) All(ctx context.Context,
 ) iter.Seq2[V2StreamRecentchangeGetOKTextEventStreamEvent, error] {
 	return func(yield func(V2StreamRecentchangeGetOKTextEventStreamEvent, error) bool) {

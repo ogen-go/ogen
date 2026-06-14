@@ -5084,11 +5084,12 @@ func (s *Coordinate) SetY(val int) {
 	s.Y = val
 }
 
-// CreateChatCompletionOKTextEventStream is a Server-Sent Events response stream.
+// CreateChatCompletionOKTextEventStreamClient reads events from the CreateChatCompletionOKTextEventStream SSE stream.
 type CreateChatCompletionOKTextEventStreamClient interface {
 	sse.Client[CreateChatCompletionOKTextEventStreamEvent]
 }
 
+// CreateChatCompletionOKTextEventStream is a Server-Sent Events response stream.
 type CreateChatCompletionOKTextEventStream struct {
 	resp      *http.Response
 	decoder   *sse.Decoder
@@ -5118,16 +5119,17 @@ func (s *CreateChatCompletionOKTextEventStream) initSSEStream(
 	s.closeCh = make(chan struct{})
 }
 
-func (s *CreateChatCompletionOKTextEventStream) State() (sse.State, error) {
+// State returns the current stream state and the latest terminal or current reconnect error.
+func (s *CreateChatCompletionOKTextEventStream) State() (state sse.State, latestErr error) {
 	s.stateMu.RLock()
 	defer s.stateMu.RUnlock()
 	return s.state, s.latestErr
 }
 
-func (s *CreateChatCompletionOKTextEventStream) setState(state sse.State, err error) {
+func (s *CreateChatCompletionOKTextEventStream) setState(state sse.State, latestErr error) {
 	s.stateMu.Lock()
 	s.state = state
-	s.latestErr = err
+	s.latestErr = latestErr
 	s.stateMu.Unlock()
 }
 
@@ -5152,6 +5154,7 @@ func (s *CreateChatCompletionOKTextEventStream) withCloseContext(ctx context.Con
 	return reconnectCtx, cancel
 }
 
+// Close closes the current stream and stops further reconnect attempts.
 func (s *CreateChatCompletionOKTextEventStream) Close() error {
 	if !s.closed.CompareAndSwap(false, true) {
 		return nil
@@ -5177,6 +5180,7 @@ func (s *CreateChatCompletionOKTextEventStream) Close() error {
 	return resp.Body.Close()
 }
 
+// Next returns the next event from the stream, reconnecting when needed.
 func (s *CreateChatCompletionOKTextEventStream) Next(ctx context.Context,
 ) (CreateChatCompletionOKTextEventStreamEvent, error) {
 	for {
@@ -5249,6 +5253,7 @@ func (s *CreateChatCompletionOKTextEventStream) Next(ctx context.Context,
 	}
 }
 
+// All iterates over stream events until the stream is closed, reconnecting when needed.
 func (s *CreateChatCompletionOKTextEventStream) All(ctx context.Context,
 ) iter.Seq2[CreateChatCompletionOKTextEventStreamEvent, error] {
 	return func(yield func(CreateChatCompletionOKTextEventStreamEvent, error) bool) {
@@ -7278,11 +7283,12 @@ func NewInputItemArrayCreateResponseInput(v []InputItem) CreateResponseInput {
 	return s
 }
 
-// CreateResponseOKTextEventStream is a Server-Sent Events response stream.
+// CreateResponseOKTextEventStreamClient reads events from the CreateResponseOKTextEventStream SSE stream.
 type CreateResponseOKTextEventStreamClient interface {
 	sse.Client[CreateResponseOKTextEventStreamEvent]
 }
 
+// CreateResponseOKTextEventStream is a Server-Sent Events response stream.
 type CreateResponseOKTextEventStream struct {
 	resp      *http.Response
 	decoder   *sse.Decoder
@@ -7312,16 +7318,17 @@ func (s *CreateResponseOKTextEventStream) initSSEStream(
 	s.closeCh = make(chan struct{})
 }
 
-func (s *CreateResponseOKTextEventStream) State() (sse.State, error) {
+// State returns the current stream state and the latest terminal or current reconnect error.
+func (s *CreateResponseOKTextEventStream) State() (state sse.State, latestErr error) {
 	s.stateMu.RLock()
 	defer s.stateMu.RUnlock()
 	return s.state, s.latestErr
 }
 
-func (s *CreateResponseOKTextEventStream) setState(state sse.State, err error) {
+func (s *CreateResponseOKTextEventStream) setState(state sse.State, latestErr error) {
 	s.stateMu.Lock()
 	s.state = state
-	s.latestErr = err
+	s.latestErr = latestErr
 	s.stateMu.Unlock()
 }
 
@@ -7346,6 +7353,7 @@ func (s *CreateResponseOKTextEventStream) withCloseContext(ctx context.Context,
 	return reconnectCtx, cancel
 }
 
+// Close closes the current stream and stops further reconnect attempts.
 func (s *CreateResponseOKTextEventStream) Close() error {
 	if !s.closed.CompareAndSwap(false, true) {
 		return nil
@@ -7371,6 +7379,7 @@ func (s *CreateResponseOKTextEventStream) Close() error {
 	return resp.Body.Close()
 }
 
+// Next returns the next event from the stream, reconnecting when needed.
 func (s *CreateResponseOKTextEventStream) Next(ctx context.Context,
 ) (CreateResponseOKTextEventStreamEvent, error) {
 	for {
@@ -7443,6 +7452,7 @@ func (s *CreateResponseOKTextEventStream) Next(ctx context.Context,
 	}
 }
 
+// All iterates over stream events until the stream is closed, reconnecting when needed.
 func (s *CreateResponseOKTextEventStream) All(ctx context.Context,
 ) iter.Seq2[CreateResponseOKTextEventStreamEvent, error] {
 	return func(yield func(CreateResponseOKTextEventStreamEvent, error) bool) {
