@@ -254,6 +254,10 @@ func (r *Responses) DoPass() bool {
 		return true
 	}
 	t := r.Type
+	// SSE stream responses are represented by a no public field stream type.
+	if t != nil && t.SSE != nil {
+		return true
+	}
 	// Do not pass response type if it is empty struct.
 	if t.IsStruct() && len(t.Fields) == 0 {
 		return false
