@@ -35,8 +35,8 @@ func (c *codeRecorder) Unwrap() http.ResponseWriter {
 
 // handleBuildInfoRequest handles buildInfo operation.
 //
-// Returns Tempo buildinfo, in the same format as Prometheus `/api/v1/status/buildinfo`.
-// Used by Grafana to check Tempo API version.
+// Returns Tempo buildinfo, in the same format as Prometheus `/api/v1/status/buildinfo`. Used by
+// Grafana to check Tempo API version.
 //
 // GET /api/status/buildinfo
 func (s *Server) handleBuildInfoRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -654,8 +654,7 @@ func (s *Server) handleSearchTagValuesRequest(args [1]string, argsEscaped bool, 
 
 // handleSearchTagValuesV2Request handles searchTagValuesV2 operation.
 //
-// This endpoint retrieves all discovered values and their data types for the given TraceQL
-// identifier.
+// This endpoint retrieves all discovered values and their data types for the given TraceQL identifier.
 //
 // GET /api/v2/search/tag/{attribute_selector}/values
 func (s *Server) handleSearchTagValuesV2Request(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {

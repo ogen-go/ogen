@@ -22,11 +22,11 @@ type AddStickerToSet struct {
 	Name string `json:"name"`
 	// PNG image with the sticker, must be up to 512 kilobytes in size, dimensions must not exceed 512px,
 	// and either width or height must be exactly 512px. Pass a file_id as a String to send a file that
-	// already exists on the Telegram servers, pass an HTTP URL as a String for Telegram to get a file
-	// from the Internet, or upload a new one using multipart/form-data. More info on Sending Files ».
+	// already exists on the Telegram servers, pass an HTTP URL as a String for Telegram to get a file from
+	// the Internet, or upload a new one using multipart/form-data. More info on Sending Files ».
 	PNGSticker OptString `json:"png_sticker"`
-	// TGS animation with the sticker, uploaded using multipart/form-data. See https://core.telegram.
-	// org/animated_stickers#technical-requirements for technical requirements.
+	// TGS animation with the sticker, uploaded using multipart/form-data. See
+	// https://core.telegram.org/animated_stickers#technical-requirements for technical requirements.
 	TgsSticker OptString `json:"tgs_sticker"`
 	// One or more emoji corresponding to the sticker.
 	Emojis       string          `json:"emojis"`
@@ -99,7 +99,7 @@ type Animation struct {
 	// Identifier for this file, which can be used to download or reuse the file.
 	FileID string `json:"file_id"`
 	// Unique identifier for this file, which is supposed to be the same over time and for different bots.
-	//  Can't be used to download or reuse the file.
+	// Can't be used to download or reuse the file.
 	FileUniqueID string `json:"file_unique_id"`
 	// Video width as defined by sender.
 	Width int `json:"width"`
@@ -216,10 +216,10 @@ type AnswerCallbackQuery struct {
 	// If True, an alert will be shown by the client instead of a notification at the top of the chat
 	// screen. Defaults to false.
 	ShowAlert OptBool `json:"show_alert"`
-	// URL that will be opened by the user's client. If you have created a Game and accepted the
-	// conditions via @Botfather, specify the URL that opens your game — note that this will only work
-	// if the query comes from a callback_game button.Otherwise, you may use links like t.
-	// me/your_bot?start=XXXX that open your bot with a parameter.
+	// URL that will be opened by the user's client. If you have created a Game and accepted the conditions
+	// via @Botfather, specify the URL that opens your game — note that this will only work if the query
+	// comes from a callback_game button.Otherwise, you may use links like t.me/your_bot?start=XXXX that
+	// open your bot with a parameter.
 	URL OptURI `json:"url"`
 	// The maximum amount of time in seconds that the result of the callback query may be cached
 	// client-side. Telegram apps will support caching starting in version 3.14. Defaults to 0.
@@ -301,8 +301,8 @@ type AnswerInlineQuery struct {
 	// videos can ask the user to connect the bot to their YouTube account to adapt search results
 	// accordingly. To do this, it displays a 'Connect your YouTube account' button above the results, or
 	// even before showing any. The user presses the button, switches to a private chat with the bot and,
-	// in doing so, passes a start parameter that instructs the bot to return an OAuth link. Once done,
-	// the bot can offer a switch_inline button so that the user can easily return to the chat where they
+	// in doing so, passes a start parameter that instructs the bot to return an OAuth link. Once done, the
+	// bot can offer a switch_inline button so that the user can easily return to the chat where they
 	// wanted to use the bot's inline capabilities.
 	SwitchPmParameter OptString `json:"switch_pm_parameter"`
 }
@@ -432,9 +432,9 @@ type AnswerShippingQuery struct {
 	Ok bool `json:"ok"`
 	// Required if ok is True. A JSON-serialized array of available shipping options.
 	ShippingOptions []ShippingOption `json:"shipping_options"`
-	// Required if ok is False. Error message in human readable form that explains why it is impossible
-	// to complete the order (e.g. "Sorry, delivery to your desired address is unavailable'). Telegram
-	// will display this message to the user.
+	// Required if ok is False. Error message in human readable form that explains why it is impossible to
+	// complete the order (e.g. "Sorry, delivery to your desired address is unavailable'). Telegram will
+	// display this message to the user.
 	ErrorMessage OptString `json:"error_message"`
 }
 
@@ -512,7 +512,7 @@ type Audio struct {
 	// Identifier for this file, which can be used to download or reuse the file.
 	FileID string `json:"file_id"`
 	// Unique identifier for this file, which is supposed to be the same over time and for different bots.
-	//  Can't be used to download or reuse the file.
+	// Can't be used to download or reuse the file.
 	FileUniqueID string `json:"file_unique_id"`
 	// Duration of the audio in seconds as defined by sender.
 	Duration int `json:"duration"`
@@ -733,7 +733,7 @@ func (s *BotCommand) SetDescription(val string) {
 	s.Description = val
 }
 
-// This object represents the scope to which bot commands are applied.  7 scopes are supported:.
+// This object represents the scope to which bot commands are applied. 7 scopes are supported:.
 // Ref: #/components/schemas/BotCommandScope
 // BotCommandScope represents sum type.
 type BotCommandScope struct {
@@ -1023,8 +1023,8 @@ func (s *BotCommandScopeChat) SetChatID(val ID) {
 	s.ChatID = val
 }
 
-// Represents the scope of bot commands, covering all administrators of a specific group or
-// supergroup chat.
+// Represents the scope of bot commands, covering all administrators of a specific group or supergroup
+// chat.
 // Ref: #/components/schemas/BotCommandScopeChatAdministrators
 type BotCommandScopeChatAdministrators struct {
 	// Scope type, must be chat_administrators.
@@ -1127,11 +1127,11 @@ type CallbackQuery struct {
 	Message *Message `json:"message"`
 	// Identifier of the message sent via the bot in inline mode, that originated the query.
 	InlineMessageID OptString `json:"inline_message_id"`
-	// Global identifier, uniquely corresponding to the chat to which the message with the callback
-	// button was sent. Useful for high scores in games.
+	// Global identifier, uniquely corresponding to the chat to which the message with the callback button
+	// was sent. Useful for high scores in games.
 	ChatInstance string `json:"chat_instance"`
-	// Data associated with the callback button. Be aware that a bad client can send arbitrary data in
-	// this field.
+	// Data associated with the callback button. Be aware that a bad client can send arbitrary data in this
+	// field.
 	Data OptString `json:"data"`
 	// Short name of a Game to be returned, serves as the unique identifier for the game.
 	GameShortName OptString `json:"game_short_name"`
@@ -1251,8 +1251,8 @@ type Chat struct {
 	CanSetStickerSet OptBool `json:"can_set_sticker_set"`
 	// Unique identifier for the linked chat, i.e. the discussion group identifier for a channel and vice
 	// versa; for supergroups and channel chats. This identifier may be greater than 32 bits and some
-	// programming languages may have difficulty/silent defects in interpreting it. But it is smaller
-	// than 52 bits, so a signed 64 bit integer or double-precision float type are safe for storing this
+	// programming languages may have difficulty/silent defects in interpreting it. But it is smaller than
+	// 52 bits, so a signed 64 bit integer or double-precision float type are safe for storing this
 	// identifier. Returned only in getChat.
 	LinkedChatID OptInt64        `json:"linked_chat_id"`
 	Location     OptChatLocation `json:"location"`
@@ -1461,8 +1461,8 @@ func (s *Chat) SetLocation(val OptChatLocation) {
 // Represents an invite link for a chat.
 // Ref: #/components/schemas/ChatInviteLink
 type ChatInviteLink struct {
-	// The invite link. If the link was created by another chat administrator, then the second part of
-	// the link will be replaced with “…”.
+	// The invite link. If the link was created by another chat administrator, then the second part of the
+	// link will be replaced with “…”.
 	InviteLink string `json:"invite_link"`
 	Creator    User   `json:"creator"`
 	// True, if users joining the chat via the link need to be approved by chat administrators.
@@ -1662,8 +1662,7 @@ func (s *ChatLocation) SetAddress(val string) {
 	s.Address = val
 }
 
-// This object contains information about one member of a chat.  6 types of chat members are
-// supported:.
+// This object contains information about one member of a chat. 6 types of chat members are supported:.
 // Ref: #/components/schemas/ChatMember
 // ChatMember represents sum type.
 type ChatMember struct {
@@ -1857,8 +1856,8 @@ type ChatMemberAdministrator struct {
 	// True, if the administrator can restrict, ban or unban chat members.
 	CanRestrictMembers bool `json:"can_restrict_members"`
 	// True, if the administrator can add new administrators with a subset of their own privileges or
-	// demote administrators that he has promoted, directly or indirectly (promoted by administrators
-	// that were appointed by the user).
+	// demote administrators that he has promoted, directly or indirectly (promoted by administrators that
+	// were appointed by the user).
 	CanPromoteMembers bool `json:"can_promote_members"`
 	// True, if the user is allowed to change the chat title, photo and other settings.
 	CanChangeInfo bool `json:"can_change_info"`
@@ -2400,8 +2399,8 @@ func (s *ChatMemberUpdated) SetInviteLink(val OptChatInviteLink) {
 type ChatPermissions struct {
 	// True, if the user is allowed to send text messages, contacts, locations and venues.
 	CanSendMessages OptBool `json:"can_send_messages"`
-	// True, if the user is allowed to send audios, documents, photos, videos, video notes and voice
-	// notes, implies can_send_messages.
+	// True, if the user is allowed to send audios, documents, photos, videos, video notes and voice notes,
+	// implies can_send_messages.
 	CanSendMediaMessages OptBool `json:"can_send_media_messages"`
 	// True, if the user is allowed to send polls, implies can_send_messages.
 	CanSendPolls OptBool `json:"can_send_polls"`
@@ -2503,11 +2502,11 @@ func (s *ChatPermissions) SetCanPinMessages(val OptBool) {
 // This object represents a chat photo.
 // Ref: #/components/schemas/ChatPhoto
 type ChatPhoto struct {
-	// File identifier of small (160x160) chat photo. This file_id can be used only for photo download
-	// and only for as long as the photo is not changed.
+	// File identifier of small (160x160) chat photo. This file_id can be used only for photo download and
+	// only for as long as the photo is not changed.
 	SmallFileID string `json:"small_file_id"`
-	// Unique file identifier of small (160x160) chat photo, which is supposed to be the same over time
-	// and for different bots. Can't be used to download or reuse the file.
+	// Unique file identifier of small (160x160) chat photo, which is supposed to be the same over time and
+	// for different bots. Can't be used to download or reuse the file.
 	SmallFileUniqueID string `json:"small_file_unique_id"`
 	// File identifier of big (640x640) chat photo. This file_id can be used only for photo download and
 	// only for as long as the photo is not changed.
@@ -2620,8 +2619,8 @@ type ChosenInlineResult struct {
 	ResultID string      `json:"result_id"`
 	From     User        `json:"from"`
 	Location OptLocation `json:"location"`
-	// Identifier of the sent inline message. Available only if there is an inline keyboard attached to
-	// the message. Will be also received in callback queries and can be used to edit the message.
+	// Identifier of the sent inline message. Available only if there is an inline keyboard attached to the
+	// message. Will be also received in callback queries and can be used to edit the message.
 	InlineMessageID OptString `json:"inline_message_id"`
 	// The query that was used to obtain the result.
 	Query string `json:"query"`
@@ -3071,18 +3070,17 @@ type CreateNewStickerSet struct {
 	UserID int64 `json:"user_id"`
 	// Short name of sticker set, to be used in t.me/addstickers/ URLs (e.g., animals). Can contain only
 	// english letters, digits and underscores. Must begin with a letter, can't contain consecutive
-	// underscores and must end in “_by_<bot username>”. <bot_username> is case insensitive. 1-64
-	// characters.
+	// underscores and must end in “by”. <bot_username> is case insensitive. 1-64 characters.
 	Name string `json:"name"`
 	// Sticker set title, 1-64 characters.
 	Title string `json:"title"`
 	// PNG image with the sticker, must be up to 512 kilobytes in size, dimensions must not exceed 512px,
 	// and either width or height must be exactly 512px. Pass a file_id as a String to send a file that
-	// already exists on the Telegram servers, pass an HTTP URL as a String for Telegram to get a file
-	// from the Internet, or upload a new one using multipart/form-data. More info on Sending Files ».
+	// already exists on the Telegram servers, pass an HTTP URL as a String for Telegram to get a file from
+	// the Internet, or upload a new one using multipart/form-data. More info on Sending Files ».
 	PNGSticker OptString `json:"png_sticker"`
-	// TGS animation with the sticker, uploaded using multipart/form-data. See https://core.telegram.
-	// org/animated_stickers#technical-requirements for technical requirements.
+	// TGS animation with the sticker, uploaded using multipart/form-data. See
+	// https://core.telegram.org/animated_stickers#technical-requirements for technical requirements.
 	TgsSticker OptString `json:"tgs_sticker"`
 	// One or more emoji corresponding to the sticker.
 	Emojis string `json:"emojis"`
@@ -3263,8 +3261,8 @@ func (s *DeleteMessage) SetMessageID(val int) {
 // Ref: #/components/schemas/deleteMyCommands
 type DeleteMyCommands struct {
 	Scope OptBotCommandScope `json:"scope"`
-	// A two-letter ISO 639-1 language code. If empty, commands will be applied to all users from the
-	// given scope, for whose language there are no dedicated commands.
+	// A two-letter ISO 639-1 language code. If empty, commands will be applied to all users from the given
+	// scope, for whose language there are no dedicated commands.
 	LanguageCode OptString `json:"language_code"`
 }
 
@@ -3358,7 +3356,7 @@ type Document struct {
 	// Identifier for this file, which can be used to download or reuse the file.
 	FileID string `json:"file_id"`
 	// Unique identifier for this file, which is supposed to be the same over time and for different bots.
-	//  Can't be used to download or reuse the file.
+	// Can't be used to download or reuse the file.
 	FileUniqueID string       `json:"file_unique_id"`
 	Thumb        OptPhotoSize `json:"thumb"`
 	// Original filename as defined by sender.
@@ -3920,9 +3918,9 @@ func (s *EditMessageText) SetReplyMarkup(val OptInlineKeyboardMarkup) {
 	s.ReplyMarkup = val
 }
 
-// Contains data required for decrypting and authenticating EncryptedPassportElement. See the
-// Telegram Passport Documentation for a complete description of the data decryption and
-// authentication processes.
+// Contains data required for decrypting and authenticating EncryptedPassportElement. See the Telegram
+// Passport Documentation for a complete description of the data decryption and authentication
+// processes.
 // Ref: #/components/schemas/EncryptedCredentials
 type EncryptedCredentials struct {
 	// Base64-encoded encrypted JSON-serialized data with unique user's payload, data hashes and secrets
@@ -3964,8 +3962,8 @@ func (s *EncryptedCredentials) SetSecret(val string) {
 	s.Secret = val
 }
 
-// Contains information about documents or other Telegram Passport elements shared with the bot by
-// the user.
+// Contains information about documents or other Telegram Passport elements shared with the bot by the
+// user.
 // Ref: #/components/schemas/EncryptedPassportElement
 type EncryptedPassportElement struct {
 	// Element type. One of “personal_details”, “passport”, “driver_license”,
@@ -4313,18 +4311,18 @@ func (s *ExportChatInviteLink) SetChatID(val ID) {
 }
 
 // This object represents a file ready to be downloaded. The file can be downloaded via the link
-// https://api.telegram.org/file/bot<token>/<file_path>. It is guaranteed that the link will be valid
-// for at least 1 hour. When the link expires, a new one can be requested by calling getFile.
+// https://api.telegram.org/file/bot/<file_path>. It is guaranteed that the link will be valid for at
+// least 1 hour. When the link expires, a new one can be requested by calling getFile.
 // Ref: #/components/schemas/File
 type File struct {
 	// Identifier for this file, which can be used to download or reuse the file.
 	FileID string `json:"file_id"`
 	// Unique identifier for this file, which is supposed to be the same over time and for different bots.
-	//  Can't be used to download or reuse the file.
+	// Can't be used to download or reuse the file.
 	FileUniqueID string `json:"file_unique_id"`
 	// File size in bytes, if known.
 	FileSize OptInt `json:"file_size"`
-	// File path. Use https://api.telegram.org/file/bot<token>/<file_path> to get the file.
+	// File path. Use https://api.telegram.org/file/bot/<file_path> to get the file.
 	FilePath OptString `json:"file_path"`
 }
 
@@ -4374,8 +4372,7 @@ func (s *File) SetFilePath(val OptString) {
 // privacy mode.
 // Ref: #/components/schemas/ForceReply
 type ForceReply struct {
-	// Shows reply interface to the user, as if they manually selected the bot's message and tapped
-	// 'Reply'.
+	// Shows reply interface to the user, as if they manually selected the bot's message and tapped 'Reply'.
 	ForceReply bool `json:"force_reply"`
 	// The placeholder to be shown in the input field when the reply is active; 1-64 characters.
 	InputFieldPlaceholder OptString `json:"input_field_placeholder"`
@@ -4466,8 +4463,8 @@ func (s *ForwardMessage) SetMessageID(val int) {
 	s.MessageID = val
 }
 
-// This object represents a game. Use BotFather to create and edit games, their short names will act
-// as unique identifiers.
+// This object represents a game. Use BotFather to create and edit games, their short names will act as
+// unique identifiers.
 // Ref: #/components/schemas/Game
 type Game struct {
 	// Title of the game.
@@ -4793,9 +4790,9 @@ type GetUpdates struct {
 	// A JSON-serialized list of the update types you want your bot to receive. For example, specify
 	// [“message”, “edited_channel_post”, “callback_query”] to only receive updates of these
 	// types. See Update for a complete list of available update types. Specify an empty list to receive
-	// all update types except chat_member (default). If not specified, the previous setting will be used.
-	// Please note that this parameter doesn't affect updates created before the call to the getUpdates,
-	// so unwanted updates may be received for a short period of time.
+	// all update types except chat_member (default). If not specified, the previous setting will be
+	// used.Please note that this parameter doesn't affect updates created before the call to the
+	// getUpdates, so unwanted updates may be received for a short period of time.
 	AllowedUpdates []string `json:"allowed_updates"`
 }
 
@@ -4952,28 +4949,27 @@ func NewInt64ID(v int64) ID {
 type InlineKeyboardButton struct {
 	// Label text on the button.
 	Text string `json:"text"`
-	// HTTP or tg:// url to be opened when the button is pressed. Links tg://user?id=<user_id> can be
-	// used to mention a user by their ID without using a username, if this is allowed by their privacy
-	// settings.
+	// HTTP or tg:// url to be opened when the button is pressed. Links tg://user?id=<user_id> can be used
+	// to mention a user by their ID without using a username, if this is allowed by their privacy settings.
 	URL      OptURI      `json:"url"`
 	LoginURL OptLoginUrl `json:"login_url"`
 	// Data to be sent in a callback query to the bot when button is pressed, 1-64 bytes.
 	CallbackData OptString `json:"callback_data"`
 	// If set, pressing the button will prompt the user to select one of their chats, open that chat and
-	// insert the bot's username and the specified inline query in the input field. Can be empty, in
-	// which case just the bot's username will be inserted.Note: This offers an easy way for users to
-	// start using your bot in inline mode when they are currently in a private chat with it. Especially
-	// useful when combined with switch_pm… actions – in this case the user will be automatically
-	// returned to the chat they switched from, skipping the chat selection screen.
+	// insert the bot's username and the specified inline query in the input field. Can be empty, in which
+	// case just the bot's username will be inserted.Note: This offers an easy way for users to start using
+	// your bot in inline mode when they are currently in a private chat with it. Especially useful when
+	// combined with switch_pm… actions – in this case the user will be automatically returned to the
+	// chat they switched from, skipping the chat selection screen.
 	SwitchInlineQuery OptString `json:"switch_inline_query"`
 	// If set, pressing the button will insert the bot's username and the specified inline query in the
-	// current chat's input field. Can be empty, in which case only the bot's username will be inserted.
-	// This offers a quick way for the user to open your bot in inline mode in the same chat – good for
-	// selecting something from multiple options.
+	// current chat's input field. Can be empty, in which case only the bot's username will be
+	// inserted.This offers a quick way for the user to open your bot in inline mode in the same chat –
+	// good for selecting something from multiple options.
 	SwitchInlineQueryCurrentChat OptString     `json:"switch_inline_query_current_chat"`
 	CallbackGame                 *CallbackGame `json:"callback_game"`
-	// Specify True, to send a Pay button.NOTE: This type of button must always be the first button in
-	// the first row and can only be used in invoice messages.
+	// Specify True, to send a Pay button.NOTE: This type of button must always be the first button in the
+	// first row and can only be used in invoice messages.
 	Pay OptBool `json:"pay"`
 }
 
@@ -5074,8 +5070,8 @@ func (s *InlineKeyboardMarkup) SetInlineKeyboard(val [][]InlineKeyboardButton) {
 	s.InlineKeyboard = val
 }
 
-// This object represents an incoming inline query. When the user sends an empty query, your bot
-// could return some default or trending results.
+// This object represents an incoming inline query. When the user sends an empty query, your bot could
+// return some default or trending results.
 // Ref: #/components/schemas/InlineQuery
 type InlineQuery struct {
 	// Unique identifier for this query.
@@ -6292,8 +6288,8 @@ func (s *InlineQueryResultCachedDocument) SetInputMessageContent(val OptInputMes
 	s.InputMessageContent = val
 }
 
-// Represents a link to an animated GIF file stored on the Telegram servers. By default, this
-// animated GIF file will be sent by the user with an optional caption. Alternatively, you can use
+// Represents a link to an animated GIF file stored on the Telegram servers. By default, this animated
+// GIF file will be sent by the user with an optional caption. Alternatively, you can use
 // input_message_content to send a message with specified content instead of the animation.
 // Ref: #/components/schemas/InlineQueryResultCachedGif
 type InlineQueryResultCachedGif struct {
@@ -6405,10 +6401,10 @@ func (s *InlineQueryResultCachedGif) SetInputMessageContent(val OptInputMessageC
 	s.InputMessageContent = val
 }
 
-// Represents a link to a video animation (H.264/MPEG-4 AVC video without sound) stored on the
-// Telegram servers. By default, this animated MPEG-4 file will be sent by the user with an optional
-// caption. Alternatively, you can use input_message_content to send a message with the specified
-// content instead of the animation.
+// Represents a link to a video animation (H.264/MPEG-4 AVC video without sound) stored on the Telegram
+// servers. By default, this animated MPEG-4 file will be sent by the user with an optional caption.
+// Alternatively, you can use input_message_content to send a message with the specified content
+// instead of the animation.
 // Ref: #/components/schemas/InlineQueryResultCachedMpeg4Gif
 type InlineQueryResultCachedMpeg4Gif struct {
 	// Type of the result, must be mpeg4_gif.
@@ -6519,8 +6515,8 @@ func (s *InlineQueryResultCachedMpeg4Gif) SetInputMessageContent(val OptInputMes
 	s.InputMessageContent = val
 }
 
-// Represents a link to a photo stored on the Telegram servers. By default, this photo will be sent
-// by the user with an optional caption. Alternatively, you can use input_message_content to send a
+// Represents a link to a photo stored on the Telegram servers. By default, this photo will be sent by
+// the user with an optional caption. Alternatively, you can use input_message_content to send a
 // message with the specified content instead of the photo.
 // Ref: #/components/schemas/InlineQueryResultCachedPhoto
 type InlineQueryResultCachedPhoto struct {
@@ -6644,9 +6640,9 @@ func (s *InlineQueryResultCachedPhoto) SetInputMessageContent(val OptInputMessag
 	s.InputMessageContent = val
 }
 
-// Represents a link to a sticker stored on the Telegram servers. By default, this sticker will be
-// sent by the user. Alternatively, you can use input_message_content to send a message with the
-// specified content instead of the sticker.
+// Represents a link to a sticker stored on the Telegram servers. By default, this sticker will be sent
+// by the user. Alternatively, you can use input_message_content to send a message with the specified
+// content instead of the sticker.
 // Ref: #/components/schemas/InlineQueryResultCachedSticker
 type InlineQueryResultCachedSticker struct {
 	// Type of the result, must be sticker.
@@ -6834,9 +6830,9 @@ func (s *InlineQueryResultCachedVideo) SetInputMessageContent(val OptInputMessag
 	s.InputMessageContent = val
 }
 
-// Represents a link to a voice message stored on the Telegram servers. By default, this voice
-// message will be sent by the user. Alternatively, you can use input_message_content to send a
-// message with the specified content instead of the voice message.
+// Represents a link to a voice message stored on the Telegram servers. By default, this voice message
+// will be sent by the user. Alternatively, you can use input_message_content to send a message with
+// the specified content instead of the voice message.
 // Ref: #/components/schemas/InlineQueryResultCachedVoice
 type InlineQueryResultCachedVoice struct {
 	// Type of the result, must be voice.
@@ -7310,8 +7306,8 @@ func (s *InlineQueryResultGame) SetReplyMarkup(val OptInlineKeyboardMarkup) {
 }
 
 // Represents a link to an animated GIF file. By default, this animated GIF file will be sent by the
-// user with optional caption. Alternatively, you can use input_message_content to send a message
-// with the specified content instead of the animation.
+// user with optional caption. Alternatively, you can use input_message_content to send a message with
+// the specified content instead of the animation.
 // Ref: #/components/schemas/InlineQueryResultGif
 type InlineQueryResultGif struct {
 	// Type of the result, must be gif.
@@ -7832,9 +7828,9 @@ func (s *InlineQueryResultMpeg4Gif) SetInputMessageContent(val OptInputMessageCo
 	s.InputMessageContent = val
 }
 
-// Represents a link to a photo. By default, this photo will be sent by the user with optional
-// caption. Alternatively, you can use input_message_content to send a message with the specified
-// content instead of the photo.
+// Represents a link to a photo. By default, this photo will be sent by the user with optional caption.
+// Alternatively, you can use input_message_content to send a message with the specified content
+// instead of the photo.
 // Ref: #/components/schemas/InlineQueryResultPhoto
 type InlineQueryResultPhoto struct {
 	// Type of the result, must be photo.
@@ -8364,8 +8360,8 @@ func (s *InlineQueryResultVideo) SetInputMessageContent(val OptInputMessageConte
 }
 
 // Represents a link to a voice recording in an .OGG container encoded with OPUS. By default, this
-// voice recording will be sent by the user. Alternatively, you can use input_message_content to send
-// a message with the specified content instead of the the voice message.
+// voice recording will be sent by the user. Alternatively, you can use input_message_content to send a
+// message with the specified content instead of the the voice message.
 // Ref: #/components/schemas/InlineQueryResultVoice
 type InlineQueryResultVoice struct {
 	// Type of the result, must be voice.
@@ -8560,15 +8556,15 @@ type InputInvoiceMessageContent struct {
 	Prices []LabeledPrice `json:"prices"`
 	// The maximum accepted amount for tips in the smallest units of the currency (integer, not
 	// float/double). For example, for a maximum tip of US$ 1.45 pass max_tip_amount = 145. See the exp
-	// parameter in currencies.json, it shows the number of digits past the decimal point for each
-	// currency (2 for the majority of currencies). Defaults to 0.
+	// parameter in currencies.json, it shows the number of digits past the decimal point for each currency
+	// (2 for the majority of currencies). Defaults to 0.
 	MaxTipAmount OptInt `json:"max_tip_amount"`
 	// A JSON-serialized array of suggested amounts of tip in the smallest units of the currency (integer,
-	//  not float/double). At most 4 suggested tip amounts can be specified. The suggested tip amounts
-	// must be positive, passed in a strictly increased order and must not exceed max_tip_amount.
+	// not float/double). At most 4 suggested tip amounts can be specified. The suggested tip amounts must
+	// be positive, passed in a strictly increased order and must not exceed max_tip_amount.
 	SuggestedTipAmounts []int `json:"suggested_tip_amounts"`
-	// A JSON-serialized object for data about the invoice, which will be shared with the payment
-	// provider. A detailed description of the required fields should be provided by the payment provider.
+	// A JSON-serialized object for data about the invoice, which will be shared with the payment provider.
+	// A detailed description of the required fields should be provided by the payment provider.
 	ProviderData OptString `json:"provider_data"`
 	// URL of the product photo for the invoice. Can be a photo of the goods or a marketing image for a
 	// service. People like it better when they see what they are paying for.
@@ -9024,17 +9020,17 @@ func NewInputMediaVideoInputMedia(v InputMediaVideo) InputMedia {
 type InputMediaAnimation struct {
 	// Type of the result, must be animation.
 	Type string `json:"type"`
-	// File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended),
-	// pass an HTTP URL for Telegram to get a file from the Internet, or pass
-	// “attach://<file_attach_name>” to upload a new one using multipart/form-data under
-	// <file_attach_name> name. More info on Sending Files ».
+	// File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass
+	// an HTTP URL for Telegram to get a file from the Internet, or pass “attach://<file_attach_name>”
+	// to upload a new one using multipart/form-data under <file_attach_name> name. More info on Sending
+	// Files ».
 	Media string `json:"media"`
 	// Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported
 	// server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's
 	// width and height should not exceed 320. Ignored if the file is not uploaded using
 	// multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can
-	// pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data
-	// under <file_attach_name>. More info on Sending Files ».
+	// pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data under
+	// <file_attach_name>. More info on Sending Files ».
 	Thumb OptString `json:"thumb"`
 	// Caption of the animation to be sent, 0-1024 characters after entities parsing.
 	Caption OptString `json:"caption"`
@@ -9145,17 +9141,17 @@ func (s *InputMediaAnimation) SetDuration(val OptInt) {
 type InputMediaAudio struct {
 	// Type of the result, must be audio.
 	Type string `json:"type"`
-	// File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended),
-	// pass an HTTP URL for Telegram to get a file from the Internet, or pass
-	// “attach://<file_attach_name>” to upload a new one using multipart/form-data under
-	// <file_attach_name> name. More info on Sending Files ».
+	// File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass
+	// an HTTP URL for Telegram to get a file from the Internet, or pass “attach://<file_attach_name>”
+	// to upload a new one using multipart/form-data under <file_attach_name> name. More info on Sending
+	// Files ».
 	Media string `json:"media"`
 	// Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported
 	// server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's
 	// width and height should not exceed 320. Ignored if the file is not uploaded using
 	// multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can
-	// pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data
-	// under <file_attach_name>. More info on Sending Files ».
+	// pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data under
+	// <file_attach_name>. More info on Sending Files ».
 	Thumb OptString `json:"thumb"`
 	// Caption of the audio to be sent, 0-1024 characters after entities parsing.
 	Caption OptString `json:"caption"`
@@ -9266,17 +9262,17 @@ func (s *InputMediaAudio) SetTitle(val OptString) {
 type InputMediaDocument struct {
 	// Type of the result, must be document.
 	Type string `json:"type"`
-	// File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended),
-	// pass an HTTP URL for Telegram to get a file from the Internet, or pass
-	// “attach://<file_attach_name>” to upload a new one using multipart/form-data under
-	// <file_attach_name> name. More info on Sending Files ».
+	// File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass
+	// an HTTP URL for Telegram to get a file from the Internet, or pass “attach://<file_attach_name>”
+	// to upload a new one using multipart/form-data under <file_attach_name> name. More info on Sending
+	// Files ».
 	Media string `json:"media"`
 	// Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported
 	// server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's
 	// width and height should not exceed 320. Ignored if the file is not uploaded using
 	// multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can
-	// pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data
-	// under <file_attach_name>. More info on Sending Files ».
+	// pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data under
+	// <file_attach_name>. More info on Sending Files ».
 	Thumb OptString `json:"thumb"`
 	// Caption of the document to be sent, 0-1024 characters after entities parsing.
 	Caption OptString `json:"caption"`
@@ -9285,7 +9281,7 @@ type InputMediaDocument struct {
 	// List of special entities that appear in the caption, which can be specified instead of parse_mode.
 	CaptionEntities []MessageEntity `json:"caption_entities"`
 	// Disables automatic server-side content type detection for files uploaded using multipart/form-data.
-	//  Always True, if the document is sent as part of an album.
+	// Always True, if the document is sent as part of an album.
 	DisableContentTypeDetection OptBool `json:"disable_content_type_detection"`
 }
 
@@ -9364,10 +9360,10 @@ func (s *InputMediaDocument) SetDisableContentTypeDetection(val OptBool) {
 type InputMediaPhoto struct {
 	// Type of the result, must be photo.
 	Type string `json:"type"`
-	// File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended),
-	// pass an HTTP URL for Telegram to get a file from the Internet, or pass
-	// “attach://<file_attach_name>” to upload a new one using multipart/form-data under
-	// <file_attach_name> name. More info on Sending Files ».
+	// File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass
+	// an HTTP URL for Telegram to get a file from the Internet, or pass “attach://<file_attach_name>”
+	// to upload a new one using multipart/form-data under <file_attach_name> name. More info on Sending
+	// Files ».
 	Media string `json:"media"`
 	// Caption of the photo to be sent, 0-1024 characters after entities parsing.
 	Caption OptString `json:"caption"`
@@ -9432,17 +9428,17 @@ func (s *InputMediaPhoto) SetCaptionEntities(val []MessageEntity) {
 type InputMediaVideo struct {
 	// Type of the result, must be video.
 	Type string `json:"type"`
-	// File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended),
-	// pass an HTTP URL for Telegram to get a file from the Internet, or pass
-	// “attach://<file_attach_name>” to upload a new one using multipart/form-data under
-	// <file_attach_name> name. More info on Sending Files ».
+	// File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass
+	// an HTTP URL for Telegram to get a file from the Internet, or pass “attach://<file_attach_name>”
+	// to upload a new one using multipart/form-data under <file_attach_name> name. More info on Sending
+	// Files ».
 	Media string `json:"media"`
 	// Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported
 	// server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's
 	// width and height should not exceed 320. Ignored if the file is not uploaded using
 	// multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can
-	// pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data
-	// under <file_attach_name>. More info on Sending Files ».
+	// pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data under
+	// <file_attach_name>. More info on Sending Files ».
 	Thumb OptString `json:"thumb"`
 	// Caption of the video to be sent, 0-1024 characters after entities parsing.
 	Caption OptString `json:"caption"`
@@ -9560,8 +9556,7 @@ func (s *InputMediaVideo) SetSupportsStreaming(val OptBool) {
 	s.SupportsStreaming = val
 }
 
-// This object represents the content of a message to be sent as a result of an inline query.  5
-// types:.
+// This object represents the content of a message to be sent as a result of an inline query. 5 types:.
 // Ref: #/components/schemas/InputMessageContent
 // InputMessageContent represents sum type.
 type InputMessageContent struct {
@@ -9938,8 +9933,8 @@ func (s *Invoice) SetTotalAmount(val int) {
 	s.TotalAmount = val
 }
 
-// This object represents one button of the reply keyboard. For simple text buttons String can be
-// used instead of this object to specify text of the button. Optional fields request_contact,
+// This object represents one button of the reply keyboard. For simple text buttons String can be used
+// instead of this object to specify text of the button. Optional fields request_contact,
 // request_location, and request_poll are mutually exclusive.
 // Ref: #/components/schemas/KeyboardButton
 // KeyboardButton represents sum type.
@@ -10009,16 +10004,16 @@ func NewKeyboardButtonObjectKeyboardButton(v KeyboardButtonObject) KeyboardButto
 	return s
 }
 
-// This object represents one button of the reply keyboard. For simple text buttons String can be
-// used instead of this object to specify text of the button. Optional fields request_contact,
+// This object represents one button of the reply keyboard. For simple text buttons String can be used
+// instead of this object to specify text of the button. Optional fields request_contact,
 // request_location, and request_poll are mutually exclusive.
 // Ref: #/components/schemas/KeyboardButtonObject
 type KeyboardButtonObject struct {
 	// Text of the button. If none of the optional fields are used, it will be sent as a message when the
 	// button is pressed.
 	Text string `json:"text"`
-	// If True, the user's phone number will be sent as a contact when the button is pressed. Available
-	// in private chats only.
+	// If True, the user's phone number will be sent as a contact when the button is pressed. Available in
+	// private chats only.
 	RequestContact OptBool `json:"request_contact"`
 	// If True, the user's current location will be sent when the button is pressed. Available in private
 	// chats only.
@@ -10071,8 +10066,8 @@ func (s *KeyboardButtonObject) SetRequestPoll(val OptKeyboardButtonPollType) {
 // Ref: #/components/schemas/KeyboardButtonPollType
 type KeyboardButtonPollType struct {
 	// If quiz is passed, the user will be allowed to create only polls in the quiz mode. If regular is
-	// passed, only regular polls will be allowed. Otherwise, the user will be allowed to create a poll
-	// of any type.
+	// passed, only regular polls will be allowed. Otherwise, the user will be allowed to create a poll of
+	// any type.
 	Type OptString `json:"type"`
 }
 
@@ -10091,10 +10086,9 @@ func (s *KeyboardButtonPollType) SetType(val OptString) {
 type LabeledPrice struct {
 	// Portion label.
 	Label string `json:"label"`
-	// Price of the product in the smallest units of the currency (integer, not float/double). For
-	// example, for a price of US$ 1.45 pass amount = 145. See the exp parameter in currencies.json, it
-	// shows the number of digits past the decimal point for each currency (2 for the majority of
-	// currencies).
+	// Price of the product in the smallest units of the currency (integer, not float/double). For example,
+	// for a price of US$ 1.45 pass amount = 145. See the exp parameter in currencies.json, it shows the
+	// number of digits past the decimal point for each currency (2 for the majority of currencies).
 	Amount int `json:"amount"`
 }
 
@@ -10143,8 +10137,8 @@ type Location struct {
 	Latitude float64 `json:"latitude"`
 	// The radius of uncertainty for the location, measured in meters; 0-1500.
 	HorizontalAccuracy OptFloat64 `json:"horizontal_accuracy"`
-	// Time relative to the message sending date, during which the location can be updated; in seconds.
-	// For active live locations only.
+	// Time relative to the message sending date, during which the location can be updated; in seconds. For
+	// active live locations only.
 	LivePeriod OptInt `json:"live_period"`
 	// The direction in which user is moving, in degrees; 1-360. For active live locations only.
 	Heading OptInt `json:"heading"`
@@ -10219,14 +10213,14 @@ type LoginUrl struct {
 	// An HTTP URL to be opened with user authorization data added to the query string when the button is
 	// pressed. If the user refuses to provide authorization data, the original URL without information
 	// about the user will be opened. The data added is the same as described in Receiving authorization
-	// data.NOTE: You must always check the hash of the received data to verify the authentication and
-	// the integrity of the data as described in Checking authorization.
+	// data.NOTE: You must always check the hash of the received data to verify the authentication and the
+	// integrity of the data as described in Checking authorization.
 	URL url.URL `json:"url"`
 	// New text of the button in forwarded messages.
 	ForwardText OptString `json:"forward_text"`
-	// Username of a bot, which will be used for user authorization. See Setting up a bot for more
-	// details. If not specified, the current bot's username will be assumed. The url's domain must be
-	// the same as the domain linked with the bot. See Linking your domain to the bot for more details.
+	// Username of a bot, which will be used for user authorization. See Setting up a bot for more details.
+	// If not specified, the current bot's username will be assumed. The url's domain must be the same as
+	// the domain linked with the bot. See Linking your domain to the bot for more details.
 	BotUsername OptString `json:"bot_username"`
 	// Pass True to request the permission for your bot to send messages to the user.
 	RequestWriteAccess OptBool `json:"request_write_access"`
@@ -10275,8 +10269,8 @@ func (s *LoginUrl) SetRequestWriteAccess(val OptBool) {
 // This object describes the position on faces where a mask should be placed by default.
 // Ref: #/components/schemas/MaskPosition
 type MaskPosition struct {
-	// The part of the face relative to which the mask should be placed. One of “forehead”,
-	// “eyes”, “mouth”, or “chin”.
+	// The part of the face relative to which the mask should be placed. One of “forehead”, “eyes”,
+	// “mouth”, or “chin”.
 	Point string `json:"point"`
 	// Shift by X-axis measured in widths of the mask scaled to the face size, from left to right. For
 	// example, choosing -1.0 will place mask just to the left of the default mask position.
@@ -10349,8 +10343,8 @@ type Message struct {
 	ForwardSenderName OptString `json:"forward_sender_name"`
 	// For forwarded messages, date the original message was sent in Unix time.
 	ForwardDate OptInt `json:"forward_date"`
-	// True, if the message is a channel post that was automatically forwarded to the connected
-	// discussion group.
+	// True, if the message is a channel post that was automatically forwarded to the connected discussion
+	// group.
 	IsAutomaticForward OptBool  `json:"is_automatic_forward"`
 	ReplyToMessage     *Message `json:"reply_to_message"`
 	ViaBot             OptUser  `json:"via_bot"`
@@ -10365,8 +10359,7 @@ type Message struct {
 	AuthorSignature OptString `json:"author_signature"`
 	// For text messages, the actual UTF-8 text of the message, 0-4096 characters.
 	Text OptString `json:"text"`
-	// For text messages, special entities like usernames, URLs, bot commands, etc. that appear in the
-	// text.
+	// For text messages, special entities like usernames, URLs, bot commands, etc. that appear in the text.
 	Entities  []MessageEntity `json:"entities"`
 	Animation OptAnimation    `json:"animation"`
 	Audio     OptAudio        `json:"audio"`
@@ -10406,12 +10399,12 @@ type Message struct {
 	// supergroup.
 	SupergroupChatCreated OptBool `json:"supergroup_chat_created"`
 	// Service message: the channel has been created. This field can't be received in a message coming
-	// through updates, because bot can't be a member of a channel when it is created. It can only be
-	// found in reply_to_message if someone replies to a very first message in a channel.
+	// through updates, because bot can't be a member of a channel when it is created. It can only be found
+	// in reply_to_message if someone replies to a very first message in a channel.
 	ChannelChatCreated            OptBool                          `json:"channel_chat_created"`
 	MessageAutoDeleteTimerChanged OptMessageAutoDeleteTimerChanged `json:"message_auto_delete_timer_changed"`
-	// The group has been migrated to a supergroup with the specified identifier. This number may have
-	// more than 32 significant bits and some programming languages may have difficulty/silent defects in
+	// The group has been migrated to a supergroup with the specified identifier. This number may have more
+	// than 32 significant bits and some programming languages may have difficulty/silent defects in
 	// interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or
 	// double-precision float type are safe for storing this identifier.
 	MigrateToChatID OptInt64 `json:"migrate_to_chat_id"`
@@ -11031,8 +11024,8 @@ func (s *MessageAutoDeleteTimerChanged) SetMessageAutoDeleteTime(val int) {
 	s.MessageAutoDeleteTime = val
 }
 
-// This object represents one special entity in a text message. For example, hashtags, usernames,
-// URLs, etc.
+// This object represents one special entity in a text message. For example, hashtags, usernames, URLs,
+// etc.
 // Ref: #/components/schemas/MessageEntity
 type MessageEntity struct {
 	// Type of the entity. Can be “mention” (@username), “hashtag” (#hashtag), “cashtag”
@@ -14957,8 +14950,8 @@ func (s *OrderInfo) SetShippingAddress(val OptShippingAddress) {
 // Contains information about Telegram Passport data shared with the bot by the user.
 // Ref: #/components/schemas/PassportData
 type PassportData struct {
-	// Array with information about documents and other Telegram Passport elements that was shared with
-	// the bot.
+	// Array with information about documents and other Telegram Passport elements that was shared with the
+	// bot.
 	Data        []EncryptedPassportElement `json:"data"`
 	Credentials EncryptedCredentials       `json:"credentials"`
 }
@@ -14983,8 +14976,8 @@ func (s *PassportData) SetCredentials(val EncryptedCredentials) {
 	s.Credentials = val
 }
 
-// This object represents an error in the Telegram Passport element which was submitted that should
-// be resolved by the user. :.
+// This object represents an error in the Telegram Passport element which was submitted that should be
+// resolved by the user. :.
 // Ref: #/components/schemas/PassportElementError
 // PassportElementError represents sum type.
 type PassportElementError struct {
@@ -15251,8 +15244,8 @@ func NewPassportElementErrorUnspecifiedPassportElementError(v PassportElementErr
 	return s
 }
 
-// Represents an issue in one of the data fields that was provided by the user. The error is
-// considered resolved when the field's value changes.
+// Represents an issue in one of the data fields that was provided by the user. The error is considered
+// resolved when the field's value changes.
 // Ref: #/components/schemas/PassportElementErrorDataField
 type PassportElementErrorDataField struct {
 	// Error source, must be data.
@@ -15841,8 +15834,8 @@ func (s *PassportElementErrorReverseSideType) UnmarshalText(data []byte) error {
 	}
 }
 
-// Represents an issue with the selfie with a document. The error is considered resolved when the
-// file with the selfie changes.
+// Represents an issue with the selfie with a document. The error is considered resolved when the file
+// with the selfie changes.
 // Ref: #/components/schemas/PassportElementErrorSelfie
 type PassportElementErrorSelfie struct {
 	// Error source, must be selfie.
@@ -16104,8 +16097,8 @@ func (s *PassportElementErrorTranslationFileType) UnmarshalText(data []byte) err
 	}
 }
 
-// Represents an issue with the translated version of a document. The error is considered resolved
-// when a file with the document translation change.
+// Represents an issue with the translated version of a document. The error is considered resolved when
+// a file with the document translation change.
 // Ref: #/components/schemas/PassportElementErrorTranslationFiles
 type PassportElementErrorTranslationFiles struct {
 	// Error source, must be translation_files.
@@ -16316,7 +16309,7 @@ type PassportFile struct {
 	// Identifier for this file, which can be used to download or reuse the file.
 	FileID string `json:"file_id"`
 	// Unique identifier for this file, which is supposed to be the same over time and for different bots.
-	//  Can't be used to download or reuse the file.
+	// Can't be used to download or reuse the file.
 	FileUniqueID string `json:"file_unique_id"`
 	// File size in bytes.
 	FileSize int `json:"file_size"`
@@ -16370,7 +16363,7 @@ type PhotoSize struct {
 	// Identifier for this file, which can be used to download or reuse the file.
 	FileID string `json:"file_id"`
 	// Unique identifier for this file, which is supposed to be the same over time and for different bots.
-	//  Can't be used to download or reuse the file.
+	// Can't be used to download or reuse the file.
 	FileUniqueID string `json:"file_unique_id"`
 	// Photo width.
 	Width int `json:"width"`
@@ -16493,8 +16486,8 @@ type Poll struct {
 	// 0-based identifier of the correct answer option. Available only for polls in the quiz mode, which
 	// are closed, or was sent (not forwarded) by the bot or to the private chat with the bot.
 	CorrectOptionID OptInt `json:"correct_option_id"`
-	// Text that is shown when a user chooses an incorrect answer or taps on the lamp icon in a
-	// quiz-style poll, 0-200 characters.
+	// Text that is shown when a user chooses an incorrect answer or taps on the lamp icon in a quiz-style
+	// poll, 0-200 characters.
 	Explanation OptString `json:"explanation"`
 	// Special entities like usernames, URLs, bot commands, etc. that appear in the explanation.
 	ExplanationEntities []MessageEntity `json:"explanation_entities"`
@@ -16640,8 +16633,8 @@ type PollAnswer struct {
 	// Unique poll identifier.
 	PollID string `json:"poll_id"`
 	User   User   `json:"user"`
-	// 0-based identifiers of answer options, chosen by the user. May be empty if the user retracted
-	// their vote.
+	// 0-based identifiers of answer options, chosen by the user. May be empty if the user retracted their
+	// vote.
 	OptionIds []int `json:"option_ids"`
 }
 
@@ -16845,12 +16838,11 @@ type PromoteChatMember struct {
 	IsAnonymous OptBool `json:"is_anonymous"`
 	// Pass True, if the administrator can access the chat event log, chat statistics, message statistics
 	// in channels, see channel members, see anonymous administrators in supergroups and ignore slow mode.
-	//  Implied by any other administrator privilege.
+	// Implied by any other administrator privilege.
 	CanManageChat OptBool `json:"can_manage_chat"`
 	// Pass True, if the administrator can create channel posts, channels only.
 	CanPostMessages OptBool `json:"can_post_messages"`
-	// Pass True, if the administrator can edit messages of other users and can pin messages, channels
-	// only.
+	// Pass True, if the administrator can edit messages of other users and can pin messages, channels only.
 	CanEditMessages OptBool `json:"can_edit_messages"`
 	// Pass True, if the administrator can delete messages of other users.
 	CanDeleteMessages OptBool `json:"can_delete_messages"`
@@ -16858,9 +16850,9 @@ type PromoteChatMember struct {
 	CanManageVoiceChats OptBool `json:"can_manage_voice_chats"`
 	// Pass True, if the administrator can restrict, ban or unban chat members.
 	CanRestrictMembers OptBool `json:"can_restrict_members"`
-	// Pass True, if the administrator can add new administrators with a subset of their own privileges
-	// or demote administrators that he has promoted, directly or indirectly (promoted by administrators
-	// that were appointed by him).
+	// Pass True, if the administrator can add new administrators with a subset of their own privileges or
+	// demote administrators that he has promoted, directly or indirectly (promoted by administrators that
+	// were appointed by him).
 	CanPromoteMembers OptBool `json:"can_promote_members"`
 	// Pass True, if the administrator can change chat title, photo and other settings.
 	CanChangeInfo OptBool `json:"can_change_info"`
@@ -17000,8 +16992,8 @@ func (s *PromoteChatMember) SetCanPinMessages(val OptBool) {
 	s.CanPinMessages = val
 }
 
-// This object represents the content of a service message, sent whenever a user in the chat triggers
-// a proximity alert set by another user.
+// This object represents the content of a service message, sent whenever a user in the chat triggers a
+// proximity alert set by another user.
 // Ref: #/components/schemas/ProximityAlertTriggered
 type ProximityAlertTriggered struct {
 	Traveler User `json:"traveler"`
@@ -17046,22 +17038,21 @@ func (s *ProximityAlertTriggered) SetDistance(val int) {
 type ReplyKeyboardMarkup struct {
 	// Array of button rows, each represented by an Array of KeyboardButton objects.
 	Keyboard [][]KeyboardButton `json:"keyboard"`
-	// Requests clients to resize the keyboard vertically for optimal fit (e.g., make the keyboard
-	// smaller if there are just two rows of buttons). Defaults to false, in which case the custom
-	// keyboard is always of the same height as the app's standard keyboard.
+	// Requests clients to resize the keyboard vertically for optimal fit (e.g., make the keyboard smaller
+	// if there are just two rows of buttons). Defaults to false, in which case the custom keyboard is
+	// always of the same height as the app's standard keyboard.
 	ResizeKeyboard OptBool `json:"resize_keyboard"`
 	// Requests clients to hide the keyboard as soon as it's been used. The keyboard will still be
-	// available, but clients will automatically display the usual letter-keyboard in the chat – the
-	// user can press a special button in the input field to see the custom keyboard again. Defaults to
-	// false.
+	// available, but clients will automatically display the usual letter-keyboard in the chat – the user
+	// can press a special button in the input field to see the custom keyboard again. Defaults to false.
 	OneTimeKeyboard OptBool `json:"one_time_keyboard"`
 	// The placeholder to be shown in the input field when the keyboard is active; 1-64 characters.
 	InputFieldPlaceholder OptString `json:"input_field_placeholder"`
 	// Use this parameter if you want to show the keyboard to specific users only. Targets: 1) users that
 	// are @mentioned in the text of the Message object; 2) if the bot's message is a reply (has
 	// reply_to_message_id), sender of the original message.Example: A user requests to change the bot's
-	// language, bot replies to the request with a keyboard to select the new language. Other users in
-	// the group don't see the keyboard.
+	// language, bot replies to the request with a keyboard to select the new language. Other users in the
+	// group don't see the keyboard.
 	Selective OptBool `json:"selective"`
 }
 
@@ -17115,10 +17106,10 @@ func (s *ReplyKeyboardMarkup) SetSelective(val OptBool) {
 	s.Selective = val
 }
 
-// Upon receiving a message with this object, Telegram clients will remove the current custom
-// keyboard and display the default letter-keyboard. By default, custom keyboards are displayed until
-// a new keyboard is sent by a bot. An exception is made for one-time keyboards that are hidden
-// immediately after the user presses a button (see ReplyKeyboardMarkup).
+// Upon receiving a message with this object, Telegram clients will remove the current custom keyboard
+// and display the default letter-keyboard. By default, custom keyboards are displayed until a new
+// keyboard is sent by a bot. An exception is made for one-time keyboards that are hidden immediately
+// after the user presses a button (see ReplyKeyboardMarkup).
 // Ref: #/components/schemas/ReplyKeyboardRemove
 type ReplyKeyboardRemove struct {
 	// Requests clients to remove the custom keyboard (user will not be able to summon this keyboard; if
@@ -17194,8 +17185,7 @@ type RestrictChatMember struct {
 	UserID      int64           `json:"user_id"`
 	Permissions ChatPermissions `json:"permissions"`
 	// Date when restrictions will be lifted for the user, unix time. If user is restricted for more than
-	// 366 days or less than 30 seconds from the current time, they are considered to be restricted
-	// forever.
+	// 366 days or less than 30 seconds from the current time, they are considered to be restricted forever.
 	UntilDate OptInt `json:"until_date"`
 }
 
@@ -17739,9 +17729,9 @@ func (s *RevokeChatInviteLink) SetInviteLink(val string) {
 // Ref: #/components/schemas/sendAnimation
 type SendAnimation struct {
 	ChatID ID `json:"chat_id"`
-	// Animation to send. Pass a file_id as String to send an animation that exists on the Telegram
-	// servers (recommended), pass an HTTP URL as a String for Telegram to get an animation from the
-	// Internet, or upload a new animation using multipart/form-data. More info on Sending Files ».
+	// Animation to send. Pass a file_id as String to send an animation that exists on the Telegram servers
+	// (recommended), pass an HTTP URL as a String for Telegram to get an animation from the Internet, or
+	// upload a new animation using multipart/form-data. More info on Sending Files ».
 	Animation string `json:"animation"`
 	// Duration of sent animation in seconds.
 	Duration OptInt `json:"duration"`
@@ -17753,8 +17743,8 @@ type SendAnimation struct {
 	// server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's
 	// width and height should not exceed 320. Ignored if the file is not uploaded using
 	// multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can
-	// pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data
-	// under <file_attach_name>. More info on Sending Files ».
+	// pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data under
+	// <file_attach_name>. More info on Sending Files ».
 	Thumb OptString `json:"thumb"`
 	// Animation caption (may also be used when resending animation by file_id), 0-1024 characters after
 	// entities parsing.
@@ -18057,8 +18047,8 @@ type SendAudio struct {
 	// server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's
 	// width and height should not exceed 320. Ignored if the file is not uploaded using
 	// multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can
-	// pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data
-	// under <file_attach_name>. More info on Sending Files ».
+	// pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data under
+	// <file_attach_name>. More info on Sending Files ».
 	Thumb OptString `json:"thumb"`
 	// Sends the message silently. Users will receive a notification with no sound.
 	DisableNotification OptBool `json:"disable_notification"`
@@ -18330,9 +18320,9 @@ func NewForceReplySendAudioReplyMarkup(v ForceReply) SendAudioReplyMarkup {
 // Ref: #/components/schemas/sendChatAction
 type SendChatAction struct {
 	ChatID ID `json:"chat_id"`
-	// Type of action to broadcast. Choose one, depending on what the user is about to receive: typing
-	// for text messages, upload_photo for photos, record_video or upload_video for videos, record_voice
-	// or upload_voice for voice notes, upload_document for general files, choose_sticker for stickers,
+	// Type of action to broadcast. Choose one, depending on what the user is about to receive: typing for
+	// text messages, upload_photo for photos, record_video or upload_video for videos, record_voice or
+	// upload_voice for voice notes, upload_document for general files, choose_sticker for stickers,
 	// find_location for location data, record_video_note or upload_video_note for video notes.
 	Action string `json:"action"`
 }
@@ -18602,7 +18592,7 @@ func NewForceReplySendContactReplyMarkup(v ForceReply) SendContactReplyMarkup {
 type SendDice struct {
 	ChatID ID `json:"chat_id"`
 	// Emoji on which the dice throw animation is based. Currently, must be one of “”, “”, “”,
-	//  “”, “”, or “”. Dice can have values 1-6 for “”, “” and “”, values 1-5 for
+	// “”, “”, or “”. Dice can have values 1-6 for “”, “” and “”, values 1-5 for
 	// “” and “”, and values 1-64 for “”. Defaults to “”.
 	Emoji OptString `json:"emoji"`
 	// Sends the message silently. Users will receive a notification with no sound.
@@ -18806,15 +18796,15 @@ func NewForceReplySendDiceReplyMarkup(v ForceReply) SendDiceReplyMarkup {
 type SendDocument struct {
 	ChatID ID `json:"chat_id"`
 	// File to send. Pass a file_id as String to send a file that exists on the Telegram servers
-	// (recommended), pass an HTTP URL as a String for Telegram to get a file from the Internet, or
-	// upload a new one using multipart/form-data. More info on Sending Files ».
+	// (recommended), pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload
+	// a new one using multipart/form-data. More info on Sending Files ».
 	Document string `json:"document"`
 	// Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported
 	// server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's
 	// width and height should not exceed 320. Ignored if the file is not uploaded using
 	// multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can
-	// pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data
-	// under <file_attach_name>. More info on Sending Files ».
+	// pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data under
+	// <file_attach_name>. More info on Sending Files ».
 	Thumb OptString `json:"thumb"`
 	// Document caption (may also be used when resending documents by file_id), 0-1024 characters after
 	// entities parsing.
@@ -19171,20 +19161,20 @@ type SendInvoice struct {
 	Prices []LabeledPrice `json:"prices"`
 	// The maximum accepted amount for tips in the smallest units of the currency (integer, not
 	// float/double). For example, for a maximum tip of US$ 1.45 pass max_tip_amount = 145. See the exp
-	// parameter in currencies.json, it shows the number of digits past the decimal point for each
-	// currency (2 for the majority of currencies). Defaults to 0.
+	// parameter in currencies.json, it shows the number of digits past the decimal point for each currency
+	// (2 for the majority of currencies). Defaults to 0.
 	MaxTipAmount OptInt `json:"max_tip_amount"`
-	// A JSON-serialized array of suggested amounts of tips in the smallest units of the currency
-	// (integer, not float/double). At most 4 suggested tip amounts can be specified. The suggested tip
-	// amounts must be positive, passed in a strictly increased order and must not exceed max_tip_amount.
+	// A JSON-serialized array of suggested amounts of tips in the smallest units of the currency (integer,
+	// not float/double). At most 4 suggested tip amounts can be specified. The suggested tip amounts must
+	// be positive, passed in a strictly increased order and must not exceed max_tip_amount.
 	SuggestedTipAmounts []int `json:"suggested_tip_amounts"`
 	// Unique deep-linking parameter. If left empty, forwarded copies of the sent message will have a Pay
 	// button, allowing multiple users to pay directly from the forwarded message, using the same invoice.
-	//  If non-empty, forwarded copies of the sent message will have a URL button with a deep link to the
+	// If non-empty, forwarded copies of the sent message will have a URL button with a deep link to the
 	// bot (instead of a Pay button), with the value used as the start parameter.
 	StartParameter OptString `json:"start_parameter"`
-	// A JSON-serialized data about the invoice, which will be shared with the payment provider. A
-	// detailed description of required fields should be provided by the payment provider.
+	// A JSON-serialized data about the invoice, which will be shared with the payment provider. A detailed
+	// description of required fields should be provided by the payment provider.
 	ProviderData OptString `json:"provider_data"`
 	// URL of the product photo for the invoice. Can be a photo of the goods or a marketing image for a
 	// service. People like it better when they see what they are paying for.
@@ -20180,13 +20170,13 @@ func NewForceReplySendMessageReplyMarkup(v ForceReply) SendMessageReplyMarkup {
 type SendPhoto struct {
 	ChatID ID `json:"chat_id"`
 	// Photo to send. Pass a file_id as String to send a photo that exists on the Telegram servers
-	// (recommended), pass an HTTP URL as a String for Telegram to get a photo from the Internet, or
-	// upload a new photo using multipart/form-data. The photo must be at most 10 MB in size. The photo's
-	// width and height must not exceed 10000 in total. Width and height ratio must be at most 20. More
-	// info on Sending Files ».
+	// (recommended), pass an HTTP URL as a String for Telegram to get a photo from the Internet, or upload
+	// a new photo using multipart/form-data. The photo must be at most 10 MB in size. The photo's width
+	// and height must not exceed 10000 in total. Width and height ratio must be at most 20. More info on
+	// Sending Files ».
 	Photo string `json:"photo"`
-	// Photo caption (may also be used when resending photos by file_id), 0-1024 characters after
-	// entities parsing.
+	// Photo caption (may also be used when resending photos by file_id), 0-1024 characters after entities
+	// parsing.
 	Caption OptString `json:"caption"`
 	// Mode for parsing entities in the photo caption. See formatting options for more details.
 	ParseMode OptString `json:"parse_mode"`
@@ -20435,19 +20425,19 @@ type SendPoll struct {
 	AllowsMultipleAnswers OptBool `json:"allows_multiple_answers"`
 	// 0-based identifier of the correct answer option, required for polls in quiz mode.
 	CorrectOptionID OptInt `json:"correct_option_id"`
-	// Text that is shown when a user chooses an incorrect answer or taps on the lamp icon in a
-	// quiz-style poll, 0-200 characters with at most 2 line feeds after entities parsing.
+	// Text that is shown when a user chooses an incorrect answer or taps on the lamp icon in a quiz-style
+	// poll, 0-200 characters with at most 2 line feeds after entities parsing.
 	Explanation OptString `json:"explanation"`
 	// Mode for parsing entities in the explanation. See formatting options for more details.
 	ExplanationParseMode OptString `json:"explanation_parse_mode"`
 	// A JSON-serialized list of special entities that appear in the poll explanation, which can be
 	// specified instead of parse_mode.
 	ExplanationEntities []MessageEntity `json:"explanation_entities"`
-	// Amount of time in seconds the poll will be active after creation, 5-600. Can't be used together
-	// with close_date.
+	// Amount of time in seconds the poll will be active after creation, 5-600. Can't be used together with
+	// close_date.
 	OpenPeriod OptInt `json:"open_period"`
-	// Point in time (Unix timestamp) when the poll will be automatically closed. Must be at least 5 and
-	// no more than 600 seconds in the future. Can't be used together with open_period.
+	// Point in time (Unix timestamp) when the poll will be automatically closed. Must be at least 5 and no
+	// more than 600 seconds in the future. Can't be used together with open_period.
 	CloseDate OptInt `json:"close_date"`
 	// Pass True, if the poll needs to be immediately closed. This can be useful for poll preview.
 	IsClosed OptBool `json:"is_closed"`
@@ -21255,8 +21245,8 @@ func NewForceReplySendVenueReplyMarkup(v ForceReply) SendVenueReplyMarkup {
 type SendVideo struct {
 	ChatID ID `json:"chat_id"`
 	// Video to send. Pass a file_id as String to send a video that exists on the Telegram servers
-	// (recommended), pass an HTTP URL as a String for Telegram to get a video from the Internet, or
-	// upload a new video using multipart/form-data. More info on Sending Files ».
+	// (recommended), pass an HTTP URL as a String for Telegram to get a video from the Internet, or upload
+	// a new video using multipart/form-data. More info on Sending Files ».
 	Video string `json:"video"`
 	// Duration of sent video in seconds.
 	Duration OptInt `json:"duration"`
@@ -21268,11 +21258,11 @@ type SendVideo struct {
 	// server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's
 	// width and height should not exceed 320. Ignored if the file is not uploaded using
 	// multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can
-	// pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data
-	// under <file_attach_name>. More info on Sending Files ».
+	// pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data under
+	// <file_attach_name>. More info on Sending Files ».
 	Thumb OptString `json:"thumb"`
-	// Video caption (may also be used when resending videos by file_id), 0-1024 characters after
-	// entities parsing.
+	// Video caption (may also be used when resending videos by file_id), 0-1024 characters after entities
+	// parsing.
 	Caption OptString `json:"caption"`
 	// Mode for parsing entities in the video caption. See formatting options for more details.
 	ParseMode OptString `json:"parse_mode"`
@@ -21448,8 +21438,8 @@ type SendVideoNote struct {
 	// server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's
 	// width and height should not exceed 320. Ignored if the file is not uploaded using
 	// multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can
-	// pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data
-	// under <file_attach_name>. More info on Sending Files ».
+	// pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data under
+	// <file_attach_name>. More info on Sending Files ».
 	Thumb OptString `json:"thumb"`
 	// Sends the message silently. Users will receive a notification with no sound.
 	DisableNotification OptBool `json:"disable_notification"`
@@ -21809,8 +21799,8 @@ func NewForceReplySendVideoReplyMarkup(v ForceReply) SendVideoReplyMarkup {
 type SendVoice struct {
 	ChatID ID `json:"chat_id"`
 	// Audio file to send. Pass a file_id as String to send a file that exists on the Telegram servers
-	// (recommended), pass an HTTP URL as a String for Telegram to get a file from the Internet, or
-	// upload a new one using multipart/form-data. More info on Sending Files ».
+	// (recommended), pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload
+	// a new one using multipart/form-data. More info on Sending Files ».
 	Voice string `json:"voice"`
 	// Voice message caption, 0-1024 characters after entities parsing.
 	Caption OptString `json:"caption"`
@@ -22333,8 +22323,8 @@ type SetMyCommands struct {
 	// commands can be specified.
 	Commands []BotCommand       `json:"commands"`
 	Scope    OptBotCommandScope `json:"scope"`
-	// A two-letter ISO 639-1 language code. If empty, commands will be applied to all users from the
-	// given scope, for whose language there are no dedicated commands.
+	// A two-letter ISO 639-1 language code. If empty, commands will be applied to all users from the given
+	// scope, for whose language there are no dedicated commands.
 	LanguageCode OptString `json:"language_code"`
 }
 
@@ -22434,12 +22424,12 @@ type SetStickerSetThumb struct {
 	// User identifier of the sticker set owner.
 	UserID int64 `json:"user_id"`
 	// A PNG image with the thumbnail, must be up to 128 kilobytes in size and have width and height
-	// exactly 100px, or a TGS animation with the thumbnail up to 32 kilobytes in size; see https://core.
-	// telegram.org/animated_stickers#technical-requirements for animated sticker technical requirements.
-	// Pass a file_id as a String to send a file that already exists on the Telegram servers, pass an
-	// HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using
-	// multipart/form-data. More info on Sending Files ». Animated sticker set thumbnail can't be
-	// uploaded via HTTP URL.
+	// exactly 100px, or a TGS animation with the thumbnail up to 32 kilobytes in size; see
+	// https://core.telegram.org/animated_stickers#technical-requirements for animated sticker technical
+	// requirements. Pass a file_id as a String to send a file that already exists on the Telegram servers,
+	// pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using
+	// multipart/form-data. More info on Sending Files ». Animated sticker set thumbnail can't be uploaded
+	// via HTTP URL.
 	Thumb OptString `json:"thumb"`
 }
 
@@ -22481,19 +22471,19 @@ type SetWebhook struct {
 	// Upload your public key certificate so that the root certificate in use can be checked. See our
 	// self-signed guide for details.
 	Certificate OptString `json:"certificate"`
-	// The fixed IP address which will be used to send webhook requests instead of the IP address
-	// resolved through DNS.
+	// The fixed IP address which will be used to send webhook requests instead of the IP address resolved
+	// through DNS.
 	IPAddress OptString `json:"ip_address"`
 	// Maximum allowed number of simultaneous HTTPS connections to the webhook for update delivery, 1-100.
-	//  Defaults to 40. Use lower values to limit the load on your bot's server, and higher values to
+	// Defaults to 40. Use lower values to limit the load on your bot's server, and higher values to
 	// increase your bot's throughput.
 	MaxConnections OptInt `json:"max_connections"`
 	// A JSON-serialized list of the update types you want your bot to receive. For example, specify
 	// [“message”, “edited_channel_post”, “callback_query”] to only receive updates of these
 	// types. See Update for a complete list of available update types. Specify an empty list to receive
-	// all update types except chat_member (default). If not specified, the previous setting will be used.
-	// Please note that this parameter doesn't affect updates created before the call to the setWebhook,
-	// so unwanted updates may be received for a short period of time.
+	// all update types except chat_member (default). If not specified, the previous setting will be
+	// used.Please note that this parameter doesn't affect updates created before the call to the
+	// setWebhook, so unwanted updates may be received for a short period of time.
 	AllowedUpdates []string `json:"allowed_updates"`
 	// Pass True to drop all pending updates.
 	DropPendingUpdates OptBool `json:"drop_pending_updates"`
@@ -22734,7 +22724,7 @@ type Sticker struct {
 	// Identifier for this file, which can be used to download or reuse the file.
 	FileID string `json:"file_id"`
 	// Unique identifier for this file, which is supposed to be the same over time and for different bots.
-	//  Can't be used to download or reuse the file.
+	// Can't be used to download or reuse the file.
 	FileUniqueID string `json:"file_unique_id"`
 	// Sticker width.
 	Width int `json:"width"`
@@ -22856,8 +22846,7 @@ func (s *Sticker) SetFileSize(val OptInt) {
 // Ref: #/components/schemas/stopMessageLiveLocation
 type StopMessageLiveLocation struct {
 	ChatID OptID `json:"chat_id"`
-	// Required if inline_message_id is not specified. Identifier of the message with live location to
-	// stop.
+	// Required if inline_message_id is not specified. Identifier of the message with live location to stop.
 	MessageID OptInt `json:"message_id"`
 	// Required if chat_id and message_id are not specified. Identifier of the inline message.
 	InlineMessageID OptString               `json:"inline_message_id"`
@@ -23121,8 +23110,8 @@ func (s *UnpinAllChatMessages) SetChatID(val ID) {
 // Ref: #/components/schemas/unpinChatMessage
 type UnpinChatMessage struct {
 	ChatID ID `json:"chat_id"`
-	// Identifier of a message to unpin. If not specified, the most recent pinned message (by sending
-	// date) will be unpinned.
+	// Identifier of a message to unpin. If not specified, the most recent pinned message (by sending date)
+	// will be unpinned.
 	MessageID OptInt `json:"message_id"`
 }
 
@@ -23150,11 +23139,11 @@ func (s *UnpinChatMessage) SetMessageID(val OptInt) {
 // any given update.
 // Ref: #/components/schemas/Update
 type Update struct {
-	// The update's unique identifier. Update identifiers start from a certain positive number and
-	// increase sequentially. This ID becomes especially handy if you're using Webhooks, since it allows
-	// you to ignore repeated updates or to restore the correct update sequence, should they get out of
-	// order. If there are no new updates for at least a week, then identifier of the next update will be
-	// chosen randomly instead of sequentially.
+	// The update's unique identifier. Update identifiers start from a certain positive number and increase
+	// sequentially. This ID becomes especially handy if you're using Webhooks, since it allows you to
+	// ignore repeated updates or to restore the correct update sequence, should they get out of order. If
+	// there are no new updates for at least a week, then identifier of the next update will be chosen
+	// randomly instead of sequentially.
 	UpdateID           int                   `json:"update_id"`
 	Message            OptMessage            `json:"message"`
 	EditedMessage      OptMessage            `json:"edited_message"`
@@ -23355,10 +23344,10 @@ func (s *UploadStickerFile) SetPNGSticker(val string) {
 // This object represents a Telegram user or bot.
 // Ref: #/components/schemas/User
 type User struct {
-	// Unique identifier for this user or bot. This number may have more than 32 significant bits and
-	// some programming languages may have difficulty/silent defects in interpreting it. But it has at
-	// most 52 significant bits, so a 64-bit integer or double-precision float type are safe for storing
-	// this identifier.
+	// Unique identifier for this user or bot. This number may have more than 32 significant bits and some
+	// programming languages may have difficulty/silent defects in interpreting it. But it has at most 52
+	// significant bits, so a 64-bit integer or double-precision float type are safe for storing this
+	// identifier.
 	ID int64 `json:"id"`
 	// True, if this user is a bot.
 	IsBot bool `json:"is_bot"`
@@ -23592,7 +23581,7 @@ type Video struct {
 	// Identifier for this file, which can be used to download or reuse the file.
 	FileID string `json:"file_id"`
 	// Unique identifier for this file, which is supposed to be the same over time and for different bots.
-	//  Can't be used to download or reuse the file.
+	// Can't be used to download or reuse the file.
 	FileUniqueID string `json:"file_unique_id"`
 	// Video width as defined by sender.
 	Width int `json:"width"`
@@ -23705,7 +23694,7 @@ type VideoNote struct {
 	// Identifier for this file, which can be used to download or reuse the file.
 	FileID string `json:"file_id"`
 	// Unique identifier for this file, which is supposed to be the same over time and for different bots.
-	//  Can't be used to download or reuse the file.
+	// Can't be used to download or reuse the file.
 	FileUniqueID string `json:"file_unique_id"`
 	// Video width and height (diameter of the video message) as defined by sender.
 	Length int `json:"length"`
@@ -23782,7 +23771,7 @@ type Voice struct {
 	// Identifier for this file, which can be used to download or reuse the file.
 	FileID string `json:"file_id"`
 	// Unique identifier for this file, which is supposed to be the same over time and for different bots.
-	//  Can't be used to download or reuse the file.
+	// Can't be used to download or reuse the file.
 	FileUniqueID string `json:"file_unique_id"`
 	// Duration of the audio in seconds as defined by sender.
 	Duration int `json:"duration"`
@@ -23879,8 +23868,7 @@ func (s *VoiceChatParticipantsInvited) SetUsers(val []User) {
 // This object represents a service message about a voice chat scheduled in the chat.
 // Ref: #/components/schemas/VoiceChatScheduled
 type VoiceChatScheduled struct {
-	// Point in time (Unix timestamp) when the voice chat is supposed to be started by a chat
-	// administrator.
+	// Point in time (Unix timestamp) when the voice chat is supposed to be started by a chat administrator.
 	StartDate int `json:"start_date"`
 }
 
@@ -23894,8 +23882,8 @@ func (s *VoiceChatScheduled) SetStartDate(val int) {
 	s.StartDate = val
 }
 
-// This object represents a service message about a voice chat started in the chat. Currently holds
-// no information.
+// This object represents a service message about a voice chat started in the chat. Currently holds no
+// information.
 // Ref: #/components/schemas/VoiceChatStarted
 type VoiceChatStarted struct{}
 

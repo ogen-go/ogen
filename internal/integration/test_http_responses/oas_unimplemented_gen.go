@@ -71,8 +71,8 @@ func (UnimplementedHandler) HeadersPattern(ctx context.Context) (r *HeadersPatte
 
 // IntersectPatternCode implements intersectPatternCode operation.
 //
-// If a response is defined using an explicit code, the explicit code definition takes precedence
-// over the range definition for that code.
+// If a response is defined using an explicit code, the explicit code definition takes precedence over
+// the range definition for that code.
 //
 // GET /intersectPatternCode
 func (UnimplementedHandler) IntersectPatternCode(ctx context.Context, params IntersectPatternCodeParams) (r IntersectPatternCodeRes, _ error) {

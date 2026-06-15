@@ -83801,8 +83801,8 @@ func (s *Server) handleWatchApiregistrationV1APIServiceRequest(args [1]string, a
 
 // handleWatchApiregistrationV1APIServiceListRequest handles watchApiregistrationV1APIServiceList operation.
 //
-// Watch individual changes to a list of APIService. deprecated: use the 'watch' parameter with a
-// list operation instead.
+// Watch individual changes to a list of APIService. deprecated: use the 'watch' parameter with a list
+// operation instead.
 //
 // GET /apis/apiregistration.k8s.io/v1/watch/apiservices
 func (s *Server) handleWatchApiregistrationV1APIServiceListRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -84025,8 +84025,8 @@ func (s *Server) handleWatchApiregistrationV1APIServiceListRequest(args [0]strin
 
 // handleWatchAppsV1ControllerRevisionListForAllNamespacesRequest handles watchAppsV1ControllerRevisionListForAllNamespaces operation.
 //
-// Watch individual changes to a list of ControllerRevision. deprecated: use the 'watch' parameter
-// with a list operation instead.
+// Watch individual changes to a list of ControllerRevision. deprecated: use the 'watch' parameter with
+// a list operation instead.
 //
 // GET /apis/apps/v1/watch/controllerrevisions
 func (s *Server) handleWatchAppsV1ControllerRevisionListForAllNamespacesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -84473,8 +84473,8 @@ func (s *Server) handleWatchAppsV1DaemonSetListForAllNamespacesRequest(args [0]s
 
 // handleWatchAppsV1DeploymentListForAllNamespacesRequest handles watchAppsV1DeploymentListForAllNamespaces operation.
 //
-// Watch individual changes to a list of Deployment. deprecated: use the 'watch' parameter with a
-// list operation instead.
+// Watch individual changes to a list of Deployment. deprecated: use the 'watch' parameter with a list
+// operation instead.
 //
 // GET /apis/apps/v1/watch/deployments
 func (s *Server) handleWatchAppsV1DeploymentListForAllNamespacesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -84697,8 +84697,8 @@ func (s *Server) handleWatchAppsV1DeploymentListForAllNamespacesRequest(args [0]
 
 // handleWatchAppsV1NamespacedControllerRevisionRequest handles watchAppsV1NamespacedControllerRevision operation.
 //
-// Watch changes to an object of kind ControllerRevision. deprecated: use the 'watch' parameter with
-// a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
+// Watch changes to an object of kind ControllerRevision. deprecated: use the 'watch' parameter with a
+// list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/apps/v1/watch/namespaces/{namespace}/controllerrevisions/{name}
 func (s *Server) handleWatchAppsV1NamespacedControllerRevisionRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -84929,8 +84929,8 @@ func (s *Server) handleWatchAppsV1NamespacedControllerRevisionRequest(args [2]st
 
 // handleWatchAppsV1NamespacedControllerRevisionListRequest handles watchAppsV1NamespacedControllerRevisionList operation.
 //
-// Watch individual changes to a list of ControllerRevision. deprecated: use the 'watch' parameter
-// with a list operation instead.
+// Watch individual changes to a list of ControllerRevision. deprecated: use the 'watch' parameter with
+// a list operation instead.
 //
 // GET /apis/apps/v1/watch/namespaces/{namespace}/controllerrevisions
 func (s *Server) handleWatchAppsV1NamespacedControllerRevisionListRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -85849,8 +85849,8 @@ func (s *Server) handleWatchAppsV1NamespacedDeploymentRequest(args [2]string, ar
 
 // handleWatchAppsV1NamespacedDeploymentListRequest handles watchAppsV1NamespacedDeploymentList operation.
 //
-// Watch individual changes to a list of Deployment. deprecated: use the 'watch' parameter with a
-// list operation instead.
+// Watch individual changes to a list of Deployment. deprecated: use the 'watch' parameter with a list
+// operation instead.
 //
 // GET /apis/apps/v1/watch/namespaces/{namespace}/deployments
 func (s *Server) handleWatchAppsV1NamespacedDeploymentListRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -86309,8 +86309,8 @@ func (s *Server) handleWatchAppsV1NamespacedReplicaSetRequest(args [2]string, ar
 
 // handleWatchAppsV1NamespacedReplicaSetListRequest handles watchAppsV1NamespacedReplicaSetList operation.
 //
-// Watch individual changes to a list of ReplicaSet. deprecated: use the 'watch' parameter with a
-// list operation instead.
+// Watch individual changes to a list of ReplicaSet. deprecated: use the 'watch' parameter with a list
+// operation instead.
 //
 // GET /apis/apps/v1/watch/namespaces/{namespace}/replicasets
 func (s *Server) handleWatchAppsV1NamespacedReplicaSetListRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -86769,8 +86769,8 @@ func (s *Server) handleWatchAppsV1NamespacedStatefulSetRequest(args [2]string, a
 
 // handleWatchAppsV1NamespacedStatefulSetListRequest handles watchAppsV1NamespacedStatefulSetList operation.
 //
-// Watch individual changes to a list of StatefulSet. deprecated: use the 'watch' parameter with a
-// list operation instead.
+// Watch individual changes to a list of StatefulSet. deprecated: use the 'watch' parameter with a list
+// operation instead.
 //
 // GET /apis/apps/v1/watch/namespaces/{namespace}/statefulsets
 func (s *Server) handleWatchAppsV1NamespacedStatefulSetListRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -86997,8 +86997,8 @@ func (s *Server) handleWatchAppsV1NamespacedStatefulSetListRequest(args [1]strin
 
 // handleWatchAppsV1ReplicaSetListForAllNamespacesRequest handles watchAppsV1ReplicaSetListForAllNamespaces operation.
 //
-// Watch individual changes to a list of ReplicaSet. deprecated: use the 'watch' parameter with a
-// list operation instead.
+// Watch individual changes to a list of ReplicaSet. deprecated: use the 'watch' parameter with a list
+// operation instead.
 //
 // GET /apis/apps/v1/watch/replicasets
 func (s *Server) handleWatchAppsV1ReplicaSetListForAllNamespacesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -87221,8 +87221,8 @@ func (s *Server) handleWatchAppsV1ReplicaSetListForAllNamespacesRequest(args [0]
 
 // handleWatchAppsV1StatefulSetListForAllNamespacesRequest handles watchAppsV1StatefulSetListForAllNamespaces operation.
 //
-// Watch individual changes to a list of StatefulSet. deprecated: use the 'watch' parameter with a
-// list operation instead.
+// Watch individual changes to a list of StatefulSet. deprecated: use the 'watch' parameter with a list
+// operation instead.
 //
 // GET /apis/apps/v1/watch/statefulsets
 func (s *Server) handleWatchAppsV1StatefulSetListForAllNamespacesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -87445,8 +87445,8 @@ func (s *Server) handleWatchAppsV1StatefulSetListForAllNamespacesRequest(args [0
 
 // handleWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesRequest handles watchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces operation.
 //
-// Watch individual changes to a list of HorizontalPodAutoscaler. deprecated: use the 'watch'
-// parameter with a list operation instead.
+// Watch individual changes to a list of HorizontalPodAutoscaler. deprecated: use the 'watch' parameter
+// with a list operation instead.
 //
 // GET /apis/autoscaling/v1/watch/horizontalpodautoscalers
 func (s *Server) handleWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -87901,8 +87901,8 @@ func (s *Server) handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerReques
 
 // handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListRequest handles watchAutoscalingV1NamespacedHorizontalPodAutoscalerList operation.
 //
-// Watch individual changes to a list of HorizontalPodAutoscaler. deprecated: use the 'watch'
-// parameter with a list operation instead.
+// Watch individual changes to a list of HorizontalPodAutoscaler. deprecated: use the 'watch' parameter
+// with a list operation instead.
 //
 // GET /apis/autoscaling/v1/watch/namespaces/{namespace}/horizontalpodautoscalers
 func (s *Server) handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -88129,8 +88129,8 @@ func (s *Server) handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListRe
 
 // handleWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesRequest handles watchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces operation.
 //
-// Watch individual changes to a list of HorizontalPodAutoscaler. deprecated: use the 'watch'
-// parameter with a list operation instead.
+// Watch individual changes to a list of HorizontalPodAutoscaler. deprecated: use the 'watch' parameter
+// with a list operation instead.
 //
 // GET /apis/autoscaling/v2beta1/watch/horizontalpodautoscalers
 func (s *Server) handleWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -88585,8 +88585,8 @@ func (s *Server) handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerR
 
 // handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListRequest handles watchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList operation.
 //
-// Watch individual changes to a list of HorizontalPodAutoscaler. deprecated: use the 'watch'
-// parameter with a list operation instead.
+// Watch individual changes to a list of HorizontalPodAutoscaler. deprecated: use the 'watch' parameter
+// with a list operation instead.
 //
 // GET /apis/autoscaling/v2beta1/watch/namespaces/{namespace}/horizontalpodautoscalers
 func (s *Server) handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -88813,8 +88813,8 @@ func (s *Server) handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerL
 
 // handleWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesRequest handles watchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces operation.
 //
-// Watch individual changes to a list of HorizontalPodAutoscaler. deprecated: use the 'watch'
-// parameter with a list operation instead.
+// Watch individual changes to a list of HorizontalPodAutoscaler. deprecated: use the 'watch' parameter
+// with a list operation instead.
 //
 // GET /apis/autoscaling/v2beta2/watch/horizontalpodautoscalers
 func (s *Server) handleWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -89269,8 +89269,8 @@ func (s *Server) handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerR
 
 // handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListRequest handles watchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList operation.
 //
-// Watch individual changes to a list of HorizontalPodAutoscaler. deprecated: use the 'watch'
-// parameter with a list operation instead.
+// Watch individual changes to a list of HorizontalPodAutoscaler. deprecated: use the 'watch' parameter
+// with a list operation instead.
 //
 // GET /apis/autoscaling/v2beta2/watch/namespaces/{namespace}/horizontalpodautoscalers
 func (s *Server) handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -90405,8 +90405,8 @@ func (s *Server) handleWatchBatchV1NamespacedCronJobListRequest(args [1]string, 
 
 // handleWatchBatchV1NamespacedJobRequest handles watchBatchV1NamespacedJob operation.
 //
-// Watch changes to an object of kind Job. deprecated: use the 'watch' parameter with a list
-// operation instead, filtered to a single item with the 'fieldSelector' parameter.
+// Watch changes to an object of kind Job. deprecated: use the 'watch' parameter with a list operation
+// instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/batch/v1/watch/namespaces/{namespace}/jobs/{name}
 func (s *Server) handleWatchBatchV1NamespacedJobRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -91549,9 +91549,8 @@ func (s *Server) handleWatchBatchV1beta1NamespacedCronJobListRequest(args [1]str
 
 // handleWatchCertificatesV1CertificateSigningRequestRequest handles watchCertificatesV1CertificateSigningRequest operation.
 //
-// Watch changes to an object of kind CertificateSigningRequest. deprecated: use the 'watch'
-// parameter with a list operation instead, filtered to a single item with the 'fieldSelector'
-// parameter.
+// Watch changes to an object of kind CertificateSigningRequest. deprecated: use the 'watch' parameter
+// with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/certificates.k8s.io/v1/watch/certificatesigningrequests/{name}
 func (s *Server) handleWatchCertificatesV1CertificateSigningRequestRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -93358,8 +93357,8 @@ func (s *Server) handleWatchCoreV1EventListForAllNamespacesRequest(args [0]strin
 
 // handleWatchCoreV1LimitRangeListForAllNamespacesRequest handles watchCoreV1LimitRangeListForAllNamespaces operation.
 //
-// Watch individual changes to a list of LimitRange. deprecated: use the 'watch' parameter with a
-// list operation instead.
+// Watch individual changes to a list of LimitRange. deprecated: use the 'watch' parameter with a list
+// operation instead.
 //
 // GET /api/v1/watch/limitranges
 func (s *Server) handleWatchCoreV1LimitRangeListForAllNamespacesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -95646,8 +95645,8 @@ func (s *Server) handleWatchCoreV1NamespacedLimitRangeRequest(args [2]string, ar
 
 // handleWatchCoreV1NamespacedLimitRangeListRequest handles watchCoreV1NamespacedLimitRangeList operation.
 //
-// Watch individual changes to a list of LimitRange. deprecated: use the 'watch' parameter with a
-// list operation instead.
+// Watch individual changes to a list of LimitRange. deprecated: use the 'watch' parameter with a list
+// operation instead.
 //
 // GET /api/v1/watch/namespaces/{namespace}/limitranges
 func (s *Server) handleWatchCoreV1NamespacedLimitRangeListRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -95874,8 +95873,8 @@ func (s *Server) handleWatchCoreV1NamespacedLimitRangeListRequest(args [1]string
 
 // handleWatchCoreV1NamespacedPersistentVolumeClaimRequest handles watchCoreV1NamespacedPersistentVolumeClaim operation.
 //
-// Watch changes to an object of kind PersistentVolumeClaim. deprecated: use the 'watch' parameter
-// with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
+// Watch changes to an object of kind PersistentVolumeClaim. deprecated: use the 'watch' parameter with
+// a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /api/v1/watch/namespaces/{namespace}/persistentvolumeclaims/{name}
 func (s *Server) handleWatchCoreV1NamespacedPersistentVolumeClaimRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -96334,8 +96333,8 @@ func (s *Server) handleWatchCoreV1NamespacedPersistentVolumeClaimListRequest(arg
 
 // handleWatchCoreV1NamespacedPodRequest handles watchCoreV1NamespacedPod operation.
 //
-// Watch changes to an object of kind Pod. deprecated: use the 'watch' parameter with a list
-// operation instead, filtered to a single item with the 'fieldSelector' parameter.
+// Watch changes to an object of kind Pod. deprecated: use the 'watch' parameter with a list operation
+// instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /api/v1/watch/namespaces/{namespace}/pods/{name}
 func (s *Server) handleWatchCoreV1NamespacedPodRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -97026,8 +97025,8 @@ func (s *Server) handleWatchCoreV1NamespacedPodTemplateRequest(args [2]string, a
 
 // handleWatchCoreV1NamespacedPodTemplateListRequest handles watchCoreV1NamespacedPodTemplateList operation.
 //
-// Watch individual changes to a list of PodTemplate. deprecated: use the 'watch' parameter with a
-// list operation instead.
+// Watch individual changes to a list of PodTemplate. deprecated: use the 'watch' parameter with a list
+// operation instead.
 //
 // GET /api/v1/watch/namespaces/{namespace}/podtemplates
 func (s *Server) handleWatchCoreV1NamespacedPodTemplateListRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -97254,8 +97253,8 @@ func (s *Server) handleWatchCoreV1NamespacedPodTemplateListRequest(args [1]strin
 
 // handleWatchCoreV1NamespacedReplicationControllerRequest handles watchCoreV1NamespacedReplicationController operation.
 //
-// Watch changes to an object of kind ReplicationController. deprecated: use the 'watch' parameter
-// with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
+// Watch changes to an object of kind ReplicationController. deprecated: use the 'watch' parameter with
+// a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /api/v1/watch/namespaces/{namespace}/replicationcontrollers/{name}
 func (s *Server) handleWatchCoreV1NamespacedReplicationControllerRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -97714,8 +97713,8 @@ func (s *Server) handleWatchCoreV1NamespacedReplicationControllerListRequest(arg
 
 // handleWatchCoreV1NamespacedResourceQuotaRequest handles watchCoreV1NamespacedResourceQuota operation.
 //
-// Watch changes to an object of kind ResourceQuota. deprecated: use the 'watch' parameter with a
-// list operation instead, filtered to a single item with the 'fieldSelector' parameter.
+// Watch changes to an object of kind ResourceQuota. deprecated: use the 'watch' parameter with a list
+// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /api/v1/watch/namespaces/{namespace}/resourcequotas/{name}
 func (s *Server) handleWatchCoreV1NamespacedResourceQuotaRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -98866,8 +98865,8 @@ func (s *Server) handleWatchCoreV1NamespacedServiceRequest(args [2]string, argsE
 
 // handleWatchCoreV1NamespacedServiceAccountRequest handles watchCoreV1NamespacedServiceAccount operation.
 //
-// Watch changes to an object of kind ServiceAccount. deprecated: use the 'watch' parameter with a
-// list operation instead, filtered to a single item with the 'fieldSelector' parameter.
+// Watch changes to an object of kind ServiceAccount. deprecated: use the 'watch' parameter with a list
+// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /api/v1/watch/namespaces/{namespace}/serviceaccounts/{name}
 func (s *Server) handleWatchCoreV1NamespacedServiceAccountRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -99554,8 +99553,8 @@ func (s *Server) handleWatchCoreV1NamespacedServiceListRequest(args [1]string, a
 
 // handleWatchCoreV1NodeRequest handles watchCoreV1Node operation.
 //
-// Watch changes to an object of kind Node. deprecated: use the 'watch' parameter with a list
-// operation instead, filtered to a single item with the 'fieldSelector' parameter.
+// Watch changes to an object of kind Node. deprecated: use the 'watch' parameter with a list operation
+// instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /api/v1/watch/nodes/{name}
 func (s *Server) handleWatchCoreV1NodeRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -100458,8 +100457,8 @@ func (s *Server) handleWatchCoreV1PersistentVolumeClaimListForAllNamespacesReque
 
 // handleWatchCoreV1PersistentVolumeListRequest handles watchCoreV1PersistentVolumeList operation.
 //
-// Watch individual changes to a list of PersistentVolume. deprecated: use the 'watch' parameter with
-// a list operation instead.
+// Watch individual changes to a list of PersistentVolume. deprecated: use the 'watch' parameter with a
+// list operation instead.
 //
 // GET /api/v1/watch/persistentvolumes
 func (s *Server) handleWatchCoreV1PersistentVolumeListRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -100906,8 +100905,8 @@ func (s *Server) handleWatchCoreV1PodListForAllNamespacesRequest(args [0]string,
 
 // handleWatchCoreV1PodTemplateListForAllNamespacesRequest handles watchCoreV1PodTemplateListForAllNamespaces operation.
 //
-// Watch individual changes to a list of PodTemplate. deprecated: use the 'watch' parameter with a
-// list operation instead.
+// Watch individual changes to a list of PodTemplate. deprecated: use the 'watch' parameter with a list
+// operation instead.
 //
 // GET /api/v1/watch/podtemplates
 func (s *Server) handleWatchCoreV1PodTemplateListForAllNamespacesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -102474,8 +102473,8 @@ func (s *Server) handleWatchDiscoveryV1EndpointSliceListForAllNamespacesRequest(
 
 // handleWatchDiscoveryV1NamespacedEndpointSliceRequest handles watchDiscoveryV1NamespacedEndpointSlice operation.
 //
-// Watch changes to an object of kind EndpointSlice. deprecated: use the 'watch' parameter with a
-// list operation instead, filtered to a single item with the 'fieldSelector' parameter.
+// Watch changes to an object of kind EndpointSlice. deprecated: use the 'watch' parameter with a list
+// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/discovery.k8s.io/v1/watch/namespaces/{namespace}/endpointslices/{name}
 func (s *Server) handleWatchDiscoveryV1NamespacedEndpointSliceRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -103158,8 +103157,8 @@ func (s *Server) handleWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesReq
 
 // handleWatchDiscoveryV1beta1NamespacedEndpointSliceRequest handles watchDiscoveryV1beta1NamespacedEndpointSlice operation.
 //
-// Watch changes to an object of kind EndpointSlice. deprecated: use the 'watch' parameter with a
-// list operation instead, filtered to a single item with the 'fieldSelector' parameter.
+// Watch changes to an object of kind EndpointSlice. deprecated: use the 'watch' parameter with a list
+// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/discovery.k8s.io/v1beta1/watch/namespaces/{namespace}/endpointslices/{name}
 func (s *Server) handleWatchDiscoveryV1beta1NamespacedEndpointSliceRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -105214,8 +105213,8 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1FlowSchemaRequest(args [1
 
 // handleWatchFlowcontrolApiserverV1beta1FlowSchemaListRequest handles watchFlowcontrolApiserverV1beta1FlowSchemaList operation.
 //
-// Watch individual changes to a list of FlowSchema. deprecated: use the 'watch' parameter with a
-// list operation instead.
+// Watch individual changes to a list of FlowSchema. deprecated: use the 'watch' parameter with a list
+// operation instead.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/flowschemas
 func (s *Server) handleWatchFlowcontrolApiserverV1beta1FlowSchemaListRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -105438,9 +105437,8 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1FlowSchemaListRequest(arg
 
 // handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationRequest handles watchFlowcontrolApiserverV1beta1PriorityLevelConfiguration operation.
 //
-// Watch changes to an object of kind PriorityLevelConfiguration. deprecated: use the 'watch'
-// parameter with a list operation instead, filtered to a single item with the 'fieldSelector'
-// parameter.
+// Watch changes to an object of kind PriorityLevelConfiguration. deprecated: use the 'watch' parameter
+// with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/prioritylevelconfigurations/{name}
 func (s *Server) handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -106119,8 +106117,8 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2FlowSchemaRequest(args [1
 
 // handleWatchFlowcontrolApiserverV1beta2FlowSchemaListRequest handles watchFlowcontrolApiserverV1beta2FlowSchemaList operation.
 //
-// Watch individual changes to a list of FlowSchema. deprecated: use the 'watch' parameter with a
-// list operation instead.
+// Watch individual changes to a list of FlowSchema. deprecated: use the 'watch' parameter with a list
+// operation instead.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/flowschemas
 func (s *Server) handleWatchFlowcontrolApiserverV1beta2FlowSchemaListRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -106343,9 +106341,8 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2FlowSchemaListRequest(arg
 
 // handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationRequest handles watchFlowcontrolApiserverV1beta2PriorityLevelConfiguration operation.
 //
-// Watch changes to an object of kind PriorityLevelConfiguration. deprecated: use the 'watch'
-// parameter with a list operation instead, filtered to a single item with the 'fieldSelector'
-// parameter.
+// Watch changes to an object of kind PriorityLevelConfiguration. deprecated: use the 'watch' parameter
+// with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/prioritylevelconfigurations/{name}
 func (s *Server) handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -106796,8 +106793,8 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfiguratio
 
 // handleWatchInternalApiserverV1alpha1StorageVersionRequest handles watchInternalApiserverV1alpha1StorageVersion operation.
 //
-// Watch changes to an object of kind StorageVersion. deprecated: use the 'watch' parameter with a
-// list operation instead, filtered to a single item with the 'fieldSelector' parameter.
+// Watch changes to an object of kind StorageVersion. deprecated: use the 'watch' parameter with a list
+// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/internal.apiserver.k8s.io/v1alpha1/watch/storageversions/{name}
 func (s *Server) handleWatchInternalApiserverV1alpha1StorageVersionRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -108384,8 +108381,8 @@ func (s *Server) handleWatchNetworkingV1NamespacedIngressListRequest(args [1]str
 
 // handleWatchNetworkingV1NamespacedNetworkPolicyRequest handles watchNetworkingV1NamespacedNetworkPolicy operation.
 //
-// Watch changes to an object of kind NetworkPolicy. deprecated: use the 'watch' parameter with a
-// list operation instead, filtered to a single item with the 'fieldSelector' parameter.
+// Watch changes to an object of kind NetworkPolicy. deprecated: use the 'watch' parameter with a list
+// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/networking.k8s.io/v1/watch/namespaces/{namespace}/networkpolicies/{name}
 func (s *Server) handleWatchNetworkingV1NamespacedNetworkPolicyRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -110424,8 +110421,8 @@ func (s *Server) handleWatchNodeV1beta1RuntimeClassListRequest(args [0]string, a
 
 // handleWatchPolicyV1NamespacedPodDisruptionBudgetRequest handles watchPolicyV1NamespacedPodDisruptionBudget operation.
 //
-// Watch changes to an object of kind PodDisruptionBudget. deprecated: use the 'watch' parameter with
-// a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
+// Watch changes to an object of kind PodDisruptionBudget. deprecated: use the 'watch' parameter with a
+// list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/policy/v1/watch/namespaces/{namespace}/poddisruptionbudgets/{name}
 func (s *Server) handleWatchPolicyV1NamespacedPodDisruptionBudgetRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -111108,8 +111105,8 @@ func (s *Server) handleWatchPolicyV1PodDisruptionBudgetListForAllNamespacesReque
 
 // handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetRequest handles watchPolicyV1beta1NamespacedPodDisruptionBudget operation.
 //
-// Watch changes to an object of kind PodDisruptionBudget. deprecated: use the 'watch' parameter with
-// a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
+// Watch changes to an object of kind PodDisruptionBudget. deprecated: use the 'watch' parameter with a
+// list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/policy/v1beta1/watch/namespaces/{namespace}/poddisruptionbudgets/{name}
 func (s *Server) handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -112020,8 +112017,8 @@ func (s *Server) handleWatchPolicyV1beta1PodSecurityPolicyRequest(args [1]string
 
 // handleWatchPolicyV1beta1PodSecurityPolicyListRequest handles watchPolicyV1beta1PodSecurityPolicyList operation.
 //
-// Watch individual changes to a list of PodSecurityPolicy. deprecated: use the 'watch' parameter
-// with a list operation instead.
+// Watch individual changes to a list of PodSecurityPolicy. deprecated: use the 'watch' parameter with
+// a list operation instead.
 //
 // GET /apis/policy/v1beta1/watch/podsecuritypolicies
 func (s *Server) handleWatchPolicyV1beta1PodSecurityPolicyListRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -112472,8 +112469,8 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleRequest(args [1]string
 
 // handleWatchRbacAuthorizationV1ClusterRoleBindingRequest handles watchRbacAuthorizationV1ClusterRoleBinding operation.
 //
-// Watch changes to an object of kind ClusterRoleBinding. deprecated: use the 'watch' parameter with
-// a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
+// Watch changes to an object of kind ClusterRoleBinding. deprecated: use the 'watch' parameter with a
+// list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/rbac.authorization.k8s.io/v1/watch/clusterrolebindings/{name}
 func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleBindingRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -112700,8 +112697,8 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleBindingRequest(args [1
 
 // handleWatchRbacAuthorizationV1ClusterRoleBindingListRequest handles watchRbacAuthorizationV1ClusterRoleBindingList operation.
 //
-// Watch individual changes to a list of ClusterRoleBinding. deprecated: use the 'watch' parameter
-// with a list operation instead.
+// Watch individual changes to a list of ClusterRoleBinding. deprecated: use the 'watch' parameter with
+// a list operation instead.
 //
 // GET /apis/rbac.authorization.k8s.io/v1/watch/clusterrolebindings
 func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleBindingListRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -112924,8 +112921,8 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleBindingListRequest(arg
 
 // handleWatchRbacAuthorizationV1ClusterRoleListRequest handles watchRbacAuthorizationV1ClusterRoleList operation.
 //
-// Watch individual changes to a list of ClusterRole. deprecated: use the 'watch' parameter with a
-// list operation instead.
+// Watch individual changes to a list of ClusterRole. deprecated: use the 'watch' parameter with a list
+// operation instead.
 //
 // GET /apis/rbac.authorization.k8s.io/v1/watch/clusterroles
 func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleListRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -113148,8 +113145,8 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleListRequest(args [0]st
 
 // handleWatchRbacAuthorizationV1NamespacedRoleRequest handles watchRbacAuthorizationV1NamespacedRole operation.
 //
-// Watch changes to an object of kind Role. deprecated: use the 'watch' parameter with a list
-// operation instead, filtered to a single item with the 'fieldSelector' parameter.
+// Watch changes to an object of kind Role. deprecated: use the 'watch' parameter with a list operation
+// instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/roles/{name}
 func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -113612,8 +113609,8 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleBindingRequest(args
 
 // handleWatchRbacAuthorizationV1NamespacedRoleBindingListRequest handles watchRbacAuthorizationV1NamespacedRoleBindingList operation.
 //
-// Watch individual changes to a list of RoleBinding. deprecated: use the 'watch' parameter with a
-// list operation instead.
+// Watch individual changes to a list of RoleBinding. deprecated: use the 'watch' parameter with a list
+// operation instead.
 //
 // GET /apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/rolebindings
 func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleBindingListRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -114068,8 +114065,8 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleListRequest(args [1
 
 // handleWatchRbacAuthorizationV1RoleBindingListForAllNamespacesRequest handles watchRbacAuthorizationV1RoleBindingListForAllNamespaces operation.
 //
-// Watch individual changes to a list of RoleBinding. deprecated: use the 'watch' parameter with a
-// list operation instead.
+// Watch individual changes to a list of RoleBinding. deprecated: use the 'watch' parameter with a list
+// operation instead.
 //
 // GET /apis/rbac.authorization.k8s.io/v1/watch/rolebindings
 func (s *Server) handleWatchRbacAuthorizationV1RoleBindingListForAllNamespacesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -114516,8 +114513,8 @@ func (s *Server) handleWatchRbacAuthorizationV1RoleListForAllNamespacesRequest(a
 
 // handleWatchSchedulingV1PriorityClassRequest handles watchSchedulingV1PriorityClass operation.
 //
-// Watch changes to an object of kind PriorityClass. deprecated: use the 'watch' parameter with a
-// list operation instead, filtered to a single item with the 'fieldSelector' parameter.
+// Watch changes to an object of kind PriorityClass. deprecated: use the 'watch' parameter with a list
+// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/scheduling.k8s.io/v1/watch/priorityclasses/{name}
 func (s *Server) handleWatchSchedulingV1PriorityClassRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -116552,8 +116549,8 @@ func (s *Server) handleWatchStorageV1VolumeAttachmentRequest(args [1]string, arg
 
 // handleWatchStorageV1VolumeAttachmentListRequest handles watchStorageV1VolumeAttachmentList operation.
 //
-// Watch individual changes to a list of VolumeAttachment. deprecated: use the 'watch' parameter with
-// a list operation instead.
+// Watch individual changes to a list of VolumeAttachment. deprecated: use the 'watch' parameter with a
+// list operation instead.
 //
 // GET /apis/storage.k8s.io/v1/watch/volumeattachments
 func (s *Server) handleWatchStorageV1VolumeAttachmentListRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -116776,8 +116773,8 @@ func (s *Server) handleWatchStorageV1VolumeAttachmentListRequest(args [0]string,
 
 // handleWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesRequest handles watchStorageV1alpha1CSIStorageCapacityListForAllNamespaces operation.
 //
-// Watch individual changes to a list of CSIStorageCapacity. deprecated: use the 'watch' parameter
-// with a list operation instead.
+// Watch individual changes to a list of CSIStorageCapacity. deprecated: use the 'watch' parameter with
+// a list operation instead.
 //
 // GET /apis/storage.k8s.io/v1alpha1/watch/csistoragecapacities
 func (s *Server) handleWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -117000,8 +116997,8 @@ func (s *Server) handleWatchStorageV1alpha1CSIStorageCapacityListForAllNamespace
 
 // handleWatchStorageV1alpha1NamespacedCSIStorageCapacityRequest handles watchStorageV1alpha1NamespacedCSIStorageCapacity operation.
 //
-// Watch changes to an object of kind CSIStorageCapacity. deprecated: use the 'watch' parameter with
-// a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
+// Watch changes to an object of kind CSIStorageCapacity. deprecated: use the 'watch' parameter with a
+// list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/storage.k8s.io/v1alpha1/watch/namespaces/{namespace}/csistoragecapacities/{name}
 func (s *Server) handleWatchStorageV1alpha1NamespacedCSIStorageCapacityRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -117232,8 +117229,8 @@ func (s *Server) handleWatchStorageV1alpha1NamespacedCSIStorageCapacityRequest(a
 
 // handleWatchStorageV1alpha1NamespacedCSIStorageCapacityListRequest handles watchStorageV1alpha1NamespacedCSIStorageCapacityList operation.
 //
-// Watch individual changes to a list of CSIStorageCapacity. deprecated: use the 'watch' parameter
-// with a list operation instead.
+// Watch individual changes to a list of CSIStorageCapacity. deprecated: use the 'watch' parameter with
+// a list operation instead.
 //
 // GET /apis/storage.k8s.io/v1alpha1/watch/namespaces/{namespace}/csistoragecapacities
 func (s *Server) handleWatchStorageV1alpha1NamespacedCSIStorageCapacityListRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -117460,8 +117457,8 @@ func (s *Server) handleWatchStorageV1alpha1NamespacedCSIStorageCapacityListReque
 
 // handleWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesRequest handles watchStorageV1beta1CSIStorageCapacityListForAllNamespaces operation.
 //
-// Watch individual changes to a list of CSIStorageCapacity. deprecated: use the 'watch' parameter
-// with a list operation instead.
+// Watch individual changes to a list of CSIStorageCapacity. deprecated: use the 'watch' parameter with
+// a list operation instead.
 //
 // GET /apis/storage.k8s.io/v1beta1/watch/csistoragecapacities
 func (s *Server) handleWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -117684,8 +117681,8 @@ func (s *Server) handleWatchStorageV1beta1CSIStorageCapacityListForAllNamespaces
 
 // handleWatchStorageV1beta1NamespacedCSIStorageCapacityRequest handles watchStorageV1beta1NamespacedCSIStorageCapacity operation.
 //
-// Watch changes to an object of kind CSIStorageCapacity. deprecated: use the 'watch' parameter with
-// a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
+// Watch changes to an object of kind CSIStorageCapacity. deprecated: use the 'watch' parameter with a
+// list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/storage.k8s.io/v1beta1/watch/namespaces/{namespace}/csistoragecapacities/{name}
 func (s *Server) handleWatchStorageV1beta1NamespacedCSIStorageCapacityRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -117916,8 +117913,8 @@ func (s *Server) handleWatchStorageV1beta1NamespacedCSIStorageCapacityRequest(ar
 
 // handleWatchStorageV1beta1NamespacedCSIStorageCapacityListRequest handles watchStorageV1beta1NamespacedCSIStorageCapacityList operation.
 //
-// Watch individual changes to a list of CSIStorageCapacity. deprecated: use the 'watch' parameter
-// with a list operation instead.
+// Watch individual changes to a list of CSIStorageCapacity. deprecated: use the 'watch' parameter with
+// a list operation instead.
 //
 // GET /apis/storage.k8s.io/v1beta1/watch/namespaces/{namespace}/csistoragecapacities
 func (s *Server) handleWatchStorageV1beta1NamespacedCSIStorageCapacityListRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {

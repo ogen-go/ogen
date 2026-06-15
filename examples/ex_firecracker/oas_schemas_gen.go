@@ -309,8 +309,8 @@ func (s *BootSource) SetKernelImagePath(val string) {
 	s.KernelImagePath = val
 }
 
-// The CPU Template defines a set of flags to be disabled from the microvm so that the features
-// exposed to the guest are the same as in the selected instance type.
+// The CPU Template defines a set of flags to be disabled from the microvm so that the features exposed
+// to the guest are the same as in the selected instance type.
 // Ref: #/components/schemas/CpuTemplate
 type CpuTemplate string
 
@@ -692,8 +692,8 @@ type InstanceInfo struct {
 	AppName string `json:"app_name"`
 	// MicroVM / instance ID.
 	ID string `json:"id"`
-	// The current detailed state (Not started, Running, Paused) of the Firecracker instance. This value
-	// is read-only for the control-plane.
+	// The current detailed state (Not started, Running, Paused) of the Firecracker instance. This value is
+	// read-only for the control-plane.
 	State InstanceInfoState `json:"state"`
 	// MicroVM hypervisor build version.
 	VmmVersion string `json:"vmm_version"`
@@ -739,8 +739,8 @@ func (s *InstanceInfo) SetVmmVersion(val string) {
 	s.VmmVersion = val
 }
 
-// The current detailed state (Not started, Running, Paused) of the Firecracker instance. This value
-// is read-only for the control-plane.
+// The current detailed state (Not started, Running, Paused) of the Firecracker instance. This value is
+// read-only for the control-plane.
 type InstanceInfoState string
 
 const (
@@ -1029,10 +1029,9 @@ type MmdsPutReq struct{}
 // Defines a network interface.
 // Ref: #/components/schemas/NetworkInterface
 type NetworkInterface struct {
-	// If this field is set, the device model will reply to HTTP GET requests sent to the MMDS address
-	// via this interface. In this case, both ARP requests for 169.254.169.254 and TCP segments heading
-	// to the same address are intercepted by the device model, and do not reach the associated TAP
-	// device.
+	// If this field is set, the device model will reply to HTTP GET requests sent to the MMDS address via
+	// this interface. In this case, both ARP requests for 169.254.169.254 and TCP segments heading to the
+	// same address are intercepted by the device model, and do not reach the associated TAP device.
 	AllowMmdsRequests OptBool   `json:"allow_mmds_requests"`
 	GuestMAC          OptString `json:"guest_mac"`
 	// Host level path for the guest network interface.
@@ -1877,9 +1876,7 @@ func (s *PartialDrive) SetRateLimiter(val OptRateLimiter) {
 }
 
 // Defines a partial network interface structure, used to update the rate limiters for that interface,
-//
-//	after microvm start.
-//
+// after microvm start.
 // Ref: #/components/schemas/PartialNetworkInterface
 type PartialNetworkInterface struct {
 	IfaceID       string         `json:"iface_id"`
@@ -1988,7 +1985,7 @@ type PutMetricsNoContent struct{}
 func (*PutMetricsNoContent) putMetricsRes() {}
 
 // Defines an IO rate limiter with independent bytes/s and ops/s limits. Limits are defined by
-// configuring each of the _bandwidth_ and _ops_ token buckets.
+// configuring each of the bandwidth and ops token buckets.
 // Ref: #/components/schemas/RateLimiter
 type RateLimiter struct {
 	Bandwidth OptTokenBucket `json:"bandwidth"`
@@ -2023,8 +2020,8 @@ type SnapshotCreateParams struct {
 	SnapshotPath string `json:"snapshot_path"`
 	// Type of snapshot to create. It is optional and by default, a full snapshot is created.
 	SnapshotType OptSnapshotCreateParamsSnapshotType `json:"snapshot_type"`
-	// The microVM version for which we want to create the snapshot. It is optional and it defaults to
-	// the current version.
+	// The microVM version for which we want to create the snapshot. It is optional and it defaults to the
+	// current version.
 	Version OptString `json:"version"`
 }
 
@@ -2162,12 +2159,12 @@ func (s *SnapshotLoadParams) SetResumeVM(val OptBool) {
 	s.ResumeVM = val
 }
 
-// Defines a token bucket with a maximum capacity (size), an initial burst size (one_time_burst) and
-// an interval for refilling purposes (refill_time). The refill-rate is derived from size and
-// refill_time, and it is the constant rate at which the tokens replenish. The refill process only
-// starts happening after the initial burst budget is consumed. Consumption from the token bucket is
-// unbounded in speed which allows for bursts bound in size by the amount of tokens available. Once
-// the token bucket is empty, consumption speed is bound by the refill_rate.
+// Defines a token bucket with a maximum capacity (size), an initial burst size (one_time_burst) and an
+// interval for refilling purposes (refill_time). The refill-rate is derived from size and refill_time,
+// and it is the constant rate at which the tokens replenish. The refill process only starts happening
+// after the initial burst budget is consumed. Consumption from the token bucket is unbounded in speed
+// which allows for bursts bound in size by the amount of tokens available. Once the token bucket is
+// empty, consumption speed is bound by the refill_rate.
 // Ref: #/components/schemas/TokenBucket
 type TokenBucket struct {
 	// The initial size of a token bucket.
@@ -2265,13 +2262,13 @@ func (s *VMState) UnmarshalText(data []byte) error {
 	}
 }
 
-// Defines a vsock device, backed by a set of Unix Domain Sockets, on the host side. For
-// host-initiated connections, Firecracker will be listening on the Unix socket identified by the
-// path `uds_path`. Firecracker will create this socket, bind and listen on it. Host-initiated
-// connections will be performed by connection to this socket and issuing a connection forwarding
-// request to the desired guest-side vsock port (i.e. `CONNECT 52\n`, to connect to port 52). For
-// guest-initiated connections, Firecracker will expect host software to be bound and listening on
-// Unix sockets at `uds_path_<PORT>`. E.g. "/path/to/host_vsock.sock_52" for port number 52.
+// Defines a vsock device, backed by a set of Unix Domain Sockets, on the host side. For host-initiated
+// connections, Firecracker will be listening on the Unix socket identified by the path `uds_path`.
+// Firecracker will create this socket, bind and listen on it. Host-initiated connections will be
+// performed by connection to this socket and issuing a connection forwarding request to the desired
+// guest-side vsock port (i.e. `CONNECT 52\n`, to connect to port 52). For guest-initiated connections,
+// Firecracker will expect host software to be bound and listening on Unix sockets at
+// `uds_path_<PORT>`. E.g. "/path/to/host_vsock.sock_52" for port number 52.
 // Ref: #/components/schemas/Vsock
 type Vsock struct {
 	// Guest Vsock CID.

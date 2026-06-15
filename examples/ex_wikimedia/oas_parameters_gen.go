@@ -5,8 +5,8 @@ package api
 // V2StreamRecentchangeGetParams is parameters of GET /v2/stream/recentchange operation.
 type V2StreamRecentchangeGetParams struct {
 	// Specifies the Kafka topics, partitions and offsets from which to begin streaming. You may not
-	// specify topics that are not configured to be part of this stream endpoint. Example: `[{topic:
-	// datacenter1.topic, partition: 0, offset: 12345}, ...]`.
+	// specify topics that are not configured to be part of this stream endpoint. Example:
+	// `[{topic: datacenter1.topic, partition: 0, offset: 12345}, ...]`.
 	LastEventID OptString `json:",omitempty,omitzero"`
 	// If given, this timestamp will be used as the historical starting position in each the requested
 	// streams. since should either be an integer UTC milliseconds unix epoch timestamp, or a string
@@ -14,7 +14,7 @@ type V2StreamRecentchangeGetParams struct {
 	// offsets, it will be ignored, and the data will begin streaming from the latest position in the
 	// stream. This parameter is ignored if `Last-Event-ID` is set with offsets (or timestamps) for
 	// individual topic partition assignments, e.g. when resuming after a disconnect. NOTE: Historical
-	// timestamp assignment is not supported indefinitely. Depending on backend stream configuration,
-	// will likely be only one or a few weeks.
+	// timestamp assignment is not supported indefinitely. Depending on backend stream configuration, will
+	// likely be only one or a few weeks.
 	Since OptString `json:",omitempty,omitzero"`
 }

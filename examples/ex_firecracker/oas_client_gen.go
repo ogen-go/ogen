@@ -152,8 +152,8 @@ type Invoker interface {
 	PutBalloon(ctx context.Context, request *Balloon) (PutBalloonRes, error)
 	// PutGuestBootSource invokes putGuestBootSource operation.
 	//
-	// Creates new boot source if one does not already exist, otherwise updates it. Will fail if update
-	// is not possible.
+	// Creates new boot source if one does not already exist, otherwise updates it. Will fail if update is
+	// not possible.
 	//
 	// PUT /boot-source
 	PutGuestBootSource(ctx context.Context, request *BootSource) (PutGuestBootSourceRes, error)
@@ -185,10 +185,10 @@ type Invoker interface {
 	PutLogger(ctx context.Context, request *Logger) (PutLoggerRes, error)
 	// PutMachineConfiguration invokes putMachineConfiguration operation.
 	//
-	// Updates the Virtual Machine Configuration with the specified input. Firecracker starts with
-	// default values for vCPU count (=1) and memory size (=128 MiB). With Hyperthreading enabled, the
-	// vCPU count is restricted to be 1 or an even number, otherwise there are no restrictions regarding
-	// the vCPU count. If any of the parameters has an incorrect value, the whole update fails.
+	// Updates the Virtual Machine Configuration with the specified input. Firecracker starts with default
+	// values for vCPU count (=1) and memory size (=128 MiB). With Hyperthreading enabled, the vCPU count
+	// is restricted to be 1 or an even number, otherwise there are no restrictions regarding the vCPU
+	// count. If any of the parameters has an incorrect value, the whole update fails.
 	//
 	// PUT /machine-config
 	PutMachineConfiguration(ctx context.Context, request OptMachineConfiguration) (PutMachineConfigurationRes, error)
@@ -1840,8 +1840,8 @@ func (c *Client) sendPutBalloon(ctx context.Context, request *Balloon) (res PutB
 
 // PutGuestBootSource invokes putGuestBootSource operation.
 //
-// Creates new boot source if one does not already exist, otherwise updates it. Will fail if update
-// is not possible.
+// Creates new boot source if one does not already exist, otherwise updates it. Will fail if update is
+// not possible.
 //
 // PUT /boot-source
 func (c *Client) PutGuestBootSource(ctx context.Context, request *BootSource) (PutGuestBootSourceRes, error) {
@@ -2294,10 +2294,10 @@ func (c *Client) sendPutLogger(ctx context.Context, request *Logger) (res PutLog
 
 // PutMachineConfiguration invokes putMachineConfiguration operation.
 //
-// Updates the Virtual Machine Configuration with the specified input. Firecracker starts with
-// default values for vCPU count (=1) and memory size (=128 MiB). With Hyperthreading enabled, the
-// vCPU count is restricted to be 1 or an even number, otherwise there are no restrictions regarding
-// the vCPU count. If any of the parameters has an incorrect value, the whole update fails.
+// Updates the Virtual Machine Configuration with the specified input. Firecracker starts with default
+// values for vCPU count (=1) and memory size (=128 MiB). With Hyperthreading enabled, the vCPU count
+// is restricted to be 1 or an even number, otherwise there are no restrictions regarding the vCPU
+// count. If any of the parameters has an incorrect value, the whole update fails.
 //
 // PUT /machine-config
 func (c *Client) PutMachineConfiguration(ctx context.Context, request OptMachineConfiguration) (PutMachineConfigurationRes, error) {

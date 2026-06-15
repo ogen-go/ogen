@@ -2881,8 +2881,8 @@ func (s *Server) handlePutBalloonRequest(args [0]string, argsEscaped bool, w htt
 
 // handlePutGuestBootSourceRequest handles putGuestBootSource operation.
 //
-// Creates new boot source if one does not already exist, otherwise updates it. Will fail if update
-// is not possible.
+// Creates new boot source if one does not already exist, otherwise updates it. Will fail if update is
+// not possible.
 //
 // PUT /boot-source
 func (s *Server) handlePutGuestBootSourceRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -3684,10 +3684,10 @@ func (s *Server) handlePutLoggerRequest(args [0]string, argsEscaped bool, w http
 
 // handlePutMachineConfigurationRequest handles putMachineConfiguration operation.
 //
-// Updates the Virtual Machine Configuration with the specified input. Firecracker starts with
-// default values for vCPU count (=1) and memory size (=128 MiB). With Hyperthreading enabled, the
-// vCPU count is restricted to be 1 or an even number, otherwise there are no restrictions regarding
-// the vCPU count. If any of the parameters has an incorrect value, the whole update fails.
+// Updates the Virtual Machine Configuration with the specified input. Firecracker starts with default
+// values for vCPU count (=1) and memory size (=128 MiB). With Hyperthreading enabled, the vCPU count
+// is restricted to be 1 or an even number, otherwise there are no restrictions regarding the vCPU
+// count. If any of the parameters has an incorrect value, the whole update fails.
 //
 // PUT /machine-config
 func (s *Server) handlePutMachineConfigurationRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {

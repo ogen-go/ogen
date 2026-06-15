@@ -30,8 +30,8 @@ func trimTrailingSlashes(u *url.URL) {
 type Invoker interface {
 	// BuildInfo invokes buildInfo operation.
 	//
-	// Returns Tempo buildinfo, in the same format as Prometheus `/api/v1/status/buildinfo`.
-	// Used by Grafana to check Tempo API version.
+	// Returns Tempo buildinfo, in the same format as Prometheus `/api/v1/status/buildinfo`. Used by
+	// Grafana to check Tempo API version.
 	//
 	// GET /api/status/buildinfo
 	BuildInfo(ctx context.Context) (*PrometheusVersion, error)
@@ -55,8 +55,7 @@ type Invoker interface {
 	SearchTagValues(ctx context.Context, params SearchTagValuesParams) (*TagValues, error)
 	// SearchTagValuesV2 invokes searchTagValuesV2 operation.
 	//
-	// This endpoint retrieves all discovered values and their data types for the given TraceQL
-	// identifier.
+	// This endpoint retrieves all discovered values and their data types for the given TraceQL identifier.
 	//
 	// GET /api/v2/search/tag/{attribute_selector}/values
 	SearchTagValuesV2(ctx context.Context, params SearchTagValuesV2Params) (*TagValuesV2, error)
@@ -121,8 +120,8 @@ func (c *Client) requestURL(ctx context.Context) *url.URL {
 
 // BuildInfo invokes buildInfo operation.
 //
-// Returns Tempo buildinfo, in the same format as Prometheus `/api/v1/status/buildinfo`.
-// Used by Grafana to check Tempo API version.
+// Returns Tempo buildinfo, in the same format as Prometheus `/api/v1/status/buildinfo`. Used by
+// Grafana to check Tempo API version.
 //
 // GET /api/status/buildinfo
 func (c *Client) BuildInfo(ctx context.Context) (*PrometheusVersion, error) {
@@ -656,8 +655,7 @@ func (c *Client) sendSearchTagValues(ctx context.Context, params SearchTagValues
 
 // SearchTagValuesV2 invokes searchTagValuesV2 operation.
 //
-// This endpoint retrieves all discovered values and their data types for the given TraceQL
-// identifier.
+// This endpoint retrieves all discovered values and their data types for the given TraceQL identifier.
 //
 // GET /api/v2/search/tag/{attribute_selector}/values
 func (c *Client) SearchTagValuesV2(ctx context.Context, params SearchTagValuesV2Params) (*TagValuesV2, error) {

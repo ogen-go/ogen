@@ -42,8 +42,8 @@ type Handler interface {
 	HeadersPattern(ctx context.Context) (*HeadersPattern4XX, error)
 	// IntersectPatternCode implements intersectPatternCode operation.
 	//
-	// If a response is defined using an explicit code, the explicit code definition takes precedence
-	// over the range definition for that code.
+	// If a response is defined using an explicit code, the explicit code definition takes precedence over
+	// the range definition for that code.
 	//
 	// GET /intersectPatternCode
 	IntersectPatternCode(ctx context.Context, params IntersectPatternCodeParams) (IntersectPatternCodeRes, error)

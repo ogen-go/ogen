@@ -2640,9 +2640,9 @@ func (*GetStorageV1beta1APIResourcesUnauthorized) getStorageV1beta1APIResourcesR
 type IoK8sAPIAdmissionregistrationV1MutatingWebhook struct {
 	// AdmissionReviewVersions is an ordered list of preferred `AdmissionReview` versions the Webhook
 	// expects. API server will try to use first version in the list which it supports. If none of the
-	// versions specified in this list supported by API server, validation will fail for this object. If
-	// a persisted webhook configuration specifies allowed versions and does not include any versions
-	// known to the API Server, calls to the webhook will fail and be subject to the failure policy.
+	// versions specified in this list supported by API server, validation will fail for this object. If a
+	// persisted webhook configuration specifies allowed versions and does not include any versions known
+	// to the API Server, calls to the webhook will fail and be subject to the failure policy.
 	AdmissionReviewVersions []string                                           `json:"admissionReviewVersions"`
 	ClientConfig            IoK8sAPIAdmissionregistrationV1WebhookClientConfig `json:"clientConfig"`
 	// FailurePolicy defines how unrecognized errors from the admission endpoint are handled - allowed
@@ -2650,48 +2650,53 @@ type IoK8sAPIAdmissionregistrationV1MutatingWebhook struct {
 	FailurePolicy OptString `json:"failurePolicy"`
 	// MatchPolicy defines how the "rules" list is used to match incoming requests. Allowed values are
 	// "Exact" or "Equivalent".
-	// - Exact: match a request only if it exactly matches a specified rule. For example, if deployments
-	// can be modified via apps/v1, apps/v1beta1, and extensions/v1beta1, but "rules" only included
-	// `apiGroups:["apps"], apiVersions:["v1"], resources: ["deployments"]`, a request to apps/v1beta1 or
-	// extensions/v1beta1 would not be sent to the webhook.
-	// - Equivalent: match a request if modifies a resource listed in rules, even via another API group
-	// or version. For example, if deployments can be modified via apps/v1, apps/v1beta1, and
-	// extensions/v1beta1, and "rules" only included `apiGroups:["apps"], apiVersions:["v1"], resources:
-	// ["deployments"]`, a request to apps/v1beta1 or extensions/v1beta1 would be converted to apps/v1
-	// and sent to the webhook.
+	//
+	//  - Exact: match a request only if it exactly matches a specified rule. For example, if deployments
+	//    can be modified via apps/v1, apps/v1beta1, and extensions/v1beta1, but "rules" only included
+	//    `apiGroups:["apps"], apiVersions:["v1"], resources: ["deployments"]`, a request to apps/v1beta1
+	//    or extensions/v1beta1 would not be sent to the webhook.
+	//  - Equivalent: match a request if modifies a resource listed in rules, even via another API group or
+	//    version. For example, if deployments can be modified via apps/v1, apps/v1beta1, and
+	//    extensions/v1beta1, and "rules" only included
+	//    `apiGroups:["apps"], apiVersions:["v1"], resources: ["deployments"]`, a request to apps/v1beta1
+	//    or extensions/v1beta1 would be converted to apps/v1 and sent to the webhook.
+	//
 	// Defaults to "Equivalent".
 	MatchPolicy OptString `json:"matchPolicy"`
 	// The name of the admission webhook. Name should be fully qualified, e.g., imagepolicy.kubernetes.io,
-	//  where "imagepolicy" is the name of the webhook, and kubernetes.io is the name of the organization.
-	//  Required.
+	// where "imagepolicy" is the name of the webhook, and kubernetes.io is the name of the organization.
+	// Required.
 	Name              string                                         `json:"name"`
 	NamespaceSelector OptIoK8sApimachineryPkgApisMetaV1LabelSelector `json:"namespaceSelector"`
 	ObjectSelector    OptIoK8sApimachineryPkgApisMetaV1LabelSelector `json:"objectSelector"`
 	// ReinvocationPolicy indicates whether this webhook should be called multiple times as part of a
 	// single admission evaluation. Allowed values are "Never" and "IfNeeded".
+	//
 	// Never: the webhook will not be called more than once in a single admission evaluation.
+	//
 	// IfNeeded: the webhook will be called at least one additional time as part of the admission
 	// evaluation if the object being admitted is modified by other admission plugins after the initial
-	// webhook call. Webhooks that specify this option *must* be idempotent, able to process objects they
+	// webhook call. Webhooks that specify this option must be idempotent, able to process objects they
 	// previously admitted. Note: * the number of additional invocations is not guaranteed to be exactly
 	// one. * if additional invocations result in further modifications to the object, webhooks are not
 	// guaranteed to be invoked again. * webhooks that use this option may be reordered to minimize the
 	// number of additional invocations. * to validate an object after all mutations are guaranteed
 	// complete, use a validating admission webhook instead.
+	//
 	// Defaults to "Never".
 	ReinvocationPolicy OptString `json:"reinvocationPolicy"`
-	// Rules describes what operations on what resources/subresources the webhook cares about. The
-	// webhook cares about an operation if it matches _any_ Rule. However, in order to prevent
-	// ValidatingAdmissionWebhooks and MutatingAdmissionWebhooks from putting the cluster in a state
-	// which cannot be recovered from without completely disabling the plugin,
-	// ValidatingAdmissionWebhooks and MutatingAdmissionWebhooks are never called on admission requests
-	// for ValidatingWebhookConfiguration and MutatingWebhookConfiguration objects.
+	// Rules describes what operations on what resources/subresources the webhook cares about. The webhook
+	// cares about an operation if it matches any Rule. However, in order to prevent
+	// ValidatingAdmissionWebhooks and MutatingAdmissionWebhooks from putting the cluster in a state which
+	// cannot be recovered from without completely disabling the plugin, ValidatingAdmissionWebhooks and
+	// MutatingAdmissionWebhooks are never called on admission requests for ValidatingWebhookConfiguration
+	// and MutatingWebhookConfiguration objects.
 	Rules []IoK8sAPIAdmissionregistrationV1RuleWithOperations `json:"rules"`
-	// SideEffects states whether this webhook has side effects. Acceptable values are: None,
-	// NoneOnDryRun (webhooks created via v1beta1 may also specify Some or Unknown). Webhooks with side
-	// effects MUST implement a reconciliation system, since a request may be rejected by a future step
-	// in the admission chain and the side effects therefore need to be undone. Requests with the dryRun
-	// attribute will be auto-rejected if they match a webhook with sideEffects == Unknown or Some.
+	// SideEffects states whether this webhook has side effects. Acceptable values are: None, NoneOnDryRun
+	// (webhooks created via v1beta1 may also specify Some or Unknown). Webhooks with side effects MUST
+	// implement a reconciliation system, since a request may be rejected by a future step in the admission
+	// chain and the side effects therefore need to be undone. Requests with the dryRun attribute will be
+	// auto-rejected if they match a webhook with sideEffects == Unknown or Some.
 	SideEffects string `json:"sideEffects"`
 	// TimeoutSeconds specifies the timeout for this webhook. After the timeout passes, the webhook call
 	// will be ignored or the API call will fail based on the failure policy. The timeout value must be
@@ -2813,12 +2818,12 @@ func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhook) SetTimeoutSeconds(val O
 // reject and may change the object.
 // Ref: #/components/schemas/io.k8s.api.admissionregistration.v1.MutatingWebhookConfiguration
 type IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                   `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
@@ -2872,14 +2877,14 @@ func (*IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration) readAdmissio
 // MutatingWebhookConfigurationList is a list of MutatingWebhookConfiguration.
 // Ref: #/components/schemas/io.k8s.api.admissionregistration.v1.MutatingWebhookConfigurationList
 type IoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
 	// List of MutatingWebhookConfiguration.
 	Items []IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration `json:"items"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
@@ -2932,28 +2937,31 @@ func (*IoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList) listAdmi
 // the tuple expansions are valid.
 // Ref: #/components/schemas/io.k8s.api.admissionregistration.v1.RuleWithOperations
 type IoK8sAPIAdmissionregistrationV1RuleWithOperations struct {
-	// APIGroups is the API groups the resources belong to. '*' is all groups. If '*' is present, the
-	// length of the slice must be one. Required.
+	// APIGroups is the API groups the resources belong to. '' is all groups. If '' is present, the length
+	// of the slice must be one. Required.
 	ApiGroups []string `json:"apiGroups"`
-	// APIVersions is the API versions the resources belong to. '*' is all versions. If '*' is present,
-	// the length of the slice must be one. Required.
+	// APIVersions is the API versions the resources belong to. '' is all versions. If '' is present, the
+	// length of the slice must be one. Required.
 	ApiVersions []string `json:"apiVersions"`
 	// Operations is the operations the admission hook cares about - CREATE, UPDATE, DELETE, CONNECT or *
 	// for all of those operations and any future admission operations that are added. If '*' is present,
 	// the length of the slice must be one. Required.
 	Operations []string `json:"operations"`
 	// Resources is a list of resources this rule applies to.
-	// For example: 'pods' means pods. 'pods/log' means the log subresource of pods. '*' means all
-	// resources, but not subresources. 'pods/*' means all subresources of pods. '*/scale' means all
-	// scale subresources. '*/*' means all resources and their subresources.
+	//
+	// For example: 'pods' means pods. 'pods/log' means the log subresource of pods. '' means all
+	// resources, but not subresources. 'pods/' means all subresources of pods. '/scale' means all scale
+	// subresources. '/*' means all resources and their subresources.
+	//
 	// If wildcard is present, the validation rule will ensure resources do not overlap with each other.
+	//
 	// Depending on the enclosing object, subresources might not be allowed. Required.
 	Resources []string `json:"resources"`
-	// Scope specifies the scope of this rule. Valid values are "Cluster", "Namespaced", and "*"
-	// "Cluster" means that only cluster-scoped resources will match this rule. Namespace API objects are
-	// cluster-scoped. "Namespaced" means that only namespaced resources will match this rule. "*" means
-	// that there are no scope restrictions. Subresources match the scope of their parent resource.
-	// Default is "*".
+	// Scope specifies the scope of this rule. Valid values are "Cluster", "Namespaced", and "" "Cluster"
+	// means that only cluster-scoped resources will match this rule. Namespace API objects are
+	// cluster-scoped. "Namespaced" means that only namespaced resources will match this rule. "" means
+	// that there are no scope restrictions. Subresources match the scope of their parent resource. Default
+	// is "*".
 	Scope OptString `json:"scope"`
 }
 
@@ -3066,9 +3074,9 @@ func (s *IoK8sAPIAdmissionregistrationV1ServiceReference) SetPort(val OptInt32) 
 type IoK8sAPIAdmissionregistrationV1ValidatingWebhook struct {
 	// AdmissionReviewVersions is an ordered list of preferred `AdmissionReview` versions the Webhook
 	// expects. API server will try to use first version in the list which it supports. If none of the
-	// versions specified in this list supported by API server, validation will fail for this object. If
-	// a persisted webhook configuration specifies allowed versions and does not include any versions
-	// known to the API Server, calls to the webhook will fail and be subject to the failure policy.
+	// versions specified in this list supported by API server, validation will fail for this object. If a
+	// persisted webhook configuration specifies allowed versions and does not include any versions known
+	// to the API Server, calls to the webhook will fail and be subject to the failure policy.
 	AdmissionReviewVersions []string                                           `json:"admissionReviewVersions"`
 	ClientConfig            IoK8sAPIAdmissionregistrationV1WebhookClientConfig `json:"clientConfig"`
 	// FailurePolicy defines how unrecognized errors from the admission endpoint are handled - allowed
@@ -3076,35 +3084,37 @@ type IoK8sAPIAdmissionregistrationV1ValidatingWebhook struct {
 	FailurePolicy OptString `json:"failurePolicy"`
 	// MatchPolicy defines how the "rules" list is used to match incoming requests. Allowed values are
 	// "Exact" or "Equivalent".
-	// - Exact: match a request only if it exactly matches a specified rule. For example, if deployments
-	// can be modified via apps/v1, apps/v1beta1, and extensions/v1beta1, but "rules" only included
-	// `apiGroups:["apps"], apiVersions:["v1"], resources: ["deployments"]`, a request to apps/v1beta1 or
-	// extensions/v1beta1 would not be sent to the webhook.
-	// - Equivalent: match a request if modifies a resource listed in rules, even via another API group
-	// or version. For example, if deployments can be modified via apps/v1, apps/v1beta1, and
-	// extensions/v1beta1, and "rules" only included `apiGroups:["apps"], apiVersions:["v1"], resources:
-	// ["deployments"]`, a request to apps/v1beta1 or extensions/v1beta1 would be converted to apps/v1
-	// and sent to the webhook.
+	//
+	//  - Exact: match a request only if it exactly matches a specified rule. For example, if deployments
+	//    can be modified via apps/v1, apps/v1beta1, and extensions/v1beta1, but "rules" only included
+	//    `apiGroups:["apps"], apiVersions:["v1"], resources: ["deployments"]`, a request to apps/v1beta1
+	//    or extensions/v1beta1 would not be sent to the webhook.
+	//  - Equivalent: match a request if modifies a resource listed in rules, even via another API group or
+	//    version. For example, if deployments can be modified via apps/v1, apps/v1beta1, and
+	//    extensions/v1beta1, and "rules" only included
+	//    `apiGroups:["apps"], apiVersions:["v1"], resources: ["deployments"]`, a request to apps/v1beta1
+	//    or extensions/v1beta1 would be converted to apps/v1 and sent to the webhook.
+	//
 	// Defaults to "Equivalent".
 	MatchPolicy OptString `json:"matchPolicy"`
 	// The name of the admission webhook. Name should be fully qualified, e.g., imagepolicy.kubernetes.io,
-	//  where "imagepolicy" is the name of the webhook, and kubernetes.io is the name of the organization.
-	//  Required.
+	// where "imagepolicy" is the name of the webhook, and kubernetes.io is the name of the organization.
+	// Required.
 	Name              string                                         `json:"name"`
 	NamespaceSelector OptIoK8sApimachineryPkgApisMetaV1LabelSelector `json:"namespaceSelector"`
 	ObjectSelector    OptIoK8sApimachineryPkgApisMetaV1LabelSelector `json:"objectSelector"`
-	// Rules describes what operations on what resources/subresources the webhook cares about. The
-	// webhook cares about an operation if it matches _any_ Rule. However, in order to prevent
-	// ValidatingAdmissionWebhooks and MutatingAdmissionWebhooks from putting the cluster in a state
-	// which cannot be recovered from without completely disabling the plugin,
-	// ValidatingAdmissionWebhooks and MutatingAdmissionWebhooks are never called on admission requests
-	// for ValidatingWebhookConfiguration and MutatingWebhookConfiguration objects.
+	// Rules describes what operations on what resources/subresources the webhook cares about. The webhook
+	// cares about an operation if it matches any Rule. However, in order to prevent
+	// ValidatingAdmissionWebhooks and MutatingAdmissionWebhooks from putting the cluster in a state which
+	// cannot be recovered from without completely disabling the plugin, ValidatingAdmissionWebhooks and
+	// MutatingAdmissionWebhooks are never called on admission requests for ValidatingWebhookConfiguration
+	// and MutatingWebhookConfiguration objects.
 	Rules []IoK8sAPIAdmissionregistrationV1RuleWithOperations `json:"rules"`
-	// SideEffects states whether this webhook has side effects. Acceptable values are: None,
-	// NoneOnDryRun (webhooks created via v1beta1 may also specify Some or Unknown). Webhooks with side
-	// effects MUST implement a reconciliation system, since a request may be rejected by a future step
-	// in the admission chain and the side effects therefore need to be undone. Requests with the dryRun
-	// attribute will be auto-rejected if they match a webhook with sideEffects == Unknown or Some.
+	// SideEffects states whether this webhook has side effects. Acceptable values are: None, NoneOnDryRun
+	// (webhooks created via v1beta1 may also specify Some or Unknown). Webhooks with side effects MUST
+	// implement a reconciliation system, since a request may be rejected by a future step in the admission
+	// chain and the side effects therefore need to be undone. Requests with the dryRun attribute will be
+	// auto-rejected if they match a webhook with sideEffects == Unknown or Some.
 	SideEffects string `json:"sideEffects"`
 	// TimeoutSeconds specifies the timeout for this webhook. After the timeout passes, the webhook call
 	// will be ignored or the API call will fail based on the failure policy. The timeout value must be
@@ -3216,12 +3226,12 @@ func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhook) SetTimeoutSeconds(val
 // reject and object without changing it.
 // Ref: #/components/schemas/io.k8s.api.admissionregistration.v1.ValidatingWebhookConfiguration
 type IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                   `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
@@ -3275,14 +3285,14 @@ func (*IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration) readAdmiss
 // ValidatingWebhookConfigurationList is a list of ValidatingWebhookConfiguration.
 // Ref: #/components/schemas/io.k8s.api.admissionregistration.v1.ValidatingWebhookConfigurationList
 type IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfigurationList struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
 	// List of ValidatingWebhookConfiguration.
 	Items []IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration `json:"items"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
@@ -3340,17 +3350,22 @@ type IoK8sAPIAdmissionregistrationV1WebhookClientConfig struct {
 	Service  OptIoK8sAPIAdmissionregistrationV1ServiceReference `json:"service"`
 	// `url` gives the location of the webhook, in standard URL form (`scheme://host:port/path`). Exactly
 	// one of `url` or `service` must be specified.
+	//
 	// The `host` should not refer to a service running in the cluster; use the `service` field instead.
 	// The host might be resolved via external DNS in some apiservers (e.g., `kube-apiserver` cannot
 	// resolve in-cluster DNS as that would be a layering violation). `host` may also be an IP address.
-	// Please note that using `localhost` or `127.0.0.1` as a `host` is risky unless you take great care
-	// to run this webhook on all hosts which run an apiserver which might need to make calls to this
-	// webhook. Such installs are likely to be non-portable, i.e., not easy to turn up in a new cluster.
+	//
+	// Please note that using `localhost` or `127.0.0.1` as a `host` is risky unless you take great care to
+	// run this webhook on all hosts which run an apiserver which might need to make calls to this webhook.
+	// Such installs are likely to be non-portable, i.e., not easy to turn up in a new cluster.
+	//
 	// The scheme must be "https"; the URL must begin with "https://".
+	//
 	// A path is optional, and if present may be any string permissible in a URL. You may use the path to
 	// pass an arbitrary string to the webhook, for example, a cluster identifier.
-	// Attempting to use a user or basic auth e.g. "user:password@" is not allowed. Fragments ("#...")
-	// and query parameters ("?...") are not allowed, either.
+	//
+	// Attempting to use a user or basic auth e.g. "user:password@" is not allowed. Fragments ("#...") and
+	// query parameters ("?...") are not allowed, either.
 	URL OptString `json:"url"`
 }
 
@@ -3384,14 +3399,14 @@ func (s *IoK8sAPIAdmissionregistrationV1WebhookClientConfig) SetURL(val OptStrin
 	s.URL = val
 }
 
-// An API server instance reports the version it can decode and the version it encodes objects to
-// when persisting objects in the backend.
+// An API server instance reports the version it can decode and the version it encodes objects to when
+// persisting objects in the backend.
 // Ref: #/components/schemas/io.k8s.api.apiserverinternal.v1alpha1.ServerStorageVersion
 type IoK8sAPIApiserverinternalV1alpha1ServerStorageVersion struct {
 	// The ID of the reporting API server.
 	ApiServerID OptString `json:"apiServerID"`
-	// The API server can decode objects encoded in these versions. The encodingVersion must be included
-	// in the decodableVersions.
+	// The API server can decode objects encoded in these versions. The encodingVersion must be included in
+	// the decodableVersions.
 	DecodableVersions []string `json:"decodableVersions"`
 	// The API server encodes the object to this version when persisting it in the backend (e.g., etcd).
 	EncodingVersion OptString `json:"encodingVersion"`
@@ -3430,12 +3445,12 @@ func (s *IoK8sAPIApiserverinternalV1alpha1ServerStorageVersion) SetEncodingVersi
 // Storage version of a specific resource.
 // Ref: #/components/schemas/io.k8s.api.apiserverinternal.v1alpha1.StorageVersion
 type IoK8sAPIApiserverinternalV1alpha1StorageVersion struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                             `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta           `json:"metadata"`
@@ -3577,14 +3592,14 @@ func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionCondition) SetType(val s
 // A list of StorageVersions.
 // Ref: #/components/schemas/io.k8s.api.apiserverinternal.v1alpha1.StorageVersionList
 type IoK8sAPIApiserverinternalV1alpha1StorageVersionList struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
 	// Items holds a list of StorageVersion.
 	Items []IoK8sAPIApiserverinternalV1alpha1StorageVersion `json:"items"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
@@ -3637,14 +3652,14 @@ func (*IoK8sAPIApiserverinternalV1alpha1StorageVersionList) listInternalApiserve
 // Ref: #/components/schemas/io.k8s.api.apiserverinternal.v1alpha1.StorageVersionSpec
 type IoK8sAPIApiserverinternalV1alpha1StorageVersionSpec struct{}
 
-// API server instances report the versions they can decode and the version they encode objects to
-// when persisting objects in the backend.
+// API server instances report the versions they can decode and the version they encode objects to when
+// persisting objects in the backend.
 // Ref: #/components/schemas/io.k8s.api.apiserverinternal.v1alpha1.StorageVersionStatus
 type IoK8sAPIApiserverinternalV1alpha1StorageVersionStatus struct {
 	// If all API server instances agree on the same encoding storage version, then this field is set to
 	// that version. Otherwise this field is left empty. API servers should finish updating its
-	// storageVersionStatus entry before serving write operations, so that this field will be in sync
-	// with the reality.
+	// storageVersionStatus entry before serving write operations, so that this field will be in sync with
+	// the reality.
 	CommonEncodingVersion OptString `json:"commonEncodingVersion"`
 	// The latest available observations of the storageVersion's state.
 	Conditions []IoK8sAPIApiserverinternalV1alpha1StorageVersionCondition `json:"conditions"`
@@ -3686,21 +3701,19 @@ func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionStatus) SetStorageVersio
 // serializing and deserializing the objects that contain their internal state. Once a
 // ControllerRevision has been successfully created, it can not be updated. The API Server will fail
 // validation of all requests that attempt to mutate the Data field. ControllerRevisions may, however,
-//
-//	be deleted. Note that, due to its use by both the DaemonSet and StatefulSet controllers for
-//
-// update and rollback, this object is beta. However, it may be subject to name and representation
-// changes in future releases, and clients should not depend on its stability. It is primarily for
-// internal use by controllers.
+// be deleted. Note that, due to its use by both the DaemonSet and StatefulSet controllers for update
+// and rollback, this object is beta. However, it may be subject to name and representation changes in
+// future releases, and clients should not depend on its stability. It is primarily for internal use by
+// controllers.
 // Ref: #/components/schemas/io.k8s.api.apps.v1.ControllerRevision
 type IoK8sAPIAppsV1ControllerRevision struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString                                `json:"apiVersion"`
 	Data       *IoK8sApimachineryPkgRuntimeRawExtension `json:"data"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                   `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
@@ -3763,14 +3776,14 @@ func (*IoK8sAPIAppsV1ControllerRevision) readAppsV1NamespacedControllerRevisionR
 // ControllerRevisionList is a resource containing a list of ControllerRevision objects.
 // Ref: #/components/schemas/io.k8s.api.apps.v1.ControllerRevisionList
 type IoK8sAPIAppsV1ControllerRevisionList struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
 	// Items is the list of ControllerRevisions.
 	Items []IoK8sAPIAppsV1ControllerRevision `json:"items"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
@@ -3822,12 +3835,12 @@ func (*IoK8sAPIAppsV1ControllerRevisionList) listAppsV1NamespacedControllerRevis
 // DaemonSet represents the configuration of a daemon set.
 // Ref: #/components/schemas/io.k8s.api.apps.v1.DaemonSet
 type IoK8sAPIAppsV1DaemonSet struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                   `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
@@ -3955,14 +3968,14 @@ func (s *IoK8sAPIAppsV1DaemonSetCondition) SetType(val string) {
 // DaemonSetList is a collection of daemon sets.
 // Ref: #/components/schemas/io.k8s.api.apps.v1.DaemonSetList
 type IoK8sAPIAppsV1DaemonSetList struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
 	// A list of daemon sets.
 	Items []IoK8sAPIAppsV1DaemonSet `json:"items"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
@@ -4014,9 +4027,9 @@ func (*IoK8sAPIAppsV1DaemonSetList) listAppsV1NamespacedDaemonSetRes()       {}
 // DaemonSetSpec is the specification of a daemon set.
 // Ref: #/components/schemas/io.k8s.api.apps.v1.DaemonSetSpec
 type IoK8sAPIAppsV1DaemonSetSpec struct {
-	// The minimum number of seconds for which a newly created DaemonSet pod should be ready without any
-	// of its container crashing, for it to be considered available. Defaults to 0 (pod will be
-	// considered available as soon as it is ready).
+	// The minimum number of seconds for which a newly created DaemonSet pod should be ready without any of
+	// its container crashing, for it to be considered available. Defaults to 0 (pod will be considered
+	// available as soon as it is ready).
 	MinReadySeconds OptInt32 `json:"minReadySeconds"`
 	// The number of old history to retain to allow rollback. This is a pointer to distinguish between
 	// explicit zero and not specified. Defaults to 10.
@@ -4079,8 +4092,8 @@ func (s *IoK8sAPIAppsV1DaemonSetSpec) SetUpdateStrategy(val OptIoK8sAPIAppsV1Dae
 // DaemonSetStatus represents the current status of a daemon set.
 // Ref: #/components/schemas/io.k8s.api.apps.v1.DaemonSetStatus
 type IoK8sAPIAppsV1DaemonSetStatus struct {
-	// Count of hash collisions for the DaemonSet. The DaemonSet controller uses this field as a
-	// collision avoidance mechanism when it needs to create the name for the newest ControllerRevision.
+	// Count of hash collisions for the DaemonSet. The DaemonSet controller uses this field as a collision
+	// avoidance mechanism when it needs to create the name for the newest ControllerRevision.
 	CollisionCount OptInt32 `json:"collisionCount"`
 	// Represents the latest available observations of a DaemonSet's current state.
 	Conditions []IoK8sAPIAppsV1DaemonSetCondition `json:"conditions"`
@@ -4096,8 +4109,8 @@ type IoK8sAPIAppsV1DaemonSetStatus struct {
 	// The number of nodes that are running the daemon pod, but are not supposed to run the daemon pod.
 	// More info: https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/.
 	NumberMisscheduled int32 `json:"numberMisscheduled"`
-	// NumberReady is the number of nodes that should be running the daemon pod and have one or more of
-	// the daemon pod running with a Ready Condition.
+	// NumberReady is the number of nodes that should be running the daemon pod and have one or more of the
+	// daemon pod running with a Ready Condition.
 	NumberReady int32 `json:"numberReady"`
 	// The number of nodes that should be running the daemon pod and have none of the daemon pod running
 	// and available (ready for at least spec.minReadySeconds).
@@ -4239,12 +4252,12 @@ func (s *IoK8sAPIAppsV1DaemonSetUpdateStrategy) SetType(val OptString) {
 // Deployment enables declarative updates for Pods and ReplicaSets.
 // Ref: #/components/schemas/io.k8s.api.apps.v1.Deployment
 type IoK8sAPIAppsV1Deployment struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                   `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
@@ -4383,14 +4396,14 @@ func (s *IoK8sAPIAppsV1DeploymentCondition) SetType(val string) {
 // DeploymentList is a list of Deployments.
 // Ref: #/components/schemas/io.k8s.api.apps.v1.DeploymentList
 type IoK8sAPIAppsV1DeploymentList struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
 	// Items is the list of Deployments.
 	Items []IoK8sAPIAppsV1Deployment `json:"items"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
@@ -4442,22 +4455,22 @@ func (*IoK8sAPIAppsV1DeploymentList) listAppsV1NamespacedDeploymentRes()       {
 // DeploymentSpec is the specification of the desired behavior of the Deployment.
 // Ref: #/components/schemas/io.k8s.api.apps.v1.DeploymentSpec
 type IoK8sAPIAppsV1DeploymentSpec struct {
-	// Minimum number of seconds for which a newly created pod should be ready without any of its
-	// container crashing, for it to be considered available. Defaults to 0 (pod will be considered
-	// available as soon as it is ready).
+	// Minimum number of seconds for which a newly created pod should be ready without any of its container
+	// crashing, for it to be considered available. Defaults to 0 (pod will be considered available as soon
+	// as it is ready).
 	MinReadySeconds OptInt32 `json:"minReadySeconds"`
 	// Indicates that the deployment is paused.
 	Paused OptBool `json:"paused"`
 	// The maximum time in seconds for a deployment to make progress before it is considered to be failed.
-	//  The deployment controller will continue to process failed deployments and a condition with a
+	// The deployment controller will continue to process failed deployments and a condition with a
 	// ProgressDeadlineExceeded reason will be surfaced in the deployment status. Note that progress will
 	// not be estimated during the time a deployment is paused. Defaults to 600s.
 	ProgressDeadlineSeconds OptInt32 `json:"progressDeadlineSeconds"`
 	// Number of desired pods. This is a pointer to distinguish between explicit zero and not specified.
 	// Defaults to 1.
 	Replicas OptInt32 `json:"replicas"`
-	// The number of old ReplicaSets to retain to allow rollback. This is a pointer to distinguish
-	// between explicit zero and not specified. Defaults to 10.
+	// The number of old ReplicaSets to retain to allow rollback. This is a pointer to distinguish between
+	// explicit zero and not specified. Defaults to 10.
 	RevisionHistoryLimit OptInt32                                    `json:"revisionHistoryLimit"`
 	Selector             IoK8sApimachineryPkgApisMetaV1LabelSelector `json:"selector"`
 	Strategy             OptIoK8sAPIAppsV1DeploymentStrategy         `json:"strategy"`
@@ -4560,12 +4573,11 @@ type IoK8sAPIAppsV1DeploymentStatus struct {
 	ReadyReplicas OptInt32 `json:"readyReplicas"`
 	// Total number of non-terminated pods targeted by this deployment (their labels match the selector).
 	Replicas OptInt32 `json:"replicas"`
-	// Total number of unavailable pods targeted by this deployment. This is the total number of pods
-	// that are still required for the deployment to have 100% available capacity. They may either be
-	// pods that are running but not yet available or pods that still have not been created.
+	// Total number of unavailable pods targeted by this deployment. This is the total number of pods that
+	// are still required for the deployment to have 100% available capacity. They may either be pods that
+	// are running but not yet available or pods that still have not been created.
 	UnavailableReplicas OptInt32 `json:"unavailableReplicas"`
-	// Total number of non-terminated pods targeted by this deployment that have the desired template
-	// spec.
+	// Total number of non-terminated pods targeted by this deployment that have the desired template spec.
 	UpdatedReplicas OptInt32 `json:"updatedReplicas"`
 }
 
@@ -4680,12 +4692,12 @@ func (s *IoK8sAPIAppsV1DeploymentStrategy) SetType(val OptString) {
 // ReplicaSet ensures that a specified number of pod replicas are running at any given time.
 // Ref: #/components/schemas/io.k8s.api.apps.v1.ReplicaSet
 type IoK8sAPIAppsV1ReplicaSet struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                   `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
@@ -4813,15 +4825,15 @@ func (s *IoK8sAPIAppsV1ReplicaSetCondition) SetType(val string) {
 // ReplicaSetList is a collection of ReplicaSets.
 // Ref: #/components/schemas/io.k8s.api.apps.v1.ReplicaSetList
 type IoK8sAPIAppsV1ReplicaSetList struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
-	// List of ReplicaSets. More info: https://kubernetes.
-	// io/docs/concepts/workloads/controllers/replicationcontroller.
+	// List of ReplicaSets. More info:
+	// https://kubernetes.io/docs/concepts/workloads/controllers/replicationcontroller.
 	Items []IoK8sAPIAppsV1ReplicaSet `json:"items"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
@@ -4873,13 +4885,13 @@ func (*IoK8sAPIAppsV1ReplicaSetList) listAppsV1ReplicaSetForAllNamespacesRes() {
 // ReplicaSetSpec is the specification of a ReplicaSet.
 // Ref: #/components/schemas/io.k8s.api.apps.v1.ReplicaSetSpec
 type IoK8sAPIAppsV1ReplicaSetSpec struct {
-	// Minimum number of seconds for which a newly created pod should be ready without any of its
-	// container crashing, for it to be considered available. Defaults to 0 (pod will be considered
-	// available as soon as it is ready).
+	// Minimum number of seconds for which a newly created pod should be ready without any of its container
+	// crashing, for it to be considered available. Defaults to 0 (pod will be considered available as soon
+	// as it is ready).
 	MinReadySeconds OptInt32 `json:"minReadySeconds"`
 	// Replicas is the number of desired replicas. This is a pointer to distinguish between explicit zero
-	// and unspecified. Defaults to 1. More info: https://kubernetes.
-	// io/docs/concepts/workloads/controllers/replicationcontroller/#what-is-a-replicationcontroller.
+	// and unspecified. Defaults to 1. More info:
+	// https://kubernetes.io/docs/concepts/workloads/controllers/replicationcontroller/#what-is-a-replicationcontroller.
 	Replicas OptInt32                                    `json:"replicas"`
 	Selector IoK8sApimachineryPkgApisMetaV1LabelSelector `json:"selector"`
 	Template OptIoK8sAPICoreV1PodTemplateSpec            `json:"template"`
@@ -4938,8 +4950,8 @@ type IoK8sAPIAppsV1ReplicaSetStatus struct {
 	ObservedGeneration OptInt64 `json:"observedGeneration"`
 	// ReadyReplicas is the number of pods targeted by this ReplicaSet with a Ready Condition.
 	ReadyReplicas OptInt32 `json:"readyReplicas"`
-	// Replicas is the most recently oberved number of replicas. More info: https://kubernetes.
-	// io/docs/concepts/workloads/controllers/replicationcontroller/#what-is-a-replicationcontroller.
+	// Replicas is the most recently oberved number of replicas. More info:
+	// https://kubernetes.io/docs/concepts/workloads/controllers/replicationcontroller/#what-is-a-replicationcontroller.
 	Replicas int32 `json:"replicas"`
 }
 
@@ -5076,18 +5088,19 @@ func (s *IoK8sAPIAppsV1RollingUpdateStatefulSetStrategy) SetPartition(val OptInt
 }
 
 // StatefulSet represents a set of pods with consistent identities. Identities are defined as:
-// - Network: A single stable DNS and hostname.
-// - Storage: As many VolumeClaims as requested.
-// The StatefulSet guarantees that a given network identity will always map to the same storage
-// identity.
+//
+//   - Network: A single stable DNS and hostname.
+//   - Storage: As many VolumeClaims as requested. The StatefulSet guarantees that a given network
+//     identity will always map to the same storage identity.
+//
 // Ref: #/components/schemas/io.k8s.api.apps.v1.StatefulSet
 type IoK8sAPIAppsV1StatefulSet struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                   `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
@@ -5215,14 +5228,14 @@ func (s *IoK8sAPIAppsV1StatefulSetCondition) SetType(val string) {
 // StatefulSetList is a collection of StatefulSets.
 // Ref: #/components/schemas/io.k8s.api.apps.v1.StatefulSetList
 type IoK8sAPIAppsV1StatefulSetList struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
 	// Items is the list of stateful sets.
 	Items []IoK8sAPIAppsV1StatefulSet `json:"items"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
@@ -5274,38 +5287,38 @@ func (*IoK8sAPIAppsV1StatefulSetList) listAppsV1StatefulSetForAllNamespacesRes()
 // A StatefulSetSpec is the specification of a StatefulSet.
 // Ref: #/components/schemas/io.k8s.api.apps.v1.StatefulSetSpec
 type IoK8sAPIAppsV1StatefulSetSpec struct {
-	// Minimum number of seconds for which a newly created pod should be ready without any of its
-	// container crashing for it to be considered available. Defaults to 0 (pod will be considered
-	// available as soon as it is ready) This is an alpha field and requires enabling
-	// StatefulSetMinReadySeconds feature gate.
+	// Minimum number of seconds for which a newly created pod should be ready without any of its container
+	// crashing for it to be considered available. Defaults to 0 (pod will be considered available as soon
+	// as it is ready) This is an alpha field and requires enabling StatefulSetMinReadySeconds feature
+	// gate.
 	MinReadySeconds OptInt32 `json:"minReadySeconds"`
 	// PodManagementPolicy controls how pods are created during initial scale up, when replacing pods on
 	// nodes, or when scaling down. The default policy is `OrderedReady`, where pods are created in
 	// increasing order (pod-0, then pod-1, etc) and the controller will wait until each pod is ready
 	// before continuing. When scaling down, the pods are removed in the opposite order. The alternative
 	// policy is `Parallel` which will create pods in parallel to match the desired scale without waiting,
-	//  and on scale down will delete all pods at once.
+	// and on scale down will delete all pods at once.
 	PodManagementPolicy OptString `json:"podManagementPolicy"`
 	// Replicas is the desired number of replicas of the given Template. These are replicas in the sense
 	// that they are instantiations of the same Template, but individual replicas also have a consistent
 	// identity. If unspecified, defaults to 1.
 	Replicas OptInt32 `json:"replicas"`
-	// RevisionHistoryLimit is the maximum number of revisions that will be maintained in the
-	// StatefulSet's revision history. The revision history consists of all revisions not represented by
-	// a currently applied StatefulSetSpec version. The default value is 10.
+	// RevisionHistoryLimit is the maximum number of revisions that will be maintained in the StatefulSet's
+	// revision history. The revision history consists of all revisions not represented by a currently
+	// applied StatefulSetSpec version. The default value is 10.
 	RevisionHistoryLimit OptInt32                                    `json:"revisionHistoryLimit"`
 	Selector             IoK8sApimachineryPkgApisMetaV1LabelSelector `json:"selector"`
-	// ServiceName is the name of the service that governs this StatefulSet. This service must exist
-	// before the StatefulSet, and is responsible for the network identity of the set. Pods get
-	// DNS/hostnames that follow the pattern: pod-specific-string.serviceName.default.svc.cluster.local
-	// where "pod-specific-string" is managed by the StatefulSet controller.
+	// ServiceName is the name of the service that governs this StatefulSet. This service must exist before
+	// the StatefulSet, and is responsible for the network identity of the set. Pods get DNS/hostnames that
+	// follow the pattern: pod-specific-string.serviceName.default.svc.cluster.local where
+	// "pod-specific-string" is managed by the StatefulSet controller.
 	ServiceName    string                                     `json:"serviceName"`
 	Template       IoK8sAPICoreV1PodTemplateSpec              `json:"template"`
 	UpdateStrategy OptIoK8sAPIAppsV1StatefulSetUpdateStrategy `json:"updateStrategy"`
 	// VolumeClaimTemplates is a list of claims that pods are allowed to reference. The StatefulSet
 	// controller is responsible for mapping network identities to claims in a way that maintains the
-	// identity of a pod. Every claim in this list must have at least one matching (by name) volumeMount
-	// in one container in the template. A claim in this list takes precedence over any volumes in the
+	// identity of a pod. Every claim in this list must have at least one matching (by name) volumeMount in
+	// one container in the template. A claim in this list takes precedence over any volumes in the
 	// template, with the same name.
 	VolumeClaimTemplates []IoK8sAPICoreV1PersistentVolumeClaim `json:"volumeClaimTemplates"`
 }
@@ -5406,8 +5419,8 @@ type IoK8sAPIAppsV1StatefulSetStatus struct {
 	// Total number of available pods (ready for at least minReadySeconds) targeted by this statefulset.
 	// This is a beta field and enabled/disabled by StatefulSetMinReadySeconds feature gate.
 	AvailableReplicas int32 `json:"availableReplicas"`
-	// CollisionCount is the count of hash collisions for the StatefulSet. The StatefulSet controller
-	// uses this field as a collision avoidance mechanism when it needs to create the name for the newest
+	// CollisionCount is the count of hash collisions for the StatefulSet. The StatefulSet controller uses
+	// this field as a collision avoidance mechanism when it needs to create the name for the newest
 	// ControllerRevision.
 	CollisionCount OptInt32 `json:"collisionCount"`
 	// Represents the latest available observations of a statefulset's current state.
@@ -5415,8 +5428,8 @@ type IoK8sAPIAppsV1StatefulSetStatus struct {
 	// CurrentReplicas is the number of Pods created by the StatefulSet controller from the StatefulSet
 	// version indicated by currentRevision.
 	CurrentReplicas OptInt32 `json:"currentReplicas"`
-	// CurrentRevision, if not empty, indicates the version of the StatefulSet used to generate Pods in
-	// the sequence [0,currentReplicas).
+	// CurrentRevision, if not empty, indicates the version of the StatefulSet used to generate Pods in the
+	// sequence [0,currentReplicas).
 	CurrentRevision OptString `json:"currentRevision"`
 	// ObservedGeneration is the most recent generation observed for this StatefulSet. It corresponds to
 	// the StatefulSet's generation, which is updated on mutation by the API Server.
@@ -5425,8 +5438,8 @@ type IoK8sAPIAppsV1StatefulSetStatus struct {
 	ReadyReplicas OptInt32 `json:"readyReplicas"`
 	// Replicas is the number of Pods created by the StatefulSet controller.
 	Replicas int32 `json:"replicas"`
-	// UpdateRevision, if not empty, indicates the version of the StatefulSet used to generate Pods in
-	// the sequence [replicas-updatedReplicas,replicas).
+	// UpdateRevision, if not empty, indicates the version of the StatefulSet used to generate Pods in the
+	// sequence [replicas-updatedReplicas,replicas).
 	UpdateRevision OptString `json:"updateRevision"`
 	// UpdatedReplicas is the number of Pods created by the StatefulSet controller from the StatefulSet
 	// version indicated by updateRevision.
@@ -5533,9 +5546,9 @@ func (s *IoK8sAPIAppsV1StatefulSetStatus) SetUpdatedReplicas(val OptInt32) {
 	s.UpdatedReplicas = val
 }
 
-// StatefulSetUpdateStrategy indicates the strategy that the StatefulSet controller will use to
-// perform updates. It includes any additional parameters necessary to perform the update for the
-// indicated strategy.
+// StatefulSetUpdateStrategy indicates the strategy that the StatefulSet controller will use to perform
+// updates. It includes any additional parameters necessary to perform the update for the indicated
+// strategy.
 // Ref: #/components/schemas/io.k8s.api.apps.v1.StatefulSetUpdateStrategy
 type IoK8sAPIAppsV1StatefulSetUpdateStrategy struct {
 	RollingUpdate OptIoK8sAPIAppsV1RollingUpdateStatefulSetStrategy `json:"rollingUpdate"`
@@ -5568,8 +5581,8 @@ func (s *IoK8sAPIAppsV1StatefulSetUpdateStrategy) SetType(val OptString) {
 type IoK8sAPIAutoscalingV1CrossVersionObjectReference struct {
 	// API version of the referent.
 	ApiVersion OptString `json:"apiVersion"`
-	// Kind of the referent; More info: https://git.k8s.
-	// io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds".
+	// Kind of the referent; More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds".
 	Kind string `json:"kind"`
 	// Name of the referent; More info: http://kubernetes.io/docs/user-guide/identifiers#names.
 	Name string `json:"name"`
@@ -5608,12 +5621,12 @@ func (s *IoK8sAPIAutoscalingV1CrossVersionObjectReference) SetName(val string) {
 // Configuration of a horizontal pod autoscaler.
 // Ref: #/components/schemas/io.k8s.api.autoscaling.v1.HorizontalPodAutoscaler
 type IoK8sAPIAutoscalingV1HorizontalPodAutoscaler struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                             `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta           `json:"metadata"`
@@ -5679,14 +5692,14 @@ func (*IoK8sAPIAutoscalingV1HorizontalPodAutoscaler) readAutoscalingV1Namespaced
 // List of horizontal pod autoscaler objects.
 // Ref: #/components/schemas/io.k8s.api.autoscaling.v1.HorizontalPodAutoscalerList
 type IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
 	// List of horizontal pod autoscaler objects.
 	Items []IoK8sAPIAutoscalingV1HorizontalPodAutoscaler `json:"items"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
@@ -5743,14 +5756,14 @@ type IoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec struct {
 	// Upper limit for the number of pods that can be set by the autoscaler; cannot be smaller than
 	// MinReplicas.
 	MaxReplicas int32 `json:"maxReplicas"`
-	// MinReplicas is the lower limit for the number of replicas to which the autoscaler can scale down.
-	// It defaults to 1 pod.  minReplicas is allowed to be 0 if the alpha feature gate HPAScaleToZero is
-	// enabled and at least one Object or External metric is configured.  Scaling is active as long as at
+	// MinReplicas is the lower limit for the number of replicas to which the autoscaler can scale down. It
+	// defaults to 1 pod. minReplicas is allowed to be 0 if the alpha feature gate HPAScaleToZero is
+	// enabled and at least one Object or External metric is configured. Scaling is active as long as at
 	// least one metric value is available.
 	MinReplicas    OptInt32                                         `json:"minReplicas"`
 	ScaleTargetRef IoK8sAPIAutoscalingV1CrossVersionObjectReference `json:"scaleTargetRef"`
-	// Target average CPU utilization (represented as a percentage of requested CPU) over all the pods;
-	// if not specified the default autoscaling policy will be used.
+	// Target average CPU utilization (represented as a percentage of requested CPU) over all the pods; if
+	// not specified the default autoscaling policy will be used.
 	TargetCPUUtilizationPercentage OptInt32 `json:"targetCPUUtilizationPercentage"`
 }
 
@@ -5797,8 +5810,8 @@ func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec) SetTargetCPUUtilizati
 // Current status of a horizontal pod autoscaler.
 // Ref: #/components/schemas/io.k8s.api.autoscaling.v1.HorizontalPodAutoscalerStatus
 type IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus struct {
-	// Current average CPU utilization over all pods, represented as a percentage of requested CPU, e.g.
-	// 70 means that an average pod is using now 70% of its requested CPU.
+	// Current average CPU utilization over all pods, represented as a percentage of requested CPU, e.g. 70
+	// means that an average pod is using now 70% of its requested CPU.
 	CurrentCPUUtilizationPercentage OptInt32 `json:"currentCPUUtilizationPercentage"`
 	// Current number of replicas of pods managed by this autoscaler.
 	CurrentReplicas int32 `json:"currentReplicas"`
@@ -5862,12 +5875,12 @@ func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) SetObservedGenerati
 // Scale represents a scaling request for a resource.
 // Ref: #/components/schemas/io.k8s.api.autoscaling.v1.Scale
 type IoK8sAPIAutoscalingV1Scale struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                   `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
@@ -5953,9 +5966,9 @@ type IoK8sAPIAutoscalingV1ScaleStatus struct {
 	// Actual number of observed instances of the scaled object.
 	Replicas int32 `json:"replicas"`
 	// Label query over pods that should match the replicas count. This is same as the label selector but
-	// in the string format to avoid introspection by clients. The string will be in the same format as
-	// the query-param syntax. More info about label selectors: http://kubernetes.
-	// io/docs/user-guide/labels#label-selectors.
+	// in the string format to avoid introspection by clients. The string will be in the same format as the
+	// query-param syntax. More info about label selectors:
+	// http://kubernetes.io/docs/user-guide/labels#label-selectors.
 	Selector OptString `json:"selector"`
 }
 
@@ -5981,9 +5994,9 @@ func (s *IoK8sAPIAutoscalingV1ScaleStatus) SetSelector(val OptString) {
 
 // ContainerResourceMetricSource indicates how to scale on a resource metric known to Kubernetes, as
 // specified in requests and limits, describing each pod in the current scale target (e.g. CPU or
-// memory).  The values will be averaged together before being compared to the target.  Such metrics
-// are built in to Kubernetes, and have special scaling options on top of those available to normal
-// per-pod metrics using the "pods" source.  Only one "target" type should be set.
+// memory). The values will be averaged together before being compared to the target. Such metrics are
+// built in to Kubernetes, and have special scaling options on top of those available to normal per-pod
+// metrics using the "pods" source. Only one "target" type should be set.
 // Ref: #/components/schemas/io.k8s.api.autoscaling.v2beta1.ContainerResourceMetricSource
 type IoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource struct {
 	// Container is the name of the container in the pods of the scaling target.
@@ -6037,18 +6050,16 @@ func (s *IoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource) SetTargetAvera
 }
 
 // ContainerResourceMetricStatus indicates the current value of a resource metric known to Kubernetes,
-//
-//	as specified in requests and limits, describing a single container in each pod in the current
-//
-// scale target (e.g. CPU or memory).  Such metrics are built in to Kubernetes, and have special
-// scaling options on top of those available to normal per-pod metrics using the "pods" source.
+// as specified in requests and limits, describing a single container in each pod in the current scale
+// target (e.g. CPU or memory). Such metrics are built in to Kubernetes, and have special scaling
+// options on top of those available to normal per-pod metrics using the "pods" source.
 // Ref: #/components/schemas/io.k8s.api.autoscaling.v2beta1.ContainerResourceMetricStatus
 type IoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus struct {
 	// Container is the name of the container in the pods of the scaling target.
 	Container string `json:"container"`
 	// CurrentAverageUtilization is the current value of the average of the resource metric across all
-	// relevant pods, represented as a percentage of the requested value of the resource for the pods.
-	// It will only be present if `targetAverageValue` was set in the corresponding metric specification.
+	// relevant pods, represented as a percentage of the requested value of the resource for the pods. It
+	// will only be present if `targetAverageValue` was set in the corresponding metric specification.
 	CurrentAverageUtilization OptInt32                                `json:"currentAverageUtilization"`
 	CurrentAverageValue       IoK8sApimachineryPkgAPIResourceQuantity `json:"currentAverageValue"`
 	// Name is the name of the resource in question.
@@ -6100,8 +6111,8 @@ func (s *IoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) SetName(val st
 type IoK8sAPIAutoscalingV2beta1CrossVersionObjectReference struct {
 	// API version of the referent.
 	ApiVersion OptString `json:"apiVersion"`
-	// Kind of the referent; More info: https://git.k8s.
-	// io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds".
+	// Kind of the referent; More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds".
 	Kind string `json:"kind"`
 	// Name of the referent; More info: http://kubernetes.io/docs/user-guide/identifiers#names.
 	Name string `json:"name"`
@@ -6138,8 +6149,8 @@ func (s *IoK8sAPIAutoscalingV2beta1CrossVersionObjectReference) SetName(val stri
 }
 
 // ExternalMetricSource indicates how to scale on a metric not associated with any Kubernetes object
-// (for example length of queue in cloud messaging service, or QPS from loadbalancer running outside
-// of cluster). Exactly one "target" type should be set.
+// (for example length of queue in cloud messaging service, or QPS from loadbalancer running outside of
+// cluster). Exactly one "target" type should be set.
 // Ref: #/components/schemas/io.k8s.api.autoscaling.v2beta1.ExternalMetricSource
 type IoK8sAPIAutoscalingV2beta1ExternalMetricSource struct {
 	// MetricName is the name of the metric in question.
@@ -6245,12 +6256,12 @@ func (s *IoK8sAPIAutoscalingV2beta1ExternalMetricStatus) SetMetricSelector(val O
 // specified.
 // Ref: #/components/schemas/io.k8s.api.autoscaling.v2beta1.HorizontalPodAutoscaler
 type IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                                  `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta                `json:"metadata"`
@@ -6381,14 +6392,14 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerCondition) SetType(val
 // HorizontalPodAutoscaler is a list of horizontal pod autoscaler objects.
 // Ref: #/components/schemas/io.k8s.api.autoscaling.v2beta1.HorizontalPodAutoscalerList
 type IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
 	// Items is the list of horizontal pod autoscaler objects.
 	Items []IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler `json:"items"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
@@ -6446,14 +6457,14 @@ type IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec struct {
 	// cannot be less that minReplicas.
 	MaxReplicas int32 `json:"maxReplicas"`
 	// Metrics contains the specifications for which to use to calculate the desired replica count (the
-	// maximum replica count across all metrics will be used).  The desired replica count is calculated
+	// maximum replica count across all metrics will be used). The desired replica count is calculated
 	// multiplying the ratio between the target value and the current value by the current number of pods.
-	//   Ergo, metrics used must decrease as the pod count is increased, and vice-versa.  See the
-	// individual metric source types for more information about how each type of metric must respond.
+	// Ergo, metrics used must decrease as the pod count is increased, and vice-versa. See the individual
+	// metric source types for more information about how each type of metric must respond.
 	Metrics []IoK8sAPIAutoscalingV2beta1MetricSpec `json:"metrics"`
-	// MinReplicas is the lower limit for the number of replicas to which the autoscaler can scale down.
-	// It defaults to 1 pod.  minReplicas is allowed to be 0 if the alpha feature gate HPAScaleToZero is
-	// enabled and at least one Object or External metric is configured.  Scaling is active as long as at
+	// MinReplicas is the lower limit for the number of replicas to which the autoscaler can scale down. It
+	// defaults to 1 pod. minReplicas is allowed to be 0 if the alpha feature gate HPAScaleToZero is
+	// enabled and at least one Object or External metric is configured. Scaling is active as long as at
 	// least one metric value is available.
 	MinReplicas    OptInt32                                              `json:"minReplicas"`
 	ScaleTargetRef IoK8sAPIAutoscalingV2beta1CrossVersionObjectReference `json:"scaleTargetRef"`
@@ -6502,8 +6513,8 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) SetScaleTargetRe
 // HorizontalPodAutoscalerStatus describes the current status of a horizontal pod autoscaler.
 // Ref: #/components/schemas/io.k8s.api.autoscaling.v2beta1.HorizontalPodAutoscalerStatus
 type IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus struct {
-	// Conditions is the set of conditions required for this autoscaler to scale its target, and
-	// indicates whether or not those conditions are met.
+	// Conditions is the set of conditions required for this autoscaler to scale its target, and indicates
+	// whether or not those conditions are met.
 	Conditions []IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerCondition `json:"conditions"`
 	// CurrentMetrics is the last read state of the metrics used by this autoscaler.
 	CurrentMetrics []IoK8sAPIAutoscalingV2beta1MetricStatus `json:"currentMetrics"`
@@ -6578,8 +6589,8 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) SetObservedGen
 	s.ObservedGeneration = val
 }
 
-// MetricSpec specifies how to scale based on a single metric (only `type` and one other matching
-// field should be set at once).
+// MetricSpec specifies how to scale based on a single metric (only `type` and one other matching field
+// should be set at once).
 // Ref: #/components/schemas/io.k8s.api.autoscaling.v2beta1.MetricSpec
 type IoK8sAPIAutoscalingV2beta1MetricSpec struct {
 	ContainerResource OptIoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource `json:"containerResource"`
@@ -6587,9 +6598,9 @@ type IoK8sAPIAutoscalingV2beta1MetricSpec struct {
 	Object            OptIoK8sAPIAutoscalingV2beta1ObjectMetricSource            `json:"object"`
 	Pods              OptIoK8sAPIAutoscalingV2beta1PodsMetricSource              `json:"pods"`
 	Resource          OptIoK8sAPIAutoscalingV2beta1ResourceMetricSource          `json:"resource"`
-	// Type is the type of metric source.  It should be one of "ContainerResource", "External", "Object",
-	// "Pods" or "Resource", each mapping to a matching field in the object. Note: "ContainerResource"
-	// type is available on when the feature-gate HPAContainerMetrics is enabled.
+	// Type is the type of metric source. It should be one of "ContainerResource", "External", "Object",
+	// "Pods" or "Resource", each mapping to a matching field in the object. Note: "ContainerResource" type
+	// is available on when the feature-gate HPAContainerMetrics is enabled.
 	Type string `json:"type"`
 }
 
@@ -6661,9 +6672,9 @@ type IoK8sAPIAutoscalingV2beta1MetricStatus struct {
 	Object            OptIoK8sAPIAutoscalingV2beta1ObjectMetricStatus            `json:"object"`
 	Pods              OptIoK8sAPIAutoscalingV2beta1PodsMetricStatus              `json:"pods"`
 	Resource          OptIoK8sAPIAutoscalingV2beta1ResourceMetricStatus          `json:"resource"`
-	// Type is the type of metric source.  It will be one of "ContainerResource", "External", "Object",
-	// "Pods" or "Resource", each corresponds to a matching field in the object. Note:
-	// "ContainerResource" type is available on when the feature-gate HPAContainerMetrics is enabled.
+	// Type is the type of metric source. It will be one of "ContainerResource", "External", "Object",
+	// "Pods" or "Resource", each corresponds to a matching field in the object. Note: "ContainerResource"
+	// type is available on when the feature-gate HPAContainerMetrics is enabled.
 	Type string `json:"type"`
 }
 
@@ -6851,9 +6862,9 @@ func (s *IoK8sAPIAutoscalingV2beta1ObjectMetricStatus) SetTarget(val IoK8sAPIAut
 	s.Target = val
 }
 
-// PodsMetricSource indicates how to scale on a metric describing each pod in the current scale
-// target (for example, transactions-processed-per-second). The values will be averaged together
-// before being compared to the target value.
+// PodsMetricSource indicates how to scale on a metric describing each pod in the current scale target
+// (for example, transactions-processed-per-second). The values will be averaged together before being
+// compared to the target value.
 // Ref: #/components/schemas/io.k8s.api.autoscaling.v2beta1.PodsMetricSource
 type IoK8sAPIAutoscalingV2beta1PodsMetricSource struct {
 	// MetricName is the name of the metric in question.
@@ -6933,10 +6944,10 @@ func (s *IoK8sAPIAutoscalingV2beta1PodsMetricStatus) SetSelector(val OptIoK8sApi
 }
 
 // ResourceMetricSource indicates how to scale on a resource metric known to Kubernetes, as specified
-// in requests and limits, describing each pod in the current scale target (e.g. CPU or memory).  The
-// values will be averaged together before being compared to the target.  Such metrics are built in
-// to Kubernetes, and have special scaling options on top of those available to normal per-pod
-// metrics using the "pods" source.  Only one "target" type should be set.
+// in requests and limits, describing each pod in the current scale target (e.g. CPU or memory). The
+// values will be averaged together before being compared to the target. Such metrics are built in to
+// Kubernetes, and have special scaling options on top of those available to normal per-pod metrics
+// using the "pods" source. Only one "target" type should be set.
 // Ref: #/components/schemas/io.k8s.api.autoscaling.v2beta1.ResourceMetricSource
 type IoK8sAPIAutoscalingV2beta1ResourceMetricSource struct {
 	// Name is the name of the resource in question.
@@ -6979,13 +6990,13 @@ func (s *IoK8sAPIAutoscalingV2beta1ResourceMetricSource) SetTargetAverageValue(v
 
 // ResourceMetricStatus indicates the current value of a resource metric known to Kubernetes, as
 // specified in requests and limits, describing each pod in the current scale target (e.g. CPU or
-// memory).  Such metrics are built in to Kubernetes, and have special scaling options on top of
-// those available to normal per-pod metrics using the "pods" source.
+// memory). Such metrics are built in to Kubernetes, and have special scaling options on top of those
+// available to normal per-pod metrics using the "pods" source.
 // Ref: #/components/schemas/io.k8s.api.autoscaling.v2beta1.ResourceMetricStatus
 type IoK8sAPIAutoscalingV2beta1ResourceMetricStatus struct {
 	// CurrentAverageUtilization is the current value of the average of the resource metric across all
-	// relevant pods, represented as a percentage of the requested value of the resource for the pods.
-	// It will only be present if `targetAverageValue` was set in the corresponding metric specification.
+	// relevant pods, represented as a percentage of the requested value of the resource for the pods. It
+	// will only be present if `targetAverageValue` was set in the corresponding metric specification.
 	CurrentAverageUtilization OptInt32                                `json:"currentAverageUtilization"`
 	CurrentAverageValue       IoK8sApimachineryPkgAPIResourceQuantity `json:"currentAverageValue"`
 	// Name is the name of the resource in question.
@@ -7024,9 +7035,9 @@ func (s *IoK8sAPIAutoscalingV2beta1ResourceMetricStatus) SetName(val string) {
 
 // ContainerResourceMetricSource indicates how to scale on a resource metric known to Kubernetes, as
 // specified in requests and limits, describing each pod in the current scale target (e.g. CPU or
-// memory).  The values will be averaged together before being compared to the target.  Such metrics
-// are built in to Kubernetes, and have special scaling options on top of those available to normal
-// per-pod metrics using the "pods" source.  Only one "target" type should be set.
+// memory). The values will be averaged together before being compared to the target. Such metrics are
+// built in to Kubernetes, and have special scaling options on top of those available to normal per-pod
+// metrics using the "pods" source. Only one "target" type should be set.
 // Ref: #/components/schemas/io.k8s.api.autoscaling.v2beta2.ContainerResourceMetricSource
 type IoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource struct {
 	// Container is the name of the container in the pods of the scaling target.
@@ -7067,11 +7078,9 @@ func (s *IoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource) SetTarget(val 
 }
 
 // ContainerResourceMetricStatus indicates the current value of a resource metric known to Kubernetes,
-//
-//	as specified in requests and limits, describing a single container in each pod in the current
-//
-// scale target (e.g. CPU or memory).  Such metrics are built in to Kubernetes, and have special
-// scaling options on top of those available to normal per-pod metrics using the "pods" source.
+// as specified in requests and limits, describing a single container in each pod in the current scale
+// target (e.g. CPU or memory). Such metrics are built in to Kubernetes, and have special scaling
+// options on top of those available to normal per-pod metrics using the "pods" source.
 // Ref: #/components/schemas/io.k8s.api.autoscaling.v2beta2.ContainerResourceMetricStatus
 type IoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus struct {
 	// Container is the name of the container in the pods of the scaling target.
@@ -7116,8 +7125,8 @@ func (s *IoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus) SetName(val st
 type IoK8sAPIAutoscalingV2beta2CrossVersionObjectReference struct {
 	// API version of the referent.
 	ApiVersion OptString `json:"apiVersion"`
-	// Kind of the referent; More info: https://git.k8s.
-	// io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds".
+	// Kind of the referent; More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds".
 	Kind string `json:"kind"`
 	// Name of the referent; More info: http://kubernetes.io/docs/user-guide/identifiers#names.
 	Name string `json:"name"`
@@ -7154,8 +7163,8 @@ func (s *IoK8sAPIAutoscalingV2beta2CrossVersionObjectReference) SetName(val stri
 }
 
 // ExternalMetricSource indicates how to scale on a metric not associated with any Kubernetes object
-// (for example length of queue in cloud messaging service, or QPS from loadbalancer running outside
-// of cluster).
+// (for example length of queue in cloud messaging service, or QPS from loadbalancer running outside of
+// cluster).
 // Ref: #/components/schemas/io.k8s.api.autoscaling.v2beta2.ExternalMetricSource
 type IoK8sAPIAutoscalingV2beta2ExternalMetricSource struct {
 	Metric IoK8sAPIAutoscalingV2beta2MetricIdentifier `json:"metric"`
@@ -7213,8 +7222,8 @@ func (s *IoK8sAPIAutoscalingV2beta2ExternalMetricStatus) SetMetric(val IoK8sAPIA
 // HPAScalingPolicy is a single policy which must hold true for a specified past interval.
 // Ref: #/components/schemas/io.k8s.api.autoscaling.v2beta2.HPAScalingPolicy
 type IoK8sAPIAutoscalingV2beta2HPAScalingPolicy struct {
-	// PeriodSeconds specifies the window of time for which the policy should hold true. PeriodSeconds
-	// must be greater than zero and less than or equal to 1800 (30 min).
+	// PeriodSeconds specifies the window of time for which the policy should hold true. PeriodSeconds must
+	// be greater than zero and less than or equal to 1800 (30 min).
 	PeriodSeconds int32 `json:"periodSeconds"`
 	// Type is used to specify the scaling policy.
 	Type string `json:"type"`
@@ -7268,8 +7277,8 @@ type IoK8sAPIAutoscalingV2beta2HPAScalingRules struct {
 	// StabilizationWindowSeconds is the number of seconds for which past recommendations should be
 	// considered while scaling up or scaling down. StabilizationWindowSeconds must be greater than or
 	// equal to zero and less than or equal to 3600 (one hour). If not set, use the default values: - For
-	// scale up: 0 (i.e. no stabilization is done). - For scale down: 300 (i.e. the stabilization window
-	// is 300 seconds long).
+	// scale up: 0 (i.e. no stabilization is done). - For scale down: 300 (i.e. the stabilization window is
+	// 300 seconds long).
 	StabilizationWindowSeconds OptInt32 `json:"stabilizationWindowSeconds"`
 }
 
@@ -7308,12 +7317,12 @@ func (s *IoK8sAPIAutoscalingV2beta2HPAScalingRules) SetStabilizationWindowSecond
 // specified.
 // Ref: #/components/schemas/io.k8s.api.autoscaling.v2beta2.HorizontalPodAutoscaler
 type IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                                  `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta                `json:"metadata"`
@@ -7472,14 +7481,14 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerCondition) SetType(val
 // HorizontalPodAutoscalerList is a list of horizontal pod autoscaler objects.
 // Ref: #/components/schemas/io.k8s.api.autoscaling.v2beta2.HorizontalPodAutoscalerList
 type IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
 	// Items is the list of horizontal pod autoscaler objects.
 	Items []IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler `json:"items"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
@@ -7538,15 +7547,15 @@ type IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec struct {
 	// cannot be less that minReplicas.
 	MaxReplicas int32 `json:"maxReplicas"`
 	// Metrics contains the specifications for which to use to calculate the desired replica count (the
-	// maximum replica count across all metrics will be used).  The desired replica count is calculated
+	// maximum replica count across all metrics will be used). The desired replica count is calculated
 	// multiplying the ratio between the target value and the current value by the current number of pods.
-	//   Ergo, metrics used must decrease as the pod count is increased, and vice-versa.  See the
-	// individual metric source types for more information about how each type of metric must respond. If
-	// not set, the default metric will be set to 80% average CPU utilization.
+	// Ergo, metrics used must decrease as the pod count is increased, and vice-versa. See the individual
+	// metric source types for more information about how each type of metric must respond. If not set, the
+	// default metric will be set to 80% average CPU utilization.
 	Metrics []IoK8sAPIAutoscalingV2beta2MetricSpec `json:"metrics"`
-	// MinReplicas is the lower limit for the number of replicas to which the autoscaler can scale down.
-	// It defaults to 1 pod.  minReplicas is allowed to be 0 if the alpha feature gate HPAScaleToZero is
-	// enabled and at least one Object or External metric is configured.  Scaling is active as long as at
+	// MinReplicas is the lower limit for the number of replicas to which the autoscaler can scale down. It
+	// defaults to 1 pod. minReplicas is allowed to be 0 if the alpha feature gate HPAScaleToZero is
+	// enabled and at least one Object or External metric is configured. Scaling is active as long as at
 	// least one metric value is available.
 	MinReplicas    OptInt32                                              `json:"minReplicas"`
 	ScaleTargetRef IoK8sAPIAutoscalingV2beta2CrossVersionObjectReference `json:"scaleTargetRef"`
@@ -7605,8 +7614,8 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) SetScaleTargetRe
 // HorizontalPodAutoscalerStatus describes the current status of a horizontal pod autoscaler.
 // Ref: #/components/schemas/io.k8s.api.autoscaling.v2beta2.HorizontalPodAutoscalerStatus
 type IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus struct {
-	// Conditions is the set of conditions required for this autoscaler to scale its target, and
-	// indicates whether or not those conditions are met.
+	// Conditions is the set of conditions required for this autoscaler to scale its target, and indicates
+	// whether or not those conditions are met.
 	Conditions []IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerCondition `json:"conditions"`
 	// CurrentMetrics is the last read state of the metrics used by this autoscaler.
 	CurrentMetrics []IoK8sAPIAutoscalingV2beta2MetricStatus `json:"currentMetrics"`
@@ -7709,8 +7718,8 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricIdentifier) SetSelector(val OptIoK8sApi
 	s.Selector = val
 }
 
-// MetricSpec specifies how to scale based on a single metric (only `type` and one other matching
-// field should be set at once).
+// MetricSpec specifies how to scale based on a single metric (only `type` and one other matching field
+// should be set at once).
 // Ref: #/components/schemas/io.k8s.api.autoscaling.v2beta2.MetricSpec
 type IoK8sAPIAutoscalingV2beta2MetricSpec struct {
 	ContainerResource OptIoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource `json:"containerResource"`
@@ -7718,9 +7727,9 @@ type IoK8sAPIAutoscalingV2beta2MetricSpec struct {
 	Object            OptIoK8sAPIAutoscalingV2beta2ObjectMetricSource            `json:"object"`
 	Pods              OptIoK8sAPIAutoscalingV2beta2PodsMetricSource              `json:"pods"`
 	Resource          OptIoK8sAPIAutoscalingV2beta2ResourceMetricSource          `json:"resource"`
-	// Type is the type of metric source.  It should be one of "ContainerResource", "External", "Object",
-	// "Pods" or "Resource", each mapping to a matching field in the object. Note: "ContainerResource"
-	// type is available on when the feature-gate HPAContainerMetrics is enabled.
+	// Type is the type of metric source. It should be one of "ContainerResource", "External", "Object",
+	// "Pods" or "Resource", each mapping to a matching field in the object. Note: "ContainerResource" type
+	// is available on when the feature-gate HPAContainerMetrics is enabled.
 	Type string `json:"type"`
 }
 
@@ -7792,9 +7801,9 @@ type IoK8sAPIAutoscalingV2beta2MetricStatus struct {
 	Object            OptIoK8sAPIAutoscalingV2beta2ObjectMetricStatus            `json:"object"`
 	Pods              OptIoK8sAPIAutoscalingV2beta2PodsMetricStatus              `json:"pods"`
 	Resource          OptIoK8sAPIAutoscalingV2beta2ResourceMetricStatus          `json:"resource"`
-	// Type is the type of metric source.  It will be one of "ContainerResource", "External", "Object",
-	// "Pods" or "Resource", each corresponds to a matching field in the object. Note:
-	// "ContainerResource" type is available on when the feature-gate HPAContainerMetrics is enabled.
+	// Type is the type of metric source. It will be one of "ContainerResource", "External", "Object",
+	// "Pods" or "Resource", each corresponds to a matching field in the object. Note: "ContainerResource"
+	// type is available on when the feature-gate HPAContainerMetrics is enabled.
 	Type string `json:"type"`
 }
 
@@ -8029,9 +8038,9 @@ func (s *IoK8sAPIAutoscalingV2beta2ObjectMetricStatus) SetMetric(val IoK8sAPIAut
 	s.Metric = val
 }
 
-// PodsMetricSource indicates how to scale on a metric describing each pod in the current scale
-// target (for example, transactions-processed-per-second). The values will be averaged together
-// before being compared to the target value.
+// PodsMetricSource indicates how to scale on a metric describing each pod in the current scale target
+// (for example, transactions-processed-per-second). The values will be averaged together before being
+// compared to the target value.
 // Ref: #/components/schemas/io.k8s.api.autoscaling.v2beta2.PodsMetricSource
 type IoK8sAPIAutoscalingV2beta2PodsMetricSource struct {
 	Metric IoK8sAPIAutoscalingV2beta2MetricIdentifier `json:"metric"`
@@ -8087,10 +8096,10 @@ func (s *IoK8sAPIAutoscalingV2beta2PodsMetricStatus) SetMetric(val IoK8sAPIAutos
 }
 
 // ResourceMetricSource indicates how to scale on a resource metric known to Kubernetes, as specified
-// in requests and limits, describing each pod in the current scale target (e.g. CPU or memory).  The
-// values will be averaged together before being compared to the target.  Such metrics are built in
-// to Kubernetes, and have special scaling options on top of those available to normal per-pod
-// metrics using the "pods" source.  Only one "target" type should be set.
+// in requests and limits, describing each pod in the current scale target (e.g. CPU or memory). The
+// values will be averaged together before being compared to the target. Such metrics are built in to
+// Kubernetes, and have special scaling options on top of those available to normal per-pod metrics
+// using the "pods" source. Only one "target" type should be set.
 // Ref: #/components/schemas/io.k8s.api.autoscaling.v2beta2.ResourceMetricSource
 type IoK8sAPIAutoscalingV2beta2ResourceMetricSource struct {
 	// Name is the name of the resource in question.
@@ -8120,8 +8129,8 @@ func (s *IoK8sAPIAutoscalingV2beta2ResourceMetricSource) SetTarget(val IoK8sAPIA
 
 // ResourceMetricStatus indicates the current value of a resource metric known to Kubernetes, as
 // specified in requests and limits, describing each pod in the current scale target (e.g. CPU or
-// memory).  Such metrics are built in to Kubernetes, and have special scaling options on top of
-// those available to normal per-pod metrics using the "pods" source.
+// memory). Such metrics are built in to Kubernetes, and have special scaling options on top of those
+// available to normal per-pod metrics using the "pods" source.
 // Ref: #/components/schemas/io.k8s.api.autoscaling.v2beta2.ResourceMetricStatus
 type IoK8sAPIAutoscalingV2beta2ResourceMetricStatus struct {
 	Current IoK8sAPIAutoscalingV2beta2MetricValueStatus `json:"current"`
@@ -8152,12 +8161,12 @@ func (s *IoK8sAPIAutoscalingV2beta2ResourceMetricStatus) SetName(val string) {
 // CronJob represents the configuration of a single cron job.
 // Ref: #/components/schemas/io.k8s.api.batch.v1.CronJob
 type IoK8sAPIBatchV1CronJob struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                   `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
@@ -8221,14 +8230,14 @@ func (*IoK8sAPIBatchV1CronJob) readBatchV1NamespacedCronJobStatusRes() {}
 // CronJobList is a collection of cron jobs.
 // Ref: #/components/schemas/io.k8s.api.batch.v1.CronJobList
 type IoK8sAPIBatchV1CronJobList struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
 	// Items is the list of CronJobs.
 	Items []IoK8sAPIBatchV1CronJob `json:"items"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
@@ -8280,24 +8289,22 @@ func (*IoK8sAPIBatchV1CronJobList) listBatchV1NamespacedCronJobRes()       {}
 // CronJobSpec describes how the job execution will look like and when it will actually run.
 // Ref: #/components/schemas/io.k8s.api.batch.v1.CronJobSpec
 type IoK8sAPIBatchV1CronJobSpec struct {
-	// Specifies how to treat concurrent executions of a Job. Valid values are: - "Allow" (default):
-	// allows CronJobs to run concurrently; - "Forbid": forbids concurrent runs, skipping next run if
-	// previous run hasn't finished yet; - "Replace": cancels currently running job and replaces it with
-	// a new one.
+	// Specifies how to treat concurrent executions of a Job. Valid values are: - "Allow" (default): allows
+	// CronJobs to run concurrently; - "Forbid": forbids concurrent runs, skipping next run if previous run
+	// hasn't finished yet; - "Replace": cancels currently running job and replaces it with a new one.
 	ConcurrencyPolicy OptString `json:"concurrencyPolicy"`
 	// The number of failed finished jobs to retain. Value must be non-negative integer. Defaults to 1.
 	FailedJobsHistoryLimit OptInt32                       `json:"failedJobsHistoryLimit"`
 	JobTemplate            IoK8sAPIBatchV1JobTemplateSpec `json:"jobTemplate"`
 	// The schedule in Cron format, see https://en.wikipedia.org/wiki/Cron.
 	Schedule string `json:"schedule"`
-	// Optional deadline in seconds for starting the job if it misses scheduled time for any reason.
-	// Missed jobs executions will be counted as failed ones.
+	// Optional deadline in seconds for starting the job if it misses scheduled time for any reason. Missed
+	// jobs executions will be counted as failed ones.
 	StartingDeadlineSeconds OptInt64 `json:"startingDeadlineSeconds"`
-	// The number of successful finished jobs to retain. Value must be non-negative integer. Defaults to
-	// 3.
+	// The number of successful finished jobs to retain. Value must be non-negative integer. Defaults to 3.
 	SuccessfulJobsHistoryLimit OptInt32 `json:"successfulJobsHistoryLimit"`
 	// This flag tells the controller to suspend subsequent executions, it does not apply to already
-	// started executions.  Defaults to false.
+	// started executions. Defaults to false.
 	Suspend OptBool `json:"suspend"`
 }
 
@@ -8413,12 +8420,12 @@ func (s *IoK8sAPIBatchV1CronJobStatus) SetLastSuccessfulTime(val OptIoK8sApimach
 // Job represents the configuration of a single job.
 // Ref: #/components/schemas/io.k8s.api.batch.v1.Job
 type IoK8sAPIBatchV1Job struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                   `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
@@ -8557,14 +8564,14 @@ func (s *IoK8sAPIBatchV1JobCondition) SetType(val string) {
 // JobList is a collection of jobs.
 // Ref: #/components/schemas/io.k8s.api.batch.v1.JobList
 type IoK8sAPIBatchV1JobList struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
 	// Items is the list of Jobs.
 	Items []IoK8sAPIBatchV1Job `json:"items"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
@@ -8616,62 +8623,66 @@ func (*IoK8sAPIBatchV1JobList) listBatchV1NamespacedJobRes()       {}
 // JobSpec describes how the job execution will look like.
 // Ref: #/components/schemas/io.k8s.api.batch.v1.JobSpec
 type IoK8sAPIBatchV1JobSpec struct {
-	// Specifies the duration in seconds relative to the startTime that the job may be continuously
-	// active before the system tries to terminate it; value must be positive integer. If a Job is
-	// suspended (at creation or through an update), this timer will effectively be stopped and reset
-	// when the Job is resumed again.
+	// Specifies the duration in seconds relative to the startTime that the job may be continuously active
+	// before the system tries to terminate it; value must be positive integer. If a Job is suspended (at
+	// creation or through an update), this timer will effectively be stopped and reset when the Job is
+	// resumed again.
 	ActiveDeadlineSeconds OptInt64 `json:"activeDeadlineSeconds"`
 	// Specifies the number of retries before marking this job failed. Defaults to 6.
 	BackoffLimit OptInt32 `json:"backoffLimit"`
 	// CompletionMode specifies how Pod completions are tracked. It can be `NonIndexed` (default) or
 	// `Indexed`.
+	//
 	// `NonIndexed` means that the Job is considered complete when there have been .spec.completions
 	// successfully completed Pods. Each Pod completion is homologous to each other.
-	// `Indexed` means that the Pods of a Job get an associated completion index from 0 to (.spec.
-	// completions - 1), available in the annotation batch.kubernetes.io/job-completion-index. The Job is
-	// considered complete when there is one successfully completed Pod for each index. When value is
-	// `Indexed`, .spec.completions must be specified and `.spec.parallelism` must be less than or equal
+	//
+	// `Indexed` means that the Pods of a Job get an associated completion index from 0 to
+	// (.spec.completions - 1), available in the annotation batch.kubernetes.io/job-completion-index. The
+	// Job is considered complete when there is one successfully completed Pod for each index. When value
+	// is `Indexed`, .spec.completions must be specified and `.spec.parallelism` must be less than or equal
 	// to 10^5. In addition, The Pod name takes the form `$(job-name)-$(index)-$(random-string)`, the Pod
 	// hostname takes the form `$(job-name)-$(index)`.
+	//
 	// This field is beta-level. More completion modes can be added in the future. If the Job controller
 	// observes a mode that it doesn't recognize, the controller skips updates for the Job.
 	CompletionMode OptString `json:"completionMode"`
-	// Specifies the desired number of successfully finished pods the job should be run with.  Setting to
+	// Specifies the desired number of successfully finished pods the job should be run with. Setting to
 	// nil means that the success of any pod signals the success of all pods, and allows parallelism to
-	// have any positive value.  Setting to 1 means that parallelism is limited to 1 and the success of
-	// that pod signals the success of the job. More info: https://kubernetes.
-	// io/docs/concepts/workloads/controllers/jobs-run-to-completion/.
+	// have any positive value. Setting to 1 means that parallelism is limited to 1 and the success of that
+	// pod signals the success of the job. More info:
+	// https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/.
 	Completions OptInt32 `json:"completions"`
 	// ManualSelector controls generation of pod labels and pod selectors. Leave `manualSelector` unset
 	// unless you are certain what you are doing. When false or unset, the system pick labels unique to
-	// this job and appends those labels to the pod template.  When true, the user is responsible for
-	// picking unique labels and specifying the selector.  Failure to pick a unique label may cause this
-	// and other jobs to not function correctly.  However, You may see `manualSelector=true` in jobs that
-	// were created with the old `extensions/v1beta1` API. More info: https://kubernetes.
-	// io/docs/concepts/workloads/controllers/jobs-run-to-completion/#specifying-your-own-pod-selector.
+	// this job and appends those labels to the pod template. When true, the user is responsible for
+	// picking unique labels and specifying the selector. Failure to pick a unique label may cause this and
+	// other jobs to not function correctly. However, You may see `manualSelector=true` in jobs that were
+	// created with the old `extensions/v1beta1` API. More info:
+	// https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/#specifying-your-own-pod-selector.
 	ManualSelector OptBool `json:"manualSelector"`
-	// Specifies the maximum desired number of pods the job should run at any given time. The actual
-	// number of pods running in steady state will be less than this number when ((.spec.completions - .
-	// status.successful) < .spec.parallelism), i.e. when the work left to do is less than max
-	// parallelism. More info: https://kubernetes.
-	// io/docs/concepts/workloads/controllers/jobs-run-to-completion/.
+	// Specifies the maximum desired number of pods the job should run at any given time. The actual number
+	// of pods running in steady state will be less than this number when ((.spec.completions -
+	// .status.successful) < .spec.parallelism), i.e. when the work left to do is less than max
+	// parallelism. More info:
+	// https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/.
 	Parallelism OptInt32                                       `json:"parallelism"`
 	Selector    OptIoK8sApimachineryPkgApisMetaV1LabelSelector `json:"selector"`
 	// Suspend specifies whether the Job controller should create Pods or not. If a Job is created with
-	// suspend set to true, no Pods are created by the Job controller. If a Job is suspended after
-	// creation (i.e. the flag goes from false to true), the Job controller will delete all active Pods
-	// associated with this Job. Users must design their workload to gracefully handle this. Suspending a
-	// Job will reset the StartTime field of the Job, effectively resetting the ActiveDeadlineSeconds
-	// timer too. Defaults to false.
+	// suspend set to true, no Pods are created by the Job controller. If a Job is suspended after creation
+	// (i.e. the flag goes from false to true), the Job controller will delete all active Pods associated
+	// with this Job. Users must design their workload to gracefully handle this. Suspending a Job will
+	// reset the StartTime field of the Job, effectively resetting the ActiveDeadlineSeconds timer too.
+	// Defaults to false.
+	//
 	// This field is beta-level, gated by SuspendJob feature flag (enabled by default).
 	Suspend  OptBool                       `json:"suspend"`
 	Template IoK8sAPICoreV1PodTemplateSpec `json:"template"`
-	// TtlSecondsAfterFinished limits the lifetime of a Job that has finished execution (either Complete
-	// or Failed). If this field is set, ttlSecondsAfterFinished after the Job finishes, it is eligible
-	// to be automatically deleted. When the Job is being deleted, its lifecycle guarantees (e.g.
-	// finalizers) will be honored. If this field is unset, the Job won't be automatically deleted. If
-	// this field is set to zero, the Job becomes eligible to be deleted immediately after it finishes.
-	// This field is alpha-level and is only honored by servers that enable the TTLAfterFinished feature.
+	// TtlSecondsAfterFinished limits the lifetime of a Job that has finished execution (either Complete or
+	// Failed). If this field is set, ttlSecondsAfterFinished after the Job finishes, it is eligible to be
+	// automatically deleted. When the Job is being deleted, its lifecycle guarantees (e.g. finalizers)
+	// will be honored. If this field is unset, the Job won't be automatically deleted. If this field is
+	// set to zero, the Job becomes eligible to be deleted immediately after it finishes. This field is
+	// alpha-level and is only honored by servers that enable the TTLAfterFinished feature.
 	TtlSecondsAfterFinished OptInt32 `json:"ttlSecondsAfterFinished"`
 }
 
@@ -8780,19 +8791,19 @@ func (s *IoK8sAPIBatchV1JobSpec) SetTtlSecondsAfterFinished(val OptInt32) {
 type IoK8sAPIBatchV1JobStatus struct {
 	// The number of actively running pods.
 	Active OptInt32 `json:"active"`
-	// CompletedIndexes holds the completed indexes when .spec.completionMode = "Indexed" in a text
-	// format. The indexes are represented as decimal integers separated by commas. The numbers are
-	// listed in increasing order. Three or more consecutive numbers are compressed and represented by
-	// the first and last element of the series, separated by a hyphen. For example, if the completed
-	// indexes are 1, 3, 4, 5 and 7, they are represented as "1,3-5,7".
+	// CompletedIndexes holds the completed indexes when .spec.completionMode = "Indexed" in a text format.
+	// The indexes are represented as decimal integers separated by commas. The numbers are listed in
+	// increasing order. Three or more consecutive numbers are compressed and represented by the first and
+	// last element of the series, separated by a hyphen. For example, if the completed indexes are 1, 3,
+	// 4, 5 and 7, they are represented as "1,3-5,7".
 	CompletedIndexes OptString                             `json:"completedIndexes"`
 	CompletionTime   OptIoK8sApimachineryPkgApisMetaV1Time `json:"completionTime"`
 	// The latest available observations of an object's current state. When a Job fails, one of the
 	// conditions will have type "Failed" and status true. When a Job is suspended, one of the conditions
 	// will have type "Suspended" and status true; when the Job is resumed, the status of this condition
 	// will become false. When a Job is completed, one of the conditions will have type "Complete" and
-	// status true. More info: https://kubernetes.
-	// io/docs/concepts/workloads/controllers/jobs-run-to-completion/.
+	// status true. More info:
+	// https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/.
 	Conditions []IoK8sAPIBatchV1JobCondition `json:"conditions"`
 	// The number of pods which reached phase Failed.
 	Failed    OptInt32                              `json:"failed"`
@@ -8942,12 +8953,12 @@ func (s *IoK8sAPIBatchV1UncountedTerminatedPods) SetSucceeded(val []string) {
 // CronJob represents the configuration of a single cron job.
 // Ref: #/components/schemas/io.k8s.api.batch.v1beta1.CronJob
 type IoK8sAPIBatchV1beta1CronJob struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                   `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
@@ -9011,14 +9022,14 @@ func (*IoK8sAPIBatchV1beta1CronJob) readBatchV1beta1NamespacedCronJobStatusRes()
 // CronJobList is a collection of cron jobs.
 // Ref: #/components/schemas/io.k8s.api.batch.v1beta1.CronJobList
 type IoK8sAPIBatchV1beta1CronJobList struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
 	// Items is the list of CronJobs.
 	Items []IoK8sAPIBatchV1beta1CronJob `json:"items"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
@@ -9070,25 +9081,24 @@ func (*IoK8sAPIBatchV1beta1CronJobList) listBatchV1beta1NamespacedCronJobRes()  
 // CronJobSpec describes how the job execution will look like and when it will actually run.
 // Ref: #/components/schemas/io.k8s.api.batch.v1beta1.CronJobSpec
 type IoK8sAPIBatchV1beta1CronJobSpec struct {
-	// Specifies how to treat concurrent executions of a Job. Valid values are: - "Allow" (default):
-	// allows CronJobs to run concurrently; - "Forbid": forbids concurrent runs, skipping next run if
-	// previous run hasn't finished yet; - "Replace": cancels currently running job and replaces it with
-	// a new one.
+	// Specifies how to treat concurrent executions of a Job. Valid values are: - "Allow" (default): allows
+	// CronJobs to run concurrently; - "Forbid": forbids concurrent runs, skipping next run if previous run
+	// hasn't finished yet; - "Replace": cancels currently running job and replaces it with a new one.
 	ConcurrencyPolicy OptString `json:"concurrencyPolicy"`
-	// The number of failed finished jobs to retain. This is a pointer to distinguish between explicit
-	// zero and not specified. Defaults to 1.
+	// The number of failed finished jobs to retain. This is a pointer to distinguish between explicit zero
+	// and not specified. Defaults to 1.
 	FailedJobsHistoryLimit OptInt32                            `json:"failedJobsHistoryLimit"`
 	JobTemplate            IoK8sAPIBatchV1beta1JobTemplateSpec `json:"jobTemplate"`
 	// The schedule in Cron format, see https://en.wikipedia.org/wiki/Cron.
 	Schedule string `json:"schedule"`
-	// Optional deadline in seconds for starting the job if it misses scheduled time for any reason.
-	// Missed jobs executions will be counted as failed ones.
+	// Optional deadline in seconds for starting the job if it misses scheduled time for any reason. Missed
+	// jobs executions will be counted as failed ones.
 	StartingDeadlineSeconds OptInt64 `json:"startingDeadlineSeconds"`
-	// The number of successful finished jobs to retain. This is a pointer to distinguish between
-	// explicit zero and not specified. Defaults to 3.
+	// The number of successful finished jobs to retain. This is a pointer to distinguish between explicit
+	// zero and not specified. Defaults to 3.
 	SuccessfulJobsHistoryLimit OptInt32 `json:"successfulJobsHistoryLimit"`
 	// This flag tells the controller to suspend subsequent executions, it does not apply to already
-	// started executions.  Defaults to false.
+	// started executions. Defaults to false.
 	Suspend OptBool `json:"suspend"`
 }
 
@@ -9230,22 +9240,25 @@ func (s *IoK8sAPIBatchV1beta1JobTemplateSpec) SetSpec(val OptIoK8sAPIBatchV1JobS
 
 // CertificateSigningRequest objects provide a mechanism to obtain x509 certificates by submitting a
 // certificate signing request, and having it asynchronously approved and issued.
+//
 // Kubelets use this API to obtain:
-// 1. client certificates to authenticate to kube-apiserver (with the "kubernetes.
-// io/kube-apiserver-client-kubelet" signerName).
-// 2. serving certificates for TLS endpoints kube-apiserver can connect to securely (with the
-// "kubernetes.io/kubelet-serving" signerName).
+//
+//  1. client certificates to authenticate to kube-apiserver (with the
+//     "kubernetes.io/kube-apiserver-client-kubelet" signerName).
+//  2. serving certificates for TLS endpoints kube-apiserver can connect to securely (with the
+//     "kubernetes.io/kubelet-serving" signerName).
+//
 // This API can be used to request client certificates to authenticate to kube-apiserver (with the
 // "kubernetes.io/kube-apiserver-client" signerName), or to obtain certificates from custom
 // non-Kubernetes signers.
 // Ref: #/components/schemas/io.k8s.api.certificates.v1.CertificateSigningRequest
 type IoK8sAPICertificatesV1CertificateSigningRequest struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                                `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta              `json:"metadata"`
@@ -9323,14 +9336,19 @@ type IoK8sAPICertificatesV1CertificateSigningRequestCondition struct {
 	// not be "False" or "Unknown".
 	Status string `json:"status"`
 	// Type of the condition. Known conditions are "Approved", "Denied", and "Failed".
-	// An "Approved" condition is added via the /approval subresource, indicating the request was
-	// approved and should be issued by the signer.
+	//
+	// An "Approved" condition is added via the /approval subresource, indicating the request was approved
+	// and should be issued by the signer.
+	//
 	// A "Denied" condition is added via the /approval subresource, indicating the request was denied and
 	// should not be issued by the signer.
-	// A "Failed" condition is added via the /status subresource, indicating the signer failed to issue
-	// the certificate.
+	//
+	// A "Failed" condition is added via the /status subresource, indicating the signer failed to issue the
+	// certificate.
+	//
 	// Approved and Denied conditions are mutually exclusive. Approved, Denied, and Failed conditions
 	// cannot be removed once added.
+	//
 	// Only one condition of a given type is allowed.
 	Type string `json:"type"`
 }
@@ -9398,14 +9416,14 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestCondition) SetType(val s
 // CertificateSigningRequestList is a collection of CertificateSigningRequest objects.
 // Ref: #/components/schemas/io.k8s.api.certificates.v1.CertificateSigningRequestList
 type IoK8sAPICertificatesV1CertificateSigningRequestList struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
 	// Items is a collection of CertificateSigningRequest objects.
 	Items []IoK8sAPICertificatesV1CertificateSigningRequest `json:"items"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
@@ -9461,19 +9479,23 @@ type IoK8sAPICertificatesV1CertificateSigningRequestSpec struct {
 	// signer may issue a certificate with a different validity duration so a client must check the delta
 	// between the notBefore and and notAfter fields in the issued certificate to determine the actual
 	// duration.
+	//
 	// The v1.22+ in-tree implementations of the well-known Kubernetes signers will honor this field as
 	// long as the requested duration is not greater than the maximum duration they will honor per the
 	// --cluster-signing-duration CLI flag to the Kubernetes controller manager.
+	//
 	// Certificate signers may not honor this field for various reasons:
-	// 1. Old signer that is unaware of the field (such as the in-tree
-	// implementations prior to v1.22)
+	//
+	// 1. Old signer that is unaware of the field (such as the in-tree implementations prior to v1.22)
 	// 2. Signer whose configured maximum is shorter than the requested duration
 	// 3. Signer whose configured minimum is longer than the requested duration
+	//
 	// The minimum valid value for expirationSeconds is 600, i.e. 10 minutes.
+	//
 	// As of v1.22, this field is beta and is controlled via the CSRDuration feature gate.
 	ExpirationSeconds OptInt32 `json:"expirationSeconds"`
-	// Extra contains extra attributes of the user that created the CertificateSigningRequest. Populated
-	// by the API server on creation and immutable.
+	// Extra contains extra attributes of the user that created the CertificateSigningRequest. Populated by
+	// the API server on creation and immutable.
 	Extra OptIoK8sAPICertificatesV1CertificateSigningRequestSpecExtra `json:"extra"`
 	// Groups contains group membership of the user that created the CertificateSigningRequest. Populated
 	// by the API server on creation and immutable.
@@ -9482,30 +9504,34 @@ type IoK8sAPICertificatesV1CertificateSigningRequestSpec struct {
 	// When serialized as JSON or YAML, the data is additionally base64-encoded.
 	Request []byte `json:"request"`
 	// SignerName indicates the requested signer, and is a qualified name.
-	// List/watch requests for CertificateSigningRequests can filter on this field using a "spec.
-	// signerName=NAME" fieldSelector.
+	//
+	// List/watch requests for CertificateSigningRequests can filter on this field using a
+	// "spec.signerName=NAME" fieldSelector.
+	//
 	// Well-known Kubernetes signers are:
+	//
 	// 1. "kubernetes.io/kube-apiserver-client": issues client certificates that can be used to
-	// authenticate to kube-apiserver.
-	// Requests for this signer are never auto-approved by kube-controller-manager, can be issued by the
-	// "csrsigning" controller in kube-controller-manager.
+	//    authenticate to kube-apiserver. Requests for this signer are never auto-approved by
+	//    kube-controller-manager, can be issued by the "csrsigning" controller in kube-controller-manager.
 	// 2. "kubernetes.io/kube-apiserver-client-kubelet": issues client certificates that kubelets use to
-	// authenticate to kube-apiserver.
-	// Requests for this signer can be auto-approved by the "csrapproving" controller in
-	// kube-controller-manager, and can be issued by the "csrsigning" controller in
-	// kube-controller-manager.
+	//    authenticate to kube-apiserver. Requests for this signer can be auto-approved by the
+	//    "csrapproving" controller in kube-controller-manager, and can be issued by the "csrsigning"
+	//    controller in kube-controller-manager.
 	// 3. "kubernetes.io/kubelet-serving" issues serving certificates that kubelets use to serve TLS
-	// endpoints, which kube-apiserver can connect to securely.
-	// Requests for this signer are never auto-approved by kube-controller-manager, and can be issued by
-	// the "csrsigning" controller in kube-controller-manager.
-	// More details are available at https://k8s.
-	// io/docs/reference/access-authn-authz/certificate-signing-requests/#kubernetes-signers
+	//    endpoints, which kube-apiserver can connect to securely. Requests for this signer are never
+	//    auto-approved by kube-controller-manager, and can be issued by the "csrsigning" controller in
+	//    kube-controller-manager.
+	//
+	// More details are available at
+	// https://k8s.io/docs/reference/access-authn-authz/certificate-signing-requests/#kubernetes-signers
+	//
 	// Custom signerNames can also be specified. The signer defines:
+	//
 	// 1. Trust distribution: how trust (CA bundles) are distributed.
 	// 2. Permitted subjects: and behavior when a disallowed subject is requested.
 	// 3. Required, permitted, or forbidden x509 extensions in the request (including whether
-	// subjectAltNames are allowed, which types, restrictions on allowed values) and behavior when a
-	// disallowed extension is requested.
+	//    subjectAltNames are allowed, which types, restrictions on allowed values) and behavior when a
+	//    disallowed extension is requested.
 	// 4. Required, permitted, or forbidden key usages / extended key usages.
 	// 5. Expiration/certificate lifetime: whether it is fixed by the signer, configurable by the admin.
 	// 6. Whether or not requests for CA certificates are allowed.
@@ -9514,21 +9540,20 @@ type IoK8sAPICertificatesV1CertificateSigningRequestSpec struct {
 	// server on creation and immutable.
 	UID OptString `json:"uid"`
 	// Usages specifies a set of key usages requested in the issued certificate.
+	//
 	// Requests for TLS client certificates typically request: "digital signature", "key encipherment",
 	// "client auth".
+	//
 	// Requests for TLS serving certificates typically request: "key encipherment", "digital signature",
 	// "server auth".
-	// Valid values are:
-	// "signing", "digital signature", "content commitment",
-	// "key encipherment", "key agreement", "data encipherment",
-	// "cert sign", "crl sign", "encipher only", "decipher only", "any",
-	// "server auth", "client auth",
-	// "code signing", "email protection", "s/mime",
-	// "ipsec end system", "ipsec tunnel", "ipsec user",
-	// "timestamping", "ocsp signing", "microsoft sgc", "netscape sgc".
+	//
+	// Valid values are: "signing", "digital signature", "content commitment", "key encipherment", "key
+	// agreement", "data encipherment", "cert sign", "crl sign", "encipher only", "decipher only", "any",
+	// "server auth", "client auth", "code signing", "email protection", "s/mime", "ipsec end system",
+	// "ipsec tunnel", "ipsec user", "timestamping", "ocsp signing", "microsoft sgc", "netscape sgc".
 	Usages []string `json:"usages"`
-	// Username contains the name of the user that created the CertificateSigningRequest. Populated by
-	// the API server on creation and immutable.
+	// Username contains the name of the user that created the CertificateSigningRequest. Populated by the
+	// API server on creation and immutable.
 	Username OptString `json:"username"`
 }
 
@@ -9612,8 +9637,8 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestSpec) SetUsername(val Op
 	s.Username = val
 }
 
-// Extra contains extra attributes of the user that created the CertificateSigningRequest. Populated
-// by the API server on creation and immutable.
+// Extra contains extra attributes of the user that created the CertificateSigningRequest. Populated by
+// the API server on creation and immutable.
 type IoK8sAPICertificatesV1CertificateSigningRequestSpecExtra map[string][]string
 
 func (s *IoK8sAPICertificatesV1CertificateSigningRequestSpecExtra) init() IoK8sAPICertificatesV1CertificateSigningRequestSpecExtra {
@@ -9631,25 +9656,32 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestSpecExtra) init() IoK8sA
 type IoK8sAPICertificatesV1CertificateSigningRequestStatus struct {
 	// Certificate is populated with an issued certificate by the signer after an Approved condition is
 	// present. This field is set via the /status subresource. Once populated, this field is immutable.
+	//
 	// If the certificate signing request is denied, a condition of type "Denied" is added and this field
-	// remains empty. If the signer cannot issue the certificate, a condition of type "Failed" is added
-	// and this field remains empty.
+	// remains empty. If the signer cannot issue the certificate, a condition of type "Failed" is added and
+	// this field remains empty.
+	//
 	// Validation requirements:
+	//
 	// 1. certificate must contain one or more PEM blocks.
-	// 2. All PEM blocks must have the "CERTIFICATE" label, contain no headers, and the encoded data
-	// must be a BER-encoded ASN.1 Certificate structure as described in section 4 of RFC5280.
-	// 3. Non-PEM content may appear before or after the "CERTIFICATE" PEM blocks and is unvalidated,
-	// to allow for explanatory text as described in section 5.2 of RFC7468.
-	// If more than one PEM block is present, and the definition of the requested spec.signerName does
-	// not indicate otherwise, the first block is the issued certificate, and subsequent blocks should be
+	// 2. All PEM blocks must have the "CERTIFICATE" label, contain no headers, and the encoded data must
+	//    be a BER-encoded ASN.1 Certificate structure as described in section 4 of RFC5280.
+	// 3. Non-PEM content may appear before or after the "CERTIFICATE" PEM blocks and is unvalidated, to
+	//    allow for explanatory text as described in section 5.2 of RFC7468.
+	//
+	// If more than one PEM block is present, and the definition of the requested spec.signerName does not
+	// indicate otherwise, the first block is the issued certificate, and subsequent blocks should be
 	// treated as intermediate certificates and presented in TLS handshakes.
+	//
 	// The certificate is encoded in PEM format.
+	//
 	// When serialized as JSON or YAML, the data is additionally base64-encoded, so it consists of:
-	// base64(
-	// -----BEGIN CERTIFICATE-----
-	// ...
-	// -----END CERTIFICATE-----
-	// ).
+	//
+	// 	base64(
+	// 	-----BEGIN CERTIFICATE-----
+	// 	...
+	// 	-----END CERTIFICATE-----
+	// 	)
 	Certificate []byte `json:"certificate"`
 	// Conditions applied to the request. Known conditions are "Approved", "Denied", and "Failed".
 	Conditions []IoK8sAPICertificatesV1CertificateSigningRequestCondition `json:"conditions"`
@@ -9678,12 +9710,12 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestStatus) SetConditions(va
 // Lease defines a lease concept.
 // Ref: #/components/schemas/io.k8s.api.coordination.v1.Lease
 type IoK8sAPICoordinationV1Lease struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                   `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
@@ -9735,14 +9767,14 @@ func (*IoK8sAPICoordinationV1Lease) readCoordinationV1NamespacedLeaseRes() {}
 // LeaseList is a list of Lease objects.
 // Ref: #/components/schemas/io.k8s.api.coordination.v1.LeaseList
 type IoK8sAPICoordinationV1LeaseList struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
 	// Items is a list of schema objects.
 	Items []IoK8sAPICoordinationV1Lease `json:"items"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
@@ -9856,23 +9888,24 @@ func (s *IoK8sAPICoordinationV1LeaseSpec) SetRenewTime(val OptIoK8sApimachineryP
 }
 
 // Represents a Persistent Disk resource in AWS.
+//
 // An AWS EBS disk must exist before mounting to a container. The disk must also be in the same AWS
-// zone as the kubelet. An AWS EBS disk can only be mounted as read/write once. AWS EBS volumes
-// support ownership management and SELinux relabeling.
+// zone as the kubelet. An AWS EBS disk can only be mounted as read/write once. AWS EBS volumes support
+// ownership management and SELinux relabeling.
 // Ref: #/components/schemas/io.k8s.api.core.v1.AWSElasticBlockStoreVolumeSource
 type IoK8sAPICoreV1AWSElasticBlockStoreVolumeSource struct {
 	// Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is
 	// supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be
-	// "ext4" if unspecified. More info: https://kubernetes.
-	// io/docs/concepts/storage/volumes#awselasticblockstore.
+	// "ext4" if unspecified. More info:
+	// https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore.
 	FsType OptString `json:"fsType"`
 	// The partition in the volume that you want to mount. If omitted, the default is to mount by volume
 	// name. Examples: For volume /dev/sda1, you specify the partition as "1". Similarly, the volume
 	// partition for /dev/sda is "0" (or you can leave the property empty).
 	Partition OptInt32 `json:"partition"`
 	// Specify "true" to force and set the ReadOnly property in VolumeMounts to "true". If omitted, the
-	// default is "false". More info: https://kubernetes.
-	// io/docs/concepts/storage/volumes#awselasticblockstore.
+	// default is "false". More info:
+	// https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore.
 	ReadOnly OptBool `json:"readOnly"`
 	// Unique ID of the persistent disk resource in AWS (Amazon EBS volume). More info:
 	// https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore.
@@ -9998,8 +10031,8 @@ type IoK8sAPICoreV1AzureDiskVolumeSource struct {
 	// Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex.
 	// "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.
 	FsType OptString `json:"fsType"`
-	// Expected values Shared: multiple blob disks per storage account  Dedicated: single blob disk per
-	// storage account  Managed: azure managed data disk (only in managed availability set). defaults to
+	// Expected values Shared: multiple blob disks per storage account Dedicated: single blob disk per
+	// storage account Managed: azure managed data disk (only in managed availability set). defaults to
 	// shared.
 	Kind OptString `json:"kind"`
 	// Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.
@@ -10073,8 +10106,8 @@ type IoK8sAPICoreV1AzureFilePersistentVolumeSource struct {
 	ReadOnly OptBool `json:"readOnly"`
 	// The name of secret that contains Azure Storage Account Name and Key.
 	SecretName string `json:"secretName"`
-	// The namespace of the secret that contains Azure Storage Account Name and Key default is the same
-	// as the Pod.
+	// The namespace of the secret that contains Azure Storage Account Name and Key default is the same as
+	// the Pod.
 	SecretNamespace OptString `json:"secretNamespace"`
 	// Share Name.
 	ShareName string `json:"shareName"`
@@ -10397,8 +10430,8 @@ func (s *IoK8sAPICoreV1Capabilities) SetDrop(val []string) {
 // ownership management or SELinux relabeling.
 // Ref: #/components/schemas/io.k8s.api.core.v1.CephFSPersistentVolumeSource
 type IoK8sAPICoreV1CephFSPersistentVolumeSource struct {
-	// Required: Monitors is a collection of Ceph monitors More info: https://examples.k8s.
-	// io/volumes/cephfs/README.md#how-to-use-it.
+	// Required: Monitors is a collection of Ceph monitors More info:
+	// https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it.
 	Monitors []string `json:"monitors"`
 	// Optional: Used as the mounted root, rather than the full Ceph tree, default is /.
 	Path OptString `json:"path"`
@@ -10409,8 +10442,8 @@ type IoK8sAPICoreV1CephFSPersistentVolumeSource struct {
 	// https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it.
 	SecretFile OptString                        `json:"secretFile"`
 	SecretRef  OptIoK8sAPICoreV1SecretReference `json:"secretRef"`
-	// Optional: User is the rados user name, default is admin More info: https://examples.k8s.
-	// io/volumes/cephfs/README.md#how-to-use-it.
+	// Optional: User is the rados user name, default is admin More info:
+	// https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it.
 	User OptString `json:"user"`
 }
 
@@ -10478,8 +10511,8 @@ func (s *IoK8sAPICoreV1CephFSPersistentVolumeSource) SetUser(val OptString) {
 // ownership management or SELinux relabeling.
 // Ref: #/components/schemas/io.k8s.api.core.v1.CephFSVolumeSource
 type IoK8sAPICoreV1CephFSVolumeSource struct {
-	// Required: Monitors is a collection of Ceph monitors More info: https://examples.k8s.
-	// io/volumes/cephfs/README.md#how-to-use-it.
+	// Required: Monitors is a collection of Ceph monitors More info:
+	// https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it.
 	Monitors []string `json:"monitors"`
 	// Optional: Used as the mounted root, rather than the full Ceph tree, default is /.
 	Path OptString `json:"path"`
@@ -10490,8 +10523,8 @@ type IoK8sAPICoreV1CephFSVolumeSource struct {
 	// https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it.
 	SecretFile OptString                             `json:"secretFile"`
 	SecretRef  OptIoK8sAPICoreV1LocalObjectReference `json:"secretRef"`
-	// Optional: User is the rados user name, default is admin More info: https://examples.k8s.
-	// io/volumes/cephfs/README.md#how-to-use-it.
+	// Optional: User is the rados user name, default is admin More info:
+	// https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it.
 	User OptString `json:"user"`
 }
 
@@ -10568,8 +10601,8 @@ type IoK8sAPICoreV1CinderPersistentVolumeSource struct {
 	// VolumeMounts. More info: https://examples.k8s.io/mysql-cinder-pd/README.md.
 	ReadOnly  OptBool                          `json:"readOnly"`
 	SecretRef OptIoK8sAPICoreV1SecretReference `json:"secretRef"`
-	// Volume id used to identify the volume in cinder. More info: https://examples.k8s.
-	// io/mysql-cinder-pd/README.md.
+	// Volume id used to identify the volume in cinder. More info:
+	// https://examples.k8s.io/mysql-cinder-pd/README.md.
 	VolumeID string `json:"volumeID"`
 }
 
@@ -10626,8 +10659,8 @@ type IoK8sAPICoreV1CinderVolumeSource struct {
 	// VolumeMounts. More info: https://examples.k8s.io/mysql-cinder-pd/README.md.
 	ReadOnly  OptBool                               `json:"readOnly"`
 	SecretRef OptIoK8sAPICoreV1LocalObjectReference `json:"secretRef"`
-	// Volume id used to identify the volume in cinder. More info: https://examples.k8s.
-	// io/mysql-cinder-pd/README.md.
+	// Volume id used to identify the volume in cinder. More info:
+	// https://examples.k8s.io/mysql-cinder-pd/README.md.
 	VolumeID string `json:"volumeID"`
 }
 
@@ -10742,18 +10775,18 @@ func (s *IoK8sAPICoreV1ComponentCondition) SetType(val string) {
 	s.Type = val
 }
 
-// ComponentStatus (and ComponentStatusList) holds the cluster validation info. Deprecated: This API
-// is deprecated in v1.19+.
+// ComponentStatus (and ComponentStatusList) holds the cluster validation info. Deprecated: This API is
+// deprecated in v1.19+.
 // Ref: #/components/schemas/io.k8s.api.core.v1.ComponentStatus
 type IoK8sAPICoreV1ComponentStatus struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
 	// List of component conditions observed.
 	Conditions []IoK8sAPICoreV1ComponentCondition `json:"conditions"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                   `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
@@ -10805,14 +10838,14 @@ func (*IoK8sAPICoreV1ComponentStatus) readCoreV1ComponentStatusRes() {}
 // This API is deprecated in v1.19+.
 // Ref: #/components/schemas/io.k8s.api.core.v1.ComponentStatusList
 type IoK8sAPICoreV1ComponentStatusList struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
 	// List of ComponentStatus objects.
 	Items []IoK8sAPICoreV1ComponentStatus `json:"items"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
@@ -10863,26 +10896,25 @@ func (*IoK8sAPICoreV1ComponentStatusList) listCoreV1ComponentStatusRes() {}
 // ConfigMap holds configuration data for pods to consume.
 // Ref: #/components/schemas/io.k8s.api.core.v1.ConfigMap
 type IoK8sAPICoreV1ConfigMap struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
 	// BinaryData contains the binary data. Each key must consist of alphanumeric characters, '-', '_' or
 	// '.'. BinaryData can contain byte sequences that are not in the UTF-8 range. The keys stored in
 	// BinaryData must not overlap with the ones in the Data field, this is enforced during validation
 	// process. Using this field will require 1.10+ apiserver and kubelet.
 	BinaryData OptIoK8sAPICoreV1ConfigMapBinaryData `json:"binaryData"`
-	// Data contains the configuration data. Each key must consist of alphanumeric characters, '-', '_'
-	// or '.'. Values with non-UTF-8 byte sequences must use the BinaryData field. The keys stored in
-	// Data must not overlap with the keys in the BinaryData field, this is enforced during validation
-	// process.
+	// Data contains the configuration data. Each key must consist of alphanumeric characters, '-', '_' or
+	// '.'. Values with non-UTF-8 byte sequences must use the BinaryData field. The keys stored in Data
+	// must not overlap with the keys in the BinaryData field, this is enforced during validation process.
 	Data OptIoK8sAPICoreV1ConfigMapData `json:"data"`
-	// Immutable, if set to true, ensures that data stored in the ConfigMap cannot be updated (only
-	// object metadata can be modified). If not set to true, the field can be modified at any time.
-	// Defaulted to nil.
+	// Immutable, if set to true, ensures that data stored in the ConfigMap cannot be updated (only object
+	// metadata can be modified). If not set to true, the field can be modified at any time. Defaulted to
+	// nil.
 	Immutable OptBool `json:"immutable"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                   `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
@@ -10965,10 +10997,9 @@ func (s *IoK8sAPICoreV1ConfigMapBinaryData) init() IoK8sAPICoreV1ConfigMapBinary
 	return m
 }
 
-// Data contains the configuration data. Each key must consist of alphanumeric characters, '-', '_'
-// or '.'. Values with non-UTF-8 byte sequences must use the BinaryData field. The keys stored in
-// Data must not overlap with the keys in the BinaryData field, this is enforced during validation
-// process.
+// Data contains the configuration data. Each key must consist of alphanumeric characters, '-', '_' or
+// '.'. Values with non-UTF-8 byte sequences must use the BinaryData field. The keys stored in Data
+// must not overlap with the keys in the BinaryData field, this is enforced during validation process.
 type IoK8sAPICoreV1ConfigMapData map[string]string
 
 func (s *IoK8sAPICoreV1ConfigMapData) init() IoK8sAPICoreV1ConfigMapData {
@@ -10981,12 +11012,13 @@ func (s *IoK8sAPICoreV1ConfigMapData) init() IoK8sAPICoreV1ConfigMapData {
 }
 
 // ConfigMapEnvSource selects a ConfigMap to populate the environment variables with.
-// The contents of the target ConfigMap's Data field will represent the key-value pairs as
-// environment variables.
+//
+// The contents of the target ConfigMap's Data field will represent the key-value pairs as environment
+// variables.
 // Ref: #/components/schemas/io.k8s.api.core.v1.ConfigMapEnvSource
 type IoK8sAPICoreV1ConfigMapEnvSource struct {
-	// Name of the referent. More info: https://kubernetes.
-	// io/docs/concepts/overview/working-with-objects/names/#names.
+	// Name of the referent. More info:
+	// https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names.
 	Name OptString `json:"name"`
 	// Specify whether the ConfigMap must be defined.
 	Optional OptBool `json:"optional"`
@@ -11017,8 +11049,8 @@ func (s *IoK8sAPICoreV1ConfigMapEnvSource) SetOptional(val OptBool) {
 type IoK8sAPICoreV1ConfigMapKeySelector struct {
 	// The key to select.
 	Key string `json:"key"`
-	// Name of the referent. More info: https://kubernetes.
-	// io/docs/concepts/overview/working-with-objects/names/#names.
+	// Name of the referent. More info:
+	// https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names.
 	Name OptString `json:"name"`
 	// Specify whether the ConfigMap or its key must be defined.
 	Optional OptBool `json:"optional"`
@@ -11057,14 +11089,14 @@ func (s *IoK8sAPICoreV1ConfigMapKeySelector) SetOptional(val OptBool) {
 // ConfigMapList is a resource containing a list of ConfigMap objects.
 // Ref: #/components/schemas/io.k8s.api.core.v1.ConfigMapList
 type IoK8sAPICoreV1ConfigMapList struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
 	// Items is the list of ConfigMaps.
 	Items []IoK8sAPICoreV1ConfigMap `json:"items"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
@@ -11114,8 +11146,8 @@ func (*IoK8sAPICoreV1ConfigMapList) listCoreV1ConfigMapForAllNamespacesRes() {}
 func (*IoK8sAPICoreV1ConfigMapList) listCoreV1NamespacedConfigMapRes()       {}
 
 // ConfigMapNodeConfigSource contains the information to reference a ConfigMap as a config source for
-// the Node. This API is deprecated since 1.22: https://git.k8s.
-// io/enhancements/keps/sig-node/281-dynamic-kubelet-configuration.
+// the Node. This API is deprecated since 1.22:
+// https://git.k8s.io/enhancements/keps/sig-node/281-dynamic-kubelet-configuration.
 // Ref: #/components/schemas/io.k8s.api.core.v1.ConfigMapNodeConfigSource
 type IoK8sAPICoreV1ConfigMapNodeConfigSource struct {
 	// KubeletConfigKey declares which key of the referenced ConfigMap corresponds to the
@@ -11126,8 +11158,8 @@ type IoK8sAPICoreV1ConfigMapNodeConfigSource struct {
 	// Namespace is the metadata.namespace of the referenced ConfigMap. This field is required in all
 	// cases.
 	Namespace string `json:"namespace"`
-	// ResourceVersion is the metadata.ResourceVersion of the referenced ConfigMap. This field is
-	// forbidden in Node.Spec, and required in Node.Status.
+	// ResourceVersion is the metadata.ResourceVersion of the referenced ConfigMap. This field is forbidden
+	// in Node.Spec, and required in Node.Status.
 	ResourceVersion OptString `json:"resourceVersion"`
 	// UID is the metadata.UID of the referenced ConfigMap. This field is forbidden in Node.Spec, and
 	// required in Node.Status.
@@ -11185,20 +11217,21 @@ func (s *IoK8sAPICoreV1ConfigMapNodeConfigSource) SetUID(val OptString) {
 }
 
 // Adapts a ConfigMap into a projected volume.
+//
 // The contents of the target ConfigMap's Data field will be presented in a projected volume as files
 // using the keys in the Data field as the file names, unless the items element is populated with
-// specific mappings of keys to paths. Note that this is identical to a configmap volume source
-// without the default mode.
+// specific mappings of keys to paths. Note that this is identical to a configmap volume source without
+// the default mode.
 // Ref: #/components/schemas/io.k8s.api.core.v1.ConfigMapProjection
 type IoK8sAPICoreV1ConfigMapProjection struct {
-	// If unspecified, each key-value pair in the Data field of the referenced ConfigMap will be
-	// projected into the volume as a file whose name is the key and content is the value. If specified,
-	// the listed keys will be projected into the specified paths, and unlisted keys will not be present.
-	// If a key is specified which is not present in the ConfigMap, the volume setup will error unless it
-	// is marked optional. Paths must be relative and may not contain the '..' path or start with '..'.
+	// If unspecified, each key-value pair in the Data field of the referenced ConfigMap will be projected
+	// into the volume as a file whose name is the key and content is the value. If specified, the listed
+	// keys will be projected into the specified paths, and unlisted keys will not be present. If a key is
+	// specified which is not present in the ConfigMap, the volume setup will error unless it is marked
+	// optional. Paths must be relative and may not contain the '..' path or start with '..'.
 	Items []IoK8sAPICoreV1KeyToPath `json:"items"`
-	// Name of the referent. More info: https://kubernetes.
-	// io/docs/concepts/overview/working-with-objects/names/#names.
+	// Name of the referent. More info:
+	// https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names.
 	Name OptString `json:"name"`
 	// Specify whether the ConfigMap or its keys must be defined.
 	Optional OptBool `json:"optional"`
@@ -11235,6 +11268,7 @@ func (s *IoK8sAPICoreV1ConfigMapProjection) SetOptional(val OptBool) {
 }
 
 // Adapts a ConfigMap into a volume.
+//
 // The contents of the target ConfigMap's Data field will be presented in a volume as files using the
 // keys in the Data field as the file names, unless the items element is populated with specific
 // mappings of keys to paths. ConfigMap volumes support ownership management and SELinux relabeling.
@@ -11243,17 +11277,17 @@ type IoK8sAPICoreV1ConfigMapVolumeSource struct {
 	// Optional: mode bits used to set permissions on created files by default. Must be an octal value
 	// between 0000 and 0777 or a decimal value between 0 and 511. YAML accepts both octal and decimal
 	// values, JSON requires decimal values for mode bits. Defaults to 0644. Directories within the path
-	// are not affected by this setting. This might be in conflict with other options that affect the
-	// file mode, like fsGroup, and the result can be other mode bits set.
+	// are not affected by this setting. This might be in conflict with other options that affect the file
+	// mode, like fsGroup, and the result can be other mode bits set.
 	DefaultMode OptInt32 `json:"defaultMode"`
-	// If unspecified, each key-value pair in the Data field of the referenced ConfigMap will be
-	// projected into the volume as a file whose name is the key and content is the value. If specified,
-	// the listed keys will be projected into the specified paths, and unlisted keys will not be present.
-	// If a key is specified which is not present in the ConfigMap, the volume setup will error unless it
-	// is marked optional. Paths must be relative and may not contain the '..' path or start with '..'.
+	// If unspecified, each key-value pair in the Data field of the referenced ConfigMap will be projected
+	// into the volume as a file whose name is the key and content is the value. If specified, the listed
+	// keys will be projected into the specified paths, and unlisted keys will not be present. If a key is
+	// specified which is not present in the ConfigMap, the volume setup will error unless it is marked
+	// optional. Paths must be relative and may not contain the '..' path or start with '..'.
 	Items []IoK8sAPICoreV1KeyToPath `json:"items"`
-	// Name of the referent. More info: https://kubernetes.
-	// io/docs/concepts/overview/working-with-objects/names/#names.
+	// Name of the referent. More info:
+	// https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names.
 	Name OptString `json:"name"`
 	// Specify whether the ConfigMap or its keys must be defined.
 	Optional OptBool `json:"optional"`
@@ -11305,34 +11339,33 @@ type IoK8sAPICoreV1Container struct {
 	// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable
 	// references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be
 	// resolved, the reference in the input string will be unchanged. Double $$ are reduced to a single $,
-	//  which allows for escaping the $(VAR_NAME) syntax: i.e. "$$(VAR_NAME)" will produce the string
-	// literal "$(VAR_NAME)". Escaped references will never be expanded, regardless of whether the
-	// variable exists or not. Cannot be updated. More info: https://kubernetes.
-	// io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell.
+	// which allows for escaping the $(VAR_NAME) syntax: i.e. "$$(VAR_NAME)" will produce the string
+	// literal "$(VAR_NAME)". Escaped references will never be expanded, regardless of whether the variable
+	// exists or not. Cannot be updated. More info:
+	// https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell.
 	Args []string `json:"args"`
-	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is
-	// not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a
+	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not
+	// provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a
 	// variable cannot be resolved, the reference in the input string will be unchanged. Double $$ are
 	// reduced to a single $, which allows for escaping the $(VAR_NAME) syntax: i.e. "$$(VAR_NAME)" will
 	// produce the string literal "$(VAR_NAME)". Escaped references will never be expanded, regardless of
-	// whether the variable exists or not. Cannot be updated. More info: https://kubernetes.
-	// io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell.
+	// whether the variable exists or not. Cannot be updated. More info:
+	// https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell.
 	Command []string `json:"command"`
 	// List of environment variables to set in the container. Cannot be updated.
 	Env []IoK8sAPICoreV1EnvVar `json:"env"`
-	// List of sources to populate environment variables in the container. The keys defined within a
-	// source must be a C_IDENTIFIER. All invalid keys will be reported as an event when the container is
-	// starting. When a key exists in multiple sources, the value associated with the last source will
-	// take precedence. Values defined by an Env with a duplicate key will take precedence. Cannot be
-	// updated.
+	// List of sources to populate environment variables in the container. The keys defined within a source
+	// must be a C_IDENTIFIER. All invalid keys will be reported as an event when the container is
+	// starting. When a key exists in multiple sources, the value associated with the last source will take
+	// precedence. Values defined by an Env with a duplicate key will take precedence. Cannot be updated.
 	EnvFrom []IoK8sAPICoreV1EnvFromSource `json:"envFrom"`
 	// Docker image name. More info: https://kubernetes.io/docs/concepts/containers/images This field is
-	// optional to allow higher level config management to default or override container images in
-	// workload controllers like Deployments and StatefulSets.
+	// optional to allow higher level config management to default or override container images in workload
+	// controllers like Deployments and StatefulSets.
 	Image OptString `json:"image"`
 	// Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is
-	// specified, or IfNotPresent otherwise. Cannot be updated. More info: https://kubernetes.
-	// io/docs/concepts/containers/images#updating-images.
+	// specified, or IfNotPresent otherwise. Cannot be updated. More info:
+	// https://kubernetes.io/docs/concepts/containers/images#updating-images.
 	ImagePullPolicy OptString                  `json:"imagePullPolicy"`
 	Lifecycle       OptIoK8sAPICoreV1Lifecycle `json:"lifecycle"`
 	LivenessProbe   OptIoK8sAPICoreV1Probe     `json:"livenessProbe"`
@@ -11341,8 +11374,8 @@ type IoK8sAPICoreV1Container struct {
 	Name string `json:"name"`
 	// List of ports to expose from the container. Exposing a port here gives the system additional
 	// information about the network connections a container uses, but is primarily informational. Not
-	// specifying a port here DOES NOT prevent that port from being exposed. Any port which is listening
-	// on the default "0.0.0.0" address inside a container will be accessible from the network. Cannot be
+	// specifying a port here DOES NOT prevent that port from being exposed. Any port which is listening on
+	// the default "0.0.0.0" address inside a container will be accessible from the network. Cannot be
 	// updated.
 	Ports           []IoK8sAPICoreV1ContainerPort         `json:"ports"`
 	ReadinessProbe  OptIoK8sAPICoreV1Probe                `json:"readinessProbe"`
@@ -11360,16 +11393,16 @@ type IoK8sAPICoreV1Container struct {
 	// container processes that reads from stdin will never receive an EOF. Default is false.
 	StdinOnce OptBool `json:"stdinOnce"`
 	// Optional: Path at which the file to which the container's termination message will be written is
-	// mounted into the container's filesystem. Message written is intended to be brief final status,
-	// such as an assertion failure message. Will be truncated by the node if greater than 4096 bytes.
-	// The total message length across all containers will be limited to 12kb. Defaults to
-	// /dev/termination-log. Cannot be updated.
+	// mounted into the container's filesystem. Message written is intended to be brief final status, such
+	// as an assertion failure message. Will be truncated by the node if greater than 4096 bytes. The total
+	// message length across all containers will be limited to 12kb. Defaults to /dev/termination-log.
+	// Cannot be updated.
 	TerminationMessagePath OptString `json:"terminationMessagePath"`
 	// Indicate how the termination message should be populated. File will use the contents of
 	// terminationMessagePath to populate the container status message on both success and failure.
 	// FallbackToLogsOnError will use the last chunk of container log output if the termination message
-	// file is empty and the container exited with an error. The log output is limited to 2048 bytes or
-	// 80 lines, whichever is smaller. Defaults to File. Cannot be updated.
+	// file is empty and the container exited with an error. The log output is limited to 2048 bytes or 80
+	// lines, whichever is smaller. Defaults to File. Cannot be updated.
 	TerminationMessagePolicy OptString `json:"terminationMessagePolicy"`
 	// Whether this container should allocate a TTY for itself, also requires 'stdin' to be true. Default
 	// is false.
@@ -11378,8 +11411,8 @@ type IoK8sAPICoreV1Container struct {
 	VolumeDevices []IoK8sAPICoreV1VolumeDevice `json:"volumeDevices"`
 	// Pod volumes to mount into the container's filesystem. Cannot be updated.
 	VolumeMounts []IoK8sAPICoreV1VolumeMount `json:"volumeMounts"`
-	// Container's working directory. If not specified, the container runtime's default will be used,
-	// which might be configured in the container image. Cannot be updated.
+	// Container's working directory. If not specified, the container runtime's default will be used, which
+	// might be configured in the container image. Cannot be updated.
 	WorkingDir OptString `json:"workingDir"`
 }
 
@@ -11606,8 +11639,8 @@ func (s *IoK8sAPICoreV1Container) SetWorkingDir(val OptString) {
 // Describe a container image.
 // Ref: #/components/schemas/io.k8s.api.core.v1.ContainerImage
 type IoK8sAPICoreV1ContainerImage struct {
-	// Names by which this image is known. e.g. ["k8s.gcr.io/hyperkube:v1.0.7", "dockerhub.
-	// io/google_containers/hyperkube:v1.0.7"].
+	// Names by which this image is known. e.g. ["k8s.gcr.io/hyperkube:v1.0.7",
+	// "dockerhub.io/google_containers/hyperkube:v1.0.7"].
 	Names []string `json:"names"`
 	// The size of the image in bytes.
 	SizeBytes OptInt64 `json:"sizeBytes"`
@@ -11640,12 +11673,11 @@ type IoK8sAPICoreV1ContainerPort struct {
 	ContainerPort int32 `json:"containerPort"`
 	// What host IP to bind the external port to.
 	HostIP OptString `json:"hostIP"`
-	// Number of port to expose on the host. If specified, this must be a valid port number, 0 < x <
-	// 65536. If HostNetwork is specified, this must match ContainerPort. Most containers do not need
-	// this.
+	// Number of port to expose on the host. If specified, this must be a valid port number, 0 < x < 65536.
+	// If HostNetwork is specified, this must match ContainerPort. Most containers do not need this.
 	HostPort OptInt32 `json:"hostPort"`
-	// If specified, this must be an IANA_SVC_NAME and unique within the pod. Each named port in a pod
-	// must have a unique name. Name for the port that can be referred to by services.
+	// If specified, this must be an IANA_SVC_NAME and unique within the pod. Each named port in a pod must
+	// have a unique name. Name for the port that can be referred to by services.
 	Name OptString `json:"name"`
 	// Protocol for port. Must be UDP, TCP, or SCTP. Defaults to "TCP".
 	Protocol OptString `json:"protocol"`
@@ -11877,8 +11909,8 @@ func (s *IoK8sAPICoreV1ContainerStateWaiting) SetReason(val OptString) {
 type IoK8sAPICoreV1ContainerStatus struct {
 	// Container's ID in the format 'docker://<container_id>'.
 	ContainerID OptString `json:"containerID"`
-	// The image the container is running. More info: https://kubernetes.
-	// io/docs/concepts/containers/images.
+	// The image the container is running. More info:
+	// https://kubernetes.io/docs/concepts/containers/images.
 	Image string `json:"image"`
 	// ImageID of the container's image.
 	ImageID   string                          `json:"imageID"`
@@ -11890,8 +11922,8 @@ type IoK8sAPICoreV1ContainerStatus struct {
 	// The number of times the container has been restarted.
 	RestartCount int32 `json:"restartCount"`
 	// Specifies whether the container has passed its startup probe. Initialized as false, becomes true
-	// after startupProbe is considered successful. Resets to false when the container is restarted, or
-	// if kubelet loses state temporarily. Is always true when no startupProbe is defined.
+	// after startupProbe is considered successful. Resets to false when the container is restarted, or if
+	// kubelet loses state temporarily. Is always true when no startupProbe is defined.
 	Started OptBool                         `json:"started"`
 	State   OptIoK8sAPICoreV1ContainerState `json:"state"`
 }
@@ -12003,8 +12035,8 @@ func (s *IoK8sAPICoreV1DaemonEndpoint) SetPort(val int32) {
 	s.Port = val
 }
 
-// Represents downward API info for projecting into a projected volume. Note that this is identical
-// to a downwardAPI volume source without the default mode.
+// Represents downward API info for projecting into a projected volume. Note that this is identical to
+// a downwardAPI volume source without the default mode.
 // Ref: #/components/schemas/io.k8s.api.core.v1.DownwardAPIProjection
 type IoK8sAPICoreV1DownwardAPIProjection struct {
 	// Items is a list of DownwardAPIVolume file.
@@ -12026,14 +12058,13 @@ func (s *IoK8sAPICoreV1DownwardAPIProjection) SetItems(val []IoK8sAPICoreV1Downw
 type IoK8sAPICoreV1DownwardAPIVolumeFile struct {
 	FieldRef OptIoK8sAPICoreV1ObjectFieldSelector `json:"fieldRef"`
 	// Optional: mode bits used to set permissions on this file, must be an octal value between 0000 and
-	// 0777 or a decimal value between 0 and 511. YAML accepts both octal and decimal values, JSON
-	// requires decimal values for mode bits. If not specified, the volume defaultMode will be used. This
-	// might be in conflict with other options that affect the file mode, like fsGroup, and the result
-	// can be other mode bits set.
+	// 0777 or a decimal value between 0 and 511. YAML accepts both octal and decimal values, JSON requires
+	// decimal values for mode bits. If not specified, the volume defaultMode will be used. This might be
+	// in conflict with other options that affect the file mode, like fsGroup, and the result can be other
+	// mode bits set.
 	Mode OptInt32 `json:"mode"`
-	// Required: Path is  the relative path name of the file to be created. Must not be absolute or
-	// contain the '..' path. Must be utf-8 encoded. The first item of the relative path must not start
-	// with '..'.
+	// Required: Path is the relative path name of the file to be created. Must not be absolute or contain
+	// the '..' path. Must be utf-8 encoded. The first item of the relative path must not start with '..'.
 	Path             string                                 `json:"path"`
 	ResourceFieldRef OptIoK8sAPICoreV1ResourceFieldSelector `json:"resourceFieldRef"`
 }
@@ -12085,9 +12116,9 @@ type IoK8sAPICoreV1DownwardAPIVolumeSource struct {
 	// Optional: mode bits to use on created files by default. Must be a Optional: mode bits used to set
 	// permissions on created files by default. Must be an octal value between 0000 and 0777 or a decimal
 	// value between 0 and 511. YAML accepts both octal and decimal values, JSON requires decimal values
-	// for mode bits. Defaults to 0644. Directories within the path are not affected by this setting.
-	// This might be in conflict with other options that affect the file mode, like fsGroup, and the
-	// result can be other mode bits set.
+	// for mode bits. Defaults to 0644. Directories within the path are not affected by this setting. This
+	// might be in conflict with other options that affect the file mode, like fsGroup, and the result can
+	// be other mode bits set.
 	DefaultMode OptInt32 `json:"defaultMode"`
 	// Items is a list of downward API volume file.
 	Items []IoK8sAPICoreV1DownwardAPIVolumeFile `json:"items"`
@@ -12118,8 +12149,8 @@ func (s *IoK8sAPICoreV1DownwardAPIVolumeSource) SetItems(val []IoK8sAPICoreV1Dow
 // Ref: #/components/schemas/io.k8s.api.core.v1.EmptyDirVolumeSource
 type IoK8sAPICoreV1EmptyDirVolumeSource struct {
 	// What type of storage medium should back this directory. The default is "" which means to use the
-	// node's default medium. Must be an empty string (default) or Memory. More info: https://kubernetes.
-	// io/docs/concepts/storage/volumes#emptydir.
+	// node's default medium. Must be an empty string (default) or Memory. More info:
+	// https://kubernetes.io/docs/concepts/storage/volumes#emptydir.
 	Medium    OptString                                  `json:"medium"`
 	SizeLimit OptIoK8sApimachineryPkgAPIResourceQuantity `json:"sizeLimit"`
 }
@@ -12202,12 +12233,12 @@ func (s *IoK8sAPICoreV1EndpointAddress) SetTargetRef(val OptIoK8sAPICoreV1Object
 // Ref: #/components/schemas/io.k8s.api.core.v1.EndpointPort
 type IoK8sAPICoreV1EndpointPort struct {
 	// The application protocol for this port. This field follows standard Kubernetes label syntax.
-	// Un-prefixed names are reserved for IANA standard service names (as per RFC-6335 and http://www.
-	// iana.org/assignments/service-names). Non-standard protocols should use prefixed names such as
-	// mycompany.com/my-custom-protocol.
+	// Un-prefixed names are reserved for IANA standard service names (as per RFC-6335 and
+	// http://www.iana.org/assignments/service-names). Non-standard protocols should use prefixed names
+	// such as mycompany.com/my-custom-protocol.
 	AppProtocol OptString `json:"appProtocol"`
-	// The name of this port.  This must match the 'name' field in the corresponding ServicePort. Must be
-	// a DNS_LABEL. Optional only if one port is defined.
+	// The name of this port. This must match the 'name' field in the corresponding ServicePort. Must be a
+	// DNS_LABEL. Optional only if one port is defined.
 	Name OptString `json:"name"`
 	// The port number of the endpoint.
 	Port int32 `json:"port"`
@@ -12255,15 +12286,11 @@ func (s *IoK8sAPICoreV1EndpointPort) SetProtocol(val OptString) {
 	s.Protocol = val
 }
 
-// EndpointSubset is a group of addresses with a common set of ports. The expanded set of endpoints
-// is the Cartesian product of Addresses x Ports. For example, given:
-// {
-// Addresses: [{"ip": "10.10.1.1"}, {"ip": "10.10.2.2"}],
-// Ports:     [{"name": "a", "port": 8675}, {"name": "b", "port": 309}]
-// }
-// The resulting set of endpoints can be viewed as:
-// a: [ 10.10.1.1:8675, 10.10.2.2:8675 ],
-// b: [ 10.10.1.1:309, 10.10.2.2:309 ].
+// EndpointSubset is a group of addresses with a common set of ports. The expanded set of endpoints is
+// the Cartesian product of Addresses x Ports. For example, given: { Addresses: [{"ip": "10.10.1.1"},
+// {"ip": "10.10.2.2"}], Ports: [{"name": "a", "port": 8675}, {"name": "b", "port": 309}] } The
+// resulting set of endpoints can be viewed as: a: [ 10.10.1.1:8675, 10.10.2.2:8675 ], b: [
+// 10.10.1.1:309, 10.10.2.2:309 ].
 // Ref: #/components/schemas/io.k8s.api.core.v1.EndpointSubset
 type IoK8sAPICoreV1EndpointSubset struct {
 	// IP addresses which offer the related ports that are marked as ready. These endpoints should be
@@ -12307,34 +12334,26 @@ func (s *IoK8sAPICoreV1EndpointSubset) SetPorts(val []IoK8sAPICoreV1EndpointPort
 	s.Ports = val
 }
 
-// Endpoints is a collection of endpoints that implement the actual service. Example:
-// Name: "mysvc",
-// Subsets: [
-// {
-// Addresses: [{"ip": "10.10.1.1"}, {"ip": "10.10.2.2"}],
-// Ports: [{"name": "a", "port": 8675}, {"name": "b", "port": 309}]
-// },
-// {
-// Addresses: [{"ip": "10.10.3.3"}],
-// Ports: [{"name": "a", "port": 93}, {"name": "b", "port": 76}]
-// },
-// ].
+// Endpoints is a collection of endpoints that implement the actual service. Example: Name: "mysvc",
+// Subsets: [ { Addresses: [{"ip": "10.10.1.1"}, {"ip": "10.10.2.2"}], Ports: [{"name": "a", "port":
+// 8675}, {"name": "b", "port": 309}] }, { Addresses: [{"ip": "10.10.3.3"}], Ports: [{"name": "a",
+// "port": 93}, {"name": "b", "port": 76}] }, ].
 // Ref: #/components/schemas/io.k8s.api.core.v1.Endpoints
 type IoK8sAPICoreV1Endpoints struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                   `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
-	// The set of all endpoints is the union of all subsets. Addresses are placed into subsets according
-	// to the IPs they share. A single address with multiple ports, some of which are ready and some of
-	// which are not (because they come from different containers) will result in the address being
-	// displayed in different subsets for the different ports. No address will appear in both Addresses
-	// and NotReadyAddresses in the same subset. Sets of addresses and ports that comprise a service.
+	// The set of all endpoints is the union of all subsets. Addresses are placed into subsets according to
+	// the IPs they share. A single address with multiple ports, some of which are ready and some of which
+	// are not (because they come from different containers) will result in the address being displayed in
+	// different subsets for the different ports. No address will appear in both Addresses and
+	// NotReadyAddresses in the same subset. Sets of addresses and ports that comprise a service.
 	Subsets []IoK8sAPICoreV1EndpointSubset `json:"subsets"`
 }
 
@@ -12383,14 +12402,14 @@ func (*IoK8sAPICoreV1Endpoints) readCoreV1NamespacedEndpointsRes() {}
 // EndpointsList is a list of endpoints.
 // Ref: #/components/schemas/io.k8s.api.core.v1.EndpointsList
 type IoK8sAPICoreV1EndpointsList struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
 	// List of endpoints.
 	Items []IoK8sAPICoreV1Endpoints `json:"items"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
@@ -12484,11 +12503,11 @@ type IoK8sAPICoreV1EnvVar struct {
 	// Name of the environment variable. Must be a C_IDENTIFIER.
 	Name string `json:"name"`
 	// Variable references $(VAR_NAME) are expanded using the previously defined environment variables in
-	// the container and any service environment variables. If a variable cannot be resolved, the
-	// reference in the input string will be unchanged. Double $$ are reduced to a single $, which allows
-	// for escaping the $(VAR_NAME) syntax: i.e. "$$(VAR_NAME)" will produce the string literal
-	// "$(VAR_NAME)". Escaped references will never be expanded, regardless of whether the variable
-	// exists or not. Defaults to "".
+	// the container and any service environment variables. If a variable cannot be resolved, the reference
+	// in the input string will be unchanged. Double $$ are reduced to a single $, which allows for
+	// escaping the $(VAR_NAME) syntax: i.e. "$$(VAR_NAME)" will produce the string literal "$(VAR_NAME)".
+	// Escaped references will never be expanded, regardless of whether the variable exists or not.
+	// Defaults to "".
 	Value     OptString                     `json:"value"`
 	ValueFrom OptIoK8sAPICoreV1EnvVarSource `json:"valueFrom"`
 }
@@ -12574,42 +12593,41 @@ func (s *IoK8sAPICoreV1EnvVarSource) SetSecretKeyRef(val OptIoK8sAPICoreV1Secret
 
 // An EphemeralContainer is a container that may be added temporarily to an existing pod for
 // user-initiated activities such as debugging. Ephemeral containers have no resource or scheduling
-// guarantees, and they will not be restarted when they exit or when a pod is removed or restarted.
-// If an ephemeral container causes a pod to exceed its resource allocation, the pod may be evicted.
-// Ephemeral containers may not be added by directly updating the pod spec. They must be added via
-// the pod's ephemeralcontainers subresource, and they will appear in the pod spec once added. This
-// is an alpha feature enabled by the EphemeralContainers feature flag.
+// guarantees, and they will not be restarted when they exit or when a pod is removed or restarted. If
+// an ephemeral container causes a pod to exceed its resource allocation, the pod may be evicted.
+// Ephemeral containers may not be added by directly updating the pod spec. They must be added via the
+// pod's ephemeralcontainers subresource, and they will appear in the pod spec once added. This is an
+// alpha feature enabled by the EphemeralContainers feature flag.
 // Ref: #/components/schemas/io.k8s.api.core.v1.EphemeralContainer
 type IoK8sAPICoreV1EphemeralContainer struct {
 	// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable
 	// references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be
 	// resolved, the reference in the input string will be unchanged. Double $$ are reduced to a single $,
-	//  which allows for escaping the $(VAR_NAME) syntax: i.e. "$$(VAR_NAME)" will produce the string
-	// literal "$(VAR_NAME)". Escaped references will never be expanded, regardless of whether the
-	// variable exists or not. Cannot be updated. More info: https://kubernetes.
-	// io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell.
+	// which allows for escaping the $(VAR_NAME) syntax: i.e. "$$(VAR_NAME)" will produce the string
+	// literal "$(VAR_NAME)". Escaped references will never be expanded, regardless of whether the variable
+	// exists or not. Cannot be updated. More info:
+	// https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell.
 	Args []string `json:"args"`
-	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is
-	// not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a
+	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not
+	// provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a
 	// variable cannot be resolved, the reference in the input string will be unchanged. Double $$ are
 	// reduced to a single $, which allows for escaping the $(VAR_NAME) syntax: i.e. "$$(VAR_NAME)" will
 	// produce the string literal "$(VAR_NAME)". Escaped references will never be expanded, regardless of
-	// whether the variable exists or not. Cannot be updated. More info: https://kubernetes.
-	// io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell.
+	// whether the variable exists or not. Cannot be updated. More info:
+	// https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell.
 	Command []string `json:"command"`
 	// List of environment variables to set in the container. Cannot be updated.
 	Env []IoK8sAPICoreV1EnvVar `json:"env"`
-	// List of sources to populate environment variables in the container. The keys defined within a
-	// source must be a C_IDENTIFIER. All invalid keys will be reported as an event when the container is
-	// starting. When a key exists in multiple sources, the value associated with the last source will
-	// take precedence. Values defined by an Env with a duplicate key will take precedence. Cannot be
-	// updated.
+	// List of sources to populate environment variables in the container. The keys defined within a source
+	// must be a C_IDENTIFIER. All invalid keys will be reported as an event when the container is
+	// starting. When a key exists in multiple sources, the value associated with the last source will take
+	// precedence. Values defined by an Env with a duplicate key will take precedence. Cannot be updated.
 	EnvFrom []IoK8sAPICoreV1EnvFromSource `json:"envFrom"`
 	// Docker image name. More info: https://kubernetes.io/docs/concepts/containers/images.
 	Image OptString `json:"image"`
 	// Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is
-	// specified, or IfNotPresent otherwise. Cannot be updated. More info: https://kubernetes.
-	// io/docs/concepts/containers/images#updating-images.
+	// specified, or IfNotPresent otherwise. Cannot be updated. More info:
+	// https://kubernetes.io/docs/concepts/containers/images#updating-images.
 	ImagePullPolicy OptString                  `json:"imagePullPolicy"`
 	Lifecycle       OptIoK8sAPICoreV1Lifecycle `json:"lifecycle"`
 	LivenessProbe   OptIoK8sAPICoreV1Probe     `json:"livenessProbe"`
@@ -12632,22 +12650,22 @@ type IoK8sAPICoreV1EphemeralContainer struct {
 	// time stdin is closed and remains closed until the container is restarted. If this flag is false, a
 	// container processes that reads from stdin will never receive an EOF. Default is false.
 	StdinOnce OptBool `json:"stdinOnce"`
-	// If set, the name of the container from PodSpec that this ephemeral container targets. The
-	// ephemeral container will be run in the namespaces (IPC, PID, etc) of this container. If not set
-	// then the ephemeral container is run in whatever namespaces are shared for the pod. Note that the
-	// container runtime must support this feature.
+	// If set, the name of the container from PodSpec that this ephemeral container targets. The ephemeral
+	// container will be run in the namespaces (IPC, PID, etc) of this container. If not set then the
+	// ephemeral container is run in whatever namespaces are shared for the pod. Note that the container
+	// runtime must support this feature.
 	TargetContainerName OptString `json:"targetContainerName"`
 	// Optional: Path at which the file to which the container's termination message will be written is
-	// mounted into the container's filesystem. Message written is intended to be brief final status,
-	// such as an assertion failure message. Will be truncated by the node if greater than 4096 bytes.
-	// The total message length across all containers will be limited to 12kb. Defaults to
-	// /dev/termination-log. Cannot be updated.
+	// mounted into the container's filesystem. Message written is intended to be brief final status, such
+	// as an assertion failure message. Will be truncated by the node if greater than 4096 bytes. The total
+	// message length across all containers will be limited to 12kb. Defaults to /dev/termination-log.
+	// Cannot be updated.
 	TerminationMessagePath OptString `json:"terminationMessagePath"`
 	// Indicate how the termination message should be populated. File will use the contents of
 	// terminationMessagePath to populate the container status message on both success and failure.
 	// FallbackToLogsOnError will use the last chunk of container log output if the termination message
-	// file is empty and the container exited with an error. The log output is limited to 2048 bytes or
-	// 80 lines, whichever is smaller. Defaults to File. Cannot be updated.
+	// file is empty and the container exited with an error. The log output is limited to 2048 bytes or 80
+	// lines, whichever is smaller. Defaults to File. Cannot be updated.
 	TerminationMessagePolicy OptString `json:"terminationMessagePolicy"`
 	// Whether this container should allocate a TTY for itself, also requires 'stdin' to be true. Default
 	// is false.
@@ -12656,8 +12674,8 @@ type IoK8sAPICoreV1EphemeralContainer struct {
 	VolumeDevices []IoK8sAPICoreV1VolumeDevice `json:"volumeDevices"`
 	// Pod volumes to mount into the container's filesystem. Cannot be updated.
 	VolumeMounts []IoK8sAPICoreV1VolumeMount `json:"volumeMounts"`
-	// Container's working directory. If not specified, the container runtime's default will be used,
-	// which might be configured in the container image. Cannot be updated.
+	// Container's working directory. If not specified, the container runtime's default will be used, which
+	// might be configured in the container image. Cannot be updated.
 	WorkingDir OptString `json:"workingDir"`
 }
 
@@ -12907,34 +12925,33 @@ func (s *IoK8sAPICoreV1EphemeralVolumeSource) SetVolumeClaimTemplate(val OptIoK8
 	s.VolumeClaimTemplate = val
 }
 
-// Event is a report of an event somewhere in the cluster.  Events have a limited retention time and
-// triggers and messages may evolve with time.  Event consumers should not rely on the timing of an
-// event with a given Reason reflecting a consistent underlying trigger, or the continued existence
-// of events with that Reason.  Events should be treated as informative, best-effort, supplemental
-// data.
+// Event is a report of an event somewhere in the cluster. Events have a limited retention time and
+// triggers and messages may evolve with time. Event consumers should not rely on the timing of an
+// event with a given Reason reflecting a consistent underlying trigger, or the continued existence of
+// events with that Reason. Events should be treated as informative, best-effort, supplemental data.
 // Ref: #/components/schemas/io.k8s.api.core.v1.Event
 type IoK8sAPICoreV1Event struct {
 	// What action was taken/failed regarding to the Regarding object.
 	Action OptString `json:"action"`
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
 	// The number of times this event has occurred.
 	Count          OptInt32                                   `json:"count"`
 	EventTime      OptIoK8sApimachineryPkgApisMetaV1MicroTime `json:"eventTime"`
 	FirstTimestamp OptIoK8sApimachineryPkgApisMetaV1Time      `json:"firstTimestamp"`
 	InvolvedObject IoK8sAPICoreV1ObjectReference              `json:"involvedObject"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind          OptString                             `json:"kind"`
 	LastTimestamp OptIoK8sApimachineryPkgApisMetaV1Time `json:"lastTimestamp"`
 	// A human-readable description of the status of this operation.
 	Message  OptString                                `json:"message"`
 	Metadata IoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
-	// This should be a short, machine understandable string that gives the reason for the transition
-	// into the object's current status.
+	// This should be a short, machine understandable string that gives the reason for the transition into
+	// the object's current status.
 	Reason  OptString                        `json:"reason"`
 	Related OptIoK8sAPICoreV1ObjectReference `json:"related"`
 	// Name of the controller that emitted this Event, e.g. `kubernetes.io/kubelet`.
@@ -13122,14 +13139,14 @@ func (*IoK8sAPICoreV1Event) readCoreV1NamespacedEventRes() {}
 // EventList is a list of events.
 // Ref: #/components/schemas/io.k8s.api.core.v1.EventList
 type IoK8sAPICoreV1EventList struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
 	// List of events.
 	Items []IoK8sAPICoreV1Event `json:"items"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
@@ -13240,7 +13257,7 @@ func (s *IoK8sAPICoreV1EventSource) SetHost(val OptString) {
 // Ref: #/components/schemas/io.k8s.api.core.v1.ExecAction
 type IoK8sAPICoreV1ExecAction struct {
 	// Command is the command line to execute inside the container, the working directory for the command
-	//  is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a
+	// is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a
 	// shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to
 	// explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is
 	// unhealthy.
@@ -13271,8 +13288,8 @@ type IoK8sAPICoreV1FCVolumeSource struct {
 	ReadOnly OptBool `json:"readOnly"`
 	// Optional: FC target worldwide names (WWNs).
 	TargetWWNs []string `json:"targetWWNs"`
-	// Optional: FC volume world wide identifiers (wwids) Either wwids or combination of targetWWNs and
-	// lun must be set, but not both simultaneously.
+	// Optional: FC volume world wide identifiers (wwids) Either wwids or combination of targetWWNs and lun
+	// must be set, but not both simultaneously.
 	Wwids []string `json:"wwids"`
 }
 
@@ -13517,6 +13534,7 @@ func (s *IoK8sAPICoreV1FlockerVolumeSource) SetDatasetUUID(val OptString) {
 }
 
 // Represents a Persistent Disk resource in Google Compute Engine.
+//
 // A GCE PD must exist before mounting to a container. The disk must also be in the same GCE project
 // and zone as the kubelet. A GCE PD can only be mounted as read/write once or read-only many times.
 // GCE PDs support ownership management and SELinux relabeling.
@@ -13524,13 +13542,13 @@ func (s *IoK8sAPICoreV1FlockerVolumeSource) SetDatasetUUID(val OptString) {
 type IoK8sAPICoreV1GCEPersistentDiskVolumeSource struct {
 	// Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is
 	// supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be
-	// "ext4" if unspecified. More info: https://kubernetes.
-	// io/docs/concepts/storage/volumes#gcepersistentdisk.
+	// "ext4" if unspecified. More info:
+	// https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk.
 	FsType OptString `json:"fsType"`
 	// The partition in the volume that you want to mount. If omitted, the default is to mount by volume
 	// name. Examples: For volume /dev/sda1, you specify the partition as "1". Similarly, the volume
-	// partition for /dev/sda is "0" (or you can leave the property empty). More info: https://kubernetes.
-	// io/docs/concepts/storage/volumes#gcepersistentdisk.
+	// partition for /dev/sda is "0" (or you can leave the property empty). More info:
+	// https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk.
 	Partition OptInt32 `json:"partition"`
 	// Unique name of the PD resource in GCE. Used to identify the disk in GCE. More info:
 	// https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk.
@@ -13580,16 +13598,16 @@ func (s *IoK8sAPICoreV1GCEPersistentDiskVolumeSource) SetReadOnly(val OptBool) {
 	s.ReadOnly = val
 }
 
-// Represents a volume that is populated with the contents of a git repository. Git repo volumes do
-// not support ownership management. Git repo volumes support SELinux relabeling.
-// DEPRECATED: GitRepo is deprecated. To provision a container with a git repo, mount an EmptyDir
-// into an InitContainer that clones the repo using git, then mount the EmptyDir into the Pod's
-// container.
+// Represents a volume that is populated with the contents of a git repository. Git repo volumes do not
+// support ownership management. Git repo volumes support SELinux relabeling.
+//
+// DEPRECATED: GitRepo is deprecated. To provision a container with a git repo, mount an EmptyDir into
+// an InitContainer that clones the repo using git, then mount the EmptyDir into the Pod's container.
 // Ref: #/components/schemas/io.k8s.api.core.v1.GitRepoVolumeSource
 type IoK8sAPICoreV1GitRepoVolumeSource struct {
-	// Target directory name. Must not contain or start with '..'.  If '.' is supplied, the volume
-	// directory will be the git repository.  Otherwise, if specified, the volume will contain the git
-	// repository in the subdirectory with the given name.
+	// Target directory name. Must not contain or start with '..'. If '.' is supplied, the volume directory
+	// will be the git repository. Otherwise, if specified, the volume will contain the git repository in
+	// the subdirectory with the given name.
 	Directory OptString `json:"directory"`
 	// Repository URL.
 	Repository string `json:"repository"`
@@ -13631,18 +13649,18 @@ func (s *IoK8sAPICoreV1GitRepoVolumeSource) SetRevision(val OptString) {
 // ownership management or SELinux relabeling.
 // Ref: #/components/schemas/io.k8s.api.core.v1.GlusterfsPersistentVolumeSource
 type IoK8sAPICoreV1GlusterfsPersistentVolumeSource struct {
-	// EndpointsName is the endpoint name that details Glusterfs topology. More info: https://examples.
-	// k8s.io/volumes/glusterfs/README.md#create-a-pod.
+	// EndpointsName is the endpoint name that details Glusterfs topology. More info:
+	// https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod.
 	Endpoints string `json:"endpoints"`
 	// EndpointsNamespace is the namespace that contains Glusterfs endpoint. If this field is empty, the
-	// EndpointNamespace defaults to the same namespace as the bound PVC. More info: https://examples.k8s.
-	// io/volumes/glusterfs/README.md#create-a-pod.
+	// EndpointNamespace defaults to the same namespace as the bound PVC. More info:
+	// https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod.
 	EndpointsNamespace OptString `json:"endpointsNamespace"`
-	// Path is the Glusterfs volume path. More info: https://examples.k8s.io/volumes/glusterfs/README.
-	// md#create-a-pod.
+	// Path is the Glusterfs volume path. More info:
+	// https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod.
 	Path string `json:"path"`
-	// ReadOnly here will force the Glusterfs volume to be mounted with read-only permissions. Defaults
-	// to false. More info: https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod.
+	// ReadOnly here will force the Glusterfs volume to be mounted with read-only permissions. Defaults to
+	// false. More info: https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod.
 	ReadOnly OptBool `json:"readOnly"`
 }
 
@@ -13690,14 +13708,14 @@ func (s *IoK8sAPICoreV1GlusterfsPersistentVolumeSource) SetReadOnly(val OptBool)
 // ownership management or SELinux relabeling.
 // Ref: #/components/schemas/io.k8s.api.core.v1.GlusterfsVolumeSource
 type IoK8sAPICoreV1GlusterfsVolumeSource struct {
-	// EndpointsName is the endpoint name that details Glusterfs topology. More info: https://examples.
-	// k8s.io/volumes/glusterfs/README.md#create-a-pod.
+	// EndpointsName is the endpoint name that details Glusterfs topology. More info:
+	// https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod.
 	Endpoints string `json:"endpoints"`
-	// Path is the Glusterfs volume path. More info: https://examples.k8s.io/volumes/glusterfs/README.
-	// md#create-a-pod.
+	// Path is the Glusterfs volume path. More info:
+	// https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod.
 	Path string `json:"path"`
-	// ReadOnly here will force the Glusterfs volume to be mounted with read-only permissions. Defaults
-	// to false. More info: https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod.
+	// ReadOnly here will force the Glusterfs volume to be mounted with read-only permissions. Defaults to
+	// false. More info: https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod.
 	ReadOnly OptBool `json:"readOnly"`
 }
 
@@ -13863,8 +13881,8 @@ func (s *IoK8sAPICoreV1Handler) SetTcpSocket(val OptIoK8sAPICoreV1TCPSocketActio
 	s.TcpSocket = val
 }
 
-// HostAlias holds the mapping between IP and hostnames that will be injected as an entry in the
-// pod's hosts file.
+// HostAlias holds the mapping between IP and hostnames that will be injected as an entry in the pod's
+// hosts file.
 // Ref: #/components/schemas/io.k8s.api.core.v1.HostAlias
 type IoK8sAPICoreV1HostAlias struct {
 	// Hostnames for the above IP address.
@@ -13900,8 +13918,8 @@ type IoK8sAPICoreV1HostPathVolumeSource struct {
 	// Path of the directory on the host. If the path is a symlink, it will follow the link to the real
 	// path. More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath.
 	Path string `json:"path"`
-	// Type for HostPath Volume Defaults to "" More info: https://kubernetes.
-	// io/docs/concepts/storage/volumes#hostpath.
+	// Type for HostPath Volume Defaults to "" More info:
+	// https://kubernetes.io/docs/concepts/storage/volumes#hostpath.
 	Type OptString `json:"type"`
 }
 
@@ -13938,7 +13956,7 @@ type IoK8sAPICoreV1ISCSIPersistentVolumeSource struct {
 	// "ext4" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#iscsi.
 	FsType OptString `json:"fsType"`
 	// Custom iSCSI Initiator Name. If initiatorName is specified with iscsiInterface simultaneously, new
-	// iSCSI interface <target portal>:<volume name> will be created for the connection.
+	// iSCSI interface : will be created for the connection.
 	InitiatorName OptString `json:"initiatorName"`
 	// Target iSCSI Qualified Name.
 	Iqn string `json:"iqn"`
@@ -14080,7 +14098,7 @@ type IoK8sAPICoreV1ISCSIVolumeSource struct {
 	// "ext4" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#iscsi.
 	FsType OptString `json:"fsType"`
 	// Custom iSCSI Initiator Name. If initiatorName is specified with iscsiInterface simultaneously, new
-	// iSCSI interface <target portal>:<volume name> will be created for the connection.
+	// iSCSI interface : will be created for the connection.
 	InitiatorName OptString `json:"initiatorName"`
 	// Target iSCSI Qualified Name.
 	Iqn string `json:"iqn"`
@@ -14215,10 +14233,10 @@ type IoK8sAPICoreV1KeyToPath struct {
 	// The key to project.
 	Key string `json:"key"`
 	// Optional: mode bits used to set permissions on this file. Must be an octal value between 0000 and
-	// 0777 or a decimal value between 0 and 511. YAML accepts both octal and decimal values, JSON
-	// requires decimal values for mode bits. If not specified, the volume defaultMode will be used. This
-	// might be in conflict with other options that affect the file mode, like fsGroup, and the result
-	// can be other mode bits set.
+	// 0777 or a decimal value between 0 and 511. YAML accepts both octal and decimal values, JSON requires
+	// decimal values for mode bits. If not specified, the volume defaultMode will be used. This might be
+	// in conflict with other options that affect the file mode, like fsGroup, and the result can be other
+	// mode bits set.
 	Mode OptInt32 `json:"mode"`
 	// The relative path of the file to map the key to. May not be an absolute path. May not contain the
 	// path element '..'. May not start with the string '..'.
@@ -14288,12 +14306,12 @@ func (s *IoK8sAPICoreV1Lifecycle) SetPreStop(val OptIoK8sAPICoreV1Handler) {
 // LimitRange sets resource usage limits for each kind of resource in a Namespace.
 // Ref: #/components/schemas/io.k8s.api.core.v1.LimitRange
 type IoK8sAPICoreV1LimitRange struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                   `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
@@ -14488,15 +14506,15 @@ func (s *IoK8sAPICoreV1LimitRangeItemMin) init() IoK8sAPICoreV1LimitRangeItemMin
 // LimitRangeList is a list of LimitRange items.
 // Ref: #/components/schemas/io.k8s.api.core.v1.LimitRangeList
 type IoK8sAPICoreV1LimitRangeList struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
-	// Items is a list of LimitRange objects. More info: https://kubernetes.
-	// io/docs/concepts/configuration/manage-resources-containers/.
+	// Items is a list of LimitRange objects. More info:
+	// https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/.
 	Items []IoK8sAPICoreV1LimitRange `json:"items"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
@@ -14562,8 +14580,8 @@ func (s *IoK8sAPICoreV1LimitRangeSpec) SetLimits(val []IoK8sAPICoreV1LimitRangeI
 	s.Limits = val
 }
 
-// LoadBalancerIngress represents the status of a load-balancer ingress point: traffic intended for
-// the service should be sent to an ingress point.
+// LoadBalancerIngress represents the status of a load-balancer ingress point: traffic intended for the
+// service should be sent to an ingress point.
 // Ref: #/components/schemas/io.k8s.api.core.v1.LoadBalancerIngress
 type IoK8sAPICoreV1LoadBalancerIngress struct {
 	// Hostname is set for load-balancer ingress points that are DNS based (typically AWS load-balancers).
@@ -14609,8 +14627,8 @@ func (s *IoK8sAPICoreV1LoadBalancerIngress) SetPorts(val []IoK8sAPICoreV1PortSta
 // LoadBalancerStatus represents the status of a load-balancer.
 // Ref: #/components/schemas/io.k8s.api.core.v1.LoadBalancerStatus
 type IoK8sAPICoreV1LoadBalancerStatus struct {
-	// Ingress is a list containing ingress points for the load-balancer. Traffic intended for the
-	// service should be sent to these ingress points.
+	// Ingress is a list containing ingress points for the load-balancer. Traffic intended for the service
+	// should be sent to these ingress points.
 	Ingress []IoK8sAPICoreV1LoadBalancerIngress `json:"ingress"`
 }
 
@@ -14624,12 +14642,12 @@ func (s *IoK8sAPICoreV1LoadBalancerStatus) SetIngress(val []IoK8sAPICoreV1LoadBa
 	s.Ingress = val
 }
 
-// LocalObjectReference contains enough information to let you locate the referenced object inside
-// the same namespace.
+// LocalObjectReference contains enough information to let you locate the referenced object inside the
+// same namespace.
 // Ref: #/components/schemas/io.k8s.api.core.v1.LocalObjectReference
 type IoK8sAPICoreV1LocalObjectReference struct {
-	// Name of the referent. More info: https://kubernetes.
-	// io/docs/concepts/overview/working-with-objects/names/#names.
+	// Name of the referent. More info:
+	// https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names.
 	Name OptString `json:"name"`
 }
 
@@ -14646,8 +14664,8 @@ func (s *IoK8sAPICoreV1LocalObjectReference) SetName(val OptString) {
 // Local represents directly-attached storage with node affinity (Beta feature).
 // Ref: #/components/schemas/io.k8s.api.core.v1.LocalVolumeSource
 type IoK8sAPICoreV1LocalVolumeSource struct {
-	// Filesystem type to mount. It applies only when the Path is a block device. Must be a filesystem
-	// type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". The default value is to
+	// Filesystem type to mount. It applies only when the Path is a block device. Must be a filesystem type
+	// supported by the host operating system. Ex. "ext4", "xfs", "ntfs". The default value is to
 	// auto-select a filesystem if unspecified.
 	FsType OptString `json:"fsType"`
 	// The full path to the volume on the node. It can be either a directory or block device (disk,
@@ -14679,14 +14697,14 @@ func (s *IoK8sAPICoreV1LocalVolumeSource) SetPath(val string) {
 // management or SELinux relabeling.
 // Ref: #/components/schemas/io.k8s.api.core.v1.NFSVolumeSource
 type IoK8sAPICoreV1NFSVolumeSource struct {
-	// Path that is exported by the NFS server. More info: https://kubernetes.
-	// io/docs/concepts/storage/volumes#nfs.
+	// Path that is exported by the NFS server. More info:
+	// https://kubernetes.io/docs/concepts/storage/volumes#nfs.
 	Path string `json:"path"`
-	// ReadOnly here will force the NFS export to be mounted with read-only permissions. Defaults to
-	// false. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs.
+	// ReadOnly here will force the NFS export to be mounted with read-only permissions. Defaults to false.
+	// More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs.
 	ReadOnly OptBool `json:"readOnly"`
-	// Server is the hostname or IP address of the NFS server. More info: https://kubernetes.
-	// io/docs/concepts/storage/volumes#nfs.
+	// Server is the hostname or IP address of the NFS server. More info:
+	// https://kubernetes.io/docs/concepts/storage/volumes#nfs.
 	Server string `json:"server"`
 }
 
@@ -14723,12 +14741,12 @@ func (s *IoK8sAPICoreV1NFSVolumeSource) SetServer(val string) {
 // Namespace provides a scope for Names. Use of multiple namespaces is optional.
 // Ref: #/components/schemas/io.k8s.api.core.v1.Namespace
 type IoK8sAPICoreV1Namespace struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                   `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
@@ -14854,15 +14872,15 @@ func (s *IoK8sAPICoreV1NamespaceCondition) SetType(val string) {
 // NamespaceList is a list of Namespaces.
 // Ref: #/components/schemas/io.k8s.api.core.v1.NamespaceList
 type IoK8sAPICoreV1NamespaceList struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
-	// Items is the list of Namespace objects in the list. More info: https://kubernetes.
-	// io/docs/concepts/overview/working-with-objects/namespaces/.
+	// Items is the list of Namespace objects in the list. More info:
+	// https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/.
 	Items []IoK8sAPICoreV1Namespace `json:"items"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
@@ -14913,8 +14931,8 @@ func (*IoK8sAPICoreV1NamespaceList) listCoreV1NamespaceRes() {}
 // NamespaceSpec describes the attributes on a Namespace.
 // Ref: #/components/schemas/io.k8s.api.core.v1.NamespaceSpec
 type IoK8sAPICoreV1NamespaceSpec struct {
-	// Finalizers is an opaque list of values that must be empty to permanently remove object from
-	// storage. More info: https://kubernetes.io/docs/tasks/administer-cluster/namespaces/.
+	// Finalizers is an opaque list of values that must be empty to permanently remove object from storage.
+	// More info: https://kubernetes.io/docs/tasks/administer-cluster/namespaces/.
 	Finalizers []string `json:"finalizers"`
 }
 
@@ -14933,8 +14951,8 @@ func (s *IoK8sAPICoreV1NamespaceSpec) SetFinalizers(val []string) {
 type IoK8sAPICoreV1NamespaceStatus struct {
 	// Represents the latest available observations of a namespace's current state.
 	Conditions []IoK8sAPICoreV1NamespaceCondition `json:"conditions"`
-	// Phase is the current lifecycle phase of the namespace. More info: https://kubernetes.
-	// io/docs/tasks/administer-cluster/namespaces/.
+	// Phase is the current lifecycle phase of the namespace. More info:
+	// https://kubernetes.io/docs/tasks/administer-cluster/namespaces/.
 	Phase OptString `json:"phase"`
 }
 
@@ -14962,12 +14980,12 @@ func (s *IoK8sAPICoreV1NamespaceStatus) SetPhase(val OptString) {
 // etcd).
 // Ref: #/components/schemas/io.k8s.api.core.v1.Node
 type IoK8sAPICoreV1Node struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                   `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
@@ -15060,13 +15078,13 @@ func (s *IoK8sAPICoreV1NodeAddress) SetType(val string) {
 // Node affinity is a group of node affinity scheduling rules.
 // Ref: #/components/schemas/io.k8s.api.core.v1.NodeAffinity
 type IoK8sAPICoreV1NodeAffinity struct {
-	// The scheduler will prefer to schedule pods to nodes that satisfy the affinity expressions
-	// specified by this field, but it may choose a node that violates one or more of the expressions.
-	// The node that is most preferred is the one with the greatest sum of weights, i.e. for each node
-	// that meets all of the scheduling requirements (resource request, requiredDuringScheduling affinity
-	// expressions, etc.), compute a sum by iterating through the elements of this field and adding
-	// "weight" to the sum if the node matches the corresponding matchExpressions; the node(s) with the
-	// highest sum are the most preferred.
+	// The scheduler will prefer to schedule pods to nodes that satisfy the affinity expressions specified
+	// by this field, but it may choose a node that violates one or more of the expressions. The node that
+	// is most preferred is the one with the greatest sum of weights, i.e. for each node that meets all of
+	// the scheduling requirements (resource request, requiredDuringScheduling affinity expressions, etc.),
+	// compute a sum by iterating through the elements of this field and adding "weight" to the sum if the
+	// node matches the corresponding matchExpressions; the node(s) with the highest sum are the most
+	// preferred.
 	PreferredDuringSchedulingIgnoredDuringExecution []IoK8sAPICoreV1PreferredSchedulingTerm `json:"preferredDuringSchedulingIgnoredDuringExecution"`
 	RequiredDuringSchedulingIgnoredDuringExecution  OptIoK8sAPICoreV1NodeSelector           `json:"requiredDuringSchedulingIgnoredDuringExecution"`
 }
@@ -15166,8 +15184,8 @@ func (s *IoK8sAPICoreV1NodeCondition) SetType(val string) {
 	s.Type = val
 }
 
-// NodeConfigSource specifies a source of node configuration. Exactly one subfield (excluding
-// metadata) must be non-nil. This API is deprecated since 1.22.
+// NodeConfigSource specifies a source of node configuration. Exactly one subfield (excluding metadata)
+// must be non-nil. This API is deprecated since 1.22.
 // Ref: #/components/schemas/io.k8s.api.core.v1.NodeConfigSource
 type IoK8sAPICoreV1NodeConfigSource struct {
 	ConfigMap OptIoK8sAPICoreV1ConfigMapNodeConfigSource `json:"configMap"`
@@ -15197,8 +15215,8 @@ type IoK8sAPICoreV1NodeConfigStatus struct {
 	// checkpointed config) will result in a rollback to LastKnownGood. In the latter case, it is usually
 	// possible to resolve the error by fixing the config assigned in Spec.ConfigSource. You can find
 	// additional information for debugging by searching the error message in the Kubelet log. Error is a
-	// human-readable description of the error state; machines can check whether or not Error is empty,
-	// but should not rely on the stability of the Error text across Kubelet versions.
+	// human-readable description of the error state; machines can check whether or not Error is empty, but
+	// should not rely on the stability of the Error text across Kubelet versions.
 	Error         OptString                         `json:"error"`
 	LastKnownGood OptIoK8sAPICoreV1NodeConfigSource `json:"lastKnownGood"`
 }
@@ -15262,14 +15280,14 @@ func (s *IoK8sAPICoreV1NodeDaemonEndpoints) SetKubeletEndpoint(val OptIoK8sAPICo
 // NodeList is the whole list of all Nodes which have been registered with master.
 // Ref: #/components/schemas/io.k8s.api.core.v1.NodeList
 type IoK8sAPICoreV1NodeList struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
 	// List of nodes.
 	Items []IoK8sAPICoreV1Node `json:"items"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
@@ -15335,8 +15353,8 @@ func (s *IoK8sAPICoreV1NodeSelector) SetNodeSelectorTerms(val []IoK8sAPICoreV1No
 	s.NodeSelectorTerms = val
 }
 
-// A node selector requirement is a selector that contains values, a key, and an operator that
-// relates the key and values.
+// A node selector requirement is a selector that contains values, a key, and an operator that relates
+// the key and values.
 // Ref: #/components/schemas/io.k8s.api.core.v1.NodeSelectorRequirement
 type IoK8sAPICoreV1NodeSelectorRequirement struct {
 	// The label key that the selector applies to.
@@ -15345,9 +15363,9 @@ type IoK8sAPICoreV1NodeSelectorRequirement struct {
 	// DoesNotExist. Gt, and Lt.
 	Operator string `json:"operator"`
 	// An array of string values. If the operator is In or NotIn, the values array must be non-empty. If
-	// the operator is Exists or DoesNotExist, the values array must be empty. If the operator is Gt or
-	// Lt, the values array must have a single element, which will be interpreted as an integer. This
-	// array is replaced during a strategic merge patch.
+	// the operator is Exists or DoesNotExist, the values array must be empty. If the operator is Gt or Lt,
+	// the values array must have a single element, which will be interpreted as an integer. This array is
+	// replaced during a strategic merge patch.
 	Values []string `json:"values"`
 }
 
@@ -15415,22 +15433,21 @@ func (s *IoK8sAPICoreV1NodeSelectorTerm) SetMatchFields(val []IoK8sAPICoreV1Node
 // Ref: #/components/schemas/io.k8s.api.core.v1.NodeSpec
 type IoK8sAPICoreV1NodeSpec struct {
 	ConfigSource OptIoK8sAPICoreV1NodeConfigSource `json:"configSource"`
-	// Deprecated. Not all kubelets will set this field. Remove field after 1.13. see: https://issues.k8s.
-	// io/61966.
+	// Deprecated. Not all kubelets will set this field. Remove field after 1.13. see:
+	// https://issues.k8s.io/61966.
 	ExternalID OptString `json:"externalID"`
 	// PodCIDR represents the pod IP range assigned to the node.
 	PodCIDR OptString `json:"podCIDR"`
-	// PodCIDRs represents the IP ranges assigned to the node for usage by Pods on that node. If this
-	// field is specified, the 0th entry must match the podCIDR field. It may contain at most 1 value for
-	// each of IPv4 and IPv6.
+	// PodCIDRs represents the IP ranges assigned to the node for usage by Pods on that node. If this field
+	// is specified, the 0th entry must match the podCIDR field. It may contain at most 1 value for each of
+	// IPv4 and IPv6.
 	PodCIDRs []string `json:"podCIDRs"`
-	// ID of the node assigned by the cloud provider in the format:
-	// <ProviderName>://<ProviderSpecificNodeID>.
+	// ID of the node assigned by the cloud provider in the format: ://.
 	ProviderID OptString `json:"providerID"`
 	// If specified, the node's taints.
 	Taints []IoK8sAPICoreV1Taint `json:"taints"`
-	// Unschedulable controls node schedulability of new pods. By default, node is schedulable. More
-	// info: https://kubernetes.io/docs/concepts/nodes/node/#manual-node-administration.
+	// Unschedulable controls node schedulability of new pods. By default, node is schedulable. More info:
+	// https://kubernetes.io/docs/concepts/nodes/node/#manual-node-administration.
 	Unschedulable OptBool `json:"unschedulable"`
 }
 
@@ -15508,27 +15525,27 @@ func (s *IoK8sAPICoreV1NodeSpec) SetUnschedulable(val OptBool) {
 // Ref: #/components/schemas/io.k8s.api.core.v1.NodeStatus
 type IoK8sAPICoreV1NodeStatus struct {
 	// List of addresses reachable to the node. Queried from cloud provider, if available. More info:
-	// https://kubernetes.io/docs/concepts/nodes/node/#addresses Note: This field is declared as
-	// mergeable, but the merge key is not sufficiently unique, which can cause data corruption when it
-	// is merged. Callers should instead use a full-replacement patch. See http://pr.k8s.io/79391 for an
-	// example.
+	// https://kubernetes.io/docs/concepts/nodes/node/#addresses Note: This field is declared as mergeable,
+	// but the merge key is not sufficiently unique, which can cause data corruption when it is merged.
+	// Callers should instead use a full-replacement patch. See http://pr.k8s.io/79391 for an example.
 	Addresses []IoK8sAPICoreV1NodeAddress `json:"addresses"`
 	// Allocatable represents the resources of a node that are available for scheduling. Defaults to
 	// Capacity.
 	Allocatable OptIoK8sAPICoreV1NodeStatusAllocatable `json:"allocatable"`
-	// Capacity represents the total resources of a node. More info: https://kubernetes.
-	// io/docs/concepts/storage/persistent-volumes#capacity.
+	// Capacity represents the total resources of a node. More info:
+	// https://kubernetes.io/docs/concepts/storage/persistent-volumes#capacity.
 	Capacity OptIoK8sAPICoreV1NodeStatusCapacity `json:"capacity"`
-	// Conditions is an array of current observed node conditions. More info: https://kubernetes.
-	// io/docs/concepts/nodes/node/#condition.
+	// Conditions is an array of current observed node conditions. More info:
+	// https://kubernetes.io/docs/concepts/nodes/node/#condition.
 	Conditions      []IoK8sAPICoreV1NodeCondition        `json:"conditions"`
 	Config          OptIoK8sAPICoreV1NodeConfigStatus    `json:"config"`
 	DaemonEndpoints OptIoK8sAPICoreV1NodeDaemonEndpoints `json:"daemonEndpoints"`
 	// List of container images on this node.
 	Images   []IoK8sAPICoreV1ContainerImage  `json:"images"`
 	NodeInfo OptIoK8sAPICoreV1NodeSystemInfo `json:"nodeInfo"`
-	// NodePhase is the recently observed lifecycle phase of the node. More info: https://kubernetes.
-	// io/docs/concepts/nodes/node/#phase The field is never populated, and now is deprecated.
+	// NodePhase is the recently observed lifecycle phase of the node. More info:
+	// https://kubernetes.io/docs/concepts/nodes/node/#phase The field is never populated, and now is
+	// deprecated.
 	Phase OptString `json:"phase"`
 	// List of volumes that are attached to the node.
 	VolumesAttached []IoK8sAPICoreV1AttachedVolume `json:"volumesAttached"`
@@ -15659,8 +15676,8 @@ func (s *IoK8sAPICoreV1NodeStatusAllocatable) init() IoK8sAPICoreV1NodeStatusAll
 	return m
 }
 
-// Capacity represents the total resources of a node. More info: https://kubernetes.
-// io/docs/concepts/storage/persistent-volumes#capacity.
+// Capacity represents the total resources of a node. More info:
+// https://kubernetes.io/docs/concepts/storage/persistent-volumes#capacity.
 type IoK8sAPICoreV1NodeStatusCapacity map[string]IoK8sApimachineryPkgAPIResourceQuantity
 
 func (s *IoK8sAPICoreV1NodeStatusCapacity) init() IoK8sAPICoreV1NodeStatusCapacity {
@@ -15688,16 +15705,15 @@ type IoK8sAPICoreV1NodeSystemInfo struct {
 	// Kubelet Version reported by the node.
 	KubeletVersion string `json:"kubeletVersion"`
 	// MachineID reported by the node. For unique machine identification in the cluster this field is
-	// preferred. Learn more from man(5) machine-id: http://man7.org/linux/man-pages/man5/machine-id.5.
-	// html.
+	// preferred. Learn more from man(5) machine-id: http://man7.org/linux/man-pages/man5/machine-id.5.html.
 	MachineID string `json:"machineID"`
 	// The Operating System reported by the node.
 	OperatingSystem string `json:"operatingSystem"`
 	// OS Image reported by the node from /etc/os-release (e.g. Debian GNU/Linux 7 (wheezy)).
 	OsImage string `json:"osImage"`
 	// SystemUUID reported by the node. For unique machine identification MachineID is preferred. This
-	// field is specific to Red Hat hosts https://access.redhat.
-	// com/documentation/en-us/red_hat_subscription_management/1/html/rhsm/uuid.
+	// field is specific to Red Hat hosts
+	// https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/rhsm/uuid.
 	SystemUUID string `json:"systemUUID"`
 }
 
@@ -15835,28 +15851,27 @@ func (s *IoK8sAPICoreV1ObjectFieldSelector) SetFieldPath(val string) {
 type IoK8sAPICoreV1ObjectReference struct {
 	// API version of the referent.
 	ApiVersion OptString `json:"apiVersion"`
-	// If referring to a piece of an object instead of an entire object, this string should contain a
-	// valid JSON/Go field access statement, such as desiredState.manifest.containers[2]. For example, if
-	// the object reference is to a container within a pod, this would take on a value like: "spec.
-	// containers{name}" (where "name" refers to the name of the container that triggered the event) or
-	// if no container name is specified "spec.containers[2]" (container with index 2 in this pod). This
+	// If referring to a piece of an object instead of an entire object, this string should contain a valid
+	// JSON/Go field access statement, such as desiredState.manifest.containers[2]. For example, if the
+	// object reference is to a container within a pod, this would take on a value like:
+	// "spec.containers{name}" (where "name" refers to the name of the container that triggered the event)
+	// or if no container name is specified "spec.containers[2]" (container with index 2 in this pod). This
 	// syntax is chosen only to have some well-defined way of referencing a part of an object.
 	FieldPath OptString `json:"fieldPath"`
-	// Kind of the referent. More info: https://git.k8s.
-	// io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
+	// Kind of the referent. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind OptString `json:"kind"`
-	// Name of the referent. More info: https://kubernetes.
-	// io/docs/concepts/overview/working-with-objects/names/#names.
+	// Name of the referent. More info:
+	// https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names.
 	Name OptString `json:"name"`
-	// Namespace of the referent. More info: https://kubernetes.
-	// io/docs/concepts/overview/working-with-objects/namespaces/.
+	// Namespace of the referent. More info:
+	// https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/.
 	Namespace OptString `json:"namespace"`
-	// Specific resourceVersion to which this reference is made, if any. More info: https://git.k8s.
-	// io/community/contributors/devel/sig-architecture/api-conventions.
-	// md#concurrency-control-and-consistency.
+	// Specific resourceVersion to which this reference is made, if any. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency.
 	ResourceVersion OptString `json:"resourceVersion"`
-	// UID of the referent. More info: https://kubernetes.
-	// io/docs/concepts/overview/working-with-objects/names/#uids.
+	// UID of the referent. More info:
+	// https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids.
 	UID OptString `json:"uid"`
 }
 
@@ -15934,12 +15949,12 @@ func (s *IoK8sAPICoreV1ObjectReference) SetUID(val OptString) {
 // node. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes.
 // Ref: #/components/schemas/io.k8s.api.core.v1.PersistentVolume
 type IoK8sAPICoreV1PersistentVolume struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                   `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
@@ -16003,12 +16018,12 @@ func (*IoK8sAPICoreV1PersistentVolume) readCoreV1PersistentVolumeStatusRes() {}
 // PersistentVolumeClaim is a user's request for and claim to a persistent volume.
 // Ref: #/components/schemas/io.k8s.api.core.v1.PersistentVolumeClaim
 type IoK8sAPICoreV1PersistentVolumeClaim struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                    `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta  `json:"metadata"`
@@ -16076,9 +16091,9 @@ type IoK8sAPICoreV1PersistentVolumeClaimCondition struct {
 	LastTransitionTime OptIoK8sApimachineryPkgApisMetaV1Time `json:"lastTransitionTime"`
 	// Human-readable message indicating details about last transition.
 	Message OptString `json:"message"`
-	// Unique, this should be a short, machine understandable string that gives the reason for
-	// condition's last transition. If it reports "ResizeStarted" that means the underlying persistent
-	// volume is being resized.
+	// Unique, this should be a short, machine understandable string that gives the reason for condition's
+	// last transition. If it reports "ResizeStarted" that means the underlying persistent volume is being
+	// resized.
 	Reason OptString `json:"reason"`
 	Status string    `json:"status"`
 	Type   string    `json:"type"`
@@ -16147,15 +16162,15 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimCondition) SetType(val string) {
 // PersistentVolumeClaimList is a list of PersistentVolumeClaim items.
 // Ref: #/components/schemas/io.k8s.api.core.v1.PersistentVolumeClaimList
 type IoK8sAPICoreV1PersistentVolumeClaimList struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
-	// A list of persistent volume claims. More info: https://kubernetes.
-	// io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims.
+	// A list of persistent volume claims. More info:
+	// https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims.
 	Items []IoK8sAPICoreV1PersistentVolumeClaim `json:"items"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
@@ -16205,8 +16220,8 @@ func (*IoK8sAPICoreV1PersistentVolumeClaimList) listCoreV1NamespacedPersistentVo
 func (*IoK8sAPICoreV1PersistentVolumeClaimList) listCoreV1PersistentVolumeClaimForAllNamespacesRes() {
 }
 
-// PersistentVolumeClaimSpec describes the common attributes of storage devices and allows a Source
-// for provider-specific attributes.
+// PersistentVolumeClaimSpec describes the common attributes of storage devices and allows a Source for
+// provider-specific attributes.
 // Ref: #/components/schemas/io.k8s.api.core.v1.PersistentVolumeClaimSpec
 type IoK8sAPICoreV1PersistentVolumeClaimSpec struct {
 	// AccessModes contains the desired access modes the volume should have. More info:
@@ -16216,11 +16231,11 @@ type IoK8sAPICoreV1PersistentVolumeClaimSpec struct {
 	DataSourceRef OptIoK8sAPICoreV1TypedLocalObjectReference     `json:"dataSourceRef"`
 	Resources     OptIoK8sAPICoreV1ResourceRequirements          `json:"resources"`
 	Selector      OptIoK8sApimachineryPkgApisMetaV1LabelSelector `json:"selector"`
-	// Name of the StorageClass required by the claim. More info: https://kubernetes.
-	// io/docs/concepts/storage/persistent-volumes#class-1.
+	// Name of the StorageClass required by the claim. More info:
+	// https://kubernetes.io/docs/concepts/storage/persistent-volumes#class-1.
 	StorageClassName OptString `json:"storageClassName"`
-	// VolumeMode defines what type of volume is required by the claim. Value of Filesystem is implied
-	// when not included in claim spec.
+	// VolumeMode defines what type of volume is required by the claim. Value of Filesystem is implied when
+	// not included in claim spec.
 	VolumeMode OptString `json:"volumeMode"`
 	// VolumeName is the binding reference to the PersistentVolume backing this claim.
 	VolumeName OptString `json:"volumeName"`
@@ -16314,8 +16329,8 @@ type IoK8sAPICoreV1PersistentVolumeClaimStatus struct {
 	AccessModes []string `json:"accessModes"`
 	// Represents the actual resources of the underlying volume.
 	Capacity OptIoK8sAPICoreV1PersistentVolumeClaimStatusCapacity `json:"capacity"`
-	// Current Condition of persistent volume claim. If underlying persistent volume is being resized
-	// then the Condition will be set to 'ResizeStarted'.
+	// Current Condition of persistent volume claim. If underlying persistent volume is being resized then
+	// the Condition will be set to 'ResizeStarted'.
 	Conditions []IoK8sAPICoreV1PersistentVolumeClaimCondition `json:"conditions"`
 	// Phase represents the current phase of PersistentVolumeClaim.
 	Phase OptString `json:"phase"`
@@ -16401,14 +16416,13 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimTemplate) SetSpec(val IoK8sAPICoreV1
 	s.Spec = val
 }
 
-// PersistentVolumeClaimVolumeSource references the user's PVC in the same namespace. This volume
-// finds the bound PV and mounts that volume for the pod. A PersistentVolumeClaimVolumeSource is,
+// PersistentVolumeClaimVolumeSource references the user's PVC in the same namespace. This volume finds
+// the bound PV and mounts that volume for the pod. A PersistentVolumeClaimVolumeSource is,
 // essentially, a wrapper around another type of volume that is owned by someone else (the system).
 // Ref: #/components/schemas/io.k8s.api.core.v1.PersistentVolumeClaimVolumeSource
 type IoK8sAPICoreV1PersistentVolumeClaimVolumeSource struct {
-	// ClaimName is the name of a PersistentVolumeClaim in the same namespace as the pod using this
-	// volume. More info: https://kubernetes.
-	// io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims.
+	// ClaimName is the name of a PersistentVolumeClaim in the same namespace as the pod using this volume.
+	// More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims.
 	ClaimName string `json:"claimName"`
 	// Will force the ReadOnly setting in VolumeMounts. Default false.
 	ReadOnly OptBool `json:"readOnly"`
@@ -16437,15 +16451,15 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimVolumeSource) SetReadOnly(val OptBoo
 // PersistentVolumeList is a list of PersistentVolume items.
 // Ref: #/components/schemas/io.k8s.api.core.v1.PersistentVolumeList
 type IoK8sAPICoreV1PersistentVolumeList struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
-	// List of persistent volumes. More info: https://kubernetes.
-	// io/docs/concepts/storage/persistent-volumes.
+	// List of persistent volumes. More info:
+	// https://kubernetes.io/docs/concepts/storage/persistent-volumes.
 	Items []IoK8sAPICoreV1PersistentVolume `json:"items"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
@@ -16496,14 +16510,14 @@ func (*IoK8sAPICoreV1PersistentVolumeList) listCoreV1PersistentVolumeRes() {}
 // PersistentVolumeSpec is the specification of a persistent volume.
 // Ref: #/components/schemas/io.k8s.api.core.v1.PersistentVolumeSpec
 type IoK8sAPICoreV1PersistentVolumeSpec struct {
-	// AccessModes contains all ways the volume can be mounted. More info: https://kubernetes.
-	// io/docs/concepts/storage/persistent-volumes#access-modes.
+	// AccessModes contains all ways the volume can be mounted. More info:
+	// https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes.
 	AccessModes          []string                                          `json:"accessModes"`
 	AwsElasticBlockStore OptIoK8sAPICoreV1AWSElasticBlockStoreVolumeSource `json:"awsElasticBlockStore"`
 	AzureDisk            OptIoK8sAPICoreV1AzureDiskVolumeSource            `json:"azureDisk"`
 	AzureFile            OptIoK8sAPICoreV1AzureFilePersistentVolumeSource  `json:"azureFile"`
-	// A description of the persistent volume's resources and capacity. More info: https://kubernetes.
-	// io/docs/concepts/storage/persistent-volumes#capacity.
+	// A description of the persistent volume's resources and capacity. More info:
+	// https://kubernetes.io/docs/concepts/storage/persistent-volumes#capacity.
 	Capacity          OptIoK8sAPICoreV1PersistentVolumeSpecCapacity    `json:"capacity"`
 	Cephfs            OptIoK8sAPICoreV1CephFSPersistentVolumeSource    `json:"cephfs"`
 	Cinder            OptIoK8sAPICoreV1CinderPersistentVolumeSource    `json:"cinder"`
@@ -16522,11 +16536,11 @@ type IoK8sAPICoreV1PersistentVolumeSpec struct {
 	MountOptions []string                            `json:"mountOptions"`
 	Nfs          OptIoK8sAPICoreV1NFSVolumeSource    `json:"nfs"`
 	NodeAffinity OptIoK8sAPICoreV1VolumeNodeAffinity `json:"nodeAffinity"`
-	// What happens to a persistent volume when released from its claim. Valid options are Retain
-	// (default for manually created PersistentVolumes), Delete (default for dynamically provisioned
+	// What happens to a persistent volume when released from its claim. Valid options are Retain (default
+	// for manually created PersistentVolumes), Delete (default for dynamically provisioned
 	// PersistentVolumes), and Recycle (deprecated). Recycle must be supported by the volume plugin
-	// underlying this PersistentVolume. More info: https://kubernetes.
-	// io/docs/concepts/storage/persistent-volumes#reclaiming.
+	// underlying this PersistentVolume. More info:
+	// https://kubernetes.io/docs/concepts/storage/persistent-volumes#reclaiming.
 	PersistentVolumeReclaimPolicy OptString                                         `json:"persistentVolumeReclaimPolicy"`
 	PhotonPersistentDisk          OptIoK8sAPICoreV1PhotonPersistentDiskVolumeSource `json:"photonPersistentDisk"`
 	PortworxVolume                OptIoK8sAPICoreV1PortworxVolumeSource             `json:"portworxVolume"`
@@ -16843,8 +16857,8 @@ func (s *IoK8sAPICoreV1PersistentVolumeSpec) SetVsphereVolume(val OptIoK8sAPICor
 	s.VsphereVolume = val
 }
 
-// A description of the persistent volume's resources and capacity. More info: https://kubernetes.
-// io/docs/concepts/storage/persistent-volumes#capacity.
+// A description of the persistent volume's resources and capacity. More info:
+// https://kubernetes.io/docs/concepts/storage/persistent-volumes#capacity.
 type IoK8sAPICoreV1PersistentVolumeSpecCapacity map[string]IoK8sApimachineryPkgAPIResourceQuantity
 
 func (s *IoK8sAPICoreV1PersistentVolumeSpecCapacity) init() IoK8sAPICoreV1PersistentVolumeSpecCapacity {
@@ -16933,12 +16947,12 @@ func (s *IoK8sAPICoreV1PhotonPersistentDiskVolumeSource) SetPdID(val string) {
 // scheduled onto hosts.
 // Ref: #/components/schemas/io.k8s.api.core.v1.Pod
 type IoK8sAPICoreV1Pod struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                   `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
@@ -17003,19 +17017,19 @@ func (*IoK8sAPICoreV1Pod) readCoreV1NamespacedPodStatusRes()              {}
 // Pod affinity is a group of inter pod affinity scheduling rules.
 // Ref: #/components/schemas/io.k8s.api.core.v1.PodAffinity
 type IoK8sAPICoreV1PodAffinity struct {
-	// The scheduler will prefer to schedule pods to nodes that satisfy the affinity expressions
-	// specified by this field, but it may choose a node that violates one or more of the expressions.
-	// The node that is most preferred is the one with the greatest sum of weights, i.e. for each node
-	// that meets all of the scheduling requirements (resource request, requiredDuringScheduling affinity
-	// expressions, etc.), compute a sum by iterating through the elements of this field and adding
-	// "weight" to the sum if the node has pods which matches the corresponding podAffinityTerm; the
-	// node(s) with the highest sum are the most preferred.
+	// The scheduler will prefer to schedule pods to nodes that satisfy the affinity expressions specified
+	// by this field, but it may choose a node that violates one or more of the expressions. The node that
+	// is most preferred is the one with the greatest sum of weights, i.e. for each node that meets all of
+	// the scheduling requirements (resource request, requiredDuringScheduling affinity expressions, etc.),
+	// compute a sum by iterating through the elements of this field and adding "weight" to the sum if the
+	// node has pods which matches the corresponding podAffinityTerm; the node(s) with the highest sum are
+	// the most preferred.
 	PreferredDuringSchedulingIgnoredDuringExecution []IoK8sAPICoreV1WeightedPodAffinityTerm `json:"preferredDuringSchedulingIgnoredDuringExecution"`
 	// If the affinity requirements specified by this field are not met at scheduling time, the pod will
-	// not be scheduled onto the node. If the affinity requirements specified by this field cease to be
-	// met at some point during pod execution (e.g. due to a pod label update), the system may or may not
-	// try to eventually evict the pod from its node. When there are multiple elements, the lists of
-	// nodes corresponding to each podAffinityTerm are intersected, i.e. all terms must be satisfied.
+	// not be scheduled onto the node. If the affinity requirements specified by this field cease to be met
+	// at some point during pod execution (e.g. due to a pod label update), the system may or may not try
+	// to eventually evict the pod from its node. When there are multiple elements, the lists of nodes
+	// corresponding to each podAffinityTerm are intersected, i.e. all terms must be satisfied.
 	RequiredDuringSchedulingIgnoredDuringExecution []IoK8sAPICoreV1PodAffinityTerm `json:"requiredDuringSchedulingIgnoredDuringExecution"`
 }
 
@@ -17041,21 +17055,20 @@ func (s *IoK8sAPICoreV1PodAffinity) SetRequiredDuringSchedulingIgnoredDuringExec
 
 // Defines a set of pods (namely those matching the labelSelector relative to the given namespace(s))
 // that this pod should be co-located (affinity) or not co-located (anti-affinity) with, where
-// co-located is defined as running on a node whose value of the label with key <topologyKey> matches
-// that of any node on which a pod of the set of pods is running.
+// co-located is defined as running on a node whose value of the label with key matches that of any
+// node on which a pod of the set of pods is running.
 // Ref: #/components/schemas/io.k8s.api.core.v1.PodAffinityTerm
 type IoK8sAPICoreV1PodAffinityTerm struct {
 	LabelSelector     OptIoK8sApimachineryPkgApisMetaV1LabelSelector `json:"labelSelector"`
 	NamespaceSelector OptIoK8sApimachineryPkgApisMetaV1LabelSelector `json:"namespaceSelector"`
-	// Namespaces specifies a static list of namespace names that the term applies to. The term is
-	// applied to the union of the namespaces listed in this field and the ones selected by
-	// namespaceSelector. null or empty namespaces list and null namespaceSelector means "this pod's
-	// namespace".
+	// Namespaces specifies a static list of namespace names that the term applies to. The term is applied
+	// to the union of the namespaces listed in this field and the ones selected by namespaceSelector. null
+	// or empty namespaces list and null namespaceSelector means "this pod's namespace".
 	Namespaces []string `json:"namespaces"`
 	// This pod should be co-located (affinity) or not co-located (anti-affinity) with the pods matching
 	// the labelSelector in the specified namespaces, where co-located is defined as running on a node
-	// whose value of the label with key topologyKey matches that of any node on which any of the
-	// selected pods is running. Empty topologyKey is not allowed.
+	// whose value of the label with key topologyKey matches that of any node on which any of the selected
+	// pods is running. Empty topologyKey is not allowed.
 	TopologyKey string `json:"topologyKey"`
 }
 
@@ -17103,19 +17116,18 @@ func (s *IoK8sAPICoreV1PodAffinityTerm) SetTopologyKey(val string) {
 // Ref: #/components/schemas/io.k8s.api.core.v1.PodAntiAffinity
 type IoK8sAPICoreV1PodAntiAffinity struct {
 	// The scheduler will prefer to schedule pods to nodes that satisfy the anti-affinity expressions
-	// specified by this field, but it may choose a node that violates one or more of the expressions.
-	// The node that is most preferred is the one with the greatest sum of weights, i.e. for each node
-	// that meets all of the scheduling requirements (resource request, requiredDuringScheduling
-	// anti-affinity expressions, etc.), compute a sum by iterating through the elements of this field
-	// and adding "weight" to the sum if the node has pods which matches the corresponding
-	// podAffinityTerm; the node(s) with the highest sum are the most preferred.
+	// specified by this field, but it may choose a node that violates one or more of the expressions. The
+	// node that is most preferred is the one with the greatest sum of weights, i.e. for each node that
+	// meets all of the scheduling requirements (resource request, requiredDuringScheduling anti-affinity
+	// expressions, etc.), compute a sum by iterating through the elements of this field and adding
+	// "weight" to the sum if the node has pods which matches the corresponding podAffinityTerm; the
+	// node(s) with the highest sum are the most preferred.
 	PreferredDuringSchedulingIgnoredDuringExecution []IoK8sAPICoreV1WeightedPodAffinityTerm `json:"preferredDuringSchedulingIgnoredDuringExecution"`
 	// If the anti-affinity requirements specified by this field are not met at scheduling time, the pod
-	// will not be scheduled onto the node. If the anti-affinity requirements specified by this field
-	// cease to be met at some point during pod execution (e.g. due to a pod label update), the system
-	// may or may not try to eventually evict the pod from its node. When there are multiple elements,
-	// the lists of nodes corresponding to each podAffinityTerm are intersected, i.e. all terms must be
-	// satisfied.
+	// will not be scheduled onto the node. If the anti-affinity requirements specified by this field cease
+	// to be met at some point during pod execution (e.g. due to a pod label update), the system may or may
+	// not try to eventually evict the pod from its node. When there are multiple elements, the lists of
+	// nodes corresponding to each podAffinityTerm are intersected, i.e. all terms must be satisfied.
 	RequiredDuringSchedulingIgnoredDuringExecution []IoK8sAPICoreV1PodAffinityTerm `json:"requiredDuringSchedulingIgnoredDuringExecution"`
 }
 
@@ -17148,11 +17160,11 @@ type IoK8sAPICoreV1PodCondition struct {
 	Message OptString `json:"message"`
 	// Unique, one-word, CamelCase reason for the condition's last transition.
 	Reason OptString `json:"reason"`
-	// Status is the status of the condition. Can be True, False, Unknown. More info: https://kubernetes.
-	// io/docs/concepts/workloads/pods/pod-lifecycle#pod-conditions.
+	// Status is the status of the condition. Can be True, False, Unknown. More info:
+	// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#pod-conditions.
 	Status string `json:"status"`
-	// Type is the type of the condition. More info: https://kubernetes.
-	// io/docs/concepts/workloads/pods/pod-lifecycle#pod-conditions.
+	// Type is the type of the condition. More info:
+	// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#pod-conditions.
 	Type string `json:"type"`
 }
 
@@ -17219,11 +17231,11 @@ func (s *IoK8sAPICoreV1PodCondition) SetType(val string) {
 // PodDNSConfig defines the DNS parameters of a pod in addition to those generated from DNSPolicy.
 // Ref: #/components/schemas/io.k8s.api.core.v1.PodDNSConfig
 type IoK8sAPICoreV1PodDNSConfig struct {
-	// A list of DNS name server IP addresses. This will be appended to the base nameservers generated
-	// from DNSPolicy. Duplicated nameservers will be removed.
+	// A list of DNS name server IP addresses. This will be appended to the base nameservers generated from
+	// DNSPolicy. Duplicated nameservers will be removed.
 	Nameservers []string `json:"nameservers"`
 	// A list of DNS resolver options. This will be merged with the base options generated from DNSPolicy.
-	//  Duplicated entries will be removed. Resolution options given in Options will override those that
+	// Duplicated entries will be removed. Resolution options given in Options will override those that
 	// appear in the base DNSPolicy.
 	Options []IoK8sAPICoreV1PodDNSConfigOption `json:"options"`
 	// A list of DNS search domains for host-name lookup. This will be appended to the base search paths
@@ -17289,8 +17301,8 @@ func (s *IoK8sAPICoreV1PodDNSConfigOption) SetValue(val OptString) {
 	s.Value = val
 }
 
-// IP address information for entries in the (plural) PodIPs field. Each entry includes:
-// IP: An IP address allocated to the pod. Routable at least within the cluster.
+// IP address information for entries in the (plural) PodIPs field. Each entry includes: IP: An IP
+// address allocated to the pod. Routable at least within the cluster.
 // Ref: #/components/schemas/io.k8s.api.core.v1.PodIP
 type IoK8sAPICoreV1PodIP struct {
 	// Ip is an IP address (IPv4 or IPv6) assigned to the pod.
@@ -17310,15 +17322,15 @@ func (s *IoK8sAPICoreV1PodIP) SetIP(val OptString) {
 // PodList is a list of Pods.
 // Ref: #/components/schemas/io.k8s.api.core.v1.PodList
 type IoK8sAPICoreV1PodList struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
-	// List of pods. More info: https://git.k8s.
-	// io/community/contributors/devel/sig-architecture/api-conventions.md.
+	// List of pods. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md.
 	Items []IoK8sAPICoreV1Pod `json:"items"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
@@ -17385,40 +17397,42 @@ func (s *IoK8sAPICoreV1PodReadinessGate) SetConditionType(val string) {
 }
 
 // PodSecurityContext holds pod-level security attributes and common container settings. Some fields
-// are also present in container.securityContext.  Field values of container.securityContext take
+// are also present in container.securityContext. Field values of container.securityContext take
 // precedence over field values of PodSecurityContext.
 // Ref: #/components/schemas/io.k8s.api.core.v1.PodSecurityContext
 type IoK8sAPICoreV1PodSecurityContext struct {
 	// A special supplemental group that applies to all containers in a pod. Some volume types allow the
 	// Kubelet to change the ownership of that volume to be owned by the pod:
-	// 1. The owning GID will be the FSGroup 2. The setgid bit is set (new files created in the volume
-	// will be owned by FSGroup) 3. The permission bits are OR'd with rw-rw----
+	//
+	// 1. The owning GID will be the FSGroup 2. The setgid bit is set (new files created in the volume will
+	//    be owned by FSGroup) 3. The permission bits are OR'd with rw-rw----
+	//
 	// If unset, the Kubelet will not modify the ownership and permissions of any volume.
 	FsGroup OptInt64 `json:"fsGroup"`
-	// FsGroupChangePolicy defines behavior of changing ownership and permission of the volume before
-	// being exposed inside Pod. This field will only apply to volume types which support fsGroup based
+	// FsGroupChangePolicy defines behavior of changing ownership and permission of the volume before being
+	// exposed inside Pod. This field will only apply to volume types which support fsGroup based
 	// ownership(and permissions). It will have no effect on ephemeral volume types such as: secret,
-	// configmaps and emptydir. Valid values are "OnRootMismatch" and "Always". If not specified,
-	// "Always" is used.
+	// configmaps and emptydir. Valid values are "OnRootMismatch" and "Always". If not specified, "Always"
+	// is used.
 	FsGroupChangePolicy OptString `json:"fsGroupChangePolicy"`
 	// The GID to run the entrypoint of the container process. Uses runtime default if unset. May also be
-	// set in SecurityContext.  If set in both SecurityContext and PodSecurityContext, the value
-	// specified in SecurityContext takes precedence for that container.
+	// set in SecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified
+	// in SecurityContext takes precedence for that container.
 	RunAsGroup OptInt64 `json:"runAsGroup"`
 	// Indicates that the container must run as a non-root user. If true, the Kubelet will validate the
 	// image at runtime to ensure that it does not run as UID 0 (root) and fail to start the container if
 	// it does. If unset or false, no such validation will be performed. May also be set in
-	// SecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in
+	// SecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in
 	// SecurityContext takes precedence.
 	RunAsNonRoot OptBool `json:"runAsNonRoot"`
-	// The UID to run the entrypoint of the container process. Defaults to user specified in image
-	// metadata if unspecified. May also be set in SecurityContext.  If set in both SecurityContext and
+	// The UID to run the entrypoint of the container process. Defaults to user specified in image metadata
+	// if unspecified. May also be set in SecurityContext. If set in both SecurityContext and
 	// PodSecurityContext, the value specified in SecurityContext takes precedence for that container.
 	RunAsUser      OptInt64                        `json:"runAsUser"`
 	SeLinuxOptions OptIoK8sAPICoreV1SELinuxOptions `json:"seLinuxOptions"`
 	SeccompProfile OptIoK8sAPICoreV1SeccompProfile `json:"seccompProfile"`
-	// A list of groups applied to the first process run in each container, in addition to the
-	// container's primary GID.  If unspecified, no groups will be added to any container.
+	// A list of groups applied to the first process run in each container, in addition to the container's
+	// primary GID. If unspecified, no groups will be added to any container.
 	SupplementalGroups []int64 `json:"supplementalGroups"`
 	// Sysctls hold a list of namespaced sysctls used for the pod. Pods with unsupported sysctls (by the
 	// container runtime) might fail to launch.
@@ -17530,38 +17544,38 @@ func (s *IoK8sAPICoreV1PodSecurityContext) SetWindowsOptions(val OptIoK8sAPICore
 // Ref: #/components/schemas/io.k8s.api.core.v1.PodSpec
 type IoK8sAPICoreV1PodSpec struct {
 	// Optional duration in seconds the pod may be active on the node relative to StartTime before the
-	// system will actively try to mark it failed and kill associated containers. Value must be a
-	// positive integer.
+	// system will actively try to mark it failed and kill associated containers. Value must be a positive
+	// integer.
 	ActiveDeadlineSeconds OptInt64                  `json:"activeDeadlineSeconds"`
 	Affinity              OptIoK8sAPICoreV1Affinity `json:"affinity"`
 	// AutomountServiceAccountToken indicates whether a service account token should be automatically
 	// mounted.
 	AutomountServiceAccountToken OptBool `json:"automountServiceAccountToken"`
-	// List of containers belonging to the pod. Containers cannot currently be added or removed. There
-	// must be at least one container in a Pod. Cannot be updated.
+	// List of containers belonging to the pod. Containers cannot currently be added or removed. There must
+	// be at least one container in a Pod. Cannot be updated.
 	Containers []IoK8sAPICoreV1Container     `json:"containers"`
 	DnsConfig  OptIoK8sAPICoreV1PodDNSConfig `json:"dnsConfig"`
 	// Set DNS policy for the pod. Defaults to "ClusterFirst". Valid values are 'ClusterFirstWithHostNet',
-	//  'ClusterFirst', 'Default' or 'None'. DNS parameters given in DNSConfig will be merged with the
-	// policy selected with DNSPolicy. To have DNS options set along with hostNetwork, you have to
-	// specify DNS policy explicitly to 'ClusterFirstWithHostNet'.
+	// 'ClusterFirst', 'Default' or 'None'. DNS parameters given in DNSConfig will be merged with the
+	// policy selected with DNSPolicy. To have DNS options set along with hostNetwork, you have to specify
+	// DNS policy explicitly to 'ClusterFirstWithHostNet'.
 	DnsPolicy OptString `json:"dnsPolicy"`
 	// EnableServiceLinks indicates whether information about services should be injected into pod's
 	// environment variables, matching the syntax of Docker links. Optional: Defaults to true.
 	EnableServiceLinks OptBool `json:"enableServiceLinks"`
-	// List of ephemeral containers run in this pod. Ephemeral containers may be run in an existing pod
-	// to perform user-initiated actions such as debugging. This list cannot be specified when creating a
-	// pod, and it cannot be modified by updating the pod spec. In order to add an ephemeral container to
-	// an existing pod, use the pod's ephemeralcontainers subresource. This field is alpha-level and is
-	// only honored by servers that enable the EphemeralContainers feature.
+	// List of ephemeral containers run in this pod. Ephemeral containers may be run in an existing pod to
+	// perform user-initiated actions such as debugging. This list cannot be specified when creating a pod,
+	// and it cannot be modified by updating the pod spec. In order to add an ephemeral container to an
+	// existing pod, use the pod's ephemeralcontainers subresource. This field is alpha-level and is only
+	// honored by servers that enable the EphemeralContainers feature.
 	EphemeralContainers []IoK8sAPICoreV1EphemeralContainer `json:"ephemeralContainers"`
-	// HostAliases is an optional list of hosts and IPs that will be injected into the pod's hosts file
-	// if specified. This is only valid for non-hostNetwork pods.
+	// HostAliases is an optional list of hosts and IPs that will be injected into the pod's hosts file if
+	// specified. This is only valid for non-hostNetwork pods.
 	HostAliases []IoK8sAPICoreV1HostAlias `json:"hostAliases"`
 	// Use the host's ipc namespace. Optional: Default to false.
 	HostIPC OptBool `json:"hostIPC"`
-	// Host networking requested for this pod. Use the host's network namespace. If this option is set,
-	// the ports that will be used must be specified. Default to false.
+	// Host networking requested for this pod. Use the host's network namespace. If this option is set, the
+	// ports that will be used must be specified. Default to false.
 	HostNetwork OptBool `json:"hostNetwork"`
 	// Use the host's pid namespace. Optional: Default to false.
 	HostPID OptBool `json:"hostPID"`
@@ -17571,63 +17585,63 @@ type IoK8sAPICoreV1PodSpec struct {
 	// ImagePullSecrets is an optional list of references to secrets in the same namespace to use for
 	// pulling any of the images used by this PodSpec. If specified, these secrets will be passed to
 	// individual puller implementations for them to use. For example, in the case of docker, only
-	// DockerConfig type secrets are honored. More info: https://kubernetes.
-	// io/docs/concepts/containers/images#specifying-imagepullsecrets-on-a-pod.
+	// DockerConfig type secrets are honored. More info:
+	// https://kubernetes.io/docs/concepts/containers/images#specifying-imagepullsecrets-on-a-pod.
 	ImagePullSecrets []IoK8sAPICoreV1LocalObjectReference `json:"imagePullSecrets"`
-	// List of initialization containers belonging to the pod. Init containers are executed in order
-	// prior to containers being started. If any init container fails, the pod is considered to have
-	// failed and is handled according to its restartPolicy. The name for an init container or normal
-	// container must be unique among all containers. Init containers may not have Lifecycle actions,
-	// Readiness probes, Liveness probes, or Startup probes. The resourceRequirements of an init
-	// container are taken into account during scheduling by finding the highest request/limit for each
-	// resource type, and then using the max of of that value or the sum of the normal containers. Limits
-	// are applied to init containers in a similar fashion. Init containers cannot currently be added or
-	// removed. Cannot be updated. More info: https://kubernetes.
-	// io/docs/concepts/workloads/pods/init-containers/.
+	// List of initialization containers belonging to the pod. Init containers are executed in order prior
+	// to containers being started. If any init container fails, the pod is considered to have failed and
+	// is handled according to its restartPolicy. The name for an init container or normal container must
+	// be unique among all containers. Init containers may not have Lifecycle actions, Readiness probes,
+	// Liveness probes, or Startup probes. The resourceRequirements of an init container are taken into
+	// account during scheduling by finding the highest request/limit for each resource type, and then
+	// using the max of of that value or the sum of the normal containers. Limits are applied to init
+	// containers in a similar fashion. Init containers cannot currently be added or removed. Cannot be
+	// updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/init-containers/.
 	InitContainers []IoK8sAPICoreV1Container `json:"initContainers"`
 	// NodeName is a request to schedule this pod onto a specific node. If it is non-empty, the scheduler
 	// simply schedules this pod onto that node, assuming that it fits resource requirements.
 	NodeName OptString `json:"nodeName"`
 	// NodeSelector is a selector which must be true for the pod to fit on a node. Selector which must
-	// match a node's labels for the pod to be scheduled on that node. More info: https://kubernetes.
-	// io/docs/concepts/configuration/assign-pod-node/.
+	// match a node's labels for the pod to be scheduled on that node. More info:
+	// https://kubernetes.io/docs/concepts/configuration/assign-pod-node/.
 	NodeSelector OptIoK8sAPICoreV1PodSpecNodeSelector `json:"nodeSelector"`
 	// Overhead represents the resource overhead associated with running a pod for a given RuntimeClass.
-	// This field will be autopopulated at admission time by the RuntimeClass admission controller. If
-	// the RuntimeClass admission controller is enabled, overhead must not be set in Pod create requests.
-	// The RuntimeClass admission controller will reject Pod create requests which have the overhead
-	// already set. If RuntimeClass is configured and selected in the PodSpec, Overhead will be set to
-	// the value defined in the corresponding RuntimeClass, otherwise it will remain unset and treated as
-	// zero. More info: https://git.k8s.io/enhancements/keps/sig-node/688-pod-overhead/README.md This
-	// field is beta-level as of Kubernetes v1.18, and is only honored by servers that enable the
-	// PodOverhead feature.
+	// This field will be autopopulated at admission time by the RuntimeClass admission controller. If the
+	// RuntimeClass admission controller is enabled, overhead must not be set in Pod create requests. The
+	// RuntimeClass admission controller will reject Pod create requests which have the overhead already
+	// set. If RuntimeClass is configured and selected in the PodSpec, Overhead will be set to the value
+	// defined in the corresponding RuntimeClass, otherwise it will remain unset and treated as zero. More
+	// info: https://git.k8s.io/enhancements/keps/sig-node/688-pod-overhead/README.md This field is
+	// beta-level as of Kubernetes v1.18, and is only honored by servers that enable the PodOverhead
+	// feature.
 	Overhead OptIoK8sAPICoreV1PodSpecOverhead `json:"overhead"`
 	// PreemptionPolicy is the Policy for preempting pods with lower priority. One of Never,
-	// PreemptLowerPriority. Defaults to PreemptLowerPriority if unset. This field is beta-level, gated
-	// by the NonPreemptingPriority feature-gate.
+	// PreemptLowerPriority. Defaults to PreemptLowerPriority if unset. This field is beta-level, gated by
+	// the NonPreemptingPriority feature-gate.
 	PreemptionPolicy OptString `json:"preemptionPolicy"`
 	// The priority value. Various system components use this field to find the priority of the pod. When
 	// Priority Admission Controller is enabled, it prevents users from setting this field. The admission
 	// controller populates this field from PriorityClassName. The higher the value, the higher the
 	// priority.
 	Priority OptInt32 `json:"priority"`
-	// If specified, indicates the pod's priority. "system-node-critical" and "system-cluster-critical"
-	// are two special keywords which indicate the highest priorities with the former being the highest
+	// If specified, indicates the pod's priority. "system-node-critical" and "system-cluster-critical" are
+	// two special keywords which indicate the highest priorities with the former being the highest
 	// priority. Any other name must be defined by creating a PriorityClass object with that name. If not
 	// specified, the pod priority will be default or zero if there is no default.
 	PriorityClassName OptString `json:"priorityClassName"`
 	// If specified, all readiness gates will be evaluated for pod readiness. A pod is ready when all its
-	// containers are ready AND all conditions specified in the readiness gates have status equal to
-	// "True" More info: https://git.k8s.io/enhancements/keps/sig-network/580-pod-readiness-gates.
+	// containers are ready AND all conditions specified in the readiness gates have status equal to "True"
+	// More info: https://git.k8s.io/enhancements/keps/sig-network/580-pod-readiness-gates.
 	ReadinessGates []IoK8sAPICoreV1PodReadinessGate `json:"readinessGates"`
 	// Restart policy for all containers within the pod. One of Always, OnFailure, Never. Default to
 	// Always. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#restart-policy.
 	RestartPolicy OptString `json:"restartPolicy"`
 	// RuntimeClassName refers to a RuntimeClass object in the node.k8s.io group, which should be used to
-	// run this pod.  If no RuntimeClass resource matches the named class, the pod will not be run. If
-	// unset or empty, the "legacy" RuntimeClass will be used, which is an implicit class with an empty
-	// definition that uses the default runtime handler. More info: https://git.k8s.
-	// io/enhancements/keps/sig-node/585-runtime-class This is a beta feature as of Kubernetes v1.14.
+	// run this pod. If no RuntimeClass resource matches the named class, the pod will not be run. If unset
+	// or empty, the "legacy" RuntimeClass will be used, which is an implicit class with an empty
+	// definition that uses the default runtime handler. More info:
+	// https://git.k8s.io/enhancements/keps/sig-node/585-runtime-class This is a beta feature as of
+	// Kubernetes v1.14.
 	RuntimeClassName OptString `json:"runtimeClassName"`
 	// If specified, the pod will be dispatched by specified scheduler. If not specified, the pod will be
 	// dispatched by default scheduler.
@@ -17640,33 +17654,31 @@ type IoK8sAPICoreV1PodSpec struct {
 	// https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/.
 	ServiceAccountName OptString `json:"serviceAccountName"`
 	// If true the pod's hostname will be configured as the pod's FQDN, rather than the leaf name (the
-	// default). In Linux containers, this means setting the FQDN in the hostname field of the kernel
-	// (the nodename field of struct utsname). In Windows containers, this means setting the registry
-	// value of hostname for the registry key
-	// HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters to FQDN. If a pod does not
-	// have FQDN, this has no effect. Default to false.
+	// default). In Linux containers, this means setting the FQDN in the hostname field of the kernel (the
+	// nodename field of struct utsname). In Windows containers, this means setting the registry value of
+	// hostname for the registry key HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters
+	// to FQDN. If a pod does not have FQDN, this has no effect. Default to false.
 	SetHostnameAsFQDN OptBool `json:"setHostnameAsFQDN"`
-	// Share a single process namespace between all of the containers in a pod. When this is set
-	// containers will be able to view and signal processes from other containers in the same pod, and
-	// the first process in each container will not be assigned PID 1. HostPID and ShareProcessNamespace
-	// cannot both be set. Optional: Default to false.
+	// Share a single process namespace between all of the containers in a pod. When this is set containers
+	// will be able to view and signal processes from other containers in the same pod, and the first
+	// process in each container will not be assigned PID 1. HostPID and ShareProcessNamespace cannot both
+	// be set. Optional: Default to false.
 	ShareProcessNamespace OptBool `json:"shareProcessNamespace"`
-	// If specified, the fully qualified Pod hostname will be "<hostname>.<subdomain>.<pod namespace>.svc.
-	// <cluster domain>". If not specified, the pod will not have a domainname at all.
+	// If specified, the fully qualified Pod hostname will be "...svc.". If not specified, the pod will not
+	// have a domainname at all.
 	Subdomain OptString `json:"subdomain"`
 	// Optional duration in seconds the pod needs to terminate gracefully. May be decreased in delete
-	// request. Value must be non-negative integer. The value zero indicates stop immediately via the
-	// kill signal (no opportunity to shut down). If this value is nil, the default grace period will be
-	// used instead. The grace period is the duration in seconds after the processes running in the pod
-	// are sent a termination signal and the time when the processes are forcibly halted with a kill
-	// signal. Set this value longer than the expected cleanup time for your process. Defaults to 30
-	// seconds.
+	// request. Value must be non-negative integer. The value zero indicates stop immediately via the kill
+	// signal (no opportunity to shut down). If this value is nil, the default grace period will be used
+	// instead. The grace period is the duration in seconds after the processes running in the pod are sent
+	// a termination signal and the time when the processes are forcibly halted with a kill signal. Set
+	// this value longer than the expected cleanup time for your process. Defaults to 30 seconds.
 	TerminationGracePeriodSeconds OptInt64 `json:"terminationGracePeriodSeconds"`
 	// If specified, the pod's tolerations.
 	Tolerations []IoK8sAPICoreV1Toleration `json:"tolerations"`
 	// TopologySpreadConstraints describes how a group of pods ought to spread across topology domains.
-	// Scheduler will schedule pods in a way which abides by the constraints. All
-	// topologySpreadConstraints are ANDed.
+	// Scheduler will schedule pods in a way which abides by the constraints. All topologySpreadConstraints
+	// are ANDed.
 	TopologySpreadConstraints []IoK8sAPICoreV1TopologySpreadConstraint `json:"topologySpreadConstraints"`
 	// List of volumes that can be mounted by containers belonging to the pod. More info:
 	// https://kubernetes.io/docs/concepts/storage/volumes.
@@ -18024,8 +18036,8 @@ func (s *IoK8sAPICoreV1PodSpec) SetVolumes(val []IoK8sAPICoreV1Volume) {
 }
 
 // NodeSelector is a selector which must be true for the pod to fit on a node. Selector which must
-// match a node's labels for the pod to be scheduled on that node. More info: https://kubernetes.
-// io/docs/concepts/configuration/assign-pod-node/.
+// match a node's labels for the pod to be scheduled on that node. More info:
+// https://kubernetes.io/docs/concepts/configuration/assign-pod-node/.
 type IoK8sAPICoreV1PodSpecNodeSelector map[string]string
 
 func (s *IoK8sAPICoreV1PodSpecNodeSelector) init() IoK8sAPICoreV1PodSpecNodeSelector {
@@ -18038,14 +18050,14 @@ func (s *IoK8sAPICoreV1PodSpecNodeSelector) init() IoK8sAPICoreV1PodSpecNodeSele
 }
 
 // Overhead represents the resource overhead associated with running a pod for a given RuntimeClass.
-// This field will be autopopulated at admission time by the RuntimeClass admission controller. If
-// the RuntimeClass admission controller is enabled, overhead must not be set in Pod create requests.
-// The RuntimeClass admission controller will reject Pod create requests which have the overhead
-// already set. If RuntimeClass is configured and selected in the PodSpec, Overhead will be set to
-// the value defined in the corresponding RuntimeClass, otherwise it will remain unset and treated as
-// zero. More info: https://git.k8s.io/enhancements/keps/sig-node/688-pod-overhead/README.md This
-// field is beta-level as of Kubernetes v1.18, and is only honored by servers that enable the
-// PodOverhead feature.
+// This field will be autopopulated at admission time by the RuntimeClass admission controller. If the
+// RuntimeClass admission controller is enabled, overhead must not be set in Pod create requests. The
+// RuntimeClass admission controller will reject Pod create requests which have the overhead already
+// set. If RuntimeClass is configured and selected in the PodSpec, Overhead will be set to the value
+// defined in the corresponding RuntimeClass, otherwise it will remain unset and treated as zero. More
+// info: https://git.k8s.io/enhancements/keps/sig-node/688-pod-overhead/README.md This field is
+// beta-level as of Kubernetes v1.18, and is only honored by servers that enable the PodOverhead
+// feature.
 type IoK8sAPICoreV1PodSpecOverhead map[string]IoK8sApimachineryPkgAPIResourceQuantity
 
 func (s *IoK8sAPICoreV1PodSpecOverhead) init() IoK8sAPICoreV1PodSpecOverhead {
@@ -18061,22 +18073,21 @@ func (s *IoK8sAPICoreV1PodSpecOverhead) init() IoK8sAPICoreV1PodSpecOverhead {
 // system, especially if the node that hosts the pod cannot contact the control plane.
 // Ref: #/components/schemas/io.k8s.api.core.v1.PodStatus
 type IoK8sAPICoreV1PodStatus struct {
-	// Current service state of pod. More info: https://kubernetes.
-	// io/docs/concepts/workloads/pods/pod-lifecycle#pod-conditions.
+	// Current service state of pod. More info:
+	// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#pod-conditions.
 	Conditions []IoK8sAPICoreV1PodCondition `json:"conditions"`
 	// The list has one entry per container in the manifest. Each entry is currently the output of
-	// `docker inspect`. More info: https://kubernetes.
-	// io/docs/concepts/workloads/pods/pod-lifecycle#pod-and-container-status.
+	// `docker inspect`. More info:
+	// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#pod-and-container-status.
 	ContainerStatuses []IoK8sAPICoreV1ContainerStatus `json:"containerStatuses"`
-	// Status for any ephemeral containers that have run in this pod. This field is alpha-level and is
-	// only populated by servers that enable the EphemeralContainers feature.
+	// Status for any ephemeral containers that have run in this pod. This field is alpha-level and is only
+	// populated by servers that enable the EphemeralContainers feature.
 	EphemeralContainerStatuses []IoK8sAPICoreV1ContainerStatus `json:"ephemeralContainerStatuses"`
 	// IP address of the host to which the pod is assigned. Empty if not yet scheduled.
 	HostIP OptString `json:"hostIP"`
-	// The list has one entry per init container in the manifest. The most recent successful init
-	// container will have ready = true, the most recently started container will have startTime set.
-	// More info: https://kubernetes.
-	// io/docs/concepts/workloads/pods/pod-lifecycle#pod-and-container-status.
+	// The list has one entry per init container in the manifest. The most recent successful init container
+	// will have ready = true, the most recently started container will have startTime set. More info:
+	// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#pod-and-container-status.
 	InitContainerStatuses []IoK8sAPICoreV1ContainerStatus `json:"initContainerStatuses"`
 	// A human readable message indicating details about why the pod is in this condition.
 	Message OptString `json:"message"`
@@ -18084,32 +18095,34 @@ type IoK8sAPICoreV1PodStatus struct {
 	// scheduled right away as preemption victims receive their graceful termination periods. This field
 	// does not guarantee that the pod will be scheduled on this node. Scheduler may decide to place the
 	// pod elsewhere if other nodes become available sooner. Scheduler may also decide to give the
-	// resources on this node to a higher priority pod that is created after preemption. As a result,
-	// this field may be different than PodSpec.nodeName when the pod is scheduled.
+	// resources on this node to a higher priority pod that is created after preemption. As a result, this
+	// field may be different than PodSpec.nodeName when the pod is scheduled.
 	NominatedNodeName OptString `json:"nominatedNodeName"`
 	// The phase of a Pod is a simple, high-level summary of where the Pod is in its lifecycle. The
-	// conditions array, the reason and message fields, and the individual container status arrays
-	// contain more detail about the pod's status. There are five possible phase values:
-	// Pending: The pod has been accepted by the Kubernetes system, but one or more of the container
-	// images has not been created. This includes time before being scheduled as well as time spent
-	// downloading images over the network, which could take a while. Running: The pod has been bound to
-	// a node, and all of the containers have been created. At least one container is still running, or
-	// is in the process of starting or restarting. Succeeded: All containers in the pod have terminated
-	// in success, and will not be restarted. Failed: All containers in the pod have terminated, and at
-	// least one container has terminated in failure. The container either exited with non-zero status or
-	// was terminated by the system. Unknown: For some reason the state of the pod could not be obtained,
+	// conditions array, the reason and message fields, and the individual container status arrays contain
+	// more detail about the pod's status. There are five possible phase values:
+	//
+	// Pending: The pod has been accepted by the Kubernetes system, but one or more of the container images
+	// has not been created. This includes time before being scheduled as well as time spent downloading
+	// images over the network, which could take a while. Running: The pod has been bound to a node, and
+	// all of the containers have been created. At least one container is still running, or is in the
+	// process of starting or restarting. Succeeded: All containers in the pod have terminated in success,
+	// and will not be restarted. Failed: All containers in the pod have terminated, and at least one
+	// container has terminated in failure. The container either exited with non-zero status or was
+	// terminated by the system. Unknown: For some reason the state of the pod could not be obtained,
 	// typically due to an error in communicating with the host of the pod.
+	//
 	// More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#pod-phase.
 	Phase OptString `json:"phase"`
 	// IP address allocated to the pod. Routable at least within the cluster. Empty if not yet allocated.
 	PodIP OptString `json:"podIP"`
 	// PodIPs holds the IP addresses allocated to the pod. If this field is specified, the 0th entry must
-	// match the podIP field. Pods may be allocated at most 1 value for each of IPv4 and IPv6. This list
-	// is empty if no IPs have been allocated yet.
+	// match the podIP field. Pods may be allocated at most 1 value for each of IPv4 and IPv6. This list is
+	// empty if no IPs have been allocated yet.
 	PodIPs []IoK8sAPICoreV1PodIP `json:"podIPs"`
 	// The Quality of Service (QOS) classification assigned to the pod based on resource requirements See
-	// PodQOSClass type for available QOS classes More info: https://git.k8s.
-	// io/community/contributors/design-proposals/node/resource-qos.md.
+	// PodQOSClass type for available QOS classes More info:
+	// https://git.k8s.io/community/contributors/design-proposals/node/resource-qos.md.
 	QosClass OptString `json:"qosClass"`
 	// A brief CamelCase message indicating details about why the pod is in this state. e.g. 'Evicted'.
 	Reason    OptString                             `json:"reason"`
@@ -18249,12 +18262,12 @@ func (s *IoK8sAPICoreV1PodStatus) SetStartTime(val OptIoK8sApimachineryPkgApisMe
 // PodTemplate describes a template for creating copies of a predefined pod.
 // Ref: #/components/schemas/io.k8s.api.core.v1.PodTemplate
 type IoK8sAPICoreV1PodTemplate struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                   `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
@@ -18306,14 +18319,14 @@ func (*IoK8sAPICoreV1PodTemplate) readCoreV1NamespacedPodTemplateRes() {}
 // PodTemplateList is a list of PodTemplates.
 // Ref: #/components/schemas/io.k8s.api.core.v1.PodTemplateList
 type IoK8sAPICoreV1PodTemplateList struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
 	// List of pod templates.
 	Items []IoK8sAPICoreV1PodTemplate `json:"items"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
@@ -18394,8 +18407,9 @@ type IoK8sAPICoreV1PortStatus struct {
 	// Error is to record the problem with the service port The format of the error shall comply with the
 	// following rules: - built-in error values shall be specified in this file and those shall use
 	// CamelCase names
-	// - cloud provider specific error values must have names that comply with the
-	// format foo.example.com/CamelCase.
+	//
+	//  - cloud provider specific error values must have names that comply with the format
+	//    foo.example.com/CamelCase.
 	Error OptString `json:"error"`
 	// Port is the port number of the service port of which status is recorded here.
 	Port int32 `json:"port"`
@@ -18476,8 +18490,8 @@ func (s *IoK8sAPICoreV1PortworxVolumeSource) SetVolumeID(val string) {
 	s.VolumeID = val
 }
 
-// An empty preferred scheduling term matches all objects with implicit weight 0 (i.e. it's a no-op).
-// A null preferred scheduling term matches no objects (i.e. is also a no-op).
+// An empty preferred scheduling term matches all objects with implicit weight 0 (i.e. it's a no-op). A
+// null preferred scheduling term matches no objects (i.e. is also a no-op).
 // Ref: #/components/schemas/io.k8s.api.core.v1.PreferredSchedulingTerm
 type IoK8sAPICoreV1PreferredSchedulingTerm struct {
 	Preference IoK8sAPICoreV1NodeSelectorTerm `json:"preference"`
@@ -18505,13 +18519,13 @@ func (s *IoK8sAPICoreV1PreferredSchedulingTerm) SetWeight(val int32) {
 	s.Weight = val
 }
 
-// Probe describes a health check to be performed against a container to determine whether it is
-// alive or ready to receive traffic.
+// Probe describes a health check to be performed against a container to determine whether it is alive
+// or ready to receive traffic.
 // Ref: #/components/schemas/io.k8s.api.core.v1.Probe
 type IoK8sAPICoreV1Probe struct {
 	Exec OptIoK8sAPICoreV1ExecAction `json:"exec"`
-	// Minimum consecutive failures for the probe to be considered failed after having succeeded.
-	// Defaults to 3. Minimum value is 1.
+	// Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults
+	// to 3. Minimum value is 1.
 	FailureThreshold OptInt32                       `json:"failureThreshold"`
 	HttpGet          OptIoK8sAPICoreV1HTTPGetAction `json:"httpGet"`
 	// Number of seconds after the container has started before liveness probes are initiated. More info:
@@ -18525,13 +18539,13 @@ type IoK8sAPICoreV1Probe struct {
 	TcpSocket        OptIoK8sAPICoreV1TCPSocketAction `json:"tcpSocket"`
 	// Optional duration in seconds the pod needs to terminate gracefully upon probe failure. The grace
 	// period is the duration in seconds after the processes running in the pod are sent a termination
-	// signal and the time when the processes are forcibly halted with a kill signal. Set this value
-	// longer than the expected cleanup time for your process. If this value is nil, the pod's
+	// signal and the time when the processes are forcibly halted with a kill signal. Set this value longer
+	// than the expected cleanup time for your process. If this value is nil, the pod's
 	// terminationGracePeriodSeconds will be used. Otherwise, this value overrides the value provided by
-	// the pod spec. Value must be non-negative integer. The value zero indicates stop immediately via
-	// the kill signal (no opportunity to shut down). This is a beta field and requires enabling
-	// ProbeTerminationGracePeriod feature gate. Minimum value is 1. spec.terminationGracePeriodSeconds
-	// is used if unset.
+	// the pod spec. Value must be non-negative integer. The value zero indicates stop immediately via the
+	// kill signal (no opportunity to shut down). This is a beta field and requires enabling
+	// ProbeTerminationGracePeriod feature gate. Minimum value is 1. spec.terminationGracePeriodSeconds is
+	// used if unset.
 	TerminationGracePeriodSeconds OptInt64 `json:"terminationGracePeriodSeconds"`
 	// Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More
 	// info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes.
@@ -18633,9 +18647,9 @@ func (s *IoK8sAPICoreV1Probe) SetTimeoutSeconds(val OptInt32) {
 type IoK8sAPICoreV1ProjectedVolumeSource struct {
 	// Mode bits used to set permissions on created files by default. Must be an octal value between 0000
 	// and 0777 or a decimal value between 0 and 511. YAML accepts both octal and decimal values, JSON
-	// requires decimal values for mode bits. Directories within the path are not affected by this
-	// setting. This might be in conflict with other options that affect the file mode, like fsGroup, and
-	// the result can be other mode bits set.
+	// requires decimal values for mode bits. Directories within the path are not affected by this setting.
+	// This might be in conflict with other options that affect the file mode, like fsGroup, and the result
+	// can be other mode bits set.
 	DefaultMode OptInt32 `json:"defaultMode"`
 	// List of volume projections.
 	Sources []IoK8sAPICoreV1VolumeProjection `json:"sources"`
@@ -18756,18 +18770,18 @@ type IoK8sAPICoreV1RBDPersistentVolumeSource struct {
 	// Keyring is the path to key ring for RBDUser. Default is /etc/ceph/keyring. More info:
 	// https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it.
 	Keyring OptString `json:"keyring"`
-	// A collection of Ceph monitors. More info: https://examples.k8s.io/volumes/rbd/README.
-	// md#how-to-use-it.
+	// A collection of Ceph monitors. More info:
+	// https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it.
 	Monitors []string `json:"monitors"`
-	// The rados pool name. Default is rbd. More info: https://examples.k8s.io/volumes/rbd/README.
-	// md#how-to-use-it.
+	// The rados pool name. Default is rbd. More info:
+	// https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it.
 	Pool OptString `json:"pool"`
 	// ReadOnly here will force the ReadOnly setting in VolumeMounts. Defaults to false. More info:
 	// https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it.
 	ReadOnly  OptBool                          `json:"readOnly"`
 	SecretRef OptIoK8sAPICoreV1SecretReference `json:"secretRef"`
-	// The rados user name. Default is admin. More info: https://examples.k8s.io/volumes/rbd/README.
-	// md#how-to-use-it.
+	// The rados user name. Default is admin. More info:
+	// https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it.
 	User OptString `json:"user"`
 }
 
@@ -18864,18 +18878,18 @@ type IoK8sAPICoreV1RBDVolumeSource struct {
 	// Keyring is the path to key ring for RBDUser. Default is /etc/ceph/keyring. More info:
 	// https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it.
 	Keyring OptString `json:"keyring"`
-	// A collection of Ceph monitors. More info: https://examples.k8s.io/volumes/rbd/README.
-	// md#how-to-use-it.
+	// A collection of Ceph monitors. More info:
+	// https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it.
 	Monitors []string `json:"monitors"`
-	// The rados pool name. Default is rbd. More info: https://examples.k8s.io/volumes/rbd/README.
-	// md#how-to-use-it.
+	// The rados pool name. Default is rbd. More info:
+	// https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it.
 	Pool OptString `json:"pool"`
 	// ReadOnly here will force the ReadOnly setting in VolumeMounts. Defaults to false. More info:
 	// https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it.
 	ReadOnly  OptBool                               `json:"readOnly"`
 	SecretRef OptIoK8sAPICoreV1LocalObjectReference `json:"secretRef"`
-	// The rados user name. Default is admin. More info: https://examples.k8s.io/volumes/rbd/README.
-	// md#how-to-use-it.
+	// The rados user name. Default is admin. More info:
+	// https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it.
 	User OptString `json:"user"`
 }
 
@@ -18962,12 +18976,12 @@ func (s *IoK8sAPICoreV1RBDVolumeSource) SetUser(val OptString) {
 // ReplicationController represents the configuration of a replication controller.
 // Ref: #/components/schemas/io.k8s.api.core.v1.ReplicationController
 type IoK8sAPICoreV1ReplicationController struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                    `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta  `json:"metadata"`
@@ -19095,15 +19109,15 @@ func (s *IoK8sAPICoreV1ReplicationControllerCondition) SetType(val string) {
 // ReplicationControllerList is a collection of replication controllers.
 // Ref: #/components/schemas/io.k8s.api.core.v1.ReplicationControllerList
 type IoK8sAPICoreV1ReplicationControllerList struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
-	// List of replication controllers. More info: https://kubernetes.
-	// io/docs/concepts/workloads/controllers/replicationcontroller.
+	// List of replication controllers. More info:
+	// https://kubernetes.io/docs/concepts/workloads/controllers/replicationcontroller.
 	Items []IoK8sAPICoreV1ReplicationController `json:"items"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
@@ -19156,19 +19170,18 @@ func (*IoK8sAPICoreV1ReplicationControllerList) listCoreV1ReplicationControllerF
 // ReplicationControllerSpec is the specification of a replication controller.
 // Ref: #/components/schemas/io.k8s.api.core.v1.ReplicationControllerSpec
 type IoK8sAPICoreV1ReplicationControllerSpec struct {
-	// Minimum number of seconds for which a newly created pod should be ready without any of its
-	// container crashing, for it to be considered available. Defaults to 0 (pod will be considered
-	// available as soon as it is ready).
+	// Minimum number of seconds for which a newly created pod should be ready without any of its container
+	// crashing, for it to be considered available. Defaults to 0 (pod will be considered available as soon
+	// as it is ready).
 	MinReadySeconds OptInt32 `json:"minReadySeconds"`
 	// Replicas is the number of desired replicas. This is a pointer to distinguish between explicit zero
-	// and unspecified. Defaults to 1. More info: https://kubernetes.
-	// io/docs/concepts/workloads/controllers/replicationcontroller#what-is-a-replicationcontroller.
+	// and unspecified. Defaults to 1. More info:
+	// https://kubernetes.io/docs/concepts/workloads/controllers/replicationcontroller#what-is-a-replicationcontroller.
 	Replicas OptInt32 `json:"replicas"`
 	// Selector is a label query over pods that should match the Replicas count. If Selector is empty, it
 	// is defaulted to the labels present on the Pod template. Label keys and values that must match in
-	// order to be controlled by this replication controller, if empty defaulted to labels on Pod
-	// template. More info: https://kubernetes.
-	// io/docs/concepts/overview/working-with-objects/labels/#label-selectors.
+	// order to be controlled by this replication controller, if empty defaulted to labels on Pod template.
+	// More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors.
 	Selector OptIoK8sAPICoreV1ReplicationControllerSpecSelector `json:"selector"`
 	Template OptIoK8sAPICoreV1PodTemplateSpec                   `json:"template"`
 }
@@ -19215,9 +19228,8 @@ func (s *IoK8sAPICoreV1ReplicationControllerSpec) SetTemplate(val OptIoK8sAPICor
 
 // Selector is a label query over pods that should match the Replicas count. If Selector is empty, it
 // is defaulted to the labels present on the Pod template. Label keys and values that must match in
-// order to be controlled by this replication controller, if empty defaulted to labels on Pod
-// template. More info: https://kubernetes.
-// io/docs/concepts/overview/working-with-objects/labels/#label-selectors.
+// order to be controlled by this replication controller, if empty defaulted to labels on Pod template.
+// More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors.
 type IoK8sAPICoreV1ReplicationControllerSpecSelector map[string]string
 
 func (s *IoK8sAPICoreV1ReplicationControllerSpecSelector) init() IoK8sAPICoreV1ReplicationControllerSpecSelector {
@@ -19244,8 +19256,8 @@ type IoK8sAPICoreV1ReplicationControllerStatus struct {
 	ObservedGeneration OptInt64 `json:"observedGeneration"`
 	// The number of ready replicas for this replication controller.
 	ReadyReplicas OptInt32 `json:"readyReplicas"`
-	// Replicas is the most recently oberved number of replicas. More info: https://kubernetes.
-	// io/docs/concepts/workloads/controllers/replicationcontroller#what-is-a-replicationcontroller.
+	// Replicas is the most recently oberved number of replicas. More info:
+	// https://kubernetes.io/docs/concepts/workloads/controllers/replicationcontroller#what-is-a-replicationcontroller.
 	Replicas int32 `json:"replicas"`
 }
 
@@ -19352,12 +19364,12 @@ func (s *IoK8sAPICoreV1ResourceFieldSelector) SetResource(val string) {
 // ResourceQuota sets aggregate quota restrictions enforced per namespace.
 // Ref: #/components/schemas/io.k8s.api.core.v1.ResourceQuota
 type IoK8sAPICoreV1ResourceQuota struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                   `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
@@ -19421,15 +19433,15 @@ func (*IoK8sAPICoreV1ResourceQuota) readCoreV1NamespacedResourceQuotaStatusRes()
 // ResourceQuotaList is a list of ResourceQuota items.
 // Ref: #/components/schemas/io.k8s.api.core.v1.ResourceQuotaList
 type IoK8sAPICoreV1ResourceQuotaList struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
-	// Items is a list of ResourceQuota objects. More info: https://kubernetes.
-	// io/docs/concepts/policy/resource-quotas/.
+	// Items is a list of ResourceQuota objects. More info:
+	// https://kubernetes.io/docs/concepts/policy/resource-quotas/.
 	Items []IoK8sAPICoreV1ResourceQuota `json:"items"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
@@ -19481,12 +19493,12 @@ func (*IoK8sAPICoreV1ResourceQuotaList) listCoreV1ResourceQuotaForAllNamespacesR
 // ResourceQuotaSpec defines the desired hard limits to enforce for Quota.
 // Ref: #/components/schemas/io.k8s.api.core.v1.ResourceQuotaSpec
 type IoK8sAPICoreV1ResourceQuotaSpec struct {
-	// Hard is the set of desired hard limits for each named resource. More info: https://kubernetes.
-	// io/docs/concepts/policy/resource-quotas/.
+	// Hard is the set of desired hard limits for each named resource. More info:
+	// https://kubernetes.io/docs/concepts/policy/resource-quotas/.
 	Hard          OptIoK8sAPICoreV1ResourceQuotaSpecHard `json:"hard"`
 	ScopeSelector OptIoK8sAPICoreV1ScopeSelector         `json:"scopeSelector"`
-	// A collection of filters that must match each object tracked by a quota. If not specified, the
-	// quota matches all objects.
+	// A collection of filters that must match each object tracked by a quota. If not specified, the quota
+	// matches all objects.
 	Scopes []string `json:"scopes"`
 }
 
@@ -19520,8 +19532,8 @@ func (s *IoK8sAPICoreV1ResourceQuotaSpec) SetScopes(val []string) {
 	s.Scopes = val
 }
 
-// Hard is the set of desired hard limits for each named resource. More info: https://kubernetes.
-// io/docs/concepts/policy/resource-quotas/.
+// Hard is the set of desired hard limits for each named resource. More info:
+// https://kubernetes.io/docs/concepts/policy/resource-quotas/.
 type IoK8sAPICoreV1ResourceQuotaSpecHard map[string]IoK8sApimachineryPkgAPIResourceQuantity
 
 func (s *IoK8sAPICoreV1ResourceQuotaSpecHard) init() IoK8sAPICoreV1ResourceQuotaSpecHard {
@@ -19536,8 +19548,8 @@ func (s *IoK8sAPICoreV1ResourceQuotaSpecHard) init() IoK8sAPICoreV1ResourceQuota
 // ResourceQuotaStatus defines the enforced hard limits and observed use.
 // Ref: #/components/schemas/io.k8s.api.core.v1.ResourceQuotaStatus
 type IoK8sAPICoreV1ResourceQuotaStatus struct {
-	// Hard is the set of enforced hard limits for each named resource. More info: https://kubernetes.
-	// io/docs/concepts/policy/resource-quotas/.
+	// Hard is the set of enforced hard limits for each named resource. More info:
+	// https://kubernetes.io/docs/concepts/policy/resource-quotas/.
 	Hard OptIoK8sAPICoreV1ResourceQuotaStatusHard `json:"hard"`
 	// Used is the current observed total usage of the resource in the namespace.
 	Used OptIoK8sAPICoreV1ResourceQuotaStatusUsed `json:"used"`
@@ -19563,8 +19575,8 @@ func (s *IoK8sAPICoreV1ResourceQuotaStatus) SetUsed(val OptIoK8sAPICoreV1Resourc
 	s.Used = val
 }
 
-// Hard is the set of enforced hard limits for each named resource. More info: https://kubernetes.
-// io/docs/concepts/policy/resource-quotas/.
+// Hard is the set of enforced hard limits for each named resource. More info:
+// https://kubernetes.io/docs/concepts/policy/resource-quotas/.
 type IoK8sAPICoreV1ResourceQuotaStatusHard map[string]IoK8sApimachineryPkgAPIResourceQuantity
 
 func (s *IoK8sAPICoreV1ResourceQuotaStatusHard) init() IoK8sAPICoreV1ResourceQuotaStatusHard {
@@ -19591,13 +19603,13 @@ func (s *IoK8sAPICoreV1ResourceQuotaStatusUsed) init() IoK8sAPICoreV1ResourceQuo
 // ResourceRequirements describes the compute resource requirements.
 // Ref: #/components/schemas/io.k8s.api.core.v1.ResourceRequirements
 type IoK8sAPICoreV1ResourceRequirements struct {
-	// Limits describes the maximum amount of compute resources allowed. More info: https://kubernetes.
-	// io/docs/concepts/configuration/manage-resources-containers/.
+	// Limits describes the maximum amount of compute resources allowed. More info:
+	// https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/.
 	Limits OptIoK8sAPICoreV1ResourceRequirementsLimits `json:"limits"`
 	// Requests describes the minimum amount of compute resources required. If Requests is omitted for a
 	// container, it defaults to Limits if that is explicitly specified, otherwise to an
-	// implementation-defined value. More info: https://kubernetes.
-	// io/docs/concepts/configuration/manage-resources-containers/.
+	// implementation-defined value. More info:
+	// https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/.
 	Requests OptIoK8sAPICoreV1ResourceRequirementsRequests `json:"requests"`
 }
 
@@ -19621,8 +19633,8 @@ func (s *IoK8sAPICoreV1ResourceRequirements) SetRequests(val OptIoK8sAPICoreV1Re
 	s.Requests = val
 }
 
-// Limits describes the maximum amount of compute resources allowed. More info: https://kubernetes.
-// io/docs/concepts/configuration/manage-resources-containers/.
+// Limits describes the maximum amount of compute resources allowed. More info:
+// https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/.
 type IoK8sAPICoreV1ResourceRequirementsLimits map[string]IoK8sApimachineryPkgAPIResourceQuantity
 
 func (s *IoK8sAPICoreV1ResourceRequirementsLimits) init() IoK8sAPICoreV1ResourceRequirementsLimits {
@@ -19636,8 +19648,8 @@ func (s *IoK8sAPICoreV1ResourceRequirementsLimits) init() IoK8sAPICoreV1Resource
 
 // Requests describes the minimum amount of compute resources required. If Requests is omitted for a
 // container, it defaults to Limits if that is explicitly specified, otherwise to an
-// implementation-defined value. More info: https://kubernetes.
-// io/docs/concepts/configuration/manage-resources-containers/.
+// implementation-defined value. More info:
+// https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/.
 type IoK8sAPICoreV1ResourceRequirementsRequests map[string]IoK8sApimachineryPkgAPIResourceQuantity
 
 func (s *IoK8sAPICoreV1ResourceRequirementsRequests) init() IoK8sAPICoreV1ResourceRequirementsRequests {
@@ -19717,8 +19729,8 @@ type IoK8sAPICoreV1ScaleIOPersistentVolumeSource struct {
 	SecretRef IoK8sAPICoreV1SecretReference `json:"secretRef"`
 	// Flag to enable/disable SSL communication with Gateway, default false.
 	SslEnabled OptBool `json:"sslEnabled"`
-	// Indicates whether the storage for a volume should be ThickProvisioned or ThinProvisioned. Default
-	// is ThinProvisioned.
+	// Indicates whether the storage for a volume should be ThickProvisioned or ThinProvisioned. Default is
+	// ThinProvisioned.
 	StorageMode OptString `json:"storageMode"`
 	// The ScaleIO Storage Pool associated with the protection domain.
 	StoragePool OptString `json:"storagePool"`
@@ -19844,8 +19856,8 @@ type IoK8sAPICoreV1ScaleIOVolumeSource struct {
 	SecretRef IoK8sAPICoreV1LocalObjectReference `json:"secretRef"`
 	// Flag to enable/disable SSL communication with Gateway, default false.
 	SslEnabled OptBool `json:"sslEnabled"`
-	// Indicates whether the storage for a volume should be ThickProvisioned or ThinProvisioned. Default
-	// is ThinProvisioned.
+	// Indicates whether the storage for a volume should be ThickProvisioned or ThinProvisioned. Default is
+	// ThinProvisioned.
 	StorageMode OptString `json:"storageMode"`
 	// The ScaleIO Storage Pool associated with the protection domain.
 	StoragePool OptString `json:"storagePool"`
@@ -20023,11 +20035,12 @@ func (s *IoK8sAPICoreV1ScopedResourceSelectorRequirement) SetValues(val []string
 // set.
 // Ref: #/components/schemas/io.k8s.api.core.v1.SeccompProfile
 type IoK8sAPICoreV1SeccompProfile struct {
-	// LocalhostProfile indicates a profile defined in a file on the node should be used. The profile
-	// must be preconfigured on the node to work. Must be a descending path, relative to the kubelet's
+	// LocalhostProfile indicates a profile defined in a file on the node should be used. The profile must
+	// be preconfigured on the node to work. Must be a descending path, relative to the kubelet's
 	// configured seccomp profile location. Must only be set if type is "Localhost".
 	LocalhostProfile OptString `json:"localhostProfile"`
 	// Type indicates which kind of seccomp profile will be applied. Valid options are:
+	//
 	// Localhost - a profile defined in a file on the node should be used. RuntimeDefault - the container
 	// runtime default profile should be used. Unconfined - no profile should be applied.
 	Type string `json:"type"`
@@ -20053,13 +20066,13 @@ func (s *IoK8sAPICoreV1SeccompProfile) SetType(val string) {
 	s.Type = val
 }
 
-// Secret holds secret data of a certain type. The total bytes of the values in the Data field must
-// be less than MaxSecretSize bytes.
+// Secret holds secret data of a certain type. The total bytes of the values in the Data field must be
+// less than MaxSecretSize bytes.
 // Ref: #/components/schemas/io.k8s.api.core.v1.Secret
 type IoK8sAPICoreV1Secret struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
 	// Data contains the secret data. Each key must consist of alphanumeric characters, '-', '_' or '.'.
 	// The serialized form of the secret data is a base64 encoded string, representing the arbitrary
@@ -20069,8 +20082,8 @@ type IoK8sAPICoreV1Secret struct {
 	// metadata can be modified). If not set to true, the field can be modified at any time. Defaulted to
 	// nil.
 	Immutable OptBool `json:"immutable"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                   `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
@@ -20169,12 +20182,13 @@ func (s *IoK8sAPICoreV1SecretData) init() IoK8sAPICoreV1SecretData {
 }
 
 // SecretEnvSource selects a Secret to populate the environment variables with.
+//
 // The contents of the target Secret's Data field will represent the key-value pairs as environment
 // variables.
 // Ref: #/components/schemas/io.k8s.api.core.v1.SecretEnvSource
 type IoK8sAPICoreV1SecretEnvSource struct {
-	// Name of the referent. More info: https://kubernetes.
-	// io/docs/concepts/overview/working-with-objects/names/#names.
+	// Name of the referent. More info:
+	// https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names.
 	Name OptString `json:"name"`
 	// Specify whether the Secret must be defined.
 	Optional OptBool `json:"optional"`
@@ -20203,10 +20217,10 @@ func (s *IoK8sAPICoreV1SecretEnvSource) SetOptional(val OptBool) {
 // SecretKeySelector selects a key of a Secret.
 // Ref: #/components/schemas/io.k8s.api.core.v1.SecretKeySelector
 type IoK8sAPICoreV1SecretKeySelector struct {
-	// The key of the secret to select from.  Must be a valid secret key.
+	// The key of the secret to select from. Must be a valid secret key.
 	Key string `json:"key"`
-	// Name of the referent. More info: https://kubernetes.
-	// io/docs/concepts/overview/working-with-objects/names/#names.
+	// Name of the referent. More info:
+	// https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names.
 	Name OptString `json:"name"`
 	// Specify whether the Secret or its key must be defined.
 	Optional OptBool `json:"optional"`
@@ -20245,15 +20259,15 @@ func (s *IoK8sAPICoreV1SecretKeySelector) SetOptional(val OptBool) {
 // SecretList is a list of Secret.
 // Ref: #/components/schemas/io.k8s.api.core.v1.SecretList
 type IoK8sAPICoreV1SecretList struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
-	// Items is a list of secret objects. More info: https://kubernetes.
-	// io/docs/concepts/configuration/secret.
+	// Items is a list of secret objects. More info:
+	// https://kubernetes.io/docs/concepts/configuration/secret.
 	Items []IoK8sAPICoreV1Secret `json:"items"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
@@ -20303,6 +20317,7 @@ func (*IoK8sAPICoreV1SecretList) listCoreV1NamespacedSecretRes()       {}
 func (*IoK8sAPICoreV1SecretList) listCoreV1SecretForAllNamespacesRes() {}
 
 // Adapts a secret into a projected volume.
+//
 // The contents of the target Secret's Data field will be presented in a projected volume as files
 // using the keys in the Data field as the file names. Note that this is identical to a secret volume
 // source without the default mode.
@@ -20310,12 +20325,12 @@ func (*IoK8sAPICoreV1SecretList) listCoreV1SecretForAllNamespacesRes() {}
 type IoK8sAPICoreV1SecretProjection struct {
 	// If unspecified, each key-value pair in the Data field of the referenced Secret will be projected
 	// into the volume as a file whose name is the key and content is the value. If specified, the listed
-	// keys will be projected into the specified paths, and unlisted keys will not be present. If a key
-	// is specified which is not present in the Secret, the volume setup will error unless it is marked
+	// keys will be projected into the specified paths, and unlisted keys will not be present. If a key is
+	// specified which is not present in the Secret, the volume setup will error unless it is marked
 	// optional. Paths must be relative and may not contain the '..' path or start with '..'.
 	Items []IoK8sAPICoreV1KeyToPath `json:"items"`
-	// Name of the referent. More info: https://kubernetes.
-	// io/docs/concepts/overview/working-with-objects/names/#names.
+	// Name of the referent. More info:
+	// https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names.
 	Name OptString `json:"name"`
 	// Specify whether the Secret or its key must be defined.
 	Optional OptBool `json:"optional"`
@@ -20396,27 +20411,28 @@ func (s *IoK8sAPICoreV1SecretStringData) init() IoK8sAPICoreV1SecretStringData {
 }
 
 // Adapts a Secret into a volume.
-// The contents of the target Secret's Data field will be presented in a volume as files using the
-// keys in the Data field as the file names. Secret volumes support ownership management and SELinux
+//
+// The contents of the target Secret's Data field will be presented in a volume as files using the keys
+// in the Data field as the file names. Secret volumes support ownership management and SELinux
 // relabeling.
 // Ref: #/components/schemas/io.k8s.api.core.v1.SecretVolumeSource
 type IoK8sAPICoreV1SecretVolumeSource struct {
 	// Optional: mode bits used to set permissions on created files by default. Must be an octal value
 	// between 0000 and 0777 or a decimal value between 0 and 511. YAML accepts both octal and decimal
 	// values, JSON requires decimal values for mode bits. Defaults to 0644. Directories within the path
-	// are not affected by this setting. This might be in conflict with other options that affect the
-	// file mode, like fsGroup, and the result can be other mode bits set.
+	// are not affected by this setting. This might be in conflict with other options that affect the file
+	// mode, like fsGroup, and the result can be other mode bits set.
 	DefaultMode OptInt32 `json:"defaultMode"`
 	// If unspecified, each key-value pair in the Data field of the referenced Secret will be projected
 	// into the volume as a file whose name is the key and content is the value. If specified, the listed
-	// keys will be projected into the specified paths, and unlisted keys will not be present. If a key
-	// is specified which is not present in the Secret, the volume setup will error unless it is marked
+	// keys will be projected into the specified paths, and unlisted keys will not be present. If a key is
+	// specified which is not present in the Secret, the volume setup will error unless it is marked
 	// optional. Paths must be relative and may not contain the '..' path or start with '..'.
 	Items []IoK8sAPICoreV1KeyToPath `json:"items"`
 	// Specify whether the Secret or its keys must be defined.
 	Optional OptBool `json:"optional"`
-	// Name of the secret in the pod's namespace to use. More info: https://kubernetes.
-	// io/docs/concepts/storage/volumes#secret.
+	// Name of the secret in the pod's namespace to use. More info:
+	// https://kubernetes.io/docs/concepts/storage/volumes#secret.
 	SecretName OptString `json:"secretName"`
 }
 
@@ -20461,38 +20477,38 @@ func (s *IoK8sAPICoreV1SecretVolumeSource) SetSecretName(val OptString) {
 }
 
 // SecurityContext holds security configuration that will be applied to a container. Some fields are
-// present in both SecurityContext and PodSecurityContext.  When both are set, the values in
+// present in both SecurityContext and PodSecurityContext. When both are set, the values in
 // SecurityContext take precedence.
 // Ref: #/components/schemas/io.k8s.api.core.v1.SecurityContext
 type IoK8sAPICoreV1SecurityContext struct {
 	// AllowPrivilegeEscalation controls whether a process can gain more privileges than its parent
 	// process. This bool directly controls if the no_new_privs flag will be set on the container process.
-	//  AllowPrivilegeEscalation is true always when the container is: 1) run as Privileged 2) has
+	// AllowPrivilegeEscalation is true always when the container is: 1) run as Privileged 2) has
 	// CAP_SYS_ADMIN.
 	AllowPrivilegeEscalation OptBool                       `json:"allowPrivilegeEscalation"`
 	Capabilities             OptIoK8sAPICoreV1Capabilities `json:"capabilities"`
 	// Run container in privileged mode. Processes in privileged containers are essentially equivalent to
 	// root on the host. Defaults to false.
 	Privileged OptBool `json:"privileged"`
-	// ProcMount denotes the type of proc mount to use for the containers. The default is
-	// DefaultProcMount which uses the container runtime defaults for readonly paths and masked paths.
-	// This requires the ProcMountType feature flag to be enabled.
+	// ProcMount denotes the type of proc mount to use for the containers. The default is DefaultProcMount
+	// which uses the container runtime defaults for readonly paths and masked paths. This requires the
+	// ProcMountType feature flag to be enabled.
 	ProcMount OptString `json:"procMount"`
 	// Whether this container has a read-only root filesystem. Default is false.
 	ReadOnlyRootFilesystem OptBool `json:"readOnlyRootFilesystem"`
 	// The GID to run the entrypoint of the container process. Uses runtime default if unset. May also be
-	// set in PodSecurityContext.  If set in both SecurityContext and PodSecurityContext, the value
+	// set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value
 	// specified in SecurityContext takes precedence.
 	RunAsGroup OptInt64 `json:"runAsGroup"`
 	// Indicates that the container must run as a non-root user. If true, the Kubelet will validate the
 	// image at runtime to ensure that it does not run as UID 0 (root) and fail to start the container if
 	// it does. If unset or false, no such validation will be performed. May also be set in
-	// PodSecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in
+	// PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in
 	// SecurityContext takes precedence.
 	RunAsNonRoot OptBool `json:"runAsNonRoot"`
-	// The UID to run the entrypoint of the container process. Defaults to user specified in image
-	// metadata if unspecified. May also be set in PodSecurityContext.  If set in both SecurityContext
-	// and PodSecurityContext, the value specified in SecurityContext takes precedence.
+	// The UID to run the entrypoint of the container process. Defaults to user specified in image metadata
+	// if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and
+	// PodSecurityContext, the value specified in SecurityContext takes precedence.
 	RunAsUser      OptInt64                                       `json:"runAsUser"`
 	SeLinuxOptions OptIoK8sAPICoreV1SELinuxOptions                `json:"seLinuxOptions"`
 	SeccompProfile OptIoK8sAPICoreV1SeccompProfile                `json:"seccompProfile"`
@@ -20614,12 +20630,12 @@ func (s *IoK8sAPICoreV1SecurityContext) SetWindowsOptions(val OptIoK8sAPICoreV1W
 // answer requests sent through the proxy.
 // Ref: #/components/schemas/io.k8s.api.core.v1.Service
 type IoK8sAPICoreV1Service struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                   `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
@@ -20680,13 +20696,13 @@ func (s *IoK8sAPICoreV1Service) SetStatus(val OptIoK8sAPICoreV1ServiceStatus) {
 func (*IoK8sAPICoreV1Service) readCoreV1NamespacedServiceRes()       {}
 func (*IoK8sAPICoreV1Service) readCoreV1NamespacedServiceStatusRes() {}
 
-// ServiceAccount binds together: * a name, understood by users, and perhaps by peripheral systems,
-// for an identity * a principal that can be authenticated and authorized * a set of secrets.
+// ServiceAccount binds together: * a name, understood by users, and perhaps by peripheral systems, for
+// an identity * a principal that can be authenticated and authorized * a set of secrets.
 // Ref: #/components/schemas/io.k8s.api.core.v1.ServiceAccount
 type IoK8sAPICoreV1ServiceAccount struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
 	// AutomountServiceAccountToken indicates whether pods running as this service account should have an
 	// API token automatically mounted. Can be overridden at the pod level.
@@ -20694,11 +20710,11 @@ type IoK8sAPICoreV1ServiceAccount struct {
 	// ImagePullSecrets is a list of references to secrets in the same namespace to use for pulling any
 	// images in pods that reference this ServiceAccount. ImagePullSecrets are distinct from Secrets
 	// because Secrets can be mounted in the pod, but ImagePullSecrets are only accessed by the kubelet.
-	// More info: https://kubernetes.
-	// io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod.
+	// More info:
+	// https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod.
 	ImagePullSecrets []IoK8sAPICoreV1LocalObjectReference `json:"imagePullSecrets"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                   `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
@@ -20772,15 +20788,15 @@ func (*IoK8sAPICoreV1ServiceAccount) readCoreV1NamespacedServiceAccountRes() {}
 // ServiceAccountList is a list of ServiceAccount objects.
 // Ref: #/components/schemas/io.k8s.api.core.v1.ServiceAccountList
 type IoK8sAPICoreV1ServiceAccountList struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
-	// List of ServiceAccounts. More info: https://kubernetes.
-	// io/docs/tasks/configure-pod-container/configure-service-account/.
+	// List of ServiceAccounts. More info:
+	// https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/.
 	Items []IoK8sAPICoreV1ServiceAccount `json:"items"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
@@ -20830,19 +20846,18 @@ func (*IoK8sAPICoreV1ServiceAccountList) listCoreV1NamespacedServiceAccountRes()
 func (*IoK8sAPICoreV1ServiceAccountList) listCoreV1ServiceAccountForAllNamespacesRes() {}
 
 // ServiceAccountTokenProjection represents a projected service account token volume. This projection
-// can be used to insert a service account token into the pods runtime filesystem for use against
-// APIs (Kubernetes API Server or otherwise).
+// can be used to insert a service account token into the pods runtime filesystem for use against APIs
+// (Kubernetes API Server or otherwise).
 // Ref: #/components/schemas/io.k8s.api.core.v1.ServiceAccountTokenProjection
 type IoK8sAPICoreV1ServiceAccountTokenProjection struct {
-	// Audience is the intended audience of the token. A recipient of a token must identify itself with
-	// an identifier specified in the audience of the token, and otherwise should reject the token. The
+	// Audience is the intended audience of the token. A recipient of a token must identify itself with an
+	// identifier specified in the audience of the token, and otherwise should reject the token. The
 	// audience defaults to the identifier of the apiserver.
 	Audience OptString `json:"audience"`
 	// ExpirationSeconds is the requested duration of validity of the service account token. As the token
 	// approaches expiration, the kubelet volume plugin will proactively rotate the service account token.
-	//  The kubelet will start trying to rotate the token if the token is older than 80 percent of its
-	// time to live or if the token is older than 24 hours.Defaults to 1 hour and must be at least 10
-	// minutes.
+	// The kubelet will start trying to rotate the token if the token is older than 80 percent of its time
+	// to live or if the token is older than 24 hours.Defaults to 1 hour and must be at least 10 minutes.
 	ExpirationSeconds OptInt64 `json:"expirationSeconds"`
 	// Path is the path relative to the mount point of the file to project the token into.
 	Path string `json:"path"`
@@ -20881,14 +20896,14 @@ func (s *IoK8sAPICoreV1ServiceAccountTokenProjection) SetPath(val string) {
 // ServiceList holds a list of services.
 // Ref: #/components/schemas/io.k8s.api.core.v1.ServiceList
 type IoK8sAPICoreV1ServiceList struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
 	// List of services.
 	Items []IoK8sAPICoreV1Service `json:"items"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
@@ -20941,9 +20956,9 @@ func (*IoK8sAPICoreV1ServiceList) listCoreV1ServiceForAllNamespacesRes() {}
 // Ref: #/components/schemas/io.k8s.api.core.v1.ServicePort
 type IoK8sAPICoreV1ServicePort struct {
 	// The application protocol for this port. This field follows standard Kubernetes label syntax.
-	// Un-prefixed names are reserved for IANA standard service names (as per RFC-6335 and http://www.
-	// iana.org/assignments/service-names). Non-standard protocols should use prefixed names such as
-	// mycompany.com/my-custom-protocol.
+	// Un-prefixed names are reserved for IANA standard service names (as per RFC-6335 and
+	// http://www.iana.org/assignments/service-names). Non-standard protocols should use prefixed names
+	// such as mycompany.com/my-custom-protocol.
 	AppProtocol OptString `json:"appProtocol"`
 	// The name of this port within the service. This must be a DNS_LABEL. All ports within a ServiceSpec
 	// must have unique names. When considering the endpoints for a Service, this must match the 'name'
@@ -20951,11 +20966,11 @@ type IoK8sAPICoreV1ServicePort struct {
 	Name OptString `json:"name"`
 	// The port on each node on which this service is exposed when type is NodePort or LoadBalancer.
 	// Usually assigned by the system. If a value is specified, in-range, and not in use it will be used,
-	// otherwise the operation will fail.  If not specified, a port will be allocated if this Service
-	// requires one.  If this field is specified when creating a Service which does not need it, creation
-	// will fail. This field will be wiped when updating a Service to no longer need it (e.g. changing
-	// type from NodePort to ClusterIP). More info: https://kubernetes.
-	// io/docs/concepts/services-networking/service/#type-nodeport.
+	// otherwise the operation will fail. If not specified, a port will be allocated if this Service
+	// requires one. If this field is specified when creating a Service which does not need it, creation
+	// will fail. This field will be wiped when updating a Service to no longer need it (e.g. changing type
+	// from NodePort to ClusterIP). More info:
+	// https://kubernetes.io/docs/concepts/services-networking/service/#type-nodeport.
 	NodePort OptInt32 `json:"nodePort"`
 	// The port that will be exposed by this service.
 	Port int32 `json:"port"`
@@ -21027,99 +21042,99 @@ func (s *IoK8sAPICoreV1ServicePort) SetTargetPort(val OptIoK8sApimachineryPkgUti
 // ServiceSpec describes the attributes that a user creates on a service.
 // Ref: #/components/schemas/io.k8s.api.core.v1.ServiceSpec
 type IoK8sAPICoreV1ServiceSpec struct {
-	// AllocateLoadBalancerNodePorts defines if NodePorts will be automatically allocated for services
-	// with type LoadBalancer.  Default is "true". It may be set to "false" if the cluster load-balancer
-	// does not rely on NodePorts.  If the caller requests specific NodePorts (by specifying a value),
-	// those requests will be respected, regardless of this field. This field may only be set for
-	// services with type LoadBalancer and will be cleared if the type is changed to any other type. This
-	// field is beta-level and is only honored by servers that enable the ServiceLBNodePortControl
-	// feature.
+	// AllocateLoadBalancerNodePorts defines if NodePorts will be automatically allocated for services with
+	// type LoadBalancer. Default is "true". It may be set to "false" if the cluster load-balancer does not
+	// rely on NodePorts. If the caller requests specific NodePorts (by specifying a value), those requests
+	// will be respected, regardless of this field. This field may only be set for services with type
+	// LoadBalancer and will be cleared if the type is changed to any other type. This field is beta-level
+	// and is only honored by servers that enable the ServiceLBNodePortControl feature.
 	AllocateLoadBalancerNodePorts OptBool `json:"allocateLoadBalancerNodePorts"`
 	// ClusterIP is the IP address of the service and is usually assigned randomly. If an address is
 	// specified manually, is in-range (as per system configuration), and is not in use, it will be
-	// allocated to the service; otherwise creation of the service will fail. This field may not be
-	// changed through updates unless the type field is also being changed to ExternalName (which
-	// requires this field to be blank) or the type field is being changed from ExternalName (in which
-	// case this field may optionally be specified, as describe above).  Valid values are "None", empty
-	// string (""), or a valid IP address. Setting this to "None" makes a "headless service" (no virtual
-	// IP), which is useful when direct endpoint connections are preferred and proxying is not required.
-	// Only applies to types ClusterIP, NodePort, and LoadBalancer. If this field is specified when
-	// creating a Service of type ExternalName, creation will fail. This field will be wiped when
-	// updating a Service to type ExternalName. More info: https://kubernetes.
-	// io/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies.
+	// allocated to the service; otherwise creation of the service will fail. This field may not be changed
+	// through updates unless the type field is also being changed to ExternalName (which requires this
+	// field to be blank) or the type field is being changed from ExternalName (in which case this field
+	// may optionally be specified, as describe above). Valid values are "None", empty string (""), or a
+	// valid IP address. Setting this to "None" makes a "headless service" (no virtual IP), which is useful
+	// when direct endpoint connections are preferred and proxying is not required. Only applies to types
+	// ClusterIP, NodePort, and LoadBalancer. If this field is specified when creating a Service of type
+	// ExternalName, creation will fail. This field will be wiped when updating a Service to type
+	// ExternalName. More info:
+	// https://kubernetes.io/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies.
 	ClusterIP OptString `json:"clusterIP"`
-	// ClusterIPs is a list of IP addresses assigned to this service, and are usually assigned randomly.
-	// If an address is specified manually, is in-range (as per system configuration), and is not in use,
-	// it will be allocated to the service; otherwise creation of the service will fail. This field may
-	// not be changed through updates unless the type field is also being changed to ExternalName (which
-	// requires this field to be empty) or the type field is being changed from ExternalName (in which
-	// case this field may optionally be specified, as describe above).  Valid values are "None", empty
-	// string (""), or a valid IP address.  Setting this to "None" makes a "headless service" (no virtual
-	// IP), which is useful when direct endpoint connections are preferred and proxying is not required.
-	// Only applies to types ClusterIP, NodePort, and LoadBalancer. If this field is specified when
-	// creating a Service of type ExternalName, creation will fail. This field will be wiped when
-	// updating a Service to type ExternalName.  If this field is not specified, it will be initialized
-	// from the clusterIP field.  If this field is specified, clients must ensure that clusterIPs[0] and
-	// clusterIP have the same value.
+	// ClusterIPs is a list of IP addresses assigned to this service, and are usually assigned randomly. If
+	// an address is specified manually, is in-range (as per system configuration), and is not in use, it
+	// will be allocated to the service; otherwise creation of the service will fail. This field may not be
+	// changed through updates unless the type field is also being changed to ExternalName (which requires
+	// this field to be empty) or the type field is being changed from ExternalName (in which case this
+	// field may optionally be specified, as describe above). Valid values are "None", empty string (""),
+	// or a valid IP address. Setting this to "None" makes a "headless service" (no virtual IP), which is
+	// useful when direct endpoint connections are preferred and proxying is not required. Only applies to
+	// types ClusterIP, NodePort, and LoadBalancer. If this field is specified when creating a Service of
+	// type ExternalName, creation will fail. This field will be wiped when updating a Service to type
+	// ExternalName. If this field is not specified, it will be initialized from the clusterIP field. If
+	// this field is specified, clients must ensure that clusterIPs[0] and clusterIP have the same value.
+	//
 	// This field may hold a maximum of two entries (dual-stack IPs, in either order). These IPs must
-	// correspond to the values of the ipFamilies field. Both clusterIPs and ipFamilies are governed by
-	// the ipFamilyPolicy field. More info: https://kubernetes.
-	// io/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies.
+	// correspond to the values of the ipFamilies field. Both clusterIPs and ipFamilies are governed by the
+	// ipFamilyPolicy field. More info:
+	// https://kubernetes.io/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies.
 	ClusterIPs []string `json:"clusterIPs"`
 	// ExternalIPs is a list of IP addresses for which nodes in the cluster will also accept traffic for
-	// this service.  These IPs are not managed by Kubernetes.  The user is responsible for ensuring that
-	// traffic arrives at a node with this IP.  A common example is external load-balancers that are not
+	// this service. These IPs are not managed by Kubernetes. The user is responsible for ensuring that
+	// traffic arrives at a node with this IP. A common example is external load-balancers that are not
 	// part of the Kubernetes system.
 	ExternalIPs []string `json:"externalIPs"`
 	// ExternalName is the external reference that discovery mechanisms will return as an alias for this
-	// service (e.g. a DNS CNAME record). No proxying will be involved.  Must be a lowercase RFC-1123
+	// service (e.g. a DNS CNAME record). No proxying will be involved. Must be a lowercase RFC-1123
 	// hostname (https://tools.ietf.org/html/rfc1123) and requires `type` to be "ExternalName".
 	ExternalName OptString `json:"externalName"`
 	// ExternalTrafficPolicy denotes if this Service desires to route external traffic to node-local or
 	// cluster-wide endpoints. "Local" preserves the client source IP and avoids a second hop for
 	// LoadBalancer and Nodeport type services, but risks potentially imbalanced traffic spreading.
-	// "Cluster" obscures the client source IP and may cause a second hop to another node, but should
-	// have good overall load-spreading.
+	// "Cluster" obscures the client source IP and may cause a second hop to another node, but should have
+	// good overall load-spreading.
 	ExternalTrafficPolicy OptString `json:"externalTrafficPolicy"`
-	// HealthCheckNodePort specifies the healthcheck nodePort for the service. This only applies when
-	// type is set to LoadBalancer and externalTrafficPolicy is set to Local. If a value is specified, is
-	// in-range, and is not in use, it will be used.  If not specified, a value will be automatically
-	// allocated.  External systems (e.g. load-balancers) can use this port to determine if a given node
-	// holds endpoints for this service or not.  If this field is specified when creating a Service which
-	// does not need it, creation will fail. This field will be wiped when updating a Service to no
-	// longer need it (e.g. changing type).
+	// HealthCheckNodePort specifies the healthcheck nodePort for the service. This only applies when type
+	// is set to LoadBalancer and externalTrafficPolicy is set to Local. If a value is specified, is
+	// in-range, and is not in use, it will be used. If not specified, a value will be automatically
+	// allocated. External systems (e.g. load-balancers) can use this port to determine if a given node
+	// holds endpoints for this service or not. If this field is specified when creating a Service which
+	// does not need it, creation will fail. This field will be wiped when updating a Service to no longer
+	// need it (e.g. changing type).
 	HealthCheckNodePort OptInt32 `json:"healthCheckNodePort"`
-	// InternalTrafficPolicy specifies if the cluster internal traffic should be routed to all endpoints
-	// or node-local endpoints only. "Cluster" routes internal traffic to a Service to all endpoints.
-	// "Local" routes traffic to node-local endpoints only, traffic is dropped if no node-local endpoints
-	// are ready. The default value is "Cluster".
+	// InternalTrafficPolicy specifies if the cluster internal traffic should be routed to all endpoints or
+	// node-local endpoints only. "Cluster" routes internal traffic to a Service to all endpoints. "Local"
+	// routes traffic to node-local endpoints only, traffic is dropped if no node-local endpoints are
+	// ready. The default value is "Cluster".
 	InternalTrafficPolicy OptString `json:"internalTrafficPolicy"`
 	// IPFamilies is a list of IP families (e.g. IPv4, IPv6) assigned to this service. This field is
-	// usually assigned automatically based on cluster configuration and the ipFamilyPolicy field. If
-	// this field is specified manually, the requested family is available in the cluster, and
-	// ipFamilyPolicy allows it, it will be used; otherwise creation of the service will fail. This field
-	// is conditionally mutable: it allows for adding or removing a secondary IP family, but it does not
-	// allow changing the primary IP family of the Service. Valid values are "IPv4" and "IPv6".  This
-	// field only applies to Services of types ClusterIP, NodePort, and LoadBalancer, and does apply to
-	// "headless" services. This field will be wiped when updating a Service to type ExternalName.
-	// This field may hold a maximum of two entries (dual-stack families, in either order).  These
-	// families must correspond to the values of the clusterIPs field, if specified. Both clusterIPs and
-	// ipFamilies are governed by the ipFamilyPolicy field.
+	// usually assigned automatically based on cluster configuration and the ipFamilyPolicy field. If this
+	// field is specified manually, the requested family is available in the cluster, and ipFamilyPolicy
+	// allows it, it will be used; otherwise creation of the service will fail. This field is conditionally
+	// mutable: it allows for adding or removing a secondary IP family, but it does not allow changing the
+	// primary IP family of the Service. Valid values are "IPv4" and "IPv6". This field only applies to
+	// Services of types ClusterIP, NodePort, and LoadBalancer, and does apply to "headless" services. This
+	// field will be wiped when updating a Service to type ExternalName.
+	//
+	// This field may hold a maximum of two entries (dual-stack families, in either order). These families
+	// must correspond to the values of the clusterIPs field, if specified. Both clusterIPs and ipFamilies
+	// are governed by the ipFamilyPolicy field.
 	IpFamilies []string `json:"ipFamilies"`
-	// IPFamilyPolicy represents the dual-stack-ness requested or required by this Service. If there is
-	// no value provided, then this field will be set to SingleStack. Services can be "SingleStack" (a
-	// single IP family), "PreferDualStack" (two IP families on dual-stack configured clusters or a
-	// single IP family on single-stack clusters), or "RequireDualStack" (two IP families on dual-stack
-	// configured clusters, otherwise fail). The ipFamilies and clusterIPs fields depend on the value of
-	// this field. This field will be wiped when updating a service to type ExternalName.
+	// IPFamilyPolicy represents the dual-stack-ness requested or required by this Service. If there is no
+	// value provided, then this field will be set to SingleStack. Services can be "SingleStack" (a single
+	// IP family), "PreferDualStack" (two IP families on dual-stack configured clusters or a single IP
+	// family on single-stack clusters), or "RequireDualStack" (two IP families on dual-stack configured
+	// clusters, otherwise fail). The ipFamilies and clusterIPs fields depend on the value of this field.
+	// This field will be wiped when updating a service to type ExternalName.
 	IpFamilyPolicy OptString `json:"ipFamilyPolicy"`
 	// LoadBalancerClass is the class of the load balancer implementation this Service belongs to. If
 	// specified, the value of this field must be a label-style identifier, with an optional prefix, e.g.
 	// "internal-vip" or "example.com/internal-vip". Unprefixed names are reserved for end-users. This
-	// field can only be set when the Service type is 'LoadBalancer'. If not set, the default load
-	// balancer implementation is used, today this is typically done through the cloud provider
-	// integration, but should apply for any default implementation. If set, it is assumed that a load
-	// balancer implementation is watching for Services with a matching class. Any default load balancer
+	// field can only be set when the Service type is 'LoadBalancer'. If not set, the default load balancer
+	// implementation is used, today this is typically done through the cloud provider integration, but
+	// should apply for any default implementation. If set, it is assumed that a load balancer
+	// implementation is watching for Services with a matching class. Any default load balancer
 	// implementation (e.g. cloud providers) should ignore Services that set this field. This field can
 	// only be set when creating or updating a Service to type 'LoadBalancer'. Once set, it can not be
 	// changed. This field will be wiped when a service is updated to a non 'LoadBalancer' type.
@@ -21131,42 +21146,41 @@ type IoK8sAPICoreV1ServiceSpec struct {
 	LoadBalancerIP OptString `json:"loadBalancerIP"`
 	// If specified and supported by the platform, this will restrict traffic through the cloud-provider
 	// load-balancer will be restricted to the specified client IPs. This field will be ignored if the
-	// cloud-provider does not support the feature." More info: https://kubernetes.
-	// io/docs/tasks/access-application-cluster/create-external-load-balancer/.
+	// cloud-provider does not support the feature." More info:
+	// https://kubernetes.io/docs/tasks/access-application-cluster/create-external-load-balancer/.
 	LoadBalancerSourceRanges []string `json:"loadBalancerSourceRanges"`
-	// The list of ports that are exposed by this service. More info: https://kubernetes.
-	// io/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies.
+	// The list of ports that are exposed by this service. More info:
+	// https://kubernetes.io/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies.
 	Ports []IoK8sAPICoreV1ServicePort `json:"ports"`
-	// PublishNotReadyAddresses indicates that any agent which deals with endpoints for this Service
-	// should disregard any indications of ready/not-ready. The primary use case for setting this field
-	// is for a StatefulSet's Headless Service to propagate SRV DNS records for its Pods for the purpose
-	// of peer discovery. The Kubernetes controllers that generate Endpoints and EndpointSlice resources
-	// for Services interpret this to mean that all endpoints are considered "ready" even if the Pods
+	// PublishNotReadyAddresses indicates that any agent which deals with endpoints for this Service should
+	// disregard any indications of ready/not-ready. The primary use case for setting this field is for a
+	// StatefulSet's Headless Service to propagate SRV DNS records for its Pods for the purpose of peer
+	// discovery. The Kubernetes controllers that generate Endpoints and EndpointSlice resources for
+	// Services interpret this to mean that all endpoints are considered "ready" even if the Pods
 	// themselves are not. Agents which consume only Kubernetes generated endpoints through the Endpoints
 	// or EndpointSlice resources can safely assume this behavior.
 	PublishNotReadyAddresses OptBool `json:"publishNotReadyAddresses"`
 	// Route service traffic to pods with label keys and values matching this selector. If empty or not
-	// present, the service is assumed to have an external process managing its endpoints, which
-	// Kubernetes will not modify. Only applies to types ClusterIP, NodePort, and LoadBalancer. Ignored
-	// if type is ExternalName. More info: https://kubernetes.
-	// io/docs/concepts/services-networking/service/.
+	// present, the service is assumed to have an external process managing its endpoints, which Kubernetes
+	// will not modify. Only applies to types ClusterIP, NodePort, and LoadBalancer. Ignored if type is
+	// ExternalName. More info: https://kubernetes.io/docs/concepts/services-networking/service/.
 	Selector OptIoK8sAPICoreV1ServiceSpecSelector `json:"selector"`
 	// Supports "ClientIP" and "None". Used to maintain session affinity. Enable client IP based session
-	// affinity. Must be ClientIP or None. Defaults to None. More info: https://kubernetes.
-	// io/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies.
+	// affinity. Must be ClientIP or None. Defaults to None. More info:
+	// https://kubernetes.io/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies.
 	SessionAffinity       OptString                              `json:"sessionAffinity"`
 	SessionAffinityConfig OptIoK8sAPICoreV1SessionAffinityConfig `json:"sessionAffinityConfig"`
 	// Type determines how the Service is exposed. Defaults to ClusterIP. Valid options are ExternalName,
 	// ClusterIP, NodePort, and LoadBalancer. "ClusterIP" allocates a cluster-internal IP address for
 	// load-balancing to endpoints. Endpoints are determined by the selector or if that is not specified,
 	// by manual construction of an Endpoints object or EndpointSlice objects. If clusterIP is "None", no
-	// virtual IP is allocated and the endpoints are published as a set of endpoints rather than a
-	// virtual IP. "NodePort" builds on ClusterIP and allocates a port on every node which routes to the
-	// same endpoints as the clusterIP. "LoadBalancer" builds on NodePort and creates an external
-	// load-balancer (if supported in the current cloud) which routes to the same endpoints as the
-	// clusterIP. "ExternalName" aliases this service to the specified externalName. Several other fields
-	// do not apply to ExternalName services. More info: https://kubernetes.
-	// io/docs/concepts/services-networking/service/#publishing-services-service-types.
+	// virtual IP is allocated and the endpoints are published as a set of endpoints rather than a virtual
+	// IP. "NodePort" builds on ClusterIP and allocates a port on every node which routes to the same
+	// endpoints as the clusterIP. "LoadBalancer" builds on NodePort and creates an external load-balancer
+	// (if supported in the current cloud) which routes to the same endpoints as the clusterIP.
+	// "ExternalName" aliases this service to the specified externalName. Several other fields do not apply
+	// to ExternalName services. More info:
+	// https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types.
 	Type OptString `json:"type"`
 }
 
@@ -21361,10 +21375,9 @@ func (s *IoK8sAPICoreV1ServiceSpec) SetType(val OptString) {
 }
 
 // Route service traffic to pods with label keys and values matching this selector. If empty or not
-// present, the service is assumed to have an external process managing its endpoints, which
-// Kubernetes will not modify. Only applies to types ClusterIP, NodePort, and LoadBalancer. Ignored
-// if type is ExternalName. More info: https://kubernetes.
-// io/docs/concepts/services-networking/service/.
+// present, the service is assumed to have an external process managing its endpoints, which Kubernetes
+// will not modify. Only applies to types ClusterIP, NodePort, and LoadBalancer. Ignored if type is
+// ExternalName. More info: https://kubernetes.io/docs/concepts/services-networking/service/.
 type IoK8sAPICoreV1ServiceSpecSelector map[string]string
 
 func (s *IoK8sAPICoreV1ServiceSpecSelector) init() IoK8sAPICoreV1ServiceSpecSelector {
@@ -21429,14 +21442,14 @@ type IoK8sAPICoreV1StorageOSPersistentVolumeSource struct {
 	// Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.
 	ReadOnly  OptBool                          `json:"readOnly"`
 	SecretRef OptIoK8sAPICoreV1ObjectReference `json:"secretRef"`
-	// VolumeName is the human-readable name of the StorageOS volume.  Volume names are only unique
-	// within a namespace.
+	// VolumeName is the human-readable name of the StorageOS volume. Volume names are only unique within a
+	// namespace.
 	VolumeName OptString `json:"volumeName"`
-	// VolumeNamespace specifies the scope of the volume within StorageOS.  If no namespace is specified
-	// then the Pod's namespace will be used.  This allows the Kubernetes name scoping to be mirrored
-	// within StorageOS for tighter integration. Set VolumeName to any name to override the default
-	// behaviour. Set to "default" if you are not using namespaces within StorageOS. Namespaces that do
-	// not pre-exist within StorageOS will be created.
+	// VolumeNamespace specifies the scope of the volume within StorageOS. If no namespace is specified
+	// then the Pod's namespace will be used. This allows the Kubernetes name scoping to be mirrored within
+	// StorageOS for tighter integration. Set VolumeName to any name to override the default behaviour. Set
+	// to "default" if you are not using namespaces within StorageOS. Namespaces that do not pre-exist
+	// within StorageOS will be created.
 	VolumeNamespace OptString `json:"volumeNamespace"`
 }
 
@@ -21499,14 +21512,14 @@ type IoK8sAPICoreV1StorageOSVolumeSource struct {
 	// Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.
 	ReadOnly  OptBool                               `json:"readOnly"`
 	SecretRef OptIoK8sAPICoreV1LocalObjectReference `json:"secretRef"`
-	// VolumeName is the human-readable name of the StorageOS volume.  Volume names are only unique
-	// within a namespace.
+	// VolumeName is the human-readable name of the StorageOS volume. Volume names are only unique within a
+	// namespace.
 	VolumeName OptString `json:"volumeName"`
-	// VolumeNamespace specifies the scope of the volume within StorageOS.  If no namespace is specified
-	// then the Pod's namespace will be used.  This allows the Kubernetes name scoping to be mirrored
-	// within StorageOS for tighter integration. Set VolumeName to any name to override the default
-	// behaviour. Set to "default" if you are not using namespaces within StorageOS. Namespaces that do
-	// not pre-exist within StorageOS will be created.
+	// VolumeNamespace specifies the scope of the volume within StorageOS. If no namespace is specified
+	// then the Pod's namespace will be used. This allows the Kubernetes name scoping to be mirrored within
+	// StorageOS for tighter integration. Set VolumeName to any name to override the default behaviour. Set
+	// to "default" if you are not using namespaces within StorageOS. Namespaces that do not pre-exist
+	// within StorageOS will be created.
 	VolumeNamespace OptString `json:"volumeNamespace"`
 }
 
@@ -21670,19 +21683,19 @@ func (s *IoK8sAPICoreV1Taint) SetValue(val OptString) {
 	s.Value = val
 }
 
-// The pod this Toleration is attached to tolerates any taint that matches the triple <key,value,
-// effect> using the matching operator <operator>.
+// The pod this Toleration is attached to tolerates any taint that matches the triple
+// <key,value,effect> using the matching operator .
 // Ref: #/components/schemas/io.k8s.api.core.v1.Toleration
 type IoK8sAPICoreV1Toleration struct {
 	// Effect indicates the taint effect to match. Empty means match all taint effects. When specified,
 	// allowed values are NoSchedule, PreferNoSchedule and NoExecute.
 	Effect OptString `json:"effect"`
-	// Key is the taint key that the toleration applies to. Empty means match all taint keys. If the key
-	// is empty, operator must be Exists; this combination means to match all values and all keys.
+	// Key is the taint key that the toleration applies to. Empty means match all taint keys. If the key is
+	// empty, operator must be Exists; this combination means to match all values and all keys.
 	Key OptString `json:"key"`
 	// Operator represents a key's relationship to the value. Valid operators are Exists and Equal.
-	// Defaults to Equal. Exists is equivalent to wildcard for value, so that a pod can tolerate all
-	// taints of a particular category.
+	// Defaults to Equal. Exists is equivalent to wildcard for value, so that a pod can tolerate all taints
+	// of a particular category.
 	Operator OptString `json:"operator"`
 	// TolerationSeconds represents the period of time the toleration (which must be of effect NoExecute,
 	// otherwise this field is ignored) tolerates the taint. By default, it is not set, which means
@@ -21744,8 +21757,8 @@ func (s *IoK8sAPICoreV1Toleration) SetValue(val OptString) {
 	s.Value = val
 }
 
-// A topology selector requirement is a selector that matches given label. This is an alpha feature
-// and may change in the future.
+// A topology selector requirement is a selector that matches given label. This is an alpha feature and
+// may change in the future.
 // Ref: #/components/schemas/io.k8s.api.core.v1.TopologySelectorLabelRequirement
 type IoK8sAPICoreV1TopologySelectorLabelRequirement struct {
 	// The label key that the selector applies to.
@@ -21801,29 +21814,27 @@ type IoK8sAPICoreV1TopologySpreadConstraint struct {
 	// MaxSkew describes the degree to which pods may be unevenly distributed. When
 	// `whenUnsatisfiable=DoNotSchedule`, it is the maximum permitted difference between the number of
 	// matching pods in the target topology and the global minimum. For example, in a 3-zone cluster,
-	// MaxSkew is set to 1, and pods with the same labelSelector spread as 1/1/0: | zone1 | zone2 | zone3
-	// | |   P   |   P   |       | - if MaxSkew is 1, incoming pod can only be scheduled to zone3 to
-	// become 1/1/1; scheduling it onto zone1(zone2) would make the ActualSkew(2-0) on zone1(zone2)
-	// violate MaxSkew(1). - if MaxSkew is 2, incoming pod can be scheduled onto any zone. When
-	// `whenUnsatisfiable=ScheduleAnyway`, it is used to give higher precedence to topologies that
-	// satisfy it. It's a required field. Default value is 1 and 0 is not allowed.
+	// MaxSkew is set to 1, and pods with the same labelSelector spread as 1/1/0: | zone1 | zone2 | zone3 |
+	// | P | P | | - if MaxSkew is 1, incoming pod can only be scheduled to zone3 to become 1/1/1;
+	// scheduling it onto zone1(zone2) would make the ActualSkew(2-0) on zone1(zone2) violate MaxSkew(1). -
+	// if MaxSkew is 2, incoming pod can be scheduled onto any zone. When
+	// `whenUnsatisfiable=ScheduleAnyway`, it is used to give higher precedence to topologies that satisfy
+	// it. It's a required field. Default value is 1 and 0 is not allowed.
 	MaxSkew int32 `json:"maxSkew"`
 	// TopologyKey is the key of node labels. Nodes that have a label with this key and identical values
 	// are considered to be in the same topology. We consider each <key, value> as a "bucket", and try to
 	// put balanced number of pods into each bucket. It's a required field.
 	TopologyKey string `json:"topologyKey"`
 	// WhenUnsatisfiable indicates how to deal with a pod if it doesn't satisfy the spread constraint. -
-	// DoNotSchedule (default) tells the scheduler not to schedule it. - ScheduleAnyway tells the
-	// scheduler to schedule the pod in any location,
-	// but giving higher precedence to topologies that would help reduce the
-	// skew.
-	// A constraint is considered "Unsatisfiable" for an incoming pod if and only if every possible node
-	// assignment for that pod would violate "MaxSkew" on some topology. For example, in a 3-zone cluster,
-	//  MaxSkew is set to 1, and pods with the same labelSelector spread as 3/1/1: | zone1 | zone2 |
-	// zone3 | | P P P |   P   |   P   | If WhenUnsatisfiable is set to DoNotSchedule, incoming pod can
+	// DoNotSchedule (default) tells the scheduler not to schedule it. - ScheduleAnyway tells the scheduler
+	// to schedule the pod in any location, but giving higher precedence to topologies that would help
+	// reduce the skew. A constraint is considered "Unsatisfiable" for an incoming pod if and only if every
+	// possible node assignment for that pod would violate "MaxSkew" on some topology. For example, in a
+	// 3-zone cluster, MaxSkew is set to 1, and pods with the same labelSelector spread as 3/1/1: | zone1 |
+	// zone2 | zone3 | | P P P | P | P | If WhenUnsatisfiable is set to DoNotSchedule, incoming pod can
 	// only be scheduled to zone2(zone3) to become 3/2/1(3/1/2) as ActualSkew(2-1) on zone2(zone3)
-	// satisfies MaxSkew(1). In other words, the cluster can still be imbalanced, but scheduler won't
-	// make it *more* imbalanced. It's a required field.
+	// satisfies MaxSkew(1). In other words, the cluster can still be imbalanced, but scheduler won't make
+	// it more imbalanced. It's a required field.
 	WhenUnsatisfiable string `json:"whenUnsatisfiable"`
 }
 
@@ -21867,13 +21878,12 @@ func (s *IoK8sAPICoreV1TopologySpreadConstraint) SetWhenUnsatisfiable(val string
 	s.WhenUnsatisfiable = val
 }
 
-// TypedLocalObjectReference contains enough information to let you locate the typed referenced
-// object inside the same namespace.
+// TypedLocalObjectReference contains enough information to let you locate the typed referenced object
+// inside the same namespace.
 // Ref: #/components/schemas/io.k8s.api.core.v1.TypedLocalObjectReference
 type IoK8sAPICoreV1TypedLocalObjectReference struct {
-	// APIGroup is the group for the resource being referenced. If APIGroup is not specified, the
-	// specified Kind must be in the core API group. For any other third-party types, APIGroup is
-	// required.
+	// APIGroup is the group for the resource being referenced. If APIGroup is not specified, the specified
+	// Kind must be in the core API group. For any other third-party types, APIGroup is required.
 	ApiGroup OptString `json:"apiGroup"`
 	// Kind is the type of resource being referenced.
 	Kind string `json:"kind"`
@@ -21932,8 +21942,8 @@ type IoK8sAPICoreV1Volume struct {
 	Glusterfs            OptIoK8sAPICoreV1GlusterfsVolumeSource            `json:"glusterfs"`
 	HostPath             OptIoK8sAPICoreV1HostPathVolumeSource             `json:"hostPath"`
 	Iscsi                OptIoK8sAPICoreV1ISCSIVolumeSource                `json:"iscsi"`
-	// Volume's name. Must be a DNS_LABEL and unique within the pod. More info: https://kubernetes.
-	// io/docs/concepts/overview/working-with-objects/names/#names.
+	// Volume's name. Must be a DNS_LABEL and unique within the pod. More info:
+	// https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names.
 	Name                  string                                             `json:"name"`
 	Nfs                   OptIoK8sAPICoreV1NFSVolumeSource                   `json:"nfs"`
 	PersistentVolumeClaim OptIoK8sAPICoreV1PersistentVolumeClaimVolumeSource `json:"persistentVolumeClaim"`
@@ -22280,7 +22290,7 @@ func (s *IoK8sAPICoreV1VolumeDevice) SetName(val string) {
 // VolumeMount describes a mounting of a Volume within a container.
 // Ref: #/components/schemas/io.k8s.api.core.v1.VolumeMount
 type IoK8sAPICoreV1VolumeMount struct {
-	// Path within the container at which the volume should be mounted.  Must not contain ':'.
+	// Path within the container at which the volume should be mounted. Must not contain ':'.
 	MountPath string `json:"mountPath"`
 	// MountPropagation determines how mounts are propagated from the host to container and the other way
 	// around. When not set, MountPropagationNone is used. This field is beta in 1.10.
@@ -22289,8 +22299,8 @@ type IoK8sAPICoreV1VolumeMount struct {
 	Name string `json:"name"`
 	// Mounted read-only if true, read-write otherwise (false or unspecified). Defaults to false.
 	ReadOnly OptBool `json:"readOnly"`
-	// Path within the volume from which the container's volume should be mounted. Defaults to ""
-	// (volume's root).
+	// Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's
+	// root).
 	SubPath OptString `json:"subPath"`
 	// Expanded path within the volume from which the container's volume should be mounted. Behaves
 	// similarly to SubPath but environment variable references $(VAR_NAME) are expanded using the
@@ -22478,8 +22488,8 @@ func (s *IoK8sAPICoreV1VsphereVirtualDiskVolumeSource) SetVolumePath(val string)
 	s.VolumePath = val
 }
 
-// The weights of all of the matched WeightedPodAffinityTerm fields are added per-node to find the
-// most preferred node(s).
+// The weights of all of the matched WeightedPodAffinityTerm fields are added per-node to find the most
+// preferred node(s).
 // Ref: #/components/schemas/io.k8s.api.core.v1.WeightedPodAffinityTerm
 type IoK8sAPICoreV1WeightedPodAffinityTerm struct {
 	PodAffinityTerm IoK8sAPICoreV1PodAffinityTerm `json:"podAffinityTerm"`
@@ -22510,18 +22520,18 @@ func (s *IoK8sAPICoreV1WeightedPodAffinityTerm) SetWeight(val int32) {
 // WindowsSecurityContextOptions contain Windows-specific options and credentials.
 // Ref: #/components/schemas/io.k8s.api.core.v1.WindowsSecurityContextOptions
 type IoK8sAPICoreV1WindowsSecurityContextOptions struct {
-	// GMSACredentialSpec is where the GMSA admission webhook (https://github.
-	// com/kubernetes-sigs/windows-gmsa) inlines the contents of the GMSA credential spec named by the
-	// GMSACredentialSpecName field.
+	// GMSACredentialSpec is where the GMSA admission webhook
+	// (https://github.com/kubernetes-sigs/windows-gmsa) inlines the contents of the GMSA credential spec
+	// named by the GMSACredentialSpecName field.
 	GmsaCredentialSpec OptString `json:"gmsaCredentialSpec"`
 	// GMSACredentialSpecName is the name of the GMSA credential spec to use.
 	GmsaCredentialSpecName OptString `json:"gmsaCredentialSpecName"`
 	// HostProcess determines if a container should be run as a 'Host Process' container. This field is
 	// alpha-level and will only be honored by components that enable the WindowsHostProcessContainers
-	// feature flag. Setting this field without the feature flag will result in errors when validating
-	// the Pod. All of a Pod's containers must have the same effective HostProcess value (it is not
-	// allowed to have a mix of HostProcess containers and non-HostProcess containers).  In addition, if
-	// HostProcess is true then HostNetwork must also be set to true.
+	// feature flag. Setting this field without the feature flag will result in errors when validating the
+	// Pod. All of a Pod's containers must have the same effective HostProcess value (it is not allowed to
+	// have a mix of HostProcess containers and non-HostProcess containers). In addition, if HostProcess is
+	// true then HostNetwork must also be set to true.
 	HostProcess OptBool `json:"hostProcess"`
 	// The UserName in Windows to run the entrypoint of the container process. Defaults to the user
 	// specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both
@@ -22573,22 +22583,20 @@ func (s *IoK8sAPICoreV1WindowsSecurityContextOptions) SetRunAsUserName(val OptSt
 // Ref: #/components/schemas/io.k8s.api.discovery.v1.Endpoint
 type IoK8sAPIDiscoveryV1Endpoint struct {
 	// Addresses of this endpoint. The contents of this field are interpreted according to the
-	// corresponding EndpointSlice addressType field. Consumers must handle different types of addresses
-	// in the context of their own capabilities. This must contain at least one address but no more than
-	// 100.
+	// corresponding EndpointSlice addressType field. Consumers must handle different types of addresses in
+	// the context of their own capabilities. This must contain at least one address but no more than 100.
 	Addresses  []string                                 `json:"addresses"`
 	Conditions OptIoK8sAPIDiscoveryV1EndpointConditions `json:"conditions"`
 	// DeprecatedTopology contains topology information part of the v1beta1 API. This field is deprecated,
-	//  and will be removed when the v1beta1 API is removed (no sooner than kubernetes v1.24).  While
-	// this field can hold values, it is not writable through the v1 API, and any attempts to write to it
-	// will be silently ignored. Topology information can be found in the zone and nodeName fields
-	// instead.
+	// and will be removed when the v1beta1 API is removed (no sooner than kubernetes v1.24). While this
+	// field can hold values, it is not writable through the v1 API, and any attempts to write to it will
+	// be silently ignored. Topology information can be found in the zone and nodeName fields instead.
 	DeprecatedTopology OptIoK8sAPIDiscoveryV1EndpointDeprecatedTopology `json:"deprecatedTopology"`
 	Hints              OptIoK8sAPIDiscoveryV1EndpointHints              `json:"hints"`
-	// Hostname of this endpoint. This field may be used by consumers of endpoints to distinguish
-	// endpoints from each other (e.g. in DNS names). Multiple endpoints which use the same hostname
-	// should be considered fungible (e.g. multiple A values in DNS). Must be lowercase and pass DNS
-	// Label (RFC 1123) validation.
+	// Hostname of this endpoint. This field may be used by consumers of endpoints to distinguish endpoints
+	// from each other (e.g. in DNS names). Multiple endpoints which use the same hostname should be
+	// considered fungible (e.g. multiple A values in DNS). Must be lowercase and pass DNS Label (RFC 1123)
+	// validation.
 	Hostname OptString `json:"hostname"`
 	// NodeName represents the name of the Node hosting this endpoint. This can be used to determine
 	// endpoints local to a Node. This field can be enabled with the EndpointSliceNodeName feature gate.
@@ -22728,12 +22736,9 @@ func (s *IoK8sAPIDiscoveryV1EndpointConditions) SetTerminating(val OptBool) {
 }
 
 // DeprecatedTopology contains topology information part of the v1beta1 API. This field is deprecated,
-//
-//	and will be removed when the v1beta1 API is removed (no sooner than kubernetes v1.24).  While
-//
-// this field can hold values, it is not writable through the v1 API, and any attempts to write to it
-// will be silently ignored. Topology information can be found in the zone and nodeName fields
-// instead.
+// and will be removed when the v1beta1 API is removed (no sooner than kubernetes v1.24). While this
+// field can hold values, it is not writable through the v1 API, and any attempts to write to it will
+// be silently ignored. Topology information can be found in the zone and nodeName fields instead.
 type IoK8sAPIDiscoveryV1EndpointDeprecatedTopology map[string]string
 
 func (s *IoK8sAPIDiscoveryV1EndpointDeprecatedTopology) init() IoK8sAPIDiscoveryV1EndpointDeprecatedTopology {
@@ -22748,8 +22753,7 @@ func (s *IoK8sAPIDiscoveryV1EndpointDeprecatedTopology) init() IoK8sAPIDiscovery
 // EndpointHints provides hints describing how an endpoint should be consumed.
 // Ref: #/components/schemas/io.k8s.api.discovery.v1.EndpointHints
 type IoK8sAPIDiscoveryV1EndpointHints struct {
-	// ForZones indicates the zone(s) this endpoint should be consumed by to enable topology aware
-	// routing.
+	// ForZones indicates the zone(s) this endpoint should be consumed by to enable topology aware routing.
 	ForZones []IoK8sAPIDiscoveryV1ForZone `json:"forZones"`
 }
 
@@ -22767,15 +22771,15 @@ func (s *IoK8sAPIDiscoveryV1EndpointHints) SetForZones(val []IoK8sAPIDiscoveryV1
 // Ref: #/components/schemas/io.k8s.api.discovery.v1.EndpointPort
 type IoK8sAPIDiscoveryV1EndpointPort struct {
 	// The application protocol for this port. This field follows standard Kubernetes label syntax.
-	// Un-prefixed names are reserved for IANA standard service names (as per RFC-6335 and http://www.
-	// iana.org/assignments/service-names). Non-standard protocols should use prefixed names such as
-	// mycompany.com/my-custom-protocol.
+	// Un-prefixed names are reserved for IANA standard service names (as per RFC-6335 and
+	// http://www.iana.org/assignments/service-names). Non-standard protocols should use prefixed names
+	// such as mycompany.com/my-custom-protocol.
 	AppProtocol OptString `json:"appProtocol"`
 	// The name of this port. All ports in an EndpointSlice must have a unique name. If the EndpointSlice
-	// is dervied from a Kubernetes service, this corresponds to the Service.ports[].name. Name must
-	// either be an empty string or pass DNS_LABEL validation: * must be no more than 63 characters long.
-	// * must consist of lower case alphanumeric characters or '-'. * must start and end with an
-	// alphanumeric character. Default is empty string.
+	// is dervied from a Kubernetes service, this corresponds to the Service.ports[].name. Name must either
+	// be an empty string or pass DNS_LABEL validation: * must be no more than 63 characters long. * must
+	// consist of lower case alphanumeric characters or '-'. * must start and end with an alphanumeric
+	// character. Default is empty string.
 	Name OptString `json:"name"`
 	// The port number of the endpoint. If this is not specified, ports are not restricted and must be
 	// interpreted in the context of the specific consumer.
@@ -22825,31 +22829,31 @@ func (s *IoK8sAPIDiscoveryV1EndpointPort) SetProtocol(val OptString) {
 }
 
 // EndpointSlice represents a subset of the endpoints that implement a service. For a given service
-// there may be multiple EndpointSlice objects, selected by labels, which must be joined to produce
-// the full set of endpoints.
+// there may be multiple EndpointSlice objects, selected by labels, which must be joined to produce the
+// full set of endpoints.
 // Ref: #/components/schemas/io.k8s.api.discovery.v1.EndpointSlice
 type IoK8sAPIDiscoveryV1EndpointSlice struct {
-	// AddressType specifies the type of address carried by this EndpointSlice. All addresses in this
-	// slice must be the same type. This field is immutable after creation. The following address types
-	// are currently supported: * IPv4: Represents an IPv4 Address. * IPv6: Represents an IPv6 Address. *
-	// FQDN: Represents a Fully Qualified Domain Name.
+	// AddressType specifies the type of address carried by this EndpointSlice. All addresses in this slice
+	// must be the same type. This field is immutable after creation. The following address types are
+	// currently supported: * IPv4: Represents an IPv4 Address. * IPv6: Represents an IPv6 Address. * FQDN:
+	// Represents a Fully Qualified Domain Name.
 	AddressType string `json:"addressType"`
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
 	// Endpoints is a list of unique endpoints in this slice. Each slice may include a maximum of 1000
 	// endpoints.
 	Endpoints []IoK8sAPIDiscoveryV1Endpoint `json:"endpoints"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                   `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
 	// Ports specifies the list of network ports exposed by each endpoint in this slice. Each port must
 	// have a unique name. When ports is empty, it indicates that there are no defined ports. When a port
-	// is defined with a nil port value, it indicates "all ports". Each slice may include a maximum of
-	// 100 ports.
+	// is defined with a nil port value, it indicates "all ports". Each slice may include a maximum of 100
+	// ports.
 	Ports []IoK8sAPIDiscoveryV1EndpointPort `json:"ports"`
 }
 
@@ -22918,14 +22922,14 @@ func (*IoK8sAPIDiscoveryV1EndpointSlice) readDiscoveryV1NamespacedEndpointSliceR
 // EndpointSliceList represents a list of endpoint slices.
 // Ref: #/components/schemas/io.k8s.api.discovery.v1.EndpointSliceList
 type IoK8sAPIDiscoveryV1EndpointSliceList struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
 	// List of endpoint slices.
 	Items []IoK8sAPIDiscoveryV1EndpointSlice `json:"items"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
@@ -22995,33 +22999,32 @@ func (s *IoK8sAPIDiscoveryV1ForZone) SetName(val string) {
 // Ref: #/components/schemas/io.k8s.api.discovery.v1beta1.Endpoint
 type IoK8sAPIDiscoveryV1beta1Endpoint struct {
 	// Addresses of this endpoint. The contents of this field are interpreted according to the
-	// corresponding EndpointSlice addressType field. Consumers must handle different types of addresses
-	// in the context of their own capabilities. This must contain at least one address but no more than
-	// 100.
+	// corresponding EndpointSlice addressType field. Consumers must handle different types of addresses in
+	// the context of their own capabilities. This must contain at least one address but no more than 100.
 	Addresses  []string                                      `json:"addresses"`
 	Conditions OptIoK8sAPIDiscoveryV1beta1EndpointConditions `json:"conditions"`
 	Hints      OptIoK8sAPIDiscoveryV1beta1EndpointHints      `json:"hints"`
-	// Hostname of this endpoint. This field may be used by consumers of endpoints to distinguish
-	// endpoints from each other (e.g. in DNS names). Multiple endpoints which use the same hostname
-	// should be considered fungible (e.g. multiple A values in DNS). Must be lowercase and pass DNS
-	// Label (RFC 1123) validation.
+	// Hostname of this endpoint. This field may be used by consumers of endpoints to distinguish endpoints
+	// from each other (e.g. in DNS names). Multiple endpoints which use the same hostname should be
+	// considered fungible (e.g. multiple A values in DNS). Must be lowercase and pass DNS Label (RFC 1123)
+	// validation.
 	Hostname OptString `json:"hostname"`
 	// NodeName represents the name of the Node hosting this endpoint. This can be used to determine
 	// endpoints local to a Node. This field can be enabled with the EndpointSliceNodeName feature gate.
 	NodeName  OptString                        `json:"nodeName"`
 	TargetRef OptIoK8sAPICoreV1ObjectReference `json:"targetRef"`
-	// Topology contains arbitrary topology information associated with the endpoint. These key/value
-	// pairs must conform with the label format. https://kubernetes.
-	// io/docs/concepts/overview/working-with-objects/labels Topology may include a maximum of 16
-	// key/value pairs. This includes, but is not limited to the following well known keys: * kubernetes.
-	// io/hostname: the value indicates the hostname of the node
-	// where the endpoint is located. This should match the corresponding
-	// node label.
-	// * topology.kubernetes.io/zone: the value indicates the zone where the
-	// endpoint is located. This should match the corresponding node label.
-	// * topology.kubernetes.io/region: the value indicates the region where the
-	// endpoint is located. This should match the corresponding node label.
-	// This field is deprecated and will be removed in future api versions.
+	// Topology contains arbitrary topology information associated with the endpoint. These key/value pairs
+	// must conform with the label format.
+	// https://kubernetes.io/docs/concepts/overview/working-with-objects/labels Topology may include a
+	// maximum of 16 key/value pairs. This includes, but is not limited to the following well known keys: *
+	// kubernetes.io/hostname: the value indicates the hostname of the node where the endpoint is located.
+	// This should match the corresponding node label.
+	//
+	//  - topology.kubernetes.io/zone: the value indicates the zone where the endpoint is located. This
+	//    should match the corresponding node label.
+	//  - topology.kubernetes.io/region: the value indicates the region where the endpoint is located. This
+	//    should match the corresponding node label. This field is deprecated and will be removed in future
+	//    api versions.
 	Topology OptIoK8sAPIDiscoveryV1beta1EndpointTopology `json:"topology"`
 }
 
@@ -23147,8 +23150,8 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointConditions) SetTerminating(val OptBool)
 // EndpointHints provides hints describing how an endpoint should be consumed.
 // Ref: #/components/schemas/io.k8s.api.discovery.v1beta1.EndpointHints
 type IoK8sAPIDiscoveryV1beta1EndpointHints struct {
-	// ForZones indicates the zone(s) this endpoint should be consumed by to enable topology aware
-	// routing. May contain a maximum of 8 entries.
+	// ForZones indicates the zone(s) this endpoint should be consumed by to enable topology aware routing.
+	// May contain a maximum of 8 entries.
 	ForZones []IoK8sAPIDiscoveryV1beta1ForZone `json:"forZones"`
 }
 
@@ -23166,15 +23169,15 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointHints) SetForZones(val []IoK8sAPIDiscov
 // Ref: #/components/schemas/io.k8s.api.discovery.v1beta1.EndpointPort
 type IoK8sAPIDiscoveryV1beta1EndpointPort struct {
 	// The application protocol for this port. This field follows standard Kubernetes label syntax.
-	// Un-prefixed names are reserved for IANA standard service names (as per RFC-6335 and http://www.
-	// iana.org/assignments/service-names). Non-standard protocols should use prefixed names such as
-	// mycompany.com/my-custom-protocol.
+	// Un-prefixed names are reserved for IANA standard service names (as per RFC-6335 and
+	// http://www.iana.org/assignments/service-names). Non-standard protocols should use prefixed names
+	// such as mycompany.com/my-custom-protocol.
 	AppProtocol OptString `json:"appProtocol"`
 	// The name of this port. All ports in an EndpointSlice must have a unique name. If the EndpointSlice
-	// is dervied from a Kubernetes service, this corresponds to the Service.ports[].name. Name must
-	// either be an empty string or pass DNS_LABEL validation: * must be no more than 63 characters long.
-	// * must consist of lower case alphanumeric characters or '-'. * must start and end with an
-	// alphanumeric character. Default is empty string.
+	// is dervied from a Kubernetes service, this corresponds to the Service.ports[].name. Name must either
+	// be an empty string or pass DNS_LABEL validation: * must be no more than 63 characters long. * must
+	// consist of lower case alphanumeric characters or '-'. * must start and end with an alphanumeric
+	// character. Default is empty string.
 	Name OptString `json:"name"`
 	// The port number of the endpoint. If this is not specified, ports are not restricted and must be
 	// interpreted in the context of the specific consumer.
@@ -23224,31 +23227,31 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointPort) SetProtocol(val OptString) {
 }
 
 // EndpointSlice represents a subset of the endpoints that implement a service. For a given service
-// there may be multiple EndpointSlice objects, selected by labels, which must be joined to produce
-// the full set of endpoints.
+// there may be multiple EndpointSlice objects, selected by labels, which must be joined to produce the
+// full set of endpoints.
 // Ref: #/components/schemas/io.k8s.api.discovery.v1beta1.EndpointSlice
 type IoK8sAPIDiscoveryV1beta1EndpointSlice struct {
-	// AddressType specifies the type of address carried by this EndpointSlice. All addresses in this
-	// slice must be the same type. This field is immutable after creation. The following address types
-	// are currently supported: * IPv4: Represents an IPv4 Address. * IPv6: Represents an IPv6 Address. *
-	// FQDN: Represents a Fully Qualified Domain Name.
+	// AddressType specifies the type of address carried by this EndpointSlice. All addresses in this slice
+	// must be the same type. This field is immutable after creation. The following address types are
+	// currently supported: * IPv4: Represents an IPv4 Address. * IPv6: Represents an IPv6 Address. * FQDN:
+	// Represents a Fully Qualified Domain Name.
 	AddressType string `json:"addressType"`
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
 	// Endpoints is a list of unique endpoints in this slice. Each slice may include a maximum of 1000
 	// endpoints.
 	Endpoints []IoK8sAPIDiscoveryV1beta1Endpoint `json:"endpoints"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                   `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
 	// Ports specifies the list of network ports exposed by each endpoint in this slice. Each port must
 	// have a unique name. When ports is empty, it indicates that there are no defined ports. When a port
-	// is defined with a nil port value, it indicates "all ports". Each slice may include a maximum of
-	// 100 ports.
+	// is defined with a nil port value, it indicates "all ports". Each slice may include a maximum of 100
+	// ports.
 	Ports []IoK8sAPIDiscoveryV1beta1EndpointPort `json:"ports"`
 }
 
@@ -23317,14 +23320,14 @@ func (*IoK8sAPIDiscoveryV1beta1EndpointSlice) readDiscoveryV1beta1NamespacedEndp
 // EndpointSliceList represents a list of endpoint slices.
 // Ref: #/components/schemas/io.k8s.api.discovery.v1beta1.EndpointSliceList
 type IoK8sAPIDiscoveryV1beta1EndpointSliceList struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
 	// List of endpoint slices.
 	Items []IoK8sAPIDiscoveryV1beta1EndpointSlice `json:"items"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
@@ -23374,18 +23377,18 @@ func (*IoK8sAPIDiscoveryV1beta1EndpointSliceList) listDiscoveryV1beta1EndpointSl
 }
 func (*IoK8sAPIDiscoveryV1beta1EndpointSliceList) listDiscoveryV1beta1NamespacedEndpointSliceRes() {}
 
-// Topology contains arbitrary topology information associated with the endpoint. These key/value
-// pairs must conform with the label format. https://kubernetes.
-// io/docs/concepts/overview/working-with-objects/labels Topology may include a maximum of 16
-// key/value pairs. This includes, but is not limited to the following well known keys: * kubernetes.
-// io/hostname: the value indicates the hostname of the node
-// where the endpoint is located. This should match the corresponding
-// node label.
-// * topology.kubernetes.io/zone: the value indicates the zone where the
-// endpoint is located. This should match the corresponding node label.
-// * topology.kubernetes.io/region: the value indicates the region where the
-// endpoint is located. This should match the corresponding node label.
-// This field is deprecated and will be removed in future api versions.
+// Topology contains arbitrary topology information associated with the endpoint. These key/value pairs
+// must conform with the label format.
+// https://kubernetes.io/docs/concepts/overview/working-with-objects/labels Topology may include a
+// maximum of 16 key/value pairs. This includes, but is not limited to the following well known keys: *
+// kubernetes.io/hostname: the value indicates the hostname of the node where the endpoint is located.
+// This should match the corresponding node label.
+//
+//   - topology.kubernetes.io/zone: the value indicates the zone where the endpoint is located. This
+//     should match the corresponding node label.
+//   - topology.kubernetes.io/region: the value indicates the region where the endpoint is located. This
+//     should match the corresponding node label. This field is deprecated and will be removed in future
+//     api versions.
 type IoK8sAPIDiscoveryV1beta1EndpointTopology map[string]string
 
 func (s *IoK8sAPIDiscoveryV1beta1EndpointTopology) init() IoK8sAPIDiscoveryV1beta1EndpointTopology {
@@ -23417,16 +23420,16 @@ func (s *IoK8sAPIDiscoveryV1beta1ForZone) SetName(val string) {
 // Event is a report of an event somewhere in the cluster. It generally denotes some state change in
 // the system. Events have a limited retention time and triggers and messages may evolve with time.
 // Event consumers should not rely on the timing of an event with a given Reason reflecting a
-// consistent underlying trigger, or the continued existence of events with that Reason.  Events
-// should be treated as informative, best-effort, supplemental data.
+// consistent underlying trigger, or the continued existence of events with that Reason. Events should
+// be treated as informative, best-effort, supplemental data.
 // Ref: #/components/schemas/io.k8s.api.events.v1.Event
 type IoK8sAPIEventsV1Event struct {
 	// Action is what action was taken/failed regarding to the regarding object. It is machine-readable.
 	// This field cannot be empty for new Events and it can have at most 128 characters.
 	Action OptString `json:"action"`
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
 	// DeprecatedCount is the deprecated field assuring backward compatibility with core.v1 Event type.
 	DeprecatedCount          OptInt32                                `json:"deprecatedCount"`
@@ -23434,21 +23437,21 @@ type IoK8sAPIEventsV1Event struct {
 	DeprecatedLastTimestamp  OptIoK8sApimachineryPkgApisMetaV1Time   `json:"deprecatedLastTimestamp"`
 	DeprecatedSource         OptIoK8sAPICoreV1EventSource            `json:"deprecatedSource"`
 	EventTime                IoK8sApimachineryPkgApisMetaV1MicroTime `json:"eventTime"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                   `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
-	// Note is a human-readable description of the status of this operation. Maximal length of the note
-	// is 1kB, but libraries should be prepared to handle values up to 64kB.
+	// Note is a human-readable description of the status of this operation. Maximal length of the note is
+	// 1kB, but libraries should be prepared to handle values up to 64kB.
 	Note OptString `json:"note"`
-	// Reason is why the action was taken. It is human-readable. This field cannot be empty for new
-	// Events and it can have at most 128 characters.
+	// Reason is why the action was taken. It is human-readable. This field cannot be empty for new Events
+	// and it can have at most 128 characters.
 	Reason    OptString                        `json:"reason"`
 	Regarding OptIoK8sAPICoreV1ObjectReference `json:"regarding"`
 	Related   OptIoK8sAPICoreV1ObjectReference `json:"related"`
-	// ReportingController is the name of the controller that emitted this Event, e.g. `kubernetes.
-	// io/kubelet`. This field cannot be empty for new Events.
+	// ReportingController is the name of the controller that emitted this Event, e.g.
+	// `kubernetes.io/kubelet`. This field cannot be empty for new Events.
 	ReportingController OptString `json:"reportingController"`
 	// ReportingInstance is the ID of the controller instance, e.g. `kubelet-xyzf`. This field cannot be
 	// empty for new Events and it can have at most 128 characters.
@@ -23634,14 +23637,14 @@ func (*IoK8sAPIEventsV1Event) readEventsV1NamespacedEventRes() {}
 // EventList is a list of Event objects.
 // Ref: #/components/schemas/io.k8s.api.events.v1.EventList
 type IoK8sAPIEventsV1EventList struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
 	// Items is a list of schema objects.
 	Items []IoK8sAPIEventsV1Event `json:"items"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
@@ -23692,8 +23695,8 @@ func (*IoK8sAPIEventsV1EventList) listEventsV1NamespacedEventRes()       {}
 
 // EventSeries contain information on series of events, i.e. thing that was/is happening continuously
 // for some time. How often to update the EventSeries is up to the event reporters. The default event
-// reporter in "k8s.io/client-go/tools/events/event_broadcaster.go" shows how this struct is updated
-// on heartbeats and can guide customized reporter implementations.
+// reporter in "k8s.io/client-go/tools/events/event_broadcaster.go" shows how this struct is updated on
+// heartbeats and can guide customized reporter implementations.
 // Ref: #/components/schemas/io.k8s.api.events.v1.EventSeries
 type IoK8sAPIEventsV1EventSeries struct {
 	// Count is the number of occurrences in this series up to the last heartbeat time.
@@ -23724,16 +23727,16 @@ func (s *IoK8sAPIEventsV1EventSeries) SetLastObservedTime(val IoK8sApimachineryP
 // Event is a report of an event somewhere in the cluster. It generally denotes some state change in
 // the system. Events have a limited retention time and triggers and messages may evolve with time.
 // Event consumers should not rely on the timing of an event with a given Reason reflecting a
-// consistent underlying trigger, or the continued existence of events with that Reason.  Events
-// should be treated as informative, best-effort, supplemental data.
+// consistent underlying trigger, or the continued existence of events with that Reason. Events should
+// be treated as informative, best-effort, supplemental data.
 // Ref: #/components/schemas/io.k8s.api.events.v1beta1.Event
 type IoK8sAPIEventsV1beta1Event struct {
 	// Action is what action was taken/failed regarding to the regarding object. It is machine-readable.
 	// This field can have at most 128 characters.
 	Action OptString `json:"action"`
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
 	// DeprecatedCount is the deprecated field assuring backward compatibility with core.v1 Event type.
 	DeprecatedCount          OptInt32                                `json:"deprecatedCount"`
@@ -23741,21 +23744,21 @@ type IoK8sAPIEventsV1beta1Event struct {
 	DeprecatedLastTimestamp  OptIoK8sApimachineryPkgApisMetaV1Time   `json:"deprecatedLastTimestamp"`
 	DeprecatedSource         OptIoK8sAPICoreV1EventSource            `json:"deprecatedSource"`
 	EventTime                IoK8sApimachineryPkgApisMetaV1MicroTime `json:"eventTime"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                   `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
-	// Note is a human-readable description of the status of this operation. Maximal length of the note
-	// is 1kB, but libraries should be prepared to handle values up to 64kB.
+	// Note is a human-readable description of the status of this operation. Maximal length of the note is
+	// 1kB, but libraries should be prepared to handle values up to 64kB.
 	Note OptString `json:"note"`
 	// Reason is why the action was taken. It is human-readable. This field can have at most 128
 	// characters.
 	Reason    OptString                        `json:"reason"`
 	Regarding OptIoK8sAPICoreV1ObjectReference `json:"regarding"`
 	Related   OptIoK8sAPICoreV1ObjectReference `json:"related"`
-	// ReportingController is the name of the controller that emitted this Event, e.g. `kubernetes.
-	// io/kubelet`. This field cannot be empty for new Events.
+	// ReportingController is the name of the controller that emitted this Event, e.g.
+	// `kubernetes.io/kubelet`. This field cannot be empty for new Events.
 	ReportingController OptString `json:"reportingController"`
 	// ReportingInstance is the ID of the controller instance, e.g. `kubelet-xyzf`. This field cannot be
 	// empty for new Events and it can have at most 128 characters.
@@ -23941,14 +23944,14 @@ func (*IoK8sAPIEventsV1beta1Event) readEventsV1beta1NamespacedEventRes() {}
 // EventList is a list of Event objects.
 // Ref: #/components/schemas/io.k8s.api.events.v1beta1.EventList
 type IoK8sAPIEventsV1beta1EventList struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
 	// Items is a list of schema objects.
 	Items []IoK8sAPIEventsV1beta1Event `json:"items"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
@@ -24030,7 +24033,7 @@ func (s *IoK8sAPIEventsV1beta1EventSeries) SetLastObservedTime(val IoK8sApimachi
 // Ref: #/components/schemas/io.k8s.api.flowcontrol.v1beta1.FlowDistinguisherMethod
 type IoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod struct {
 	// `type` is the type of flow distinguisher method The supported types are "ByUser" and "ByNamespace".
-	//  Required.
+	// Required.
 	Type string `json:"type"`
 }
 
@@ -24049,12 +24052,12 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod) SetType(val string) 
 // FlowSchema and a "flow distinguisher".
 // Ref: #/components/schemas/io.k8s.api.flowcontrol.v1beta1.FlowSchema
 type IoK8sAPIFlowcontrolV1beta1FlowSchema struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                     `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta   `json:"metadata"`
@@ -24182,14 +24185,14 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaCondition) SetType(val OptString) {
 // FlowSchemaList is a list of FlowSchema objects.
 // Ref: #/components/schemas/io.k8s.api.flowcontrol.v1beta1.FlowSchemaList
 type IoK8sAPIFlowcontrolV1beta1FlowSchemaList struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
 	// `items` is a list of FlowSchemas.
 	Items []IoK8sAPIFlowcontrolV1beta1FlowSchema `json:"items"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
@@ -24241,15 +24244,15 @@ func (*IoK8sAPIFlowcontrolV1beta1FlowSchemaList) listFlowcontrolApiserverV1beta1
 // Ref: #/components/schemas/io.k8s.api.flowcontrol.v1beta1.FlowSchemaSpec
 type IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec struct {
 	DistinguisherMethod OptIoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod `json:"distinguisherMethod"`
-	// `matchingPrecedence` is used to choose among the FlowSchemas that match a given request. The
-	// chosen FlowSchema is among those with the numerically lowest (which we take to be logically
-	// highest) MatchingPrecedence.  Each MatchingPrecedence value must be ranged in [1,10000]. Note that
-	// if the precedence is not specified, it will be set to 1000 as default.
+	// `matchingPrecedence` is used to choose among the FlowSchemas that match a given request. The chosen
+	// FlowSchema is among those with the numerically lowest (which we take to be logically highest)
+	// MatchingPrecedence. Each MatchingPrecedence value must be ranged in [1,10000]. Note that if the
+	// precedence is not specified, it will be set to 1000 as default.
 	MatchingPrecedence         OptInt32                                                      `json:"matchingPrecedence"`
 	PriorityLevelConfiguration IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationReference `json:"priorityLevelConfiguration"`
 	// `rules` describes which requests will match this flow schema. This FlowSchema matches a request if
-	// and only if at least one member of rules matches the request. if it is an empty slice, there will
-	// be no requests matching the FlowSchema.
+	// and only if at least one member of rules matches the request. if it is an empty slice, there will be
+	// no requests matching the FlowSchema.
 	Rules []IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects `json:"rules"`
 }
 
@@ -24313,9 +24316,9 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaStatus) SetConditions(val []IoK8sAP
 // GroupSubject holds detailed information for group-kind subject.
 // Ref: #/components/schemas/io.k8s.api.flowcontrol.v1beta1.GroupSubject
 type IoK8sAPIFlowcontrolV1beta1GroupSubject struct {
-	// Name is the user group that matches, or "*" to match all user groups. See https://github.
-	// com/kubernetes/apiserver/blob/master/pkg/authentication/user/user.go for some well-known group
-	// names. Required.
+	// Name is the user group that matches, or "*" to match all user groups. See
+	// https://github.com/kubernetes/apiserver/blob/master/pkg/authentication/user/user.go for some
+	// well-known group names. Required.
 	Name string `json:"name"`
 }
 
@@ -24333,8 +24336,8 @@ func (s *IoK8sAPIFlowcontrolV1beta1GroupSubject) SetName(val string) {
 // Ref: #/components/schemas/io.k8s.api.flowcontrol.v1beta1.LimitResponse
 type IoK8sAPIFlowcontrolV1beta1LimitResponse struct {
 	Queuing OptIoK8sAPIFlowcontrolV1beta1QueuingConfiguration `json:"queuing"`
-	// `type` is "Queue" or "Reject". "Queue" means that requests that can not be executed upon arrival
-	// are held in a queue until they can be executed or a queuing limit is reached. "Reject" means that
+	// `type` is "Queue" or "Reject". "Queue" means that requests that can not be executed upon arrival are
+	// held in a queue until they can be executed or a queuing limit is reached. "Reject" means that
 	// requests that can not be executed upon arrival are rejected. Required.
 	Type string `json:"type"`
 }
@@ -24361,17 +24364,21 @@ func (s *IoK8sAPIFlowcontrolV1beta1LimitResponse) SetType(val string) {
 
 // LimitedPriorityLevelConfiguration specifies how to handle requests that are subject to limits. It
 // addresses two issues:
-// * How are requests for this priority level limited?
-// * What should be done with requests that exceed the limit?.
+//
+//   - How are requests for this priority level limited?
+//   - What should be done with requests that exceed the limit?
+//
 // Ref: #/components/schemas/io.k8s.api.flowcontrol.v1beta1.LimitedPriorityLevelConfiguration
 type IoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration struct {
 	// `assuredConcurrencyShares` (ACS) configures the execution limit, which is a limit on the number of
-	// requests of this priority level that may be exeucting at a given time.  ACS must be a positive
+	// requests of this priority level that may be exeucting at a given time. ACS must be a positive
 	// number. The server's concurrency limit (SCL) is divided among the concurrency-controlled priority
 	// levels in proportion to their assured concurrency shares. This produces the assured concurrency
 	// value (ACV) --- the number of requests that may be executing at a time --- for each such priority
 	// level:
-	// ACV(l) = ceil( SCL * ACS(l) / ( sum[priority levels k] ACS(k) ) )
+	//
+	// 	        ACV(l) = ceil( SCL * ACS(l) / ( sum[priority levels k] ACS(k) ) )
+	//
 	// bigger numbers of ACS mean more reserved concurrent requests (at the expense of every other PL).
 	// This field has a default value of 30.
 	AssuredConcurrencyShares OptInt32                                   `json:"assuredConcurrencyShares"`
@@ -24398,20 +24405,21 @@ func (s *IoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration) SetLimitRe
 	s.LimitResponse = val
 }
 
-// NonResourcePolicyRule is a predicate that matches non-resource requests according to their verb
-// and the target non-resource URL. A NonResourcePolicyRule matches a request if and only if both (a)
-// at least one member of verbs matches the request and (b) at least one member of nonResourceURLs
-// matches the request.
+// NonResourcePolicyRule is a predicate that matches non-resource requests according to their verb and
+// the target non-resource URL. A NonResourcePolicyRule matches a request if and only if both (a) at
+// least one member of verbs matches the request and (b) at least one member of nonResourceURLs matches
+// the request.
 // Ref: #/components/schemas/io.k8s.api.flowcontrol.v1beta1.NonResourcePolicyRule
 type IoK8sAPIFlowcontrolV1beta1NonResourcePolicyRule struct {
 	// `nonResourceURLs` is a set of url prefixes that a user should have access to and may not be empty.
 	// For example:
-	// - "/healthz" is legal
-	// - "/hea*" is illegal
-	// - "/hea" is legal but matches nothing
-	// - "/hea/*" also matches nothing
-	// - "/healthz/*" matches all per-component health checks.
-	// "*" matches all non-resource urls. if it is present, it must be the only entry. Required.
+	//
+	//  - "/healthz" is legal
+	//  - "/hea*" is illegal
+	//  - "/hea" is legal but matches nothing
+	//  - "/hea/*" also matches nothing
+	//  - "/healthz/" matches all per-component health checks. "" matches all non-resource urls. if it is
+	//    present, it must be the only entry. Required.
 	NonResourceURLs []string `json:"nonResourceURLs"`
 	// `verbs` is a list of matching verbs and may not be empty. "*" matches all verbs. If it is present,
 	// it must be the only entry. Required.
@@ -24440,20 +24448,20 @@ func (s *IoK8sAPIFlowcontrolV1beta1NonResourcePolicyRule) SetVerbs(val []string)
 
 // PolicyRulesWithSubjects prescribes a test that applies to a request to an apiserver. The test
 // considers the subject making the request, the verb being requested, and the resource to be acted
-// upon. This PolicyRulesWithSubjects matches a request if and only if both (a) at least one member
-// of subjects matches the request and (b) at least one member of resourceRules or nonResourceRules
+// upon. This PolicyRulesWithSubjects matches a request if and only if both (a) at least one member of
+// subjects matches the request and (b) at least one member of resourceRules or nonResourceRules
 // matches the request.
 // Ref: #/components/schemas/io.k8s.api.flowcontrol.v1beta1.PolicyRulesWithSubjects
 type IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects struct {
-	// `nonResourceRules` is a list of NonResourcePolicyRules that identify matching requests according
-	// to their verb and the target non-resource URL.
+	// `nonResourceRules` is a list of NonResourcePolicyRules that identify matching requests according to
+	// their verb and the target non-resource URL.
 	NonResourceRules []IoK8sAPIFlowcontrolV1beta1NonResourcePolicyRule `json:"nonResourceRules"`
-	// `resourceRules` is a slice of ResourcePolicyRules that identify matching requests according to
-	// their verb and the target resource. At least one of `resourceRules` and `nonResourceRules` has to
-	// be non-empty.
+	// `resourceRules` is a slice of ResourcePolicyRules that identify matching requests according to their
+	// verb and the target resource. At least one of `resourceRules` and `nonResourceRules` has to be
+	// non-empty.
 	ResourceRules []IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule `json:"resourceRules"`
-	// Subjects is the list of normal user, serviceaccount, or group that this rule cares about. There
-	// must be at least one member in this slice. A slice that includes both the system:authenticated and
+	// Subjects is the list of normal user, serviceaccount, or group that this rule cares about. There must
+	// be at least one member in this slice. A slice that includes both the system:authenticated and
 	// system:unauthenticated user groups matches every request. Required.
 	Subjects []IoK8sAPIFlowcontrolV1beta1Subject `json:"subjects"`
 }
@@ -24491,12 +24499,12 @@ func (s *IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects) SetSubjects(val []Io
 // PriorityLevelConfiguration represents the configuration of a priority level.
 // Ref: #/components/schemas/io.k8s.api.flowcontrol.v1beta1.PriorityLevelConfiguration
 type IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                                     `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta                   `json:"metadata"`
@@ -24626,14 +24634,14 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationCondition) SetType(
 // PriorityLevelConfigurationList is a list of PriorityLevelConfiguration objects.
 // Ref: #/components/schemas/io.k8s.api.flowcontrol.v1beta1.PriorityLevelConfigurationList
 type IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
 	// `items` is a list of request-priorities.
 	Items []IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration `json:"items"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
@@ -24682,8 +24690,8 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList) SetMetadata(v
 func (*IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList) listFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes() {
 }
 
-// PriorityLevelConfigurationReference contains information that points to the "request-priority"
-// being used.
+// PriorityLevelConfigurationReference contains information that points to the "request-priority" being
+// used.
 // Ref: #/components/schemas/io.k8s.api.flowcontrol.v1beta1.PriorityLevelConfigurationReference
 type IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationReference struct {
 	// `name` is the name of the priority level configuration being referenced Required.
@@ -24704,12 +24712,11 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationReference) SetName(
 // Ref: #/components/schemas/io.k8s.api.flowcontrol.v1beta1.PriorityLevelConfigurationSpec
 type IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec struct {
 	Limited OptIoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration `json:"limited"`
-	// `type` indicates whether this priority level is subject to limitation on request execution.  A
-	// value of `"Exempt"` means that requests of this priority level are not subject to a limit (and
-	// thus are never queued) and do not detract from the capacity made available to other priority
-	// levels.  A value of `"Limited"` means that (a) requests of this priority level _are_ subject to
-	// limits and (b) some of the server's limited capacity is made available exclusively to this
-	// priority level. Required.
+	// `type` indicates whether this priority level is subject to limitation on request execution. A value
+	// of `"Exempt"` means that requests of this priority level are not subject to a limit (and thus are
+	// never queued) and do not detract from the capacity made available to other priority levels. A value
+	// of `"Limited"` means that (a) requests of this priority level are subject to limits and (b) some of
+	// the server's limited capacity is made available exclusively to this priority level. Required.
 	Type string `json:"type"`
 }
 
@@ -24754,21 +24761,21 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus) SetConditio
 // Ref: #/components/schemas/io.k8s.api.flowcontrol.v1beta1.QueuingConfiguration
 type IoK8sAPIFlowcontrolV1beta1QueuingConfiguration struct {
 	// `handSize` is a small positive number that configures the shuffle sharding of requests into queues.
-	//   When enqueuing a request at this priority level the request's flow identifier (a string pair) is
+	// When enqueuing a request at this priority level the request's flow identifier (a string pair) is
 	// hashed and the hash value is used to shuffle the list of queues and deal a hand of the size
-	// specified here.  The request is put into one of the shortest queues in that hand. `handSize` must
-	// be no larger than `queues`, and should be significantly smaller (so that a few heavy flows do not
-	// saturate most of the queues).  See the user-facing documentation for more extensive guidance on
-	// setting this field.  This field has a default value of 8.
+	// specified here. The request is put into one of the shortest queues in that hand. `handSize` must be
+	// no larger than `queues`, and should be significantly smaller (so that a few heavy flows do not
+	// saturate most of the queues). See the user-facing documentation for more extensive guidance on
+	// setting this field. This field has a default value of 8.
 	HandSize OptInt32 `json:"handSize"`
-	// `queueLengthLimit` is the maximum number of requests allowed to be waiting in a given queue of
-	// this priority level at a time; excess requests are rejected.  This value must be positive.  If not
+	// `queueLengthLimit` is the maximum number of requests allowed to be waiting in a given queue of this
+	// priority level at a time; excess requests are rejected. This value must be positive. If not
 	// specified, it will be defaulted to 50.
 	QueueLengthLimit OptInt32 `json:"queueLengthLimit"`
 	// `queues` is the number of queues for this priority level. The queues exist independently at each
-	// apiserver. The value must be positive.  Setting it to 1 effectively precludes shufflesharding and
-	// thus makes the distinguisher method of associated flow schemas irrelevant.  This field has a
-	// default value of 64.
+	// apiserver. The value must be positive. Setting it to 1 effectively precludes shufflesharding and
+	// thus makes the distinguisher method of associated flow schemas irrelevant. This field has a default
+	// value of 64.
 	Queues OptInt32 `json:"queues"`
 }
 
@@ -24813,18 +24820,18 @@ type IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule struct {
 	// if present, must be the only entry. Required.
 	ApiGroups []string `json:"apiGroups"`
 	// `clusterScope` indicates whether to match requests that do not specify a namespace (which happens
-	// either because the resource is not namespaced or the request targets all namespaces). If this
-	// field is omitted or false then the `namespaces` field must contain a non-empty list.
+	// either because the resource is not namespaced or the request targets all namespaces). If this field
+	// is omitted or false then the `namespaces` field must contain a non-empty list.
 	ClusterScope OptBool `json:"clusterScope"`
-	// `namespaces` is a list of target namespaces that restricts matches.  A request that specifies a
+	// `namespaces` is a list of target namespaces that restricts matches. A request that specifies a
 	// target namespace matches only if either (a) this list contains that target namespace or (b) this
-	// list contains "*".  Note that "*" matches any specified namespace but does not match a request
-	// that _does not specify_ a namespace (see the `clusterScope` field for that). This list may be
-	// empty, but only if `clusterScope` is true.
+	// list contains "". Note that "" matches any specified namespace but does not match a request that
+	// does not specify a namespace (see the `clusterScope` field for that). This list may be empty, but
+	// only if `clusterScope` is true.
 	Namespaces []string `json:"namespaces"`
 	// `resources` is a list of matching resources (i.e., lowercase and plural) with, if desired,
-	// subresource.  For example, [ "services", "nodes/status" ].  This list may not be empty. "*"
-	// matches all resources and, if present, must be the only entry. Required.
+	// subresource. For example, [ "services", "nodes/status" ]. This list may not be empty. "*" matches
+	// all resources and, if present, must be the only entry. Required.
 	Resources []string `json:"resources"`
 	// `verbs` is a list of matching verbs and may not be empty. "*" matches all verbs and, if present,
 	// must be the only entry. Required.
@@ -24884,8 +24891,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) SetVerbs(val []string) {
 // ServiceAccountSubject holds detailed information for service-account-kind subject.
 // Ref: #/components/schemas/io.k8s.api.flowcontrol.v1beta1.ServiceAccountSubject
 type IoK8sAPIFlowcontrolV1beta1ServiceAccountSubject struct {
-	// `name` is the name of matching ServiceAccount objects, or "*" to match regardless of name.
-	// Required.
+	// `name` is the name of matching ServiceAccount objects, or "*" to match regardless of name. Required.
 	Name string `json:"name"`
 	// `namespace` is the namespace of matching ServiceAccount objects. Required.
 	Namespace string `json:"namespace"`
@@ -24983,7 +24989,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1UserSubject) SetName(val string) {
 // Ref: #/components/schemas/io.k8s.api.flowcontrol.v1beta2.FlowDistinguisherMethod
 type IoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod struct {
 	// `type` is the type of flow distinguisher method The supported types are "ByUser" and "ByNamespace".
-	//  Required.
+	// Required.
 	Type string `json:"type"`
 }
 
@@ -25002,12 +25008,12 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod) SetType(val string) 
 // FlowSchema and a "flow distinguisher".
 // Ref: #/components/schemas/io.k8s.api.flowcontrol.v1beta2.FlowSchema
 type IoK8sAPIFlowcontrolV1beta2FlowSchema struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                     `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta   `json:"metadata"`
@@ -25135,14 +25141,14 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaCondition) SetType(val OptString) {
 // FlowSchemaList is a list of FlowSchema objects.
 // Ref: #/components/schemas/io.k8s.api.flowcontrol.v1beta2.FlowSchemaList
 type IoK8sAPIFlowcontrolV1beta2FlowSchemaList struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
 	// `items` is a list of FlowSchemas.
 	Items []IoK8sAPIFlowcontrolV1beta2FlowSchema `json:"items"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
@@ -25194,15 +25200,15 @@ func (*IoK8sAPIFlowcontrolV1beta2FlowSchemaList) listFlowcontrolApiserverV1beta2
 // Ref: #/components/schemas/io.k8s.api.flowcontrol.v1beta2.FlowSchemaSpec
 type IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec struct {
 	DistinguisherMethod OptIoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod `json:"distinguisherMethod"`
-	// `matchingPrecedence` is used to choose among the FlowSchemas that match a given request. The
-	// chosen FlowSchema is among those with the numerically lowest (which we take to be logically
-	// highest) MatchingPrecedence.  Each MatchingPrecedence value must be ranged in [1,10000]. Note that
-	// if the precedence is not specified, it will be set to 1000 as default.
+	// `matchingPrecedence` is used to choose among the FlowSchemas that match a given request. The chosen
+	// FlowSchema is among those with the numerically lowest (which we take to be logically highest)
+	// MatchingPrecedence. Each MatchingPrecedence value must be ranged in [1,10000]. Note that if the
+	// precedence is not specified, it will be set to 1000 as default.
 	MatchingPrecedence         OptInt32                                                      `json:"matchingPrecedence"`
 	PriorityLevelConfiguration IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationReference `json:"priorityLevelConfiguration"`
 	// `rules` describes which requests will match this flow schema. This FlowSchema matches a request if
-	// and only if at least one member of rules matches the request. if it is an empty slice, there will
-	// be no requests matching the FlowSchema.
+	// and only if at least one member of rules matches the request. if it is an empty slice, there will be
+	// no requests matching the FlowSchema.
 	Rules []IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects `json:"rules"`
 }
 
@@ -25266,9 +25272,9 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaStatus) SetConditions(val []IoK8sAP
 // GroupSubject holds detailed information for group-kind subject.
 // Ref: #/components/schemas/io.k8s.api.flowcontrol.v1beta2.GroupSubject
 type IoK8sAPIFlowcontrolV1beta2GroupSubject struct {
-	// Name is the user group that matches, or "*" to match all user groups. See https://github.
-	// com/kubernetes/apiserver/blob/master/pkg/authentication/user/user.go for some well-known group
-	// names. Required.
+	// Name is the user group that matches, or "*" to match all user groups. See
+	// https://github.com/kubernetes/apiserver/blob/master/pkg/authentication/user/user.go for some
+	// well-known group names. Required.
 	Name string `json:"name"`
 }
 
@@ -25286,8 +25292,8 @@ func (s *IoK8sAPIFlowcontrolV1beta2GroupSubject) SetName(val string) {
 // Ref: #/components/schemas/io.k8s.api.flowcontrol.v1beta2.LimitResponse
 type IoK8sAPIFlowcontrolV1beta2LimitResponse struct {
 	Queuing OptIoK8sAPIFlowcontrolV1beta2QueuingConfiguration `json:"queuing"`
-	// `type` is "Queue" or "Reject". "Queue" means that requests that can not be executed upon arrival
-	// are held in a queue until they can be executed or a queuing limit is reached. "Reject" means that
+	// `type` is "Queue" or "Reject". "Queue" means that requests that can not be executed upon arrival are
+	// held in a queue until they can be executed or a queuing limit is reached. "Reject" means that
 	// requests that can not be executed upon arrival are rejected. Required.
 	Type string `json:"type"`
 }
@@ -25314,17 +25320,21 @@ func (s *IoK8sAPIFlowcontrolV1beta2LimitResponse) SetType(val string) {
 
 // LimitedPriorityLevelConfiguration specifies how to handle requests that are subject to limits. It
 // addresses two issues:
-// * How are requests for this priority level limited?
-// * What should be done with requests that exceed the limit?.
+//
+//   - How are requests for this priority level limited?
+//   - What should be done with requests that exceed the limit?
+//
 // Ref: #/components/schemas/io.k8s.api.flowcontrol.v1beta2.LimitedPriorityLevelConfiguration
 type IoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration struct {
 	// `assuredConcurrencyShares` (ACS) configures the execution limit, which is a limit on the number of
-	// requests of this priority level that may be exeucting at a given time.  ACS must be a positive
+	// requests of this priority level that may be exeucting at a given time. ACS must be a positive
 	// number. The server's concurrency limit (SCL) is divided among the concurrency-controlled priority
 	// levels in proportion to their assured concurrency shares. This produces the assured concurrency
 	// value (ACV) --- the number of requests that may be executing at a time --- for each such priority
 	// level:
-	// ACV(l) = ceil( SCL * ACS(l) / ( sum[priority levels k] ACS(k) ) )
+	//
+	// 	        ACV(l) = ceil( SCL * ACS(l) / ( sum[priority levels k] ACS(k) ) )
+	//
 	// bigger numbers of ACS mean more reserved concurrent requests (at the expense of every other PL).
 	// This field has a default value of 30.
 	AssuredConcurrencyShares OptInt32                                   `json:"assuredConcurrencyShares"`
@@ -25351,20 +25361,21 @@ func (s *IoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration) SetLimitRe
 	s.LimitResponse = val
 }
 
-// NonResourcePolicyRule is a predicate that matches non-resource requests according to their verb
-// and the target non-resource URL. A NonResourcePolicyRule matches a request if and only if both (a)
-// at least one member of verbs matches the request and (b) at least one member of nonResourceURLs
-// matches the request.
+// NonResourcePolicyRule is a predicate that matches non-resource requests according to their verb and
+// the target non-resource URL. A NonResourcePolicyRule matches a request if and only if both (a) at
+// least one member of verbs matches the request and (b) at least one member of nonResourceURLs matches
+// the request.
 // Ref: #/components/schemas/io.k8s.api.flowcontrol.v1beta2.NonResourcePolicyRule
 type IoK8sAPIFlowcontrolV1beta2NonResourcePolicyRule struct {
 	// `nonResourceURLs` is a set of url prefixes that a user should have access to and may not be empty.
 	// For example:
-	// - "/healthz" is legal
-	// - "/hea*" is illegal
-	// - "/hea" is legal but matches nothing
-	// - "/hea/*" also matches nothing
-	// - "/healthz/*" matches all per-component health checks.
-	// "*" matches all non-resource urls. if it is present, it must be the only entry. Required.
+	//
+	//  - "/healthz" is legal
+	//  - "/hea*" is illegal
+	//  - "/hea" is legal but matches nothing
+	//  - "/hea/*" also matches nothing
+	//  - "/healthz/" matches all per-component health checks. "" matches all non-resource urls. if it is
+	//    present, it must be the only entry. Required.
 	NonResourceURLs []string `json:"nonResourceURLs"`
 	// `verbs` is a list of matching verbs and may not be empty. "*" matches all verbs. If it is present,
 	// it must be the only entry. Required.
@@ -25393,20 +25404,20 @@ func (s *IoK8sAPIFlowcontrolV1beta2NonResourcePolicyRule) SetVerbs(val []string)
 
 // PolicyRulesWithSubjects prescribes a test that applies to a request to an apiserver. The test
 // considers the subject making the request, the verb being requested, and the resource to be acted
-// upon. This PolicyRulesWithSubjects matches a request if and only if both (a) at least one member
-// of subjects matches the request and (b) at least one member of resourceRules or nonResourceRules
+// upon. This PolicyRulesWithSubjects matches a request if and only if both (a) at least one member of
+// subjects matches the request and (b) at least one member of resourceRules or nonResourceRules
 // matches the request.
 // Ref: #/components/schemas/io.k8s.api.flowcontrol.v1beta2.PolicyRulesWithSubjects
 type IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects struct {
-	// `nonResourceRules` is a list of NonResourcePolicyRules that identify matching requests according
-	// to their verb and the target non-resource URL.
+	// `nonResourceRules` is a list of NonResourcePolicyRules that identify matching requests according to
+	// their verb and the target non-resource URL.
 	NonResourceRules []IoK8sAPIFlowcontrolV1beta2NonResourcePolicyRule `json:"nonResourceRules"`
-	// `resourceRules` is a slice of ResourcePolicyRules that identify matching requests according to
-	// their verb and the target resource. At least one of `resourceRules` and `nonResourceRules` has to
-	// be non-empty.
+	// `resourceRules` is a slice of ResourcePolicyRules that identify matching requests according to their
+	// verb and the target resource. At least one of `resourceRules` and `nonResourceRules` has to be
+	// non-empty.
 	ResourceRules []IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule `json:"resourceRules"`
-	// Subjects is the list of normal user, serviceaccount, or group that this rule cares about. There
-	// must be at least one member in this slice. A slice that includes both the system:authenticated and
+	// Subjects is the list of normal user, serviceaccount, or group that this rule cares about. There must
+	// be at least one member in this slice. A slice that includes both the system:authenticated and
 	// system:unauthenticated user groups matches every request. Required.
 	Subjects []IoK8sAPIFlowcontrolV1beta2Subject `json:"subjects"`
 }
@@ -25444,12 +25455,12 @@ func (s *IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects) SetSubjects(val []Io
 // PriorityLevelConfiguration represents the configuration of a priority level.
 // Ref: #/components/schemas/io.k8s.api.flowcontrol.v1beta2.PriorityLevelConfiguration
 type IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                                     `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta                   `json:"metadata"`
@@ -25579,14 +25590,14 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationCondition) SetType(
 // PriorityLevelConfigurationList is a list of PriorityLevelConfiguration objects.
 // Ref: #/components/schemas/io.k8s.api.flowcontrol.v1beta2.PriorityLevelConfigurationList
 type IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
 	// `items` is a list of request-priorities.
 	Items []IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration `json:"items"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
@@ -25635,8 +25646,8 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList) SetMetadata(v
 func (*IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList) listFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes() {
 }
 
-// PriorityLevelConfigurationReference contains information that points to the "request-priority"
-// being used.
+// PriorityLevelConfigurationReference contains information that points to the "request-priority" being
+// used.
 // Ref: #/components/schemas/io.k8s.api.flowcontrol.v1beta2.PriorityLevelConfigurationReference
 type IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationReference struct {
 	// `name` is the name of the priority level configuration being referenced Required.
@@ -25657,12 +25668,11 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationReference) SetName(
 // Ref: #/components/schemas/io.k8s.api.flowcontrol.v1beta2.PriorityLevelConfigurationSpec
 type IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec struct {
 	Limited OptIoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration `json:"limited"`
-	// `type` indicates whether this priority level is subject to limitation on request execution.  A
-	// value of `"Exempt"` means that requests of this priority level are not subject to a limit (and
-	// thus are never queued) and do not detract from the capacity made available to other priority
-	// levels.  A value of `"Limited"` means that (a) requests of this priority level _are_ subject to
-	// limits and (b) some of the server's limited capacity is made available exclusively to this
-	// priority level. Required.
+	// `type` indicates whether this priority level is subject to limitation on request execution. A value
+	// of `"Exempt"` means that requests of this priority level are not subject to a limit (and thus are
+	// never queued) and do not detract from the capacity made available to other priority levels. A value
+	// of `"Limited"` means that (a) requests of this priority level are subject to limits and (b) some of
+	// the server's limited capacity is made available exclusively to this priority level. Required.
 	Type string `json:"type"`
 }
 
@@ -25707,21 +25717,21 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus) SetConditio
 // Ref: #/components/schemas/io.k8s.api.flowcontrol.v1beta2.QueuingConfiguration
 type IoK8sAPIFlowcontrolV1beta2QueuingConfiguration struct {
 	// `handSize` is a small positive number that configures the shuffle sharding of requests into queues.
-	//   When enqueuing a request at this priority level the request's flow identifier (a string pair) is
+	// When enqueuing a request at this priority level the request's flow identifier (a string pair) is
 	// hashed and the hash value is used to shuffle the list of queues and deal a hand of the size
-	// specified here.  The request is put into one of the shortest queues in that hand. `handSize` must
-	// be no larger than `queues`, and should be significantly smaller (so that a few heavy flows do not
-	// saturate most of the queues).  See the user-facing documentation for more extensive guidance on
-	// setting this field.  This field has a default value of 8.
+	// specified here. The request is put into one of the shortest queues in that hand. `handSize` must be
+	// no larger than `queues`, and should be significantly smaller (so that a few heavy flows do not
+	// saturate most of the queues). See the user-facing documentation for more extensive guidance on
+	// setting this field. This field has a default value of 8.
 	HandSize OptInt32 `json:"handSize"`
-	// `queueLengthLimit` is the maximum number of requests allowed to be waiting in a given queue of
-	// this priority level at a time; excess requests are rejected.  This value must be positive.  If not
+	// `queueLengthLimit` is the maximum number of requests allowed to be waiting in a given queue of this
+	// priority level at a time; excess requests are rejected. This value must be positive. If not
 	// specified, it will be defaulted to 50.
 	QueueLengthLimit OptInt32 `json:"queueLengthLimit"`
 	// `queues` is the number of queues for this priority level. The queues exist independently at each
-	// apiserver. The value must be positive.  Setting it to 1 effectively precludes shufflesharding and
-	// thus makes the distinguisher method of associated flow schemas irrelevant.  This field has a
-	// default value of 64.
+	// apiserver. The value must be positive. Setting it to 1 effectively precludes shufflesharding and
+	// thus makes the distinguisher method of associated flow schemas irrelevant. This field has a default
+	// value of 64.
 	Queues OptInt32 `json:"queues"`
 }
 
@@ -25766,18 +25776,18 @@ type IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule struct {
 	// if present, must be the only entry. Required.
 	ApiGroups []string `json:"apiGroups"`
 	// `clusterScope` indicates whether to match requests that do not specify a namespace (which happens
-	// either because the resource is not namespaced or the request targets all namespaces). If this
-	// field is omitted or false then the `namespaces` field must contain a non-empty list.
+	// either because the resource is not namespaced or the request targets all namespaces). If this field
+	// is omitted or false then the `namespaces` field must contain a non-empty list.
 	ClusterScope OptBool `json:"clusterScope"`
-	// `namespaces` is a list of target namespaces that restricts matches.  A request that specifies a
+	// `namespaces` is a list of target namespaces that restricts matches. A request that specifies a
 	// target namespace matches only if either (a) this list contains that target namespace or (b) this
-	// list contains "*".  Note that "*" matches any specified namespace but does not match a request
-	// that _does not specify_ a namespace (see the `clusterScope` field for that). This list may be
-	// empty, but only if `clusterScope` is true.
+	// list contains "". Note that "" matches any specified namespace but does not match a request that
+	// does not specify a namespace (see the `clusterScope` field for that). This list may be empty, but
+	// only if `clusterScope` is true.
 	Namespaces []string `json:"namespaces"`
 	// `resources` is a list of matching resources (i.e., lowercase and plural) with, if desired,
-	// subresource.  For example, [ "services", "nodes/status" ].  This list may not be empty. "*"
-	// matches all resources and, if present, must be the only entry. Required.
+	// subresource. For example, [ "services", "nodes/status" ]. This list may not be empty. "*" matches
+	// all resources and, if present, must be the only entry. Required.
 	Resources []string `json:"resources"`
 	// `verbs` is a list of matching verbs and may not be empty. "*" matches all verbs and, if present,
 	// must be the only entry. Required.
@@ -25837,8 +25847,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) SetVerbs(val []string) {
 // ServiceAccountSubject holds detailed information for service-account-kind subject.
 // Ref: #/components/schemas/io.k8s.api.flowcontrol.v1beta2.ServiceAccountSubject
 type IoK8sAPIFlowcontrolV1beta2ServiceAccountSubject struct {
-	// `name` is the name of matching ServiceAccount objects, or "*" to match regardless of name.
-	// Required.
+	// `name` is the name of matching ServiceAccount objects, or "*" to match regardless of name. Required.
 	Name string `json:"name"`
 	// `namespace` is the namespace of matching ServiceAccount objects. Required.
 	Namespace string `json:"namespace"`
@@ -25938,22 +25947,20 @@ func (s *IoK8sAPIFlowcontrolV1beta2UserSubject) SetName(val string) {
 type IoK8sAPINetworkingV1HTTPIngressPath struct {
 	Backend IoK8sAPINetworkingV1IngressBackend `json:"backend"`
 	// Path is matched against the path of an incoming request. Currently it can contain characters
-	// disallowed from the conventional "path" part of a URL as defined by RFC 3986. Paths must begin
-	// with a '/' and must be present when using PathType with value "Exact" or "Prefix".
+	// disallowed from the conventional "path" part of a URL as defined by RFC 3986. Paths must begin with
+	// a '/' and must be present when using PathType with value "Exact" or "Prefix".
 	Path OptString `json:"path"`
 	// PathType determines the interpretation of the Path matching. PathType can be one of the following
-	// values: * Exact: Matches the URL path exactly. * Prefix: Matches based on a URL path prefix split
-	// by '/'. Matching is
-	// done on a path element by element basis. A path element refers is the
-	// list of labels in the path split by the '/' separator. A request is a
-	// match for path p if every p is an element-wise prefix of p of the
-	// request path. Note that if the last element of the path is a substring
-	// of the last element in request path, it is not a match (e.g. /foo/bar
-	// matches /foo/bar/baz, but does not match /foo/barbaz).
-	// * ImplementationSpecific: Interpretation of the Path matching is up to
-	// the IngressClass. Implementations can treat this as a separate PathType
-	// or treat it identically to Prefix or Exact path types.
-	// Implementations are required to support all path types.
+	// values: * Exact: Matches the URL path exactly. * Prefix: Matches based on a URL path prefix split by
+	// '/'. Matching is done on a path element by element basis. A path element refers is the list of
+	// labels in the path split by the '/' separator. A request is a match for path p if every p is an
+	// element-wise prefix of p of the request path. Note that if the last element of the path is a
+	// substring of the last element in request path, it is not a match (e.g. /foo/bar matches
+	// /foo/bar/baz, but does not match /foo/barbaz).
+	//
+	//  - ImplementationSpecific: Interpretation of the Path matching is up to the IngressClass.
+	//    Implementations can treat this as a separate PathType or treat it identically to Prefix or Exact
+	//    path types. Implementations are required to support all path types.
 	PathType string `json:"pathType"`
 }
 
@@ -25987,10 +25994,9 @@ func (s *IoK8sAPINetworkingV1HTTPIngressPath) SetPathType(val string) {
 	s.PathType = val
 }
 
-// HTTPIngressRuleValue is a list of http selectors pointing to backends. In the example:
-// http://<host>/<path>?<searchpart> -> backend where where parts of the url correspond to RFC 3986,
-// this resource will be used to match against everything after the last '/' and before the first '?'
-// or '#'.
+// HTTPIngressRuleValue is a list of http selectors pointing to backends. In the example: http:///? ->
+// backend where where parts of the url correspond to RFC 3986, this resource will be used to match
+// against everything after the last '/' and before the first '?' or '#'.
 // Ref: #/components/schemas/io.k8s.api.networking.v1.HTTPIngressRuleValue
 type IoK8sAPINetworkingV1HTTPIngressRuleValue struct {
 	// A collection of paths that map requests to backends.
@@ -26008,14 +26014,15 @@ func (s *IoK8sAPINetworkingV1HTTPIngressRuleValue) SetPaths(val []IoK8sAPINetwor
 }
 
 // IPBlock describes a particular CIDR (Ex. "192.168.1.1/24","2001:db9::/64") that is allowed to the
-// pods matched by a NetworkPolicySpec's podSelector. The except entry describes CIDRs that should
-// not be included within this rule.
+// pods matched by a NetworkPolicySpec's podSelector. The except entry describes CIDRs that should not
+// be included within this rule.
 // Ref: #/components/schemas/io.k8s.api.networking.v1.IPBlock
 type IoK8sAPINetworkingV1IPBlock struct {
 	// CIDR is a string representing the IP Block Valid examples are "192.168.1.1/24" or "2001:db9::/64".
 	Cidr string `json:"cidr"`
-	// Except is a slice of CIDRs that should not be included within an IP Block Valid examples are "192.
-	// 168.1.1/24" or "2001:db9::/64" Except values will be rejected if they are outside the CIDR range.
+	// Except is a slice of CIDRs that should not be included within an IP Block Valid examples are
+	// "192.168.1.1/24" or "2001:db9::/64" Except values will be rejected if they are outside the CIDR
+	// range.
 	Except []string `json:"except"`
 }
 
@@ -26039,17 +26046,17 @@ func (s *IoK8sAPINetworkingV1IPBlock) SetExcept(val []string) {
 	s.Except = val
 }
 
-// Ingress is a collection of rules that allow inbound connections to reach the endpoints defined by
-// a backend. An Ingress can be configured to give services externally-reachable urls, load balance
+// Ingress is a collection of rules that allow inbound connections to reach the endpoints defined by a
+// backend. An Ingress can be configured to give services externally-reachable urls, load balance
 // traffic, terminate SSL, offer name based virtual hosting etc.
 // Ref: #/components/schemas/io.k8s.api.networking.v1.Ingress
 type IoK8sAPINetworkingV1Ingress struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                   `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
@@ -26143,12 +26150,12 @@ func (s *IoK8sAPINetworkingV1IngressBackend) SetService(val OptIoK8sAPINetworkin
 // set to true, new Ingress resources without a class specified will be assigned this default class.
 // Ref: #/components/schemas/io.k8s.api.networking.v1.IngressClass
 type IoK8sAPINetworkingV1IngressClass struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                   `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
@@ -26200,14 +26207,14 @@ func (*IoK8sAPINetworkingV1IngressClass) readNetworkingV1IngressClassRes() {}
 // IngressClassList is a collection of IngressClasses.
 // Ref: #/components/schemas/io.k8s.api.networking.v1.IngressClassList
 type IoK8sAPINetworkingV1IngressClassList struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
 	// Items is the list of IngressClasses.
 	Items []IoK8sAPINetworkingV1IngressClass `json:"items"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
@@ -26259,9 +26266,8 @@ func (*IoK8sAPINetworkingV1IngressClassList) listNetworkingV1IngressClassRes() {
 // namespace-scoped resource.
 // Ref: #/components/schemas/io.k8s.api.networking.v1.IngressClassParametersReference
 type IoK8sAPINetworkingV1IngressClassParametersReference struct {
-	// APIGroup is the group for the resource being referenced. If APIGroup is not specified, the
-	// specified Kind must be in the core API group. For any other third-party types, APIGroup is
-	// required.
+	// APIGroup is the group for the resource being referenced. If APIGroup is not specified, the specified
+	// Kind must be in the core API group. For any other third-party types, APIGroup is required.
 	ApiGroup OptString `json:"apiGroup"`
 	// Kind is the type of resource being referenced.
 	Kind string `json:"kind"`
@@ -26330,10 +26336,9 @@ func (s *IoK8sAPINetworkingV1IngressClassParametersReference) SetScope(val OptSt
 // Ref: #/components/schemas/io.k8s.api.networking.v1.IngressClassSpec
 type IoK8sAPINetworkingV1IngressClassSpec struct {
 	// Controller refers to the name of the controller that should handle this class. This allows for
-	// different "flavors" that are controlled by the same controller. For example, you may have
-	// different Parameters for the same implementing controller. This should be specified as a
-	// domain-prefixed path no more than 250 characters in length, e.g. "acme.io/ingress-controller".
-	// This field is immutable.
+	// different "flavors" that are controlled by the same controller. For example, you may have different
+	// Parameters for the same implementing controller. This should be specified as a domain-prefixed path
+	// no more than 250 characters in length, e.g. "acme.io/ingress-controller". This field is immutable.
 	Controller OptString                                              `json:"controller"`
 	Parameters OptIoK8sAPINetworkingV1IngressClassParametersReference `json:"parameters"`
 }
@@ -26361,14 +26366,14 @@ func (s *IoK8sAPINetworkingV1IngressClassSpec) SetParameters(val OptIoK8sAPINetw
 // IngressList is a collection of Ingress.
 // Ref: #/components/schemas/io.k8s.api.networking.v1.IngressList
 type IoK8sAPINetworkingV1IngressList struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
 	// Items is the list of Ingress.
 	Items []IoK8sAPINetworkingV1Ingress `json:"items"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
@@ -26423,23 +26428,21 @@ func (*IoK8sAPINetworkingV1IngressList) listNetworkingV1NamespacedIngressRes()  
 // Ref: #/components/schemas/io.k8s.api.networking.v1.IngressRule
 type IoK8sAPINetworkingV1IngressRule struct {
 	// Host is the fully qualified domain name of a network host, as defined by RFC 3986. Note the
-	// following deviations from the "host" part of the URI as defined in RFC 3986: 1. IPs are not
-	// allowed. Currently an IngressRuleValue can only apply to
-	// the IP in the Spec of the parent Ingress.
-	// 2. The `:` delimiter is not respected because ports are not allowed.
-	// Currently the port of an Ingress is implicitly :80 for http and
-	// :443 for https.
-	// Both these may change in the future. Incoming requests are matched against the host before the
-	// IngressRuleValue. If the host is unspecified, the Ingress routes all traffic based on the
-	// specified IngressRuleValue.
+	// following deviations from the "host" part of the URI as defined in RFC 3986: 1. IPs are not allowed.
+	// Currently an IngressRuleValue can only apply to the IP in the Spec of the parent Ingress. 2. The `:`
+	// delimiter is not respected because ports are not allowed. Currently the port of an Ingress is
+	// implicitly :80 for http and :443 for https. Both these may change in the future. Incoming requests
+	// are matched against the host before the IngressRuleValue. If the host is unspecified, the Ingress
+	// routes all traffic based on the specified IngressRuleValue.
+	//
 	// Host can be "precise" which is a domain name without the terminating dot of a network host (e.g.
 	// "foo.bar.com") or "wildcard", which is a domain name prefixed with a single wildcard label (e.g.
-	// "*.foo.com"). The wildcard character '*' must appear by itself as the first DNS label and matches
-	// only a single label. You cannot have a wildcard label by itself (e.g. Host == "*"). Requests will
-	// be matched against the Host field in the following way: 1. If Host is precise, the request matches
-	// this rule if the http host header is equal to Host. 2. If Host is a wildcard, then the request
-	// matches this rule if the http host header is to equal to the suffix (removing the first label) of
-	// the wildcard rule.
+	// ".foo.com"). The wildcard character '' must appear by itself as the first DNS label and matches only
+	// a single label. You cannot have a wildcard label by itself (e.g. Host == "*"). Requests will be
+	// matched against the Host field in the following way: 1. If Host is precise, the request matches this
+	// rule if the http host header is equal to Host. 2. If Host is a wildcard, then the request matches
+	// this rule if the http host header is to equal to the suffix (removing the first label) of the
+	// wildcard rule.
 	Host OptString                                   `json:"host"`
 	HTTP OptIoK8sAPINetworkingV1HTTPIngressRuleValue `json:"http"`
 }
@@ -26497,15 +26500,15 @@ func (s *IoK8sAPINetworkingV1IngressServiceBackend) SetPort(val OptIoK8sAPINetwo
 type IoK8sAPINetworkingV1IngressSpec struct {
 	DefaultBackend OptIoK8sAPINetworkingV1IngressBackend `json:"defaultBackend"`
 	// IngressClassName is the name of the IngressClass cluster resource. The associated IngressClass
-	// defines which controller will implement the resource. This replaces the deprecated `kubernetes.
-	// io/ingress.class` annotation. For backwards compatibility, when that annotation is set, it must be
-	// given precedence over this field. The controller may emit a warning if the field and annotation
-	// have different values. Implementations of this API should ignore Ingresses without a class
-	// specified. An IngressClass resource may be marked as default, which can be used to set a default
-	// value for this field. For more information, refer to the IngressClass documentation.
+	// defines which controller will implement the resource. This replaces the deprecated
+	// `kubernetes.io/ingress.class` annotation. For backwards compatibility, when that annotation is set,
+	// it must be given precedence over this field. The controller may emit a warning if the field and
+	// annotation have different values. Implementations of this API should ignore Ingresses without a
+	// class specified. An IngressClass resource may be marked as default, which can be used to set a
+	// default value for this field. For more information, refer to the IngressClass documentation.
 	IngressClassName OptString `json:"ingressClassName"`
-	// A list of host rules used to configure the Ingress. If unspecified, or no rule matches, all
-	// traffic is sent to the default backend.
+	// A list of host rules used to configure the Ingress. If unspecified, or no rule matches, all traffic
+	// is sent to the default backend.
 	Rules []IoK8sAPINetworkingV1IngressRule `json:"rules"`
 	// TLS configuration. Currently the Ingress only supports a single TLS port, 443. If multiple members
 	// of this list specify different hosts, they will be multiplexed on the same port according to the
@@ -26574,13 +26577,13 @@ func (s *IoK8sAPINetworkingV1IngressStatus) SetLoadBalancer(val OptIoK8sAPICoreV
 // Ref: #/components/schemas/io.k8s.api.networking.v1.IngressTLS
 type IoK8sAPINetworkingV1IngressTLS struct {
 	// Hosts are a list of hosts included in the TLS certificate. The values in this list must match the
-	// name/s used in the tlsSecret. Defaults to the wildcard host setting for the loadbalancer
-	// controller fulfilling this Ingress, if left unspecified.
+	// name/s used in the tlsSecret. Defaults to the wildcard host setting for the loadbalancer controller
+	// fulfilling this Ingress, if left unspecified.
 	Hosts []string `json:"hosts"`
 	// SecretName is the name of the secret used to terminate TLS traffic on port 443. Field is left
 	// optional to allow TLS routing based on SNI hostname alone. If the SNI host in a listener conflicts
-	// with the "Host" header field used by an IngressRule, the SNI host is used for termination and
-	// value of the Host header is used for routing.
+	// with the "Host" header field used by an IngressRule, the SNI host is used for termination and value
+	// of the Host header is used for routing.
 	SecretName OptString `json:"secretName"`
 }
 
@@ -26607,12 +26610,12 @@ func (s *IoK8sAPINetworkingV1IngressTLS) SetSecretName(val OptString) {
 // NetworkPolicy describes what network traffic is allowed for a set of Pods.
 // Ref: #/components/schemas/io.k8s.api.networking.v1.NetworkPolicy
 type IoK8sAPINetworkingV1NetworkPolicy struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                   `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
@@ -26661,21 +26664,20 @@ func (s *IoK8sAPINetworkingV1NetworkPolicy) SetSpec(val OptIoK8sAPINetworkingV1N
 
 func (*IoK8sAPINetworkingV1NetworkPolicy) readNetworkingV1NamespacedNetworkPolicyRes() {}
 
-// NetworkPolicyEgressRule describes a particular set of traffic that is allowed out of pods matched
-// by a NetworkPolicySpec's podSelector. The traffic must match both ports and to. This type is
-// beta-level in 1.8.
+// NetworkPolicyEgressRule describes a particular set of traffic that is allowed out of pods matched by
+// a NetworkPolicySpec's podSelector. The traffic must match both ports and to. This type is beta-level
+// in 1.8.
 // Ref: #/components/schemas/io.k8s.api.networking.v1.NetworkPolicyEgressRule
 type IoK8sAPINetworkingV1NetworkPolicyEgressRule struct {
 	// List of destination ports for outgoing traffic. Each item in this list is combined using a logical
-	// OR. If this field is empty or missing, this rule matches all ports (traffic not restricted by
-	// port). If this field is present and contains at least one item, then this rule allows traffic only
-	// if the traffic matches at least one port in the list.
+	// OR. If this field is empty or missing, this rule matches all ports (traffic not restricted by port).
+	// If this field is present and contains at least one item, then this rule allows traffic only if the
+	// traffic matches at least one port in the list.
 	Ports []IoK8sAPINetworkingV1NetworkPolicyPort `json:"ports"`
 	// List of destinations for outgoing traffic of pods selected for this rule. Items in this list are
 	// combined using a logical OR operation. If this field is empty or missing, this rule matches all
-	// destinations (traffic not restricted by destination). If this field is present and contains at
-	// least one item, this rule allows traffic only if the traffic matches at least one item in the to
-	// list.
+	// destinations (traffic not restricted by destination). If this field is present and contains at least
+	// one item, this rule allows traffic only if the traffic matches at least one item in the to list.
 	To []IoK8sAPINetworkingV1NetworkPolicyPeer `json:"to"`
 }
 
@@ -26704,14 +26706,14 @@ func (s *IoK8sAPINetworkingV1NetworkPolicyEgressRule) SetTo(val []IoK8sAPINetwor
 // Ref: #/components/schemas/io.k8s.api.networking.v1.NetworkPolicyIngressRule
 type IoK8sAPINetworkingV1NetworkPolicyIngressRule struct {
 	// List of sources which should be able to access the pods selected for this rule. Items in this list
-	// are combined using a logical OR operation. If this field is empty or missing, this rule matches
-	// all sources (traffic not restricted by source). If this field is present and contains at least one
-	// item, this rule allows traffic only if the traffic matches at least one item in the from list.
+	// are combined using a logical OR operation. If this field is empty or missing, this rule matches all
+	// sources (traffic not restricted by source). If this field is present and contains at least one item,
+	// this rule allows traffic only if the traffic matches at least one item in the from list.
 	From []IoK8sAPINetworkingV1NetworkPolicyPeer `json:"from"`
-	// List of ports which should be made accessible on the pods selected for this rule. Each item in
-	// this list is combined using a logical OR. If this field is empty or missing, this rule matches all
-	// ports (traffic not restricted by port). If this field is present and contains at least one item,
-	// then this rule allows traffic only if the traffic matches at least one port in the list.
+	// List of ports which should be made accessible on the pods selected for this rule. Each item in this
+	// list is combined using a logical OR. If this field is empty or missing, this rule matches all ports
+	// (traffic not restricted by port). If this field is present and contains at least one item, then this
+	// rule allows traffic only if the traffic matches at least one port in the list.
 	Ports []IoK8sAPINetworkingV1NetworkPolicyPort `json:"ports"`
 }
 
@@ -26738,14 +26740,14 @@ func (s *IoK8sAPINetworkingV1NetworkPolicyIngressRule) SetPorts(val []IoK8sAPINe
 // NetworkPolicyList is a list of NetworkPolicy objects.
 // Ref: #/components/schemas/io.k8s.api.networking.v1.NetworkPolicyList
 type IoK8sAPINetworkingV1NetworkPolicyList struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
 	// Items is a list of schema objects.
 	Items []IoK8sAPINetworkingV1NetworkPolicy `json:"items"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
@@ -26794,8 +26796,8 @@ func (s *IoK8sAPINetworkingV1NetworkPolicyList) SetMetadata(val OptIoK8sApimachi
 func (*IoK8sAPINetworkingV1NetworkPolicyList) listNetworkingV1NamespacedNetworkPolicyRes()       {}
 func (*IoK8sAPINetworkingV1NetworkPolicyList) listNetworkingV1NetworkPolicyForAllNamespacesRes() {}
 
-// NetworkPolicyPeer describes a peer to allow traffic to/from. Only certain combinations of fields
-// are allowed.
+// NetworkPolicyPeer describes a peer to allow traffic to/from. Only certain combinations of fields are
+// allowed.
 // Ref: #/components/schemas/io.k8s.api.networking.v1.NetworkPolicyPeer
 type IoK8sAPINetworkingV1NetworkPolicyPeer struct {
 	IpBlock           OptIoK8sAPINetworkingV1IPBlock                 `json:"ipBlock"`
@@ -26836,15 +26838,15 @@ func (s *IoK8sAPINetworkingV1NetworkPolicyPeer) SetPodSelector(val OptIoK8sApima
 // NetworkPolicyPort describes a port to allow traffic on.
 // Ref: #/components/schemas/io.k8s.api.networking.v1.NetworkPolicyPort
 type IoK8sAPINetworkingV1NetworkPolicyPort struct {
-	// If set, indicates that the range of ports from port to endPort, inclusive, should be allowed by
-	// the policy. This field cannot be defined if the port field is not defined or if the port field is
-	// defined as a named (string) port. The endPort must be equal or greater than port. This feature is
-	// in Beta state and is enabled by default. It can be disabled using the Feature Gate
+	// If set, indicates that the range of ports from port to endPort, inclusive, should be allowed by the
+	// policy. This field cannot be defined if the port field is not defined or if the port field is
+	// defined as a named (string) port. The endPort must be equal or greater than port. This feature is in
+	// Beta state and is enabled by default. It can be disabled using the Feature Gate
 	// "NetworkPolicyEndPort".
 	EndPort OptInt32                                     `json:"endPort"`
 	Port    OptIoK8sApimachineryPkgUtilIntstrIntOrString `json:"port"`
-	// The protocol (TCP, UDP, or SCTP) which traffic must match. If not specified, this field defaults
-	// to TCP.
+	// The protocol (TCP, UDP, or SCTP) which traffic must match. If not specified, this field defaults to
+	// TCP.
 	Protocol OptString `json:"protocol"`
 }
 
@@ -26881,29 +26883,29 @@ func (s *IoK8sAPINetworkingV1NetworkPolicyPort) SetProtocol(val OptString) {
 // NetworkPolicySpec provides the specification of a NetworkPolicy.
 // Ref: #/components/schemas/io.k8s.api.networking.v1.NetworkPolicySpec
 type IoK8sAPINetworkingV1NetworkPolicySpec struct {
-	// List of egress rules to be applied to the selected pods. Outgoing traffic is allowed if there are
-	// no NetworkPolicies selecting the pod (and cluster policy otherwise allows the traffic), OR if the
+	// List of egress rules to be applied to the selected pods. Outgoing traffic is allowed if there are no
+	// NetworkPolicies selecting the pod (and cluster policy otherwise allows the traffic), OR if the
 	// traffic matches at least one egress rule across all of the NetworkPolicy objects whose podSelector
 	// matches the pod. If this field is empty then this NetworkPolicy limits all outgoing traffic (and
-	// serves solely to ensure that the pods it selects are isolated by default). This field is
-	// beta-level in 1.8.
+	// serves solely to ensure that the pods it selects are isolated by default). This field is beta-level
+	// in 1.8.
 	Egress []IoK8sAPINetworkingV1NetworkPolicyEgressRule `json:"egress"`
 	// List of ingress rules to be applied to the selected pods. Traffic is allowed to a pod if there are
 	// no NetworkPolicies selecting the pod (and cluster policy otherwise allows the traffic), OR if the
 	// traffic source is the pod's local node, OR if the traffic matches at least one ingress rule across
-	// all of the NetworkPolicy objects whose podSelector matches the pod. If this field is empty then
-	// this NetworkPolicy does not allow any traffic (and serves solely to ensure that the pods it
-	// selects are isolated by default).
+	// all of the NetworkPolicy objects whose podSelector matches the pod. If this field is empty then this
+	// NetworkPolicy does not allow any traffic (and serves solely to ensure that the pods it selects are
+	// isolated by default).
 	Ingress     []IoK8sAPINetworkingV1NetworkPolicyIngressRule `json:"ingress"`
 	PodSelector IoK8sApimachineryPkgApisMetaV1LabelSelector    `json:"podSelector"`
-	// List of rule types that the NetworkPolicy relates to. Valid options are ["Ingress"], ["Egress"],
-	// or ["Ingress", "Egress"]. If this field is not specified, it will default based on the existence
-	// of Ingress or Egress rules; policies that contain an Egress section are assumed to affect Egress,
-	// and all policies (whether or not they contain an Ingress section) are assumed to affect Ingress.
-	// If you want to write an egress-only policy, you must explicitly specify policyTypes [ "Egress" ].
-	// Likewise, if you want to write a policy that specifies that no egress is allowed, you must specify
-	// a policyTypes value that include "Egress" (since such a policy would not include an Egress section
-	// and would otherwise default to just [ "Ingress" ]). This field is beta-level in 1.8.
+	// List of rule types that the NetworkPolicy relates to. Valid options are ["Ingress"], ["Egress"], or
+	// ["Ingress", "Egress"]. If this field is not specified, it will default based on the existence of
+	// Ingress or Egress rules; policies that contain an Egress section are assumed to affect Egress, and
+	// all policies (whether or not they contain an Ingress section) are assumed to affect Ingress. If you
+	// want to write an egress-only policy, you must explicitly specify policyTypes [ "Egress" ]. Likewise,
+	// if you want to write a policy that specifies that no egress is allowed, you must specify a
+	// policyTypes value that include "Egress" (since such a policy would not include an Egress section and
+	// would otherwise default to just [ "Ingress" ]). This field is beta-level in 1.8.
 	PolicyTypes []string `json:"policyTypes"`
 }
 
@@ -27006,26 +27008,26 @@ func (s *IoK8sAPINodeV1OverheadPodFixed) init() IoK8sAPINodeV1OverheadPodFixed {
 	return m
 }
 
-// RuntimeClass defines a class of container runtime supported in the cluster. The RuntimeClass is
-// used to determine which container runtime is used to run all containers in a pod. RuntimeClasses
-// are manually defined by a user or cluster provisioner, and referenced in the PodSpec. The Kubelet
-// is responsible for resolving the RuntimeClassName reference before running the pod.  For more
-// details, see https://kubernetes.io/docs/concepts/containers/runtime-class/.
+// RuntimeClass defines a class of container runtime supported in the cluster. The RuntimeClass is used
+// to determine which container runtime is used to run all containers in a pod. RuntimeClasses are
+// manually defined by a user or cluster provisioner, and referenced in the PodSpec. The Kubelet is
+// responsible for resolving the RuntimeClassName reference before running the pod. For more details,
+// see https://kubernetes.io/docs/concepts/containers/runtime-class/.
 // Ref: #/components/schemas/io.k8s.api.node.v1.RuntimeClass
 type IoK8sAPINodeV1RuntimeClass struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
 	// Handler specifies the underlying runtime and configuration that the CRI implementation will use to
-	// handle pods of this class. The possible values are specific to the node & CRI configuration.  It
-	// is assumed that all handlers are available on every node, and handlers of the same name are
-	// equivalent on every node. For example, a handler called "runc" might specify that the runc OCI
-	// runtime (using native Linux containers) will be used to run the containers in a pod. The Handler
-	// must be lowercase, conform to the DNS Label (RFC 1123) requirements, and is immutable.
+	// handle pods of this class. The possible values are specific to the node & CRI configuration. It is
+	// assumed that all handlers are available on every node, and handlers of the same name are equivalent
+	// on every node. For example, a handler called "runc" might specify that the runc OCI runtime (using
+	// native Linux containers) will be used to run the containers in a pod. The Handler must be lowercase,
+	// conform to the DNS Label (RFC 1123) requirements, and is immutable.
 	Handler string `json:"handler"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind       OptString                                   `json:"kind"`
 	Metadata   OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
@@ -27098,14 +27100,14 @@ func (*IoK8sAPINodeV1RuntimeClass) readNodeV1RuntimeClassRes() {}
 // RuntimeClassList is a list of RuntimeClass objects.
 // Ref: #/components/schemas/io.k8s.api.node.v1.RuntimeClassList
 type IoK8sAPINodeV1RuntimeClassList struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
 	// Items is a list of schema objects.
 	Items []IoK8sAPINodeV1RuntimeClass `json:"items"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
@@ -27230,19 +27232,19 @@ func (s *IoK8sAPINodeV1alpha1OverheadPodFixed) init() IoK8sAPINodeV1alpha1Overhe
 	return m
 }
 
-// RuntimeClass defines a class of container runtime supported in the cluster. The RuntimeClass is
-// used to determine which container runtime is used to run all containers in a pod. RuntimeClasses
-// are (currently) manually defined by a user or cluster provisioner, and referenced in the PodSpec.
-// The Kubelet is responsible for resolving the RuntimeClassName reference before running the pod.
-// For more details, see https://git.k8s.io/enhancements/keps/sig-node/585-runtime-class.
+// RuntimeClass defines a class of container runtime supported in the cluster. The RuntimeClass is used
+// to determine which container runtime is used to run all containers in a pod. RuntimeClasses are
+// (currently) manually defined by a user or cluster provisioner, and referenced in the PodSpec. The
+// Kubelet is responsible for resolving the RuntimeClassName reference before running the pod. For more
+// details, see https://git.k8s.io/enhancements/keps/sig-node/585-runtime-class.
 // Ref: #/components/schemas/io.k8s.api.node.v1alpha1.RuntimeClass
 type IoK8sAPINodeV1alpha1RuntimeClass struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                   `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
@@ -27294,14 +27296,14 @@ func (*IoK8sAPINodeV1alpha1RuntimeClass) readNodeV1alpha1RuntimeClassRes() {}
 // RuntimeClassList is a list of RuntimeClass objects.
 // Ref: #/components/schemas/io.k8s.api.node.v1alpha1.RuntimeClassList
 type IoK8sAPINodeV1alpha1RuntimeClassList struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
 	// Items is a list of schema objects.
 	Items []IoK8sAPINodeV1alpha1RuntimeClass `json:"items"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
@@ -27351,14 +27353,13 @@ func (*IoK8sAPINodeV1alpha1RuntimeClassList) listNodeV1alpha1RuntimeClassRes() {
 
 // RuntimeClassSpec is a specification of a RuntimeClass. It contains parameters that are required to
 // describe the RuntimeClass to the Container Runtime Interface (CRI) implementation, as well as any
-// other components that need to understand how the pod will be run. The RuntimeClassSpec is
-// immutable.
+// other components that need to understand how the pod will be run. The RuntimeClassSpec is immutable.
 // Ref: #/components/schemas/io.k8s.api.node.v1alpha1.RuntimeClassSpec
 type IoK8sAPINodeV1alpha1RuntimeClassSpec struct {
 	Overhead OptIoK8sAPINodeV1alpha1Overhead `json:"overhead"`
 	// RuntimeHandler specifies the underlying runtime and configuration that the CRI implementation will
 	// use to handle pods of this class. The possible values are specific to the node & CRI configuration.
-	//   It is assumed that all handlers are available on every node, and handlers of the same name are
+	// It is assumed that all handlers are available on every node, and handlers of the same name are
 	// equivalent on every node. For example, a handler called "runc" might specify that the runc OCI
 	// runtime (using native Linux containers) will be used to run the containers in a pod. The
 	// RuntimeHandler must be lowercase, conform to the DNS Label (RFC 1123) requirements, and is
@@ -27474,26 +27475,26 @@ func (s *IoK8sAPINodeV1beta1OverheadPodFixed) init() IoK8sAPINodeV1beta1Overhead
 	return m
 }
 
-// RuntimeClass defines a class of container runtime supported in the cluster. The RuntimeClass is
-// used to determine which container runtime is used to run all containers in a pod. RuntimeClasses
-// are (currently) manually defined by a user or cluster provisioner, and referenced in the PodSpec.
-// The Kubelet is responsible for resolving the RuntimeClassName reference before running the pod.
-// For more details, see https://git.k8s.io/enhancements/keps/sig-node/585-runtime-class.
+// RuntimeClass defines a class of container runtime supported in the cluster. The RuntimeClass is used
+// to determine which container runtime is used to run all containers in a pod. RuntimeClasses are
+// (currently) manually defined by a user or cluster provisioner, and referenced in the PodSpec. The
+// Kubelet is responsible for resolving the RuntimeClassName reference before running the pod. For more
+// details, see https://git.k8s.io/enhancements/keps/sig-node/585-runtime-class.
 // Ref: #/components/schemas/io.k8s.api.node.v1beta1.RuntimeClass
 type IoK8sAPINodeV1beta1RuntimeClass struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
 	// Handler specifies the underlying runtime and configuration that the CRI implementation will use to
-	// handle pods of this class. The possible values are specific to the node & CRI configuration.  It
-	// is assumed that all handlers are available on every node, and handlers of the same name are
-	// equivalent on every node. For example, a handler called "runc" might specify that the runc OCI
-	// runtime (using native Linux containers) will be used to run the containers in a pod. The Handler
-	// must be lowercase, conform to the DNS Label (RFC 1123) requirements, and is immutable.
+	// handle pods of this class. The possible values are specific to the node & CRI configuration. It is
+	// assumed that all handlers are available on every node, and handlers of the same name are equivalent
+	// on every node. For example, a handler called "runc" might specify that the runc OCI runtime (using
+	// native Linux containers) will be used to run the containers in a pod. The Handler must be lowercase,
+	// conform to the DNS Label (RFC 1123) requirements, and is immutable.
 	Handler string `json:"handler"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind       OptString                                   `json:"kind"`
 	Metadata   OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
@@ -27566,14 +27567,14 @@ func (*IoK8sAPINodeV1beta1RuntimeClass) readNodeV1beta1RuntimeClassRes() {}
 // RuntimeClassList is a list of RuntimeClass objects.
 // Ref: #/components/schemas/io.k8s.api.node.v1beta1.RuntimeClassList
 type IoK8sAPINodeV1beta1RuntimeClassList struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
 	// Items is a list of schema objects.
 	Items []IoK8sAPINodeV1beta1RuntimeClass `json:"items"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
@@ -27669,16 +27670,16 @@ func (s *IoK8sAPINodeV1beta1SchedulingNodeSelector) init() IoK8sAPINodeV1beta1Sc
 	return m
 }
 
-// PodDisruptionBudget is an object to define the max disruption that can be caused to a collection
-// of pods.
+// PodDisruptionBudget is an object to define the max disruption that can be caused to a collection of
+// pods.
 // Ref: #/components/schemas/io.k8s.api.policy.v1.PodDisruptionBudget
 type IoK8sAPIPolicyV1PodDisruptionBudget struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                    `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta  `json:"metadata"`
@@ -27742,14 +27743,14 @@ func (*IoK8sAPIPolicyV1PodDisruptionBudget) readPolicyV1NamespacedPodDisruptionB
 // PodDisruptionBudgetList is a collection of PodDisruptionBudgets.
 // Ref: #/components/schemas/io.k8s.api.policy.v1.PodDisruptionBudgetList
 type IoK8sAPIPolicyV1PodDisruptionBudgetList struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
 	// Items is a list of PodDisruptionBudgets.
 	Items []IoK8sAPIPolicyV1PodDisruptionBudget `json:"items"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
@@ -27842,30 +27843,29 @@ func (s *IoK8sAPIPolicyV1PodDisruptionBudgetSpec) SetSelector(val OptIoK8sApimac
 // Ref: #/components/schemas/io.k8s.api.policy.v1.PodDisruptionBudgetStatus
 type IoK8sAPIPolicyV1PodDisruptionBudgetStatus struct {
 	// Conditions contain conditions for PDB. The disruption controller sets the DisruptionAllowed
-	// condition. The following are known values for the reason field (additional reasons could be added
-	// in the future): - SyncFailed: The controller encountered an error and wasn't able to compute
-	// the number of allowed disruptions. Therefore no disruptions are
-	// allowed and the status of the condition will be False.
-	// - InsufficientPods: The number of pods are either at or below the number
-	// required by the PodDisruptionBudget. No disruptions are
-	// allowed and the status of the condition will be False.
-	// - SufficientPods: There are more pods than required by the PodDisruptionBudget.
-	// The condition will be True, and the number of allowed
-	// disruptions are provided by the disruptionsAllowed property.
+	// condition. The following are known values for the reason field (additional reasons could be added in
+	// the future): - SyncFailed: The controller encountered an error and wasn't able to compute the number
+	// of allowed disruptions. Therefore no disruptions are allowed and the status of the condition will be
+	// False.
+	//
+	//  - InsufficientPods: The number of pods are either at or below the number required by the
+	//    PodDisruptionBudget. No disruptions are allowed and the status of the condition will be False.
+	//  - SufficientPods: There are more pods than required by the PodDisruptionBudget. The condition will
+	//    be True, and the number of allowed disruptions are provided by the disruptionsAllowed property.
 	Conditions []IoK8sApimachineryPkgApisMetaV1Condition `json:"conditions"`
 	// Current number of healthy pods.
 	CurrentHealthy int32 `json:"currentHealthy"`
 	// Minimum desired number of healthy pods.
 	DesiredHealthy int32 `json:"desiredHealthy"`
 	// DisruptedPods contains information about pods whose eviction was processed by the API server
-	// eviction subresource handler but has not yet been observed by the PodDisruptionBudget controller.
-	// A pod will be in this map from the time when the API server processed the eviction request to the
-	// time when the pod is seen by PDB controller as having been marked for deletion (or after a
-	// timeout). The key in the map is the name of the pod and the value is the time when the API server
-	// processed the eviction request. If the deletion didn't occur and a pod is still there it will be
-	// removed from the list automatically by PodDisruptionBudget controller after some time. If
-	// everything goes smooth this map should be empty for the most of the time. Large number of entries
-	// in the map may indicate problems with pod deletions.
+	// eviction subresource handler but has not yet been observed by the PodDisruptionBudget controller. A
+	// pod will be in this map from the time when the API server processed the eviction request to the time
+	// when the pod is seen by PDB controller as having been marked for deletion (or after a timeout). The
+	// key in the map is the name of the pod and the value is the time when the API server processed the
+	// eviction request. If the deletion didn't occur and a pod is still there it will be removed from the
+	// list automatically by PodDisruptionBudget controller after some time. If everything goes smooth this
+	// map should be empty for the most of the time. Large number of entries in the map may indicate
+	// problems with pod deletions.
 	DisruptedPods OptIoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods `json:"disruptedPods"`
 	// Number of pod disruptions that are currently allowed.
 	DisruptionsAllowed int32 `json:"disruptionsAllowed"`
@@ -27947,14 +27947,14 @@ func (s *IoK8sAPIPolicyV1PodDisruptionBudgetStatus) SetObservedGeneration(val Op
 }
 
 // DisruptedPods contains information about pods whose eviction was processed by the API server
-// eviction subresource handler but has not yet been observed by the PodDisruptionBudget controller.
-// A pod will be in this map from the time when the API server processed the eviction request to the
-// time when the pod is seen by PDB controller as having been marked for deletion (or after a
-// timeout). The key in the map is the name of the pod and the value is the time when the API server
-// processed the eviction request. If the deletion didn't occur and a pod is still there it will be
-// removed from the list automatically by PodDisruptionBudget controller after some time. If
-// everything goes smooth this map should be empty for the most of the time. Large number of entries
-// in the map may indicate problems with pod deletions.
+// eviction subresource handler but has not yet been observed by the PodDisruptionBudget controller. A
+// pod will be in this map from the time when the API server processed the eviction request to the time
+// when the pod is seen by PDB controller as having been marked for deletion (or after a timeout). The
+// key in the map is the name of the pod and the value is the time when the API server processed the
+// eviction request. If the deletion didn't occur and a pod is still there it will be removed from the
+// list automatically by PodDisruptionBudget controller after some time. If everything goes smooth this
+// map should be empty for the most of the time. Large number of entries in the map may indicate
+// problems with pod deletions.
 type IoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods map[string]IoK8sApimachineryPkgApisMetaV1Time
 
 func (s *IoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods) init() IoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods {
@@ -28000,12 +28000,13 @@ func (s *IoK8sAPIPolicyV1beta1AllowedFlexVolume) SetDriver(val string) {
 	s.Driver = val
 }
 
-// AllowedHostPath defines the host volume conditions that will be enabled by a policy for pods to
-// use. It requires the path prefix to be defined.
+// AllowedHostPath defines the host volume conditions that will be enabled by a policy for pods to use.
+// It requires the path prefix to be defined.
 // Ref: #/components/schemas/io.k8s.api.policy.v1beta1.AllowedHostPath
 type IoK8sAPIPolicyV1beta1AllowedHostPath struct {
 	// PathPrefix is the path prefix that the host volume must match. It does not support `*`. Trailing
 	// slashes are trimmed when validating the path prefix with a host path.
+	//
 	// Examples: `/foo` would allow `/foo`, `/foo/` and `/foo/bar` `/foo` would not allow `/food` or
 	// `/etc/foo`.
 	PathPrefix OptString `json:"pathPrefix"`
@@ -28037,8 +28038,8 @@ func (s *IoK8sAPIPolicyV1beta1AllowedHostPath) SetReadOnly(val OptBool) {
 // FSGroupStrategyOptions defines the strategy type and options used to create the strategy.
 // Ref: #/components/schemas/io.k8s.api.policy.v1beta1.FSGroupStrategyOptions
 type IoK8sAPIPolicyV1beta1FSGroupStrategyOptions struct {
-	// Ranges are the allowed ranges of fs groups.  If you would like to force a single fs group then
-	// supply a single range with the same start and end. Required for MustRunAs.
+	// Ranges are the allowed ranges of fs groups. If you would like to force a single fs group then supply
+	// a single range with the same start and end. Required for MustRunAs.
 	Ranges []IoK8sAPIPolicyV1beta1IDRange `json:"ranges"`
 	// Rule is the strategy that will dictate what FSGroup is used in the SecurityContext.
 	Rule OptString `json:"rule"`
@@ -28064,7 +28065,7 @@ func (s *IoK8sAPIPolicyV1beta1FSGroupStrategyOptions) SetRule(val OptString) {
 	s.Rule = val
 }
 
-// HostPortRange defines a range of host ports that will be enabled by a policy for pods to use.  It
+// HostPortRange defines a range of host ports that will be enabled by a policy for pods to use. It
 // requires both the start and end to be defined.
 // Ref: #/components/schemas/io.k8s.api.policy.v1beta1.HostPortRange
 type IoK8sAPIPolicyV1beta1HostPortRange struct {
@@ -28123,16 +28124,16 @@ func (s *IoK8sAPIPolicyV1beta1IDRange) SetMin(val int64) {
 	s.Min = val
 }
 
-// PodDisruptionBudget is an object to define the max disruption that can be caused to a collection
-// of pods.
+// PodDisruptionBudget is an object to define the max disruption that can be caused to a collection of
+// pods.
 // Ref: #/components/schemas/io.k8s.api.policy.v1beta1.PodDisruptionBudget
 type IoK8sAPIPolicyV1beta1PodDisruptionBudget struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                         `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta       `json:"metadata"`
@@ -28198,14 +28199,14 @@ func (*IoK8sAPIPolicyV1beta1PodDisruptionBudget) readPolicyV1beta1NamespacedPodD
 // PodDisruptionBudgetList is a collection of PodDisruptionBudgets.
 // Ref: #/components/schemas/io.k8s.api.policy.v1beta1.PodDisruptionBudgetList
 type IoK8sAPIPolicyV1beta1PodDisruptionBudgetList struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
 	// Items list individual PodDisruptionBudget objects.
 	Items []IoK8sAPIPolicyV1beta1PodDisruptionBudget `json:"items"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
@@ -28299,30 +28300,29 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec) SetSelector(val OptIoK8sA
 // Ref: #/components/schemas/io.k8s.api.policy.v1beta1.PodDisruptionBudgetStatus
 type IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus struct {
 	// Conditions contain conditions for PDB. The disruption controller sets the DisruptionAllowed
-	// condition. The following are known values for the reason field (additional reasons could be added
-	// in the future): - SyncFailed: The controller encountered an error and wasn't able to compute
-	// the number of allowed disruptions. Therefore no disruptions are
-	// allowed and the status of the condition will be False.
-	// - InsufficientPods: The number of pods are either at or below the number
-	// required by the PodDisruptionBudget. No disruptions are
-	// allowed and the status of the condition will be False.
-	// - SufficientPods: There are more pods than required by the PodDisruptionBudget.
-	// The condition will be True, and the number of allowed
-	// disruptions are provided by the disruptionsAllowed property.
+	// condition. The following are known values for the reason field (additional reasons could be added in
+	// the future): - SyncFailed: The controller encountered an error and wasn't able to compute the number
+	// of allowed disruptions. Therefore no disruptions are allowed and the status of the condition will be
+	// False.
+	//
+	//  - InsufficientPods: The number of pods are either at or below the number required by the
+	//    PodDisruptionBudget. No disruptions are allowed and the status of the condition will be False.
+	//  - SufficientPods: There are more pods than required by the PodDisruptionBudget. The condition will
+	//    be True, and the number of allowed disruptions are provided by the disruptionsAllowed property.
 	Conditions []IoK8sApimachineryPkgApisMetaV1Condition `json:"conditions"`
 	// Current number of healthy pods.
 	CurrentHealthy int32 `json:"currentHealthy"`
 	// Minimum desired number of healthy pods.
 	DesiredHealthy int32 `json:"desiredHealthy"`
 	// DisruptedPods contains information about pods whose eviction was processed by the API server
-	// eviction subresource handler but has not yet been observed by the PodDisruptionBudget controller.
-	// A pod will be in this map from the time when the API server processed the eviction request to the
-	// time when the pod is seen by PDB controller as having been marked for deletion (or after a
-	// timeout). The key in the map is the name of the pod and the value is the time when the API server
-	// processed the eviction request. If the deletion didn't occur and a pod is still there it will be
-	// removed from the list automatically by PodDisruptionBudget controller after some time. If
-	// everything goes smooth this map should be empty for the most of the time. Large number of entries
-	// in the map may indicate problems with pod deletions.
+	// eviction subresource handler but has not yet been observed by the PodDisruptionBudget controller. A
+	// pod will be in this map from the time when the API server processed the eviction request to the time
+	// when the pod is seen by PDB controller as having been marked for deletion (or after a timeout). The
+	// key in the map is the name of the pod and the value is the time when the API server processed the
+	// eviction request. If the deletion didn't occur and a pod is still there it will be removed from the
+	// list automatically by PodDisruptionBudget controller after some time. If everything goes smooth this
+	// map should be empty for the most of the time. Large number of entries in the map may indicate
+	// problems with pod deletions.
 	DisruptedPods OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods `json:"disruptedPods"`
 	// Number of pod disruptions that are currently allowed.
 	DisruptionsAllowed int32 `json:"disruptionsAllowed"`
@@ -28404,14 +28404,14 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) SetObservedGeneration(v
 }
 
 // DisruptedPods contains information about pods whose eviction was processed by the API server
-// eviction subresource handler but has not yet been observed by the PodDisruptionBudget controller.
-// A pod will be in this map from the time when the API server processed the eviction request to the
-// time when the pod is seen by PDB controller as having been marked for deletion (or after a
-// timeout). The key in the map is the name of the pod and the value is the time when the API server
-// processed the eviction request. If the deletion didn't occur and a pod is still there it will be
-// removed from the list automatically by PodDisruptionBudget controller after some time. If
-// everything goes smooth this map should be empty for the most of the time. Large number of entries
-// in the map may indicate problems with pod deletions.
+// eviction subresource handler but has not yet been observed by the PodDisruptionBudget controller. A
+// pod will be in this map from the time when the API server processed the eviction request to the time
+// when the pod is seen by PDB controller as having been marked for deletion (or after a timeout). The
+// key in the map is the name of the pod and the value is the time when the API server processed the
+// eviction request. If the deletion didn't occur and a pod is still there it will be removed from the
+// list automatically by PodDisruptionBudget controller after some time. If everything goes smooth this
+// map should be empty for the most of the time. Large number of entries in the map may indicate
+// problems with pod deletions.
 type IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods map[string]IoK8sApimachineryPkgApisMetaV1Time
 
 func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods) init() IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods {
@@ -28423,16 +28423,16 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods) init() IoK
 	return m
 }
 
-// PodSecurityPolicy governs the ability to make requests that affect the Security Context that will
-// be applied to a pod and container. Deprecated in 1.21.
+// PodSecurityPolicy governs the ability to make requests that affect the Security Context that will be
+// applied to a pod and container. Deprecated in 1.21.
 // Ref: #/components/schemas/io.k8s.api.policy.v1beta1.PodSecurityPolicy
 type IoK8sAPIPolicyV1beta1PodSecurityPolicy struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                     `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta   `json:"metadata"`
@@ -28484,14 +28484,14 @@ func (*IoK8sAPIPolicyV1beta1PodSecurityPolicy) readPolicyV1beta1PodSecurityPolic
 // PodSecurityPolicyList is a list of PodSecurityPolicy objects.
 // Ref: #/components/schemas/io.k8s.api.policy.v1beta1.PodSecurityPolicyList
 type IoK8sAPIPolicyV1beta1PodSecurityPolicyList struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
 	// Items is a list of schema objects.
 	Items []IoK8sAPIPolicyV1beta1PodSecurityPolicy `json:"items"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
@@ -28554,8 +28554,8 @@ type IoK8sAPIPolicyV1beta1PodSecurityPolicySpec struct {
 	// Capabilities in this field may be added at the pod author's discretion. You must not list a
 	// capability in both allowedCapabilities and requiredDropCapabilities.
 	AllowedCapabilities []string `json:"allowedCapabilities"`
-	// AllowedFlexVolumes is an allowlist of Flexvolumes.  Empty or nil indicates that all Flexvolumes
-	// may be used.  This parameter is effective only when the usage of the Flexvolumes is allowed in the
+	// AllowedFlexVolumes is an allowlist of Flexvolumes. Empty or nil indicates that all Flexvolumes may
+	// be used. This parameter is effective only when the usage of the Flexvolumes is allowed in the
 	// "volumes" field.
 	AllowedFlexVolumes []IoK8sAPIPolicyV1beta1AllowedFlexVolume `json:"allowedFlexVolumes"`
 	// AllowedHostPaths is an allowlist of host paths. Empty indicates that all host paths may be used.
@@ -28563,26 +28563,28 @@ type IoK8sAPIPolicyV1beta1PodSecurityPolicySpec struct {
 	// AllowedProcMountTypes is an allowlist of allowed ProcMountTypes. Empty or nil indicates that only
 	// the DefaultProcMountType may be used. This requires the ProcMountType feature flag to be enabled.
 	AllowedProcMountTypes []string `json:"allowedProcMountTypes"`
-	// AllowedUnsafeSysctls is a list of explicitly allowed unsafe sysctls, defaults to none. Each entry
-	// is either a plain sysctl name or ends in "*" in which case it is considered as a prefix of allowed
-	// sysctls. Single * means all unsafe sysctls are allowed. Kubelet has to allowlist all allowed
-	// unsafe sysctls explicitly to avoid rejection.
-	// Examples: e.g. "foo/*" allows "foo/bar", "foo/baz", etc. e.g. "foo.*" allows "foo.bar", "foo.baz",
+	// AllowedUnsafeSysctls is a list of explicitly allowed unsafe sysctls, defaults to none. Each entry is
+	// either a plain sysctl name or ends in "*" in which case it is considered as a prefix of allowed
+	// sysctls. Single * means all unsafe sysctls are allowed. Kubelet has to allowlist all allowed unsafe
+	// sysctls explicitly to avoid rejection.
+	//
+	// Examples: e.g. "foo/" allows "foo/bar", "foo/baz", etc. e.g. "foo." allows "foo.bar", "foo.baz",
 	// etc.
 	AllowedUnsafeSysctls []string `json:"allowedUnsafeSysctls"`
-	// DefaultAddCapabilities is the default set of capabilities that will be added to the container
-	// unless the pod spec specifically drops the capability.  You may not list a capability in both
-	// defaultAddCapabilities and requiredDropCapabilities. Capabilities added here are implicitly
-	// allowed, and need not be included in the allowedCapabilities list.
+	// DefaultAddCapabilities is the default set of capabilities that will be added to the container unless
+	// the pod spec specifically drops the capability. You may not list a capability in both
+	// defaultAddCapabilities and requiredDropCapabilities. Capabilities added here are implicitly allowed,
+	// and need not be included in the allowedCapabilities list.
 	DefaultAddCapabilities []string `json:"defaultAddCapabilities"`
 	// DefaultAllowPrivilegeEscalation controls the default setting for whether a process can gain more
 	// privileges than its parent process.
 	DefaultAllowPrivilegeEscalation OptBool `json:"defaultAllowPrivilegeEscalation"`
-	// ForbiddenSysctls is a list of explicitly forbidden sysctls, defaults to none. Each entry is either
-	// a plain sysctl name or ends in "*" in which case it is considered as a prefix of forbidden sysctls.
-	//  Single * means all sysctls are forbidden.
-	// Examples: e.g. "foo/*" forbids "foo/bar", "foo/baz", etc. e.g. "foo.*" forbids "foo.bar", "foo.
-	// baz", etc.
+	// ForbiddenSysctls is a list of explicitly forbidden sysctls, defaults to none. Each entry is either a
+	// plain sysctl name or ends in "*" in which case it is considered as a prefix of forbidden sysctls.
+	// Single * means all sysctls are forbidden.
+	//
+	// Examples: e.g. "foo/" forbids "foo/bar", "foo/baz", etc. e.g. "foo." forbids "foo.bar", "foo.baz",
+	// etc.
 	ForbiddenSysctls []string                                    `json:"forbiddenSysctls"`
 	FsGroup          IoK8sAPIPolicyV1beta1FSGroupStrategyOptions `json:"fsGroup"`
 	// HostIPC determines if the policy allows the use of HostIPC in the pod spec.
@@ -28596,11 +28598,11 @@ type IoK8sAPIPolicyV1beta1PodSecurityPolicySpec struct {
 	// Privileged determines if a pod can request to be run as privileged.
 	Privileged OptBool `json:"privileged"`
 	// ReadOnlyRootFilesystem when set to true will force containers to run with a read only root file
-	// system.  If the container specifically requests to run with a non-read only root file system the
-	// PSP should deny the pod. If set to false the container may run with a read only root file system
-	// if it wishes but it will not be forced to.
+	// system. If the container specifically requests to run with a non-read only root file system the PSP
+	// should deny the pod. If set to false the container may run with a read only root file system if it
+	// wishes but it will not be forced to.
 	ReadOnlyRootFilesystem OptBool `json:"readOnlyRootFilesystem"`
-	// RequiredDropCapabilities are the capabilities that will be dropped from the container.  These are
+	// RequiredDropCapabilities are the capabilities that will be dropped from the container. These are
 	// required to be dropped and cannot be added.
 	RequiredDropCapabilities []string                                               `json:"requiredDropCapabilities"`
 	RunAsGroup               OptIoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions      `json:"runAsGroup"`
@@ -28608,8 +28610,8 @@ type IoK8sAPIPolicyV1beta1PodSecurityPolicySpec struct {
 	RuntimeClass             OptIoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions    `json:"runtimeClass"`
 	SeLinux                  IoK8sAPIPolicyV1beta1SELinuxStrategyOptions            `json:"seLinux"`
 	SupplementalGroups       IoK8sAPIPolicyV1beta1SupplementalGroupsStrategyOptions `json:"supplementalGroups"`
-	// Volumes is an allowlist of volume plugins. Empty indicates that no volumes may be used. To allow
-	// all volumes you may use '*'.
+	// Volumes is an allowlist of volume plugins. Empty indicates that no volumes may be used. To allow all
+	// volumes you may use '*'.
 	Volumes []string `json:"volumes"`
 }
 
@@ -28856,8 +28858,8 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) SetVolumes(val []string) {
 // RunAsGroupStrategyOptions defines the strategy type and any options used to create the strategy.
 // Ref: #/components/schemas/io.k8s.api.policy.v1beta1.RunAsGroupStrategyOptions
 type IoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions struct {
-	// Ranges are the allowed ranges of gids that may be used. If you would like to force a single gid
-	// then supply a single range with the same start and end. Required for MustRunAs.
+	// Ranges are the allowed ranges of gids that may be used. If you would like to force a single gid then
+	// supply a single range with the same start and end. Required for MustRunAs.
 	Ranges []IoK8sAPIPolicyV1beta1IDRange `json:"ranges"`
 	// Rule is the strategy that will dictate the allowable RunAsGroup values that may be set.
 	Rule string `json:"rule"`
@@ -28886,8 +28888,8 @@ func (s *IoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions) SetRule(val string) {
 // RunAsUserStrategyOptions defines the strategy type and any options used to create the strategy.
 // Ref: #/components/schemas/io.k8s.api.policy.v1beta1.RunAsUserStrategyOptions
 type IoK8sAPIPolicyV1beta1RunAsUserStrategyOptions struct {
-	// Ranges are the allowed ranges of uids that may be used. If you would like to force a single uid
-	// then supply a single range with the same start and end. Required for MustRunAs.
+	// Ranges are the allowed ranges of uids that may be used. If you would like to force a single uid then
+	// supply a single range with the same start and end. Required for MustRunAs.
 	Ranges []IoK8sAPIPolicyV1beta1IDRange `json:"ranges"`
 	// Rule is the strategy that will dictate the allowable RunAsUser values that may be set.
 	Rule string `json:"rule"`
@@ -28913,13 +28915,13 @@ func (s *IoK8sAPIPolicyV1beta1RunAsUserStrategyOptions) SetRule(val string) {
 	s.Rule = val
 }
 
-// RuntimeClassStrategyOptions define the strategy that will dictate the allowable RuntimeClasses for
-// a pod.
+// RuntimeClassStrategyOptions define the strategy that will dictate the allowable RuntimeClasses for a
+// pod.
 // Ref: #/components/schemas/io.k8s.api.policy.v1beta1.RuntimeClassStrategyOptions
 type IoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions struct {
 	// AllowedRuntimeClassNames is an allowlist of RuntimeClass names that may be specified on a pod. A
-	// value of "*" means that any RuntimeClass name is allowed, and must be the only item in the list.
-	// An empty list requires the RuntimeClassName field to be unset.
+	// value of "*" means that any RuntimeClass name is allowed, and must be the only item in the list. An
+	// empty list requires the RuntimeClassName field to be unset.
 	AllowedRuntimeClassNames []string `json:"allowedRuntimeClassNames"`
 	// DefaultRuntimeClassName is the default RuntimeClassName to set on the pod. The default MUST be
 	// allowed by the allowedRuntimeClassNames list. A value of nil does not mutate the Pod.
@@ -28974,11 +28976,10 @@ func (s *IoK8sAPIPolicyV1beta1SELinuxStrategyOptions) SetSeLinuxOptions(val OptI
 	s.SeLinuxOptions = val
 }
 
-// SupplementalGroupsStrategyOptions defines the strategy type and options used to create the
-// strategy.
+// SupplementalGroupsStrategyOptions defines the strategy type and options used to create the strategy.
 // Ref: #/components/schemas/io.k8s.api.policy.v1beta1.SupplementalGroupsStrategyOptions
 type IoK8sAPIPolicyV1beta1SupplementalGroupsStrategyOptions struct {
-	// Ranges are the allowed ranges of supplemental groups.  If you would like to force a single
+	// Ranges are the allowed ranges of supplemental groups. If you would like to force a single
 	// supplemental group then supply a single range with the same start and end. Required for MustRunAs.
 	Ranges []IoK8sAPIPolicyV1beta1IDRange `json:"ranges"`
 	// Rule is the strategy that will dictate what supplemental groups is used in the SecurityContext.
@@ -29023,17 +29024,17 @@ func (s *IoK8sAPIRbacV1AggregationRule) SetClusterRoleSelectors(val []IoK8sApima
 	s.ClusterRoleSelectors = val
 }
 
-// ClusterRole is a cluster level, logical grouping of PolicyRules that can be referenced as a unit
-// by a RoleBinding or ClusterRoleBinding.
+// ClusterRole is a cluster level, logical grouping of PolicyRules that can be referenced as a unit by
+// a RoleBinding or ClusterRoleBinding.
 // Ref: #/components/schemas/io.k8s.api.rbac.v1.ClusterRole
 type IoK8sAPIRbacV1ClusterRole struct {
 	AggregationRule OptIoK8sAPIRbacV1AggregationRule `json:"aggregationRule"`
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                   `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
@@ -29093,16 +29094,16 @@ func (s *IoK8sAPIRbacV1ClusterRole) SetRules(val []IoK8sAPIRbacV1PolicyRule) {
 
 func (*IoK8sAPIRbacV1ClusterRole) readRbacAuthorizationV1ClusterRoleRes() {}
 
-// ClusterRoleBinding references a ClusterRole, but not contain it.  It can reference a ClusterRole
-// in the global namespace, and adds who information via Subject.
+// ClusterRoleBinding references a ClusterRole, but not contain it. It can reference a ClusterRole in
+// the global namespace, and adds who information via Subject.
 // Ref: #/components/schemas/io.k8s.api.rbac.v1.ClusterRoleBinding
 type IoK8sAPIRbacV1ClusterRoleBinding struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                   `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
@@ -29166,14 +29167,14 @@ func (*IoK8sAPIRbacV1ClusterRoleBinding) readRbacAuthorizationV1ClusterRoleBindi
 // ClusterRoleBindingList is a collection of ClusterRoleBindings.
 // Ref: #/components/schemas/io.k8s.api.rbac.v1.ClusterRoleBindingList
 type IoK8sAPIRbacV1ClusterRoleBindingList struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
 	// Items is a list of ClusterRoleBindings.
 	Items []IoK8sAPIRbacV1ClusterRoleBinding `json:"items"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
@@ -29224,14 +29225,14 @@ func (*IoK8sAPIRbacV1ClusterRoleBindingList) listRbacAuthorizationV1ClusterRoleB
 // ClusterRoleList is a collection of ClusterRoles.
 // Ref: #/components/schemas/io.k8s.api.rbac.v1.ClusterRoleList
 type IoK8sAPIRbacV1ClusterRoleList struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
 	// Items is a list of ClusterRoles.
 	Items []IoK8sAPIRbacV1ClusterRole `json:"items"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
@@ -29283,23 +29284,22 @@ func (*IoK8sAPIRbacV1ClusterRoleList) listRbacAuthorizationV1ClusterRoleRes() {}
 // who the rule applies to or which namespace the rule applies to.
 // Ref: #/components/schemas/io.k8s.api.rbac.v1.PolicyRule
 type IoK8sAPIRbacV1PolicyRule struct {
-	// APIGroups is the name of the APIGroup that contains the resources.  If multiple API groups are
+	// APIGroups is the name of the APIGroup that contains the resources. If multiple API groups are
 	// specified, any action requested against one of the enumerated resources in any API group will be
 	// allowed.
 	ApiGroups []string `json:"apiGroups"`
-	// NonResourceURLs is a set of partial urls that a user should have access to.  *s are allowed, but
-	// only as the full, final step in the path Since non-resource URLs are not namespaced, this field is
-	// only applicable for ClusterRoles referenced from a ClusterRoleBinding. Rules can either apply to
-	// API resources (such as "pods" or "secrets") or non-resource URL paths (such as "/api"),  but not
-	// both.
+	// NonResourceURLs is a set of partial urls that a user should have access to. *s are allowed, but only
+	// as the full, final step in the path Since non-resource URLs are not namespaced, this field is only
+	// applicable for ClusterRoles referenced from a ClusterRoleBinding. Rules can either apply to API
+	// resources (such as "pods" or "secrets") or non-resource URL paths (such as "/api"), but not both.
 	NonResourceURLs []string `json:"nonResourceURLs"`
-	// ResourceNames is an optional white list of names that the rule applies to.  An empty set means
-	// that everything is allowed.
+	// ResourceNames is an optional white list of names that the rule applies to. An empty set means that
+	// everything is allowed.
 	ResourceNames []string `json:"resourceNames"`
 	// Resources is a list of resources this rule applies to. '*' represents all resources.
 	Resources []string `json:"resources"`
-	// Verbs is a list of Verbs that apply to ALL the ResourceKinds contained in this rule. '*'
-	// represents all verbs.
+	// Verbs is a list of Verbs that apply to ALL the ResourceKinds contained in this rule. '*' represents
+	// all verbs.
 	Verbs []string `json:"verbs"`
 }
 
@@ -29357,12 +29357,12 @@ func (s *IoK8sAPIRbacV1PolicyRule) SetVerbs(val []string) {
 // RoleBinding.
 // Ref: #/components/schemas/io.k8s.api.rbac.v1.Role
 type IoK8sAPIRbacV1Role struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                   `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
@@ -29412,18 +29412,18 @@ func (s *IoK8sAPIRbacV1Role) SetRules(val []IoK8sAPIRbacV1PolicyRule) {
 
 func (*IoK8sAPIRbacV1Role) readRbacAuthorizationV1NamespacedRoleRes() {}
 
-// RoleBinding references a role, but does not contain it.  It can reference a Role in the same
+// RoleBinding references a role, but does not contain it. It can reference a Role in the same
 // namespace or a ClusterRole in the global namespace. It adds who information via Subjects and
-// namespace information by which namespace it exists in.  RoleBindings in a given namespace only
-// have effect in that namespace.
+// namespace information by which namespace it exists in. RoleBindings in a given namespace only have
+// effect in that namespace.
 // Ref: #/components/schemas/io.k8s.api.rbac.v1.RoleBinding
 type IoK8sAPIRbacV1RoleBinding struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                   `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
@@ -29487,14 +29487,14 @@ func (*IoK8sAPIRbacV1RoleBinding) readRbacAuthorizationV1NamespacedRoleBindingRe
 // RoleBindingList is a collection of RoleBindings.
 // Ref: #/components/schemas/io.k8s.api.rbac.v1.RoleBindingList
 type IoK8sAPIRbacV1RoleBindingList struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
 	// Items is a list of RoleBindings.
 	Items []IoK8sAPIRbacV1RoleBinding `json:"items"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
@@ -29546,14 +29546,14 @@ func (*IoK8sAPIRbacV1RoleBindingList) listRbacAuthorizationV1RoleBindingForAllNa
 // RoleList is a collection of Roles.
 // Ref: #/components/schemas/io.k8s.api.rbac.v1.RoleList
 type IoK8sAPIRbacV1RoleList struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
 	// Items is a list of Roles.
 	Items []IoK8sAPIRbacV1Role `json:"items"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
@@ -29643,21 +29643,21 @@ func (s *IoK8sAPIRbacV1RoleRef) SetName(val string) {
 	s.Name = val
 }
 
-// Subject contains a reference to the object or user identities a role binding applies to.  This can
+// Subject contains a reference to the object or user identities a role binding applies to. This can
 // either hold a direct API object reference, or a value for non-objects such as user and group names.
 // Ref: #/components/schemas/io.k8s.api.rbac.v1.Subject
 type IoK8sAPIRbacV1Subject struct {
 	// APIGroup holds the API group of the referenced subject. Defaults to "" for ServiceAccount subjects.
-	//  Defaults to "rbac.authorization.k8s.io" for User and Group subjects.
+	// Defaults to "rbac.authorization.k8s.io" for User and Group subjects.
 	ApiGroup OptString `json:"apiGroup"`
 	// Kind of object being referenced. Values defined by this API group are "User", "Group", and
-	// "ServiceAccount". If the Authorizer does not recognized the kind value, the Authorizer should
-	// report an error.
+	// "ServiceAccount". If the Authorizer does not recognized the kind value, the Authorizer should report
+	// an error.
 	Kind string `json:"kind"`
 	// Name of the object being referenced.
 	Name string `json:"name"`
-	// Namespace of the referenced object.  If the object kind is non-namespace, such as "User" or
-	// "Group", and this value is not empty the Authorizer should report an error.
+	// Namespace of the referenced object. If the object kind is non-namespace, such as "User" or "Group",
+	// and this value is not empty the Authorizer should report an error.
 	Namespace OptString `json:"namespace"`
 }
 
@@ -29705,27 +29705,26 @@ func (s *IoK8sAPIRbacV1Subject) SetNamespace(val OptString) {
 // can be any valid integer.
 // Ref: #/components/schemas/io.k8s.api.scheduling.v1.PriorityClass
 type IoK8sAPISchedulingV1PriorityClass struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
 	// Description is an arbitrary string that usually provides guidelines on when this priority class
 	// should be used.
 	Description OptString `json:"description"`
-	// GlobalDefault specifies whether this PriorityClass should be considered as the default priority
-	// for pods that do not have any priority class. Only one PriorityClass can be marked as
-	// `globalDefault`. However, if more than one PriorityClasses exists with their `globalDefault` field
-	// set to true, the smallest value of such global default PriorityClasses will be used as the default
-	// priority.
+	// GlobalDefault specifies whether this PriorityClass should be considered as the default priority for
+	// pods that do not have any priority class. Only one PriorityClass can be marked as `globalDefault`.
+	// However, if more than one PriorityClasses exists with their `globalDefault` field set to true, the
+	// smallest value of such global default PriorityClasses will be used as the default priority.
 	GlobalDefault OptBool `json:"globalDefault"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                   `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
 	// PreemptionPolicy is the Policy for preempting pods with lower priority. One of Never,
-	// PreemptLowerPriority. Defaults to PreemptLowerPriority if unset. This field is beta-level, gated
-	// by the NonPreemptingPriority feature-gate.
+	// PreemptLowerPriority. Defaults to PreemptLowerPriority if unset. This field is beta-level, gated by
+	// the NonPreemptingPriority feature-gate.
 	PreemptionPolicy OptString `json:"preemptionPolicy"`
 	// The value of this priority class. This is the actual priority that pods receive when they have the
 	// name of this class in their pod spec.
@@ -29807,14 +29806,14 @@ func (*IoK8sAPISchedulingV1PriorityClass) readSchedulingV1PriorityClassRes() {}
 // PriorityClassList is a collection of priority classes.
 // Ref: #/components/schemas/io.k8s.api.scheduling.v1.PriorityClassList
 type IoK8sAPISchedulingV1PriorityClassList struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
 	// Items is the list of PriorityClasses.
 	Items []IoK8sAPISchedulingV1PriorityClass `json:"items"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
@@ -29864,16 +29863,16 @@ func (*IoK8sAPISchedulingV1PriorityClassList) listSchedulingV1PriorityClassRes()
 
 // CSIDriver captures information about a Container Storage Interface (CSI) volume driver deployed on
 // the cluster. Kubernetes attach detach controller uses this object to determine whether attach is
-// required. Kubelet uses this object to determine whether pod information needs to be passed on
-// mount. CSIDriver objects are non-namespaced.
+// required. Kubelet uses this object to determine whether pod information needs to be passed on mount.
+// CSIDriver objects are non-namespaced.
 // Ref: #/components/schemas/io.k8s.api.storage.v1.CSIDriver
 type IoK8sAPIStorageV1CSIDriver struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                   `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
@@ -29925,14 +29924,14 @@ func (*IoK8sAPIStorageV1CSIDriver) readStorageV1CSIDriverRes() {}
 // CSIDriverList is a collection of CSIDriver objects.
 // Ref: #/components/schemas/io.k8s.api.storage.v1.CSIDriverList
 type IoK8sAPIStorageV1CSIDriverList struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
 	// Items is the list of CSIDriver.
 	Items []IoK8sAPIStorageV1CSIDriver `json:"items"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
@@ -29983,69 +29982,73 @@ func (*IoK8sAPIStorageV1CSIDriverList) listStorageV1CSIDriverRes() {}
 // CSIDriverSpec is the specification of a CSIDriver.
 // Ref: #/components/schemas/io.k8s.api.storage.v1.CSIDriverSpec
 type IoK8sAPIStorageV1CSIDriverSpec struct {
-	// AttachRequired indicates this CSI volume driver requires an attach operation (because it
-	// implements the CSI ControllerPublishVolume() method), and that the Kubernetes attach detach
-	// controller should call the attach volume interface which checks the volumeattachment status and
-	// waits until the volume is attached before proceeding to mounting. The CSI external-attacher
-	// coordinates with CSI volume driver and updates the volumeattachment status when the attach
-	// operation is complete. If the CSIDriverRegistry feature gate is enabled and the value is specified
-	// to false, the attach operation will be skipped. Otherwise the attach operation will be called.
+	// AttachRequired indicates this CSI volume driver requires an attach operation (because it implements
+	// the CSI ControllerPublishVolume() method), and that the Kubernetes attach detach controller should
+	// call the attach volume interface which checks the volumeattachment status and waits until the volume
+	// is attached before proceeding to mounting. The CSI external-attacher coordinates with CSI volume
+	// driver and updates the volumeattachment status when the attach operation is complete. If the
+	// CSIDriverRegistry feature gate is enabled and the value is specified to false, the attach operation
+	// will be skipped. Otherwise the attach operation will be called.
+	//
 	// This field is immutable.
 	AttachRequired OptBool `json:"attachRequired"`
 	// Defines if the underlying volume supports changing ownership and permission of the volume before
 	// being mounted. Refer to the specific FSGroupPolicy values for additional details. This field is
 	// beta, and is only honored by servers that enable the CSIVolumeFSGroupPolicy feature gate.
+	//
 	// This field is immutable.
+	//
 	// Defaults to ReadWriteOnceWithFSType, which will examine each volume to determine if Kubernetes
 	// should modify ownership and permissions of the volume. With the default policy the defined fsGroup
 	// will only be applied if a fstype is defined and the volume's access mode contains ReadWriteOnce.
 	FsGroupPolicy OptString `json:"fsGroupPolicy"`
-	// If set to true, podInfoOnMount indicates this CSI volume driver requires additional pod
-	// information (like podName, podUID, etc.) during mount operations. If set to false, pod information
-	// will not be passed on mount. Default is false. The CSI driver specifies podInfoOnMount as part of
-	// driver deployment. If true, Kubelet will pass pod information as VolumeContext in the CSI
-	// NodePublishVolume() calls. The CSI driver is responsible for parsing and validating the
-	// information passed in as VolumeContext. The following VolumeConext will be passed if
-	// podInfoOnMount is set to true. This list might grow, but the prefix will be used. "csi.storage.k8s.
-	// io/pod.name": pod.Name "csi.storage.k8s.io/pod.namespace": pod.Namespace "csi.storage.k8s.io/pod.
-	// uid": string(pod.UID) "csi.storage.k8s.io/ephemeral": "true" if the volume is an ephemeral inline
-	// volume
-	// defined by a CSIVolumeSource, otherwise "false"
-	// "csi.storage.k8s.io/ephemeral" is a new feature in Kubernetes 1.16. It is only required for
-	// drivers which support both the "Persistent" and "Ephemeral" VolumeLifecycleMode. Other drivers can
-	// leave pod info disabled and/or ignore this field. As Kubernetes 1.15 doesn't support this field,
-	// drivers can only support one mode when deployed on such a cluster and the deployment determines
-	// which mode that is, for example via a command line parameter of the driver.
+	// If set to true, podInfoOnMount indicates this CSI volume driver requires additional pod information
+	// (like podName, podUID, etc.) during mount operations. If set to false, pod information will not be
+	// passed on mount. Default is false. The CSI driver specifies podInfoOnMount as part of driver
+	// deployment. If true, Kubelet will pass pod information as VolumeContext in the CSI
+	// NodePublishVolume() calls. The CSI driver is responsible for parsing and validating the information
+	// passed in as VolumeContext. The following VolumeConext will be passed if podInfoOnMount is set to
+	// true. This list might grow, but the prefix will be used. "csi.storage.k8s.io/pod.name": pod.Name
+	// "csi.storage.k8s.io/pod.namespace": pod.Namespace "csi.storage.k8s.io/pod.uid": string(pod.UID)
+	// "csi.storage.k8s.io/ephemeral": "true" if the volume is an ephemeral inline volume defined by a
+	// CSIVolumeSource, otherwise "false"
+	//
+	// "csi.storage.k8s.io/ephemeral" is a new feature in Kubernetes 1.16. It is only required for drivers
+	// which support both the "Persistent" and "Ephemeral" VolumeLifecycleMode. Other drivers can leave pod
+	// info disabled and/or ignore this field. As Kubernetes 1.15 doesn't support this field, drivers can
+	// only support one mode when deployed on such a cluster and the deployment determines which mode that
+	// is, for example via a command line parameter of the driver.
+	//
 	// This field is immutable.
 	PodInfoOnMount OptBool `json:"podInfoOnMount"`
 	// RequiresRepublish indicates the CSI driver wants `NodePublishVolume` being periodically called to
 	// reflect any possible change in the mounted volume. This field defaults to false.
+	//
 	// Note: After a successful initial NodePublishVolume call, subsequent calls to NodePublishVolume
 	// should only update the contents of the volume. New mount points will not be seen by a running
 	// container.
 	RequiresRepublish OptBool `json:"requiresRepublish"`
 	// If set to true, storageCapacity indicates that the CSI volume driver wants pod scheduling to
-	// consider the storage capacity that the driver deployment will report by creating
-	// CSIStorageCapacity objects with capacity information.
-	// The check can be enabled immediately when deploying a driver. In that case, provisioning new
-	// volumes with late binding will pause until the driver deployment has published some suitable
+	// consider the storage capacity that the driver deployment will report by creating CSIStorageCapacity
+	// objects with capacity information.
+	//
+	// The check can be enabled immediately when deploying a driver. In that case, provisioning new volumes
+	// with late binding will pause until the driver deployment has published some suitable
 	// CSIStorageCapacity object.
-	// Alternatively, the driver can be deployed with the field unset or false and it can be flipped
-	// later when storage capacity information has been published.
+	//
+	// Alternatively, the driver can be deployed with the field unset or false and it can be flipped later
+	// when storage capacity information has been published.
+	//
 	// This field was immutable in Kubernetes <= 1.22 and now is mutable.
-	// This is a beta field and only available when the CSIStorageCapacity feature is enabled. The
-	// default is false.
+	//
+	// This is a beta field and only available when the CSIStorageCapacity feature is enabled. The default
+	// is false.
 	StorageCapacity OptBool `json:"storageCapacity"`
-	// TokenRequests indicates the CSI driver needs pods' service account tokens it is mounting volume
-	// for to do necessary authentication. Kubelet will pass the tokens in VolumeContext in the CSI
+	// TokenRequests indicates the CSI driver needs pods' service account tokens it is mounting volume for
+	// to do necessary authentication. Kubelet will pass the tokens in VolumeContext in the CSI
 	// NodePublishVolume calls. The CSI driver should parse and validate the following VolumeContext:
-	// "csi.storage.k8s.io/serviceAccount.tokens": {
-	// "<audience>": {
-	// "token": <token>,
-	// "expirationTimestamp": <expiration timestamp in RFC3339>,
-	// },
-	// ...
-	// }
+	// "csi.storage.k8s.io/serviceAccount.tokens": { "": { "token": , "expirationTimestamp": , }, ... }
+	//
 	// Note: Audience in each TokenRequest should be different and at most one token is empty string. To
 	// receive a new token after expiry, RequiresRepublish can be used to trigger NodePublishVolume
 	// periodically.
@@ -30054,10 +30057,11 @@ type IoK8sAPIStorageV1CSIDriverSpec struct {
 	// the list is empty is "Persistent", which is the usage defined by the CSI specification and
 	// implemented in Kubernetes via the usual PV/PVC mechanism. The other mode is "Ephemeral". In this
 	// mode, volumes are defined inline inside the pod spec with CSIVolumeSource and their lifecycle is
-	// tied to the lifecycle of that pod. A driver has to be aware of this because it is only going to
-	// get a NodePublishVolume call for such a volume. For more information about implementing this mode,
-	// see https://kubernetes-csi.github.io/docs/ephemeral-local-volumes.html A driver can support one or
-	// more of these modes and more modes may be added in the future. This field is beta.
+	// tied to the lifecycle of that pod. A driver has to be aware of this because it is only going to get
+	// a NodePublishVolume call for such a volume. For more information about implementing this mode, see
+	// https://kubernetes-csi.github.io/docs/ephemeral-local-volumes.html A driver can support one or more
+	// of these modes and more modes may be added in the future. This field is beta.
+	//
 	// This field is immutable.
 	VolumeLifecycleModes []string `json:"volumeLifecycleModes"`
 }
@@ -30133,20 +30137,19 @@ func (s *IoK8sAPIStorageV1CSIDriverSpec) SetVolumeLifecycleModes(val []string) {
 }
 
 // CSINode holds information about all CSI drivers installed on a node. CSI drivers do not need to
-// create the CSINode object directly. As long as they use the node-driver-registrar sidecar
-// container, the kubelet will automatically populate the CSINode object for the CSI driver as part
-// of kubelet plugin registration. CSINode has the same name as a node. If the object is missing, it
-// means either there are no CSI Drivers available on the node, or the Kubelet version is low enough
-// that it doesn't create this object. CSINode has an OwnerReference that points to the corresponding
-// node object.
+// create the CSINode object directly. As long as they use the node-driver-registrar sidecar container,
+// the kubelet will automatically populate the CSINode object for the CSI driver as part of kubelet
+// plugin registration. CSINode has the same name as a node. If the object is missing, it means either
+// there are no CSI Drivers available on the node, or the Kubelet version is low enough that it doesn't
+// create this object. CSINode has an OwnerReference that points to the corresponding node object.
 // Ref: #/components/schemas/io.k8s.api.storage.v1.CSINode
 type IoK8sAPIStorageV1CSINode struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                   `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
@@ -30202,20 +30205,20 @@ type IoK8sAPIStorageV1CSINodeDriver struct {
 	// This is the name of the CSI driver that this object refers to. This MUST be the same name returned
 	// by the CSI GetPluginName() call for that driver.
 	Name string `json:"name"`
-	// NodeID of the node from the driver point of view. This field enables Kubernetes to communicate
-	// with storage systems that do not share the same nomenclature for nodes. For example, Kubernetes
-	// may refer to a given node as "node1", but the storage system may refer to the same node as "nodeA".
-	//  When Kubernetes issues a command to the storage system to attach a volume to a specific node, it
-	// can use this field to refer to the node name using the ID that the storage system will understand,
-	// e.g. "nodeA" instead of "node1". This field is required.
+	// NodeID of the node from the driver point of view. This field enables Kubernetes to communicate with
+	// storage systems that do not share the same nomenclature for nodes. For example, Kubernetes may refer
+	// to a given node as "node1", but the storage system may refer to the same node as "nodeA". When
+	// Kubernetes issues a command to the storage system to attach a volume to a specific node, it can use
+	// this field to refer to the node name using the ID that the storage system will understand, e.g.
+	// "nodeA" instead of "node1". This field is required.
 	NodeID string `json:"nodeID"`
-	// TopologyKeys is the list of keys supported by the driver. When a driver is initialized on a
-	// cluster, it provides a set of topology keys that it understands (e.g. "company.com/zone", "company.
-	// com/region"). When a driver is initialized on a node, it provides the same topology keys along
-	// with values. Kubelet will expose these topology keys as labels on its own node object. When
+	// TopologyKeys is the list of keys supported by the driver. When a driver is initialized on a cluster,
+	// it provides a set of topology keys that it understands (e.g. "company.com/zone",
+	// "company.com/region"). When a driver is initialized on a node, it provides the same topology keys
+	// along with values. Kubelet will expose these topology keys as labels on its own node object. When
 	// Kubernetes does topology aware provisioning, it can use this list to determine which labels it
-	// should retrieve from the node object and pass back to the driver. It is possible for different
-	// nodes to use different topology keys. This can be empty if driver does not support topology.
+	// should retrieve from the node object and pass back to the driver. It is possible for different nodes
+	// to use different topology keys. This can be empty if driver does not support topology.
 	TopologyKeys []string `json:"topologyKeys"`
 }
 
@@ -30262,14 +30265,14 @@ func (s *IoK8sAPIStorageV1CSINodeDriver) SetTopologyKeys(val []string) {
 // CSINodeList is a collection of CSINode objects.
 // Ref: #/components/schemas/io.k8s.api.storage.v1.CSINodeList
 type IoK8sAPIStorageV1CSINodeList struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
 	// Items is the list of CSINode.
 	Items []IoK8sAPIStorageV1CSINode `json:"items"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
@@ -30337,6 +30340,7 @@ func (s *IoK8sAPIStorageV1CSINodeSpec) SetDrivers(val []IoK8sAPIStorageV1CSINode
 
 // StorageClass describes the parameters for a class of storage for which PersistentVolumes can be
 // dynamically provisioned.
+//
 // StorageClasses are non-namespaced; the name of the storage class according to etcd is in
 // ObjectMeta.Name.
 // Ref: #/components/schemas/io.k8s.api.storage.v1.StorageClass
@@ -30344,33 +30348,32 @@ type IoK8sAPIStorageV1StorageClass struct {
 	// AllowVolumeExpansion shows whether the storage class allow volume expand.
 	AllowVolumeExpansion OptBool `json:"allowVolumeExpansion"`
 	// Restrict the node topologies where volumes can be dynamically provisioned. Each volume plugin
-	// defines its own supported topology specifications. An empty TopologySelectorTerm list means there
-	// is no topology restriction. This field is only honored by servers that enable the VolumeScheduling
+	// defines its own supported topology specifications. An empty TopologySelectorTerm list means there is
+	// no topology restriction. This field is only honored by servers that enable the VolumeScheduling
 	// feature.
 	AllowedTopologies []IoK8sAPICoreV1TopologySelectorTerm `json:"allowedTopologies"`
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                   `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
-	// Dynamically provisioned PersistentVolumes of this storage class are created with these
-	// mountOptions, e.g. ["ro", "soft"]. Not validated - mount of the PVs will simply fail if one is
-	// invalid.
+	// Dynamically provisioned PersistentVolumes of this storage class are created with these mountOptions,
+	// e.g. ["ro", "soft"]. Not validated - mount of the PVs will simply fail if one is invalid.
 	MountOptions []string `json:"mountOptions"`
 	// Parameters holds the parameters for the provisioner that should create volumes of this storage
 	// class.
 	Parameters OptIoK8sAPIStorageV1StorageClassParameters `json:"parameters"`
 	// Provisioner indicates the type of the provisioner.
 	Provisioner string `json:"provisioner"`
-	// Dynamically provisioned PersistentVolumes of this storage class are created with this
-	// reclaimPolicy. Defaults to Delete.
+	// Dynamically provisioned PersistentVolumes of this storage class are created with this reclaimPolicy.
+	// Defaults to Delete.
 	ReclaimPolicy OptString `json:"reclaimPolicy"`
-	// VolumeBindingMode indicates how PersistentVolumeClaims should be provisioned and bound.  When
-	// unset, VolumeBindingImmediate is used. This field is only honored by servers that enable the
+	// VolumeBindingMode indicates how PersistentVolumeClaims should be provisioned and bound. When unset,
+	// VolumeBindingImmediate is used. This field is only honored by servers that enable the
 	// VolumeScheduling feature.
 	VolumeBindingMode OptString `json:"volumeBindingMode"`
 }
@@ -30480,14 +30483,14 @@ func (*IoK8sAPIStorageV1StorageClass) readStorageV1StorageClassRes() {}
 // StorageClassList is a collection of storage classes.
 // Ref: #/components/schemas/io.k8s.api.storage.v1.StorageClassList
 type IoK8sAPIStorageV1StorageClassList struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
 	// Items is the list of StorageClasses.
 	Items []IoK8sAPIStorageV1StorageClass `json:"items"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
@@ -30579,17 +30582,18 @@ func (s *IoK8sAPIStorageV1TokenRequest) SetExpirationSeconds(val OptInt64) {
 	s.ExpirationSeconds = val
 }
 
-// VolumeAttachment captures the intent to attach or detach the specified volume to/from the
-// specified node.
+// VolumeAttachment captures the intent to attach or detach the specified volume to/from the specified
+// node.
+//
 // VolumeAttachment objects are non-namespaced.
 // Ref: #/components/schemas/io.k8s.api.storage.v1.VolumeAttachment
 type IoK8sAPIStorageV1VolumeAttachment struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                   `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
@@ -30653,14 +30657,14 @@ func (*IoK8sAPIStorageV1VolumeAttachment) readStorageV1VolumeAttachmentStatusRes
 // VolumeAttachmentList is a collection of VolumeAttachment objects.
 // Ref: #/components/schemas/io.k8s.api.storage.v1.VolumeAttachmentList
 type IoK8sAPIStorageV1VolumeAttachmentList struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
 	// Items is the list of VolumeAttachments.
 	Items []IoK8sAPIStorageV1VolumeAttachment `json:"items"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
@@ -30708,9 +30712,9 @@ func (s *IoK8sAPIStorageV1VolumeAttachmentList) SetMetadata(val OptIoK8sApimachi
 
 func (*IoK8sAPIStorageV1VolumeAttachmentList) listStorageV1VolumeAttachmentRes() {}
 
-// VolumeAttachmentSource represents a volume that should be attached. Right now only
-// PersistenVolumes can be attached via external attacher, in future we may allow also inline volumes
-// in pods. Exactly one member can be set.
+// VolumeAttachmentSource represents a volume that should be attached. Right now only PersistenVolumes
+// can be attached via external attacher, in future we may allow also inline volumes in pods. Exactly
+// one member can be set.
 // Ref: #/components/schemas/io.k8s.api.storage.v1.VolumeAttachmentSource
 type IoK8sAPIStorageV1VolumeAttachmentSource struct {
 	InlineVolumeSpec OptIoK8sAPICoreV1PersistentVolumeSpec `json:"inlineVolumeSpec"`
@@ -30783,12 +30787,12 @@ func (s *IoK8sAPIStorageV1VolumeAttachmentSpec) SetSource(val IoK8sAPIStorageV1V
 // Ref: #/components/schemas/io.k8s.api.storage.v1.VolumeAttachmentStatus
 type IoK8sAPIStorageV1VolumeAttachmentStatus struct {
 	AttachError OptIoK8sAPIStorageV1VolumeError `json:"attachError"`
-	// Indicates the volume is successfully attached. This field must only be set by the entity
-	// completing the attach operation, i.e. the external-attacher.
+	// Indicates the volume is successfully attached. This field must only be set by the entity completing
+	// the attach operation, i.e. the external-attacher.
 	Attached bool `json:"attached"`
 	// Upon successful attach, this field is populated with any information returned by the attach
-	// operation that must be passed into subsequent WaitForAttach or Mount calls. This field must only
-	// be set by the entity completing the attach operation, i.e. the external-attacher.
+	// operation that must be passed into subsequent WaitForAttach or Mount calls. This field must only be
+	// set by the entity completing the attach operation, i.e. the external-attacher.
 	AttachmentMetadata OptIoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata `json:"attachmentMetadata"`
 	DetachError        OptIoK8sAPIStorageV1VolumeError                              `json:"detachError"`
 }
@@ -30834,8 +30838,8 @@ func (s *IoK8sAPIStorageV1VolumeAttachmentStatus) SetDetachError(val OptIoK8sAPI
 }
 
 // Upon successful attach, this field is populated with any information returned by the attach
-// operation that must be passed into subsequent WaitForAttach or Mount calls. This field must only
-// be set by the entity completing the attach operation, i.e. the external-attacher.
+// operation that must be passed into subsequent WaitForAttach or Mount calls. This field must only be
+// set by the entity completing the attach operation, i.e. the external-attacher.
 type IoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata map[string]string
 
 func (s *IoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata) init() IoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata {
@@ -30850,8 +30854,8 @@ func (s *IoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata) init() IoK8s
 // VolumeError captures an error encountered during a volume operation.
 // Ref: #/components/schemas/io.k8s.api.storage.v1.VolumeError
 type IoK8sAPIStorageV1VolumeError struct {
-	// String detailing the error encountered during Attach or Detach operation. This string may be
-	// logged, so it should not contain sensitive information.
+	// String detailing the error encountered during Attach or Detach operation. This string may be logged,
+	// so it should not contain sensitive information.
 	Message OptString                             `json:"message"`
 	Time    OptIoK8sApimachineryPkgApisMetaV1Time `json:"time"`
 }
@@ -30879,10 +30883,10 @@ func (s *IoK8sAPIStorageV1VolumeError) SetTime(val OptIoK8sApimachineryPkgApisMe
 // VolumeNodeResources is a set of resource limits for scheduling of volumes.
 // Ref: #/components/schemas/io.k8s.api.storage.v1.VolumeNodeResources
 type IoK8sAPIStorageV1VolumeNodeResources struct {
-	// Maximum number of unique volumes managed by the CSI driver that can be used on a node. A volume
-	// that is both attached and mounted on a node is considered to be used once, not twice. The same
-	// rule applies for a unique volume that is shared among multiple pods on the same node. If this
-	// field is not specified, then the supported number of volumes on this node is unbounded.
+	// Maximum number of unique volumes managed by the CSI driver that can be used on a node. A volume that
+	// is both attached and mounted on a node is considered to be used once, not twice. The same rule
+	// applies for a unique volume that is shared among multiple pods on the same node. If this field is
+	// not specified, then the supported number of volumes on this node is unbounded.
 	Count OptInt32 `json:"count"`
 }
 
@@ -30897,26 +30901,30 @@ func (s *IoK8sAPIStorageV1VolumeNodeResources) SetCount(val OptInt32) {
 }
 
 // CSIStorageCapacity stores the result of one CSI GetCapacity call. For a given StorageClass, this
-// describes the available capacity in a particular topology segment.  This can be used when
-// considering where to instantiate new PersistentVolumes.
+// describes the available capacity in a particular topology segment. This can be used when considering
+// where to instantiate new PersistentVolumes.
+//
 // For example this can express things like: - StorageClass "standard" has "1234 GiB" available in
 // "topology.kubernetes.io/zone=us-east1" - StorageClass "localssd" has "10 GiB" available in
 // "kubernetes.io/hostname=knode-abc123"
+//
 // The following three cases all imply that no capacity is available for a certain combination: - no
 // object exists with suitable topology and storage class name - such an object exists, but the
 // capacity is unset - such an object exists, but the capacity is zero
+//
 // The producer of these objects can decide which approach is more suitable.
-// They are consumed by the kube-scheduler if the CSIStorageCapacity beta feature gate is enabled
-// there and a CSI driver opts into capacity-aware scheduling with CSIDriver.StorageCapacity.
+//
+// They are consumed by the kube-scheduler if the CSIStorageCapacity beta feature gate is enabled there
+// and a CSI driver opts into capacity-aware scheduling with CSIDriver.StorageCapacity.
 // Ref: #/components/schemas/io.k8s.api.storage.v1alpha1.CSIStorageCapacity
 type IoK8sAPIStorageV1alpha1CSIStorageCapacity struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString                                  `json:"apiVersion"`
 	Capacity   OptIoK8sApimachineryPkgAPIResourceQuantity `json:"capacity"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind              OptString                                      `json:"kind"`
 	MaximumVolumeSize OptIoK8sApimachineryPkgAPIResourceQuantity     `json:"maximumVolumeSize"`
@@ -30924,8 +30932,8 @@ type IoK8sAPIStorageV1alpha1CSIStorageCapacity struct {
 	NodeTopology      OptIoK8sApimachineryPkgApisMetaV1LabelSelector `json:"nodeTopology"`
 	// The name of the StorageClass that the reported capacity applies to. It must meet the same
 	// requirements as the name of a StorageClass object (non-empty, DNS subdomain). If that object no
-	// longer exists, the CSIStorageCapacity object is obsolete and should be removed by its creator.
-	// This field is immutable.
+	// longer exists, the CSIStorageCapacity object is obsolete and should be removed by its creator. This
+	// field is immutable.
 	StorageClassName string `json:"storageClassName"`
 }
 
@@ -31005,14 +31013,14 @@ func (*IoK8sAPIStorageV1alpha1CSIStorageCapacity) readStorageV1alpha1NamespacedC
 // CSIStorageCapacityList is a collection of CSIStorageCapacity objects.
 // Ref: #/components/schemas/io.k8s.api.storage.v1alpha1.CSIStorageCapacityList
 type IoK8sAPIStorageV1alpha1CSIStorageCapacityList struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
 	// Items is the list of CSIStorageCapacity objects.
 	Items []IoK8sAPIStorageV1alpha1CSIStorageCapacity `json:"items"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
@@ -31064,26 +31072,30 @@ func (*IoK8sAPIStorageV1alpha1CSIStorageCapacityList) listStorageV1alpha1Namespa
 }
 
 // CSIStorageCapacity stores the result of one CSI GetCapacity call. For a given StorageClass, this
-// describes the available capacity in a particular topology segment.  This can be used when
-// considering where to instantiate new PersistentVolumes.
+// describes the available capacity in a particular topology segment. This can be used when considering
+// where to instantiate new PersistentVolumes.
+//
 // For example this can express things like: - StorageClass "standard" has "1234 GiB" available in
 // "topology.kubernetes.io/zone=us-east1" - StorageClass "localssd" has "10 GiB" available in
 // "kubernetes.io/hostname=knode-abc123"
+//
 // The following three cases all imply that no capacity is available for a certain combination: - no
 // object exists with suitable topology and storage class name - such an object exists, but the
 // capacity is unset - such an object exists, but the capacity is zero
+//
 // The producer of these objects can decide which approach is more suitable.
-// They are consumed by the kube-scheduler if the CSIStorageCapacity beta feature gate is enabled
-// there and a CSI driver opts into capacity-aware scheduling with CSIDriver.StorageCapacity.
+//
+// They are consumed by the kube-scheduler if the CSIStorageCapacity beta feature gate is enabled there
+// and a CSI driver opts into capacity-aware scheduling with CSIDriver.StorageCapacity.
 // Ref: #/components/schemas/io.k8s.api.storage.v1beta1.CSIStorageCapacity
 type IoK8sAPIStorageV1beta1CSIStorageCapacity struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString                                  `json:"apiVersion"`
 	Capacity   OptIoK8sApimachineryPkgAPIResourceQuantity `json:"capacity"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind              OptString                                      `json:"kind"`
 	MaximumVolumeSize OptIoK8sApimachineryPkgAPIResourceQuantity     `json:"maximumVolumeSize"`
@@ -31091,8 +31103,8 @@ type IoK8sAPIStorageV1beta1CSIStorageCapacity struct {
 	NodeTopology      OptIoK8sApimachineryPkgApisMetaV1LabelSelector `json:"nodeTopology"`
 	// The name of the StorageClass that the reported capacity applies to. It must meet the same
 	// requirements as the name of a StorageClass object (non-empty, DNS subdomain). If that object no
-	// longer exists, the CSIStorageCapacity object is obsolete and should be removed by its creator.
-	// This field is immutable.
+	// longer exists, the CSIStorageCapacity object is obsolete and should be removed by its creator. This
+	// field is immutable.
 	StorageClassName string `json:"storageClassName"`
 }
 
@@ -31172,14 +31184,14 @@ func (*IoK8sAPIStorageV1beta1CSIStorageCapacity) readStorageV1beta1NamespacedCSI
 // CSIStorageCapacityList is a collection of CSIStorageCapacity objects.
 // Ref: #/components/schemas/io.k8s.api.storage.v1beta1.CSIStorageCapacityList
 type IoK8sAPIStorageV1beta1CSIStorageCapacityList struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
 	// Items is the list of CSIStorageCapacity objects.
 	Items []IoK8sAPIStorageV1beta1CSIStorageCapacity `json:"items"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
@@ -31248,8 +31260,8 @@ type IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDefini
 	// numbers are considered higher priority. Columns that may be omitted in limited space scenarios
 	// should be given a priority greater than 0.
 	Priority OptInt32 `json:"priority"`
-	// Type is an OpenAPI type definition for this column. See https://github.
-	// com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#data-types for details.
+	// Type is an OpenAPI type definition for this column. See
+	// https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#data-types for details.
 	Type string `json:"type"`
 }
 
@@ -31318,10 +31330,9 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDe
 type IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion struct {
 	// Strategy specifies how custom resources are converted between versions. Allowed values are: -
 	// `None`: The converter only change the apiVersion and would not touch any other field in the custom
-	// resource. - `Webhook`: API Server will call to an external webhook to do the conversion.
-	// Additional information
-	// is needed for this option. This requires spec.preserveUnknownFields to be false, and spec.
-	// conversion.webhook to be set.
+	// resource. - `Webhook`: API Server will call to an external webhook to do the conversion. Additional
+	// information is needed for this option. This requires spec.preserveUnknownFields to be false, and
+	// spec.conversion.webhook to be set.
 	Strategy string                                                                `json:"strategy"`
 	Webhook  OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion `json:"webhook"`
 }
@@ -31346,16 +31357,16 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversi
 	s.Webhook = val
 }
 
-// CustomResourceDefinition represents a resource that should be exposed on the API server.  Its name
+// CustomResourceDefinition represents a resource that should be exposed on the API server. Its name
 // MUST be in the format <.spec.name>.<.spec.group>.
 // Ref: #/components/schemas/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.CustomResourceDefinition
 type IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                                                          `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta                                        `json:"metadata"`
@@ -31485,14 +31496,14 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 // CustomResourceDefinitionList is a list of CustomResourceDefinition objects.
 // Ref: #/components/schemas/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.CustomResourceDefinitionList
 type IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionList struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
 	// Items list individual CustomResourceDefinition objects.
 	Items []IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition `json:"items"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
@@ -31545,20 +31556,20 @@ func (*IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition
 // Ref: #/components/schemas/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.CustomResourceDefinitionNames
 type IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames struct {
 	// Categories is a list of grouped resources this custom resource belongs to (e.g. 'all'). This is
-	// published in API discovery documents, and used by clients to support invocations like `kubectl get
-	// all`.
+	// published in API discovery documents, and used by clients to support invocations like
+	// `kubectl get all`.
 	Categories []string `json:"categories"`
-	// Kind is the serialized kind of the resource. It is normally CamelCase and singular. Custom
-	// resource instances will use this value as the `kind` attribute in API calls.
+	// Kind is the serialized kind of the resource. It is normally CamelCase and singular. Custom resource
+	// instances will use this value as the `kind` attribute in API calls.
 	Kind string `json:"kind"`
 	// ListKind is the serialized kind of the list for this resource. Defaults to "`kind`List".
 	ListKind OptString `json:"listKind"`
 	// Plural is the plural name of the resource to serve. The custom resources are served under
-	// `/apis/<group>/<version>/.../<plural>`. Must match the name of the CustomResourceDefinition (in
-	// the form `<names.plural>.<group>`). Must be all lowercase.
+	// `/apis/<group>/<version>/.../<plural>`. Must match the name of the CustomResourceDefinition (in the
+	// form `<names.plural>.<group>`). Must be all lowercase.
 	Plural string `json:"plural"`
-	// ShortNames are short names for the resource, exposed in API discovery documents, and used by
-	// clients to support invocations like `kubectl get <shortname>`. It must be all lowercase.
+	// ShortNames are short names for the resource, exposed in API discovery documents, and used by clients
+	// to support invocations like `kubectl get <shortname>`. It must be all lowercase.
 	ShortNames []string `json:"shortNames"`
 	// Singular is the singular name of the resource. It must be all lowercase. Defaults to lowercased
 	// `kind`.
@@ -31630,28 +31641,28 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 type IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionSpec struct {
 	Conversion OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion `json:"conversion"`
 	// Group is the API group of the defined custom resource. The custom resources are served under
-	// `/apis/<group>/...`. Must match the name of the CustomResourceDefinition (in the form `<names.
-	// plural>.<group>`).
+	// `/apis/<group>/...`. Must match the name of the CustomResourceDefinition (in the form
+	// `<names.plural>.<group>`).
 	Group string                                                                         `json:"group"`
 	Names IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames `json:"names"`
 	// PreserveUnknownFields indicates that object fields which are not specified in the OpenAPI schema
 	// should be preserved when persisting to storage. apiVersion, kind, metadata and known fields inside
 	// metadata are always preserved. This field is deprecated in favor of setting
 	// `x-preserve-unknown-fields` to true in `spec.versions[*].schema.openAPIV3Schema`. See
-	// https://kubernetes.
-	// io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions/#pruning-versus-preserving-unknown-fields for details.
+	// https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions/#pruning-versus-preserving-unknown-fields
+	// for details.
 	PreserveUnknownFields OptBool `json:"preserveUnknownFields"`
-	// Scope indicates whether the defined custom resource is cluster- or namespace-scoped. Allowed
-	// values are `Cluster` and `Namespaced`.
+	// Scope indicates whether the defined custom resource is cluster- or namespace-scoped. Allowed values
+	// are `Cluster` and `Namespaced`.
 	Scope string `json:"scope"`
 	// Versions is the list of all API versions of the defined custom resource. Version names are used to
 	// compute the order in which served versions are listed in API discovery. If the version string is
 	// "kube-like", it will sort above non "kube-like" version strings, which are ordered
 	// lexicographically. "Kube-like" versions start with a "v", then are followed by a number (the major
-	// version), then optionally the string "alpha" or "beta" and another number (the minor version).
-	// These are sorted first by GA > beta > alpha (where GA is a version with no suffix such as beta or
-	// alpha), and then by comparing major version, then minor version. An example sorted list of
-	// versions: v10, v2, v1, v11beta2, v10beta3, v3beta1, v12alpha1, v11alpha2, foo1, foo10.
+	// version), then optionally the string "alpha" or "beta" and another number (the minor version). These
+	// are sorted first by GA > beta > alpha (where GA is a version with no suffix such as beta or alpha),
+	// and then by comparing major version, then minor version. An example sorted list of versions: v10,
+	// v2, v1, v11beta2, v10beta3, v3beta1, v12alpha1, v11alpha2, foo1, foo10.
 	Versions []IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersion `json:"versions"`
 }
 
@@ -31724,8 +31735,8 @@ type IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionSt
 	// StoredVersions lists all versions of CustomResources that were ever persisted. Tracking these
 	// versions allows a migration path for stored versions in etcd. The field is mutable so a migration
 	// controller can finish a migration to another version (ensuring no old objects are left in storage),
-	//  and then remove the rest of the versions from this list. Versions may not be removed from `spec.
-	// versions` while they exist in this list.
+	// and then remove the rest of the versions from this list. Versions may not be removed from
+	// `spec.versions` while they exist in this list.
 	StoredVersions []string `json:"storedVersions"`
 }
 
@@ -31771,8 +31782,8 @@ type IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVe
 	// requests to this version receive a warning header in the server response. Defaults to false.
 	Deprecated OptBool `json:"deprecated"`
 	// DeprecationWarning overrides the default warning returned to API clients. May only be set when
-	// `deprecated` is true. The default warning indicates this version is deprecated and recommends use
-	// of the newest served version of equal or greater stability, if one exists.
+	// `deprecated` is true. The default warning indicates this version is deprecated and recommends use of
+	// the newest served version of equal or greater stability, if one exists.
 	DeprecationWarning OptString `json:"deprecationWarning"`
 	// Name is the version name, e.g. “v1”, “v2beta1”, etc. The custom resources are served under
 	// this version at `/apis/<group>/<version>/...` if `served` is true.
@@ -31870,23 +31881,23 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 // Ref: #/components/schemas/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.CustomResourceSubresourceScale
 type IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale struct {
 	// LabelSelectorPath defines the JSON path inside of a custom resource that corresponds to Scale
-	// `status.selector`. Only JSON paths without the array notation are allowed. Must be a JSON Path
-	// under `.status` or `.spec`. Must be set to work with HorizontalPodAutoscaler. The field pointed by
-	// this JSON path must be a string field (not a complex selector struct) which contains a serialized
-	// label selector in string form. More info: https://kubernetes.
-	// io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions#scale-subresource
-	// If there is no value under the given path in the custom resource, the `status.selector` value in
-	// the `/scale` subresource will default to the empty string.
+	// `status.selector`. Only JSON paths without the array notation are allowed. Must be a JSON Path under
+	// `.status` or `.spec`. Must be set to work with HorizontalPodAutoscaler. The field pointed by this
+	// JSON path must be a string field (not a complex selector struct) which contains a serialized label
+	// selector in string form. More info:
+	// https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions#scale-subresource
+	// If there is no value under the given path in the custom resource, the `status.selector` value in the
+	// `/scale` subresource will default to the empty string.
 	LabelSelectorPath OptString `json:"labelSelectorPath"`
-	// SpecReplicasPath defines the JSON path inside of a custom resource that corresponds to Scale `spec.
-	// replicas`. Only JSON paths without the array notation are allowed. Must be a JSON Path under `.
-	// spec`. If there is no value under the given path in the custom resource, the `/scale` subresource
+	// SpecReplicasPath defines the JSON path inside of a custom resource that corresponds to Scale
+	// `spec.replicas`. Only JSON paths without the array notation are allowed. Must be a JSON Path under
+	// `.spec`. If there is no value under the given path in the custom resource, the `/scale` subresource
 	// will return an error on GET.
 	SpecReplicasPath string `json:"specReplicasPath"`
 	// StatusReplicasPath defines the JSON path inside of a custom resource that corresponds to Scale
-	// `status.replicas`. Only JSON paths without the array notation are allowed. Must be a JSON Path
-	// under `.status`. If there is no value under the given path in the custom resource, the `status.
-	// replicas` value in the `/scale` subresource will default to 0.
+	// `status.replicas`. Only JSON paths without the array notation are allowed. Must be a JSON Path under
+	// `.status`. If there is no value under the given path in the custom resource, the `status.replicas`
+	// value in the `/scale` subresource will default to 0.
 	StatusReplicasPath string `json:"statusReplicasPath"`
 }
 
@@ -31922,9 +31933,9 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresou
 
 // CustomResourceSubresourceStatus defines how to serve the status subresource for CustomResources.
 // Status is represented by the `.status` JSON path inside of a CustomResource. When set, * exposes a
-// /status subresource for the custom resource * PUT requests to the /status subresource take a
-// custom resource object, and ignore changes to anything except the status stanza * PUT/POST/PATCH
-// requests to the custom resource ignore changes to the status stanza.
+// /status subresource for the custom resource * PUT requests to the /status subresource take a custom
+// resource object, and ignore changes to anything except the status stanza * PUT/POST/PATCH requests
+// to the custom resource ignore changes to the status stanza.
 // Ref: #/components/schemas/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.CustomResourceSubresourceStatus
 type IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus struct{}
 
@@ -32023,23 +32034,31 @@ type IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps struct {
 	ExternalDocs         OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation       `json:"externalDocs"`
 	// Format is an OpenAPI v3 format string. Unknown formats are ignored. The following formats are
 	// validated:
-	// - bsonobjectid: a bson object ID, i.e. a 24 characters hex string - uri: an URI as parsed by
-	// Golang net/url.ParseRequestURI - email: an email address as parsed by Golang net/mail.ParseAddress
-	// - hostname: a valid representation for an Internet host name, as defined by RFC 1034, section 3.1
-	// [RFC1034]. - ipv4: an IPv4 IP as parsed by Golang net.ParseIP - ipv6: an IPv6 IP as parsed by
-	// Golang net.ParseIP - cidr: a CIDR as parsed by Golang net.ParseCIDR - mac: a MAC address as parsed
-	// by Golang net.ParseMAC - uuid: an UUID that allows uppercase defined by the regex
-	// (?i)^[0-9a-f]{8}-?[0-9a-f]{4}-?[0-9a-f]{4}-?[0-9a-f]{4}-?[0-9a-f]{12}$ - uuid3: an UUID3 that
-	// allows uppercase defined by the regex
-	// (?i)^[0-9a-f]{8}-?[0-9a-f]{4}-?3[0-9a-f]{3}-?[0-9a-f]{4}-?[0-9a-f]{12}$ - uuid4: an UUID4 that
-	// allows uppercase defined by the regex
-	// (?i)^[0-9a-f]{8}-?[0-9a-f]{4}-?4[0-9a-f]{3}-?[89ab][0-9a-f]{3}-?[0-9a-f]{12}$ - uuid5: an UUID5
-	// that allows uppercase defined by the regex
-	// (?i)^[0-9a-f]{8}-?[0-9a-f]{4}-?5[0-9a-f]{3}-?[89ab][0-9a-f]{3}-?[0-9a-f]{12}$ - isbn: an ISBN10 or
-	// ISBN13 number string like "0321751043" or "978-0321751041" - isbn10: an ISBN10 number string like
-	// "0321751043" - isbn13: an ISBN13 number string like "978-0321751041" - creditcard: a credit card
-	// number defined by the regex
-	// ^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})$ with any non digit characters mixed in - ssn: a U.S. social security number following the regex ^\d{3}[- ]?\d{2}[- ]?\d{4}$ - hexcolor: an hexadecimal color code like "#FFFFFF: following the regex ^#?([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$ - rgbcolor: an RGB color code like rgb like "rgb(255,255,2559" - byte: base64 encoded binary data - password: any kind of string - date: a date string like "2006-01-02" as defined by full-date in RFC3339 - duration: a duration string like "22 ns" as parsed by Golang time.ParseDuration or compatible with Scala duration format - datetime: a date time string like "2014-12-15T19:30:20.000Z" as defined by date-time in RFC3339.
+	//
+	//  - bsonobjectid: a bson object ID, i.e. a 24 characters hex string - uri: an URI as parsed by Golang
+	//    net/url.ParseRequestURI - email: an email address as parsed by Golang net/mail.ParseAddress -
+	//    hostname: a valid representation for an Internet host name, as defined by RFC 1034, section 3.1
+	//    [RFC1034]. - ipv4: an IPv4 IP as parsed by Golang net.ParseIP - ipv6: an IPv6 IP as parsed by
+	//    Golang net.ParseIP - cidr: a CIDR as parsed by Golang net.ParseCIDR - mac: a MAC address as
+	//    parsed by Golang net.ParseMAC - uuid: an UUID that allows uppercase defined by the regex
+	//    (?i)^[0-9a-f]{8}-?[0-9a-f]{4}-?[0-9a-f]{4}-?[0-9a-f]{4}-?[0-9a-f]{12}$ - uuid3: an UUID3 that
+	//    allows uppercase defined by the regex
+	//    (?i)^[0-9a-f]{8}-?[0-9a-f]{4}-?3[0-9a-f]{3}-?[0-9a-f]{4}-?[0-9a-f]{12}$ - uuid4: an UUID4 that
+	//    allows uppercase defined by the regex
+	//    (?i)^[0-9a-f]{8}-?[0-9a-f]{4}-?4[0-9a-f]{3}-?[89ab][0-9a-f]{3}-?[0-9a-f]{12}$ - uuid5: an UUID5
+	//    that allows uppercase defined by the regex
+	//    (?i)^[0-9a-f]{8}-?[0-9a-f]{4}-?5[0-9a-f]{3}-?[89ab][0-9a-f]{3}-?[0-9a-f]{12}$ - isbn: an ISBN10
+	//    or ISBN13 number string like "0321751043" or "978-0321751041" - isbn10: an ISBN10 number string
+	//    like "0321751043" - isbn13: an ISBN13 number string like "978-0321751041" - creditcard: a credit
+	//    card number defined by the regex
+	//    ^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})$
+	//    with any non digit characters mixed in - ssn: a U.S. social security number following the regex
+	//    ^\d{3}[- ]?\d{2}[- ]?\d{4}$ - hexcolor: an hexadecimal color code like "#FFFFFF: following the
+	//    regex ^#?([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$ - rgbcolor: an RGB color code like rgb like
+	//    "rgb(255,255,2559" - byte: base64 encoded binary data - password: any kind of string - date: a
+	//    date string like "2006-01-02" as defined by full-date in RFC3339 - duration: a duration string
+	//    like "22 ns" as parsed by Golang time.ParseDuration or compatible with Scala duration format -
+	//    datetime: a date time string like "2014-12-15T19:30:20.000Z" as defined by date-time in RFC3339.
 	Format            OptString                                                                            `json:"format"`
 	ID                OptString                                                                            `json:"id"`
 	Items             *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray             `json:"items"`
@@ -32062,55 +32081,58 @@ type IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps struct {
 	Title             OptString                                                                            `json:"title"`
 	Type              OptString                                                                            `json:"type"`
 	UniqueItems       OptBool                                                                              `json:"uniqueItems"`
-	// X-kubernetes-embedded-resource defines that the value is an embedded Kubernetes runtime.Object,
-	// with TypeMeta and ObjectMeta. The type must be object. It is allowed to further restrict the
-	// embedded object. kind, apiVersion and metadata are validated automatically.
-	// x-kubernetes-preserve-unknown-fields is allowed to be true, but does not have to be if the object
-	// is fully specified (up to kind, apiVersion, metadata).
+	// X-kubernetes-embedded-resource defines that the value is an embedded Kubernetes runtime.Object, with
+	// TypeMeta and ObjectMeta. The type must be object. It is allowed to further restrict the embedded
+	// object. kind, apiVersion and metadata are validated automatically.
+	// x-kubernetes-preserve-unknown-fields is allowed to be true, but does not have to be if the object is
+	// fully specified (up to kind, apiVersion, metadata).
 	XMinusKubernetesMinusEmbeddedMinusResource OptBool `json:"x-kubernetes-embedded-resource"`
 	// X-kubernetes-int-or-string specifies that this value is either an integer or a string. If this is
 	// true, an empty type is allowed and type as child of anyOf is permitted if following one of the
 	// following patterns:
-	// 1) anyOf:
-	// - type: integer
-	// - type: string
-	// 2) allOf:
-	// - anyOf:
-	// - type: integer
-	// - type: string
-	// - ... zero or more.
+	//
+	// 1. anyOf:
+	//
+	//     - type: integer
+	//     - type: string
+	// 2. allOf:
+	//
+	//     - anyOf:
+	//
+	//        - type: integer
+	//        - type: string
+	//     - ... zero or more
 	XMinusKubernetesMinusIntMinusOrMinusString OptBool `json:"x-kubernetes-int-or-string"`
 	// X-kubernetes-list-map-keys annotates an array with the x-kubernetes-list-type `map` by specifying
 	// the keys used as the index of the map.
+	//
 	// This tag MUST only be used on lists that have the "x-kubernetes-list-type" extension set to "map".
 	// Also, the values specified for this attribute must be a scalar typed field of the child structure
 	// (no nesting is supported).
-	// The properties specified must either be required or have a default value, to ensure those
-	// properties are present for all list items.
+	//
+	// The properties specified must either be required or have a default value, to ensure those properties
+	// are present for all list items.
 	XMinusKubernetesMinusListMinusMapMinusKeys []string `json:"x-kubernetes-list-map-keys"`
-	// X-kubernetes-list-type annotates an array to further describe its topology. This extension must
-	// only be used on lists and may have 3 possible values:
-	// 1) `atomic`: the list is treated as a single entity, like a scalar.
-	// Atomic lists will be entirely replaced when updated. This extension
-	// may be used on any type of list (struct, scalar, ...).
-	// 2) `set`:
-	// Sets are lists that must not have multiple items with the same value. Each
-	// value must be a scalar, an object with x-kubernetes-map-type `atomic` or an
-	// array with x-kubernetes-list-type `atomic`.
-	// 3) `map`:
-	// These lists are like maps in that their elements have a non-index key
-	// used to identify them. Order is preserved upon merge. The map tag
-	// must only be used on a list with elements of type object.
-	// Defaults to atomic for arrays.
+	// X-kubernetes-list-type annotates an array to further describe its topology. This extension must only
+	// be used on lists and may have 3 possible values:
+	//
+	// 1. `atomic`: the list is treated as a single entity, like a scalar. Atomic lists will be entirely
+	//    replaced when updated. This extension may be used on any type of list (struct, scalar, ...).
+	// 2. `set`: Sets are lists that must not have multiple items with the same value. Each value must be a
+	//    scalar, an object with x-kubernetes-map-type `atomic` or an array with x-kubernetes-list-type
+	//    `atomic`.
+	// 3. `map`: These lists are like maps in that their elements have a non-index key used to identify
+	//    them. Order is preserved upon merge. The map tag must only be used on a list with elements of
+	//    type object. Defaults to atomic for arrays.
 	XMinusKubernetesMinusListMinusType OptString `json:"x-kubernetes-list-type"`
-	// X-kubernetes-map-type annotates an object to further describe its topology. This extension must
-	// only be used when type is object and may have 2 possible values:
-	// 1) `granular`:
-	// These maps are actual maps (key-value pairs) and each fields are independent
-	// from each other (they can each be manipulated by separate actors). This is
-	// the default behaviour for all maps.
-	// 2) `atomic`: the list is treated as a single entity, like a scalar.
-	// Atomic maps will be entirely replaced when updated.
+	// X-kubernetes-map-type annotates an object to further describe its topology. This extension must only
+	// be used when type is object and may have 2 possible values:
+	//
+	// 1. `granular`: These maps are actual maps (key-value pairs) and each fields are independent from
+	//    each other (they can each be manipulated by separate actors). This is the default behaviour for
+	//    all maps.
+	// 2. `atomic`: the list is treated as a single entity, like a scalar. Atomic maps will be entirely
+	//    replaced when updated.
 	XMinusKubernetesMinusMapMinusType OptString `json:"x-kubernetes-map-type"`
 	// X-kubernetes-preserve-unknown-fields stops the API server decoding step from pruning fields which
 	// are not specified in the validation schema. This affects fields recursively, but switches back to
@@ -32664,23 +32686,28 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference) SetP
 // WebhookClientConfig contains the information to make a TLS connection with the webhook.
 // Ref: #/components/schemas/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.WebhookClientConfig
 type IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig struct {
-	// CaBundle is a PEM encoded CA bundle which will be used to validate the webhook's server
-	// certificate. If unspecified, system trust roots on the apiserver are used.
+	// CaBundle is a PEM encoded CA bundle which will be used to validate the webhook's server certificate.
+	// If unspecified, system trust roots on the apiserver are used.
 	CaBundle []byte                                                               `json:"caBundle"`
 	Service  OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference `json:"service"`
-	// Url gives the location of the webhook, in standard URL form (`scheme://host:port/path`). Exactly
-	// one of `url` or `service` must be specified.
+	// Url gives the location of the webhook, in standard URL form (`scheme://host:port/path`). Exactly one
+	// of `url` or `service` must be specified.
+	//
 	// The `host` should not refer to a service running in the cluster; use the `service` field instead.
 	// The host might be resolved via external DNS in some apiservers (e.g., `kube-apiserver` cannot
 	// resolve in-cluster DNS as that would be a layering violation). `host` may also be an IP address.
-	// Please note that using `localhost` or `127.0.0.1` as a `host` is risky unless you take great care
-	// to run this webhook on all hosts which run an apiserver which might need to make calls to this
-	// webhook. Such installs are likely to be non-portable, i.e., not easy to turn up in a new cluster.
+	//
+	// Please note that using `localhost` or `127.0.0.1` as a `host` is risky unless you take great care to
+	// run this webhook on all hosts which run an apiserver which might need to make calls to this webhook.
+	// Such installs are likely to be non-portable, i.e., not easy to turn up in a new cluster.
+	//
 	// The scheme must be "https"; the URL must begin with "https://".
+	//
 	// A path is optional, and if present may be any string permissible in a URL. You may use the path to
 	// pass an arbitrary string to the webhook, for example, a cluster identifier.
-	// Attempting to use a user or basic auth e.g. "user:password@" is not allowed. Fragments ("#...")
-	// and query parameters ("?...") are not allowed, either.
+	//
+	// Attempting to use a user or basic auth e.g. "user:password@" is not allowed. Fragments ("#...") and
+	// query parameters ("?...") are not allowed, either.
 	URL OptString `json:"url"`
 }
 
@@ -32751,12 +32778,12 @@ type IoK8sApimachineryPkgAPIResourceQuantity string
 // APIGroup contains the name, the supported versions, and the preferred version of a group.
 // Ref: #/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.APIGroup
 type IoK8sApimachineryPkgApisMetaV1APIGroup struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind OptString `json:"kind"`
 	// Name is the name of the group.
@@ -32766,9 +32793,9 @@ type IoK8sApimachineryPkgApisMetaV1APIGroup struct {
 	// servers in the most network-efficient way possible. Clients can use the appropriate server address
 	// as per the CIDR that they match. In case of multiple matches, clients should use the longest
 	// matching CIDR. The server returns only those CIDRs that it thinks that the client can match. For
-	// example: the master will return an internal IP CIDR only, if the client reaches the server using
-	// an internal IP. Server looks at X-Forwarded-For header or X-Real-Ip header or request.RemoteAddr
-	// (in that order) to get the client IP.
+	// example: the master will return an internal IP CIDR only, if the client reaches the server using an
+	// internal IP. Server looks at X-Forwarded-For header or X-Real-Ip header or request.RemoteAddr (in
+	// that order) to get the client IP.
 	ServerAddressByClientCIDRs []IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR `json:"serverAddressByClientCIDRs"`
 	// Versions are the versions supported in this group.
 	Versions []IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery `json:"versions"`
@@ -32858,14 +32885,14 @@ func (*IoK8sApimachineryPkgApisMetaV1APIGroup) getStorageAPIGroupRes()          
 // APIGroupList is a list of APIGroup, to allow clients to discover the API at /apis.
 // Ref: #/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.APIGroupList
 type IoK8sApimachineryPkgApisMetaV1APIGroupList struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
 	// Groups is a list of APIGroup.
 	Groups []IoK8sApimachineryPkgApisMetaV1APIGroup `json:"groups"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind OptString `json:"kind"`
 }
@@ -32907,7 +32934,7 @@ func (*IoK8sApimachineryPkgApisMetaV1APIGroupList) getAPIVersionsRes() {}
 type IoK8sApimachineryPkgApisMetaV1APIResource struct {
 	// Categories is a list of the grouped resources this resource belongs to (e.g. 'all').
 	Categories []string `json:"categories"`
-	// Group is the preferred group of the resource.  Empty implies the group of the containing resource
+	// Group is the preferred group of the resource. Empty implies the group of the containing resource
 	// list. For subresources, this may have a different value, for example: Scale".
 	Group OptString `json:"group"`
 	// Kind is the kind for the resource (e.g. 'Foo' is the kind for a resource 'foo').
@@ -32918,20 +32945,20 @@ type IoK8sApimachineryPkgApisMetaV1APIResource struct {
 	Namespaced bool `json:"namespaced"`
 	// ShortNames is a list of suggested short names of the resource.
 	ShortNames []string `json:"shortNames"`
-	// SingularName is the singular name of the resource.  This allows clients to handle plural and
-	// singular opaquely. The singularName is more correct for reporting status on a single item and both
-	// singular and plural are allowed from the kubectl CLI interface.
+	// SingularName is the singular name of the resource. This allows clients to handle plural and singular
+	// opaquely. The singularName is more correct for reporting status on a single item and both singular
+	// and plural are allowed from the kubectl CLI interface.
 	SingularName string `json:"singularName"`
-	// The hash value of the storage version, the version this resource is converted to when written to
-	// the data store. Value must be treated as opaque by clients. Only equality comparison on the value
-	// is valid. This is an alpha feature and may change or be removed in the future. The field is
-	// populated by the apiserver only if the StorageVersionHash feature gate is enabled. This field will
-	// remain optional even if it graduates.
+	// The hash value of the storage version, the version this resource is converted to when written to the
+	// data store. Value must be treated as opaque by clients. Only equality comparison on the value is
+	// valid. This is an alpha feature and may change or be removed in the future. The field is populated
+	// by the apiserver only if the StorageVersionHash feature gate is enabled. This field will remain
+	// optional even if it graduates.
 	StorageVersionHash OptString `json:"storageVersionHash"`
 	// Verbs is a list of supported kube verbs (this includes get, list, watch, create, update, patch,
 	// delete, deletecollection, and proxy).
 	Verbs []string `json:"verbs"`
-	// Version is the preferred version of the resource.  Empty implies the version of the containing
+	// Version is the preferred version of the resource. Empty implies the version of the containing
 	// resource list For subresources, this may have a different value, for example: v1 (while inside a
 	// v1beta1 version of the core resource's group)".
 	Version OptString `json:"version"`
@@ -33041,14 +33068,14 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIResource) SetVersion(val OptString) {
 // in a specific group and version, and if the resource is namespaced.
 // Ref: #/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.APIResourceList
 type IoK8sApimachineryPkgApisMetaV1APIResourceList struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
 	// GroupVersion is the group and version this APIResourceList is for.
 	GroupVersion string `json:"groupVersion"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind OptString `json:"kind"`
 	// Resources contains the name of the resources and if they are namespaced.
@@ -33134,21 +33161,21 @@ func (*IoK8sApimachineryPkgApisMetaV1APIResourceList) getStorageV1beta1APIResour
 // which is the root path of the legacy v1 API.
 // Ref: #/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.APIVersions
 type IoK8sApimachineryPkgApisMetaV1APIVersions struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind OptString `json:"kind"`
 	// A map of client CIDR to server address that is serving this group. This is to help clients reach
 	// servers in the most network-efficient way possible. Clients can use the appropriate server address
 	// as per the CIDR that they match. In case of multiple matches, clients should use the longest
 	// matching CIDR. The server returns only those CIDRs that it thinks that the client can match. For
-	// example: the master will return an internal IP CIDR only, if the client reaches the server using
-	// an internal IP. Server looks at X-Forwarded-For header or X-Real-Ip header or request.RemoteAddr
-	// (in that order) to get the client IP.
+	// example: the master will return an internal IP CIDR only, if the client reaches the server using an
+	// internal IP. Server looks at X-Forwarded-For header or X-Real-Ip header or request.RemoteAddr (in
+	// that order) to get the client IP.
 	ServerAddressByClientCIDRs []IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR `json:"serverAddressByClientCIDRs"`
 	// Versions are the api versions that are available.
 	Versions []string `json:"versions"`
@@ -33204,14 +33231,13 @@ type IoK8sApimachineryPkgApisMetaV1Condition struct {
 	// string.
 	Message string `json:"message"`
 	// ObservedGeneration represents the .metadata.generation that the condition was set based upon. For
-	// instance, if .metadata.generation is currently 12, but the .status.conditions[x].
-	// observedGeneration is 9, the condition is out of date with respect to the current state of the
-	// instance.
+	// instance, if .metadata.generation is currently 12, but the .status.conditions[x].observedGeneration
+	// is 9, the condition is out of date with respect to the current state of the instance.
 	ObservedGeneration OptInt64 `json:"observedGeneration"`
-	// Reason contains a programmatic identifier indicating the reason for the condition's last
-	// transition. Producers of specific condition types may define expected values and meanings for this
-	// field, and whether the values are considered a guaranteed API. The value should be a CamelCase
-	// string. This field may not be empty.
+	// Reason contains a programmatic identifier indicating the reason for the condition's last transition.
+	// Producers of specific condition types may define expected values and meanings for this field, and
+	// whether the values are considered a guaranteed API. The value should be a CamelCase string. This
+	// field may not be empty.
 	Reason string `json:"reason"`
 	// Status of the condition, one of True, False, Unknown.
 	Status string `json:"status"`
@@ -33280,18 +33306,20 @@ func (s *IoK8sApimachineryPkgApisMetaV1Condition) SetType(val string) {
 }
 
 // FieldsV1 stores a set of fields in a data structure like a Trie, in JSON format.
+//
 // Each key is either a '.' representing the field itself, and will always map to an empty set, or a
-// string representing a sub-field or item. The string will follow one of these four formats:
-// 'f:<name>', where <name> is the name of a field in a struct, or key in a map 'v:<value>', where
-// <value> is the exact json formatted value of a list item 'i:<index>', where <index> is position of
-// a item in a list 'k:<keys>', where <keys> is a map of  a list item's key fields to their unique
-// values If a key maps to an empty Fields value, the field that key represents is part of the set.
+// string representing a sub-field or item. The string will follow one of these four formats: 'f:',
+// where is the name of a field in a struct, or key in a map 'v:', where is the exact json formatted
+// value of a list item 'i:', where is position of a item in a list 'k:', where is a map of a list
+// item's key fields to their unique values If a key maps to an empty Fields value, the field that key
+// represents is part of the set.
+//
 // The exact format is defined in sigs.k8s.io/structured-merge-diff.
 // Ref: #/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.FieldsV1
 type IoK8sApimachineryPkgApisMetaV1FieldsV1 struct{}
 
-// GroupVersion contains the "group/version" and "version" string of a version. It is made a struct
-// to keep extensibility.
+// GroupVersion contains the "group/version" and "version" string of a version. It is made a struct to
+// keep extensibility.
 // Ref: #/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.GroupVersionForDiscovery
 type IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery struct {
 	// GroupVersion specifies the API group and version in the form "group/version".
@@ -33328,9 +33356,9 @@ func (s *IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery) SetVersion(val 
 type IoK8sApimachineryPkgApisMetaV1LabelSelector struct {
 	// MatchExpressions is a list of label selector requirements. The requirements are ANDed.
 	MatchExpressions []IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement `json:"matchExpressions"`
-	// MatchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is
-	// equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and
-	// the values array contains only "value". The requirements are ANDed.
+	// MatchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent
+	// to an element of matchExpressions, whose key field is "key", the operator is "In", and the values
+	// array contains only "value". The requirements are ANDed.
 	MatchLabels OptIoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels `json:"matchLabels"`
 }
 
@@ -33354,9 +33382,9 @@ func (s *IoK8sApimachineryPkgApisMetaV1LabelSelector) SetMatchLabels(val OptIoK8
 	s.MatchLabels = val
 }
 
-// MatchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is
-// equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and
-// the values array contains only "value". The requirements are ANDed.
+// MatchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent
+// to an element of matchExpressions, whose key field is "key", the operator is "In", and the values
+// array contains only "value". The requirements are ANDed.
 type IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels map[string]string
 
 func (s *IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels) init() IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels {
@@ -33368,8 +33396,8 @@ func (s *IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels) init() IoK8sApi
 	return m
 }
 
-// A label selector requirement is a selector that contains values, a key, and an operator that
-// relates the key and values.
+// A label selector requirement is a selector that contains values, a key, and an operator that relates
+// the key and values.
 // Ref: #/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelectorRequirement
 type IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement struct {
 	// Key is the label key that the selector applies to.
@@ -33378,8 +33406,8 @@ type IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement struct {
 	// and DoesNotExist.
 	Operator string `json:"operator"`
 	// Values is an array of string values. If the operator is In or NotIn, the values array must be
-	// non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array
-	// is replaced during a strategic merge patch.
+	// non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is
+	// replaced during a strategic merge patch.
 	Values []string `json:"values"`
 }
 
@@ -33417,30 +33445,29 @@ func (s *IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement) SetValues(val [
 // objects. A resource may have only one of {ObjectMeta, ListMeta}.
 // Ref: #/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta
 type IoK8sApimachineryPkgApisMetaV1ListMeta struct {
-	// Continue may be set if the user set a limit on the number of items returned, and indicates that
-	// the server has more data available. The value is opaque and may be used to issue another request
-	// to the endpoint that served this list to retrieve the next set of available objects. Continuing a
+	// Continue may be set if the user set a limit on the number of items returned, and indicates that the
+	// server has more data available. The value is opaque and may be used to issue another request to the
+	// endpoint that served this list to retrieve the next set of available objects. Continuing a
 	// consistent list may not be possible if the server configuration has changed or more than a few
 	// minutes have passed. The resourceVersion field returned when using this continue value will be
 	// identical to the value in the first response, unless you have received this token from an error
 	// message.
 	Continue OptString `json:"continue"`
-	// RemainingItemCount is the number of subsequent items in the list which are not included in this
-	// list response. If the list request contained label or field selectors, then the number of
-	// remaining items is unknown and the field will be left unset and omitted during serialization. If
-	// the list is complete (either because it is not chunking or because this is the last chunk), then
-	// there are no more remaining items and this field will be left unset and omitted during
-	// serialization. Servers older than v1.15 do not set this field. The intended use of the
-	// remainingItemCount is *estimating* the size of a collection. Clients should not rely on the
-	// remainingItemCount to be set or to be exact.
+	// RemainingItemCount is the number of subsequent items in the list which are not included in this list
+	// response. If the list request contained label or field selectors, then the number of remaining items
+	// is unknown and the field will be left unset and omitted during serialization. If the list is
+	// complete (either because it is not chunking or because this is the last chunk), then there are no
+	// more remaining items and this field will be left unset and omitted during serialization. Servers
+	// older than v1.15 do not set this field. The intended use of the remainingItemCount is estimating the
+	// size of a collection. Clients should not rely on the remainingItemCount to be set or to be exact.
 	RemainingItemCount OptInt64 `json:"remainingItemCount"`
 	// String that identifies the server's internal version of this object that can be used by clients to
 	// determine when objects have changed. Value must be treated as opaque by clients and passed
-	// unmodified back to the server. Populated by the system. Read-only. More info: https://git.k8s.
-	// io/community/contributors/devel/sig-architecture/api-conventions.
-	// md#concurrency-control-and-consistency.
+	// unmodified back to the server. Populated by the system. Read-only. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency.
 	ResourceVersion OptString `json:"resourceVersion"`
 	// SelfLink is a URL representing this object. Populated by the system. Read-only.
+	//
 	// DEPRECATED Kubernetes will stop propagating this field in 1.20 release and the field is planned to
 	// be removed in 1.21 release.
 	SelfLink OptString `json:"selfLink"`
@@ -33491,11 +33518,11 @@ func (s *IoK8sApimachineryPkgApisMetaV1ListMeta) SetSelfLink(val OptString) {
 // Ref: #/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.ManagedFieldsEntry
 type IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry struct {
 	// APIVersion defines the version of this resource that this field set applies to. The format is
-	// "group/version" just like the top-level APIVersion field. It is necessary to track the version of
-	// a field set because it cannot be automatically converted.
+	// "group/version" just like the top-level APIVersion field. It is necessary to track the version of a
+	// field set because it cannot be automatically converted.
 	ApiVersion OptString `json:"apiVersion"`
-	// FieldsType is the discriminator for the different fields format and version. There is currently
-	// only one possible value: "FieldsV1".
+	// FieldsType is the discriminator for the different fields format and version. There is currently only
+	// one possible value: "FieldsV1".
 	FieldsType OptString                               `json:"fieldsType"`
 	FieldsV1   *IoK8sApimachineryPkgApisMetaV1FieldsV1 `json:"fieldsV1"`
 	// Manager is an identifier of the workflow managing these fields.
@@ -33503,11 +33530,11 @@ type IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry struct {
 	// Operation is the type of operation which lead to this ManagedFieldsEntry being created. The only
 	// valid values for this field are 'Apply' and 'Update'.
 	Operation OptString `json:"operation"`
-	// Subresource is the name of the subresource used to update that object, or empty string if the
-	// object was updated through the main resource. The value of this field is used to distinguish
-	// between managers, even if they share the same name. For example, a status update will be distinct
-	// from a regular update using the same manager name. Note that the APIVersion field is not related
-	// to the Subresource field and it always corresponds to the version of the main resource.
+	// Subresource is the name of the subresource used to update that object, or empty string if the object
+	// was updated through the main resource. The value of this field is used to distinguish between
+	// managers, even if they share the same name. For example, a status update will be distinct from a
+	// regular update using the same manager name. Note that the APIVersion field is not related to the
+	// Subresource field and it always corresponds to the version of the main resource.
 	Subresource OptString                             `json:"subresource"`
 	Time        OptIoK8sApimachineryPkgApisMetaV1Time `json:"time"`
 }
@@ -33584,92 +33611,95 @@ func (s *IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry) SetTime(val OptIoK8sA
 
 type IoK8sApimachineryPkgApisMetaV1MicroTime time.Time
 
-// ObjectMeta is metadata that all persisted resources must have, which includes all objects users
-// must create.
+// ObjectMeta is metadata that all persisted resources must have, which includes all objects users must
+// create.
 // Ref: #/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta
 type IoK8sApimachineryPkgApisMetaV1ObjectMeta struct {
 	// Annotations is an unstructured key value map stored with a resource that may be set by external
-	// tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved
-	// when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations.
+	// tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when
+	// modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations.
 	Annotations OptIoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations `json:"annotations"`
-	// The name of the cluster which the object belongs to. This is used to distinguish resources with
-	// same name and namespace in different clusters. This field is not set anywhere right now and
-	// apiserver is going to ignore it if set in create or update request.
+	// The name of the cluster which the object belongs to. This is used to distinguish resources with same
+	// name and namespace in different clusters. This field is not set anywhere right now and apiserver is
+	// going to ignore it if set in create or update request.
 	ClusterName       OptString                             `json:"clusterName"`
 	CreationTimestamp OptIoK8sApimachineryPkgApisMetaV1Time `json:"creationTimestamp"`
-	// Number of seconds allowed for this object to gracefully terminate before it will be removed from
-	// the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only.
+	// Number of seconds allowed for this object to gracefully terminate before it will be removed from the
+	// system. Only set when deletionTimestamp is also set. May only be shortened. Read-only.
 	DeletionGracePeriodSeconds OptInt64                              `json:"deletionGracePeriodSeconds"`
 	DeletionTimestamp          OptIoK8sApimachineryPkgApisMetaV1Time `json:"deletionTimestamp"`
 	// Must be empty before the object is deleted from the registry. Each entry is an identifier for the
 	// responsible component that will remove the entry from the list. If the deletionTimestamp of the
-	// object is non-nil, entries in this list can only be removed. Finalizers may be processed and
-	// removed in any order.  Order is NOT enforced because it introduces significant risk of stuck
-	// finalizers. finalizers is a shared field, any actor with permission can reorder it. If the
-	// finalizer list is processed in order, then this can lead to a situation in which the component
-	// responsible for the first finalizer in the list is waiting for a signal (field value, external
-	// system, or other) produced by a component responsible for a finalizer later in the list, resulting
-	// in a deadlock. Without enforced ordering finalizers are free to order amongst themselves and are
-	// not vulnerable to ordering changes in the list.
+	// object is non-nil, entries in this list can only be removed. Finalizers may be processed and removed
+	// in any order. Order is NOT enforced because it introduces significant risk of stuck finalizers.
+	// finalizers is a shared field, any actor with permission can reorder it. If the finalizer list is
+	// processed in order, then this can lead to a situation in which the component responsible for the
+	// first finalizer in the list is waiting for a signal (field value, external system, or other)
+	// produced by a component responsible for a finalizer later in the list, resulting in a deadlock.
+	// Without enforced ordering finalizers are free to order amongst themselves and are not vulnerable to
+	// ordering changes in the list.
 	Finalizers []string `json:"finalizers"`
 	// GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name
 	// field has not been provided. If this field is used, the name returned to the client will be
-	// different than the name passed. This value will also be combined with a unique suffix. The
-	// provided value has the same validation rules as the Name field, and may be truncated by the length
-	// of the suffix required to make the value unique on the server.
+	// different than the name passed. This value will also be combined with a unique suffix. The provided
+	// value has the same validation rules as the Name field, and may be truncated by the length of the
+	// suffix required to make the value unique on the server.
+	//
 	// If this field is specified and the generated name exists, the server will NOT return a 409 -
-	// instead, it will either return 201 Created or 500 with Reason ServerTimeout indicating a unique
-	// name could not be found in the time allotted, and the client should retry (optionally after the
-	// time indicated in the Retry-After header).
-	// Applied only if Name is not specified. More info: https://git.k8s.
-	// io/community/contributors/devel/sig-architecture/api-conventions.md#idempotency.
+	// instead, it will either return 201 Created or 500 with Reason ServerTimeout indicating a unique name
+	// could not be found in the time allotted, and the client should retry (optionally after the time
+	// indicated in the Retry-After header).
+	//
+	// Applied only if Name is not specified. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#idempotency.
 	GenerateName OptString `json:"generateName"`
 	// A sequence number representing a specific generation of the desired state. Populated by the system.
-	//  Read-only.
+	// Read-only.
 	Generation OptInt64 `json:"generation"`
 	// Map of string keys and values that can be used to organize and categorize (scope and select)
-	// objects. May match selectors of replication controllers and services. More info: http://kubernetes.
-	// io/docs/user-guide/labels.
+	// objects. May match selectors of replication controllers and services. More info:
+	// http://kubernetes.io/docs/user-guide/labels.
 	Labels OptIoK8sApimachineryPkgApisMetaV1ObjectMetaLabels `json:"labels"`
 	// ManagedFields maps workflow-id and version to the set of fields that are managed by that workflow.
 	// This is mostly for internal housekeeping, and users typically shouldn't need to set or understand
-	// this field. A workflow can be the user's name, a controller's name, or the name of a specific
-	// apply path like "ci-cd". The set of fields is always in the version that the workflow used when
-	// modifying the object.
+	// this field. A workflow can be the user's name, a controller's name, or the name of a specific apply
+	// path like "ci-cd". The set of fields is always in the version that the workflow used when modifying
+	// the object.
 	ManagedFields []IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry `json:"managedFields"`
-	// Name must be unique within a namespace. Is required when creating resources, although some
-	// resources may allow a client to request the generation of an appropriate name automatically. Name
-	// is primarily intended for creation idempotence and configuration definition. Cannot be updated.
-	// More info: http://kubernetes.io/docs/user-guide/identifiers#names.
+	// Name must be unique within a namespace. Is required when creating resources, although some resources
+	// may allow a client to request the generation of an appropriate name automatically. Name is primarily
+	// intended for creation idempotence and configuration definition. Cannot be updated. More info:
+	// http://kubernetes.io/docs/user-guide/identifiers#names.
 	Name OptString `json:"name"`
-	// Namespace defines the space within which each name must be unique. An empty namespace is
-	// equivalent to the "default" namespace, but "default" is the canonical representation. Not all
-	// objects are required to be scoped to a namespace - the value of this field for those objects will
-	// be empty.
+	// Namespace defines the space within which each name must be unique. An empty namespace is equivalent
+	// to the "default" namespace, but "default" is the canonical representation. Not all objects are
+	// required to be scoped to a namespace - the value of this field for those objects will be empty.
+	//
 	// Must be a DNS_LABEL. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/namespaces.
 	Namespace OptString `json:"namespace"`
 	// List of objects depended by this object. If ALL objects in the list have been deleted, this object
 	// will be garbage collected. If this object is managed by a controller, then an entry in this list
-	// will point to this controller, with the controller field set to true. There cannot be more than
-	// one managing controller.
+	// will point to this controller, with the controller field set to true. There cannot be more than one
+	// managing controller.
 	OwnerReferences []IoK8sApimachineryPkgApisMetaV1OwnerReference `json:"ownerReferences"`
 	// An opaque value that represents the internal version of this object that can be used by clients to
 	// determine when objects have changed. May be used for optimistic concurrency, change detection, and
-	// the watch operation on a resource or set of resources. Clients must treat these values as opaque
-	// and passed unmodified back to the server. They may only be valid for a particular resource or set
-	// of resources.
+	// the watch operation on a resource or set of resources. Clients must treat these values as opaque and
+	// passed unmodified back to the server. They may only be valid for a particular resource or set of
+	// resources.
+	//
 	// Populated by the system. Read-only. Value must be treated as opaque by clients and . More info:
-	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.
-	// md#concurrency-control-and-consistency.
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency.
 	ResourceVersion OptString `json:"resourceVersion"`
 	// SelfLink is a URL representing this object. Populated by the system. Read-only.
+	//
 	// DEPRECATED Kubernetes will stop propagating this field in 1.20 release and the field is planned to
 	// be removed in 1.21 release.
 	SelfLink OptString `json:"selfLink"`
 	// UID is the unique in time and space value for this object. It is typically generated by the server
 	// on successful creation of a resource and is not allowed to change on PUT operations.
-	// Populated by the system. Read-only. More info: http://kubernetes.
-	// io/docs/user-guide/identifiers#uids.
+	//
+	// Populated by the system. Read-only. More info: http://kubernetes.io/docs/user-guide/identifiers#uids.
 	UID OptString `json:"uid"`
 }
 
@@ -33834,8 +33864,8 @@ func (s *IoK8sApimachineryPkgApisMetaV1ObjectMeta) SetUID(val OptString) {
 }
 
 // Annotations is an unstructured key value map stored with a resource that may be set by external
-// tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved
-// when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations.
+// tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when
+// modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations.
 type IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations map[string]string
 
 func (s *IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations) init() IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations {
@@ -33848,8 +33878,8 @@ func (s *IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations) init() IoK8sApimac
 }
 
 // Map of string keys and values that can be used to organize and categorize (scope and select)
-// objects. May match selectors of replication controllers and services. More info: http://kubernetes.
-// io/docs/user-guide/labels.
+// objects. May match selectors of replication controllers and services. More info:
+// http://kubernetes.io/docs/user-guide/labels.
 type IoK8sApimachineryPkgApisMetaV1ObjectMetaLabels map[string]string
 
 func (s *IoK8sApimachineryPkgApisMetaV1ObjectMetaLabels) init() IoK8sApimachineryPkgApisMetaV1ObjectMetaLabels {
@@ -33874,8 +33904,8 @@ type IoK8sApimachineryPkgApisMetaV1OwnerReference struct {
 	BlockOwnerDeletion OptBool `json:"blockOwnerDeletion"`
 	// If true, this reference points to the managing controller.
 	Controller OptBool `json:"controller"`
-	// Kind of the referent. More info: https://git.k8s.
-	// io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
+	// Kind of the referent. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind string `json:"kind"`
 	// Name of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#names.
 	Name string `json:"name"`
@@ -34214,34 +34244,25 @@ func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchStorageV1beta1NamespacedCS
 }
 
 // RawExtension is used to hold extensions in external versions.
-// To use this, make a field which has RawExtension as its type in your external, versioned struct,
-// and Object in your internal struct. You also need to register your various plugin types.
-// // Internal package: type MyAPIObject struct {
-// runtime.TypeMeta `json:",inline"`
-// MyPlugin runtime.Object `json:"myPlugin"`
-// } type PluginA struct {
-// AOption string `json:"aOption"`
-// }
-// // External package: type MyAPIObject struct {
-// runtime.TypeMeta `json:",inline"`
-// MyPlugin runtime.RawExtension `json:"myPlugin"`
-// } type PluginA struct {
-// AOption string `json:"aOption"`
-// }
-// // On the wire, the JSON will look something like this: {
-// "kind":"MyAPIObject",
-// "apiVersion":"v1",
-// "myPlugin": {
-// "kind":"PluginA",
-// "aOption":"foo",
-// },
-// }
-// So what happens? Decode first uses json or yaml to unmarshal the serialized data into your
-// external MyAPIObject. That causes the raw JSON to be stored, but not unpacked. The next step is to
-// copy (using pkg/conversion) into the internal struct. The runtime package's DefaultScheme has
-// conversion functions installed which will unpack the JSON stored in RawExtension, turning it into
-// the correct object type, and storing it in the Object. (TODO: In the case where the object is of
-// an unknown type, a runtime.Unknown object will be created and stored.).
+//
+// To use this, make a field which has RawExtension as its type in your external, versioned struct, and
+// Object in your internal struct. You also need to register your various plugin types.
+//
+// // Internal package: type MyAPIObject struct { runtime.TypeMeta `json:",inline"` MyPlugin
+// runtime.Object `json:"myPlugin"` } type PluginA struct { AOption string `json:"aOption"` }
+//
+// // External package: type MyAPIObject struct { runtime.TypeMeta `json:",inline"` MyPlugin
+// runtime.RawExtension `json:"myPlugin"` } type PluginA struct { AOption string `json:"aOption"` }
+//
+// // On the wire, the JSON will look something like this: { "kind":"MyAPIObject", "apiVersion":"v1",
+// "myPlugin": { "kind":"PluginA", "aOption":"foo", }, }
+//
+// So what happens? Decode first uses json or yaml to unmarshal the serialized data into your external
+// MyAPIObject. That causes the raw JSON to be stored, but not unpacked. The next step is to copy
+// (using pkg/conversion) into the internal struct. The runtime package's DefaultScheme has conversion
+// functions installed which will unpack the JSON stored in RawExtension, turning it into the correct
+// object type, and storing it in the Object. (TODO: In the case where the object is of an unknown
+// type, a runtime.Unknown object will be created and stored.).
 // Ref: #/components/schemas/io.k8s.apimachinery.pkg.runtime.RawExtension
 type IoK8sApimachineryPkgRuntimeRawExtension struct{}
 
@@ -34356,12 +34377,12 @@ func (*IoK8sApimachineryPkgVersionInfo) getCodeVersionRes() {}
 // APIService represents a server for a particular GroupVersion. Name must be "version.group".
 // Ref: #/components/schemas/io.k8s.kube-aggregator.pkg.apis.apiregistration.v1.APIService
 type IoK8sKubeAggregatorPkgApisApiregistrationV1APIService struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                                      `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta                    `json:"metadata"`
@@ -34490,14 +34511,14 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition) SetType
 // APIServiceList is a list of APIService objects.
 // Ref: #/components/schemas/io.k8s.kube-aggregator.pkg.apis.apiregistration.v1.APIServiceList
 type IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList struct {
-	// APIVersion defines the versioned schema of this representation of an object. Servers should
-	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
-	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert
+	// recognized schemas to the latest internal value, and may reject unrecognized values. More info:
+	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
 	ApiVersion OptString `json:"apiVersion"`
 	// Items is the list of APIService.
 	Items []IoK8sKubeAggregatorPkgApisApiregistrationV1APIService `json:"items"`
-	// Kind is a string value representing the REST resource this object represents. Servers may infer
-	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this
+	// from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 `json:"kind"`
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta `json:"metadata"`
@@ -34555,30 +34576,30 @@ type IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec struct {
 	CaBundle []byte `json:"caBundle"`
 	// Group is the API group name this server hosts.
 	Group OptString `json:"group"`
-	// GroupPriorityMininum is the priority this group should have at least. Higher priority means that
-	// the group is preferred by clients over lower priority ones. Note that other versions of this group
-	// might specify even higher GroupPriorityMininum values such that the whole group gets a higher
-	// priority. The primary sort is based on GroupPriorityMinimum, ordered highest number to lowest (20
-	// before 10). The secondary sort is based on the alphabetical comparison of the name of the object.
-	// (v1.bar before v1.foo) We'd recommend something like: *.k8s.io (except extensions) at 18000 and
-	// PaaSes (OpenShift, Deis) are recommended to be in the 2000s.
+	// GroupPriorityMininum is the priority this group should have at least. Higher priority means that the
+	// group is preferred by clients over lower priority ones. Note that other versions of this group might
+	// specify even higher GroupPriorityMininum values such that the whole group gets a higher priority.
+	// The primary sort is based on GroupPriorityMinimum, ordered highest number to lowest (20 before 10).
+	// The secondary sort is based on the alphabetical comparison of the name of the object. (v1.bar before
+	// v1.foo) We'd recommend something like: *.k8s.io (except extensions) at 18000 and PaaSes (OpenShift,
+	// Deis) are recommended to be in the 2000s.
 	GroupPriorityMinimum int32 `json:"groupPriorityMinimum"`
 	// InsecureSkipTLSVerify disables TLS certificate verification when communicating with this server.
-	// This is strongly discouraged.  You should use the CABundle instead.
+	// This is strongly discouraged. You should use the CABundle instead.
 	InsecureSkipTLSVerify OptBool                                                        `json:"insecureSkipTLSVerify"`
 	Service               OptIoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference `json:"service"`
-	// Version is the API version this server hosts.  For example, "v1".
+	// Version is the API version this server hosts. For example, "v1".
 	Version OptString `json:"version"`
-	// VersionPriority controls the ordering of this API version inside of its group.  Must be greater
-	// than zero. The primary sort is based on VersionPriority, ordered highest to lowest (20 before 10).
-	// Since it's inside of a group, the number can be small, probably in the 10s. In case of equal
-	// version priorities, the version string will be used to compute the order inside a group. If the
-	// version string is "kube-like", it will sort above non "kube-like" version strings, which are
-	// ordered lexicographically. "Kube-like" versions start with a "v", then are followed by a number
-	// (the major version), then optionally the string "alpha" or "beta" and another number (the minor
-	// version). These are sorted first by GA > beta > alpha (where GA is a version with no suffix such
-	// as beta or alpha), and then by comparing major version, then minor version. An example sorted list
-	// of versions: v10, v2, v1, v11beta2, v10beta3, v3beta1, v12alpha1, v11alpha2, foo1, foo10.
+	// VersionPriority controls the ordering of this API version inside of its group. Must be greater than
+	// zero. The primary sort is based on VersionPriority, ordered highest to lowest (20 before 10). Since
+	// it's inside of a group, the number can be small, probably in the 10s. In case of equal version
+	// priorities, the version string will be used to compute the order inside a group. If the version
+	// string is "kube-like", it will sort above non "kube-like" version strings, which are ordered
+	// lexicographically. "Kube-like" versions start with a "v", then are followed by a number (the major
+	// version), then optionally the string "alpha" or "beta" and another number (the minor version). These
+	// are sorted first by GA > beta > alpha (where GA is a version with no suffix such as beta or alpha),
+	// and then by comparing major version, then minor version. An example sorted list of versions: v10,
+	// v2, v1, v11beta2, v10beta3, v3beta1, v12alpha1, v11alpha2, foo1, foo10.
 	VersionPriority int32 `json:"versionPriority"`
 }
 
