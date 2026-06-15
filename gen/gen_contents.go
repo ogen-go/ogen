@@ -282,58 +282,91 @@ func sseStandardSchema(name string) *jsonschema.Schema {
 	}
 }
 
-func (g *Generator) normalizeFullSSESchema(schema *jsonschema.Schema, media *openapi.MediaType) *jsonschema.Schema {
-	if schema == nil || schema.Type != jsonschema.Object {
-		return schema
+func (g *Generator) normalizeFullSSESchema(schema *jsonschema.Schema, media *openapi.MediaType) (*jsonschema.Schema, error) {
+	if schema == nil {
+		return nil, nil
 	}
 
-	allowed := map[string]struct{}{
-		"id":    {},
-		"event": {},
-		"data":  {},
-		"retry": {},
-	}
-	seen := map[string]struct{}{}
+	switch {
+	case schema.Type == jsonschema.Object:
+		allowed := map[string]struct{}{
+			"id":    {},
+			"event": {},
+			"data":  {},
+			"retry": {},
+		}
+		seen := map[string]struct{}{}
 
-	clone := *schema
-	clone.Properties = nil
-	clone.Required = nil
-	additionalProperties := false
-	clone.AdditionalProperties = &additionalProperties
-	clone.Item = nil
-	clone.PatternProperties = nil
-	for _, prop := range schema.Properties {
-		if _, ok := allowed[prop.Name]; !ok {
-			g.log.Warn("Ignoring non-standard SSE event schema property",
-				zapPosition(media),
-				zap.String("property", prop.Name),
-			)
-			continue
+		clone := *schema
+		clone.Properties = nil
+		clone.Required = nil
+		additionalProperties := false
+		clone.AdditionalProperties = &additionalProperties
+		clone.Item = nil
+		clone.PatternProperties = nil
+		for _, prop := range schema.Properties {
+			if _, ok := allowed[prop.Name]; !ok {
+				g.log.Warn("Ignoring non-standard SSE event schema property",
+					zapPosition(media),
+					zap.String("property", prop.Name),
+				)
+				continue
+			}
+			prop.Required = prop.Name != "retry"
+			seen[prop.Name] = struct{}{}
+			clone.Properties = append(clone.Properties, prop)
+			if prop.Required {
+				clone.Required = append(clone.Required, prop.Name)
+			}
 		}
-		prop.Required = prop.Name != "retry"
-		seen[prop.Name] = struct{}{}
-		clone.Properties = append(clone.Properties, prop)
-		if prop.Required {
-			clone.Required = append(clone.Required, prop.Name)
-		}
-	}
 
-	for _, name := range []string{"id", "event", "data", "retry"} {
-		if _, ok := seen[name]; ok {
-			continue
+		for _, name := range []string{"id", "event", "data", "retry"} {
+			if _, ok := seen[name]; ok {
+				continue
+			}
+			required := name != "retry"
+			clone.Properties = append(clone.Properties, jsonschema.Property{
+				Name:     name,
+				Schema:   sseStandardSchema(name),
+				Required: required,
+			})
+			if required {
+				clone.Required = append(clone.Required, name)
+			}
 		}
-		required := name != "retry"
-		clone.Properties = append(clone.Properties, jsonschema.Property{
-			Name:     name,
-			Schema:   sseStandardSchema(name),
-			Required: required,
-		})
-		if required {
-			clone.Required = append(clone.Required, name)
-		}
-	}
 
-	return &clone
+		return &clone, nil
+	case len(schema.OneOf) > 0:
+		clone := *schema
+		clone.OneOf = make([]*jsonschema.Schema, len(schema.OneOf))
+		for i, variant := range schema.OneOf {
+			if variant == nil {
+				return nil, errors.Errorf("oneOf[%d] is nil", i)
+			}
+			normalized, err := g.normalizeFullSSESchema(variant, media)
+			if err != nil {
+				return nil, errors.Wrapf(err, "oneOf[%d]", i)
+			}
+			clone.OneOf[i] = normalized
+		}
+		return &clone, nil
+	case len(schema.AnyOf) > 0:
+		clone := *schema
+		clone.AnyOf = make([]*jsonschema.Schema, len(schema.AnyOf))
+		for i, variant := range schema.AnyOf {
+			if variant == nil {
+				return nil, errors.Errorf("anyOf[%d] is nil", i)
+			}
+			normalized, err := g.normalizeFullSSESchema(variant, media)
+			if err != nil {
+				return nil, errors.Wrapf(err, "anyOf[%d]", i)
+			}
+			clone.AnyOf[i] = normalized
+		}
+		return &clone, nil
+	default:
+		return nil, errors.New("must be an object or oneOf/anyOf of objects")
+	}
 }
 
 func (g *Generator) generateSSEContent(
@@ -347,19 +380,22 @@ func (g *Generator) generateSSEContent(
 	}
 
 	schema := media.Schema
+	var err error
 	switch shape {
 	case openapi.SSEEventShapeFull:
-		if schema == nil || schema.Type != jsonschema.Object {
-			return nil, fmt.Errorf("SSE schema of %q shape must be an object",
-				openapi.SSEEventShapeFull)
+		schema, err = g.normalizeFullSSESchema(schema, media)
+		if err != nil {
+			return nil, fmt.Errorf("SSE schema of %q shape %w", openapi.SSEEventShapeFull, err)
 		}
-		schema = g.normalizeFullSSESchema(schema, media)
 	case openapi.SSEEventShapeFullArray:
 		if schema == nil || schema.Type != jsonschema.Array || schema.Item == nil {
 			return nil, fmt.Errorf("SSE schema of %q shape must be an array with items",
 				openapi.SSEEventShapeFullArray)
 		}
-		schema = g.normalizeFullSSESchema(schema.Item, media)
+		schema, err = g.normalizeFullSSESchema(schema.Item, media)
+		if err != nil {
+			return nil, fmt.Errorf("SSE schema of %q shape %w", openapi.SSEEventShapeFullArray, err)
+		}
 	}
 
 	eventSchemaName := typeName + "Event"

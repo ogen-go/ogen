@@ -236,7 +236,6 @@ func (s *{{ $.Name }}) decodeEvent(raw sse.Event,
 	}
 	return event, nil
 {{- else if or (eq $.SSE.Shape "full") (eq $.SSE.Shape "full-array") }}
-	{{- $dataField := $.SSE.EventType.MustField "Data" }}
 	e := jx.GetEncoder()
 	e.ObjStart()
 	e.FieldStart("id")
@@ -244,6 +243,33 @@ func (s *{{ $.Name }}) decodeEvent(raw sse.Event,
 	e.FieldStart("event")
 	e.Str(raw.Type)
 	e.FieldStart("data")
+	{{- if $.SSE.EventType.IsSum }}
+	switch raw.Type {
+	{{- range $variant := $.SSE.EventType.SumOf }}
+	{{- $entries := $.SSE.EventType.SumSpec.PickMappingEntriesFor $.SSE.EventType $variant }}
+	{{- $dataField := $variant.MustField "Data" }}
+	{{- range $entry := $entries }}
+	case {{ quote $entry.Key }}:
+		{{- if $dataField.Type.AcceptsJSONString }}
+		if jx.Valid([]byte(raw.Data)) {
+			e.Raw([]byte(raw.Data))
+		} else {
+			e.Str(raw.Data)
+		}
+		{{- else }}
+		e.Raw([]byte(raw.Data))
+		{{- end }}
+	{{- end }}
+	{{- end }}
+	default:
+		if jx.Valid([]byte(raw.Data)) {
+			e.Raw([]byte(raw.Data))
+		} else {
+			e.Str(raw.Data)
+		}
+	}
+	{{- else }}
+	{{- $dataField := $.SSE.EventType.MustField "Data" }}
 	{{- if $dataField.Type.AcceptsJSONString }}
 	if jx.Valid([]byte(raw.Data)) {
 	e.Raw([]byte(raw.Data))
@@ -252,6 +278,7 @@ func (s *{{ $.Name }}) decodeEvent(raw sse.Event,
 	}
 	{{- else }}
 	e.Raw([]byte(raw.Data))
+	{{- end }}
 	{{- end }}
 	if raw.Retry != nil {
 		e.FieldStart("retry")

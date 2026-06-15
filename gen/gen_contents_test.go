@@ -97,7 +97,8 @@ func TestGenerator_normalizeFullSSESchema_RequiredStandardFields(t *testing.T) {
 		},
 	}
 
-	got := g.normalizeFullSSESchema(schema, &openapi.MediaType{})
+	got, err := g.normalizeFullSSESchema(schema, &openapi.MediaType{})
+	require.NoError(t, err)
 	require.NotNil(t, got)
 
 	required := map[string]bool{}
@@ -110,4 +111,40 @@ func TestGenerator_normalizeFullSSESchema_RequiredStandardFields(t *testing.T) {
 	require.True(t, required["data"])
 	require.False(t, required["retry"])
 	require.ElementsMatch(t, []string{"id", "event", "data"}, got.Required)
+}
+
+func TestGenerator_normalizeFullSSESchema_OneOfObjectVariants(t *testing.T) {
+	g := &Generator{}
+
+	schema := &jsonschema.Schema{
+		OneOf: []*jsonschema.Schema{
+			{
+				Type: jsonschema.Object,
+				Properties: []jsonschema.Property{
+					{Name: "event", Schema: &jsonschema.Schema{Type: jsonschema.String}},
+					{Name: "data", Schema: &jsonschema.Schema{Type: jsonschema.Integer}},
+				},
+			},
+			{
+				Type: jsonschema.Object,
+				Properties: []jsonschema.Property{
+					{Name: "event", Schema: &jsonschema.Schema{Type: jsonschema.String}},
+					{Name: "data", Schema: &jsonschema.Schema{Type: jsonschema.String}},
+				},
+			},
+		},
+		Discriminator: &jsonschema.Discriminator{
+			PropertyName: "event",
+		},
+	}
+
+	got, err := g.normalizeFullSSESchema(schema, &openapi.MediaType{})
+	require.NoError(t, err)
+	require.NotNil(t, got)
+	require.Len(t, got.OneOf, 2)
+	require.Equal(t, "event", got.Discriminator.PropertyName)
+	for _, variant := range got.OneOf {
+		require.Equal(t, jsonschema.Object, variant.Type)
+		require.ElementsMatch(t, []string{"id", "event", "data"}, variant.Required)
+	}
 }
