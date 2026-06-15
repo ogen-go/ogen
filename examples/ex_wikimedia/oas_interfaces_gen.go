@@ -2,5 +2,6 @@
 package api
 
 type V2StreamRecentchangeGetRes interface {
+	initSSEStream(sseConnectFunc, sseClientConfig)
 	v2StreamRecentchangeGetRes()
 }

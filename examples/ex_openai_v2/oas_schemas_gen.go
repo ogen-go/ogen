@@ -6451,7 +6451,8 @@ func (s *CreateChatCompletionResponse) SetUsage(val OptCompletionUsage) {
 	s.Usage = val
 }
 
-func (*CreateChatCompletionResponse) createChatCompletionRes() {}
+func (*CreateChatCompletionResponse) createChatCompletionRes()                      {}
+func (*CreateChatCompletionResponse) initSSEStream(sseConnectFunc, sseClientConfig) {}
 
 type CreateChatCompletionResponseChoicesItem struct {
 	// The reason the model stopped generating tokens. This will be `stop` if the model hit a natural
@@ -16259,7 +16260,8 @@ func (s *Response) SetUsage(val OptResponseUsage) {
 	s.Usage = val
 }
 
-func (*Response) createResponseRes() {}
+func (*Response) createResponseRes()                            {}
+func (*Response) initSSEStream(sseConnectFunc, sseClientConfig) {}
 
 // Emitted when there is a partial audio response.
 // Ref: #/components/schemas/ResponseAudioDeltaEvent

@@ -871,7 +871,8 @@ func (s *V2StreamRecentchangeGetOKApplicationJSON) SetAdditionalProps(val V2Stre
 	s.AdditionalProps = val
 }
 
-func (*V2StreamRecentchangeGetOKApplicationJSON) v2StreamRecentchangeGetRes() {}
+func (*V2StreamRecentchangeGetOKApplicationJSON) initSSEStream(sseConnectFunc, sseClientConfig) {}
+func (*V2StreamRecentchangeGetOKApplicationJSON) v2StreamRecentchangeGetRes()                   {}
 
 type V2StreamRecentchangeGetOKApplicationJSONAdditional map[string]jx.Raw
 

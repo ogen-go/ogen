@@ -3,8 +3,10 @@ package api
 
 type CreateChatCompletionRes interface {
 	createChatCompletionRes()
+	initSSEStream(sseConnectFunc, sseClientConfig)
 }
 
 type CreateResponseRes interface {
 	createResponseRes()
+	initSSEStream(sseConnectFunc, sseClientConfig)
 }

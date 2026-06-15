@@ -449,12 +449,14 @@ func (c *Client) sendV2StreamRecentchangeGet(ctx context.Context, params V2Strea
 		_ = resp.Body.Close()
 		return res, errors.Wrap(err, "decode response")
 	}
-	sseStreamResult := false
-	if stream, ok := any(result).(interface {
-		initSSEStream(sseConnectFunc, sseClientConfig)
-	}); ok {
-		sseStreamResult = true
-		stream.initSSEStream(func(reconnectCtx context.Context, lastEventID string) (*http.Response, error) {
+	ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+	if err != nil {
+		_ = resp.Body.Close()
+		return res, errors.Wrap(err, "parse media type")
+	}
+	// For SSE response keep the body open for streaming.
+	if ht.MatchContentType("text/event-stream", ct) {
+		result.initSSEStream(func(reconnectCtx context.Context, lastEventID string) (*http.Response, error) {
 			reconnectReq := r.Clone(reconnectCtx)
 			reconnectReq.Header.Set("Cache-Control", "no-cache")
 			reconnectReq.Header.Set("Accept", "text/event-stream")
@@ -507,8 +509,7 @@ func (c *Client) sendV2StreamRecentchangeGet(ctx context.Context, params V2Strea
 
 			return reconnectResp, nil
 		}, sseOptions)
-	}
-	if !sseStreamResult {
+	} else {
 		_ = resp.Body.Close()
 	}
 
