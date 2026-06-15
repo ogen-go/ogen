@@ -38,9 +38,9 @@ func (c *codeRecorder) Unwrap() http.ResponseWriter {
 // Test #7. The Caching test exercises the preferred in-memory or separate-process caching technology
 // for the platform or framework. For implementation simplicity, the requirements are very similar to
 // the multiple database-query test Test #3, but use a separate database table. The requirements are
-// quite generous, affording each framework fairly broad freedom to meet the requirements in the
-// manner that best represents the canonical non-distributed caching approach for the framework.
-// (Note: a distributed caching test type could be added later.).
+// quite generous, affording each framework fairly broad freedom to meet the requirements in the manner
+// that best represents the canonical non-distributed caching approach for the framework. (Note: a
+// distributed caching test type could be added later.).
 //
 // GET /cached-worlds
 func (s *Server) handleCachingRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -309,8 +309,8 @@ func (s *Server) handleDBRequest(args [0]string, argsEscaped bool, w http.Respon
 // handleJSONRequest handles json operation.
 //
 // Test #1. The JSON Serialization test exercises the framework fundamentals including keep-alive
-// support, request routing, request header parsing, object instantiation, JSON serialization,
-// response header generation, and request count throughput.
+// support, request routing, request header parsing, object instantiation, JSON serialization, response
+// header generation, and request count throughput.
 //
 // GET /json
 func (s *Server) handleJSONRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -434,10 +434,10 @@ func (s *Server) handleJSONRequest(args [0]string, argsEscaped bool, w http.Resp
 
 // handleQueriesRequest handles Queries operation.
 //
-// Test #3. The Multiple Database Queries test is a variation of Test #2 and also uses the World
-// table. Multiple rows are fetched to more dramatically punish the database driver and connection
-// pool. At the highest queries-per-request tested (20), this test demonstrates all frameworks'
-// convergence toward zero requests-per-second as database activity increases.
+// Test #3. The Multiple Database Queries test is a variation of Test #2 and also uses the World table.
+// Multiple rows are fetched to more dramatically punish the database driver and connection pool. At
+// the highest queries-per-request tested (20), this test demonstrates all frameworks' convergence
+// toward zero requests-per-second as database activity increases.
 //
 // GET /queries
 func (s *Server) handleQueriesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -580,9 +580,9 @@ func (s *Server) handleQueriesRequest(args [0]string, argsEscaped bool, w http.R
 
 // handleUpdatesRequest handles Updates operation.
 //
-// Test #5. The Database Updates test is a variation of Test #3 that exercises the ORM's persistence
-// of objects and the database driver's performance at running UPDATE statements or similar. The
-// spirit of this test is to exercise a variable number of read-then-write style database operations.
+// Test #5. The Database Updates test is a variation of Test #3 that exercises the ORM's persistence of
+// objects and the database driver's performance at running UPDATE statements or similar. The spirit of
+// this test is to exercise a variable number of read-then-write style database operations.
 //
 // GET /updates
 func (s *Server) handleUpdatesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {

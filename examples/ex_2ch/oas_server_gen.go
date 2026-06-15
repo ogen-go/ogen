@@ -23,10 +23,8 @@ type Handler interface {
 	// APICaptchaAppIDPublicKeyGet implements GET /api/captcha/app/id/{public_key} operation.
 	//
 	// Полученный id вам нужно отправить вместе с постом как
-	// app_response_id.
-	// При этом нужно отправить app_response = sha256(app_response_id + '|' +
-	// private key).
-	// Срок жизни id: 180 секунд.
+	// app_response_id. При этом нужно отправить app_response = sha256(app_response_id
+	// + '|' + private key). Срок жизни id: 180 секунд.
 	//
 	// GET /api/captcha/app/id/{public_key}
 	APICaptchaAppIDPublicKeyGet(ctx context.Context, params APICaptchaAppIDPublicKeyGetParams) (*Captcha, error)

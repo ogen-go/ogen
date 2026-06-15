@@ -256,7 +256,9 @@ type Invoker interface {
 	// V2StreamRecentchangeGet invokes GET /v2/stream/recentchange operation.
 	//
 	// Mediawiki.recentchange events.
+	//
 	// (NOTE: This stream is an alias of mediawiki.recentchange)
+	//
 	// Schema title: mediawiki/recentchange.
 	//
 	// GET /v2/stream/recentchange
@@ -307,7 +309,9 @@ func (c *Client) onResponse(ctx context.Context, resp *http.Response) error {
 // V2StreamRecentchangeGet invokes GET /v2/stream/recentchange operation.
 //
 // Mediawiki.recentchange events.
+//
 // (NOTE: This stream is an alias of mediawiki.recentchange)
+//
 // Schema title: mediawiki/recentchange.
 //
 // GET /v2/stream/recentchange

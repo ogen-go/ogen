@@ -573,8 +573,8 @@ type V2StreamRecentchangeGetOKApplicationJSON struct {
 	// A URI identifying the JSONSchema for this event. This should match an schema's $id in a schema
 	// repository. E.g. /schema/title/1.0.0.
 	Schema string `json:"$schema"`
-	// Type of recentchange event (rc_type). One of "edit", "new", "log", "categorize", or "external"; or
-	// a number. (See Manual:Recentchanges table#rc_type).
+	// Type of recentchange event (rc_type). One of "edit", "new", "log", "categorize", or "external"; or a
+	// number. (See Manual:Recentchanges table#rc_type).
 	Type OptString `json:"type"`
 	// (rc_bot).
 	Bot OptBool `json:"bot"`
@@ -596,8 +596,8 @@ type V2StreamRecentchangeGetOKApplicationJSON struct {
 	Meta    V2StreamRecentchangeGetOKApplicationJSONMeta `json:"meta"`
 	// (rc_minor).
 	Minor OptBool `json:"minor"`
-	// ID of relevant namespace of affected page (rc_namespace, page_namespace). This is -1 ("Special")
-	// for log events.
+	// ID of relevant namespace of affected page (rc_namespace, page_namespace). This is -1 ("Special") for
+	// log events.
 	Namespace OptInt `json:"namespace"`
 	// The rc_comment parsed into simple HTML. Optional.
 	Parsedcomment OptString `json:"parsedcomment"`
@@ -1411,8 +1411,8 @@ type V2StreamRecentchangeGetOKTextEventStreamEventData struct {
 	// A URI identifying the JSONSchema for this event. This should match an schema's $id in a schema
 	// repository. E.g. /schema/title/1.0.0.
 	Schema string `json:"$schema"`
-	// Type of recentchange event (rc_type). One of "edit", "new", "log", "categorize", or "external"; or
-	// a number. (See Manual:Recentchanges table#rc_type).
+	// Type of recentchange event (rc_type). One of "edit", "new", "log", "categorize", or "external"; or a
+	// number. (See Manual:Recentchanges table#rc_type).
 	Type OptString `json:"type"`
 	// (rc_bot).
 	Bot OptBool `json:"bot"`
@@ -1434,8 +1434,8 @@ type V2StreamRecentchangeGetOKTextEventStreamEventData struct {
 	Meta    V2StreamRecentchangeGetOKTextEventStreamEventDataMeta `json:"meta"`
 	// (rc_minor).
 	Minor OptBool `json:"minor"`
-	// ID of relevant namespace of affected page (rc_namespace, page_namespace). This is -1 ("Special")
-	// for log events.
+	// ID of relevant namespace of affected page (rc_namespace, page_namespace). This is -1 ("Special") for
+	// log events.
 	Namespace OptInt `json:"namespace"`
 	// The rc_comment parsed into simple HTML. Optional.
 	Parsedcomment OptString `json:"parsedcomment"`

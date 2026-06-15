@@ -7912,9 +7912,9 @@ type ActionsListJobsForWorkflowRunParams struct {
 	Repo  string
 	// The id of the workflow run.
 	RunID int
-	// Filters jobs by their `completed_at` timestamp. Can be one of:
-	// \* `latest`: Returns jobs from the most recent execution of the workflow run.
-	// \* `all`: Returns all jobs for a workflow run, including from old executions of the workflow run.
+	// Filters jobs by their `completed_at` timestamp. Can be one of: \* `latest`: Returns jobs from the
+	// most recent execution of the workflow run. \* `all`: Returns all jobs for a workflow run, including
+	// from old executions of the workflow run.
 	Filter OptActionsListJobsForWorkflowRunFilter `json:",omitempty,omitzero"`
 	// Results per page (max 100).
 	PerPage OptInt `json:",omitempty,omitzero"`
@@ -10870,13 +10870,16 @@ type ActionsListWorkflowRunsParams struct {
 	// Returns workflow runs associated with a branch. Use the name of the branch of the `push`.
 	Branch OptString `json:",omitempty,omitzero"`
 	// Returns workflow run triggered by the event you specify. For example, `push`, `pull_request` or
-	// `issue`. For more information, see "[Events that trigger workflows](https://help.github.
-	// com/en/actions/automating-your-workflow-with-github-actions/events-that-trigger-workflows).".
+	// `issue`. For more information, see "[Events that trigger workflows].".
+	//
+	// [Events that trigger workflows]: https://help.github.com/en/actions/automating-your-workflow-with-github-actions/events-that-trigger-workflows
 	Event OptString `json:",omitempty,omitzero"`
 	// Returns workflow runs with the check run `status` or `conclusion` that you specify. For example, a
 	// conclusion can be `success` or a status can be `in_progress`. Only GitHub can set a status of
 	// `waiting` or `requested`. For a list of the possible `status` and `conclusion` options, see
-	// "[Create a check run](https://docs.github.com/rest/reference/checks#create-a-check-run).".
+	// "[Create a check run].".
+	//
+	// [Create a check run]: https://docs.github.com/rest/reference/checks#create-a-check-run
 	Status OptWorkflowRunStatus `json:",omitempty,omitzero"`
 	// Results per page (max 100).
 	PerPage OptInt `json:",omitempty,omitzero"`
@@ -11477,13 +11480,16 @@ type ActionsListWorkflowRunsForRepoParams struct {
 	// Returns workflow runs associated with a branch. Use the name of the branch of the `push`.
 	Branch OptString `json:",omitempty,omitzero"`
 	// Returns workflow run triggered by the event you specify. For example, `push`, `pull_request` or
-	// `issue`. For more information, see "[Events that trigger workflows](https://help.github.
-	// com/en/actions/automating-your-workflow-with-github-actions/events-that-trigger-workflows).".
+	// `issue`. For more information, see "[Events that trigger workflows].".
+	//
+	// [Events that trigger workflows]: https://help.github.com/en/actions/automating-your-workflow-with-github-actions/events-that-trigger-workflows
 	Event OptString `json:",omitempty,omitzero"`
 	// Returns workflow runs with the check run `status` or `conclusion` that you specify. For example, a
 	// conclusion can be `success` or a status can be `in_progress`. Only GitHub can set a status of
 	// `waiting` or `requested`. For a list of the possible `status` and `conclusion` options, see
-	// "[Create a check run](https://docs.github.com/rest/reference/checks#create-a-check-run).".
+	// "[Create a check run].".
+	//
+	// [Create a check run]: https://docs.github.com/rest/reference/checks#create-a-check-run
 	Status OptWorkflowRunStatus `json:",omitempty,omitzero"`
 	// Results per page (max 100).
 	PerPage OptInt `json:",omitempty,omitzero"`
@@ -14658,11 +14664,15 @@ type ActivityListNotificationsForAuthenticatedUserParams struct {
 	All OptBool `json:",omitempty,omitzero"`
 	// If `true`, only shows notifications in which the user is directly participating or mentioned.
 	Participating OptBool `json:",omitempty,omitzero"`
-	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
-	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601] format:
+	// `YYYY-MM-DDTHH:MM:SSZ`.
+	//
+	// [ISO 8601]: https://en.wikipedia.org/wiki/ISO_8601
 	Since OptDateTime `json:",omitempty,omitzero"`
-	// Only show notifications updated before the given time. This is a timestamp in [ISO
-	// 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+	// Only show notifications updated before the given time. This is a timestamp in [ISO 8601] format:
+	// `YYYY-MM-DDTHH:MM:SSZ`.
+	//
+	// [ISO 8601]: https://en.wikipedia.org/wiki/ISO_8601
 	Before OptDateTime `json:",omitempty,omitzero"`
 	// Results per page (max 100).
 	PerPage OptInt `json:",omitempty,omitzero"`
@@ -16553,11 +16563,15 @@ type ActivityListRepoNotificationsForAuthenticatedUserParams struct {
 	All OptBool `json:",omitempty,omitzero"`
 	// If `true`, only shows notifications in which the user is directly participating or mentioned.
 	Participating OptBool `json:",omitempty,omitzero"`
-	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
-	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601] format:
+	// `YYYY-MM-DDTHH:MM:SSZ`.
+	//
+	// [ISO 8601]: https://en.wikipedia.org/wiki/ISO_8601
 	Since OptDateTime `json:",omitempty,omitzero"`
-	// Only show notifications updated before the given time. This is a timestamp in [ISO
-	// 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+	// Only show notifications updated before the given time. This is a timestamp in [ISO 8601] format:
+	// `YYYY-MM-DDTHH:MM:SSZ`.
+	//
+	// [ISO 8601]: https://en.wikipedia.org/wiki/ISO_8601
 	Before OptDateTime `json:",omitempty,omitzero"`
 	// Results per page (max 100).
 	PerPage OptInt `json:",omitempty,omitzero"`
@@ -18600,11 +18614,11 @@ func decodeAppsCheckTokenParams(args [1]string, argsEscaped bool, r *http.Reques
 
 // AppsCreateContentAttachmentParams is parameters of apps/create-content-attachment operation.
 type AppsCreateContentAttachmentParams struct {
-	// The owner of the repository. Determined from the `repository` `full_name` of the
-	// `content_reference` event.
+	// The owner of the repository. Determined from the `repository` `full_name` of the `content_reference`
+	// event.
 	Owner string
-	// The name of the repository. Determined from the `repository` `full_name` of the
-	// `content_reference` event.
+	// The name of the repository. Determined from the `repository` `full_name` of the `content_reference`
+	// event.
 	Repo string
 	// The `id` of the `content_reference` event.
 	ContentReferenceID int
@@ -24550,8 +24564,8 @@ type CodeScanningDeleteAnalysisParams struct {
 	AnalysisID int
 	// Allow deletion if the specified analysis is the last in a set. If you attempt to delete the final
 	// analysis in a set without setting this parameter to `true`, you'll get a 400 response with the
-	// message: `Analysis is last of its type and deletion may result in the loss of historical alert
-	// data. Please specify confirm_delete.`.
+	// message:
+	// `Analysis is last of its type and deletion may result in the loss of historical alert data. Please specify confirm_delete.`.
 	ConfirmDelete OptNilString `json:",omitempty,omitzero"`
 }
 
@@ -24775,8 +24789,8 @@ type CodeScanningGetAlertParams struct {
 	Owner string
 	Repo  string
 	// The number that identifies an alert. You can find this at the end of the URL for a code scanning
-	// alert within GitHub, and in the `number` field in the response from the `GET
-	// /repos/{owner}/{repo}/code-scanning/alerts` operation.
+	// alert within GitHub, and in the `number` field in the response from the
+	// `GET /repos/{owner}/{repo}/code-scanning/alerts` operation.
 	AlertNumber AlertNumber
 }
 
@@ -25301,8 +25315,8 @@ type CodeScanningListAlertInstancesParams struct {
 	Owner string
 	Repo  string
 	// The number that identifies an alert. You can find this at the end of the URL for a code scanning
-	// alert within GitHub, and in the `number` field in the response from the `GET
-	// /repos/{owner}/{repo}/code-scanning/alerts` operation.
+	// alert within GitHub, and in the `number` field in the response from the
+	// `GET /repos/{owner}/{repo}/code-scanning/alerts` operation.
 	AlertNumber AlertNumber
 	// Page number of the results to fetch.
 	Page OptInt `json:",omitempty,omitzero"`
@@ -25657,8 +25671,8 @@ func decodeCodeScanningListAlertInstancesParams(args [3]string, argsEscaped bool
 type CodeScanningListAlertsForRepoParams struct {
 	Owner string
 	Repo  string
-	// The name of a code scanning tool. Only results by this tool will be listed. You can specify the
-	// tool by using either `tool_name` or `tool_guid`, but not both.
+	// The name of a code scanning tool. Only results by this tool will be listed. You can specify the tool
+	// by using either `tool_name` or `tool_guid`, but not both.
 	ToolName OptCodeScanningAnalysisToolName `json:",omitempty,omitzero"`
 	// The GUID of a code scanning tool. Only results by this tool will be listed. Note that some code
 	// scanning tools may not include a GUID in their analysis data. You can specify the tool by using
@@ -26139,8 +26153,8 @@ func decodeCodeScanningListAlertsForRepoParams(args [2]string, argsEscaped bool,
 type CodeScanningListRecentAnalysesParams struct {
 	Owner string
 	Repo  string
-	// The name of a code scanning tool. Only results by this tool will be listed. You can specify the
-	// tool by using either `tool_name` or `tool_guid`, but not both.
+	// The name of a code scanning tool. Only results by this tool will be listed. You can specify the tool
+	// by using either `tool_name` or `tool_guid`, but not both.
 	ToolName OptCodeScanningAnalysisToolName `json:",omitempty,omitzero"`
 	// The GUID of a code scanning tool. Only results by this tool will be listed. Note that some code
 	// scanning tools may not include a GUID in their analysis data. You can specify the tool by using
@@ -26150,8 +26164,8 @@ type CodeScanningListRecentAnalysesParams struct {
 	Page OptInt `json:",omitempty,omitzero"`
 	// Results per page (max 100).
 	PerPage OptInt `json:",omitempty,omitzero"`
-	// The Git reference for the analyses you want to list. The `ref` for a branch can be formatted
-	// either as `refs/heads/<branch name>` or simply `<branch name>`. To reference a pull request use
+	// The Git reference for the analyses you want to list. The `ref` for a branch can be formatted either
+	// as `refs/heads/<branch name>` or simply `<branch name>`. To reference a pull request use
 	// `refs/pull/<number>/merge`.
 	Ref OptCodeScanningRef `json:",omitempty,omitzero"`
 	// Filter analyses belonging to the same SARIF upload.
@@ -26614,8 +26628,8 @@ type CodeScanningUpdateAlertParams struct {
 	Owner string
 	Repo  string
 	// The number that identifies an alert. You can find this at the end of the URL for a code scanning
-	// alert within GitHub, and in the `number` field in the response from the `GET
-	// /repos/{owner}/{repo}/code-scanning/alerts` operation.
+	// alert within GitHub, and in the `number` field in the response from the
+	// `GET /repos/{owner}/{repo}/code-scanning/alerts` operation.
 	AlertNumber AlertNumber
 }
 
@@ -28309,25 +28323,31 @@ func decodeEnterpriseAdminGetAllowedActionsEnterpriseParams(args [1]string, args
 type EnterpriseAdminGetAuditLogParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
 	Enterprise string
-	// A search phrase. For more information, see [Searching the audit log](https://docs.github.
-	// com/github/setting-up-and-managing-organizations-and-teams/reviewing-the-audit-log-for-your-organization#searching-the-audit-log).
+	// A search phrase. For more information, see [Searching the audit log].
+	//
+	// [Searching the audit log]: https://docs.github.com/github/setting-up-and-managing-organizations-and-teams/reviewing-the-audit-log-for-your-organization#searching-the-audit-log
 	Phrase OptString `json:",omitempty,omitzero"`
 	// The event types to include:
-	// - `web` - returns web (non-Git) events
-	// - `git` - returns Git events
-	// - `all` - returns both web and Git events
+	//
+	//  - `web` - returns web (non-Git) events
+	//  - `git` - returns Git events
+	//  - `all` - returns both web and Git events
+	//
 	// The default is `web`.
 	Include OptAuditLogInclude `json:",omitempty,omitzero"`
-	// A cursor, as given in the [Link header](https://docs.github.
-	// com/rest/overview/resources-in-the-rest-api#link-header). If specified, the query only searches
-	// for events after this cursor.
+	// A cursor, as given in the [Link header]. If specified, the query only searches for events after this
+	// cursor.
+	//
+	// [Link header]: https://docs.github.com/rest/overview/resources-in-the-rest-api#link-header
 	After OptString `json:",omitempty,omitzero"`
-	// A cursor, as given in the [Link header](https://docs.github.
-	// com/rest/overview/resources-in-the-rest-api#link-header). If specified, the query only searches
-	// for events before this cursor.
+	// A cursor, as given in the [Link header]. If specified, the query only searches for events before
+	// this cursor.
+	//
+	// [Link header]: https://docs.github.com/rest/overview/resources-in-the-rest-api#link-header
 	Before OptString `json:",omitempty,omitzero"`
 	// The order of audit log events. To list newest events first, specify `desc`. To list oldest events
 	// first, specify `asc`.
+	//
 	// The default is `desc`.
 	Order OptAuditLogOrder `json:",omitempty,omitzero"`
 	// Page number of the results to fetch.
@@ -33172,8 +33192,10 @@ func decodeGistsGetRevisionParams(args [2]string, argsEscaped bool, r *http.Requ
 
 // GistsListParams is parameters of gists/list operation.
 type GistsListParams struct {
-	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
-	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601] format:
+	// `YYYY-MM-DDTHH:MM:SSZ`.
+	//
+	// [ISO 8601]: https://en.wikipedia.org/wiki/ISO_8601
 	Since OptDateTime `json:",omitempty,omitzero"`
 	// Results per page (max 100).
 	PerPage OptInt `json:",omitempty,omitzero"`
@@ -33715,8 +33737,10 @@ func decodeGistsListCommitsParams(args [1]string, argsEscaped bool, r *http.Requ
 // GistsListForUserParams is parameters of gists/list-for-user operation.
 type GistsListForUserParams struct {
 	Username string
-	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
-	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601] format:
+	// `YYYY-MM-DDTHH:MM:SSZ`.
+	//
+	// [ISO 8601]: https://en.wikipedia.org/wiki/ISO_8601
 	Since OptDateTime `json:",omitempty,omitzero"`
 	// Results per page (max 100).
 	PerPage OptInt `json:",omitempty,omitzero"`
@@ -34128,8 +34152,10 @@ func decodeGistsListForksParams(args [1]string, argsEscaped bool, r *http.Reques
 
 // GistsListPublicParams is parameters of gists/list-public operation.
 type GistsListPublicParams struct {
-	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
-	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601] format:
+	// `YYYY-MM-DDTHH:MM:SSZ`.
+	//
+	// [ISO 8601]: https://en.wikipedia.org/wiki/ISO_8601
 	Since OptDateTime `json:",omitempty,omitzero"`
 	// Results per page (max 100).
 	PerPage OptInt `json:",omitempty,omitzero"`
@@ -34308,8 +34334,10 @@ func decodeGistsListPublicParams(args [0]string, argsEscaped bool, r *http.Reque
 
 // GistsListStarredParams is parameters of gists/list-starred operation.
 type GistsListStarredParams struct {
-	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
-	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601] format:
+	// `YYYY-MM-DDTHH:MM:SSZ`.
+	//
+	// [ISO 8601]: https://en.wikipedia.org/wiki/ISO_8601
 	Since OptDateTime `json:",omitempty,omitzero"`
 	// Results per page (max 100).
 	PerPage OptInt `json:",omitempty,omitzero"`
@@ -36191,10 +36219,10 @@ type GitGetTreeParams struct {
 	Owner   string
 	Repo    string
 	TreeSha string
-	// Setting this parameter to any value returns the objects or subtrees referenced by the tree
-	// specified in `:tree_sha`. For example, setting `recursive` to any of the following will enable
-	// returning objects or subtrees: `0`, `1`, `"true"`, and `"false"`. Omit this parameter to prevent
-	// recursively returning objects or subtrees.
+	// Setting this parameter to any value returns the objects or subtrees referenced by the tree specified
+	// in `:tree_sha`. For example, setting `recursive` to any of the following will enable returning
+	// objects or subtrees: `0`, `1`, `"true"`, and `"false"`. Omit this parameter to prevent recursively
+	// returning objects or subtrees.
 	Recursive OptString `json:",omitempty,omitzero"`
 }
 
@@ -39547,13 +39575,10 @@ func decodeIssuesGetMilestoneParams(args [3]string, argsEscaped bool, r *http.Re
 
 // IssuesListParams is parameters of issues/list operation.
 type IssuesListParams struct {
-	// Indicates which sorts of issues to return. Can be one of:
-	// \* `assigned`: Issues assigned to you
-	// \* `created`: Issues created by you
-	// \* `mentioned`: Issues mentioning you
-	// \* `subscribed`: Issues you're subscribed to updates for
-	// \* `all` or `repos`: All issues the authenticated user can see, regardless of participation or
-	// creation.
+	// Indicates which sorts of issues to return. Can be one of: \* `assigned`: Issues assigned to you \*
+	// `created`: Issues created by you \* `mentioned`: Issues mentioning you \* `subscribed`: Issues
+	// you're subscribed to updates for \* `all` or `repos`: All issues the authenticated user can see,
+	// regardless of participation or creation.
 	Filter OptIssuesListFilter `json:",omitempty,omitzero"`
 	// Indicates the state of the issues to return. Can be either `open`, `closed`, or `all`.
 	State OptIssuesListState `json:",omitempty,omitzero"`
@@ -39563,8 +39588,10 @@ type IssuesListParams struct {
 	Sort OptIssuesListSort `json:",omitempty,omitzero"`
 	// One of `asc` (ascending) or `desc` (descending).
 	Direction OptDirection `json:",omitempty,omitzero"`
-	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
-	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601] format:
+	// `YYYY-MM-DDTHH:MM:SSZ`.
+	//
+	// [ISO 8601]: https://en.wikipedia.org/wiki/ISO_8601
 	Since  OptDateTime `json:",omitempty,omitzero"`
 	Collab OptBool     `json:",omitempty,omitzero"`
 	Orgs   OptBool     `json:",omitempty,omitzero"`
@@ -40514,8 +40541,10 @@ type IssuesListCommentsParams struct {
 	Repo  string
 	// Issue_number parameter.
 	IssueNumber int
-	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
-	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601] format:
+	// `YYYY-MM-DDTHH:MM:SSZ`.
+	//
+	// [ISO 8601]: https://en.wikipedia.org/wiki/ISO_8601
 	Since OptDateTime `json:",omitempty,omitzero"`
 	// Results per page (max 100).
 	PerPage OptInt `json:",omitempty,omitzero"`
@@ -40856,8 +40885,10 @@ type IssuesListCommentsForRepoParams struct {
 	Sort OptSort `json:",omitempty,omitzero"`
 	// Either `asc` or `desc`. Ignored without the `sort` parameter.
 	Direction OptIssuesListCommentsForRepoDirection `json:",omitempty,omitzero"`
-	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
-	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601] format:
+	// `YYYY-MM-DDTHH:MM:SSZ`.
+	//
+	// [ISO 8601]: https://en.wikipedia.org/wiki/ISO_8601
 	Since OptDateTime `json:",omitempty,omitzero"`
 	// Results per page (max 100).
 	PerPage OptInt `json:",omitempty,omitzero"`
@@ -41508,13 +41539,10 @@ func decodeIssuesListEventsForRepoParams(args [2]string, argsEscaped bool, r *ht
 
 // IssuesListForAuthenticatedUserParams is parameters of issues/list-for-authenticated-user operation.
 type IssuesListForAuthenticatedUserParams struct {
-	// Indicates which sorts of issues to return. Can be one of:
-	// \* `assigned`: Issues assigned to you
-	// \* `created`: Issues created by you
-	// \* `mentioned`: Issues mentioning you
-	// \* `subscribed`: Issues you're subscribed to updates for
-	// \* `all` or `repos`: All issues the authenticated user can see, regardless of participation or
-	// creation.
+	// Indicates which sorts of issues to return. Can be one of: \* `assigned`: Issues assigned to you \*
+	// `created`: Issues created by you \* `mentioned`: Issues mentioning you \* `subscribed`: Issues
+	// you're subscribed to updates for \* `all` or `repos`: All issues the authenticated user can see,
+	// regardless of participation or creation.
 	Filter OptIssuesListForAuthenticatedUserFilter `json:",omitempty,omitzero"`
 	// Indicates the state of the issues to return. Can be either `open`, `closed`, or `all`.
 	State OptIssuesListForAuthenticatedUserState `json:",omitempty,omitzero"`
@@ -41524,8 +41552,10 @@ type IssuesListForAuthenticatedUserParams struct {
 	Sort OptIssuesListForAuthenticatedUserSort `json:",omitempty,omitzero"`
 	// One of `asc` (ascending) or `desc` (descending).
 	Direction OptDirection `json:",omitempty,omitzero"`
-	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
-	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601] format:
+	// `YYYY-MM-DDTHH:MM:SSZ`.
+	//
+	// [ISO 8601]: https://en.wikipedia.org/wiki/ISO_8601
 	Since OptDateTime `json:",omitempty,omitzero"`
 	// Results per page (max 100).
 	PerPage OptInt `json:",omitempty,omitzero"`
@@ -42035,13 +42065,10 @@ func decodeIssuesListForAuthenticatedUserParams(args [0]string, argsEscaped bool
 // IssuesListForOrgParams is parameters of issues/list-for-org operation.
 type IssuesListForOrgParams struct {
 	Org string
-	// Indicates which sorts of issues to return. Can be one of:
-	// \* `assigned`: Issues assigned to you
-	// \* `created`: Issues created by you
-	// \* `mentioned`: Issues mentioning you
-	// \* `subscribed`: Issues you're subscribed to updates for
-	// \* `all` or `repos`: All issues the authenticated user can see, regardless of participation or
-	// creation.
+	// Indicates which sorts of issues to return. Can be one of: \* `assigned`: Issues assigned to you \*
+	// `created`: Issues created by you \* `mentioned`: Issues mentioning you \* `subscribed`: Issues
+	// you're subscribed to updates for \* `all` or `repos`: All issues the authenticated user can see,
+	// regardless of participation or creation.
 	Filter OptIssuesListForOrgFilter `json:",omitempty,omitzero"`
 	// Indicates the state of the issues to return. Can be either `open`, `closed`, or `all`.
 	State OptIssuesListForOrgState `json:",omitempty,omitzero"`
@@ -42051,8 +42078,10 @@ type IssuesListForOrgParams struct {
 	Sort OptIssuesListForOrgSort `json:",omitempty,omitzero"`
 	// One of `asc` (ascending) or `desc` (descending).
 	Direction OptDirection `json:",omitempty,omitzero"`
-	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
-	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601] format:
+	// `YYYY-MM-DDTHH:MM:SSZ`.
+	//
+	// [ISO 8601]: https://en.wikipedia.org/wiki/ISO_8601
 	Since OptDateTime `json:",omitempty,omitzero"`
 	// Results per page (max 100).
 	PerPage OptInt `json:",omitempty,omitzero"`
@@ -42634,8 +42663,10 @@ type IssuesListForRepoParams struct {
 	Sort OptIssuesListForRepoSort `json:",omitempty,omitzero"`
 	// One of `asc` (ascending) or `desc` (descending).
 	Direction OptDirection `json:",omitempty,omitzero"`
-	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
-	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601] format:
+	// `YYYY-MM-DDTHH:MM:SSZ`.
+	//
+	// [ISO 8601]: https://en.wikipedia.org/wiki/ISO_8601
 	Since OptDateTime `json:",omitempty,omitzero"`
 	// Results per page (max 100).
 	PerPage OptInt `json:",omitempty,omitzero"`
@@ -51448,25 +51479,31 @@ func decodeOrgsGetParams(args [1]string, argsEscaped bool, r *http.Request) (par
 // OrgsGetAuditLogParams is parameters of orgs/get-audit-log operation.
 type OrgsGetAuditLogParams struct {
 	Org string
-	// A search phrase. For more information, see [Searching the audit log](https://docs.github.
-	// com/github/setting-up-and-managing-organizations-and-teams/reviewing-the-audit-log-for-your-organization#searching-the-audit-log).
+	// A search phrase. For more information, see [Searching the audit log].
+	//
+	// [Searching the audit log]: https://docs.github.com/github/setting-up-and-managing-organizations-and-teams/reviewing-the-audit-log-for-your-organization#searching-the-audit-log
 	Phrase OptString `json:",omitempty,omitzero"`
 	// The event types to include:
-	// - `web` - returns web (non-Git) events
-	// - `git` - returns Git events
-	// - `all` - returns both web and Git events
+	//
+	//  - `web` - returns web (non-Git) events
+	//  - `git` - returns Git events
+	//  - `all` - returns both web and Git events
+	//
 	// The default is `web`.
 	Include OptAuditLogInclude `json:",omitempty,omitzero"`
-	// A cursor, as given in the [Link header](https://docs.github.
-	// com/rest/overview/resources-in-the-rest-api#link-header). If specified, the query only searches
-	// for events after this cursor.
+	// A cursor, as given in the [Link header]. If specified, the query only searches for events after this
+	// cursor.
+	//
+	// [Link header]: https://docs.github.com/rest/overview/resources-in-the-rest-api#link-header
 	After OptString `json:",omitempty,omitzero"`
-	// A cursor, as given in the [Link header](https://docs.github.
-	// com/rest/overview/resources-in-the-rest-api#link-header). If specified, the query only searches
-	// for events before this cursor.
+	// A cursor, as given in the [Link header]. If specified, the query only searches for events before
+	// this cursor.
+	//
+	// [Link header]: https://docs.github.com/rest/overview/resources-in-the-rest-api#link-header
 	Before OptString `json:",omitempty,omitzero"`
 	// The order of audit log events. To list newest events first, specify `desc`. To list oldest events
 	// first, specify `asc`.
+	//
 	// The default is `desc`.
 	Order OptAuditLogOrder `json:",omitempty,omitzero"`
 	// Results per page (max 100).
@@ -53427,15 +53464,14 @@ func decodeOrgsListInvitationTeamsParams(args [2]string, argsEscaped bool, r *ht
 // OrgsListMembersParams is parameters of orgs/list-members operation.
 type OrgsListMembersParams struct {
 	Org string
-	// Filter members returned in the list. Can be one of:
-	// \* `2fa_disabled` - Members without [two-factor authentication](https://github.
-	// com/blog/1614-two-factor-authentication) enabled. Available for organization owners.
-	// \* `all` - All members the authenticated user can see.
+	// Filter members returned in the list. Can be one of: \* `2fa_disabled` - Members without
+	// [two-factor authentication] enabled. Available for organization owners. \* `all` - All members the
+	// authenticated user can see.
+	//
+	// [two-factor authentication]: https://github.com/blog/1614-two-factor-authentication
 	Filter OptOrgsListMembersFilter `json:",omitempty,omitzero"`
-	// Filter members returned by their role. Can be one of:
-	// \* `all` - All members of the organization, regardless of role.
-	// \* `admin` - Organization owners.
-	// \* `member` - Non-owner organization members.
+	// Filter members returned by their role. Can be one of: \* `all` - All members of the organization,
+	// regardless of role. \* `admin` - Organization owners. \* `member` - Non-owner organization members.
 	Role OptOrgsListMembersRole `json:",omitempty,omitzero"`
 	// Results per page (max 100).
 	PerPage OptInt `json:",omitempty,omitzero"`
@@ -53952,10 +53988,10 @@ func decodeOrgsListMembershipsForAuthenticatedUserParams(args [0]string, argsEsc
 // OrgsListOutsideCollaboratorsParams is parameters of orgs/list-outside-collaborators operation.
 type OrgsListOutsideCollaboratorsParams struct {
 	Org string
-	// Filter the list of outside collaborators. Can be one of:
-	// \* `2fa_disabled`: Outside collaborators without [two-factor authentication](https://github.
-	// com/blog/1614-two-factor-authentication) enabled.
-	// \* `all`: All outside collaborators.
+	// Filter the list of outside collaborators. Can be one of: \* `2fa_disabled`: Outside collaborators
+	// without [two-factor authentication] enabled. \* `all`: All outside collaborators.
+	//
+	// [two-factor authentication]: https://github.com/blog/1614-two-factor-authentication
 	Filter OptOrgsListOutsideCollaboratorsFilter `json:",omitempty,omitzero"`
 	// Results per page (max 100).
 	PerPage OptInt `json:",omitempty,omitzero"`
@@ -56576,9 +56612,9 @@ func decodeOrgsUpdateWebhookConfigForOrgParams(args [2]string, argsEscaped bool,
 type PackagesDeletePackageForAuthenticatedUserParams struct {
 	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
 	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
-	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
-	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
-	// these have now been migrated to the Container registry.
+	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker` to
+	// find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if these
+	// have now been migrated to the Container registry.
 	PackageType PackageType
 	// The name of the package.
 	PackageName string
@@ -56708,9 +56744,9 @@ func decodePackagesDeletePackageForAuthenticatedUserParams(args [2]string, argsE
 type PackagesDeletePackageForOrgParams struct {
 	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
 	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
-	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
-	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
-	// these have now been migrated to the Container registry.
+	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker` to
+	// find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if these
+	// have now been migrated to the Container registry.
 	PackageType PackageType
 	// The name of the package.
 	PackageName string
@@ -56893,9 +56929,9 @@ func decodePackagesDeletePackageForOrgParams(args [3]string, argsEscaped bool, r
 type PackagesDeletePackageForUserParams struct {
 	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
 	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
-	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
-	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
-	// these have now been migrated to the Container registry.
+	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker` to
+	// find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if these
+	// have now been migrated to the Container registry.
 	PackageType PackageType
 	// The name of the package.
 	PackageName string
@@ -57078,9 +57114,9 @@ func decodePackagesDeletePackageForUserParams(args [3]string, argsEscaped bool, 
 type PackagesDeletePackageVersionForAuthenticatedUserParams struct {
 	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
 	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
-	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
-	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
-	// these have now been migrated to the Container registry.
+	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker` to
+	// find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if these
+	// have now been migrated to the Container registry.
 	PackageType PackageType
 	// The name of the package.
 	PackageName string
@@ -57264,9 +57300,9 @@ func decodePackagesDeletePackageVersionForAuthenticatedUserParams(args [3]string
 type PackagesDeletePackageVersionForOrgParams struct {
 	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
 	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
-	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
-	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
-	// these have now been migrated to the Container registry.
+	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker` to
+	// find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if these
+	// have now been migrated to the Container registry.
 	PackageType PackageType
 	// The name of the package.
 	PackageName string
@@ -57503,9 +57539,9 @@ func decodePackagesDeletePackageVersionForOrgParams(args [4]string, argsEscaped 
 type PackagesDeletePackageVersionForUserParams struct {
 	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
 	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
-	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
-	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
-	// these have now been migrated to the Container registry.
+	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker` to
+	// find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if these
+	// have now been migrated to the Container registry.
 	PackageType PackageType
 	// The name of the package.
 	PackageName string
@@ -57742,9 +57778,9 @@ func decodePackagesDeletePackageVersionForUserParams(args [4]string, argsEscaped
 type PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams struct {
 	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
 	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
-	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
-	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
-	// these have now been migrated to the Container registry.
+	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker` to
+	// find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if these
+	// have now been migrated to the Container registry.
 	PackageType PackageType
 	// The name of the package.
 	PackageName string
@@ -58061,9 +58097,9 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams
 type PackagesGetAllPackageVersionsForPackageOwnedByOrgParams struct {
 	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
 	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
-	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
-	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
-	// these have now been migrated to the Container registry.
+	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker` to
+	// find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if these
+	// have now been migrated to the Container registry.
 	PackageType PackageType
 	// The name of the package.
 	PackageName string
@@ -58433,9 +58469,9 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgParams(args [3]strin
 type PackagesGetAllPackageVersionsForPackageOwnedByUserParams struct {
 	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
 	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
-	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
-	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
-	// these have now been migrated to the Container registry.
+	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker` to
+	// find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if these
+	// have now been migrated to the Container registry.
 	PackageType PackageType
 	// The name of the package.
 	PackageName string
@@ -58618,9 +58654,9 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByUserParams(args [3]stri
 type PackagesGetPackageForAuthenticatedUserParams struct {
 	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
 	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
-	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
-	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
-	// these have now been migrated to the Container registry.
+	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker` to
+	// find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if these
+	// have now been migrated to the Container registry.
 	PackageType PackageType
 	// The name of the package.
 	PackageName string
@@ -58750,9 +58786,9 @@ func decodePackagesGetPackageForAuthenticatedUserParams(args [2]string, argsEsca
 type PackagesGetPackageForOrganizationParams struct {
 	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
 	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
-	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
-	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
-	// these have now been migrated to the Container registry.
+	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker` to
+	// find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if these
+	// have now been migrated to the Container registry.
 	PackageType PackageType
 	// The name of the package.
 	PackageName string
@@ -58935,9 +58971,9 @@ func decodePackagesGetPackageForOrganizationParams(args [3]string, argsEscaped b
 type PackagesGetPackageForUserParams struct {
 	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
 	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
-	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
-	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
-	// these have now been migrated to the Container registry.
+	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker` to
+	// find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if these
+	// have now been migrated to the Container registry.
 	PackageType PackageType
 	// The name of the package.
 	PackageName string
@@ -59120,9 +59156,9 @@ func decodePackagesGetPackageForUserParams(args [3]string, argsEscaped bool, r *
 type PackagesGetPackageVersionForAuthenticatedUserParams struct {
 	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
 	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
-	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
-	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
-	// these have now been migrated to the Container registry.
+	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker` to
+	// find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if these
+	// have now been migrated to the Container registry.
 	PackageType PackageType
 	// The name of the package.
 	PackageName string
@@ -59306,9 +59342,9 @@ func decodePackagesGetPackageVersionForAuthenticatedUserParams(args [3]string, a
 type PackagesGetPackageVersionForOrganizationParams struct {
 	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
 	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
-	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
-	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
-	// these have now been migrated to the Container registry.
+	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker` to
+	// find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if these
+	// have now been migrated to the Container registry.
 	PackageType PackageType
 	// The name of the package.
 	PackageName string
@@ -59545,9 +59581,9 @@ func decodePackagesGetPackageVersionForOrganizationParams(args [4]string, argsEs
 type PackagesGetPackageVersionForUserParams struct {
 	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
 	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
-	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
-	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
-	// these have now been migrated to the Container registry.
+	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker` to
+	// find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if these
+	// have now been migrated to the Container registry.
 	PackageType PackageType
 	// The name of the package.
 	PackageName string
@@ -59784,9 +59820,9 @@ func decodePackagesGetPackageVersionForUserParams(args [4]string, argsEscaped bo
 type PackagesListPackagesForAuthenticatedUserParams struct {
 	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
 	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
-	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
-	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
-	// these have now been migrated to the Container registry.
+	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker` to
+	// find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if these
+	// have now been migrated to the Container registry.
 	PackageType PackagesListPackagesForAuthenticatedUserPackageType
 	// The selected visibility of the packages. Can be one of `public`, `private`, or `internal`. Only
 	// `container` package_types currently support `internal` visibility properly. For other ecosystems
@@ -59924,9 +59960,9 @@ func decodePackagesListPackagesForAuthenticatedUserParams(args [0]string, argsEs
 type PackagesListPackagesForOrganizationParams struct {
 	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
 	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
-	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
-	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
-	// these have now been migrated to the Container registry.
+	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker` to
+	// find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if these
+	// have now been migrated to the Container registry.
 	PackageType PackagesListPackagesForOrganizationPackageType
 	Org         string
 	// The selected visibility of the packages. Can be one of `public`, `private`, or `internal`. Only
@@ -60117,9 +60153,9 @@ func decodePackagesListPackagesForOrganizationParams(args [1]string, argsEscaped
 type PackagesListPackagesForUserParams struct {
 	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
 	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
-	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
-	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
-	// these have now been migrated to the Container registry.
+	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker` to
+	// find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if these
+	// have now been migrated to the Container registry.
 	PackageType PackagesListPackagesForUserPackageType
 	// The selected visibility of the packages. Can be one of `public`, `private`, or `internal`. Only
 	// `container` package_types currently support `internal` visibility properly. For other ecosystems
@@ -60310,9 +60346,9 @@ func decodePackagesListPackagesForUserParams(args [1]string, argsEscaped bool, r
 type PackagesRestorePackageForAuthenticatedUserParams struct {
 	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
 	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
-	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
-	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
-	// these have now been migrated to the Container registry.
+	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker` to
+	// find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if these
+	// have now been migrated to the Container registry.
 	PackageType PackageType
 	// The name of the package.
 	PackageName string
@@ -60495,9 +60531,9 @@ func decodePackagesRestorePackageForAuthenticatedUserParams(args [2]string, args
 type PackagesRestorePackageForOrgParams struct {
 	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
 	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
-	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
-	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
-	// these have now been migrated to the Container registry.
+	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker` to
+	// find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if these
+	// have now been migrated to the Container registry.
 	PackageType PackageType
 	// The name of the package.
 	PackageName string
@@ -60733,9 +60769,9 @@ func decodePackagesRestorePackageForOrgParams(args [3]string, argsEscaped bool, 
 type PackagesRestorePackageForUserParams struct {
 	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
 	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
-	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
-	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
-	// these have now been migrated to the Container registry.
+	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker` to
+	// find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if these
+	// have now been migrated to the Container registry.
 	PackageType PackageType
 	// The name of the package.
 	PackageName string
@@ -60971,9 +61007,9 @@ func decodePackagesRestorePackageForUserParams(args [3]string, argsEscaped bool,
 type PackagesRestorePackageVersionForAuthenticatedUserParams struct {
 	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
 	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
-	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
-	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
-	// these have now been migrated to the Container registry.
+	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker` to
+	// find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if these
+	// have now been migrated to the Container registry.
 	PackageType PackageType
 	// The name of the package.
 	PackageName string
@@ -61157,9 +61193,9 @@ func decodePackagesRestorePackageVersionForAuthenticatedUserParams(args [3]strin
 type PackagesRestorePackageVersionForOrgParams struct {
 	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
 	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
-	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
-	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
-	// these have now been migrated to the Container registry.
+	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker` to
+	// find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if these
+	// have now been migrated to the Container registry.
 	PackageType PackageType
 	// The name of the package.
 	PackageName string
@@ -61396,9 +61432,9 @@ func decodePackagesRestorePackageVersionForOrgParams(args [4]string, argsEscaped
 type PackagesRestorePackageVersionForUserParams struct {
 	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
 	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
-	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
-	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
-	// these have now been migrated to the Container registry.
+	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker` to
+	// find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if these
+	// have now been migrated to the Container registry.
 	PackageType PackageType
 	// The name of the package.
 	PackageName string
@@ -62513,8 +62549,8 @@ func decodeProjectsGetPermissionForUserParams(args [2]string, argsEscaped bool, 
 type ProjectsListCardsParams struct {
 	// Column_id parameter.
 	ColumnID int
-	// Filters the project cards that are returned by the card's state. Can be one of `all`,`archived`,
-	// or `not_archived`.
+	// Filters the project cards that are returned by the card's state. Can be one of `all`,`archived`, or
+	// `not_archived`.
 	ArchivedState OptProjectsListCardsArchivedState `json:",omitempty,omitzero"`
 	// Results per page (max 100).
 	PerPage OptInt `json:",omitempty,omitzero"`
@@ -62766,12 +62802,10 @@ func decodeProjectsListCardsParams(args [1]string, argsEscaped bool, r *http.Req
 // ProjectsListCollaboratorsParams is parameters of projects/list-collaborators operation.
 type ProjectsListCollaboratorsParams struct {
 	ProjectID int
-	// Filters the collaborators by their affiliation. Can be one of:
-	// \* `outside`: Outside collaborators of a project that are not a member of the project's
-	// organization.
-	// \* `direct`: Collaborators with permissions to a project, regardless of organization membership
-	// status.
-	// \* `all`: All collaborators the authenticated user can see.
+	// Filters the collaborators by their affiliation. Can be one of: \* `outside`: Outside collaborators
+	// of a project that are not a member of the project's organization. \* `direct`: Collaborators with
+	// permissions to a project, regardless of organization membership status. \* `all`: All collaborators
+	// the authenticated user can see.
 	Affiliation OptProjectsListCollaboratorsAffiliation `json:",omitempty,omitzero"`
 	// Results per page (max 100).
 	PerPage OptInt `json:",omitempty,omitzero"`
@@ -66516,8 +66550,8 @@ type PullsListParams struct {
 	// What to sort results by. Can be either `created`, `updated`, `popularity` (comment count) or
 	// `long-running` (age, filtering by pulls updated in the last month).
 	Sort OptPullsListSort `json:",omitempty,omitzero"`
-	// The direction of the sort. Can be either `asc` or `desc`. Default: `desc` when sort is `created`
-	// or sort is not specified, otherwise `asc`.
+	// The direction of the sort. Can be either `asc` or `desc`. Default: `desc` when sort is `created` or
+	// sort is not specified, otherwise `asc`.
 	Direction OptPullsListDirection `json:",omitempty,omitzero"`
 	// Results per page (max 100).
 	PerPage OptInt `json:",omitempty,omitzero"`
@@ -68260,8 +68294,10 @@ type PullsListReviewCommentsParams struct {
 	Sort OptSort `json:",omitempty,omitzero"`
 	// Can be either `asc` or `desc`. Ignored without `sort` parameter.
 	Direction OptPullsListReviewCommentsDirection `json:",omitempty,omitzero"`
-	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
-	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601] format:
+	// `YYYY-MM-DDTHH:MM:SSZ`.
+	//
+	// [ISO 8601]: https://en.wikipedia.org/wiki/ISO_8601
 	Since OptDateTime `json:",omitempty,omitzero"`
 	// Results per page (max 100).
 	PerPage OptInt `json:",omitempty,omitzero"`
@@ -68736,8 +68772,10 @@ type PullsListReviewCommentsForRepoParams struct {
 	Sort  OptPullsListReviewCommentsForRepoSort `json:",omitempty,omitzero"`
 	// Can be either `asc` or `desc`. Ignored without `sort` parameter.
 	Direction OptPullsListReviewCommentsForRepoDirection `json:",omitempty,omitzero"`
-	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
-	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601] format:
+	// `YYYY-MM-DDTHH:MM:SSZ`.
+	//
+	// [ISO 8601]: https://en.wikipedia.org/wiki/ISO_8601
 	Since OptDateTime `json:",omitempty,omitzero"`
 	// Results per page (max 100).
 	PerPage OptInt `json:",omitempty,omitzero"`
@@ -73760,8 +73798,9 @@ type ReactionsListForCommitCommentParams struct {
 	Repo  string
 	// Comment_id parameter.
 	CommentID int
-	// Returns a single [reaction type](https://docs.github.com/rest/reference/reactions#reaction-types).
-	// Omit this parameter to list all reactions to a commit comment.
+	// Returns a single [reaction type]. Omit this parameter to list all reactions to a commit comment.
+	//
+	// [reaction type]: https://docs.github.com/rest/reference/reactions#reaction-types
 	Content OptReactionsListForCommitCommentContent `json:",omitempty,omitzero"`
 	// Results per page (max 100).
 	PerPage OptInt `json:",omitempty,omitzero"`
@@ -74115,8 +74154,9 @@ type ReactionsListForIssueParams struct {
 	Repo  string
 	// Issue_number parameter.
 	IssueNumber int
-	// Returns a single [reaction type](https://docs.github.com/rest/reference/reactions#reaction-types).
-	// Omit this parameter to list all reactions to an issue.
+	// Returns a single [reaction type]. Omit this parameter to list all reactions to an issue.
+	//
+	// [reaction type]: https://docs.github.com/rest/reference/reactions#reaction-types
 	Content OptReactionsListForIssueContent `json:",omitempty,omitzero"`
 	// Results per page (max 100).
 	PerPage OptInt `json:",omitempty,omitzero"`
@@ -74470,8 +74510,9 @@ type ReactionsListForIssueCommentParams struct {
 	Repo  string
 	// Comment_id parameter.
 	CommentID int
-	// Returns a single [reaction type](https://docs.github.com/rest/reference/reactions#reaction-types).
-	// Omit this parameter to list all reactions to an issue comment.
+	// Returns a single [reaction type]. Omit this parameter to list all reactions to an issue comment.
+	//
+	// [reaction type]: https://docs.github.com/rest/reference/reactions#reaction-types
 	Content OptReactionsListForIssueCommentContent `json:",omitempty,omitzero"`
 	// Results per page (max 100).
 	PerPage OptInt `json:",omitempty,omitzero"`
@@ -74825,8 +74866,10 @@ type ReactionsListForPullRequestReviewCommentParams struct {
 	Repo  string
 	// Comment_id parameter.
 	CommentID int
-	// Returns a single [reaction type](https://docs.github.com/rest/reference/reactions#reaction-types).
-	// Omit this parameter to list all reactions to a pull request review comment.
+	// Returns a single [reaction type]. Omit this parameter to list all reactions to a pull request review
+	// comment.
+	//
+	// [reaction type]: https://docs.github.com/rest/reference/reactions#reaction-types
 	Content OptReactionsListForPullRequestReviewCommentContent `json:",omitempty,omitzero"`
 	// Results per page (max 100).
 	PerPage OptInt `json:",omitempty,omitzero"`
@@ -75181,8 +75224,10 @@ type ReactionsListForTeamDiscussionCommentInOrgParams struct {
 	TeamSlug         string
 	DiscussionNumber int
 	CommentNumber    int
-	// Returns a single [reaction type](https://docs.github.com/rest/reference/reactions#reaction-types).
-	// Omit this parameter to list all reactions to a team discussion comment.
+	// Returns a single [reaction type]. Omit this parameter to list all reactions to a team discussion
+	// comment.
+	//
+	// [reaction type]: https://docs.github.com/rest/reference/reactions#reaction-types
 	Content OptReactionsListForTeamDiscussionCommentInOrgContent `json:",omitempty,omitzero"`
 	// Results per page (max 100).
 	PerPage OptInt `json:",omitempty,omitzero"`
@@ -75587,8 +75632,10 @@ type ReactionsListForTeamDiscussionCommentLegacyParams struct {
 	TeamID           int
 	DiscussionNumber int
 	CommentNumber    int
-	// Returns a single [reaction type](https://docs.github.com/rest/reference/reactions#reaction-types).
-	// Omit this parameter to list all reactions to a team discussion comment.
+	// Returns a single [reaction type]. Omit this parameter to list all reactions to a team discussion
+	// comment.
+	//
+	// [reaction type]: https://docs.github.com/rest/reference/reactions#reaction-types
 	Content OptReactionsListForTeamDiscussionCommentLegacyContent `json:",omitempty,omitzero"`
 	// Results per page (max 100).
 	PerPage OptInt `json:",omitempty,omitzero"`
@@ -75942,8 +75989,9 @@ type ReactionsListForTeamDiscussionInOrgParams struct {
 	// Team_slug parameter.
 	TeamSlug         string
 	DiscussionNumber int
-	// Returns a single [reaction type](https://docs.github.com/rest/reference/reactions#reaction-types).
-	// Omit this parameter to list all reactions to a team discussion.
+	// Returns a single [reaction type]. Omit this parameter to list all reactions to a team discussion.
+	//
+	// [reaction type]: https://docs.github.com/rest/reference/reactions#reaction-types
 	Content OptReactionsListForTeamDiscussionInOrgContent `json:",omitempty,omitzero"`
 	// Results per page (max 100).
 	PerPage OptInt `json:",omitempty,omitzero"`
@@ -76295,8 +76343,9 @@ func decodeReactionsListForTeamDiscussionInOrgParams(args [3]string, argsEscaped
 type ReactionsListForTeamDiscussionLegacyParams struct {
 	TeamID           int
 	DiscussionNumber int
-	// Returns a single [reaction type](https://docs.github.com/rest/reference/reactions#reaction-types).
-	// Omit this parameter to list all reactions to a team discussion.
+	// Returns a single [reaction type]. Omit this parameter to list all reactions to a team discussion.
+	//
+	// [reaction type]: https://docs.github.com/rest/reference/reactions#reaction-types
 	Content OptReactionsListForTeamDiscussionLegacyContent `json:",omitempty,omitzero"`
 	// Results per page (max 100).
 	PerPage OptInt `json:",omitempty,omitzero"`
@@ -91996,11 +92045,10 @@ func decodeReposListBranchesForHeadCommitParams(args [3]string, argsEscaped bool
 type ReposListCollaboratorsParams struct {
 	Owner string
 	Repo  string
-	// Filter collaborators returned by their affiliation. Can be one of:
-	// \* `outside`: All outside collaborators of an organization-owned repository.
-	// \* `direct`: All collaborators with permissions to an organization-owned repository, regardless of
-	// organization membership status.
-	// \* `all`: All collaborators the authenticated user can see.
+	// Filter collaborators returned by their affiliation. Can be one of: \* `outside`: All outside
+	// collaborators of an organization-owned repository. \* `direct`: All collaborators with permissions
+	// to an organization-owned repository, regardless of organization membership status. \* `all`: All
+	// collaborators the authenticated user can see.
 	Affiliation OptReposListCollaboratorsAffiliation `json:",omitempty,omitzero"`
 	// Results per page (max 100).
 	PerPage OptInt `json:",omitempty,omitzero"`
@@ -93119,11 +93167,15 @@ type ReposListCommitsParams struct {
 	Path OptString `json:",omitempty,omitzero"`
 	// GitHub login or email address by which to filter by commit author.
 	Author OptString `json:",omitempty,omitzero"`
-	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
-	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601] format:
+	// `YYYY-MM-DDTHH:MM:SSZ`.
+	//
+	// [ISO 8601]: https://en.wikipedia.org/wiki/ISO_8601
 	Since OptDateTime `json:",omitempty,omitzero"`
-	// Only commits before this date will be returned. This is a timestamp in [ISO 8601](https://en.
-	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+	// Only commits before this date will be returned. This is a timestamp in [ISO 8601] format:
+	// `YYYY-MM-DDTHH:MM:SSZ`.
+	//
+	// [ISO 8601]: https://en.wikipedia.org/wiki/ISO_8601
 	Until OptDateTime `json:",omitempty,omitzero"`
 	// Results per page (max 100).
 	PerPage OptInt `json:",omitempty,omitzero"`
@@ -94875,16 +94927,16 @@ type ReposListForAuthenticatedUserParams struct {
 	// Can be one of `all`, `public`, or `private`. Note: For GitHub AE, can be one of `all`, `internal`,
 	// or `private`.
 	Visibility OptReposListForAuthenticatedUserVisibility `json:",omitempty,omitzero"`
-	// Comma-separated list of values. Can include:
-	// \* `owner`: Repositories that are owned by the authenticated user.
-	// \* `collaborator`: Repositories that the user has been added to as a collaborator.
-	// \* `organization_member`: Repositories that the user has access to through being a member of an
-	// organization. This includes every repository on every team that the user is on.
+	// Comma-separated list of values. Can include: \* `owner`: Repositories that are owned by the
+	// authenticated user. \* `collaborator`: Repositories that the user has been added to as a
+	// collaborator. \* `organization_member`: Repositories that the user has access to through being a
+	// member of an organization. This includes every repository on every team that the user is on.
 	Affiliation OptString `json:",omitempty,omitzero"`
 	// Can be one of `all`, `owner`, `public`, `private`, `member`. Note: For GitHub AE, can be one of
 	// `all`, `owner`, `internal`, `private`, `member`. Default: `all`
-	// Will cause a `422` error if used in the same request as **visibility** or **affiliation**. Will
-	// cause a `422` error if used in the same request as **visibility** or **affiliation**.
+	//
+	// Will cause a `422` error if used in the same request as visibility or affiliation. Will cause a
+	// `422` error if used in the same request as visibility or affiliation.
 	Type OptReposListForAuthenticatedUserType `json:",omitempty,omitzero"`
 	// Can be one of `created`, `updated`, `pushed`, `full_name`.
 	Sort OptReposListForAuthenticatedUserSort `json:",omitempty,omitzero"`
@@ -94894,11 +94946,15 @@ type ReposListForAuthenticatedUserParams struct {
 	PerPage OptInt `json:",omitempty,omitzero"`
 	// Page number of the results to fetch.
 	Page OptInt `json:",omitempty,omitzero"`
-	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
-	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601] format:
+	// `YYYY-MM-DDTHH:MM:SSZ`.
+	//
+	// [ISO 8601]: https://en.wikipedia.org/wiki/ISO_8601
 	Since OptDateTime `json:",omitempty,omitzero"`
-	// Only show notifications updated before the given time. This is a timestamp in [ISO
-	// 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+	// Only show notifications updated before the given time. This is a timestamp in [ISO 8601] format:
+	// `YYYY-MM-DDTHH:MM:SSZ`.
+	//
+	// [ISO 8601]: https://en.wikipedia.org/wiki/ISO_8601
 	Before OptDateTime `json:",omitempty,omitzero"`
 }
 
@@ -95456,10 +95512,10 @@ type ReposListForOrgParams struct {
 	Org string
 	// Specifies the types of repositories you want returned. Can be one of `all`, `public`, `private`,
 	// `forks`, `sources`, `member`, `internal`. Note: For GitHub AE, can be one of `all`, `private`,
-	// `forks`, `sources`, `member`, `internal`. Default: `all`. If your organization is associated with
-	// an enterprise account using GitHub Enterprise Cloud or GitHub Enterprise Server 2.20+, `type` can
-	// also be `internal`. However, the `internal` value is not yet supported when a GitHub App calls
-	// this API with an installation access token.
+	// `forks`, `sources`, `member`, `internal`. Default: `all`. If your organization is associated with an
+	// enterprise account using GitHub Enterprise Cloud or GitHub Enterprise Server 2.20+, `type` can also
+	// be `internal`. However, the `internal` value is not yet supported when a GitHub App calls this API
+	// with an installation access token.
 	Type OptReposListForOrgType `json:",omitempty,omitzero"`
 	// Can be one of `created`, `updated`, `pushed`, `full_name`.
 	Sort OptReposListForOrgSort `json:",omitempty,omitzero"`
@@ -104499,10 +104555,13 @@ type ScimListProvisionedIdentitiesParams struct {
 	// Used for pagination: the number of results to return.
 	Count OptInt `json:",omitempty,omitzero"`
 	// Filters results using the equals query parameter operator (`eq`). You can filter results that are
-	// equal to `id`, `userName`, `emails`, and `external_id`. For example, to search for an identity
-	// with the `userName` Octocat, you would use this query:
+	// equal to `id`, `userName`, `emails`, and `external_id`. For example, to search for an identity with
+	// the `userName` Octocat, you would use this query:
+	//
 	// `?filter=userName%20eq%20\"Octocat\"`.
+	//
 	// To filter results for the identity with the email `octocat@github.com`, you would use this query:
+	//
 	// `?filter=emails%20eq%20\"octocat@github.com\"`.
 	Filter OptString `json:",omitempty,omitzero"`
 }
@@ -105025,13 +105084,16 @@ func decodeScimUpdateAttributeForUserParams(args [2]string, argsEscaped bool, r 
 type SearchCodeParams struct {
 	// The query contains one or more search keywords and qualifiers. Qualifiers allow you to limit your
 	// search to specific areas of GitHub. The REST API supports the same qualifiers as GitHub.com. To
-	// learn more about the format of the query, see [Constructing a search query](https://docs.github.
-	// com/rest/reference/search#constructing-a-search-query). See "[Searching code](https://help.github.
-	// com/articles/searching-code/)" for a detailed list of qualifiers.
+	// learn more about the format of the query, see [Constructing a search query]. See "[Searching code]"
+	// for a detailed list of qualifiers.
+	//
+	// [Constructing a search query]: https://docs.github.com/rest/reference/search#constructing-a-search-query
+	// [Searching code]: https://help.github.com/articles/searching-code/
 	Q string
-	// Sorts the results of your query. Can only be `indexed`, which indicates how recently a file has
-	// been indexed by the GitHub search infrastructure. Default: [best match](https://docs.github.
-	// com/rest/reference/search#ranking-search-results).
+	// Sorts the results of your query. Can only be `indexed`, which indicates how recently a file has been
+	// indexed by the GitHub search infrastructure. Default: [best match].
+	//
+	// [best match]: https://docs.github.com/rest/reference/search#ranking-search-results
 	Sort OptSearchCodeSort `json:",omitempty,omitzero"`
 	// Determines whether the first search result returned is the highest number of matches (`desc`) or
 	// lowest number of matches (`asc`). This parameter is ignored unless you provide `sort`.
@@ -105343,12 +105405,15 @@ func decodeSearchCodeParams(args [0]string, argsEscaped bool, r *http.Request) (
 type SearchCommitsParams struct {
 	// The query contains one or more search keywords and qualifiers. Qualifiers allow you to limit your
 	// search to specific areas of GitHub. The REST API supports the same qualifiers as GitHub.com. To
-	// learn more about the format of the query, see [Constructing a search query](https://docs.github.
-	// com/rest/reference/search#constructing-a-search-query). See "[Searching commits](https://help.
-	// github.com/articles/searching-commits/)" for a detailed list of qualifiers.
+	// learn more about the format of the query, see [Constructing a search query]. See
+	// "[Searching commits]" for a detailed list of qualifiers.
+	//
+	// [Constructing a search query]: https://docs.github.com/rest/reference/search#constructing-a-search-query
+	// [Searching commits]: https://help.github.com/articles/searching-commits/
 	Q string
-	// Sorts the results of your query by `author-date` or `committer-date`. Default: [best
-	// match](https://docs.github.com/rest/reference/search#ranking-search-results).
+	// Sorts the results of your query by `author-date` or `committer-date`. Default: [best match].
+	//
+	// [best match]: https://docs.github.com/rest/reference/search#ranking-search-results
 	Sort OptSearchCommitsSort `json:",omitempty,omitzero"`
 	// Determines whether the first search result returned is the highest number of matches (`desc`) or
 	// lowest number of matches (`asc`). This parameter is ignored unless you provide `sort`.
@@ -105660,15 +105725,18 @@ func decodeSearchCommitsParams(args [0]string, argsEscaped bool, r *http.Request
 type SearchIssuesAndPullRequestsParams struct {
 	// The query contains one or more search keywords and qualifiers. Qualifiers allow you to limit your
 	// search to specific areas of GitHub. The REST API supports the same qualifiers as GitHub.com. To
-	// learn more about the format of the query, see [Constructing a search query](https://docs.github.
-	// com/rest/reference/search#constructing-a-search-query). See "[Searching issues and pull
-	// requests](https://help.github.com/articles/searching-issues-and-pull-requests/)" for a detailed
-	// list of qualifiers.
+	// learn more about the format of the query, see [Constructing a search query]. See
+	// "[Searching issues and pull requests]" for a detailed list of qualifiers.
+	//
+	// [Constructing a search query]: https://docs.github.com/rest/reference/search#constructing-a-search-query
+	// [Searching issues and pull requests]: https://help.github.com/articles/searching-issues-and-pull-requests/
 	Q string
 	// Sorts the results of your query by the number of `comments`, `reactions`, `reactions-+1`,
 	// `reactions--1`, `reactions-smile`, `reactions-thinking_face`, `reactions-heart`, `reactions-tada`,
 	// or `interactions`. You can also sort results by how recently the items were `created` or `updated`,
-	//  Default: [best match](https://docs.github.com/rest/reference/search#ranking-search-results).
+	// Default: [best match].
+	//
+	// [best match]: https://docs.github.com/rest/reference/search#ranking-search-results
 	Sort OptSearchIssuesAndPullRequestsSort `json:",omitempty,omitzero"`
 	// Determines whether the first search result returned is the highest number of matches (`desc`) or
 	// lowest number of matches (`asc`). This parameter is ignored unless you provide `sort`.
@@ -105980,12 +106048,14 @@ func decodeSearchIssuesAndPullRequestsParams(args [0]string, argsEscaped bool, r
 type SearchLabelsParams struct {
 	// The id of the repository.
 	RepositoryID int
-	// The search keywords. This endpoint does not accept qualifiers in the query. To learn more about
-	// the format of the query, see [Constructing a search query](https://docs.github.
-	// com/rest/reference/search#constructing-a-search-query).
+	// The search keywords. This endpoint does not accept qualifiers in the query. To learn more about the
+	// format of the query, see [Constructing a search query].
+	//
+	// [Constructing a search query]: https://docs.github.com/rest/reference/search#constructing-a-search-query
 	Q string
-	// Sorts the results of your query by when the label was `created` or `updated`. Default: [best
-	// match](https://docs.github.com/rest/reference/search#ranking-search-results).
+	// Sorts the results of your query by when the label was `created` or `updated`. Default: [best match].
+	//
+	// [best match]: https://docs.github.com/rest/reference/search#ranking-search-results
 	Sort OptSearchLabelsSort `json:",omitempty,omitzero"`
 	// Determines whether the first search result returned is the highest number of matches (`desc`) or
 	// lowest number of matches (`asc`). This parameter is ignored unless you provide `sort`.
@@ -106340,14 +106410,16 @@ func decodeSearchLabelsParams(args [0]string, argsEscaped bool, r *http.Request)
 type SearchReposParams struct {
 	// The query contains one or more search keywords and qualifiers. Qualifiers allow you to limit your
 	// search to specific areas of GitHub. The REST API supports the same qualifiers as GitHub.com. To
-	// learn more about the format of the query, see [Constructing a search query](https://docs.github.
-	// com/rest/reference/search#constructing-a-search-query). See "[Searching for
-	// repositories](https://help.github.com/articles/searching-for-repositories/)" for a detailed list
-	// of qualifiers.
+	// learn more about the format of the query, see [Constructing a search query]. See
+	// "[Searching for repositories]" for a detailed list of qualifiers.
+	//
+	// [Constructing a search query]: https://docs.github.com/rest/reference/search#constructing-a-search-query
+	// [Searching for repositories]: https://help.github.com/articles/searching-for-repositories/
 	Q string
 	// Sorts the results of your query by number of `stars`, `forks`, or `help-wanted-issues` or how
-	// recently the items were `updated`. Default: [best match](https://docs.github.
-	// com/rest/reference/search#ranking-search-results).
+	// recently the items were `updated`. Default: [best match].
+	//
+	// [best match]: https://docs.github.com/rest/reference/search#ranking-search-results
 	Sort OptSearchReposSort `json:",omitempty,omitzero"`
 	// Determines whether the first search result returned is the highest number of matches (`desc`) or
 	// lowest number of matches (`asc`). This parameter is ignored unless you provide `sort`.
@@ -106659,8 +106731,9 @@ func decodeSearchReposParams(args [0]string, argsEscaped bool, r *http.Request) 
 type SearchTopicsParams struct {
 	// The query contains one or more search keywords and qualifiers. Qualifiers allow you to limit your
 	// search to specific areas of GitHub. The REST API supports the same qualifiers as GitHub.com. To
-	// learn more about the format of the query, see [Constructing a search query](https://docs.github.
-	// com/rest/reference/search#constructing-a-search-query).
+	// learn more about the format of the query, see [Constructing a search query].
+	//
+	// [Constructing a search query]: https://docs.github.com/rest/reference/search#constructing-a-search-query
 	Q string
 	// Results per page (max 100).
 	PerPage OptInt `json:",omitempty,omitzero"`
@@ -106834,13 +106907,16 @@ func decodeSearchTopicsParams(args [0]string, argsEscaped bool, r *http.Request)
 type SearchUsersParams struct {
 	// The query contains one or more search keywords and qualifiers. Qualifiers allow you to limit your
 	// search to specific areas of GitHub. The REST API supports the same qualifiers as GitHub.com. To
-	// learn more about the format of the query, see [Constructing a search query](https://docs.github.
-	// com/rest/reference/search#constructing-a-search-query). See "[Searching users](https://help.github.
-	// com/articles/searching-users/)" for a detailed list of qualifiers.
+	// learn more about the format of the query, see [Constructing a search query]. See "[Searching users]"
+	// for a detailed list of qualifiers.
+	//
+	// [Constructing a search query]: https://docs.github.com/rest/reference/search#constructing-a-search-query
+	// [Searching users]: https://help.github.com/articles/searching-users/
 	Q string
 	// Sorts the results of your query by number of `followers` or `repositories`, or when the person
-	// `joined` GitHub. Default: [best match](https://docs.github.
-	// com/rest/reference/search#ranking-search-results).
+	// `joined` GitHub. Default: [best match].
+	//
+	// [best match]: https://docs.github.com/rest/reference/search#ranking-search-results
 	Sort OptSearchUsersSort `json:",omitempty,omitzero"`
 	// Determines whether the first search result returned is the highest number of matches (`desc`) or
 	// lowest number of matches (`asc`). This parameter is ignored unless you provide `sort`.
@@ -107153,8 +107229,8 @@ type SecretScanningGetAlertParams struct {
 	Owner string
 	Repo  string
 	// The number that identifies an alert. You can find this at the end of the URL for a code scanning
-	// alert within GitHub, and in the `number` field in the response from the `GET
-	// /repos/{owner}/{repo}/code-scanning/alerts` operation.
+	// alert within GitHub, and in the `number` field in the response from the
+	// `GET /repos/{owner}/{repo}/code-scanning/alerts` operation.
 	AlertNumber AlertNumber
 }
 
@@ -107635,8 +107711,9 @@ type SecretScanningListAlertsForRepoParams struct {
 	// Set to `open` or `resolved` to only list secret scanning alerts in a specific state.
 	State OptSecretScanningListAlertsForRepoState `json:",omitempty,omitzero"`
 	// A comma separated list of secret types to return. By default all secret types are returned. See
-	// "[About secret scanning for private repositories](https://docs.github.
-	// com/code-security/secret-security/about-secret-scanning#about-secret-scanning-for-private-repositories)" for a complete list of secret types (API slug).
+	// "[About secret scanning for private repositories]" for a complete list of secret types (API slug).
+	//
+	// [About secret scanning for private repositories]: https://docs.github.com/code-security/secret-security/about-secret-scanning#about-secret-scanning-for-private-repositories
 	SecretType OptString `json:",omitempty,omitzero"`
 	// Page number of the results to fetch.
 	Page OptInt `json:",omitempty,omitzero"`
@@ -107987,8 +108064,8 @@ type SecretScanningUpdateAlertParams struct {
 	Owner string
 	Repo  string
 	// The number that identifies an alert. You can find this at the end of the URL for a code scanning
-	// alert within GitHub, and in the `number` field in the response from the `GET
-	// /repos/{owner}/{repo}/code-scanning/alerts` operation.
+	// alert within GitHub, and in the `number` field in the response from the
+	// `GET /repos/{owner}/{repo}/code-scanning/alerts` operation.
 	AlertNumber AlertNumber
 }
 
@@ -115173,10 +115250,8 @@ type TeamsListMembersInOrgParams struct {
 	Org string
 	// Team_slug parameter.
 	TeamSlug string
-	// Filters members returned by their role in the team. Can be one of:
-	// \* `member` - normal members of the team.
-	// \* `maintainer` - team maintainers.
-	// \* `all` - all members of the team.
+	// Filters members returned by their role in the team. Can be one of: \* `member` - normal members of
+	// the team. \* `maintainer` - team maintainers. \* `all` - all members of the team.
 	Role OptTeamsListMembersInOrgRole `json:",omitempty,omitzero"`
 	// Results per page (max 100).
 	PerPage OptInt `json:",omitempty,omitzero"`
@@ -115480,10 +115555,8 @@ func decodeTeamsListMembersInOrgParams(args [2]string, argsEscaped bool, r *http
 // TeamsListMembersLegacyParams is parameters of teams/list-members-legacy operation.
 type TeamsListMembersLegacyParams struct {
 	TeamID int
-	// Filters members returned by their role in the team. Can be one of:
-	// \* `member` - normal members of the team.
-	// \* `maintainer` - team maintainers.
-	// \* `all` - all members of the team.
+	// Filters members returned by their role in the team. Can be one of: \* `member` - normal members of
+	// the team. \* `maintainer` - team maintainers. \* `all` - all members of the team.
 	Role OptTeamsListMembersLegacyRole `json:",omitempty,omitzero"`
 	// Results per page (max 100).
 	PerPage OptInt `json:",omitempty,omitzero"`
@@ -119517,9 +119590,9 @@ func decodeUsersGetByUsernameParams(args [1]string, argsEscaped bool, r *http.Re
 type UsersGetContextForUserParams struct {
 	Username string
 	// Identifies which additional information you'd like to receive about the person's hovercard. Can be
-	// `organization`, `repository`, `issue`, `pull_request`. **Required** when using `subject_id`.
+	// `organization`, `repository`, `issue`, `pull_request`. Required when using `subject_id`.
 	SubjectType OptUsersGetContextForUserSubjectType `json:",omitempty,omitzero"`
-	// Uses the ID for the `subject_type` you specified. **Required** when using `subject_type`.
+	// Uses the ID for the `subject_type` you specified. Required when using `subject_type`.
 	SubjectID OptString `json:",omitempty,omitzero"`
 }
 

@@ -674,14 +674,15 @@ func decodeGetPageThumbnailImageParams(args [3]string, argsEscaped bool, r *http
 // SearchParams is parameters of search operation.
 type SearchParams struct {
 	// Search query.
-	// * You can search for multiple terms at the same time, and this will return only galleries that
-	// contain both terms. For example, rust cox finds all galleries that contain both rust and cox.
-	// * You can exclude terms by prefixing them with -. For example, rust cox -tokio matches all
-	// galleries matching rust and cox but not tokio.
-	// * Exact searches can be performed by wrapping terms in double quotes. For example, "big dogs" only
-	// matches galleries with "big dogs" somewhere in the title or in tags.
-	// * These can be combined with tag namespaces for finer control over the query: parodies:railgun
-	// -tag:"big dogs".
+	//
+	//  - You can search for multiple terms at the same time, and this will return only galleries that
+	//    contain both terms. For example, rust cox finds all galleries that contain both rust and cox.
+	//  - You can exclude terms by prefixing them with -. For example, rust cox -tokio matches all
+	//    galleries matching rust and cox but not tokio.
+	//  - Exact searches can be performed by wrapping terms in double quotes. For example, "big dogs" only
+	//    matches galleries with "big dogs" somewhere in the title or in tags.
+	//  - These can be combined with tag namespaces for finer control over the query: parodies:railgun
+	//    -tag:"big dogs".
 	Query string
 	// Number of result page.
 	Page OptInt `json:",omitempty,omitzero"`

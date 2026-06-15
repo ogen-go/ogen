@@ -10,8 +10,8 @@ import (
 type Handler interface {
 	// BuildInfo implements buildInfo operation.
 	//
-	// Returns Tempo buildinfo, in the same format as Prometheus `/api/v1/status/buildinfo`.
-	// Used by Grafana to check Tempo API version.
+	// Returns Tempo buildinfo, in the same format as Prometheus `/api/v1/status/buildinfo`. Used by
+	// Grafana to check Tempo API version.
 	//
 	// GET /api/status/buildinfo
 	BuildInfo(ctx context.Context) (*PrometheusVersion, error)
@@ -35,8 +35,7 @@ type Handler interface {
 	SearchTagValues(ctx context.Context, params SearchTagValuesParams) (*TagValues, error)
 	// SearchTagValuesV2 implements searchTagValuesV2 operation.
 	//
-	// This endpoint retrieves all discovered values and their data types for the given TraceQL
-	// identifier.
+	// This endpoint retrieves all discovered values and their data types for the given TraceQL identifier.
 	//
 	// GET /api/v2/search/tag/{attribute_selector}/values
 	SearchTagValuesV2(ctx context.Context, params SearchTagValuesV2Params) (*TagValuesV2, error)

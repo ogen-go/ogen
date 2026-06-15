@@ -1049,8 +1049,8 @@ func (s *Server) handleHeadersPatternRequest(args [0]string, argsEscaped bool, w
 
 // handleIntersectPatternCodeRequest handles intersectPatternCode operation.
 //
-// If a response is defined using an explicit code, the explicit code definition takes precedence
-// over the range definition for that code.
+// If a response is defined using an explicit code, the explicit code definition takes precedence over
+// the range definition for that code.
 //
 // GET /intersectPatternCode
 func (s *Server) handleIntersectPatternCodeRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {

@@ -62,8 +62,8 @@ type Invoker interface {
 	HeadersPattern(ctx context.Context) (*HeadersPattern4XX, error)
 	// IntersectPatternCode invokes intersectPatternCode operation.
 	//
-	// If a response is defined using an explicit code, the explicit code definition takes precedence
-	// over the range definition for that code.
+	// If a response is defined using an explicit code, the explicit code definition takes precedence over
+	// the range definition for that code.
 	//
 	// GET /intersectPatternCode
 	IntersectPatternCode(ctx context.Context, params IntersectPatternCodeParams) (IntersectPatternCodeRes, error)
@@ -796,8 +796,8 @@ func (c *Client) sendHeadersPattern(ctx context.Context) (res *HeadersPattern4XX
 
 // IntersectPatternCode invokes intersectPatternCode operation.
 //
-// If a response is defined using an explicit code, the explicit code definition takes precedence
-// over the range definition for that code.
+// If a response is defined using an explicit code, the explicit code definition takes precedence over
+// the range definition for that code.
 //
 // GET /intersectPatternCode
 func (c *Client) IntersectPatternCode(ctx context.Context, params IntersectPatternCodeParams) (IntersectPatternCodeRes, error) {

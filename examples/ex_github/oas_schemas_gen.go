@@ -319,9 +319,11 @@ type ActionsCreateOrUpdateEnvironmentSecretNoContent struct{}
 func (*ActionsCreateOrUpdateEnvironmentSecretNoContent) actionsCreateOrUpdateEnvironmentSecretRes() {}
 
 type ActionsCreateOrUpdateEnvironmentSecretReq struct {
-	// Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.
-	// io/doc/bindings_for_other_languages) using the public key retrieved from the [Get an environment
-	// public key](https://docs.github.com/rest/reference/actions#get-an-environment-public-key) endpoint.
+	// Value for your secret, encrypted with [LibSodium] using the public key retrieved from the
+	// [Get an environment public key] endpoint.
+	//
+	// [LibSodium]: https://libsodium.gitbook.io/doc/bindings_for_other_languages
+	// [Get an environment public key]: https://docs.github.com/rest/reference/actions#get-an-environment-public-key
 	EncryptedValue string `json:"encrypted_value"`
 	// ID of the key you used to encrypt the secret.
 	KeyID string `json:"key_id"`
@@ -353,26 +355,28 @@ type ActionsCreateOrUpdateOrgSecretNoContent struct{}
 func (*ActionsCreateOrUpdateOrgSecretNoContent) actionsCreateOrUpdateOrgSecretRes() {}
 
 type ActionsCreateOrUpdateOrgSecretReq struct {
-	// Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.
-	// io/doc/bindings_for_other_languages) using the public key retrieved from the [Get an organization
-	// public key](https://docs.github.com/rest/reference/actions#get-an-organization-public-key)
-	// endpoint.
+	// Value for your secret, encrypted with [LibSodium] using the public key retrieved from the
+	// [Get an organization public key] endpoint.
+	//
+	// [LibSodium]: https://libsodium.gitbook.io/doc/bindings_for_other_languages
+	// [Get an organization public key]: https://docs.github.com/rest/reference/actions#get-an-organization-public-key
 	EncryptedValue OptString `json:"encrypted_value"`
 	// ID of the key you used to encrypt the secret.
 	KeyID OptString `json:"key_id"`
-	// Configures the access that repositories have to the organization secret. Can be one of:
-	// \- `all` - All repositories in an organization can access the secret.
-	// \- `private` - Private repositories in an organization can access the secret.
-	// \- `selected` - Only specific repositories can access the secret.
+	// Configures the access that repositories have to the organization secret. Can be one of: \- `all` -
+	// All repositories in an organization can access the secret. \- `private` - Private repositories in an
+	// organization can access the secret. \- `selected` - Only specific repositories can access the
+	// secret.
 	Visibility ActionsCreateOrUpdateOrgSecretReqVisibility `json:"visibility"`
 	// An array of repository ids that can access the organization secret. You can only provide a list of
 	// repository ids when the `visibility` is set to `selected`. You can manage the list of selected
-	// repositories using the [List selected repositories for an organization secret](https://docs.github.
-	// com/rest/reference/actions#list-selected-repositories-for-an-organization-secret), [Set selected
-	// repositories for an organization secret](https://docs.github.
-	// com/rest/reference/actions#set-selected-repositories-for-an-organization-secret), and [Remove
-	// selected repository from an organization secret](https://docs.github.
-	// com/rest/reference/actions#remove-selected-repository-from-an-organization-secret) endpoints.
+	// repositories using the [List selected repositories for an organization secret],
+	// [Set selected repositories for an organization secret], and
+	// [Remove selected repository from an organization secret] endpoints.
+	//
+	// [List selected repositories for an organization secret]: https://docs.github.com/rest/reference/actions#list-selected-repositories-for-an-organization-secret
+	// [Set selected repositories for an organization secret]: https://docs.github.com/rest/reference/actions#set-selected-repositories-for-an-organization-secret
+	// [Remove selected repository from an organization secret]: https://docs.github.com/rest/reference/actions#remove-selected-repository-from-an-organization-secret
 	SelectedRepositoryIds []string `json:"selected_repository_ids"`
 }
 
@@ -416,10 +420,10 @@ func (s *ActionsCreateOrUpdateOrgSecretReq) SetSelectedRepositoryIds(val []strin
 	s.SelectedRepositoryIds = val
 }
 
-// Configures the access that repositories have to the organization secret. Can be one of:
-// \- `all` - All repositories in an organization can access the secret.
-// \- `private` - Private repositories in an organization can access the secret.
-// \- `selected` - Only specific repositories can access the secret.
+// Configures the access that repositories have to the organization secret. Can be one of: \- `all` -
+// All repositories in an organization can access the secret. \- `private` - Private repositories in an
+// organization can access the secret. \- `selected` - Only specific repositories can access the
+// secret.
 type ActionsCreateOrUpdateOrgSecretReqVisibility string
 
 const (
@@ -478,9 +482,11 @@ type ActionsCreateOrUpdateRepoSecretNoContent struct{}
 func (*ActionsCreateOrUpdateRepoSecretNoContent) actionsCreateOrUpdateRepoSecretRes() {}
 
 type ActionsCreateOrUpdateRepoSecretReq struct {
-	// Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.
-	// io/doc/bindings_for_other_languages) using the public key retrieved from the [Get a repository
-	// public key](https://docs.github.com/rest/reference/actions#get-a-repository-public-key) endpoint.
+	// Value for your secret, encrypted with [LibSodium] using the public key retrieved from the
+	// [Get a repository public key] endpoint.
+	//
+	// [LibSodium]: https://libsodium.gitbook.io/doc/bindings_for_other_languages
+	// [Get a repository public key]: https://docs.github.com/rest/reference/actions#get-a-repository-public-key
 	EncryptedValue OptString `json:"encrypted_value"`
 	// ID of the key you used to encrypt the secret.
 	KeyID OptString `json:"key_id"`
@@ -742,7 +748,7 @@ type ActionsEnabled bool
 type ActionsEnterprisePermissions struct {
 	EnabledOrganizations EnabledOrganizations `json:"enabled_organizations"`
 	// The API URL to use to get or set the selected organizations that are allowed to run GitHub Actions,
-	//  when `enabled_organizations` is set to `selected`.
+	// when `enabled_organizations` is set to `selected`.
 	SelectedOrganizationsURL OptString             `json:"selected_organizations_url"`
 	AllowedActions           OptAllowedActions     `json:"allowed_actions"`
 	SelectedActionsURL       OptSelectedActionsURL `json:"selected_actions_url"`
@@ -1724,8 +1730,8 @@ type ActionsRetryWorkflowCreated struct{}
 type ActionsReviewPendingDeploymentsForRunReq struct {
 	// The list of environment ids to approve or reject.
 	EnvironmentIds []int `json:"environment_ids"`
-	// Whether to approve or reject deployment to the specified environments. Must be one of: `approved`
-	// or `rejected`.
+	// Whether to approve or reject deployment to the specified environments. Must be one of: `approved` or
+	// `rejected`.
 	State ActionsReviewPendingDeploymentsForRunReqState `json:"state"`
 	// A comment to accompany the deployment review.
 	Comment string `json:"comment"`
@@ -1761,8 +1767,8 @@ func (s *ActionsReviewPendingDeploymentsForRunReq) SetComment(val string) {
 	s.Comment = val
 }
 
-// Whether to approve or reject deployment to the specified environments. Must be one of: `approved`
-// or `rejected`.
+// Whether to approve or reject deployment to the specified environments. Must be one of: `approved` or
+// `rejected`.
 type ActionsReviewPendingDeploymentsForRunReqState string
 
 const (
@@ -1929,10 +1935,11 @@ type ActionsSetSelectedReposForOrgSecretNoContent struct{}
 type ActionsSetSelectedReposForOrgSecretReq struct {
 	// An array of repository ids that can access the organization secret. You can only provide a list of
 	// repository ids when the `visibility` is set to `selected`. You can add and remove individual
-	// repositories using the [Set selected repositories for an organization secret](https://docs.github.
-	// com/rest/reference/actions#set-selected-repositories-for-an-organization-secret) and [Remove
-	// selected repository from an organization secret](https://docs.github.
-	// com/rest/reference/actions#remove-selected-repository-from-an-organization-secret) endpoints.
+	// repositories using the [Set selected repositories for an organization secret] and
+	// [Remove selected repository from an organization secret] endpoints.
+	//
+	// [Set selected repositories for an organization secret]: https://docs.github.com/rest/reference/actions#set-selected-repositories-for-an-organization-secret
+	// [Remove selected repository from an organization secret]: https://docs.github.com/rest/reference/actions#remove-selected-repository-from-an-organization-secret
 	SelectedRepositoryIds []int `json:"selected_repository_ids"`
 }
 
@@ -2450,10 +2457,11 @@ func (s *ActivityMarkRepoNotificationsAsReadAccepted) SetURL(val OptString) {
 func (*ActivityMarkRepoNotificationsAsReadAccepted) activityMarkRepoNotificationsAsReadRes() {}
 
 type ActivityMarkRepoNotificationsAsReadReq struct {
-	// Describes the last point that notifications were checked. Anything updated since this time will
-	// not be marked as read. If you omit this parameter, all notifications are marked as read. This is a
-	// timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-	// Default: The current timestamp.
+	// Describes the last point that notifications were checked. Anything updated since this time will not
+	// be marked as read. If you omit this parameter, all notifications are marked as read. This is a
+	// timestamp in [ISO 8601] format: `YYYY-MM-DDTHH:MM:SSZ`. Default: The current timestamp.
+	//
+	// [ISO 8601]: https://en.wikipedia.org/wiki/ISO_8601
 	LastReadAt OptDateTime `json:"last_read_at"`
 }
 
@@ -2724,23 +2732,23 @@ type AppPermissions struct {
 	// The level of permission to grant the access token to search repositories, list collaborators, and
 	// access repository metadata. Can be one of: `read` or `write`.
 	Metadata OptAppPermissionsMetadata `json:"metadata"`
-	// The level of permission to grant the access token for packages published to GitHub Packages. Can
-	// be one of: `read` or `write`.
+	// The level of permission to grant the access token for packages published to GitHub Packages. Can be
+	// one of: `read` or `write`.
 	Packages OptAppPermissionsPackages `json:"packages"`
 	// The level of permission to grant the access token to retrieve Pages statuses, configuration, and
 	// builds, as well as create new builds. Can be one of: `read` or `write`.
 	Pages OptAppPermissionsPages `json:"pages"`
-	// The level of permission to grant the access token for pull requests and related comments,
-	// assignees, labels, milestones, and merges. Can be one of: `read` or `write`.
+	// The level of permission to grant the access token for pull requests and related comments, assignees,
+	// labels, milestones, and merges. Can be one of: `read` or `write`.
 	PullRequests OptAppPermissionsPullRequests `json:"pull_requests"`
-	// The level of permission to grant the access token to manage the post-receive hooks for a
-	// repository. Can be one of: `read` or `write`.
+	// The level of permission to grant the access token to manage the post-receive hooks for a repository.
+	// Can be one of: `read` or `write`.
 	RepositoryHooks OptAppPermissionsRepositoryHooks `json:"repository_hooks"`
-	// The level of permission to grant the access token to manage repository projects, columns, and
-	// cards. Can be one of: `read`, `write`, or `admin`.
+	// The level of permission to grant the access token to manage repository projects, columns, and cards.
+	// Can be one of: `read`, `write`, or `admin`.
 	RepositoryProjects OptAppPermissionsRepositoryProjects `json:"repository_projects"`
-	// The level of permission to grant the access token to view and manage secret scanning alerts. Can
-	// be one of: `read` or `write`.
+	// The level of permission to grant the access token to view and manage secret scanning alerts. Can be
+	// one of: `read` or `write`.
 	SecretScanningAlerts OptAppPermissionsSecretScanningAlerts `json:"secret_scanning_alerts"`
 	// The level of permission to grant the access token to manage repository secrets. Can be one of:
 	// `read` or `write`.
@@ -2760,8 +2768,8 @@ type AppPermissions struct {
 	// The level of permission to grant the access token to update GitHub Actions workflow files. Can be
 	// one of: `write`.
 	Workflows OptAppPermissionsWorkflows `json:"workflows"`
-	// The level of permission to grant the access token for organization teams and members. Can be one
-	// of: `read` or `write`.
+	// The level of permission to grant the access token for organization teams and members. Can be one of:
+	// `read` or `write`.
 	Members OptAppPermissionsMembers `json:"members"`
 	// The level of permission to grant the access token to manage access to an organization. Can be one
 	// of: `read` or `write`.
@@ -2769,8 +2777,8 @@ type AppPermissions struct {
 	// The level of permission to grant the access token to manage the post-receive hooks for an
 	// organization. Can be one of: `read` or `write`.
 	OrganizationHooks OptAppPermissionsOrganizationHooks `json:"organization_hooks"`
-	// The level of permission to grant the access token for viewing an organization's plan. Can be one
-	// of: `read`.
+	// The level of permission to grant the access token for viewing an organization's plan. Can be one of:
+	// `read`.
 	OrganizationPlan OptAppPermissionsOrganizationPlan `json:"organization_plan"`
 	// The level of permission to grant the access token to manage organization projects, columns, and
 	// cards. Can be one of: `read`, `write`, or `admin`.
@@ -3446,8 +3454,8 @@ func (s *AppPermissionsIssues) UnmarshalText(data []byte) error {
 	}
 }
 
-// The level of permission to grant the access token for organization teams and members. Can be one
-// of: `read` or `write`.
+// The level of permission to grant the access token for organization teams and members. Can be one of:
+// `read` or `write`.
 type AppPermissionsMembers string
 
 const (
@@ -3661,8 +3669,8 @@ func (s *AppPermissionsOrganizationPackages) UnmarshalText(data []byte) error {
 	}
 }
 
-// The level of permission to grant the access token for viewing an organization's plan. Can be one
-// of: `read`.
+// The level of permission to grant the access token for viewing an organization's plan. Can be one of:
+// `read`.
 type AppPermissionsOrganizationPlan string
 
 const (
@@ -3876,8 +3884,8 @@ func (s *AppPermissionsOrganizationUserBlocking) UnmarshalText(data []byte) erro
 	}
 }
 
-// The level of permission to grant the access token for packages published to GitHub Packages. Can
-// be one of: `read` or `write`.
+// The level of permission to grant the access token for packages published to GitHub Packages. Can be
+// one of: `read` or `write`.
 type AppPermissionsPackages string
 
 const (
@@ -3962,8 +3970,8 @@ func (s *AppPermissionsPages) UnmarshalText(data []byte) error {
 	}
 }
 
-// The level of permission to grant the access token for pull requests and related comments,
-// assignees, labels, milestones, and merges. Can be one of: `read` or `write`.
+// The level of permission to grant the access token for pull requests and related comments, assignees,
+// labels, milestones, and merges. Can be one of: `read` or `write`.
 type AppPermissionsPullRequests string
 
 const (
@@ -4005,8 +4013,8 @@ func (s *AppPermissionsPullRequests) UnmarshalText(data []byte) error {
 	}
 }
 
-// The level of permission to grant the access token to manage the post-receive hooks for a
-// repository. Can be one of: `read` or `write`.
+// The level of permission to grant the access token to manage the post-receive hooks for a repository.
+// Can be one of: `read` or `write`.
 type AppPermissionsRepositoryHooks string
 
 const (
@@ -4048,8 +4056,8 @@ func (s *AppPermissionsRepositoryHooks) UnmarshalText(data []byte) error {
 	}
 }
 
-// The level of permission to grant the access token to manage repository projects, columns, and
-// cards. Can be one of: `read`, `write`, or `admin`.
+// The level of permission to grant the access token to manage repository projects, columns, and cards.
+// Can be one of: `read`, `write`, or `admin`.
 type AppPermissionsRepositoryProjects string
 
 const (
@@ -4098,8 +4106,8 @@ func (s *AppPermissionsRepositoryProjects) UnmarshalText(data []byte) error {
 	}
 }
 
-// The level of permission to grant the access token to view and manage secret scanning alerts. Can
-// be one of: `read` or `write`.
+// The level of permission to grant the access token to view and manage secret scanning alerts. Can be
+// one of: `read` or `write`.
 type AppPermissionsSecretScanningAlerts string
 
 const (
@@ -5512,17 +5520,17 @@ func (*AppsScopeTokenNotFound) appsScopeTokenRes() {}
 type AppsScopeTokenReq struct {
 	// The OAuth access token used to authenticate to the GitHub API.
 	AccessToken string `json:"access_token"`
-	// The name of the user or organization to scope the user-to-server access token to. **Required**
-	// unless `target_id` is specified.
+	// The name of the user or organization to scope the user-to-server access token to. Required unless
+	// `target_id` is specified.
 	Target OptString `json:"target"`
-	// The ID of the user or organization to scope the user-to-server access token to. **Required**
-	// unless `target` is specified.
+	// The ID of the user or organization to scope the user-to-server access token to. Required unless
+	// `target` is specified.
 	TargetID OptInt `json:"target_id"`
-	// The list of repository names to scope the user-to-server access token to. `repositories` may not
-	// be specified if `repository_ids` is specified.
+	// The list of repository names to scope the user-to-server access token to. `repositories` may not be
+	// specified if `repository_ids` is specified.
 	Repositories []string `json:"repositories"`
-	// The list of repository IDs to scope the user-to-server access token to. `repository_ids` may not
-	// be specified if `repositories` is specified.
+	// The list of repository IDs to scope the user-to-server access token to. `repository_ids` may not be
+	// specified if `repositories` is specified.
 	RepositoryIds []int             `json:"repository_ids"`
 	Permissions   OptAppPermissions `json:"permissions"`
 }
@@ -5768,8 +5776,9 @@ func (s *Artifact) SetUpdatedAt(val NilDateTime) {
 
 // Ref: #/components/schemas/audit-log-event
 type AuditLogEvent struct {
-	// The time the audit log event occurred, given as a [Unix timestamp](http://en.wikipedia.
-	// org/wiki/Unix_time).
+	// The time the audit log event occurred, given as a [Unix timestamp].
+	//
+	// [Unix timestamp]: http://en.wikipedia.org/wiki/Unix_time
 	Timestamp OptInt `json:"@timestamp"`
 	// The name of the action that was performed, for example `user.login` or `repo.create`.
 	Action    OptString `json:"action"`
@@ -5788,8 +5797,9 @@ type AuditLogEvent struct {
 	Config      []jx.Raw  `json:"config"`
 	ConfigWas   []jx.Raw  `json:"config_was"`
 	ContentType OptString `json:"content_type"`
-	// The time the audit log event was recorded, given as a [Unix timestamp](http://en.wikipedia.
-	// org/wiki/Unix_time).
+	// The time the audit log event was recorded, given as a [Unix timestamp].
+	//
+	// [Unix timestamp]: http://en.wikipedia.org/wiki/Unix_time
 	CreatedAt            OptInt    `json:"created_at"`
 	DeployKeyFingerprint OptString `json:"deploy_key_fingerprint"`
 	// A unique identifier for an audit event.
@@ -9817,41 +9827,45 @@ type ChecksCreateReq struct {
 	Name string `json:"name"`
 	// The SHA of the commit.
 	HeadSha string `json:"head_sha"`
-	// The URL of the integrator's site that has the full details of the check. If the integrator does
-	// not provide this, then the homepage of the GitHub app is used.
+	// The URL of the integrator's site that has the full details of the check. If the integrator does not
+	// provide this, then the homepage of the GitHub app is used.
 	DetailsURL OptString `json:"details_url"`
 	// A reference for the run on the integrator's system.
 	ExternalID OptString `json:"external_id"`
 	// The current status. Can be one of `queued`, `in_progress`, or `completed`.
 	Status OptChecksCreateReqStatus `json:"status"`
-	// The time that the check run began. This is a timestamp in [ISO 8601](https://en.wikipedia.
-	// org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+	// The time that the check run began. This is a timestamp in [ISO 8601] format: `YYYY-MM-DDTHH:MM:SSZ`.
+	//
+	// [ISO 8601]: https://en.wikipedia.org/wiki/ISO_8601
 	StartedAt OptDateTime `json:"started_at"`
-	// **Required if you provide `completed_at` or a `status` of `completed`**. The final conclusion of
-	// the check. Can be one of `action_required`, `cancelled`, `failure`, `neutral`, `success`,
-	// `skipped`, `stale`, or `timed_out`. When the conclusion is `action_required`, additional details
-	// should be provided on the site specified by `details_url`.
-	// **Note:** Providing `conclusion` will automatically set the `status` parameter to `completed`. You
-	// cannot change a check run conclusion to `stale`, only GitHub can set this.
+	// Required if you provide `completed_at` or a `status` of `completed`. The final conclusion of the
+	// check. Can be one of `action_required`, `cancelled`, `failure`, `neutral`, `success`, `skipped`,
+	// `stale`, or `timed_out`. When the conclusion is `action_required`, additional details should be
+	// provided on the site specified by `details_url`. Note: Providing `conclusion` will automatically set
+	// the `status` parameter to `completed`. You cannot change a check run conclusion to `stale`, only
+	// GitHub can set this.
 	Conclusion OptChecksCreateReqConclusion `json:"conclusion"`
-	// The time the check completed. This is a timestamp in [ISO 8601](https://en.wikipedia.
-	// org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+	// The time the check completed. This is a timestamp in [ISO 8601] format: `YYYY-MM-DDTHH:MM:SSZ`.
+	//
+	// [ISO 8601]: https://en.wikipedia.org/wiki/ISO_8601
 	CompletedAt OptDateTime `json:"completed_at"`
 	// Check runs can accept a variety of data in the `output` object, including a `title` and `summary`
-	// and can optionally provide descriptive details about the run. See the [`output`
-	// object](https://docs.github.com/rest/reference/checks#output-object) description.
+	// and can optionally provide descriptive details about the run. See the [output object] description.
+	//
+	// [output object]: https://docs.github.com/rest/reference/checks#output-object
 	Output OptChecksCreateReqOutput `json:"output"`
 	// Displays a button on GitHub that can be clicked to alert your app to do additional tasks. For
 	// example, a code linting app can display a button that automatically fixes detected errors. The
 	// button created in this object is displayed after the check run completes. When a user clicks the
-	// button, GitHub sends the [`check_run.requested_action` webhook](https://docs.github.
-	// com/webhooks/event-payloads/#check_run) to your app. Each action includes a `label`, `identifier`
-	// and `description`. A maximum of three actions are accepted. See the [`actions`
-	// object](https://docs.github.com/rest/reference/checks#actions-object) description. To learn more
-	// about check runs and requested actions, see "[Check runs and requested actions](https://docs.
-	// github.com/rest/reference/checks#check-runs-and-requested-actions)." To learn more about check
-	// runs and requested actions, see "[Check runs and requested actions](https://docs.github.
-	// com/rest/reference/checks#check-runs-and-requested-actions).".
+	// button, GitHub sends the [check_run.requested_action webhook] to your app. Each action includes a
+	// `label`, `identifier` and `description`. A maximum of three actions are accepted. See the
+	// [actions object] description. To learn more about check runs and requested actions, see
+	// "[Check runs and requested actions]." To learn more about check runs and requested actions, see
+	// "[Check runs and requested actions].".
+	//
+	// [check_run.requested_action webhook]: https://docs.github.com/webhooks/event-payloads/#check_run
+	// [actions object]: https://docs.github.com/rest/reference/checks#actions-object
+	// [Check runs and requested actions]: https://docs.github.com/rest/reference/checks#check-runs-and-requested-actions
 	Actions []ChecksCreateReqActionsItem `json:"actions"`
 	OneOf   ChecksCreateReqSum
 }
@@ -10005,12 +10019,12 @@ func (s *ChecksCreateReqActionsItem) SetIdentifier(val string) {
 	s.Identifier = val
 }
 
-// **Required if you provide `completed_at` or a `status` of `completed`**. The final conclusion of
-// the check. Can be one of `action_required`, `cancelled`, `failure`, `neutral`, `success`,
-// `skipped`, `stale`, or `timed_out`. When the conclusion is `action_required`, additional details
-// should be provided on the site specified by `details_url`.
-// **Note:** Providing `conclusion` will automatically set the `status` parameter to `completed`. You
-// cannot change a check run conclusion to `stale`, only GitHub can set this.
+// Required if you provide `completed_at` or a `status` of `completed`. The final conclusion of the
+// check. Can be one of `action_required`, `cancelled`, `failure`, `neutral`, `success`, `skipped`,
+// `stale`, or `timed_out`. When the conclusion is `action_required`, additional details should be
+// provided on the site specified by `details_url`. Note: Providing `conclusion` will automatically set
+// the `status` parameter to `completed`. You cannot change a check run conclusion to `stale`, only
+// GitHub can set this.
 type ChecksCreateReqConclusion string
 
 const (
@@ -10095,8 +10109,9 @@ func (s *ChecksCreateReqConclusion) UnmarshalText(data []byte) error {
 }
 
 // Check runs can accept a variety of data in the `output` object, including a `title` and `summary`
-// and can optionally provide descriptive details about the run. See the [`output`
-// object](https://docs.github.com/rest/reference/checks#output-object) description.
+// and can optionally provide descriptive details about the run. See the [output object] description.
+//
+// [output object]: https://docs.github.com/rest/reference/checks#output-object
 type ChecksCreateReqOutput struct {
 	// The title of the check run.
 	Title string `json:"title"`
@@ -10104,19 +10119,22 @@ type ChecksCreateReqOutput struct {
 	Summary string `json:"summary"`
 	// The details of the check run. This parameter supports Markdown.
 	Text OptString `json:"text"`
-	// Adds information from your analysis to specific lines of code. Annotations are visible on GitHub
-	// in the **Checks** and **Files changed** tab of the pull request. The Checks API limits the number
-	// of annotations to a maximum of 50 per API request. To create more than 50 annotations, you have to
-	// make multiple requests to the [Update a check run](https://docs.github.
-	// com/rest/reference/checks#update-a-check-run) endpoint. Each time you update the check run,
+	// Adds information from your analysis to specific lines of code. Annotations are visible on GitHub in
+	// the Checks and Files changed tab of the pull request. The Checks API limits the number of
+	// annotations to a maximum of 50 per API request. To create more than 50 annotations, you have to make
+	// multiple requests to the [Update a check run] endpoint. Each time you update the check run,
 	// annotations are appended to the list of annotations that already exist for the check run. For
-	// details about how you can view annotations on GitHub, see "[About status checks](https://help.
-	// github.com/articles/about-status-checks#checks)". See the [`annotations` object](https://docs.
-	// github.com/rest/reference/checks#annotations-object) description for details about how to use this
-	// parameter.
+	// details about how you can view annotations on GitHub, see "[About status checks]". See the
+	// [annotations object] description for details about how to use this parameter.
+	//
+	// [Update a check run]: https://docs.github.com/rest/reference/checks#update-a-check-run
+	// [About status checks]: https://help.github.com/articles/about-status-checks#checks
+	// [annotations object]: https://docs.github.com/rest/reference/checks#annotations-object
 	Annotations []ChecksCreateReqOutputAnnotationsItem `json:"annotations"`
-	// Adds images to the output displayed in the GitHub pull request UI. See the [`images`
-	// object](https://docs.github.com/rest/reference/checks#images-object) description for details.
+	// Adds images to the output displayed in the GitHub pull request UI. See the [images object]
+	// description for details.
+	//
+	// [images object]: https://docs.github.com/rest/reference/checks#images-object
 	Images []ChecksCreateReqOutputImagesItem `json:"images"`
 }
 
@@ -10177,8 +10195,8 @@ type ChecksCreateReqOutputAnnotationsItem struct {
 	StartLine int `json:"start_line"`
 	// The end line of the annotation.
 	EndLine int `json:"end_line"`
-	// The start column of the annotation. Annotations only support `start_column` and `end_column` on
-	// the same line. Omit this parameter if `start_line` and `end_line` have different values.
+	// The start column of the annotation. Annotations only support `start_column` and `end_column` on the
+	// same line. Omit this parameter if `start_line` and `end_line` have different values.
 	StartColumn OptInt `json:"start_column"`
 	// The end column of the annotation. Annotations only support `start_column` and `end_column` on the
 	// same line. Omit this parameter if `start_line` and `end_line` have different values.
@@ -10924,8 +10942,9 @@ type ChecksRerequestSuiteCreated struct{}
 
 type ChecksSetSuitesPreferencesReq struct {
 	// Enables or disables automatic creation of CheckSuite events upon pushes to the repository. Enabled
-	// by default. See the [`auto_trigger_checks` object](https://docs.github.
-	// com/rest/reference/checks#auto_trigger_checks-object) description for details.
+	// by default. See the [auto_trigger_checks object] description for details.
+	//
+	// [auto_trigger_checks object]: https://docs.github.com/rest/reference/checks#auto_trigger_checks-object
 	AutoTriggerChecks []ChecksSetSuitesPreferencesReqAutoTriggerChecksItem `json:"auto_trigger_checks"`
 }
 
@@ -11330,8 +11349,8 @@ func (s *CodeScanningAlertClassification) UnmarshalText(data []byte) error {
 
 type CodeScanningAlertDismissedAt time.Time
 
-// **Required when the state is dismissed.** The reason for dismissing or closing the alert. Can be
-// one of: `false positive`, `won't fix`, and `used in tests`.
+// Required when the state is dismissed. The reason for dismissing or closing the alert. Can be one of:
+// `false positive`, `won't fix`, and `used in tests`.
 // Ref: #/components/schemas/code-scanning-alert-dismissed-reason
 type CodeScanningAlertDismissedReason string
 
@@ -11394,8 +11413,8 @@ type CodeScanningAlertInstance struct {
 	Message     OptCodeScanningAlertInstanceMessage `json:"message"`
 	Location    OptCodeScanningAlertLocation        `json:"location"`
 	HTMLURL     OptString                           `json:"html_url"`
-	// Classifications that have been applied to the file that triggered the alert.
-	// For example identifying it as documentation, or a generated file.
+	// Classifications that have been applied to the file that triggered the alert. For example identifying
+	// it as documentation, or a generated file.
 	Classifications []NilCodeScanningAlertClassification `json:"classifications"`
 }
 
@@ -12646,17 +12665,19 @@ type CodeScanningUploadSarifReq struct {
 	CommitSha CodeScanningAnalysisCommitSha `json:"commit_sha"`
 	Ref       CodeScanningRef               `json:"ref"`
 	Sarif     CodeScanningAnalysisSarifFile `json:"sarif"`
-	// The base directory used in the analysis, as it appears in the SARIF file.
-	// This property is used to convert file paths from absolute to relative, so that alerts can be
-	// mapped to their correct location in the repository.
+	// The base directory used in the analysis, as it appears in the SARIF file. This property is used to
+	// convert file paths from absolute to relative, so that alerts can be mapped to their correct location
+	// in the repository.
 	CheckoutURI OptURI `json:"checkout_uri"`
-	// The time that the analysis run began. This is a timestamp in [ISO 8601](https://en.wikipedia.
-	// org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+	// The time that the analysis run began. This is a timestamp in [ISO 8601] format:
+	// `YYYY-MM-DDTHH:MM:SSZ`.
+	//
+	// [ISO 8601]: https://en.wikipedia.org/wiki/ISO_8601
 	StartedAt OptDateTime `json:"started_at"`
-	// The name of the tool used to generate the code scanning analysis. If this parameter is not used,
-	// the tool name defaults to "API". If the uploaded SARIF contains a tool GUID, this will be
-	// available for filtering using the `tool_guid` parameter of operations such as `GET
-	// /repos/{owner}/{repo}/code-scanning/alerts`.
+	// The name of the tool used to generate the code scanning analysis. If this parameter is not used, the
+	// tool name defaults to "API". If the uploaded SARIF contains a tool GUID, this will be available for
+	// filtering using the `tool_guid` parameter of operations such as
+	// `GET /repos/{owner}/{repo}/code-scanning/alerts`.
 	ToolName OptString `json:"tool_name"`
 }
 
@@ -15255,15 +15276,15 @@ type CredentialAuthorization struct {
 	CredentialID int `json:"credential_id"`
 	// Human-readable description of the credential type.
 	CredentialType string `json:"credential_type"`
-	// Last eight characters of the credential. Only included in responses with credential_type of
-	// personal access token.
+	// Last eight characters of the credential. Only included in responses with credential_type of personal
+	// access token.
 	TokenLastEight OptString `json:"token_last_eight"`
 	// Date when the credential was authorized for use.
 	CredentialAuthorizedAt time.Time `json:"credential_authorized_at"`
 	// List of oauth scopes the token has been granted.
 	Scopes []string `json:"scopes"`
-	// Unique string to distinguish the credential. Only included in responses with credential_type of
-	// SSH Key.
+	// Unique string to distinguish the credential. Only included in responses with credential_type of SSH
+	// Key.
 	Fingerprint OptString `json:"fingerprint"`
 	// Date when the credential was last accessed. May be null if it was never accessed.
 	CredentialAccessedAt   OptNilDateTime `json:"credential_accessed_at"`
@@ -16550,8 +16571,8 @@ func (*EmptyObject) actionsCreateOrUpdateEnvironmentSecretRes() {}
 func (*EmptyObject) actionsCreateOrUpdateOrgSecretRes()         {}
 func (*EmptyObject) reposGetPagesHealthCheckRes()               {}
 
-// The policy that controls the organizations in the enterprise that are allowed to run GitHub
-// Actions. Can be one of: `all`, `none`, or `selected`.
+// The policy that controls the organizations in the enterprise that are allowed to run GitHub Actions.
+// Can be one of: `all`, `none`, or `selected`.
 // Ref: #/components/schemas/enabled-organizations
 type EnabledOrganizations string
 
@@ -17432,7 +17453,9 @@ func (s *EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq) SetRunners(
 type EnterpriseAdminUpdateAttributeForEnterpriseGroupReq struct {
 	// The SCIM schema URIs.
 	Schemas []string `json:"schemas"`
-	// Array of [SCIM operations](https://tools.ietf.org/html/rfc7644#section-3.5.2).
+	// Array of [SCIM operations].
+	//
+	// [SCIM operations]: https://tools.ietf.org/html/rfc7644#section-3.5.2
 	Operations []EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItem `json:"Operations"`
 }
 
@@ -17663,7 +17686,9 @@ type EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1 str
 type EnterpriseAdminUpdateAttributeForEnterpriseUserReq struct {
 	// The SCIM schema URIs.
 	Schemas []string `json:"schemas"`
-	// Array of [SCIM operations](https://tools.ietf.org/html/rfc7644#section-3.5.2).
+	// Array of [SCIM operations].
+	//
+	// [SCIM operations]: https://tools.ietf.org/html/rfc7644#section-3.5.2
 	Operations []EnterpriseAdminUpdateAttributeForEnterpriseUserReqOperationsItem `json:"Operations"`
 }
 
@@ -22108,19 +22133,20 @@ type GitCreateCommitReq struct {
 	// be written as a root commit. For a single parent, an array of one SHA should be provided; for a
 	// merge commit, an array of more than one should be provided.
 	Parents []string `json:"parents"`
-	// Information about the author of the commit. By default, the `author` will be the authenticated
-	// user and the current date. See the `author` and `committer` object below for details.
+	// Information about the author of the commit. By default, the `author` will be the authenticated user
+	// and the current date. See the `author` and `committer` object below for details.
 	Author OptGitCreateCommitReqAuthor `json:"author"`
 	// Information about the person who is making the commit. By default, `committer` will use the
 	// information set in `author`. See the `author` and `committer` object below for details.
 	Committer OptGitCreateCommitReqCommitter `json:"committer"`
-	// The [PGP signature](https://en.wikipedia.org/wiki/Pretty_Good_Privacy) of the commit. GitHub adds
-	// the signature to the `gpgsig` header of the created commit. For a commit signature to be
-	// verifiable by Git or GitHub, it must be an ASCII-armored detached PGP signature over the string
-	// commit as it would be written to the object database. To pass a `signature` parameter, you need to
-	// first manually create a valid PGP signature, which can be complicated. You may find it easier to
-	// [use the command line](https://git-scm.com/book/id/v2/Git-Tools-Signing-Your-Work) to create
-	// signed commits.
+	// The [PGP signature] of the commit. GitHub adds the signature to the `gpgsig` header of the created
+	// commit. For a commit signature to be verifiable by Git or GitHub, it must be an ASCII-armored
+	// detached PGP signature over the string commit as it would be written to the object database. To pass
+	// a `signature` parameter, you need to first manually create a valid PGP signature, which can be
+	// complicated. You may find it easier to [use the command line] to create signed commits.
+	//
+	// [PGP signature]: https://en.wikipedia.org/wiki/Pretty_Good_Privacy
+	// [use the command line]: https://git-scm.com/book/id/v2/Git-Tools-Signing-Your-Work
 	Signature OptString `json:"signature"`
 }
 
@@ -22184,15 +22210,17 @@ func (s *GitCreateCommitReq) SetSignature(val OptString) {
 	s.Signature = val
 }
 
-// Information about the author of the commit. By default, the `author` will be the authenticated
-// user and the current date. See the `author` and `committer` object below for details.
+// Information about the author of the commit. By default, the `author` will be the authenticated user
+// and the current date. See the `author` and `committer` object below for details.
 type GitCreateCommitReqAuthor struct {
 	// The name of the author (or committer) of the commit.
 	Name string `json:"name"`
 	// The email of the author (or committer) of the commit.
 	Email string `json:"email"`
-	// Indicates when this commit was authored (or committed). This is a timestamp in [ISO
-	// 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+	// Indicates when this commit was authored (or committed). This is a timestamp in [ISO 8601] format:
+	// `YYYY-MM-DDTHH:MM:SSZ`.
+	//
+	// [ISO 8601]: https://en.wikipedia.org/wiki/ISO_8601
 	Date OptDateTime `json:"date"`
 }
 
@@ -22233,8 +22261,10 @@ type GitCreateCommitReqCommitter struct {
 	Name OptString `json:"name"`
 	// The email of the author (or committer) of the commit.
 	Email OptString `json:"email"`
-	// Indicates when this commit was authored (or committed). This is a timestamp in [ISO
-	// 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+	// Indicates when this commit was authored (or committed). This is a timestamp in [ISO 8601] format:
+	// `YYYY-MM-DDTHH:MM:SSZ`.
+	//
+	// [ISO 8601]: https://en.wikipedia.org/wiki/ISO_8601
 	Date OptDateTime `json:"date"`
 }
 
@@ -22269,8 +22299,8 @@ func (s *GitCreateCommitReqCommitter) SetDate(val OptDateTime) {
 }
 
 type GitCreateRefReq struct {
-	// The name of the fully qualified reference (ie: `refs/heads/master`). If it doesn't start with
-	// 'refs' and have at least two slashes, it will be rejected.
+	// The name of the fully qualified reference (ie: `refs/heads/master`). If it doesn't start with 'refs'
+	// and have at least two slashes, it will be rejected.
 	Ref string `json:"ref"`
 	// The SHA1 value for this reference.
 	Sha string    `json:"sha"`
@@ -22377,8 +22407,9 @@ type GitCreateTagReqTagger struct {
 	Name string `json:"name"`
 	// The email of the author of the tag.
 	Email string `json:"email"`
-	// When this object was tagged. This is a timestamp in [ISO 8601](https://en.wikipedia.
-	// org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+	// When this object was tagged. This is a timestamp in [ISO 8601] format: `YYYY-MM-DDTHH:MM:SSZ`.
+	//
+	// [ISO 8601]: https://en.wikipedia.org/wiki/ISO_8601
 	Date OptDateTime `json:"date"`
 }
 
@@ -22477,12 +22508,11 @@ type GitCreateTreeReq struct {
 	// provided, a new Git tree object will be created from entries in the Git tree object pointed to by
 	// `base_tree` and entries defined in the `tree` parameter. Entries defined in the `tree` parameter
 	// will overwrite items from `base_tree` with the same `path`. If you're creating new changes on a
-	// branch, then normally you'd set `base_tree` to the SHA1 of the Git tree object of the current
-	// latest commit on the branch you're working on.
-	// If not provided, GitHub will create a new Git tree object from only the entries defined in the
-	// `tree` parameter. If you create a new commit pointing to such a tree, then all files which were a
-	// part of the parent commit's tree and were not defined in the `tree` parameter will be listed as
-	// deleted by the new commit.
+	// branch, then normally you'd set `base_tree` to the SHA1 of the Git tree object of the current latest
+	// commit on the branch you're working on. If not provided, GitHub will create a new Git tree object
+	// from only the entries defined in the `tree` parameter. If you create a new commit pointing to such a
+	// tree, then all files which were a part of the parent commit's tree and were not defined in the
+	// `tree` parameter will be listed as deleted by the new commit.
 	BaseTree OptString `json:"base_tree"`
 }
 
@@ -22510,20 +22540,22 @@ type GitCreateTreeReqTreeItem struct {
 	// The file referenced in the tree.
 	Path OptString `json:"path"`
 	// The file mode; one of `100644` for file (blob), `100755` for executable (blob), `040000` for
-	// subdirectory (tree), `160000` for submodule (commit), or `120000` for a blob that specifies the
-	// path of a symlink.
+	// subdirectory (tree), `160000` for submodule (commit), or `120000` for a blob that specifies the path
+	// of a symlink.
 	Mode OptGitCreateTreeReqTreeItemMode `json:"mode"`
 	// Either `blob`, `tree`, or `commit`.
 	Type OptGitCreateTreeReqTreeItemType `json:"type"`
-	// The SHA1 checksum ID of the object in the tree. Also called `tree.sha`. If the value is `null`
-	// then the file will be deleted.
-	// **Note:** Use either `tree.sha` or `content` to specify the contents of the entry. Using both
-	// `tree.sha` and `content` will return an error.
+	// The SHA1 checksum ID of the object in the tree. Also called `tree.sha`. If the value is `null` then
+	// the file will be deleted.
+	//
+	// Note: Use either `tree.sha` or `content` to specify the contents of the entry. Using both `tree.sha`
+	// and `content` will return an error.
 	Sha OptNilString `json:"sha"`
 	// The content you want this file to have. GitHub will write this blob out and use that SHA for this
 	// entry. Use either this, or `tree.sha`.
-	// **Note:** Use either `tree.sha` or `content` to specify the contents of the entry. Using both
-	// `tree.sha` and `content` will return an error.
+	//
+	// Note: Use either `tree.sha` or `content` to specify the contents of the entry. Using both `tree.sha`
+	// and `content` will return an error.
 	Content OptString `json:"content"`
 }
 
@@ -22578,8 +22610,8 @@ func (s *GitCreateTreeReqTreeItem) SetContent(val OptString) {
 }
 
 // The file mode; one of `100644` for file (blob), `100755` for executable (blob), `040000` for
-// subdirectory (tree), `160000` for submodule (commit), or `120000` for a blob that specifies the
-// path of a symlink.
+// subdirectory (tree), `160000` for submodule (commit), or `120000` for a blob that specifies the path
+// of a symlink.
 type GitCreateTreeReqTreeItemMode string
 
 const (
@@ -23959,8 +23991,8 @@ func (s *HookConfig) SetToken(val OptString) {
 type HookDelivery struct {
 	// Unique identifier of the delivery.
 	ID int `json:"id"`
-	// Unique identifier for the event (shared with all deliveries for all webhooks that subscribe to
-	// this event).
+	// Unique identifier for the event (shared with all deliveries for all webhooks that subscribe to this
+	// event).
 	GUID string `json:"guid"`
 	// Time when the delivery was delivered.
 	DeliveredAt time.Time `json:"delivered_at"`
@@ -24135,8 +24167,8 @@ func (*HookDelivery) reposGetWebhookDeliveryRes() {}
 type HookDeliveryItem struct {
 	// Unique identifier of the webhook delivery.
 	ID int `json:"id"`
-	// Unique identifier for the event (shared with all deliveries for all webhooks that subscribe to
-	// this event).
+	// Unique identifier for the event (shared with all deliveries for all webhooks that subscribe to this
+	// event).
 	GUID string `json:"guid"`
 	// Time when the webhook delivery occurred.
 	DeliveredAt time.Time `json:"delivered_at"`
@@ -25067,8 +25099,8 @@ func (s *InstallationTokenRepositorySelection) UnmarshalText(data []byte) error 
 	}
 }
 
-// GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and
-// user accounts and granted access to specific repositories. They come with granular permissions and
+// GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user
+// accounts and granted access to specific repositories. They come with granular permissions and
 // built-in webhooks. GitHub apps are first class actors within GitHub.
 // Ref: #/components/schemas/integration
 type Integration struct {
@@ -25415,9 +25447,8 @@ func (s *InteractionExpiry) UnmarshalText(data []byte) error {
 	}
 }
 
-// The type of GitHub user that can comment, open issues, or create pull requests while the
-// interaction limit is in effect. Can be one of: `existing_users`, `contributors_only`,
-// `collaborators_only`.
+// The type of GitHub user that can comment, open issues, or create pull requests while the interaction
+// limit is in effect. Can be one of: `existing_users`, `contributors_only`, `collaborators_only`.
 // Ref: #/components/schemas/interaction-group
 type InteractionGroup string
 
@@ -27687,8 +27718,8 @@ func (s *IssueSimplePullRequest) SetURL(val NilURI) {
 }
 
 type IssuesAddAssigneesReq struct {
-	// Usernames of people to assign this issue to. _NOTE: Only users with push access can add assignees
-	// to an issue. Assignees are silently ignored otherwise._.
+	// Usernames of people to assign this issue to. NOTE: Only users with push access can add assignees to
+	// an issue. Assignees are silently ignored otherwise.
 	Assignees []string `json:"assignees"`
 }
 
@@ -27744,12 +27775,15 @@ func (*IssuesCreateGone) issuesCreateRes() {}
 
 type IssuesCreateLabelReq struct {
 	// The name of the label. Emoji can be added to label names, using either native emoji or colon-style
-	// markup. For example, typing `:strawberry:` will render the emoji ![:strawberry:](https://github.
-	// githubassets.com/images/icons/emoji/unicode/1f353.png ":strawberry:"). For a full list of
-	// available emoji and codes, see "[Emoji cheat sheet](https://github.com/ikatyang/emoji-cheat-sheet).
-	// ".
+	// markup. For example, typing `:strawberry:` will render the emoji [:strawberry:]. For a full list of
+	// available emoji and codes, see "[Emoji cheat sheet].".
+	//
+	// [:strawberry:]: https://github.githubassets.com/images/icons/emoji/unicode/1f353.png
+	// [Emoji cheat sheet]: https://github.com/ikatyang/emoji-cheat-sheet
 	Name string `json:"name"`
-	// The [hexadecimal color code](http://www.color-hex.com/) for the label, without the leading `#`.
+	// The [hexadecimal color code] for the label, without the leading `#`.
+	//
+	// [hexadecimal color code]: http://www.color-hex.com/
 	Color OptString `json:"color"`
 	// A short description of the label.
 	Description OptString `json:"description"`
@@ -27792,8 +27826,9 @@ type IssuesCreateMilestoneReq struct {
 	State OptIssuesCreateMilestoneReqState `json:"state"`
 	// A description of the milestone.
 	Description OptString `json:"description"`
-	// The milestone due date. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-	// format: `YYYY-MM-DDTHH:MM:SSZ`.
+	// The milestone due date. This is a timestamp in [ISO 8601] format: `YYYY-MM-DDTHH:MM:SSZ`.
+	//
+	// [ISO 8601]: https://en.wikipedia.org/wiki/ISO_8601
 	DueOn OptDateTime `json:"due_on"`
 }
 
@@ -27888,16 +27923,15 @@ type IssuesCreateReq struct {
 	Title IssuesCreateReqTitle `json:"title"`
 	// The contents of the issue.
 	Body OptString `json:"body"`
-	// Login for the user that this issue should be assigned to. _NOTE: Only users with push access can
-	// set the assignee for new issues. The assignee is silently dropped otherwise. **This field is
-	// deprecated.**_.
+	// Login for the user that this issue should be assigned to. NOTE: Only users with push access can set
+	// the assignee for new issues. The assignee is silently dropped otherwise. This field is deprecated.
 	Assignee  OptNilString                   `json:"assignee"`
 	Milestone OptNilIssuesCreateReqMilestone `json:"milestone"`
-	// Labels to associate with this issue. _NOTE: Only users with push access can set labels for new
-	// issues. Labels are silently dropped otherwise._.
+	// Labels to associate with this issue. NOTE: Only users with push access can set labels for new
+	// issues. Labels are silently dropped otherwise.
 	Labels []IssuesCreateReqLabelsItem `json:"labels"`
-	// Logins for Users to assign to this issue. _NOTE: Only users with push access can set assignees for
-	// new issues. Assignees are silently dropped otherwise._.
+	// Logins for Users to assign to this issue. NOTE: Only users with push access can set assignees for
+	// new issues. Assignees are silently dropped otherwise.
 	Assignees []string `json:"assignees"`
 }
 
@@ -29372,11 +29406,7 @@ func (*IssuesLockNotFound) issuesLockRes() {}
 
 type IssuesLockReq struct {
 	// The reason for locking the issue or pull request conversation. Lock will fail if you don't use one
-	// of these reasons:
-	// \* `off-topic`
-	// \* `too heated`
-	// \* `resolved`
-	// \* `spam`.
+	// of these reasons: \* `off-topic` \* `too heated` \* `resolved` \* `spam`.
 	LockReason OptIssuesLockReqLockReason `json:"lock_reason"`
 }
 
@@ -29391,11 +29421,7 @@ func (s *IssuesLockReq) SetLockReason(val OptIssuesLockReqLockReason) {
 }
 
 // The reason for locking the issue or pull request conversation. Lock will fail if you don't use one
-// of these reasons:
-// \* `off-topic`
-// \* `too heated`
-// \* `resolved`
-// \* `spam`.
+// of these reasons: \* `off-topic` \* `too heated` \* `resolved` \* `spam`.
 type IssuesLockReqLockReason string
 
 const (
@@ -29457,8 +29483,8 @@ type IssuesRemoveAllLabelsNoContent struct{}
 func (*IssuesRemoveAllLabelsNoContent) issuesRemoveAllLabelsRes() {}
 
 type IssuesRemoveAssigneesReq struct {
-	// Usernames of assignees to remove from an issue. _NOTE: Only users with push access can remove
-	// assignees from an issue. Assignees are silently ignored otherwise._.
+	// Usernames of assignees to remove from an issue. NOTE: Only users with push access can remove
+	// assignees from an issue. Assignees are silently ignored otherwise.
 	Assignees []string `json:"assignees"`
 }
 
@@ -29522,12 +29548,15 @@ func (*IssuesUpdateGone) issuesUpdateRes() {}
 
 type IssuesUpdateLabelReq struct {
 	// The new name of the label. Emoji can be added to label names, using either native emoji or
-	// colon-style markup. For example, typing `:strawberry:` will render the emoji
-	// ![:strawberry:](https://github.githubassets.com/images/icons/emoji/unicode/1f353.png
-	// ":strawberry:"). For a full list of available emoji and codes, see "[Emoji cheat
-	// sheet](https://github.com/ikatyang/emoji-cheat-sheet).".
+	// colon-style markup. For example, typing `:strawberry:` will render the emoji [:strawberry:]. For a
+	// full list of available emoji and codes, see "[Emoji cheat sheet].".
+	//
+	// [:strawberry:]: https://github.githubassets.com/images/icons/emoji/unicode/1f353.png
+	// [Emoji cheat sheet]: https://github.com/ikatyang/emoji-cheat-sheet
 	NewName OptString `json:"new_name"`
-	// The [hexadecimal color code](http://www.color-hex.com/) for the label, without the leading `#`.
+	// The [hexadecimal color code] for the label, without the leading `#`.
+	//
+	// [hexadecimal color code]: http://www.color-hex.com/
 	Color OptString `json:"color"`
 	// A short description of the label.
 	Description OptString `json:"description"`
@@ -29570,8 +29599,9 @@ type IssuesUpdateMilestoneReq struct {
 	State OptIssuesUpdateMilestoneReqState `json:"state"`
 	// A description of the milestone.
 	Description OptString `json:"description"`
-	// The milestone due date. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-	// format: `YYYY-MM-DDTHH:MM:SSZ`.
+	// The milestone due date. This is a timestamp in [ISO 8601] format: `YYYY-MM-DDTHH:MM:SSZ`.
+	//
+	// [ISO 8601]: https://en.wikipedia.org/wiki/ISO_8601
 	DueOn OptDateTime `json:"due_on"`
 }
 
@@ -29670,19 +29700,19 @@ type IssuesUpdateReq struct {
 	Title OptNilIssuesUpdateReqTitle `json:"title"`
 	// The contents of the issue.
 	Body OptNilString `json:"body"`
-	// Login for the user that this issue should be assigned to. **This field is deprecated.**.
+	// Login for the user that this issue should be assigned to. This field is deprecated.
 	Assignee OptNilString `json:"assignee"`
 	// State of the issue. Either `open` or `closed`.
 	State     OptIssuesUpdateReqState        `json:"state"`
 	Milestone OptNilIssuesUpdateReqMilestone `json:"milestone"`
-	// Labels to associate with this issue. Pass one or more Labels to _replace_ the set of Labels on
-	// this Issue. Send an empty array (`[]`) to clear all Labels from the Issue. _NOTE: Only users with
-	// push access can set labels for issues. Labels are silently dropped otherwise._.
+	// Labels to associate with this issue. Pass one or more Labels to replace the set of Labels on this
+	// Issue. Send an empty array (`[]`) to clear all Labels from the Issue. NOTE: Only users with push
+	// access can set labels for issues. Labels are silently dropped otherwise.
 	Labels []IssuesUpdateReqLabelsItem `json:"labels"`
-	// Logins for Users to assign to this issue. Pass one or more user logins to _replace_ the set of
-	// assignees on this Issue. Send an empty array (`[]`) to clear all assignees from the Issue. _NOTE:
+	// Logins for Users to assign to this issue. Pass one or more user logins to replace the set of
+	// assignees on this Issue. Send an empty array (`[]`) to clear all assignees from the Issue. NOTE:
 	// Only users with push access can set assignees for new issues. Assignees are silently dropped
-	// otherwise._.
+	// otherwise.
 	Assignees []string `json:"assignees"`
 }
 
@@ -32836,8 +32866,8 @@ func (s *MigrationsMapCommitAuthorReq) SetName(val OptString) {
 }
 
 type MigrationsSetLfsPreferenceReq struct {
-	// Can be one of `opt_in` (large files will be stored using Git LFS) or `opt_out` (large files will
-	// be removed during the import).
+	// Can be one of `opt_in` (large files will be stored using Git LFS) or `opt_out` (large files will be
+	// removed during the import).
 	UseLfs MigrationsSetLfsPreferenceReqUseLfs `json:"use_lfs"`
 }
 
@@ -32851,8 +32881,8 @@ func (s *MigrationsSetLfsPreferenceReq) SetUseLfs(val MigrationsSetLfsPreference
 	s.UseLfs = val
 }
 
-// Can be one of `opt_in` (large files will be stored using Git LFS) or `opt_out` (large files will
-// be removed during the import).
+// Can be one of `opt_in` (large files will be stored using Git LFS) or `opt_out` (large files will be
+// removed during the import).
 type MigrationsSetLfsPreferenceReqUseLfs string
 
 const (
@@ -33125,9 +33155,9 @@ func (s *MigrationsStartForOrgReqExcludeItem) UnmarshalText(data []byte) error {
 type MigrationsStartImportReq struct {
 	// The URL of the originating repository.
 	VcsURL string `json:"vcs_url"`
-	// The originating VCS type. Can be one of `subversion`, `git`, `mercurial`, or `tfvc`. Please be
-	// aware that without this parameter, the import job will take additional time to detect the VCS type
-	// before beginning the import. This detection step will be reflected in the response.
+	// The originating VCS type. Can be one of `subversion`, `git`, `mercurial`, or `tfvc`. Please be aware
+	// that without this parameter, the import job will take additional time to detect the VCS type before
+	// beginning the import. This detection step will be reflected in the response.
 	Vcs OptMigrationsStartImportReqVcs `json:"vcs"`
 	// If authentication is required, the username to provide to `vcs_url`.
 	VcsUsername OptString `json:"vcs_username"`
@@ -33187,9 +33217,9 @@ func (s *MigrationsStartImportReq) SetTfvcProject(val OptString) {
 	s.TfvcProject = val
 }
 
-// The originating VCS type. Can be one of `subversion`, `git`, `mercurial`, or `tfvc`. Please be
-// aware that without this parameter, the import job will take additional time to detect the VCS type
-// before beginning the import. This detection step will be reflected in the response.
+// The originating VCS type. Can be one of `subversion`, `git`, `mercurial`, or `tfvc`. Please be aware
+// that without this parameter, the import job will take additional time to detect the VCS type before
+// beginning the import. This detection step will be reflected in the response.
 type MigrationsStartImportReqVcs string
 
 const (
@@ -36591,8 +36621,8 @@ func (s *NullableGitUser) SetDate(val OptString) {
 	s.Date = val
 }
 
-// GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and
-// user accounts and granted access to specific repositories. They come with granular permissions and
+// GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user
+// accounts and granted access to specific repositories. They come with granular permissions and
 // built-in webhooks. GitHub apps are first class actors within GitHub.
 // Ref: #/components/schemas/nullable-integration
 type NullableIntegration struct {
@@ -41082,8 +41112,7 @@ type OAuthAuthorizationsCreateAuthorizationReq struct {
 	ClientID OptString `json:"client_id"`
 	// The OAuth app client secret for which to create the token.
 	ClientSecret OptString `json:"client_secret"`
-	// A unique string to distinguish an authorization from others created for the same client ID and
-	// user.
+	// A unique string to distinguish an authorization from others created for the same client ID and user.
 	Fingerprint OptString `json:"fingerprint"`
 }
 
@@ -41280,8 +41309,7 @@ type OAuthAuthorizationsGetOrCreateAuthorizationForAppReq struct {
 	Note OptString `json:"note"`
 	// A URL to remind you what app the OAuth token is for.
 	NoteURL OptString `json:"note_url"`
-	// A unique string to distinguish an authorization from others created for the same client ID and
-	// user.
+	// A unique string to distinguish an authorization from others created for the same client ID and user.
 	Fingerprint OptString `json:"fingerprint"`
 }
 
@@ -41432,8 +41460,7 @@ type OAuthAuthorizationsUpdateAuthorizationReq struct {
 	Note OptString `json:"note"`
 	// A URL to remind you what app the OAuth token is for.
 	NoteURL OptString `json:"note_url"`
-	// A unique string to distinguish an authorization from others created for the same client ID and
-	// user.
+	// A unique string to distinguish an authorization from others created for the same client ID and user.
 	Fingerprint OptString `json:"fingerprint"`
 }
 
@@ -63500,18 +63527,16 @@ type OrgsConvertMemberToOutsideCollaboratorNoContent struct{}
 func (*OrgsConvertMemberToOutsideCollaboratorNoContent) orgsConvertMemberToOutsideCollaboratorRes() {}
 
 type OrgsCreateInvitationReq struct {
-	// **Required unless you provide `email`**. GitHub user ID for the person you are inviting.
+	// Required unless you provide `email`. GitHub user ID for the person you are inviting.
 	InviteeID OptInt `json:"invitee_id"`
-	// **Required unless you provide `invitee_id`**. Email address of the person you are inviting, which
-	// can be an existing GitHub user.
+	// Required unless you provide `invitee_id`. Email address of the person you are inviting, which can be
+	// an existing GitHub user.
 	Email OptString `json:"email"`
-	// Specify role for new member. Can be one of:
-	// \* `admin` - Organization owners with full administrative rights to the organization and complete
-	// access to all repositories and teams.
-	// \* `direct_member` - Non-owner organization members with ability to see other members and join
-	// teams by invitation.
-	// \* `billing_manager` - Non-owner organization members with ability to manage the billing settings
-	// of your organization.
+	// Specify role for new member. Can be one of: \* `admin` - Organization owners with full
+	// administrative rights to the organization and complete access to all repositories and teams. \*
+	// `direct_member` - Non-owner organization members with ability to see other members and join teams by
+	// invitation. \* `billing_manager` - Non-owner organization members with ability to manage the billing
+	// settings of your organization.
 	Role OptOrgsCreateInvitationReqRole `json:"role"`
 	// Specify IDs for the teams you want to invite new members to.
 	TeamIds []int `json:"team_ids"`
@@ -63557,13 +63582,11 @@ func (s *OrgsCreateInvitationReq) SetTeamIds(val []int) {
 	s.TeamIds = val
 }
 
-// Specify role for new member. Can be one of:
-// \* `admin` - Organization owners with full administrative rights to the organization and complete
-// access to all repositories and teams.
-// \* `direct_member` - Non-owner organization members with ability to see other members and join
-// teams by invitation.
-// \* `billing_manager` - Non-owner organization members with ability to manage the billing settings
-// of your organization.
+// Specify role for new member. Can be one of: \* `admin` - Organization owners with full
+// administrative rights to the organization and complete access to all repositories and teams. \*
+// `direct_member` - Non-owner organization members with ability to see other members and join teams by
+// invitation. \* `billing_manager` - Non-owner organization members with ability to manage the billing
+// settings of your organization.
 type OrgsCreateInvitationReqRole string
 
 const (
@@ -63615,11 +63638,13 @@ func (s *OrgsCreateInvitationReqRole) UnmarshalText(data []byte) error {
 type OrgsCreateWebhookReq struct {
 	// Must be passed as "web".
 	Name string `json:"name"`
-	// Key/value pairs to provide settings for this webhook. [These are defined below](https://docs.
-	// github.com/rest/reference/orgs#create-hook-config-params).
+	// Key/value pairs to provide settings for this webhook. [These are defined below].
+	//
+	// [These are defined below]: https://docs.github.com/rest/reference/orgs#create-hook-config-params
 	Config OrgsCreateWebhookReqConfig `json:"config"`
-	// Determines what [events](https://docs.github.com/webhooks/event-payloads) the hook is triggered
-	// for.
+	// Determines what [events] the hook is triggered for.
+	//
+	// [events]: https://docs.github.com/webhooks/event-payloads
 	Events []string `json:"events"`
 	// Determines if notifications are sent when the webhook is triggered. Set to `true` to send
 	// notifications.
@@ -63666,8 +63691,9 @@ func (s *OrgsCreateWebhookReq) SetActive(val OptBool) {
 	s.Active = val
 }
 
-// Key/value pairs to provide settings for this webhook. [These are defined below](https://docs.
-// github.com/rest/reference/orgs#create-hook-config-params).
+// Key/value pairs to provide settings for this webhook. [These are defined below].
+//
+// [These are defined below]: https://docs.github.com/rest/reference/orgs#create-hook-config-params
 type OrgsCreateWebhookReqConfig struct {
 	URL         WebhookConfigURL            `json:"url"`
 	ContentType OptWebhookConfigContentType `json:"content_type"`
@@ -64339,9 +64365,9 @@ type OrgsRemoveSamlSSOAuthorizationNoContent struct{}
 func (*OrgsRemoveSamlSSOAuthorizationNoContent) orgsRemoveSamlSSOAuthorizationRes() {}
 
 type OrgsSetMembershipForUserReq struct {
-	// The role to give the user in the organization. Can be one of:
-	// \* `admin` - The user will become an owner of the organization.
-	// \* `member` - The user will become a non-owner member of the organization.
+	// The role to give the user in the organization. Can be one of: \* `admin` - The user will become an
+	// owner of the organization. \* `member` - The user will become a non-owner member of the
+	// organization.
 	Role OptOrgsSetMembershipForUserReqRole `json:"role"`
 }
 
@@ -64355,9 +64381,9 @@ func (s *OrgsSetMembershipForUserReq) SetRole(val OptOrgsSetMembershipForUserReq
 	s.Role = val
 }
 
-// The role to give the user in the organization. Can be one of:
-// \* `admin` - The user will become an owner of the organization.
-// \* `member` - The user will become a non-owner member of the organization.
+// The role to give the user in the organization. Can be one of: \* `admin` - The user will become an
+// owner of the organization. \* `member` - The user will become a non-owner member of the
+// organization.
 type OrgsSetMembershipForUserReqRole string
 
 const (
@@ -64516,11 +64542,13 @@ func (s *OrgsUpdateWebhookConfigForOrgReq) SetInsecureSsl(val OptWebhookConfigIn
 }
 
 type OrgsUpdateWebhookReq struct {
-	// Key/value pairs to provide settings for this webhook. [These are defined below](https://docs.
-	// github.com/rest/reference/orgs#update-hook-config-params).
+	// Key/value pairs to provide settings for this webhook. [These are defined below].
+	//
+	// [These are defined below]: https://docs.github.com/rest/reference/orgs#update-hook-config-params
 	Config OptOrgsUpdateWebhookReqConfig `json:"config"`
-	// Determines what [events](https://docs.github.com/webhooks/event-payloads) the hook is triggered
-	// for.
+	// Determines what [events] the hook is triggered for.
+	//
+	// [events]: https://docs.github.com/webhooks/event-payloads
 	Events []string `json:"events"`
 	// Determines if notifications are sent when the webhook is triggered. Set to `true` to send
 	// notifications.
@@ -64568,8 +64596,9 @@ func (s *OrgsUpdateWebhookReq) SetName(val OptString) {
 	s.Name = val
 }
 
-// Key/value pairs to provide settings for this webhook. [These are defined below](https://docs.
-// github.com/rest/reference/orgs#update-hook-config-params).
+// Key/value pairs to provide settings for this webhook. [These are defined below].
+//
+// [These are defined below]: https://docs.github.com/rest/reference/orgs#update-hook-config-params
 type OrgsUpdateWebhookReqConfig struct {
 	URL         WebhookConfigURL            `json:"url"`
 	ContentType OptWebhookConfigContentType `json:"content_type"`
@@ -67873,8 +67902,8 @@ type Project struct {
 	Creator   NilNullableSimpleUser `json:"creator"`
 	CreatedAt time.Time             `json:"created_at"`
 	UpdatedAt time.Time             `json:"updated_at"`
-	// The baseline permission that all organization members have on this project. Only present if owner
-	// is an organization.
+	// The baseline permission that all organization members have on this project. Only present if owner is
+	// an organization.
 	OrganizationPermission OptProjectOrganizationPermission `json:"organization_permission"`
 	// Whether or not this project can be seen by everyone. Only present if owner is an organization.
 	Private OptBool `json:"private"`
@@ -68288,8 +68317,8 @@ func (*ProjectColumn) projectsCreateColumnRes() {}
 func (*ProjectColumn) projectsGetColumnRes()    {}
 func (*ProjectColumn) projectsUpdateColumnRes() {}
 
-// The baseline permission that all organization members have on this project. Only present if owner
-// is an organization.
+// The baseline permission that all organization members have on this project. Only present if owner is
+// an organization.
 type ProjectOrganizationPermission string
 
 const (
@@ -69275,8 +69304,8 @@ func (s *ProjectsMoveCardForbiddenErrorsItem) SetField(val OptString) {
 }
 
 type ProjectsMoveCardReq struct {
-	// The position of the card in a column. Can be one of: `top`, `bottom`, or `after:<card_id>` to
-	// place after the specified card.
+	// The position of the card in a column. Can be one of: `top`, `bottom`, or `after:<card_id>` to place
+	// after the specified card.
 	Position string `json:"position"`
 	// The unique identifier of the column the card should be moved to.
 	ColumnID OptInt `json:"column_id"`
@@ -70625,9 +70654,9 @@ func (s *PublicUserPlan) SetPrivateRepos(val int) {
 	s.PrivateRepos = val
 }
 
-// Pull requests let you tell others about changes you've pushed to a repository on GitHub. Once a
-// pull request is sent, interested parties can review the set of changes, discuss potential
-// modifications, and even push follow-up commits if necessary.
+// Pull requests let you tell others about changes you've pushed to a repository on GitHub. Once a pull
+// request is sent, interested parties can review the set of changes, discuss potential modifications,
+// and even push follow-up commits if necessary.
 // Ref: #/components/schemas/pull-request
 type PullRequest struct {
 	URL               url.URL `json:"url"`
@@ -76047,8 +76076,8 @@ func (s *PullsCreateReplyForReviewCommentReq) SetBody(val string) {
 type PullsCreateReq struct {
 	// The title of the new pull request.
 	Title OptString `json:"title"`
-	// The name of the branch where your changes are implemented. For cross-repository pull requests in
-	// the same network, namespace `head` with a user like this: `username:branch`.
+	// The name of the branch where your changes are implemented. For cross-repository pull requests in the
+	// same network, namespace `head` with a user like this: `username:branch`.
 	Head string `json:"head"`
 	// The name of the branch you want the changes pulled into. This should be an existing branch on the
 	// current repository. You cannot submit a pull request to one repository that requests a merge to a
@@ -76056,12 +76085,14 @@ type PullsCreateReq struct {
 	Base string `json:"base"`
 	// The contents of the pull request.
 	Body OptString `json:"body"`
-	// Indicates whether [maintainers can modify](https://help.github.
-	// com/articles/allowing-changes-to-a-pull-request-branch-created-from-a-fork/) the pull request.
+	// Indicates whether [maintainers can modify] the pull request.
+	//
+	// [maintainers can modify]: https://help.github.com/articles/allowing-changes-to-a-pull-request-branch-created-from-a-fork/
 	MaintainerCanModify OptBool `json:"maintainer_can_modify"`
-	// Indicates whether the pull request is a draft. See "[Draft Pull Requests](https://help.github.
-	// com/en/articles/about-pull-requests#draft-pull-requests)" in the GitHub Help documentation to
-	// learn more.
+	// Indicates whether the pull request is a draft. See "[Draft Pull Requests]" in the GitHub Help
+	// documentation to learn more.
+	//
+	// [Draft Pull Requests]: https://help.github.com/en/articles/about-pull-requests#draft-pull-requests
 	Draft OptBool `json:"draft"`
 	Issue OptInt  `json:"issue"`
 }
@@ -76144,35 +76175,36 @@ type PullsCreateReviewCommentReq struct {
 	CommitID OptString `json:"commit_id"`
 	// The relative path to the file that necessitates a comment.
 	Path OptString `json:"path"`
-	// **Required without `comfort-fade` preview**. The position in the diff where you want to add a
-	// review comment. Note this value is not the same as the line number in the file. For help finding
-	// the position value, read the note above.
+	// Required without `comfort-fade` preview. The position in the diff where you want to add a review
+	// comment. Note this value is not the same as the line number in the file. For help finding the
+	// position value, read the note above.
 	Position OptInt `json:"position"`
-	// **Required with `comfort-fade` preview**. In a split diff view, the side of the diff that the pull
+	// Required with `comfort-fade` preview. In a split diff view, the side of the diff that the pull
 	// request's changes appear on. Can be `LEFT` or `RIGHT`. Use `LEFT` for deletions that appear in red.
-	//  Use `RIGHT` for additions that appear in green or unchanged lines that appear in white and are
-	// shown for context. For a multi-line comment, side represents whether the last line of the comment
-	// range is a deletion or addition. For more information, see "[Diff view options](https://help.
-	// github.com/en/articles/about-comparing-branches-in-pull-requests#diff-view-options)" in the GitHub
-	// Help documentation.
+	// Use `RIGHT` for additions that appear in green or unchanged lines that appear in white and are shown
+	// for context. For a multi-line comment, side represents whether the last line of the comment range is
+	// a deletion or addition. For more information, see "[Diff view options]" in the GitHub Help
+	// documentation.
+	//
+	// [Diff view options]: https://help.github.com/en/articles/about-comparing-branches-in-pull-requests#diff-view-options
 	Side OptPullsCreateReviewCommentReqSide `json:"side"`
-	// **Required with `comfort-fade` preview**. The line of the blob in the pull request diff that the
-	// comment applies to. For a multi-line comment, the last line of the range that your comment applies
-	// to.
+	// Required with `comfort-fade` preview. The line of the blob in the pull request diff that the comment
+	// applies to. For a multi-line comment, the last line of the range that your comment applies to.
 	Line OptInt `json:"line"`
-	// **Required when using multi-line comments**. To create multi-line comments, you must use the
-	// `comfort-fade` preview header. The `start_line` is the first line in the pull request diff that
-	// your multi-line comment applies to. To learn more about multi-line comments, see "[Commenting on a
-	// pull request](https://help.github.
-	// com/en/articles/commenting-on-a-pull-request#adding-line-comments-to-a-pull-request)" in the
-	// GitHub Help documentation.
+	// Required when using multi-line comments. To create multi-line comments, you must use the
+	// `comfort-fade` preview header. The `start_line` is the first line in the pull request diff that your
+	// multi-line comment applies to. To learn more about multi-line comments, see
+	// "[Commenting on a pull request]" in the GitHub Help documentation.
+	//
+	// [Commenting on a pull request]: https://help.github.com/en/articles/commenting-on-a-pull-request#adding-line-comments-to-a-pull-request
 	StartLine OptInt `json:"start_line"`
-	// **Required when using multi-line comments**. To create multi-line comments, you must use the
+	// Required when using multi-line comments. To create multi-line comments, you must use the
 	// `comfort-fade` preview header. The `start_side` is the starting side of the diff that the comment
-	// applies to. Can be `LEFT` or `RIGHT`. To learn more about multi-line comments, see "[Commenting on
-	// a pull request](https://help.github.
-	// com/en/articles/commenting-on-a-pull-request#adding-line-comments-to-a-pull-request)" in the
-	// GitHub Help documentation. See `side` in this table for additional context.
+	// applies to. Can be `LEFT` or `RIGHT`. To learn more about multi-line comments, see
+	// "[Commenting on a pull request]" in the GitHub Help documentation. See `side` in this table for
+	// additional context.
+	//
+	// [Commenting on a pull request]: https://help.github.com/en/articles/commenting-on-a-pull-request#adding-line-comments-to-a-pull-request
 	StartSide OptPullsCreateReviewCommentReqStartSide `json:"start_side"`
 	InReplyTo OptInt                                  `json:"in_reply_to"`
 }
@@ -76267,15 +76299,14 @@ func (s *PullsCreateReviewCommentReq) SetInReplyTo(val OptInt) {
 	s.InReplyTo = val
 }
 
-// **Required with `comfort-fade` preview**. In a split diff view, the side of the diff that the pull
+// Required with `comfort-fade` preview. In a split diff view, the side of the diff that the pull
 // request's changes appear on. Can be `LEFT` or `RIGHT`. Use `LEFT` for deletions that appear in red.
+// Use `RIGHT` for additions that appear in green or unchanged lines that appear in white and are shown
+// for context. For a multi-line comment, side represents whether the last line of the comment range is
+// a deletion or addition. For more information, see "[Diff view options]" in the GitHub Help
+// documentation.
 //
-//	Use `RIGHT` for additions that appear in green or unchanged lines that appear in white and are
-//
-// shown for context. For a multi-line comment, side represents whether the last line of the comment
-// range is a deletion or addition. For more information, see "[Diff view options](https://help.
-// github.com/en/articles/about-comparing-branches-in-pull-requests#diff-view-options)" in the GitHub
-// Help documentation.
+// [Diff view options]: https://help.github.com/en/articles/about-comparing-branches-in-pull-requests#diff-view-options
 type PullsCreateReviewCommentReqSide string
 
 const (
@@ -76317,12 +76348,13 @@ func (s *PullsCreateReviewCommentReqSide) UnmarshalText(data []byte) error {
 	}
 }
 
-// **Required when using multi-line comments**. To create multi-line comments, you must use the
+// Required when using multi-line comments. To create multi-line comments, you must use the
 // `comfort-fade` preview header. The `start_side` is the starting side of the diff that the comment
-// applies to. Can be `LEFT` or `RIGHT`. To learn more about multi-line comments, see "[Commenting on
-// a pull request](https://help.github.
-// com/en/articles/commenting-on-a-pull-request#adding-line-comments-to-a-pull-request)" in the
-// GitHub Help documentation. See `side` in this table for additional context.
+// applies to. Can be `LEFT` or `RIGHT`. To learn more about multi-line comments, see
+// "[Commenting on a pull request]" in the GitHub Help documentation. See `side` in this table for
+// additional context.
+//
+// [Commenting on a pull request]: https://help.github.com/en/articles/commenting-on-a-pull-request#adding-line-comments-to-a-pull-request
 type PullsCreateReviewCommentReqStartSide string
 
 const (
@@ -76373,16 +76405,17 @@ func (s *PullsCreateReviewCommentReqStartSide) UnmarshalText(data []byte) error 
 
 type PullsCreateReviewReq struct {
 	// The SHA of the commit that needs a review. Not using the latest commit SHA may render your review
-	// comment outdated if a subsequent commit modifies the line you specify as the `position`. Defaults
-	// to the most recent commit in the pull request when you do not specify a value.
+	// comment outdated if a subsequent commit modifies the line you specify as the `position`. Defaults to
+	// the most recent commit in the pull request when you do not specify a value.
 	CommitID OptString `json:"commit_id"`
-	// **Required** when using `REQUEST_CHANGES` or `COMMENT` for the `event` parameter. The body text of
-	// the pull request review.
+	// Required when using `REQUEST_CHANGES` or `COMMENT` for the `event` parameter. The body text of the
+	// pull request review.
 	Body OptString `json:"body"`
-	// The review action you want to perform. The review actions include: `APPROVE`, `REQUEST_CHANGES`,
-	// or `COMMENT`. By leaving this blank, you set the review action state to `PENDING`, which means you
-	// will need to [submit the pull request review](https://docs.github.
-	// com/rest/reference/pulls#submit-a-review-for-a-pull-request) when you are ready.
+	// The review action you want to perform. The review actions include: `APPROVE`, `REQUEST_CHANGES`, or
+	// `COMMENT`. By leaving this blank, you set the review action state to `PENDING`, which means you will
+	// need to [submit the pull request review] when you are ready.
+	//
+	// [submit the pull request review]: https://docs.github.com/rest/reference/pulls#submit-a-review-for-a-pull-request
 	Event OptPullsCreateReviewReqEvent `json:"event"`
 	// Use the following table to specify the location, destination, and contents of the draft review
 	// comment.
@@ -76432,8 +76465,8 @@ func (s *PullsCreateReviewReq) SetComments(val []PullsCreateReviewReqCommentsIte
 type PullsCreateReviewReqCommentsItem struct {
 	// The relative path to the file that necessitates a review comment.
 	Path string `json:"path"`
-	// The position in the diff where you want to add a review comment. Note this value is not the same
-	// as the line number in the file. For help finding the position value, read the note below.
+	// The position in the diff where you want to add a review comment. Note this value is not the same as
+	// the line number in the file. For help finding the position value, read the note below.
 	Position OptInt `json:"position"`
 	// Text of the review comment.
 	Body      string    `json:"body"`
@@ -76513,10 +76546,11 @@ func (s *PullsCreateReviewReqCommentsItem) SetStartSide(val OptString) {
 	s.StartSide = val
 }
 
-// The review action you want to perform. The review actions include: `APPROVE`, `REQUEST_CHANGES`,
-// or `COMMENT`. By leaving this blank, you set the review action state to `PENDING`, which means you
-// will need to [submit the pull request review](https://docs.github.
-// com/rest/reference/pulls#submit-a-review-for-a-pull-request) when you are ready.
+// The review action you want to perform. The review actions include: `APPROVE`, `REQUEST_CHANGES`, or
+// `COMMENT`. By leaving this blank, you set the review action state to `PENDING`, which means you will
+// need to [submit the pull request review] when you are ready.
+//
+// [submit the pull request review]: https://docs.github.com/rest/reference/pulls#submit-a-review-for-a-pull-request
 type PullsCreateReviewReqEvent string
 
 const (
@@ -77266,10 +77300,10 @@ func (*PullsSubmitReviewNotFound) pullsSubmitReviewRes() {}
 type PullsSubmitReviewReq struct {
 	// The body text of the pull request review.
 	Body OptString `json:"body"`
-	// The review action you want to perform. The review actions include: `APPROVE`, `REQUEST_CHANGES`,
-	// or `COMMENT`. When you leave this blank, the API returns _HTTP 422 (Unrecognizable entity)_ and
-	// sets the review action state to `PENDING`, which means you will need to re-submit the pull request
-	// review using a review action.
+	// The review action you want to perform. The review actions include: `APPROVE`, `REQUEST_CHANGES`, or
+	// `COMMENT`. When you leave this blank, the API returns HTTP 422 (Unrecognizable entity) and sets the
+	// review action state to `PENDING`, which means you will need to re-submit the pull request review
+	// using a review action.
 	Event PullsSubmitReviewReqEvent `json:"event"`
 }
 
@@ -77293,10 +77327,10 @@ func (s *PullsSubmitReviewReq) SetEvent(val PullsSubmitReviewReqEvent) {
 	s.Event = val
 }
 
-// The review action you want to perform. The review actions include: `APPROVE`, `REQUEST_CHANGES`,
-// or `COMMENT`. When you leave this blank, the API returns _HTTP 422 (Unrecognizable entity)_ and
-// sets the review action state to `PENDING`, which means you will need to re-submit the pull request
-// review using a review action.
+// The review action you want to perform. The review actions include: `APPROVE`, `REQUEST_CHANGES`, or
+// `COMMENT`. When you leave this blank, the API returns HTTP 422 (Unrecognizable entity) and sets the
+// review action state to `PENDING`, which means you will need to re-submit the pull request review
+// using a review action.
 type PullsSubmitReviewReqEvent string
 
 const (
@@ -77375,9 +77409,10 @@ func (*PullsUpdateBranchAccepted) pullsUpdateBranchRes() {}
 type PullsUpdateBranchReq struct {
 	// The expected SHA of the pull request's HEAD ref. This is the most recent commit on the pull
 	// request's branch. If the expected SHA does not match the pull request's HEAD, you will receive a
-	// `422 Unprocessable Entity` status. You can use the "[List commits](https://docs.github.
-	// com/rest/reference/repos#list-commits)" endpoint to find the most recent commit SHA. Default: SHA
-	// of the pull request's current HEAD ref.
+	// `422 Unprocessable Entity` status. You can use the "[List commits]" endpoint to find the most recent
+	// commit SHA. Default: SHA of the pull request's current HEAD ref.
+	//
+	// [List commits]: https://docs.github.com/rest/reference/repos#list-commits
 	ExpectedHeadSha OptString `json:"expected_head_sha"`
 }
 
@@ -77402,8 +77437,9 @@ type PullsUpdateReq struct {
 	// current repository. You cannot update the base branch on a pull request to point to another
 	// repository.
 	Base OptString `json:"base"`
-	// Indicates whether [maintainers can modify](https://help.github.
-	// com/articles/allowing-changes-to-a-pull-request-branch-created-from-a-fork/) the pull request.
+	// Indicates whether [maintainers can modify] the pull request.
+	//
+	// [maintainers can modify]: https://help.github.com/articles/allowing-changes-to-a-pull-request-branch-created-from-a-fork/
 	MaintainerCanModify OptBool `json:"maintainer_can_modify"`
 }
 
@@ -78003,8 +78039,9 @@ type ReactionsCreateForCommitCommentOK Reaction
 func (*ReactionsCreateForCommitCommentOK) reactionsCreateForCommitCommentRes() {}
 
 type ReactionsCreateForCommitCommentReq struct {
-	// The [reaction type](https://docs.github.com/rest/reference/reactions#reaction-types) to add to the
-	// commit comment.
+	// The [reaction type] to add to the commit comment.
+	//
+	// [reaction type]: https://docs.github.com/rest/reference/reactions#reaction-types
 	Content ReactionsCreateForCommitCommentReqContent `json:"content"`
 }
 
@@ -78018,8 +78055,9 @@ func (s *ReactionsCreateForCommitCommentReq) SetContent(val ReactionsCreateForCo
 	s.Content = val
 }
 
-// The [reaction type](https://docs.github.com/rest/reference/reactions#reaction-types) to add to the
-// commit comment.
+// The [reaction type] to add to the commit comment.
+//
+// [reaction type]: https://docs.github.com/rest/reference/reactions#reaction-types
 type ReactionsCreateForCommitCommentReqContent string
 
 const (
@@ -78112,8 +78150,9 @@ type ReactionsCreateForIssueCommentOK Reaction
 func (*ReactionsCreateForIssueCommentOK) reactionsCreateForIssueCommentRes() {}
 
 type ReactionsCreateForIssueCommentReq struct {
-	// The [reaction type](https://docs.github.com/rest/reference/reactions#reaction-types) to add to the
-	// issue comment.
+	// The [reaction type] to add to the issue comment.
+	//
+	// [reaction type]: https://docs.github.com/rest/reference/reactions#reaction-types
 	Content ReactionsCreateForIssueCommentReqContent `json:"content"`
 }
 
@@ -78127,8 +78166,9 @@ func (s *ReactionsCreateForIssueCommentReq) SetContent(val ReactionsCreateForIss
 	s.Content = val
 }
 
-// The [reaction type](https://docs.github.com/rest/reference/reactions#reaction-types) to add to the
-// issue comment.
+// The [reaction type] to add to the issue comment.
+//
+// [reaction type]: https://docs.github.com/rest/reference/reactions#reaction-types
 type ReactionsCreateForIssueCommentReqContent string
 
 const (
@@ -78221,8 +78261,9 @@ type ReactionsCreateForIssueOK Reaction
 func (*ReactionsCreateForIssueOK) reactionsCreateForIssueRes() {}
 
 type ReactionsCreateForIssueReq struct {
-	// The [reaction type](https://docs.github.com/rest/reference/reactions#reaction-types) to add to the
-	// issue.
+	// The [reaction type] to add to the issue.
+	//
+	// [reaction type]: https://docs.github.com/rest/reference/reactions#reaction-types
 	Content ReactionsCreateForIssueReqContent `json:"content"`
 }
 
@@ -78236,8 +78277,9 @@ func (s *ReactionsCreateForIssueReq) SetContent(val ReactionsCreateForIssueReqCo
 	s.Content = val
 }
 
-// The [reaction type](https://docs.github.com/rest/reference/reactions#reaction-types) to add to the
-// issue.
+// The [reaction type] to add to the issue.
+//
+// [reaction type]: https://docs.github.com/rest/reference/reactions#reaction-types
 type ReactionsCreateForIssueReqContent string
 
 const (
@@ -78332,8 +78374,9 @@ func (*ReactionsCreateForPullRequestReviewCommentOK) reactionsCreateForPullReque
 }
 
 type ReactionsCreateForPullRequestReviewCommentReq struct {
-	// The [reaction type](https://docs.github.com/rest/reference/reactions#reaction-types) to add to the
-	// pull request review comment.
+	// The [reaction type] to add to the pull request review comment.
+	//
+	// [reaction type]: https://docs.github.com/rest/reference/reactions#reaction-types
 	Content ReactionsCreateForPullRequestReviewCommentReqContent `json:"content"`
 }
 
@@ -78347,8 +78390,9 @@ func (s *ReactionsCreateForPullRequestReviewCommentReq) SetContent(val Reactions
 	s.Content = val
 }
 
-// The [reaction type](https://docs.github.com/rest/reference/reactions#reaction-types) to add to the
-// pull request review comment.
+// The [reaction type] to add to the pull request review comment.
+//
+// [reaction type]: https://docs.github.com/rest/reference/reactions#reaction-types
 type ReactionsCreateForPullRequestReviewCommentReqContent string
 
 const (
@@ -78441,8 +78485,9 @@ type ReactionsCreateForReleaseOK Reaction
 func (*ReactionsCreateForReleaseOK) reactionsCreateForReleaseRes() {}
 
 type ReactionsCreateForReleaseReq struct {
-	// The [reaction type](https://docs.github.com/rest/reference/reactions#reaction-types) to add to the
-	// release.
+	// The [reaction type] to add to the release.
+	//
+	// [reaction type]: https://docs.github.com/rest/reference/reactions#reaction-types
 	Content ReactionsCreateForReleaseReqContent `json:"content"`
 }
 
@@ -78456,8 +78501,9 @@ func (s *ReactionsCreateForReleaseReq) SetContent(val ReactionsCreateForReleaseR
 	s.Content = val
 }
 
-// The [reaction type](https://docs.github.com/rest/reference/reactions#reaction-types) to add to the
-// release.
+// The [reaction type] to add to the release.
+//
+// [reaction type]: https://docs.github.com/rest/reference/reactions#reaction-types
 type ReactionsCreateForReleaseReqContent string
 
 const (
@@ -78538,8 +78584,9 @@ func (*ReactionsCreateForTeamDiscussionCommentInOrgOK) reactionsCreateForTeamDis
 }
 
 type ReactionsCreateForTeamDiscussionCommentInOrgReq struct {
-	// The [reaction type](https://docs.github.com/rest/reference/reactions#reaction-types) to add to the
-	// team discussion comment.
+	// The [reaction type] to add to the team discussion comment.
+	//
+	// [reaction type]: https://docs.github.com/rest/reference/reactions#reaction-types
 	Content ReactionsCreateForTeamDiscussionCommentInOrgReqContent `json:"content"`
 }
 
@@ -78553,8 +78600,9 @@ func (s *ReactionsCreateForTeamDiscussionCommentInOrgReq) SetContent(val Reactio
 	s.Content = val
 }
 
-// The [reaction type](https://docs.github.com/rest/reference/reactions#reaction-types) to add to the
-// team discussion comment.
+// The [reaction type] to add to the team discussion comment.
+//
+// [reaction type]: https://docs.github.com/rest/reference/reactions#reaction-types
 type ReactionsCreateForTeamDiscussionCommentInOrgReqContent string
 
 const (
@@ -78639,8 +78687,9 @@ func (s *ReactionsCreateForTeamDiscussionCommentInOrgReqContent) UnmarshalText(d
 }
 
 type ReactionsCreateForTeamDiscussionCommentLegacyReq struct {
-	// The [reaction type](https://docs.github.com/rest/reference/reactions#reaction-types) to add to the
-	// team discussion comment.
+	// The [reaction type] to add to the team discussion comment.
+	//
+	// [reaction type]: https://docs.github.com/rest/reference/reactions#reaction-types
 	Content ReactionsCreateForTeamDiscussionCommentLegacyReqContent `json:"content"`
 }
 
@@ -78654,8 +78703,9 @@ func (s *ReactionsCreateForTeamDiscussionCommentLegacyReq) SetContent(val Reacti
 	s.Content = val
 }
 
-// The [reaction type](https://docs.github.com/rest/reference/reactions#reaction-types) to add to the
-// team discussion comment.
+// The [reaction type] to add to the team discussion comment.
+//
+// [reaction type]: https://docs.github.com/rest/reference/reactions#reaction-types
 type ReactionsCreateForTeamDiscussionCommentLegacyReqContent string
 
 const (
@@ -78748,8 +78798,9 @@ type ReactionsCreateForTeamDiscussionInOrgOK Reaction
 func (*ReactionsCreateForTeamDiscussionInOrgOK) reactionsCreateForTeamDiscussionInOrgRes() {}
 
 type ReactionsCreateForTeamDiscussionInOrgReq struct {
-	// The [reaction type](https://docs.github.com/rest/reference/reactions#reaction-types) to add to the
-	// team discussion.
+	// The [reaction type] to add to the team discussion.
+	//
+	// [reaction type]: https://docs.github.com/rest/reference/reactions#reaction-types
 	Content ReactionsCreateForTeamDiscussionInOrgReqContent `json:"content"`
 }
 
@@ -78763,8 +78814,9 @@ func (s *ReactionsCreateForTeamDiscussionInOrgReq) SetContent(val ReactionsCreat
 	s.Content = val
 }
 
-// The [reaction type](https://docs.github.com/rest/reference/reactions#reaction-types) to add to the
-// team discussion.
+// The [reaction type] to add to the team discussion.
+//
+// [reaction type]: https://docs.github.com/rest/reference/reactions#reaction-types
 type ReactionsCreateForTeamDiscussionInOrgReqContent string
 
 const (
@@ -78849,8 +78901,9 @@ func (s *ReactionsCreateForTeamDiscussionInOrgReqContent) UnmarshalText(data []b
 }
 
 type ReactionsCreateForTeamDiscussionLegacyReq struct {
-	// The [reaction type](https://docs.github.com/rest/reference/reactions#reaction-types) to add to the
-	// team discussion.
+	// The [reaction type] to add to the team discussion.
+	//
+	// [reaction type]: https://docs.github.com/rest/reference/reactions#reaction-types
 	Content ReactionsCreateForTeamDiscussionLegacyReqContent `json:"content"`
 }
 
@@ -78864,8 +78917,9 @@ func (s *ReactionsCreateForTeamDiscussionLegacyReq) SetContent(val ReactionsCrea
 	s.Content = val
 }
 
-// The [reaction type](https://docs.github.com/rest/reference/reactions#reaction-types) to add to the
-// team discussion.
+// The [reaction type] to add to the team discussion.
+//
+// [reaction type]: https://docs.github.com/rest/reference/reactions#reaction-types
 type ReactionsCreateForTeamDiscussionLegacyReqContent string
 
 const (
@@ -81510,17 +81564,13 @@ type ReposAddCollaboratorNoContent struct{}
 func (*ReposAddCollaboratorNoContent) reposAddCollaboratorRes() {}
 
 type ReposAddCollaboratorReq struct {
-	// The permission to grant the collaborator. **Only valid on organization-owned repositories.** Can
-	// be one of:
-	// \* `pull` - can pull, but not push to or administer this repository.
-	// \* `push` - can pull and push, but not administer this repository.
-	// \* `admin` - can pull, push and administer this repository.
-	// \* `maintain` - Recommended for project managers who need to manage the repository without access
-	// to sensitive or destructive actions.
-	// \* `triage` - Recommended for contributors who need to proactively manage issues and pull requests
-	// without write access.
-	// \* custom repository role name - Can assign a custom repository role if the owning organization
-	// has defined any.
+	// The permission to grant the collaborator. Only valid on organization-owned repositories. Can be one
+	// of: \* `pull` - can pull, but not push to or administer this repository. \* `push` - can pull and
+	// push, but not administer this repository. \* `admin` - can pull, push and administer this
+	// repository. \* `maintain` - Recommended for project managers who need to manage the repository
+	// without access to sensitive or destructive actions. \* `triage` - Recommended for contributors who
+	// need to proactively manage issues and pull requests without write access. \* custom repository role
+	// name - Can assign a custom repository role if the owning organization has defined any.
 	Permission  OptReposAddCollaboratorReqPermission `json:"permission"`
 	Permissions OptString                            `json:"permissions"`
 }
@@ -81545,17 +81595,13 @@ func (s *ReposAddCollaboratorReq) SetPermissions(val OptString) {
 	s.Permissions = val
 }
 
-// The permission to grant the collaborator. **Only valid on organization-owned repositories.** Can
-// be one of:
-// \* `pull` - can pull, but not push to or administer this repository.
-// \* `push` - can pull and push, but not administer this repository.
-// \* `admin` - can pull, push and administer this repository.
-// \* `maintain` - Recommended for project managers who need to manage the repository without access
-// to sensitive or destructive actions.
-// \* `triage` - Recommended for contributors who need to proactively manage issues and pull requests
-// without write access.
-// \* custom repository role name - Can assign a custom repository role if the owning organization
-// has defined any.
+// The permission to grant the collaborator. Only valid on organization-owned repositories. Can be one
+// of: \* `pull` - can pull, but not push to or administer this repository. \* `push` - can pull and
+// push, but not administer this repository. \* `admin` - can pull, push and administer this
+// repository. \* `maintain` - Recommended for project managers who need to manage the repository
+// without access to sensitive or destructive actions. \* `triage` - Recommended for contributors who
+// need to proactively manage issues and pull requests without write access. \* custom repository role
+// name - Can assign a custom repository role if the owning organization has defined any.
 type ReposAddCollaboratorReqPermission string
 
 const (
@@ -81919,10 +81965,10 @@ type ReposCompareCommitsNotFound BasicError
 func (*ReposCompareCommitsNotFound) reposCompareCommitsRes() {}
 
 type ReposCreateAutolinkReq struct {
-	// The prefix appended by a number will generate a link any time it is found in an issue, pull
-	// request, or commit.
+	// The prefix appended by a number will generate a link any time it is found in an issue, pull request,
+	// or commit.
 	KeyPrefix string `json:"key_prefix"`
-	// The URL must contain <num> for the reference number.
+	// The URL must contain for the reference number.
 	URLTemplate string `json:"url_template"`
 }
 
@@ -81953,7 +81999,7 @@ type ReposCreateCommitCommentReq struct {
 	Path OptString `json:"path"`
 	// Line index in the diff to comment on.
 	Position OptInt `json:"position"`
-	// **Deprecated**. Use **position** parameter instead. Line number in the file to comment on.
+	// Deprecated. Use position parameter instead. Line number in the file to comment on.
 	Line OptInt `json:"line"`
 }
 
@@ -82001,10 +82047,9 @@ type ReposCreateCommitStatusReq struct {
 	// The state of the status. Can be one of `error`, `failure`, `pending`, or `success`.
 	State ReposCreateCommitStatusReqState `json:"state"`
 	// The target URL to associate with this status. This URL will be linked from the GitHub UI to allow
-	// users to easily see the source of the status.
-	// For example, if your continuous integration system is posting build status, you would want to
-	// provide the deep link for the build output for this specific SHA:
-	// `http://ci.example.com/user/repo/build/sha`.
+	// users to easily see the source of the status. For example, if your continuous integration system is
+	// posting build status, you would want to provide the deep link for the build output for this specific
+	// SHA: `http://ci.example.com/user/repo/build/sha`.
 	TargetURL OptString `json:"target_url"`
 	// A short description of the status.
 	Description OptString `json:"description"`
@@ -82114,14 +82159,16 @@ type ReposCreateDeployKeyReq struct {
 	Title OptString `json:"title"`
 	// The contents of the key.
 	Key string `json:"key"`
-	// If `true`, the key will only be able to read repository contents. Otherwise, the key will be able
-	// to read and write.
+	// If `true`, the key will only be able to read repository contents. Otherwise, the key will be able to
+	// read and write.
+	//
 	// Deploy keys with write access can perform the same actions as an organization member with admin
-	// access, or a collaborator on a personal repository. For more information, see "[Repository
-	// permission levels for an organization](https://help.github.
-	// com/articles/repository-permission-levels-for-an-organization/)" and "[Permission levels for a
-	// user account repository](https://help.github.
-	// com/articles/permission-levels-for-a-user-account-repository/).".
+	// access, or a collaborator on a personal repository. For more information, see
+	// "[Repository permission levels for an organization]" and
+	// "[Permission levels for a user account repository].".
+	//
+	// [Repository permission levels for an organization]: https://help.github.com/articles/repository-permission-levels-for-an-organization/
+	// [Permission levels for a user account repository]: https://help.github.com/articles/permission-levels-for-a-user-account-repository/
 	ReadOnly OptBool `json:"read_only"`
 }
 
@@ -82184,10 +82231,11 @@ type ReposCreateDeploymentReq struct {
 	// Attempts to automatically merge the default branch into the requested ref, if it's behind the
 	// default branch.
 	AutoMerge OptBool `json:"auto_merge"`
-	// The [status](https://docs.github.com/rest/reference/repos#statuses) contexts to verify against
-	// commit status checks. If you omit this parameter, GitHub verifies all unique contexts before
-	// creating a deployment. To bypass checking entirely, pass an empty array. Defaults to all unique
-	// contexts.
+	// The [status] contexts to verify against commit status checks. If you omit this parameter, GitHub
+	// verifies all unique contexts before creating a deployment. To bypass checking entirely, pass an
+	// empty array. Defaults to all unique contexts.
+	//
+	// [status]: https://docs.github.com/rest/reference/repos#statuses
 	RequiredContexts []string                           `json:"required_contexts"`
 	Payload          OptReposCreateDeploymentReqPayload `json:"payload"`
 	// Name for the target deployment environment (e.g., `production`, `staging`, `qa`).
@@ -82195,16 +82243,16 @@ type ReposCreateDeploymentReq struct {
 	// Short description of the deployment.
 	Description OptNilString `json:"description"`
 	// Specifies if the given environment is specific to the deployment and will no longer exist at some
-	// point in the future. Default: `false`
-	// **Note:** This parameter requires you to use the [`application/vnd.github.
-	// ant-man-preview+json`](https://docs.github.com/rest/overview/api-previews#enhanced-deployments)
-	// custom media type.
+	// point in the future. Default: `false` Note: This parameter requires you to use the
+	// [application/vnd.github.ant-man-preview+json] custom media type.
+	//
+	// [application/vnd.github.ant-man-preview+json]: https://docs.github.com/rest/overview/api-previews#enhanced-deployments
 	TransientEnvironment OptBool `json:"transient_environment"`
 	// Specifies if the given environment is one that end-users directly interact with. Default: `true`
-	// when `environment` is `production` and `false` otherwise.
-	// **Note:** This parameter requires you to use the [`application/vnd.github.
-	// ant-man-preview+json`](https://docs.github.com/rest/overview/api-previews#enhanced-deployments)
-	// custom media type.
+	// when `environment` is `production` and `false` otherwise. Note: This parameter requires you to use
+	// the [application/vnd.github.ant-man-preview+json] custom media type.
+	//
+	// [application/vnd.github.ant-man-preview+json]: https://docs.github.com/rest/overview/api-previews#enhanced-deployments
 	ProductionEnvironment OptBool `json:"production_environment"`
 }
 
@@ -82380,46 +82428,48 @@ func (s *ReposCreateDeploymentReqPayload0) init() ReposCreateDeploymentReqPayloa
 
 type ReposCreateDeploymentStatusReq struct {
 	// The state of the status. Can be one of `error`, `failure`, `inactive`, `in_progress`, `queued`
-	// `pending`, or `success`. **Note:** To use the `inactive` state, you must provide the
-	// [`application/vnd.github.ant-man-preview+json`](https://docs.github.
-	// com/rest/overview/api-previews#enhanced-deployments) custom media type. To use the `in_progress`
-	// and `queued` states, you must provide the [`application/vnd.github.
-	// flash-preview+json`](https://docs.github.com/rest/overview/api-previews#deployment-statuses)
-	// custom media type. When you set a transient deployment to `inactive`, the deployment will be shown
-	// as `destroyed` in GitHub.
+	// `pending`, or `success`. Note: To use the `inactive` state, you must provide the
+	// [application/vnd.github.ant-man-preview+json] custom media type. To use the `in_progress` and
+	// `queued` states, you must provide the [application/vnd.github.flash-preview+json] custom media type.
+	// When you set a transient deployment to `inactive`, the deployment will be shown as `destroyed` in
+	// GitHub.
+	//
+	// [application/vnd.github.ant-man-preview+json]: https://docs.github.com/rest/overview/api-previews#enhanced-deployments
+	// [application/vnd.github.flash-preview+json]: https://docs.github.com/rest/overview/api-previews#deployment-statuses
 	State ReposCreateDeploymentStatusReqState `json:"state"`
 	// The target URL to associate with this status. This URL should contain output to keep the user
 	// updated while the task is running or serve as historical information for what happened in the
-	// deployment. **Note:** It's recommended to use the `log_url` parameter, which replaces `target_url`.
+	// deployment. Note: It's recommended to use the `log_url` parameter, which replaces `target_url`.
 	TargetURL OptString `json:"target_url"`
 	// The full URL of the deployment's output. This parameter replaces `target_url`. We will continue to
 	// accept `target_url` to support legacy uses, but we recommend replacing `target_url` with `log_url`.
-	//  Setting `log_url` will automatically set `target_url` to the same value. Default: `""`
-	// **Note:** This parameter requires you to use the [`application/vnd.github.
-	// ant-man-preview+json`](https://docs.github.com/rest/overview/api-previews#enhanced-deployments)
-	// custom media type.
+	// Setting `log_url` will automatically set `target_url` to the same value. Default: `""` Note: This
+	// parameter requires you to use the [application/vnd.github.ant-man-preview+json] custom media type.
+	//
+	// [application/vnd.github.ant-man-preview+json]: https://docs.github.com/rest/overview/api-previews#enhanced-deployments
 	LogURL OptString `json:"log_url"`
 	// A short description of the status. The maximum description length is 140 characters.
 	Description OptString `json:"description"`
 	// Name for the target deployment environment, which can be changed when setting a deploy status. For
-	// example, `production`, `staging`, or `qa`. **Note:** This parameter requires you to use the
-	// [`application/vnd.github.flash-preview+json`](https://docs.github.
-	// com/rest/overview/api-previews#deployment-statuses) custom media type.
+	// example, `production`, `staging`, or `qa`. Note: This parameter requires you to use the
+	// [application/vnd.github.flash-preview+json] custom media type.
+	//
+	// [application/vnd.github.flash-preview+json]: https://docs.github.com/rest/overview/api-previews#deployment-statuses
 	Environment OptReposCreateDeploymentStatusReqEnvironment `json:"environment"`
-	// Sets the URL for accessing your environment. Default: `""`
-	// **Note:** This parameter requires you to use the [`application/vnd.github.
-	// ant-man-preview+json`](https://docs.github.com/rest/overview/api-previews#enhanced-deployments)
-	// custom media type.
+	// Sets the URL for accessing your environment. Default: `""` Note: This parameter requires you to use
+	// the [application/vnd.github.ant-man-preview+json] custom media type.
+	//
+	// [application/vnd.github.ant-man-preview+json]: https://docs.github.com/rest/overview/api-previews#enhanced-deployments
 	EnvironmentURL OptString `json:"environment_url"`
-	// Adds a new `inactive` status to all prior non-transient, non-production environment deployments
-	// with the same repository and `environment` name as the created status's deployment. An `inactive`
-	// status is only added to deployments that had a `success` state. Default: `true`
-	// **Note:** To add an `inactive` status to `production` environments, you must use the
-	// [`application/vnd.github.flash-preview+json`](https://docs.github.
-	// com/rest/overview/api-previews#deployment-statuses) custom media type.
-	// **Note:** This parameter requires you to use the [`application/vnd.github.
-	// ant-man-preview+json`](https://docs.github.com/rest/overview/api-previews#enhanced-deployments)
-	// custom media type.
+	// Adds a new `inactive` status to all prior non-transient, non-production environment deployments with
+	// the same repository and `environment` name as the created status's deployment. An `inactive` status
+	// is only added to deployments that had a `success` state. Default: `true` Note: To add an `inactive`
+	// status to `production` environments, you must use the [application/vnd.github.flash-preview+json]
+	// custom media type. Note: This parameter requires you to use the
+	// [application/vnd.github.ant-man-preview+json] custom media type.
+	//
+	// [application/vnd.github.flash-preview+json]: https://docs.github.com/rest/overview/api-previews#deployment-statuses
+	// [application/vnd.github.ant-man-preview+json]: https://docs.github.com/rest/overview/api-previews#enhanced-deployments
 	AutoInactive OptBool `json:"auto_inactive"`
 }
 
@@ -82494,9 +82544,10 @@ func (s *ReposCreateDeploymentStatusReq) SetAutoInactive(val OptBool) {
 }
 
 // Name for the target deployment environment, which can be changed when setting a deploy status. For
-// example, `production`, `staging`, or `qa`. **Note:** This parameter requires you to use the
-// [`application/vnd.github.flash-preview+json`](https://docs.github.
-// com/rest/overview/api-previews#deployment-statuses) custom media type.
+// example, `production`, `staging`, or `qa`. Note: This parameter requires you to use the
+// [application/vnd.github.flash-preview+json] custom media type.
+//
+// [application/vnd.github.flash-preview+json]: https://docs.github.com/rest/overview/api-previews#deployment-statuses
 type ReposCreateDeploymentStatusReqEnvironment string
 
 const (
@@ -82546,13 +82597,14 @@ func (s *ReposCreateDeploymentStatusReqEnvironment) UnmarshalText(data []byte) e
 }
 
 // The state of the status. Can be one of `error`, `failure`, `inactive`, `in_progress`, `queued`
-// `pending`, or `success`. **Note:** To use the `inactive` state, you must provide the
-// [`application/vnd.github.ant-man-preview+json`](https://docs.github.
-// com/rest/overview/api-previews#enhanced-deployments) custom media type. To use the `in_progress`
-// and `queued` states, you must provide the [`application/vnd.github.
-// flash-preview+json`](https://docs.github.com/rest/overview/api-previews#deployment-statuses)
-// custom media type. When you set a transient deployment to `inactive`, the deployment will be shown
-// as `destroyed` in GitHub.
+// `pending`, or `success`. Note: To use the `inactive` state, you must provide the
+// [application/vnd.github.ant-man-preview+json] custom media type. To use the `in_progress` and
+// `queued` states, you must provide the [application/vnd.github.flash-preview+json] custom media type.
+// When you set a transient deployment to `inactive`, the deployment will be shown as `destroyed` in
+// GitHub.
+//
+// [application/vnd.github.ant-man-preview+json]: https://docs.github.com/rest/overview/api-previews#enhanced-deployments
+// [application/vnd.github.flash-preview+json]: https://docs.github.com/rest/overview/api-previews#deployment-statuses
 type ReposCreateDeploymentStatusReqState string
 
 const (
@@ -82701,8 +82753,8 @@ type ReposCreateForAuthenticatedUserReq struct {
 	HasProjects OptBool `json:"has_projects"`
 	// Whether the wiki is enabled.
 	HasWiki OptBool `json:"has_wiki"`
-	// The id of the team that will be granted access to this repository. This is only valid when
-	// creating a repository in an organization.
+	// The id of the team that will be granted access to this repository. This is only valid when creating
+	// a repository in an organization.
 	TeamID OptInt `json:"team_id"`
 	// Whether the repository is initialized with a minimal README.
 	AutoInit OptBool `json:"auto_init"`
@@ -82949,39 +83001,43 @@ type ReposCreateInOrgReq struct {
 	// Can be `public` or `private`. If your organization is associated with an enterprise account using
 	// GitHub Enterprise Cloud or GitHub Enterprise Server 2.20+, `visibility` can also be `internal`.
 	// Note: For GitHub Enterprise Server and GitHub AE, this endpoint will only list repositories
-	// available to all users on the enterprise. For more information, see "[Creating an internal
-	// repository](https://help.github.
-	// com/en/github/creating-cloning-and-archiving-repositories/about-repository-visibility#about-internal-repositories)" in the GitHub Help documentation.
-	// The `visibility` parameter overrides the `private` parameter when you use both parameters with the
-	// `nebula-preview` preview header.
+	// available to all users on the enterprise. For more information, see
+	// "[Creating an internal repository]" in the GitHub Help documentation. The `visibility` parameter
+	// overrides the `private` parameter when you use both parameters with the `nebula-preview` preview
+	// header.
+	//
+	// [Creating an internal repository]: https://help.github.com/en/github/creating-cloning-and-archiving-repositories/about-repository-visibility#about-internal-repositories
 	Visibility OptReposCreateInOrgReqVisibility `json:"visibility"`
 	// Either `true` to enable issues for this repository or `false` to disable them.
 	HasIssues OptBool `json:"has_issues"`
-	// Either `true` to enable projects for this repository or `false` to disable them. **Note:** If
-	// you're creating a repository in an organization that has disabled repository projects, the default
-	// is `false`, and if you pass `true`, the API returns an error.
+	// Either `true` to enable projects for this repository or `false` to disable them. Note: If you're
+	// creating a repository in an organization that has disabled repository projects, the default is
+	// `false`, and if you pass `true`, the API returns an error.
 	HasProjects OptBool `json:"has_projects"`
 	// Either `true` to enable the wiki for this repository or `false` to disable it.
 	HasWiki OptBool `json:"has_wiki"`
 	// Either `true` to make this repo available as a template repository or `false` to prevent it.
 	IsTemplate OptBool `json:"is_template"`
-	// The id of the team that will be granted access to this repository. This is only valid when
-	// creating a repository in an organization.
+	// The id of the team that will be granted access to this repository. This is only valid when creating
+	// a repository in an organization.
 	TeamID OptInt `json:"team_id"`
 	// Pass `true` to create an initial commit with empty README.
 	AutoInit OptBool `json:"auto_init"`
-	// Desired language or platform [.gitignore template](https://github.com/github/gitignore) to apply.
-	// Use the name of the template without the extension. For example, "Haskell".
+	// Desired language or platform [.gitignore template] to apply. Use the name of the template without
+	// the extension. For example, "Haskell".
+	//
+	// [.gitignore template]: https://github.com/github/gitignore
 	GitignoreTemplate OptString `json:"gitignore_template"`
-	// Choose an [open source license template](https://choosealicense.com/) that best suits your needs,
-	// and then use the [license keyword](https://help.github.
-	// com/articles/licensing-a-repository/#searching-github-by-license-type) as the `license_template`
-	// string. For example, "mit" or "mpl-2.0".
+	// Choose an [open source license template] that best suits your needs, and then use the
+	// [license keyword] as the `license_template` string. For example, "mit" or "mpl-2.0".
+	//
+	// [open source license template]: https://choosealicense.com/
+	// [license keyword]: https://help.github.com/articles/licensing-a-repository/#searching-github-by-license-type
 	LicenseTemplate OptString `json:"license_template"`
 	// Either `true` to allow squash-merging pull requests, or `false` to prevent squash-merging.
 	AllowSquashMerge OptBool `json:"allow_squash_merge"`
-	// Either `true` to allow merging pull requests with a merge commit, or `false` to prevent merging
-	// pull requests with merge commits.
+	// Either `true` to allow merging pull requests with a merge commit, or `false` to prevent merging pull
+	// requests with merge commits.
 	AllowMergeCommit OptBool `json:"allow_merge_commit"`
 	// Either `true` to allow rebase-merging pull requests, or `false` to prevent rebase-merging.
 	AllowRebaseMerge OptBool `json:"allow_rebase_merge"`
@@ -83175,11 +83231,12 @@ func (s *ReposCreateInOrgReq) SetDeleteBranchOnMerge(val OptBool) {
 // Can be `public` or `private`. If your organization is associated with an enterprise account using
 // GitHub Enterprise Cloud or GitHub Enterprise Server 2.20+, `visibility` can also be `internal`.
 // Note: For GitHub Enterprise Server and GitHub AE, this endpoint will only list repositories
-// available to all users on the enterprise. For more information, see "[Creating an internal
-// repository](https://help.github.
-// com/en/github/creating-cloning-and-archiving-repositories/about-repository-visibility#about-internal-repositories)" in the GitHub Help documentation.
-// The `visibility` parameter overrides the `private` parameter when you use both parameters with the
-// `nebula-preview` preview header.
+// available to all users on the enterprise. For more information, see
+// "[Creating an internal repository]" in the GitHub Help documentation. The `visibility` parameter
+// overrides the `private` parameter when you use both parameters with the `nebula-preview` preview
+// header.
+//
+// [Creating an internal repository]: https://help.github.com/en/github/creating-cloning-and-archiving-repositories/about-repository-visibility#about-internal-repositories
 type ReposCreateInOrgReqVisibility string
 
 const (
@@ -83256,7 +83313,7 @@ type ReposCreateOrUpdateFileContentsReq struct {
 	Message string `json:"message"`
 	// The new file content, using Base64 encoding.
 	Content string `json:"content"`
-	// **Required if you are updating a file**. The blob SHA of the file being replaced.
+	// Required if you are updating a file. The blob SHA of the file being replaced.
 	Sha OptString `json:"sha"`
 	// The branch name. Default: the repository’s default branch (usually `master`).
 	Branch OptString `json:"branch"`
@@ -83331,8 +83388,8 @@ type ReposCreateOrUpdateFileContentsReqAuthor struct {
 	// The name of the author or committer of the commit. You'll receive a `422` status code if `name` is
 	// omitted.
 	Name string `json:"name"`
-	// The email of the author or committer of the commit. You'll receive a `422` status code if `email`
-	// is omitted.
+	// The email of the author or committer of the commit. You'll receive a `422` status code if `email` is
+	// omitted.
 	Email string    `json:"email"`
 	Date  OptString `json:"date"`
 }
@@ -83372,8 +83429,8 @@ type ReposCreateOrUpdateFileContentsReqCommitter struct {
 	// The name of the author or committer of the commit. You'll receive a `422` status code if `name` is
 	// omitted.
 	Name string `json:"name"`
-	// The email of the author or committer of the commit. You'll receive a `422` status code if `email`
-	// is omitted.
+	// The email of the author or committer of the commit. You'll receive a `422` status code if `email` is
+	// omitted.
 	Email string    `json:"email"`
 	Date  OptString `json:"date"`
 }
@@ -83428,8 +83485,8 @@ func (s *ReposCreatePagesSiteReq) SetSource(val ReposCreatePagesSiteReqSource) {
 type ReposCreatePagesSiteReqSource struct {
 	// The repository branch used to publish your site's source files.
 	Branch string `json:"branch"`
-	// The repository directory that includes the source files for the Pages site. Allowed paths are `/`
-	// or `/docs`. Default: `/`.
+	// The repository directory that includes the source files for the Pages site. Allowed paths are `/` or
+	// `/docs`. Default: `/`.
 	Path OptReposCreatePagesSiteReqSourcePath `json:"path"`
 }
 
@@ -83453,8 +83510,8 @@ func (s *ReposCreatePagesSiteReqSource) SetPath(val OptReposCreatePagesSiteReqSo
 	s.Path = val
 }
 
-// The repository directory that includes the source files for the Pages site. Allowed paths are `/`
-// or `/docs`. Default: `/`.
+// The repository directory that includes the source files for the Pages site. Allowed paths are `/` or
+// `/docs`. Default: `/`.
 type ReposCreatePagesSiteReqSourcePath string
 
 const (
@@ -83511,10 +83568,11 @@ type ReposCreateReleaseReq struct {
 	Draft OptBool `json:"draft"`
 	// `true` to identify the release as a prerelease. `false` to identify the release as a full release.
 	Prerelease OptBool `json:"prerelease"`
-	// If specified, a discussion of the specified category is created and linked to the release. The
-	// value must be a category that already exists in the repository. For more information, see
-	// "[Managing categories for discussions in your repository](https://docs.github.
-	// com/discussions/managing-discussions-for-your-community/managing-categories-for-discussions-in-your-repository).".
+	// If specified, a discussion of the specified category is created and linked to the release. The value
+	// must be a category that already exists in the repository. For more information, see
+	// "[Managing categories for discussions in your repository].".
+	//
+	// [Managing categories for discussions in your repository]: https://docs.github.com/discussions/managing-discussions-for-your-community/managing-categories-for-discussions-in-your-repository
 	DiscussionCategoryName OptString `json:"discussion_category_name"`
 }
 
@@ -83664,11 +83722,13 @@ func (*ReposCreateWebhookNotFound) reposCreateWebhookRes() {}
 type ReposCreateWebhookReq struct {
 	// Use `web` to create a webhook. Default: `web`. This parameter only accepts the value `web`.
 	Name OptString `json:"name"`
-	// Key/value pairs to provide settings for this webhook. [These are defined below](https://docs.
-	// github.com/rest/reference/repos#create-hook-config-params).
+	// Key/value pairs to provide settings for this webhook. [These are defined below].
+	//
+	// [These are defined below]: https://docs.github.com/rest/reference/repos#create-hook-config-params
 	Config OptReposCreateWebhookReqConfig `json:"config"`
-	// Determines what [events](https://docs.github.com/webhooks/event-payloads) the hook is triggered
-	// for.
+	// Determines what [events] the hook is triggered for.
+	//
+	// [events]: https://docs.github.com/webhooks/event-payloads
 	Events []string `json:"events"`
 	// Determines if notifications are sent when the webhook is triggered. Set to `true` to send
 	// notifications.
@@ -83715,8 +83775,9 @@ func (s *ReposCreateWebhookReq) SetActive(val OptBool) {
 	s.Active = val
 }
 
-// Key/value pairs to provide settings for this webhook. [These are defined below](https://docs.
-// github.com/rest/reference/repos#create-hook-config-params).
+// Key/value pairs to provide settings for this webhook. [These are defined below].
+//
+// [These are defined below]: https://docs.github.com/rest/reference/repos#create-hook-config-params
 type ReposCreateWebhookReqConfig struct {
 	URL         OptWebhookConfigURL         `json:"url"`
 	ContentType OptWebhookConfigContentType `json:"content_type"`
@@ -85940,9 +86001,9 @@ func (s *ReposRenameBranchReq) SetNewName(val string) {
 }
 
 type ReposReplaceAllTopicsReq struct {
-	// An array of topics to add to the repository. Pass one or more topics to _replace_ the set of
-	// existing topics. Send an empty array (`[]`) to clear all topics from the repository. **Note:**
-	// Topic `names` cannot contain uppercase letters.
+	// An array of topics to add to the repository. Pass one or more topics to replace the set of existing
+	// topics. Send an empty array (`[]`) to clear all topics from the repository. Note: Topic `names`
+	// cannot contain uppercase letters.
 	Names []string `json:"names"`
 }
 
@@ -86357,31 +86418,32 @@ type ReposUpdateBranchProtectionReq struct {
 	EnforceAdmins NilBool `json:"enforce_admins"`
 	// Require at least one approving review on a pull request, before merging. Set to `null` to disable.
 	RequiredPullRequestReviews NilReposUpdateBranchProtectionReqRequiredPullRequestReviews `json:"required_pull_request_reviews"`
-	// Restrict who can push to the protected branch. User, app, and team `restrictions` are only
-	// available for organization-owned repositories. Set to `null` to disable.
+	// Restrict who can push to the protected branch. User, app, and team `restrictions` are only available
+	// for organization-owned repositories. Set to `null` to disable.
 	Restrictions NilReposUpdateBranchProtectionReqRestrictions `json:"restrictions"`
 	// Enforces a linear commit Git history, which prevents anyone from pushing merge commits to a branch.
-	//  Set to `true` to enforce a linear commit history. Set to `false` to disable a linear commit Git
-	// history. Your repository must allow squash merging or rebase merging before you can enable a
-	// linear commit history. Default: `false`. For more information, see "[Requiring a linear commit
-	// history](https://help.github.
-	// com/github/administering-a-repository/requiring-a-linear-commit-history)" in the GitHub Help
-	// documentation.
+	// Set to `true` to enforce a linear commit history. Set to `false` to disable a linear commit Git
+	// history. Your repository must allow squash merging or rebase merging before you can enable a linear
+	// commit history. Default: `false`. For more information, see "[Requiring a linear commit history]" in
+	// the GitHub Help documentation.
+	//
+	// [Requiring a linear commit history]: https://help.github.com/github/administering-a-repository/requiring-a-linear-commit-history
 	RequiredLinearHistory OptBool `json:"required_linear_history"`
 	// Permits force pushes to the protected branch by anyone with write access to the repository. Set to
-	// `true` to allow force pushes. Set to `false` or `null` to block force pushes. Default: `false`.
-	// For more information, see "[Enabling force pushes to a protected branch](https://help.github.
-	// com/en/github/administering-a-repository/enabling-force-pushes-to-a-protected-branch)" in the
-	// GitHub Help documentation.".
+	// `true` to allow force pushes. Set to `false` or `null` to block force pushes. Default: `false`. For
+	// more information, see "[Enabling force pushes to a protected branch]" in the GitHub Help
+	// documentation.".
+	//
+	// [Enabling force pushes to a protected branch]: https://help.github.com/en/github/administering-a-repository/enabling-force-pushes-to-a-protected-branch
 	AllowForcePushes OptNilBool `json:"allow_force_pushes"`
 	// Allows deletion of the protected branch by anyone with write access to the repository. Set to
 	// `false` to prevent deletion of the protected branch. Default: `false`. For more information, see
-	// "[Enabling force pushes to a protected branch](https://help.github.
-	// com/en/github/administering-a-repository/enabling-force-pushes-to-a-protected-branch)" in the
-	// GitHub Help documentation.
+	// "[Enabling force pushes to a protected branch]" in the GitHub Help documentation.
+	//
+	// [Enabling force pushes to a protected branch]: https://help.github.com/en/github/administering-a-repository/enabling-force-pushes-to-a-protected-branch
 	AllowDeletions OptBool `json:"allow_deletions"`
-	// Requires all conversations on code to be resolved before a pull request can be merged into a
-	// branch that matches this rule. Set to `false` to disable. Default: `false`.
+	// Requires all conversations on code to be resolved before a pull request can be merged into a branch
+	// that matches this rule. Set to `false` to disable. Default: `false`.
 	RequiredConversationResolution OptBool `json:"required_conversation_resolution"`
 }
 
@@ -86474,8 +86536,9 @@ type ReposUpdateBranchProtectionReqRequiredPullRequestReviews struct {
 	// Set to `true` if you want to automatically dismiss approving reviews when someone pushes a new
 	// commit.
 	DismissStaleReviews OptBool `json:"dismiss_stale_reviews"`
-	// Blocks merging pull requests until [code owners](https://help.github.
-	// com/articles/about-code-owners/) review them.
+	// Blocks merging pull requests until [code owners] review them.
+	//
+	// [code owners]: https://help.github.com/articles/about-code-owners/
 	RequireCodeOwnerReviews OptBool `json:"require_code_owner_reviews"`
 	// Specify the number of reviewers required to approve pull requests. Use a number between 1 and 6.
 	RequiredApprovingReviewCount OptInt `json:"required_approving_review_count"`
@@ -86579,8 +86642,8 @@ func (s *ReposUpdateBranchProtectionReqRequiredStatusChecks) SetContexts(val []s
 	s.Contexts = val
 }
 
-// Restrict who can push to the protected branch. User, app, and team `restrictions` are only
-// available for organization-owned repositories. Set to `null` to disable.
+// Restrict who can push to the protected branch. User, app, and team `restrictions` are only available
+// for organization-owned repositories. Set to `null` to disable.
 type ReposUpdateBranchProtectionReqRestrictions struct {
 	// The list of user `login`s with push access.
 	Users []string `json:"users"`
@@ -86731,8 +86794,9 @@ type ReposUpdatePullRequestReviewProtectionReq struct {
 	// Set to `true` if you want to automatically dismiss approving reviews when someone pushes a new
 	// commit.
 	DismissStaleReviews OptBool `json:"dismiss_stale_reviews"`
-	// Blocks merging pull requests until [code owners](https://help.github.
-	// com/articles/about-code-owners/) have reviewed.
+	// Blocks merging pull requests until [code owners] have reviewed.
+	//
+	// [code owners]: https://help.github.com/articles/about-code-owners/
 	RequireCodeOwnerReviews OptBool `json:"require_code_owner_reviews"`
 	// Specifies the number of reviewers required to approve pull requests. Use a number between 1 and 6.
 	RequiredApprovingReviewCount OptInt `json:"required_approving_review_count"`
@@ -86861,11 +86925,12 @@ type ReposUpdateReleaseReq struct {
 	Draft OptBool `json:"draft"`
 	// `true` to identify the release as a prerelease, `false` to identify the release as a full release.
 	Prerelease OptBool `json:"prerelease"`
-	// If specified, a discussion of the specified category is created and linked to the release. The
-	// value must be a category that already exists in the repository. If there is already a discussion
-	// linked to the release, this parameter is ignored. For more information, see "[Managing categories
-	// for discussions in your repository](https://docs.github.
-	// com/discussions/managing-discussions-for-your-community/managing-categories-for-discussions-in-your-repository).".
+	// If specified, a discussion of the specified category is created and linked to the release. The value
+	// must be a category that already exists in the repository. If there is already a discussion linked to
+	// the release, this parameter is ignored. For more information, see
+	// "[Managing categories for discussions in your repository].".
+	//
+	// [Managing categories for discussions in your repository]: https://docs.github.com/discussions/managing-discussions-for-your-community/managing-categories-for-discussions-in-your-repository
 	DiscussionCategoryName OptString `json:"discussion_category_name"`
 }
 
@@ -86946,27 +87011,30 @@ type ReposUpdateReq struct {
 	Description OptString `json:"description"`
 	// A URL with more information about the repository.
 	Homepage OptString `json:"homepage"`
-	// Either `true` to make the repository private or `false` to make it public. Default: `false`.
-	// **Note**: You will get a `422` error if the organization restricts [changing repository
-	// visibility](https://help.github.
-	// com/articles/repository-permission-levels-for-an-organization#changing-the-visibility-of-repositories) to organization owners and a non-owner tries to change the value of private. **Note**: You will get a `422` error if the organization restricts [changing repository visibility](https://help.github.com/articles/repository-permission-levels-for-an-organization#changing-the-visibility-of-repositories) to organization owners and a non-owner tries to change the value of private.
+	// Either `true` to make the repository private or `false` to make it public. Default: `false`. Note:
+	// You will get a `422` error if the organization restricts [changing repository visibility] to
+	// organization owners and a non-owner tries to change the value of private. Note: You will get a `422`
+	// error if the organization restricts [changing repository visibility] to organization owners and a
+	// non-owner tries to change the value of private.
+	//
+	// [changing repository visibility]: https://help.github.com/articles/repository-permission-levels-for-an-organization#changing-the-visibility-of-repositories
 	Private OptBool `json:"private"`
 	// Can be `public` or `private`. If your organization is associated with an enterprise account using
-	// GitHub Enterprise Cloud or GitHub Enterprise Server 2.20+, `visibility` can also be `internal`.
-	// The `visibility` parameter overrides the `private` parameter when you use both along with the
+	// GitHub Enterprise Cloud or GitHub Enterprise Server 2.20+, `visibility` can also be `internal`. The
+	// `visibility` parameter overrides the `private` parameter when you use both along with the
 	// `nebula-preview` preview header.
 	Visibility OptReposUpdateReqVisibility `json:"visibility"`
 	// Specify which security and analysis features to enable or disable. For example, to enable GitHub
-	// Advanced Security, use this data in the body of the PATCH request: `{"security_and_analysis":
-	// {"advanced_security": {"status": "enabled"}}}`. If you have admin permissions for a private
-	// repository covered by an Advanced Security license, you can check which security and analysis
-	// features are currently enabled by using a `GET /repos/{owner}/{repo}` request.
+	// Advanced Security, use this data in the body of the PATCH request:
+	// `{"security_and_analysis": {"advanced_security": {"status": "enabled"}}}`. If you have admin
+	// permissions for a private repository covered by an Advanced Security license, you can check which
+	// security and analysis features are currently enabled by using a `GET /repos/{owner}/{repo}` request.
 	SecurityAndAnalysis OptNilReposUpdateReqSecurityAndAnalysis `json:"security_and_analysis"`
 	// Either `true` to enable issues for this repository or `false` to disable them.
 	HasIssues OptBool `json:"has_issues"`
-	// Either `true` to enable projects for this repository or `false` to disable them. **Note:** If
-	// you're creating a repository in an organization that has disabled repository projects, the default
-	// is `false`, and if you pass `true`, the API returns an error.
+	// Either `true` to enable projects for this repository or `false` to disable them. Note: If you're
+	// creating a repository in an organization that has disabled repository projects, the default is
+	// `false`, and if you pass `true`, the API returns an error.
 	HasProjects OptBool `json:"has_projects"`
 	// Either `true` to enable the wiki for this repository or `false` to disable it.
 	HasWiki OptBool `json:"has_wiki"`
@@ -86976,8 +87044,8 @@ type ReposUpdateReq struct {
 	DefaultBranch OptString `json:"default_branch"`
 	// Either `true` to allow squash-merging pull requests, or `false` to prevent squash-merging.
 	AllowSquashMerge OptBool `json:"allow_squash_merge"`
-	// Either `true` to allow merging pull requests with a merge commit, or `false` to prevent merging
-	// pull requests with merge commits.
+	// Either `true` to allow merging pull requests with a merge commit, or `false` to prevent merging pull
+	// requests with merge commits.
 	AllowMergeCommit OptBool `json:"allow_merge_commit"`
 	// Either `true` to allow rebase-merging pull requests, or `false` to prevent rebase-merging.
 	AllowRebaseMerge OptBool `json:"allow_rebase_merge"`
@@ -86986,7 +87054,7 @@ type ReposUpdateReq struct {
 	// Either `true` to allow automatically deleting head branches when pull requests are merged, or
 	// `false` to prevent automatic deletion.
 	DeleteBranchOnMerge OptBool `json:"delete_branch_on_merge"`
-	// `true` to archive this repository. **Note**: You cannot unarchive repositories through the API.
+	// `true` to archive this repository. Note: You cannot unarchive repositories through the API.
 	Archived OptBool `json:"archived"`
 	// Either `true` to allow private forks, or `false` to prevent private forks.
 	AllowForking OptBool `json:"allow_forking"`
@@ -87173,17 +87241,20 @@ func (s *ReposUpdateReq) SetAllowForking(val OptBool) {
 }
 
 // Specify which security and analysis features to enable or disable. For example, to enable GitHub
-// Advanced Security, use this data in the body of the PATCH request: `{"security_and_analysis":
-// {"advanced_security": {"status": "enabled"}}}`. If you have admin permissions for a private
-// repository covered by an Advanced Security license, you can check which security and analysis
-// features are currently enabled by using a `GET /repos/{owner}/{repo}` request.
+// Advanced Security, use this data in the body of the PATCH request:
+// `{"security_and_analysis": {"advanced_security": {"status": "enabled"}}}`. If you have admin
+// permissions for a private repository covered by an Advanced Security license, you can check which
+// security and analysis features are currently enabled by using a `GET /repos/{owner}/{repo}` request.
 type ReposUpdateReqSecurityAndAnalysis struct {
 	// Use the `status` property to enable or disable GitHub Advanced Security for this repository. For
-	// more information, see "[About GitHub Advanced
-	// Security](/github/getting-started-with-github/learning-about-github/about-github-advanced-security).".
+	// more information, see "[About GitHub Advanced Security].".
+	//
+	// [About GitHub Advanced Security]: /github/getting-started-with-github/learning-about-github/about-github-advanced-security
 	AdvancedSecurity OptReposUpdateReqSecurityAndAnalysisAdvancedSecurity `json:"advanced_security"`
 	// Use the `status` property to enable or disable secret scanning for this repository. For more
-	// information, see "[About secret scanning](/code-security/secret-security/about-secret-scanning).".
+	// information, see "[About secret scanning].".
+	//
+	// [About secret scanning]: /code-security/secret-security/about-secret-scanning
 	SecretScanning OptReposUpdateReqSecurityAndAnalysisSecretScanning `json:"secret_scanning"`
 }
 
@@ -87208,8 +87279,9 @@ func (s *ReposUpdateReqSecurityAndAnalysis) SetSecretScanning(val OptReposUpdate
 }
 
 // Use the `status` property to enable or disable GitHub Advanced Security for this repository. For
-// more information, see "[About GitHub Advanced
-// Security](/github/getting-started-with-github/learning-about-github/about-github-advanced-security).".
+// more information, see "[About GitHub Advanced Security].".
+//
+// [About GitHub Advanced Security]: /github/getting-started-with-github/learning-about-github/about-github-advanced-security
 type ReposUpdateReqSecurityAndAnalysisAdvancedSecurity struct {
 	// Can be `enabled` or `disabled`.
 	Status OptString `json:"status"`
@@ -87226,7 +87298,9 @@ func (s *ReposUpdateReqSecurityAndAnalysisAdvancedSecurity) SetStatus(val OptStr
 }
 
 // Use the `status` property to enable or disable secret scanning for this repository. For more
-// information, see "[About secret scanning](/code-security/secret-security/about-secret-scanning).".
+// information, see "[About secret scanning].".
+//
+// [About secret scanning]: /code-security/secret-security/about-secret-scanning
 type ReposUpdateReqSecurityAndAnalysisSecretScanning struct {
 	// Can be `enabled` or `disabled`.
 	Status OptString `json:"status"`
@@ -87243,8 +87317,8 @@ func (s *ReposUpdateReqSecurityAndAnalysisSecretScanning) SetStatus(val OptStrin
 }
 
 // Can be `public` or `private`. If your organization is associated with an enterprise account using
-// GitHub Enterprise Cloud or GitHub Enterprise Server 2.20+, `visibility` can also be `internal`.
-// The `visibility` parameter overrides the `private` parameter when you use both along with the
+// GitHub Enterprise Cloud or GitHub Enterprise Server 2.20+, `visibility` can also be `internal`. The
+// `visibility` parameter overrides the `private` parameter when you use both along with the
 // `nebula-preview` preview header.
 type ReposUpdateReqVisibility string
 
@@ -87380,11 +87454,13 @@ func (s *ReposUpdateWebhookConfigForRepoReq) SetInsecureSsl(val OptWebhookConfig
 }
 
 type ReposUpdateWebhookReq struct {
-	// Key/value pairs to provide settings for this webhook. [These are defined below](https://docs.
-	// github.com/rest/reference/repos#create-hook-config-params).
+	// Key/value pairs to provide settings for this webhook. [These are defined below].
+	//
+	// [These are defined below]: https://docs.github.com/rest/reference/repos#create-hook-config-params
 	Config OptReposUpdateWebhookReqConfig `json:"config"`
-	// Determines what [events](https://docs.github.com/webhooks/event-payloads) the hook is triggered
-	// for. This replaces the entire array of events.
+	// Determines what [events] the hook is triggered for. This replaces the entire array of events.
+	//
+	// [events]: https://docs.github.com/webhooks/event-payloads
 	Events []string `json:"events"`
 	// Determines a list of events to be added to the list of events that the Hook triggers for.
 	AddEvents []string `json:"add_events"`
@@ -87445,8 +87521,9 @@ func (s *ReposUpdateWebhookReq) SetActive(val OptBool) {
 	s.Active = val
 }
 
-// Key/value pairs to provide settings for this webhook. [These are defined below](https://docs.
-// github.com/rest/reference/repos#create-hook-config-params).
+// Key/value pairs to provide settings for this webhook. [These are defined below].
+//
+// [These are defined below]: https://docs.github.com/rest/reference/repos#create-hook-config-params
 type ReposUpdateWebhookReqConfig struct {
 	URL         WebhookConfigURL            `json:"url"`
 	ContentType OptWebhookConfigContentType `json:"content_type"`
@@ -90774,8 +90851,8 @@ type RunnerGroupsOrg struct {
 	Name       string  `json:"name"`
 	Visibility string  `json:"visibility"`
 	Default    bool    `json:"default"`
-	// Link to the selected repositories resource for this runner group. Not present unless visibility
-	// was set to `selected`.
+	// Link to the selected repositories resource for this runner group. Not present unless visibility was
+	// set to `selected`.
 	SelectedRepositoriesURL           OptString `json:"selected_repositories_url"`
 	RunnersURL                        string    `json:"runners_url"`
 	Inherited                         bool      `json:"inherited"`
@@ -94032,7 +94109,7 @@ func (s *SecretScanningAlert) SetSecret(val OptString) {
 func (*SecretScanningAlert) secretScanningGetAlertRes()    {}
 func (*SecretScanningAlert) secretScanningUpdateAlertRes() {}
 
-// **Required when the `state` is `resolved`.** The reason for resolving the alert. Can be one of
+// Required when the `state` is `resolved`. The reason for resolving the alert. Can be one of
 // `false_positive`, `wont_fix`, `revoked`, or `used_in_tests`.
 // Ref: #/components/schemas/secret-scanning-alert-resolution
 type SecretScanningAlertResolution string
@@ -94298,11 +94375,11 @@ type SelectedActions struct {
 	// Whether GitHub-owned actions are allowed. For example, this includes the actions in the `actions`
 	// organization.
 	GithubOwnedAllowed OptBool `json:"github_owned_allowed"`
-	// Whether actions in GitHub Marketplace from verified creators are allowed. Set to `true` to allow
-	// all GitHub Marketplace actions by verified creators.
+	// Whether actions in GitHub Marketplace from verified creators are allowed. Set to `true` to allow all
+	// GitHub Marketplace actions by verified creators.
 	VerifiedAllowed OptBool `json:"verified_allowed"`
-	// Specifies a list of string-matching patterns to allow specific action(s). Wildcards, tags, and
-	// SHAs are allowed. For example, `monalisa/octocat@*`, `monalisa/octocat@v2`, `monalisa/*`.".
+	// Specifies a list of string-matching patterns to allow specific action(s). Wildcards, tags, and SHAs
+	// are allowed. For example, `monalisa/octocat@*`, `monalisa/octocat@v2`, `monalisa/*`.".
 	PatternsAllowed []string `json:"patterns_allowed"`
 }
 
@@ -95578,8 +95655,8 @@ type TeamDiscussion struct {
 	// The main text of the discussion.
 	Body     string `json:"body"`
 	BodyHTML string `json:"body_html"`
-	// The current version of the body content. If provided, this update operation will be rejected if
-	// the given version does not match the latest version on the server.
+	// The current version of the body content. If provided, this update operation will be rejected if the
+	// given version does not match the latest version on the server.
 	BodyVersion   string      `json:"body_version"`
 	CommentsCount int         `json:"comments_count"`
 	CommentsURL   url.URL     `json:"comments_url"`
@@ -95591,8 +95668,7 @@ type TeamDiscussion struct {
 	Number int `json:"number"`
 	// Whether or not this discussion should be pinned for easy retrieval.
 	Pinned bool `json:"pinned"`
-	// Whether or not this discussion should be restricted to team members and organization
-	// administrators.
+	// Whether or not this discussion should be restricted to team members and organization administrators.
 	Private bool    `json:"private"`
 	TeamURL url.URL `json:"team_url"`
 	// The title of the discussion.
@@ -95789,8 +95865,8 @@ type TeamDiscussionComment struct {
 	// The main text of the comment.
 	Body     string `json:"body"`
 	BodyHTML string `json:"body_html"`
-	// The current version of the body content. If provided, this update operation will be rejected if
-	// the given version does not match the latest version on the server.
+	// The current version of the body content. If provided, this update operation will be rejected if the
+	// given version does not match the latest version on the server.
 	BodyVersion   string      `json:"body_version"`
 	CreatedAt     time.Time   `json:"created_at"`
 	LastEditedAt  NilDateTime `json:"last_edited_at"`
@@ -97815,9 +97891,8 @@ type TeamsAddOrUpdateMembershipForUserInOrgForbidden struct{}
 func (*TeamsAddOrUpdateMembershipForUserInOrgForbidden) teamsAddOrUpdateMembershipForUserInOrgRes() {}
 
 type TeamsAddOrUpdateMembershipForUserInOrgReq struct {
-	// The role that this user should have in the team. Can be one of:
-	// \* `member` - a normal member of the team.
-	// \* `maintainer` - a team maintainer. Able to add/remove other team members, promote other team
+	// The role that this user should have in the team. Can be one of: \* `member` - a normal member of the
+	// team. \* `maintainer` - a team maintainer. Able to add/remove other team members, promote other team
 	// members to team maintainer, and edit the team's name and description.
 	Role OptTeamsAddOrUpdateMembershipForUserInOrgReqRole `json:"role"`
 }
@@ -97832,9 +97907,8 @@ func (s *TeamsAddOrUpdateMembershipForUserInOrgReq) SetRole(val OptTeamsAddOrUpd
 	s.Role = val
 }
 
-// The role that this user should have in the team. Can be one of:
-// \* `member` - a normal member of the team.
-// \* `maintainer` - a team maintainer. Able to add/remove other team members, promote other team
+// The role that this user should have in the team. Can be one of: \* `member` - a normal member of the
+// team. \* `maintainer` - a team maintainer. Able to add/remove other team members, promote other team
 // members to team maintainer, and edit the team's name and description.
 type TeamsAddOrUpdateMembershipForUserInOrgReqRole string
 
@@ -97890,9 +97964,8 @@ func (*TeamsAddOrUpdateMembershipForUserLegacyForbidden) teamsAddOrUpdateMembers
 }
 
 type TeamsAddOrUpdateMembershipForUserLegacyReq struct {
-	// The role that this user should have in the team. Can be one of:
-	// \* `member` - a normal member of the team.
-	// \* `maintainer` - a team maintainer. Able to add/remove other team members, promote other team
+	// The role that this user should have in the team. Can be one of: \* `member` - a normal member of the
+	// team. \* `maintainer` - a team maintainer. Able to add/remove other team members, promote other team
 	// members to team maintainer, and edit the team's name and description.
 	Role OptTeamsAddOrUpdateMembershipForUserLegacyReqRole `json:"role"`
 }
@@ -97907,9 +97980,8 @@ func (s *TeamsAddOrUpdateMembershipForUserLegacyReq) SetRole(val OptTeamsAddOrUp
 	s.Role = val
 }
 
-// The role that this user should have in the team. Can be one of:
-// \* `member` - a normal member of the team.
-// \* `maintainer` - a team maintainer. Able to add/remove other team members, promote other team
+// The role that this user should have in the team. Can be one of: \* `member` - a normal member of the
+// team. \* `maintainer` - a team maintainer. Able to add/remove other team members, promote other team
 // members to team maintainer, and edit the team's name and description.
 type TeamsAddOrUpdateMembershipForUserLegacyReqRole string
 
@@ -97993,14 +98065,15 @@ func (*TeamsAddOrUpdateProjectPermissionsInOrgNoContent) teamsAddOrUpdateProject
 }
 
 type TeamsAddOrUpdateProjectPermissionsInOrgReq struct {
-	// The permission to grant to the team for this project. Can be one of:
-	// \* `read` - team members can read, but not write to or administer this project.
-	// \* `write` - team members can read and write, but not administer this project.
-	// \* `admin` - team members can read, write and administer this project.
+	// The permission to grant to the team for this project. Can be one of: \* `read` - team members can
+	// read, but not write to or administer this project. \* `write` - team members can read and write, but
+	// not administer this project. \* `admin` - team members can read, write and administer this project.
 	// Default: the team's `permission` attribute will be used to determine what permission to grant the
 	// team on this project. Note that, if you choose not to pass any parameters, you'll need to set
-	// `Content-Length` to zero when calling out to this endpoint. For more information, see "[HTTP
-	// verbs](https://docs.github.com/rest/overview/resources-in-the-rest-api#http-verbs).".
+	// `Content-Length` to zero when calling out to this endpoint. For more information, see
+	// "[HTTP verbs].".
+	//
+	// [HTTP verbs]: https://docs.github.com/rest/overview/resources-in-the-rest-api#http-verbs
 	Permission OptTeamsAddOrUpdateProjectPermissionsInOrgReqPermission `json:"permission"`
 }
 
@@ -98014,14 +98087,15 @@ func (s *TeamsAddOrUpdateProjectPermissionsInOrgReq) SetPermission(val OptTeamsA
 	s.Permission = val
 }
 
-// The permission to grant to the team for this project. Can be one of:
-// \* `read` - team members can read, but not write to or administer this project.
-// \* `write` - team members can read and write, but not administer this project.
-// \* `admin` - team members can read, write and administer this project.
+// The permission to grant to the team for this project. Can be one of: \* `read` - team members can
+// read, but not write to or administer this project. \* `write` - team members can read and write, but
+// not administer this project. \* `admin` - team members can read, write and administer this project.
 // Default: the team's `permission` attribute will be used to determine what permission to grant the
 // team on this project. Note that, if you choose not to pass any parameters, you'll need to set
-// `Content-Length` to zero when calling out to this endpoint. For more information, see "[HTTP
-// verbs](https://docs.github.com/rest/overview/resources-in-the-rest-api#http-verbs).".
+// `Content-Length` to zero when calling out to this endpoint. For more information, see
+// "[HTTP verbs].".
+//
+// [HTTP verbs]: https://docs.github.com/rest/overview/resources-in-the-rest-api#http-verbs
 type TeamsAddOrUpdateProjectPermissionsInOrgReqPermission string
 
 const (
@@ -98105,14 +98179,15 @@ func (*TeamsAddOrUpdateProjectPermissionsLegacyNoContent) teamsAddOrUpdateProjec
 }
 
 type TeamsAddOrUpdateProjectPermissionsLegacyReq struct {
-	// The permission to grant to the team for this project. Can be one of:
-	// \* `read` - team members can read, but not write to or administer this project.
-	// \* `write` - team members can read and write, but not administer this project.
-	// \* `admin` - team members can read, write and administer this project.
+	// The permission to grant to the team for this project. Can be one of: \* `read` - team members can
+	// read, but not write to or administer this project. \* `write` - team members can read and write, but
+	// not administer this project. \* `admin` - team members can read, write and administer this project.
 	// Default: the team's `permission` attribute will be used to determine what permission to grant the
 	// team on this project. Note that, if you choose not to pass any parameters, you'll need to set
-	// `Content-Length` to zero when calling out to this endpoint. For more information, see "[HTTP
-	// verbs](https://docs.github.com/rest/overview/resources-in-the-rest-api#http-verbs).".
+	// `Content-Length` to zero when calling out to this endpoint. For more information, see
+	// "[HTTP verbs].".
+	//
+	// [HTTP verbs]: https://docs.github.com/rest/overview/resources-in-the-rest-api#http-verbs
 	Permission OptTeamsAddOrUpdateProjectPermissionsLegacyReqPermission `json:"permission"`
 }
 
@@ -98126,14 +98201,15 @@ func (s *TeamsAddOrUpdateProjectPermissionsLegacyReq) SetPermission(val OptTeams
 	s.Permission = val
 }
 
-// The permission to grant to the team for this project. Can be one of:
-// \* `read` - team members can read, but not write to or administer this project.
-// \* `write` - team members can read and write, but not administer this project.
-// \* `admin` - team members can read, write and administer this project.
+// The permission to grant to the team for this project. Can be one of: \* `read` - team members can
+// read, but not write to or administer this project. \* `write` - team members can read and write, but
+// not administer this project. \* `admin` - team members can read, write and administer this project.
 // Default: the team's `permission` attribute will be used to determine what permission to grant the
 // team on this project. Note that, if you choose not to pass any parameters, you'll need to set
-// `Content-Length` to zero when calling out to this endpoint. For more information, see "[HTTP
-// verbs](https://docs.github.com/rest/overview/resources-in-the-rest-api#http-verbs).".
+// `Content-Length` to zero when calling out to this endpoint. For more information, see
+// "[HTTP verbs].".
+//
+// [HTTP verbs]: https://docs.github.com/rest/overview/resources-in-the-rest-api#http-verbs
 type TeamsAddOrUpdateProjectPermissionsLegacyReqPermission string
 
 const (
@@ -98186,15 +98262,15 @@ func (s *TeamsAddOrUpdateProjectPermissionsLegacyReqPermission) UnmarshalText(da
 type TeamsAddOrUpdateRepoPermissionsInOrgNoContent struct{}
 
 type TeamsAddOrUpdateRepoPermissionsInOrgReq struct {
-	// The permission to grant the team on this repository. Can be one of:
-	// \* `pull` - team members can pull, but not push to or administer this repository.
-	// \* `push` - team members can pull and push, but not administer this repository.
-	// \* `admin` - team members can pull, push and administer this repository.
-	// \* `maintain` - team members can manage the repository without access to sensitive or destructive
-	// actions. Recommended for project managers. Only applies to repositories owned by organizations.
-	// \* `triage` - team members can proactively manage issues and pull requests without write access.
-	// Recommended for contributors who triage a repository. Only applies to repositories owned by
-	// organizations.
+	// The permission to grant the team on this repository. Can be one of: \* `pull` - team members can
+	// pull, but not push to or administer this repository. \* `push` - team members can pull and push, but
+	// not administer this repository. \* `admin` - team members can pull, push and administer this
+	// repository. \* `maintain` - team members can manage the repository without access to sensitive or
+	// destructive actions. Recommended for project managers. Only applies to repositories owned by
+	// organizations. \* `triage` - team members can proactively manage issues and pull requests without
+	// write access. Recommended for contributors who triage a repository. Only applies to repositories
+	// owned by organizations.
+	//
 	// If no permission is specified, the team's `permission` attribute will be used to determine what
 	// permission to grant the team on this repository.
 	Permission OptTeamsAddOrUpdateRepoPermissionsInOrgReqPermission `json:"permission"`
@@ -98210,15 +98286,15 @@ func (s *TeamsAddOrUpdateRepoPermissionsInOrgReq) SetPermission(val OptTeamsAddO
 	s.Permission = val
 }
 
-// The permission to grant the team on this repository. Can be one of:
-// \* `pull` - team members can pull, but not push to or administer this repository.
-// \* `push` - team members can pull and push, but not administer this repository.
-// \* `admin` - team members can pull, push and administer this repository.
-// \* `maintain` - team members can manage the repository without access to sensitive or destructive
-// actions. Recommended for project managers. Only applies to repositories owned by organizations.
-// \* `triage` - team members can proactively manage issues and pull requests without write access.
-// Recommended for contributors who triage a repository. Only applies to repositories owned by
-// organizations.
+// The permission to grant the team on this repository. Can be one of: \* `pull` - team members can
+// pull, but not push to or administer this repository. \* `push` - team members can pull and push, but
+// not administer this repository. \* `admin` - team members can pull, push and administer this
+// repository. \* `maintain` - team members can manage the repository without access to sensitive or
+// destructive actions. Recommended for project managers. Only applies to repositories owned by
+// organizations. \* `triage` - team members can proactively manage issues and pull requests without
+// write access. Recommended for contributors who triage a repository. Only applies to repositories
+// owned by organizations.
+//
 // If no permission is specified, the team's `permission` attribute will be used to determine what
 // permission to grant the team on this repository.
 type TeamsAddOrUpdateRepoPermissionsInOrgReqPermission string
@@ -98289,10 +98365,11 @@ type TeamsAddOrUpdateRepoPermissionsLegacyNoContent struct{}
 func (*TeamsAddOrUpdateRepoPermissionsLegacyNoContent) teamsAddOrUpdateRepoPermissionsLegacyRes() {}
 
 type TeamsAddOrUpdateRepoPermissionsLegacyReq struct {
-	// The permission to grant the team on this repository. Can be one of:
-	// \* `pull` - team members can pull, but not push to or administer this repository.
-	// \* `push` - team members can pull and push, but not administer this repository.
-	// \* `admin` - team members can pull, push and administer this repository.
+	// The permission to grant the team on this repository. Can be one of: \* `pull` - team members can
+	// pull, but not push to or administer this repository. \* `push` - team members can pull and push, but
+	// not administer this repository. \* `admin` - team members can pull, push and administer this
+	// repository.
+	//
 	// If no permission is specified, the team's `permission` attribute will be used to determine what
 	// permission to grant the team on this repository.
 	Permission OptTeamsAddOrUpdateRepoPermissionsLegacyReqPermission `json:"permission"`
@@ -98308,10 +98385,11 @@ func (s *TeamsAddOrUpdateRepoPermissionsLegacyReq) SetPermission(val OptTeamsAdd
 	s.Permission = val
 }
 
-// The permission to grant the team on this repository. Can be one of:
-// \* `pull` - team members can pull, but not push to or administer this repository.
-// \* `push` - team members can pull and push, but not administer this repository.
-// \* `admin` - team members can pull, push and administer this repository.
+// The permission to grant the team on this repository. Can be one of: \* `pull` - team members can
+// pull, but not push to or administer this repository. \* `push` - team members can pull and push, but
+// not administer this repository. \* `admin` - team members can pull, push and administer this
+// repository.
+//
 // If no permission is specified, the team's `permission` attribute will be used to determine what
 // permission to grant the team on this repository.
 type TeamsAddOrUpdateRepoPermissionsLegacyReqPermission string
@@ -98665,20 +98743,15 @@ type TeamsCreateReq struct {
 	Maintainers []string `json:"maintainers"`
 	// The full name (e.g., "organization-name/repository-name") of repositories to add the team to.
 	RepoNames []string `json:"repo_names"`
-	// The level of privacy this team should have. The options are:
-	// **For a non-nested team:**
-	// \* `secret` - only visible to organization owners and members of this team.
-	// \* `closed` - visible to all members of this organization.
-	// Default: `secret`
-	// **For a parent or child team:**
-	// \* `closed` - visible to all members of this organization.
-	// Default for child team: `closed`.
+	// The level of privacy this team should have. The options are: For a non-nested team: \* `secret` -
+	// only visible to organization owners and members of this team. \* `closed` - visible to all members
+	// of this organization. Default: `secret` For a parent or child team: \* `closed` - visible to all
+	// members of this organization. Default for child team: `closed`.
 	Privacy OptTeamsCreateReqPrivacy `json:"privacy"`
-	// **Deprecated**. The permission that new repositories will be added to the team with when none is
-	// specified. Can be one of:
-	// \* `pull` - team members can pull, but not push to or administer newly-added repositories.
-	// \* `push` - team members can pull and push, but not administer newly-added repositories.
-	// \* `admin` - team members can pull, push and administer newly-added repositories.
+	// Deprecated. The permission that new repositories will be added to the team with when none is
+	// specified. Can be one of: \* `pull` - team members can pull, but not push to or administer
+	// newly-added repositories. \* `push` - team members can pull and push, but not administer newly-added
+	// repositories. \* `admin` - team members can pull, push and administer newly-added repositories.
 	Permission OptTeamsCreateReqPermission `json:"permission"`
 	// The ID of a team to set as the parent team.
 	ParentTeamID OptInt `json:"parent_team_id"`
@@ -98754,11 +98827,10 @@ func (s *TeamsCreateReq) SetParentTeamID(val OptInt) {
 	s.ParentTeamID = val
 }
 
-// **Deprecated**. The permission that new repositories will be added to the team with when none is
-// specified. Can be one of:
-// \* `pull` - team members can pull, but not push to or administer newly-added repositories.
-// \* `push` - team members can pull and push, but not administer newly-added repositories.
-// \* `admin` - team members can pull, push and administer newly-added repositories.
+// Deprecated. The permission that new repositories will be added to the team with when none is
+// specified. Can be one of: \* `pull` - team members can pull, but not push to or administer
+// newly-added repositories. \* `push` - team members can pull and push, but not administer newly-added
+// repositories. \* `admin` - team members can pull, push and administer newly-added repositories.
 type TeamsCreateReqPermission string
 
 const (
@@ -98807,14 +98879,10 @@ func (s *TeamsCreateReqPermission) UnmarshalText(data []byte) error {
 	}
 }
 
-// The level of privacy this team should have. The options are:
-// **For a non-nested team:**
-// \* `secret` - only visible to organization owners and members of this team.
-// \* `closed` - visible to all members of this organization.
-// Default: `secret`
-// **For a parent or child team:**
-// \* `closed` - visible to all members of this organization.
-// Default for child team: `closed`.
+// The level of privacy this team should have. The options are: For a non-nested team: \* `secret` -
+// only visible to organization owners and members of this team. \* `closed` - visible to all members
+// of this organization. Default: `secret` For a parent or child team: \* `closed` - visible to all
+// members of this organization. Default for child team: `closed`.
 type TeamsCreateReqPrivacy string
 
 const (
@@ -99574,18 +99642,14 @@ type TeamsUpdateInOrgReq struct {
 	Description OptString `json:"description"`
 	// The level of privacy this team should have. Editing teams without specifying this parameter leaves
 	// `privacy` intact. When a team is nested, the `privacy` for parent teams cannot be `secret`. The
-	// options are:
-	// **For a non-nested team:**
-	// \* `secret` - only visible to organization owners and members of this team.
-	// \* `closed` - visible to all members of this organization.
-	// **For a parent or child team:**
-	// \* `closed` - visible to all members of this organization.
+	// options are: For a non-nested team: \* `secret` - only visible to organization owners and members of
+	// this team. \* `closed` - visible to all members of this organization. For a parent or child team: \*
+	// `closed` - visible to all members of this organization.
 	Privacy OptTeamsUpdateInOrgReqPrivacy `json:"privacy"`
-	// **Deprecated**. The permission that new repositories will be added to the team with when none is
-	// specified. Can be one of:
-	// \* `pull` - team members can pull, but not push to or administer newly-added repositories.
-	// \* `push` - team members can pull and push, but not administer newly-added repositories.
-	// \* `admin` - team members can pull, push and administer newly-added repositories.
+	// Deprecated. The permission that new repositories will be added to the team with when none is
+	// specified. Can be one of: \* `pull` - team members can pull, but not push to or administer
+	// newly-added repositories. \* `push` - team members can pull and push, but not administer newly-added
+	// repositories. \* `admin` - team members can pull, push and administer newly-added repositories.
 	Permission OptTeamsUpdateInOrgReqPermission `json:"permission"`
 	// The ID of a team to set as the parent team.
 	ParentTeamID OptNilInt `json:"parent_team_id"`
@@ -99641,11 +99705,10 @@ func (s *TeamsUpdateInOrgReq) SetParentTeamID(val OptNilInt) {
 	s.ParentTeamID = val
 }
 
-// **Deprecated**. The permission that new repositories will be added to the team with when none is
-// specified. Can be one of:
-// \* `pull` - team members can pull, but not push to or administer newly-added repositories.
-// \* `push` - team members can pull and push, but not administer newly-added repositories.
-// \* `admin` - team members can pull, push and administer newly-added repositories.
+// Deprecated. The permission that new repositories will be added to the team with when none is
+// specified. Can be one of: \* `pull` - team members can pull, but not push to or administer
+// newly-added repositories. \* `push` - team members can pull and push, but not administer newly-added
+// repositories. \* `admin` - team members can pull, push and administer newly-added repositories.
 type TeamsUpdateInOrgReqPermission string
 
 const (
@@ -99696,12 +99759,9 @@ func (s *TeamsUpdateInOrgReqPermission) UnmarshalText(data []byte) error {
 
 // The level of privacy this team should have. Editing teams without specifying this parameter leaves
 // `privacy` intact. When a team is nested, the `privacy` for parent teams cannot be `secret`. The
-// options are:
-// **For a non-nested team:**
-// \* `secret` - only visible to organization owners and members of this team.
-// \* `closed` - visible to all members of this organization.
-// **For a parent or child team:**
-// \* `closed` - visible to all members of this organization.
+// options are: For a non-nested team: \* `secret` - only visible to organization owners and members of
+// this team. \* `closed` - visible to all members of this organization. For a parent or child team: \*
+// `closed` - visible to all members of this organization.
 type TeamsUpdateInOrgReqPrivacy string
 
 const (
@@ -99765,18 +99825,14 @@ type TeamsUpdateLegacyReq struct {
 	// The description of the team.
 	Description OptString `json:"description"`
 	// The level of privacy this team should have. Editing teams without specifying this parameter leaves
-	// `privacy` intact. The options are:
-	// **For a non-nested team:**
-	// \* `secret` - only visible to organization owners and members of this team.
-	// \* `closed` - visible to all members of this organization.
-	// **For a parent or child team:**
-	// \* `closed` - visible to all members of this organization.
+	// `privacy` intact. The options are: For a non-nested team: \* `secret` - only visible to organization
+	// owners and members of this team. \* `closed` - visible to all members of this organization. For a
+	// parent or child team: \* `closed` - visible to all members of this organization.
 	Privacy OptTeamsUpdateLegacyReqPrivacy `json:"privacy"`
-	// **Deprecated**. The permission that new repositories will be added to the team with when none is
-	// specified. Can be one of:
-	// \* `pull` - team members can pull, but not push to or administer newly-added repositories.
-	// \* `push` - team members can pull and push, but not administer newly-added repositories.
-	// \* `admin` - team members can pull, push and administer newly-added repositories.
+	// Deprecated. The permission that new repositories will be added to the team with when none is
+	// specified. Can be one of: \* `pull` - team members can pull, but not push to or administer
+	// newly-added repositories. \* `push` - team members can pull and push, but not administer newly-added
+	// repositories. \* `admin` - team members can pull, push and administer newly-added repositories.
 	Permission OptTeamsUpdateLegacyReqPermission `json:"permission"`
 	// The ID of a team to set as the parent team.
 	ParentTeamID OptNilInt `json:"parent_team_id"`
@@ -99832,11 +99888,10 @@ func (s *TeamsUpdateLegacyReq) SetParentTeamID(val OptNilInt) {
 	s.ParentTeamID = val
 }
 
-// **Deprecated**. The permission that new repositories will be added to the team with when none is
-// specified. Can be one of:
-// \* `pull` - team members can pull, but not push to or administer newly-added repositories.
-// \* `push` - team members can pull and push, but not administer newly-added repositories.
-// \* `admin` - team members can pull, push and administer newly-added repositories.
+// Deprecated. The permission that new repositories will be added to the team with when none is
+// specified. Can be one of: \* `pull` - team members can pull, but not push to or administer
+// newly-added repositories. \* `push` - team members can pull and push, but not administer newly-added
+// repositories. \* `admin` - team members can pull, push and administer newly-added repositories.
 type TeamsUpdateLegacyReqPermission string
 
 const (
@@ -99886,12 +99941,9 @@ func (s *TeamsUpdateLegacyReqPermission) UnmarshalText(data []byte) error {
 }
 
 // The level of privacy this team should have. Editing teams without specifying this parameter leaves
-// `privacy` intact. The options are:
-// **For a non-nested team:**
-// \* `secret` - only visible to organization owners and members of this team.
-// \* `closed` - visible to all members of this organization.
-// **For a parent or child team:**
-// \* `closed` - visible to all members of this organization.
+// `privacy` intact. The options are: For a non-nested team: \* `secret` - only visible to organization
+// owners and members of this team. \* `closed` - visible to all members of this organization. For a
+// parent or child team: \* `closed` - visible to all members of this organization.
 type TeamsUpdateLegacyReqPrivacy string
 
 const (
@@ -101113,8 +101165,8 @@ func NewStringUsersAddEmailForAuthenticatedReq(v string) UsersAddEmailForAuthent
 
 type UsersAddEmailForAuthenticatedReq0 struct {
 	// Adds one or more email addresses to your GitHub account. Must contain at least one email address.
-	// **Note:** Alternatively, you can pass a single email address or an `array` of emails addresses
-	// directly, but we recommend that you pass an object using the `emails` key.
+	// Note: Alternatively, you can pass a single email address or an `array` of emails addresses directly,
+	// but we recommend that you pass an object using the `emails` key.
 	Emails []string `json:"emails"`
 }
 
@@ -101377,8 +101429,8 @@ func NewStringUsersDeleteEmailForAuthenticatedReq(v string) UsersDeleteEmailForA
 }
 
 // Deletes one or more email addresses from your GitHub account. Must contain at least one email
-// address. **Note:** Alternatively, you can pass a single email address or an `array` of emails
-// addresses directly, but we recommend that you pass an object using the `emails` key.
+// address. Note: Alternatively, you can pass a single email address or an `array` of emails addresses
+// directly, but we recommend that you pass an object using the `emails` key.
 type UsersDeleteEmailForAuthenticatedReq0 struct {
 	// Email addresses associated with the GitHub user account.
 	Emails []string `json:"emails"`

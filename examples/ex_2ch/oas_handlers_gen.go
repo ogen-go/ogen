@@ -323,10 +323,8 @@ func (s *Server) handleAPICaptcha2chcaptchaShowGetRequest(args [0]string, argsEs
 // handleAPICaptchaAppIDPublicKeyGetRequest handles GET /api/captcha/app/id/{public_key} operation.
 //
 // Полученный id вам нужно отправить вместе с постом как
-// app_response_id.
-// При этом нужно отправить app_response = sha256(app_response_id + '|' +
-// private key).
-// Срок жизни id: 180 секунд.
+// app_response_id. При этом нужно отправить app_response = sha256(app_response_id
+// + '|' + private key). Срок жизни id: 180 секунд.
 //
 // GET /api/captcha/app/id/{public_key}
 func (s *Server) handleAPICaptchaAppIDPublicKeyGetRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {

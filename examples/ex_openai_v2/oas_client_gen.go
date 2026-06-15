@@ -256,30 +256,38 @@ func trimTrailingSlashes(u *url.URL) {
 type Invoker interface {
 	// CreateChatCompletion invokes createChatCompletion operation.
 	//
-	// **Starting a new project?** We recommend trying [Responses](/docs/api-reference/responses)
-	// to take advantage of the latest OpenAI platform features. Compare
-	// [Chat Completions with Responses](/docs/guides/responses-vs-chat-completions?api-mode=responses).
-	// ---
-	// Creates a model response for the given chat conversation. Learn more in the
-	// [text generation](/docs/guides/text-generation), [vision](/docs/guides/vision),
-	// and [audio](/docs/guides/audio) guides.
-	// Parameter support can differ depending on the model used to generate the
-	// response, particularly for newer reasoning models. Parameters that are only
-	// supported for reasoning models are noted below. For the current state of
-	// unsupported parameters in reasoning models,
-	// [refer to the reasoning guide](/docs/guides/reasoning).
+	// Starting a new project? We recommend trying [Responses] to take advantage of the latest OpenAI
+	// platform features. Compare [Chat Completions with Responses].
+	//
+	// Creates a model response for the given chat conversation. Learn more in the [text generation],
+	// [vision], and [audio] guides.
+	//
+	// Parameter support can differ depending on the model used to generate the response, particularly for
+	// newer reasoning models. Parameters that are only supported for reasoning models are noted below. For
+	// the current state of unsupported parameters in reasoning models, [refer to the reasoning guide].
+	//
+	// [Responses]: /docs/api-reference/responses
+	// [Chat Completions with Responses]: /docs/guides/responses-vs-chat-completions?api-mode=responses
+	// [text generation]: /docs/guides/text-generation
+	// [vision]: /docs/guides/vision
+	// [audio]: /docs/guides/audio
+	// [refer to the reasoning guide]: /docs/guides/reasoning
 	//
 	// POST /chat/completions
 	CreateChatCompletion(ctx context.Context, request *CreateChatCompletionRequest, options ...RequestOption) (CreateChatCompletionRes, error)
 	// CreateResponse invokes createResponse operation.
 	//
-	// Creates a model response. Provide [text](/docs/guides/text) or
-	// [image](/docs/guides/images) inputs to generate [text](/docs/guides/text)
-	// or [JSON](/docs/guides/structured-outputs) outputs. Have the model call
-	// your own [custom code](/docs/guides/function-calling) or use built-in
-	// [tools](/docs/guides/tools) like [web search](/docs/guides/tools-web-search)
-	// or [file search](/docs/guides/tools-file-search) to use your own data
-	// as input for the model's response.
+	// Creates a model response. Provide [text] or [image] inputs to generate [text] or [JSON] outputs.
+	// Have the model call your own [custom code] or use built-in [tools] like [web search] or
+	// [file search] to use your own data as input for the model's response.
+	//
+	// [text]: /docs/guides/text
+	// [image]: /docs/guides/images
+	// [JSON]: /docs/guides/structured-outputs
+	// [custom code]: /docs/guides/function-calling
+	// [tools]: /docs/guides/tools
+	// [web search]: /docs/guides/tools-web-search
+	// [file search]: /docs/guides/tools-file-search
 	//
 	// POST /responses
 	CreateResponse(ctx context.Context, request *CreateResponse, options ...RequestOption) (CreateResponseRes, error)
@@ -330,18 +338,22 @@ func (c *Client) onResponse(ctx context.Context, resp *http.Response) error {
 
 // CreateChatCompletion invokes createChatCompletion operation.
 //
-// **Starting a new project?** We recommend trying [Responses](/docs/api-reference/responses)
-// to take advantage of the latest OpenAI platform features. Compare
-// [Chat Completions with Responses](/docs/guides/responses-vs-chat-completions?api-mode=responses).
-// ---
-// Creates a model response for the given chat conversation. Learn more in the
-// [text generation](/docs/guides/text-generation), [vision](/docs/guides/vision),
-// and [audio](/docs/guides/audio) guides.
-// Parameter support can differ depending on the model used to generate the
-// response, particularly for newer reasoning models. Parameters that are only
-// supported for reasoning models are noted below. For the current state of
-// unsupported parameters in reasoning models,
-// [refer to the reasoning guide](/docs/guides/reasoning).
+// Starting a new project? We recommend trying [Responses] to take advantage of the latest OpenAI
+// platform features. Compare [Chat Completions with Responses].
+//
+// Creates a model response for the given chat conversation. Learn more in the [text generation],
+// [vision], and [audio] guides.
+//
+// Parameter support can differ depending on the model used to generate the response, particularly for
+// newer reasoning models. Parameters that are only supported for reasoning models are noted below. For
+// the current state of unsupported parameters in reasoning models, [refer to the reasoning guide].
+//
+// [Responses]: /docs/api-reference/responses
+// [Chat Completions with Responses]: /docs/guides/responses-vs-chat-completions?api-mode=responses
+// [text generation]: /docs/guides/text-generation
+// [vision]: /docs/guides/vision
+// [audio]: /docs/guides/audio
+// [refer to the reasoning guide]: /docs/guides/reasoning
 //
 // POST /chat/completions
 func (c *Client) CreateChatCompletion(ctx context.Context, request *CreateChatCompletionRequest, options ...RequestOption) (CreateChatCompletionRes, error) {
@@ -558,13 +570,17 @@ func (c *Client) sendCreateChatCompletion(ctx context.Context, request *CreateCh
 
 // CreateResponse invokes createResponse operation.
 //
-// Creates a model response. Provide [text](/docs/guides/text) or
-// [image](/docs/guides/images) inputs to generate [text](/docs/guides/text)
-// or [JSON](/docs/guides/structured-outputs) outputs. Have the model call
-// your own [custom code](/docs/guides/function-calling) or use built-in
-// [tools](/docs/guides/tools) like [web search](/docs/guides/tools-web-search)
-// or [file search](/docs/guides/tools-file-search) to use your own data
-// as input for the model's response.
+// Creates a model response. Provide [text] or [image] inputs to generate [text] or [JSON] outputs.
+// Have the model call your own [custom code] or use built-in [tools] like [web search] or
+// [file search] to use your own data as input for the model's response.
+//
+// [text]: /docs/guides/text
+// [image]: /docs/guides/images
+// [JSON]: /docs/guides/structured-outputs
+// [custom code]: /docs/guides/function-calling
+// [tools]: /docs/guides/tools
+// [web search]: /docs/guides/tools-web-search
+// [file search]: /docs/guides/tools-file-search
 //
 // POST /responses
 func (c *Client) CreateResponse(ctx context.Context, request *CreateResponse, options ...RequestOption) (CreateResponseRes, error) {

@@ -2463,15 +2463,15 @@ type Handler interface {
 	WatchApiregistrationV1APIService(ctx context.Context, params WatchApiregistrationV1APIServiceParams) (WatchApiregistrationV1APIServiceRes, error)
 	// WatchApiregistrationV1APIServiceList implements watchApiregistrationV1APIServiceList operation.
 	//
-	// Watch individual changes to a list of APIService. deprecated: use the 'watch' parameter with a
-	// list operation instead.
+	// Watch individual changes to a list of APIService. deprecated: use the 'watch' parameter with a list
+	// operation instead.
 	//
 	// GET /apis/apiregistration.k8s.io/v1/watch/apiservices
 	WatchApiregistrationV1APIServiceList(ctx context.Context, params WatchApiregistrationV1APIServiceListParams) (WatchApiregistrationV1APIServiceListRes, error)
 	// WatchAppsV1ControllerRevisionListForAllNamespaces implements watchAppsV1ControllerRevisionListForAllNamespaces operation.
 	//
-	// Watch individual changes to a list of ControllerRevision. deprecated: use the 'watch' parameter
-	// with a list operation instead.
+	// Watch individual changes to a list of ControllerRevision. deprecated: use the 'watch' parameter with
+	// a list operation instead.
 	//
 	// GET /apis/apps/v1/watch/controllerrevisions
 	WatchAppsV1ControllerRevisionListForAllNamespaces(ctx context.Context, params WatchAppsV1ControllerRevisionListForAllNamespacesParams) (WatchAppsV1ControllerRevisionListForAllNamespacesRes, error)
@@ -2484,22 +2484,22 @@ type Handler interface {
 	WatchAppsV1DaemonSetListForAllNamespaces(ctx context.Context, params WatchAppsV1DaemonSetListForAllNamespacesParams) (WatchAppsV1DaemonSetListForAllNamespacesRes, error)
 	// WatchAppsV1DeploymentListForAllNamespaces implements watchAppsV1DeploymentListForAllNamespaces operation.
 	//
-	// Watch individual changes to a list of Deployment. deprecated: use the 'watch' parameter with a
-	// list operation instead.
+	// Watch individual changes to a list of Deployment. deprecated: use the 'watch' parameter with a list
+	// operation instead.
 	//
 	// GET /apis/apps/v1/watch/deployments
 	WatchAppsV1DeploymentListForAllNamespaces(ctx context.Context, params WatchAppsV1DeploymentListForAllNamespacesParams) (WatchAppsV1DeploymentListForAllNamespacesRes, error)
 	// WatchAppsV1NamespacedControllerRevision implements watchAppsV1NamespacedControllerRevision operation.
 	//
-	// Watch changes to an object of kind ControllerRevision. deprecated: use the 'watch' parameter with
-	// a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	// Watch changes to an object of kind ControllerRevision. deprecated: use the 'watch' parameter with a
+	// list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 	//
 	// GET /apis/apps/v1/watch/namespaces/{namespace}/controllerrevisions/{name}
 	WatchAppsV1NamespacedControllerRevision(ctx context.Context, params WatchAppsV1NamespacedControllerRevisionParams) (WatchAppsV1NamespacedControllerRevisionRes, error)
 	// WatchAppsV1NamespacedControllerRevisionList implements watchAppsV1NamespacedControllerRevisionList operation.
 	//
-	// Watch individual changes to a list of ControllerRevision. deprecated: use the 'watch' parameter
-	// with a list operation instead.
+	// Watch individual changes to a list of ControllerRevision. deprecated: use the 'watch' parameter with
+	// a list operation instead.
 	//
 	// GET /apis/apps/v1/watch/namespaces/{namespace}/controllerrevisions
 	WatchAppsV1NamespacedControllerRevisionList(ctx context.Context, params WatchAppsV1NamespacedControllerRevisionListParams) (WatchAppsV1NamespacedControllerRevisionListRes, error)
@@ -2526,8 +2526,8 @@ type Handler interface {
 	WatchAppsV1NamespacedDeployment(ctx context.Context, params WatchAppsV1NamespacedDeploymentParams) (WatchAppsV1NamespacedDeploymentRes, error)
 	// WatchAppsV1NamespacedDeploymentList implements watchAppsV1NamespacedDeploymentList operation.
 	//
-	// Watch individual changes to a list of Deployment. deprecated: use the 'watch' parameter with a
-	// list operation instead.
+	// Watch individual changes to a list of Deployment. deprecated: use the 'watch' parameter with a list
+	// operation instead.
 	//
 	// GET /apis/apps/v1/watch/namespaces/{namespace}/deployments
 	WatchAppsV1NamespacedDeploymentList(ctx context.Context, params WatchAppsV1NamespacedDeploymentListParams) (WatchAppsV1NamespacedDeploymentListRes, error)
@@ -2540,8 +2540,8 @@ type Handler interface {
 	WatchAppsV1NamespacedReplicaSet(ctx context.Context, params WatchAppsV1NamespacedReplicaSetParams) (WatchAppsV1NamespacedReplicaSetRes, error)
 	// WatchAppsV1NamespacedReplicaSetList implements watchAppsV1NamespacedReplicaSetList operation.
 	//
-	// Watch individual changes to a list of ReplicaSet. deprecated: use the 'watch' parameter with a
-	// list operation instead.
+	// Watch individual changes to a list of ReplicaSet. deprecated: use the 'watch' parameter with a list
+	// operation instead.
 	//
 	// GET /apis/apps/v1/watch/namespaces/{namespace}/replicasets
 	WatchAppsV1NamespacedReplicaSetList(ctx context.Context, params WatchAppsV1NamespacedReplicaSetListParams) (WatchAppsV1NamespacedReplicaSetListRes, error)
@@ -2554,29 +2554,29 @@ type Handler interface {
 	WatchAppsV1NamespacedStatefulSet(ctx context.Context, params WatchAppsV1NamespacedStatefulSetParams) (WatchAppsV1NamespacedStatefulSetRes, error)
 	// WatchAppsV1NamespacedStatefulSetList implements watchAppsV1NamespacedStatefulSetList operation.
 	//
-	// Watch individual changes to a list of StatefulSet. deprecated: use the 'watch' parameter with a
-	// list operation instead.
+	// Watch individual changes to a list of StatefulSet. deprecated: use the 'watch' parameter with a list
+	// operation instead.
 	//
 	// GET /apis/apps/v1/watch/namespaces/{namespace}/statefulsets
 	WatchAppsV1NamespacedStatefulSetList(ctx context.Context, params WatchAppsV1NamespacedStatefulSetListParams) (WatchAppsV1NamespacedStatefulSetListRes, error)
 	// WatchAppsV1ReplicaSetListForAllNamespaces implements watchAppsV1ReplicaSetListForAllNamespaces operation.
 	//
-	// Watch individual changes to a list of ReplicaSet. deprecated: use the 'watch' parameter with a
-	// list operation instead.
+	// Watch individual changes to a list of ReplicaSet. deprecated: use the 'watch' parameter with a list
+	// operation instead.
 	//
 	// GET /apis/apps/v1/watch/replicasets
 	WatchAppsV1ReplicaSetListForAllNamespaces(ctx context.Context, params WatchAppsV1ReplicaSetListForAllNamespacesParams) (WatchAppsV1ReplicaSetListForAllNamespacesRes, error)
 	// WatchAppsV1StatefulSetListForAllNamespaces implements watchAppsV1StatefulSetListForAllNamespaces operation.
 	//
-	// Watch individual changes to a list of StatefulSet. deprecated: use the 'watch' parameter with a
-	// list operation instead.
+	// Watch individual changes to a list of StatefulSet. deprecated: use the 'watch' parameter with a list
+	// operation instead.
 	//
 	// GET /apis/apps/v1/watch/statefulsets
 	WatchAppsV1StatefulSetListForAllNamespaces(ctx context.Context, params WatchAppsV1StatefulSetListForAllNamespacesParams) (WatchAppsV1StatefulSetListForAllNamespacesRes, error)
 	// WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces implements watchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces operation.
 	//
-	// Watch individual changes to a list of HorizontalPodAutoscaler. deprecated: use the 'watch'
-	// parameter with a list operation instead.
+	// Watch individual changes to a list of HorizontalPodAutoscaler. deprecated: use the 'watch' parameter
+	// with a list operation instead.
 	//
 	// GET /apis/autoscaling/v1/watch/horizontalpodautoscalers
 	WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces(ctx context.Context, params WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesParams) (WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesRes, error)
@@ -2589,15 +2589,15 @@ type Handler interface {
 	WatchAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx context.Context, params WatchAutoscalingV1NamespacedHorizontalPodAutoscalerParams) (WatchAutoscalingV1NamespacedHorizontalPodAutoscalerRes, error)
 	// WatchAutoscalingV1NamespacedHorizontalPodAutoscalerList implements watchAutoscalingV1NamespacedHorizontalPodAutoscalerList operation.
 	//
-	// Watch individual changes to a list of HorizontalPodAutoscaler. deprecated: use the 'watch'
-	// parameter with a list operation instead.
+	// Watch individual changes to a list of HorizontalPodAutoscaler. deprecated: use the 'watch' parameter
+	// with a list operation instead.
 	//
 	// GET /apis/autoscaling/v1/watch/namespaces/{namespace}/horizontalpodautoscalers
 	WatchAutoscalingV1NamespacedHorizontalPodAutoscalerList(ctx context.Context, params WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListParams) (WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListRes, error)
 	// WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces implements watchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces operation.
 	//
-	// Watch individual changes to a list of HorizontalPodAutoscaler. deprecated: use the 'watch'
-	// parameter with a list operation instead.
+	// Watch individual changes to a list of HorizontalPodAutoscaler. deprecated: use the 'watch' parameter
+	// with a list operation instead.
 	//
 	// GET /apis/autoscaling/v2beta1/watch/horizontalpodautoscalers
 	WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces(ctx context.Context, params WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesParams) (WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesRes, error)
@@ -2610,15 +2610,15 @@ type Handler interface {
 	WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx context.Context, params WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams) (WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRes, error)
 	// WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList implements watchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList operation.
 	//
-	// Watch individual changes to a list of HorizontalPodAutoscaler. deprecated: use the 'watch'
-	// parameter with a list operation instead.
+	// Watch individual changes to a list of HorizontalPodAutoscaler. deprecated: use the 'watch' parameter
+	// with a list operation instead.
 	//
 	// GET /apis/autoscaling/v2beta1/watch/namespaces/{namespace}/horizontalpodautoscalers
 	WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList(ctx context.Context, params WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListParams) (WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListRes, error)
 	// WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces implements watchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces operation.
 	//
-	// Watch individual changes to a list of HorizontalPodAutoscaler. deprecated: use the 'watch'
-	// parameter with a list operation instead.
+	// Watch individual changes to a list of HorizontalPodAutoscaler. deprecated: use the 'watch' parameter
+	// with a list operation instead.
 	//
 	// GET /apis/autoscaling/v2beta2/watch/horizontalpodautoscalers
 	WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces(ctx context.Context, params WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesParams) (WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesRes, error)
@@ -2631,8 +2631,8 @@ type Handler interface {
 	WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx context.Context, params WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams) (WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRes, error)
 	// WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList implements watchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList operation.
 	//
-	// Watch individual changes to a list of HorizontalPodAutoscaler. deprecated: use the 'watch'
-	// parameter with a list operation instead.
+	// Watch individual changes to a list of HorizontalPodAutoscaler. deprecated: use the 'watch' parameter
+	// with a list operation instead.
 	//
 	// GET /apis/autoscaling/v2beta2/watch/namespaces/{namespace}/horizontalpodautoscalers
 	WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList(ctx context.Context, params WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListParams) (WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListRes, error)
@@ -2666,8 +2666,8 @@ type Handler interface {
 	WatchBatchV1NamespacedCronJobList(ctx context.Context, params WatchBatchV1NamespacedCronJobListParams) (WatchBatchV1NamespacedCronJobListRes, error)
 	// WatchBatchV1NamespacedJob implements watchBatchV1NamespacedJob operation.
 	//
-	// Watch changes to an object of kind Job. deprecated: use the 'watch' parameter with a list
-	// operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	// Watch changes to an object of kind Job. deprecated: use the 'watch' parameter with a list operation
+	// instead, filtered to a single item with the 'fieldSelector' parameter.
 	//
 	// GET /apis/batch/v1/watch/namespaces/{namespace}/jobs/{name}
 	WatchBatchV1NamespacedJob(ctx context.Context, params WatchBatchV1NamespacedJobParams) (WatchBatchV1NamespacedJobRes, error)
@@ -2701,9 +2701,8 @@ type Handler interface {
 	WatchBatchV1beta1NamespacedCronJobList(ctx context.Context, params WatchBatchV1beta1NamespacedCronJobListParams) (WatchBatchV1beta1NamespacedCronJobListRes, error)
 	// WatchCertificatesV1CertificateSigningRequest implements watchCertificatesV1CertificateSigningRequest operation.
 	//
-	// Watch changes to an object of kind CertificateSigningRequest. deprecated: use the 'watch'
-	// parameter with a list operation instead, filtered to a single item with the 'fieldSelector'
-	// parameter.
+	// Watch changes to an object of kind CertificateSigningRequest. deprecated: use the 'watch' parameter
+	// with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 	//
 	// GET /apis/certificates.k8s.io/v1/watch/certificatesigningrequests/{name}
 	WatchCertificatesV1CertificateSigningRequest(ctx context.Context, params WatchCertificatesV1CertificateSigningRequestParams) (WatchCertificatesV1CertificateSigningRequestRes, error)
@@ -2758,8 +2757,8 @@ type Handler interface {
 	WatchCoreV1EventListForAllNamespaces(ctx context.Context, params WatchCoreV1EventListForAllNamespacesParams) (WatchCoreV1EventListForAllNamespacesRes, error)
 	// WatchCoreV1LimitRangeListForAllNamespaces implements watchCoreV1LimitRangeListForAllNamespaces operation.
 	//
-	// Watch individual changes to a list of LimitRange. deprecated: use the 'watch' parameter with a
-	// list operation instead.
+	// Watch individual changes to a list of LimitRange. deprecated: use the 'watch' parameter with a list
+	// operation instead.
 	//
 	// GET /api/v1/watch/limitranges
 	WatchCoreV1LimitRangeListForAllNamespaces(ctx context.Context, params WatchCoreV1LimitRangeListForAllNamespacesParams) (WatchCoreV1LimitRangeListForAllNamespacesRes, error)
@@ -2828,15 +2827,15 @@ type Handler interface {
 	WatchCoreV1NamespacedLimitRange(ctx context.Context, params WatchCoreV1NamespacedLimitRangeParams) (WatchCoreV1NamespacedLimitRangeRes, error)
 	// WatchCoreV1NamespacedLimitRangeList implements watchCoreV1NamespacedLimitRangeList operation.
 	//
-	// Watch individual changes to a list of LimitRange. deprecated: use the 'watch' parameter with a
-	// list operation instead.
+	// Watch individual changes to a list of LimitRange. deprecated: use the 'watch' parameter with a list
+	// operation instead.
 	//
 	// GET /api/v1/watch/namespaces/{namespace}/limitranges
 	WatchCoreV1NamespacedLimitRangeList(ctx context.Context, params WatchCoreV1NamespacedLimitRangeListParams) (WatchCoreV1NamespacedLimitRangeListRes, error)
 	// WatchCoreV1NamespacedPersistentVolumeClaim implements watchCoreV1NamespacedPersistentVolumeClaim operation.
 	//
-	// Watch changes to an object of kind PersistentVolumeClaim. deprecated: use the 'watch' parameter
-	// with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	// Watch changes to an object of kind PersistentVolumeClaim. deprecated: use the 'watch' parameter with
+	// a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 	//
 	// GET /api/v1/watch/namespaces/{namespace}/persistentvolumeclaims/{name}
 	WatchCoreV1NamespacedPersistentVolumeClaim(ctx context.Context, params WatchCoreV1NamespacedPersistentVolumeClaimParams) (WatchCoreV1NamespacedPersistentVolumeClaimRes, error)
@@ -2849,8 +2848,8 @@ type Handler interface {
 	WatchCoreV1NamespacedPersistentVolumeClaimList(ctx context.Context, params WatchCoreV1NamespacedPersistentVolumeClaimListParams) (WatchCoreV1NamespacedPersistentVolumeClaimListRes, error)
 	// WatchCoreV1NamespacedPod implements watchCoreV1NamespacedPod operation.
 	//
-	// Watch changes to an object of kind Pod. deprecated: use the 'watch' parameter with a list
-	// operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	// Watch changes to an object of kind Pod. deprecated: use the 'watch' parameter with a list operation
+	// instead, filtered to a single item with the 'fieldSelector' parameter.
 	//
 	// GET /api/v1/watch/namespaces/{namespace}/pods/{name}
 	WatchCoreV1NamespacedPod(ctx context.Context, params WatchCoreV1NamespacedPodParams) (WatchCoreV1NamespacedPodRes, error)
@@ -2870,15 +2869,15 @@ type Handler interface {
 	WatchCoreV1NamespacedPodTemplate(ctx context.Context, params WatchCoreV1NamespacedPodTemplateParams) (WatchCoreV1NamespacedPodTemplateRes, error)
 	// WatchCoreV1NamespacedPodTemplateList implements watchCoreV1NamespacedPodTemplateList operation.
 	//
-	// Watch individual changes to a list of PodTemplate. deprecated: use the 'watch' parameter with a
-	// list operation instead.
+	// Watch individual changes to a list of PodTemplate. deprecated: use the 'watch' parameter with a list
+	// operation instead.
 	//
 	// GET /api/v1/watch/namespaces/{namespace}/podtemplates
 	WatchCoreV1NamespacedPodTemplateList(ctx context.Context, params WatchCoreV1NamespacedPodTemplateListParams) (WatchCoreV1NamespacedPodTemplateListRes, error)
 	// WatchCoreV1NamespacedReplicationController implements watchCoreV1NamespacedReplicationController operation.
 	//
-	// Watch changes to an object of kind ReplicationController. deprecated: use the 'watch' parameter
-	// with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	// Watch changes to an object of kind ReplicationController. deprecated: use the 'watch' parameter with
+	// a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 	//
 	// GET /api/v1/watch/namespaces/{namespace}/replicationcontrollers/{name}
 	WatchCoreV1NamespacedReplicationController(ctx context.Context, params WatchCoreV1NamespacedReplicationControllerParams) (WatchCoreV1NamespacedReplicationControllerRes, error)
@@ -2891,8 +2890,8 @@ type Handler interface {
 	WatchCoreV1NamespacedReplicationControllerList(ctx context.Context, params WatchCoreV1NamespacedReplicationControllerListParams) (WatchCoreV1NamespacedReplicationControllerListRes, error)
 	// WatchCoreV1NamespacedResourceQuota implements watchCoreV1NamespacedResourceQuota operation.
 	//
-	// Watch changes to an object of kind ResourceQuota. deprecated: use the 'watch' parameter with a
-	// list operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	// Watch changes to an object of kind ResourceQuota. deprecated: use the 'watch' parameter with a list
+	// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 	//
 	// GET /api/v1/watch/namespaces/{namespace}/resourcequotas/{name}
 	WatchCoreV1NamespacedResourceQuota(ctx context.Context, params WatchCoreV1NamespacedResourceQuotaParams) (WatchCoreV1NamespacedResourceQuotaRes, error)
@@ -2926,8 +2925,8 @@ type Handler interface {
 	WatchCoreV1NamespacedService(ctx context.Context, params WatchCoreV1NamespacedServiceParams) (WatchCoreV1NamespacedServiceRes, error)
 	// WatchCoreV1NamespacedServiceAccount implements watchCoreV1NamespacedServiceAccount operation.
 	//
-	// Watch changes to an object of kind ServiceAccount. deprecated: use the 'watch' parameter with a
-	// list operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	// Watch changes to an object of kind ServiceAccount. deprecated: use the 'watch' parameter with a list
+	// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 	//
 	// GET /api/v1/watch/namespaces/{namespace}/serviceaccounts/{name}
 	WatchCoreV1NamespacedServiceAccount(ctx context.Context, params WatchCoreV1NamespacedServiceAccountParams) (WatchCoreV1NamespacedServiceAccountRes, error)
@@ -2947,8 +2946,8 @@ type Handler interface {
 	WatchCoreV1NamespacedServiceList(ctx context.Context, params WatchCoreV1NamespacedServiceListParams) (WatchCoreV1NamespacedServiceListRes, error)
 	// WatchCoreV1Node implements watchCoreV1Node operation.
 	//
-	// Watch changes to an object of kind Node. deprecated: use the 'watch' parameter with a list
-	// operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	// Watch changes to an object of kind Node. deprecated: use the 'watch' parameter with a list operation
+	// instead, filtered to a single item with the 'fieldSelector' parameter.
 	//
 	// GET /api/v1/watch/nodes/{name}
 	WatchCoreV1Node(ctx context.Context, params WatchCoreV1NodeParams) (WatchCoreV1NodeRes, error)
@@ -2975,8 +2974,8 @@ type Handler interface {
 	WatchCoreV1PersistentVolumeClaimListForAllNamespaces(ctx context.Context, params WatchCoreV1PersistentVolumeClaimListForAllNamespacesParams) (WatchCoreV1PersistentVolumeClaimListForAllNamespacesRes, error)
 	// WatchCoreV1PersistentVolumeList implements watchCoreV1PersistentVolumeList operation.
 	//
-	// Watch individual changes to a list of PersistentVolume. deprecated: use the 'watch' parameter with
-	// a list operation instead.
+	// Watch individual changes to a list of PersistentVolume. deprecated: use the 'watch' parameter with a
+	// list operation instead.
 	//
 	// GET /api/v1/watch/persistentvolumes
 	WatchCoreV1PersistentVolumeList(ctx context.Context, params WatchCoreV1PersistentVolumeListParams) (WatchCoreV1PersistentVolumeListRes, error)
@@ -2989,8 +2988,8 @@ type Handler interface {
 	WatchCoreV1PodListForAllNamespaces(ctx context.Context, params WatchCoreV1PodListForAllNamespacesParams) (WatchCoreV1PodListForAllNamespacesRes, error)
 	// WatchCoreV1PodTemplateListForAllNamespaces implements watchCoreV1PodTemplateListForAllNamespaces operation.
 	//
-	// Watch individual changes to a list of PodTemplate. deprecated: use the 'watch' parameter with a
-	// list operation instead.
+	// Watch individual changes to a list of PodTemplate. deprecated: use the 'watch' parameter with a list
+	// operation instead.
 	//
 	// GET /api/v1/watch/podtemplates
 	WatchCoreV1PodTemplateListForAllNamespaces(ctx context.Context, params WatchCoreV1PodTemplateListForAllNamespacesParams) (WatchCoreV1PodTemplateListForAllNamespacesRes, error)
@@ -3038,8 +3037,8 @@ type Handler interface {
 	WatchDiscoveryV1EndpointSliceListForAllNamespaces(ctx context.Context, params WatchDiscoveryV1EndpointSliceListForAllNamespacesParams) (WatchDiscoveryV1EndpointSliceListForAllNamespacesRes, error)
 	// WatchDiscoveryV1NamespacedEndpointSlice implements watchDiscoveryV1NamespacedEndpointSlice operation.
 	//
-	// Watch changes to an object of kind EndpointSlice. deprecated: use the 'watch' parameter with a
-	// list operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	// Watch changes to an object of kind EndpointSlice. deprecated: use the 'watch' parameter with a list
+	// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 	//
 	// GET /apis/discovery.k8s.io/v1/watch/namespaces/{namespace}/endpointslices/{name}
 	WatchDiscoveryV1NamespacedEndpointSlice(ctx context.Context, params WatchDiscoveryV1NamespacedEndpointSliceParams) (WatchDiscoveryV1NamespacedEndpointSliceRes, error)
@@ -3059,8 +3058,8 @@ type Handler interface {
 	WatchDiscoveryV1beta1EndpointSliceListForAllNamespaces(ctx context.Context, params WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesParams) (WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesRes, error)
 	// WatchDiscoveryV1beta1NamespacedEndpointSlice implements watchDiscoveryV1beta1NamespacedEndpointSlice operation.
 	//
-	// Watch changes to an object of kind EndpointSlice. deprecated: use the 'watch' parameter with a
-	// list operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	// Watch changes to an object of kind EndpointSlice. deprecated: use the 'watch' parameter with a list
+	// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 	//
 	// GET /apis/discovery.k8s.io/v1beta1/watch/namespaces/{namespace}/endpointslices/{name}
 	WatchDiscoveryV1beta1NamespacedEndpointSlice(ctx context.Context, params WatchDiscoveryV1beta1NamespacedEndpointSliceParams) (WatchDiscoveryV1beta1NamespacedEndpointSliceRes, error)
@@ -3122,16 +3121,15 @@ type Handler interface {
 	WatchFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context, params WatchFlowcontrolApiserverV1beta1FlowSchemaParams) (WatchFlowcontrolApiserverV1beta1FlowSchemaRes, error)
 	// WatchFlowcontrolApiserverV1beta1FlowSchemaList implements watchFlowcontrolApiserverV1beta1FlowSchemaList operation.
 	//
-	// Watch individual changes to a list of FlowSchema. deprecated: use the 'watch' parameter with a
-	// list operation instead.
+	// Watch individual changes to a list of FlowSchema. deprecated: use the 'watch' parameter with a list
+	// operation instead.
 	//
 	// GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/flowschemas
 	WatchFlowcontrolApiserverV1beta1FlowSchemaList(ctx context.Context, params WatchFlowcontrolApiserverV1beta1FlowSchemaListParams) (WatchFlowcontrolApiserverV1beta1FlowSchemaListRes, error)
 	// WatchFlowcontrolApiserverV1beta1PriorityLevelConfiguration implements watchFlowcontrolApiserverV1beta1PriorityLevelConfiguration operation.
 	//
-	// Watch changes to an object of kind PriorityLevelConfiguration. deprecated: use the 'watch'
-	// parameter with a list operation instead, filtered to a single item with the 'fieldSelector'
-	// parameter.
+	// Watch changes to an object of kind PriorityLevelConfiguration. deprecated: use the 'watch' parameter
+	// with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 	//
 	// GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/prioritylevelconfigurations/{name}
 	WatchFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx context.Context, params WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams) (WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes, error)
@@ -3151,16 +3149,15 @@ type Handler interface {
 	WatchFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context, params WatchFlowcontrolApiserverV1beta2FlowSchemaParams) (WatchFlowcontrolApiserverV1beta2FlowSchemaRes, error)
 	// WatchFlowcontrolApiserverV1beta2FlowSchemaList implements watchFlowcontrolApiserverV1beta2FlowSchemaList operation.
 	//
-	// Watch individual changes to a list of FlowSchema. deprecated: use the 'watch' parameter with a
-	// list operation instead.
+	// Watch individual changes to a list of FlowSchema. deprecated: use the 'watch' parameter with a list
+	// operation instead.
 	//
 	// GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/flowschemas
 	WatchFlowcontrolApiserverV1beta2FlowSchemaList(ctx context.Context, params WatchFlowcontrolApiserverV1beta2FlowSchemaListParams) (WatchFlowcontrolApiserverV1beta2FlowSchemaListRes, error)
 	// WatchFlowcontrolApiserverV1beta2PriorityLevelConfiguration implements watchFlowcontrolApiserverV1beta2PriorityLevelConfiguration operation.
 	//
-	// Watch changes to an object of kind PriorityLevelConfiguration. deprecated: use the 'watch'
-	// parameter with a list operation instead, filtered to a single item with the 'fieldSelector'
-	// parameter.
+	// Watch changes to an object of kind PriorityLevelConfiguration. deprecated: use the 'watch' parameter
+	// with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 	//
 	// GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/prioritylevelconfigurations/{name}
 	WatchFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx context.Context, params WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams) (WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes, error)
@@ -3173,8 +3170,8 @@ type Handler interface {
 	WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList(ctx context.Context, params WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListParams) (WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListRes, error)
 	// WatchInternalApiserverV1alpha1StorageVersion implements watchInternalApiserverV1alpha1StorageVersion operation.
 	//
-	// Watch changes to an object of kind StorageVersion. deprecated: use the 'watch' parameter with a
-	// list operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	// Watch changes to an object of kind StorageVersion. deprecated: use the 'watch' parameter with a list
+	// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 	//
 	// GET /apis/internal.apiserver.k8s.io/v1alpha1/watch/storageversions/{name}
 	WatchInternalApiserverV1alpha1StorageVersion(ctx context.Context, params WatchInternalApiserverV1alpha1StorageVersionParams) (WatchInternalApiserverV1alpha1StorageVersionRes, error)
@@ -3222,8 +3219,8 @@ type Handler interface {
 	WatchNetworkingV1NamespacedIngressList(ctx context.Context, params WatchNetworkingV1NamespacedIngressListParams) (WatchNetworkingV1NamespacedIngressListRes, error)
 	// WatchNetworkingV1NamespacedNetworkPolicy implements watchNetworkingV1NamespacedNetworkPolicy operation.
 	//
-	// Watch changes to an object of kind NetworkPolicy. deprecated: use the 'watch' parameter with a
-	// list operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	// Watch changes to an object of kind NetworkPolicy. deprecated: use the 'watch' parameter with a list
+	// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 	//
 	// GET /apis/networking.k8s.io/v1/watch/namespaces/{namespace}/networkpolicies/{name}
 	WatchNetworkingV1NamespacedNetworkPolicy(ctx context.Context, params WatchNetworkingV1NamespacedNetworkPolicyParams) (WatchNetworkingV1NamespacedNetworkPolicyRes, error)
@@ -3285,8 +3282,8 @@ type Handler interface {
 	WatchNodeV1beta1RuntimeClassList(ctx context.Context, params WatchNodeV1beta1RuntimeClassListParams) (WatchNodeV1beta1RuntimeClassListRes, error)
 	// WatchPolicyV1NamespacedPodDisruptionBudget implements watchPolicyV1NamespacedPodDisruptionBudget operation.
 	//
-	// Watch changes to an object of kind PodDisruptionBudget. deprecated: use the 'watch' parameter with
-	// a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	// Watch changes to an object of kind PodDisruptionBudget. deprecated: use the 'watch' parameter with a
+	// list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 	//
 	// GET /apis/policy/v1/watch/namespaces/{namespace}/poddisruptionbudgets/{name}
 	WatchPolicyV1NamespacedPodDisruptionBudget(ctx context.Context, params WatchPolicyV1NamespacedPodDisruptionBudgetParams) (WatchPolicyV1NamespacedPodDisruptionBudgetRes, error)
@@ -3306,8 +3303,8 @@ type Handler interface {
 	WatchPolicyV1PodDisruptionBudgetListForAllNamespaces(ctx context.Context, params WatchPolicyV1PodDisruptionBudgetListForAllNamespacesParams) (WatchPolicyV1PodDisruptionBudgetListForAllNamespacesRes, error)
 	// WatchPolicyV1beta1NamespacedPodDisruptionBudget implements watchPolicyV1beta1NamespacedPodDisruptionBudget operation.
 	//
-	// Watch changes to an object of kind PodDisruptionBudget. deprecated: use the 'watch' parameter with
-	// a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	// Watch changes to an object of kind PodDisruptionBudget. deprecated: use the 'watch' parameter with a
+	// list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 	//
 	// GET /apis/policy/v1beta1/watch/namespaces/{namespace}/poddisruptionbudgets/{name}
 	WatchPolicyV1beta1NamespacedPodDisruptionBudget(ctx context.Context, params WatchPolicyV1beta1NamespacedPodDisruptionBudgetParams) (WatchPolicyV1beta1NamespacedPodDisruptionBudgetRes, error)
@@ -3334,8 +3331,8 @@ type Handler interface {
 	WatchPolicyV1beta1PodSecurityPolicy(ctx context.Context, params WatchPolicyV1beta1PodSecurityPolicyParams) (WatchPolicyV1beta1PodSecurityPolicyRes, error)
 	// WatchPolicyV1beta1PodSecurityPolicyList implements watchPolicyV1beta1PodSecurityPolicyList operation.
 	//
-	// Watch individual changes to a list of PodSecurityPolicy. deprecated: use the 'watch' parameter
-	// with a list operation instead.
+	// Watch individual changes to a list of PodSecurityPolicy. deprecated: use the 'watch' parameter with
+	// a list operation instead.
 	//
 	// GET /apis/policy/v1beta1/watch/podsecuritypolicies
 	WatchPolicyV1beta1PodSecurityPolicyList(ctx context.Context, params WatchPolicyV1beta1PodSecurityPolicyListParams) (WatchPolicyV1beta1PodSecurityPolicyListRes, error)
@@ -3348,29 +3345,29 @@ type Handler interface {
 	WatchRbacAuthorizationV1ClusterRole(ctx context.Context, params WatchRbacAuthorizationV1ClusterRoleParams) (WatchRbacAuthorizationV1ClusterRoleRes, error)
 	// WatchRbacAuthorizationV1ClusterRoleBinding implements watchRbacAuthorizationV1ClusterRoleBinding operation.
 	//
-	// Watch changes to an object of kind ClusterRoleBinding. deprecated: use the 'watch' parameter with
-	// a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	// Watch changes to an object of kind ClusterRoleBinding. deprecated: use the 'watch' parameter with a
+	// list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 	//
 	// GET /apis/rbac.authorization.k8s.io/v1/watch/clusterrolebindings/{name}
 	WatchRbacAuthorizationV1ClusterRoleBinding(ctx context.Context, params WatchRbacAuthorizationV1ClusterRoleBindingParams) (WatchRbacAuthorizationV1ClusterRoleBindingRes, error)
 	// WatchRbacAuthorizationV1ClusterRoleBindingList implements watchRbacAuthorizationV1ClusterRoleBindingList operation.
 	//
-	// Watch individual changes to a list of ClusterRoleBinding. deprecated: use the 'watch' parameter
-	// with a list operation instead.
+	// Watch individual changes to a list of ClusterRoleBinding. deprecated: use the 'watch' parameter with
+	// a list operation instead.
 	//
 	// GET /apis/rbac.authorization.k8s.io/v1/watch/clusterrolebindings
 	WatchRbacAuthorizationV1ClusterRoleBindingList(ctx context.Context, params WatchRbacAuthorizationV1ClusterRoleBindingListParams) (WatchRbacAuthorizationV1ClusterRoleBindingListRes, error)
 	// WatchRbacAuthorizationV1ClusterRoleList implements watchRbacAuthorizationV1ClusterRoleList operation.
 	//
-	// Watch individual changes to a list of ClusterRole. deprecated: use the 'watch' parameter with a
-	// list operation instead.
+	// Watch individual changes to a list of ClusterRole. deprecated: use the 'watch' parameter with a list
+	// operation instead.
 	//
 	// GET /apis/rbac.authorization.k8s.io/v1/watch/clusterroles
 	WatchRbacAuthorizationV1ClusterRoleList(ctx context.Context, params WatchRbacAuthorizationV1ClusterRoleListParams) (WatchRbacAuthorizationV1ClusterRoleListRes, error)
 	// WatchRbacAuthorizationV1NamespacedRole implements watchRbacAuthorizationV1NamespacedRole operation.
 	//
-	// Watch changes to an object of kind Role. deprecated: use the 'watch' parameter with a list
-	// operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	// Watch changes to an object of kind Role. deprecated: use the 'watch' parameter with a list operation
+	// instead, filtered to a single item with the 'fieldSelector' parameter.
 	//
 	// GET /apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/roles/{name}
 	WatchRbacAuthorizationV1NamespacedRole(ctx context.Context, params WatchRbacAuthorizationV1NamespacedRoleParams) (WatchRbacAuthorizationV1NamespacedRoleRes, error)
@@ -3383,8 +3380,8 @@ type Handler interface {
 	WatchRbacAuthorizationV1NamespacedRoleBinding(ctx context.Context, params WatchRbacAuthorizationV1NamespacedRoleBindingParams) (WatchRbacAuthorizationV1NamespacedRoleBindingRes, error)
 	// WatchRbacAuthorizationV1NamespacedRoleBindingList implements watchRbacAuthorizationV1NamespacedRoleBindingList operation.
 	//
-	// Watch individual changes to a list of RoleBinding. deprecated: use the 'watch' parameter with a
-	// list operation instead.
+	// Watch individual changes to a list of RoleBinding. deprecated: use the 'watch' parameter with a list
+	// operation instead.
 	//
 	// GET /apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/rolebindings
 	WatchRbacAuthorizationV1NamespacedRoleBindingList(ctx context.Context, params WatchRbacAuthorizationV1NamespacedRoleBindingListParams) (WatchRbacAuthorizationV1NamespacedRoleBindingListRes, error)
@@ -3397,8 +3394,8 @@ type Handler interface {
 	WatchRbacAuthorizationV1NamespacedRoleList(ctx context.Context, params WatchRbacAuthorizationV1NamespacedRoleListParams) (WatchRbacAuthorizationV1NamespacedRoleListRes, error)
 	// WatchRbacAuthorizationV1RoleBindingListForAllNamespaces implements watchRbacAuthorizationV1RoleBindingListForAllNamespaces operation.
 	//
-	// Watch individual changes to a list of RoleBinding. deprecated: use the 'watch' parameter with a
-	// list operation instead.
+	// Watch individual changes to a list of RoleBinding. deprecated: use the 'watch' parameter with a list
+	// operation instead.
 	//
 	// GET /apis/rbac.authorization.k8s.io/v1/watch/rolebindings
 	WatchRbacAuthorizationV1RoleBindingListForAllNamespaces(ctx context.Context, params WatchRbacAuthorizationV1RoleBindingListForAllNamespacesParams) (WatchRbacAuthorizationV1RoleBindingListForAllNamespacesRes, error)
@@ -3411,8 +3408,8 @@ type Handler interface {
 	WatchRbacAuthorizationV1RoleListForAllNamespaces(ctx context.Context, params WatchRbacAuthorizationV1RoleListForAllNamespacesParams) (WatchRbacAuthorizationV1RoleListForAllNamespacesRes, error)
 	// WatchSchedulingV1PriorityClass implements watchSchedulingV1PriorityClass operation.
 	//
-	// Watch changes to an object of kind PriorityClass. deprecated: use the 'watch' parameter with a
-	// list operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	// Watch changes to an object of kind PriorityClass. deprecated: use the 'watch' parameter with a list
+	// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 	//
 	// GET /apis/scheduling.k8s.io/v1/watch/priorityclasses/{name}
 	WatchSchedulingV1PriorityClass(ctx context.Context, params WatchSchedulingV1PriorityClassParams) (WatchSchedulingV1PriorityClassRes, error)
@@ -3474,50 +3471,50 @@ type Handler interface {
 	WatchStorageV1VolumeAttachment(ctx context.Context, params WatchStorageV1VolumeAttachmentParams) (WatchStorageV1VolumeAttachmentRes, error)
 	// WatchStorageV1VolumeAttachmentList implements watchStorageV1VolumeAttachmentList operation.
 	//
-	// Watch individual changes to a list of VolumeAttachment. deprecated: use the 'watch' parameter with
-	// a list operation instead.
+	// Watch individual changes to a list of VolumeAttachment. deprecated: use the 'watch' parameter with a
+	// list operation instead.
 	//
 	// GET /apis/storage.k8s.io/v1/watch/volumeattachments
 	WatchStorageV1VolumeAttachmentList(ctx context.Context, params WatchStorageV1VolumeAttachmentListParams) (WatchStorageV1VolumeAttachmentListRes, error)
 	// WatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces implements watchStorageV1alpha1CSIStorageCapacityListForAllNamespaces operation.
 	//
-	// Watch individual changes to a list of CSIStorageCapacity. deprecated: use the 'watch' parameter
-	// with a list operation instead.
+	// Watch individual changes to a list of CSIStorageCapacity. deprecated: use the 'watch' parameter with
+	// a list operation instead.
 	//
 	// GET /apis/storage.k8s.io/v1alpha1/watch/csistoragecapacities
 	WatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces(ctx context.Context, params WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesParams) (WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesRes, error)
 	// WatchStorageV1alpha1NamespacedCSIStorageCapacity implements watchStorageV1alpha1NamespacedCSIStorageCapacity operation.
 	//
-	// Watch changes to an object of kind CSIStorageCapacity. deprecated: use the 'watch' parameter with
-	// a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	// Watch changes to an object of kind CSIStorageCapacity. deprecated: use the 'watch' parameter with a
+	// list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 	//
 	// GET /apis/storage.k8s.io/v1alpha1/watch/namespaces/{namespace}/csistoragecapacities/{name}
 	WatchStorageV1alpha1NamespacedCSIStorageCapacity(ctx context.Context, params WatchStorageV1alpha1NamespacedCSIStorageCapacityParams) (WatchStorageV1alpha1NamespacedCSIStorageCapacityRes, error)
 	// WatchStorageV1alpha1NamespacedCSIStorageCapacityList implements watchStorageV1alpha1NamespacedCSIStorageCapacityList operation.
 	//
-	// Watch individual changes to a list of CSIStorageCapacity. deprecated: use the 'watch' parameter
-	// with a list operation instead.
+	// Watch individual changes to a list of CSIStorageCapacity. deprecated: use the 'watch' parameter with
+	// a list operation instead.
 	//
 	// GET /apis/storage.k8s.io/v1alpha1/watch/namespaces/{namespace}/csistoragecapacities
 	WatchStorageV1alpha1NamespacedCSIStorageCapacityList(ctx context.Context, params WatchStorageV1alpha1NamespacedCSIStorageCapacityListParams) (WatchStorageV1alpha1NamespacedCSIStorageCapacityListRes, error)
 	// WatchStorageV1beta1CSIStorageCapacityListForAllNamespaces implements watchStorageV1beta1CSIStorageCapacityListForAllNamespaces operation.
 	//
-	// Watch individual changes to a list of CSIStorageCapacity. deprecated: use the 'watch' parameter
-	// with a list operation instead.
+	// Watch individual changes to a list of CSIStorageCapacity. deprecated: use the 'watch' parameter with
+	// a list operation instead.
 	//
 	// GET /apis/storage.k8s.io/v1beta1/watch/csistoragecapacities
 	WatchStorageV1beta1CSIStorageCapacityListForAllNamespaces(ctx context.Context, params WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesParams) (WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesRes, error)
 	// WatchStorageV1beta1NamespacedCSIStorageCapacity implements watchStorageV1beta1NamespacedCSIStorageCapacity operation.
 	//
-	// Watch changes to an object of kind CSIStorageCapacity. deprecated: use the 'watch' parameter with
-	// a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	// Watch changes to an object of kind CSIStorageCapacity. deprecated: use the 'watch' parameter with a
+	// list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 	//
 	// GET /apis/storage.k8s.io/v1beta1/watch/namespaces/{namespace}/csistoragecapacities/{name}
 	WatchStorageV1beta1NamespacedCSIStorageCapacity(ctx context.Context, params WatchStorageV1beta1NamespacedCSIStorageCapacityParams) (WatchStorageV1beta1NamespacedCSIStorageCapacityRes, error)
 	// WatchStorageV1beta1NamespacedCSIStorageCapacityList implements watchStorageV1beta1NamespacedCSIStorageCapacityList operation.
 	//
-	// Watch individual changes to a list of CSIStorageCapacity. deprecated: use the 'watch' parameter
-	// with a list operation instead.
+	// Watch individual changes to a list of CSIStorageCapacity. deprecated: use the 'watch' parameter with
+	// a list operation instead.
 	//
 	// GET /apis/storage.k8s.io/v1beta1/watch/namespaces/{namespace}/csistoragecapacities
 	WatchStorageV1beta1NamespacedCSIStorageCapacityList(ctx context.Context, params WatchStorageV1beta1NamespacedCSIStorageCapacityListParams) (WatchStorageV1beta1NamespacedCSIStorageCapacityListRes, error)

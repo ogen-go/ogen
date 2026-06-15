@@ -36,14 +36,16 @@ func (c *codeRecorder) Unwrap() http.ResponseWriter {
 // handleActionsAddRepoAccessToSelfHostedRunnerGroupInOrgRequest handles actions/add-repo-access-to-self-hosted-runner-group-in-org operation.
 //
 // The self-hosted runner groups REST API is available with GitHub Enterprise Cloud. For more
-// information, see "[GitHub's products](https://docs.github.
-// com/github/getting-started-with-github/githubs-products)."
+// information, see "[GitHub's products]."
+//
 // Adds a repository to the list of selected repositories that can access a self-hosted runner group.
-// The runner group must have `visibility` set to `selected`. For more information, see "[Create a
-// self-hosted runner group for an
-// organization](#create-a-self-hosted-runner-group-for-an-organization)."
-// You must authenticate using an access token with the `admin:org`
-// scope to use this endpoint.
+// The runner group must have `visibility` set to `selected`. For more information, see
+// "[Create a self-hosted runner group for an organization]."
+//
+// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
+//
+// [GitHub's products]: https://docs.github.com/github/getting-started-with-github/githubs-products
+// [Create a self-hosted runner group for an organization]: #create-a-self-hosted-runner-group-for-an-organization
 //
 // PUT /orgs/{org}/actions/runner-groups/{runner_group_id}/repositories/{repository_id}
 func (s *Server) handleActionsAddRepoAccessToSelfHostedRunnerGroupInOrgRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -195,12 +197,13 @@ func (s *Server) handleActionsAddRepoAccessToSelfHostedRunnerGroupInOrgRequest(a
 // handleActionsAddSelectedRepoToOrgSecretRequest handles actions/add-selected-repo-to-org-secret operation.
 //
 // Adds a repository to an organization secret when the `visibility` for repository access is set to
-// `selected`. The visibility is set when you [Create or update an organization secret](https://docs.
-// github.com/rest/reference/actions#create-or-update-an-organization-secret). You must authenticate
-// using an access token with the `admin:org` scope to use this endpoint. GitHub Apps must have the
-// `secrets` organization permission to use this endpoint.
+// `selected`. The visibility is set when you [Create or update an organization secret]. You must
+// authenticate using an access token with the `admin:org` scope to use this endpoint. GitHub Apps must
+// have the `secrets` organization permission to use this endpoint.
 //
 // PUT /orgs/{org}/actions/secrets/{secret_name}/repositories/{repository_id}
+//
+// [Create or update an organization secret]: https://docs.github.com/rest/reference/actions#create-or-update-an-organization-secret
 func (s *Server) handleActionsAddSelectedRepoToOrgSecretRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -350,13 +353,15 @@ func (s *Server) handleActionsAddSelectedRepoToOrgSecretRequest(args [3]string, 
 // handleActionsAddSelfHostedRunnerToGroupForOrgRequest handles actions/add-self-hosted-runner-to-group-for-org operation.
 //
 // The self-hosted runner groups REST API is available with GitHub Enterprise Cloud. For more
-// information, see "[GitHub's products](https://docs.github.
-// com/github/getting-started-with-github/githubs-products)."
+// information, see "[GitHub's products]."
+//
 // Adds a self-hosted runner to a runner group configured in an organization.
-// You must authenticate using an access token with the `admin:org`
-// scope to use this endpoint.
+//
+// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
 //
 // PUT /orgs/{org}/actions/runner-groups/{runner_group_id}/runners/{runner_id}
+//
+// [GitHub's products]: https://docs.github.com/github/getting-started-with-github/githubs-products
 func (s *Server) handleActionsAddSelfHostedRunnerToGroupForOrgRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -505,13 +510,15 @@ func (s *Server) handleActionsAddSelfHostedRunnerToGroupForOrgRequest(args [3]st
 
 // handleActionsApproveWorkflowRunRequest handles actions/approve-workflow-run operation.
 //
-// Approves a workflow run for a pull request from a public fork of a first time contributor. For
-// more information, see ["Approving workflow runs from public forks](https://docs.github.
-// com/actions/managing-workflow-runs/approving-workflow-runs-from-public-forks)."
-// You must authenticate using an access token with the `repo` scope to use this endpoint. GitHub
-// Apps must have the `actions:write` permission to use this endpoint.
+// Approves a workflow run for a pull request from a public fork of a first time contributor. For more
+// information, see ["Approving workflow runs from public forks]."
+//
+// You must authenticate using an access token with the `repo` scope to use this endpoint. GitHub Apps
+// must have the `actions:write` permission to use this endpoint.
 //
 // POST /repos/{owner}/{repo}/actions/runs/{run_id}/approve
+//
+// ["Approving workflow runs from public forks]: https://docs.github.com/actions/managing-workflow-runs/approving-workflow-runs-from-public-forks
 func (s *Server) handleActionsApproveWorkflowRunRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -814,61 +821,78 @@ func (s *Server) handleActionsCancelWorkflowRunRequest(args [3]string, argsEscap
 // handleActionsCreateOrUpdateEnvironmentSecretRequest handles actions/create-or-update-environment-secret operation.
 //
 // Creates or updates an environment secret with an encrypted value. Encrypt your secret using
-// [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). You must authenticate
-// using an access
-// token with the `repo` scope to use this endpoint. GitHub Apps must have the `secrets` repository
-// permission to use
-// this endpoint.
-// #### Example encrypting a secret using Node.js
-// Encrypt your secret using the [tweetsodium](https://github.com/github/tweetsodium) library.
-// ```
-// const sodium = require('tweetsodium');
-// const key = "base64-encoded-public-key";
-// const value = "plain-text-secret";
-// // Convert the message and key to Uint8Array's (Buffer implements that interface)
-// const messageBytes = Buffer.from(value);
-// const keyBytes = Buffer.from(key, 'base64');
-// // Encrypt using LibSodium.
-// const encryptedBytes = sodium.seal(messageBytes, keyBytes);
-// // Base64 the encrypted secret
-// const encrypted = Buffer.from(encryptedBytes).toString('base64');
-// console.log(encrypted);
-// ```
-// #### Example encrypting a secret using Python
-// Encrypt your secret using [pynacl](https://pynacl.readthedocs.
-// io/en/stable/public/#nacl-public-sealedbox) with Python 3.
-// ```
-// from base64 import b64encode
-// from nacl import encoding, public
-// def encrypt(public_key: str, secret_value: str) -> str:
-// """Encrypt a Unicode string using the public key."""
-// public_key = public.PublicKey(public_key.encode("utf-8"), encoding.Base64Encoder())
-// sealed_box = public.SealedBox(public_key)
-// encrypted = sealed_box.encrypt(secret_value.encode("utf-8"))
-// return b64encode(encrypted).decode("utf-8")
-// ```
-// #### Example encrypting a secret using C#
-// Encrypt your secret using the [Sodium.Core](https://www.nuget.org/packages/Sodium.Core/) package.
-// ```
-// var secretValue = System.Text.Encoding.UTF8.GetBytes("mySecret");
-// var publicKey = Convert.FromBase64String("2Sg8iYjAxxmI2LvUXpJjkYrMxURPc8r+dB7TJyvvcCU=");
-// var sealedPublicKeyBox = Sodium.SealedPublicKeyBox.Create(secretValue, publicKey);
-// Console.WriteLine(Convert.ToBase64String(sealedPublicKeyBox));
-// ```
-// #### Example encrypting a secret using Ruby
-// Encrypt your secret using the [rbnacl](https://github.com/RubyCrypto/rbnacl) gem.
-// ```ruby
-// require "rbnacl"
-// require "base64"
-// key = Base64.decode64("+ZYvJDZMHUfBkJdyq5Zm9SKqeuBQ4sj+6sfjlH4CgG0=")
-// public_key = RbNaCl::PublicKey.new(key)
-// box = RbNaCl::Boxes::Sealed.from_public_key(public_key)
-// encrypted_secret = box.encrypt("my_secret")
-// # Print the base64 encoded secret
-// puts Base64.strict_encode64(encrypted_secret)
-// ```.
+// [LibSodium]. You must authenticate using an access token with the `repo` scope to use this endpoint.
+// GitHub Apps must have the `secrets` repository permission to use this endpoint.
+//
+// # Example encrypting a secret using Node.js
+//
+// Encrypt your secret using the [tweetsodium] library.
+//
+//	const sodium = require('tweetsodium');
+//
+//	const key = "base64-encoded-public-key";
+//	const value = "plain-text-secret";
+//
+//	// Convert the message and key to Uint8Array's (Buffer implements that interface)
+//	const messageBytes = Buffer.from(value);
+//	const keyBytes = Buffer.from(key, 'base64');
+//
+//	// Encrypt using LibSodium.
+//	const encryptedBytes = sodium.seal(messageBytes, keyBytes);
+//
+//	// Base64 the encrypted secret
+//	const encrypted = Buffer.from(encryptedBytes).toString('base64');
+//
+//	console.log(encrypted);
+//
+// # Example encrypting a secret using Python
+//
+// Encrypt your secret using [pynacl] with Python 3.
+//
+//	from base64 import b64encode
+//	from nacl import encoding, public
+//
+//	def encrypt(public_key: str, secret_value: str) -> str:
+//	  """Encrypt a Unicode string using the public key."""
+//	  public_key = public.PublicKey(public_key.encode("utf-8"), encoding.Base64Encoder())
+//	  sealed_box = public.SealedBox(public_key)
+//	  encrypted = sealed_box.encrypt(secret_value.encode("utf-8"))
+//	  return b64encode(encrypted).decode("utf-8")
+//
+// # Example encrypting a secret using C#
+//
+// Encrypt your secret using the [Sodium.Core] package.
+//
+//	var secretValue = System.Text.Encoding.UTF8.GetBytes("mySecret");
+//	var publicKey = Convert.FromBase64String("2Sg8iYjAxxmI2LvUXpJjkYrMxURPc8r+dB7TJyvvcCU=");
+//
+//	var sealedPublicKeyBox = Sodium.SealedPublicKeyBox.Create(secretValue, publicKey);
+//
+//	Console.WriteLine(Convert.ToBase64String(sealedPublicKeyBox));
+//
+// # Example encrypting a secret using Ruby
+//
+// Encrypt your secret using the [rbnacl] gem.
+//
+//	require "rbnacl"
+//	require "base64"
+//
+//	key = Base64.decode64("+ZYvJDZMHUfBkJdyq5Zm9SKqeuBQ4sj+6sfjlH4CgG0=")
+//	public_key = RbNaCl::PublicKey.new(key)
+//
+//	box = RbNaCl::Boxes::Sealed.from_public_key(public_key)
+//	encrypted_secret = box.encrypt("my_secret")
+//
+//	# Print the base64 encoded secret
+//	puts Base64.strict_encode64(encrypted_secret)
 //
 // PUT /repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}
+//
+// [LibSodium]: https://libsodium.gitbook.io/doc/bindings_for_other_languages
+// [tweetsodium]: https://github.com/github/tweetsodium
+// [pynacl]: https://pynacl.readthedocs.io/en/stable/public/#nacl-public-sealedbox
+// [Sodium.Core]: https://www.nuget.org/packages/Sodium.Core/
+// [rbnacl]: https://github.com/RubyCrypto/rbnacl
 func (s *Server) handleActionsCreateOrUpdateEnvironmentSecretRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -1033,61 +1057,78 @@ func (s *Server) handleActionsCreateOrUpdateEnvironmentSecretRequest(args [3]str
 // handleActionsCreateOrUpdateOrgSecretRequest handles actions/create-or-update-org-secret operation.
 //
 // Creates or updates an organization secret with an encrypted value. Encrypt your secret using
-// [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). You must authenticate
-// using an access
-// token with the `admin:org` scope to use this endpoint. GitHub Apps must have the `secrets`
-// organization permission to
-// use this endpoint.
-// #### Example encrypting a secret using Node.js
-// Encrypt your secret using the [tweetsodium](https://github.com/github/tweetsodium) library.
-// ```
-// const sodium = require('tweetsodium');
-// const key = "base64-encoded-public-key";
-// const value = "plain-text-secret";
-// // Convert the message and key to Uint8Array's (Buffer implements that interface)
-// const messageBytes = Buffer.from(value);
-// const keyBytes = Buffer.from(key, 'base64');
-// // Encrypt using LibSodium.
-// const encryptedBytes = sodium.seal(messageBytes, keyBytes);
-// // Base64 the encrypted secret
-// const encrypted = Buffer.from(encryptedBytes).toString('base64');
-// console.log(encrypted);
-// ```
-// #### Example encrypting a secret using Python
-// Encrypt your secret using [pynacl](https://pynacl.readthedocs.
-// io/en/stable/public/#nacl-public-sealedbox) with Python 3.
-// ```
-// from base64 import b64encode
-// from nacl import encoding, public
-// def encrypt(public_key: str, secret_value: str) -> str:
-// """Encrypt a Unicode string using the public key."""
-// public_key = public.PublicKey(public_key.encode("utf-8"), encoding.Base64Encoder())
-// sealed_box = public.SealedBox(public_key)
-// encrypted = sealed_box.encrypt(secret_value.encode("utf-8"))
-// return b64encode(encrypted).decode("utf-8")
-// ```
-// #### Example encrypting a secret using C#
-// Encrypt your secret using the [Sodium.Core](https://www.nuget.org/packages/Sodium.Core/) package.
-// ```
-// var secretValue = System.Text.Encoding.UTF8.GetBytes("mySecret");
-// var publicKey = Convert.FromBase64String("2Sg8iYjAxxmI2LvUXpJjkYrMxURPc8r+dB7TJyvvcCU=");
-// var sealedPublicKeyBox = Sodium.SealedPublicKeyBox.Create(secretValue, publicKey);
-// Console.WriteLine(Convert.ToBase64String(sealedPublicKeyBox));
-// ```
-// #### Example encrypting a secret using Ruby
-// Encrypt your secret using the [rbnacl](https://github.com/RubyCrypto/rbnacl) gem.
-// ```ruby
-// require "rbnacl"
-// require "base64"
-// key = Base64.decode64("+ZYvJDZMHUfBkJdyq5Zm9SKqeuBQ4sj+6sfjlH4CgG0=")
-// public_key = RbNaCl::PublicKey.new(key)
-// box = RbNaCl::Boxes::Sealed.from_public_key(public_key)
-// encrypted_secret = box.encrypt("my_secret")
-// # Print the base64 encoded secret
-// puts Base64.strict_encode64(encrypted_secret)
-// ```.
+// [LibSodium]. You must authenticate using an access token with the `admin:org` scope to use this
+// endpoint. GitHub Apps must have the `secrets` organization permission to use this endpoint.
+//
+// # Example encrypting a secret using Node.js
+//
+// Encrypt your secret using the [tweetsodium] library.
+//
+//	const sodium = require('tweetsodium');
+//
+//	const key = "base64-encoded-public-key";
+//	const value = "plain-text-secret";
+//
+//	// Convert the message and key to Uint8Array's (Buffer implements that interface)
+//	const messageBytes = Buffer.from(value);
+//	const keyBytes = Buffer.from(key, 'base64');
+//
+//	// Encrypt using LibSodium.
+//	const encryptedBytes = sodium.seal(messageBytes, keyBytes);
+//
+//	// Base64 the encrypted secret
+//	const encrypted = Buffer.from(encryptedBytes).toString('base64');
+//
+//	console.log(encrypted);
+//
+// # Example encrypting a secret using Python
+//
+// Encrypt your secret using [pynacl] with Python 3.
+//
+//	from base64 import b64encode
+//	from nacl import encoding, public
+//
+//	def encrypt(public_key: str, secret_value: str) -> str:
+//	  """Encrypt a Unicode string using the public key."""
+//	  public_key = public.PublicKey(public_key.encode("utf-8"), encoding.Base64Encoder())
+//	  sealed_box = public.SealedBox(public_key)
+//	  encrypted = sealed_box.encrypt(secret_value.encode("utf-8"))
+//	  return b64encode(encrypted).decode("utf-8")
+//
+// # Example encrypting a secret using C#
+//
+// Encrypt your secret using the [Sodium.Core] package.
+//
+//	var secretValue = System.Text.Encoding.UTF8.GetBytes("mySecret");
+//	var publicKey = Convert.FromBase64String("2Sg8iYjAxxmI2LvUXpJjkYrMxURPc8r+dB7TJyvvcCU=");
+//
+//	var sealedPublicKeyBox = Sodium.SealedPublicKeyBox.Create(secretValue, publicKey);
+//
+//	Console.WriteLine(Convert.ToBase64String(sealedPublicKeyBox));
+//
+// # Example encrypting a secret using Ruby
+//
+// Encrypt your secret using the [rbnacl] gem.
+//
+//	require "rbnacl"
+//	require "base64"
+//
+//	key = Base64.decode64("+ZYvJDZMHUfBkJdyq5Zm9SKqeuBQ4sj+6sfjlH4CgG0=")
+//	public_key = RbNaCl::PublicKey.new(key)
+//
+//	box = RbNaCl::Boxes::Sealed.from_public_key(public_key)
+//	encrypted_secret = box.encrypt("my_secret")
+//
+//	# Print the base64 encoded secret
+//	puts Base64.strict_encode64(encrypted_secret)
 //
 // PUT /orgs/{org}/actions/secrets/{secret_name}
+//
+// [LibSodium]: https://libsodium.gitbook.io/doc/bindings_for_other_languages
+// [tweetsodium]: https://github.com/github/tweetsodium
+// [pynacl]: https://pynacl.readthedocs.io/en/stable/public/#nacl-public-sealedbox
+// [Sodium.Core]: https://www.nuget.org/packages/Sodium.Core/
+// [rbnacl]: https://github.com/RubyCrypto/rbnacl
 func (s *Server) handleActionsCreateOrUpdateOrgSecretRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -1248,61 +1289,78 @@ func (s *Server) handleActionsCreateOrUpdateOrgSecretRequest(args [2]string, arg
 // handleActionsCreateOrUpdateRepoSecretRequest handles actions/create-or-update-repo-secret operation.
 //
 // Creates or updates a repository secret with an encrypted value. Encrypt your secret using
-// [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). You must authenticate
-// using an access
-// token with the `repo` scope to use this endpoint. GitHub Apps must have the `secrets` repository
-// permission to use
-// this endpoint.
-// #### Example encrypting a secret using Node.js
-// Encrypt your secret using the [tweetsodium](https://github.com/github/tweetsodium) library.
-// ```
-// const sodium = require('tweetsodium');
-// const key = "base64-encoded-public-key";
-// const value = "plain-text-secret";
-// // Convert the message and key to Uint8Array's (Buffer implements that interface)
-// const messageBytes = Buffer.from(value);
-// const keyBytes = Buffer.from(key, 'base64');
-// // Encrypt using LibSodium.
-// const encryptedBytes = sodium.seal(messageBytes, keyBytes);
-// // Base64 the encrypted secret
-// const encrypted = Buffer.from(encryptedBytes).toString('base64');
-// console.log(encrypted);
-// ```
-// #### Example encrypting a secret using Python
-// Encrypt your secret using [pynacl](https://pynacl.readthedocs.
-// io/en/stable/public/#nacl-public-sealedbox) with Python 3.
-// ```
-// from base64 import b64encode
-// from nacl import encoding, public
-// def encrypt(public_key: str, secret_value: str) -> str:
-// """Encrypt a Unicode string using the public key."""
-// public_key = public.PublicKey(public_key.encode("utf-8"), encoding.Base64Encoder())
-// sealed_box = public.SealedBox(public_key)
-// encrypted = sealed_box.encrypt(secret_value.encode("utf-8"))
-// return b64encode(encrypted).decode("utf-8")
-// ```
-// #### Example encrypting a secret using C#
-// Encrypt your secret using the [Sodium.Core](https://www.nuget.org/packages/Sodium.Core/) package.
-// ```
-// var secretValue = System.Text.Encoding.UTF8.GetBytes("mySecret");
-// var publicKey = Convert.FromBase64String("2Sg8iYjAxxmI2LvUXpJjkYrMxURPc8r+dB7TJyvvcCU=");
-// var sealedPublicKeyBox = Sodium.SealedPublicKeyBox.Create(secretValue, publicKey);
-// Console.WriteLine(Convert.ToBase64String(sealedPublicKeyBox));
-// ```
-// #### Example encrypting a secret using Ruby
-// Encrypt your secret using the [rbnacl](https://github.com/RubyCrypto/rbnacl) gem.
-// ```ruby
-// require "rbnacl"
-// require "base64"
-// key = Base64.decode64("+ZYvJDZMHUfBkJdyq5Zm9SKqeuBQ4sj+6sfjlH4CgG0=")
-// public_key = RbNaCl::PublicKey.new(key)
-// box = RbNaCl::Boxes::Sealed.from_public_key(public_key)
-// encrypted_secret = box.encrypt("my_secret")
-// # Print the base64 encoded secret
-// puts Base64.strict_encode64(encrypted_secret)
-// ```.
+// [LibSodium]. You must authenticate using an access token with the `repo` scope to use this endpoint.
+// GitHub Apps must have the `secrets` repository permission to use this endpoint.
+//
+// # Example encrypting a secret using Node.js
+//
+// Encrypt your secret using the [tweetsodium] library.
+//
+//	const sodium = require('tweetsodium');
+//
+//	const key = "base64-encoded-public-key";
+//	const value = "plain-text-secret";
+//
+//	// Convert the message and key to Uint8Array's (Buffer implements that interface)
+//	const messageBytes = Buffer.from(value);
+//	const keyBytes = Buffer.from(key, 'base64');
+//
+//	// Encrypt using LibSodium.
+//	const encryptedBytes = sodium.seal(messageBytes, keyBytes);
+//
+//	// Base64 the encrypted secret
+//	const encrypted = Buffer.from(encryptedBytes).toString('base64');
+//
+//	console.log(encrypted);
+//
+// # Example encrypting a secret using Python
+//
+// Encrypt your secret using [pynacl] with Python 3.
+//
+//	from base64 import b64encode
+//	from nacl import encoding, public
+//
+//	def encrypt(public_key: str, secret_value: str) -> str:
+//	  """Encrypt a Unicode string using the public key."""
+//	  public_key = public.PublicKey(public_key.encode("utf-8"), encoding.Base64Encoder())
+//	  sealed_box = public.SealedBox(public_key)
+//	  encrypted = sealed_box.encrypt(secret_value.encode("utf-8"))
+//	  return b64encode(encrypted).decode("utf-8")
+//
+// # Example encrypting a secret using C#
+//
+// Encrypt your secret using the [Sodium.Core] package.
+//
+//	var secretValue = System.Text.Encoding.UTF8.GetBytes("mySecret");
+//	var publicKey = Convert.FromBase64String("2Sg8iYjAxxmI2LvUXpJjkYrMxURPc8r+dB7TJyvvcCU=");
+//
+//	var sealedPublicKeyBox = Sodium.SealedPublicKeyBox.Create(secretValue, publicKey);
+//
+//	Console.WriteLine(Convert.ToBase64String(sealedPublicKeyBox));
+//
+// # Example encrypting a secret using Ruby
+//
+// Encrypt your secret using the [rbnacl] gem.
+//
+//	require "rbnacl"
+//	require "base64"
+//
+//	key = Base64.decode64("+ZYvJDZMHUfBkJdyq5Zm9SKqeuBQ4sj+6sfjlH4CgG0=")
+//	public_key = RbNaCl::PublicKey.new(key)
+//
+//	box = RbNaCl::Boxes::Sealed.from_public_key(public_key)
+//	encrypted_secret = box.encrypt("my_secret")
+//
+//	# Print the base64 encoded secret
+//	puts Base64.strict_encode64(encrypted_secret)
 //
 // PUT /repos/{owner}/{repo}/actions/secrets/{secret_name}
+//
+// [LibSodium]: https://libsodium.gitbook.io/doc/bindings_for_other_languages
+// [tweetsodium]: https://github.com/github/tweetsodium
+// [pynacl]: https://pynacl.readthedocs.io/en/stable/public/#nacl-public-sealedbox
+// [Sodium.Core]: https://www.nuget.org/packages/Sodium.Core/
+// [rbnacl]: https://github.com/RubyCrypto/rbnacl
 func (s *Server) handleActionsCreateOrUpdateRepoSecretRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -1467,13 +1525,15 @@ func (s *Server) handleActionsCreateOrUpdateRepoSecretRequest(args [3]string, ar
 // handleActionsCreateRegistrationTokenForOrgRequest handles actions/create-registration-token-for-org operation.
 //
 // Returns a token that you can pass to the `config` script. The token expires after one hour.
+//
 // You must authenticate using an access token with the `admin:org` scope to use this endpoint.
-// #### Example using registration token
+//
+// # Example using registration token
+//
 // Configure your self-hosted runner, replacing `TOKEN` with the registration token provided by this
 // endpoint.
-// ```
-// ./config.sh --url https://github.com/octo-org --token TOKEN
-// ```.
+//
+//	./config.sh --url https://github.com/octo-org --token TOKEN
 //
 // POST /orgs/{org}/actions/runners/registration-token
 func (s *Server) handleActionsCreateRegistrationTokenForOrgRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -1616,15 +1676,15 @@ func (s *Server) handleActionsCreateRegistrationTokenForOrgRequest(args [1]strin
 
 // handleActionsCreateRegistrationTokenForRepoRequest handles actions/create-registration-token-for-repo operation.
 //
-// Returns a token that you can pass to the `config` script. The token expires after one hour. You
-// must authenticate
-// using an access token with the `repo` scope to use this endpoint.
-// #### Example using registration token
+// Returns a token that you can pass to the `config` script. The token expires after one hour. You must
+// authenticate using an access token with the `repo` scope to use this endpoint.
+//
+// # Example using registration token
+//
 // Configure your self-hosted runner, replacing `TOKEN` with the registration token provided by this
 // endpoint.
-// ```
-// ./config.sh --url https://github.com/octo-org/octo-repo-artifacts --token TOKEN
-// ```.
+//
+//	./config.sh --url https://github.com/octo-org/octo-repo-artifacts --token TOKEN
 //
 // POST /repos/{owner}/{repo}/actions/runners/registration-token
 func (s *Server) handleActionsCreateRegistrationTokenForRepoRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -1773,14 +1833,15 @@ func (s *Server) handleActionsCreateRegistrationTokenForRepoRequest(args [2]stri
 //
 // Returns a token that you can pass to the `config` script to remove a self-hosted runner from an
 // organization. The token expires after one hour.
+//
 // You must authenticate using an access token with the `admin:org` scope to use this endpoint.
-// #### Example using remove token
+//
+// # Example using remove token
+//
 // To remove your self-hosted runner from an organization, replace `TOKEN` with the remove token
-// provided by this
-// endpoint.
-// ```
-// ./config.sh remove --token TOKEN
-// ```.
+// provided by this endpoint.
+//
+//	./config.sh remove --token TOKEN
 //
 // POST /orgs/{org}/actions/runners/remove-token
 func (s *Server) handleActionsCreateRemoveTokenForOrgRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -1924,14 +1985,15 @@ func (s *Server) handleActionsCreateRemoveTokenForOrgRequest(args [1]string, arg
 // handleActionsCreateRemoveTokenForRepoRequest handles actions/create-remove-token-for-repo operation.
 //
 // Returns a token that you can pass to remove a self-hosted runner from a repository. The token
-// expires after one hour.
-// You must authenticate using an access token with the `repo` scope to use this endpoint.
-// #### Example using remove token
-// To remove your self-hosted runner from a repository, replace TOKEN with the remove token provided
-// by this endpoint.
-// ```
-// ./config.sh remove --token TOKEN
-// ```.
+// expires after one hour. You must authenticate using an access token with the `repo` scope to use
+// this endpoint.
+//
+// # Example using remove token
+//
+// To remove your self-hosted runner from a repository, replace TOKEN with the remove token provided by
+// this endpoint.
+//
+//	./config.sh remove --token TOKEN
 //
 // POST /repos/{owner}/{repo}/actions/runners/remove-token
 func (s *Server) handleActionsCreateRemoveTokenForRepoRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -2079,12 +2141,15 @@ func (s *Server) handleActionsCreateRemoveTokenForRepoRequest(args [2]string, ar
 // handleActionsCreateSelfHostedRunnerGroupForOrgRequest handles actions/create-self-hosted-runner-group-for-org operation.
 //
 // The self-hosted runner groups REST API is available with GitHub Enterprise Cloud and GitHub
-// Enterprise Server. For more information, see "[GitHub's products](https://docs.github.
-// com/github/getting-started-with-github/githubs-products)."
+// Enterprise Server. For more information, see "[GitHub's products]."
+//
 // Creates a new self-hosted runner group for an organization.
+//
 // You must authenticate using an access token with the `admin:org` scope to use this endpoint.
 //
 // POST /orgs/{org}/actions/runner-groups
+//
+// [GitHub's products]: https://docs.github.com/github/getting-started-with-github/githubs-products
 func (s *Server) handleActionsCreateSelfHostedRunnerGroupForOrgRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -2242,15 +2307,18 @@ func (s *Server) handleActionsCreateSelfHostedRunnerGroupForOrgRequest(args [1]s
 //
 // You can use this endpoint to manually trigger a GitHub Actions workflow run. You can replace
 // `workflow_id` with the workflow file name. For example, you could use `main.yaml`.
-// You must configure your GitHub Actions workflow to run when the [`workflow_dispatch`
-// webhook](/developers/webhooks-and-events/webhook-events-and-payloads#workflow_dispatch) event
+//
+// You must configure your GitHub Actions workflow to run when the [workflow_dispatch webhook] event
 // occurs. The `inputs` are configured in the workflow file. For more information about how to
-// configure the `workflow_dispatch` event in the workflow file, see "[Events that trigger
-// workflows](/actions/reference/events-that-trigger-workflows#workflow_dispatch)."
-// You must authenticate using an access token with the `repo` scope to use this endpoint. GitHub
-// Apps must have the `actions:write` permission to use this endpoint. For more information, see
-// "[Creating a personal access token for the command line](https://help.github.
-// com/articles/creating-a-personal-access-token-for-the-command-line).".
+// configure the `workflow_dispatch` event in the workflow file, see "[Events that trigger workflows]."
+//
+// You must authenticate using an access token with the `repo` scope to use this endpoint. GitHub Apps
+// must have the `actions:write` permission to use this endpoint. For more information, see
+// "[Creating a personal access token for the command line].".
+//
+// [workflow_dispatch webhook]: /developers/webhooks-and-events/webhook-events-and-payloads#workflow_dispatch
+// [Events that trigger workflows]: /actions/reference/events-that-trigger-workflows#workflow_dispatch
+// [Creating a personal access token for the command line]: https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line
 //
 // POST /repos/{owner}/{repo}/actions/workflows/{workflow_id}/dispatches
 func (s *Server) handleActionsCreateWorkflowDispatchRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -2416,9 +2484,9 @@ func (s *Server) handleActionsCreateWorkflowDispatchRequest(args [3]string, args
 
 // handleActionsDeleteArtifactRequest handles actions/delete-artifact operation.
 //
-// Deletes an artifact for a workflow run. You must authenticate using an access token with the
-// `repo` scope to use this endpoint. GitHub Apps must have the `actions:write` permission to use
-// this endpoint.
+// Deletes an artifact for a workflow run. You must authenticate using an access token with the `repo`
+// scope to use this endpoint. GitHub Apps must have the `actions:write` permission to use this
+// endpoint.
 //
 // DELETE /repos/{owner}/{repo}/actions/artifacts/{artifact_id}
 func (s *Server) handleActionsDeleteArtifactRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -2871,8 +2939,8 @@ func (s *Server) handleActionsDeleteOrgSecretRequest(args [2]string, argsEscaped
 
 // handleActionsDeleteRepoSecretRequest handles actions/delete-repo-secret operation.
 //
-// Deletes a secret in a repository using the secret name. You must authenticate using an access
-// token with the `repo` scope to use this endpoint. GitHub Apps must have the `secrets` repository
+// Deletes a secret in a repository using the secret name. You must authenticate using an access token
+// with the `repo` scope to use this endpoint. GitHub Apps must have the `secrets` repository
 // permission to use this endpoint.
 //
 // DELETE /repos/{owner}/{repo}/actions/secrets/{secret_name}
@@ -3026,6 +3094,7 @@ func (s *Server) handleActionsDeleteRepoSecretRequest(args [3]string, argsEscape
 //
 // Forces the removal of a self-hosted runner from an organization. You can use this endpoint to
 // completely remove the runner when the machine you were using no longer exists.
+//
 // You must authenticate using an access token with the `admin:org` scope to use this endpoint.
 //
 // DELETE /orgs/{org}/actions/runners/{runner_id}
@@ -3175,8 +3244,8 @@ func (s *Server) handleActionsDeleteSelfHostedRunnerFromOrgRequest(args [2]strin
 //
 // Forces the removal of a self-hosted runner from a repository. You can use this endpoint to
 // completely remove the runner when the machine you were using no longer exists.
-// You must authenticate using an access token with the `repo`
-// scope to use this endpoint.
+//
+// You must authenticate using an access token with the `repo` scope to use this endpoint.
 //
 // DELETE /repos/{owner}/{repo}/actions/runners/{runner_id}
 func (s *Server) handleActionsDeleteSelfHostedRunnerFromRepoRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -3328,12 +3397,15 @@ func (s *Server) handleActionsDeleteSelfHostedRunnerFromRepoRequest(args [3]stri
 // handleActionsDeleteSelfHostedRunnerGroupFromOrgRequest handles actions/delete-self-hosted-runner-group-from-org operation.
 //
 // The self-hosted runner groups REST API is available with GitHub Enterprise Cloud. For more
-// information, see "[GitHub's products](https://docs.github.
-// com/github/getting-started-with-github/githubs-products)."
+// information, see "[GitHub's products]."
+//
 // Deletes a self-hosted runner group for an organization.
+//
 // You must authenticate using an access token with the `admin:org` scope to use this endpoint.
 //
 // DELETE /orgs/{org}/actions/runner-groups/{runner_group_id}
+//
+// [GitHub's products]: https://docs.github.com/github/getting-started-with-github/githubs-products
 func (s *Server) handleActionsDeleteSelfHostedRunnerGroupFromOrgRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -3478,11 +3550,9 @@ func (s *Server) handleActionsDeleteSelfHostedRunnerGroupFromOrgRequest(args [2]
 
 // handleActionsDeleteWorkflowRunRequest handles actions/delete-workflow-run operation.
 //
-// Delete a specific workflow run. Anyone with write access to the repository can use this endpoint.
-// If the repository is
-// private you must use an access token with the `repo` scope. GitHub Apps must have the
-// `actions:write` permission to use
-// this endpoint.
+// Delete a specific workflow run. Anyone with write access to the repository can use this endpoint. If
+// the repository is private you must use an access token with the `repo` scope. GitHub Apps must have
+// the `actions:write` permission to use this endpoint.
 //
 // DELETE /repos/{owner}/{repo}/actions/runs/{run_id}
 func (s *Server) handleActionsDeleteWorkflowRunRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -3787,11 +3857,14 @@ func (s *Server) handleActionsDeleteWorkflowRunLogsRequest(args [3]string, argsE
 // handleActionsDisableSelectedRepositoryGithubActionsOrganizationRequest handles actions/disable-selected-repository-github-actions-organization operation.
 //
 // Removes a repository from the list of selected repositories that are enabled for GitHub Actions in
-// an organization. To use this endpoint, the organization permission policy for
-// `enabled_repositories` must be configured to `selected`. For more information, see "[Set GitHub
-// Actions permissions for an organization](#set-github-actions-permissions-for-an-organization)."
-// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
-// GitHub Apps must have the `administration` organization permission to use this API.
+// an organization. To use this endpoint, the organization permission policy for `enabled_repositories`
+// must be configured to `selected`. For more information, see
+// "[Set GitHub Actions permissions for an organization]."
+//
+// You must authenticate using an access token with the `admin:org` scope to use this endpoint. GitHub
+// Apps must have the `administration` organization permission to use this API.
+//
+// [Set GitHub Actions permissions for an organization]: #set-github-actions-permissions-for-an-organization
 //
 // DELETE /orgs/{org}/actions/permissions/repositories/{repository_id}
 func (s *Server) handleActionsDisableSelectedRepositoryGithubActionsOrganizationRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -3940,8 +4013,9 @@ func (s *Server) handleActionsDisableSelectedRepositoryGithubActionsOrganization
 //
 // Disables a workflow and sets the `state` of the workflow to `disabled_manually`. You can replace
 // `workflow_id` with the workflow file name. For example, you could use `main.yaml`.
-// You must authenticate using an access token with the `repo` scope to use this endpoint. GitHub
-// Apps must have the `actions:write` permission to use this endpoint.
+//
+// You must authenticate using an access token with the `repo` scope to use this endpoint. GitHub Apps
+// must have the `actions:write` permission to use this endpoint.
 //
 // PUT /repos/{owner}/{repo}/actions/workflows/{workflow_id}/disable
 func (s *Server) handleActionsDisableWorkflowRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -4093,12 +4167,10 @@ func (s *Server) handleActionsDisableWorkflowRequest(args [3]string, argsEscaped
 // handleActionsDownloadArtifactRequest handles actions/download-artifact operation.
 //
 // Gets a redirect URL to download an archive for a repository. This URL expires after 1 minute. Look
-// for `Location:` in
-// the response header to find the URL for the download. The `:archive_format` must be `zip`. Anyone
-// with read access to
-// the repository can use this endpoint. If the repository is private you must use an access token
-// with the `repo` scope.
-// GitHub Apps must have the `actions:read` permission to use this endpoint.
+// for `Location:` in the response header to find the URL for the download. The `:archive_format` must
+// be `zip`. Anyone with read access to the repository can use this endpoint. If the repository is
+// private you must use an access token with the `repo` scope. GitHub Apps must have the `actions:read`
+// permission to use this endpoint.
 //
 // GET /repos/{owner}/{repo}/actions/artifacts/{artifact_id}/{archive_format}
 func (s *Server) handleActionsDownloadArtifactRequest(args [4]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -4254,14 +4326,10 @@ func (s *Server) handleActionsDownloadArtifactRequest(args [4]string, argsEscape
 // handleActionsDownloadJobLogsForWorkflowRunRequest handles actions/download-job-logs-for-workflow-run operation.
 //
 // Gets a redirect URL to download a plain text file of logs for a workflow job. This link expires
-// after 1 minute. Look
-// for `Location:` in the response header to find the URL for the download. Anyone with read access
-// to the repository can
-// use this endpoint. If the repository is private you must use an access token with the `repo` scope.
-//
-//	GitHub Apps must
-//
-// have the `actions:read` permission to use this endpoint.
+// after 1 minute. Look for `Location:` in the response header to find the URL for the download. Anyone
+// with read access to the repository can use this endpoint. If the repository is private you must use
+// an access token with the `repo` scope. GitHub Apps must have the `actions:read` permission to use
+// this endpoint.
 //
 // GET /repos/{owner}/{repo}/actions/jobs/{job_id}/logs
 func (s *Server) handleActionsDownloadJobLogsForWorkflowRunRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -4412,13 +4480,11 @@ func (s *Server) handleActionsDownloadJobLogsForWorkflowRunRequest(args [3]strin
 
 // handleActionsDownloadWorkflowRunLogsRequest handles actions/download-workflow-run-logs operation.
 //
-// Gets a redirect URL to download an archive of log files for a workflow run. This link expires
-// after 1 minute. Look for
-// `Location:` in the response header to find the URL for the download. Anyone with read access to
-// the repository can use
-// this endpoint. If the repository is private you must use an access token with the `repo` scope.
-// GitHub Apps must have
-// the `actions:read` permission to use this endpoint.
+// Gets a redirect URL to download an archive of log files for a workflow run. This link expires after
+// 1 minute. Look for `Location:` in the response header to find the URL for the download. Anyone with
+// read access to the repository can use this endpoint. If the repository is private you must use an
+// access token with the `repo` scope. GitHub Apps must have the `actions:read` permission to use this
+// endpoint.
 //
 // GET /repos/{owner}/{repo}/actions/runs/{run_id}/logs
 func (s *Server) handleActionsDownloadWorkflowRunLogsRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -4571,10 +4637,13 @@ func (s *Server) handleActionsDownloadWorkflowRunLogsRequest(args [3]string, arg
 //
 // Adds a repository to the list of selected repositories that are enabled for GitHub Actions in an
 // organization. To use this endpoint, the organization permission policy for `enabled_repositories`
-// must be must be configured to `selected`. For more information, see "[Set GitHub Actions
-// permissions for an organization](#set-github-actions-permissions-for-an-organization)."
-// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
-// GitHub Apps must have the `administration` organization permission to use this API.
+// must be must be configured to `selected`. For more information, see
+// "[Set GitHub Actions permissions for an organization]."
+//
+// You must authenticate using an access token with the `admin:org` scope to use this endpoint. GitHub
+// Apps must have the `administration` organization permission to use this API.
+//
+// [Set GitHub Actions permissions for an organization]: #set-github-actions-permissions-for-an-organization
 //
 // PUT /orgs/{org}/actions/permissions/repositories/{repository_id}
 func (s *Server) handleActionsEnableSelectedRepositoryGithubActionsOrganizationRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -4723,8 +4792,9 @@ func (s *Server) handleActionsEnableSelectedRepositoryGithubActionsOrganizationR
 //
 // Enables a workflow and sets the `state` of the workflow to `active`. You can replace `workflow_id`
 // with the workflow file name. For example, you could use `main.yaml`.
-// You must authenticate using an access token with the `repo` scope to use this endpoint. GitHub
-// Apps must have the `actions:write` permission to use this endpoint.
+//
+// You must authenticate using an access token with the `repo` scope to use this endpoint. GitHub Apps
+// must have the `actions:write` permission to use this endpoint.
 //
 // PUT /repos/{owner}/{repo}/actions/workflows/{workflow_id}/enable
 func (s *Server) handleActionsEnableWorkflowRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -4877,10 +4947,12 @@ func (s *Server) handleActionsEnableWorkflowRequest(args [3]string, argsEscaped 
 //
 // Gets the selected actions that are allowed in an organization. To use this endpoint, the
 // organization permission policy for `allowed_actions` must be configured to `selected`. For more
-// information, see "[Set GitHub Actions permissions for an
-// organization](#set-github-actions-permissions-for-an-organization).""
-// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
-// GitHub Apps must have the `administration` organization permission to use this API.
+// information, see "[Set GitHub Actions permissions for an organization].""
+//
+// You must authenticate using an access token with the `admin:org` scope to use this endpoint. GitHub
+// Apps must have the `administration` organization permission to use this API.
+//
+// [Set GitHub Actions permissions for an organization]: #set-github-actions-permissions-for-an-organization
 //
 // GET /orgs/{org}/actions/permissions/selected-actions
 func (s *Server) handleActionsGetAllowedActionsOrganizationRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -5024,11 +5096,13 @@ func (s *Server) handleActionsGetAllowedActionsOrganizationRequest(args [1]strin
 // handleActionsGetAllowedActionsRepositoryRequest handles actions/get-allowed-actions-repository operation.
 //
 // Gets the settings for selected actions that are allowed in a repository. To use this endpoint, the
-// repository policy for `allowed_actions` must be configured to `selected`. For more information,
-// see "[Set GitHub Actions permissions for a
-// repository](#set-github-actions-permissions-for-a-repository)."
-// You must authenticate using an access token with the `repo` scope to use this endpoint. GitHub
-// Apps must have the `administration` repository permission to use this API.
+// repository policy for `allowed_actions` must be configured to `selected`. For more information, see
+// "[Set GitHub Actions permissions for a repository]."
+//
+// You must authenticate using an access token with the `repo` scope to use this endpoint. GitHub Apps
+// must have the `administration` repository permission to use this API.
+//
+// [Set GitHub Actions permissions for a repository]: #set-github-actions-permissions-for-a-repository
 //
 // GET /repos/{owner}/{repo}/actions/permissions/selected-actions
 func (s *Server) handleActionsGetAllowedActionsRepositoryRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -5175,9 +5249,9 @@ func (s *Server) handleActionsGetAllowedActionsRepositoryRequest(args [2]string,
 
 // handleActionsGetArtifactRequest handles actions/get-artifact operation.
 //
-// Gets a specific artifact for a workflow run. Anyone with read access to the repository can use
-// this endpoint. If the repository is private you must use an access token with the `repo` scope.
-// GitHub Apps must have the `actions:read` permission to use this endpoint.
+// Gets a specific artifact for a workflow run. Anyone with read access to the repository can use this
+// endpoint. If the repository is private you must use an access token with the `repo` scope. GitHub
+// Apps must have the `actions:read` permission to use this endpoint.
 //
 // GET /repos/{owner}/{repo}/actions/artifacts/{artifact_id}
 func (s *Server) handleActionsGetArtifactRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -5329,9 +5403,9 @@ func (s *Server) handleActionsGetArtifactRequest(args [3]string, argsEscaped boo
 // handleActionsGetEnvironmentPublicKeyRequest handles actions/get-environment-public-key operation.
 //
 // Get the public key for an environment, which you need to encrypt environment secrets. You need to
-// encrypt a secret before you can create or update secrets. Anyone with read access to the
-// repository can use this endpoint. If the repository is private you must use an access token with
-// the `repo` scope. GitHub Apps must have the `secrets` repository permission to use this endpoint.
+// encrypt a secret before you can create or update secrets. Anyone with read access to the repository
+// can use this endpoint. If the repository is private you must use an access token with the `repo`
+// scope. GitHub Apps must have the `secrets` repository permission to use this endpoint.
 //
 // GET /repositories/{repository_id}/environments/{environment_name}/secrets/public-key
 func (s *Server) handleActionsGetEnvironmentPublicKeyRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -5478,9 +5552,9 @@ func (s *Server) handleActionsGetEnvironmentPublicKeyRequest(args [2]string, arg
 
 // handleActionsGetEnvironmentSecretRequest handles actions/get-environment-secret operation.
 //
-// Gets a single environment secret without revealing its encrypted value. You must authenticate
-// using an access token with the `repo` scope to use this endpoint. GitHub Apps must have the
-// `secrets` repository permission to use this endpoint.
+// Gets a single environment secret without revealing its encrypted value. You must authenticate using
+// an access token with the `repo` scope to use this endpoint. GitHub Apps must have the `secrets`
+// repository permission to use this endpoint.
 //
 // GET /repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}
 func (s *Server) handleActionsGetEnvironmentSecretRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -5632,8 +5706,9 @@ func (s *Server) handleActionsGetEnvironmentSecretRequest(args [3]string, argsEs
 // handleActionsGetGithubActionsPermissionsOrganizationRequest handles actions/get-github-actions-permissions-organization operation.
 //
 // Gets the GitHub Actions permissions policy for repositories and allowed actions in an organization.
-// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
-// GitHub Apps must have the `administration` organization permission to use this API.
+//
+// You must authenticate using an access token with the `admin:org` scope to use this endpoint. GitHub
+// Apps must have the `administration` organization permission to use this API.
 //
 // GET /orgs/{org}/actions/permissions
 func (s *Server) handleActionsGetGithubActionsPermissionsOrganizationRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -5778,8 +5853,9 @@ func (s *Server) handleActionsGetGithubActionsPermissionsOrganizationRequest(arg
 //
 // Gets the GitHub Actions permissions policy for a repository, including whether GitHub Actions is
 // enabled and the actions allowed to run in the repository.
-// You must authenticate using an access token with the `repo` scope to use this
-// endpoint. GitHub Apps must have the `administration` repository permission to use this API.
+//
+// You must authenticate using an access token with the `repo` scope to use this endpoint. GitHub Apps
+// must have the `administration` repository permission to use this API.
 //
 // GET /repos/{owner}/{repo}/actions/permissions
 func (s *Server) handleActionsGetGithubActionsPermissionsRepositoryRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -6079,10 +6155,9 @@ func (s *Server) handleActionsGetJobForWorkflowRunRequest(args [3]string, argsEs
 
 // handleActionsGetOrgPublicKeyRequest handles actions/get-org-public-key operation.
 //
-// Gets your public key, which you need to encrypt secrets. You need to encrypt a secret before you
-// can create or update secrets. You must authenticate using an access token with the `admin:org`
-// scope to use this endpoint. GitHub Apps must have the `secrets` organization permission to use
-// this endpoint.
+// Gets your public key, which you need to encrypt secrets. You need to encrypt a secret before you can
+// create or update secrets. You must authenticate using an access token with the `admin:org` scope to
+// use this endpoint. GitHub Apps must have the `secrets` organization permission to use this endpoint.
 //
 // GET /orgs/{org}/actions/secrets/public-key
 func (s *Server) handleActionsGetOrgPublicKeyRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -6225,9 +6300,9 @@ func (s *Server) handleActionsGetOrgPublicKeyRequest(args [1]string, argsEscaped
 
 // handleActionsGetOrgSecretRequest handles actions/get-org-secret operation.
 //
-// Gets a single organization secret without revealing its encrypted value. You must authenticate
-// using an access token with the `admin:org` scope to use this endpoint. GitHub Apps must have the
-// `secrets` organization permission to use this endpoint.
+// Gets a single organization secret without revealing its encrypted value. You must authenticate using
+// an access token with the `admin:org` scope to use this endpoint. GitHub Apps must have the `secrets`
+// organization permission to use this endpoint.
 //
 // GET /orgs/{org}/actions/secrets/{secret_name}
 func (s *Server) handleActionsGetOrgSecretRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -6374,10 +6449,10 @@ func (s *Server) handleActionsGetOrgSecretRequest(args [2]string, argsEscaped bo
 
 // handleActionsGetRepoPublicKeyRequest handles actions/get-repo-public-key operation.
 //
-// Gets your public key, which you need to encrypt secrets. You need to encrypt a secret before you
-// can create or update secrets. Anyone with read access to the repository can use this endpoint. If
-// the repository is private you must use an access token with the `repo` scope. GitHub Apps must
-// have the `secrets` repository permission to use this endpoint.
+// Gets your public key, which you need to encrypt secrets. You need to encrypt a secret before you can
+// create or update secrets. Anyone with read access to the repository can use this endpoint. If the
+// repository is private you must use an access token with the `repo` scope. GitHub Apps must have the
+// `secrets` repository permission to use this endpoint.
 //
 // GET /repos/{owner}/{repo}/actions/secrets/public-key
 func (s *Server) handleActionsGetRepoPublicKeyRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -6678,8 +6753,8 @@ func (s *Server) handleActionsGetRepoSecretRequest(args [3]string, argsEscaped b
 // handleActionsGetReviewsForRunRequest handles actions/get-reviews-for-run operation.
 //
 // Anyone with read access to the repository can use this endpoint. If the repository is private, you
-// must use an access token with the `repo` scope. GitHub Apps must have the `actions:read`
-// permission to use this endpoint.
+// must use an access token with the `repo` scope. GitHub Apps must have the `actions:read` permission
+// to use this endpoint.
 //
 // GET /repos/{owner}/{repo}/actions/runs/{run_id}/approvals
 func (s *Server) handleActionsGetReviewsForRunRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -6831,6 +6906,7 @@ func (s *Server) handleActionsGetReviewsForRunRequest(args [3]string, argsEscape
 // handleActionsGetSelfHostedRunnerForOrgRequest handles actions/get-self-hosted-runner-for-org operation.
 //
 // Gets a specific self-hosted runner configured in an organization.
+//
 // You must authenticate using an access token with the `admin:org` scope to use this endpoint.
 //
 // GET /orgs/{org}/actions/runners/{runner_id}
@@ -6979,8 +7055,8 @@ func (s *Server) handleActionsGetSelfHostedRunnerForOrgRequest(args [2]string, a
 // handleActionsGetSelfHostedRunnerForRepoRequest handles actions/get-self-hosted-runner-for-repo operation.
 //
 // Gets a specific self-hosted runner configured in a repository.
-// You must authenticate using an access token with the `repo` scope to use this
-// endpoint.
+//
+// You must authenticate using an access token with the `repo` scope to use this endpoint.
 //
 // GET /repos/{owner}/{repo}/actions/runners/{runner_id}
 func (s *Server) handleActionsGetSelfHostedRunnerForRepoRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -7132,12 +7208,15 @@ func (s *Server) handleActionsGetSelfHostedRunnerForRepoRequest(args [3]string, 
 // handleActionsGetSelfHostedRunnerGroupForOrgRequest handles actions/get-self-hosted-runner-group-for-org operation.
 //
 // The self-hosted runner groups REST API is available with GitHub Enterprise Cloud. For more
-// information, see "[GitHub's products](https://docs.github.
-// com/github/getting-started-with-github/githubs-products)."
+// information, see "[GitHub's products]."
+//
 // Gets a specific self-hosted runner group for an organization.
+//
 // You must authenticate using an access token with the `admin:org` scope to use this endpoint.
 //
 // GET /orgs/{org}/actions/runner-groups/{runner_group_id}
+//
+// [GitHub's products]: https://docs.github.com/github/getting-started-with-github/githubs-products
 func (s *Server) handleActionsGetSelfHostedRunnerGroupForOrgRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -7284,8 +7363,8 @@ func (s *Server) handleActionsGetSelfHostedRunnerGroupForOrgRequest(args [2]stri
 //
 // Gets a specific workflow. You can replace `workflow_id` with the workflow file name. For example,
 // you could use `main.yaml`. Anyone with read access to the repository can use this endpoint. If the
-// repository is private you must use an access token with the `repo` scope. GitHub Apps must have
-// the `actions:read` permission to use this endpoint.
+// repository is private you must use an access token with the `repo` scope. GitHub Apps must have the
+// `actions:read` permission to use this endpoint.
 //
 // GET /repos/{owner}/{repo}/actions/workflows/{workflow_id}
 func (s *Server) handleActionsGetWorkflowRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -7437,8 +7516,8 @@ func (s *Server) handleActionsGetWorkflowRequest(args [3]string, argsEscaped boo
 // handleActionsGetWorkflowRunRequest handles actions/get-workflow-run operation.
 //
 // Gets a specific workflow run. Anyone with read access to the repository can use this endpoint. If
-// the repository is private you must use an access token with the `repo` scope. GitHub Apps must
-// have the `actions:read` permission to use this endpoint.
+// the repository is private you must use an access token with the `repo` scope. GitHub Apps must have
+// the `actions:read` permission to use this endpoint.
 //
 // GET /repos/{owner}/{repo}/actions/runs/{run_id}
 func (s *Server) handleActionsGetWorkflowRunRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -7589,18 +7668,19 @@ func (s *Server) handleActionsGetWorkflowRunRequest(args [3]string, argsEscaped 
 
 // handleActionsGetWorkflowRunUsageRequest handles actions/get-workflow-run-usage operation.
 //
-// Gets the number of billable minutes and total run time for a specific workflow run. Billable
-// minutes only apply to workflows in private repositories that use GitHub-hosted runners. Usage is
-// listed for each GitHub-hosted runner operating system in milliseconds. Any job re-runs are also
-// included in the usage. The usage does not include the multiplier for macOS and Windows runners and
-// is not rounded up to the nearest whole minute. For more information, see "[Managing billing for
-// GitHub Actions](https://help.github.
-// com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-actions)".
+// Gets the number of billable minutes and total run time for a specific workflow run. Billable minutes
+// only apply to workflows in private repositories that use GitHub-hosted runners. Usage is listed for
+// each GitHub-hosted runner operating system in milliseconds. Any job re-runs are also included in the
+// usage. The usage does not include the multiplier for macOS and Windows runners and is not rounded up
+// to the nearest whole minute. For more information, see "[Managing billing for GitHub Actions]".
+//
 // Anyone with read access to the repository can use this endpoint. If the repository is private you
-// must use an access token with the `repo` scope. GitHub Apps must have the `actions:read`
-// permission to use this endpoint.
+// must use an access token with the `repo` scope. GitHub Apps must have the `actions:read` permission
+// to use this endpoint.
 //
 // GET /repos/{owner}/{repo}/actions/runs/{run_id}/timing
+//
+// [Managing billing for GitHub Actions]: https://help.github.com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-actions
 func (s *Server) handleActionsGetWorkflowRunUsageRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -7751,17 +7831,19 @@ func (s *Server) handleActionsGetWorkflowRunUsageRequest(args [3]string, argsEsc
 //
 // Gets the number of billable minutes used by a specific workflow during the current billing cycle.
 // Billable minutes only apply to workflows in private repositories that use GitHub-hosted runners.
-// Usage is listed for each GitHub-hosted runner operating system in milliseconds. Any job re-runs
-// are also included in the usage. The usage does not include the multiplier for macOS and Windows
-// runners and is not rounded up to the nearest whole minute. For more information, see "[Managing
-// billing for GitHub Actions](https://help.github.
-// com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-actions)".
+// Usage is listed for each GitHub-hosted runner operating system in milliseconds. Any job re-runs are
+// also included in the usage. The usage does not include the multiplier for macOS and Windows runners
+// and is not rounded up to the nearest whole minute. For more information, see
+// "[Managing billing for GitHub Actions]".
+//
 // You can replace `workflow_id` with the workflow file name. For example, you could use `main.yaml`.
 // Anyone with read access to the repository can use this endpoint. If the repository is private you
-// must use an access token with the `repo` scope. GitHub Apps must have the `actions:read`
-// permission to use this endpoint.
+// must use an access token with the `repo` scope. GitHub Apps must have the `actions:read` permission
+// to use this endpoint.
 //
 // GET /repos/{owner}/{repo}/actions/workflows/{workflow_id}/timing
+//
+// [Managing billing for GitHub Actions]: https://help.github.com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-actions
 func (s *Server) handleActionsGetWorkflowUsageRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -8068,8 +8150,8 @@ func (s *Server) handleActionsListArtifactsForRepoRequest(args [2]string, argsEs
 // handleActionsListEnvironmentSecretsRequest handles actions/list-environment-secrets operation.
 //
 // Lists all secrets available in an environment without revealing their encrypted values. You must
-// authenticate using an access token with the `repo` scope to use this endpoint. GitHub Apps must
-// have the `secrets` repository permission to use this endpoint.
+// authenticate using an access token with the `repo` scope to use this endpoint. GitHub Apps must have
+// the `secrets` repository permission to use this endpoint.
 //
 // GET /repositories/{repository_id}/environments/{environment_name}/secrets
 func (s *Server) handleActionsListEnvironmentSecretsRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -8225,12 +8307,13 @@ func (s *Server) handleActionsListEnvironmentSecretsRequest(args [2]string, args
 // handleActionsListJobsForWorkflowRunRequest handles actions/list-jobs-for-workflow-run operation.
 //
 // Lists jobs for a workflow run. Anyone with read access to the repository can use this endpoint. If
-// the repository is private you must use an access token with the `repo` scope. GitHub Apps must
-// have the `actions:read` permission to use this endpoint. You can use parameters to narrow the list
-// of results. For more information about using parameters, see [Parameters](https://docs.github.
-// com/rest/overview/resources-in-the-rest-api#parameters).
+// the repository is private you must use an access token with the `repo` scope. GitHub Apps must have
+// the `actions:read` permission to use this endpoint. You can use parameters to narrow the list of
+// results. For more information about using parameters, see [Parameters].
 //
 // GET /repos/{owner}/{repo}/actions/runs/{run_id}/jobs
+//
+// [Parameters]: https://docs.github.com/rest/overview/resources-in-the-rest-api#parameters
 func (s *Server) handleActionsListJobsForWorkflowRunRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -8392,8 +8475,8 @@ func (s *Server) handleActionsListJobsForWorkflowRunRequest(args [3]string, args
 // handleActionsListOrgSecretsRequest handles actions/list-org-secrets operation.
 //
 // Lists all secrets available in an organization without revealing their encrypted values. You must
-// authenticate using an access token with the `admin:org` scope to use this endpoint. GitHub Apps
-// must have the `secrets` organization permission to use this endpoint.
+// authenticate using an access token with the `admin:org` scope to use this endpoint. GitHub Apps must
+// have the `secrets` organization permission to use this endpoint.
 //
 // GET /orgs/{org}/actions/secrets
 func (s *Server) handleActionsListOrgSecretsRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -8545,12 +8628,15 @@ func (s *Server) handleActionsListOrgSecretsRequest(args [1]string, argsEscaped 
 // handleActionsListRepoAccessToSelfHostedRunnerGroupInOrgRequest handles actions/list-repo-access-to-self-hosted-runner-group-in-org operation.
 //
 // The self-hosted runner groups REST API is available with GitHub Enterprise Cloud and GitHub
-// Enterprise Server. For more information, see "[GitHub's products](https://docs.github.
-// com/github/getting-started-with-github/githubs-products)."
+// Enterprise Server. For more information, see "[GitHub's products]."
+//
 // Lists the repositories with access to a self-hosted runner group configured in an organization.
+//
 // You must authenticate using an access token with the `admin:org` scope to use this endpoint.
 //
 // GET /orgs/{org}/actions/runner-groups/{runner_group_id}/repositories
+//
+// [GitHub's products]: https://docs.github.com/github/getting-started-with-github/githubs-products
 func (s *Server) handleActionsListRepoAccessToSelfHostedRunnerGroupInOrgRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -8704,8 +8790,8 @@ func (s *Server) handleActionsListRepoAccessToSelfHostedRunnerGroupInOrgRequest(
 // handleActionsListRepoSecretsRequest handles actions/list-repo-secrets operation.
 //
 // Lists all secrets available in a repository without revealing their encrypted values. You must
-// authenticate using an access token with the `repo` scope to use this endpoint. GitHub Apps must
-// have the `secrets` repository permission to use this endpoint.
+// authenticate using an access token with the `repo` scope to use this endpoint. GitHub Apps must have
+// the `secrets` repository permission to use this endpoint.
 //
 // GET /repos/{owner}/{repo}/actions/secrets
 func (s *Server) handleActionsListRepoSecretsRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -9018,6 +9104,7 @@ func (s *Server) handleActionsListRepoWorkflowsRequest(args [2]string, argsEscap
 // handleActionsListRunnerApplicationsForOrgRequest handles actions/list-runner-applications-for-org operation.
 //
 // Lists binaries for the runner application that you can download and run.
+//
 // You must authenticate using an access token with the `admin:org` scope to use this endpoint.
 //
 // GET /orgs/{org}/actions/runners/downloads
@@ -9162,6 +9249,7 @@ func (s *Server) handleActionsListRunnerApplicationsForOrgRequest(args [1]string
 // handleActionsListRunnerApplicationsForRepoRequest handles actions/list-runner-applications-for-repo operation.
 //
 // Lists binaries for the runner application that you can download and run.
+//
 // You must authenticate using an access token with the `repo` scope to use this endpoint.
 //
 // GET /repos/{owner}/{repo}/actions/runners/downloads
@@ -9310,9 +9398,9 @@ func (s *Server) handleActionsListRunnerApplicationsForRepoRequest(args [2]strin
 // handleActionsListSelectedReposForOrgSecretRequest handles actions/list-selected-repos-for-org-secret operation.
 //
 // Lists all repositories that have been selected when the `visibility` for repository access to a
-// secret is set to `selected`. You must authenticate using an access token with the `admin:org`
-// scope to use this endpoint. GitHub Apps must have the `secrets` organization permission to use
-// this endpoint.
+// secret is set to `selected`. You must authenticate using an access token with the `admin:org` scope
+// to use this endpoint. GitHub Apps must have the `secrets` organization permission to use this
+// endpoint.
 //
 // GET /orgs/{org}/actions/secrets/{secret_name}/repositories
 func (s *Server) handleActionsListSelectedReposForOrgSecretRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -9467,12 +9555,14 @@ func (s *Server) handleActionsListSelectedReposForOrgSecretRequest(args [2]strin
 
 // handleActionsListSelectedRepositoriesEnabledGithubActionsOrganizationRequest handles actions/list-selected-repositories-enabled-github-actions-organization operation.
 //
-// Lists the selected repositories that are enabled for GitHub Actions in an organization. To use
-// this endpoint, the organization permission policy for `enabled_repositories` must be configured to
-// `selected`. For more information, see "[Set GitHub Actions permissions for an
-// organization](#set-github-actions-permissions-for-an-organization)."
-// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
-// GitHub Apps must have the `administration` organization permission to use this API.
+// Lists the selected repositories that are enabled for GitHub Actions in an organization. To use this
+// endpoint, the organization permission policy for `enabled_repositories` must be configured to
+// `selected`. For more information, see "[Set GitHub Actions permissions for an organization]."
+//
+// You must authenticate using an access token with the `admin:org` scope to use this endpoint. GitHub
+// Apps must have the `administration` organization permission to use this API.
+//
+// [Set GitHub Actions permissions for an organization]: #set-github-actions-permissions-for-an-organization
 //
 // GET /orgs/{org}/actions/permissions/repositories
 func (s *Server) handleActionsListSelectedRepositoriesEnabledGithubActionsOrganizationRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -9624,12 +9714,15 @@ func (s *Server) handleActionsListSelectedRepositoriesEnabledGithubActionsOrgani
 // handleActionsListSelfHostedRunnerGroupsForOrgRequest handles actions/list-self-hosted-runner-groups-for-org operation.
 //
 // The self-hosted runner groups REST API is available with GitHub Enterprise Cloud. For more
-// information, see "[GitHub's products](https://docs.github.
-// com/github/getting-started-with-github/githubs-products)."
+// information, see "[GitHub's products]."
+//
 // Lists all self-hosted runner groups configured in an organization and inherited from an enterprise.
+//
 // You must authenticate using an access token with the `admin:org` scope to use this endpoint.
 //
 // GET /orgs/{org}/actions/runner-groups
+//
+// [GitHub's products]: https://docs.github.com/github/getting-started-with-github/githubs-products
 func (s *Server) handleActionsListSelfHostedRunnerGroupsForOrgRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -9779,6 +9872,7 @@ func (s *Server) handleActionsListSelfHostedRunnerGroupsForOrgRequest(args [1]st
 // handleActionsListSelfHostedRunnersForOrgRequest handles actions/list-self-hosted-runners-for-org operation.
 //
 // Lists all self-hosted runners configured in an organization.
+//
 // You must authenticate using an access token with the `admin:org` scope to use this endpoint.
 //
 // GET /orgs/{org}/actions/runners
@@ -10087,12 +10181,15 @@ func (s *Server) handleActionsListSelfHostedRunnersForRepoRequest(args [2]string
 // handleActionsListSelfHostedRunnersInGroupForOrgRequest handles actions/list-self-hosted-runners-in-group-for-org operation.
 //
 // The self-hosted runner groups REST API is available with GitHub Enterprise Cloud. For more
-// information, see "[GitHub's products](https://docs.github.
-// com/github/getting-started-with-github/githubs-products)."
+// information, see "[GitHub's products]."
+//
 // Lists self-hosted runners that are in a specific organization group.
+//
 // You must authenticate using an access token with the `admin:org` scope to use this endpoint.
 //
 // GET /orgs/{org}/actions/runner-groups/{runner_group_id}/runners
+//
+// [GitHub's products]: https://docs.github.com/github/getting-started-with-github/githubs-products
 func (s *Server) handleActionsListSelfHostedRunnersInGroupForOrgRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -10245,9 +10342,9 @@ func (s *Server) handleActionsListSelfHostedRunnersInGroupForOrgRequest(args [2]
 
 // handleActionsListWorkflowRunArtifactsRequest handles actions/list-workflow-run-artifacts operation.
 //
-// Lists artifacts for a workflow run. Anyone with read access to the repository can use this
-// endpoint. If the repository is private you must use an access token with the `repo` scope. GitHub
-// Apps must have the `actions:read` permission to use this endpoint.
+// Lists artifacts for a workflow run. Anyone with read access to the repository can use this endpoint.
+// If the repository is private you must use an access token with the `repo` scope. GitHub Apps must
+// have the `actions:read` permission to use this endpoint.
 //
 // GET /repos/{owner}/{repo}/actions/runs/{run_id}/artifacts
 func (s *Server) handleActionsListWorkflowRunArtifactsRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -10408,12 +10505,14 @@ func (s *Server) handleActionsListWorkflowRunArtifactsRequest(args [3]string, ar
 //
 // List all workflow runs for a workflow. You can replace `workflow_id` with the workflow file name.
 // For example, you could use `main.yaml`. You can use parameters to narrow the list of results. For
-// more information about using parameters, see [Parameters](https://docs.github.
-// com/rest/overview/resources-in-the-rest-api#parameters).
+// more information about using parameters, see [Parameters].
+//
 // Anyone with read access to the repository can use this endpoint. If the repository is private you
 // must use an access token with the `repo` scope.
 //
 // GET /repos/{owner}/{repo}/actions/workflows/{workflow_id}/runs
+//
+// [Parameters]: https://docs.github.com/rest/overview/resources-in-the-rest-api#parameters
 func (s *Server) handleActionsListWorkflowRunsRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -10590,14 +10689,16 @@ func (s *Server) handleActionsListWorkflowRunsRequest(args [3]string, argsEscape
 
 // handleActionsListWorkflowRunsForRepoRequest handles actions/list-workflow-runs-for-repo operation.
 //
-// Lists all workflow runs for a repository. You can use parameters to narrow the list of results.
-// For more information about using parameters, see [Parameters](https://docs.github.
-// com/rest/overview/resources-in-the-rest-api#parameters).
+// Lists all workflow runs for a repository. You can use parameters to narrow the list of results. For
+// more information about using parameters, see [Parameters].
+//
 // Anyone with read access to the repository can use this endpoint. If the repository is private you
-// must use an access token with the `repo` scope. GitHub Apps must have the `actions:read`
-// permission to use this endpoint.
+// must use an access token with the `repo` scope. GitHub Apps must have the `actions:read` permission
+// to use this endpoint.
 //
 // GET /repos/{owner}/{repo}/actions/runs
+//
+// [Parameters]: https://docs.github.com/rest/overview/resources-in-the-rest-api#parameters
 func (s *Server) handleActionsListWorkflowRunsForRepoRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -10770,16 +10871,18 @@ func (s *Server) handleActionsListWorkflowRunsForRepoRequest(args [2]string, arg
 
 // handleActionsReRunWorkflowRequest handles actions/re-run-workflow operation.
 //
-// **Deprecation Notice:** This endpoint is deprecated.
-// We recommend migrating your existing code to use the new [retry workflow](https://docs.github.
-// com/rest/reference/actions#retry-a-workflow) endpoint.
-// Re-runs your workflow run using its `id`. You must authenticate using
-// an access token with the `repo` scope to use this endpoint. GitHub Apps must have
-// the `actions:write` permission to use this endpoint.
+// Deprecation Notice: This endpoint is deprecated. We recommend migrating your existing code to use
+// the new [retry workflow] endpoint.
+//
+// Re-runs your workflow run using its `id`. You must authenticate using an access token with the
+// `repo` scope to use this endpoint. GitHub Apps must have the `actions:write` permission to use this
+// endpoint.
 //
 // Deprecated: schema marks this operation as deprecated.
 //
 // POST /repos/{owner}/{repo}/actions/runs/{run_id}/rerun
+//
+// [retry workflow]: https://docs.github.com/rest/reference/actions#retry-a-workflow
 func (s *Server) handleActionsReRunWorkflowRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -10929,13 +11032,16 @@ func (s *Server) handleActionsReRunWorkflowRequest(args [3]string, argsEscaped b
 // handleActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgRequest handles actions/remove-repo-access-to-self-hosted-runner-group-in-org operation.
 //
 // The self-hosted runner groups REST API is available with GitHub Enterprise Cloud. For more
-// information, see "[GitHub's products](https://docs.github.
-// com/github/getting-started-with-github/githubs-products)."
+// information, see "[GitHub's products]."
+//
 // Removes a repository from the list of selected repositories that can access a self-hosted runner
 // group. The runner group must have `visibility` set to `selected`. For more information, see
-// "[Create a self-hosted runner group for an
-// organization](#create-a-self-hosted-runner-group-for-an-organization)."
+// "[Create a self-hosted runner group for an organization]."
+//
 // You must authenticate using an access token with the `admin:org` scope to use this endpoint.
+//
+// [GitHub's products]: https://docs.github.com/github/getting-started-with-github/githubs-products
+// [Create a self-hosted runner group for an organization]: #create-a-self-hosted-runner-group-for-an-organization
 //
 // DELETE /orgs/{org}/actions/runner-groups/{runner_group_id}/repositories/{repository_id}
 func (s *Server) handleActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -11086,13 +11192,14 @@ func (s *Server) handleActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgReques
 
 // handleActionsRemoveSelectedRepoFromOrgSecretRequest handles actions/remove-selected-repo-from-org-secret operation.
 //
-// Removes a repository from an organization secret when the `visibility` for repository access is
-// set to `selected`. The visibility is set when you [Create or update an organization
-// secret](https://docs.github.com/rest/reference/actions#create-or-update-an-organization-secret).
-// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
-// GitHub Apps must have the `secrets` organization permission to use this endpoint.
+// Removes a repository from an organization secret when the `visibility` for repository access is set
+// to `selected`. The visibility is set when you [Create or update an organization secret]. You must
+// authenticate using an access token with the `admin:org` scope to use this endpoint. GitHub Apps must
+// have the `secrets` organization permission to use this endpoint.
 //
 // DELETE /orgs/{org}/actions/secrets/{secret_name}/repositories/{repository_id}
+//
+// [Create or update an organization secret]: https://docs.github.com/rest/reference/actions#create-or-update-an-organization-secret
 func (s *Server) handleActionsRemoveSelectedRepoFromOrgSecretRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -11242,13 +11349,16 @@ func (s *Server) handleActionsRemoveSelectedRepoFromOrgSecretRequest(args [3]str
 // handleActionsRemoveSelfHostedRunnerFromGroupForOrgRequest handles actions/remove-self-hosted-runner-from-group-for-org operation.
 //
 // The self-hosted runner groups REST API is available with GitHub Enterprise Cloud. For more
-// information, see "[GitHub's products](https://docs.github.
-// com/github/getting-started-with-github/githubs-products)."
-// Removes a self-hosted runner from a group configured in an organization. The runner is then
-// returned to the default group.
+// information, see "[GitHub's products]."
+//
+// Removes a self-hosted runner from a group configured in an organization. The runner is then returned
+// to the default group.
+//
 // You must authenticate using an access token with the `admin:org` scope to use this endpoint.
 //
 // DELETE /orgs/{org}/actions/runner-groups/{runner_group_id}/runners/{runner_id}
+//
+// [GitHub's products]: https://docs.github.com/github/getting-started-with-github/githubs-products
 func (s *Server) handleActionsRemoveSelfHostedRunnerFromGroupForOrgRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -11397,9 +11507,9 @@ func (s *Server) handleActionsRemoveSelfHostedRunnerFromGroupForOrgRequest(args 
 
 // handleActionsRetryWorkflowRequest handles actions/retry-workflow operation.
 //
-// Retry your workflow run using its `id`. You must authenticate using an access token with the
-// `repo` scope to use this endpoint. GitHub Apps must have the `actions:write` permission to use
-// this endpoint.
+// Retry your workflow run using its `id`. You must authenticate using an access token with the `repo`
+// scope to use this endpoint. GitHub Apps must have the `actions:write` permission to use this
+// endpoint.
 //
 // POST /repos/{owner}/{repo}/actions/runs/{run_id}/retry
 func (s *Server) handleActionsRetryWorkflowRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -11551,6 +11661,7 @@ func (s *Server) handleActionsRetryWorkflowRequest(args [3]string, argsEscaped b
 // handleActionsReviewPendingDeploymentsForRunRequest handles actions/review-pending-deployments-for-run operation.
 //
 // Approve or reject pending deployments that are waiting on approval by a required reviewer.
+//
 // Anyone with read access to the repository contents and deployments can use this endpoint.
 //
 // POST /repos/{owner}/{repo}/actions/runs/{run_id}/pending_deployments
@@ -11718,16 +11829,20 @@ func (s *Server) handleActionsReviewPendingDeploymentsForRunRequest(args [3]stri
 // handleActionsSetAllowedActionsOrganizationRequest handles actions/set-allowed-actions-organization operation.
 //
 // Sets the actions that are allowed in an organization. To use this endpoint, the organization
-// permission policy for `allowed_actions` must be configured to `selected`. For more information,
-// see "[Set GitHub Actions permissions for an
-// organization](#set-github-actions-permissions-for-an-organization)."
+// permission policy for `allowed_actions` must be configured to `selected`. For more information, see
+// "[Set GitHub Actions permissions for an organization]."
+//
 // If the organization belongs to an enterprise that has `selected` actions set at the enterprise
 // level, then you cannot override any of the enterprise's allowed actions settings.
+//
 // To use the `patterns_allowed` setting for private repositories, the organization must belong to an
 // enterprise. If the organization does not belong to an enterprise, then the `patterns_allowed`
 // setting only applies to public repositories in the organization.
-// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
-// GitHub Apps must have the `administration` organization permission to use this API.
+//
+// You must authenticate using an access token with the `admin:org` scope to use this endpoint. GitHub
+// Apps must have the `administration` organization permission to use this API.
+//
+// [Set GitHub Actions permissions for an organization]: #set-github-actions-permissions-for-an-organization
 //
 // PUT /orgs/{org}/actions/permissions/selected-actions
 func (s *Server) handleActionsSetAllowedActionsOrganizationRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -11886,15 +12001,20 @@ func (s *Server) handleActionsSetAllowedActionsOrganizationRequest(args [1]strin
 // handleActionsSetAllowedActionsRepositoryRequest handles actions/set-allowed-actions-repository operation.
 //
 // Sets the actions that are allowed in a repository. To use this endpoint, the repository permission
-// policy for `allowed_actions` must be configured to `selected`. For more information, see "[Set
-// GitHub Actions permissions for a repository](#set-github-actions-permissions-for-a-repository)."
+// policy for `allowed_actions` must be configured to `selected`. For more information, see
+// "[Set GitHub Actions permissions for a repository]."
+//
 // If the repository belongs to an organization or enterprise that has `selected` actions set at the
 // organization or enterprise levels, then you cannot override any of the allowed actions settings.
+//
 // To use the `patterns_allowed` setting for private repositories, the repository must belong to an
-// enterprise. If the repository does not belong to an enterprise, then the `patterns_allowed`
-// setting only applies to public repositories.
-// You must authenticate using an access token with the `repo` scope to use this endpoint. GitHub
-// Apps must have the `administration` repository permission to use this API.
+// enterprise. If the repository does not belong to an enterprise, then the `patterns_allowed` setting
+// only applies to public repositories.
+//
+// You must authenticate using an access token with the `repo` scope to use this endpoint. GitHub Apps
+// must have the `administration` repository permission to use this API.
+//
+// [Set GitHub Actions permissions for a repository]: #set-github-actions-permissions-for-a-repository
 //
 // PUT /repos/{owner}/{repo}/actions/permissions/selected-actions
 func (s *Server) handleActionsSetAllowedActionsRepositoryRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -12057,11 +12177,13 @@ func (s *Server) handleActionsSetAllowedActionsRepositoryRequest(args [2]string,
 // handleActionsSetGithubActionsPermissionsOrganizationRequest handles actions/set-github-actions-permissions-organization operation.
 //
 // Sets the GitHub Actions permissions policy for repositories and allowed actions in an organization.
-// If the organization belongs to an enterprise that has set restrictive permissions at the
-// enterprise level, such as `allowed_actions` to `selected` actions, then you cannot override them
-// for the organization.
-// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
-// GitHub Apps must have the `administration` organization permission to use this API.
+//
+// If the organization belongs to an enterprise that has set restrictive permissions at the enterprise
+// level, such as `allowed_actions` to `selected` actions, then you cannot override them for the
+// organization.
+//
+// You must authenticate using an access token with the `admin:org` scope to use this endpoint. GitHub
+// Apps must have the `administration` organization permission to use this API.
 //
 // PUT /orgs/{org}/actions/permissions
 func (s *Server) handleActionsSetGithubActionsPermissionsOrganizationRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -12221,11 +12343,13 @@ func (s *Server) handleActionsSetGithubActionsPermissionsOrganizationRequest(arg
 //
 // Sets the GitHub Actions permissions policy for enabling GitHub Actions and allowed actions in the
 // repository.
+//
 // If the repository belongs to an organization or enterprise that has set restrictive permissions at
 // the organization or enterprise levels, such as `allowed_actions` to `selected` actions, then you
 // cannot override them for the repository.
-// You must authenticate using an access token with the `repo` scope to use this endpoint. GitHub
-// Apps must have the `administration` repository permission to use this API.
+//
+// You must authenticate using an access token with the `repo` scope to use this endpoint. GitHub Apps
+// must have the `administration` repository permission to use this API.
 //
 // PUT /repos/{owner}/{repo}/actions/permissions
 func (s *Server) handleActionsSetGithubActionsPermissionsRepositoryRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -12388,13 +12512,16 @@ func (s *Server) handleActionsSetGithubActionsPermissionsRepositoryRequest(args 
 // handleActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest handles actions/set-repo-access-to-self-hosted-runner-group-in-org operation.
 //
 // The self-hosted runner groups REST API is available with GitHub Enterprise Cloud. For more
-// information, see "[GitHub's products](https://docs.github.
-// com/github/getting-started-with-github/githubs-products)."
+// information, see "[GitHub's products]."
+//
 // Replaces the list of repositories that have access to a self-hosted runner group configured in an
 // organization.
+//
 // You must authenticate using an access token with the `admin:org` scope to use this endpoint.
 //
 // PUT /orgs/{org}/actions/runner-groups/{runner_group_id}/repositories
+//
+// [GitHub's products]: https://docs.github.com/github/getting-started-with-github/githubs-products
 func (s *Server) handleActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -12554,13 +12681,14 @@ func (s *Server) handleActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(a
 
 // handleActionsSetSelectedReposForOrgSecretRequest handles actions/set-selected-repos-for-org-secret operation.
 //
-// Replaces all repositories for an organization secret when the `visibility` for repository access
-// is set to `selected`. The visibility is set when you [Create or update an organization
-// secret](https://docs.github.com/rest/reference/actions#create-or-update-an-organization-secret).
-// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
-// GitHub Apps must have the `secrets` organization permission to use this endpoint.
+// Replaces all repositories for an organization secret when the `visibility` for repository access is
+// set to `selected`. The visibility is set when you [Create or update an organization secret]. You
+// must authenticate using an access token with the `admin:org` scope to use this endpoint. GitHub Apps
+// must have the `secrets` organization permission to use this endpoint.
 //
 // PUT /orgs/{org}/actions/secrets/{secret_name}/repositories
+//
+// [Create or update an organization secret]: https://docs.github.com/rest/reference/actions#create-or-update-an-organization-secret
 func (s *Server) handleActionsSetSelectedReposForOrgSecretRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -12722,10 +12850,13 @@ func (s *Server) handleActionsSetSelectedReposForOrgSecretRequest(args [2]string
 //
 // Replaces the list of selected repositories that are enabled for GitHub Actions in an organization.
 // To use this endpoint, the organization permission policy for `enabled_repositories` must be
-// configured to `selected`. For more information, see "[Set GitHub Actions permissions for an
-// organization](#set-github-actions-permissions-for-an-organization)."
-// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
-// GitHub Apps must have the `administration` organization permission to use this API.
+// configured to `selected`. For more information, see
+// "[Set GitHub Actions permissions for an organization]."
+//
+// You must authenticate using an access token with the `admin:org` scope to use this endpoint. GitHub
+// Apps must have the `administration` organization permission to use this API.
+//
+// [Set GitHub Actions permissions for an organization]: #set-github-actions-permissions-for-an-organization
 //
 // PUT /orgs/{org}/actions/permissions/repositories
 func (s *Server) handleActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -12884,12 +13015,15 @@ func (s *Server) handleActionsSetSelectedRepositoriesEnabledGithubActionsOrganiz
 // handleActionsSetSelfHostedRunnersInGroupForOrgRequest handles actions/set-self-hosted-runners-in-group-for-org operation.
 //
 // The self-hosted runner groups REST API is available with GitHub Enterprise Cloud. For more
-// information, see "[GitHub's products](https://docs.github.
-// com/github/getting-started-with-github/githubs-products)."
+// information, see "[GitHub's products]."
+//
 // Replaces the list of self-hosted runners that are part of an organization runner group.
+//
 // You must authenticate using an access token with the `admin:org` scope to use this endpoint.
 //
 // PUT /orgs/{org}/actions/runner-groups/{runner_group_id}/runners
+//
+// [GitHub's products]: https://docs.github.com/github/getting-started-with-github/githubs-products
 func (s *Server) handleActionsSetSelfHostedRunnersInGroupForOrgRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -13050,12 +13184,15 @@ func (s *Server) handleActionsSetSelfHostedRunnersInGroupForOrgRequest(args [2]s
 // handleActionsUpdateSelfHostedRunnerGroupForOrgRequest handles actions/update-self-hosted-runner-group-for-org operation.
 //
 // The self-hosted runner groups REST API is available with GitHub Enterprise Cloud. For more
-// information, see "[GitHub's products](https://docs.github.
-// com/github/getting-started-with-github/githubs-products)."
+// information, see "[GitHub's products]."
+//
 // Updates the `name` and `visibility` of a self-hosted runner group in an organization.
+//
 // You must authenticate using an access token with the `admin:org` scope to use this endpoint.
 //
 // PATCH /orgs/{org}/actions/runner-groups/{runner_group_id}
+//
+// [GitHub's products]: https://docs.github.com/github/getting-started-with-github/githubs-products
 func (s *Server) handleActionsUpdateSelfHostedRunnerGroupForOrgRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -13362,11 +13499,12 @@ func (s *Server) handleActivityCheckRepoIsStarredByAuthenticatedUserRequest(args
 
 // handleActivityDeleteRepoSubscriptionRequest handles activity/delete-repo-subscription operation.
 //
-// This endpoint should only be used to stop watching a repository. To control whether or not you
-// wish to receive notifications from a repository, [set the repository's subscription
-// manually](https://docs.github.com/rest/reference/activity#set-a-repository-subscription).
+// This endpoint should only be used to stop watching a repository. To control whether or not you wish
+// to receive notifications from a repository, [set the repository's subscription manually].
 //
 // DELETE /repos/{owner}/{repo}/subscription
+//
+// [set the repository's subscription manually]: https://docs.github.com/rest/reference/activity#set-a-repository-subscription
 func (s *Server) handleActivityDeleteRepoSubscriptionRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -13512,12 +13650,13 @@ func (s *Server) handleActivityDeleteRepoSubscriptionRequest(args [2]string, arg
 // handleActivityDeleteThreadSubscriptionRequest handles activity/delete-thread-subscription operation.
 //
 // Mutes all future notifications for a conversation until you comment on the thread or get an
-// **@mention**. If you are watching the repository of the thread, you will still receive
-// notifications. To ignore future notifications for a repository you are watching, use the [Set a
-// thread subscription](https://docs.github.com/rest/reference/activity#set-a-thread-subscription)
+// @mention. If you are watching the repository of the thread, you will still receive notifications. To
+// ignore future notifications for a repository you are watching, use the [Set a thread subscription]
 // endpoint and set `ignore` to `true`.
 //
 // DELETE /notifications/threads/{thread_id}/subscription
+//
+// [Set a thread subscription]: https://docs.github.com/rest/reference/activity#set-a-thread-subscription
 func (s *Server) handleActivityDeleteThreadSubscriptionRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -13658,23 +13797,27 @@ func (s *Server) handleActivityDeleteThreadSubscriptionRequest(args [1]string, a
 
 // handleActivityGetFeedsRequest handles activity/get-feeds operation.
 //
-// GitHub provides several timeline resources in [Atom](http://en.wikipedia.org/wiki/Atom_(standard))
-// format. The Feeds API lists all the feeds available to the authenticated user:
-// *   **Timeline**: The GitHub global public timeline
-// *   **User**: The public timeline for any user, using [URI template](https://docs.github.
-// com/rest/overview/resources-in-the-rest-api#hypermedia)
-// *   **Current user public**: The public timeline for the authenticated user
-// *   **Current user**: The private timeline for the authenticated user
-// *   **Current user actor**: The private timeline for activity created by the authenticated user
-// *   **Current user organizations**: The private timeline for the organizations the authenticated
-// user is a member of.
-// *   **Security advisories**: A collection of public announcements that provide information about
-// security-related vulnerabilities in software on GitHub.
-// **Note**: Private feeds are only returned when [authenticating via Basic Auth](https://docs.github.
-// com/rest/overview/other-authentication-methods#basic-authentication) since current feed URIs use
-// the older, non revocable auth tokens.
+// GitHub provides several timeline resources in [Atom] format. The Feeds API lists all the feeds
+// available to the authenticated user:
+//
+//   - Timeline: The GitHub global public timeline
+//   - User: The public timeline for any user, using [URI template]
+//   - Current user public: The public timeline for the authenticated user
+//   - Current user: The private timeline for the authenticated user
+//   - Current user actor: The private timeline for activity created by the authenticated user
+//   - Current user organizations: The private timeline for the organizations the authenticated user is
+//     a member of.
+//   - Security advisories: A collection of public announcements that provide information about
+//     security-related vulnerabilities in software on GitHub.
+//
+// Note: Private feeds are only returned when [authenticating via Basic Auth] since current feed URIs
+// use the older, non revocable auth tokens.
 //
 // GET /feeds
+//
+// [Atom]: http://en.wikipedia.org/wiki/Atom_(standard)
+// [URI template]: https://docs.github.com/rest/overview/resources-in-the-rest-api#hypermedia
+// [authenticating via Basic Auth]: https://docs.github.com/rest/overview/other-authentication-methods#basic-authentication
 func (s *Server) handleActivityGetFeedsRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -14086,12 +14229,15 @@ func (s *Server) handleActivityGetThreadRequest(args [1]string, argsEscaped bool
 
 // handleActivityGetThreadSubscriptionForAuthenticatedUserRequest handles activity/get-thread-subscription-for-authenticated-user operation.
 //
-// This checks to see if the current user is subscribed to a thread. You can also [get a repository
-// subscription](https://docs.github.com/rest/reference/activity#get-a-repository-subscription).
+// This checks to see if the current user is subscribed to a thread. You can also
+// [get a repository subscription].
+//
 // Note that subscriptions are only generated if a user is participating in a conversation--for
-// example, they've replied to the thread, were **@mentioned**, or manually subscribe to a thread.
+// example, they've replied to the thread, were @mentioned, or manually subscribe to a thread.
 //
 // GET /notifications/threads/{thread_id}/subscription
+//
+// [get a repository subscription]: https://docs.github.com/rest/reference/activity#get-a-repository-subscription
 func (s *Server) handleActivityGetThreadSubscriptionForAuthenticatedUserRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -14232,8 +14378,8 @@ func (s *Server) handleActivityGetThreadSubscriptionForAuthenticatedUserRequest(
 
 // handleActivityListEventsForAuthenticatedUserRequest handles activity/list-events-for-authenticated-user operation.
 //
-// If you are authenticated as the given user, you will see your private events. Otherwise, you'll
-// only see public events.
+// If you are authenticated as the given user, you will see your private events. Otherwise, you'll only
+// see public events.
 //
 // GET /users/{username}/events
 func (s *Server) handleActivityListEventsForAuthenticatedUserRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -15938,10 +16084,13 @@ func (s *Server) handleActivityListRepoNotificationsForAuthenticatedUserRequest(
 // handleActivityListReposStarredByAuthenticatedUserRequest handles activity/list-repos-starred-by-authenticated-user operation.
 //
 // Lists repositories the authenticated user has starred.
-// You can also find out _when_ stars were created by passing the following custom [media
-// type](https://docs.github.com/rest/overview/media-types/) via the `Accept` header:.
+//
+// You can also find out when stars were created by passing the following custom [media type] via the
+// `Accept` header:.
 //
 // GET /user/starred
+//
+// [media type]: https://docs.github.com/rest/overview/media-types/
 func (s *Server) handleActivityListReposStarredByAuthenticatedUserRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -16547,15 +16696,16 @@ func (s *Server) handleActivityListWatchersForRepoRequest(args [2]string, argsEs
 
 // handleActivityMarkNotificationsAsReadRequest handles activity/mark-notifications-as-read operation.
 //
-// Marks all notifications as "read" removes it from the [default view on GitHub](https://github.
-// com/notifications). If the number of notifications is too large to complete in one request, you
-// will receive a `202 Accepted` status and GitHub will run an asynchronous process to mark
-// notifications as "read." To check whether any "unread" notifications remain, you can use the [List
-// notifications for the authenticated user](https://docs.github.
-// com/rest/reference/activity#list-notifications-for-the-authenticated-user) endpoint and pass the
-// query parameter `all=false`.
+// Marks all notifications as "read" removes it from the [default view on GitHub]. If the number of
+// notifications is too large to complete in one request, you will receive a `202 Accepted` status and
+// GitHub will run an asynchronous process to mark notifications as "read." To check whether any
+// "unread" notifications remain, you can use the [List notifications for the authenticated user]
+// endpoint and pass the query parameter `all=false`.
 //
 // PUT /notifications
+//
+// [default view on GitHub]: https://github.com/notifications
+// [List notifications for the authenticated user]: https://docs.github.com/rest/reference/activity#list-notifications-for-the-authenticated-user
 func (s *Server) handleActivityMarkNotificationsAsReadRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -16696,15 +16846,17 @@ func (s *Server) handleActivityMarkNotificationsAsReadRequest(args [0]string, ar
 
 // handleActivityMarkRepoNotificationsAsReadRequest handles activity/mark-repo-notifications-as-read operation.
 //
-// Marks all notifications in a repository as "read" removes them from the [default view on
-// GitHub](https://github.com/notifications). If the number of notifications is too large to complete
-// in one request, you will receive a `202 Accepted` status and GitHub will run an asynchronous
-// process to mark notifications as "read." To check whether any "unread" notifications remain, you
-// can use the [List repository notifications for the authenticated user](https://docs.github.
-// com/rest/reference/activity#list-repository-notifications-for-the-authenticated-user) endpoint and
-// pass the query parameter `all=false`.
+// Marks all notifications in a repository as "read" removes them from the [default view on GitHub]. If
+// the number of notifications is too large to complete in one request, you will receive a
+// `202 Accepted` status and GitHub will run an asynchronous process to mark notifications as "read."
+// To check whether any "unread" notifications remain, you can use the
+// [List repository notifications for the authenticated user] endpoint and pass the query parameter
+// `all=false`.
 //
 // PUT /repos/{owner}/{repo}/notifications
+//
+// [default view on GitHub]: https://github.com/notifications
+// [List repository notifications for the authenticated user]: https://docs.github.com/rest/reference/activity#list-repository-notifications-for-the-authenticated-user
 func (s *Server) handleActivityMarkRepoNotificationsAsReadRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -17008,11 +17160,12 @@ func (s *Server) handleActivityMarkThreadAsReadRequest(args [1]string, argsEscap
 // handleActivitySetRepoSubscriptionRequest handles activity/set-repo-subscription operation.
 //
 // If you would like to watch a repository, set `subscribed` to `true`. If you would like to ignore
-// notifications made within a repository, set `ignored` to `true`. If you would like to stop
-// watching a repository, [delete the repository's subscription](https://docs.github.
-// com/rest/reference/activity#delete-a-repository-subscription) completely.
+// notifications made within a repository, set `ignored` to `true`. If you would like to stop watching
+// a repository, [delete the repository's subscription] completely.
 //
 // PUT /repos/{owner}/{repo}/subscription
+//
+// [delete the repository's subscription]: https://docs.github.com/rest/reference/activity#delete-a-repository-subscription
 func (s *Server) handleActivitySetRepoSubscriptionRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -17174,14 +17327,17 @@ func (s *Server) handleActivitySetRepoSubscriptionRequest(args [2]string, argsEs
 //
 // If you are watching a repository, you receive notifications for all threads by default. Use this
 // endpoint to ignore future notifications for threads until you comment on the thread or get an
-// **@mention**.
+// @mention.
+//
 // You can also use this endpoint to subscribe to threads that you are currently not receiving
 // notifications for or to subscribed to threads that you have previously ignored.
+//
 // Unsubscribing from a conversation in a repository that you are not watching is functionally
-// equivalent to the [Delete a thread subscription](https://docs.github.
-// com/rest/reference/activity#delete-a-thread-subscription) endpoint.
+// equivalent to the [Delete a thread subscription] endpoint.
 //
 // PUT /notifications/threads/{thread_id}/subscription
+//
+// [Delete a thread subscription]: https://docs.github.com/rest/reference/activity#delete-a-thread-subscription
 func (s *Server) handleActivitySetThreadSubscriptionRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -17338,10 +17494,11 @@ func (s *Server) handleActivitySetThreadSubscriptionRequest(args [1]string, args
 // handleActivityStarRepoForAuthenticatedUserRequest handles activity/star-repo-for-authenticated-user operation.
 //
 // Note that you'll need to set `Content-Length` to zero when calling out to this endpoint. For more
-// information, see "[HTTP verbs](https://docs.github.
-// com/rest/overview/resources-in-the-rest-api#http-verbs).".
+// information, see "[HTTP verbs].".
 //
 // PUT /user/starred/{owner}/{repo}
+//
+// [HTTP verbs]: https://docs.github.com/rest/overview/resources-in-the-rest-api#http-verbs
 func (s *Server) handleActivityStarRepoForAuthenticatedUserRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -17635,12 +17792,14 @@ func (s *Server) handleActivityUnstarRepoForAuthenticatedUserRequest(args [2]str
 //
 // Add a single repository to an installation. The authenticated user must have admin access to the
 // repository.
-// You must use a personal access token (which you can create via the [command line](https://docs.
-// github.com/github/authenticating-to-github/creating-a-personal-access-token) or [Basic
-// Authentication](https://docs.github.
-// com/rest/overview/other-authentication-methods#basic-authentication)) to access this endpoint.
+//
+// You must use a personal access token (which you can create via the [command line] or
+// [Basic Authentication]) to access this endpoint.
 //
 // PUT /user/installations/{installation_id}/repositories/{repository_id}
+//
+// [command line]: https://docs.github.com/github/authenticating-to-github/creating-a-personal-access-token
+// [Basic Authentication]: https://docs.github.com/rest/overview/other-authentication-methods#basic-authentication
 func (s *Server) handleAppsAddRepoToInstallationRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -17785,14 +17944,15 @@ func (s *Server) handleAppsAddRepoToInstallationRequest(args [2]string, argsEsca
 
 // handleAppsCheckTokenRequest handles apps/check-token operation.
 //
-// OAuth applications can use a special API method for checking OAuth token validity without
-// exceeding the normal rate limits for failed login attempts. Authentication works differently with
-// this particular endpoint. You must use [Basic Authentication](https://docs.github.
-// com/rest/overview/other-authentication-methods#basic-authentication) to use this endpoint, where
-// the username is the OAuth application `client_id` and the password is its `client_secret`. Invalid
-// tokens will return `404 NOT FOUND`.
+// OAuth applications can use a special API method for checking OAuth token validity without exceeding
+// the normal rate limits for failed login attempts. Authentication works differently with this
+// particular endpoint. You must use [Basic Authentication] to use this endpoint, where the username is
+// the OAuth application `client_id` and the password is its `client_secret`. Invalid tokens will
+// return `404 NOT FOUND`.
 //
 // POST /applications/{client_id}/token
+//
+// [Basic Authentication]: https://docs.github.com/rest/overview/other-authentication-methods#basic-authentication
 func (s *Server) handleAppsCheckTokenRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -17950,16 +18110,18 @@ func (s *Server) handleAppsCheckTokenRequest(args [1]string, argsEscaped bool, w
 //
 // Creates an attachment under a content reference URL in the body or comment of an issue or pull
 // request. Use the `id` and `repository` `full_name` of the content reference from the
-// [`content_reference` event](https://docs.github.com/webhooks/event-payloads/#content_reference) to
-// create an attachment.
-// The app must create a content attachment within six hours of the content reference URL being
-// posted. See "[Using content attachments](https://docs.github.com/apps/using-content-attachments/)"
-// for details about content attachments.
-// You must use an [installation access token](https://docs.github.
-// com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-an-installation)
-// to access this endpoint.
+// [content_reference event] to create an attachment.
+//
+// The app must create a content attachment within six hours of the content reference URL being posted.
+// See "[Using content attachments]" for details about content attachments.
+//
+// You must use an [installation access token] to access this endpoint.
 //
 // POST /repos/{owner}/{repo}/content_references/{content_reference_id}/attachments
+//
+// [content_reference event]: https://docs.github.com/webhooks/event-payloads/#content_reference
+// [Using content attachments]: https://docs.github.com/apps/using-content-attachments/
+// [installation access token]: https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-an-installation
 func (s *Server) handleAppsCreateContentAttachmentRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -18123,12 +18285,13 @@ func (s *Server) handleAppsCreateContentAttachmentRequest(args [3]string, argsEs
 
 // handleAppsCreateFromManifestRequest handles apps/create-from-manifest operation.
 //
-// Use this endpoint to complete the handshake necessary when implementing the [GitHub App Manifest
-// flow](https://docs.github.com/apps/building-github-apps/creating-github-apps-from-a-manifest/).
-// When you create a GitHub App with the manifest flow, you receive a temporary `code` used to
-// retrieve the GitHub App's `id`, `pem` (private key), and `webhook_secret`.
+// Use this endpoint to complete the handshake necessary when implementing the
+// [GitHub App Manifest flow]. When you create a GitHub App with the manifest flow, you receive a
+// temporary `code` used to retrieve the GitHub App's `id`, `pem` (private key), and `webhook_secret`.
 //
 // POST /app-manifests/{code}/conversions
+//
+// [GitHub App Manifest flow]: https://docs.github.com/apps/building-github-apps/creating-github-apps-from-a-manifest/
 func (s *Server) handleAppsCreateFromManifestRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -18285,17 +18448,18 @@ func (s *Server) handleAppsCreateFromManifestRequest(args [1]string, argsEscaped
 // handleAppsCreateInstallationAccessTokenRequest handles apps/create-installation-access-token operation.
 //
 // Creates an installation access token that enables a GitHub App to make authenticated API requests
-// for the app's installation on an organization or individual account. Installation tokens expire
-// one hour from the time you create them. Using an expired token produces a status code of `401 -
-// Unauthorized`, and requires creating a new installation token. By default the installation token
-// has access to all repositories that the installation can access. To restrict the access to
+// for the app's installation on an organization or individual account. Installation tokens expire one
+// hour from the time you create them. Using an expired token produces a status code of
+// `401 - Unauthorized`, and requires creating a new installation token. By default the installation
+// token has access to all repositories that the installation can access. To restrict the access to
 // specific repositories, you can provide the `repository_ids` when creating the token. When you omit
 // `repository_ids`, the response does not contain the `repositories` key.
-// You must use a [JWT](https://docs.github.
-// com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to
-// access this endpoint.
+//
+// You must use a [JWT] to access this endpoint.
 //
 // POST /app/installations/{installation_id}/access_tokens
+//
+// [JWT]: https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app
 func (s *Server) handleAppsCreateInstallationAccessTokenRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -18452,17 +18616,17 @@ func (s *Server) handleAppsCreateInstallationAccessTokenRequest(args [1]string, 
 // handleAppsDeleteAuthorizationRequest handles apps/delete-authorization operation.
 //
 // OAuth application owners can revoke a grant for their OAuth application and a specific user. You
-// must use [Basic Authentication](https://docs.github.
-// com/rest/overview/other-authentication-methods#basic-authentication) when accessing this endpoint,
-// using the OAuth application's `client_id` and `client_secret` as the username and password. You
-// must also provide a valid OAuth `access_token` as an input parameter and the grant for the token's
-// owner will be deleted.
-// Deleting an OAuth application's grant will also delete all OAuth tokens associated with the
-// application for the user. Once deleted, the application will have no access to the user's account
-// and will no longer be listed on [the application authorizations settings screen within
-// GitHub](https://github.com/settings/applications#authorized).
+// must use [Basic Authentication] when accessing this endpoint, using the OAuth application's
+// `client_id` and `client_secret` as the username and password. You must also provide a valid OAuth
+// `access_token` as an input parameter and the grant for the token's owner will be deleted. Deleting
+// an OAuth application's grant will also delete all OAuth tokens associated with the application for
+// the user. Once deleted, the application will have no access to the user's account and will no longer
+// be listed on [the application authorizations settings screen within GitHub].
 //
 // DELETE /applications/{client_id}/grant
+//
+// [Basic Authentication]: https://docs.github.com/rest/overview/other-authentication-methods#basic-authentication
+// [the application authorizations settings screen within GitHub]: https://github.com/settings/applications#authorized
 func (s *Server) handleAppsDeleteAuthorizationRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -18619,13 +18783,15 @@ func (s *Server) handleAppsDeleteAuthorizationRequest(args [1]string, argsEscape
 // handleAppsDeleteInstallationRequest handles apps/delete-installation operation.
 //
 // Uninstalls a GitHub App on a user, organization, or business account. If you prefer to temporarily
-// suspend an app's access to your account's resources, then we recommend the "[Suspend an app
-// installation](https://docs.github.com/rest/reference/apps/#suspend-an-app-installation)" endpoint.
-// You must use a [JWT](https://docs.github.
-// com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to
-// access this endpoint.
+// suspend an app's access to your account's resources, then we recommend the
+// "[Suspend an app installation]" endpoint.
+//
+// You must use a [JWT] to access this endpoint.
 //
 // DELETE /app/installations/{installation_id}
+//
+// [Suspend an app installation]: https://docs.github.com/rest/reference/apps/#suspend-an-app-installation
+// [JWT]: https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app
 func (s *Server) handleAppsDeleteInstallationRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -18766,12 +18932,13 @@ func (s *Server) handleAppsDeleteInstallationRequest(args [1]string, argsEscaped
 
 // handleAppsDeleteTokenRequest handles apps/delete-token operation.
 //
-// OAuth application owners can revoke a single token for an OAuth application. You must use [Basic
-// Authentication](https://docs.github.
-// com/rest/overview/other-authentication-methods#basic-authentication) when accessing this endpoint,
-// using the OAuth application's `client_id` and `client_secret` as the username and password.
+// OAuth application owners can revoke a single token for an OAuth application. You must use
+// [Basic Authentication] when accessing this endpoint, using the OAuth application's `client_id` and
+// `client_secret` as the username and password.
 //
 // DELETE /applications/{client_id}/token
+//
+// [Basic Authentication]: https://docs.github.com/rest/overview/other-authentication-methods#basic-authentication
 func (s *Server) handleAppsDeleteTokenRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -18929,14 +19096,15 @@ func (s *Server) handleAppsDeleteTokenRequest(args [1]string, argsEscaped bool, 
 //
 // Returns the GitHub App associated with the authentication credentials used. To see how many app
 // installations are associated with this GitHub App, see the `installations_count` in the response.
-// For more details about your app's installations, see the "[List installations for the
-// authenticated app](https://docs.github.
-// com/rest/reference/apps#list-installations-for-the-authenticated-app)" endpoint.
-// You must use a [JWT](https://docs.github.
-// com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to
-// access this endpoint.
+// For more details about your app's installations, see the
+// "[List installations for the authenticated app]" endpoint.
+//
+// You must use a [JWT] to access this endpoint.
 //
 // GET /app
+//
+// [List installations for the authenticated app]: https://docs.github.com/rest/reference/apps#list-installations-for-the-authenticated-app
+// [JWT]: https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app
 func (s *Server) handleAppsGetAuthenticatedRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -19058,16 +19226,17 @@ func (s *Server) handleAppsGetAuthenticatedRequest(args [0]string, argsEscaped b
 
 // handleAppsGetBySlugRequest handles apps/get-by-slug operation.
 //
-// **Note**: The `:app_slug` is just the URL-friendly name of your GitHub App. You can find this on
-// the settings page for your GitHub App (e.g., `https://github.com/settings/apps/:app_slug`).
-// If the GitHub App you specify is public, you can access this endpoint without authenticating. If
-// the GitHub App you specify is private, you must authenticate with a [personal access
-// token](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/) or
-// an [installation access token](https://docs.github.
-// com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-an-installation)
-// to access this endpoint.
+// Note: The `:app_slug` is just the URL-friendly name of your GitHub App. You can find this on the
+// settings page for your GitHub App (e.g., `https://github.com/settings/apps/:app_slug`).
+//
+// If the GitHub App you specify is public, you can access this endpoint without authenticating. If the
+// GitHub App you specify is private, you must authenticate with a [personal access token] or an
+// [installation access token] to access this endpoint.
 //
 // GET /apps/{app_slug}
+//
+// [personal access token]: https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/
+// [installation access token]: https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-an-installation
 func (s *Server) handleAppsGetBySlugRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -19211,13 +19380,14 @@ func (s *Server) handleAppsGetBySlugRequest(args [1]string, argsEscaped bool, w 
 // Shows whether the user or organization account actively subscribes to a plan listed by the
 // authenticated GitHub App. When someone submits a plan change that won't be processed until the end
 // of their billing cycle, you will also see the upcoming pending change.
-// GitHub Apps must use a [JWT](https://docs.github.
-// com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to
-// access this endpoint. OAuth Apps must use [basic authentication](https://docs.github.
-// com/rest/overview/other-authentication-methods#basic-authentication) with their client ID and
-// client secret to access this endpoint.
+//
+// GitHub Apps must use a [JWT] to access this endpoint. OAuth Apps must use [basic authentication]
+// with their client ID and client secret to access this endpoint.
 //
 // GET /marketplace_listing/accounts/{account_id}
+//
+// [JWT]: https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app
+// [basic authentication]: https://docs.github.com/rest/overview/other-authentication-methods#basic-authentication
 func (s *Server) handleAppsGetSubscriptionPlanForAccountRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -19361,13 +19531,14 @@ func (s *Server) handleAppsGetSubscriptionPlanForAccountRequest(args [1]string, 
 // Shows whether the user or organization account actively subscribes to a plan listed by the
 // authenticated GitHub App. When someone submits a plan change that won't be processed until the end
 // of their billing cycle, you will also see the upcoming pending change.
-// GitHub Apps must use a [JWT](https://docs.github.
-// com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to
-// access this endpoint. OAuth Apps must use [basic authentication](https://docs.github.
-// com/rest/overview/other-authentication-methods#basic-authentication) with their client ID and
-// client secret to access this endpoint.
+//
+// GitHub Apps must use a [JWT] to access this endpoint. OAuth Apps must use [basic authentication]
+// with their client ID and client secret to access this endpoint.
 //
 // GET /marketplace_listing/stubbed/accounts/{account_id}
+//
+// [JWT]: https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app
+// [basic authentication]: https://docs.github.com/rest/overview/other-authentication-methods#basic-authentication
 func (s *Server) handleAppsGetSubscriptionPlanForAccountStubbedRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -19508,11 +19679,13 @@ func (s *Server) handleAppsGetSubscriptionPlanForAccountStubbedRequest(args [1]s
 
 // handleAppsGetWebhookConfigForAppRequest handles apps/get-webhook-config-for-app operation.
 //
-// Returns the webhook configuration for a GitHub App. For more information about configuring a
-// webhook for your app, see "[Creating a GitHub App](/developers/apps/creating-a-github-app)."
-// You must use a [JWT](https://docs.github.
-// com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to
-// access this endpoint.
+// Returns the webhook configuration for a GitHub App. For more information about configuring a webhook
+// for your app, see "[Creating a GitHub App]."
+//
+// You must use a [JWT] to access this endpoint.
+//
+// [Creating a GitHub App]: /developers/apps/creating-a-github-app
+// [JWT]: https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app
 //
 // GET /app/hook/config
 func (s *Server) handleAppsGetWebhookConfigForAppRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -19637,11 +19810,12 @@ func (s *Server) handleAppsGetWebhookConfigForAppRequest(args [0]string, argsEsc
 // handleAppsGetWebhookDeliveryRequest handles apps/get-webhook-delivery operation.
 //
 // Returns a delivery for the webhook configured for a GitHub App.
-// You must use a [JWT](https://docs.github.
-// com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to
-// access this endpoint.
+//
+// You must use a [JWT] to access this endpoint.
 //
 // GET /app/hook/deliveries/{delivery_id}
+//
+// [JWT]: https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app
 func (s *Server) handleAppsGetWebhookDeliveryRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -19782,17 +19956,18 @@ func (s *Server) handleAppsGetWebhookDeliveryRequest(args [1]string, argsEscaped
 
 // handleAppsListAccountsForPlanRequest handles apps/list-accounts-for-plan operation.
 //
-// Returns user and organization accounts associated with the specified plan, including free plans.
-// For per-seat pricing, you see the list of accounts that have purchased the plan, including the
-// number of seats purchased. When someone submits a plan change that won't be processed until the
-// end of their billing cycle, you will also see the upcoming pending change.
-// GitHub Apps must use a [JWT](https://docs.github.
-// com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to
-// access this endpoint. OAuth Apps must use [basic authentication](https://docs.github.
-// com/rest/overview/other-authentication-methods#basic-authentication) with their client ID and
-// client secret to access this endpoint.
+// Returns user and organization accounts associated with the specified plan, including free plans. For
+// per-seat pricing, you see the list of accounts that have purchased the plan, including the number of
+// seats purchased. When someone submits a plan change that won't be processed until the end of their
+// billing cycle, you will also see the upcoming pending change.
+//
+// GitHub Apps must use a [JWT] to access this endpoint. OAuth Apps must use [basic authentication]
+// with their client ID and client secret to access this endpoint.
 //
 // GET /marketplace_listing/plans/{plan_id}/accounts
+//
+// [JWT]: https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app
+// [basic authentication]: https://docs.github.com/rest/overview/other-authentication-methods#basic-authentication
 func (s *Server) handleAppsListAccountsForPlanRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -19951,15 +20126,16 @@ func (s *Server) handleAppsListAccountsForPlanRequest(args [1]string, argsEscape
 //
 // Returns repository and organization accounts associated with the specified plan, including free
 // plans. For per-seat pricing, you see the list of accounts that have purchased the plan, including
-// the number of seats purchased. When someone submits a plan change that won't be processed until
-// the end of their billing cycle, you will also see the upcoming pending change.
-// GitHub Apps must use a [JWT](https://docs.github.
-// com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to
-// access this endpoint. OAuth Apps must use [basic authentication](https://docs.github.
-// com/rest/overview/other-authentication-methods#basic-authentication) with their client ID and
-// client secret to access this endpoint.
+// the number of seats purchased. When someone submits a plan change that won't be processed until the
+// end of their billing cycle, you will also see the upcoming pending change.
+//
+// GitHub Apps must use a [JWT] to access this endpoint. OAuth Apps must use [basic authentication]
+// with their client ID and client secret to access this endpoint.
 //
 // GET /marketplace_listing/stubbed/plans/{plan_id}/accounts
+//
+// [JWT]: https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app
+// [basic authentication]: https://docs.github.com/rest/overview/other-authentication-methods#basic-authentication
 func (s *Server) handleAppsListAccountsForPlanStubbedRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -20118,13 +20294,18 @@ func (s *Server) handleAppsListAccountsForPlanStubbedRequest(args [1]string, arg
 //
 // List repositories that the authenticated user has explicit permission (`:read`, `:write`, or
 // `:admin`) to access for an installation.
+//
 // The authenticated user has explicit permission to access repositories they own, repositories where
 // they are a collaborator, and repositories that they can access through an organization membership.
-// You must use a [user-to-server OAuth access token](https://docs.github.
-// com/apps/building-github-apps/identifying-and-authorizing-users-for-github-apps/#identifying-users-on-your-site), created for a user who has authorized your GitHub App, to access this endpoint.
+//
+// You must use a [user-to-server OAuth access token], created for a user who has authorized your
+// GitHub App, to access this endpoint.
+//
 // The access the user has to each repository is included in the hash under the `permissions` key.
 //
 // GET /user/installations/{installation_id}/repositories
+//
+// [user-to-server OAuth access token]: https://docs.github.com/apps/building-github-apps/identifying-and-authorizing-users-for-github-apps/#identifying-users-on-your-site
 func (s *Server) handleAppsListInstallationReposForAuthenticatedUserRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -20274,13 +20455,14 @@ func (s *Server) handleAppsListInstallationReposForAuthenticatedUserRequest(args
 // handleAppsListPlansRequest handles apps/list-plans operation.
 //
 // Lists all plans that are part of your GitHub Marketplace listing.
-// GitHub Apps must use a [JWT](https://docs.github.
-// com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to
-// access this endpoint. OAuth Apps must use [basic authentication](https://docs.github.
-// com/rest/overview/other-authentication-methods#basic-authentication) with their client ID and
-// client secret to access this endpoint.
+//
+// GitHub Apps must use a [JWT] to access this endpoint. OAuth Apps must use [basic authentication]
+// with their client ID and client secret to access this endpoint.
 //
 // GET /marketplace_listing/plans
+//
+// [JWT]: https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app
+// [basic authentication]: https://docs.github.com/rest/overview/other-authentication-methods#basic-authentication
 func (s *Server) handleAppsListPlansRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -20426,13 +20608,14 @@ func (s *Server) handleAppsListPlansRequest(args [0]string, argsEscaped bool, w 
 // handleAppsListPlansStubbedRequest handles apps/list-plans-stubbed operation.
 //
 // Lists all plans that are part of your GitHub Marketplace listing.
-// GitHub Apps must use a [JWT](https://docs.github.
-// com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to
-// access this endpoint. OAuth Apps must use [basic authentication](https://docs.github.
-// com/rest/overview/other-authentication-methods#basic-authentication) with their client ID and
-// client secret to access this endpoint.
+//
+// GitHub Apps must use a [JWT] to access this endpoint. OAuth Apps must use [basic authentication]
+// with their client ID and client secret to access this endpoint.
 //
 // GET /marketplace_listing/stubbed/plans
+//
+// [JWT]: https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app
+// [basic authentication]: https://docs.github.com/rest/overview/other-authentication-methods#basic-authentication
 func (s *Server) handleAppsListPlansStubbedRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -20578,11 +20761,12 @@ func (s *Server) handleAppsListPlansStubbedRequest(args [0]string, argsEscaped b
 // handleAppsListReposAccessibleToInstallationRequest handles apps/list-repos-accessible-to-installation operation.
 //
 // List repositories that an app installation can access.
-// You must use an [installation access token](https://docs.github.
-// com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-an-installation)
-// to access this endpoint.
+//
+// You must use an [installation access token] to access this endpoint.
 //
 // GET /installation/repositories
+//
+// [installation access token]: https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-an-installation
 func (s *Server) handleAppsListReposAccessibleToInstallationRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -20727,11 +20911,14 @@ func (s *Server) handleAppsListReposAccessibleToInstallationRequest(args [0]stri
 
 // handleAppsListSubscriptionsForAuthenticatedUserRequest handles apps/list-subscriptions-for-authenticated-user operation.
 //
-// Lists the active subscriptions for the authenticated user. You must use a [user-to-server OAuth
-// access token](https://docs.github.
-// com/apps/building-github-apps/identifying-and-authorizing-users-for-github-apps/#identifying-users-on-your-site), created for a user who has authorized your GitHub App, to access this endpoint. . OAuth Apps must authenticate using an [OAuth token](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/).
+// Lists the active subscriptions for the authenticated user. You must use a
+// [user-to-server OAuth access token], created for a user who has authorized your GitHub App, to
+// access this endpoint. . OAuth Apps must authenticate using an [OAuth token].
 //
 // GET /user/marketplace_purchases
+//
+// [user-to-server OAuth access token]: https://docs.github.com/apps/building-github-apps/identifying-and-authorizing-users-for-github-apps/#identifying-users-on-your-site
+// [OAuth token]: https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/
 func (s *Server) handleAppsListSubscriptionsForAuthenticatedUserRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -20876,11 +21063,14 @@ func (s *Server) handleAppsListSubscriptionsForAuthenticatedUserRequest(args [0]
 
 // handleAppsListSubscriptionsForAuthenticatedUserStubbedRequest handles apps/list-subscriptions-for-authenticated-user-stubbed operation.
 //
-// Lists the active subscriptions for the authenticated user. You must use a [user-to-server OAuth
-// access token](https://docs.github.
-// com/apps/building-github-apps/identifying-and-authorizing-users-for-github-apps/#identifying-users-on-your-site), created for a user who has authorized your GitHub App, to access this endpoint. . OAuth Apps must authenticate using an [OAuth token](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/).
+// Lists the active subscriptions for the authenticated user. You must use a
+// [user-to-server OAuth access token], created for a user who has authorized your GitHub App, to
+// access this endpoint. . OAuth Apps must authenticate using an [OAuth token].
 //
 // GET /user/marketplace_purchases/stubbed
+//
+// [user-to-server OAuth access token]: https://docs.github.com/apps/building-github-apps/identifying-and-authorizing-users-for-github-apps/#identifying-users-on-your-site
+// [OAuth token]: https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/
 func (s *Server) handleAppsListSubscriptionsForAuthenticatedUserStubbedRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -21026,11 +21216,12 @@ func (s *Server) handleAppsListSubscriptionsForAuthenticatedUserStubbedRequest(a
 // handleAppsListWebhookDeliveriesRequest handles apps/list-webhook-deliveries operation.
 //
 // Returns a list of webhook deliveries for the webhook configured for a GitHub App.
-// You must use a [JWT](https://docs.github.
-// com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to
-// access this endpoint.
+//
+// You must use a [JWT] to access this endpoint.
 //
 // GET /app/hook/deliveries
+//
+// [JWT]: https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app
 func (s *Server) handleAppsListWebhookDeliveriesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -21176,11 +21367,12 @@ func (s *Server) handleAppsListWebhookDeliveriesRequest(args [0]string, argsEsca
 // handleAppsRedeliverWebhookDeliveryRequest handles apps/redeliver-webhook-delivery operation.
 //
 // Redeliver a delivery for the webhook configured for a GitHub App.
-// You must use a [JWT](https://docs.github.
-// com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to
-// access this endpoint.
+//
+// You must use a [JWT] to access this endpoint.
 //
 // POST /app/hook/deliveries/{delivery_id}/attempts
+//
+// [JWT]: https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app
 func (s *Server) handleAppsRedeliverWebhookDeliveryRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -21323,12 +21515,14 @@ func (s *Server) handleAppsRedeliverWebhookDeliveryRequest(args [1]string, argsE
 //
 // Remove a single repository from an installation. The authenticated user must have admin access to
 // the repository.
-// You must use a personal access token (which you can create via the [command line](https://docs.
-// github.com/github/authenticating-to-github/creating-a-personal-access-token) or [Basic
-// Authentication](https://docs.github.
-// com/rest/overview/other-authentication-methods#basic-authentication)) to access this endpoint.
+//
+// You must use a personal access token (which you can create via the [command line] or
+// [Basic Authentication]) to access this endpoint.
 //
 // DELETE /user/installations/{installation_id}/repositories/{repository_id}
+//
+// [command line]: https://docs.github.com/github/authenticating-to-github/creating-a-personal-access-token
+// [Basic Authentication]: https://docs.github.com/rest/overview/other-authentication-methods#basic-authentication
 func (s *Server) handleAppsRemoveRepoFromInstallationRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -21474,13 +21668,14 @@ func (s *Server) handleAppsRemoveRepoFromInstallationRequest(args [2]string, arg
 // handleAppsResetTokenRequest handles apps/reset-token operation.
 //
 // OAuth applications can use this API method to reset a valid OAuth token without end-user
-// involvement. Applications must save the "token" property in the response because changes take
-// effect immediately. You must use [Basic Authentication](https://docs.github.
-// com/rest/overview/other-authentication-methods#basic-authentication) when accessing this endpoint,
-// using the OAuth application's `client_id` and `client_secret` as the username and password.
-// Invalid tokens will return `404 NOT FOUND`.
+// involvement. Applications must save the "token" property in the response because changes take effect
+// immediately. You must use [Basic Authentication] when accessing this endpoint, using the OAuth
+// application's `client_id` and `client_secret` as the username and password. Invalid tokens will
+// return `404 NOT FOUND`.
 //
 // PATCH /applications/{client_id}/token
+//
+// [Basic Authentication]: https://docs.github.com/rest/overview/other-authentication-methods#basic-authentication
 func (s *Server) handleAppsResetTokenRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -21638,16 +21833,17 @@ func (s *Server) handleAppsResetTokenRequest(args [1]string, argsEscaped bool, w
 //
 // Revokes the installation token you're using to authenticate as an installation and access this
 // endpoint.
-// Once an installation token is revoked, the token is invalidated and cannot be used. Other
-// endpoints that require the revoked installation token must have a new installation token to work.
-// You can create a new token using the "[Create an installation access token for an
-// app](https://docs.github.com/rest/reference/apps#create-an-installation-access-token-for-an-app)"
-// endpoint.
-// You must use an [installation access token](https://docs.github.
-// com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-an-installation)
-// to access this endpoint.
+//
+// Once an installation token is revoked, the token is invalidated and cannot be used. Other endpoints
+// that require the revoked installation token must have a new installation token to work. You can
+// create a new token using the "[Create an installation access token for an app]" endpoint.
+//
+// You must use an [installation access token] to access this endpoint.
 //
 // DELETE /installation/token
+//
+// [Create an installation access token for an app]: https://docs.github.com/rest/reference/apps#create-an-installation-access-token-for-an-app
+// [installation access token]: https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-an-installation
 func (s *Server) handleAppsRevokeInstallationAccessTokenRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -21771,12 +21967,13 @@ func (s *Server) handleAppsRevokeInstallationAccessTokenRequest(args [0]string, 
 //
 // Use a non-scoped user-to-server OAuth access token to create a repository scoped and/or permission
 // scoped user-to-server OAuth access token. You can specify which repositories the token can access
-// and which permissions are granted to the token. You must use [Basic Authentication](https://docs.
-// github.com/rest/overview/other-authentication-methods#basic-authentication) when accessing this
-// endpoint, using the OAuth application's `client_id` and `client_secret` as the username and
+// and which permissions are granted to the token. You must use [Basic Authentication] when accessing
+// this endpoint, using the OAuth application's `client_id` and `client_secret` as the username and
 // password. Invalid tokens will return `404 NOT FOUND`.
 //
 // POST /applications/{client_id}/token/scoped
+//
+// [Basic Authentication]: https://docs.github.com/rest/overview/other-authentication-methods#basic-authentication
 func (s *Server) handleAppsScopeTokenRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -21935,11 +22132,12 @@ func (s *Server) handleAppsScopeTokenRequest(args [1]string, argsEscaped bool, w
 // Suspends a GitHub App on a user, organization, or business account, which blocks the app from
 // accessing the account's resources. When a GitHub App is suspended, the app's access to the GitHub
 // API or webhook events is blocked for that account.
-// You must use a [JWT](https://docs.github.
-// com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to
-// access this endpoint.
+//
+// You must use a [JWT] to access this endpoint.
 //
 // PUT /app/installations/{installation_id}/suspended
+//
+// [JWT]: https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app
 func (s *Server) handleAppsSuspendInstallationRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -22081,11 +22279,12 @@ func (s *Server) handleAppsSuspendInstallationRequest(args [1]string, argsEscape
 // handleAppsUnsuspendInstallationRequest handles apps/unsuspend-installation operation.
 //
 // Removes a GitHub App installation suspension.
-// You must use a [JWT](https://docs.github.
-// com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to
-// access this endpoint.
+//
+// You must use a [JWT] to access this endpoint.
 //
 // DELETE /app/installations/{installation_id}/suspended
+//
+// [JWT]: https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app
 func (s *Server) handleAppsUnsuspendInstallationRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -22226,11 +22425,13 @@ func (s *Server) handleAppsUnsuspendInstallationRequest(args [1]string, argsEsca
 
 // handleAppsUpdateWebhookConfigForAppRequest handles apps/update-webhook-config-for-app operation.
 //
-// Updates the webhook configuration for a GitHub App. For more information about configuring a
-// webhook for your app, see "[Creating a GitHub App](/developers/apps/creating-a-github-app)."
-// You must use a [JWT](https://docs.github.
-// com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to
-// access this endpoint.
+// Updates the webhook configuration for a GitHub App. For more information about configuring a webhook
+// for your app, see "[Creating a GitHub App]."
+//
+// You must use a [JWT] to access this endpoint.
+//
+// [Creating a GitHub App]: /developers/apps/creating-a-github-app
+// [JWT]: https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app
 //
 // PATCH /app/hook/config
 func (s *Server) handleAppsUpdateWebhookConfigForAppRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -22374,15 +22575,18 @@ func (s *Server) handleAppsUpdateWebhookConfigForAppRequest(args [0]string, args
 // handleBillingGetGithubActionsBillingGheRequest handles billing/get-github-actions-billing-ghe operation.
 //
 // Gets the summary of the free and paid GitHub Actions minutes used.
-// Paid minutes only apply to workflows in private repositories that use GitHub-hosted runners.
-// Minutes used is listed for each GitHub-hosted runner operating system. Any job re-runs are also
-// included in the usage. The usage does not include the multiplier for macOS and Windows runners and
-// is not rounded up to the nearest whole minute. For more information, see "[Managing billing for
-// GitHub Actions](https://help.github.
-// com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-actions)".
+//
+// Paid minutes only apply to workflows in private repositories that use GitHub-hosted runners. Minutes
+// used is listed for each GitHub-hosted runner operating system. Any job re-runs are also included in
+// the usage. The usage does not include the multiplier for macOS and Windows runners and is not
+// rounded up to the nearest whole minute. For more information, see
+// "[Managing billing for GitHub Actions]".
+//
 // The authenticated user must be an enterprise admin.
 //
 // GET /enterprises/{enterprise}/settings/billing/actions
+//
+// [Managing billing for GitHub Actions]: https://help.github.com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-actions
 func (s *Server) handleBillingGetGithubActionsBillingGheRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -22524,15 +22728,18 @@ func (s *Server) handleBillingGetGithubActionsBillingGheRequest(args [1]string, 
 // handleBillingGetGithubActionsBillingOrgRequest handles billing/get-github-actions-billing-org operation.
 //
 // Gets the summary of the free and paid GitHub Actions minutes used.
-// Paid minutes only apply to workflows in private repositories that use GitHub-hosted runners.
-// Minutes used is listed for each GitHub-hosted runner operating system. Any job re-runs are also
-// included in the usage. The usage returned includes any minute multipliers for macOS and Windows
-// runners, and is rounded up to the nearest whole minute. For more information, see "[Managing
-// billing for GitHub Actions](https://help.github.
-// com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-actions)".
+//
+// Paid minutes only apply to workflows in private repositories that use GitHub-hosted runners. Minutes
+// used is listed for each GitHub-hosted runner operating system. Any job re-runs are also included in
+// the usage. The usage returned includes any minute multipliers for macOS and Windows runners, and is
+// rounded up to the nearest whole minute. For more information, see
+// "[Managing billing for GitHub Actions]".
+//
 // Access tokens must have the `repo` or `admin:org` scope.
 //
 // GET /orgs/{org}/settings/billing/actions
+//
+// [Managing billing for GitHub Actions]: https://help.github.com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-actions
 func (s *Server) handleBillingGetGithubActionsBillingOrgRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -22674,15 +22881,18 @@ func (s *Server) handleBillingGetGithubActionsBillingOrgRequest(args [1]string, 
 // handleBillingGetGithubActionsBillingUserRequest handles billing/get-github-actions-billing-user operation.
 //
 // Gets the summary of the free and paid GitHub Actions minutes used.
-// Paid minutes only apply to workflows in private repositories that use GitHub-hosted runners.
-// Minutes used is listed for each GitHub-hosted runner operating system. Any job re-runs are also
-// included in the usage. The usage returned includes any minute multipliers for macOS and Windows
-// runners, and is rounded up to the nearest whole minute. For more information, see "[Managing
-// billing for GitHub Actions](https://help.github.
-// com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-actions)".
+//
+// Paid minutes only apply to workflows in private repositories that use GitHub-hosted runners. Minutes
+// used is listed for each GitHub-hosted runner operating system. Any job re-runs are also included in
+// the usage. The usage returned includes any minute multipliers for macOS and Windows runners, and is
+// rounded up to the nearest whole minute. For more information, see
+// "[Managing billing for GitHub Actions]".
+//
 // Access tokens must have the `user` scope.
 //
 // GET /users/{username}/settings/billing/actions
+//
+// [Managing billing for GitHub Actions]: https://help.github.com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-actions
 func (s *Server) handleBillingGetGithubActionsBillingUserRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -22824,12 +23034,15 @@ func (s *Server) handleBillingGetGithubActionsBillingUserRequest(args [1]string,
 // handleBillingGetGithubPackagesBillingGheRequest handles billing/get-github-packages-billing-ghe operation.
 //
 // Gets the free and paid storage used for GitHub Packages in gigabytes.
+//
 // Paid minutes only apply to packages stored for private repositories. For more information, see
-// "[Managing billing for GitHub Packages](https://help.github.
-// com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-packages)."
+// "[Managing billing for GitHub Packages]."
+//
 // The authenticated user must be an enterprise admin.
 //
 // GET /enterprises/{enterprise}/settings/billing/packages
+//
+// [Managing billing for GitHub Packages]: https://help.github.com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-packages
 func (s *Server) handleBillingGetGithubPackagesBillingGheRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -22971,12 +23184,15 @@ func (s *Server) handleBillingGetGithubPackagesBillingGheRequest(args [1]string,
 // handleBillingGetGithubPackagesBillingOrgRequest handles billing/get-github-packages-billing-org operation.
 //
 // Gets the free and paid storage used for GitHub Packages in gigabytes.
+//
 // Paid minutes only apply to packages stored for private repositories. For more information, see
-// "[Managing billing for GitHub Packages](https://help.github.
-// com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-packages)."
+// "[Managing billing for GitHub Packages]."
+//
 // Access tokens must have the `repo` or `admin:org` scope.
 //
 // GET /orgs/{org}/settings/billing/packages
+//
+// [Managing billing for GitHub Packages]: https://help.github.com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-packages
 func (s *Server) handleBillingGetGithubPackagesBillingOrgRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -23118,12 +23334,15 @@ func (s *Server) handleBillingGetGithubPackagesBillingOrgRequest(args [1]string,
 // handleBillingGetGithubPackagesBillingUserRequest handles billing/get-github-packages-billing-user operation.
 //
 // Gets the free and paid storage used for GitHub Packages in gigabytes.
+//
 // Paid minutes only apply to packages stored for private repositories. For more information, see
-// "[Managing billing for GitHub Packages](https://help.github.
-// com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-packages)."
+// "[Managing billing for GitHub Packages]."
+//
 // Access tokens must have the `user` scope.
 //
 // GET /users/{username}/settings/billing/packages
+//
+// [Managing billing for GitHub Packages]: https://help.github.com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-packages
 func (s *Server) handleBillingGetGithubPackagesBillingUserRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -23265,12 +23484,15 @@ func (s *Server) handleBillingGetGithubPackagesBillingUserRequest(args [1]string
 // handleBillingGetSharedStorageBillingGheRequest handles billing/get-shared-storage-billing-ghe operation.
 //
 // Gets the estimated paid and estimated total storage used for GitHub Actions and Github Packages.
+//
 // Paid minutes only apply to packages stored for private repositories. For more information, see
-// "[Managing billing for GitHub Packages](https://help.github.
-// com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-packages)."
+// "[Managing billing for GitHub Packages]."
+//
 // The authenticated user must be an enterprise admin.
 //
 // GET /enterprises/{enterprise}/settings/billing/shared-storage
+//
+// [Managing billing for GitHub Packages]: https://help.github.com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-packages
 func (s *Server) handleBillingGetSharedStorageBillingGheRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -23412,12 +23634,15 @@ func (s *Server) handleBillingGetSharedStorageBillingGheRequest(args [1]string, 
 // handleBillingGetSharedStorageBillingOrgRequest handles billing/get-shared-storage-billing-org operation.
 //
 // Gets the estimated paid and estimated total storage used for GitHub Actions and Github Packages.
+//
 // Paid minutes only apply to packages stored for private repositories. For more information, see
-// "[Managing billing for GitHub Packages](https://help.github.
-// com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-packages)."
+// "[Managing billing for GitHub Packages]."
+//
 // Access tokens must have the `repo` or `admin:org` scope.
 //
 // GET /orgs/{org}/settings/billing/shared-storage
+//
+// [Managing billing for GitHub Packages]: https://help.github.com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-packages
 func (s *Server) handleBillingGetSharedStorageBillingOrgRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -23559,12 +23784,15 @@ func (s *Server) handleBillingGetSharedStorageBillingOrgRequest(args [1]string, 
 // handleBillingGetSharedStorageBillingUserRequest handles billing/get-shared-storage-billing-user operation.
 //
 // Gets the estimated paid and estimated total storage used for GitHub Actions and Github Packages.
+//
 // Paid minutes only apply to packages stored for private repositories. For more information, see
-// "[Managing billing for GitHub Packages](https://help.github.
-// com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-packages)."
+// "[Managing billing for GitHub Packages]."
+//
 // Access tokens must have the `user` scope.
 //
 // GET /users/{username}/settings/billing/shared-storage
+//
+// [Managing billing for GitHub Packages]: https://help.github.com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-packages
 func (s *Server) handleBillingGetSharedStorageBillingUserRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -23705,11 +23933,13 @@ func (s *Server) handleBillingGetSharedStorageBillingUserRequest(args [1]string,
 
 // handleChecksCreateRequest handles checks/create operation.
 //
-// **Note:** The Checks API only looks for pushes in the repository where the check suite or check
-// run were created. Pushes to a branch in a forked repository are not detected and return an empty
+// Note: The Checks API only looks for pushes in the repository where the check suite or check run were
+// created. Pushes to a branch in a forked repository are not detected and return an empty
 // `pull_requests` array.
+//
 // Creates a new check run for a specific commit in a repository. Your GitHub App must have the
 // `checks:write` permission to create check runs.
+//
 // In a check suite, GitHub limits the number of check runs with the same name to 1000. Once these
 // check runs exceed 1000, GitHub will start to automatically delete older check runs.
 //
@@ -23873,17 +24103,19 @@ func (s *Server) handleChecksCreateRequest(args [2]string, argsEscaped bool, w h
 
 // handleChecksCreateSuiteRequest handles checks/create-suite operation.
 //
-// **Note:** The Checks API only looks for pushes in the repository where the check suite or check
-// run were created. Pushes to a branch in a forked repository are not detected and return an empty
+// Note: The Checks API only looks for pushes in the repository where the check suite or check run were
+// created. Pushes to a branch in a forked repository are not detected and return an empty
 // `pull_requests` array and a `null` value for `head_branch`.
-// By default, check suites are automatically created when you create a [check run](https://docs.
-// github.com/rest/reference/checks#check-runs). You only need to use this endpoint for manually
-// creating check suites when you've disabled automatic creation using "[Update repository
-// preferences for check suites](https://docs.github.
-// com/rest/reference/checks#update-repository-preferences-for-check-suites)". Your GitHub App must
-// have the `checks:write` permission to create check suites.
+//
+// By default, check suites are automatically created when you create a [check run]. You only need to
+// use this endpoint for manually creating check suites when you've disabled automatic creation using
+// "[Update repository preferences for check suites]". Your GitHub App must have the `checks:write`
+// permission to create check suites.
 //
 // POST /repos/{owner}/{repo}/check-suites
+//
+// [check run]: https://docs.github.com/rest/reference/checks#check-runs
+// [Update repository preferences for check suites]: https://docs.github.com/rest/reference/checks#update-repository-preferences-for-check-suites
 func (s *Server) handleChecksCreateSuiteRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -24043,9 +24275,10 @@ func (s *Server) handleChecksCreateSuiteRequest(args [2]string, argsEscaped bool
 
 // handleChecksGetRequest handles checks/get operation.
 //
-// **Note:** The Checks API only looks for pushes in the repository where the check suite or check
-// run were created. Pushes to a branch in a forked repository are not detected and return an empty
+// Note: The Checks API only looks for pushes in the repository where the check suite or check run were
+// created. Pushes to a branch in a forked repository are not detected and return an empty
 // `pull_requests` array.
+//
 // Gets a single check run using its `id`. GitHub Apps must have the `checks:read` permission on a
 // private repository or pull access to a public repository to get check runs. OAuth Apps and
 // authenticated users must have the `repo` scope to get check runs in a private repository.
@@ -24199,9 +24432,10 @@ func (s *Server) handleChecksGetRequest(args [3]string, argsEscaped bool, w http
 
 // handleChecksGetSuiteRequest handles checks/get-suite operation.
 //
-// **Note:** The Checks API only looks for pushes in the repository where the check suite or check
-// run were created. Pushes to a branch in a forked repository are not detected and return an empty
+// Note: The Checks API only looks for pushes in the repository where the check suite or check run were
+// created. Pushes to a branch in a forked repository are not detected and return an empty
 // `pull_requests` array and a `null` value for `head_branch`.
+//
 // Gets a single check suite using its `id`. GitHub Apps must have the `checks:read` permission on a
 // private repository or pull access to a public repository to get check suites. OAuth Apps and
 // authenticated users must have the `repo` scope to get check suites in a private repository.
@@ -24355,10 +24589,10 @@ func (s *Server) handleChecksGetSuiteRequest(args [3]string, argsEscaped bool, w
 
 // handleChecksListAnnotationsRequest handles checks/list-annotations operation.
 //
-// Lists annotations for a check run using the annotation `id`. GitHub Apps must have the
-// `checks:read` permission on a private repository or pull access to a public repository to get
-// annotations for a check run. OAuth Apps and authenticated users must have the `repo` scope to get
-// annotations for a check run in a private repository.
+// Lists annotations for a check run using the annotation `id`. GitHub Apps must have the `checks:read`
+// permission on a private repository or pull access to a public repository to get annotations for a
+// check run. OAuth Apps and authenticated users must have the `repo` scope to get annotations for a
+// check run in a private repository.
 //
 // GET /repos/{owner}/{repo}/check-runs/{check_run_id}/annotations
 func (s *Server) handleChecksListAnnotationsRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -24517,13 +24751,14 @@ func (s *Server) handleChecksListAnnotationsRequest(args [3]string, argsEscaped 
 
 // handleChecksListForRefRequest handles checks/list-for-ref operation.
 //
-// **Note:** The Checks API only looks for pushes in the repository where the check suite or check
-// run were created. Pushes to a branch in a forked repository are not detected and return an empty
+// Note: The Checks API only looks for pushes in the repository where the check suite or check run were
+// created. Pushes to a branch in a forked repository are not detected and return an empty
 // `pull_requests` array.
+//
 // Lists check runs for a commit ref. The `ref` can be a SHA, branch name, or a tag name. GitHub Apps
-// must have the `checks:read` permission on a private repository or pull access to a public
-// repository to get check runs. OAuth Apps and authenticated users must have the `repo` scope to get
-// check runs in a private repository.
+// must have the `checks:read` permission on a private repository or pull access to a public repository
+// to get check runs. OAuth Apps and authenticated users must have the `repo` scope to get check runs
+// in a private repository.
 //
 // GET /repos/{owner}/{repo}/commits/{ref}/check-runs
 func (s *Server) handleChecksListForRefRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -24698,9 +24933,10 @@ func (s *Server) handleChecksListForRefRequest(args [3]string, argsEscaped bool,
 
 // handleChecksListForSuiteRequest handles checks/list-for-suite operation.
 //
-// **Note:** The Checks API only looks for pushes in the repository where the check suite or check
-// run were created. Pushes to a branch in a forked repository are not detected and return an empty
+// Note: The Checks API only looks for pushes in the repository where the check suite or check run were
+// created. Pushes to a branch in a forked repository are not detected and return an empty
 // `pull_requests` array.
+//
 // Lists check runs for a check suite using its `id`. GitHub Apps must have the `checks:read`
 // permission on a private repository or pull access to a public repository to get check runs. OAuth
 // Apps and authenticated users must have the `repo` scope to get check runs in a private repository.
@@ -24874,9 +25110,10 @@ func (s *Server) handleChecksListForSuiteRequest(args [3]string, argsEscaped boo
 
 // handleChecksListSuitesForRefRequest handles checks/list-suites-for-ref operation.
 //
-// **Note:** The Checks API only looks for pushes in the repository where the check suite or check
-// run were created. Pushes to a branch in a forked repository are not detected and return an empty
+// Note: The Checks API only looks for pushes in the repository where the check suite or check run were
+// created. Pushes to a branch in a forked repository are not detected and return an empty
 // `pull_requests` array and a `null` value for `head_branch`.
+//
 // Lists check suites for a commit `ref`. The `ref` can be a SHA, branch name, or a tag name. GitHub
 // Apps must have the `checks:read` permission on a private repository or pull access to a public
 // repository to list check suites. OAuth Apps and authenticated users must have the `repo` scope to
@@ -25047,14 +25284,16 @@ func (s *Server) handleChecksListSuitesForRefRequest(args [3]string, argsEscaped
 
 // handleChecksRerequestSuiteRequest handles checks/rerequest-suite operation.
 //
-// Triggers GitHub to rerequest an existing check suite, without pushing new code to a repository.
-// This endpoint will trigger the [`check_suite` webhook](https://docs.github.
-// com/webhooks/event-payloads/#check_suite) event with the action `rerequested`. When a check suite
-// is `rerequested`, its `status` is reset to `queued` and the `conclusion` is cleared.
+// Triggers GitHub to rerequest an existing check suite, without pushing new code to a repository. This
+// endpoint will trigger the [check_suite webhook] event with the action `rerequested`. When a check
+// suite is `rerequested`, its `status` is reset to `queued` and the `conclusion` is cleared.
+//
 // To rerequest a check suite, your GitHub App must have the `checks:read` permission on a private
 // repository or pull access to a public repository.
 //
 // POST /repos/{owner}/{repo}/check-suites/{check_suite_id}/rerequest
+//
+// [check_suite webhook]: https://docs.github.com/webhooks/event-payloads/#check_suite
 func (s *Server) handleChecksRerequestSuiteRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -25205,11 +25444,12 @@ func (s *Server) handleChecksRerequestSuiteRequest(args [3]string, argsEscaped b
 //
 // Changes the default automatic flow when creating check suites. By default, a check suite is
 // automatically created each time code is pushed to a repository. When you disable the automatic
-// creation of check suites, you can manually [Create a check suite](https://docs.github.
-// com/rest/reference/checks#create-a-check-suite). You must have admin permissions in the repository
-// to set preferences for check suites.
+// creation of check suites, you can manually [Create a check suite]. You must have admin permissions
+// in the repository to set preferences for check suites.
 //
 // PATCH /repos/{owner}/{repo}/check-suites/preferences
+//
+// [Create a check suite]: https://docs.github.com/rest/reference/checks#create-a-check-suite
 func (s *Server) handleChecksSetSuitesPreferencesRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -25369,65 +25609,66 @@ func (s *Server) handleChecksSetSuitesPreferencesRequest(args [2]string, argsEsc
 
 // handleCodeScanningDeleteAnalysisRequest handles code-scanning/delete-analysis operation.
 //
-// Deletes a specified code scanning analysis from a repository. For
-// private repositories, you must use an access token with the `repo` scope. For public repositories,
-// you must use an access token with `public_repo` and `repo:security_events` scopes.
-// GitHub Apps must have the `security_events` write permission to use this endpoint.
-// You can delete one analysis at a time.
-// To delete a series of analyses, start with the most recent analysis and work backwards.
-// Conceptually, the process is similar to the undo function in a text editor.
-// When you list the analyses for a repository,
-// one or more will be identified as deletable in the response:
-// ```
-// "deletable": true
-// ```
-// An analysis is deletable when it's the most recent in a set of analyses.
-// Typically, a repository will have multiple sets of analyses
-// for each enabled code scanning tool,
-// where a set is determined by a unique combination of analysis values:
-// * `ref`
-// * `tool`
-// * `analysis_key`
-// * `environment`
-// If you attempt to delete an analysis that is not the most recent in a set,
-// you'll get a 400 response with the message:
-// ```
-// Analysis specified is not deletable.
-// ```
-// The response from a successful `DELETE` operation provides you with
-// two alternative URLs for deleting the next analysis in the set
-// (see the example default response below).
-// Use the `next_analysis_url` URL if you want to avoid accidentally deleting the final analysis
-// in the set. This is a useful option if you want to preserve at least one analysis
-// for the specified tool in your repository.
-// Use the `confirm_delete_url` URL if you are content to remove all analyses for a tool.
-// When you delete the last analysis in a set the value of `next_analysis_url` and
-// `confirm_delete_url`
+// Deletes a specified code scanning analysis from a repository. For private repositories, you must use
+// an access token with the `repo` scope. For public repositories, you must use an access token with
+// `public_repo` and `repo:security_events` scopes. GitHub Apps must have the `security_events` write
+// permission to use this endpoint.
+//
+// You can delete one analysis at a time. To delete a series of analyses, start with the most recent
+// analysis and work backwards. Conceptually, the process is similar to the undo function in a text
+// editor.
+//
+// When you list the analyses for a repository, one or more will be identified as deletable in the
+// response:
+//
+//	"deletable": true
+//
+// An analysis is deletable when it's the most recent in a set of analyses. Typically, a repository
+// will have multiple sets of analyses for each enabled code scanning tool, where a set is determined
+// by a unique combination of analysis values:
+//
+//   - `ref`
+//   - `tool`
+//   - `analysis_key`
+//   - `environment`
+//
+// If you attempt to delete an analysis that is not the most recent in a set, you'll get a 400 response
+// with the message:
+//
+//	Analysis specified is not deletable.
+//
+// The response from a successful `DELETE` operation provides you with two alternative URLs for
+// deleting the next analysis in the set (see the example default response below). Use the
+// `next_analysis_url` URL if you want to avoid accidentally deleting the final analysis in the set.
+// This is a useful option if you want to preserve at least one analysis for the specified tool in your
+// repository. Use the `confirm_delete_url` URL if you are content to remove all analyses for a tool.
+// When you delete the last analysis in a set the value of `next_analysis_url` and `confirm_delete_url`
 // in the 200 response is `null`.
-// As an example of the deletion process,
-// let's imagine that you added a workflow that configured a particular code scanning tool
-// to analyze the code in a repository. This tool has added 15 analyses:
-// 10 on the default branch, and another 5 on a topic branch.
-// You therefore have two separate sets of analyses for this tool.
-// You've now decided that you want to remove all of the analyses for the tool.
-// To do this you must make 15 separate deletion requests.
-// To start, you must find the deletable analysis for one of the sets,
-// step through deleting the analyses in that set,
-// and then repeat the process for the second set.
-// The procedure therefore consists of a nested loop:
-// **Outer loop**:
-// * List the analyses for the repository, filtered by tool.
-// * Parse this list to find a deletable analysis. If found:
-// **Inner loop**:
-// * Delete the identified analysis.
-// * Parse the response for the value of `confirm_delete_url` and, if found, use this in the next
-// iteration.
+//
+// As an example of the deletion process, let's imagine that you added a workflow that configured a
+// particular code scanning tool to analyze the code in a repository. This tool has added 15 analyses:
+// 10 on the default branch, and another 5 on a topic branch. You therefore have two separate sets of
+// analyses for this tool. You've now decided that you want to remove all of the analyses for the tool.
+// To do this you must make 15 separate deletion requests. To start, you must find the deletable
+// analysis for one of the sets, step through deleting the analyses in that set, and then repeat the
+// process for the second set. The procedure therefore consists of a nested loop:
+//
+// Outer loop:
+//
+//   - List the analyses for the repository, filtered by tool.
+//
+//   - Parse this list to find a deletable analysis. If found:
+//     Inner loop:
+//
+//   - Delete the identified analysis.
+//
+//   - Parse the response for the value of `confirm_delete_url` and, if found, use this in the next
+//     iteration.
+//
 // The above process assumes that you want to remove all trace of the tool's analyses from the GitHub
 // user interface, for the specified repository, and it therefore uses the `confirm_delete_url` value.
-//
-//	Alternatively, you could use the `next_analysis_url` value, which would leave the last analysis
-//
-// in each set undeleted to avoid removing a tool's analysis entirely.
+// Alternatively, you could use the `next_analysis_url` value, which would leave the last analysis in
+// each set undeleted to avoid removing a tool's analysis entirely.
 //
 // DELETE /repos/{owner}/{repo}/code-scanning/analyses/{analysis_id}
 func (s *Server) handleCodeScanningDeleteAnalysisRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -25582,13 +25823,12 @@ func (s *Server) handleCodeScanningDeleteAnalysisRequest(args [3]string, argsEsc
 
 // handleCodeScanningGetAlertRequest handles code-scanning/get-alert operation.
 //
-// Gets a single code scanning alert. You must use an access token with the `security_events` scope
-// to use this endpoint. GitHub Apps must have the `security_events` read permission to use this
-// endpoint.
-// **Deprecation notice**:
-// The instances field is deprecated and will, in future, not be included in the response for this
-// endpoint. The example response reflects this change. The same information can now be retrieved via
-// a GET request to the URL specified by `instances_url`.
+// Gets a single code scanning alert. You must use an access token with the `security_events` scope to
+// use this endpoint. GitHub Apps must have the `security_events` read permission to use this endpoint.
+//
+// Deprecation notice: The instances field is deprecated and will, in future, not be included in the
+// response for this endpoint. The example response reflects this change. The same information can now
+// be retrieved via a GET request to the URL specified by `instances_url`.
 //
 // GET /repos/{owner}/{repo}/code-scanning/alerts/{alert_number}
 func (s *Server) handleCodeScanningGetAlertRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -25739,27 +25979,27 @@ func (s *Server) handleCodeScanningGetAlertRequest(args [3]string, argsEscaped b
 
 // handleCodeScanningGetAnalysisRequest handles code-scanning/get-analysis operation.
 //
-// Gets a specified code scanning analysis for a repository.
-// You must use an access token with the `security_events` scope to use this endpoint.
-// GitHub Apps must have the `security_events` read permission to use this endpoint.
-// The default JSON response contains fields that describe the analysis.
-// This includes the Git reference and commit SHA to which the analysis relates,
-// the datetime of the analysis, the name of the code scanning tool,
-// and the number of alerts.
-// The `rules_count` field in the default response give the number of rules
-// that were run in the analysis.
-// For very old analyses this data is not available,
-// and `0` is returned in this field.
-// If you use the Accept header `application/sarif+json`,
-// the response contains the analysis data that was uploaded.
-// This is formatted as
-// [SARIF version 2.1.0](https://docs.oasis-open.org/sarif/sarif/v2.1.0/cs01/sarif-v2.1.0-cs01.html).
-// **Deprecation notice**:
-// The `tool_name` field is deprecated and will, in future, not be included in the response for this
-// endpoint. The example response reflects this change. The tool name can now be found inside the
-// `tool` field.
+// Gets a specified code scanning analysis for a repository. You must use an access token with the
+// `security_events` scope to use this endpoint. GitHub Apps must have the `security_events` read
+// permission to use this endpoint.
+//
+// The default JSON response contains fields that describe the analysis. This includes the Git
+// reference and commit SHA to which the analysis relates, the datetime of the analysis, the name of
+// the code scanning tool, and the number of alerts.
+//
+// The `rules_count` field in the default response give the number of rules that were run in the
+// analysis. For very old analyses this data is not available, and `0` is returned in this field.
+//
+// If you use the Accept header `application/sarif+json`, the response contains the analysis data that
+// was uploaded. This is formatted as [SARIF version 2.1.0].
+//
+// Deprecation notice: The `tool_name` field is deprecated and will, in future, not be included in the
+// response for this endpoint. The example response reflects this change. The tool name can now be
+// found inside the `tool` field.
 //
 // GET /repos/{owner}/{repo}/code-scanning/analyses/{analysis_id}
+//
+// [SARIF version 2.1.0]: https://docs.oasis-open.org/sarif/sarif/v2.1.0/cs01/sarif-v2.1.0-cs01.html
 func (s *Server) handleCodeScanningGetAnalysisRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -25909,11 +26149,12 @@ func (s *Server) handleCodeScanningGetAnalysisRequest(args [3]string, argsEscape
 // handleCodeScanningGetSarifRequest handles code-scanning/get-sarif operation.
 //
 // Gets information about a SARIF upload, including the status and the URL of the analysis that was
-// uploaded so that you can retrieve details of the analysis. For more information, see "[Get a code
-// scanning analysis for a
-// repository](/rest/reference/code-scanning#get-a-code-scanning-analysis-for-a-repository)." You
-// must use an access token with the `security_events` scope to use this endpoint. GitHub Apps must
-// have the `security_events` read permission to use this endpoint.
+// uploaded so that you can retrieve details of the analysis. For more information, see
+// "[Get a code scanning analysis for a repository]." You must use an access token with the
+// `security_events` scope to use this endpoint. GitHub Apps must have the `security_events` read
+// permission to use this endpoint.
+//
+// [Get a code scanning analysis for a repository]: /rest/reference/code-scanning#get-a-code-scanning-analysis-for-a-repository
 //
 // GET /repos/{owner}/{repo}/code-scanning/sarifs/{sarif_id}
 func (s *Server) handleCodeScanningGetSarifRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -26229,14 +26470,13 @@ func (s *Server) handleCodeScanningListAlertInstancesRequest(args [3]string, arg
 
 // handleCodeScanningListAlertsForRepoRequest handles code-scanning/list-alerts-for-repo operation.
 //
-// Lists all open code scanning alerts for the default branch (usually `main`
-// or `master`). You must use an access token with the `security_events` scope to use
-// this endpoint. GitHub Apps must have the `security_events` read permission to use
-// this endpoint.
-// The response includes a `most_recent_instance` object.
-// This provides details of the most recent instance of this alert
-// for the default branch or for the specified Git reference
-// (if you used `ref` in the request).
+// Lists all open code scanning alerts for the default branch (usually `main` or `master`). You must
+// use an access token with the `security_events` scope to use this endpoint. GitHub Apps must have the
+// `security_events` read permission to use this endpoint.
+//
+// The response includes a `most_recent_instance` object. This provides details of the most recent
+// instance of this alert for the default branch or for the specified Git reference (if you used `ref`
+// in the request).
 //
 // GET /repos/{owner}/{repo}/code-scanning/alerts
 func (s *Server) handleCodeScanningListAlertsForRepoRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -26407,21 +26647,19 @@ func (s *Server) handleCodeScanningListAlertsForRepoRequest(args [2]string, args
 
 // handleCodeScanningListRecentAnalysesRequest handles code-scanning/list-recent-analyses operation.
 //
-// Lists the details of all code scanning analyses for a repository,
-// starting with the most recent.
-// The response is paginated and you can use the `page` and `per_page` parameters
-// to list the analyses you're interested in.
-// By default 30 analyses are listed per page.
-// The `rules_count` field in the response give the number of rules
-// that were run in the analysis.
-// For very old analyses this data is not available,
-// and `0` is returned in this field.
-// You must use an access token with the `security_events` scope to use this endpoint.
-// GitHub Apps must have the `security_events` read permission to use this endpoint.
-// **Deprecation notice**:
-// The `tool_name` field is deprecated and will, in future, not be included in the response for this
-// endpoint. The example response reflects this change. The tool name can now be found inside the
-// `tool` field.
+// Lists the details of all code scanning analyses for a repository, starting with the most recent. The
+// response is paginated and you can use the `page` and `per_page` parameters to list the analyses
+// you're interested in. By default 30 analyses are listed per page.
+//
+// The `rules_count` field in the response give the number of rules that were run in the analysis. For
+// very old analyses this data is not available, and `0` is returned in this field.
+//
+// You must use an access token with the `security_events` scope to use this endpoint. GitHub Apps must
+// have the `security_events` read permission to use this endpoint.
+//
+// Deprecation notice: The `tool_name` field is deprecated and will, in future, not be included in the
+// response for this endpoint. The example response reflects this change. The tool name can now be
+// found inside the `tool` field.
 //
 // GET /repos/{owner}/{repo}/code-scanning/analyses
 func (s *Server) handleCodeScanningListRecentAnalysesRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -26760,33 +26998,37 @@ func (s *Server) handleCodeScanningUpdateAlertRequest(args [3]string, argsEscape
 
 // handleCodeScanningUploadSarifRequest handles code-scanning/upload-sarif operation.
 //
-// Uploads SARIF data containing the results of a code scanning analysis to make the results
-// available in a repository. You must use an access token with the `security_events` scope to use
-// this endpoint. GitHub Apps must have the `security_events` write permission to use this endpoint.
+// Uploads SARIF data containing the results of a code scanning analysis to make the results available
+// in a repository. You must use an access token with the `security_events` scope to use this endpoint.
+// GitHub Apps must have the `security_events` write permission to use this endpoint.
+//
 // There are two places where you can upload code scanning results.
-// - If you upload to a pull request, for example `--ref refs/pull/42/merge` or `--ref
-// refs/pull/42/head`, then the results appear as alerts in a pull request check. For more
-// information, see "[Triaging code scanning alerts in pull
-// requests](/code-security/secure-coding/triaging-code-scanning-alerts-in-pull-requests)."
-// - If you upload to a branch, for example `--ref refs/heads/my-branch`, then the results appear in
-// the **Security** tab for your repository. For more information, see "[Managing code scanning
-// alerts for your
-// repository](/code-security/secure-coding/managing-code-scanning-alerts-for-your-repository#viewing-the-alerts-for-a-repository)."
-// You must compress the SARIF-formatted analysis data that you want to upload, using `gzip`, and
-// then encode it as a Base64 format string. For example:
-// ```
-// gzip -c analysis-data.sarif | base64 -w0
-// ```
+//
+//   - If you upload to a pull request, for example `--ref refs/pull/42/merge` or
+//     `--ref refs/pull/42/head`, then the results appear as alerts in a pull request check. For more
+//     information, see "[Triaging code scanning alerts in pull requests]."
+//   - If you upload to a branch, for example `--ref refs/heads/my-branch`, then the results appear in
+//     the Security tab for your repository. For more information, see
+//     "[Managing code scanning alerts for your repository]."
+//
+// You must compress the SARIF-formatted analysis data that you want to upload, using `gzip`, and then
+// encode it as a Base64 format string. For example:
+//
+//	gzip -c analysis-data.sarif | base64 -w0
+//
 // SARIF upload supports a maximum of 5000 results per analysis run. Any results over this limit are
 // ignored and any SARIF uploads with more than 25,000 results are rejected. Typically, but not
-// necessarily, a SARIF file contains a single run of a single tool. If a code scanning tool
-// generates too many results, you should update the analysis configuration to run only the most
-// important rules or queries.
-// The `202 Accepted`, response includes an `id` value.
-// You can use this ID to check the status of the upload by using this for the `/sarifs/{sarif_id}`
-// endpoint.
-// For more information, see "[Get information about a SARIF
-// upload](/rest/reference/code-scanning#get-information-about-a-sarif-upload).".
+// necessarily, a SARIF file contains a single run of a single tool. If a code scanning tool generates
+// too many results, you should update the analysis configuration to run only the most important rules
+// or queries.
+//
+// The `202 Accepted`, response includes an `id` value. You can use this ID to check the status of the
+// upload by using this for the `/sarifs/{sarif_id}` endpoint. For more information, see
+// "[Get information about a SARIF upload].".
+//
+// [Triaging code scanning alerts in pull requests]: /code-security/secure-coding/triaging-code-scanning-alerts-in-pull-requests
+// [Managing code scanning alerts for your repository]: /code-security/secure-coding/managing-code-scanning-alerts-for-your-repository#viewing-the-alerts-for-a-repository
+// [Get information about a SARIF upload]: /rest/reference/code-scanning#get-information-about-a-sarif-upload
 //
 // POST /repos/{owner}/{repo}/code-scanning/sarifs
 func (s *Server) handleCodeScanningUploadSarifRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -27341,9 +27583,11 @@ func (s *Server) handleEmojisGetRequest(args [0]string, argsEscaped bool, w http
 //
 // Adds an organization to the list of selected organizations that can access a self-hosted runner
 // group. The runner group must have `visibility` set to `selected`. For more information, see
-// "[Create a self-hosted runner group for an
-// enterprise](#create-a-self-hosted-runner-group-for-an-enterprise)."
+// "[Create a self-hosted runner group for an enterprise]."
+//
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
+//
+// [Create a self-hosted runner group for an enterprise]: #create-a-self-hosted-runner-group-for-an-enterprise
 //
 // PUT /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations/{org_id}
 func (s *Server) handleEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -27495,8 +27739,8 @@ func (s *Server) handleEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnter
 // handleEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseRequest handles enterprise-admin/add-self-hosted-runner-to-group-for-enterprise operation.
 //
 // Adds a self-hosted runner to a runner group configured in an enterprise.
-// You must authenticate using an access token with the `admin:enterprise`
-// scope to use this endpoint.
+//
+// You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // PUT /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners/{runner_id}
 func (s *Server) handleEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -27648,13 +27892,15 @@ func (s *Server) handleEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseReq
 // handleEnterpriseAdminCreateRegistrationTokenForEnterpriseRequest handles enterprise-admin/create-registration-token-for-enterprise operation.
 //
 // Returns a token that you can pass to the `config` script. The token expires after one hour.
+//
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
-// #### Example using registration token
+//
+// # Example using registration token
+//
 // Configure your self-hosted runner, replacing `TOKEN` with the registration token provided by this
 // endpoint.
-// ```
-// ./config.sh --url https://github.com/enterprises/octo-enterprise --token TOKEN
-// ```.
+//
+//	./config.sh --url https://github.com/enterprises/octo-enterprise --token TOKEN
 //
 // POST /enterprises/{enterprise}/actions/runners/registration-token
 func (s *Server) handleEnterpriseAdminCreateRegistrationTokenForEnterpriseRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -27799,14 +28045,15 @@ func (s *Server) handleEnterpriseAdminCreateRegistrationTokenForEnterpriseReques
 //
 // Returns a token that you can pass to the `config` script to remove a self-hosted runner from an
 // enterprise. The token expires after one hour.
+//
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
-// #### Example using remove token
-// To remove your self-hosted runner from an enterprise, replace `TOKEN` with the remove token
-// provided by this
-// endpoint.
-// ```
-// ./config.sh remove --token TOKEN
-// ```.
+//
+// # Example using remove token
+//
+// To remove your self-hosted runner from an enterprise, replace `TOKEN` with the remove token provided
+// by this endpoint.
+//
+//	./config.sh remove --token TOKEN
 //
 // POST /enterprises/{enterprise}/actions/runners/remove-token
 func (s *Server) handleEnterpriseAdminCreateRemoveTokenForEnterpriseRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -27950,6 +28197,7 @@ func (s *Server) handleEnterpriseAdminCreateRemoveTokenForEnterpriseRequest(args
 // handleEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequest handles enterprise-admin/create-self-hosted-runner-group-for-enterprise operation.
 //
 // Creates a new self-hosted runner group for an enterprise.
+//
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // POST /enterprises/{enterprise}/actions/runner-groups
@@ -28108,7 +28356,7 @@ func (s *Server) handleEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRe
 
 // handleEnterpriseAdminDeleteScimGroupFromEnterpriseRequest handles enterprise-admin/delete-scim-group-from-enterprise operation.
 //
-// **Note:** The SCIM API endpoints for enterprise accounts are currently in beta and are subject to
+// Note: The SCIM API endpoints for enterprise accounts are currently in beta and are subject to
 // change.
 //
 // DELETE /scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}
@@ -28258,6 +28506,7 @@ func (s *Server) handleEnterpriseAdminDeleteScimGroupFromEnterpriseRequest(args 
 //
 // Forces the removal of a self-hosted runner from an enterprise. You can use this endpoint to
 // completely remove the runner when the machine you were using no longer exists.
+//
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // DELETE /enterprises/{enterprise}/actions/runners/{runner_id}
@@ -28406,6 +28655,7 @@ func (s *Server) handleEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseReques
 // handleEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseRequest handles enterprise-admin/delete-self-hosted-runner-group-from-enterprise operation.
 //
 // Deletes a self-hosted runner group for an enterprise.
+//
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // DELETE /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}
@@ -28553,7 +28803,7 @@ func (s *Server) handleEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseR
 
 // handleEnterpriseAdminDeleteUserFromEnterpriseRequest handles enterprise-admin/delete-user-from-enterprise operation.
 //
-// **Note:** The SCIM API endpoints for enterprise accounts are currently in beta and are subject to
+// Note: The SCIM API endpoints for enterprise accounts are currently in beta and are subject to
 // change.
 //
 // DELETE /scim/v2/enterprises/{enterprise}/Users/{scim_user_id}
@@ -28701,11 +28951,14 @@ func (s *Server) handleEnterpriseAdminDeleteUserFromEnterpriseRequest(args [2]st
 
 // handleEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseRequest handles enterprise-admin/disable-selected-organization-github-actions-enterprise operation.
 //
-// Removes an organization from the list of selected organizations that are enabled for GitHub
-// Actions in an enterprise. To use this endpoint, the enterprise permission policy for
-// `enabled_organizations` must be configured to `selected`. For more information, see "[Set GitHub
-// Actions permissions for an enterprise](#set-github-actions-permissions-for-an-enterprise)."
+// Removes an organization from the list of selected organizations that are enabled for GitHub Actions
+// in an enterprise. To use this endpoint, the enterprise permission policy for `enabled_organizations`
+// must be configured to `selected`. For more information, see
+// "[Set GitHub Actions permissions for an enterprise]."
+//
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
+//
+// [Set GitHub Actions permissions for an enterprise]: #set-github-actions-permissions-for-an-enterprise
 //
 // DELETE /enterprises/{enterprise}/actions/permissions/organizations/{org_id}
 func (s *Server) handleEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -28852,11 +29105,14 @@ func (s *Server) handleEnterpriseAdminDisableSelectedOrganizationGithubActionsEn
 
 // handleEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseRequest handles enterprise-admin/enable-selected-organization-github-actions-enterprise operation.
 //
-// Adds an organization to the list of selected organizations that are enabled for GitHub Actions in
-// an enterprise. To use this endpoint, the enterprise permission policy for `enabled_organizations`
-// must be configured to `selected`. For more information, see "[Set GitHub Actions permissions for
-// an enterprise](#set-github-actions-permissions-for-an-enterprise)."
+// Adds an organization to the list of selected organizations that are enabled for GitHub Actions in an
+// enterprise. To use this endpoint, the enterprise permission policy for `enabled_organizations` must
+// be configured to `selected`. For more information, see
+// "[Set GitHub Actions permissions for an enterprise]."
+//
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
+//
+// [Set GitHub Actions permissions for an enterprise]: #set-github-actions-permissions-for-an-enterprise
 //
 // PUT /enterprises/{enterprise}/actions/permissions/organizations/{org_id}
 func (s *Server) handleEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -29004,10 +29260,12 @@ func (s *Server) handleEnterpriseAdminEnableSelectedOrganizationGithubActionsEnt
 // handleEnterpriseAdminGetAllowedActionsEnterpriseRequest handles enterprise-admin/get-allowed-actions-enterprise operation.
 //
 // Gets the selected actions that are allowed in an enterprise. To use this endpoint, the enterprise
-// permission policy for `allowed_actions` must be configured to `selected`. For more information,
-// see "[Set GitHub Actions permissions for an
-// enterprise](#set-github-actions-permissions-for-an-enterprise)."
+// permission policy for `allowed_actions` must be configured to `selected`. For more information, see
+// "[Set GitHub Actions permissions for an enterprise]."
+//
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
+//
+// [Set GitHub Actions permissions for an enterprise]: #set-github-actions-permissions-for-an-enterprise
 //
 // GET /enterprises/{enterprise}/actions/permissions/selected-actions
 func (s *Server) handleEnterpriseAdminGetAllowedActionsEnterpriseRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -29150,8 +29408,8 @@ func (s *Server) handleEnterpriseAdminGetAllowedActionsEnterpriseRequest(args [1
 
 // handleEnterpriseAdminGetAuditLogRequest handles enterprise-admin/get-audit-log operation.
 //
-// Gets the audit log for an enterprise. To use this endpoint, you must be an enterprise admin, and
-// you must use an access token with the `admin:enterprise` scope.
+// Gets the audit log for an enterprise. To use this endpoint, you must be an enterprise admin, and you
+// must use an access token with the `admin:enterprise` scope.
 //
 // GET /enterprises/{enterprise}/audit-log
 func (s *Server) handleEnterpriseAdminGetAuditLogRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -29323,6 +29581,7 @@ func (s *Server) handleEnterpriseAdminGetAuditLogRequest(args [1]string, argsEsc
 // handleEnterpriseAdminGetGithubActionsPermissionsEnterpriseRequest handles enterprise-admin/get-github-actions-permissions-enterprise operation.
 //
 // Gets the GitHub Actions permissions policy for organizations and allowed actions in an enterprise.
+//
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // GET /enterprises/{enterprise}/actions/permissions
@@ -29466,7 +29725,7 @@ func (s *Server) handleEnterpriseAdminGetGithubActionsPermissionsEnterpriseReque
 
 // handleEnterpriseAdminGetProvisioningInformationForEnterpriseGroupRequest handles enterprise-admin/get-provisioning-information-for-enterprise-group operation.
 //
-// **Note:** The SCIM API endpoints for enterprise accounts are currently in beta and are subject to
+// Note: The SCIM API endpoints for enterprise accounts are currently in beta and are subject to
 // change.
 //
 // GET /scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}
@@ -29618,7 +29877,7 @@ func (s *Server) handleEnterpriseAdminGetProvisioningInformationForEnterpriseGro
 
 // handleEnterpriseAdminGetProvisioningInformationForEnterpriseUserRequest handles enterprise-admin/get-provisioning-information-for-enterprise-user operation.
 //
-// **Note:** The SCIM API endpoints for enterprise accounts are currently in beta and are subject to
+// Note: The SCIM API endpoints for enterprise accounts are currently in beta and are subject to
 // change.
 //
 // GET /scim/v2/enterprises/{enterprise}/Users/{scim_user_id}
@@ -29767,6 +30026,7 @@ func (s *Server) handleEnterpriseAdminGetProvisioningInformationForEnterpriseUse
 // handleEnterpriseAdminGetSelfHostedRunnerForEnterpriseRequest handles enterprise-admin/get-self-hosted-runner-for-enterprise operation.
 //
 // Gets a specific self-hosted runner configured in an enterprise.
+//
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // GET /enterprises/{enterprise}/actions/runners/{runner_id}
@@ -29915,6 +30175,7 @@ func (s *Server) handleEnterpriseAdminGetSelfHostedRunnerForEnterpriseRequest(ar
 // handleEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseRequest handles enterprise-admin/get-self-hosted-runner-group-for-enterprise operation.
 //
 // Gets a specific self-hosted runner group for an enterprise.
+//
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // GET /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}
@@ -30063,6 +30324,7 @@ func (s *Server) handleEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseReque
 // handleEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest handles enterprise-admin/list-org-access-to-self-hosted-runner-group-in-enterprise operation.
 //
 // Lists the organizations with access to a self-hosted runner group.
+//
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // GET /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations
@@ -30218,7 +30480,7 @@ func (s *Server) handleEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnte
 
 // handleEnterpriseAdminListProvisionedGroupsEnterpriseRequest handles enterprise-admin/list-provisioned-groups-enterprise operation.
 //
-// **Note:** The SCIM API endpoints for enterprise accounts are currently in beta and are subject to
+// Note: The SCIM API endpoints for enterprise accounts are currently in beta and are subject to
 // change.
 //
 // GET /scim/v2/enterprises/{enterprise}/Groups
@@ -30378,33 +30640,41 @@ func (s *Server) handleEnterpriseAdminListProvisionedGroupsEnterpriseRequest(arg
 
 // handleEnterpriseAdminListProvisionedIdentitiesEnterpriseRequest handles enterprise-admin/list-provisioned-identities-enterprise operation.
 //
-// **Note:** The SCIM API endpoints for enterprise accounts are currently in beta and are subject to
+// Note: The SCIM API endpoints for enterprise accounts are currently in beta and are subject to
 // change.
+//
 // Retrieves a paginated list of all provisioned enterprise members, including pending invitations.
-// When a user with a SAML-provisioned external identity leaves (or is removed from) an enterprise,
-// the account's metadata is immediately removed. However, the returned list of user accounts might
-// not always match the organization or enterprise member list you see on GitHub. This can happen in
+//
+// When a user with a SAML-provisioned external identity leaves (or is removed from) an enterprise, the
+// account's metadata is immediately removed. However, the returned list of user accounts might not
+// always match the organization or enterprise member list you see on GitHub. This can happen in
 // certain cases where an external identity associated with an organization will not match an
 // organization member:
-// - When a user with a SCIM-provisioned external identity is removed from an enterprise, the
-// account's metadata is preserved to allow the user to re-join the organization in the future.
-// - When inviting a user to join an organization, you can expect to see their external identity in
-// the results before they accept the invitation, or if the invitation is cancelled (or never
-// accepted).
-// - When a user is invited over SCIM, an external identity is created that matches with the
-// invitee's email address. However, this identity is only linked to a user account when the user
-// accepts the invitation by going through SAML SSO.
-// The returned list of external identities can include an entry for a `null` user. These are
-// unlinked SAML identities that are created when a user goes through the following Single Sign-On
-// (SSO) process but does not sign in to their GitHub account after completing SSO:
-// 1. The user is granted access by the IdP and is not a member of the GitHub enterprise.
-// 1. The user attempts to access the GitHub enterprise and initiates the SAML SSO process, and is
-// not currently signed in to their GitHub account.
-// 1. After successfully authenticating with the SAML SSO IdP, the `null` external identity entry is
-// created and the user is prompted to sign in to their GitHub account:
-// - If the user signs in, their GitHub account is linked to this entry.
-// - If the user does not sign in (or does not create a new account when prompted), they are not
-// added to the GitHub enterprise, and the external identity `null` entry remains in place.
+//
+//   - When a user with a SCIM-provisioned external identity is removed from an enterprise, the
+//     account's metadata is preserved to allow the user to re-join the organization in the future.
+//   - When inviting a user to join an organization, you can expect to see their external identity in
+//     the results before they accept the invitation, or if the invitation is cancelled (or never
+//     accepted).
+//   - When a user is invited over SCIM, an external identity is created that matches with the invitee's
+//     email address. However, this identity is only linked to a user account when the user accepts the
+//     invitation by going through SAML SSO.
+//
+// The returned list of external identities can include an entry for a `null` user. These are unlinked
+// SAML identities that are created when a user goes through the following Single Sign-On (SSO) process
+// but does not sign in to their GitHub account after completing SSO:
+//
+//  1. The user is granted access by the IdP and is not a member of the GitHub enterprise.
+//
+//  2. The user attempts to access the GitHub enterprise and initiates the SAML SSO process, and is not
+//     currently signed in to their GitHub account.
+//
+//  3. After successfully authenticating with the SAML SSO IdP, the `null` external identity entry is
+//     created and the user is prompted to sign in to their GitHub account:
+//
+//     - If the user signs in, their GitHub account is linked to this entry.
+//     - If the user does not sign in (or does not create a new account when prompted), they are not
+//     added to the GitHub enterprise, and the external identity `null` entry remains in place.
 //
 // GET /scim/v2/enterprises/{enterprise}/Users
 func (s *Server) handleEnterpriseAdminListProvisionedIdentitiesEnterpriseRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -30560,6 +30830,7 @@ func (s *Server) handleEnterpriseAdminListProvisionedIdentitiesEnterpriseRequest
 // handleEnterpriseAdminListRunnerApplicationsForEnterpriseRequest handles enterprise-admin/list-runner-applications-for-enterprise operation.
 //
 // Lists binaries for the runner application that you can download and run.
+//
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // GET /enterprises/{enterprise}/actions/runners/downloads
@@ -30705,9 +30976,11 @@ func (s *Server) handleEnterpriseAdminListRunnerApplicationsForEnterpriseRequest
 //
 // Lists the organizations that are selected to have GitHub Actions enabled in an enterprise. To use
 // this endpoint, the enterprise permission policy for `enabled_organizations` must be configured to
-// `selected`. For more information, see "[Set GitHub Actions permissions for an
-// enterprise](#set-github-actions-permissions-for-an-enterprise)."
+// `selected`. For more information, see "[Set GitHub Actions permissions for an enterprise]."
+//
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
+//
+// [Set GitHub Actions permissions for an enterprise]: #set-github-actions-permissions-for-an-enterprise
 //
 // GET /enterprises/{enterprise}/actions/permissions/organizations
 func (s *Server) handleEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -30859,6 +31132,7 @@ func (s *Server) handleEnterpriseAdminListSelectedOrganizationsEnabledGithubActi
 // handleEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseRequest handles enterprise-admin/list-self-hosted-runner-groups-for-enterprise operation.
 //
 // Lists all self-hosted runner groups for an enterprise.
+//
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // GET /enterprises/{enterprise}/actions/runner-groups
@@ -31011,6 +31285,7 @@ func (s *Server) handleEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseReq
 // handleEnterpriseAdminListSelfHostedRunnersForEnterpriseRequest handles enterprise-admin/list-self-hosted-runners-for-enterprise operation.
 //
 // Lists all self-hosted runners configured for an enterprise.
+//
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // GET /enterprises/{enterprise}/actions/runners
@@ -31163,6 +31438,7 @@ func (s *Server) handleEnterpriseAdminListSelfHostedRunnersForEnterpriseRequest(
 // handleEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseRequest handles enterprise-admin/list-self-hosted-runners-in-group-for-enterprise operation.
 //
 // Lists the self-hosted runners that are in a specific enterprise group.
+//
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // GET /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners
@@ -31318,8 +31594,9 @@ func (s *Server) handleEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseR
 
 // handleEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest handles enterprise-admin/provision-and-invite-enterprise-group operation.
 //
-// **Note:** The SCIM API endpoints for enterprise accounts are currently in beta and are subject to
+// Note: The SCIM API endpoints for enterprise accounts are currently in beta and are subject to
 // change.
+//
 // Provision an enterprise group, and invite users to the group. This sends invitation emails to the
 // email address of the invited users to join the GitHub organization that the SCIM group corresponds
 // to.
@@ -31480,13 +31757,15 @@ func (s *Server) handleEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(a
 
 // handleEnterpriseAdminProvisionAndInviteEnterpriseUserRequest handles enterprise-admin/provision-and-invite-enterprise-user operation.
 //
-// **Note:** The SCIM API endpoints for enterprise accounts are currently in beta and are subject to
+// Note: The SCIM API endpoints for enterprise accounts are currently in beta and are subject to
 // change.
+//
 // Provision enterprise membership for a user, and send organization invitation emails to the email
 // address.
+//
 // You can optionally include the groups a user will be invited to join. If you do not provide a list
-// of `groups`, the user is provisioned for the enterprise, but no organization invitation emails
-// will be sent.
+// of `groups`, the user is provisioned for the enterprise, but no organization invitation emails will
+// be sent.
 //
 // POST /scim/v2/enterprises/{enterprise}/Users
 func (s *Server) handleEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -31644,11 +31923,13 @@ func (s *Server) handleEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(ar
 
 // handleEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest handles enterprise-admin/remove-org-access-to-self-hosted-runner-group-in-enterprise operation.
 //
-// Removes an organization from the list of selected organizations that can access a self-hosted
-// runner group. The runner group must have `visibility` set to `selected`. For more information, see
-// "[Create a self-hosted runner group for an
-// enterprise](#create-a-self-hosted-runner-group-for-an-enterprise)."
+// Removes an organization from the list of selected organizations that can access a self-hosted runner
+// group. The runner group must have `visibility` set to `selected`. For more information, see
+// "[Create a self-hosted runner group for an enterprise]."
+//
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
+//
+// [Create a self-hosted runner group for an enterprise]: #create-a-self-hosted-runner-group-for-an-enterprise
 //
 // DELETE /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations/{org_id}
 func (s *Server) handleEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -31801,6 +32082,7 @@ func (s *Server) handleEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEn
 //
 // Removes a self-hosted runner from a group configured in an enterprise. The runner is then returned
 // to the default group.
+//
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // DELETE /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners/{runner_id}
@@ -31952,11 +32234,13 @@ func (s *Server) handleEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpri
 
 // handleEnterpriseAdminSetAllowedActionsEnterpriseRequest handles enterprise-admin/set-allowed-actions-enterprise operation.
 //
-// Sets the actions that are allowed in an enterprise. To use this endpoint, the enterprise
-// permission policy for `allowed_actions` must be configured to `selected`. For more information,
-// see "[Set GitHub Actions permissions for an
-// enterprise](#set-github-actions-permissions-for-an-enterprise)."
+// Sets the actions that are allowed in an enterprise. To use this endpoint, the enterprise permission
+// policy for `allowed_actions` must be configured to `selected`. For more information, see
+// "[Set GitHub Actions permissions for an enterprise]."
+//
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
+//
+// [Set GitHub Actions permissions for an enterprise]: #set-github-actions-permissions-for-an-enterprise
 //
 // PUT /enterprises/{enterprise}/actions/permissions/selected-actions
 func (s *Server) handleEnterpriseAdminSetAllowedActionsEnterpriseRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -32115,6 +32399,7 @@ func (s *Server) handleEnterpriseAdminSetAllowedActionsEnterpriseRequest(args [1
 // handleEnterpriseAdminSetGithubActionsPermissionsEnterpriseRequest handles enterprise-admin/set-github-actions-permissions-enterprise operation.
 //
 // Sets the GitHub Actions permissions policy for organizations and allowed actions in an enterprise.
+//
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // PUT /enterprises/{enterprise}/actions/permissions
@@ -32273,13 +32558,16 @@ func (s *Server) handleEnterpriseAdminSetGithubActionsPermissionsEnterpriseReque
 
 // handleEnterpriseAdminSetInformationForProvisionedEnterpriseGroupRequest handles enterprise-admin/set-information-for-provisioned-enterprise-group operation.
 //
-// **Note:** The SCIM API endpoints for enterprise accounts are currently in beta and are subject to
+// Note: The SCIM API endpoints for enterprise accounts are currently in beta and are subject to
 // change.
+//
 // Replaces an existing provisioned group’s information. You must provide all the information
 // required for the group as if you were provisioning it for the first time. Any existing group
-// information that you don't provide will be removed, including group membership. If you want to
-// only update a specific attribute, use the [Update an attribute for a SCIM enterprise
-// group](#update-an-attribute-for-a-scim-enterprise-group) endpoint instead.
+// information that you don't provide will be removed, including group membership. If you want to only
+// update a specific attribute, use the [Update an attribute for a SCIM enterprise group] endpoint
+// instead.
+//
+// [Update an attribute for a SCIM enterprise group]: #update-an-attribute-for-a-scim-enterprise-group
 //
 // PUT /scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}
 func (s *Server) handleEnterpriseAdminSetInformationForProvisionedEnterpriseGroupRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -32441,16 +32729,20 @@ func (s *Server) handleEnterpriseAdminSetInformationForProvisionedEnterpriseGrou
 
 // handleEnterpriseAdminSetInformationForProvisionedEnterpriseUserRequest handles enterprise-admin/set-information-for-provisioned-enterprise-user operation.
 //
-// **Note:** The SCIM API endpoints for enterprise accounts are currently in beta and are subject to
+// Note: The SCIM API endpoints for enterprise accounts are currently in beta and are subject to
 // change.
+//
 // Replaces an existing provisioned user's information. You must provide all the information required
-// for the user as if you were provisioning them for the first time. Any existing user information
-// that you don't provide will be removed. If you want to only update a specific attribute, use the
-// [Update an attribute for a SCIM user](#update-an-attribute-for-an-enterprise-scim-user) endpoint
-// instead.
+// for the user as if you were provisioning them for the first time. Any existing user information that
+// you don't provide will be removed. If you want to only update a specific attribute, use the
+// [Update an attribute for a SCIM user] endpoint instead.
+//
 // You must at least provide the required values for the user: `userName`, `name`, and `emails`.
-// **Warning:** Setting `active: false` removes the user from the enterprise, deletes the external
+//
+// Warning: Setting `active: false` removes the user from the enterprise, deletes the external
 // identity, and deletes the associated `{scim_user_id}`.
+//
+// [Update an attribute for a SCIM user]: #update-an-attribute-for-an-enterprise-scim-user
 //
 // PUT /scim/v2/enterprises/{enterprise}/Users/{scim_user_id}
 func (s *Server) handleEnterpriseAdminSetInformationForProvisionedEnterpriseUserRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -32614,6 +32906,7 @@ func (s *Server) handleEnterpriseAdminSetInformationForProvisionedEnterpriseUser
 //
 // Replaces the list of organizations that have access to a self-hosted runner configured in an
 // enterprise.
+//
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // PUT /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations
@@ -32776,11 +33069,13 @@ func (s *Server) handleEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnter
 
 // handleEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRequest handles enterprise-admin/set-selected-organizations-enabled-github-actions-enterprise operation.
 //
-// Replaces the list of selected organizations that are enabled for GitHub Actions in an enterprise.
-// To use this endpoint, the enterprise permission policy for `enabled_organizations` must be
-// configured to `selected`. For more information, see "[Set GitHub Actions permissions for an
-// enterprise](#set-github-actions-permissions-for-an-enterprise)."
+// Replaces the list of selected organizations that are enabled for GitHub Actions in an enterprise. To
+// use this endpoint, the enterprise permission policy for `enabled_organizations` must be configured
+// to `selected`. For more information, see "[Set GitHub Actions permissions for an enterprise]."
+//
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
+//
+// [Set GitHub Actions permissions for an enterprise]: #set-github-actions-permissions-for-an-enterprise
 //
 // PUT /enterprises/{enterprise}/actions/permissions/organizations
 func (s *Server) handleEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -32939,6 +33234,7 @@ func (s *Server) handleEnterpriseAdminSetSelectedOrganizationsEnabledGithubActio
 // handleEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequest handles enterprise-admin/set-self-hosted-runners-in-group-for-enterprise operation.
 //
 // Replaces the list of self-hosted runners that are part of an enterprise runner group.
+//
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // PUT /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners
@@ -33101,14 +33397,17 @@ func (s *Server) handleEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRe
 
 // handleEnterpriseAdminUpdateAttributeForEnterpriseGroupRequest handles enterprise-admin/update-attribute-for-enterprise-group operation.
 //
-// **Note:** The SCIM API endpoints for enterprise accounts are currently in beta and are subject to
+// Note: The SCIM API endpoints for enterprise accounts are currently in beta and are subject to
 // change.
+//
 // Allows you to change a provisioned group’s individual attributes. To change a group’s values,
-// you must provide a specific Operations JSON format that contains at least one of the add, remove,
-// or replace operations. For examples and more information on the SCIM operations format, see the
-// [SCIM specification](https://tools.ietf.org/html/rfc7644#section-3.5.2).
+// you must provide a specific Operations JSON format that contains at least one of the add, remove, or
+// replace operations. For examples and more information on the SCIM operations format, see the
+// [SCIM specification].
 //
 // PATCH /scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}
+//
+// [SCIM specification]: https://tools.ietf.org/html/rfc7644#section-3.5.2
 func (s *Server) handleEnterpriseAdminUpdateAttributeForEnterpriseGroupRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -33268,31 +33567,33 @@ func (s *Server) handleEnterpriseAdminUpdateAttributeForEnterpriseGroupRequest(a
 
 // handleEnterpriseAdminUpdateAttributeForEnterpriseUserRequest handles enterprise-admin/update-attribute-for-enterprise-user operation.
 //
-// **Note:** The SCIM API endpoints for enterprise accounts are currently in beta and are subject to
+// Note: The SCIM API endpoints for enterprise accounts are currently in beta and are subject to
 // change.
-// Allows you to change a provisioned user's individual attributes. To change a user's values, you
-// must provide a specific `Operations` JSON format that contains at least one of the `add`, `remove`,
 //
-//	or `replace` operations. For examples and more information on the SCIM operations format, see the
+// Allows you to change a provisioned user's individual attributes. To change a user's values, you must
+// provide a specific `Operations` JSON format that contains at least one of the `add`, `remove`, or
+// `replace` operations. For examples and more information on the SCIM operations format, see the
+// [SCIM specification].
 //
-// [SCIM specification](https://tools.ietf.org/html/rfc7644#section-3.5.2).
-// **Note:** Complicated SCIM `path` selectors that include filters are not supported. For example, a
+// Note: Complicated SCIM `path` selectors that include filters are not supported. For example, a
 // `path` selector defined as `"path": "emails[type eq \"work\"]"` will not work.
-// **Warning:** If you set `active:false` using the `replace` operation (as shown in the JSON example
+//
+// Warning: If you set `active:false` using the `replace` operation (as shown in the JSON example
 // below), it removes the user from the enterprise, deletes the external identity, and deletes the
 // associated `:scim_user_id`.
-// ```
-// {
-// "Operations":[{
-// "op":"replace",
-// "value":{
-// "active":false
-// }
-// }]
-// }
-// ```.
+//
+//	{
+//	  "Operations":[{
+//	    "op":"replace",
+//	    "value":{
+//	      "active":false
+//	    }
+//	  }]
+//	}
 //
 // PATCH /scim/v2/enterprises/{enterprise}/Users/{scim_user_id}
+//
+// [SCIM specification]: https://tools.ietf.org/html/rfc7644#section-3.5.2
 func (s *Server) handleEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -33453,6 +33754,7 @@ func (s *Server) handleEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(ar
 // handleEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequest handles enterprise-admin/update-self-hosted-runner-group-for-enterprise operation.
 //
 // Updates the `name` and `visibility` of a self-hosted runner group in an enterprise.
+//
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // PATCH /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}
@@ -33759,8 +34061,9 @@ func (s *Server) handleGistsCheckIsStarredRequest(args [1]string, argsEscaped bo
 // handleGistsCreateRequest handles gists/create operation.
 //
 // Allows you to add a new gist with one or more files.
-// **Note:** Don't name your files "gistfile" with a numerical suffix. This is the format of the
-// automatic naming scheme that Gist uses internally.
+//
+// Note: Don't name your files "gistfile" with a numerical suffix. This is the format of the automatic
+// naming scheme that Gist uses internally.
 //
 // POST /gists
 func (s *Server) handleGistsCreateRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -34351,7 +34654,7 @@ func (s *Server) handleGistsDeleteCommentRequest(args [2]string, argsEscaped boo
 
 // handleGistsForkRequest handles gists/fork operation.
 //
-// **Note**: This was previously `/gists/:gist_id/fork`.
+// Note: This was previously `/gists/:gist_id/fork`.
 //
 // POST /gists/{gist_id}/forks
 func (s *Server) handleGistsForkRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -35692,11 +35995,13 @@ func (s *Server) handleGistsListForksRequest(args [1]string, argsEscaped bool, w
 // handleGistsListPublicRequest handles gists/list-public operation.
 //
 // List public gists sorted by most recently updated to least recently updated.
-// Note: With [pagination](https://docs.github.
-// com/rest/overview/resources-in-the-rest-api#pagination), you can fetch up to 3000 gists. For
-// example, you can fetch 100 pages with 30 gists per page or 30 pages with 100 gists per page.
+//
+// Note: With [pagination], you can fetch up to 3000 gists. For example, you can fetch 100 pages with
+// 30 gists per page or 30 pages with 100 gists per page.
 //
 // GET /gists/public
+//
+// [pagination]: https://docs.github.com/rest/overview/resources-in-the-rest-api#pagination
 func (s *Server) handleGistsListPublicRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -35997,10 +36302,11 @@ func (s *Server) handleGistsListStarredRequest(args [0]string, argsEscaped bool,
 // handleGistsStarRequest handles gists/star operation.
 //
 // Note that you'll need to set `Content-Length` to zero when calling out to this endpoint. For more
-// information, see "[HTTP verbs](https://docs.github.
-// com/rest/overview/resources-in-the-rest-api#http-verbs).".
+// information, see "[HTTP verbs].".
 //
 // PUT /gists/{gist_id}/star
+//
+// [HTTP verbs]: https://docs.github.com/rest/overview/resources-in-the-rest-api#http-verbs
 func (s *Server) handleGistsStarRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -36608,42 +36914,41 @@ func (s *Server) handleGitCreateBlobRequest(args [2]string, argsEscaped bool, w 
 
 // handleGitCreateCommitRequest handles git/create-commit operation.
 //
-// Creates a new Git [commit object](https://git-scm.
-// com/book/en/v1/Git-Internals-Git-Objects#Commit-Objects).
-// **Signature verification object**
+// Creates a new Git [commit object].
+//
+// # Signature verification object
+//
 // The response will include a `verification` object that describes the result of verifying the
 // commit's signature. The following fields are included in the `verification` object:
-// | Name | Type | Description |
-// | ---- | ---- | ----------- |
-// | `verified` | `boolean` | Indicates whether GitHub considers the signature in this commit to be
-// verified. |
-// | `reason` | `string` | The reason for verified value. Possible values and their meanings are
-// enumerated in table below. |
-// | `signature` | `string` | The signature that was extracted from the commit. |
-// | `payload` | `string` | The value that was signed. |
+//
+//	Name        | Type      | Description
+//	------------+-----------+-------------------------------------------------------------------------------------------------
+//	`verified`  | `boolean` | Indicates whether GitHub considers the signature in this commit to be verified.
+//	`reason`    | `string`  | The reason for verified value. Possible values and their meanings are enumerated in table below.
+//	`signature` | `string`  | The signature that was extracted from the commit.
+//	`payload`   | `string`  | The value that was signed.
+//
 // These are the possible values for `reason` in the `verification` object:
-// | Value | Description |
-// | ----- | ----------- |
-// | `expired_key` | The key that made the signature is expired. |
-// | `not_signing_key` | The "signing" flag is not among the usage flags in the GPG key that made the
-// signature. |
-// | `gpgverify_error` | There was an error communicating with the signature verification service. |
-// | `gpgverify_unavailable` | The signature verification service is currently unavailable. |
-// | `unsigned` | The object does not include a signature. |
-// | `unknown_signature_type` | A non-PGP signature was found in the commit. |
-// | `no_user` | No user was associated with the `committer` email address in the commit. |
-// | `unverified_email` | The `committer` email address in the commit was associated with a user, but
-// the email address is not verified on her/his account. |
-// | `bad_email` | The `committer` email address in the commit is not included in the identities of
-// the PGP key that made the signature. |
-// | `unknown_key` | The key that made the signature has not been registered with any user's account.
-// |
-// | `malformed_signature` | There was an error parsing the signature. |
-// | `invalid` | The signature could not be cryptographically verified using the key whose key-id was
-// found in the signature. |
-// | `valid` | None of the above errors applied, so the signature is considered to be verified. |.
+//
+//	Value                    | Description
+//	-------------------------+----------------------------------------------------------------------------------------------------------------------------------
+//	`expired_key`            | The key that made the signature is expired.
+//	`not_signing_key`        | The "signing" flag is not among the usage flags in the GPG key that made the signature.
+//	`gpgverify_error`        | There was an error communicating with the signature verification service.
+//	`gpgverify_unavailable`  | The signature verification service is currently unavailable.
+//	`unsigned`               | The object does not include a signature.
+//	`unknown_signature_type` | A non-PGP signature was found in the commit.
+//	`no_user`                | No user was associated with the `committer` email address in the commit.
+//	`unverified_email`       | The `committer` email address in the commit was associated with a user, but the email address is not verified on her/his account.
+//	`bad_email`              | The `committer` email address in the commit is not included in the identities of the PGP key that made the signature.
+//	`unknown_key`            | The key that made the signature has not been registered with any user's account.
+//	`malformed_signature`    | There was an error parsing the signature.
+//	`invalid`                | The signature could not be cryptographically verified using the key whose key-id was found in the signature.
+//	`valid`                  | None of the above errors applied, so the signature is considered to be verified.
 //
 // POST /repos/{owner}/{repo}/git/commits
+//
+// [commit object]: https://git-scm.com/book/en/v1/Git-Internals-Git-Objects#Commit-Objects
 func (s *Server) handleGitCreateCommitRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -36804,8 +37109,8 @@ func (s *Server) handleGitCreateCommitRequest(args [2]string, argsEscaped bool, 
 // handleGitCreateRefRequest handles git/create-ref operation.
 //
 // Creates a reference for your repository. You are unable to create new references for empty
-// repositories, even if the commit SHA-1 hash used exists. Empty repositories are repositories
-// without branches.
+// repositories, even if the commit SHA-1 hash used exists. Empty repositories are repositories without
+// branches.
 //
 // POST /repos/{owner}/{repo}/git/refs
 func (s *Server) handleGitCreateRefRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -36969,43 +37274,42 @@ func (s *Server) handleGitCreateRefRequest(args [2]string, argsEscaped bool, w h
 //
 // Note that creating a tag object does not create the reference that makes a tag in Git. If you want
 // to create an annotated tag in Git, you have to do this call to create the tag object, and then
-// [create](https://docs.github.com/rest/reference/git#create-a-reference) the `refs/tags/[tag]`
-// reference. If you want to create a lightweight tag, you only have to [create](https://docs.github.
-// com/rest/reference/git#create-a-reference) the tag reference - this call would be unnecessary.
-// **Signature verification object**
+// [create] the `refs/tags/[tag]` reference. If you want to create a lightweight tag, you only have to
+// [create] the tag reference - this call would be unnecessary.
+//
+// # Signature verification object
+//
 // The response will include a `verification` object that describes the result of verifying the
 // commit's signature. The following fields are included in the `verification` object:
-// | Name | Type | Description |
-// | ---- | ---- | ----------- |
-// | `verified` | `boolean` | Indicates whether GitHub considers the signature in this commit to be
-// verified. |
-// | `reason` | `string` | The reason for verified value. Possible values and their meanings are
-// enumerated in table below. |
-// | `signature` | `string` | The signature that was extracted from the commit. |
-// | `payload` | `string` | The value that was signed. |
+//
+//	Name        | Type      | Description
+//	------------+-----------+-------------------------------------------------------------------------------------------------
+//	`verified`  | `boolean` | Indicates whether GitHub considers the signature in this commit to be verified.
+//	`reason`    | `string`  | The reason for verified value. Possible values and their meanings are enumerated in table below.
+//	`signature` | `string`  | The signature that was extracted from the commit.
+//	`payload`   | `string`  | The value that was signed.
+//
 // These are the possible values for `reason` in the `verification` object:
-// | Value | Description |
-// | ----- | ----------- |
-// | `expired_key` | The key that made the signature is expired. |
-// | `not_signing_key` | The "signing" flag is not among the usage flags in the GPG key that made the
-// signature. |
-// | `gpgverify_error` | There was an error communicating with the signature verification service. |
-// | `gpgverify_unavailable` | The signature verification service is currently unavailable. |
-// | `unsigned` | The object does not include a signature. |
-// | `unknown_signature_type` | A non-PGP signature was found in the commit. |
-// | `no_user` | No user was associated with the `committer` email address in the commit. |
-// | `unverified_email` | The `committer` email address in the commit was associated with a user, but
-// the email address is not verified on her/his account. |
-// | `bad_email` | The `committer` email address in the commit is not included in the identities of
-// the PGP key that made the signature. |
-// | `unknown_key` | The key that made the signature has not been registered with any user's account.
-// |
-// | `malformed_signature` | There was an error parsing the signature. |
-// | `invalid` | The signature could not be cryptographically verified using the key whose key-id was
-// found in the signature. |
-// | `valid` | None of the above errors applied, so the signature is considered to be verified. |.
+//
+//	Value                    | Description
+//	-------------------------+----------------------------------------------------------------------------------------------------------------------------------
+//	`expired_key`            | The key that made the signature is expired.
+//	`not_signing_key`        | The "signing" flag is not among the usage flags in the GPG key that made the signature.
+//	`gpgverify_error`        | There was an error communicating with the signature verification service.
+//	`gpgverify_unavailable`  | The signature verification service is currently unavailable.
+//	`unsigned`               | The object does not include a signature.
+//	`unknown_signature_type` | A non-PGP signature was found in the commit.
+//	`no_user`                | No user was associated with the `committer` email address in the commit.
+//	`unverified_email`       | The `committer` email address in the commit was associated with a user, but the email address is not verified on her/his account.
+//	`bad_email`              | The `committer` email address in the commit is not included in the identities of the PGP key that made the signature.
+//	`unknown_key`            | The key that made the signature has not been registered with any user's account.
+//	`malformed_signature`    | There was an error parsing the signature.
+//	`invalid`                | The signature could not be cryptographically verified using the key whose key-id was found in the signature.
+//	`valid`                  | None of the above errors applied, so the signature is considered to be verified.
 //
 // POST /repos/{owner}/{repo}/git/tags
+//
+// [create]: https://docs.github.com/rest/reference/git#create-a-reference
 func (s *Server) handleGitCreateTagRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -37165,15 +37469,18 @@ func (s *Server) handleGitCreateTagRequest(args [2]string, argsEscaped bool, w h
 
 // handleGitCreateTreeRequest handles git/create-tree operation.
 //
-// The tree creation API accepts nested entries. If you specify both a tree and a nested path
-// modifying that tree, this endpoint will overwrite the contents of the tree with the new path
-// contents, and create a new tree structure.
+// The tree creation API accepts nested entries. If you specify both a tree and a nested path modifying
+// that tree, this endpoint will overwrite the contents of the tree with the new path contents, and
+// create a new tree structure.
+//
 // If you use this endpoint to add, delete, or modify the file contents in a tree, you will need to
-// commit the tree and then update a branch to point to the commit. For more information see "[Create
-// a commit](https://docs.github.com/rest/reference/git#create-a-commit)" and "[Update a
-// reference](https://docs.github.com/rest/reference/git#update-a-reference).".
+// commit the tree and then update a branch to point to the commit. For more information see
+// "[Create a commit]" and "[Update a reference].".
 //
 // POST /repos/{owner}/{repo}/git/trees
+//
+// [Create a commit]: https://docs.github.com/rest/reference/git#create-a-commit
+// [Update a reference]: https://docs.github.com/rest/reference/git#update-a-reference
 func (s *Server) handleGitCreateTreeRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -37485,7 +37792,8 @@ func (s *Server) handleGitDeleteRefRequest(args [3]string, argsEscaped bool, w h
 // handleGitGetBlobRequest handles git/get-blob operation.
 //
 // The `content` in the response will always be Base64 encoded.
-// _Note_: This API supports blobs up to 100 megabytes in size.
+//
+// Note: This API supports blobs up to 100 megabytes in size.
 //
 // GET /repos/{owner}/{repo}/git/blobs/{file_sha}
 func (s *Server) handleGitGetBlobRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -37636,42 +37944,41 @@ func (s *Server) handleGitGetBlobRequest(args [3]string, argsEscaped bool, w htt
 
 // handleGitGetCommitRequest handles git/get-commit operation.
 //
-// Gets a Git [commit object](https://git-scm.
-// com/book/en/v1/Git-Internals-Git-Objects#Commit-Objects).
-// **Signature verification object**
+// Gets a Git [commit object].
+//
+// # Signature verification object
+//
 // The response will include a `verification` object that describes the result of verifying the
 // commit's signature. The following fields are included in the `verification` object:
-// | Name | Type | Description |
-// | ---- | ---- | ----------- |
-// | `verified` | `boolean` | Indicates whether GitHub considers the signature in this commit to be
-// verified. |
-// | `reason` | `string` | The reason for verified value. Possible values and their meanings are
-// enumerated in table below. |
-// | `signature` | `string` | The signature that was extracted from the commit. |
-// | `payload` | `string` | The value that was signed. |
+//
+//	Name        | Type      | Description
+//	------------+-----------+-------------------------------------------------------------------------------------------------
+//	`verified`  | `boolean` | Indicates whether GitHub considers the signature in this commit to be verified.
+//	`reason`    | `string`  | The reason for verified value. Possible values and their meanings are enumerated in table below.
+//	`signature` | `string`  | The signature that was extracted from the commit.
+//	`payload`   | `string`  | The value that was signed.
+//
 // These are the possible values for `reason` in the `verification` object:
-// | Value | Description |
-// | ----- | ----------- |
-// | `expired_key` | The key that made the signature is expired. |
-// | `not_signing_key` | The "signing" flag is not among the usage flags in the GPG key that made the
-// signature. |
-// | `gpgverify_error` | There was an error communicating with the signature verification service. |
-// | `gpgverify_unavailable` | The signature verification service is currently unavailable. |
-// | `unsigned` | The object does not include a signature. |
-// | `unknown_signature_type` | A non-PGP signature was found in the commit. |
-// | `no_user` | No user was associated with the `committer` email address in the commit. |
-// | `unverified_email` | The `committer` email address in the commit was associated with a user, but
-// the email address is not verified on her/his account. |
-// | `bad_email` | The `committer` email address in the commit is not included in the identities of
-// the PGP key that made the signature. |
-// | `unknown_key` | The key that made the signature has not been registered with any user's account.
-// |
-// | `malformed_signature` | There was an error parsing the signature. |
-// | `invalid` | The signature could not be cryptographically verified using the key whose key-id was
-// found in the signature. |
-// | `valid` | None of the above errors applied, so the signature is considered to be verified. |.
+//
+//	Value                    | Description
+//	-------------------------+----------------------------------------------------------------------------------------------------------------------------------
+//	`expired_key`            | The key that made the signature is expired.
+//	`not_signing_key`        | The "signing" flag is not among the usage flags in the GPG key that made the signature.
+//	`gpgverify_error`        | There was an error communicating with the signature verification service.
+//	`gpgverify_unavailable`  | The signature verification service is currently unavailable.
+//	`unsigned`               | The object does not include a signature.
+//	`unknown_signature_type` | A non-PGP signature was found in the commit.
+//	`no_user`                | No user was associated with the `committer` email address in the commit.
+//	`unverified_email`       | The `committer` email address in the commit was associated with a user, but the email address is not verified on her/his account.
+//	`bad_email`              | The `committer` email address in the commit is not included in the identities of the PGP key that made the signature.
+//	`unknown_key`            | The key that made the signature has not been registered with any user's account.
+//	`malformed_signature`    | There was an error parsing the signature.
+//	`invalid`                | The signature could not be cryptographically verified using the key whose key-id was found in the signature.
+//	`valid`                  | None of the above errors applied, so the signature is considered to be verified.
 //
 // GET /repos/{owner}/{repo}/git/commits/{commit_sha}
+//
+// [commit object]: https://git-scm.com/book/en/v1/Git-Internals-Git-Objects#Commit-Objects
 func (s *Server) handleGitGetCommitRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -37823,13 +38130,15 @@ func (s *Server) handleGitGetCommitRequest(args [3]string, argsEscaped bool, w h
 // Returns a single reference from your Git database. The `:ref` in the URL must be formatted as
 // `heads/<branch name>` for branches and `tags/<tag name>` for tags. If the `:ref` doesn't match an
 // existing ref, a `404` is returned.
-// **Note:** You need to explicitly [request a pull request](https://docs.github.
-// com/rest/reference/pulls#get-a-pull-request) to trigger a test merge commit, which checks the
-// mergeability of pull requests. For more information, see "[Checking mergeability of pull
-// requests](https://docs.github.
-// com/rest/guides/getting-started-with-the-git-database-api#checking-mergeability-of-pull-requests)".
+//
+// Note: You need to explicitly [request a pull request] to trigger a test merge commit, which checks
+// the mergeability of pull requests. For more information, see
+// "[Checking mergeability of pull requests]".
 //
 // GET /repos/{owner}/{repo}/git/ref/{ref}
+//
+// [request a pull request]: https://docs.github.com/rest/reference/pulls#get-a-pull-request
+// [Checking mergeability of pull requests]: https://docs.github.com/rest/guides/getting-started-with-the-git-database-api#checking-mergeability-of-pull-requests
 func (s *Server) handleGitGetRefRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -37978,38 +38287,35 @@ func (s *Server) handleGitGetRefRequest(args [3]string, argsEscaped bool, w http
 
 // handleGitGetTagRequest handles git/get-tag operation.
 //
-// **Signature verification object**
+// # Signature verification object
+//
 // The response will include a `verification` object that describes the result of verifying the
 // commit's signature. The following fields are included in the `verification` object:
-// | Name | Type | Description |
-// | ---- | ---- | ----------- |
-// | `verified` | `boolean` | Indicates whether GitHub considers the signature in this commit to be
-// verified. |
-// | `reason` | `string` | The reason for verified value. Possible values and their meanings are
-// enumerated in table below. |
-// | `signature` | `string` | The signature that was extracted from the commit. |
-// | `payload` | `string` | The value that was signed. |
+//
+//	Name        | Type      | Description
+//	------------+-----------+-------------------------------------------------------------------------------------------------
+//	`verified`  | `boolean` | Indicates whether GitHub considers the signature in this commit to be verified.
+//	`reason`    | `string`  | The reason for verified value. Possible values and their meanings are enumerated in table below.
+//	`signature` | `string`  | The signature that was extracted from the commit.
+//	`payload`   | `string`  | The value that was signed.
+//
 // These are the possible values for `reason` in the `verification` object:
-// | Value | Description |
-// | ----- | ----------- |
-// | `expired_key` | The key that made the signature is expired. |
-// | `not_signing_key` | The "signing" flag is not among the usage flags in the GPG key that made the
-// signature. |
-// | `gpgverify_error` | There was an error communicating with the signature verification service. |
-// | `gpgverify_unavailable` | The signature verification service is currently unavailable. |
-// | `unsigned` | The object does not include a signature. |
-// | `unknown_signature_type` | A non-PGP signature was found in the commit. |
-// | `no_user` | No user was associated with the `committer` email address in the commit. |
-// | `unverified_email` | The `committer` email address in the commit was associated with a user, but
-// the email address is not verified on her/his account. |
-// | `bad_email` | The `committer` email address in the commit is not included in the identities of
-// the PGP key that made the signature. |
-// | `unknown_key` | The key that made the signature has not been registered with any user's account.
-// |
-// | `malformed_signature` | There was an error parsing the signature. |
-// | `invalid` | The signature could not be cryptographically verified using the key whose key-id was
-// found in the signature. |
-// | `valid` | None of the above errors applied, so the signature is considered to be verified. |.
+//
+//	Value                    | Description
+//	-------------------------+----------------------------------------------------------------------------------------------------------------------------------
+//	`expired_key`            | The key that made the signature is expired.
+//	`not_signing_key`        | The "signing" flag is not among the usage flags in the GPG key that made the signature.
+//	`gpgverify_error`        | There was an error communicating with the signature verification service.
+//	`gpgverify_unavailable`  | The signature verification service is currently unavailable.
+//	`unsigned`               | The object does not include a signature.
+//	`unknown_signature_type` | A non-PGP signature was found in the commit.
+//	`no_user`                | No user was associated with the `committer` email address in the commit.
+//	`unverified_email`       | The `committer` email address in the commit was associated with a user, but the email address is not verified on her/his account.
+//	`bad_email`              | The `committer` email address in the commit is not included in the identities of the PGP key that made the signature.
+//	`unknown_key`            | The key that made the signature has not been registered with any user's account.
+//	`malformed_signature`    | There was an error parsing the signature.
+//	`invalid`                | The signature could not be cryptographically verified using the key whose key-id was found in the signature.
+//	`valid`                  | None of the above errors applied, so the signature is considered to be verified.
 //
 // GET /repos/{owner}/{repo}/git/tags/{tag_sha}
 func (s *Server) handleGitGetTagRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -38161,9 +38467,10 @@ func (s *Server) handleGitGetTagRequest(args [3]string, argsEscaped bool, w http
 // handleGitGetTreeRequest handles git/get-tree operation.
 //
 // Returns a single tree using the SHA1 value for that tree.
+//
 // If `truncated` is `true` in the response then the number of items in the `tree` array exceeded our
-// maximum limit. If you need to fetch more items, use the non-recursive method of fetching trees,
-// and fetch one sub-tree at a time.
+// maximum limit. If you need to fetch more items, use the non-recursive method of fetching trees, and
+// fetch one sub-tree at a time.
 //
 // GET /repos/{owner}/{repo}/git/trees/{tree_sha}
 func (s *Server) handleGitGetTreeRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -38322,19 +38629,23 @@ func (s *Server) handleGitGetTreeRequest(args [3]string, argsEscaped bool, w htt
 // the URL must be formatted as `heads/<branch name>` for branches and `tags/<tag name>` for tags. If
 // the `:ref` doesn't exist in the repository, but existing refs start with `:ref`, they will be
 // returned as an array.
-// When you use this endpoint without providing a `:ref`, it will return an array of all the
-// references from your Git database, including notes and stashes if they exist on the server.
-// Anything in the namespace is returned, not just `heads` and `tags`.
-// **Note:** You need to explicitly [request a pull request](https://docs.github.
-// com/rest/reference/pulls#get-a-pull-request) to trigger a test merge commit, which checks the
-// mergeability of pull requests. For more information, see "[Checking mergeability of pull
-// requests](https://docs.github.
-// com/rest/guides/getting-started-with-the-git-database-api#checking-mergeability-of-pull-requests)".
+//
+// When you use this endpoint without providing a `:ref`, it will return an array of all the references
+// from your Git database, including notes and stashes if they exist on the server. Anything in the
+// namespace is returned, not just `heads` and `tags`.
+//
+// Note: You need to explicitly [request a pull request] to trigger a test merge commit, which checks
+// the mergeability of pull requests. For more information, see
+// "[Checking mergeability of pull requests]".
+//
 // If you request matching references for a branch named `feature` but the branch `feature` doesn't
 // exist, the response can still include other matching head refs that start with the word `feature`,
 // such as `featureA` and `featureB`.
 //
 // GET /repos/{owner}/{repo}/git/matching-refs/{ref}
+//
+// [request a pull request]: https://docs.github.com/rest/reference/pulls#get-a-pull-request
+// [Checking mergeability of pull requests]: https://docs.github.com/rest/guides/getting-started-with-the-git-database-api#checking-mergeability-of-pull-requests
 func (s *Server) handleGitListMatchingRefsRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -38657,10 +38968,11 @@ func (s *Server) handleGitUpdateRefRequest(args [3]string, argsEscaped bool, w h
 
 // handleGitignoreGetAllTemplatesRequest handles gitignore/get-all-templates operation.
 //
-// List all templates available to pass as an option when [creating a repository](https://docs.github.
-// com/rest/reference/repos#create-a-repository-for-the-authenticated-user).
+// List all templates available to pass as an option when [creating a repository].
 //
 // GET /gitignore/templates
+//
+// [creating a repository]: https://docs.github.com/rest/reference/repos#create-a-repository-for-the-authenticated-user
 func (s *Server) handleGitignoreGetAllTemplatesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -38782,11 +39094,12 @@ func (s *Server) handleGitignoreGetAllTemplatesRequest(args [0]string, argsEscap
 
 // handleGitignoreGetTemplateRequest handles gitignore/get-template operation.
 //
-// The API also allows fetching the source of a single template.
-// Use the raw [media type](https://docs.github.com/rest/overview/media-types/) to get the raw
-// contents.
+// The API also allows fetching the source of a single template. Use the raw [media type] to get the
+// raw contents.
 //
 // GET /gitignore/templates/{name}
+//
+// [media type]: https://docs.github.com/rest/overview/media-types/
 func (s *Server) handleGitignoreGetTemplateRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -39051,8 +39364,8 @@ func (s *Server) handleInteractionsRemoveRestrictionsForAuthenticatedUserRequest
 
 // handleInteractionsRemoveRestrictionsForOrgRequest handles interactions/remove-restrictions-for-org operation.
 //
-// Removes all interaction restrictions from public repositories in the given organization. You must
-// be an organization owner to remove restrictions.
+// Removes all interaction restrictions from public repositories in the given organization. You must be
+// an organization owner to remove restrictions.
 //
 // DELETE /orgs/{org}/interaction-limits
 func (s *Server) handleInteractionsRemoveRestrictionsForOrgRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -39195,10 +39508,10 @@ func (s *Server) handleInteractionsRemoveRestrictionsForOrgRequest(args [1]strin
 
 // handleInteractionsRemoveRestrictionsForRepoRequest handles interactions/remove-restrictions-for-repo operation.
 //
-// Removes all interaction restrictions from the given repository. You must have owner or admin
-// access to remove restrictions. If the interaction limit is set for the user or organization that
-// owns this repository, you will receive a `409 Conflict` response and will not be able to use this
-// endpoint to change the interaction limit for a single repository.
+// Removes all interaction restrictions from the given repository. You must have owner or admin access
+// to remove restrictions. If the interaction limit is set for the user or organization that owns this
+// repository, you will receive a `409 Conflict` response and will not be able to use this endpoint to
+// change the interaction limit for a single repository.
 //
 // DELETE /repos/{owner}/{repo}/interaction-limits
 func (s *Server) handleInteractionsRemoveRestrictionsForRepoRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -39345,9 +39658,9 @@ func (s *Server) handleInteractionsRemoveRestrictionsForRepoRequest(args [2]stri
 
 // handleInteractionsSetRestrictionsForAuthenticatedUserRequest handles interactions/set-restrictions-for-authenticated-user operation.
 //
-// Temporarily restricts which type of GitHub user can interact with your public repositories.
-// Setting the interaction limit at the user level will overwrite any interaction limits that are set
-// for individual repositories owned by the user.
+// Temporarily restricts which type of GitHub user can interact with your public repositories. Setting
+// the interaction limit at the user level will overwrite any interaction limits that are set for
+// individual repositories owned by the user.
 //
 // PUT /user/interaction-limits
 func (s *Server) handleInteractionsSetRestrictionsForAuthenticatedUserRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -39490,8 +39803,8 @@ func (s *Server) handleInteractionsSetRestrictionsForAuthenticatedUserRequest(ar
 
 // handleInteractionsSetRestrictionsForOrgRequest handles interactions/set-restrictions-for-org operation.
 //
-// Temporarily restricts interactions to a certain type of GitHub user in any public repository in
-// the given organization. You must be an organization owner to set these restrictions. Setting the
+// Temporarily restricts interactions to a certain type of GitHub user in any public repository in the
+// given organization. You must be an organization owner to set these restrictions. Setting the
 // interaction limit at the organization level will overwrite any interaction limits that are set for
 // individual repositories owned by the organization.
 //
@@ -39651,10 +39964,10 @@ func (s *Server) handleInteractionsSetRestrictionsForOrgRequest(args [1]string, 
 
 // handleInteractionsSetRestrictionsForRepoRequest handles interactions/set-restrictions-for-repo operation.
 //
-// Temporarily restricts interactions to a certain type of GitHub user within the given repository.
-// You must have owner or admin access to set these restrictions. If an interaction limit is set for
-// the user or organization that owns this repository, you will receive a `409 Conflict` response and
-// will not be able to use this endpoint to change the interaction limit for a single repository.
+// Temporarily restricts interactions to a certain type of GitHub user within the given repository. You
+// must have owner or admin access to set these restrictions. If an interaction limit is set for the
+// user or organization that owns this repository, you will receive a `409 Conflict` response and will
+// not be able to use this endpoint to change the interaction limit for a single repository.
 //
 // PUT /repos/{owner}/{repo}/interaction-limits
 func (s *Server) handleInteractionsSetRestrictionsForRepoRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -39983,8 +40296,10 @@ func (s *Server) handleIssuesAddAssigneesRequest(args [3]string, argsEscaped boo
 // handleIssuesCheckUserCanBeAssignedRequest handles issues/check-user-can-be-assigned operation.
 //
 // Checks if a user has permission to be assigned to an issue in this repository.
+//
 // If the `assignee` can be assigned to issues in the repository, a `204` header with no content is
 // returned.
+//
 // Otherwise a `404` status code is returned.
 //
 // GET /repos/{owner}/{repo}/assignees/{assignee}
@@ -40136,18 +40451,19 @@ func (s *Server) handleIssuesCheckUserCanBeAssignedRequest(args [3]string, argsE
 
 // handleIssuesCreateRequest handles issues/create operation.
 //
-// Any user with pull access to a repository can create an issue. If [issues are disabled in the
-// repository](https://help.github.com/articles/disabling-issues/), the API returns a `410 Gone`
-// status.
-// This endpoint triggers [notifications](https://docs.github.
-// com/en/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating
-// content too quickly using this endpoint may result in secondary rate limiting. See "[Secondary
-// rate limits](https://docs.github.
-// com/rest/overview/resources-in-the-rest-api#secondary-rate-limits)" and "[Dealing with secondary
-// rate limits](https://docs.github.
-// com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)" for details.
+// Any user with pull access to a repository can create an issue. If
+// [issues are disabled in the repository], the API returns a `410 Gone` status.
+//
+// This endpoint triggers [notifications]. Creating content too quickly using this endpoint may result
+// in secondary rate limiting. See "[Secondary rate limits]" and "[Dealing with secondary rate limits]"
+// for details.
 //
 // POST /repos/{owner}/{repo}/issues
+//
+// [issues are disabled in the repository]: https://help.github.com/articles/disabling-issues/
+// [notifications]: https://docs.github.com/en/github/managing-subscriptions-and-notifications-on-github/about-notifications
+// [Secondary rate limits]: https://docs.github.com/rest/overview/resources-in-the-rest-api#secondary-rate-limits
+// [Dealing with secondary rate limits]: https://docs.github.com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits
 func (s *Server) handleIssuesCreateRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -40307,15 +40623,15 @@ func (s *Server) handleIssuesCreateRequest(args [2]string, argsEscaped bool, w h
 
 // handleIssuesCreateCommentRequest handles issues/create-comment operation.
 //
-// This endpoint triggers [notifications](https://docs.github.
-// com/en/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating
-// content too quickly using this endpoint may result in secondary rate limiting. See "[Secondary
-// rate limits](https://docs.github.
-// com/rest/overview/resources-in-the-rest-api#secondary-rate-limits)" and "[Dealing with secondary
-// rate limits](https://docs.github.
-// com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)" for details.
+// This endpoint triggers [notifications]. Creating content too quickly using this endpoint may result
+// in secondary rate limiting. See "[Secondary rate limits]" and "[Dealing with secondary rate limits]"
+// for details.
 //
 // POST /repos/{owner}/{repo}/issues/{issue_number}/comments
+//
+// [notifications]: https://docs.github.com/en/github/managing-subscriptions-and-notifications-on-github/about-notifications
+// [Secondary rate limits]: https://docs.github.com/rest/overview/resources-in-the-rest-api#secondary-rate-limits
+// [Dealing with secondary rate limits]: https://docs.github.com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits
 func (s *Server) handleIssuesCreateCommentRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -41256,27 +41572,24 @@ func (s *Server) handleIssuesDeleteMilestoneRequest(args [3]string, argsEscaped 
 
 // handleIssuesGetRequest handles issues/get operation.
 //
-// The API returns a [`301 Moved Permanently` status](https://docs.github.
-// com/rest/overview/resources-in-the-rest-api#http-redirects-redirects) if the issue was
-// [transferred](https://help.github.com/articles/transferring-an-issue-to-another-repository/) to
-// another repository. If
-// the issue was transferred to or deleted from a repository where the authenticated user lacks read
-// access, the API
-// returns a `404 Not Found` status. If the issue was deleted from a repository where the
-// authenticated user has read
-// access, the API returns a `410 Gone` status. To receive webhook events for transferred and deleted
-// issues, subscribe
-// to the [`issues`](https://docs.github.com/webhooks/event-payloads/#issues) webhook.
-// **Note**: GitHub's REST API v3 considers every pull request an issue, but not every issue is a
-// pull request. For this
-// reason, "Issues" endpoints may return both issues and pull requests in the response. You can
-// identify pull requests by
-// the `pull_request` key. Be aware that the `id` of a pull request returned from "Issues" endpoints
-// will be an _issue id_. To find out the pull
-// request id, use the "[List pull requests](https://docs.github.
-// com/rest/reference/pulls#list-pull-requests)" endpoint.
+// The API returns a [301 Moved Permanently status] if the issue was [transferred] to another
+// repository. If the issue was transferred to or deleted from a repository where the authenticated
+// user lacks read access, the API returns a `404 Not Found` status. If the issue was deleted from a
+// repository where the authenticated user has read access, the API returns a `410 Gone` status. To
+// receive webhook events for transferred and deleted issues, subscribe to the [issues] webhook.
+//
+// Note: GitHub's REST API v3 considers every pull request an issue, but not every issue is a pull
+// request. For this reason, "Issues" endpoints may return both issues and pull requests in the
+// response. You can identify pull requests by the `pull_request` key. Be aware that the `id` of a pull
+// request returned from "Issues" endpoints will be an issue id. To find out the pull request id, use
+// the "[List pull requests]" endpoint.
 //
 // GET /repos/{owner}/{repo}/issues/{issue_number}
+//
+// [301 Moved Permanently status]: https://docs.github.com/rest/overview/resources-in-the-rest-api#http-redirects-redirects
+// [transferred]: https://help.github.com/articles/transferring-an-issue-to-another-repository/
+// [issues]: https://docs.github.com/webhooks/event-payloads/#issues
+// [List pull requests]: https://docs.github.com/rest/reference/pulls#list-pull-requests
 func (s *Server) handleIssuesGetRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -42030,20 +42343,18 @@ func (s *Server) handleIssuesGetMilestoneRequest(args [3]string, argsEscaped boo
 // handleIssuesListRequest handles issues/list operation.
 //
 // List issues assigned to the authenticated user across all visible repositories including owned
-// repositories, member
-// repositories, and organization repositories. You can use the `filter` query parameter to fetch
-// issues that are not
-// necessarily assigned to you.
-// **Note**: GitHub's REST API v3 considers every pull request an issue, but not every issue is a
-// pull request. For this
-// reason, "Issues" endpoints may return both issues and pull requests in the response. You can
-// identify pull requests by
-// the `pull_request` key. Be aware that the `id` of a pull request returned from "Issues" endpoints
-// will be an _issue id_. To find out the pull
-// request id, use the "[List pull requests](https://docs.github.
-// com/rest/reference/pulls#list-pull-requests)" endpoint.
+// repositories, member repositories, and organization repositories. You can use the `filter` query
+// parameter to fetch issues that are not necessarily assigned to you.
+//
+// Note: GitHub's REST API v3 considers every pull request an issue, but not every issue is a pull
+// request. For this reason, "Issues" endpoints may return both issues and pull requests in the
+// response. You can identify pull requests by the `pull_request` key. Be aware that the `id` of a pull
+// request returned from "Issues" endpoints will be an issue id. To find out the pull request id, use
+// the "[List pull requests]" endpoint.
 //
 // GET /issues
+//
+// [List pull requests]: https://docs.github.com/rest/reference/pulls#list-pull-requests
 func (s *Server) handleIssuesListRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -42228,10 +42539,11 @@ func (s *Server) handleIssuesListRequest(args [0]string, argsEscaped bool, w htt
 
 // handleIssuesListAssigneesRequest handles issues/list-assignees operation.
 //
-// Lists the [available assignees](https://help.github.
-// com/articles/assigning-issues-and-pull-requests-to-other-github-users/) for issues in a repository.
+// Lists the [available assignees] for issues in a repository.
 //
 // GET /repos/{owner}/{repo}/assignees
+//
+// [available assignees]: https://help.github.com/articles/assigning-issues-and-pull-requests-to-other-github-users/
 func (s *Server) handleIssuesListAssigneesRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -42870,16 +43182,16 @@ func (s *Server) handleIssuesListEventsForRepoRequest(args [2]string, argsEscape
 // handleIssuesListForAuthenticatedUserRequest handles issues/list-for-authenticated-user operation.
 //
 // List issues across owned and member repositories assigned to the authenticated user.
-// **Note**: GitHub's REST API v3 considers every pull request an issue, but not every issue is a
-// pull request. For this
-// reason, "Issues" endpoints may return both issues and pull requests in the response. You can
-// identify pull requests by
-// the `pull_request` key. Be aware that the `id` of a pull request returned from "Issues" endpoints
-// will be an _issue id_. To find out the pull
-// request id, use the "[List pull requests](https://docs.github.
-// com/rest/reference/pulls#list-pull-requests)" endpoint.
+//
+// Note: GitHub's REST API v3 considers every pull request an issue, but not every issue is a pull
+// request. For this reason, "Issues" endpoints may return both issues and pull requests in the
+// response. You can identify pull requests by the `pull_request` key. Be aware that the `id` of a pull
+// request returned from "Issues" endpoints will be an issue id. To find out the pull request id, use
+// the "[List pull requests]" endpoint.
 //
 // GET /user/issues
+//
+// [List pull requests]: https://docs.github.com/rest/reference/pulls#list-pull-requests
 func (s *Server) handleIssuesListForAuthenticatedUserRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -43049,16 +43361,16 @@ func (s *Server) handleIssuesListForAuthenticatedUserRequest(args [0]string, arg
 // handleIssuesListForOrgRequest handles issues/list-for-org operation.
 //
 // List issues in an organization assigned to the authenticated user.
-// **Note**: GitHub's REST API v3 considers every pull request an issue, but not every issue is a
-// pull request. For this
-// reason, "Issues" endpoints may return both issues and pull requests in the response. You can
-// identify pull requests by
-// the `pull_request` key. Be aware that the `id` of a pull request returned from "Issues" endpoints
-// will be an _issue id_. To find out the pull
-// request id, use the "[List pull requests](https://docs.github.
-// com/rest/reference/pulls#list-pull-requests)" endpoint.
+//
+// Note: GitHub's REST API v3 considers every pull request an issue, but not every issue is a pull
+// request. For this reason, "Issues" endpoints may return both issues and pull requests in the
+// response. You can identify pull requests by the `pull_request` key. Be aware that the `id` of a pull
+// request returned from "Issues" endpoints will be an issue id. To find out the pull request id, use
+// the "[List pull requests]" endpoint.
 //
 // GET /orgs/{org}/issues
+//
+// [List pull requests]: https://docs.github.com/rest/reference/pulls#list-pull-requests
 func (s *Server) handleIssuesListForOrgRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -43232,16 +43544,16 @@ func (s *Server) handleIssuesListForOrgRequest(args [1]string, argsEscaped bool,
 // handleIssuesListForRepoRequest handles issues/list-for-repo operation.
 //
 // List issues in a repository.
-// **Note**: GitHub's REST API v3 considers every pull request an issue, but not every issue is a
-// pull request. For this
-// reason, "Issues" endpoints may return both issues and pull requests in the response. You can
-// identify pull requests by
-// the `pull_request` key. Be aware that the `id` of a pull request returned from "Issues" endpoints
-// will be an _issue id_. To find out the pull
-// request id, use the "[List pull requests](https://docs.github.
-// com/rest/reference/pulls#list-pull-requests)" endpoint.
+//
+// Note: GitHub's REST API v3 considers every pull request an issue, but not every issue is a pull
+// request. For this reason, "Issues" endpoints may return both issues and pull requests in the
+// response. You can identify pull requests by the `pull_request` key. Be aware that the `id` of a pull
+// request returned from "Issues" endpoints will be an issue id. To find out the pull request id, use
+// the "[List pull requests]" endpoint.
 //
 // GET /repos/{owner}/{repo}/issues
+//
+// [List pull requests]: https://docs.github.com/rest/reference/pulls#list-pull-requests
 func (s *Server) handleIssuesListForRepoRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -44071,11 +44383,13 @@ func (s *Server) handleIssuesListMilestonesRequest(args [2]string, argsEscaped b
 // handleIssuesLockRequest handles issues/lock operation.
 //
 // Users with push access can lock an issue or pull request's conversation.
+//
 // Note that, if you choose not to pass any parameters, you'll need to set `Content-Length` to zero
-// when calling out to this endpoint. For more information, see "[HTTP verbs](https://docs.github.
-// com/rest/overview/resources-in-the-rest-api#http-verbs).".
+// when calling out to this endpoint. For more information, see "[HTTP verbs].".
 //
 // PUT /repos/{owner}/{repo}/issues/{issue_number}/lock
+//
+// [HTTP verbs]: https://docs.github.com/rest/overview/resources-in-the-rest-api#http-verbs
 func (s *Server) handleIssuesLockRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -45822,12 +46136,14 @@ func (s *Server) handleLicensesGetAllCommonlyUsedRequest(args [0]string, argsEsc
 // handleLicensesGetForRepoRequest handles licenses/get-for-repo operation.
 //
 // This method returns the contents of the repository's license file, if one is detected.
-// Similar to [Get repository content](https://docs.github.
-// com/rest/reference/repos#get-repository-content), this method also supports [custom media
-// types](https://docs.github.com/rest/overview/media-types) for retrieving the raw license content
-// or rendered license HTML.
+//
+// Similar to [Get repository content], this method also supports [custom media types] for retrieving
+// the raw license content or rendered license HTML.
 //
 // GET /repos/{owner}/{repo}/license
+//
+// [Get repository content]: https://docs.github.com/rest/reference/repos#get-repository-content
+// [custom media types]: https://docs.github.com/rest/overview/media-types
 func (s *Server) handleLicensesGetForRepoRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -46116,11 +46432,13 @@ func (s *Server) handleMarkdownRenderRequest(args [0]string, argsEscaped bool, w
 // handleMarkdownRenderRawRequest handles markdown/render-raw operation.
 //
 // You must send Markdown as plain text (using a `Content-Type` header of `text/plain` or
-// `text/x-markdown`) to this endpoint, rather than using JSON format. In raw mode, [GitHub Flavored
-// Markdown](https://github.github.com/gfm/) is not supported and Markdown will be rendered in plain
-// format like a README.md file. Markdown content must be 400 KB or less.
+// `text/x-markdown`) to this endpoint, rather than using JSON format. In raw mode,
+// [GitHub Flavored Markdown] is not supported and Markdown will be rendered in plain format like a
+// README.md file. Markdown content must be 400 KB or less.
 //
 // POST /markdown/raw
+//
+// [GitHub Flavored Markdown]: https://github.github.com/gfm/
 func (s *Server) handleMarkdownRenderRawRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -46262,12 +46580,14 @@ func (s *Server) handleMarkdownRenderRawRequest(args [0]string, argsEscaped bool
 // handleMetaGetRequest handles meta/get operation.
 //
 // Returns meta information about GitHub, including a list of GitHub's IP addresses. For more
-// information, see "[About GitHub's IP addresses](https://help.github.
-// com/articles/about-github-s-ip-addresses/)."
-// **Note:** The IP addresses shown in the documentation's response are only example values. You must
+// information, see "[About GitHub's IP addresses]."
+//
+// Note: The IP addresses shown in the documentation's response are only example values. You must
 // always query the API directly to get the latest list of IP addresses.
 //
 // GET /meta
+//
+// [About GitHub's IP addresses]: https://help.github.com/articles/about-github-s-ip-addresses/
 func (s *Server) handleMetaGetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -46928,12 +47248,14 @@ func (s *Server) handleMigrationsCancelImportRequest(args [2]string, argsEscaped
 // handleMigrationsDeleteArchiveForAuthenticatedUserRequest handles migrations/delete-archive-for-authenticated-user operation.
 //
 // Deletes a previous migration archive. Downloadable migration archives are automatically deleted
-// after seven days. Migration metadata, which is returned in the [List user migrations](https://docs.
-// github.com/rest/reference/migrations#list-user-migrations) and [Get a user migration
-// status](https://docs.github.com/rest/reference/migrations#get-a-user-migration-status) endpoints,
-// will continue to be available even after an archive is deleted.
+// after seven days. Migration metadata, which is returned in the [List user migrations] and
+// [Get a user migration status] endpoints, will continue to be available even after an archive is
+// deleted.
 //
 // DELETE /user/migrations/{migration_id}/archive
+//
+// [List user migrations]: https://docs.github.com/rest/reference/migrations#list-user-migrations
+// [Get a user migration status]: https://docs.github.com/rest/reference/migrations#get-a-user-migration-status
 func (s *Server) handleMigrationsDeleteArchiveForAuthenticatedUserRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -47074,8 +47396,7 @@ func (s *Server) handleMigrationsDeleteArchiveForAuthenticatedUserRequest(args [
 
 // handleMigrationsDeleteArchiveForOrgRequest handles migrations/delete-archive-for-org operation.
 //
-// Deletes a previous migration archive. Migration archives are automatically deleted after seven
-// days.
+// Deletes a previous migration archive. Migration archives are automatically deleted after seven days.
 //
 // DELETE /orgs/{org}/migrations/{migration_id}/archive
 func (s *Server) handleMigrationsDeleteArchiveForOrgRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -47371,25 +47692,27 @@ func (s *Server) handleMigrationsDownloadArchiveForOrgRequest(args [2]string, ar
 //
 // Fetches the URL to download the migration archive as a `tar.gz` file. Depending on the resources
 // your repository uses, the migration archive can contain JSON files with data for these objects:
-// *   attachments
-// *   bases
-// *   commit\_comments
-// *   issue\_comments
-// *   issue\_events
-// *   issues
-// *   milestones
-// *   organizations
-// *   projects
-// *   protected\_branches
-// *   pull\_request\_reviews
-// *   pull\_requests
-// *   releases
-// *   repositories
-// *   review\_comments
-// *   schema
-// *   users
-// The archive will also contain an `attachments` directory that includes all attachment files
-// uploaded to GitHub.com and a `repositories` directory that contains the repository's Git data.
+//
+//   - attachments
+//   - bases
+//   - commit\_comments
+//   - issue\_comments
+//   - issue\_events
+//   - issues
+//   - milestones
+//   - organizations
+//   - projects
+//   - protected\_branches
+//   - pull\_request\_reviews
+//   - pull\_requests
+//   - releases
+//   - repositories
+//   - review\_comments
+//   - schema
+//   - users
+//
+// The archive will also contain an `attachments` directory that includes all attachment files uploaded
+// to GitHub.com and a `repositories` directory that contains the repository's Git data.
 //
 // GET /user/migrations/{migration_id}/archive
 func (s *Server) handleMigrationsGetArchiveForAuthenticatedUserRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -47532,16 +47855,18 @@ func (s *Server) handleMigrationsGetArchiveForAuthenticatedUserRequest(args [1]s
 
 // handleMigrationsGetCommitAuthorsRequest handles migrations/get-commit-authors operation.
 //
-// Each type of source control system represents authors in a different way. For example, a Git
-// commit author has a display name and an email address, but a Subversion commit author just has a
-// username. The GitHub Importer will make the author information valid, but the author might not be
-// correct. For example, it will change the bare Subversion username `hubot` into something like
+// Each type of source control system represents authors in a different way. For example, a Git commit
+// author has a display name and an email address, but a Subversion commit author just has a username.
+// The GitHub Importer will make the author information valid, but the author might not be correct. For
+// example, it will change the bare Subversion username `hubot` into something like
 // `hubot <hubot@12341234-abab-fefe-8787-fedcba987654>`.
-// This endpoint and the [Map a commit author](https://docs.github.
-// com/rest/reference/migrations#map-a-commit-author) endpoint allow you to provide correct Git
-// author information.
+//
+// This endpoint and the [Map a commit author] endpoint allow you to provide correct Git author
+// information.
 //
 // GET /repos/{owner}/{repo}/import/authors
+//
+// [Map a commit author]: https://docs.github.com/rest/reference/migrations#map-a-commit-author
 func (s *Server) handleMigrationsGetCommitAuthorsRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -47691,60 +48016,72 @@ func (s *Server) handleMigrationsGetCommitAuthorsRequest(args [2]string, argsEsc
 // handleMigrationsGetImportStatusRequest handles migrations/get-import-status operation.
 //
 // View the progress of an import.
-// **Import status**
-// This section includes details about the possible values of the `status` field of the Import
-// Progress response.
+//
+// # Import status
+//
+// This section includes details about the possible values of the `status` field of the Import Progress
+// response.
+//
 // An import that does not have errors will progress through these steps:
-// *   `detecting` - the "detection" step of the import is in progress because the request did not
-// include a `vcs` parameter. The import is identifying the type of source control present at the URL.
-// *   `importing` - the "raw" step of the import is in progress. This is where commit data is
-// fetched from the original repository. The import progress response will include `commit_count`
-// (the total number of raw commits that will be imported) and `percent` (0 - 100, the current
-// progress through the import).
-// *   `mapping` - the "rewrite" step of the import is in progress. This is where SVN branches are
-// converted to Git branches, and where author updates are applied. The import progress response does
-// not include progress information.
-// *   `pushing` - the "push" step of the import is in progress. This is where the importer updates
-// the repository on GitHub. The import progress response will include `push_percent`, which is the
-// percent value reported by `git push` when it is "Writing objects".
-// *   `complete` - the import is complete, and the repository is ready on GitHub.
+//
+//   - `detecting` - the "detection" step of the import is in progress because the request did not
+//     include a `vcs` parameter. The import is identifying the type of source control present at the
+//     URL.
+//   - `importing` - the "raw" step of the import is in progress. This is where commit data is fetched
+//     from the original repository. The import progress response will include `commit_count` (the total
+//     number of raw commits that will be imported) and `percent` (0 - 100, the current progress through
+//     the import).
+//   - `mapping` - the "rewrite" step of the import is in progress. This is where SVN branches are
+//     converted to Git branches, and where author updates are applied. The import progress response
+//     does not include progress information.
+//   - `pushing` - the "push" step of the import is in progress. This is where the importer updates the
+//     repository on GitHub. The import progress response will include `push_percent`, which is the
+//     percent value reported by `git push` when it is "Writing objects".
+//   - `complete` - the import is complete, and the repository is ready on GitHub.
+//
 // If there are problems, you will see one of these in the `status` field:
-// *   `auth_failed` - the import requires authentication in order to connect to the original
-// repository. To update authentication for the import, please see the [Update an
-// import](https://docs.github.com/rest/reference/migrations#update-an-import) section.
-// *   `error` - the import encountered an error. The import progress response will include the
-// `failed_step` and an error message. Contact [GitHub Support](https://support.github.
-// com/contact?tags=dotcom-rest-api) for more information.
-// *   `detection_needs_auth` - the importer requires authentication for the originating repository
-// to continue detection. To update authentication for the import, please see the [Update an
-// import](https://docs.github.com/rest/reference/migrations#update-an-import) section.
-// *   `detection_found_nothing` - the importer didn't recognize any source control at the URL. To
-// resolve, [Cancel the import](https://docs.github.com/rest/reference/migrations#cancel-an-import)
-// and [retry](https://docs.github.com/rest/reference/migrations#start-an-import) with the correct
-// URL.
-// *   `detection_found_multiple` - the importer found several projects or repositories at the
-// provided URL. When this is the case, the Import Progress response will also include a
-// `project_choices` field with the possible project choices as values. To update project choice,
-// please see the [Update an import](https://docs.github.
-// com/rest/reference/migrations#update-an-import) section.
-// **The project_choices field**
+//
+//   - `auth_failed` - the import requires authentication in order to connect to the original
+//     repository. To update authentication for the import, please see the [Update an import] section.
+//   - `error` - the import encountered an error. The import progress response will include the
+//     `failed_step` and an error message. Contact [GitHub Support] for more information.
+//   - `detection_needs_auth` - the importer requires authentication for the originating repository to
+//     continue detection. To update authentication for the import, please see the [Update an import]
+//     section.
+//   - `detection_found_nothing` - the importer didn't recognize any source control at the URL. To
+//     resolve, [Cancel the import] and [retry] with the correct URL.
+//   - `detection_found_multiple` - the importer found several projects or repositories at the provided
+//     URL. When this is the case, the Import Progress response will also include a `project_choices`
+//     field with the possible project choices as values. To update project choice, please see the
+//     [Update an import] section.
+//
+// The project_choices field
+//
 // When multiple projects are found at the provided URL, the response hash will include a
 // `project_choices` field, the value of which is an array of hashes each representing a project
-// choice. The exact key/value pairs of the project hashes will differ depending on the version
-// control type.
-// **Git LFS related fields**
+// choice. The exact key/value pairs of the project hashes will differ depending on the version control
+// type.
+//
+// # Git LFS related fields
+//
 // This section includes details about Git LFS related fields that may be present in the Import
 // Progress response.
-// *   `use_lfs` - describes whether the import has been opted in or out of using Git LFS. The value
-// can be `opt_in`, `opt_out`, or `undecided` if no action has been taken.
-// *   `has_large_files` - the boolean value describing whether files larger than 100MB were found
-// during the `importing` step.
-// *   `large_files_size` - the total size in gigabytes of files larger than 100MB found in the
-// originating repository.
-// *   `large_files_count` - the total number of files larger than 100MB found in the originating
-// repository. To see a list of these files, make a "Get Large Files" request.
+//
+//   - `use_lfs` - describes whether the import has been opted in or out of using Git LFS. The value can
+//     be `opt_in`, `opt_out`, or `undecided` if no action has been taken.
+//   - `has_large_files` - the boolean value describing whether files larger than 100MB were found
+//     during the `importing` step.
+//   - `large_files_size` - the total size in gigabytes of files larger than 100MB found in the
+//     originating repository.
+//   - `large_files_count` - the total number of files larger than 100MB found in the originating
+//     repository. To see a list of these files, make a "Get Large Files" request.
 //
 // GET /repos/{owner}/{repo}/import
+//
+// [Update an import]: https://docs.github.com/rest/reference/migrations#update-an-import
+// [GitHub Support]: https://support.github.com/contact?tags=dotcom-rest-api
+// [Cancel the import]: https://docs.github.com/rest/reference/migrations#cancel-an-import
+// [retry]: https://docs.github.com/rest/reference/migrations#start-an-import
 func (s *Server) handleMigrationsGetImportStatusRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -48038,14 +48375,17 @@ func (s *Server) handleMigrationsGetLargeFilesRequest(args [2]string, argsEscape
 //
 // Fetches a single user migration. The response includes the `state` of the migration, which can be
 // one of the following values:
-// *   `pending` - the migration hasn't started yet.
-// *   `exporting` - the migration is in progress.
-// *   `exported` - the migration finished successfully.
-// *   `failed` - the migration failed.
-// Once the migration has been `exported` you can [download the migration archive](https://docs.
-// github.com/rest/reference/migrations#download-a-user-migration-archive).
+//
+//   - `pending` - the migration hasn't started yet.
+//   - `exporting` - the migration is in progress.
+//   - `exported` - the migration finished successfully.
+//   - `failed` - the migration failed.
+//
+// Once the migration has been `exported` you can [download the migration archive].
 //
 // GET /user/migrations/{migration_id}
+//
+// [download the migration archive]: https://docs.github.com/rest/reference/migrations#download-a-user-migration-archive
 func (s *Server) handleMigrationsGetStatusForAuthenticatedUserRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -48191,11 +48531,13 @@ func (s *Server) handleMigrationsGetStatusForAuthenticatedUserRequest(args [1]st
 // handleMigrationsGetStatusForOrgRequest handles migrations/get-status-for-org operation.
 //
 // Fetches the status of a migration.
+//
 // The `state` of a migration can be one of the following values:
-// *   `pending`, which means the migration hasn't started yet.
-// *   `exporting`, which means the migration is in progress.
-// *   `exported`, which means the migration finished successfully.
-// *   `failed`, which means the migration failed.
+//
+//   - `pending`, which means the migration hasn't started yet.
+//   - `exporting`, which means the migration is in progress.
+//   - `exported`, which means the migration finished successfully.
+//   - `failed`, which means the migration failed.
 //
 // GET /orgs/{org}/migrations/{migration_id}
 func (s *Server) handleMigrationsGetStatusForOrgRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -48954,8 +49296,8 @@ func (s *Server) handleMigrationsListReposForUserRequest(args [1]string, argsEsc
 
 // handleMigrationsMapCommitAuthorRequest handles migrations/map-commit-author operation.
 //
-// Update an author's identity for the import. Your application can continue updating authors any
-// time before you push new commits to the repository.
+// Update an author's identity for the import. Your application can continue updating authors any time
+// before you push new commits to the repository.
 //
 // PATCH /repos/{owner}/{repo}/import/authors/{author_id}
 func (s *Server) handleMigrationsMapCommitAuthorRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -49122,11 +49464,13 @@ func (s *Server) handleMigrationsMapCommitAuthorRequest(args [3]string, argsEsca
 // handleMigrationsSetLfsPreferenceRequest handles migrations/set-lfs-preference operation.
 //
 // You can import repositories from Subversion, Mercurial, and TFS that include files larger than
-// 100MB. This ability is powered by [Git LFS](https://git-lfs.github.com). You can learn more about
-// our LFS feature and working with large files [on our help site](https://help.github.
-// com/articles/versioning-large-files/).
+// 100MB. This ability is powered by [Git LFS]. You can learn more about our LFS feature and working
+// with large files [on our help site].
 //
 // PATCH /repos/{owner}/{repo}/import/lfs
+//
+// [Git LFS]: https://git-lfs.github.com
+// [on our help site]: https://help.github.com/articles/versioning-large-files/
 func (s *Server) handleMigrationsSetLfsPreferenceRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -49749,13 +50093,15 @@ func (s *Server) handleMigrationsStartImportRequest(args [2]string, argsEscaped 
 
 // handleMigrationsUnlockRepoForAuthenticatedUserRequest handles migrations/unlock-repo-for-authenticated-user operation.
 //
-// Unlocks a repository. You can lock repositories when you [start a user migration](https://docs.
-// github.com/rest/reference/migrations#start-a-user-migration). Once the migration is complete you
-// can unlock each repository to begin using it again or [delete the repository](https://docs.github.
-// com/rest/reference/repos#delete-a-repository) if you no longer need the source data. Returns a
-// status of `404 Not Found` if the repository is not locked.
+// Unlocks a repository. You can lock repositories when you [start a user migration]. Once the
+// migration is complete you can unlock each repository to begin using it again or
+// [delete the repository] if you no longer need the source data. Returns a status of `404 Not Found`
+// if the repository is not locked.
 //
 // DELETE /user/migrations/{migration_id}/repos/{repo_name}/lock
+//
+// [start a user migration]: https://docs.github.com/rest/reference/migrations#start-a-user-migration
+// [delete the repository]: https://docs.github.com/rest/reference/repos#delete-a-repository
 func (s *Server) handleMigrationsUnlockRepoForAuthenticatedUserRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -49901,10 +50247,11 @@ func (s *Server) handleMigrationsUnlockRepoForAuthenticatedUserRequest(args [2]s
 // handleMigrationsUnlockRepoForOrgRequest handles migrations/unlock-repo-for-org operation.
 //
 // Unlocks a repository that was locked for migration. You should unlock each migrated repository and
-// [delete them](https://docs.github.com/rest/reference/repos#delete-a-repository) when the migration
-// is complete and you no longer need the source data.
+// [delete them] when the migration is complete and you no longer need the source data.
 //
 // DELETE /orgs/{org}/migrations/{migration_id}/repos/{repo_name}/lock
+//
+// [delete them]: https://docs.github.com/rest/reference/repos#delete-a-repository
 func (s *Server) handleMigrationsUnlockRepoForOrgRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -50054,8 +50401,7 @@ func (s *Server) handleMigrationsUnlockRepoForOrgRequest(args [3]string, argsEsc
 // handleMigrationsUpdateImportRequest handles migrations/update-import operation.
 //
 // An import can be updated with credentials or a project choice by passing in the appropriate
-// parameters in this API
-// request. If no parameters are provided, the import will be restarted.
+// parameters in this API request. If no parameters are provided, the import will be restarted.
 //
 // PATCH /repos/{owner}/{repo}/import
 func (s *Server) handleMigrationsUpdateImportRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -50217,38 +50563,45 @@ func (s *Server) handleMigrationsUpdateImportRequest(args [2]string, argsEscaped
 
 // handleOAuthAuthorizationsCreateAuthorizationRequest handles oauth-authorizations/create-authorization operation.
 //
-// **Deprecation Notice:** GitHub will discontinue the [OAuth Authorizations API](https://docs.github.
-// com/rest/reference/oauth-authorizations), which is used by integrations to create personal access
-// tokens and OAuth tokens, and you must now create these tokens using our [web application
-// flow](https://docs.github.com/developers/apps/authorizing-oauth-apps#web-application-flow). The
-// [OAuth Authorizations API](https://docs.github.com/rest/reference/oauth-authorizations) will be
-// removed on November, 13, 2020. For more information, including scheduled brownouts, see the [blog
-// post](https://developer.github.com/changes/2020-02-14-deprecating-oauth-auth-endpoint/).
-// **Warning:** Apps must use the [web application flow](https://docs.github.
-// com/apps/building-oauth-apps/authorizing-oauth-apps/#web-application-flow) to obtain OAuth tokens
-// that work with GitHub SAML organizations. OAuth tokens created using the Authorizations API will
-// be unable to access GitHub SAML organizations. For more information, see the [blog
-// post](https://developer.github.com/changes/2019-11-05-deprecated-passwords-and-authorizations-api).
-// Creates OAuth tokens using [Basic Authentication](https://docs.github.
-// com/rest/overview/other-authentication-methods#basic-authentication). If you have two-factor
-// authentication setup, Basic Authentication for this endpoint requires that you use a one-time
-// password (OTP) and your username and password instead of tokens. For more information, see
-// "[Working with two-factor authentication](https://docs.github.
-// com/rest/overview/other-authentication-methods#working-with-two-factor-authentication)."
+// Deprecation Notice: GitHub will discontinue the [OAuth Authorizations API], which is used by
+// integrations to create personal access tokens and OAuth tokens, and you must now create these tokens
+// using our [web application flow]. The [OAuth Authorizations API] will be removed on November, 13,
+// 2020. For more information, including scheduled brownouts, see the [blog post].
+//
+// Warning: Apps must use the
+// web application flow (https://docs.github.com/apps/building-oauth-apps/authorizing-oauth-apps/#web-application-flow)
+// to obtain OAuth tokens that work with GitHub SAML organizations. OAuth tokens created using the
+// Authorizations API will be unable to access GitHub SAML organizations. For more information, see the
+// blog post (https://developer.github.com/changes/2019-11-05-deprecated-passwords-and-authorizations-api).
+//
+// Creates OAuth tokens using [Basic Authentication]. If you have two-factor authentication setup,
+// Basic Authentication for this endpoint requires that you use a one-time password (OTP) and your
+// username and password instead of tokens. For more information, see
+// "[Working with two-factor authentication]."
+//
 // To create tokens for a particular OAuth application using this endpoint, you must authenticate as
 // the user you want to create an authorization for and provide the app's client ID and secret, found
 // on your OAuth application's settings page. If your OAuth application intends to create multiple
 // tokens for one user, use `fingerprint` to differentiate between them.
-// You can also create tokens on GitHub from the [personal access tokens settings](https://github.
-// com/settings/tokens) page. Read more about these tokens in [the GitHub Help
-// documentation](https://help.github.com/articles/creating-an-access-token-for-command-line-use).
+//
+// You can also create tokens on GitHub from the [personal access tokens settings] page. Read more
+// about these tokens in [the GitHub Help documentation].
+//
 // Organizations that enforce SAML SSO require personal access tokens to be allowed. Read more about
-// allowing tokens in [the GitHub Help documentation](https://help.github.
-// com/articles/about-identity-and-access-management-with-saml-single-sign-on).
+// allowing tokens in
+// the GitHub Help documentation (https://help.github.com/articles/about-identity-and-access-management-with-saml-single-sign-on).
 //
 // Deprecated: schema marks this operation as deprecated.
 //
 // POST /authorizations
+//
+// [OAuth Authorizations API]: https://docs.github.com/rest/reference/oauth-authorizations
+// [web application flow]: https://docs.github.com/developers/apps/authorizing-oauth-apps#web-application-flow
+// [blog post]: https://developer.github.com/changes/2020-02-14-deprecating-oauth-auth-endpoint/
+// [Basic Authentication]: https://docs.github.com/rest/overview/other-authentication-methods#basic-authentication
+// [Working with two-factor authentication]: https://docs.github.com/rest/overview/other-authentication-methods#working-with-two-factor-authentication
+// [personal access tokens settings]: https://github.com/settings/tokens
+// [the GitHub Help documentation]: https://help.github.com/articles/creating-an-access-token-for-command-line-use
 func (s *Server) handleOAuthAuthorizationsCreateAuthorizationRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -50389,18 +50742,18 @@ func (s *Server) handleOAuthAuthorizationsCreateAuthorizationRequest(args [0]str
 
 // handleOAuthAuthorizationsDeleteAuthorizationRequest handles oauth-authorizations/delete-authorization operation.
 //
-// **Deprecation Notice:** GitHub will discontinue the [OAuth Authorizations API](https://docs.github.
-// com/rest/reference/oauth-authorizations), which is used by integrations to create personal access
-// tokens and OAuth tokens, and you must now create these tokens using our [web application
-// flow](https://docs.github.
-// com/apps/building-oauth-apps/authorizing-oauth-apps/#web-application-flow). The [OAuth
-// Authorizations API](https://docs.github.com/rest/reference/oauth-authorizations) will be removed
-// on November, 13, 2020. For more information, including scheduled brownouts, see the [blog
-// post](https://developer.github.com/changes/2020-02-14-deprecating-oauth-auth-endpoint/).
+// Deprecation Notice: GitHub will discontinue the [OAuth Authorizations API], which is used by
+// integrations to create personal access tokens and OAuth tokens, and you must now create these tokens
+// using our [web application flow]. The [OAuth Authorizations API] will be removed on November, 13,
+// 2020. For more information, including scheduled brownouts, see the [blog post].
 //
 // Deprecated: schema marks this operation as deprecated.
 //
 // DELETE /authorizations/{authorization_id}
+//
+// [OAuth Authorizations API]: https://docs.github.com/rest/reference/oauth-authorizations
+// [web application flow]: https://docs.github.com/apps/building-oauth-apps/authorizing-oauth-apps/#web-application-flow
+// [blog post]: https://developer.github.com/changes/2020-02-14-deprecating-oauth-auth-endpoint/
 func (s *Server) handleOAuthAuthorizationsDeleteAuthorizationRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -50541,21 +50894,23 @@ func (s *Server) handleOAuthAuthorizationsDeleteAuthorizationRequest(args [1]str
 
 // handleOAuthAuthorizationsDeleteGrantRequest handles oauth-authorizations/delete-grant operation.
 //
-// **Deprecation Notice:** GitHub will discontinue the [OAuth Authorizations API](https://docs.github.
-// com/rest/reference/oauth-authorizations/), which is used by integrations to create personal access
-// tokens and OAuth tokens, and you must now create these tokens using our [web application
-// flow](https://docs.github.com/developers/apps/authorizing-oauth-apps#web-application-flow). The
-// [OAuth Authorizations API](https://docs.github.com/rest/reference/oauth-authorizations/) will be
-// removed on November, 13, 2020. For more information, including scheduled brownouts, see the [blog
-// post](https://developer.github.com/changes/2020-02-14-deprecating-oauth-auth-endpoint/).
+// Deprecation Notice: GitHub will discontinue the [OAuth Authorizations API], which is used by
+// integrations to create personal access tokens and OAuth tokens, and you must now create these tokens
+// using our [web application flow]. The [OAuth Authorizations API] will be removed on November, 13,
+// 2020. For more information, including scheduled brownouts, see the [blog post].
+//
 // Deleting an OAuth application's grant will also delete all OAuth tokens associated with the
 // application for your user. Once deleted, the application has no access to your account and is no
-// longer listed on [the application authorizations settings screen within GitHub](https://github.
-// com/settings/applications#authorized).
+// longer listed on [the application authorizations settings screen within GitHub].
 //
 // Deprecated: schema marks this operation as deprecated.
 //
 // DELETE /applications/grants/{grant_id}
+//
+// [OAuth Authorizations API]: https://docs.github.com/rest/reference/oauth-authorizations/
+// [web application flow]: https://docs.github.com/developers/apps/authorizing-oauth-apps#web-application-flow
+// [blog post]: https://developer.github.com/changes/2020-02-14-deprecating-oauth-auth-endpoint/
+// [the application authorizations settings screen within GitHub]: https://github.com/settings/applications#authorized
 func (s *Server) handleOAuthAuthorizationsDeleteGrantRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -50696,18 +51051,18 @@ func (s *Server) handleOAuthAuthorizationsDeleteGrantRequest(args [1]string, arg
 
 // handleOAuthAuthorizationsGetAuthorizationRequest handles oauth-authorizations/get-authorization operation.
 //
-// **Deprecation Notice:** GitHub will discontinue the [OAuth Authorizations API](https://docs.github.
-// com/rest/reference/oauth-authorizations), which is used by integrations to create personal access
-// tokens and OAuth tokens, and you must now create these tokens using our [web application
-// flow](https://docs.github.
-// com/apps/building-oauth-apps/authorizing-oauth-apps/#web-application-flow). The [OAuth
-// Authorizations API](https://docs.github.com/rest/reference/oauth-authorizations) will be removed
-// on November, 13, 2020. For more information, including scheduled brownouts, see the [blog
-// post](https://developer.github.com/changes/2020-02-14-deprecating-oauth-auth-endpoint/).
+// Deprecation Notice: GitHub will discontinue the [OAuth Authorizations API], which is used by
+// integrations to create personal access tokens and OAuth tokens, and you must now create these tokens
+// using our [web application flow]. The [OAuth Authorizations API] will be removed on November, 13,
+// 2020. For more information, including scheduled brownouts, see the [blog post].
 //
 // Deprecated: schema marks this operation as deprecated.
 //
 // GET /authorizations/{authorization_id}
+//
+// [OAuth Authorizations API]: https://docs.github.com/rest/reference/oauth-authorizations
+// [web application flow]: https://docs.github.com/apps/building-oauth-apps/authorizing-oauth-apps/#web-application-flow
+// [blog post]: https://developer.github.com/changes/2020-02-14-deprecating-oauth-auth-endpoint/
 func (s *Server) handleOAuthAuthorizationsGetAuthorizationRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -50848,18 +51203,18 @@ func (s *Server) handleOAuthAuthorizationsGetAuthorizationRequest(args [1]string
 
 // handleOAuthAuthorizationsGetGrantRequest handles oauth-authorizations/get-grant operation.
 //
-// **Deprecation Notice:** GitHub will discontinue the [OAuth Authorizations API](https://docs.github.
-// com/rest/reference/oauth-authorizations), which is used by integrations to create personal access
-// tokens and OAuth tokens, and you must now create these tokens using our [web application
-// flow](https://docs.github.
-// com/apps/building-oauth-apps/authorizing-oauth-apps/#web-application-flow). The [OAuth
-// Authorizations API](https://docs.github.com/rest/reference/oauth-authorizations) will be removed
-// on November, 13, 2020. For more information, including scheduled brownouts, see the [blog
-// post](https://developer.github.com/changes/2020-02-14-deprecating-oauth-auth-endpoint/).
+// Deprecation Notice: GitHub will discontinue the [OAuth Authorizations API], which is used by
+// integrations to create personal access tokens and OAuth tokens, and you must now create these tokens
+// using our [web application flow]. The [OAuth Authorizations API] will be removed on November, 13,
+// 2020. For more information, including scheduled brownouts, see the [blog post].
 //
 // Deprecated: schema marks this operation as deprecated.
 //
 // GET /applications/grants/{grant_id}
+//
+// [OAuth Authorizations API]: https://docs.github.com/rest/reference/oauth-authorizations
+// [web application flow]: https://docs.github.com/apps/building-oauth-apps/authorizing-oauth-apps/#web-application-flow
+// [blog post]: https://developer.github.com/changes/2020-02-14-deprecating-oauth-auth-endpoint/
 func (s *Server) handleOAuthAuthorizationsGetGrantRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -51000,37 +51355,43 @@ func (s *Server) handleOAuthAuthorizationsGetGrantRequest(args [1]string, argsEs
 
 // handleOAuthAuthorizationsGetOrCreateAuthorizationForAppRequest handles oauth-authorizations/get-or-create-authorization-for-app operation.
 //
-// **Deprecation Notice:** GitHub will discontinue the [OAuth Authorizations API](https://docs.github.
-// com/rest/reference/oauth-authorizations/), which is used by integrations to create personal access
-// tokens and OAuth tokens, and you must now create these tokens using our [web application
-// flow](https://docs.github.com/developers/apps/authorizing-oauth-apps#web-application-flow). The
-// [OAuth Authorizations API](https://docs.github.com/rest/reference/oauth-authorizations) will be
-// removed on November, 13, 2020. For more information, including scheduled brownouts, see the [blog
-// post](https://developer.github.com/changes/2020-02-14-deprecating-oauth-auth-endpoint/).
-// **Warning:** Apps must use the [web application flow](https://docs.github.
-// com/apps/building-oauth-apps/authorizing-oauth-apps/#web-application-flow) to obtain OAuth tokens
-// that work with GitHub SAML organizations. OAuth tokens created using the Authorizations API will
-// be unable to access GitHub SAML organizations. For more information, see the [blog
-// post](https://developer.github.com/changes/2019-11-05-deprecated-passwords-and-authorizations-api).
+// Deprecation Notice: GitHub will discontinue the [OAuth Authorizations API], which is used by
+// integrations to create personal access tokens and OAuth tokens, and you must now create these tokens
+// using our [web application flow]. The
+// OAuth Authorizations API (https://docs.github.com/rest/reference/oauth-authorizations) will be
+// removed on November, 13, 2020. For more information, including scheduled brownouts, see the
+// [blog post].
+//
+// Warning: Apps must use the
+// web application flow (https://docs.github.com/apps/building-oauth-apps/authorizing-oauth-apps/#web-application-flow)
+// to obtain OAuth tokens that work with GitHub SAML organizations. OAuth tokens created using the
+// Authorizations API will be unable to access GitHub SAML organizations. For more information, see the
+// blog post (https://developer.github.com/changes/2019-11-05-deprecated-passwords-and-authorizations-api).
+//
 // Creates a new authorization for the specified OAuth application, only if an authorization for that
-// application doesn't already exist for the user. The URL includes the 20 character client ID for
-// the OAuth app that is requesting the token. It returns the user's existing authorization for the
+// application doesn't already exist for the user. The URL includes the 20 character client ID for the
+// OAuth app that is requesting the token. It returns the user's existing authorization for the
 // application if one is present. Otherwise, it creates and returns a new one.
+//
 // If you have two-factor authentication setup, Basic Authentication for this endpoint requires that
 // you use a one-time password (OTP) and your username and password instead of tokens. For more
-// information, see "[Working with two-factor authentication](https://docs.github.
-// com/rest/overview/other-authentication-methods#working-with-two-factor-authentication)."
-// **Deprecation Notice:** GitHub will discontinue the [OAuth Authorizations API](https://docs.github.
-// com/rest/reference/oauth-authorizations/), which is used by integrations to create personal access
-// tokens and OAuth tokens, and you must now create these tokens using our [web application
-// flow](https://docs.github.com/developers/apps/authorizing-oauth-apps#web-application-flow). The
-// [OAuth Authorizations API](https://docs.github.com/rest/reference/oauth-authorizations) will be
-// removed on November, 13, 2020. For more information, including scheduled brownouts, see the [blog
-// post](https://developer.github.com/changes/2020-02-14-deprecating-oauth-auth-endpoint/).
+// information, see "[Working with two-factor authentication]."
+//
+// Deprecation Notice: GitHub will discontinue the [OAuth Authorizations API], which is used by
+// integrations to create personal access tokens and OAuth tokens, and you must now create these tokens
+// using our [web application flow]. The
+// OAuth Authorizations API (https://docs.github.com/rest/reference/oauth-authorizations) will be
+// removed on November, 13, 2020. For more information, including scheduled brownouts, see the
+// [blog post].
 //
 // Deprecated: schema marks this operation as deprecated.
 //
 // PUT /authorizations/clients/{client_id}
+//
+// [OAuth Authorizations API]: https://docs.github.com/rest/reference/oauth-authorizations/
+// [web application flow]: https://docs.github.com/developers/apps/authorizing-oauth-apps#web-application-flow
+// [blog post]: https://developer.github.com/changes/2020-02-14-deprecating-oauth-auth-endpoint/
+// [Working with two-factor authentication]: https://docs.github.com/rest/overview/other-authentication-methods#working-with-two-factor-authentication
 func (s *Server) handleOAuthAuthorizationsGetOrCreateAuthorizationForAppRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -51186,32 +51547,38 @@ func (s *Server) handleOAuthAuthorizationsGetOrCreateAuthorizationForAppRequest(
 
 // handleOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRequest handles oauth-authorizations/get-or-create-authorization-for-app-and-fingerprint operation.
 //
-// **Deprecation Notice:** GitHub will discontinue the [OAuth Authorizations API](https://docs.github.
-// com/rest/reference/oauth-authorizations/), which is used by integrations to create personal access
-// tokens and OAuth tokens, and you must now create these tokens using our [web application
-// flow](https://docs.github.com/developers/apps/authorizing-oauth-apps#web-application-flow). The
-// [OAuth Authorizations API](https://docs.github.com/rest/reference/oauth-authorizations) will be
-// removed on November, 13, 2020. For more information, including scheduled brownouts, see the [blog
-// post](https://developer.github.com/changes/2020-02-14-deprecating-oauth-auth-endpoint/).
-// **Warning:** Apps must use the [web application flow](https://docs.github.
-// com/apps/building-oauth-apps/authorizing-oauth-apps/#web-application-flow) to obtain OAuth tokens
-// that work with GitHub SAML organizations. OAuth tokens created using the Authorizations API will
-// be unable to access GitHub SAML organizations. For more information, see the [blog
-// post](https://developer.github.com/changes/2019-11-05-deprecated-passwords-and-authorizations-api).
+// Deprecation Notice: GitHub will discontinue the [OAuth Authorizations API], which is used by
+// integrations to create personal access tokens and OAuth tokens, and you must now create these tokens
+// using our [web application flow]. The
+// OAuth Authorizations API (https://docs.github.com/rest/reference/oauth-authorizations) will be
+// removed on November, 13, 2020. For more information, including scheduled brownouts, see the
+// [blog post].
+//
+// Warning: Apps must use the
+// web application flow (https://docs.github.com/apps/building-oauth-apps/authorizing-oauth-apps/#web-application-flow)
+// to obtain OAuth tokens that work with GitHub SAML organizations. OAuth tokens created using the
+// Authorizations API will be unable to access GitHub SAML organizations. For more information, see the
+// blog post (https://developer.github.com/changes/2019-11-05-deprecated-passwords-and-authorizations-api).
+//
 // This method will create a new authorization for the specified OAuth application, only if an
 // authorization for that application and fingerprint do not already exist for the user. The URL
-// includes the 20 character client ID for the OAuth app that is requesting the token. `fingerprint`
-// is a unique string to distinguish an authorization from others created for the same client ID and
-// user. It returns the user's existing authorization for the application if one is present.
-// Otherwise, it creates and returns a new one.
+// includes the 20 character client ID for the OAuth app that is requesting the token. `fingerprint` is
+// a unique string to distinguish an authorization from others created for the same client ID and user.
+// It returns the user's existing authorization for the application if one is present. Otherwise, it
+// creates and returns a new one.
+//
 // If you have two-factor authentication setup, Basic Authentication for this endpoint requires that
 // you use a one-time password (OTP) and your username and password instead of tokens. For more
-// information, see "[Working with two-factor authentication](https://docs.github.
-// com/rest/overview/other-authentication-methods#working-with-two-factor-authentication).".
+// information, see "[Working with two-factor authentication].".
 //
 // Deprecated: schema marks this operation as deprecated.
 //
 // PUT /authorizations/clients/{client_id}/{fingerprint}
+//
+// [OAuth Authorizations API]: https://docs.github.com/rest/reference/oauth-authorizations/
+// [web application flow]: https://docs.github.com/developers/apps/authorizing-oauth-apps#web-application-flow
+// [blog post]: https://developer.github.com/changes/2020-02-14-deprecating-oauth-auth-endpoint/
+// [Working with two-factor authentication]: https://docs.github.com/rest/overview/other-authentication-methods#working-with-two-factor-authentication
 func (s *Server) handleOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -51371,18 +51738,18 @@ func (s *Server) handleOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFinge
 
 // handleOAuthAuthorizationsListAuthorizationsRequest handles oauth-authorizations/list-authorizations operation.
 //
-// **Deprecation Notice:** GitHub will discontinue the [OAuth Authorizations API](https://docs.github.
-// com/rest/reference/oauth-authorizations), which is used by integrations to create personal access
-// tokens and OAuth tokens, and you must now create these tokens using our [web application
-// flow](https://docs.github.
-// com/apps/building-oauth-apps/authorizing-oauth-apps/#web-application-flow). The [OAuth
-// Authorizations API](https://docs.github.com/rest/reference/oauth-authorizations) will be removed
-// on November, 13, 2020. For more information, including scheduled brownouts, see the [blog
-// post](https://developer.github.com/changes/2020-02-14-deprecating-oauth-auth-endpoint/).
+// Deprecation Notice: GitHub will discontinue the [OAuth Authorizations API], which is used by
+// integrations to create personal access tokens and OAuth tokens, and you must now create these tokens
+// using our [web application flow]. The [OAuth Authorizations API] will be removed on November, 13,
+// 2020. For more information, including scheduled brownouts, see the [blog post].
 //
 // Deprecated: schema marks this operation as deprecated.
 //
 // GET /authorizations
+//
+// [OAuth Authorizations API]: https://docs.github.com/rest/reference/oauth-authorizations
+// [web application flow]: https://docs.github.com/apps/building-oauth-apps/authorizing-oauth-apps/#web-application-flow
+// [blog post]: https://developer.github.com/changes/2020-02-14-deprecating-oauth-auth-endpoint/
 func (s *Server) handleOAuthAuthorizationsListAuthorizationsRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -51531,29 +51898,31 @@ func (s *Server) handleOAuthAuthorizationsListAuthorizationsRequest(args [0]stri
 
 // handleOAuthAuthorizationsListGrantsRequest handles oauth-authorizations/list-grants operation.
 //
-// **Deprecation Notice:** GitHub will discontinue the [OAuth Authorizations API](https://docs.github.
-// com/rest/reference/oauth-authorizations/), which is used by integrations to create personal access
-// tokens and OAuth tokens, and you must now create these tokens using our [web application
-// flow](https://docs.github.com/developers/apps/authorizing-oauth-apps#web-application-flow). The
-// [OAuth Authorizations API](https://docs.github.com/rest/reference/oauth-authorizations) will be
-// removed on November, 13, 2020. For more information, including scheduled brownouts, see the [blog
-// post](https://developer.github.com/changes/2020-02-14-deprecating-oauth-auth-endpoint/).
+// Deprecation Notice: GitHub will discontinue the [OAuth Authorizations API], which is used by
+// integrations to create personal access tokens and OAuth tokens, and you must now create these tokens
+// using our [web application flow]. The
+// OAuth Authorizations API (https://docs.github.com/rest/reference/oauth-authorizations) will be
+// removed on November, 13, 2020. For more information, including scheduled brownouts, see the
+// [blog post].
+//
 // You can use this API to list the set of OAuth applications that have been granted access to your
-// account. Unlike the [list your authorizations](https://docs.github.
-// com/rest/reference/oauth-authorizations#list-your-authorizations) API, this API does not manage
-// individual tokens. This API will return one entry for each OAuth application that has been granted
-// access to your account, regardless of the number of tokens an application has generated for your
-// user. The list of OAuth applications returned matches what is shown on [the application
-// authorizations settings screen within GitHub](https://github.com/settings/applications#authorized).
-//
-//	The `scopes` returned are the union of scopes authorized for the application. For example, if an
-//
-// application has one token with `repo` scope and another token with `user` scope, the grant will
-// return `["repo", "user"]`.
+// account. Unlike the [list your authorizations] API, this API does not manage individual tokens. This
+// API will return one entry for each OAuth application that has been granted access to your account,
+// regardless of the number of tokens an application has generated for your user. The list of OAuth
+// applications returned matches what is shown on
+// [the application authorizations settings screen within GitHub]. The `scopes` returned are the union
+// of scopes authorized for the application. For example, if an application has one token with `repo`
+// scope and another token with `user` scope, the grant will return `["repo", "user"]`.
 //
 // Deprecated: schema marks this operation as deprecated.
 //
 // GET /applications/grants
+//
+// [OAuth Authorizations API]: https://docs.github.com/rest/reference/oauth-authorizations/
+// [web application flow]: https://docs.github.com/developers/apps/authorizing-oauth-apps#web-application-flow
+// [blog post]: https://developer.github.com/changes/2020-02-14-deprecating-oauth-auth-endpoint/
+// [list your authorizations]: https://docs.github.com/rest/reference/oauth-authorizations#list-your-authorizations
+// [the application authorizations settings screen within GitHub]: https://github.com/settings/applications#authorized
 func (s *Server) handleOAuthAuthorizationsListGrantsRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -51702,22 +52071,27 @@ func (s *Server) handleOAuthAuthorizationsListGrantsRequest(args [0]string, args
 
 // handleOAuthAuthorizationsUpdateAuthorizationRequest handles oauth-authorizations/update-authorization operation.
 //
-// **Deprecation Notice:** GitHub will discontinue the [OAuth Authorizations API](https://docs.github.
-// com/rest/reference/oauth-authorizations/), which is used by integrations to create personal access
-// tokens and OAuth tokens, and you must now create these tokens using our [web application
-// flow](https://docs.github.com/developers/apps/authorizing-oauth-apps#web-application-flow). The
-// [OAuth Authorizations API](https://docs.github.com/rest/reference/oauth-authorizations) will be
-// removed on November, 13, 2020. For more information, including scheduled brownouts, see the [blog
-// post](https://developer.github.com/changes/2020-02-14-deprecating-oauth-auth-endpoint/).
+// Deprecation Notice: GitHub will discontinue the [OAuth Authorizations API], which is used by
+// integrations to create personal access tokens and OAuth tokens, and you must now create these tokens
+// using our [web application flow]. The
+// OAuth Authorizations API (https://docs.github.com/rest/reference/oauth-authorizations) will be
+// removed on November, 13, 2020. For more information, including scheduled brownouts, see the
+// [blog post].
+//
 // If you have two-factor authentication setup, Basic Authentication for this endpoint requires that
 // you use a one-time password (OTP) and your username and password instead of tokens. For more
-// information, see "[Working with two-factor authentication](https://docs.github.
-// com/rest/overview/other-authentication-methods#working-with-two-factor-authentication)."
+// information, see "[Working with two-factor authentication]."
+//
 // You can only send one of these scope keys at a time.
 //
 // Deprecated: schema marks this operation as deprecated.
 //
 // PATCH /authorizations/{authorization_id}
+//
+// [OAuth Authorizations API]: https://docs.github.com/rest/reference/oauth-authorizations/
+// [web application flow]: https://docs.github.com/developers/apps/authorizing-oauth-apps#web-application-flow
+// [blog post]: https://developer.github.com/changes/2020-02-14-deprecating-oauth-auth-endpoint/
+// [Working with two-factor authentication]: https://docs.github.com/rest/overview/other-authentication-methods#working-with-two-factor-authentication
 func (s *Server) handleOAuthAuthorizationsUpdateAuthorizationRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -52020,12 +52394,14 @@ func (s *Server) handleOrgsBlockUserRequest(args [2]string, argsEscaped bool, w 
 
 // handleOrgsCancelInvitationRequest handles orgs/cancel-invitation operation.
 //
-// Cancel an organization invitation. In order to cancel an organization invitation, the
-// authenticated user must be an organization owner.
-// This endpoint triggers [notifications](https://docs.github.
-// com/en/github/managing-subscriptions-and-notifications-on-github/about-notifications).
+// Cancel an organization invitation. In order to cancel an organization invitation, the authenticated
+// user must be an organization owner.
+//
+// This endpoint triggers [notifications].
 //
 // DELETE /orgs/{org}/invitations/{invitation_id}
+//
+// [notifications]: https://docs.github.com/en/github/managing-subscriptions-and-notifications-on-github/about-notifications
 func (s *Server) handleOrgsCancelInvitationRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -52611,13 +52987,14 @@ func (s *Server) handleOrgsCheckPublicMembershipForUserRequest(args [2]string, a
 
 // handleOrgsConvertMemberToOutsideCollaboratorRequest handles orgs/convert-member-to-outside-collaborator operation.
 //
-// When an organization member is converted to an outside collaborator, they'll only have access to
-// the repositories that their current team membership allows. The user will no longer be a member of
-// the organization. For more information, see "[Converting an organization member to an outside
-// collaborator](https://help.github.
-// com/articles/converting-an-organization-member-to-an-outside-collaborator/)".
+// When an organization member is converted to an outside collaborator, they'll only have access to the
+// repositories that their current team membership allows. The user will no longer be a member of the
+// organization. For more information, see
+// "[Converting an organization member to an outside collaborator]".
 //
 // PUT /orgs/{org}/outside_collaborators/{username}
+//
+// [Converting an organization member to an outside collaborator]: https://help.github.com/articles/converting-an-organization-member-to-an-outside-collaborator/
 func (s *Server) handleOrgsConvertMemberToOutsideCollaboratorRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -52764,15 +53141,16 @@ func (s *Server) handleOrgsConvertMemberToOutsideCollaboratorRequest(args [2]str
 //
 // Invite people to an organization by using their GitHub user ID or their email address. In order to
 // create invitations in an organization, the authenticated user must be an organization owner.
-// This endpoint triggers [notifications](https://docs.github.
-// com/en/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating
-// content too quickly using this endpoint may result in secondary rate limiting. See "[Secondary
-// rate limits](https://docs.github.
-// com/rest/overview/resources-in-the-rest-api#secondary-rate-limits)" and "[Dealing with secondary
-// rate limits](https://docs.github.
-// com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)" for details.
+//
+// This endpoint triggers [notifications]. Creating content too quickly using this endpoint may result
+// in secondary rate limiting. See "[Secondary rate limits]" and "[Dealing with secondary rate limits]"
+// for details.
 //
 // POST /orgs/{org}/invitations
+//
+// [notifications]: https://docs.github.com/en/github/managing-subscriptions-and-notifications-on-github/about-notifications
+// [Secondary rate limits]: https://docs.github.com/rest/overview/resources-in-the-rest-api#secondary-rate-limits
+// [Dealing with secondary rate limits]: https://docs.github.com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits
 func (s *Server) handleOrgsCreateInvitationRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -53233,17 +53611,19 @@ func (s *Server) handleOrgsDeleteWebhookRequest(args [2]string, argsEscaped bool
 
 // handleOrgsGetRequest handles orgs/get operation.
 //
-// To see many of the organization response values, you need to be an authenticated organization
-// owner with the `admin:org` scope. When the value of `two_factor_requirement_enabled` is `true`,
-// the organization requires all members, billing managers, and outside collaborators to enable
-// [two-factor authentication](https://help.github.
-// com/articles/securing-your-account-with-two-factor-authentication-2fa/).
+// To see many of the organization response values, you need to be an authenticated organization owner
+// with the `admin:org` scope. When the value of `two_factor_requirement_enabled` is `true`, the
+// organization requires all members, billing managers, and outside collaborators to enable
+// [two-factor authentication].
+//
 // GitHub Apps with the `Organization plan` permission can use this endpoint to retrieve information
-// about an organization's GitHub plan. See "[Authenticating with GitHub Apps](https://docs.github.
-// com/apps/building-github-apps/authenticating-with-github-apps/)" for details. For an example
-// response, see 'Response with GitHub plan information' below.".
+// about an organization's GitHub plan. See "[Authenticating with GitHub Apps]" for details. For an
+// example response, see 'Response with GitHub plan information' below.".
 //
 // GET /orgs/{org}
+//
+// [two-factor authentication]: https://help.github.com/articles/securing-your-account-with-two-factor-authentication-2fa/
+// [Authenticating with GitHub Apps]: https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/
 func (s *Server) handleOrgsGetRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -53384,14 +53764,16 @@ func (s *Server) handleOrgsGetRequest(args [1]string, argsEscaped bool, w http.R
 
 // handleOrgsGetAuditLogRequest handles orgs/get-audit-log operation.
 //
-// Gets the audit log for an organization. For more information, see "[Reviewing the audit log for
-// your organization](https://docs.github.
-// com/github/setting-up-and-managing-organizations-and-teams/reviewing-the-audit-log-for-your-organization)."
+// Gets the audit log for an organization. For more information, see
+// "[Reviewing the audit log for your organization]."
+//
 // To use this endpoint, you must be an organization owner, and you must use an access token with the
 // `admin:org` scope. GitHub Apps must have the `organization_administration` read permission to use
 // this endpoint.
 //
 // GET /orgs/{org}/audit-log
+//
+// [Reviewing the audit log for your organization]: https://docs.github.com/github/setting-up-and-managing-organizations-and-teams/reviewing-the-audit-log-for-your-organization
 func (s *Server) handleOrgsGetAuditLogRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -53853,8 +54235,9 @@ func (s *Server) handleOrgsGetMembershipForUserRequest(args [2]string, argsEscap
 // handleOrgsGetWebhookRequest handles orgs/get-webhook operation.
 //
 // Returns a webhook configured in an organization. To get only the webhook `config` properties, see
-// "[Get a webhook configuration for an
-// organization](/rest/reference/orgs#get-a-webhook-configuration-for-an-organization).".
+// "[Get a webhook configuration for an organization].".
+//
+// [Get a webhook configuration for an organization]: /rest/reference/orgs#get-a-webhook-configuration-for-an-organization
 //
 // GET /orgs/{org}/hooks/{hook_id}
 func (s *Server) handleOrgsGetWebhookRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -54002,10 +54385,12 @@ func (s *Server) handleOrgsGetWebhookRequest(args [2]string, argsEscaped bool, w
 // handleOrgsGetWebhookConfigForOrgRequest handles orgs/get-webhook-config-for-org operation.
 //
 // Returns the webhook configuration for an organization. To get more information about the webhook,
-// including the `active` state and `events`, use "[Get an organization webhook
-// ](/rest/reference/orgs#get-an-organization-webhook)."
+// including the `active` state and `events`, use "[Get an organization webhook]."
+//
 // Access tokens must have the `admin:org_hook` scope, and GitHub Apps must have the
 // `organization_hooks:read` permission.
+//
+// [Get an organization webhook]: /rest/reference/orgs#get-an-organization-webhook
 //
 // GET /orgs/{org}/hooks/{hook_id}/config
 func (s *Server) handleOrgsGetWebhookConfigForOrgRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -54304,11 +54689,13 @@ func (s *Server) handleOrgsGetWebhookDeliveryRequest(args [3]string, argsEscaped
 // handleOrgsListRequest handles orgs/list operation.
 //
 // Lists all organizations, in the order that they were created on GitHub.
-// **Note:** Pagination is powered exclusively by the `since` parameter. Use the [Link
-// header](https://docs.github.com/rest/overview/resources-in-the-rest-api#link-header) to get the
+//
+// Note: Pagination is powered exclusively by the `since` parameter. Use the [Link header] to get the
 // URL for the next page of organizations.
 //
 // GET /organizations
+//
+// [Link header]: https://docs.github.com/rest/overview/resources-in-the-rest-api#link-header
 func (s *Server) handleOrgsListRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -54749,11 +55136,13 @@ func (s *Server) handleOrgsListFailedInvitationsRequest(args [1]string, argsEsca
 // handleOrgsListForAuthenticatedUserRequest handles orgs/list-for-authenticated-user operation.
 //
 // List organizations for the authenticated user.
-// **OAuth scope requirements**
+//
+// # OAuth scope requirements
+//
 // This only lists organizations that your authorization allows you to operate on in some way (e.g.,
-// you can list teams with `read:org` scope, you can publicize your organization membership with
-// `user` scope, etc.). Therefore, this API requires at least `user` or `read:org` scope. OAuth
-// requests with insufficient scope receive a `403 Forbidden` response.
+// you can list teams with `read:org` scope, you can publicize your organization membership with `user`
+// scope, etc.). Therefore, this API requires at least `user` or `read:org` scope. OAuth requests with
+// insufficient scope receive a `403 Forbidden` response.
 //
 // GET /user/orgs
 func (s *Server) handleOrgsListForAuthenticatedUserRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -54900,14 +55289,16 @@ func (s *Server) handleOrgsListForAuthenticatedUserRequest(args [0]string, argsE
 
 // handleOrgsListForUserRequest handles orgs/list-for-user operation.
 //
-// List [public organization memberships](https://help.github.
-// com/articles/publicizing-or-concealing-organization-membership) for the specified user.
-// This method only lists _public_ memberships, regardless of authentication. If you need to fetch
-// all of the organization memberships (public and private) for the authenticated user, use the [List
-// organizations for the authenticated user](https://docs.github.
-// com/rest/reference/orgs#list-organizations-for-the-authenticated-user) API instead.
+// List [public organization memberships] for the specified user.
+//
+// This method only lists public memberships, regardless of authentication. If you need to fetch all of
+// the organization memberships (public and private) for the authenticated user, use the
+// [List organizations for the authenticated user] API instead.
 //
 // GET /users/{username}/orgs
+//
+// [public organization memberships]: https://help.github.com/articles/publicizing-or-concealing-organization-membership
+// [List organizations for the authenticated user]: https://docs.github.com/rest/reference/orgs#list-organizations-for-the-authenticated-user
 func (s *Server) handleOrgsListForUserRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -55678,8 +56069,8 @@ func (s *Server) handleOrgsListOutsideCollaboratorsRequest(args [1]string, argsE
 
 // handleOrgsListPendingInvitationsRequest handles orgs/list-pending-invitations operation.
 //
-// The return hash contains a `role` field which refers to the Organization Invitation role and will
-// be one of the following values: `direct_member`, `admin`, `billing_manager`, `hiring_manager`, or
+// The return hash contains a `role` field which refers to the Organization Invitation role and will be
+// one of the following values: `direct_member`, `admin`, `billing_manager`, `hiring_manager`, or
 // `reinstate`. If the invitee is not a GitHub member, the `login` field in the return hash will be
 // `null`.
 //
@@ -55983,16 +56374,18 @@ func (s *Server) handleOrgsListPublicMembersRequest(args [1]string, argsEscaped 
 
 // handleOrgsListSamlSSOAuthorizationsRequest handles orgs/list-saml-sso-authorizations operation.
 //
-// Listing and deleting credential authorizations is available to organizations with GitHub
-// Enterprise Cloud. For more information, see [GitHub's products](https://help.github.
-// com/github/getting-started-with-github/githubs-products).
-// An authenticated organization owner with the `read:org` scope can list all credential
-// authorizations for an organization that uses SAML single sign-on (SSO). The credentials are either
-// personal access tokens or SSH keys that organization members have authorized for the organization.
-// For more information, see [About authentication with SAML single sign-on](https://help.github.
-// com/en/articles/about-authentication-with-saml-single-sign-on).
+// Listing and deleting credential authorizations is available to organizations with GitHub Enterprise
+// Cloud. For more information, see [GitHub's products].
+//
+// An authenticated organization owner with the `read:org` scope can list all credential authorizations
+// for an organization that uses SAML single sign-on (SSO). The credentials are either personal access
+// tokens or SSH keys that organization members have authorized for the organization. For more
+// information, see [About authentication with SAML single sign-on].
 //
 // GET /orgs/{org}/credential-authorizations
+//
+// [GitHub's products]: https://help.github.com/github/getting-started-with-github/githubs-products
+// [About authentication with SAML single sign-on]: https://help.github.com/en/articles/about-authentication-with-saml-single-sign-on
 func (s *Server) handleOrgsListSamlSSOAuthorizationsRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -56439,10 +56832,11 @@ func (s *Server) handleOrgsListWebhooksRequest(args [1]string, argsEscaped bool,
 
 // handleOrgsPingWebhookRequest handles orgs/ping-webhook operation.
 //
-// This will trigger a [ping event](https://docs.github.com/webhooks/#ping-event) to be sent to the
-// hook.
+// This will trigger a [ping event] to be sent to the hook.
 //
 // POST /orgs/{org}/hooks/{hook_id}/pings
+//
+// [ping event]: https://docs.github.com/webhooks/#ping-event
 func (s *Server) handleOrgsPingWebhookRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -56888,6 +57282,7 @@ func (s *Server) handleOrgsRemoveMemberRequest(args [2]string, argsEscaped bool,
 //
 // In order to remove a user's membership with an organization, the authenticated user must be an
 // organization owner.
+//
 // If the specified user is an active member of the organization, this will remove them from the
 // organization. If the specified user has been invited to the organization, this will cancel their
 // invitation. The specified user will receive an email notification in both cases.
@@ -57331,15 +57726,17 @@ func (s *Server) handleOrgsRemovePublicMembershipForAuthenticatedUserRequest(arg
 
 // handleOrgsRemoveSamlSSOAuthorizationRequest handles orgs/remove-saml-sso-authorization operation.
 //
-// Listing and deleting credential authorizations is available to organizations with GitHub
-// Enterprise Cloud. For more information, see [GitHub's products](https://help.github.
-// com/github/getting-started-with-github/githubs-products).
-// An authenticated organization owner with the `admin:org` scope can remove a credential
-// authorization for an organization that uses SAML SSO. Once you remove someone's credential
-// authorization, they will need to create a new personal access token or SSH key and authorize it
-// for the organization they want to access.
+// Listing and deleting credential authorizations is available to organizations with GitHub Enterprise
+// Cloud. For more information, see [GitHub's products].
+//
+// An authenticated organization owner with the `admin:org` scope can remove a credential authorization
+// for an organization that uses SAML SSO. Once you remove someone's credential authorization, they
+// will need to create a new personal access token or SSH key and authorize it for the organization
+// they want to access.
 //
 // DELETE /orgs/{org}/credential-authorizations/{credential_id}
+//
+// [GitHub's products]: https://help.github.com/github/getting-started-with-github/githubs-products
 func (s *Server) handleOrgsRemoveSamlSSOAuthorizationRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -57486,20 +57883,24 @@ func (s *Server) handleOrgsRemoveSamlSSOAuthorizationRequest(args [2]string, arg
 //
 // Only authenticated organization owners can add a member to the organization or update the member's
 // role.
-// *   If the authenticated user is _adding_ a member to the organization, the invited user will
-// receive an email inviting them to the organization. The user's [membership status](https://docs.
-// github.com/rest/reference/orgs#get-organization-membership-for-a-user) will be `pending` until
-// they accept the invitation.
-// *   Authenticated users can _update_ a user's membership by passing the `role` parameter. If the
-// authenticated user changes a member's role to `admin`, the affected user will receive an email
-// notifying them that they've been made an organization owner. If the authenticated user changes an
-// owner's role to `member`, no email will be sent.
-// **Rate limits**
+//
+//   - If the authenticated user is adding a member to the organization, the invited user will receive
+//     an email inviting them to the organization. The user's [membership status] will be `pending`
+//     until they accept the invitation.
+//   - Authenticated users can update a user's membership by passing the `role` parameter. If the
+//     authenticated user changes a member's role to `admin`, the affected user will receive an email
+//     notifying them that they've been made an organization owner. If the authenticated user changes an
+//     owner's role to `member`, no email will be sent.
+//
+// # Rate limits
+//
 // To prevent abuse, the authenticated user is limited to 50 organization invitations per 24 hour
 // period. If the organization is more than one month old or on a paid plan, the limit is 500
 // invitations per 24 hour period.
 //
 // PUT /orgs/{org}/memberships/{username}
+//
+// [membership status]: https://docs.github.com/rest/reference/orgs#get-organization-membership-for-a-user
 func (s *Server) handleOrgsSetMembershipForUserRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -57661,11 +58062,13 @@ func (s *Server) handleOrgsSetMembershipForUserRequest(args [2]string, argsEscap
 //
 // The user can publicize their own membership. (A user cannot publicize the membership for another
 // user.)
+//
 // Note that you'll need to set `Content-Length` to zero when calling out to this endpoint. For more
-// information, see "[HTTP verbs](https://docs.github.
-// com/rest/overview/resources-in-the-rest-api#http-verbs).".
+// information, see "[HTTP verbs].".
 //
 // PUT /orgs/{org}/public_members/{username}
+//
+// [HTTP verbs]: https://docs.github.com/rest/overview/resources-in-the-rest-api#http-verbs
 func (s *Server) handleOrgsSetPublicMembershipForAuthenticatedUserRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -58118,8 +58521,9 @@ func (s *Server) handleOrgsUpdateMembershipForAuthenticatedUserRequest(args [1]s
 // Updates a webhook configured in an organization. When you update a webhook, the `secret` will be
 // overwritten. If you previously had a `secret` set, you must provide the same `secret` or set a new
 // `secret` or the secret will be removed. If you are only updating individual webhook `config`
-// properties, use "[Update a webhook configuration for an
-// organization](/rest/reference/orgs#update-a-webhook-configuration-for-an-organization).".
+// properties, use "[Update a webhook configuration for an organization].".
+//
+// [Update a webhook configuration for an organization]: /rest/reference/orgs#update-a-webhook-configuration-for-an-organization
 //
 // PATCH /orgs/{org}/hooks/{hook_id}
 func (s *Server) handleOrgsUpdateWebhookRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -58281,11 +58685,13 @@ func (s *Server) handleOrgsUpdateWebhookRequest(args [2]string, argsEscaped bool
 
 // handleOrgsUpdateWebhookConfigForOrgRequest handles orgs/update-webhook-config-for-org operation.
 //
-// Updates the webhook configuration for an organization. To update more information about the
-// webhook, including the `active` state and `events`, use "[Update an organization webhook
-// ](/rest/reference/orgs#update-an-organization-webhook)."
+// Updates the webhook configuration for an organization. To update more information about the webhook,
+// including the `active` state and `events`, use "[Update an organization webhook]."
+//
 // Access tokens must have the `admin:org_hook` scope, and GitHub Apps must have the
 // `organization_hooks:write` permission.
+//
+// [Update an organization webhook]: /rest/reference/orgs#update-an-organization-webhook
 //
 // PATCH /orgs/{org}/hooks/{hook_id}/config
 func (s *Server) handleOrgsUpdateWebhookConfigForOrgRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -58447,12 +58853,13 @@ func (s *Server) handleOrgsUpdateWebhookConfigForOrgRequest(args [2]string, args
 
 // handlePackagesDeletePackageForAuthenticatedUserRequest handles packages/delete-package-for-authenticated-user operation.
 //
-// Deletes a package owned by the authenticated user. You cannot delete a public package if any
-// version of the package has more than 5,000 downloads. In this scenario, contact GitHub support for
-// further assistance.
+// Deletes a package owned by the authenticated user. You cannot delete a public package if any version
+// of the package has more than 5,000 downloads. In this scenario, contact GitHub support for further
+// assistance.
+//
 // To use this endpoint, you must authenticate using an access token with the `packages:read` and
-// `packages:delete` scopes.
-// If `package_type` is not `container`, your token must also include the `repo` scope.
+// `packages:delete` scopes. If `package_type` is not `container`, your token must also include the
+// `repo` scope.
 //
 // DELETE /user/packages/{package_type}/{package_name}
 func (s *Server) handlePackagesDeletePackageForAuthenticatedUserRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -58602,11 +59009,13 @@ func (s *Server) handlePackagesDeletePackageForAuthenticatedUserRequest(args [2]
 // Deletes an entire package in an organization. You cannot delete a public package if any version of
 // the package has more than 5,000 downloads. In this scenario, contact GitHub support for further
 // assistance.
-// To use this endpoint, you must have admin permissions in the organization and authenticate using
-// an access token with the `packages:read` and `packages:delete` scopes. In addition:
-// - If `package_type` is not `container`, your token must also include the `repo` scope.
-// - If `package_type` is `container`, you must also have admin permissions to the container you want
-// to delete.
+//
+// To use this endpoint, you must have admin permissions in the organization and authenticate using an
+// access token with the `packages:read` and `packages:delete` scopes. In addition:
+//
+//   - If `package_type` is not `container`, your token must also include the `repo` scope.
+//   - If `package_type` is `container`, you must also have admin permissions to the container you want
+//     to delete.
 //
 // DELETE /orgs/{org}/packages/{package_type}/{package_name}
 func (s *Server) handlePackagesDeletePackageForOrgRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -58760,11 +59169,13 @@ func (s *Server) handlePackagesDeletePackageForOrgRequest(args [3]string, argsEs
 // Deletes an entire package for a user. You cannot delete a public package if any version of the
 // package has more than 5,000 downloads. In this scenario, contact GitHub support for further
 // assistance.
+//
 // To use this endpoint, you must authenticate using an access token with the `packages:read` and
 // `packages:delete` scopes. In addition:
-// - If `package_type` is not `container`, your token must also include the `repo` scope.
-// - If `package_type` is `container`, you must also have admin permissions to the container you want
-// to delete.
+//
+//   - If `package_type` is not `container`, your token must also include the `repo` scope.
+//   - If `package_type` is `container`, you must also have admin permissions to the container you want
+//     to delete.
 //
 // DELETE /users/{username}/packages/{package_type}/{package_name}
 func (s *Server) handlePackagesDeletePackageForUserRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -58915,12 +59326,13 @@ func (s *Server) handlePackagesDeletePackageForUserRequest(args [3]string, argsE
 
 // handlePackagesDeletePackageVersionForAuthenticatedUserRequest handles packages/delete-package-version-for-authenticated-user operation.
 //
-// Deletes a specific package version for a package owned by the authenticated user.  If the package
-// is public and the package version has more than 5,000 downloads, you cannot delete the package
-// version. In this scenario, contact GitHub support for further assistance.
-// To use this endpoint, you must have admin permissions in the organization and authenticate using
-// an access token with the `packages:read` and `packages:delete` scopes.
-// If `package_type` is not `container`, your token must also include the `repo` scope.
+// Deletes a specific package version for a package owned by the authenticated user. If the package is
+// public and the package version has more than 5,000 downloads, you cannot delete the package version.
+// In this scenario, contact GitHub support for further assistance.
+//
+// To use this endpoint, you must have admin permissions in the organization and authenticate using an
+// access token with the `packages:read` and `packages:delete` scopes. If `package_type` is not
+// `container`, your token must also include the `repo` scope.
 //
 // DELETE /user/packages/{package_type}/{package_name}/versions/{package_version_id}
 func (s *Server) handlePackagesDeletePackageVersionForAuthenticatedUserRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -59074,11 +59486,13 @@ func (s *Server) handlePackagesDeletePackageVersionForAuthenticatedUserRequest(a
 // Deletes a specific package version in an organization. If the package is public and the package
 // version has more than 5,000 downloads, you cannot delete the package version. In this scenario,
 // contact GitHub support for further assistance.
-// To use this endpoint, you must have admin permissions in the organization and authenticate using
-// an access token with the `packages:read` and `packages:delete` scopes. In addition:
-// - If `package_type` is not `container`, your token must also include the `repo` scope.
-// - If `package_type` is `container`, you must also have admin permissions to the container you want
-// to delete.
+//
+// To use this endpoint, you must have admin permissions in the organization and authenticate using an
+// access token with the `packages:read` and `packages:delete` scopes. In addition:
+//
+//   - If `package_type` is not `container`, your token must also include the `repo` scope.
+//   - If `package_type` is `container`, you must also have admin permissions to the container you want
+//     to delete.
 //
 // DELETE /orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}
 func (s *Server) handlePackagesDeletePackageVersionForOrgRequest(args [4]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -59233,14 +59647,16 @@ func (s *Server) handlePackagesDeletePackageVersionForOrgRequest(args [4]string,
 
 // handlePackagesDeletePackageVersionForUserRequest handles packages/delete-package-version-for-user operation.
 //
-// Deletes a specific package version for a user. If the package is public and the package version
-// has more than 5,000 downloads, you cannot delete the package version. In this scenario, contact
-// GitHub support for further assistance.
+// Deletes a specific package version for a user. If the package is public and the package version has
+// more than 5,000 downloads, you cannot delete the package version. In this scenario, contact GitHub
+// support for further assistance.
+//
 // To use this endpoint, you must authenticate using an access token with the `packages:read` and
 // `packages:delete` scopes. In addition:
-// - If `package_type` is not `container`, your token must also include the `repo` scope.
-// - If `package_type` is `container`, you must also have admin permissions to the container you want
-// to delete.
+//
+//   - If `package_type` is not `container`, your token must also include the `repo` scope.
+//   - If `package_type` is `container`, you must also have admin permissions to the container you want
+//     to delete.
 //
 // DELETE /users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}
 func (s *Server) handlePackagesDeletePackageVersionForUserRequest(args [4]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -59396,8 +59812,9 @@ func (s *Server) handlePackagesDeletePackageVersionForUserRequest(args [4]string
 // handlePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequest handles packages/get-all-package-versions-for-package-owned-by-authenticated-user operation.
 //
 // Returns all package versions for a package owned by the authenticated user.
-// To use this endpoint, you must authenticate using an access token with the `packages:read` scope.
-// If `package_type` is not `container`, your token must also include the `repo` scope.
+//
+// To use this endpoint, you must authenticate using an access token with the `packages:read` scope. If
+// `package_type` is not `container`, your token must also include the `repo` scope.
 //
 // GET /user/packages/{package_type}/{package_name}/versions
 func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -59557,8 +59974,9 @@ func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByAuthenticat
 // handlePackagesGetAllPackageVersionsForPackageOwnedByOrgRequest handles packages/get-all-package-versions-for-package-owned-by-org operation.
 //
 // Returns all package versions for a package owned by an organization.
-// To use this endpoint, you must authenticate using an access token with the `packages:read` scope.
-// If `package_type` is not `container`, your token must also include the `repo` scope.
+//
+// To use this endpoint, you must authenticate using an access token with the `packages:read` scope. If
+// `package_type` is not `container`, your token must also include the `repo` scope.
 //
 // GET /orgs/{org}/packages/{package_type}/{package_name}/versions
 func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByOrgRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -59722,8 +60140,9 @@ func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByOrgRequest(
 // handlePackagesGetAllPackageVersionsForPackageOwnedByUserRequest handles packages/get-all-package-versions-for-package-owned-by-user operation.
 //
 // Returns all package versions for a public package owned by a specified user.
-// To use this endpoint, you must authenticate using an access token with the `packages:read` scope.
-// If `package_type` is not `container`, your token must also include the `repo` scope.
+//
+// To use this endpoint, you must authenticate using an access token with the `packages:read` scope. If
+// `package_type` is not `container`, your token must also include the `repo` scope.
 //
 // GET /users/{username}/packages/{package_type}/{package_name}/versions
 func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByUserRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -59875,8 +60294,9 @@ func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByUserRequest
 // handlePackagesGetPackageForAuthenticatedUserRequest handles packages/get-package-for-authenticated-user operation.
 //
 // Gets a specific package for a package owned by the authenticated user.
-// To use this endpoint, you must authenticate using an access token with the `packages:read` scope.
-// If `package_type` is not `container`, your token must also include the `repo` scope.
+//
+// To use this endpoint, you must authenticate using an access token with the `packages:read` scope. If
+// `package_type` is not `container`, your token must also include the `repo` scope.
 //
 // GET /user/packages/{package_type}/{package_name}
 func (s *Server) handlePackagesGetPackageForAuthenticatedUserRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -60024,8 +60444,9 @@ func (s *Server) handlePackagesGetPackageForAuthenticatedUserRequest(args [2]str
 // handlePackagesGetPackageForOrganizationRequest handles packages/get-package-for-organization operation.
 //
 // Gets a specific package in an organization.
-// To use this endpoint, you must authenticate using an access token with the `packages:read` scope.
-// If `package_type` is not `container`, your token must also include the `repo` scope.
+//
+// To use this endpoint, you must authenticate using an access token with the `packages:read` scope. If
+// `package_type` is not `container`, your token must also include the `repo` scope.
 //
 // GET /orgs/{org}/packages/{package_type}/{package_name}
 func (s *Server) handlePackagesGetPackageForOrganizationRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -60177,8 +60598,9 @@ func (s *Server) handlePackagesGetPackageForOrganizationRequest(args [3]string, 
 // handlePackagesGetPackageForUserRequest handles packages/get-package-for-user operation.
 //
 // Gets a specific package metadata for a public package owned by a user.
-// To use this endpoint, you must authenticate using an access token with the `packages:read` scope.
-// If `package_type` is not `container`, your token must also include the `repo` scope.
+//
+// To use this endpoint, you must authenticate using an access token with the `packages:read` scope. If
+// `package_type` is not `container`, your token must also include the `repo` scope.
 //
 // GET /users/{username}/packages/{package_type}/{package_name}
 func (s *Server) handlePackagesGetPackageForUserRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -60330,8 +60752,9 @@ func (s *Server) handlePackagesGetPackageForUserRequest(args [3]string, argsEsca
 // handlePackagesGetPackageVersionForAuthenticatedUserRequest handles packages/get-package-version-for-authenticated-user operation.
 //
 // Gets a specific package version for a package owned by the authenticated user.
-// To use this endpoint, you must authenticate using an access token with the `packages:read` scope.
-// If `package_type` is not `container`, your token must also include the `repo` scope.
+//
+// To use this endpoint, you must authenticate using an access token with the `packages:read` scope. If
+// `package_type` is not `container`, your token must also include the `repo` scope.
 //
 // GET /user/packages/{package_type}/{package_name}/versions/{package_version_id}
 func (s *Server) handlePackagesGetPackageVersionForAuthenticatedUserRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -60483,8 +60906,9 @@ func (s *Server) handlePackagesGetPackageVersionForAuthenticatedUserRequest(args
 // handlePackagesGetPackageVersionForOrganizationRequest handles packages/get-package-version-for-organization operation.
 //
 // Gets a specific package version in an organization.
-// You must authenticate using an access token with the `packages:read` scope.
-// If `package_type` is not `container`, your token must also include the `repo` scope.
+//
+// You must authenticate using an access token with the `packages:read` scope. If `package_type` is not
+// `container`, your token must also include the `repo` scope.
 //
 // GET /orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}
 func (s *Server) handlePackagesGetPackageVersionForOrganizationRequest(args [4]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -60640,9 +61064,10 @@ func (s *Server) handlePackagesGetPackageVersionForOrganizationRequest(args [4]s
 // handlePackagesGetPackageVersionForUserRequest handles packages/get-package-version-for-user operation.
 //
 // Gets a specific package version for a public package owned by a specified user.
+//
 // At this time, to use this endpoint, you must authenticate using an access token with the
-// `packages:read` scope.
-// If `package_type` is not `container`, your token must also include the `repo` scope.
+// `packages:read` scope. If `package_type` is not `container`, your token must also include the `repo`
+// scope.
 //
 // GET /users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}
 func (s *Server) handlePackagesGetPackageVersionForUserRequest(args [4]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -60798,8 +61223,9 @@ func (s *Server) handlePackagesGetPackageVersionForUserRequest(args [4]string, a
 // handlePackagesListPackagesForAuthenticatedUserRequest handles packages/list-packages-for-authenticated-user operation.
 //
 // Lists packages owned by the authenticated user within the user's namespace.
-// To use this endpoint, you must authenticate using an access token with the `packages:read` scope.
-// If `package_type` is not `container`, your token must also include the `repo` scope.
+//
+// To use this endpoint, you must authenticate using an access token with the `packages:read` scope. If
+// `package_type` is not `container`, your token must also include the `repo` scope.
 //
 // GET /user/packages
 func (s *Server) handlePackagesListPackagesForAuthenticatedUserRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -60947,8 +61373,9 @@ func (s *Server) handlePackagesListPackagesForAuthenticatedUserRequest(args [0]s
 // handlePackagesListPackagesForOrganizationRequest handles packages/list-packages-for-organization operation.
 //
 // Lists all packages in an organization readable by the user.
-// To use this endpoint, you must authenticate using an access token with the `packages:read` scope.
-// If `package_type` is not `container`, your token must also include the `repo` scope.
+//
+// To use this endpoint, you must authenticate using an access token with the `packages:read` scope. If
+// `package_type` is not `container`, your token must also include the `repo` scope.
 //
 // GET /orgs/{org}/packages
 func (s *Server) handlePackagesListPackagesForOrganizationRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -61100,8 +61527,9 @@ func (s *Server) handlePackagesListPackagesForOrganizationRequest(args [1]string
 // handlePackagesListPackagesForUserRequest handles packages/list-packages-for-user operation.
 //
 // Lists all packages in a user's namespace for which the requesting user has access.
-// To use this endpoint, you must authenticate using an access token with the `packages:read` scope.
-// If `package_type` is not `container`, your token must also include the `repo` scope.
+//
+// To use this endpoint, you must authenticate using an access token with the `packages:read` scope. If
+// `package_type` is not `container`, your token must also include the `repo` scope.
 //
 // GET /users/{username}/packages
 func (s *Server) handlePackagesListPackagesForUserRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -61253,12 +61681,15 @@ func (s *Server) handlePackagesListPackagesForUserRequest(args [1]string, argsEs
 // handlePackagesRestorePackageForAuthenticatedUserRequest handles packages/restore-package-for-authenticated-user operation.
 //
 // Restores a package owned by the authenticated user.
+//
 // You can restore a deleted package under the following conditions:
-// - The package was deleted within the last 30 days.
-// - The same package namespace and version is still available and not reused for a new package. If
-// the same package namespace is not available, you will not be able to restore your package. In this
-// scenario, to restore the deleted package, you must delete the new package that uses the deleted
-// package's namespace first.
+//
+//   - The package was deleted within the last 30 days.
+//   - The same package namespace and version is still available and not reused for a new package. If
+//     the same package namespace is not available, you will not be able to restore your package. In
+//     this scenario, to restore the deleted package, you must delete the new package that uses the
+//     deleted package's namespace first.
+//
 // To use this endpoint, you must authenticate using an access token with the `packages:read` and
 // `packages:write` scopes. If `package_type` is not `container`, your token must also include the
 // `repo` scope.
@@ -61413,17 +61844,21 @@ func (s *Server) handlePackagesRestorePackageForAuthenticatedUserRequest(args [2
 // handlePackagesRestorePackageForOrgRequest handles packages/restore-package-for-org operation.
 //
 // Restores an entire package in an organization.
+//
 // You can restore a deleted package under the following conditions:
-// - The package was deleted within the last 30 days.
-// - The same package namespace and version is still available and not reused for a new package. If
-// the same package namespace is not available, you will not be able to restore your package. In this
-// scenario, to restore the deleted package, you must delete the new package that uses the deleted
-// package's namespace first.
-// To use this endpoint, you must have admin permissions in the organization and authenticate using
-// an access token with the `packages:read` and `packages:write` scopes. In addition:
-// - If `package_type` is not `container`, your token must also include the `repo` scope.
-// - If `package_type` is `container`, you must also have admin permissions to the container that you
-// want to restore.
+//
+//   - The package was deleted within the last 30 days.
+//   - The same package namespace and version is still available and not reused for a new package. If
+//     the same package namespace is not available, you will not be able to restore your package. In
+//     this scenario, to restore the deleted package, you must delete the new package that uses the
+//     deleted package's namespace first.
+//
+// To use this endpoint, you must have admin permissions in the organization and authenticate using an
+// access token with the `packages:read` and `packages:write` scopes. In addition:
+//
+//   - If `package_type` is not `container`, your token must also include the `repo` scope.
+//   - If `package_type` is `container`, you must also have admin permissions to the container that you
+//     want to restore.
 //
 // POST /orgs/{org}/packages/{package_type}/{package_name}/restore
 func (s *Server) handlePackagesRestorePackageForOrgRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -61579,17 +62014,21 @@ func (s *Server) handlePackagesRestorePackageForOrgRequest(args [3]string, argsE
 // handlePackagesRestorePackageForUserRequest handles packages/restore-package-for-user operation.
 //
 // Restores an entire package for a user.
+//
 // You can restore a deleted package under the following conditions:
-// - The package was deleted within the last 30 days.
-// - The same package namespace and version is still available and not reused for a new package. If
-// the same package namespace is not available, you will not be able to restore your package. In this
-// scenario, to restore the deleted package, you must delete the new package that uses the deleted
-// package's namespace first.
+//
+//   - The package was deleted within the last 30 days.
+//   - The same package namespace and version is still available and not reused for a new package. If
+//     the same package namespace is not available, you will not be able to restore your package. In
+//     this scenario, to restore the deleted package, you must delete the new package that uses the
+//     deleted package's namespace first.
+//
 // To use this endpoint, you must authenticate using an access token with the `packages:read` and
 // `packages:write` scopes. In addition:
-// - If `package_type` is not `container`, your token must also include the `repo` scope.
-// - If `package_type` is `container`, you must also have admin permissions to the container that you
-// want to restore.
+//
+//   - If `package_type` is not `container`, your token must also include the `repo` scope.
+//   - If `package_type` is `container`, you must also have admin permissions to the container that you
+//     want to restore.
 //
 // POST /users/{username}/packages/{package_type}/{package_name}/restore
 func (s *Server) handlePackagesRestorePackageForUserRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -61745,12 +62184,15 @@ func (s *Server) handlePackagesRestorePackageForUserRequest(args [3]string, args
 // handlePackagesRestorePackageVersionForAuthenticatedUserRequest handles packages/restore-package-version-for-authenticated-user operation.
 //
 // Restores a package version owned by the authenticated user.
+//
 // You can restore a deleted package version under the following conditions:
-// - The package was deleted within the last 30 days.
-// - The same package namespace and version is still available and not reused for a new package. If
-// the same package namespace is not available, you will not be able to restore your package. In this
-// scenario, to restore the deleted package, you must delete the new package that uses the deleted
-// package's namespace first.
+//
+//   - The package was deleted within the last 30 days.
+//   - The same package namespace and version is still available and not reused for a new package. If
+//     the same package namespace is not available, you will not be able to restore your package. In
+//     this scenario, to restore the deleted package, you must delete the new package that uses the
+//     deleted package's namespace first.
+//
 // To use this endpoint, you must authenticate using an access token with the `packages:read` and
 // `packages:write` scopes. If `package_type` is not `container`, your token must also include the
 // `repo` scope.
@@ -61905,17 +62347,21 @@ func (s *Server) handlePackagesRestorePackageVersionForAuthenticatedUserRequest(
 // handlePackagesRestorePackageVersionForOrgRequest handles packages/restore-package-version-for-org operation.
 //
 // Restores a specific package version in an organization.
+//
 // You can restore a deleted package under the following conditions:
-// - The package was deleted within the last 30 days.
-// - The same package namespace and version is still available and not reused for a new package. If
-// the same package namespace is not available, you will not be able to restore your package. In this
-// scenario, to restore the deleted package, you must delete the new package that uses the deleted
-// package's namespace first.
-// To use this endpoint, you must have admin permissions in the organization and authenticate using
-// an access token with the `packages:read` and `packages:write` scopes. In addition:
-// - If `package_type` is not `container`, your token must also include the `repo` scope.
-// - If `package_type` is `container`, you must also have admin permissions to the container that you
-// want to restore.
+//
+//   - The package was deleted within the last 30 days.
+//   - The same package namespace and version is still available and not reused for a new package. If
+//     the same package namespace is not available, you will not be able to restore your package. In
+//     this scenario, to restore the deleted package, you must delete the new package that uses the
+//     deleted package's namespace first.
+//
+// To use this endpoint, you must have admin permissions in the organization and authenticate using an
+// access token with the `packages:read` and `packages:write` scopes. In addition:
+//
+//   - If `package_type` is not `container`, your token must also include the `repo` scope.
+//   - If `package_type` is `container`, you must also have admin permissions to the container that you
+//     want to restore.
 //
 // POST /orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}/restore
 func (s *Server) handlePackagesRestorePackageVersionForOrgRequest(args [4]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -62071,17 +62517,21 @@ func (s *Server) handlePackagesRestorePackageVersionForOrgRequest(args [4]string
 // handlePackagesRestorePackageVersionForUserRequest handles packages/restore-package-version-for-user operation.
 //
 // Restores a specific package version for a user.
+//
 // You can restore a deleted package under the following conditions:
-// - The package was deleted within the last 30 days.
-// - The same package namespace and version is still available and not reused for a new package. If
-// the same package namespace is not available, you will not be able to restore your package. In this
-// scenario, to restore the deleted package, you must delete the new package that uses the deleted
-// package's namespace first.
+//
+//   - The package was deleted within the last 30 days.
+//   - The same package namespace and version is still available and not reused for a new package. If
+//     the same package namespace is not available, you will not be able to restore your package. In
+//     this scenario, to restore the deleted package, you must delete the new package that uses the
+//     deleted package's namespace first.
+//
 // To use this endpoint, you must authenticate using an access token with the `packages:read` and
 // `packages:write` scopes. In addition:
-// - If `package_type` is not `container`, your token must also include the `repo` scope.
-// - If `package_type` is `container`, you must also have admin permissions to the container that you
-// want to restore.
+//
+//   - If `package_type` is not `container`, your token must also include the `repo` scope.
+//   - If `package_type` is `container`, you must also have admin permissions to the container that you
+//     want to restore.
 //
 // POST /users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}/restore
 func (s *Server) handlePackagesRestorePackageVersionForUserRequest(args [4]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -62700,9 +63150,9 @@ func (s *Server) handleProjectsCreateForAuthenticatedUserRequest(args [0]string,
 
 // handleProjectsCreateForOrgRequest handles projects/create-for-org operation.
 //
-// Creates an organization project board. Returns a `404 Not Found` status if projects are disabled
-// in the organization. If you do not have sufficient privileges to perform this action, a `401
-// Unauthorized` or `410 Gone` status is returned.
+// Creates an organization project board. Returns a `404 Not Found` status if projects are disabled in
+// the organization. If you do not have sufficient privileges to perform this action, a
+// `401 Unauthorized` or `410 Gone` status is returned.
 //
 // POST /orgs/{org}/projects
 func (s *Server) handleProjectsCreateForOrgRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -62860,9 +63310,9 @@ func (s *Server) handleProjectsCreateForOrgRequest(args [1]string, argsEscaped b
 
 // handleProjectsCreateForRepoRequest handles projects/create-for-repo operation.
 //
-// Creates a repository project board. Returns a `404 Not Found` status if projects are disabled in
-// the repository. If you do not have sufficient privileges to perform this action, a `401
-// Unauthorized` or `410 Gone` status is returned.
+// Creates a repository project board. Returns a `404 Not Found` status if projects are disabled in the
+// repository. If you do not have sufficient privileges to perform this action, a `401 Unauthorized` or
+// `410 Gone` status is returned.
 //
 // POST /repos/{owner}/{repo}/projects
 func (s *Server) handleProjectsCreateForRepoRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -63453,9 +63903,9 @@ func (s *Server) handleProjectsDeleteColumnRequest(args [1]string, argsEscaped b
 
 // handleProjectsGetRequest handles projects/get operation.
 //
-// Gets a project by its `id`. Returns a `404 Not Found` status if projects are disabled. If you do
-// not have sufficient privileges to perform this action, a `401 Unauthorized` or `410 Gone` status
-// is returned.
+// Gets a project by its `id`. Returns a `404 Not Found` status if projects are disabled. If you do not
+// have sufficient privileges to perform this action, a `401 Unauthorized` or `410 Gone` status is
+// returned.
 //
 // GET /projects/{project_id}
 func (s *Server) handleProjectsGetRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -64498,9 +64948,9 @@ func (s *Server) handleProjectsListColumnsRequest(args [1]string, argsEscaped bo
 
 // handleProjectsListForOrgRequest handles projects/list-for-org operation.
 //
-// Lists the projects in an organization. Returns a `404 Not Found` status if projects are disabled
-// in the organization. If you do not have sufficient privileges to perform this action, a `401
-// Unauthorized` or `410 Gone` status is returned.
+// Lists the projects in an organization. Returns a `404 Not Found` status if projects are disabled in
+// the organization. If you do not have sufficient privileges to perform this action, a
+// `401 Unauthorized` or `410 Gone` status is returned.
 //
 // GET /orgs/{org}/projects
 func (s *Server) handleProjectsListForOrgRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -64655,9 +65105,9 @@ func (s *Server) handleProjectsListForOrgRequest(args [1]string, argsEscaped boo
 
 // handleProjectsListForRepoRequest handles projects/list-for-repo operation.
 //
-// Lists the projects in a repository. Returns a `404 Not Found` status if projects are disabled in
-// the repository. If you do not have sufficient privileges to perform this action, a `401
-// Unauthorized` or `410 Gone` status is returned.
+// Lists the projects in a repository. Returns a `404 Not Found` status if projects are disabled in the
+// repository. If you do not have sufficient privileges to perform this action, a `401 Unauthorized` or
+// `410 Gone` status is returned.
 //
 // GET /repos/{owner}/{repo}/projects
 func (s *Server) handleProjectsListForRepoRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -65287,8 +65737,8 @@ func (s *Server) handleProjectsMoveColumnRequest(args [1]string, argsEscaped boo
 
 // handleProjectsRemoveCollaboratorRequest handles projects/remove-collaborator operation.
 //
-// Removes a collaborator from an organization project. You must be an organization owner or a
-// project `admin` to remove a collaborator.
+// Removes a collaborator from an organization project. You must be an organization owner or a project
+// `admin` to remove a collaborator.
 //
 // DELETE /projects/{project_id}/collaborators/{username}
 func (s *Server) handleProjectsRemoveCollaboratorRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -65435,9 +65885,9 @@ func (s *Server) handleProjectsRemoveCollaboratorRequest(args [2]string, argsEsc
 
 // handleProjectsUpdateRequest handles projects/update operation.
 //
-// Updates a project board's information. Returns a `404 Not Found` status if projects are disabled.
-// If you do not have sufficient privileges to perform this action, a `401 Unauthorized` or `410
-// Gone` status is returned.
+// Updates a project board's information. Returns a `404 Not Found` status if projects are disabled. If
+// you do not have sufficient privileges to perform this action, a `401 Unauthorized` or `410 Gone`
+// status is returned.
 //
 // PATCH /projects/{project_id}
 func (s *Server) handleProjectsUpdateRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -66064,22 +66514,25 @@ func (s *Server) handlePullsCheckIfMergedRequest(args [3]string, argsEscaped boo
 //
 // Draft pull requests are available in public repositories with GitHub Free and GitHub Free for
 // organizations, GitHub Pro, and legacy per-repository billing plans, and in public and private
-// repositories with GitHub Team and GitHub Enterprise Cloud. For more information, see [GitHub's
-// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
-// GitHub Help documentation.
+// repositories with GitHub Team and GitHub Enterprise Cloud. For more information, see
+// [GitHub's products] in the GitHub Help documentation.
+//
 // To open or update a pull request in a public repository, you must have write access to the head or
 // the source branch. For organization-owned repositories, you must be a member of the organization
 // that owns the repository to open or update a pull request.
+//
 // You can create a new pull request.
-// This endpoint triggers [notifications](https://docs.github.
-// com/en/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating
-// content too quickly using this endpoint may result in secondary rate limiting. See "[Secondary
-// rate limits](https://docs.github.
-// com/rest/overview/resources-in-the-rest-api#secondary-rate-limits)" and "[Dealing with secondary
-// rate limits](https://docs.github.
-// com/rest/guides/best-practices-for-integrators#dealing-with-rate-limits)" for details.
+//
+// This endpoint triggers [notifications]. Creating content too quickly using this endpoint may result
+// in secondary rate limiting. See "[Secondary rate limits]" and "[Dealing with secondary rate limits]"
+// for details.
 //
 // POST /repos/{owner}/{repo}/pulls
+//
+// [GitHub's products]: https://help.github.com/github/getting-started-with-github/githubs-products
+// [notifications]: https://docs.github.com/en/github/managing-subscriptions-and-notifications-on-github/about-notifications
+// [Secondary rate limits]: https://docs.github.com/rest/overview/resources-in-the-rest-api#secondary-rate-limits
+// [Dealing with secondary rate limits]: https://docs.github.com/rest/guides/best-practices-for-integrators#dealing-with-rate-limits
 func (s *Server) handlePullsCreateRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -66239,18 +66692,19 @@ func (s *Server) handlePullsCreateRequest(args [2]string, argsEscaped bool, w ht
 
 // handlePullsCreateReplyForReviewCommentRequest handles pulls/create-reply-for-review-comment operation.
 //
-// Creates a reply to a review comment for a pull request. For the `comment_id`, provide the ID of
-// the review comment you are replying to. This must be the ID of a _top-level review comment_, not a
-// reply to that comment. Replies to replies are not supported.
-// This endpoint triggers [notifications](https://docs.github.
-// com/en/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating
-// content too quickly using this endpoint may result in secondary rate limiting. See "[Secondary
-// rate limits](https://docs.github.
-// com/rest/overview/resources-in-the-rest-api#secondary-rate-limits)" and "[Dealing with secondary
-// rate limits](https://docs.github.
-// com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)" for details.
+// Creates a reply to a review comment for a pull request. For the `comment_id`, provide the ID of the
+// review comment you are replying to. This must be the ID of a top-level review comment, not a reply
+// to that comment. Replies to replies are not supported.
+//
+// This endpoint triggers [notifications]. Creating content too quickly using this endpoint may result
+// in secondary rate limiting. See "[Secondary rate limits]" and "[Dealing with secondary rate limits]"
+// for details.
 //
 // POST /repos/{owner}/{repo}/pulls/{pull_number}/comments/{comment_id}/replies
+//
+// [notifications]: https://docs.github.com/en/github/managing-subscriptions-and-notifications-on-github/about-notifications
+// [Secondary rate limits]: https://docs.github.com/rest/overview/resources-in-the-rest-api#secondary-rate-limits
+// [Dealing with secondary rate limits]: https://docs.github.com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits
 func (s *Server) handlePullsCreateReplyForReviewCommentRequest(args [4]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -66418,27 +66872,30 @@ func (s *Server) handlePullsCreateReplyForReviewCommentRequest(args [4]string, a
 
 // handlePullsCreateReviewRequest handles pulls/create-review operation.
 //
-// This endpoint triggers [notifications](https://docs.github.
-// com/en/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating
-// content too quickly using this endpoint may result in secondary rate limiting. See "[Secondary
-// rate limits](https://docs.github.
-// com/rest/overview/resources-in-the-rest-api#secondary-rate-limits)" and "[Dealing with secondary
-// rate limits](https://docs.github.
-// com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)" for details.
+// This endpoint triggers [notifications]. Creating content too quickly using this endpoint may result
+// in secondary rate limiting. See "[Secondary rate limits]" and "[Dealing with secondary rate limits]"
+// for details.
+//
 // Pull request reviews created in the `PENDING` state do not include the `submitted_at` property in
 // the response.
-// **Note:** To comment on a specific line in a file, you need to first determine the _position_ of
-// that line in the diff. The GitHub REST API v3 offers the `application/vnd.github.v3.diff` [media
-// type](https://docs.github.
-// com/rest/overview/media-types#commits-commit-comparison-and-pull-requests). To see a pull request
-// diff, add this media type to the `Accept` header of a call to the [single pull
-// request](https://docs.github.com/rest/reference/pulls#get-a-pull-request) endpoint.
-// The `position` value equals the number of lines down from the first "@@" hunk header in the file
-// you want to add a comment. The line just below the "@@" line is position 1, the next line is
-// position 2, and so on. The position in the diff continues to increase through lines of whitespace
-// and additional hunks until the beginning of a new file.
+//
+// Note: To comment on a specific line in a file, you need to first determine the position of that line
+// in the diff. The GitHub REST API v3 offers the `application/vnd.github.v3.diff` [media type]. To see
+// a pull request diff, add this media type to the `Accept` header of a call to the
+// [single pull request] endpoint.
+//
+// The `position` value equals the number of lines down from the first "@@" hunk header in the file you
+// want to add a comment. The line just below the "@@" line is position 1, the next line is position 2,
+// and so on. The position in the diff continues to increase through lines of whitespace and additional
+// hunks until the beginning of a new file.
 //
 // POST /repos/{owner}/{repo}/pulls/{pull_number}/reviews
+//
+// [notifications]: https://docs.github.com/en/github/managing-subscriptions-and-notifications-on-github/about-notifications
+// [Secondary rate limits]: https://docs.github.com/rest/overview/resources-in-the-rest-api#secondary-rate-limits
+// [Dealing with secondary rate limits]: https://docs.github.com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits
+// [media type]: https://docs.github.com/rest/overview/media-types#commits-commit-comparison-and-pull-requests
+// [single pull request]: https://docs.github.com/rest/reference/pulls#get-a-pull-request
 func (s *Server) handlePullsCreateReviewRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -66603,27 +67060,30 @@ func (s *Server) handlePullsCreateReviewRequest(args [3]string, argsEscaped bool
 // handlePullsCreateReviewCommentRequest handles pulls/create-review-comment operation.
 //
 // Creates a review comment in the pull request diff. To add a regular comment to a pull request
-// timeline, see "[Create an issue comment](https://docs.github.
-// com/rest/reference/issues#create-an-issue-comment)." We recommend creating a review comment using
-// `line`, `side`, and optionally `start_line` and `start_side` if your comment applies to more than
-// one line in the pull request diff.
+// timeline, see "[Create an issue comment]." We recommend creating a review comment using `line`,
+// `side`, and optionally `start_line` and `start_side` if your comment applies to more than one line
+// in the pull request diff.
+//
 // You can still create a review comment using the `position` parameter. When you use `position`, the
 // `line`, `side`, `start_line`, and `start_side` parameters are not required. For more information,
-// see the [`comfort-fade` preview notice](https://docs.github.
-// com/rest/reference/pulls#create-a-review-comment-for-a-pull-request-preview-notices).
-// **Note:** The position value equals the number of lines down from the first "@@" hunk header in
-// the file you want to add a comment. The line just below the "@@" line is position 1, the next line
-// is position 2, and so on. The position in the diff continues to increase through lines of
-// whitespace and additional hunks until the beginning of a new file.
-// This endpoint triggers [notifications](https://docs.github.
-// com/en/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating
-// content too quickly using this endpoint may result in secondary rate limiting. See "[Secondary
-// rate limits](https://docs.github.
-// com/rest/overview/resources-in-the-rest-api#secondary-rate-limits)" and "[Dealing with secondary
-// rate limits](https://docs.github.
-// com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)" for details.
+// see the [comfort-fade preview notice].
+//
+// Note: The position value equals the number of lines down from the first "@@" hunk header in the file
+// you want to add a comment. The line just below the "@@" line is position 1, the next line is
+// position 2, and so on. The position in the diff continues to increase through lines of whitespace
+// and additional hunks until the beginning of a new file.
+//
+// This endpoint triggers [notifications]. Creating content too quickly using this endpoint may result
+// in secondary rate limiting. See "[Secondary rate limits]" and "[Dealing with secondary rate limits]"
+// for details.
 //
 // POST /repos/{owner}/{repo}/pulls/{pull_number}/comments
+//
+// [Create an issue comment]: https://docs.github.com/rest/reference/issues#create-an-issue-comment
+// [comfort-fade preview notice]: https://docs.github.com/rest/reference/pulls#create-a-review-comment-for-a-pull-request-preview-notices
+// [notifications]: https://docs.github.com/en/github/managing-subscriptions-and-notifications-on-github/about-notifications
+// [Secondary rate limits]: https://docs.github.com/rest/overview/resources-in-the-rest-api#secondary-rate-limits
+// [Dealing with secondary rate limits]: https://docs.github.com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits
 func (s *Server) handlePullsCreateReviewCommentRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -67093,11 +67553,12 @@ func (s *Server) handlePullsDeleteReviewCommentRequest(args [3]string, argsEscap
 
 // handlePullsDismissReviewRequest handles pulls/dismiss-review operation.
 //
-// **Note:** To dismiss a pull request review on a [protected branch](https://docs.github.
-// com/rest/reference/repos#branches), you must be a repository administrator or be included in the
-// list of people or teams who can dismiss pull request reviews.
+// Note: To dismiss a pull request review on a [protected branch], you must be a repository
+// administrator or be included in the list of people or teams who can dismiss pull request reviews.
 //
 // PUT /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/dismissals
+//
+// [protected branch]: https://docs.github.com/rest/reference/repos#branches
 func (s *Server) handlePullsDismissReviewRequest(args [4]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -67267,40 +67728,44 @@ func (s *Server) handlePullsDismissReviewRequest(args [4]string, argsEscaped boo
 //
 // Draft pull requests are available in public repositories with GitHub Free and GitHub Free for
 // organizations, GitHub Pro, and legacy per-repository billing plans, and in public and private
-// repositories with GitHub Team and GitHub Enterprise Cloud. For more information, see [GitHub's
-// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
-// GitHub Help documentation.
+// repositories with GitHub Team and GitHub Enterprise Cloud. For more information, see
+// [GitHub's products] in the GitHub Help documentation.
+//
 // Lists details of a pull request by providing its number.
-// When you get, [create](https://docs.github.com/rest/reference/pulls/#create-a-pull-request), or
-// [edit](https://docs.github.com/rest/reference/pulls#update-a-pull-request) a pull request, GitHub
-// creates a merge commit to test whether the pull request can be automatically merged into the base
-// branch. This test commit is not added to the base branch or the head branch. You can review the
-// status of the test commit using the `mergeable` key. For more information, see "[Checking
-// mergeability of pull requests](https://docs.github.
-// com/rest/guides/getting-started-with-the-git-database-api#checking-mergeability-of-pull-requests)".
+//
+// When you get, [create], or [edit] a pull request, GitHub creates a merge commit to test whether the
+// pull request can be automatically merged into the base branch. This test commit is not added to the
+// base branch or the head branch. You can review the status of the test commit using the `mergeable`
+// key. For more information, see "[Checking mergeability of pull requests]".
+//
 // The value of the `mergeable` attribute can be `true`, `false`, or `null`. If the value is `null`,
 // then GitHub has started a background job to compute the mergeability. After giving the job time to
 // complete, resubmit the request. When the job finishes, you will see a non-`null` value for the
-// `mergeable` attribute in the response. If `mergeable` is `true`, then `merge_commit_sha` will be
-// the SHA of the _test_ merge commit.
-// The value of the `merge_commit_sha` attribute changes depending on the state of the pull request.
-// Before merging a pull request, the `merge_commit_sha` attribute holds the SHA of the _test_ merge
-// commit. After merging a pull request, the `merge_commit_sha` attribute changes depending on how
-// you merged the pull request:
-//   - If merged as a [merge commit](https://help.github.com/articles/about-merge-methods-on-github/),
-//     `merge_commit_sha` represents the SHA of the merge commit.
-//   - If merged via a [squash](https://help.github.
+// `mergeable` attribute in the response. If `mergeable` is `true`, then `merge_commit_sha` will be the
+// SHA of the test merge commit.
 //
-// com/articles/about-merge-methods-on-github/#squashing-your-merge-commits), `merge_commit_sha`
-// represents the SHA of the squashed commit on the base branch.
-// *   If [rebased](https://help.github.
-// com/articles/about-merge-methods-on-github/#rebasing-and-merging-your-commits), `merge_commit_sha`
-// represents the commit that the base branch was updated to.
-// Pass the appropriate [media type](https://docs.github.
-// com/rest/overview/media-types/#commits-commit-comparison-and-pull-requests) to fetch diff and
-// patch formats.
+// The value of the `merge_commit_sha` attribute changes depending on the state of the pull request.
+// Before merging a pull request, the `merge_commit_sha` attribute holds the SHA of the test merge
+// commit. After merging a pull request, the `merge_commit_sha` attribute changes depending on how you
+// merged the pull request:
+//
+//   - If merged as a [merge commit], `merge_commit_sha` represents the SHA of the merge commit.
+//   - If merged via a [squash], `merge_commit_sha` represents the SHA of the squashed commit on the
+//     base branch.
+//   - If [rebased], `merge_commit_sha` represents the commit that the base branch was updated to.
+//
+// Pass the appropriate [media type] to fetch diff and patch formats.
 //
 // GET /repos/{owner}/{repo}/pulls/{pull_number}
+//
+// [GitHub's products]: https://help.github.com/github/getting-started-with-github/githubs-products
+// [create]: https://docs.github.com/rest/reference/pulls/#create-a-pull-request
+// [edit]: https://docs.github.com/rest/reference/pulls#update-a-pull-request
+// [Checking mergeability of pull requests]: https://docs.github.com/rest/guides/getting-started-with-the-git-database-api#checking-mergeability-of-pull-requests
+// [merge commit]: https://help.github.com/articles/about-merge-methods-on-github/
+// [squash]: https://help.github.com/articles/about-merge-methods-on-github/#squashing-your-merge-commits
+// [rebased]: https://help.github.com/articles/about-merge-methods-on-github/#rebasing-and-merging-your-commits
+// [media type]: https://docs.github.com/rest/overview/media-types/#commits-commit-comparison-and-pull-requests
 func (s *Server) handlePullsGetRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -67757,11 +68222,12 @@ func (s *Server) handlePullsGetReviewCommentRequest(args [3]string, argsEscaped 
 //
 // Draft pull requests are available in public repositories with GitHub Free and GitHub Free for
 // organizations, GitHub Pro, and legacy per-repository billing plans, and in public and private
-// repositories with GitHub Team and GitHub Enterprise Cloud. For more information, see [GitHub's
-// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
-// GitHub Help documentation.
+// repositories with GitHub Team and GitHub Enterprise Cloud. For more information, see
+// [GitHub's products] in the GitHub Help documentation.
 //
 // GET /repos/{owner}/{repo}/pulls
+//
+// [GitHub's products]: https://help.github.com/github/getting-started-with-github/githubs-products
 func (s *Server) handlePullsListRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -68098,10 +68564,11 @@ func (s *Server) handlePullsListCommentsForReviewRequest(args [4]string, argsEsc
 // handlePullsListCommitsRequest handles pulls/list-commits operation.
 //
 // Lists a maximum of 250 commits for a pull request. To receive a complete commit list for pull
-// requests with more than 250 commits, use the [List commits](https://docs.github.
-// com/rest/reference/repos#list-commits) endpoint.
+// requests with more than 250 commits, use the [List commits] endpoint.
 //
 // GET /repos/{owner}/{repo}/pulls/{pull_number}/commits
+//
+// [List commits]: https://docs.github.com/rest/reference/repos#list-commits
 func (s *Server) handlePullsListCommitsRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -68258,8 +68725,8 @@ func (s *Server) handlePullsListCommitsRequest(args [3]string, argsEscaped bool,
 
 // handlePullsListFilesRequest handles pulls/list-files operation.
 //
-// **Note:** Responses include a maximum of 3000 files. The paginated response returns 30 files per
-// page by default.
+// Note: Responses include a maximum of 3000 files. The paginated response returns 30 files per page by
+// default.
 //
 // GET /repos/{owner}/{repo}/pulls/{pull_number}/files
 func (s *Server) handlePullsListFilesRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -68577,8 +69044,8 @@ func (s *Server) handlePullsListRequestedReviewersRequest(args [3]string, argsEs
 
 // handlePullsListReviewCommentsRequest handles pulls/list-review-comments operation.
 //
-// Lists all review comments for a pull request. By default, review comments are in ascending order
-// by ID.
+// Lists all review comments for a pull request. By default, review comments are in ascending order by
+// ID.
 //
 // GET /repos/{owner}/{repo}/pulls/{pull_number}/comments
 func (s *Server) handlePullsListReviewCommentsRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -69076,15 +69543,15 @@ func (s *Server) handlePullsListReviewsRequest(args [3]string, argsEscaped bool,
 
 // handlePullsMergeRequest handles pulls/merge operation.
 //
-// This endpoint triggers [notifications](https://docs.github.
-// com/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating
-// content too quickly using this endpoint may result in secondary rate limiting. See "[Secondary
-// rate limits](https://docs.github.
-// com/rest/overview/resources-in-the-rest-api#secondary-rate-limits)" and "[Dealing with secondary
-// rate limits](https://docs.github.
-// com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)" for details.
+// This endpoint triggers [notifications]. Creating content too quickly using this endpoint may result
+// in secondary rate limiting. See "[Secondary rate limits]" and "[Dealing with secondary rate limits]"
+// for details.
 //
 // PUT /repos/{owner}/{repo}/pulls/{pull_number}/merge
+//
+// [notifications]: https://docs.github.com/github/managing-subscriptions-and-notifications-on-github/about-notifications
+// [Secondary rate limits]: https://docs.github.com/rest/overview/resources-in-the-rest-api#secondary-rate-limits
+// [Dealing with secondary rate limits]: https://docs.github.com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits
 func (s *Server) handlePullsMergeRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -69586,14 +70053,16 @@ func (s *Server) handlePullsSubmitReviewRequest(args [4]string, argsEscaped bool
 //
 // Draft pull requests are available in public repositories with GitHub Free and GitHub Free for
 // organizations, GitHub Pro, and legacy per-repository billing plans, and in public and private
-// repositories with GitHub Team and GitHub Enterprise Cloud. For more information, see [GitHub's
-// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
-// GitHub Help documentation.
+// repositories with GitHub Team and GitHub Enterprise Cloud. For more information, see
+// [GitHub's products] in the GitHub Help documentation.
+//
 // To open or update a pull request in a public repository, you must have write access to the head or
 // the source branch. For organization-owned repositories, you must be a member of the organization
 // that owns the repository to open or update a pull request.
 //
 // PATCH /repos/{owner}/{repo}/pulls/{pull_number}
+//
+// [GitHub's products]: https://help.github.com/github/getting-started-with-github/githubs-products
 func (s *Server) handlePullsUpdateRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -70260,10 +70729,11 @@ func (s *Server) handlePullsUpdateReviewCommentRequest(args [3]string, argsEscap
 
 // handleRateLimitGetRequest handles rate-limit/get operation.
 //
-// **Note:** Accessing this endpoint does not count against your REST API rate limit.
-// **Note:** The `rate` object is deprecated. If you're writing new API client code or updating
-// existing code, you should use the `core` object instead of the `rate` object. The `core` object
-// contains the same information that is present in the `rate` object.
+// Note: Accessing this endpoint does not count against your REST API rate limit.
+//
+// Note: The `rate` object is deprecated. If you're writing new API client code or updating existing
+// code, you should use the `core` object instead of the `rate` object. The `core` object contains the
+// same information that is present in the `rate` object.
 //
 // GET /rate_limit
 func (s *Server) handleRateLimitGetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -70387,11 +70857,12 @@ func (s *Server) handleRateLimitGetRequest(args [0]string, argsEscaped bool, w h
 
 // handleReactionsCreateForCommitCommentRequest handles reactions/create-for-commit-comment operation.
 //
-// Create a reaction to a [commit comment](https://docs.github.com/rest/reference/repos#comments). A
-// response with an HTTP `200` status means that you already added the reaction type to this commit
-// comment.
+// Create a reaction to a [commit comment]. A response with an HTTP `200` status means that you already
+// added the reaction type to this commit comment.
 //
 // POST /repos/{owner}/{repo}/comments/{comment_id}/reactions
+//
+// [commit comment]: https://docs.github.com/rest/reference/repos#comments
 func (s *Server) handleReactionsCreateForCommitCommentRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -70555,10 +71026,12 @@ func (s *Server) handleReactionsCreateForCommitCommentRequest(args [3]string, ar
 
 // handleReactionsCreateForIssueRequest handles reactions/create-for-issue operation.
 //
-// Create a reaction to an [issue](https://docs.github.com/rest/reference/issues/). A response with
-// an HTTP `200` status means that you already added the reaction type to this issue.
+// Create a reaction to an [issue]. A response with an HTTP `200` status means that you already added
+// the reaction type to this issue.
 //
 // POST /repos/{owner}/{repo}/issues/{issue_number}/reactions
+//
+// [issue]: https://docs.github.com/rest/reference/issues/
 func (s *Server) handleReactionsCreateForIssueRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -70722,11 +71195,12 @@ func (s *Server) handleReactionsCreateForIssueRequest(args [3]string, argsEscape
 
 // handleReactionsCreateForIssueCommentRequest handles reactions/create-for-issue-comment operation.
 //
-// Create a reaction to an [issue comment](https://docs.github.com/rest/reference/issues#comments). A
-// response with an HTTP `200` status means that you already added the reaction type to this issue
-// comment.
+// Create a reaction to an [issue comment]. A response with an HTTP `200` status means that you already
+// added the reaction type to this issue comment.
 //
 // POST /repos/{owner}/{repo}/issues/comments/{comment_id}/reactions
+//
+// [issue comment]: https://docs.github.com/rest/reference/issues#comments
 func (s *Server) handleReactionsCreateForIssueCommentRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -70890,11 +71364,12 @@ func (s *Server) handleReactionsCreateForIssueCommentRequest(args [3]string, arg
 
 // handleReactionsCreateForPullRequestReviewCommentRequest handles reactions/create-for-pull-request-review-comment operation.
 //
-// Create a reaction to a [pull request review comment](https://docs.github.
-// com/rest/reference/pulls#comments). A response with an HTTP `200` status means that you already
-// added the reaction type to this pull request review comment.
+// Create a reaction to a [pull request review comment]. A response with an HTTP `200` status means
+// that you already added the reaction type to this pull request review comment.
 //
 // POST /repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions
+//
+// [pull request review comment]: https://docs.github.com/rest/reference/pulls#comments
 func (s *Server) handleReactionsCreateForPullRequestReviewCommentRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -71058,10 +71533,12 @@ func (s *Server) handleReactionsCreateForPullRequestReviewCommentRequest(args [3
 
 // handleReactionsCreateForReleaseRequest handles reactions/create-for-release operation.
 //
-// Create a reaction to a [release](https://docs.github.com/rest/reference/repos#releases). A
-// response with a `Status: 200 OK` means that you already added the reaction type to this release.
+// Create a reaction to a [release]. A response with a `Status: 200 OK` means that you already added
+// the reaction type to this release.
 //
 // POST /repos/{owner}/{repo}/releases/{release_id}/reactions
+//
+// [release]: https://docs.github.com/rest/reference/repos#releases
 func (s *Server) handleReactionsCreateForReleaseRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -71225,15 +71702,17 @@ func (s *Server) handleReactionsCreateForReleaseRequest(args [3]string, argsEsca
 
 // handleReactionsCreateForTeamDiscussionCommentInOrgRequest handles reactions/create-for-team-discussion-comment-in-org operation.
 //
-// Create a reaction to a [team discussion comment](https://docs.github.
-// com/rest/reference/teams#discussion-comments). OAuth access tokens require the `write:discussion`
-// [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/). A
-// response with an HTTP `200` status means that you already added the reaction type to this team
-// discussion comment.
-// **Note:** You can also specify a team by `org_id` and `team_id` using the route `POST
-// /organizations/:org_id/team/:team_id/discussions/:discussion_number/comments/:comment_number/reactions`.
+// Create a reaction to a [team discussion comment]. OAuth access tokens require the `write:discussion`
+// [scope]. A response with an HTTP `200` status means that you already added the reaction type to this
+// team discussion comment.
+//
+// Note: You can also specify a team by `org_id` and `team_id` using the route
+// `POST /organizations/:org_id/team/:team_id/discussions/:discussion_number/comments/:comment_number/reactions`.
 //
 // POST /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions
+//
+// [team discussion comment]: https://docs.github.com/rest/reference/teams#discussion-comments
+// [scope]: https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/
 func (s *Server) handleReactionsCreateForTeamDiscussionCommentInOrgRequest(args [4]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -71401,19 +71880,21 @@ func (s *Server) handleReactionsCreateForTeamDiscussionCommentInOrgRequest(args 
 
 // handleReactionsCreateForTeamDiscussionCommentLegacyRequest handles reactions/create-for-team-discussion-comment-legacy operation.
 //
-// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
-// We recommend migrating your existing code to use the new "[Create reaction for a team discussion
-// comment](https://docs.github.
-// com/rest/reference/reactions#create-reaction-for-a-team-discussion-comment)" endpoint.
-// Create a reaction to a [team discussion comment](https://docs.github.
-// com/rest/reference/teams#discussion-comments). OAuth access tokens require the `write:discussion`
-// [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/). A
-// response with an HTTP `200` status means that you already added the reaction type to this team
-// discussion comment.
+// Deprecation Notice: This endpoint route is deprecated and will be removed from the Teams API. We
+// recommend migrating your existing code to use the new
+// "[Create reaction for a team discussion comment]" endpoint.
+//
+// Create a reaction to a [team discussion comment]. OAuth access tokens require the `write:discussion`
+// [scope]. A response with an HTTP `200` status means that you already added the reaction type to this
+// team discussion comment.
 //
 // Deprecated: schema marks this operation as deprecated.
 //
 // POST /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions
+//
+// [Create reaction for a team discussion comment]: https://docs.github.com/rest/reference/reactions#create-reaction-for-a-team-discussion-comment
+// [team discussion comment]: https://docs.github.com/rest/reference/teams#discussion-comments
+// [scope]: https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/
 func (s *Server) handleReactionsCreateForTeamDiscussionCommentLegacyRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -71577,16 +72058,17 @@ func (s *Server) handleReactionsCreateForTeamDiscussionCommentLegacyRequest(args
 
 // handleReactionsCreateForTeamDiscussionInOrgRequest handles reactions/create-for-team-discussion-in-org operation.
 //
-// Create a reaction to a [team discussion](https://docs.github.com/rest/reference/teams#discussions).
+// Create a reaction to a [team discussion]. OAuth access tokens require the `write:discussion`
+// [scope]. A response with an HTTP `200` status means that you already added the reaction type to this
+// team discussion.
 //
-//	OAuth access tokens require the `write:discussion` [scope](https://docs.github.
-//
-// com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/). A response with an HTTP `200`
-// status means that you already added the reaction type to this team discussion.
-// **Note:** You can also specify a team by `org_id` and `team_id` using the route `POST
-// /organizations/:org_id/team/:team_id/discussions/:discussion_number/reactions`.
+// Note: You can also specify a team by `org_id` and `team_id` using the route
+// `POST /organizations/:org_id/team/:team_id/discussions/:discussion_number/reactions`.
 //
 // POST /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions
+//
+// [team discussion]: https://docs.github.com/rest/reference/teams#discussions
+// [scope]: https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/
 func (s *Server) handleReactionsCreateForTeamDiscussionInOrgRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -71750,20 +72232,21 @@ func (s *Server) handleReactionsCreateForTeamDiscussionInOrgRequest(args [3]stri
 
 // handleReactionsCreateForTeamDiscussionLegacyRequest handles reactions/create-for-team-discussion-legacy operation.
 //
-// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
-// We recommend migrating your existing code to use the new [`Create reaction for a team
-// discussion`](https://docs.github.
-// com/rest/reference/reactions#create-reaction-for-a-team-discussion) endpoint.
-// Create a reaction to a [team discussion](https://docs.github.com/rest/reference/teams#discussions).
+// Deprecation Notice: This endpoint route is deprecated and will be removed from the Teams API. We
+// recommend migrating your existing code to use the new [Create reaction for a team discussion]
+// endpoint.
 //
-//	OAuth access tokens require the `write:discussion` [scope](https://docs.github.
-//
-// com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/). A response with an HTTP `200`
-// status means that you already added the reaction type to this team discussion.
+// Create a reaction to a [team discussion]. OAuth access tokens require the `write:discussion`
+// [scope]. A response with an HTTP `200` status means that you already added the reaction type to this
+// team discussion.
 //
 // Deprecated: schema marks this operation as deprecated.
 //
 // POST /teams/{team_id}/discussions/{discussion_number}/reactions
+//
+// [Create reaction for a team discussion]: https://docs.github.com/rest/reference/reactions#create-reaction-for-a-team-discussion
+// [team discussion]: https://docs.github.com/rest/reference/teams#discussions
+// [scope]: https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/
 func (s *Server) handleReactionsCreateForTeamDiscussionLegacyRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -71923,11 +72406,14 @@ func (s *Server) handleReactionsCreateForTeamDiscussionLegacyRequest(args [2]str
 
 // handleReactionsDeleteForCommitCommentRequest handles reactions/delete-for-commit-comment operation.
 //
-// **Note:** You can also specify a repository by `repository_id` using the route `DELETE
-// /repositories/:repository_id/comments/:comment_id/reactions/:reaction_id`.
-// Delete a reaction to a [commit comment](https://docs.github.com/rest/reference/repos#comments).
+// Note: You can also specify a repository by `repository_id` using the route
+// `DELETE /repositories/:repository_id/comments/:comment_id/reactions/:reaction_id`.
+//
+// Delete a reaction to a [commit comment].
 //
 // DELETE /repos/{owner}/{repo}/comments/{comment_id}/reactions/{reaction_id}
+//
+// [commit comment]: https://docs.github.com/rest/reference/repos#comments
 func (s *Server) handleReactionsDeleteForCommitCommentRequest(args [4]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -72080,11 +72566,14 @@ func (s *Server) handleReactionsDeleteForCommitCommentRequest(args [4]string, ar
 
 // handleReactionsDeleteForIssueRequest handles reactions/delete-for-issue operation.
 //
-// **Note:** You can also specify a repository by `repository_id` using the route `DELETE
-// /repositories/:repository_id/issues/:issue_number/reactions/:reaction_id`.
-// Delete a reaction to an [issue](https://docs.github.com/rest/reference/issues/).
+// Note: You can also specify a repository by `repository_id` using the route
+// `DELETE /repositories/:repository_id/issues/:issue_number/reactions/:reaction_id`.
+//
+// Delete a reaction to an [issue].
 //
 // DELETE /repos/{owner}/{repo}/issues/{issue_number}/reactions/{reaction_id}
+//
+// [issue]: https://docs.github.com/rest/reference/issues/
 func (s *Server) handleReactionsDeleteForIssueRequest(args [4]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -72237,11 +72726,14 @@ func (s *Server) handleReactionsDeleteForIssueRequest(args [4]string, argsEscape
 
 // handleReactionsDeleteForIssueCommentRequest handles reactions/delete-for-issue-comment operation.
 //
-// **Note:** You can also specify a repository by `repository_id` using the route `DELETE delete
-// /repositories/:repository_id/issues/comments/:comment_id/reactions/:reaction_id`.
-// Delete a reaction to an [issue comment](https://docs.github.com/rest/reference/issues#comments).
+// Note: You can also specify a repository by `repository_id` using the route
+// `DELETE delete /repositories/:repository_id/issues/comments/:comment_id/reactions/:reaction_id`.
+//
+// Delete a reaction to an [issue comment].
 //
 // DELETE /repos/{owner}/{repo}/issues/comments/{comment_id}/reactions/{reaction_id}
+//
+// [issue comment]: https://docs.github.com/rest/reference/issues#comments
 func (s *Server) handleReactionsDeleteForIssueCommentRequest(args [4]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -72394,12 +72886,14 @@ func (s *Server) handleReactionsDeleteForIssueCommentRequest(args [4]string, arg
 
 // handleReactionsDeleteForPullRequestCommentRequest handles reactions/delete-for-pull-request-comment operation.
 //
-// **Note:** You can also specify a repository by `repository_id` using the route `DELETE
-// /repositories/:repository_id/pulls/comments/:comment_id/reactions/:reaction_id.`
-// Delete a reaction to a [pull request review comment](https://docs.github.
-// com/rest/reference/pulls#review-comments).
+// Note: You can also specify a repository by `repository_id` using the route
+// `DELETE /repositories/:repository_id/pulls/comments/:comment_id/reactions/:reaction_id.`
+//
+// Delete a reaction to a [pull request review comment].
 //
 // DELETE /repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions/{reaction_id}
+//
+// [pull request review comment]: https://docs.github.com/rest/reference/pulls#review-comments
 func (s *Server) handleReactionsDeleteForPullRequestCommentRequest(args [4]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -72552,16 +73046,16 @@ func (s *Server) handleReactionsDeleteForPullRequestCommentRequest(args [4]strin
 
 // handleReactionsDeleteForTeamDiscussionRequest handles reactions/delete-for-team-discussion operation.
 //
-// **Note:** You can also specify a team or organization with `team_id` and `org_id` using the route
-// `DELETE
-// /organizations/:org_id/team/:team_id/discussions/:discussion_number/reactions/:reaction_id`.
-// Delete a reaction to a [team discussion](https://docs.github.com/rest/reference/teams#discussions).
+// Note: You can also specify a team or organization with `team_id` and `org_id` using the route
+// `DELETE /organizations/:org_id/team/:team_id/discussions/:discussion_number/reactions/:reaction_id`.
 //
-//	OAuth access tokens require the `write:discussion` [scope](https://docs.github.
-//
-// com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+// Delete a reaction to a [team discussion]. OAuth access tokens require the `write:discussion`
+// [scope].
 //
 // DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions/{reaction_id}
+//
+// [team discussion]: https://docs.github.com/rest/reference/teams#discussions
+// [scope]: https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/
 func (s *Server) handleReactionsDeleteForTeamDiscussionRequest(args [4]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -72714,14 +73208,16 @@ func (s *Server) handleReactionsDeleteForTeamDiscussionRequest(args [4]string, a
 
 // handleReactionsDeleteForTeamDiscussionCommentRequest handles reactions/delete-for-team-discussion-comment operation.
 //
-// **Note:** You can also specify a team or organization with `team_id` and `org_id` using the route
-// `DELETE
-// /organizations/:org_id/team/:team_id/discussions/:discussion_number/comments/:comment_number/reactions/:reaction_id`.
-// Delete a reaction to a [team discussion comment](https://docs.github.
-// com/rest/reference/teams#discussion-comments). OAuth access tokens require the `write:discussion`
-// [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+// Note: You can also specify a team or organization with `team_id` and `org_id` using the route
+// `DELETE /organizations/:org_id/team/:team_id/discussions/:discussion_number/comments/:comment_number/reactions/:reaction_id`.
+//
+// Delete a reaction to a [team discussion comment]. OAuth access tokens require the `write:discussion`
+// [scope].
 //
 // DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions/{reaction_id}
+//
+// [team discussion comment]: https://docs.github.com/rest/reference/teams#discussion-comments
+// [scope]: https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/
 func (s *Server) handleReactionsDeleteForTeamDiscussionCommentRequest(args [5]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -72878,18 +73374,21 @@ func (s *Server) handleReactionsDeleteForTeamDiscussionCommentRequest(args [5]st
 
 // handleReactionsDeleteLegacyRequest handles reactions/delete-legacy operation.
 //
-// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Reactions
-// API. We recommend migrating your existing code to use the new delete reactions endpoints. For more
-// information, see this [blog post](https://developer.github.
-// com/changes/2020-02-26-new-delete-reactions-endpoints/).
-// OAuth access tokens require the `write:discussion` [scope](https://docs.github.
-// com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/), when deleting a [team
-// discussion](https://docs.github.com/rest/reference/teams#discussions) or [team discussion
-// comment](https://docs.github.com/rest/reference/teams#discussion-comments).
+// Deprecation Notice: This endpoint route is deprecated and will be removed from the Reactions API. We
+// recommend migrating your existing code to use the new delete reactions endpoints. For more
+// information, see this [blog post].
+//
+// OAuth access tokens require the `write:discussion` [scope], when deleting a [team discussion] or
+// [team discussion comment].
 //
 // Deprecated: schema marks this operation as deprecated.
 //
 // DELETE /reactions/{reaction_id}
+//
+// [blog post]: https://developer.github.com/changes/2020-02-26-new-delete-reactions-endpoints/
+// [scope]: https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/
+// [team discussion]: https://docs.github.com/rest/reference/teams#discussions
+// [team discussion comment]: https://docs.github.com/rest/reference/teams#discussion-comments
 func (s *Server) handleReactionsDeleteLegacyRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -73030,9 +73529,11 @@ func (s *Server) handleReactionsDeleteLegacyRequest(args [1]string, argsEscaped 
 
 // handleReactionsListForCommitCommentRequest handles reactions/list-for-commit-comment operation.
 //
-// List the reactions to a [commit comment](https://docs.github.com/rest/reference/repos#comments).
+// List the reactions to a [commit comment].
 //
 // GET /repos/{owner}/{repo}/comments/{comment_id}/reactions
+//
+// [commit comment]: https://docs.github.com/rest/reference/repos#comments
 func (s *Server) handleReactionsListForCommitCommentRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -73193,9 +73694,11 @@ func (s *Server) handleReactionsListForCommitCommentRequest(args [3]string, args
 
 // handleReactionsListForIssueRequest handles reactions/list-for-issue operation.
 //
-// List the reactions to an [issue](https://docs.github.com/rest/reference/issues).
+// List the reactions to an [issue].
 //
 // GET /repos/{owner}/{repo}/issues/{issue_number}/reactions
+//
+// [issue]: https://docs.github.com/rest/reference/issues
 func (s *Server) handleReactionsListForIssueRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -73356,9 +73859,11 @@ func (s *Server) handleReactionsListForIssueRequest(args [3]string, argsEscaped 
 
 // handleReactionsListForIssueCommentRequest handles reactions/list-for-issue-comment operation.
 //
-// List the reactions to an [issue comment](https://docs.github.com/rest/reference/issues#comments).
+// List the reactions to an [issue comment].
 //
 // GET /repos/{owner}/{repo}/issues/comments/{comment_id}/reactions
+//
+// [issue comment]: https://docs.github.com/rest/reference/issues#comments
 func (s *Server) handleReactionsListForIssueCommentRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -73519,10 +74024,11 @@ func (s *Server) handleReactionsListForIssueCommentRequest(args [3]string, argsE
 
 // handleReactionsListForPullRequestReviewCommentRequest handles reactions/list-for-pull-request-review-comment operation.
 //
-// List the reactions to a [pull request review comment](https://docs.github.
-// com/rest/reference/pulls#review-comments).
+// List the reactions to a [pull request review comment].
 //
 // GET /repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions
+//
+// [pull request review comment]: https://docs.github.com/rest/reference/pulls#review-comments
 func (s *Server) handleReactionsListForPullRequestReviewCommentRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -73683,13 +74189,16 @@ func (s *Server) handleReactionsListForPullRequestReviewCommentRequest(args [3]s
 
 // handleReactionsListForTeamDiscussionCommentInOrgRequest handles reactions/list-for-team-discussion-comment-in-org operation.
 //
-// List the reactions to a [team discussion comment](https://docs.github.
-// com/rest/reference/teams#discussion-comments/). OAuth access tokens require the `read:discussion`
-// [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
-// **Note:** You can also specify a team by `org_id` and `team_id` using the route `GET
-// /organizations/:org_id/team/:team_id/discussions/:discussion_number/comments/:comment_number/reactions`.
+// List the reactions to a [team discussion comment]. OAuth access tokens require the `read:discussion`
+// [scope].
+//
+// Note: You can also specify a team by `org_id` and `team_id` using the route
+// `GET /organizations/:org_id/team/:team_id/discussions/:discussion_number/comments/:comment_number/reactions`.
 //
 // GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions
+//
+// [team discussion comment]: https://docs.github.com/rest/reference/teams#discussion-comments/
+// [scope]: https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/
 func (s *Server) handleReactionsListForTeamDiscussionCommentInOrgRequest(args [4]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -73854,17 +74363,20 @@ func (s *Server) handleReactionsListForTeamDiscussionCommentInOrgRequest(args [4
 
 // handleReactionsListForTeamDiscussionCommentLegacyRequest handles reactions/list-for-team-discussion-comment-legacy operation.
 //
-// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
-// We recommend migrating your existing code to use the new [`List reactions for a team discussion
-// comment`](https://docs.github.
-// com/rest/reference/reactions#list-reactions-for-a-team-discussion-comment) endpoint.
-// List the reactions to a [team discussion comment](https://docs.github.
-// com/rest/reference/teams#discussion-comments). OAuth access tokens require the `read:discussion`
-// [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+// Deprecation Notice: This endpoint route is deprecated and will be removed from the Teams API. We
+// recommend migrating your existing code to use the new [List reactions for a team discussion comment]
+// endpoint.
+//
+// List the reactions to a [team discussion comment]. OAuth access tokens require the `read:discussion`
+// [scope].
 //
 // Deprecated: schema marks this operation as deprecated.
 //
 // GET /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions
+//
+// [List reactions for a team discussion comment]: https://docs.github.com/rest/reference/reactions#list-reactions-for-a-team-discussion-comment
+// [team discussion comment]: https://docs.github.com/rest/reference/teams#discussion-comments
+// [scope]: https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/
 func (s *Server) handleReactionsListForTeamDiscussionCommentLegacyRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -74025,13 +74537,16 @@ func (s *Server) handleReactionsListForTeamDiscussionCommentLegacyRequest(args [
 
 // handleReactionsListForTeamDiscussionInOrgRequest handles reactions/list-for-team-discussion-in-org operation.
 //
-// List the reactions to a [team discussion](https://docs.github.
-// com/rest/reference/teams#discussions). OAuth access tokens require the `read:discussion`
-// [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
-// **Note:** You can also specify a team by `org_id` and `team_id` using the route `GET
-// /organizations/:org_id/team/:team_id/discussions/:discussion_number/reactions`.
+// List the reactions to a [team discussion]. OAuth access tokens require the `read:discussion`
+// [scope].
+//
+// Note: You can also specify a team by `org_id` and `team_id` using the route
+// `GET /organizations/:org_id/team/:team_id/discussions/:discussion_number/reactions`.
 //
 // GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions
+//
+// [team discussion]: https://docs.github.com/rest/reference/teams#discussions
+// [scope]: https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/
 func (s *Server) handleReactionsListForTeamDiscussionInOrgRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -74192,17 +74707,20 @@ func (s *Server) handleReactionsListForTeamDiscussionInOrgRequest(args [3]string
 
 // handleReactionsListForTeamDiscussionLegacyRequest handles reactions/list-for-team-discussion-legacy operation.
 //
-// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
-// We recommend migrating your existing code to use the new [`List reactions for a team
-// discussion`](https://docs.github.
-// com/rest/reference/reactions#list-reactions-for-a-team-discussion) endpoint.
-// List the reactions to a [team discussion](https://docs.github.
-// com/rest/reference/teams#discussions). OAuth access tokens require the `read:discussion`
-// [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+// Deprecation Notice: This endpoint route is deprecated and will be removed from the Teams API. We
+// recommend migrating your existing code to use the new [List reactions for a team discussion]
+// endpoint.
+//
+// List the reactions to a [team discussion]. OAuth access tokens require the `read:discussion`
+// [scope].
 //
 // Deprecated: schema marks this operation as deprecated.
 //
 // GET /teams/{team_id}/discussions/{discussion_number}/reactions
+//
+// [List reactions for a team discussion]: https://docs.github.com/rest/reference/reactions#list-reactions-for-a-team-discussion
+// [team discussion]: https://docs.github.com/rest/reference/teams#discussions
+// [scope]: https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/
 func (s *Server) handleReactionsListForTeamDiscussionLegacyRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -74504,21 +75022,19 @@ func (s *Server) handleReposAcceptInvitationRequest(args [1]string, argsEscaped 
 //
 // Protected branches are available in public repositories with GitHub Free and GitHub Free for
 // organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
-// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
-// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products] in the
 // GitHub Help documentation.
+//
 // Grants the specified apps push access for this branch. Only installed GitHub Apps with `write`
 // access to the `contents` permission can be added as authorized actors on a protected branch.
-// | Type    | Description
 //
-//	|
-//
-// | ------- |
-// ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
-// | `array` | The GitHub Apps that have push access to this branch. Use the app's `slug`. **Note**:
-// The list of users, apps, and teams in total is limited to 100 items. |.
+//	Type    | Description
+//	--------+-------------------------------------------------------------------------------------------------------------------------------------------------------
+//	`array` | The GitHub Apps that have push access to this branch. Use the app's `slug`. Note: The list of users, apps, and teams in total is limited to 100 items.
 //
 // POST /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps
+//
+// [GitHub's products]: https://help.github.com/github/getting-started-with-github/githubs-products
 func (s *Server) handleReposAddAppAccessRestrictionsRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -74682,28 +75198,33 @@ func (s *Server) handleReposAddAppAccessRestrictionsRequest(args [3]string, args
 
 // handleReposAddCollaboratorRequest handles repos/add-collaborator operation.
 //
-// This endpoint triggers [notifications](https://docs.github.
-// com/en/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating
-// content too quickly using this endpoint may result in secondary rate limiting. See "[Secondary
-// rate limits](https://docs.github.
-// com/rest/overview/resources-in-the-rest-api#secondary-rate-limits)" and "[Dealing with secondary
-// rate limits](https://docs.github.
-// com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)" for details.
-// For more information the permission levels, see "[Repository permission levels for an
-// organization](https://help.github.
-// com/en/github/setting-up-and-managing-organizations-and-teams/repository-permission-levels-for-an-organization#permission-levels-for-repositories-owned-by-an-organization)".
+// This endpoint triggers [notifications]. Creating content too quickly using this endpoint may result
+// in secondary rate limiting. See "[Secondary rate limits]" and "[Dealing with secondary rate limits]"
+// for details.
+//
+// For more information the permission levels, see
+// "[Repository permission levels for an organization]".
+//
 // Note that, if you choose not to pass any parameters, you'll need to set `Content-Length` to zero
-// when calling out to this endpoint. For more information, see "[HTTP verbs](https://docs.github.
-// com/rest/overview/resources-in-the-rest-api#http-verbs)."
+// when calling out to this endpoint. For more information, see "[HTTP verbs]."
+//
 // The invitee will receive a notification that they have been invited to the repository, which they
 // must accept or decline. They may do this via the notifications page, the email they receive, or by
-// using the [repository invitations API endpoints](https://docs.github.
-// com/rest/reference/repos#invitations).
-// **Rate limits**
-// You are limited to sending 50 invitations to a repository per 24 hour period. Note there is no
-// limit if you are inviting organization members to an organization repository.
+// using the [repository invitations API endpoints].
+//
+// # Rate limits
+//
+// You are limited to sending 50 invitations to a repository per 24 hour period. Note there is no limit
+// if you are inviting organization members to an organization repository.
 //
 // PUT /repos/{owner}/{repo}/collaborators/{username}
+//
+// [notifications]: https://docs.github.com/en/github/managing-subscriptions-and-notifications-on-github/about-notifications
+// [Secondary rate limits]: https://docs.github.com/rest/overview/resources-in-the-rest-api#secondary-rate-limits
+// [Dealing with secondary rate limits]: https://docs.github.com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits
+// [Repository permission levels for an organization]: https://help.github.com/en/github/setting-up-and-managing-organizations-and-teams/repository-permission-levels-for-an-organization#permission-levels-for-repositories-owned-by-an-organization
+// [HTTP verbs]: https://docs.github.com/rest/overview/resources-in-the-rest-api#http-verbs
+// [repository invitations API endpoints]: https://docs.github.com/rest/reference/repos#invitations
 func (s *Server) handleReposAddCollaboratorRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -74869,11 +75390,12 @@ func (s *Server) handleReposAddCollaboratorRequest(args [3]string, argsEscaped b
 //
 // Protected branches are available in public repositories with GitHub Free and GitHub Free for
 // organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
-// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
-// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products] in the
 // GitHub Help documentation.
 //
 // POST /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts
+//
+// [GitHub's products]: https://help.github.com/github/getting-started-with-github/githubs-products
 func (s *Server) handleReposAddStatusCheckContextsRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -75039,21 +75561,19 @@ func (s *Server) handleReposAddStatusCheckContextsRequest(args [3]string, argsEs
 //
 // Protected branches are available in public repositories with GitHub Free and GitHub Free for
 // organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
-// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
-// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products] in the
 // GitHub Help documentation.
+//
 // Grants the specified teams push access for this branch. You can also give push access to child
 // teams.
-// | Type    | Description
 //
-//	|
-//
-// | ------- |
-// ------------------------------------------------------------------------------------------------------------------------------------------ |
-// | `array` | The teams that can have push access. Use the team's `slug`. **Note**: The list of
-// users, apps, and teams in total is limited to 100 items. |.
+//	Type    | Description
+//	--------+---------------------------------------------------------------------------------------------------------------------------------------
+//	`array` | The teams that can have push access. Use the team's `slug`. Note: The list of users, apps, and teams in total is limited to 100 items.
 //
 // POST /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams
+//
+// [GitHub's products]: https://help.github.com/github/getting-started-with-github/githubs-products
 func (s *Server) handleReposAddTeamAccessRestrictionsRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -75219,20 +75739,18 @@ func (s *Server) handleReposAddTeamAccessRestrictionsRequest(args [3]string, arg
 //
 // Protected branches are available in public repositories with GitHub Free and GitHub Free for
 // organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
-// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
-// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products] in the
 // GitHub Help documentation.
+//
 // Grants the specified people push access for this branch.
-// | Type    | Description
 //
-//	|
-//
-// | ------- |
-// ----------------------------------------------------------------------------------------------------------------------------- |
-// | `array` | Usernames for people who can have push access. **Note**: The list of users, apps, and
-// teams in total is limited to 100 items. |.
+//	Type    | Description
+//	--------+--------------------------------------------------------------------------------------------------------------------------
+//	`array` | Usernames for people who can have push access. Note: The list of users, apps, and teams in total is limited to 100 items.
 //
 // POST /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users
+//
+// [GitHub's products]: https://help.github.com/github/getting-started-with-github/githubs-products
 func (s *Server) handleReposAddUserAccessRestrictionsRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -75400,6 +75918,7 @@ func (s *Server) handleReposAddUserAccessRestrictionsRequest(args [3]string, arg
 // organization members that are direct collaborators, organization members with access through team
 // memberships, organization members with access through default organization permissions, and
 // organization owners.
+//
 // Team members will include the members of child teams.
 //
 // GET /repos/{owner}/{repo}/collaborators/{username}
@@ -75552,11 +76071,12 @@ func (s *Server) handleReposCheckCollaboratorRequest(args [3]string, argsEscaped
 // handleReposCheckVulnerabilityAlertsRequest handles repos/check-vulnerability-alerts operation.
 //
 // Shows whether dependency alerts are enabled or disabled for a repository. The authenticated user
-// must have admin access to the repository. For more information, see "[About security alerts for
-// vulnerable dependencies](https://help.github.
-// com/en/articles/about-security-alerts-for-vulnerable-dependencies)".
+// must have admin access to the repository. For more information, see
+// "[About security alerts for vulnerable dependencies]".
 //
 // GET /repos/{owner}/{repo}/vulnerability-alerts
+//
+// [About security alerts for vulnerable dependencies]: https://help.github.com/en/articles/about-security-alerts-for-vulnerable-dependencies
 func (s *Server) handleReposCheckVulnerabilityAlertsRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -75702,60 +76222,63 @@ func (s *Server) handleReposCheckVulnerabilityAlertsRequest(args [2]string, args
 // handleReposCompareCommitsRequest handles repos/compare-commits operation.
 //
 // The `basehead` param is comprised of two parts: `base` and `head`. Both must be branch names in
-// `repo`. To compare branches across other repositories in the same network as `repo`, use the
-// format `<USERNAME>:branch`.
+// `repo`. To compare branches across other repositories in the same network as `repo`, use the format
+// `<USERNAME>:branch`.
+//
 // The response from the API is equivalent to running the `git log base..head` command; however,
-// commits are returned in chronological order. Pass the appropriate [media type](https://docs.github.
-// com/rest/overview/media-types/#commits-commit-comparison-and-pull-requests) to fetch diff and
+// commits are returned in chronological order. Pass the appropriate [media type] to fetch diff and
 // patch formats.
+//
 // The response also includes details on the files that were changed between the two commits. This
-// includes the status of the change (for example, if a file was added, removed, modified, or
-// renamed), and details of the change itself. For example, files with a `renamed` status have a
+// includes the status of the change (for example, if a file was added, removed, modified, or renamed),
+// and details of the change itself. For example, files with a `renamed` status have a
 // `previous_filename` field showing the previous filename of the file, and files with a `modified`
 // status have a `patch` field showing the changes made to the file.
-// **Working with large comparisons**
-// To process a response with a large number of commits, you can use (`per_page` or `page`) to
-// paginate the results. When using paging, the list of changed files is only returned with page 1,
-// but includes all changed files for the entire comparison. For more information on working with
-// pagination, see "[Traversing with pagination](/rest/guides/traversing-with-pagination)."
+//
+// # Working with large comparisons
+//
+// To process a response with a large number of commits, you can use (`per_page` or `page`) to paginate
+// the results. When using paging, the list of changed files is only returned with page 1, but includes
+// all changed files for the entire comparison. For more information on working with pagination, see
+// "[Traversing with pagination]."
+//
 // When calling this API without any paging parameters (`per_page` or `page`), the returned list is
 // limited to 250 commits and the last commit in the list is the most recent of the entire comparison.
-//
-//	When a paging parameter is specified, the first commit in the returned list of each page is the
-//
+// When a paging parameter is specified, the first commit in the returned list of each page is the
 // earliest.
-// **Signature verification object**
+//
+// # Signature verification object
+//
 // The response will include a `verification` object that describes the result of verifying the
 // commit's signature. The following fields are included in the `verification` object:
-// | Name | Type | Description |
-// | ---- | ---- | ----------- |
-// | `verified` | `boolean` | Indicates whether GitHub considers the signature in this commit to be
-// verified. |
-// | `reason` | `string` | The reason for verified value. Possible values and their meanings are
-// enumerated in table below. |
-// | `signature` | `string` | The signature that was extracted from the commit. |
-// | `payload` | `string` | The value that was signed. |
+//
+//	Name        | Type      | Description
+//	------------+-----------+-------------------------------------------------------------------------------------------------
+//	`verified`  | `boolean` | Indicates whether GitHub considers the signature in this commit to be verified.
+//	`reason`    | `string`  | The reason for verified value. Possible values and their meanings are enumerated in table below.
+//	`signature` | `string`  | The signature that was extracted from the commit.
+//	`payload`   | `string`  | The value that was signed.
+//
 // These are the possible values for `reason` in the `verification` object:
-// | Value | Description |
-// | ----- | ----------- |
-// | `expired_key` | The key that made the signature is expired. |
-// | `not_signing_key` | The "signing" flag is not among the usage flags in the GPG key that made the
-// signature. |
-// | `gpgverify_error` | There was an error communicating with the signature verification service. |
-// | `gpgverify_unavailable` | The signature verification service is currently unavailable. |
-// | `unsigned` | The object does not include a signature. |
-// | `unknown_signature_type` | A non-PGP signature was found in the commit. |
-// | `no_user` | No user was associated with the `committer` email address in the commit. |
-// | `unverified_email` | The `committer` email address in the commit was associated with a user, but
-// the email address is not verified on her/his account. |
-// | `bad_email` | The `committer` email address in the commit is not included in the identities of
-// the PGP key that made the signature. |
-// | `unknown_key` | The key that made the signature has not been registered with any user's account.
-// |
-// | `malformed_signature` | There was an error parsing the signature. |
-// | `invalid` | The signature could not be cryptographically verified using the key whose key-id was
-// found in the signature. |
-// | `valid` | None of the above errors applied, so the signature is considered to be verified. |.
+//
+//	Value                    | Description
+//	-------------------------+----------------------------------------------------------------------------------------------------------------------------------
+//	`expired_key`            | The key that made the signature is expired.
+//	`not_signing_key`        | The "signing" flag is not among the usage flags in the GPG key that made the signature.
+//	`gpgverify_error`        | There was an error communicating with the signature verification service.
+//	`gpgverify_unavailable`  | The signature verification service is currently unavailable.
+//	`unsigned`               | The object does not include a signature.
+//	`unknown_signature_type` | A non-PGP signature was found in the commit.
+//	`no_user`                | No user was associated with the `committer` email address in the commit.
+//	`unverified_email`       | The `committer` email address in the commit was associated with a user, but the email address is not verified on her/his account.
+//	`bad_email`              | The `committer` email address in the commit is not included in the identities of the PGP key that made the signature.
+//	`unknown_key`            | The key that made the signature has not been registered with any user's account.
+//	`malformed_signature`    | There was an error parsing the signature.
+//	`invalid`                | The signature could not be cryptographically verified using the key whose key-id was found in the signature.
+//	`valid`                  | None of the above errors applied, so the signature is considered to be verified.
+//
+// [media type]: https://docs.github.com/rest/overview/media-types/#commits-commit-comparison-and-pull-requests
+// [Traversing with pagination]: /rest/guides/traversing-with-pagination
 //
 // GET /repos/{owner}/{repo}/compare/{basehead}
 func (s *Server) handleReposCompareCommitsRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -76077,15 +76600,16 @@ func (s *Server) handleReposCreateAutolinkRequest(args [2]string, argsEscaped bo
 // handleReposCreateCommitCommentRequest handles repos/create-commit-comment operation.
 //
 // Create a comment for a commit using its `:commit_sha`.
-// This endpoint triggers [notifications](https://docs.github.
-// com/en/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating
-// content too quickly using this endpoint may result in secondary rate limiting. See "[Secondary
-// rate limits](https://docs.github.
-// com/rest/overview/resources-in-the-rest-api#secondary-rate-limits)" and "[Dealing with secondary
-// rate limits](https://docs.github.
-// com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)" for details.
+//
+// This endpoint triggers [notifications]. Creating content too quickly using this endpoint may result
+// in secondary rate limiting. See "[Secondary rate limits]" and "[Dealing with secondary rate limits]"
+// for details.
 //
 // POST /repos/{owner}/{repo}/commits/{commit_sha}/comments
+//
+// [notifications]: https://docs.github.com/en/github/managing-subscriptions-and-notifications-on-github/about-notifications
+// [Secondary rate limits]: https://docs.github.com/rest/overview/resources-in-the-rest-api#secondary-rate-limits
+// [Dealing with secondary rate limits]: https://docs.github.com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits
 func (s *Server) handleReposCreateCommitCommentRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -76251,13 +76775,15 @@ func (s *Server) handleReposCreateCommitCommentRequest(args [3]string, argsEscap
 //
 // Protected branches are available in public repositories with GitHub Free and GitHub Free for
 // organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
-// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
-// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products] in the
 // GitHub Help documentation.
+//
 // When authenticated with admin or owner permissions to the repository, you can use this endpoint to
 // require signed commits on a branch. You must enable branch protection to require signed commits.
 //
 // POST /repos/{owner}/{repo}/branches/{branch}/protection/required_signatures
+//
+// [GitHub's products]: https://help.github.com/github/getting-started-with-github/githubs-products
 func (s *Server) handleReposCreateCommitSignatureProtectionRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -76407,6 +76933,7 @@ func (s *Server) handleReposCreateCommitSignatureProtectionRequest(args [3]strin
 // handleReposCreateCommitStatusRequest handles repos/create-commit-status operation.
 //
 // Users with push access in a repository can create commit statuses for a given SHA.
+//
 // Note: there is a limit of 1000 statuses per `sha` and `context` within a repository. Attempts to
 // create more than 1000 statuses will result in a validation error.
 //
@@ -76737,63 +77264,63 @@ func (s *Server) handleReposCreateDeployKeyRequest(args [2]string, argsEscaped b
 // handleReposCreateDeploymentRequest handles repos/create-deployment operation.
 //
 // Deployments offer a few configurable parameters with certain defaults.
+//
 // The `ref` parameter can be any named branch, tag, or SHA. At GitHub we often deploy branches and
-// verify them
-// before we merge a pull request.
-// The `environment` parameter allows deployments to be issued to different runtime environments.
-// Teams often have
-// multiple environments for verifying their applications, such as `production`, `staging`, and `qa`.
-// This parameter
-// makes it easier to track which environments have requested deployments. The default environment is
-// `production`.
+// verify them before we merge a pull request.
+//
+// The `environment` parameter allows deployments to be issued to different runtime environments. Teams
+// often have multiple environments for verifying their applications, such as `production`, `staging`,
+// and `qa`. This parameter makes it easier to track which environments have requested deployments. The
+// default environment is `production`.
+//
 // The `auto_merge` parameter is used to ensure that the requested ref is not behind the repository's
-// default branch. If
-// the ref _is_ behind the default branch for the repository, we will attempt to merge it for you. If
-// the merge succeeds,
-// the API will return a successful merge commit. If merge conflicts prevent the merge from
-// succeeding, the API will
-// return a failure response.
-// By default, [commit statuses](https://docs.github.com/rest/reference/repos#statuses) for every
-// submitted context must be in a `success`
-// state. The `required_contexts` parameter allows you to specify a subset of contexts that must be
-// `success`, or to
-// specify contexts that have not yet been submitted. You are not required to use commit statuses to
-// deploy. If you do
-// not require any contexts or create any commit statuses, the deployment will always succeed.
+// default branch. If the ref is behind the default branch for the repository, we will attempt to merge
+// it for you. If the merge succeeds, the API will return a successful merge commit. If merge conflicts
+// prevent the merge from succeeding, the API will return a failure response.
+//
+// By default, [commit statuses] for every submitted context must be in a `success` state. The
+// `required_contexts` parameter allows you to specify a subset of contexts that must be `success`, or
+// to specify contexts that have not yet been submitted. You are not required to use commit statuses to
+// deploy. If you do not require any contexts or create any commit statuses, the deployment will always
+// succeed.
+//
 // The `payload` parameter is available for any extra information that a deployment system might need.
+// It is a JSON text field that will be passed on when a deployment event is dispatched.
 //
-//	It is a JSON text
+// The `task` parameter is used by the deployment system to allow different execution paths. In the web
+// world this might be `deploy:migrations` to run schema changes on the system. In the compiled world
+// this could be a flag to compile an application with debugging enabled.
 //
-// field that will be passed on when a deployment event is dispatched.
-// The `task` parameter is used by the deployment system to allow different execution paths. In the
-// web world this might
-// be `deploy:migrations` to run schema changes on the system. In the compiled world this could be a
-// flag to compile an
-// application with debugging enabled.
 // Users with `repo` or `repo_deployment` scopes can create a deployment for a given ref.
-// #### Merged branch response
+//
+// # Merged branch response
+//
 // You will see this response when GitHub automatically merges the base branch into the topic branch
-// instead of creating
-// a deployment. This auto-merge happens when:
-// *   Auto-merge option is enabled in the repository
-// *   Topic branch does not include the latest changes on the base branch, which is `master` in the
-// response example
-// *   There are no merge conflicts
+// instead of creating a deployment. This auto-merge happens when:
+//
+//   - Auto-merge option is enabled in the repository
+//   - Topic branch does not include the latest changes on the base branch, which is `master` in the
+//     response example
+//   - There are no merge conflicts
+//
 // If there are no new commits in the base branch, a new request to create a deployment should give a
-// successful
-// response.
-// #### Merge conflict response
-// This error happens when the `auto_merge` option is enabled and when the default branch (in this
-// case `master`), can't
-// be merged into the branch that's being deployed (in this case `topic-branch`), due to merge
-// conflicts.
-// #### Failed commit status checks
+// successful response.
+//
+// # Merge conflict response
+//
+// This error happens when the `auto_merge` option is enabled and when the default branch (in this case
+// `master`), can't be merged into the branch that's being deployed (in this case `topic-branch`), due
+// to merge conflicts.
+//
+// # Failed commit status checks
+//
 // This error happens when the `required_contexts` parameter indicates that one or more contexts need
-// to have a `success`
-// status for the commit to be deployed, but one or more of the required contexts do not have a state
-// of `success`.
+// to have a `success` status for the commit to be deployed, but one or more of the required contexts
+// do not have a state of `success`.
 //
 // POST /repos/{owner}/{repo}/deployments
+//
+// [commit statuses]: https://docs.github.com/rest/reference/repos#statuses
 func (s *Server) handleReposCreateDeploymentRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -76954,8 +77481,9 @@ func (s *Server) handleReposCreateDeploymentRequest(args [2]string, argsEscaped 
 // handleReposCreateDeploymentStatusRequest handles repos/create-deployment-status operation.
 //
 // Users with `push` access can create deployment statuses for a given deployment.
-// GitHub Apps require `read & write` access to "Deployments" and `read-only` access to "Repo
-// contents" (for private repos). OAuth Apps require the `repo_deployment` scope.
+//
+// GitHub Apps require `read & write` access to "Deployments" and `read-only` access to "Repo contents"
+// (for private repos). OAuth Apps require the `repo_deployment` scope.
 //
 // POST /repos/{owner}/{repo}/deployments/{deployment_id}/statuses
 func (s *Server) handleReposCreateDeploymentStatusRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -77123,26 +77651,26 @@ func (s *Server) handleReposCreateDeploymentStatusRequest(args [3]string, argsEs
 //
 // You can use this endpoint to trigger a webhook event called `repository_dispatch` when you want
 // activity that happens outside of GitHub to trigger a GitHub Actions workflow or GitHub App webhook.
+// You must configure your GitHub Actions workflow or GitHub App to run when the `repository_dispatch`
+// event occurs. For an example `repository_dispatch` webhook payload, see "[RepositoryDispatchEvent]."
 //
-//	You must configure your GitHub Actions workflow or GitHub App to run when the
+// The `client_payload` parameter is available for any extra information that your workflow might need.
+// This parameter is a JSON payload that will be passed on when the webhook event is dispatched. For
+// example, the `client_payload` can include a message that a user would like to send using a GitHub
+// Actions workflow. Or the `client_payload` can be used as a test to debug your workflow.
 //
-// `repository_dispatch` event occurs. For an example `repository_dispatch` webhook payload, see
-// "[RepositoryDispatchEvent](https://docs.github.com/webhooks/event-payloads/#repository_dispatch)."
-// The `client_payload` parameter is available for any extra information that your workflow might
-// need. This parameter is a JSON payload that will be passed on when the webhook event is dispatched.
-//
-//	For example, the `client_payload` can include a message that a user would like to send using a
-//
-// GitHub Actions workflow. Or the `client_payload` can be used as a test to debug your workflow.
 // This endpoint requires write access to the repository by providing either:
-// - Personal access tokens with `repo` scope. For more information, see "[Creating a personal access
-// token for the command line](https://help.github.
-// com/articles/creating-a-personal-access-token-for-the-command-line)" in the GitHub Help
-// documentation.
-// - GitHub Apps with both `metadata:read` and `contents:read&write` permissions.
+//
+//   - Personal access tokens with `repo` scope. For more information, see
+//     "[Creating a personal access token for the command line]" in the GitHub Help documentation.
+//   - GitHub Apps with both `metadata:read` and `contents:read&write` permissions.
+//
 // This input example shows how you can use the `client_payload` as a test to debug your workflow.
 //
 // POST /repos/{owner}/{repo}/dispatches
+//
+// [RepositoryDispatchEvent]: https://docs.github.com/webhooks/event-payloads/#repository_dispatch
+// [Creating a personal access token for the command line]: https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line
 func (s *Server) handleReposCreateDispatchEventRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -77303,14 +77831,18 @@ func (s *Server) handleReposCreateDispatchEventRequest(args [2]string, argsEscap
 // handleReposCreateForAuthenticatedUserRequest handles repos/create-for-authenticated-user operation.
 //
 // Creates a new repository for the authenticated user.
-// **OAuth scope requirements**
-// When using [OAuth](https://docs.github.
-// com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/), authorizations must include:
-// *   `public_repo` scope or `repo` scope to create a public repository. Note: For GitHub AE, use
-// `repo` scope to create an internal repository.
-// *   `repo` scope to create a private repository.
+//
+// # OAuth scope requirements
+//
+// When using [OAuth], authorizations must include:
+//
+//   - `public_repo` scope or `repo` scope to create a public repository. Note: For GitHub AE, use
+//     `repo` scope to create an internal repository.
+//   - `repo` scope to create a private repository.
 //
 // POST /user/repos
+//
+// [OAuth]: https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/
 func (s *Server) handleReposCreateForAuthenticatedUserRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -77452,11 +77984,14 @@ func (s *Server) handleReposCreateForAuthenticatedUserRequest(args [0]string, ar
 // handleReposCreateForkRequest handles repos/create-fork operation.
 //
 // Create a fork for the authenticated user.
-// **Note**: Forking a Repository happens asynchronously. You may have to wait a short period of time
+//
+// Note: Forking a Repository happens asynchronously. You may have to wait a short period of time
 // before you can access the git objects. If this takes longer than 5 minutes, be sure to contact
-// [GitHub Support](https://support.github.com/contact?tags=dotcom-rest-api).
+// [GitHub Support].
 //
 // POST /repos/{owner}/{repo}/forks
+//
+// [GitHub Support]: https://support.github.com/contact?tags=dotcom-rest-api
 func (s *Server) handleReposCreateForkRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -77618,14 +78153,18 @@ func (s *Server) handleReposCreateForkRequest(args [2]string, argsEscaped bool, 
 //
 // Creates a new repository in the specified organization. The authenticated user must be a member of
 // the organization.
-// **OAuth scope requirements**
-// When using [OAuth](https://docs.github.
-// com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/), authorizations must include:
-// *   `public_repo` scope or `repo` scope to create a public repository. Note: For GitHub AE, use
-// `repo` scope to create an internal repository.
-// *   `repo` scope to create a private repository.
+//
+// # OAuth scope requirements
+//
+// When using [OAuth], authorizations must include:
+//
+//   - `public_repo` scope or `repo` scope to create a public repository. Note: For GitHub AE, use
+//     `repo` scope to create an internal repository.
+//   - `repo` scope to create a private repository
 //
 // POST /orgs/{org}/repos
+//
+// [OAuth]: https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/
 func (s *Server) handleReposCreateInOrgRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -77947,8 +78486,9 @@ func (s *Server) handleReposCreateOrUpdateFileContentsRequest(args [3]string, ar
 
 // handleReposCreatePagesSiteRequest handles repos/create-pages-site operation.
 //
-// Configures a GitHub Pages site. For more information, see "[About GitHub
-// Pages](/github/working-with-github-pages/about-github-pages).".
+// Configures a GitHub Pages site. For more information, see "[About GitHub Pages].".
+//
+// [About GitHub Pages]: /github/working-with-github-pages/about-github-pages
 //
 // POST /repos/{owner}/{repo}/pages
 func (s *Server) handleReposCreatePagesSiteRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -78111,15 +78651,16 @@ func (s *Server) handleReposCreatePagesSiteRequest(args [2]string, argsEscaped b
 // handleReposCreateReleaseRequest handles repos/create-release operation.
 //
 // Users with push access to the repository can create a release.
-// This endpoint triggers [notifications](https://docs.github.
-// com/en/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating
-// content too quickly using this endpoint may result in secondary rate limiting. See "[Secondary
-// rate limits](https://docs.github.
-// com/rest/overview/resources-in-the-rest-api#secondary-rate-limits)" and "[Dealing with secondary
-// rate limits](https://docs.github.
-// com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)" for details.
+//
+// This endpoint triggers [notifications]. Creating content too quickly using this endpoint may result
+// in secondary rate limiting. See "[Secondary rate limits]" and "[Dealing with secondary rate limits]"
+// for details.
 //
 // POST /repos/{owner}/{repo}/releases
+//
+// [notifications]: https://docs.github.com/en/github/managing-subscriptions-and-notifications-on-github/about-notifications
+// [Secondary rate limits]: https://docs.github.com/rest/overview/resources-in-the-rest-api#secondary-rate-limits
+// [Dealing with secondary rate limits]: https://docs.github.com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits
 func (s *Server) handleReposCreateReleaseRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -78281,18 +78822,22 @@ func (s *Server) handleReposCreateReleaseRequest(args [2]string, argsEscaped boo
 //
 // Creates a new repository using a repository template. Use the `template_owner` and `template_repo`
 // route parameters to specify the repository to use as the template. The authenticated user must own
-// or be a member of an organization that owns the repository. To check if a repository is available
-// to use as a template, get the repository's information using the [Get a repository](https://docs.
-// github.com/rest/reference/repos#get-a-repository) endpoint and check that the `is_template` key is
-// `true`.
-// **OAuth scope requirements**
-// When using [OAuth](https://docs.github.
-// com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/), authorizations must include:
-// *   `public_repo` scope or `repo` scope to create a public repository. Note: For GitHub AE, use
-// `repo` scope to create an internal repository.
-// *   `repo` scope to create a private repository.
+// or be a member of an organization that owns the repository. To check if a repository is available to
+// use as a template, get the repository's information using the [Get a repository] endpoint and check
+// that the `is_template` key is `true`.
+//
+// # OAuth scope requirements
+//
+// When using [OAuth], authorizations must include:
+//
+//   - `public_repo` scope or `repo` scope to create a public repository. Note: For GitHub AE, use
+//     `repo` scope to create an internal repository.
+//   - `repo` scope to create a private repository
 //
 // POST /repos/{template_owner}/{template_repo}/generate
+//
+// [Get a repository]: https://docs.github.com/rest/reference/repos#get-a-repository
+// [OAuth]: https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/
 func (s *Server) handleReposCreateUsingTemplateRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -78453,8 +78998,8 @@ func (s *Server) handleReposCreateUsingTemplateRequest(args [2]string, argsEscap
 // handleReposCreateWebhookRequest handles repos/create-webhook operation.
 //
 // Repositories can have multiple webhooks installed. Each webhook should have a unique `config`.
-// Multiple webhooks can
-// share the same `config` as long as those webhooks do not have any `events` that overlap.
+// Multiple webhooks can share the same `config` as long as those webhooks do not have any `events`
+// that overlap.
 //
 // POST /repos/{owner}/{repo}/hooks
 func (s *Server) handleReposCreateWebhookRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -78760,9 +79305,9 @@ func (s *Server) handleReposDeclineInvitationRequest(args [1]string, argsEscaped
 // handleReposDeleteRequest handles repos/delete operation.
 //
 // Deleting a repository requires admin access. If OAuth is used, the `delete_repo` scope is required.
+//
 // If an organization owner has configured the organization to prevent members from deleting
-// organization-owned
-// repositories, you will get a `403 Forbidden` response.
+// organization-owned repositories, you will get a `403 Forbidden` response.
 //
 // DELETE /repos/{owner}/{repo}
 func (s *Server) handleReposDeleteRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -78911,12 +79456,14 @@ func (s *Server) handleReposDeleteRequest(args [2]string, argsEscaped bool, w ht
 //
 // Protected branches are available in public repositories with GitHub Free and GitHub Free for
 // organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
-// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
-// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products] in the
 // GitHub Help documentation.
+//
 // Disables the ability to restrict who can push to this branch.
 //
 // DELETE /repos/{owner}/{repo}/branches/{branch}/protection/restrictions
+//
+// [GitHub's products]: https://help.github.com/github/getting-started-with-github/githubs-products
 func (s *Server) handleReposDeleteAccessRestrictionsRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -79067,13 +79614,15 @@ func (s *Server) handleReposDeleteAccessRestrictionsRequest(args [3]string, args
 //
 // Protected branches are available in public repositories with GitHub Free and GitHub Free for
 // organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
-// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
-// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products] in the
 // GitHub Help documentation.
+//
 // Removing admin enforcement requires admin or owner permissions to the repository and branch
 // protection to be enabled.
 //
 // DELETE /repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins
+//
+// [GitHub's products]: https://help.github.com/github/getting-started-with-github/githubs-products
 func (s *Server) handleReposDeleteAdminBranchProtectionRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -79374,6 +79923,7 @@ func (s *Server) handleReposDeleteAnEnvironmentRequest(args [3]string, argsEscap
 // handleReposDeleteAutolinkRequest handles repos/delete-autolink operation.
 //
 // This deletes a single autolink reference by ID that was configured for the given repository.
+//
 // Information about autolinks are only available to repository administrators.
 //
 // DELETE /repos/{owner}/{repo}/autolinks/{autolink_id}
@@ -79527,11 +80077,12 @@ func (s *Server) handleReposDeleteAutolinkRequest(args [3]string, argsEscaped bo
 //
 // Protected branches are available in public repositories with GitHub Free and GitHub Free for
 // organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
-// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
-// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products] in the
 // GitHub Help documentation.
 //
 // DELETE /repos/{owner}/{repo}/branches/{branch}/protection
+//
+// [GitHub's products]: https://help.github.com/github/getting-started-with-github/githubs-products
 func (s *Server) handleReposDeleteBranchProtectionRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -79833,14 +80384,16 @@ func (s *Server) handleReposDeleteCommitCommentRequest(args [3]string, argsEscap
 //
 // Protected branches are available in public repositories with GitHub Free and GitHub Free for
 // organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
-// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
-// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products] in the
 // GitHub Help documentation.
+//
 // When authenticated with admin or owner permissions to the repository, you can use this endpoint to
 // disable required signed commits on a branch. You must enable branch protection to require signed
 // commits.
 //
 // DELETE /repos/{owner}/{repo}/branches/{branch}/protection/required_signatures
+//
+// [GitHub's products]: https://help.github.com/github/getting-started-with-github/githubs-products
 func (s *Server) handleReposDeleteCommitSignatureProtectionRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -79989,8 +80542,7 @@ func (s *Server) handleReposDeleteCommitSignatureProtectionRequest(args [3]strin
 
 // handleReposDeleteDeployKeyRequest handles repos/delete-deploy-key operation.
 //
-// Deploy keys are immutable. If you need to update a key, remove the key and create a new one
-// instead.
+// Deploy keys are immutable. If you need to update a key, remove the key and create a new one instead.
 //
 // DELETE /repos/{owner}/{repo}/keys/{key_id}
 func (s *Server) handleReposDeleteDeployKeyRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -80141,17 +80693,21 @@ func (s *Server) handleReposDeleteDeployKeyRequest(args [3]string, argsEscaped b
 
 // handleReposDeleteDeploymentRequest handles repos/delete-deployment operation.
 //
-// To ensure there can always be an active deployment, you can only delete an _inactive_ deployment.
+// To ensure there can always be an active deployment, you can only delete an inactive deployment.
 // Anyone with `repo` or `repo_deployment` scopes can delete an inactive deployment.
+//
 // To set a deployment as inactive, you must:
-// *   Create a new deployment that is active so that the system has a record of the current state,
-// then delete the previously active deployment.
-// *   Mark the active deployment as inactive by adding any non-successful deployment status.
-// For more information, see "[Create a deployment](https://docs.github.
-// com/rest/reference/repos/#create-a-deployment)" and "[Create a deployment status](https://docs.
-// github.com/rest/reference/repos#create-a-deployment-status).".
+//
+//   - Create a new deployment that is active so that the system has a record of the current state, then
+//     delete the previously active deployment.
+//   - Mark the active deployment as inactive by adding any non-successful deployment status.
+//
+// For more information, see "[Create a deployment]" and "[Create a deployment status].".
 //
 // DELETE /repos/{owner}/{repo}/deployments/{deployment_id}
+//
+// [Create a deployment]: https://docs.github.com/rest/reference/repos/#create-a-deployment
+// [Create a deployment status]: https://docs.github.com/rest/reference/repos#create-a-deployment-status
 func (s *Server) handleReposDeleteDeploymentRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -80301,11 +80857,14 @@ func (s *Server) handleReposDeleteDeploymentRequest(args [3]string, argsEscaped 
 // handleReposDeleteFileRequest handles repos/delete-file operation.
 //
 // Deletes a file in a repository.
-// You can provide an additional `committer` parameter, which is an object containing information
-// about the committer. Or, you can provide an `author` parameter, which is an object containing
-// information about the author.
+//
+// You can provide an additional `committer` parameter, which is an object containing information about
+// the committer. Or, you can provide an `author` parameter, which is an object containing information
+// about the author.
+//
 // The `author` section is optional and is filled in with the `committer` information if omitted. If
 // the `committer` information is omitted, the authenticated user's information is used.
+//
 // You must provide values for both `name` and `email`, whether you choose to use `author` or
 // `committer`. Otherwise, you'll receive a `422` status code.
 //
@@ -80773,11 +81332,12 @@ func (s *Server) handleReposDeletePagesSiteRequest(args [2]string, argsEscaped b
 //
 // Protected branches are available in public repositories with GitHub Free and GitHub Free for
 // organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
-// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
-// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products] in the
 // GitHub Help documentation.
 //
 // DELETE /repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews
+//
+// [GitHub's products]: https://help.github.com/github/getting-started-with-github/githubs-products
 func (s *Server) handleReposDeletePullRequestReviewProtectionRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -81379,11 +81939,12 @@ func (s *Server) handleReposDeleteWebhookRequest(args [3]string, argsEscaped boo
 
 // handleReposDisableAutomatedSecurityFixesRequest handles repos/disable-automated-security-fixes operation.
 //
-// Disables automated security fixes for a repository. The authenticated user must have admin access
-// to the repository. For more information, see "[Configuring automated security fixes](https://help.
-// github.com/en/articles/configuring-automated-security-fixes)".
+// Disables automated security fixes for a repository. The authenticated user must have admin access to
+// the repository. For more information, see "[Configuring automated security fixes]".
 //
 // DELETE /repos/{owner}/{repo}/automated-security-fixes
+//
+// [Configuring automated security fixes]: https://help.github.com/en/articles/configuring-automated-security-fixes
 func (s *Server) handleReposDisableAutomatedSecurityFixesRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -81528,7 +82089,7 @@ func (s *Server) handleReposDisableAutomatedSecurityFixesRequest(args [2]string,
 
 // handleReposDisableLfsForRepoRequest handles repos/disable-lfs-for-repo operation.
 //
-// **Note:** The Git LFS API endpoints are currently in beta and are subject to change.
+// Note: The Git LFS API endpoints are currently in beta and are subject to change.
 //
 // DELETE /repos/{owner}/{repo}/lfs
 func (s *Server) handleReposDisableLfsForRepoRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -81676,11 +82237,12 @@ func (s *Server) handleReposDisableLfsForRepoRequest(args [2]string, argsEscaped
 // handleReposDisableVulnerabilityAlertsRequest handles repos/disable-vulnerability-alerts operation.
 //
 // Disables dependency alerts and the dependency graph for a repository. The authenticated user must
-// have admin access to the repository. For more information, see "[About security alerts for
-// vulnerable dependencies](https://help.github.
-// com/en/articles/about-security-alerts-for-vulnerable-dependencies)".
+// have admin access to the repository. For more information, see
+// "[About security alerts for vulnerable dependencies]".
 //
 // DELETE /repos/{owner}/{repo}/vulnerability-alerts
+//
+// [About security alerts for vulnerable dependencies]: https://help.github.com/en/articles/about-security-alerts-for-vulnerable-dependencies
 func (s *Server) handleReposDisableVulnerabilityAlertsRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -81826,11 +82388,10 @@ func (s *Server) handleReposDisableVulnerabilityAlertsRequest(args [2]string, ar
 // handleReposDownloadTarballArchiveRequest handles repos/download-tarball-archive operation.
 //
 // Gets a redirect URL to download a tar archive for a repository. If you omit `:ref`, the
-// repository’s default branch (usually
-// `master`) will be used. Please make sure your HTTP framework is configured to follow redirects or
-// you will need to use
-// the `Location` header to make a second `GET` request.
-// **Note**: For private repositories, these links are temporary and expire after five minutes.
+// repository’s default branch (usually `master`) will be used. Please make sure your HTTP framework
+// is configured to follow redirects or you will need to use the `Location` header to make a second
+// `GET` request. Note: For private repositories, these links are temporary and expire after five
+// minutes.
 //
 // GET /repos/{owner}/{repo}/tarball/{ref}
 func (s *Server) handleReposDownloadTarballArchiveRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -81982,11 +82543,10 @@ func (s *Server) handleReposDownloadTarballArchiveRequest(args [3]string, argsEs
 // handleReposDownloadZipballArchiveRequest handles repos/download-zipball-archive operation.
 //
 // Gets a redirect URL to download a zip archive for a repository. If you omit `:ref`, the
-// repository’s default branch (usually
-// `master`) will be used. Please make sure your HTTP framework is configured to follow redirects or
-// you will need to use
-// the `Location` header to make a second `GET` request.
-// **Note**: For private repositories, these links are temporary and expire after five minutes.
+// repository’s default branch (usually `master`) will be used. Please make sure your HTTP framework
+// is configured to follow redirects or you will need to use the `Location` header to make a second
+// `GET` request. Note: For private repositories, these links are temporary and expire after five
+// minutes.
 //
 // GET /repos/{owner}/{repo}/zipball/{ref}
 func (s *Server) handleReposDownloadZipballArchiveRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -82137,11 +82697,12 @@ func (s *Server) handleReposDownloadZipballArchiveRequest(args [3]string, argsEs
 
 // handleReposEnableAutomatedSecurityFixesRequest handles repos/enable-automated-security-fixes operation.
 //
-// Enables automated security fixes for a repository. The authenticated user must have admin access
-// to the repository. For more information, see "[Configuring automated security fixes](https://help.
-// github.com/en/articles/configuring-automated-security-fixes)".
+// Enables automated security fixes for a repository. The authenticated user must have admin access to
+// the repository. For more information, see "[Configuring automated security fixes]".
 //
 // PUT /repos/{owner}/{repo}/automated-security-fixes
+//
+// [Configuring automated security fixes]: https://help.github.com/en/articles/configuring-automated-security-fixes
 func (s *Server) handleReposEnableAutomatedSecurityFixesRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -82286,7 +82847,7 @@ func (s *Server) handleReposEnableAutomatedSecurityFixesRequest(args [2]string, 
 
 // handleReposEnableLfsForRepoRequest handles repos/enable-lfs-for-repo operation.
 //
-// **Note:** The Git LFS API endpoints are currently in beta and are subject to change.
+// Note: The Git LFS API endpoints are currently in beta and are subject to change.
 //
 // PUT /repos/{owner}/{repo}/lfs
 func (s *Server) handleReposEnableLfsForRepoRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -82434,11 +82995,12 @@ func (s *Server) handleReposEnableLfsForRepoRequest(args [2]string, argsEscaped 
 // handleReposEnableVulnerabilityAlertsRequest handles repos/enable-vulnerability-alerts operation.
 //
 // Enables dependency alerts and the dependency graph for a repository. The authenticated user must
-// have admin access to the repository. For more information, see "[About security alerts for
-// vulnerable dependencies](https://help.github.
-// com/en/articles/about-security-alerts-for-vulnerable-dependencies)".
+// have admin access to the repository. For more information, see
+// "[About security alerts for vulnerable dependencies]".
 //
 // PUT /repos/{owner}/{repo}/vulnerability-alerts
+//
+// [About security alerts for vulnerable dependencies]: https://help.github.com/en/articles/about-security-alerts-for-vulnerable-dependencies
 func (s *Server) handleReposEnableVulnerabilityAlertsRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -82733,14 +83295,16 @@ func (s *Server) handleReposGetRequest(args [2]string, argsEscaped bool, w http.
 //
 // Protected branches are available in public repositories with GitHub Free and GitHub Free for
 // organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
-// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
-// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products] in the
 // GitHub Help documentation.
+//
 // Lists who has access to this protected branch.
-// **Note**: Users, apps, and teams `restrictions` are only available for organization-owned
-// repositories.
+//
+// Note: Users, apps, and teams `restrictions` are only available for organization-owned repositories.
 //
 // GET /repos/{owner}/{repo}/branches/{branch}/protection/restrictions
+//
+// [GitHub's products]: https://help.github.com/github/getting-started-with-github/githubs-products
 func (s *Server) handleReposGetAccessRestrictionsRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -82891,11 +83455,12 @@ func (s *Server) handleReposGetAccessRestrictionsRequest(args [3]string, argsEsc
 //
 // Protected branches are available in public repositories with GitHub Free and GitHub Free for
 // organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
-// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
-// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products] in the
 // GitHub Help documentation.
 //
 // GET /repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins
+//
+// [GitHub's products]: https://help.github.com/github/getting-started-with-github/githubs-products
 func (s *Server) handleReposGetAdminBranchProtectionRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -83046,11 +83611,12 @@ func (s *Server) handleReposGetAdminBranchProtectionRequest(args [3]string, args
 //
 // Protected branches are available in public repositories with GitHub Free and GitHub Free for
 // organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
-// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
-// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products] in the
 // GitHub Help documentation.
 //
 // GET /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts
+//
+// [GitHub's products]: https://help.github.com/github/getting-started-with-github/githubs-products
 func (s *Server) handleReposGetAllStatusCheckContextsRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -83356,14 +83922,15 @@ func (s *Server) handleReposGetAllTopicsRequest(args [2]string, argsEscaped bool
 //
 // Protected branches are available in public repositories with GitHub Free and GitHub Free for
 // organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
-// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
-// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products] in the
 // GitHub Help documentation.
-// Lists the GitHub Apps that have push access to this branch. Only installed GitHub Apps with
-// `write` access to the `contents` permission can be added as authorized actors on a protected
-// branch.
+//
+// Lists the GitHub Apps that have push access to this branch. Only installed GitHub Apps with `write`
+// access to the `contents` permission can be added as authorized actors on a protected branch.
 //
 // GET /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps
+//
+// [GitHub's products]: https://help.github.com/github/getting-started-with-github/githubs-products
 func (s *Server) handleReposGetAppsWithAccessToProtectedBranchRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -83513,6 +84080,7 @@ func (s *Server) handleReposGetAppsWithAccessToProtectedBranchRequest(args [3]st
 // handleReposGetAutolinkRequest handles repos/get-autolink operation.
 //
 // This returns a single autolink reference by ID that was configured for the given repository.
+//
 // Information about autolinks are only available to repository administrators.
 //
 // GET /repos/{owner}/{repo}/autolinks/{autolink_id}
@@ -83817,11 +84385,12 @@ func (s *Server) handleReposGetBranchRequest(args [3]string, argsEscaped bool, w
 //
 // Protected branches are available in public repositories with GitHub Free and GitHub Free for
 // organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
-// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
-// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products] in the
 // GitHub Help documentation.
 //
 // GET /repos/{owner}/{repo}/branches/{branch}/protection
+//
+// [GitHub's products]: https://help.github.com/github/getting-started-with-github/githubs-products
 func (s *Server) handleReposGetBranchProtectionRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -84269,8 +84838,8 @@ func (s *Server) handleReposGetCodeFrequencyStatsRequest(args [2]string, argsEsc
 
 // handleReposGetCollaboratorPermissionLevelRequest handles repos/get-collaborator-permission-level operation.
 //
-// Checks the repository permission of a collaborator. The possible repository permissions are
-// `admin`, `write`, `read`, and `none`.
+// Checks the repository permission of a collaborator. The possible repository permissions are `admin`,
+// `write`, `read`, and `none`.
 //
 // GET /repos/{owner}/{repo}/collaborators/{username}/permission
 func (s *Server) handleReposGetCollaboratorPermissionLevelRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -84423,15 +84992,19 @@ func (s *Server) handleReposGetCollaboratorPermissionLevelRequest(args [3]string
 //
 // Users with pull access in a repository can access a combined view of commit statuses for a given
 // ref. The ref can be a SHA, a branch name, or a tag name.
-// The most recent status for each context is returned, up to 100. This field
-// [paginates](https://docs.github.com/rest/overview/resources-in-the-rest-api#pagination) if there
-// are over 100 contexts.
+//
+// The most recent status for each context is returned, up to 100. This field [paginates] if there are
+// over 100 contexts.
+//
 // Additionally, a combined `state` is returned. The `state` is one of:
-// *   **failure** if any of the contexts report as `error` or `failure`
-// *   **pending** if there are no statuses or a context is `pending`
-// *   **success** if the latest status for all contexts is `success`.
+//
+//   - failure if any of the contexts report as `error` or `failure`
+//   - pending if there are no statuses or a context is `pending`
+//   - success if the latest status for all contexts is `success`
 //
 // GET /repos/{owner}/{repo}/commits/{ref}/status
+//
+// [paginates]: https://docs.github.com/rest/overview/resources-in-the-rest-api#pagination
 func (s *Server) handleReposGetCombinedStatusForRefRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -84588,55 +85161,53 @@ func (s *Server) handleReposGetCombinedStatusForRefRequest(args [3]string, argsE
 
 // handleReposGetCommitRequest handles repos/get-commit operation.
 //
-// Returns the contents of a single commit reference. You must have `read` access for the repository
-// to use this endpoint.
-// **Note:** If there are more than 300 files in the commit diff, the response will include
-// pagination link headers for the remaining files, up to a limit of 3000 files. Each page contains
-// the static commit information, and the only changes are to the file listing.
-// You can pass the appropriate [media type](https://docs.github.
-// com/rest/overview/media-types/#commits-commit-comparison-and-pull-requests) to  fetch `diff` and
-// `patch` formats. Diffs with binary data will have no `patch` property.
-// To return only the SHA-1 hash of the commit reference, you can provide the `sha` custom [media
-// type](https://docs.github.
-// com/rest/overview/media-types/#commits-commit-comparison-and-pull-requests) in the `Accept` header.
+// Returns the contents of a single commit reference. You must have `read` access for the repository to
+// use this endpoint.
 //
-//	You can use this endpoint to check if a remote reference's SHA-1 hash is the same as your local
+// Note: If there are more than 300 files in the commit diff, the response will include pagination link
+// headers for the remaining files, up to a limit of 3000 files. Each page contains the static commit
+// information, and the only changes are to the file listing.
 //
-// reference's SHA-1 hash by providing the local SHA-1 reference as the ETag.
-// **Signature verification object**
+// You can pass the appropriate [media type] to fetch `diff` and `patch` formats. Diffs with binary
+// data will have no `patch` property.
+//
+// To return only the SHA-1 hash of the commit reference, you can provide the `sha` custom [media type]
+// in the `Accept` header. You can use this endpoint to check if a remote reference's SHA-1 hash is the
+// same as your local reference's SHA-1 hash by providing the local SHA-1 reference as the ETag.
+//
+// # Signature verification object
+//
 // The response will include a `verification` object that describes the result of verifying the
 // commit's signature. The following fields are included in the `verification` object:
-// | Name | Type | Description |
-// | ---- | ---- | ----------- |
-// | `verified` | `boolean` | Indicates whether GitHub considers the signature in this commit to be
-// verified. |
-// | `reason` | `string` | The reason for verified value. Possible values and their meanings are
-// enumerated in table below. |
-// | `signature` | `string` | The signature that was extracted from the commit. |
-// | `payload` | `string` | The value that was signed. |
+//
+//	Name        | Type      | Description
+//	------------+-----------+-------------------------------------------------------------------------------------------------
+//	`verified`  | `boolean` | Indicates whether GitHub considers the signature in this commit to be verified.
+//	`reason`    | `string`  | The reason for verified value. Possible values and their meanings are enumerated in table below.
+//	`signature` | `string`  | The signature that was extracted from the commit.
+//	`payload`   | `string`  | The value that was signed.
+//
 // These are the possible values for `reason` in the `verification` object:
-// | Value | Description |
-// | ----- | ----------- |
-// | `expired_key` | The key that made the signature is expired. |
-// | `not_signing_key` | The "signing" flag is not among the usage flags in the GPG key that made the
-// signature. |
-// | `gpgverify_error` | There was an error communicating with the signature verification service. |
-// | `gpgverify_unavailable` | The signature verification service is currently unavailable. |
-// | `unsigned` | The object does not include a signature. |
-// | `unknown_signature_type` | A non-PGP signature was found in the commit. |
-// | `no_user` | No user was associated with the `committer` email address in the commit. |
-// | `unverified_email` | The `committer` email address in the commit was associated with a user, but
-// the email address is not verified on her/his account. |
-// | `bad_email` | The `committer` email address in the commit is not included in the identities of
-// the PGP key that made the signature. |
-// | `unknown_key` | The key that made the signature has not been registered with any user's account.
-// |
-// | `malformed_signature` | There was an error parsing the signature. |
-// | `invalid` | The signature could not be cryptographically verified using the key whose key-id was
-// found in the signature. |
-// | `valid` | None of the above errors applied, so the signature is considered to be verified. |.
+//
+//	Value                    | Description
+//	-------------------------+----------------------------------------------------------------------------------------------------------------------------------
+//	`expired_key`            | The key that made the signature is expired.
+//	`not_signing_key`        | The "signing" flag is not among the usage flags in the GPG key that made the signature.
+//	`gpgverify_error`        | There was an error communicating with the signature verification service.
+//	`gpgverify_unavailable`  | The signature verification service is currently unavailable.
+//	`unsigned`               | The object does not include a signature.
+//	`unknown_signature_type` | A non-PGP signature was found in the commit.
+//	`no_user`                | No user was associated with the `committer` email address in the commit.
+//	`unverified_email`       | The `committer` email address in the commit was associated with a user, but the email address is not verified on her/his account.
+//	`bad_email`              | The `committer` email address in the commit is not included in the identities of the PGP key that made the signature.
+//	`unknown_key`            | The key that made the signature has not been registered with any user's account.
+//	`malformed_signature`    | There was an error parsing the signature.
+//	`invalid`                | The signature could not be cryptographically verified using the key whose key-id was found in the signature.
+//	`valid`                  | None of the above errors applied, so the signature is considered to be verified.
 //
 // GET /repos/{owner}/{repo}/commits/{ref}
+//
+// [media type]: https://docs.github.com/rest/overview/media-types/#commits-commit-comparison-and-pull-requests
 func (s *Server) handleReposGetCommitRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -84793,8 +85364,8 @@ func (s *Server) handleReposGetCommitRequest(args [3]string, argsEscaped bool, w
 
 // handleReposGetCommitActivityStatsRequest handles repos/get-commit-activity-stats operation.
 //
-// Returns the last year of commit activity grouped by week. The `days` array is a group of commits
-// per day, starting on `Sunday`.
+// Returns the last year of commit activity grouped by week. The `days` array is a group of commits per
+// day, starting on `Sunday`.
 //
 // GET /repos/{owner}/{repo}/stats/commit_activity
 func (s *Server) handleReposGetCommitActivityStatsRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -85094,16 +85665,19 @@ func (s *Server) handleReposGetCommitCommentRequest(args [3]string, argsEscaped 
 //
 // Protected branches are available in public repositories with GitHub Free and GitHub Free for
 // organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
-// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
-// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products] in the
 // GitHub Help documentation.
+//
 // When authenticated with admin or owner permissions to the repository, you can use this endpoint to
-// check whether a branch requires signed commits. An enabled status of `true` indicates you must
-// sign commits on this branch. For more information, see [Signing commits with GPG](https://help.
-// github.com/articles/signing-commits-with-gpg) in GitHub Help.
-// **Note**: You must enable branch protection to require signed commits.
+// check whether a branch requires signed commits. An enabled status of `true` indicates you must sign
+// commits on this branch. For more information, see [Signing commits with GPG] in GitHub Help.
+//
+// Note: You must enable branch protection to require signed commits.
 //
 // GET /repos/{owner}/{repo}/branches/{branch}/protection/required_signatures
+//
+// [GitHub's products]: https://help.github.com/github/getting-started-with-github/githubs-products
+// [Signing commits with GPG]: https://help.github.com/articles/signing-commits-with-gpg
 func (s *Server) handleReposGetCommitSignatureProtectionRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -85252,15 +85826,15 @@ func (s *Server) handleReposGetCommitSignatureProtectionRequest(args [3]string, 
 
 // handleReposGetCommunityProfileMetricsRequest handles repos/get-community-profile-metrics operation.
 //
-// This endpoint will return all community profile metrics, including an
-// overall health score, repository description, the presence of documentation, detected
-// code of conduct, detected license, and the presence of ISSUE\_TEMPLATE, PULL\_REQUEST\_TEMPLATE,
-// README, and CONTRIBUTING files.
-// The `health_percentage` score is defined as a percentage of how many of
-// these four documents are present: README, CONTRIBUTING, LICENSE, and
-// CODE_OF_CONDUCT. For example, if all four documents are present, then
-// the `health_percentage` is `100`. If only one is present, then the
-// `health_percentage` is `25`.
+// This endpoint will return all community profile metrics, including an overall health score,
+// repository description, the presence of documentation, detected code of conduct, detected license,
+// and the presence of ISSUE\_TEMPLATE, PULL\_REQUEST\_TEMPLATE, README, and CONTRIBUTING files.
+//
+// The `health_percentage` score is defined as a percentage of how many of these four documents are
+// present: README, CONTRIBUTING, LICENSE, and CODE_OF_CONDUCT. For example, if all four documents are
+// present, then the `health_percentage` is `100`. If only one is present, then the `health_percentage`
+// is `25`.
+//
 // `content_reports_enabled` is only returned for organization-owned repositories.
 //
 // GET /repos/{owner}/{repo}/community/profile
@@ -85410,12 +85984,15 @@ func (s *Server) handleReposGetCommunityProfileMetricsRequest(args [2]string, ar
 //
 // Returns the `total` number of commits authored by the contributor. In addition, the response
 // includes a Weekly Hash (`weeks` array) with the following information:
-// *   `w` - Start of the week, given as a [Unix timestamp](http://en.wikipedia.org/wiki/Unix_time).
-// *   `a` - Number of additions
-// *   `d` - Number of deletions
-// *   `c` - Number of commits.
+//
+//   - `w` - Start of the week, given as a [Unix timestamp].
+//   - `a` - Number of additions
+//   - `d` - Number of deletions
+//   - `c` - Number of commits
 //
 // GET /repos/{owner}/{repo}/stats/contributors
+//
+// [Unix timestamp]: http://en.wikipedia.org/wiki/Unix_time
 func (s *Server) handleReposGetContributorsStatsRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -86165,9 +86742,10 @@ func (s *Server) handleReposGetLatestPagesBuildRequest(args [2]string, argsEscap
 // handleReposGetLatestReleaseRequest handles repos/get-latest-release operation.
 //
 // View the latest published full release for the repository.
-// The latest release is the most recent non-prerelease, non-draft release, sorted by the
-// `created_at` attribute. The `created_at` attribute is the date of the commit used for the release,
-// and not the date when the release was drafted or published.
+//
+// The latest release is the most recent non-prerelease, non-draft release, sorted by the `created_at`
+// attribute. The `created_at` attribute is the date of the commit used for the release, and not the
+// date when the release was drafted or published.
 //
 // GET /repos/{owner}/{repo}/releases/latest
 func (s *Server) handleReposGetLatestReleaseRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -86612,11 +87190,13 @@ func (s *Server) handleReposGetPagesBuildRequest(args [3]string, argsEscaped boo
 
 // handleReposGetPagesHealthCheckRequest handles repos/get-pages-health-check operation.
 //
-// Gets a health check of the DNS settings for the `CNAME` record configured for a repository's
-// GitHub Pages.
+// Gets a health check of the DNS settings for the `CNAME` record configured for a repository's GitHub
+// Pages.
+//
 // The first request to this endpoint returns a `202 Accepted` status and starts an asynchronous
 // background task to get the results for the domain. After the background task completes, subsequent
 // requests to this endpoint return a `200 OK` status with the health check results in the response.
+//
 // Users must have admin or owner permissions. GitHub Apps must have the `pages:write` and
 // `administration:write` permission to use this endpoint.
 //
@@ -86765,9 +87345,10 @@ func (s *Server) handleReposGetPagesHealthCheckRequest(args [2]string, argsEscap
 
 // handleReposGetParticipationStatsRequest handles repos/get-participation-stats operation.
 //
-// Returns the total commit counts for the `owner` and total commit counts in `all`. `all` is
-// everyone combined, including the `owner` in the last 52 weeks. If you'd like to get the commit
-// counts for non-owners, you can subtract `owner` from `all`.
+// Returns the total commit counts for the `owner` and total commit counts in `all`. `all` is everyone
+// combined, including the `owner` in the last 52 weeks. If you'd like to get the commit counts for
+// non-owners, you can subtract `owner` from `all`.
+//
 // The array order is oldest week (index 0) to most recent week.
 //
 // GET /repos/{owner}/{repo}/stats/participation
@@ -86917,11 +87498,12 @@ func (s *Server) handleReposGetParticipationStatsRequest(args [2]string, argsEsc
 //
 // Protected branches are available in public repositories with GitHub Free and GitHub Free for
 // organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
-// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
-// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products] in the
 // GitHub Help documentation.
 //
 // GET /repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews
+//
+// [GitHub's products]: https://help.github.com/github/getting-started-with-github/githubs-products
 func (s *Server) handleReposGetPullRequestReviewProtectionRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -87071,9 +87653,11 @@ func (s *Server) handleReposGetPullRequestReviewProtectionRequest(args [3]string
 // handleReposGetPunchCardStatsRequest handles repos/get-punch-card-stats operation.
 //
 // Each array contains the day number, hour number, and number of commits:
-// *   `0-6`: Sunday - Saturday
-// *   `0-23`: Hour of day
-// *   Number of commits
+//
+//   - `0-6`: Sunday - Saturday
+//   - `0-23`: Hour of day
+//   - Number of commits
+//
 // For example, `[2, 14, 25]` indicates that there were 25 total commits, during the 2:00pm hour on
 // Tuesdays. All times are based on the time zone of individual commits.
 //
@@ -87223,10 +87807,12 @@ func (s *Server) handleReposGetPunchCardStatsRequest(args [2]string, argsEscaped
 // handleReposGetReadmeRequest handles repos/get-readme operation.
 //
 // Gets the preferred README for a repository.
-// READMEs support [custom media types](https://docs.github.
-// com/rest/reference/repos#custom-media-types) for retrieving the raw content or rendered HTML.
+//
+// READMEs support [custom media types] for retrieving the raw content or rendered HTML.
 //
 // GET /repos/{owner}/{repo}/readme
+//
+// [custom media types]: https://docs.github.com/rest/reference/repos#custom-media-types
 func (s *Server) handleReposGetReadmeRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -87376,10 +87962,12 @@ func (s *Server) handleReposGetReadmeRequest(args [2]string, argsEscaped bool, w
 // handleReposGetReadmeInDirectoryRequest handles repos/get-readme-in-directory operation.
 //
 // Gets the README from a repository directory.
-// READMEs support [custom media types](https://docs.github.
-// com/rest/reference/repos#custom-media-types) for retrieving the raw content or rendered HTML.
+//
+// READMEs support [custom media types] for retrieving the raw content or rendered HTML.
 //
 // GET /repos/{owner}/{repo}/readme/{dir}
+//
+// [custom media types]: https://docs.github.com/rest/reference/repos#custom-media-types
 func (s *Server) handleReposGetReadmeInDirectoryRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -87532,11 +88120,12 @@ func (s *Server) handleReposGetReadmeInDirectoryRequest(args [3]string, argsEsca
 
 // handleReposGetReleaseRequest handles repos/get-release operation.
 //
-// **Note:** This returns an `upload_url` key corresponding to the endpoint for uploading release
-// assets. This key is a [hypermedia resource](https://docs.github.
-// com/rest/overview/resources-in-the-rest-api#hypermedia).
+// Note: This returns an `upload_url` key corresponding to the endpoint for uploading release assets.
+// This key is a [hypermedia resource].
 //
 // GET /repos/{owner}/{repo}/releases/{release_id}
+//
+// [hypermedia resource]: https://docs.github.com/rest/overview/resources-in-the-rest-api#hypermedia
 func (s *Server) handleReposGetReleaseRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -87686,11 +88275,12 @@ func (s *Server) handleReposGetReleaseRequest(args [3]string, argsEscaped bool, 
 // handleReposGetReleaseAssetRequest handles repos/get-release-asset operation.
 //
 // To download the asset's binary content, set the `Accept` header of the request to
-// [`application/octet-stream`](https://docs.github.com/rest/overview/media-types). The API will
-// either redirect the client to the location, or stream it directly if possible. API clients should
-// handle both a `200` or `302` response.
+// [application/octet-stream]. The API will either redirect the client to the location, or stream it
+// directly if possible. API clients should handle both a `200` or `302` response.
 //
 // GET /repos/{owner}/{repo}/releases/assets/{asset_id}
+//
+// [application/octet-stream]: https://docs.github.com/rest/overview/media-types
 func (s *Server) handleReposGetReleaseAssetRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -87992,11 +88582,12 @@ func (s *Server) handleReposGetReleaseByTagRequest(args [3]string, argsEscaped b
 //
 // Protected branches are available in public repositories with GitHub Free and GitHub Free for
 // organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
-// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
-// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products] in the
 // GitHub Help documentation.
 //
 // GET /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks
+//
+// [GitHub's products]: https://help.github.com/github/getting-started-with-github/githubs-products
 func (s *Server) handleReposGetStatusChecksProtectionRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -88147,12 +88738,14 @@ func (s *Server) handleReposGetStatusChecksProtectionRequest(args [3]string, arg
 //
 // Protected branches are available in public repositories with GitHub Free and GitHub Free for
 // organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
-// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
-// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products] in the
 // GitHub Help documentation.
+//
 // Lists the teams who have push access to this branch. The list includes child teams.
 //
 // GET /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams
+//
+// [GitHub's products]: https://help.github.com/github/getting-started-with-github/githubs-products
 func (s *Server) handleReposGetTeamsWithAccessToProtectedBranchRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -88597,12 +89190,14 @@ func (s *Server) handleReposGetTopReferrersRequest(args [2]string, argsEscaped b
 //
 // Protected branches are available in public repositories with GitHub Free and GitHub Free for
 // organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
-// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
-// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products] in the
 // GitHub Help documentation.
+//
 // Lists the people who have push access to this branch.
 //
 // GET /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users
+//
+// [GitHub's products]: https://help.github.com/github/getting-started-with-github/githubs-products
 func (s *Server) handleReposGetUsersWithAccessToProtectedBranchRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -88904,8 +89499,9 @@ func (s *Server) handleReposGetViewsRequest(args [2]string, argsEscaped bool, w 
 // handleReposGetWebhookRequest handles repos/get-webhook operation.
 //
 // Returns a webhook configured in a repository. To get only the webhook `config` properties, see
-// "[Get a webhook configuration for a
-// repository](/rest/reference/repos#get-a-webhook-configuration-for-a-repository).".
+// "[Get a webhook configuration for a repository].".
+//
+// [Get a webhook configuration for a repository]: /rest/reference/repos#get-a-webhook-configuration-for-a-repository
 //
 // GET /repos/{owner}/{repo}/hooks/{hook_id}
 func (s *Server) handleReposGetWebhookRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -89057,10 +89653,12 @@ func (s *Server) handleReposGetWebhookRequest(args [3]string, argsEscaped bool, 
 // handleReposGetWebhookConfigForRepoRequest handles repos/get-webhook-config-for-repo operation.
 //
 // Returns the webhook configuration for a repository. To get more information about the webhook,
-// including the `active` state and `events`, use "[Get a repository
-// webhook](/rest/reference/orgs#get-a-repository-webhook)."
+// including the `active` state and `events`, use "[Get a repository webhook]."
+//
 // Access tokens must have the `read:repo_hook` or `repo` scope, and GitHub Apps must have the
 // `repository_hooks:read` permission.
+//
+// [Get a repository webhook]: /rest/reference/orgs#get-a-repository-webhook
 //
 // GET /repos/{owner}/{repo}/hooks/{hook_id}/config
 func (s *Server) handleReposGetWebhookConfigForRepoRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -89367,6 +89965,7 @@ func (s *Server) handleReposGetWebhookDeliveryRequest(args [4]string, argsEscape
 // handleReposListAutolinksRequest handles repos/list-autolinks operation.
 //
 // This returns a list of autolinks configured for the given repository.
+//
 // Information about autolinks are only available to repository administrators.
 //
 // GET /repos/{owner}/{repo}/autolinks
@@ -89679,12 +90278,14 @@ func (s *Server) handleReposListBranchesRequest(args [2]string, argsEscaped bool
 //
 // Protected branches are available in public repositories with GitHub Free and GitHub Free for
 // organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
-// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
-// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products] in the
 // GitHub Help documentation.
+//
 // Returns all branches where the given commit SHA is the HEAD, or latest commit for the branch.
 //
 // GET /repos/{owner}/{repo}/commits/{commit_sha}/branches-where-head
+//
+// [GitHub's products]: https://help.github.com/github/getting-started-with-github/githubs-products
 func (s *Server) handleReposListBranchesForHeadCommitRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -89837,6 +90438,7 @@ func (s *Server) handleReposListBranchesForHeadCommitRequest(args [3]string, arg
 // organization members that are direct collaborators, organization members with access through team
 // memberships, organization members with access through default organization permissions, and
 // organization owners.
+//
 // Team members will include the members of child teams.
 //
 // GET /repos/{owner}/{repo}/collaborators
@@ -90155,12 +90757,15 @@ func (s *Server) handleReposListCommentsForCommitRequest(args [3]string, argsEsc
 
 // handleReposListCommitCommentsForRepoRequest handles repos/list-commit-comments-for-repo operation.
 //
-// Commit Comments use [these custom media types](https://docs.github.
-// com/rest/reference/repos#custom-media-types). You can read more about the use of media types in
-// the API [here](https://docs.github.com/rest/overview/media-types/).
+// Commit Comments use [these custom media types]. You can read more about the use of media types in
+// the API [here].
+//
 // Comments are ordered by ascending ID.
 //
 // GET /repos/{owner}/{repo}/comments
+//
+// [these custom media types]: https://docs.github.com/rest/reference/repos#custom-media-types
+// [here]: https://docs.github.com/rest/overview/media-types/
 func (s *Server) handleReposListCommitCommentsForRepoRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -90316,6 +90921,7 @@ func (s *Server) handleReposListCommitCommentsForRepoRequest(args [2]string, arg
 // Users with pull access in a repository can view commit statuses for a given ref. The ref can be a
 // SHA, a branch name, or a tag name. Statuses are returned in reverse chronological order. The first
 // status in the list will be the latest one.
+//
 // This resource is also available via a legacy route: `GET /repos/:owner/:repo/statuses/:ref`.
 //
 // GET /repos/{owner}/{repo}/commits/{ref}/statuses
@@ -90475,38 +91081,35 @@ func (s *Server) handleReposListCommitStatusesForRefRequest(args [3]string, args
 
 // handleReposListCommitsRequest handles repos/list-commits operation.
 //
-// **Signature verification object**
+// # Signature verification object
+//
 // The response will include a `verification` object that describes the result of verifying the
 // commit's signature. The following fields are included in the `verification` object:
-// | Name | Type | Description |
-// | ---- | ---- | ----------- |
-// | `verified` | `boolean` | Indicates whether GitHub considers the signature in this commit to be
-// verified. |
-// | `reason` | `string` | The reason for verified value. Possible values and their meanings are
-// enumerated in table below. |
-// | `signature` | `string` | The signature that was extracted from the commit. |
-// | `payload` | `string` | The value that was signed. |
+//
+//	Name        | Type      | Description
+//	------------+-----------+-------------------------------------------------------------------------------------------------
+//	`verified`  | `boolean` | Indicates whether GitHub considers the signature in this commit to be verified.
+//	`reason`    | `string`  | The reason for verified value. Possible values and their meanings are enumerated in table below.
+//	`signature` | `string`  | The signature that was extracted from the commit.
+//	`payload`   | `string`  | The value that was signed.
+//
 // These are the possible values for `reason` in the `verification` object:
-// | Value | Description |
-// | ----- | ----------- |
-// | `expired_key` | The key that made the signature is expired. |
-// | `not_signing_key` | The "signing" flag is not among the usage flags in the GPG key that made the
-// signature. |
-// | `gpgverify_error` | There was an error communicating with the signature verification service. |
-// | `gpgverify_unavailable` | The signature verification service is currently unavailable. |
-// | `unsigned` | The object does not include a signature. |
-// | `unknown_signature_type` | A non-PGP signature was found in the commit. |
-// | `no_user` | No user was associated with the `committer` email address in the commit. |
-// | `unverified_email` | The `committer` email address in the commit was associated with a user, but
-// the email address is not verified on her/his account. |
-// | `bad_email` | The `committer` email address in the commit is not included in the identities of
-// the PGP key that made the signature. |
-// | `unknown_key` | The key that made the signature has not been registered with any user's account.
-// |
-// | `malformed_signature` | There was an error parsing the signature. |
-// | `invalid` | The signature could not be cryptographically verified using the key whose key-id was
-// found in the signature. |
-// | `valid` | None of the above errors applied, so the signature is considered to be verified. |.
+//
+//	Value                    | Description
+//	-------------------------+----------------------------------------------------------------------------------------------------------------------------------
+//	`expired_key`            | The key that made the signature is expired.
+//	`not_signing_key`        | The "signing" flag is not among the usage flags in the GPG key that made the signature.
+//	`gpgverify_error`        | There was an error communicating with the signature verification service.
+//	`gpgverify_unavailable`  | The signature verification service is currently unavailable.
+//	`unsigned`               | The object does not include a signature.
+//	`unknown_signature_type` | A non-PGP signature was found in the commit.
+//	`no_user`                | No user was associated with the `committer` email address in the commit.
+//	`unverified_email`       | The `committer` email address in the commit was associated with a user, but the email address is not verified on her/his account.
+//	`bad_email`              | The `committer` email address in the commit is not included in the identities of the PGP key that made the signature.
+//	`unknown_key`            | The key that made the signature has not been registered with any user's account.
+//	`malformed_signature`    | There was an error parsing the signature.
+//	`invalid`                | The signature could not be cryptographically verified using the key whose key-id was found in the signature.
+//	`valid`                  | None of the above errors applied, so the signature is considered to be verified.
 //
 // GET /repos/{owner}/{repo}/commits
 func (s *Server) handleReposListCommitsRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -90684,10 +91287,11 @@ func (s *Server) handleReposListCommitsRequest(args [2]string, argsEscaped bool,
 // Lists contributors to the specified repository and sorts them by the number of commits per
 // contributor in descending order. This endpoint may return information that is a few hours old
 // because the GitHub REST API v3 caches contributor data to improve performance.
-// GitHub identifies contributors by author email address. This endpoint groups contribution counts
-// by GitHub user, which includes all associated email addresses. To improve performance, only the
-// first 500 author email addresses in the repository link to GitHub users. The rest will appear as
-// anonymous contributors without associated GitHub user information.
+//
+// GitHub identifies contributors by author email address. This endpoint groups contribution counts by
+// GitHub user, which includes all associated email addresses. To improve performance, only the first
+// 500 author email addresses in the repository link to GitHub users. The rest will appear as anonymous
+// contributors without associated GitHub user information.
 //
 // GET /repos/{owner}/{repo}/contributors
 func (s *Server) handleReposListContributorsRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -91333,6 +91937,7 @@ func (s *Server) handleReposListDeploymentsRequest(args [2]string, argsEscaped b
 //
 // Lists repositories that the authenticated user has explicit permission (`:read`, `:write`, or
 // `:admin`) to access.
+//
 // The authenticated user has explicit permission to access repositories they own, repositories where
 // they are a collaborator, and repositories that they can access through an organization membership.
 //
@@ -92151,8 +92756,8 @@ func (s *Server) handleReposListInvitationsRequest(args [2]string, argsEscaped b
 
 // handleReposListInvitationsForAuthenticatedUserRequest handles repos/list-invitations-for-authenticated-user operation.
 //
-// When authenticating as a user, this endpoint will list all currently open repository invitations
-// for that user.
+// When authenticating as a user, this endpoint will list all currently open repository invitations for
+// that user.
 //
 // GET /user/repository_invitations
 func (s *Server) handleReposListInvitationsForAuthenticatedUserRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -92603,14 +93208,17 @@ func (s *Server) handleReposListPagesBuildsRequest(args [2]string, argsEscaped b
 // handleReposListPublicRequest handles repos/list-public operation.
 //
 // Lists all public repositories in the order that they were created.
+//
 // Note:
-// - For GitHub Enterprise Server, this endpoint will only list repositories available to all users
-// on the enterprise.
-// - Pagination is powered exclusively by the `since` parameter. Use the [Link header](https://docs.
-// github.com/rest/overview/resources-in-the-rest-api#link-header) to get the URL for the next page
-// of repositories.
+//
+//   - For GitHub Enterprise Server, this endpoint will only list repositories available to all users on
+//     the enterprise.
+//   - Pagination is powered exclusively by the `since` parameter. Use the [Link header] to get the URL
+//     for the next page of repositories.
 //
 // GET /repositories
+//
+// [Link header]: https://docs.github.com/rest/overview/resources-in-the-rest-api#link-header
 func (s *Server) handleReposListPublicRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -92753,12 +93361,14 @@ func (s *Server) handleReposListPublicRequest(args [0]string, argsEscaped bool, 
 //
 // Lists the merged pull request that introduced the commit to the repository. If the commit is not
 // present in the default branch, additionally returns open pull requests associated with the commit.
-// The results may include open and closed pull requests. Additional preview headers may be required
-// to see certain details for associated pull requests, such as whether a pull request is in a draft
-// state. For more information about previews that might affect this endpoint, see the [List pull
-// requests](https://docs.github.com/rest/reference/pulls#list-pull-requests) endpoint.
+// The results may include open and closed pull requests. Additional preview headers may be required to
+// see certain details for associated pull requests, such as whether a pull request is in a draft
+// state. For more information about previews that might affect this endpoint, see the
+// [List pull requests] endpoint.
 //
 // GET /repos/{owner}/{repo}/commits/{commit_sha}/pulls
+//
+// [List pull requests]: https://docs.github.com/rest/reference/pulls#list-pull-requests
 func (s *Server) handleReposListPullRequestsAssociatedWithCommitRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -93075,12 +93685,14 @@ func (s *Server) handleReposListReleaseAssetsRequest(args [3]string, argsEscaped
 // handleReposListReleasesRequest handles repos/list-releases operation.
 //
 // This returns a list of releases, which does not include regular Git tags that have not been
-// associated with a release. To get a list of Git tags, use the [Repository Tags API](https://docs.
-// github.com/rest/reference/repos#list-repository-tags).
+// associated with a release. To get a list of Git tags, use the [Repository Tags API].
+//
 // Information about published releases are available to everyone. Only users with push access will
 // receive listings for draft releases.
 //
 // GET /repos/{owner}/{repo}/releases
+//
+// [Repository Tags API]: https://docs.github.com/rest/reference/repos#list-repository-tags
 func (s *Server) handleReposListReleasesRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -94019,7 +94631,8 @@ func (s *Server) handleReposMergeRequest(args [2]string, argsEscaped bool, w htt
 
 // handleReposMergeUpstreamRequest handles repos/merge-upstream operation.
 //
-// **Note:** This endpoint is currently in beta and subject to change.
+// Note: This endpoint is currently in beta and subject to change.
+//
 // Sync a branch of a forked repository to keep it up-to-date with the upstream repository.
 //
 // POST /repos/{owner}/{repo}/merge-upstream
@@ -94182,10 +94795,11 @@ func (s *Server) handleReposMergeUpstreamRequest(args [2]string, argsEscaped boo
 
 // handleReposPingWebhookRequest handles repos/ping-webhook operation.
 //
-// This will trigger a [ping event](https://docs.github.com/webhooks/#ping-event) to be sent to the
-// hook.
+// This will trigger a [ping event] to be sent to the hook.
 //
 // POST /repos/{owner}/{repo}/hooks/{hook_id}/pings
+//
+// [ping event]: https://docs.github.com/webhooks/#ping-event
 func (s *Server) handleReposPingWebhookRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -94491,21 +95105,19 @@ func (s *Server) handleReposRedeliverWebhookDeliveryRequest(args [4]string, args
 //
 // Protected branches are available in public repositories with GitHub Free and GitHub Free for
 // organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
-// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
-// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products] in the
 // GitHub Help documentation.
-// Removes the ability of an app to push to this branch. Only installed GitHub Apps with `write`
-// access to the `contents` permission can be added as authorized actors on a protected branch.
-// | Type    | Description
 //
-//	|
+// Removes the ability of an app to push to this branch. Only installed GitHub Apps with `write` access
+// to the `contents` permission can be added as authorized actors on a protected branch.
 //
-// | ------- |
-// ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
-// | `array` | The GitHub Apps that have push access to this branch. Use the app's `slug`. **Note**:
-// The list of users, apps, and teams in total is limited to 100 items. |.
+//	Type    | Description
+//	--------+-------------------------------------------------------------------------------------------------------------------------------------------------------
+//	`array` | The GitHub Apps that have push access to this branch. Use the app's `slug`. Note: The list of users, apps, and teams in total is limited to 100 items.
 //
 // DELETE /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps
+//
+// [GitHub's products]: https://help.github.com/github/getting-started-with-github/githubs-products
 func (s *Server) handleReposRemoveAppAccessRestrictionsRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -94822,11 +95434,12 @@ func (s *Server) handleReposRemoveCollaboratorRequest(args [3]string, argsEscape
 //
 // Protected branches are available in public repositories with GitHub Free and GitHub Free for
 // organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
-// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
-// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products] in the
 // GitHub Help documentation.
 //
 // DELETE /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts
+//
+// [GitHub's products]: https://help.github.com/github/getting-started-with-github/githubs-products
 func (s *Server) handleReposRemoveStatusCheckContextsRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -94992,11 +95605,12 @@ func (s *Server) handleReposRemoveStatusCheckContextsRequest(args [3]string, arg
 //
 // Protected branches are available in public repositories with GitHub Free and GitHub Free for
 // organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
-// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
-// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products] in the
 // GitHub Help documentation.
 //
 // DELETE /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks
+//
+// [GitHub's products]: https://help.github.com/github/getting-started-with-github/githubs-products
 func (s *Server) handleReposRemoveStatusCheckProtectionRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -95147,21 +95761,19 @@ func (s *Server) handleReposRemoveStatusCheckProtectionRequest(args [3]string, a
 //
 // Protected branches are available in public repositories with GitHub Free and GitHub Free for
 // organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
-// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
-// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products] in the
 // GitHub Help documentation.
+//
 // Removes the ability of a team to push to this branch. You can also remove push access for child
 // teams.
-// | Type    | Description
 //
-//	|
-//
-// | ------- |
-// --------------------------------------------------------------------------------------------------------------------------------------------------- |
-// | `array` | Teams that should no longer have push access. Use the team's `slug`. **Note**: The
-// list of users, apps, and teams in total is limited to 100 items. |.
+//	Type    | Description
+//	--------+------------------------------------------------------------------------------------------------------------------------------------------------
+//	`array` | Teams that should no longer have push access. Use the team's `slug`. Note: The list of users, apps, and teams in total is limited to 100 items.
 //
 // DELETE /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams
+//
+// [GitHub's products]: https://help.github.com/github/getting-started-with-github/githubs-products
 func (s *Server) handleReposRemoveTeamAccessRestrictionsRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -95327,20 +95939,18 @@ func (s *Server) handleReposRemoveTeamAccessRestrictionsRequest(args [3]string, 
 //
 // Protected branches are available in public repositories with GitHub Free and GitHub Free for
 // organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
-// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
-// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products] in the
 // GitHub Help documentation.
+//
 // Removes the ability of a user to push to this branch.
-// | Type    | Description
 //
-//	|
-//
-// | ------- |
-// --------------------------------------------------------------------------------------------------------------------------------------------- |
-// | `array` | Usernames of the people who should no longer have push access. **Note**: The list of
-// users, apps, and teams in total is limited to 100 items. |.
+//	Type    | Description
+//	--------+------------------------------------------------------------------------------------------------------------------------------------------
+//	`array` | Usernames of the people who should no longer have push access. Note: The list of users, apps, and teams in total is limited to 100 items.
 //
 // DELETE /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users
+//
+// [GitHub's products]: https://help.github.com/github/getting-started-with-github/githubs-products
 func (s *Server) handleReposRemoveUserAccessRestrictionsRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -95505,20 +96115,27 @@ func (s *Server) handleReposRemoveUserAccessRestrictionsRequest(args [3]string, 
 // handleReposRenameBranchRequest handles repos/rename-branch operation.
 //
 // Renames a branch in a repository.
-// **Note:** Although the API responds immediately, the branch rename process might take some extra
-// time to complete in the background. You won't be able to push to the old branch name while the
-// rename process is in progress. For more information, see "[Renaming a branch](https://docs.github.
-// com/github/administering-a-repository/renaming-a-branch)".
+//
+// Note: Although the API responds immediately, the branch rename process might take some extra time to
+// complete in the background. You won't be able to push to the old branch name while the rename
+// process is in progress. For more information, see "[Renaming a branch]".
+//
 // The permissions required to use this endpoint depends on whether you are renaming the default
 // branch.
+//
 // To rename a non-default branch:
-// * Users must have push access.
-// * GitHub Apps must have the `contents:write` repository permission.
+//
+//   - Users must have push access.
+//   - GitHub Apps must have the `contents:write` repository permission.
+//
 // To rename the default branch:
-// * Users must have admin or owner permissions.
-// * GitHub Apps must have the `administration:write` repository permission.
+//
+//   - Users must have admin or owner permissions.
+//   - GitHub Apps must have the `administration:write` repository permission.
 //
 // POST /repos/{owner}/{repo}/branches/{branch}/rename
+//
+// [Renaming a branch]: https://docs.github.com/github/administering-a-repository/renaming-a-branch
 func (s *Server) handleReposRenameBranchRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -95844,9 +96461,10 @@ func (s *Server) handleReposReplaceAllTopicsRequest(args [2]string, argsEscaped 
 
 // handleReposRequestPagesBuildRequest handles repos/request-pages-build operation.
 //
-// You can request that your site be built from the latest revision on the default branch. This has
-// the same effect as pushing a commit to your default branch, but does not require an additional
-// commit. Manually triggering page builds can be helpful when diagnosing build warnings and failures.
+// You can request that your site be built from the latest revision on the default branch. This has the
+// same effect as pushing a commit to your default branch, but does not require an additional commit.
+// Manually triggering page builds can be helpful when diagnosing build warnings and failures.
+//
 // Build requests are limited to one concurrent build per repository and one concurrent build per
 // requester. If you request a build while another is still in progress, the second request will be
 // queued until the first completes.
@@ -95998,13 +96616,15 @@ func (s *Server) handleReposRequestPagesBuildRequest(args [2]string, argsEscaped
 //
 // Protected branches are available in public repositories with GitHub Free and GitHub Free for
 // organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
-// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
-// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products] in the
 // GitHub Help documentation.
-// Adding admin enforcement requires admin or owner permissions to the repository and branch
-// protection to be enabled.
+//
+// Adding admin enforcement requires admin or owner permissions to the repository and branch protection
+// to be enabled.
 //
 // POST /repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins
+//
+// [GitHub's products]: https://help.github.com/github/getting-started-with-github/githubs-products
 func (s *Server) handleReposSetAdminBranchProtectionRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -96155,23 +96775,21 @@ func (s *Server) handleReposSetAdminBranchProtectionRequest(args [3]string, args
 //
 // Protected branches are available in public repositories with GitHub Free and GitHub Free for
 // organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
-// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
-// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products] in the
 // GitHub Help documentation.
+//
 // Replaces the list of apps that have push access to this branch. This removes all apps that
 // previously had push access and grants push access to the new list of apps. Only installed GitHub
 // Apps with `write` access to the `contents` permission can be added as authorized actors on a
 // protected branch.
-// | Type    | Description
 //
-//	|
-//
-// | ------- |
-// ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
-// | `array` | The GitHub Apps that have push access to this branch. Use the app's `slug`. **Note**:
-// The list of users, apps, and teams in total is limited to 100 items. |.
+//	Type    | Description
+//	--------+-------------------------------------------------------------------------------------------------------------------------------------------------------
+//	`array` | The GitHub Apps that have push access to this branch. Use the app's `slug`. Note: The list of users, apps, and teams in total is limited to 100 items.
 //
 // PUT /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps
+//
+// [GitHub's products]: https://help.github.com/github/getting-started-with-github/githubs-products
 func (s *Server) handleReposSetAppAccessRestrictionsRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -96337,11 +96955,12 @@ func (s *Server) handleReposSetAppAccessRestrictionsRequest(args [3]string, args
 //
 // Protected branches are available in public repositories with GitHub Free and GitHub Free for
 // organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
-// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
-// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products] in the
 // GitHub Help documentation.
 //
 // PUT /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts
+//
+// [GitHub's products]: https://help.github.com/github/getting-started-with-github/githubs-products
 func (s *Server) handleReposSetStatusCheckContextsRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -96507,22 +97126,20 @@ func (s *Server) handleReposSetStatusCheckContextsRequest(args [3]string, argsEs
 //
 // Protected branches are available in public repositories with GitHub Free and GitHub Free for
 // organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
-// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
-// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products] in the
 // GitHub Help documentation.
+//
 // Replaces the list of teams that have push access to this branch. This removes all teams that
 // previously had push access and grants push access to the new list of teams. Team restrictions
 // include child teams.
-// | Type    | Description
 //
-//	|
-//
-// | ------- |
-// ------------------------------------------------------------------------------------------------------------------------------------------ |
-// | `array` | The teams that can have push access. Use the team's `slug`. **Note**: The list of
-// users, apps, and teams in total is limited to 100 items. |.
+//	Type    | Description
+//	--------+---------------------------------------------------------------------------------------------------------------------------------------
+//	`array` | The teams that can have push access. Use the team's `slug`. Note: The list of users, apps, and teams in total is limited to 100 items.
 //
 // PUT /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams
+//
+// [GitHub's products]: https://help.github.com/github/getting-started-with-github/githubs-products
 func (s *Server) handleReposSetTeamAccessRestrictionsRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -96688,21 +97305,19 @@ func (s *Server) handleReposSetTeamAccessRestrictionsRequest(args [3]string, arg
 //
 // Protected branches are available in public repositories with GitHub Free and GitHub Free for
 // organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
-// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
-// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products] in the
 // GitHub Help documentation.
+//
 // Replaces the list of people that have push access to this branch. This removes all people that
 // previously had push access and grants push access to the new list of people.
-// | Type    | Description
 //
-//	|
-//
-// | ------- |
-// ----------------------------------------------------------------------------------------------------------------------------- |
-// | `array` | Usernames for people who can have push access. **Note**: The list of users, apps, and
-// teams in total is limited to 100 items. |.
+//	Type    | Description
+//	--------+--------------------------------------------------------------------------------------------------------------------------
+//	`array` | Usernames for people who can have push access. Note: The list of users, apps, and teams in total is limited to 100 items.
 //
 // PUT /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users
+//
+// [GitHub's products]: https://help.github.com/github/getting-started-with-github/githubs-products
 func (s *Server) handleReposSetUserAccessRestrictionsRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -96866,10 +97481,11 @@ func (s *Server) handleReposSetUserAccessRestrictionsRequest(args [3]string, arg
 
 // handleReposTestPushWebhookRequest handles repos/test-push-webhook operation.
 //
-// This will trigger the hook with the latest push to the current repository if the hook is
-// subscribed to `push` events. If the hook is not subscribed to `push` events, the server will
-// respond with 204 but no test POST will be generated.
-// **Note**: Previously `/repos/:owner/:repo/hooks/:hook_id/test`.
+// This will trigger the hook with the latest push to the current repository if the hook is subscribed
+// to `push` events. If the hook is not subscribed to `push` events, the server will respond with 204
+// but no test POST will be generated.
+//
+// Note: Previously `/repos/:owner/:repo/hooks/:hook_id/test`.
 //
 // POST /repos/{owner}/{repo}/hooks/{hook_id}/tests
 func (s *Server) handleReposTestPushWebhookRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -97020,13 +97636,14 @@ func (s *Server) handleReposTestPushWebhookRequest(args [3]string, argsEscaped b
 
 // handleReposTransferRequest handles repos/transfer operation.
 //
-// A transfer request will need to be accepted by the new owner when transferring a personal
-// repository to another user. The response will contain the original `owner`, and the transfer will
-// continue asynchronously. For more details on the requirements to transfer personal and
-// organization-owned repositories, see [about repository transfers](https://help.github.
-// com/articles/about-repository-transfers/).
+// A transfer request will need to be accepted by the new owner when transferring a personal repository
+// to another user. The response will contain the original `owner`, and the transfer will continue
+// asynchronously. For more details on the requirements to transfer personal and organization-owned
+// repositories, see [about repository transfers].
 //
 // POST /repos/{owner}/{repo}/transfer
+//
+// [about repository transfers]: https://help.github.com/articles/about-repository-transfers/
 func (s *Server) handleReposTransferRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -97186,10 +97803,11 @@ func (s *Server) handleReposTransferRequest(args [2]string, argsEscaped bool, w 
 
 // handleReposUpdateRequest handles repos/update operation.
 //
-// **Note**: To edit a repository's topics, use the [Replace all repository topics](https://docs.
-// github.com/rest/reference/repos#replace-all-repository-topics) endpoint.
+// Note: To edit a repository's topics, use the [Replace all repository topics] endpoint.
 //
 // PATCH /repos/{owner}/{repo}
+//
+// [Replace all repository topics]: https://docs.github.com/rest/reference/repos#replace-all-repository-topics
 func (s *Server) handleReposUpdateRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -97351,14 +97969,18 @@ func (s *Server) handleReposUpdateRequest(args [2]string, argsEscaped bool, w ht
 //
 // Protected branches are available in public repositories with GitHub Free and GitHub Free for
 // organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
-// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
-// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products] in the
 // GitHub Help documentation.
+//
 // Protecting a branch requires admin or owner permissions to the repository.
-// **Note**: Passing new arrays of `users` and `teams` replaces their previous values.
-// **Note**: The list of users, apps, and teams in total is limited to 100 items.
+//
+// Note: Passing new arrays of `users` and `teams` replaces their previous values.
+//
+// Note: The list of users, apps, and teams in total is limited to 100 items.
 //
 // PUT /repos/{owner}/{repo}/branches/{branch}/protection
+//
+// [GitHub's products]: https://help.github.com/github/getting-started-with-github/githubs-products
 func (s *Server) handleReposUpdateBranchProtectionRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -97856,14 +98478,17 @@ func (s *Server) handleReposUpdateInvitationRequest(args [3]string, argsEscaped 
 //
 // Protected branches are available in public repositories with GitHub Free and GitHub Free for
 // organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
-// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
-// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products] in the
 // GitHub Help documentation.
+//
 // Updating pull request review enforcement requires admin or owner permissions to the repository and
 // branch protection to be enabled.
-// **Note**: Passing new arrays of `users` and `teams` replaces their previous values.
+//
+// Note: Passing new arrays of `users` and `teams` replaces their previous values.
 //
 // PATCH /repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews
+//
+// [GitHub's products]: https://help.github.com/github/getting-started-with-github/githubs-products
 func (s *Server) handleReposUpdatePullRequestReviewProtectionRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -98361,13 +98986,15 @@ func (s *Server) handleReposUpdateReleaseAssetRequest(args [3]string, argsEscape
 //
 // Protected branches are available in public repositories with GitHub Free and GitHub Free for
 // organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub
-// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's
-// products](https://help.github.com/github/getting-started-with-github/githubs-products) in the
+// Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products] in the
 // GitHub Help documentation.
+//
 // Updating required status checks requires admin or owner permissions to the repository and branch
 // protection to be enabled.
 //
 // PATCH /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks
+//
+// [GitHub's products]: https://help.github.com/github/getting-started-with-github/githubs-products
 func (s *Server) handleReposUpdateStatusCheckProtectionRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -98531,10 +99158,11 @@ func (s *Server) handleReposUpdateStatusCheckProtectionRequest(args [3]string, a
 
 // handleReposUpdateWebhookRequest handles repos/update-webhook operation.
 //
-// Updates a webhook configured in a repository. If you previously had a `secret` set, you must
-// provide the same `secret` or set a new `secret` or the secret will be removed. If you are only
-// updating individual webhook `config` properties, use "[Update a webhook configuration for a
-// repository](/rest/reference/repos#update-a-webhook-configuration-for-a-repository).".
+// Updates a webhook configured in a repository. If you previously had a `secret` set, you must provide
+// the same `secret` or set a new `secret` or the secret will be removed. If you are only updating
+// individual webhook `config` properties, use "[Update a webhook configuration for a repository].".
+//
+// [Update a webhook configuration for a repository]: /rest/reference/repos#update-a-webhook-configuration-for-a-repository
 //
 // PATCH /repos/{owner}/{repo}/hooks/{hook_id}
 func (s *Server) handleReposUpdateWebhookRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -98701,10 +99329,12 @@ func (s *Server) handleReposUpdateWebhookRequest(args [3]string, argsEscaped boo
 // handleReposUpdateWebhookConfigForRepoRequest handles repos/update-webhook-config-for-repo operation.
 //
 // Updates the webhook configuration for a repository. To update more information about the webhook,
-// including the `active` state and `events`, use "[Update a repository
-// webhook](/rest/reference/orgs#update-a-repository-webhook)."
+// including the `active` state and `events`, use "[Update a repository webhook]."
+//
 // Access tokens must have the `write:repo_hook` or `repo` scope, and GitHub Apps must have the
 // `repository_hooks:write` permission.
+//
+// [Update a repository webhook]: /rest/reference/orgs#update-a-repository-webhook
 //
 // PATCH /repos/{owner}/{repo}/hooks/{hook_id}/config
 func (s *Server) handleReposUpdateWebhookConfigForRepoRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -98870,34 +99500,42 @@ func (s *Server) handleReposUpdateWebhookConfigForRepoRequest(args [3]string, ar
 
 // handleReposUploadReleaseAssetRequest handles repos/upload-release-asset operation.
 //
-// This endpoint makes use of [a Hypermedia relation](https://docs.github.
-// com/rest/overview/resources-in-the-rest-api#hypermedia) to determine which URL to access. The
-// endpoint you call to upload release assets is specific to your release. Use the `upload_url`
-// returned in
-// the response of the [Create a release endpoint](https://docs.github.
-// com/rest/reference/repos#create-a-release) to upload a release asset.
-// You need to use an HTTP client which supports [SNI](http://en.wikipedia.
-// org/wiki/Server_Name_Indication) to make calls to this endpoint.
+// This endpoint makes use of [a Hypermedia relation] to determine which URL to access. The endpoint
+// you call to upload release assets is specific to your release. Use the `upload_url` returned in the
+// response of the [Create a release endpoint] to upload a release asset.
+//
+// You need to use an HTTP client which supports [SNI] to make calls to this endpoint.
+//
 // Most libraries will set the required `Content-Length` header automatically. Use the required
 // `Content-Type` header to provide the media type of the asset. For a list of media types, see
-// [Media Types](https://www.iana.org/assignments/media-types/media-types.xhtml). For example:
+// [Media Types]. For example:
+//
 // `application/zip`
-// GitHub expects the asset data in its raw binary form, rather than JSON. You will send the raw
-// binary content of the asset as the request body. Everything else about the endpoint is the same as
-// the rest of the API. For example,
-// you'll still need to pass your authentication to be able to upload an asset.
+//
+// GitHub expects the asset data in its raw binary form, rather than JSON. You will send the raw binary
+// content of the asset as the request body. Everything else about the endpoint is the same as the rest
+// of the API. For example, you'll still need to pass your authentication to be able to upload an
+// asset.
+//
 // When an upstream failure occurs, you will receive a `502 Bad Gateway` status. This may leave an
 // empty asset with a state of `starter`. It can be safely deleted.
-// **Notes:**
-// *   GitHub renames asset filenames that have special characters, non-alphanumeric characters, and
-// leading or trailing periods. The "[List assets for a release](https://docs.github.
-// com/rest/reference/repos#list-assets-for-a-release)"
-// endpoint lists the renamed filenames. For more information and help, contact [GitHub
-// Support](https://support.github.com/contact?tags=dotcom-rest-api).
-// *   If you upload an asset with the same filename as another uploaded asset, you'll receive an
-// error and must delete the old file before you can re-upload the new asset.
+//
+// Notes:
+//
+//   - GitHub renames asset filenames that have special characters, non-alphanumeric characters, and
+//     leading or trailing periods. The "[List assets for a release]" endpoint lists the renamed
+//     filenames. For more information and help, contact [GitHub Support].
+//   - If you upload an asset with the same filename as another uploaded asset, you'll receive an error
+//     and must delete the old file before you can re-upload the new asset.
 //
 // POST /repos/{owner}/{repo}/releases/{release_id}/assets
+//
+// [a Hypermedia relation]: https://docs.github.com/rest/overview/resources-in-the-rest-api#hypermedia
+// [Create a release endpoint]: https://docs.github.com/rest/reference/repos#create-a-release
+// [SNI]: http://en.wikipedia.org/wiki/Server_Name_Indication
+// [Media Types]: https://www.iana.org/assignments/media-types/media-types.xhtml
+// [List assets for a release]: https://docs.github.com/rest/reference/repos#list-assets-for-a-release
+// [GitHub Support]: https://support.github.com/contact?tags=dotcom-rest-api
 func (s *Server) handleReposUploadReleaseAssetRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -99366,30 +100004,37 @@ func (s *Server) handleScimGetProvisioningInformationForUserRequest(args [2]stri
 // Retrieves a paginated list of all provisioned organization members, including pending invitations.
 // If you provide the `filter` parameter, the resources for all matching provisions members are
 // returned.
+//
 // When a user with a SAML-provisioned external identity leaves (or is removed from) an organization,
-// the account's metadata is immediately removed. However, the returned list of user accounts might
-// not always match the organization or enterprise member list you see on GitHub. This can happen in
+// the account's metadata is immediately removed. However, the returned list of user accounts might not
+// always match the organization or enterprise member list you see on GitHub. This can happen in
 // certain cases where an external identity associated with an organization will not match an
 // organization member:
-// - When a user with a SCIM-provisioned external identity is removed from an organization, the
-// account's metadata is preserved to allow the user to re-join the organization in the future.
-// - When inviting a user to join an organization, you can expect to see their external identity in
-// the results before they accept the invitation, or if the invitation is cancelled (or never
-// accepted).
-// - When a user is invited over SCIM, an external identity is created that matches with the
-// invitee's email address. However, this identity is only linked to a user account when the user
-// accepts the invitation by going through SAML SSO.
-// The returned list of external identities can include an entry for a `null` user. These are
-// unlinked SAML identities that are created when a user goes through the following Single Sign-On
-// (SSO) process but does not sign in to their GitHub account after completing SSO:
-// 1. The user is granted access by the IdP and is not a member of the GitHub organization.
-// 1. The user attempts to access the GitHub organization and initiates the SAML SSO process, and is
-// not currently signed in to their GitHub account.
-// 1. After successfully authenticating with the SAML SSO IdP, the `null` external identity entry is
-// created and the user is prompted to sign in to their GitHub account:
-// - If the user signs in, their GitHub account is linked to this entry.
-// - If the user does not sign in (or does not create a new account when prompted), they are not
-// added to the GitHub organization, and the external identity `null` entry remains in place.
+//
+//   - When a user with a SCIM-provisioned external identity is removed from an organization, the
+//     account's metadata is preserved to allow the user to re-join the organization in the future.
+//   - When inviting a user to join an organization, you can expect to see their external identity in
+//     the results before they accept the invitation, or if the invitation is cancelled (or never
+//     accepted).
+//   - When a user is invited over SCIM, an external identity is created that matches with the invitee's
+//     email address. However, this identity is only linked to a user account when the user accepts the
+//     invitation by going through SAML SSO.
+//
+// The returned list of external identities can include an entry for a `null` user. These are unlinked
+// SAML identities that are created when a user goes through the following Single Sign-On (SSO) process
+// but does not sign in to their GitHub account after completing SSO:
+//
+//  1. The user is granted access by the IdP and is not a member of the GitHub organization.
+//
+//  2. The user attempts to access the GitHub organization and initiates the SAML SSO process, and is
+//     not currently signed in to their GitHub account.
+//
+//  3. After successfully authenticating with the SAML SSO IdP, the `null` external identity entry is
+//     created and the user is prompted to sign in to their GitHub account:
+//
+//     - If the user signs in, their GitHub account is linked to this entry.
+//     - If the user does not sign in (or does not create a new account when prompted), they are not
+//     added to the GitHub organization, and the external identity `null` entry remains in place.
 //
 // GET /scim/v2/organizations/{org}/Users
 func (s *Server) handleScimListProvisionedIdentitiesRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -99703,15 +100348,18 @@ func (s *Server) handleScimProvisionAndInviteUserRequest(args [1]string, argsEsc
 // handleScimSetInformationForProvisionedUserRequest handles scim/set-information-for-provisioned-user operation.
 //
 // Replaces an existing provisioned user's information. You must provide all the information required
-// for the user as if you were provisioning them for the first time. Any existing user information
-// that you don't provide will be removed. If you want to only update a specific attribute, use the
-// [Update an attribute for a SCIM user](https://docs.github.
-// com/rest/reference/scim#update-an-attribute-for-a-scim-user) endpoint instead.
+// for the user as if you were provisioning them for the first time. Any existing user information that
+// you don't provide will be removed. If you want to only update a specific attribute, use the
+// [Update an attribute for a SCIM user] endpoint instead.
+//
 // You must at least provide the required values for the user: `userName`, `name`, and `emails`.
-// **Warning:** Setting `active: false` removes the user from the organization, deletes the external
+//
+// Warning: Setting `active: false` removes the user from the organization, deletes the external
 // identity, and deletes the associated `{scim_user_id}`.
 //
 // PUT /scim/v2/organizations/{org}/Users/{scim_user_id}
+//
+// [Update an attribute for a SCIM user]: https://docs.github.com/rest/reference/scim#update-an-attribute-for-a-scim-user
 func (s *Server) handleScimSetInformationForProvisionedUserRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -99871,29 +100519,30 @@ func (s *Server) handleScimSetInformationForProvisionedUserRequest(args [2]strin
 
 // handleScimUpdateAttributeForUserRequest handles scim/update-attribute-for-user operation.
 //
-// Allows you to change a provisioned user's individual attributes. To change a user's values, you
-// must provide a specific `Operations` JSON format that contains at least one of the `add`, `remove`,
+// Allows you to change a provisioned user's individual attributes. To change a user's values, you must
+// provide a specific `Operations` JSON format that contains at least one of the `add`, `remove`, or
+// `replace` operations. For examples and more information on the SCIM operations format, see the
+// [SCIM specification].
 //
-//	or `replace` operations. For examples and more information on the SCIM operations format, see the
-//
-// [SCIM specification](https://tools.ietf.org/html/rfc7644#section-3.5.2).
-// **Note:** Complicated SCIM `path` selectors that include filters are not supported. For example, a
+// Note: Complicated SCIM `path` selectors that include filters are not supported. For example, a
 // `path` selector defined as `"path": "emails[type eq \"work\"]"` will not work.
-// **Warning:** If you set `active:false` using the `replace` operation (as shown in the JSON example
+//
+// Warning: If you set `active:false` using the `replace` operation (as shown in the JSON example
 // below), it removes the user from the organization, deletes the external identity, and deletes the
 // associated `:scim_user_id`.
-// ```
-// {
-// "Operations":[{
-// "op":"replace",
-// "value":{
-// "active":false
-// }
-// }]
-// }
-// ```.
+//
+//	{
+//	  "Operations":[{
+//	    "op":"replace",
+//	    "value":{
+//	      "active":false
+//	    }
+//	  }]
+//	}
 //
 // PATCH /scim/v2/organizations/{org}/Users/{scim_user_id}
+//
+// [SCIM specification]: https://tools.ietf.org/html/rfc7644#section-3.5.2
 func (s *Server) handleScimUpdateAttributeForUserRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -100053,28 +100702,36 @@ func (s *Server) handleScimUpdateAttributeForUserRequest(args [2]string, argsEsc
 
 // handleSearchCodeRequest handles search/code operation.
 //
-// Searches for query terms inside of a file. This method returns up to 100 results [per
-// page](https://docs.github.com/rest/overview/resources-in-the-rest-api#pagination).
-// When searching for code, you can get text match metadata for the file **content** and file
-// **path** fields when you pass the `text-match` media type. For more details about how to receive
-// highlighted search results, see [Text match metadata](https://docs.github.
-// com/rest/reference/search#text-match-metadata).
-// For example, if you want to find the definition of the `addClass` function inside
-// [jQuery](https://github.com/jquery/jquery) repository, your query would look something like this:
+// Searches for query terms inside of a file. This method returns up to 100 results [per page].
+//
+// When searching for code, you can get text match metadata for the file content and file path fields
+// when you pass the `text-match` media type. For more details about how to receive highlighted search
+// results, see [Text match metadata].
+//
+// For example, if you want to find the definition of the `addClass` function inside [jQuery]
+// repository, your query would look something like this:
+//
 // `q=addClass+in:file+language:js+repo:jquery/jquery`
-// This query searches for the keyword `addClass` within a file's contents. The query limits the
-// search to files where the language is JavaScript in the `jquery/jquery` repository.
-// #### Considerations for code search
-// Due to the complexity of searching code, there are a few restrictions on how searches are
-// performed:
-// *   Only the _default branch_ is considered. In most cases, this will be the `master` branch.
-// *   Only files smaller than 384 KB are searchable.
-// *   You must always include at least one search term when searching source code. For example,
-// searching for [`language:go`](https://github.com/search?utf8=%E2%9C%93&q=language%3Ago&type=Code)
-// is not valid, while [`amazing
-// language:go`](https://github.com/search?utf8=%E2%9C%93&q=amazing+language%3Ago&type=Code) is.
+//
+// This query searches for the keyword `addClass` within a file's contents. The query limits the search
+// to files where the language is JavaScript in the `jquery/jquery` repository.
+//
+// # Considerations for code search
+//
+// Due to the complexity of searching code, there are a few restrictions on how searches are performed:
+//
+//   - Only the default branch is considered. In most cases, this will be the `master` branch.
+//   - Only files smaller than 384 KB are searchable.
+//   - You must always include at least one search term when searching source code. For example,
+//     searching for [language:go] is not valid, while [amazing language:go] is.
 //
 // GET /search/code
+//
+// [per page]: https://docs.github.com/rest/overview/resources-in-the-rest-api#pagination
+// [Text match metadata]: https://docs.github.com/rest/reference/search#text-match-metadata
+// [jQuery]: https://github.com/jquery/jquery
+// [language:go]: https://github.com/search?utf8=%E2%9C%93&q=language%3Ago&type=Code
+// [amazing language:go]: https://github.com/search?utf8=%E2%9C%93&q=amazing+language%3Ago&type=Code
 func (s *Server) handleSearchCodeRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -100232,18 +100889,22 @@ func (s *Server) handleSearchCodeRequest(args [0]string, argsEscaped bool, w htt
 // handleSearchCommitsRequest handles search/commits operation.
 //
 // Find commits via various criteria on the default branch (usually `master`). This method returns up
-// to 100 results [per page](https://docs.github.
-// com/rest/overview/resources-in-the-rest-api#pagination).
-// When searching for commits, you can get text match metadata for the **message** field when you
-// provide the `text-match` media type. For more details about how to receive highlighted search
-// results, see [Text match
-// metadata](https://docs.github.com/rest/reference/search#text-match-metadata).
-// For example, if you want to find commits related to CSS in the
-// [octocat/Spoon-Knife](https://github.com/octocat/Spoon-Knife) repository. Your query would look
-// something like this:
+// to 100 results [per page].
+//
+// When searching for commits, you can get text match metadata for the message field when you provide
+// the `text-match` media type. For more details about how to receive highlighted search results, see
+// [Text matchmetadata].
+//
+// For example, if you want to find commits related to CSS in the [octocat/Spoon-Knife] repository.
+// Your query would look something like this:
+//
 // `q=repo:octocat/Spoon-Knife+css`.
 //
 // GET /search/commits
+//
+// [per page]: https://docs.github.com/rest/overview/resources-in-the-rest-api#pagination
+// [Text matchmetadata]: https://docs.github.com/rest/reference/search#text-match-metadata
+// [octocat/Spoon-Knife]: https://github.com/octocat/Spoon-Knife
 func (s *Server) handleSearchCommitsRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -100400,31 +101061,33 @@ func (s *Server) handleSearchCommitsRequest(args [0]string, argsEscaped bool, w 
 
 // handleSearchIssuesAndPullRequestsRequest handles search/issues-and-pull-requests operation.
 //
-// Find issues by state and keyword. This method returns up to 100 results [per page](https://docs.
-// github.com/rest/overview/resources-in-the-rest-api#pagination).
-// When searching for issues, you can get text match metadata for the issue **title**, issue **body**,
+// Find issues by state and keyword. This method returns up to 100 results [per page].
 //
-//	and issue **comment body** fields when you pass the `text-match` media type. For more details
+// When searching for issues, you can get text match metadata for the issue title, issue body, and
+// issue comment body fields when you pass the `text-match` media type. For more details about how to
+// receive highlighted search results, see [Text match metadata].
 //
-// about how to receive highlighted
-// search results, see [Text match metadata](https://docs.github.
-// com/rest/reference/search#text-match-metadata).
-// For example, if you want to find the oldest unresolved Python bugs on Windows. Your query might
-// look something like this.
+// For example, if you want to find the oldest unresolved Python bugs on Windows. Your query might look
+// something like this.
+//
 // `q=windows+label:bug+language:python+state:open&sort=created&order=asc`
+//
 // This query searches for the keyword `windows`, within any open issue that is labeled as `bug`. The
-// search runs across repositories whose primary language is Python. The results are sorted by
-// creation date in ascending order, which means the oldest issues appear first in the search results.
-// **Note:** For [user-to-server](https://docs.github.
-// com/developers/apps/identifying-and-authorizing-users-for-github-apps#user-to-server-requests)
-// GitHub App requests, you can't retrieve a combination of issues and pull requests in a single
-// query. Requests that don't include the `is:issue` or `is:pull-request` qualifier will receive an
-// HTTP `422 Unprocessable Entity` response. To get results for both issues and pull requests, you
-// must send separate queries for issues and pull requests. For more information about the `is`
-// qualifier, see "[Searching only issues or pull requests](https://docs.github.
-// com/github/searching-for-information-on-github/searching-issues-and-pull-requests#search-only-issues-or-pull-requests).".
+// search runs across repositories whose primary language is Python. The results are sorted by creation
+// date in ascending order, which means the oldest issues appear first in the search results.
+//
+// Note: For [user-to-server] GitHub App requests, you can't retrieve a combination of issues and pull
+// requests in a single query. Requests that don't include the `is:issue` or `is:pull-request`
+// qualifier will receive an HTTP `422 Unprocessable Entity` response. To get results for both issues
+// and pull requests, you must send separate queries for issues and pull requests. For more information
+// about the `is` qualifier, see "[Searching only issues or pull requests].".
 //
 // GET /search/issues
+//
+// [per page]: https://docs.github.com/rest/overview/resources-in-the-rest-api#pagination
+// [Text match metadata]: https://docs.github.com/rest/reference/search#text-match-metadata
+// [user-to-server]: https://docs.github.com/developers/apps/identifying-and-authorizing-users-for-github-apps#user-to-server-requests
+// [Searching only issues or pull requests]: https://docs.github.com/github/searching-for-information-on-github/searching-issues-and-pull-requests#search-only-issues-or-pull-requests
 func (s *Server) handleSearchIssuesAndPullRequestsRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -100581,18 +101244,24 @@ func (s *Server) handleSearchIssuesAndPullRequestsRequest(args [0]string, argsEs
 
 // handleSearchLabelsRequest handles search/labels operation.
 //
-// Find labels in a repository with names or descriptions that match search keywords. Returns up to
-// 100 results [per page](https://docs.github.com/rest/overview/resources-in-the-rest-api#pagination).
-// When searching for labels, you can get text match metadata for the label **name** and
-// **description** fields when you pass the `text-match` media type. For more details about how to
-// receive highlighted search results, see [Text match metadata](https://docs.github.
-// com/rest/reference/search#text-match-metadata).
-// For example, if you want to find labels in the `linguist` repository that match `bug`, `defect`,
-// or `enhancement`. Your query might look like this:
+// Find labels in a repository with names or descriptions that match search keywords. Returns up to 100
+// results [per page].
+//
+// When searching for labels, you can get text match metadata for the label name and description fields
+// when you pass the `text-match` media type. For more details about how to receive highlighted search
+// results, see [Text match metadata].
+//
+// For example, if you want to find labels in the `linguist` repository that match `bug`, `defect`, or
+// `enhancement`. Your query might look like this:
+//
 // `q=bug+defect+enhancement&repository_id=64778136`
+//
 // The labels that best match the query appear first in the search results.
 //
 // GET /search/labels
+//
+// [per page]: https://docs.github.com/rest/overview/resources-in-the-rest-api#pagination
+// [Text match metadata]: https://docs.github.com/rest/reference/search#text-match-metadata
 func (s *Server) handleSearchLabelsRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -100753,24 +101422,31 @@ func (s *Server) handleSearchLabelsRequest(args [0]string, argsEscaped bool, w h
 
 // handleSearchReposRequest handles search/repos operation.
 //
-// Find repositories via various criteria. This method returns up to 100 results [per
-// page](https://docs.github.com/rest/overview/resources-in-the-rest-api#pagination).
-// When searching for repositories, you can get text match metadata for the **name** and
-// **description** fields when you pass the `text-match` media type. For more details about how to
-// receive highlighted search results, see [Text match metadata](https://docs.github.
-// com/rest/reference/search#text-match-metadata).
+// Find repositories via various criteria. This method returns up to 100 results [per page].
+//
+// When searching for repositories, you can get text match metadata for the name and description fields
+// when you pass the `text-match` media type. For more details about how to receive highlighted search
+// results, see [Text match metadata].
+//
 // For example, if you want to search for popular Tetris repositories written in assembly code, your
 // query might look like this:
+//
 // `q=tetris+language:assembly&sort=stars&order=desc`
+//
 // This query searches for repositories with the word `tetris` in the name, the description, or the
-// README. The results are limited to repositories where the primary language is assembly. The
-// results are sorted by stars in descending order, so that the most popular repositories appear
-// first in the search results.
-// When you include the `mercy` preview header, you can also search for multiple topics by adding
-// more `topic:` instances. For example, your query might look like this:
+// README. The results are limited to repositories where the primary language is assembly. The results
+// are sorted by stars in descending order, so that the most popular repositories appear first in the
+// search results.
+//
+// When you include the `mercy` preview header, you can also search for multiple topics by adding more
+// `topic:` instances. For example, your query might look like this:
+//
 // `q=topic:ruby+topic:rails`.
 //
 // GET /search/repositories
+//
+// [per page]: https://docs.github.com/rest/overview/resources-in-the-rest-api#pagination
+// [Text match metadata]: https://docs.github.com/rest/reference/search#text-match-metadata
 func (s *Server) handleSearchReposRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -100928,21 +101604,26 @@ func (s *Server) handleSearchReposRequest(args [0]string, argsEscaped bool, w ht
 // handleSearchTopicsRequest handles search/topics operation.
 //
 // Find topics via various criteria. Results are sorted by best match. This method returns up to 100
-// results [per page](https://docs.github.com/rest/overview/resources-in-the-rest-api#pagination).
-// See "[Searching topics](https://help.github.com/articles/searching-topics/)" for a detailed list
-// of qualifiers.
-// When searching for topics, you can get text match metadata for the topic's **short\_description**,
-// **description**, **name**, or **display\_name** field when you pass the `text-match` media type.
-// For more details about how to receive highlighted search results, see [Text match
-// metadata](https://docs.github.com/rest/reference/search#text-match-metadata).
-// For example, if you want to search for topics related to Ruby that are featured on https://github.
-// com/topics. Your query might look like this:
+// results [per page]. See "[Searching topics]" for a detailed list of qualifiers.
+//
+// When searching for topics, you can get text match metadata for the topic's short\_description,
+// description, name, or display\_name field when you pass the `text-match` media type. For more
+// details about how to receive highlighted search results, see [Text match metadata].
+//
+// For example, if you want to search for topics related to Ruby that are featured on
+// https://github.com/topics. Your query might look like this:
+//
 // `q=ruby+is:featured`
+//
 // This query searches for topics with the keyword `ruby` and limits the results to find only topics
 // that are featured. The topics that are the best match for the query appear first in the search
 // results.
 //
 // GET /search/topics
+//
+// [per page]: https://docs.github.com/rest/overview/resources-in-the-rest-api#pagination
+// [Searching topics]: https://help.github.com/articles/searching-topics/
+// [Text match metadata]: https://docs.github.com/rest/reference/search#text-match-metadata
 func (s *Server) handleSearchTopicsRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -101091,20 +101772,24 @@ func (s *Server) handleSearchTopicsRequest(args [0]string, argsEscaped bool, w h
 
 // handleSearchUsersRequest handles search/users operation.
 //
-// Find users via various criteria. This method returns up to 100 results [per page](https://docs.
-// github.com/rest/overview/resources-in-the-rest-api#pagination).
-// When searching for users, you can get text match metadata for the issue **login**, **email**, and
-// **name** fields when you pass the `text-match` media type. For more details about highlighting
-// search results, see [Text match metadata](https://docs.github.
-// com/rest/reference/search#text-match-metadata). For more details about how to receive highlighted
-// search results, see [Text match metadata](https://docs.github.
-// com/rest/reference/search#text-match-metadata).
+// Find users via various criteria. This method returns up to 100 results [per page].
+//
+// When searching for users, you can get text match metadata for the issue login, email, and name
+// fields when you pass the `text-match` media type. For more details about highlighting search
+// results, see [Text match metadata]. For more details about how to receive highlighted search
+// results, see [Text match metadata].
+//
 // For example, if you're looking for a list of popular users, you might try this query:
+//
 // `q=tom+repos:%3E42+followers:%3E1000`
+//
 // This query searches for users with the name `tom`. The results are restricted to users with more
 // than 42 repositories and over 1,000 followers.
 //
 // GET /search/users
+//
+// [per page]: https://docs.github.com/rest/overview/resources-in-the-rest-api#pagination
+// [Text match metadata]: https://docs.github.com/rest/reference/search#text-match-metadata
 func (s *Server) handleSearchUsersRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -101261,9 +101946,10 @@ func (s *Server) handleSearchUsersRequest(args [0]string, argsEscaped bool, w ht
 
 // handleSecretScanningGetAlertRequest handles secret-scanning/get-alert operation.
 //
-// Gets a single secret scanning alert detected in a private repository. To use this endpoint, you
-// must be an administrator for the repository or organization, and you must use an access token with
-// the `repo` scope or `security_events` scope.
+// Gets a single secret scanning alert detected in a private repository. To use this endpoint, you must
+// be an administrator for the repository or organization, and you must use an access token with the
+// `repo` scope or `security_events` scope.
+//
 // GitHub Apps must have the `secret_scanning_alerts` read permission to use this endpoint.
 //
 // GET /repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}
@@ -101416,9 +102102,9 @@ func (s *Server) handleSecretScanningGetAlertRequest(args [3]string, argsEscaped
 // handleSecretScanningListAlertsForOrgRequest handles secret-scanning/list-alerts-for-org operation.
 //
 // Lists all secret scanning alerts for all eligible repositories in an organization, from newest to
-// oldest.
-// To use this endpoint, you must be an administrator for the repository or organization, and you
-// must use an access token with the `repo` scope or `security_events` scope.
+// oldest. To use this endpoint, you must be an administrator for the repository or organization, and
+// you must use an access token with the `repo` scope or `security_events` scope.
+//
 // GitHub Apps must have the `secret_scanning_alerts` read permission to use this endpoint.
 //
 // GET /orgs/{org}/secret-scanning/alerts
@@ -101581,6 +102267,7 @@ func (s *Server) handleSecretScanningListAlertsForOrgRequest(args [1]string, arg
 // Lists all secret scanning alerts for a private repository, from newest to oldest. To use this
 // endpoint, you must be an administrator for the repository or organization, and you must use an
 // access token with the `repo` scope or `security_events` scope.
+//
 // GitHub Apps must have the `secret_scanning_alerts` read permission to use this endpoint.
 //
 // GET /repos/{owner}/{repo}/secret-scanning/alerts
@@ -101747,6 +102434,7 @@ func (s *Server) handleSecretScanningListAlertsForRepoRequest(args [2]string, ar
 // Updates the status of a secret scanning alert in a private repository. To use this endpoint, you
 // must be an administrator for the repository or organization, and you must use an access token with
 // the `repo` scope or `security_events` scope.
+//
 // GitHub Apps must have the `secret_scanning_alerts` write permission to use this endpoint.
 //
 // PATCH /repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}
@@ -101914,29 +102602,35 @@ func (s *Server) handleSecretScanningUpdateAlertRequest(args [3]string, argsEsca
 // handleTeamsAddMemberLegacyRequest handles teams/add-member-legacy operation.
 //
 // The "Add team member" endpoint (described below) is deprecated.
-// We recommend using the [Add or update team membership for a user](https://docs.github.
-// com/rest/reference/teams#add-or-update-team-membership-for-a-user) endpoint instead. It allows you
-// to invite new organization members to your teams.
+//
+// We recommend using the [Add or update team membership for a user] endpoint instead. It allows you to
+// invite new organization members to your teams.
+//
 // Team synchronization is available for organizations using GitHub Enterprise Cloud. For more
-// information, see [GitHub's products](https://help.github.
-// com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-// To add someone to a team, the authenticated user must be an organization owner or a team
-// maintainer in the team they're changing. The person being added to the team must be a member of
-// the team's organization.
-// **Note:** When you have team synchronization set up for a team with your organization's identity
-// provider (IdP), you will see an error if you attempt to use the API for making changes to the
-// team's membership. If you have access to manage group membership in your IdP, you can manage
-// GitHub team membership through your identity provider, which automatically adds and removes team
-// members in an organization. For more information, see "[Synchronizing teams between your identity
-// provider and GitHub](https://help.github.
-// com/articles/synchronizing-teams-between-your-identity-provider-and-github/)."
+// information, see [GitHub's products] in the GitHub Help documentation.
+//
+// To add someone to a team, the authenticated user must be an organization owner or a team maintainer
+// in the team they're changing. The person being added to the team must be a member of the team's
+// organization.
+//
+// Note: When you have team synchronization set up for a team with your organization's identity
+// provider (IdP), you will see an error if you attempt to use the API for making changes to the team's
+// membership. If you have access to manage group membership in your IdP, you can manage GitHub team
+// membership through your identity provider, which automatically adds and removes team members in an
+// organization. For more information, see
+// "[Synchronizing teams between your identity provider and GitHub]."
+//
 // Note that you'll need to set `Content-Length` to zero when calling out to this endpoint. For more
-// information, see "[HTTP verbs](https://docs.github.
-// com/rest/overview/resources-in-the-rest-api#http-verbs).".
+// information, see "[HTTP verbs].".
 //
 // Deprecated: schema marks this operation as deprecated.
 //
 // PUT /teams/{team_id}/members/{username}
+//
+// [Add or update team membership for a user]: https://docs.github.com/rest/reference/teams#add-or-update-team-membership-for-a-user
+// [GitHub's products]: https://help.github.com/github/getting-started-with-github/githubs-products
+// [Synchronizing teams between your identity provider and GitHub]: https://help.github.com/articles/synchronizing-teams-between-your-identity-provider-and-github/
+// [HTTP verbs]: https://docs.github.com/rest/overview/resources-in-the-rest-api#http-verbs
 func (s *Server) handleTeamsAddMemberLegacyRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -102082,29 +102776,35 @@ func (s *Server) handleTeamsAddMemberLegacyRequest(args [2]string, argsEscaped b
 // handleTeamsAddOrUpdateMembershipForUserInOrgRequest handles teams/add-or-update-membership-for-user-in-org operation.
 //
 // Team synchronization is available for organizations using GitHub Enterprise Cloud. For more
-// information, see [GitHub's products](https://help.github.
-// com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+// information, see [GitHub's products] in the GitHub Help documentation.
+//
 // Adds an organization member to a team. An authenticated organization owner or team maintainer can
 // add organization members to a team.
-// **Note:** When you have team synchronization set up for a team with your organization's identity
-// provider (IdP), you will see an error if you attempt to use the API for making changes to the
-// team's membership. If you have access to manage group membership in your IdP, you can manage
-// GitHub team membership through your identity provider, which automatically adds and removes team
-// members in an organization. For more information, see "[Synchronizing teams between your identity
-// provider and GitHub](https://help.github.
-// com/articles/synchronizing-teams-between-your-identity-provider-and-github/)."
-// An organization owner can add someone who is not part of the team's organization to a team. When
-// an organization owner adds someone to a team who is not an organization member, this endpoint will
-// send an invitation to the person via email. This newly-created membership will be in the "pending"
-// state until the person accepts the invitation, at which point the membership will transition to
-// the "active" state and the user will be added as a member of the team.
-// If the user is already a member of the team, this endpoint will update the role of the team
-// member's role. To update the membership of a team member, the authenticated user must be an
-// organization owner or a team maintainer.
-// **Note:** You can also specify a team by `org_id` and `team_id` using the route `PUT
-// /organizations/{org_id}/team/{team_id}/memberships/{username}`.
+//
+// Note: When you have team synchronization set up for a team with your organization's identity
+// provider (IdP), you will see an error if you attempt to use the API for making changes to the team's
+// membership. If you have access to manage group membership in your IdP, you can manage GitHub team
+// membership through your identity provider, which automatically adds and removes team members in an
+// organization. For more information, see
+// "[Synchronizing teams between your identity provider and GitHub]."
+//
+// An organization owner can add someone who is not part of the team's organization to a team. When an
+// organization owner adds someone to a team who is not an organization member, this endpoint will send
+// an invitation to the person via email. This newly-created membership will be in the "pending" state
+// until the person accepts the invitation, at which point the membership will transition to the
+// "active" state and the user will be added as a member of the team.
+//
+// If the user is already a member of the team, this endpoint will update the role of the team member's
+// role. To update the membership of a team member, the authenticated user must be an organization
+// owner or a team maintainer.
+//
+// Note: You can also specify a team by `org_id` and `team_id` using the route
+// `PUT /organizations/{org_id}/team/{team_id}/memberships/{username}`.
 //
 // PUT /orgs/{org}/teams/{team_slug}/memberships/{username}
+//
+// [GitHub's products]: https://help.github.com/github/getting-started-with-github/githubs-products
+// [Synchronizing teams between your identity provider and GitHub]: https://help.github.com/articles/synchronizing-teams-between-your-identity-provider-and-github/
 func (s *Server) handleTeamsAddOrUpdateMembershipForUserInOrgRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -102268,35 +102968,41 @@ func (s *Server) handleTeamsAddOrUpdateMembershipForUserInOrgRequest(args [3]str
 
 // handleTeamsAddOrUpdateMembershipForUserLegacyRequest handles teams/add-or-update-membership-for-user-legacy operation.
 //
-// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
-// We recommend migrating your existing code to use the new [Add or update team membership for a
-// user](https://docs.github.com/rest/reference/teams#add-or-update-team-membership-for-a-user)
+// Deprecation Notice: This endpoint route is deprecated and will be removed from the Teams API. We
+// recommend migrating your existing code to use the new [Add or update team membership for a user]
 // endpoint.
+//
 // Team synchronization is available for organizations using GitHub Enterprise Cloud. For more
-// information, see [GitHub's products](https://help.github.
-// com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+// information, see [GitHub's products] in the GitHub Help documentation.
+//
 // If the user is already a member of the team's organization, this endpoint will add the user to the
-// team. To add a membership between an organization member and a team, the authenticated user must
-// be an organization owner or a team maintainer.
-// **Note:** When you have team synchronization set up for a team with your organization's identity
-// provider (IdP), you will see an error if you attempt to use the API for making changes to the
-// team's membership. If you have access to manage group membership in your IdP, you can manage
-// GitHub team membership through your identity provider, which automatically adds and removes team
-// members in an organization. For more information, see "[Synchronizing teams between your identity
-// provider and GitHub](https://help.github.
-// com/articles/synchronizing-teams-between-your-identity-provider-and-github/)."
+// team. To add a membership between an organization member and a team, the authenticated user must be
+// an organization owner or a team maintainer.
+//
+// Note: When you have team synchronization set up for a team with your organization's identity
+// provider (IdP), you will see an error if you attempt to use the API for making changes to the team's
+// membership. If you have access to manage group membership in your IdP, you can manage GitHub team
+// membership through your identity provider, which automatically adds and removes team members in an
+// organization. For more information, see
+// "[Synchronizing teams between your identity provider and GitHub]."
+//
 // If the user is unaffiliated with the team's organization, this endpoint will send an invitation to
 // the user via email. This newly-created membership will be in the "pending" state until the user
-// accepts the invitation, at which point the membership will transition to the "active" state and
-// the user will be added as a member of the team. To add a membership between an unaffiliated user
-// and a team, the authenticated user must be an organization owner.
-// If the user is already a member of the team, this endpoint will update the role of the team
-// member's role. To update the membership of a team member, the authenticated user must be an
-// organization owner or a team maintainer.
+// accepts the invitation, at which point the membership will transition to the "active" state and the
+// user will be added as a member of the team. To add a membership between an unaffiliated user and a
+// team, the authenticated user must be an organization owner.
+//
+// If the user is already a member of the team, this endpoint will update the role of the team member's
+// role. To update the membership of a team member, the authenticated user must be an organization
+// owner or a team maintainer.
 //
 // Deprecated: schema marks this operation as deprecated.
 //
 // PUT /teams/{team_id}/memberships/{username}
+//
+// [Add or update team membership for a user]: https://docs.github.com/rest/reference/teams#add-or-update-team-membership-for-a-user
+// [GitHub's products]: https://help.github.com/github/getting-started-with-github/githubs-products
+// [Synchronizing teams between your identity provider and GitHub]: https://help.github.com/articles/synchronizing-teams-between-your-identity-provider-and-github/
 func (s *Server) handleTeamsAddOrUpdateMembershipForUserLegacyRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -102457,10 +103163,11 @@ func (s *Server) handleTeamsAddOrUpdateMembershipForUserLegacyRequest(args [2]st
 // handleTeamsAddOrUpdateProjectPermissionsInOrgRequest handles teams/add-or-update-project-permissions-in-org operation.
 //
 // Adds an organization project to a team. To add a project to a team or update the team's permission
-// on a project, the authenticated user must have `admin` permissions for the project. The project
-// and team must be part of the same organization.
-// **Note:** You can also specify a team by `org_id` and `team_id` using the route `PUT
-// /organizations/{org_id}/team/{team_id}/projects/{project_id}`.
+// on a project, the authenticated user must have `admin` permissions for the project. The project and
+// team must be part of the same organization.
+//
+// Note: You can also specify a team by `org_id` and `team_id` using the route
+// `PUT /organizations/{org_id}/team/{team_id}/projects/{project_id}`.
 //
 // PUT /orgs/{org}/teams/{team_slug}/projects/{project_id}
 func (s *Server) handleTeamsAddOrUpdateProjectPermissionsInOrgRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -102626,17 +103333,19 @@ func (s *Server) handleTeamsAddOrUpdateProjectPermissionsInOrgRequest(args [3]st
 
 // handleTeamsAddOrUpdateProjectPermissionsLegacyRequest handles teams/add-or-update-project-permissions-legacy operation.
 //
-// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
-// We recommend migrating your existing code to use the new [Add or update team project
-// permissions](https://docs.github.com/rest/reference/teams#add-or-update-team-project-permissions)
+// Deprecation Notice: This endpoint route is deprecated and will be removed from the Teams API. We
+// recommend migrating your existing code to use the new [Add or update team project permissions]
 // endpoint.
+//
 // Adds an organization project to a team. To add a project to a team or update the team's permission
-// on a project, the authenticated user must have `admin` permissions for the project. The project
-// and team must be part of the same organization.
+// on a project, the authenticated user must have `admin` permissions for the project. The project and
+// team must be part of the same organization.
 //
 // Deprecated: schema marks this operation as deprecated.
 //
 // PUT /teams/{team_id}/projects/{project_id}
+//
+// [Add or update team project permissions]: https://docs.github.com/rest/reference/teams#add-or-update-team-project-permissions
 func (s *Server) handleTeamsAddOrUpdateProjectPermissionsLegacyRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -102797,19 +103506,23 @@ func (s *Server) handleTeamsAddOrUpdateProjectPermissionsLegacyRequest(args [2]s
 // handleTeamsAddOrUpdateRepoPermissionsInOrgRequest handles teams/add-or-update-repo-permissions-in-org operation.
 //
 // To add a repository to a team or update the team's permission on a repository, the authenticated
-// user must have admin access to the repository, and must be able to see the team. The repository
-// must be owned by the organization, or a direct fork of a repository owned by the organization. You
-// will get a `422 Unprocessable Entity` status if you attempt to add a repository to a team that is
-// not owned by the organization. Note that, if you choose not to pass any parameters, you'll need to
-// set `Content-Length` to zero when calling out to this endpoint. For more information, see "[HTTP
-// verbs](https://docs.github.com/rest/overview/resources-in-the-rest-api#http-verbs)."
-// **Note:** You can also specify a team by `org_id` and `team_id` using the route `PUT
-// /organizations/{org_id}/team/{team_id}/repos/{owner}/{repo}`.
-// For more information about the permission levels, see "[Repository permission levels for an
-// organization](https://help.github.
-// com/en/github/setting-up-and-managing-organizations-and-teams/repository-permission-levels-for-an-organization#permission-levels-for-repositories-owned-by-an-organization)".
+// user must have admin access to the repository, and must be able to see the team. The repository must
+// be owned by the organization, or a direct fork of a repository owned by the organization. You will
+// get a `422 Unprocessable Entity` status if you attempt to add a repository to a team that is not
+// owned by the organization. Note that, if you choose not to pass any parameters, you'll need to set
+// `Content-Length` to zero when calling out to this endpoint. For more information, see
+// "[HTTP verbs]."
+//
+// Note: You can also specify a team by `org_id` and `team_id` using the route
+// `PUT /organizations/{org_id}/team/{team_id}/repos/{owner}/{repo}`.
+//
+// For more information about the permission levels, see
+// "[Repository permission levels for an organization]".
 //
 // PUT /orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}
+//
+// [HTTP verbs]: https://docs.github.com/rest/overview/resources-in-the-rest-api#http-verbs
+// [Repository permission levels for an organization]: https://help.github.com/en/github/setting-up-and-managing-organizations-and-teams/repository-permission-levels-for-an-organization#permission-levels-for-repositories-owned-by-an-organization
 func (s *Server) handleTeamsAddOrUpdateRepoPermissionsInOrgRequest(args [4]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -102977,22 +103690,25 @@ func (s *Server) handleTeamsAddOrUpdateRepoPermissionsInOrgRequest(args [4]strin
 
 // handleTeamsAddOrUpdateRepoPermissionsLegacyRequest handles teams/add-or-update-repo-permissions-legacy operation.
 //
-// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
-// We recommend migrating your existing code to use the new "[Add or update team repository
-// permissions](https://docs.github.
-// com/rest/reference/teams#add-or-update-team-repository-permissions)" endpoint.
+// Deprecation Notice: This endpoint route is deprecated and will be removed from the Teams API. We
+// recommend migrating your existing code to use the new "[Add or update team repository permissions]"
+// endpoint.
+//
 // To add a repository to a team or update the team's permission on a repository, the authenticated
-// user must have admin access to the repository, and must be able to see the team. The repository
-// must be owned by the organization, or a direct fork of a repository owned by the organization. You
-// will get a `422 Unprocessable Entity` status if you attempt to add a repository to a team that is
-// not owned by the organization.
+// user must have admin access to the repository, and must be able to see the team. The repository must
+// be owned by the organization, or a direct fork of a repository owned by the organization. You will
+// get a `422 Unprocessable Entity` status if you attempt to add a repository to a team that is not
+// owned by the organization.
+//
 // Note that, if you choose not to pass any parameters, you'll need to set `Content-Length` to zero
-// when calling out to this endpoint. For more information, see "[HTTP verbs](https://docs.github.
-// com/rest/overview/resources-in-the-rest-api#http-verbs).".
+// when calling out to this endpoint. For more information, see "[HTTP verbs].".
 //
 // Deprecated: schema marks this operation as deprecated.
 //
 // PUT /teams/{team_id}/repos/{owner}/{repo}
+//
+// [Add or update team repository permissions]: https://docs.github.com/rest/reference/teams#add-or-update-team-repository-permissions
+// [HTTP verbs]: https://docs.github.com/rest/overview/resources-in-the-rest-api#http-verbs
 func (s *Server) handleTeamsAddOrUpdateRepoPermissionsLegacyRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -103158,8 +103874,9 @@ func (s *Server) handleTeamsAddOrUpdateRepoPermissionsLegacyRequest(args [3]stri
 //
 // Checks whether a team has `read`, `write`, or `admin` permissions for an organization project. The
 // response includes projects inherited from a parent team.
-// **Note:** You can also specify a team by `org_id` and `team_id` using the route `GET
-// /organizations/{org_id}/team/{team_id}/projects/{project_id}`.
+//
+// Note: You can also specify a team by `org_id` and `team_id` using the route
+// `GET /organizations/{org_id}/team/{team_id}/projects/{project_id}`.
 //
 // GET /orgs/{org}/teams/{team_slug}/projects/{project_id}
 func (s *Server) handleTeamsCheckPermissionsForProjectInOrgRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -103310,16 +104027,18 @@ func (s *Server) handleTeamsCheckPermissionsForProjectInOrgRequest(args [3]strin
 
 // handleTeamsCheckPermissionsForProjectLegacyRequest handles teams/check-permissions-for-project-legacy operation.
 //
-// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
-// We recommend migrating your existing code to use the new [Check team permissions for a
-// project](https://docs.github.com/rest/reference/teams#check-team-permissions-for-a-project)
+// Deprecation Notice: This endpoint route is deprecated and will be removed from the Teams API. We
+// recommend migrating your existing code to use the new [Check team permissions for a project]
 // endpoint.
+//
 // Checks whether a team has `read`, `write`, or `admin` permissions for an organization project. The
 // response includes projects inherited from a parent team.
 //
 // Deprecated: schema marks this operation as deprecated.
 //
 // GET /teams/{team_id}/projects/{project_id}
+//
+// [Check team permissions for a project]: https://docs.github.com/rest/reference/teams#check-team-permissions-for-a-project
 func (s *Server) handleTeamsCheckPermissionsForProjectLegacyRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -103466,15 +104185,20 @@ func (s *Server) handleTeamsCheckPermissionsForProjectLegacyRequest(args [2]stri
 //
 // Checks whether a team has `admin`, `push`, `maintain`, `triage`, or `pull` permission for a
 // repository. Repositories inherited through a parent team will also be checked.
+//
 // You can also get information about the specified repository, including what permissions the team
-// grants on it, by passing the following custom [media type](https://docs.github.
-// com/rest/overview/media-types/) via the `application/vnd.github.v3.repository+json` accept header.
+// grants on it, by passing the following custom [media type] via the
+// `application/vnd.github.v3.repository+json` accept header.
+//
 // If a team doesn't have permission for the repository, you will receive a `404 Not Found` response
 // status.
-// **Note:** You can also specify a team by `org_id` and `team_id` using the route `GET
-// /organizations/{org_id}/team/{team_id}/repos/{owner}/{repo}`.
+//
+// Note: You can also specify a team by `org_id` and `team_id` using the route
+// `GET /organizations/{org_id}/team/{team_id}/repos/{owner}/{repo}`.
 //
 // GET /orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}
+//
+// [media type]: https://docs.github.com/rest/overview/media-types/
 func (s *Server) handleTeamsCheckPermissionsForRepoInOrgRequest(args [4]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -103627,18 +104351,21 @@ func (s *Server) handleTeamsCheckPermissionsForRepoInOrgRequest(args [4]string, 
 
 // handleTeamsCheckPermissionsForRepoLegacyRequest handles teams/check-permissions-for-repo-legacy operation.
 //
-// **Note**: Repositories inherited through a parent team will also be checked.
-// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
-// We recommend migrating your existing code to use the new [Check team permissions for a
-// repository](https://docs.github.com/rest/reference/teams#check-team-permissions-for-a-repository)
+// Note: Repositories inherited through a parent team will also be checked.
+//
+// Deprecation Notice: This endpoint route is deprecated and will be removed from the Teams API. We
+// recommend migrating your existing code to use the new [Check team permissions for a repository]
 // endpoint.
+//
 // You can also get information about the specified repository, including what permissions the team
-// grants on it, by passing the following custom [media type](https://docs.github.
-// com/rest/overview/media-types/) via the `Accept` header:.
+// grants on it, by passing the following custom [media type] via the `Accept` header:.
 //
 // Deprecated: schema marks this operation as deprecated.
 //
 // GET /teams/{team_id}/repos/{owner}/{repo}
+//
+// [Check team permissions for a repository]: https://docs.github.com/rest/reference/teams#check-team-permissions-for-a-repository
+// [media type]: https://docs.github.com/rest/overview/media-types/
 func (s *Server) handleTeamsCheckPermissionsForRepoLegacyRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -103789,14 +104516,15 @@ func (s *Server) handleTeamsCheckPermissionsForRepoLegacyRequest(args [3]string,
 //
 // To create a team, the authenticated user must be a member or owner of `{org}`. By default,
 // organization members can create teams. Organization owners can limit team creation to organization
-// owners. For more information, see "[Setting team creation permissions](https://help.github.
-// com/en/articles/setting-team-creation-permissions-in-your-organization)."
+// owners. For more information, see "[Setting team creation permissions]."
+//
 // When you create a new team, you automatically become a team maintainer without explicitly adding
-// yourself to the optional array of `maintainers`. For more information, see "[About
-// teams](https://help.github.
-// com/en/github/setting-up-and-managing-organizations-and-teams/about-teams)".
+// yourself to the optional array of `maintainers`. For more information, see "[About teams]".
 //
 // POST /orgs/{org}/teams
+//
+// [Setting team creation permissions]: https://help.github.com/en/articles/setting-team-creation-permissions-in-your-organization
+// [About teams]: https://help.github.com/en/github/setting-up-and-managing-organizations-and-teams/about-teams
 func (s *Server) handleTeamsCreateRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -103953,18 +104681,21 @@ func (s *Server) handleTeamsCreateRequest(args [1]string, argsEscaped bool, w ht
 // handleTeamsCreateDiscussionCommentInOrgRequest handles teams/create-discussion-comment-in-org operation.
 //
 // Creates a new comment on a team discussion. OAuth access tokens require the `write:discussion`
-// [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
-// This endpoint triggers [notifications](https://docs.github.
-// com/en/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating
-// content too quickly using this endpoint may result in secondary rate limiting. See "[Secondary
-// rate limits](https://docs.github.
-// com/rest/overview/resources-in-the-rest-api#secondary-rate-limits)" and "[Dealing with secondary
-// rate limits](https://docs.github.
-// com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)" for details.
-// **Note:** You can also specify a team by `org_id` and `team_id` using the route `POST
-// /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}/comments`.
+// [scope].
+//
+// This endpoint triggers [notifications]. Creating content too quickly using this endpoint may result
+// in secondary rate limiting. See "[Secondary rate limits]" and "[Dealing with secondary rate limits]"
+// for details.
+//
+// Note: You can also specify a team by `org_id` and `team_id` using the route
+// `POST /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}/comments`.
 //
 // POST /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments
+//
+// [scope]: https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/
+// [notifications]: https://docs.github.com/en/github/managing-subscriptions-and-notifications-on-github/about-notifications
+// [Secondary rate limits]: https://docs.github.com/rest/overview/resources-in-the-rest-api#secondary-rate-limits
+// [Dealing with secondary rate limits]: https://docs.github.com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits
 func (s *Server) handleTeamsCreateDiscussionCommentInOrgRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -104128,22 +104859,25 @@ func (s *Server) handleTeamsCreateDiscussionCommentInOrgRequest(args [3]string, 
 
 // handleTeamsCreateDiscussionCommentLegacyRequest handles teams/create-discussion-comment-legacy operation.
 //
-// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
-// We recommend migrating your existing code to use the new [Create a discussion
-// comment](https://docs.github.com/rest/reference/teams#create-a-discussion-comment) endpoint.
+// Deprecation Notice: This endpoint route is deprecated and will be removed from the Teams API. We
+// recommend migrating your existing code to use the new [Create a discussion comment] endpoint.
+//
 // Creates a new comment on a team discussion. OAuth access tokens require the `write:discussion`
-// [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
-// This endpoint triggers [notifications](https://docs.github.
-// com/en/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating
-// content too quickly using this endpoint may result in secondary rate limiting. See "[Secondary
-// rate limits](https://docs.github.
-// com/rest/overview/resources-in-the-rest-api#secondary-rate-limits)" and "[Dealing with secondary
-// rate limits](https://docs.github.
-// com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)" for details.
+// [scope].
+//
+// This endpoint triggers [notifications]. Creating content too quickly using this endpoint may result
+// in secondary rate limiting. See "[Secondary rate limits]" and "[Dealing with secondary rate limits]"
+// for details.
 //
 // Deprecated: schema marks this operation as deprecated.
 //
 // POST /teams/{team_id}/discussions/{discussion_number}/comments
+//
+// [Create a discussion comment]: https://docs.github.com/rest/reference/teams#create-a-discussion-comment
+// [scope]: https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/
+// [notifications]: https://docs.github.com/en/github/managing-subscriptions-and-notifications-on-github/about-notifications
+// [Secondary rate limits]: https://docs.github.com/rest/overview/resources-in-the-rest-api#secondary-rate-limits
+// [Dealing with secondary rate limits]: https://docs.github.com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits
 func (s *Server) handleTeamsCreateDiscussionCommentLegacyRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -104304,18 +105038,21 @@ func (s *Server) handleTeamsCreateDiscussionCommentLegacyRequest(args [2]string,
 // handleTeamsCreateDiscussionInOrgRequest handles teams/create-discussion-in-org operation.
 //
 // Creates a new discussion post on a team's page. OAuth access tokens require the `write:discussion`
-// [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
-// This endpoint triggers [notifications](https://docs.github.
-// com/en/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating
-// content too quickly using this endpoint may result in secondary rate limiting. See "[Secondary
-// rate limits](https://docs.github.
-// com/rest/overview/resources-in-the-rest-api#secondary-rate-limits)" and "[Dealing with secondary
-// rate limits](https://docs.github.
-// com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)" for details.
-// **Note:** You can also specify a team by `org_id` and `team_id` using the route `POST
-// /organizations/{org_id}/team/{team_id}/discussions`.
+// [scope].
+//
+// This endpoint triggers [notifications]. Creating content too quickly using this endpoint may result
+// in secondary rate limiting. See "[Secondary rate limits]" and "[Dealing with secondary rate limits]"
+// for details.
+//
+// Note: You can also specify a team by `org_id` and `team_id` using the route
+// `POST /organizations/{org_id}/team/{team_id}/discussions`.
 //
 // POST /orgs/{org}/teams/{team_slug}/discussions
+//
+// [scope]: https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/
+// [notifications]: https://docs.github.com/en/github/managing-subscriptions-and-notifications-on-github/about-notifications
+// [Secondary rate limits]: https://docs.github.com/rest/overview/resources-in-the-rest-api#secondary-rate-limits
+// [Dealing with secondary rate limits]: https://docs.github.com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits
 func (s *Server) handleTeamsCreateDiscussionInOrgRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -104475,22 +105212,25 @@ func (s *Server) handleTeamsCreateDiscussionInOrgRequest(args [2]string, argsEsc
 
 // handleTeamsCreateDiscussionLegacyRequest handles teams/create-discussion-legacy operation.
 //
-// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
-// We recommend migrating your existing code to use the new [`Create a discussion`](https://docs.
-// github.com/rest/reference/teams#create-a-discussion) endpoint.
+// Deprecation Notice: This endpoint route is deprecated and will be removed from the Teams API. We
+// recommend migrating your existing code to use the new [Create a discussion] endpoint.
+//
 // Creates a new discussion post on a team's page. OAuth access tokens require the `write:discussion`
-// [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
-// This endpoint triggers [notifications](https://docs.github.
-// com/en/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating
-// content too quickly using this endpoint may result in secondary rate limiting. See "[Secondary
-// rate limits](https://docs.github.
-// com/rest/overview/resources-in-the-rest-api#secondary-rate-limits)" and "[Dealing with secondary
-// rate limits](https://docs.github.
-// com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)" for details.
+// [scope].
+//
+// This endpoint triggers [notifications]. Creating content too quickly using this endpoint may result
+// in secondary rate limiting. See "[Secondary rate limits]" and "[Dealing with secondary rate limits]"
+// for details.
 //
 // Deprecated: schema marks this operation as deprecated.
 //
 // POST /teams/{team_id}/discussions
+//
+// [Create a discussion]: https://docs.github.com/rest/reference/teams#create-a-discussion
+// [scope]: https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/
+// [notifications]: https://docs.github.com/en/github/managing-subscriptions-and-notifications-on-github/about-notifications
+// [Secondary rate limits]: https://docs.github.com/rest/overview/resources-in-the-rest-api#secondary-rate-limits
+// [Dealing with secondary rate limits]: https://docs.github.com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits
 func (s *Server) handleTeamsCreateDiscussionLegacyRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -104647,15 +105387,18 @@ func (s *Server) handleTeamsCreateDiscussionLegacyRequest(args [1]string, argsEs
 // handleTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest handles teams/create-or-update-idp-group-connections-in-org operation.
 //
 // Team synchronization is available for organizations using GitHub Enterprise Cloud. For more
-// information, see [GitHub's products](https://help.github.
-// com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+// information, see [GitHub's products] in the GitHub Help documentation.
+//
 // Creates, updates, or removes a connection between a team and an IdP group. When adding groups to a
 // team, you must include all new and existing groups to avoid replacing existing groups with the new
 // ones. Specifying an empty `groups` array will remove all connections for a team.
-// **Note:** You can also specify a team by `org_id` and `team_id` using the route `PATCH
-// /organizations/{org_id}/team/{team_id}/team-sync/group-mappings`.
+//
+// Note: You can also specify a team by `org_id` and `team_id` using the route
+// `PATCH /organizations/{org_id}/team/{team_id}/team-sync/group-mappings`.
 //
 // PATCH /orgs/{org}/teams/{team_slug}/team-sync/group-mappings
+//
+// [GitHub's products]: https://help.github.com/github/getting-started-with-github/githubs-products
 func (s *Server) handleTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -104815,13 +105558,13 @@ func (s *Server) handleTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(args [
 
 // handleTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequest handles teams/create-or-update-idp-group-connections-legacy operation.
 //
-// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
-// We recommend migrating your existing code to use the new [`Create or update IdP group
-// connections`](https://docs.github.com/rest/reference/teams#create-or-update-idp-group-connections)
+// Deprecation Notice: This endpoint route is deprecated and will be removed from the Teams API. We
+// recommend migrating your existing code to use the new [Create or update IdP group connections]
 // endpoint.
+//
 // Team synchronization is available for organizations using GitHub Enterprise Cloud. For more
-// information, see [GitHub's products](https://help.github.
-// com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+// information, see [GitHub's products] in the GitHub Help documentation.
+//
 // Creates, updates, or removes a connection between a team and an IdP group. When adding groups to a
 // team, you must include all new and existing groups to avoid replacing existing groups with the new
 // ones. Specifying an empty `groups` array will remove all connections for a team.
@@ -104829,6 +105572,9 @@ func (s *Server) handleTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(args [
 // Deprecated: schema marks this operation as deprecated.
 //
 // PATCH /teams/{team_id}/team-sync/group-mappings
+//
+// [Create or update IdP group connections]: https://docs.github.com/rest/reference/teams#create-or-update-idp-group-connections
+// [GitHub's products]: https://help.github.com/github/getting-started-with-github/githubs-products
 func (s *Server) handleTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -104984,12 +105730,14 @@ func (s *Server) handleTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequest(args 
 
 // handleTeamsDeleteDiscussionCommentInOrgRequest handles teams/delete-discussion-comment-in-org operation.
 //
-// Deletes a comment on a team discussion. OAuth access tokens require the `write:discussion`
-// [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
-// **Note:** You can also specify a team by `org_id` and `team_id` using the route `DELETE
-// /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}/comments/{comment_number}`.
+// Deletes a comment on a team discussion. OAuth access tokens require the `write:discussion` [scope].
+//
+// Note: You can also specify a team by `org_id` and `team_id` using the route
+// `DELETE /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}/comments/{comment_number}`.
 //
 // DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}
+//
+// [scope]: https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/
 func (s *Server) handleTeamsDeleteDiscussionCommentInOrgRequest(args [4]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -105142,15 +105890,17 @@ func (s *Server) handleTeamsDeleteDiscussionCommentInOrgRequest(args [4]string, 
 
 // handleTeamsDeleteDiscussionCommentLegacyRequest handles teams/delete-discussion-comment-legacy operation.
 //
-// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
-// We recommend migrating your existing code to use the new [Delete a discussion
-// comment](https://docs.github.com/rest/reference/teams#delete-a-discussion-comment) endpoint.
-// Deletes a comment on a team discussion. OAuth access tokens require the `write:discussion`
-// [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+// Deprecation Notice: This endpoint route is deprecated and will be removed from the Teams API. We
+// recommend migrating your existing code to use the new [Delete a discussion comment] endpoint.
+//
+// Deletes a comment on a team discussion. OAuth access tokens require the `write:discussion` [scope].
 //
 // Deprecated: schema marks this operation as deprecated.
 //
 // DELETE /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}
+//
+// [Delete a discussion comment]: https://docs.github.com/rest/reference/teams#delete-a-discussion-comment
+// [scope]: https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/
 func (s *Server) handleTeamsDeleteDiscussionCommentLegacyRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -105299,12 +106049,14 @@ func (s *Server) handleTeamsDeleteDiscussionCommentLegacyRequest(args [3]string,
 
 // handleTeamsDeleteDiscussionInOrgRequest handles teams/delete-discussion-in-org operation.
 //
-// Delete a discussion from a team's page. OAuth access tokens require the `write:discussion`
-// [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
-// **Note:** You can also specify a team by `org_id` and `team_id` using the route `DELETE
-// /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}`.
+// Delete a discussion from a team's page. OAuth access tokens require the `write:discussion` [scope].
+//
+// Note: You can also specify a team by `org_id` and `team_id` using the route
+// `DELETE /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}`.
 //
 // DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}
+//
+// [scope]: https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/
 func (s *Server) handleTeamsDeleteDiscussionInOrgRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -105453,15 +106205,17 @@ func (s *Server) handleTeamsDeleteDiscussionInOrgRequest(args [3]string, argsEsc
 
 // handleTeamsDeleteDiscussionLegacyRequest handles teams/delete-discussion-legacy operation.
 //
-// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
-// We recommend migrating your existing code to use the new [`Delete a discussion`](https://docs.
-// github.com/rest/reference/teams#delete-a-discussion) endpoint.
-// Delete a discussion from a team's page. OAuth access tokens require the `write:discussion`
-// [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+// Deprecation Notice: This endpoint route is deprecated and will be removed from the Teams API. We
+// recommend migrating your existing code to use the new [Delete a discussion] endpoint.
+//
+// Delete a discussion from a team's page. OAuth access tokens require the `write:discussion` [scope].
 //
 // Deprecated: schema marks this operation as deprecated.
 //
 // DELETE /teams/{team_id}/discussions/{discussion_number}
+//
+// [Delete a discussion]: https://docs.github.com/rest/reference/teams#delete-a-discussion
+// [scope]: https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/
 func (s *Server) handleTeamsDeleteDiscussionLegacyRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -105607,10 +106361,11 @@ func (s *Server) handleTeamsDeleteDiscussionLegacyRequest(args [2]string, argsEs
 // handleTeamsDeleteInOrgRequest handles teams/delete-in-org operation.
 //
 // To delete a team, the authenticated user must be an organization owner or team maintainer.
-// If you are an organization owner, deleting a parent team will delete all of its child teams as
-// well.
-// **Note:** You can also specify a team by `org_id` and `team_id` using the route `DELETE
-// /organizations/{org_id}/team/{team_id}`.
+//
+// If you are an organization owner, deleting a parent team will delete all of its child teams as well.
+//
+// Note: You can also specify a team by `org_id` and `team_id` using the route
+// `DELETE /organizations/{org_id}/team/{team_id}`.
 //
 // DELETE /orgs/{org}/teams/{team_slug}
 func (s *Server) handleTeamsDeleteInOrgRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -105757,16 +106512,18 @@ func (s *Server) handleTeamsDeleteInOrgRequest(args [2]string, argsEscaped bool,
 
 // handleTeamsDeleteLegacyRequest handles teams/delete-legacy operation.
 //
-// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
-// We recommend migrating your existing code to use the new [Delete a team](https://docs.github.
-// com/rest/reference/teams#delete-a-team) endpoint.
+// Deprecation Notice: This endpoint route is deprecated and will be removed from the Teams API. We
+// recommend migrating your existing code to use the new [Delete a team] endpoint.
+//
 // To delete a team, the authenticated user must be an organization owner or team maintainer.
-// If you are an organization owner, deleting a parent team will delete all of its child teams as
-// well.
+//
+// If you are an organization owner, deleting a parent team will delete all of its child teams as well.
 //
 // Deprecated: schema marks this operation as deprecated.
 //
 // DELETE /teams/{team_id}
+//
+// [Delete a team]: https://docs.github.com/rest/reference/teams#delete-a-team
 func (s *Server) handleTeamsDeleteLegacyRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -105908,8 +106665,9 @@ func (s *Server) handleTeamsDeleteLegacyRequest(args [1]string, argsEscaped bool
 // handleTeamsGetByNameRequest handles teams/get-by-name operation.
 //
 // Gets a team using the team's `slug`. GitHub generates the `slug` from the team `name`.
-// **Note:** You can also specify a team by `org_id` and `team_id` using the route `GET
-// /organizations/{org_id}/team/{team_id}`.
+//
+// Note: You can also specify a team by `org_id` and `team_id` using the route
+// `GET /organizations/{org_id}/team/{team_id}`.
 //
 // GET /orgs/{org}/teams/{team_slug}
 func (s *Server) handleTeamsGetByNameRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -106057,11 +106815,14 @@ func (s *Server) handleTeamsGetByNameRequest(args [2]string, argsEscaped bool, w
 // handleTeamsGetDiscussionCommentInOrgRequest handles teams/get-discussion-comment-in-org operation.
 //
 // Get a specific comment on a team discussion. OAuth access tokens require the `read:discussion`
-// [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
-// **Note:** You can also specify a team by `org_id` and `team_id` using the route `GET
-// /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}/comments/{comment_number}`.
+// [scope].
+//
+// Note: You can also specify a team by `org_id` and `team_id` using the route
+// `GET /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}/comments/{comment_number}`.
 //
 // GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}
+//
+// [scope]: https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/
 func (s *Server) handleTeamsGetDiscussionCommentInOrgRequest(args [4]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -106214,15 +106975,18 @@ func (s *Server) handleTeamsGetDiscussionCommentInOrgRequest(args [4]string, arg
 
 // handleTeamsGetDiscussionCommentLegacyRequest handles teams/get-discussion-comment-legacy operation.
 //
-// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
-// We recommend migrating your existing code to use the new [Get a discussion comment](https://docs.
-// github.com/rest/reference/teams#get-a-discussion-comment) endpoint.
+// Deprecation Notice: This endpoint route is deprecated and will be removed from the Teams API. We
+// recommend migrating your existing code to use the new [Get a discussion comment] endpoint.
+//
 // Get a specific comment on a team discussion. OAuth access tokens require the `read:discussion`
-// [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+// [scope].
 //
 // Deprecated: schema marks this operation as deprecated.
 //
 // GET /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}
+//
+// [Get a discussion comment]: https://docs.github.com/rest/reference/teams#get-a-discussion-comment
+// [scope]: https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/
 func (s *Server) handleTeamsGetDiscussionCommentLegacyRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -106372,11 +107136,14 @@ func (s *Server) handleTeamsGetDiscussionCommentLegacyRequest(args [3]string, ar
 // handleTeamsGetDiscussionInOrgRequest handles teams/get-discussion-in-org operation.
 //
 // Get a specific discussion on a team's page. OAuth access tokens require the `read:discussion`
-// [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
-// **Note:** You can also specify a team by `org_id` and `team_id` using the route `GET
-// /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}`.
+// [scope].
+//
+// Note: You can also specify a team by `org_id` and `team_id` using the route
+// `GET /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}`.
 //
 // GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}
+//
+// [scope]: https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/
 func (s *Server) handleTeamsGetDiscussionInOrgRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -106525,15 +107292,18 @@ func (s *Server) handleTeamsGetDiscussionInOrgRequest(args [3]string, argsEscape
 
 // handleTeamsGetDiscussionLegacyRequest handles teams/get-discussion-legacy operation.
 //
-// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
-// We recommend migrating your existing code to use the new [Get a discussion](https://docs.github.
-// com/rest/reference/teams#get-a-discussion) endpoint.
+// Deprecation Notice: This endpoint route is deprecated and will be removed from the Teams API. We
+// recommend migrating your existing code to use the new [Get a discussion] endpoint.
+//
 // Get a specific discussion on a team's page. OAuth access tokens require the `read:discussion`
-// [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+// [scope].
 //
 // Deprecated: schema marks this operation as deprecated.
 //
 // GET /teams/{team_id}/discussions/{discussion_number}
+//
+// [Get a discussion]: https://docs.github.com/rest/reference/teams#get-a-discussion
+// [scope]: https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/
 func (s *Server) handleTeamsGetDiscussionLegacyRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -106678,13 +107448,14 @@ func (s *Server) handleTeamsGetDiscussionLegacyRequest(args [2]string, argsEscap
 
 // handleTeamsGetLegacyRequest handles teams/get-legacy operation.
 //
-// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
-// We recommend migrating your existing code to use the [Get a team by name](https://docs.github.
-// com/rest/reference/teams#get-a-team-by-name) endpoint.
+// Deprecation Notice: This endpoint route is deprecated and will be removed from the Teams API. We
+// recommend migrating your existing code to use the [Get a team by name] endpoint.
 //
 // Deprecated: schema marks this operation as deprecated.
 //
 // GET /teams/{team_id}
+//
+// [Get a team by name]: https://docs.github.com/rest/reference/teams#get-a-team-by-name
 func (s *Server) handleTeamsGetLegacyRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -106826,14 +107597,17 @@ func (s *Server) handleTeamsGetLegacyRequest(args [1]string, argsEscaped bool, w
 // handleTeamsGetMemberLegacyRequest handles teams/get-member-legacy operation.
 //
 // The "Get team member" endpoint (described below) is deprecated.
-// We recommend using the [Get team membership for a user](https://docs.github.
-// com/rest/reference/teams#get-team-membership-for-a-user) endpoint instead. It allows you to get
-// both active and pending memberships.
+//
+// We recommend using the [Get team membership for a user] endpoint instead. It allows you to get both
+// active and pending memberships.
+//
 // To list members in a team, the team must be visible to the authenticated user.
 //
 // Deprecated: schema marks this operation as deprecated.
 //
 // GET /teams/{team_id}/members/{username}
+//
+// [Get team membership for a user]: https://docs.github.com/rest/reference/teams#get-team-membership-for-a-user
 func (s *Server) handleTeamsGetMemberLegacyRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -106979,15 +107753,20 @@ func (s *Server) handleTeamsGetMemberLegacyRequest(args [2]string, argsEscaped b
 // handleTeamsGetMembershipForUserInOrgRequest handles teams/get-membership-for-user-in-org operation.
 //
 // Team members will include the members of child teams.
+//
 // To get a user's membership with a team, the team must be visible to the authenticated user.
-// **Note:** You can also specify a team by `org_id` and `team_id` using the route `GET
-// /organizations/{org_id}/team/{team_id}/memberships/{username}`.
-// **Note:**
-// The response contains the `state` of the membership and the member's `role`.
+//
+// Note: You can also specify a team by `org_id` and `team_id` using the route
+// `GET /organizations/{org_id}/team/{team_id}/memberships/{username}`.
+//
+// Note: The response contains the `state` of the membership and the member's `role`.
+//
 // The `role` for organization owners is set to `maintainer`. For more information about `maintainer`
-// roles, see see [Create a team](https://docs.github.com/rest/reference/teams#create-a-team).
+// roles, see see [Create a team].
 //
 // GET /orgs/{org}/teams/{team_slug}/memberships/{username}
+//
+// [Create a team]: https://docs.github.com/rest/reference/teams#create-a-team
 func (s *Server) handleTeamsGetMembershipForUserInOrgRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -107136,19 +107915,24 @@ func (s *Server) handleTeamsGetMembershipForUserInOrgRequest(args [3]string, arg
 
 // handleTeamsGetMembershipForUserLegacyRequest handles teams/get-membership-for-user-legacy operation.
 //
-// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
-// We recommend migrating your existing code to use the new [Get team membership for a
-// user](https://docs.github.com/rest/reference/teams#get-team-membership-for-a-user) endpoint.
+// Deprecation Notice: This endpoint route is deprecated and will be removed from the Teams API. We
+// recommend migrating your existing code to use the new [Get team membership for a user] endpoint.
+//
 // Team members will include the members of child teams.
+//
 // To get a user's membership with a team, the team must be visible to the authenticated user.
-// **Note:**
-// The response contains the `state` of the membership and the member's `role`.
+//
+// Note: The response contains the `state` of the membership and the member's `role`.
+//
 // The `role` for organization owners is set to `maintainer`. For more information about `maintainer`
-// roles, see [Create a team](https://docs.github.com/rest/reference/teams#create-a-team).
+// roles, see [Create a team].
 //
 // Deprecated: schema marks this operation as deprecated.
 //
 // GET /teams/{team_id}/memberships/{username}
+//
+// [Get team membership for a user]: https://docs.github.com/rest/reference/teams#get-team-membership-for-a-user
+// [Create a team]: https://docs.github.com/rest/reference/teams#create-a-team
 func (s *Server) handleTeamsGetMembershipForUserLegacyRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -107445,8 +108229,9 @@ func (s *Server) handleTeamsListRequest(args [1]string, argsEscaped bool, w http
 // handleTeamsListChildInOrgRequest handles teams/list-child-in-org operation.
 //
 // Lists the child teams of the team specified by `{team_slug}`.
-// **Note:** You can also specify a team by `org_id` and `team_id` using the route `GET
-// /organizations/{org_id}/team/{team_id}/teams`.
+//
+// Note: You can also specify a team by `org_id` and `team_id` using the route
+// `GET /organizations/{org_id}/team/{team_id}/teams`.
 //
 // GET /orgs/{org}/teams/{team_slug}/teams
 func (s *Server) handleTeamsListChildInOrgRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -107601,13 +108386,14 @@ func (s *Server) handleTeamsListChildInOrgRequest(args [2]string, argsEscaped bo
 
 // handleTeamsListChildLegacyRequest handles teams/list-child-legacy operation.
 //
-// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
-// We recommend migrating your existing code to use the new [`List child teams`](https://docs.github.
-// com/rest/reference/teams#list-child-teams) endpoint.
+// Deprecation Notice: This endpoint route is deprecated and will be removed from the Teams API. We
+// recommend migrating your existing code to use the new [List child teams] endpoint.
 //
 // Deprecated: schema marks this operation as deprecated.
 //
 // GET /teams/{team_id}/teams
+//
+// [List child teams]: https://docs.github.com/rest/reference/teams#list-child-teams
 func (s *Server) handleTeamsListChildLegacyRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -107756,12 +108542,14 @@ func (s *Server) handleTeamsListChildLegacyRequest(args [1]string, argsEscaped b
 
 // handleTeamsListDiscussionCommentsInOrgRequest handles teams/list-discussion-comments-in-org operation.
 //
-// List all comments on a team discussion. OAuth access tokens require the `read:discussion`
-// [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
-// **Note:** You can also specify a team by `org_id` and `team_id` using the route `GET
-// /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}/comments`.
+// List all comments on a team discussion. OAuth access tokens require the `read:discussion` [scope].
+//
+// Note: You can also specify a team by `org_id` and `team_id` using the route
+// `GET /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}/comments`.
 //
 // GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments
+//
+// [scope]: https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/
 func (s *Server) handleTeamsListDiscussionCommentsInOrgRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -107922,15 +108710,17 @@ func (s *Server) handleTeamsListDiscussionCommentsInOrgRequest(args [3]string, a
 
 // handleTeamsListDiscussionCommentsLegacyRequest handles teams/list-discussion-comments-legacy operation.
 //
-// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
-// We recommend migrating your existing code to use the new [List discussion comments](https://docs.
-// github.com/rest/reference/teams#list-discussion-comments) endpoint.
-// List all comments on a team discussion. OAuth access tokens require the `read:discussion`
-// [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+// Deprecation Notice: This endpoint route is deprecated and will be removed from the Teams API. We
+// recommend migrating your existing code to use the new [List discussion comments] endpoint.
+//
+// List all comments on a team discussion. OAuth access tokens require the `read:discussion` [scope].
 //
 // Deprecated: schema marks this operation as deprecated.
 //
 // GET /teams/{team_id}/discussions/{discussion_number}/comments
+//
+// [List discussion comments]: https://docs.github.com/rest/reference/teams#list-discussion-comments
+// [scope]: https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/
 func (s *Server) handleTeamsListDiscussionCommentsLegacyRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -108087,12 +108877,14 @@ func (s *Server) handleTeamsListDiscussionCommentsLegacyRequest(args [2]string, 
 
 // handleTeamsListDiscussionsInOrgRequest handles teams/list-discussions-in-org operation.
 //
-// List all discussions on a team's page. OAuth access tokens require the `read:discussion`
-// [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
-// **Note:** You can also specify a team by `org_id` and `team_id` using the route `GET
-// /organizations/{org_id}/team/{team_id}/discussions`.
+// List all discussions on a team's page. OAuth access tokens require the `read:discussion` [scope].
+//
+// Note: You can also specify a team by `org_id` and `team_id` using the route
+// `GET /organizations/{org_id}/team/{team_id}/discussions`.
 //
 // GET /orgs/{org}/teams/{team_slug}/discussions
+//
+// [scope]: https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/
 func (s *Server) handleTeamsListDiscussionsInOrgRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -108253,15 +109045,17 @@ func (s *Server) handleTeamsListDiscussionsInOrgRequest(args [2]string, argsEsca
 
 // handleTeamsListDiscussionsLegacyRequest handles teams/list-discussions-legacy operation.
 //
-// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
-// We recommend migrating your existing code to use the new [`List discussions`](https://docs.github.
-// com/rest/reference/teams#list-discussions) endpoint.
-// List all discussions on a team's page. OAuth access tokens require the `read:discussion`
-// [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+// Deprecation Notice: This endpoint route is deprecated and will be removed from the Teams API. We
+// recommend migrating your existing code to use the new [List discussions] endpoint.
+//
+// List all discussions on a team's page. OAuth access tokens require the `read:discussion` [scope].
 //
 // Deprecated: schema marks this operation as deprecated.
 //
 // GET /teams/{team_id}/discussions
+//
+// [List discussions]: https://docs.github.com/rest/reference/teams#list-discussions
+// [scope]: https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/
 func (s *Server) handleTeamsListDiscussionsLegacyRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -108414,12 +109208,13 @@ func (s *Server) handleTeamsListDiscussionsLegacyRequest(args [1]string, argsEsc
 
 // handleTeamsListForAuthenticatedUserRequest handles teams/list-for-authenticated-user operation.
 //
-// List all of the teams across all of the organizations to which the authenticated user belongs.
-// This method requires `user`, `repo`, or `read:org` [scope](https://docs.github.
-// com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/) when authenticating via
-// [OAuth](https://docs.github.com/apps/building-oauth-apps/).
+// List all of the teams across all of the organizations to which the authenticated user belongs. This
+// method requires `user`, `repo`, or `read:org` [scope] when authenticating via [OAuth].
 //
 // GET /user/teams
+//
+// [scope]: https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/
+// [OAuth]: https://docs.github.com/apps/building-oauth-apps/
 func (s *Server) handleTeamsListForAuthenticatedUserRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -108564,17 +109359,20 @@ func (s *Server) handleTeamsListForAuthenticatedUserRequest(args [0]string, args
 
 // handleTeamsListIdpGroupsForLegacyRequest handles teams/list-idp-groups-for-legacy operation.
 //
-// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
-// We recommend migrating your existing code to use the new [`List IdP groups for a
-// team`](https://docs.github.com/rest/reference/teams#list-idp-groups-for-a-team) endpoint.
+// Deprecation Notice: This endpoint route is deprecated and will be removed from the Teams API. We
+// recommend migrating your existing code to use the new [List IdP groups for a team] endpoint.
+//
 // Team synchronization is available for organizations using GitHub Enterprise Cloud. For more
-// information, see [GitHub's products](https://help.github.
-// com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+// information, see [GitHub's products] in the GitHub Help documentation.
+//
 // List IdP groups connected to a team on GitHub.
 //
 // Deprecated: schema marks this operation as deprecated.
 //
 // GET /teams/{team_id}/team-sync/group-mappings
+//
+// [List IdP groups for a team]: https://docs.github.com/rest/reference/teams#list-idp-groups-for-a-team
+// [GitHub's products]: https://help.github.com/github/getting-started-with-github/githubs-products
 func (s *Server) handleTeamsListIdpGroupsForLegacyRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -108716,14 +109514,16 @@ func (s *Server) handleTeamsListIdpGroupsForLegacyRequest(args [1]string, argsEs
 // handleTeamsListIdpGroupsForOrgRequest handles teams/list-idp-groups-for-org operation.
 //
 // Team synchronization is available for organizations using GitHub Enterprise Cloud. For more
-// information, see [GitHub's products](https://help.github.
-// com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+// information, see [GitHub's products] in the GitHub Help documentation.
+//
 // List IdP groups available in an organization. You can limit your page results using the `per_page`
-// parameter. GitHub generates a url-encoded `page` token using a cursor value for where the next
-// page begins. For more information on cursor pagination, see "[Offset and Cursor Pagination
-// explained](https://dev.to/jackmarchant/offset-and-cursor-pagination-explained-b89).".
+// parameter. GitHub generates a url-encoded `page` token using a cursor value for where the next page
+// begins. For more information on cursor pagination, see "[Offset and Cursor Pagination explained].".
 //
 // GET /orgs/{org}/team-sync/groups
+//
+// [GitHub's products]: https://help.github.com/github/getting-started-with-github/githubs-products
+// [Offset and Cursor Pagination explained]: https://dev.to/jackmarchant/offset-and-cursor-pagination-explained-b89
 func (s *Server) handleTeamsListIdpGroupsForOrgRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -108873,13 +109673,16 @@ func (s *Server) handleTeamsListIdpGroupsForOrgRequest(args [1]string, argsEscap
 // handleTeamsListIdpGroupsInOrgRequest handles teams/list-idp-groups-in-org operation.
 //
 // Team synchronization is available for organizations using GitHub Enterprise Cloud. For more
-// information, see [GitHub's products](https://help.github.
-// com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+// information, see [GitHub's products] in the GitHub Help documentation.
+//
 // List IdP groups connected to a team on GitHub.
-// **Note:** You can also specify a team by `org_id` and `team_id` using the route `GET
-// /organizations/{org_id}/team/{team_id}/team-sync/group-mappings`.
+//
+// Note: You can also specify a team by `org_id` and `team_id` using the route
+// `GET /organizations/{org_id}/team/{team_id}/team-sync/group-mappings`.
 //
 // GET /orgs/{org}/teams/{team_slug}/team-sync/group-mappings
+//
+// [GitHub's products]: https://help.github.com/github/getting-started-with-github/githubs-products
 func (s *Server) handleTeamsListIdpGroupsInOrgRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -109025,6 +109828,7 @@ func (s *Server) handleTeamsListIdpGroupsInOrgRequest(args [2]string, argsEscape
 // handleTeamsListMembersInOrgRequest handles teams/list-members-in-org operation.
 //
 // Team members will include the members of child teams.
+//
 // To list members in a team, the team must be visible to the authenticated user.
 //
 // GET /orgs/{org}/teams/{team_slug}/members
@@ -109184,14 +109988,16 @@ func (s *Server) handleTeamsListMembersInOrgRequest(args [2]string, argsEscaped 
 
 // handleTeamsListMembersLegacyRequest handles teams/list-members-legacy operation.
 //
-// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
-// We recommend migrating your existing code to use the new [`List team members`](https://docs.github.
-// com/rest/reference/teams#list-team-members) endpoint.
+// Deprecation Notice: This endpoint route is deprecated and will be removed from the Teams API. We
+// recommend migrating your existing code to use the new [List team members] endpoint.
+//
 // Team members will include the members of child teams.
 //
 // Deprecated: schema marks this operation as deprecated.
 //
 // GET /teams/{team_id}/members
+//
+// [List team members]: https://docs.github.com/rest/reference/teams#list-team-members
 func (s *Server) handleTeamsListMembersLegacyRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -109344,12 +110150,13 @@ func (s *Server) handleTeamsListMembersLegacyRequest(args [1]string, argsEscaped
 
 // handleTeamsListPendingInvitationsInOrgRequest handles teams/list-pending-invitations-in-org operation.
 //
-// The return hash contains a `role` field which refers to the Organization Invitation role and will
-// be one of the following values: `direct_member`, `admin`, `billing_manager`, `hiring_manager`, or
+// The return hash contains a `role` field which refers to the Organization Invitation role and will be
+// one of the following values: `direct_member`, `admin`, `billing_manager`, `hiring_manager`, or
 // `reinstate`. If the invitee is not a GitHub member, the `login` field in the return hash will be
 // `null`.
-// **Note:** You can also specify a team by `org_id` and `team_id` using the route `GET
-// /organizations/{org_id}/team/{team_id}/invitations`.
+//
+// Note: You can also specify a team by `org_id` and `team_id` using the route
+// `GET /organizations/{org_id}/team/{team_id}/invitations`.
 //
 // GET /orgs/{org}/teams/{team_slug}/invitations
 func (s *Server) handleTeamsListPendingInvitationsInOrgRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -109504,17 +110311,19 @@ func (s *Server) handleTeamsListPendingInvitationsInOrgRequest(args [2]string, a
 
 // handleTeamsListPendingInvitationsLegacyRequest handles teams/list-pending-invitations-legacy operation.
 //
-// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
-// We recommend migrating your existing code to use the new [`List pending team
-// invitations`](https://docs.github.com/rest/reference/teams#list-pending-team-invitations) endpoint.
-// The return hash contains a `role` field which refers to the Organization Invitation role and will
-// be one of the following values: `direct_member`, `admin`, `billing_manager`, `hiring_manager`, or
+// Deprecation Notice: This endpoint route is deprecated and will be removed from the Teams API. We
+// recommend migrating your existing code to use the new [List pending team invitations] endpoint.
+//
+// The return hash contains a `role` field which refers to the Organization Invitation role and will be
+// one of the following values: `direct_member`, `admin`, `billing_manager`, `hiring_manager`, or
 // `reinstate`. If the invitee is not a GitHub member, the `login` field in the return hash will be
 // `null`.
 //
 // Deprecated: schema marks this operation as deprecated.
 //
 // GET /teams/{team_id}/invitations
+//
+// [List pending team invitations]: https://docs.github.com/rest/reference/teams#list-pending-team-invitations
 func (s *Server) handleTeamsListPendingInvitationsLegacyRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -109664,8 +110473,9 @@ func (s *Server) handleTeamsListPendingInvitationsLegacyRequest(args [1]string, 
 // handleTeamsListProjectsInOrgRequest handles teams/list-projects-in-org operation.
 //
 // Lists the organization projects for a team.
-// **Note:** You can also specify a team by `org_id` and `team_id` using the route `GET
-// /organizations/{org_id}/team/{team_id}/projects`.
+//
+// Note: You can also specify a team by `org_id` and `team_id` using the route
+// `GET /organizations/{org_id}/team/{team_id}/projects`.
 //
 // GET /orgs/{org}/teams/{team_slug}/projects
 func (s *Server) handleTeamsListProjectsInOrgRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -109820,14 +110630,16 @@ func (s *Server) handleTeamsListProjectsInOrgRequest(args [2]string, argsEscaped
 
 // handleTeamsListProjectsLegacyRequest handles teams/list-projects-legacy operation.
 //
-// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
-// We recommend migrating your existing code to use the new [`List team projects`](https://docs.
-// github.com/rest/reference/teams#list-team-projects) endpoint.
+// Deprecation Notice: This endpoint route is deprecated and will be removed from the Teams API. We
+// recommend migrating your existing code to use the new [List team projects] endpoint.
+//
 // Lists the organization projects for a team.
 //
 // Deprecated: schema marks this operation as deprecated.
 //
 // GET /teams/{team_id}/projects
+//
+// [List team projects]: https://docs.github.com/rest/reference/teams#list-team-projects
 func (s *Server) handleTeamsListProjectsLegacyRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -109977,8 +110789,9 @@ func (s *Server) handleTeamsListProjectsLegacyRequest(args [1]string, argsEscape
 // handleTeamsListReposInOrgRequest handles teams/list-repos-in-org operation.
 //
 // Lists a team's repositories visible to the authenticated user.
-// **Note:** You can also specify a team by `org_id` and `team_id` using the route `GET
-// /organizations/{org_id}/team/{team_id}/repos`.
+//
+// Note: You can also specify a team by `org_id` and `team_id` using the route
+// `GET /organizations/{org_id}/team/{team_id}/repos`.
 //
 // GET /orgs/{org}/teams/{team_slug}/repos
 func (s *Server) handleTeamsListReposInOrgRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -110133,13 +110946,14 @@ func (s *Server) handleTeamsListReposInOrgRequest(args [2]string, argsEscaped bo
 
 // handleTeamsListReposLegacyRequest handles teams/list-repos-legacy operation.
 //
-// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
-// We recommend migrating your existing code to use the new [List team repositories](https://docs.
-// github.com/rest/reference/teams#list-team-repositories) endpoint.
+// Deprecation Notice: This endpoint route is deprecated and will be removed from the Teams API. We
+// recommend migrating your existing code to use the new [List team repositories] endpoint.
 //
 // Deprecated: schema marks this operation as deprecated.
 //
 // GET /teams/{team_id}/repos
+//
+// [List team repositories]: https://docs.github.com/rest/reference/teams#list-team-repositories
 func (s *Server) handleTeamsListReposLegacyRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -110289,28 +111103,31 @@ func (s *Server) handleTeamsListReposLegacyRequest(args [1]string, argsEscaped b
 // handleTeamsRemoveMemberLegacyRequest handles teams/remove-member-legacy operation.
 //
 // The "Remove team member" endpoint (described below) is deprecated.
-// We recommend using the [Remove team membership for a user](https://docs.github.
-// com/rest/reference/teams#remove-team-membership-for-a-user) endpoint instead. It allows you to
-// remove both active and pending memberships.
+//
+// We recommend using the [Remove team membership for a user] endpoint instead. It allows you to remove
+// both active and pending memberships.
+//
 // Team synchronization is available for organizations using GitHub Enterprise Cloud. For more
-// information, see [GitHub's products](https://help.github.
-// com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+// information, see [GitHub's products] in the GitHub Help documentation.
+//
 // To remove a team member, the authenticated user must have 'admin' permissions to the team or be an
 // owner of the org that the team is associated with. Removing a team member does not delete the user,
+// it just removes them from the team.
 //
-//	it just removes them from the team.
-//
-// **Note:** When you have team synchronization set up for a team with your organization's identity
-// provider (IdP), you will see an error if you attempt to use the API for making changes to the
-// team's membership. If you have access to manage group membership in your IdP, you can manage
-// GitHub team membership through your identity provider, which automatically adds and removes team
-// members in an organization. For more information, see "[Synchronizing teams between your identity
-// provider and GitHub](https://help.github.
-// com/articles/synchronizing-teams-between-your-identity-provider-and-github/).".
+// Note: When you have team synchronization set up for a team with your organization's identity
+// provider (IdP), you will see an error if you attempt to use the API for making changes to the team's
+// membership. If you have access to manage group membership in your IdP, you can manage GitHub team
+// membership through your identity provider, which automatically adds and removes team members in an
+// organization. For more information, see
+// "[Synchronizing teams between your identity provider and GitHub].".
 //
 // Deprecated: schema marks this operation as deprecated.
 //
 // DELETE /teams/{team_id}/members/{username}
+//
+// [Remove team membership for a user]: https://docs.github.com/rest/reference/teams#remove-team-membership-for-a-user
+// [GitHub's products]: https://help.github.com/github/getting-started-with-github/githubs-products
+// [Synchronizing teams between your identity provider and GitHub]: https://help.github.com/articles/synchronizing-teams-between-your-identity-provider-and-github/
 func (s *Server) handleTeamsRemoveMemberLegacyRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -110456,22 +111273,26 @@ func (s *Server) handleTeamsRemoveMemberLegacyRequest(args [2]string, argsEscape
 // handleTeamsRemoveMembershipForUserInOrgRequest handles teams/remove-membership-for-user-in-org operation.
 //
 // Team synchronization is available for organizations using GitHub Enterprise Cloud. For more
-// information, see [GitHub's products](https://help.github.
-// com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+// information, see [GitHub's products] in the GitHub Help documentation.
+//
 // To remove a membership between a user and a team, the authenticated user must have 'admin'
 // permissions to the team or be an owner of the organization that the team is associated with.
 // Removing team membership does not delete the user, it just removes their membership from the team.
-// **Note:** When you have team synchronization set up for a team with your organization's identity
-// provider (IdP), you will see an error if you attempt to use the API for making changes to the
-// team's membership. If you have access to manage group membership in your IdP, you can manage
-// GitHub team membership through your identity provider, which automatically adds and removes team
-// members in an organization. For more information, see "[Synchronizing teams between your identity
-// provider and GitHub](https://help.github.
-// com/articles/synchronizing-teams-between-your-identity-provider-and-github/)."
-// **Note:** You can also specify a team by `org_id` and `team_id` using the route `DELETE
-// /organizations/{org_id}/team/{team_id}/memberships/{username}`.
+//
+// Note: When you have team synchronization set up for a team with your organization's identity
+// provider (IdP), you will see an error if you attempt to use the API for making changes to the team's
+// membership. If you have access to manage group membership in your IdP, you can manage GitHub team
+// membership through your identity provider, which automatically adds and removes team members in an
+// organization. For more information, see
+// "[Synchronizing teams between your identity provider and GitHub]."
+//
+// Note: You can also specify a team by `org_id` and `team_id` using the route
+// `DELETE /organizations/{org_id}/team/{team_id}/memberships/{username}`.
 //
 // DELETE /orgs/{org}/teams/{team_slug}/memberships/{username}
+//
+// [GitHub's products]: https://help.github.com/github/getting-started-with-github/githubs-products
+// [Synchronizing teams between your identity provider and GitHub]: https://help.github.com/articles/synchronizing-teams-between-your-identity-provider-and-github/
 func (s *Server) handleTeamsRemoveMembershipForUserInOrgRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -110620,26 +111441,30 @@ func (s *Server) handleTeamsRemoveMembershipForUserInOrgRequest(args [3]string, 
 
 // handleTeamsRemoveMembershipForUserLegacyRequest handles teams/remove-membership-for-user-legacy operation.
 //
-// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
-// We recommend migrating your existing code to use the new [Remove team membership for a
-// user](https://docs.github.com/rest/reference/teams#remove-team-membership-for-a-user) endpoint.
+// Deprecation Notice: This endpoint route is deprecated and will be removed from the Teams API. We
+// recommend migrating your existing code to use the new [Remove team membership for a user] endpoint.
+//
 // Team synchronization is available for organizations using GitHub Enterprise Cloud. For more
-// information, see [GitHub's products](https://help.github.
-// com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+// information, see [GitHub's products] in the GitHub Help documentation.
+//
 // To remove a membership between a user and a team, the authenticated user must have 'admin'
 // permissions to the team or be an owner of the organization that the team is associated with.
 // Removing team membership does not delete the user, it just removes their membership from the team.
-// **Note:** When you have team synchronization set up for a team with your organization's identity
-// provider (IdP), you will see an error if you attempt to use the API for making changes to the
-// team's membership. If you have access to manage group membership in your IdP, you can manage
-// GitHub team membership through your identity provider, which automatically adds and removes team
-// members in an organization. For more information, see "[Synchronizing teams between your identity
-// provider and GitHub](https://help.github.
-// com/articles/synchronizing-teams-between-your-identity-provider-and-github/).".
+//
+// Note: When you have team synchronization set up for a team with your organization's identity
+// provider (IdP), you will see an error if you attempt to use the API for making changes to the team's
+// membership. If you have access to manage group membership in your IdP, you can manage GitHub team
+// membership through your identity provider, which automatically adds and removes team members in an
+// organization. For more information, see
+// "[Synchronizing teams between your identity provider and GitHub].".
 //
 // Deprecated: schema marks this operation as deprecated.
 //
 // DELETE /teams/{team_id}/memberships/{username}
+//
+// [Remove team membership for a user]: https://docs.github.com/rest/reference/teams#remove-team-membership-for-a-user
+// [GitHub's products]: https://help.github.com/github/getting-started-with-github/githubs-products
+// [Synchronizing teams between your identity provider and GitHub]: https://help.github.com/articles/synchronizing-teams-between-your-identity-provider-and-github/
 func (s *Server) handleTeamsRemoveMembershipForUserLegacyRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -110788,8 +111613,9 @@ func (s *Server) handleTeamsRemoveMembershipForUserLegacyRequest(args [2]string,
 // any project from the team. To remove a project from a team as an organization member, the
 // authenticated user must have `read` access to both the team and project, or `admin` access to the
 // team or project. This endpoint removes the project from the team, but does not delete the project.
-// **Note:** You can also specify a team by `org_id` and `team_id` using the route `DELETE
-// /organizations/{org_id}/team/{team_id}/projects/{project_id}`.
+//
+// Note: You can also specify a team by `org_id` and `team_id` using the route
+// `DELETE /organizations/{org_id}/team/{team_id}/projects/{project_id}`.
 //
 // DELETE /orgs/{org}/teams/{team_slug}/projects/{project_id}
 func (s *Server) handleTeamsRemoveProjectInOrgRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -110940,17 +111766,19 @@ func (s *Server) handleTeamsRemoveProjectInOrgRequest(args [3]string, argsEscape
 
 // handleTeamsRemoveProjectLegacyRequest handles teams/remove-project-legacy operation.
 //
-// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
-// We recommend migrating your existing code to use the new [Remove a project from a
-// team](https://docs.github.com/rest/reference/teams#remove-a-project-from-a-team) endpoint.
+// Deprecation Notice: This endpoint route is deprecated and will be removed from the Teams API. We
+// recommend migrating your existing code to use the new [Remove a project from a team] endpoint.
+//
 // Removes an organization project from a team. An organization owner or a team maintainer can remove
 // any project from the team. To remove a project from a team as an organization member, the
 // authenticated user must have `read` access to both the team and project, or `admin` access to the
-// team or project. **Note:** This endpoint removes the project from the team, but does not delete it.
+// team or project. Note: This endpoint removes the project from the team, but does not delete it.
 //
 // Deprecated: schema marks this operation as deprecated.
 //
 // DELETE /teams/{team_id}/projects/{project_id}
+//
+// [Remove a project from a team]: https://docs.github.com/rest/reference/teams#remove-a-project-from-a-team
 func (s *Server) handleTeamsRemoveProjectLegacyRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -111099,8 +111927,9 @@ func (s *Server) handleTeamsRemoveProjectLegacyRequest(args [2]string, argsEscap
 // repositories from the team. To remove a repository from a team as an organization member, the
 // authenticated user must have admin access to the repository and must be able to see the team. This
 // does not delete the repository, it just removes it from the team.
-// **Note:** You can also specify a team by `org_id` and `team_id` using the route `DELETE
-// /organizations/{org_id}/team/{team_id}/repos/{owner}/{repo}`.
+//
+// Note: You can also specify a team by `org_id` and `team_id` using the route
+// `DELETE /organizations/{org_id}/team/{team_id}/repos/{owner}/{repo}`.
 //
 // DELETE /orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}
 func (s *Server) handleTeamsRemoveRepoInOrgRequest(args [4]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -111255,17 +112084,19 @@ func (s *Server) handleTeamsRemoveRepoInOrgRequest(args [4]string, argsEscaped b
 
 // handleTeamsRemoveRepoLegacyRequest handles teams/remove-repo-legacy operation.
 //
-// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
-// We recommend migrating your existing code to use the new [Remove a repository from a
-// team](https://docs.github.com/rest/reference/teams#remove-a-repository-from-a-team) endpoint.
+// Deprecation Notice: This endpoint route is deprecated and will be removed from the Teams API. We
+// recommend migrating your existing code to use the new [Remove a repository from a team] endpoint.
+//
 // If the authenticated user is an organization owner or a team maintainer, they can remove any
 // repositories from the team. To remove a repository from a team as an organization member, the
-// authenticated user must have admin access to the repository and must be able to see the team.
-// NOTE: This does not delete the repository, it just removes it from the team.
+// authenticated user must have admin access to the repository and must be able to see the team. NOTE:
+// This does not delete the repository, it just removes it from the team.
 //
 // Deprecated: schema marks this operation as deprecated.
 //
 // DELETE /teams/{team_id}/repos/{owner}/{repo}
+//
+// [Remove a repository from a team]: https://docs.github.com/rest/reference/teams#remove-a-repository-from-a-team
 func (s *Server) handleTeamsRemoveRepoLegacyRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -111415,11 +112246,14 @@ func (s *Server) handleTeamsRemoveRepoLegacyRequest(args [3]string, argsEscaped 
 // handleTeamsUpdateDiscussionCommentInOrgRequest handles teams/update-discussion-comment-in-org operation.
 //
 // Edits the body text of a discussion comment. OAuth access tokens require the `write:discussion`
-// [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
-// **Note:** You can also specify a team by `org_id` and `team_id` using the route `PATCH
-// /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}/comments/{comment_number}`.
+// [scope].
+//
+// Note: You can also specify a team by `org_id` and `team_id` using the route
+// `PATCH /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}/comments/{comment_number}`.
 //
 // PATCH /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}
+//
+// [scope]: https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/
 func (s *Server) handleTeamsUpdateDiscussionCommentInOrgRequest(args [4]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -111587,15 +112421,18 @@ func (s *Server) handleTeamsUpdateDiscussionCommentInOrgRequest(args [4]string, 
 
 // handleTeamsUpdateDiscussionCommentLegacyRequest handles teams/update-discussion-comment-legacy operation.
 //
-// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
-// We recommend migrating your existing code to use the new [Update a discussion
-// comment](https://docs.github.com/rest/reference/teams#update-a-discussion-comment) endpoint.
+// Deprecation Notice: This endpoint route is deprecated and will be removed from the Teams API. We
+// recommend migrating your existing code to use the new [Update a discussion comment] endpoint.
+//
 // Edits the body text of a discussion comment. OAuth access tokens require the `write:discussion`
-// [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+// [scope].
 //
 // Deprecated: schema marks this operation as deprecated.
 //
 // PATCH /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}
+//
+// [Update a discussion comment]: https://docs.github.com/rest/reference/teams#update-a-discussion-comment
+// [scope]: https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/
 func (s *Server) handleTeamsUpdateDiscussionCommentLegacyRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -111760,12 +112597,14 @@ func (s *Server) handleTeamsUpdateDiscussionCommentLegacyRequest(args [3]string,
 // handleTeamsUpdateDiscussionInOrgRequest handles teams/update-discussion-in-org operation.
 //
 // Edits the title and body text of a discussion post. Only the parameters you provide are updated.
-// OAuth access tokens require the `write:discussion` [scope](https://docs.github.
-// com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
-// **Note:** You can also specify a team by `org_id` and `team_id` using the route `PATCH
-// /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}`.
+// OAuth access tokens require the `write:discussion` [scope].
+//
+// Note: You can also specify a team by `org_id` and `team_id` using the route
+// `PATCH /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}`.
 //
 // PATCH /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}
+//
+// [scope]: https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/
 func (s *Server) handleTeamsUpdateDiscussionInOrgRequest(args [3]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -111929,16 +112768,18 @@ func (s *Server) handleTeamsUpdateDiscussionInOrgRequest(args [3]string, argsEsc
 
 // handleTeamsUpdateDiscussionLegacyRequest handles teams/update-discussion-legacy operation.
 //
-// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
-// We recommend migrating your existing code to use the new [Update a discussion](https://docs.github.
-// com/rest/reference/teams#update-a-discussion) endpoint.
+// Deprecation Notice: This endpoint route is deprecated and will be removed from the Teams API. We
+// recommend migrating your existing code to use the new [Update a discussion] endpoint.
+//
 // Edits the title and body text of a discussion post. Only the parameters you provide are updated.
-// OAuth access tokens require the `write:discussion` [scope](https://docs.github.
-// com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+// OAuth access tokens require the `write:discussion` [scope].
 //
 // Deprecated: schema marks this operation as deprecated.
 //
 // PATCH /teams/{team_id}/discussions/{discussion_number}
+//
+// [Update a discussion]: https://docs.github.com/rest/reference/teams#update-a-discussion
+// [scope]: https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/
 func (s *Server) handleTeamsUpdateDiscussionLegacyRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -112099,8 +112940,9 @@ func (s *Server) handleTeamsUpdateDiscussionLegacyRequest(args [2]string, argsEs
 // handleTeamsUpdateInOrgRequest handles teams/update-in-org operation.
 //
 // To edit a team, the authenticated user must either be an organization owner or a team maintainer.
-// **Note:** You can also specify a team by `org_id` and `team_id` using the route `PATCH
-// /organizations/{org_id}/team/{team_id}`.
+//
+// Note: You can also specify a team by `org_id` and `team_id` using the route
+// `PATCH /organizations/{org_id}/team/{team_id}`.
 //
 // PATCH /orgs/{org}/teams/{team_slug}
 func (s *Server) handleTeamsUpdateInOrgRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -112262,15 +113104,18 @@ func (s *Server) handleTeamsUpdateInOrgRequest(args [2]string, argsEscaped bool,
 
 // handleTeamsUpdateLegacyRequest handles teams/update-legacy operation.
 //
-// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
-// We recommend migrating your existing code to use the new [Update a team](https://docs.github.
-// com/rest/reference/teams#update-a-team) endpoint.
+// Deprecation Notice: This endpoint route is deprecated and will be removed from the Teams API. We
+// recommend migrating your existing code to use the new [Update a team] endpoint.
+//
 // To edit a team, the authenticated user must either be an organization owner or a team maintainer.
-// **Note:** With nested teams, the `privacy` for parent teams cannot be `secret`.
+//
+// Note: With nested teams, the `privacy` for parent teams cannot be `secret`.
 //
 // Deprecated: schema marks this operation as deprecated.
 //
 // PATCH /teams/{team_id}
+//
+// [Update a team]: https://docs.github.com/rest/reference/teams#update-a-team
 func (s *Server) handleTeamsUpdateLegacyRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -113146,10 +113991,11 @@ func (s *Server) handleUsersCheckPersonIsFollowedByAuthenticatedRequest(args [1]
 // handleUsersCreateGpgKeyForAuthenticatedRequest handles users/create-gpg-key-for-authenticated operation.
 //
 // Adds a GPG key to the authenticated user's GitHub account. Requires that you are authenticated via
-// Basic Auth, or OAuth with at least `write:gpg_key` [scope](https://docs.github.
-// com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+// Basic Auth, or OAuth with at least `write:gpg_key` [scope].
 //
 // POST /user/gpg_keys
+//
+// [scope]: https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/
 func (s *Server) handleUsersCreateGpgKeyForAuthenticatedRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -113291,10 +114137,11 @@ func (s *Server) handleUsersCreateGpgKeyForAuthenticatedRequest(args [0]string, 
 // handleUsersCreatePublicSSHKeyForAuthenticatedRequest handles users/create-public-ssh-key-for-authenticated operation.
 //
 // Adds a public SSH key to the authenticated user's GitHub account. Requires that you are
-// authenticated via Basic Auth, or OAuth with at least `write:public_key` [scope](https://docs.
-// github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+// authenticated via Basic Auth, or OAuth with at least `write:public_key` [scope].
 //
 // POST /user/keys
+//
+// [scope]: https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/
 func (s *Server) handleUsersCreatePublicSSHKeyForAuthenticatedRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -113578,11 +114425,12 @@ func (s *Server) handleUsersDeleteEmailForAuthenticatedRequest(args [0]string, a
 
 // handleUsersDeleteGpgKeyForAuthenticatedRequest handles users/delete-gpg-key-for-authenticated operation.
 //
-// Removes a GPG key from the authenticated user's GitHub account. Requires that you are
-// authenticated via Basic Auth or via OAuth with at least `admin:gpg_key` [scope](https://docs.
-// github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+// Removes a GPG key from the authenticated user's GitHub account. Requires that you are authenticated
+// via Basic Auth or via OAuth with at least `admin:gpg_key` [scope].
 //
 // DELETE /user/gpg_keys/{gpg_key_id}
+//
+// [scope]: https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/
 func (s *Server) handleUsersDeleteGpgKeyForAuthenticatedRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -113724,10 +114572,11 @@ func (s *Server) handleUsersDeleteGpgKeyForAuthenticatedRequest(args [1]string, 
 // handleUsersDeletePublicSSHKeyForAuthenticatedRequest handles users/delete-public-ssh-key-for-authenticated operation.
 //
 // Removes a public SSH key from the authenticated user's GitHub account. Requires that you are
-// authenticated via Basic Auth or via OAuth with at least `admin:public_key` [scope](https://docs.
-// github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+// authenticated via Basic Auth or via OAuth with at least `admin:public_key` [scope].
 //
 // DELETE /user/keys/{key_id}
+//
+// [scope]: https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/
 func (s *Server) handleUsersDeletePublicSSHKeyForAuthenticatedRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -113869,12 +114718,14 @@ func (s *Server) handleUsersDeletePublicSSHKeyForAuthenticatedRequest(args [1]st
 // handleUsersFollowRequest handles users/follow operation.
 //
 // Note that you'll need to set `Content-Length` to zero when calling out to this endpoint. For more
-// information, see "[HTTP verbs](https://docs.github.
-// com/rest/overview/resources-in-the-rest-api#http-verbs)."
+// information, see "[HTTP verbs]."
+//
 // Following a user requires the user to be logged in and authenticated with basic auth or OAuth with
 // the `user:follow` scope.
 //
 // PUT /user/following/{username}
+//
+// [HTTP verbs]: https://docs.github.com/rest/overview/resources-in-the-rest-api#http-verbs
 func (s *Server) handleUsersFollowRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -114017,8 +114868,9 @@ func (s *Server) handleUsersFollowRequest(args [1]string, argsEscaped bool, w ht
 //
 // If the authenticated user is authenticated through basic authentication or OAuth with the `user`
 // scope, then the response lists public and private profile information.
-// If the authenticated user is authenticated through OAuth without the `user` scope, then the
-// response lists only public profile information.
+//
+// If the authenticated user is authenticated through OAuth without the `user` scope, then the response
+// lists only public profile information.
 //
 // GET /user
 func (s *Server) handleUsersGetAuthenticatedRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -114143,22 +114995,27 @@ func (s *Server) handleUsersGetAuthenticatedRequest(args [0]string, argsEscaped 
 // handleUsersGetByUsernameRequest handles users/get-by-username operation.
 //
 // Provides publicly available information about someone with a GitHub account.
+//
 // GitHub Apps with the `Plan` user permission can use this endpoint to retrieve information about a
-// user's GitHub plan. The GitHub App must be authenticated as a user. See "[Identifying and
-// authorizing users for GitHub Apps](https://docs.github.
-// com/apps/building-github-apps/identifying-and-authorizing-users-for-github-apps/)" for details
-// about authentication. For an example response, see 'Response with GitHub plan information' below"
+// user's GitHub plan. The GitHub App must be authenticated as a user. See
+// "[Identifying and authorizing users for GitHub Apps]" for details about authentication. For an
+// example response, see 'Response with GitHub plan information' below"
+//
 // The `email` key in the following response is the publicly visible email address from your GitHub
-// [profile page](https://github.com/settings/profile). When setting up your profile, you can select
-// a primary email address to be “public” which provides an email entry for this endpoint. If you
-// do not set a public email address for `email`, then it will have a value of `null`. You only see
-// publicly visible email addresses when authenticated with GitHub. For more information, see
-// [Authentication](https://docs.github.com/rest/overview/resources-in-the-rest-api#authentication).
+// [profile page]. When setting up your profile, you can select a primary email address to be
+// “public” which provides an email entry for this endpoint. If you do not set a public email
+// address for `email`, then it will have a value of `null`. You only see publicly visible email
+// addresses when authenticated with GitHub. For more information, see [Authentication].
+//
 // The Emails API enables you to list all of your email addresses, and toggle a primary email to be
-// visible publicly. For more information, see "[Emails API](https://docs.github.
-// com/rest/reference/users#emails)".
+// visible publicly. For more information, see "[Emails API]".
 //
 // GET /users/{username}
+//
+// [Identifying and authorizing users for GitHub Apps]: https://docs.github.com/apps/building-github-apps/identifying-and-authorizing-users-for-github-apps/
+// [profile page]: https://github.com/settings/profile
+// [Authentication]: https://docs.github.com/rest/overview/resources-in-the-rest-api#authentication
+// [Emails API]: https://docs.github.com/rest/reference/users#emails
 func (s *Server) handleUsersGetByUsernameRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -114299,16 +115156,16 @@ func (s *Server) handleUsersGetByUsernameRequest(args [1]string, argsEscaped boo
 
 // handleUsersGetContextForUserRequest handles users/get-context-for-user operation.
 //
-// Provides hovercard information when authenticated through basic auth or OAuth with the `repo`
-// scope. You can find out more about someone in relation to their pull requests, issues,
-// repositories, and organizations.
+// Provides hovercard information when authenticated through basic auth or OAuth with the `repo` scope.
+// You can find out more about someone in relation to their pull requests, issues, repositories, and
+// organizations.
+//
 // The `subject_type` and `subject_id` parameters provide context for the person's hovercard, which
 // returns more information than without the parameters. For example, if you wanted to find out more
 // about `octocat` who owns the `Spoon-Knife` repository via cURL, it would look like this:
-// ```shell
-// curl -u username:token
-// https://api.github.com/users/octocat/hovercard?subject_type=repository&subject_id=1300192
-// ```.
+//
+//	curl -u username:token
+//	 https://api.github.com/users/octocat/hovercard?subject_type=repository&subject_id=1300192
 //
 // GET /users/{username}/hovercard
 func (s *Server) handleUsersGetContextForUserRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -114460,10 +115317,11 @@ func (s *Server) handleUsersGetContextForUserRequest(args [1]string, argsEscaped
 // handleUsersGetGpgKeyForAuthenticatedRequest handles users/get-gpg-key-for-authenticated operation.
 //
 // View extended details for a single GPG key. Requires that you are authenticated via Basic Auth or
-// via OAuth with at least `read:gpg_key` [scope](https://docs.github.
-// com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+// via OAuth with at least `read:gpg_key` [scope].
 //
 // GET /user/gpg_keys/{gpg_key_id}
+//
+// [scope]: https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/
 func (s *Server) handleUsersGetGpgKeyForAuthenticatedRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -114605,10 +115463,11 @@ func (s *Server) handleUsersGetGpgKeyForAuthenticatedRequest(args [1]string, arg
 // handleUsersGetPublicSSHKeyForAuthenticatedRequest handles users/get-public-ssh-key-for-authenticated operation.
 //
 // View extended details for a single public SSH key. Requires that you are authenticated via Basic
-// Auth or via OAuth with at least `read:public_key` [scope](https://docs.github.
-// com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+// Auth or via OAuth with at least `read:public_key` [scope].
 //
 // GET /user/keys/{key_id}
+//
+// [scope]: https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/
 func (s *Server) handleUsersGetPublicSSHKeyForAuthenticatedRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -114751,11 +115610,13 @@ func (s *Server) handleUsersGetPublicSSHKeyForAuthenticatedRequest(args [1]strin
 //
 // Lists all users, in the order that they signed up on GitHub. This list includes personal user
 // accounts and organization accounts.
-// Note: Pagination is powered exclusively by the `since` parameter. Use the [Link
-// header](https://docs.github.com/rest/overview/resources-in-the-rest-api#link-header) to get the
+//
+// Note: Pagination is powered exclusively by the `since` parameter. Use the [Link header] to get the
 // URL for the next page of users.
 //
 // GET /users
+//
+// [Link header]: https://docs.github.com/rest/overview/resources-in-the-rest-api#link-header
 func (s *Server) handleUsersListRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -115769,10 +116630,11 @@ func (s *Server) handleUsersListFollowingForUserRequest(args [1]string, argsEsca
 // handleUsersListGpgKeysForAuthenticatedRequest handles users/list-gpg-keys-for-authenticated operation.
 //
 // Lists the current user's GPG keys. Requires that you are authenticated via Basic Auth or via OAuth
-// with at least `read:gpg_key` [scope](https://docs.github.
-// com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+// with at least `read:gpg_key` [scope].
 //
 // GET /user/gpg_keys
+//
+// [scope]: https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/
 func (s *Server) handleUsersListGpgKeysForAuthenticatedRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -116068,12 +116930,13 @@ func (s *Server) handleUsersListGpgKeysForUserRequest(args [1]string, argsEscape
 
 // handleUsersListPublicEmailsForAuthenticatedRequest handles users/list-public-emails-for-authenticated operation.
 //
-// Lists your publicly visible email address, which you can set with the [Set primary email
-// visibility for the authenticated user](https://docs.github.
-// com/rest/reference/users#set-primary-email-visibility-for-the-authenticated-user) endpoint. This
-// endpoint is accessible with the `user:email` scope.
+// Lists your publicly visible email address, which you can set with the
+// [Set primary email visibility for the authenticated user] endpoint. This endpoint is accessible with
+// the `user:email` scope.
 //
 // GET /user/public_emails
+//
+// [Set primary email visibility for the authenticated user]: https://docs.github.com/rest/reference/users#set-primary-email-visibility-for-the-authenticated-user
 func (s *Server) handleUsersListPublicEmailsForAuthenticatedRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -116218,7 +117081,7 @@ func (s *Server) handleUsersListPublicEmailsForAuthenticatedRequest(args [0]stri
 
 // handleUsersListPublicKeysForUserRequest handles users/list-public-keys-for-user operation.
 //
-// Lists the _verified_ public SSH keys for a user. This is accessible by anyone.
+// Lists the verified public SSH keys for a user. This is accessible by anyone.
 //
 // GET /users/{username}/keys
 func (s *Server) handleUsersListPublicKeysForUserRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -116370,10 +117233,11 @@ func (s *Server) handleUsersListPublicKeysForUserRequest(args [1]string, argsEsc
 // handleUsersListPublicSSHKeysForAuthenticatedRequest handles users/list-public-ssh-keys-for-authenticated operation.
 //
 // Lists the public SSH keys for the authenticated user's GitHub account. Requires that you are
-// authenticated via Basic Auth or via OAuth with at least `read:public_key` [scope](https://docs.
-// github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+// authenticated via Basic Auth or via OAuth with at least `read:public_key` [scope].
 //
 // GET /user/keys
+//
+// [scope]: https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/
 func (s *Server) handleUsersListPublicSSHKeysForAuthenticatedRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
@@ -116804,8 +117668,8 @@ func (s *Server) handleUsersUnblockRequest(args [1]string, argsEscaped bool, w h
 
 // handleUsersUnfollowRequest handles users/unfollow operation.
 //
-// Unfollowing a user requires the user to be logged in and authenticated with basic auth or OAuth
-// with the `user:follow` scope.
+// Unfollowing a user requires the user to be logged in and authenticated with basic auth or OAuth with
+// the `user:follow` scope.
 //
 // DELETE /user/following/{username}
 func (s *Server) handleUsersUnfollowRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
@@ -116948,9 +117812,9 @@ func (s *Server) handleUsersUnfollowRequest(args [1]string, argsEscaped bool, w 
 
 // handleUsersUpdateAuthenticatedRequest handles users/update-authenticated operation.
 //
-// **Note:** If your email is set to private and you send an `email` parameter as part of this
-// request to update your profile, your privacy settings are still enforced: the email address will
-// not be displayed on your public profile or via the API.
+// Note: If your email is set to private and you send an `email` parameter as part of this request to
+// update your profile, your privacy settings are still enforced: the email address will not be
+// displayed on your public profile or via the API.
 //
 // PATCH /user
 func (s *Server) handleUsersUpdateAuthenticatedRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {

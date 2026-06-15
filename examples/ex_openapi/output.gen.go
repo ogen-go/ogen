@@ -35,10 +35,10 @@ func (s *AnysOrExpressions) init() AnysOrExpressions {
 	return m
 }
 
-// A map of possible out-of band callbacks related to the parent operation. Each value in the map is
-// a Path Item Object that describes a set of requests that may be initiated by the API provider and
-// the expected responses. The key value used to identify the callback object is an expression,
-// evaluated at runtime, that identifies a URL to use for the callback operation.
+// A map of possible out-of band callbacks related to the parent operation. Each value in the map is a
+// Path Item Object that describes a set of requests that may be initiated by the API provider and the
+// expected responses. The key value used to identify the callback object is an expression, evaluated
+// at runtime, that identifies a URL to use for the callback operation.
 // Ref: #/definitions/callback
 type Callback struct {
 	// Pattern: "^".
@@ -360,10 +360,10 @@ func (s *ContactPattern0) init() ContactPattern0 {
 type DefaultType jx.Raw
 
 // When request bodies or response payloads may be one of a number of different schemas, a
-// `discriminator` object can be used to aid in serialization, deserialization, and validation.  The
+// `discriminator` object can be used to aid in serialization, deserialization, and validation. The
 // discriminator is a specific object in a schema which is used to inform the consumer of the
-// specification of an alternative schema based on the value associated with it.  When using the
-// discriminator, _inline_ schemas will not be considered.
+// specification of an alternative schema based on the value associated with it. When using the
+// discriminator, inline schemas will not be considered.
 // Ref: #/definitions/discriminator
 type Discriminator struct {
 	PropertyName string     `json:"propertyName"`
@@ -690,7 +690,7 @@ func (s *ExternalDocsPattern0) init() ExternalDocsPattern0 {
 	return m
 }
 
-// The Header Object follows the structure of the Parameter Object with the following changes:  1.
+// The Header Object follows the structure of the Parameter Object with the following changes: 1.
 // `name` MUST NOT be specified, it is given in the corresponding `headers` map. 1. `in` MUST NOT be
 // specified, it is implicitly in `header`. 1. All traits that are affected by the location MUST be
 // applicable to a location of `header` (for example, `style`).
@@ -1065,13 +1065,13 @@ func (s *LicensePattern0) init() LicensePattern0 {
 	return m
 }
 
-// The `Link object` represents a possible design-time link for a response. The presence of a link
-// does not guarantee the caller's ability to successfully invoke it, rather it provides a known
-// relationship and traversal mechanism between responses and other operations.  Unlike _dynamic_
-// links (i.e. links provided **in** the response payload), the OAS linking mechanism does not
-// require link information in the runtime response.  For computing links, and providing instructions
-// to execute them, a runtime expression is used for accessing values in an operation and using them
-// as parameters while invoking the linked operation.
+// The `Link object` represents a possible design-time link for a response. The presence of a link does
+// not guarantee the caller's ability to successfully invoke it, rather it provides a known
+// relationship and traversal mechanism between responses and other operations. Unlike dynamic links
+// (i.e. links provided in the response payload), the OAS linking mechanism does not require link
+// information in the runtime response. For computing links, and providing instructions to execute
+// them, a runtime expression is used for accessing values in an operation and using them as parameters
+// while invoking the linked operation.
 // Ref: #/definitions/link
 type Link struct {
 	OperationRef OptString            `json:"operationRef"`
@@ -3615,8 +3615,8 @@ func (o OptXML) Or(d XML) XML {
 	return d
 }
 
-// Describes a single operation parameter.  A unique parameter is defined by a combination of a name
-// and location.
+// Describes a single operation parameter. A unique parameter is defined by a combination of a name and
+// location.
 // Ref: #/definitions/parameter
 type Parameter struct {
 	Name            string                  `json:"name"`
@@ -4170,8 +4170,8 @@ func (s *PathItemPattern0) init() PathItemPattern0 {
 }
 
 // Holds the relative paths to the individual endpoints and their operations. The path is appended to
-// the URL from the `Server Object` in order to construct the full URL.  The Paths MAY be empty, due
-// to ACL constraints.
+// the URL from the `Server Object` in order to construct the full URL. The Paths MAY be empty, due to
+// ACL constraints.
 // Ref: #/definitions/paths
 type Paths struct {
 	// Pattern: "^/".
@@ -4227,9 +4227,9 @@ type Pattern string
 type PositiveInteger int
 
 // A simple object to allow referencing other components in the specification, internally and
-// externally.  The Reference Object is defined by JSON Reference and follows the same structure,
-// behavior and rules.   For this specification, reference resolution is accomplished as defined by
-// the JSON Reference specification and not by the JSON Schema specification.
+// externally. The Reference Object is defined by JSON Reference and follows the same structure,
+// behavior and rules. For this specification, reference resolution is accomplished as defined by the
+// JSON Reference specification and not by the JSON Schema specification.
 // Ref: #/definitions/reference
 type Reference struct {
 	Ref string `json:"$ref"`
@@ -4386,7 +4386,7 @@ func (s *RequestBodyPattern0) init() RequestBodyPattern0 {
 	return m
 }
 
-// Describes a single response from an API Operation, including design-time, static  `links` to
+// Describes a single response from an API Operation, including design-time, static `links` to
 // operations based on the response.
 // Ref: #/definitions/response
 type Response struct {
@@ -4526,14 +4526,12 @@ func (s *ResponsePattern0) init() ResponsePattern0 {
 }
 
 // A container for the expected responses of an operation. The container maps a HTTP response code to
-// the expected response.  The documentation is not necessarily expected to cover all possible HTTP
-// response codes because they may not be known in advance. However, documentation is expected to
-// cover a successful operation response and any known errors.  The `default` MAY be used as a
-// default response object for all HTTP codes  that are not covered individually by the specification.
-//
-//	The `Responses Object` MUST contain at least one response code, and it  SHOULD be the response
-//
-// for a successful operation call.
+// the expected response. The documentation is not necessarily expected to cover all possible HTTP
+// response codes because they may not be known in advance. However, documentation is expected to cover
+// a successful operation response and any known errors. The `default` MAY be used as a default
+// response object for all HTTP codes that are not covered individually by the specification. The
+// `Responses Object` MUST contain at least one response code, and it SHOULD be the response for a
+// successful operation call.
 // Ref: #/definitions/responses
 type Responses struct {
 	Default OptResponseOrReference `json:"default"`
@@ -4608,12 +4606,9 @@ func (s *ResponsesPattern1) init() ResponsesPattern1 {
 }
 
 // The Schema Object allows the definition of input and output data types. These types can be objects,
-//
-//	but also primitives and arrays. This object is an extended subset of the JSON Schema
-//
-// Specification Wright Draft 00.  For more information about the properties, see JSON Schema Core
-// and JSON Schema Validation. Unless stated otherwise, the property definitions follow the JSON
-// Schema.
+// but also primitives and arrays. This object is an extended subset of the JSON Schema Specification
+// Wright Draft 00. For more information about the properties, see JSON Schema Core and JSON Schema
+// Validation. Unless stated otherwise, the property definitions follow the JSON Schema.
 // Ref: #/definitions/schema
 type Schema struct {
 	Nullable             OptBool                     `json:"nullable"`
@@ -5258,13 +5253,11 @@ func (s *SchemasOrReferences) init() SchemasOrReferences {
 	return m
 }
 
-// Lists the required security schemes to execute this operation. The name used for each property
-// MUST correspond to a security scheme declared in the Security Schemes under the Components Object.
-//
-//	Security Requirement Objects that contain multiple schemes require that all schemes MUST be
-//
+// Lists the required security schemes to execute this operation. The name used for each property MUST
+// correspond to a security scheme declared in the Security Schemes under the Components Object.
+// Security Requirement Objects that contain multiple schemes require that all schemes MUST be
 // satisfied for a request to be authorized. This enables support for scenarios where multiple query
-// parameters or HTTP headers are required to convey security information.  When a list of Security
+// parameters or HTTP headers are required to convey security information. When a list of Security
 // Requirement Objects is defined on the Open API object or Operation Object, only one of Security
 // Requirement Objects in the list needs to be satisfied to authorize the request.
 // Ref: #/definitions/securityRequirement
@@ -5811,9 +5804,9 @@ type Title string
 
 type UniqueItems bool
 
-// A metadata object that allows for more fine-tuned XML model definitions.  When using arrays, XML
-// element names are *not* inferred (for singular/plural forms) and the `name` property SHOULD be
-// used to add that information. See examples for expected behavior.
+// A metadata object that allows for more fine-tuned XML model definitions. When using arrays, XML
+// element names are not inferred (for singular/plural forms) and the `name` property SHOULD be used to
+// add that information. See examples for expected behavior.
 // Ref: #/definitions/xml
 type XML struct {
 	Name      OptString `json:"name"`
