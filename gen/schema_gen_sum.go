@@ -441,6 +441,28 @@ func (g *schemaGen) handleExplicitDiscriminator(sum *ir.Type, schema *jsonschema
 	return true, nil
 }
 
+// implicitDiscriminatorKey returns the implicit discriminator value for a variant
+// when that value is statically known from the discriminator field.
+func implicitDiscriminatorKey(variant *ir.Type, propName string) (string, bool) {
+	for _, field := range variant.Fields {
+		if field.Spec == nil || field.Spec.Name != propName {
+			continue
+		}
+		if c := field.Const(); c.Set {
+			if v, ok := c.Value.(string); ok {
+				return v, true
+			}
+		}
+		if t := field.Type; t != nil && t.Kind == ir.KindEnum && len(t.EnumVariants) == 1 {
+			if v, ok := t.EnumVariants[0].Value.(string); ok {
+				return v, true
+			}
+		}
+		return "", false
+	}
+	return "", false
+}
+
 func (g *schemaGen) anyOf(name string, schema *jsonschema.Schema, side bool) (*ir.Type, error) {
 	if err := ensureNoInfiniteRecursion(schema); err != nil {
 		return nil, err
@@ -607,6 +629,18 @@ func (g *schemaGen) oneOf(name string, schema *jsonschema.Schema, side bool) (*i
 			}
 
 			key, err := func() (string, error) {
+				// Prefer the actual wire discriminator value of the field.
+				if key, ok := implicitDiscriminatorKey(s, schema.Discriminator.PropertyName); ok {
+					if _, ok := keys[key]; ok {
+						return "", errors.Wrapf(
+							&ErrNotImplemented{"duplicate mapping key"},
+							"key %q", key,
+						)
+					}
+					keys[key] = struct{}{}
+					return key, nil
+				}
+
 				// Spec says (https://spec.openapis.org/oas/v3.1.0#discriminator-object):
 				//
 				// 	The expectation now is that a property with name petType MUST be present in the response payload,
