@@ -694,6 +694,14 @@ be configured with generated SSE client options, including the initial
 `Last-Event-ID`, retry delay, maximum reconnect attempts, decoder buffer size,
 maximum event size, and a retry error handler.
 
+The stream-level last event ID and retry interval are updated automatically as
+valid `id:` and `retry:` fields are parsed, even if the event is not
+dispatched.
+
+If the configured maximum event size is set and reached while parsing an event,
+the client returns `ErrEventTooLarge` and drains the remaining part of that event
+before continuing with the next one, without closing the stream.
+
 Generated SSE responses comply with this interface:
 
 ```go
