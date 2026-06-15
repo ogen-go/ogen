@@ -34,7 +34,9 @@
 
 {{/* Define methods */}}
 {{- range $method := $.Methods }}
-func (*{{ $.Go }}) {{ $method }}() {}
+{{- if not ($.HasDeclaredMethod $method) }}
+func (*{{ $.Go }}) {{ $method }} {}
+{{- end }}
 {{- end }}
 
 {{ end }}

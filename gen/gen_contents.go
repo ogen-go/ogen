@@ -408,6 +408,8 @@ func (g *Generator) generateSSEContent(
 			DataType:  dataType,
 		},
 	}
+	// The concrete SSE stream template provides initSSEStream.
+	streamType.DeclareMethod("initSSEStream(sseConnectFunc, sseClientConfig)")
 	if err := ctx.saveType(streamType); err != nil {
 		return nil, errors.Wrap(err, "save stream type")
 	}

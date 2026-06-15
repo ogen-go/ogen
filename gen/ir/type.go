@@ -221,7 +221,8 @@ type Type struct {
 	Fields              []*Field            // only for struct
 	Implements          map[*Type]struct{}  // only for struct, alias, enum
 	Implementations     map[*Type]struct{}  // only for interface
-	InterfaceMethods    map[string]struct{} // only for interface
+	InterfaceMethods    map[string]string   // only for interface, keyed by method name
+	DeclaredMethods     map[string]struct{} // only for concrete types that already implement interface methods in dedicated templates
 	Schema              *jsonschema.Schema  // for all kinds except pointer, interface. Can be nil.
 	NilSemantic         NilSemantic         // only for pointer
 	GenericOf           *Type               // only for generic
