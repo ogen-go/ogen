@@ -5264,8 +5264,10 @@ func (s *CreateChatCompletionOKTextEventStream) All(ctx context.Context,
 					return
 				}
 				var zero CreateChatCompletionOKTextEventStreamEvent
-				yield(zero, err)
-				return
+				if !yield(zero, err) {
+					return
+				}
+				continue
 			}
 			if !yield(event, nil) {
 				return
@@ -7464,8 +7466,10 @@ func (s *CreateResponseOKTextEventStream) All(ctx context.Context,
 					return
 				}
 				var zero CreateResponseOKTextEventStreamEvent
-				yield(zero, err)
-				return
+				if !yield(zero, err) {
+					return
+				}
+				continue
 			}
 			if !yield(event, nil) {
 				return

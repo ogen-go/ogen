@@ -489,6 +489,15 @@ func (c *Client) sendCreateChatCompletion(ctx context.Context, request *CreateCh
 	if ht.MatchContentType("text/event-stream", ct) {
 		result.initSSEStream(func(reconnectCtx context.Context, lastEventID string) (*http.Response, error) {
 			reconnectReq := r.Clone(reconnectCtx)
+			if r.GetBody != nil {
+				body, err := r.GetBody()
+				if err != nil {
+					return nil, errors.Wrap(err, "clone reconnect body")
+				}
+				reconnectReq.Body = body
+			} else if r.Body != nil && r.Body != http.NoBody {
+				return nil, errors.New("reconnect request body is not readable")
+			}
 			reconnectReq.Header.Set("Cache-Control", "no-cache")
 			reconnectReq.Header.Set("Accept", "text/event-stream")
 			if lastEventID != "" {
@@ -703,6 +712,15 @@ func (c *Client) sendCreateResponse(ctx context.Context, request *CreateResponse
 	if ht.MatchContentType("text/event-stream", ct) {
 		result.initSSEStream(func(reconnectCtx context.Context, lastEventID string) (*http.Response, error) {
 			reconnectReq := r.Clone(reconnectCtx)
+			if r.GetBody != nil {
+				body, err := r.GetBody()
+				if err != nil {
+					return nil, errors.Wrap(err, "clone reconnect body")
+				}
+				reconnectReq.Body = body
+			} else if r.Body != nil && r.Body != http.NoBody {
+				return nil, errors.New("reconnect request body is not readable")
+			}
 			reconnectReq.Header.Set("Cache-Control", "no-cache")
 			reconnectReq.Header.Set("Accept", "text/event-stream")
 			if lastEventID != "" {

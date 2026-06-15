@@ -1305,8 +1305,10 @@ func (s *V2StreamRecentchangeGetOKTextEventStream) All(ctx context.Context,
 					return
 				}
 				var zero V2StreamRecentchangeGetOKTextEventStreamEvent
-				yield(zero, err)
-				return
+				if !yield(zero, err) {
+					return
+				}
+				continue
 			}
 			if !yield(event, nil) {
 				return
