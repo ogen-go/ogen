@@ -141,9 +141,22 @@ func TestAllOfWithSiblingProperties(t *testing.T) {
 
 // TestAllOfPropagatesParentExtensions ensures keywords that mergeSchemes does
 // not carry (x-ogen-validate, x-oapi-codegen-extra-tags, x-ogen-time-format,
-// xml, deprecated) survive flattening instead of being dropped, on both the
-// single- and multiple-allOf merge paths.
+// x-ogen-name, x-ogen-type, xml, deprecated) survive flattening instead of
+// being dropped, on both the single- and multiple-allOf merge paths.
 func TestAllOfPropagatesParentExtensions(t *testing.T) {
+	newParent := func(allOf ...*jsonschema.Schema) *jsonschema.Schema {
+		return &jsonschema.Schema{
+			Type:            jsonschema.Object,
+			Deprecated:      true,
+			OgenValidate:    map[string]any{"required": true},
+			ExtraTags:       map[string]string{"validate": "required"},
+			XOgenTimeFormat: "unix",
+			XOgenName:       "Custom",
+			XOgenType:       "time.Duration",
+			XML:             &jsonschema.XML{Name: "pet"},
+			AllOf:           allOf,
+		}
+	}
 	assertPropagated := func(t *testing.T, got *jsonschema.Schema) {
 		t.Helper()
 		a := require.New(t)
@@ -153,6 +166,8 @@ func TestAllOfPropagatesParentExtensions(t *testing.T) {
 		a.Equal(map[string]any{"required": true}, got.OgenValidate)
 		a.Equal(map[string]string{"validate": "required"}, got.ExtraTags)
 		a.Equal("unix", got.XOgenTimeFormat)
+		a.Equal("Custom", got.XOgenName)
+		a.Equal("time.Duration", got.XOgenType)
 		a.NotNil(got.XML)
 		a.Equal("pet", got.XML.Name)
 		a.True(got.Deprecated)
@@ -160,41 +175,21 @@ func TestAllOfPropagatesParentExtensions(t *testing.T) {
 
 	t.Run("single allOf subschema", func(t *testing.T) {
 		a := require.New(t)
-		parent := &jsonschema.Schema{
-			Type:            jsonschema.Object,
-			Deprecated:      true,
-			OgenValidate:    map[string]any{"required": true},
-			ExtraTags:       map[string]string{"validate": "required"},
-			XOgenTimeFormat: "unix",
-			XML:             &jsonschema.XML{Name: "pet"},
-			AllOf: []*jsonschema.Schema{
-				createObjectSchema(
-					createProperty("fromAllOf", createPrimitiveSchema(jsonschema.String), false),
-				),
-			},
-		}
-
-		got, err := flattenAllOfSchema(parent)
+		got, err := flattenAllOfSchema(newParent(
+			createObjectSchema(
+				createProperty("fromAllOf", createPrimitiveSchema(jsonschema.String), false),
+			),
+		))
 		a.NoError(err)
 		assertPropagated(t, got)
 	})
 
 	t.Run("multiple allOf subschemas", func(t *testing.T) {
 		a := require.New(t)
-		parent := &jsonschema.Schema{
-			Type:            jsonschema.Object,
-			Deprecated:      true,
-			OgenValidate:    map[string]any{"required": true},
-			ExtraTags:       map[string]string{"validate": "required"},
-			XOgenTimeFormat: "unix",
-			XML:             &jsonschema.XML{Name: "pet"},
-			AllOf: []*jsonschema.Schema{
-				createObjectSchema(createProperty("a", createPrimitiveSchema(jsonschema.String), false)),
-				createObjectSchema(createProperty("b", createPrimitiveSchema(jsonschema.String), false)),
-			},
-		}
-
-		got, err := flattenAllOfSchema(parent)
+		got, err := flattenAllOfSchema(newParent(
+			createObjectSchema(createProperty("a", createPrimitiveSchema(jsonschema.String), false)),
+			createObjectSchema(createProperty("b", createPrimitiveSchema(jsonschema.String), false)),
+		))
 		a.NoError(err)
 		assertPropagated(t, got)
 	})

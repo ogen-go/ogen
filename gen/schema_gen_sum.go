@@ -1257,25 +1257,9 @@ func shallowSchemaCopy(s *jsonschema.Schema) *jsonschema.Schema {
 	return &cpy
 }
 
-// hasSiblingConstraints reports whether the schema carries keywords that must
-// be applied alongside allOf (i.e. sibling constraints).
-//
-// Wrapper-level metadata that is propagated separately by flattenAllOfSchema
-// (Type, Nullable, Ref, Pointer) is intentionally excluded.
-//
-// ogen-specific keywords (xml, x-ogen-validate, x-oapi-codegen-extra-tags,
-// x-ogen-time-format) are included as well: some of them are consumed after
-// flattening, so a present-but-ignored sibling would silently drop them. Their
-// values are restored from the parent by propagateParentExtensions, since
-// mergeSchemes does not carry them through a merge.
-//
-// This list overlaps with mergeSchemes' containsValidators, but the two sets
-// differ on purpose: this one omits Type/Nullable (wrapper metadata) and adds
-// the ogen-specific keywords above. Keep both in sync when adding fields to
-// jsonschema.Schema. See the note on the merge in flattenAllOfSchema: a sibling
-// detected here but NOT by containsValidators can still be dropped by that
-// function's early-return, so anything added here that mergeSchemes cannot
-// carry must also be handled by propagateParentExtensions.
+// hasSiblingConstraints reports whether s carries keywords to apply alongside
+// allOf. Type/Nullable/Ref/Pointer are excluded: flattenAllOfSchema propagates
+// them separately. Mostly mirrors mergeSchemes' containsValidators; keep in sync.
 func hasSiblingConstraints(s *jsonschema.Schema) bool {
 	if s == nil {
 		return false
@@ -1316,23 +1300,20 @@ func hasSiblingConstraints(s *jsonschema.Schema) bool {
 	case s.XML != nil,
 		len(s.ExtraTags) > 0,
 		len(s.OgenValidate) > 0,
-		s.XOgenTimeFormat != "":
+		s.XOgenTimeFormat != "",
+		s.XOgenName != "",
+		s.XOgenType != "":
 		return true
 	}
+	// Deprecated is carried by flattenAllOfSchema instead, to avoid forcing a
+	// merge for just a flag. Summary, Examples and Content* stay unhandled.
 	return false
 }
 
-// propagateParentExtensions restores parent keywords that mergeSchemes does not
-// carry onto the flattened result. mergeSchemes builds a fresh schema, so
-// without this these fields would be dropped even when the parent specified
-// them alongside allOf.
-//
-// Besides the ogen-specific keywords (xml, x-ogen-validate,
-// x-oapi-codegen-extra-tags, x-ogen-time-format), Deprecated is propagated so a
-// `deprecated: true` sibling is not lost on the merge path. Description is
-// deliberately left out: mergeSchemes sets it to "Merged schema" on purpose.
-//
-// Values already set on dst take precedence.
+// propagateParentExtensions copies parent keywords that mergeSchemes drops when
+// it builds a fresh merged schema (the ogen extensions and Deprecated). dst is
+// kept if already set, which only matters when mergeSchemes early-returns a
+// shallow copy of a subschema that has its own value.
 func propagateParentExtensions(dst, parent *jsonschema.Schema) {
 	if dst.XML == nil {
 		dst.XML = parent.XML
@@ -1345,6 +1326,12 @@ func propagateParentExtensions(dst, parent *jsonschema.Schema) {
 	}
 	if dst.XOgenTimeFormat == "" {
 		dst.XOgenTimeFormat = parent.XOgenTimeFormat
+	}
+	if dst.XOgenName == "" {
+		dst.XOgenName = parent.XOgenName
+	}
+	if dst.XOgenType == "" {
+		dst.XOgenType = parent.XOgenType
 	}
 	dst.Deprecated = dst.Deprecated || parent.Deprecated
 }
@@ -1389,12 +1376,8 @@ func flattenAllOfSchema(schema *jsonschema.Schema) (*jsonschema.Schema, error) {
 		return child, nil
 	}
 
-	// Sibling handling is two-staged: the merge below applies the parent's
-	// structural constraints (properties, required, validators, ...) by feeding
-	// the parent as an extra subschema, while propagateParentExtensions restores
-	// the keywords that mergeSchemes cannot carry (xml, the x-ogen-* extensions,
-	// deprecated). The parent is appended last so its sibling fields take the
-	// trailing slot during the fold.
+	// Merge the parent in as an extra subschema. Append it last for field order
+	// only; allOf is a commutative AND.
 	toMerge := schema.AllOf
 	if hasSiblings {
 		toMerge = make([]*jsonschema.Schema, 0, len(schema.AllOf)+1)
@@ -1553,13 +1536,9 @@ func mergeSchemes(s1, s2 *jsonschema.Schema) (_ *jsonschema.Schema, err error) {
 		}
 	}
 
-	// containsValidators reports whether s carries anything worth merging. The
-	// switch below uses it as an early-return: when only one side contains
-	// validators, the other is dropped wholesale. Anything that hasSiblingConstraints
-	// treats as a sibling must therefore be detected here too, otherwise a parent
-	// carrying only that keyword would be silently discarded on the merge path
-	// (the ogen-specific keywords are the exception: they are restored afterwards
-	// by propagateParentExtensions). Keep this in sync with hasSiblingConstraints.
+	// The switch below drops the other side when only one side has validators,
+	// so keep this in sync with hasSiblingConstraints (minus the ogen keywords,
+	// which propagateParentExtensions restores).
 	containsValidators := func(s *jsonschema.Schema) bool {
 		if s.Type != "" || s.Format != "" || s.Nullable || len(s.Enum) > 0 || s.DefaultSet || s.ConstSet {
 			return true
