@@ -55,6 +55,9 @@ func encodeErrorResponse(response {{ $.ErrorGoType }}, w http.ResponseWriter, {{
 {{- /*gotype: github.com/ogen-go/ogen/gen.OperationElem*/ -}}{{ $op := $.Operation }}
 {{- /*gotype: github.com/ogen-go/ogen/gen.TemplateConfig*/ -}}{{ $cfg := $.Config }}
 {{- $otel := $cfg.OpenTelemetryEnabled }}
+{{- if $op.HasSSEStreamResponse }}
+	{{- template "response_encoders/operation_sse" . }}
+{{- else }}
 func encode{{ $op.Name }}Response(response {{ $op.Responses.GoType }}, w http.ResponseWriter, {{ if $otel }}span trace.Span{{ end }}) error {
 	{{- $types := $op.ListResponseTypes $otel }}
 	{{- $hasRawResponse := false }}
@@ -88,6 +91,12 @@ func encode{{ $op.Name }}Response(response {{ $op.Responses.GoType }}, w http.Re
 		}
 	{{- end -}}
 }
+{{- end }}
+{{ end }}
+
+{{ define "response_encoders/operation_sse" }}
+{{- /*gotype: github.com/ogen-go/ogen/gen.OperationElem*/ -}}
+{{- sse_server_response_encoding $.Operation }}
 {{ end }}
 
 {{ define "respond" }}

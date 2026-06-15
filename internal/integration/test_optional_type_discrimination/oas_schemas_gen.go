@@ -43,7 +43,8 @@ func (s *ClientConfig) SetTimeout(val OptInt) {
 // Ref: #/components/schemas/Config
 // Config represents sum type.
 type Config struct {
-	Type         ConfigType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type         ConfigType
 	ServerConfig ServerConfig
 	ClientConfig ClientConfig
 }

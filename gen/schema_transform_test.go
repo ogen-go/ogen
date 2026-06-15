@@ -56,6 +56,60 @@ func TestSingleOneOf(t *testing.T) {
 	})
 }
 
+func TestOneOfVariantFieldNameAvoidsTypeDiscriminatorCollision(t *testing.T) {
+	a := require.New(t)
+
+	resolver := func(ref jsonschema.Ref) (*ir.Type, bool) {
+		switch ref.Ptr {
+		case "#/components/schemas/Type":
+			return &ir.Type{
+				Name: "Type",
+				Kind: ir.KindStruct,
+				Fields: []*ir.Field{
+					{
+						Name: "Some",
+						Type: &ir.Type{Kind: ir.KindPrimitive, Primitive: ir.String},
+						Tag:  ir.Tag{JSON: "some"},
+					},
+				},
+			}, true
+		case "#/components/schemas/Other":
+			return &ir.Type{
+				Name: "Other",
+				Kind: ir.KindStruct,
+				Fields: []*ir.Field{
+					{
+						Name: "something",
+						Type: &ir.Type{Kind: ir.KindPrimitive, Primitive: ir.Int},
+						Tag:  ir.Tag{JSON: "something"},
+					},
+				},
+			}, true
+		default:
+			return nil, false
+		}
+	}
+
+	s := createTestSchemaGen(resolver)
+	schema := &jsonschema.Schema{
+		Type: jsonschema.Empty,
+		OneOf: []*jsonschema.Schema{
+			{Ref: jsonpointer.RefKey{Ptr: "#/components/schemas/Type"}},
+			{Ref: jsonpointer.RefKey{Ptr: "#/components/schemas/Other"}},
+		},
+	}
+
+	result, err := s.generate("Thing", schema, false)
+	a.NoError(err)
+	assertSumType(t, result, 2)
+
+	names := make([]string, 0, len(result.SumOf))
+	for _, variant := range result.SumOf {
+		names = append(names, variant.Name)
+	}
+	a.ElementsMatch([]string{"TypeValue", "Other"}, names)
+}
+
 func TestNullableOneOf_BasicPrimitives(t *testing.T) {
 	primitiveTests := []struct {
 		name         string

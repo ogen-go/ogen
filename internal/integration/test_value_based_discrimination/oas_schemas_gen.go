@@ -197,7 +197,8 @@ func (s *AdminResourceType) UnmarshalText(data []byte) error {
 // Ref: #/components/schemas/Event
 // Event represents sum type.
 type Event struct {
-	Type        EventType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type        EventType
 	UserEvent   UserEvent
 	SystemEvent SystemEvent
 	MetricEvent MetricEvent
@@ -555,7 +556,8 @@ func (s *MetricEventEventType) UnmarshalText(data []byte) error {
 // Ref: #/components/schemas/Resource
 // Resource represents sum type.
 type Resource struct {
-	Type          ResourceType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type          ResourceType
 	UserResource  UserResource
 	AdminResource AdminResource
 }
@@ -622,7 +624,8 @@ func NewAdminResourceResource(v AdminResource) Resource {
 // Ref: #/components/schemas/ShippingOption
 // ShippingOption represents sum type.
 type ShippingOption struct {
-	Type                ShippingOptionType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type                ShippingOptionType
 	USPSShippingOption  USPSShippingOption
 	FedExShippingOption FedExShippingOption
 }
@@ -692,7 +695,8 @@ func NewFedExShippingOptionShippingOption(v FedExShippingOption) ShippingOption 
 // Ref: #/components/schemas/StatusResponse
 // StatusResponse represents sum type.
 type StatusResponse struct {
-	Type           StatusResponseType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type           StatusResponseType
 	ActiveStatus   ActiveStatus
 	InactiveStatus InactiveStatus
 }

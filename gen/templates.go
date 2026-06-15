@@ -171,6 +171,7 @@ func templateFunctions() template.FuncMap {
 				Config:    cfg,
 			}
 		},
+		"sse_server_response_encoding": sseServerResponseEncoding,
 		"ir_media": func(e ir.Encoding, t *ir.Type) ir.Media {
 			return ir.Media{
 				Encoding: e,

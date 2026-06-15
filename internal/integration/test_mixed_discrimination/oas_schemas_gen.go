@@ -9,7 +9,8 @@ import (
 // Ref: #/components/schemas/Event
 // Event represents sum type.
 type Event struct {
-	Type        EventType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type        EventType
 	UserEvent   UserEvent
 	SystemEvent SystemEvent
 	MetricEvent MetricEvent

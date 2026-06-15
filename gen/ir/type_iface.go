@@ -2,6 +2,7 @@ package ir
 
 import (
 	"fmt"
+	"maps"
 	"slices"
 	"strings"
 
@@ -39,25 +40,54 @@ func (t *Type) AddMethod(name string) {
 		panic(unreachable(t))
 	}
 
-	t.InterfaceMethods[name] = struct{}{}
+	t.InterfaceMethods[name] = name + "()"
+}
+
+func (t *Type) AddMethodSignature(name, signature string) {
+	if !t.Is(KindInterface) {
+		panic(unreachable(t))
+	}
+
+	t.InterfaceMethods[name] = name + signature
+}
+
+func (t *Type) DeclareMethod(method string) {
+	if !t.CanHaveMethods() {
+		panic(unreachable(t))
+	}
+	if t.DeclaredMethods == nil {
+		t.DeclaredMethods = map[string]struct{}{}
+	}
+	t.DeclaredMethods[method] = struct{}{}
+}
+
+func (t *Type) HasDeclaredMethod(method string) bool {
+	if t == nil {
+		return false
+	}
+	_, ok := t.DeclaredMethods[method]
+	return ok
 }
 
 func (t *Type) Methods() []string {
-	ms := make(map[string]struct{})
+	ms := make(map[string]string)
 	switch t.Kind {
 	case KindInterface:
 		ms = t.InterfaceMethods
 	case KindStruct, KindMap, KindAlias, KindEnum, KindGeneric, KindSum, KindStream:
 		for i := range t.Implements {
-			for m := range i.InterfaceMethods {
-				ms[m] = struct{}{}
-			}
+			maps.Copy(ms, i.InterfaceMethods)
 		}
 	default:
 		panic(fmt.Sprintf("unexpected kind: %s", t.Kind))
 	}
 
-	return xmaps.SortedKeys(ms)
+	names := xmaps.SortedKeys(ms)
+	result := make([]string, 0, len(names))
+	for _, name := range names {
+		result = append(result, ms[name])
+	}
+	return result
 }
 
 func (t *Type) ListImplementations() []*Type {

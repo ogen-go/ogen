@@ -5,7 +5,8 @@ package api
 // Ref: #/components/schemas/Data
 // Data represents sum type.
 type Data struct {
-	Type       DataType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type       DataType
 	StringData StringData
 	NumberData NumberData
 }

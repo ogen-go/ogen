@@ -43,6 +43,15 @@ func testGenerate(t *testing.T, dir, filename string, data []byte, aliases ctAli
 		Logger: log,
 	}
 
+	if filename == "wikimedia.openapi.yaml" || filename == "openai-2.3.0.openapi.yaml" {
+		// TODO: remove when SSE server generation feature is implemented.
+		opt.Generator.Features = &gen.FeatureOptions{
+			Disable: gen.FeatureSet{
+				gen.PathsServer.Name:    {},
+				gen.WebhooksServer.Name: {},
+			},
+		}
+	}
 	if filename == "file_reference.yml" { // HACK
 		opt.Parser.AllowRemote = true
 		opt.Parser.RootURL = &url.URL{
@@ -173,13 +182,15 @@ func TestGenerate(t *testing.T) {
 				"array defaults",
 				"type-based discrimination with same jxType",
 			},
-			"manga.json":               {},
-			"telegram_bot_api.json":    {},
-			"gotd_bot_api.json":        {},
-			"k8s.json":                 {},
-			"petstore-expanded.yml":    {},
-			"problemjson.yml":          {},
-			"redoc/discriminator.json": {},
+			"manga.json":                {},
+			"telegram_bot_api.json":     {},
+			"gotd_bot_api.json":         {},
+			"k8s.json":                  {},
+			"petstore-expanded.yml":     {},
+			"problemjson.yml":           {},
+			"openai-2.3.0.openapi.yaml": {}, // NOTE: remove condition branch on top of test.
+			"wikimedia.openapi.yaml":    {}, // NOTE: remove condition branch on top of test.
+			"redoc/discriminator.json":  {},
 			"swagger-petstore-1.0.27.yaml": {
 				"nested objects in form parameters",
 			},

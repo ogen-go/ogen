@@ -11,8 +11,11 @@
 	{{- end }}
 {{- end }}
 
-{{- if $.IsStruct }}
+{{- if $.IsSSEStream }}
+	{{- template "schema/sse_stream" $ }}
+{{- else if $.IsStruct }}
 	{{- template "schema/struct" $ }}
+	{{- template "schema/sse_struct_wrapper" $ }}
 {{- else if $.IsMap }}
 	{{- template "schema/map" $ }}
 {{- else if $.IsStream }}
@@ -31,7 +34,9 @@
 
 {{/* Define methods */}}
 {{- range $method := $.Methods }}
-func (*{{ $.Go }}) {{ $method }}() {}
+{{- if not ($.HasDeclaredMethod $method) }}
+func (*{{ $.Go }}) {{ $method }} {}
+{{- end }}
 {{- end }}
 
 {{ end }}

@@ -70,11 +70,15 @@ func (g *Generator) generateResponses(ctx *genctx, opName string, responses open
 	var (
 		countTypes = 0
 		lastWalked *ir.Type
+		hasSSE     bool
 	)
 
 	if err := walkResponseTypes(result, func(_ string, t *ir.Type) (*ir.Type, error) {
 		countTypes++
 		lastWalked = t
+		if t != nil && t.SSE != nil {
+			hasSSE = true
+		}
 		return t, nil
 	}); err != nil {
 		return nil, errors.Wrap(err, "walk")
@@ -127,6 +131,11 @@ func (g *Generator) generateResponses(ctx *genctx, opName string, responses open
 		return nil, errors.Wrap(err, "method name")
 	}
 	iface.AddMethod(methodName)
+	if hasSSE {
+		// Response interfaces need an internal hook so the client can
+		// initialize the init SSE branch.
+		iface.AddMethodSignature("initSSEStream", "(sseConnectFunc, sseClientConfig)")
+	}
 	if err := ctx.saveType(iface); err != nil {
 		return nil, errors.Wrap(err, "save interface type")
 	}
@@ -211,6 +220,7 @@ func addRawResponseTypes(ctx *genctx, result *ir.Responses, iface *ir.Type, opNa
 				Type:          rawType,
 				JSONStreaming: media.JSONStreaming,
 				RawResponse:   media.RawResponse,
+				SSEEventShape: media.SSEEventShape,
 			}
 		}
 		return nil
@@ -306,7 +316,12 @@ func (g *Generator) responseToIR(
 	var unsupported []string
 	for ct, content := range contents {
 		t, e := content.Type, content.Encoding
-		if e.JSON() || e.ProblemJSON() || t.IsStream() || isBinary(t.Schema) || content.RawResponse {
+		if e.JSON() ||
+			e.ProblemJSON() ||
+			e.EventStream() ||
+			t.IsStream() ||
+			isBinary(t.Schema) ||
+			content.RawResponse {
 			continue
 		}
 		delete(contents, ct)
@@ -347,6 +362,7 @@ func (g *Generator) responseToIR(
 			Type:          t,
 			JSONStreaming: media.JSONStreaming,
 			RawResponse:   media.RawResponse,
+			SSEEventShape: media.SSEEventShape,
 		}
 	}
 
@@ -444,9 +460,16 @@ func wrapResponseType(
 	}
 
 	injectHeaderFields(headers, wrapper)
+	responseType := t
+	if t.SSE != nil {
+		// SSE stream values carry mutex and connection state, so wrapped
+		// responses must hold them by pointer.
+		responseType = ir.Pointer(t, ir.NilOptional)
+		wrapper.DeclareMethod("initSSEStream(sseConnectFunc, sseClientConfig)")
+	}
 	wrapper.Fields = append(wrapper.Fields, &ir.Field{
 		Name: "Response",
-		Type: t,
+		Type: responseType,
 	})
 
 	return wrapper, nil

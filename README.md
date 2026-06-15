@@ -63,6 +63,7 @@ docker run --rm \
     - Field value discrimination: variants with same field names and types but different enum values
 - Extra Go struct field tags in the generated types
 - OpenTelemetry tracing and metrics
+- Server-Sent Events (SSE) support
 
 Example generated structure from schema:
 
@@ -590,6 +591,125 @@ func (s *Error) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	})
+}
+```
+
+## SSE
+
+Server-Sent Events (SSE) code generation is supported in ogen for `text/event-stream`
+responses, following the
+[HTML Server-Sent Events specification](https://html.spec.whatwg.org/multipage/server-sent-events.html)
+with some Go-specific behavior.
+
+> [!NOTE]
+> Only SSE client generation is supported in ogen for now.
+
+### Event shapes
+
+There is no [official standard for representing `text/event-stream` in OpenAPI](https://github.com/OAI/OpenAPI-Specification/discussions/4171)
+before OAS 3.2. Because of this, ogen supports multiple ways of representing SSE
+in schema. In ogen, this is called an SSE event shape.
+
+An SSE event may contain the standard `id`, `event`, `data`, and `retry` fields.
+The generated client dispatches an event only when at least one `data:` line is
+present. If the `event` field is omitted, it defaults to `"message"` as defined
+by the SSE specification.
+
+You can represent SSE events in OpenAPI with multiple shapes. The shape is
+selected with `x-ogen-sse-event-shape`.
+
+#### data-only
+
+By default, `text/event-stream` uses the `data-only` shape:
+
+```yaml
+text/event-stream:
+  schema:
+    type: object
+    properties:
+      message:
+        type: string
+      createdAt:
+        type: string
+        format: date-time
+```
+
+This shape describes only the SSE `data` field. Standard SSE fields are still
+parsed by the client and exposed on the generated event type.
+
+#### full
+
+`full` shape describes the full SSE event envelope. This is useful when you need
+discriminators on the `event` field or schema validation for the full envelope.
+
+```yaml
+text/event-stream:
+  x-ogen-sse-event-shape: full
+  schema:
+    oneOf:
+      - $ref: "#/components/schemas/EventA"
+      - $ref: "#/components/schemas/EventB"
+    discriminator:
+      propertyName: event
+      mapping:
+        event_a: "#/components/schemas/EventA"
+        event_b: "#/components/schemas/EventB"
+
+# ...
+
+EventA:
+  type: object
+  required: [ event, data ]
+  properties:
+    event:
+      type: string
+      enum: [ event_a ]
+    data:
+      $ref: "#/components/schemas/EventAData"
+EventB:
+  type: object
+  required: [ event, data ]
+  properties:
+    event:
+      type: string
+      enum: [ event_b ]
+    data:
+      $ref: "#/components/schemas/EventBData"
+```
+
+In `full` mode the schema describes the full SSE event envelope.
+
+It is not required to specify every standard field in the schema. Omitted
+standard fields continue to follow default SSE event semantics.
+
+#### full-array
+
+`full-array` is the array form of `full` shape. The schema must be an array of
+full SSE event envelopes.
+
+#### Generated client
+
+Generated SSE clients handle reconnection automatically. Reconnect behavior can
+be configured with generated SSE client options, including the initial
+`Last-Event-ID`, retry delay, maximum reconnect attempts, decoder buffer size,
+maximum event size, and a retry error handler.
+
+The stream-level last event ID and retry interval are updated automatically as
+valid `id:` and `retry:` fields are parsed, even if the event is not
+dispatched.
+
+If the configured maximum event size is set and reached while parsing an event,
+the client returns `ErrEventTooLarge` and drains the remaining part of that event
+before continuing with the next one, without closing the stream.
+
+Generated SSE responses comply with this interface:
+
+```go
+type Client[E any] interface {
+    Next(ctx context.Context) (E, error)         // Returns the next event.
+    All(ctx context.Context) iter.Seq2[E, error] // Exposes iterator over events.
+    State() (state sse.State, latestErr error)   // Reports current stream state with the latest or terminal error.
+    Close() error                                // Closes the stream.
 }
 ```
 

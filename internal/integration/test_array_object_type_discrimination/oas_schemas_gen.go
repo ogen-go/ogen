@@ -32,7 +32,8 @@ func (s *CollectionResource) SetItems(val []string) {
 // Ref: #/components/schemas/Resource
 // Resource represents sum type.
 type Resource struct {
-	Type               ResourceType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type               ResourceType
 	CollectionResource CollectionResource
 	SingleResource     SingleResource
 }

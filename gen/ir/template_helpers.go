@@ -171,6 +171,7 @@ func (t *Type) IsNull() bool {
 func (t *Type) IsArray() bool     { return t.Is(KindArray) }
 func (t *Type) IsMap() bool       { return t.Is(KindMap) }
 func (t *Type) IsPrimitive() bool { return t.Is(KindPrimitive) }
+func (t *Type) IsString() bool    { return t.Is(KindPrimitive) && t.Primitive == String }
 func (t *Type) IsStruct() bool    { return t.Is(KindStruct) }
 func (t *Type) IsPointer() bool   { return t.Is(KindPointer) }
 func (t *Type) IsEnum() bool      { return t.Is(KindEnum) }
@@ -180,8 +181,49 @@ func (t *Type) IsInterface() bool { return t.Is(KindInterface) }
 func (t *Type) IsSum() bool       { return t.Is(KindSum) }
 func (t *Type) IsAny() bool       { return t.Is(KindAny) }
 func (t *Type) IsStream() bool    { return t.Is(KindStream) }
-func (t *Type) IsNumeric() bool   { return t.IsInteger() || t.IsFloat() || t.IsDecimal() }
-func (t *Type) IsExternal() bool  { return t.Schema != nil && t.Schema.XOgenType != "" }
+func (t *Type) IsSSEStream() bool {
+	return t != nil && (t.SSE != nil || (t.IsPointer() && t.PointerTo.IsSSEStream()))
+}
+func (t *Type) IsNumeric() bool  { return t.IsInteger() || t.IsFloat() || t.IsDecimal() }
+func (t *Type) IsExternal() bool { return t.Schema != nil && t.Schema.XOgenType != "" }
+
+// AcceptsJSONString reports whether t can be decoded as a JSON string token.
+func (t *Type) AcceptsJSONString() bool {
+	if t == nil {
+		return false
+	}
+	switch {
+	case t.IsAny():
+		return true
+	case t.JSON().Type() == "String":
+		return true
+	case t.IsAlias():
+		return t.AliasTo.AcceptsJSONString()
+	case t.IsGeneric():
+		return t.GenericOf.AcceptsJSONString()
+	case t.IsSum():
+		for _, s := range t.SumOf {
+			if s.AcceptsJSONString() {
+				return true
+			}
+		}
+	}
+	return false
+}
+
+// HasGeneratedReservedField reports whether a generated sum type has a
+// reserved field name.
+func (t *Type) HasGeneratedReservedField() bool {
+	if t == nil || !t.IsSum() {
+		return false
+	}
+	for _, s := range t.SumOf {
+		if s.Name == "TypeValue" {
+			return true
+		}
+	}
+	return false
+}
 
 func (t *Type) MustField(name string) *Field {
 	if t.IsAlias() {

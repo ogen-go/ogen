@@ -219,7 +219,8 @@ func (s *Data) SetNullableEnum(val OptNullableEnums) {
 
 // DataDescription represents sum type.
 type DataDescription struct {
-	Type                DataDescriptionType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type                DataDescriptionType
 	DescriptionDetailed DescriptionDetailed
 	DescriptionSimple   DescriptionSimple
 }
@@ -621,7 +622,8 @@ func (s *FoobarPutDef) SetStatusCode(val int) {
 // Ref: #/components/schemas/ID
 // ID represents sum type.
 type ID struct {
-	Type   IDType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type   IDType
 	String string
 	Int    int
 }
@@ -711,7 +713,8 @@ func (s *InlineDiscriminatorOneOf) SetOneOf(val InlineDiscriminatorOneOfSum) {
 
 // InlineDiscriminatorOneOfSum represents sum type.
 type InlineDiscriminatorOneOfSum struct {
-	Type           InlineDiscriminatorOneOfSumType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type           InlineDiscriminatorOneOfSumType
 	InlineOneOfFoo InlineOneOfFoo
 	InlineOneOfBar InlineOneOfBar
 }
@@ -857,7 +860,8 @@ func (s *InlineUniqueFieldsOneOf) SetOneOf(val InlineUniqueFieldsOneOfSum) {
 
 // InlineUniqueFieldsOneOfSum represents sum type.
 type InlineUniqueFieldsOneOfSum struct {
-	Type           InlineUniqueFieldsOneOfSumType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type           InlineUniqueFieldsOneOfSumType
 	InlineOneOfFoo InlineOneOfFoo
 	InlineOneOfBar InlineOneOfBar
 }
@@ -971,7 +975,8 @@ type Issue1310Properties struct{}
 // Ref: #/components/schemas/Issue143
 // Issue143 represents sum type.
 type Issue143 struct {
-	Type      Issue143Type // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type      Issue143Type
 	Issue1430 Issue1430
 	Issue1431 Issue1431
 	Issue1432 Issue1432
@@ -1336,7 +1341,8 @@ func (s *Issue1461RequiredTest) SetBanana(val []string) {
 // Ref: #/components/schemas/Issue943
 // Issue943 represents sum type.
 type Issue943 struct {
-	Type             Issue943Type // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type             Issue943Type
 	Issue943Variant1 Issue943Variant1
 	Issue943Variant2 Issue943Variant2
 	Issue943Map      Issue943Map
@@ -1683,7 +1689,8 @@ func (s *MergeDiscriminatorOneOf) SetOneOf(val MergeDiscriminatorOneOfSum) {
 
 // MergeDiscriminatorOneOfSum represents sum type.
 type MergeDiscriminatorOneOfSum struct {
-	Type           MergeDiscriminatorOneOfSumType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type           MergeDiscriminatorOneOfSumType
 	InlineOneOfFoo InlineOneOfFoo
 	InlineOneOfBar InlineOneOfBar
 }
@@ -1778,7 +1785,8 @@ func (s *MergeUniqueFieldsOneOf) SetOneOf(val MergeUniqueFieldsOneOfSum) {
 
 // MergeUniqueFieldsOneOfSum represents sum type.
 type MergeUniqueFieldsOneOfSum struct {
-	Type           MergeUniqueFieldsOneOfSumType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type           MergeUniqueFieldsOneOfSumType
 	InlineOneOfFoo InlineOneOfFoo
 	InlineOneOfBar InlineOneOfBar
 }
@@ -2312,7 +2320,8 @@ func (s *NullableEnumsOnlyNullable) UnmarshalText(data []byte) error {
 // Ref: #/components/schemas/OneOfBooleanSumNullables
 // OneOfBooleanSumNullables represents sum type.
 type OneOfBooleanSumNullables struct {
-	Type           OneOfBooleanSumNullablesType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type           OneOfBooleanSumNullablesType
 	Bool           bool
 	OneOfNullables OneOfNullables
 }
@@ -2440,7 +2449,8 @@ func (s *OneOfBugs) SetIssue943(val OptIssue943) {
 // Ref: #/components/schemas/OneOfMappingReference
 // OneOfMappingReference represents sum type.
 type OneOfMappingReference struct {
-	Type                   OneOfMappingReferenceType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type                   OneOfMappingReferenceType
 	OneOfMappingReferenceA OneOfMappingReferenceA
 	OneOfMappingReferenceB OneOfMappingReferenceB
 }
@@ -2585,7 +2595,8 @@ type OneOfMappingReferenceBData struct{}
 // Ref: #/components/schemas/OneOfNullables
 // OneOfNullables represents sum type.
 type OneOfNullables struct {
-	Type        OneOfNullablesType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type        OneOfNullablesType
 	Null        struct{}
 	String      string
 	Int         int
@@ -2702,7 +2713,8 @@ func NewStringArrayOneOfNullables(v []string) OneOfNullables {
 // Ref: #/components/schemas/OneOfUUIDAndIntEnum
 // OneOfUUIDAndIntEnum represents sum type.
 type OneOfUUIDAndIntEnum struct {
-	Type                 OneOfUUIDAndIntEnumType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type                 OneOfUUIDAndIntEnumType
 	UUID                 uuid.UUID
 	OneOfUUIDAndIntEnum1 OneOfUUIDAndIntEnum1
 }
@@ -2784,7 +2796,8 @@ func (OneOfUUIDAndIntEnum1) AllValues() []OneOfUUIDAndIntEnum1 {
 // Ref: #/components/schemas/OneOfWithNullable
 // OneOfWithNullable represents sum type.
 type OneOfWithNullable struct {
-	Type        OneOfWithNullableType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type        OneOfWithNullableType
 	Null        struct{}
 	String      string
 	Int         int
@@ -2916,7 +2929,8 @@ func (s *OnePropertyObject) SetFoo(val string) {
 // Ref: #/components/schemas/OneVariantHasNoUniqueFields
 // OneVariantHasNoUniqueFields represents sum type.
 type OneVariantHasNoUniqueFields struct {
-	Type                         OneVariantHasNoUniqueFieldsType // switch on this field
+	// Type selects the active sum variant, switch on this field.
+	Type                         OneVariantHasNoUniqueFieldsType
 	OneVariantHasNoUniqueFields0 OneVariantHasNoUniqueFields0
 	OneVariantHasNoUniqueFields1 OneVariantHasNoUniqueFields1
 }

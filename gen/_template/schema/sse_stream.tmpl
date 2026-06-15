@@ -1,0 +1,315 @@
+{{- /*gotype: github.com/ogen-go/ogen/gen/ir.Type*/ -}}
+{{- define "schema/sse_stream" }}
+// {{ $.Name }}Client reads events from the {{ $.Name }} SSE stream.
+type {{ $.Name }}Client interface {
+	sse.Client[{{ $.SSE.EventType.Go }}]
+}
+
+// {{ $.Name }} is a Server-Sent Events response stream.
+type {{ $.Name }} struct {
+	resp      *http.Response
+	decoder   *sse.Decoder
+	connect   sseConnectFunc
+	options   sseClientConfig
+	stateMu   sync.RWMutex
+	state     sse.State
+	latestErr error
+	closed    atomic.Bool
+	closeCh   chan struct{}
+	closeOnce sync.Once
+}
+
+func (s *{{ $.Name }}) initSSEStream(
+	connect sseConnectFunc,
+	options sseClientConfig,
+) {
+	s.stateMu.Lock()
+	defer s.stateMu.Unlock()
+	if s.resp != nil {
+		s.decoder = newSSEResponseDecoder(s.resp, options)
+	}
+	s.connect = connect
+	s.options = options
+	s.state = sse.StateOpen
+	s.latestErr = nil
+	s.closeCh = make(chan struct{})
+}
+
+// State returns the current stream state and the latest terminal or current reconnect error.
+func (s *{{ $.Name }}) State() (state sse.State, latestErr error) {
+	s.stateMu.RLock()
+	defer s.stateMu.RUnlock()
+	return s.state, s.latestErr
+}
+
+func (s *{{ $.Name }}) setState(state sse.State, latestErr error) {
+	s.stateMu.Lock()
+	s.state = state
+	s.latestErr = latestErr
+	s.stateMu.Unlock()
+}
+
+func (s *{{ $.Name }}) withCloseContext(ctx context.Context,
+) (context.Context, context.CancelFunc) {
+	reconnectCtx, cancel := context.WithCancel(ctx)
+	if s.closed.Load() {
+		cancel()
+		return reconnectCtx, func() {}
+	}
+	if s.closeCh == nil {
+		return reconnectCtx, cancel
+	}
+
+	go func() {
+		select {
+		case <-s.closeCh:
+			cancel()
+		case <-reconnectCtx.Done():
+		}
+	}()
+	return reconnectCtx, cancel
+}
+
+// Close closes the current stream and stops further reconnect attempts.
+func (s *{{ $.Name }}) Close() error {
+	if !s.closed.CompareAndSwap(false, true) {
+		return nil
+	}
+	s.stateMu.Lock()
+	resp := s.resp
+	s.resp = nil
+	s.decoder = nil
+	closeCh := s.closeCh
+	s.state = sse.StateClosed
+	s.latestErr = sse.ErrStreamClosed
+	s.stateMu.Unlock()
+
+	if closeCh != nil {
+		s.closeOnce.Do(func() {
+			close(closeCh)
+		})
+	}
+
+	if resp == nil || resp.Body == nil {
+		return nil
+	}
+	return resp.Body.Close()
+}
+
+// Next returns the next event from the stream, reconnecting when needed.
+func (s *{{ $.Name }}) Next(ctx context.Context,
+) ({{ $.SSE.EventType.Go }}, error) {
+	for {
+		s.stateMu.RLock()
+		resp, decoder, connect, options, latestErr := s.resp, s.decoder, s.connect, s.options, s.latestErr
+		s.stateMu.RUnlock()
+		if s.closed.Load() {
+			var event {{ $.SSE.EventType.Go }}
+			return event, sse.ErrStreamClosed
+		}
+		if decoder == nil {
+			// No decoder means the stream is already terminal.
+			if latestErr == nil {
+				latestErr = sse.ErrStreamClosed
+			}
+			s.setState(sse.StateClosed, latestErr)
+			var event {{ $.SSE.EventType.Go }}
+			return event, latestErr
+		}
+		raw, err := decoder.Decode()
+		if err == nil {
+			s.setState(sse.StateOpen, nil)
+			return s.decodeEvent(raw)
+		}
+		// Special case, on ErrEventTooLarge the current event is drained
+		// without closing the stream.
+		if errors.Is(err, sse.ErrEventTooLarge) {
+			s.setState(sse.StateOpen, err)
+			var event {{ $.SSE.EventType.Go }}
+			return event, err
+		}
+		if !sse.IsReconnectableError(err) {
+			s.setState(sse.StateClosed, err)
+			var event {{ $.SSE.EventType.Go }}
+			return event, err
+		}
+		if connect == nil {
+			// Without a reconnect function, a reconnectable read error
+			// becomes terminal.
+			s.setState(sse.StateClosed, sse.ErrStreamClosed)
+			var event {{ $.SSE.EventType.Go }}
+			return event, sse.ErrStreamClosed
+		}
+
+		s.setState(sse.StateConnecting, err)
+		reconnectCtx, cancel := s.withCloseContext(ctx)
+		nextResp, nextDecoder, err := reconnectSSE(reconnectCtx, resp, decoder, connect, options, s)
+		cancel()
+		if s.closed.Load() {
+			if nextResp != nil && nextResp.Body != nil {
+				_ = nextResp.Body.Close()
+			}
+			var event {{ $.SSE.EventType.Go }}
+			return event, sse.ErrStreamClosed
+		}
+		if err != nil {
+			s.stateMu.Lock()
+			s.resp = nil
+			s.decoder = nil
+			s.stateMu.Unlock()
+			s.setState(sse.StateClosed, err)
+			var event {{ $.SSE.EventType.Go }}
+			return event, err
+		}
+		s.stateMu.Lock()
+		s.resp = nextResp
+		s.decoder = nextDecoder
+		s.stateMu.Unlock()
+		s.setState(sse.StateOpen, nil)
+	}
+}
+
+// All iterates over stream events until the stream is closed, reconnecting when needed.
+func (s *{{ $.Name }}) All(ctx context.Context,
+) iter.Seq2[{{ $.SSE.EventType.Go }}, error] {
+	return func(yield func({{ $.SSE.EventType.Go }}, error) bool) {
+		for {
+			event, err := s.Next(ctx)
+			if err != nil {
+				if !sse.IsReconnectableError(err) {
+					return
+				}
+				var zero {{ $.SSE.EventType.Go }}
+				if !yield(zero, err) {
+					return
+				}
+				continue
+			}
+			if !yield(event, nil) {
+				return
+			}
+		}
+	}
+}
+
+func (s *{{ $.Name }}) decodeEvent(raw sse.Event,
+) ({{ $.SSE.EventType.Go }}, error) {
+{{- if eq $.SSE.Shape "data-only" }}
+	var data {{ $.SSE.DataType.Go }}
+	{{- if $.SSE.DataType.IsString }}
+	data = raw.Data
+	{{- else }}
+	buf := []byte(raw.Data)
+	{{- if $.SSE.DataType.AcceptsJSONString }}
+	if !jx.Valid(buf) {
+		e := jx.GetEncoder()
+		e.Str(raw.Data)
+		buf = append([]byte(nil), e.Bytes()...)
+		jx.PutEncoder(e)
+	}
+	{{- end }}
+	d := jx.DecodeBytes(buf)
+	if err := func() error {
+		{{- template "json/dec" elem $.SSE.DataType "data" }}
+		if err := d.Skip(); err != io.EOF {
+			return errors.New("unexpected trailing data")
+		}
+		return nil
+	}(); err != nil {
+		var event {{ $.SSE.EventType.Go }}
+		return event, err
+	}
+	{{- end }}
+	{{- if $.SSE.DataType.NeedValidation }}
+	if err := func() error {
+		{{- template "validate" elem $.SSE.DataType "data" }}
+	}(); err != nil {
+		var event {{ $.SSE.EventType.Go }}
+		return event, errors.Wrap(err, "validate")
+	}
+	{{- end }}
+	event := {{ $.SSE.EventType.Go }}{
+		ID:   raw.ID,
+		Type: raw.Type,
+		Data: data,
+	}
+	if raw.Retry != nil {
+		event.Retry.SetTo(int((*raw.Retry) / time.Millisecond))
+	}
+	return event, nil
+{{- else if or (eq $.SSE.Shape "full") (eq $.SSE.Shape "full-array") }}
+	e := jx.GetEncoder()
+	e.ObjStart()
+	e.FieldStart("id")
+	e.Str(raw.ID)
+	e.FieldStart("event")
+	e.Str(raw.Type)
+	e.FieldStart("data")
+	{{- if $.SSE.EventType.IsSum }}
+	switch raw.Type {
+	{{- range $variant := $.SSE.EventType.SumOf }}
+	{{- $entries := $.SSE.EventType.SumSpec.PickMappingEntriesFor $.SSE.EventType $variant }}
+	{{- $dataField := $variant.MustField "Data" }}
+	{{- range $entry := $entries }}
+	case {{ quote $entry.Key }}:
+		{{- if $dataField.Type.AcceptsJSONString }}
+		if jx.Valid([]byte(raw.Data)) {
+			e.Raw([]byte(raw.Data))
+		} else {
+			e.Str(raw.Data)
+		}
+		{{- else }}
+		e.Raw([]byte(raw.Data))
+		{{- end }}
+	{{- end }}
+	{{- end }}
+	default:
+		if jx.Valid([]byte(raw.Data)) {
+			e.Raw([]byte(raw.Data))
+		} else {
+			e.Str(raw.Data)
+		}
+	}
+	{{- else }}
+	{{- $dataField := $.SSE.EventType.MustField "Data" }}
+	{{- if $dataField.Type.AcceptsJSONString }}
+	if jx.Valid([]byte(raw.Data)) {
+	e.Raw([]byte(raw.Data))
+	} else {
+		e.Str(raw.Data)
+	}
+	{{- else }}
+	e.Raw([]byte(raw.Data))
+	{{- end }}
+	{{- end }}
+	if raw.Retry != nil {
+		e.FieldStart("retry")
+		e.Int(int((*raw.Retry) / time.Millisecond))
+	}
+	e.ObjEnd()
+	buf := e.Bytes()
+	jx.PutEncoder(e)
+
+	d := jx.DecodeBytes(buf)
+	var event {{ $.SSE.EventType.Go }}
+	if err := func() error {
+		{{- template "json/dec" elem $.SSE.EventType "event" }}
+		if err := d.Skip(); err != io.EOF {
+			return errors.New("unexpected trailing data")
+		}
+		return nil
+	}(); err != nil {
+		return event, err
+	}
+	{{- if $.SSE.EventType.NeedValidation }}
+	if err := func() error {
+		{{- template "validate" elem $.SSE.EventType "event" }}
+	}(); err != nil {
+		return event, errors.Wrap(err, "validate")
+	}
+	{{- end }}
+	return event, nil
+{{- end }}
+}
+
+{{ end }}

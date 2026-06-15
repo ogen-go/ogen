@@ -271,6 +271,190 @@ func (g *Generator) generateFormContent(
 	return t, nil
 }
 
+func sseStandardSchema(name string) *jsonschema.Schema {
+	switch name {
+	case "id", "event":
+		return &jsonschema.Schema{Type: jsonschema.String}
+	case "data":
+		return &jsonschema.Schema{Type: jsonschema.Empty}
+	case "retry":
+		return &jsonschema.Schema{Type: jsonschema.Integer}
+	default:
+		panic("unexpected SSE standard field: " + name)
+	}
+}
+
+func (g *Generator) normalizeFullSSESchema(schema *jsonschema.Schema, media *openapi.MediaType) (*jsonschema.Schema, error) {
+	if schema == nil {
+		return nil, nil
+	}
+
+	switch {
+	case schema.Type == jsonschema.Object:
+		allowed := map[string]struct{}{
+			"id":    {},
+			"event": {},
+			"data":  {},
+			"retry": {},
+		}
+		seen := map[string]struct{}{}
+
+		clone := *schema
+		clone.Properties = nil
+		clone.Required = nil
+		additionalProperties := false
+		clone.AdditionalProperties = &additionalProperties
+		clone.Item = nil
+		clone.PatternProperties = nil
+		for _, prop := range schema.Properties {
+			if _, ok := allowed[prop.Name]; !ok {
+				g.log.Warn("Ignoring non-standard SSE event schema property",
+					zapPosition(media),
+					zap.String("property", prop.Name),
+				)
+				continue
+			}
+			prop.Required = prop.Name != "retry"
+			seen[prop.Name] = struct{}{}
+			clone.Properties = append(clone.Properties, prop)
+			if prop.Required {
+				clone.Required = append(clone.Required, prop.Name)
+			}
+		}
+
+		for _, name := range []string{"id", "event", "data", "retry"} {
+			if _, ok := seen[name]; ok {
+				continue
+			}
+			required := name != "retry"
+			clone.Properties = append(clone.Properties, jsonschema.Property{
+				Name:     name,
+				Schema:   sseStandardSchema(name),
+				Required: required,
+			})
+			if required {
+				clone.Required = append(clone.Required, name)
+			}
+		}
+
+		return &clone, nil
+	case len(schema.OneOf) > 0:
+		clone := *schema
+		clone.OneOf = make([]*jsonschema.Schema, len(schema.OneOf))
+		for i, variant := range schema.OneOf {
+			if variant == nil {
+				return nil, errors.Errorf("oneOf[%d] is nil", i)
+			}
+			normalized, err := g.normalizeFullSSESchema(variant, media)
+			if err != nil {
+				return nil, errors.Wrapf(err, "oneOf[%d]", i)
+			}
+			clone.OneOf[i] = normalized
+		}
+		return &clone, nil
+	case len(schema.AnyOf) > 0:
+		clone := *schema
+		clone.AnyOf = make([]*jsonschema.Schema, len(schema.AnyOf))
+		for i, variant := range schema.AnyOf {
+			if variant == nil {
+				return nil, errors.Errorf("anyOf[%d] is nil", i)
+			}
+			normalized, err := g.normalizeFullSSESchema(variant, media)
+			if err != nil {
+				return nil, errors.Wrapf(err, "anyOf[%d]", i)
+			}
+			clone.AnyOf[i] = normalized
+		}
+		return &clone, nil
+	default:
+		return nil, errors.New("must be an object or oneOf/anyOf of objects")
+	}
+}
+
+func (g *Generator) generateSSEContent(
+	ctx *genctx,
+	typeName string,
+	media *openapi.MediaType,
+) (*ir.Type, error) {
+	shape := media.XOgenSSEEventShape
+	if !shape.Enabled() {
+		panic("generateSSEContent called for non-SSE media")
+	}
+
+	schema := media.Schema
+	var err error
+	switch shape {
+	case openapi.SSEEventShapeFull:
+		schema, err = g.normalizeFullSSESchema(schema, media)
+		if err != nil {
+			return nil, fmt.Errorf("SSE schema of %q shape %w", openapi.SSEEventShapeFull, err)
+		}
+	case openapi.SSEEventShapeFullArray:
+		if schema == nil || schema.Type != jsonschema.Array || schema.Item == nil {
+			return nil, fmt.Errorf("SSE schema of %q shape must be an array with items",
+				openapi.SSEEventShapeFullArray)
+		}
+		schema, err = g.normalizeFullSSESchema(schema.Item, media)
+		if err != nil {
+			return nil, fmt.Errorf("SSE schema of %q shape %w", openapi.SSEEventShapeFullArray, err)
+		}
+	}
+
+	eventSchemaName := typeName + "Event"
+	if shape == openapi.SSEEventShapeDataOnly {
+		eventSchemaName = typeName + "EventData"
+	}
+
+	payload, err := g.generateSchema(ctx, eventSchemaName, schema, false, nil)
+	if err != nil {
+		return nil, errors.Wrap(err, "generate schema")
+	}
+	payload.AddFeature("json")
+
+	eventType := payload
+	var dataType *ir.Type
+	if shape == openapi.SSEEventShapeDataOnly {
+		dataType = payload
+		retryType, err := g.generateSchema(ctx, typeName+"EventRetry",
+			&jsonschema.Schema{Type: jsonschema.Integer}, true, nil)
+		if err != nil {
+			return nil, errors.Wrap(err, "generate retry schema")
+		}
+
+		eventType = &ir.Type{
+			Kind: ir.KindStruct,
+			Name: typeName + "Event",
+			Doc:  fmt.Sprintf("%sEvent is a parsed Server-Sent Event.", typeName),
+			Fields: []*ir.Field{
+				{Name: "ID", Type: ir.Primitive(ir.String, nil), Tag: ir.Tag{JSON: "id"}},
+				{Name: "Type", Type: ir.Primitive(ir.String, nil), Tag: ir.Tag{JSON: "event"}},
+				{Name: "Data", Type: payload, Tag: ir.Tag{JSON: "data"}},
+				{Name: "Retry", Type: retryType, Tag: ir.Tag{JSON: "retry"}},
+			},
+		}
+		if err := ctx.saveType(eventType); err != nil {
+			return nil, errors.Wrap(err, "save event type")
+		}
+	}
+
+	streamType := &ir.Type{
+		Kind: ir.KindStruct,
+		Name: typeName,
+		SSE: &ir.SSEMetadata{
+			Shape:     shape,
+			EventType: eventType,
+			DataType:  dataType,
+		},
+	}
+	// The concrete SSE stream template provides initSSEStream.
+	streamType.DeclareMethod("initSSEStream(sseConnectFunc, sseClientConfig)")
+	if err := ctx.saveType(streamType); err != nil {
+		return nil, errors.Wrap(err, "save stream type")
+	}
+
+	return streamType, nil
+}
+
 func isComplexMultipartType(s *jsonschema.Schema) bool {
 	if s == nil {
 		return true
@@ -351,6 +535,26 @@ func (g *Generator) generateContents(
 					zapPosition(media),
 					zap.String("contentType", contentType),
 				)
+			}
+
+			if media.XOgenRawResponse && media.XOgenSSEEventShape.Enabled() {
+				g.log.Warn(`Extension "x-ogen-sse-event-shape" will be ignored because "x-ogen-raw-response" is enabled`,
+					zapPosition(media),
+					zap.String("contentType", contentType),
+				)
+			} else if media.XOgenSSEEventShape.Enabled() {
+				t, err := g.generateSSEContent(ctx, typeName, media)
+				if err != nil {
+					return errors.Wrap(err, "generate SSE content")
+				}
+				result[ir.ContentType(parsedContentType)] = ir.Media{
+					Encoding:      ir.EncodingEventStream,
+					Type:          t,
+					JSONStreaming: media.XOgenJSONStreaming,
+					RawResponse:   media.XOgenRawResponse,
+					SSEEventShape: media.XOgenSSEEventShape,
+				}
+				return nil
 			}
 
 			switch encoding {
@@ -499,6 +703,7 @@ func (g *Generator) generateContents(
 				Encoding:      m.Encoding,
 				JSONStreaming: m.JSONStreaming,
 				RawResponse:   m.RawResponse,
+				SSEEventShape: m.SSEEventShape,
 			}
 		}
 	}

@@ -40,7 +40,7 @@ func Interface(name string) *Type {
 	return &Type{
 		Name:             name,
 		Kind:             KindInterface,
-		InterfaceMethods: map[string]struct{}{},
+		InterfaceMethods: map[string]string{},
 		Implementations:  map[*Type]struct{}{},
 	}
 }
