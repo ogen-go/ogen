@@ -273,8 +273,10 @@ func (g *Generator) generateFormContent(
 
 func sseStandardSchema(name string) *jsonschema.Schema {
 	switch name {
-	case "id", "event", "data":
+	case "id", "event":
 		return &jsonschema.Schema{Type: jsonschema.String}
+	case "data":
+		return &jsonschema.Schema{Type: jsonschema.Empty}
 	case "retry":
 		return &jsonschema.Schema{Type: jsonschema.Integer}
 	default:

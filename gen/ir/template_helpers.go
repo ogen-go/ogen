@@ -193,6 +193,8 @@ func (t *Type) AcceptsJSONString() bool {
 		return false
 	}
 	switch {
+	case t.IsAny():
+		return true
 	case t.JSON().Type() == "String":
 		return true
 	case t.IsAlias():

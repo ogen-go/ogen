@@ -180,8 +180,10 @@ func (s *{{ $.Name }}) All(ctx context.Context,
 					return
 				}
 				var zero {{ $.SSE.EventType.Go }}
-				yield(zero, err)
-				return
+				if !yield(zero, err) {
+					return
+				}
+				continue
 			}
 			if !yield(event, nil) {
 				return
