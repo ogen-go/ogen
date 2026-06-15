@@ -1257,6 +1257,84 @@ func shallowSchemaCopy(s *jsonschema.Schema) *jsonschema.Schema {
 	return &cpy
 }
 
+// hasSiblingConstraints reports whether the schema carries keywords that must
+// be applied alongside allOf (i.e. sibling constraints).
+//
+// Wrapper-level metadata that is propagated separately by flattenAllOfSchema
+// (Type, Nullable, Ref, Pointer) is intentionally excluded.
+//
+// ogen-specific keywords (xml, x-ogen-validate, x-oapi-codegen-extra-tags,
+// x-ogen-time-format) are included as well: some of them are consumed after
+// flattening, so a present-but-ignored sibling would silently drop them. Their
+// values are restored from the parent by propagateParentExtensions, since
+// mergeSchemes does not carry them through a merge.
+func hasSiblingConstraints(s *jsonschema.Schema) bool {
+	if s == nil {
+		return false
+	}
+	switch {
+	case len(s.Properties) > 0,
+		len(s.Required) > 0,
+		s.AdditionalProperties != nil,
+		len(s.PatternProperties) > 0,
+		s.MaxProperties != nil,
+		s.MinProperties != nil:
+		return true
+	case s.Format != "",
+		len(s.Enum) > 0,
+		s.DefaultSet,
+		s.ConstSet,
+		s.Discriminator != nil:
+		return true
+	case len(s.OneOf) > 0,
+		len(s.AnyOf) > 0:
+		return true
+	case s.Item != nil,
+		len(s.Items) > 0,
+		s.MaxItems != nil,
+		s.MinItems != nil,
+		s.UniqueItems:
+		return true
+	case len(s.Maximum) > 0,
+		len(s.Minimum) > 0,
+		len(s.MultipleOf) > 0,
+		s.ExclusiveMinimum,
+		s.ExclusiveMaximum:
+		return true
+	case s.MaxLength != nil,
+		s.MinLength != nil,
+		len(s.Pattern) > 0:
+		return true
+	case s.XML != nil,
+		len(s.ExtraTags) > 0,
+		len(s.OgenValidate) > 0,
+		s.XOgenTimeFormat != "":
+		return true
+	}
+	return false
+}
+
+// propagateParentExtensions restores ogen-specific keywords from the parent
+// onto the flattened result. mergeSchemes builds a fresh schema and does not
+// carry these fields, so without this they would be dropped even when the
+// parent specified them alongside allOf.
+//
+// Values already set on dst take precedence.
+func propagateParentExtensions(dst, parent *jsonschema.Schema) {
+	if dst.XML == nil {
+		dst.XML = parent.XML
+	}
+	if len(dst.ExtraTags) == 0 {
+		dst.ExtraTags = parent.ExtraTags
+	}
+	if len(dst.OgenValidate) == 0 {
+		dst.OgenValidate = parent.OgenValidate
+	}
+	if dst.XOgenTimeFormat == "" {
+		dst.XOgenTimeFormat = parent.XOgenTimeFormat
+	}
+}
+
 func flattenAllOfSchema(schema *jsonschema.Schema) (*jsonschema.Schema, error) {
 	if schema == nil || len(schema.AllOf) == 0 {
 		return schema, nil
@@ -1269,9 +1347,15 @@ func flattenAllOfSchema(schema *jsonschema.Schema) (*jsonschema.Schema, error) {
 	parent := shallowSchemaCopy(schema)
 	parent.AllOf = nil
 
-	// If there is only one schema in allOf, avoid merging and keep the inner schema
-	// while still applying wrapper-level metadata from the parent.
-	if len(schema.AllOf) == 1 {
+	// A schema may specify keywords (properties, required, validators, ...)
+	// alongside allOf. Per JSON Schema, allOf and its sibling keywords are all
+	// applied (logical AND), so the sibling constraints must be merged in too.
+	hasSiblings := hasSiblingConstraints(parent)
+
+	// If there is only one schema in allOf and there are no sibling constraints,
+	// avoid merging and keep the inner schema while still applying wrapper-level
+	// metadata from the parent.
+	if len(schema.AllOf) == 1 && !hasSiblings {
 		child := shallowSchemaCopy(schema.AllOf[0])
 		if child == nil {
 			return parent, nil
@@ -1290,7 +1374,14 @@ func flattenAllOfSchema(schema *jsonschema.Schema) (*jsonschema.Schema, error) {
 		return child, nil
 	}
 
-	mergedSchema, err := mergeNSchemes(schema.AllOf)
+	// Merge the allOf subschemas together with the parent's sibling constraints,
+	// if any.
+	toMerge := schema.AllOf
+	if hasSiblings {
+		toMerge = append(append(make([]*jsonschema.Schema, 0, len(schema.AllOf)+1), schema.AllOf...), parent)
+	}
+
+	mergedSchema, err := mergeNSchemes(toMerge)
 	if err != nil {
 		return nil, err
 	}
@@ -1304,6 +1395,7 @@ func flattenAllOfSchema(schema *jsonschema.Schema) (*jsonschema.Schema, error) {
 	if _, ok := mergedSchema.Position(); !ok {
 		mergedSchema.Pointer = parent.Pointer
 	}
+	propagateParentExtensions(mergedSchema, parent)
 
 	return mergedSchema, nil
 }

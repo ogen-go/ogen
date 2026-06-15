@@ -166,6 +166,77 @@ paths:
                     properties:
                       bazStatus:
                         $ref: "#/components/schemas/BazStatus"
+  "/allOfWithSiblingProperties":
+    post:
+      operationId: allOfWithSiblingProperties
+      description: allOf combined with sibling properties and required (logical AND)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              allOf:
+                - $ref: "#/components/schemas/Foo"
+              required:
+                - sibling
+              properties:
+                sibling:
+                  type: string
+                optionalSibling:
+                  type: integer
+      responses:
+        '200':
+          description: ok
+  "/multiAllOfWithSiblingProperties":
+    post:
+      operationId: multiAllOfWithSiblingProperties
+      description: multiple allOf subschemas combined with sibling properties
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              allOf:
+                - type: object
+                  required:
+                  - a
+                  properties:
+                    a:
+                      type: string
+                - type: object
+                  properties:
+                    b:
+                      type: boolean
+              properties:
+                sibling:
+                  type: string
+      responses:
+        '200':
+          description: ok
+  "/allOfWithSiblingExtensions":
+    post:
+      operationId: allOfWithSiblingExtensions
+      description: allOf combined with ogen-specific sibling keywords (must be applied, not dropped)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - name
+              properties:
+                name:
+                  type: string
+                  x-ogen-validate:
+                    hasPrefix: "Mr. "
+                  allOf:
+                    - type: string
+      responses:
+        '200':
+          description: ok
   "/referencedAllof":
     post:
       operationId: referencedAllof

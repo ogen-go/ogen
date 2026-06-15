@@ -6,6 +6,7 @@ import (
 
 	"github.com/stretchr/testify/require"
 
+	"github.com/ogen-go/ogen/gen/ir"
 	"github.com/ogen-go/ogen/jsonschema"
 )
 
@@ -68,4 +69,103 @@ func Test_mergeEnums(t *testing.T) {
 			a.Equal(tt.want, got2)
 		})
 	}
+}
+
+// TestAllOfWithSiblingProperties ensures sibling keywords specified alongside
+// allOf (properties, required, ...) are merged in rather than dropped.
+//
+// Per JSON Schema, allOf and its sibling keywords are all applied (logical AND).
+func TestAllOfWithSiblingProperties(t *testing.T) {
+	t.Run("single allOf subschema", func(t *testing.T) {
+		a := require.New(t)
+		s := createTestSchemaGen(nil)
+
+		// type: object
+		// allOf:
+		//   - type: object
+		//     properties: { fromAllOf: { type: string } }
+		// required: [sibling]
+		// properties:
+		//   sibling: { type: string }
+		schema := &jsonschema.Schema{
+			Type: jsonschema.Object,
+			AllOf: []*jsonschema.Schema{
+				createObjectSchema(
+					createProperty("fromAllOf", createPrimitiveSchema(jsonschema.String), false),
+				),
+			},
+			Required: []string{"sibling"},
+			Properties: []jsonschema.Property{
+				createProperty("sibling", createPrimitiveSchema(jsonschema.String), true),
+			},
+		}
+
+		result, err := s.generate("AllOfWithSibling", schema, false)
+		a.NoError(err)
+		a.Equal(ir.KindStruct, result.Kind)
+
+		fields := map[string]*ir.Field{}
+		for _, f := range result.Fields {
+			fields[f.Name] = f
+		}
+		a.Contains(fields, "FromAllOf")
+		a.Contains(fields, "Sibling", "sibling property must not be dropped when allOf is present")
+	})
+
+	t.Run("multiple allOf subschemas", func(t *testing.T) {
+		a := require.New(t)
+		s := createTestSchemaGen(nil)
+
+		schema := &jsonschema.Schema{
+			Type: jsonschema.Object,
+			AllOf: []*jsonschema.Schema{
+				createObjectSchema(createProperty("a", createPrimitiveSchema(jsonschema.String), false)),
+				createObjectSchema(createProperty("b", createPrimitiveSchema(jsonschema.String), false)),
+			},
+			Properties: []jsonschema.Property{
+				createProperty("sibling", createPrimitiveSchema(jsonschema.String), false),
+			},
+		}
+
+		result, err := s.generate("MultiAllOfWithSibling", schema, false)
+		a.NoError(err)
+		a.Equal(ir.KindStruct, result.Kind)
+
+		var names []string
+		for _, f := range result.Fields {
+			names = append(names, f.Name)
+		}
+		a.ElementsMatch([]string{"A", "B", "Sibling"}, names)
+	})
+}
+
+// TestAllOfPropagatesParentExtensions ensures ogen-specific keywords specified
+// alongside allOf (x-ogen-validate, x-oapi-codegen-extra-tags,
+// x-ogen-time-format, xml) survive flattening instead of being dropped.
+func TestAllOfPropagatesParentExtensions(t *testing.T) {
+	a := require.New(t)
+
+	parent := &jsonschema.Schema{
+		Type:            jsonschema.Object,
+		OgenValidate:    map[string]any{"required": true},
+		ExtraTags:       map[string]string{"validate": "required"},
+		XOgenTimeFormat: "unix",
+		XML:             &jsonschema.XML{Name: "pet"},
+		AllOf: []*jsonschema.Schema{
+			createObjectSchema(
+				createProperty("fromAllOf", createPrimitiveSchema(jsonschema.String), false),
+			),
+		},
+	}
+
+	got, err := flattenAllOfSchema(parent)
+	a.NoError(err)
+	// The single-allOf shortcut must be skipped so the extensions can be applied
+	// (a referenced/ref-bearing result would bypass the post-flatten consumers).
+	a.True(got.Ref.IsZero())
+	a.Equal(map[string]any{"required": true}, got.OgenValidate)
+	a.Equal(map[string]string{"validate": "required"}, got.ExtraTags)
+	a.Equal("unix", got.XOgenTimeFormat)
+	a.NotNil(got.XML)
+	a.Equal("pet", got.XML.Name)
 }
