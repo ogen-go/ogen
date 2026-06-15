@@ -139,33 +139,110 @@ func TestAllOfWithSiblingProperties(t *testing.T) {
 	})
 }
 
-// TestAllOfPropagatesParentExtensions ensures ogen-specific keywords specified
-// alongside allOf (x-ogen-validate, x-oapi-codegen-extra-tags,
-// x-ogen-time-format, xml) survive flattening instead of being dropped.
+// TestAllOfPropagatesParentExtensions ensures keywords that mergeSchemes does
+// not carry (x-ogen-validate, x-oapi-codegen-extra-tags, x-ogen-time-format,
+// xml, deprecated) survive flattening instead of being dropped, on both the
+// single- and multiple-allOf merge paths.
 func TestAllOfPropagatesParentExtensions(t *testing.T) {
-	a := require.New(t)
-
-	parent := &jsonschema.Schema{
-		Type:            jsonschema.Object,
-		OgenValidate:    map[string]any{"required": true},
-		ExtraTags:       map[string]string{"validate": "required"},
-		XOgenTimeFormat: "unix",
-		XML:             &jsonschema.XML{Name: "pet"},
-		AllOf: []*jsonschema.Schema{
-			createObjectSchema(
-				createProperty("fromAllOf", createPrimitiveSchema(jsonschema.String), false),
-			),
-		},
+	assertPropagated := func(t *testing.T, got *jsonschema.Schema) {
+		t.Helper()
+		a := require.New(t)
+		// The single-allOf shortcut must be skipped so the extensions can be
+		// applied (a ref-bearing result would bypass the post-flatten consumers).
+		a.True(got.Ref.IsZero())
+		a.Equal(map[string]any{"required": true}, got.OgenValidate)
+		a.Equal(map[string]string{"validate": "required"}, got.ExtraTags)
+		a.Equal("unix", got.XOgenTimeFormat)
+		a.NotNil(got.XML)
+		a.Equal("pet", got.XML.Name)
+		a.True(got.Deprecated)
 	}
 
-	got, err := flattenAllOfSchema(parent)
-	a.NoError(err)
-	// The single-allOf shortcut must be skipped so the extensions can be applied
-	// (a referenced/ref-bearing result would bypass the post-flatten consumers).
-	a.True(got.Ref.IsZero())
-	a.Equal(map[string]any{"required": true}, got.OgenValidate)
-	a.Equal(map[string]string{"validate": "required"}, got.ExtraTags)
-	a.Equal("unix", got.XOgenTimeFormat)
-	a.NotNil(got.XML)
-	a.Equal("pet", got.XML.Name)
+	t.Run("single allOf subschema", func(t *testing.T) {
+		a := require.New(t)
+		parent := &jsonschema.Schema{
+			Type:            jsonschema.Object,
+			Deprecated:      true,
+			OgenValidate:    map[string]any{"required": true},
+			ExtraTags:       map[string]string{"validate": "required"},
+			XOgenTimeFormat: "unix",
+			XML:             &jsonschema.XML{Name: "pet"},
+			AllOf: []*jsonschema.Schema{
+				createObjectSchema(
+					createProperty("fromAllOf", createPrimitiveSchema(jsonschema.String), false),
+				),
+			},
+		}
+
+		got, err := flattenAllOfSchema(parent)
+		a.NoError(err)
+		assertPropagated(t, got)
+	})
+
+	t.Run("multiple allOf subschemas", func(t *testing.T) {
+		a := require.New(t)
+		parent := &jsonschema.Schema{
+			Type:            jsonschema.Object,
+			Deprecated:      true,
+			OgenValidate:    map[string]any{"required": true},
+			ExtraTags:       map[string]string{"validate": "required"},
+			XOgenTimeFormat: "unix",
+			XML:             &jsonschema.XML{Name: "pet"},
+			AllOf: []*jsonschema.Schema{
+				createObjectSchema(createProperty("a", createPrimitiveSchema(jsonschema.String), false)),
+				createObjectSchema(createProperty("b", createPrimitiveSchema(jsonschema.String), false)),
+			},
+		}
+
+		got, err := flattenAllOfSchema(parent)
+		a.NoError(err)
+		assertPropagated(t, got)
+	})
 }
+
+// TestAllOfWithValidatorSiblings covers validator keywords specified alongside
+// allOf: compatible ones are merged, incompatible ones surface an error.
+func TestAllOfWithValidatorSiblings(t *testing.T) {
+	t.Run("compatible validators merge", func(t *testing.T) {
+		a := require.New(t)
+
+		// type: string
+		// minLength: 3
+		// allOf:
+		//   - type: string
+		//     maxLength: 10
+		parent := &jsonschema.Schema{
+			Type:      jsonschema.String,
+			MinLength: ptrTo(uint64(3)),
+			AllOf: []*jsonschema.Schema{
+				{Type: jsonschema.String, MaxLength: ptrTo(uint64(10))},
+			},
+		}
+
+		got, err := flattenAllOfSchema(parent)
+		a.NoError(err)
+		a.Equal(jsonschema.String, got.Type)
+		a.NotNil(got.MinLength)
+		a.Equal(uint64(3), *got.MinLength)
+		a.NotNil(got.MaxLength)
+		a.Equal(uint64(10), *got.MaxLength)
+	})
+
+	t.Run("type mismatch errors", func(t *testing.T) {
+		a := require.New(t)
+
+		// A string sibling cannot be merged with an integer allOf subschema.
+		parent := &jsonschema.Schema{
+			Type:      jsonschema.String,
+			MinLength: ptrTo(uint64(3)),
+			AllOf: []*jsonschema.Schema{
+				{Type: jsonschema.Integer},
+			},
+		}
+
+		_, err := flattenAllOfSchema(parent)
+		a.Error(err)
+	})
+}
+
+func ptrTo[T any](v T) *T { return &v }
