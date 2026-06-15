@@ -7,6 +7,49 @@ import (
 )
 
 // SetFake set fake values.
+func (s *AllOfWithSiblingExtensionsReq) SetFake() {
+	{
+		{
+			s.Name = "string"
+		}
+	}
+}
+
+// SetFake set fake values.
+func (s *AllOfWithSiblingPropertiesReq) SetFake() {
+	{
+		{
+			s.ID = "string"
+		}
+	}
+	{
+		{
+			s.Name = "string"
+		}
+	}
+	{
+		{
+			s.Config.SetFake()
+		}
+	}
+	{
+		{
+			s.Bar.SetFake()
+		}
+	}
+	{
+		{
+			s.Sibling = "string"
+		}
+	}
+	{
+		{
+			s.OptionalSibling.SetFake()
+		}
+	}
+}
+
+// SetFake set fake values.
 func (s *Bar) SetFake() {
 	{
 		{
@@ -97,6 +140,25 @@ func (s *Location) SetFake() {
 	{
 		{
 			s.Lon = float64(0)
+		}
+	}
+}
+
+// SetFake set fake values.
+func (s *MultiAllOfWithSiblingPropertiesReq) SetFake() {
+	{
+		{
+			s.A = "string"
+		}
+	}
+	{
+		{
+			s.B.SetFake()
+		}
+	}
+	{
+		{
+			s.Sibling.SetFake()
 		}
 	}
 }

@@ -10,6 +10,18 @@ import (
 	"go.opentelemetry.io/otel/trace"
 )
 
+func encodeAllOfWithSiblingExtensionsResponse(response *AllOfWithSiblingExtensionsOK, w http.ResponseWriter, span trace.Span) error {
+	w.WriteHeader(200)
+
+	return nil
+}
+
+func encodeAllOfWithSiblingPropertiesResponse(response *AllOfWithSiblingPropertiesOK, w http.ResponseWriter, span trace.Span) error {
+	w.WriteHeader(200)
+
+	return nil
+}
+
 func encodeGetAdminFooResponse(response *GetAdminFooOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
@@ -32,6 +44,12 @@ func encodeGetFooResponse(response *Foo, w http.ResponseWriter, span trace.Span)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
+
+	return nil
+}
+
+func encodeMultiAllOfWithSiblingPropertiesResponse(response *MultiAllOfWithSiblingPropertiesOK, w http.ResponseWriter, span trace.Span) error {
+	w.WriteHeader(200)
 
 	return nil
 }

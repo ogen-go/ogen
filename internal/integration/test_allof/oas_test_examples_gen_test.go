@@ -11,6 +11,30 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
+func TestAllOfWithSiblingExtensionsReq_EncodeDecode(t *testing.T) {
+	var typ AllOfWithSiblingExtensionsReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AllOfWithSiblingExtensionsReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestAllOfWithSiblingPropertiesReq_EncodeDecode(t *testing.T) {
+	var typ AllOfWithSiblingPropertiesReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AllOfWithSiblingPropertiesReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
 func TestBar_EncodeDecode(t *testing.T) {
 	var typ Bar
 	typ.SetFake()
@@ -81,6 +105,18 @@ func TestLocation_EncodeDecode(t *testing.T) {
 	require.True(t, std.Valid(data), "Encoded: %s", data)
 
 	var typ2 Location
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestMultiAllOfWithSiblingPropertiesReq_EncodeDecode(t *testing.T) {
+	var typ MultiAllOfWithSiblingPropertiesReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 MultiAllOfWithSiblingPropertiesReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 func TestObjectsWithConflictingArrayPropertyReq_EncodeDecode(t *testing.T) {
