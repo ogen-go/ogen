@@ -4596,6 +4596,7 @@ components:
             A unique identifier representing your end-user, which can help OpenAI to monitor and detect abuse. [Learn more](/docs/guides/safety-best-practices#end-user-ids).
           example: user-1234
           type: string
+          nullable: true # NOTE(zguydev): added nullable to this property.
       type: object
     Move:
       description: |
@@ -6148,13 +6149,18 @@ components:
             the model can call.
           oneOf:
             - $ref: '#/components/schemas/ToolChoiceOptions'
-            - $ref: '#/components/schemas/ToolChoiceTypes'
-            - $ref: '#/components/schemas/ToolChoiceFunction'
-          # NOTE(zguydev): added discriminator to fix "discriminator inference is not implemented".
-          discriminator:
-            propertyName: type
-            mapping:
-              function: "#/components/schemas/ToolChoiceFunction"
+            # NOTE(zguydev): added discriminator to fix "discriminator inference is not implemented" and structured for ogen.
+            - oneOf:
+                - $ref: '#/components/schemas/ToolChoiceTypes'
+                - $ref: '#/components/schemas/ToolChoiceFunction'
+              discriminator:
+                propertyName: type
+                mapping:
+                  file_search: '#/components/schemas/ToolChoiceTypes'
+                  web_search_preview: '#/components/schemas/ToolChoiceTypes'
+                  computer_use_preview: '#/components/schemas/ToolChoiceTypes'
+                  web_search_preview_2025_03_11: '#/components/schemas/ToolChoiceTypes'
+                  function: '#/components/schemas/ToolChoiceFunction'
         tools:
           description: |
             An array of tools the model may call while generating a response. You
@@ -6706,6 +6712,7 @@ components:
         - output_tokens_details
         - total_tokens
       type: object
+      nullable: true # NOTE(zguydev): added nullable to this object.
     ResponseWebSearchCallCompletedEvent:
       description: Emitted when a web search call is completed.
       properties:
