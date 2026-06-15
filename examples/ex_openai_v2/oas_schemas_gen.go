@@ -33,9 +33,9 @@ type AnnotationType string
 
 // Possible values for AnnotationType.
 const (
-	FileCitationBodyAnnotation AnnotationType = "FileCitationBody"
-	UrlCitationBodyAnnotation  AnnotationType = "UrlCitationBody"
-	FilePathAnnotation         AnnotationType = "FilePath"
+	FileCitationBodyAnnotation AnnotationType = "file_citation"
+	UrlCitationBodyAnnotation  AnnotationType = "url_citation"
+	FilePathAnnotation         AnnotationType = "file_path"
 )
 
 // IsFileCitationBody reports whether Annotation is FileCitationBody.
@@ -5490,7 +5490,7 @@ type CreateChatCompletionRequest struct {
 	TopP OptNilFloat64 `json:"top_p"`
 	// A unique identifier representing your end-user, which can help OpenAI to monitor and detect abuse.
 	// [Learn more](/docs/guides/safety-best-practices#end-user-ids).
-	User OptString `json:"user"`
+	User OptNilString `json:"user"`
 	// Parameters for audio output. Required when audio output is requested with
 	// `modalities: ["audio"]`. [Learn more](/docs/guides/audio).
 	Audio OptNilCreateChatCompletionRequestAudio `json:"audio"`
@@ -5624,7 +5624,7 @@ func (s *CreateChatCompletionRequest) GetTopP() OptNilFloat64 {
 }
 
 // GetUser returns the value of User.
-func (s *CreateChatCompletionRequest) GetUser() OptString {
+func (s *CreateChatCompletionRequest) GetUser() OptNilString {
 	return s.User
 }
 
@@ -5779,7 +5779,7 @@ func (s *CreateChatCompletionRequest) SetTopP(val OptNilFloat64) {
 }
 
 // SetUser sets the value of User.
-func (s *CreateChatCompletionRequest) SetUser(val OptString) {
+func (s *CreateChatCompletionRequest) SetUser(val OptNilString) {
 	s.User = val
 }
 
@@ -6949,7 +6949,7 @@ type CreateResponse struct {
 	TopP OptNilFloat64 `json:"top_p"`
 	// A unique identifier representing your end-user, which can help OpenAI to monitor and detect abuse.
 	// [Learn more](/docs/guides/safety-best-practices#end-user-ids).
-	User OptString `json:"user"`
+	User OptNilString `json:"user"`
 	// Inserts a system (or developer) message as the first item in the model's context.
 	// When using along with `previous_response_id`, the instructions from a previous
 	// response will not be carried over to the next response. This makes it simple
@@ -7041,7 +7041,7 @@ func (s *CreateResponse) GetTopP() OptNilFloat64 {
 }
 
 // GetUser returns the value of User.
-func (s *CreateResponse) GetUser() OptString {
+func (s *CreateResponse) GetUser() OptNilString {
 	return s.User
 }
 
@@ -7136,7 +7136,7 @@ func (s *CreateResponse) SetTopP(val OptNilFloat64) {
 }
 
 // SetUser sets the value of User.
-func (s *CreateResponse) SetUser(val OptString) {
+func (s *CreateResponse) SetUser(val OptNilString) {
 	s.User = val
 }
 
@@ -7585,10 +7585,9 @@ func (s *CreateResponseText) SetFormat(val OptTextResponseFormatConfiguration) {
 // CreateResponseToolChoice represents sum type.
 type CreateResponseToolChoice struct {
 	// Type selects the active sum variant, switch on this field.
-	Type               CreateResponseToolChoiceType
-	ToolChoiceOptions  ToolChoiceOptions
-	ToolChoiceTypes    ToolChoiceTypes
-	ToolChoiceFunction ToolChoiceFunction
+	Type                      CreateResponseToolChoiceType
+	ToolChoiceOptions         ToolChoiceOptions
+	CreateResponseToolChoice1 CreateResponseToolChoice1
 }
 
 // CreateResponseToolChoiceType is oneOf type of CreateResponseToolChoice.
@@ -7596,9 +7595,8 @@ type CreateResponseToolChoiceType string
 
 // Possible values for CreateResponseToolChoiceType.
 const (
-	ToolChoiceOptionsCreateResponseToolChoice  CreateResponseToolChoiceType = "ToolChoiceOptions"
-	ToolChoiceTypesCreateResponseToolChoice    CreateResponseToolChoiceType = "ToolChoiceTypes"
-	ToolChoiceFunctionCreateResponseToolChoice CreateResponseToolChoiceType = "ToolChoiceFunction"
+	ToolChoiceOptionsCreateResponseToolChoice         CreateResponseToolChoiceType = "ToolChoiceOptions"
+	CreateResponseToolChoice1CreateResponseToolChoice CreateResponseToolChoiceType = "CreateResponseToolChoice1"
 )
 
 // IsToolChoiceOptions reports whether CreateResponseToolChoice is ToolChoiceOptions.
@@ -7606,14 +7604,9 @@ func (s CreateResponseToolChoice) IsToolChoiceOptions() bool {
 	return s.Type == ToolChoiceOptionsCreateResponseToolChoice
 }
 
-// IsToolChoiceTypes reports whether CreateResponseToolChoice is ToolChoiceTypes.
-func (s CreateResponseToolChoice) IsToolChoiceTypes() bool {
-	return s.Type == ToolChoiceTypesCreateResponseToolChoice
-}
-
-// IsToolChoiceFunction reports whether CreateResponseToolChoice is ToolChoiceFunction.
-func (s CreateResponseToolChoice) IsToolChoiceFunction() bool {
-	return s.Type == ToolChoiceFunctionCreateResponseToolChoice
+// IsCreateResponseToolChoice1 reports whether CreateResponseToolChoice is CreateResponseToolChoice1.
+func (s CreateResponseToolChoice) IsCreateResponseToolChoice1() bool {
+	return s.Type == CreateResponseToolChoice1CreateResponseToolChoice
 }
 
 // SetToolChoiceOptions sets CreateResponseToolChoice to ToolChoiceOptions.
@@ -7637,44 +7630,125 @@ func NewToolChoiceOptionsCreateResponseToolChoice(v ToolChoiceOptions) CreateRes
 	return s
 }
 
-// SetToolChoiceTypes sets CreateResponseToolChoice to ToolChoiceTypes.
-func (s *CreateResponseToolChoice) SetToolChoiceTypes(v ToolChoiceTypes) {
-	s.Type = ToolChoiceTypesCreateResponseToolChoice
-	s.ToolChoiceTypes = v
+// SetCreateResponseToolChoice1 sets CreateResponseToolChoice to CreateResponseToolChoice1.
+func (s *CreateResponseToolChoice) SetCreateResponseToolChoice1(v CreateResponseToolChoice1) {
+	s.Type = CreateResponseToolChoice1CreateResponseToolChoice
+	s.CreateResponseToolChoice1 = v
 }
 
-// GetToolChoiceTypes returns ToolChoiceTypes and true boolean if CreateResponseToolChoice is ToolChoiceTypes.
-func (s CreateResponseToolChoice) GetToolChoiceTypes() (v ToolChoiceTypes, ok bool) {
+// GetCreateResponseToolChoice1 returns CreateResponseToolChoice1 and true boolean if CreateResponseToolChoice is CreateResponseToolChoice1.
+func (s CreateResponseToolChoice) GetCreateResponseToolChoice1() (v CreateResponseToolChoice1, ok bool) {
+	if !s.IsCreateResponseToolChoice1() {
+		return v, false
+	}
+	return s.CreateResponseToolChoice1, true
+}
+
+// NewCreateResponseToolChoice1CreateResponseToolChoice returns new CreateResponseToolChoice from CreateResponseToolChoice1.
+func NewCreateResponseToolChoice1CreateResponseToolChoice(v CreateResponseToolChoice1) CreateResponseToolChoice {
+	var s CreateResponseToolChoice
+	s.SetCreateResponseToolChoice1(v)
+	return s
+}
+
+// CreateResponseToolChoice1 represents sum type.
+type CreateResponseToolChoice1 struct {
+	// Type selects the active sum variant, switch on this field.
+	Type               CreateResponseToolChoice1Type
+	ToolChoiceTypes    ToolChoiceTypes
+	ToolChoiceFunction ToolChoiceFunction
+}
+
+// CreateResponseToolChoice1Type is oneOf type of CreateResponseToolChoice1.
+type CreateResponseToolChoice1Type string
+
+// Possible values for CreateResponseToolChoice1Type.
+const (
+	CreateResponseToolChoice1ComputerUsePreviewCreateResponseToolChoice1       CreateResponseToolChoice1Type = "computer_use_preview"
+	CreateResponseToolChoice1FileSearchCreateResponseToolChoice1               CreateResponseToolChoice1Type = "file_search"
+	CreateResponseToolChoice1WebSearchPreviewCreateResponseToolChoice1         CreateResponseToolChoice1Type = "web_search_preview"
+	CreateResponseToolChoice1WebSearchPreview20250311CreateResponseToolChoice1 CreateResponseToolChoice1Type = "web_search_preview_2025_03_11"
+	ToolChoiceFunctionCreateResponseToolChoice1                                CreateResponseToolChoice1Type = "function"
+)
+
+// IsToolChoiceTypes reports whether CreateResponseToolChoice1 is ToolChoiceTypes.
+func (s CreateResponseToolChoice1) IsToolChoiceTypes() bool {
+	switch s.Type {
+	case CreateResponseToolChoice1ComputerUsePreviewCreateResponseToolChoice1, CreateResponseToolChoice1FileSearchCreateResponseToolChoice1, CreateResponseToolChoice1WebSearchPreviewCreateResponseToolChoice1, CreateResponseToolChoice1WebSearchPreview20250311CreateResponseToolChoice1:
+		return true
+	default:
+		return false
+	}
+}
+
+// IsToolChoiceFunction reports whether CreateResponseToolChoice1 is ToolChoiceFunction.
+func (s CreateResponseToolChoice1) IsToolChoiceFunction() bool {
+	return s.Type == ToolChoiceFunctionCreateResponseToolChoice1
+}
+
+// SetToolChoiceTypes sets CreateResponseToolChoice1 to ToolChoiceTypes.
+// panics if `t` is not associated with ToolChoiceTypes
+func (s *CreateResponseToolChoice1) SetToolChoiceTypes(t CreateResponseToolChoice1Type, v ToolChoiceTypes) {
+	s.Type = t
+	s.ToolChoiceTypes = v
+	if !s.IsToolChoiceTypes() {
+		panic(fmt.Errorf("invariant: %v is not ToolChoiceTypes", t))
+	}
+}
+
+// GetToolChoiceTypes returns ToolChoiceTypes and true boolean if CreateResponseToolChoice1 is ToolChoiceTypes.
+func (s CreateResponseToolChoice1) GetToolChoiceTypes() (v ToolChoiceTypes, ok bool) {
 	if !s.IsToolChoiceTypes() {
 		return v, false
 	}
 	return s.ToolChoiceTypes, true
 }
 
-// NewToolChoiceTypesCreateResponseToolChoice returns new CreateResponseToolChoice from ToolChoiceTypes.
-func NewToolChoiceTypesCreateResponseToolChoice(v ToolChoiceTypes) CreateResponseToolChoice {
-	var s CreateResponseToolChoice
-	s.SetToolChoiceTypes(v)
+// NewCreateResponseToolChoice1ComputerUsePreviewCreateResponseToolChoice1 returns new CreateResponseToolChoice1 from ToolChoiceTypes.
+func NewCreateResponseToolChoice1ComputerUsePreviewCreateResponseToolChoice1(v ToolChoiceTypes) CreateResponseToolChoice1 {
+	var s CreateResponseToolChoice1
+	s.SetToolChoiceTypes(CreateResponseToolChoice1ComputerUsePreviewCreateResponseToolChoice1, v)
 	return s
 }
 
-// SetToolChoiceFunction sets CreateResponseToolChoice to ToolChoiceFunction.
-func (s *CreateResponseToolChoice) SetToolChoiceFunction(v ToolChoiceFunction) {
-	s.Type = ToolChoiceFunctionCreateResponseToolChoice
+// NewCreateResponseToolChoice1FileSearchCreateResponseToolChoice1 returns new CreateResponseToolChoice1 from ToolChoiceTypes.
+func NewCreateResponseToolChoice1FileSearchCreateResponseToolChoice1(v ToolChoiceTypes) CreateResponseToolChoice1 {
+	var s CreateResponseToolChoice1
+	s.SetToolChoiceTypes(CreateResponseToolChoice1FileSearchCreateResponseToolChoice1, v)
+	return s
+}
+
+// NewCreateResponseToolChoice1WebSearchPreviewCreateResponseToolChoice1 returns new CreateResponseToolChoice1 from ToolChoiceTypes.
+func NewCreateResponseToolChoice1WebSearchPreviewCreateResponseToolChoice1(v ToolChoiceTypes) CreateResponseToolChoice1 {
+	var s CreateResponseToolChoice1
+	s.SetToolChoiceTypes(CreateResponseToolChoice1WebSearchPreviewCreateResponseToolChoice1, v)
+	return s
+}
+
+// NewCreateResponseToolChoice1WebSearchPreview20250311CreateResponseToolChoice1 returns new CreateResponseToolChoice1 from ToolChoiceTypes.
+func NewCreateResponseToolChoice1WebSearchPreview20250311CreateResponseToolChoice1(v ToolChoiceTypes) CreateResponseToolChoice1 {
+	var s CreateResponseToolChoice1
+	s.SetToolChoiceTypes(CreateResponseToolChoice1WebSearchPreview20250311CreateResponseToolChoice1, v)
+	return s
+}
+
+// SetToolChoiceFunction sets CreateResponseToolChoice1 to ToolChoiceFunction.
+func (s *CreateResponseToolChoice1) SetToolChoiceFunction(v ToolChoiceFunction) {
+	s.Type = ToolChoiceFunctionCreateResponseToolChoice1
 	s.ToolChoiceFunction = v
 }
 
-// GetToolChoiceFunction returns ToolChoiceFunction and true boolean if CreateResponseToolChoice is ToolChoiceFunction.
-func (s CreateResponseToolChoice) GetToolChoiceFunction() (v ToolChoiceFunction, ok bool) {
+// GetToolChoiceFunction returns ToolChoiceFunction and true boolean if CreateResponseToolChoice1 is ToolChoiceFunction.
+func (s CreateResponseToolChoice1) GetToolChoiceFunction() (v ToolChoiceFunction, ok bool) {
 	if !s.IsToolChoiceFunction() {
 		return v, false
 	}
 	return s.ToolChoiceFunction, true
 }
 
-// NewToolChoiceFunctionCreateResponseToolChoice returns new CreateResponseToolChoice from ToolChoiceFunction.
-func NewToolChoiceFunctionCreateResponseToolChoice(v ToolChoiceFunction) CreateResponseToolChoice {
-	var s CreateResponseToolChoice
+// NewToolChoiceFunctionCreateResponseToolChoice1 returns new CreateResponseToolChoice1 from ToolChoiceFunction.
+func NewToolChoiceFunctionCreateResponseToolChoice1(v ToolChoiceFunction) CreateResponseToolChoice1 {
+	var s CreateResponseToolChoice1
 	s.SetToolChoiceFunction(v)
 	return s
 }
@@ -9974,14 +10048,14 @@ type ItemSumType string
 // Possible values for ItemSumType.
 const (
 	InputMessageItemSum                ItemSumType = "InputMessage"
-	OutputMessageItemSum               ItemSumType = "OutputMessage"
-	FileSearchToolCallItemSum          ItemSumType = "FileSearchToolCall"
-	ComputerToolCallItemSum            ItemSumType = "ComputerToolCall"
-	ComputerCallOutputItemParamItemSum ItemSumType = "ComputerCallOutputItemParam"
-	WebSearchToolCallItemSum           ItemSumType = "WebSearchToolCall"
-	FunctionToolCallItemSum            ItemSumType = "FunctionToolCall"
-	FunctionCallOutputItemParamItemSum ItemSumType = "FunctionCallOutputItemParam"
-	ReasoningItemItemSum               ItemSumType = "ReasoningItem"
+	OutputMessageItemSum               ItemSumType = "message"
+	FileSearchToolCallItemSum          ItemSumType = "file_search_call"
+	ComputerToolCallItemSum            ItemSumType = "computer_call"
+	ComputerCallOutputItemParamItemSum ItemSumType = "computer_call_output"
+	WebSearchToolCallItemSum           ItemSumType = "web_search_call"
+	FunctionToolCallItemSum            ItemSumType = "function_call"
+	FunctionCallOutputItemParamItemSum ItemSumType = "function_call_output"
+	ReasoningItemItemSum               ItemSumType = "reasoning"
 )
 
 // IsInputMessage reports whether ItemSum is InputMessage.
@@ -13783,6 +13857,74 @@ func (o OptNilResponseTruncation) Or(d ResponseTruncation) ResponseTruncation {
 	return d
 }
 
+// NewOptNilResponseUsage returns new OptNilResponseUsage with value set to v.
+func NewOptNilResponseUsage(v ResponseUsage) OptNilResponseUsage {
+	return OptNilResponseUsage{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptNilResponseUsage is optional nullable ResponseUsage.
+type OptNilResponseUsage struct {
+	Value ResponseUsage
+	Set   bool
+	Null  bool
+}
+
+// IsSet returns true if OptNilResponseUsage was set.
+func (o OptNilResponseUsage) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptNilResponseUsage) Reset() {
+	var v ResponseUsage
+	o.Value = v
+	o.Set = false
+	o.Null = false
+}
+
+// SetTo sets value to v.
+func (o *OptNilResponseUsage) SetTo(v ResponseUsage) {
+	o.Set = true
+	o.Null = false
+	o.Value = v
+}
+
+// IsNull returns true if value is Null.
+func (o OptNilResponseUsage) IsNull() bool { return o.Null }
+
+// SetToNull sets value to null.
+func (o *OptNilResponseUsage) SetToNull() {
+	o.Set = true
+	o.Null = true
+	var v ResponseUsage
+	o.Value = v
+}
+
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilResponseUsage) IsEmpty() bool {
+	return !o.Set && !o.Null
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptNilResponseUsage) Get() (v ResponseUsage, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptNilResponseUsage) Or(d ResponseUsage) ResponseUsage {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptNilServiceTier returns new OptNilServiceTier with value set to v.
 func NewOptNilServiceTier(v ServiceTier) OptNilServiceTier {
 	return OptNilServiceTier{
@@ -14515,52 +14657,6 @@ func (o OptResponseText) Or(d ResponseText) ResponseText {
 	return d
 }
 
-// NewOptResponseUsage returns new OptResponseUsage with value set to v.
-func NewOptResponseUsage(v ResponseUsage) OptResponseUsage {
-	return OptResponseUsage{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptResponseUsage is optional ResponseUsage.
-type OptResponseUsage struct {
-	Value ResponseUsage
-	Set   bool
-}
-
-// IsSet returns true if OptResponseUsage was set.
-func (o OptResponseUsage) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptResponseUsage) Reset() {
-	var v ResponseUsage
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptResponseUsage) SetTo(v ResponseUsage) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptResponseUsage) Get() (v ResponseUsage, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptResponseUsage) Or(d ResponseUsage) ResponseUsage {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
 // NewOptString returns new OptString with value set to v.
 func NewOptString(v string) OptString {
 	return OptString{
@@ -14829,12 +14925,12 @@ type OutputItemType string
 
 // Possible values for OutputItemType.
 const (
-	OutputMessageOutputItem      OutputItemType = "OutputMessage"
-	FileSearchToolCallOutputItem OutputItemType = "FileSearchToolCall"
-	FunctionToolCallOutputItem   OutputItemType = "FunctionToolCall"
-	WebSearchToolCallOutputItem  OutputItemType = "WebSearchToolCall"
-	ComputerToolCallOutputItem   OutputItemType = "ComputerToolCall"
-	ReasoningItemOutputItem      OutputItemType = "ReasoningItem"
+	OutputMessageOutputItem      OutputItemType = "message"
+	FileSearchToolCallOutputItem OutputItemType = "file_search_call"
+	FunctionToolCallOutputItem   OutputItemType = "function_call"
+	WebSearchToolCallOutputItem  OutputItemType = "web_search_call"
+	ComputerToolCallOutputItem   OutputItemType = "computer_call"
+	ReasoningItemOutputItem      OutputItemType = "reasoning"
 )
 
 // IsOutputMessage reports whether OutputItem is OutputMessage.
@@ -15948,7 +16044,7 @@ type Response struct {
 	TopP NilFloat64 `json:"top_p"`
 	// A unique identifier representing your end-user, which can help OpenAI to monitor and detect abuse.
 	// [Learn more](/docs/guides/safety-best-practices#end-user-ids).
-	User OptString `json:"user"`
+	User OptNilString `json:"user"`
 	// Inserts a system (or developer) message as the first item in the model's context.
 	// When using along with `previous_response_id`, the instructions from a previous
 	// response will not be carried over to the next response. This makes it simple
@@ -16016,8 +16112,8 @@ type Response struct {
 	ParallelToolCalls bool `json:"parallel_tool_calls"`
 	// The status of the response generation. One of `completed`, `failed`,
 	// `in_progress`, or `incomplete`.
-	Status OptResponseStatus `json:"status"`
-	Usage  OptResponseUsage  `json:"usage"`
+	Status OptResponseStatus   `json:"status"`
+	Usage  OptNilResponseUsage `json:"usage"`
 }
 
 // GetMetadata returns the value of Metadata.
@@ -16041,7 +16137,7 @@ func (s *Response) GetTopP() NilFloat64 {
 }
 
 // GetUser returns the value of User.
-func (s *Response) GetUser() OptString {
+func (s *Response) GetUser() OptNilString {
 	return s.User
 }
 
@@ -16136,7 +16232,7 @@ func (s *Response) GetStatus() OptResponseStatus {
 }
 
 // GetUsage returns the value of Usage.
-func (s *Response) GetUsage() OptResponseUsage {
+func (s *Response) GetUsage() OptNilResponseUsage {
 	return s.Usage
 }
 
@@ -16161,7 +16257,7 @@ func (s *Response) SetTopP(val NilFloat64) {
 }
 
 // SetUser sets the value of User.
-func (s *Response) SetUser(val OptString) {
+func (s *Response) SetUser(val OptNilString) {
 	s.User = val
 }
 
@@ -16256,7 +16352,7 @@ func (s *Response) SetStatus(val OptResponseStatus) {
 }
 
 // SetUsage sets the value of Usage.
-func (s *Response) SetUsage(val OptResponseUsage) {
+func (s *Response) SetUsage(val OptNilResponseUsage) {
 	s.Usage = val
 }
 
@@ -19418,42 +19514,42 @@ type ResponseStreamEventType string
 
 // Possible values for ResponseStreamEventType.
 const (
-	ResponseAudioDeltaEventResponseStreamEvent                      ResponseStreamEventType = "ResponseAudioDeltaEvent"
-	ResponseAudioDoneEventResponseStreamEvent                       ResponseStreamEventType = "ResponseAudioDoneEvent"
-	ResponseAudioTranscriptDeltaEventResponseStreamEvent            ResponseStreamEventType = "ResponseAudioTranscriptDeltaEvent"
-	ResponseAudioTranscriptDoneEventResponseStreamEvent             ResponseStreamEventType = "ResponseAudioTranscriptDoneEvent"
-	ResponseCodeInterpreterCallCodeDeltaEventResponseStreamEvent    ResponseStreamEventType = "ResponseCodeInterpreterCallCodeDeltaEvent"
-	ResponseCodeInterpreterCallCodeDoneEventResponseStreamEvent     ResponseStreamEventType = "ResponseCodeInterpreterCallCodeDoneEvent"
-	ResponseCodeInterpreterCallCompletedEventResponseStreamEvent    ResponseStreamEventType = "ResponseCodeInterpreterCallCompletedEvent"
-	ResponseCodeInterpreterCallInProgressEventResponseStreamEvent   ResponseStreamEventType = "ResponseCodeInterpreterCallInProgressEvent"
-	ResponseCodeInterpreterCallInterpretingEventResponseStreamEvent ResponseStreamEventType = "ResponseCodeInterpreterCallInterpretingEvent"
-	ResponseCompletedEventResponseStreamEvent                       ResponseStreamEventType = "ResponseCompletedEvent"
-	ResponseContentPartAddedEventResponseStreamEvent                ResponseStreamEventType = "ResponseContentPartAddedEvent"
-	ResponseContentPartDoneEventResponseStreamEvent                 ResponseStreamEventType = "ResponseContentPartDoneEvent"
-	ResponseCreatedEventResponseStreamEvent                         ResponseStreamEventType = "ResponseCreatedEvent"
-	ResponseErrorEventResponseStreamEvent                           ResponseStreamEventType = "ResponseErrorEvent"
-	ResponseFileSearchCallCompletedEventResponseStreamEvent         ResponseStreamEventType = "ResponseFileSearchCallCompletedEvent"
-	ResponseFileSearchCallInProgressEventResponseStreamEvent        ResponseStreamEventType = "ResponseFileSearchCallInProgressEvent"
-	ResponseFileSearchCallSearchingEventResponseStreamEvent         ResponseStreamEventType = "ResponseFileSearchCallSearchingEvent"
-	ResponseFunctionCallArgumentsDeltaEventResponseStreamEvent      ResponseStreamEventType = "ResponseFunctionCallArgumentsDeltaEvent"
-	ResponseFunctionCallArgumentsDoneEventResponseStreamEvent       ResponseStreamEventType = "ResponseFunctionCallArgumentsDoneEvent"
-	ResponseInProgressEventResponseStreamEvent                      ResponseStreamEventType = "ResponseInProgressEvent"
-	ResponseFailedEventResponseStreamEvent                          ResponseStreamEventType = "ResponseFailedEvent"
-	ResponseIncompleteEventResponseStreamEvent                      ResponseStreamEventType = "ResponseIncompleteEvent"
-	ResponseOutputItemAddedEventResponseStreamEvent                 ResponseStreamEventType = "ResponseOutputItemAddedEvent"
-	ResponseOutputItemDoneEventResponseStreamEvent                  ResponseStreamEventType = "ResponseOutputItemDoneEvent"
-	ResponseReasoningSummaryPartAddedEventResponseStreamEvent       ResponseStreamEventType = "ResponseReasoningSummaryPartAddedEvent"
-	ResponseReasoningSummaryPartDoneEventResponseStreamEvent        ResponseStreamEventType = "ResponseReasoningSummaryPartDoneEvent"
-	ResponseReasoningSummaryTextDeltaEventResponseStreamEvent       ResponseStreamEventType = "ResponseReasoningSummaryTextDeltaEvent"
-	ResponseReasoningSummaryTextDoneEventResponseStreamEvent        ResponseStreamEventType = "ResponseReasoningSummaryTextDoneEvent"
-	ResponseRefusalDeltaEventResponseStreamEvent                    ResponseStreamEventType = "ResponseRefusalDeltaEvent"
-	ResponseRefusalDoneEventResponseStreamEvent                     ResponseStreamEventType = "ResponseRefusalDoneEvent"
-	ResponseTextAnnotationDeltaEventResponseStreamEvent             ResponseStreamEventType = "ResponseTextAnnotationDeltaEvent"
-	ResponseTextDeltaEventResponseStreamEvent                       ResponseStreamEventType = "ResponseTextDeltaEvent"
-	ResponseTextDoneEventResponseStreamEvent                        ResponseStreamEventType = "ResponseTextDoneEvent"
-	ResponseWebSearchCallCompletedEventResponseStreamEvent          ResponseStreamEventType = "ResponseWebSearchCallCompletedEvent"
-	ResponseWebSearchCallInProgressEventResponseStreamEvent         ResponseStreamEventType = "ResponseWebSearchCallInProgressEvent"
-	ResponseWebSearchCallSearchingEventResponseStreamEvent          ResponseStreamEventType = "ResponseWebSearchCallSearchingEvent"
+	ResponseAudioDeltaEventResponseStreamEvent                      ResponseStreamEventType = "response.audio.delta"
+	ResponseAudioDoneEventResponseStreamEvent                       ResponseStreamEventType = "response.audio.done"
+	ResponseAudioTranscriptDeltaEventResponseStreamEvent            ResponseStreamEventType = "response.audio.transcript.delta"
+	ResponseAudioTranscriptDoneEventResponseStreamEvent             ResponseStreamEventType = "response.audio.transcript.done"
+	ResponseCodeInterpreterCallCodeDeltaEventResponseStreamEvent    ResponseStreamEventType = "response.code_interpreter_call.code.delta"
+	ResponseCodeInterpreterCallCodeDoneEventResponseStreamEvent     ResponseStreamEventType = "response.code_interpreter_call.code.done"
+	ResponseCodeInterpreterCallCompletedEventResponseStreamEvent    ResponseStreamEventType = "response.code_interpreter_call.completed"
+	ResponseCodeInterpreterCallInProgressEventResponseStreamEvent   ResponseStreamEventType = "response.code_interpreter_call.in_progress"
+	ResponseCodeInterpreterCallInterpretingEventResponseStreamEvent ResponseStreamEventType = "response.code_interpreter_call.interpreting"
+	ResponseCompletedEventResponseStreamEvent                       ResponseStreamEventType = "response.completed"
+	ResponseContentPartAddedEventResponseStreamEvent                ResponseStreamEventType = "response.content_part.added"
+	ResponseContentPartDoneEventResponseStreamEvent                 ResponseStreamEventType = "response.content_part.done"
+	ResponseCreatedEventResponseStreamEvent                         ResponseStreamEventType = "response.created"
+	ResponseErrorEventResponseStreamEvent                           ResponseStreamEventType = "error"
+	ResponseFileSearchCallCompletedEventResponseStreamEvent         ResponseStreamEventType = "response.file_search_call.completed"
+	ResponseFileSearchCallInProgressEventResponseStreamEvent        ResponseStreamEventType = "response.file_search_call.in_progress"
+	ResponseFileSearchCallSearchingEventResponseStreamEvent         ResponseStreamEventType = "response.file_search_call.searching"
+	ResponseFunctionCallArgumentsDeltaEventResponseStreamEvent      ResponseStreamEventType = "response.function_call_arguments.delta"
+	ResponseFunctionCallArgumentsDoneEventResponseStreamEvent       ResponseStreamEventType = "response.function_call_arguments.done"
+	ResponseInProgressEventResponseStreamEvent                      ResponseStreamEventType = "response.in_progress"
+	ResponseFailedEventResponseStreamEvent                          ResponseStreamEventType = "response.failed"
+	ResponseIncompleteEventResponseStreamEvent                      ResponseStreamEventType = "response.incomplete"
+	ResponseOutputItemAddedEventResponseStreamEvent                 ResponseStreamEventType = "response.output_item.added"
+	ResponseOutputItemDoneEventResponseStreamEvent                  ResponseStreamEventType = "response.output_item.done"
+	ResponseReasoningSummaryPartAddedEventResponseStreamEvent       ResponseStreamEventType = "response.reasoning_summary_part.added"
+	ResponseReasoningSummaryPartDoneEventResponseStreamEvent        ResponseStreamEventType = "response.reasoning_summary_part.done"
+	ResponseReasoningSummaryTextDeltaEventResponseStreamEvent       ResponseStreamEventType = "response.reasoning_summary_text.delta"
+	ResponseReasoningSummaryTextDoneEventResponseStreamEvent        ResponseStreamEventType = "response.reasoning_summary_text.done"
+	ResponseRefusalDeltaEventResponseStreamEvent                    ResponseStreamEventType = "response.refusal.delta"
+	ResponseRefusalDoneEventResponseStreamEvent                     ResponseStreamEventType = "response.refusal.done"
+	ResponseTextAnnotationDeltaEventResponseStreamEvent             ResponseStreamEventType = "response.output_text.annotation.added"
+	ResponseTextDeltaEventResponseStreamEvent                       ResponseStreamEventType = "response.output_text.delta"
+	ResponseTextDoneEventResponseStreamEvent                        ResponseStreamEventType = "response.output_text.done"
+	ResponseWebSearchCallCompletedEventResponseStreamEvent          ResponseStreamEventType = "response.web_search_call.completed"
+	ResponseWebSearchCallInProgressEventResponseStreamEvent         ResponseStreamEventType = "response.web_search_call.in_progress"
+	ResponseWebSearchCallSearchingEventResponseStreamEvent          ResponseStreamEventType = "response.web_search_call.searching"
 )
 
 // IsResponseAudioDeltaEvent reports whether ResponseStreamEvent is ResponseAudioDeltaEvent.
@@ -20727,10 +20823,9 @@ func (s *ResponseTextDoneEventType) UnmarshalText(data []byte) error {
 // ResponseToolChoice represents sum type.
 type ResponseToolChoice struct {
 	// Type selects the active sum variant, switch on this field.
-	Type               ResponseToolChoiceType
-	ToolChoiceOptions  ToolChoiceOptions
-	ToolChoiceTypes    ToolChoiceTypes
-	ToolChoiceFunction ToolChoiceFunction
+	Type                ResponseToolChoiceType
+	ToolChoiceOptions   ToolChoiceOptions
+	ResponseToolChoice1 ResponseToolChoice1
 }
 
 // ResponseToolChoiceType is oneOf type of ResponseToolChoice.
@@ -20738,9 +20833,8 @@ type ResponseToolChoiceType string
 
 // Possible values for ResponseToolChoiceType.
 const (
-	ToolChoiceOptionsResponseToolChoice  ResponseToolChoiceType = "ToolChoiceOptions"
-	ToolChoiceTypesResponseToolChoice    ResponseToolChoiceType = "ToolChoiceTypes"
-	ToolChoiceFunctionResponseToolChoice ResponseToolChoiceType = "ToolChoiceFunction"
+	ToolChoiceOptionsResponseToolChoice   ResponseToolChoiceType = "ToolChoiceOptions"
+	ResponseToolChoice1ResponseToolChoice ResponseToolChoiceType = "ResponseToolChoice1"
 )
 
 // IsToolChoiceOptions reports whether ResponseToolChoice is ToolChoiceOptions.
@@ -20748,14 +20842,9 @@ func (s ResponseToolChoice) IsToolChoiceOptions() bool {
 	return s.Type == ToolChoiceOptionsResponseToolChoice
 }
 
-// IsToolChoiceTypes reports whether ResponseToolChoice is ToolChoiceTypes.
-func (s ResponseToolChoice) IsToolChoiceTypes() bool {
-	return s.Type == ToolChoiceTypesResponseToolChoice
-}
-
-// IsToolChoiceFunction reports whether ResponseToolChoice is ToolChoiceFunction.
-func (s ResponseToolChoice) IsToolChoiceFunction() bool {
-	return s.Type == ToolChoiceFunctionResponseToolChoice
+// IsResponseToolChoice1 reports whether ResponseToolChoice is ResponseToolChoice1.
+func (s ResponseToolChoice) IsResponseToolChoice1() bool {
+	return s.Type == ResponseToolChoice1ResponseToolChoice
 }
 
 // SetToolChoiceOptions sets ResponseToolChoice to ToolChoiceOptions.
@@ -20779,44 +20868,125 @@ func NewToolChoiceOptionsResponseToolChoice(v ToolChoiceOptions) ResponseToolCho
 	return s
 }
 
-// SetToolChoiceTypes sets ResponseToolChoice to ToolChoiceTypes.
-func (s *ResponseToolChoice) SetToolChoiceTypes(v ToolChoiceTypes) {
-	s.Type = ToolChoiceTypesResponseToolChoice
-	s.ToolChoiceTypes = v
+// SetResponseToolChoice1 sets ResponseToolChoice to ResponseToolChoice1.
+func (s *ResponseToolChoice) SetResponseToolChoice1(v ResponseToolChoice1) {
+	s.Type = ResponseToolChoice1ResponseToolChoice
+	s.ResponseToolChoice1 = v
 }
 
-// GetToolChoiceTypes returns ToolChoiceTypes and true boolean if ResponseToolChoice is ToolChoiceTypes.
-func (s ResponseToolChoice) GetToolChoiceTypes() (v ToolChoiceTypes, ok bool) {
+// GetResponseToolChoice1 returns ResponseToolChoice1 and true boolean if ResponseToolChoice is ResponseToolChoice1.
+func (s ResponseToolChoice) GetResponseToolChoice1() (v ResponseToolChoice1, ok bool) {
+	if !s.IsResponseToolChoice1() {
+		return v, false
+	}
+	return s.ResponseToolChoice1, true
+}
+
+// NewResponseToolChoice1ResponseToolChoice returns new ResponseToolChoice from ResponseToolChoice1.
+func NewResponseToolChoice1ResponseToolChoice(v ResponseToolChoice1) ResponseToolChoice {
+	var s ResponseToolChoice
+	s.SetResponseToolChoice1(v)
+	return s
+}
+
+// ResponseToolChoice1 represents sum type.
+type ResponseToolChoice1 struct {
+	// Type selects the active sum variant, switch on this field.
+	Type               ResponseToolChoice1Type
+	ToolChoiceTypes    ToolChoiceTypes
+	ToolChoiceFunction ToolChoiceFunction
+}
+
+// ResponseToolChoice1Type is oneOf type of ResponseToolChoice1.
+type ResponseToolChoice1Type string
+
+// Possible values for ResponseToolChoice1Type.
+const (
+	ResponseToolChoice1ComputerUsePreviewResponseToolChoice1       ResponseToolChoice1Type = "computer_use_preview"
+	ResponseToolChoice1FileSearchResponseToolChoice1               ResponseToolChoice1Type = "file_search"
+	ResponseToolChoice1WebSearchPreviewResponseToolChoice1         ResponseToolChoice1Type = "web_search_preview"
+	ResponseToolChoice1WebSearchPreview20250311ResponseToolChoice1 ResponseToolChoice1Type = "web_search_preview_2025_03_11"
+	ToolChoiceFunctionResponseToolChoice1                          ResponseToolChoice1Type = "function"
+)
+
+// IsToolChoiceTypes reports whether ResponseToolChoice1 is ToolChoiceTypes.
+func (s ResponseToolChoice1) IsToolChoiceTypes() bool {
+	switch s.Type {
+	case ResponseToolChoice1ComputerUsePreviewResponseToolChoice1, ResponseToolChoice1FileSearchResponseToolChoice1, ResponseToolChoice1WebSearchPreviewResponseToolChoice1, ResponseToolChoice1WebSearchPreview20250311ResponseToolChoice1:
+		return true
+	default:
+		return false
+	}
+}
+
+// IsToolChoiceFunction reports whether ResponseToolChoice1 is ToolChoiceFunction.
+func (s ResponseToolChoice1) IsToolChoiceFunction() bool {
+	return s.Type == ToolChoiceFunctionResponseToolChoice1
+}
+
+// SetToolChoiceTypes sets ResponseToolChoice1 to ToolChoiceTypes.
+// panics if `t` is not associated with ToolChoiceTypes
+func (s *ResponseToolChoice1) SetToolChoiceTypes(t ResponseToolChoice1Type, v ToolChoiceTypes) {
+	s.Type = t
+	s.ToolChoiceTypes = v
+	if !s.IsToolChoiceTypes() {
+		panic(fmt.Errorf("invariant: %v is not ToolChoiceTypes", t))
+	}
+}
+
+// GetToolChoiceTypes returns ToolChoiceTypes and true boolean if ResponseToolChoice1 is ToolChoiceTypes.
+func (s ResponseToolChoice1) GetToolChoiceTypes() (v ToolChoiceTypes, ok bool) {
 	if !s.IsToolChoiceTypes() {
 		return v, false
 	}
 	return s.ToolChoiceTypes, true
 }
 
-// NewToolChoiceTypesResponseToolChoice returns new ResponseToolChoice from ToolChoiceTypes.
-func NewToolChoiceTypesResponseToolChoice(v ToolChoiceTypes) ResponseToolChoice {
-	var s ResponseToolChoice
-	s.SetToolChoiceTypes(v)
+// NewResponseToolChoice1ComputerUsePreviewResponseToolChoice1 returns new ResponseToolChoice1 from ToolChoiceTypes.
+func NewResponseToolChoice1ComputerUsePreviewResponseToolChoice1(v ToolChoiceTypes) ResponseToolChoice1 {
+	var s ResponseToolChoice1
+	s.SetToolChoiceTypes(ResponseToolChoice1ComputerUsePreviewResponseToolChoice1, v)
 	return s
 }
 
-// SetToolChoiceFunction sets ResponseToolChoice to ToolChoiceFunction.
-func (s *ResponseToolChoice) SetToolChoiceFunction(v ToolChoiceFunction) {
-	s.Type = ToolChoiceFunctionResponseToolChoice
+// NewResponseToolChoice1FileSearchResponseToolChoice1 returns new ResponseToolChoice1 from ToolChoiceTypes.
+func NewResponseToolChoice1FileSearchResponseToolChoice1(v ToolChoiceTypes) ResponseToolChoice1 {
+	var s ResponseToolChoice1
+	s.SetToolChoiceTypes(ResponseToolChoice1FileSearchResponseToolChoice1, v)
+	return s
+}
+
+// NewResponseToolChoice1WebSearchPreviewResponseToolChoice1 returns new ResponseToolChoice1 from ToolChoiceTypes.
+func NewResponseToolChoice1WebSearchPreviewResponseToolChoice1(v ToolChoiceTypes) ResponseToolChoice1 {
+	var s ResponseToolChoice1
+	s.SetToolChoiceTypes(ResponseToolChoice1WebSearchPreviewResponseToolChoice1, v)
+	return s
+}
+
+// NewResponseToolChoice1WebSearchPreview20250311ResponseToolChoice1 returns new ResponseToolChoice1 from ToolChoiceTypes.
+func NewResponseToolChoice1WebSearchPreview20250311ResponseToolChoice1(v ToolChoiceTypes) ResponseToolChoice1 {
+	var s ResponseToolChoice1
+	s.SetToolChoiceTypes(ResponseToolChoice1WebSearchPreview20250311ResponseToolChoice1, v)
+	return s
+}
+
+// SetToolChoiceFunction sets ResponseToolChoice1 to ToolChoiceFunction.
+func (s *ResponseToolChoice1) SetToolChoiceFunction(v ToolChoiceFunction) {
+	s.Type = ToolChoiceFunctionResponseToolChoice1
 	s.ToolChoiceFunction = v
 }
 
-// GetToolChoiceFunction returns ToolChoiceFunction and true boolean if ResponseToolChoice is ToolChoiceFunction.
-func (s ResponseToolChoice) GetToolChoiceFunction() (v ToolChoiceFunction, ok bool) {
+// GetToolChoiceFunction returns ToolChoiceFunction and true boolean if ResponseToolChoice1 is ToolChoiceFunction.
+func (s ResponseToolChoice1) GetToolChoiceFunction() (v ToolChoiceFunction, ok bool) {
 	if !s.IsToolChoiceFunction() {
 		return v, false
 	}
 	return s.ToolChoiceFunction, true
 }
 
-// NewToolChoiceFunctionResponseToolChoice returns new ResponseToolChoice from ToolChoiceFunction.
-func NewToolChoiceFunctionResponseToolChoice(v ToolChoiceFunction) ResponseToolChoice {
-	var s ResponseToolChoice
+// NewToolChoiceFunctionResponseToolChoice1 returns new ResponseToolChoice1 from ToolChoiceFunction.
+func NewToolChoiceFunctionResponseToolChoice1(v ToolChoiceFunction) ResponseToolChoice1 {
+	var s ResponseToolChoice1
 	s.SetToolChoiceFunction(v)
 	return s
 }
@@ -21737,10 +21907,10 @@ type ToolType string
 
 // Possible values for ToolType.
 const (
-	FileSearchToolTool         ToolType = "FileSearchTool"
-	FunctionToolTool           ToolType = "FunctionTool"
+	FileSearchToolTool         ToolType = "file_search"
+	FunctionToolTool           ToolType = "function"
 	WebSearchPreviewToolTool   ToolType = "WebSearchPreviewTool"
-	ComputerUsePreviewToolTool ToolType = "ComputerUsePreviewTool"
+	ComputerUsePreviewToolTool ToolType = "computer_use_preview"
 )
 
 // IsFileSearchTool reports whether Tool is FileSearchTool.

@@ -3403,12 +3403,24 @@ func (s CreateResponseToolChoice) Validate() error {
 			return err
 		}
 		return nil
-	case ToolChoiceTypesCreateResponseToolChoice:
+	case CreateResponseToolChoice1CreateResponseToolChoice:
+		if err := s.CreateResponseToolChoice1.Validate(); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return errors.Errorf("invalid type %q", s.Type)
+	}
+}
+
+func (s CreateResponseToolChoice1) Validate() error {
+	switch s.Type {
+	case CreateResponseToolChoice1ComputerUsePreviewCreateResponseToolChoice1, CreateResponseToolChoice1FileSearchCreateResponseToolChoice1, CreateResponseToolChoice1WebSearchPreviewCreateResponseToolChoice1, CreateResponseToolChoice1WebSearchPreview20250311CreateResponseToolChoice1:
 		if err := s.ToolChoiceTypes.Validate(); err != nil {
 			return err
 		}
 		return nil
-	case ToolChoiceFunctionCreateResponseToolChoice:
+	case ToolChoiceFunctionCreateResponseToolChoice1:
 		if err := s.ToolChoiceFunction.Validate(); err != nil {
 			return err
 		}
@@ -7282,12 +7294,24 @@ func (s ResponseToolChoice) Validate() error {
 			return err
 		}
 		return nil
-	case ToolChoiceTypesResponseToolChoice:
+	case ResponseToolChoice1ResponseToolChoice:
+		if err := s.ResponseToolChoice1.Validate(); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return errors.Errorf("invalid type %q", s.Type)
+	}
+}
+
+func (s ResponseToolChoice1) Validate() error {
+	switch s.Type {
+	case ResponseToolChoice1ComputerUsePreviewResponseToolChoice1, ResponseToolChoice1FileSearchResponseToolChoice1, ResponseToolChoice1WebSearchPreviewResponseToolChoice1, ResponseToolChoice1WebSearchPreview20250311ResponseToolChoice1:
 		if err := s.ToolChoiceTypes.Validate(); err != nil {
 			return err
 		}
 		return nil
-	case ToolChoiceFunctionResponseToolChoice:
+	case ToolChoiceFunctionResponseToolChoice1:
 		if err := s.ToolChoiceFunction.Validate(); err != nil {
 			return err
 		}

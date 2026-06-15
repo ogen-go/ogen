@@ -23,7 +23,7 @@ func (s Annotation) encodeFields(e *jx.Encoder) {
 	switch s.Type {
 	case FileCitationBodyAnnotation:
 		e.FieldStart("type")
-		e.Str("FileCitationBody")
+		e.Str("file_citation")
 		{
 			s := s.FileCitationBody
 			{
@@ -37,7 +37,7 @@ func (s Annotation) encodeFields(e *jx.Encoder) {
 		}
 	case UrlCitationBodyAnnotation:
 		e.FieldStart("type")
-		e.Str("UrlCitationBody")
+		e.Str("url_citation")
 		{
 			s := s.UrlCitationBody
 			{
@@ -59,7 +59,7 @@ func (s Annotation) encodeFields(e *jx.Encoder) {
 		}
 	case FilePathAnnotation:
 		e.FieldStart("type")
-		e.Str("FilePath")
+		e.Str("file_path")
 		{
 			s := s.FilePath
 			{
@@ -97,13 +97,13 @@ func (s *Annotation) Decode(d *jx.Decoder) error {
 					return err
 				}
 				switch typ {
-				case "FileCitationBody":
+				case "file_citation":
 					s.Type = FileCitationBodyAnnotation
 					found = true
-				case "UrlCitationBody":
+				case "url_citation":
 					s.Type = UrlCitationBodyAnnotation
 					found = true
-				case "FilePath":
+				case "file_path":
 					s.Type = FilePathAnnotation
 					found = true
 				default:
@@ -12862,22 +12862,77 @@ func (s *CreateResponseText) UnmarshalJSON(data []byte) error {
 
 // Encode encodes CreateResponseToolChoice as json.
 func (s CreateResponseToolChoice) Encode(e *jx.Encoder) {
+	switch s.Type {
+	case ToolChoiceOptionsCreateResponseToolChoice:
+		s.ToolChoiceOptions.Encode(e)
+	case CreateResponseToolChoice1CreateResponseToolChoice:
+		s.CreateResponseToolChoice1.Encode(e)
+	}
+}
+
+// Decode decodes CreateResponseToolChoice from json.
+func (s *CreateResponseToolChoice) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode CreateResponseToolChoice to nil")
+	}
+	// Sum type type_discriminator.
+	switch t := d.Next(); t {
+	case jx.Object:
+		if err := s.CreateResponseToolChoice1.Decode(d); err != nil {
+			return err
+		}
+		s.Type = CreateResponseToolChoice1CreateResponseToolChoice
+	case jx.String:
+		if err := s.ToolChoiceOptions.Decode(d); err != nil {
+			return err
+		}
+		s.Type = ToolChoiceOptionsCreateResponseToolChoice
+	default:
+		return errors.Errorf("unexpected json type %q", t)
+	}
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s CreateResponseToolChoice) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *CreateResponseToolChoice) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes CreateResponseToolChoice1 as json.
+func (s CreateResponseToolChoice1) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
-func (s CreateResponseToolChoice) encodeFields(e *jx.Encoder) {
+func (s CreateResponseToolChoice1) encodeFields(e *jx.Encoder) {
 	switch s.Type {
-	case ToolChoiceOptionsCreateResponseToolChoice:
+	case CreateResponseToolChoice1ComputerUsePreviewCreateResponseToolChoice1, CreateResponseToolChoice1FileSearchCreateResponseToolChoice1, CreateResponseToolChoice1WebSearchPreviewCreateResponseToolChoice1, CreateResponseToolChoice1WebSearchPreview20250311CreateResponseToolChoice1:
+		switch s.Type {
+		case CreateResponseToolChoice1ComputerUsePreviewCreateResponseToolChoice1:
+			e.FieldStart("type")
+			e.Str("computer_use_preview")
+		case CreateResponseToolChoice1FileSearchCreateResponseToolChoice1:
+			e.FieldStart("type")
+			e.Str("file_search")
+		case CreateResponseToolChoice1WebSearchPreviewCreateResponseToolChoice1:
+			e.FieldStart("type")
+			e.Str("web_search_preview")
+		case CreateResponseToolChoice1WebSearchPreview20250311CreateResponseToolChoice1:
+			e.FieldStart("type")
+			e.Str("web_search_preview_2025_03_11")
+		}
+	case ToolChoiceFunctionCreateResponseToolChoice1:
 		e.FieldStart("type")
-		e.Str("ToolChoiceOptions")
-	case ToolChoiceTypesCreateResponseToolChoice:
-		e.FieldStart("type")
-		e.Str("ToolChoiceTypes")
-	case ToolChoiceFunctionCreateResponseToolChoice:
-		e.FieldStart("type")
-		e.Str("ToolChoiceFunction")
+		e.Str("function")
 		{
 			s := s.ToolChoiceFunction
 			{
@@ -12888,10 +12943,10 @@ func (s CreateResponseToolChoice) encodeFields(e *jx.Encoder) {
 	}
 }
 
-// Decode decodes CreateResponseToolChoice from json.
-func (s *CreateResponseToolChoice) Decode(d *jx.Decoder) error {
+// Decode decodes CreateResponseToolChoice1 from json.
+func (s *CreateResponseToolChoice1) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode CreateResponseToolChoice to nil")
+		return errors.New("invalid: unable to decode CreateResponseToolChoice1 to nil")
 	}
 	// Sum type discriminator.
 	if typ := d.Next(); typ != jx.Object {
@@ -12911,14 +12966,20 @@ func (s *CreateResponseToolChoice) Decode(d *jx.Decoder) error {
 					return err
 				}
 				switch typ {
-				case "ToolChoiceOptions":
-					s.Type = ToolChoiceOptionsCreateResponseToolChoice
+				case "computer_use_preview":
+					s.Type = CreateResponseToolChoice1ComputerUsePreviewCreateResponseToolChoice1
 					found = true
-				case "ToolChoiceTypes":
-					s.Type = ToolChoiceTypesCreateResponseToolChoice
+				case "file_search":
+					s.Type = CreateResponseToolChoice1FileSearchCreateResponseToolChoice1
 					found = true
-				case "ToolChoiceFunction":
-					s.Type = ToolChoiceFunctionCreateResponseToolChoice
+				case "web_search_preview":
+					s.Type = CreateResponseToolChoice1WebSearchPreviewCreateResponseToolChoice1
+					found = true
+				case "web_search_preview_2025_03_11":
+					s.Type = CreateResponseToolChoice1WebSearchPreview20250311CreateResponseToolChoice1
+					found = true
+				case "function":
+					s.Type = ToolChoiceFunctionCreateResponseToolChoice1
 					found = true
 				default:
 					return errors.Errorf("unknown type %s", typ)
@@ -12934,15 +12995,11 @@ func (s *CreateResponseToolChoice) Decode(d *jx.Decoder) error {
 		return errors.New("unable to detect sum type variant")
 	}
 	switch s.Type {
-	case ToolChoiceOptionsCreateResponseToolChoice:
-		if err := s.ToolChoiceOptions.Decode(d); err != nil {
-			return err
-		}
-	case ToolChoiceTypesCreateResponseToolChoice:
+	case CreateResponseToolChoice1ComputerUsePreviewCreateResponseToolChoice1, CreateResponseToolChoice1FileSearchCreateResponseToolChoice1, CreateResponseToolChoice1WebSearchPreviewCreateResponseToolChoice1, CreateResponseToolChoice1WebSearchPreview20250311CreateResponseToolChoice1:
 		if err := s.ToolChoiceTypes.Decode(d); err != nil {
 			return err
 		}
-	case ToolChoiceFunctionCreateResponseToolChoice:
+	case ToolChoiceFunctionCreateResponseToolChoice1:
 		if err := s.ToolChoiceFunction.Decode(d); err != nil {
 			return err
 		}
@@ -12953,14 +13010,14 @@ func (s *CreateResponseToolChoice) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s CreateResponseToolChoice) MarshalJSON() ([]byte, error) {
+func (s CreateResponseToolChoice1) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *CreateResponseToolChoice) UnmarshalJSON(data []byte) error {
+func (s *CreateResponseToolChoice1) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
@@ -17053,7 +17110,7 @@ func (s ItemSum) encodeFields(e *jx.Encoder) {
 		}
 	case OutputMessageItemSum:
 		e.FieldStart("type")
-		e.Str("OutputMessage")
+		e.Str("message")
 		{
 			s := s.OutputMessage
 			{
@@ -17079,7 +17136,7 @@ func (s ItemSum) encodeFields(e *jx.Encoder) {
 		}
 	case FileSearchToolCallItemSum:
 		e.FieldStart("type")
-		e.Str("FileSearchToolCall")
+		e.Str("file_search_call")
 		{
 			s := s.FileSearchToolCall
 			{
@@ -17107,7 +17164,7 @@ func (s ItemSum) encodeFields(e *jx.Encoder) {
 		}
 	case ComputerToolCallItemSum:
 		e.FieldStart("type")
-		e.Str("ComputerToolCall")
+		e.Str("computer_call")
 		{
 			s := s.ComputerToolCall
 			{
@@ -17137,7 +17194,7 @@ func (s ItemSum) encodeFields(e *jx.Encoder) {
 		}
 	case ComputerCallOutputItemParamItemSum:
 		e.FieldStart("type")
-		e.Str("ComputerCallOutputItemParam")
+		e.Str("computer_call_output")
 		{
 			s := s.ComputerCallOutputItemParam
 			{
@@ -17169,7 +17226,7 @@ func (s ItemSum) encodeFields(e *jx.Encoder) {
 		}
 	case WebSearchToolCallItemSum:
 		e.FieldStart("type")
-		e.Str("WebSearchToolCall")
+		e.Str("web_search_call")
 		{
 			s := s.WebSearchToolCall
 			{
@@ -17183,7 +17240,7 @@ func (s ItemSum) encodeFields(e *jx.Encoder) {
 		}
 	case FunctionToolCallItemSum:
 		e.FieldStart("type")
-		e.Str("FunctionToolCall")
+		e.Str("function_call")
 		{
 			s := s.FunctionToolCall
 			{
@@ -17213,7 +17270,7 @@ func (s ItemSum) encodeFields(e *jx.Encoder) {
 		}
 	case FunctionCallOutputItemParamItemSum:
 		e.FieldStart("type")
-		e.Str("FunctionCallOutputItemParam")
+		e.Str("function_call_output")
 		{
 			s := s.FunctionCallOutputItemParam
 			{
@@ -17239,7 +17296,7 @@ func (s ItemSum) encodeFields(e *jx.Encoder) {
 		}
 	case ReasoningItemItemSum:
 		e.FieldStart("type")
-		e.Str("ReasoningItem")
+		e.Str("reasoning")
 		{
 			s := s.ReasoningItem
 			{
@@ -17290,28 +17347,28 @@ func (s *ItemSum) Decode(d *jx.Decoder) error {
 				case "InputMessage":
 					s.Type = InputMessageItemSum
 					found = true
-				case "OutputMessage":
+				case "message":
 					s.Type = OutputMessageItemSum
 					found = true
-				case "FileSearchToolCall":
+				case "file_search_call":
 					s.Type = FileSearchToolCallItemSum
 					found = true
-				case "ComputerToolCall":
+				case "computer_call":
 					s.Type = ComputerToolCallItemSum
 					found = true
-				case "ComputerCallOutputItemParam":
+				case "computer_call_output":
 					s.Type = ComputerCallOutputItemParamItemSum
 					found = true
-				case "WebSearchToolCall":
+				case "web_search_call":
 					s.Type = WebSearchToolCallItemSum
 					found = true
-				case "FunctionToolCall":
+				case "function_call":
 					s.Type = FunctionToolCallItemSum
 					found = true
-				case "FunctionCallOutputItemParam":
+				case "function_call_output":
 					s.Type = FunctionCallOutputItemParamItemSum
 					found = true
-				case "ReasoningItem":
+				case "reasoning":
 					s.Type = ReasoningItemItemSum
 					found = true
 				default:
@@ -20471,6 +20528,55 @@ func (s *OptNilResponseTruncation) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
+// Encode encodes ResponseUsage as json.
+func (o OptNilResponseUsage) Encode(e *jx.Encoder) {
+	if !o.Set {
+		return
+	}
+	if o.Null {
+		e.Null()
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes ResponseUsage from json.
+func (o *OptNilResponseUsage) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptNilResponseUsage to nil")
+	}
+	if d.Next() == jx.Null {
+		if err := d.Null(); err != nil {
+			return err
+		}
+
+		var v ResponseUsage
+		o.Value = v
+		o.Set = true
+		o.Null = true
+		return nil
+	}
+	o.Set = true
+	o.Null = false
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptNilResponseUsage) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptNilResponseUsage) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes ServiceTier as json.
 func (o OptNilServiceTier) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -21001,39 +21107,6 @@ func (s *OptResponseText) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes ResponseUsage as json.
-func (o OptResponseUsage) Encode(e *jx.Encoder) {
-	if !o.Set {
-		return
-	}
-	o.Value.Encode(e)
-}
-
-// Decode decodes ResponseUsage from json.
-func (o *OptResponseUsage) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New("invalid: unable to decode OptResponseUsage to nil")
-	}
-	o.Set = true
-	if err := o.Value.Decode(d); err != nil {
-		return err
-	}
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s OptResponseUsage) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *OptResponseUsage) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
 // Encode encodes string as json.
 func (o OptString) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -21318,7 +21391,7 @@ func (s OutputItem) encodeFields(e *jx.Encoder) {
 	switch s.Type {
 	case OutputMessageOutputItem:
 		e.FieldStart("type")
-		e.Str("OutputMessage")
+		e.Str("message")
 		{
 			s := s.OutputMessage
 			{
@@ -21344,7 +21417,7 @@ func (s OutputItem) encodeFields(e *jx.Encoder) {
 		}
 	case FileSearchToolCallOutputItem:
 		e.FieldStart("type")
-		e.Str("FileSearchToolCall")
+		e.Str("file_search_call")
 		{
 			s := s.FileSearchToolCall
 			{
@@ -21372,7 +21445,7 @@ func (s OutputItem) encodeFields(e *jx.Encoder) {
 		}
 	case FunctionToolCallOutputItem:
 		e.FieldStart("type")
-		e.Str("FunctionToolCall")
+		e.Str("function_call")
 		{
 			s := s.FunctionToolCall
 			{
@@ -21402,7 +21475,7 @@ func (s OutputItem) encodeFields(e *jx.Encoder) {
 		}
 	case WebSearchToolCallOutputItem:
 		e.FieldStart("type")
-		e.Str("WebSearchToolCall")
+		e.Str("web_search_call")
 		{
 			s := s.WebSearchToolCall
 			{
@@ -21416,7 +21489,7 @@ func (s OutputItem) encodeFields(e *jx.Encoder) {
 		}
 	case ComputerToolCallOutputItem:
 		e.FieldStart("type")
-		e.Str("ComputerToolCall")
+		e.Str("computer_call")
 		{
 			s := s.ComputerToolCall
 			{
@@ -21446,7 +21519,7 @@ func (s OutputItem) encodeFields(e *jx.Encoder) {
 		}
 	case ReasoningItemOutputItem:
 		e.FieldStart("type")
-		e.Str("ReasoningItem")
+		e.Str("reasoning")
 		{
 			s := s.ReasoningItem
 			{
@@ -21494,22 +21567,22 @@ func (s *OutputItem) Decode(d *jx.Decoder) error {
 					return err
 				}
 				switch typ {
-				case "OutputMessage":
+				case "message":
 					s.Type = OutputMessageOutputItem
 					found = true
-				case "FileSearchToolCall":
+				case "file_search_call":
 					s.Type = FileSearchToolCallOutputItem
 					found = true
-				case "FunctionToolCall":
+				case "function_call":
 					s.Type = FunctionToolCallOutputItem
 					found = true
-				case "WebSearchToolCall":
+				case "web_search_call":
 					s.Type = WebSearchToolCallOutputItem
 					found = true
-				case "ComputerToolCall":
+				case "computer_call":
 					s.Type = ComputerToolCallOutputItem
 					found = true
-				case "ReasoningItem":
+				case "reasoning":
 					s.Type = ReasoningItemOutputItem
 					found = true
 				default:
@@ -30117,7 +30190,7 @@ func (s ResponseStreamEvent) encodeFields(e *jx.Encoder) {
 	switch s.Type {
 	case ResponseAudioDeltaEventResponseStreamEvent:
 		e.FieldStart("type")
-		e.Str("ResponseAudioDeltaEvent")
+		e.Str("response.audio.delta")
 		{
 			s := s.ResponseAudioDeltaEvent
 			{
@@ -30127,10 +30200,10 @@ func (s ResponseStreamEvent) encodeFields(e *jx.Encoder) {
 		}
 	case ResponseAudioDoneEventResponseStreamEvent:
 		e.FieldStart("type")
-		e.Str("ResponseAudioDoneEvent")
+		e.Str("response.audio.done")
 	case ResponseAudioTranscriptDeltaEventResponseStreamEvent:
 		e.FieldStart("type")
-		e.Str("ResponseAudioTranscriptDeltaEvent")
+		e.Str("response.audio.transcript.delta")
 		{
 			s := s.ResponseAudioTranscriptDeltaEvent
 			{
@@ -30140,10 +30213,10 @@ func (s ResponseStreamEvent) encodeFields(e *jx.Encoder) {
 		}
 	case ResponseAudioTranscriptDoneEventResponseStreamEvent:
 		e.FieldStart("type")
-		e.Str("ResponseAudioTranscriptDoneEvent")
+		e.Str("response.audio.transcript.done")
 	case ResponseCodeInterpreterCallCodeDeltaEventResponseStreamEvent:
 		e.FieldStart("type")
-		e.Str("ResponseCodeInterpreterCallCodeDeltaEvent")
+		e.Str("response.code_interpreter_call.code.delta")
 		{
 			s := s.ResponseCodeInterpreterCallCodeDeltaEvent
 			{
@@ -30157,7 +30230,7 @@ func (s ResponseStreamEvent) encodeFields(e *jx.Encoder) {
 		}
 	case ResponseCodeInterpreterCallCodeDoneEventResponseStreamEvent:
 		e.FieldStart("type")
-		e.Str("ResponseCodeInterpreterCallCodeDoneEvent")
+		e.Str("response.code_interpreter_call.code.done")
 		{
 			s := s.ResponseCodeInterpreterCallCodeDoneEvent
 			{
@@ -30171,7 +30244,7 @@ func (s ResponseStreamEvent) encodeFields(e *jx.Encoder) {
 		}
 	case ResponseCodeInterpreterCallCompletedEventResponseStreamEvent:
 		e.FieldStart("type")
-		e.Str("ResponseCodeInterpreterCallCompletedEvent")
+		e.Str("response.code_interpreter_call.completed")
 		{
 			s := s.ResponseCodeInterpreterCallCompletedEvent
 			{
@@ -30185,7 +30258,7 @@ func (s ResponseStreamEvent) encodeFields(e *jx.Encoder) {
 		}
 	case ResponseCodeInterpreterCallInProgressEventResponseStreamEvent:
 		e.FieldStart("type")
-		e.Str("ResponseCodeInterpreterCallInProgressEvent")
+		e.Str("response.code_interpreter_call.in_progress")
 		{
 			s := s.ResponseCodeInterpreterCallInProgressEvent
 			{
@@ -30199,7 +30272,7 @@ func (s ResponseStreamEvent) encodeFields(e *jx.Encoder) {
 		}
 	case ResponseCodeInterpreterCallInterpretingEventResponseStreamEvent:
 		e.FieldStart("type")
-		e.Str("ResponseCodeInterpreterCallInterpretingEvent")
+		e.Str("response.code_interpreter_call.interpreting")
 		{
 			s := s.ResponseCodeInterpreterCallInterpretingEvent
 			{
@@ -30213,7 +30286,7 @@ func (s ResponseStreamEvent) encodeFields(e *jx.Encoder) {
 		}
 	case ResponseCompletedEventResponseStreamEvent:
 		e.FieldStart("type")
-		e.Str("ResponseCompletedEvent")
+		e.Str("response.completed")
 		{
 			s := s.ResponseCompletedEvent
 			{
@@ -30223,7 +30296,7 @@ func (s ResponseStreamEvent) encodeFields(e *jx.Encoder) {
 		}
 	case ResponseContentPartAddedEventResponseStreamEvent:
 		e.FieldStart("type")
-		e.Str("ResponseContentPartAddedEvent")
+		e.Str("response.content_part.added")
 		{
 			s := s.ResponseContentPartAddedEvent
 			{
@@ -30245,7 +30318,7 @@ func (s ResponseStreamEvent) encodeFields(e *jx.Encoder) {
 		}
 	case ResponseContentPartDoneEventResponseStreamEvent:
 		e.FieldStart("type")
-		e.Str("ResponseContentPartDoneEvent")
+		e.Str("response.content_part.done")
 		{
 			s := s.ResponseContentPartDoneEvent
 			{
@@ -30267,7 +30340,7 @@ func (s ResponseStreamEvent) encodeFields(e *jx.Encoder) {
 		}
 	case ResponseCreatedEventResponseStreamEvent:
 		e.FieldStart("type")
-		e.Str("ResponseCreatedEvent")
+		e.Str("response.created")
 		{
 			s := s.ResponseCreatedEvent
 			{
@@ -30277,7 +30350,7 @@ func (s ResponseStreamEvent) encodeFields(e *jx.Encoder) {
 		}
 	case ResponseErrorEventResponseStreamEvent:
 		e.FieldStart("type")
-		e.Str("ResponseErrorEvent")
+		e.Str("error")
 		{
 			s := s.ResponseErrorEvent
 			{
@@ -30295,7 +30368,7 @@ func (s ResponseStreamEvent) encodeFields(e *jx.Encoder) {
 		}
 	case ResponseFileSearchCallCompletedEventResponseStreamEvent:
 		e.FieldStart("type")
-		e.Str("ResponseFileSearchCallCompletedEvent")
+		e.Str("response.file_search_call.completed")
 		{
 			s := s.ResponseFileSearchCallCompletedEvent
 			{
@@ -30309,7 +30382,7 @@ func (s ResponseStreamEvent) encodeFields(e *jx.Encoder) {
 		}
 	case ResponseFileSearchCallInProgressEventResponseStreamEvent:
 		e.FieldStart("type")
-		e.Str("ResponseFileSearchCallInProgressEvent")
+		e.Str("response.file_search_call.in_progress")
 		{
 			s := s.ResponseFileSearchCallInProgressEvent
 			{
@@ -30323,7 +30396,7 @@ func (s ResponseStreamEvent) encodeFields(e *jx.Encoder) {
 		}
 	case ResponseFileSearchCallSearchingEventResponseStreamEvent:
 		e.FieldStart("type")
-		e.Str("ResponseFileSearchCallSearchingEvent")
+		e.Str("response.file_search_call.searching")
 		{
 			s := s.ResponseFileSearchCallSearchingEvent
 			{
@@ -30337,7 +30410,7 @@ func (s ResponseStreamEvent) encodeFields(e *jx.Encoder) {
 		}
 	case ResponseFunctionCallArgumentsDeltaEventResponseStreamEvent:
 		e.FieldStart("type")
-		e.Str("ResponseFunctionCallArgumentsDeltaEvent")
+		e.Str("response.function_call_arguments.delta")
 		{
 			s := s.ResponseFunctionCallArgumentsDeltaEvent
 			{
@@ -30355,7 +30428,7 @@ func (s ResponseStreamEvent) encodeFields(e *jx.Encoder) {
 		}
 	case ResponseFunctionCallArgumentsDoneEventResponseStreamEvent:
 		e.FieldStart("type")
-		e.Str("ResponseFunctionCallArgumentsDoneEvent")
+		e.Str("response.function_call_arguments.done")
 		{
 			s := s.ResponseFunctionCallArgumentsDoneEvent
 			{
@@ -30373,7 +30446,7 @@ func (s ResponseStreamEvent) encodeFields(e *jx.Encoder) {
 		}
 	case ResponseInProgressEventResponseStreamEvent:
 		e.FieldStart("type")
-		e.Str("ResponseInProgressEvent")
+		e.Str("response.in_progress")
 		{
 			s := s.ResponseInProgressEvent
 			{
@@ -30383,7 +30456,7 @@ func (s ResponseStreamEvent) encodeFields(e *jx.Encoder) {
 		}
 	case ResponseFailedEventResponseStreamEvent:
 		e.FieldStart("type")
-		e.Str("ResponseFailedEvent")
+		e.Str("response.failed")
 		{
 			s := s.ResponseFailedEvent
 			{
@@ -30393,7 +30466,7 @@ func (s ResponseStreamEvent) encodeFields(e *jx.Encoder) {
 		}
 	case ResponseIncompleteEventResponseStreamEvent:
 		e.FieldStart("type")
-		e.Str("ResponseIncompleteEvent")
+		e.Str("response.incomplete")
 		{
 			s := s.ResponseIncompleteEvent
 			{
@@ -30403,7 +30476,7 @@ func (s ResponseStreamEvent) encodeFields(e *jx.Encoder) {
 		}
 	case ResponseOutputItemAddedEventResponseStreamEvent:
 		e.FieldStart("type")
-		e.Str("ResponseOutputItemAddedEvent")
+		e.Str("response.output_item.added")
 		{
 			s := s.ResponseOutputItemAddedEvent
 			{
@@ -30417,7 +30490,7 @@ func (s ResponseStreamEvent) encodeFields(e *jx.Encoder) {
 		}
 	case ResponseOutputItemDoneEventResponseStreamEvent:
 		e.FieldStart("type")
-		e.Str("ResponseOutputItemDoneEvent")
+		e.Str("response.output_item.done")
 		{
 			s := s.ResponseOutputItemDoneEvent
 			{
@@ -30431,7 +30504,7 @@ func (s ResponseStreamEvent) encodeFields(e *jx.Encoder) {
 		}
 	case ResponseReasoningSummaryPartAddedEventResponseStreamEvent:
 		e.FieldStart("type")
-		e.Str("ResponseReasoningSummaryPartAddedEvent")
+		e.Str("response.reasoning_summary_part.added")
 		{
 			s := s.ResponseReasoningSummaryPartAddedEvent
 			{
@@ -30453,7 +30526,7 @@ func (s ResponseStreamEvent) encodeFields(e *jx.Encoder) {
 		}
 	case ResponseReasoningSummaryPartDoneEventResponseStreamEvent:
 		e.FieldStart("type")
-		e.Str("ResponseReasoningSummaryPartDoneEvent")
+		e.Str("response.reasoning_summary_part.done")
 		{
 			s := s.ResponseReasoningSummaryPartDoneEvent
 			{
@@ -30475,7 +30548,7 @@ func (s ResponseStreamEvent) encodeFields(e *jx.Encoder) {
 		}
 	case ResponseReasoningSummaryTextDeltaEventResponseStreamEvent:
 		e.FieldStart("type")
-		e.Str("ResponseReasoningSummaryTextDeltaEvent")
+		e.Str("response.reasoning_summary_text.delta")
 		{
 			s := s.ResponseReasoningSummaryTextDeltaEvent
 			{
@@ -30497,7 +30570,7 @@ func (s ResponseStreamEvent) encodeFields(e *jx.Encoder) {
 		}
 	case ResponseReasoningSummaryTextDoneEventResponseStreamEvent:
 		e.FieldStart("type")
-		e.Str("ResponseReasoningSummaryTextDoneEvent")
+		e.Str("response.reasoning_summary_text.done")
 		{
 			s := s.ResponseReasoningSummaryTextDoneEvent
 			{
@@ -30519,7 +30592,7 @@ func (s ResponseStreamEvent) encodeFields(e *jx.Encoder) {
 		}
 	case ResponseRefusalDeltaEventResponseStreamEvent:
 		e.FieldStart("type")
-		e.Str("ResponseRefusalDeltaEvent")
+		e.Str("response.refusal.delta")
 		{
 			s := s.ResponseRefusalDeltaEvent
 			{
@@ -30541,7 +30614,7 @@ func (s ResponseStreamEvent) encodeFields(e *jx.Encoder) {
 		}
 	case ResponseRefusalDoneEventResponseStreamEvent:
 		e.FieldStart("type")
-		e.Str("ResponseRefusalDoneEvent")
+		e.Str("response.refusal.done")
 		{
 			s := s.ResponseRefusalDoneEvent
 			{
@@ -30563,7 +30636,7 @@ func (s ResponseStreamEvent) encodeFields(e *jx.Encoder) {
 		}
 	case ResponseTextAnnotationDeltaEventResponseStreamEvent:
 		e.FieldStart("type")
-		e.Str("ResponseTextAnnotationDeltaEvent")
+		e.Str("response.output_text.annotation.added")
 		{
 			s := s.ResponseTextAnnotationDeltaEvent
 			{
@@ -30589,7 +30662,7 @@ func (s ResponseStreamEvent) encodeFields(e *jx.Encoder) {
 		}
 	case ResponseTextDeltaEventResponseStreamEvent:
 		e.FieldStart("type")
-		e.Str("ResponseTextDeltaEvent")
+		e.Str("response.output_text.delta")
 		{
 			s := s.ResponseTextDeltaEvent
 			{
@@ -30611,7 +30684,7 @@ func (s ResponseStreamEvent) encodeFields(e *jx.Encoder) {
 		}
 	case ResponseTextDoneEventResponseStreamEvent:
 		e.FieldStart("type")
-		e.Str("ResponseTextDoneEvent")
+		e.Str("response.output_text.done")
 		{
 			s := s.ResponseTextDoneEvent
 			{
@@ -30633,7 +30706,7 @@ func (s ResponseStreamEvent) encodeFields(e *jx.Encoder) {
 		}
 	case ResponseWebSearchCallCompletedEventResponseStreamEvent:
 		e.FieldStart("type")
-		e.Str("ResponseWebSearchCallCompletedEvent")
+		e.Str("response.web_search_call.completed")
 		{
 			s := s.ResponseWebSearchCallCompletedEvent
 			{
@@ -30647,7 +30720,7 @@ func (s ResponseStreamEvent) encodeFields(e *jx.Encoder) {
 		}
 	case ResponseWebSearchCallInProgressEventResponseStreamEvent:
 		e.FieldStart("type")
-		e.Str("ResponseWebSearchCallInProgressEvent")
+		e.Str("response.web_search_call.in_progress")
 		{
 			s := s.ResponseWebSearchCallInProgressEvent
 			{
@@ -30661,7 +30734,7 @@ func (s ResponseStreamEvent) encodeFields(e *jx.Encoder) {
 		}
 	case ResponseWebSearchCallSearchingEventResponseStreamEvent:
 		e.FieldStart("type")
-		e.Str("ResponseWebSearchCallSearchingEvent")
+		e.Str("response.web_search_call.searching")
 		{
 			s := s.ResponseWebSearchCallSearchingEvent
 			{
@@ -30699,112 +30772,112 @@ func (s *ResponseStreamEvent) Decode(d *jx.Decoder) error {
 					return err
 				}
 				switch typ {
-				case "ResponseAudioDeltaEvent":
+				case "response.audio.delta":
 					s.Type = ResponseAudioDeltaEventResponseStreamEvent
 					found = true
-				case "ResponseAudioDoneEvent":
+				case "response.audio.done":
 					s.Type = ResponseAudioDoneEventResponseStreamEvent
 					found = true
-				case "ResponseAudioTranscriptDeltaEvent":
+				case "response.audio.transcript.delta":
 					s.Type = ResponseAudioTranscriptDeltaEventResponseStreamEvent
 					found = true
-				case "ResponseAudioTranscriptDoneEvent":
+				case "response.audio.transcript.done":
 					s.Type = ResponseAudioTranscriptDoneEventResponseStreamEvent
 					found = true
-				case "ResponseCodeInterpreterCallCodeDeltaEvent":
+				case "response.code_interpreter_call.code.delta":
 					s.Type = ResponseCodeInterpreterCallCodeDeltaEventResponseStreamEvent
 					found = true
-				case "ResponseCodeInterpreterCallCodeDoneEvent":
+				case "response.code_interpreter_call.code.done":
 					s.Type = ResponseCodeInterpreterCallCodeDoneEventResponseStreamEvent
 					found = true
-				case "ResponseCodeInterpreterCallCompletedEvent":
+				case "response.code_interpreter_call.completed":
 					s.Type = ResponseCodeInterpreterCallCompletedEventResponseStreamEvent
 					found = true
-				case "ResponseCodeInterpreterCallInProgressEvent":
+				case "response.code_interpreter_call.in_progress":
 					s.Type = ResponseCodeInterpreterCallInProgressEventResponseStreamEvent
 					found = true
-				case "ResponseCodeInterpreterCallInterpretingEvent":
+				case "response.code_interpreter_call.interpreting":
 					s.Type = ResponseCodeInterpreterCallInterpretingEventResponseStreamEvent
 					found = true
-				case "ResponseCompletedEvent":
+				case "response.completed":
 					s.Type = ResponseCompletedEventResponseStreamEvent
 					found = true
-				case "ResponseContentPartAddedEvent":
+				case "response.content_part.added":
 					s.Type = ResponseContentPartAddedEventResponseStreamEvent
 					found = true
-				case "ResponseContentPartDoneEvent":
+				case "response.content_part.done":
 					s.Type = ResponseContentPartDoneEventResponseStreamEvent
 					found = true
-				case "ResponseCreatedEvent":
+				case "response.created":
 					s.Type = ResponseCreatedEventResponseStreamEvent
 					found = true
-				case "ResponseErrorEvent":
+				case "error":
 					s.Type = ResponseErrorEventResponseStreamEvent
 					found = true
-				case "ResponseFileSearchCallCompletedEvent":
+				case "response.file_search_call.completed":
 					s.Type = ResponseFileSearchCallCompletedEventResponseStreamEvent
 					found = true
-				case "ResponseFileSearchCallInProgressEvent":
+				case "response.file_search_call.in_progress":
 					s.Type = ResponseFileSearchCallInProgressEventResponseStreamEvent
 					found = true
-				case "ResponseFileSearchCallSearchingEvent":
+				case "response.file_search_call.searching":
 					s.Type = ResponseFileSearchCallSearchingEventResponseStreamEvent
 					found = true
-				case "ResponseFunctionCallArgumentsDeltaEvent":
+				case "response.function_call_arguments.delta":
 					s.Type = ResponseFunctionCallArgumentsDeltaEventResponseStreamEvent
 					found = true
-				case "ResponseFunctionCallArgumentsDoneEvent":
+				case "response.function_call_arguments.done":
 					s.Type = ResponseFunctionCallArgumentsDoneEventResponseStreamEvent
 					found = true
-				case "ResponseInProgressEvent":
+				case "response.in_progress":
 					s.Type = ResponseInProgressEventResponseStreamEvent
 					found = true
-				case "ResponseFailedEvent":
+				case "response.failed":
 					s.Type = ResponseFailedEventResponseStreamEvent
 					found = true
-				case "ResponseIncompleteEvent":
+				case "response.incomplete":
 					s.Type = ResponseIncompleteEventResponseStreamEvent
 					found = true
-				case "ResponseOutputItemAddedEvent":
+				case "response.output_item.added":
 					s.Type = ResponseOutputItemAddedEventResponseStreamEvent
 					found = true
-				case "ResponseOutputItemDoneEvent":
+				case "response.output_item.done":
 					s.Type = ResponseOutputItemDoneEventResponseStreamEvent
 					found = true
-				case "ResponseReasoningSummaryPartAddedEvent":
+				case "response.reasoning_summary_part.added":
 					s.Type = ResponseReasoningSummaryPartAddedEventResponseStreamEvent
 					found = true
-				case "ResponseReasoningSummaryPartDoneEvent":
+				case "response.reasoning_summary_part.done":
 					s.Type = ResponseReasoningSummaryPartDoneEventResponseStreamEvent
 					found = true
-				case "ResponseReasoningSummaryTextDeltaEvent":
+				case "response.reasoning_summary_text.delta":
 					s.Type = ResponseReasoningSummaryTextDeltaEventResponseStreamEvent
 					found = true
-				case "ResponseReasoningSummaryTextDoneEvent":
+				case "response.reasoning_summary_text.done":
 					s.Type = ResponseReasoningSummaryTextDoneEventResponseStreamEvent
 					found = true
-				case "ResponseRefusalDeltaEvent":
+				case "response.refusal.delta":
 					s.Type = ResponseRefusalDeltaEventResponseStreamEvent
 					found = true
-				case "ResponseRefusalDoneEvent":
+				case "response.refusal.done":
 					s.Type = ResponseRefusalDoneEventResponseStreamEvent
 					found = true
-				case "ResponseTextAnnotationDeltaEvent":
+				case "response.output_text.annotation.added":
 					s.Type = ResponseTextAnnotationDeltaEventResponseStreamEvent
 					found = true
-				case "ResponseTextDeltaEvent":
+				case "response.output_text.delta":
 					s.Type = ResponseTextDeltaEventResponseStreamEvent
 					found = true
-				case "ResponseTextDoneEvent":
+				case "response.output_text.done":
 					s.Type = ResponseTextDoneEventResponseStreamEvent
 					found = true
-				case "ResponseWebSearchCallCompletedEvent":
+				case "response.web_search_call.completed":
 					s.Type = ResponseWebSearchCallCompletedEventResponseStreamEvent
 					found = true
-				case "ResponseWebSearchCallInProgressEvent":
+				case "response.web_search_call.in_progress":
 					s.Type = ResponseWebSearchCallInProgressEventResponseStreamEvent
 					found = true
-				case "ResponseWebSearchCallSearchingEvent":
+				case "response.web_search_call.searching":
 					s.Type = ResponseWebSearchCallSearchingEventResponseStreamEvent
 					found = true
 				default:
@@ -31664,22 +31737,77 @@ func (s *ResponseTextDoneEventType) UnmarshalJSON(data []byte) error {
 
 // Encode encodes ResponseToolChoice as json.
 func (s ResponseToolChoice) Encode(e *jx.Encoder) {
+	switch s.Type {
+	case ToolChoiceOptionsResponseToolChoice:
+		s.ToolChoiceOptions.Encode(e)
+	case ResponseToolChoice1ResponseToolChoice:
+		s.ResponseToolChoice1.Encode(e)
+	}
+}
+
+// Decode decodes ResponseToolChoice from json.
+func (s *ResponseToolChoice) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode ResponseToolChoice to nil")
+	}
+	// Sum type type_discriminator.
+	switch t := d.Next(); t {
+	case jx.Object:
+		if err := s.ResponseToolChoice1.Decode(d); err != nil {
+			return err
+		}
+		s.Type = ResponseToolChoice1ResponseToolChoice
+	case jx.String:
+		if err := s.ToolChoiceOptions.Decode(d); err != nil {
+			return err
+		}
+		s.Type = ToolChoiceOptionsResponseToolChoice
+	default:
+		return errors.Errorf("unexpected json type %q", t)
+	}
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s ResponseToolChoice) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *ResponseToolChoice) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes ResponseToolChoice1 as json.
+func (s ResponseToolChoice1) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
-func (s ResponseToolChoice) encodeFields(e *jx.Encoder) {
+func (s ResponseToolChoice1) encodeFields(e *jx.Encoder) {
 	switch s.Type {
-	case ToolChoiceOptionsResponseToolChoice:
+	case ResponseToolChoice1ComputerUsePreviewResponseToolChoice1, ResponseToolChoice1FileSearchResponseToolChoice1, ResponseToolChoice1WebSearchPreviewResponseToolChoice1, ResponseToolChoice1WebSearchPreview20250311ResponseToolChoice1:
+		switch s.Type {
+		case ResponseToolChoice1ComputerUsePreviewResponseToolChoice1:
+			e.FieldStart("type")
+			e.Str("computer_use_preview")
+		case ResponseToolChoice1FileSearchResponseToolChoice1:
+			e.FieldStart("type")
+			e.Str("file_search")
+		case ResponseToolChoice1WebSearchPreviewResponseToolChoice1:
+			e.FieldStart("type")
+			e.Str("web_search_preview")
+		case ResponseToolChoice1WebSearchPreview20250311ResponseToolChoice1:
+			e.FieldStart("type")
+			e.Str("web_search_preview_2025_03_11")
+		}
+	case ToolChoiceFunctionResponseToolChoice1:
 		e.FieldStart("type")
-		e.Str("ToolChoiceOptions")
-	case ToolChoiceTypesResponseToolChoice:
-		e.FieldStart("type")
-		e.Str("ToolChoiceTypes")
-	case ToolChoiceFunctionResponseToolChoice:
-		e.FieldStart("type")
-		e.Str("ToolChoiceFunction")
+		e.Str("function")
 		{
 			s := s.ToolChoiceFunction
 			{
@@ -31690,10 +31818,10 @@ func (s ResponseToolChoice) encodeFields(e *jx.Encoder) {
 	}
 }
 
-// Decode decodes ResponseToolChoice from json.
-func (s *ResponseToolChoice) Decode(d *jx.Decoder) error {
+// Decode decodes ResponseToolChoice1 from json.
+func (s *ResponseToolChoice1) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode ResponseToolChoice to nil")
+		return errors.New("invalid: unable to decode ResponseToolChoice1 to nil")
 	}
 	// Sum type discriminator.
 	if typ := d.Next(); typ != jx.Object {
@@ -31713,14 +31841,20 @@ func (s *ResponseToolChoice) Decode(d *jx.Decoder) error {
 					return err
 				}
 				switch typ {
-				case "ToolChoiceOptions":
-					s.Type = ToolChoiceOptionsResponseToolChoice
+				case "computer_use_preview":
+					s.Type = ResponseToolChoice1ComputerUsePreviewResponseToolChoice1
 					found = true
-				case "ToolChoiceTypes":
-					s.Type = ToolChoiceTypesResponseToolChoice
+				case "file_search":
+					s.Type = ResponseToolChoice1FileSearchResponseToolChoice1
 					found = true
-				case "ToolChoiceFunction":
-					s.Type = ToolChoiceFunctionResponseToolChoice
+				case "web_search_preview":
+					s.Type = ResponseToolChoice1WebSearchPreviewResponseToolChoice1
+					found = true
+				case "web_search_preview_2025_03_11":
+					s.Type = ResponseToolChoice1WebSearchPreview20250311ResponseToolChoice1
+					found = true
+				case "function":
+					s.Type = ToolChoiceFunctionResponseToolChoice1
 					found = true
 				default:
 					return errors.Errorf("unknown type %s", typ)
@@ -31736,15 +31870,11 @@ func (s *ResponseToolChoice) Decode(d *jx.Decoder) error {
 		return errors.New("unable to detect sum type variant")
 	}
 	switch s.Type {
-	case ToolChoiceOptionsResponseToolChoice:
-		if err := s.ToolChoiceOptions.Decode(d); err != nil {
-			return err
-		}
-	case ToolChoiceTypesResponseToolChoice:
+	case ResponseToolChoice1ComputerUsePreviewResponseToolChoice1, ResponseToolChoice1FileSearchResponseToolChoice1, ResponseToolChoice1WebSearchPreviewResponseToolChoice1, ResponseToolChoice1WebSearchPreview20250311ResponseToolChoice1:
 		if err := s.ToolChoiceTypes.Decode(d); err != nil {
 			return err
 		}
-	case ToolChoiceFunctionResponseToolChoice:
+	case ToolChoiceFunctionResponseToolChoice1:
 		if err := s.ToolChoiceFunction.Decode(d); err != nil {
 			return err
 		}
@@ -31755,14 +31885,14 @@ func (s *ResponseToolChoice) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s ResponseToolChoice) MarshalJSON() ([]byte, error) {
+func (s ResponseToolChoice1) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *ResponseToolChoice) UnmarshalJSON(data []byte) error {
+func (s *ResponseToolChoice1) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
@@ -33482,7 +33612,7 @@ func (s Tool) encodeFields(e *jx.Encoder) {
 	switch s.Type {
 	case FileSearchToolTool:
 		e.FieldStart("type")
-		e.Str("FileSearchTool")
+		e.Str("file_search")
 		{
 			s := s.FileSearchTool
 			{
@@ -33514,7 +33644,7 @@ func (s Tool) encodeFields(e *jx.Encoder) {
 		}
 	case FunctionToolTool:
 		e.FieldStart("type")
-		e.Str("FunctionTool")
+		e.Str("function")
 		{
 			s := s.FunctionTool
 			{
@@ -33556,7 +33686,7 @@ func (s Tool) encodeFields(e *jx.Encoder) {
 		}
 	case ComputerUsePreviewToolTool:
 		e.FieldStart("type")
-		e.Str("ComputerUsePreviewTool")
+		e.Str("computer_use_preview")
 		{
 			s := s.ComputerUsePreviewTool
 			{
@@ -33598,16 +33728,16 @@ func (s *Tool) Decode(d *jx.Decoder) error {
 					return err
 				}
 				switch typ {
-				case "FileSearchTool":
+				case "file_search":
 					s.Type = FileSearchToolTool
 					found = true
-				case "FunctionTool":
+				case "function":
 					s.Type = FunctionToolTool
 					found = true
 				case "WebSearchPreviewTool":
 					s.Type = WebSearchPreviewToolTool
 					found = true
-				case "ComputerUsePreviewTool":
+				case "computer_use_preview":
 					s.Type = ComputerUsePreviewToolTool
 					found = true
 				default:
