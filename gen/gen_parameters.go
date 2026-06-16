@@ -75,12 +75,12 @@ func (g *Generator) generateParameters(ctx *genctx, opName string, params []*ope
 				case inEqual && specNameEqual:
 					panic(unreachable(pp.Spec.Name))
 				case inEqual:
-					p.Name, err = pascalSpecial(p.Spec.Name)
+					p.Name, err = g.namer().pascalSpecial(p.Spec.Name)
 					if err != nil {
 						return nil, errors.Wrap(err, "parameter name")
 					}
 
-					pp.Name, err = pascalSpecial(pp.Spec.Name)
+					pp.Name, err = g.namer().pascalSpecial(pp.Spec.Name)
 					if err != nil {
 						return nil, errors.Wrap(err, "parameter name")
 					}
@@ -110,7 +110,7 @@ func (g *Generator) generateParameter(ctx *genctx, opName string, p *openapi.Par
 			return p, nil
 		}
 
-		n, err := pascal(cleanRef(ref))
+		n, err := g.namer().pascal(cleanRef(ref))
 		if err != nil {
 			return nil, errors.Wrapf(err, "parameter type name: %q", ref)
 		}
@@ -130,7 +130,7 @@ func (g *Generator) generateParameter(ctx *genctx, opName string, p *openapi.Par
 
 	if paramTypeName == "" {
 		var err error
-		paramTypeName, err = pascal(opName, p.Name)
+		paramTypeName, err = g.namer().pascal(opName, p.Name)
 		if err != nil {
 			return nil, errors.Wrapf(err, "parameter type name: %q", p.Name)
 		}
@@ -180,7 +180,7 @@ func (g *Generator) generateParameter(ctx *genctx, opName string, p *openapi.Par
 		paramName = p.XOgenName
 	} else {
 		var err error
-		paramName, err = pascalNonEmpty(p.Name)
+		paramName, err = g.namer().pascalNonEmpty(p.Name)
 		if err != nil {
 			return nil, errors.Wrapf(err, "parameter name: %q", p.Name)
 		}

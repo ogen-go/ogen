@@ -153,7 +153,7 @@ func (g *Generator) generateSecurity(ctx *genctx, operationName string, spec ope
 	}
 	security := spec.Security
 
-	typeName, err := pascalNonEmpty(spec.Name)
+	typeName, err := g.namer().pascalNonEmpty(spec.Name)
 	if err != nil {
 		return nil, errors.Wrapf(err, "security name: %q", spec.Name)
 	}

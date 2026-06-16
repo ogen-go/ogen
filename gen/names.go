@@ -50,6 +50,7 @@ type nameGen struct {
 	pos   int
 
 	allowSpecial bool // special characters like +, -, /
+	initialisms  bool // treat lower->upper case transitions as word boundaries
 }
 
 func (g *nameGen) next() (rune, bool) {
@@ -97,6 +98,18 @@ func (g *nameGen) generate() (string, error) {
 		}
 
 		if g.isAllowed(r) {
+			// Treat a lower->upper case transition inside a camelCase token as a
+			// word boundary, so that e.g. "userId" splits into ["user", "Id"] and
+			// the "Id" part can match the "ID" initialism rule.
+			//
+			// A run of consecutive upper-case runes is kept together ("URL" stays
+			// "URL", not "U", "R", "L"), so the rule still fires on acronyms.
+			if g.initialisms && len(part) > 0 &&
+				unicode.IsUpper(r) && !unicode.IsUpper(part[len(part)-1]) {
+				pushPart()
+				upper = true
+			}
+
 			if upper {
 				r = unicode.ToUpper(r)
 				upper = false
@@ -162,33 +175,45 @@ func (g *nameGen) checkPart(part string) string {
 	return part
 }
 
-func cleanSpecial(strs ...string) string {
+// namer generates Go identifiers from arbitrary strings.
+//
+// The zero value preserves ogen's historical naming behavior. A namer with
+// initialisms set additionally applies the initialism rules to camelCase input
+// (see nameGen.initialisms and the [NamingInitialisms] feature).
+type namer struct {
+	initialisms bool
+}
+
+func (n namer) cleanSpecial(strs ...string) string {
 	return (&nameGen{
 		src:          []rune(strings.Join(strs, " ")),
 		allowSpecial: true,
+		initialisms:  n.initialisms,
 	}).clean()
 }
 
-func pascal(strs ...string) (string, error) {
+func (n namer) pascal(strs ...string) (string, error) {
 	return (&nameGen{
-		src: []rune(strings.Join(strs, " ")),
+		src:         []rune(strings.Join(strs, " ")),
+		initialisms: n.initialisms,
 	}).generate()
 }
 
-func pascalSpecial(strs ...string) (string, error) {
+func (n namer) pascalSpecial(strs ...string) (string, error) {
 	return (&nameGen{
 		src:          []rune(strings.Join(strs, " ")),
 		allowSpecial: true,
+		initialisms:  n.initialisms,
 	}).generate()
 }
 
-func pascalNonEmpty(strs ...string) (string, error) {
-	r, err := pascal(strs...)
+func (n namer) pascalNonEmpty(strs ...string) (string, error) {
+	r, err := n.pascal(strs...)
 	if err == nil && r != "" {
 		return r, nil
 	}
 
-	r, err = pascalSpecial(strs...)
+	r, err = n.pascalSpecial(strs...)
 	if err != nil {
 		return "", err
 	}
@@ -198,21 +223,33 @@ func pascalNonEmpty(strs ...string) (string, error) {
 	return "", errors.Errorf("can't generate name for %+v", strs)
 }
 
-func camel(s ...string) (string, error) {
-	r, err := pascal(s...)
+func (n namer) camel(s ...string) (string, error) {
+	r, err := n.pascal(s...)
 	if err != nil {
 		return "", err
 	}
 	return firstLower(r), nil
 }
 
-func camelSpecial(s ...string) (string, error) {
-	r, err := pascalSpecial(s...)
+func (n namer) camelSpecial(s ...string) (string, error) {
+	r, err := n.pascalSpecial(s...)
 	if err != nil {
 		return "", err
 	}
 	return firstLower(r), nil
 }
+
+// Package-level helpers (initialisms disabled) for callers without a configured
+// namer: standalone funcs on already-generated names and template helpers.
+// Naming that honors [NamingInitialisms] uses a namer instead (see Generator.namer).
+
+func pascal(strs ...string) (string, error) { return namer{}.pascal(strs...) }
+
+func pascalSpecial(strs ...string) (string, error) { return namer{}.pascalSpecial(strs...) }
+
+func camel(s ...string) (string, error) { return namer{}.camel(s...) }
+
+func camelSpecial(s ...string) (string, error) { return namer{}.camelSpecial(s...) }
 
 // firstLower returns s with first rune mapped to lower case.
 func firstLower(s string) string {
@@ -227,7 +264,7 @@ func firstLower(s string) string {
 }
 
 // valueMappingNameGen creates a name generator for either an enum or discriminator mapping
-func valueMappingNameGen(
+func (n namer) valueMappingNameGen(
 	mapType, name string,
 	values iter.Seq[any],
 	valuesLen int,
@@ -254,11 +291,11 @@ func valueMappingNameGen(
 		}
 		switch s {
 		case pascalName:
-			return pascal(name, vstr)
+			return n.pascal(name, vstr)
 		case pascalSpecialName:
-			return pascalSpecial(name, vstr)
+			return n.pascalSpecial(name, vstr)
 		case cleanSuffix:
-			return name + "_" + cleanSpecial(vstr), nil
+			return name + "_" + n.cleanSpecial(vstr), nil
 		case indexSuffix:
 			return name + "_" + strconv.Itoa(idx), nil
 		default:
@@ -332,12 +369,12 @@ nextStrategy:
 }
 
 // enumVariantNameGen creates a name generator for enum values.
-func enumVariantNameGen(name string, values []any) (func(v any, idx int) (string, error), error) {
-	return valueMappingNameGen("enum", name, slices.Values(values), len(values), true)
+func (n namer) enumVariantNameGen(name string, values []any) (func(v any, idx int) (string, error), error) {
+	return n.valueMappingNameGen("enum", name, slices.Values(values), len(values), true)
 }
 
 // discriminatorMappingNameGen creates a name generator for discriminator mapping keys.
-func discriminatorMappingNameGen(name string, keys []string) (func(v any, idx int) (string, error), error) {
+func (n namer) discriminatorMappingNameGen(name string, keys []string) (func(v any, idx int) (string, error), error) {
 	if len(keys) == 0 {
 		return nil, errors.New("empty discriminator keys")
 	}
@@ -353,5 +390,5 @@ func discriminatorMappingNameGen(name string, keys []string) (func(v any, idx in
 		}
 	}
 
-	return valueMappingNameGen("discriminator", name, seq, len(keys), false)
+	return n.valueMappingNameGen("discriminator", name, seq, len(keys), false)
 }

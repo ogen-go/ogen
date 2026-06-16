@@ -52,7 +52,7 @@ func (g *schemaGen) enum(name string, t *ir.Type, schema *jsonschema.Schema) (*i
 		return nil, errors.Wrap(err, "validate enum")
 	}
 
-	nameGen, err := enumVariantNameGen(name, schema.Enum)
+	nameGen, err := g.namer().enumVariantNameGen(name, schema.Enum)
 	if err != nil {
 		return nil, errors.Wrap(err, "choose strategy")
 	}

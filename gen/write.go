@@ -266,9 +266,16 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 		types[name] = t
 	}
 
-	features, err := g.opt.Features.Build()
-	if err != nil {
-		return errors.Wrap(err, "build feature set")
+	// NewGenerator resolves the feature set once and stores it on g. Fall back to
+	// building it here for Generators constructed directly (e.g. in tests), so
+	// g.opt.Features is still honored when g.features was never populated.
+	features := g.features
+	if features == nil {
+		var err error
+		features, err = g.opt.Features.Build()
+		if err != nil {
+			return errors.Wrap(err, "build feature set")
+		}
 	}
 	cfg := TemplateConfig{
 		Package:                   pkgName,

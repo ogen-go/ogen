@@ -106,7 +106,8 @@
                   "server/response/validation",
                   "ogen/otel",
                   "ogen/unimplemented",
-                  "debug/example_tests"
+                  "debug/example_tests",
+                  "naming/initialisms"
                 ],
                 "enumDescriptions": [
                   "Generate client code for API paths.",
@@ -120,7 +121,8 @@
                   "Enable server response validation.",
                   "Enable OpenTelemetry integration.",
                   "Generate stub handlers for unimplemented operations.",
-                  "Generate debug example tests."
+                  "Generate debug example tests.",
+                  "Apply initialism rules (ID, URL, HTTP, ...) to camelCase identifiers, e.g. userId -> UserID."
                 ]
               },
               "default": [
@@ -149,7 +151,8 @@
                   "server/response/validation",
                   "ogen/otel",
                   "ogen/unimplemented",
-                  "debug/example_tests"
+                  "debug/example_tests",
+                  "naming/initialisms"
                 ],
                 "enumDescriptions": [
                   "Disable client code generation for API paths.",
@@ -163,7 +166,8 @@
                   "Disable server response validation.",
                   "Disable OpenTelemetry integration.",
                   "Disable stub handlers for unimplemented operations.",
-                  "Disable debug example tests."
+                  "Disable debug example tests.",
+                  "Disable applying initialism rules to camelCase identifiers."
                 ]
               },
               "default": []

@@ -13,7 +13,7 @@ func (g *Generator) generateServer(s openapi.Server) (ir.Server, error) {
 	}
 	// The server name is passed using ogen extension, so it guaranteed to be
 	// valid Go identifier, but we need to make pascal case anyway.
-	name, err := pascal(s.Name, "Server")
+	name, err := g.namer().pascal(s.Name, "Server")
 	if err != nil {
 		return ir.Server{}, errors.Wrapf(err, "server name: %q", s.Name)
 	}
@@ -30,7 +30,7 @@ func (g *Generator) generateServer(s openapi.Server) (ir.Server, error) {
 		}
 
 		v := part.Param
-		paramName, err := pascalNonEmpty(v.Name)
+		paramName, err := g.namer().pascalNonEmpty(v.Name)
 		if err != nil {
 			return ir.Server{}, errors.Wrapf(err, "server param name: %q", v.Name)
 		}
