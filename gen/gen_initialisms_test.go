@@ -60,3 +60,28 @@ func TestInitialismsFeatureE2E(t *testing.T) {
 	require.Contains(t, on, "UserID")
 	require.Contains(t, on, "HTTPURL")
 }
+
+// TestInitialismsVariantNames ensures the feature also reaches enum and
+// discriminator variant naming, not only struct fields.
+func TestInitialismsVariantNames(t *testing.T) {
+	t.Run("Enum", func(t *testing.T) {
+		gen, err := namer{initialisms: true}.enumVariantNameGen("Status", []any{"userId"})
+		require.NoError(t, err)
+		name, err := gen("userId", 0)
+		require.NoError(t, err)
+		require.Equal(t, "StatusUserID", name)
+
+		gen, err = namer{}.enumVariantNameGen("Status", []any{"userId"})
+		require.NoError(t, err)
+		name, err = gen("userId", 0)
+		require.NoError(t, err)
+		require.Equal(t, "StatusUserId", name)
+	})
+	t.Run("Discriminator", func(t *testing.T) {
+		gen, err := namer{initialisms: true}.discriminatorMappingNameGen("Pet", []string{"userId"})
+		require.NoError(t, err)
+		name, err := gen("userId", 0)
+		require.NoError(t, err)
+		require.Equal(t, "PetUserID", name)
+	})
+}

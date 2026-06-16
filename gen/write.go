@@ -266,10 +266,7 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 		types[name] = t
 	}
 
-	features, err := g.opt.Features.Build()
-	if err != nil {
-		return errors.Wrap(err, "build feature set")
-	}
+	features := g.features
 	cfg := TemplateConfig{
 		Package:                   pkgName,
 		Operations:                g.operations,

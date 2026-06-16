@@ -242,14 +242,14 @@ func (n namer) camelSpecial(s ...string) (string, error) {
 // Package-level helpers preserve historical behavior (initialisms disabled).
 // Identifier generation that should honor the [NamingInitialisms] feature goes
 // through a configured namer instead (see Generator.namer / schemaGen.namer).
-
-func cleanSpecial(strs ...string) string { return namer{}.cleanSpecial(strs...) }
+//
+// These are kept for contexts without a configured namer: standalone functions
+// operating on already-generated names, and template helpers (see
+// templateFunctions), which run at write time on names that are already final.
 
 func pascal(strs ...string) (string, error) { return namer{}.pascal(strs...) }
 
 func pascalSpecial(strs ...string) (string, error) { return namer{}.pascalSpecial(strs...) }
-
-func pascalNonEmpty(strs ...string) (string, error) { return namer{}.pascalNonEmpty(strs...) }
 
 func camel(s ...string) (string, error) { return namer{}.camel(s...) }
 
@@ -268,7 +268,7 @@ func firstLower(s string) string {
 }
 
 // valueMappingNameGen creates a name generator for either an enum or discriminator mapping
-func valueMappingNameGen(
+func (n namer) valueMappingNameGen(
 	mapType, name string,
 	values iter.Seq[any],
 	valuesLen int,
@@ -295,11 +295,11 @@ func valueMappingNameGen(
 		}
 		switch s {
 		case pascalName:
-			return pascal(name, vstr)
+			return n.pascal(name, vstr)
 		case pascalSpecialName:
-			return pascalSpecial(name, vstr)
+			return n.pascalSpecial(name, vstr)
 		case cleanSuffix:
-			return name + "_" + cleanSpecial(vstr), nil
+			return name + "_" + n.cleanSpecial(vstr), nil
 		case indexSuffix:
 			return name + "_" + strconv.Itoa(idx), nil
 		default:
@@ -373,12 +373,12 @@ nextStrategy:
 }
 
 // enumVariantNameGen creates a name generator for enum values.
-func enumVariantNameGen(name string, values []any) (func(v any, idx int) (string, error), error) {
-	return valueMappingNameGen("enum", name, slices.Values(values), len(values), true)
+func (n namer) enumVariantNameGen(name string, values []any) (func(v any, idx int) (string, error), error) {
+	return n.valueMappingNameGen("enum", name, slices.Values(values), len(values), true)
 }
 
 // discriminatorMappingNameGen creates a name generator for discriminator mapping keys.
-func discriminatorMappingNameGen(name string, keys []string) (func(v any, idx int) (string, error), error) {
+func (n namer) discriminatorMappingNameGen(name string, keys []string) (func(v any, idx int) (string, error), error) {
 	if len(keys) == 0 {
 		return nil, errors.New("empty discriminator keys")
 	}
@@ -394,5 +394,5 @@ func discriminatorMappingNameGen(name string, keys []string) (func(v any, idx in
 		}
 	}
 
-	return valueMappingNameGen("discriminator", name, seq, len(keys), false)
+	return n.valueMappingNameGen("discriminator", name, seq, len(keys), false)
 }

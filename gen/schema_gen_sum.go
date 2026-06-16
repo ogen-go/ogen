@@ -421,7 +421,7 @@ func (g *schemaGen) handleExplicitDiscriminator(sum *ir.Type, schema *jsonschema
 	sum.SumSpec.Discriminator = propName
 
 	// Generate names using the helper
-	nameGen, err := discriminatorMappingNameGen(sum.Name, mappingKeys)
+	nameGen, err := g.namer().discriminatorMappingNameGen(sum.Name, mappingKeys)
 	if err != nil {
 		return true, err
 	}
@@ -684,7 +684,7 @@ func (g *schemaGen) oneOf(name string, schema *jsonschema.Schema, side bool) (*i
 			// Set discriminator only if we have mappings
 			sum.SumSpec.Discriminator = schema.Discriminator.PropertyName
 
-			nameGen, err := discriminatorMappingNameGen(sum.Name, mappingKeys)
+			nameGen, err := g.namer().discriminatorMappingNameGen(sum.Name, mappingKeys)
 			if err != nil {
 				return nil, err
 			}

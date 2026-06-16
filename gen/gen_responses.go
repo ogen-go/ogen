@@ -256,7 +256,7 @@ func (g *Generator) responseToIR(
 			return r, nil
 		}
 
-		n, err := pascal(cleanRef(ref))
+		n, err := g.namer().pascal(cleanRef(ref))
 		if err != nil {
 			return nil, errors.Wrapf(err, "response name: %q", ref)
 		}
