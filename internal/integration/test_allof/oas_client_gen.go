@@ -28,6 +28,18 @@ func trimTrailingSlashes(u *url.URL) {
 
 // Invoker invokes operations described by OpenAPI v3 specification.
 type Invoker interface {
+	// AllOfWithSiblingExtensions invokes allOfWithSiblingExtensions operation.
+	//
+	// AllOf combined with ogen-specific sibling keywords (must be applied, not dropped).
+	//
+	// POST /allOfWithSiblingExtensions
+	AllOfWithSiblingExtensions(ctx context.Context, request *AllOfWithSiblingExtensionsReq) error
+	// AllOfWithSiblingProperties invokes allOfWithSiblingProperties operation.
+	//
+	// AllOf combined with sibling properties and required (logical AND).
+	//
+	// POST /allOfWithSiblingProperties
+	AllOfWithSiblingProperties(ctx context.Context, request *AllOfWithSiblingPropertiesReq) error
 	// GetAdminFoo invokes getAdminFoo operation.
 	//
 	// Returns Foo + admin-only fields via allOf.
@@ -40,6 +52,12 @@ type Invoker interface {
 	//
 	// GET /foo
 	GetFoo(ctx context.Context) (*Foo, error)
+	// MultiAllOfWithSiblingProperties invokes multiAllOfWithSiblingProperties operation.
+	//
+	// Multiple allOf subschemas combined with sibling properties.
+	//
+	// POST /multiAllOfWithSiblingProperties
+	MultiAllOfWithSiblingProperties(ctx context.Context, request *MultiAllOfWithSiblingPropertiesReq) error
 	// NullableStrings invokes nullableStrings operation.
 	//
 	// Nullable strings.
@@ -131,6 +149,190 @@ func (c *Client) requestURL(ctx context.Context) *url.URL {
 		return c.serverURL
 	}
 	return u
+}
+
+// AllOfWithSiblingExtensions invokes allOfWithSiblingExtensions operation.
+//
+// AllOf combined with ogen-specific sibling keywords (must be applied, not dropped).
+//
+// POST /allOfWithSiblingExtensions
+func (c *Client) AllOfWithSiblingExtensions(ctx context.Context, request *AllOfWithSiblingExtensionsReq) error {
+	_, err := c.sendAllOfWithSiblingExtensions(ctx, request)
+	return err
+}
+
+func (c *Client) sendAllOfWithSiblingExtensions(ctx context.Context, request *AllOfWithSiblingExtensionsReq) (res *AllOfWithSiblingExtensionsOK, err error) {
+	// Validate request before sending.
+	if err := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("allOfWithSiblingExtensions"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/allOfWithSiblingExtensions"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, AllOfWithSiblingExtensionsOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/allOfWithSiblingExtensions"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeAllOfWithSiblingExtensionsRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	body := resp.Body
+	defer func() {
+		// Drain the body to EOF before closing, so the underlying
+		// connection can be reused by the Transport regardless of the
+		// response status code. See https://github.com/ogen-go/ogen/issues/1670.
+		_, _ = io.Copy(io.Discard, body)
+		_ = body.Close()
+	}()
+
+	stage = "DecodeResponse"
+	result, err := decodeAllOfWithSiblingExtensionsResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// AllOfWithSiblingProperties invokes allOfWithSiblingProperties operation.
+//
+// AllOf combined with sibling properties and required (logical AND).
+//
+// POST /allOfWithSiblingProperties
+func (c *Client) AllOfWithSiblingProperties(ctx context.Context, request *AllOfWithSiblingPropertiesReq) error {
+	_, err := c.sendAllOfWithSiblingProperties(ctx, request)
+	return err
+}
+
+func (c *Client) sendAllOfWithSiblingProperties(ctx context.Context, request *AllOfWithSiblingPropertiesReq) (res *AllOfWithSiblingPropertiesOK, err error) {
+	// Validate request before sending.
+	if err := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("allOfWithSiblingProperties"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/allOfWithSiblingProperties"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, AllOfWithSiblingPropertiesOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/allOfWithSiblingProperties"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeAllOfWithSiblingPropertiesRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	body := resp.Body
+	defer func() {
+		// Drain the body to EOF before closing, so the underlying
+		// connection can be reused by the Transport regardless of the
+		// response status code. See https://github.com/ogen-go/ogen/issues/1670.
+		_, _ = io.Copy(io.Discard, body)
+		_ = body.Close()
+	}()
+
+	stage = "DecodeResponse"
+	result, err := decodeAllOfWithSiblingPropertiesResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
 }
 
 // GetAdminFoo invokes getAdminFoo operation.
@@ -286,6 +488,89 @@ func (c *Client) sendGetFoo(ctx context.Context) (res *Foo, err error) {
 
 	stage = "DecodeResponse"
 	result, err := decodeGetFooResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// MultiAllOfWithSiblingProperties invokes multiAllOfWithSiblingProperties operation.
+//
+// Multiple allOf subschemas combined with sibling properties.
+//
+// POST /multiAllOfWithSiblingProperties
+func (c *Client) MultiAllOfWithSiblingProperties(ctx context.Context, request *MultiAllOfWithSiblingPropertiesReq) error {
+	_, err := c.sendMultiAllOfWithSiblingProperties(ctx, request)
+	return err
+}
+
+func (c *Client) sendMultiAllOfWithSiblingProperties(ctx context.Context, request *MultiAllOfWithSiblingPropertiesReq) (res *MultiAllOfWithSiblingPropertiesOK, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("multiAllOfWithSiblingProperties"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/multiAllOfWithSiblingProperties"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, MultiAllOfWithSiblingPropertiesOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/multiAllOfWithSiblingProperties"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeMultiAllOfWithSiblingPropertiesRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	body := resp.Body
+	defer func() {
+		// Drain the body to EOF before closing, so the underlying
+		// connection can be reused by the Transport regardless of the
+		// response status code. See https://github.com/ogen-go/ogen/issues/1670.
+		_, _ = io.Copy(io.Discard, body)
+		_ = body.Close()
+	}()
+
+	stage = "DecodeResponse"
+	result, err := decodeMultiAllOfWithSiblingPropertiesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}

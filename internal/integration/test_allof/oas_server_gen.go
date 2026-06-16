@@ -8,6 +8,18 @@ import (
 
 // Handler handles operations described by OpenAPI v3 specification.
 type Handler interface {
+	// AllOfWithSiblingExtensions implements allOfWithSiblingExtensions operation.
+	//
+	// AllOf combined with ogen-specific sibling keywords (must be applied, not dropped).
+	//
+	// POST /allOfWithSiblingExtensions
+	AllOfWithSiblingExtensions(ctx context.Context, req *AllOfWithSiblingExtensionsReq) error
+	// AllOfWithSiblingProperties implements allOfWithSiblingProperties operation.
+	//
+	// AllOf combined with sibling properties and required (logical AND).
+	//
+	// POST /allOfWithSiblingProperties
+	AllOfWithSiblingProperties(ctx context.Context, req *AllOfWithSiblingPropertiesReq) error
 	// GetAdminFoo implements getAdminFoo operation.
 	//
 	// Returns Foo + admin-only fields via allOf.
@@ -20,6 +32,12 @@ type Handler interface {
 	//
 	// GET /foo
 	GetFoo(ctx context.Context) (*Foo, error)
+	// MultiAllOfWithSiblingProperties implements multiAllOfWithSiblingProperties operation.
+	//
+	// Multiple allOf subschemas combined with sibling properties.
+	//
+	// POST /multiAllOfWithSiblingProperties
+	MultiAllOfWithSiblingProperties(ctx context.Context, req *MultiAllOfWithSiblingPropertiesReq) error
 	// NullableStrings implements nullableStrings operation.
 	//
 	// Nullable strings.

@@ -7,6 +7,96 @@ import (
 	"github.com/google/uuid"
 )
 
+// AllOfWithSiblingExtensionsOK is response for AllOfWithSiblingExtensions operation.
+type AllOfWithSiblingExtensionsOK struct{}
+
+type AllOfWithSiblingExtensionsReq struct {
+	Name string `json:"name"`
+}
+
+// GetName returns the value of Name.
+func (s *AllOfWithSiblingExtensionsReq) GetName() string {
+	return s.Name
+}
+
+// SetName sets the value of Name.
+func (s *AllOfWithSiblingExtensionsReq) SetName(val string) {
+	s.Name = val
+}
+
+// AllOfWithSiblingPropertiesOK is response for AllOfWithSiblingProperties operation.
+type AllOfWithSiblingPropertiesOK struct{}
+
+// Merged schema.
+type AllOfWithSiblingPropertiesReq struct {
+	ID              string    `json:"id"`
+	Name            string    `json:"name"`
+	Config          FooConfig `json:"config"`
+	Bar             NilBar    `json:"bar"`
+	Sibling         string    `json:"sibling"`
+	OptionalSibling OptInt    `json:"optionalSibling"`
+}
+
+// GetID returns the value of ID.
+func (s *AllOfWithSiblingPropertiesReq) GetID() string {
+	return s.ID
+}
+
+// GetName returns the value of Name.
+func (s *AllOfWithSiblingPropertiesReq) GetName() string {
+	return s.Name
+}
+
+// GetConfig returns the value of Config.
+func (s *AllOfWithSiblingPropertiesReq) GetConfig() FooConfig {
+	return s.Config
+}
+
+// GetBar returns the value of Bar.
+func (s *AllOfWithSiblingPropertiesReq) GetBar() NilBar {
+	return s.Bar
+}
+
+// GetSibling returns the value of Sibling.
+func (s *AllOfWithSiblingPropertiesReq) GetSibling() string {
+	return s.Sibling
+}
+
+// GetOptionalSibling returns the value of OptionalSibling.
+func (s *AllOfWithSiblingPropertiesReq) GetOptionalSibling() OptInt {
+	return s.OptionalSibling
+}
+
+// SetID sets the value of ID.
+func (s *AllOfWithSiblingPropertiesReq) SetID(val string) {
+	s.ID = val
+}
+
+// SetName sets the value of Name.
+func (s *AllOfWithSiblingPropertiesReq) SetName(val string) {
+	s.Name = val
+}
+
+// SetConfig sets the value of Config.
+func (s *AllOfWithSiblingPropertiesReq) SetConfig(val FooConfig) {
+	s.Config = val
+}
+
+// SetBar sets the value of Bar.
+func (s *AllOfWithSiblingPropertiesReq) SetBar(val NilBar) {
+	s.Bar = val
+}
+
+// SetSibling sets the value of Sibling.
+func (s *AllOfWithSiblingPropertiesReq) SetSibling(val string) {
+	s.Sibling = val
+}
+
+// SetOptionalSibling sets the value of OptionalSibling.
+func (s *AllOfWithSiblingPropertiesReq) SetOptionalSibling(val OptInt) {
+	s.OptionalSibling = val
+}
+
 // Ref: #/components/schemas/Bar
 type Bar struct {
 	UUID  uuid.UUID `json:"uuid"`
@@ -228,6 +318,46 @@ func (s *Location) SetLat(val float64) {
 // SetLon sets the value of Lon.
 func (s *Location) SetLon(val float64) {
 	s.Lon = val
+}
+
+// MultiAllOfWithSiblingPropertiesOK is response for MultiAllOfWithSiblingProperties operation.
+type MultiAllOfWithSiblingPropertiesOK struct{}
+
+// Merged schema.
+type MultiAllOfWithSiblingPropertiesReq struct {
+	A       string    `json:"a"`
+	B       OptBool   `json:"b"`
+	Sibling OptString `json:"sibling"`
+}
+
+// GetA returns the value of A.
+func (s *MultiAllOfWithSiblingPropertiesReq) GetA() string {
+	return s.A
+}
+
+// GetB returns the value of B.
+func (s *MultiAllOfWithSiblingPropertiesReq) GetB() OptBool {
+	return s.B
+}
+
+// GetSibling returns the value of Sibling.
+func (s *MultiAllOfWithSiblingPropertiesReq) GetSibling() OptString {
+	return s.Sibling
+}
+
+// SetA sets the value of A.
+func (s *MultiAllOfWithSiblingPropertiesReq) SetA(val string) {
+	s.A = val
+}
+
+// SetB sets the value of B.
+func (s *MultiAllOfWithSiblingPropertiesReq) SetB(val OptBool) {
+	s.B = val
+}
+
+// SetSibling sets the value of Sibling.
+func (s *MultiAllOfWithSiblingPropertiesReq) SetSibling(val OptString) {
+	s.Sibling = val
 }
 
 // NewNilBar returns new NilBar with value set to v.

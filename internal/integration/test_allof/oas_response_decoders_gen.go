@@ -13,6 +13,24 @@ import (
 	"github.com/ogen-go/ogen/validate"
 )
 
+func decodeAllOfWithSiblingExtensionsResponse(resp *http.Response) (res *AllOfWithSiblingExtensionsOK, _ error) {
+	switch resp.StatusCode {
+	case 200:
+		// Code 200.
+		return &AllOfWithSiblingExtensionsOK{}, nil
+	}
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
+}
+
+func decodeAllOfWithSiblingPropertiesResponse(resp *http.Response) (res *AllOfWithSiblingPropertiesOK, _ error) {
+	switch resp.StatusCode {
+	case 200:
+		// Code 200.
+		return &AllOfWithSiblingPropertiesOK{}, nil
+	}
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
+}
+
 func decodeGetAdminFooResponse(resp *http.Response) (res *GetAdminFooOK, _ error) {
 	switch resp.StatusCode {
 	case 200:
@@ -109,6 +127,15 @@ func decodeGetFooResponse(resp *http.Response) (res *Foo, _ error) {
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
+	}
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
+}
+
+func decodeMultiAllOfWithSiblingPropertiesResponse(resp *http.Response) (res *MultiAllOfWithSiblingPropertiesOK, _ error) {
+	switch resp.StatusCode {
+	case 200:
+		// Code 200.
+		return &MultiAllOfWithSiblingPropertiesOK{}, nil
 	}
 	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }

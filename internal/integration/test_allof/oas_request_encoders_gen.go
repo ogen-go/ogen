@@ -15,6 +15,48 @@ import (
 	"github.com/ogen-go/ogen/uri"
 )
 
+func encodeAllOfWithSiblingExtensionsRequest(
+	req *AllOfWithSiblingExtensionsReq,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	e := new(jx.Encoder)
+	{
+		req.Encode(e)
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+
+func encodeAllOfWithSiblingPropertiesRequest(
+	req *AllOfWithSiblingPropertiesReq,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	e := new(jx.Encoder)
+	{
+		req.Encode(e)
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+
+func encodeMultiAllOfWithSiblingPropertiesRequest(
+	req *MultiAllOfWithSiblingPropertiesReq,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	e := new(jx.Encoder)
+	{
+		req.Encode(e)
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+
 func encodeNullableStringsRequest(
 	req NilString,
 	r *http.Request,

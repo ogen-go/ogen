@@ -6,8 +6,11 @@ package api
 type OperationName = string
 
 const (
+	AllOfWithSiblingExtensionsOperation          OperationName = "AllOfWithSiblingExtensions"
+	AllOfWithSiblingPropertiesOperation          OperationName = "AllOfWithSiblingProperties"
 	GetAdminFooOperation                         OperationName = "GetAdminFoo"
 	GetFooOperation                              OperationName = "GetFoo"
+	MultiAllOfWithSiblingPropertiesOperation     OperationName = "MultiAllOfWithSiblingProperties"
 	NullableStringsOperation                     OperationName = "NullableStrings"
 	ObjectsWithConflictingArrayPropertyOperation OperationName = "ObjectsWithConflictingArrayProperty"
 	ObjectsWithConflictingPropertiesOperation    OperationName = "ObjectsWithConflictingProperties"

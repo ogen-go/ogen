@@ -1257,6 +1257,85 @@ func shallowSchemaCopy(s *jsonschema.Schema) *jsonschema.Schema {
 	return &cpy
 }
 
+// hasSiblingConstraints reports whether s carries keywords to apply alongside
+// allOf. Type/Nullable/Ref/Pointer are excluded: flattenAllOfSchema propagates
+// them separately. Mostly mirrors mergeSchemes' containsValidators; keep in sync.
+func hasSiblingConstraints(s *jsonschema.Schema) bool {
+	if s == nil {
+		return false
+	}
+	switch {
+	case len(s.Properties) > 0,
+		len(s.Required) > 0,
+		s.AdditionalProperties != nil,
+		len(s.PatternProperties) > 0,
+		s.MaxProperties != nil,
+		s.MinProperties != nil:
+		return true
+	case s.Format != "",
+		len(s.Enum) > 0,
+		s.DefaultSet,
+		s.ConstSet,
+		s.Discriminator != nil:
+		return true
+	case len(s.OneOf) > 0,
+		len(s.AnyOf) > 0:
+		return true
+	case s.Item != nil,
+		len(s.Items) > 0,
+		s.MaxItems != nil,
+		s.MinItems != nil,
+		s.UniqueItems:
+		return true
+	case len(s.Maximum) > 0,
+		len(s.Minimum) > 0,
+		len(s.MultipleOf) > 0,
+		s.ExclusiveMinimum,
+		s.ExclusiveMaximum:
+		return true
+	case s.MaxLength != nil,
+		s.MinLength != nil,
+		len(s.Pattern) > 0:
+		return true
+	case s.XML != nil,
+		len(s.ExtraTags) > 0,
+		len(s.OgenValidate) > 0,
+		s.XOgenTimeFormat != "",
+		s.XOgenName != "",
+		s.XOgenType != "":
+		return true
+	}
+	// Deprecated is carried by flattenAllOfSchema instead, to avoid forcing a
+	// merge for just a flag. Summary, Examples and Content* stay unhandled.
+	return false
+}
+
+// propagateParentExtensions copies parent keywords that mergeSchemes drops when
+// it builds a fresh merged schema (the ogen extensions and Deprecated). dst is
+// kept if already set, which only matters when mergeSchemes early-returns a
+// shallow copy of a subschema that has its own value.
+func propagateParentExtensions(dst, parent *jsonschema.Schema) {
+	if dst.XML == nil {
+		dst.XML = parent.XML
+	}
+	if len(dst.ExtraTags) == 0 {
+		dst.ExtraTags = parent.ExtraTags
+	}
+	if len(dst.OgenValidate) == 0 {
+		dst.OgenValidate = parent.OgenValidate
+	}
+	if dst.XOgenTimeFormat == "" {
+		dst.XOgenTimeFormat = parent.XOgenTimeFormat
+	}
+	if dst.XOgenName == "" {
+		dst.XOgenName = parent.XOgenName
+	}
+	if dst.XOgenType == "" {
+		dst.XOgenType = parent.XOgenType
+	}
+	dst.Deprecated = dst.Deprecated || parent.Deprecated
+}
+
 func flattenAllOfSchema(schema *jsonschema.Schema) (*jsonschema.Schema, error) {
 	if schema == nil || len(schema.AllOf) == 0 {
 		return schema, nil
@@ -1269,15 +1348,22 @@ func flattenAllOfSchema(schema *jsonschema.Schema) (*jsonschema.Schema, error) {
 	parent := shallowSchemaCopy(schema)
 	parent.AllOf = nil
 
-	// If there is only one schema in allOf, avoid merging and keep the inner schema
-	// while still applying wrapper-level metadata from the parent.
-	if len(schema.AllOf) == 1 {
+	// A schema may specify keywords (properties, required, validators, ...)
+	// alongside allOf. Per JSON Schema, allOf and its sibling keywords are all
+	// applied (logical AND), so the sibling constraints must be merged in too.
+	hasSiblings := hasSiblingConstraints(parent)
+
+	// If there is only one schema in allOf and there are no sibling constraints,
+	// avoid merging and keep the inner schema while still applying wrapper-level
+	// metadata from the parent.
+	if len(schema.AllOf) == 1 && !hasSiblings {
 		child := shallowSchemaCopy(schema.AllOf[0])
 		if child == nil {
 			return parent, nil
 		}
 
 		child.Nullable = child.Nullable || parent.Nullable
+		child.Deprecated = child.Deprecated || parent.Deprecated
 		if child.Type == jsonschema.Empty {
 			child.Type = parent.Type
 		}
@@ -1290,7 +1376,16 @@ func flattenAllOfSchema(schema *jsonschema.Schema) (*jsonschema.Schema, error) {
 		return child, nil
 	}
 
-	mergedSchema, err := mergeNSchemes(schema.AllOf)
+	// Merge the parent in as an extra subschema. Append it last for field order
+	// only; allOf is a commutative AND.
+	toMerge := schema.AllOf
+	if hasSiblings {
+		toMerge = make([]*jsonschema.Schema, 0, len(schema.AllOf)+1)
+		toMerge = append(toMerge, schema.AllOf...)
+		toMerge = append(toMerge, parent)
+	}
+
+	mergedSchema, err := mergeNSchemes(toMerge)
 	if err != nil {
 		return nil, err
 	}
@@ -1304,6 +1399,7 @@ func flattenAllOfSchema(schema *jsonschema.Schema) (*jsonschema.Schema, error) {
 	if _, ok := mergedSchema.Position(); !ok {
 		mergedSchema.Pointer = parent.Pointer
 	}
+	propagateParentExtensions(mergedSchema, parent)
 
 	return mergedSchema, nil
 }
@@ -1440,11 +1536,15 @@ func mergeSchemes(s1, s2 *jsonschema.Schema) (_ *jsonschema.Schema, err error) {
 		}
 	}
 
+	// The switch below drops the other side when only one side has validators,
+	// so keep this in sync with hasSiblingConstraints (minus the ogen keywords,
+	// which propagateParentExtensions restores).
 	containsValidators := func(s *jsonschema.Schema) bool {
 		if s.Type != "" || s.Format != "" || s.Nullable || len(s.Enum) > 0 || s.DefaultSet || s.ConstSet {
 			return true
 		}
 		if s.Item != nil ||
+			len(s.Items) > 0 ||
 			s.AdditionalProperties != nil ||
 			len(s.PatternProperties) > 0 ||
 			len(s.Properties) > 0 ||
