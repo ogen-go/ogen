@@ -239,13 +239,9 @@ func (n namer) camelSpecial(s ...string) (string, error) {
 	return firstLower(r), nil
 }
 
-// Package-level helpers preserve historical behavior (initialisms disabled).
-// Identifier generation that should honor the [NamingInitialisms] feature goes
-// through a configured namer instead (see Generator.namer / schemaGen.namer).
-//
-// These are kept for contexts without a configured namer: standalone functions
-// operating on already-generated names, and template helpers (see
-// templateFunctions), which run at write time on names that are already final.
+// Package-level helpers (initialisms disabled) for callers without a configured
+// namer: standalone funcs on already-generated names and template helpers.
+// Naming that honors [NamingInitialisms] uses a namer instead (see Generator.namer).
 
 func pascal(strs ...string) (string, error) { return namer{}.pascal(strs...) }
 

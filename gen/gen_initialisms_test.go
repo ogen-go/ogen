@@ -64,24 +64,27 @@ func TestInitialismsFeatureE2E(t *testing.T) {
 // TestInitialismsVariantNames ensures the feature also reaches enum and
 // discriminator variant naming, not only struct fields.
 func TestInitialismsVariantNames(t *testing.T) {
-	t.Run("Enum", func(t *testing.T) {
-		gen, err := namer{initialisms: true}.enumVariantNameGen("Status", []any{"userId"})
+	enumName := func(t *testing.T, initialisms bool) string {
+		gen, err := namer{initialisms: initialisms}.enumVariantNameGen("Status", []any{"userId"})
 		require.NoError(t, err)
 		name, err := gen("userId", 0)
 		require.NoError(t, err)
-		require.Equal(t, "StatusUserID", name)
+		return name
+	}
+	discriminatorName := func(t *testing.T, initialisms bool) string {
+		gen, err := namer{initialisms: initialisms}.discriminatorMappingNameGen("Pet", []string{"userId"})
+		require.NoError(t, err)
+		name, err := gen("userId", 0)
+		require.NoError(t, err)
+		return name
+	}
 
-		gen, err = namer{}.enumVariantNameGen("Status", []any{"userId"})
-		require.NoError(t, err)
-		name, err = gen("userId", 0)
-		require.NoError(t, err)
-		require.Equal(t, "StatusUserId", name)
+	t.Run("Enum", func(t *testing.T) {
+		require.Equal(t, "StatusUserId", enumName(t, false))
+		require.Equal(t, "StatusUserID", enumName(t, true))
 	})
 	t.Run("Discriminator", func(t *testing.T) {
-		gen, err := namer{initialisms: true}.discriminatorMappingNameGen("Pet", []string{"userId"})
-		require.NoError(t, err)
-		name, err := gen("userId", 0)
-		require.NoError(t, err)
-		require.Equal(t, "PetUserID", name)
+		require.Equal(t, "PetUserId", discriminatorName(t, false))
+		require.Equal(t, "PetUserID", discriminatorName(t, true))
 	})
 }

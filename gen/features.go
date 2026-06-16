@@ -144,11 +144,7 @@ var (
 	NamingInitialisms = Feature{
 		"naming/initialisms",
 		`Applies initialism rules (ID, URL, HTTP, ...) to camelCase identifiers, ` +
-			`so that e.g. "userId" becomes "UserID" instead of "UserId". ` +
-			`Opt-in, since it changes generated identifier names. Note: an ` +
-			`acronym immediately followed by a word is not split ("HTTPServer" ` +
-			`stays "HTTPServer"), and names that differ only by initialism casing ` +
-			`(e.g. "userId" and "userID") may collide.`,
+			`e.g. "userId" becomes "UserID". Opt-in, since it changes generated names.`,
 	}
 )
 
