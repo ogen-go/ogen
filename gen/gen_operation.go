@@ -15,11 +15,11 @@ func (g *Generator) generateOperation(ctx *genctx, webhookName string, spec *ope
 	var opName string
 	switch {
 	case spec.OperationID != "":
-		opName, err = pascalNonEmpty(spec.OperationID)
+		opName, err = g.namer().pascalNonEmpty(spec.OperationID)
 	case webhookName != "":
-		opName, err = pascalNonEmpty(webhookName, strings.ToLower(spec.HTTPMethod))
+		opName, err = g.namer().pascalNonEmpty(webhookName, strings.ToLower(spec.HTTPMethod))
 	default:
-		opName, err = pascal(spec.Path.String(), strings.ToLower(spec.HTTPMethod))
+		opName, err = g.namer().pascal(spec.Path.String(), strings.ToLower(spec.HTTPMethod))
 	}
 	if err != nil {
 		return nil, errors.Wrap(err, "operation name")
@@ -34,7 +34,7 @@ func (g *Generator) generateOperation(ctx *genctx, webhookName string, spec *ope
 	}
 
 	if spec.XOgenOperationGroup != "" {
-		op.OperationGroup, err = pascalNonEmpty(spec.XOgenOperationGroup)
+		op.OperationGroup, err = g.namer().pascalNonEmpty(spec.XOgenOperationGroup)
 		if err != nil {
 			return nil, errors.Wrap(err, "operation group")
 		}

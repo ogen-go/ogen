@@ -141,6 +141,12 @@ var (
 		"debug/example_tests",
 		`Enables example tests generation`,
 	}
+	NamingInitialisms = Feature{
+		"naming/initialisms",
+		`Applies initialism rules (ID, URL, HTTP, ...) to camelCase identifiers, ` +
+			`so that e.g. "userId" becomes "UserID" instead of "UserId". ` +
+			`Opt-in, since it changes generated identifier names.`,
+	}
 )
 
 // DefaultFeatures defines default ogen features.
@@ -167,4 +173,5 @@ var AllFeatures = []Feature{
 	OgenOtel,
 	OgenUnimplemented,
 	DebugExampleTests,
+	NamingInitialisms,
 }

@@ -38,7 +38,14 @@ type Generator struct {
 	imports           map[string]string
 	equalitySpecs     []*ir.EqualityMethodSpec // Types requiring Equal() methods for uniqueItems validation
 
+	initialisms bool // NamingInitialisms feature: apply initialism rules to camelCase identifiers
+
 	log *zap.Logger
+}
+
+// namer returns an identifier generator configured for this Generator.
+func (g *Generator) namer() namer {
+	return namer{initialisms: g.initialisms}
 }
 
 func expandSpec(api *openapi.API, p string) (err error) {
@@ -117,6 +124,15 @@ func NewGenerator(spec *ogen.Spec, opts Options) (*Generator, error) {
 		imports:       defaultImports(),
 		log:           opts.Logger,
 	}
+
+	// Resolve features that influence identifier generation before makeIR runs,
+	// since naming happens during IR construction (well before write time, where
+	// features are otherwise built).
+	features, err := opts.Generator.Features.Build()
+	if err != nil {
+		return nil, errors.Wrap(err, "build features")
+	}
+	g.initialisms = features.Has(NamingInitialisms)
 
 	if err := g.makeIR(api); err != nil {
 		return nil, errors.Wrap(err, "make ir")

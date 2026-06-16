@@ -33,22 +33,21 @@ type schemaGen struct {
 	depthLimit int
 	depthCount int
 
-	request bool // true if generating for request body
+	request     bool // true if generating for request body
+	initialisms bool // NamingInitialisms feature: apply initialism rules to camelCase identifiers
 
 	log *zap.Logger
 }
 
+// namer returns an identifier generator configured for this schemaGen.
+func (g *schemaGen) namer() namer {
+	return namer{initialisms: g.initialisms}
+}
+
 func newSchemaGen(lookupRef func(ref jsonschema.Ref) (*ir.Type, bool)) *schemaGen {
-	return &schemaGen{
+	g := &schemaGen{
 		localRefs: map[jsonschema.Ref]*ir.Type{},
 		lookupRef: lookupRef,
-		nameRef: func(ref jsonschema.Ref) (string, error) {
-			name, err := pascal(cleanRef(ref))
-			if err != nil {
-				return "", err
-			}
-			return name, nil
-		},
 		fail: func(err error) error {
 			return err
 		},
@@ -56,6 +55,14 @@ func newSchemaGen(lookupRef func(ref jsonschema.Ref) (*ir.Type, bool)) *schemaGe
 		depthLimit: defaultSchemaDepthLimit,
 		log:        zap.NewNop(),
 	}
+	g.nameRef = func(ref jsonschema.Ref) (string, error) {
+		name, err := g.namer().pascal(cleanRef(ref))
+		if err != nil {
+			return "", err
+		}
+		return name, nil
+	}
+	return g
 }
 
 func variantFieldName(t *ir.Type) string {
@@ -404,7 +411,7 @@ func (g *schemaGen) generate2(name string, schema *jsonschema.Schema) (ret *ir.T
 
 		for i := range schema.Properties {
 			prop := schema.Properties[i]
-			propTypeName, err := pascalSpecial(name, prop.Name)
+			propTypeName, err := g.namer().pascalSpecial(name, prop.Name)
 			if err != nil {
 				return nil, errors.Wrapf(err, "property type name: %q", prop.Name)
 			}
@@ -431,7 +438,7 @@ func (g *schemaGen) generate2(name string, schema *jsonschema.Schema) (ret *ir.T
 					propertyName = fmt.Sprintf("Field%d", i)
 				}
 
-				generated, err := pascalSpecial(propertyName)
+				generated, err := g.namer().pascalSpecial(propertyName)
 				if err != nil {
 					return nil, errors.Wrapf(err, "property name: %q", propertyName)
 				}
