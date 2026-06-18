@@ -6,24 +6,66 @@
 {{- if or $t.IsPrimitive $t.IsEnum -}}
 	{{- template "defaults/val" default_elem $t $.Var $.Default }}
 	{{ $.Var }} = val
-{{- else if $t.IsGeneric -}}{{ $val := $.Default }}
-	{{- if $val.IsNil }}
+{{- else if $t.IsGeneric -}}
+	{{- if $.Default.IsNil }}
 		{{- if $t.GenericVariant.Nullable }}
 		{{ $.Var }}.Null = true
 		{{- end }}
+	{{- else if or $t.GenericOf.IsPrimitive $t.GenericOf.IsEnum -}}
+		{{- template "defaults/val" default_elem $t.GenericOf $.Var $.Default }}
+		{{ $.Var }}.SetTo(val)
 	{{- else if $t.GenericOf.IsAlias -}}
 		{{- template "defaults/val" default_elem $t.GenericOf.AliasTo $.Var $.Default }}
 		{{ $.Var }}.SetTo({{ $t.GenericOf.Go }}(val))
-	{{- else }}
-		{{- template "defaults/val" default_elem $t.GenericOf $.Var $.Default }}
-		{{ $.Var }}.SetTo(val)
+	{{- else -}}
+		var {{ $.LocalVar }} {{ $t.GenericOf.Go }}
+		{{ template "defaults/set" sub_default_elem $t.GenericOf $.LocalVar $.Default.Value $.NextDepth }}
+		{{ $.Var }}.SetTo({{ $.LocalVar }})
 	{{- end }}
 {{- else if $t.IsAlias -}}
 	{{- template "defaults/val" default_elem $t.AliasTo $.Var $.Default }}
 	{{ $.Var }} = {{ $t.Go }}(val)
 {{- else if $t.IsPointer -}}
-	{{- template "defaults/val" default_elem $t.PointerTo $.Var $.Default }}
-	{{ $.Var }} = &val
+	{{- if or $t.PointerTo.IsPrimitive $t.PointerTo.IsEnum -}}
+		{{- template "defaults/val" default_elem $t.PointerTo $.Var $.Default }}
+		{{ $.Var }} = &val
+	{{- else -}}
+		var {{ $.LocalVar }} {{ $t.PointerTo.Go }}
+		{{ template "defaults/set" sub_default_elem $t.PointerTo $.LocalVar $.Default.Value $.NextDepth }}
+		{{ $.Var }} = &{{ $.LocalVar }}
+	{{- end }}
+{{- else if $t.IsArray -}}
+	var {{ $.LocalVar }} {{ $t.Go }}
+	{{- range $v := default_slice $.Default }}
+	{
+		var {{ $.LocalVar }}Elem {{ $t.Item.Go }}
+		{{ template "defaults/set" sub_default_elem $t.Item (printf "%sElem" $.LocalVar) $v $.NextDepth }}
+		{{ $.LocalVar }} = append({{ $.LocalVar }}, {{ $.LocalVar }}Elem)
+	}
+	{{- end }}
+	{{ $.Var }} = {{ $.LocalVar }}
+{{- else if $t.IsStruct -}}
+	var {{ $.LocalVar }} {{ $t.Go }}
+	{{- range $f := default_struct_fields $t $.Default }}
+	{
+		{{ template "defaults/set" sub_default_elem $f.Field.Type (printf "%s.%s" $.LocalVar $f.Field.Name) $f.Value $.NextDepth }}
+	}
+	{{- end }}
+	{{ $.Var }} = {{ $.LocalVar }}
+{{- else if $t.IsMap -}}
+	{{ $.LocalVar }} := make({{ $t.Go }}, {{ len (default_map_entries $.Default) }})
+	{{- range $e := default_map_entries $.Default }}
+	{
+		var {{ $.LocalVar }}Val {{ $t.Item.Go }}
+		{{ template "defaults/set" sub_default_elem $t.Item (printf "%sVal" $.LocalVar) $e.Value $.NextDepth }}
+		{{ $.LocalVar }}[{{ quote $e.Key }}] = {{ $.LocalVar }}Val
+	}
+	{{- end }}
+	{{ $.Var }} = {{ $.LocalVar }}
+{{- else if $t.IsSum -}}
+	// The default is well-formed JSON from the spec; a value that does not match a
+	// variant decodes to the zero value (defaults are not variant-checked at gen time).
+	_ = {{ $.Var }}.Decode(jx.DecodeStr({{ quote (default_json $.Default.Value) }}))
 {{- else -}}
 	{{ errorf "unsupported %#v: %s" $.Default.Value $t }}
 {{- end }}

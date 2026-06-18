@@ -64,7 +64,8 @@ func (t techEmpowerServer) JSON(ctx context.Context) (*techempower.HelloWorld, e
 
 type sampleAPIServer struct {
 	api.UnimplementedHandler
-	pet api.Pet
+	pet              api.Pet
+	gotDefaultParams api.DefaultTestParams
 }
 
 func (s sampleAPIServer) DataGetFormat(ctx context.Context, params api.DataGetFormatParams) (string, error) {
@@ -172,7 +173,8 @@ func (s *sampleAPIServer) ErrorGet(ctx context.Context) (*api.ErrorStatusCode, e
 	}, nil
 }
 
-func (s sampleAPIServer) DefaultTest(ctx context.Context, req *api.DefaultTest, params api.DefaultTestParams) (int32, error) {
+func (s *sampleAPIServer) DefaultTest(ctx context.Context, req *api.DefaultTest, params api.DefaultTestParams) (int32, error) {
+	s.gotDefaultParams = params
 	return params.Default.Value, nil
 }
 
@@ -475,6 +477,18 @@ func TestIntegration(t *testing.T) {
 			})
 			a.NoError(err)
 			a.Equal(int32(42), resp)
+
+			// Array parameter default is applied when the parameter is absent.
+			_, err = client.DefaultTest(ctx, &api.DefaultTest{}, api.DefaultTestParams{})
+			a.NoError(err)
+			a.Equal([]string{"a", "b"}, handler.gotDefaultParams.ArrayDefault)
+
+			// An explicit value overrides the default.
+			_, err = client.DefaultTest(ctx, &api.DefaultTest{}, api.DefaultTestParams{
+				ArrayDefault: []string{"z"},
+			})
+			a.NoError(err)
+			a.Equal([]string{"z"}, handler.gotDefaultParams.ArrayDefault)
 		})
 		t.Run("HeaderSecurity", func(t *testing.T) {
 			a := require.New(t)

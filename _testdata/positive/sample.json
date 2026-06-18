@@ -647,6 +647,9 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/defaultQueryParameter"
+          },
+          {
+            "$ref": "#/components/parameters/defaultArrayQueryParameter"
           }
         ],
         "requestBody": {
@@ -1790,6 +1793,61 @@
             "type": "string",
             "format": "byte",
             "default": "aGVsbG8sIHdvcmxkIQ=="
+          },
+          "strings": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "default": ["all"]
+          },
+          "priorities": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": ["low", "medium", "high"]
+            },
+            "default": ["medium", "high"]
+          },
+          "nested": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "integer"
+              }
+            },
+            "default": [[1, 2], [3]]
+          },
+          "objs": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "count": {
+                  "type": "integer"
+                }
+              }
+            },
+            "default": [
+              {
+                "name": "x",
+                "count": 5
+              }
+            ]
+          },
+          "shapes": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/DefaultShape" },
+            "default": [ { "kind": "circle", "radius": 5 } ]
+          },
+          "labels": {
+            "type": "array",
+            "items": { "type": "object", "additionalProperties": { "type": "string" } },
+            "default": [ { "a": "x" } ]
           }
         }
       },
@@ -2069,6 +2127,29 @@
           }
         }
       },
+      "DefaultShape": {
+        "oneOf": [
+          { "$ref": "#/components/schemas/DefaultCircle" },
+          { "$ref": "#/components/schemas/DefaultSquare" }
+        ],
+        "discriminator": {
+          "propertyName": "kind",
+          "mapping": {
+            "circle": "#/components/schemas/DefaultCircle",
+            "square": "#/components/schemas/DefaultSquare"
+          }
+        }
+      },
+      "DefaultCircle": {
+        "type": "object",
+        "required": ["kind", "radius"],
+        "properties": { "kind": { "type": "string" }, "radius": { "type": "integer" } }
+      },
+      "DefaultSquare": {
+        "type": "object",
+        "required": ["kind", "side"],
+        "properties": { "kind": { "type": "string" }, "side": { "type": "integer" } }
+      },
       "Issue1461": {
         "type": "object",
         "properties": {
@@ -2139,6 +2220,17 @@
           "type": "integer",
           "format": "int32",
           "default": 10
+        }
+      },
+      "defaultArrayQueryParameter": {
+        "name": "arrayDefault",
+        "in": "query",
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": ["a", "b"]
         }
       },
       "skipParam": {

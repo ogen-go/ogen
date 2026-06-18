@@ -135,6 +135,45 @@ func TestSchemaGenConst(t *testing.T) {
 	}
 }
 
+func TestCheckDefaultTypeArray(t *testing.T) {
+	g := newSchemaGen(func(ref jsonschema.Ref) (*ir.Type, bool) { return nil, false })
+
+	strItems := &jsonschema.Schema{Type: jsonschema.Array, Item: &jsonschema.Schema{Type: jsonschema.String}}
+	objItems := &jsonschema.Schema{
+		Type: jsonschema.Array,
+		Item: &jsonschema.Schema{
+			Type: jsonschema.Object,
+			Properties: []jsonschema.Property{
+				{Name: "count", Schema: &jsonschema.Schema{Type: jsonschema.Integer}},
+			},
+		},
+	}
+
+	require.NoError(t, g.checkDefaultType(strItems, []any{"a", "b"}))
+	require.Error(t, g.checkDefaultType(strItems, []any{"a", int64(1)}),
+		"element type mismatch must be reported")
+	require.NoError(t, g.checkDefaultType(objItems, []any{map[string]any{"count": int64(5)}}))
+	require.Error(t, g.checkDefaultType(objItems, []any{map[string]any{"count": "no"}}),
+		"object property type mismatch must be reported")
+}
+
+func TestCheckDefaultTypeMapValues(t *testing.T) {
+	g := newSchemaGen(func(ref jsonschema.Ref) (*ir.Type, bool) { return nil, false })
+	// Object with additionalProperties: string (Item set, no named Properties).
+	mapStr := &jsonschema.Schema{Type: jsonschema.Object, Item: &jsonschema.Schema{Type: jsonschema.String}}
+	require.NoError(t, g.checkDefaultType(mapStr, map[string]any{"a": "x", "b": "y"}))
+	require.Error(t, g.checkDefaultType(mapStr, map[string]any{"a": int64(123)}),
+		"additionalProperties value type mismatch must be reported")
+	// Named property is validated by its own schema; extra keys by Item.
+	mixed := &jsonschema.Schema{
+		Type:       jsonschema.Object,
+		Properties: []jsonschema.Property{{Name: "named", Schema: &jsonschema.Schema{Type: jsonschema.Integer}}},
+		Item:       &jsonschema.Schema{Type: jsonschema.String},
+	}
+	require.NoError(t, g.checkDefaultType(mixed, map[string]any{"named": int64(1), "extra": "ok"}))
+	require.Error(t, g.checkDefaultType(mixed, map[string]any{"extra": int64(9)}))
+}
+
 func TestGenerate(t *testing.T) {
 	var loc location.Locator
 	loc.UnmarshalYAML(&yaml.Node{
@@ -296,4 +335,61 @@ func TestGenerate(t *testing.T) {
 			a.Equal(expectedIrType, irType, fmt.Sprintf("\nEXPECTED:\n\n%s\nACTUAL:\n\n%s", expectedIrTypeY, irTypeY))
 		})
 	}
+}
+
+func TestArrayDefaultGate(t *testing.T) {
+	// Supported: array of strings.
+	a := newSchemaGen(func(ref jsonschema.Ref) (*ir.Type, bool) { return nil, false })
+	typ, err := a.generate("StrArr", &jsonschema.Schema{
+		Type:       jsonschema.Array,
+		Item:       &jsonschema.Schema{Type: jsonschema.String},
+		Default:    []any{"x"},
+		DefaultSet: true,
+	}, false)
+	require.NoError(t, err)
+	require.True(t, typ.Schema.DefaultSet, "array-of-string default must survive the gate")
+
+	// Unsupported: tuple (prefixItems) array default → must be reported, not panic.
+	require.Equal(t, "tuple array defaults", arrayDefaultUnsupported(&jsonschema.Schema{
+		Type:  jsonschema.Array,
+		Items: []*jsonschema.Schema{{Type: jsonschema.String}},
+	}))
+	// Unsupported: free-form item default.
+	require.Equal(t, "array defaults with free-form items", arrayDefaultUnsupported(&jsonschema.Schema{
+		Type: jsonschema.Array,
+	}))
+	// Supported shapes return "".
+	require.Equal(t, "", arrayDefaultUnsupported(&jsonschema.Schema{
+		Type: jsonschema.Array, Item: &jsonschema.Schema{Type: jsonschema.String},
+	}))
+
+	// Nested arrays recurse: inner free-form item is rejected.
+	require.Equal(t, "array defaults with free-form items", arrayDefaultUnsupported(&jsonschema.Schema{
+		Type: jsonschema.Array,
+		Item: &jsonschema.Schema{Type: jsonschema.Array},
+	}))
+	// Nested arrays recurse: inner tuple is rejected.
+	require.Equal(t, "tuple array defaults", arrayDefaultUnsupported(&jsonschema.Schema{
+		Type: jsonschema.Array,
+		Item: &jsonschema.Schema{Type: jsonschema.Array, Items: []*jsonschema.Schema{{Type: jsonschema.String}}},
+	}))
+	// Nested arrays recurse: array of array of string is supported.
+	require.Equal(t, "", arrayDefaultUnsupported(&jsonschema.Schema{
+		Type: jsonschema.Array,
+		Item: &jsonschema.Schema{Type: jsonschema.Array, Item: &jsonschema.Schema{Type: jsonschema.String}},
+	}))
+}
+
+func TestCheckDefaultTypeSumType(t *testing.T) {
+	g := newSchemaGen(func(ref jsonschema.Ref) (*ir.Type, bool) { return nil, false })
+	sum := &jsonschema.Schema{
+		OneOf: []*jsonschema.Schema{
+			{Type: jsonschema.Object},
+			{Type: jsonschema.Object},
+		},
+	}
+	require.NoError(t, g.checkDefaultType(sum, map[string]any{"kind": "circle", "radius": int64(5)}))
+	// Inside an array, the element is the sum schema.
+	arr := &jsonschema.Schema{Type: jsonschema.Array, Item: sum}
+	require.NoError(t, g.checkDefaultType(arr, []any{map[string]any{"kind": "square", "side": int64(2)}}))
 }

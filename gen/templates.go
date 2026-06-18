@@ -2,7 +2,9 @@ package gen
 
 import (
 	"embed"
+	stdjson "encoding/json"
 	"fmt"
+	"sort"
 	"strconv"
 	"strings"
 	"sync"
@@ -37,6 +39,82 @@ type DefaultElem struct {
 	Var string
 	// Default is default value to set.
 	Default ir.Default
+	// Depth is the recursion depth, used to derive unique local variable names
+	// when rendering nested array/struct/map default literals.
+	Depth int
+}
+
+// LocalVar returns a unique local accumulator variable name for this depth.
+func (d DefaultElem) LocalVar() string {
+	return fmt.Sprintf("defaultVal%d", d.Depth)
+}
+
+// NextDepth returns the depth for a nested DefaultElem.
+func (d DefaultElem) NextDepth() int {
+	return d.Depth + 1
+}
+
+// DefaultStructField pairs a struct field with the value present for it in an
+// object default.
+type DefaultStructField struct {
+	Field *ir.Field
+	Value any
+}
+
+// DefaultMapEntry is a single key/value of a map default, in sorted-key order.
+type DefaultMapEntry struct {
+	Key   string
+	Value any
+}
+
+func defaultSlice(d ir.Default) []any {
+	if !d.Set {
+		return nil
+	}
+	s, _ := d.Value.([]any)
+	return s
+}
+
+func defaultStructFields(t *ir.Type, d ir.Default) []DefaultStructField {
+	if !d.Set {
+		return nil
+	}
+	m, _ := d.Value.(map[string]any)
+	var out []DefaultStructField
+	for _, f := range t.Fields {
+		if f.Spec == nil {
+			continue
+		}
+		if v, ok := m[f.Spec.Name]; ok {
+			out = append(out, DefaultStructField{Field: f, Value: v})
+		}
+	}
+	return out
+}
+
+func defaultMapEntries(d ir.Default) []DefaultMapEntry {
+	if !d.Set {
+		return nil
+	}
+	m, _ := d.Value.(map[string]any)
+	keys := make([]string, 0, len(m))
+	for k := range m {
+		keys = append(keys, k)
+	}
+	sort.Strings(keys)
+	out := make([]DefaultMapEntry, 0, len(keys))
+	for _, k := range keys {
+		out = append(out, DefaultMapEntry{Key: k, Value: m[k]})
+	}
+	return out
+}
+
+func defaultJSON(v any) (string, error) {
+	b, err := stdjson.Marshal(v)
+	if err != nil {
+		return "", err
+	}
+	return string(b), nil
 }
 
 // Elem is variable helper for recursive array or object encoding or decoding.
@@ -155,7 +233,7 @@ func templateFunctions() template.FuncMap {
 				Default: value,
 			}
 		},
-		"sub_default_elem": func(t *ir.Type, v string, val any) DefaultElem {
+		"sub_default_elem": func(t *ir.Type, v string, val any, depth int) DefaultElem {
 			return DefaultElem{
 				Type: t,
 				Var:  v,
@@ -163,8 +241,13 @@ func templateFunctions() template.FuncMap {
 					Value: val,
 					Set:   true,
 				},
+				Depth: depth,
 			}
 		},
+		"default_slice":         defaultSlice,
+		"default_struct_fields": defaultStructFields,
+		"default_map_entries":   defaultMapEntries,
+		"default_json":          defaultJSON,
 		"op_elem": func(op *ir.Operation, cfg TemplateConfig) OperationElem {
 			return OperationElem{
 				Operation: op,
