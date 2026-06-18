@@ -771,6 +771,7 @@ func decodeOptionalArrayParameterParams(args [0]string, argsEscaped bool, r *htt
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				params.Query = nil
 				return d.DecodeArray(func(d uri.Decoder) error {
 					var paramsDotQueryVal string
 					if err := func() error {
@@ -812,6 +813,7 @@ func decodeOptionalArrayParameterParams(args [0]string, argsEscaped bool, r *htt
 		}
 		if err := h.HasParam(cfg); err == nil {
 			if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+				params.Header = nil
 				return d.DecodeArray(func(d uri.Decoder) error {
 					var paramsDotHeaderVal string
 					if err := func() error {
@@ -1123,6 +1125,7 @@ func decodeOptionalParametersParams(args [0]string, argsEscaped bool, r *http.Re
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				params.Array = nil
 				return d.DecodeArray(func(d uri.Decoder) error {
 					var paramsDotArrayVal string
 					if err := func() error {

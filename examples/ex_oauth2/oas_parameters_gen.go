@@ -188,6 +188,7 @@ func decodeFindPetsParams(args [0]string, argsEscaped bool, r *http.Request) (pa
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				params.Tags = nil
 				return d.DecodeArray(func(d uri.Decoder) error {
 					var paramsDotTagsVal string
 					if err := func() error {

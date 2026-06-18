@@ -286,23 +286,147 @@ func NewDescriptionSimpleDataDescription(v DescriptionSimple) DataDescription {
 	return s
 }
 
+// Ref: #/components/schemas/DefaultCircle
+type DefaultCircle struct {
+	Kind   string `json:"kind"`
+	Radius int    `json:"radius"`
+}
+
+// GetKind returns the value of Kind.
+func (s *DefaultCircle) GetKind() string {
+	return s.Kind
+}
+
+// GetRadius returns the value of Radius.
+func (s *DefaultCircle) GetRadius() int {
+	return s.Radius
+}
+
+// SetKind sets the value of Kind.
+func (s *DefaultCircle) SetKind(val string) {
+	s.Kind = val
+}
+
+// SetRadius sets the value of Radius.
+func (s *DefaultCircle) SetRadius(val int) {
+	s.Radius = val
+}
+
+// Ref: #/components/schemas/DefaultShape
+// DefaultShape represents sum type.
+type DefaultShape struct {
+	// Type selects the active sum variant, switch on this field.
+	Type          DefaultShapeType
+	DefaultCircle DefaultCircle
+	DefaultSquare DefaultSquare
+}
+
+// DefaultShapeType is oneOf type of DefaultShape.
+type DefaultShapeType string
+
+// Possible values for DefaultShapeType.
+const (
+	DefaultCircleDefaultShape DefaultShapeType = "circle"
+	DefaultSquareDefaultShape DefaultShapeType = "square"
+)
+
+// IsDefaultCircle reports whether DefaultShape is DefaultCircle.
+func (s DefaultShape) IsDefaultCircle() bool { return s.Type == DefaultCircleDefaultShape }
+
+// IsDefaultSquare reports whether DefaultShape is DefaultSquare.
+func (s DefaultShape) IsDefaultSquare() bool { return s.Type == DefaultSquareDefaultShape }
+
+// SetDefaultCircle sets DefaultShape to DefaultCircle.
+func (s *DefaultShape) SetDefaultCircle(v DefaultCircle) {
+	s.Type = DefaultCircleDefaultShape
+	s.DefaultCircle = v
+}
+
+// GetDefaultCircle returns DefaultCircle and true boolean if DefaultShape is DefaultCircle.
+func (s DefaultShape) GetDefaultCircle() (v DefaultCircle, ok bool) {
+	if !s.IsDefaultCircle() {
+		return v, false
+	}
+	return s.DefaultCircle, true
+}
+
+// NewDefaultCircleDefaultShape returns new DefaultShape from DefaultCircle.
+func NewDefaultCircleDefaultShape(v DefaultCircle) DefaultShape {
+	var s DefaultShape
+	s.SetDefaultCircle(v)
+	return s
+}
+
+// SetDefaultSquare sets DefaultShape to DefaultSquare.
+func (s *DefaultShape) SetDefaultSquare(v DefaultSquare) {
+	s.Type = DefaultSquareDefaultShape
+	s.DefaultSquare = v
+}
+
+// GetDefaultSquare returns DefaultSquare and true boolean if DefaultShape is DefaultSquare.
+func (s DefaultShape) GetDefaultSquare() (v DefaultSquare, ok bool) {
+	if !s.IsDefaultSquare() {
+		return v, false
+	}
+	return s.DefaultSquare, true
+}
+
+// NewDefaultSquareDefaultShape returns new DefaultShape from DefaultSquare.
+func NewDefaultSquareDefaultShape(v DefaultSquare) DefaultShape {
+	var s DefaultShape
+	s.SetDefaultSquare(v)
+	return s
+}
+
+// Ref: #/components/schemas/DefaultSquare
+type DefaultSquare struct {
+	Kind string `json:"kind"`
+	Side int    `json:"side"`
+}
+
+// GetKind returns the value of Kind.
+func (s *DefaultSquare) GetKind() string {
+	return s.Kind
+}
+
+// GetSide returns the value of Side.
+func (s *DefaultSquare) GetSide() int {
+	return s.Side
+}
+
+// SetKind sets the value of Kind.
+func (s *DefaultSquare) SetKind(val string) {
+	s.Kind = val
+}
+
+// SetSide sets the value of Side.
+func (s *DefaultSquare) SetSide(val int) {
+	s.Side = val
+}
+
 // Ref: #/components/schemas/DefaultTest
 type DefaultTest struct {
-	Required string             `json:"required"`
-	Str      OptString          `json:"str"`
-	NullStr  OptNilString       `json:"nullStr"`
-	Enum     OptDefaultTestEnum `json:"enum"`
-	UUID     OptUUID            `json:"uuid"`
-	IP       OptIP              `json:"ip"`
-	IPV4     OptIPv4            `json:"ip_v4"`
-	IPV6     OptIPv6            `json:"ip_v6"`
-	URI      OptURI             `json:"uri"`
-	Birthday OptDate            `json:"birthday"`
-	Rate     OptDuration        `json:"rate"`
-	Email    OptString          `json:"email"`
-	Hostname OptString          `json:"hostname"`
-	Format   OptString          `json:"format"`
-	Base64   []byte             `json:"base64"`
+	Required   string                      `json:"required"`
+	Str        OptString                   `json:"str"`
+	NullStr    OptNilString                `json:"nullStr"`
+	Enum       OptDefaultTestEnum          `json:"enum"`
+	UUID       OptUUID                     `json:"uuid"`
+	IP         OptIP                       `json:"ip"`
+	IPV4       OptIPv4                     `json:"ip_v4"`
+	IPV6       OptIPv6                     `json:"ip_v6"`
+	URI        OptURI                      `json:"uri"`
+	Birthday   OptDate                     `json:"birthday"`
+	Rate       OptDuration                 `json:"rate"`
+	Email      OptString                   `json:"email"`
+	Hostname   OptString                   `json:"hostname"`
+	Format     OptString                   `json:"format"`
+	Base64     []byte                      `json:"base64"`
+	Strings    []string                    `json:"strings"`
+	Priorities []DefaultTestPrioritiesItem `json:"priorities"`
+	Nested     [][]int                     `json:"nested"`
+	Objs       []DefaultTestObjsItem       `json:"objs"`
+	Shapes     []DefaultShape              `json:"shapes"`
+	Labels     []DefaultTestLabelsItem     `json:"labels"`
 }
 
 // GetRequired returns the value of Required.
@@ -380,6 +504,36 @@ func (s *DefaultTest) GetBase64() []byte {
 	return s.Base64
 }
 
+// GetStrings returns the value of Strings.
+func (s *DefaultTest) GetStrings() []string {
+	return s.Strings
+}
+
+// GetPriorities returns the value of Priorities.
+func (s *DefaultTest) GetPriorities() []DefaultTestPrioritiesItem {
+	return s.Priorities
+}
+
+// GetNested returns the value of Nested.
+func (s *DefaultTest) GetNested() [][]int {
+	return s.Nested
+}
+
+// GetObjs returns the value of Objs.
+func (s *DefaultTest) GetObjs() []DefaultTestObjsItem {
+	return s.Objs
+}
+
+// GetShapes returns the value of Shapes.
+func (s *DefaultTest) GetShapes() []DefaultShape {
+	return s.Shapes
+}
+
+// GetLabels returns the value of Labels.
+func (s *DefaultTest) GetLabels() []DefaultTestLabelsItem {
+	return s.Labels
+}
+
 // SetRequired sets the value of Required.
 func (s *DefaultTest) SetRequired(val string) {
 	s.Required = val
@@ -455,6 +609,36 @@ func (s *DefaultTest) SetBase64(val []byte) {
 	s.Base64 = val
 }
 
+// SetStrings sets the value of Strings.
+func (s *DefaultTest) SetStrings(val []string) {
+	s.Strings = val
+}
+
+// SetPriorities sets the value of Priorities.
+func (s *DefaultTest) SetPriorities(val []DefaultTestPrioritiesItem) {
+	s.Priorities = val
+}
+
+// SetNested sets the value of Nested.
+func (s *DefaultTest) SetNested(val [][]int) {
+	s.Nested = val
+}
+
+// SetObjs sets the value of Objs.
+func (s *DefaultTest) SetObjs(val []DefaultTestObjsItem) {
+	s.Objs = val
+}
+
+// SetShapes sets the value of Shapes.
+func (s *DefaultTest) SetShapes(val []DefaultShape) {
+	s.Shapes = val
+}
+
+// SetLabels sets the value of Labels.
+func (s *DefaultTest) SetLabels(val []DefaultTestLabelsItem) {
+	s.Labels = val
+}
+
 type DefaultTestEnum string
 
 const (
@@ -490,6 +674,90 @@ func (s *DefaultTestEnum) UnmarshalText(data []byte) error {
 		return nil
 	case DefaultTestEnumSmol:
 		*s = DefaultTestEnumSmol
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
+type DefaultTestLabelsItem map[string]string
+
+func (s *DefaultTestLabelsItem) init() DefaultTestLabelsItem {
+	m := *s
+	if m == nil {
+		m = map[string]string{}
+		*s = m
+	}
+	return m
+}
+
+type DefaultTestObjsItem struct {
+	Name  OptString `json:"name"`
+	Count OptInt    `json:"count"`
+}
+
+// GetName returns the value of Name.
+func (s *DefaultTestObjsItem) GetName() OptString {
+	return s.Name
+}
+
+// GetCount returns the value of Count.
+func (s *DefaultTestObjsItem) GetCount() OptInt {
+	return s.Count
+}
+
+// SetName sets the value of Name.
+func (s *DefaultTestObjsItem) SetName(val OptString) {
+	s.Name = val
+}
+
+// SetCount sets the value of Count.
+func (s *DefaultTestObjsItem) SetCount(val OptInt) {
+	s.Count = val
+}
+
+type DefaultTestPrioritiesItem string
+
+const (
+	DefaultTestPrioritiesItemLow    DefaultTestPrioritiesItem = "low"
+	DefaultTestPrioritiesItemMedium DefaultTestPrioritiesItem = "medium"
+	DefaultTestPrioritiesItemHigh   DefaultTestPrioritiesItem = "high"
+)
+
+// AllValues returns all DefaultTestPrioritiesItem values.
+func (DefaultTestPrioritiesItem) AllValues() []DefaultTestPrioritiesItem {
+	return []DefaultTestPrioritiesItem{
+		DefaultTestPrioritiesItemLow,
+		DefaultTestPrioritiesItemMedium,
+		DefaultTestPrioritiesItemHigh,
+	}
+}
+
+// MarshalText implements encoding.TextMarshaler.
+func (s DefaultTestPrioritiesItem) MarshalText() ([]byte, error) {
+	switch s {
+	case DefaultTestPrioritiesItemLow:
+		return []byte(s), nil
+	case DefaultTestPrioritiesItemMedium:
+		return []byte(s), nil
+	case DefaultTestPrioritiesItemHigh:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *DefaultTestPrioritiesItem) UnmarshalText(data []byte) error {
+	switch DefaultTestPrioritiesItem(data) {
+	case DefaultTestPrioritiesItemLow:
+		*s = DefaultTestPrioritiesItemLow
+		return nil
+	case DefaultTestPrioritiesItemMedium:
+		*s = DefaultTestPrioritiesItemMedium
+		return nil
+	case DefaultTestPrioritiesItemHigh:
+		*s = DefaultTestPrioritiesItemHigh
 		return nil
 	default:
 		return errors.Errorf("invalid value: %q", data)

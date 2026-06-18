@@ -73,6 +73,42 @@ func TestDataDescription_EncodeDecode(t *testing.T) {
 	var typ2 DataDescription
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+func TestDefaultCircle_EncodeDecode(t *testing.T) {
+	var typ DefaultCircle
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 DefaultCircle
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestDefaultShape_EncodeDecode(t *testing.T) {
+	var typ DefaultShape
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 DefaultShape
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestDefaultSquare_EncodeDecode(t *testing.T) {
+	var typ DefaultSquare
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 DefaultSquare
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
 func TestDefaultTest_EncodeDecode(t *testing.T) {
 	var typ DefaultTest
 	typ.SetFake()
@@ -95,6 +131,44 @@ func TestDefaultTestEnum_EncodeDecode(t *testing.T) {
 	require.True(t, std.Valid(data), "Encoded: %s", data)
 
 	var typ2 DefaultTestEnum
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestDefaultTestLabelsItem_EncodeDecode(t *testing.T) {
+	var typ DefaultTestLabelsItem
+	typ = make(DefaultTestLabelsItem)
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 DefaultTestLabelsItem
+	typ2 = make(DefaultTestLabelsItem)
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestDefaultTestObjsItem_EncodeDecode(t *testing.T) {
+	var typ DefaultTestObjsItem
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 DefaultTestObjsItem
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestDefaultTestPrioritiesItem_EncodeDecode(t *testing.T) {
+	var typ DefaultTestPrioritiesItem
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 DefaultTestPrioritiesItem
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 func TestDescriptionDetailed_EncodeDecode(t *testing.T) {

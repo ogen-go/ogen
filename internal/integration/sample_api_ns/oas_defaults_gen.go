@@ -68,4 +68,118 @@ func (s *DefaultTest) setDefaults() {
 		val, _ := jx.DecodeStr("\"aGVsbG8sIHdvcmxkIQ==\"").Base64()
 		s.Base64 = val
 	}
+	{
+		var defaultVal0 []string
+		{
+			var defaultVal0Elem string
+
+			val := string("all")
+			defaultVal0Elem = val
+			defaultVal0 = append(defaultVal0, defaultVal0Elem)
+		}
+		s.Strings = defaultVal0
+	}
+	{
+		var defaultVal0 []DefaultTestPrioritiesItem
+		{
+			var defaultVal0Elem DefaultTestPrioritiesItem
+
+			val := DefaultTestPrioritiesItem("medium")
+			defaultVal0Elem = val
+			defaultVal0 = append(defaultVal0, defaultVal0Elem)
+		}
+		{
+			var defaultVal0Elem DefaultTestPrioritiesItem
+
+			val := DefaultTestPrioritiesItem("high")
+			defaultVal0Elem = val
+			defaultVal0 = append(defaultVal0, defaultVal0Elem)
+		}
+		s.Priorities = defaultVal0
+	}
+	{
+		var defaultVal0 [][]int
+		{
+			var defaultVal0Elem []int
+			var defaultVal1 []int
+			{
+				var defaultVal1Elem int
+
+				val := int(1)
+				defaultVal1Elem = val
+				defaultVal1 = append(defaultVal1, defaultVal1Elem)
+			}
+			{
+				var defaultVal1Elem int
+
+				val := int(2)
+				defaultVal1Elem = val
+				defaultVal1 = append(defaultVal1, defaultVal1Elem)
+			}
+			defaultVal0Elem = defaultVal1
+			defaultVal0 = append(defaultVal0, defaultVal0Elem)
+		}
+		{
+			var defaultVal0Elem []int
+			var defaultVal1 []int
+			{
+				var defaultVal1Elem int
+
+				val := int(3)
+				defaultVal1Elem = val
+				defaultVal1 = append(defaultVal1, defaultVal1Elem)
+			}
+			defaultVal0Elem = defaultVal1
+			defaultVal0 = append(defaultVal0, defaultVal0Elem)
+		}
+		s.Nested = defaultVal0
+	}
+	{
+		var defaultVal0 []DefaultTestObjsItem
+		{
+			var defaultVal0Elem DefaultTestObjsItem
+			var defaultVal1 DefaultTestObjsItem
+			{
+
+				val := string("x")
+				defaultVal1.Name.SetTo(val)
+			}
+			{
+
+				val := int(5)
+				defaultVal1.Count.SetTo(val)
+			}
+			defaultVal0Elem = defaultVal1
+			defaultVal0 = append(defaultVal0, defaultVal0Elem)
+		}
+		s.Objs = defaultVal0
+	}
+	{
+		var defaultVal0 []DefaultShape
+		{
+			var defaultVal0Elem DefaultShape
+			// The default is well-formed JSON from the spec; a value that does not match a
+			// variant decodes to the zero value (defaults are not variant-checked at gen time).
+			_ = defaultVal0Elem.Decode(jx.DecodeStr("{\"kind\":\"circle\",\"radius\":5}"))
+			defaultVal0 = append(defaultVal0, defaultVal0Elem)
+		}
+		s.Shapes = defaultVal0
+	}
+	{
+		var defaultVal0 []DefaultTestLabelsItem
+		{
+			var defaultVal0Elem DefaultTestLabelsItem
+			defaultVal1 := make(DefaultTestLabelsItem, 1)
+			{
+				var defaultVal1Val string
+
+				val := string("x")
+				defaultVal1Val = val
+				defaultVal1["a"] = defaultVal1Val
+			}
+			defaultVal0Elem = defaultVal1
+			defaultVal0 = append(defaultVal0, defaultVal0Elem)
+		}
+		s.Labels = defaultVal0
+	}
 }
