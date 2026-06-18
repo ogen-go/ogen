@@ -7,6 +7,31 @@ import (
 	decimal2 "github.com/ogen-go/ogen/_testdata/testtypes/foo/decimal"
 )
 
+type ComponentOK struct {
+	Amount         USDAmount    `json:"amount"`
+	OptionalAmount OptUSDAmount `json:"optionalAmount"`
+}
+
+// GetAmount returns the value of Amount.
+func (s *ComponentOK) GetAmount() USDAmount {
+	return s.Amount
+}
+
+// GetOptionalAmount returns the value of OptionalAmount.
+func (s *ComponentOK) GetOptionalAmount() OptUSDAmount {
+	return s.OptionalAmount
+}
+
+// SetAmount sets the value of Amount.
+func (s *ComponentOK) SetAmount(val USDAmount) {
+	s.Amount = val
+}
+
+// SetOptionalAmount sets the value of OptionalAmount.
+func (s *ComponentOK) SetOptionalAmount(val OptUSDAmount) {
+	s.OptionalAmount = val
+}
+
 // NewOptDecimal returns new OptDecimal with value set to v.
 func NewOptDecimal(v decimal2.Decimal) OptDecimal {
 	return OptDecimal{
@@ -99,6 +124,52 @@ func (o OptDecimal2) Or(d decimal3.Decimal) decimal3.Decimal {
 	return d
 }
 
+// NewOptUSDAmount returns new OptUSDAmount with value set to v.
+func NewOptUSDAmount(v USDAmount) OptUSDAmount {
+	return OptUSDAmount{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptUSDAmount is optional USDAmount.
+type OptUSDAmount struct {
+	Value USDAmount
+	Set   bool
+}
+
+// IsSet returns true if OptUSDAmount was set.
+func (o OptUSDAmount) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptUSDAmount) Reset() {
+	var v USDAmount
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptUSDAmount) SetTo(v USDAmount) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptUSDAmount) Get() (v USDAmount, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptUSDAmount) Or(d USDAmount) USDAmount {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 type OptionalOK struct {
 	Foo OptDecimal  `json:"foo"`
 	Bar OptDecimal2 `json:"bar"`
@@ -148,3 +219,5 @@ func (s *RequiredOK) SetFoo(val decimal2.Decimal) {
 func (s *RequiredOK) SetBar(val decimal3.Decimal) {
 	s.Bar = val
 }
+
+type USDAmount decimal2.Decimal
