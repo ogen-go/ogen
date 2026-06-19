@@ -340,7 +340,8 @@ func run() error {
 	)
 	logOptions.RegisterFlags(set)
 	set.Var(&initialisms, "initialisms",
-		"Replace the initialism set with this list (e.g. ID,URL,API), overriding the config file. Repeatable or comma-separated. Include \"inherit\" to keep the built-in set.")
+		"Replace the initialism set with this list (e.g. ID,URL,API), overriding the config file. "+
+			"Repeatable or comma-separated. Include \"inherit\" to keep the built-in set.")
 	set.Var(&extraInitialisms, "initialisms-extra",
 		"Extra initialisms to apply during naming, on top of the active set (e.g. FQDN). Repeatable or comma-separated.")
 
@@ -427,7 +428,8 @@ func run() error {
 		if list == nil {
 			list = gen.Initialisms{gen.InitialismsInherit}
 		}
-		opts.Generator.Initialisms = append(list, extraInitialisms...)
+		list = append(list, extraInitialisms...)
+		opts.Generator.Initialisms = list
 	}
 
 	data, err := opts.SetLocation(specPath, gen.RemoteOptions{})
