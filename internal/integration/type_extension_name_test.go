@@ -28,6 +28,10 @@ func (h *testTypeNameHandler) Required(ctx context.Context, params api.RequiredP
 	return nil, assert.AnError
 }
 
+func (h *testTypeNameHandler) Component(ctx context.Context) (*api.ComponentOK, error) {
+	return nil, assert.AnError
+}
+
 type testTypeNameClient struct {
 	request *http.Request
 }
@@ -138,5 +142,25 @@ func TestTypeExtensionName_JSON(t *testing.T) {
 		var p api.OptionalOK
 		a.NoError(p.Decode(jx.DecodeStr(`{}`)))
 		a.Equal(expected, p)
+	})
+
+	// Component schema with x-ogen-type + x-ogen-name: the type must be named
+	// USDAmount (from x-ogen-name), not UsdAmount (from the "usdAmount" key).
+	t.Run("Component", func(t *testing.T) {
+		input := `{ "amount": "0.1", "optionalAmount": "0.2" }`
+
+		expected := api.ComponentOK{
+			Amount:         api.USDAmount("0.1"),
+			OptionalAmount: api.NewOptUSDAmount(api.USDAmount("0.2")),
+		}
+
+		a := require.New(t)
+		var p api.ComponentOK
+		a.NoError(p.Decode(jx.DecodeStr(input)))
+		a.Equal(expected, p)
+
+		out, err := p.MarshalJSON()
+		a.NoError(err)
+		a.JSONEq(input, string(out))
 	})
 }

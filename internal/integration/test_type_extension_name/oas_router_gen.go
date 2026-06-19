@@ -60,6 +60,31 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				break
 			}
 			switch elem[0] {
+			case 'c': // Prefix: "component"
+
+				if l := len("component"); len(elem) >= l && elem[0:l] == "component" {
+					elem = elem[l:]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					// Leaf node.
+					switch r.Method {
+					case "GET":
+						s.handleComponentRequest([0]string{}, elemIsEscaped, w, r)
+					default:
+						s.notAllowed(w, r, notAllowedParams{
+							allowedMethods: "GET",
+							allowedHeaders: nil,
+							acceptPost:     "",
+							acceptPatch:    "",
+						})
+					}
+
+					return
+				}
+
 			case 'o': // Prefix: "optional"
 
 				if l := len("optional"); len(elem) >= l && elem[0:l] == "optional" {
@@ -210,6 +235,31 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 				break
 			}
 			switch elem[0] {
+			case 'c': // Prefix: "component"
+
+				if l := len("component"); len(elem) >= l && elem[0:l] == "component" {
+					elem = elem[l:]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					// Leaf node.
+					switch method {
+					case "GET":
+						r.name = ComponentOperation
+						r.summary = ""
+						r.operationID = "component"
+						r.operationGroup = ""
+						r.pathPattern = "/component"
+						r.args = args
+						r.count = 0
+						return r, true
+					default:
+						return
+					}
+				}
+
 			case 'o': // Prefix: "optional"
 
 				if l := len("optional"); len(elem) >= l && elem[0:l] == "optional" {

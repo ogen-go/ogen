@@ -38,6 +38,24 @@ paths:
                     x-ogen-name: Decimal2
                     default: 1.23
 
+  /component:
+    get:
+      operationId: component
+      responses:
+        '200':
+          description: Test
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - amount
+                properties:
+                  amount:
+                    $ref: '#/components/schemas/usdAmount'
+                  optionalAmount:
+                    $ref: '#/components/schemas/usdAmount'
+
   /required:
     get:
       operationId: required
@@ -73,3 +91,11 @@ paths:
                     type: number
                     x-ogen-type: github.com/ogen-go/ogen/_testdata/testtypes/bar/decimal.Decimal
                     x-ogen-name: Decimal2
+
+components:
+  schemas:
+    # x-ogen-name must override the component key: type is USDAmount, not UsdAmount.
+    usdAmount:
+      type: string
+      x-ogen-type: github.com/ogen-go/ogen/_testdata/testtypes/foo/decimal.Decimal
+      x-ogen-name: USDAmount

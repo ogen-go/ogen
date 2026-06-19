@@ -8,6 +8,10 @@ import (
 
 // Handler handles operations described by OpenAPI v3 specification.
 type Handler interface {
+	// Component implements component operation.
+	//
+	// GET /component
+	Component(ctx context.Context) (*ComponentOK, error)
 	// Optional implements optional operation.
 	//
 	// GET /optional
