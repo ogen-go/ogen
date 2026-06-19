@@ -1,0 +1,103 @@
+openapi: 3.0.3
+info:
+  title: Array defaults
+  version: 1.0.0
+paths:
+  /items:
+    get:
+      operationId: listItems
+      parameters:
+        - name: tags
+          in: query
+          schema:
+            type: array
+            items:
+              type: string
+            default: [active, featured]
+      responses:
+        "200":
+          description: ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Filter'
+components:
+  schemas:
+    Priority:
+      type: string
+      enum: [low, medium, high]
+    Item:
+      type: object
+      properties:
+        name:
+          type: string
+        count:
+          type: integer
+    Filter:
+      type: object
+      properties:
+        strings:
+          type: array
+          items:
+            type: string
+          default: [all]
+        priorities:
+          type: array
+          items:
+            $ref: '#/components/schemas/Priority'
+          default: [medium, high]
+        nested:
+          type: array
+          items:
+            type: array
+            items:
+              type: integer
+          default: [[1, 2], [3]]
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Item'
+          default:
+            - name: x
+              count: 5
+        shapes:
+          type: array
+          items:
+            $ref: '#/components/schemas/Shape'
+          default:
+            - kind: circle
+              radius: 5
+        labels:
+          type: array
+          items:
+            type: object
+            additionalProperties:
+              type: string
+          default:
+            - a: x
+              b: "y"
+    Shape:
+      oneOf:
+        - $ref: '#/components/schemas/Circle'
+        - $ref: '#/components/schemas/Square'
+      discriminator:
+        propertyName: kind
+        mapping:
+          circle: '#/components/schemas/Circle'
+          square: '#/components/schemas/Square'
+    Circle:
+      type: object
+      required: [kind, radius]
+      properties:
+        kind:
+          type: string
+        radius:
+          type: integer
+    Square:
+      type: object
+      required: [kind, side]
+      properties:
+        kind:
+          type: string
+        side:
+          type: integer

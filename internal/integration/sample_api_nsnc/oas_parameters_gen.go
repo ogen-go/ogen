@@ -17,7 +17,8 @@ type DataGetFormatParams struct {
 
 // DefaultTestParams is parameters of defaultTest operation.
 type DefaultTestParams struct {
-	Default OptInt32 `json:",omitempty,omitzero"`
+	Default      OptInt32 `json:",omitempty,omitzero"`
+	ArrayDefault []string `json:",omitempty"`
 }
 
 // FoobarGetParams is parameters of foobarGet operation.

@@ -222,6 +222,17 @@ func (s *OrgsCreateInvitationReq) setDefaults() {
 // setDefaults set default value of fields.
 func (s *OrgsCreateWebhookReq) setDefaults() {
 	{
+		var defaultVal0 []string
+		{
+			var defaultVal0Elem string
+
+			val := string("push")
+			defaultVal0Elem = val
+			defaultVal0 = append(defaultVal0, defaultVal0Elem)
+		}
+		s.Events = defaultVal0
+	}
+	{
 		val := bool(true)
 		s.Active.SetTo(val)
 	}
@@ -237,6 +248,17 @@ func (s *OrgsSetMembershipForUserReq) setDefaults() {
 
 // setDefaults set default value of fields.
 func (s *OrgsUpdateWebhookReq) setDefaults() {
+	{
+		var defaultVal0 []string
+		{
+			var defaultVal0Elem string
+
+			val := string("push")
+			defaultVal0Elem = val
+			defaultVal0 = append(defaultVal0, defaultVal0Elem)
+		}
+		s.Events = defaultVal0
+	}
 	{
 		val := bool(true)
 		s.Active.SetTo(val)
@@ -466,6 +488,17 @@ func (s *ReposCreateUsingTemplateReq) setDefaults() {
 // setDefaults set default value of fields.
 func (s *ReposCreateWebhookReq) setDefaults() {
 	{
+		var defaultVal0 []string
+		{
+			var defaultVal0Elem string
+
+			val := string("push")
+			defaultVal0Elem = val
+			defaultVal0 = append(defaultVal0, defaultVal0Elem)
+		}
+		s.Events = defaultVal0
+	}
+	{
 		val := bool(true)
 		s.Active.SetTo(val)
 	}
@@ -525,6 +558,17 @@ func (s *ReposUpdateReq) setDefaults() {
 
 // setDefaults set default value of fields.
 func (s *ReposUpdateWebhookReq) setDefaults() {
+	{
+		var defaultVal0 []string
+		{
+			var defaultVal0Elem string
+
+			val := string("push")
+			defaultVal0Elem = val
+			defaultVal0 = append(defaultVal0, defaultVal0Elem)
+		}
+		s.Events = defaultVal0
+	}
 	{
 		val := bool(true)
 		s.Active.SetTo(val)

@@ -425,6 +425,7 @@ func (s *Server) decodeTestFormURLEncodedRequest(r *http.Request) (
 			}
 			if err := q.HasParam(cfg); err == nil {
 				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+					request.Array = nil
 					return d.DecodeArray(func(d uri.Decoder) error {
 						var requestDotArrayVal string
 						if err := func() error {
@@ -644,6 +645,7 @@ func (s *Server) decodeTestMultipartRequest(r *http.Request) (
 			}
 			if err := q.HasParam(cfg); err == nil {
 				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+					request.Array = nil
 					return d.DecodeArray(func(d uri.Decoder) error {
 						var requestDotArrayVal string
 						if err := func() error {

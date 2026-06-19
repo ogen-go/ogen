@@ -614,6 +614,7 @@ func (s *Server) decodeUserReportPostRequest(r *http.Request) (
 				}
 				if err := q.HasParam(cfg); err == nil {
 					if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+						optForm.Post = nil
 						return d.DecodeArray(func(d uri.Decoder) error {
 							var optFormDotPostVal int
 							if err := func() error {

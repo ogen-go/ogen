@@ -690,6 +690,334 @@ func (s *DataDescription) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
+func (s *DefaultCircle) Encode(e *jx.Encoder) {
+	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields encodes fields.
+func (s *DefaultCircle) encodeFields(e *jx.Encoder) {
+	{
+		e.FieldStart("kind")
+		e.Str(s.Kind)
+	}
+	{
+		e.FieldStart("radius")
+		e.Int(s.Radius)
+	}
+}
+
+var jsonFieldsNameOfDefaultCircle = [2]string{
+	0: "kind",
+	1: "radius",
+}
+
+// Decode decodes DefaultCircle from json.
+func (s *DefaultCircle) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode DefaultCircle to nil")
+	}
+	var requiredBitSet [1]uint8
+
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		case "kind":
+			requiredBitSet[0] |= 1 << 0
+			if err := func() error {
+				v, err := d.Str()
+				s.Kind = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"kind\"")
+			}
+		case "radius":
+			requiredBitSet[0] |= 1 << 1
+			if err := func() error {
+				v, err := d.Int()
+				s.Radius = int(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"radius\"")
+			}
+		default:
+			return d.Skip()
+		}
+		return nil
+	}); err != nil {
+		return errors.Wrap(err, "decode DefaultCircle")
+	}
+	// Validate required fields.
+	var failures []validate.FieldError
+	for i, mask := range [1]uint8{
+		0b00000011,
+	} {
+		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
+			// Mask only required fields and check equality to mask using XOR.
+			//
+			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
+			// Bits of fields which would be set are actually bits of missed fields.
+			missed := bits.OnesCount8(result)
+			for bitN := 0; bitN < missed; bitN++ {
+				bitIdx := bits.TrailingZeros8(result)
+				fieldIdx := i*8 + bitIdx
+				var name string
+				if fieldIdx < len(jsonFieldsNameOfDefaultCircle) {
+					name = jsonFieldsNameOfDefaultCircle[fieldIdx]
+				} else {
+					name = strconv.Itoa(fieldIdx)
+				}
+				failures = append(failures, validate.FieldError{
+					Name:  name,
+					Error: validate.ErrFieldRequired,
+				})
+				// Reset bit.
+				result &^= 1 << bitIdx
+			}
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *DefaultCircle) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *DefaultCircle) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes DefaultShape as json.
+func (s DefaultShape) Encode(e *jx.Encoder) {
+	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+func (s DefaultShape) encodeFields(e *jx.Encoder) {
+	switch s.Type {
+	case DefaultCircleDefaultShape:
+		e.FieldStart("kind")
+		e.Str("circle")
+		{
+			s := s.DefaultCircle
+			{
+				e.FieldStart("radius")
+				e.Int(s.Radius)
+			}
+		}
+	case DefaultSquareDefaultShape:
+		e.FieldStart("kind")
+		e.Str("square")
+		{
+			s := s.DefaultSquare
+			{
+				e.FieldStart("side")
+				e.Int(s.Side)
+			}
+		}
+	}
+}
+
+// Decode decodes DefaultShape from json.
+func (s *DefaultShape) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode DefaultShape to nil")
+	}
+	// Sum type discriminator.
+	if typ := d.Next(); typ != jx.Object {
+		return errors.Errorf("unexpected json type %q", typ)
+	}
+
+	var found bool
+	if err := d.Capture(func(d *jx.Decoder) error {
+		return d.ObjBytes(func(d *jx.Decoder, key []byte) error {
+			if found {
+				return d.Skip()
+			}
+			switch string(key) {
+			case "kind":
+				typ, err := d.Str()
+				if err != nil {
+					return err
+				}
+				switch typ {
+				case "circle":
+					s.Type = DefaultCircleDefaultShape
+					found = true
+				case "square":
+					s.Type = DefaultSquareDefaultShape
+					found = true
+				default:
+					return errors.Errorf("unknown type %s", typ)
+				}
+				return nil
+			}
+			return d.Skip()
+		})
+	}); err != nil {
+		return errors.Wrap(err, "capture")
+	}
+	if !found {
+		return errors.New("unable to detect sum type variant")
+	}
+	switch s.Type {
+	case DefaultCircleDefaultShape:
+		if err := s.DefaultCircle.Decode(d); err != nil {
+			return err
+		}
+	case DefaultSquareDefaultShape:
+		if err := s.DefaultSquare.Decode(d); err != nil {
+			return err
+		}
+	default:
+		return errors.Errorf("inferred invalid type: %s", s.Type)
+	}
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s DefaultShape) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *DefaultShape) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode implements json.Marshaler.
+func (s *DefaultSquare) Encode(e *jx.Encoder) {
+	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields encodes fields.
+func (s *DefaultSquare) encodeFields(e *jx.Encoder) {
+	{
+		e.FieldStart("kind")
+		e.Str(s.Kind)
+	}
+	{
+		e.FieldStart("side")
+		e.Int(s.Side)
+	}
+}
+
+var jsonFieldsNameOfDefaultSquare = [2]string{
+	0: "kind",
+	1: "side",
+}
+
+// Decode decodes DefaultSquare from json.
+func (s *DefaultSquare) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode DefaultSquare to nil")
+	}
+	var requiredBitSet [1]uint8
+
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		case "kind":
+			requiredBitSet[0] |= 1 << 0
+			if err := func() error {
+				v, err := d.Str()
+				s.Kind = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"kind\"")
+			}
+		case "side":
+			requiredBitSet[0] |= 1 << 1
+			if err := func() error {
+				v, err := d.Int()
+				s.Side = int(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"side\"")
+			}
+		default:
+			return d.Skip()
+		}
+		return nil
+	}); err != nil {
+		return errors.Wrap(err, "decode DefaultSquare")
+	}
+	// Validate required fields.
+	var failures []validate.FieldError
+	for i, mask := range [1]uint8{
+		0b00000011,
+	} {
+		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
+			// Mask only required fields and check equality to mask using XOR.
+			//
+			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
+			// Bits of fields which would be set are actually bits of missed fields.
+			missed := bits.OnesCount8(result)
+			for bitN := 0; bitN < missed; bitN++ {
+				bitIdx := bits.TrailingZeros8(result)
+				fieldIdx := i*8 + bitIdx
+				var name string
+				if fieldIdx < len(jsonFieldsNameOfDefaultSquare) {
+					name = jsonFieldsNameOfDefaultSquare[fieldIdx]
+				} else {
+					name = strconv.Itoa(fieldIdx)
+				}
+				failures = append(failures, validate.FieldError{
+					Name:  name,
+					Error: validate.ErrFieldRequired,
+				})
+				// Reset bit.
+				result &^= 1 << bitIdx
+			}
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *DefaultSquare) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *DefaultSquare) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode implements json.Marshaler.
 func (s *DefaultTest) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
@@ -784,9 +1112,73 @@ func (s *DefaultTest) encodeFields(e *jx.Encoder) {
 		e.FieldStart("base64")
 		e.Base64(s.Base64)
 	}
+	{
+		if s.Strings != nil {
+			e.FieldStart("strings")
+			e.ArrStart()
+			for _, elem := range s.Strings {
+				e.Str(elem)
+			}
+			e.ArrEnd()
+		}
+	}
+	{
+		if s.Priorities != nil {
+			e.FieldStart("priorities")
+			e.ArrStart()
+			for _, elem := range s.Priorities {
+				elem.Encode(e)
+			}
+			e.ArrEnd()
+		}
+	}
+	{
+		if s.Nested != nil {
+			e.FieldStart("nested")
+			e.ArrStart()
+			for _, elem := range s.Nested {
+				e.ArrStart()
+				for _, elem := range elem {
+					e.Int(elem)
+				}
+				e.ArrEnd()
+			}
+			e.ArrEnd()
+		}
+	}
+	{
+		if s.Objs != nil {
+			e.FieldStart("objs")
+			e.ArrStart()
+			for _, elem := range s.Objs {
+				elem.Encode(e)
+			}
+			e.ArrEnd()
+		}
+	}
+	{
+		if s.Shapes != nil {
+			e.FieldStart("shapes")
+			e.ArrStart()
+			for _, elem := range s.Shapes {
+				elem.Encode(e)
+			}
+			e.ArrEnd()
+		}
+	}
+	{
+		if s.Labels != nil {
+			e.FieldStart("labels")
+			e.ArrStart()
+			for _, elem := range s.Labels {
+				elem.Encode(e)
+			}
+			e.ArrEnd()
+		}
+	}
 }
 
-var jsonFieldsNameOfDefaultTest = [15]string{
+var jsonFieldsNameOfDefaultTest = [21]string{
 	0:  "required",
 	1:  "str",
 	2:  "nullStr",
@@ -802,6 +1194,12 @@ var jsonFieldsNameOfDefaultTest = [15]string{
 	12: "hostname",
 	13: "format",
 	14: "base64",
+	15: "strings",
+	16: "priorities",
+	17: "nested",
+	18: "objs",
+	19: "shapes",
+	20: "labels",
 }
 
 // Decode decodes DefaultTest from json.
@@ -809,7 +1207,7 @@ func (s *DefaultTest) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode DefaultTest to nil")
 	}
-	var requiredBitSet [2]uint8
+	var requiredBitSet [3]uint8
 	s.setDefaults()
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
@@ -967,6 +1365,120 @@ func (s *DefaultTest) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"base64\"")
 			}
+		case "strings":
+			if err := func() error {
+				s.Strings = make([]string, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem string
+					v, err := d.Str()
+					elem = string(v)
+					if err != nil {
+						return err
+					}
+					s.Strings = append(s.Strings, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"strings\"")
+			}
+		case "priorities":
+			if err := func() error {
+				s.Priorities = make([]DefaultTestPrioritiesItem, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem DefaultTestPrioritiesItem
+					if err := elem.Decode(d); err != nil {
+						return err
+					}
+					s.Priorities = append(s.Priorities, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"priorities\"")
+			}
+		case "nested":
+			if err := func() error {
+				s.Nested = make([][]int, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []int
+					elem = make([]int, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem int
+						v, err := d.Int()
+						elemElem = int(v)
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.Nested = append(s.Nested, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"nested\"")
+			}
+		case "objs":
+			if err := func() error {
+				s.Objs = make([]DefaultTestObjsItem, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem DefaultTestObjsItem
+					if err := elem.Decode(d); err != nil {
+						return err
+					}
+					s.Objs = append(s.Objs, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"objs\"")
+			}
+		case "shapes":
+			if err := func() error {
+				s.Shapes = make([]DefaultShape, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem DefaultShape
+					if err := elem.Decode(d); err != nil {
+						return err
+					}
+					s.Shapes = append(s.Shapes, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"shapes\"")
+			}
+		case "labels":
+			if err := func() error {
+				s.Labels = make([]DefaultTestLabelsItem, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem DefaultTestLabelsItem
+					if err := elem.Decode(d); err != nil {
+						return err
+					}
+					s.Labels = append(s.Labels, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"labels\"")
+			}
 		default:
 			return d.Skip()
 		}
@@ -976,8 +1488,9 @@ func (s *DefaultTest) Decode(d *jx.Decoder) error {
 	}
 	// Validate required fields.
 	var failures []validate.FieldError
-	for i, mask := range [2]uint8{
+	for i, mask := range [3]uint8{
 		0b00000001,
+		0b00000000,
 		0b00000000,
 	} {
 		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
@@ -1060,6 +1573,184 @@ func (s DefaultTestEnum) MarshalJSON() ([]byte, error) {
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
 func (s *DefaultTestEnum) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode implements json.Marshaler.
+func (s DefaultTestLabelsItem) Encode(e *jx.Encoder) {
+	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s DefaultTestLabelsItem) encodeFields(e *jx.Encoder) {
+	for k, elem := range s {
+		e.FieldStart(k)
+
+		e.Str(elem)
+	}
+}
+
+// Decode decodes DefaultTestLabelsItem from json.
+func (s *DefaultTestLabelsItem) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode DefaultTestLabelsItem to nil")
+	}
+	m := s.init()
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		var elem string
+		if err := func() error {
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "decode field %q", k)
+		}
+		m[string(k)] = elem
+		return nil
+	}); err != nil {
+		return errors.Wrap(err, "decode DefaultTestLabelsItem")
+	}
+
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s DefaultTestLabelsItem) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *DefaultTestLabelsItem) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode implements json.Marshaler.
+func (s *DefaultTestObjsItem) Encode(e *jx.Encoder) {
+	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields encodes fields.
+func (s *DefaultTestObjsItem) encodeFields(e *jx.Encoder) {
+	{
+		if s.Name.Set {
+			e.FieldStart("name")
+			s.Name.Encode(e)
+		}
+	}
+	{
+		if s.Count.Set {
+			e.FieldStart("count")
+			s.Count.Encode(e)
+		}
+	}
+}
+
+var jsonFieldsNameOfDefaultTestObjsItem = [2]string{
+	0: "name",
+	1: "count",
+}
+
+// Decode decodes DefaultTestObjsItem from json.
+func (s *DefaultTestObjsItem) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode DefaultTestObjsItem to nil")
+	}
+
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		case "name":
+			if err := func() error {
+				s.Name.Reset()
+				if err := s.Name.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"name\"")
+			}
+		case "count":
+			if err := func() error {
+				s.Count.Reset()
+				if err := s.Count.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"count\"")
+			}
+		default:
+			return d.Skip()
+		}
+		return nil
+	}); err != nil {
+		return errors.Wrap(err, "decode DefaultTestObjsItem")
+	}
+
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *DefaultTestObjsItem) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *DefaultTestObjsItem) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes DefaultTestPrioritiesItem as json.
+func (s DefaultTestPrioritiesItem) Encode(e *jx.Encoder) {
+	e.Str(string(s))
+}
+
+// Decode decodes DefaultTestPrioritiesItem from json.
+func (s *DefaultTestPrioritiesItem) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode DefaultTestPrioritiesItem to nil")
+	}
+	v, err := d.StrBytes()
+	if err != nil {
+		return err
+	}
+	// Try to use constant string.
+	switch DefaultTestPrioritiesItem(v) {
+	case DefaultTestPrioritiesItemLow:
+		*s = DefaultTestPrioritiesItemLow
+	case DefaultTestPrioritiesItemMedium:
+		*s = DefaultTestPrioritiesItemMedium
+	case DefaultTestPrioritiesItemHigh:
+		*s = DefaultTestPrioritiesItemHigh
+	default:
+		*s = DefaultTestPrioritiesItem(v)
+	}
+
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s DefaultTestPrioritiesItem) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *DefaultTestPrioritiesItem) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }

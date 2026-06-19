@@ -34,6 +34,7 @@
 	{{ $var }} = {{ $t.Go }}(c)
 	return nil
 {{- else if $t.IsArray }}
+	{{ $var }} = nil
 	return d.DecodeArray(func(d uri.Decoder) error {
 		var {{ $tmpVar }} {{ $t.Item.Go }}
 		if err := func() error {
