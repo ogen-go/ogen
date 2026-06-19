@@ -39,7 +39,7 @@ func TestInitialismsFeatureE2E(t *testing.T) {
 	gen := func(t *testing.T, enable bool) map[string]struct{} {
 		opts := Options{}
 		if enable {
-			opts.Generator.Features = &FeatureOptions{Enable: FeatureSet{NamingInitialisms.Name: {}}}
+			opts.Generator.Features = &FeatureOptions{Enable: FeatureSet{NamingCamelInitialisms.Name: {}}}
 		}
 		g, err := NewGenerator(spec, opts)
 		require.NoError(t, err)

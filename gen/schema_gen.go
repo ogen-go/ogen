@@ -34,7 +34,7 @@ type schemaGen struct {
 	depthCount int
 
 	request     bool // true if generating for request body
-	initialisms bool // NamingInitialisms feature: apply initialism rules to camelCase identifiers
+	initialisms bool // NamingCamelInitialisms feature: apply initialism rules to camelCase identifiers
 
 	log *zap.Logger
 }
