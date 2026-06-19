@@ -39,7 +39,7 @@ type Generator struct {
 	equalitySpecs     []*ir.EqualityMethodSpec // Types requiring Equal() methods for uniqueItems validation
 
 	features    FeatureSet // resolved feature set, built once in NewGenerator
-	initialisms bool       // NamingInitialisms feature: apply initialism rules to camelCase identifiers
+	initialisms bool       // NamingCamelInitialisms feature: apply initialism rules to camelCase identifiers
 
 	log *zap.Logger
 }
@@ -127,13 +127,13 @@ func NewGenerator(spec *ogen.Spec, opts Options) (*Generator, error) {
 	}
 
 	// Resolve features once, here, because identifier generation during makeIR
-	// already depends on them (NamingInitialisms); the write stage reuses the
+	// already depends on them (NamingCamelInitialisms); the write stage reuses the
 	// same set via g.features instead of rebuilding it.
 	g.features, err = g.opt.Features.Build()
 	if err != nil {
 		return nil, errors.Wrap(err, "build features")
 	}
-	g.initialisms = g.features.Has(NamingInitialisms)
+	g.initialisms = g.features.Has(NamingCamelInitialisms)
 
 	if err := g.makeIR(api); err != nil {
 		return nil, errors.Wrap(err, "make ir")
