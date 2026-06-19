@@ -245,6 +245,26 @@ func handleNotImplementedError(err error) (msg, feature string, _ bool) {
 	return msg, feature, false
 }
 
+// stringSliceFlag is a flag.Value that accumulates values across repeated uses
+// and supports comma-separated lists in a single value.
+type stringSliceFlag []string
+
+func (s *stringSliceFlag) String() string {
+	if s == nil {
+		return ""
+	}
+	return strings.Join(*s, ",")
+}
+
+func (s *stringSliceFlag) Set(value string) error {
+	for part := range strings.SplitSeq(value, ",") {
+		if part = strings.TrimSpace(part); part != "" {
+			*s = append(*s, part)
+		}
+	}
+	return nil
+}
+
 func loadConfig(cfgPath string, log *zap.Logger) (opts gen.Options, _ error) {
 	opts.Logger = log
 
@@ -303,6 +323,10 @@ func run() error {
 		// Parser options.
 		strict = set.Bool("strict", false, "Disable cross-type constraint interpretation (reject pattern on numbers, min/max on strings)")
 
+		// Initialism options.
+		initialisms      stringSliceFlag
+		extraInitialisms stringSliceFlag
+
 		// Logging options.
 		logOptions ogenzap.Options
 
@@ -315,6 +339,10 @@ func run() error {
 		version = set.Bool("version", false, "Print version and exit")
 	)
 	logOptions.RegisterFlags(set)
+	set.Var(&initialisms, "initialisms",
+		"Replace the initialism set with this list (e.g. ID,URL,API), overriding the config file. Repeatable or comma-separated. Include \"inherit\" to keep the built-in set.")
+	set.Var(&extraInitialisms, "initialisms-extra",
+		"Extra initialisms to apply during naming, on top of the active set (e.g. FQDN). Repeatable or comma-separated.")
 
 	if err := set.Parse(os.Args[1:]); err != nil {
 		return err
@@ -386,6 +414,20 @@ func run() error {
 	if *strict {
 		strictVal := false
 		opts.Parser.AllowCrossTypeConstraints = &strictVal
+	}
+	// -initialisms replaces the configured list entirely.
+	if len(initialisms) > 0 {
+		opts.Generator.Initialisms = gen.Initialisms(initialisms)
+	}
+	// -initialisms-extra adds on top of the active set. When initialisms are not
+	// configured (nil), the active set is the built-in default, so splice it in
+	// via the inherit sentinel before appending.
+	if len(extraInitialisms) > 0 {
+		list := opts.Generator.Initialisms
+		if list == nil {
+			list = gen.Initialisms{gen.InitialismsInherit}
+		}
+		opts.Generator.Initialisms = append(list, extraInitialisms...)
 	}
 
 	data, err := opts.SetLocation(specPath, gen.RemoteOptions{})

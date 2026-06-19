@@ -7,8 +7,48 @@ import (
 
 	"github.com/stretchr/testify/require"
 
+	"github.com/ogen-go/ogen/internal/naming"
 	"github.com/ogen-go/ogen/jsonschema"
 )
+
+func TestNamesCustomRules(t *testing.T) {
+	// Add a custom initialism on top of the defaults.
+	added := naming.DefaultRuleset()
+	added.Add("FQDN")
+
+	// Replace the defaults entirely: only FOO is an initialism now, so the
+	// built-in "id" rule no longer fires.
+	replaced := naming.NewRuleset("FOO")
+
+	tests := []struct {
+		Input       string
+		Expect      string
+		Initialisms bool
+		Rules       *naming.Ruleset
+	}{
+		// Custom rule added on top of defaults.
+		{"fqdn", "FQDN", false, added},
+		{"serverFqdn", "ServerFQDN", true, added},
+		{"id", "ID", false, added}, // defaults still present
+
+		// Replaced set: custom rule fires, default "id" does not.
+		{"foo", "FOO", false, replaced},
+		{"id", "Id", false, replaced},
+
+		// nil ruleset falls back to the package default.
+		{"id", "ID", false, nil},
+	}
+
+	for _, test := range tests {
+		out, err := (&nameGen{
+			src:         []rune(test.Input),
+			initialisms: test.Initialisms,
+			rules:       test.Rules,
+		}).generate()
+		require.NoError(t, err)
+		require.Equal(t, test.Expect, out, "input %q", test.Input)
+	}
+}
 
 func TestNames(t *testing.T) {
 	tests := []struct {

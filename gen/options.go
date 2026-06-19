@@ -10,12 +10,14 @@ import (
 	"runtime"
 	"slices"
 	"strings"
+	"unicode"
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/yaml"
 	"go.uber.org/zap"
 
 	"github.com/ogen-go/ogen/gen/ir"
+	"github.com/ogen-go/ogen/internal/naming"
 	"github.com/ogen-go/ogen/internal/urlpath"
 	"github.com/ogen-go/ogen/jsonschema"
 	"github.com/ogen-go/ogen/location"
@@ -198,6 +200,64 @@ type GenerateOptions struct {
 	// If empty, wildcard content types are treated as unsupported and will cause
 	// an error unless explicitly mapped via ContentTypeAliases.
 	WildcardContentTypeDefault ir.Encoding `json:"wildcard_content_type_default" yaml:"wildcard_content_type_default"`
+
+	// Initialisms customizes the initialism rules used when generating Go
+	// identifiers (e.g. "id" -> "ID", "url" -> "URL"). See [Initialisms].
+	Initialisms Initialisms `json:"initialisms" yaml:"initialisms"`
+}
+
+// InitialismsInherit is the sentinel value that, when present in an
+// [Initialisms] list, splices in ogen's built-in initialisms at that position.
+// It mirrors staticcheck's "inherit" value.
+const InitialismsInherit = "inherit"
+
+// Initialisms customizes the initialism rules used during identifier generation
+// (e.g. "id" -> "ID"). It mirrors staticcheck's "initialisms" option:
+//
+//   - nil (omitted): ogen's built-in initialisms are used.
+//   - a list containing [InitialismsInherit] ("inherit"): the built-in set is
+//     spliced in at that position and the remaining entries are added on top
+//     (entries that appear later override earlier ones).
+//   - a list without "inherit": the built-in set is discarded and only the
+//     listed initialisms are used.
+//   - an explicit empty list ([]): no initialisms are applied at all.
+type Initialisms []string
+
+// validInitialism reports whether s is usable as an initialism. Initialisms
+// become parts of Go identifiers, so they must be non-empty and contain only
+// letters and digits (matching the built-in set, e.g. "UTF8", "OAuth2").
+func validInitialism(s string) bool {
+	if s == "" {
+		return false
+	}
+	for _, r := range s {
+		if !unicode.IsLetter(r) && !unicode.IsDigit(r) {
+			return false
+		}
+	}
+	return true
+}
+
+// build constructs the initialism ruleset described by the list. It returns
+// (nil, nil) when the list is nil (omitted), meaning the package default is
+// used. A non-nil list (including an empty one) builds an explicit ruleset.
+func (in Initialisms) build() (*naming.Ruleset, error) {
+	if in == nil {
+		return nil, nil
+	}
+
+	rs := naming.NewRuleset()
+	for _, v := range in {
+		if strings.EqualFold(v, InitialismsInherit) {
+			rs.Merge(naming.DefaultRuleset())
+			continue
+		}
+		if !validInitialism(v) {
+			return nil, errors.Errorf("invalid initialism %q: must be non-empty and contain only letters and digits", v)
+		}
+		rs.Add(v)
+	}
+	return rs, nil
 }
 
 // ConvenientErrors is an option type to control `Convenient Errors` feature.

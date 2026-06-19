@@ -3,10 +3,34 @@ package gen
 import (
 	"testing"
 
+	"github.com/go-faster/yaml"
 	"github.com/stretchr/testify/require"
 
 	"github.com/ogen-go/ogen"
 )
+
+// TestInitialismsYAMLDecode locks the nil-vs-empty contract that the inherit
+// semantics rely on: an omitted list decodes to nil (use built-in defaults),
+// while an explicit empty list decodes to a non-nil empty slice (disable all).
+func TestInitialismsYAMLDecode(t *testing.T) {
+	decode := func(t *testing.T, src string) Initialisms {
+		var o GenerateOptions
+		require.NoError(t, yaml.Unmarshal([]byte(src), &o))
+		return o.Initialisms
+	}
+
+	t.Run("Omitted", func(t *testing.T) {
+		require.Nil(t, decode(t, "convenient_errors: auto"))
+	})
+	t.Run("ExplicitEmpty", func(t *testing.T) {
+		got := decode(t, "initialisms: []")
+		require.NotNil(t, got)
+		require.Empty(t, got)
+	})
+	t.Run("List", func(t *testing.T) {
+		require.Equal(t, Initialisms{InitialismsInherit, "FQDN"}, decode(t, "initialisms: [inherit, FQDN]"))
+	})
+}
 
 func TestInitialismsFeatureE2E(t *testing.T) {
 	objSchema := &ogen.Schema{
@@ -87,4 +111,112 @@ func TestInitialismsVariantNames(t *testing.T) {
 		require.Equal(t, "PetUserId", discriminatorName(t, false))
 		require.Equal(t, "PetUserID", discriminatorName(t, true))
 	})
+}
+
+func TestInitialismsBuild(t *testing.T) {
+	t.Run("Nil", func(t *testing.T) {
+		rs, err := Initialisms(nil).build()
+		require.NoError(t, err)
+		require.Nil(t, rs, "omitted list should fall back to the package default")
+	})
+	t.Run("ExplicitEmptyIsZero", func(t *testing.T) {
+		rs, err := Initialisms{}.build()
+		require.NoError(t, err)
+		require.NotNil(t, rs, "explicit empty list should build an explicit ruleset")
+		_, ok := rs.Rule("id")
+		require.False(t, ok, "no initialisms should be applied")
+	})
+	t.Run("Inherit", func(t *testing.T) {
+		rs, err := Initialisms{InitialismsInherit, "FQDN"}.build()
+		require.NoError(t, err)
+		require.NotNil(t, rs)
+		got, ok := rs.Rule("fqdn")
+		require.True(t, ok)
+		require.Equal(t, "FQDN", got)
+		// Built-in defaults are spliced in by "inherit".
+		got, ok = rs.Rule("id")
+		require.True(t, ok)
+		require.Equal(t, "ID", got)
+	})
+	t.Run("Replace", func(t *testing.T) {
+		rs, err := Initialisms{"FOO", "BAR"}.build()
+		require.NoError(t, err)
+		require.NotNil(t, rs)
+		for _, want := range []string{"FOO", "BAR"} {
+			got, ok := rs.Rule(want)
+			require.True(t, ok)
+			require.Equal(t, want, got)
+		}
+		// Without "inherit", the default "id" rule is gone.
+		_, ok := rs.Rule("id")
+		require.False(t, ok)
+	})
+	t.Run("LaterEntriesOverride", func(t *testing.T) {
+		// "inherit" brings id->ID; a later "Id" overrides it.
+		rs, err := Initialisms{InitialismsInherit, "Id"}.build()
+		require.NoError(t, err)
+		got, ok := rs.Rule("id")
+		require.True(t, ok)
+		require.Equal(t, "Id", got)
+	})
+	t.Run("Invalid", func(t *testing.T) {
+		for _, bad := range []string{"", "FOO BAR", "foo-bar"} {
+			_, err := Initialisms{bad}.build()
+			require.Error(t, err, "%q should be rejected", bad)
+		}
+	})
+}
+
+// TestInitialismsCustomE2E ensures custom initialisms reach generated struct
+// field names end to end.
+func TestInitialismsCustomE2E(t *testing.T) {
+	objSchema := &ogen.Schema{
+		Type: "object",
+		Properties: []ogen.Property{
+			{Name: "fqdn", Schema: &ogen.Schema{Type: "string"}},
+		},
+	}
+	spec := &ogen.Spec{
+		OpenAPI: "3.0.3",
+		Info:    ogen.Info{Title: "test", Version: "1.0.0"},
+		Paths: ogen.Paths{
+			"/obj": &ogen.PathItem{
+				Get: &ogen.Operation{
+					OperationID: "getObj",
+					Responses: ogen.Responses{
+						"200": &ogen.Response{
+							Description: "ok",
+							Content: map[string]ogen.Media{
+								"application/json": {Schema: objSchema},
+							},
+						},
+					},
+				},
+			},
+		},
+	}
+
+	fieldNames := func(t *testing.T, opts Options) map[string]struct{} {
+		g, err := NewGenerator(spec, opts)
+		require.NoError(t, err)
+		fields := map[string]struct{}{}
+		for _, typ := range g.tstorage.types {
+			for _, f := range typ.Fields {
+				fields[f.Name] = struct{}{}
+			}
+		}
+		return fields
+	}
+
+	// Without customization, "fqdn" is not an initialism.
+	off := fieldNames(t, Options{})
+	require.Contains(t, off, "Fqdn")
+
+	// With FQDN added on top of the built-in set, the field is uppercased.
+	on := fieldNames(t, Options{
+		Generator: GenerateOptions{
+			Initialisms: Initialisms{InitialismsInherit, "FQDN"},
+		},
+	})
+	require.Contains(t, on, "FQDN")
 }

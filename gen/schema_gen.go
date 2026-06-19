@@ -33,15 +33,16 @@ type schemaGen struct {
 	depthLimit int
 	depthCount int
 
-	request     bool // true if generating for request body
-	initialisms bool // NamingInitialisms feature: apply initialism rules to camelCase identifiers
+	request     bool            // true if generating for request body
+	initialisms bool            // NamingInitialisms feature: apply initialism rules to camelCase identifiers
+	rules       *naming.Ruleset // custom initialism ruleset, nil means package default
 
 	log *zap.Logger
 }
 
 // namer returns an identifier generator configured for this schemaGen.
 func (g *schemaGen) namer() namer {
-	return namer{initialisms: g.initialisms}
+	return namer{initialisms: g.initialisms, rules: g.rules}
 }
 
 func newSchemaGen(lookupRef func(ref jsonschema.Ref) (*ir.Type, bool)) *schemaGen {

@@ -244,6 +244,13 @@
           "type": "string",
           "description": "Default encoding to use for wildcard content types (e.g. */* or application/*) when the schema is not binary. If empty, wildcard content types are treated as unsupported.\n",
           "default": ""
+        },
+        "initialisms": {
+          "type": "array",
+          "description": "Customizes the initialism rules applied when generating Go identifiers (e.g. id -> ID, url -> URL). Mirrors staticcheck's \"initialisms\" option: omit to use the built-in set; include the special value \"inherit\" to splice in the built-in set and add more on top; list without \"inherit\" to replace the built-in set entirely; an explicit empty list disables all initialisms.\n",
+          "items": {
+            "type": "string"
+          }
         }
       }
     },

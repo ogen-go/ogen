@@ -49,8 +49,9 @@ type nameGen struct {
 	src   []rune
 	pos   int
 
-	allowSpecial bool // special characters like +, -, /
-	initialisms  bool // treat lower->upper case transitions as word boundaries
+	allowSpecial bool            // special characters like +, -, /
+	initialisms  bool            // treat lower->upper case transitions as word boundaries
+	rules        *naming.Ruleset // custom initialism ruleset, nil means package default
 }
 
 func (g *nameGen) next() (rune, bool) {
@@ -169,10 +170,20 @@ func (g *nameGen) isAllowed(r rune) bool {
 }
 
 func (g *nameGen) checkPart(part string) string {
-	if rule, ok := naming.Rule(part); ok {
+	rule, ok := g.ruleFor(part)
+	if ok {
 		return rule
 	}
 	return part
+}
+
+// ruleFor looks up the initialism rule for part, using the configured ruleset
+// if any, or the package default otherwise.
+func (g *nameGen) ruleFor(part string) (string, bool) {
+	if g.rules != nil {
+		return g.rules.Rule(part)
+	}
+	return naming.Rule(part)
 }
 
 // namer generates Go identifiers from arbitrary strings.
@@ -182,6 +193,7 @@ func (g *nameGen) checkPart(part string) string {
 // (see nameGen.initialisms and the [NamingInitialisms] feature).
 type namer struct {
 	initialisms bool
+	rules       *naming.Ruleset // custom initialism ruleset, nil means package default
 }
 
 func (n namer) cleanSpecial(strs ...string) string {
@@ -189,6 +201,7 @@ func (n namer) cleanSpecial(strs ...string) string {
 		src:          []rune(strings.Join(strs, " ")),
 		allowSpecial: true,
 		initialisms:  n.initialisms,
+		rules:        n.rules,
 	}).clean()
 }
 
@@ -196,6 +209,7 @@ func (n namer) pascal(strs ...string) (string, error) {
 	return (&nameGen{
 		src:         []rune(strings.Join(strs, " ")),
 		initialisms: n.initialisms,
+		rules:       n.rules,
 	}).generate()
 }
 
@@ -204,6 +218,7 @@ func (n namer) pascalSpecial(strs ...string) (string, error) {
 		src:          []rune(strings.Join(strs, " ")),
 		allowSpecial: true,
 		initialisms:  n.initialisms,
+		rules:        n.rules,
 	}).generate()
 }
 
