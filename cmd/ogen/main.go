@@ -265,6 +265,18 @@ func (s *stringSliceFlag) Set(value string) error {
 	return nil
 }
 
+// isFlagSet reports whether the named flag was explicitly provided on the
+// command line, even if its parsed value is empty.
+func isFlagSet(set *flag.FlagSet, name string) bool {
+	found := false
+	set.Visit(func(f *flag.Flag) {
+		if f.Name == name {
+			found = true
+		}
+	})
+	return found
+}
+
 func loadConfig(cfgPath string, log *zap.Logger) (opts gen.Options, _ error) {
 	opts.Logger = log
 
@@ -341,7 +353,8 @@ func run() error {
 	logOptions.RegisterFlags(set)
 	set.Var(&initialisms, "initialisms",
 		"Replace the initialism set with this list (e.g. ID,URL,API), overriding the config file. "+
-			"Repeatable or comma-separated. Include \"inherit\" to keep the built-in set.")
+			"Repeatable or comma-separated. Include \"inherit\" to keep the built-in set, "+
+			"or pass an empty value to disable all initialisms.")
 	set.Var(&extraInitialisms, "initialisms-extra",
 		"Extra initialisms to apply during naming, on top of the active set (e.g. FQDN). Repeatable or comma-separated.")
 
@@ -416,9 +429,15 @@ func run() error {
 		strictVal := false
 		opts.Parser.AllowCrossTypeConstraints = &strictVal
 	}
-	// -initialisms replaces the configured list entirely.
-	if len(initialisms) > 0 {
-		opts.Generator.Initialisms = gen.Initialisms(initialisms)
+	// -initialisms replaces the configured list entirely. An explicitly provided
+	// but empty value disables all initialisms, matching `initialisms: []` in the
+	// config file.
+	if isFlagSet(set, "initialisms") {
+		list := gen.Initialisms(initialisms)
+		if list == nil {
+			list = gen.Initialisms{}
+		}
+		opts.Generator.Initialisms = list
 	}
 	// -initialisms-extra adds on top of the active set. When initialisms are not
 	// configured (nil), the active set is the built-in default, so splice it in

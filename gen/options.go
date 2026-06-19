@@ -10,7 +10,6 @@ import (
 	"runtime"
 	"slices"
 	"strings"
-	"unicode"
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/yaml"
@@ -221,17 +220,25 @@ const InitialismsInherit = "inherit"
 //   - a list without "inherit": the built-in set is discarded and only the
 //     listed initialisms are used.
 //   - an explicit empty list ([]): no initialisms are applied at all.
+//
+// Like the built-in set, custom initialisms always apply to whole word parts
+// (snake_case segments, standalone names). Splitting a camelCase token so that
+// a sub-word can match (e.g. "serverFqdn" -> "ServerFQDN") additionally
+// requires the [NamingInitialisms] feature.
 type Initialisms []string
 
 // validInitialism reports whether s is usable as an initialism. Initialisms
-// become parts of Go identifiers, so they must be non-empty and contain only
+// become parts of Go identifiers and are matched against ASCII-only word parts
+// (see nameGen.isAllowed), so they must be non-empty and contain only ASCII
 // letters and digits (matching the built-in set, e.g. "UTF8", "OAuth2").
 func validInitialism(s string) bool {
 	if s == "" {
 		return false
 	}
 	for _, r := range s {
-		if !unicode.IsLetter(r) && !unicode.IsDigit(r) {
+		isLetter := (r >= 'a' && r <= 'z') || (r >= 'A' && r <= 'Z')
+		isDigit := r >= '0' && r <= '9'
+		if !isLetter && !isDigit {
 			return false
 		}
 	}
@@ -253,7 +260,7 @@ func (in Initialisms) build() (*naming.Ruleset, error) {
 			continue
 		}
 		if !validInitialism(v) {
-			return nil, errors.Errorf("invalid initialism %q: must be non-empty and contain only letters and digits", v)
+			return nil, errors.Errorf("invalid initialism %q: must be non-empty and contain only ASCII letters and digits", v)
 		}
 		rs.Add(v)
 	}

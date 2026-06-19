@@ -160,7 +160,10 @@ func TestInitialismsBuild(t *testing.T) {
 		require.Equal(t, "Id", got)
 	})
 	t.Run("Invalid", func(t *testing.T) {
-		for _, bad := range []string{"", "FOO BAR", "foo-bar"} {
+		// Empty, separators, and non-ASCII runes are rejected: the latter could
+		// never match ASCII-only word parts, so we fail loudly instead of
+		// silently ignoring them.
+		for _, bad := range []string{"", "FOO BAR", "foo-bar", "Café", "Ä"} {
 			_, err := Initialisms{bad}.build()
 			require.Error(t, err, "%q should be rejected", bad)
 		}
@@ -174,6 +177,7 @@ func TestInitialismsCustomE2E(t *testing.T) {
 		Type: "object",
 		Properties: []ogen.Property{
 			{Name: "fqdn", Schema: &ogen.Schema{Type: "string"}},
+			{Name: "serverFqdn", Schema: &ogen.Schema{Type: "string"}},
 		},
 	}
 	spec := &ogen.Spec{
@@ -208,15 +212,30 @@ func TestInitialismsCustomE2E(t *testing.T) {
 		return fields
 	}
 
-	// Without customization, "fqdn" is not an initialism.
-	off := fieldNames(t, Options{})
-	require.Contains(t, off, "Fqdn")
+	custom := Initialisms{InitialismsInherit, "FQDN"}
 
-	// With FQDN added on top of the built-in set, the field is uppercased.
-	on := fieldNames(t, Options{
+	// Without customization, "fqdn" is not an initialism.
+	builtin := fieldNames(t, Options{})
+	require.Contains(t, builtin, "Fqdn")
+	require.Contains(t, builtin, "ServerFqdn")
+
+	// A custom initialism applies to whole word parts (the standalone "fqdn"
+	// property), but the camelCase "serverFqdn" is not split without the feature,
+	// so its "Fqdn" sub-word stays untouched.
+	customNoFeature := fieldNames(t, Options{
+		Generator: GenerateOptions{Initialisms: custom},
+	})
+	require.Contains(t, customNoFeature, "FQDN")
+	require.Contains(t, customNoFeature, "ServerFqdn")
+
+	// With the NamingInitialisms feature, the camelCase token is split and the
+	// custom initialism matches the sub-word too.
+	customWithFeature := fieldNames(t, Options{
 		Generator: GenerateOptions{
-			Initialisms: Initialisms{InitialismsInherit, "FQDN"},
+			Features:    &FeatureOptions{Enable: FeatureSet{NamingInitialisms.Name: {}}},
+			Initialisms: custom,
 		},
 	})
-	require.Contains(t, on, "FQDN")
+	require.Contains(t, customWithFeature, "FQDN")
+	require.Contains(t, customWithFeature, "ServerFQDN")
 }
