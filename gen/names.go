@@ -190,7 +190,7 @@ func (g *nameGen) ruleFor(part string) (string, bool) {
 //
 // The zero value preserves ogen's historical naming behavior. A namer with
 // initialisms set additionally applies the initialism rules to camelCase input
-// (see nameGen.initialisms and the [NamingInitialisms] feature).
+// (see nameGen.initialisms and the [NamingCamelInitialisms] feature).
 type namer struct {
 	initialisms bool
 	rules       *naming.Ruleset // custom initialism ruleset, nil means package default
@@ -256,7 +256,7 @@ func (n namer) camelSpecial(s ...string) (string, error) {
 
 // Package-level helpers (initialisms disabled) for callers without a configured
 // namer: standalone funcs on already-generated names and template helpers.
-// Naming that honors [NamingInitialisms] uses a namer instead (see Generator.namer).
+// Naming that honors [NamingCamelInitialisms] uses a namer instead (see Generator.namer).
 
 func pascal(strs ...string) (string, error) { return namer{}.pascal(strs...) }
 

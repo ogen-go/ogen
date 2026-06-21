@@ -83,6 +83,24 @@ func TestDefault(t *testing.T) {
 				}
 				return b
 			}(),
+			Strings: []string{"all"},
+			Priorities: []api.DefaultTestPrioritiesItem{
+				api.DefaultTestPrioritiesItemMedium,
+				api.DefaultTestPrioritiesItemHigh,
+			},
+			Nested: [][]int{{1, 2}, {3}},
+			Objs: []api.DefaultTestObjsItem{
+				{
+					Name:  api.NewOptString("x"),
+					Count: api.NewOptInt(5),
+				},
+			},
+			Shapes: []api.DefaultShape{
+				api.NewDefaultCircleDefaultShape(api.DefaultCircle{Kind: "circle", Radius: 5}),
+			},
+			Labels: []api.DefaultTestLabelsItem{
+				{"a": "x"},
+			},
 		}
 
 		cb(&defaultValue)

@@ -1004,6 +1004,7 @@ func decodeTestQueryParameterParams(args [0]string, argsEscaped bool, r *http.Re
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				params.BooleanArray = nil
 				return d.DecodeArray(func(d uri.Decoder) error {
 					var paramsDotBooleanArrayVal bool
 					if err := func() error {
@@ -1093,6 +1094,7 @@ func decodeTestQueryParameterParams(args [0]string, argsEscaped bool, r *http.Re
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				params.IntegerArray = nil
 				return d.DecodeArray(func(d uri.Decoder) error {
 					var paramsDotIntegerArrayVal int
 					if err := func() error {
@@ -1182,6 +1184,7 @@ func decodeTestQueryParameterParams(args [0]string, argsEscaped bool, r *http.Re
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				params.IntegerInt16Array = nil
 				return d.DecodeArray(func(d uri.Decoder) error {
 					var paramsDotIntegerInt16ArrayVal int16
 					if err := func() error {
@@ -1271,6 +1274,7 @@ func decodeTestQueryParameterParams(args [0]string, argsEscaped bool, r *http.Re
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				params.IntegerInt32Array = nil
 				return d.DecodeArray(func(d uri.Decoder) error {
 					var paramsDotIntegerInt32ArrayVal int32
 					if err := func() error {
@@ -1360,6 +1364,7 @@ func decodeTestQueryParameterParams(args [0]string, argsEscaped bool, r *http.Re
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				params.IntegerInt64Array = nil
 				return d.DecodeArray(func(d uri.Decoder) error {
 					var paramsDotIntegerInt64ArrayVal int64
 					if err := func() error {
@@ -1449,6 +1454,7 @@ func decodeTestQueryParameterParams(args [0]string, argsEscaped bool, r *http.Re
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				params.IntegerInt8Array = nil
 				return d.DecodeArray(func(d uri.Decoder) error {
 					var paramsDotIntegerInt8ArrayVal int8
 					if err := func() error {
@@ -1574,6 +1580,7 @@ func decodeTestQueryParameterParams(args [0]string, argsEscaped bool, r *http.Re
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				params.IntegerUint16Array = nil
 				return d.DecodeArray(func(d uri.Decoder) error {
 					var paramsDotIntegerUint16ArrayVal uint16
 					if err := func() error {
@@ -1663,6 +1670,7 @@ func decodeTestQueryParameterParams(args [0]string, argsEscaped bool, r *http.Re
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				params.IntegerUint32Array = nil
 				return d.DecodeArray(func(d uri.Decoder) error {
 					var paramsDotIntegerUint32ArrayVal uint32
 					if err := func() error {
@@ -1752,6 +1760,7 @@ func decodeTestQueryParameterParams(args [0]string, argsEscaped bool, r *http.Re
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				params.IntegerUint64Array = nil
 				return d.DecodeArray(func(d uri.Decoder) error {
 					var paramsDotIntegerUint64ArrayVal uint64
 					if err := func() error {
@@ -1841,6 +1850,7 @@ func decodeTestQueryParameterParams(args [0]string, argsEscaped bool, r *http.Re
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				params.IntegerUint8Array = nil
 				return d.DecodeArray(func(d uri.Decoder) error {
 					var paramsDotIntegerUint8ArrayVal uint8
 					if err := func() error {
@@ -1894,6 +1904,7 @@ func decodeTestQueryParameterParams(args [0]string, argsEscaped bool, r *http.Re
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				params.IntegerUintArray = nil
 				return d.DecodeArray(func(d uri.Decoder) error {
 					var paramsDotIntegerUintArrayVal uint
 					if err := func() error {
@@ -2019,6 +2030,7 @@ func decodeTestQueryParameterParams(args [0]string, argsEscaped bool, r *http.Re
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				params.IntegerUnixMicroArray = nil
 				return d.DecodeArray(func(d uri.Decoder) error {
 					var paramsDotIntegerUnixMicroArrayVal time.Time
 					if err := func() error {
@@ -2108,6 +2120,7 @@ func decodeTestQueryParameterParams(args [0]string, argsEscaped bool, r *http.Re
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				params.IntegerUnixMilliArray = nil
 				return d.DecodeArray(func(d uri.Decoder) error {
 					var paramsDotIntegerUnixMilliArrayVal time.Time
 					if err := func() error {
@@ -2197,6 +2210,7 @@ func decodeTestQueryParameterParams(args [0]string, argsEscaped bool, r *http.Re
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				params.IntegerUnixNanoArray = nil
 				return d.DecodeArray(func(d uri.Decoder) error {
 					var paramsDotIntegerUnixNanoArrayVal time.Time
 					if err := func() error {
@@ -2286,6 +2300,7 @@ func decodeTestQueryParameterParams(args [0]string, argsEscaped bool, r *http.Re
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				params.IntegerUnixSecondsArray = nil
 				return d.DecodeArray(func(d uri.Decoder) error {
 					var paramsDotIntegerUnixSecondsArrayVal time.Time
 					if err := func() error {
@@ -2339,6 +2354,7 @@ func decodeTestQueryParameterParams(args [0]string, argsEscaped bool, r *http.Re
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				params.IntegerUnixArray = nil
 				return d.DecodeArray(func(d uri.Decoder) error {
 					var paramsDotIntegerUnixArrayVal time.Time
 					if err := func() error {
@@ -2436,6 +2452,7 @@ func decodeTestQueryParameterParams(args [0]string, argsEscaped bool, r *http.Re
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				params.NumberArray = nil
 				return d.DecodeArray(func(d uri.Decoder) error {
 					var paramsDotNumberArrayVal float64
 					if err := func() error {
@@ -2542,6 +2559,7 @@ func decodeTestQueryParameterParams(args [0]string, argsEscaped bool, r *http.Re
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				params.NumberDecimalArray = nil
 				return d.DecodeArray(func(d uri.Decoder) error {
 					var paramsDotNumberDecimalArrayVal decimal.Decimal
 					if err := func() error {
@@ -2639,6 +2657,7 @@ func decodeTestQueryParameterParams(args [0]string, argsEscaped bool, r *http.Re
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				params.NumberDoubleArray = nil
 				return d.DecodeArray(func(d uri.Decoder) error {
 					var paramsDotNumberDoubleArrayVal float64
 					if err := func() error {
@@ -2753,6 +2772,7 @@ func decodeTestQueryParameterParams(args [0]string, argsEscaped bool, r *http.Re
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				params.NumberFloatArray = nil
 				return d.DecodeArray(func(d uri.Decoder) error {
 					var paramsDotNumberFloatArrayVal float32
 					if err := func() error {
@@ -2859,6 +2879,7 @@ func decodeTestQueryParameterParams(args [0]string, argsEscaped bool, r *http.Re
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				params.NumberInt32Array = nil
 				return d.DecodeArray(func(d uri.Decoder) error {
 					var paramsDotNumberInt32ArrayVal int32
 					if err := func() error {
@@ -2948,6 +2969,7 @@ func decodeTestQueryParameterParams(args [0]string, argsEscaped bool, r *http.Re
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				params.NumberInt64Array = nil
 				return d.DecodeArray(func(d uri.Decoder) error {
 					var paramsDotNumberInt64ArrayVal int64
 					if err := func() error {
@@ -3037,6 +3059,7 @@ func decodeTestQueryParameterParams(args [0]string, argsEscaped bool, r *http.Re
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				params.StringArray = nil
 				return d.DecodeArray(func(d uri.Decoder) error {
 					var paramsDotStringArrayVal string
 					if err := func() error {
@@ -3126,6 +3149,7 @@ func decodeTestQueryParameterParams(args [0]string, argsEscaped bool, r *http.Re
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				params.StringBase64Array = nil
 				return d.DecodeArray(func(d uri.Decoder) error {
 					var paramsDotStringBase64ArrayVal []byte
 					if err := func() error {
@@ -3215,6 +3239,7 @@ func decodeTestQueryParameterParams(args [0]string, argsEscaped bool, r *http.Re
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				params.StringBinaryArray = nil
 				return d.DecodeArray(func(d uri.Decoder) error {
 					var paramsDotStringBinaryArrayVal string
 					if err := func() error {
@@ -3304,6 +3329,7 @@ func decodeTestQueryParameterParams(args [0]string, argsEscaped bool, r *http.Re
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				params.StringByteArray = nil
 				return d.DecodeArray(func(d uri.Decoder) error {
 					var paramsDotStringByteArrayVal []byte
 					if err := func() error {
@@ -3429,6 +3455,7 @@ func decodeTestQueryParameterParams(args [0]string, argsEscaped bool, r *http.Re
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				params.StringDateTimeArray = nil
 				return d.DecodeArray(func(d uri.Decoder) error {
 					var paramsDotStringDateTimeArrayVal time.Time
 					if err := func() error {
@@ -3482,6 +3509,7 @@ func decodeTestQueryParameterParams(args [0]string, argsEscaped bool, r *http.Re
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				params.StringDateArray = nil
 				return d.DecodeArray(func(d uri.Decoder) error {
 					var paramsDotStringDateArrayVal time.Time
 					if err := func() error {
@@ -3571,6 +3599,7 @@ func decodeTestQueryParameterParams(args [0]string, argsEscaped bool, r *http.Re
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				params.StringDecimalArray = nil
 				return d.DecodeArray(func(d uri.Decoder) error {
 					var paramsDotStringDecimalArrayVal decimal.Decimal
 					if err := func() error {
@@ -3660,6 +3689,7 @@ func decodeTestQueryParameterParams(args [0]string, argsEscaped bool, r *http.Re
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				params.StringDurationArray = nil
 				return d.DecodeArray(func(d uri.Decoder) error {
 					var paramsDotStringDurationArrayVal time.Duration
 					if err := func() error {
@@ -3769,6 +3799,7 @@ func decodeTestQueryParameterParams(args [0]string, argsEscaped bool, r *http.Re
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				params.StringEmailArray = nil
 				return d.DecodeArray(func(d uri.Decoder) error {
 					var paramsDotStringEmailArrayVal string
 					if err := func() error {
@@ -3895,6 +3926,7 @@ func decodeTestQueryParameterParams(args [0]string, argsEscaped bool, r *http.Re
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				params.StringFloat32Array = nil
 				return d.DecodeArray(func(d uri.Decoder) error {
 					var paramsDotStringFloat32ArrayVal float32
 					if err := func() error {
@@ -4009,6 +4041,7 @@ func decodeTestQueryParameterParams(args [0]string, argsEscaped bool, r *http.Re
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				params.StringFloat64Array = nil
 				return d.DecodeArray(func(d uri.Decoder) error {
 					var paramsDotStringFloat64ArrayVal float64
 					if err := func() error {
@@ -4135,6 +4168,7 @@ func decodeTestQueryParameterParams(args [0]string, argsEscaped bool, r *http.Re
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				params.StringHostnameArray = nil
 				return d.DecodeArray(func(d uri.Decoder) error {
 					var paramsDotStringHostnameArrayVal string
 					if err := func() error {
@@ -4253,6 +4287,7 @@ func decodeTestQueryParameterParams(args [0]string, argsEscaped bool, r *http.Re
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				params.StringHTTPDateArray = nil
 				return d.DecodeArray(func(d uri.Decoder) error {
 					var paramsDotStringHTTPDateArrayVal time.Time
 					if err := func() error {
@@ -4378,6 +4413,7 @@ func decodeTestQueryParameterParams(args [0]string, argsEscaped bool, r *http.Re
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				params.StringInt16Array = nil
 				return d.DecodeArray(func(d uri.Decoder) error {
 					var paramsDotStringInt16ArrayVal int16
 					if err := func() error {
@@ -4467,6 +4503,7 @@ func decodeTestQueryParameterParams(args [0]string, argsEscaped bool, r *http.Re
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				params.StringInt32Array = nil
 				return d.DecodeArray(func(d uri.Decoder) error {
 					var paramsDotStringInt32ArrayVal int32
 					if err := func() error {
@@ -4556,6 +4593,7 @@ func decodeTestQueryParameterParams(args [0]string, argsEscaped bool, r *http.Re
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				params.StringInt64Array = nil
 				return d.DecodeArray(func(d uri.Decoder) error {
 					var paramsDotStringInt64ArrayVal int64
 					if err := func() error {
@@ -4645,6 +4683,7 @@ func decodeTestQueryParameterParams(args [0]string, argsEscaped bool, r *http.Re
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				params.StringInt8Array = nil
 				return d.DecodeArray(func(d uri.Decoder) error {
 					var paramsDotStringInt8ArrayVal int8
 					if err := func() error {
@@ -4698,6 +4737,7 @@ func decodeTestQueryParameterParams(args [0]string, argsEscaped bool, r *http.Re
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				params.StringIntArray = nil
 				return d.DecodeArray(func(d uri.Decoder) error {
 					var paramsDotStringIntArrayVal int
 					if err := func() error {
@@ -4787,6 +4827,7 @@ func decodeTestQueryParameterParams(args [0]string, argsEscaped bool, r *http.Re
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				params.StringIPArray = nil
 				return d.DecodeArray(func(d uri.Decoder) error {
 					var paramsDotStringIPArrayVal netip.Addr
 					if err := func() error {
@@ -4876,6 +4917,7 @@ func decodeTestQueryParameterParams(args [0]string, argsEscaped bool, r *http.Re
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				params.StringIpv4Array = nil
 				return d.DecodeArray(func(d uri.Decoder) error {
 					var paramsDotStringIpv4ArrayVal netip.Addr
 					if err := func() error {
@@ -4965,6 +5007,7 @@ func decodeTestQueryParameterParams(args [0]string, argsEscaped bool, r *http.Re
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				params.StringIpv6Array = nil
 				return d.DecodeArray(func(d uri.Decoder) error {
 					var paramsDotStringIpv6ArrayVal netip.Addr
 					if err := func() error {
@@ -5054,6 +5097,7 @@ func decodeTestQueryParameterParams(args [0]string, argsEscaped bool, r *http.Re
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				params.StringMACArray = nil
 				return d.DecodeArray(func(d uri.Decoder) error {
 					var paramsDotStringMACArrayVal net.HardwareAddr
 					if err := func() error {
@@ -5143,6 +5187,7 @@ func decodeTestQueryParameterParams(args [0]string, argsEscaped bool, r *http.Re
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				params.StringPasswordArray = nil
 				return d.DecodeArray(func(d uri.Decoder) error {
 					var paramsDotStringPasswordArrayVal string
 					if err := func() error {
@@ -5232,6 +5277,7 @@ func decodeTestQueryParameterParams(args [0]string, argsEscaped bool, r *http.Re
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				params.StringTimeArray = nil
 				return d.DecodeArray(func(d uri.Decoder) error {
 					var paramsDotStringTimeArrayVal time.Time
 					if err := func() error {
@@ -5357,6 +5403,7 @@ func decodeTestQueryParameterParams(args [0]string, argsEscaped bool, r *http.Re
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				params.StringUint16Array = nil
 				return d.DecodeArray(func(d uri.Decoder) error {
 					var paramsDotStringUint16ArrayVal uint16
 					if err := func() error {
@@ -5446,6 +5493,7 @@ func decodeTestQueryParameterParams(args [0]string, argsEscaped bool, r *http.Re
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				params.StringUint32Array = nil
 				return d.DecodeArray(func(d uri.Decoder) error {
 					var paramsDotStringUint32ArrayVal uint32
 					if err := func() error {
@@ -5535,6 +5583,7 @@ func decodeTestQueryParameterParams(args [0]string, argsEscaped bool, r *http.Re
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				params.StringUint64Array = nil
 				return d.DecodeArray(func(d uri.Decoder) error {
 					var paramsDotStringUint64ArrayVal uint64
 					if err := func() error {
@@ -5624,6 +5673,7 @@ func decodeTestQueryParameterParams(args [0]string, argsEscaped bool, r *http.Re
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				params.StringUint8Array = nil
 				return d.DecodeArray(func(d uri.Decoder) error {
 					var paramsDotStringUint8ArrayVal uint8
 					if err := func() error {
@@ -5677,6 +5727,7 @@ func decodeTestQueryParameterParams(args [0]string, argsEscaped bool, r *http.Re
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				params.StringUintArray = nil
 				return d.DecodeArray(func(d uri.Decoder) error {
 					var paramsDotStringUintArrayVal uint
 					if err := func() error {
@@ -5802,6 +5853,7 @@ func decodeTestQueryParameterParams(args [0]string, argsEscaped bool, r *http.Re
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				params.StringUnixMicroArray = nil
 				return d.DecodeArray(func(d uri.Decoder) error {
 					var paramsDotStringUnixMicroArrayVal time.Time
 					if err := func() error {
@@ -5891,6 +5943,7 @@ func decodeTestQueryParameterParams(args [0]string, argsEscaped bool, r *http.Re
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				params.StringUnixMilliArray = nil
 				return d.DecodeArray(func(d uri.Decoder) error {
 					var paramsDotStringUnixMilliArrayVal time.Time
 					if err := func() error {
@@ -5980,6 +6033,7 @@ func decodeTestQueryParameterParams(args [0]string, argsEscaped bool, r *http.Re
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				params.StringUnixNanoArray = nil
 				return d.DecodeArray(func(d uri.Decoder) error {
 					var paramsDotStringUnixNanoArrayVal time.Time
 					if err := func() error {
@@ -6069,6 +6123,7 @@ func decodeTestQueryParameterParams(args [0]string, argsEscaped bool, r *http.Re
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				params.StringUnixSecondsArray = nil
 				return d.DecodeArray(func(d uri.Decoder) error {
 					var paramsDotStringUnixSecondsArrayVal time.Time
 					if err := func() error {
@@ -6122,6 +6177,7 @@ func decodeTestQueryParameterParams(args [0]string, argsEscaped bool, r *http.Re
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				params.StringUnixArray = nil
 				return d.DecodeArray(func(d uri.Decoder) error {
 					var paramsDotStringUnixArrayVal time.Time
 					if err := func() error {
@@ -6211,6 +6267,7 @@ func decodeTestQueryParameterParams(args [0]string, argsEscaped bool, r *http.Re
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				params.StringURIArray = nil
 				return d.DecodeArray(func(d uri.Decoder) error {
 					var paramsDotStringURIArrayVal url.URL
 					if err := func() error {
@@ -6300,6 +6357,7 @@ func decodeTestQueryParameterParams(args [0]string, argsEscaped bool, r *http.Re
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				params.StringUUIDArray = nil
 				return d.DecodeArray(func(d uri.Decoder) error {
 					var paramsDotStringUUIDArrayVal uuid.UUID
 					if err := func() error {

@@ -63,7 +63,7 @@ func TestInitialismsFeatureE2E(t *testing.T) {
 	gen := func(t *testing.T, enable bool) map[string]struct{} {
 		opts := Options{}
 		if enable {
-			opts.Generator.Features = &FeatureOptions{Enable: FeatureSet{NamingInitialisms.Name: {}}}
+			opts.Generator.Features = &FeatureOptions{Enable: FeatureSet{NamingCamelInitialisms.Name: {}}}
 		}
 		g, err := NewGenerator(spec, opts)
 		require.NoError(t, err)
@@ -228,11 +228,11 @@ func TestInitialismsCustomE2E(t *testing.T) {
 	require.Contains(t, customNoFeature, "FQDN")
 	require.Contains(t, customNoFeature, "ServerFqdn")
 
-	// With the NamingInitialisms feature, the camelCase token is split and the
-	// custom initialism matches the sub-word too.
+	// With the NamingCamelInitialisms feature, the camelCase token is split and
+	// the custom initialism matches the sub-word too.
 	customWithFeature := fieldNames(t, Options{
 		Generator: GenerateOptions{
-			Features:    &FeatureOptions{Enable: FeatureSet{NamingInitialisms.Name: {}}},
+			Features:    &FeatureOptions{Enable: FeatureSet{NamingCamelInitialisms.Name: {}}},
 			Initialisms: custom,
 		},
 	})

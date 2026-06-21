@@ -64,7 +64,7 @@ func TestNames(t *testing.T) {
 		{"foo+bar", "FooBar", false, false, false},
 		{"+1", "Plus1", true, false, false},
 
-		// NamingInitialisms feature: lower->upper transitions inside a
+		// NamingCamelInitialisms feature: lower->upper transitions inside a
 		// camelCase token are treated as word boundaries, so the initialism
 		// rules fire on camelCase input the same way they do on snake_case.
 		{"userId", "UserID", false, true, false},

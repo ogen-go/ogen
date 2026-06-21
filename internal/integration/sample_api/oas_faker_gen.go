@@ -145,6 +145,44 @@ func (s *DataDescription) SetFake() {
 }
 
 // SetFake set fake values.
+func (s *DefaultCircle) SetFake() {
+	{
+		{
+			s.Kind = "string"
+		}
+	}
+	{
+		{
+			s.Radius = int(0)
+		}
+	}
+}
+
+// SetFake set fake values.
+func (s *DefaultShape) SetFake() {
+	var variant DefaultCircle
+
+	{
+		variant.SetFake()
+	}
+	s.SetDefaultCircle(variant)
+}
+
+// SetFake set fake values.
+func (s *DefaultSquare) SetFake() {
+	{
+		{
+			s.Kind = "string"
+		}
+	}
+	{
+		{
+			s.Side = int(0)
+		}
+	}
+}
+
+// SetFake set fake values.
 func (s *DefaultTest) SetFake() {
 	{
 		{
@@ -221,11 +259,120 @@ func (s *DefaultTest) SetFake() {
 			s.Base64 = []byte("[]byte")
 		}
 	}
+	{
+		{
+			s.Strings = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+				{
+					elem = "string"
+				}
+				s.Strings = append(s.Strings, elem)
+			}
+		}
+	}
+	{
+		{
+			s.Priorities = nil
+			for i := 0; i < 0; i++ {
+				var elem DefaultTestPrioritiesItem
+				{
+					elem.SetFake()
+				}
+				s.Priorities = append(s.Priorities, elem)
+			}
+		}
+	}
+	{
+		{
+			s.Nested = nil
+			for i := 0; i < 0; i++ {
+				var elem []int
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int
+						{
+							elemElem = int(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.Nested = append(s.Nested, elem)
+			}
+		}
+	}
+	{
+		{
+			s.Objs = nil
+			for i := 0; i < 0; i++ {
+				var elem DefaultTestObjsItem
+				{
+					elem.SetFake()
+				}
+				s.Objs = append(s.Objs, elem)
+			}
+		}
+	}
+	{
+		{
+			s.Shapes = nil
+			for i := 0; i < 0; i++ {
+				var elem DefaultShape
+				{
+					elem.SetFake()
+				}
+				s.Shapes = append(s.Shapes, elem)
+			}
+		}
+	}
+	{
+		{
+			s.Labels = nil
+			for i := 0; i < 0; i++ {
+				var elem DefaultTestLabelsItem
+				{
+					elem.SetFake()
+				}
+				s.Labels = append(s.Labels, elem)
+			}
+		}
+	}
 }
 
 // SetFake set fake values.
 func (s *DefaultTestEnum) SetFake() {
 	*s = DefaultTestEnumBig
+}
+
+// SetFake set fake values.
+func (s *DefaultTestLabelsItem) SetFake() {
+	var (
+		elem string
+		m    map[string]string = s.init()
+	)
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
+	}
+}
+
+// SetFake set fake values.
+func (s *DefaultTestObjsItem) SetFake() {
+	{
+		{
+			s.Name.SetFake()
+		}
+	}
+	{
+		{
+			s.Count.SetFake()
+		}
+	}
+}
+
+// SetFake set fake values.
+func (s *DefaultTestPrioritiesItem) SetFake() {
+	*s = DefaultTestPrioritiesItemLow
 }
 
 // SetFake set fake values.

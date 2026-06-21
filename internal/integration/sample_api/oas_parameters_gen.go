@@ -392,7 +392,8 @@ func decodeDataGetFormatParams(args [5]string, argsEscaped bool, r *http.Request
 
 // DefaultTestParams is parameters of defaultTest operation.
 type DefaultTestParams struct {
-	Default OptInt32 `json:",omitempty,omitzero"`
+	Default      OptInt32 `json:",omitempty,omitzero"`
+	ArrayDefault []string `json:",omitempty"`
 }
 
 func unpackDefaultTestParams(packed middleware.Parameters) (params DefaultTestParams) {
@@ -403,6 +404,15 @@ func unpackDefaultTestParams(packed middleware.Parameters) (params DefaultTestPa
 		}
 		if v, ok := packed[key]; ok {
 			params.Default = v.(OptInt32)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "arrayDefault",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ArrayDefault = v.([]string)
 		}
 	}
 	return params
@@ -452,6 +462,69 @@ func decodeDefaultTestParams(args [0]string, argsEscaped bool, r *http.Request) 
 	}(); err != nil {
 		return params, &ogenerrors.DecodeParamError{
 			Name: "default",
+			In:   "query",
+			Err:  err,
+		}
+	}
+	// Set default value for query: arrayDefault.
+	{
+		var defaultVal0 []string
+		{
+			var defaultVal0Elem string
+
+			val := string("a")
+			defaultVal0Elem = val
+			defaultVal0 = append(defaultVal0, defaultVal0Elem)
+		}
+		{
+			var defaultVal0Elem string
+
+			val := string("b")
+			defaultVal0Elem = val
+			defaultVal0 = append(defaultVal0, defaultVal0Elem)
+		}
+		params.ArrayDefault = defaultVal0
+	}
+	// Decode query: arrayDefault.
+	if err := func() error {
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "arrayDefault",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				params.ArrayDefault = nil
+				return d.DecodeArray(func(d uri.Decoder) error {
+					var paramsDotArrayDefaultVal string
+					if err := func() error {
+						val, err := d.DecodeValue()
+						if err != nil {
+							return err
+						}
+
+						c, err := conv.ToString(val)
+						if err != nil {
+							return err
+						}
+
+						paramsDotArrayDefaultVal = c
+						return nil
+					}(); err != nil {
+						return err
+					}
+					params.ArrayDefault = append(params.ArrayDefault, paramsDotArrayDefaultVal)
+					return nil
+				})
+			}); err != nil {
+				return err
+			}
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "arrayDefault",
 			In:   "query",
 			Err:  err,
 		}
@@ -737,6 +810,7 @@ func decodePetGetParams(args [0]string, argsEscaped bool, r *http.Request) (para
 		}
 		if err := h.HasParam(cfg); err == nil {
 			if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+				params.XTags = nil
 				return d.DecodeArray(func(d uri.Decoder) error {
 					var paramsDotXTagsVal uuid.UUID
 					if err := func() error {
@@ -788,6 +862,7 @@ func decodePetGetParams(args [0]string, argsEscaped bool, r *http.Request) (para
 		}
 		if err := h.HasParam(cfg); err == nil {
 			if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+				params.XScope = nil
 				return d.DecodeArray(func(d uri.Decoder) error {
 					var paramsDotXScopeVal string
 					if err := func() error {

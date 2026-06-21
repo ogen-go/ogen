@@ -224,7 +224,7 @@ const InitialismsInherit = "inherit"
 // Like the built-in set, custom initialisms always apply to whole word parts
 // (snake_case segments, standalone names). Splitting a camelCase token so that
 // a sub-word can match (e.g. "serverFqdn" -> "ServerFQDN") additionally
-// requires the [NamingInitialisms] feature.
+// requires the [NamingCamelInitialisms] feature.
 type Initialisms []string
 
 // validInitialism reports whether s is usable as an initialism. Initialisms

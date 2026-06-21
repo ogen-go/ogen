@@ -107,7 +107,7 @@
                   "ogen/otel",
                   "ogen/unimplemented",
                   "debug/example_tests",
-                  "naming/initialisms"
+                  "naming/camel_initialisms"
                 ],
                 "enumDescriptions": [
                   "Generate client code for API paths.",
@@ -152,7 +152,7 @@
                   "ogen/otel",
                   "ogen/unimplemented",
                   "debug/example_tests",
-                  "naming/initialisms"
+                  "naming/camel_initialisms"
                 ],
                 "enumDescriptions": [
                   "Disable client code generation for API paths.",

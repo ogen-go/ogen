@@ -34,7 +34,7 @@ type schemaGen struct {
 	depthCount int
 
 	request     bool            // true if generating for request body
-	initialisms bool            // NamingInitialisms feature: apply initialism rules to camelCase identifiers
+	initialisms bool            // NamingCamelInitialisms feature: apply initialism rules to camelCase identifiers
 	rules       *naming.Ruleset // custom initialism ruleset, nil means package default
 
 	log *zap.Logger
@@ -226,7 +226,9 @@ func (g *schemaGen) generate2(name string, schema *jsonschema.Schema) (ret *ir.T
 		case schema.Type == jsonschema.Object:
 			implErr = &ErrNotImplemented{Name: "object defaults"}
 		case schema.Type == jsonschema.Array:
-			implErr = &ErrNotImplemented{Name: "array defaults"}
+			if name := arrayDefaultUnsupported(schema); name != "" {
+				implErr = &ErrNotImplemented{Name: name}
+			}
 		case schema.Type == jsonschema.Empty ||
 			len(schema.AnyOf)+len(schema.OneOf) > 0:
 			implErr = &ErrNotImplemented{Name: "complex defaults"}
@@ -702,12 +704,53 @@ func (g *schemaGen) checkDefaultType(s *jsonschema.Schema, val any) error {
 		return nil
 	}
 
+	// Sum types (oneOf/anyOf) carry no single Go type. Their default is rendered
+	// by decoding the value at runtime (the template emits elem.Decode), and the
+	// spec parser already guaranteed the value is well-formed, so accept it here.
+	if len(s.OneOf)+len(s.AnyOf) > 0 {
+		return nil
+	}
+
 	var ok bool
 	switch s.Type {
 	case jsonschema.Object:
-		_, ok = val.(map[string]any)
+		var m map[string]any
+		m, ok = val.(map[string]any)
+		if ok {
+			for _, p := range s.Properties {
+				pv, has := m[p.Name]
+				if !has {
+					continue
+				}
+				if err := g.checkDefaultType(p.Schema, pv); err != nil {
+					return err
+				}
+			}
+			if s.Item != nil {
+				named := make(map[string]struct{}, len(s.Properties))
+				for _, p := range s.Properties {
+					named[p.Name] = struct{}{}
+				}
+				for k, v := range m {
+					if _, isNamed := named[k]; isNamed {
+						continue
+					}
+					if err := g.checkDefaultType(s.Item, v); err != nil {
+						return err
+					}
+				}
+			}
+		}
 	case jsonschema.Array:
-		_, ok = val.([]any)
+		var arr []any
+		arr, ok = val.([]any)
+		if ok && s.Item != nil {
+			for _, e := range arr {
+				if err := g.checkDefaultType(s.Item, e); err != nil {
+					return err
+				}
+			}
+		}
 	case jsonschema.Integer:
 		_, ok = val.(int64)
 	case jsonschema.Number:
@@ -740,6 +783,30 @@ func (g *schemaGen) checkDefaultType(s *jsonschema.Schema, val any) error {
 	}
 
 	return nil
+}
+
+// arrayDefaultUnsupported returns a non-empty ErrNotImplemented feature name when
+// the array schema's default value cannot be rendered as Go code, or "" otherwise.
+//
+// Renderable element kinds: primitives, enums, objects, maps, nested arrays, and
+// sum types (oneOf/anyOf, rendered via the variant's own Decode). Unsupported:
+// tuple/prefixItems arrays (which generate a struct, not a slice) and free-form
+// (typeless) items.
+func arrayDefaultUnsupported(s *jsonschema.Schema) string {
+	if len(s.Items) > 0 {
+		return "tuple array defaults"
+	}
+	item := s.Item
+	if item == nil {
+		return "array defaults with free-form items"
+	}
+	if item.Type == jsonschema.Array {
+		return arrayDefaultUnsupported(item)
+	}
+	if item.Type == jsonschema.Empty && len(item.OneOf)+len(item.AnyOf) == 0 {
+		return "array defaults with free-form items"
+	}
+	return ""
 }
 
 // nonPrimitiveObjectEnum generates a sum type for object enums.

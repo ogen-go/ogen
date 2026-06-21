@@ -47668,6 +47668,7 @@ func decodeMigrationsGetStatusForAuthenticatedUserParams(args [1]string, argsEsc
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				params.Exclude = nil
 				return d.DecodeArray(func(d uri.Decoder) error {
 					var paramsDotExcludeVal string
 					if err := func() error {
@@ -47842,6 +47843,7 @@ func decodeMigrationsGetStatusForOrgParams(args [2]string, argsEscaped bool, r *
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				params.Exclude = nil
 				return d.DecodeArray(func(d uri.Decoder) error {
 					var paramsDotExcludeVal MigrationsGetStatusForOrgExcludeItem
 					if err := func() error {
@@ -48225,6 +48227,7 @@ func decodeMigrationsListForOrgParams(args [1]string, argsEscaped bool, r *http.
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				params.Exclude = nil
 				return d.DecodeArray(func(d uri.Decoder) error {
 					var paramsDotExcludeVal MigrationsListForOrgExcludeItem
 					if err := func() error {

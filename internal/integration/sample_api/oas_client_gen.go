@@ -480,6 +480,32 @@ func (c *Client) sendDefaultTest(ctx context.Context, request *DefaultTest, para
 			return res, errors.Wrap(err, "encode query")
 		}
 	}
+	{
+		// Encode "arrayDefault" parameter.
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "arrayDefault",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+			if params.ArrayDefault != nil {
+				return e.EncodeArray(func(e uri.Encoder) error {
+					for i, item := range params.ArrayDefault {
+						if err := func() error {
+							return e.EncodeValue(conv.StringToString(item))
+						}(); err != nil {
+							return errors.Wrapf(err, "[%d]", i)
+						}
+					}
+					return nil
+				})
+			}
+			return nil
+		}); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+	}
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"

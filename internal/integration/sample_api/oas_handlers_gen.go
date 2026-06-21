@@ -308,6 +308,10 @@ func (s *Server) handleDefaultTestRequest(args [0]string, argsEscaped bool, w ht
 					Name: "default",
 					In:   "query",
 				}: params.Default,
+				{
+					Name: "arrayDefault",
+					In:   "query",
+				}: params.ArrayDefault,
 			},
 			Raw: r,
 		}
