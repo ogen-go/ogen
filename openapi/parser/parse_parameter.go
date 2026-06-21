@@ -356,6 +356,15 @@ func (p *parser) validateParamStyle(param *openapi.Parameter, file location.File
 			if s == nil {
 				continue
 			}
+			if s.Type == jsonschema.Null {
+				// A null branch (e.g. anyOf: [X, {"type":"null"}], the OpenAPI 3.1
+				// way of marking a parameter nullable) carries no
+				// primitive/array/object serialization shape. Nullability is handled
+				// by the generated OptNil wrapper, not by style/explode, so it
+				// imposes no style constraint as a union member. A standalone
+				// {"type":"null"} parameter schema is still rejected by check.
+				continue
+			}
 			if err := check(s); err != nil {
 				return p.wrapLocation(file, s.Locator, err)
 			}

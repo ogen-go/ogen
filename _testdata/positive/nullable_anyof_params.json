@@ -1,0 +1,86 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Nullable anyOf parameters",
+    "description": "Parameters made nullable the OpenAPI 3.1 way, using anyOf with a {\"type\": \"null\"} branch. The same shape is accepted in request bodies; this spec ensures it is also accepted in query/header parameters.",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/desktops": {
+      "get": {
+        "operationId": "listDesktops",
+        "parameters": [
+          {
+            "name": "image_type",
+            "in": "query",
+            "required": false,
+            "description": "Image type filter: 'stock', 'user', or omit for both.",
+            "schema": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/DesktopImageType"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          {
+            "name": "desktop_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          {
+            "name": "X-Trace-Id",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DesktopImageType"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "DesktopImageType": {
+        "type": "string",
+        "enum": [
+          "stock",
+          "user"
+        ]
+      }
+    }
+  }
+}

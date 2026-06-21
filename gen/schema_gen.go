@@ -180,6 +180,15 @@ func (g *schemaGen) generate2(name string, schema *jsonschema.Schema) (ret *ir.T
 		}
 	}
 
+	// Resolve the final type name before any branch that may return early
+	// (e.g. external types via x-ogen-type), so x-ogen-name is always honored.
+	// The DefaultSet and UniqueItems checks below do not depend on name.
+	if n := schema.XOgenName; n != "" {
+		name = n
+	} else if len(name) > 0 && name[0] >= '0' && name[0] <= '9' {
+		name = "R" + name
+	}
+
 	if schema.XOgenType != "" {
 		t, err := ir.External(schema)
 		if err != nil {
@@ -242,12 +251,6 @@ func (g *schemaGen) generate2(name string, schema *jsonschema.Schema) (ret *ir.T
 		if item == nil || item.Type == "" {
 			return nil, &ErrNotImplemented{Name: "empty uniqueItems"}
 		}
-	}
-
-	if n := schema.XOgenName; n != "" {
-		name = n
-	} else if len(name) > 0 && name[0] >= '0' && name[0] <= '9' {
-		name = "R" + name
 	}
 
 	var (

@@ -8,18 +8,10 @@ import (
 
 // Handler handles operations described by OpenAPI v3 specification.
 type Handler interface {
-	// Component implements component operation.
+	// ListDesktops implements listDesktops operation.
 	//
-	// GET /component
-	Component(ctx context.Context) (*ComponentOK, error)
-	// Optional implements optional operation.
-	//
-	// GET /optional
-	Optional(ctx context.Context, params OptionalParams) (*OptionalOK, error)
-	// Required implements required operation.
-	//
-	// GET /required
-	Required(ctx context.Context, params RequiredParams) (*RequiredOK, error)
+	// GET /desktops
+	ListDesktops(ctx context.Context, params ListDesktopsParams) (DesktopImageType, error)
 }
 
 // Server implements http server based on OpenAPI v3 specification and

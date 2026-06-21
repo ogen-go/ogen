@@ -13,6 +13,13 @@ type UnimplementedHandler struct{}
 
 var _ Handler = UnimplementedHandler{}
 
+// Component implements component operation.
+//
+// GET /component
+func (UnimplementedHandler) Component(ctx context.Context) (r *ComponentOK, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
 // Optional implements optional operation.
 //
 // GET /optional

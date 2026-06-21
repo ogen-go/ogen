@@ -6,6 +6,7 @@ package api
 type OperationName = string
 
 const (
-	OptionalOperation OperationName = "Optional"
-	RequiredOperation OperationName = "Required"
+	ComponentOperation OperationName = "Component"
+	OptionalOperation  OperationName = "Optional"
+	RequiredOperation  OperationName = "Required"
 )
