@@ -22,6 +22,44 @@ func TestRule(t *testing.T) {
 	}
 }
 
+func TestRuleset(t *testing.T) {
+	t.Run("NewRuleset", func(t *testing.T) {
+		a := require.New(t)
+		r := NewRuleset("FQDN", "OAuth2")
+
+		v, ok := r.Rule("fqdn")
+		a.True(ok)
+		a.Equal("FQDN", v)
+
+		// Unknown parts and empty initialisms are not registered.
+		_, ok = r.Rule("id")
+		a.False(ok)
+		a.NotPanics(func() { NewRuleset("").Add("") })
+	})
+	t.Run("DefaultRulesetIsACopy", func(t *testing.T) {
+		a := require.New(t)
+		r := DefaultRuleset()
+
+		// Mutating a copy must not affect the package default.
+		r.Add("FQDN")
+		_, ok := r.Rule("fqdn")
+		a.True(ok)
+		_, ok = Rule("fqdn")
+		a.False(ok, "package default must stay unchanged")
+	})
+	t.Run("Merge", func(t *testing.T) {
+		a := require.New(t)
+		r := NewRuleset("FOO")
+		r.Merge(NewRuleset("BAR", "FOO"))
+
+		for _, want := range []string{"FOO", "BAR"} {
+			v, ok := r.Rule(want)
+			a.True(ok)
+			a.Equal(want, v)
+		}
+	})
+}
+
 func BenchmarkRule(b *testing.B) {
 	suite := [...]string{
 		"wifi",
