@@ -288,7 +288,7 @@ func (s *Schema) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	val.plain.Type = val.Type.Type
-	val.plain.Nullable = val.plain.Nullable || val.Type.Nullable
+	val.Nullable = val.Nullable || val.Type.Nullable
 	*s = Schema(val.plain)
 	return nil
 }
