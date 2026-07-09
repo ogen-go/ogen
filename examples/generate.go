@@ -29,6 +29,7 @@ import _ "github.com/ogen-go/ogen"
 //go:generate go run github.com/ogen-go/ogen/cmd/ogen -v --clean --target ex_oauth2                                           ../_testdata/examples/petstore-oauth2.yml
 //go:generate go run github.com/ogen-go/ogen/cmd/ogen -v --clean --target ex_oauth2_scopes_and_or                             ../_testdata/examples/oauth2-scopes-and-or.yml
 //go:generate go run github.com/ogen-go/ogen/cmd/ogen -v --clean --config config/full_client.yml --target ex_wikimedia        ../_testdata/examples/wikimedia.openapi.yaml
+//go:generate go run github.com/ogen-go/ogen/cmd/ogen -v --clean --config config/with_tests.yml --target ex_nullable_type     ../_testdata/positive/nullable_type_list.yml
 
 // Partially supported:
 //
