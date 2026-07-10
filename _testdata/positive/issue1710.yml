@@ -1,0 +1,25 @@
+openapi: 3.0.3
+info:
+  title: SSE server response encoding regression (issue 1710)
+  version: 1.0.0
+paths:
+  /events:
+    get:
+      operationId: getEvents
+      responses:
+        "200":
+          description: Event stream.
+          content:
+            text/event-stream:
+              schema:
+                $ref: '#/components/schemas/EventOut'
+components:
+  schemas:
+    EventOut:
+      type: object
+      properties:
+        id:
+          type: string
+        data:
+          type: string
+      required: [id, data]

@@ -142,6 +142,9 @@ func TestGenerate(t *testing.T) {
 			"content_header_response.json": {
 				"parameter content encoding",
 			},
+			"issue1710.yml": {
+				"sse server response encoding",
+			},
 		}))
 
 	t.Run("Examples", runPositive("_testdata/examples",

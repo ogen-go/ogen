@@ -56,6 +56,55 @@ func TestParseMediaTypeSSEShapeDefault(t *testing.T) {
 	require.Equal(t, openapi.SSEEventShapeDataOnly, media.XOgenSSEEventShape)
 }
 
+func TestParseMediaTypeSSEShapeBinaryStreamDefault(t *testing.T) {
+	for name, schema := range map[string]*ogen.Schema{
+		"no schema":     nil,
+		"string":        {Type: "string"},
+		"binary string": {Type: "string", Format: "binary"},
+	} {
+		t.Run(name, func(t *testing.T) {
+			api, err := parser.Parse(sseSpec(ogen.Media{
+				Schema: schema,
+			}), parser.Settings{})
+			require.NoError(t, err)
+
+			media := api.Operations[0].Responses.StatusCode[200].Content["text/event-stream"]
+			require.Equal(t, openapi.SSEEventShapeNone, media.XOgenSSEEventShape)
+		})
+	}
+}
+
+func TestParseMediaTypeSSEShapeSumDefault(t *testing.T) {
+	// Schemas without an explicit type, e.g. oneOf sums, must stay in SSE mode.
+	api, err := parser.Parse(sseSpec(ogen.Media{
+		Schema: &ogen.Schema{
+			OneOf: []*ogen.Schema{
+				{Type: "object"},
+				{Type: "string"},
+			},
+		},
+	}), parser.Settings{})
+	require.NoError(t, err)
+
+	media := api.Operations[0].Responses.StatusCode[200].Content["text/event-stream"]
+	require.Equal(t, openapi.SSEEventShapeDataOnly, media.XOgenSSEEventShape)
+}
+
+func TestParseMediaTypeSSEShapeBinaryStreamExplicit(t *testing.T) {
+	api, err := parser.Parse(sseSpec(ogen.Media{
+		Schema: &ogen.Schema{Type: "string"},
+		Common: ogen.OpenAPICommon{
+			Extensions: ogen.Extensions{
+				"x-ogen-sse-event-shape": extensionString("data-only"),
+			},
+		},
+	}), parser.Settings{})
+	require.NoError(t, err)
+
+	media := api.Operations[0].Responses.StatusCode[200].Content["text/event-stream"]
+	require.Equal(t, openapi.SSEEventShapeDataOnly, media.XOgenSSEEventShape)
+}
+
 func TestParseMediaTypeSSEShapeFull(t *testing.T) {
 	api, err := parser.Parse(sseSpec(ogen.Media{
 		Schema: &ogen.Schema{Type: "object"},

@@ -1,0 +1,16 @@
+openapi: 3.0.3
+info:
+  title: Binary stream SSE response generates without SSE mode (issue 1710)
+  version: 1.0.0
+paths:
+  /events:
+    get:
+      operationId: getEvents
+      responses:
+        "200":
+          description: Raw event stream.
+          content:
+            text/event-stream:
+              schema:
+                type: string
+                format: binary
