@@ -225,7 +225,10 @@ func (p *parser) parseMediaType(ct string, m ogen.Media, ctx *jsonpointer.Resolv
 				err := errors.Errorf("unknown SSE event shape %q", value)
 				return nil, p.wrapField(extensionName, p.file(ctx), locator, err)
 			}
-		} else if ct == "text/event-stream" && !rawResponse {
+		} else if ct == "text/event-stream" && !rawResponse && !isBinaryStreamSchema(s) {
+			// Do not auto-enable SSE for raw byte stream schemas: the
+			// generator lowers them to io.Reader, which was the only way
+			// to describe an SSE response before typed SSE support.
 			sseShape = openapi.SSEEventShapeDataOnly
 		}
 	}
@@ -240,4 +243,27 @@ func (p *parser) parseMediaType(ct string, m ogen.Media, ctx *jsonpointer.Resolv
 		XOgenSSEEventShape: sseShape,
 		Pointer:            locator.Pointer(p.file(ctx)),
 	}, nil
+}
+
+// isBinaryStreamSchema reports whether s describes a raw byte stream that
+// the generator lowers to io.Reader rather than a structured type.
+//
+// Keep in sync with gen.isStream.
+func isBinaryStreamSchema(s *jsonschema.Schema) bool {
+	if s == nil {
+		return true
+	}
+
+	switch s.Type {
+	case jsonschema.Empty, jsonschema.String:
+	default:
+		return false
+	}
+
+	switch s.Format {
+	case "", "binary", "byte", "base64":
+	default:
+		return false
+	}
+	return true
 }
