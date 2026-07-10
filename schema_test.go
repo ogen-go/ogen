@@ -151,3 +151,60 @@ func TestPatternProperties(t *testing.T) {
 		t.Run(fmt.Sprintf("Test%d", i+1), testCustomEncodings(create, tt.data, tt.wantErr))
 	}
 }
+
+func TestSchemaTypeList(t *testing.T) {
+	t.Run("YAML", func(t *testing.T) {
+		a := require.New(t)
+
+		s := Schema{}
+		a.NoError(yaml.Unmarshal([]byte(`type: [string, 'null']`), &s))
+		a.Equal("string", s.Type)
+		a.True(s.Nullable)
+
+		a.Error(yaml.Unmarshal([]byte(`type: [string, integer]`), &Schema{}))
+	})
+	t.Run("JSON", func(t *testing.T) {
+		a := require.New(t)
+
+		s := Schema{}
+		a.NoError(json.Unmarshal([]byte(`{"type": ["string", "null"]}`), &s))
+		a.Equal("string", s.Type)
+		a.True(s.Nullable)
+
+		a.Error(json.Unmarshal([]byte(`{"type": ["string", "integer"]}`), &Schema{}))
+	})
+}
+
+func TestSpecTypeList(t *testing.T) {
+	a := require.New(t)
+
+	const input = `
+openapi: 3.1.0
+info:
+  title: API
+  version: 0.1.0
+paths: {}
+components:
+  schemas:
+    Template:
+      type: object
+      properties:
+        archived_at:
+          type:
+            - string
+            - 'null'
+          description: Date and time when the template was archived.
+        created_at:
+          type: string
+`
+	spec, err := Parse([]byte(input))
+	a.NoError(err)
+
+	props := spec.Components.Schemas["Template"].Properties
+	a.Equal("archived_at", props[0].Name)
+	a.Equal("string", props[0].Schema.Type)
+	a.True(props[0].Schema.Nullable)
+	a.Equal("created_at", props[1].Name)
+	a.Equal("string", props[1].Schema.Type)
+	a.False(props[1].Schema.Nullable)
+}

@@ -1,0 +1,80 @@
+openapi: 3.1.0
+info:
+  title: Nullable type lists
+  description: |
+    Nullability expressed the OpenAPI 3.1 way: a type list with a 'null'
+    entry, e.g. `type: [string, 'null']`, instead of the OpenAPI 3.0
+    `nullable: true` keyword.
+  version: 1.0.0
+paths:
+  /templates:
+    get:
+      operationId: listTemplates
+      responses:
+        '200':
+          description: Templates.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Template'
+    post:
+      operationId: createTemplate
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Template'
+      responses:
+        '200':
+          description: Created template.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Template'
+components:
+  schemas:
+    Template:
+      type: object
+      required: [id, created_at]
+      properties:
+        id:
+          type: integer
+        created_at:
+          type: string
+          format: date-time
+        archived_at:
+          # Flow style type list.
+          type: [string, 'null']
+          format: date-time
+        author_id:
+          # Block style type list.
+          type:
+            - integer
+            - 'null'
+        source:
+          # Unquoted null.
+          type: [string, null]
+        single:
+          # Single-element type list.
+          type: [string]
+        status:
+          # Nullable enum: null in the type list and among the values.
+          type: [string, 'null']
+          enum: [draft, published, null]
+        tags:
+          # Nullable array of nullable strings.
+          type: [array, 'null']
+          items:
+            type: [string, 'null']
+        folder:
+          $ref: '#/components/schemas/Folder'
+    Folder:
+      # A nullable object.
+      type: [object, 'null']
+      required: [name]
+      properties:
+        name:
+          type: string

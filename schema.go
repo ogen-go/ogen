@@ -21,7 +21,10 @@ type Schema struct {
 	// Additional external documentation for this schema.
 	ExternalDocs *ExternalDocumentation `json:"externalDocs,omitempty" yaml:"externalDocs,omitempty"`
 
-	// Value MUST be a string. Multiple types via an array are not supported.
+	// Type is a single schema type.
+	// A type list like `[string, 'null']` (OpenAPI 3.1) is collapsed during unmarshaling to the
+	// single type it denotes, with "null" recorded in Nullable.
+	// Type lists with multiple non-null types are currently unsupported.
 	Type string `json:"type,omitempty" yaml:"type,omitempty"`
 
 	// See Data Type Formats for further details (https://swagger.io/specification/#data-type-format).
@@ -247,6 +250,47 @@ type Schema struct {
 	ContentMediaType string `json:"contentMediaType,omitempty" yaml:"contentMediaType,omitempty"`
 
 	Common jsonschema.OpenAPICommon `json:"-" yaml:",inline"`
+}
+
+// UnmarshalYAML implements yaml.Unmarshaler.
+//
+// It exists to support OpenAPI 3.1 type lists.
+// `type: [string, 'null']` is collapsed to `type: string` with Nullable set.
+func (s *Schema) UnmarshalYAML(node *yaml.Node) error {
+	collapsed, nullable, err := jsonschema.CollapseTypeNode(node)
+	if err != nil {
+		return err
+	}
+
+	type plain Schema
+	var val plain
+
+	if err := collapsed.Decode(&val); err != nil {
+		return err
+	}
+	val.Nullable = val.Nullable || nullable
+	*s = Schema(val)
+	return nil
+}
+
+// UnmarshalJSON implements json.Unmarshaler.
+//
+// It exists to support OpenAPI 3.1 type lists.
+// `"type": ["string", "null"]` is collapsed to `"type": "string"` with Nullable set.
+func (s *Schema) UnmarshalJSON(data []byte) error {
+	type plain Schema
+	var val struct {
+		plain
+		Type jsonschema.RawType `json:"type,omitempty"`
+	}
+
+	if err := json.Unmarshal(data, &val); err != nil {
+		return err
+	}
+	val.plain.Type = val.Type.Type
+	val.Nullable = val.Nullable || val.Type.Nullable
+	*s = Schema(val.plain)
+	return nil
 }
 
 // Property is item of Properties.
