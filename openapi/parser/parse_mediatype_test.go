@@ -74,6 +74,22 @@ func TestParseMediaTypeSSEShapeBinaryStreamDefault(t *testing.T) {
 	}
 }
 
+func TestParseMediaTypeSSEShapeSumDefault(t *testing.T) {
+	// Schemas without an explicit type, e.g. oneOf sums, must stay in SSE mode.
+	api, err := parser.Parse(sseSpec(ogen.Media{
+		Schema: &ogen.Schema{
+			OneOf: []*ogen.Schema{
+				{Type: "object"},
+				{Type: "string"},
+			},
+		},
+	}), parser.Settings{})
+	require.NoError(t, err)
+
+	media := api.Operations[0].Responses.StatusCode[200].Content["text/event-stream"]
+	require.Equal(t, openapi.SSEEventShapeDataOnly, media.XOgenSSEEventShape)
+}
+
 func TestParseMediaTypeSSEShapeBinaryStreamExplicit(t *testing.T) {
 	api, err := parser.Parse(sseSpec(ogen.Media{
 		Schema: &ogen.Schema{Type: "string"},

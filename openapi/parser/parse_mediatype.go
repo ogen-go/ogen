@@ -248,22 +248,22 @@ func (p *parser) parseMediaType(ct string, m ogen.Media, ctx *jsonpointer.Resolv
 // isBinaryStreamSchema reports whether s describes a raw byte stream that
 // the generator lowers to io.Reader rather than a structured type.
 //
-// Keep in sync with gen.isStream.
+// This is intentionally narrower than gen.isStream: schemas without an
+// explicit type (e.g. oneOf sums) stay in SSE mode, since typed events are
+// the primary SSE use case, while only schema-less media and explicit
+// string/binary schemas keep the legacy io.Reader behavior.
 func isBinaryStreamSchema(s *jsonschema.Schema) bool {
 	if s == nil {
 		return true
 	}
-
-	switch s.Type {
-	case jsonschema.Empty, jsonschema.String:
-	default:
+	if s.Type != jsonschema.String {
 		return false
 	}
 
 	switch s.Format {
 	case "", "binary", "byte", "base64":
+		return true
 	default:
 		return false
 	}
-	return true
 }
