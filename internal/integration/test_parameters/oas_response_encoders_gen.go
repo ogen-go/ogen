@@ -131,3 +131,16 @@ func encodeSimilarNamesResponse(response *SimilarNamesOK, w http.ResponseWriter,
 
 	return nil
 }
+
+func encodeSpaceDelimitedParameterResponse(response *SpaceDelimitedParameterOK, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	w.WriteHeader(200)
+
+	e := new(jx.Encoder)
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}

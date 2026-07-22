@@ -99,3 +99,12 @@ func (UnimplementedHandler) SameName(ctx context.Context, params SameNameParams)
 func (UnimplementedHandler) SimilarNames(ctx context.Context, params SimilarNamesParams) error {
 	return ht.ErrNotImplemented
 }
+
+// SpaceDelimitedParameter implements spaceDelimitedParameter operation.
+//
+// Test for spaceDelimited style query array parameters.
+//
+// GET /spaceDelimitedParameter
+func (UnimplementedHandler) SpaceDelimitedParameter(ctx context.Context, params SpaceDelimitedParameterParams) (r *SpaceDelimitedParameterOK, _ error) {
+	return r, ht.ErrNotImplemented
+}

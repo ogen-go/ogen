@@ -62,6 +62,12 @@ type Handler interface {
 	//
 	// GET /similarNames
 	SimilarNames(ctx context.Context, params SimilarNamesParams) error
+	// SpaceDelimitedParameter implements spaceDelimitedParameter operation.
+	//
+	// Test for spaceDelimited style query array parameters.
+	//
+	// GET /spaceDelimitedParameter
+	SpaceDelimitedParameter(ctx context.Context, params SpaceDelimitedParameterParams) (*SpaceDelimitedParameterOK, error)
 }
 
 // Server implements http server based on OpenAPI v3 specification and
