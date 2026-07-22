@@ -90,6 +90,13 @@ func (s *testParameters) SimilarNames(ctx context.Context, params api.SimilarNam
 	panic("implement me")
 }
 
+func (s *testParameters) SpaceDelimitedParameter(ctx context.Context, params api.SpaceDelimitedParameterParams) (*api.SpaceDelimitedParameterOK, error) {
+	return &api.SpaceDelimitedParameterOK{
+		Exploded: params.Exploded,
+		Joined:   params.Joined,
+	}, nil
+}
+
 func TestParameters(t *testing.T) {
 	ctx := context.Background()
 
@@ -130,6 +137,18 @@ func TestParameters(t *testing.T) {
 		resp, err := client.ObjectCookieParameter(ctx, api.ObjectCookieParameterParams{Value: oneLevel})
 		require.NoError(t, err)
 		require.Equal(t, oneLevel, *resp)
+	})
+
+	t.Run("SpaceDelimitedParameter", func(t *testing.T) {
+		exploded := []string{"a", "b", "c"}
+		joined := []string{"1", "2", "3"}
+		resp, err := client.SpaceDelimitedParameter(ctx, api.SpaceDelimitedParameterParams{
+			Exploded: exploded,
+			Joined:   joined,
+		})
+		require.NoError(t, err)
+		require.Equal(t, exploded, resp.Exploded)
+		require.Equal(t, joined, resp.Joined)
 	})
 
 	const plainParam = "`\"';,./<>?[]{}\\|~!@#$%^&*()_+-="

@@ -128,6 +128,70 @@
         }
       }
     },
+    "/spaceDelimitedParameter": {
+      "get": {
+        "operationId": "spaceDelimitedParameter",
+        "summary": "Test for spaceDelimited style query array parameters",
+        "parameters": [
+          {
+            "name": "exploded",
+            "in": "query",
+            "required": true,
+            "style": "spaceDelimited",
+            "explode": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "joined",
+            "in": "query",
+            "required": true,
+            "style": "spaceDelimited",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "exploded",
+                    "joined"
+                  ],
+                  "properties": {
+                    "exploded": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "joined": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/objectQueryParameter": {
       "get": {
         "operationId": "objectQueryParameter",

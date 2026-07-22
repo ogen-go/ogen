@@ -90,12 +90,13 @@ func TestQueryParamEncoder(t *testing.T) {
 				Style:   QueryStyleSpaceDelimited,
 				Explode: true,
 			},
-			// {
-			// 	Input:   []string{"a", "b", "c"},
-			// 	Expect:  []string{"a%20b%20c"},
-			// 	Style:   QueryStyleSpaceDelimited,
-			// 	Explode: false,
-			// },
+			{
+				Param:   "id",
+				Input:   []string{"a", "b", "c"},
+				Expect:  "id=a+b+c",
+				Style:   QueryStyleSpaceDelimited,
+				Explode: false,
+			},
 			{
 				Param:   "id",
 				Input:   []string{"3", "4", "5"},
