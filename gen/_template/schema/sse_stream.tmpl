@@ -1,12 +1,31 @@
 {{- /*gotype: github.com/ogen-go/ogen/gen/ir.Type*/ -}}
 {{- define "schema/sse_stream" }}
+{{- if $.SSE.Client }}
 // {{ $.Name }}Client reads events from the {{ $.Name }} SSE stream.
 type {{ $.Name }}Client interface {
 	sse.Client[{{ $.SSE.EventType.Go }}]
 }
+{{- end }}
+{{- if $.SSE.Server }}
+
+// {{ $.Name }}Sender sends events to the {{ $.Name }} SSE stream.
+type {{ $.Name }}Sender interface {
+	sse.Sender[{{ $.SSE.EventType.Go }}]
+}
+{{- end }}
 
 // {{ $.Name }} is a Server-Sent Events response stream.
 type {{ $.Name }} struct {
+{{- if $.SSE.Server }}
+	// Events writes the stream events.
+	//
+	// It is called by the generated server after the response headers are
+	// sent, until it returns. A nil Events sends an empty stream.
+	//
+	// Events is not used by the generated client.
+	Events func(ctx context.Context, s {{ $.Name }}Sender) error
+{{- end }}
+{{- if $.SSE.Client }}
 	resp      *http.Response
 	decoder   *sse.Decoder
 	connect   sseConnectFunc
@@ -17,7 +36,9 @@ type {{ $.Name }} struct {
 	closed    atomic.Bool
 	closeCh   chan struct{}
 	closeOnce sync.Once
+{{- end }}
 }
+{{- if $.SSE.Client }}
 
 func (s *{{ $.Name }}) initSSEStream(
 	connect sseConnectFunc,
@@ -311,5 +332,6 @@ func (s *{{ $.Name }}) decodeEvent(raw sse.Event,
 	return event, nil
 {{- end }}
 }
+{{- end }}{{/* End of SSE client */}}
 
 {{ end }}

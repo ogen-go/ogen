@@ -205,6 +205,14 @@ type SSEMetadata struct {
 	EventType *Type
 	// DataType is the SSE data field type for data-only stream schemas.
 	DataType *Type
+	// Client denotes that the stream reader should be generated.
+	//
+	// Set by the generator before writing the source, see [Type.SetSSESide].
+	Client bool
+	// Server denotes that the stream writer should be generated.
+	//
+	// Set by the generator before writing the source, see [Type.SetSSESide].
+	Server bool
 }
 
 type Type struct {
