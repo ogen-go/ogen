@@ -546,6 +546,31 @@ type SameNameOK struct{}
 // SimilarNamesOK is response for SimilarNames operation.
 type SimilarNamesOK struct{}
 
+type SpaceDelimitedParameterOK struct {
+	Exploded []string `json:"exploded"`
+	Joined   []string `json:"joined"`
+}
+
+// GetExploded returns the value of Exploded.
+func (s *SpaceDelimitedParameterOK) GetExploded() []string {
+	return s.Exploded
+}
+
+// GetJoined returns the value of Joined.
+func (s *SpaceDelimitedParameterOK) GetJoined() []string {
+	return s.Joined
+}
+
+// SetExploded sets the value of Exploded.
+func (s *SpaceDelimitedParameterOK) SetExploded(val []string) {
+	s.Exploded = val
+}
+
+// SetJoined sets the value of Joined.
+func (s *SpaceDelimitedParameterOK) SetJoined(val []string) {
+	s.Joined = val
+}
+
 // Ref: #/components/schemas/User
 type User struct {
 	ID       int      `json:"id"`

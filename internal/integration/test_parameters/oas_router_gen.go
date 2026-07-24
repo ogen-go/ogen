@@ -452,6 +452,31 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						return
 					}
 
+				case 'p': // Prefix: "paceDelimitedParameter"
+
+					if l := len("paceDelimitedParameter"); len(elem) >= l && elem[0:l] == "paceDelimitedParameter" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						// Leaf node.
+						switch r.Method {
+						case "GET":
+							s.handleSpaceDelimitedParameterRequest([0]string{}, elemIsEscaped, w, r)
+						default:
+							s.notAllowed(w, r, notAllowedParams{
+								allowedMethods: "GET",
+								allowedHeaders: nil,
+								acceptPost:     "",
+								acceptPatch:    "",
+							})
+						}
+
+						return
+					}
+
 				}
 
 			}
@@ -916,6 +941,31 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							r.operationID = "similarNames"
 							r.operationGroup = ""
 							r.pathPattern = "/similarNames"
+							r.args = args
+							r.count = 0
+							return r, true
+						default:
+							return
+						}
+					}
+
+				case 'p': // Prefix: "paceDelimitedParameter"
+
+					if l := len("paceDelimitedParameter"); len(elem) >= l && elem[0:l] == "paceDelimitedParameter" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						// Leaf node.
+						switch method {
+						case "GET":
+							r.name = SpaceDelimitedParameterOperation
+							r.summary = "Test for spaceDelimited style query array parameters"
+							r.operationID = "spaceDelimitedParameter"
+							r.operationGroup = ""
+							r.pathPattern = "/spaceDelimitedParameter"
 							r.args = args
 							r.count = 0
 							return r, true

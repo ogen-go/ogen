@@ -1436,3 +1436,140 @@ func decodeSimilarNamesParams(args [0]string, argsEscaped bool, r *http.Request)
 	}
 	return params, nil
 }
+
+// SpaceDelimitedParameterParams is parameters of spaceDelimitedParameter operation.
+type SpaceDelimitedParameterParams struct {
+	Exploded []string `json:",omitempty"`
+	Joined   []string `json:",omitempty"`
+}
+
+func unpackSpaceDelimitedParameterParams(packed middleware.Parameters) (params SpaceDelimitedParameterParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "exploded",
+			In:   "query",
+		}
+		params.Exploded = packed[key].([]string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "joined",
+			In:   "query",
+		}
+		params.Joined = packed[key].([]string)
+	}
+	return params
+}
+
+func decodeSpaceDelimitedParameterParams(args [0]string, argsEscaped bool, r *http.Request) (params SpaceDelimitedParameterParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
+	// Decode query: exploded.
+	if err := func() error {
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "exploded",
+			Style:   uri.QueryStyleSpaceDelimited,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				params.Exploded = nil
+				return d.DecodeArray(func(d uri.Decoder) error {
+					var paramsDotExplodedVal string
+					if err := func() error {
+						val, err := d.DecodeValue()
+						if err != nil {
+							return err
+						}
+
+						c, err := conv.ToString(val)
+						if err != nil {
+							return err
+						}
+
+						paramsDotExplodedVal = c
+						return nil
+					}(); err != nil {
+						return err
+					}
+					params.Exploded = append(params.Exploded, paramsDotExplodedVal)
+					return nil
+				})
+			}); err != nil {
+				return err
+			}
+			if err := func() error {
+				if params.Exploded == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		} else {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "exploded",
+			In:   "query",
+			Err:  err,
+		}
+	}
+	// Decode query: joined.
+	if err := func() error {
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "joined",
+			Style:   uri.QueryStyleSpaceDelimited,
+			Explode: false,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				params.Joined = nil
+				return d.DecodeArray(func(d uri.Decoder) error {
+					var paramsDotJoinedVal string
+					if err := func() error {
+						val, err := d.DecodeValue()
+						if err != nil {
+							return err
+						}
+
+						c, err := conv.ToString(val)
+						if err != nil {
+							return err
+						}
+
+						paramsDotJoinedVal = c
+						return nil
+					}(); err != nil {
+						return err
+					}
+					params.Joined = append(params.Joined, paramsDotJoinedVal)
+					return nil
+				})
+			}); err != nil {
+				return err
+			}
+			if err := func() error {
+				if params.Joined == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		} else {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "joined",
+			In:   "query",
+			Err:  err,
+		}
+	}
+	return params, nil
+}
