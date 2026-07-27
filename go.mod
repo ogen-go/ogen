@@ -7,7 +7,7 @@ require (
 	github.com/dlclark/regexp2 v1.12.0
 	github.com/fatih/color v1.19.0
 	github.com/ghodss/yaml v1.0.0
-	github.com/go-faster/errors v0.7.1
+	github.com/go-faster/errors v0.8.0
 	github.com/go-faster/jx v1.2.0
 	github.com/go-faster/yaml v0.4.6
 	github.com/google/uuid v1.6.0
