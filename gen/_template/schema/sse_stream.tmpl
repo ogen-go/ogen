@@ -24,6 +24,16 @@ type {{ $.Name }} struct {
 	//
 	// Events is not used by the generated client.
 	Events func(ctx context.Context, s {{ $.Name }}Sender) error
+	// KeepAlive keeps an idle connection open while Events runs. It is called
+	// concurrently with Events and shares the same sender, which is safe for
+	// concurrent use. It should return when its context is canceled, which
+	// happens once Events returns.
+	//
+	// If nil, a "keep-alive" comment is sent every [sse.DefaultKeepAliveInterval].
+	// Set it to a function that returns immediately to disable keep-alive.
+	//
+	// KeepAlive is not used by the generated client.
+	KeepAlive func(ctx context.Context, s {{ $.Name }}Sender) error
 {{- end }}
 {{- if $.SSE.Client }}
 	resp      *http.Response

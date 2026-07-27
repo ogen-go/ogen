@@ -286,9 +286,31 @@ w.Header().Set("Access-Control-Expose-Headers", {{ $exposeHeaders }})
 			return errors.Wrap(err, "flush")
 		}
 		if {{ $var }}.Events != nil {
-			if err := {{ $var }}.Events(ctx, sse.NewSender(enc, encode{{ $sse.Name }}Event)); err != nil {
+			sender := sse.NewSender(enc, encode{{ $sse.Name }}Event)
+
+			// Keep-alive runs concurrently with Events and is stopped once
+			// Events returns by canceling streamCtx.
+			streamCtx, cancel := context.WithCancel(ctx)
+			defer cancel()
+
+			keepAlive := {{ $var }}.KeepAlive
+			if keepAlive == nil {
+				keepAlive = func(ctx context.Context, s {{ $sse.Name }}Sender) error {
+					return sse.KeepAlive(ctx, s)
+				}
+			}
+			keepAliveDone := make(chan struct{})
+			go func() {
+				defer close(keepAliveDone)
+				_ = keepAlive(streamCtx, sender)
+			}()
+
+			sErr := {{ $var }}.Events(streamCtx, sender)
+			cancel()
+			<-keepAliveDone
+			if sErr != nil {
 				// Response is already sent, so the error can't be reported to the client.
-				return errors.Join(errors.Wrap(err, "write events"), ht.ErrResponseSent)
+				return errors.Join(errors.Wrap(sErr, "write events"), ht.ErrResponseSent)
 			}
 		}
 		{{ template "respond/return" $}}

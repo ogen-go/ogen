@@ -18,16 +18,17 @@ import (
 // sseHandler implements api.Handler, streaming events from the configured
 // callbacks. A nil callback sends an empty stream.
 type sseHandler struct {
-	dataOnly       func(ctx context.Context, s api.DataOnlyOKSender) error
-	dataOnlyString func(ctx context.Context, s api.DataOnlyStringOKSender) error
-	dataOnlyTime   func(ctx context.Context, s api.DataOnlyTimeOKSender) error
-	fullEvents     func(ctx context.Context, s api.FullEventsOKSender) error
-	optionalStream func(ctx context.Context, s api.OptionalStreamOKSender) error
-	withHeaders    func(ctx context.Context, s api.WithHeadersOKSender) error
+	dataOnly          func(ctx context.Context, s api.DataOnlyOKSender) error
+	dataOnlyKeepAlive func(ctx context.Context, s api.DataOnlyOKSender) error
+	dataOnlyString    func(ctx context.Context, s api.DataOnlyStringOKSender) error
+	dataOnlyTime      func(ctx context.Context, s api.DataOnlyTimeOKSender) error
+	fullEvents        func(ctx context.Context, s api.FullEventsOKSender) error
+	optionalStream    func(ctx context.Context, s api.OptionalStreamOKSender) error
+	withHeaders       func(ctx context.Context, s api.WithHeadersOKSender) error
 }
 
 func (h sseHandler) DataOnly(context.Context) (*api.DataOnlyOK, error) {
-	return &api.DataOnlyOK{Events: h.dataOnly}, nil
+	return &api.DataOnlyOK{Events: h.dataOnly, KeepAlive: h.dataOnlyKeepAlive}, nil
 }
 
 func (h sseHandler) DataOnlyString(context.Context) (*api.DataOnlyStringOK, error) {
@@ -384,4 +385,52 @@ func TestSSEServerClientDisconnect(t *testing.T) {
 	case <-time.After(time.Minute):
 		t.Fatal("server stream is still running")
 	}
+}
+
+func TestSSEServerKeepAlive(t *testing.T) {
+	t.Run("Custom", func(t *testing.T) {
+		// A custom KeepAlive writes comments interleaved with events. It must
+		// run concurrently with Events and stop once Events returns.
+		release := make(chan struct{})
+		_, url := testSSEServer(t, sseHandler{
+			dataOnly: func(ctx context.Context, s api.DataOnlyOKSender) error {
+				// Give keep-alive time to emit before the single event.
+				select {
+				case <-release:
+				case <-ctx.Done():
+					return ctx.Err()
+				}
+				return s.Send(ctx, api.DataOnlyOKEvent{Data: api.Message{Text: "one"}})
+			},
+			dataOnlyKeepAlive: func(ctx context.Context, s api.DataOnlyOKSender) error {
+				// Emit one keep-alive comment, then let Events proceed and
+				// keep pinging until Events returns and cancels ctx.
+				if err := s.Comment(ctx, "ping"); err != nil {
+					return err
+				}
+				close(release)
+				return sse.KeepAliveEvery(ctx, s, 5*time.Millisecond, "ping")
+			},
+		})
+
+		resp, body := readRawStream(t, url+"/data-only")
+		require.Equal(t, http.StatusOK, resp.StatusCode)
+		require.Contains(t, body, ":ping\n", "expected keep-alive comment")
+		require.Contains(t, body, "data: {\"text\":\"one\"}\n\n", "expected event")
+	})
+
+	t.Run("Disabled", func(t *testing.T) {
+		// A KeepAlive that returns immediately disables keep-alive entirely.
+		_, url := testSSEServer(t, sseHandler{
+			dataOnly: func(ctx context.Context, s api.DataOnlyOKSender) error {
+				return s.Send(ctx, api.DataOnlyOKEvent{Data: api.Message{Text: "one"}})
+			},
+			dataOnlyKeepAlive: func(context.Context, api.DataOnlyOKSender) error {
+				return nil
+			},
+		})
+
+		_, body := readRawStream(t, url+"/data-only")
+		require.Equal(t, "data: {\"text\":\"one\"}\n\n", body)
+	})
 }

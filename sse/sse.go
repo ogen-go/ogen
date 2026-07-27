@@ -7,6 +7,7 @@ package sse
 import (
 	"context"
 	"iter"
+	"sync"
 	"time"
 
 	"github.com/go-faster/errors"
@@ -49,6 +50,9 @@ type Client[E any] interface {
 }
 
 // Sender sends events to an SSE stream.
+//
+// A Sender is safe for concurrent use, so events and keep-alive comments may be
+// written from different goroutines.
 type Sender[E any] interface {
 	// Send encodes event and writes it to the stream, flushing it.
 	Send(ctx context.Context, event E) error
@@ -58,15 +62,17 @@ type Sender[E any] interface {
 
 // NewSender returns a [Sender] writing events to e, encoding them with encode.
 func NewSender[E any](e *Encoder, encode func(event E) (Event, error)) Sender[E] {
-	return sender[E]{enc: e, encode: encode}
+	return &sender[E]{enc: e, encode: encode}
 }
 
 type sender[E any] struct {
+	// mu serializes writes to enc, which is not safe for concurrent use.
+	mu     sync.Mutex
 	enc    *Encoder
 	encode func(event E) (Event, error)
 }
 
-func (s sender[E]) Send(ctx context.Context, event E) error {
+func (s *sender[E]) Send(ctx context.Context, event E) error {
 	if err := ctx.Err(); err != nil {
 		return err
 	}
@@ -74,12 +80,59 @@ func (s sender[E]) Send(ctx context.Context, event E) error {
 	if err != nil {
 		return errors.Wrap(err, "encode event")
 	}
+	s.mu.Lock()
+	defer s.mu.Unlock()
 	return s.enc.Encode(raw)
 }
 
-func (s sender[E]) Comment(ctx context.Context, text string) error {
+func (s *sender[E]) Comment(ctx context.Context, text string) error {
 	if err := ctx.Err(); err != nil {
 		return err
 	}
+	s.mu.Lock()
+	defer s.mu.Unlock()
 	return s.enc.Comment(text)
+}
+
+// DefaultKeepAliveInterval is the default interval between keep-alive comments,
+// as recommended by the SSE specification authoring notes.
+//
+// [authoring notes]: https://html.spec.whatwg.org/multipage/server-sent-events.html#authoring-notes
+const DefaultKeepAliveInterval = 15 * time.Second
+
+// defaultKeepAliveComment is the comment text sent by [KeepAlive].
+const defaultKeepAliveComment = "keep-alive"
+
+// KeepAlive writes a keep-alive comment to s every [DefaultKeepAliveInterval]
+// until ctx is canceled, then returns nil.
+//
+// It is used as the default value of the generated KeepAlive field, keeping
+// idle connections open. Use [KeepAliveEvery] to configure the interval and
+// comment.
+func KeepAlive[E any](ctx context.Context, s Sender[E]) error {
+	return KeepAliveEvery(ctx, s, DefaultKeepAliveInterval, defaultKeepAliveComment)
+}
+
+// KeepAliveEvery writes comment to s every interval until ctx is canceled,
+// then returns nil. A write error is returned as-is and stops the loop.
+//
+// A non-positive interval uses [DefaultKeepAliveInterval].
+func KeepAliveEvery[E any](ctx context.Context, s Sender[E], interval time.Duration, comment string) error {
+	if interval <= 0 {
+		interval = DefaultKeepAliveInterval
+	}
+
+	ticker := time.NewTicker(interval)
+	defer ticker.Stop()
+
+	for {
+		select {
+		case <-ctx.Done():
+			return nil
+		case <-ticker.C:
+			if err := s.Comment(ctx, comment); err != nil {
+				return err
+			}
+		}
+	}
 }
