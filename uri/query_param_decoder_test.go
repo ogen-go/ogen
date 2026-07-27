@@ -92,12 +92,20 @@ func TestQueryParamDecoder(t *testing.T) {
 				Style:   QueryStyleSpaceDelimited,
 				Explode: true,
 			},
-			// {
-			// 	Input:   []string{"a%20b%20c"},
-			// 	Expect:  []string{"a", "b", "c"},
-			// 	Style:   QueryStyleSpaceDelimited,
-			// 	Explode: false,
-			// },
+			{
+				Param:   "id",
+				Input:   "id=a%20b%20c",
+				Expect:  []string{"a", "b", "c"},
+				Style:   QueryStyleSpaceDelimited,
+				Explode: false,
+			},
+			{
+				Param:   "id",
+				Input:   "id=a+b+c",
+				Expect:  []string{"a", "b", "c"},
+				Style:   QueryStyleSpaceDelimited,
+				Explode: false,
+			},
 			{
 				Param:   "id",
 				Input:   "id=3&id=4&id=5",

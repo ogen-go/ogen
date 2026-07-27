@@ -274,7 +274,9 @@ func isParamAllowed(t *ir.Type, root bool, visited map[*ir.Type]struct{}) error 
 func isSupportedParamStyle(param *openapi.Parameter) error {
 	switch param.Style {
 	case openapi.QueryStyleSpaceDelimited:
-		return &ErrNotImplemented{Name: "spaceDelimited parameter style"}
+		if s := param.Schema; s != nil && s.Type == jsonschema.Object {
+			return &ErrNotImplemented{Name: "spaceDelimited style for object parameters"}
+		}
 
 	case openapi.QueryStylePipeDelimited:
 		if s := param.Schema; s != nil && s.Type == jsonschema.Object {

@@ -17,4 +17,5 @@ const (
 	PathParameterOperation               OperationName = "PathParameter"
 	SameNameOperation                    OperationName = "SameName"
 	SimilarNamesOperation                OperationName = "SimilarNames"
+	SpaceDelimitedParameterOperation     OperationName = "SpaceDelimitedParameter"
 )

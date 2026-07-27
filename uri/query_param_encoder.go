@@ -76,7 +76,14 @@ func (e *queryParamEncoder) encodeArray() error {
 			return nil
 		}
 
-		panic("spaceDelimited with explode: false not supported")
+		const sep = " "
+		for _, v := range e.items {
+			if err := checkNotContains(v, sep); err != nil {
+				return err
+			}
+		}
+		e.values[e.paramName] = []string{strings.Join(e.items, sep)}
+		return nil
 
 	case QueryStylePipeDelimited:
 		if e.explode {
