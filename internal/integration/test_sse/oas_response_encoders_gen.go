@@ -174,9 +174,31 @@ func encodeDataOnlyResponse(ctx context.Context, response *DataOnlyOK, w http.Re
 		return errors.Wrap(err, "flush")
 	}
 	if response.Events != nil {
-		if err := response.Events(ctx, sse.NewSender(enc, encodeDataOnlyOKEvent)); err != nil {
+		sender := sse.NewSender(enc, encodeDataOnlyOKEvent)
+
+		// Keep-alive runs concurrently with Events and is stopped once
+		// Events returns by canceling streamCtx.
+		streamCtx, cancel := context.WithCancel(ctx)
+		defer cancel()
+
+		keepAlive := response.KeepAlive
+		if keepAlive == nil {
+			keepAlive = func(ctx context.Context, s DataOnlyOKSender) error {
+				return sse.KeepAlive(ctx, s)
+			}
+		}
+		keepAliveDone := make(chan struct{})
+		go func() {
+			defer close(keepAliveDone)
+			_ = keepAlive(streamCtx, sender)
+		}()
+
+		sErr := response.Events(streamCtx, sender)
+		cancel()
+		<-keepAliveDone
+		if sErr != nil {
 			// Response is already sent, so the error can't be reported to the client.
-			return errors.Join(errors.Wrap(err, "write events"), ht.ErrResponseSent)
+			return errors.Join(errors.Wrap(sErr, "write events"), ht.ErrResponseSent)
 		}
 	}
 
@@ -195,9 +217,31 @@ func encodeDataOnlyStringResponse(ctx context.Context, response *DataOnlyStringO
 		return errors.Wrap(err, "flush")
 	}
 	if response.Events != nil {
-		if err := response.Events(ctx, sse.NewSender(enc, encodeDataOnlyStringOKEvent)); err != nil {
+		sender := sse.NewSender(enc, encodeDataOnlyStringOKEvent)
+
+		// Keep-alive runs concurrently with Events and is stopped once
+		// Events returns by canceling streamCtx.
+		streamCtx, cancel := context.WithCancel(ctx)
+		defer cancel()
+
+		keepAlive := response.KeepAlive
+		if keepAlive == nil {
+			keepAlive = func(ctx context.Context, s DataOnlyStringOKSender) error {
+				return sse.KeepAlive(ctx, s)
+			}
+		}
+		keepAliveDone := make(chan struct{})
+		go func() {
+			defer close(keepAliveDone)
+			_ = keepAlive(streamCtx, sender)
+		}()
+
+		sErr := response.Events(streamCtx, sender)
+		cancel()
+		<-keepAliveDone
+		if sErr != nil {
 			// Response is already sent, so the error can't be reported to the client.
-			return errors.Join(errors.Wrap(err, "write events"), ht.ErrResponseSent)
+			return errors.Join(errors.Wrap(sErr, "write events"), ht.ErrResponseSent)
 		}
 	}
 
@@ -216,9 +260,31 @@ func encodeDataOnlyTimeResponse(ctx context.Context, response *DataOnlyTimeOK, w
 		return errors.Wrap(err, "flush")
 	}
 	if response.Events != nil {
-		if err := response.Events(ctx, sse.NewSender(enc, encodeDataOnlyTimeOKEvent)); err != nil {
+		sender := sse.NewSender(enc, encodeDataOnlyTimeOKEvent)
+
+		// Keep-alive runs concurrently with Events and is stopped once
+		// Events returns by canceling streamCtx.
+		streamCtx, cancel := context.WithCancel(ctx)
+		defer cancel()
+
+		keepAlive := response.KeepAlive
+		if keepAlive == nil {
+			keepAlive = func(ctx context.Context, s DataOnlyTimeOKSender) error {
+				return sse.KeepAlive(ctx, s)
+			}
+		}
+		keepAliveDone := make(chan struct{})
+		go func() {
+			defer close(keepAliveDone)
+			_ = keepAlive(streamCtx, sender)
+		}()
+
+		sErr := response.Events(streamCtx, sender)
+		cancel()
+		<-keepAliveDone
+		if sErr != nil {
 			// Response is already sent, so the error can't be reported to the client.
-			return errors.Join(errors.Wrap(err, "write events"), ht.ErrResponseSent)
+			return errors.Join(errors.Wrap(sErr, "write events"), ht.ErrResponseSent)
 		}
 	}
 
@@ -237,9 +303,31 @@ func encodeFullEventsResponse(ctx context.Context, response *FullEventsOK, w htt
 		return errors.Wrap(err, "flush")
 	}
 	if response.Events != nil {
-		if err := response.Events(ctx, sse.NewSender(enc, encodeFullEventsOKEvent)); err != nil {
+		sender := sse.NewSender(enc, encodeFullEventsOKEvent)
+
+		// Keep-alive runs concurrently with Events and is stopped once
+		// Events returns by canceling streamCtx.
+		streamCtx, cancel := context.WithCancel(ctx)
+		defer cancel()
+
+		keepAlive := response.KeepAlive
+		if keepAlive == nil {
+			keepAlive = func(ctx context.Context, s FullEventsOKSender) error {
+				return sse.KeepAlive(ctx, s)
+			}
+		}
+		keepAliveDone := make(chan struct{})
+		go func() {
+			defer close(keepAliveDone)
+			_ = keepAlive(streamCtx, sender)
+		}()
+
+		sErr := response.Events(streamCtx, sender)
+		cancel()
+		<-keepAliveDone
+		if sErr != nil {
 			// Response is already sent, so the error can't be reported to the client.
-			return errors.Join(errors.Wrap(err, "write events"), ht.ErrResponseSent)
+			return errors.Join(errors.Wrap(sErr, "write events"), ht.ErrResponseSent)
 		}
 	}
 
@@ -260,9 +348,31 @@ func encodeOptionalStreamResponse(ctx context.Context, response OptionalStreamRe
 			return errors.Wrap(err, "flush")
 		}
 		if response.Events != nil {
-			if err := response.Events(ctx, sse.NewSender(enc, encodeOptionalStreamOKEvent)); err != nil {
+			sender := sse.NewSender(enc, encodeOptionalStreamOKEvent)
+
+			// Keep-alive runs concurrently with Events and is stopped once
+			// Events returns by canceling streamCtx.
+			streamCtx, cancel := context.WithCancel(ctx)
+			defer cancel()
+
+			keepAlive := response.KeepAlive
+			if keepAlive == nil {
+				keepAlive = func(ctx context.Context, s OptionalStreamOKSender) error {
+					return sse.KeepAlive(ctx, s)
+				}
+			}
+			keepAliveDone := make(chan struct{})
+			go func() {
+				defer close(keepAliveDone)
+				_ = keepAlive(streamCtx, sender)
+			}()
+
+			sErr := response.Events(streamCtx, sender)
+			cancel()
+			<-keepAliveDone
+			if sErr != nil {
 				// Response is already sent, so the error can't be reported to the client.
-				return errors.Join(errors.Wrap(err, "write events"), ht.ErrResponseSent)
+				return errors.Join(errors.Wrap(sErr, "write events"), ht.ErrResponseSent)
 			}
 		}
 
@@ -314,9 +424,31 @@ func encodeWithHeadersResponse(ctx context.Context, response *WithHeadersOKHeade
 		return errors.Wrap(err, "flush")
 	}
 	if response.Response.Events != nil {
-		if err := response.Response.Events(ctx, sse.NewSender(enc, encodeWithHeadersOKEvent)); err != nil {
+		sender := sse.NewSender(enc, encodeWithHeadersOKEvent)
+
+		// Keep-alive runs concurrently with Events and is stopped once
+		// Events returns by canceling streamCtx.
+		streamCtx, cancel := context.WithCancel(ctx)
+		defer cancel()
+
+		keepAlive := response.Response.KeepAlive
+		if keepAlive == nil {
+			keepAlive = func(ctx context.Context, s WithHeadersOKSender) error {
+				return sse.KeepAlive(ctx, s)
+			}
+		}
+		keepAliveDone := make(chan struct{})
+		go func() {
+			defer close(keepAliveDone)
+			_ = keepAlive(streamCtx, sender)
+		}()
+
+		sErr := response.Response.Events(streamCtx, sender)
+		cancel()
+		<-keepAliveDone
+		if sErr != nil {
 			// Response is already sent, so the error can't be reported to the client.
-			return errors.Join(errors.Wrap(err, "write events"), ht.ErrResponseSent)
+			return errors.Join(errors.Wrap(sErr, "write events"), ht.ErrResponseSent)
 		}
 	}
 

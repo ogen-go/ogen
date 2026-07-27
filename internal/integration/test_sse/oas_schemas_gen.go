@@ -35,7 +35,17 @@ type DataOnlyOK struct {
 	// sent, until it returns. A nil Events sends an empty stream.
 	//
 	// Events is not used by the generated client.
-	Events    func(ctx context.Context, s DataOnlyOKSender) error
+	Events func(ctx context.Context, s DataOnlyOKSender) error
+	// KeepAlive keeps an idle connection open while Events runs. It is called
+	// concurrently with Events and shares the same sender, which is safe for
+	// concurrent use. It should return when its context is canceled, which
+	// happens once Events returns.
+	//
+	// If nil, a "keep-alive" comment is sent every [sse.DefaultKeepAliveInterval].
+	// Set it to a function that returns immediately to disable keep-alive.
+	//
+	// KeepAlive is not used by the generated client.
+	KeepAlive func(ctx context.Context, s DataOnlyOKSender) error
 	resp      *http.Response
 	decoder   *sse.Decoder
 	connect   sseConnectFunc
@@ -324,7 +334,17 @@ type DataOnlyStringOK struct {
 	// sent, until it returns. A nil Events sends an empty stream.
 	//
 	// Events is not used by the generated client.
-	Events    func(ctx context.Context, s DataOnlyStringOKSender) error
+	Events func(ctx context.Context, s DataOnlyStringOKSender) error
+	// KeepAlive keeps an idle connection open while Events runs. It is called
+	// concurrently with Events and shares the same sender, which is safe for
+	// concurrent use. It should return when its context is canceled, which
+	// happens once Events returns.
+	//
+	// If nil, a "keep-alive" comment is sent every [sse.DefaultKeepAliveInterval].
+	// Set it to a function that returns immediately to disable keep-alive.
+	//
+	// KeepAlive is not used by the generated client.
+	KeepAlive func(ctx context.Context, s DataOnlyStringOKSender) error
 	resp      *http.Response
 	decoder   *sse.Decoder
 	connect   sseConnectFunc
@@ -591,7 +611,17 @@ type DataOnlyTimeOK struct {
 	// sent, until it returns. A nil Events sends an empty stream.
 	//
 	// Events is not used by the generated client.
-	Events    func(ctx context.Context, s DataOnlyTimeOKSender) error
+	Events func(ctx context.Context, s DataOnlyTimeOKSender) error
+	// KeepAlive keeps an idle connection open while Events runs. It is called
+	// concurrently with Events and shares the same sender, which is safe for
+	// concurrent use. It should return when its context is canceled, which
+	// happens once Events returns.
+	//
+	// If nil, a "keep-alive" comment is sent every [sse.DefaultKeepAliveInterval].
+	// Set it to a function that returns immediately to disable keep-alive.
+	//
+	// KeepAlive is not used by the generated client.
+	KeepAlive func(ctx context.Context, s DataOnlyTimeOKSender) error
 	resp      *http.Response
 	decoder   *sse.Decoder
 	connect   sseConnectFunc
@@ -1061,7 +1091,17 @@ type FullEventsOK struct {
 	// sent, until it returns. A nil Events sends an empty stream.
 	//
 	// Events is not used by the generated client.
-	Events    func(ctx context.Context, s FullEventsOKSender) error
+	Events func(ctx context.Context, s FullEventsOKSender) error
+	// KeepAlive keeps an idle connection open while Events runs. It is called
+	// concurrently with Events and shares the same sender, which is safe for
+	// concurrent use. It should return when its context is canceled, which
+	// happens once Events returns.
+	//
+	// If nil, a "keep-alive" comment is sent every [sse.DefaultKeepAliveInterval].
+	// Set it to a function that returns immediately to disable keep-alive.
+	//
+	// KeepAlive is not used by the generated client.
+	KeepAlive func(ctx context.Context, s FullEventsOKSender) error
 	resp      *http.Response
 	decoder   *sse.Decoder
 	connect   sseConnectFunc
@@ -1505,7 +1545,17 @@ type OptionalStreamOK struct {
 	// sent, until it returns. A nil Events sends an empty stream.
 	//
 	// Events is not used by the generated client.
-	Events    func(ctx context.Context, s OptionalStreamOKSender) error
+	Events func(ctx context.Context, s OptionalStreamOKSender) error
+	// KeepAlive keeps an idle connection open while Events runs. It is called
+	// concurrently with Events and shares the same sender, which is safe for
+	// concurrent use. It should return when its context is canceled, which
+	// happens once Events returns.
+	//
+	// If nil, a "keep-alive" comment is sent every [sse.DefaultKeepAliveInterval].
+	// Set it to a function that returns immediately to disable keep-alive.
+	//
+	// KeepAlive is not used by the generated client.
+	KeepAlive func(ctx context.Context, s OptionalStreamOKSender) error
 	resp      *http.Response
 	decoder   *sse.Decoder
 	connect   sseConnectFunc
@@ -1796,7 +1846,17 @@ type WithHeadersOK struct {
 	// sent, until it returns. A nil Events sends an empty stream.
 	//
 	// Events is not used by the generated client.
-	Events    func(ctx context.Context, s WithHeadersOKSender) error
+	Events func(ctx context.Context, s WithHeadersOKSender) error
+	// KeepAlive keeps an idle connection open while Events runs. It is called
+	// concurrently with Events and shares the same sender, which is safe for
+	// concurrent use. It should return when its context is canceled, which
+	// happens once Events returns.
+	//
+	// If nil, a "keep-alive" comment is sent every [sse.DefaultKeepAliveInterval].
+	// Set it to a function that returns immediately to disable keep-alive.
+	//
+	// KeepAlive is not used by the generated client.
+	KeepAlive func(ctx context.Context, s WithHeadersOKSender) error
 	resp      *http.Response
 	decoder   *sse.Decoder
 	connect   sseConnectFunc
