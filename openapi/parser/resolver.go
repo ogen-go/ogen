@@ -14,8 +14,8 @@ type componentsResolver struct {
 
 func (c componentsResolver) ResolveReference(ref string) (*jsonschema.RawSchema, error) {
 	const prefix = "#/components/schemas/"
-	if strings.HasPrefix(ref, prefix) {
-		name := strings.TrimPrefix(ref, prefix)
+	if after, ok := strings.CutPrefix(ref, prefix); ok {
+		name := after
 		s, ok := c.components[name]
 		if ok {
 			return s.ToJSONSchema(), nil

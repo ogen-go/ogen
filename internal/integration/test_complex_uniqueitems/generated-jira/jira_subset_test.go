@@ -199,7 +199,7 @@ func TestWorkflowSchemeAssociations_CompleteJIRARequest(t *testing.T) {
 // Benchmark JIRA-like workload
 func BenchmarkJIRAWorkflowRules_50Rules(b *testing.B) {
 	rules := make([]WorkflowTransitionRule, 50)
-	for i := 0; i < 50; i++ {
+	for i := range 50 {
 		rules[i] = WorkflowTransitionRule{
 			RuleKey: string(rune('A' + (i % 26))),
 			ID:      NewOptString(string(rune('0' + (i % 10)))),

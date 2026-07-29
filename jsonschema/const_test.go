@@ -26,7 +26,6 @@ func TestConst(t *testing.T) {
 		{"invalid_type_1", `{}`, nil, true},
 	}
 	for _, tt := range tests {
-		tt := tt
 		t.Run(tt.name, testCustomEncodings(create, tt.data, tt.wantErr))
 	}
 }

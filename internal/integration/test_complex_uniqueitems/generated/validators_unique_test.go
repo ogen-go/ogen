@@ -132,7 +132,7 @@ func TestValidateUniqueWorkflowStatus_NestedObjects(t *testing.T) {
 func BenchmarkValidateUniqueWorkflowStatus_1000Items(b *testing.B) {
 	// Create 1,000 unique items
 	items := make([]WorkflowStatus, 1000)
-	for i := 0; i < 1000; i++ {
+	for i := range 1000 {
 		items[i] = WorkflowStatus{
 			ID:          string(rune(i)),
 			Name:        string(rune(i + 1000)),
@@ -153,7 +153,7 @@ func BenchmarkValidateUniqueWorkflowStatus_1000Items(b *testing.B) {
 func BenchmarkValidateUniqueWorkflowStatus_1000ItemsWithDuplicate(b *testing.B) {
 	// Create 1,000 items with duplicate at the end
 	items := make([]WorkflowStatus, 1000)
-	for i := 0; i < 999; i++ {
+	for i := range 999 {
 		items[i] = WorkflowStatus{
 			ID:          string(rune(i)),
 			Name:        string(rune(i + 1000)),
@@ -228,7 +228,7 @@ func TestValidateUniqueWorkflowStatus_CollisionResolution(t *testing.T) {
 	// Create a large set of items to increase probability of hash patterns
 	// The hash bucket mechanism should handle any collisions correctly
 	items := make([]WorkflowStatus, 100)
-	for i := 0; i < 100; i++ {
+	for i := range 100 {
 		items[i] = WorkflowStatus{
 			ID:          string(rune('A' + (i % 26))),               // Reuse some IDs
 			Name:        string(rune('a' + ((i * 7) % 26))),         // Different pattern

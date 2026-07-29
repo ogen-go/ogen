@@ -373,7 +373,6 @@ func TestServerURLTrimSlashes(t *testing.T) {
 		s.URL + "/",
 		s.URL + "//",
 	} {
-		u := u
 		t.Logf("Server: %q", u)
 
 		client, err := api.NewClient(u, api.WithClient(hclient))

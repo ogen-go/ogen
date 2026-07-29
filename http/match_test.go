@@ -23,7 +23,6 @@ func TestMatchContentType(t *testing.T) {
 		{"text/*", "application/json", false},
 	}
 	for i, tt := range tests {
-		tt := tt
 		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
 			require.Equal(t, tt.want, MatchContentType(tt.pattern, tt.value))
 		})

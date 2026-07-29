@@ -266,8 +266,8 @@ func TestWriteArrayComparison(t *testing.T) {
 			}
 
 			// Verify proper indentation
-			lines := strings.Split(output, "\n")
-			for _, line := range lines {
+			lines := strings.SplitSeq(output, "\n")
+			for line := range lines {
 				if line != "" {
 					require.True(t, strings.HasPrefix(line, tt.indent),
 						"line should start with indent %q: %s", tt.indent, line)

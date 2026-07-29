@@ -77,7 +77,6 @@ func TestValidateRequired(t *testing.T) {
 			required("required"),
 		},
 	} {
-		tc := tc
 		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
 			err := tc.Decoder().Decode(jx.DecodeStr(tc.Input))
 			if len(tc.Error) > 0 {
@@ -105,7 +104,6 @@ func TestValidateMap(t *testing.T) {
 			true,
 		},
 	} {
-		tc := tc
 		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
 			m := api.StringMap{}
 			require.NoError(t, m.Decode(jx.DecodeStr(tc.Input)))
@@ -153,7 +151,6 @@ func TestValidateFloat(t *testing.T) {
 			true,
 		},
 	} {
-		tc := tc
 		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
 			m := api.TestFloatValidation{}
 			require.NoError(t, m.Decode(jx.DecodeStr(tc.Input)))
@@ -201,7 +198,6 @@ func TestValidateDecimal(t *testing.T) {
 			true,
 		},
 	} {
-		tc := tc
 		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
 			m := api.TestDecimalValidation{}
 			require.NoError(t, m.Decode(jx.DecodeStr(tc.Input)))
@@ -237,7 +233,6 @@ func TestValidateUniqueItems(t *testing.T) {
 			true,
 		},
 	} {
-		tc := tc
 		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
 			m := api.UniqueItemsTest{}
 			require.NoError(t, m.Decode(jx.DecodeStr(tc.Input)))
@@ -382,7 +377,6 @@ func TestArrayLengthValidation(t *testing.T) {
 			``,
 		},
 	} {
-		tc := tc
 		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
 			defer func() {
 				if r := recover(); r != nil || t.Failed() {

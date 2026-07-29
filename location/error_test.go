@@ -75,7 +75,6 @@ func Test_chunkReports(t *testing.T) {
 		},
 	}
 	for i, tt := range tests {
-		tt := tt
 		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
 			r := chunkReports(tt.reports, tt.context, nil)
 			require.Equal(t, tt.want, r)
@@ -108,7 +107,6 @@ func TestMultiError_Error(t *testing.T) {
 		},
 	}
 	for i, tt := range tests {
-		tt := tt
 		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
 			me := &MultiError{
 				reports: tt.reports,

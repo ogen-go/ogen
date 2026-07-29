@@ -30,7 +30,6 @@ func TestExtensions(t *testing.T) {
 		{`0`, Extensions{}, true},
 	}
 	for i, tt := range tests {
-		tt := tt
 		t.Run(fmt.Sprintf("Test%d", i+1), testCustomEncodings(create, tt.data, tt.wantErr))
 	}
 }
@@ -38,7 +37,7 @@ func TestExtensions(t *testing.T) {
 func testExtensionsMarshal(
 	t *testing.T,
 	marshal func(any) ([]byte, error),
-	compare func(*require.Assertions, string, string, ...interface{}),
+	compare func(*require.Assertions, string, string, ...any),
 ) {
 	a := require.New(t)
 	e := Extensions{

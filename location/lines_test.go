@@ -23,7 +23,6 @@ func TestLines_Collect(t *testing.T) {
 		{"a\nb\n", []int64{1, 3}},
 	}
 	for i, tt := range tests {
-		tt := tt
 		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
 			a := assert.New(t)
 			data := []byte(tt.data)
@@ -53,7 +52,6 @@ func TestLines_Line(t *testing.T) {
 		{"abc\n" + "def\n" + "ghi\n" + "jkl\n", []string{"abc", "def", "ghi", "jkl"}},
 	}
 	for i, tt := range tests {
-		tt := tt
 		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
 			var lines Lines
 			lines.Collect([]byte(tt.input))

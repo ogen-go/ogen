@@ -2,6 +2,7 @@ package ir
 
 import (
 	"fmt"
+	"slices"
 	"strings"
 
 	"github.com/ogen-go/ogen/internal/naming"
@@ -305,12 +306,7 @@ func (t *Type) Format() bool {
 }
 
 func (t *Type) Is(vs ...Kind) bool {
-	for _, v := range vs {
-		if t.Kind == v {
-			return true
-		}
-	}
-	return false
+	return slices.Contains(vs, t.Kind)
 }
 
 // Go returns valid Go type for this Type.

@@ -122,7 +122,6 @@ func TestParserDeep(t *testing.T) {
 	_ = tests
 
 	for _, tt := range tests {
-		tt := tt
 		t.Run(fmt.Sprintf("Test %s", tt.name), func(t *testing.T) {
 			a := require.New(t)
 
@@ -155,10 +154,7 @@ func TestParserDeep(t *testing.T) {
 				}
 				s.Locator = aSchema.Locator
 				s.Source = aSchema.Source
-				pMax := len(aSchema.Properties)
-				if pMax > len(s.Properties) {
-					pMax = len(s.Properties)
-				}
+				pMax := min(len(aSchema.Properties), len(s.Properties))
 				for p := 0; p < pMax; p++ {
 					propActual := aSchema.Properties[p]
 					s.Properties[p].Schema.Locator = propActual.Schema.Locator
@@ -171,7 +167,7 @@ func TestParserDeep(t *testing.T) {
 	}
 }
 
-func checkDeep(t *testing.T, part string, expected, actual interface{}) {
+func checkDeep(t *testing.T, part string, expected, actual any) {
 	t.Helper()
 
 	var err error
@@ -205,10 +201,10 @@ func checkDeep(t *testing.T, part string, expected, actual interface{}) {
 	var e, a string
 
 	switch reflect.TypeOf(expected) {
-	case reflect.TypeOf(""):
+	case reflect.TypeFor[string]():
 		e = reflect.ValueOf(expected).String()
 		a = reflect.ValueOf(actual).String()
-	case reflect.TypeOf(time.Time{}):
+	case reflect.TypeFor[time.Time]():
 		e = spewConfigStringerEnabled.Sdump(expected)
 		a = spewConfigStringerEnabled.Sdump(actual)
 	default:

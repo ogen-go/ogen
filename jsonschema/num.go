@@ -30,7 +30,7 @@ func (n *Num) UnmarshalYAML(node *yaml.Node) error {
 	if t := node.Tag; node.Kind != yaml.ScalarNode || (t != "!!int" && t != "!!float") {
 		return &yaml.UnmarshalError{
 			Node: node,
-			Type: reflect.TypeOf(n),
+			Type: reflect.TypeFor[*Num](),
 			Err:  errors.Errorf("cannot unmarshal %s into %T", node.ShortTag(), n),
 		}
 	}

@@ -23,7 +23,6 @@ func isExtensionKey(key string) bool {
 func (p Extensions) MarshalYAML() (any, error) {
 	content := make([]*yaml.Node, 0, len(p)*2)
 	for key, val := range p {
-		val := val
 		if !isExtensionKey(key) {
 			continue
 		}
@@ -44,7 +43,7 @@ func (p *Extensions) UnmarshalYAML(node *yaml.Node) error {
 	if node.Kind != yaml.MappingNode {
 		return &yaml.UnmarshalError{
 			Node: node,
-			Type: reflect.TypeOf(p),
+			Type: reflect.TypeFor[*Extensions](),
 			Err:  errors.Errorf("cannot unmarshal %s into %T", node.ShortTag(), p),
 		}
 	}
@@ -76,7 +75,6 @@ func (p Extensions) MarshalJSON() ([]byte, error) {
 
 	e.ObjStart()
 	for key, val := range p {
-		val := val
 		if !isExtensionKey(key) {
 			continue
 		}

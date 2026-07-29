@@ -102,7 +102,7 @@ type lineNumberPad struct {
 func (p lineNumberPad) Format(f fmt.State, verb rune) {
 	padding := p.pad - log10(p.line)
 	var buf [32]byte
-	for i := 0; i < padding; i++ {
+	for i := range padding {
 		buf[i] = ' '
 	}
 	b := strconv.AppendInt(buf[:padding], int64(p.line), 10)

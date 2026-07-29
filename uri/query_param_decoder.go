@@ -64,7 +64,7 @@ func (d *queryParamDecoder) DecodeArray(f func(d Decoder) error) error {
 			return nil
 		}
 
-		for _, item := range strings.Split(values[0], ",") {
+		for item := range strings.SplitSeq(values[0], ",") {
 			if err := f(&constval{item}); err != nil {
 				return err
 			}
@@ -91,7 +91,7 @@ func (d *queryParamDecoder) DecodeArray(f func(d Decoder) error) error {
 			return nil
 		}
 
-		for _, item := range strings.Split(values[0], " ") {
+		for item := range strings.SplitSeq(values[0], " ") {
 			if err := f(&constval{item}); err != nil {
 				return err
 			}
@@ -113,7 +113,7 @@ func (d *queryParamDecoder) DecodeArray(f func(d Decoder) error) error {
 			return errors.New("invalid value")
 		}
 
-		for _, item := range strings.Split(values[0], "|") {
+		for item := range strings.SplitSeq(values[0], "|") {
 			if err := f(&constval{item}); err != nil {
 				return err
 			}

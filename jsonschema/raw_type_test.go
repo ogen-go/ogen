@@ -29,7 +29,6 @@ func TestRawSchemaTypeList(t *testing.T) {
 		{`{"type": []}`, "", false, true},
 	}
 	for i, tt := range tests {
-		tt := tt
 		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
 			t.Run("YAML", func(t *testing.T) {
 				a := require.New(t)
@@ -73,7 +72,6 @@ func TestRawSchemaTypeListYAML(t *testing.T) {
 		{"type:\n  - string\n  - 'null'\ndescription: foo", "string", true},
 	}
 	for i, tt := range tests {
-		tt := tt
 		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
 			a := require.New(t)
 

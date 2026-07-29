@@ -400,7 +400,6 @@ func TestSchemaExtensions(t *testing.T) {
 	}
 
 	for i, tt := range tests {
-		tt := tt
 		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
 			a := require.New(t)
 			data := []byte(tt.raw)
@@ -433,7 +432,6 @@ func TestInvalidMultipleOf(t *testing.T) {
 		"integer",
 		"number",
 	} {
-		typ := typ
 		t.Run(typ, func(t *testing.T) {
 			for _, v := range values {
 				_, err := parser.Parse(&RawSchema{

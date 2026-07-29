@@ -481,7 +481,7 @@ func (p *parser) passString(start, end int) {
 	p.goRegexp.WriteString(p.str[start:end])
 }
 
-func (p *parser) error(fatal bool, format string, args ...interface{}) {
+func (p *parser) error(fatal bool, format string, args ...any) {
 	if p.err != nil {
 		return
 	}

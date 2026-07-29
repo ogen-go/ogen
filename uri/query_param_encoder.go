@@ -122,7 +122,7 @@ func (e *queryParamEncoder) encodeObject() error {
 			kvSep    = ","
 			fieldSep = ","
 		)
-		var out string
+		var out strings.Builder
 
 		for i, f := range e.fields {
 			if err := checkNotContains(f.Name, kvSep); err != nil {
@@ -132,13 +132,13 @@ func (e *queryParamEncoder) encodeObject() error {
 				return err
 			}
 
-			out += f.Name + fieldSep + f.Value
+			out.WriteString(f.Name + fieldSep + f.Value)
 			if i != len(e.fields)-1 {
-				out += kvSep
+				out.WriteString(kvSep)
 			}
 		}
 
-		e.values[e.paramName] = []string{out}
+		e.values[e.paramName] = []string{out.String()}
 		return nil
 
 	case QueryStyleSpaceDelimited:

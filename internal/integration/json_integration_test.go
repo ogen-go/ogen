@@ -122,7 +122,6 @@ func TestExampleJSON(t *testing.T) {
 		},
 	} {
 		// Make range value copy to prevent data races.
-		tc := tc
 		t.Run(tc.Name, func(t *testing.T) {
 			encode := json.Encode(tc.Value)
 			t.Logf("%s", encode)

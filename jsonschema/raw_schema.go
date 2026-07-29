@@ -81,7 +81,7 @@ func (s *RawSchema) UnmarshalJSON(data []byte) error {
 	type plain RawSchema
 	var val struct {
 		plain
-		Type RawType `json:"type,omitempty"`
+		Type RawType `json:"type"`
 	}
 
 	if err := json.Unmarshal(data, &val); err != nil {

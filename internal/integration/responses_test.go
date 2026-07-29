@@ -304,7 +304,6 @@ func TestResponsesHeaders(t *testing.T) {
 			},
 		}
 		for _, tt := range tests {
-			tt := tt
 			t.Run(string(tt.Param), func(t *testing.T) {
 				ctx, a, client := create(t)
 
@@ -356,7 +355,6 @@ func TestResponsesOptionalHeaders(t *testing.T) {
 		},
 	}
 	for _, tt := range tests {
-		tt := tt
 		t.Run(tt.Name, func(t *testing.T) {
 			a := require.New(t)
 
@@ -437,7 +435,6 @@ func TestResponsesPattern(t *testing.T) {
 			}},
 		}
 		for _, tt := range tests {
-			tt := tt
 			t.Run(fmt.Sprintf("Code%d", tt.Code), func(t *testing.T) {
 				ctx, a, client := create(t)
 
@@ -479,7 +476,6 @@ func TestResponsesPattern(t *testing.T) {
 			},
 		}
 		for _, tt := range tests {
-			tt := tt
 			t.Run(string(tt.Param), func(t *testing.T) {
 				ctx, a, client := create(t)
 
@@ -548,7 +544,6 @@ func TestResponseErrorStatusCode(t *testing.T) {
 		{400, "default (code 400)"},
 		{401, "default (code 401)"},
 	} {
-		tt := tt
 		t.Run(fmt.Sprintf("Code%d", tt.code), func(t *testing.T) {
 			a := require.New(t)
 			ctx := context.Background()

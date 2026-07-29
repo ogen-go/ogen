@@ -76,7 +76,6 @@ func TestCompile(t *testing.T) {
 		{"(?`)", nil, true},
 	}
 	for i, tt := range tests {
-		tt := tt
 		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
 			a := require.New(t)
 
@@ -161,7 +160,6 @@ func TestConvert(t *testing.T) {
 		{"(?`)", ``, false},
 	}
 	for i, tt := range tests {
-		tt := tt
 		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
 			a := require.New(t)
 

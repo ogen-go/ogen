@@ -159,7 +159,6 @@ func TestParameters(t *testing.T) {
 		"/%",
 		plainParam,
 	} {
-		param := param
 		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
 			t.Run("PathParameter", func(t *testing.T) {
 				h, err := client.PathParameter(ctx, api.PathParameterParams{Value: param})

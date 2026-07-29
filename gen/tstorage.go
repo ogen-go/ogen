@@ -1,6 +1,7 @@
 package gen
 
 import (
+	"maps"
 	"sort"
 	"strings"
 
@@ -218,21 +219,10 @@ func (s *tstorage) merge(other *tstorage) error {
 		s.types[t.Name] = t
 	}
 
-	for name, t := range other.types {
-		s.types[name] = t
-	}
-
-	for name, t := range other.responses {
-		s.responses[name] = t
-	}
-
-	for name, t := range other.wtypes {
-		s.wtypes[name] = t
-	}
-
-	for name, t := range other.parameters {
-		s.parameters[name] = t
-	}
+	maps.Copy(s.types, other.types)
+	maps.Copy(s.responses, other.responses)
+	maps.Copy(s.wtypes, other.wtypes)
+	maps.Copy(s.parameters, other.parameters)
 
 	return nil
 }

@@ -73,7 +73,6 @@ func TestEncodeDuration(t *testing.T) {
 		-1 << 63,
 	}
 	for _, tt := range tests {
-		tt := tt
 		expected := tt.String()
 		t.Run(expected, func(t *testing.T) {
 			e := jx.GetEncoder()

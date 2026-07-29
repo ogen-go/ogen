@@ -143,7 +143,6 @@ func TestDefault(t *testing.T) {
 		},
 	} {
 		// Make range value copy to prevent data races.
-		tc := tc
 		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
 			r := api.DefaultTest{}
 			if err := r.Decode(jx.DecodeStr(tc.Input)); tc.Error {

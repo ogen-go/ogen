@@ -27,7 +27,6 @@ func TestNum(t *testing.T) {
 		{`"100"`, nil, true},
 	}
 	for i, tt := range tests {
-		tt := tt
 		t.Run(fmt.Sprintf("Test%d", i+1), testCustomEncodings(create, tt.data, tt.wantErr))
 	}
 }

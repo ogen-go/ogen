@@ -94,7 +94,6 @@ func TestProperties(t *testing.T) {
 		{`0`, Properties{}, true},
 	}
 	for i, tt := range tests {
-		tt := tt
 		t.Run(fmt.Sprintf("Test%d", i+1), testCustomEncodings(create, tt.data, tt.wantErr))
 	}
 }
@@ -120,7 +119,6 @@ func TestAdditionalProperties(t *testing.T) {
 		{`0`, AdditionalProperties{}, true},
 	}
 	for i, tt := range tests {
-		tt := tt
 		t.Run(fmt.Sprintf("Test%d", i+1), testCustomEncodings(create, tt.data, tt.wantErr))
 	}
 }
@@ -147,7 +145,6 @@ func TestPatternProperties(t *testing.T) {
 		{`0`, PatternProperties{}, true},
 	}
 	for i, tt := range tests {
-		tt := tt
 		t.Run(fmt.Sprintf("Test%d", i+1), testCustomEncodings(create, tt.data, tt.wantErr))
 	}
 }

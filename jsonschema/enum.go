@@ -33,7 +33,7 @@ func (n *Enum) UnmarshalYAML(node *yaml.Node) error {
 	if node.Kind != yaml.SequenceNode {
 		return &yaml.UnmarshalError{
 			Node: node,
-			Type: reflect.TypeOf(n),
+			Type: reflect.TypeFor[*Enum](),
 			Err:  errors.Errorf("cannot unmarshal %s into %T", node.ShortTag(), n),
 		}
 	}

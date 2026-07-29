@@ -43,7 +43,7 @@ func (p *RawProperties) UnmarshalYAML(node *yaml.Node) error {
 	if node.Kind != yaml.MappingNode {
 		return &yaml.UnmarshalError{
 			Node: node,
-			Type: reflect.TypeOf(p),
+			Type: reflect.TypeFor[*RawProperties](),
 			Err:  errors.Errorf("cannot unmarshal %s into %T", node.ShortTag(), p),
 		}
 	}
@@ -199,7 +199,7 @@ func (p *RawPatternProperties) UnmarshalYAML(node *yaml.Node) error {
 	if node.Kind != yaml.MappingNode {
 		return &yaml.UnmarshalError{
 			Node: node,
-			Type: reflect.TypeOf(p),
+			Type: reflect.TypeFor[*RawPatternProperties](),
 			Err:  errors.Errorf("cannot unmarshal %s into %T", node.ShortTag(), p),
 		}
 	}

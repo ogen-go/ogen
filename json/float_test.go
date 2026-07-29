@@ -29,7 +29,6 @@ func TestStringFloat32(t *testing.T) {
 		{`"foo"`, 0, true},
 	}
 	for i, tt := range tests {
-		tt := tt
 		t.Run(fmt.Sprintf("Test%d", i+1), testDecodeEncode(
 			DecodeStringFloat32,
 			EncodeStringFloat32,
@@ -63,7 +62,6 @@ func TestStringFloat64(t *testing.T) {
 		{`"foo"`, 0, true},
 	}
 	for i, tt := range tests {
-		tt := tt
 		t.Run(fmt.Sprintf("Test%d", i+1), testDecodeEncode(
 			DecodeStringFloat64,
 			EncodeStringFloat64,
