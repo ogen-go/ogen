@@ -94,7 +94,7 @@ func BenchmarkChainMiddlewares(b *testing.B) {
 
 	var (
 		chain = ChainMiddlewares(func() (r []Middleware) {
-			for i := 0; i < N; i++ {
+			for range N {
 				r = append(r, noop)
 			}
 			return r

@@ -28,7 +28,6 @@ func TestValidateSum(t *testing.T) {
 			false,
 		},
 	} {
-		tc := tc
 		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
 			m := api.JaegerAnyOf{}
 			require.NoError(t, m.Decode(jx.DecodeStr(tc.Input)))
@@ -55,7 +54,6 @@ func TestAnyOf(t *testing.T) {
 			{`null`, "", true},
 		} {
 			// Make range value copy to prevent data races.
-			tc := tc
 			t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
 				checker := require.NoError
 				if tc.Error {
@@ -78,7 +76,6 @@ func TestAnyOf(t *testing.T) {
 			{`null`, "", true},
 		} {
 			// Make range value copy to prevent data races.
-			tc := tc
 			t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
 				checker := require.NoError
 				if tc.Error {
@@ -112,7 +109,6 @@ func TestAnyOf(t *testing.T) {
 			{`null`, zero, true},
 		} {
 			// Make range value copy to prevent data races.
-			tc := tc
 			t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
 				checker := require.NoError
 				if tc.Error {

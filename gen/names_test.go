@@ -105,7 +105,6 @@ func Test_cleanRef(t *testing.T) {
 		{"user.json", "user"},
 	}
 	for i, tt := range tests {
-		tt := tt
 		t.Run(fmt.Sprintf("Test%d", i), func(t *testing.T) {
 			u, err := url.Parse(tt.ref)
 			require.NoError(t, err)

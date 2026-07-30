@@ -19,7 +19,6 @@ func TestCapitalize(t *testing.T) {
 		{"хлеб", "Хлеб"},
 	}
 	for i, tt := range tests {
-		tt := tt
 		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
 			require.Equal(t, tt.want, Capitalize(tt.input))
 		})

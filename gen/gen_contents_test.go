@@ -2,6 +2,7 @@ package gen
 
 import (
 	"fmt"
+	"maps"
 	"testing"
 
 	"github.com/stretchr/testify/require"
@@ -40,16 +41,13 @@ func Test_filterMostSpecific(t *testing.T) {
 		{list("application/*", "text/html"), list("application/*", "text/html"), false},
 	}
 	for i, tt := range tests {
-		tt := tt
 		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
 			a := require.New(t)
 			core, logs := observer.New(zapcore.DebugLevel)
 
 			// Make a copy of the testdata to avoid modifying it.
 			contents := map[string]*openapi.MediaType{}
-			for k, v := range tt.contents {
-				contents[k] = v
-			}
+			maps.Copy(contents, tt.contents)
 
 			err := filterMostSpecific(contents, zap.New(core))
 			if tt.wantErr {

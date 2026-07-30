@@ -22,7 +22,6 @@ func TestStringUint8(t *testing.T) {
 		{`"-1"`, 0, true},
 	}
 	for i, tt := range tests {
-		tt := tt
 		t.Run(fmt.Sprintf("Test%d", i+1), testDecodeEncode(
 			DecodeStringUint8,
 			EncodeStringUint8,
@@ -50,7 +49,6 @@ func TestStringUint16(t *testing.T) {
 		{`"-1"`, 0, true},
 	}
 	for i, tt := range tests {
-		tt := tt
 		t.Run(fmt.Sprintf("Test%d", i+1), testDecodeEncode(
 			DecodeStringUint16,
 			EncodeStringUint16,
@@ -78,7 +76,6 @@ func TestStringUint32(t *testing.T) {
 		{`"-1"`, 0, true},
 	}
 	for i, tt := range tests {
-		tt := tt
 		t.Run(fmt.Sprintf("Test%d", i+1), testDecodeEncode(
 			DecodeStringUint32,
 			EncodeStringUint32,
@@ -106,7 +103,6 @@ func TestStringUint64(t *testing.T) {
 		{`"-1"`, 0, true},
 	}
 	for i, tt := range tests {
-		tt := tt
 		t.Run(fmt.Sprintf("Test%d", i+1), testDecodeEncode(
 			DecodeStringUint64,
 			EncodeStringUint64,

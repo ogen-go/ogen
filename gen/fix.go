@@ -69,7 +69,7 @@ func fixEqualResponses(ctx *genctx, op *ir.Operation) error {
 	}
 
 	var candidates []candidate
-	for i := 0; i < len(statusCodes); i++ {
+	for i := range statusCodes {
 		lcode := statusCodes[i]
 		for j := i; j < len(statusCodes); j++ {
 			rcode := statusCodes[j]

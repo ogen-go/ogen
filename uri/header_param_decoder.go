@@ -27,7 +27,7 @@ func (d *headerParamDecoder) DecodeArray(f func(Decoder) error) error {
 		return err
 	}
 
-	for _, v := range strings.Split(val, ",") {
+	for v := range strings.SplitSeq(val, ",") {
 		if err := f(constval{v}); err != nil {
 			return err
 		}

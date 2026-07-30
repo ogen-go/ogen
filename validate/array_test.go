@@ -113,7 +113,6 @@ func TestUniqueItems(t *testing.T) {
 		{[]string{"a", "b", "b"}, true},
 		{[]string{"b", "a", "b"}, true},
 	} {
-		tt := tt
 		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
 			check := require.NoError
 			if tt.WantErr {

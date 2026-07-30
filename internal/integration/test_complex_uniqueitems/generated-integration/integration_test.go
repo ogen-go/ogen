@@ -408,7 +408,7 @@ func TestValidateUniqueComprehensiveItem_UnsetOptionalFields(t *testing.T) {
 // Benchmark with all field types
 func BenchmarkValidateUniqueComprehensiveItem_100Items(b *testing.B) {
 	items := make([]ComprehensiveItem, 100)
-	for i := 0; i < 100; i++ {
+	for i := range 100 {
 		items[i] = ComprehensiveItem{
 			ID:       string(rune('A' + (i % 26))),
 			Name:     string(rune('a' + (i % 26))),

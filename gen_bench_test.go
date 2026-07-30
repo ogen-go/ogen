@@ -20,7 +20,6 @@ func BenchmarkGenerator(b *testing.B) {
 		"manga.json",          // Tiny (<1kLOC)
 	}
 	for _, file := range files {
-		file := file
 		name := strings.TrimSuffix(file, ".json")
 		b.Run(name, func(b *testing.B) {
 			a := require.New(b)

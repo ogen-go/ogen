@@ -45,7 +45,6 @@ func Test_mergeEnums(t *testing.T) {
 		{[]any{1, 2, 3}, []any{4, 5, 6}, nil, true},
 	}
 	for i, tt := range tests {
-		tt := tt
 		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
 			a := require.New(t)
 

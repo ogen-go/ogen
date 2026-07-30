@@ -133,7 +133,6 @@ func TestFindPath(t *testing.T) {
 	require.NoError(t, err)
 
 	for i, tc := range routerTestCases() {
-		tc := tc
 		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
 			t.Run("FindRoute", func(t *testing.T) {
 				a := require.New(t)
@@ -215,7 +214,6 @@ func TestComplicatedRoute(t *testing.T) {
 			"/name/1/fo%6F-1234bar+-ba%7a/!kek*",
 			"/name/1/fo%6f-1234bar+-ba%7A/!kek*",
 		} {
-			u := u
 			t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
 				a := require.New(t)
 				req, err := http.NewRequestWithContext(ctx,

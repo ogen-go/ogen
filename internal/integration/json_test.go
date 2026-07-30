@@ -103,7 +103,6 @@ func TestJSONGenerics(t *testing.T) {
 			},
 		} {
 			// Make range value copy to prevent data races.
-			tc := tc
 			t.Run(tc.Name, func(t *testing.T) {
 				t.Parallel()
 
@@ -176,7 +175,6 @@ func TestJSONGenerics(t *testing.T) {
 			},
 		} {
 			// Make range value copy to prevent data races.
-			tc := tc
 			t.Run(tc.Name, func(t *testing.T) {
 				t.Parallel()
 
@@ -263,7 +261,6 @@ func TestJSONArray(t *testing.T) {
 			},
 		} {
 			// Make range value copy to prevent data races.
-			tc := tc
 			t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
 				r := api.ArrayTest{}
 				if err := r.Decode(jx.DecodeStr(tc.Input)); tc.Error {
@@ -309,7 +306,6 @@ func TestJSONArray(t *testing.T) {
 			},
 		} {
 			// Make range value copy to prevent data races.
-			tc := tc
 			t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
 				testEncode(t, &tc.Value, tc.Expected)
 			})
@@ -343,7 +339,6 @@ func TestJSONRecursiveArray(t *testing.T) {
 			},
 		} {
 			// Make range value copy to prevent data races.
-			tc := tc
 			t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
 				r := api.RecursiveArray{}
 				require.NoError(t, r.Decode(jx.DecodeStr(tc.Input)))
@@ -482,7 +477,6 @@ func TestJSONAdditionalProperties(t *testing.T) {
 			},
 		} {
 			// Make range value copy to prevent data races.
-			tc := tc
 			t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
 				r := api.MapWithProperties{}
 				if err := r.Decode(jx.DecodeStr(tc.Input)); tc.Error {
@@ -566,7 +560,6 @@ func TestJSONAdditionalProperties(t *testing.T) {
 			},
 		} {
 			// Make range value copy to prevent data races.
-			tc := tc
 			t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
 				testEncode(t, tc.Value, tc.Expected)
 			})
@@ -645,7 +638,6 @@ func TestJSONNoAdditionalProperties(t *testing.T) {
 			},
 		} {
 			// Make range value copy to prevent data races.
-			tc := tc
 			t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
 				r := tc.Creator()
 				if err := r.Decode(jx.DecodeStr(tc.Input)); tc.Error {
@@ -694,7 +686,6 @@ func TestJSONPatternProperties(t *testing.T) {
 				},
 			} {
 				// Make range value copy to prevent data races.
-				tc := tc
 				t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
 					r := api.PatternRecursiveMap{}
 					if err := r.Decode(jx.DecodeStr(tc.Input)); tc.Error {
@@ -740,7 +731,6 @@ func TestJSONPatternProperties(t *testing.T) {
 				},
 			} {
 				// Make range value copy to prevent data races.
-				tc := tc
 				t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
 					r := api.StringIntMap{}
 					if err := r.Decode(jx.DecodeStr(tc.Input)); tc.Error {
@@ -805,7 +795,6 @@ func TestJSONPropertiesCount(t *testing.T) {
 			true,
 		},
 	} {
-		tc := tc
 		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
 			m := api.MaxPropertiesTest{}
 			checker := require.NoError
@@ -834,7 +823,6 @@ func TestJSONSum(t *testing.T) {
 			{`{"common-1": "abc", "common-2": 1, "unique-3": "unique", "unique-4": "unique"}`, "", true},
 		} {
 			// Make range value copy to prevent data races.
-			tc := tc
 			t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
 				checker := require.NoError
 				if tc.Error {
@@ -870,7 +858,6 @@ func TestJSONSum(t *testing.T) {
 			},
 		} {
 			// Make range value copy to prevent data races.
-			tc := tc
 			t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
 				checker := require.NoError
 				if tc.Error {
@@ -900,7 +887,6 @@ func TestJSONSum(t *testing.T) {
 			{`null`, empty, true},
 		} {
 			// Make range value copy to prevent data races.
-			tc := tc
 			t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
 				checker := require.NoError
 				if tc.Error {
@@ -926,7 +912,6 @@ func TestJSONSum(t *testing.T) {
 				{`null`, api.NewNullOneOfWithNullable(struct{}{}), false},
 			} {
 				// Make range value copy to prevent data races.
-				tc := tc
 				t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
 					checker := require.NoError
 					if tc.Error {
@@ -951,7 +936,6 @@ func TestJSONSum(t *testing.T) {
 				{`null`, api.NewNullOneOfNullables(struct{}{}), false},
 			} {
 				// Make range value copy to prevent data races.
-				tc := tc
 				t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
 					checker := require.NoError
 					if tc.Error {
@@ -977,7 +961,6 @@ func TestJSONSum(t *testing.T) {
 				{`null`, api.NewOneOfNullablesOneOfBooleanSumNullables(api.NewNullOneOfNullables(struct{}{})), false},
 			} {
 				// Make range value copy to prevent data races.
-				tc := tc
 				t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
 					checker := require.NoError
 					if tc.Error {
@@ -1023,7 +1006,6 @@ func TestJSONSum(t *testing.T) {
 			},
 		} {
 			// Make range value copy to prevent data races.
-			tc := tc
 			t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
 				r := api.OneOfMappingReference{}
 				require.NoError(t, r.Decode(jx.DecodeStr(tc.Input)))
@@ -1098,7 +1080,6 @@ func TestJSONSum(t *testing.T) {
 			},
 		} {
 			// Make range value copy to prevent data races.
-			tc := tc
 			t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
 				r := api.Issue943{}
 				err := r.Decode(jx.DecodeStr(tc.Input))
@@ -1169,10 +1150,8 @@ func TestJSONAny(t *testing.T) {
 	}
 
 	for _, tc := range cases {
-		tc := tc
 		t.Run(tc.Name, func(t *testing.T) {
 			for i, input := range tc.Inputs {
-				input := input
 				t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
 					typ := &api.AnyTest{}
 					checker := require.NoError
@@ -1203,7 +1182,6 @@ func TestJSONNull(t *testing.T) {
 		{"true", true},
 		{"false", true},
 	} {
-		tc := tc
 		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
 			m := api.NullValue{}
 			checker := require.NoError
@@ -1251,7 +1229,6 @@ func TestTupleJSON(t *testing.T) {
 		{`[true, 1, "foo", [], {"foo": "foo"}]`, api.TupleTest{}, true},
 	} {
 		// Make range value copy to prevent data races.
-		tc := tc
 		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
 			r := &api.TupleTest{}
 			err := r.Decode(jx.DecodeStr(tc.Input))
@@ -1323,7 +1300,6 @@ func TestInlineOneOf(t *testing.T) {
 			{`{"common": "foo"}`, api.InlineDiscriminatorOneOf{}, true},
 		} {
 			// Make range value copy to prevent data races.
-			tc := tc
 			t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
 				r := &api.InlineDiscriminatorOneOf{}
 				err := r.Decode(jx.DecodeStr(tc.Input))
@@ -1393,7 +1369,6 @@ func TestInlineOneOf(t *testing.T) {
 			{`{"common": "foo"}`, api.MergeDiscriminatorOneOf{}, true},
 		} {
 			// Make range value copy to prevent data races.
-			tc := tc
 			t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
 				r := &api.MergeDiscriminatorOneOf{}
 				err := r.Decode(jx.DecodeStr(tc.Input))
@@ -1442,7 +1417,6 @@ func TestInlineOneOf(t *testing.T) {
 			{`{"common": "foo", "kind": "foo"}`, api.InlineUniqueFieldsOneOf{}, true},
 		} {
 			// Make range value copy to prevent data races.
-			tc := tc
 			t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
 				r := &api.InlineUniqueFieldsOneOf{}
 				err := r.Decode(jx.DecodeStr(tc.Input))
@@ -1491,7 +1465,6 @@ func TestInlineOneOf(t *testing.T) {
 			{`{"common": "foo", "kind": "foo"}`, api.MergeUniqueFieldsOneOf{}, true},
 		} {
 			// Make range value copy to prevent data races.
-			tc := tc
 			t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
 				r := &api.MergeUniqueFieldsOneOf{}
 				err := r.Decode(jx.DecodeStr(tc.Input))

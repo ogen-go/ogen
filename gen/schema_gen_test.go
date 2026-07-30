@@ -311,7 +311,6 @@ func TestGenerate(t *testing.T) {
 		},
 	}
 	for _, tt := range tests {
-		tt := tt
 		t.Run(fmt.Sprintf("Test %s", tt.name), func(t *testing.T) {
 			a := require.New(t)
 

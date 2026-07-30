@@ -25,7 +25,6 @@ func TestStringUnix(t *testing.T) {
 		{"Micro", EncodeStringUnixMicro, DecodeStringUnixMicro, time.UnixMicro},
 		{"Milli", EncodeStringUnixMilli, DecodeStringUnixMilli, time.UnixMilli},
 	} {
-		format := format
 		t.Run(format.name, func(t *testing.T) {
 			tests := []struct {
 				input   string
@@ -41,7 +40,6 @@ func TestStringUnix(t *testing.T) {
 				{`"foo"`, 0, true},
 			}
 			for i, tt := range tests {
-				tt := tt
 				t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
 					a := require.New(t)
 					d := jx.DecodeStr(tt.input)

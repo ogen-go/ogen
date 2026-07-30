@@ -1,6 +1,8 @@
 package validate
 
 import (
+	"slices"
+
 	"github.com/go-faster/errors"
 )
 
@@ -53,10 +55,8 @@ func UniqueItems[S ~[]T, T comparable](arr S) error {
 		return nil
 	}
 	for i, a := range arr {
-		for _, b := range arr[i+1:] {
-			if a == b {
-				return errors.Errorf("duplicate element [%d] %v", i, a)
-			}
+		if slices.Contains(arr[i+1:], a) {
+			return errors.Errorf("duplicate element [%d] %v", i, a)
 		}
 	}
 	return nil

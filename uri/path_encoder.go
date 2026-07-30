@@ -135,7 +135,7 @@ func (e *PathEncoder) array() (string, error) {
 	case PathStyleSimple:
 		var result []rune
 		ll := len(e.items)
-		for i := 0; i < ll; i++ {
+		for i := range ll {
 			result = append(result, []rune(e.items[i])...)
 			if i != ll-1 {
 				result = append(result, ',')

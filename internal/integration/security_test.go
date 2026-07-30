@@ -284,7 +284,6 @@ func TestSecurityClientCheck(t *testing.T) {
 	test := func(f func(*api.Client, context.Context) error, tts []testCase) func(t *testing.T) {
 		return func(t *testing.T) {
 			for i, tt := range tts {
-				tt := tt
 				t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
 					client, err := api.NewClient(s.URL, &tt.source, api.WithClient(s.Client()))
 					require.NoError(t, err)

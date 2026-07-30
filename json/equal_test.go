@@ -95,7 +95,6 @@ func TestEqual(t *testing.T) {
 	sortedIter(func(typ string, tts []testCase) {
 		t.Run(typ, func(t *testing.T) {
 			for i, tt := range tts {
-				tt := tt
 				t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
 					a := require.New(t)
 					check := func(x, y []byte) {
@@ -137,7 +136,6 @@ func BenchmarkEqual(b *testing.B) {
 	}
 
 	for _, bb := range benches {
-		bb := bb
 		b.Run(bb.name, func(b *testing.B) {
 			x, y := []byte(bb.a), []byte(bb.b)
 			var (

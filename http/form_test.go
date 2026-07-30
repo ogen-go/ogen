@@ -27,7 +27,6 @@ func TestParseForm(t *testing.T) {
 		{"%", url.Values{}, true},
 	}
 	for i, tt := range tests {
-		tt := tt
 		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
 			a := require.New(t)
 			got, err := ParseForm(&http.Request{
@@ -90,7 +89,7 @@ func BenchmarkParseForm(b *testing.B) {
 	// ~12KB of form data.
 	body := func() string {
 		var sb strings.Builder
-		for i := 0; i < 1024; i++ {
+		for i := range 1024 {
 			if i > 0 {
 				sb.WriteString("&")
 			}

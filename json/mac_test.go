@@ -66,7 +66,6 @@ func TestMAC(t *testing.T) {
 		{`"00-1B-2C-3D-4E"`, nil, true},  // Too few octets.
 	}
 	for i, tt := range tests {
-		tt := tt
 		t.Run(fmt.Sprintf("Test%d", i+1), testDecodeEncode(
 			DecodeMAC,
 			EncodeMAC,

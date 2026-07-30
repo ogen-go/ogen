@@ -43,7 +43,6 @@ func Test_unescapeCookie(t *testing.T) {
 		{"%0j", "", false},
 	}
 	for i, tt := range tests {
-		tt := tt
 		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
 			got, ok := unescapeCookie(tt.input)
 			if !tt.wantOk {

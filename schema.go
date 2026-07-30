@@ -281,7 +281,7 @@ func (s *Schema) UnmarshalJSON(data []byte) error {
 	type plain Schema
 	var val struct {
 		plain
-		Type jsonschema.RawType `json:"type,omitempty"`
+		Type jsonschema.RawType `json:"type"`
 	}
 
 	if err := json.Unmarshal(data, &val); err != nil {
@@ -327,7 +327,7 @@ func (p *Properties) UnmarshalYAML(node *yaml.Node) error {
 	if node.Kind != yaml.MappingNode {
 		return &yaml.UnmarshalError{
 			Node: node,
-			Type: reflect.TypeOf(p),
+			Type: reflect.TypeFor[*Properties](),
 			Err:  errors.Errorf("cannot unmarshal %s into %T", node.ShortTag(), p),
 		}
 	}
@@ -483,7 +483,7 @@ func (p *PatternProperties) UnmarshalYAML(node *yaml.Node) error {
 	if node.Kind != yaml.MappingNode {
 		return &yaml.UnmarshalError{
 			Node: node,
-			Type: reflect.TypeOf(p),
+			Type: reflect.TypeFor[*PatternProperties](),
 			Err:  errors.Errorf("cannot unmarshal %s into %T", node.ShortTag(), p),
 		}
 	}

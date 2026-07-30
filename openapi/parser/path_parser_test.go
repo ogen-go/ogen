@@ -139,7 +139,6 @@ func TestPathParser(t *testing.T) {
 	}
 
 	for i, test := range tests {
-		test := test
 		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
 			result, err := parsePath(test.Path, test.Params)
 			if test.ExpectErr != "" {

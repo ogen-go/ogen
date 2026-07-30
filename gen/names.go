@@ -352,7 +352,7 @@ func (n namer) valueMappingNameGen(
 	}
 
 nextStrategy:
-	for strategy := pascalName; strategy < _lastStrategy; strategy++ {
+	for strategy := range _lastStrategy {
 		if !allowSpecial && strategy == pascalSpecialName {
 			continue nextStrategy
 		}

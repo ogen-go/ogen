@@ -30,7 +30,6 @@ func TestDiscriminatorMapping(t *testing.T) {
 			{`{"petType": "unknown", "name": "Test"}`, "", true},
 			{`{"name": "Test"}`, "", true}, // missing discriminator
 		} {
-			tc := tc
 			t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
 				checker := require.NoError
 				if tc.Error {
@@ -131,7 +130,6 @@ func TestDiscriminatorMapping(t *testing.T) {
 			{`{"vehicleType": "Motorcycle", "make": "Honda", "model": "CBR"}`, api.MotorcycleVehicle, false},
 			{`{"vehicleType": "Truck", "make": "Ford"}`, "", true}, // Unknown type
 		} {
-			tc := tc
 			t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
 				checker := require.NoError
 				if tc.Error {
@@ -164,7 +162,6 @@ func TestDiscriminatorMapping(t *testing.T) {
 			// Error cases
 			{`{"notificationType": "unknown", "message": "test"}`, "", true},
 		} {
-			tc := tc
 			t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
 				checker := require.NoError
 				if tc.Error {

@@ -176,10 +176,8 @@ func generate(f file, skipWrite bool) *GenerateError {
 		Generator: gen.GenerateOptions{
 			IgnoreNotImplemented: []string{"all"},
 			NotImplementedHook: func(name string, err error) {
-				for _, existing := range notImpl {
-					if existing == name {
-						return
-					}
+				if slices.Contains(notImpl, name) {
+					return
 				}
 				if firstNotImpl == nil {
 					firstNotImpl = err

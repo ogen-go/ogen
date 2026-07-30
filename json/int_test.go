@@ -54,7 +54,6 @@ func TestStringInt8(t *testing.T) {
 		{`"foo"`, 0, true},
 	}
 	for i, tt := range tests {
-		tt := tt
 		t.Run(fmt.Sprintf("Test%d", i+1), testDecodeEncode(
 			DecodeStringInt8,
 			EncodeStringInt8,
@@ -82,7 +81,6 @@ func TestStringInt16(t *testing.T) {
 		{`"foo"`, 0, true},
 	}
 	for i, tt := range tests {
-		tt := tt
 		t.Run(fmt.Sprintf("Test%d", i+1), testDecodeEncode(
 			DecodeStringInt16,
 			EncodeStringInt16,
@@ -110,7 +108,6 @@ func TestStringInt32(t *testing.T) {
 		{`"foo"`, 0, true},
 	}
 	for i, tt := range tests {
-		tt := tt
 		t.Run(fmt.Sprintf("Test%d", i+1), testDecodeEncode(
 			DecodeStringInt32,
 			EncodeStringInt32,
@@ -138,7 +135,6 @@ func TestStringInt64(t *testing.T) {
 		{`"foo"`, 0, true},
 	}
 	for i, tt := range tests {
-		tt := tt
 		t.Run(fmt.Sprintf("Test%d", i+1), testDecodeEncode(
 			DecodeStringInt64,
 			EncodeStringInt64,

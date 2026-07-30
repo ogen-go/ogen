@@ -34,11 +34,11 @@ func TestOgenValidation(t *testing.T) {
 		if !ok {
 			return fmt.Errorf("expected UserOther, got %T", value)
 		}
-		paramsMap, ok := params.(map[string]interface{})
+		paramsMap, ok := params.(map[string]any)
 		if !ok {
 			return fmt.Errorf("expected map[string]interface{}, got %T", params)
 		}
-		fieldsMap, ok := paramsMap["fields"].(map[string]interface{})
+		fieldsMap, ok := paramsMap["fields"].(map[string]any)
 		if !ok {
 			return fmt.Errorf("expected fields map, got %T", paramsMap["fields"])
 		}

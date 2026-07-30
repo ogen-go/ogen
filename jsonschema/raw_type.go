@@ -99,7 +99,7 @@ func CollapseTypeNode(node *yaml.Node) (_ *yaml.Node, nullable bool, err error) 
 		if err != nil {
 			return nil, false, &yaml.UnmarshalError{
 				Node: val,
-				Type: reflect.TypeOf(typ),
+				Type: reflect.TypeFor[string](),
 				Err:  err,
 			}
 		}

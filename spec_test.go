@@ -87,7 +87,7 @@ func TestExtensionsMarshal(t *testing.T) {
 		pathItemJSON, err := json.Marshal(pathItem)
 		a.NoError(err)
 
-		var output map[string]interface{}
+		var output map[string]any
 		err = json.Unmarshal(pathItemJSON, &output)
 		a.NoError(err)
 
@@ -104,7 +104,7 @@ func TestExtensionsMarshal(t *testing.T) {
 		pathItemJSON, err := json.Marshal(op)
 		a.NoError(err)
 
-		var output map[string]interface{}
+		var output map[string]any
 		err = json.Unmarshal(pathItemJSON, &output)
 		a.NoError(err)
 
