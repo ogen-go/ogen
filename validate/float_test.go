@@ -133,9 +133,90 @@ func TestFloat_Validate(t *testing.T) {
 			Value:     13,
 			Valid:     false,
 		},
+		{
+			Name:      "MultipleOfFractionalOk",
+			Validator: Float{MultipleOf: big.NewRat(1, 100), MultipleOfSet: true},
+			Value:     0.01,
+			Valid:     true,
+		},
+		{
+			Name:      "MultipleOfFractionalPriceOk",
+			Validator: Float{MultipleOf: big.NewRat(1, 100), MultipleOfSet: true},
+			Value:     19.99,
+			Valid:     true,
+		},
+		{
+			Name:      "MultipleOfFractionalLargeOk",
+			Validator: Float{MultipleOf: big.NewRat(1, 100), MultipleOfSet: true},
+			Value:     3765.7,
+			Valid:     true,
+		},
+		{
+			Name:      "MultipleOfFractionalTenthsOk",
+			Validator: Float{MultipleOf: big.NewRat(1, 10), MultipleOfSet: true},
+			Value:     0.3,
+			Valid:     true,
+		},
+		{
+			Name:      "MultipleOfFractionalSmallErr",
+			Validator: Float{MultipleOf: big.NewRat(1, 100), MultipleOfSet: true},
+			Value:     0.005,
+			Valid:     false,
+		},
+		{
+			Name:      "MultipleOfFractionalRemainderErr",
+			Validator: Float{MultipleOf: big.NewRat(1, 100), MultipleOfSet: true},
+			Value:     1.234,
+			Valid:     false,
+		},
+		{
+			Name:      "MultipleOfFractionalNonTerminatingErr",
+			Validator: Float{MultipleOf: big.NewRat(1, 3), MultipleOfSet: true},
+			Value:     0.1,
+			Valid:     false,
+		},
 	} {
 		t.Run(tc.Name, func(t *testing.T) {
 			valid := tc.Validator.Validate(tc.Value) == nil
+			assert.Equal(t, tc.Valid, valid, "%v: %+v",
+				tc.Validator,
+				tc.Value,
+			)
+		})
+	}
+}
+
+func TestFloat_ValidateStringified(t *testing.T) {
+	for _, tc := range []struct {
+		Name      string
+		Validator Float
+		Value     float64
+		Valid     bool
+	}{
+		{Name: "NaN", Value: math.NaN(), Valid: true},
+		{Name: "PosInf", Value: math.Inf(1), Valid: true},
+		{Name: "NegInf", Value: math.Inf(-1), Valid: true},
+		{
+			Name:      "MultipleOfOk",
+			Validator: Float{MultipleOf: big.NewRat(1, 100), MultipleOfSet: true},
+			Value:     19.99,
+			Valid:     true,
+		},
+		{
+			Name:      "NaNMultipleOfErr",
+			Validator: Float{MultipleOf: big.NewRat(1, 100), MultipleOfSet: true},
+			Value:     math.NaN(),
+			Valid:     false,
+		},
+		{
+			Name:      "PosInfMultipleOfErr",
+			Validator: Float{MultipleOf: big.NewRat(1, 100), MultipleOfSet: true},
+			Value:     math.Inf(1),
+			Valid:     false,
+		},
+	} {
+		t.Run(tc.Name, func(t *testing.T) {
+			valid := tc.Validator.ValidateStringified(tc.Value) == nil
 			assert.Equal(t, tc.Valid, valid, "%v: %+v",
 				tc.Validator,
 				tc.Value,
