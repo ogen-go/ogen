@@ -18,7 +18,7 @@ func inferJSONType(v json.RawMessage) (string, error) {
 	case jx.Number:
 		return "number", nil
 	case jx.Bool:
-		return "bool", nil
+		return "boolean", nil
 	case jx.Null:
 		return "", errors.Errorf("cannot infer type from %q", v)
 	default:

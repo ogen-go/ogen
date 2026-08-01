@@ -555,3 +555,84 @@ func TestSchemaConst(t *testing.T) {
 		})
 	}
 }
+
+func TestInferJSONType(t *testing.T) {
+	tests := []struct {
+		raw       string
+		expect    string
+		expectErr bool
+	}{
+		{`"foo"`, "string", false},
+		{`10`, "number", false},
+		{`3.14`, "number", false},
+		{`true`, "boolean", false},
+		{`false`, "boolean", false},
+		{`null`, "", true},
+		{`{}`, "", true},
+		{`[]`, "", true},
+	}
+	for i, tt := range tests {
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			typ, err := inferJSONType([]byte(tt.raw))
+			if tt.expectErr {
+				require.Error(t, err)
+				return
+			}
+			require.NoError(t, err)
+			require.Equal(t, tt.expect, typ)
+		})
+	}
+}
+
+func TestSchemaInferTypes(t *testing.T) {
+	tests := []struct {
+		name   string
+		raw    *RawSchema
+		expect *Schema
+	}{
+		{
+			name: "boolean default",
+			raw:  &RawSchema{Default: []byte("true")},
+			expect: &Schema{
+				Type:       Boolean,
+				Default:    true,
+				DefaultSet: true,
+			},
+		},
+		{
+			name: "boolean enum",
+			raw:  &RawSchema{Enum: Enum{[]byte("true"), []byte("false")}},
+			expect: &Schema{
+				Type: Boolean,
+				Enum: []any{true, false},
+			},
+		},
+		{
+			name: "string default",
+			raw:  &RawSchema{Default: []byte(`"foo"`)},
+			expect: &Schema{
+				Type:       String,
+				Default:    "foo",
+				DefaultSet: true,
+			},
+		},
+		{
+			name: "number default",
+			raw:  &RawSchema{Default: []byte("10")},
+			expect: &Schema{
+				Type:       Number,
+				Default:    int64(10),
+				DefaultSet: true,
+			},
+		},
+	}
+
+	parser := NewParser(Settings{InferTypes: true})
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			out, err := parser.Parse(tt.raw, testCtx())
+			require.NoError(t, err)
+			require.Equal(t, tt.expect, out)
+		})
+	}
+}
