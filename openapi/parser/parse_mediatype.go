@@ -117,11 +117,12 @@ func (p *parser) parseMediaType(ct string, m ogen.Media, ctx *jsonpointer.Resolv
 					rerr = p.wrapLocation(p.file(ctx), locator, rerr)
 				}()
 
+				style := inferParamStyle(openapi.LocationQuery, e.Style)
 				encoding := &openapi.Encoding{
 					ContentType:   e.ContentType,
 					Headers:       map[string]*openapi.Header{},
-					Style:         inferParamStyle(openapi.LocationQuery, e.Style),
-					Explode:       inferParamExplode(openapi.LocationQuery, e.Explode),
+					Style:         style,
+					Explode:       inferParamExplode(style, e.Explode),
 					AllowReserved: e.AllowReserved,
 					Pointer:       locator.Pointer(p.file(ctx)),
 				}

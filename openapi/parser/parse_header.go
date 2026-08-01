@@ -86,6 +86,7 @@ func (p *parser) parseHeader(name string, header *ogen.Header, ctx *jsonpointer.
 		return nil, p.wrapField("content", p.file(ctx), locator, err)
 	}
 
+	style := inferParamStyle(locatedIn, header.Style)
 	op := &openapi.Header{
 		Name:        name,
 		Description: header.Description,
@@ -93,8 +94,8 @@ func (p *parser) parseHeader(name string, header *ogen.Header, ctx *jsonpointer.
 		Schema:      schema,
 		Content:     content,
 		In:          locatedIn,
-		Style:       inferParamStyle(locatedIn, header.Style),
-		Explode:     inferParamExplode(locatedIn, header.Explode),
+		Style:       style,
+		Explode:     inferParamExplode(style, header.Explode),
 		Required:    header.Required,
 		Pointer:     locator.Pointer(p.file(ctx)),
 	}
