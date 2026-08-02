@@ -1,7 +1,8 @@
 package validate
 
 import (
-	"fmt"
+	"math"
+	"strconv"
 	"strings"
 	"unicode"
 
@@ -166,10 +167,15 @@ func (t String) Validate(v string) error {
 }
 
 func (t String) validateNumeric(v string) error {
-	// Parse string as float64
-	var val float64
-	if _, err := fmt.Sscanf(v, "%f", &val); err != nil {
+	val, err := strconv.ParseFloat(v, 64)
+	if err != nil {
 		return errors.Wrap(err, "parse as number")
+	}
+	if math.IsNaN(val) {
+		return errors.Errorf("value %f is not a number", val)
+	}
+	if math.IsInf(val, 0) {
+		return errors.Errorf("value %f is infinite", val)
 	}
 
 	if t.MinNumericSet && val < t.MinNumeric {
