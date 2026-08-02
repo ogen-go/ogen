@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	"github.com/go-faster/errors"
+	"go.uber.org/zap"
 
 	"github.com/ogen-go/ogen/gen/ir"
 	"github.com/ogen-go/ogen/jsonschema"
@@ -113,7 +114,22 @@ func (g *schemaGen) validateEnumValues(s *jsonschema.Schema) error {
 		return nil
 	case jsonschema.String:
 		for idx, val := range s.Enum {
-			if _, ok := val.(string); !ok {
+			switch v := val.(type) {
+			case string:
+			case int64, float64, bool:
+				coerced := fmt.Sprint(v)
+
+				fields := []zap.Field{
+					zap.Any("value", v),
+					zap.String("coerced_to", coerced),
+				}
+				if pos, ok := s.Pointer.Field("enum").Index(idx).Position(); ok {
+					fields = append(fields, zap.String("at", pos.WithFilename(s.File().Name)))
+				}
+				g.log.Warn("Enum value type does not match declared string type, coercing to string", fields...)
+
+				s.Enum[idx] = coerced
+			default:
 				return reportErr(idx, errors.Errorf("enum value should be a string, got %T", val))
 			}
 		}
