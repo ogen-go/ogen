@@ -91,8 +91,8 @@ func (t Float) validate(v float64) error {
 		return errors.Errorf("value %f greater than %f", v, t.Max)
 	}
 	if t.MultipleOfSet {
-		val := new(big.Rat).SetFloat64(v)
-		if !val.Quo(val, t.MultipleOf).IsInt() {
+		val, ok := new(big.Rat).SetString(strconv.FormatFloat(v, 'g', -1, 64))
+		if !ok || !val.Quo(val, t.MultipleOf).IsInt() {
 			return errors.Errorf("value %f is not multiple of %s", v, t.MultipleOf.RatString())
 		}
 	}
