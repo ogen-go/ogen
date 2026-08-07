@@ -180,6 +180,7 @@ func (p *parser) parseParameter(param *ogen.Parameter, ctx *jsonpointer.ResolveC
 		return nil, p.wrapField("content", p.file(ctx), locator, err)
 	}
 
+	style := inferParamStyle(locatedIn, param.Style)
 	op := &openapi.Parameter{
 		Name:          param.Name,
 		Description:   param.Description,
@@ -187,8 +188,8 @@ func (p *parser) parseParameter(param *ogen.Parameter, ctx *jsonpointer.ResolveC
 		Schema:        schema,
 		Content:       content,
 		In:            locatedIn,
-		Style:         inferParamStyle(locatedIn, param.Style),
-		Explode:       inferParamExplode(locatedIn, param.Explode),
+		Style:         style,
+		Explode:       inferParamExplode(style, param.Explode),
 		Required:      param.Required,
 		AllowReserved: param.AllowReserved,
 		Pointer:       locator.Pointer(p.file(ctx)),
@@ -238,18 +239,22 @@ func inferParamStyle(locatedIn openapi.ParameterLocation, style string) openapi.
 	return openapi.ParameterStyle(style)
 }
 
-func inferParamExplode(locatedIn openapi.ParameterLocation, explode *bool) bool {
+func inferParamExplode(style openapi.ParameterStyle, explode *bool) bool {
 	if explode != nil {
 		return *explode
 	}
 
 	// When style is form, the default value is true.
 	// For all other styles, the default value is false.
-	if locatedIn.Query() || locatedIn.Cookie() {
+	switch style {
+	case openapi.QueryStyleForm:
 		return true
+	case openapi.QueryStyleDeepObject:
+		// ogen supports deepObject only in exploded form.
+		return true
+	default:
+		return false
 	}
-
-	return false
 }
 
 func (p *parser) validateParamStyle(param *openapi.Parameter, file location.File) error {
