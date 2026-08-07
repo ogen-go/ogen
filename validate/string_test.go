@@ -112,3 +112,48 @@ func TestString_Validate(t *testing.T) {
 		require.Error(t, v.Validate(s), "%q should be invalid", s)
 	}
 }
+
+func TestString_ValidateNumeric(t *testing.T) {
+	minMax := String{MinNumeric: 1, MinNumericSet: true, MaxNumeric: 10, MaxNumericSet: true}
+	minOnly := String{MinNumeric: 1, MinNumericSet: true}
+	maxOnly := String{MaxNumeric: 10, MaxNumericSet: true}
+
+	require.True(t, minOnly.Set())
+	require.True(t, maxOnly.Set())
+
+	for _, tc := range []struct {
+		Name      string
+		Validator String
+		Value     string
+		Valid     bool
+	}{
+		{Name: "Min", Validator: minMax, Value: "1", Valid: true},
+		{Name: "Max", Validator: minMax, Value: "10", Valid: true},
+		{Name: "Fraction", Validator: minMax, Value: "5.5", Valid: true},
+		{Name: "Sign", Validator: minMax, Value: "+5", Valid: true},
+		{Name: "LeadingZeroes", Validator: minMax, Value: "007", Valid: true},
+		{Name: "Exponent", Validator: minMax, Value: "1e1", Valid: true},
+		{Name: "BelowMin", Validator: minMax, Value: "0", Valid: false},
+		{Name: "BelowMinFraction", Validator: minMax, Value: "0.5", Valid: false},
+		{Name: "AboveMax", Validator: minMax, Value: "11", Valid: false},
+		{Name: "Empty", Validator: minMax, Value: "", Valid: false},
+		{Name: "NotANumber", Validator: minMax, Value: "abc", Valid: false},
+		{Name: "TrailingGarbage", Validator: minMax, Value: "5abc", Valid: false},
+		{Name: "GroupSeparator", Validator: minMax, Value: "5,000", Valid: false},
+		{Name: "SecondDot", Validator: minMax, Value: "1.2.3", Valid: false},
+		{Name: "LeadingSpace", Validator: minMax, Value: " 5", Valid: false},
+		{Name: "TrailingSpace", Validator: minMax, Value: "5 ", Valid: false},
+		{Name: "NaN", Validator: minMax, Value: "NaN", Valid: false},
+		{Name: "NaNLower", Validator: minMax, Value: "nan", Valid: false},
+		{Name: "PosInfMinOnly", Validator: minOnly, Value: "Inf", Valid: false},
+		{Name: "PosInfinityMinOnly", Validator: minOnly, Value: "Infinity", Valid: false},
+		{Name: "NaNMinOnly", Validator: minOnly, Value: "NaN", Valid: false},
+		{Name: "NegInfMaxOnly", Validator: maxOnly, Value: "-Inf", Valid: false},
+		{Name: "NaNMaxOnly", Validator: maxOnly, Value: "NaN", Valid: false},
+	} {
+		t.Run(tc.Name, func(t *testing.T) {
+			valid := tc.Validator.Validate(tc.Value) == nil
+			require.Equal(t, tc.Valid, valid, "%+v: %q", tc.Validator, tc.Value)
+		})
+	}
+}
