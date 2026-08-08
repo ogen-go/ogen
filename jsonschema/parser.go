@@ -253,17 +253,17 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx *jsonpointer.ResolveCtx, hoo
 		return p.wrapField(field, p.file(ctx), schema.Common.Locator, err)
 	}
 
-	validateMinMax := func(prop string, minVal *uint64, maxVal *uint64) (rerr error) {
+	validateMinMax := func(minField, maxField string, minVal *uint64, maxVal *uint64) (rerr error) {
 		if minVal == nil || maxVal == nil {
 			return nil
 		}
 		if *minVal > *maxVal {
-			msg := fmt.Sprintf("minVal%s (%d) is greater than maxVal%s (%d)", prop, *minVal, prop, *maxVal)
+			msg := fmt.Sprintf("%s (%d) is greater than %s (%d)", minField, *minVal, maxField, *maxVal)
 			ptr := schema.Common.Pointer(p.file(ctx))
 
 			me := new(location.MultiError)
-			me.ReportPtr(ptr.Field("minVal"+prop), msg)
-			me.ReportPtr(ptr.Field("maxVal"+prop), "")
+			me.ReportPtr(ptr.Field(minField), msg)
+			me.ReportPtr(ptr.Field(maxField), "")
 			return me
 		}
 		return nil
@@ -457,7 +457,8 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx *jsonpointer.ResolveCtx, hoo
 	// Object properties
 	{
 		if err := validateMinMax(
-			"Properties",
+			"minProperties",
+			"maxProperties",
 			schema.MinProperties,
 			schema.MaxProperties,
 		); err != nil {
@@ -537,7 +538,8 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx *jsonpointer.ResolveCtx, hoo
 	// Array properties
 	{
 		if err := validateMinMax(
-			"Items",
+			"minItems",
+			"maxItems",
 			schema.MinItems,
 			schema.MaxItems,
 		); err != nil {
@@ -586,7 +588,8 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx *jsonpointer.ResolveCtx, hoo
 	// String properties
 	{
 		if err := validateMinMax(
-			"Length",
+			"minLength",
+			"maxLength",
 			schema.MinLength,
 			schema.MaxLength,
 		); err != nil {
