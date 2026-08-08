@@ -320,6 +320,20 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 		}
 	}
 
+	// SSE stream types are shared between the client and the server, but their
+	// sides are generated independently. Resolve the sides here, where the
+	// enabled features are already known.
+	for _, t := range g.tstorage.types {
+		t.SetSSESide(cfg.AnyClientEnabled(), cfg.AnyServerEnabled())
+	}
+	if !cfg.AnyClientEnabled() {
+		// initSSEStream is a part of the generated client, so response
+		// interfaces must not require it.
+		for _, t := range interfaces {
+			delete(t.InterfaceMethods, "initSSEStream")
+		}
+	}
+
 	grp, ctx := errgroup.WithContext(context.Background())
 	grp.SetLimit(runtime.GOMAXPROCS(0))
 	generate := func(fileName, templateName string) {

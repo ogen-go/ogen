@@ -1,0 +1,130 @@
+openapi: 3.0.3
+info:
+  title: Server-Sent Events test API
+  version: 1.0.0
+paths:
+  /data-only:
+    get:
+      operationId: dataOnly
+      responses:
+        "200":
+          description: Object event stream.
+          content:
+            text/event-stream:
+              schema:
+                $ref: "#/components/schemas/Message"
+  /data-only-string:
+    get:
+      operationId: dataOnlyString
+      responses:
+        "200":
+          description: String event stream.
+          content:
+            text/event-stream:
+              # Explicit shape, otherwise a string schema keeps the legacy
+              # io.Reader behavior.
+              x-ogen-sse-event-shape: data-only
+              schema:
+                type: string
+  /data-only-time:
+    get:
+      operationId: dataOnlyTime
+      responses:
+        "200":
+          description: Formatted string event stream.
+          content:
+            text/event-stream:
+              schema:
+                type: string
+                format: date-time
+  /with-headers:
+    get:
+      operationId: withHeaders
+      responses:
+        "200":
+          description: Object event stream with headers.
+          headers:
+            X-Stream-Id:
+              required: true
+              schema:
+                type: string
+          content:
+            text/event-stream:
+              schema:
+                $ref: "#/components/schemas/Message"
+  /full:
+    get:
+      operationId: fullEvents
+      responses:
+        "200":
+          description: Full event envelope stream.
+          content:
+            text/event-stream:
+              x-ogen-sse-event-shape: full
+              schema:
+                oneOf:
+                  - $ref: "#/components/schemas/EventA"
+                  - $ref: "#/components/schemas/EventB"
+                discriminator:
+                  propertyName: event
+                  mapping:
+                    event_a: "#/components/schemas/EventA"
+                    event_b: "#/components/schemas/EventB"
+  /optional-stream:
+    get:
+      operationId: optionalStream
+      parameters:
+        - name: fail
+          in: query
+          schema:
+            type: boolean
+      responses:
+        "200":
+          description: Object event stream.
+          content:
+            text/event-stream:
+              schema:
+                $ref: "#/components/schemas/Message"
+        "400":
+          description: Error.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+components:
+  schemas:
+    Message:
+      type: object
+      required: [text]
+      properties:
+        text:
+          type: string
+          maxLength: 32
+        count:
+          type: integer
+    EventA:
+      type: object
+      required: [event, data]
+      properties:
+        event:
+          type: string
+          enum: [event_a]
+        data:
+          $ref: "#/components/schemas/Message"
+    EventB:
+      type: object
+      required: [event, data]
+      properties:
+        event:
+          type: string
+          enum: [event_b]
+        id:
+          type: string
+        data:
+          type: string
+    Error:
+      type: object
+      required: [message]
+      properties:
+        message:
+          type: string

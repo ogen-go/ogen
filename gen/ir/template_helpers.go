@@ -181,11 +181,36 @@ func (t *Type) IsInterface() bool { return t.Is(KindInterface) }
 func (t *Type) IsSum() bool       { return t.Is(KindSum) }
 func (t *Type) IsAny() bool       { return t.Is(KindAny) }
 func (t *Type) IsStream() bool    { return t.Is(KindStream) }
-func (t *Type) IsSSEStream() bool {
-	return t != nil && (t.SSE != nil || (t.IsPointer() && t.PointerTo.IsSSEStream()))
+func (t *Type) IsSSEStream() bool { return t.SSEStream() != nil }
+func (t *Type) IsNumeric() bool   { return t.IsInteger() || t.IsFloat() || t.IsDecimal() }
+func (t *Type) IsExternal() bool  { return t.Schema != nil && t.Schema.XOgenType != "" }
+
+// SSEStream returns the SSE stream type of t, unwrapping the pointer.
+//
+// Returns nil if t is not an SSE stream.
+func (t *Type) SSEStream() *Type {
+	switch {
+	case t == nil:
+		return nil
+	case t.SSE != nil:
+		return t
+	case t.IsPointer():
+		return t.PointerTo.SSEStream()
+	default:
+		return nil
+	}
 }
-func (t *Type) IsNumeric() bool  { return t.IsInteger() || t.IsFloat() || t.IsDecimal() }
-func (t *Type) IsExternal() bool { return t.Schema != nil && t.Schema.XOgenType != "" }
+
+// SetSSESide sets the sides of the SSE stream to generate.
+//
+// Both sides are generated independently: the client reads the stream, the
+// server writes it.
+func (t *Type) SetSSESide(client, server bool) {
+	if s := t.SSEStream(); s != nil {
+		s.SSE.Client = client
+		s.SSE.Server = server
+	}
+}
 
 // AcceptsJSONString reports whether t can be decoded as a JSON string token.
 func (t *Type) AcceptsJSONString() bool {
@@ -207,6 +232,39 @@ func (t *Type) AcceptsJSONString() bool {
 				return true
 			}
 		}
+	}
+	return false
+}
+
+// IsJSONString reports whether t is always encoded as a JSON string token.
+//
+// Unlike [Type.AcceptsJSONString], it is false for types that may be encoded
+// as any other JSON value, like `any`.
+func (t *Type) IsJSONString() bool {
+	if t == nil {
+		return false
+	}
+	switch {
+	case t.IsAny():
+		return false
+	case t.JSON().Type() == "String":
+		return true
+	case t.IsAlias():
+		return t.AliasTo.IsJSONString()
+	case t.IsGeneric():
+		return t.GenericOf.IsJSONString()
+	case t.IsPointer():
+		return t.PointerTo.IsJSONString()
+	case t.IsSum():
+		if len(t.SumOf) == 0 {
+			return false
+		}
+		for _, s := range t.SumOf {
+			if !s.IsJSONString() {
+				return false
+			}
+		}
+		return true
 	}
 	return false
 }

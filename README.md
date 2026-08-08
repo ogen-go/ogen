@@ -601,8 +601,8 @@ responses, following the
 [HTML Server-Sent Events specification](https://html.spec.whatwg.org/multipage/server-sent-events.html)
 with some Go-specific behavior.
 
-> [!NOTE]
-> Only SSE client generation is supported in ogen for now.
+Both the client, which reads the stream, and the server, which writes it, are
+generated. The same event shapes are used for both sides.
 
 ### Event shapes
 
@@ -712,6 +712,50 @@ type Client[E any] interface {
     Close() error                                // Closes the stream.
 }
 ```
+
+#### Generated server
+
+The generated SSE response type has an `Events` field, which is called by the
+server after the response headers are sent, and writes the stream until it
+returns. A nil `Events` sends an empty stream.
+
+```go
+func (h *Handler) GetEvents(ctx context.Context) (*api.GetEventsOK, error) {
+    return &api.GetEventsOK{
+        Events: func(ctx context.Context, s api.GetEventsOKSender) error {
+            for message := range h.messages(ctx) {
+                event := api.GetEventsOKEvent{
+                    ID:   message.ID,
+                    Data: api.Message{Text: message.Text},
+                }
+                if err := s.Send(ctx, event); err != nil {
+                    return err
+                }
+            }
+            return nil
+        },
+    }, nil
+}
+```
+
+The sender complies with this interface:
+
+```go
+type Sender[E any] interface {
+    Send(ctx context.Context, event E) error       // Encodes, writes and flushes the event.
+    Comment(ctx context.Context, text string) error // Writes a comment, e.g. to keep the stream alive.
+}
+```
+
+Every event is flushed, so it is delivered without waiting for the buffer to
+fill. The passed context is the request context, so it is canceled when the
+client disconnects. Returning an error from `Events` ends the stream: the
+response is already sent, so the error is only reported to the server error
+handler.
+
+Event `data` is encoded as JSON, except for string schemas, which are sent
+as-is, so that the stream is consumable by clients that expect plain text, like
+the `EventSource` API.
 
 # Links
 
