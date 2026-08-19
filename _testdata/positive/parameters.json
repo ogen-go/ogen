@@ -328,6 +328,72 @@
         }
       }
     },
+    "/optionalContentParameters": {
+      "get": {
+        "operationId": "optionalContentParameters",
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "required": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          {
+            "name": "X-Header",
+            "in": "header",
+            "required": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          {
+            "name": "cookie",
+            "in": "cookie",
+            "required": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "query": {
+                      "$ref": "#/components/schemas/User"
+                    },
+                    "header": {
+                      "$ref": "#/components/schemas/User"
+                    },
+                    "cookie": {
+                      "$ref": "#/components/schemas/User"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/pathParameter/{value}": {
       "get": {
         "description": "Test for path param",
