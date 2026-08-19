@@ -61,6 +61,10 @@ type Invoker interface {
 	//
 	// GET /optionalArrayParameter
 	OptionalArrayParameter(ctx context.Context, params OptionalArrayParameterParams) (string, error)
+	// OptionalContentParameters invokes optionalContentParameters operation.
+	//
+	// GET /optionalContentParameters
+	OptionalContentParameters(ctx context.Context, params OptionalContentParametersParams) (*OptionalContentParametersOK, error)
 	// OptionalParameters invokes optionalParameters operation.
 	//
 	// GET /optionalParameters
@@ -968,6 +972,159 @@ func (c *Client) sendOptionalArrayParameter(ctx context.Context, params Optional
 
 	stage = "DecodeResponse"
 	result, err := decodeOptionalArrayParameterResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// OptionalContentParameters invokes optionalContentParameters operation.
+//
+// GET /optionalContentParameters
+func (c *Client) OptionalContentParameters(ctx context.Context, params OptionalContentParametersParams) (*OptionalContentParametersOK, error) {
+	res, err := c.sendOptionalContentParameters(ctx, params)
+	return res, err
+}
+
+func (c *Client) sendOptionalContentParameters(ctx context.Context, params OptionalContentParametersParams) (res *OptionalContentParametersOK, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("optionalContentParameters"),
+		semconv.HTTPRequestMethodKey.String("GET"),
+		semconv.URLTemplateKey.String("/optionalContentParameters"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, OptionalContentParametersOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/optionalContentParameters"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeQueryParams"
+	q := uri.NewQueryEncoder()
+	{
+		// Encode "query" parameter.
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "query",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+			if !params.Query.Set {
+				return nil
+			}
+			var enc jx.Encoder
+			func(e *jx.Encoder) {
+				if params.Query.Set {
+					params.Query.Encode(e)
+				}
+			}(&enc)
+			return e.EncodeValue(string(enc.Bytes()))
+		}); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+	}
+	u.RawQuery = q.Values().Encode()
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "GET", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+
+	stage = "EncodeHeaderParams"
+	h := uri.NewHeaderEncoder(r.Header)
+	{
+		cfg := uri.HeaderParameterEncodingConfig{
+			Name:    "X-Header",
+			Explode: false,
+		}
+		if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+			if !params.XHeader.Set {
+				return nil
+			}
+			var enc jx.Encoder
+			func(e *jx.Encoder) {
+				if params.XHeader.Set {
+					params.XHeader.Encode(e)
+				}
+			}(&enc)
+			return e.EncodeValue(string(enc.Bytes()))
+		}); err != nil {
+			return res, errors.Wrap(err, "encode header")
+		}
+	}
+
+	stage = "EncodeCookieParams"
+	cookie := uri.NewCookieEncoder(r)
+	{
+		// Encode "cookie" parameter.
+		cfg := uri.CookieParameterEncodingConfig{
+			Name:    "cookie",
+			Explode: true,
+		}
+
+		if err := cookie.EncodeParam(cfg, func(e uri.Encoder) error {
+			if !params.Cookie.Set {
+				return nil
+			}
+			var enc jx.Encoder
+			func(e *jx.Encoder) {
+				if params.Cookie.Set {
+					params.Cookie.Encode(e)
+				}
+			}(&enc)
+			return e.EncodeValue(string(enc.Bytes()))
+		}); err != nil {
+			return res, errors.Wrap(err, "encode cookie")
+		}
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	body := resp.Body
+	defer func() {
+		// Drain the body to EOF before closing, so the underlying
+		// connection can be reused by the Transport regardless of the
+		// response status code. See https://github.com/ogen-go/ogen/issues/1670.
+		_, _ = io.Copy(io.Discard, body)
+		_ = body.Close()
+	}()
+
+	stage = "DecodeResponse"
+	result, err := decodeOptionalContentParametersResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
