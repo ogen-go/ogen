@@ -100,6 +100,11 @@ type baseServer struct {
 	{{- end }}
 }
 
+// setPattern sets [http.Request.Pattern] to the matched route pattern.
+func (s baseServer) setPattern(r *http.Request, pattern string) {
+	r.Pattern = strings.Join([]string{s.cfg.Prefix, pattern}, "/")
+}
+
 func (s baseServer) notFound(w http.ResponseWriter, r *http.Request) {
 	s.cfg.NotFound(w, r)
 }

@@ -15,6 +15,7 @@ import (
 
 	api "github.com/ogen-go/ogen/internal/integration/sample_api"
 	issue1161 "github.com/ogen-go/ogen/internal/integration/test_issue1161"
+	whapi "github.com/ogen-go/ogen/internal/integration/test_webhooks"
 )
 
 func BenchmarkFindRoute(b *testing.B) {
@@ -161,6 +162,74 @@ func TestFindPath(t *testing.T) {
 			}
 		})
 	}
+}
+
+func TestServeHTTPPattern(t *testing.T) {
+	handler := &sampleAPIServer{}
+
+	// servePattern returns http.Request.Pattern as observed by a wrapping handler,
+	// like otelhttp does to report http.route.
+	servePattern := func(t *testing.T, s http.Handler, method, target string) string {
+		var pattern string
+		wrapper := http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+			s.ServeHTTP(w, r)
+			pattern = r.Pattern
+		})
+		wrapper.ServeHTTP(httptest.NewRecorder(), httptest.NewRequest(method, target, nil))
+		return pattern
+	}
+
+	t.Run("Match", func(t *testing.T) {
+		s, err := api.NewServer(handler, handler)
+		require.NoError(t, err)
+
+		require.Equal(t, "/pet/name/{id}", servePattern(t, s, http.MethodGet, "/pet/name/10"))
+		require.Equal(t, "/foobar", servePattern(t, s, http.MethodGet, "/foobar"))
+	})
+	t.Run("MethodNotAllowed", func(t *testing.T) {
+		s, err := api.NewServer(handler, handler)
+		require.NoError(t, err)
+
+		require.Equal(t, "/foobar", servePattern(t, s, http.MethodDelete, "/foobar"))
+	})
+	t.Run("NotFound", func(t *testing.T) {
+		s, err := api.NewServer(handler, handler)
+		require.NoError(t, err)
+
+		require.Empty(t, servePattern(t, s, http.MethodGet, "/unknown"))
+	})
+	t.Run("Prefix", func(t *testing.T) {
+		s, err := api.NewServer(handler, handler, api.WithPathPrefix("/api/v1"))
+		require.NoError(t, err)
+
+		require.Equal(t, "/api/v1/pet/name/{id}", servePattern(t, s, http.MethodGet, "/api/v1/pet/name/10"))
+		require.Equal(t, "/api/v1/foobar", servePattern(t, s, http.MethodDelete, "/api/v1/foobar"))
+		require.Empty(t, servePattern(t, s, http.MethodGet, "/pet/name/10"))
+	})
+}
+
+func TestWebhookHandlePattern(t *testing.T) {
+	s, err := whapi.NewWebhookServer(whapi.UnimplementedHandler{})
+	require.NoError(t, err)
+
+	// servePattern returns http.Request.Pattern as observed by a wrapping handler,
+	// like otelhttp does to report http.route.
+	servePattern := func(webhookName, method string) string {
+		r := httptest.NewRequest(method, "/", nil)
+		s.Handler(webhookName).ServeHTTP(httptest.NewRecorder(), r)
+		return r.Pattern
+	}
+
+	t.Run("Match", func(t *testing.T) {
+		require.Equal(t, "status", servePattern("status", http.MethodGet))
+		require.Equal(t, "update", servePattern("update", http.MethodDelete))
+	})
+	t.Run("MethodNotAllowed", func(t *testing.T) {
+		require.Equal(t, "update", servePattern("update", http.MethodGet))
+	})
+	t.Run("NotFound", func(t *testing.T) {
+		require.Empty(t, servePattern("unknown", http.MethodGet))
+	})
 }
 
 func TestFindRoutePrefix(t *testing.T) {

@@ -157,6 +157,7 @@ func templateFunctions() template.FuncMap {
 		"camelSpecial":  camelSpecial,
 		"capitalize":    naming.Capitalize,
 		"upper":         strings.ToUpper,
+		"trimPrefix":    strings.TrimPrefix,
 
 		// Helpers for recursive encoding and decoding.
 		"elem": func(t *ir.Type, v string) Elem {

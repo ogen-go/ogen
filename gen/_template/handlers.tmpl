@@ -130,6 +130,7 @@ func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) handle{{ $op.Name }}Req
 		opErrContext = ogenerrors.OperationContext{
 			Name: {{ $op.Name }}Operation,
 			ID: {{ quote $op.Spec.OperationID }},
+			PathPattern: {{ quote $op.Spec.Path }},
 		}
 		{{- end }}
 	)
@@ -242,6 +243,7 @@ func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) handle{{ $op.Name }}Req
 			OperationName: {{ $op.Name }}Operation,
 			OperationSummary: {{ quote $op.Summary }},
 			OperationID: {{ quote $op.Spec.OperationID }},
+			PathPattern: {{ quote $op.Spec.Path }},
 			Body: {{- if $op.Request }}request{{- else }}nil{{- end }},
 			RawBody: rawBody,
 			Params: middleware.Parameters{

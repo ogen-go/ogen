@@ -168,6 +168,7 @@ func (s *WebhookServer) Handle(webhookName string, w http.ResponseWriter, r *htt
 	switch webhookName {
 	{{- range $name, $methods := $.WebhookRouter.Webhooks }}
 	case {{ quote $name }}:
+		r.Pattern = {{ quote $name }}
 		switch r.Method {
 		{{- range $route := $methods.Routes }}{{ $op := $route.Operation }}
 		case {{ quote $route.Method }}:
@@ -214,6 +215,9 @@ func (s *WebhookServer) Handler(webhookName string) http.Handler {
 
 {{ define "route_handle_request" }}
 {{- /*gotype: github.com/ogen-go/ogen/gen.RouteNode*/ -}}
+	{{- with $routes := $.Routes }}
+	s.setPattern(r, {{ quote (trimPrefix (index $routes 0).Path "/") }})
+	{{- end }}
 	switch r.Method {
 	{{- range $r := $.Routes }}
 	case {{ quote $r.Method }}:

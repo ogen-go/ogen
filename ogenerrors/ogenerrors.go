@@ -27,8 +27,9 @@ var _ = []Error{
 
 // OperationContext defines operation context for the error.
 type OperationContext struct {
-	Name string
-	ID   string
+	Name        string
+	ID          string
+	PathPattern string
 }
 
 // OperationName returns operation Name.
@@ -39,6 +40,11 @@ func (d OperationContext) OperationName() string {
 // OperationID returns operation ID.
 func (d OperationContext) OperationID() string {
 	return d.ID
+}
+
+// OperationPathPattern returns OpenAPI path template of the operation.
+func (d OperationContext) OperationPathPattern() string {
+	return d.PathPattern
 }
 
 // SecurityError reports that error caused by security handler.

@@ -121,6 +121,34 @@ func (s *testMiddleware) ErrorGet(ctx context.Context) (*api.ErrorStatusCode, er
 	}, nil
 }
 
+func TestMiddlewarePathPattern(t *testing.T) {
+	a := require.New(t)
+	ctx := context.Background()
+
+	var patterns []string
+	handler := &testMiddleware{}
+	h, err := api.NewServer(handler, handler,
+		api.WithMiddleware(func(req middleware.Request, next middleware.Next) (middleware.Response, error) {
+			patterns = append(patterns, req.PathPattern)
+			return next(req)
+		}),
+	)
+	a.NoError(err)
+
+	s := httptest.NewServer(h)
+	defer s.Close()
+
+	client, err := api.NewClient(s.URL, handler, api.WithClient(s.Client()))
+	a.NoError(err)
+
+	_, err = client.PetNameByID(ctx, api.PetNameByIDParams{ID: 10})
+	a.NoError(err)
+	_, err = client.ErrorGet(ctx)
+	a.NoError(err)
+
+	a.Equal([]string{"/pet/name/{id}", "/error"}, patterns)
+}
+
 func TestMiddleware(t *testing.T) {
 	a := require.New(t)
 	ctx := context.Background()
