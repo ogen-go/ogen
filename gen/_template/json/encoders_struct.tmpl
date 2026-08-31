@@ -22,6 +22,9 @@
 		{{- $j := $g.JSON }}
 		{{- if $j.TimeFormat }}
 		json.EncodeTimeFormat(e, {{ $constVal }}, {{ $j.TimeFormat }})
+		{{- else if and $j.Encoder (not $j.Fn) (eq $j.Type "String") }}
+		{{- /* Const is a JSON string; EncodeURI/UUID/Date expect typed Go values. */}}
+		e.Str({{ $constVal }})
 		{{- else if $j.Encoder }}
 		json.Encode{{ $j.Encoder }}(e, {{ $constVal }})
 		{{- else if $j.Fn }}
@@ -37,6 +40,9 @@
 		{{- $j := $t.JSON }}
 		{{- if $j.TimeFormat }}
 		json.EncodeTimeFormat(e, {{ $constVal }}, {{ $j.TimeFormat }})
+		{{- else if and $j.Encoder (not $j.Fn) (eq $j.Type "String") }}
+		{{- /* Const is a JSON string; EncodeURI/UUID/Date expect typed Go values. */}}
+		e.Str({{ $constVal }})
 		{{- else if $j.Encoder }}
 		json.Encode{{ $j.Encoder }}(e, {{ $constVal }})
 		{{- else if $j.Fn }}
