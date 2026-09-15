@@ -10,6 +10,7 @@ import (
 	"strings"
 
 	"github.com/go-faster/errors"
+	"github.com/go-faster/yaml"
 
 	ogenjson "github.com/ogen-go/ogen/json"
 	"github.com/ogen-go/ogen/jsonpointer"
@@ -87,7 +88,17 @@ func (p *Parser) parse1(schema *RawSchema, ctx *jsonpointer.ResolveCtx, hook fun
 		return s, nil
 	}
 
+	var copied bool
+	makeShallowCopy := func() {
+		if schema.Ref != "" && !copied {
+			cp := *s
+			s = &cp
+			copied = true
+		}
+	}
+
 	if rd := schema.Discriminator; rd != nil {
+		makeShallowCopy()
 		d, err := p.parseDiscriminator(rd, ctx)
 		if err != nil {
 			return nil, errors.Wrap(err, "parse discriminator")
@@ -96,6 +107,7 @@ func (p *Parser) parse1(schema *RawSchema, ctx *jsonpointer.ResolveCtx, hook fun
 	}
 
 	if enum := schema.Enum; len(enum) > 0 {
+		makeShallowCopy()
 		loc := schema.Common.Field("enum")
 		for i, a := range enum {
 			for j, b := range enum {
@@ -120,6 +132,7 @@ func (p *Parser) parse1(schema *RawSchema, ctx *jsonpointer.ResolveCtx, hook fun
 		handleNullableEnum(s)
 	}
 	if d := schema.Default; len(d) > 0 {
+		makeShallowCopy()
 		if err := func() error {
 			v, err := parseJSONValue(nil, json.RawMessage(d))
 			if err != nil {
@@ -135,6 +148,7 @@ func (p *Parser) parse1(schema *RawSchema, ctx *jsonpointer.ResolveCtx, hook fun
 		}
 	}
 	if len(schema.Const) > 0 {
+		makeShallowCopy()
 		if err := func() error {
 			v, err := parseJSONValue(nil, json.RawMessage(schema.Const))
 			if err != nil {
@@ -150,81 +164,94 @@ func (p *Parser) parse1(schema *RawSchema, ctx *jsonpointer.ResolveCtx, hook fun
 		}
 	}
 
-	for key, val := range schema.Common.Extensions {
-		if err := func() error {
-			locator := schema.Common.Field(key)
-
-			switch key {
-			case xOgenName:
-				if err := val.Decode(&s.XOgenName); err != nil {
-					return err
-				}
-
-				if err := validateGoIdent(s.XOgenName); err != nil {
-					return p.wrapLocation(p.file(ctx), locator, err)
-				}
-			case xOgenProperties:
-				props := map[string]XProperty{}
-				if err := val.Decode(&props); err != nil {
-					return err
-				}
-
-				fieldNames := map[string]location.Pointer{}
-				for propName, x := range props {
-					// FIXME(tdakkota): linear search
-					idx := slices.IndexFunc(s.Properties, func(p Property) bool { return p.Name == propName })
-					if idx < 0 {
-						err := errors.Errorf("unknown property %q", propName)
-						return p.wrapLocation(p.file(ctx), locator.Key(propName), err)
-					}
-
-					if n := x.Name; n != nil {
-						locator := locator.Field(propName).Field("name")
-						if err := validateGoIdent(*n); err != nil {
-							return p.wrapLocation(p.file(ctx), locator, err)
-						}
-
-						ptr := locator.Pointer(p.file(ctx))
-						if existing, ok := fieldNames[*n]; ok {
-							me := new(location.MultiError)
-							me.ReportPtr(existing, fmt.Sprintf("duplicate field name %q", *n))
-							me.ReportPtr(ptr, "")
-							return me
-						}
-						fieldNames[*n] = ptr
-					}
-
-					x.Pointer = locator.Field(propName).Pointer(p.file(ctx))
-					s.Properties[idx].X = x
-				}
-
-			case xOgenType:
-				if err := val.Decode(&s.XOgenType); err != nil {
-					return err
-				}
-
-			case xOgenTimeFormat:
-				if err := val.Decode(&s.XOgenTimeFormat); err != nil {
-					return err
-				}
-
-			case xOapiExtraTags:
-				if err := val.Decode(&s.ExtraTags); err != nil {
-					return err
-				}
-
-			case xOgenValidate:
-				if err := val.Decode(&s.OgenValidate); err != nil {
-					return err
-				}
+	if len(schema.Common.Extensions) > 0 {
+		makeShallowCopy()
+		for key, val := range schema.Common.Extensions {
+			err := p.parseExtension(schema.Common, ctx, key, val, s)
+			if err != nil {
+				return nil, errors.Wrapf(err, "parse %q", key)
 			}
-			return nil
-		}(); err != nil {
-			return nil, errors.Wrapf(err, "parse %q", key)
 		}
 	}
 
 	return s, nil
+}
+
+func (p *Parser) parseExtension(
+	common OpenAPICommon,
+	ctx *jsonpointer.ResolveCtx,
+	key string,
+	val yaml.Node,
+	out *Schema,
+) error {
+	locator := common.Field(key)
+
+	switch key {
+	case xOgenName:
+		if err := val.Decode(&out.XOgenName); err != nil {
+			return err
+		}
+		if err := validateGoIdent(out.XOgenName); err != nil {
+			return p.wrapLocation(p.file(ctx), locator, err)
+		}
+
+	case xOgenProperties:
+		props := map[string]XProperty{}
+		if err := val.Decode(&props); err != nil {
+			return err
+		}
+
+		fieldNames := map[string]location.Pointer{}
+		for propName, x := range props {
+			// FIXME(tdakkota): linear search
+			idx := slices.IndexFunc(out.Properties, func(p Property) bool { return p.Name == propName })
+			if idx < 0 {
+				err := errors.Errorf("unknown property %q", propName)
+				return p.wrapLocation(p.file(ctx), locator.Key(propName), err)
+			}
+
+			if n := x.Name; n != nil {
+				locator := locator.Field(propName).Field("name")
+				if err := validateGoIdent(*n); err != nil {
+					return p.wrapLocation(p.file(ctx), locator, err)
+				}
+
+				ptr := locator.Pointer(p.file(ctx))
+				if existing, ok := fieldNames[*n]; ok {
+					me := new(location.MultiError)
+					me.ReportPtr(existing, fmt.Sprintf("duplicate field name %q", *n))
+					me.ReportPtr(ptr, "")
+					return me
+				}
+				fieldNames[*n] = ptr
+			}
+
+			x.Pointer = locator.Field(propName).Pointer(p.file(ctx))
+			out.Properties[idx].X = x
+		}
+
+	case xOgenType:
+		if err := val.Decode(&out.XOgenType); err != nil {
+			return err
+		}
+
+	case xOgenTimeFormat:
+		if err := val.Decode(&out.XOgenTimeFormat); err != nil {
+			return err
+		}
+
+	case xOapiExtraTags:
+		if err := val.Decode(&out.ExtraTags); err != nil {
+			return err
+		}
+
+	case xOgenValidate:
+		if err := val.Decode(&out.OgenValidate); err != nil {
+			return err
+		}
+	}
+
+	return nil
 }
 
 // validateGoIdent checks that given ident is valid and is exported.
@@ -246,6 +273,7 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx *jsonpointer.ResolveCtx, hoo
 	if schema == nil {
 		return nil, nil
 	}
+
 	wrapField := func(field string, err error) error {
 		if err != nil {
 			err = errors.Wrap(err, field)
