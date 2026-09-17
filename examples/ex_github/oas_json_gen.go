@@ -14345,6 +14345,7 @@ func (s *Authorization) Decode(d *jx.Decoder) error {
 			if err := func() error {
 				switch tt := d.Next(); tt {
 				case jx.Null:
+					s.Scopes = nil
 					if err := d.Skip(); err != nil {
 						return err
 					}
@@ -20111,6 +20112,7 @@ func (s *CheckSuite) Decode(d *jx.Decoder) error {
 			if err := func() error {
 				switch tt := d.Next(); tt {
 				case jx.Null:
+					s.PullRequests = nil
 					if err := d.Skip(); err != nil {
 						return err
 					}
@@ -178153,6 +178155,7 @@ func (s *WorkflowRun) Decode(d *jx.Decoder) error {
 			if err := func() error {
 				switch tt := d.Next(); tt {
 				case jx.Null:
+					s.PullRequests = nil
 					if err := d.Skip(); err != nil {
 						return err
 					}
