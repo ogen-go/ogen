@@ -58,3 +58,4 @@ package integration
 //go:generate go run ../../cmd/ogen -v --clean --target test_raw_response ../../_testdata/positive/raw_response.yml
 //go:generate go run ../../cmd/ogen -v --clean --target test_non_primitive_enum ../../_testdata/positive/non_primitive_enum.json
 //go:generate go run ../../cmd/ogen -v --clean --target test_nullable_anyof_params ../../_testdata/positive/nullable_anyof_params.json
+//go:generate go run ../../cmd/ogen -v --clean --config _config/security_unsupported.yml --target test_security_unsupported ../../_testdata/positive/security_unsupported.yml
