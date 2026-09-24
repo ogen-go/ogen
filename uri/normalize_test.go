@@ -35,6 +35,11 @@ func TestNormalizeEscapedPath(t *testing.T) {
 		{"/foo%", "", false},
 		{"/foo%3", "", false},
 		{"/foo%zz", "", false},
+
+		// Invalid escape after a slow-path trigger (regression for index
+		// out of range panic when a lone "%" follows an unescaped octet).
+		{"0%70%", "", false},
+		{"%70%", "", false},
 	}
 	for i, tt := range tests {
 		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
