@@ -13,6 +13,7 @@ jobs:
       fail-fast: false
       matrix:
         flags: [""]
+        go: ["oldstable"]
         arch:
           - amd64
         runner:
@@ -25,14 +26,18 @@ jobs:
           - arch: amd64
             runner: ubuntu-latest
             flags: "-race"
+          - arch: amd64
+            runner: ubuntu-latest
+            go: "stable"
     steps:
       - name: Checkout code
         uses: actions/checkout@v7
 
       - name: Install Go
+        id: setup-go
         uses: actions/setup-go@v7
         with:
-          go-version: "oldstable"
+          go-version: ${{ matrix.go || 'oldstable' }}
           cache: false
 
       - name: Get Go environment
@@ -48,9 +53,10 @@ jobs:
         shell: bash
         env:
           RUNNER_PREFIX: ${{ runner.os }}-${{ runner.arch }}-go
+          GO_VERSION: ${{ steps.setup-go.outputs.go-version }}
           ARCH_PREFIX: ${{ matrix.arch != 'amd64' && format('-{0}', matrix.arch) || '' }}
           RACE_PREFIX: ${{ contains(matrix.flags, '-race') && '-race' || '' }}
-        run: echo "cache_prefix=$RUNNER_PREFIX$ARCH_PREFIX$RACE_PREFIX" >> $GITHUB_ENV
+        run: echo "cache_prefix=$RUNNER_PREFIX${GO_VERSION%.*}$ARCH_PREFIX$RACE_PREFIX" >> $GITHUB_ENV
 
       - name: Set up cache
         uses: actions/cache@v6
