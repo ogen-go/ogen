@@ -1,0 +1,66 @@
+openapi: 3.1.0
+info:
+  title: Alias array defaults
+  version: 1.0.0
+paths:
+  /items:
+    post:
+      operationId: createItems
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateItemsRequest'
+      responses:
+        "200":
+          description: ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateItemsRequest'
+components:
+  schemas:
+    Color:
+      type: string
+      enum: [red, blue]
+    TagList:
+      type: array
+      items:
+        type: string
+    ColorList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Color'
+    Item:
+      type: object
+      properties:
+        name:
+          type: string
+    ItemList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Item'
+    CreateItemsRequest:
+      type: object
+      properties:
+        tags:
+          $ref: '#/components/schemas/TagList'
+          default: [a, b]
+        nullableTags:
+          anyOf:
+            - $ref: '#/components/schemas/TagList'
+            - type: 'null'
+          default: [c]
+        colors:
+          $ref: '#/components/schemas/ColorList'
+          default: [blue]
+        items:
+          $ref: '#/components/schemas/ItemList'
+          default:
+            - name: x
+        tagLists:
+          type: array
+          items:
+            $ref: '#/components/schemas/TagList'
+          default: [[d], [e, f]]
