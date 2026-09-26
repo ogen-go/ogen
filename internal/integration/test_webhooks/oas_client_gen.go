@@ -127,6 +127,7 @@ func (c *Client) sendPublishEvent(ctx context.Context, request OptEvent) (res *E
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/event"
 	if err := encodePublishEventRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -222,6 +223,7 @@ func (c *WebhookClient) sendStatusWebhook(ctx context.Context, targetURL string)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/"
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -297,6 +299,7 @@ func (c *WebhookClient) sendUpdateDelete(ctx context.Context, targetURL string) 
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/"
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -391,6 +394,7 @@ func (c *WebhookClient) sendUpdateWebhook(ctx context.Context, targetURL string,
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/"
 	if err := encodeUpdateWebhookRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}

@@ -145,6 +145,7 @@ func (c *Client) sendGetMixedData(ctx context.Context) (res GetMixedDataRes, err
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/mixed-data"
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -215,6 +216,7 @@ func (c *Client) sendGetNormalData(ctx context.Context) (res *GetNormalDataOK, e
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/normal-data"
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -293,6 +295,7 @@ func (c *Client) sendGetRawData(ctx context.Context) (res GetRawDataRes, err err
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/raw-data"
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -363,6 +366,7 @@ func (c *Client) sendGetRawDataInsideOperationGroup(ctx context.Context) (res Ge
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/raw-data-inside-operation-group"
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)

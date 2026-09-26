@@ -199,6 +199,7 @@ func (c *Client) sendFoo(ctx context.Context, params FooParams, requestOptions .
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/foo"
 
 	if err := reqCfg.onRequest(r); err != nil {
 		return res, errors.Wrap(err, "edit request")

@@ -188,6 +188,7 @@ func (c *Client) sendAnyContentTypeBinaryStringSchema(ctx context.Context) (res 
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/anyContentTypeBinaryStringSchema"
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -266,6 +267,7 @@ func (c *Client) sendAnyContentTypeBinaryStringSchemaDefault(ctx context.Context
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/anyContentTypeBinaryStringSchemaDefault"
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -362,6 +364,7 @@ func (c *Client) sendCombined(ctx context.Context, params CombinedParams) (res C
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/combined"
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -440,6 +443,7 @@ func (c *Client) sendHeaders200(ctx context.Context) (res *Headers200OK, err err
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/headers200"
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -536,6 +540,7 @@ func (c *Client) sendHeadersCombined(ctx context.Context, params HeadersCombined
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/headersCombined"
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -614,6 +619,7 @@ func (c *Client) sendHeadersDefault(ctx context.Context) (res *HeadersDefaultDef
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/headersDefault"
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -692,6 +698,7 @@ func (c *Client) sendHeadersJSON(ctx context.Context) (res *HeadersJSONOK, err e
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/headersJSON"
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -770,6 +777,7 @@ func (c *Client) sendHeadersPattern(ctx context.Context) (res *HeadersPattern4XX
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/headersPattern"
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -869,6 +877,7 @@ func (c *Client) sendIntersectPatternCode(ctx context.Context, params IntersectP
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/intersectPatternCode"
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -947,6 +956,7 @@ func (c *Client) sendMultipleGenericResponses(ctx context.Context) (res Multiple
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/multipleGenericResponses"
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -1025,6 +1035,7 @@ func (c *Client) sendOctetStreamBinaryStringSchema(ctx context.Context) (res Oct
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/octetStreamBinaryStringSchema"
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -1103,6 +1114,7 @@ func (c *Client) sendOctetStreamEmptySchema(ctx context.Context) (res OctetStrea
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/octetStreamEmptySchema"
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -1183,6 +1195,7 @@ func (c *Client) sendOptionalHeaders(ctx context.Context) (res *OptionalHeadersO
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/optionalHeaders"
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -1279,6 +1292,7 @@ func (c *Client) sendStreamJSON(ctx context.Context, params StreamJSONParams) (r
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/streamJSON"
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -1357,6 +1371,7 @@ func (c *Client) sendTextPlainBinaryStringSchema(ctx context.Context) (res TextP
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/textPlainBinaryStringSchema"
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)

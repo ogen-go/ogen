@@ -42,6 +42,7 @@ func recordError(string, error) {}
 //
 {{- template "godoc_op" $op }}
 func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) handle{{ $op.Name }}Request(args [{{ $op.PathParamsCount }}]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	r.Pattern = {{ quote $op.Spec.Path }}
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
     {{- if $.Config.OpenTelemetryEnabled }}

@@ -35,6 +35,7 @@ func (c *codeRecorder) Unwrap() http.ResponseWriter {
 //
 // GET /healthz
 func (s *Server) handleHealthzGetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	r.Pattern = "/healthz"
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
 	otelAttrs := []attribute.KeyValue{

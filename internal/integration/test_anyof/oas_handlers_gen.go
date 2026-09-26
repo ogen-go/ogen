@@ -36,6 +36,7 @@ func (c *codeRecorder) Unwrap() http.ResponseWriter {
 //
 // GET /integerNumber
 func (s *Server) handleIntegerNumberRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	r.Pattern = "/integerNumber"
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
 	otelAttrs := []attribute.KeyValue{
@@ -158,6 +159,7 @@ func (s *Server) handleIntegerNumberRequest(args [0]string, argsEscaped bool, w 
 //
 // GET /jaegerAnyOf
 func (s *Server) handleJaegerAnyOfRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	r.Pattern = "/jaegerAnyOf"
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
 	otelAttrs := []attribute.KeyValue{
@@ -280,6 +282,7 @@ func (s *Server) handleJaegerAnyOfRequest(args [0]string, argsEscaped bool, w ht
 //
 // GET /oneUUID
 func (s *Server) handleOneUUIDRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	r.Pattern = "/oneUUID"
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
 	otelAttrs := []attribute.KeyValue{

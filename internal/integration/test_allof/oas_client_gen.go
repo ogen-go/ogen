@@ -216,6 +216,7 @@ func (c *Client) sendAllOfWithSiblingExtensions(ctx context.Context, request *Al
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/allOfWithSiblingExtensions"
 	if err := encodeAllOfWithSiblingExtensionsRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -308,6 +309,7 @@ func (c *Client) sendAllOfWithSiblingProperties(ctx context.Context, request *Al
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/allOfWithSiblingProperties"
 	if err := encodeAllOfWithSiblingPropertiesRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -391,6 +393,7 @@ func (c *Client) sendGetAdminFoo(ctx context.Context) (res *GetAdminFooOK, err e
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/admin/foo"
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -471,6 +474,7 @@ func (c *Client) sendGetFoo(ctx context.Context) (res *Foo, err error) {
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/foo"
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -551,6 +555,7 @@ func (c *Client) sendMultiAllOfWithSiblingProperties(ctx context.Context, reques
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/multiAllOfWithSiblingProperties"
 	if err := encodeMultiAllOfWithSiblingPropertiesRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -662,6 +667,7 @@ func (c *Client) sendNullableStrings(ctx context.Context, request NilString) (re
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/nullableStrings"
 	if err := encodeNullableStringsRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -754,6 +760,7 @@ func (c *Client) sendObjectsWithConflictingArrayProperty(ctx context.Context, re
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/objectsWithConflictingArrayProperty"
 	if err := encodeObjectsWithConflictingArrayPropertyRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -846,6 +853,7 @@ func (c *Client) sendObjectsWithConflictingProperties(ctx context.Context, reque
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/objectsWithConflictingProperties"
 	if err := encodeObjectsWithConflictingPropertiesRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -954,6 +962,7 @@ func (c *Client) sendReferencedAllOfNullable(ctx context.Context, request Refere
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/referencedAllOfNullable"
 	if err := encodeReferencedAllOfNullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -1060,6 +1069,7 @@ func (c *Client) sendReferencedAllof(ctx context.Context, request ReferencedAllo
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/referencedAllof"
 	if err := encodeReferencedAllofRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -1168,6 +1178,7 @@ func (c *Client) sendReferencedAllofOptional(ctx context.Context, request Refere
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/referencedAllofOptional"
 	if err := encodeReferencedAllofOptionalRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -1270,6 +1281,7 @@ func (c *Client) sendSimpleInteger(ctx context.Context, request int) (res *Simpl
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/simpleInteger"
 	if err := encodeSimpleIntegerRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -1353,6 +1365,7 @@ func (c *Client) sendSimpleObjects(ctx context.Context, request *SimpleObjectsRe
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/simpleObjects"
 	if err := encodeSimpleObjectsRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -1462,6 +1475,7 @@ func (c *Client) sendStringsNotype(ctx context.Context, request NilString) (res 
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/stringsNotype"
 	if err := encodeStringsNotypeRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
