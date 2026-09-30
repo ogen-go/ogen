@@ -24,6 +24,7 @@ package integration
 //go:generate go run ../../cmd/ogen -v --clean --target test_form             ../../_testdata/positive/form.json
 //go:generate go run ../../cmd/ogen -v --clean --target test_parameters       ../../_testdata/positive/parameters.json
 //go:generate go run ../../cmd/ogen -v --clean --target test_security         ../../_testdata/positive/security.json
+//go:generate go run ../../cmd/ogen -v --clean --target test_sse              ../../_testdata/positive/sse.yml
 //
 //
 //go:generate go run ../../cmd/ogen -v --clean --target referenced_path_item ../../_testdata/positive/referenced_pathItem.json

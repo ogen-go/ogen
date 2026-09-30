@@ -24,6 +24,14 @@ type OperationElem struct {
 	Config TemplateConfig
 }
 
+// TypeElem is variable name for generating per-type functions.
+type TypeElem struct {
+	// Type is the type.
+	Type *ir.Type
+	// Config is the template configuration.
+	Config TemplateConfig
+}
+
 // RouterElem is variable helper for router generation.
 type RouterElem struct {
 	// ParameterIndex is index of parameter of this route part.
@@ -254,7 +262,12 @@ func templateFunctions() template.FuncMap {
 				Config:    cfg,
 			}
 		},
-		"sse_server_response_encoding": sseServerResponseEncoding,
+		"type_elem": func(t *ir.Type, cfg TemplateConfig) TypeElem {
+			return TypeElem{
+				Type:   t,
+				Config: cfg,
+			}
+		},
 		"ir_media": func(e ir.Encoding, t *ir.Type) ir.Media {
 			return ir.Media{
 				Encoding: e,
