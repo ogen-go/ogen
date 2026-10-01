@@ -1,12 +1,14 @@
 package gen
 
 import (
+	"strings"
 	"testing"
 
 	"github.com/stretchr/testify/require"
 	"go.uber.org/zap/zaptest"
 
 	"github.com/ogen-go/ogen/gen/ir"
+	"github.com/ogen-go/ogen/internal/bitset"
 	"github.com/ogen-go/ogen/openapi"
 )
 
@@ -205,6 +207,10 @@ func TestGenerateSecuritiesScopeSets(t *testing.T) {
 		requirements  []openapi.SecurityRequirement
 		wantScopes    map[string][]string
 		wantScopeSets map[string][][]string
+		// wantChecks is a list of "security:scopes" checks.
+		wantChecks []string
+		// wantCheckRequirements is a list of check indexes per requirement.
+		wantCheckRequirements [][]int
 	}{
 		{
 			name: "OrSameSecurity",
@@ -212,16 +218,20 @@ func TestGenerateSecuritiesScopeSets(t *testing.T) {
 				{Schemes: []openapi.SecurityScheme{bearer("A")}},
 				{Schemes: []openapi.SecurityScheme{bearer("B")}},
 			},
-			wantScopes:    map[string][]string{"bearer": {"A", "B"}},
-			wantScopeSets: map[string][][]string{"bearer": {{"A"}, {"B"}}},
+			wantScopes:            map[string][]string{"bearer": {"A", "B"}},
+			wantScopeSets:         map[string][][]string{"bearer": {{"A"}, {"B"}}},
+			wantChecks:            []string{"Bearer:A", "Bearer:B"},
+			wantCheckRequirements: [][]int{{0}, {1}},
 		},
 		{
 			name: "AndSameSecurity",
 			requirements: []openapi.SecurityRequirement{
 				{Schemes: []openapi.SecurityScheme{bearer("A", "B")}},
 			},
-			wantScopes:    map[string][]string{"bearer": {"A", "B"}},
-			wantScopeSets: map[string][][]string{"bearer": {{"A", "B"}}},
+			wantScopes:            map[string][]string{"bearer": {"A", "B"}},
+			wantScopeSets:         map[string][][]string{"bearer": {{"A", "B"}}},
+			wantChecks:            []string{"Bearer:A,B"},
+			wantCheckRequirements: [][]int{{0}},
 		},
 		{
 			name: "EmptySet",
@@ -229,8 +239,10 @@ func TestGenerateSecuritiesScopeSets(t *testing.T) {
 				{Schemes: []openapi.SecurityScheme{bearer()}},
 				{Schemes: []openapi.SecurityScheme{bearer("A")}},
 			},
-			wantScopes:    map[string][]string{"bearer": {"A"}},
-			wantScopeSets: map[string][][]string{"bearer": {{}, {"A"}}},
+			wantScopes:            map[string][]string{"bearer": {"A"}},
+			wantScopeSets:         map[string][][]string{"bearer": {{}, {"A"}}},
+			wantChecks:            []string{"Bearer:", "Bearer:A"},
+			wantCheckRequirements: [][]int{{0}, {1}},
 		},
 		{
 			name: "MixedSecurities",
@@ -246,6 +258,27 @@ func TestGenerateSecuritiesScopeSets(t *testing.T) {
 				"bearer": {{"A"}, {"B"}},
 				"apiKey": {{"X"}},
 			},
+			wantChecks:            []string{"Bearer:A", "ApiKey:X", "Bearer:B"},
+			wantCheckRequirements: [][]int{{0, 1}, {2}},
+		},
+		{
+			name: "DuplicateSets",
+			requirements: []openapi.SecurityRequirement{
+				{Schemes: []openapi.SecurityScheme{bearer("A", "B"), apiKey()}},
+				{Schemes: []openapi.SecurityScheme{bearer("B", "A")}},
+				{Schemes: []openapi.SecurityScheme{apiKey()}},
+			},
+			wantScopes: map[string][]string{
+				"bearer": {"A", "B", "B", "A"},
+				"apiKey": nil,
+			},
+			wantScopeSets: map[string][][]string{
+				"bearer": {{"A", "B"}, {"B", "A"}},
+				"apiKey": {{}, {}},
+			},
+			// Same scope sets are checked only once.
+			wantChecks:            []string{"Bearer:A,B", "ApiKey:"},
+			wantCheckRequirements: [][]int{{0, 1}, {0}, {1}},
 		},
 		{
 			name: "SkippedRequirement",
@@ -256,7 +289,9 @@ func TestGenerateSecuritiesScopeSets(t *testing.T) {
 			// Merged scopes keep the existing behavior.
 			wantScopes: map[string][]string{"bearer": {"A", "B"}},
 			// Skipped requirement is not an alternative.
-			wantScopeSets: map[string][][]string{"bearer": {{"B"}}},
+			wantScopeSets:         map[string][][]string{"bearer": {{"B"}}},
+			wantChecks:            []string{"Bearer:B"},
+			wantCheckRequirements: [][]int{{0}},
 		},
 	}
 	for _, tt := range tests {
@@ -282,7 +317,28 @@ func TestGenerateSecuritiesScopeSets(t *testing.T) {
 				require.Equal(t, tt.wantScopes[name], sec.Scopes["testOp"], name)
 				require.Equal(t, want, sec.ScopeSets["testOp"], name)
 			}
-			require.Len(t, r.Requirements, len(tt.wantScopeSets["bearer"]))
+			require.Len(t, r.Requirements, len(tt.wantCheckRequirements))
+
+			var checks []string
+			for _, c := range r.Checks {
+				checks = append(checks, c.Security.Type.Name+":"+strings.Join(c.Scopes, ","))
+				// ScopeSetIndex must point to the same scope set.
+				require.Equal(t, c.Scopes, c.Security.ScopeSets["testOp"][c.ScopeSetIndex])
+			}
+			require.Equal(t, tt.wantChecks, checks)
+
+			var wantReqs []bitset.Bitset
+			for _, idxs := range tt.wantCheckRequirements {
+				var set bitset.Bitset
+				for _, idx := range idxs {
+					set.Set(idx, true)
+				}
+				wantReqs = append(wantReqs, set)
+			}
+			require.Equal(t, wantReqs, r.CheckRequirements)
+			require.Equal(t, wantReqs, r.ServerRequirements(true))
+			require.Equal(t, r.Requirements, r.ServerRequirements(false))
+			require.Len(t, r.ServerChecks(false), len(r.Securities))
 		})
 	}
 }

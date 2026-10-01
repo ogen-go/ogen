@@ -129,6 +129,14 @@ var (
 		"server/response/validation",
 		`Enables validation of server responses`,
 	}
+	ServerSecurityPerRequirement = Feature{
+		"server/security/per_requirement",
+		`Calls server security handlers once per distinct scope set of security requirements, ` +
+			`passing only the scopes of that set, instead of once per security with merged scopes. ` +
+			`Handlers should return ogenerrors.ErrSkipServerSecurity if credentials are valid ` +
+			`but lack the given scopes, so the next requirement can be tried. ` +
+			`Opt-in, since it changes how often handlers are called and which roles/scopes they receive.`,
+	}
 	OgenOtel = Feature{
 		"ogen/otel",
 		`Enables OpenTelemetry integration`,
@@ -169,6 +177,7 @@ var AllFeatures = []Feature{
 	ClientRequestValidation,
 	ClientEditors,
 	ServerResponseValidation,
+	ServerSecurityPerRequirement,
 	OgenOtel,
 	OgenUnimplemented,
 	DebugExampleTests,

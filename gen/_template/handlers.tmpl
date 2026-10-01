@@ -134,14 +134,20 @@ func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) handle{{ $op.Name }}Req
 		{{- end }}
 	)
 
-	{{- with $securities := $op.Security.Securities }}
+	{{- $perRequirement := $.Config.SecurityPerRequirementEnabled }}
+	{{- with $checks := $op.Security.ServerChecks $perRequirement }}
 	{
-		type bitset = [{{ $op.Security.BitArrayLen }}]uint8
+		type bitset = [{{ $op.Security.ServerBitArrayLen $perRequirement }}]uint8
 		var satisfied bitset
-		{{- range $idx, $s := $securities }}
+		{{- range $idx, $c := $checks }}
+		{{- $s := $c.Security }}
 		{{- $securityName := $s.Type.Name }}
 		{
+			{{- if $perRequirement }}
+			sctx, ok, err := s.security{{ $securityName }}(ctx, {{ $op.Name }}Operation, r, {{ if $s.Format.IsOAuth2Security }}oauth2ScopeSets{{ else }}operationRoleSets{{ end }}{{ $securityName }}[{{ $op.Name }}Operation][{{ $c.ScopeSetIndex }}])
+			{{- else }}
 			sctx, ok, err := s.security{{ $securityName }}(ctx, {{ $op.Name }}Operation, r)
+			{{- end }}
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -168,7 +174,7 @@ func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) handle{{ $op.Name }}Req
 		if ok := func() bool {
 			nextRequirement:
 			for _, requirement := range []bitset{
-				{{- range $req := $op.Security.Requirements }}
+				{{- range $req := $op.Security.ServerRequirements $perRequirement }}
 				{
 					{{- range $mask := $req }}{{ printf "%#08b" $mask }},{{ end }}
 				},

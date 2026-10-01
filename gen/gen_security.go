@@ -2,6 +2,7 @@ package gen
 
 import (
 	"fmt"
+	"slices"
 	"strings"
 
 	"github.com/go-faster/errors"
@@ -198,7 +199,10 @@ func (g *Generator) generateSecurities(
 	operationName string,
 	spec openapi.SecurityRequirements,
 ) (r ir.SecurityRequirements, _ error) {
-	indexes := map[string]int{}
+	var (
+		indexes      = map[string]int{}
+		checkIndexes = map[securityCheckKey]int{}
+	)
 	for idx, requirement := range spec {
 		type scopeSet struct {
 			sec    *ir.Security
@@ -241,13 +245,48 @@ func (g *Generator) generateSecurities(
 		}
 
 		// Record scope sets only for requirements that were not skipped.
+		var checkSet bitset.Bitset
 		for _, ss := range scopeSets {
 			if ss.sec.ScopeSets == nil {
 				ss.sec.ScopeSets = map[string][][]string{}
 			}
-			ss.sec.ScopeSets[operationName] = append(ss.sec.ScopeSets[operationName], ss.scopes)
+			sets := ss.sec.ScopeSets[operationName]
+			ss.sec.ScopeSets[operationName] = append(sets, ss.scopes)
+
+			key := newSecurityCheckKey(ss.sec, ss.scopes)
+			checkIdx, ok := checkIndexes[key]
+			if !ok {
+				r.Checks = append(r.Checks, ir.SecurityCheck{
+					Security:      ss.sec,
+					Scopes:        ss.scopes,
+					ScopeSetIndex: len(sets),
+				})
+				checkIdx = len(r.Checks) - 1
+				checkIndexes[key] = checkIdx
+			}
+			checkSet.Set(checkIdx, true)
 		}
 		r.Requirements = append(r.Requirements, set)
+		r.CheckRequirements = append(r.CheckRequirements, checkSet)
 	}
 	return r, nil
+}
+
+// securityCheckKey is a key to deduplicate security checks.
+type securityCheckKey struct {
+	sec    *ir.Security
+	scopes string
+}
+
+// newSecurityCheckKey creates a new securityCheckKey.
+//
+// The order of scopes does not matter.
+func newSecurityCheckKey(s *ir.Security, scopes []string) securityCheckKey {
+	sorted := slices.Clone(scopes)
+	slices.Sort(sorted)
+	sorted = slices.Compact(sorted)
+	return securityCheckKey{
+		sec:    s,
+		scopes: strings.Join(sorted, "\x00"),
+	}
 }

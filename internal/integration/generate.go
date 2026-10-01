@@ -12,6 +12,7 @@ package integration
 //go:generate go run ../../cmd/ogen -v --clean --config _config/techempower.yml --package techempower --target techempower ../../_testdata/examples/techempower.json
 
 //go:generate go run ../../cmd/ogen -v --clean --config _config/security_reentrant.yml --target security_reentrant ../../_testdata/positive/security.json
+//go:generate go run ../../cmd/ogen -v --clean --config _config/security_per_requirement.yml --target test_security_per_requirement ../../_testdata/positive/security.json
 
 // Tests
 //

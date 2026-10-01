@@ -116,14 +116,62 @@ func (s *Security) GoDoc() []string {
 	return prettyDoc(s.Description, "")
 }
 
+// SecurityCheck is a single security check with the given scope set.
+type SecurityCheck struct {
+	Security *Security
+	// Scopes is a scope set to check.
+	Scopes []string
+	// ScopeSetIndex is an index of Scopes in Security.ScopeSets of the operation.
+	ScopeSetIndex int
+}
+
 type SecurityRequirements struct {
-	Securities   []*Security
+	// Securities is a list of securities used by the operation.
+	Securities []*Security
+	// Requirements is a list of bitsets over Securities.
 	Requirements []bitset.Bitset
+
+	// Checks is a list of distinct (security, scope set) pairs used by the operation.
+	Checks []SecurityCheck
+	// CheckRequirements is a list of bitsets over Checks.
+	CheckRequirements []bitset.Bitset
 }
 
 // BitArrayLen returns the length for bitset's underlying array.
-func (s SecurityRequirements) BitArrayLen() (r int) {
-	for _, req := range s.Requirements {
+func (s SecurityRequirements) BitArrayLen() int {
+	return bitArrayLen(s.Requirements)
+}
+
+// ServerChecks returns a list of checks to perform on server side.
+//
+// If perRequirement is false, returns a check per security,
+// otherwise returns Checks.
+func (s SecurityRequirements) ServerChecks(perRequirement bool) []SecurityCheck {
+	if perRequirement {
+		return s.Checks
+	}
+	checks := make([]SecurityCheck, len(s.Securities))
+	for i, sec := range s.Securities {
+		checks[i] = SecurityCheck{Security: sec}
+	}
+	return checks
+}
+
+// ServerRequirements returns a list of bitsets over ServerChecks.
+func (s SecurityRequirements) ServerRequirements(perRequirement bool) []bitset.Bitset {
+	if perRequirement {
+		return s.CheckRequirements
+	}
+	return s.Requirements
+}
+
+// ServerBitArrayLen returns the length for bitset's underlying array of ServerRequirements.
+func (s SecurityRequirements) ServerBitArrayLen(perRequirement bool) int {
+	return bitArrayLen(s.ServerRequirements(perRequirement))
+}
+
+func bitArrayLen(reqs []bitset.Bitset) (r int) {
+	for _, req := range reqs {
 		if len(req) > r {
 			r = len(req)
 		}

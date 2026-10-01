@@ -22,6 +22,7 @@ type testSecurity struct {
 	headerKey   api.HeaderKey
 	queryKey    api.QueryKey
 	cookieKey   api.CookieKey
+	oauth2      api.OAuth2
 	custom      string
 
 	// bearerRoles records roles passed to HandleBearerToken.
@@ -49,6 +50,10 @@ func (t *testSecurity) OrScopesSecurity(ctx context.Context) error {
 }
 
 func (t *testSecurity) MixedScopesSecurity(ctx context.Context) error {
+	return nil
+}
+
+func (t *testSecurity) Oauth2ScopesSecurity(ctx context.Context) error {
 	return nil
 }
 
@@ -90,6 +95,13 @@ func (t *testSecurity) HandleCookieKey(ctx context.Context, operationName string
 	return context.WithValue(ctx, tokenKey("CookieKey"), v), nil
 }
 
+func (t *testSecurity) HandleOAuth2(ctx context.Context, operationName string, v api.OAuth2) (context.Context, error) {
+	if v.Token != t.oauth2.Token {
+		return nil, errors.Errorf("invalid token: %q", v.Token)
+	}
+	return context.WithValue(ctx, tokenKey("OAuth2"), v), nil
+}
+
 func (t *testSecurity) HandleCustom(ctx context.Context, operationName string, v api.Custom) (context.Context, error) {
 	got := v.Request.Header.Get(customSecurityHeader)
 	if got != t.custom {
@@ -104,6 +116,7 @@ type testSecuritySource struct {
 	headerKey   *api.HeaderKey
 	queryKey    *api.QueryKey
 	cookieKey   *api.CookieKey
+	oauth2      *api.OAuth2
 	custom      string
 }
 
@@ -137,6 +150,13 @@ func (t *testSecuritySource) QueryKey(ctx context.Context, operationName string)
 
 func (t *testSecuritySource) CookieKey(ctx context.Context, operationName string) (r api.CookieKey, _ error) {
 	if v := t.cookieKey; v != nil {
+		return *v, nil
+	}
+	return r, ogenerrors.ErrSkipClientSecurity
+}
+
+func (t *testSecuritySource) OAuth2(ctx context.Context, operationName string) (r api.OAuth2, _ error) {
+	if v := t.oauth2; v != nil {
 		return *v, nil
 	}
 	return r, ogenerrors.ErrSkipClientSecurity
@@ -349,6 +369,14 @@ func TestSecurityRoleSets(t *testing.T) {
 			require.Equal(t, tt.want, api.GetRoleSetsForBearerToken(tt.operation), tt.operation)
 		}
 		require.Equal(t, [][]string{{}}, api.GetRoleSetsForHeaderKey(api.MixedScopesSecurityOperation))
+		require.Equal(t,
+			[][]string{{"read", "write"}, {"admin"}},
+			api.GetOAuth2ScopeSetsForOAuth2(api.Oauth2ScopesSecurityOperation),
+		)
+		require.Equal(t,
+			[]string{"read", "write", "admin"},
+			api.GetOAuth2ScopesForOAuth2(api.Oauth2ScopesSecurityOperation),
+		)
 	})
 	t.Run("ReturnsCopy", func(t *testing.T) {
 		sets := api.GetRoleSetsForBearerToken(api.OrScopesSecurityOperation)

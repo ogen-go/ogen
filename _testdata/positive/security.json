@@ -98,6 +98,24 @@
         }
       }
     },
+    "/oauth2ScopesSecurity": {
+      "get": {
+        "operationId": "oauth2ScopesSecurity",
+        "security": [
+          {
+            "oauth2": ["read", "write"]
+          },
+          {
+            "oauth2": ["admin"]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/customSecurity": {
       "get": {
         "operationId": "customSecurity",
@@ -138,6 +156,19 @@
       "bearerToken": {
         "type": "http",
         "scheme": "bearer"
+      },
+      "oauth2": {
+        "type": "oauth2",
+        "flows": {
+          "clientCredentials": {
+            "tokenUrl": "https://example.com/oauth/token",
+            "scopes": {
+              "read": "Read access",
+              "write": "Write access",
+              "admin": "Admin access"
+            }
+          }
+        }
       },
       "custom": {
         "type": "http",
