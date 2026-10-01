@@ -34,9 +34,23 @@ func (UnimplementedHandler) IntersectSecurity(ctx context.Context) error {
 	return ht.ErrNotImplemented
 }
 
+// MixedScopesSecurity implements mixedScopesSecurity operation.
+//
+// GET /mixedScopesSecurity
+func (UnimplementedHandler) MixedScopesSecurity(ctx context.Context) error {
+	return ht.ErrNotImplemented
+}
+
 // OptionalSecurity implements optionalSecurity operation.
 //
 // GET /optionalSecurity
 func (UnimplementedHandler) OptionalSecurity(ctx context.Context) error {
+	return ht.ErrNotImplemented
+}
+
+// OrScopesSecurity implements orScopesSecurity operation.
+//
+// GET /orScopesSecurity
+func (UnimplementedHandler) OrScopesSecurity(ctx context.Context) error {
 	return ht.ErrNotImplemented
 }

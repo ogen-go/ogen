@@ -48,6 +48,53 @@ var operationRolesBasicAuth = map[string][]string{
 	IntersectSecurityOperation: []string{},
 }
 
+// operationRoleSetsBasicAuth is a private map storing role sets per operation.
+var operationRoleSetsBasicAuth = map[string][][]string{
+	DisjointSecurityOperation: {
+		{},
+	},
+	IntersectSecurityOperation: {
+		{},
+	},
+}
+
+// GetRoleSetsForBasicAuth returns the alternative role sets for the given operation.
+//
+// Each element corresponds to one security requirement of the operation that uses
+// this security, in the order they are defined in the spec. A caller is sufficient
+// for the requirement if it has all roles of any one set (logical OR between sets,
+// logical AND within a set). An empty set means that no roles are required.
+//
+// Unlike GetRolesForBasicAuth, which merges all roles into a single list,
+// this function preserves the AND/OR relationship between roles.
+//
+// Example:
+//
+//	for _, roles := range GetRoleSetsForBasicAuth(AddPetOperation) {
+//		if hasAllRoles(user, roles) {
+//			return ctx, nil
+//		}
+//	}
+//
+// Note that if an operation has security requirements combining multiple securities,
+// checking sets of a single security alone is not enough to decide whether
+// a requirement is satisfied.
+//
+// Returns nil if the operation is unknown or does not use this security.
+func GetRoleSetsForBasicAuth(operation string) [][]string {
+	sets, ok := operationRoleSetsBasicAuth[operation]
+	if !ok {
+		return nil
+	}
+	// Return a copy to prevent external modification
+	result := make([][]string, len(sets))
+	for i, set := range sets {
+		result[i] = make([]string, len(set))
+		copy(result[i], set)
+	}
+	return result
+}
+
 // GetRolesForBasicAuth returns the required roles for the given operation.
 //
 // This is useful for authorization scenarios where you need to know which roles
@@ -72,6 +119,76 @@ func GetRolesForBasicAuth(operation string) []string {
 // operationRolesBearerToken is a private map storing roles per operation.
 var operationRolesBearerToken = map[string][]string{
 	IntersectSecurityOperation: []string{},
+	MixedScopesSecurityOperation: []string{
+		"A",
+		"B",
+	},
+	OrScopesSecurityOperation: []string{
+		"A",
+		"B",
+		"C",
+	},
+}
+
+// operationRoleSetsBearerToken is a private map storing role sets per operation.
+var operationRoleSetsBearerToken = map[string][][]string{
+	IntersectSecurityOperation: {
+		{},
+	},
+	MixedScopesSecurityOperation: {
+		{
+			"A",
+		},
+		{
+			"B",
+		},
+	},
+	OrScopesSecurityOperation: {
+		{
+			"A",
+		},
+		{
+			"B",
+			"C",
+		},
+	},
+}
+
+// GetRoleSetsForBearerToken returns the alternative role sets for the given operation.
+//
+// Each element corresponds to one security requirement of the operation that uses
+// this security, in the order they are defined in the spec. A caller is sufficient
+// for the requirement if it has all roles of any one set (logical OR between sets,
+// logical AND within a set). An empty set means that no roles are required.
+//
+// Unlike GetRolesForBearerToken, which merges all roles into a single list,
+// this function preserves the AND/OR relationship between roles.
+//
+// Example:
+//
+//	for _, roles := range GetRoleSetsForBearerToken(AddPetOperation) {
+//		if hasAllRoles(user, roles) {
+//			return ctx, nil
+//		}
+//	}
+//
+// Note that if an operation has security requirements combining multiple securities,
+// checking sets of a single security alone is not enough to decide whether
+// a requirement is satisfied.
+//
+// Returns nil if the operation is unknown or does not use this security.
+func GetRoleSetsForBearerToken(operation string) [][]string {
+	sets, ok := operationRoleSetsBearerToken[operation]
+	if !ok {
+		return nil
+	}
+	// Return a copy to prevent external modification
+	result := make([][]string, len(sets))
+	for i, set := range sets {
+		result[i] = make([]string, len(set))
+		copy(result[i], set)
+	}
+	return result
 }
 
 // GetRolesForBearerToken returns the required roles for the given operation.
@@ -100,6 +217,50 @@ var operationRolesCookieKey = map[string][]string{
 	DisjointSecurityOperation: []string{},
 }
 
+// operationRoleSetsCookieKey is a private map storing role sets per operation.
+var operationRoleSetsCookieKey = map[string][][]string{
+	DisjointSecurityOperation: {
+		{},
+	},
+}
+
+// GetRoleSetsForCookieKey returns the alternative role sets for the given operation.
+//
+// Each element corresponds to one security requirement of the operation that uses
+// this security, in the order they are defined in the spec. A caller is sufficient
+// for the requirement if it has all roles of any one set (logical OR between sets,
+// logical AND within a set). An empty set means that no roles are required.
+//
+// Unlike GetRolesForCookieKey, which merges all roles into a single list,
+// this function preserves the AND/OR relationship between roles.
+//
+// Example:
+//
+//	for _, roles := range GetRoleSetsForCookieKey(AddPetOperation) {
+//		if hasAllRoles(user, roles) {
+//			return ctx, nil
+//		}
+//	}
+//
+// Note that if an operation has security requirements combining multiple securities,
+// checking sets of a single security alone is not enough to decide whether
+// a requirement is satisfied.
+//
+// Returns nil if the operation is unknown or does not use this security.
+func GetRoleSetsForCookieKey(operation string) [][]string {
+	sets, ok := operationRoleSetsCookieKey[operation]
+	if !ok {
+		return nil
+	}
+	// Return a copy to prevent external modification
+	result := make([][]string, len(sets))
+	for i, set := range sets {
+		result[i] = make([]string, len(set))
+		copy(result[i], set)
+	}
+	return result
+}
+
 // GetRolesForCookieKey returns the required roles for the given operation.
 //
 // This is useful for authorization scenarios where you need to know which roles
@@ -126,6 +287,50 @@ var operationRolesCustom = map[string][]string{
 	CustomSecurityOperation: []string{},
 }
 
+// operationRoleSetsCustom is a private map storing role sets per operation.
+var operationRoleSetsCustom = map[string][][]string{
+	CustomSecurityOperation: {
+		{},
+	},
+}
+
+// GetRoleSetsForCustom returns the alternative role sets for the given operation.
+//
+// Each element corresponds to one security requirement of the operation that uses
+// this security, in the order they are defined in the spec. A caller is sufficient
+// for the requirement if it has all roles of any one set (logical OR between sets,
+// logical AND within a set). An empty set means that no roles are required.
+//
+// Unlike GetRolesForCustom, which merges all roles into a single list,
+// this function preserves the AND/OR relationship between roles.
+//
+// Example:
+//
+//	for _, roles := range GetRoleSetsForCustom(AddPetOperation) {
+//		if hasAllRoles(user, roles) {
+//			return ctx, nil
+//		}
+//	}
+//
+// Note that if an operation has security requirements combining multiple securities,
+// checking sets of a single security alone is not enough to decide whether
+// a requirement is satisfied.
+//
+// Returns nil if the operation is unknown or does not use this security.
+func GetRoleSetsForCustom(operation string) [][]string {
+	sets, ok := operationRoleSetsCustom[operation]
+	if !ok {
+		return nil
+	}
+	// Return a copy to prevent external modification
+	result := make([][]string, len(sets))
+	for i, set := range sets {
+		result[i] = make([]string, len(set))
+		copy(result[i], set)
+	}
+	return result
+}
+
 // GetRolesForCustom returns the required roles for the given operation.
 //
 // This is useful for authorization scenarios where you need to know which roles
@@ -149,8 +354,60 @@ func GetRolesForCustom(operation string) []string {
 
 // operationRolesHeaderKey is a private map storing roles per operation.
 var operationRolesHeaderKey = map[string][]string{
-	DisjointSecurityOperation:  []string{},
-	IntersectSecurityOperation: []string{},
+	DisjointSecurityOperation:    []string{},
+	IntersectSecurityOperation:   []string{},
+	MixedScopesSecurityOperation: []string{},
+}
+
+// operationRoleSetsHeaderKey is a private map storing role sets per operation.
+var operationRoleSetsHeaderKey = map[string][][]string{
+	DisjointSecurityOperation: {
+		{},
+	},
+	IntersectSecurityOperation: {
+		{},
+		{},
+	},
+	MixedScopesSecurityOperation: {
+		{},
+	},
+}
+
+// GetRoleSetsForHeaderKey returns the alternative role sets for the given operation.
+//
+// Each element corresponds to one security requirement of the operation that uses
+// this security, in the order they are defined in the spec. A caller is sufficient
+// for the requirement if it has all roles of any one set (logical OR between sets,
+// logical AND within a set). An empty set means that no roles are required.
+//
+// Unlike GetRolesForHeaderKey, which merges all roles into a single list,
+// this function preserves the AND/OR relationship between roles.
+//
+// Example:
+//
+//	for _, roles := range GetRoleSetsForHeaderKey(AddPetOperation) {
+//		if hasAllRoles(user, roles) {
+//			return ctx, nil
+//		}
+//	}
+//
+// Note that if an operation has security requirements combining multiple securities,
+// checking sets of a single security alone is not enough to decide whether
+// a requirement is satisfied.
+//
+// Returns nil if the operation is unknown or does not use this security.
+func GetRoleSetsForHeaderKey(operation string) [][]string {
+	sets, ok := operationRoleSetsHeaderKey[operation]
+	if !ok {
+		return nil
+	}
+	// Return a copy to prevent external modification
+	result := make([][]string, len(sets))
+	for i, set := range sets {
+		result[i] = make([]string, len(set))
+		copy(result[i], set)
+	}
+	return result
 }
 
 // GetRolesForHeaderKey returns the required roles for the given operation.
@@ -180,6 +437,55 @@ var operationRolesQueryKey = map[string][]string{
 	OptionalSecurityOperation: []string{
 		"admin",
 	},
+}
+
+// operationRoleSetsQueryKey is a private map storing role sets per operation.
+var operationRoleSetsQueryKey = map[string][][]string{
+	DisjointSecurityOperation: {
+		{},
+	},
+	OptionalSecurityOperation: {
+		{
+			"admin",
+		},
+	},
+}
+
+// GetRoleSetsForQueryKey returns the alternative role sets for the given operation.
+//
+// Each element corresponds to one security requirement of the operation that uses
+// this security, in the order they are defined in the spec. A caller is sufficient
+// for the requirement if it has all roles of any one set (logical OR between sets,
+// logical AND within a set). An empty set means that no roles are required.
+//
+// Unlike GetRolesForQueryKey, which merges all roles into a single list,
+// this function preserves the AND/OR relationship between roles.
+//
+// Example:
+//
+//	for _, roles := range GetRoleSetsForQueryKey(AddPetOperation) {
+//		if hasAllRoles(user, roles) {
+//			return ctx, nil
+//		}
+//	}
+//
+// Note that if an operation has security requirements combining multiple securities,
+// checking sets of a single security alone is not enough to decide whether
+// a requirement is satisfied.
+//
+// Returns nil if the operation is unknown or does not use this security.
+func GetRoleSetsForQueryKey(operation string) [][]string {
+	sets, ok := operationRoleSetsQueryKey[operation]
+	if !ok {
+		return nil
+	}
+	// Return a copy to prevent external modification
+	result := make([][]string, len(sets))
+	for i, set := range sets {
+		result[i] = make([]string, len(set))
+		copy(result[i], set)
+	}
+	return result
 }
 
 // GetRolesForQueryKey returns the required roles for the given operation.

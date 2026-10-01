@@ -20,6 +20,12 @@ var (
 	rn4AllowedHeaders = map[string]string{
 		"GET": "Authorization,X-Api-Key",
 	}
+	rn5AllowedHeaders = map[string]string{
+		"GET": "Authorization,X-Api-Key",
+	}
+	rn8AllowedHeaders = map[string]string{
+		"GET": "Authorization",
+	}
 )
 
 func (s *Server) cutPrefix(path string) (string, bool) {
@@ -147,9 +153,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					return
 				}
 
-			case 'o': // Prefix: "optionalSecurity"
+			case 'm': // Prefix: "mixedScopesSecurity"
 
-				if l := len("optionalSecurity"); len(elem) >= l && elem[0:l] == "optionalSecurity" {
+				if l := len("mixedScopesSecurity"); len(elem) >= l && elem[0:l] == "mixedScopesSecurity" {
 					elem = elem[l:]
 				} else {
 					break
@@ -159,17 +165,81 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					// Leaf node.
 					switch r.Method {
 					case "GET":
-						s.handleOptionalSecurityRequest([0]string{}, elemIsEscaped, w, r)
+						s.handleMixedScopesSecurityRequest([0]string{}, elemIsEscaped, w, r)
 					default:
 						s.notAllowed(w, r, notAllowedParams{
 							allowedMethods: "GET",
-							allowedHeaders: nil,
+							allowedHeaders: rn5AllowedHeaders,
 							acceptPost:     "",
 							acceptPatch:    "",
 						})
 					}
 
 					return
+				}
+
+			case 'o': // Prefix: "o"
+
+				if l := len("o"); len(elem) >= l && elem[0:l] == "o" {
+					elem = elem[l:]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					break
+				}
+				switch elem[0] {
+				case 'p': // Prefix: "ptionalSecurity"
+
+					if l := len("ptionalSecurity"); len(elem) >= l && elem[0:l] == "ptionalSecurity" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						// Leaf node.
+						switch r.Method {
+						case "GET":
+							s.handleOptionalSecurityRequest([0]string{}, elemIsEscaped, w, r)
+						default:
+							s.notAllowed(w, r, notAllowedParams{
+								allowedMethods: "GET",
+								allowedHeaders: nil,
+								acceptPost:     "",
+								acceptPatch:    "",
+							})
+						}
+
+						return
+					}
+
+				case 'r': // Prefix: "rScopesSecurity"
+
+					if l := len("rScopesSecurity"); len(elem) >= l && elem[0:l] == "rScopesSecurity" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						// Leaf node.
+						switch r.Method {
+						case "GET":
+							s.handleOrScopesSecurityRequest([0]string{}, elemIsEscaped, w, r)
+						default:
+							s.notAllowed(w, r, notAllowedParams{
+								allowedMethods: "GET",
+								allowedHeaders: rn8AllowedHeaders,
+								acceptPost:     "",
+								acceptPatch:    "",
+							})
+						}
+
+						return
+					}
+
 				}
 
 			}
@@ -347,9 +417,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					}
 				}
 
-			case 'o': // Prefix: "optionalSecurity"
+			case 'm': // Prefix: "mixedScopesSecurity"
 
-				if l := len("optionalSecurity"); len(elem) >= l && elem[0:l] == "optionalSecurity" {
+				if l := len("mixedScopesSecurity"); len(elem) >= l && elem[0:l] == "mixedScopesSecurity" {
 					elem = elem[l:]
 				} else {
 					break
@@ -359,17 +429,81 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					// Leaf node.
 					switch method {
 					case "GET":
-						r.name = OptionalSecurityOperation
+						r.name = MixedScopesSecurityOperation
 						r.summary = ""
-						r.operationID = "optionalSecurity"
+						r.operationID = "mixedScopesSecurity"
 						r.operationGroup = ""
-						r.pathPattern = "/optionalSecurity"
+						r.pathPattern = "/mixedScopesSecurity"
 						r.args = args
 						r.count = 0
 						return r, true
 					default:
 						return
 					}
+				}
+
+			case 'o': // Prefix: "o"
+
+				if l := len("o"); len(elem) >= l && elem[0:l] == "o" {
+					elem = elem[l:]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					break
+				}
+				switch elem[0] {
+				case 'p': // Prefix: "ptionalSecurity"
+
+					if l := len("ptionalSecurity"); len(elem) >= l && elem[0:l] == "ptionalSecurity" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						// Leaf node.
+						switch method {
+						case "GET":
+							r.name = OptionalSecurityOperation
+							r.summary = ""
+							r.operationID = "optionalSecurity"
+							r.operationGroup = ""
+							r.pathPattern = "/optionalSecurity"
+							r.args = args
+							r.count = 0
+							return r, true
+						default:
+							return
+						}
+					}
+
+				case 'r': // Prefix: "rScopesSecurity"
+
+					if l := len("rScopesSecurity"); len(elem) >= l && elem[0:l] == "rScopesSecurity" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						// Leaf node.
+						switch method {
+						case "GET":
+							r.name = OrScopesSecurityOperation
+							r.summary = ""
+							r.operationID = "orScopesSecurity"
+							r.operationGroup = ""
+							r.pathPattern = "/orScopesSecurity"
+							r.args = args
+							r.count = 0
+							return r, true
+						default:
+							return
+						}
+					}
+
 				}
 
 			}

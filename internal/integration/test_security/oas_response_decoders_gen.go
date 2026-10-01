@@ -35,11 +35,29 @@ func decodeIntersectSecurityResponse(resp *http.Response) (res *IntersectSecurit
 	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
+func decodeMixedScopesSecurityResponse(resp *http.Response) (res *MixedScopesSecurityOK, _ error) {
+	switch resp.StatusCode {
+	case 200:
+		// Code 200.
+		return &MixedScopesSecurityOK{}, nil
+	}
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
+}
+
 func decodeOptionalSecurityResponse(resp *http.Response) (res *OptionalSecurityOK, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
 		return &OptionalSecurityOK{}, nil
+	}
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
+}
+
+func decodeOrScopesSecurityResponse(resp *http.Response) (res *OrScopesSecurityOK, _ error) {
+	switch resp.StatusCode {
+	case 200:
+		// Code 200.
+		return &OrScopesSecurityOK{}, nil
 	}
 	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }

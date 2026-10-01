@@ -151,8 +151,14 @@ func (s *HeaderKey) SetRoles(val []string) {
 // IntersectSecurityOK is response for IntersectSecurity operation.
 type IntersectSecurityOK struct{}
 
+// MixedScopesSecurityOK is response for MixedScopesSecurity operation.
+type MixedScopesSecurityOK struct{}
+
 // OptionalSecurityOK is response for OptionalSecurity operation.
 type OptionalSecurityOK struct{}
+
+// OrScopesSecurityOK is response for OrScopesSecurity operation.
+type OrScopesSecurityOK struct{}
 
 type QueryKey struct {
 	APIKey string

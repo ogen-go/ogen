@@ -48,6 +48,67 @@ var oauth2ScopesOAuth2 = map[string][]string{
 	},
 }
 
+// oauth2ScopeSetsOAuth2 is a private map storing OAuth2 scope sets per operation.
+var oauth2ScopeSetsOAuth2 = map[string][][]string{
+	AddPetOperation: {
+		{
+			"admin",
+		},
+	},
+	DeletePetOperation: {
+		{
+			"admin",
+		},
+	},
+	FindPetByIDOperation: {
+		{
+			"user",
+		},
+	},
+	FindPetsOperation: {
+		{
+			"user",
+		},
+	},
+}
+
+// GetOAuth2ScopeSetsForOAuth2 returns the alternative OAuth2 scope sets for the given operation.
+//
+// Each element corresponds to one security requirement of the operation that uses
+// this security, in the order they are defined in the spec. A token is sufficient
+// for the requirement if it has all scopes of any one set (logical OR between sets,
+// logical AND within a set). An empty set means that no scopes are required.
+//
+// Unlike GetOAuth2ScopesForOAuth2, which merges all scopes into a single list,
+// this function preserves the AND/OR relationship between scopes.
+//
+// Example:
+//
+//	for _, scopes := range GetOAuth2ScopeSetsForOAuth2(AddPetOperation) {
+//		if hasAllScopes(token, scopes) {
+//			return ctx, nil
+//		}
+//	}
+//
+// Note that if an operation has security requirements combining multiple securities,
+// checking sets of a single security alone is not enough to decide whether
+// a requirement is satisfied.
+//
+// Returns nil if the operation is unknown or does not use this security.
+func GetOAuth2ScopeSetsForOAuth2(operation string) [][]string {
+	sets, ok := oauth2ScopeSetsOAuth2[operation]
+	if !ok {
+		return nil
+	}
+	// Return a copy to prevent external modification
+	result := make([][]string, len(sets))
+	for i, set := range sets {
+		result[i] = make([]string, len(set))
+		copy(result[i], set)
+	}
+	return result
+}
+
 // GetOAuth2ScopesForOAuth2 returns the required OAuth2 scopes for the given operation.
 //
 // This is useful for token exchange scenarios where you need to know which scopes

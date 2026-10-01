@@ -6,8 +6,10 @@ package api
 type OperationName = string
 
 const (
-	CustomSecurityOperation    OperationName = "CustomSecurity"
-	DisjointSecurityOperation  OperationName = "DisjointSecurity"
-	IntersectSecurityOperation OperationName = "IntersectSecurity"
-	OptionalSecurityOperation  OperationName = "OptionalSecurity"
+	CustomSecurityOperation      OperationName = "CustomSecurity"
+	DisjointSecurityOperation    OperationName = "DisjointSecurity"
+	IntersectSecurityOperation   OperationName = "IntersectSecurity"
+	MixedScopesSecurityOperation OperationName = "MixedScopesSecurity"
+	OptionalSecurityOperation    OperationName = "OptionalSecurity"
+	OrScopesSecurityOperation    OperationName = "OrScopesSecurity"
 )

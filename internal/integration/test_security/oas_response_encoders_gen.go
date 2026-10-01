@@ -26,7 +26,19 @@ func encodeIntersectSecurityResponse(response *IntersectSecurityOK, w http.Respo
 	return nil
 }
 
+func encodeMixedScopesSecurityResponse(response *MixedScopesSecurityOK, w http.ResponseWriter, span trace.Span) error {
+	w.WriteHeader(200)
+
+	return nil
+}
+
 func encodeOptionalSecurityResponse(response *OptionalSecurityOK, w http.ResponseWriter, span trace.Span) error {
+	w.WriteHeader(200)
+
+	return nil
+}
+
+func encodeOrScopesSecurityResponse(response *OrScopesSecurityOK, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(200)
 
 	return nil

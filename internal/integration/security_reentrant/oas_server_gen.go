@@ -20,10 +20,18 @@ type Handler interface {
 	//
 	// GET /intersectSecurity
 	IntersectSecurity(ctx context.Context) error
+	// MixedScopesSecurity implements mixedScopesSecurity operation.
+	//
+	// GET /mixedScopesSecurity
+	MixedScopesSecurity(ctx context.Context) error
 	// OptionalSecurity implements optionalSecurity operation.
 	//
 	// GET /optionalSecurity
 	OptionalSecurity(ctx context.Context) error
+	// OrScopesSecurity implements orScopesSecurity operation.
+	//
+	// GET /orScopesSecurity
+	OrScopesSecurity(ctx context.Context) error
 }
 
 // Server implements http server based on OpenAPI v3 specification and

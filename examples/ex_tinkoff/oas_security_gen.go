@@ -57,6 +57,110 @@ var operationRolesSSOAuth = map[string][]string{
 	UserAccountsGetOperation:              []string{},
 }
 
+// operationRoleSetsSSOAuth is a private map storing role sets per operation.
+var operationRoleSetsSSOAuth = map[string][][]string{
+	MarketBondsGetOperation: {
+		{},
+	},
+	MarketCandlesGetOperation: {
+		{},
+	},
+	MarketCurrenciesGetOperation: {
+		{},
+	},
+	MarketEtfsGetOperation: {
+		{},
+	},
+	MarketOrderbookGetOperation: {
+		{},
+	},
+	MarketSearchByFigiGetOperation: {
+		{},
+	},
+	MarketSearchByTickerGetOperation: {
+		{},
+	},
+	MarketStocksGetOperation: {
+		{},
+	},
+	OperationsGetOperation: {
+		{},
+	},
+	OrdersCancelPostOperation: {
+		{},
+	},
+	OrdersGetOperation: {
+		{},
+	},
+	OrdersLimitOrderPostOperation: {
+		{},
+	},
+	OrdersMarketOrderPostOperation: {
+		{},
+	},
+	PortfolioCurrenciesGetOperation: {
+		{},
+	},
+	PortfolioGetOperation: {
+		{},
+	},
+	SandboxClearPostOperation: {
+		{},
+	},
+	SandboxCurrenciesBalancePostOperation: {
+		{},
+	},
+	SandboxPositionsBalancePostOperation: {
+		{},
+	},
+	SandboxRegisterPostOperation: {
+		{},
+	},
+	SandboxRemovePostOperation: {
+		{},
+	},
+	UserAccountsGetOperation: {
+		{},
+	},
+}
+
+// GetRoleSetsForSSOAuth returns the alternative role sets for the given operation.
+//
+// Each element corresponds to one security requirement of the operation that uses
+// this security, in the order they are defined in the spec. A caller is sufficient
+// for the requirement if it has all roles of any one set (logical OR between sets,
+// logical AND within a set). An empty set means that no roles are required.
+//
+// Unlike GetRolesForSSOAuth, which merges all roles into a single list,
+// this function preserves the AND/OR relationship between roles.
+//
+// Example:
+//
+//	for _, roles := range GetRoleSetsForSSOAuth(AddPetOperation) {
+//		if hasAllRoles(user, roles) {
+//			return ctx, nil
+//		}
+//	}
+//
+// Note that if an operation has security requirements combining multiple securities,
+// checking sets of a single security alone is not enough to decide whether
+// a requirement is satisfied.
+//
+// Returns nil if the operation is unknown or does not use this security.
+func GetRoleSetsForSSOAuth(operation string) [][]string {
+	sets, ok := operationRoleSetsSSOAuth[operation]
+	if !ok {
+		return nil
+	}
+	// Return a copy to prevent external modification
+	result := make([][]string, len(sets))
+	for i, set := range sets {
+		result[i] = make([]string, len(set))
+		copy(result[i], set)
+	}
+	return result
+}
+
 // GetRolesForSSOAuth returns the required roles for the given operation.
 //
 // This is useful for authorization scenarios where you need to know which roles

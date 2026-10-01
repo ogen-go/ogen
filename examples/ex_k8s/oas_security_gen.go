@@ -596,6 +596,1724 @@ var operationRolesBearerToken = map[string][]string{
 	WatchStorageV1beta1NamespacedCSIStorageCapacityListOperation:                []string{},
 }
 
+// operationRoleSetsBearerToken is a private map storing role sets per operation.
+var operationRoleSetsBearerToken = map[string][][]string{
+	ConnectCoreV1DeleteNamespacedPodProxyOperation: {
+		{},
+	},
+	ConnectCoreV1DeleteNamespacedPodProxyWithPathOperation: {
+		{},
+	},
+	ConnectCoreV1DeleteNamespacedServiceProxyOperation: {
+		{},
+	},
+	ConnectCoreV1DeleteNamespacedServiceProxyWithPathOperation: {
+		{},
+	},
+	ConnectCoreV1DeleteNodeProxyOperation: {
+		{},
+	},
+	ConnectCoreV1DeleteNodeProxyWithPathOperation: {
+		{},
+	},
+	ConnectCoreV1GetNamespacedPodAttachOperation: {
+		{},
+	},
+	ConnectCoreV1GetNamespacedPodExecOperation: {
+		{},
+	},
+	ConnectCoreV1GetNamespacedPodPortforwardOperation: {
+		{},
+	},
+	ConnectCoreV1GetNamespacedPodProxyOperation: {
+		{},
+	},
+	ConnectCoreV1GetNamespacedPodProxyWithPathOperation: {
+		{},
+	},
+	ConnectCoreV1GetNamespacedServiceProxyOperation: {
+		{},
+	},
+	ConnectCoreV1GetNamespacedServiceProxyWithPathOperation: {
+		{},
+	},
+	ConnectCoreV1GetNodeProxyOperation: {
+		{},
+	},
+	ConnectCoreV1GetNodeProxyWithPathOperation: {
+		{},
+	},
+	ConnectCoreV1HeadNamespacedPodProxyOperation: {
+		{},
+	},
+	ConnectCoreV1HeadNamespacedPodProxyWithPathOperation: {
+		{},
+	},
+	ConnectCoreV1HeadNamespacedServiceProxyOperation: {
+		{},
+	},
+	ConnectCoreV1HeadNamespacedServiceProxyWithPathOperation: {
+		{},
+	},
+	ConnectCoreV1HeadNodeProxyOperation: {
+		{},
+	},
+	ConnectCoreV1HeadNodeProxyWithPathOperation: {
+		{},
+	},
+	ConnectCoreV1OptionsNamespacedPodProxyOperation: {
+		{},
+	},
+	ConnectCoreV1OptionsNamespacedPodProxyWithPathOperation: {
+		{},
+	},
+	ConnectCoreV1OptionsNamespacedServiceProxyOperation: {
+		{},
+	},
+	ConnectCoreV1OptionsNamespacedServiceProxyWithPathOperation: {
+		{},
+	},
+	ConnectCoreV1OptionsNodeProxyOperation: {
+		{},
+	},
+	ConnectCoreV1OptionsNodeProxyWithPathOperation: {
+		{},
+	},
+	ConnectCoreV1PatchNamespacedPodProxyOperation: {
+		{},
+	},
+	ConnectCoreV1PatchNamespacedPodProxyWithPathOperation: {
+		{},
+	},
+	ConnectCoreV1PatchNamespacedServiceProxyOperation: {
+		{},
+	},
+	ConnectCoreV1PatchNamespacedServiceProxyWithPathOperation: {
+		{},
+	},
+	ConnectCoreV1PatchNodeProxyOperation: {
+		{},
+	},
+	ConnectCoreV1PatchNodeProxyWithPathOperation: {
+		{},
+	},
+	ConnectCoreV1PostNamespacedPodAttachOperation: {
+		{},
+	},
+	ConnectCoreV1PostNamespacedPodExecOperation: {
+		{},
+	},
+	ConnectCoreV1PostNamespacedPodPortforwardOperation: {
+		{},
+	},
+	ConnectCoreV1PostNamespacedPodProxyOperation: {
+		{},
+	},
+	ConnectCoreV1PostNamespacedPodProxyWithPathOperation: {
+		{},
+	},
+	ConnectCoreV1PostNamespacedServiceProxyOperation: {
+		{},
+	},
+	ConnectCoreV1PostNamespacedServiceProxyWithPathOperation: {
+		{},
+	},
+	ConnectCoreV1PostNodeProxyOperation: {
+		{},
+	},
+	ConnectCoreV1PostNodeProxyWithPathOperation: {
+		{},
+	},
+	ConnectCoreV1PutNamespacedPodProxyOperation: {
+		{},
+	},
+	ConnectCoreV1PutNamespacedPodProxyWithPathOperation: {
+		{},
+	},
+	ConnectCoreV1PutNamespacedServiceProxyOperation: {
+		{},
+	},
+	ConnectCoreV1PutNamespacedServiceProxyWithPathOperation: {
+		{},
+	},
+	ConnectCoreV1PutNodeProxyOperation: {
+		{},
+	},
+	ConnectCoreV1PutNodeProxyWithPathOperation: {
+		{},
+	},
+	GetAPIVersionsOperation: {
+		{},
+	},
+	GetAdmissionregistrationAPIGroupOperation: {
+		{},
+	},
+	GetAdmissionregistrationV1APIResourcesOperation: {
+		{},
+	},
+	GetApiextensionsAPIGroupOperation: {
+		{},
+	},
+	GetApiextensionsV1APIResourcesOperation: {
+		{},
+	},
+	GetApiregistrationAPIGroupOperation: {
+		{},
+	},
+	GetApiregistrationV1APIResourcesOperation: {
+		{},
+	},
+	GetAppsAPIGroupOperation: {
+		{},
+	},
+	GetAppsV1APIResourcesOperation: {
+		{},
+	},
+	GetAuthenticationAPIGroupOperation: {
+		{},
+	},
+	GetAuthenticationV1APIResourcesOperation: {
+		{},
+	},
+	GetAuthorizationAPIGroupOperation: {
+		{},
+	},
+	GetAuthorizationV1APIResourcesOperation: {
+		{},
+	},
+	GetAutoscalingAPIGroupOperation: {
+		{},
+	},
+	GetAutoscalingV1APIResourcesOperation: {
+		{},
+	},
+	GetAutoscalingV2beta1APIResourcesOperation: {
+		{},
+	},
+	GetAutoscalingV2beta2APIResourcesOperation: {
+		{},
+	},
+	GetBatchAPIGroupOperation: {
+		{},
+	},
+	GetBatchV1APIResourcesOperation: {
+		{},
+	},
+	GetBatchV1beta1APIResourcesOperation: {
+		{},
+	},
+	GetCertificatesAPIGroupOperation: {
+		{},
+	},
+	GetCertificatesV1APIResourcesOperation: {
+		{},
+	},
+	GetCodeVersionOperation: {
+		{},
+	},
+	GetCoordinationAPIGroupOperation: {
+		{},
+	},
+	GetCoordinationV1APIResourcesOperation: {
+		{},
+	},
+	GetCoreAPIVersionsOperation: {
+		{},
+	},
+	GetCoreV1APIResourcesOperation: {
+		{},
+	},
+	GetDiscoveryAPIGroupOperation: {
+		{},
+	},
+	GetDiscoveryV1APIResourcesOperation: {
+		{},
+	},
+	GetDiscoveryV1beta1APIResourcesOperation: {
+		{},
+	},
+	GetEventsAPIGroupOperation: {
+		{},
+	},
+	GetEventsV1APIResourcesOperation: {
+		{},
+	},
+	GetEventsV1beta1APIResourcesOperation: {
+		{},
+	},
+	GetFlowcontrolApiserverAPIGroupOperation: {
+		{},
+	},
+	GetFlowcontrolApiserverV1beta1APIResourcesOperation: {
+		{},
+	},
+	GetFlowcontrolApiserverV1beta2APIResourcesOperation: {
+		{},
+	},
+	GetInternalApiserverAPIGroupOperation: {
+		{},
+	},
+	GetInternalApiserverV1alpha1APIResourcesOperation: {
+		{},
+	},
+	GetNetworkingAPIGroupOperation: {
+		{},
+	},
+	GetNetworkingV1APIResourcesOperation: {
+		{},
+	},
+	GetNodeAPIGroupOperation: {
+		{},
+	},
+	GetNodeV1APIResourcesOperation: {
+		{},
+	},
+	GetNodeV1alpha1APIResourcesOperation: {
+		{},
+	},
+	GetNodeV1beta1APIResourcesOperation: {
+		{},
+	},
+	GetPolicyAPIGroupOperation: {
+		{},
+	},
+	GetPolicyV1APIResourcesOperation: {
+		{},
+	},
+	GetPolicyV1beta1APIResourcesOperation: {
+		{},
+	},
+	GetRbacAuthorizationAPIGroupOperation: {
+		{},
+	},
+	GetRbacAuthorizationV1APIResourcesOperation: {
+		{},
+	},
+	GetSchedulingAPIGroupOperation: {
+		{},
+	},
+	GetSchedulingV1APIResourcesOperation: {
+		{},
+	},
+	GetServiceAccountIssuerOpenIDConfigurationOperation: {
+		{},
+	},
+	GetServiceAccountIssuerOpenIDKeysetOperation: {
+		{},
+	},
+	GetStorageAPIGroupOperation: {
+		{},
+	},
+	GetStorageV1APIResourcesOperation: {
+		{},
+	},
+	GetStorageV1alpha1APIResourcesOperation: {
+		{},
+	},
+	GetStorageV1beta1APIResourcesOperation: {
+		{},
+	},
+	ListAdmissionregistrationV1MutatingWebhookConfigurationOperation: {
+		{},
+	},
+	ListAdmissionregistrationV1ValidatingWebhookConfigurationOperation: {
+		{},
+	},
+	ListApiextensionsV1CustomResourceDefinitionOperation: {
+		{},
+	},
+	ListApiregistrationV1APIServiceOperation: {
+		{},
+	},
+	ListAppsV1ControllerRevisionForAllNamespacesOperation: {
+		{},
+	},
+	ListAppsV1DaemonSetForAllNamespacesOperation: {
+		{},
+	},
+	ListAppsV1DeploymentForAllNamespacesOperation: {
+		{},
+	},
+	ListAppsV1NamespacedControllerRevisionOperation: {
+		{},
+	},
+	ListAppsV1NamespacedDaemonSetOperation: {
+		{},
+	},
+	ListAppsV1NamespacedDeploymentOperation: {
+		{},
+	},
+	ListAppsV1NamespacedReplicaSetOperation: {
+		{},
+	},
+	ListAppsV1NamespacedStatefulSetOperation: {
+		{},
+	},
+	ListAppsV1ReplicaSetForAllNamespacesOperation: {
+		{},
+	},
+	ListAppsV1StatefulSetForAllNamespacesOperation: {
+		{},
+	},
+	ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesOperation: {
+		{},
+	},
+	ListAutoscalingV1NamespacedHorizontalPodAutoscalerOperation: {
+		{},
+	},
+	ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesOperation: {
+		{},
+	},
+	ListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerOperation: {
+		{},
+	},
+	ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesOperation: {
+		{},
+	},
+	ListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerOperation: {
+		{},
+	},
+	ListBatchV1CronJobForAllNamespacesOperation: {
+		{},
+	},
+	ListBatchV1JobForAllNamespacesOperation: {
+		{},
+	},
+	ListBatchV1NamespacedCronJobOperation: {
+		{},
+	},
+	ListBatchV1NamespacedJobOperation: {
+		{},
+	},
+	ListBatchV1beta1CronJobForAllNamespacesOperation: {
+		{},
+	},
+	ListBatchV1beta1NamespacedCronJobOperation: {
+		{},
+	},
+	ListCertificatesV1CertificateSigningRequestOperation: {
+		{},
+	},
+	ListCoordinationV1LeaseForAllNamespacesOperation: {
+		{},
+	},
+	ListCoordinationV1NamespacedLeaseOperation: {
+		{},
+	},
+	ListCoreV1ComponentStatusOperation: {
+		{},
+	},
+	ListCoreV1ConfigMapForAllNamespacesOperation: {
+		{},
+	},
+	ListCoreV1EndpointsForAllNamespacesOperation: {
+		{},
+	},
+	ListCoreV1EventForAllNamespacesOperation: {
+		{},
+	},
+	ListCoreV1LimitRangeForAllNamespacesOperation: {
+		{},
+	},
+	ListCoreV1NamespaceOperation: {
+		{},
+	},
+	ListCoreV1NamespacedConfigMapOperation: {
+		{},
+	},
+	ListCoreV1NamespacedEndpointsOperation: {
+		{},
+	},
+	ListCoreV1NamespacedEventOperation: {
+		{},
+	},
+	ListCoreV1NamespacedLimitRangeOperation: {
+		{},
+	},
+	ListCoreV1NamespacedPersistentVolumeClaimOperation: {
+		{},
+	},
+	ListCoreV1NamespacedPodOperation: {
+		{},
+	},
+	ListCoreV1NamespacedPodTemplateOperation: {
+		{},
+	},
+	ListCoreV1NamespacedReplicationControllerOperation: {
+		{},
+	},
+	ListCoreV1NamespacedResourceQuotaOperation: {
+		{},
+	},
+	ListCoreV1NamespacedSecretOperation: {
+		{},
+	},
+	ListCoreV1NamespacedServiceOperation: {
+		{},
+	},
+	ListCoreV1NamespacedServiceAccountOperation: {
+		{},
+	},
+	ListCoreV1NodeOperation: {
+		{},
+	},
+	ListCoreV1PersistentVolumeOperation: {
+		{},
+	},
+	ListCoreV1PersistentVolumeClaimForAllNamespacesOperation: {
+		{},
+	},
+	ListCoreV1PodForAllNamespacesOperation: {
+		{},
+	},
+	ListCoreV1PodTemplateForAllNamespacesOperation: {
+		{},
+	},
+	ListCoreV1ReplicationControllerForAllNamespacesOperation: {
+		{},
+	},
+	ListCoreV1ResourceQuotaForAllNamespacesOperation: {
+		{},
+	},
+	ListCoreV1SecretForAllNamespacesOperation: {
+		{},
+	},
+	ListCoreV1ServiceAccountForAllNamespacesOperation: {
+		{},
+	},
+	ListCoreV1ServiceForAllNamespacesOperation: {
+		{},
+	},
+	ListDiscoveryV1EndpointSliceForAllNamespacesOperation: {
+		{},
+	},
+	ListDiscoveryV1NamespacedEndpointSliceOperation: {
+		{},
+	},
+	ListDiscoveryV1beta1EndpointSliceForAllNamespacesOperation: {
+		{},
+	},
+	ListDiscoveryV1beta1NamespacedEndpointSliceOperation: {
+		{},
+	},
+	ListEventsV1EventForAllNamespacesOperation: {
+		{},
+	},
+	ListEventsV1NamespacedEventOperation: {
+		{},
+	},
+	ListEventsV1beta1EventForAllNamespacesOperation: {
+		{},
+	},
+	ListEventsV1beta1NamespacedEventOperation: {
+		{},
+	},
+	ListFlowcontrolApiserverV1beta1FlowSchemaOperation: {
+		{},
+	},
+	ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationOperation: {
+		{},
+	},
+	ListFlowcontrolApiserverV1beta2FlowSchemaOperation: {
+		{},
+	},
+	ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationOperation: {
+		{},
+	},
+	ListInternalApiserverV1alpha1StorageVersionOperation: {
+		{},
+	},
+	ListNetworkingV1IngressClassOperation: {
+		{},
+	},
+	ListNetworkingV1IngressForAllNamespacesOperation: {
+		{},
+	},
+	ListNetworkingV1NamespacedIngressOperation: {
+		{},
+	},
+	ListNetworkingV1NamespacedNetworkPolicyOperation: {
+		{},
+	},
+	ListNetworkingV1NetworkPolicyForAllNamespacesOperation: {
+		{},
+	},
+	ListNodeV1RuntimeClassOperation: {
+		{},
+	},
+	ListNodeV1alpha1RuntimeClassOperation: {
+		{},
+	},
+	ListNodeV1beta1RuntimeClassOperation: {
+		{},
+	},
+	ListPolicyV1NamespacedPodDisruptionBudgetOperation: {
+		{},
+	},
+	ListPolicyV1PodDisruptionBudgetForAllNamespacesOperation: {
+		{},
+	},
+	ListPolicyV1beta1NamespacedPodDisruptionBudgetOperation: {
+		{},
+	},
+	ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesOperation: {
+		{},
+	},
+	ListPolicyV1beta1PodSecurityPolicyOperation: {
+		{},
+	},
+	ListRbacAuthorizationV1ClusterRoleOperation: {
+		{},
+	},
+	ListRbacAuthorizationV1ClusterRoleBindingOperation: {
+		{},
+	},
+	ListRbacAuthorizationV1NamespacedRoleOperation: {
+		{},
+	},
+	ListRbacAuthorizationV1NamespacedRoleBindingOperation: {
+		{},
+	},
+	ListRbacAuthorizationV1RoleBindingForAllNamespacesOperation: {
+		{},
+	},
+	ListRbacAuthorizationV1RoleForAllNamespacesOperation: {
+		{},
+	},
+	ListSchedulingV1PriorityClassOperation: {
+		{},
+	},
+	ListStorageV1CSIDriverOperation: {
+		{},
+	},
+	ListStorageV1CSINodeOperation: {
+		{},
+	},
+	ListStorageV1StorageClassOperation: {
+		{},
+	},
+	ListStorageV1VolumeAttachmentOperation: {
+		{},
+	},
+	ListStorageV1alpha1CSIStorageCapacityForAllNamespacesOperation: {
+		{},
+	},
+	ListStorageV1alpha1NamespacedCSIStorageCapacityOperation: {
+		{},
+	},
+	ListStorageV1beta1CSIStorageCapacityForAllNamespacesOperation: {
+		{},
+	},
+	ListStorageV1beta1NamespacedCSIStorageCapacityOperation: {
+		{},
+	},
+	LogFileHandlerOperation: {
+		{},
+	},
+	LogFileListHandlerOperation: {
+		{},
+	},
+	PatchAdmissionregistrationV1MutatingWebhookConfigurationOperation: {
+		{},
+	},
+	PatchAdmissionregistrationV1ValidatingWebhookConfigurationOperation: {
+		{},
+	},
+	PatchApiextensionsV1CustomResourceDefinitionOperation: {
+		{},
+	},
+	PatchApiextensionsV1CustomResourceDefinitionStatusOperation: {
+		{},
+	},
+	PatchApiregistrationV1APIServiceOperation: {
+		{},
+	},
+	PatchApiregistrationV1APIServiceStatusOperation: {
+		{},
+	},
+	PatchAppsV1NamespacedControllerRevisionOperation: {
+		{},
+	},
+	PatchAppsV1NamespacedDaemonSetOperation: {
+		{},
+	},
+	PatchAppsV1NamespacedDaemonSetStatusOperation: {
+		{},
+	},
+	PatchAppsV1NamespacedDeploymentOperation: {
+		{},
+	},
+	PatchAppsV1NamespacedDeploymentScaleOperation: {
+		{},
+	},
+	PatchAppsV1NamespacedDeploymentStatusOperation: {
+		{},
+	},
+	PatchAppsV1NamespacedReplicaSetOperation: {
+		{},
+	},
+	PatchAppsV1NamespacedReplicaSetScaleOperation: {
+		{},
+	},
+	PatchAppsV1NamespacedReplicaSetStatusOperation: {
+		{},
+	},
+	PatchAppsV1NamespacedStatefulSetOperation: {
+		{},
+	},
+	PatchAppsV1NamespacedStatefulSetScaleOperation: {
+		{},
+	},
+	PatchAppsV1NamespacedStatefulSetStatusOperation: {
+		{},
+	},
+	PatchAutoscalingV1NamespacedHorizontalPodAutoscalerOperation: {
+		{},
+	},
+	PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusOperation: {
+		{},
+	},
+	PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerOperation: {
+		{},
+	},
+	PatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusOperation: {
+		{},
+	},
+	PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerOperation: {
+		{},
+	},
+	PatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusOperation: {
+		{},
+	},
+	PatchBatchV1NamespacedCronJobOperation: {
+		{},
+	},
+	PatchBatchV1NamespacedCronJobStatusOperation: {
+		{},
+	},
+	PatchBatchV1NamespacedJobOperation: {
+		{},
+	},
+	PatchBatchV1NamespacedJobStatusOperation: {
+		{},
+	},
+	PatchBatchV1beta1NamespacedCronJobOperation: {
+		{},
+	},
+	PatchBatchV1beta1NamespacedCronJobStatusOperation: {
+		{},
+	},
+	PatchCertificatesV1CertificateSigningRequestOperation: {
+		{},
+	},
+	PatchCertificatesV1CertificateSigningRequestApprovalOperation: {
+		{},
+	},
+	PatchCertificatesV1CertificateSigningRequestStatusOperation: {
+		{},
+	},
+	PatchCoordinationV1NamespacedLeaseOperation: {
+		{},
+	},
+	PatchCoreV1NamespaceOperation: {
+		{},
+	},
+	PatchCoreV1NamespaceStatusOperation: {
+		{},
+	},
+	PatchCoreV1NamespacedConfigMapOperation: {
+		{},
+	},
+	PatchCoreV1NamespacedEndpointsOperation: {
+		{},
+	},
+	PatchCoreV1NamespacedEventOperation: {
+		{},
+	},
+	PatchCoreV1NamespacedLimitRangeOperation: {
+		{},
+	},
+	PatchCoreV1NamespacedPersistentVolumeClaimOperation: {
+		{},
+	},
+	PatchCoreV1NamespacedPersistentVolumeClaimStatusOperation: {
+		{},
+	},
+	PatchCoreV1NamespacedPodOperation: {
+		{},
+	},
+	PatchCoreV1NamespacedPodEphemeralcontainersOperation: {
+		{},
+	},
+	PatchCoreV1NamespacedPodStatusOperation: {
+		{},
+	},
+	PatchCoreV1NamespacedPodTemplateOperation: {
+		{},
+	},
+	PatchCoreV1NamespacedReplicationControllerOperation: {
+		{},
+	},
+	PatchCoreV1NamespacedReplicationControllerScaleOperation: {
+		{},
+	},
+	PatchCoreV1NamespacedReplicationControllerStatusOperation: {
+		{},
+	},
+	PatchCoreV1NamespacedResourceQuotaOperation: {
+		{},
+	},
+	PatchCoreV1NamespacedResourceQuotaStatusOperation: {
+		{},
+	},
+	PatchCoreV1NamespacedSecretOperation: {
+		{},
+	},
+	PatchCoreV1NamespacedServiceOperation: {
+		{},
+	},
+	PatchCoreV1NamespacedServiceAccountOperation: {
+		{},
+	},
+	PatchCoreV1NamespacedServiceStatusOperation: {
+		{},
+	},
+	PatchCoreV1NodeOperation: {
+		{},
+	},
+	PatchCoreV1NodeStatusOperation: {
+		{},
+	},
+	PatchCoreV1PersistentVolumeOperation: {
+		{},
+	},
+	PatchCoreV1PersistentVolumeStatusOperation: {
+		{},
+	},
+	PatchDiscoveryV1NamespacedEndpointSliceOperation: {
+		{},
+	},
+	PatchDiscoveryV1beta1NamespacedEndpointSliceOperation: {
+		{},
+	},
+	PatchEventsV1NamespacedEventOperation: {
+		{},
+	},
+	PatchEventsV1beta1NamespacedEventOperation: {
+		{},
+	},
+	PatchFlowcontrolApiserverV1beta1FlowSchemaOperation: {
+		{},
+	},
+	PatchFlowcontrolApiserverV1beta1FlowSchemaStatusOperation: {
+		{},
+	},
+	PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationOperation: {
+		{},
+	},
+	PatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusOperation: {
+		{},
+	},
+	PatchFlowcontrolApiserverV1beta2FlowSchemaOperation: {
+		{},
+	},
+	PatchFlowcontrolApiserverV1beta2FlowSchemaStatusOperation: {
+		{},
+	},
+	PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationOperation: {
+		{},
+	},
+	PatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusOperation: {
+		{},
+	},
+	PatchInternalApiserverV1alpha1StorageVersionOperation: {
+		{},
+	},
+	PatchInternalApiserverV1alpha1StorageVersionStatusOperation: {
+		{},
+	},
+	PatchNetworkingV1IngressClassOperation: {
+		{},
+	},
+	PatchNetworkingV1NamespacedIngressOperation: {
+		{},
+	},
+	PatchNetworkingV1NamespacedIngressStatusOperation: {
+		{},
+	},
+	PatchNetworkingV1NamespacedNetworkPolicyOperation: {
+		{},
+	},
+	PatchNodeV1RuntimeClassOperation: {
+		{},
+	},
+	PatchNodeV1alpha1RuntimeClassOperation: {
+		{},
+	},
+	PatchNodeV1beta1RuntimeClassOperation: {
+		{},
+	},
+	PatchPolicyV1NamespacedPodDisruptionBudgetOperation: {
+		{},
+	},
+	PatchPolicyV1NamespacedPodDisruptionBudgetStatusOperation: {
+		{},
+	},
+	PatchPolicyV1beta1NamespacedPodDisruptionBudgetOperation: {
+		{},
+	},
+	PatchPolicyV1beta1NamespacedPodDisruptionBudgetStatusOperation: {
+		{},
+	},
+	PatchPolicyV1beta1PodSecurityPolicyOperation: {
+		{},
+	},
+	PatchRbacAuthorizationV1ClusterRoleOperation: {
+		{},
+	},
+	PatchRbacAuthorizationV1ClusterRoleBindingOperation: {
+		{},
+	},
+	PatchRbacAuthorizationV1NamespacedRoleOperation: {
+		{},
+	},
+	PatchRbacAuthorizationV1NamespacedRoleBindingOperation: {
+		{},
+	},
+	PatchSchedulingV1PriorityClassOperation: {
+		{},
+	},
+	PatchStorageV1CSIDriverOperation: {
+		{},
+	},
+	PatchStorageV1CSINodeOperation: {
+		{},
+	},
+	PatchStorageV1StorageClassOperation: {
+		{},
+	},
+	PatchStorageV1VolumeAttachmentOperation: {
+		{},
+	},
+	PatchStorageV1VolumeAttachmentStatusOperation: {
+		{},
+	},
+	PatchStorageV1alpha1NamespacedCSIStorageCapacityOperation: {
+		{},
+	},
+	PatchStorageV1beta1NamespacedCSIStorageCapacityOperation: {
+		{},
+	},
+	ReadAdmissionregistrationV1MutatingWebhookConfigurationOperation: {
+		{},
+	},
+	ReadAdmissionregistrationV1ValidatingWebhookConfigurationOperation: {
+		{},
+	},
+	ReadApiextensionsV1CustomResourceDefinitionOperation: {
+		{},
+	},
+	ReadApiextensionsV1CustomResourceDefinitionStatusOperation: {
+		{},
+	},
+	ReadApiregistrationV1APIServiceOperation: {
+		{},
+	},
+	ReadApiregistrationV1APIServiceStatusOperation: {
+		{},
+	},
+	ReadAppsV1NamespacedControllerRevisionOperation: {
+		{},
+	},
+	ReadAppsV1NamespacedDaemonSetOperation: {
+		{},
+	},
+	ReadAppsV1NamespacedDaemonSetStatusOperation: {
+		{},
+	},
+	ReadAppsV1NamespacedDeploymentOperation: {
+		{},
+	},
+	ReadAppsV1NamespacedDeploymentScaleOperation: {
+		{},
+	},
+	ReadAppsV1NamespacedDeploymentStatusOperation: {
+		{},
+	},
+	ReadAppsV1NamespacedReplicaSetOperation: {
+		{},
+	},
+	ReadAppsV1NamespacedReplicaSetScaleOperation: {
+		{},
+	},
+	ReadAppsV1NamespacedReplicaSetStatusOperation: {
+		{},
+	},
+	ReadAppsV1NamespacedStatefulSetOperation: {
+		{},
+	},
+	ReadAppsV1NamespacedStatefulSetScaleOperation: {
+		{},
+	},
+	ReadAppsV1NamespacedStatefulSetStatusOperation: {
+		{},
+	},
+	ReadAutoscalingV1NamespacedHorizontalPodAutoscalerOperation: {
+		{},
+	},
+	ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusOperation: {
+		{},
+	},
+	ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerOperation: {
+		{},
+	},
+	ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusOperation: {
+		{},
+	},
+	ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerOperation: {
+		{},
+	},
+	ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusOperation: {
+		{},
+	},
+	ReadBatchV1NamespacedCronJobOperation: {
+		{},
+	},
+	ReadBatchV1NamespacedCronJobStatusOperation: {
+		{},
+	},
+	ReadBatchV1NamespacedJobOperation: {
+		{},
+	},
+	ReadBatchV1NamespacedJobStatusOperation: {
+		{},
+	},
+	ReadBatchV1beta1NamespacedCronJobOperation: {
+		{},
+	},
+	ReadBatchV1beta1NamespacedCronJobStatusOperation: {
+		{},
+	},
+	ReadCertificatesV1CertificateSigningRequestOperation: {
+		{},
+	},
+	ReadCertificatesV1CertificateSigningRequestApprovalOperation: {
+		{},
+	},
+	ReadCertificatesV1CertificateSigningRequestStatusOperation: {
+		{},
+	},
+	ReadCoordinationV1NamespacedLeaseOperation: {
+		{},
+	},
+	ReadCoreV1ComponentStatusOperation: {
+		{},
+	},
+	ReadCoreV1NamespaceOperation: {
+		{},
+	},
+	ReadCoreV1NamespaceStatusOperation: {
+		{},
+	},
+	ReadCoreV1NamespacedConfigMapOperation: {
+		{},
+	},
+	ReadCoreV1NamespacedEndpointsOperation: {
+		{},
+	},
+	ReadCoreV1NamespacedEventOperation: {
+		{},
+	},
+	ReadCoreV1NamespacedLimitRangeOperation: {
+		{},
+	},
+	ReadCoreV1NamespacedPersistentVolumeClaimOperation: {
+		{},
+	},
+	ReadCoreV1NamespacedPersistentVolumeClaimStatusOperation: {
+		{},
+	},
+	ReadCoreV1NamespacedPodOperation: {
+		{},
+	},
+	ReadCoreV1NamespacedPodEphemeralcontainersOperation: {
+		{},
+	},
+	ReadCoreV1NamespacedPodLogOperation: {
+		{},
+	},
+	ReadCoreV1NamespacedPodStatusOperation: {
+		{},
+	},
+	ReadCoreV1NamespacedPodTemplateOperation: {
+		{},
+	},
+	ReadCoreV1NamespacedReplicationControllerOperation: {
+		{},
+	},
+	ReadCoreV1NamespacedReplicationControllerScaleOperation: {
+		{},
+	},
+	ReadCoreV1NamespacedReplicationControllerStatusOperation: {
+		{},
+	},
+	ReadCoreV1NamespacedResourceQuotaOperation: {
+		{},
+	},
+	ReadCoreV1NamespacedResourceQuotaStatusOperation: {
+		{},
+	},
+	ReadCoreV1NamespacedSecretOperation: {
+		{},
+	},
+	ReadCoreV1NamespacedServiceOperation: {
+		{},
+	},
+	ReadCoreV1NamespacedServiceAccountOperation: {
+		{},
+	},
+	ReadCoreV1NamespacedServiceStatusOperation: {
+		{},
+	},
+	ReadCoreV1NodeOperation: {
+		{},
+	},
+	ReadCoreV1NodeStatusOperation: {
+		{},
+	},
+	ReadCoreV1PersistentVolumeOperation: {
+		{},
+	},
+	ReadCoreV1PersistentVolumeStatusOperation: {
+		{},
+	},
+	ReadDiscoveryV1NamespacedEndpointSliceOperation: {
+		{},
+	},
+	ReadDiscoveryV1beta1NamespacedEndpointSliceOperation: {
+		{},
+	},
+	ReadEventsV1NamespacedEventOperation: {
+		{},
+	},
+	ReadEventsV1beta1NamespacedEventOperation: {
+		{},
+	},
+	ReadFlowcontrolApiserverV1beta1FlowSchemaOperation: {
+		{},
+	},
+	ReadFlowcontrolApiserverV1beta1FlowSchemaStatusOperation: {
+		{},
+	},
+	ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationOperation: {
+		{},
+	},
+	ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusOperation: {
+		{},
+	},
+	ReadFlowcontrolApiserverV1beta2FlowSchemaOperation: {
+		{},
+	},
+	ReadFlowcontrolApiserverV1beta2FlowSchemaStatusOperation: {
+		{},
+	},
+	ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationOperation: {
+		{},
+	},
+	ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusOperation: {
+		{},
+	},
+	ReadInternalApiserverV1alpha1StorageVersionOperation: {
+		{},
+	},
+	ReadInternalApiserverV1alpha1StorageVersionStatusOperation: {
+		{},
+	},
+	ReadNetworkingV1IngressClassOperation: {
+		{},
+	},
+	ReadNetworkingV1NamespacedIngressOperation: {
+		{},
+	},
+	ReadNetworkingV1NamespacedIngressStatusOperation: {
+		{},
+	},
+	ReadNetworkingV1NamespacedNetworkPolicyOperation: {
+		{},
+	},
+	ReadNodeV1RuntimeClassOperation: {
+		{},
+	},
+	ReadNodeV1alpha1RuntimeClassOperation: {
+		{},
+	},
+	ReadNodeV1beta1RuntimeClassOperation: {
+		{},
+	},
+	ReadPolicyV1NamespacedPodDisruptionBudgetOperation: {
+		{},
+	},
+	ReadPolicyV1NamespacedPodDisruptionBudgetStatusOperation: {
+		{},
+	},
+	ReadPolicyV1beta1NamespacedPodDisruptionBudgetOperation: {
+		{},
+	},
+	ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusOperation: {
+		{},
+	},
+	ReadPolicyV1beta1PodSecurityPolicyOperation: {
+		{},
+	},
+	ReadRbacAuthorizationV1ClusterRoleOperation: {
+		{},
+	},
+	ReadRbacAuthorizationV1ClusterRoleBindingOperation: {
+		{},
+	},
+	ReadRbacAuthorizationV1NamespacedRoleOperation: {
+		{},
+	},
+	ReadRbacAuthorizationV1NamespacedRoleBindingOperation: {
+		{},
+	},
+	ReadSchedulingV1PriorityClassOperation: {
+		{},
+	},
+	ReadStorageV1CSIDriverOperation: {
+		{},
+	},
+	ReadStorageV1CSINodeOperation: {
+		{},
+	},
+	ReadStorageV1StorageClassOperation: {
+		{},
+	},
+	ReadStorageV1VolumeAttachmentOperation: {
+		{},
+	},
+	ReadStorageV1VolumeAttachmentStatusOperation: {
+		{},
+	},
+	ReadStorageV1alpha1NamespacedCSIStorageCapacityOperation: {
+		{},
+	},
+	ReadStorageV1beta1NamespacedCSIStorageCapacityOperation: {
+		{},
+	},
+	WatchAdmissionregistrationV1MutatingWebhookConfigurationOperation: {
+		{},
+	},
+	WatchAdmissionregistrationV1MutatingWebhookConfigurationListOperation: {
+		{},
+	},
+	WatchAdmissionregistrationV1ValidatingWebhookConfigurationOperation: {
+		{},
+	},
+	WatchAdmissionregistrationV1ValidatingWebhookConfigurationListOperation: {
+		{},
+	},
+	WatchApiextensionsV1CustomResourceDefinitionOperation: {
+		{},
+	},
+	WatchApiextensionsV1CustomResourceDefinitionListOperation: {
+		{},
+	},
+	WatchApiregistrationV1APIServiceOperation: {
+		{},
+	},
+	WatchApiregistrationV1APIServiceListOperation: {
+		{},
+	},
+	WatchAppsV1ControllerRevisionListForAllNamespacesOperation: {
+		{},
+	},
+	WatchAppsV1DaemonSetListForAllNamespacesOperation: {
+		{},
+	},
+	WatchAppsV1DeploymentListForAllNamespacesOperation: {
+		{},
+	},
+	WatchAppsV1NamespacedControllerRevisionOperation: {
+		{},
+	},
+	WatchAppsV1NamespacedControllerRevisionListOperation: {
+		{},
+	},
+	WatchAppsV1NamespacedDaemonSetOperation: {
+		{},
+	},
+	WatchAppsV1NamespacedDaemonSetListOperation: {
+		{},
+	},
+	WatchAppsV1NamespacedDeploymentOperation: {
+		{},
+	},
+	WatchAppsV1NamespacedDeploymentListOperation: {
+		{},
+	},
+	WatchAppsV1NamespacedReplicaSetOperation: {
+		{},
+	},
+	WatchAppsV1NamespacedReplicaSetListOperation: {
+		{},
+	},
+	WatchAppsV1NamespacedStatefulSetOperation: {
+		{},
+	},
+	WatchAppsV1NamespacedStatefulSetListOperation: {
+		{},
+	},
+	WatchAppsV1ReplicaSetListForAllNamespacesOperation: {
+		{},
+	},
+	WatchAppsV1StatefulSetListForAllNamespacesOperation: {
+		{},
+	},
+	WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesOperation: {
+		{},
+	},
+	WatchAutoscalingV1NamespacedHorizontalPodAutoscalerOperation: {
+		{},
+	},
+	WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListOperation: {
+		{},
+	},
+	WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesOperation: {
+		{},
+	},
+	WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerOperation: {
+		{},
+	},
+	WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListOperation: {
+		{},
+	},
+	WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesOperation: {
+		{},
+	},
+	WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerOperation: {
+		{},
+	},
+	WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListOperation: {
+		{},
+	},
+	WatchBatchV1CronJobListForAllNamespacesOperation: {
+		{},
+	},
+	WatchBatchV1JobListForAllNamespacesOperation: {
+		{},
+	},
+	WatchBatchV1NamespacedCronJobOperation: {
+		{},
+	},
+	WatchBatchV1NamespacedCronJobListOperation: {
+		{},
+	},
+	WatchBatchV1NamespacedJobOperation: {
+		{},
+	},
+	WatchBatchV1NamespacedJobListOperation: {
+		{},
+	},
+	WatchBatchV1beta1CronJobListForAllNamespacesOperation: {
+		{},
+	},
+	WatchBatchV1beta1NamespacedCronJobOperation: {
+		{},
+	},
+	WatchBatchV1beta1NamespacedCronJobListOperation: {
+		{},
+	},
+	WatchCertificatesV1CertificateSigningRequestOperation: {
+		{},
+	},
+	WatchCertificatesV1CertificateSigningRequestListOperation: {
+		{},
+	},
+	WatchCoordinationV1LeaseListForAllNamespacesOperation: {
+		{},
+	},
+	WatchCoordinationV1NamespacedLeaseOperation: {
+		{},
+	},
+	WatchCoordinationV1NamespacedLeaseListOperation: {
+		{},
+	},
+	WatchCoreV1ConfigMapListForAllNamespacesOperation: {
+		{},
+	},
+	WatchCoreV1EndpointsListForAllNamespacesOperation: {
+		{},
+	},
+	WatchCoreV1EventListForAllNamespacesOperation: {
+		{},
+	},
+	WatchCoreV1LimitRangeListForAllNamespacesOperation: {
+		{},
+	},
+	WatchCoreV1NamespaceOperation: {
+		{},
+	},
+	WatchCoreV1NamespaceListOperation: {
+		{},
+	},
+	WatchCoreV1NamespacedConfigMapOperation: {
+		{},
+	},
+	WatchCoreV1NamespacedConfigMapListOperation: {
+		{},
+	},
+	WatchCoreV1NamespacedEndpointsOperation: {
+		{},
+	},
+	WatchCoreV1NamespacedEndpointsListOperation: {
+		{},
+	},
+	WatchCoreV1NamespacedEventOperation: {
+		{},
+	},
+	WatchCoreV1NamespacedEventListOperation: {
+		{},
+	},
+	WatchCoreV1NamespacedLimitRangeOperation: {
+		{},
+	},
+	WatchCoreV1NamespacedLimitRangeListOperation: {
+		{},
+	},
+	WatchCoreV1NamespacedPersistentVolumeClaimOperation: {
+		{},
+	},
+	WatchCoreV1NamespacedPersistentVolumeClaimListOperation: {
+		{},
+	},
+	WatchCoreV1NamespacedPodOperation: {
+		{},
+	},
+	WatchCoreV1NamespacedPodListOperation: {
+		{},
+	},
+	WatchCoreV1NamespacedPodTemplateOperation: {
+		{},
+	},
+	WatchCoreV1NamespacedPodTemplateListOperation: {
+		{},
+	},
+	WatchCoreV1NamespacedReplicationControllerOperation: {
+		{},
+	},
+	WatchCoreV1NamespacedReplicationControllerListOperation: {
+		{},
+	},
+	WatchCoreV1NamespacedResourceQuotaOperation: {
+		{},
+	},
+	WatchCoreV1NamespacedResourceQuotaListOperation: {
+		{},
+	},
+	WatchCoreV1NamespacedSecretOperation: {
+		{},
+	},
+	WatchCoreV1NamespacedSecretListOperation: {
+		{},
+	},
+	WatchCoreV1NamespacedServiceOperation: {
+		{},
+	},
+	WatchCoreV1NamespacedServiceAccountOperation: {
+		{},
+	},
+	WatchCoreV1NamespacedServiceAccountListOperation: {
+		{},
+	},
+	WatchCoreV1NamespacedServiceListOperation: {
+		{},
+	},
+	WatchCoreV1NodeOperation: {
+		{},
+	},
+	WatchCoreV1NodeListOperation: {
+		{},
+	},
+	WatchCoreV1PersistentVolumeOperation: {
+		{},
+	},
+	WatchCoreV1PersistentVolumeClaimListForAllNamespacesOperation: {
+		{},
+	},
+	WatchCoreV1PersistentVolumeListOperation: {
+		{},
+	},
+	WatchCoreV1PodListForAllNamespacesOperation: {
+		{},
+	},
+	WatchCoreV1PodTemplateListForAllNamespacesOperation: {
+		{},
+	},
+	WatchCoreV1ReplicationControllerListForAllNamespacesOperation: {
+		{},
+	},
+	WatchCoreV1ResourceQuotaListForAllNamespacesOperation: {
+		{},
+	},
+	WatchCoreV1SecretListForAllNamespacesOperation: {
+		{},
+	},
+	WatchCoreV1ServiceAccountListForAllNamespacesOperation: {
+		{},
+	},
+	WatchCoreV1ServiceListForAllNamespacesOperation: {
+		{},
+	},
+	WatchDiscoveryV1EndpointSliceListForAllNamespacesOperation: {
+		{},
+	},
+	WatchDiscoveryV1NamespacedEndpointSliceOperation: {
+		{},
+	},
+	WatchDiscoveryV1NamespacedEndpointSliceListOperation: {
+		{},
+	},
+	WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesOperation: {
+		{},
+	},
+	WatchDiscoveryV1beta1NamespacedEndpointSliceOperation: {
+		{},
+	},
+	WatchDiscoveryV1beta1NamespacedEndpointSliceListOperation: {
+		{},
+	},
+	WatchEventsV1EventListForAllNamespacesOperation: {
+		{},
+	},
+	WatchEventsV1NamespacedEventOperation: {
+		{},
+	},
+	WatchEventsV1NamespacedEventListOperation: {
+		{},
+	},
+	WatchEventsV1beta1EventListForAllNamespacesOperation: {
+		{},
+	},
+	WatchEventsV1beta1NamespacedEventOperation: {
+		{},
+	},
+	WatchEventsV1beta1NamespacedEventListOperation: {
+		{},
+	},
+	WatchFlowcontrolApiserverV1beta1FlowSchemaOperation: {
+		{},
+	},
+	WatchFlowcontrolApiserverV1beta1FlowSchemaListOperation: {
+		{},
+	},
+	WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationOperation: {
+		{},
+	},
+	WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListOperation: {
+		{},
+	},
+	WatchFlowcontrolApiserverV1beta2FlowSchemaOperation: {
+		{},
+	},
+	WatchFlowcontrolApiserverV1beta2FlowSchemaListOperation: {
+		{},
+	},
+	WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationOperation: {
+		{},
+	},
+	WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListOperation: {
+		{},
+	},
+	WatchInternalApiserverV1alpha1StorageVersionOperation: {
+		{},
+	},
+	WatchInternalApiserverV1alpha1StorageVersionListOperation: {
+		{},
+	},
+	WatchNetworkingV1IngressClassOperation: {
+		{},
+	},
+	WatchNetworkingV1IngressClassListOperation: {
+		{},
+	},
+	WatchNetworkingV1IngressListForAllNamespacesOperation: {
+		{},
+	},
+	WatchNetworkingV1NamespacedIngressOperation: {
+		{},
+	},
+	WatchNetworkingV1NamespacedIngressListOperation: {
+		{},
+	},
+	WatchNetworkingV1NamespacedNetworkPolicyOperation: {
+		{},
+	},
+	WatchNetworkingV1NamespacedNetworkPolicyListOperation: {
+		{},
+	},
+	WatchNetworkingV1NetworkPolicyListForAllNamespacesOperation: {
+		{},
+	},
+	WatchNodeV1RuntimeClassOperation: {
+		{},
+	},
+	WatchNodeV1RuntimeClassListOperation: {
+		{},
+	},
+	WatchNodeV1alpha1RuntimeClassOperation: {
+		{},
+	},
+	WatchNodeV1alpha1RuntimeClassListOperation: {
+		{},
+	},
+	WatchNodeV1beta1RuntimeClassOperation: {
+		{},
+	},
+	WatchNodeV1beta1RuntimeClassListOperation: {
+		{},
+	},
+	WatchPolicyV1NamespacedPodDisruptionBudgetOperation: {
+		{},
+	},
+	WatchPolicyV1NamespacedPodDisruptionBudgetListOperation: {
+		{},
+	},
+	WatchPolicyV1PodDisruptionBudgetListForAllNamespacesOperation: {
+		{},
+	},
+	WatchPolicyV1beta1NamespacedPodDisruptionBudgetOperation: {
+		{},
+	},
+	WatchPolicyV1beta1NamespacedPodDisruptionBudgetListOperation: {
+		{},
+	},
+	WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesOperation: {
+		{},
+	},
+	WatchPolicyV1beta1PodSecurityPolicyOperation: {
+		{},
+	},
+	WatchPolicyV1beta1PodSecurityPolicyListOperation: {
+		{},
+	},
+	WatchRbacAuthorizationV1ClusterRoleOperation: {
+		{},
+	},
+	WatchRbacAuthorizationV1ClusterRoleBindingOperation: {
+		{},
+	},
+	WatchRbacAuthorizationV1ClusterRoleBindingListOperation: {
+		{},
+	},
+	WatchRbacAuthorizationV1ClusterRoleListOperation: {
+		{},
+	},
+	WatchRbacAuthorizationV1NamespacedRoleOperation: {
+		{},
+	},
+	WatchRbacAuthorizationV1NamespacedRoleBindingOperation: {
+		{},
+	},
+	WatchRbacAuthorizationV1NamespacedRoleBindingListOperation: {
+		{},
+	},
+	WatchRbacAuthorizationV1NamespacedRoleListOperation: {
+		{},
+	},
+	WatchRbacAuthorizationV1RoleBindingListForAllNamespacesOperation: {
+		{},
+	},
+	WatchRbacAuthorizationV1RoleListForAllNamespacesOperation: {
+		{},
+	},
+	WatchSchedulingV1PriorityClassOperation: {
+		{},
+	},
+	WatchSchedulingV1PriorityClassListOperation: {
+		{},
+	},
+	WatchStorageV1CSIDriverOperation: {
+		{},
+	},
+	WatchStorageV1CSIDriverListOperation: {
+		{},
+	},
+	WatchStorageV1CSINodeOperation: {
+		{},
+	},
+	WatchStorageV1CSINodeListOperation: {
+		{},
+	},
+	WatchStorageV1StorageClassOperation: {
+		{},
+	},
+	WatchStorageV1StorageClassListOperation: {
+		{},
+	},
+	WatchStorageV1VolumeAttachmentOperation: {
+		{},
+	},
+	WatchStorageV1VolumeAttachmentListOperation: {
+		{},
+	},
+	WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesOperation: {
+		{},
+	},
+	WatchStorageV1alpha1NamespacedCSIStorageCapacityOperation: {
+		{},
+	},
+	WatchStorageV1alpha1NamespacedCSIStorageCapacityListOperation: {
+		{},
+	},
+	WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesOperation: {
+		{},
+	},
+	WatchStorageV1beta1NamespacedCSIStorageCapacityOperation: {
+		{},
+	},
+	WatchStorageV1beta1NamespacedCSIStorageCapacityListOperation: {
+		{},
+	},
+}
+
+// GetRoleSetsForBearerToken returns the alternative role sets for the given operation.
+//
+// Each element corresponds to one security requirement of the operation that uses
+// this security, in the order they are defined in the spec. A caller is sufficient
+// for the requirement if it has all roles of any one set (logical OR between sets,
+// logical AND within a set). An empty set means that no roles are required.
+//
+// Unlike GetRolesForBearerToken, which merges all roles into a single list,
+// this function preserves the AND/OR relationship between roles.
+//
+// Example:
+//
+//	for _, roles := range GetRoleSetsForBearerToken(AddPetOperation) {
+//		if hasAllRoles(user, roles) {
+//			return ctx, nil
+//		}
+//	}
+//
+// Note that if an operation has security requirements combining multiple securities,
+// checking sets of a single security alone is not enough to decide whether
+// a requirement is satisfied.
+//
+// Returns nil if the operation is unknown or does not use this security.
+func GetRoleSetsForBearerToken(operation string) [][]string {
+	sets, ok := operationRoleSetsBearerToken[operation]
+	if !ok {
+		return nil
+	}
+	// Return a copy to prevent external modification
+	result := make([][]string, len(sets))
+	for i, set := range sets {
+		result[i] = make([]string, len(set))
+		copy(result[i], set)
+	}
+	return result
+}
+
 // GetRolesForBearerToken returns the required roles for the given operation.
 //
 // This is useful for authorization scenarios where you need to know which roles
