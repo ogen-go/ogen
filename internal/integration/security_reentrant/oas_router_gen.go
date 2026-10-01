@@ -23,7 +23,10 @@ var (
 	rn5AllowedHeaders = map[string]string{
 		"GET": "Authorization,X-Api-Key",
 	}
-	rn8AllowedHeaders = map[string]string{
+	rn6AllowedHeaders = map[string]string{
+		"GET": "Authorization",
+	}
+	rn9AllowedHeaders = map[string]string{
 		"GET": "Authorization",
 	}
 )
@@ -190,6 +193,31 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					break
 				}
 				switch elem[0] {
+				case 'a': // Prefix: "auth2ScopesSecurity"
+
+					if l := len("auth2ScopesSecurity"); len(elem) >= l && elem[0:l] == "auth2ScopesSecurity" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						// Leaf node.
+						switch r.Method {
+						case "GET":
+							s.handleOauth2ScopesSecurityRequest([0]string{}, elemIsEscaped, w, r)
+						default:
+							s.notAllowed(w, r, notAllowedParams{
+								allowedMethods: "GET",
+								allowedHeaders: rn6AllowedHeaders,
+								acceptPost:     "",
+								acceptPatch:    "",
+							})
+						}
+
+						return
+					}
+
 				case 'p': // Prefix: "ptionalSecurity"
 
 					if l := len("ptionalSecurity"); len(elem) >= l && elem[0:l] == "ptionalSecurity" {
@@ -231,7 +259,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						default:
 							s.notAllowed(w, r, notAllowedParams{
 								allowedMethods: "GET",
-								allowedHeaders: rn8AllowedHeaders,
+								allowedHeaders: rn9AllowedHeaders,
 								acceptPost:     "",
 								acceptPatch:    "",
 							})
@@ -454,6 +482,31 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					break
 				}
 				switch elem[0] {
+				case 'a': // Prefix: "auth2ScopesSecurity"
+
+					if l := len("auth2ScopesSecurity"); len(elem) >= l && elem[0:l] == "auth2ScopesSecurity" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						// Leaf node.
+						switch method {
+						case "GET":
+							r.name = Oauth2ScopesSecurityOperation
+							r.summary = ""
+							r.operationID = "oauth2ScopesSecurity"
+							r.operationGroup = ""
+							r.pathPattern = "/oauth2ScopesSecurity"
+							r.args = args
+							r.count = 0
+							return r, true
+						default:
+							return
+						}
+					}
+
 				case 'p': // Prefix: "ptionalSecurity"
 
 					if l := len("ptionalSecurity"); len(elem) >= l && elem[0:l] == "ptionalSecurity" {

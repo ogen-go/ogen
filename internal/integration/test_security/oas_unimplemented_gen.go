@@ -41,6 +41,13 @@ func (UnimplementedHandler) MixedScopesSecurity(ctx context.Context) error {
 	return ht.ErrNotImplemented
 }
 
+// Oauth2ScopesSecurity implements oauth2ScopesSecurity operation.
+//
+// GET /oauth2ScopesSecurity
+func (UnimplementedHandler) Oauth2ScopesSecurity(ctx context.Context) error {
+	return ht.ErrNotImplemented
+}
+
 // OptionalSecurity implements optionalSecurity operation.
 //
 // GET /optionalSecurity

@@ -44,6 +44,15 @@ func decodeMixedScopesSecurityResponse(resp *http.Response) (res *MixedScopesSec
 	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
+func decodeOauth2ScopesSecurityResponse(resp *http.Response) (res *Oauth2ScopesSecurityOK, _ error) {
+	switch resp.StatusCode {
+	case 200:
+		// Code 200.
+		return &Oauth2ScopesSecurityOK{}, nil
+	}
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
+}
+
 func decodeOptionalSecurityResponse(resp *http.Response) (res *OptionalSecurityOK, _ error) {
 	switch resp.StatusCode {
 	case 200:

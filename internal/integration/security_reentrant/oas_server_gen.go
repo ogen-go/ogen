@@ -24,6 +24,10 @@ type Handler interface {
 	//
 	// GET /mixedScopesSecurity
 	MixedScopesSecurity(ctx context.Context) error
+	// Oauth2ScopesSecurity implements oauth2ScopesSecurity operation.
+	//
+	// GET /oauth2ScopesSecurity
+	Oauth2ScopesSecurity(ctx context.Context) error
 	// OptionalSecurity implements optionalSecurity operation.
 	//
 	// GET /optionalSecurity

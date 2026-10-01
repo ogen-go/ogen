@@ -154,6 +154,34 @@ type IntersectSecurityOK struct{}
 // MixedScopesSecurityOK is response for MixedScopesSecurity operation.
 type MixedScopesSecurityOK struct{}
 
+type OAuth2 struct {
+	Token  string
+	Scopes []string
+}
+
+// GetToken returns the value of Token.
+func (s *OAuth2) GetToken() string {
+	return s.Token
+}
+
+// GetScopes returns the value of Scopes.
+func (s *OAuth2) GetScopes() []string {
+	return s.Scopes
+}
+
+// SetToken sets the value of Token.
+func (s *OAuth2) SetToken(val string) {
+	s.Token = val
+}
+
+// SetScopes sets the value of Scopes.
+func (s *OAuth2) SetScopes(val []string) {
+	s.Scopes = val
+}
+
+// Oauth2ScopesSecurityOK is response for Oauth2ScopesSecurity operation.
+type Oauth2ScopesSecurityOK struct{}
+
 // OptionalSecurityOK is response for OptionalSecurity operation.
 type OptionalSecurityOK struct{}
 

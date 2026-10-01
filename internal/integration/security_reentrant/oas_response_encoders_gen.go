@@ -32,6 +32,12 @@ func encodeMixedScopesSecurityResponse(response *MixedScopesSecurityOK, w http.R
 	return nil
 }
 
+func encodeOauth2ScopesSecurityResponse(response *Oauth2ScopesSecurityOK, w http.ResponseWriter, span trace.Span) error {
+	w.WriteHeader(200)
+
+	return nil
+}
+
 func encodeOptionalSecurityResponse(response *OptionalSecurityOK, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(200)
 

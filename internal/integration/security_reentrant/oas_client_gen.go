@@ -44,6 +44,10 @@ type Invoker interface {
 	//
 	// GET /mixedScopesSecurity
 	MixedScopesSecurity(ctx context.Context) error
+	// Oauth2ScopesSecurity invokes oauth2ScopesSecurity operation.
+	//
+	// GET /oauth2ScopesSecurity
+	Oauth2ScopesSecurity(ctx context.Context) error
 	// OptionalSecurity invokes optionalSecurity operation.
 	//
 	// GET /optionalSecurity
@@ -601,6 +605,118 @@ func (c *Client) sendMixedScopesSecurity(ctx context.Context) (res *MixedScopesS
 
 	stage = "DecodeResponse"
 	result, err := decodeMixedScopesSecurityResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// Oauth2ScopesSecurity invokes oauth2ScopesSecurity operation.
+//
+// GET /oauth2ScopesSecurity
+func (c *Client) Oauth2ScopesSecurity(ctx context.Context) error {
+	_, err := c.sendOauth2ScopesSecurity(ctx)
+	return err
+}
+
+func (c *Client) sendOauth2ScopesSecurity(ctx context.Context) (res *Oauth2ScopesSecurityOK, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("oauth2ScopesSecurity"),
+		semconv.HTTPRequestMethodKey.String("GET"),
+		semconv.URLTemplateKey.String("/oauth2ScopesSecurity"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, Oauth2ScopesSecurityOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/oauth2ScopesSecurity"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "GET", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			stage = "Security:OAuth2"
+			switch err := c.securityOAuth2(ctx, Oauth2ScopesSecurityOperation, r); {
+			case err == nil: // if NO error
+				satisfied[0] |= 1 << 0
+			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
+				// Skip this security.
+			default:
+				return res, errors.Wrap(err, "security \"OAuth2\"")
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			return res, ogenerrors.ErrSecurityRequirementIsNotSatisfied
+		}
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	body := resp.Body
+	defer func() {
+		// Drain the body to EOF before closing, so the underlying
+		// connection can be reused by the Transport regardless of the
+		// response status code. See https://github.com/ogen-go/ogen/issues/1670.
+		_, _ = io.Copy(io.Discard, body)
+		_ = body.Close()
+	}()
+
+	stage = "DecodeResponse"
+	result, err := decodeOauth2ScopesSecurityResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}

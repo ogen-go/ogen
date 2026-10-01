@@ -23,6 +23,8 @@ type SecurityHandler interface {
 	HandleCustom(ctx context.Context, operationName OperationName, t Custom) (context.Context, error)
 	// HandleHeaderKey handles headerKey security.
 	HandleHeaderKey(ctx context.Context, operationName OperationName, t HeaderKey) (context.Context, error)
+	// HandleOAuth2 handles oauth2 security.
+	HandleOAuth2(ctx context.Context, operationName OperationName, t OAuth2) (context.Context, error)
 	// HandleQueryKey handles queryKey security.
 	HandleQueryKey(ctx context.Context, operationName OperationName, t QueryKey) (context.Context, error)
 }
@@ -431,6 +433,87 @@ func GetRolesForHeaderKey(operation string) []string {
 	return result
 }
 
+// oauth2ScopesOAuth2 is a private map storing OAuth2 scopes per operation.
+var oauth2ScopesOAuth2 = map[string][]string{
+	Oauth2ScopesSecurityOperation: []string{
+		"read",
+		"write",
+		"admin",
+	},
+}
+
+// oauth2ScopeSetsOAuth2 is a private map storing OAuth2 scope sets per operation.
+var oauth2ScopeSetsOAuth2 = map[string][][]string{
+	Oauth2ScopesSecurityOperation: {
+		{
+			"read",
+			"write",
+		},
+		{
+			"admin",
+		},
+	},
+}
+
+// GetOAuth2ScopeSetsForOAuth2 returns the alternative OAuth2 scope sets for the given operation.
+//
+// Each element corresponds to one security requirement of the operation that uses
+// this security, in the order they are defined in the spec. A token is sufficient
+// for the requirement if it has all scopes of any one set (logical OR between sets,
+// logical AND within a set). An empty set means that no scopes are required.
+//
+// Unlike GetOAuth2ScopesForOAuth2, which merges all scopes into a single list,
+// this function preserves the AND/OR relationship between scopes.
+//
+// Example:
+//
+//	for _, scopes := range GetOAuth2ScopeSetsForOAuth2(AddPetOperation) {
+//		if hasAllScopes(token, scopes) {
+//			return ctx, nil
+//		}
+//	}
+//
+// Note that if an operation has security requirements combining multiple securities,
+// checking sets of a single security alone is not enough to decide whether
+// a requirement is satisfied.
+//
+// Returns nil if the operation is unknown or does not use this security.
+func GetOAuth2ScopeSetsForOAuth2(operation string) [][]string {
+	sets, ok := oauth2ScopeSetsOAuth2[operation]
+	if !ok {
+		return nil
+	}
+	// Return a copy to prevent external modification
+	result := make([][]string, len(sets))
+	for i, set := range sets {
+		result[i] = make([]string, len(set))
+		copy(result[i], set)
+	}
+	return result
+}
+
+// GetOAuth2ScopesForOAuth2 returns the required OAuth2 scopes for the given operation.
+//
+// This is useful for token exchange scenarios where you need to know which scopes
+// to request when obtaining a token for a downstream API call.
+//
+// Example:
+//
+//	requiredScopes := GetOAuth2ScopesForOAuth2(AddPetOperation)
+//	token := exchangeTokenWithScopes(requiredScopes, "https://api.example.com")
+//
+// Returns nil if the operation has no scope requirements or if the operation is unknown.
+func GetOAuth2ScopesForOAuth2(operation string) []string {
+	scopes, ok := oauth2ScopesOAuth2[operation]
+	if !ok {
+		return nil
+	}
+	// Return a copy to prevent external modification
+	result := make([]string, len(scopes))
+	copy(result, scopes)
+	return result
+}
+
 // operationRolesQueryKey is a private map storing roles per operation.
 var operationRolesQueryKey = map[string][]string{
 	DisjointSecurityOperation: []string{},
@@ -601,6 +684,23 @@ func (s *Server) securityHeaderKey(ctx context.Context, operationName OperationN
 	return rctx, true, err
 }
 
+func (s *Server) securityOAuth2(ctx context.Context, operationName OperationName, req *http.Request) (context.Context, bool, error) {
+	var t OAuth2
+	token, ok := findAuthorization(req.Header, "Bearer")
+	if !ok {
+		return ctx, false, nil
+	}
+	t.Token = token
+	t.Scopes = oauth2ScopesOAuth2[operationName]
+	rctx, err := s.sec.HandleOAuth2(ctx, operationName, t)
+	if errors.Is(err, ogenerrors.ErrSkipServerSecurity) {
+		return nil, false, nil
+	} else if err != nil {
+		return nil, false, err
+	}
+	return rctx, true, err
+}
+
 func (s *Server) securityQueryKey(ctx context.Context, operationName OperationName, req *http.Request) (context.Context, bool, error) {
 	var t QueryKey
 	const parameterName = "api_key"
@@ -632,6 +732,8 @@ type SecuritySource interface {
 	Custom(ctx context.Context, operationName OperationName, req *http.Request, client *Client) error
 	// HeaderKey provides headerKey security value.
 	HeaderKey(ctx context.Context, operationName OperationName, client *Client) (HeaderKey, error)
+	// OAuth2 provides oauth2 security value.
+	OAuth2(ctx context.Context, operationName OperationName, client *Client) (OAuth2, error)
 	// QueryKey provides queryKey security value.
 	QueryKey(ctx context.Context, operationName OperationName, client *Client) (QueryKey, error)
 }
@@ -675,6 +777,14 @@ func (s *Client) securityHeaderKey(ctx context.Context, operationName OperationN
 		return errors.Wrap(err, "security source \"HeaderKey\"")
 	}
 	req.Header.Set("X-Api-Key", t.APIKey)
+	return nil
+}
+func (s *Client) securityOAuth2(ctx context.Context, operationName OperationName, req *http.Request) error {
+	t, err := s.sec.OAuth2(ctx, operationName, s)
+	if err != nil {
+		return errors.Wrap(err, "security source \"OAuth2\"")
+	}
+	req.Header.Set("Authorization", "Bearer "+t.Token)
 	return nil
 }
 func (s *Client) securityQueryKey(ctx context.Context, operationName OperationName, req *http.Request) error {
