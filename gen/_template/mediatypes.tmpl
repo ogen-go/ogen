@@ -1,0 +1,11 @@
+{{ define "mediatypes" }}
+{{- /*gotype: github.com/ogen-go/ogen/gen.TemplateConfig*/ -}}
+{{ template "header" $ }}
+
+const (
+	{{- range $op := $.MediaTypes }}
+	MediaType{{ $op.Name }} string = {{ quote $op.Value }}
+	{{- end }}
+)
+
+{{ end }}
