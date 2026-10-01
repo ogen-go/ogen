@@ -207,6 +207,102 @@ var operationRoles{{ $s.Type.Name }} = map[string][]string {
 }
 
 {{if $s.Format.IsOAuth2Security}}
+// oauth2ScopeSets{{ $s.Type.Name }} is a private map storing OAuth2 scope sets per operation.
+var oauth2ScopeSets{{ $s.Type.Name }} = map[string][][]string {
+{{- else}}
+// operationRoleSets{{ $s.Type.Name }} is a private map storing role sets per operation.
+var operationRoleSets{{ $s.Type.Name }} = map[string][][]string {
+{{- end}}
+{{- range $operationName, $sets := $s.ScopeSets }}
+	{{ $operationName }}Operation: {
+		{{- range $scopes := $sets }}
+		{
+			{{- range $scope := $scopes }}
+				{{ quote $scope }},
+			{{- end}}
+		},
+		{{- end }}
+	},
+{{- end }}
+}
+
+{{if $s.Format.IsOAuth2Security}}
+// GetOAuth2ScopeSetsFor{{ $s.Type.Name }} returns the alternative OAuth2 scope sets for the given operation.
+//
+// Each element corresponds to one security requirement of the operation that uses
+// this security, in the order they are defined in the spec. A token is sufficient
+// for the requirement if it has all scopes of any one set (logical OR between sets,
+// logical AND within a set). An empty set means that no scopes are required.
+//
+// Unlike GetOAuth2ScopesFor{{ $s.Type.Name }}, which merges all scopes into a single list,
+// this function preserves the AND/OR relationship between scopes.
+//
+// Example:
+//
+//	for _, scopes := range GetOAuth2ScopeSetsFor{{ $s.Type.Name }}(AddPetOperation) {
+//		if hasAllScopes(token, scopes) {
+//			return ctx, nil
+//		}
+//	}
+//
+// Note that if an operation has security requirements combining multiple securities,
+// checking sets of a single security alone is not enough to decide whether
+// a requirement is satisfied.
+//
+// Returns nil if the operation is unknown or does not use this security.
+func GetOAuth2ScopeSetsFor{{ $s.Type.Name }}(operation string) [][]string {
+	sets, ok := oauth2ScopeSets{{ $s.Type.Name }}[operation]
+	if !ok {
+		return nil
+	}
+	// Return a copy to prevent external modification
+	result := make([][]string, len(sets))
+	for i, set := range sets {
+		result[i] = make([]string, len(set))
+		copy(result[i], set)
+	}
+	return result
+}
+{{- else}}
+// GetRoleSetsFor{{ $s.Type.Name }} returns the alternative role sets for the given operation.
+//
+// Each element corresponds to one security requirement of the operation that uses
+// this security, in the order they are defined in the spec. A caller is sufficient
+// for the requirement if it has all roles of any one set (logical OR between sets,
+// logical AND within a set). An empty set means that no roles are required.
+//
+// Unlike GetRolesFor{{ $s.Type.Name }}, which merges all roles into a single list,
+// this function preserves the AND/OR relationship between roles.
+//
+// Example:
+//
+//	for _, roles := range GetRoleSetsFor{{ $s.Type.Name }}(AddPetOperation) {
+//		if hasAllRoles(user, roles) {
+//			return ctx, nil
+//		}
+//	}
+//
+// Note that if an operation has security requirements combining multiple securities,
+// checking sets of a single security alone is not enough to decide whether
+// a requirement is satisfied.
+//
+// Returns nil if the operation is unknown or does not use this security.
+func GetRoleSetsFor{{ $s.Type.Name }}(operation string) [][]string {
+	sets, ok := operationRoleSets{{ $s.Type.Name }}[operation]
+	if !ok {
+		return nil
+	}
+	// Return a copy to prevent external modification
+	result := make([][]string, len(sets))
+	for i, set := range sets {
+		result[i] = make([]string, len(set))
+		copy(result[i], set)
+	}
+	return result
+}
+{{- end}}
+
+{{if $s.Format.IsOAuth2Security}}
 // GetOAuth2ScopesFor{{ $s.Type.Name }} returns the required OAuth2 scopes for the given operation.
 //
 // This is useful for token exchange scenarios where you need to know which scopes

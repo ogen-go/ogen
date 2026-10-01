@@ -61,6 +61,43 @@
         }
       }
     },
+    "/orScopesSecurity": {
+      "get": {
+        "operationId": "orScopesSecurity",
+        "security": [
+          {
+            "bearerToken": ["A"]
+          },
+          {
+            "bearerToken": ["B", "C"]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/mixedScopesSecurity": {
+      "get": {
+        "operationId": "mixedScopesSecurity",
+        "security": [
+          {
+            "bearerToken": ["A"],
+            "headerKey": []
+          },
+          {
+            "bearerToken": ["B"]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/customSecurity": {
       "get": {
         "operationId": "customSecurity",

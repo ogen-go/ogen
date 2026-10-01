@@ -98,7 +98,18 @@ type Security struct {
 	ParameterName string
 	Description   string
 	Type          *Type
-	Scopes        map[string][]string
+	// Scopes is a merged list of scopes required by each operation.
+	//
+	// Scopes from different security requirements are merged into a single list,
+	// so the AND/OR relationship between them is lost. Use ScopeSets to get
+	// the per-requirement scopes.
+	Scopes map[string][]string
+	// ScopeSets is a list of scope sets per operation, one per security
+	// requirement that uses this security, in spec order.
+	//
+	// Any one set (logical OR) is sufficient, and all scopes within a set
+	// (logical AND) are required.
+	ScopeSets map[string][][]string
 }
 
 func (s *Security) GoDoc() []string {

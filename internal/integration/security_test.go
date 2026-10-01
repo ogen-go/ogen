@@ -23,6 +23,9 @@ type testSecurity struct {
 	queryKey    api.QueryKey
 	cookieKey   api.CookieKey
 	custom      string
+
+	// bearerRoles records roles passed to HandleBearerToken.
+	bearerRoles []string
 }
 
 func (t *testSecurity) OptionalSecurity(ctx context.Context) error {
@@ -41,6 +44,14 @@ func (t *testSecurity) CustomSecurity(ctx context.Context) error {
 	return nil
 }
 
+func (t *testSecurity) OrScopesSecurity(ctx context.Context) error {
+	return nil
+}
+
+func (t *testSecurity) MixedScopesSecurity(ctx context.Context) error {
+	return nil
+}
+
 type tokenKey string
 
 func (t *testSecurity) HandleBasicAuth(ctx context.Context, operationName string, v api.BasicAuth) (context.Context, error) {
@@ -51,6 +62,7 @@ func (t *testSecurity) HandleBasicAuth(ctx context.Context, operationName string
 }
 
 func (t *testSecurity) HandleBearerToken(ctx context.Context, operationName string, v api.BearerToken) (context.Context, error) {
+	t.bearerRoles = v.Roles
 	if v.Token != t.bearerToken.Token {
 		return nil, errors.Errorf("invalid token: %q", v.Token)
 	}
@@ -320,4 +332,51 @@ func TestSecurityClientCheck(t *testing.T) {
 		{source: testSecuritySource{headerKey: &h.headerKey, basicAuth: &h.basicAuth}, wantErr: false},
 		{source: testSecuritySource{headerKey: &h.headerKey, bearerToken: &h.bearerToken}, wantErr: false},
 	}))
+}
+
+func TestSecurityRoleSets(t *testing.T) {
+	t.Run("GetRoleSets", func(t *testing.T) {
+		for _, tt := range []struct {
+			operation string
+			want      [][]string
+		}{
+			{api.OrScopesSecurityOperation, [][]string{{"A"}, {"B", "C"}}},
+			{api.MixedScopesSecurityOperation, [][]string{{"A"}, {"B"}}},
+			{api.IntersectSecurityOperation, [][]string{{}}},
+			{api.DisjointSecurityOperation, nil},
+			{"unknown", nil},
+		} {
+			require.Equal(t, tt.want, api.GetRoleSetsForBearerToken(tt.operation), tt.operation)
+		}
+		require.Equal(t, [][]string{{}}, api.GetRoleSetsForHeaderKey(api.MixedScopesSecurityOperation))
+	})
+	t.Run("ReturnsCopy", func(t *testing.T) {
+		sets := api.GetRoleSetsForBearerToken(api.OrScopesSecurityOperation)
+		sets[0][0] = "modified"
+		sets[1] = nil
+		require.Equal(t,
+			[][]string{{"A"}, {"B", "C"}},
+			api.GetRoleSetsForBearerToken(api.OrScopesSecurityOperation),
+		)
+	})
+	t.Run("MergedRolesUnchanged", func(t *testing.T) {
+		// Merged roles are kept for backward compatibility.
+		require.Equal(t,
+			[]string{"A", "B", "C"},
+			api.GetRolesForBearerToken(api.OrScopesSecurityOperation),
+		)
+
+		h := &testSecurity{
+			bearerToken: api.BearerToken{Token: "BearerToken"},
+		}
+		srv, err := api.NewServer(h, h)
+		require.NoError(t, err)
+
+		req := httptest.NewRequest(http.MethodGet, "/orScopesSecurity", nil)
+		req.Header.Set("Authorization", "Bearer "+h.bearerToken.Token)
+		w := httptest.NewRecorder()
+		srv.ServeHTTP(w, req)
+		require.Equal(t, http.StatusOK, w.Code)
+		require.Equal(t, []string{"A", "B", "C"}, h.bearerRoles)
+	})
 }

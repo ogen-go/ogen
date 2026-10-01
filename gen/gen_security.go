@@ -200,7 +200,14 @@ func (g *Generator) generateSecurities(
 ) (r ir.SecurityRequirements, _ error) {
 	indexes := map[string]int{}
 	for idx, requirement := range spec {
-		var set bitset.Bitset
+		type scopeSet struct {
+			sec    *ir.Security
+			scopes []string
+		}
+		var (
+			set       bitset.Bitset
+			scopeSets []scopeSet
+		)
 
 		if err := func() error {
 			for _, scheme := range requirement.Schemes {
@@ -209,6 +216,11 @@ func (g *Generator) generateSecurities(
 					return errors.Wrapf(err, "security scheme %q", scheme.Name)
 				}
 				g.securities[scheme.Name] = s
+
+				scopeSets = append(scopeSets, scopeSet{
+					sec:    s,
+					scopes: append([]string{}, scheme.Scopes...),
+				})
 
 				idx, ok := indexes[scheme.Name]
 				if !ok {
@@ -228,6 +240,13 @@ func (g *Generator) generateSecurities(
 			continue
 		}
 
+		// Record scope sets only for requirements that were not skipped.
+		for _, ss := range scopeSets {
+			if ss.sec.ScopeSets == nil {
+				ss.sec.ScopeSets = map[string][][]string{}
+			}
+			ss.sec.ScopeSets[operationName] = append(ss.sec.ScopeSets[operationName], ss.scopes)
+		}
 		r.Requirements = append(r.Requirements, set)
 	}
 	return r, nil
