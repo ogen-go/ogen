@@ -14,6 +14,11 @@ schemas:
 	cd schemas && go generate
 .PHONY: schemas
 
+# Update the vendored Swagger UI, e.g. make update-swaggerui VERSION=5.33.2
+update-swaggerui:
+	go run ./tools/swaggerui-update -version $(VERSION)
+.PHONY: update-swaggerui
+
 examples:
 	cd examples && go generate && go mod tidy
 .PHONY: examples
