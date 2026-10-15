@@ -5,6 +5,7 @@ import (
 	"go/format"
 	"path/filepath"
 	"strings"
+	"sync"
 	"testing"
 
 	"github.com/go-faster/yaml"
@@ -15,24 +16,46 @@ import (
 )
 
 // recordFS is a FileSystem that formats and records written files.
-type recordFS map[string][]byte
+//
+// WriteSource writes files concurrently, so access to the map is guarded by a mutex.
+type recordFS struct {
+	mux   sync.Mutex
+	files map[string][]byte
+}
 
-func (fs recordFS) WriteFile(name string, content []byte) error {
+func (fs *recordFS) WriteFile(name string, content []byte) error {
 	formatted, err := format.Source(content)
 	if err != nil {
 		return err
 	}
-	fs[name] = formatted
+	fs.mux.Lock()
+	defer fs.mux.Unlock()
+	fs.files[name] = formatted
 	return nil
 }
 
-func generateSpecTest(t *testing.T, spec *ogen.Spec, opts Options) (*Generator, recordFS) {
+// Get returns the content of a written file, or an empty string if it was not written.
+func (fs *recordFS) Get(name string) string {
+	fs.mux.Lock()
+	defer fs.mux.Unlock()
+	return string(fs.files[name])
+}
+
+// Has reports whether the file was written.
+func (fs *recordFS) Has(name string) bool {
+	fs.mux.Lock()
+	defer fs.mux.Unlock()
+	_, ok := fs.files[name]
+	return ok
+}
+
+func generateSpecTest(t *testing.T, spec *ogen.Spec, opts Options) (*Generator, *recordFS) {
 	t.Helper()
 
 	g, err := NewGenerator(spec, opts)
 	require.NoError(t, err)
 
-	fs := recordFS{}
+	fs := &recordFS{files: map[string][]byte{}}
 	require.NoError(t, g.WriteSource(fs, "api"))
 	return g, fs
 }
@@ -127,7 +150,7 @@ func TestEmbeddedSpec(t *testing.T) {
 		require.NoError(t, err)
 		require.Equal(t, "Swagger Petstore", yamlSpec.Info.Title)
 
-		src := string(fs["oas_spec_gen.go"])
+		src := fs.Get("oas_spec_gen.go")
 		require.NotEmpty(t, src)
 		require.Contains(t, src, "func SpecJSON() []byte")
 		require.Contains(t, src, "func SpecYAML() []byte")
@@ -136,10 +159,10 @@ func TestEmbeddedSpec(t *testing.T) {
 		require.Contains(t, src, "func WithDocsTitle(")
 		require.Contains(t, src, `"github.com/ogen-go/ogen/swaggerui"`)
 
-		cfg := string(fs["oas_cfg_gen.go"])
+		cfg := fs.Get("oas_cfg_gen.go")
 		require.Contains(t, cfg, "func WithDocs(")
 		require.Contains(t, cfg, "newDocsHandler(true, opts...)")
-		require.Contains(t, string(fs["oas_router_gen.go"]), "s.cfg.Docs")
+		require.Contains(t, fs.Get("oas_router_gen.go"), "s.cfg.Docs")
 	})
 
 	t.Run("SpecOnly", func(t *testing.T) {
@@ -149,12 +172,12 @@ func TestEmbeddedSpec(t *testing.T) {
 			},
 		})
 
-		src := string(fs["oas_spec_gen.go"])
+		src := fs.Get("oas_spec_gen.go")
 		require.Contains(t, src, "func SpecHandler(")
 		require.NotContains(t, src, "SwaggerUIHandler")
 		require.NotContains(t, src, "swaggerui")
 
-		cfg := string(fs["oas_cfg_gen.go"])
+		cfg := fs.Get("oas_cfg_gen.go")
 		require.Contains(t, cfg, "func WithDocs(")
 		require.Contains(t, cfg, "newDocsHandler(false, opts...)")
 	})
@@ -162,9 +185,9 @@ func TestEmbeddedSpec(t *testing.T) {
 	t.Run("Disabled", func(t *testing.T) {
 		g, fs := generateSpecTest(t, parse(t), Options{})
 		require.Nil(t, g.spec)
-		require.NotContains(t, fs, "oas_spec_gen.go")
-		require.NotContains(t, string(fs["oas_cfg_gen.go"]), "Docs")
-		require.NotContains(t, string(fs["oas_router_gen.go"]), "Docs")
+		require.False(t, fs.Has("oas_spec_gen.go"))
+		require.NotContains(t, fs.Get("oas_cfg_gen.go"), "Docs")
+		require.NotContains(t, fs.Get("oas_router_gen.go"), "Docs")
 	})
 
 	t.Run("NoServer", func(t *testing.T) {
@@ -178,9 +201,9 @@ func TestEmbeddedSpec(t *testing.T) {
 		})
 
 		// Standalone handlers are still generated.
-		src := string(fs["oas_spec_gen.go"])
+		src := fs.Get("oas_spec_gen.go")
 		require.Contains(t, src, "func SwaggerUIHandler(")
-		require.NotContains(t, string(fs["oas_cfg_gen.go"]), "WithDocs")
+		require.NotContains(t, fs.Get("oas_cfg_gen.go"), "WithDocs")
 	})
 
 	t.Run("Expanded", func(t *testing.T) {
@@ -190,7 +213,7 @@ func TestEmbeddedSpec(t *testing.T) {
 				SpecSource: SpecSourceExpanded,
 			},
 		})
-		src := string(fs["oas_spec_gen.go"])
+		src := fs.Get("oas_spec_gen.go")
 		require.Contains(t, src, "(expanded: external references are resolved)")
 		require.Contains(t, src, `"title": "Swagger Petstore"`)
 	})
@@ -206,7 +229,7 @@ func TestEmbeddedSpec(t *testing.T) {
 			},
 		})
 		require.Contains(t, g.spec.JSON, "Uses `code` in description")
-		require.Contains(t, string(fs["oas_spec_gen.go"]), "Uses ` + \"`\" + `code` + \"`\" + ` in description")
+		require.Contains(t, fs.Get("oas_spec_gen.go"), "Uses ` + \"`\" + `code` + \"`\" + ` in description")
 	})
 
 	t.Run("DSL", func(t *testing.T) {
@@ -228,7 +251,7 @@ func TestEmbeddedSpec(t *testing.T) {
 		})
 		require.Equal(t, "DSL", g.spec.Title)
 		require.Contains(t, g.spec.JSON, `"/ping"`)
-		require.Contains(t, string(fs["oas_spec_gen.go"]), "func SpecHandler(")
+		require.Contains(t, fs.Get("oas_spec_gen.go"), "func SpecHandler(")
 	})
 }
 

@@ -13,6 +13,7 @@ import (
 	"html/template"
 	"io/fs"
 	"net/http"
+	"path"
 	"strings"
 )
 
@@ -38,6 +39,15 @@ var (
 		return m
 	}()
 )
+
+// contentTypes maps file extensions of embedded assets to their media types.
+var contentTypes = map[string]string{
+	".css":  "text/css; charset=utf-8",
+	".html": "text/html; charset=utf-8",
+	".js":   "text/javascript; charset=utf-8",
+	".png":  "image/png",
+	".txt":  "text/plain; charset=utf-8",
+}
 
 // Assets returns the embedded swagger-ui-dist files.
 func Assets() fs.FS {
@@ -150,6 +160,11 @@ func (h *Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	hdr := w.Header()
 	hdr.Set("Cache-Control", "public, max-age=86400")
 	hdr.Set("ETag", `"`+Version+"-"+name+`"`)
+	// Set Content-Type explicitly: the platform MIME database may map
+	// well-known extensions differently (e.g. ".js" on Windows).
+	if ct, ok := contentTypes[path.Ext(name)]; ok {
+		hdr.Set("Content-Type", ct)
+	}
 	// Name is validated against the list of embedded files by Match.
 	//#nosec G703
 	http.ServeFileFS(w, r, dist, "dist/"+name)
