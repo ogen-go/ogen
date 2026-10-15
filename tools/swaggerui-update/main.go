@@ -86,16 +86,24 @@ func extract(tarball []byte, out string) error {
 		if hdr.Typeflag != tar.TypeReg {
 			continue
 		}
-		// npm tarballs put everything under "package/".
-		name := strings.TrimPrefix(path.Clean(hdr.Name), "package/")
-		if !slices.Contains(files, name) {
+		// npm tarballs put everything under "package/". Only top-level files
+		// from the allow-list are extracted, and the destination path is built
+		// from the allow-list entry rather than from the archive entry name.
+		entry, ok := strings.CutPrefix(path.Clean(hdr.Name), "package/")
+		if !ok || strings.Contains(entry, "/") {
 			continue
 		}
+		idx := slices.Index(files, entry)
+		if idx < 0 {
+			continue
+		}
+		name := files[idx]
+
 		data, err := io.ReadAll(tr)
 		if err != nil {
 			return errors.Wrapf(err, "read %q", name)
 		}
-		// Name is checked against the allow-list above.
+		// The destination directory is a CLI flag and the file name is an allow-list entry.
 		//#nosec G703
 		if err := os.WriteFile(filepath.Join(out, name), data, 0o644); err != nil {
 			return errors.Wrapf(err, "write %q", name)
