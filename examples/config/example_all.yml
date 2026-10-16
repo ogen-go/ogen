@@ -62,6 +62,10 @@ generator:
       - 'client/editors'
       # Enable server response validation.
       - 'server/response/validation'
+      # Embed the OpenAPI document and generate SpecHandler and the WithDocs server option.
+      - 'server/spec'
+      # Generate SwaggerUIHandler and serve Swagger UI via WithDocs (implies server/spec).
+      - 'server/swagger_ui'
       # Enable OpenTelemetry integration.
       - 'ogen/otel'
       # Generate stub handlers for unimplemented operations.
@@ -88,6 +92,10 @@ generator:
       - 'client/editors'
       # Disable server response validation.
       - 'server/response/validation'
+      # Disable embedding the OpenAPI document.
+      - 'server/spec'
+      # Disable Swagger UI generation.
+      - 'server/swagger_ui'
       # Disable OpenTelemetry integration.
       - 'ogen/otel'
       # Disable stub handlers for unimplemented operations.
@@ -113,6 +121,8 @@ generator:
     "text/json": "application/json"
   # Default encoding to use for wildcard content types (e.g. */* or application/*). If empty, wildcard content types are treated as unsupported. Default is empty string.
   wildcard_content_type_default: "application/json"
+  # OpenAPI document embedded by the "server/spec" feature: "auto", "raw" or "expanded". Default is "auto".
+  spec_source: "auto"
 
 # Path to write the expanded OpenAPI spec file. If empty, the expanded spec is not written. Default is empty string.
 expand: ""

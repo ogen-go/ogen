@@ -203,6 +203,53 @@ type GenerateOptions struct {
 	// Initialisms customizes the initialism rules used when generating Go
 	// identifiers (e.g. "id" -> "ID", "url" -> "URL"). See [Initialisms].
 	Initialisms Initialisms `json:"initialisms" yaml:"initialisms"`
+
+	// SpecSource selects the OpenAPI document embedded by the "server/spec" feature.
+	// See [SpecSource].
+	SpecSource SpecSource `json:"spec_source" yaml:"spec_source"`
+}
+
+// SpecSource selects the OpenAPI document embedded by the "server/spec" feature.
+type SpecSource string
+
+const (
+	// SpecSourceAuto embeds the original document if it has no external references,
+	// otherwise the expanded one. This is the default.
+	SpecSourceAuto SpecSource = "auto"
+	// SpecSourceRaw always embeds the original document as it was parsed, including
+	// examples and specification extensions. External references are left unresolved.
+	SpecSourceRaw SpecSource = "raw"
+	// SpecSourceExpanded always embeds the expanded self-contained document with all
+	// references resolved. Examples and specification extensions are not preserved.
+	SpecSourceExpanded SpecSource = "expanded"
+)
+
+// UnmarshalYAML implements [yaml.Unmarshaler].
+func (s *SpecSource) UnmarshalYAML(n *yaml.Node) error {
+	var value string
+	if err := n.Decode(&value); err != nil {
+		return err
+	}
+	return s.Set(value)
+}
+
+// Set implements flag.Value.
+func (s *SpecSource) Set(v string) error {
+	switch src := SpecSource(v); src {
+	case "", SpecSourceAuto, SpecSourceRaw, SpecSourceExpanded:
+		*s = src
+		return nil
+	default:
+		return errors.Errorf(`expected "auto", "raw" or "expanded", got %q`, v)
+	}
+}
+
+// String implements fmt.Stringer.
+func (s SpecSource) String() string {
+	if s == "" {
+		return string(SpecSourceAuto)
+	}
+	return string(s)
 }
 
 // InitialismsInherit is the sentinel value that, when present in an

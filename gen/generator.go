@@ -38,6 +38,7 @@ type Generator struct {
 	router            Router
 	imports           map[string]string
 	equalitySpecs     []*ir.EqualityMethodSpec // Types requiring Equal() methods for uniqueItems validation
+	spec              *EmbeddedSpec            // OpenAPI document to embed, nil if "server/spec" is disabled
 
 	features    FeatureSet      // resolved feature set, built once in NewGenerator
 	initialisms bool            // NamingCamelInitialisms feature: apply initialism rules to camelCase identifiers
@@ -83,9 +84,15 @@ func expandSpec(api *openapi.API, p string) (err error) {
 func NewGenerator(spec *ogen.Spec, opts Options) (*Generator, error) {
 	opts.setDefaults()
 
-	var external jsonschema.ExternalResolver
+	var (
+		external jsonschema.ExternalResolver
+		counting *countingResolver
+	)
 	if opts.Parser.AllowRemote {
-		external = jsonschema.NewExternalResolver(opts.Parser.Remote)
+		counting = &countingResolver{
+			ExternalResolver: jsonschema.NewExternalResolver(opts.Parser.Remote),
+		}
+		external = counting
 	}
 	// Default: allow cross-type constraints unless explicitly set to false
 	allowCrossType := true
@@ -140,6 +147,18 @@ func NewGenerator(spec *ogen.Spec, opts Options) (*Generator, error) {
 	g.rules, err = g.opt.Initialisms.build()
 	if err != nil {
 		return nil, errors.Wrap(err, "build initialisms")
+	}
+
+	if g.features.Has(ServerSpec) || g.features.Has(ServerSwaggerUI) {
+		usedExternal := counting != nil && counting.Used()
+		g.spec, err = embedSpec(spec, api, g.opt.SpecSource, usedExternal)
+		if err != nil {
+			return nil, errors.Wrap(err, "embed spec")
+		}
+		if g.spec.Expanded {
+			g.log.Info("Embedding expanded OpenAPI document: " +
+				"external references are resolved, examples and extensions are not preserved")
+		}
 	}
 
 	if err := g.makeIR(api); err != nil {

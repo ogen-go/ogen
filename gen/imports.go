@@ -45,6 +45,7 @@ func defaultImports() map[string]string {
 		"github.com/ogen-go/ogen/ogenerrors": "",
 		"github.com/ogen-go/ogen/otelogen":   "",
 		"github.com/ogen-go/ogen/sse":        "",
+		"github.com/ogen-go/ogen/swaggerui":  "",
 		"github.com/ogen-go/ogen/uri":        "",
 		"github.com/ogen-go/ogen/validate":   "",
 	}

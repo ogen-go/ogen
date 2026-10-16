@@ -48,6 +48,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	{{- if $.DocsOptionEnabled }}
+	if d := s.cfg.Docs; d != nil && d.serve(w, r, elem) {
+		return
+	}
+	{{- end }}
+
 	{{- if gt $router.MaxParametersCount 0 }}
 	args := [{{ $router.MaxParametersCount }}]string{}
 	{{- end }}
