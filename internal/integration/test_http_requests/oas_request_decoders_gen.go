@@ -162,7 +162,7 @@ func (s *Server) decodeAllRequestBodiesRequest(r *http.Request) (
 					}
 				}
 			}
-			request = AllRequestBodiesApplicationXWwwFormUrlencoded(unwrapped)
+			request = AllRequestBodiesApplicationXWwwFormUrlencoded{unwrapped}
 		}
 		return &request, rawBody, close, nil
 	case ct == "multipart/form-data":
@@ -398,7 +398,7 @@ func (s *Server) decodeAllRequestBodiesOptionalRequest(r *http.Request) (
 					}
 				}
 			}
-			request = AllRequestBodiesOptionalApplicationXWwwFormUrlencoded(unwrapped)
+			request = AllRequestBodiesOptionalApplicationXWwwFormUrlencoded{unwrapped}
 		}
 		return &request, rawBody, close, nil
 	case ct == "multipart/form-data":

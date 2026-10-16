@@ -188,7 +188,7 @@ func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) decode{{ $op.Name }}Req
 	{
 		var unwrapped {{ $t.AliasTo.Go -}}
 		{{ template "decode_form_request" elem $t.AliasTo "unwrapped" }}
-    	{{ $v }} = {{ $t.Go }}(unwrapped)
+    	{{ $v }} = {{ $t.Go }}{unwrapped}
 	}
 {{- else if $t.IsGeneric }}
 	{

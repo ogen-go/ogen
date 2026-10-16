@@ -291,6 +291,7 @@ func (s *ArrayTest) Decode(d *jx.Decoder) error {
 			if err := func() error {
 				switch tt := d.Next(); tt {
 				case jx.Null:
+					s.NullableRequired = nil
 					if err := d.Skip(); err != nil {
 						return err
 					}
@@ -3727,6 +3728,7 @@ func (s *Issue1461NullableTest) Decode(d *jx.Decoder) error {
 			if err := func() error {
 				switch tt := d.Next(); tt {
 				case jx.Null:
+					s.Banana = nil
 					if err := d.Skip(); err != nil {
 						return err
 					}
