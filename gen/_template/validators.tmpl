@@ -183,7 +183,8 @@
 	{{- end }}
 {{- end }}
 
-{{- if gt (len $va.Ogen) 0 }}
+{{- /* Struct runs its object-level validators in its own Validate method. */}}
+{{- if and (gt (len $va.Ogen) 0) (not $t.IsStruct) }}
 	{{- $validated = true }}
 	{{- range $name, $params := $va.Ogen }}
 	if err := validate.Ogen({{ quote $name }}, {{ $.Var }}, {{ print_go $params }}); err != nil {
@@ -217,7 +218,7 @@ func (s {{ $t.ReadOnlyReceiver }}) Validate() error {
 	// Object-level pluggable validation
 	{{- range $name, $params := $t.Validators.Ogen }}
 	if err := func() error {
-		if err := validate.ValidateWith({{ quote $name }}, s, {{ print_go $params }}); err != nil {
+		if err := validate.Ogen({{ quote $name }}, *s, {{ print_go $params }}); err != nil {
 			return errors.Wrap(err, {{ quote $name }})
 		}
 		return nil
