@@ -1,0 +1,61 @@
+openapi: 3.1.0
+info:
+  title: Webhook Security Test API
+  version: 0.1.0
+paths:
+  /status:
+    get:
+      operationId: getStatus
+      security:
+        - tokenHeader: []
+      responses:
+        "200":
+          description: OK
+webhooks:
+  event:
+    post:
+      operationId: eventWebhook
+      security:
+        - tokenHeader: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Event"
+      responses:
+        "200":
+          description: OK
+  signed:
+    post:
+      operationId: signedWebhook
+      security:
+        - signature: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Event"
+      responses:
+        "200":
+          description: OK
+components:
+  schemas:
+    Event:
+      type: object
+      required:
+        - id
+      properties:
+        id:
+          type: string
+  securitySchemes:
+    tokenHeader:
+      type: apiKey
+      in: header
+      name: X-Token
+    signature:
+      type: apiKey
+      in: header
+      name: X-Signature
+      x-ogen-custom-security: true
