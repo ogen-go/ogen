@@ -171,39 +171,51 @@ func loadExternal(pkgPath, typeName string) (pkgName string, encode, decode Exte
 		return "", -1, -1, errors.Wrap(err, "failed to load packages")
 	}
 
-	getType := func(pkgs []*packages.Package, pkgPath, typeName string) *types.Named {
+	getType := func(pkgs []*packages.Package, pkgPath, typeName string) types.Type {
 		for _, pkg := range pkgs {
 			if pkg.Types == nil || pkg.Types.Scope() == nil {
 				continue
 			}
 			obj := pkg.Types.Scope().Lookup(typeName)
 			if obj != nil && obj.Pkg().Path() == pkgPath {
-				if named, ok := obj.Type().(*types.Named); ok {
-					return named
-				}
+				return obj.Type()
 			}
 		}
 		return nil
 	}
 
-	getIface := func(pkgs []*packages.Package, pkgPath, typeName string) *types.Interface {
-		return getType(pkgs, pkgPath, typeName).Underlying().(*types.Interface).Complete()
+	getIface := func(pkgs []*packages.Package, pkgPath, typeName string) (*types.Interface, error) {
+		typ := getType(pkgs, pkgPath, typeName)
+		if typ == nil {
+			return nil, errors.Errorf("interface %s.%s not found", pkgPath, typeName)
+		}
+		iface, ok := types.Unalias(typ).Underlying().(*types.Interface)
+		if !ok {
+			return nil, errors.Errorf("type %s.%s is not an interface", pkgPath, typeName)
+		}
+		return iface.Complete(), nil
 	}
 
-	typ := getType(pkgs, pkgPath, typeName)
-	if typ == nil {
+	typ, ok := types.Unalias(getType(pkgs, pkgPath, typeName)).(*types.Named)
+	if !ok || typ == nil {
 		return "", -1, -1, errors.New("type not found")
 	}
 	ptr := types.NewPointer(typ)
 
 	for name, kind := range encoders {
-		iface := getIface(pkgs, name[0], name[1])
+		iface, err := getIface(pkgs, name[0], name[1])
+		if err != nil {
+			return "", -1, -1, err
+		}
 		if types.Implements(typ, iface) || types.Implements(ptr, iface) {
 			encode |= kind
 		}
 	}
 	for name, kind := range decoders {
-		iface := getIface(pkgs, name[0], name[1])
+		iface, err := getIface(pkgs, name[0], name[1])
+		if err != nil {
+			return "", -1, -1, err
+		}
 		if types.Implements(typ, iface) || types.Implements(ptr, iface) {
 			decode |= kind
 		}
