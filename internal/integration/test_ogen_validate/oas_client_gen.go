@@ -126,6 +126,7 @@ func (c *Client) sendCreateUser(ctx context.Context, request *User) (res *User, 
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/user"
 	if err := encodeCreateUserRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}

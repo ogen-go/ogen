@@ -134,6 +134,7 @@ func (c *Client) sendIntegerNumber(ctx context.Context) (res *IntegerNumber, err
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/integerNumber"
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -212,6 +213,7 @@ func (c *Client) sendJaegerAnyOf(ctx context.Context) (res *JaegerAnyOf, err err
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/jaegerAnyOf"
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -290,6 +292,7 @@ func (c *Client) sendOneUUID(ctx context.Context) (res *OneUUID, err error) {
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/oneUUID"
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)

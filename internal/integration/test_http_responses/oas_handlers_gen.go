@@ -37,6 +37,7 @@ func (c *codeRecorder) Unwrap() http.ResponseWriter {
 //
 // GET /anyContentTypeBinaryStringSchema
 func (s *Server) handleAnyContentTypeBinaryStringSchemaRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	r.Pattern = "/anyContentTypeBinaryStringSchema"
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
 	otelAttrs := []attribute.KeyValue{
@@ -159,6 +160,7 @@ func (s *Server) handleAnyContentTypeBinaryStringSchemaRequest(args [0]string, a
 //
 // GET /anyContentTypeBinaryStringSchemaDefault
 func (s *Server) handleAnyContentTypeBinaryStringSchemaDefaultRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	r.Pattern = "/anyContentTypeBinaryStringSchemaDefault"
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
 	otelAttrs := []attribute.KeyValue{
@@ -281,6 +283,7 @@ func (s *Server) handleAnyContentTypeBinaryStringSchemaDefaultRequest(args [0]st
 //
 // GET /combined
 func (s *Server) handleCombinedRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	r.Pattern = "/combined"
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
 	otelAttrs := []attribute.KeyValue{
@@ -422,6 +425,7 @@ func (s *Server) handleCombinedRequest(args [0]string, argsEscaped bool, w http.
 //
 // GET /headers200
 func (s *Server) handleHeaders200Request(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	r.Pattern = "/headers200"
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
 	otelAttrs := []attribute.KeyValue{
@@ -544,6 +548,7 @@ func (s *Server) handleHeaders200Request(args [0]string, argsEscaped bool, w htt
 //
 // GET /headersCombined
 func (s *Server) handleHeadersCombinedRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	r.Pattern = "/headersCombined"
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
 	otelAttrs := []attribute.KeyValue{
@@ -685,6 +690,7 @@ func (s *Server) handleHeadersCombinedRequest(args [0]string, argsEscaped bool, 
 //
 // GET /headersDefault
 func (s *Server) handleHeadersDefaultRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	r.Pattern = "/headersDefault"
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
 	otelAttrs := []attribute.KeyValue{
@@ -807,6 +813,7 @@ func (s *Server) handleHeadersDefaultRequest(args [0]string, argsEscaped bool, w
 //
 // GET /headersJSON
 func (s *Server) handleHeadersJSONRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	r.Pattern = "/headersJSON"
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
 	otelAttrs := []attribute.KeyValue{
@@ -929,6 +936,7 @@ func (s *Server) handleHeadersJSONRequest(args [0]string, argsEscaped bool, w ht
 //
 // GET /headersPattern
 func (s *Server) handleHeadersPatternRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	r.Pattern = "/headersPattern"
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
 	otelAttrs := []attribute.KeyValue{
@@ -1054,6 +1062,7 @@ func (s *Server) handleHeadersPatternRequest(args [0]string, argsEscaped bool, w
 //
 // GET /intersectPatternCode
 func (s *Server) handleIntersectPatternCodeRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	r.Pattern = "/intersectPatternCode"
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
 	otelAttrs := []attribute.KeyValue{
@@ -1195,6 +1204,7 @@ func (s *Server) handleIntersectPatternCodeRequest(args [0]string, argsEscaped b
 //
 // GET /multipleGenericResponses
 func (s *Server) handleMultipleGenericResponsesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	r.Pattern = "/multipleGenericResponses"
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
 	otelAttrs := []attribute.KeyValue{
@@ -1317,6 +1327,7 @@ func (s *Server) handleMultipleGenericResponsesRequest(args [0]string, argsEscap
 //
 // GET /octetStreamBinaryStringSchema
 func (s *Server) handleOctetStreamBinaryStringSchemaRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	r.Pattern = "/octetStreamBinaryStringSchema"
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
 	otelAttrs := []attribute.KeyValue{
@@ -1439,6 +1450,7 @@ func (s *Server) handleOctetStreamBinaryStringSchemaRequest(args [0]string, args
 //
 // GET /octetStreamEmptySchema
 func (s *Server) handleOctetStreamEmptySchemaRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	r.Pattern = "/octetStreamEmptySchema"
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
 	otelAttrs := []attribute.KeyValue{
@@ -1563,6 +1575,7 @@ func (s *Server) handleOctetStreamEmptySchemaRequest(args [0]string, argsEscaped
 //
 // GET /optionalHeaders
 func (s *Server) handleOptionalHeadersRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	r.Pattern = "/optionalHeaders"
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
 	otelAttrs := []attribute.KeyValue{
@@ -1685,6 +1698,7 @@ func (s *Server) handleOptionalHeadersRequest(args [0]string, argsEscaped bool, 
 //
 // POST /streamJSON
 func (s *Server) handleStreamJSONRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	r.Pattern = "/streamJSON"
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
 	otelAttrs := []attribute.KeyValue{
@@ -1826,6 +1840,7 @@ func (s *Server) handleStreamJSONRequest(args [0]string, argsEscaped bool, w htt
 //
 // GET /textPlainBinaryStringSchema
 func (s *Server) handleTextPlainBinaryStringSchemaRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	r.Pattern = "/textPlainBinaryStringSchema"
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
 	otelAttrs := []attribute.KeyValue{

@@ -379,6 +379,7 @@ func (c *Client) sendDataGetFormat(ctx context.Context, params DataGetFormatPara
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/name/{id}/{foo}1234{bar}-{baz}!{kek}"
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -513,6 +514,7 @@ func (c *Client) sendDefaultTest(ctx context.Context, request *DefaultTest, para
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/defaultTest"
 	if err := encodeDefaultTestRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -596,6 +598,7 @@ func (c *Client) sendErrorGet(ctx context.Context) (res *ErrorStatusCode, err er
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/error"
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -708,6 +711,7 @@ func (c *Client) sendFoobarGet(ctx context.Context, params FoobarGetParams) (res
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/foobar"
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -804,6 +808,7 @@ func (c *Client) sendFoobarPost(ctx context.Context, request OptPet) (res Foobar
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/foobar"
 	if err := encodeFoobarPostRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -884,6 +889,7 @@ func (c *Client) sendFoobarPut(ctx context.Context) (res *FoobarPutDef, err erro
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/foobar"
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -962,6 +968,7 @@ func (c *Client) sendNoAdditionalPropertiesTest(ctx context.Context) (res *NoAdd
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/noAdditionalPropertiesTest"
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -1040,6 +1047,7 @@ func (c *Client) sendNullableDefaultResponse(ctx context.Context) (res *NilIntSt
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/nullableDefaultResponse"
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -1127,6 +1135,7 @@ func (c *Client) sendOneofBug(ctx context.Context, request *OneOfBugs) (res *One
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/oneofBug"
 	if err := encodeOneofBugRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -1207,6 +1216,7 @@ func (c *Client) sendPatternRecursiveMapGet(ctx context.Context) (res PatternRec
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/patternRecursiveMap"
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -1303,6 +1313,7 @@ func (c *Client) sendPetCreate(ctx context.Context, request OptPet) (res *Pet, e
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/pet"
 	if err := encodePetCreateRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -1404,6 +1415,7 @@ func (c *Client) sendPetFriendsNamesByID(ctx context.Context, params PetFriendsN
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/pet/friendNames/{id}"
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -1516,6 +1528,7 @@ func (c *Client) sendPetGet(ctx context.Context, params PetGetParams) (res PetGe
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/pet"
 
 	stage = "EncodeHeaderParams"
 	h := uri.NewHeaderEncoder(r.Header)
@@ -1657,6 +1670,7 @@ func (c *Client) sendPetGetAvatarByID(ctx context.Context, params PetGetAvatarBy
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/pet/avatar"
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -1756,6 +1770,7 @@ func (c *Client) sendPetGetAvatarByName(ctx context.Context, params PetGetAvatar
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/pet/{name}/avatar"
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -1854,6 +1869,7 @@ func (c *Client) sendPetGetByName(ctx context.Context, params PetGetByNameParams
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/pet/{name}"
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -1952,6 +1968,7 @@ func (c *Client) sendPetNameByID(ctx context.Context, params PetNameByIDParams) 
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/pet/name/{id}"
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -2045,6 +2062,7 @@ func (c *Client) sendPetUpdateNameAliasPost(ctx context.Context, request OptPetN
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/pet/updateNameAlias"
 	if err := encodePetUpdateNameAliasPostRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -2153,6 +2171,7 @@ func (c *Client) sendPetUpdateNamePost(ctx context.Context, request OptString) (
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/pet/updateName"
 	if err := encodePetUpdateNamePostRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -2254,6 +2273,7 @@ func (c *Client) sendPetUploadAvatarByID(ctx context.Context, request PetUploadA
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/pet/avatar"
 	if err := encodePetUploadAvatarByIDRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -2334,6 +2354,7 @@ func (c *Client) sendRecursiveArrayGet(ctx context.Context) (res RecursiveArray,
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/recursiveArray"
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -2411,6 +2432,7 @@ func (c *Client) sendRecursiveMapGet(ctx context.Context) (res *RecursiveMap, er
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/recursiveMap"
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -2489,6 +2511,7 @@ func (c *Client) sendSecurityTest(ctx context.Context) (res string, err error) {
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/securityTest"
 
 	{
 		type bitset = [1]uint8
@@ -2599,6 +2622,7 @@ func (c *Client) sendStringIntMapGet(ctx context.Context) (res *StringIntMap, er
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/stringIntMap"
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -2686,6 +2710,7 @@ func (c *Client) sendTestDecimalValidation(ctx context.Context, request *TestDec
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/testDecimalValidation"
 	if err := encodeTestDecimalValidationRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -2776,6 +2801,7 @@ func (c *Client) sendTestFloatValidation(ctx context.Context, request *TestFloat
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/testFloatValidation"
 	if err := encodeTestFloatValidationRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -2857,6 +2883,7 @@ func (c *Client) sendTestInlineOneof(ctx context.Context) (res *TestInlineOneOf,
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/testInlineOneof"
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -2935,6 +2962,7 @@ func (c *Client) sendTestIssue1310(ctx context.Context) (res *Issue1310, err err
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/testIssue1310"
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -3013,6 +3041,7 @@ func (c *Client) sendTestIssue1461(ctx context.Context) (res *Issue1461, err err
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/testIssue1461"
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -3091,6 +3120,7 @@ func (c *Client) sendTestNullableOneofs(ctx context.Context) (res TestNullableOn
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/testNullableOneofs"
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -3169,6 +3199,7 @@ func (c *Client) sendTestTuple(ctx context.Context) (res *TupleTest, err error) 
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/testTuple"
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -3247,6 +3278,7 @@ func (c *Client) sendTestTupleNamed(ctx context.Context) (res *TupleNamedTest, e
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/testTupleNamed"
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -3325,6 +3357,7 @@ func (c *Client) sendTestUniqueItems(ctx context.Context) (res *UniqueItemsTest,
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/testUniqueItems"
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
