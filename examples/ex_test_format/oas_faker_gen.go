@@ -1208,6 +1208,18 @@ func (s *TestRequestFormatTestReq) SetFake() {
 	}
 	{
 		{
+			s.RequiredArrayIntegerUnixtime = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Time
+				{
+					elem = time.Now()
+				}
+				s.RequiredArrayIntegerUnixtime = append(s.RequiredArrayIntegerUnixtime, elem)
+			}
+		}
+	}
+	{
+		{
 			s.RequiredArrayNull = nil
 			for i := 0; i < 0; i++ {
 				var elem struct{}
@@ -1700,6 +1712,18 @@ func (s *TestRequestFormatTestReq) SetFake() {
 	}
 	{
 		{
+			s.RequiredArrayStringUnixtime = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Time
+				{
+					elem = time.Now()
+				}
+				s.RequiredArrayStringUnixtime = append(s.RequiredArrayStringUnixtime, elem)
+			}
+		}
+	}
+	{
+		{
 			s.RequiredArrayStringURI = nil
 			for i := 0; i < 0; i++ {
 				var elem url.URL
@@ -2047,6 +2071,25 @@ func (s *TestRequestFormatTestReq) SetFake() {
 					}
 				}
 				s.RequiredDoubleArrayIntegerUnixMinusSeconds = append(s.RequiredDoubleArrayIntegerUnixMinusSeconds, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayIntegerUnixtime = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Time
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Time
+						{
+							elemElem = time.Now()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayIntegerUnixtime = append(s.RequiredDoubleArrayIntegerUnixtime, elem)
 			}
 		}
 	}
@@ -2831,6 +2874,25 @@ func (s *TestRequestFormatTestReq) SetFake() {
 	}
 	{
 		{
+			s.RequiredDoubleArrayStringUnixtime = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Time
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Time
+						{
+							elemElem = time.Now()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringUnixtime = append(s.RequiredDoubleArrayStringUnixtime, elem)
+			}
+		}
+	}
+	{
+		{
 			s.RequiredDoubleArrayStringURI = nil
 			for i := 0; i < 0; i++ {
 				var elem []url.URL
@@ -2940,6 +3002,11 @@ func (s *TestRequestFormatTestReq) SetFake() {
 	{
 		{
 			s.RequiredIntegerUnixMinusSeconds = time.Now()
+		}
+	}
+	{
+		{
+			s.RequiredIntegerUnixtime = time.Now()
 		}
 	}
 	{
@@ -3145,6 +3212,11 @@ func (s *TestRequestFormatTestReq) SetFake() {
 	{
 		{
 			s.RequiredStringUnixMinusSeconds = time.Now()
+		}
+	}
+	{
+		{
+			s.RequiredStringUnixtime = time.Now()
 		}
 	}
 	{
@@ -3363,6 +3435,18 @@ func (s *TestRequestFormatTestReq) SetFake() {
 					elem = time.Now()
 				}
 				s.OptionalArrayIntegerUnixMinusSeconds = append(s.OptionalArrayIntegerUnixMinusSeconds, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayIntegerUnixtime = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Time
+				{
+					elem = time.Now()
+				}
+				s.OptionalArrayIntegerUnixtime = append(s.OptionalArrayIntegerUnixtime, elem)
 			}
 		}
 	}
@@ -3860,6 +3944,18 @@ func (s *TestRequestFormatTestReq) SetFake() {
 	}
 	{
 		{
+			s.OptionalArrayStringUnixtime = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Time
+				{
+					elem = time.Now()
+				}
+				s.OptionalArrayStringUnixtime = append(s.OptionalArrayStringUnixtime, elem)
+			}
+		}
+	}
+	{
+		{
 			s.OptionalArrayStringURI = nil
 			for i := 0; i < 0; i++ {
 				var elem url.URL
@@ -4207,6 +4303,25 @@ func (s *TestRequestFormatTestReq) SetFake() {
 					}
 				}
 				s.OptionalDoubleArrayIntegerUnixMinusSeconds = append(s.OptionalDoubleArrayIntegerUnixMinusSeconds, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayIntegerUnixtime = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Time
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Time
+						{
+							elemElem = time.Now()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayIntegerUnixtime = append(s.OptionalDoubleArrayIntegerUnixtime, elem)
 			}
 		}
 	}
@@ -4991,6 +5106,25 @@ func (s *TestRequestFormatTestReq) SetFake() {
 	}
 	{
 		{
+			s.OptionalDoubleArrayStringUnixtime = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Time
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Time
+						{
+							elemElem = time.Now()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringUnixtime = append(s.OptionalDoubleArrayStringUnixtime, elem)
+			}
+		}
+	}
+	{
+		{
 			s.OptionalDoubleArrayStringURI = nil
 			for i := 0; i < 0; i++ {
 				var elem []url.URL
@@ -5100,6 +5234,11 @@ func (s *TestRequestFormatTestReq) SetFake() {
 	{
 		{
 			s.OptionalIntegerUnixMinusSeconds.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalIntegerUnixtime.SetFake()
 		}
 	}
 	{
@@ -5305,6 +5444,11 @@ func (s *TestRequestFormatTestReq) SetFake() {
 	{
 		{
 			s.OptionalStringUnixMinusSeconds.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringUnixtime.SetFake()
 		}
 	}
 	{
@@ -5536,6 +5680,18 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 	}
 	{
 		{
+			s.RequiredArrayIntegerUnixtime = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Time
+				{
+					elem = time.Now()
+				}
+				s.RequiredArrayIntegerUnixtime = append(s.RequiredArrayIntegerUnixtime, elem)
+			}
+		}
+	}
+	{
+		{
 			s.RequiredArrayNull = nil
 			for i := 0; i < 0; i++ {
 				var elem struct{}
@@ -6028,6 +6184,18 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 	}
 	{
 		{
+			s.RequiredArrayStringUnixtime = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Time
+				{
+					elem = time.Now()
+				}
+				s.RequiredArrayStringUnixtime = append(s.RequiredArrayStringUnixtime, elem)
+			}
+		}
+	}
+	{
+		{
 			s.RequiredArrayStringURI = nil
 			for i := 0; i < 0; i++ {
 				var elem url.URL
@@ -6375,6 +6543,25 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 					}
 				}
 				s.RequiredDoubleArrayIntegerUnixMinusSeconds = append(s.RequiredDoubleArrayIntegerUnixMinusSeconds, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayIntegerUnixtime = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Time
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Time
+						{
+							elemElem = time.Now()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayIntegerUnixtime = append(s.RequiredDoubleArrayIntegerUnixtime, elem)
 			}
 		}
 	}
@@ -7159,6 +7346,25 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 	}
 	{
 		{
+			s.RequiredDoubleArrayStringUnixtime = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Time
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Time
+						{
+							elemElem = time.Now()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringUnixtime = append(s.RequiredDoubleArrayStringUnixtime, elem)
+			}
+		}
+	}
+	{
+		{
 			s.RequiredDoubleArrayStringURI = nil
 			for i := 0; i < 0; i++ {
 				var elem []url.URL
@@ -7268,6 +7474,11 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 	{
 		{
 			s.RequiredIntegerUnixMinusSeconds = time.Now()
+		}
+	}
+	{
+		{
+			s.RequiredIntegerUnixtime = time.Now()
 		}
 	}
 	{
@@ -7473,6 +7684,11 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 	{
 		{
 			s.RequiredStringUnixMinusSeconds = time.Now()
+		}
+	}
+	{
+		{
+			s.RequiredStringUnixtime = time.Now()
 		}
 	}
 	{
@@ -7691,6 +7907,18 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 					elem = time.Now()
 				}
 				s.OptionalArrayIntegerUnixMinusSeconds = append(s.OptionalArrayIntegerUnixMinusSeconds, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayIntegerUnixtime = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Time
+				{
+					elem = time.Now()
+				}
+				s.OptionalArrayIntegerUnixtime = append(s.OptionalArrayIntegerUnixtime, elem)
 			}
 		}
 	}
@@ -8188,6 +8416,18 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 	}
 	{
 		{
+			s.OptionalArrayStringUnixtime = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Time
+				{
+					elem = time.Now()
+				}
+				s.OptionalArrayStringUnixtime = append(s.OptionalArrayStringUnixtime, elem)
+			}
+		}
+	}
+	{
+		{
 			s.OptionalArrayStringURI = nil
 			for i := 0; i < 0; i++ {
 				var elem url.URL
@@ -8535,6 +8775,25 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 					}
 				}
 				s.OptionalDoubleArrayIntegerUnixMinusSeconds = append(s.OptionalDoubleArrayIntegerUnixMinusSeconds, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayIntegerUnixtime = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Time
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Time
+						{
+							elemElem = time.Now()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayIntegerUnixtime = append(s.OptionalDoubleArrayIntegerUnixtime, elem)
 			}
 		}
 	}
@@ -9319,6 +9578,25 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 	}
 	{
 		{
+			s.OptionalDoubleArrayStringUnixtime = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Time
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Time
+						{
+							elemElem = time.Now()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringUnixtime = append(s.OptionalDoubleArrayStringUnixtime, elem)
+			}
+		}
+	}
+	{
+		{
 			s.OptionalDoubleArrayStringURI = nil
 			for i := 0; i < 0; i++ {
 				var elem []url.URL
@@ -9428,6 +9706,11 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 	{
 		{
 			s.OptionalIntegerUnixMinusSeconds.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalIntegerUnixtime.SetFake()
 		}
 	}
 	{
@@ -9633,6 +9916,11 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 	{
 		{
 			s.OptionalStringUnixMinusSeconds.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringUnixtime.SetFake()
 		}
 	}
 	{
@@ -9864,6 +10152,18 @@ func (s *TestResponseFormatTestOK) SetFake() {
 	}
 	{
 		{
+			s.RequiredArrayIntegerUnixtime = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Time
+				{
+					elem = time.Now()
+				}
+				s.RequiredArrayIntegerUnixtime = append(s.RequiredArrayIntegerUnixtime, elem)
+			}
+		}
+	}
+	{
+		{
 			s.RequiredArrayNull = nil
 			for i := 0; i < 0; i++ {
 				var elem struct{}
@@ -10356,6 +10656,18 @@ func (s *TestResponseFormatTestOK) SetFake() {
 	}
 	{
 		{
+			s.RequiredArrayStringUnixtime = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Time
+				{
+					elem = time.Now()
+				}
+				s.RequiredArrayStringUnixtime = append(s.RequiredArrayStringUnixtime, elem)
+			}
+		}
+	}
+	{
+		{
 			s.RequiredArrayStringURI = nil
 			for i := 0; i < 0; i++ {
 				var elem url.URL
@@ -10703,6 +11015,25 @@ func (s *TestResponseFormatTestOK) SetFake() {
 					}
 				}
 				s.RequiredDoubleArrayIntegerUnixMinusSeconds = append(s.RequiredDoubleArrayIntegerUnixMinusSeconds, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayIntegerUnixtime = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Time
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Time
+						{
+							elemElem = time.Now()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayIntegerUnixtime = append(s.RequiredDoubleArrayIntegerUnixtime, elem)
 			}
 		}
 	}
@@ -11487,6 +11818,25 @@ func (s *TestResponseFormatTestOK) SetFake() {
 	}
 	{
 		{
+			s.RequiredDoubleArrayStringUnixtime = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Time
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Time
+						{
+							elemElem = time.Now()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringUnixtime = append(s.RequiredDoubleArrayStringUnixtime, elem)
+			}
+		}
+	}
+	{
+		{
 			s.RequiredDoubleArrayStringURI = nil
 			for i := 0; i < 0; i++ {
 				var elem []url.URL
@@ -11596,6 +11946,11 @@ func (s *TestResponseFormatTestOK) SetFake() {
 	{
 		{
 			s.RequiredIntegerUnixMinusSeconds = time.Now()
+		}
+	}
+	{
+		{
+			s.RequiredIntegerUnixtime = time.Now()
 		}
 	}
 	{
@@ -11801,6 +12156,11 @@ func (s *TestResponseFormatTestOK) SetFake() {
 	{
 		{
 			s.RequiredStringUnixMinusSeconds = time.Now()
+		}
+	}
+	{
+		{
+			s.RequiredStringUnixtime = time.Now()
 		}
 	}
 	{
@@ -12019,6 +12379,18 @@ func (s *TestResponseFormatTestOK) SetFake() {
 					elem = time.Now()
 				}
 				s.OptionalArrayIntegerUnixMinusSeconds = append(s.OptionalArrayIntegerUnixMinusSeconds, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayIntegerUnixtime = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Time
+				{
+					elem = time.Now()
+				}
+				s.OptionalArrayIntegerUnixtime = append(s.OptionalArrayIntegerUnixtime, elem)
 			}
 		}
 	}
@@ -12516,6 +12888,18 @@ func (s *TestResponseFormatTestOK) SetFake() {
 	}
 	{
 		{
+			s.OptionalArrayStringUnixtime = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Time
+				{
+					elem = time.Now()
+				}
+				s.OptionalArrayStringUnixtime = append(s.OptionalArrayStringUnixtime, elem)
+			}
+		}
+	}
+	{
+		{
 			s.OptionalArrayStringURI = nil
 			for i := 0; i < 0; i++ {
 				var elem url.URL
@@ -12863,6 +13247,25 @@ func (s *TestResponseFormatTestOK) SetFake() {
 					}
 				}
 				s.OptionalDoubleArrayIntegerUnixMinusSeconds = append(s.OptionalDoubleArrayIntegerUnixMinusSeconds, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayIntegerUnixtime = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Time
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Time
+						{
+							elemElem = time.Now()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayIntegerUnixtime = append(s.OptionalDoubleArrayIntegerUnixtime, elem)
 			}
 		}
 	}
@@ -13647,6 +14050,25 @@ func (s *TestResponseFormatTestOK) SetFake() {
 	}
 	{
 		{
+			s.OptionalDoubleArrayStringUnixtime = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Time
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Time
+						{
+							elemElem = time.Now()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringUnixtime = append(s.OptionalDoubleArrayStringUnixtime, elem)
+			}
+		}
+	}
+	{
+		{
 			s.OptionalDoubleArrayStringURI = nil
 			for i := 0; i < 0; i++ {
 				var elem []url.URL
@@ -13756,6 +14178,11 @@ func (s *TestResponseFormatTestOK) SetFake() {
 	{
 		{
 			s.OptionalIntegerUnixMinusSeconds.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalIntegerUnixtime.SetFake()
 		}
 	}
 	{
@@ -13961,6 +14388,11 @@ func (s *TestResponseFormatTestOK) SetFake() {
 	{
 		{
 			s.OptionalStringUnixMinusSeconds.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringUnixtime.SetFake()
 		}
 	}
 	{

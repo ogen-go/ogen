@@ -7693,6 +7693,7 @@ type TestRequestFormatTestReq struct {
 	RequiredArrayIntegerUnixMinusMilli         []time.Time          `json:"required_array_integer_unix-milli"`
 	RequiredArrayIntegerUnixMinusNano          []time.Time          `json:"required_array_integer_unix-nano"`
 	RequiredArrayIntegerUnixMinusSeconds       []time.Time          `json:"required_array_integer_unix-seconds"`
+	RequiredArrayIntegerUnixtime               []time.Time          `json:"required_array_integer_unixtime"`
 	RequiredArrayNull                          []struct{}           `json:"required_array_null"`
 	RequiredArrayNumber                        []float64            `json:"required_array_number"`
 	RequiredArrayNumberDecimal                 []decimal.Decimal    `json:"required_array_number_decimal"`
@@ -7734,6 +7735,7 @@ type TestRequestFormatTestReq struct {
 	RequiredArrayStringUnixMinusMilli          []time.Time          `json:"required_array_string_unix-milli"`
 	RequiredArrayStringUnixMinusNano           []time.Time          `json:"required_array_string_unix-nano"`
 	RequiredArrayStringUnixMinusSeconds        []time.Time          `json:"required_array_string_unix-seconds"`
+	RequiredArrayStringUnixtime                []time.Time          `json:"required_array_string_unixtime"`
 	RequiredArrayStringURI                     []url.URL            `json:"required_array_string_uri"`
 	RequiredArrayStringUUID                    []uuid.UUID          `json:"required_array_string_uuid"`
 	RequiredBoolean                            bool                 `json:"required_boolean"`
@@ -7754,6 +7756,7 @@ type TestRequestFormatTestReq struct {
 	RequiredDoubleArrayIntegerUnixMinusMilli   [][]time.Time        `json:"required_double_array_integer_unix-milli"`
 	RequiredDoubleArrayIntegerUnixMinusNano    [][]time.Time        `json:"required_double_array_integer_unix-nano"`
 	RequiredDoubleArrayIntegerUnixMinusSeconds [][]time.Time        `json:"required_double_array_integer_unix-seconds"`
+	RequiredDoubleArrayIntegerUnixtime         [][]time.Time        `json:"required_double_array_integer_unixtime"`
 	RequiredDoubleArrayNull                    [][]struct{}         `json:"required_double_array_null"`
 	RequiredDoubleArrayNumber                  [][]float64          `json:"required_double_array_number"`
 	RequiredDoubleArrayNumberDecimal           [][]decimal.Decimal  `json:"required_double_array_number_decimal"`
@@ -7795,6 +7798,7 @@ type TestRequestFormatTestReq struct {
 	RequiredDoubleArrayStringUnixMinusMilli    [][]time.Time        `json:"required_double_array_string_unix-milli"`
 	RequiredDoubleArrayStringUnixMinusNano     [][]time.Time        `json:"required_double_array_string_unix-nano"`
 	RequiredDoubleArrayStringUnixMinusSeconds  [][]time.Time        `json:"required_double_array_string_unix-seconds"`
+	RequiredDoubleArrayStringUnixtime          [][]time.Time        `json:"required_double_array_string_unixtime"`
 	RequiredDoubleArrayStringURI               [][]url.URL          `json:"required_double_array_string_uri"`
 	RequiredDoubleArrayStringUUID              [][]uuid.UUID        `json:"required_double_array_string_uuid"`
 	RequiredInteger                            int                  `json:"required_integer"`
@@ -7812,6 +7816,7 @@ type TestRequestFormatTestReq struct {
 	RequiredIntegerUnixMinusMilli              time.Time            `json:"required_integer_unix-milli"`
 	RequiredIntegerUnixMinusNano               time.Time            `json:"required_integer_unix-nano"`
 	RequiredIntegerUnixMinusSeconds            time.Time            `json:"required_integer_unix-seconds"`
+	RequiredIntegerUnixtime                    time.Time            `json:"required_integer_unixtime"`
 	RequiredNull                               struct{}             `json:"required_null"`
 	RequiredNumber                             float64              `json:"required_number"`
 	RequiredNumberDecimal                      decimal.Decimal      `json:"required_number_decimal"`
@@ -7853,6 +7858,7 @@ type TestRequestFormatTestReq struct {
 	RequiredStringUnixMinusMilli               time.Time            `json:"required_string_unix-milli"`
 	RequiredStringUnixMinusNano                time.Time            `json:"required_string_unix-nano"`
 	RequiredStringUnixMinusSeconds             time.Time            `json:"required_string_unix-seconds"`
+	RequiredStringUnixtime                     time.Time            `json:"required_string_unixtime"`
 	RequiredStringURI                          url.URL              `json:"required_string_uri"`
 	RequiredStringUUID                         uuid.UUID            `json:"required_string_uuid"`
 	OptionalAny                                jx.Raw               `json:"optional_any"`
@@ -7873,6 +7879,7 @@ type TestRequestFormatTestReq struct {
 	OptionalArrayIntegerUnixMinusMilli         []time.Time          `json:"optional_array_integer_unix-milli"`
 	OptionalArrayIntegerUnixMinusNano          []time.Time          `json:"optional_array_integer_unix-nano"`
 	OptionalArrayIntegerUnixMinusSeconds       []time.Time          `json:"optional_array_integer_unix-seconds"`
+	OptionalArrayIntegerUnixtime               []time.Time          `json:"optional_array_integer_unixtime"`
 	OptionalArrayNull                          []struct{}           `json:"optional_array_null"`
 	OptionalArrayNumber                        []float64            `json:"optional_array_number"`
 	OptionalArrayNumberDecimal                 []decimal.Decimal    `json:"optional_array_number_decimal"`
@@ -7914,6 +7921,7 @@ type TestRequestFormatTestReq struct {
 	OptionalArrayStringUnixMinusMilli          []time.Time          `json:"optional_array_string_unix-milli"`
 	OptionalArrayStringUnixMinusNano           []time.Time          `json:"optional_array_string_unix-nano"`
 	OptionalArrayStringUnixMinusSeconds        []time.Time          `json:"optional_array_string_unix-seconds"`
+	OptionalArrayStringUnixtime                []time.Time          `json:"optional_array_string_unixtime"`
 	OptionalArrayStringURI                     []url.URL            `json:"optional_array_string_uri"`
 	OptionalArrayStringUUID                    []uuid.UUID          `json:"optional_array_string_uuid"`
 	OptionalBoolean                            OptBool              `json:"optional_boolean"`
@@ -7934,6 +7942,7 @@ type TestRequestFormatTestReq struct {
 	OptionalDoubleArrayIntegerUnixMinusMilli   [][]time.Time        `json:"optional_double_array_integer_unix-milli"`
 	OptionalDoubleArrayIntegerUnixMinusNano    [][]time.Time        `json:"optional_double_array_integer_unix-nano"`
 	OptionalDoubleArrayIntegerUnixMinusSeconds [][]time.Time        `json:"optional_double_array_integer_unix-seconds"`
+	OptionalDoubleArrayIntegerUnixtime         [][]time.Time        `json:"optional_double_array_integer_unixtime"`
 	OptionalDoubleArrayNull                    [][]struct{}         `json:"optional_double_array_null"`
 	OptionalDoubleArrayNumber                  [][]float64          `json:"optional_double_array_number"`
 	OptionalDoubleArrayNumberDecimal           [][]decimal.Decimal  `json:"optional_double_array_number_decimal"`
@@ -7975,6 +7984,7 @@ type TestRequestFormatTestReq struct {
 	OptionalDoubleArrayStringUnixMinusMilli    [][]time.Time        `json:"optional_double_array_string_unix-milli"`
 	OptionalDoubleArrayStringUnixMinusNano     [][]time.Time        `json:"optional_double_array_string_unix-nano"`
 	OptionalDoubleArrayStringUnixMinusSeconds  [][]time.Time        `json:"optional_double_array_string_unix-seconds"`
+	OptionalDoubleArrayStringUnixtime          [][]time.Time        `json:"optional_double_array_string_unixtime"`
 	OptionalDoubleArrayStringURI               [][]url.URL          `json:"optional_double_array_string_uri"`
 	OptionalDoubleArrayStringUUID              [][]uuid.UUID        `json:"optional_double_array_string_uuid"`
 	OptionalInteger                            OptInt               `json:"optional_integer"`
@@ -7992,6 +8002,7 @@ type TestRequestFormatTestReq struct {
 	OptionalIntegerUnixMinusMilli              OptUnixMilli         `json:"optional_integer_unix-milli"`
 	OptionalIntegerUnixMinusNano               OptUnixNano          `json:"optional_integer_unix-nano"`
 	OptionalIntegerUnixMinusSeconds            OptUnixSeconds       `json:"optional_integer_unix-seconds"`
+	OptionalIntegerUnixtime                    OptUnixSeconds       `json:"optional_integer_unixtime"`
 	OptionalNull                               OptNull              `json:"optional_null"`
 	OptionalNumber                             OptFloat64           `json:"optional_number"`
 	OptionalNumberDecimal                      OptDecimal           `json:"optional_number_decimal"`
@@ -8033,6 +8044,7 @@ type TestRequestFormatTestReq struct {
 	OptionalStringUnixMinusMilli               OptStringUnixMilli   `json:"optional_string_unix-milli"`
 	OptionalStringUnixMinusNano                OptStringUnixNano    `json:"optional_string_unix-nano"`
 	OptionalStringUnixMinusSeconds             OptStringUnixSeconds `json:"optional_string_unix-seconds"`
+	OptionalStringUnixtime                     OptStringUnixSeconds `json:"optional_string_unixtime"`
 	OptionalStringURI                          OptURI               `json:"optional_string_uri"`
 	OptionalStringUUID                         OptUUID              `json:"optional_string_uuid"`
 }
@@ -8125,6 +8137,11 @@ func (s *TestRequestFormatTestReq) GetRequiredArrayIntegerUnixMinusNano() []time
 // GetRequiredArrayIntegerUnixMinusSeconds returns the value of RequiredArrayIntegerUnixMinusSeconds.
 func (s *TestRequestFormatTestReq) GetRequiredArrayIntegerUnixMinusSeconds() []time.Time {
 	return s.RequiredArrayIntegerUnixMinusSeconds
+}
+
+// GetRequiredArrayIntegerUnixtime returns the value of RequiredArrayIntegerUnixtime.
+func (s *TestRequestFormatTestReq) GetRequiredArrayIntegerUnixtime() []time.Time {
+	return s.RequiredArrayIntegerUnixtime
 }
 
 // GetRequiredArrayNull returns the value of RequiredArrayNull.
@@ -8332,6 +8349,11 @@ func (s *TestRequestFormatTestReq) GetRequiredArrayStringUnixMinusSeconds() []ti
 	return s.RequiredArrayStringUnixMinusSeconds
 }
 
+// GetRequiredArrayStringUnixtime returns the value of RequiredArrayStringUnixtime.
+func (s *TestRequestFormatTestReq) GetRequiredArrayStringUnixtime() []time.Time {
+	return s.RequiredArrayStringUnixtime
+}
+
 // GetRequiredArrayStringURI returns the value of RequiredArrayStringURI.
 func (s *TestRequestFormatTestReq) GetRequiredArrayStringURI() []url.URL {
 	return s.RequiredArrayStringURI
@@ -8430,6 +8452,11 @@ func (s *TestRequestFormatTestReq) GetRequiredDoubleArrayIntegerUnixMinusNano() 
 // GetRequiredDoubleArrayIntegerUnixMinusSeconds returns the value of RequiredDoubleArrayIntegerUnixMinusSeconds.
 func (s *TestRequestFormatTestReq) GetRequiredDoubleArrayIntegerUnixMinusSeconds() [][]time.Time {
 	return s.RequiredDoubleArrayIntegerUnixMinusSeconds
+}
+
+// GetRequiredDoubleArrayIntegerUnixtime returns the value of RequiredDoubleArrayIntegerUnixtime.
+func (s *TestRequestFormatTestReq) GetRequiredDoubleArrayIntegerUnixtime() [][]time.Time {
+	return s.RequiredDoubleArrayIntegerUnixtime
 }
 
 // GetRequiredDoubleArrayNull returns the value of RequiredDoubleArrayNull.
@@ -8637,6 +8664,11 @@ func (s *TestRequestFormatTestReq) GetRequiredDoubleArrayStringUnixMinusSeconds(
 	return s.RequiredDoubleArrayStringUnixMinusSeconds
 }
 
+// GetRequiredDoubleArrayStringUnixtime returns the value of RequiredDoubleArrayStringUnixtime.
+func (s *TestRequestFormatTestReq) GetRequiredDoubleArrayStringUnixtime() [][]time.Time {
+	return s.RequiredDoubleArrayStringUnixtime
+}
+
 // GetRequiredDoubleArrayStringURI returns the value of RequiredDoubleArrayStringURI.
 func (s *TestRequestFormatTestReq) GetRequiredDoubleArrayStringURI() [][]url.URL {
 	return s.RequiredDoubleArrayStringURI
@@ -8720,6 +8752,11 @@ func (s *TestRequestFormatTestReq) GetRequiredIntegerUnixMinusNano() time.Time {
 // GetRequiredIntegerUnixMinusSeconds returns the value of RequiredIntegerUnixMinusSeconds.
 func (s *TestRequestFormatTestReq) GetRequiredIntegerUnixMinusSeconds() time.Time {
 	return s.RequiredIntegerUnixMinusSeconds
+}
+
+// GetRequiredIntegerUnixtime returns the value of RequiredIntegerUnixtime.
+func (s *TestRequestFormatTestReq) GetRequiredIntegerUnixtime() time.Time {
+	return s.RequiredIntegerUnixtime
 }
 
 // GetRequiredNull returns the value of RequiredNull.
@@ -8927,6 +8964,11 @@ func (s *TestRequestFormatTestReq) GetRequiredStringUnixMinusSeconds() time.Time
 	return s.RequiredStringUnixMinusSeconds
 }
 
+// GetRequiredStringUnixtime returns the value of RequiredStringUnixtime.
+func (s *TestRequestFormatTestReq) GetRequiredStringUnixtime() time.Time {
+	return s.RequiredStringUnixtime
+}
+
 // GetRequiredStringURI returns the value of RequiredStringURI.
 func (s *TestRequestFormatTestReq) GetRequiredStringURI() url.URL {
 	return s.RequiredStringURI
@@ -9025,6 +9067,11 @@ func (s *TestRequestFormatTestReq) GetOptionalArrayIntegerUnixMinusNano() []time
 // GetOptionalArrayIntegerUnixMinusSeconds returns the value of OptionalArrayIntegerUnixMinusSeconds.
 func (s *TestRequestFormatTestReq) GetOptionalArrayIntegerUnixMinusSeconds() []time.Time {
 	return s.OptionalArrayIntegerUnixMinusSeconds
+}
+
+// GetOptionalArrayIntegerUnixtime returns the value of OptionalArrayIntegerUnixtime.
+func (s *TestRequestFormatTestReq) GetOptionalArrayIntegerUnixtime() []time.Time {
+	return s.OptionalArrayIntegerUnixtime
 }
 
 // GetOptionalArrayNull returns the value of OptionalArrayNull.
@@ -9232,6 +9279,11 @@ func (s *TestRequestFormatTestReq) GetOptionalArrayStringUnixMinusSeconds() []ti
 	return s.OptionalArrayStringUnixMinusSeconds
 }
 
+// GetOptionalArrayStringUnixtime returns the value of OptionalArrayStringUnixtime.
+func (s *TestRequestFormatTestReq) GetOptionalArrayStringUnixtime() []time.Time {
+	return s.OptionalArrayStringUnixtime
+}
+
 // GetOptionalArrayStringURI returns the value of OptionalArrayStringURI.
 func (s *TestRequestFormatTestReq) GetOptionalArrayStringURI() []url.URL {
 	return s.OptionalArrayStringURI
@@ -9330,6 +9382,11 @@ func (s *TestRequestFormatTestReq) GetOptionalDoubleArrayIntegerUnixMinusNano() 
 // GetOptionalDoubleArrayIntegerUnixMinusSeconds returns the value of OptionalDoubleArrayIntegerUnixMinusSeconds.
 func (s *TestRequestFormatTestReq) GetOptionalDoubleArrayIntegerUnixMinusSeconds() [][]time.Time {
 	return s.OptionalDoubleArrayIntegerUnixMinusSeconds
+}
+
+// GetOptionalDoubleArrayIntegerUnixtime returns the value of OptionalDoubleArrayIntegerUnixtime.
+func (s *TestRequestFormatTestReq) GetOptionalDoubleArrayIntegerUnixtime() [][]time.Time {
+	return s.OptionalDoubleArrayIntegerUnixtime
 }
 
 // GetOptionalDoubleArrayNull returns the value of OptionalDoubleArrayNull.
@@ -9537,6 +9594,11 @@ func (s *TestRequestFormatTestReq) GetOptionalDoubleArrayStringUnixMinusSeconds(
 	return s.OptionalDoubleArrayStringUnixMinusSeconds
 }
 
+// GetOptionalDoubleArrayStringUnixtime returns the value of OptionalDoubleArrayStringUnixtime.
+func (s *TestRequestFormatTestReq) GetOptionalDoubleArrayStringUnixtime() [][]time.Time {
+	return s.OptionalDoubleArrayStringUnixtime
+}
+
 // GetOptionalDoubleArrayStringURI returns the value of OptionalDoubleArrayStringURI.
 func (s *TestRequestFormatTestReq) GetOptionalDoubleArrayStringURI() [][]url.URL {
 	return s.OptionalDoubleArrayStringURI
@@ -9620,6 +9682,11 @@ func (s *TestRequestFormatTestReq) GetOptionalIntegerUnixMinusNano() OptUnixNano
 // GetOptionalIntegerUnixMinusSeconds returns the value of OptionalIntegerUnixMinusSeconds.
 func (s *TestRequestFormatTestReq) GetOptionalIntegerUnixMinusSeconds() OptUnixSeconds {
 	return s.OptionalIntegerUnixMinusSeconds
+}
+
+// GetOptionalIntegerUnixtime returns the value of OptionalIntegerUnixtime.
+func (s *TestRequestFormatTestReq) GetOptionalIntegerUnixtime() OptUnixSeconds {
+	return s.OptionalIntegerUnixtime
 }
 
 // GetOptionalNull returns the value of OptionalNull.
@@ -9827,6 +9894,11 @@ func (s *TestRequestFormatTestReq) GetOptionalStringUnixMinusSeconds() OptString
 	return s.OptionalStringUnixMinusSeconds
 }
 
+// GetOptionalStringUnixtime returns the value of OptionalStringUnixtime.
+func (s *TestRequestFormatTestReq) GetOptionalStringUnixtime() OptStringUnixSeconds {
+	return s.OptionalStringUnixtime
+}
+
 // GetOptionalStringURI returns the value of OptionalStringURI.
 func (s *TestRequestFormatTestReq) GetOptionalStringURI() OptURI {
 	return s.OptionalStringURI
@@ -9925,6 +9997,11 @@ func (s *TestRequestFormatTestReq) SetRequiredArrayIntegerUnixMinusNano(val []ti
 // SetRequiredArrayIntegerUnixMinusSeconds sets the value of RequiredArrayIntegerUnixMinusSeconds.
 func (s *TestRequestFormatTestReq) SetRequiredArrayIntegerUnixMinusSeconds(val []time.Time) {
 	s.RequiredArrayIntegerUnixMinusSeconds = val
+}
+
+// SetRequiredArrayIntegerUnixtime sets the value of RequiredArrayIntegerUnixtime.
+func (s *TestRequestFormatTestReq) SetRequiredArrayIntegerUnixtime(val []time.Time) {
+	s.RequiredArrayIntegerUnixtime = val
 }
 
 // SetRequiredArrayNull sets the value of RequiredArrayNull.
@@ -10132,6 +10209,11 @@ func (s *TestRequestFormatTestReq) SetRequiredArrayStringUnixMinusSeconds(val []
 	s.RequiredArrayStringUnixMinusSeconds = val
 }
 
+// SetRequiredArrayStringUnixtime sets the value of RequiredArrayStringUnixtime.
+func (s *TestRequestFormatTestReq) SetRequiredArrayStringUnixtime(val []time.Time) {
+	s.RequiredArrayStringUnixtime = val
+}
+
 // SetRequiredArrayStringURI sets the value of RequiredArrayStringURI.
 func (s *TestRequestFormatTestReq) SetRequiredArrayStringURI(val []url.URL) {
 	s.RequiredArrayStringURI = val
@@ -10230,6 +10312,11 @@ func (s *TestRequestFormatTestReq) SetRequiredDoubleArrayIntegerUnixMinusNano(va
 // SetRequiredDoubleArrayIntegerUnixMinusSeconds sets the value of RequiredDoubleArrayIntegerUnixMinusSeconds.
 func (s *TestRequestFormatTestReq) SetRequiredDoubleArrayIntegerUnixMinusSeconds(val [][]time.Time) {
 	s.RequiredDoubleArrayIntegerUnixMinusSeconds = val
+}
+
+// SetRequiredDoubleArrayIntegerUnixtime sets the value of RequiredDoubleArrayIntegerUnixtime.
+func (s *TestRequestFormatTestReq) SetRequiredDoubleArrayIntegerUnixtime(val [][]time.Time) {
+	s.RequiredDoubleArrayIntegerUnixtime = val
 }
 
 // SetRequiredDoubleArrayNull sets the value of RequiredDoubleArrayNull.
@@ -10437,6 +10524,11 @@ func (s *TestRequestFormatTestReq) SetRequiredDoubleArrayStringUnixMinusSeconds(
 	s.RequiredDoubleArrayStringUnixMinusSeconds = val
 }
 
+// SetRequiredDoubleArrayStringUnixtime sets the value of RequiredDoubleArrayStringUnixtime.
+func (s *TestRequestFormatTestReq) SetRequiredDoubleArrayStringUnixtime(val [][]time.Time) {
+	s.RequiredDoubleArrayStringUnixtime = val
+}
+
 // SetRequiredDoubleArrayStringURI sets the value of RequiredDoubleArrayStringURI.
 func (s *TestRequestFormatTestReq) SetRequiredDoubleArrayStringURI(val [][]url.URL) {
 	s.RequiredDoubleArrayStringURI = val
@@ -10520,6 +10612,11 @@ func (s *TestRequestFormatTestReq) SetRequiredIntegerUnixMinusNano(val time.Time
 // SetRequiredIntegerUnixMinusSeconds sets the value of RequiredIntegerUnixMinusSeconds.
 func (s *TestRequestFormatTestReq) SetRequiredIntegerUnixMinusSeconds(val time.Time) {
 	s.RequiredIntegerUnixMinusSeconds = val
+}
+
+// SetRequiredIntegerUnixtime sets the value of RequiredIntegerUnixtime.
+func (s *TestRequestFormatTestReq) SetRequiredIntegerUnixtime(val time.Time) {
+	s.RequiredIntegerUnixtime = val
 }
 
 // SetRequiredNull sets the value of RequiredNull.
@@ -10727,6 +10824,11 @@ func (s *TestRequestFormatTestReq) SetRequiredStringUnixMinusSeconds(val time.Ti
 	s.RequiredStringUnixMinusSeconds = val
 }
 
+// SetRequiredStringUnixtime sets the value of RequiredStringUnixtime.
+func (s *TestRequestFormatTestReq) SetRequiredStringUnixtime(val time.Time) {
+	s.RequiredStringUnixtime = val
+}
+
 // SetRequiredStringURI sets the value of RequiredStringURI.
 func (s *TestRequestFormatTestReq) SetRequiredStringURI(val url.URL) {
 	s.RequiredStringURI = val
@@ -10825,6 +10927,11 @@ func (s *TestRequestFormatTestReq) SetOptionalArrayIntegerUnixMinusNano(val []ti
 // SetOptionalArrayIntegerUnixMinusSeconds sets the value of OptionalArrayIntegerUnixMinusSeconds.
 func (s *TestRequestFormatTestReq) SetOptionalArrayIntegerUnixMinusSeconds(val []time.Time) {
 	s.OptionalArrayIntegerUnixMinusSeconds = val
+}
+
+// SetOptionalArrayIntegerUnixtime sets the value of OptionalArrayIntegerUnixtime.
+func (s *TestRequestFormatTestReq) SetOptionalArrayIntegerUnixtime(val []time.Time) {
+	s.OptionalArrayIntegerUnixtime = val
 }
 
 // SetOptionalArrayNull sets the value of OptionalArrayNull.
@@ -11032,6 +11139,11 @@ func (s *TestRequestFormatTestReq) SetOptionalArrayStringUnixMinusSeconds(val []
 	s.OptionalArrayStringUnixMinusSeconds = val
 }
 
+// SetOptionalArrayStringUnixtime sets the value of OptionalArrayStringUnixtime.
+func (s *TestRequestFormatTestReq) SetOptionalArrayStringUnixtime(val []time.Time) {
+	s.OptionalArrayStringUnixtime = val
+}
+
 // SetOptionalArrayStringURI sets the value of OptionalArrayStringURI.
 func (s *TestRequestFormatTestReq) SetOptionalArrayStringURI(val []url.URL) {
 	s.OptionalArrayStringURI = val
@@ -11130,6 +11242,11 @@ func (s *TestRequestFormatTestReq) SetOptionalDoubleArrayIntegerUnixMinusNano(va
 // SetOptionalDoubleArrayIntegerUnixMinusSeconds sets the value of OptionalDoubleArrayIntegerUnixMinusSeconds.
 func (s *TestRequestFormatTestReq) SetOptionalDoubleArrayIntegerUnixMinusSeconds(val [][]time.Time) {
 	s.OptionalDoubleArrayIntegerUnixMinusSeconds = val
+}
+
+// SetOptionalDoubleArrayIntegerUnixtime sets the value of OptionalDoubleArrayIntegerUnixtime.
+func (s *TestRequestFormatTestReq) SetOptionalDoubleArrayIntegerUnixtime(val [][]time.Time) {
+	s.OptionalDoubleArrayIntegerUnixtime = val
 }
 
 // SetOptionalDoubleArrayNull sets the value of OptionalDoubleArrayNull.
@@ -11337,6 +11454,11 @@ func (s *TestRequestFormatTestReq) SetOptionalDoubleArrayStringUnixMinusSeconds(
 	s.OptionalDoubleArrayStringUnixMinusSeconds = val
 }
 
+// SetOptionalDoubleArrayStringUnixtime sets the value of OptionalDoubleArrayStringUnixtime.
+func (s *TestRequestFormatTestReq) SetOptionalDoubleArrayStringUnixtime(val [][]time.Time) {
+	s.OptionalDoubleArrayStringUnixtime = val
+}
+
 // SetOptionalDoubleArrayStringURI sets the value of OptionalDoubleArrayStringURI.
 func (s *TestRequestFormatTestReq) SetOptionalDoubleArrayStringURI(val [][]url.URL) {
 	s.OptionalDoubleArrayStringURI = val
@@ -11420,6 +11542,11 @@ func (s *TestRequestFormatTestReq) SetOptionalIntegerUnixMinusNano(val OptUnixNa
 // SetOptionalIntegerUnixMinusSeconds sets the value of OptionalIntegerUnixMinusSeconds.
 func (s *TestRequestFormatTestReq) SetOptionalIntegerUnixMinusSeconds(val OptUnixSeconds) {
 	s.OptionalIntegerUnixMinusSeconds = val
+}
+
+// SetOptionalIntegerUnixtime sets the value of OptionalIntegerUnixtime.
+func (s *TestRequestFormatTestReq) SetOptionalIntegerUnixtime(val OptUnixSeconds) {
+	s.OptionalIntegerUnixtime = val
 }
 
 // SetOptionalNull sets the value of OptionalNull.
@@ -11627,6 +11754,11 @@ func (s *TestRequestFormatTestReq) SetOptionalStringUnixMinusSeconds(val OptStri
 	s.OptionalStringUnixMinusSeconds = val
 }
 
+// SetOptionalStringUnixtime sets the value of OptionalStringUnixtime.
+func (s *TestRequestFormatTestReq) SetOptionalStringUnixtime(val OptStringUnixSeconds) {
+	s.OptionalStringUnixtime = val
+}
+
 // SetOptionalStringURI sets the value of OptionalStringURI.
 func (s *TestRequestFormatTestReq) SetOptionalStringURI(val OptURI) {
 	s.OptionalStringURI = val
@@ -11658,6 +11790,7 @@ type TestRequestRequiredFormatTestReq struct {
 	RequiredArrayIntegerUnixMinusMilli         []time.Time          `json:"required_array_integer_unix-milli"`
 	RequiredArrayIntegerUnixMinusNano          []time.Time          `json:"required_array_integer_unix-nano"`
 	RequiredArrayIntegerUnixMinusSeconds       []time.Time          `json:"required_array_integer_unix-seconds"`
+	RequiredArrayIntegerUnixtime               []time.Time          `json:"required_array_integer_unixtime"`
 	RequiredArrayNull                          []struct{}           `json:"required_array_null"`
 	RequiredArrayNumber                        []float64            `json:"required_array_number"`
 	RequiredArrayNumberDecimal                 []decimal.Decimal    `json:"required_array_number_decimal"`
@@ -11699,6 +11832,7 @@ type TestRequestRequiredFormatTestReq struct {
 	RequiredArrayStringUnixMinusMilli          []time.Time          `json:"required_array_string_unix-milli"`
 	RequiredArrayStringUnixMinusNano           []time.Time          `json:"required_array_string_unix-nano"`
 	RequiredArrayStringUnixMinusSeconds        []time.Time          `json:"required_array_string_unix-seconds"`
+	RequiredArrayStringUnixtime                []time.Time          `json:"required_array_string_unixtime"`
 	RequiredArrayStringURI                     []url.URL            `json:"required_array_string_uri"`
 	RequiredArrayStringUUID                    []uuid.UUID          `json:"required_array_string_uuid"`
 	RequiredBoolean                            bool                 `json:"required_boolean"`
@@ -11719,6 +11853,7 @@ type TestRequestRequiredFormatTestReq struct {
 	RequiredDoubleArrayIntegerUnixMinusMilli   [][]time.Time        `json:"required_double_array_integer_unix-milli"`
 	RequiredDoubleArrayIntegerUnixMinusNano    [][]time.Time        `json:"required_double_array_integer_unix-nano"`
 	RequiredDoubleArrayIntegerUnixMinusSeconds [][]time.Time        `json:"required_double_array_integer_unix-seconds"`
+	RequiredDoubleArrayIntegerUnixtime         [][]time.Time        `json:"required_double_array_integer_unixtime"`
 	RequiredDoubleArrayNull                    [][]struct{}         `json:"required_double_array_null"`
 	RequiredDoubleArrayNumber                  [][]float64          `json:"required_double_array_number"`
 	RequiredDoubleArrayNumberDecimal           [][]decimal.Decimal  `json:"required_double_array_number_decimal"`
@@ -11760,6 +11895,7 @@ type TestRequestRequiredFormatTestReq struct {
 	RequiredDoubleArrayStringUnixMinusMilli    [][]time.Time        `json:"required_double_array_string_unix-milli"`
 	RequiredDoubleArrayStringUnixMinusNano     [][]time.Time        `json:"required_double_array_string_unix-nano"`
 	RequiredDoubleArrayStringUnixMinusSeconds  [][]time.Time        `json:"required_double_array_string_unix-seconds"`
+	RequiredDoubleArrayStringUnixtime          [][]time.Time        `json:"required_double_array_string_unixtime"`
 	RequiredDoubleArrayStringURI               [][]url.URL          `json:"required_double_array_string_uri"`
 	RequiredDoubleArrayStringUUID              [][]uuid.UUID        `json:"required_double_array_string_uuid"`
 	RequiredInteger                            int                  `json:"required_integer"`
@@ -11777,6 +11913,7 @@ type TestRequestRequiredFormatTestReq struct {
 	RequiredIntegerUnixMinusMilli              time.Time            `json:"required_integer_unix-milli"`
 	RequiredIntegerUnixMinusNano               time.Time            `json:"required_integer_unix-nano"`
 	RequiredIntegerUnixMinusSeconds            time.Time            `json:"required_integer_unix-seconds"`
+	RequiredIntegerUnixtime                    time.Time            `json:"required_integer_unixtime"`
 	RequiredNull                               struct{}             `json:"required_null"`
 	RequiredNumber                             float64              `json:"required_number"`
 	RequiredNumberDecimal                      decimal.Decimal      `json:"required_number_decimal"`
@@ -11818,6 +11955,7 @@ type TestRequestRequiredFormatTestReq struct {
 	RequiredStringUnixMinusMilli               time.Time            `json:"required_string_unix-milli"`
 	RequiredStringUnixMinusNano                time.Time            `json:"required_string_unix-nano"`
 	RequiredStringUnixMinusSeconds             time.Time            `json:"required_string_unix-seconds"`
+	RequiredStringUnixtime                     time.Time            `json:"required_string_unixtime"`
 	RequiredStringURI                          url.URL              `json:"required_string_uri"`
 	RequiredStringUUID                         uuid.UUID            `json:"required_string_uuid"`
 	OptionalAny                                jx.Raw               `json:"optional_any"`
@@ -11838,6 +11976,7 @@ type TestRequestRequiredFormatTestReq struct {
 	OptionalArrayIntegerUnixMinusMilli         []time.Time          `json:"optional_array_integer_unix-milli"`
 	OptionalArrayIntegerUnixMinusNano          []time.Time          `json:"optional_array_integer_unix-nano"`
 	OptionalArrayIntegerUnixMinusSeconds       []time.Time          `json:"optional_array_integer_unix-seconds"`
+	OptionalArrayIntegerUnixtime               []time.Time          `json:"optional_array_integer_unixtime"`
 	OptionalArrayNull                          []struct{}           `json:"optional_array_null"`
 	OptionalArrayNumber                        []float64            `json:"optional_array_number"`
 	OptionalArrayNumberDecimal                 []decimal.Decimal    `json:"optional_array_number_decimal"`
@@ -11879,6 +12018,7 @@ type TestRequestRequiredFormatTestReq struct {
 	OptionalArrayStringUnixMinusMilli          []time.Time          `json:"optional_array_string_unix-milli"`
 	OptionalArrayStringUnixMinusNano           []time.Time          `json:"optional_array_string_unix-nano"`
 	OptionalArrayStringUnixMinusSeconds        []time.Time          `json:"optional_array_string_unix-seconds"`
+	OptionalArrayStringUnixtime                []time.Time          `json:"optional_array_string_unixtime"`
 	OptionalArrayStringURI                     []url.URL            `json:"optional_array_string_uri"`
 	OptionalArrayStringUUID                    []uuid.UUID          `json:"optional_array_string_uuid"`
 	OptionalBoolean                            OptBool              `json:"optional_boolean"`
@@ -11899,6 +12039,7 @@ type TestRequestRequiredFormatTestReq struct {
 	OptionalDoubleArrayIntegerUnixMinusMilli   [][]time.Time        `json:"optional_double_array_integer_unix-milli"`
 	OptionalDoubleArrayIntegerUnixMinusNano    [][]time.Time        `json:"optional_double_array_integer_unix-nano"`
 	OptionalDoubleArrayIntegerUnixMinusSeconds [][]time.Time        `json:"optional_double_array_integer_unix-seconds"`
+	OptionalDoubleArrayIntegerUnixtime         [][]time.Time        `json:"optional_double_array_integer_unixtime"`
 	OptionalDoubleArrayNull                    [][]struct{}         `json:"optional_double_array_null"`
 	OptionalDoubleArrayNumber                  [][]float64          `json:"optional_double_array_number"`
 	OptionalDoubleArrayNumberDecimal           [][]decimal.Decimal  `json:"optional_double_array_number_decimal"`
@@ -11940,6 +12081,7 @@ type TestRequestRequiredFormatTestReq struct {
 	OptionalDoubleArrayStringUnixMinusMilli    [][]time.Time        `json:"optional_double_array_string_unix-milli"`
 	OptionalDoubleArrayStringUnixMinusNano     [][]time.Time        `json:"optional_double_array_string_unix-nano"`
 	OptionalDoubleArrayStringUnixMinusSeconds  [][]time.Time        `json:"optional_double_array_string_unix-seconds"`
+	OptionalDoubleArrayStringUnixtime          [][]time.Time        `json:"optional_double_array_string_unixtime"`
 	OptionalDoubleArrayStringURI               [][]url.URL          `json:"optional_double_array_string_uri"`
 	OptionalDoubleArrayStringUUID              [][]uuid.UUID        `json:"optional_double_array_string_uuid"`
 	OptionalInteger                            OptInt               `json:"optional_integer"`
@@ -11957,6 +12099,7 @@ type TestRequestRequiredFormatTestReq struct {
 	OptionalIntegerUnixMinusMilli              OptUnixMilli         `json:"optional_integer_unix-milli"`
 	OptionalIntegerUnixMinusNano               OptUnixNano          `json:"optional_integer_unix-nano"`
 	OptionalIntegerUnixMinusSeconds            OptUnixSeconds       `json:"optional_integer_unix-seconds"`
+	OptionalIntegerUnixtime                    OptUnixSeconds       `json:"optional_integer_unixtime"`
 	OptionalNull                               OptNull              `json:"optional_null"`
 	OptionalNumber                             OptFloat64           `json:"optional_number"`
 	OptionalNumberDecimal                      OptDecimal           `json:"optional_number_decimal"`
@@ -11998,6 +12141,7 @@ type TestRequestRequiredFormatTestReq struct {
 	OptionalStringUnixMinusMilli               OptStringUnixMilli   `json:"optional_string_unix-milli"`
 	OptionalStringUnixMinusNano                OptStringUnixNano    `json:"optional_string_unix-nano"`
 	OptionalStringUnixMinusSeconds             OptStringUnixSeconds `json:"optional_string_unix-seconds"`
+	OptionalStringUnixtime                     OptStringUnixSeconds `json:"optional_string_unixtime"`
 	OptionalStringURI                          OptURI               `json:"optional_string_uri"`
 	OptionalStringUUID                         OptUUID              `json:"optional_string_uuid"`
 }
@@ -12090,6 +12234,11 @@ func (s *TestRequestRequiredFormatTestReq) GetRequiredArrayIntegerUnixMinusNano(
 // GetRequiredArrayIntegerUnixMinusSeconds returns the value of RequiredArrayIntegerUnixMinusSeconds.
 func (s *TestRequestRequiredFormatTestReq) GetRequiredArrayIntegerUnixMinusSeconds() []time.Time {
 	return s.RequiredArrayIntegerUnixMinusSeconds
+}
+
+// GetRequiredArrayIntegerUnixtime returns the value of RequiredArrayIntegerUnixtime.
+func (s *TestRequestRequiredFormatTestReq) GetRequiredArrayIntegerUnixtime() []time.Time {
+	return s.RequiredArrayIntegerUnixtime
 }
 
 // GetRequiredArrayNull returns the value of RequiredArrayNull.
@@ -12297,6 +12446,11 @@ func (s *TestRequestRequiredFormatTestReq) GetRequiredArrayStringUnixMinusSecond
 	return s.RequiredArrayStringUnixMinusSeconds
 }
 
+// GetRequiredArrayStringUnixtime returns the value of RequiredArrayStringUnixtime.
+func (s *TestRequestRequiredFormatTestReq) GetRequiredArrayStringUnixtime() []time.Time {
+	return s.RequiredArrayStringUnixtime
+}
+
 // GetRequiredArrayStringURI returns the value of RequiredArrayStringURI.
 func (s *TestRequestRequiredFormatTestReq) GetRequiredArrayStringURI() []url.URL {
 	return s.RequiredArrayStringURI
@@ -12395,6 +12549,11 @@ func (s *TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayIntegerUnixMinu
 // GetRequiredDoubleArrayIntegerUnixMinusSeconds returns the value of RequiredDoubleArrayIntegerUnixMinusSeconds.
 func (s *TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayIntegerUnixMinusSeconds() [][]time.Time {
 	return s.RequiredDoubleArrayIntegerUnixMinusSeconds
+}
+
+// GetRequiredDoubleArrayIntegerUnixtime returns the value of RequiredDoubleArrayIntegerUnixtime.
+func (s *TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayIntegerUnixtime() [][]time.Time {
+	return s.RequiredDoubleArrayIntegerUnixtime
 }
 
 // GetRequiredDoubleArrayNull returns the value of RequiredDoubleArrayNull.
@@ -12602,6 +12761,11 @@ func (s *TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringUnixMinus
 	return s.RequiredDoubleArrayStringUnixMinusSeconds
 }
 
+// GetRequiredDoubleArrayStringUnixtime returns the value of RequiredDoubleArrayStringUnixtime.
+func (s *TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringUnixtime() [][]time.Time {
+	return s.RequiredDoubleArrayStringUnixtime
+}
+
 // GetRequiredDoubleArrayStringURI returns the value of RequiredDoubleArrayStringURI.
 func (s *TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringURI() [][]url.URL {
 	return s.RequiredDoubleArrayStringURI
@@ -12685,6 +12849,11 @@ func (s *TestRequestRequiredFormatTestReq) GetRequiredIntegerUnixMinusNano() tim
 // GetRequiredIntegerUnixMinusSeconds returns the value of RequiredIntegerUnixMinusSeconds.
 func (s *TestRequestRequiredFormatTestReq) GetRequiredIntegerUnixMinusSeconds() time.Time {
 	return s.RequiredIntegerUnixMinusSeconds
+}
+
+// GetRequiredIntegerUnixtime returns the value of RequiredIntegerUnixtime.
+func (s *TestRequestRequiredFormatTestReq) GetRequiredIntegerUnixtime() time.Time {
+	return s.RequiredIntegerUnixtime
 }
 
 // GetRequiredNull returns the value of RequiredNull.
@@ -12892,6 +13061,11 @@ func (s *TestRequestRequiredFormatTestReq) GetRequiredStringUnixMinusSeconds() t
 	return s.RequiredStringUnixMinusSeconds
 }
 
+// GetRequiredStringUnixtime returns the value of RequiredStringUnixtime.
+func (s *TestRequestRequiredFormatTestReq) GetRequiredStringUnixtime() time.Time {
+	return s.RequiredStringUnixtime
+}
+
 // GetRequiredStringURI returns the value of RequiredStringURI.
 func (s *TestRequestRequiredFormatTestReq) GetRequiredStringURI() url.URL {
 	return s.RequiredStringURI
@@ -12990,6 +13164,11 @@ func (s *TestRequestRequiredFormatTestReq) GetOptionalArrayIntegerUnixMinusNano(
 // GetOptionalArrayIntegerUnixMinusSeconds returns the value of OptionalArrayIntegerUnixMinusSeconds.
 func (s *TestRequestRequiredFormatTestReq) GetOptionalArrayIntegerUnixMinusSeconds() []time.Time {
 	return s.OptionalArrayIntegerUnixMinusSeconds
+}
+
+// GetOptionalArrayIntegerUnixtime returns the value of OptionalArrayIntegerUnixtime.
+func (s *TestRequestRequiredFormatTestReq) GetOptionalArrayIntegerUnixtime() []time.Time {
+	return s.OptionalArrayIntegerUnixtime
 }
 
 // GetOptionalArrayNull returns the value of OptionalArrayNull.
@@ -13197,6 +13376,11 @@ func (s *TestRequestRequiredFormatTestReq) GetOptionalArrayStringUnixMinusSecond
 	return s.OptionalArrayStringUnixMinusSeconds
 }
 
+// GetOptionalArrayStringUnixtime returns the value of OptionalArrayStringUnixtime.
+func (s *TestRequestRequiredFormatTestReq) GetOptionalArrayStringUnixtime() []time.Time {
+	return s.OptionalArrayStringUnixtime
+}
+
 // GetOptionalArrayStringURI returns the value of OptionalArrayStringURI.
 func (s *TestRequestRequiredFormatTestReq) GetOptionalArrayStringURI() []url.URL {
 	return s.OptionalArrayStringURI
@@ -13295,6 +13479,11 @@ func (s *TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayIntegerUnixMinu
 // GetOptionalDoubleArrayIntegerUnixMinusSeconds returns the value of OptionalDoubleArrayIntegerUnixMinusSeconds.
 func (s *TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayIntegerUnixMinusSeconds() [][]time.Time {
 	return s.OptionalDoubleArrayIntegerUnixMinusSeconds
+}
+
+// GetOptionalDoubleArrayIntegerUnixtime returns the value of OptionalDoubleArrayIntegerUnixtime.
+func (s *TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayIntegerUnixtime() [][]time.Time {
+	return s.OptionalDoubleArrayIntegerUnixtime
 }
 
 // GetOptionalDoubleArrayNull returns the value of OptionalDoubleArrayNull.
@@ -13502,6 +13691,11 @@ func (s *TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringUnixMinus
 	return s.OptionalDoubleArrayStringUnixMinusSeconds
 }
 
+// GetOptionalDoubleArrayStringUnixtime returns the value of OptionalDoubleArrayStringUnixtime.
+func (s *TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringUnixtime() [][]time.Time {
+	return s.OptionalDoubleArrayStringUnixtime
+}
+
 // GetOptionalDoubleArrayStringURI returns the value of OptionalDoubleArrayStringURI.
 func (s *TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringURI() [][]url.URL {
 	return s.OptionalDoubleArrayStringURI
@@ -13585,6 +13779,11 @@ func (s *TestRequestRequiredFormatTestReq) GetOptionalIntegerUnixMinusNano() Opt
 // GetOptionalIntegerUnixMinusSeconds returns the value of OptionalIntegerUnixMinusSeconds.
 func (s *TestRequestRequiredFormatTestReq) GetOptionalIntegerUnixMinusSeconds() OptUnixSeconds {
 	return s.OptionalIntegerUnixMinusSeconds
+}
+
+// GetOptionalIntegerUnixtime returns the value of OptionalIntegerUnixtime.
+func (s *TestRequestRequiredFormatTestReq) GetOptionalIntegerUnixtime() OptUnixSeconds {
+	return s.OptionalIntegerUnixtime
 }
 
 // GetOptionalNull returns the value of OptionalNull.
@@ -13792,6 +13991,11 @@ func (s *TestRequestRequiredFormatTestReq) GetOptionalStringUnixMinusSeconds() O
 	return s.OptionalStringUnixMinusSeconds
 }
 
+// GetOptionalStringUnixtime returns the value of OptionalStringUnixtime.
+func (s *TestRequestRequiredFormatTestReq) GetOptionalStringUnixtime() OptStringUnixSeconds {
+	return s.OptionalStringUnixtime
+}
+
 // GetOptionalStringURI returns the value of OptionalStringURI.
 func (s *TestRequestRequiredFormatTestReq) GetOptionalStringURI() OptURI {
 	return s.OptionalStringURI
@@ -13890,6 +14094,11 @@ func (s *TestRequestRequiredFormatTestReq) SetRequiredArrayIntegerUnixMinusNano(
 // SetRequiredArrayIntegerUnixMinusSeconds sets the value of RequiredArrayIntegerUnixMinusSeconds.
 func (s *TestRequestRequiredFormatTestReq) SetRequiredArrayIntegerUnixMinusSeconds(val []time.Time) {
 	s.RequiredArrayIntegerUnixMinusSeconds = val
+}
+
+// SetRequiredArrayIntegerUnixtime sets the value of RequiredArrayIntegerUnixtime.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredArrayIntegerUnixtime(val []time.Time) {
+	s.RequiredArrayIntegerUnixtime = val
 }
 
 // SetRequiredArrayNull sets the value of RequiredArrayNull.
@@ -14097,6 +14306,11 @@ func (s *TestRequestRequiredFormatTestReq) SetRequiredArrayStringUnixMinusSecond
 	s.RequiredArrayStringUnixMinusSeconds = val
 }
 
+// SetRequiredArrayStringUnixtime sets the value of RequiredArrayStringUnixtime.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredArrayStringUnixtime(val []time.Time) {
+	s.RequiredArrayStringUnixtime = val
+}
+
 // SetRequiredArrayStringURI sets the value of RequiredArrayStringURI.
 func (s *TestRequestRequiredFormatTestReq) SetRequiredArrayStringURI(val []url.URL) {
 	s.RequiredArrayStringURI = val
@@ -14195,6 +14409,11 @@ func (s *TestRequestRequiredFormatTestReq) SetRequiredDoubleArrayIntegerUnixMinu
 // SetRequiredDoubleArrayIntegerUnixMinusSeconds sets the value of RequiredDoubleArrayIntegerUnixMinusSeconds.
 func (s *TestRequestRequiredFormatTestReq) SetRequiredDoubleArrayIntegerUnixMinusSeconds(val [][]time.Time) {
 	s.RequiredDoubleArrayIntegerUnixMinusSeconds = val
+}
+
+// SetRequiredDoubleArrayIntegerUnixtime sets the value of RequiredDoubleArrayIntegerUnixtime.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredDoubleArrayIntegerUnixtime(val [][]time.Time) {
+	s.RequiredDoubleArrayIntegerUnixtime = val
 }
 
 // SetRequiredDoubleArrayNull sets the value of RequiredDoubleArrayNull.
@@ -14402,6 +14621,11 @@ func (s *TestRequestRequiredFormatTestReq) SetRequiredDoubleArrayStringUnixMinus
 	s.RequiredDoubleArrayStringUnixMinusSeconds = val
 }
 
+// SetRequiredDoubleArrayStringUnixtime sets the value of RequiredDoubleArrayStringUnixtime.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredDoubleArrayStringUnixtime(val [][]time.Time) {
+	s.RequiredDoubleArrayStringUnixtime = val
+}
+
 // SetRequiredDoubleArrayStringURI sets the value of RequiredDoubleArrayStringURI.
 func (s *TestRequestRequiredFormatTestReq) SetRequiredDoubleArrayStringURI(val [][]url.URL) {
 	s.RequiredDoubleArrayStringURI = val
@@ -14485,6 +14709,11 @@ func (s *TestRequestRequiredFormatTestReq) SetRequiredIntegerUnixMinusNano(val t
 // SetRequiredIntegerUnixMinusSeconds sets the value of RequiredIntegerUnixMinusSeconds.
 func (s *TestRequestRequiredFormatTestReq) SetRequiredIntegerUnixMinusSeconds(val time.Time) {
 	s.RequiredIntegerUnixMinusSeconds = val
+}
+
+// SetRequiredIntegerUnixtime sets the value of RequiredIntegerUnixtime.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredIntegerUnixtime(val time.Time) {
+	s.RequiredIntegerUnixtime = val
 }
 
 // SetRequiredNull sets the value of RequiredNull.
@@ -14692,6 +14921,11 @@ func (s *TestRequestRequiredFormatTestReq) SetRequiredStringUnixMinusSeconds(val
 	s.RequiredStringUnixMinusSeconds = val
 }
 
+// SetRequiredStringUnixtime sets the value of RequiredStringUnixtime.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredStringUnixtime(val time.Time) {
+	s.RequiredStringUnixtime = val
+}
+
 // SetRequiredStringURI sets the value of RequiredStringURI.
 func (s *TestRequestRequiredFormatTestReq) SetRequiredStringURI(val url.URL) {
 	s.RequiredStringURI = val
@@ -14790,6 +15024,11 @@ func (s *TestRequestRequiredFormatTestReq) SetOptionalArrayIntegerUnixMinusNano(
 // SetOptionalArrayIntegerUnixMinusSeconds sets the value of OptionalArrayIntegerUnixMinusSeconds.
 func (s *TestRequestRequiredFormatTestReq) SetOptionalArrayIntegerUnixMinusSeconds(val []time.Time) {
 	s.OptionalArrayIntegerUnixMinusSeconds = val
+}
+
+// SetOptionalArrayIntegerUnixtime sets the value of OptionalArrayIntegerUnixtime.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalArrayIntegerUnixtime(val []time.Time) {
+	s.OptionalArrayIntegerUnixtime = val
 }
 
 // SetOptionalArrayNull sets the value of OptionalArrayNull.
@@ -14997,6 +15236,11 @@ func (s *TestRequestRequiredFormatTestReq) SetOptionalArrayStringUnixMinusSecond
 	s.OptionalArrayStringUnixMinusSeconds = val
 }
 
+// SetOptionalArrayStringUnixtime sets the value of OptionalArrayStringUnixtime.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalArrayStringUnixtime(val []time.Time) {
+	s.OptionalArrayStringUnixtime = val
+}
+
 // SetOptionalArrayStringURI sets the value of OptionalArrayStringURI.
 func (s *TestRequestRequiredFormatTestReq) SetOptionalArrayStringURI(val []url.URL) {
 	s.OptionalArrayStringURI = val
@@ -15095,6 +15339,11 @@ func (s *TestRequestRequiredFormatTestReq) SetOptionalDoubleArrayIntegerUnixMinu
 // SetOptionalDoubleArrayIntegerUnixMinusSeconds sets the value of OptionalDoubleArrayIntegerUnixMinusSeconds.
 func (s *TestRequestRequiredFormatTestReq) SetOptionalDoubleArrayIntegerUnixMinusSeconds(val [][]time.Time) {
 	s.OptionalDoubleArrayIntegerUnixMinusSeconds = val
+}
+
+// SetOptionalDoubleArrayIntegerUnixtime sets the value of OptionalDoubleArrayIntegerUnixtime.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalDoubleArrayIntegerUnixtime(val [][]time.Time) {
+	s.OptionalDoubleArrayIntegerUnixtime = val
 }
 
 // SetOptionalDoubleArrayNull sets the value of OptionalDoubleArrayNull.
@@ -15302,6 +15551,11 @@ func (s *TestRequestRequiredFormatTestReq) SetOptionalDoubleArrayStringUnixMinus
 	s.OptionalDoubleArrayStringUnixMinusSeconds = val
 }
 
+// SetOptionalDoubleArrayStringUnixtime sets the value of OptionalDoubleArrayStringUnixtime.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalDoubleArrayStringUnixtime(val [][]time.Time) {
+	s.OptionalDoubleArrayStringUnixtime = val
+}
+
 // SetOptionalDoubleArrayStringURI sets the value of OptionalDoubleArrayStringURI.
 func (s *TestRequestRequiredFormatTestReq) SetOptionalDoubleArrayStringURI(val [][]url.URL) {
 	s.OptionalDoubleArrayStringURI = val
@@ -15385,6 +15639,11 @@ func (s *TestRequestRequiredFormatTestReq) SetOptionalIntegerUnixMinusNano(val O
 // SetOptionalIntegerUnixMinusSeconds sets the value of OptionalIntegerUnixMinusSeconds.
 func (s *TestRequestRequiredFormatTestReq) SetOptionalIntegerUnixMinusSeconds(val OptUnixSeconds) {
 	s.OptionalIntegerUnixMinusSeconds = val
+}
+
+// SetOptionalIntegerUnixtime sets the value of OptionalIntegerUnixtime.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalIntegerUnixtime(val OptUnixSeconds) {
+	s.OptionalIntegerUnixtime = val
 }
 
 // SetOptionalNull sets the value of OptionalNull.
@@ -15592,6 +15851,11 @@ func (s *TestRequestRequiredFormatTestReq) SetOptionalStringUnixMinusSeconds(val
 	s.OptionalStringUnixMinusSeconds = val
 }
 
+// SetOptionalStringUnixtime sets the value of OptionalStringUnixtime.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalStringUnixtime(val OptStringUnixSeconds) {
+	s.OptionalStringUnixtime = val
+}
+
 // SetOptionalStringURI sets the value of OptionalStringURI.
 func (s *TestRequestRequiredFormatTestReq) SetOptionalStringURI(val OptURI) {
 	s.OptionalStringURI = val
@@ -15623,6 +15887,7 @@ type TestResponseFormatTestOK struct {
 	RequiredArrayIntegerUnixMinusMilli         []time.Time          `json:"required_array_integer_unix-milli"`
 	RequiredArrayIntegerUnixMinusNano          []time.Time          `json:"required_array_integer_unix-nano"`
 	RequiredArrayIntegerUnixMinusSeconds       []time.Time          `json:"required_array_integer_unix-seconds"`
+	RequiredArrayIntegerUnixtime               []time.Time          `json:"required_array_integer_unixtime"`
 	RequiredArrayNull                          []struct{}           `json:"required_array_null"`
 	RequiredArrayNumber                        []float64            `json:"required_array_number"`
 	RequiredArrayNumberDecimal                 []decimal.Decimal    `json:"required_array_number_decimal"`
@@ -15664,6 +15929,7 @@ type TestResponseFormatTestOK struct {
 	RequiredArrayStringUnixMinusMilli          []time.Time          `json:"required_array_string_unix-milli"`
 	RequiredArrayStringUnixMinusNano           []time.Time          `json:"required_array_string_unix-nano"`
 	RequiredArrayStringUnixMinusSeconds        []time.Time          `json:"required_array_string_unix-seconds"`
+	RequiredArrayStringUnixtime                []time.Time          `json:"required_array_string_unixtime"`
 	RequiredArrayStringURI                     []url.URL            `json:"required_array_string_uri"`
 	RequiredArrayStringUUID                    []uuid.UUID          `json:"required_array_string_uuid"`
 	RequiredBoolean                            bool                 `json:"required_boolean"`
@@ -15684,6 +15950,7 @@ type TestResponseFormatTestOK struct {
 	RequiredDoubleArrayIntegerUnixMinusMilli   [][]time.Time        `json:"required_double_array_integer_unix-milli"`
 	RequiredDoubleArrayIntegerUnixMinusNano    [][]time.Time        `json:"required_double_array_integer_unix-nano"`
 	RequiredDoubleArrayIntegerUnixMinusSeconds [][]time.Time        `json:"required_double_array_integer_unix-seconds"`
+	RequiredDoubleArrayIntegerUnixtime         [][]time.Time        `json:"required_double_array_integer_unixtime"`
 	RequiredDoubleArrayNull                    [][]struct{}         `json:"required_double_array_null"`
 	RequiredDoubleArrayNumber                  [][]float64          `json:"required_double_array_number"`
 	RequiredDoubleArrayNumberDecimal           [][]decimal.Decimal  `json:"required_double_array_number_decimal"`
@@ -15725,6 +15992,7 @@ type TestResponseFormatTestOK struct {
 	RequiredDoubleArrayStringUnixMinusMilli    [][]time.Time        `json:"required_double_array_string_unix-milli"`
 	RequiredDoubleArrayStringUnixMinusNano     [][]time.Time        `json:"required_double_array_string_unix-nano"`
 	RequiredDoubleArrayStringUnixMinusSeconds  [][]time.Time        `json:"required_double_array_string_unix-seconds"`
+	RequiredDoubleArrayStringUnixtime          [][]time.Time        `json:"required_double_array_string_unixtime"`
 	RequiredDoubleArrayStringURI               [][]url.URL          `json:"required_double_array_string_uri"`
 	RequiredDoubleArrayStringUUID              [][]uuid.UUID        `json:"required_double_array_string_uuid"`
 	RequiredInteger                            int                  `json:"required_integer"`
@@ -15742,6 +16010,7 @@ type TestResponseFormatTestOK struct {
 	RequiredIntegerUnixMinusMilli              time.Time            `json:"required_integer_unix-milli"`
 	RequiredIntegerUnixMinusNano               time.Time            `json:"required_integer_unix-nano"`
 	RequiredIntegerUnixMinusSeconds            time.Time            `json:"required_integer_unix-seconds"`
+	RequiredIntegerUnixtime                    time.Time            `json:"required_integer_unixtime"`
 	RequiredNull                               struct{}             `json:"required_null"`
 	RequiredNumber                             float64              `json:"required_number"`
 	RequiredNumberDecimal                      decimal.Decimal      `json:"required_number_decimal"`
@@ -15783,6 +16052,7 @@ type TestResponseFormatTestOK struct {
 	RequiredStringUnixMinusMilli               time.Time            `json:"required_string_unix-milli"`
 	RequiredStringUnixMinusNano                time.Time            `json:"required_string_unix-nano"`
 	RequiredStringUnixMinusSeconds             time.Time            `json:"required_string_unix-seconds"`
+	RequiredStringUnixtime                     time.Time            `json:"required_string_unixtime"`
 	RequiredStringURI                          url.URL              `json:"required_string_uri"`
 	RequiredStringUUID                         uuid.UUID            `json:"required_string_uuid"`
 	OptionalAny                                jx.Raw               `json:"optional_any"`
@@ -15803,6 +16073,7 @@ type TestResponseFormatTestOK struct {
 	OptionalArrayIntegerUnixMinusMilli         []time.Time          `json:"optional_array_integer_unix-milli"`
 	OptionalArrayIntegerUnixMinusNano          []time.Time          `json:"optional_array_integer_unix-nano"`
 	OptionalArrayIntegerUnixMinusSeconds       []time.Time          `json:"optional_array_integer_unix-seconds"`
+	OptionalArrayIntegerUnixtime               []time.Time          `json:"optional_array_integer_unixtime"`
 	OptionalArrayNull                          []struct{}           `json:"optional_array_null"`
 	OptionalArrayNumber                        []float64            `json:"optional_array_number"`
 	OptionalArrayNumberDecimal                 []decimal.Decimal    `json:"optional_array_number_decimal"`
@@ -15844,6 +16115,7 @@ type TestResponseFormatTestOK struct {
 	OptionalArrayStringUnixMinusMilli          []time.Time          `json:"optional_array_string_unix-milli"`
 	OptionalArrayStringUnixMinusNano           []time.Time          `json:"optional_array_string_unix-nano"`
 	OptionalArrayStringUnixMinusSeconds        []time.Time          `json:"optional_array_string_unix-seconds"`
+	OptionalArrayStringUnixtime                []time.Time          `json:"optional_array_string_unixtime"`
 	OptionalArrayStringURI                     []url.URL            `json:"optional_array_string_uri"`
 	OptionalArrayStringUUID                    []uuid.UUID          `json:"optional_array_string_uuid"`
 	OptionalBoolean                            OptBool              `json:"optional_boolean"`
@@ -15864,6 +16136,7 @@ type TestResponseFormatTestOK struct {
 	OptionalDoubleArrayIntegerUnixMinusMilli   [][]time.Time        `json:"optional_double_array_integer_unix-milli"`
 	OptionalDoubleArrayIntegerUnixMinusNano    [][]time.Time        `json:"optional_double_array_integer_unix-nano"`
 	OptionalDoubleArrayIntegerUnixMinusSeconds [][]time.Time        `json:"optional_double_array_integer_unix-seconds"`
+	OptionalDoubleArrayIntegerUnixtime         [][]time.Time        `json:"optional_double_array_integer_unixtime"`
 	OptionalDoubleArrayNull                    [][]struct{}         `json:"optional_double_array_null"`
 	OptionalDoubleArrayNumber                  [][]float64          `json:"optional_double_array_number"`
 	OptionalDoubleArrayNumberDecimal           [][]decimal.Decimal  `json:"optional_double_array_number_decimal"`
@@ -15905,6 +16178,7 @@ type TestResponseFormatTestOK struct {
 	OptionalDoubleArrayStringUnixMinusMilli    [][]time.Time        `json:"optional_double_array_string_unix-milli"`
 	OptionalDoubleArrayStringUnixMinusNano     [][]time.Time        `json:"optional_double_array_string_unix-nano"`
 	OptionalDoubleArrayStringUnixMinusSeconds  [][]time.Time        `json:"optional_double_array_string_unix-seconds"`
+	OptionalDoubleArrayStringUnixtime          [][]time.Time        `json:"optional_double_array_string_unixtime"`
 	OptionalDoubleArrayStringURI               [][]url.URL          `json:"optional_double_array_string_uri"`
 	OptionalDoubleArrayStringUUID              [][]uuid.UUID        `json:"optional_double_array_string_uuid"`
 	OptionalInteger                            OptInt               `json:"optional_integer"`
@@ -15922,6 +16196,7 @@ type TestResponseFormatTestOK struct {
 	OptionalIntegerUnixMinusMilli              OptUnixMilli         `json:"optional_integer_unix-milli"`
 	OptionalIntegerUnixMinusNano               OptUnixNano          `json:"optional_integer_unix-nano"`
 	OptionalIntegerUnixMinusSeconds            OptUnixSeconds       `json:"optional_integer_unix-seconds"`
+	OptionalIntegerUnixtime                    OptUnixSeconds       `json:"optional_integer_unixtime"`
 	OptionalNull                               OptNull              `json:"optional_null"`
 	OptionalNumber                             OptFloat64           `json:"optional_number"`
 	OptionalNumberDecimal                      OptDecimal           `json:"optional_number_decimal"`
@@ -15963,6 +16238,7 @@ type TestResponseFormatTestOK struct {
 	OptionalStringUnixMinusMilli               OptStringUnixMilli   `json:"optional_string_unix-milli"`
 	OptionalStringUnixMinusNano                OptStringUnixNano    `json:"optional_string_unix-nano"`
 	OptionalStringUnixMinusSeconds             OptStringUnixSeconds `json:"optional_string_unix-seconds"`
+	OptionalStringUnixtime                     OptStringUnixSeconds `json:"optional_string_unixtime"`
 	OptionalStringURI                          OptURI               `json:"optional_string_uri"`
 	OptionalStringUUID                         OptUUID              `json:"optional_string_uuid"`
 }
@@ -16055,6 +16331,11 @@ func (s *TestResponseFormatTestOK) GetRequiredArrayIntegerUnixMinusNano() []time
 // GetRequiredArrayIntegerUnixMinusSeconds returns the value of RequiredArrayIntegerUnixMinusSeconds.
 func (s *TestResponseFormatTestOK) GetRequiredArrayIntegerUnixMinusSeconds() []time.Time {
 	return s.RequiredArrayIntegerUnixMinusSeconds
+}
+
+// GetRequiredArrayIntegerUnixtime returns the value of RequiredArrayIntegerUnixtime.
+func (s *TestResponseFormatTestOK) GetRequiredArrayIntegerUnixtime() []time.Time {
+	return s.RequiredArrayIntegerUnixtime
 }
 
 // GetRequiredArrayNull returns the value of RequiredArrayNull.
@@ -16262,6 +16543,11 @@ func (s *TestResponseFormatTestOK) GetRequiredArrayStringUnixMinusSeconds() []ti
 	return s.RequiredArrayStringUnixMinusSeconds
 }
 
+// GetRequiredArrayStringUnixtime returns the value of RequiredArrayStringUnixtime.
+func (s *TestResponseFormatTestOK) GetRequiredArrayStringUnixtime() []time.Time {
+	return s.RequiredArrayStringUnixtime
+}
+
 // GetRequiredArrayStringURI returns the value of RequiredArrayStringURI.
 func (s *TestResponseFormatTestOK) GetRequiredArrayStringURI() []url.URL {
 	return s.RequiredArrayStringURI
@@ -16360,6 +16646,11 @@ func (s *TestResponseFormatTestOK) GetRequiredDoubleArrayIntegerUnixMinusNano() 
 // GetRequiredDoubleArrayIntegerUnixMinusSeconds returns the value of RequiredDoubleArrayIntegerUnixMinusSeconds.
 func (s *TestResponseFormatTestOK) GetRequiredDoubleArrayIntegerUnixMinusSeconds() [][]time.Time {
 	return s.RequiredDoubleArrayIntegerUnixMinusSeconds
+}
+
+// GetRequiredDoubleArrayIntegerUnixtime returns the value of RequiredDoubleArrayIntegerUnixtime.
+func (s *TestResponseFormatTestOK) GetRequiredDoubleArrayIntegerUnixtime() [][]time.Time {
+	return s.RequiredDoubleArrayIntegerUnixtime
 }
 
 // GetRequiredDoubleArrayNull returns the value of RequiredDoubleArrayNull.
@@ -16567,6 +16858,11 @@ func (s *TestResponseFormatTestOK) GetRequiredDoubleArrayStringUnixMinusSeconds(
 	return s.RequiredDoubleArrayStringUnixMinusSeconds
 }
 
+// GetRequiredDoubleArrayStringUnixtime returns the value of RequiredDoubleArrayStringUnixtime.
+func (s *TestResponseFormatTestOK) GetRequiredDoubleArrayStringUnixtime() [][]time.Time {
+	return s.RequiredDoubleArrayStringUnixtime
+}
+
 // GetRequiredDoubleArrayStringURI returns the value of RequiredDoubleArrayStringURI.
 func (s *TestResponseFormatTestOK) GetRequiredDoubleArrayStringURI() [][]url.URL {
 	return s.RequiredDoubleArrayStringURI
@@ -16650,6 +16946,11 @@ func (s *TestResponseFormatTestOK) GetRequiredIntegerUnixMinusNano() time.Time {
 // GetRequiredIntegerUnixMinusSeconds returns the value of RequiredIntegerUnixMinusSeconds.
 func (s *TestResponseFormatTestOK) GetRequiredIntegerUnixMinusSeconds() time.Time {
 	return s.RequiredIntegerUnixMinusSeconds
+}
+
+// GetRequiredIntegerUnixtime returns the value of RequiredIntegerUnixtime.
+func (s *TestResponseFormatTestOK) GetRequiredIntegerUnixtime() time.Time {
+	return s.RequiredIntegerUnixtime
 }
 
 // GetRequiredNull returns the value of RequiredNull.
@@ -16857,6 +17158,11 @@ func (s *TestResponseFormatTestOK) GetRequiredStringUnixMinusSeconds() time.Time
 	return s.RequiredStringUnixMinusSeconds
 }
 
+// GetRequiredStringUnixtime returns the value of RequiredStringUnixtime.
+func (s *TestResponseFormatTestOK) GetRequiredStringUnixtime() time.Time {
+	return s.RequiredStringUnixtime
+}
+
 // GetRequiredStringURI returns the value of RequiredStringURI.
 func (s *TestResponseFormatTestOK) GetRequiredStringURI() url.URL {
 	return s.RequiredStringURI
@@ -16955,6 +17261,11 @@ func (s *TestResponseFormatTestOK) GetOptionalArrayIntegerUnixMinusNano() []time
 // GetOptionalArrayIntegerUnixMinusSeconds returns the value of OptionalArrayIntegerUnixMinusSeconds.
 func (s *TestResponseFormatTestOK) GetOptionalArrayIntegerUnixMinusSeconds() []time.Time {
 	return s.OptionalArrayIntegerUnixMinusSeconds
+}
+
+// GetOptionalArrayIntegerUnixtime returns the value of OptionalArrayIntegerUnixtime.
+func (s *TestResponseFormatTestOK) GetOptionalArrayIntegerUnixtime() []time.Time {
+	return s.OptionalArrayIntegerUnixtime
 }
 
 // GetOptionalArrayNull returns the value of OptionalArrayNull.
@@ -17162,6 +17473,11 @@ func (s *TestResponseFormatTestOK) GetOptionalArrayStringUnixMinusSeconds() []ti
 	return s.OptionalArrayStringUnixMinusSeconds
 }
 
+// GetOptionalArrayStringUnixtime returns the value of OptionalArrayStringUnixtime.
+func (s *TestResponseFormatTestOK) GetOptionalArrayStringUnixtime() []time.Time {
+	return s.OptionalArrayStringUnixtime
+}
+
 // GetOptionalArrayStringURI returns the value of OptionalArrayStringURI.
 func (s *TestResponseFormatTestOK) GetOptionalArrayStringURI() []url.URL {
 	return s.OptionalArrayStringURI
@@ -17260,6 +17576,11 @@ func (s *TestResponseFormatTestOK) GetOptionalDoubleArrayIntegerUnixMinusNano() 
 // GetOptionalDoubleArrayIntegerUnixMinusSeconds returns the value of OptionalDoubleArrayIntegerUnixMinusSeconds.
 func (s *TestResponseFormatTestOK) GetOptionalDoubleArrayIntegerUnixMinusSeconds() [][]time.Time {
 	return s.OptionalDoubleArrayIntegerUnixMinusSeconds
+}
+
+// GetOptionalDoubleArrayIntegerUnixtime returns the value of OptionalDoubleArrayIntegerUnixtime.
+func (s *TestResponseFormatTestOK) GetOptionalDoubleArrayIntegerUnixtime() [][]time.Time {
+	return s.OptionalDoubleArrayIntegerUnixtime
 }
 
 // GetOptionalDoubleArrayNull returns the value of OptionalDoubleArrayNull.
@@ -17467,6 +17788,11 @@ func (s *TestResponseFormatTestOK) GetOptionalDoubleArrayStringUnixMinusSeconds(
 	return s.OptionalDoubleArrayStringUnixMinusSeconds
 }
 
+// GetOptionalDoubleArrayStringUnixtime returns the value of OptionalDoubleArrayStringUnixtime.
+func (s *TestResponseFormatTestOK) GetOptionalDoubleArrayStringUnixtime() [][]time.Time {
+	return s.OptionalDoubleArrayStringUnixtime
+}
+
 // GetOptionalDoubleArrayStringURI returns the value of OptionalDoubleArrayStringURI.
 func (s *TestResponseFormatTestOK) GetOptionalDoubleArrayStringURI() [][]url.URL {
 	return s.OptionalDoubleArrayStringURI
@@ -17550,6 +17876,11 @@ func (s *TestResponseFormatTestOK) GetOptionalIntegerUnixMinusNano() OptUnixNano
 // GetOptionalIntegerUnixMinusSeconds returns the value of OptionalIntegerUnixMinusSeconds.
 func (s *TestResponseFormatTestOK) GetOptionalIntegerUnixMinusSeconds() OptUnixSeconds {
 	return s.OptionalIntegerUnixMinusSeconds
+}
+
+// GetOptionalIntegerUnixtime returns the value of OptionalIntegerUnixtime.
+func (s *TestResponseFormatTestOK) GetOptionalIntegerUnixtime() OptUnixSeconds {
+	return s.OptionalIntegerUnixtime
 }
 
 // GetOptionalNull returns the value of OptionalNull.
@@ -17757,6 +18088,11 @@ func (s *TestResponseFormatTestOK) GetOptionalStringUnixMinusSeconds() OptString
 	return s.OptionalStringUnixMinusSeconds
 }
 
+// GetOptionalStringUnixtime returns the value of OptionalStringUnixtime.
+func (s *TestResponseFormatTestOK) GetOptionalStringUnixtime() OptStringUnixSeconds {
+	return s.OptionalStringUnixtime
+}
+
 // GetOptionalStringURI returns the value of OptionalStringURI.
 func (s *TestResponseFormatTestOK) GetOptionalStringURI() OptURI {
 	return s.OptionalStringURI
@@ -17855,6 +18191,11 @@ func (s *TestResponseFormatTestOK) SetRequiredArrayIntegerUnixMinusNano(val []ti
 // SetRequiredArrayIntegerUnixMinusSeconds sets the value of RequiredArrayIntegerUnixMinusSeconds.
 func (s *TestResponseFormatTestOK) SetRequiredArrayIntegerUnixMinusSeconds(val []time.Time) {
 	s.RequiredArrayIntegerUnixMinusSeconds = val
+}
+
+// SetRequiredArrayIntegerUnixtime sets the value of RequiredArrayIntegerUnixtime.
+func (s *TestResponseFormatTestOK) SetRequiredArrayIntegerUnixtime(val []time.Time) {
+	s.RequiredArrayIntegerUnixtime = val
 }
 
 // SetRequiredArrayNull sets the value of RequiredArrayNull.
@@ -18062,6 +18403,11 @@ func (s *TestResponseFormatTestOK) SetRequiredArrayStringUnixMinusSeconds(val []
 	s.RequiredArrayStringUnixMinusSeconds = val
 }
 
+// SetRequiredArrayStringUnixtime sets the value of RequiredArrayStringUnixtime.
+func (s *TestResponseFormatTestOK) SetRequiredArrayStringUnixtime(val []time.Time) {
+	s.RequiredArrayStringUnixtime = val
+}
+
 // SetRequiredArrayStringURI sets the value of RequiredArrayStringURI.
 func (s *TestResponseFormatTestOK) SetRequiredArrayStringURI(val []url.URL) {
 	s.RequiredArrayStringURI = val
@@ -18160,6 +18506,11 @@ func (s *TestResponseFormatTestOK) SetRequiredDoubleArrayIntegerUnixMinusNano(va
 // SetRequiredDoubleArrayIntegerUnixMinusSeconds sets the value of RequiredDoubleArrayIntegerUnixMinusSeconds.
 func (s *TestResponseFormatTestOK) SetRequiredDoubleArrayIntegerUnixMinusSeconds(val [][]time.Time) {
 	s.RequiredDoubleArrayIntegerUnixMinusSeconds = val
+}
+
+// SetRequiredDoubleArrayIntegerUnixtime sets the value of RequiredDoubleArrayIntegerUnixtime.
+func (s *TestResponseFormatTestOK) SetRequiredDoubleArrayIntegerUnixtime(val [][]time.Time) {
+	s.RequiredDoubleArrayIntegerUnixtime = val
 }
 
 // SetRequiredDoubleArrayNull sets the value of RequiredDoubleArrayNull.
@@ -18367,6 +18718,11 @@ func (s *TestResponseFormatTestOK) SetRequiredDoubleArrayStringUnixMinusSeconds(
 	s.RequiredDoubleArrayStringUnixMinusSeconds = val
 }
 
+// SetRequiredDoubleArrayStringUnixtime sets the value of RequiredDoubleArrayStringUnixtime.
+func (s *TestResponseFormatTestOK) SetRequiredDoubleArrayStringUnixtime(val [][]time.Time) {
+	s.RequiredDoubleArrayStringUnixtime = val
+}
+
 // SetRequiredDoubleArrayStringURI sets the value of RequiredDoubleArrayStringURI.
 func (s *TestResponseFormatTestOK) SetRequiredDoubleArrayStringURI(val [][]url.URL) {
 	s.RequiredDoubleArrayStringURI = val
@@ -18450,6 +18806,11 @@ func (s *TestResponseFormatTestOK) SetRequiredIntegerUnixMinusNano(val time.Time
 // SetRequiredIntegerUnixMinusSeconds sets the value of RequiredIntegerUnixMinusSeconds.
 func (s *TestResponseFormatTestOK) SetRequiredIntegerUnixMinusSeconds(val time.Time) {
 	s.RequiredIntegerUnixMinusSeconds = val
+}
+
+// SetRequiredIntegerUnixtime sets the value of RequiredIntegerUnixtime.
+func (s *TestResponseFormatTestOK) SetRequiredIntegerUnixtime(val time.Time) {
+	s.RequiredIntegerUnixtime = val
 }
 
 // SetRequiredNull sets the value of RequiredNull.
@@ -18657,6 +19018,11 @@ func (s *TestResponseFormatTestOK) SetRequiredStringUnixMinusSeconds(val time.Ti
 	s.RequiredStringUnixMinusSeconds = val
 }
 
+// SetRequiredStringUnixtime sets the value of RequiredStringUnixtime.
+func (s *TestResponseFormatTestOK) SetRequiredStringUnixtime(val time.Time) {
+	s.RequiredStringUnixtime = val
+}
+
 // SetRequiredStringURI sets the value of RequiredStringURI.
 func (s *TestResponseFormatTestOK) SetRequiredStringURI(val url.URL) {
 	s.RequiredStringURI = val
@@ -18755,6 +19121,11 @@ func (s *TestResponseFormatTestOK) SetOptionalArrayIntegerUnixMinusNano(val []ti
 // SetOptionalArrayIntegerUnixMinusSeconds sets the value of OptionalArrayIntegerUnixMinusSeconds.
 func (s *TestResponseFormatTestOK) SetOptionalArrayIntegerUnixMinusSeconds(val []time.Time) {
 	s.OptionalArrayIntegerUnixMinusSeconds = val
+}
+
+// SetOptionalArrayIntegerUnixtime sets the value of OptionalArrayIntegerUnixtime.
+func (s *TestResponseFormatTestOK) SetOptionalArrayIntegerUnixtime(val []time.Time) {
+	s.OptionalArrayIntegerUnixtime = val
 }
 
 // SetOptionalArrayNull sets the value of OptionalArrayNull.
@@ -18962,6 +19333,11 @@ func (s *TestResponseFormatTestOK) SetOptionalArrayStringUnixMinusSeconds(val []
 	s.OptionalArrayStringUnixMinusSeconds = val
 }
 
+// SetOptionalArrayStringUnixtime sets the value of OptionalArrayStringUnixtime.
+func (s *TestResponseFormatTestOK) SetOptionalArrayStringUnixtime(val []time.Time) {
+	s.OptionalArrayStringUnixtime = val
+}
+
 // SetOptionalArrayStringURI sets the value of OptionalArrayStringURI.
 func (s *TestResponseFormatTestOK) SetOptionalArrayStringURI(val []url.URL) {
 	s.OptionalArrayStringURI = val
@@ -19060,6 +19436,11 @@ func (s *TestResponseFormatTestOK) SetOptionalDoubleArrayIntegerUnixMinusNano(va
 // SetOptionalDoubleArrayIntegerUnixMinusSeconds sets the value of OptionalDoubleArrayIntegerUnixMinusSeconds.
 func (s *TestResponseFormatTestOK) SetOptionalDoubleArrayIntegerUnixMinusSeconds(val [][]time.Time) {
 	s.OptionalDoubleArrayIntegerUnixMinusSeconds = val
+}
+
+// SetOptionalDoubleArrayIntegerUnixtime sets the value of OptionalDoubleArrayIntegerUnixtime.
+func (s *TestResponseFormatTestOK) SetOptionalDoubleArrayIntegerUnixtime(val [][]time.Time) {
+	s.OptionalDoubleArrayIntegerUnixtime = val
 }
 
 // SetOptionalDoubleArrayNull sets the value of OptionalDoubleArrayNull.
@@ -19267,6 +19648,11 @@ func (s *TestResponseFormatTestOK) SetOptionalDoubleArrayStringUnixMinusSeconds(
 	s.OptionalDoubleArrayStringUnixMinusSeconds = val
 }
 
+// SetOptionalDoubleArrayStringUnixtime sets the value of OptionalDoubleArrayStringUnixtime.
+func (s *TestResponseFormatTestOK) SetOptionalDoubleArrayStringUnixtime(val [][]time.Time) {
+	s.OptionalDoubleArrayStringUnixtime = val
+}
+
 // SetOptionalDoubleArrayStringURI sets the value of OptionalDoubleArrayStringURI.
 func (s *TestResponseFormatTestOK) SetOptionalDoubleArrayStringURI(val [][]url.URL) {
 	s.OptionalDoubleArrayStringURI = val
@@ -19350,6 +19736,11 @@ func (s *TestResponseFormatTestOK) SetOptionalIntegerUnixMinusNano(val OptUnixNa
 // SetOptionalIntegerUnixMinusSeconds sets the value of OptionalIntegerUnixMinusSeconds.
 func (s *TestResponseFormatTestOK) SetOptionalIntegerUnixMinusSeconds(val OptUnixSeconds) {
 	s.OptionalIntegerUnixMinusSeconds = val
+}
+
+// SetOptionalIntegerUnixtime sets the value of OptionalIntegerUnixtime.
+func (s *TestResponseFormatTestOK) SetOptionalIntegerUnixtime(val OptUnixSeconds) {
+	s.OptionalIntegerUnixtime = val
 }
 
 // SetOptionalNull sets the value of OptionalNull.
@@ -19555,6 +19946,11 @@ func (s *TestResponseFormatTestOK) SetOptionalStringUnixMinusNano(val OptStringU
 // SetOptionalStringUnixMinusSeconds sets the value of OptionalStringUnixMinusSeconds.
 func (s *TestResponseFormatTestOK) SetOptionalStringUnixMinusSeconds(val OptStringUnixSeconds) {
 	s.OptionalStringUnixMinusSeconds = val
+}
+
+// SetOptionalStringUnixtime sets the value of OptionalStringUnixtime.
+func (s *TestResponseFormatTestOK) SetOptionalStringUnixtime(val OptStringUnixSeconds) {
+	s.OptionalStringUnixtime = val
 }
 
 // SetOptionalStringURI sets the value of OptionalStringURI.

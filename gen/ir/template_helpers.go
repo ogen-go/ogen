@@ -69,7 +69,7 @@ func (t Type) uriFormat() string {
 				break
 			}
 			return "String" + naming.Capitalize(f)
-		case "unix", "unix-seconds":
+		case "unix", "unix-seconds", "unixtime":
 			return "UnixSeconds"
 		case "unix-nano":
 			return "UnixNano"
