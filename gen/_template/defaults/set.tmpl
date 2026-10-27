@@ -14,7 +14,7 @@
 	{{- else if or $t.GenericOf.IsPrimitive $t.GenericOf.IsEnum -}}
 		{{- template "defaults/val" default_elem $t.GenericOf $.Var $.Default }}
 		{{ $.Var }}.SetTo(val)
-	{{- else if $t.GenericOf.IsAlias -}}
+	{{- else if and $t.GenericOf.IsAlias (or $t.GenericOf.AliasTo.IsPrimitive $t.GenericOf.AliasTo.IsEnum) -}}
 		{{- template "defaults/val" default_elem $t.GenericOf.AliasTo $.Var $.Default }}
 		{{ $.Var }}.SetTo({{ $t.GenericOf.Go }}(val))
 	{{- else -}}
@@ -23,8 +23,14 @@
 		{{ $.Var }}.SetTo({{ $.LocalVar }})
 	{{- end }}
 {{- else if $t.IsAlias -}}
-	{{- template "defaults/val" default_elem $t.AliasTo $.Var $.Default }}
-	{{ $.Var }} = {{ $t.Go }}(val)
+	{{- if or $t.AliasTo.IsPrimitive $t.AliasTo.IsEnum -}}
+		{{- template "defaults/val" default_elem $t.AliasTo $.Var $.Default }}
+		{{ $.Var }} = {{ $t.Go }}(val)
+	{{- else -}}
+		var {{ $.LocalVar }} {{ $t.AliasTo.Go }}
+		{{ template "defaults/set" sub_default_elem $t.AliasTo $.LocalVar $.Default.Value $.NextDepth }}
+		{{ $.Var }} = {{ $t.Go }}({{ $.LocalVar }})
+	{{- end }}
 {{- else if $t.IsPointer -}}
 	{{- if or $t.PointerTo.IsPrimitive $t.PointerTo.IsEnum -}}
 		{{- template "defaults/val" default_elem $t.PointerTo $.Var $.Default }}
