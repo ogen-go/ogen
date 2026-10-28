@@ -599,6 +599,136 @@ func (s *OptString) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
+// Encode encodes User as json.
+func (o OptUser) Encode(e *jx.Encoder) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes User from json.
+func (o *OptUser) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptUser to nil")
+	}
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptUser) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptUser) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode implements json.Marshaler.
+func (s *OptionalContentParametersOK) Encode(e *jx.Encoder) {
+	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields encodes fields.
+func (s *OptionalContentParametersOK) encodeFields(e *jx.Encoder) {
+	{
+		if s.Query.Set {
+			e.FieldStart("query")
+			s.Query.Encode(e)
+		}
+	}
+	{
+		if s.Header.Set {
+			e.FieldStart("header")
+			s.Header.Encode(e)
+		}
+	}
+	{
+		if s.Cookie.Set {
+			e.FieldStart("cookie")
+			s.Cookie.Encode(e)
+		}
+	}
+}
+
+var jsonFieldsNameOfOptionalContentParametersOK = [3]string{
+	0: "query",
+	1: "header",
+	2: "cookie",
+}
+
+// Decode decodes OptionalContentParametersOK from json.
+func (s *OptionalContentParametersOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode OptionalContentParametersOK to nil")
+	}
+
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		case "query":
+			if err := func() error {
+				s.Query.Reset()
+				if err := s.Query.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"query\"")
+			}
+		case "header":
+			if err := func() error {
+				s.Header.Reset()
+				if err := s.Header.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"header\"")
+			}
+		case "cookie":
+			if err := func() error {
+				s.Cookie.Reset()
+				if err := s.Cookie.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"cookie\"")
+			}
+		default:
+			return d.Skip()
+		}
+		return nil
+	}); err != nil {
+		return errors.Wrap(err, "decode OptionalContentParametersOK")
+	}
+
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *OptionalContentParametersOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptionalContentParametersOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s *OptionalQueryParametersResponse) Encode(e *jx.Encoder) {
 	e.ObjStart()

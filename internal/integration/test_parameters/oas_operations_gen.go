@@ -13,6 +13,7 @@ const (
 	ObjectCookieParameterOperation       OperationName = "ObjectCookieParameter"
 	ObjectQueryParameterOperation        OperationName = "ObjectQueryParameter"
 	OptionalArrayParameterOperation      OperationName = "OptionalArrayParameter"
+	OptionalContentParametersOperation   OperationName = "OptionalContentParameters"
 	OptionalParametersOperation          OperationName = "OptionalParameters"
 	PathParameterOperation               OperationName = "PathParameter"
 	SameNameOperation                    OperationName = "SameName"
