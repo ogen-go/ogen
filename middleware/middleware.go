@@ -60,6 +60,8 @@ type Request struct {
 	RawBody []byte
 	// Params is the operation parameters.
 	Params Parameters
+	// ParamsStruct is the operation parameters. May be nil, if the operation has not parameters.
+	ParamsStruct any
 	// Raw is the raw http request.
 	Raw *http.Request
 }
