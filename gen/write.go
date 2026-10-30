@@ -47,8 +47,22 @@ type TemplateConfig struct {
 	RequestValidationEnabled  bool
 	ResponseValidationEnabled bool
 	EditorsEnabled            bool
+	SwaggerUIEnabled          bool
+
+	// Spec is the embedded OpenAPI document, nil if "server/spec" feature is disabled.
+	Spec *EmbeddedSpec
 
 	skipTestRegex *regexp.Regexp
+}
+
+// SpecEnabled returns true, if OpenAPI document embedding is enabled.
+func (t TemplateConfig) SpecEnabled() bool {
+	return t.Spec != nil
+}
+
+// DocsOptionEnabled returns true, if WithDocs server option should be generated.
+func (t TemplateConfig) DocsOptionEnabled() bool {
+	return t.SpecEnabled() && t.PathsServerEnabled && len(t.Operations) > 0
 }
 
 // AnyClientEnabled returns true, if webhooks or paths client is enabled.
@@ -302,6 +316,8 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 		RequestValidationEnabled:  features.Has(ClientRequestValidation),
 		ResponseValidationEnabled: features.Has(ServerResponseValidation),
 		EditorsEnabled:            features.Has(ClientEditors),
+		SwaggerUIEnabled:          features.Has(ServerSwaggerUI) && g.spec != nil,
+		Spec:                      g.spec,
 		// Unused for now.
 		skipTestRegex: nil,
 	}
@@ -380,6 +396,7 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 		{"unimplemented", features.Has(OgenUnimplemented) && genServer},
 		{"labeler", features.Has(OgenOtel) && genServer},
 		{"operations", (genClient || genServer)},
+		{"spec", cfg.SpecEnabled()},
 	} {
 		if !t.enabled {
 			continue

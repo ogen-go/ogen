@@ -9,6 +9,7 @@ import (
 	"strings"
 	"sync"
 	"text/template"
+	"unicode/utf8"
 
 	"github.com/go-faster/errors"
 
@@ -283,6 +284,18 @@ func templateFunctions() template.FuncMap {
 				return strconv.Quote(s)
 			}
 			return fmt.Sprintf("%q", v)
+		},
+		// raw_string renders a (possibly multi-line) string as a Go raw string literal.
+		"raw_string": func(s string) string {
+			// Raw string literals discard carriage returns.
+			if strings.ContainsRune(s, '\r') || !utf8.ValidString(s) {
+				return strconv.Quote(s)
+			}
+			parts := strings.Split(s, "`")
+			for i := range parts {
+				parts[i] = "`" + parts[i] + "`"
+			}
+			return strings.Join(parts, " + \"`\" + ")
 		},
 		"backquote": func(v any) string {
 			// Fast path for string.

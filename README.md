@@ -756,6 +756,71 @@ handler.
 Event `data` is encoded as JSON, except for string schemas, which are sent
 as-is, so that the stream is consumable by clients that expect plain text, like
 the `EventSource` API.
+## Serving the OpenAPI document and Swagger UI
+
+ogen can embed the OpenAPI document into the generated package and serve it,
+together with [Swagger UI](https://github.com/swagger-api/swagger-ui), from the
+generated server. Enable the `server/swagger_ui` feature (it implies `server/spec`)
+in the config file:
+
+```yaml
+generator:
+  features:
+    enable:
+      - server/swagger_ui
+```
+
+Then mount the documentation with the `WithDocs` server option:
+
+```go
+srv, err := api.NewServer(handler, api.WithDocs("/docs"))
+if err != nil {
+	// ...
+}
+http.ListenAndServe(":8080", srv)
+```
+
+The server now serves:
+
+| Path                  | Content                            |
+|-----------------------|------------------------------------|
+| `/docs/`              | Swagger UI                         |
+| `/docs/openapi.json`  | OpenAPI document encoded as JSON   |
+| `/docs/openapi.yaml`  | OpenAPI document encoded as YAML   |
+
+The prefix is relative to the one set by `WithPathPrefix`. Documentation paths are
+matched before API routes and bypass `Middleware`. Since Swagger UI is served from
+the same origin as the API, no CORS configuration is required.
+
+The generated package also exposes the document and standalone handlers, so they
+can be mounted into any router:
+
+```go
+api.SpecJSON() // []byte
+api.SpecYAML() // []byte
+
+mux := http.NewServeMux()
+mux.Handle("/docs/", http.StripPrefix("/docs", api.SwaggerUIHandler(
+	api.WithDocsTitle("Petstore API"),
+)))
+```
+
+Swagger UI static files are embedded into the binary by the
+`github.com/ogen-go/ogen/swaggerui` package, which depends on the standard library
+only. To load them from a CDN instead, use `WithDocsAssetsURL`:
+
+```go
+api.WithDocs("/docs", api.WithDocsAssetsURL("https://unpkg.com/swagger-ui-dist@5/"))
+```
+
+Enable only `server/spec` to embed the document and generate `SpecHandler` without
+Swagger UI. In this case the generated code does not import any additional packages.
+
+By default, the original document is embedded as is, so examples, descriptions and
+specification extensions are preserved. If the document references external files
+(`allow_remote` is enabled and `$ref` points outside the document), the expanded
+self-contained document is embedded instead. This can be controlled with the
+`spec_source` option: `auto` (default), `raw` or `expanded`.
 
 # Links
 
