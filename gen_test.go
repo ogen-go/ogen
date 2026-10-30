@@ -43,15 +43,6 @@ func testGenerate(t *testing.T, dir, filename string, data []byte, aliases ctAli
 		Logger: log,
 	}
 
-	if filename == "wikimedia.openapi.yaml" || filename == "openai-2.3.0.openapi.yaml" {
-		// TODO: remove when SSE server generation feature is implemented.
-		opt.Generator.Features = &gen.FeatureOptions{
-			Disable: gen.FeatureSet{
-				gen.PathsServer.Name:    {},
-				gen.WebhooksServer.Name: {},
-			},
-		}
-	}
 	if filename == "file_reference.yml" { // HACK
 		opt.Parser.AllowRemote = true
 		opt.Parser.RootURL = &url.URL{
@@ -141,9 +132,6 @@ func TestGenerate(t *testing.T) {
 			},
 			"content_header_response.json": {
 				"parameter content encoding",
-			},
-			"issue1710.yml": {
-				"sse server response encoding",
 			},
 		}))
 

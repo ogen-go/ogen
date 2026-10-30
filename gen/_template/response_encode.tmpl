@@ -2,6 +2,12 @@
 {{ define "response_encoders" }}
 {{ template "header" $ }}
 
+{{- range $_, $t := $.Types }}
+	{{- if and $t.IsSSEStream $t.SSE.Server }}
+		{{- template "response_encoders/sse_event" type_elem $t $ }}
+	{{- end }}
+{{- end }}
+
 {{- if $.PathsServerEnabled }}
 {{- range $op := $.Operations }}
 	{{- template "response_encoders/operation" op_elem $op $ }}
@@ -55,10 +61,7 @@ func encodeErrorResponse(response {{ $.ErrorGoType }}, w http.ResponseWriter, {{
 {{- /*gotype: github.com/ogen-go/ogen/gen.OperationElem*/ -}}{{ $op := $.Operation }}
 {{- /*gotype: github.com/ogen-go/ogen/gen.TemplateConfig*/ -}}{{ $cfg := $.Config }}
 {{- $otel := $cfg.OpenTelemetryEnabled }}
-{{- if $op.HasSSEStreamResponse }}
-	{{- template "response_encoders/operation_sse" . }}
-{{- else }}
-func encode{{ $op.Name }}Response(response {{ $op.Responses.GoType }}, w http.ResponseWriter, {{ if $otel }}span trace.Span{{ end }}) error {
+func encode{{ $op.Name }}Response({{ if $op.HasSSEStreamResponse }}ctx context.Context, {{ end }}response {{ $op.Responses.GoType }}, w http.ResponseWriter, {{ if $otel }}span trace.Span{{ end }}) error {
 	{{- $types := $op.ListResponseTypes $otel }}
 	{{- $hasRawResponse := false }}
 	{{- range $info := $types }}{{- if $info.RawResponse }}{{- $hasRawResponse = true }}{{- end }}{{- end }}
@@ -91,19 +94,132 @@ func encode{{ $op.Name }}Response(response {{ $op.Responses.GoType }}, w http.Re
 		}
 	{{- end -}}
 }
-{{- end }}
 {{ end }}
 
-{{ define "response_encoders/operation_sse" }}
-{{- /*gotype: github.com/ogen-go/ogen/gen.OperationElem*/ -}}
-{{- sse_server_response_encoding $.Operation }}
+{{ define "response_encoders/sse_event" }}
+{{- /*gotype: github.com/ogen-go/ogen/gen.TypeElem*/ -}}{{ $t := $.Type }}
+{{- /*gotype: github.com/ogen-go/ogen/gen.TemplateConfig*/ -}}{{ $cfg := $.Config }}
+{{- $sse := $t.SSE }}
+// encode{{ $t.Name }}Event encodes {{ $sse.EventType.Go }} as a Server-Sent Event.
+func encode{{ $t.Name }}Event(event {{ $sse.EventType.Go }}) (sse.Event, error) {
+{{- if eq $sse.Shape "data-only" }}
+	raw := sse.Event{
+		ID:   event.ID,
+		Type: event.Type,
+	}
+	{{- if and $sse.DataType.NeedValidation $cfg.ResponseValidationEnabled }}
+	if err := func() error {
+		{{- template "validate" elem $sse.DataType "event.Data" }}
+	}(); err != nil {
+		return raw, errors.Wrap(err, "validate")
+	}
+	{{- end }}
+	if v, ok := event.Retry.Get(); ok {
+		retry := time.Duration(v) * time.Millisecond
+		raw.Retry = &retry
+	}
+	{{- if $sse.DataType.IsString }}
+	raw.Data = event.Data
+	{{- else }}
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
+	{{- template "json/enc" elem $sse.DataType "event.Data" }}
+	{{- if $sse.DataType.IsJSONString }}
+	// Data is a string, so it is sent as-is, without JSON quoting.
+	data, err := jx.DecodeBytes(e.Bytes()).Str()
+	if err != nil {
+		return raw, errors.Wrap(err, "encode data")
+	}
+	raw.Data = data
+	{{- else }}
+	raw.Data = string(e.Bytes())
+	{{- end }}
+	{{- end }}
+	return raw, nil
+{{- else if or (eq $sse.Shape "full") (eq $sse.Shape "full-array") }}
+	var raw sse.Event
+	{{- if and $sse.EventType.NeedValidation $cfg.ResponseValidationEnabled }}
+	if err := func() error {
+		{{- template "validate" elem $sse.EventType "event" }}
+	}(); err != nil {
+		return raw, errors.Wrap(err, "validate")
+	}
+	{{- end }}
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
+	{{- template "json/enc" elem $sse.EventType "event" }}
+
+	// Event schema describes the full event envelope, so the standard fields
+	// are taken from the encoded object.
+	if err := jx.DecodeBytes(e.Bytes()).ObjBytes(func(d *jx.Decoder, key []byte) error {
+		if d.Next() == jx.Null {
+			return d.Skip()
+		}
+		switch string(key) {
+		case "id":
+			v, err := d.Str()
+			if err != nil {
+				return err
+			}
+			raw.ID = v
+		case "event":
+			v, err := d.Str()
+			if err != nil {
+				return err
+			}
+			raw.Type = v
+		case "retry":
+			v, err := d.Int64()
+			if err != nil {
+				return err
+			}
+			retry := time.Duration(v) * time.Millisecond
+			raw.Retry = &retry
+		case "data":
+			v, err := d.Raw()
+			if err != nil {
+				return err
+			}
+			// String data is sent as-is, any other value is sent as JSON.
+			if v.Type() == jx.String {
+				data, err := jx.DecodeBytes(v).Str()
+				if err != nil {
+					return err
+				}
+				raw.Data = data
+				return nil
+			}
+			raw.Data = string(v)
+		default:
+			return d.Skip()
+		}
+		return nil
+	}); err != nil {
+		return raw, errors.Wrap(err, "encode event")
+	}
+	return raw, nil
+{{- else }}
+	{{- errorf "%q: unexpected SSE event shape" $sse.Shape }}
+{{- end }}
+}
 {{ end }}
 
 {{ define "respond" }}
 {{- /*gotype: github.com/ogen-go/ogen/gen/ir.ResponseInfo*/ -}}
+{{- $type := $.Type }}
+{{- $var := "response" }}
+{{- if and (not $.NoContent) (or $.WithStatusCode $.WithHeaders) }}
+	{{- $type = ($.Type.MustField "Response").Type }}
+	{{- $var = "response.Response" }}
+{{- end }}
+{{- $sse := $type.SSEStream }}
 
 {{- if and (not $.NoContent) (not $.ContentType.Mask) }}
 	w.Header().Set("Content-Type", {{ $.ContentTypeHeader }})
+{{- end }}
+{{- if $sse }}
+	// Event stream must not be cached, otherwise events may be delayed.
+	w.Header().Set("Cache-Control", "no-cache")
 {{- end }}
 
 {{- if $.WithHeaders }}
@@ -163,14 +279,42 @@ w.Header().Set("Access-Control-Expose-Headers", {{ $exposeHeaders }})
 {{ if $.NoContent }}
 	{{ template "respond/return" $}}
 {{- else }}
-	{{- $type := $.Type }}
-	{{- $var := "response" }}
-	{{- if or $.WithStatusCode $.WithHeaders }}
-		{{- $type = ($.Type.MustField "Response").Type }}
-		{{- $var = "response.Response" }}
-	{{- end }}
+	{{- if $sse }}
+		enc := sse.NewEncoder(w)
+		// Flush the headers, so that the client does not wait for the first event.
+		if err := enc.Flush(); err != nil {
+			return errors.Wrap(err, "flush")
+		}
+		if {{ $var }}.Events != nil {
+			sender := sse.NewSender(enc, encode{{ $sse.Name }}Event)
 
-	{{- if or $.Encoding.JSON $.Encoding.ProblemJSON }}
+			// Keep-alive runs concurrently with Events and is stopped once
+			// Events returns by canceling streamCtx.
+			streamCtx, cancel := context.WithCancel(ctx)
+			defer cancel()
+
+			keepAlive := {{ $var }}.KeepAlive
+			if keepAlive == nil {
+				keepAlive = func(ctx context.Context, s {{ $sse.Name }}Sender) error {
+					return sse.KeepAlive(ctx, s)
+				}
+			}
+			keepAliveDone := make(chan struct{})
+			go func() {
+				defer close(keepAliveDone)
+				_ = keepAlive(streamCtx, sender)
+			}()
+
+			sErr := {{ $var }}.Events(streamCtx, sender)
+			cancel()
+			<-keepAliveDone
+			if sErr != nil {
+				// Response is already sent, so the error can't be reported to the client.
+				return errors.Join(errors.Wrap(sErr, "write events"), ht.ErrResponseSent)
+			}
+		}
+		{{ template "respond/return" $}}
+	{{- else if or $.Encoding.JSON $.Encoding.ProblemJSON }}
 		{{- if $.JSONStreaming }}
 		e := jx.NewStreamingEncoder(w, -1)
 		{{- template "json/enc" elem $type $var }}
