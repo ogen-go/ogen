@@ -48,6 +48,7 @@ type TemplateConfig struct {
 	ResponseValidationEnabled bool
 	EditorsEnabled            bool
 	SwaggerUIEnabled          bool
+	OptionalPointersEnabled   bool
 
 	// Spec is the embedded OpenAPI document, nil if "server/spec" feature is disabled.
 	Spec *EmbeddedSpec
@@ -317,6 +318,7 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 		ResponseValidationEnabled: features.Has(ServerResponseValidation),
 		EditorsEnabled:            features.Has(ClientEditors),
 		SwaggerUIEnabled:          features.Has(ServerSwaggerUI) && g.spec != nil,
+		OptionalPointersEnabled:   features.Has(SchemaOptionalPointers),
 		Spec:                      g.spec,
 		// Unused for now.
 		skipTestRegex: nil,

@@ -1,0 +1,44 @@
+{{- /*gotype: github.com/ogen-go/ogen/gen/ir.Type*/ -}}
+{{- define "schema/generic_ptr" }}
+
+{{- $g := $.GenericOf }}
+{{- $v := $.GenericVariant }}
+
+// New{{ $.Name }}FromPtr returns new {{ $.Name }} with value set to *v.
+//
+{{- if and $v.Optional $v.Nullable }}
+// A nil v is an explicit null: the result is set and null. Use the zero
+// {{ $.Name }} for a value omitted from the payload.
+{{- else if $v.Nullable }}
+// A nil v is null.
+{{- else }}
+// A nil v is not set.
+{{- end }}
+func New{{ $.Name }}FromPtr(v *{{ $g.Go }}) {{ $.Name }} {
+	if v == nil {
+		return {{ $.Name }}{
+		{{- if and $v.Optional $v.Nullable }}
+			Set:  true,
+			Null: true,
+		{{- else if $v.Nullable }}
+			Null: true,
+		{{- end }}
+		}
+	}
+	return New{{ $.Name }}(*v)
+}
+
+// Ptr returns a pointer to a copy of the value, or nil if
+{{- if and $v.Optional $v.Nullable }} the value is not set or is null.
+{{- else if $v.Nullable }} the value is null.
+{{- else }} the value is not set.
+{{- end }}
+func (o {{ $.ReadOnlyReceiver }}) Ptr() *{{ $g.Go }} {
+	v, ok := o.Get()
+	if !ok {
+		return nil
+	}
+	return &v
+}
+
+{{ end }}
