@@ -95,6 +95,10 @@ slow:
 		switch s[i] {
 		case '%':
 			// Unescape character.
+			if i+2 >= len(s) || !ishex(s[i+1]) || !ishex(s[i+2]) {
+				// Invalid escape sequence.
+				return "", false
+			}
 			a, b := s[i+1], s[i+2]
 			ch := unhex(a)<<4 | unhex(b)
 			if shouldEscapePath(ch) {
