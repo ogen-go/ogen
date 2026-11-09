@@ -1,8 +1,9 @@
 package json
 
 import (
+	"uuid"
+
 	"github.com/go-faster/jx"
-	"github.com/google/uuid"
 )
 
 // DecodeUUID decodes UUID from json.
@@ -11,7 +12,8 @@ func DecodeUUID(i *jx.Decoder) (v uuid.UUID, err error) {
 	if err != nil {
 		return v, err
 	}
-	return uuid.ParseBytes(s)
+	err = v.UnmarshalText(s)
+	return v, err
 }
 
 // EncodeUUID encodes UUID to json.

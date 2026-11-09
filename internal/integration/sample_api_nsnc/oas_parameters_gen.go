@@ -3,7 +3,7 @@
 package api
 
 import (
-	"github.com/google/uuid"
+	"uuid"
 )
 
 // DataGetFormatParams is parameters of dataGetFormat operation.

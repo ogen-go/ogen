@@ -178,7 +178,7 @@ func loadExternal(pkgPath, typeName string) (pkgName string, encode, decode Exte
 			}
 			obj := pkg.Types.Scope().Lookup(typeName)
 			if obj != nil && obj.Pkg().Path() == pkgPath {
-				if named, ok := obj.Type().(*types.Named); ok {
+				if named, ok := types.Unalias(obj.Type()).(*types.Named); ok {
 					return named
 				}
 			}

@@ -3,8 +3,9 @@
 package api
 
 import (
+	"uuid"
+
 	"github.com/go-faster/errors"
-	"github.com/google/uuid"
 )
 
 // AllOfWithSiblingExtensionsOK is response for AllOfWithSiblingExtensions operation.

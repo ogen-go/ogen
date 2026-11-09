@@ -390,10 +390,10 @@ func TestSchemaExtensions(t *testing.T) {
 			false,
 		},
 		{
-			`{"type": "string", "x-ogen-type": "github.com/google/uuid.UUID"}`,
+			`{"type": "string", "x-ogen-type": "uuid.UUID"}`,
 			&Schema{
 				Type:      String,
-				XOgenType: "github.com/google/uuid.UUID",
+				XOgenType: "uuid.UUID",
 			},
 			false,
 		},
