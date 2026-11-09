@@ -8,9 +8,9 @@ import (
 	"net/netip"
 	"net/url"
 	"time"
+	"uuid"
 
 	"github.com/go-faster/jx"
-	"github.com/google/uuid"
 	"github.com/shopspring/decimal"
 )
 

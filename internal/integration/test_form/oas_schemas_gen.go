@@ -3,7 +3,8 @@
 package api
 
 import (
-	"github.com/google/uuid"
+	"uuid"
+
 	ht "github.com/ogen-go/ogen/http"
 )
 

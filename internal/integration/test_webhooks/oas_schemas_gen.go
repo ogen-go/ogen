@@ -4,8 +4,7 @@ package api
 
 import (
 	"fmt"
-
-	"github.com/google/uuid"
+	"uuid"
 )
 
 func (s *ErrorStatusCode) Error() string {
