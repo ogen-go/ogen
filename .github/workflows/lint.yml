@@ -16,7 +16,7 @@ jobs:
       - name: Install Go
         uses: actions/setup-go@v7
         with:
-          go-version: "oldstable"
+          go-version: "stable"
           cache: false
 
       - name: Get Go environment
@@ -60,7 +60,7 @@ jobs:
       - name: Install Go
         uses: actions/setup-go@v7
         with:
-          go-version: "oldstable"
+          go-version: "stable"
           cache: false
 
       - name: Get Go environment
@@ -110,7 +110,7 @@ jobs:
       - name: Install Go
         uses: actions/setup-go@v7
         with:
-          go-version: "oldstable"
+          go-version: "stable"
           cache: false
 
       - name: Get Go environment
