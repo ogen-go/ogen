@@ -1,6 +1,6 @@
 module github.com/ogen-go/ogen/examples
 
-go 1.27.0
+go 1.27
 
 require (
 	github.com/go-faster/errors v0.8.0
