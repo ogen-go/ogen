@@ -6,9 +6,9 @@ import (
 	"net/url"
 	"testing"
 	"time"
+	"uuid"
 
 	"github.com/go-faster/jx"
-	"github.com/google/uuid"
 	"github.com/stretchr/testify/require"
 
 	api "github.com/ogen-go/ogen/internal/integration/sample_api"
