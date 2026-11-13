@@ -301,7 +301,11 @@ func (s {{ $t.ReadOnlyReceiver }}) Validate() error {
 }
 {{- else if $t.IsAlias }}
 func (s {{ $t.ReadOnlyReceiver }}) Validate() error {
-	{{- if $t.DoPassByPointer }}
+	{{- if and $t.AliasEmbed $t.DoPassByPointer }}
+	alias := &s.{{ $t.AliasTo.Go }}
+	{{- else if $t.AliasEmbed }}
+	alias := s.{{ $t.AliasTo.Go }}
+	{{- else if $t.DoPassByPointer }}
 	alias := ({{ $t.AliasTo.ReadOnlyReceiver }})(s)
 	{{- else }}
 	alias := ({{ $t.AliasTo.Go }})(s)

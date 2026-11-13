@@ -5864,6 +5864,7 @@ func (s *ChatCompletionTokenLogprob) Decode(d *jx.Decoder) error {
 			if err := func() error {
 				switch tt := d.Next(); tt {
 				case jx.Null:
+					s.Bytes = nil
 					if err := d.Skip(); err != nil {
 						return err
 					}
@@ -6035,6 +6036,7 @@ func (s *ChatCompletionTokenLogprobTopLogprobsItem) Decode(d *jx.Decoder) error 
 			if err := func() error {
 				switch tt := d.Next(); tt {
 				case jx.Null:
+					s.Bytes = nil
 					if err := d.Skip(); err != nil {
 						return err
 					}
@@ -11580,6 +11582,7 @@ func (s *CreateChatCompletionResponseChoicesItemLogprobs) Decode(d *jx.Decoder) 
 			if err := func() error {
 				switch tt := d.Next(); tt {
 				case jx.Null:
+					s.Content = nil
 					if err := d.Skip(); err != nil {
 						return err
 					}
@@ -11605,6 +11608,7 @@ func (s *CreateChatCompletionResponseChoicesItemLogprobs) Decode(d *jx.Decoder) 
 			if err := func() error {
 				switch tt := d.Next(); tt {
 				case jx.Null:
+					s.Refusal = nil
 					if err := d.Skip(); err != nil {
 						return err
 					}
@@ -12186,6 +12190,7 @@ func (s *CreateChatCompletionStreamResponseChoicesItemLogprobs) Decode(d *jx.Dec
 			if err := func() error {
 				switch tt := d.Next(); tt {
 				case jx.Null:
+					s.Content = nil
 					if err := d.Skip(); err != nil {
 						return err
 					}
@@ -12211,6 +12216,7 @@ func (s *CreateChatCompletionStreamResponseChoicesItemLogprobs) Decode(d *jx.Dec
 			if err := func() error {
 				switch tt := d.Next(); tt {
 				case jx.Null:
+					s.Refusal = nil
 					if err := d.Skip(); err != nil {
 						return err
 					}

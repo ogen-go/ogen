@@ -52,7 +52,11 @@
 	}(); err != nil {
 		return err
 	}
+	{{- if $t.AliasEmbed }}
+	{{ $var }} = {{ $t.Go }}{ {{- $tmpVar -}} }
+	{{- else }}
 	{{ $var }} = {{ $t.Go }}({{ $tmpVar }})
+	{{- end }}
 	return nil
 {{- else if $t.IsGeneric }}
 	var {{ $tmpVar }} {{ $t.GenericOf.Go }}

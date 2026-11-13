@@ -4,6 +4,10 @@
 func (s *{{ $.Name }}) SetFake() {
 	var unwrapped {{ $.AliasTo.Go }}
 	{{- template "faker/faker" elem $.AliasTo "unwrapped" }}
+	{{- if $.AliasEmbed }}
+	*s = {{ $.Go }}{unwrapped}
+	{{- else }}
 	*s = {{ $.Go }}(unwrapped)
+	{{- end }}
 }
 {{- end }}
