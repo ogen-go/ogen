@@ -54,6 +54,7 @@ package integration
 //
 // Regression test.
 //
+//go:generate go run ../../cmd/ogen -v --clean --config _config/sample_api_nsnc.yml --target test_unique_mac_addresses ../../_testdata/positive/unique_mac_addresses.yml
 //go:generate go run ../../cmd/ogen -v --clean --target test_issue1161 ../../_testdata/positive/issue1161.json
 //go:generate go run ../../cmd/ogen -v --clean --target test_issue1495 ../../_testdata/positive/issue1495.yml
 //go:generate go run ../../cmd/ogen -v --clean --target test_raw_response ../../_testdata/positive/raw_response.yml
