@@ -13,6 +13,18 @@ func (s *User) Validate() error {
 	}
 
 	var failures []validate.FieldError
+	// Object-level pluggable validation
+	if err := func() error {
+		if err := validate.Ogen("minAge", *s, 18); err != nil {
+			return errors.Wrap(err, "minAge")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "minAge",
+			Error: err,
+		})
+	}
 	if err := func() error {
 		if err := validate.Ogen("hasPrefix", s.Name, "Mr. "); err != nil {
 			return errors.Wrap(err, "hasPrefix")
