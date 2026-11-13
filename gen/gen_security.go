@@ -2,6 +2,7 @@ package gen
 
 import (
 	"fmt"
+	"slices"
 	"strings"
 
 	"github.com/go-faster/errors"
@@ -198,15 +199,68 @@ func (g *Generator) generateSecurities(
 	operationName string,
 	spec openapi.SecurityRequirements,
 ) (r ir.SecurityRequirements, _ error) {
-	indexes := map[string]int{}
+	type scopeSnapshot struct {
+		values []string
+		exists bool
+	}
+	type skippedRequirement struct {
+		err         error
+		requirement openapi.SecurityRequirement
+	}
+
+	indexes := make(map[string]int, len(spec))
+	skipped := make([]skippedRequirement, 0, len(spec))
 	for idx, requirement := range spec {
 		var set bitset.Bitset
+		// generateSecurity updates generator-wide schemas and per-operation scopes.
+		// Keep an undo log so an incomplete AND requirement has no side effects.
+		securitiesLen := len(r.Securities)
+		addedSecurities := make(map[string]*ir.Security, len(requirement.Schemes))
+		addedTypes := make(map[string]struct{}, len(requirement.Schemes))
+		scopeSnapshots := make(map[*ir.Security]scopeSnapshot, len(requirement.Schemes))
+
+		rollback := func() {
+			r.Securities = r.Securities[:securitiesLen]
+			for name, index := range indexes {
+				if index >= securitiesLen {
+					delete(indexes, name)
+				}
+			}
+			for security, snapshot := range scopeSnapshots {
+				if snapshot.exists {
+					security.Scopes[operationName] = snapshot.values
+				} else {
+					delete(security.Scopes, operationName)
+				}
+			}
+			for name, security := range addedSecurities {
+				if g.securities[name] == security {
+					delete(g.securities, name)
+				}
+			}
+			for name := range addedTypes {
+				delete(ctx.local.types, name)
+			}
+		}
 
 		if err := func() error {
 			for _, scheme := range requirement.Schemes {
+				security, exists := g.securities[scheme.Name]
+				if _, recorded := scopeSnapshots[security]; exists && !recorded {
+					values, scopeExists := security.Scopes[operationName]
+					scopeSnapshots[security] = scopeSnapshot{
+						values: slices.Clone(values),
+						exists: scopeExists,
+					}
+				}
+
 				s, err := g.generateSecurity(ctx, operationName, scheme)
 				if err != nil {
 					return errors.Wrapf(err, "security scheme %q", scheme.Name)
+				}
+				if !exists {
+					addedSecurities[scheme.Name] = s
+					addedTypes[s.Type.Name] = struct{}{}
 				}
 				g.securities[scheme.Name] = s
 
@@ -220,15 +274,30 @@ func (g *Generator) generateSecurities(
 			}
 			return nil
 		}(); err != nil {
-			// Skip entire requirement if at least one security is not implemented.
+			rollback()
 			err = errors.Wrapf(err, "security requirement %d", idx)
-			if err := g.trySkip(err, "Skipping security", requirement); err != nil {
+			if !g.canSkip(err) {
 				return r, err
 			}
+			skipped = append(skipped, skippedRequirement{
+				err:         err,
+				requirement: requirement,
+			})
 			continue
 		}
 
 		r.Requirements = append(r.Requirements, set)
+	}
+
+	if len(skipped) > 0 && len(r.Requirements) == 0 {
+		// Returning the original skippable error lets the operation-level handler
+		// skip the whole operation instead of generating it without security.
+		return r, errors.Wrap(skipped[len(skipped)-1].err, "no supported security requirements")
+	}
+	for _, item := range skipped {
+		if err := g.trySkip(item.err, "Skipping security", item.requirement); err != nil {
+			return r, err
+		}
 	}
 	return r, nil
 }

@@ -145,6 +145,9 @@ func TestGenerate(t *testing.T) {
 			"issue1710.yml": {
 				"sse server response encoding",
 			},
+			"security_unsupported.yml": {
+				"mutualTLS security",
+			},
 		}))
 
 	t.Run("Examples", runPositive("_testdata/examples",
