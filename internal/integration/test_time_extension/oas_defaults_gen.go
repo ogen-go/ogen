@@ -26,11 +26,3 @@ func (s *OptionalOK) setDefaults() {
 		s.Alias.SetTo(Alias(val))
 	}
 }
-
-// setDefaults set default value of fields.
-func (s *RequiredOK) setDefaults() {
-	{
-		val, _ := json.DecodeTimeFormat(jx.DecodeStr("\"04/03/2001 01:23:45AM\""), "02/01/2006 3:04:05PM")
-		s.Alias = Alias(val)
-	}
-}

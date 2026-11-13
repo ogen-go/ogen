@@ -407,11 +407,6 @@ func decodeRequiredParams(args [0]string, argsEscaped bool, r *http.Request) (pa
 			Err:  err,
 		}
 	}
-	// Set default value for query: alias.
-	{
-		val, _ := json.DecodeTimeFormat(jx.DecodeStr("\"04/03/2001 01:23:45AM\""), "02/01/2006 3:04:05PM")
-		params.Alias = Alias(val)
-	}
 	// Decode query: alias.
 	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
