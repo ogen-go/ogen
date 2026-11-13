@@ -119,17 +119,23 @@ type WebhookHandler interface {
 // calls WebhookHandler to handle requests.
 type WebhookServer struct {
 	h WebhookHandler
+	{{- if $.WebhookServerSecurity }}
+	sec SecurityHandler
+	{{- end }}
 	baseServer
 }
 
 // NewWebhookServer creates new WebhookServer.
-func NewWebhookServer(h WebhookHandler, opts ...ServerOption) (*WebhookServer, error) {
+func NewWebhookServer(h WebhookHandler, {{- if $.WebhookServerSecurity }}sec SecurityHandler,{{- end }}opts ...ServerOption) (*WebhookServer, error) {
 	s, err := newServerConfig(opts...).baseServer()
 	if err != nil {
 		return nil, err
 	}
 	return &WebhookServer{
 		h: h,
+		{{- if $.WebhookServerSecurity }}
+		sec: sec,
+		{{- end }}
 		baseServer: s,
 	}, nil
 }
