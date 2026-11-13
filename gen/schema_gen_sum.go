@@ -1586,6 +1586,10 @@ func mergeSchemes(s1, s2 *jsonschema.Schema) (_ *jsonschema.Schema, err error) {
 		Nullable:    s1.Nullable || s2.Nullable,
 		Description: "Merged schema", // TODO(tdakkota): handle in a better way.
 	}
+	r.XOgenTimeFormat = s1.XOgenTimeFormat
+	if r.XOgenTimeFormat == "" {
+		r.XOgenTimeFormat = s2.XOgenTimeFormat
+	}
 
 	// Type
 	{
