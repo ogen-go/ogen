@@ -196,7 +196,7 @@ func (j JSON) Format() string {
 			return ""
 		}
 		return "String" + naming.Capitalize(f)
-	case "unix", "unix-seconds":
+	case "unix", "unix-seconds", "unixtime":
 		return typePrefix("UnixSeconds")
 	case "unix-nano":
 		return typePrefix("UnixNano")

@@ -9,6 +9,31 @@ import (
 	"github.com/ogen-go/ogen/jsonschema"
 )
 
+func TestUnixSecondsFormats(t *testing.T) {
+	for _, schemaType := range []jsonschema.SchemaType{jsonschema.Integer, jsonschema.String} {
+		for _, format := range []string{"unix", "unix-seconds", "unixtime"} {
+			t.Run(string(schemaType)+"/"+format, func(t *testing.T) {
+				typ := Primitive(Time, &jsonschema.Schema{
+					Type:   schemaType,
+					Format: format,
+				})
+				formatName, jsonType := "UnixSeconds", "Number"
+				if schemaType == jsonschema.String {
+					formatName, jsonType = "StringUnixSeconds", "String"
+				}
+
+				require.Equal(t, "time.Time", typ.Go())
+				require.Equal(t, formatName, typ.JSON().Encoder())
+				require.Equal(t, formatName, typ.JSON().Decoder())
+				require.Equal(t, jsonType, typ.JSON().Type())
+				require.Equal(t, formatName, typ.NamePostfix())
+				require.Equal(t, "UnixSecondsToString", typ.ToString())
+				require.Equal(t, "ToUnixSeconds", typ.FromString())
+			})
+		}
+	}
+}
+
 func TestJSONFields_RequiredMask(t *testing.T) {
 	required := &Field{
 		Spec: &jsonschema.Property{

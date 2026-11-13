@@ -188,6 +188,7 @@ func TypeFormatMapping() map[jsonschema.SchemaType]map[string]ir.PrimitiveType {
 			"unix-nano":    ir.Time,
 			"unix-micro":   ir.Time,
 			"unix-milli":   ir.Time,
+			"unixtime":     ir.Time,
 		},
 		jsonschema.Number: {
 			"float":   ir.Float32,
@@ -235,6 +236,7 @@ func TypeFormatMapping() map[jsonschema.SchemaType]map[string]ir.PrimitiveType {
 			"unix-nano":    ir.Time,
 			"unix-micro":   ir.Time,
 			"unix-milli":   ir.Time,
+			"unixtime":     ir.Time,
 			// See https://github.com/ogen-go/ogen/issues/957.
 			"float32": ir.Float32,
 			"float64": ir.Float64,

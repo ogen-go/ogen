@@ -386,7 +386,7 @@ func (t *Type) NamePostfix() string {
 				return t.Primitive.String()
 			}
 			return "String" + naming.Capitalize(f)
-		case "unix", "unix-seconds":
+		case "unix", "unix-seconds", "unixtime":
 			return typePrefix("UnixSeconds")
 		case "unix-nano":
 			return typePrefix("UnixNano")
