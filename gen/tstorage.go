@@ -9,6 +9,7 @@ import (
 
 	"github.com/ogen-go/ogen/gen/ir"
 	"github.com/ogen-go/ogen/jsonschema"
+	"github.com/ogen-go/ogen/openapi"
 )
 
 type schemaKey struct {
@@ -41,6 +42,7 @@ type tstorage struct {
 	types      map[string]*ir.Type              // Key: type name
 	responses  map[jsonschema.Ref]*ir.Response  // Key: ref
 	parameters map[jsonschema.Ref]*ir.Parameter // Key: ref
+	headers    map[string][]*ir.Parameter       // Key: header name
 
 	// wtypes stores references to wrapped types:
 	//  * [T]StatusCode
@@ -55,6 +57,7 @@ func newTStorage() *tstorage {
 		types:      map[string]*ir.Type{},
 		responses:  map[jsonschema.Ref]*ir.Response{},
 		parameters: map[jsonschema.Ref]*ir.Parameter{},
+		headers:    map[string][]*ir.Parameter{},
 		wtypes:     map[[3]jsonschema.Ref]*ir.Type{},
 	}
 }
@@ -145,6 +148,19 @@ func (s *tstorage) saveParameter(ref jsonschema.Ref, p *ir.Parameter) error {
 	return nil
 }
 
+func (s *tstorage) lookupHeader(name string, header *openapi.Header) *ir.Parameter {
+	for _, p := range s.headers[name] {
+		if (&responseComparator{}).compareHeader(p.Spec, header) {
+			return p
+		}
+	}
+	return nil
+}
+
+func (s *tstorage) saveHeader(name string, p *ir.Parameter) {
+	s.headers[name] = append(s.headers[name], p)
+}
+
 func sameBase(t, tt *ir.Type) bool {
 	if t.GenericOf != nil {
 		t = t.GenericOf
@@ -223,6 +239,9 @@ func (s *tstorage) merge(other *tstorage) error {
 	maps.Copy(s.responses, other.responses)
 	maps.Copy(s.wtypes, other.wtypes)
 	maps.Copy(s.parameters, other.parameters)
+	for name, headers := range other.headers {
+		s.headers[name] = append(s.headers[name], headers...)
+	}
 
 	return nil
 }
