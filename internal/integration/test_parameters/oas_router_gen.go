@@ -20,7 +20,10 @@ var (
 	rn12AllowedHeaders = map[string]string{
 		"GET": "Header",
 	}
-	rn20AllowedHeaders = map[string]string{
+	rn14AllowedHeaders = map[string]string{
+		"GET": "X-Header",
+	}
+	rn21AllowedHeaders = map[string]string{
 		"GET": "X-Param",
 	}
 )
@@ -314,6 +317,31 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							return
 						}
 
+					case 'C': // Prefix: "ContentParameters"
+
+						if l := len("ContentParameters"); len(elem) >= l && elem[0:l] == "ContentParameters" {
+							elem = elem[l:]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							// Leaf node.
+							switch r.Method {
+							case "GET":
+								s.handleOptionalContentParametersRequest([0]string{}, elemIsEscaped, w, r)
+							default:
+								s.notAllowed(w, r, notAllowedParams{
+									allowedMethods: "GET",
+									allowedHeaders: rn14AllowedHeaders,
+									acceptPost:     "",
+									acceptPatch:    "",
+								})
+							}
+
+							return
+						}
+
 					case 'P': // Prefix: "Parameters"
 
 						if l := len("Parameters"); len(elem) >= l && elem[0:l] == "Parameters" {
@@ -443,7 +471,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						default:
 							s.notAllowed(w, r, notAllowedParams{
 								allowedMethods: "GET",
-								allowedHeaders: rn20AllowedHeaders,
+								allowedHeaders: rn21AllowedHeaders,
 								acceptPost:     "",
 								acceptPatch:    "",
 							})
@@ -807,6 +835,31 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.operationID = "optionalArrayParameter"
 								r.operationGroup = ""
 								r.pathPattern = "/optionalArrayParameter"
+								r.args = args
+								r.count = 0
+								return r, true
+							default:
+								return
+							}
+						}
+
+					case 'C': // Prefix: "ContentParameters"
+
+						if l := len("ContentParameters"); len(elem) >= l && elem[0:l] == "ContentParameters" {
+							elem = elem[l:]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							// Leaf node.
+							switch method {
+							case "GET":
+								r.name = OptionalContentParametersOperation
+								r.summary = ""
+								r.operationID = "optionalContentParameters"
+								r.operationGroup = ""
+								r.pathPattern = "/optionalContentParameters"
 								r.args = args
 								r.count = 0
 								return r, true

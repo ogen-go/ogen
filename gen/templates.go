@@ -9,6 +9,7 @@ import (
 	"strings"
 	"sync"
 	"text/template"
+	"unicode/utf8"
 
 	"github.com/go-faster/errors"
 
@@ -20,6 +21,14 @@ import (
 type OperationElem struct {
 	// Operation is the operation.
 	Operation *ir.Operation
+	// Config is the template configuration.
+	Config TemplateConfig
+}
+
+// SecurityElem is variable helper for security generation.
+type SecurityElem struct {
+	// Security is the security scheme.
+	Security *ir.Security
 	// Config is the template configuration.
 	Config TemplateConfig
 }
@@ -254,6 +263,12 @@ func templateFunctions() template.FuncMap {
 				Config:    cfg,
 			}
 		},
+		"security_elem": func(s *ir.Security, cfg TemplateConfig) SecurityElem {
+			return SecurityElem{
+				Security: s,
+				Config:   cfg,
+			}
+		},
 		"sse_server_response_encoding": sseServerResponseEncoding,
 		"ir_media": func(e ir.Encoding, t *ir.Type) ir.Media {
 			return ir.Media{
@@ -270,6 +285,18 @@ func templateFunctions() template.FuncMap {
 				return strconv.Quote(s)
 			}
 			return fmt.Sprintf("%q", v)
+		},
+		// raw_string renders a (possibly multi-line) string as a Go raw string literal.
+		"raw_string": func(s string) string {
+			// Raw string literals discard carriage returns.
+			if strings.ContainsRune(s, '\r') || !utf8.ValidString(s) {
+				return strconv.Quote(s)
+			}
+			parts := strings.Split(s, "`")
+			for i := range parts {
+				parts[i] = "`" + parts[i] + "`"
+			}
+			return strings.Join(parts, " + \"`\" + ")
 		},
 		"backquote": func(v any) string {
 			// Fast path for string.

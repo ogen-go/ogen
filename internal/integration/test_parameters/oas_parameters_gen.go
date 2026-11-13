@@ -850,6 +850,200 @@ func decodeOptionalArrayParameterParams(args [0]string, argsEscaped bool, r *htt
 	return params, nil
 }
 
+// OptionalContentParametersParams is parameters of optionalContentParameters operation.
+type OptionalContentParametersParams struct {
+	Query   OptUser `json:",omitempty,omitzero"`
+	XHeader OptUser `json:",omitempty,omitzero"`
+	Cookie  OptUser `json:",omitempty,omitzero"`
+}
+
+func unpackOptionalContentParametersParams(packed middleware.Parameters) (params OptionalContentParametersParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "query",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Query = v.(OptUser)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "X-Header",
+			In:   "header",
+		}
+		if v, ok := packed[key]; ok {
+			params.XHeader = v.(OptUser)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "cookie",
+			In:   "cookie",
+		}
+		if v, ok := packed[key]; ok {
+			params.Cookie = v.(OptUser)
+		}
+	}
+	return params
+}
+
+func decodeOptionalContentParametersParams(args [0]string, argsEscaped bool, r *http.Request) (params OptionalContentParametersParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
+	h := uri.NewHeaderDecoder(r.Header)
+	c := uri.NewCookieDecoder(r)
+	// Decode query: query.
+	if err := func() error {
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "query",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+				if err := func(d *jx.Decoder) error {
+					params.Query.Reset()
+					if err := params.Query.Decode(d); err != nil {
+						return err
+					}
+					return nil
+				}(jx.DecodeStr(val)); err != nil {
+					return err
+				}
+				return nil
+			}); err != nil {
+				return err
+			}
+			if err := func() error {
+				if value, ok := params.Query.Get(); ok {
+					if err := func() error {
+						if err := value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "query",
+			In:   "query",
+			Err:  err,
+		}
+	}
+	// Decode header: X-Header.
+	if err := func() error {
+		cfg := uri.HeaderParameterDecodingConfig{
+			Name:    "X-Header",
+			Explode: false,
+		}
+		if err := h.HasParam(cfg); err == nil {
+			if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+				if err := func(d *jx.Decoder) error {
+					params.XHeader.Reset()
+					if err := params.XHeader.Decode(d); err != nil {
+						return err
+					}
+					return nil
+				}(jx.DecodeStr(val)); err != nil {
+					return err
+				}
+				return nil
+			}); err != nil {
+				return err
+			}
+			if err := func() error {
+				if value, ok := params.XHeader.Get(); ok {
+					if err := func() error {
+						if err := value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "X-Header",
+			In:   "header",
+			Err:  err,
+		}
+	}
+	// Decode cookie: cookie.
+	if err := func() error {
+		cfg := uri.CookieParameterDecodingConfig{
+			Name:    "cookie",
+			Explode: true,
+		}
+		if err := c.HasParam(cfg); err == nil {
+			if err := c.DecodeParam(cfg, func(d uri.Decoder) error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+				if err := func(d *jx.Decoder) error {
+					params.Cookie.Reset()
+					if err := params.Cookie.Decode(d); err != nil {
+						return err
+					}
+					return nil
+				}(jx.DecodeStr(val)); err != nil {
+					return err
+				}
+				return nil
+			}); err != nil {
+				return err
+			}
+			if err := func() error {
+				if value, ok := params.Cookie.Get(); ok {
+					if err := func() error {
+						if err := value.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return err
+					}
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "cookie",
+			In:   "cookie",
+			Err:  err,
+		}
+	}
+	return params, nil
+}
+
 // OptionalParametersParams is parameters of optionalParameters operation.
 type OptionalParametersParams struct {
 	Integer   OptInt                      `json:",omitempty,omitzero"`

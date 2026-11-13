@@ -24,6 +24,7 @@ package integration
 //go:generate go run ../../cmd/ogen -v --clean --target test_form             ../../_testdata/positive/form.json
 //go:generate go run ../../cmd/ogen -v --clean --target test_parameters       ../../_testdata/positive/parameters.json
 //go:generate go run ../../cmd/ogen -v --clean --target test_security         ../../_testdata/positive/security.json
+//go:generate go run ../../cmd/ogen -v --clean --target test_webhook_security ../../_testdata/positive/webhook_security.yml
 //
 //
 //go:generate go run ../../cmd/ogen -v --clean --target referenced_path_item ../../_testdata/positive/referenced_pathItem.json
@@ -40,6 +41,7 @@ package integration
 //go:generate go run ../../cmd/ogen -v --clean --config _config/additionalPropertiesPatternProperties.yml --target test_additionalpropertiespatternproperties ../../_testdata/positive/additionalPropertiesPatternProperties.yml
 //go:generate go run ../../cmd/ogen -v --clean --target test_deep_object_additional_properties ../../_testdata/positive/deepObjectAdditionalProperties.yml
 //go:generate go run ../../cmd/ogen -v --clean --config _config/client_options.yml --target test_client_options ../../_testdata/positive/client_options.json
+//go:generate go run ../../cmd/ogen -v --clean --config _config/spec_docs.yml --target test_spec_docs ../../_testdata/positive/single_endpoint.json
 //go:generate go run ../../cmd/ogen -v --clean --target test_cors ../../_testdata/positive/cors.yaml
 //go:generate go run ../../cmd/ogen -v --clean --target test_additional_operations ../../_testdata/positive/additional_operations.yml
 //
@@ -53,9 +55,11 @@ package integration
 //
 // Regression test.
 //
+//go:generate go run ../../cmd/ogen -v --clean --config _config/sample_api_nsnc.yml --target test_unique_mac_addresses ../../_testdata/positive/unique_mac_addresses.yml
 //go:generate go run ../../cmd/ogen -v --clean --target test_issue1161 ../../_testdata/positive/issue1161.json
 //go:generate go run ../../cmd/ogen -v --clean --target test_issue1495 ../../_testdata/positive/issue1495.yml
 //go:generate go run ../../cmd/ogen -v --clean --target test_raw_response ../../_testdata/positive/raw_response.yml
 //go:generate go run ../../cmd/ogen -v --clean --target test_non_primitive_enum ../../_testdata/positive/non_primitive_enum.json
 //go:generate go run ../../cmd/ogen -v --clean --target test_nullable_anyof_params ../../_testdata/positive/nullable_anyof_params.json
 //go:generate go run ../../cmd/ogen -v --clean --target test_ref_overrides ../../_testdata/positive/ref_overrides.yml
+//go:generate go run ../../cmd/ogen -v --clean --config _config/security_unsupported.yml --target test_security_unsupported ../../_testdata/positive/security_unsupported.yml

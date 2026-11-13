@@ -61,3 +61,15 @@ func UniqueItems[S ~[]T, T comparable](arr S) error {
 	}
 	return nil
 }
+
+// UniqueItemsFunc ensures given array has no duplicates using equal to compare elements.
+func UniqueItemsFunc[S ~[]T, T any](arr S, equal func(a, b T) bool) error {
+	for i, a := range arr {
+		for _, b := range arr[i+1:] {
+			if equal(a, b) {
+				return errors.Errorf("duplicate element [%d] %v", i, a)
+			}
+		}
+	}
+	return nil
+}

@@ -129,6 +129,15 @@ var (
 		"server/response/validation",
 		`Enables validation of server responses`,
 	}
+	ServerSpec = Feature{
+		"server/spec",
+		`Embeds the OpenAPI document into generated code and generates SpecJSON, SpecYAML, ` +
+			`SpecHandler and the WithDocs server option`,
+	}
+	ServerSwaggerUI = Feature{
+		"server/swagger_ui",
+		`Generates SwaggerUIHandler and serves Swagger UI via WithDocs. Implies server/spec`,
+	}
 	OgenOtel = Feature{
 		"ogen/otel",
 		`Enables OpenTelemetry integration`,
@@ -169,6 +178,8 @@ var AllFeatures = []Feature{
 	ClientRequestValidation,
 	ClientEditors,
 	ServerResponseValidation,
+	ServerSpec,
+	ServerSwaggerUI,
 	OgenOtel,
 	OgenUnimplemented,
 	DebugExampleTests,

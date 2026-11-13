@@ -66,6 +66,13 @@ func (UnimplementedHandler) OptionalArrayParameter(ctx context.Context, params O
 	return r, ht.ErrNotImplemented
 }
 
+// OptionalContentParameters implements optionalContentParameters operation.
+//
+// GET /optionalContentParameters
+func (UnimplementedHandler) OptionalContentParameters(ctx context.Context, params OptionalContentParametersParams) (r *OptionalContentParametersOK, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
 // OptionalParameters implements optionalParameters operation.
 //
 // GET /optionalParameters
