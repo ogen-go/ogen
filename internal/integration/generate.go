@@ -51,6 +51,7 @@ package integration
 //go:generate go run ../../cmd/ogen -v --clean -target test_type_extension_name ../../_testdata/positive/type_extension_name.yml
 //go:generate go run ../../cmd/ogen -v --clean -target test_time_extension ../../_testdata/positive/time_extension.yml
 //go:generate go run ../../cmd/ogen -v --clean -target test_ogen_validate ../../_testdata/positive/ogen_validate.yaml
+//go:generate go run ../../cmd/ogen -v --clean --config _config/optional_pointers.yml --target test_optional_pointers ../../_testdata/positive/optional_pointers.yml
 //
 // Regression test.
 //

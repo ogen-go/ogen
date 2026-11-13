@@ -3,6 +3,9 @@
 {{ define "schemas/body" }}
 {{- range $_, $s := $.Types }}
 	{{- template "schema/schema" $s }}
+	{{- if and $.OptionalPointersEnabled $s.IsGeneric }}
+		{{- template "schema/generic_ptr" $s }}
+	{{- end }}
 {{- end }}
 {{- end }}
 

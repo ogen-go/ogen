@@ -118,6 +118,7 @@ properties:
                 - "ogen/unimplemented"
                 - "debug/example_tests"
                 - "naming/camel_initialisms"
+                - "schema/optional_pointers"
               enumDescriptions:
                 - "Generate client code for API paths."
                 - "Generate server code for API paths."
@@ -134,6 +135,7 @@ properties:
                 - "Generate stub handlers for unimplemented operations."
                 - "Generate debug example tests."
                 - "Apply initialism rules (ID, URL, HTTP, ...) to camelCase identifiers, e.g. userId -> UserID."
+                - "Generate New<Type>FromPtr constructors and Ptr methods for Opt*, Nil* and OptNil* wrappers."
             default:
               - "paths/client"
               - "paths/server"
@@ -165,6 +167,7 @@ properties:
                 - "ogen/unimplemented"
                 - "debug/example_tests"
                 - "naming/camel_initialisms"
+                - "schema/optional_pointers"
               enumDescriptions:
                 - "Disable client code generation for API paths."
                 - "Disable server code generation for API paths."
@@ -181,6 +184,7 @@ properties:
                 - "Disable stub handlers for unimplemented operations."
                 - "Disable debug example tests."
                 - "Disable applying initialism rules to camelCase identifiers."
+                - "Disable New<Type>FromPtr constructors and Ptr methods for optional wrappers."
             default: []
           disable_all:
             type: boolean

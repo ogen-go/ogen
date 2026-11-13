@@ -1,0 +1,75 @@
+openapi: 3.0.3
+info:
+  title: Optional pointers
+  version: 0.1.0
+paths:
+  /wrappers:
+    post:
+      operationId: wrappers
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Wrappers'
+      responses:
+        '200':
+          description: The same wrappers.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Wrappers'
+components:
+  schemas:
+    Wrappers:
+      type: object
+      required:
+        - nilString
+        - nilObject
+      properties:
+        optString:
+          type: string
+        nilString:
+          type: string
+          nullable: true
+        optNilString:
+          type: string
+          nullable: true
+        optInt:
+          type: integer
+          format: int64
+        optTime:
+          type: string
+          format: date-time
+        optName:
+          $ref: '#/components/schemas/Name'
+        optObject:
+          $ref: '#/components/schemas/Object'
+        nilObject:
+          $ref: '#/components/schemas/NullableObject'
+        optNilArray:
+          type: array
+          nullable: true
+          items:
+            type: string
+        optExternal:
+          type: string
+          x-ogen-type: github.com/ogen-go/ogen/_testdata/testtypes.StringOgen
+    Name:
+      type: string
+      minLength: 1
+    Object:
+      type: object
+      required:
+        - id
+      properties:
+        id:
+          type: integer
+    NullableObject:
+      type: object
+      nullable: true
+      required:
+        - id
+      properties:
+        id:
+          type: integer

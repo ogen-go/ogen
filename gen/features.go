@@ -155,6 +155,11 @@ var (
 		`Applies initialism rules (ID, URL, HTTP, ...) to camelCase identifiers, ` +
 			`e.g. "userId" becomes "UserID". Opt-in, since it changes generated names.`,
 	}
+	SchemaOptionalPointers = Feature{
+		"schema/optional_pointers",
+		`Generates New<Type>FromPtr constructors and Ptr methods for optional and nullable ` +
+			`wrappers (Opt*, Nil*, OptNil*), converting them from and to *T`,
+	}
 )
 
 // DefaultFeatures defines default ogen features.
@@ -184,4 +189,5 @@ var AllFeatures = []Feature{
 	OgenUnimplemented,
 	DebugExampleTests,
 	NamingCamelInitialisms,
+	SchemaOptionalPointers,
 }
