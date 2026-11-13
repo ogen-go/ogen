@@ -214,6 +214,7 @@ type Type struct {
 	Name                string              // only for struct, alias, interface, enum, stream, generic, map, sum
 	Primitive           PrimitiveType       // only for primitive, enum
 	AliasTo             *Type               // only for alias
+	AliasEmbed          bool                // only for alias: generate as struct embedding AliasTo
 	PointerTo           *Type               // only for pointer
 	SumOf               []*Type             // only for sum
 	SumSpec             SumSpec             // only for sum

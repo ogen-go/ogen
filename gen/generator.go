@@ -183,6 +183,10 @@ func (g *Generator) makeIR(api *openapi.API) error {
 		return errors.Wrap(err, "operations")
 	}
 
+	if g.features.Has(SchemaEmbedStructAliases) {
+		g.embedStructAliases()
+	}
+
 	// Collect types that need Equal() and Hash() methods for complex uniqueItems validation
 	g.collectEqualitySpecs()
 

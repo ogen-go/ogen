@@ -64,3 +64,4 @@ package integration
 //go:generate go run ../../cmd/ogen -v --clean --target test_ref_overrides ../../_testdata/positive/ref_overrides.yml
 //go:generate go run ../../cmd/ogen -v --clean --target test_response_header ../../_testdata/positive/response_header.yaml
 //go:generate go run ../../cmd/ogen -v --clean --config _config/security_unsupported.yml --target test_security_unsupported ../../_testdata/positive/security_unsupported.yml
+//go:generate go run ../../cmd/ogen -v --clean --config _config/embed_struct_aliases.yml --target test_embed_struct_aliases ../../_testdata/positive/embed_struct_aliases.yml
