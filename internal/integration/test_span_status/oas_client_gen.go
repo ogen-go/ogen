@@ -138,6 +138,7 @@ func (c *Client) sendSpanStatusBody(ctx context.Context) (res SpanStatusBodyRes,
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/span-status"
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -216,6 +217,7 @@ func (c *Client) sendSpanStatusNoBody(ctx context.Context) (res *SpanStatusNoBod
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/span-status"
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -312,6 +314,7 @@ func (c *Client) sendSpanStatusRequestChecks(ctx context.Context, request *SpanS
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/span-status"
 	if err := encodeSpanStatusRequestChecksRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}

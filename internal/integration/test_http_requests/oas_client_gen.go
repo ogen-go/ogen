@@ -146,6 +146,7 @@ func (c *Client) sendAllRequestBodies(ctx context.Context, request AllRequestBod
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/allRequestBodies"
 	if err := encodeAllRequestBodiesRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -227,6 +228,7 @@ func (c *Client) sendAllRequestBodiesOptional(ctx context.Context, request AllRe
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/allRequestBodiesOptional"
 	if err := encodeAllRequestBodiesOptionalRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -308,6 +310,7 @@ func (c *Client) sendBase64Request(ctx context.Context, request Base64RequestReq
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/base64Request"
 	if err := encodeBase64RequestRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -389,6 +392,7 @@ func (c *Client) sendMaskContentType(ctx context.Context, request *MaskContentTy
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/maskContentType"
 	if err := encodeMaskContentTypeRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -470,6 +474,7 @@ func (c *Client) sendMaskContentTypeOptional(ctx context.Context, request *MaskC
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/maskContentTypeOptional"
 	if err := encodeMaskContentTypeOptionalRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -551,6 +556,7 @@ func (c *Client) sendStreamJSON(ctx context.Context, request []float64) (res flo
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/streamJSON"
 	if err := encodeStreamJSONRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}

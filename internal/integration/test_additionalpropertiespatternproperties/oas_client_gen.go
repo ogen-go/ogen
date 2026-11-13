@@ -147,6 +147,7 @@ func (c *Client) sendAlive(ctx context.Context, params AliveParams) (res *AliveO
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/api/alive"
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)

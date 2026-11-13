@@ -165,6 +165,7 @@ func (c *Client) sendListDesktops(ctx context.Context, params ListDesktopsParams
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/desktops"
 
 	stage = "EncodeHeaderParams"
 	h := uri.NewHeaderEncoder(r.Header)

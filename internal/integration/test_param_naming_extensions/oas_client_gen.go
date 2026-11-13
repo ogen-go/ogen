@@ -166,6 +166,7 @@ func (c *Client) sendGetItem(ctx context.Context, params GetItemParams) (res *Ge
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/items/{itemid}"
 
 	stage = "EncodeHeaderParams"
 	h := uri.NewHeaderEncoder(r.Header)

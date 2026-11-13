@@ -530,6 +530,7 @@ func (c *{{ if $op.WebhookInfo }}Webhook{{ end }}Client) send{{ $op.Name }}(ctx 
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+    r.Pattern = {{ quote $op.Spec.Path }}
 	{{- if $op.Request }}
 		if err := encode{{ $op.Name }}Request(request, r); err != nil {
 			return res, errors.Wrap(err, "encode request")

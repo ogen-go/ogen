@@ -389,6 +389,7 @@ func (c *Client) sendOptional(ctx context.Context, params OptionalParams) (res *
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/optional"
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -682,6 +683,7 @@ func (c *Client) sendRequired(ctx context.Context, params RequiredParams) (res *
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/required"
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)

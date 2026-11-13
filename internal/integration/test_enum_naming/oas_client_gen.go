@@ -130,6 +130,7 @@ func (c *Client) sendProbeLiveness(ctx context.Context) (res *ProbeLivenessOK, e
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/healthz"
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)

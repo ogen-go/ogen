@@ -140,6 +140,7 @@ func (c *Client) sendGetResource(ctx context.Context) (res Resource, err error) 
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/resource"
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -220,6 +221,7 @@ func (c *Client) sendGetShippingOption(ctx context.Context) (res ShippingOption,
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/shipping-option"
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -298,6 +300,7 @@ func (c *Client) sendGetStatus(ctx context.Context) (res StatusResponse, err err
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/status"
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -376,6 +379,7 @@ func (c *Client) sendLogEvent(ctx context.Context, request Event) (res *LogEvent
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/event"
 	if err := encodeLogEventRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}

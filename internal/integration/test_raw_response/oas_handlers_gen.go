@@ -36,6 +36,7 @@ func (c *codeRecorder) Unwrap() http.ResponseWriter {
 //
 // GET /mixed-data
 func (s *Server) handleGetMixedDataRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	r.Pattern = "/mixed-data"
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
 	otelAttrs := []attribute.KeyValue{
@@ -148,6 +149,7 @@ func (s *Server) handleGetMixedDataRequest(args [0]string, argsEscaped bool, w h
 //
 // GET /normal-data
 func (s *Server) handleGetNormalDataRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	r.Pattern = "/normal-data"
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
 	otelAttrs := []attribute.KeyValue{
@@ -270,6 +272,7 @@ func (s *Server) handleGetNormalDataRequest(args [0]string, argsEscaped bool, w 
 //
 // GET /raw-data
 func (s *Server) handleGetRawDataRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	r.Pattern = "/raw-data"
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
 	otelAttrs := []attribute.KeyValue{
@@ -382,6 +385,7 @@ func (s *Server) handleGetRawDataRequest(args [0]string, argsEscaped bool, w htt
 //
 // GET /raw-data-inside-operation-group
 func (s *Server) handleGetRawDataInsideOperationGroupRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	r.Pattern = "/raw-data-inside-operation-group"
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
 	otelAttrs := []attribute.KeyValue{

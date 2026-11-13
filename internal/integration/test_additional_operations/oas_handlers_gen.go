@@ -37,6 +37,7 @@ func (c *codeRecorder) Unwrap() http.ResponseWriter {
 //
 // LINK /echo
 func (s *Server) handleEchoRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	r.Pattern = "/echo"
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
 	otelAttrs := []attribute.KeyValue{

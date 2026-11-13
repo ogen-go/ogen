@@ -37,6 +37,7 @@ func (c *codeRecorder) Unwrap() http.ResponseWriter {
 //
 // GET /items/{itemid}
 func (s *Server) handleGetItemRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	r.Pattern = "/items/{itemid}"
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
 	otelAttrs := []attribute.KeyValue{

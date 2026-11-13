@@ -39,6 +39,7 @@ func (c *codeRecorder) Unwrap() http.ResponseWriter {
 //
 // POST /allOfWithSiblingExtensions
 func (s *Server) handleAllOfWithSiblingExtensionsRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	r.Pattern = "/allOfWithSiblingExtensions"
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
 	otelAttrs := []attribute.KeyValue{
@@ -182,6 +183,7 @@ func (s *Server) handleAllOfWithSiblingExtensionsRequest(args [0]string, argsEsc
 //
 // POST /allOfWithSiblingProperties
 func (s *Server) handleAllOfWithSiblingPropertiesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	r.Pattern = "/allOfWithSiblingProperties"
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
 	otelAttrs := []attribute.KeyValue{
@@ -325,6 +327,7 @@ func (s *Server) handleAllOfWithSiblingPropertiesRequest(args [0]string, argsEsc
 //
 // GET /admin/foo
 func (s *Server) handleGetAdminFooRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	r.Pattern = "/admin/foo"
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
 	otelAttrs := []attribute.KeyValue{
@@ -449,6 +452,7 @@ func (s *Server) handleGetAdminFooRequest(args [0]string, argsEscaped bool, w ht
 //
 // GET /foo
 func (s *Server) handleGetFooRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	r.Pattern = "/foo"
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
 	otelAttrs := []attribute.KeyValue{
@@ -573,6 +577,7 @@ func (s *Server) handleGetFooRequest(args [0]string, argsEscaped bool, w http.Re
 //
 // POST /multiAllOfWithSiblingProperties
 func (s *Server) handleMultiAllOfWithSiblingPropertiesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	r.Pattern = "/multiAllOfWithSiblingProperties"
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
 	otelAttrs := []attribute.KeyValue{
@@ -716,6 +721,7 @@ func (s *Server) handleMultiAllOfWithSiblingPropertiesRequest(args [0]string, ar
 //
 // POST /nullableStrings
 func (s *Server) handleNullableStringsRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	r.Pattern = "/nullableStrings"
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
 	otelAttrs := []attribute.KeyValue{
@@ -859,6 +865,7 @@ func (s *Server) handleNullableStringsRequest(args [0]string, argsEscaped bool, 
 //
 // POST /objectsWithConflictingArrayProperty
 func (s *Server) handleObjectsWithConflictingArrayPropertyRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	r.Pattern = "/objectsWithConflictingArrayProperty"
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
 	otelAttrs := []attribute.KeyValue{
@@ -1002,6 +1009,7 @@ func (s *Server) handleObjectsWithConflictingArrayPropertyRequest(args [0]string
 //
 // POST /objectsWithConflictingProperties
 func (s *Server) handleObjectsWithConflictingPropertiesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	r.Pattern = "/objectsWithConflictingProperties"
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
 	otelAttrs := []attribute.KeyValue{
@@ -1145,6 +1153,7 @@ func (s *Server) handleObjectsWithConflictingPropertiesRequest(args [0]string, a
 //
 // POST /referencedAllOfNullable
 func (s *Server) handleReferencedAllOfNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	r.Pattern = "/referencedAllOfNullable"
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
 	otelAttrs := []attribute.KeyValue{
@@ -1288,6 +1297,7 @@ func (s *Server) handleReferencedAllOfNullableRequest(args [0]string, argsEscape
 //
 // POST /referencedAllof
 func (s *Server) handleReferencedAllofRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	r.Pattern = "/referencedAllof"
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
 	otelAttrs := []attribute.KeyValue{
@@ -1431,6 +1441,7 @@ func (s *Server) handleReferencedAllofRequest(args [0]string, argsEscaped bool, 
 //
 // POST /referencedAllofOptional
 func (s *Server) handleReferencedAllofOptionalRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	r.Pattern = "/referencedAllofOptional"
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
 	otelAttrs := []attribute.KeyValue{
@@ -1574,6 +1585,7 @@ func (s *Server) handleReferencedAllofOptionalRequest(args [0]string, argsEscape
 //
 // POST /simpleInteger
 func (s *Server) handleSimpleIntegerRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	r.Pattern = "/simpleInteger"
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
 	otelAttrs := []attribute.KeyValue{
@@ -1717,6 +1729,7 @@ func (s *Server) handleSimpleIntegerRequest(args [0]string, argsEscaped bool, w 
 //
 // POST /simpleObjects
 func (s *Server) handleSimpleObjectsRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	r.Pattern = "/simpleObjects"
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
 	otelAttrs := []attribute.KeyValue{
@@ -1858,6 +1871,7 @@ func (s *Server) handleSimpleObjectsRequest(args [0]string, argsEscaped bool, w 
 //
 // POST /stringsNotype
 func (s *Server) handleStringsNotypeRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	r.Pattern = "/stringsNotype"
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
 	otelAttrs := []attribute.KeyValue{

@@ -141,6 +141,7 @@ func (c *Client) sendCustomSecurity(ctx context.Context) (res *CustomSecurityOK,
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/customSecurity"
 
 	{
 		type bitset = [1]uint8
@@ -252,6 +253,7 @@ func (c *Client) sendDisjointSecurity(ctx context.Context) (res *DisjointSecurit
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/disjointSecurity"
 
 	{
 		type bitset = [1]uint8
@@ -397,6 +399,7 @@ func (c *Client) sendIntersectSecurity(ctx context.Context) (res *IntersectSecur
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/intersectSecurity"
 
 	{
 		type bitset = [1]uint8
@@ -531,6 +534,7 @@ func (c *Client) sendOptionalSecurity(ctx context.Context) (res *OptionalSecurit
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/optionalSecurity"
 
 	{
 		type bitset = [1]uint8

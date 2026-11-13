@@ -37,6 +37,7 @@ func (c *codeRecorder) Unwrap() http.ResponseWriter {
 //
 // GET /desktops
 func (s *Server) handleListDesktopsRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	r.Pattern = "/desktops"
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
 	otelAttrs := []attribute.KeyValue{

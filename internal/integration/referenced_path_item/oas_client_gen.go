@@ -124,6 +124,7 @@ func (c *Client) sendFooGet(ctx context.Context) (res string, err error) {
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/foo"
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)

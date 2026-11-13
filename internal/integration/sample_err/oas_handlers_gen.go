@@ -39,6 +39,7 @@ func (c *codeRecorder) Unwrap() http.ResponseWriter {
 //
 // POST /data
 func (s *Server) handleDataCreateRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	r.Pattern = "/data"
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
 	otelAttrs := []attribute.KeyValue{
@@ -193,6 +194,7 @@ func (s *Server) handleDataCreateRequest(args [0]string, argsEscaped bool, w htt
 //
 // GET /data
 func (s *Server) handleDataGetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	r.Pattern = "/data"
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
 	otelAttrs := []attribute.KeyValue{

@@ -37,6 +37,7 @@ func (c *codeRecorder) Unwrap() http.ResponseWriter {
 //
 // POST /event
 func (s *Server) handlePublishEventRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	r.Pattern = "/event"
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
 	otelAttrs := []attribute.KeyValue{
@@ -187,6 +188,7 @@ func (s *Server) handlePublishEventRequest(args [0]string, argsEscaped bool, w h
 
 // handleStatusWebhookRequest handles statusWebhook operation.
 func (s *WebhookServer) handleStatusWebhookRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	r.Pattern = "/"
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
 	otelAttrs := []attribute.KeyValue{
@@ -306,6 +308,7 @@ func (s *WebhookServer) handleStatusWebhookRequest(args [0]string, argsEscaped b
 
 // handleUpdateDeleteRequest handles DELETE update operation.
 func (s *WebhookServer) handleUpdateDeleteRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	r.Pattern = "/"
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
 	otelAttrs := []attribute.KeyValue{
@@ -424,6 +427,7 @@ func (s *WebhookServer) handleUpdateDeleteRequest(args [0]string, argsEscaped bo
 
 // handleUpdateWebhookRequest handles updateWebhook operation.
 func (s *WebhookServer) handleUpdateWebhookRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	r.Pattern = "/"
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
 	otelAttrs := []attribute.KeyValue{

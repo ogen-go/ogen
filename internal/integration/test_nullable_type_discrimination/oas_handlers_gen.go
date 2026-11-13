@@ -36,6 +36,7 @@ func (c *codeRecorder) Unwrap() http.ResponseWriter {
 //
 // GET /data
 func (s *Server) handleGetDataRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	r.Pattern = "/data"
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
 	otelAttrs := []attribute.KeyValue{

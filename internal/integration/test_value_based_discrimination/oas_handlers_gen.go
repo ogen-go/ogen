@@ -37,6 +37,7 @@ func (c *codeRecorder) Unwrap() http.ResponseWriter {
 //
 // GET /resource
 func (s *Server) handleGetResourceRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	r.Pattern = "/resource"
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
 	otelAttrs := []attribute.KeyValue{
@@ -161,6 +162,7 @@ func (s *Server) handleGetResourceRequest(args [0]string, argsEscaped bool, w ht
 //
 // GET /shipping-option
 func (s *Server) handleGetShippingOptionRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	r.Pattern = "/shipping-option"
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
 	otelAttrs := []attribute.KeyValue{
@@ -283,6 +285,7 @@ func (s *Server) handleGetShippingOptionRequest(args [0]string, argsEscaped bool
 //
 // GET /status
 func (s *Server) handleGetStatusRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	r.Pattern = "/status"
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
 	otelAttrs := []attribute.KeyValue{
@@ -405,6 +408,7 @@ func (s *Server) handleGetStatusRequest(args [0]string, argsEscaped bool, w http
 //
 // POST /event
 func (s *Server) handleLogEventRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	r.Pattern = "/event"
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
 	otelAttrs := []attribute.KeyValue{

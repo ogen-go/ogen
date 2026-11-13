@@ -126,6 +126,7 @@ func (c *Client) sendGetResources(ctx context.Context) (res []Resource, err erro
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/resources"
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
