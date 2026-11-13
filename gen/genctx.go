@@ -3,6 +3,7 @@ package gen
 import (
 	"github.com/ogen-go/ogen/gen/ir"
 	"github.com/ogen-go/ogen/jsonschema"
+	"github.com/ogen-go/ogen/openapi"
 )
 
 // genctx is a generation context.
@@ -81,4 +82,15 @@ func (g *genctx) lookupParameter(ref jsonschema.Ref) (*ir.Parameter, bool) {
 		return r, true
 	}
 	return nil, false
+}
+
+func (g *genctx) lookupHeader(name string, header *openapi.Header) *ir.Parameter {
+	if p := g.global.lookupHeader(name, header); p != nil {
+		return p
+	}
+	return g.local.lookupHeader(name, header)
+}
+
+func (g *genctx) saveHeader(name string, p *ir.Parameter) {
+	g.local.saveHeader(name, p)
 }
