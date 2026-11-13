@@ -1,0 +1,64 @@
+openapi: 3.0.0
+info:
+  title: Unique MAC addresses
+  version: 0.0.0
+paths:
+  /addresses:
+    post:
+      operationId: setAddresses
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddressSet'
+      responses:
+        '200':
+          description: OK
+components:
+  schemas:
+    AddressSet:
+      type: object
+      required: [addresses]
+      properties:
+        addresses:
+          type: array
+          minItems: 1
+          uniqueItems: true
+          items:
+            type: string
+            format: mac
+        aliases:
+          type: array
+          uniqueItems: true
+          items:
+            $ref: '#/components/schemas/MACAddress'
+        nullable:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+            format: mac
+            nullable: true
+        nullableAliases:
+          type: array
+          uniqueItems: true
+          items:
+            $ref: '#/components/schemas/NullableMACAddress'
+        unrestricted:
+          type: array
+          items:
+            type: string
+            format: mac
+        names:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+    MACAddress:
+      type: string
+      format: mac
+    NullableMACAddress:
+      type: string
+      format: mac
+      nullable: true
