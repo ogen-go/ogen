@@ -1,0 +1,172 @@
+{{- /*gotype: github.com/ogen-go/ogen/gen.TemplateConfig*/ -}}
+{{ define "spec" }}
+{{ template "header" $ }}
+{{- $spec := $.Spec }}
+
+// Embedded OpenAPI document{{ if $spec.Expanded }} (expanded: external references are resolved){{ end }}.
+const (
+	specJSON = {{ raw_string $spec.JSON }}
+	specYAML = {{ raw_string $spec.YAML }}
+
+	specJSONETag = {{ quote $spec.JSONETag }}
+	specYAMLETag = {{ quote $spec.YAMLETag }}
+)
+
+// SpecJSON returns a copy of the embedded OpenAPI document encoded as JSON.
+func SpecJSON() []byte {
+	return []byte(specJSON)
+}
+
+// SpecYAML returns a copy of the embedded OpenAPI document encoded as YAML.
+func SpecYAML() []byte {
+	return []byte(specYAML)
+}
+
+// DocsOption configures handlers returned by SpecHandler{{ if $.SwaggerUIEnabled }}, SwaggerUIHandler{{ end }}
+// and the WithDocs server option.
+type DocsOption func(*docsConfig)
+
+type docsConfig struct {
+	title     string
+	assetsURL string
+}
+
+{{- if $.SwaggerUIEnabled }}
+
+// WithDocsTitle sets the Swagger UI page title.
+//
+// Defaults to the API title from the OpenAPI document.
+func WithDocsTitle(title string) DocsOption {
+	return func(cfg *docsConfig) {
+		cfg.title = title
+	}
+}
+
+// WithDocsAssetsURL serves Swagger UI static files from the given base URL,
+// for example a CDN like "https://unpkg.com/swagger-ui-dist@5/", instead of
+// the copy embedded into the binary.
+func WithDocsAssetsURL(u string) DocsOption {
+	return func(cfg *docsConfig) {
+		cfg.assetsURL = u
+	}
+}
+{{- end }}
+
+// docsHandler serves the embedded OpenAPI document{{ if $.SwaggerUIEnabled }} and Swagger UI{{ end }}
+// relative to its mount point.
+type docsHandler struct {
+	{{- if $.SwaggerUIEnabled }}
+	ui *swaggerui.Handler // nil if Swagger UI is disabled
+	{{- end }}
+}
+
+func newDocsHandler(ui bool, opts ...DocsOption) docsHandler {
+	cfg := docsConfig{
+		title: {{ quote $spec.Title }},
+	}
+	for _, opt := range opts {
+		opt(&cfg)
+	}
+	h := docsHandler{}
+	{{- if $.SwaggerUIEnabled }}
+	if ui {
+		h.ui = swaggerui.New(swaggerui.Config{
+			SpecURL:   "openapi.json",
+			Title:     cfg.title,
+			AssetsURL: cfg.assetsURL,
+		})
+	}
+	{{- else }}
+	_ = ui
+	_ = cfg
+	{{- end }}
+	return h
+}
+
+// SpecHandler returns a handler that serves the embedded OpenAPI document
+// as "openapi.json" and "openapi.yaml" relative to its mount point:
+//
+//	mux.Handle("/docs/", http.StripPrefix("/docs", SpecHandler()))
+func SpecHandler(opts ...DocsOption) http.Handler {
+	return newDocsHandler(false, opts...)
+}
+
+{{- if $.SwaggerUIEnabled }}
+
+// SwaggerUIHandler returns a handler that serves Swagger UI at "/" and the embedded
+// OpenAPI document as "openapi.json" and "openapi.yaml" relative to its mount point:
+//
+//	mux.Handle("/docs/", http.StripPrefix("/docs", SwaggerUIHandler()))
+func SwaggerUIHandler(opts ...DocsOption) http.Handler {
+	return newDocsHandler(true, opts...)
+}
+{{- end }}
+
+// ServeHTTP implements http.Handler.
+func (h docsHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+	if !h.serve(w, r, r.URL.Path) {
+		http.NotFound(w, r)
+	}
+}
+
+// match reports whether serve handles given path relative to the mount point.
+func (h docsHandler) match(rest string) bool {
+	switch rest {
+	case "", "/openapi.json", "/openapi.yaml":
+		return true
+	}
+	{{- if $.SwaggerUIEnabled }}
+	return h.ui != nil && h.ui.Match(rest)
+	{{- else }}
+	return false
+	{{- end }}
+}
+
+// serve handles given path relative to the mount point.
+//
+// It returns false if the path is not a documentation path.
+func (h docsHandler) serve(w http.ResponseWriter, r *http.Request, rest string) bool {
+	switch rest {
+	case "":
+		// Redirect to the directory, so relative URLs on the index page resolve properly.
+		u := *r.URL
+		u.Path += "/"
+		http.Redirect(w, r, u.String(), http.StatusMovedPermanently)
+		return true
+	case "/openapi.json":
+		serveSpec(w, r, "application/json", specJSONETag, specJSON)
+		return true
+	case "/openapi.yaml":
+		serveSpec(w, r, "application/yaml; charset=utf-8", specYAMLETag, specYAML)
+		return true
+	}
+	{{- if $.SwaggerUIEnabled }}
+	if h.ui != nil && h.ui.Match(rest) {
+		r2 := new(http.Request)
+		*r2 = *r
+		r2.URL = new(url.URL)
+		*r2.URL = *r.URL
+		r2.URL.Path = rest
+		r2.URL.RawPath = ""
+		h.ui.ServeHTTP(w, r2)
+		return true
+	}
+	{{- end }}
+	return false
+}
+
+func serveSpec(w http.ResponseWriter, r *http.Request, contentType, etag, body string) {
+	switch r.Method {
+	case http.MethodGet, http.MethodHead:
+	default:
+		w.Header().Set("Allow", "GET, HEAD")
+		http.Error(w, http.StatusText(http.StatusMethodNotAllowed), http.StatusMethodNotAllowed)
+		return
+	}
+	h := w.Header()
+	h.Set("Content-Type", contentType)
+	h.Set("ETag", etag)
+	h.Set("Cache-Control", "no-cache")
+	http.ServeContent(w, r, "", time.Time{}, strings.NewReader(body))
+}
+{{ end }}

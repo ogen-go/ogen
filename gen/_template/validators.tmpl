@@ -63,6 +63,12 @@
 		if err := validateUnique{{ $t.Item.Name }}({{ $.Var }}); err != nil {
 			return errors.Wrap(err, "array")
 		}
+			{{- else if $t.Item.IsMAC }}
+		if err := validate.UniqueItemsFunc({{ $.Var }}, func(a, b {{ $t.Item.Go }}) bool {
+			{{- template "validate/mac_equal" $t.Item }}
+		}); err != nil {
+			return errors.Wrap(err, "array")
+		}
 			{{- else }}
 		if err := validate.UniqueItems({{ $.Var }}); err != nil {
 			return errors.Wrap(err, "array")
@@ -183,7 +189,8 @@
 	{{- end }}
 {{- end }}
 
-{{- if gt (len $va.Ogen) 0 }}
+{{- /* Struct runs its object-level validators in its own Validate method. */}}
+{{- if and (gt (len $va.Ogen) 0) (not $t.IsStruct) }}
 	{{- $validated = true }}
 	{{- range $name, $params := $va.Ogen }}
 	if err := validate.Ogen({{ quote $name }}, {{ $.Var }}, {{ print_go $params }}); err != nil {
@@ -198,6 +205,30 @@
 
 {{- if not (and ($t.IsGeneric) ($t.GenericOf.NeedValidation)) }}
 	return nil
+{{- end }}
+{{- end }}
+
+{{- define "validate/mac_equal" }}
+{{- /*gotype: github.com/ogen-go/ogen/gen/ir.Type*/ -}}
+{{- if $.IsAlias }}
+	{{- template "validate/mac_equal" $.AliasTo }}
+{{- else if $.IsGeneric }}
+	{{- if $.GenericVariant.Optional }}
+	if !a.Set || !b.Set {
+		return a.Set == b.Set
+	}
+	{{- end }}
+	{{- if $.GenericVariant.Nullable }}
+	if a.Null || b.Null {
+		return a.Null == b.Null
+	}
+	{{- end }}
+	{
+		a, b := a.Value, b.Value
+		{{- template "validate/mac_equal" $.GenericOf }}
+	}
+{{- else }}
+	return bytes.Equal(a, b)
 {{- end }}
 {{- end }}
 
@@ -217,7 +248,7 @@ func (s {{ $t.ReadOnlyReceiver }}) Validate() error {
 	// Object-level pluggable validation
 	{{- range $name, $params := $t.Validators.Ogen }}
 	if err := func() error {
-		if err := validate.ValidateWith({{ quote $name }}, s, {{ print_go $params }}); err != nil {
+		if err := validate.Ogen({{ quote $name }}, *s, {{ print_go $params }}); err != nil {
 			return errors.Wrap(err, {{ quote $name }})
 		}
 		return nil

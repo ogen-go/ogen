@@ -112,6 +112,8 @@ properties:
                 - "client/request/validation"
                 - "client/editors"
                 - "server/response/validation"
+                - "server/spec"
+                - "server/swagger_ui"
                 - "ogen/otel"
                 - "ogen/unimplemented"
                 - "debug/example_tests"
@@ -126,6 +128,8 @@ properties:
                 - "Enable client request validation before sending."
                 - "Generate client request editor option functions."
                 - "Enable server response validation."
+                - "Embed the OpenAPI document and generate SpecHandler and the WithDocs server option."
+                - "Generate SwaggerUIHandler and serve Swagger UI via WithDocs (implies server/spec)."
                 - "Enable OpenTelemetry integration."
                 - "Generate stub handlers for unimplemented operations."
                 - "Generate debug example tests."
@@ -155,6 +159,8 @@ properties:
                 - "client/request/validation"
                 - "client/editors"
                 - "server/response/validation"
+                - "server/spec"
+                - "server/swagger_ui"
                 - "ogen/otel"
                 - "ogen/unimplemented"
                 - "debug/example_tests"
@@ -169,6 +175,8 @@ properties:
                 - "Disable client request validation before sending."
                 - "Disable client request editor option functions."
                 - "Disable server response validation."
+                - "Disable embedding the OpenAPI document."
+                - "Disable Swagger UI generation."
                 - "Disable OpenTelemetry integration."
                 - "Disable stub handlers for unimplemented operations."
                 - "Disable debug example tests."
@@ -256,6 +264,19 @@ properties:
           all initialisms.
         items:
           type: string
+      spec_source:
+        type: string
+        description: >
+          Selects the OpenAPI document embedded by the "server/spec" feature.
+          "auto" embeds the original document unless it has external references,
+          "raw" always embeds the original document as parsed (examples and
+          extensions are preserved, external references are left unresolved),
+          "expanded" always embeds the expanded self-contained document.
+        enum:
+          - "auto"
+          - "raw"
+          - "expanded"
+        default: "auto"
   expand:
     type: string
     description: >

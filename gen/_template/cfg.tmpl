@@ -53,6 +53,9 @@ type serverConfig struct {
 	Prefix             string
 	Middleware 		   Middleware
 	MaxMultipartMemory int64
+	{{- if $.DocsOptionEnabled }}
+	Docs               *docsRouter
+	{{- end }}
 }
 
 // ServerOption is server config option.
@@ -382,6 +385,53 @@ func WithMaxMultipartMemory(max int64) ServerOption {
 		}
 	})
 }
+
+{{- if $.DocsOptionEnabled }}
+
+// docsRouter mounts docsHandler under a path prefix.
+type docsRouter struct {
+	prefix  string
+	handler docsHandler
+}
+
+// serve handles given path (with the server path prefix already cut).
+//
+// It returns false if the path is not a documentation path.
+func (d *docsRouter) serve(w http.ResponseWriter, r *http.Request, elem string) bool {
+	rest, ok := strings.CutPrefix(elem, d.prefix)
+	if !ok || (rest != "" && rest[0] != '/') {
+		return false
+	}
+	if !d.handler.match(rest) {
+		return false
+	}
+	return d.handler.serve(w, r, rest)
+}
+
+// WithDocs serves the embedded OpenAPI document{{ if $.SwaggerUIEnabled }} and Swagger UI{{ end }} under given
+// path prefix (relative to the prefix set by WithPathPrefix):
+//
+{{- if $.SwaggerUIEnabled }}
+//	<prefix>/              Swagger UI
+{{- end }}
+//	<prefix>/openapi.json  OpenAPI document encoded as JSON
+//	<prefix>/openapi.yaml  OpenAPI document encoded as YAML
+//
+// Documentation paths are matched before API routes and bypass Middleware.
+// An empty prefix mounts the documentation at the server root.
+func WithDocs(prefix string, opts ...DocsOption) ServerOption {
+	return optionFunc[serverConfig](func(cfg *serverConfig) {
+		prefix = strings.TrimSuffix(prefix, "/")
+		if prefix != "" && !strings.HasPrefix(prefix, "/") {
+			prefix = "/" + prefix
+		}
+		cfg.Docs = &docsRouter{
+			prefix:  prefix,
+			handler: newDocsHandler({{ $.SwaggerUIEnabled }}, opts...),
+		}
+	})
+}
+{{- end }}
 {{- end }}
 
 {{- end }}

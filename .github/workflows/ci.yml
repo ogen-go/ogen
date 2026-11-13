@@ -9,10 +9,13 @@ on:
 jobs:
   test:
     runs-on: ${{ matrix.runner }}
+    env:
+      GOEXPERIMENT: ${{ matrix.experiment || '' }}
     strategy:
       fail-fast: false
       matrix:
         flags: [""]
+        go: ["oldstable"]
         arch:
           - amd64
         runner:
@@ -25,6 +28,13 @@ jobs:
           - arch: amd64
             runner: ubuntu-latest
             flags: "-race"
+          - arch: amd64
+            runner: ubuntu-latest
+            go: "stable"
+          - arch: amd64
+            runner: ubuntu-latest
+            go: "stable"
+            experiment: "nojsonv2"
     steps:
       - name: Checkout code
         uses: actions/checkout@v7
@@ -32,7 +42,7 @@ jobs:
       - name: Install Go
         uses: actions/setup-go@v7
         with:
-          go-version: "oldstable"
+          go-version: ${{ matrix.go || 'oldstable' }}
           cache: false
 
       - name: Get Go environment
@@ -47,7 +57,7 @@ jobs:
         id: cache-prefix
         shell: bash
         env:
-          RUNNER_PREFIX: ${{ runner.os }}-${{ runner.arch }}-go
+          RUNNER_PREFIX: ${{ runner.os }}-${{ runner.arch }}-go-${{ matrix.go || 'oldstable' }}-${{ matrix.experiment || 'default' }}
           ARCH_PREFIX: ${{ matrix.arch != 'amd64' && format('-{0}', matrix.arch) || '' }}
           RACE_PREFIX: ${{ contains(matrix.flags, '-race') && '-race' || '' }}
         run: echo "cache_prefix=$RUNNER_PREFIX$ARCH_PREFIX$RACE_PREFIX" >> $GITHUB_ENV

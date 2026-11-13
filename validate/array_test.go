@@ -1,6 +1,7 @@
 package validate
 
 import (
+	"bytes"
 	"fmt"
 	"testing"
 
@@ -119,6 +120,33 @@ func TestUniqueItems(t *testing.T) {
 				check = require.Error
 			}
 			check(t, UniqueItems(tt.Elems))
+		})
+	}
+}
+
+func TestUniqueItemsFunc(t *testing.T) {
+	for _, tt := range []struct {
+		Name      string
+		Elems     [][]byte
+		WantError string
+	}{
+		{Name: "Nil"},
+		{Name: "Empty", Elems: [][]byte{}},
+		{Name: "Single", Elems: [][]byte{{1, 2}}},
+		{Name: "Distinct", Elems: [][]byte{{1, 2}, {1, 3}}},
+		{Name: "DifferentLengths", Elems: [][]byte{{1, 2}, {1, 2, 3}}},
+		{Name: "Duplicate", Elems: [][]byte{{1, 2}, {1, 2}}, WantError: "duplicate element [0] [1 2]"},
+		{Name: "NonAdjacentDuplicate", Elems: [][]byte{{1, 2}, {1, 3}, {1, 2}}, WantError: "duplicate element [0] [1 2]"},
+		{Name: "LaterDuplicate", Elems: [][]byte{{1, 2}, {1, 3}, {1, 3}}, WantError: "duplicate element [1] [1 3]"},
+		{Name: "NilAndEmpty", Elems: [][]byte{nil, {}}, WantError: "duplicate element [0] []"},
+	} {
+		t.Run(tt.Name, func(t *testing.T) {
+			err := UniqueItemsFunc(tt.Elems, bytes.Equal)
+			if tt.WantError == "" {
+				require.NoError(t, err)
+				return
+			}
+			require.EqualError(t, err, tt.WantError)
 		})
 	}
 }
