@@ -276,4 +276,64 @@ func TestAllOfMergesTimeFormatOfConflictingProperties(t *testing.T) {
 	}
 }
 
+// TestAllOfMergesExclusiveBounds ensures exclusiveMinimum/exclusiveMaximum
+// follow the bound that is kept when merging allOf subschemas.
+func TestAllOfMergesExclusiveBounds(t *testing.T) {
+	num := func(s string) jsonschema.Num { return jsonschema.Num(s) }
+
+	tests := []struct {
+		name   string
+		s1, s2 *jsonschema.Schema
+		check  func(a *require.Assertions, got *jsonschema.Schema)
+	}{
+		{
+			name: "exclusive maximum is kept",
+			s1:   &jsonschema.Schema{Type: jsonschema.Integer, Maximum: num("10"), ExclusiveMaximum: true},
+			s2:   &jsonschema.Schema{Type: jsonschema.Integer},
+			check: func(a *require.Assertions, got *jsonschema.Schema) {
+				a.Equal(num("10"), got.Maximum)
+				a.True(got.ExclusiveMaximum)
+			},
+		},
+		{
+			name: "exclusive maximum of the stricter bound",
+			s1:   &jsonschema.Schema{Type: jsonschema.Integer, Maximum: num("20")},
+			s2:   &jsonschema.Schema{Type: jsonschema.Integer, Maximum: num("10"), ExclusiveMaximum: true},
+			check: func(a *require.Assertions, got *jsonschema.Schema) {
+				a.Equal(num("10"), got.Maximum)
+				a.True(got.ExclusiveMaximum)
+			},
+		},
+		{
+			name: "exclusive minimum of the looser bound is dropped",
+			s1:   &jsonschema.Schema{Type: jsonschema.Integer, Minimum: num("5"), ExclusiveMinimum: true},
+			s2:   &jsonschema.Schema{Type: jsonschema.Integer, Minimum: num("10")},
+			check: func(a *require.Assertions, got *jsonschema.Schema) {
+				a.Equal(num("10"), got.Minimum)
+				a.False(got.ExclusiveMinimum)
+			},
+		},
+		{
+			name: "equal bounds are exclusive if either is",
+			s1:   &jsonschema.Schema{Type: jsonschema.Integer, Minimum: num("5")},
+			s2:   &jsonschema.Schema{Type: jsonschema.Integer, Minimum: num("5"), ExclusiveMinimum: true},
+			check: func(a *require.Assertions, got *jsonschema.Schema) {
+				a.Equal(num("5"), got.Minimum)
+				a.True(got.ExclusiveMinimum)
+			},
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			a := require.New(t)
+
+			got, err := flattenAllOfSchema(&jsonschema.Schema{
+				AllOf: []*jsonschema.Schema{tt.s1, tt.s2},
+			})
+			a.NoError(err)
+			tt.check(a, got)
+		})
+	}
+}
+
 func ptrTo[T any](v T) *T { return &v }
