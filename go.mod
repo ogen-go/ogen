@@ -1,6 +1,6 @@
 module github.com/ogen-go/ogen
 
-go 1.26.0
+go 1.27
 
 require (
 	github.com/davecgh/go-spew v1.1.1
@@ -10,7 +10,6 @@ require (
 	github.com/go-faster/errors v0.8.0
 	github.com/go-faster/jx v1.2.0
 	github.com/go-faster/yaml v0.4.6
-	github.com/google/uuid v1.6.0
 	github.com/mattn/go-isatty v0.0.24
 	github.com/shopspring/decimal v1.4.0
 	github.com/stretchr/testify v1.12.1
@@ -34,6 +33,7 @@ require (
 	github.com/cespare/xxhash/v2 v2.3.0 // indirect
 	github.com/go-logr/logr v1.4.4 // indirect
 	github.com/go-logr/stdr v1.2.2 // indirect
+	github.com/google/uuid v1.6.0 // indirect
 	github.com/klauspost/compress v1.20.3 // indirect
 	github.com/mattn/go-colorable v0.1.14 // indirect
 	github.com/molecule-man/go-brrr v1.3.1 // indirect

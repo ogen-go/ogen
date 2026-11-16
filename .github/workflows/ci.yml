@@ -15,7 +15,7 @@ jobs:
       fail-fast: false
       matrix:
         flags: [""]
-        go: ["oldstable"]
+        go: ["stable"]
         arch:
           - amd64
         runner:
@@ -42,7 +42,7 @@ jobs:
       - name: Install Go
         uses: actions/setup-go@v7
         with:
-          go-version: ${{ matrix.go || 'oldstable' }}
+          go-version: ${{ matrix.go || 'stable' }}
           cache: false
 
       - name: Get Go environment
@@ -57,7 +57,7 @@ jobs:
         id: cache-prefix
         shell: bash
         env:
-          RUNNER_PREFIX: ${{ runner.os }}-${{ runner.arch }}-go-${{ matrix.go || 'oldstable' }}-${{ matrix.experiment || 'default' }}
+          RUNNER_PREFIX: ${{ runner.os }}-${{ runner.arch }}-go-${{ matrix.go || 'stable' }}-${{ matrix.experiment || 'default' }}
           ARCH_PREFIX: ${{ matrix.arch != 'amd64' && format('-{0}', matrix.arch) || '' }}
           RACE_PREFIX: ${{ contains(matrix.flags, '-race') && '-race' || '' }}
         run: echo "cache_prefix=$RUNNER_PREFIX$ARCH_PREFIX$RACE_PREFIX" >> $GITHUB_ENV
@@ -96,7 +96,7 @@ jobs:
       - name: Install Go
         uses: actions/setup-go@v7
         with:
-          go-version: "oldstable"
+          go-version: "stable"
           cache: false
 
       - name: Get Go environment

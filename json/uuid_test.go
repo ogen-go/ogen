@@ -2,19 +2,16 @@ package json
 
 import (
 	"testing"
+	"uuid"
 
 	"github.com/go-faster/jx"
-	"github.com/google/uuid"
 	"github.com/stretchr/testify/require"
 )
 
 func BenchmarkDecodeUUID(b *testing.B) {
 	e := &jx.Encoder{}
 
-	u, err := uuid.NewUUID()
-	if err != nil {
-		b.Fatal(err)
-	}
+	u := uuid.New()
 	EncodeUUID(e, u)
 	data := e.Bytes()
 
@@ -36,10 +33,7 @@ func BenchmarkDecodeUUID(b *testing.B) {
 func BenchmarkEncodeUUID(b *testing.B) {
 	e := &jx.Encoder{}
 
-	u, err := uuid.NewUUID()
-	if err != nil {
-		b.Fatal(err)
-	}
+	u := uuid.New()
 
 	EncodeUUID(e, u)
 	data := e.Bytes()
@@ -57,8 +51,7 @@ func BenchmarkEncodeUUID(b *testing.B) {
 func Test_hexEncode(t *testing.T) {
 	a := require.New(t)
 
-	u, err := uuid.NewUUID()
-	a.NoError(err)
+	u := uuid.New()
 
 	var dst [36]byte
 	hexEncode(&dst, u)

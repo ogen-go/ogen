@@ -12,9 +12,9 @@ import (
 	"net/url"
 	"testing"
 	"time"
+	"uuid"
 
 	"github.com/go-faster/jx"
-	"github.com/google/uuid"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	metricnoop "go.opentelemetry.io/otel/metric/noop"

@@ -1,11 +1,10 @@
 module github.com/ogen-go/ogen/examples
 
-go 1.26.0
+go 1.27
 
 require (
 	github.com/go-faster/errors v0.8.0
 	github.com/go-faster/jx v1.2.0
-	github.com/google/uuid v1.6.0
 	github.com/ogen-go/ogen v0.0.0
 	github.com/shopspring/decimal v1.4.0
 	github.com/stretchr/testify v1.12.1

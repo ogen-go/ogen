@@ -12,10 +12,10 @@ import (
 	"sync/atomic"
 	"testing"
 	"time"
+	"uuid"
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
-	"github.com/google/uuid"
 	"github.com/stretchr/testify/require"
 	"github.com/valyala/fasthttp"
 	"go.opentelemetry.io/otel/trace/noop"
