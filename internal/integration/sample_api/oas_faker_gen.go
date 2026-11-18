@@ -1313,15 +1313,6 @@ func (s *OptInt32) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *OptIssue1310Properties) SetFake() {
-	var elem *Issue1310Properties
-	{ // Keep pointer nil to prevent infinite recursion.
-		elem = nil
-	}
-	s.SetTo(elem)
-}
-
-// SetFake set fake values.
 func (s *OptIssue1461NullableOptionalTest) SetFake() {
 	var elem Issue1461NullableOptionalTest
 	{
@@ -1409,6 +1400,12 @@ func (s *OptMergeUniqueFieldsOneOf) SetFake() {
 		elem.SetFake()
 	}
 	s.SetTo(elem)
+}
+
+// SetFake set fake values.
+func (s *OptNilIssue1310Properties) SetFake() {
+	s.Null = true
+	s.Set = true
 }
 
 // SetFake set fake values.

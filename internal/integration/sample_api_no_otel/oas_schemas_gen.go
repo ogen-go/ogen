@@ -1204,7 +1204,7 @@ type Issue1310 struct {
 	// A human-readable explanation specific to this occurrence of the problem.
 	Details OptString `json:"details"`
 	// Optional map of properties.
-	Properties OptIssue1310Properties `json:"properties"`
+	Properties OptNilIssue1310Properties `json:"properties"`
 }
 
 // GetTitle returns the value of Title.
@@ -1218,7 +1218,7 @@ func (s *Issue1310) GetDetails() OptString {
 }
 
 // GetProperties returns the value of Properties.
-func (s *Issue1310) GetProperties() OptIssue1310Properties {
+func (s *Issue1310) GetProperties() OptNilIssue1310Properties {
 	return s.Properties
 }
 
@@ -1233,7 +1233,7 @@ func (s *Issue1310) SetDetails(val OptString) {
 }
 
 // SetProperties sets the value of Properties.
-func (s *Issue1310) SetProperties(val OptIssue1310Properties) {
+func (s *Issue1310) SetProperties(val OptNilIssue1310Properties) {
 	s.Properties = val
 }
 
@@ -4147,52 +4147,6 @@ func (o OptInt32) Or(d int32) int32 {
 	return d
 }
 
-// NewOptIssue1310Properties returns new OptIssue1310Properties with value set to v.
-func NewOptIssue1310Properties(v *Issue1310Properties) OptIssue1310Properties {
-	return OptIssue1310Properties{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptIssue1310Properties is optional *Issue1310Properties.
-type OptIssue1310Properties struct {
-	Value *Issue1310Properties
-	Set   bool
-}
-
-// IsSet returns true if OptIssue1310Properties was set.
-func (o OptIssue1310Properties) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptIssue1310Properties) Reset() {
-	var v *Issue1310Properties
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptIssue1310Properties) SetTo(v *Issue1310Properties) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptIssue1310Properties) Get() (v *Issue1310Properties, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptIssue1310Properties) Or(d *Issue1310Properties) *Issue1310Properties {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
 // NewOptIssue1461NullableOptionalTest returns new OptIssue1461NullableOptionalTest with value set to v.
 func NewOptIssue1461NullableOptionalTest(v Issue1461NullableOptionalTest) OptIssue1461NullableOptionalTest {
 	return OptIssue1461NullableOptionalTest{
@@ -4647,6 +4601,74 @@ func (o OptMergeUniqueFieldsOneOf) Get() (v MergeUniqueFieldsOneOf, ok bool) {
 
 // Or returns value if set, or given parameter if does not.
 func (o OptMergeUniqueFieldsOneOf) Or(d MergeUniqueFieldsOneOf) MergeUniqueFieldsOneOf {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptNilIssue1310Properties returns new OptNilIssue1310Properties with value set to v.
+func NewOptNilIssue1310Properties(v Issue1310Properties) OptNilIssue1310Properties {
+	return OptNilIssue1310Properties{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptNilIssue1310Properties is optional nullable Issue1310Properties.
+type OptNilIssue1310Properties struct {
+	Value Issue1310Properties
+	Set   bool
+	Null  bool
+}
+
+// IsSet returns true if OptNilIssue1310Properties was set.
+func (o OptNilIssue1310Properties) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptNilIssue1310Properties) Reset() {
+	var v Issue1310Properties
+	o.Value = v
+	o.Set = false
+	o.Null = false
+}
+
+// SetTo sets value to v.
+func (o *OptNilIssue1310Properties) SetTo(v Issue1310Properties) {
+	o.Set = true
+	o.Null = false
+	o.Value = v
+}
+
+// IsNull returns true if value is Null.
+func (o OptNilIssue1310Properties) IsNull() bool { return o.Null }
+
+// SetToNull sets value to null.
+func (o *OptNilIssue1310Properties) SetToNull() {
+	o.Set = true
+	o.Null = true
+	var v Issue1310Properties
+	o.Value = v
+}
+
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilIssue1310Properties) IsEmpty() bool {
+	return !o.Set && !o.Null
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptNilIssue1310Properties) Get() (v Issue1310Properties, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptNilIssue1310Properties) Or(d Issue1310Properties) Issue1310Properties {
 	if v, ok := o.Get(); ok {
 		return v
 	}
