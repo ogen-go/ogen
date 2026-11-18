@@ -94,7 +94,7 @@ func boxType(t *ir.Type, v ir.GenericVariant) (*ir.Type, error) {
 		return t, nil
 	}
 
-	if t.CanGeneric() {
+	if t.CanGeneric() || (v.Nullable && t.CanGenericNullable()) {
 		postfix, err := genericPostfix(t)
 		if err != nil {
 			return nil, errors.Wrap(err, "postfix")

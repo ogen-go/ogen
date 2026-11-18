@@ -36,13 +36,25 @@ func (v GenericVariant) Any() bool {
 
 // CanGeneric reports whether Type can be boxed to KindGeneric.
 func (t Type) CanGeneric() bool {
+	return t.canGeneric(false)
+}
+
+// CanGenericNullable reports whether Type can be boxed to KindGeneric if the value can be null.
+//
+// Unlike CanGeneric, it accepts structs without fields. A nil pointer to such a struct
+// cannot be told apart from an empty object, so null needs the explicit flag of a generic.
+func (t Type) CanGenericNullable() bool {
+	return t.canGeneric(true)
+}
+
+func (t Type) canGeneric(emptyStruct bool) bool {
 	switch t.Kind {
 	case KindStruct:
-		if len(t.Fields) == 0 {
+		if len(t.Fields) == 0 && !emptyStruct {
 			return false
 		}
 	case KindAlias:
-		return t.AliasTo.CanGeneric()
+		return t.AliasTo.canGeneric(emptyStruct)
 	case KindSum:
 		if len(t.SumOf) == 0 {
 			return false
