@@ -1,0 +1,46 @@
+openapi: 3.1.0
+info:
+  title: Nullable empty objects
+  description: |
+    Objects without properties that can be null. A pointer cannot tell null
+    from an empty object, so these need the Nil generic wrappers.
+  version: 1.0.0
+paths:
+  /extensions:
+    patch:
+      operationId: patchExtensions
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Extensions'
+      responses:
+        '200':
+          description: Patched extensions.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Extensions'
+components:
+  schemas:
+    Extensions:
+      type: object
+      required:
+        - required
+        - requiredLegacy
+      properties:
+        optional:
+          type: [object, 'null']
+          properties: {}
+        required:
+          type: [object, 'null']
+          properties: {}
+        requiredLegacy:
+          type: object
+          nullable: true
+        optionalNoProperties:
+          type: [object, 'null']
+        notNullable:
+          type: object
+          properties: {}
