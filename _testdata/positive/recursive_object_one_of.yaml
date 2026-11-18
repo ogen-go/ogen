@@ -1,0 +1,35 @@
+openapi: 3.1.0
+info: {title: Recursive expression, version: '1'}
+paths:
+  /expression:
+    get:
+      operationId: getExpression
+      responses:
+        '200':
+          description: Expression tree
+          content:
+            application/json:
+              schema: {$ref: '#/components/schemas/Expression'}
+components:
+  schemas:
+    Expression:
+      type: object
+      discriminator:
+        propertyName: op
+        mapping:
+          value: '#/components/schemas/Value'
+          negate: '#/components/schemas/Negate'
+      oneOf:
+        - {$ref: '#/components/schemas/Value'}
+        - {$ref: '#/components/schemas/Negate'}
+    Value:
+      type: object
+      required: [op]
+      properties:
+        op: {type: string, const: value}
+    Negate:
+      type: object
+      required: [op]
+      properties:
+        op: {type: string, const: negate}
+        operand: {$ref: '#/components/schemas/Expression'}
