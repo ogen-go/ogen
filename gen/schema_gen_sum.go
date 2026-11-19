@@ -1467,22 +1467,6 @@ func mergeSchemes(s1, s2 *jsonschema.Schema) (_ *jsonschema.Schema, err error) {
 			}
 		}
 
-		someNum = func(n1, n2 jsonschema.Num, both func(n1, n2 jx.Num) jx.Num) jsonschema.Num {
-			switch {
-			case len(n1) == 0 && len(n2) == 0:
-				return jsonschema.Num{}
-			case len(n1) != 0 && len(n2) == 0:
-				return n1
-			case len(n1) == 0 && len(n2) != 0:
-				return n2
-			default:
-				if jx.Num(n1).Equal(jx.Num(n2)) {
-					return n1
-				}
-				return jsonschema.Num(both(jx.Num(n1), jx.Num(n2)))
-			}
-		}
-
 		maxNum = func(n1, n2 jx.Num) jx.Num {
 			f1, err := n1.Float64()
 			if err != nil {
@@ -1511,6 +1495,31 @@ func mergeSchemes(s1, s2 *jsonschema.Schema) (_ *jsonschema.Schema, err error) {
 				return n1
 			}
 			return n2
+		}
+
+		// someBound merges two numeric bounds along with their exclusive flags.
+		// The flag follows the bound that is kept; for equal bounds the result
+		// is exclusive if either of them is.
+		someBound = func(
+			n1 jsonschema.Num, e1 bool,
+			n2 jsonschema.Num, e2 bool,
+			both func(n1, n2 jx.Num) jx.Num,
+		) (jsonschema.Num, bool) {
+			switch {
+			case len(n1) == 0 && len(n2) == 0:
+				return jsonschema.Num{}, false
+			case len(n1) != 0 && len(n2) == 0:
+				return n1, e1
+			case len(n1) == 0 && len(n2) != 0:
+				return n2, e2
+			}
+			if jx.Num(n1).Equal(jx.Num(n2)) {
+				return n1, e1 || e2
+			}
+			if jx.Num(n1).Equal(both(jx.Num(n1), jx.Num(n2))) {
+				return n1, e1
+			}
+			return n2, e2
 		}
 	)
 
@@ -1690,11 +1699,16 @@ func mergeSchemes(s1, s2 *jsonschema.Schema) (_ *jsonschema.Schema, err error) {
 
 	// Integer, Number validation
 	{
-		r.Maximum = someNum(s1.Maximum, s2.Maximum, minNum)
-		s1.ExclusiveMaximum = s1.ExclusiveMaximum || s2.ExclusiveMaximum
-
-		r.Minimum = someNum(s1.Minimum, s2.Minimum, maxNum)
-		r.ExclusiveMinimum = s1.ExclusiveMinimum || s2.ExclusiveMinimum
+		r.Maximum, r.ExclusiveMaximum = someBound(
+			s1.Maximum, s1.ExclusiveMaximum,
+			s2.Maximum, s2.ExclusiveMaximum,
+			minNum,
+		)
+		r.Minimum, r.ExclusiveMinimum = someBound(
+			s1.Minimum, s1.ExclusiveMinimum,
+			s2.Minimum, s2.ExclusiveMinimum,
+			maxNum,
+		)
 
 		// NOTE: We need to refactor ir.Validators to support multiple 'multipleOf's.
 		//
